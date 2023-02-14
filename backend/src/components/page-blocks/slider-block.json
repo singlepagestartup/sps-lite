@@ -1,0 +1,24 @@
+{
+    "collectionName": "components_page_blocks_slider_blocks",
+    "info": {
+        "displayName": "Slider Block",
+        "icon": "arrows-alt-h",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple"
+        },
+        "slider": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::slider.slider"
+        },
+        "anchor": {
+            "type": "string"
+        }
+    }
+}

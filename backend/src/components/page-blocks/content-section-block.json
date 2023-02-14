@@ -1,0 +1,16 @@
+{
+    "collectionName": "components_page_blocks_content_section_blocks",
+    "info": {
+        "displayName": "Content Section Block",
+        "icon": "align-left"
+    },
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["centered"],
+            "required": true,
+            "default": "centered"
+        }
+    }
+}

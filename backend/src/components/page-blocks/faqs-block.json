@@ -1,0 +1,42 @@
+{
+    "collectionName": "components_page_blocks_faqs_blocks",
+    "info": {
+        "displayName": "Faqs Block",
+        "icon": "question",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "faqs": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.faq"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": [
+                "centered-accordion",
+                "offset-with-supporting-text",
+                "centered-accordion-on-dark",
+                "side-by-side",
+                "three-columns-with-centered-introduction",
+                "three-columns",
+                "three-columns-on-dark",
+                "two-columns",
+                "two-columns-on-dark",
+                "two-columns-with-centered-introduction"
+            ],
+            "required": true,
+            "default": "centered-accordion"
+        },
+        "anchor": {
+            "type": "string"
+        }
+    }
+}

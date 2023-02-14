@@ -1,0 +1,45 @@
+image:
+  file: .gitpod.Dockerfile
+
+additionalRepositories:
+  - url: https://github.com/rogwild/next-utils
+    checkoutLocation: next-utils
+  - url: https://github.com/rogwild/strapi-utils
+    checkoutLocation: strapi-utils
+
+workspaceLocation: sps-store/main.code-workspace
+
+ports:
+  - port: 1337
+    visibility: public
+  - port: 3000
+    visibility: public
+
+tasks:
+  - name: "set packages to cache"
+    init: npm cache clean --force && cd backend && npm i && cd ../frontend && npm i
+  - name: "frontend"
+    command: cd frontend && npm run dev
+  - name: "strapi-utils"
+    command: cd strapi-utils && npm i && npm link
+  - name: "next-utils"
+    command: cd next-utils && npm i && npm link
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - mochisann.create-react-component-with-storybook-and-testfile
+    - dsznajder.es7-react-js-snippets
+    - dbaeumer.vscode-eslint
+    - mhutchie.git-graph
+    - eamodio.gitlens
+    - andys8.jest-snippets
+    - bierner.jsdoc-markdown-highlighting
+    - esbenp.prettier-vscode
+    - wallabyjs.quokka-vscode
+    - equimper.react-native-react-redux
+    - devexpress.rushcore
+    - devexpress.rushsnippets
+    - chakrounanas.turbo-console-log
+    - wallabyjs.wallaby-vscode
+    - hbenl.vscode-test-explorer

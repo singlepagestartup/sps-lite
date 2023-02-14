@@ -1,0 +1,1176 @@
+{
+    "id": 1,
+    "createdAt": "2023-02-14T04:36:07.506Z",
+    "updatedAt": "2023-02-14T06:12:56.104Z",
+    "publishedAt": "2023-02-14T04:36:20.476Z",
+    "locale": "en",
+    "page_blocks": [
+        {
+            "__component": "page-blocks.hero-section-block",
+            "id": 1,
+            "title": "Шаблон для \"Lean-Startup\" разработчиков",
+            "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+            "variant": "simple-centered",
+            "anchor": null,
+            "media": [
+                {
+                    "id": 3,
+                    "name": "preview.png",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 2050,
+                    "height": 1286,
+                    "formats": {
+                        "large": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_preview_f7cd629a0b.png",
+                            "hash": "large_preview_f7cd629a0b",
+                            "mime": "image/png",
+                            "name": "large_preview.png",
+                            "path": null,
+                            "size": 294.3,
+                            "width": 1000,
+                            "height": 627
+                        },
+                        "small": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_preview_f7cd629a0b.png",
+                            "hash": "small_preview_f7cd629a0b",
+                            "mime": "image/png",
+                            "name": "small_preview.png",
+                            "path": null,
+                            "size": 79.52,
+                            "width": 500,
+                            "height": 314
+                        },
+                        "medium": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_preview_f7cd629a0b.png",
+                            "hash": "medium_preview_f7cd629a0b",
+                            "mime": "image/png",
+                            "name": "medium_preview.png",
+                            "path": null,
+                            "size": 165.21,
+                            "width": 750,
+                            "height": 470
+                        },
+                        "thumbnail": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_preview_f7cd629a0b.png",
+                            "hash": "thumbnail_preview_f7cd629a0b",
+                            "mime": "image/png",
+                            "name": "thumbnail_preview.png",
+                            "path": null,
+                            "size": 22.97,
+                            "width": 245,
+                            "height": 154
+                        }
+                    },
+                    "hash": "preview_f7cd629a0b",
+                    "ext": ".png",
+                    "mime": "image/png",
+                    "size": 223.32,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/preview_f7cd629a0b.png",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-02-14T04:35:22.732Z",
+                    "updatedAt": "2023-02-14T04:35:22.732Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 7,
+                    "title": "Try now",
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "icon": null,
+                    "hover_icon": null
+                },
+                {
+                    "id": 8,
+                    "title": "Buy pro version",
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "icon": null,
+                    "hover_icon": null
+                }
+            ],
+            "background": null
+        },
+        {
+            "__component": "page-blocks.cta-section-block",
+            "id": 1,
+            "variant": "simple-centered",
+            "anchor": null,
+            "title": "Используемые коцепции",
+            "description": "Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.",
+            "media": null,
+            "buttons": [
+                {
+                    "id": 9,
+                    "title": "Try now",
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "icon": null,
+                    "hover_icon": null
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.feature-section-block",
+            "id": 1,
+            "title": "Не повторяйся",
+            "description": "Мы постарались сделать так, чтобы вам не нужно было описывать бизнес логику, которая повторяется из проекта в проект.",
+            "subtitle": null,
+            "variant": "simple-three-column",
+            "anchor": null,
+            "media": null,
+            "features": [
+                {
+                    "id": 1,
+                    "title": "Конструктор блоков страниц",
+                    "description": "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 2,
+                    "title": "Мультиязычность",
+                    "description": "Ваш стартап обязательно станет интернациональным, мы позаботились об этом и уже все подготовили за вас. Просто выберите какие языки поддерживать.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 3,
+                    "title": "Аутентификация и авторизация пользователей с мульти-факторным подтверждением входа",
+                    "description": "Разработка аутентификаци, авторизации и всех сопутствующих страниц занимает от 20 до 100 часов работы команды. Больше не нужно тратить на это время, все уже есть и работает. Просто воспользуйтесь наработками в своем стартапе.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 4,
+                    "title": "Личный кабинет пользователя с настройками профиля",
+                    "description": "После того как пользователь зарегистрировался, он захочет поставить аватар, мы уже сделали это, просто включите этот PageBlock на страницу профиля пользователя.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 5,
+                    "title": "Интеграции",
+                    "description": "Мы сделали интеграции с Google Drive и Google Sheets для данных, которые отправляются в формах на сайте. Вы можете использовать их или добавить свои варианты интеграций.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 6,
+                    "title": "Генератор PDF файлов на основе создаваемых пользователем данных",
+                    "description": "Хотите генерировать документы на основе данных пользователя или заполненной формы? Не проблема, просто включите этот функционал в вашу бизнес логику.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 7,
+                    "title": "Функционал интернет-магазина",
+                    "description": "Каталог товаров с выбором вариантов, страницы товаров, корзина, выбор способов доставки, история заказов все это можно использовать в вашем проекте",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 8,
+                    "title": "Функционал блога",
+                    "description": "Пишите новости или ведите блог, включите этот функционал и приступайте к развитию вашего личного бренда.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 9,
+                    "title": "Панель администрирования",
+                    "description": "Настраивайте ваш проект через панель администрирования Strapi, расширяйте функционал с помощью плагинов или пишите свои.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 10,
+                    "title": "Миграции данных",
+                    "description": "Можете заполнить проект на локальной машине и сделать дамп данных, после чего на сервере запустите миграцию и контент будет заполнен.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 11,
+                    "title": "CI/CD",
+                    "description": "Мы уже написали скрипты CI/CD для GitHub Actions и инструкции по развертыванию проекта на сервере. Значит вам не нужно будет думать о том, как запустить проект на сервере, просто последовательно выполните команды и сможете обновлять проект автоматически через GitHub версионирование.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.feature-section-block",
+            "id": 2,
+            "title": "Продолжайте, а не начинайте с нуля",
+            "description": "Используя SPS вы сразу же получаете конструктор страниц и авторизацию пользователей, просто добавьте вашу бизнес логику. Архитектура проекта настроена таким образом, чтобы добавляя новый функционал вы не ломали старый и могли впоследствии получать обновления SPS и используемых в проекте OpenSource решений.",
+            "subtitle": null,
+            "variant": "with-product-screenshot-on-left",
+            "anchor": null,
+            "media": [
+                {
+                    "id": 4,
+                    "name": "stages.png",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 2452,
+                    "height": 3324,
+                    "formats": {
+                        "large": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_stages_d2ef598970.png",
+                            "hash": "large_stages_d2ef598970",
+                            "mime": "image/png",
+                            "name": "large_stages.png",
+                            "path": null,
+                            "size": 64.51,
+                            "width": 738,
+                            "height": 1000
+                        },
+                        "small": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_stages_d2ef598970.png",
+                            "hash": "small_stages_d2ef598970",
+                            "mime": "image/png",
+                            "name": "small_stages.png",
+                            "path": null,
+                            "size": 27.33,
+                            "width": 369,
+                            "height": 500
+                        },
+                        "medium": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_stages_d2ef598970.png",
+                            "hash": "medium_stages_d2ef598970",
+                            "mime": "image/png",
+                            "name": "medium_stages.png",
+                            "path": null,
+                            "size": 47.26,
+                            "width": 553,
+                            "height": 750
+                        },
+                        "thumbnail": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_stages_d2ef598970.png",
+                            "hash": "thumbnail_stages_d2ef598970",
+                            "mime": "image/png",
+                            "name": "thumbnail_stages.png",
+                            "path": null,
+                            "size": 4.74,
+                            "width": 115,
+                            "height": 156
+                        }
+                    },
+                    "hash": "stages_d2ef598970",
+                    "ext": ".png",
+                    "mime": "image/png",
+                    "size": 68.96,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/stages_d2ef598970.png",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-02-14T04:45:38.208Z",
+                    "updatedAt": "2023-02-14T04:45:38.208Z",
+                    "folder": null
+                }
+            ],
+            "features": [
+                {
+                    "id": 12,
+                    "title": "Создавайте новые модели на бекенде и подключайте их в PageBlock’и на фронтенде.",
+                    "description": "Вам даже не нужно писать коннекторы между фронтендом и бекендом, фронтенд уже получает все данные. Просто создайте компонент и отобразите там полученные данные.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 13,
+                    "title": "Добавляйте промежуточные слои обработки данных.",
+                    "description": "Добавляйте полтитики доступа к данным для разных типов пользователей, изменяйте загружаемые пользователями данные, создавайте сайд-эффекты, мы не ограничиваем ваши действия.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 14,
+                    "title": "Добавляйте интеграции.",
+                    "description": "Загружать файлы на Google Drive или на S3? Воспользуйтесь написанными нами или добавляйте свои, с этим делом сможет справиться AI.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 15,
+                    "title": "Создавайте свои хуки жизненного цикла моделей.",
+                    "description": "Отправлять файл пользователю на почту после регистрации или оплаты? Не проблема, создайте хук жизненного цикла в нужной модели или воспользуйтесь теми, что уже написаны нами.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                },
+                {
+                    "id": 16,
+                    "title": "Получайте последние обновления.",
+                    "description": "Вышло новое обновление SPS? Просто скачайте его с GitHub одной командой и сделайте легкий Merge, если данные конфликтуют.",
+                    "subtitle": null,
+                    "media": [
+                        {
+                            "id": 1,
+                            "name": "favicon.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 485,
+                            "height": 485,
+                            "formats": null,
+                            "hash": "favicon_240cfaed60",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 2.61,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_240cfaed60.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-13T19:03:25.510Z",
+                            "updatedAt": "2023-02-13T19:03:25.510Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": null
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.cta-section-block",
+            "id": 2,
+            "variant": "dark-panel-with-app-screenshot",
+            "anchor": null,
+            "title": "Меняйте страницы вашего проекта хоть каждый день, делайте A/B тесты",
+            "description": "Все это может делать менеджер контента через панель управления сайтом. Не нужно писать разработчикам и менеджеру контента не надо становиться программистом, панель управления сайтом интуитивно понятна.",
+            "media": [
+                {
+                    "id": 5,
+                    "name": "graphs.png",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 3272,
+                    "height": 2320,
+                    "formats": {
+                        "large": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_graphs_5037804107.png",
+                            "hash": "large_graphs_5037804107",
+                            "mime": "image/png",
+                            "name": "large_graphs.png",
+                            "path": null,
+                            "size": 218.94,
+                            "width": 1000,
+                            "height": 709
+                        },
+                        "small": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_graphs_5037804107.png",
+                            "hash": "small_graphs_5037804107",
+                            "mime": "image/png",
+                            "name": "small_graphs.png",
+                            "path": null,
+                            "size": 79.66,
+                            "width": 500,
+                            "height": 355
+                        },
+                        "medium": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_graphs_5037804107.png",
+                            "hash": "medium_graphs_5037804107",
+                            "mime": "image/png",
+                            "name": "medium_graphs.png",
+                            "path": null,
+                            "size": 144.05,
+                            "width": 750,
+                            "height": 532
+                        },
+                        "thumbnail": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_graphs_5037804107.png",
+                            "hash": "thumbnail_graphs_5037804107",
+                            "mime": "image/png",
+                            "name": "thumbnail_graphs.png",
+                            "path": null,
+                            "size": 25.58,
+                            "width": 220,
+                            "height": 156
+                        }
+                    },
+                    "hash": "graphs_5037804107",
+                    "ext": ".png",
+                    "mime": "image/png",
+                    "size": 276.51,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/graphs_5037804107.png",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-02-14T04:46:12.492Z",
+                    "updatedAt": "2023-02-14T04:46:12.492Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 10,
+                    "title": "Try Now",
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "icon": null,
+                    "hover_icon": null
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.feature-section-block",
+            "id": 3,
+            "title": "OpenSource \"под капотом\"",
+            "description": "Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.",
+            "subtitle": null,
+            "variant": "three-column-with-slider",
+            "anchor": null,
+            "media": null,
+            "features": [
+                {
+                    "id": 17,
+                    "title": "Next.js",
+                    "description": "Это фреймворк на базе React, что добавляет ограничения, которые не дадут разработчику написать основу проекта “неправильно”, а рендеринг на стороне клиента даст вашим лендингам преимущество по скорости отдачи и правильное сканирование поисковыми роботами. Next.js имеет качественную документацию, а также большое комьюнити, вследствие чего вы сможете легко найти нужную вам информацию. ",
+                    "subtitle": "Frontend",
+                    "media": [
+                        {
+                            "id": 6,
+                            "name": "Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 2228,
+                            "height": 1466,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e.png",
+                                    "hash": "large_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e",
+                                    "mime": "image/png",
+                                    "name": "large_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274.png",
+                                    "path": null,
+                                    "size": 97.48,
+                                    "width": 1000,
+                                    "height": 658
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e.png",
+                                    "hash": "small_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e",
+                                    "mime": "image/png",
+                                    "name": "small_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274.png",
+                                    "path": null,
+                                    "size": 40.38,
+                                    "width": 500,
+                                    "height": 329
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e.png",
+                                    "hash": "medium_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e",
+                                    "mime": "image/png",
+                                    "name": "medium_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274.png",
+                                    "path": null,
+                                    "size": 67.13,
+                                    "width": 750,
+                                    "height": 493
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e.png",
+                                    "hash": "thumbnail_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274.png",
+                                    "path": null,
+                                    "size": 15.49,
+                                    "width": 237,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 54.93,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/Snimok_ekrana_2023_02_13_v_15_59_02_d2f9428274_24bc3a399e.png",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-14T04:46:44.273Z",
+                            "updatedAt": "2023-02-14T04:46:44.273Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": {
+                        "id": 7,
+                        "name": "Snimok_ekrana_2023_02_13_v_16_00_41_82d1c6570a.png",
+                        "alternativeText": null,
+                        "caption": null,
+                        "width": 244,
+                        "height": 88,
+                        "formats": null,
+                        "hash": "Snimok_ekrana_2023_02_13_v_16_00_41_82d1c6570a_042ff201b2",
+                        "ext": ".png",
+                        "mime": "image/png",
+                        "size": 0.75,
+                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/Snimok_ekrana_2023_02_13_v_16_00_41_82d1c6570a_042ff201b2.png",
+                        "previewUrl": null,
+                        "provider": "aws-s3",
+                        "provider_metadata": null,
+                        "folderPath": "/",
+                        "createdAt": "2023-02-14T04:46:54.539Z",
+                        "updatedAt": "2023-02-14T04:46:54.539Z",
+                        "folder": null
+                    }
+                },
+                {
+                    "id": 18,
+                    "title": "Strapi",
+                    "description": "Гибкий фреймворк на Node.js завоевавший сердца тысяч разработчиков потому что лишает головной боли бекенд разработчика. Под капотом уже есть ORM, конструктор моделей и связей, архитектура с политиками и промежуточными слоями. Практически любой стартап можно сделать с помощью Strapi, так как ограничений нет, вы просто пишете код на Node.js там, где его ожидает Strapi. Качественная документация и активное комьюнити решит любой ваш вопрос. Постоянная разработка фреймворка расширяет функционал системы и улучшает пользовательский опыт.",
+                    "subtitle": "Backend",
+                    "media": [
+                        {
+                            "id": 8,
+                            "name": "Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 2418,
+                            "height": 1746,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6.png",
+                                    "hash": "large_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6",
+                                    "mime": "image/png",
+                                    "name": "large_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe.png",
+                                    "path": null,
+                                    "size": 254.81,
+                                    "width": 1000,
+                                    "height": 722
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6.png",
+                                    "hash": "small_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6",
+                                    "mime": "image/png",
+                                    "name": "small_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe.png",
+                                    "path": null,
+                                    "size": 89.44,
+                                    "width": 500,
+                                    "height": 361
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6.png",
+                                    "hash": "medium_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6",
+                                    "mime": "image/png",
+                                    "name": "medium_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe.png",
+                                    "path": null,
+                                    "size": 163.25,
+                                    "width": 750,
+                                    "height": 542
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6.png",
+                                    "hash": "thumbnail_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe.png",
+                                    "path": null,
+                                    "size": 27.29,
+                                    "width": 216,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 179.25,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/Snimok_ekrana_2023_02_13_v_16_01_57_dd9715a4fe_98f6835dc6.png",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-14T04:47:13.123Z",
+                            "updatedAt": "2023-02-14T04:47:13.123Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": {
+                        "id": 9,
+                        "name": "strapi_logo_dark_f494164d63.svg",
+                        "alternativeText": null,
+                        "caption": null,
+                        "width": 132,
+                        "height": 32,
+                        "formats": null,
+                        "hash": "strapi_logo_dark_f494164d63_8790535db0",
+                        "ext": ".svg",
+                        "mime": "image/svg+xml",
+                        "size": 6.19,
+                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/strapi_logo_dark_f494164d63_8790535db0.svg",
+                        "previewUrl": null,
+                        "provider": "aws-s3",
+                        "provider_metadata": null,
+                        "folderPath": "/",
+                        "createdAt": "2023-02-14T04:47:27.930Z",
+                        "updatedAt": "2023-02-14T04:47:27.930Z",
+                        "folder": null
+                    }
+                },
+                {
+                    "id": 19,
+                    "title": "Tailwind CSS",
+                    "description": "Фреймворк для верстки, который не ограничивает разработчика и не требует от него изменения ядра фреймворка для решения неординарных задач, так как вы пишите CSS классами. Только без проблем рендеринга, которые встречаются в всех CSS-in-JS решениях.\nКачественная документация. Большое комьюнити, вследствие чего вы сможете легко найти нужную вам информация.",
+                    "subtitle": "Layout",
+                    "media": [
+                        {
+                            "id": 10,
+                            "name": "Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 3358,
+                            "height": 1748,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7.png",
+                                    "hash": "large_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7",
+                                    "mime": "image/png",
+                                    "name": "large_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51.png",
+                                    "path": null,
+                                    "size": 344.38,
+                                    "width": 1000,
+                                    "height": 521
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7.png",
+                                    "hash": "small_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7",
+                                    "mime": "image/png",
+                                    "name": "small_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51.png",
+                                    "path": null,
+                                    "size": 107.74,
+                                    "width": 500,
+                                    "height": 260
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7.png",
+                                    "hash": "medium_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7",
+                                    "mime": "image/png",
+                                    "name": "medium_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51.png",
+                                    "path": null,
+                                    "size": 212.97,
+                                    "width": 750,
+                                    "height": 390
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7.png",
+                                    "hash": "thumbnail_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51.png",
+                                    "path": null,
+                                    "size": 32.01,
+                                    "width": 245,
+                                    "height": 128
+                                }
+                            },
+                            "hash": "Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 657,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/Snimok_ekrana_2023_02_13_v_16_03_00_71e0a7ba51_70ef6641c7.png",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-02-14T04:47:53.577Z",
+                            "updatedAt": "2023-02-14T04:47:53.577Z",
+                            "folder": null
+                        }
+                    ],
+                    "icon": {
+                        "id": 11,
+                        "name": "Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9.png",
+                        "alternativeText": null,
+                        "caption": null,
+                        "width": 376,
+                        "height": 92,
+                        "formats": {
+                            "thumbnail": {
+                                "ext": ".png",
+                                "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9_fd0bfc033c.png",
+                                "hash": "thumbnail_Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9_fd0bfc033c",
+                                "mime": "image/png",
+                                "name": "thumbnail_Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9.png",
+                                "path": null,
+                                "size": 7.36,
+                                "width": 245,
+                                "height": 60
+                            }
+                        },
+                        "hash": "Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9_fd0bfc033c",
+                        "ext": ".png",
+                        "mime": "image/png",
+                        "size": 1.98,
+                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/Snimok_ekrana_2023_02_13_v_16_02_44_c99bcfe2e9_fd0bfc033c.png",
+                        "previewUrl": null,
+                        "provider": "aws-s3",
+                        "provider_metadata": null,
+                        "folderPath": "/",
+                        "createdAt": "2023-02-14T04:48:04.396Z",
+                        "updatedAt": "2023-02-14T04:48:04.396Z",
+                        "folder": null
+                    }
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.pricing-block",
+            "id": 1,
+            "variant": "two-tiers-with-extra-tier",
+            "title": "Один шаг чтобы стать Lean Startup разработчиком",
+            "subtitle": null,
+            "description": "Сэкономьте более 250 часов работы разработчика (7’500$) и постоянный доступ к обновлениям кодовой базы. Таким образом все разработанные на базе SPS проекты можно будет обновлять прямо из репозитория SPS. Не нужно копировать-вставлять блоки кода при обновлении.",
+            "tiers": [
+                {
+                    "id": 1,
+                    "title": "Lite",
+                    "description": "Если хочешь попробовать концепцию в деле",
+                    "price": null,
+                    "type": "one-time",
+                    "period": null,
+                    "old_price": null,
+                    "createdAt": "2023-02-14T04:49:14.623Z",
+                    "updatedAt": "2023-02-14T04:49:53.551Z",
+                    "publishedAt": "2023-02-14T04:49:18.503Z",
+                    "locale": "en"
+                },
+                {
+                    "id": 2,
+                    "title": "Pro",
+                    "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+                    "price": 99,
+                    "type": "one-time",
+                    "period": null,
+                    "old_price": 199,
+                    "createdAt": "2023-02-14T04:51:37.439Z",
+                    "updatedAt": "2023-02-14T04:51:45.721Z",
+                    "publishedAt": "2023-02-14T04:51:45.705Z",
+                    "locale": "en"
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.form-block",
+            "id": 1,
+            "variant": "simple",
+            "anchor": null,
+            "form": {
+                "id": 1,
+                "title": "Есть вопросы по продукту?",
+                "subtitle": null,
+                "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
+                "uid": "question",
+                "createdAt": "2023-02-14T06:12:40.873Z",
+                "updatedAt": "2023-02-14T06:14:55.461Z",
+                "publishedAt": "2023-02-14T06:12:42.112Z"
+            }
+        }
+    ],
+    "createdBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T18:32:56.592Z",
+        "updatedAt": "2023-02-13T18:32:56.592Z"
+    },
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T18:32:56.592Z",
+        "updatedAt": "2023-02-13T18:32:56.592Z"
+    },
+    "localizations": []
+}

@@ -1,0 +1,63 @@
+{
+    "kind": "singleType",
+    "collectionName": "metas",
+    "info": {
+        "singularName": "meta",
+        "pluralName": "metas",
+        "displayName": "Meta",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "title": {
+            "type": "text",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "favicon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images"],
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "description": {
+            "type": "text",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "script": {
+            "type": "text",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "gtm_key": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        }
+    }
+}

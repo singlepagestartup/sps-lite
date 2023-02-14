@@ -1,0 +1,34 @@
+{
+    "collectionName": "components_page_blocks_incentives_blocks",
+    "info": {
+        "displayName": "Incentives Block"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "features": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.feature"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["four-column-with-illustrations"],
+            "default": "four-column-with-illustrations",
+            "required": true
+        },
+        "media": {
+            "allowedTypes": ["images", "files", "videos", "audios"],
+            "type": "media",
+            "multiple": true
+        }
+    }
+}

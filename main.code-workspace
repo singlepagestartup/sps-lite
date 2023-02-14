@@ -1,0 +1,14 @@
+{
+    "folders": [
+      {
+        "path": "."
+      },
+      {
+        "path": "../next-utils"
+      },
+      {
+        "path": "../strapi-utils"
+      }
+    ]
+  }
+  

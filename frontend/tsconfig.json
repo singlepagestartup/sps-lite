@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "~store/*": ["./src/store/*"],
+      "~api/*": ["./src/api/*"],
+      "~components/*": ["./src/components/*"],
+      "~ui/*": ["./src/components/ui/*"],
+      "~utils/*": ["./src/utils/*"],
+      "~redux/*": ["./src/redux/*"],
+      "~transformers/*": ["./src/utils/transformers/*"],
+      "~hooks/*": ["./src/hooks/*"],
+      "~web3/*": ["./src/web3/*"],
+      "~abi/*": ["./src/web3/configs/abi/*"],
+      "~backend/*": ["./src/redux/services/backend/*"],
+      "~translations/*": ["./translations/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "types"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/api/transformers.js",
+    "src/components/page-blocks/product-overviews/hooks/useGetAttributes"
+  ],
+  "exclude": ["node_modules"]
+}

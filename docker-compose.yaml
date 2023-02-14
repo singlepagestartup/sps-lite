@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  sps_frontend:
+    container_name: sps_frontend
+    image: frontend
+    restart: always
+    expose:
+      - 3000
+    ports:
+      - 3000:3000

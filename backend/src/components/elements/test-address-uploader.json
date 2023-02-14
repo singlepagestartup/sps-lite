@@ -1,0 +1,22 @@
+{
+    "collectionName": "components_elements_test_address_uploaders",
+    "info": {
+        "displayName": "Test Address Uploader",
+        "icon": "audio-description",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "street": {
+            "type": "string"
+        },
+        "postal_code": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.test-phone-uploader"
+        }
+    }
+}

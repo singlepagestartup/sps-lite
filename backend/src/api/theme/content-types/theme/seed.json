@@ -1,0 +1,47 @@
+{
+    "id": 1,
+    "colors": {
+        "primary": {
+            "50": "#FFF9CC",
+            "300": "#FFF297",
+            "400": "#FFDF01",
+            "500": "#FFCF01",
+            "600": "#FFC501",
+            "700": "#FFB201",
+            "900": "#FFA101"
+        }
+    },
+    "createdAt": "2023-02-13T19:01:38.821Z",
+    "updatedAt": "2023-02-13T19:01:44.163Z",
+    "publishedAt": "2023-02-13T19:01:44.156Z",
+    "createdBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T18:32:56.592Z",
+        "updatedAt": "2023-02-13T18:32:56.592Z"
+    },
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T18:32:56.592Z",
+        "updatedAt": "2023-02-13T18:32:56.592Z"
+    }
+}

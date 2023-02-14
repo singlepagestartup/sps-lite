@@ -1,0 +1,47 @@
+{
+    "kind": "collectionType",
+    "collectionName": "modals",
+    "info": {
+        "singularName": "modal",
+        "pluralName": "modals",
+        "displayName": "Modal",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "uid": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "page_blocks": {
+            "type": "dynamiczone",
+            "components": [
+                "page-blocks.hero-section-block",
+                "page-blocks.header-section-block",
+                "page-blocks.blog-section-block",
+                "page-blocks.faqs-block",
+                "page-blocks.feature-section-block",
+                "page-blocks.form-block",
+                "page-blocks.logo-cloud-block",
+                "page-blocks.product-lists-block",
+                "page-blocks.reviews-block",
+                "page-blocks.slider-block"
+            ]
+        },
+        "dialog_panel_class_name": {
+            "type": "string"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        }
+    }
+}

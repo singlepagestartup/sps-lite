@@ -1,0 +1,47 @@
+{
+    "kind": "collectionType",
+    "collectionName": "uploaders",
+    "info": {
+        "singularName": "uploader",
+        "pluralName": "uploaders",
+        "displayName": "Uploader",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "cover": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "images": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "delivery": {
+            "displayName": "Test Uploader",
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.test-uploader"
+        },
+        "surname": {
+            "type": "string"
+        },
+        "is_active": {
+            "type": "boolean"
+        },
+        "status": {
+            "type": "enumeration",
+            "enum": ["verified", "need_updates", "blocked"]
+        },
+        "passphrase": {
+            "type": "string"
+        }
+    }
+}

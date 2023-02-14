@@ -1,0 +1,37 @@
+{
+    "collectionName": "components_elements_buttons",
+    "info": {
+        "displayName": "Button",
+        "icon": "closed-captioning",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "url": {
+            "type": "text"
+        },
+        "icon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files"]
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["bottom-line", "primary", "default"],
+            "default": "default",
+            "required": false
+        },
+        "hover_icon": {
+            "allowedTypes": ["images", "files"],
+            "type": "media",
+            "multiple": false
+        }
+    }
+}

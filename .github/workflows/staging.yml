@@ -1,0 +1,93 @@
+name: Create prerelease version deployment
+on:
+  release:
+    types:
+      - published
+      - released
+
+env:
+  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_frontend:${{ github.event.release.tag_name }}
+  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_backend:${{ github.event.release.tag_name }}
+
+jobs:
+  create-backend-image:
+    if: ${{ github.event.release.prerelease == true }}
+    name: Backend version
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Login to registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.DOCKER_HUB_URL }}
+          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          logout: false
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./backend
+          push: false
+          load: true
+          tags: ${{ env.BACKEND_IMAGE_URL }}
+      - name: Inspect image
+        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}
+      - name: Push to registry
+        run: docker push ${{ env.BACKEND_IMAGE_URL }}
+
+  deploy-backend:
+    if: ${{ github.event.release.prerelease == true }}
+    name: Run deployer
+    runs-on: ubuntu-latest
+    needs:
+      - create-backend-image
+    steps:
+      - name: Send webhook for service update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_TEST_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          method: "POST"
+
+  create-frontend-image:
+    name: Frontend version
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Login to registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.DOCKER_HUB_URL }}
+          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          logout: false
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./frontend
+          push: false
+          load: true
+          tags: ${{ env.FRONTEND_IMAGE_URL }}
+      - name: Inspect image
+        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
+      - name: Push to registry
+        run: docker push ${{ env.FRONTEND_IMAGE_URL }}
+
+  deploy-frontend:
+    name: Run deployer
+    runs-on: ubuntu-latest
+    needs:
+      - create-frontend-image
+    steps:
+      - name: Send webhook for service update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_TEST_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          method: "POST"

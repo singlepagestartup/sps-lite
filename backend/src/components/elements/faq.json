@@ -1,0 +1,16 @@
+{
+    "collectionName": "components_elements_faqs",
+    "info": {
+        "displayName": "Faq",
+        "icon": "question-circle"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        }
+    }
+}

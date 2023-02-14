@@ -1,0 +1,34 @@
+{
+    "collectionName": "components_elements_test_uploaders",
+    "info": {
+        "displayName": "Test Uploader",
+        "icon": "audio-description",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "images": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "address": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.test-address-uploader"
+        }
+    }
+}

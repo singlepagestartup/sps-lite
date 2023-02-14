@@ -1,0 +1,29 @@
+{
+    "collectionName": "components_elements_logos",
+    "info": {
+        "displayName": "Logo",
+        "icon": "bolt",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "logo": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": ["images"]
+        },
+        "logo_monochrome": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images"]
+        },
+        "url": {
+            "type": "text"
+        }
+    }
+}

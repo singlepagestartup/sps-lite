@@ -1,0 +1,37 @@
+{
+    "kind": "collectionType",
+    "collectionName": "reviews",
+    "info": {
+        "singularName": "review",
+        "pluralName": "reviews",
+        "displayName": "Review",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "text"
+        },
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "subtitle": {
+            "type": "text"
+        },
+        "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "rating": {
+            "type": "integer"
+        }
+    }
+}

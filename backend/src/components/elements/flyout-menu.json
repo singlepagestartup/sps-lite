@@ -1,0 +1,26 @@
+{
+    "collectionName": "components_elements_flyout_menus",
+    "info": {
+        "displayName": "Flyout Menu",
+        "icon": "braille"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "icon": {
+            "allowedTypes": ["images", "files"],
+            "type": "media",
+            "multiple": false
+        },
+        "buttons_arrays": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array"
+        },
+        "class_name": {
+            "type": "string"
+        }
+    }
+}

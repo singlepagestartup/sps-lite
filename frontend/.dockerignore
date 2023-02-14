@@ -1,0 +1,13 @@
+package-lock.json
+node_modules
+.storybook
+storybook-static
+dist
+.bit
+tmp
+src/server
+.next
+yarn.lock
+.env
+.env.local
+tmp/*.json

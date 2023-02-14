@@ -1,0 +1,37 @@
+{
+    "collectionName": "components_elements_buttons_arrays",
+    "info": {
+        "displayName": "Buttons Array",
+        "icon": "bars",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "richtext"
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "icon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files"]
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": false
+        },
+        "description": {
+            "type": "richtext"
+        }
+    }
+}

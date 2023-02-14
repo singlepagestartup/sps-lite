@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  adminer:
+    image: adminer
+    networks:
+      - traefik_default
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - traefik.enable=true
+        - traefik.http.services.adminer.loadbalancer.server.port=8080
+        - traefik.http.routers.adminer.entrypoints=websecure
+        - traefik.http.routers.adminer.tls=true
+        - traefik.http.routers.adminer.rule=Host(`adminer.yourstartup.com`)
+        - traefik.docker.network=traefik_default
+
+networks:
+  traefik_default:
+    external: true

@@ -1,0 +1,50 @@
+const spsLiteActions = {
+    'api::modal.modal': ['find', 'findOne'],
+    'api::meta.meta': ['find', 'findOne'],
+    'api::not-found-page.not-found-page': ['find', 'findOne'],
+    'api::slider.slider': ['find'],
+    'api::main-page.main-page': ['find'],
+    'api::public-page-layout.public-page-layout': ['find'],
+    'api::auth-layout.auth-layout': ['find'],
+    'api::header.header': ['find'],
+    'api::footer.footer': ['find'],
+    'api::theme.theme': ['find'],
+    'api::form.form': ['find', 'findOne'],
+    'api::form-request.form-request': ['create'],
+    'api::review.review': ['find', 'findOne'],
+    'api::tier.tier': ['find', 'findOne'],
+    'api::currency.currency': ['find'],
+};
+
+module.exports = () => ({
+    authenticated: {
+        role: 1,
+        actions: {
+            ...spsLiteActions,
+            'plugin::content-type-builder.components': [],
+            'plugin::content-type-builder.content-types': [],
+            'plugin::email.email': [],
+            'plugin::i18n.locales': [],
+            'plugin::users-permissions.auth': [],
+            'plugin::users-permissions.user': [],
+            'plugin::users-permissions.role': [],
+            'plugin::users-permissions.permission': [],
+            'plugin::upload.content-api': [],
+        },
+    },
+    public: {
+        role: 2,
+        actions: {
+            ...spsLiteActions,
+            'plugin::content-type-builder.components': [],
+            'plugin::content-type-builder.content-types': [],
+            'plugin::email.email': [],
+            'plugin::upload.content-api': [],
+            'plugin::i18n.locales': [],
+            'plugin::users-permissions.auth': [],
+            'plugin::users-permissions.user': [],
+            'plugin::users-permissions.role': [],
+            'plugin::users-permissions.permissiosn': [],
+        },
+    },
+});

@@ -1,0 +1,88 @@
+{
+    "kind": "singleType",
+    "collectionName": "footers",
+    "info": {
+        "singularName": "footer",
+        "pluralName": "footers",
+        "displayName": "Footer",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "copyrights": {
+            "type": "text",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "social_networks_buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "policies_buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "logo": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos"],
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "description": {
+            "type": "richtext",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["four-columns-simple", "four-columns-simple-dark", "four-columns-with-company-mission"],
+            "default": "four-columns-simple",
+            "required": true,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "buttons_arrays": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "collectionName": "components_elements_inputs",
+    "info": {
+        "displayName": "Input",
+        "icon": "text-height",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "placeholder": {
+            "type": "string"
+        },
+        "component": {
+            "type": "enumeration",
+            "enum": ["text", "listbox", "radio-group", "switch", "file"],
+            "default": "text",
+            "required": true
+        },
+        "is_required": {
+            "type": "boolean",
+            "default": false,
+            "required": true
+        },
+        "value": {
+            "type": "text"
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "options": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.input-option"
+        },
+        "label": {
+            "type": "richtext"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": ["text", "textarea", "file"],
+            "required": false
+        },
+        "multiple": {
+            "type": "boolean"
+        }
+    }
+}

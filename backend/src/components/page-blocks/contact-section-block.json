@@ -1,0 +1,39 @@
+{
+    "collectionName": "components_page_blocks_contact_section_blocks",
+    "info": {
+        "displayName": "Contact Section Block"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "anchor": {
+            "type": "text"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["split-brand-panel"],
+            "default": "split-brand-panel",
+            "required": true
+        },
+        "media": {
+            "allowedTypes": ["images", "videos"],
+            "type": "media",
+            "multiple": false
+        },
+        "form": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::form.form"
+        },
+        "buttons_arrays": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array"
+        }
+    }
+}

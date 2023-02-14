@@ -1,0 +1,41 @@
+{
+    "collectionName": "components_page_blocks_header_section_blocks",
+    "info": {
+        "displayName": "Header Section Block",
+        "icon": "font",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": [
+                "simple-centered",
+                "simple-with-select-menu-dark",
+                "simple-with-select-menu",
+                "branded-with-background-image",
+                "with-background-image-and-overlapping-cards"
+            ],
+            "required": true,
+            "default": "simple-centered"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "anchor": {
+            "type": "string"
+        }
+    }
+}

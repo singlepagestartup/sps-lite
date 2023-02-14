@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_functions_form_side_effects",
+    "info": {
+        "displayName": "Form Side Effect",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "type": {
+            "type": "enumeration",
+            "enum": ["send-to-recievers", "save-as-pdf", "pass-to-service"],
+            "required": true
+        },
+        "recievers": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.reciever"
+        },
+        "provider": {
+            "type": "enumeration",
+            "enum": ["local", "email", "google-drive", "google-sheets"],
+            "required": true
+        }
+    }
+}

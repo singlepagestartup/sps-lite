@@ -1,0 +1,40 @@
+{
+    "collectionName": "components_page_blocks_feature_section_blocks",
+    "info": {
+        "displayName": "Feature Section Block",
+        "icon": "balance-scale-left",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "subtitle": {
+            "type": "text"
+        },
+        "features": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.feature"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple-three-column", "with-product-screenshot-on-left", "three-column-with-slider"],
+            "default": "simple-three-column",
+            "required": true
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        }
+    }
+}

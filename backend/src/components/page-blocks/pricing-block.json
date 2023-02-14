@@ -1,0 +1,30 @@
+{
+    "collectionName": "components_page_blocks_pricing_blocks",
+    "info": {
+        "displayName": "Pricing Block",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["two-tiers-with-extra-tier"],
+            "required": true,
+            "default": "two-tiers-with-extra-tier"
+        },
+        "title": {
+            "type": "text"
+        },
+        "subtitle": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "tiers": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tier.tier"
+        }
+    }
+}

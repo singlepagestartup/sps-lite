@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  sps_backend:
+    image: registry.hub.docker.com/your_dockerhub_username/sps_backend:0.0.1
+    networks:
+      - traefik_default
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./sps_backend_uploads:/usr/src/app/public/uploads
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - traefik.enable=true
+        - traefik.http.services.sps_backend.loadbalancer.server.port=1337
+        - traefik.http.routers.sps_backend.entrypoints=websecure
+        - traefik.http.routers.sps_backend.tls=true
+        - traefik.http.routers.sps_backend.rule=Host(`api.yourstartup.com`)
+        - traefik.docker.network=traefik_default
+
+networks:
+  traefik_default:
+    external: true

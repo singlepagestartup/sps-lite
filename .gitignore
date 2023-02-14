@@ -1,0 +1,13 @@
+############################
+# Node.js
+############################
+
+lib-cov
+lcov.info
+pids
+logs
+results
+node_modules
+.DS_Store
+.node_history
+package-lock.json

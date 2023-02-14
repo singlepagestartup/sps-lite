@@ -1,0 +1,38 @@
+{
+    "kind": "collectionType",
+    "collectionName": "currencies",
+    "info": {
+        "singularName": "currency",
+        "pluralName": "currencies",
+        "displayName": "Currency"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "unicode": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "is_default": {
+            "type": "boolean"
+        },
+        "products": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::product.product",
+            "mappedBy": "currency"
+        },
+        "tiers": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tier.tier",
+            "mappedBy": "currency"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "collectionName": "components_page_blocks_not_found_blocks",
+    "info": {
+        "displayName": "Not Found Block",
+        "icon": "question-circle",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        },
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
+        }
+    }
+}

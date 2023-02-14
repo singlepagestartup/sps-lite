@@ -1,0 +1,29 @@
+name: Update on production
+on:
+  release:
+    types:
+      - published
+      - released
+
+jobs:
+  deploy-backend:
+    if: ${{ github.event.release.prerelease == false }}
+    name: Backend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook for service update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          method: "POST"
+
+  deploy-frontend:
+    if: ${{ github.event.release.prerelease == false }}
+    name: Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook for service update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          method: "POST"

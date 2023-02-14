@@ -1,0 +1,29 @@
+{
+    "collectionName": "components_page_blocks_reviews_blocks",
+    "info": {
+        "displayName": "Reviews Block",
+        "icon": "star-half-alt",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "reviews": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::review.review"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple-with-avatars"],
+            "default": "simple-with-avatars",
+            "required": true
+        },
+        "show_all": {
+            "type": "boolean",
+            "default": true
+        },
+        "anchor": {
+            "type": "string"
+        }
+    }
+}

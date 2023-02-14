@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: /certs/yourstartup.com.crt
+      keyFile: /certs/yourstartup.com.key

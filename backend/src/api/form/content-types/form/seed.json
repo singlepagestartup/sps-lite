@@ -1,0 +1,151 @@
+[
+    {
+        "id": 1,
+        "title": "Есть вопросы по продукту?",
+        "subtitle": null,
+        "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
+        "uid": "question",
+        "createdAt": "2023-02-14T06:12:40.873Z",
+        "updatedAt": "2023-02-14T06:14:55.461Z",
+        "publishedAt": "2023-02-14T06:12:42.112Z",
+        "inputs": [
+            {
+                "id": 1,
+                "placeholder": "Введите ваше имя",
+                "component": "text",
+                "is_required": true,
+                "value": null,
+                "name": "name",
+                "label": "Имя",
+                "class_name": null,
+                "type": null,
+                "multiple": null,
+                "options": []
+            },
+            {
+                "id": 2,
+                "placeholder": "Введите вашу электронную почту",
+                "component": "text",
+                "is_required": true,
+                "value": null,
+                "name": "email",
+                "label": "Электронная почта",
+                "class_name": null,
+                "type": null,
+                "multiple": null,
+                "options": []
+            },
+            {
+                "id": 3,
+                "placeholder": "Выберите тариф",
+                "component": "listbox",
+                "is_required": false,
+                "value": null,
+                "name": "tier",
+                "label": "Тариф",
+                "class_name": null,
+                "type": null,
+                "multiple": null,
+                "options": [
+                    {
+                        "id": 1,
+                        "title": "Lite",
+                        "description": null
+                    },
+                    {
+                        "id": 2,
+                        "title": "Pro",
+                        "description": null
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "placeholder": "Напишите ваш вопрос",
+                "component": "text",
+                "is_required": false,
+                "value": null,
+                "name": "querstion",
+                "label": "Вопрос",
+                "class_name": null,
+                "type": "textarea",
+                "multiple": null,
+                "options": []
+            },
+            {
+                "id": 5,
+                "placeholder": null,
+                "component": "switch",
+                "is_required": true,
+                "value": null,
+                "name": "policy",
+                "label": "Я согласен с Политикой конфиденциальности",
+                "class_name": null,
+                "type": null,
+                "multiple": null,
+                "options": []
+            }
+        ],
+        "button": {
+            "id": 11,
+            "title": "Отправить",
+            "url": null,
+            "description": null,
+            "variant": "default",
+            "icon": null,
+            "hover_icon": null
+        },
+        "form_requests": [
+            {
+                "id": 1,
+                "createdAt": "2023-02-14T06:14:44.662Z",
+                "updatedAt": "2023-02-14T06:14:44.662Z"
+            }
+        ],
+        "side_effects": [
+            {
+                "id": 1,
+                "type": "send-to-recievers",
+                "provider": "email",
+                "recievers": [
+                    {
+                        "id": 1,
+                        "identifier": "rogwild.design@gmail.com",
+                        "admin": null,
+                        "user": null
+                    }
+                ]
+            }
+        ],
+        "createdBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T18:32:56.592Z",
+            "updatedAt": "2023-02-13T18:32:56.592Z"
+        },
+        "updatedBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T18:32:56.592Z",
+            "updatedAt": "2023-02-13T18:32:56.592Z"
+        }
+    }
+]

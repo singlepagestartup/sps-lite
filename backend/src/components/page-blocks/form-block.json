@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_page_blocks_form_blocks",
+    "info": {
+        "displayName": "Form Block",
+        "icon": "spell-check",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        },
+        "form": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::form.form"
+        },
+        "anchor": {
+            "type": "string"
+        }
+    }
+}

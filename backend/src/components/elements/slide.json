@@ -1,0 +1,31 @@
+{
+    "collectionName": "components_elements_slides",
+    "info": {
+        "displayName": "Slide",
+        "icon": "photo-video",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "text"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "subtitle": {
+            "type": "text"
+        },
+        "media": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
+        }
+    }
+}
