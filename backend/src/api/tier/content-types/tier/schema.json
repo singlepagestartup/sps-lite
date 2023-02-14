@@ -1,56 +1,53 @@
 {
-  "kind": "collectionType",
-  "collectionName": "tiers",
-  "info": {
-    "singularName": "tier",
-    "pluralName": "tiers",
-    "displayName": "Tier",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "title": {
-      "pluginOptions": {},
-      "type": "text"
+    "kind": "collectionType",
+    "collectionName": "tiers",
+    "info": {
+        "singularName": "tier",
+        "pluralName": "tiers",
+        "displayName": "Tier",
+        "description": ""
     },
-    "description": {
-      "pluginOptions": {},
-      "type": "richtext"
+    "options": {
+        "draftAndPublish": true
     },
-    "price": {
-      "pluginOptions": {},
-      "type": "float"
-    },
-    "currency": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::currency.currency",
-      "inversedBy": "tiers"
-    },
-    "type": {
-      "pluginOptions": {},
-      "type": "enumeration",
-      "enum": [
-        "one-time",
-        "regularly"
-      ]
-    },
-    "period": {
-      "pluginOptions": {},
-      "type": "integer"
-    },
-    "features": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {},
-      "component": "elements.feature"
-    },
-    "old_price": {
-      "pluginOptions": {},
-      "type": "float"
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "pluginOptions": {},
+            "type": "text"
+        },
+        "description": {
+            "pluginOptions": {},
+            "type": "richtext"
+        },
+        "price": {
+            "pluginOptions": {},
+            "type": "float"
+        },
+        "currency": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::currency.currency",
+            "inversedBy": "tiers"
+        },
+        "type": {
+            "pluginOptions": {},
+            "type": "enumeration",
+            "enum": ["one-time", "regularly"]
+        },
+        "period": {
+            "pluginOptions": {},
+            "type": "integer"
+        },
+        "features": {
+            "type": "component",
+            "repeatable": true,
+            "pluginOptions": {},
+            "component": "elements.feature"
+        },
+        "old_price": {
+            "pluginOptions": {},
+            "type": "float"
+        }
     }
-  }
 }
