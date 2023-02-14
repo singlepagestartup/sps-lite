@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    container_name: db
+    build:
+      context: ./db
+      dockerfile: Dockerfile.develop
+    restart: always
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: sps
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    command: php -S 0.0.0.0:8080 -t /var/www/html
+    restart: always
+    links:
+      - db
+    ports:
+      - 8080:8080
