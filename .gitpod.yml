@@ -10,6 +10,8 @@ ports:
     visibility: public
 
 tasks:
+  - name: "husky"
+    command: npx husky install
   - name: "database"
     command: docker-compose -f docker-compose.db.yaml up
   - name: "backend"
