@@ -22,12 +22,6 @@
         "is_default": {
             "type": "boolean"
         },
-        "products": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::product.product",
-            "mappedBy": "currency"
-        },
         "tiers": {
             "type": "relation",
             "relation": "oneToMany",

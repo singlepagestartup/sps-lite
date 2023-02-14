@@ -1,13 +1,9 @@
 import { createContext, useContext, useEffect, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { useGetCategoriesQuery } from "~redux/services/backend/models/categories";
 import * as R from "ramda";
-import { useGetCitiesQuery } from "~redux/services/backend/models/cities";
-import useMyProfile from "~redux/services/backend/models/profiles/useMyProfile";
 import {
   useCreateUploaderMutation,
   useGetUploadersQuery,
-  useUpdateUploaderMutation,
 } from "~redux/services/backend/models/uploader";
 import Inputs from ".";
 import { IInsideComponentProps } from "./repeatable";
@@ -16,13 +12,10 @@ import { ICity } from "types";
 const UploaderContext = createContext<any>(null);
 
 export default function FormExample() {
-  const { me } = useMyProfile();
   const [update, { data: createData, error: createError }] =
     useCreateUploaderMutation();
 
   const { data: uploaders } = useGetUploadersQuery({});
-  const { data: categories } = useGetCategoriesQuery({});
-  const { data: cities } = useGetCitiesQuery({});
 
   const lastUploader = useMemo(() => {
     if (!uploaders) {
@@ -145,21 +138,6 @@ export default function FormExample() {
                 },
                 inputs: [
                   {
-                    component: `listbox`,
-                    label: `City`,
-                    name: `city`,
-                    className: `col-span-2`,
-                    options: cities ? cities : [],
-                    placeholder: `Select city`,
-                    by: `id`,
-                    rules: {
-                      required: {
-                        value: true,
-                        message: `Required field`,
-                      },
-                    },
-                  },
-                  {
                     component: `text`,
                     label: `Street`,
                     name: `street`,
@@ -240,23 +218,6 @@ export default function FormExample() {
           />
 
           <Inputs
-            component="listbox"
-            name="category"
-            label="Category"
-            initialValue={lastUploader?.category}
-            placeholder="Select category"
-            options={categories ? categories : []}
-            by="id"
-            // initialValue={true}
-            rules={{
-              required: {
-                value: true,
-                message: `Required field`,
-              },
-            }}
-          />
-
-          <Inputs
             component="radio-group"
             name="status"
             label="Status"
@@ -264,22 +225,6 @@ export default function FormExample() {
             options={[`verified`, `need_updates`, `blocked`]}
             placeholder="Select status"
             by={undefined}
-            // initialValue={true}
-            // rules={{
-            //   required: {
-            //     value: true,
-            //     message: `Required field`,
-            //   },
-            // }}
-          />
-
-          <Inputs
-            component="radio-group"
-            name="city"
-            label="City"
-            initialValue={lastUploader?.city}
-            options={cities}
-            by="id"
             // initialValue={true}
             // rules={{
             //   required: {
