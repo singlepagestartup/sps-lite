@@ -9,7 +9,7 @@ ports:
 
 tasks:
   - name: "database"
-    command: docker-compose up
+    command: docker-compose -f docker-compose.db.yaml up
   - name: "backend"
     command: cd backend && npm i
   - name: "frontend"
