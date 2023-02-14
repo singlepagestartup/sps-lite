@@ -2140,10 +2140,10 @@
   "resolved" "https://registry.npmjs.org/@react-dnd/shallowequal/-/shallowequal-3.0.1.tgz"
   "version" "3.0.1"
 
-"@rogwild/strapi-utils@^4.9.1":
-  "integrity" "sha512-4G/l5Br27+ERObNDOkbMRU/AUarItDCIxPrzpgsHKHqbfvfcajPWYyMpqV3LHjkKh4IaZ4mWONbp4paEttOxng=="
-  "resolved" "https://registry.npmjs.org/@rogwild/strapi-utils/-/strapi-utils-4.9.1.tgz"
-  "version" "4.9.1"
+"@rogwild/strapi-utils@^4.10.0":
+  "integrity" "sha512-zaywV76HQr/qo1It232qKEu6o7p8HqNqPsejAvnKFHfDdMyGZdj/hcg9stLyOIOuxbxvmxJQLFINLcV3DlMXrQ=="
+  "resolved" "https://registry.npmjs.org/@rogwild/strapi-utils/-/strapi-utils-4.10.0.tgz"
+  "version" "4.10.0"
   dependencies:
     "@rollup/plugin-babel" "^6.0.3"
     "@rollup/plugin-json" "^5.0.2"
