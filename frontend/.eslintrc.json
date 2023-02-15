@@ -31,5 +31,6 @@
     "@typescript-eslint/no-empty-function": ["off"],
     "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
     "@typescript-eslint/ban-ts-comment": ["warn"]
-  }
+  },
+  "ignorePatterns": ["public/*"]
 }
