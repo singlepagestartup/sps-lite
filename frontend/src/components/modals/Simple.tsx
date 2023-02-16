@@ -14,7 +14,14 @@ export default function Simple(props: IModalComponent) {
       <Dialog
         onClose={() => {
           setIsOpen(false);
-          router.replace(router.pathname, undefined, { shallow: true });
+          /**
+           * Without asPath on close route
+           * "/products/1?opened_popup=simple"
+           * becomes "/products/[id]"
+           */
+          router.replace(router.asPath.split(`?`)[0], undefined, {
+            shallow: true,
+          });
         }}
         className="relative z-50"
       >
