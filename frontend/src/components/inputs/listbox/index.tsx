@@ -18,7 +18,7 @@ export default function ListboxInput(props: IInputProps) {
     rules,
     options,
     shouldUnregister,
-    defaultValue,
+    defaultValue = null,
     className,
     initialValue,
     placeholder = ``,
