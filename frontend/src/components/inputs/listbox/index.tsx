@@ -74,12 +74,10 @@ export default function ListboxInput(props: IInputProps) {
    * fiels.
    */
   useEffect(() => {
-    if (by) {
-      if (JSON.stringify(value) === `{}`) {
-        setValue(name, undefined);
-      }
+    if (JSON.stringify(value) === `{}`) {
+      setValue(name, undefined);
     }
-  }, [JSON.stringify(value), by]);
+  }, [JSON.stringify(value)]);
 
   useEffect(() => {
     // console.log(`🚀 ~ TextWithControlled ~ props`, props);
