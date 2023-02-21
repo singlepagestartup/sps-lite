@@ -28,7 +28,7 @@
         "@faker-js/faker": "^7.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
-        "@rogwild/strapi-utils": "^4.10.0",
+        "@rogwild/strapi-utils": "^5.1.0",
         "@strapi/plugin-i18n": "4.6.0",
         "@strapi/plugin-users-permissions": "4.6.0",
         "@strapi/provider-email-mailtrap": "./src/providers/email-mailtrap",
