@@ -190,6 +190,7 @@ export default function Simple(props: IForms) {
                     <Inputs
                       {...input}
                       component="text"
+                      type="text"
                       name={`inputs[${index}].key`}
                       initialValue={input.name}
                       defaultValue=""

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { IModal, IModalComponent, IModals } from "types";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import PageBlocks from "~components/layout/page-blocks";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function Simple(props: IModalComponent) {
   const router = useRouter();
@@ -53,6 +54,17 @@ export default function Simple(props: IModalComponent) {
                   dialogPanelClassName || `w-full`
                 }`}
               >
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.replace(router.asPath.split(`?`)[0], undefined, {
+                      shallow: true,
+                    });
+                  }}
+                  className="absolute right-2 top-2"
+                >
+                  <XMarkIcon className="w-6 text-gray-500" />
+                </button>
                 <PageBlocks pageBlocks={pageBlocks} setIsOpen={setIsOpen} />
               </Dialog.Panel>
             </div>

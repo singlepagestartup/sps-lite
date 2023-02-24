@@ -41,7 +41,7 @@
         },
         "type": {
             "type": "enumeration",
-            "enum": ["text", "textarea", "file"],
+            "enum": ["text", "textarea", "file", "date"],
             "required": false
         },
         "multiple": {

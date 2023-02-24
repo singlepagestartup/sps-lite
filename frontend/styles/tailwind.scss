@@ -30,6 +30,46 @@ button:focus {
 @tailwind utilities;
 
 @layer components {
+  .spring_notification {
+    @apply z-50 fixed right-0 flex items-end flex-col mx-4 bottom-0 mb-4;
+
+    &.is_from_top {
+      @apply mb-0 top-0 mt-4;
+    }
+
+    .notification_container {
+      @apply relative overflow-hidden drop-shadow-md;
+
+      .wrapper {
+        @apply relative flex flex-row items-start rounded-sm pr-8 py-2 bg-white;
+
+        .body {
+          @apply flex flex-col items-start;
+
+          &[data-message="true"] {
+            @apply gap-2;
+          }
+
+          .heading {
+            @apply pl-2 text-sm;
+          }
+
+          .message {
+            @apply pl-2 text-xs;
+          }
+        }
+
+        .close_button {
+          @apply absolute right-1 top-1 text-black w-3 z-50 cursor-pointer;
+
+          svg {
+            @apply fill-current w-3;
+          }
+        }
+      }
+    }
+  }
+
   .inputs__label {
     @apply block mb-1;
   }
