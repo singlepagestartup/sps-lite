@@ -24,6 +24,9 @@
         },
         "anchor": {
             "type": "string"
+        },
+        "class_name": {
+            "type": "string"
         }
     }
 }

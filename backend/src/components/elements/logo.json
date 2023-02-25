@@ -8,7 +8,7 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "logo": {
             "type": "media",

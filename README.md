@@ -103,10 +103,10 @@ npm i
 1. Create a new_repo at github
 2. git clone new_repo
 3. cd new_repo
-4. git checkout -b develop
-5. git remote add upstream old_repo.git
-6. git pull upstream develop
-7. git push origin develop
+4. git checkout -b main
+5. git remote add upstream https://github.com/singlepagestartup/sps-lite.git
+6. git pull upstream main
+7. git push origin main
 
 > If tou get `hint: You have divergent branches and need to specify how to reconcile them.`, run:
 >
@@ -123,12 +123,12 @@ DOCKER_HUB_URL:
 
 DOCKER_HUB_USERNAME:
 
-- `flakecode` или другой для Docker Hub
+- `singlepagestartup` или другой для Docker Hub
 - `sps` для Selectel
 
 DOCKER_HUB_LOGIN_USERNAME:
 
-- `flakecode` или другой для Docker Hub
+- `singlepagestartup` или другой для Docker Hub
 - `token` для Selectel
 
 DOCKER_HUB_PASSWORD:

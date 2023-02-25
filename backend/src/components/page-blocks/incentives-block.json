@@ -6,7 +6,7 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
@@ -17,6 +17,9 @@
             "component": "elements.feature"
         },
         "anchor": {
+            "type": "string"
+        },
+        "class_name": {
             "type": "string"
         },
         "variant": {

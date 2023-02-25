@@ -13,13 +13,16 @@
             "default": "two-tiers-with-extra-tier"
         },
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "subtitle": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
+        },
+        "class_name": {
+            "type": "text"
         },
         "tiers": {
             "type": "relation",

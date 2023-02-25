@@ -1,32 +1,42 @@
 {
-    "collectionName": "components_elements_features",
-    "info": {
-        "displayName": "Feature",
-        "icon": "apple-alt",
-        "description": ""
+  "collectionName": "components_elements_features",
+  "info": {
+    "displayName": "Feature",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "options": {},
-    "attributes": {
-        "media": {
-            "type": "media",
-            "multiple": true,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "title": {
-            "type": "text"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "icon": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "subtitle": {
-            "type": "text"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
     }
+  }
 }

@@ -15,8 +15,11 @@
         "anchor": {
             "type": "string"
         },
+        "class_name": {
+            "type": "string"
+        },
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"

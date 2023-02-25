@@ -14,10 +14,16 @@
             "required": true
         },
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
+        },
+        "class_name": {
+            "type": "text"
+        },
+        "anchor": {
+            "type": "text"
         },
         "buttons": {
             "type": "component",

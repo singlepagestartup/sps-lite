@@ -7,7 +7,7 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "icon": {
             "allowedTypes": ["images", "files"],

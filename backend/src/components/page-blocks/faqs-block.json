@@ -8,7 +8,7 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
@@ -34,6 +34,9 @@
             ],
             "required": true,
             "default": "centered-accordion"
+        },
+        "class_name": {
+            "type": "string"
         },
         "anchor": {
             "type": "string"

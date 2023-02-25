@@ -20,7 +20,7 @@
             "required": true
         },
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "logos": {
             "type": "component",
@@ -33,9 +33,12 @@
             "component": "elements.button"
         },
         "description": {
-            "type": "text"
+            "type": "richtext"
         },
         "anchor": {
+            "type": "string"
+        },
+        "class_name": {
             "type": "string"
         }
     }

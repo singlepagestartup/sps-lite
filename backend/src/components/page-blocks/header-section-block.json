@@ -8,7 +8,7 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
@@ -32,9 +32,12 @@
             "default": "simple-centered"
         },
         "subtitle": {
-            "type": "string"
+            "type": "richtext"
         },
         "anchor": {
+            "type": "string"
+        },
+        "class_name": {
             "type": "string"
         }
     }

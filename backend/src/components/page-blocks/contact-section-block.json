@@ -6,12 +6,15 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
         },
         "anchor": {
+            "type": "text"
+        },
+        "class_name": {
             "type": "text"
         },
         "variant": {

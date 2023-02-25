@@ -8,13 +8,13 @@
     "options": {},
     "attributes": {
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
         },
         "subtitle": {
-            "type": "text"
+            "type": "richtext"
         },
         "features": {
             "type": "component",
@@ -28,6 +28,9 @@
             "required": true
         },
         "anchor": {
+            "type": "string"
+        },
+        "class_name": {
             "type": "string"
         },
         "media": {
