@@ -13,16 +13,16 @@
     "pluginOptions": {},
     "attributes": {
         "name": {
-            "type": "text"
+            "type": "richtext"
         },
         "title": {
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "type": "richtext"
         },
         "subtitle": {
-            "type": "text"
+            "type": "richtext"
         },
         "cover": {
             "type": "media",

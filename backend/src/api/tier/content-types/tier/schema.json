@@ -14,7 +14,7 @@
     "attributes": {
         "title": {
             "pluginOptions": {},
-            "type": "text"
+            "type": "richtext"
         },
         "description": {
             "pluginOptions": {},

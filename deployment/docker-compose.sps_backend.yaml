@@ -2,7 +2,8 @@ version: "3.7"
 
 services:
   sps_backend:
-    image: registry.hub.docker.com/your_dockerhub_username/sps_backend:0.0.1
+    image: singlepagestartup/sps_lite_backend
+    # image: registry.hub.docker.com/your_dockerhub_username/sps_backend:0.0.1
     networks:
       - traefik_default
     environment:

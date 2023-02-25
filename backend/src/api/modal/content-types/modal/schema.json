@@ -13,7 +13,7 @@
     "pluginOptions": {},
     "attributes": {
         "title": {
-            "type": "string"
+            "type": "richtext"
         },
         "uid": {
             "type": "uid",
