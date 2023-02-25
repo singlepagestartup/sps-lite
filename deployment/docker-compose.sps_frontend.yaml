@@ -5,7 +5,7 @@ services:
     image: singlepagestartup/sps_lite_frontend
     # image: registry.hub.docker.com/your_dockerhub_username/sps_frontend:0.0.1
     networks:
-      - traefik_default
+      - traefik_overlay
     environment:
       NODE_ENV: production
     deploy:
@@ -18,8 +18,8 @@ services:
         - traefik.http.routers.sps_frontend.entrypoints=websecure
         - traefik.http.routers.sps_frontend.tls=true
         - traefik.http.routers.sps_frontend.rule=Host(`yourstartup.com`)
-        - traefik.docker.network=traefik_default
+        - traefik.docker.network=traefik_overlay
 
 networks:
-  traefik_default:
+  traefik_overlay:
     external: true

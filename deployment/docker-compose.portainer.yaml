@@ -7,7 +7,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
     networks:
-      - traefik_default
+      - traefik_overlay
 
   portainer:
     image: portainer/portainer-ce
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./portainer_data:/data
     networks:
-      - traefik_default
+      - traefik_overlay
     deploy:
       placement:
         constraints:
@@ -28,8 +28,8 @@ services:
         - traefik.http.routers.portainer.entrypoints=websecure
         - traefik.http.routers.portainer.tls=true
         - traefik.http.routers.portainer.rule=Host(`portainer.yourstartup.com`)
-        - traefik.docker.network=traefik_default
+        - traefik.docker.network=traefik_overlay
 
 networks:
-  traefik_default:
+  traefik_overlay:
     external: true

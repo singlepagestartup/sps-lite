@@ -6,7 +6,7 @@ services:
     volumes:
       - /var/lib/docker/volumes/postgres_data/_data:/var/lib/postgresql/data
     networks:
-      - traefik_default
+      - traefik_overlay
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: XXXXXXXXXXXXXXXXXX
@@ -21,8 +21,8 @@ services:
         # - traefik.tcp.routers.postgres.rule=HostSNI(`*`)
         # - traefik.http.routers.postgres.tls=true
         # - traefik.http.routers.portainer.rule=Host(`p.yourstartup.com`)
-        # - traefik.docker.network=traefik_default
+        # - traefik.docker.network=traefik_overlay
 
 networks:
-  traefik_default:
+  traefik_overlay:
     external: true

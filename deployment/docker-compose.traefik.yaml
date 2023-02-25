@@ -35,4 +35,9 @@ services:
         - traefik.http.routers.traefik.rule=Host(`traefik.yourstartup.com`)
         - traefik.http.middlewares.admin.basicauth.users=code:XXXXXXXXXXXXXXXXXXXXXXXXX
         - traefik.http.services.traefik.loadbalancer.server.port=8080
-        - traefik.docker.network=traefik_default
+        - traefik.docker.network=traefik_overlay
+
+networks:
+  traefik_overlay:
+    external: false
+    attachable: true
