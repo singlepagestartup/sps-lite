@@ -44,13 +44,17 @@ export default function FileInput(props: IInputProps) {
   const [value, setValue] = useState(field.value || ``);
 
   useEffect(() => {
-    // console.log(`🚀 ~ useEffect ~ value`, value);
-  }, [value]);
+    if (!passedVal && value && localFiles?.length) {
+      for (const [index, localFile] of localFiles.entries()) {
+        onFileDelete(index);
+      }
+    }
+  }, [passedVal]);
 
   const inputError = getInputErrors(errors)(name);
 
   function addFilesToCards(files: File[]) {
-    const filesToAdd = [];
+    const filesToAdd = [] as File[];
 
     for (const file of files) {
       filesToAdd.push(file);

@@ -86,9 +86,11 @@ export default function ListboxInput(props: IInputProps) {
 
   return (
     <div className={className}>
-      <p>
-        {typeof translate === `function` && label ? translate(label) : label}
-      </p>
+      <div className="inputs__label">
+        <p>
+          {typeof translate === `function` && label ? translate(label) : label}
+        </p>
+      </div>
       <div className="listbox__input">
         <Listbox
           as="div"
