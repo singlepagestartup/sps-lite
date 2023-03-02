@@ -39,6 +39,7 @@ export interface IInputProps extends UseControllerProps {
   renderOptionValue?: (option: any) => string;
   valueAsNumber?: boolean;
   InsideComponent?: FC<IInsideComponentProps>;
+  step?: number;
 }
 
 export interface IInputsProps extends IInputProps {

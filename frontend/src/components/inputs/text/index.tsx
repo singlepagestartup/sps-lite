@@ -17,9 +17,18 @@ export default function TextInput(props: IInputProps) {
     rows,
     translate,
     valueAsNumber,
+    step,
   } = props;
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+
+  const additionalAttributes: { step?: number } = {};
+
+  useEffect(() => {
+    if (step) {
+      additionalAttributes.step = step;
+    }
+  }, [props]);
 
   const {
     control,
@@ -93,6 +102,7 @@ export default function TextInput(props: IInputProps) {
             placeholder={placeholder}
             className="input"
             rows={rows || 3}
+            {...additionalAttributes}
           ></textarea>
         ) : (
           <input
@@ -119,6 +129,7 @@ export default function TextInput(props: IInputProps) {
                 : placeholder
             }
             className="input"
+            {...additionalAttributes}
           />
         )}
       </div>
