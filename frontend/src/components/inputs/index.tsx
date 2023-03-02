@@ -9,6 +9,7 @@ import { getInputErrors } from "~utils/forms";
 import FileInput from "./file";
 import ListboxInput from "./listbox";
 import RadioGroupInput from "./radio-group";
+import RangeInput from "./range";
 import RepeatableInput, { IInsideComponentProps } from "./repeatable";
 import SwitchInput from "./switch";
 import TextInput from "./text";
@@ -40,6 +41,8 @@ export interface IInputProps extends UseControllerProps {
   valueAsNumber?: boolean;
   InsideComponent?: FC<IInsideComponentProps>;
   step?: number;
+  min?: number;
+  max?: number;
 }
 
 export interface IInputsProps extends IInputProps {
@@ -49,7 +52,8 @@ export interface IInputsProps extends IInputProps {
     | `radio-group`
     | `switch`
     | `file`
-    | `repeatable`;
+    | `repeatable`
+    | `range`;
 }
 
 export default function Inputs(props: IInputsProps) {
@@ -69,6 +73,8 @@ export default function Inputs(props: IInputsProps) {
         return RadioGroupInput;
       case `repeatable`:
         return RepeatableInput;
+      case `range`:
+        return RangeInput;
       default:
         return TextInput;
     }
