@@ -207,6 +207,59 @@ button:focus {
     }
   }
 
+  .range__input {
+    @apply relative;
+
+    // Custom dragger
+    .dragger {
+      @apply hidden;
+    }
+
+    .ms-fill-lower {
+      @apply absolute inset-y-0 bg-primary-500 rounded-l-full;
+    }
+
+    .ms-fill-upper {
+      @apply absolute inset-y-0 right-0 bg-gray-100 rounded-r-full;
+    }
+
+    .input {
+      @apply relative;
+
+      &::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        cursor: theme("cursor.pointer");
+        width: theme("width.full");
+        height: theme("height.2");
+        border: theme("borderWidth.0");
+        border-radius: theme("borderRadius.full");
+      }
+
+      &::-webkit-slider-thumb {
+        @apply relative outline outline-4 outline-primary-500;
+
+        -webkit-appearance: none;
+        border: theme("borderWidth.0");
+        height: theme("width.3");
+        width: theme("width.3");
+        border-radius: theme("borderRadius.full");
+        background: theme("colors.white");
+        transform: translate(0px, -2px);
+        cursor: pointer;
+      }
+
+      // For Edge and IE only
+      &::-ms-fill-lower {
+        background-color: theme("colors.primary.500");
+      }
+
+      // For Edge and IE only
+      &::-ms-fill-upper {
+        background-color: theme("colors.gray.100");
+      }
+    }
+  }
+
   .files__input {
     .input {
       .button {
