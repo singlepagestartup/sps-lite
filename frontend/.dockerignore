@@ -1,13 +1,6 @@
 package-lock.json
-node_modules
-.storybook
-storybook-static
-dist
-.bit
-tmp
-src/server
-.next
 yarn.lock
+node_modules
+.next
 .env
 .env.local
-tmp/*.json

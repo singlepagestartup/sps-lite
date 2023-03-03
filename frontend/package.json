@@ -7,6 +7,7 @@
     "build": "ENV_FILE=production node theme.js && next build",
     "start": "next start",
     "test": "jest --watch",
+    "test:e2e": "playwright test",
     "test:check": "jest",
     "cypress": "cypress open",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -46,6 +47,7 @@
     "transition-component": "^1.2.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

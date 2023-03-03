@@ -60,7 +60,7 @@ export default function SwitchInput(props: IInputProps) {
       <div className="switch__input">
         <Switch
           as="div"
-          role="button"
+          // role="button"
           checked={value !== undefined && value !== `` ? value : false}
           onChange={onChange}
           ref={(e: any) => {

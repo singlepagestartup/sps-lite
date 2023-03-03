@@ -39,3 +39,6 @@ package-lock.json
 
 # tailwind theme
 /tmp/
+/test-results/
+/playwright-report/
+/playwright/.cache/
