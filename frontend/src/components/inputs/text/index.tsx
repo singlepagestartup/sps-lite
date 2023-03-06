@@ -76,9 +76,9 @@ export default function TextInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label htmlFor={name}>
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
       <div className="text__input">
         {type === `textarea` ? (
@@ -101,6 +101,7 @@ export default function TextInput(props: IInputProps) {
             }}
             placeholder={placeholder}
             className="input"
+            id={name}
             rows={rows || 3}
             {...additionalAttributes}
           ></textarea>
@@ -115,6 +116,7 @@ export default function TextInput(props: IInputProps) {
 
               onChange(e);
             }}
+            id={name}
             onBlur={onBlur}
             value={value || ``}
             ref={(e) => {

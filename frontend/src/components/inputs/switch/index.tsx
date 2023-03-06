@@ -63,6 +63,7 @@ export default function SwitchInput(props: IInputProps) {
           // role="button"
           checked={value !== undefined && value !== `` ? value : false}
           onChange={onChange}
+          id={name}
           ref={(e: any) => {
             if (e) {
               ref(e);
@@ -83,11 +84,13 @@ export default function SwitchInput(props: IInputProps) {
           </div>
         </Switch>
         <div className="label">
-          {label ? (
-            <ReactMarkdown>
-              {typeof translate === `function` ? translate(label) : label}
-            </ReactMarkdown>
-          ) : null}
+          <label htmlFor={name}>
+            {label ? (
+              <ReactMarkdown>
+                {typeof translate === `function` ? translate(label) : label}
+              </ReactMarkdown>
+            ) : null}
+          </label>
         </div>
       </div>
       {inputError?.message ? (

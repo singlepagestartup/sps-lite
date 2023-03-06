@@ -192,10 +192,10 @@ export default function FileInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label>
           {` `}
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
       <div className="files__input">
         <label

@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto(`/`);
 });
 
-test.only(`Required field validation`, async ({ page }) => {
+test(`Required field validation`, async ({ page }) => {
   await page.getByRole(`textbox`).first().click();
 
   await page.getByRole(`textbox`).first().fill(`Tester`);

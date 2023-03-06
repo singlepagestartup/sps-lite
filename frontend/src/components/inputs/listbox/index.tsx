@@ -87,13 +87,14 @@ export default function ListboxInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label htmlFor={name}>
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
       <div className="listbox__input">
         <Listbox
           as="div"
+          id={name}
           value={value}
           by={by}
           onChange={(e) => {

@@ -7,15 +7,5 @@
         "sourceMap": true
     },
     "include": ["./", "src/**/*.json"],
-    "exclude": [
-        "node_modules/",
-        "build/",
-        "dist/",
-        ".cache/",
-        ".tmp/",
-        "src/admin/",
-        "**/*.test.ts",
-        "src/plugins/**",
-        "src/tests/**"
-    ]
+    "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "src/plugins/**"]
 }

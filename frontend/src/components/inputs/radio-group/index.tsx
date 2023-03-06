@@ -54,13 +54,14 @@ export default function RadioGroupInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label htmlFor={name}>
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
       <div className="radio__group__input">
         <RadioGroup
           as="div"
+          id={name}
           value={value}
           onChange={onChange}
           by={by}

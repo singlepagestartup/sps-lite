@@ -82,9 +82,9 @@ export default function RangeInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label htmlFor={name}>
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
       <div className="range__input">
         {max && value ? (
@@ -110,7 +110,7 @@ export default function RangeInput(props: IInputProps) {
           </>
         ) : null}
         <input
-          id="range"
+          id={name}
           type="range"
           onChange={(e) => {
             if (valueAsNumber) {
