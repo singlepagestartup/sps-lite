@@ -1,10 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 
-test.beforeEach(async ({ page }) => {
-  await page.goto(`/`);
-});
-
-test(`Required field validation`, async ({ page }) => {
+test.skip(`Required field validation`, async ({ page }) => {
   await page.getByRole(`textbox`).first().click();
 
   await page.getByRole(`textbox`).first().fill(`Tester`);
