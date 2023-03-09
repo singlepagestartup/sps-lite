@@ -2,16 +2,25 @@ const strapiUtils = require('@rogwild/strapi-utils');
 const { Readable } = require('stream');
 const { google } = require('googleapis');
 
-async function saveAsPdf({ event, sideEffect, payload }) {
+async function saveAsPdf({ event, sideEffect, payload, templateConfig }) {
     const { result } = event;
 
+    const template = {};
+
+    if (templateConfig.id) {
+        template.id = templateConfig.id;
+    } else if (templateConfig.uid) {
+        template.uid = templateConfig.uid;
+    } else {
+        template.uid = payload.uid;
+    }
+
     const pdfBuffer = await strapiUtils.api.createDocumentFromTemplate({
-        uid: payload.uid,
+        ...template,
         params: payload,
         format: 'pdf',
         saveFile: true,
     });
-
     const pdfFileName = `${payload.uid}_${result?.id || Date.now()}.pdf`;
 
     const pdfFileMeta = {
@@ -22,7 +31,7 @@ async function saveAsPdf({ event, sideEffect, payload }) {
     };
 
     if (sideEffect.provider === 'local') {
-        const createdFile = await strapi
+        return await strapi
             .plugin('upload')
             .service('upload')
             .upload({
@@ -31,7 +40,7 @@ async function saveAsPdf({ event, sideEffect, payload }) {
             })
             .then((res) => res[0]);
     } else if (sideEffect.provider === 'google-drive') {
-        await uploadFileToGoogleDrive(pdfFileMeta);
+        return await uploadFileToGoogleDrive(pdfFileMeta);
     }
 }
 
