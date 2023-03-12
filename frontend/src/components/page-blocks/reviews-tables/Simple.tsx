@@ -65,7 +65,7 @@ export default function Simple(props: IReviewsTableBlock) {
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-        <h3 className="mb-6">Reviews table</h3>
+        <h3 className="mb-6 text-3xl text-center font-bold">Reviews table</h3>
         <Tables
           variant="simple"
           items={reviews}
