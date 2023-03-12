@@ -147,6 +147,10 @@ export default function RepeatableInput(props: IInputProps) {
     InsideComponent,
   } = props;
 
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
+
   const {
     control,
     watch,
@@ -269,11 +273,11 @@ export default function RepeatableInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <p>
+        <label htmlFor={htmlNodeId}>
           {typeof translate === `function` && label ? translate(label) : label}
-        </p>
+        </label>
       </div>
-      <div className="repeatable__input">
+      <div id={htmlNodeId} className="repeatable__input">
         {fields.map((field: any, fieldIndex: number) => {
           return (
             <div className="repeatable__inputs" key={field.id}>

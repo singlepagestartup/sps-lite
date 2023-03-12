@@ -20,6 +20,7 @@ import ContactSectons from "~components/page-blocks/contact-sections";
 import Incentives from "~components/page-blocks/incentives";
 import CtaSections from "~components/page-blocks/cta-sections";
 import Pricings from "~components/page-blocks/pricings";
+import ReviewsTables from "~components/page-blocks/reviews-tables";
 
 const buttonPopulate = {
   icon: `*`,
@@ -206,4 +207,5 @@ export const pageBlockComponents = {
   [`page-blocks.incentives-block`]: Incentives,
   [`page-blocks.cta-section-block`]: CtaSections,
   [`page-blocks.pricing-block`]: Pricings,
+  [`page-blocks.reviews-table-block`]: ReviewsTables,
 };

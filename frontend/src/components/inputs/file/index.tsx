@@ -1,7 +1,10 @@
 import { CloudArrowUpIcon, TrashIcon } from "@heroicons/react/24/outline";
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { BACKEND_URL } from "~utils/envs";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -28,6 +31,9 @@ export default function FileInput(props: IInputProps) {
   const [localFiles, setLocalFiles] = useState<File[]>();
 
   const ctxProps = useFormContext();
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
 
   const {
     field,
@@ -100,8 +106,10 @@ export default function FileInput(props: IInputProps) {
 
     if (Array.isArray(initialValue)) {
       for (const serverFile of initialValue) {
+        const fileUrl = getFileUrl(serverFile, { BACKEND_URL });
+
         const newFile = new File(
-          [await (await fetch(serverFile.url)).blob()],
+          [await (await fetch(fileUrl)).blob()],
           serverFile.name,
           { type: serverFile.mime }
         );
@@ -111,8 +119,10 @@ export default function FileInput(props: IInputProps) {
         dataTransfer.items.add(newFile);
       }
     } else {
+      const fileUrl = getFileUrl(initialValue, { BACKEND_URL });
+
       const newFile = new File(
-        [await (await fetch(initialValue.url)).blob()],
+        [await (await fetch(fileUrl)).blob()],
         initialValue.name,
         { type: initialValue.mime }
       );
@@ -199,7 +209,7 @@ export default function FileInput(props: IInputProps) {
       </div>
       <div className="files__input">
         <label
-          htmlFor={name}
+          htmlFor={htmlNodeId}
           data-multiple={multiple ? true : false}
           data-filled={value ? true : false}
           data-files={localFiles?.length ? localFiles.length : 0}
@@ -207,7 +217,7 @@ export default function FileInput(props: IInputProps) {
         >
           <input
             type={type || `file`}
-            id={name}
+            id={htmlNodeId}
             onChange={onFileInputChangeProxy}
             onBlur={onBlur}
             value={value}
@@ -271,10 +281,18 @@ function FilesArray({
     <div className="files__array">
       {files?.map((file, index) => {
         const url = URL.createObjectURL(file);
+        const isImage = file.type.includes(`image`);
 
         return (
           <div key={index} className="file">
-            <Image src={url} alt="" fill={true} />
+            {isImage ? (
+              <Image src={url} alt="" fill={true} />
+            ) : (
+              <div className="file__description">
+                <p>{file?.name}</p>
+              </div>
+            )}
+
             <div
               onClick={() => {
                 onFileDelete(index);

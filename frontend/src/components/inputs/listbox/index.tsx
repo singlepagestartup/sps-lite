@@ -31,6 +31,9 @@ export default function ListboxInput(props: IInputProps) {
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
 
   const additionalProps = useMemo(() => {
     if (multiple) {
@@ -87,14 +90,14 @@ export default function ListboxInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <label htmlFor={name}>
+        <label htmlFor={htmlNodeId}>
           {typeof translate === `function` && label ? translate(label) : label}
         </label>
       </div>
       <div className="listbox__input">
         <Listbox
           as="div"
-          id={name}
+          id={htmlNodeId}
           value={value}
           by={by}
           onChange={(e) => {

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_page_blocks_reviews_table_blocks",
+  "info": {
+    "displayName": "Reviews Table Block"
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "simple"
+      ],
+      "default": "simple",
+      "required": true
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import { getInputErrors } from "~utils/forms";
@@ -19,6 +19,9 @@ export default function SwitchInput(props: IInputProps) {
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
 
   const {
     control,
@@ -63,7 +66,7 @@ export default function SwitchInput(props: IInputProps) {
           // role="button"
           checked={value !== undefined && value !== `` ? value : false}
           onChange={onChange}
-          id={name}
+          id={htmlNodeId}
           ref={(e: any) => {
             if (e) {
               ref(e);
@@ -84,7 +87,7 @@ export default function SwitchInput(props: IInputProps) {
           </div>
         </Switch>
         <div className="label">
-          <label htmlFor={name}>
+          <label htmlFor={htmlNodeId}>
             {label ? (
               <ReactMarkdown>
                 {typeof translate === `function` ? translate(label) : label}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
@@ -21,6 +21,9 @@ export default function TextInput(props: IInputProps) {
   } = props;
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
 
   const additionalAttributes: { step?: number } = {};
 
@@ -76,7 +79,7 @@ export default function TextInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <label htmlFor={name}>
+        <label htmlFor={htmlNodeId}>
           {typeof translate === `function` && label ? translate(label) : label}
         </label>
       </div>
@@ -92,7 +95,7 @@ export default function TextInput(props: IInputProps) {
               onChange(e);
             }}
             onBlur={onBlur}
-            value={value || ``}
+            value={value !== undefined ? value : ``}
             ref={(e) => {
               if (e) {
                 ref(e);
@@ -101,7 +104,7 @@ export default function TextInput(props: IInputProps) {
             }}
             placeholder={placeholder}
             className="input"
-            id={name}
+            id={htmlNodeId}
             rows={rows || 3}
             {...additionalAttributes}
           ></textarea>
@@ -114,11 +117,19 @@ export default function TextInput(props: IInputProps) {
                 return;
               }
 
+              if (type === `date`) {
+                const preparedDate =
+                  e.target.value === `` ? null : e.target.value;
+
+                onChange(preparedDate);
+                return;
+              }
+
               onChange(e);
             }}
-            id={name}
+            id={htmlNodeId}
             onBlur={onBlur}
-            value={value || ``}
+            value={value !== undefined ? value : ``}
             ref={(e) => {
               if (e) {
                 ref(e);

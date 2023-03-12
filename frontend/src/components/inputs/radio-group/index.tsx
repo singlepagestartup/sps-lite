@@ -1,5 +1,5 @@
 import { RadioGroup } from "@headlessui/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
@@ -19,6 +19,9 @@ export default function RadioGroupInput(props: IInputProps) {
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const htmlNodeId = useMemo(() => {
+    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+  }, [name]);
 
   const {
     control,
@@ -54,14 +57,14 @@ export default function RadioGroupInput(props: IInputProps) {
   return (
     <div className={className}>
       <div className="inputs__label">
-        <label htmlFor={name}>
+        <label htmlFor={htmlNodeId}>
           {typeof translate === `function` && label ? translate(label) : label}
         </label>
       </div>
       <div className="radio__group__input">
         <RadioGroup
           as="div"
-          id={name}
+          id={htmlNodeId}
           value={value}
           onChange={onChange}
           by={by}

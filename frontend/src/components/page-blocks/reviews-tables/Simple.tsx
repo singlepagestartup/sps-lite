@@ -1,0 +1,121 @@
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import Tables, {
+  ICellCompProps,
+  IDropdownButtonProps,
+  IDropdownRowProps,
+} from "~components/tables";
+import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
+import { IReviewsTableBlock } from ".";
+
+const tableConfig = {
+  columns: [
+    {
+      header: {
+        title: `Name`,
+        accessor: `name`,
+        widthClassName: `w-[30%]`,
+      },
+      cell: {
+        Comp: NameCell,
+        widthClassName: `w-[30%]`,
+      },
+    },
+    {
+      header: {
+        title: `Title`,
+        accessor: `title`,
+        widthClassName: `w-[30%]`,
+      },
+      cell: {
+        Comp: TitleCell,
+        widthClassName: `w-[30%]`,
+      },
+    },
+    {
+      header: {
+        title: `SubTitle`,
+        accessor: `subtitle`,
+        widthClassName: `w-[40%]`,
+      },
+      cell: {
+        Comp: SubTitleCell,
+        widthClassName: `w-[40%]`,
+      },
+    },
+  ],
+  dropdown: {
+    Comp: DropdownRow,
+    button: {
+      Comp: DropdownCell,
+      widthClassName: `w-[5%]`,
+    },
+  },
+};
+
+export default function Simple(props: IReviewsTableBlock) {
+  const {
+    data: reviews,
+    isLoading,
+    isFetching,
+    isUninitialized,
+  } = useGetReviewsQuery({});
+
+  return (
+    <div className="bg-gray-50">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <h3 className="mb-6">Reviews table</h3>
+        <Tables
+          variant="simple"
+          items={reviews}
+          tableConfig={tableConfig}
+          showSkeletons={isLoading || isFetching || isUninitialized}
+        />
+      </div>
+    </div>
+  );
+}
+
+function NameCell(props: ICellCompProps) {
+  const { item } = props;
+
+  return <div className="py-2">{item.name}</div>;
+}
+
+function TitleCell(props: ICellCompProps) {
+  const { item } = props;
+
+  return <div className="py-2">{item.title}</div>;
+}
+
+function SubTitleCell(props: ICellCompProps) {
+  const { item } = props;
+
+  return <div className="py-2">{item.subtitle}</div>;
+}
+
+function DropdownCell(props: IDropdownButtonProps) {
+  const { isOpen, setIsOpen } = props;
+
+  return (
+    <div
+      className={`h-5 w-5 rounded-full cursor-pointer`}
+      onClick={() => setIsOpen((prev) => !prev)}
+    >
+      <ChevronDownIcon
+        className={`w-5 h-5 transform duration-200 ${
+          isOpen ? `rotate-0` : `-rotate-90`
+        }`}
+      />
+    </div>
+  );
+}
+
+function DropdownRow(props: IDropdownRowProps) {
+  const { item } = props;
+
+  return (
+    <div className="py-5">
+      <p className="text-sm">{item.description}</p>
+    </div>
+  );
+}
