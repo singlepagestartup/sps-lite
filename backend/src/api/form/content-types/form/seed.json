@@ -7,10 +7,10 @@
         "uid": "question",
         "createdAt": "2023-02-14T06:12:40.873Z",
         "updatedAt": "2023-02-14T06:14:55.461Z",
-        "publishedAt": "2023-02-14T06:12:42.112Z",
+        "publishedAt": "2023-02-14T18:44:48.245Z",
         "inputs": [
             {
-                "id": 1,
+                "id": 56,
                 "placeholder": "Введите ваше имя",
                 "component": "text",
                 "is_required": true,
@@ -23,7 +23,7 @@
                 "options": []
             },
             {
-                "id": 2,
+                "id": 57,
                 "placeholder": "Введите вашу электронную почту",
                 "component": "text",
                 "is_required": true,
@@ -36,7 +36,7 @@
                 "options": []
             },
             {
-                "id": 3,
+                "id": 58,
                 "placeholder": "Выберите тариф",
                 "component": "listbox",
                 "is_required": false,
@@ -48,19 +48,19 @@
                 "multiple": null,
                 "options": [
                     {
-                        "id": 1,
+                        "id": 24,
                         "title": "Lite",
                         "description": null
                     },
                     {
-                        "id": 2,
+                        "id": 25,
                         "title": "Pro",
                         "description": null
                     }
                 ]
             },
             {
-                "id": 4,
+                "id": 59,
                 "placeholder": "Напишите ваш вопрос",
                 "component": "text",
                 "is_required": false,
@@ -73,7 +73,7 @@
                 "options": []
             },
             {
-                "id": 5,
+                "id": 60,
                 "placeholder": null,
                 "component": "switch",
                 "is_required": true,
@@ -87,29 +87,23 @@
             }
         ],
         "button": {
-            "id": 11,
-            "title": "Отправить",
+            "id": 35,
             "url": null,
             "description": null,
             "variant": "default",
+            "title": null,
             "icon": null,
             "hover_icon": null
         },
-        "form_requests": [
-            {
-                "id": 1,
-                "createdAt": "2023-02-14T06:14:44.662Z",
-                "updatedAt": "2023-02-14T06:14:44.662Z"
-            }
-        ],
+        "form_requests": [],
         "side_effects": [
             {
-                "id": 1,
+                "id": 12,
                 "type": "send-to-recievers",
                 "provider": "email",
                 "recievers": [
                     {
-                        "id": 1,
+                        "id": 12,
                         "identifier": "rogwild.design@gmail.com",
                         "admin": null,
                         "user": null
@@ -117,35 +111,7 @@
                 ]
             }
         ],
-        "createdBy": {
-            "id": 1,
-            "firstname": "rogwild",
-            "lastname": "design",
-            "username": null,
-            "email": "rogwild.design@gmail.com",
-            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-            "resetPasswordToken": null,
-            "registrationToken": null,
-            "isActive": true,
-            "blocked": false,
-            "preferedLanguage": null,
-            "createdAt": "2023-02-13T18:32:56.592Z",
-            "updatedAt": "2023-02-13T18:32:56.592Z"
-        },
-        "updatedBy": {
-            "id": 1,
-            "firstname": "rogwild",
-            "lastname": "design",
-            "username": null,
-            "email": "rogwild.design@gmail.com",
-            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-            "resetPasswordToken": null,
-            "registrationToken": null,
-            "isActive": true,
-            "blocked": false,
-            "preferedLanguage": null,
-            "createdAt": "2023-02-13T18:32:56.592Z",
-            "updatedAt": "2023-02-13T18:32:56.592Z"
-        }
+        "createdBy": null,
+        "updatedBy": null
     }
 ]
