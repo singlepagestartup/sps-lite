@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IPageBlocksProps } from "types";
-import { pageBlockComponents } from "~utils/api";
+import { pageBlockComponents } from "~utils/api/components";
 
 export default function PageBlocks(props: IPageBlocksProps) {
   return (

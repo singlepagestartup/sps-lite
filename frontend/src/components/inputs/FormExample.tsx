@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { useGetCategoriesQuery } from "~redux/services/backend/models/categories";
+// import { useGetCategoriesQuery } from "~redux/services/backend/models/categories";
 import * as R from "ramda";
-import { useGetCitiesQuery } from "~redux/services/backend/models/cities";
-import useMyProfile from "~redux/services/backend/models/profiles/useMyProfile";
+// import { useGetCitiesQuery } from "~redux/services/backend/models/cities";
 import {
   useCreateUploaderMutation,
   useGetUploadersQuery,
@@ -16,13 +15,14 @@ import { ICity } from "types";
 const UploaderContext = createContext<any>(null);
 
 export default function FormExample() {
-  const { me } = useMyProfile();
   const [update, { data: createData, error: createError }] =
     useCreateUploaderMutation();
 
   const { data: uploaders } = useGetUploadersQuery({});
-  const { data: categories } = useGetCategoriesQuery({});
-  const { data: cities } = useGetCitiesQuery({});
+  // const { data: categories } = useGetCategoriesQuery({});
+  // const { data: cities } = useGetCitiesQuery({});
+  const cities = [] as any;
+  const categories = [] as any;
 
   const lastUploader = useMemo(() => {
     if (!uploaders) {

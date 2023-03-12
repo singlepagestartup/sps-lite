@@ -1,7 +1,7 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
 import { IModal } from "types";
-import { pageBlocksQuery } from "~utils/api";
+import { pageBlocksQuery } from "~utils/api/queries";
 
 export const modalPopulate = {
   ...pageBlocksQuery.populate,
