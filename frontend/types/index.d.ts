@@ -138,13 +138,6 @@ export interface IProductsLists {
   anchor?: string;
 }
 
-export interface IReviewsBlock {
-  variant: `simple-with-avatars`;
-  reviews?: IReview[];
-  showAll?: boolean;
-  anchor?: string;
-}
-
 export interface ICategoryPreviewsBlock {
   title?: string;
   variant: `three-column`;
