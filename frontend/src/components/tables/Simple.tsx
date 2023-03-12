@@ -8,7 +8,7 @@ import {
   ITableCollumn,
   ITableItemProps,
   ITableProps,
-  IDropdownRowProps,
+  IDropdownRowCompProps,
 } from ".";
 
 export const animationClassName = `bg-gray-200 animate-pulse`;
@@ -20,7 +20,7 @@ export const animationClassName = `bg-gray-200 animate-pulse`;
  * |  .table__dropdown__button   |       DefaultHeader      |       DefaultHeader      |     ...     |
  * |—–––––———————————————––––––––+——————————————————————————+——————————————————————————+—————————————|
  * | .table__dropdown__button    |                          |                          |             |
- * |      DropdownIcon           |    column.cell.Comp      |    column.cell.Comp      |     ...     |
+ * |      dropdown.button.Comp   |    column.cell.Comp      |    column.cell.Comp      |     ...     |
  * |                             |                          |                          |             |
  * |- - - - - - - - - - - -  -  —+— - - - - - - - - - - - - +— - - - - - - - - - - - - + - - - - - - |
  * |  .table__dropdown__button   |                           DropdownRow                             |
@@ -58,8 +58,10 @@ export default function Simple(props: ITableProps) {
               ></div>
             ) : null}
             {tableConfig?.columns?.map((column: any, index: number) => {
-              if (!column?.header) {
-                return <></>;
+              let RenderComp = DefaultHeaderCell;
+
+              if (column.header?.Comp) {
+                RenderComp = column.header.Comp;
               }
 
               return (
@@ -67,7 +69,7 @@ export default function Simple(props: ITableProps) {
                   key={index}
                   className={`table__cell ${column?.header?.widthClassName}`}
                 >
-                  <DefaultHeader title={column?.header?.title} />
+                  <RenderComp {...props} column={column} index={index} />
                 </div>
               );
             })}
@@ -90,16 +92,16 @@ export default function Simple(props: ITableProps) {
   );
 }
 
-function DefaultHeader(props: IHeaderCompProps) {
-  const { title } = props;
+function DefaultHeaderCell(props: IHeaderCompProps) {
+  const { column } = props;
 
-  if (!title) {
+  if (!column?.header?.title) {
     return <></>;
   }
 
   return (
     <div className="w-full">
-      <p>{title}</p>
+      <p>{column.header.title}</p>
     </div>
   );
 }
@@ -135,7 +137,7 @@ function TableItem(props: ITableItemProps) {
                   key={cIndex}
                   className={`table__cell ${column?.cell?.widthClassName}`}
                 >
-                  <CellComp {...props} column={column} />
+                  <CellComp {...props} column={column} index={cIndex} />
                 </div>
               );
             }
@@ -197,7 +199,7 @@ function DefaultDropdownButtonCell(props: IDropdownButtonProps) {
   );
 }
 
-function DropdownRow(props: IDropdownRowProps) {
+function DropdownRow(props: IDropdownRowCompProps) {
   const { item, tableConfig } = props;
 
   const RenderComponent = useMemo(() => {

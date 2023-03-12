@@ -14,10 +14,12 @@ interface ITablesBlock extends ITableProps {
  */
 export interface ICellCompProps extends ITableItemProps {
   column: ITableCollumn;
+  index: number;
 }
 
-export interface IHeaderCompProps {
-  title: string;
+export interface IHeaderCompProps extends ITableProps {
+  column: ITableCollumn;
+  index: number;
 }
 
 export interface IDropdownButtonProps extends ITableItemProps {
@@ -25,14 +27,14 @@ export interface IDropdownButtonProps extends ITableItemProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export interface IDropdownRowProps extends ITableItemProps {}
+export interface IDropdownRowCompProps extends ITableItemProps {}
 
 export interface ITableCollumn {
   header: {
     title: string;
     accessor?: string;
     widthClassName: string;
-    // Comp?: React.ComponentType<ICellCompProps>;
+    Comp?: React.ComponentType<ICellCompProps>;
   };
   cell: {
     Comp: React.ComponentType<ICellCompProps>;

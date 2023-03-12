@@ -2,7 +2,8 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Tables, {
   ICellCompProps,
   IDropdownButtonProps,
-  IDropdownRowProps,
+  IDropdownRowCompProps,
+  IHeaderCompProps,
 } from "~components/tables";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import { IReviewsTableBlock } from ".";
@@ -13,6 +14,7 @@ const tableConfig = {
       header: {
         title: `Name`,
         accessor: `name`,
+        Comp: HeaderCell,
         widthClassName: `w-[30%]`,
       },
       cell: {
@@ -110,7 +112,7 @@ function DropdownCell(props: IDropdownButtonProps) {
   );
 }
 
-function DropdownRow(props: IDropdownRowProps) {
+function DropdownRow(props: IDropdownRowCompProps) {
   const { item } = props;
 
   return (
@@ -118,4 +120,10 @@ function DropdownRow(props: IDropdownRowProps) {
       <p className="text-sm">{item.description}</p>
     </div>
   );
+}
+
+function HeaderCell(props: IHeaderCompProps) {
+  const { column } = props;
+
+  return <div className="font-bold uppercase">{column.header?.title}</div>;
 }

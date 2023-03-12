@@ -46,7 +46,7 @@ button:focus {
         @apply w-full flex flex-row;
 
         .table__cell {
-          @apply py-4 font-bold first:pl-6 last:pr-6 px-2 text-left;
+          @apply py-4 first:pl-6 last:pr-6 px-2 text-left;
         }
       }
     }
