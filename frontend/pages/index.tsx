@@ -1,18 +1,16 @@
 import { IPageProps } from "types";
 import PublicPage from "~components/layout/public-page-layouts";
-import { getMainPage } from "~utils/api/pages";
+import Page from "~utils/api/Page";
 
 export default function Home(props: IPageProps) {
   return <PublicPage {...props} />;
 }
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
-  const pageData = await getMainPage(locale);
+  const page = await new Page({ name: `main-page`, locale }).get();
 
   return {
-    props: {
-      ...pageData,
-    },
+    props: page,
     revalidate: 600,
   };
 };
