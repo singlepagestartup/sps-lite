@@ -318,12 +318,20 @@ export interface IHeaderFlyoutMenu extends IFlyoutMenu {
 }
 
 export interface IHeader {
+  topbar?: ITopbar;
   logo: IMedia;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
   additionalButtons?: IButtons[];
   ctaButtons?: IButtons[];
+  position: string;
   variant: `simple-links-on-left`;
+}
+
+export interface ITopbar {
+  variant: `simple`;
+  title?: string;
+  buttons?: IButtons[];
 }
 
 export interface IFlyoutMenu {
