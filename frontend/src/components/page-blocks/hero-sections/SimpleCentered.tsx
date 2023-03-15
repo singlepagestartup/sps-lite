@@ -1,13 +1,13 @@
 import nextUtils from "@rogwild/next-utils";
-import { IHeroSection } from "types";
 import Link from "next/link";
 const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
+import { IHeroSection } from ".";
 
 export default function SimpleCentered(props: IHeroSection) {
   return (
-    <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white min-h-[80vh]">
+    <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white">
       {props.background ? (
         <Image
           src={getImageUrl(props.background, { BACKEND_URL })}
@@ -27,7 +27,7 @@ export default function SimpleCentered(props: IHeroSection) {
               {props.description}
             </p>
             <div className="mx-auto mt-5 max-w-md sm:flex sm:justify-center md:mt-8">
-              {props.buttons?.map((button, index) => {
+              {props?.buttons?.map((button, index) => {
                 return (
                   <Link
                     key={index}

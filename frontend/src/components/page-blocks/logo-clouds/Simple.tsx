@@ -1,7 +1,4 @@
-import { IFaqs, ILogoCloud } from "types";
-import ReactMarkdown from "react-markdown";
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ILogoCloud } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";

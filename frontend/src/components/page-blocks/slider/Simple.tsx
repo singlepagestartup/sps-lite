@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { IButton, ISlider, ISliderBlock } from "types";
+import { ISliderBlock } from ".";
 import Slider from "~components/slider";
 
 export default function Simple(props: ISliderBlock) {

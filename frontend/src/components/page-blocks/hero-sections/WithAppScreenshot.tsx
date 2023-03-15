@@ -1,7 +1,7 @@
 import Image from "next/image";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
-import { IHeroSection } from "types";
+import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function WithAppScreenshot(props: IHeroSection) {

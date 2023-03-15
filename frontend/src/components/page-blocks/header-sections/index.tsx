@@ -1,10 +1,19 @@
 import { FC } from "react";
-import { IHeaderSection } from "types";
+import { IMedia } from "types";
 import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleCentered from "./SimpleCentered";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
+
+export interface IHeaderSection {
+  title: string;
+  description: string;
+  variant: `with-sign-in-form`;
+  subtitle: string;
+  media: IMedia[];
+  anchor?: string;
+}
 
 const variants = {
   "simple-centered": SimpleCentered,

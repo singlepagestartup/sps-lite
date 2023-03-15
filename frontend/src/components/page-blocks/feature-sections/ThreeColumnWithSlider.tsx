@@ -2,11 +2,9 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
-import { IArticle, IFeature, IFeatureSections } from "types";
+import { IFeature } from "types";
+import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
-import { StarIcon } from "@heroicons/react/20/solid";
-import ReactMarkdown from "react-markdown";
-import dayjs from "dayjs";
 import { useMemo } from "react";
 
 export default function ThreeColumnWithSlider(props: IFeatureSections) {

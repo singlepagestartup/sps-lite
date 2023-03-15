@@ -1,6 +1,13 @@
 import { FC, useMemo } from "react";
-import { ILogoCloud, INotFound } from "types";
+import { IButton } from "types";
 import Simple from "./Simple";
+
+export interface INotFound {
+  variant: `simple`;
+  title: string;
+  description: string;
+  buttons?: IButton[];
+}
 
 const variants = {
   simple: Simple,

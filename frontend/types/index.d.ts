@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import { IFooter } from "~components/page-blocks/footers";
+import { ITopbar } from "~components/page-blocks/topbar";
 
 export interface IMeta {
   title?: string;
@@ -22,46 +24,6 @@ export interface IButton {
   variant: `bottom-line`;
 }
 
-export interface IHeroSection {
-  variant:
-    | `split`
-    | `simple-centered`
-    | `split-with-screenshot-on-dark`
-    | `with-app-screenshot`
-    | `with-angled-image-on-right`;
-  title: string;
-  description: string;
-  buttons?: IButton[];
-  media?: IMedia[];
-  anchor?: string;
-  background?: IMedia;
-}
-
-export interface ICategoryOverview {
-  variant: `simple`;
-  anchor?: string;
-  category: ICategory;
-}
-
-export interface IContactSecton {
-  variant: `split-brand-panel`;
-  title?: string;
-  description?: string;
-  media?: IMedia;
-  form?: IForm;
-  buttonsArrays?: IButtonsArray[];
-  anchor?: string;
-}
-
-export interface IProfileSettings {
-  variant: `simple`;
-  anchor?: string;
-}
-
-export interface IModals {
-  uid: string;
-}
-
 export interface IModal extends IPageBlocksProps {
   id: number;
   title: string;
@@ -70,104 +32,9 @@ export interface IModal extends IPageBlocksProps {
   uid: string;
 }
 
-export interface IModalComponent extends IModal {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
-}
-
-export interface IProfileAddresses {
-  variant: `simple`;
-  anchor?: string;
-}
-
-export interface IOtpSettings {
-  variant: `simple`;
-  anchor?: string;
-}
-
-export interface IChangePassword {
-  variant: `simple`;
-  anchor?: string;
-}
-
-export interface IChangePasswordComp extends IChangePassword {
-  inputs: any;
-  methods: any;
-  submitFunction: () => {};
-  changePasswordResult;
-}
-
-export interface IOrderHistory {
-  variant: `with-invoice-panels`;
-  anchor?: string;
-}
-
-export interface IUseAuthRes {
-  inputs: any;
-  onSubmit: Function;
-}
-
-export interface IAuth {
-  variant: `simple-card`;
-  media?: IMedia;
-  logo?: IMedia;
-}
-
-export interface IHeaderSection {
-  title: string;
-  description: string;
-  variant: `with-sign-in-form`;
-  subtitle: string;
-  media: IMedia[];
-  anchor?: string;
-}
-
-export interface IProductOverviews {
-  variant: `split-with-image`;
-  product: IProduct;
-  tabs: any[];
-}
-
-export interface IProductsLists {
-  showAllProducts?: boolean;
-  products: IProduct[];
-  variant: `card-with-full-details` | `simple`;
-  title?: string;
-  description?: string;
-  buttons?: IButton[];
-  anchor?: string;
-}
-
-export interface ICategoryPreviewsBlock {
-  title?: string;
-  variant: `three-column`;
-  categories?: ICategory[];
-  showAll?: boolean;
-  anchor?: string;
-}
-
-export interface IBlogSections {
-  articles: IArticle[];
-  variant: `3-column-card`;
-  anchor?: string;
-}
-
-export interface IContentSections {
-  variant: `centered`;
-  article: IArticle;
-}
-
 export interface IFaq {
   title: string;
   description: string;
-}
-
-export interface IFaqs {
-  variant: `centered-accordion`;
-  title: string;
-  description: string;
-  faqs: IFaq[];
-  anchor?: string;
 }
 
 export interface ILogo {
@@ -189,28 +56,6 @@ export interface IForm {
   button?: IButton;
 }
 
-export interface IForms {
-  variant: `simple`;
-  form: IForm;
-  anchor?: string;
-}
-
-export interface ILogoCloud {
-  variant: `simple`;
-  title: string;
-  logos: ILogo[];
-  buttons?: IButton[];
-  description: string;
-  anchor?: string;
-}
-
-export interface INotFound {
-  variant: `simple`;
-  title: string;
-  description: string;
-  buttons?: IButton[];
-}
-
 export interface ISlide {
   buttons?: IButton[];
   title?: string;
@@ -218,11 +63,7 @@ export interface ISlide {
   description?: string;
   media: IMedia;
 }
-export interface ISliderBlock {
-  variant: `simple`;
-  anchor?: string;
-  slider: ISlider;
-}
+
 
 export interface ISlider {
   variant: `fade-with-previews`;
@@ -247,76 +88,6 @@ export interface IButtons extends IButton {
     | `elements.flyout-menu`;
 }
 
-export interface IIncentives {
-  features: IFeature[];
-  title?: string;
-  description?: string;
-  media?: IMedia[];
-  variant: `four-column-with-illustrations`;
-  anchor?: string;
-}
-
-export interface ITier {
-  id: number;
-  title: string;
-  description?: string;
-  features?: IFeature[];
-  price: string;
-  url?: string;
-  period?: number;
-  type: `one-time` | `regularly`;
-}
-
-export interface IPricings {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  background?: IMedia;
-  variant: `two-tiers-with-extra-tier`;
-  anchor?: string;
-  tiers: ITier[];
-}
-
-export interface ICtaSections {
-  title?: string;
-  description?: string;
-  media?: IMedia[];
-  variant: `simple-centered`;
-  anchor?: string;
-  buttons?: IButton[];
-}
-
-export interface IProductFeatures {
-  features: IFeature[];
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  media?: IMedia[];
-  variant: `with-alternating-sections`;
-  anchor?: string;
-}
-
-export interface IFeatureSections {
-  features: IFeature[];
-  variant: `simple-three-column`;
-  title: string;
-  description: string;
-  anchor?: string;
-  media?: IMedia[];
-}
-
-export interface IHeaderButton extends IButton {
-  _Component: `elements.button`;
-}
-
-export interface IHeaderButtonsArray extends IButtonsArray {
-  _Component: `elements.buttons-array`;
-}
-
-export interface IHeaderFlyoutMenu extends IFlyoutMenu {
-  _Component: `elements.flyout-menu`;
-}
-
 export interface IHeader {
   topbar?: ITopbar;
   logo: IMedia;
@@ -326,39 +97,6 @@ export interface IHeader {
   ctaButtons?: IButtons[];
   position: string;
   variant: `simple-links-on-left`;
-}
-
-export interface ITopbar {
-  variant: `simple`;
-  title?: string;
-  buttons?: IButtons[];
-}
-
-export interface IFlyoutMenu {
-  title: string;
-  buttonsArrays: IButtonsArray[];
-  _Component: `elements.flyout-menu`;
-}
-
-export interface IFooter {
-  logo: IMedia;
-  socialNetworksButtons: IButtonsArray[];
-  buttonsArrays: IButtonsArray[];
-  policiesButtons: IButtonsArray[];
-  copyrights: string;
-}
-
-export interface IShoppingCart {
-  variant: `slide-over`;
-}
-
-export interface ICheckoutForm {
-  variant: `single-step-with-order-summary`;
-}
-
-export interface IShoppingCartComp extends IShoppingCart {
-  isOpen?: boolean;
-  setIsOpen: any;
 }
 
 export interface IPageBlocksProps {
@@ -372,14 +110,6 @@ export interface IButtonsArray {
   description?: string;
   className: string;
   variant: `column`;
-}
-
-export interface IFooter {
-  copyrights: string;
-  description: string;
-  logo: IMedia;
-  buttons: IButtonsArray[];
-  variant: `four-columns-simple`;
 }
 
 export interface IDashboardLayout {
@@ -420,12 +150,6 @@ export interface IMedia {
   alternativeText: string;
 }
 
-export interface ICity {
-  id: number;
-  title: string;
-  country: string;
-}
-
 export interface IAddress {
   address: string;
   apartment: string;
@@ -434,15 +158,6 @@ export interface IAddress {
   postalCode: string;
   country: string;
   city?: string;
-}
-
-export interface IAddressForm {
-  address: string;
-  apartment: string;
-  comment: string;
-  postal_code: string;
-  country: string;
-  city: string;
 }
 
 export interface IUser {
@@ -484,66 +199,6 @@ export interface ICurrency {
   unicode: string;
   isDefault: boolean;
   products?: IProduct;
-}
-
-export interface IOrderProduct {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  attributes: IProductAttribute[];
-  variants: IProductVariant[];
-  variant: number;
-  quantity: number;
-  fullDescription: string;
-  product?: IProduct;
-  media: IMedia[];
-}
-
-interface IOrderShipping extends IAddress {
-  adminComment: string;
-  delivery: IDelivery;
-}
-
-export interface IOrder {
-  comment?: string;
-  createdAt: string;
-  email: string;
-  id: number;
-  isPaid: boolean;
-  name: string;
-  patronymic: string;
-  phone: string;
-  status: `new` | `canceled` | `confirmed` | `shipping`;
-  surname: string;
-  updatedAt: string;
-  products: IOrderProduct[];
-  user: IUser;
-  amount: number;
-  shipping: IOrderShipping;
-  receipts: {
-    title: string;
-    amount: number;
-  }[];
-}
-export interface IDeliveryTerms {
-  id: number;
-  minAmountForFree?: number;
-  price?: number;
-  priceWillBeCount?: `by_manager` | `on_delivery`;
-}
-export interface IDelivery {
-  id: number;
-  title: string;
-  country: string;
-  createdAt: string;
-  description: string;
-  locale: string;
-  price: number;
-  publishedAt: string;
-  updatedAt: string;
-  duration: string;
-  terms: IDeliveryTerms[];
 }
 
 export interface IProductAttributeKey {
@@ -589,19 +244,6 @@ export interface IProduct {
   pageBlocks?: any;
 }
 
-export interface IArticle {
-  id: number;
-  title: string;
-  description: string;
-  media: IMedia[];
-  cover: IMedia;
-  categories: ICategory[];
-  attributes: IProductAttribute[];
-  fullDescription: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 export interface IReview {
   id: number;
   name: string;
@@ -620,12 +262,4 @@ declare global {
     utmReferer?: string | string[];
     offsetWidth: number;
   }
-}
-
-export interface ICartProduct {
-  comment?: string;
-  id: number;
-  quantity: number;
-  variant: number;
-  product: IProduct;
 }

@@ -10,7 +10,12 @@ import {
 } from "~redux/services/backend/models/uploader";
 import Inputs from ".";
 import { IInsideComponentProps } from "./repeatable";
-import { ICity } from "types";
+
+export interface ICity {
+  id: number;
+  title: string;
+  country: string;
+}
 
 const UploaderContext = createContext<any>(null);
 

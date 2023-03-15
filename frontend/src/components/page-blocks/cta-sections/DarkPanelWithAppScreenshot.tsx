@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { ICtaSections } from "types";
+import { ICtaSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
 import Link from "next/link";

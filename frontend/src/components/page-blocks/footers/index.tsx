@@ -1,8 +1,20 @@
 import { FC } from "react";
-import { IFooter, IPageProps } from "types";
+import { IButtonsArray, IForm, IMedia, IPageProps } from "types";
 import FourColumnsSimple from "./FourColumnsSimple";
 import FourColumnWithCompanyMission from "./FourColumnWithCompanyMission";
 import FourColumnsSimpleDark from "./FourColunsSimpleDark";
+
+export interface IFooter {
+  logo: IMedia;
+  socialNetworksButtons: IButtonsArray[];
+  buttonsArrays: IButtonsArray[];
+  policiesButtons: IButtonsArray[];
+  copyrights: string;
+  variant: `four-columns-simple`;
+  privacyPolicy: string[];
+  description: string;
+  form?: IForm;
+}
 
 const variants = {
   "four-columns-simple": FourColumnsSimple,

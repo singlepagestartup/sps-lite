@@ -1,11 +1,4 @@
-import { IFaqs, ILogoCloud, INotFound } from "types";
-import ReactMarkdown from "react-markdown";
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
-import { BACKEND_URL } from "~utils/envs";
-import Image from "next/image";
+import { INotFound } from ".";
 import Link from "next/link";
 
 export default function Simple(props: INotFound) {

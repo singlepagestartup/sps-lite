@@ -1,6 +1,15 @@
 import { FC } from "react";
-import { IIncentives } from "types";
+import { IFeature, IMedia } from "types";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
+
+export interface IIncentives {
+  features: IFeature[];
+  title?: string;
+  description?: string;
+  media?: IMedia[];
+  variant: `four-column-with-illustrations`;
+  anchor?: string;
+}
 
 const variants = {
   "four-column-with-illustrations": FourColumnWithIllustrations,

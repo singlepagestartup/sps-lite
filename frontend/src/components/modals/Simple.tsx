@@ -1,10 +1,11 @@
 import { useState, Fragment, useEffect, useMemo } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import { IModal, IModalComponent, IModals } from "types";
+import { IModal } from "types";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import PageBlocks from "~components/layout/page-blocks";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { IModalComponent } from ".";
 
 export default function Simple(props: IModalComponent) {
   const router = useRouter();

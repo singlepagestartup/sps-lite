@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IHeroSection } from "types";
+import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 

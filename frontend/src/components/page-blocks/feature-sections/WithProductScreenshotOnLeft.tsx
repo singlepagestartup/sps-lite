@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IArticle, IFeature, IFeatureSections } from "types";
+import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";

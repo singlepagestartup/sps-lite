@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { IHeroSection } from "types";
+import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function Split(props: IHeroSection) {

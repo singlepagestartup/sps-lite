@@ -1,10 +1,19 @@
 import { FC, useMemo } from "react";
-import { ILogoCloud } from "types";
+import { IButton, ILogo } from "types";
 import OffWhiteGrid from "./OffWhiteGrid";
 import Simple from "./Simple";
 import SimpleWithHeading from "./SimpleWithHeading";
 import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
+
+export interface ILogoCloud {
+  variant: `simple`;
+  title: string;
+  logos: ILogo[];
+  buttons?: IButton[];
+  description: string;
+  anchor?: string;
+}
 
 const variants = {
   simple: Simple,

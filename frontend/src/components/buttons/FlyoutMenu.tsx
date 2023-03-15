@@ -6,9 +6,15 @@ import {
   Popover,
   Transition,
 } from "@headlessui/react";
-import { IFlyoutMenu } from "types";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { IButtonsArray } from "types";
+
+export interface IFlyoutMenu {
+  title: string;
+  buttonsArrays: IButtonsArray[];
+  _Component: `elements.flyout-menu`;
+}
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);

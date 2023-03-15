@@ -1,6 +1,12 @@
 import { FC } from "react";
-import { ITopbar } from "types";
+import { IButtons } from "types";
 import Simple from "./Simple";
+
+export interface ITopbar {
+  variant: `simple`;
+  title?: string;
+  buttons?: IButtons[];
+}
 
 const variants = {
   simple: Simple,

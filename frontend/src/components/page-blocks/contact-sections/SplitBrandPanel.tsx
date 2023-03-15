@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { IContactSecton } from "types";
+import { IContactSecton } from ".";
 import useTranslations from "~hooks/use-translations";
 import { BACKEND_URL } from "~utils/envs";
 import Forms from "../forms";

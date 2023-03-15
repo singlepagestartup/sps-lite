@@ -1,10 +1,15 @@
-import { useState, Fragment, useEffect, useMemo, FC } from "react";
+import { useState, Fragment, useEffect, useMemo, FC, SetStateAction, Dispatch } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import { IModal, IModalComponent, IModals } from "types";
+import { IModal } from "types";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import PageBlocks from "~components/layout/page-blocks";
 import Simple from "./Simple";
+
+export interface IModalComponent extends IModal {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+}
 
 const variants = {
   simple: Simple,

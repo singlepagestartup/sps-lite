@@ -3,7 +3,7 @@ const { getImageUrl } = utils.api;
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { IHeroSection } from "types";
+import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function SplitWithScreenshotOnDark(props: IHeroSection) {

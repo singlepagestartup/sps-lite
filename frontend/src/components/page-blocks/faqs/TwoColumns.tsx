@@ -1,4 +1,4 @@
-import { IFaqs } from "types";
+import { IFaqs } from ".";
 export default function TwoColumns(props: IFaqs) {
   return (
     <div className="bg-white">

@@ -1,4 +1,4 @@
-import { IFaqs } from "types";
+import { IFaqs } from ".";
 
 export default function SideBySide(props: IFaqs) {
   return (

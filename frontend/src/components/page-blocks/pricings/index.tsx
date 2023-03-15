@@ -1,6 +1,27 @@
 import { FC } from "react";
-import { IPricings } from "types";
+import { IFeature, IMedia } from "types";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
+
+export interface ITier {
+  id: number;
+  title: string;
+  description?: string;
+  features?: IFeature[];
+  price: string;
+  url?: string;
+  period?: number;
+  type: `one-time` | `regularly`;
+}
+
+export interface IPricings {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  background?: IMedia;
+  variant: `two-tiers-with-extra-tier`;
+  anchor?: string;
+  tiers: ITier[];
+}
 
 const variants = {
   "two-tiers-with-extra-tier": TwoTiersWithExtraTier,
