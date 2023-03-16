@@ -24,7 +24,7 @@ export default function SplitBrandPanel(props: IContactSecton) {
     <div className="bg-gray-100" {...additionalAttributes}>
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="relative bg-white shadow-xl">
-          <h2 className="sr-only">{props.title}</h2>
+          <h2 className="">{props.title}</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3">
             <div className="relative overflow-hidden bg-primary-700 py-10 px-6 sm:px-10 xl:p-12">
               <div

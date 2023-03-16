@@ -29,7 +29,7 @@ export default function SimpleThreeColumn(props: IFeatureSections) {
           {props.features.map((feature, index) => (
             <div key={index}>
               <dt>
-                {feature.icon ? (
+                {feature?.icon ? (
                   <Image
                     src={getImageUrl(feature.icon, { BACKEND_URL })}
                     height={100}
@@ -43,7 +43,7 @@ export default function SimpleThreeColumn(props: IFeatureSections) {
                 </p>
               </dt>
               <dd className="mt-2 text-base text-gray-500">
-                {feature.description}
+                {feature?.description}
               </dd>
             </div>
           ))}

@@ -3,7 +3,7 @@ const { getImageUrl } = utils.api;
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { ITopbar } from "types";
+import { ITopbar } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function Simple(props: ITopbar) {
@@ -13,7 +13,7 @@ export default function Simple(props: ITopbar) {
         <ReactMarkdown className="text-md text-gray-900 font-medium">
           {props?.title || ``}
         </ReactMarkdown>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           {props.buttons?.map((button, index) => (
             <Link
               key={index}

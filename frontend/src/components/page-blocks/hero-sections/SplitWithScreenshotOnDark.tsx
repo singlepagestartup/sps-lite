@@ -2,26 +2,41 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function SplitWithScreenshotOnDark(props: IHeroSection) {
+  const additionalAttributes = useMemo(() => {
+    if (props?.anchor) {
+      return {
+        id: props.anchor,
+      };
+    }
+
+    return {};
+  }, [props]);
+
   return (
-    <div className="flex flex-col border-b border-gray-200 lg:border-0">
+    <div
+      className="flex flex-col border-b border-gray-200 lg:border-0 bg-gray-800"
+      {...additionalAttributes}
+    >
       <div className="relative">
         <div
           aria-hidden="true"
-          className="absolute hidden h-full w-1/2 bg-gray-100 lg:block"
+          className="absolute hidden h-full w-full lg:block"
         />
-        <div className="relative bg-gray-800">
+        <div className="max-w-7xl relative mx-auto">
+        <div className="relative bg-transparent">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
               <div className="lg:pr-16">
-                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl xl:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-50 sm:text-5xl xl:text-6xl">
                   {props.title}
                 </h1>
-                <ReactMarkdown className="mt-4 text-xl text-gray-400">
+                <ReactMarkdown className="mt-4 text-xl text-gray-300">
                   {props.description}
                 </ReactMarkdown>
                 <div className="mt-6 flex gap-2 flex-wrap">
@@ -30,7 +45,7 @@ export default function SplitWithScreenshotOnDark(props: IHeroSection) {
                       <Link
                         key={index}
                         href={button.url}
-                        className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 font-medium text-white hover:bg-indigo-700"
+                        className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700"
                       >
                         {button.title}
                       </Link>
@@ -48,9 +63,11 @@ export default function SplitWithScreenshotOnDark(props: IHeroSection) {
                 src={getImageUrl(props.media[0], { BACKEND_URL })}
                 alt=""
                 fill={true}
+                className="object-cover object-center"
               />
             ) : null}
           </div>
+        </div>
         </div>
       </div>
     </div>

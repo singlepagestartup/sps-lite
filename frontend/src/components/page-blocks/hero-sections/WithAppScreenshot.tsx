@@ -77,7 +77,7 @@ export default function WithAppScreenshot(props: IHeroSection) {
           </div>
         </div>
 
-        <div className="relative pt-6 pb-16 sm:pb-24">
+        <div className="pt-6 pb-16 sm:pb-24 max-w-7xl relative mx-auto">
           <div className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6">
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight xl:inline text-gray-900 sm:text-5xl md:text-6xl">
@@ -96,7 +96,7 @@ export default function WithAppScreenshot(props: IHeroSection) {
             <div className="w-full flex-1 bg-gray-800" />
           </div>
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 relative rounded-lg shadow-lg pb-[100%]">
+          <div className="mx-auto max-w-7xl relative pb-[100%] 2xl:pb-[40%] h-xl">
             {props.media?.length ? (
               <Image
                 src={getImageUrl(props.media[0], { BACKEND_URL })}

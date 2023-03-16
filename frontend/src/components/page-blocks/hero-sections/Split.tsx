@@ -26,8 +26,9 @@ export default function Split(props: IHeroSection) {
       <div className="relative">
         <div
           aria-hidden="true"
-          className="absolute hidden h-full w-1/2 bg-gray-100 lg:block"
+          className="absolute hidden h-full w-full bg-gray-100 lg:block"
         />
+        <div className="max-w-7xl relative mx-auto">
         <div className="relative bg-gray-100 lg:bg-transparent">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
@@ -66,6 +67,7 @@ export default function Split(props: IHeroSection) {
               />
             ) : null}
           </div>
+        </div>
         </div>
       </div>
     </div>
