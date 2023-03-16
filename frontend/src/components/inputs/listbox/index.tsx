@@ -126,7 +126,7 @@ export default function ListboxInput(props: IInputProps) {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="options">
-                {options.map((option: any, index: number) => (
+                {options?.map((option: any, index: number) => (
                   <Listbox.Option key={index} value={option}>
                     {(params) => {
                       return (
