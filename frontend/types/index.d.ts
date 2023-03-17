@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { IFooter } from "~components/page-blocks/footers";
-import { ITopbar } from "~components/page-blocks/topbar";
+import { ITopbar } from "~components/topbar";
 
 export interface IMeta {
   title?: string;

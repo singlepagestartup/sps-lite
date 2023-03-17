@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IPageProps } from "types";
-import Topbar from "~components/page-blocks/topbar";
+import Topbar from "~components/topbar";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 
 const variants = {
