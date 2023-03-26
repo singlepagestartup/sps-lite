@@ -18,10 +18,13 @@ export interface IPageBlock {
 
 export interface IButton {
   title: string;
-  url: string;
+  url?: string;
+  onClick?: any;
   description?: string;
   icon?: IMedia;
-  variant: `bottom-line`;
+  variant: `bottom-line` | `default` | `primary`;
+  className?: string;
+  additionalAttributes?: any;
 }
 
 export interface IModal extends IPageBlocksProps {
@@ -53,7 +56,7 @@ export interface IForm {
   }[];
   subtitle?: string;
   description?: string;
-  button?: IButton;
+  button?: IButtons;
 }
 
 export interface ISlide {
@@ -63,7 +66,6 @@ export interface ISlide {
   description?: string;
   media: IMedia;
 }
-
 
 export interface ISlider {
   variant: `fade-with-previews`;
@@ -254,8 +256,6 @@ export interface IReview {
   cover: IMedia;
   createdAt: string;
 }
-
-export {};
 
 declare global {
   interface Window {

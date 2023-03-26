@@ -1,17 +1,39 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { IButton } from "types";
+import useGetButtonParams from "../hooks/use-get-button-params";
 
 export default function Primary(props: IButton) {
-  const router = useRouter();
   const { url, title } = props;
+  const { isActive, additionalAttributes } = useGetButtonParams(props);
 
-  return (
-    <Link
-      href={url}
-      className={`inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2`}
-    >
-      {title}
-    </Link>
-  );
+  if (props?.onClick) {
+    return (
+      <div className={props?.className}>
+        <button
+          {...additionalAttributes}
+          onClick={props.onClick}
+          className="button-primary"
+        >
+          {title}
+        </button>
+      </div>
+    );
+  }
+
+  if (url) {
+    return (
+      <div className={props?.className}>
+        <Link
+          {...additionalAttributes}
+          href={url}
+          aria-selected={isActive}
+          className={`button-primary`}
+        >
+          {title}
+        </Link>
+      </div>
+    );
+  }
+
+  return <></>;
 }

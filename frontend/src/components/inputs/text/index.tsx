@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
@@ -18,6 +18,8 @@ export default function TextInput(props: IInputProps) {
     translate,
     valueAsNumber,
     step,
+    min,
+    max,
   } = props;
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
@@ -25,12 +27,18 @@ export default function TextInput(props: IInputProps) {
     return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
   }, [name]);
 
-  const additionalAttributes: { step?: number } = {};
+  const [additionalAttributes, setAdditionalAttributes] = useState<{
+    step?: number;
+    min?: number;
+    max?: number;
+  }>({});
 
   useEffect(() => {
-    if (step) {
-      additionalAttributes.step = step;
-    }
+    setAdditionalAttributes({
+      step,
+      min,
+      max,
+    });
   }, [props]);
 
   const {

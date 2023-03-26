@@ -23,7 +23,7 @@ export default function SimpleLinksOnLeft(props: IPageProps) {
                   <Link href="/" className="relative w-32 h-8">
                     <Image
                       src={getImageUrl(header.logo, { BACKEND_URL })}
-                      alt="Your Company"
+                      alt=""
                       className="object-contain object-left"
                       fill={true}
                     />

@@ -4,6 +4,7 @@ import { useCreateFormRequestMutation } from "~redux/services/backend/models/for
 import { useEffect, useMemo } from "react";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
+import Buttons from "~components/buttons";
 
 export default function Simple(props: IForms) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
@@ -209,12 +210,12 @@ export default function Simple(props: IForms) {
                 by="id"
               />
               <div className="sm:col-span-2">
-                <button
+                <Buttons
+                  _Component="elements.button"
+                  variant={props.form.button?.variant || `default`}
                   onClick={handleSubmit(onSubmit)}
-                  className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-                >
-                  {props.form?.button?.title || `Submit`}
-                </button>
+                  title={props.form.button?.title || `Submit`}
+                />
               </div>
             </FormProvider>
           </div>

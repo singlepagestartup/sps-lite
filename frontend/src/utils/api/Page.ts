@@ -19,7 +19,7 @@ export default class Page {
   async get() {
     const pageData = (await getBackendData({
       url: `${BACKEND_URL}/api/${this.name}`,
-      params: pageBlocksQuery,
+      params: { ...pageBlocksQuery, locale: this.locale },
     })) as any;
 
     const additionalBlocks = await getAdditionalBlocks(this.locale);

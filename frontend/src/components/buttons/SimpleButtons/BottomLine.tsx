@@ -1,20 +1,39 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { IButton } from "types";
+import useGetButtonParams from "../hooks/use-get-button-params";
 
 export default function BottomLine(props: IButton) {
-  const router = useRouter();
   const { url, title } = props;
+  const { isActive, additionalAttributes } = useGetButtonParams(props);
 
-  return (
-    <Link
-      href={url}
-      scroll={false}
-      className={`inline-flex w-full lg:w-fit items-center lg:border-b-2 px-2 py-4 lg:px-1 lg:py-1 text-sm font-medium ${
-        router.route === url ? `border-primary-500 text-gray-900` : ``
-      }`}
-    >
-      {title}
-    </Link>
-  );
+  if (props?.onClick) {
+    return (
+      <div className={props?.className}>
+        <button
+          {...additionalAttributes}
+          onClick={props.onClick}
+          className="button-bottom-line"
+        >
+          {title}
+        </button>
+      </div>
+    );
+  }
+
+  if (url) {
+    return (
+      <div className={props?.className}>
+        <Link
+          {...additionalAttributes}
+          href={url}
+          aria-selected={isActive}
+          className="button-bottom-line"
+        >
+          {title}
+        </Link>
+      </div>
+    );
+  }
+
+  return <></>;
 }

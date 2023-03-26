@@ -6,7 +6,6 @@ import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
 export default function SimpleWithHeadingOnBrand(props: ILogoCloud) {
-  console.log(props);
   return (
     <div className="bg-indigo-700">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-20 sm:px-6 lg:px-8">

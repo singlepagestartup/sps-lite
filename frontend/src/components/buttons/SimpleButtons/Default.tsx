@@ -1,17 +1,39 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { IButton } from "types";
+import useGetButtonParams from "../hooks/use-get-button-params";
 
 export default function Default(props: IButton) {
-  const router = useRouter();
   const { url, title } = props;
+  const { isActive, additionalAttributes } = useGetButtonParams(props);
 
-  return (
-    <Link
-      href={url}
-      className={`inline-flex items-center rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50`}
-    >
-      {title}
-    </Link>
-  );
+  if (props?.onClick) {
+    return (
+      <div className={props?.className}>
+        <button
+          {...additionalAttributes}
+          onClick={props.onClick}
+          className="button-default"
+        >
+          {title}
+        </button>
+      </div>
+    );
+  }
+
+  if (url) {
+    return (
+      <div className={props?.className}>
+        <Link
+          {...additionalAttributes}
+          href={url}
+          aria-selected={isActive}
+          className="button-default"
+        >
+          {title}
+        </Link>
+      </div>
+    );
+  }
+
+  return <></>;
 }

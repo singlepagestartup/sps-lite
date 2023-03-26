@@ -6,7 +6,6 @@ import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
 export default function OffWhiteGrid(props: ILogoCloud) {
-  console.log(props);
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
