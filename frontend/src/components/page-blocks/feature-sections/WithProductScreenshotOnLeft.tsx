@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IArticle, IFeature, IFeatureSections } from "types";
+import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
@@ -21,9 +21,9 @@ export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
 
   return (
     <div className="bg-white py-12" {...additionalAttributes}>
-      <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 grid grid-cols-4 gap-6">
-        <div className="col-span-2 relative overflow-hidden aspect-w-2 aspect-h-2">
-          {props.media?.length ? (
+      <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 gap-6 flex flex-col-reverse justify-center lg:grid lg:grid-cols-2">
+        <div className="relative overflow-hidden aspect-w-2 aspect-h-3">
+          {props?.media?.length ? (
             <Image
               src={getImageUrl(props.media[0], { BACKEND_URL })}
               alt=""
@@ -32,7 +32,7 @@ export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
             />
           ) : null}
         </div>
-        <div className="col-span-2">
+        <div className="">
           <div className="lg:col-span-1 mb-3">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               {props?.title}
@@ -43,7 +43,7 @@ export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
             {props.features.map((feature, index) => (
               <div key={index}>
                 <div>
-                  {feature.icon ? (
+                  {feature?.icon ? (
                     <Image
                       src={getImageUrl(feature.icon, { BACKEND_URL })}
                       height={100}
@@ -57,7 +57,7 @@ export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
                   </p>
                 </div>
                 <div className="mt-2 text-base text-gray-500">
-                  {feature.description}
+                  {feature?.description}
                 </div>
               </div>
             ))}

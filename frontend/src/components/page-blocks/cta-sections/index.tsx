@@ -1,7 +1,16 @@
 import { FC } from "react";
-import { ICtaSections } from "types";
+import { IButton, IMedia } from "types";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
+
+export interface ICtaSections {
+  title?: string;
+  description?: string;
+  media?: IMedia[];
+  variant: `simple-centered`;
+  anchor?: string;
+  buttons?: IButton[];
+}
 
 const variants = {
   "simple-centered": SimpleCentered,

@@ -1,6 +1,11 @@
 import { FC, useMemo } from "react";
-import { ILogoCloud, ISlider, ISliderBlock } from "types";
+import { ISlider } from "types";
 import Simple from "./Simple";
+export interface ISliderBlock {
+  variant: `simple`;
+  anchor?: string;
+  slider: ISlider;
+}
 
 const variants = {
   simple: Simple,

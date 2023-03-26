@@ -1,6 +1,16 @@
 import { FC } from "react";
-import { IContactSecton } from "types";
+import { IButtonsArray, IForm, IMedia } from "types";
 import SplitBrandPanel from "./SplitBrandPanel";
+
+export interface IContactSecton {
+  variant: `split-brand-panel`;
+  title?: string;
+  description?: string;
+  media?: IMedia;
+  form?: IForm;
+  buttonsArrays?: IButtonsArray[];
+  anchor?: string;
+}
 
 const variants = {
   "split-brand-panel": SplitBrandPanel,

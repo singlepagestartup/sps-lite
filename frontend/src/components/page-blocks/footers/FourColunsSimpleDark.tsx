@@ -3,7 +3,7 @@ const { getImageUrl } = utils.api;
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { IFooter } from "types";
+import { IFooter } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function FourColumnsSimpleDark(props: IFooter) {

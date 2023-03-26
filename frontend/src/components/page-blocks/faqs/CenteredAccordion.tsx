@@ -1,6 +1,4 @@
-import utils from "@rogwild/next-utils";
-import { IFaqs } from "types";
-import ReactMarkdown from "react-markdown";
+import { IFaqs } from ".";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";

@@ -1,4 +1,4 @@
-import { IPricings } from "types";
+import { IPricings } from ".";
 import { useMemo } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";

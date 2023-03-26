@@ -1,8 +1,4 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
-import Image from "next/image";
-import { ICtaSections } from "types";
-import { BACKEND_URL } from "~utils/envs";
+import { ICtaSections } from ".";
 import { useMemo } from "react";
 import Link from "next/link";
 
@@ -23,9 +19,9 @@ export default function SimpleCentered(props: ICtaSections) {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-3">
           <span className="block">{props.title}</span>
         </h2>
-        <span className="block">{props.description}</span>
+        <span className="block">{props?.description}</span>
         <div className="mt-8 flex justify-center items-center flex-wrap">
-          {props.buttons?.map((button, index) => {
+          {props?.buttons?.map((button, index) => {
             return (
               <Link
                 href={button.url}

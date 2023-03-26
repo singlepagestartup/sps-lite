@@ -1,6 +1,12 @@
 import { FC } from "react";
-import { IForms } from "types";
+import { IForm } from "types";
 import Simple from "./Simple";
+
+export interface IForms {
+  variant: `simple`;
+  form: IForm;
+  anchor?: string;
+}
 
 const variants = {
   simple: Simple,

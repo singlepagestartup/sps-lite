@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ILogoCloud } from "types";
+import { ILogoCloud } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";

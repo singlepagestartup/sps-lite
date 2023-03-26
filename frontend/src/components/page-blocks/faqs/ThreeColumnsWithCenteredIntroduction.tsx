@@ -1,4 +1,4 @@
-import { IFaqs } from "types";
+import { IFaqs } from ".";
 export default function ThreeColumnsWithCenteredIntroduction(props: IFaqs) {
   return (
     <div className="bg-white">
@@ -12,7 +12,7 @@ export default function ThreeColumnsWithCenteredIntroduction(props: IFaqs) {
         <div className="mt-12">
           <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 md:space-y-0 lg:grid-cols-3">
             {props.faqs.map((faq, index) => (
-              <div key={index}>
+              <div key={index} className="flex flex-col items-center">
                 <dt className="text-lg font-medium leading-6 text-gray-900">
                   {faq.title}
                 </dt>

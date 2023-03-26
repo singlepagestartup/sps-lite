@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { IFaqs } from "types";
+import { IFaq } from "types";
 import CenteredAccordion from "./CenteredAccordion";
 import CenteredAccordionOnDark from "./CenteredAccordionOnDark";
 import OffsetWithSupportingText from "./OffsetWithSupportingText";
@@ -10,6 +10,14 @@ import ThreeColumnsWithCenteredIntroduction from "./ThreeColumnsWithCenteredIntr
 import TwoColumns from "./TwoColumns";
 import TwoColumnsOnDark from "./TwoColumnsOnDark";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
+
+export interface IFaqs {
+  variant: `centered-accordion`;
+  title: string;
+  description: string;
+  faqs: IFaq[];
+  anchor?: string;
+}
 
 const variants = {
   "centered-accordion": CenteredAccordion,

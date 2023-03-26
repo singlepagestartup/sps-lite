@@ -1,4 +1,4 @@
-import { IHeaderSection } from "types";
+import { IHeaderSection } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";

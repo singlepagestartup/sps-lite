@@ -1,4 +1,4 @@
-import { IHeaderSection } from "types";
+import { IHeaderSection } from ".";
 import ReactMarkdown from "react-markdown";
 import { useMemo } from "react";
 

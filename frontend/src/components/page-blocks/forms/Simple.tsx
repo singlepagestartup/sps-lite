@@ -1,11 +1,5 @@
-import { IFaqs, IForms, ILogoCloud } from "types";
+import { IForms } from ".";
 import ReactMarkdown from "react-markdown";
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
-import { BACKEND_URL } from "~utils/envs";
-import Image from "next/image";
 import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";

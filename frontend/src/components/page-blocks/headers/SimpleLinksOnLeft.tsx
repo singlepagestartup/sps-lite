@@ -13,7 +13,7 @@ export default function SimpleLinksOnLeft(props: IPageProps) {
   const { header } = props;
 
   return (
-    <Disclosure as="nav" className="bg-white shadow fixed z-20 w-screen">
+    <Disclosure as="nav" className="bg-white shadow w-screen">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2">

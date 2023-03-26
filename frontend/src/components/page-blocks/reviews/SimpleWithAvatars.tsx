@@ -15,7 +15,7 @@ const cardsConfig = {
   emptyLength: 3,
   Comp: SimpleWithAvatarCard,
   SkeletonComp: SimpleWithAvatarCardSkeleton,
-  className: `grid gap-4 data-[is-empty="true"]:grid-cols-1 data-[is-empty="false"]:grid-cols-3`,
+  className: `grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8`,
 };
 
 export default function SimpleWithAvatars(props: IReviewsBlock) {

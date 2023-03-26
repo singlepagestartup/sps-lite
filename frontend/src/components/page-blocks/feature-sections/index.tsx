@@ -1,8 +1,17 @@
 import { FC } from "react";
-import { IFeatureSections } from "types";
+import { IFeature, IMedia } from "types";
 import SimpleThreeColumn from "./SimpleThreeColumn";
 import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
 import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
+
+export interface IFeatureSections {
+  features: IFeature[];
+  variant: `simple-three-column`;
+  title: string;
+  description: string;
+  anchor?: string;
+  media?: IMedia[];
+}
 
 const variants = {
   "simple-three-column": SimpleThreeColumn,

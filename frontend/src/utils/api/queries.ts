@@ -23,6 +23,7 @@ export const footerPopulate = {
 
 export const headerPopulate = {
   logo: `*`,
+  position: `*`,
   buttons: {
     populate: {
       buttons: {
@@ -42,6 +43,14 @@ export const headerPopulate = {
   },
   profile_buttons: {
     populate: buttonPopulate,
+  },
+  topbar: {
+    populate: {
+      title: `*`,
+      buttons: {
+        populate: buttonPopulate,
+      },
+    },
   },
 };
 

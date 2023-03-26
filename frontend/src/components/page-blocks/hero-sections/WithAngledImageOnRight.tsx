@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IHeroSection } from "types";
+import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
@@ -15,6 +15,7 @@ const navigation = [
 export default function WithAngledImageOnRight(props: IHeroSection) {
   return (
     <div className="relative overflow-hidden bg-white">
+      <div className="max-w-7xl relative mx-auto">
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 bg-white pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
           <svg
@@ -52,7 +53,7 @@ export default function WithAngledImageOnRight(props: IHeroSection) {
           </main>
         </div>
       </div>
-      <div className="relative pb-[100%] lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <div className="relative pb-[100%] lg:pb-[60%] lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         {props?.media?.length ? (
           <Image
             src={getImageUrl(props.media[0], { BACKEND_URL })}
@@ -61,6 +62,7 @@ export default function WithAngledImageOnRight(props: IHeroSection) {
           />
         ) : null}
       </div>
+    </div>
     </div>
   );
 }

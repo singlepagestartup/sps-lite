@@ -2,11 +2,9 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
-import { IArticle, IFeature, IFeatureSections } from "types";
+import { IFeature } from "types";
+import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
-import { StarIcon } from "@heroicons/react/20/solid";
-import ReactMarkdown from "react-markdown";
-import dayjs from "dayjs";
 import { useMemo } from "react";
 
 export default function ThreeColumnWithSlider(props: IFeatureSections) {
@@ -51,7 +49,7 @@ function Feature({
     <div
       className={`${className} ${!isActive && `opacity-75 hover:opacity-100`}`}
     >
-      {feature.icon ? (
+      {feature?.icon ? (
         <div className="w-1/3 relative aspect-w-3 aspect-h-1">
           <Image
             src={getImageUrl(feature.icon, { BACKEND_URL })}
@@ -66,20 +64,20 @@ function Feature({
           ${isActive ? `text-blue-600` : `text-slate-600`}
         `}
       >
-        {feature.subtitle}
+        {feature?.subtitle}
       </h3>
       <p className="mt-2 font-display text-xl text-slate-900">
-        {feature.title}
+        {feature?.title}
       </p>
-      <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
+      <p className="mt-4 text-sm text-slate-600">{feature?.description}</p>
     </div>
   );
 }
 
 function FeaturesMobile({ features }: { features: IFeature[] }) {
   return (
-    <div className="-mx-4 mt-20 flex flex-col gap-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden">
-      {features.map((feature, index) => (
+    <div className="mt-20 flex flex-col gap-y-10 overflow-hidden px-4 sm:px-6 lg:hidden">
+      {features?.map((feature, index) => (
         <div key={index} className="px-2">
           <Feature feature={feature} className="mx-auto max-w-2xl" isActive />
           <div className="relative mt-10 pb-10">
@@ -108,7 +106,7 @@ function FeaturesDesktop({ features }: { features: IFeature[] }) {
         <>
           <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <Tab.List className="grid grid-cols-3 gap-x-8">
-              {features.map((feature, featureIndex) => (
+              {features?.map((feature, featureIndex) => (
                 <Tab key={featureIndex} as="div" className="cursor-pointer">
                   <Feature
                     feature={feature}

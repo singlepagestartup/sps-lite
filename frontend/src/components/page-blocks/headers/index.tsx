@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { IHeaderSection, IPageProps } from "types";
+import { IPageProps } from "types";
+import Topbar from "~components/topbar";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 
 const variants = {
@@ -7,6 +8,7 @@ const variants = {
 };
 
 export default function HeaderSections(props: IPageProps) {
+  console.log(props);
   const Comp = variants[
     props.header.variant as keyof typeof variants
   ] as FC<IPageProps>;
@@ -15,5 +17,10 @@ export default function HeaderSections(props: IPageProps) {
     return <></>;
   }
 
-  return <Comp {...props} />;
+  return (
+    <div className={`z-30 ${props.header.position}`}>
+      {props.header?.topbar ? <Topbar {...props.header?.topbar} /> : null}
+      <Comp {...props} />
+    </div>
+  );
 }
