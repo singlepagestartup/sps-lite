@@ -20,13 +20,18 @@ export interface IIncentives {
 
 const variants = {
   "four-column-with-illustrations": FourColumnWithIllustrations,
-  "three-column-with-illustrations-and-split-header":ThreeColumnWithIllustrationsAndSplitHeader,
-  "three-column-with-illustrations-and-heading": ThreeColumnWithIllustrationsAndHeading,
-  "three-column-with-illustrations-and-header": ThreeColumnWithIllustrationsAndHeader,
-  "three-column-with-illustrations-and-centered-text":ThreeColumnWithIllustrationsAndCenteredText,
-  "three-column-with-icons":ThreeColumnWithIcons,
-  "three-column-with-icons-and-supporting-text":ThreeColumnWithIconsAndSupportingText,
-  "two-x-two-grid-with-illustrations":TwoXTwoGridWithIllustrations,
+  "three-column-with-illustrations-and-split-header":
+    ThreeColumnWithIllustrationsAndSplitHeader,
+  "three-column-with-illustrations-and-heading":
+    ThreeColumnWithIllustrationsAndHeading,
+  "three-column-with-illustrations-and-header":
+    ThreeColumnWithIllustrationsAndHeader,
+  "three-column-with-illustrations-and-centered-text":
+    ThreeColumnWithIllustrationsAndCenteredText,
+  "three-column-with-icons": ThreeColumnWithIcons,
+  "three-column-with-icons-and-supporting-text":
+    ThreeColumnWithIconsAndSupportingText,
+  "two-x-two-grid-with-illustrations": TwoXTwoGridWithIllustrations,
 };
 
 export default function Incentives(props: IIncentives) {

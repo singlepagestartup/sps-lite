@@ -1,24 +1,22 @@
 {
-  "collectionName": "components_page_blocks_topbars",
-  "info": {
-    "displayName": "Topbar Block",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_page_blocks_topbars",
+    "info": {
+        "displayName": "Topbar Block",
+        "description": ""
     },
-    "buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.button"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "simple"
-      ]
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"]
+        }
     }
-  }
 }

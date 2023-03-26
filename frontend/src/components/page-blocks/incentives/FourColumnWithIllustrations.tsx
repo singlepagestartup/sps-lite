@@ -21,7 +21,10 @@ export default function FourColumnWithIllustrations(props: IIncentives) {
       <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
           {props.features.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-center lg:items-start">
+            <div
+              key={feature.title}
+              className="flex flex-col items-center lg:items-start"
+            >
               <Image
                 src={getImageUrl(feature.icon, { BACKEND_URL })}
                 height={100}

@@ -1,54 +1,44 @@
 {
-  "collectionName": "components_elements_buttons",
-  "info": {
-    "displayName": "Button",
-    "icon": "closed-captioning",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "url": {
-      "type": "text"
+    "collectionName": "components_elements_buttons",
+    "info": {
+        "displayName": "Button",
+        "icon": "closed-captioning",
+        "description": ""
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "bottom-line",
-        "primary",
-        "default"
-      ],
-      "default": "default",
-      "required": true
-    },
-    "hover_icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "title": {
-      "type": "richtext"
-    },
-    "additional_attributes": {
-      "type": "json"
-    },
-    "class_name": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "url": {
+            "type": "text"
+        },
+        "icon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files"]
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["bottom-line", "primary", "default"],
+            "default": "default",
+            "required": true
+        },
+        "hover_icon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images", "files"]
+        },
+        "title": {
+            "type": "richtext"
+        },
+        "additional_attributes": {
+            "type": "json"
+        },
+        "class_name": {
+            "type": "string"
+        }
     }
-  }
 }

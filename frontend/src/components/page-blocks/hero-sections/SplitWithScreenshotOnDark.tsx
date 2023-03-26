@@ -29,45 +29,45 @@ export default function SplitWithScreenshotOnDark(props: IHeroSection) {
           className="absolute hidden h-full w-full lg:block"
         />
         <div className="max-w-7xl relative mx-auto">
-        <div className="relative bg-transparent">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
-            <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
-              <div className="lg:pr-16">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-50 sm:text-5xl xl:text-6xl">
-                  {props.title}
-                </h1>
-                <ReactMarkdown className="mt-4 text-xl text-gray-300">
-                  {props.description}
-                </ReactMarkdown>
-                <div className="mt-6 flex gap-2 flex-wrap">
-                  {props.buttons?.map((button, index) => {
-                    return (
-                      <Link
-                        key={index}
-                        href={button.url}
-                        className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700"
-                      >
-                        {button.title}
-                      </Link>
-                    );
-                  })}
+          <div className="relative bg-transparent">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
+              <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
+                <div className="lg:pr-16">
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-50 sm:text-5xl xl:text-6xl">
+                    {props.title}
+                  </h1>
+                  <ReactMarkdown className="mt-4 text-xl text-gray-300">
+                    {props.description}
+                  </ReactMarkdown>
+                  <div className="mt-6 flex gap-2 flex-wrap">
+                    {props.buttons?.map((button, index) => {
+                      return (
+                        <Link
+                          key={index}
+                          href={button.url}
+                          className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700"
+                        >
+                          {button.title}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2">
-          <div className="relative h-full w-full object-cover object-center">
-            {props.media?.length ? (
-              <Image
-                src={getImageUrl(props.media[0], { BACKEND_URL })}
-                alt=""
-                fill={true}
-                className="object-cover object-center"
-              />
-            ) : null}
+          <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2">
+            <div className="relative h-full w-full object-cover object-center">
+              {props.media?.length ? (
+                <Image
+                  src={getImageUrl(props.media[0], { BACKEND_URL })}
+                  alt=""
+                  fill={true}
+                  className="object-cover object-center"
+                />
+              ) : null}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,12 @@
-import { useState, Fragment, useEffect, useMemo, FC, SetStateAction, Dispatch } from "react";
+import {
+  useState,
+  Fragment,
+  useEffect,
+  useMemo,
+  FC,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { IModal } from "types";

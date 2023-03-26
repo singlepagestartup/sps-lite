@@ -1,53 +1,48 @@
 {
-  "collectionName": "components_page_blocks_incentives_blocks",
-  "info": {
-    "displayName": "Incentives Block",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "richtext"
+    "collectionName": "components_page_blocks_incentives_blocks",
+    "info": {
+        "displayName": "Incentives Block",
+        "description": ""
     },
-    "description": {
-      "type": "richtext"
-    },
-    "features": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.feature"
-    },
-    "anchor": {
-      "type": "string"
-    },
-    "class_name": {
-      "type": "string"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "four-column-with-illustrations",
-        "three-column-with-illustrations-and-split-header",
-        "three-column-with-illustrations-and-heading",
-        "three-column-with-illustrations-and-header",
-        "three-column-with-illustrations-and-centered-text",
-        "three-column-with-icons",
-        "three-column-with-icons-and-supporting-text",
-        "two-x-two-grid-with-illustrations"
-      ],
-      "default": "four-column-with-illustrations",
-      "required": true
-    },
-    "media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "richtext"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "features": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.feature"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": [
+                "four-column-with-illustrations",
+                "three-column-with-illustrations-and-split-header",
+                "three-column-with-illustrations-and-heading",
+                "three-column-with-illustrations-and-header",
+                "three-column-with-illustrations-and-centered-text",
+                "three-column-with-icons",
+                "three-column-with-icons-and-supporting-text",
+                "two-x-two-grid-with-illustrations"
+            ],
+            "default": "four-column-with-illustrations",
+            "required": true
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        }
     }
-  }
 }
