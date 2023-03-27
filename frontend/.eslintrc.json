@@ -4,10 +4,7 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "next",
-    "plugin:storybook/recommended"
-  ],
+  "extends": ["next", "plugin:storybook/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,58 +13,24 @@
     "ecmaVersion": 2021,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
-    "comma-dangle": [
-      "off"
-    ],
-    "quotes": [
-      "warn",
-      "backtick"
-    ],
-    "semi": [
-      "off"
-    ],
-    "react/react-in-jsx-scope": [
-      "off"
-    ],
-    "no-empty-pattern": [
-      "off"
-    ],
-    "react/display-name": [
-      "off"
-    ],
-    "react/prop-types": [
-      "off"
-    ],
-    "array-callback-return": [
-      "off"
-    ],
-    "indent": [
-      "off"
-    ],
-    "multiline-ternary": [
-      "off"
-    ],
-    "no-loss-of-precision": [
-      "off"
-    ],
-    "@typescript-eslint/no-empty-function": [
-      "off"
-    ],
-    "@typescript-eslint/no-non-null-asserted-optional-chain": [
-      "warn"
-    ],
-    "@typescript-eslint/ban-ts-comment": [
-      "warn"
-    ]
+    "comma-dangle": ["off"],
+    "quotes": ["warn", "backtick"],
+    "semi": ["off"],
+    "react/react-in-jsx-scope": ["off"],
+    "no-empty-pattern": ["off"],
+    "react/display-name": ["off"],
+    "react/prop-types": ["off"],
+    "array-callback-return": ["off"],
+    "indent": ["off"],
+    "multiline-ternary": ["off"],
+    "no-loss-of-precision": ["off"],
+    "@typescript-eslint/no-empty-function": ["off"],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
+    "@typescript-eslint/ban-ts-comment": ["warn"]
   },
-  "ignorePatterns": [
-    "public/*"
-  ]
+  "ignorePatterns": ["public/*"]
 }
