@@ -1,22 +1,34 @@
 import { Meta, StoryObj } from "@storybook/react";
 import ButtonsArrays from ".";
-import { baseProps } from "../simple-buttons/SimpleButton.stories";
+import { IButton } from "../simple-buttons";
+import { baseProps as baseButtonProps } from "../simple-buttons/SimpleButton.stories";
 
 const meta = { component: ButtonsArrays } satisfies Meta<typeof ButtonsArrays>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const baseProps = {
+  title: `Buttons Array`,
+  buttons: [
+    { ...baseButtonProps, variant: `default` } as IButton,
+    {
+      ...baseButtonProps,
+      variant: `default`,
+    } as IButton,
+  ],
+};
+
 export const Simple: Story = {
   args: {
-    title: `Buttons Array`,
+    ...baseProps,
     variant: `simple`,
-    buttons: [
-      { ...baseProps, variant: `default` },
-      {
-        ...baseProps,
-        variant: `default`,
-      },
-    ],
+  },
+};
+
+export const Dropdown: Story = {
+  args: {
+    ...baseProps,
+    variant: `dropdown`,
   },
 };

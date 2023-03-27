@@ -7,11 +7,11 @@ import Primary from "./Primary";
 
 export interface IButton {
   title: string;
+  variant: keyof typeof variants;
   url?: string;
   onClick?: any;
   description?: string;
   icon?: IMedia;
-  variant: keyof typeof variants;
   className?: string;
   additionalAttributes?: any;
 }

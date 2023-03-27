@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import SimpleButtons from ".";
+import SimpleButtons, { IButton } from ".";
 
 const meta = { component: SimpleButtons } satisfies Meta<typeof SimpleButtons>;
 
@@ -21,16 +21,14 @@ export const Default: Story = {
 
 export const Primary = {
   args: {
-    title: `Button`,
-    url: `https://nextjs.com`,
+    ...baseProps,
     variant: `primary`,
   },
 };
 
 export const BottomLine = {
   args: {
-    title: `Button`,
-    url: `https://nextjs.com`,
+    ...baseProps,
     variant: `bottom-line`,
   },
 };
