@@ -31,7 +31,7 @@ button:focus {
 
 @layer components {
   .button-default {
-    @apply inline-flex items-center rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50;
+    @apply inline-flex w-full justify-center items-center rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50;
   }
 
   .button-primary {
@@ -39,7 +39,7 @@ button:focus {
   }
 
   .button-bottom-line {
-    @apply inline-flex w-full h-full lg:w-fit items-center lg:border-b-2 px-2 py-4 lg:px-1 lg:py-1 text-sm font-medium aria-[selected='true']:border-primary-500 aria-[selected='true']:text-gray-900;
+    @apply inline-flex w-full h-full justify-center lg:w-fit items-center lg:border-b-2 px-2 py-4 lg:px-1 lg:py-1 text-sm font-medium aria-[selected='true']:border-primary-500 aria-[selected='true']:text-gray-900;
   }
 
   .table__container {

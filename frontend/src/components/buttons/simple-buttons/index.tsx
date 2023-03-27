@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IButton } from "types";
+import ClientOnly from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
@@ -14,8 +15,12 @@ export default function SimpleButtons(props: IButton) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<IButton>;
 
   if (!Comp) {
-    return <Default {...props} />;
+    return <></>;
   }
 
-  return <Comp {...props} />;
+  return (
+    <ClientOnly>
+      <Comp {...props} />
+    </ClientOnly>
+  );
 }

@@ -9,12 +9,13 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { IButtonsArray } from "types";
 import Link from "next/link";
+import Buttons from "..";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
 }
 
-export default function SimpleButtonsArray(props: IButtonsArray) {
+export default function Dropdown(props: IButtonsArray) {
   const { title, buttons } = props;
 
   return (
@@ -48,20 +49,9 @@ export default function SimpleButtonsArray(props: IButtonsArray) {
             <Popover.Panel className="absolute left-1/2 z-10 mt-16 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                  {buttons?.map((button, index) => (
-                    <Link
-                      key={index}
-                      href={button.url}
-                      className="-m-3 block rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50"
-                    >
-                      <p className="text-base font-medium text-gray-900">
-                        {button.title}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {button.description}
-                      </p>
-                    </Link>
-                  ))}
+                  {buttons?.map((button, index) => {
+                    return <Buttons key={index} {...button} />;
+                  })}
                 </div>
               </div>
             </Popover.Panel>

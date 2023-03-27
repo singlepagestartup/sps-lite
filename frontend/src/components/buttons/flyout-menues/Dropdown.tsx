@@ -1,20 +1,8 @@
 import { Fragment, useState } from "react";
-import {
-  Dialog,
-  Disclosure,
-  Menu,
-  Popover,
-  Transition,
-} from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import { IButtonsArray } from "types";
-
-export interface IFlyoutMenu {
-  title: string;
-  buttonsArrays: IButtonsArray[];
-  _Component: `elements.flyout-menu`;
-}
+import ButtonsArrays from "../buttons-arrays";
+import { IFlyoutMenu } from ".";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
@@ -57,22 +45,9 @@ export default function FlyoutMenu(props: IFlyoutMenu) {
                   return (
                     <div
                       key={index}
-                      className="relative min-w-[200px] grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8"
+                      className="relative min-w-[200px] grid gap-3 bg-white p-4"
                     >
-                      {buttonsArray?.buttons?.map((button, index) => (
-                        <Link
-                          key={index}
-                          href={button.url}
-                          className="-m-3 block rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50"
-                        >
-                          <p className="text-base font-medium text-gray-900">
-                            {button.title}
-                          </p>
-                          <p className="mt-1 text-sm text-gray-500">
-                            {button.description}
-                          </p>
-                        </Link>
-                      ))}
+                      <ButtonsArrays {...buttonsArray} />
                     </div>
                   );
                 })}

@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { IButtons } from "types";
-import SimpleButtons from "./SimpleButtons";
-import ButtonsArray from "./ButtonsArray";
-import FlyoutMenu from "./FlyoutMenu";
+import SimpleButtons from "./simple-buttons";
+import ButtonsArrays from "./buttons-arrays";
+import FlyoutMenues from "./flyout-menues";
 
 const components = {
-  "elements.buttons-array": ButtonsArray,
+  "elements.buttons-array": ButtonsArrays,
   "elements.button": SimpleButtons,
-  "elements.flyout-menu": FlyoutMenu,
+  "elements.flyout-menu": FlyoutMenues,
 };
 
 export default function Buttons(props: IButtons) {

@@ -28,7 +28,7 @@
             "type": "enumeration",
             "enum": ["simple"],
             "default": "simple",
-            "required": false
+            "required": true
         },
         "description": {
             "type": "richtext"

@@ -21,6 +21,12 @@
         },
         "class_name": {
             "type": "string"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["dropdown"],
+            "default": "dropdown",
+            "required": true
         }
     }
 }

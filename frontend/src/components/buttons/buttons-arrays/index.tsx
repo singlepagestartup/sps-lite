@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { IButtonsArray } from "types";
-import SimpleButtonsArray from "./SimpleButtonsArray";
+import Dropdown from "./Dropdown";
+import Simple from "./Simple";
 
-const variants = { simple: SimpleButtonsArray };
+const variants = { simple: Simple, dropdown: Dropdown };
 
-export default function SimpleButtons(props: IButtonsArray) {
+export default function ButtonsArrays(props: IButtonsArray) {
   const Comp = variants[
     props.variant as keyof typeof variants
   ] as FC<IButtonsArray>;
 
   if (!Comp) {
-    return <SimpleButtonsArray {...props} />;
+    return <></>;
   }
 
   return <Comp {...props} />;

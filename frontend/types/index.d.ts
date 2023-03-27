@@ -108,7 +108,7 @@ export interface IPageBlocksProps {
 
 export interface IButtonsArray {
   title: string;
-  buttons: IButtons[];
+  buttons: IButton[];
   description?: string;
   className: string;
   variant: `column`;

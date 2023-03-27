@@ -5,9 +5,16 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { IFooter } from ".";
 import { BACKEND_URL } from "~utils/envs";
+import ButtonsArrays from "~components/buttons/buttons-arrays";
 
 export default function FourColumnsSimpleDark(props: IFooter) {
-  const { buttonsArrays, socialNetworksButtons, description, logo } = props;
+  const {
+    buttonsArrays,
+    socialNetworksButtons,
+    description,
+    logo,
+    policiesButtons,
+  } = props;
 
   return (
     <footer
@@ -40,26 +47,8 @@ export default function FourColumnsSimpleDark(props: IFooter) {
 
             {/* Sitemap sections */}
             <div className="w-3/5 flex justify-end gap-4">
-              {buttonsArrays.map((buttonArray, index) => {
-                return (
-                  <div key={index} className="w-full">
-                    <h3 className="text-sm font-medium text-gray-50">
-                      {buttonArray.title}
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-6">
-                      {buttonArray.buttons.map((button, bIndex) => (
-                        <li key={bIndex} className="text-sm">
-                          <Link
-                            href={button.url}
-                            className="text-gray-200 hover:text-gray-300"
-                          >
-                            {button.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
+              {buttonsArrays.map((buttonsArray, index) => {
+                return <ButtonsArrays key={index} {...buttonsArray} />;
               })}
             </div>
           </div>
@@ -71,25 +60,10 @@ export default function FourColumnsSimpleDark(props: IFooter) {
           </ReactMarkdown>
           <div className="flex space-x-6 md:order-2">
             {socialNetworksButtons.map((buttonsArray, index) => {
-              return buttonsArray.buttons.map((button, bIndex) => (
-                <a
-                  key={bIndex}
-                  href={button.url}
-                  className="text-gray-50 hover:text-gray-100"
-                >
-                  <span className="sr-only">{button.title}</span>
-                  {button.icon ? (
-                    <div className="relative w-6 h-6">
-                      <Image
-                        src={getImageUrl(button.icon, { BACKEND_URL })}
-                        alt=""
-                        className="object-contan"
-                        fill={true}
-                      />
-                    </div>
-                  ) : null}
-                </a>
-              ));
+              return <ButtonsArrays key={index} {...buttonsArray} />;
+            })}
+            {policiesButtons.map((buttonsArray, index) => {
+              return <ButtonsArrays key={index} {...buttonsArray} />;
             })}
           </div>
         </div>
