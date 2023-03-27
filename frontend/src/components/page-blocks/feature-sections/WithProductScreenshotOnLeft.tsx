@@ -3,12 +3,10 @@ const { getImageUrl } = utils.api;
 import Image from "next/image";
 import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
-import { StarIcon } from "@heroicons/react/20/solid";
-import ReactMarkdown from "react-markdown";
-import dayjs from "dayjs";
 import { useMemo } from "react";
 
 export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
+  //
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -21,38 +19,43 @@ export default function WithProductScreenshotOnLeft(props: IFeatureSections) {
 
   return (
     <div className="bg-white py-12" {...additionalAttributes}>
-      <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 gap-6 flex flex-col-reverse justify-center lg:grid lg:grid-cols-2">
-        <div className="relative overflow-hidden aspect-w-2 aspect-h-3">
-          {props?.media?.length ? (
+      <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="col-span-2 relative overflow-hidden aspect-w-2 aspect-h-2 rounded-xl">
+          {props.media?.length ? (
             <Image
               src={getImageUrl(props.media[0], { BACKEND_URL })}
               alt=""
-              className="object-contain object-left"
+              className="object-left"
               fill={true}
             />
           ) : null}
         </div>
-        <div className="">
-          <div className="lg:col-span-1 mb-3">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {props?.title}
-            </h2>
-          </div>
-          <p className="mb-6">{props?.description}</p>
-          <dl className="flex flex-col gap-3">
+        <div className="col-span-2">
+          <h2 className="text-lg font-semibold text-indigo-600">
+            {props?.title}
+          </h2>
+          <p className="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+            {props?.subtitle}
+          </p>
+          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+            {props.description}
+          </p>
+          <dl className="flex flex-col gap-3 mt-4">
             {props.features.map((feature, index) => (
               <div key={index}>
-                <div>
-                  {feature?.icon ? (
-                    <Image
-                      src={getImageUrl(feature.icon, { BACKEND_URL })}
-                      height={100}
-                      width={100}
-                      alt=""
-                      className="object-contain"
-                    />
+                <div className="flex items-center gap-4">
+                  {feature.media ? (
+                    <div className="w-10">
+                      <Image
+                        src={getImageUrl(feature.media[0], { BACKEND_URL })}
+                        height={100}
+                        width={100}
+                        alt=""
+                        className="object-contain"
+                      />
+                    </div>
                   ) : null}
-                  <p className="mt-5 text-lg font-medium leading-6 text-gray-900">
+                  <p className="text-lg font-medium leading-6 text-gray-900">
                     {feature.title}
                   </p>
                 </div>

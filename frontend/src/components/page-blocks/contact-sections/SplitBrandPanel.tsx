@@ -8,6 +8,8 @@ import { IContactSecton } from ".";
 import useTranslations from "~hooks/use-translations";
 import { BACKEND_URL } from "~utils/envs";
 import Forms from "../forms";
+import SimpleButtons from "~components/buttons/simple-buttons";
+import ButtonsArrays from "~components/buttons/buttons-arrays";
 
 export default function SplitBrandPanel(props: IContactSecton) {
   const additionalAttributes = useMemo(() => {
@@ -128,42 +130,7 @@ export default function SplitBrandPanel(props: IContactSecton) {
               </div>
 
               {props.buttonsArrays?.map((buttonArray, index) => {
-                return (
-                  <div key={index}>
-                    <h3 className="text-lg font-medium text-white">
-                      {buttonArray.title}
-                    </h3>
-                    {buttonArray.description ? (
-                      <ReactMarkdown className="mt-6 max-w-3xl text-base text-indigo-50">
-                        {buttonArray.description}
-                      </ReactMarkdown>
-                    ) : null}
-                    <div className="mt-8 space-y-6">
-                      {buttonArray?.buttons?.map((button, bIndex) => {
-                        return (
-                          <Link
-                            key={bIndex}
-                            href={button.url}
-                            className="w-fit flex text-base text-indigo-50 hover:text-white duration-200"
-                          >
-                            {button.icon ? (
-                              <Image
-                                alt=""
-                                src={getImageUrl(button.icon, {
-                                  BACKEND_URL,
-                                })}
-                                width={24}
-                                height={24}
-                                className="flex-shrink-0"
-                              />
-                            ) : null}
-                            <span className="ml-3">{button.title}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
+                return <ButtonsArrays key={index} {...buttonArray} />;
               })}
             </div>
 

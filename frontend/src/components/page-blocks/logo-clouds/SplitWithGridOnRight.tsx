@@ -4,6 +4,7 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function SplitWithGridOnRight(props: ILogoCloud) {
   return (
@@ -19,15 +20,7 @@ export default function SplitWithGridOnRight(props: ILogoCloud) {
             </p>
             <div className="mt-8 sm:flex">
               {props.buttons?.map((button, index) => {
-                return (
-                  <Link
-                    key={index}
-                    href={button.url}
-                    className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 font-medium text-white hover:bg-indigo-700"
-                  >
-                    {button.title}
-                  </Link>
-                );
+                return <SimpleButtons key={index} {...button} />;
               })}
             </div>
           </div>

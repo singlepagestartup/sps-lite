@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -15,12 +16,13 @@ export default function RangeInput(props: IInputProps) {
     initialValue,
     type = `text`,
     rows,
-    translate,
     valueAsNumber,
     step,
     min,
     max,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {

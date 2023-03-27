@@ -4,12 +4,13 @@ import Image from "next/image";
 import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: `Product`, href: `#` },
+  { name: `Features`, href: `#` },
+  { name: `Marketplace`, href: `#` },
+  { name: `Company`, href: `#` },
 ];
 
 export default function WithAngledImageOnRight(props: IHeroSection) {
@@ -38,15 +39,7 @@ export default function WithAngledImageOnRight(props: IHeroSection) {
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   {props.buttons?.map((button, index) => {
-                    return (
-                      <Link
-                        key={index}
-                        href={button.url}
-                        className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 font-medium text-white hover:bg-indigo-700"
-                      >
-                        {button.title}
-                      </Link>
-                    );
+                    return <SimpleButtons key={index} {...button} />;
                   })}
                 </div>
               </div>

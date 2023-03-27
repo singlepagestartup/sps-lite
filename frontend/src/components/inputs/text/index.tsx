@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -15,12 +16,14 @@ export default function TextInput(props: IInputProps) {
     initialValue,
     type = `text`,
     rows,
-    translate,
     valueAsNumber,
     step,
     min,
     max,
+    disabled,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const htmlNodeId = useMemo(() => {
@@ -102,6 +105,7 @@ export default function TextInput(props: IInputProps) {
 
               onChange(e);
             }}
+            disabled={disabled}
             onBlur={onBlur}
             value={value !== undefined ? value : ``}
             ref={(e) => {
@@ -119,6 +123,7 @@ export default function TextInput(props: IInputProps) {
         ) : (
           <input
             type={valueAsNumber ? `number` : type || `text`}
+            disabled={disabled}
             onChange={(e) => {
               if (valueAsNumber) {
                 onChange(+e.target.value);

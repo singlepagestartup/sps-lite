@@ -16,7 +16,9 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": ["simple"]
+            "enum": ["simple"],
+            "required": true,
+            "default": "simple"
         }
     }
 }

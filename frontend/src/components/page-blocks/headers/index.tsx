@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IPageProps } from "types";
-import Topbar from "~components/topbar";
+import Topbar from "~components/page-blocks/topbar";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 
 const variants = {
@@ -8,7 +8,6 @@ const variants = {
 };
 
 export default function HeaderSections(props: IPageProps) {
-  console.log(props);
   const Comp = variants[
     props.header.variant as keyof typeof variants
   ] as FC<IPageProps>;

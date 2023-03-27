@@ -7,6 +7,7 @@ import utils from "@rogwild/next-utils";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Modals from "~components/modals";
+import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 
 const { GTMPageView, loadScripts } = utils.vanilla;
 
@@ -42,12 +43,14 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className="relative">
-      <Provider store={store}>
-        <Component {...pageProps} />
-        <div id="modal" />
-        <div id="notification" />
-        <Modals />
-      </Provider>
+      <TranslationsContextWrapper>
+        <Provider store={store}>
+          <Component {...pageProps} />
+          <div id="modal" />
+          <div id="notification" />
+          <Modals />
+        </Provider>
+      </TranslationsContextWrapper>
     </div>
   );
 }

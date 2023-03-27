@@ -1,6 +1,6 @@
 import { ICtaSections } from ".";
 import { useMemo } from "react";
-import Link from "next/link";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function SimpleCentered(props: ICtaSections) {
   const additionalAttributes = useMemo(() => {
@@ -22,15 +22,7 @@ export default function SimpleCentered(props: ICtaSections) {
         <span className="block">{props?.description}</span>
         <div className="mt-8 flex justify-center items-center flex-wrap">
           {props?.buttons?.map((button, index) => {
-            return (
-              <Link
-                href={button.url}
-                key={index}
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
-              >
-                Get started
-              </Link>
-            );
+            return <SimpleButtons key={index} {...button} />;
           })}
         </div>
       </div>

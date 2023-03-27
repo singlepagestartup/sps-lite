@@ -3,6 +3,7 @@ import { ErrorOption, useFieldArray, useFormContext } from "react-hook-form";
 import Inputs, { IInputProps } from "..";
 import { getInputErrors } from "~utils/forms";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 
 export interface IInsideComponentProps {
   translate?: (message: string) => string;
@@ -143,9 +144,10 @@ export default function RepeatableInput(props: IInputProps) {
     baseKey = props.name,
     removeButtonTitle,
     addButtonTitle,
-    translate,
     InsideComponent,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const htmlNodeId = useMemo(() => {
     return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);

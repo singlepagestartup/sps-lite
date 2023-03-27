@@ -43,6 +43,7 @@ export interface IInputProps extends UseControllerProps {
   step?: number;
   min?: number;
   max?: number;
+  disabled?: boolean;
 }
 
 export interface IInputsProps extends IInputProps {

@@ -2,6 +2,7 @@ import { Transition, Listbox } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Fragment, useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -26,9 +27,10 @@ export default function ListboxInput(props: IInputProps) {
     OptionComp = DefaultOption,
     by,
     multiple,
-    translate,
     renderOptionValue,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {

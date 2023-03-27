@@ -1,6 +1,7 @@
 import { RadioGroup } from "@headlessui/react";
 import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -14,9 +15,10 @@ export default function RadioGroupInput(props: IInputProps) {
     initialValue,
     by,
     className,
-    translate,
     renderOptionValue,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {

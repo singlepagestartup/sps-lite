@@ -3,6 +3,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
 
@@ -15,8 +16,10 @@ export default function SwitchInput(props: IInputProps) {
     defaultValue = false,
     initialValue = false,
     className,
-    translate,
+    disabled,
   } = props;
+
+  const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
@@ -65,7 +68,11 @@ export default function SwitchInput(props: IInputProps) {
           as="div"
           // role="button"
           checked={value !== undefined && value !== `` ? value : false}
-          onChange={onChange}
+          onChange={(e) => {
+            if (!disabled) {
+              onChange(e);
+            }
+          }}
           id={htmlNodeId}
           ref={(e: any) => {
             if (e) {

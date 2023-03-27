@@ -7,7 +7,7 @@ import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
 
 export interface ILogoCloud {
-  variant: `simple`;
+  variant: keyof typeof variants;
   title: string;
   logos: ILogo[];
   buttons?: IButton[];

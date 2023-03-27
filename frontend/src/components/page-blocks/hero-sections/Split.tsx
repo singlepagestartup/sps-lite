@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { IHeroSection } from ".";
 import { BACKEND_URL } from "~utils/envs";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function Split(props: IHeroSection) {
   const additionalAttributes = useMemo(() => {
@@ -41,15 +42,7 @@ export default function Split(props: IHeroSection) {
                   </ReactMarkdown>
                   <div className="mt-6 flex gap-2 flex-wrap">
                     {props.buttons?.map((button, index) => {
-                      return (
-                        <Link
-                          key={index}
-                          href={button.url}
-                          className="inline-block rounded-md border border-transparent bg-primary-600 py-3 px-8 font-medium text-white hover:bg-primary-700"
-                        >
-                          {button.title}
-                        </Link>
-                      );
+                      return <SimpleButtons key={index} {...button} />;
                     })}
                   </div>
                 </div>

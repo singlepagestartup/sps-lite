@@ -8,6 +8,7 @@ export interface IFeatureSections {
   features: IFeature[];
   variant: `simple-three-column`;
   title: string;
+  subtitle: string;
   description: string;
   anchor?: string;
   media?: IMedia[];

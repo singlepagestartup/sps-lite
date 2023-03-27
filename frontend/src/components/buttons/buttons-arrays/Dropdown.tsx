@@ -1,15 +1,8 @@
-import { Fragment, useState } from "react";
-import {
-  Dialog,
-  Disclosure,
-  Menu,
-  Popover,
-  Transition,
-} from "@headlessui/react";
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { IButtonsArray } from "types";
-import Link from "next/link";
-import Buttons from "..";
+import SimpleButtons from "../simple-buttons";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
@@ -50,7 +43,7 @@ export default function Dropdown(props: IButtonsArray) {
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   {buttons?.map((button, index) => {
-                    return <Buttons key={index} {...button} />;
+                    return <SimpleButtons key={index} {...button} />;
                   })}
                 </div>
               </div>

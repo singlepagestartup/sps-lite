@@ -4,6 +4,7 @@ const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
+import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { BACKEND_URL } from "~utils/envs";
 import { getInputErrors } from "~utils/forms";
 import { IInputProps } from "..";
@@ -22,8 +23,9 @@ export default function FileInput(props: IInputProps) {
     ButtonComp = DefaultButton,
     index,
     type = `file`,
-    translate,
   } = props;
+
+  const translate = useTranslationsContext();
 
   // console.log(`🚀 ~ FileInput ~ initialValue`, initialValue);
 

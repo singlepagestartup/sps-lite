@@ -4,6 +4,7 @@ const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
 import { IHeroSection } from ".";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function SimpleCentered(props: IHeroSection) {
   return (
@@ -28,15 +29,7 @@ export default function SimpleCentered(props: IHeroSection) {
             </p>
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
               {props?.buttons?.map((button, index) => {
-                return (
-                  <Link
-                    key={index}
-                    href={button.url}
-                    className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 font-medium text-white hover:bg-indigo-700"
-                  >
-                    {button?.title}
-                  </Link>
-                );
+                return <SimpleButtons key={index} {...button} />;
               })}
             </div>
           </div>

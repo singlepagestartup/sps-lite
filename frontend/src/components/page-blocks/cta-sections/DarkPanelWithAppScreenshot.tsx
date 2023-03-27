@@ -5,6 +5,7 @@ import { ICtaSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
 import Link from "next/link";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function DarkPanelWithAppScreenshot(props: ICtaSections) {
   const additionalAttributes = useMemo(() => {
@@ -50,15 +51,7 @@ export default function DarkPanelWithAppScreenshot(props: ICtaSections) {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               {props?.buttons?.map((button, index) => {
-                return (
-                  <Link
-                    href={button.url}
-                    key={index}
-                    className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
-                  >
-                    Get started
-                  </Link>
-                );
+                return <SimpleButtons key={index} {...button} />;
               })}
             </div>
           </div>

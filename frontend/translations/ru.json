@@ -101,5 +101,10 @@
   "Repeat new password": "Повторно введите новый пароль",
   "Required field": "Обязательное поле",
   "not": "не",
-  "Not": "Не"
+  "Not": "Не",
+  "Profile succesfully updated": "Аккаунт успешно обновлен",
+  "Min 1 item": "Минимум 1 элемент",
+  "Password was successfully changed": "Пароль был успешно изменен",
+  "Multi factor authentification passed succesfully": "Мульти факторная аутентификация успешно пройдена",
+  "Recovery link was sent to your email": "Ссылка для восстановления пароля отправлена на почту"
 }

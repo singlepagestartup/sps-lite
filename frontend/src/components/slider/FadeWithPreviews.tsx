@@ -18,6 +18,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { ISlide } from "types";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 interface INavigationButton {
   isNext?: boolean;
@@ -189,11 +190,7 @@ function DefaultSlideComponent({
             <p>{slide.description}</p>
             <div className="buttons__container">
               {slide.buttons?.map((button, index: number) => {
-                return (
-                  <Link key={index} href={button.url} className="button">
-                    {button.title}
-                  </Link>
-                );
+                return <SimpleButtons key={index} {...button} />;
               })}
             </div>
           </div>
