@@ -1,18 +1,14 @@
 import { FC } from "react";
-import { IButton, IMedia } from "types";
+import { IMedia } from "types";
 import SimpleCentered from "./SimpleCentered";
 import WithAppScreenshot from "./WithAppScreenshot";
 import Split from "./Split";
 import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
 import WithAngledImageOnRight from "./WithAngledImageOnRight";
+import { IButton } from "~components/buttons/simple-buttons";
 
 export interface IHeroSection {
-  variant:
-    | `split`
-    | `simple-centered`
-    | `split-with-screenshot-on-dark`
-    | `with-app-screenshot`
-    | `with-angled-image-on-right`;
+  variant: keyof typeof variants;
   title: string;
   description: string;
   buttons?: IButton[];

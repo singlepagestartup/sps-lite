@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { IButtonsArray } from "types";
 import SimpleButtons from "../simple-buttons";
+import { IButtonsArray } from ".";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);

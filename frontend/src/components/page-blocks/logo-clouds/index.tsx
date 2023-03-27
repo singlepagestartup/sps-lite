@@ -1,5 +1,6 @@
-import { FC, useMemo } from "react";
-import { IButton, ILogo } from "types";
+import { FC } from "react";
+import { ILogo } from "types";
+import { IButton } from "~components/buttons/simple-buttons";
 import OffWhiteGrid from "./OffWhiteGrid";
 import Simple from "./Simple";
 import SimpleWithHeading from "./SimpleWithHeading";

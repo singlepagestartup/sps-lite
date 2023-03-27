@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useMemo } from "react";
-import { IButton } from "types";
+import { IButton } from "~components/buttons/simple-buttons";
 
 export default function useGetButtonParams(props: IButton) {
   const router = useRouter();

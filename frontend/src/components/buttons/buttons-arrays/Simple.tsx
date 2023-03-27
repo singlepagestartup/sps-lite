@@ -1,4 +1,4 @@
-import { IButtonsArray } from "types";
+import { IButtonsArray } from ".";
 import SimpleButtons from "../simple-buttons";
 
 export default function Simple(props: IButtonsArray) {

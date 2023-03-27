@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IButton } from "types";
+import { IButton } from ".";
 import useGetButtonParams from "../hooks/use-get-button-params";
 
 export default function Default(props: IButton) {

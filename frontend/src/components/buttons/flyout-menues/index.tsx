@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IButtonsArray } from "types";
+import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import Dropdown from "./Dropdown";
 
 const variants = { dropdown: Dropdown };

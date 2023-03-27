@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { IButton } from "~components/buttons/simple-buttons";
 import { IFooter } from "~components/page-blocks/footers";
 import { ITopbar } from "~components/page-blocks/topbar";
 
@@ -14,17 +15,6 @@ export interface IMeta {
 
 export interface IPageBlock {
   _Component: `page-blocks.header` | `page-blocks.hero-block`;
-}
-
-export interface IButton {
-  title: string;
-  url?: string;
-  onClick?: any;
-  description?: string;
-  icon?: IMedia;
-  variant: `bottom-line` | `default` | `primary`;
-  className?: string;
-  additionalAttributes?: any;
 }
 
 export interface IModal extends IPageBlocksProps {
@@ -104,14 +94,6 @@ export interface IHeader {
 export interface IPageBlocksProps {
   pageBlocks: IPageBlock[];
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
-}
-
-export interface IButtonsArray {
-  title: string;
-  buttons: IButton[];
-  description?: string;
-  className: string;
-  variant: `column`;
 }
 
 export interface IDashboardLayout {

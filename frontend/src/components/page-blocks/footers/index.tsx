@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { IButtonsArray, IForm, IMedia, IPageProps } from "types";
+import { IForm, IMedia, IPageProps } from "types";
+import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import FourColumnsSimple from "./FourColumnsSimple";
 import FourColumnWithCompanyMission from "./FourColumnWithCompanyMission";
 import FourColumnsSimpleDark from "./FourColunsSimpleDark";

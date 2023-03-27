@@ -1,9 +1,20 @@
 import { FC } from "react";
-import { IButton } from "types";
+import { IMedia } from "types";
 import ClientOnly from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
+
+export interface IButton {
+  title: string;
+  url?: string;
+  onClick?: any;
+  description?: string;
+  icon?: IMedia;
+  variant: keyof typeof variants;
+  className?: string;
+  additionalAttributes?: any;
+}
 
 const variants = {
   "bottom-line": BottomLine,

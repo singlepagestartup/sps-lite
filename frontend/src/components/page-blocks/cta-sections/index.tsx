@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { IButton, IMedia } from "types";
+import { IMedia } from "types";
+import { IButton } from "~components/buttons/simple-buttons";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
 

@@ -1,5 +1,5 @@
-import { FC, useMemo } from "react";
-import { IButton } from "types";
+import { FC } from "react";
+import { IButton } from "~components/buttons/simple-buttons";
 import Simple from "./Simple";
 
 export interface INotFound {

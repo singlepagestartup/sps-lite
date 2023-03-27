@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { IButtonsArray, IForm, IMedia } from "types";
+import { IForm, IMedia } from "types";
+import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import SplitBrandPanel from "./SplitBrandPanel";
 
 export interface IContactSecton {
