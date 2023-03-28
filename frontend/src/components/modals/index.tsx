@@ -28,8 +28,6 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
 
   const { data: backendModals } = useGetModalsQuery({});
 
-  console.log(`🚀 ~ Modals ~ backendModals:`, backendModals);
-
   const localModals = useMemo(() => {
     if (backendModals) {
       return [...modals, ...backendModals];
@@ -37,8 +35,6 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
 
     return [...modals];
   }, [modals, backendModals]);
-
-  console.log(`🚀 ~ localModals ~ localModals:`, localModals);
 
   useEffect(() => {
     if (!localModals) {

@@ -36,8 +36,6 @@ export default function SimpleWithAvatars(props: IReviewsBlock) {
     isUninitialized,
   } = useGetReviewsQuery({});
 
-  console.log(`🚀 ~ SimpleWithAvatars ~ reviews:`, reviews);
-
   return (
     <div className="bg-white mx-auto max-w-7xl my-16" {...additionalAttributes}>
       <div>
