@@ -1,15 +1,35 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
-import Image from "next/image";
-import { BACKEND_URL } from "~utils/envs";
-import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
+import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
-import { IReviewsBlock } from ".";
-import { useMemo } from "react";
-import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
-import Cards, { ICardProps, ICardSkeletonProps } from "~components/cards";
+import { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
 import { IReview } from "types";
+import { BACKEND_URL } from "~utils/envs";
+import Cards, { ICardProps, ICardSkeletonProps } from ".";
+
+const meta = { component: Cards } satisfies Meta<typeof Cards>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+const review = {
+  id: 5,
+  name: `Emily Wilson`,
+  title: `Exceptional Startup with Great Potential`,
+  description: `I had the pleasure of working with this startup and I was very impressed with their innovation and dedication to their customers. Their team is very knowledgeable and professional and I am confident that they have great potential for future success. I am looking forward to seeing what new innovations they come up with next. I highly recommend this startup to anyone looking for innovative solutions.`,
+  subtitle: `Looking Forward to Future Innovations`,
+  rating: 5,
+  createdAt: `2023-03-12T11:34:52.690Z`,
+  cover: {
+    id: 278,
+    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
+  },
+};
+
+const reviews = Array(5).fill(review);
 
 const cardsConfig = {
   emptyLength: 3,
@@ -18,43 +38,14 @@ const cardsConfig = {
   className: `grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8`,
 };
 
-export default function SimpleWithAvatars(props: IReviewsBlock) {
-  const additionalAttributes = useMemo(() => {
-    if (props?.anchor) {
-      return {
-        id: props.anchor,
-      };
-    }
-
-    return {};
-  }, [props]);
-
-  const {
-    data: reviews,
-    isLoading,
-    isFetching,
-    isUninitialized,
-  } = useGetReviewsQuery({});
-
-  console.log(`🚀 ~ SimpleWithAvatars ~ reviews:`, reviews);
-
-  return (
-    <div className="bg-white mx-auto max-w-7xl my-16" {...additionalAttributes}>
-      <div>
-        <h2 className="text-center font-bold text-3xl mb-8">
-          Customer Reviews
-        </h2>
-
-        <Cards
-          variant="simple"
-          items={reviews}
-          cardsConfig={cardsConfig}
-          showSkeletons={isLoading || isFetching || isUninitialized}
-        />
-      </div>
-    </div>
-  );
-}
+export const Simple: Story = {
+  args: {
+    variant: `simple`,
+    items: reviews,
+    cardsConfig,
+    showSkeletons: false,
+  },
+};
 
 function SimpleWithAvatarCard(props: ICardProps) {
   const { item }: { item: IReview } = props;
