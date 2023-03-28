@@ -2,16 +2,13 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import utils from "@rogwild/next-utils";
 import { BACKEND_URL } from "~utils/envs";
-import { IPageProps } from "types";
 import Buttons from "~components/buttons";
+import { IHeader } from ".";
 const { getImageUrl } = utils.api;
 
-export default function SimpleLinksOnLeft(props: IPageProps) {
-  const { header } = props;
-
+export default function SimpleLinksOnLeft(props: IHeader) {
   return (
     <Disclosure as="nav" className="bg-white shadow w-screen">
       {({ open }) => (
@@ -22,7 +19,7 @@ export default function SimpleLinksOnLeft(props: IPageProps) {
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/" className="relative w-32 h-8">
                     <Image
-                      src={getImageUrl(header.logo, { BACKEND_URL })}
+                      src={getImageUrl(props.logo, { BACKEND_URL })}
                       alt=""
                       className="object-contain object-left"
                       fill={true}
@@ -30,7 +27,7 @@ export default function SimpleLinksOnLeft(props: IPageProps) {
                   </Link>
                 </div>
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                  {header.buttons?.map((button, index) => {
+                  {props.buttons?.map((button, index) => {
                     return <Buttons key={index} {...button} />;
                   })}
                 </div>
@@ -60,7 +57,7 @@ export default function SimpleLinksOnLeft(props: IPageProps) {
 
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 p-3">
-              {header.buttons?.map((button, index) => {
+              {props.buttons?.map((button, index) => {
                 return <Buttons key={index} {...button} />;
               })}
             </div>

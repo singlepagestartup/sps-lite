@@ -2,6 +2,11 @@ import { FC } from "react";
 import { IPageProps } from "types";
 import Simple from "./Simple";
 
+export interface IPublicPageLayout {
+  id: number;
+  variant: keyof typeof variants;
+}
+
 const variants = {
   simple: Simple,
 };

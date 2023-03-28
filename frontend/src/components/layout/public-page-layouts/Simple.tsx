@@ -7,13 +7,13 @@ import PageBlocks from "../page-blocks";
 export default function Simple(props: IPageProps) {
   return (
     <>
-      <MetaBlock {...props} />
+      <MetaBlock {...props.meta} />
       <div className="relative">
-        <Navbar {...props} />
+        <Navbar {...props.header} />
         <div className="pt-16">
           <PageBlocks {...props} />
         </div>
-        <Footers {...props} />
+        <Footers {...props.footer} />
       </div>
     </>
   );

@@ -1,8 +1,9 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
-import { ISlide } from "types";
+import { IMedia } from "types";
 import FadeWithPreviews from "./FadeWithPreviews";
+import { IButton } from "~components/buttons/simple-buttons";
 
 const variants = {
   "fade-with-previews": FadeWithPreviews,
@@ -40,6 +41,14 @@ export default function Slider(props: ISlider) {
       // className={props?.className}
     />
   );
+}
+
+export interface ISlide {
+  buttons?: IButton[];
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  media: IMedia;
 }
 
 export interface ISlider {

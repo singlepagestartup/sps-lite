@@ -1,11 +1,21 @@
 import { FC } from "react";
-import { IForm } from "types";
+import { IButton } from "~components/buttons/simple-buttons";
+import { IInputsProps } from "~components/inputs";
 import Simple from "./Simple";
 
+export interface IForm {
+  title: string | null;
+  inputs: IInputsProps[];
+  subtitle: string | null;
+  description: string | null;
+  button?: IButton;
+}
+
 export interface IForms {
-  variant: `simple`;
+  variant: keyof typeof variants;
   form: IForm;
-  anchor?: string;
+  className: string | null;
+  anchor: string | null;
 }
 
 const variants = {

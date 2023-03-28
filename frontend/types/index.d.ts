@@ -1,99 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 import { IButton } from "~components/buttons/simple-buttons";
+import { IPageBlocksComponent } from "~components/layout/page-blocks";
+import { IPublicPageLayout } from "~components/layout/public-page-layouts";
 import { IFooter } from "~components/page-blocks/footers";
 import { ITopbar } from "~components/page-blocks/topbar";
-
-export interface IMeta {
-  title?: string;
-  description?: string;
-  favicon?: IMedia;
-  image?: IMedia;
-  domain?: string;
-  gtmKey?: string;
-  script?: string;
-}
-
-export interface IPageBlock {
-  _Component: `page-blocks.header` | `page-blocks.hero-block`;
-}
-
-export interface IModal extends IPageBlocksProps {
-  id: number;
-  title: string;
-  variant: `simple`;
-  dialogPanelClassName: string;
-  uid: string;
-}
-
-export interface IFaq {
-  title: string;
-  description: string;
-}
 
 export interface ILogo {
   logo: IMedia;
   logoMonochrome: IMedia;
   url: string;
-}
-
-export interface IForm {
-  title: string;
-  inputs: {
-    label: string;
-    placeholder: string;
-    isRequired: boolean;
-    type: `text` | `text-area` | `date`;
-  }[];
-  subtitle?: string;
-  description?: string;
-  button?: IButtons;
-}
-
-export interface ISlide {
-  buttons?: IButton[];
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  media: IMedia;
-}
-
-export interface ISlider {
-  variant: `fade-with-previews`;
-  showBackdrop?: boolean;
-  showFullScreen?: boolean;
-  aspectRatioClassName?: string;
-  slides: ISlide[];
-}
-
-export interface IFeature {
-  title: string;
-  description: string;
-  subtitle: string;
-  media: IMedia[];
-  icon: IMedia;
-}
-
-export interface IButtons extends IButton {
-  _Component:
-    | `elements.button`
-    | `elements.buttons-array`
-    | `elements.flyout-menu`;
-}
-
-export interface IHeader {
-  topbar?: ITopbar;
-  logo: IMedia;
-  buttons?: IButtons[];
-  profileButtons?: IButtons[];
-  additionalButtons?: IButtons[];
-  ctaButtons?: IButtons[];
-  position: string;
-  variant: `simple-links-on-left`;
-}
-
-export interface IPageBlocksProps {
-  pageBlocks: IPageBlock[];
-  setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface IDashboardLayout {
@@ -109,12 +24,7 @@ export interface IAuthLayout {
   variant: `simple`;
 }
 
-export interface IPublicPageLayout {
-  id: number;
-  variant: `simple`;
-}
-
-export interface IPageProps extends IPageBlocksProps {
+export interface IPageProps extends IPageBlocksComponent {
   header: IHeader;
   meta: IMeta;
   footer: IFooter;
@@ -131,17 +41,21 @@ export interface IMedia {
   id: number;
   url: string;
   mime: string;
-  alternativeText: string;
-}
-
-export interface IAddress {
-  address: string;
-  apartment: string;
-  comment: string;
-  id: number;
-  postalCode: string;
-  country: string;
-  city?: string;
+  alternativeText: string | null;
+  name: string;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats?: any;
+  hash: string;
+  ext: `.svg` | `.jpg`;
+  mime: string;
+  size: number;
+  previewUrl: string | null;
+  provider: `local` | `aws-s3`;
+  providerMetadata?: any;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface IUser {
@@ -183,49 +97,6 @@ export interface ICurrency {
   unicode: string;
   isDefault: boolean;
   products?: IProduct;
-}
-
-export interface IProductAttributeKey {
-  id: number;
-  key: string;
-  title: string;
-}
-
-export interface IProductAttribute {
-  id: number;
-  boolean?: boolean;
-  number?: number;
-  string?: string;
-  key: IProductAttributeKey;
-  createdAt: string;
-  updatedAt: string;
-  isAvailable?: boolean;
-}
-
-export interface IProductVariant {
-  id: number;
-  attributes: IProductAttribute[];
-  price: number;
-  media: IMedia[];
-}
-
-export interface IProduct {
-  id: number;
-  title: string;
-  uid: string;
-  price: number;
-  description: string;
-  media: IMedia[];
-  score: number;
-  category: ICategory | number;
-  currency: ICurrency;
-  attributes: IProductAttribute[];
-  fullDescription: string;
-  reviews: IReview[];
-  variants: IProductVariant[];
-  createdAt: string;
-  updatedAt: string;
-  pageBlocks?: any;
 }
 
 export interface IReview {

@@ -2,11 +2,12 @@ import { IForms } from ".";
 import ReactMarkdown from "react-markdown";
 import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
 import { useEffect, useMemo } from "react";
-import { FormProvider, useFieldArray, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
 import Buttons from "~components/buttons";
 
 export default function Simple(props: IForms) {
+  console.log(`🚀 ~ Simple ~ props:`, props);
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {

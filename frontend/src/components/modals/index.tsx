@@ -7,9 +7,17 @@ import {
   useMemo,
 } from "react";
 import { useRouter } from "next/router";
-import { IModal } from "types";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import Simple from "./Simple";
+import { IPageBlocksComponent } from "~components/layout/page-blocks";
+
+export interface IModal extends IPageBlocksComponent {
+  id: number;
+  title: string;
+  variant: keyof typeof variants;
+  dialogPanelClassName?: string;
+  uid: string;
+}
 
 export interface IModalComponent extends IModal {
   setIsOpen: Dispatch<SetStateAction<boolean>>;

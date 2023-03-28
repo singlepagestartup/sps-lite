@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ICtaSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
-import Link from "next/link";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function DarkPanelWithAppScreenshot(props: ICtaSections) {

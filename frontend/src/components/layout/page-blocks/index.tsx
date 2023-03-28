@@ -1,22 +1,33 @@
 import { FC } from "react";
-import { IPageBlocksProps } from "types";
 import { pageBlockComponents } from "~utils/api/components";
 
-export default function PageBlocks(props: IPageBlocksProps) {
+export interface IPageBlock {
+  _Component: keyof typeof pageBlockComponents;
+}
+
+export interface IPageBlocksComponent {
+  pageBlocks: IPageBlock[];
+}
+
+export default function PageBlocks(props: IPageBlocksComponent) {
   return (
     <div className="page-blocks">
       {props.pageBlocks?.length
         ? props.pageBlocks.map((pageBlock, index) => {
             const key =
               pageBlock._Component as keyof typeof pageBlockComponents;
-            const PageBlock = pageBlockComponents[key] as FC;
+            const PageBlock = pageBlockComponents[key] as FC<any>;
 
             if (!PageBlock) {
               return <div key={`${index}-${key}`}></div>;
             }
 
             return (
-              <PageBlock {...props} {...pageBlock} key={`${index}-${key}`} />
+              <PageBlock
+                pageProps={props}
+                {...pageBlock}
+                key={`${index}-${key}`}
+              />
             );
           })
         : null}

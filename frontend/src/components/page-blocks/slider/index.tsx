@@ -1,8 +1,9 @@
-import { FC, useMemo } from "react";
-import { ISlider } from "types";
+import { FC } from "react";
+import { ISlider } from "~components/slider";
 import Simple from "./Simple";
+
 export interface ISliderBlock {
-  variant: `simple`;
+  variant: keyof typeof variants;
   anchor?: string;
   slider: ISlider;
 }

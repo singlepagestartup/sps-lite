@@ -4,7 +4,7 @@ import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import SplitBrandPanel from "./SplitBrandPanel";
 
 export interface IContactSecton {
-  variant: `split-brand-panel`;
+  variant: keyof typeof variants;
   title?: string;
   description?: string;
   media?: IMedia;

@@ -1,14 +1,6 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useMemo } from "react";
-import ReactMarkdown from "react-markdown";
+import { useMemo } from "react";
 import { IContactSecton } from ".";
-import useTranslations from "~hooks/use-translations";
-import { BACKEND_URL } from "~utils/envs";
 import Forms from "../forms";
-import SimpleButtons from "~components/buttons/simple-buttons";
 import ButtonsArrays from "~components/buttons/buttons-arrays";
 
 export default function SplitBrandPanel(props: IContactSecton) {

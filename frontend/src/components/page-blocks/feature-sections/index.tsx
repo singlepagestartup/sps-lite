@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { IFeature, IMedia } from "types";
+import { IMedia } from "types";
+import { IFeature } from "types/components";
 import SimpleThreeColumn from "./SimpleThreeColumn";
 import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
 import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
 
 export interface IFeatureSections {
   features: IFeature[];
-  variant: `simple-three-column`;
-  title: string;
-  subtitle: string;
-  description: string;
+  variant: keyof typeof variants;
+  title?: string;
+  subtitle?: string;
+  description?: string;
   anchor?: string;
   media?: IMedia[];
 }

@@ -1,8 +1,6 @@
-import { useState, Fragment, useEffect, useMemo } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import { IModal } from "types";
-import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import PageBlocks from "~components/layout/page-blocks";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { IModalComponent } from ".";

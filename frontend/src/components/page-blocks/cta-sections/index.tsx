@@ -8,7 +8,7 @@ export interface ICtaSections {
   title?: string;
   description?: string;
   media?: IMedia[];
-  variant: `simple-centered`;
+  variant: keyof typeof variants;
   anchor?: string;
   buttons?: IButton[];
 }

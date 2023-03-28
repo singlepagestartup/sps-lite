@@ -2,10 +2,10 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
-import { IFeature } from "types";
 import { IFeatureSections } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
+import { IFeature } from "types/components";
 
 export default function ThreeColumnWithSlider(props: IFeatureSections) {
   const additionalAttributes = useMemo(() => {
@@ -30,8 +30,8 @@ export default function ThreeColumnWithSlider(props: IFeatureSections) {
           </p>
         </div>
       </div>
-      <FeaturesMobile features={props.features} />
-      <FeaturesDesktop features={props.features} />
+      {/* <FeaturesMobile features={props.features} /> */}
+      {/* <FeaturesDesktop features={props.features} /> */}
     </section>
   );
 }
@@ -99,56 +99,56 @@ function FeaturesMobile({ features }: { features: IFeature[] }) {
   );
 }
 
-function FeaturesDesktop({ features }: { features: IFeature[] }) {
-  return (
-    <Tab.Group as="div" className="hidden lg:mt-20 lg:block">
-      {({ selectedIndex }: any) => (
-        <>
-          <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            <Tab.List className="grid grid-cols-3 gap-x-8">
-              {features?.map((feature, featureIndex) => (
-                <Tab key={featureIndex} as="div" className="cursor-pointer">
-                  <Feature
-                    feature={feature}
-                    isActive={featureIndex === selectedIndex}
-                    className="relative"
-                  />
-                </Tab>
-              ))}
-            </Tab.List>
-          </div>
-          <Tab.Panels className="relative mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 py-16 xl:px-16">
-            <div
-              className="-mx-5 flex flex-row"
-              style={{
-                width: `${features.length * 70}vw`,
-              }}
-            >
-              {features.map((feature, featureIndex) => (
-                <Tab.Panel
-                  static
-                  key={featureIndex}
-                  className={`w-[70vw] aspect-w-10 aspect-h-2 px-5 transition overflow-hidden duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none ${
-                    featureIndex !== selectedIndex && `opacity-60`
-                  }`}
-                  style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
-                  aria-hidden={featureIndex !== selectedIndex}
-                >
-                  {feature.media.length ? (
-                    <Image
-                      className="object-contain"
-                      src={getImageUrl(feature.media[0], { BACKEND_URL })}
-                      alt=""
-                      fill={true}
-                    />
-                  ) : null}
-                </Tab.Panel>
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-slate-900/10" />
-          </Tab.Panels>
-        </>
-      )}
-    </Tab.Group>
-  );
-}
+// function FeaturesDesktop({ features }: { features: IFeature[] }) {
+//   return (
+//     <Tab.Group as="div" className="hidden lg:mt-20 lg:block">
+//       {({ selectedIndex }: any) => (
+//         <>
+//           <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+//             <Tab.List className="grid grid-cols-3 gap-x-8">
+//               {features?.map((feature, featureIndex) => (
+//                 <Tab key={featureIndex} as="div" className="cursor-pointer">
+//                   <Feature
+//                     feature={feature}
+//                     isActive={featureIndex === selectedIndex}
+//                     className="relative"
+//                   />
+//                 </Tab>
+//               ))}
+//             </Tab.List>
+//           </div>
+//           <Tab.Panels className="relative mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 py-16 xl:px-16">
+//             <div
+//               className="-mx-5 flex flex-row"
+//               style={{
+//                 width: `${features.length * 70}vw`,
+//               }}
+//             >
+//               {features.map((feature, featureIndex) => (
+//                 <Tab.Panel
+//                   static
+//                   key={featureIndex}
+//                   className={`w-[70vw] aspect-w-10 aspect-h-2 px-5 transition overflow-hidden duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none ${
+//                     featureIndex !== selectedIndex && `opacity-60`
+//                   }`}
+//                   style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
+//                   aria-hidden={featureIndex !== selectedIndex}
+//                 >
+//                   {feature.media.length ? (
+//                     <Image
+//                       className="object-contain"
+//                       src={getImageUrl(feature.media[0], { BACKEND_URL })}
+//                       alt=""
+//                       fill={true}
+//                     />
+//                   ) : null}
+//                 </Tab.Panel>
+//               ))}
+//             </div>
+//             <div className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-slate-900/10" />
+//           </Tab.Panels>
+//         </>
+//       )}
+//     </Tab.Group>
+//   );
+// }
