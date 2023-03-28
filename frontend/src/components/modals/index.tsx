@@ -1,17 +1,14 @@
 import {
   useState,
-  Fragment,
   useEffect,
-  useMemo,
   FC,
   SetStateAction,
   Dispatch,
+  useMemo,
 } from "react";
-import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { IModal } from "types";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
-import PageBlocks from "~components/layout/page-blocks";
 import Simple from "./Simple";
 
 export interface IModalComponent extends IModal {
@@ -23,25 +20,37 @@ const variants = {
   simple: Simple,
 };
 
-export default function Modals() {
+export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const router = useRouter();
   const { query } = router;
   const [isOpen, setIsOpen] = useState(false);
   const [modalProps, setModalProps] = useState<IModal>();
 
-  const { data: modals } = useGetModalsQuery({});
+  const { data: backendModals } = useGetModalsQuery({});
+
+  console.log(`🚀 ~ Modals ~ backendModals:`, backendModals);
+
+  const localModals = useMemo(() => {
+    if (backendModals) {
+      return [...modals, ...backendModals];
+    }
+
+    return [...modals];
+  }, [modals, backendModals]);
+
+  console.log(`🚀 ~ localModals ~ localModals:`, localModals);
 
   useEffect(() => {
-    if (!modals) {
+    if (!localModals) {
       return;
     }
 
-    for (const modal of modals) {
+    for (const modal of localModals) {
       if (query.opened_popup === modal.uid) {
         setModalProps(modal);
       }
     }
-  }, [modals, query.opened_popup]);
+  }, [localModals, query.opened_popup]);
 
   useEffect(() => {
     if (query.opened_popup && !isOpen) {

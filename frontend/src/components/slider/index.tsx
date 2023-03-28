@@ -1,16 +1,8 @@
-import React, {
-  Dispatch,
-  FC,
-  ForwardRefExoticComponent,
-  SetStateAction,
-  useMemo,
-  useState,
-} from "react";
+import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
 import { ISlide } from "types";
 import FadeWithPreviews from "./FadeWithPreviews";
-import Image from "next/image";
 
 const variants = {
   "fade-with-previews": FadeWithPreviews,
@@ -54,7 +46,7 @@ export interface ISlider {
   slides: ISlide[];
   className?: string;
   aspectRatioClassName?: string;
-  variant: `fade-with-previews`;
+  variant: keyof typeof variants;
   showFullScreen?: boolean;
   showBackdrop?: boolean;
   showPreviews?: boolean;

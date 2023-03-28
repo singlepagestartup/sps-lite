@@ -286,15 +286,15 @@ button:focus {
     }
 
     .ms-fill-lower {
-      @apply absolute inset-y-0 bg-primary-500 rounded-l-full;
+      @apply absolute inset-y-0 h-2 bg-primary-500 rounded-l-full;
     }
 
     .ms-fill-upper {
-      @apply absolute inset-y-0 right-0 bg-gray-100 rounded-r-full;
+      @apply absolute inset-y-0 h-2 right-0 bg-gray-100 rounded-r-full;
     }
 
     .input {
-      @apply relative;
+      @apply relative w-full bg-transparent;
 
       &::-webkit-slider-runnable-track {
         -webkit-appearance: none;
@@ -310,11 +310,11 @@ button:focus {
 
         -webkit-appearance: none;
         border: theme("borderWidth.0");
-        height: theme("width.3");
+        height: theme("height.3");
         width: theme("width.3");
         border-radius: theme("borderRadius.full");
         background: theme("colors.white");
-        transform: translate(0px, -2px);
+        transform: translate(0px, -12px);
         cursor: pointer;
       }
 

@@ -12,12 +12,16 @@ const config: StorybookConfig = {
       },
     },
   ],
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
   docs: {
     autodocs: "tag",
+  },
+  typescript: {
+    reactDocgen: false,
   },
 };
 export default config;
