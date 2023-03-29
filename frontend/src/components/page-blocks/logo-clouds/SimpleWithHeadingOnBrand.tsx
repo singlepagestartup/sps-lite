@@ -15,10 +15,10 @@ export default function SimpleWithHeadingOnBrand(props: ILogoCloudBlock) {
         <div className="mt-8 flow-root lg:mt-10">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
             {props.logos?.map((logo, index) => {
-              if(!logo.logo) {
-                return <></>
+              if (!logo.logo) {
+                return <></>;
               }
-              
+
               return (
                 <div
                   key={index}
