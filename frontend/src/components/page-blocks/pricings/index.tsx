@@ -1,36 +1,27 @@
 import { FC } from "react";
-import { IFeature, IMedia } from "types";
+import { IMedia } from "types";
+import { IBackendTier } from "types/models";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
 
-export interface ITier {
-  id: number;
-  title: string;
-  description?: string;
-  features?: IFeature[];
-  price: string;
-  url?: string;
-  period?: number;
-  type: `one-time` | `regularly`;
-}
-
-export interface IPricings {
-  title?: string;
-  subtitle?: string;
-  description?: string;
+export interface IPricingsBlock {
+  title: string | null;
+  subtitle: string | null;
+  description: string | null;
   background?: IMedia;
-  variant: `two-tiers-with-extra-tier`;
+  variant: keyof typeof variants;
   anchor?: string;
-  tiers: ITier[];
+  tiers: IBackendTier[];
+  className: string | null;
 }
 
 const variants = {
   "two-tiers-with-extra-tier": TwoTiersWithExtraTier,
 };
 
-export default function Pricings(props: IPricings) {
+export default function Pricings(props: IPricingsBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<IPricings>;
+  ] as FC<IPricingsBlock>;
 
   if (!Comp) {
     return <></>;

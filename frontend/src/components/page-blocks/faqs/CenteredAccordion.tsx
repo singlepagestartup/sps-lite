@@ -1,4 +1,4 @@
-import { IFaqs } from ".";
+import { IFaqsBlock } from ".";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";
@@ -7,7 +7,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
 }
 
-export default function CenteredAccordion(props: IFaqs) {
+export default function CenteredAccordion(props: IFaqsBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

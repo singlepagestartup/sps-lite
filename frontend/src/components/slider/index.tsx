@@ -1,15 +1,15 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
-import { IMedia } from "types";
 import FadeWithPreviews from "./FadeWithPreviews";
-import { IButton } from "~components/buttons/simple-buttons";
+import { IBackendSlider } from "types/models";
+import { IBackendSlide } from "types/components";
 
 const variants = {
   "fade-with-previews": FadeWithPreviews,
 };
 
-export default function Slider(props: ISlider) {
+export default function Slider(props: IBackendSlider) {
   const { slides } = props;
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -26,9 +26,7 @@ export default function Slider(props: ISlider) {
     });
   }, [slides]);
 
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISliderExtended>;
+  const Comp = variants[props.variant as keyof typeof variants] as FC<ISlider>;
 
   if (!localMedia) return <div></div>;
 
@@ -43,25 +41,7 @@ export default function Slider(props: ISlider) {
   );
 }
 
-export interface ISlide {
-  buttons?: IButton[];
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  media: IMedia;
-}
-
 export interface ISlider {
-  slides: ISlide[];
-  className?: string;
-  aspectRatioClassName?: string;
-  variant: keyof typeof variants;
-  showFullScreen?: boolean;
-  showBackdrop?: boolean;
-  showPreviews?: boolean;
-}
-
-export interface ISliderExtended {
   slides: IExtendedSlide[];
   activeSlide?: number;
   setActiveSlide: Dispatch<SetStateAction<number>>;
@@ -75,6 +55,6 @@ export interface ISliderExtended {
   aspectRatioClassName?: string;
 }
 
-export interface IExtendedSlide extends ISlide {
+export interface IExtendedSlide extends IBackendSlide {
   renderType: string;
 }

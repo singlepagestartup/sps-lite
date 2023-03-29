@@ -1,6 +1,6 @@
-import { IFaqs } from ".";
+import { IFaqsBlock } from ".";
 
-export default function SideBySide(props: IFaqs) {
+export default function SideBySide(props: IFaqsBlock) {
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-7xl divide-y divide-gray-200 py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -9,7 +9,7 @@ export default function SideBySide(props: IFaqs) {
         </h2>
         <div className="mt-8">
           <dl className="divide-y divide-gray-200">
-            {props.faqs.map((faq, index) => (
+            {props.faqs?.map((faq, index) => (
               <div
                 key={index}
                 className="pt-6 pb-8 md:grid md:grid-cols-12 md:gap-8"

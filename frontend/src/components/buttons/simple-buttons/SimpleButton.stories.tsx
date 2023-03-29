@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import SimpleButtons, { IButton } from ".";
+import {
+  backendButtonBottomLine,
+  backendButtonDefault,
+  backendButtonPrimary,
+} from "~mocks/components";
+import SimpleButtons from ".";
 
 const meta = {
   component: SimpleButtons,
@@ -10,23 +15,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    title: `Button`,
-    url: `https://nextjs.com`,
-    variant: `default`,
-  },
+  args: backendButtonDefault,
 };
 
 export const Primary = {
-  args: {
-    ...Default.args,
-    variant: `primary`,
-  },
+  args: backendButtonPrimary,
 };
 
 export const BottomLine = {
-  args: {
-    ...Default.args,
-    variant: `bottom-line`,
-  },
+  args: backendButtonBottomLine,
 };

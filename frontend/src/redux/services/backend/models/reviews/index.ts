@@ -1,6 +1,6 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
-import { IReview } from "types";
+import { IBackendReview } from "types/models";
 
 export const reviewsPopulate = {
   cover: `*`,
@@ -23,7 +23,7 @@ export const reviewsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IReview[];
+        return utils.api.transformResponseItem(result) as IBackendReview[];
       },
 
       providesTags: (result) => {

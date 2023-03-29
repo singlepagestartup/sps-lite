@@ -1,4 +1,4 @@
-import { ILogoCloud } from ".";
+import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
-export default function Simple(props: ILogoCloud) {
+export default function Simple(props: ILogoCloudBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -21,7 +21,11 @@ export default function Simple(props: ILogoCloud) {
     <div className="bg-white" {...additionalAttributes}>
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-          {props.logos.map((logo, index) => {
+          {props.logos?.map((logo, index) => {
+            if (!logo.logo) {
+              return <></>;
+            }
+
             return (
               <div
                 key={index}

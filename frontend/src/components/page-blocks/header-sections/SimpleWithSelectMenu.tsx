@@ -1,8 +1,8 @@
-import { IHeaderSection } from ".";
+import { IHeaderSectionBlock } from ".";
 import ReactMarkdown from "react-markdown";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-export default function SimpleWithSelectMenu(props: IHeaderSection) {
+export default function SimpleWithSelectMenu(props: IHeaderSectionBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:flex lg:justify-between lg:px-8">
@@ -10,9 +10,11 @@ export default function SimpleWithSelectMenu(props: IHeaderSection) {
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             {props.title}
           </h2>
-          <ReactMarkdown className="mt-5 text-xl text-gray-500">
-            {props.description}
-          </ReactMarkdown>
+          {props.description ? (
+            <ReactMarkdown className="mt-5 text-xl text-gray-500">
+              {props.description}
+            </ReactMarkdown>
+          ) : null}
         </div>
         <div className="mt-10 w-full max-w-xs">
           {/* <label

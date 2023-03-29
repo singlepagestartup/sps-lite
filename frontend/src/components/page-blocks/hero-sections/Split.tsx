@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { IHeroSection } from ".";
+import { IHeroSectionBlock } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function Split(props: IHeroSection) {
+export default function Split(props: IHeroSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -37,9 +37,11 @@ export default function Split(props: IHeroSection) {
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                     {props.title}
                   </h1>
-                  <ReactMarkdown className="mt-4 text-xl text-gray-600">
-                    {props.description}
-                  </ReactMarkdown>
+                  {props.description ? (
+                    <ReactMarkdown className="mt-4 text-xl text-gray-600">
+                      {props.description}
+                    </ReactMarkdown>
+                  ) : null}
                   <div className="mt-6 flex gap-2 flex-wrap">
                     {props.buttons?.map((button, index) => {
                       return <SimpleButtons key={index} {...button} />;

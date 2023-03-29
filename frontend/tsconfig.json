@@ -31,7 +31,8 @@
       "~web3/*": ["./src/web3/*"],
       "~abi/*": ["./src/web3/configs/abi/*"],
       "~backend/*": ["./src/redux/services/backend/*"],
-      "~translations/*": ["./translations/*"]
+      "~translations/*": ["./translations/*"],
+      "~mocks/*": ["./src/mocks/*"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },

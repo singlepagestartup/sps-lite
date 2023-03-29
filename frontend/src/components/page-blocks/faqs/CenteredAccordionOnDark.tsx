@@ -1,4 +1,4 @@
-import { IFaqs } from ".";
+import { IFaqsBlock } from ".";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
@@ -6,7 +6,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
 }
 
-export default function CenteredAccordionOnDark(props: IFaqs) {
+export default function CenteredAccordionOnDark(props: IFaqsBlock) {
   return (
     <div className="bg-gray-800">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">

@@ -1,7 +1,7 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IHeroSection } from ".";
+import { IHeroSectionBlock } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 import SimpleButtons from "~components/buttons/simple-buttons";
@@ -13,7 +13,7 @@ const navigation = [
   { name: `Company`, href: `#` },
 ];
 
-export default function WithAngledImageOnRight(props: IHeroSection) {
+export default function WithAngledImageOnRight(props: IHeroSectionBlock) {
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="max-w-7xl relative mx-auto">

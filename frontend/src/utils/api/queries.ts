@@ -21,7 +21,7 @@ export const footerPopulate = {
   },
 };
 
-export const headerPopulate = {
+export const navbarPopulate = {
   logo: `*`,
   position: `*`,
   buttons: {

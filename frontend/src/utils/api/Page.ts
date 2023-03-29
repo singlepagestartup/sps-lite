@@ -3,7 +3,7 @@ import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import {
   footerPopulate,
-  headerPopulate,
+  navbarPopulate,
   pageBlocksQuery,
 } from "~utils/api/queries";
 
@@ -59,10 +59,10 @@ export async function getAdditionalBlocks(locale: string) {
     locale,
   }).get({ populate: { favicon: `*` } });
 
-  const header = await new AdditionalBlock({
-    name: `header`,
+  const navbar = await new AdditionalBlock({
+    name: `navbar`,
     locale,
-  }).get({ populate: headerPopulate });
+  }).get({ populate: navbarPopulate });
 
   const footer = await new AdditionalBlock({
     name: `footer`,
@@ -71,7 +71,7 @@ export async function getAdditionalBlocks(locale: string) {
 
   return {
     meta: meta || {},
-    header: header || {},
+    navbar: navbar || {},
     footer: footer || {},
     publicPageLayout: publicPageLayout || {},
   };

@@ -1,13 +1,12 @@
-import { IForms } from ".";
+import { IFormBlock } from ".";
 import ReactMarkdown from "react-markdown";
 import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
-import Buttons from "~components/buttons";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function Simple(props: IForms) {
-  console.log(`🚀 ~ Simple ~ props:`, props);
+export default function Simple(props: IFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
@@ -211,8 +210,7 @@ export default function Simple(props: IForms) {
                 by="id"
               />
               <div className="sm:col-span-2">
-                <Buttons
-                  _Component="elements.button"
+                <SimpleButtons
                   variant={props.form.button?.variant || `default`}
                   onClick={handleSubmit(onSubmit)}
                   title={props.form.button?.title || `Submit`}

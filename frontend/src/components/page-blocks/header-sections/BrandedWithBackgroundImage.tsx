@@ -1,21 +1,23 @@
 import Image from "next/image";
-import { IHeaderSection } from ".";
+import { IHeaderSectionBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 
-export default function BrandedWithBackgroundImage(props: IHeaderSection) {
+export default function BrandedWithBackgroundImage(props: IHeaderSectionBlock) {
   return (
     <div className="relative bg-indigo-800">
       <div className="absolute inset-0">
-        <div className="h-full w-full object-cover">
-          <Image
-            src={getImageUrl(props.media[0], { BACKEND_URL })}
-            alt="Your Company"
-            className="object-cover"
-            fill={true}
-          />
-        </div>
+        {props.media?.length ? (
+          <div className="h-full w-full object-cover">
+            <Image
+              src={getImageUrl(props.media[0], { BACKEND_URL })}
+              alt="Your Company"
+              className="object-cover"
+              fill={true}
+            />
+          </div>
+        ) : null}
         <div
           className="absolute inset-0 bg-indigo-800 mix-blend-multiply"
           aria-hidden="true"

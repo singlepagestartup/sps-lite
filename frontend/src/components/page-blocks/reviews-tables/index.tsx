@@ -6,7 +6,7 @@ const variants = {
 };
 
 export interface IReviewsTableBlock {
-  variant: `simple`;
+  variant: keyof typeof variants;
 }
 
 export default function ReviewsTables(props: IReviewsTableBlock) {

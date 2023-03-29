@@ -1,10 +1,10 @@
 import Image from "next/image";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
-import { IHeroSection } from ".";
+import { IHeroSectionBlock } from ".";
 import { BACKEND_URL } from "~utils/envs";
 
-export default function WithAppScreenshot(props: IHeroSection) {
+export default function WithAppScreenshot(props: IHeroSectionBlock) {
   return (
     <div className="bg-white">
       <div className="relative overflow-hidden">

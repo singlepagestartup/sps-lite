@@ -2,11 +2,11 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { IFooter } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import ButtonsArrays from "~components/buttons/buttons-arrays";
+import { IFooterBlock } from ".";
 
-export default function FourColumnWithCompanyMission(props: IFooter) {
+export default function FourColumnWithCompanyMission(props: IFooterBlock) {
   const {
     buttonsArrays,
     socialNetworksButtons,
@@ -30,26 +30,30 @@ export default function FourColumnWithCompanyMission(props: IFooter) {
               width={200}
               height={200}
             />
-            <ReactMarkdown className="text-xs text-gray-300">
-              {description}
-            </ReactMarkdown>
+            {description ? (
+              <ReactMarkdown className="text-xs text-gray-300">
+                {description}
+              </ReactMarkdown>
+            ) : null}
             <div className="flex space-x-6">
-              {socialNetworksButtons.map((buttonsArray, index) => {
+              {socialNetworksButtons?.map((buttonsArray, index) => {
                 return <ButtonsArrays key={index} {...buttonsArray} />;
               })}
             </div>
           </div>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 xl:col-span-2 xl:mt-0 lg:ml-auto">
-            {buttonsArrays.map((buttonsArray, index) => {
+            {buttonsArrays?.map((buttonsArray, index) => {
               return <ButtonsArrays key={index} {...buttonsArray} />;
             })}
           </div>
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-row items-center justify-between">
-          <ReactMarkdown className="text-sm text-gray-500">
-            {props.copyrights}
-          </ReactMarkdown>
-          {policiesButtons.map((buttonsArray, index) => {
+          {props.copyrights ? (
+            <ReactMarkdown className="text-sm text-gray-500">
+              {props.copyrights}
+            </ReactMarkdown>
+          ) : null}
+          {policiesButtons?.map((buttonsArray, index) => {
             return <ButtonsArrays key={index} {...buttonsArray} />;
           })}
         </div>

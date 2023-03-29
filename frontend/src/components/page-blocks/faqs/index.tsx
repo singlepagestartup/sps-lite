@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { IBackendFaq } from "types/components";
 import CenteredAccordion from "./CenteredAccordion";
 import CenteredAccordionOnDark from "./CenteredAccordionOnDark";
 import OffsetWithSupportingText from "./OffsetWithSupportingText";
@@ -10,15 +11,11 @@ import TwoColumns from "./TwoColumns";
 import TwoColumnsOnDark from "./TwoColumnsOnDark";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
 
-export interface IFaq {
-  title: string;
-  description: string;
-}
-export interface IFaqs {
+export interface IFaqsBlock {
   variant: keyof typeof variants;
   title?: string;
   description?: string;
-  faqs?: IFaq[];
+  faqs?: IBackendFaq[];
   anchor?: string;
 }
 
@@ -36,8 +33,10 @@ const variants = {
   "two-columns-with-centered-introduction": TwoColumnsWithCenteredIntroduction,
 };
 
-export default function Faqs(props: IFaqs) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<IFaqs>;
+export default function Faqs(props: IFaqsBlock) {
+  const Comp = variants[
+    props.variant as keyof typeof variants
+  ] as FC<IFaqsBlock>;
 
   if (!Comp) {
     return <></>;

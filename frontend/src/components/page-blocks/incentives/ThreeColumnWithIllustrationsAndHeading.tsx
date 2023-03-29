@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { IIncentives } from ".";
+import { IIncentivesBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 
 export default function ThreeColumnWithIllustrationsAndHeading(
-  props: IIncentives
+  props: IIncentivesBlock
 ) {
   return (
     <div className="bg-white">

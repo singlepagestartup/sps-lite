@@ -1,18 +1,18 @@
 import { FC } from "react";
-import { ILogo } from "types";
 import { IButton } from "~components/buttons/simple-buttons";
-import OffWhiteGrid from "./OffWhiteGrid";
 import Simple from "./Simple";
+import OffWhiteGrid from "./OffWhiteGrid";
 import SimpleWithHeading from "./SimpleWithHeading";
 import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
+import { IBackendLogo } from "types/components";
 
-export interface ILogoCloud {
+export interface ILogoCloudBlock {
   variant: keyof typeof variants;
-  title: string;
-  logos: ILogo[];
+  title?: string;
+  logos?: IBackendLogo[];
   buttons?: IButton[];
-  description: string;
+  description?: string;
   anchor?: string;
 }
 
@@ -24,10 +24,10 @@ const variants = {
   "split-with-grid-on-right": SplitWithGridOnRight,
 };
 
-export default function LogoClouds(props: ILogoCloud) {
+export default function LogoClouds(props: ILogoCloudBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ILogoCloud>;
+  ] as FC<ILogoCloudBlock>;
 
   if (!Comp) {
     return <></>;

@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
+import {
+  backendButtonsArrayDropdown,
+  backendButtonsArraySimple,
+} from "~mocks/components";
 import ButtonsArrays from ".";
-import * as ButtonStories from "../simple-buttons/SimpleButton.stories";
 
 const meta = { component: ButtonsArrays } satisfies Meta<typeof ButtonsArrays>;
 export default meta;
@@ -8,19 +11,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
-  args: {
-    title: `Buttons Array`,
-    buttons: [
-      { ...ButtonStories.Default.args },
-      { ...ButtonStories.Default.args },
-    ],
-    variant: `simple`,
-  },
+  args: backendButtonsArraySimple,
 };
 
 export const Dropdown: Story = {
-  args: {
-    ...Simple.args,
-    variant: `dropdown`,
-  },
+  args: backendButtonsArrayDropdown,
 };

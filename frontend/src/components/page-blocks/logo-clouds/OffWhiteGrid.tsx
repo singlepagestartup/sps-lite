@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { ILogoCloud } from ".";
+import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
-export default function OffWhiteGrid(props: ILogoCloud) {
+export default function OffWhiteGrid(props: ILogoCloudBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -13,7 +13,11 @@ export default function OffWhiteGrid(props: ILogoCloud) {
           {props.title}
         </p>
         <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-          {props.logos.map((logo, index) => {
+          {props.logos?.map((logo, index) => {
+            if (!logo.logo) {
+              return <></>;
+            }
+
             return (
               <div
                 key={index}

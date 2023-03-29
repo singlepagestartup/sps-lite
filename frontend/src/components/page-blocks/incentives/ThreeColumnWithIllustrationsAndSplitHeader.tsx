@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { IIncentives } from ".";
+import { IIncentivesBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 
 export default function ThreeColumnWithIllustrationsAndSplitHeader(
-  props: IIncentives
+  props: IIncentivesBlock
 ) {
   return (
     <div className="bg-gray-50">
@@ -32,20 +32,22 @@ export default function ThreeColumnWithIllustrationsAndSplitHeader(
             ) : null}
           </div>
           <div className="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 lg:grid-cols-3">
-            {props?.features?.map((feature) => (
+            {props?.features?.map((feature, index) => (
               <div
-                key={feature.title}
+                key={index}
                 className="flex flex-col items-center sm:flex-row lg:block"
               >
-                <div className="sm:flex-shrink-0 h-16 w-16 relative">
-                  <Image
-                    src={getImageUrl(feature.icon, { BACKEND_URL })}
-                    height={100}
-                    width={100}
-                    alt=""
-                    className="object-contain"
-                  />
-                </div>
+                {feature?.icon ? (
+                  <div className="sm:flex-shrink-0 h-16 w-16 relative">
+                    <Image
+                      src={getImageUrl(feature.icon, { BACKEND_URL })}
+                      height={100}
+                      width={100}
+                      alt=""
+                      className="object-contain"
+                    />
+                  </div>
+                ) : null}
                 <div className="mt-4 sm:mt-0 sm:ml-6 lg:mt-6 lg:ml-0">
                   <h3 className="text-sm font-medium text-gray-900">
                     {feature?.title}

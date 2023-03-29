@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { IFeature, IMedia } from "types";
+import { IMedia } from "types";
+import { IBackendFeature } from "types/components";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import ThreeColumnWithIcons from "./ThreeColumnWithIcons";
 import ThreeColumnWithIconsAndSupportingText from "./ThreeColumnWithIconsAndSupportingText";
@@ -9,12 +10,12 @@ import ThreeColumnWithIllustrationsAndHeading from "./ThreeColumnWithIllustratio
 import ThreeColumnWithIllustrationsAndSplitHeader from "./ThreeColumnWithIllustrationsAndSplitHeader";
 import TwoXTwoGridWithIllustrations from "./TwoXTwoGridWithIllustrations";
 
-export interface IIncentives {
-  features: IFeature[];
+export interface IIncentivesBlock {
+  features?: IBackendFeature[];
   title?: string;
   description?: string;
   media?: IMedia[];
-  variant: `four-column-with-illustrations`;
+  variant: keyof typeof variants;
   anchor?: string;
 }
 
@@ -34,10 +35,10 @@ const variants = {
   "two-x-two-grid-with-illustrations": TwoXTwoGridWithIllustrations,
 };
 
-export default function Incentives(props: IIncentives) {
+export default function Incentives(props: IIncentivesBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<IIncentives>;
+  ] as FC<IIncentivesBlock>;
 
   if (!Comp) {
     return <></>;

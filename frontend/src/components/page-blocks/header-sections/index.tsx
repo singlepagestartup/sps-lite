@@ -1,17 +1,17 @@
 import { FC } from "react";
 import { IMedia } from "types";
-import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleCentered from "./SimpleCentered";
+import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
 
-export interface IHeaderSection {
-  title: string;
-  description: string;
-  variant: `with-sign-in-form`;
-  subtitle: string;
-  media: IMedia[];
+export interface IHeaderSectionBlock {
+  title?: string;
+  description?: string;
+  variant: keyof typeof variants;
+  subtitle?: string;
+  media?: IMedia[];
   anchor?: string;
 }
 
@@ -24,10 +24,10 @@ const variants = {
     WithBackgroundImageAndOverlappingCards,
 };
 
-export default function HeaderSections(props: IHeaderSection) {
+export default function HeaderSections(props: IHeaderSectionBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<IHeaderSection>;
+  ] as FC<IHeaderSectionBlock>;
 
   if (!Comp) {
     return <></>;

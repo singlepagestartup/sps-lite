@@ -1,12 +1,12 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { ICtaSections } from ".";
+import { ICtaSectionsBlock } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function DarkPanelWithAppScreenshot(props: ICtaSections) {
+export default function DarkPanelWithAppScreenshot(props: ICtaSectionsBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

@@ -7,10 +7,10 @@ import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
 import WithAngledImageOnRight from "./WithAngledImageOnRight";
 import { IButton } from "~components/buttons/simple-buttons";
 
-export interface IHeroSection {
+export interface IHeroSectionBlock {
   variant: keyof typeof variants;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   buttons?: IButton[];
   media?: IMedia[];
   anchor?: string;
@@ -25,10 +25,10 @@ const variants = {
   "with-angled-image-on-right": WithAngledImageOnRight,
 };
 
-export default function HeroSections(props: IHeroSection) {
+export default function HeroSections(props: IHeroSectionBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<IHeroSection>;
+  ] as FC<IHeroSectionBlock>;
 
   if (!Comp) {
     return <></>;

@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
+import { backendReview } from "~mocks/models";
 import Tables, {
   ICellCompProps,
   IDropdownButtonProps,
@@ -61,21 +62,7 @@ const tableConfig = {
   },
 };
 
-const review = {
-  id: 5,
-  name: `Emily Wilson`,
-  title: `Exceptional Startup with Great Potential`,
-  description: `I had the pleasure of working with this startup and I was very impressed with their innovation and dedication to their customers. Their team is very knowledgeable and professional and I am confident that they have great potential for future success. I am looking forward to seeing what new innovations they come up with next. I highly recommend this startup to anyone looking for innovative solutions.`,
-  subtitle: `Looking Forward to Future Innovations`,
-  rating: 5,
-  createdAt: `2023-03-12T11:34:52.690Z`,
-  cover: {
-    id: 278,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
-  },
-};
-
-const reviews = Array(5).fill(review);
+const reviews = Array(5).fill(backendReview);
 
 export const Simple: Story = {
   args: {

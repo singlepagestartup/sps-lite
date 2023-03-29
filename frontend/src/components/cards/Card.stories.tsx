@@ -5,9 +5,10 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
-import { IReview } from "types";
 import { BACKEND_URL } from "~utils/envs";
 import Cards, { ICardProps, ICardSkeletonProps } from ".";
+import { backendReview } from "~mocks/models";
+import { IBackendReview } from "types/models";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 
@@ -15,21 +16,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const review = {
-  id: 5,
-  name: `Emily Wilson`,
-  title: `Exceptional Startup with Great Potential`,
-  description: `I had the pleasure of working with this startup and I was very impressed with their innovation and dedication to their customers. Their team is very knowledgeable and professional and I am confident that they have great potential for future success. I am looking forward to seeing what new innovations they come up with next. I highly recommend this startup to anyone looking for innovative solutions.`,
-  subtitle: `Looking Forward to Future Innovations`,
-  rating: 5,
-  createdAt: `2023-03-12T11:34:52.690Z`,
-  cover: {
-    id: 278,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
-  },
-};
-
-const reviews = Array(5).fill(review);
+const reviews = Array(5).fill(backendReview);
 
 const cardsConfig = {
   emptyLength: 3,
@@ -48,7 +35,7 @@ export const Simple: Story = {
 };
 
 function SimpleWithAvatarCard(props: ICardProps) {
-  const { item }: { item: IReview } = props;
+  const { item }: { item: IBackendReview } = props;
 
   return (
     <div className="flex space-x-4 text-sm text-gray-500">
@@ -72,22 +59,28 @@ function SimpleWithAvatarCard(props: ICardProps) {
           </time>
         </p>
 
-        <div className="mt-4 flex items-center">
-          {[0, 1, 2, 3, 4].map((rating) => (
-            <StarIcon
-              key={rating}
-              className={`h-5 w-5 flex-shrink-0 ${
-                item.rating > rating ? `text-yellow-400` : `text-gray-300`
-              }`}
-              aria-hidden="true"
-            />
-          ))}
-        </div>
+        {typeof item.rating === `number` ? (
+          <div className="mt-4 flex items-center">
+            {[0, 1, 2, 3, 4].map((rating) => (
+              <StarIcon
+                key={rating}
+                className={`h-5 w-5 flex-shrink-0 ${
+                  item.rating && item.rating > rating
+                    ? `text-yellow-400`
+                    : `text-gray-300`
+                }`}
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+        ) : null}
         <p className="sr-only">{item.rating} out of 5 stars</p>
 
-        <div className="prose prose-sm mt-4 max-w-none text-gray-500">
-          <ReactMarkdown>{item.description}</ReactMarkdown>
-        </div>
+        {item.description ? (
+          <div className="prose prose-sm mt-4 max-w-none text-gray-500">
+            <ReactMarkdown>{item.description}</ReactMarkdown>
+          </div>
+        ) : null}
       </div>
     </div>
   );

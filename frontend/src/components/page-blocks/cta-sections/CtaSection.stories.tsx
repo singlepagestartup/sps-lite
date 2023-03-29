@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import * as SimpleButtonsStories from "~components/buttons/simple-buttons/SimpleButton.stories";
+import { backendButtonDefault } from "~mocks/components";
 import CtaSections from ".";
 
 const meta = { component: CtaSections } satisfies Meta<typeof CtaSections>;
@@ -12,7 +12,7 @@ export const SimpleCentered: Story = {
     title: `Hello world`,
     variant: `simple-centered`,
     description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-    buttons: Array(3).fill(SimpleButtonsStories.Default.args),
+    buttons: Array(3).fill(backendButtonDefault),
   },
 };
 

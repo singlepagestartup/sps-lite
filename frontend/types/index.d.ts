@@ -4,12 +4,7 @@ import { IPageBlocksComponent } from "~components/layout/page-blocks";
 import { IPublicPageLayout } from "~components/layout/public-page-layouts";
 import { IFooter } from "~components/page-blocks/footers";
 import { ITopbar } from "~components/page-blocks/topbar";
-
-export interface ILogo {
-  logo: IMedia;
-  logoMonochrome: IMedia;
-  url: string;
-}
+import { IBackendNavbar } from "./models";
 
 export interface IDashboardLayout {
   id: number;
@@ -25,7 +20,7 @@ export interface IAuthLayout {
 }
 
 export interface IPageProps extends IPageBlocksComponent {
-  header: IHeader;
+  navbar: IBackendNavbar;
   meta: IMeta;
   footer: IFooter;
   shoppingCart: any;
@@ -97,17 +92,6 @@ export interface ICurrency {
   unicode: string;
   isDefault: boolean;
   products?: IProduct;
-}
-
-export interface IReview {
-  id: number;
-  name: string;
-  title: string;
-  subtitle: string;
-  rating: number;
-  description: string;
-  cover: IMedia;
-  createdAt: string;
 }
 
 declare global {

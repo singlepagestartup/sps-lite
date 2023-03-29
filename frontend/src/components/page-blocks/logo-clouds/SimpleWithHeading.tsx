@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { ILogoCloud } from ".";
+import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
-export default function SimpleWithHeading(props: ILogoCloud) {
+export default function SimpleWithHeading(props: ILogoCloudBlock) {
   return (
     <div className="bg-indigo-200 bg-opacity-25">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -15,7 +15,11 @@ export default function SimpleWithHeading(props: ILogoCloud) {
           </h2>
           <div className="mt-8 flow-root self-center lg:mt-0">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {props.logos.map((logo, index) => {
+              {props.logos?.map((logo, index) => {
+                if (!logo.logo) {
+                  return <></>;
+                }
+
                 return (
                   <div
                     key={index}

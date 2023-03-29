@@ -3,10 +3,10 @@ import Link from "next/link";
 const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
-import { IHeroSection } from ".";
+import { IHeroSectionBlock } from ".";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function SimpleCentered(props: IHeroSection) {
+export default function SimpleCentered(props: IHeroSectionBlock) {
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (

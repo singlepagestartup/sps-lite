@@ -1,6 +1,6 @@
-import { IFaqs } from ".";
+import { IFaqsBlock } from ".";
 
-export default function ThreeColumns(props: IFaqs) {
+export default function ThreeColumns(props: IFaqsBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">

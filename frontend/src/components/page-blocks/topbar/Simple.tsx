@@ -1,8 +1,8 @@
 import ReactMarkdown from "react-markdown";
-import { ITopbar } from ".";
+import { ITopbarBlock } from ".";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function Simple(props: ITopbar) {
+export default function Simple(props: ITopbarBlock) {
   return (
     <div className="bg-white w-screen">
       <div className="mx-auto max-w-7xl px-2 flex justify-between py-2 items-center">

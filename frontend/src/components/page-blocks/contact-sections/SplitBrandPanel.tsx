@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { IContactSecton } from ".";
+import { IContactSectonBlock } from ".";
 import Forms from "../forms";
 import ButtonsArrays from "~components/buttons/buttons-arrays";
 
-export default function SplitBrandPanel(props: IContactSecton) {
+export default function SplitBrandPanel(props: IContactSectonBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

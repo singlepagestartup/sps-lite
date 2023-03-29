@@ -1,6 +1,6 @@
-import { IFaqs } from ".";
+import { IFaqsBlock } from ".";
 
-export default function OffsetWithSupportingText(props: IFaqs) {
+export default function OffsetWithSupportingText(props: IFaqsBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
@@ -13,7 +13,7 @@ export default function OffsetWithSupportingText(props: IFaqs) {
           </div>
           <div className="mt-12 lg:col-span-2 lg:mt-0">
             <dl className="space-y-12">
-              {props.faqs.map((faq, index) => (
+              {props.faqs?.map((faq, index) => (
                 <div key={index}>
                   <dt className="text-lg font-medium leading-6 text-gray-900">
                     {faq.title}

@@ -1,8 +1,8 @@
-import { IHeaderSection } from ".";
+import { IHeaderSectionBlock } from ".";
 import ReactMarkdown from "react-markdown";
 import { useMemo } from "react";
 
-export default function SimpleCentered(props: IHeaderSection) {
+export default function SimpleCentered(props: IHeaderSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -23,9 +23,11 @@ export default function SimpleCentered(props: IHeaderSection) {
           <p className="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             {props.title}
           </p>
-          <ReactMarkdown className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
-            {props.description}
-          </ReactMarkdown>
+          {props.description ? (
+            <ReactMarkdown className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+              {props.description}
+            </ReactMarkdown>
+          ) : null}
         </div>
       </div>
     </div>

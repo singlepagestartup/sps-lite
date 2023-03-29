@@ -13,21 +13,21 @@ import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
-import { IExtendedSlide, ISliderExtended } from ".";
+import { IExtendedSlide, ISlider } from ".";
 import Link from "next/link";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { ISlide } from "types";
 import SimpleButtons from "~components/buttons/simple-buttons";
+import { IBackendSlide } from "types/components";
 
 interface INavigationButton {
   isNext?: boolean;
-  slides: ISlide[];
+  slides: IBackendSlide[];
   activeSlide: number;
   onClick: MouseEventHandler;
 }
 
-export default function FadeWithPreviews(props: ISliderExtended) {
+export default function FadeWithPreviews(props: ISlider) {
   const {
     slides,
     activeSlide = 0,

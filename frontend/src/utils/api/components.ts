@@ -1,7 +1,6 @@
 import HeaderSections from "~components/page-blocks/header-sections";
 import HeroSections from "~components/page-blocks/hero-sections";
 import Reviews from "~components/page-blocks/reviews";
-import FeatureSections from "~components/page-blocks/feature-sections";
 import Faqs from "~components/page-blocks/faqs";
 import LogoClouds from "~components/page-blocks/logo-clouds";
 import Slider from "~components/page-blocks/slider";
@@ -12,12 +11,13 @@ import Incentives from "~components/page-blocks/incentives";
 import CtaSections from "~components/page-blocks/cta-sections";
 import Pricings from "~components/page-blocks/pricings";
 import ReviewsTables from "~components/page-blocks/reviews-tables";
+import FeaturesSections from "~components/page-blocks/features-sections";
 
 const liteBlockComponents = {
   [`page-blocks.header-section-block`]: HeaderSections,
   [`page-blocks.hero-section-block`]: HeroSections,
   [`page-blocks.reviews-block`]: Reviews,
-  [`page-blocks.feature-section-block`]: FeatureSections,
+  [`page-blocks.features-section-block`]: FeaturesSections,
   [`page-blocks.faqs-block`]: Faqs,
   [`page-blocks.logo-cloud-block`]: LogoClouds,
   [`page-blocks.slider-block`]: Slider,

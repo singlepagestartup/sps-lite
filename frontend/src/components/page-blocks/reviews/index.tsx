@@ -1,6 +1,5 @@
-import utils from "@rogwild/next-utils";
-import { FC, useMemo } from "react";
-import { IReview } from "types";
+import { FC } from "react";
+import { IBackendReview } from "types/models";
 import SimpleWithAvatars from "./SimpleWithAvatars";
 
 const variants = {
@@ -8,8 +7,8 @@ const variants = {
 };
 
 export interface IReviewsBlock {
-  variant: `simple-with-avatars`;
-  reviews?: IReview[];
+  variant: keyof typeof variants;
+  reviews?: IBackendReview[];
   showAll?: boolean;
   anchor?: string;
 }

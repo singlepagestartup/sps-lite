@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { ISlider } from "~components/slider";
+import { IBackendSlider } from "types/models";
 import Simple from "./Simple";
 
 export interface ISliderBlock {
   variant: keyof typeof variants;
   anchor?: string;
-  slider: ISlider;
+  slider: IBackendSlider;
 }
 
 const variants = {

@@ -1,5 +1,8 @@
-import { IFaqs } from ".";
-export default function ThreeColumnsWithCenteredIntroduction(props: IFaqs) {
+import { IFaqsBlock } from ".";
+
+export default function ThreeColumnsWithCenteredIntroduction(
+  props: IFaqsBlock
+) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -11,7 +14,7 @@ export default function ThreeColumnsWithCenteredIntroduction(props: IFaqs) {
         </p>
         <div className="mt-12">
           <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 md:space-y-0 lg:grid-cols-3">
-            {props.faqs.map((faq, index) => (
+            {props.faqs?.map((faq, index) => (
               <div key={index} className="flex flex-col items-center">
                 <dt className="text-lg font-medium leading-6 text-gray-900">
                   {faq.title}

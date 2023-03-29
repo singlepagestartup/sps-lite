@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { IIncentives } from ".";
+import { IIncentivesBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 
 export default function ThreeColumnWithIllustrationsAndHeader(
-  props: IIncentives
+  props: IIncentivesBlock
 ) {
   return (
     <div className="bg-white">
@@ -18,7 +18,7 @@ export default function ThreeColumnWithIllustrationsAndHeader(
             <p className="mt-4 text-gray-500">{props.description}</p>
           </div>
           <div className="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 lg:grid-cols-3">
-            {props.features.map((feature) => (
+            {props?.features?.map((feature) => (
               <div key={feature.title} className="sm:flex lg:block">
                 {feature.icon ? (
                   <div className="sm:flex-shrink-0 h-16 w-16 relative">

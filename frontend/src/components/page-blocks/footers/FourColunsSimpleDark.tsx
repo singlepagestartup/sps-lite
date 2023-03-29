@@ -1,13 +1,12 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { IFooter } from ".";
 import { BACKEND_URL } from "~utils/envs";
 import ButtonsArrays from "~components/buttons/buttons-arrays";
+import { IFooterBlock } from ".";
 
-export default function FourColumnsSimpleDark(props: IFooter) {
+export default function FourColumnsSimpleDark(props: IFooterBlock) {
   const {
     buttonsArrays,
     socialNetworksButtons,
@@ -40,14 +39,16 @@ export default function FourColumnsSimpleDark(props: IFooter) {
                   />
                 </div>
               </div>
-              <ReactMarkdown className="text-xs text-gray-300">
-                {description}
-              </ReactMarkdown>
+              {description ? (
+                <ReactMarkdown className="text-xs text-gray-300">
+                  {description}
+                </ReactMarkdown>
+              ) : null}
             </div>
 
             {/* Sitemap sections */}
             <div className="w-3/5 flex justify-end gap-4">
-              {buttonsArrays.map((buttonsArray, index) => {
+              {buttonsArrays?.map((buttonsArray, index) => {
                 return <ButtonsArrays key={index} {...buttonsArray} />;
               })}
             </div>
@@ -55,14 +56,16 @@ export default function FourColumnsSimpleDark(props: IFooter) {
         </div>
 
         <div className="border-t border-gray-200 py-8 md:flex md:items-center md:justify-between">
-          <ReactMarkdown className="text-sm text-gray-300">
-            {props.copyrights}
-          </ReactMarkdown>
+          {props.copyrights ? (
+            <ReactMarkdown className="text-sm text-gray-300">
+              {props.copyrights}
+            </ReactMarkdown>
+          ) : null}
           <div className="flex space-x-6 md:order-2">
-            {socialNetworksButtons.map((buttonsArray, index) => {
+            {socialNetworksButtons?.map((buttonsArray, index) => {
               return <ButtonsArrays key={index} {...buttonsArray} />;
             })}
-            {policiesButtons.map((buttonsArray, index) => {
+            {policiesButtons?.map((buttonsArray, index) => {
               return <ButtonsArrays key={index} {...buttonsArray} />;
             })}
           </div>

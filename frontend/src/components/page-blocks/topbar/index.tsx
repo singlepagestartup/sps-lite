@@ -1,19 +1,17 @@
 import { FC } from "react";
-import { IButtons } from "types";
+import { IBackendTopbar } from "types/models";
 import Simple from "./Simple";
 
-export interface ITopbar {
-  variant: `simple`;
-  title?: string;
-  buttons?: IButtons[];
-}
+export interface ITopbarBlock extends IBackendTopbar {}
 
 const variants = {
   simple: Simple,
 };
 
-export default function Topbar(props: ITopbar) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<ITopbar>;
+export default function Topbars(props: ITopbarBlock) {
+  const Comp = variants[
+    props.variant as keyof typeof variants
+  ] as FC<ITopbarBlock>;
 
   if (!Comp) {
     return <></>;

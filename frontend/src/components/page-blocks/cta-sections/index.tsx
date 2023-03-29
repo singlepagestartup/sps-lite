@@ -4,7 +4,7 @@ import { IButton } from "~components/buttons/simple-buttons";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
 
-export interface ICtaSections {
+export interface ICtaSectionsBlock {
   title?: string;
   description?: string;
   media?: IMedia[];
@@ -18,10 +18,10 @@ const variants = {
   "dark-panel-with-app-screenshot": DarkPanelWithAppScreenshot,
 };
 
-export default function CtaSections(props: ICtaSections) {
+export default function CtaSections(props: ICtaSectionsBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ICtaSections>;
+  ] as FC<ICtaSectionsBlock>;
 
   if (!Comp) {
     return <></>;

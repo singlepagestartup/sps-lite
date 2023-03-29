@@ -1,8 +1,8 @@
-import { ICtaSections } from ".";
+import { ICtaSectionsBlock } from ".";
 import { useMemo } from "react";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function SimpleCentered(props: ICtaSections) {
+export default function SimpleCentered(props: ICtaSectionsBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

@@ -1,54 +1,32 @@
-import { IHeaderSection } from ".";
+import { IHeaderSectionBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
 
-// const supportLinks = [
-//   {
-//     name: 'Sales',
-//     href: '#',
-//     description:
-//       'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-//     icon: PhoneIcon,
-//   },
-//   {
-//     name: 'Technical Support',
-//     href: '#',
-//     description:
-//       'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-//     icon: LifebuoyIcon,
-//   },
-//   {
-//     name: 'Media Inquiries',
-//     href: '#',
-//     description:
-//       'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-//     icon: NewspaperIcon,
-//   },
-// ]
-
 export default function WithBackgroundImageAndOverlappingCards(
-  props: IHeaderSection
+  props: IHeaderSectionBlock
 ) {
   return (
     <div className="bg-white">
       {/* Header */}
       <div className="relative bg-gray-800 pb-32">
-        <div className="absolute inset-0">
-          <div className="h-full w-full object-cover">
-            <Image
-              src={getImageUrl(props.media[0], { BACKEND_URL })}
-              alt="Your Company"
-              className="object-cover"
-              fill={true}
+        {props.media?.length ? (
+          <div className="absolute inset-0">
+            <div className="h-full w-full object-cover">
+              <Image
+                src={getImageUrl(props.media[0], { BACKEND_URL })}
+                alt="Your Company"
+                className="object-cover"
+                fill={true}
+              />
+            </div>
+            <div
+              className="absolute inset-0 bg-gray-800 mix-blend-multiply"
+              aria-hidden="true"
             />
           </div>
-          <div
-            className="absolute inset-0 bg-gray-800 mix-blend-multiply"
-            aria-hidden="true"
-          />
-        </div>
+        ) : null}
         <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
             {props.title}
