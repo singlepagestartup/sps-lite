@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { backendLogo } from "~mocks/components";
-import LogoClouds from ".";
+import LogotypesClouds from ".";
 
-const meta = { component: LogoClouds } satisfies Meta<typeof LogoClouds>;
+const meta = { component: LogotypesClouds } satisfies Meta<
+  typeof LogotypesClouds
+>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;

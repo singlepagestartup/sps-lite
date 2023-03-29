@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
-import { getInputErrors } from "~utils/forms";
+import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 
 export default function RangeInput(props: IInputProps) {

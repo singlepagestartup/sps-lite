@@ -1,4 +1,4 @@
-import { IPageProps } from "types";
+import { IPage } from "types";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import {
@@ -24,7 +24,7 @@ export default class Page {
 
     const additionalBlocks = await getAdditionalBlocks(this.locale);
 
-    return { ...pageData, ...additionalBlocks } as IPageProps;
+    return { ...pageData, ...additionalBlocks } as IPage;
   }
 }
 

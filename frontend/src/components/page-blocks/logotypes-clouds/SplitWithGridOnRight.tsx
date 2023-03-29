@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 import SimpleButtons from "~components/buttons/simple-buttons";
+import { ILogotypesCloudBlock } from ".";
 
-export default function SplitWithGridOnRight(props: ILogoCloudBlock) {
+export default function SplitWithGridOnRight(props: ILogotypesCloudBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">

@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { IMedia } from "types";
-import { IBackendForm } from "types/models";
+import { IBackendForm, IMedia } from "types/models";
 import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import SplitBrandPanel from "./SplitBrandPanel";
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
-import { ErrorOption, useFieldArray, useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import Inputs, { IInputProps } from "..";
-import { getInputErrors } from "~utils/forms";
+import { getInputErrors } from "../utils";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 

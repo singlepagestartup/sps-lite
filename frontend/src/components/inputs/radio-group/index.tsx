@@ -2,7 +2,7 @@ import { RadioGroup } from "@headlessui/react";
 import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
-import { getInputErrors } from "~utils/forms";
+import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 
 export default function RadioGroupInput(props: IInputProps) {

@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
+import { ILogotypesCloudBlock } from ".";
 
-export default function SimpleWithHeading(props: ILogoCloudBlock) {
+export default function SimpleWithHeading(props: ILogotypesCloudBlock) {
   return (
     <div className="bg-indigo-200 bg-opacity-25">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">

@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { IMedia } from "types";
 import SimpleCentered from "./SimpleCentered";
 import WithAppScreenshot from "./WithAppScreenshot";
 import Split from "./Split";
 import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
 import WithAngledImageOnRight from "./WithAngledImageOnRight";
 import { IButton } from "~components/buttons/simple-buttons";
+import { IMedia } from "types/models";
 
 export interface IHeroSectionBlock {
   variant: keyof typeof variants;

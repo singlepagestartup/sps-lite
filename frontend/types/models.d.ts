@@ -1,3 +1,4 @@
+import { IPageBlock } from "types";
 import { IButtons } from "~components/buttons";
 import { IButtonsArray } from "~components/buttons/buttons-arrays";
 import { IButton } from "~components/buttons/simple-buttons";
@@ -11,7 +12,18 @@ export interface IBackendTier {
   price: string | null;
   oldPrice: string | null;
   period: number | null;
+  currency?: IBackendCurrency | null;
   type: `one-time` | `regularly`;
+  buttons?: IButton[] | null;
+}
+
+export interface IBackendModal {
+  id: number;
+  title: string;
+  variant: keyof typeof variants;
+  dialogPanelClassName?: string;
+  pageBlocks: IPageBlock[];
+  uid: string;
 }
 
 export interface IBackendForm {
@@ -79,4 +91,32 @@ export interface IBackendTopbar {
   title?: string | null;
   variant: `simple`;
   buttons?: IButton[];
+}
+
+export interface IBackendCurrency {
+  id: number;
+  title?: string | null;
+  unicode: string;
+  isDefault: boolean;
+}
+
+export interface IMedia {
+  id: number;
+  url: string;
+  mime: string;
+  alternativeText: string | null;
+  name: string;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats?: any;
+  hash: string;
+  ext: `.svg` | `.jpg`;
+  mime: string;
+  size: number;
+  previewUrl: string | null;
+  provider: `local` | `aws-s3`;
+  providerMetadata?: any;
+  createdAt?: string;
+  updatedAt?: string;
 }

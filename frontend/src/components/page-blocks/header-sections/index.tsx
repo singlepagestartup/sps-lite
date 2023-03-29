@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { IMedia } from "types";
 import SimpleCentered from "./SimpleCentered";
 import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
+import { IMedia } from "types/models";
 
 export interface IHeaderSectionBlock {
   title?: string;

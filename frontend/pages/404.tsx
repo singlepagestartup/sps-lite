@@ -1,8 +1,8 @@
-import { IPageProps } from "types";
+import { IPage } from "types";
 import PublicPage from "~components/layout/public-page-layouts";
 import Page from "~utils/api/Page";
 
-export default function NotFoundPage(props: IPageProps) {
+export default function NotFoundPage(props: IPage) {
   return <PublicPage {...props} />;
 }
 

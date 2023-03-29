@@ -1,4 +1,5 @@
 import {
+  IBackendCurrency,
   IBackendFooter,
   IBackendForm,
   IBackendNavbar,
@@ -17,6 +18,12 @@ import {
   backendTierInput,
 } from "./components";
 
+export const backendCurrency = {
+  title: `USD`,
+  unicode: `$`,
+  isDefault: true,
+} as IBackendCurrency;
+
 export const backendTier = {
   id: 1,
   title: `Lite`,
@@ -29,6 +36,8 @@ export const backendTier = {
   updatedAt: `2023-02-14T08:49:53.551Z`,
   publishedAt: `2023-02-14T22:48:50.378Z`,
   features: Array(4).fill(backendFeature),
+  currency: backendCurrency,
+  buttons: [backendButtonDefault],
 } as IBackendTier;
 
 export const backendForm = {

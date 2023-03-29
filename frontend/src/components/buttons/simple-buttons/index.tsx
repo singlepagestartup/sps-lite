@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IMedia } from "types";
+import { IMedia } from "types/models";
 import ClientOnly from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";

@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { IMedia } from "types";
-import { IBackendTier } from "types/models";
+import { IBackendTier, IMedia } from "types/models";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
 
 export interface IPricingsBlock {

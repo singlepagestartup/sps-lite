@@ -1,12 +1,12 @@
-import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
+import { ILogotypesCloudBlock } from ".";
 
-export default function Simple(props: ILogoCloudBlock) {
+export default function Simple(props: ILogotypesCloudBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

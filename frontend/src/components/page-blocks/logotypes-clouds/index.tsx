@@ -7,7 +7,7 @@ import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
 import { IBackendLogo } from "types/components";
 
-export interface ILogoCloudBlock {
+export interface ILogotypesCloudBlock {
   variant: keyof typeof variants;
   title?: string;
   logos?: IBackendLogo[];
@@ -24,10 +24,10 @@ const variants = {
   "split-with-grid-on-right": SplitWithGridOnRight,
 };
 
-export default function LogoClouds(props: ILogoCloudBlock) {
+export default function LogotypesClouds(props: ILogotypesCloudBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ILogoCloudBlock>;
+  ] as FC<ILogotypesCloudBlock>;
 
   if (!Comp) {
     return <></>;

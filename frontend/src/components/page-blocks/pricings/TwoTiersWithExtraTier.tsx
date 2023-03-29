@@ -4,6 +4,9 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";
 import Link from "next/link";
 import Cards, { ICardProps } from "~components/cards";
+import Image from "next/image";
+import { IBackendTier } from "types/models";
+import SimpleButtons from "~components/buttons/simple-buttons";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -28,10 +31,11 @@ export default function TwoTiersWithExtraTier(props: IPricingsBlock) {
     <div className="bg-gray-900" {...additionalAttributes}>
       <div className="relative overflow-hidden pt-32 pb-96 lg:pt-40">
         <div>
-          <img
-            className="absolute bottom-0 left-1/2 w-[1440px] max-w-none -translate-x-1/2"
+          <Image
+            className=""
             src="https://tailwindui.com/img/component-images/grid-blur-purple-on-black.jpg"
             alt=""
+            fill={true}
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
@@ -90,7 +94,7 @@ export default function TwoTiersWithExtraTier(props: IPricingsBlock) {
 
 function TierCard(props: ICardProps) {
   const translate = useTranslations();
-  const { item } = props;
+  const { item }: { item: IBackendTier } = props;
 
   return (
     <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">
@@ -99,7 +103,9 @@ function TierCard(props: ICardProps) {
           {item.title}
         </h3>
         <div className="mt-4 flex items-baseline text-5xl font-bold tracking-tight text-gray-900">
-          {item.price ? `$${item.price}` : translate(`Free`)}
+          {item.price
+            ? `${item.currency?.unicode}${item.price}`
+            : translate(`Free`)}
           {item?.period ? (
             <span className="text-lg font-semibold leading-8 tracking-normal text-gray-500">
               /mo
@@ -128,14 +134,9 @@ function TierCard(props: ICardProps) {
             ))}
           </ul>
           <div className="mt-8">
-            {item?.url ? (
-              <Link
-                href={item.url}
-                className="inline-block w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold leading-5 text-white shadow-md hover:bg-indigo-700"
-              >
-                Get started today
-              </Link>
-            ) : null}
+            {item.buttons?.map((button, index) => {
+              return <SimpleButtons key={index} {...button} />;
+            })}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { IMedia } from "types";
 import { IBackendFeature } from "types/components";
+import { IMedia } from "types/models";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import ThreeColumnWithIcons from "./ThreeColumnWithIcons";
 import ThreeColumnWithIconsAndSupportingText from "./ThreeColumnWithIconsAndSupportingText";

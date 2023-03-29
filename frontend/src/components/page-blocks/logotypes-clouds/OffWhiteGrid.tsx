@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { ILogoCloudBlock } from ".";
+import { ILogotypesCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 
-export default function OffWhiteGrid(props: ILogoCloudBlock) {
+export default function OffWhiteGrid(props: ILogotypesCloudBlock) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">

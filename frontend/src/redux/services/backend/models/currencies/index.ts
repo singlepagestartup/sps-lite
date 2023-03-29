@@ -1,6 +1,6 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
-import { ICurrency } from "types";
+import { IBackendCurrency } from "types/models";
 
 const currenciesPopulate = {
   products: `*`,
@@ -24,7 +24,7 @@ export const categoriesApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as ICurrency[];
+        return utils.api.transformResponseItem(result) as IBackendCurrency[];
       },
 
       providesTags: (result) => {
