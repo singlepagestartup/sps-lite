@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "title": "Hello world",
+        "uid": "hello-world",
+        "dialog_panel_class_name": "container",
+        "variant": "simple",
+        "createdAt": "2023-03-28T11:07:56.252Z",
+        "updatedAt": "2023-03-28T11:07:57.474Z",
+        "publishedAt": "2023-03-28T11:07:57.457Z",
+        "page_blocks": [
+            {
+                "__component": "page-blocks.hero-section-block",
+                "id": 6,
+                "title": "Hello world",
+                "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+                "variant": "simple-centered",
+                "anchor": null,
+                "class_name": null,
+                "media": null,
+                "buttons": [],
+                "background": null
+            }
+        ],
+        "createdBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T22:32:56.592Z",
+            "updatedAt": "2023-02-13T22:32:56.592Z"
+        },
+        "updatedBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T22:32:56.592Z",
+            "updatedAt": "2023-02-13T22:32:56.592Z"
+        }
+    }
+]

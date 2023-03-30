@@ -1,8 +1,8 @@
 {
     "id": 1,
-    "createdAt": "2023-02-13T19:02:18.470Z",
-    "updatedAt": "2023-02-13T19:02:20.578Z",
-    "publishedAt": "2023-02-14T18:43:25.777Z",
+    "createdAt": "2023-02-13T23:02:18.470Z",
+    "updatedAt": "2023-02-13T23:02:20.578Z",
+    "publishedAt": "2023-02-14T22:43:25.777Z",
     "locale": "en",
     "page_blocks": [
         {
@@ -13,6 +13,7 @@
             "description": null,
             "class_name": null,
             "anchor": null,
+            "subtitle": null,
             "buttons": [
                 {
                     "id": 34,
@@ -20,8 +21,10 @@
                     "description": null,
                     "variant": "default",
                     "title": null,
+                    "additional_attributes": null,
+                    "class_name": null,
                     "icon": null,
-                    "hover_icon": null
+                    "icon_hover": null
                 }
             ]
         }

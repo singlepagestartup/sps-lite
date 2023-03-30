@@ -9,17 +9,9 @@ import {
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import Simple from "./Simple";
-import { IPageBlocksComponent } from "~components/layout/page-blocks";
+import { IBackendModal } from "types/models";
 
-export interface IModal extends IPageBlocksComponent {
-  id: number;
-  title: string;
-  variant: keyof typeof variants;
-  dialogPanelClassName?: string;
-  uid: string;
-}
-
-export interface IModalComponent extends IModal {
+export interface IModal extends IBackendModal {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
 }
@@ -32,7 +24,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const router = useRouter();
   const { query } = router;
   const [isOpen, setIsOpen] = useState(false);
-  const [modalProps, setModalProps] = useState<IModal>();
+  const [modalProps, setModalProps] = useState<IBackendModal>();
 
   const { data: backendModals } = useGetModalsQuery({});
 
@@ -64,7 +56,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
 
   const Comp = variants[
     modalProps?.variant as keyof typeof variants
-  ] as FC<IModalComponent>;
+  ] as FC<IModal>;
 
   if (!Comp || !modalProps) {
     return <></>;

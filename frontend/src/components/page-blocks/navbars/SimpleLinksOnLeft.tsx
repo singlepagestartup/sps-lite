@@ -16,16 +16,20 @@ export default function SimpleLinksOnLeft(props: INavbarBlock) {
           <div className="mx-auto max-w-7xl px-2">
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link href="/" className="relative w-32 h-8">
-                    <Image
-                      src={getImageUrl(props.logo, { BACKEND_URL })}
-                      alt=""
-                      className="object-contain object-left"
-                      fill={true}
-                    />
-                  </Link>
-                </div>
+                {props.logotype?.media?.length ? (
+                  <div className="flex flex-shrink-0 items-center">
+                    <Link href="/" className="relative w-32 h-8">
+                      <Image
+                        src={getImageUrl(props.logotype.media[0], {
+                          BACKEND_URL,
+                        })}
+                        alt=""
+                        className="object-contain object-left"
+                        fill={true}
+                      />
+                    </Link>
+                  </div>
+                ) : null}
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {props.buttons?.map((button, index) => {
                     return <Buttons key={index} {...button} />;

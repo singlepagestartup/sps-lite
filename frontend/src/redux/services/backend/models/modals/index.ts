@@ -1,11 +1,7 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
-import { IModal } from "types";
-import { pageBlocksQuery } from "~utils/api/queries";
-
-export const modalPopulate = {
-  ...pageBlocksQuery.populate,
-};
+import { IBackendModal } from "types/models";
+import { modalPopulate } from "~utils/api/queries";
 
 const model = `modals`;
 
@@ -24,7 +20,7 @@ export const modalsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IModal[];
+        return utils.api.transformResponseItem(result) as IBackendModal[];
       },
 
       providesTags: (result) => {

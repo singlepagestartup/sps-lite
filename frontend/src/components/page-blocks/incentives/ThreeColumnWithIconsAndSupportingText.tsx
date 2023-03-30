@@ -18,9 +18,9 @@ export default function ThreeColumnWithIconsAndSupportingText(
           >
             <div className="mx-auto flex max-w-xs items-center px-4 lg:max-w-none lg:px-8">
               <div className="h-8 w-8 flex-shrink-0 text-indigo-600 relative">
-                {feature.icon ? (
+                {feature.media?.length ? (
                   <Image
-                    src={getImageUrl(feature.icon, { BACKEND_URL })}
+                    src={getImageUrl(feature.media[0], { BACKEND_URL })}
                     height={100}
                     width={100}
                     alt=""

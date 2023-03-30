@@ -1,4 +1,5 @@
 import {
+  IBackendCurrency,
   IBackendFooter,
   IBackendForm,
   IBackendNavbar,
@@ -11,11 +12,18 @@ import {
   backendButtonsArraySimple,
   backendEmailInput,
   backendFeature,
+  backendLogotype,
   backendNameInput,
   backendPolicyInput,
   backendQuestionInput,
   backendTierInput,
 } from "./components";
+
+export const backendCurrency = {
+  title: `USD`,
+  unicode: `$`,
+  isDefault: true,
+} as IBackendCurrency;
 
 export const backendTier = {
   id: 1,
@@ -29,6 +37,8 @@ export const backendTier = {
   updatedAt: `2023-02-14T08:49:53.551Z`,
   publishedAt: `2023-02-14T22:48:50.378Z`,
   features: Array(4).fill(backendFeature),
+  currency: backendCurrency,
+  buttons: [backendButtonDefault],
 } as IBackendTier;
 
 export const backendForm = {
@@ -58,10 +68,13 @@ export const backendReview = {
   subtitle: `Looking Forward to Future Innovations`,
   rating: 5,
   createdAt: `2023-03-12T11:34:52.690Z`,
-  cover: {
-    id: 278,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
-  },
+  media: [
+    {
+      id: 278,
+      url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
+    },
+  ],
+  additionalMedia: null,
 } as IBackendReview;
 
 export const backendFooterFourColumnsWithCompanyMission = {
@@ -70,25 +83,7 @@ export const backendFooterFourColumnsWithCompanyMission = {
   description: `Making the world a better place through constructing elegant hierarchies.`,
   variant: `four-columns-with-company-mission`,
   locale: `en`,
-  logo: {
-    id: 273,
-    name: `sps-full black.svg`,
-    alternativeText: ``,
-    caption: null,
-    width: 2226,
-    height: 340,
-    formats: null,
-    hash: `sps_full_black_72b5a055d3`,
-    ext: `.svg`,
-    mime: `image/svg+xml`,
-    size: 1.97,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/sps_full_black_72b5a055d3.svg`,
-    previewUrl: null,
-    provider: `aws-s3`,
-    providerMetadata: null,
-    createdAt: `2023-02-25T06:24:25.163Z`,
-    updatedAt: `2023-02-25T06:24:25.163Z`,
-  },
+  logotype: backendLogotype,
   socialNetworksButtons: Array(3).fill(backendButtonsArraySimple),
   policiesButtons: Array(3).fill(backendButtonsArraySimple),
   buttonsArrays: Array(3).fill(backendButtonsArraySimple),
@@ -96,25 +91,7 @@ export const backendFooterFourColumnsWithCompanyMission = {
 
 export const backendNavbarSimpleLinksOnLeft = {
   variant: `simple-links-on-left`,
-  logo: {
-    id: 273,
-    name: `sps-full black.svg`,
-    alternativeText: ``,
-    caption: null,
-    width: 2226,
-    height: 340,
-    formats: null,
-    hash: `sps_full_black_72b5a055d3`,
-    ext: `.svg`,
-    mime: `image/svg+xml`,
-    size: 1.97,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/sps_full_black_72b5a055d3.svg`,
-    previewUrl: null,
-    provider: `aws-s3`,
-    providerMetadata: null,
-    createdAt: `2023-02-25T06:24:25.163Z`,
-    updatedAt: `2023-02-25T06:24:25.163Z`,
-  },
+  logotype: backendLogotype,
 } as IBackendNavbar;
 
 export const backendTopbarSimple = {

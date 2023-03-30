@@ -2,7 +2,6 @@ import HeaderSections from "~components/page-blocks/header-sections";
 import HeroSections from "~components/page-blocks/hero-sections";
 import Reviews from "~components/page-blocks/reviews";
 import Faqs from "~components/page-blocks/faqs";
-import LogoClouds from "~components/page-blocks/logo-clouds";
 import Slider from "~components/page-blocks/slider";
 import Forms from "~components/page-blocks/forms";
 import NotFound from "~components/page-blocks/not-found";
@@ -12,6 +11,7 @@ import CtaSections from "~components/page-blocks/cta-sections";
 import Pricings from "~components/page-blocks/pricings";
 import ReviewsTables from "~components/page-blocks/reviews-tables";
 import FeaturesSections from "~components/page-blocks/features-sections";
+import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
 
 const liteBlockComponents = {
   [`page-blocks.header-section-block`]: HeaderSections,
@@ -19,7 +19,7 @@ const liteBlockComponents = {
   [`page-blocks.reviews-block`]: Reviews,
   [`page-blocks.features-section-block`]: FeaturesSections,
   [`page-blocks.faqs-block`]: Faqs,
-  [`page-blocks.logo-cloud-block`]: LogoClouds,
+  [`page-blocks.logotypes-cloud-block`]: LogotypesClouds,
   [`page-blocks.slider-block`]: Slider,
   [`page-blocks.form-block`]: Forms,
   [`page-blocks.not-found-block`]: NotFound,

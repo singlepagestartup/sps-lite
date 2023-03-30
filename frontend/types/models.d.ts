@@ -1,7 +1,13 @@
+import { IPageBlock } from "types";
 import { IButtons } from "~components/buttons";
-import { IButtonsArray } from "~components/buttons/buttons-arrays";
-import { IButton } from "~components/buttons/simple-buttons";
-import { IBackendFeature, IBackendInput, IBackendSlide } from "./components";
+import {
+  IBackendButton,
+  IBackendButtonsArray,
+  IBackendFeature,
+  IBackendInput,
+  IBackendLogotype,
+  IBackendSlide,
+} from "./components";
 
 export interface IBackendTier {
   id: number;
@@ -11,7 +17,18 @@ export interface IBackendTier {
   price: string | null;
   oldPrice: string | null;
   period: number | null;
+  currency?: IBackendCurrency | null;
   type: `one-time` | `regularly`;
+  buttons?: IBackendButton[] | null;
+}
+
+export interface IBackendModal {
+  id: number;
+  title: string;
+  variant: keyof typeof variants;
+  dialogPanelClassName?: string;
+  pageBlocks: IPageBlock[];
+  uid: string;
 }
 
 export interface IBackendForm {
@@ -20,7 +37,7 @@ export interface IBackendForm {
   inputs: IBackendInput[];
   subtitle: string | null;
   description: string | null;
-  button?: IButton;
+  button?: IBackendButton;
 }
 
 export interface IBackendReview {
@@ -30,7 +47,8 @@ export interface IBackendReview {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  cover: IMedia | null;
+  media: IBackendMedia[] | null;
+  additionalMedia: IBackendMedia[] | null;
   createdAt: string;
 }
 
@@ -46,10 +64,10 @@ export interface IBackendSlider {
 
 export interface IBackendFooter {
   id: number;
-  logo: IMedia;
-  socialNetworksButtons?: IButtonsArray[];
-  buttonsArrays?: IButtonsArray[];
-  policiesButtons?: IButtonsArray[];
+  logotype: IBackendLogotype | null;
+  socialNetworksButtons?: IBackendButtonsArray[];
+  buttonsArrays?: IBackendButtonsArray[];
+  policiesButtons?: IBackendButtonsArray[];
   copyrights?: string;
   variant:
     | `four-columns-simple`
@@ -66,7 +84,7 @@ export interface IBackendFooter {
 }
 
 export interface IBackendNavbar {
-  logo: IMedia;
+  logotype: IBackendLogotype | null;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
   additionalButtons?: IButtons[];
@@ -78,5 +96,33 @@ export interface IBackendNavbar {
 export interface IBackendTopbar {
   title?: string | null;
   variant: `simple`;
-  buttons?: IButton[];
+  buttons?: IBackendButton[];
+}
+
+export interface IBackendCurrency {
+  id: number;
+  title?: string | null;
+  unicode: string;
+  isDefault: boolean;
+}
+
+export interface IBackendMedia {
+  id: number;
+  url: string;
+  mime: string;
+  alternativeText: string | null;
+  name: string;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats?: any;
+  hash: string;
+  ext: `.svg` | `.jpg`;
+  mime: string;
+  size: number;
+  previewUrl: string | null;
+  provider: `local` | `aws-s3`;
+  providerMetadata?: any;
+  createdAt?: string;
+  updatedAt?: string;
 }

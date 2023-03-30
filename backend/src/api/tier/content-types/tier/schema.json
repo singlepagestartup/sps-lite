@@ -48,6 +48,11 @@
         "old_price": {
             "pluginOptions": {},
             "type": "float"
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
         }
     }
 }

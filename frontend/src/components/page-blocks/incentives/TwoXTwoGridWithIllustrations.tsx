@@ -13,10 +13,10 @@ export default function TwoXTwoGridWithIllustrations(props: IIncentivesBlock) {
           {props?.features?.map((feature, index) => (
             <div key={index} className="sm:flex">
               <div className="sm:flex-shrink-0">
-                {feature?.icon ? (
+                {feature?.media?.length ? (
                   <div className="flow-root h-24 w-28 relative">
                     <Image
-                      src={getImageUrl(feature.icon, { BACKEND_URL })}
+                      src={getImageUrl(feature.media[0], { BACKEND_URL })}
                       height={100}
                       width={100}
                       alt=""

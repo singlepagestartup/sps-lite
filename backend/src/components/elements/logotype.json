@@ -1,27 +1,28 @@
 {
     "collectionName": "components_elements_logotypes",
     "info": {
-        "displayName": "Logotype"
+        "displayName": "Logotype",
+        "description": ""
     },
     "options": {},
     "attributes": {
         "title": {
             "type": "richtext"
         },
-        "logo": {
-            "type": "media",
-            "multiple": false,
-            "required": true,
-            "allowedTypes": ["images"]
-        },
-        "logo_monochrome": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images"]
-        },
         "url": {
             "type": "text"
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "additional_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
         }
     }
 }

@@ -20,10 +20,10 @@ export default function ThreeColumnWithIllustrationsAndHeader(
           <div className="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 lg:grid-cols-3">
             {props?.features?.map((feature) => (
               <div key={feature.title} className="sm:flex lg:block">
-                {feature.icon ? (
+                {feature.media?.length ? (
                   <div className="sm:flex-shrink-0 h-16 w-16 relative">
                     <Image
-                      src={getImageUrl(feature.icon, { BACKEND_URL })}
+                      src={getImageUrl(feature.media[0], { BACKEND_URL })}
                       height={100}
                       width={100}
                       alt=""

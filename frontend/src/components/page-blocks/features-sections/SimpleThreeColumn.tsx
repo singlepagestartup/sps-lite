@@ -29,9 +29,9 @@ export default function SimpleThreeColumn(props: IFeaturesSectionBlock) {
           {props.features.map((feature, index) => (
             <div key={index}>
               <dt>
-                {feature?.icon ? (
+                {feature?.media?.length ? (
                   <Image
-                    src={getImageUrl(feature.icon, { BACKEND_URL })}
+                    src={getImageUrl(feature.media[0], { BACKEND_URL })}
                     height={100}
                     width={100}
                     alt=""

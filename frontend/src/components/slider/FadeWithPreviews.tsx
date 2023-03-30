@@ -4,7 +4,6 @@ import React, {
   useRef,
   SetStateAction,
   Fragment,
-  FC,
   MouseEventHandler,
   Dispatch,
   useMemo,
@@ -14,7 +13,6 @@ import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import { IExtendedSlide, ISlider } from ".";
-import Link from "next/link";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import SimpleButtons from "~components/buttons/simple-buttons";
@@ -178,7 +176,7 @@ function DefaultSlideComponent({
     <div className="slide">
       <div className="slide__container">
         <Image
-          src={getImageUrl(slide.media, { BACKEND_URL })}
+          src={getImageUrl(slide.media[0], { BACKEND_URL })}
           alt=""
           fill={true}
           className="background"
@@ -220,7 +218,7 @@ function DefaultPreviewsComponent({
             onClick={() => handleNavigation({ slideNumber: index })}
           >
             <Image
-              src={getImageUrl(slide.media, { BACKEND_URL })}
+              src={getImageUrl(slide.media[0], { BACKEND_URL })}
               alt=""
               fill={true}
               className="image"

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IPageProps } from "types";
+import { IPage } from "types";
 import Simple from "./Simple";
 
 export interface IPublicPageLayout {
@@ -11,10 +11,10 @@ const variants = {
   simple: Simple,
 };
 
-export default function PublicPageLayouts(props: IPageProps) {
+export default function PublicPageLayouts(props: IPage) {
   const Comp = variants[
     props.publicPageLayout?.variant as keyof typeof variants
-  ] as FC<IPageProps>;
+  ] as FC<IPage>;
 
   if (!Comp) {
     return <></>;

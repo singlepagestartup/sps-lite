@@ -38,6 +38,6 @@ export async function getBackendData(props: IAxiosProps) {
       }
     })
     .catch((error) => {
-      console.error(error);
+      console.error(`\n ${method} ${url}?${query} | ${error.message}`);
     });
 }

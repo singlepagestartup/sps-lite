@@ -5,9 +5,9 @@
         "subtitle": null,
         "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
         "uid": "question",
-        "createdAt": "2023-02-14T06:12:40.873Z",
-        "updatedAt": "2023-02-14T06:14:55.461Z",
-        "publishedAt": "2023-02-14T18:44:48.245Z",
+        "createdAt": "2023-02-14T10:12:40.873Z",
+        "updatedAt": "2023-03-26T20:40:29.554Z",
+        "publishedAt": "2023-02-14T22:44:48.245Z",
         "inputs": [
             {
                 "id": 56,
@@ -90,10 +90,12 @@
             "id": 35,
             "url": null,
             "description": null,
-            "variant": "default",
-            "title": null,
+            "variant": "primary",
+            "title": "Отправить",
+            "additional_attributes": null,
+            "class_name": null,
             "icon": null,
-            "hover_icon": null
+            "icon_hover": null
         },
         "form_requests": [],
         "side_effects": [
@@ -112,6 +114,20 @@
             }
         ],
         "createdBy": null,
-        "updatedBy": null
+        "updatedBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T22:32:56.592Z",
+            "updatedAt": "2023-02-13T22:32:56.592Z"
+        }
     }
 ]

@@ -3,9 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import PageBlocks from "~components/layout/page-blocks";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { IModalComponent } from ".";
+import { IModal } from ".";
 
-export default function Simple(props: IModalComponent) {
+export default function Simple(props: IModal) {
   const router = useRouter();
   const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
 

@@ -1,5 +1,12 @@
+const mediaPopulate = `*`;
+
 const buttonPopulate = {
-  icon: `*`,
+  media: {
+    populate: mediaPopulate,
+  },
+  additionalMedia: {
+    populate: mediaPopulate,
+  },
 };
 
 const buttonArrayPopulate = {
@@ -8,8 +15,77 @@ const buttonArrayPopulate = {
   },
 };
 
+const logotypePopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  additionalMedia: {
+    populate: mediaPopulate,
+  },
+};
+
+const featurePopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  additionalMedia: {
+    populate: mediaPopulate,
+  },
+};
+
+const tierPopulate = {
+  features: {
+    populate: featurePopulate,
+  },
+  currency: {
+    populate: `*`,
+  },
+};
+
+const slidePopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  buttons: {
+    populate: buttonPopulate,
+  },
+};
+
+const sliderPopulate = {
+  slides: {
+    populate: slidePopulate,
+  },
+};
+
+const inputPopulate = {
+  options: {
+    populate: `*`,
+  },
+};
+
+const formPopulate = {
+  inputs: {
+    populate: inputPopulate,
+  },
+  button: {
+    populate: buttonPopulate,
+  },
+};
+
+const faqPopulate = `*`;
+
+export const metaPopulate = {
+  favicon: {
+    populate: mediaPopulate,
+  },
+};
+
+export const publicPageLayoutPopulate = {};
+
 export const footerPopulate = {
-  logo: `*`,
+  logotype: {
+    populate: logotypePopulate,
+  },
   social_networks_buttons: {
     populate: buttonArrayPopulate,
   },
@@ -22,14 +98,14 @@ export const footerPopulate = {
 };
 
 export const navbarPopulate = {
-  logo: `*`,
-  position: `*`,
+  logotype: {
+    populate: logotypePopulate,
+  },
   buttons: {
     populate: {
       buttons: {
         populate: buttonPopulate,
       },
-      icon: `*`,
       buttons_arrays: {
         populate: buttonArrayPopulate,
       },
@@ -46,7 +122,6 @@ export const navbarPopulate = {
   },
   topbar: {
     populate: {
-      title: `*`,
       buttons: {
         populate: buttonPopulate,
       },
@@ -54,51 +129,42 @@ export const navbarPopulate = {
   },
 };
 
-export const pageBlocksQuery = {
-  populate: {
-    page_blocks: {
-      populate: {
-        buttons: { populate: `*` },
-        background: { populate: `*` },
-        buttons_arrays: {
-          populate: buttonArrayPopulate,
-        },
-        media: { populate: `*` },
-        tiers: {
-          populate: {
-            features: {
-              populate: `*`,
-            },
-          },
-        },
-        features: { populate: `*` },
-        faqs: { populate: `*` },
-        logos: { populate: `*` },
-        logo: { populate: `*` },
-        slider: {
-          populate: {
-            slides: { populate: `*` },
-          },
-        },
-        form: {
-          populate: {
-            inputs: {
-              populate: {
-                options: {
-                  populate: `*`,
-                },
-              },
-            },
-            button: {
-              populate: {
-                icon: `*`,
-              },
-            },
-          },
-        },
+export const pageBlocksPopulate = {
+  page_blocks: {
+    populate: {
+      buttons: { populate: buttonPopulate },
+      background: { populate: mediaPopulate },
+      buttons_arrays: {
+        populate: buttonArrayPopulate,
+      },
+      media: { populate: mediaPopulate },
+      tiers: {
+        populate: tierPopulate,
+      },
+      features: { populate: featurePopulate },
+      faqs: { populate: faqPopulate },
+      logotype: { populate: logotypePopulate },
+      slider: {
+        populate: sliderPopulate,
+      },
+      form: {
+        populate: formPopulate,
       },
     },
-    // Needs for product page, because strapi gives only 2 deep leves of components
-    tabs: { populate: `*` },
   },
 };
+
+export const modalPopulate = {
+  ...pageBlocksPopulate,
+};
+
+export const reviewsPopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  additionalMedia: {
+    populate: mediaPopulate,
+  },
+};
+
+export const currenciesPopulate = {};

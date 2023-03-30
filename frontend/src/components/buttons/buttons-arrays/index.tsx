@@ -1,15 +1,9 @@
 import { FC } from "react";
-import { IButton } from "~components/buttons/simple-buttons";
+import { IBackendButtonsArray } from "types/components";
 import Dropdown from "./Dropdown";
 import Simple from "./Simple";
 
-export interface IButtonsArray {
-  title?: string;
-  buttons: IButton[];
-  description?: string;
-  className?: string;
-  variant: keyof typeof variants;
-}
+export interface IButtonsArray extends IBackendButtonsArray {}
 
 const variants = { simple: Simple, dropdown: Dropdown };
 

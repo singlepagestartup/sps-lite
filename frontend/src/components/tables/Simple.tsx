@@ -1,8 +1,5 @@
-import dayjs from "dayjs";
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import {
-  ICellCompProps,
   IDropdownButtonProps,
   IHeaderCompProps,
   ITableCollumn,

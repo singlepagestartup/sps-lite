@@ -1,10 +1,10 @@
-import { IPageProps } from "types";
+import { IPage } from "types";
 import Footers from "~components/page-blocks/footers";
 import MetaBlock from "~components/page-blocks/meta";
 import Navbar from "~components/page-blocks/navbars";
 import PageBlocks from "../page-blocks";
 
-export default function Simple(props: IPageProps) {
+export default function Simple(props: IPage) {
   return (
     <>
       <MetaBlock {...props.meta} />

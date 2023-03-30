@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import qs from "qs";
-import { backendUrl } from "~utils/envs";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import utils from "@rogwild/next-utils";
+import { BACKEND_URL } from "~utils/envs";
 const { SpringNotification } = utils.components;
 const { createNotification } = SpringNotification;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${backendUrl}/api`,
+  baseUrl: `${BACKEND_URL}/api`,
   paramsSerializer: (object) => {
     return qs.stringify(object, {
       encodeValuesOnly: true,
@@ -27,7 +27,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const tagTypes = [`Review`, `Modal`, `Uploader`, `Currency`];
+const tagTypes = [`Currency`, `Modal`, `Review`];
 
 export const backendServiceApi = createApi({
   baseQuery,
@@ -46,9 +46,6 @@ export const rtkQueryErrorLogger = (api: any) => {
           createNotification({
             title: action.payload.data.error.name,
             message: action.payload.data.error.message,
-            containerClassName: `@ow overflow-visible @bxsw drop-shadow-lg`,
-            contentContainerClassName: ` @brr rounded-md`,
-            headerClassName: `@ttc text-red-500`,
             duration: 10000,
           });
         }

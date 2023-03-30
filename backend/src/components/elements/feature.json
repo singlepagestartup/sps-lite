@@ -16,9 +16,9 @@
         "description": {
             "type": "richtext"
         },
-        "icon": {
+        "additional_media": {
             "type": "media",
-            "multiple": false,
+            "multiple": true,
             "required": false,
             "allowedTypes": ["images", "files", "videos", "audios"]
         },

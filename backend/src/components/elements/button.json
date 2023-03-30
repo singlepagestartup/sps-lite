@@ -10,11 +10,11 @@
         "url": {
             "type": "text"
         },
-        "icon": {
+        "media": {
             "type": "media",
-            "multiple": false,
+            "multiple": true,
             "required": false,
-            "allowedTypes": ["images", "files"]
+            "allowedTypes": ["images", "videos", "audios", "files"]
         },
         "description": {
             "type": "richtext"
@@ -25,11 +25,11 @@
             "default": "default",
             "required": true
         },
-        "hover_icon": {
+        "additional_media": {
             "type": "media",
-            "multiple": false,
+            "multiple": true,
             "required": false,
-            "allowedTypes": ["images", "files"]
+            "allowedTypes": ["images", "files", "videos", "audios"]
         },
         "title": {
             "type": "richtext"

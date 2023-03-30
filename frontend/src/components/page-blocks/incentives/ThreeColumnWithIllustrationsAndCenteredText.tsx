@@ -17,10 +17,10 @@ export default function ThreeColumnWithIllustrationsAndCenteredText(
               className="text-center sm:flex sm:text-left lg:block lg:text-center"
             >
               <div className="sm:flex-shrink-0">
-                {feature.icon ? (
+                {feature.media?.length ? (
                   <div className="flow-root mx-auto h-24 w-28 relative">
                     <Image
-                      src={getImageUrl(feature.icon, { BACKEND_URL })}
+                      src={getImageUrl(feature.media[0], { BACKEND_URL })}
                       height={100}
                       width={100}
                       alt=""

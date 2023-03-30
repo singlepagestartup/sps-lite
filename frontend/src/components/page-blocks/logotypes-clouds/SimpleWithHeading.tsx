@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { ILogoCloudBlock } from ".";
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
+import { ILogotypesCloudBlock } from ".";
 
-export default function SimpleWithHeading(props: ILogoCloudBlock) {
+export default function SimpleWithHeading(props: ILogotypesCloudBlock) {
   return (
     <div className="bg-indigo-200 bg-opacity-25">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -15,8 +15,8 @@ export default function SimpleWithHeading(props: ILogoCloudBlock) {
           </h2>
           <div className="mt-8 flow-root self-center lg:mt-0">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {props.logos?.map((logo, index) => {
-                if (!logo.logo) {
+              {props.logotypes?.map((logotype, index) => {
+                if (!logotype.media) {
                   return <></>;
                 }
 
@@ -25,12 +25,14 @@ export default function SimpleWithHeading(props: ILogoCloudBlock) {
                     key={index}
                     className="flex flex-shrink-0 flex-grow justify-center lg:flex-grow-0"
                   >
-                    <Link href={logo?.url} className="relative h-12 w-full">
-                      <Image
-                        fill={true}
-                        src={getImageUrl(logo.logo, { BACKEND_URL })}
-                        alt="Tuple"
-                      />
+                    <Link href={logotype?.url} className="relative h-12 w-full">
+                      {logotype.media.length ? (
+                        <Image
+                          fill={true}
+                          src={getImageUrl(logotype.media[0], { BACKEND_URL })}
+                          alt="Tuple"
+                        />
+                      ) : null}
                     </Link>
                   </div>
                 );

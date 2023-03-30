@@ -1,13 +1,12 @@
 import { FC } from "react";
-import { IMedia } from "types";
-import { IBackendTier } from "types/models";
+import { IBackendMedia, IBackendTier } from "types/models";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
 
 export interface IPricingsBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  background?: IMedia;
+  background?: IBackendMedia;
   variant: keyof typeof variants;
   anchor?: string;
   tiers: IBackendTier[];

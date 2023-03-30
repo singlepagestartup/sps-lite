@@ -44,17 +44,6 @@
                 }
             }
         },
-        "logo": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos"],
-            "pluginOptions": {
-                "i18n": {
-                    "localized": true
-                }
-            }
-        },
         "description": {
             "type": "richtext",
             "pluginOptions": {
@@ -83,6 +72,16 @@
                     "localized": true
                 }
             }
+        },
+        "logotype": {
+            "type": "component",
+            "repeatable": false,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "elements.logotype"
         }
     }
 }

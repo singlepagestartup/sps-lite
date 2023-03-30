@@ -1,10 +1,7 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
 import { IBackendReview } from "types/models";
-
-export const reviewsPopulate = {
-  cover: `*`,
-};
+import { reviewsPopulate } from "~utils/api/queries";
 
 const model = `reviews`;
 

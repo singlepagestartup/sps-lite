@@ -14,14 +14,14 @@ export default function Slider(props: IBackendSlider) {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const localMedia = useMemo(() => {
-    if (!slides) {
+    if (!slides || !slides.every((slide) => slide?.media?.length)) {
       return;
     }
 
     return slides.map((slide) => {
       return {
         ...slide,
-        renderType: parseMimeType(slide.media.mime).renderType,
+        renderType: parseMimeType(slide.media[0].mime).renderType,
       } as IExtendedSlide;
     });
   }, [slides]);

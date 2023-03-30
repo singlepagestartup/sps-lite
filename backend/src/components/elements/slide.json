@@ -18,14 +18,20 @@
         },
         "media": {
             "type": "media",
-            "multiple": false,
-            "required": false,
+            "multiple": true,
+            "required": true,
             "allowedTypes": ["images", "files", "videos", "audios"]
         },
         "buttons": {
             "type": "component",
             "repeatable": true,
             "component": "elements.button"
+        },
+        "additional_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
         }
     }
 }
