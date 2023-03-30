@@ -1,37 +1,56 @@
 {
-    "collectionName": "components_elements_buttons_arrays",
-    "info": {
-        "displayName": "Buttons Array",
-        "icon": "bars",
-        "description": ""
+  "collectionName": "components_elements_buttons_arrays",
+  "info": {
+    "displayName": "Buttons Array",
+    "icon": "bars",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "title": {
-            "type": "richtext"
-        },
-        "buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "icon": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images", "files"]
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["simple"],
-            "default": "simple",
-            "required": true
-        },
-        "description": {
-            "type": "richtext"
-        }
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "audios",
+        "files"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "simple",
+        "dropdown"
+      ],
+      "default": "simple",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
+  }
 }

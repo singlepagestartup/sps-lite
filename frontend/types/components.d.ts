@@ -1,19 +1,40 @@
-import { IMedia } from "types";
 import { IButton } from "~components/buttons/simple-buttons";
+import { IBackendMedia } from "./models";
 
 export interface IBackendFeature {
   id: number;
   title: string | null;
   description: string | null;
   subtitle: string | null;
-  media?: IMedia[] | null;
-  icon?: IMedia | null;
+  media?: IBackendMedia[] | null;
+  additionalMedia?: IBackendMedia[] | null;
 }
 
 export interface IBackendOption {
   id: number;
   title: string | null;
   description: string | null;
+}
+
+export interface IBackendButton {
+  title: string;
+  variant: `bottom-line` | `primary` | `default`;
+  url?: string;
+  description?: string;
+  media?: IBackendMedia[] | null;
+  additionalMedia?: IBackendMedia[] | null;
+  className?: string;
+  additionalAttributes?: any;
+}
+
+export interface IBackendButtonsArray {
+  title?: string;
+  buttons: IBackendButton[];
+  description?: string;
+  className?: string;
+  variant: `simple` | `dropdown`;
+  media?: IBackendMedia[] | null;
+  additionalMedia?: IBackendMedia[] | null;
 }
 
 export interface IBackendInput {
@@ -29,9 +50,9 @@ export interface IBackendInput {
   multiple: boolean | null;
 }
 
-export interface IBackendLogo {
-  logo: IMedia | null;
-  logoMonochrome: IMedia | null;
+export interface IBackendLogotype {
+  media: IBackendMedia[] | null;
+  additionalMedia: IBackendMedia[] | null;
   url: string;
   title: string | null;
 }
@@ -47,5 +68,5 @@ export interface IBackendSlide {
   title?: string;
   subtitle?: string;
   description?: string;
-  media: IMedia;
+  media: IBackendMedia;
 }

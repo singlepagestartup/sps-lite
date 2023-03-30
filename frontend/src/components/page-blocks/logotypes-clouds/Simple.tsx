@@ -21,8 +21,8 @@ export default function Simple(props: ILogotypesCloudBlock) {
     <div className="bg-white" {...additionalAttributes}>
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-          {props.logos?.map((logo, index) => {
-            if (!logo.logo) {
+          {props.logotypes?.map((logotype, index) => {
+            if (!logotype.media) {
               return <></>;
             }
 
@@ -31,21 +31,25 @@ export default function Simple(props: ILogotypesCloudBlock) {
                 key={index}
                 className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
               >
-                {logo?.url ? (
-                  <Link href={logo.url} className="relative h-12 w-full">
-                    <Image
-                      fill={true}
-                      src={getImageUrl(logo.logo, { BACKEND_URL })}
-                      alt="Tuple"
-                    />
+                {logotype?.url ? (
+                  <Link href={logotype.url} className="relative h-12 w-full">
+                    {logotype.media.length ? (
+                      <Image
+                        fill={true}
+                        src={getImageUrl(logotype.media[0], { BACKEND_URL })}
+                        alt="Tuple"
+                      />
+                    ) : null}
                   </Link>
                 ) : (
                   <div className="relative h-12 w-full">
-                    <Image
-                      fill={true}
-                      src={getImageUrl(logo.logo, { BACKEND_URL })}
-                      alt="Tuple"
-                    />
+                    {logotype.media.length ? (
+                      <Image
+                        fill={true}
+                        src={getImageUrl(logotype.media[0], { BACKEND_URL })}
+                        alt="Tuple"
+                      />
+                    ) : null}
                   </div>
                 )}
               </div>

@@ -9,8 +9,13 @@
         "title": {
             "type": "richtext"
         },
-        "icon": {
-            "allowedTypes": ["images", "files"],
+        "media": {
+            "allowedTypes": ["images", "videos", "audios", "files"],
+            "type": "media",
+            "multiple": false
+        },
+        "additional_media": {
+            "allowedTypes": ["images", "videos", "audios", "files"],
             "type": "media",
             "multiple": false
         },

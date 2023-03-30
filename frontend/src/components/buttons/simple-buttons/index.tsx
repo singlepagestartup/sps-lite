@@ -1,19 +1,12 @@
 import { FC } from "react";
-import { IMedia } from "types/models";
+import { IBackendButton } from "types/components";
 import ClientOnly from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
 
-export interface IButton {
-  title: string;
-  variant: keyof typeof variants;
-  url?: string;
+export interface IButton extends IBackendButton {
   onClick?: any;
-  description?: string;
-  icon?: IMedia;
-  className?: string;
-  additionalAttributes?: any;
 }
 
 const variants = {

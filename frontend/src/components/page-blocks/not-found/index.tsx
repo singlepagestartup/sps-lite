@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IButton } from "~components/buttons/simple-buttons";
+import { IBackendButton } from "types/components";
 import Simple from "./Simple";
 
 export interface INotFoundBlock {
@@ -7,7 +7,7 @@ export interface INotFoundBlock {
   title?: string;
   subtitle?: string;
   description?: string;
-  buttons?: IButton[];
+  buttons?: IBackendButton[];
 }
 
 const variants = {

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IBackendFeature } from "types/components";
-import { IMedia } from "types/models";
+import { IBackendMedia } from "types/models";
 import SimpleThreeColumn from "./SimpleThreeColumn";
 import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
 import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
@@ -12,7 +12,7 @@ export interface IFeaturesSectionBlock {
   subtitle?: string;
   description?: string;
   anchor?: string;
-  media?: IMedia[];
+  media?: IBackendMedia[];
 }
 
 const variants = {

@@ -4,17 +4,17 @@ import WithAppScreenshot from "./WithAppScreenshot";
 import Split from "./Split";
 import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
 import WithAngledImageOnRight from "./WithAngledImageOnRight";
-import { IButton } from "~components/buttons/simple-buttons";
-import { IMedia } from "types/models";
+import { IBackendButton } from "types/components";
+import { IBackendMedia } from "types/models";
 
 export interface IHeroSectionBlock {
   variant: keyof typeof variants;
   title?: string;
   description?: string;
-  buttons?: IButton[];
-  media?: IMedia[];
+  buttons?: IBackendButton[];
+  media?: IBackendMedia[];
   anchor?: string;
-  background?: IMedia;
+  background?: IBackendMedia;
 }
 
 const variants = {

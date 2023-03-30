@@ -26,9 +26,9 @@ export default function FourColumnWithIllustrations(props: IIncentivesBlock) {
                   key={index}
                   className="flex flex-col items-center lg:items-start"
                 >
-                  {feature.icon ? (
+                  {feature.media?.length ? (
                     <Image
-                      src={getImageUrl(feature.icon, { BACKEND_URL })}
+                      src={getImageUrl(feature.media[0], { BACKEND_URL })}
                       height={100}
                       width={100}
                       alt=""

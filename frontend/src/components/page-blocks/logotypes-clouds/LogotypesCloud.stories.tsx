@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendLogo } from "~mocks/components";
+import { backendLogotype } from "~mocks/components";
 import LogotypesClouds from ".";
 
 const meta = { component: LogotypesClouds } satisfies Meta<
@@ -13,7 +13,7 @@ export const Simple: Story = {
   args: {
     title: `Hello world`,
     variant: `simple`,
-    logos: Array(5).fill(backendLogo),
+    logotypes: Array(5).fill(backendLogotype),
   },
 };
 

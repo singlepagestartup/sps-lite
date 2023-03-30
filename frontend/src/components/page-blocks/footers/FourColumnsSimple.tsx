@@ -12,7 +12,7 @@ export default function FourColumnsSimple(props: IFooterBlock) {
     buttonsArrays,
     socialNetworksButtons,
     description,
-    logo,
+    logotype,
     policiesButtons,
   } = props;
 
@@ -30,13 +30,15 @@ export default function FourColumnsSimple(props: IFooterBlock) {
             <div className="w-1/5">
               <div className="w-6/12 mb-5">
                 <div className="relative w-full">
-                  <Image
-                    src={getImageUrl(logo, { BACKEND_URL })}
-                    alt=""
-                    className="object-contain object-top object-left"
-                    width={200}
-                    height={200}
-                  />
+                  {logotype?.media?.length ? (
+                    <Image
+                      src={getImageUrl(logotype?.media[0], { BACKEND_URL })}
+                      alt=""
+                      className="object-contain object-top object-left"
+                      width={200}
+                      height={200}
+                    />
+                  ) : null}
                 </div>
               </div>
               {description ? (

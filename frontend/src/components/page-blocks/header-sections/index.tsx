@@ -4,14 +4,14 @@ import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
-import { IMedia } from "types/models";
+import { IBackendMedia } from "types/models";
 
 export interface IHeaderSectionBlock {
   title?: string;
   description?: string;
   variant: keyof typeof variants;
   subtitle?: string;
-  media?: IMedia[];
+  media?: IBackendMedia[];
   anchor?: string;
 }
 

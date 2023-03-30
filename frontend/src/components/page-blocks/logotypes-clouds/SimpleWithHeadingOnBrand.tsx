@@ -14,8 +14,8 @@ export default function SimpleWithHeadingOnBrand(props: ILogotypesCloudBlock) {
         </h2>
         <div className="mt-8 flow-root lg:mt-10">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
-            {props.logos?.map((logo, index) => {
-              if (!logo.logo) {
+            {props.logotypes?.map((logotype, index) => {
+              if (!logotype.media) {
                 return <></>;
               }
 
@@ -24,12 +24,14 @@ export default function SimpleWithHeadingOnBrand(props: ILogotypesCloudBlock) {
                   key={index}
                   className="flex flex-shrink-0 flex-grow justify-center lg:flex-grow-0"
                 >
-                  <Link href={logo?.url} className="relative h-12 w-full">
-                    <Image
-                      fill={true}
-                      src={getImageUrl(logo.logo, { BACKEND_URL })}
-                      alt="Tuple"
-                    />
+                  <Link href={logotype?.url} className="relative h-12 w-full">
+                    {logotype.media.length ? (
+                      <Image
+                        fill={true}
+                        src={getImageUrl(logotype.media[0], { BACKEND_URL })}
+                        alt="Tuple"
+                      />
+                    ) : null}
                   </Link>
                 </div>
               );

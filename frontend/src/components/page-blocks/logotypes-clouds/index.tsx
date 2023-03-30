@@ -1,17 +1,16 @@
 import { FC } from "react";
-import { IButton } from "~components/buttons/simple-buttons";
 import Simple from "./Simple";
 import OffWhiteGrid from "./OffWhiteGrid";
 import SimpleWithHeading from "./SimpleWithHeading";
 import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
-import { IBackendLogo } from "types/components";
+import { IBackendButton, IBackendLogotype } from "types/components";
 
 export interface ILogotypesCloudBlock {
   variant: keyof typeof variants;
   title?: string;
-  logos?: IBackendLogo[];
-  buttons?: IButton[];
+  logotypes?: IBackendLogotype[];
+  buttons?: IBackendButton[];
   description?: string;
   anchor?: string;
 }

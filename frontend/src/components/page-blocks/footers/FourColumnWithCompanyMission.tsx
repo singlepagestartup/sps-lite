@@ -11,7 +11,7 @@ export default function FourColumnWithCompanyMission(props: IFooterBlock) {
     buttonsArrays,
     socialNetworksButtons,
     description,
-    logo,
+    logotype,
     policiesButtons,
   } = props;
 
@@ -23,13 +23,15 @@ export default function FourColumnWithCompanyMission(props: IFooterBlock) {
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="flex flex-col lg:flex-row">
           <div className="space-y-8 xl:col-span-1">
-            <Image
-              src={getImageUrl(logo, { BACKEND_URL })}
-              alt=""
-              className="object-contain object-top object-left"
-              width={200}
-              height={200}
-            />
+            {logotype?.media?.length ? (
+              <Image
+                src={getImageUrl(logotype.media[0], { BACKEND_URL })}
+                alt=""
+                className="object-contain object-top object-left"
+                width={200}
+                height={200}
+              />
+            ) : null}
             {description ? (
               <ReactMarkdown className="text-xs text-gray-300">
                 {description}

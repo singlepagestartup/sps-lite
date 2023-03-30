@@ -16,9 +16,9 @@ export default function ThreeColumnWithIcons(props: IIncentivesBlock) {
               className="flex items-center text-sm font-medium text-indigo-600"
             >
               <div className="relative mr-2 h-6 w-6 flex-none">
-                {feature?.icon ? (
+                {feature?.media?.length ? (
                   <Image
-                    src={getImageUrl(feature.icon, { BACKEND_URL })}
+                    src={getImageUrl(feature.media[0], { BACKEND_URL })}
                     height={100}
                     width={100}
                     alt=""

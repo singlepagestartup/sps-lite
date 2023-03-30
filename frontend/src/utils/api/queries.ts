@@ -1,5 +1,6 @@
 const buttonPopulate = {
-  icon: `*`,
+  media: `*`,
+  media_hover: `*`,
 };
 
 const buttonArrayPopulate = {
@@ -67,6 +68,9 @@ export const pageBlocksQuery = {
         tiers: {
           populate: {
             features: {
+              populate: `*`,
+            },
+            currency: {
               populate: `*`,
             },
           },

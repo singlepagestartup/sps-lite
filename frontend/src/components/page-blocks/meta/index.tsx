@@ -3,13 +3,13 @@ import { useMemo } from "react";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import utils from "@rogwild/next-utils";
-import { IMedia } from "types/models";
+import { IBackendMedia } from "types/models";
 
 export interface IMeta {
   title?: string;
   description?: string;
-  favicon?: IMedia;
-  image?: IMedia;
+  favicon?: IBackendMedia;
+  image?: IBackendMedia;
   domain?: string;
   gtmKey?: string;
   script?: string;

@@ -1,16 +1,16 @@
 import { FC } from "react";
-import { IMedia } from "types/models";
-import { IButton } from "~components/buttons/simple-buttons";
+import { IBackendButton } from "types/components";
+import { IBackendMedia } from "types/models";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
 
 export interface ICtaSectionsBlock {
   title?: string;
   description?: string;
-  media?: IMedia[];
+  media?: IBackendMedia[];
   variant: keyof typeof variants;
   anchor?: string;
-  buttons?: IButton[];
+  buttons?: IBackendButton[];
 }
 
 const variants = {

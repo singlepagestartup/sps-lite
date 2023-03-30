@@ -4,9 +4,9 @@
     "description": "The fastest way to create startup",
     "script": null,
     "gtm_key": null,
-    "createdAt": "2023-02-13T19:10:45.276Z",
-    "updatedAt": "2023-02-13T19:10:47.472Z",
-    "publishedAt": "2023-02-14T18:43:25.891Z",
+    "createdAt": "2023-02-13T23:10:45.276Z",
+    "updatedAt": "2023-02-13T23:10:47.472Z",
+    "publishedAt": "2023-02-14T22:43:25.891Z",
     "locale": "en",
     "favicon": {
         "id": 236,
@@ -25,8 +25,8 @@
         "provider": "aws-s3",
         "provider_metadata": null,
         "folderPath": "/",
-        "createdAt": "2023-02-14T18:43:27.959Z",
-        "updatedAt": "2023-02-14T18:43:27.959Z",
+        "createdAt": "2023-02-14T22:43:27.959Z",
+        "updatedAt": "2023-02-14T22:43:27.959Z",
         "folder": null
     },
     "createdBy": null,

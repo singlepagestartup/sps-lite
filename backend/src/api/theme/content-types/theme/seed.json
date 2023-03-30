@@ -11,9 +11,9 @@
             "900": "#FFA101"
         }
     },
-    "createdAt": "2023-02-13T19:01:38.821Z",
-    "updatedAt": "2023-02-13T19:01:44.163Z",
-    "publishedAt": "2023-02-13T19:01:44.156Z",
+    "createdAt": "2023-02-13T23:01:38.821Z",
+    "updatedAt": "2023-02-13T23:01:44.163Z",
+    "publishedAt": "2023-02-13T23:01:44.156Z",
     "createdBy": {
         "id": 1,
         "firstname": "rogwild",
@@ -26,8 +26,8 @@
         "isActive": true,
         "blocked": false,
         "preferedLanguage": null,
-        "createdAt": "2023-02-13T18:32:56.592Z",
-        "updatedAt": "2023-02-13T18:32:56.592Z"
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
     },
     "updatedBy": {
         "id": 1,
@@ -41,7 +41,7 @@
         "isActive": true,
         "blocked": false,
         "preferedLanguage": null,
-        "createdAt": "2023-02-13T18:32:56.592Z",
-        "updatedAt": "2023-02-13T18:32:56.592Z"
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
     }
 }

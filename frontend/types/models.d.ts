@@ -1,8 +1,13 @@
 import { IPageBlock } from "types";
 import { IButtons } from "~components/buttons";
-import { IButtonsArray } from "~components/buttons/buttons-arrays";
-import { IButton } from "~components/buttons/simple-buttons";
-import { IBackendFeature, IBackendInput, IBackendSlide } from "./components";
+import {
+  IBackendButton,
+  IBackendButtonsArray,
+  IBackendFeature,
+  IBackendInput,
+  IBackendLogotype,
+  IBackendSlide,
+} from "./components";
 
 export interface IBackendTier {
   id: number;
@@ -14,7 +19,7 @@ export interface IBackendTier {
   period: number | null;
   currency?: IBackendCurrency | null;
   type: `one-time` | `regularly`;
-  buttons?: IButton[] | null;
+  buttons?: IBackendButton[] | null;
 }
 
 export interface IBackendModal {
@@ -32,7 +37,7 @@ export interface IBackendForm {
   inputs: IBackendInput[];
   subtitle: string | null;
   description: string | null;
-  button?: IButton;
+  button?: IBackendButton;
 }
 
 export interface IBackendReview {
@@ -42,7 +47,7 @@ export interface IBackendReview {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  cover: IMedia | null;
+  cover: IBackendMedia | null;
   createdAt: string;
 }
 
@@ -58,10 +63,10 @@ export interface IBackendSlider {
 
 export interface IBackendFooter {
   id: number;
-  logo: IMedia;
-  socialNetworksButtons?: IButtonsArray[];
-  buttonsArrays?: IButtonsArray[];
-  policiesButtons?: IButtonsArray[];
+  logotype: IBackendLogotype | null;
+  socialNetworksButtons?: IBackendButtonsArray[];
+  buttonsArrays?: IBackendButtonsArray[];
+  policiesButtons?: IBackendButtonsArray[];
   copyrights?: string;
   variant:
     | `four-columns-simple`
@@ -78,7 +83,7 @@ export interface IBackendFooter {
 }
 
 export interface IBackendNavbar {
-  logo: IMedia;
+  logotype: IBackendLogotype | null;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
   additionalButtons?: IButtons[];
@@ -90,7 +95,7 @@ export interface IBackendNavbar {
 export interface IBackendTopbar {
   title?: string | null;
   variant: `simple`;
-  buttons?: IButton[];
+  buttons?: IBackendButton[];
 }
 
 export interface IBackendCurrency {
@@ -100,7 +105,7 @@ export interface IBackendCurrency {
   isDefault: boolean;
 }
 
-export interface IMedia {
+export interface IBackendMedia {
   id: number;
   url: string;
   mime: string;

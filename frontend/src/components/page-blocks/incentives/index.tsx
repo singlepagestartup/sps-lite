@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IBackendFeature } from "types/components";
-import { IMedia } from "types/models";
+import { IBackendMedia } from "types/models";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import ThreeColumnWithIcons from "./ThreeColumnWithIcons";
 import ThreeColumnWithIconsAndSupportingText from "./ThreeColumnWithIconsAndSupportingText";
@@ -14,7 +14,7 @@ export interface IIncentivesBlock {
   features?: IBackendFeature[];
   title?: string;
   description?: string;
-  media?: IMedia[];
+  media?: IBackendMedia[];
   variant: keyof typeof variants;
   anchor?: string;
 }
