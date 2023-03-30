@@ -1,38 +1,28 @@
 {
-  "collectionName": "components_elements_logotypes",
-  "info": {
-    "displayName": "Logotype",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "richtext"
+    "collectionName": "components_elements_logotypes",
+    "info": {
+        "displayName": "Logotype",
+        "description": ""
     },
-    "url": {
-      "type": "text"
-    },
-    "media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "additional_media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "richtext"
+        },
+        "url": {
+            "type": "text"
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "additional_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        }
     }
-  }
 }
