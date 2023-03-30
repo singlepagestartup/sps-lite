@@ -6,7 +6,7 @@ import { BACKEND_URL } from "~utils/envs";
 import ButtonsArrays from "~components/buttons/buttons-arrays";
 import { IFooterBlock } from ".";
 
-export default function FourColumnWithCompanyMission(props: IFooterBlock) {
+export default function FourColumnsWithCompanyMission(props: IFooterBlock) {
   const {
     buttonsArrays,
     socialNetworksButtons,

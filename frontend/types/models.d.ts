@@ -47,7 +47,8 @@ export interface IBackendReview {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  cover: IBackendMedia | null;
+  media: IBackendMedia[] | null;
+  additionalMedia: IBackendMedia[] | null;
   createdAt: string;
 }
 

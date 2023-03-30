@@ -181,12 +181,14 @@ export const backendSlide = {
   id: 1,
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-  media: {
-    id: 274,
-    mime: `image/jpeg`,
-    alternativeText: ``,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_798121d61e.jpg`,
-  },
+  media: [
+    {
+      id: 274,
+      mime: `image/jpeg`,
+      alternativeText: ``,
+      url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_798121d61e.jpg`,
+    },
+  ],
   buttons: [backendButtonDefault],
 } as IBackendSlide;
 

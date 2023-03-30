@@ -3,8 +3,10 @@ import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import {
   footerPopulate,
+  metaPopulate,
   navbarPopulate,
-  pageBlocksQuery,
+  pageBlocksPopulate,
+  publicPageLayoutPopulate,
 } from "~utils/api/queries";
 
 export default class Page {
@@ -19,7 +21,7 @@ export default class Page {
   async get() {
     const pageData = (await getBackendData({
       url: `${BACKEND_URL}/api/${this.name}`,
-      params: { ...pageBlocksQuery, locale: this.locale },
+      params: { populate: pageBlocksPopulate, locale: this.locale },
     })) as any;
 
     const additionalBlocks = await getAdditionalBlocks(this.locale);
@@ -52,12 +54,12 @@ export async function getAdditionalBlocks(locale: string) {
   const publicPageLayout = await new AdditionalBlock({
     name: `public-page-layout`,
     locale,
-  }).get({ populate: `*` });
+  }).get({ populate: publicPageLayoutPopulate });
 
   const meta = await new AdditionalBlock({
     name: `meta`,
     locale,
-  }).get({ populate: { favicon: `*` } });
+  }).get({ populate: metaPopulate });
 
   const navbar = await new AdditionalBlock({
     name: `navbar`,

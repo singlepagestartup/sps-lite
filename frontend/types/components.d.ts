@@ -68,5 +68,6 @@ export interface IBackendSlide {
   title?: string;
   subtitle?: string;
   description?: string;
-  media: IBackendMedia;
+  media: IBackendMedia[];
+  additionalMedia: IBackendMedia[] | null;
 }

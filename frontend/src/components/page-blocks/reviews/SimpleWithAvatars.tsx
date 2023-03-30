@@ -60,10 +60,10 @@ function SimpleWithAvatarCard(props: ICardProps) {
   return (
     <div className="flex space-x-4 text-sm text-gray-500">
       <div className="flex-none py-10">
-        {item.cover ? (
+        {item.media?.length ? (
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100">
             <Image
-              src={getImageUrl(item.cover, { BACKEND_URL })}
+              src={getImageUrl(item.media[0], { BACKEND_URL })}
               alt=""
               fill={true}
               className="object-cover object-center"

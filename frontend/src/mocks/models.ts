@@ -68,10 +68,13 @@ export const backendReview = {
   subtitle: `Looking Forward to Future Innovations`,
   rating: 5,
   createdAt: `2023-03-12T11:34:52.690Z`,
-  cover: {
-    id: 278,
-    url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
-  },
+  media: [
+    {
+      id: 278,
+      url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
+    },
+  ],
+  additionalMedia: null,
 } as IBackendReview;
 
 export const backendFooterFourColumnsWithCompanyMission = {

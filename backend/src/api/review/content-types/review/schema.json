@@ -1,37 +1,51 @@
 {
-    "kind": "collectionType",
-    "collectionName": "reviews",
-    "info": {
-        "singularName": "review",
-        "pluralName": "reviews",
-        "displayName": "Review",
-        "description": ""
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "richtext"
     },
-    "options": {
-        "draftAndPublish": true
+    "title": {
+      "type": "richtext"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "name": {
-            "type": "richtext"
-        },
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "subtitle": {
-            "type": "richtext"
-        },
-        "cover": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "rating": {
-            "type": "integer"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "additional_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
+  }
 }

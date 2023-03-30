@@ -1,10 +1,7 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
 import { IBackendCurrency } from "types/models";
-
-const currenciesPopulate = {
-  products: `*`,
-};
+import { currenciesPopulate } from "~utils/api/queries";
 
 const model = `currencies`;
 
