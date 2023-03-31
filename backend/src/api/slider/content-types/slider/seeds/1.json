@@ -1,0 +1,132 @@
+{
+    "id": 1,
+    "variant": "fade-with-previews",
+    "show_backdrop": true,
+    "show_full_screen": true,
+    "show_previews": true,
+    "class_name": null,
+    "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
+    "createdAt": "2023-03-28T10:46:49.554Z",
+    "updatedAt": "2023-03-30T09:21:00.289Z",
+    "publishedAt": "2023-03-28T10:46:50.780Z",
+    "slides": [
+        {
+            "id": 5,
+            "title": "Конструктор блоков страниц",
+            "description": "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+            "subtitle": null,
+            "media": [
+                {
+                    "id": 346,
+                    "name": "pexels-karolina-grabowska-5882683.jpg",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 1280,
+                    "height": 853,
+                    "formats": {
+                        "large": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_0d6d0bb45d.jpg",
+                            "hash": "large_pexels_karolina_grabowska_5882683_0d6d0bb45d",
+                            "mime": "image/jpeg",
+                            "name": "large_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 72.43,
+                            "width": 1000,
+                            "height": 666
+                        },
+                        "small": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_0d6d0bb45d.jpg",
+                            "hash": "small_pexels_karolina_grabowska_5882683_0d6d0bb45d",
+                            "mime": "image/jpeg",
+                            "name": "small_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 25.55,
+                            "width": 500,
+                            "height": 333
+                        },
+                        "medium": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_0d6d0bb45d.jpg",
+                            "hash": "medium_pexels_karolina_grabowska_5882683_0d6d0bb45d",
+                            "mime": "image/jpeg",
+                            "name": "medium_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 46.31,
+                            "width": 750,
+                            "height": 500
+                        },
+                        "thumbnail": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_0d6d0bb45d.jpg",
+                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_0d6d0bb45d",
+                            "mime": "image/jpeg",
+                            "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 8.03,
+                            "width": 234,
+                            "height": 156
+                        }
+                    },
+                    "hash": "pexels_karolina_grabowska_5882683_0d6d0bb45d",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "size": 109.53,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_0d6d0bb45d.jpg",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-03-30T09:21:00.011Z",
+                    "updatedAt": "2023-03-30T09:21:00.011Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 99,
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "title": "Начать",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ],
+            "additional_media": null
+        }
+    ],
+    "createdBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
+    },
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
+    }
+}

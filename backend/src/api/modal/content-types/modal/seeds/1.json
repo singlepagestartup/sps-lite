@@ -1,19 +1,26 @@
 {
     "id": 1,
-    "colors": {
-        "primary": {
-            "50": "#FFF9CC",
-            "300": "#FFF297",
-            "400": "#FFDF01",
-            "500": "#FFCF01",
-            "600": "#FFC501",
-            "700": "#FFB201",
-            "900": "#FFA101"
+    "title": "Hello world",
+    "uid": "hello-world",
+    "dialog_panel_class_name": "container",
+    "variant": "simple",
+    "createdAt": "2023-03-28T11:07:56.252Z",
+    "updatedAt": "2023-03-30T09:20:39.415Z",
+    "publishedAt": "2023-03-28T11:07:57.457Z",
+    "page_blocks": [
+        {
+            "__component": "page-blocks.hero-section-block",
+            "id": 14,
+            "title": "Hello world",
+            "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+            "variant": "simple-centered",
+            "anchor": null,
+            "class_name": null,
+            "media": null,
+            "buttons": [],
+            "background": null
         }
-    },
-    "createdAt": "2023-02-13T23:01:38.821Z",
-    "updatedAt": "2023-02-13T23:01:44.163Z",
-    "publishedAt": "2023-02-13T23:01:44.156Z",
+    ],
     "createdBy": {
         "id": 1,
         "firstname": "rogwild",
