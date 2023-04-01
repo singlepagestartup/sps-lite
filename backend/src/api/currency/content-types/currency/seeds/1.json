@@ -1,19 +1,25 @@
 {
     "id": 1,
-    "colors": {
-        "primary": {
-            "50": "#FFF9CC",
-            "300": "#FFF297",
-            "400": "#FFDF01",
-            "500": "#FFCF01",
-            "600": "#FFC501",
-            "700": "#FFB201",
-            "900": "#FFA101"
+    "title": "USD",
+    "unicode": "$",
+    "is_default": true,
+    "createdAt": "2023-03-29T23:09:51.671Z",
+    "updatedAt": "2023-03-29T23:09:52.906Z",
+    "publishedAt": "2023-03-29T23:09:52.898Z",
+    "tiers": [
+        {
+            "id": 2,
+            "title": "Pro",
+            "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+            "price": 99,
+            "type": "one-time",
+            "period": null,
+            "old_price": 199,
+            "createdAt": "2023-02-14T08:51:37.439Z",
+            "updatedAt": "2023-03-30T09:21:00.711Z",
+            "publishedAt": "2023-02-14T22:48:56.695Z"
         }
-    },
-    "createdAt": "2023-02-13T23:01:38.821Z",
-    "updatedAt": "2023-02-13T23:01:44.163Z",
-    "publishedAt": "2023-02-13T23:01:44.156Z",
+    ],
     "createdBy": {
         "id": 1,
         "firstname": "rogwild",
