@@ -1,21 +1,28 @@
-import { IPublicPageLayout } from "~components/layout/public-page-layouts";
-import { IFooter } from "~components/page-blocks/footers";
-import { IMeta } from "~components/page-blocks/meta";
-import { ITopbar } from "~components/page-blocks/topbar";
+import { IPublicPageLayout } from "~components/layouts/public-page-layouts";
+import { IFooter } from "~components/footers/public-page-footers";
+import { IBackendMeta } from "~components/meta";
+import { ITopbar } from "~components/topbars/public-page-topbar";
 import { pageBlockComponents } from "~utils/api/components";
-import { IBackendNavbar, IBackendTopbar } from "./models";
+import { IBackendPublicPageNavbar, IBackendTopbar } from "./models";
 
 export interface IPageBlock {
   _Component: keyof typeof pageBlockComponents;
+  [key: string]: any;
 }
 
 export interface IPage {
-  topbar: IBackendTopbar;
-  navbar: IBackendNavbar;
-  meta: IMeta;
-  footer: IFooter;
-  publicPageLayout?: IPublicPageLayout;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  meta: IBackendMeta;
   pageBlocks: IPageBlock[];
+}
+
+export interface IPublicPage extends IPage {
+  publicPageTopbar?: IBackendTopbar;
+  publicPageNavbar: IBackendPublicPageNavbar;
+  publicPageFooter: IFooter;
+  publicPageLayout: IPublicPageLayout;
 }
 
 declare global {

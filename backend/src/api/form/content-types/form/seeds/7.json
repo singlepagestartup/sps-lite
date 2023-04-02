@@ -1,0 +1,117 @@
+{
+    "id": 7,
+    "title": "Есть вопросы по продукту?",
+    "subtitle": null,
+    "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
+    "uid": "question",
+    "createdAt": "2023-03-31T16:24:12.733Z",
+    "updatedAt": "2023-04-02T11:55:21.739Z",
+    "publishedAt": "2023-02-14T22:44:48.245Z",
+    "inputs": [
+        {
+            "id": 166,
+            "placeholder": "Введите ваше имя",
+            "component": "text",
+            "is_required": true,
+            "value": null,
+            "name": "name",
+            "label": "Имя",
+            "class_name": null,
+            "type": null,
+            "multiple": null,
+            "options": []
+        },
+        {
+            "id": 167,
+            "placeholder": "Введите вашу электронную почту",
+            "component": "text",
+            "is_required": true,
+            "value": null,
+            "name": "email",
+            "label": "Электронная почта",
+            "class_name": null,
+            "type": null,
+            "multiple": null,
+            "options": []
+        },
+        {
+            "id": 168,
+            "placeholder": "Выберите тариф",
+            "component": "listbox",
+            "is_required": false,
+            "value": null,
+            "name": "tier",
+            "label": "Тариф",
+            "class_name": null,
+            "type": null,
+            "multiple": null,
+            "options": [
+                {
+                    "id": 68,
+                    "title": "Lite",
+                    "description": null
+                },
+                {
+                    "id": 69,
+                    "title": "Pro",
+                    "description": null
+                }
+            ]
+        },
+        {
+            "id": 169,
+            "placeholder": "Напишите ваш вопрос",
+            "component": "text",
+            "is_required": false,
+            "value": null,
+            "name": "querstion",
+            "label": "Вопрос",
+            "class_name": null,
+            "type": "textarea",
+            "multiple": null,
+            "options": []
+        },
+        {
+            "id": 170,
+            "placeholder": null,
+            "component": "switch",
+            "is_required": true,
+            "value": null,
+            "name": "policy",
+            "label": "Я согласен с Политикой конфиденциальности",
+            "class_name": null,
+            "type": null,
+            "multiple": null,
+            "options": []
+        }
+    ],
+    "button": {
+        "id": 140,
+        "url": null,
+        "description": null,
+        "variant": "primary",
+        "title": "Отправить",
+        "additional_attributes": null,
+        "class_name": null,
+        "media": null,
+        "additional_media": null
+    },
+    "form_requests": [],
+    "side_effects": [
+        {
+            "id": 34,
+            "type": "send-to-recievers",
+            "provider": "email",
+            "recievers": [
+                {
+                    "id": 34,
+                    "identifier": "rogwild.design@gmail.com",
+                    "admin": null,
+                    "user": null
+                }
+            ]
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null
+}

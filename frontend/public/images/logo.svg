@@ -18,17 +18,17 @@
 <path d="M1950.83 274.85C1950.81 278.885 1949.2 282.748 1946.34 285.6C1943.49 288.452 1939.62 290.062 1935.59 290.08H1920.35V178.49C1920.35 157.577 1926.48 143.31 1938.73 135.69C1950.67 128.166 1964.5 124.204 1978.61 124.27C1986.35 124.321 1994.01 125.761 2001.24 128.52C2008.86 131.373 2014.91 135.483 2019.39 140.85C2028.36 152.497 2032.84 167.433 2032.84 185.66C2032.84 204.493 2028.36 219.733 2019.39 231.38C2010.43 242.713 1998.93 248.38 1984.89 248.38C1978.1 248.535 1971.36 247.168 1965.17 244.38C1959.1 241.306 1954.1 236.463 1950.83 230.49V274.85ZM2001.92 187C2001.92 175.353 1999.68 166.39 1995.19 160.11C1990.7 153.83 1984.28 150.693 1975.92 150.7C1967.86 150.7 1961.59 153.837 1957.1 160.11C1952.91 165.79 1950.82 174.753 1950.83 187C1950.83 198.333 1953.07 206.847 1957.55 212.54C1962.03 218.82 1968.45 221.957 1976.82 221.95C1980.43 222.06 1984 221.255 1987.22 219.61C1990.43 217.964 1993.17 215.532 1995.19 212.54C1999.68 206.28 2001.93 197.767 2001.92 187Z" fill="#2A2F38"/>
 <defs>
 <linearGradient id="paint0_linear_110_742" x1="197.05" y1="290.35" x2="128.24" y2="142.77" gradientUnits="userSpaceOnUse">
-<stop stopColor="#FFEB00"/>
-<stop offset="0.66" stopColor="#FF9C00"/>
-<stop offset="1" stopColor="#FF7900"/>
+<stop stop-color="#FFEB00"/>
+<stop offset="0.66" stop-color="#FF9C00"/>
+<stop offset="1" stop-color="#FF7900"/>
 </linearGradient>
 <linearGradient id="paint1_linear_110_742" x1="134.95" y1="167.38" x2="279.01" y2="167.38" gradientUnits="userSpaceOnUse">
-<stop stopColor="#FFFF00"/>
-<stop offset="1" stopColor="#FFD900"/>
+<stop stop-color="#FFFF00"/>
+<stop offset="1" stop-color="#FFD900"/>
 </linearGradient>
 <linearGradient id="paint2_linear_110_742" x1="222.17" y1="-11.55" x2="52.11" y2="231.32" gradientUnits="userSpaceOnUse">
-<stop stopColor="#FFFF00"/>
-<stop offset="1" stopColor="#FFAD00"/>
+<stop stop-color="#FFFF00"/>
+<stop offset="1" stop-color="#FFAD00"/>
 </linearGradient>
 </defs>
 </svg>

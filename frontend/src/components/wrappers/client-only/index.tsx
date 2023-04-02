@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 
-export default function ClientOnly({ children, ...delegated }: any) {
+export default function ClientOnlyWrapper({ children, ...delegated }: any) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {

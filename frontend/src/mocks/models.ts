@@ -1,23 +1,39 @@
 import {
   IBackendCurrency,
-  IBackendFooter,
   IBackendForm,
-  IBackendNavbar,
+  IBackendMedia,
+  IBackendPublicPageFooter,
+  IBackendPublicPageLayout,
+  IBackendPublicPageNavbar,
+  IBackendPublicPageTopbar,
   IBackendReview,
   IBackendTier,
-  IBackendTopbar,
 } from "types/models";
 import {
   backendButtonDefault,
   backendButtonsArraySimple,
   backendEmailInput,
   backendFeature,
+  backendFeatureSectionBlock,
   backendLogotype,
+  backendMediaRoundIcon,
+  backendMediaTableAndHands,
   backendNameInput,
   backendPolicyInput,
   backendQuestionInput,
   backendTierInput,
 } from "./components";
+import { IPublicPage } from "types";
+
+export interface IBackendMeta {
+  title?: string | null;
+  description?: string | null;
+  favicon?: IBackendMedia | null;
+  image?: IBackendMedia | null;
+  domain?: string | null;
+  gtmKey?: string | null;
+  script?: string | null;
+}
 
 export const backendCurrency = {
   title: `USD`,
@@ -68,16 +84,11 @@ export const backendReview = {
   subtitle: `Looking Forward to Future Innovations`,
   rating: 5,
   createdAt: `2023-03-12T11:34:52.690Z`,
-  media: [
-    {
-      id: 278,
-      url: `https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_225cc5ea44.jpg`,
-    },
-  ],
+  media: [backendMediaTableAndHands],
   additionalMedia: null,
 } as IBackendReview;
 
-export const backendFooterFourColumnsWithCompanyMission = {
+export const backendPublicPageFooterFourColumnsWithCompanyMission = {
   id: 1,
   copyrights: `&copy; 2023 Single Page Startup. All rights reserved.`,
   description: `Making the world a better place through constructing elegant hierarchies.`,
@@ -87,15 +98,53 @@ export const backendFooterFourColumnsWithCompanyMission = {
   socialNetworksButtons: Array(3).fill(backendButtonsArraySimple),
   policiesButtons: Array(3).fill(backendButtonsArraySimple),
   buttonsArrays: Array(3).fill(backendButtonsArraySimple),
-} as IBackendFooter;
+} as IBackendPublicPageFooter;
 
-export const backendNavbarSimpleLinksOnLeft = {
+export const backendPublicPageNavbarSimpleLinksOnLeft = {
   variant: `simple-links-on-left`,
   logotype: backendLogotype,
-} as IBackendNavbar;
+} as IBackendPublicPageNavbar;
 
-export const backendTopbarSimple = {
+export const backendPublicPageTopbarSimple = {
   title: `Hello, Topbar`,
   variant: `simple`,
   buttons: Array(3).fill(backendButtonDefault),
-} as IBackendTopbar;
+} as IBackendPublicPageTopbar;
+
+export const backendPublicPageLayout = {
+  variant: `simple`,
+} as IBackendPublicPageLayout;
+
+export const backendMeta = {
+  id: 4,
+  title: `Lite Single Page Startup`,
+  description: `The fastest way to create startup`,
+  script: null,
+  gtmKey: null,
+  createdAt: `2023-03-31T15:14:49.896Z`,
+  updatedAt: `2023-04-02T11:55:25.729Z`,
+  publishedAt: `2023-02-14T22:43:25.891Z`,
+  locale: `en`,
+  favicon: backendMediaRoundIcon,
+  _meta: {},
+} as IBackendMeta;
+
+export const backendPublicPage = {
+  id: 15,
+  createdAt: `2023-03-31T16:24:14.747Z`,
+  updatedAt: `2023-04-02T11:55:24.531Z`,
+  publishedAt: `2023-03-31T15:16:22.773Z`,
+  locale: `en`,
+  pageBlocks: [
+    {
+      ...backendFeatureSectionBlock,
+      _Component: `page-blocks.features-section-block`,
+    },
+  ],
+  _meta: {},
+  publicPageLayout: backendPublicPageLayout,
+  meta: backendMeta,
+  publicPageTopbar: backendPublicPageTopbarSimple,
+  publicPageNavbar: backendPublicPageNavbarSimpleLinksOnLeft,
+  publicPageFooter: backendPublicPageFooterFourColumnsWithCompanyMission,
+} as IPublicPage;

@@ -21,7 +21,7 @@ export default function Slider(props: IBackendSlider) {
     return slides.map((slide) => {
       return {
         ...slide,
-        renderType: parseMimeType(slide.media[0].mime).renderType,
+        renderType: parseMimeType(slide.media[0].mime)?.renderType || `image`,
       } as IExtendedSlide;
     });
   }, [slides]);

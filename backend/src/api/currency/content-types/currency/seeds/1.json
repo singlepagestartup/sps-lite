@@ -4,7 +4,7 @@
     "unicode": "$",
     "is_default": true,
     "createdAt": "2023-03-29T23:09:51.671Z",
-    "updatedAt": "2023-03-29T23:09:52.906Z",
+    "updatedAt": "2023-04-02T11:55:21.325Z",
     "publishedAt": "2023-03-29T23:09:52.898Z",
     "tiers": [
         {
@@ -16,7 +16,7 @@
             "period": null,
             "old_price": 199,
             "createdAt": "2023-02-14T08:51:37.439Z",
-            "updatedAt": "2023-03-30T09:21:00.711Z",
+            "updatedAt": "2023-04-02T11:55:21.239Z",
             "publishedAt": "2023-02-14T22:48:56.695Z"
         }
     ],

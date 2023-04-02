@@ -1,9 +1,9 @@
-import { IPage } from "types";
-import PublicPage from "~components/layout/public-page-layouts";
+import { IPublicPage } from "types";
+import PublicPageLayouts from "~components/layouts/public-page-layouts";
 import Page from "~utils/api/Page";
 
-export default function NotFoundPage(props: IPage) {
-  return <PublicPage {...props} />;
+export default function NotFoundPage(props: IPublicPage) {
+  return <PublicPageLayouts {...props} />;
 }
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {

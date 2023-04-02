@@ -1,0 +1,82 @@
+{
+    "id": 25,
+    "name": "Michael Jackson",
+    "title": "Innovative and Easy-to-Use Platform",
+    "description": "As a business owner, I am always looking for innovative solutions to help me run my business more efficiently. This startup has truly been a game-changer for me. Their platform is incredibly easy to use and has streamlined my business processes in a way that I never thought was possible. Their team is also very responsive and helpful. I highly recommend this startup to any business owner looking to take their business to the next level.",
+    "subtitle": "A Game-Changer for Business Owners",
+    "rating": 5,
+    "createdAt": "2023-03-31T16:47:30.183Z",
+    "updatedAt": "2023-04-02T11:54:43.811Z",
+    "publishedAt": "2023-03-12T11:34:27.387Z",
+    "media": [
+        {
+            "id": 463,
+            "name": "pexels-karolina-grabowska-5882683.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1280,
+            "height": 853,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+                    "hash": "large_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "mime": "image/jpeg",
+                    "name": "large_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 72.39,
+                    "width": 1000,
+                    "height": 666
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+                    "hash": "small_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "mime": "image/jpeg",
+                    "name": "small_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 25.51,
+                    "width": 500,
+                    "height": 333
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "mime": "image/jpeg",
+                    "name": "medium_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 46.25,
+                    "width": 750,
+                    "height": 500
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 8.03,
+                    "width": 234,
+                    "height": 156
+                }
+            },
+            "hash": "pexels_karolina_grabowska_5882683_b501e7eda7",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 109.43,
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2023-04-02T11:54:43.692Z",
+            "updatedAt": "2023-04-02T11:54:43.692Z",
+            "folder": null
+        }
+    ],
+    "additional_media": null,
+    "createdBy": null,
+    "updatedBy": null
+}

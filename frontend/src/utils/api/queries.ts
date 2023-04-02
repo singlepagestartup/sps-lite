@@ -97,6 +97,12 @@ export const footerPopulate = {
   },
 };
 
+export const topbarPopulate = {
+  buttons: {
+    populate: buttonPopulate,
+  },
+};
+
 export const navbarPopulate = {
   logotype: {
     populate: logotypePopulate,
@@ -162,9 +168,37 @@ export const reviewsPopulate = {
   media: {
     populate: mediaPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: mediaPopulate,
   },
 };
 
 export const currenciesPopulate = {};
+
+export const publicPageAdditonalModels = [
+  {
+    key: `publicPageLayout`,
+    model: `public-page-layout`,
+    populate: publicPageLayoutPopulate,
+  },
+  {
+    key: `meta`,
+    model: `meta`,
+    populate: metaPopulate,
+  },
+  {
+    key: `publicPageTopbar`,
+    model: `public-page-topbar`,
+    populate: topbarPopulate,
+  },
+  {
+    key: `publicPageNavbar`,
+    model: `public-page-navbar`,
+    populate: navbarPopulate,
+  },
+  {
+    key: `publicPageFooter`,
+    model: `public-page-footer`,
+    populate: footerPopulate,
+  },
+];

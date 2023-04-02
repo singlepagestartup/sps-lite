@@ -62,7 +62,7 @@ export interface IBackendSlider {
   showPreviews?: boolean;
 }
 
-export interface IBackendFooter {
+export interface IBackendPublicPageFooter {
   id: number;
   logotype: IBackendLogotype | null;
   socialNetworksButtons?: IBackendButtonsArray[];
@@ -83,7 +83,7 @@ export interface IBackendFooter {
   _meta?: any;
 }
 
-export interface IBackendNavbar {
+export interface IBackendPublicPageNavbar {
   logotype: IBackendLogotype | null;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
@@ -93,7 +93,7 @@ export interface IBackendNavbar {
   variant: `simple-links-on-left`;
 }
 
-export interface IBackendTopbar {
+export interface IBackendPublicPageTopbar {
   title?: string | null;
   variant: `simple`;
   buttons?: IBackendButton[];
@@ -117,7 +117,7 @@ export interface IBackendMedia {
   height: number;
   formats?: any;
   hash: string;
-  ext: `.svg` | `.jpg`;
+  ext: string;
   mime: string;
   size: number;
   previewUrl: string | null;
@@ -125,4 +125,9 @@ export interface IBackendMedia {
   providerMetadata?: any;
   createdAt?: string;
   updatedAt?: string;
+}
+
+export interface IBackendPublicPageLayout {
+  id: number;
+  variant: `simple`;
 }

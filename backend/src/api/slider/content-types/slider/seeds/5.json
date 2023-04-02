@@ -1,0 +1,194 @@
+{
+    "id": 5,
+    "variant": "fade-with-previews",
+    "show_backdrop": true,
+    "show_full_screen": true,
+    "show_previews": true,
+    "class_name": null,
+    "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
+    "createdAt": "2023-03-31T16:22:17.165Z",
+    "updatedAt": "2023-04-02T13:32:15.844Z",
+    "publishedAt": "2023-03-28T10:46:50.780Z",
+    "slides": [
+        {
+            "id": 29,
+            "title": "Конструктор блоков страниц",
+            "description": "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+            "subtitle": null,
+            "media": [
+                {
+                    "id": 465,
+                    "name": "pexels-karolina-grabowska-5882683.jpg",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 1280,
+                    "height": 853,
+                    "formats": {
+                        "large": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_a942704c9a.jpg",
+                            "hash": "large_pexels_karolina_grabowska_5882683_a942704c9a",
+                            "mime": "image/jpeg",
+                            "name": "large_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 72.39,
+                            "width": 1000,
+                            "height": 666
+                        },
+                        "small": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_a942704c9a.jpg",
+                            "hash": "small_pexels_karolina_grabowska_5882683_a942704c9a",
+                            "mime": "image/jpeg",
+                            "name": "small_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 25.53,
+                            "width": 500,
+                            "height": 333
+                        },
+                        "medium": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_a942704c9a.jpg",
+                            "hash": "medium_pexels_karolina_grabowska_5882683_a942704c9a",
+                            "mime": "image/jpeg",
+                            "name": "medium_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 46.26,
+                            "width": 750,
+                            "height": 500
+                        },
+                        "thumbnail": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_a942704c9a.jpg",
+                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_a942704c9a",
+                            "mime": "image/jpeg",
+                            "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
+                            "path": null,
+                            "size": 8.04,
+                            "width": 234,
+                            "height": 156
+                        }
+                    },
+                    "hash": "pexels_karolina_grabowska_5882683_a942704c9a",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "size": 109.48,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_a942704c9a.jpg",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-04-02T11:55:23.525Z",
+                    "updatedAt": "2023-04-02T11:55:23.525Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 141,
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "title": "Начать",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ],
+            "additional_media": null
+        },
+        {
+            "id": 30,
+            "title": "Hello world",
+            "description": "Lupa pupa",
+            "subtitle": null,
+            "media": [
+                {
+                    "id": 462,
+                    "name": "pexels-andrea-piacquadio-3756679.jpg",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 5299,
+                    "height": 3533,
+                    "formats": {
+                        "large": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_andrea_piacquadio_3756679_6e45c1cd4e.jpg",
+                            "hash": "large_pexels_andrea_piacquadio_3756679_6e45c1cd4e",
+                            "mime": "image/jpeg",
+                            "name": "large_pexels-andrea-piacquadio-3756679.jpg",
+                            "path": null,
+                            "size": 60.21,
+                            "width": 1000,
+                            "height": 667
+                        },
+                        "small": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_andrea_piacquadio_3756679_6e45c1cd4e.jpg",
+                            "hash": "small_pexels_andrea_piacquadio_3756679_6e45c1cd4e",
+                            "mime": "image/jpeg",
+                            "name": "small_pexels-andrea-piacquadio-3756679.jpg",
+                            "path": null,
+                            "size": 22,
+                            "width": 500,
+                            "height": 333
+                        },
+                        "medium": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_andrea_piacquadio_3756679_6e45c1cd4e.jpg",
+                            "hash": "medium_pexels_andrea_piacquadio_3756679_6e45c1cd4e",
+                            "mime": "image/jpeg",
+                            "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
+                            "path": null,
+                            "size": 39.91,
+                            "width": 750,
+                            "height": 500
+                        },
+                        "thumbnail": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_andrea_piacquadio_3756679_6e45c1cd4e.jpg",
+                            "hash": "thumbnail_pexels_andrea_piacquadio_3756679_6e45c1cd4e",
+                            "mime": "image/jpeg",
+                            "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
+                            "path": null,
+                            "size": 7.47,
+                            "width": 234,
+                            "height": 156
+                        }
+                    },
+                    "hash": "pexels_andrea_piacquadio_3756679_6e45c1cd4e",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "size": 811.66,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_andrea_piacquadio_3756679_6e45c1cd4e.jpg",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-04-02T11:54:41.598Z",
+                    "updatedAt": "2023-04-02T11:54:41.598Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [],
+            "additional_media": null
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
+    }
+}

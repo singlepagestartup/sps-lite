@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IBackendButton } from "types/components";
-import ClientOnly from "~components/wrappers/client-only";
+import ClientOnlyWrapper from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
@@ -23,8 +23,8 @@ export default function SimpleButtons(props: IButton) {
   }
 
   return (
-    <ClientOnly>
+    <ClientOnlyWrapper>
       <Comp {...props} />
-    </ClientOnly>
+    </ClientOnlyWrapper>
   );
 }

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendFeature } from "~mocks/components";
+import { backendFeatureSectionBlock } from "~mocks/components";
 import FeatureSections from ".";
 
 const meta = { component: FeatureSections } satisfies Meta<
@@ -10,12 +10,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const SimpleThreeColumn: Story = {
-  args: {
-    title: `Hello world`,
-    variant: `simple-three-column`,
-    description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-    features: Array(4).fill(backendFeature),
-  },
+  args: backendFeatureSectionBlock,
 };
 
 export const ThreeColumnWithSlider: Story = {

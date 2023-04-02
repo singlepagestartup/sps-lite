@@ -1,0 +1,142 @@
+{
+    "id": 1,
+    "variant": "four-columns-simple",
+    "createdAt": "2023-04-02T13:05:41.831Z",
+    "updatedAt": "2023-04-02T13:05:44.252Z",
+    "publishedAt": "2023-04-02T13:05:44.233Z",
+    "locale": "en",
+    "copyrights": null,
+    "description": null,
+    "social_networks_buttons": [
+        {
+            "id": 17,
+            "title": null,
+            "class_name": null,
+            "variant": "simple",
+            "description": null,
+            "buttons": [
+                {
+                    "id": 142,
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "title": "Main page",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ],
+            "media": null,
+            "additional_media": null
+        }
+    ],
+    "policies_buttons": [
+        {
+            "id": 18,
+            "title": null,
+            "class_name": null,
+            "variant": "simple",
+            "description": null,
+            "buttons": [
+                {
+                    "id": 143,
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "title": "Main page",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ],
+            "media": null,
+            "additional_media": null
+        }
+    ],
+    "buttons_arrays": [
+        {
+            "id": 19,
+            "title": null,
+            "class_name": null,
+            "variant": "simple",
+            "description": null,
+            "buttons": [
+                {
+                    "id": 144,
+                    "url": "/",
+                    "description": null,
+                    "variant": "default",
+                    "title": "Main page",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ],
+            "media": null,
+            "additional_media": null
+        }
+    ],
+    "logotype": {
+        "id": 5,
+        "title": null,
+        "url": null,
+        "media": [
+            {
+                "id": 304,
+                "name": "logo.svg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 2033,
+                "height": 340,
+                "formats": null,
+                "hash": "logo_4422887a78",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 15.08,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/logo_4422887a78.svg",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-03-29T23:07:43.917Z",
+                "updatedAt": "2023-03-29T23:07:43.917Z",
+                "folder": null
+            }
+        ],
+        "additional_media": null
+    },
+    "createdBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
+    },
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z"
+    },
+    "localizations": []
+}

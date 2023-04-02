@@ -1,12 +1,8 @@
-import { IPage } from "types";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import {
-  footerPopulate,
-  metaPopulate,
-  navbarPopulate,
   pageBlocksPopulate,
-  publicPageLayoutPopulate,
+  publicPageAdditonalModels,
 } from "~utils/api/queries";
 
 export default class Page {
@@ -18,15 +14,23 @@ export default class Page {
     this.locale = locale;
   }
 
-  async get() {
+  async get(props: any = {}) {
+    const {
+      populate = pageBlocksPopulate,
+      additionalModels = publicPageAdditonalModels,
+    } = props;
+
     const pageData = (await getBackendData({
       url: `${BACKEND_URL}/api/${this.name}`,
-      params: { populate: pageBlocksPopulate, locale: this.locale },
+      params: { populate, locale: this.locale },
     })) as any;
 
-    const additionalBlocks = await getAdditionalBlocks(this.locale);
+    const additionalBlocks = await getAdditionalBlocks({
+      locale: this.locale,
+      additionalModels,
+    });
 
-    return { ...pageData, ...additionalBlocks } as IPage;
+    return { ...pageData, ...additionalBlocks };
   }
 }
 
@@ -50,31 +54,23 @@ class AdditionalBlock {
   }
 }
 
-export async function getAdditionalBlocks(locale: string) {
-  const publicPageLayout = await new AdditionalBlock({
-    name: `public-page-layout`,
-    locale,
-  }).get({ populate: publicPageLayoutPopulate });
+export async function getAdditionalBlocks({
+  locale,
+  additionalModels,
+}: {
+  locale: string;
+  additionalModels: [{ key: string; model: string; populate: any }];
+}) {
+  const additionalBlocks = {} as any;
 
-  const meta = await new AdditionalBlock({
-    name: `meta`,
-    locale,
-  }).get({ populate: metaPopulate });
+  for (const additionalModel of additionalModels) {
+    const additionalBlock = await new AdditionalBlock({
+      name: additionalModel.model,
+      locale,
+    }).get({ populate: additionalModel.populate });
 
-  const navbar = await new AdditionalBlock({
-    name: `navbar`,
-    locale,
-  }).get({ populate: navbarPopulate });
+    additionalBlocks[additionalModel.key] = additionalBlock || {};
+  }
 
-  const footer = await new AdditionalBlock({
-    name: `footer`,
-    locale,
-  }).get({ populate: footerPopulate });
-
-  return {
-    meta: meta || {},
-    navbar: navbar || {},
-    footer: footer || {},
-    publicPageLayout: publicPageLayout || {},
-  };
+  return additionalBlocks;
 }

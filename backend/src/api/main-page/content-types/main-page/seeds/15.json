@@ -1,0 +1,112 @@
+{
+    "id": 15,
+    "createdAt": "2023-03-31T16:24:14.747Z",
+    "updatedAt": "2023-04-02T11:55:24.531Z",
+    "publishedAt": "2023-03-31T15:16:22.773Z",
+    "locale": "en",
+    "page_blocks": [
+        {
+            "__component": "page-blocks.form-block",
+            "id": 50,
+            "variant": "simple",
+            "anchor": "form-block",
+            "class_name": null,
+            "form": {
+                "id": 7,
+                "title": "Есть вопросы по продукту?",
+                "subtitle": null,
+                "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
+                "uid": "question",
+                "createdAt": "2023-03-31T16:24:12.733Z",
+                "updatedAt": "2023-04-02T11:55:21.739Z",
+                "publishedAt": "2023-02-14T22:44:48.245Z"
+            }
+        },
+        {
+            "__component": "page-blocks.slider-block",
+            "id": 42,
+            "variant": "simple",
+            "anchor": null,
+            "class_name": null,
+            "slider": {
+                "id": 5,
+                "variant": "fade-with-previews",
+                "show_backdrop": true,
+                "show_full_screen": true,
+                "show_previews": true,
+                "class_name": null,
+                "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
+                "createdAt": "2023-03-31T16:22:17.165Z",
+                "updatedAt": "2023-04-02T13:32:15.844Z",
+                "publishedAt": "2023-03-28T10:46:50.780Z"
+            }
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null,
+    "localizations": [
+        {
+            "id": 16,
+            "createdAt": "2023-03-31T16:24:14.830Z",
+            "updatedAt": "2023-04-02T11:55:24.551Z",
+            "publishedAt": "2023-03-31T15:16:47.470Z",
+            "locale": "ru",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.form-block",
+                    "id": 51,
+                    "variant": "simple",
+                    "anchor": "форм-блок",
+                    "class_name": null,
+                    "form": {
+                        "id": 7,
+                        "title": "Есть вопросы по продукту?",
+                        "subtitle": null,
+                        "description": "Заполните форму и мы свяжемся с вами в ближайшее время",
+                        "uid": "question",
+                        "createdAt": "2023-03-31T16:24:12.733Z",
+                        "updatedAt": "2023-04-02T11:55:21.739Z",
+                        "publishedAt": "2023-02-14T22:44:48.245Z"
+                    }
+                },
+                {
+                    "__component": "page-blocks.slider-block",
+                    "id": 43,
+                    "variant": "simple",
+                    "anchor": "слайдур",
+                    "class_name": null,
+                    "slider": {
+                        "id": 5,
+                        "variant": "fade-with-previews",
+                        "show_backdrop": true,
+                        "show_full_screen": true,
+                        "show_previews": true,
+                        "class_name": null,
+                        "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
+                        "createdAt": "2023-03-31T16:22:17.165Z",
+                        "updatedAt": "2023-04-02T13:32:15.844Z",
+                        "publishedAt": "2023-03-28T10:46:50.780Z"
+                    }
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": [
+                {
+                    "id": 15,
+                    "createdAt": "2023-03-31T16:24:14.747Z",
+                    "updatedAt": "2023-04-02T11:55:24.531Z",
+                    "publishedAt": "2023-03-31T15:16:22.773Z",
+                    "locale": "en"
+                },
+                {
+                    "id": 16,
+                    "createdAt": "2023-03-31T16:24:14.830Z",
+                    "updatedAt": "2023-04-02T11:55:24.551Z",
+                    "publishedAt": "2023-03-31T15:16:47.470Z",
+                    "locale": "ru"
+                }
+            ]
+        }
+    ]
+}
