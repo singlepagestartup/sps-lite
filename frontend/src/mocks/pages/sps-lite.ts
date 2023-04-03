@@ -6,9 +6,9 @@ import {
   backendPublicPageLayout,
   backendPublicPageNavbarSimpleLinksOnLeft,
   backendPublicPageTopbarSimple,
-} from "~mocks/single-types/sps-lite";
+} from "~mocks/single-types";
 
-export const mainPage = {
+export const spsLiteMainPage = {
   ...backendMainPage,
   _meta: {},
   publicPageLayout: backendPublicPageLayout,

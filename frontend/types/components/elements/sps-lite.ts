@@ -1,6 +1,7 @@
 import { IBackendMedia } from "types/plugins/upload";
+import { IBackendButton, IBackendInputOption } from ".";
 
-export interface IBackendButton {
+export interface ISpsLiteBackendButton {
   id: number;
   title: string | null;
   variant: `bottom-line` | `primary` | `default`;
@@ -12,7 +13,7 @@ export interface IBackendButton {
   additionalAttributes: any | null;
 }
 
-export interface IBackendButtonsArray {
+export interface ISpsLiteBackendButtonsArray {
   id: number;
   title?: string;
   buttons: IBackendButton[];
@@ -23,13 +24,13 @@ export interface IBackendButtonsArray {
   additionalMedia?: IBackendMedia[] | null;
 }
 
-export interface IBackendFaq {
+export interface ISpsLiteBackendFaq {
   id: number;
   title: string | null;
   description: string | null;
 }
 
-export interface IBackendFeature {
+export interface ISpsLiteBackendFeature {
   id: number;
   title: string | null;
   description: string | null;
@@ -38,7 +39,7 @@ export interface IBackendFeature {
   additionalMedia?: IBackendMedia[] | null;
 }
 
-export interface IBackendInput {
+export interface ISpsLiteBackendInput {
   id: number;
   placeholder: string | null;
   component: `text` | `listbox` | `radio-group` | `switch` | `file`;
@@ -52,13 +53,13 @@ export interface IBackendInput {
   multiple: boolean | null;
 }
 
-export interface IBackendInputOption {
+export interface ISpsLiteBackendInputOption {
   id: number;
   title: string | null;
   description: string | null;
 }
 
-export interface IBackendLogotype {
+export interface ISpsLiteBackendLogotype {
   id: number;
   media?: IBackendMedia[] | null;
   additionalMedia?: IBackendMedia[] | null;
@@ -66,7 +67,7 @@ export interface IBackendLogotype {
   title: string | null;
 }
 
-export interface IBackendSlide {
+export interface ISpsLiteBackendSlide {
   id: number;
   buttons?: any[];
   title: string | null;

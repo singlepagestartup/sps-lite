@@ -1,6 +1,6 @@
 import { FC } from "react";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
-import { IBackendPricingsBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendPricingsBlock } from "types/components/page-blocks";
 
 export interface IPricingsBlock extends IBackendPricingsBlock {}
 

@@ -6,8 +6,8 @@ import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import ReviewsTables from ".";
 import Reviews, { IReviewsTableBlock } from ".";
-import { backendReview } from "~mocks/collection-types/sps-lite";
-import { backendReviewsTableBlockSimple } from "~mocks/components/page-blocks/sps-lite";
+import { backendReview } from "~mocks/collection-types";
+import { backendReviewsTableBlockSimple } from "~mocks/components/page-blocks";
 
 const meta = { component: ReviewsTables } satisfies Meta<typeof ReviewsTables>;
 export default meta;

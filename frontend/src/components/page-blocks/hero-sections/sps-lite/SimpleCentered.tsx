@@ -3,7 +3,7 @@ import Link from "next/link";
 const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
-import { IHeroSectionBlock } from ".";
+import { IHeroSectionBlock } from "..";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
 export default function SimpleCentered(props: IHeroSectionBlock) {

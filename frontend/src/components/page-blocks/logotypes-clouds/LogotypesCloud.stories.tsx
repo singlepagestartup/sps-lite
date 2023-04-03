@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import LogotypesClouds from ".";
-import { backendLogotypesCloudBlockSimple } from "~mocks/components/page-blocks/sps-lite";
+import { backendLogotypesCloudBlockSimple } from "~mocks/components/page-blocks";
 
 const meta = { component: LogotypesClouds } satisfies Meta<
   typeof LogotypesClouds

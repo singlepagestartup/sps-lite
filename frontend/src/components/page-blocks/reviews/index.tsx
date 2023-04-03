@@ -1,6 +1,6 @@
 import { FC } from "react";
 import SimpleWithAvatars from "./SimpleWithAvatars";
-import { IBackendReviewsBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendReviewsBlock } from "types/components/page-blocks";
 
 export interface IReviewsBlock extends IBackendReviewsBlock {}
 

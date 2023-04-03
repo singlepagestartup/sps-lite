@@ -6,7 +6,7 @@ import Tables, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from ".";
-import { backendReview } from "~mocks/collection-types/sps-lite";
+import { backendReview } from "~mocks/collection-types";
 
 const meta = {
   component: Tables,

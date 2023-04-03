@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import Simple from "./Simple";
-import { IBackendModal } from "types/collection-types/sps-lite";
+import { IBackendModal } from "types/collection-types";
 
 export interface IModal extends Omit<IBackendModal, `id`> {
   setIsOpen: Dispatch<SetStateAction<boolean>>;

@@ -3,11 +3,12 @@ import {
   IBackendFeature,
   IBackendInput,
   IBackendSlide,
-} from "types/components/elements/sps-lite";
-import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
+} from "types/components/elements";
+import { IBackendPageBlock } from "types/components/page-blocks";
 import { IBackendMedia } from "types/plugins/upload";
+import { IBackendCurrency } from ".";
 
-export interface IBackendTier {
+export interface ISpsLiteBackendTier {
   id: number;
   title: string | null;
   description: string | null;
@@ -20,7 +21,7 @@ export interface IBackendTier {
   buttons?: IBackendButton[] | null;
 }
 
-export interface IBackendModal {
+export interface ISpsLiteBackendModal {
   id: number;
   title: string | null;
   variant: `simple`;
@@ -29,7 +30,7 @@ export interface IBackendModal {
   uid: string;
 }
 
-export interface IBackendForm {
+export interface ISpsLiteBackendForm {
   id: number;
   title: string | null;
   inputs?: IBackendInput[];
@@ -38,7 +39,7 @@ export interface IBackendForm {
   button?: IBackendButton;
 }
 
-export interface IBackendReview {
+export interface ISpsLiteBackendReview {
   id: number;
   name: string | null;
   title: string | null;
@@ -50,7 +51,7 @@ export interface IBackendReview {
   createdAt: string;
 }
 
-export interface IBackendSlider {
+export interface ISpsLiteBackendSlider {
   slides: IBackendSlide[];
   className: string | null;
   aspectRatioClassName: string | null;
@@ -60,7 +61,7 @@ export interface IBackendSlider {
   showPreviews: boolean | null;
 }
 
-export interface IBackendCurrency {
+export interface ISpsLiteBackendCurrency {
   id: number;
   title: string | null;
   unicode: string | null;

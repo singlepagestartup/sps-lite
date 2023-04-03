@@ -3,24 +3,24 @@ import {
   IBackendReview,
   IBackendSlider,
   IBackendTier,
-} from "types/collection-types/sps-lite";
+} from "types/collection-types";
 import {
   IBackendButton,
   IBackendButtonsArray,
   IBackendFaq,
   IBackendFeature,
   IBackendLogotype,
-} from "types/components/elements/sps-lite";
+} from "types/components/elements";
 import { IBackendMedia } from "types/plugins/upload";
 import { pageBlockComponents } from "~utils/api/components";
 
-export interface IBackendPageBlock {
+export interface ISpsLiteBackendPageBlock {
   id: number;
   _Component: keyof typeof pageBlockComponents;
   [key: string]: any;
 }
 
-export interface IBackendContactSectonBlock {
+export interface ISpsLiteBackendContactSectonBlock {
   id: number;
   variant: `split-brand-panel`;
   title: string | null;
@@ -31,7 +31,7 @@ export interface IBackendContactSectonBlock {
   anchor: string | null;
 }
 
-export interface IBackendCtaSectionBlock {
+export interface ISpsLiteBackendCtaSectionBlock {
   id: number;
   title?: string;
   description?: string;
@@ -41,7 +41,7 @@ export interface IBackendCtaSectionBlock {
   buttons?: IBackendButton[];
 }
 
-export interface IBackendFaqBlock {
+export interface ISpsLiteBackendFaqBlock {
   id: number;
   variant:
     | `centered-accordion`
@@ -60,7 +60,7 @@ export interface IBackendFaqBlock {
   anchor: string | null;
 }
 
-export interface IBackendFeaturesSectionBlock {
+export interface ISpsLiteBackendFeaturesSectionBlock {
   id: number;
   features?: IBackendFeature[] | null;
   _Component: `page-blocks.features-section-block`;
@@ -75,7 +75,7 @@ export interface IBackendFeaturesSectionBlock {
   media?: IBackendMedia[] | null;
 }
 
-export interface IBackendFormBlock {
+export interface ISpsLiteBackendFormBlock {
   id: number;
   variant: `simple`;
   form?: IBackendForm | null;
@@ -83,7 +83,7 @@ export interface IBackendFormBlock {
   anchor: string | null;
 }
 
-export interface IBackendHeaderSectionBlock {
+export interface ISpsLiteBackendHeaderSectionBlock {
   id: number;
   title: string | null;
   description: string | null;
@@ -98,7 +98,7 @@ export interface IBackendHeaderSectionBlock {
   anchor: string | null;
 }
 
-export interface IBackendHeroSectionBlock {
+export interface ISpsLiteBackendHeroSectionBlock {
   id: number;
   variant:
     | `split`
@@ -114,7 +114,7 @@ export interface IBackendHeroSectionBlock {
   background?: IBackendMedia | null;
 }
 
-export interface IBackendIncentivesBlock {
+export interface ISpsLiteBackendIncentivesBlock {
   id: number;
   features?: IBackendFeature[] | null;
   title: string | null;
@@ -132,7 +132,7 @@ export interface IBackendIncentivesBlock {
   anchor: string | null;
 }
 
-export interface IBackendLogotypesCloudBlock {
+export interface ISpsLiteBackendLogotypesCloudBlock {
   id: number;
   variant:
     | `simple`
@@ -147,7 +147,7 @@ export interface IBackendLogotypesCloudBlock {
   anchor: string | null;
 }
 
-export interface IBackendNotFoundBlock {
+export interface ISpsLiteBackendNotFoundBlock {
   id: number;
   variant: `simple`;
   title: string | null;
@@ -156,7 +156,7 @@ export interface IBackendNotFoundBlock {
   buttons?: IBackendButton[] | null;
 }
 
-export interface IBackendPricingsBlock {
+export interface ISpsLiteBackendPricingsBlock {
   id: number;
   title: string | null;
   subtitle: string | null;
@@ -168,7 +168,7 @@ export interface IBackendPricingsBlock {
   className: string | null;
 }
 
-export interface IBackendReviewsBlock {
+export interface ISpsLiteBackendReviewsBlock {
   id: number;
   variant: `simple-with-avatars`;
   reviews?: IBackendReview[] | null;
@@ -176,12 +176,12 @@ export interface IBackendReviewsBlock {
   anchor: string | null;
 }
 
-export interface IBackendReviewsTableBlock {
+export interface ISpsLiteBackendReviewsTableBlock {
   id: number;
   variant: `simple`;
 }
 
-export interface IBackendSliderBlock {
+export interface ISpsLiteBackendSliderBlock {
   id: number;
   variant: `simple`;
   anchor: string | null;

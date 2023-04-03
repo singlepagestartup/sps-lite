@@ -1,20 +1,12 @@
 import { FC } from "react";
-import SimpleCentered from "./SimpleCentered";
-import WithAppScreenshot from "./WithAppScreenshot";
-import Split from "./Split";
-import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
-import WithAngledImageOnRight from "./WithAngledImageOnRight";
-import { IBackendHeroSectionBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendHeroSectionBlock } from "types/components/page-blocks";
+import { variants as spsLiteVariants } from "./sps-lite";
 
 export interface IHeroSectionBlock
   extends Omit<IBackendHeroSectionBlock, `id`> {}
 
 const variants = {
-  split: Split,
-  "simple-centered": SimpleCentered,
-  "split-with-screenshot-on-dark": SplitWithScreenshotOnDark,
-  "with-app-screenshot": WithAppScreenshot,
-  "with-angled-image-on-right": WithAngledImageOnRight,
+  ...spsLiteVariants,
 };
 
 export default function HeroSections(props: IHeroSectionBlock) {

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Dropdown from "./Dropdown";
 import Simple from "./Simple";
-import { IBackendButtonsArray } from "types/components/elements/sps-lite";
+import { IBackendButtonsArray } from "types/components/elements";
 
 export interface IButtonsArray extends Omit<IBackendButtonsArray, `id`> {}
 

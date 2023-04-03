@@ -5,7 +5,7 @@ import useTranslations from "~hooks/use-translations";
 import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
 import SimpleButtons from "~components/buttons/simple-buttons";
-import { IBackendTier } from "types/collection-types/sps-lite";
+import { IBackendTier } from "types/collection-types";
 
 const cardsConfig = {
   emptyLength: 3,

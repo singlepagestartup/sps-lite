@@ -1,7 +1,6 @@
-export interface IBackendMedia {
+export interface ISpsLiteUploadPluginBackendMedia {
   id: number;
   url: string;
-  mime: string;
   alternativeText: string | null;
   name: string;
   caption: string | null;

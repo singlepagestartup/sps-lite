@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IBackendNotFoundBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendNotFoundBlock } from "types/components/page-blocks";
 
 export interface INotFoundBlock extends IBackendNotFoundBlock {}
 

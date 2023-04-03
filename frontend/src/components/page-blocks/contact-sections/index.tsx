@@ -1,6 +1,6 @@
 import { FC } from "react";
 import SplitBrandPanel from "./SplitBrandPanel";
-import { IBackendContactSectonBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendContactSectonBlock } from "types/components/page-blocks";
 
 export interface IContactSectonBlock extends IBackendContactSectonBlock {}
 

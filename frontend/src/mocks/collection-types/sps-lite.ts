@@ -1,39 +1,39 @@
 import {
-  IBackendCurrency,
-  IBackendForm,
-  IBackendModal,
-  IBackendReview,
-  IBackendSlider,
-  IBackendTier,
+  ISpsLiteBackendCurrency,
+  ISpsLiteBackendForm,
+  ISpsLiteBackendModal,
+  ISpsLiteBackendReview,
+  ISpsLiteBackendSlider,
+  ISpsLiteBackendTier,
 } from "types/collection-types/sps-lite";
 import {
-  backendButtonDefault,
-  backendEmailInput,
-  backendFeature,
-  backendNameInput,
-  backendPolicyInput,
-  backendQuestionInput,
-  backendSlide,
-  backendTierInput,
+  spsLiteBackendButtonDefault,
+  spsLiteBackendEmailInput,
+  spsLiteBackendFeature,
+  spsLiteBackendNameInput,
+  spsLiteBackendPolicyInput,
+  spsLiteBackendQuestionInput,
+  spsLiteBackendSlide,
+  spsLiteBackendTierInput,
 } from "~mocks/components/elements/sps-lite";
-import { backendMediaTableAndHands } from "~mocks/plugins/upload";
+import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
 
-export const backendSlider = {
-  slides: Array(4).fill(backendSlide),
+export const spsLiteBackendSlider = {
+  slides: Array(4).fill(spsLiteBackendSlide),
   variant: `fade-with-previews`,
   aspectRatioClassName: `aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10`,
   showBackdrop: true,
   showFullScreen: true,
   showPreviews: true,
-} as IBackendSlider;
+} as ISpsLiteBackendSlider;
 
-export const backendCurrency = {
+export const spsLiteBackendCurrency = {
   title: `USD`,
   unicode: `$`,
   isDefault: true,
-} as IBackendCurrency;
+} as ISpsLiteBackendCurrency;
 
-export const backendTier = {
+export const spsLiteBackendTier = {
   id: 1,
   title: `Lite`,
   description: `Если хочешь попробовать концепцию в деле`,
@@ -44,12 +44,12 @@ export const backendTier = {
   createdAt: `2023-02-14T08:49:14.623Z`,
   updatedAt: `2023-02-14T08:49:53.551Z`,
   publishedAt: `2023-02-14T22:48:50.378Z`,
-  features: Array(4).fill(backendFeature),
-  currency: backendCurrency,
-  buttons: [backendButtonDefault],
-} as IBackendTier;
+  features: Array(4).fill(spsLiteBackendFeature),
+  currency: spsLiteBackendCurrency,
+  buttons: [spsLiteBackendButtonDefault],
+} as ISpsLiteBackendTier;
 
-export const backendForm = {
+export const spsLiteBackendForm = {
   id: 1,
   title: `Есть вопросы по продукту?`,
   subtitle: null,
@@ -59,16 +59,16 @@ export const backendForm = {
   updatedAt: `2023-03-26T20:40:29.554Z`,
   publishedAt: `2023-02-14T22:44:48.245Z`,
   inputs: [
-    backendNameInput,
-    backendEmailInput,
-    backendTierInput,
-    backendQuestionInput,
-    backendPolicyInput,
+    spsLiteBackendNameInput,
+    spsLiteBackendEmailInput,
+    spsLiteBackendTierInput,
+    spsLiteBackendQuestionInput,
+    spsLiteBackendPolicyInput,
   ],
-  button: backendButtonDefault,
-} as IBackendForm;
+  button: spsLiteBackendButtonDefault,
+} as ISpsLiteBackendForm;
 
-export const backendReview = {
+export const spsLiteBackendReview = {
   id: 5,
   name: `Emily Wilson`,
   title: `Exceptional Startup with Great Potential`,
@@ -76,11 +76,11 @@ export const backendReview = {
   subtitle: `Looking Forward to Future Innovations`,
   rating: 5,
   createdAt: `2023-03-12T11:34:52.690Z`,
-  media: [backendMediaTableAndHands],
+  media: [spsLiteUploadPluginBackendMediaTableAndHands],
   additionalMedia: null,
-} as IBackendReview;
+} as ISpsLiteBackendReview;
 
-export const backendModal = {
+export const spsLiteBackendModal = {
   id: 1,
   title: `Hello world`,
   uid: `hello-world`,
@@ -108,4 +108,4 @@ export const backendModal = {
       },
     },
   ],
-} as IBackendModal;
+} as ISpsLiteBackendModal;

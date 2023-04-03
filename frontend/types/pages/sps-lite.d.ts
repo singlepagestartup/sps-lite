@@ -7,7 +7,7 @@ import {
   IBackendPublicPageTopbar,
 } from "types/single-types/sps-lite";
 
-export interface IPublicPage {
+export interface ISpsLitePublicPage {
   meta?: IBackendMeta | null;
   pageBlocks?: IBackendPageBlock[] | null;
   publicPageTopbar?: IBackendPublicPageTopbar;

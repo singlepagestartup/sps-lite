@@ -1,4 +1,4 @@
-import { IPublicPage } from "types/pages/sps-lite";
+import { IPublicPage } from "types/pages";
 import PublicPageFooters from "~components/footers/public-page-footers";
 import Meta from "~components/meta";
 import PublicPageNavbars from "~components/navbars/public-page-navbars";

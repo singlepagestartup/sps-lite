@@ -1,14 +1,13 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { IHeroSectionBlock } from ".";
+import { IHeroSectionBlock } from "..";
 import { BACKEND_URL } from "~utils/envs";
 import SimpleButtons from "~components/buttons/simple-buttons";
 
-export default function Split(props: IHeroSectionBlock) {
+export default function SplitWithScreenshotOnDark(props: IHeroSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -21,24 +20,24 @@ export default function Split(props: IHeroSectionBlock) {
 
   return (
     <div
-      className="flex flex-col border-b border-gray-200 lg:border-0"
+      className="flex flex-col border-b border-gray-200 lg:border-0 bg-gray-800"
       {...additionalAttributes}
     >
       <div className="relative">
         <div
           aria-hidden="true"
-          className="absolute hidden h-full w-full bg-gray-100 lg:block"
+          className="absolute hidden h-full w-full lg:block"
         />
         <div className="max-w-7xl relative mx-auto">
-          <div className="relative bg-gray-100 lg:bg-transparent">
+          <div className="relative bg-transparent">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
               <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
                 <div className="lg:pr-16">
-                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-50 sm:text-5xl xl:text-6xl">
                     {props.title}
                   </h1>
                   {props.description ? (
-                    <ReactMarkdown className="mt-4 text-xl text-gray-600">
+                    <ReactMarkdown className="mt-4 text-xl text-gray-300">
                       {props.description}
                     </ReactMarkdown>
                   ) : null}

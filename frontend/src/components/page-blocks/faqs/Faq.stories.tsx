@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Faqs from ".";
-import { backendFaqBlockThreeColumns } from "~mocks/components/page-blocks/sps-lite";
+import { backendFaqBlockThreeColumns } from "~mocks/components/page-blocks";
 
 const meta = { component: Faqs } satisfies Meta<typeof Faqs>;
 export default meta;

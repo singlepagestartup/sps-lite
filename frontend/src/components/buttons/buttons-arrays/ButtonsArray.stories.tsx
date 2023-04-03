@@ -3,7 +3,7 @@ import ButtonsArrays from ".";
 import {
   backendButtonsArrayDropdown,
   backendButtonsArraySimple,
-} from "~mocks/components/elements/sps-lite";
+} from "~mocks/components/elements";
 
 const meta = { component: ButtonsArrays } satisfies Meta<typeof ButtonsArrays>;
 export default meta;

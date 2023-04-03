@@ -3,7 +3,7 @@ import ClientOnlyWrapper from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
-import { IBackendButton } from "types/components/elements/sps-lite";
+import { IBackendButton } from "types/components/elements";
 
 export interface IButton
   extends Omit<

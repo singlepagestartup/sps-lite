@@ -1,59 +1,59 @@
 import {
-  IBackendButton,
-  IBackendButtonsArray,
-  IBackendFaq,
-  IBackendFeature,
-  IBackendInput,
-  IBackendLogotype,
-  IBackendSlide,
+  ISpsLiteBackendButton,
+  ISpsLiteBackendButtonsArray,
+  ISpsLiteBackendFaq,
+  ISpsLiteBackendFeature,
+  ISpsLiteBackendInput,
+  ISpsLiteBackendLogotype,
+  ISpsLiteBackendSlide,
 } from "types/components/elements/sps-lite";
 import {
-  backendMediaLogotypeIcon,
-  backendMediaRoundIcon,
-  backendMediaTableAndHands,
-} from "~mocks/plugins/upload";
+  spsLiteUploadPluginBackendMediaTableAndHands,
+  spsLiteUploadPluginBackendMediaRoundIcon,
+  spsLiteUploadPluginBackendMediaLogotypeIcon,
+} from "~mocks/plugins/upload/sps-lite";
 
-export const backendButtonDefault = {
+export const spsLiteBackendButtonDefault = {
   title: `Button`,
   url: `https://nextjs.com`,
   variant: `default`,
-} as IBackendButton;
+} as ISpsLiteBackendButton;
 
-export const backendButtonPrimary = {
-  ...backendButtonDefault,
+export const spsLiteBackendButtonPrimary = {
+  ...spsLiteBackendButtonDefault,
   variant: `primary`,
-} as IBackendButton;
+} as ISpsLiteBackendButton;
 
-export const backendButtonBottomLine = {
-  ...backendButtonDefault,
+export const spsLiteBackendButtonBottomLine = {
+  ...spsLiteBackendButtonDefault,
   variant: `bottom-line`,
-} as IBackendButton;
+} as ISpsLiteBackendButton;
 
-export const backendButtonsArraySimple = {
+export const spsLiteBackendButtonsArraySimple = {
   title: `Buttons Array`,
-  buttons: [backendButtonDefault, backendButtonDefault],
+  buttons: [spsLiteBackendButtonDefault, spsLiteBackendButtonDefault],
   variant: `simple`,
-} as IBackendButtonsArray;
+} as ISpsLiteBackendButtonsArray;
 
-export const backendButtonsArrayDropdown = {
-  ...backendButtonsArraySimple,
+export const spsLiteBackendButtonsArrayDropdown = {
+  ...spsLiteBackendButtonsArraySimple,
   variant: `dropdown`,
-} as IBackendButtonsArray;
+} as ISpsLiteBackendButtonsArray;
 
-export const backendFaq = {
+export const spsLiteBackendFaq = {
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-} as IBackendFaq;
+} as ISpsLiteBackendFaq;
 
-export const backendFeature = {
+export const spsLiteBackendFeature = {
   id: 136,
   title: `Конструктор PageBlock'ов`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   subtitle: `Не повторяйся`,
-  media: [backendMediaRoundIcon],
-} as IBackendFeature;
+  media: [spsLiteUploadPluginBackendMediaRoundIcon],
+} as ISpsLiteBackendFeature;
 
-export const backendNameInput = {
+export const spsLiteBackendNameInput = {
   id: 56,
   placeholder: `Введите ваше имя`,
   component: `text`,
@@ -65,9 +65,9 @@ export const backendNameInput = {
   type: null,
   multiple: null,
   options: [],
-} as IBackendInput;
+} as ISpsLiteBackendInput;
 
-export const backendEmailInput = {
+export const spsLiteBackendEmailInput = {
   id: 57,
   placeholder: `Введите вашу электронную почту`,
   component: `text`,
@@ -79,9 +79,9 @@ export const backendEmailInput = {
   type: null,
   multiple: null,
   options: [],
-} as IBackendInput;
+} as ISpsLiteBackendInput;
 
-export const backendTierInput = {
+export const spsLiteBackendTierInput = {
   id: 58,
   placeholder: `Выберите тариф`,
   component: `listbox`,
@@ -104,9 +104,9 @@ export const backendTierInput = {
       description: null,
     },
   ],
-} as IBackendInput;
+} as ISpsLiteBackendInput;
 
-export const backendQuestionInput = {
+export const spsLiteBackendQuestionInput = {
   id: 59,
   placeholder: `Напишите ваш вопрос`,
   component: `text`,
@@ -118,9 +118,9 @@ export const backendQuestionInput = {
   type: `textarea`,
   multiple: null,
   options: [],
-} as IBackendInput;
+} as ISpsLiteBackendInput;
 
-export const backendPolicyInput = {
+export const spsLiteBackendPolicyInput = {
   id: 60,
   placeholder: null,
   component: `switch`,
@@ -132,19 +132,19 @@ export const backendPolicyInput = {
   type: null,
   multiple: null,
   options: [],
-} as IBackendInput;
+} as ISpsLiteBackendInput;
 
-export const backendLogotype = {
-  media: [backendMediaLogotypeIcon],
+export const spsLiteBackendLogotype = {
+  media: [spsLiteUploadPluginBackendMediaLogotypeIcon],
   additionalMedia: null,
   title: ``,
   url: `https://singlepagestartup.com`,
-} as IBackendLogotype;
+} as ISpsLiteBackendLogotype;
 
-export const backendSlide = {
+export const spsLiteBackendSlide = {
   id: 1,
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-  media: [backendMediaTableAndHands],
-  buttons: [backendButtonDefault],
-} as IBackendSlide;
+  media: [spsLiteUploadPluginBackendMediaTableAndHands],
+  buttons: [spsLiteBackendButtonDefault],
+} as ISpsLiteBackendSlide;

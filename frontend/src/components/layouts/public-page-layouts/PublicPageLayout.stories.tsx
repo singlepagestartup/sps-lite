@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import PublicPageLayouts from ".";
-import { mainPage } from "~mocks/pages/sps-lite";
+import { mainPage } from "~mocks/pages";
 
 const meta = { component: PublicPageLayouts } satisfies Meta<
   typeof PublicPageLayouts

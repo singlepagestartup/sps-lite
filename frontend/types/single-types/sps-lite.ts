@@ -1,14 +1,14 @@
-import { IBackendForm } from "types/collection-types/sps-lite";
+import { IBackendForm } from "types/collection-types";
 import {
   IBackendButton,
   IBackendButtonsArray,
   IBackendLogotype,
-} from "types/components/elements/sps-lite";
-import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
+} from "types/components/elements";
+import { IBackendPageBlock } from "types/components/page-blocks";
 import { IBackendMedia } from "types/plugins/upload";
 import { IButtons } from "~components/buttons";
 
-export interface IBackendPublicPageFooter {
+export interface ISpsLiteBackendPublicPageFooter {
   id: number;
   logotype?: IBackendLogotype | null;
   socialNetworksButtons?: IBackendButtonsArray[] | null;
@@ -28,7 +28,7 @@ export interface IBackendPublicPageFooter {
   _meta?: any;
 }
 
-export interface IBackendPublicPageNavbar {
+export interface ISpsLiteBackendPublicPageNavbar {
   id: number;
   logotype?: IBackendLogotype | null;
   buttons?: IButtons[];
@@ -39,18 +39,18 @@ export interface IBackendPublicPageNavbar {
   variant: `simple-links-on-left`;
 }
 
-export interface IBackendPublicPageTopbar {
+export interface ISpsLiteBackendPublicPageTopbar {
   title: string | null;
   variant: `simple`;
   buttons?: IBackendButton[] | null;
 }
 
-export interface IBackendPublicPageLayout {
+export interface ISpsLiteBackendPublicPageLayout {
   id: number;
   variant: `simple`;
 }
 
-export interface IBackendMeta {
+export interface ISpsLiteBackendMeta {
   title?: string | null;
   description?: string | null;
   favicon?: IBackendMedia | null;
@@ -60,7 +60,7 @@ export interface IBackendMeta {
   script?: string | null;
 }
 
-export interface IBackendMainPage {
+export interface ISpsLiteBackendMainPage {
   id: number;
   createdAt: string;
   updatedAt: string;
@@ -68,7 +68,7 @@ export interface IBackendMainPage {
   pageBlocks?: IBackendPageBlock[] | null;
 }
 
-export interface IBackendNotFoundPage {
+export interface ISpsLiteBackendNotFoundPage {
   id: number;
   createdAt: string;
   updatedAt: string;

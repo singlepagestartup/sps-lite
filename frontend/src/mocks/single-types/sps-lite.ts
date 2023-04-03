@@ -1,50 +1,50 @@
 import {
-  IBackendMainPage,
-  IBackendMeta,
-  IBackendPublicPageFooter,
-  IBackendPublicPageLayout,
-  IBackendPublicPageNavbar,
-  IBackendPublicPageTopbar,
+  ISpsLiteBackendMainPage,
+  ISpsLiteBackendMeta,
+  ISpsLiteBackendPublicPageFooter,
+  ISpsLiteBackendPublicPageLayout,
+  ISpsLiteBackendPublicPageNavbar,
+  ISpsLiteBackendPublicPageTopbar,
 } from "types/single-types/sps-lite";
 import {
-  backendButtonDefault,
-  backendButtonsArraySimple,
-  backendLogotype,
+  spsLiteBackendButtonDefault,
+  spsLiteBackendButtonsArraySimple,
+  spsLiteBackendLogotype,
 } from "~mocks/components/elements/sps-lite";
-import { backendFeatureSectionBlockSimpleThreeColumn } from "~mocks/components/page-blocks/sps-lite";
-import { backendMediaRoundIcon } from "~mocks/plugins/upload";
+import { spsLiteBackendFeatureSectionBlockSimpleThreeColumn } from "~mocks/components/page-blocks/sps-lite";
+import { spsLiteUploadPluginBackendMediaRoundIcon } from "~mocks/plugins/upload/sps-lite";
 
-export const backendPublicPageFooterFourColumnsWithCompanyMission = {
+export const spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission = {
   id: 1,
   copyrights: `&copy; 2023 Single Page Startup. All rights reserved.`,
   description: `Making the world a better place through constructing elegant hierarchies.`,
   variant: `four-columns-with-company-mission`,
   locale: `en`,
-  logotype: backendLogotype,
-  socialNetworksButtons: Array(3).fill(backendButtonsArraySimple),
-  policiesButtons: Array(3).fill(backendButtonsArraySimple),
-  buttonsArrays: Array(3).fill(backendButtonsArraySimple),
-} as IBackendPublicPageFooter;
+  logotype: spsLiteBackendLogotype,
+  socialNetworksButtons: Array(3).fill(spsLiteBackendButtonsArraySimple),
+  policiesButtons: Array(3).fill(spsLiteBackendButtonsArraySimple),
+  buttonsArrays: Array(3).fill(spsLiteBackendButtonsArraySimple),
+} as ISpsLiteBackendPublicPageFooter;
 
-export const backendPublicPageNavbarSimpleLinksOnLeft = {
+export const spsLiteBackendPublicPageNavbarSimpleLinksOnLeft = {
   id: 45,
   variant: `simple-links-on-left`,
-  logotype: backendLogotype,
-} as IBackendPublicPageNavbar;
+  logotype: spsLiteBackendLogotype,
+} as ISpsLiteBackendPublicPageNavbar;
 
-export const backendPublicPageTopbarSimple = {
+export const spsLiteBackendPublicPageTopbarSimple = {
   id: 43,
   title: `Hello, Topbar`,
   variant: `simple`,
-  buttons: Array(3).fill(backendButtonDefault),
-} as IBackendPublicPageTopbar;
+  buttons: Array(3).fill(spsLiteBackendButtonDefault),
+} as ISpsLiteBackendPublicPageTopbar;
 
-export const backendPublicPageLayout = {
+export const spsLiteBackendPublicPageLayout = {
   id: 4,
   variant: `simple`,
-} as IBackendPublicPageLayout;
+} as ISpsLiteBackendPublicPageLayout;
 
-export const backendMeta = {
+export const spsLiteBackendMeta = {
   id: 4,
   title: `Lite Single Page Startup`,
   description: `The fastest way to create startup`,
@@ -54,15 +54,15 @@ export const backendMeta = {
   updatedAt: `2023-04-02T11:55:25.729Z`,
   publishedAt: `2023-02-14T22:43:25.891Z`,
   locale: `en`,
-  favicon: backendMediaRoundIcon,
+  favicon: spsLiteUploadPluginBackendMediaRoundIcon,
   _meta: {},
-} as IBackendMeta;
+} as ISpsLiteBackendMeta;
 
-export const backendMainPage = {
+export const spsLiteBackendMainPage = {
   id: 1,
   locale: `en`,
   createdAt: `2023-03-31T15:14:49.896Z`,
   updatedAt: `2023-04-02T11:55:25.729Z`,
   publishedAt: `2023-02-14T22:43:25.891Z`,
-  pageBlocks: [backendFeatureSectionBlockSimpleThreeColumn],
-} as IBackendMainPage;
+  pageBlocks: [spsLiteBackendFeatureSectionBlockSimpleThreeColumn],
+} as ISpsLiteBackendMainPage;

@@ -7,8 +7,8 @@ import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
 import { BACKEND_URL } from "~utils/envs";
 import Cards, { ICardProps, ICardSkeletonProps } from ".";
-import { backendReview } from "~mocks/collection-types/sps-lite";
-import { IBackendReview } from "types/collection-types/sps-lite";
+import { backendReview } from "~mocks/collection-types";
+import { IBackendReview } from "types/collection-types";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IPublicPage } from "types/pages/sps-lite";
+import { IPublicPage } from "types/pages";
 
 const variants = {
   simple: Simple,

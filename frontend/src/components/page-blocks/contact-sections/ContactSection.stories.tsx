@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import ContactSectons from ".";
-import { backendContactSectionBlockSplitBrandPanel } from "~mocks/components/page-blocks/sps-lite";
+import { backendContactSectionBlockSplitBrandPanel } from "~mocks/components/page-blocks";
 
 const meta = { component: ContactSectons } satisfies Meta<
   typeof ContactSectons

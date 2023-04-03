@@ -1,129 +1,129 @@
 import {
-  IBackendContactSectonBlock,
-  IBackendCtaSectionBlock,
-  IBackendFaqBlock,
-  IBackendFeaturesSectionBlock,
-  IBackendFormBlock,
-  IBackendHeaderSectionBlock,
-  IBackendHeroSectionBlock,
-  IBackendIncentivesBlock,
-  IBackendLogotypesCloudBlock,
-  IBackendNotFoundBlock,
-  IBackendPricingsBlock,
-  IBackendReviewsBlock,
-  IBackendReviewsTableBlock,
-  IBackendSliderBlock,
+  ISpsLiteBackendContactSectonBlock,
+  ISpsLiteBackendCtaSectionBlock,
+  ISpsLiteBackendFaqBlock,
+  ISpsLiteBackendFeaturesSectionBlock,
+  ISpsLiteBackendFormBlock,
+  ISpsLiteBackendHeaderSectionBlock,
+  ISpsLiteBackendHeroSectionBlock,
+  ISpsLiteBackendIncentivesBlock,
+  ISpsLiteBackendLogotypesCloudBlock,
+  ISpsLiteBackendNotFoundBlock,
+  ISpsLiteBackendPricingsBlock,
+  ISpsLiteBackendReviewsBlock,
+  ISpsLiteBackendReviewsTableBlock,
+  ISpsLiteBackendSliderBlock,
 } from "types/components/page-blocks/sps-lite";
 import {
-  backendForm,
-  backendSlider,
-  backendTier,
+  spsLiteBackendForm,
+  spsLiteBackendSlider,
+  spsLiteBackendTier,
 } from "~mocks/collection-types/sps-lite";
 import {
-  backendButtonDefault,
-  backendButtonsArraySimple,
-  backendFaq,
-  backendFeature,
-  backendLogotype,
+  spsLiteBackendButtonDefault,
+  spsLiteBackendButtonsArraySimple,
+  spsLiteBackendFaq,
+  spsLiteBackendFeature,
+  spsLiteBackendLogotype,
 } from "~mocks/components/elements/sps-lite";
 
-export const backendFeatureSectionBlockSimpleThreeColumn = {
+export const spsLiteBackendFeatureSectionBlockSimpleThreeColumn = {
   id: 32,
   title: `Hello world`,
   variant: `simple-three-column`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   _Component: `page-blocks.features-section-block`,
-  features: Array(4).fill(backendFeature),
-} as IBackendFeaturesSectionBlock;
+  features: Array(4).fill(spsLiteBackendFeature),
+} as ISpsLiteBackendFeaturesSectionBlock;
 
-export const backendContactSectionBlockSplitBrandPanel = {
+export const spsLiteBackendContactSectionBlockSplitBrandPanel = {
   title: `Hello world`,
   variant: `split-brand-panel`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-  buttonsArrays: [backendButtonsArraySimple],
-} as IBackendContactSectonBlock;
+  buttonsArrays: [spsLiteBackendButtonsArraySimple],
+} as ISpsLiteBackendContactSectonBlock;
 
-export const backendCtaSectionBlockSimpleCentered = {
+export const spsLiteBackendCtaSectionBlockSimpleCentered = {
   title: `Hello world`,
   variant: `simple-centered`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-  buttons: Array(3).fill(backendButtonDefault),
-} as IBackendCtaSectionBlock;
+  buttons: Array(3).fill(spsLiteBackendButtonDefault),
+} as ISpsLiteBackendCtaSectionBlock;
 
-export const backendFaqBlockThreeColumns = {
+export const spsLiteBackendFaqBlockThreeColumns = {
   title: `Hello world`,
   variant: `three-columns`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-  faqs: Array(4).fill(backendFaq),
-} as IBackendFaqBlock;
+  faqs: Array(4).fill(spsLiteBackendFaq),
+} as ISpsLiteBackendFaqBlock;
 
-export const backendFormBlockSimple = {
+export const spsLiteBackendFormBlockSimple = {
   id: 9,
   anchor: null,
   className: null,
-  form: backendForm,
+  form: spsLiteBackendForm,
   variant: `simple`,
-} as IBackendFormBlock;
+} as ISpsLiteBackendFormBlock;
 
-export const backendHeaderSectionBlockSimpleCentered = {
+export const spsLiteBackendHeaderSectionBlockSimpleCentered = {
   id: 9,
   variant: `simple-centered`,
   title: `Используемые коцепции`,
   description: `Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.`,
-} as IBackendHeaderSectionBlock;
+} as ISpsLiteBackendHeaderSectionBlock;
 
-export const backendHeroSectionBlockSimpleCentered = {
+export const spsLiteBackendHeroSectionBlockSimpleCentered = {
   id: 4,
   variant: `simple-centered`,
   title: `OpenSource "под капотом"`,
   description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
-  buttons: [backendButtonDefault],
-} as IBackendHeroSectionBlock;
+  buttons: [spsLiteBackendButtonDefault],
+} as ISpsLiteBackendHeroSectionBlock;
 
-export const backendIncentivesBlockFourColumnWithIllustrations = {
+export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations = {
   id: 9,
   variant: `four-column-with-illustrations`,
-  features: Array(4).fill(backendFeature),
-} as IBackendIncentivesBlock;
+  features: Array(4).fill(spsLiteBackendFeature),
+} as ISpsLiteBackendIncentivesBlock;
 
-export const backendLogotypesCloudBlockSimple = {
+export const spsLiteBackendLogotypesCloudBlockSimple = {
   id: 5,
   title: `Hello world`,
   variant: `simple`,
-  logotypes: Array(5).fill(backendLogotype),
-} as IBackendLogotypesCloudBlock;
+  logotypes: Array(5).fill(spsLiteBackendLogotype),
+} as ISpsLiteBackendLogotypesCloudBlock;
 
-export const backendNotFoundBlockSimple = {
+export const spsLiteBackendNotFoundBlockSimple = {
   id: 3,
   variant: `simple`,
   title: `404`,
   subtitle: `Page not found`,
   description: `Come to main page and start again`,
-  buttons: Array(1).fill(backendButtonDefault),
-} as IBackendNotFoundBlock;
+  buttons: Array(1).fill(spsLiteBackendButtonDefault),
+} as ISpsLiteBackendNotFoundBlock;
 
-export const backendPricingBlocktwoTiersWithExtraTier = {
+export const spsLiteBackendPricingBlocktwoTiersWithExtraTier = {
   id: 2,
   variant: `two-tiers-with-extra-tier`,
   title: `Один шаг чтобы стать Lean Startup разработчиком`,
   subtitle: null,
   description: `Сэкономьте более 250 часов работы разработчика (7'500$) и постоянный доступ к обновлениям кодовой базы. Таким образом все разработанные на базе SPS проекты можно будет обновлять прямо из репозитория SPS. Не нужно копировать-вставлять блоки кода при обновлении.`,
   className: null,
-  tiers: Array(2).fill(backendTier),
-} as IBackendPricingsBlock;
+  tiers: Array(2).fill(spsLiteBackendTier),
+} as ISpsLiteBackendPricingsBlock;
 
-export const backendReviewsBlockSimpleWithAvatars = {
+export const spsLiteBackendReviewsBlockSimpleWithAvatars = {
   id: 5,
   variant: `simple-with-avatars`,
-} as IBackendReviewsBlock;
+} as ISpsLiteBackendReviewsBlock;
 
-export const backendReviewsTableBlockSimple = {
+export const spsLiteBackendReviewsTableBlockSimple = {
   id: 9,
   variant: `simple`,
-} as IBackendReviewsTableBlock;
+} as ISpsLiteBackendReviewsTableBlock;
 
-export const backendSliderBlockSimple = {
+export const spsLiteBackendSliderBlockSimple = {
   id: 2,
   variant: `simple`,
-  slider: backendSlider,
-} as IBackendSliderBlock;
+  slider: spsLiteBackendSlider,
+} as ISpsLiteBackendSliderBlock;

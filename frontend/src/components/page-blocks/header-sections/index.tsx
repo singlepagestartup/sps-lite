@@ -4,7 +4,7 @@ import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
-import { IBackendHeaderSectionBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendHeaderSectionBlock } from "types/components/page-blocks";
 
 export interface IHeaderSectionBlock extends IBackendHeaderSectionBlock {}
 

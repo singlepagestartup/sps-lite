@@ -2,8 +2,8 @@ import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
 import FadeWithPreviews from "./FadeWithPreviews";
-import { IBackendSlider } from "types/collection-types/sps-lite";
-import { IBackendSlide } from "types/components/elements/sps-lite";
+import { IBackendSlider } from "types/collection-types";
+import { IBackendSlide } from "types/components/elements";
 
 const variants = {
   "fade-with-previews": FadeWithPreviews,

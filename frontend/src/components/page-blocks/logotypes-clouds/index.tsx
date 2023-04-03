@@ -4,7 +4,7 @@ import OffWhiteGrid from "./OffWhiteGrid";
 import SimpleWithHeading from "./SimpleWithHeading";
 import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
-import { IBackendLogotypesCloudBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendLogotypesCloudBlock } from "types/components/page-blocks";
 
 export interface ILogotypesCloudBlock extends IBackendLogotypesCloudBlock {}
 

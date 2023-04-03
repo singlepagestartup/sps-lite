@@ -2,7 +2,7 @@ import { FC } from "react";
 import SimpleThreeColumn from "./SimpleThreeColumn";
 import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
 import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
-import { IBackendFeaturesSectionBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendFeaturesSectionBlock } from "types/components/page-blocks";
 
 export interface IFeaturesSectionBlock extends IBackendFeaturesSectionBlock {}
 

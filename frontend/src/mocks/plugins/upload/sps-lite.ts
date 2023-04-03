@@ -1,6 +1,6 @@
-import { IBackendMedia } from "types/plugins/upload";
+import { ISpsLiteUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
-export const backendMediaTableAndHands = {
+export const spsLiteUploadPluginBackendMediaTableAndHands = {
   id: 907,
   name: `home-page-02-hero-half-width.webp`,
   alternativeText: null,
@@ -17,9 +17,9 @@ export const backendMediaTableAndHands = {
   providerMetadata: null,
   createdAt: `2023-04-01T20:54:54.396Z`,
   updatedAt: `2023-04-01T20:54:54.396Z`,
-} as IBackendMedia;
+} as ISpsLiteUploadPluginBackendMedia;
 
-export const backendMediaRoundIcon = {
+export const spsLiteUploadPluginBackendMediaRoundIcon = {
   id: 918,
   name: `favicon.svg`,
   alternativeText: null,
@@ -37,9 +37,9 @@ export const backendMediaRoundIcon = {
   providerMetadata: null,
   createdAt: `2023-04-01T21:02:54.372Z`,
   updatedAt: `2023-04-01T21:02:54.372Z`,
-} as IBackendMedia;
+} as ISpsLiteUploadPluginBackendMedia;
 
-export const backendMediaLogotypeIcon = {
+export const spsLiteUploadPluginBackendMediaLogotypeIcon = {
   id: 918,
   name: `logo.svg`,
   alternativeText: null,
@@ -57,4 +57,4 @@ export const backendMediaLogotypeIcon = {
   providerMetadata: null,
   createdAt: `2023-04-01T21:02:54.372Z`,
   updatedAt: `2023-04-01T21:02:54.372Z`,
-} as IBackendMedia;
+} as ISpsLiteUploadPluginBackendMedia;

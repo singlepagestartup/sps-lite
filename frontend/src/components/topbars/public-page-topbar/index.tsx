@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IBackendPublicPageTopbar } from "types/single-types/sps-lite";
+import { IBackendPublicPageTopbar } from "types/single-types";
 
 export interface IBackendPublicPageBlock extends IBackendPublicPageTopbar {}
 

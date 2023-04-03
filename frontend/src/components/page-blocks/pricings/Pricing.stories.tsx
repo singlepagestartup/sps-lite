@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Pricings from ".";
-import { backendPricingBlocktwoTiersWithExtraTier } from "~mocks/components/page-blocks/sps-lite";
+import { backendPricingBlocktwoTiersWithExtraTier } from "~mocks/components/page-blocks";
 
 const meta = { component: Pricings } satisfies Meta<typeof Pricings>;
 export default meta;
