@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IBackendReviewsTableBlock } from "types/page-blocks";
+import { IBackendReviewsTableBlock } from "types/components/page-blocks/sps-lite";
 
 export interface IReviewsTableBlock extends IBackendReviewsTableBlock {}
 

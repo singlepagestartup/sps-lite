@@ -1,6 +1,6 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
-import { IBackendCurrency } from "types/collection-types";
+import { IBackendCurrency } from "types/collection-types/sps-lite";
 import { currenciesPopulate } from "~utils/api/queries";
 
 const model = `currencies`;

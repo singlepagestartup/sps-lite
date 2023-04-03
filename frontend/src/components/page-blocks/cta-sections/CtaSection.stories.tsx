@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import CtaSections from ".";
-import { backendCtaSectionBlockSimpleCentered } from "~mocks/page-blocks";
+import { backendCtaSectionBlockSimpleCentered } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: CtaSections } satisfies Meta<typeof CtaSections>;
 export default meta;

@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Forms, { IFormBlock } from ".";
-import { backendFormBlockSimple } from "~mocks/page-blocks";
+import { backendFormBlockSimple } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
 export default meta;

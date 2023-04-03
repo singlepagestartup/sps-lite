@@ -1,7 +1,7 @@
 import { FC } from "react";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
-import { IBackendCtaSectionBlock } from "types/page-blocks";
+import { IBackendCtaSectionBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ICtaSectionsBlock extends IBackendCtaSectionBlock {}
 

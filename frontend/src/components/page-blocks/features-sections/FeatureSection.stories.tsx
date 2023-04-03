@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import FeatureSections from ".";
-import { backendFeatureSectionBlockSimpleThreeColumn } from "~mocks/page-blocks";
+import { backendFeatureSectionBlockSimpleThreeColumn } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: FeatureSections } satisfies Meta<
   typeof FeatureSections

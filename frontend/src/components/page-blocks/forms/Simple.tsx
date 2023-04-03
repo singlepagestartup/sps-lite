@@ -211,9 +211,9 @@ export default function Simple(props: IFormBlock) {
               />
               <div className="sm:col-span-2">
                 <SimpleButtons
-                  variant={props.form.button?.variant || `default`}
+                  variant={props.form?.button?.variant || `default`}
                   onClick={handleSubmit(onSubmit)}
-                  title={props.form.button?.title || `Submit`}
+                  title={props.form?.button?.title || `Submit`}
                 />
               </div>
             </FormProvider>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Slider from ".";
-import { backendSlider } from "~mocks/collection-types";
+import { backendSlider } from "~mocks/collection-types/sps-lite";
 
 const meta = {
   component: Slider,

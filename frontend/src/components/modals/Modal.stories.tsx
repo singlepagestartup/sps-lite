@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Modals from ".";
-import { backendModal } from "~mocks/collection-types";
+import { backendModal } from "~mocks/collection-types/sps-lite";
 
 const meta = {
   component: Modals,

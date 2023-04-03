@@ -1,11 +1,11 @@
-import { IBackendPublicPage } from "types";
+import { IPublicPage } from "types/pages/sps-lite";
 import PublicPageFooters from "~components/footers/public-page-footers";
 import Meta from "~components/meta";
 import PublicPageNavbars from "~components/navbars/public-page-navbars";
 import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars/public-page-topbar";
 
-export default function Simple(props: IBackendPublicPage) {
+export default function Simple(props: IPublicPage) {
   return (
     <>
       <Meta {...props.meta} />

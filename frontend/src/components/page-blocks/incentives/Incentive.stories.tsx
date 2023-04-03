@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Incentives from ".";
-import { backendIncentivesBlockFourColumnWithIllustrations } from "~mocks/page-blocks";
+import { backendIncentivesBlockFourColumnWithIllustrations } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: Incentives } satisfies Meta<typeof Incentives>;
 export default meta;

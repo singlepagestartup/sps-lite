@@ -3,7 +3,7 @@ import { useMemo } from "react";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import utils from "@rogwild/next-utils";
-import { IBackendMeta } from "types/single-types";
+import { IBackendMeta } from "types/single-types/sps-lite";
 
 export default function Meta(props: IBackendMeta) {
   const favicon = useMemo(() => {

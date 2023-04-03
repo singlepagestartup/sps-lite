@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import PageBlocks from "~components/page-blocks";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { IModal } from ".";
+import PageBlocks from "~components/page-blocks";
 
 export default function Simple(props: IModal) {
   const router = useRouter();

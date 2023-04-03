@@ -6,12 +6,12 @@ import {
   IBackendInput,
   IBackendLogotype,
   IBackendSlide,
-} from "types/elements";
+} from "types/components/elements/sps-lite";
 import {
   backendMediaLogotypeIcon,
   backendMediaRoundIcon,
   backendMediaTableAndHands,
-} from "./strapi";
+} from "~mocks/plugins/upload";
 
 export const backendButtonDefault = {
   title: `Button`,

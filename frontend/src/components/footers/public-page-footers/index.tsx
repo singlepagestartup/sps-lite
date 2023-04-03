@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { IBackendPublicPageFooter } from "types/single-types";
 import FourColumnsSimple from "./FourColumnsSimple";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
 import FourColumnsSimpleDark from "./FourColunsSimpleDark";
+import { IBackendPublicPageFooter } from "types/single-types/sps-lite";
 
 export interface IPublicPageFooterBlock extends IBackendPublicPageFooter {}
 

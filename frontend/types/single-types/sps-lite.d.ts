@@ -1,9 +1,12 @@
-import { IButtons } from "~components/buttons";
+import { IBackendForm } from "types/collection-types/sps-lite";
 import {
   IBackendButton,
   IBackendButtonsArray,
   IBackendLogotype,
-} from "./elements";
+} from "types/components/elements/sps-lite";
+import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendMedia } from "types/plugins/upload";
+import { IButtons } from "~components/buttons";
 
 export interface IBackendPublicPageFooter {
   id: number;
@@ -55,4 +58,20 @@ export interface IBackendMeta {
   domain?: string | null;
   gtmKey?: string | null;
   script?: string | null;
+}
+
+export interface IBackendMainPage {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  pageBlocks?: IBackendPageBlock[] | null;
+}
+
+export interface IBackendNotFoundPage {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  pageBlocks?: IBackendPageBlock[] | null;
 }

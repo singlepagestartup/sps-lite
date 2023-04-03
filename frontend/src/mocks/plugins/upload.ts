@@ -1,4 +1,4 @@
-import { IBackendMedia } from "types/strapi";
+import { IBackendMedia } from "types/plugins/upload";
 
 export const backendMediaTableAndHands = {
   id: 907,

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import HeroSections from ".";
-import { backendHeroSectionBlockSimpleCentered } from "~mocks/page-blocks";
+import { backendHeroSectionBlockSimpleCentered } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: HeroSections } satisfies Meta<typeof HeroSections>;
 export default meta;

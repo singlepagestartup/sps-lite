@@ -9,7 +9,7 @@ import ThreeColumnsWithCenteredIntroduction from "./ThreeColumnsWithCenteredIntr
 import TwoColumns from "./TwoColumns";
 import TwoColumnsOnDark from "./TwoColumnsOnDark";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
-import { IBackendFaqBlock } from "types/page-blocks";
+import { IBackendFaqBlock } from "types/components/page-blocks/sps-lite";
 
 export interface IFaqsBlock extends IBackendFaqBlock {}
 

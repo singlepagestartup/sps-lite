@@ -1,11 +1,3 @@
-import { IFeaturesSectionBlock } from "~components/page-blocks/features-sections";
-import {
-  backendButtonDefault,
-  backendButtonsArraySimple,
-  backendFaq,
-  backendFeature,
-  backendLogotype,
-} from "./elements";
 import {
   IBackendContactSectonBlock,
   IBackendCtaSectionBlock,
@@ -21,8 +13,19 @@ import {
   IBackendReviewsBlock,
   IBackendReviewsTableBlock,
   IBackendSliderBlock,
-} from "types/page-blocks";
-import { backendForm, backendSlider, backendTier } from "./collection-types";
+} from "types/components/page-blocks/sps-lite";
+import {
+  backendForm,
+  backendSlider,
+  backendTier,
+} from "~mocks/collection-types/sps-lite";
+import {
+  backendButtonDefault,
+  backendButtonsArraySimple,
+  backendFaq,
+  backendFeature,
+  backendLogotype,
+} from "~mocks/components/elements/sps-lite";
 
 export const backendFeatureSectionBlockSimpleThreeColumn = {
   id: 32,

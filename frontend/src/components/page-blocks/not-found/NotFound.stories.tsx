@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import NotFound from ".";
-import { backendNotFoundBlockSimple } from "~mocks/page-blocks";
+import { backendNotFoundBlockSimple } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: NotFound } satisfies Meta<typeof NotFound>;
 export default meta;

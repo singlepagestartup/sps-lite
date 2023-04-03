@@ -5,7 +5,7 @@ import {
   IBackendReview,
   IBackendSlider,
   IBackendTier,
-} from "types/collection-types";
+} from "types/collection-types/sps-lite";
 import {
   backendButtonDefault,
   backendEmailInput,
@@ -15,8 +15,8 @@ import {
   backendQuestionInput,
   backendSlide,
   backendTierInput,
-} from "./elements";
-import { backendMediaTableAndHands } from "./strapi";
+} from "~mocks/components/elements/sps-lite";
+import { backendMediaTableAndHands } from "~mocks/plugins/upload";
 
 export const backendSlider = {
   slides: Array(4).fill(backendSlide),

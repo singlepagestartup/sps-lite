@@ -16,7 +16,7 @@ import { IExtendedSlide, ISlider } from ".";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import SimpleButtons from "~components/buttons/simple-buttons";
-import { IBackendSlide } from "types/elements";
+import { IBackendSlide } from "types/components/elements/sps-lite";
 
 interface INavigationButton {
   isNext?: boolean;

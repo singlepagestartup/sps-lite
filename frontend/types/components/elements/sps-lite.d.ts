@@ -1,4 +1,4 @@
-import { IBackendMedia } from "./strapi";
+import { IBackendMedia } from "types/plugins/upload";
 
 export interface IBackendButton {
   id: number;

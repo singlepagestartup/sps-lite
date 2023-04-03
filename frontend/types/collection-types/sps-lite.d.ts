@@ -1,11 +1,11 @@
-import { IPageBlock } from "types";
 import {
   IBackendButton,
   IBackendFeature,
   IBackendInput,
   IBackendSlide,
-} from "./elements";
-import { IBackendMedia } from "./strapi";
+} from "types/components/elements/sps-lite";
+import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendMedia } from "types/plugins/upload";
 
 export interface IBackendTier {
   id: number;
@@ -23,9 +23,9 @@ export interface IBackendTier {
 export interface IBackendModal {
   id: number;
   title: string | null;
-  variant: keyof typeof variants;
+  variant: `simple`;
   dialogPanelClassName: string | null;
-  pageBlocks?: IPageBlock[] | null;
+  pageBlocks?: IBackendPageBlock[] | null;
   uid: string;
 }
 

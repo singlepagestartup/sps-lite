@@ -7,7 +7,7 @@ import ThreeColumnWithIllustrationsAndHeader from "./ThreeColumnWithIllustration
 import ThreeColumnWithIllustrationsAndHeading from "./ThreeColumnWithIllustrationsAndHeading";
 import ThreeColumnWithIllustrationsAndSplitHeader from "./ThreeColumnWithIllustrationsAndSplitHeader";
 import TwoXTwoGridWithIllustrations from "./TwoXTwoGridWithIllustrations";
-import { IBackendIncentivesBlock } from "types/page-blocks";
+import { IBackendIncentivesBlock } from "types/components/page-blocks/sps-lite";
 
 export interface IIncentivesBlock extends IBackendIncentivesBlock {}
 

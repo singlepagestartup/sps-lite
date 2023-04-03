@@ -1,6 +1,6 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
-import { IBackendModal } from "types/collection-types";
+import { IBackendModal } from "types/collection-types/sps-lite";
 import { modalPopulate } from "~utils/api/queries";
 
 const model = `modals`;

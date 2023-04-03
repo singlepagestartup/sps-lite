@@ -4,7 +4,7 @@ import {
   backendButtonBottomLine,
   backendButtonDefault,
   backendButtonPrimary,
-} from "~mocks/elements";
+} from "~mocks/components/elements/sps-lite";
 
 const meta = {
   component: SimpleButtons,

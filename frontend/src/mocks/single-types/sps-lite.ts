@@ -1,16 +1,18 @@
 import {
+  IBackendMainPage,
   IBackendMeta,
   IBackendPublicPageFooter,
   IBackendPublicPageLayout,
   IBackendPublicPageNavbar,
   IBackendPublicPageTopbar,
-} from "types/single-types";
+} from "types/single-types/sps-lite";
 import {
   backendButtonDefault,
   backendButtonsArraySimple,
   backendLogotype,
-} from "./elements";
-import { backendMediaRoundIcon } from "./strapi";
+} from "~mocks/components/elements/sps-lite";
+import { backendFeatureSectionBlockSimpleThreeColumn } from "~mocks/components/page-blocks/sps-lite";
+import { backendMediaRoundIcon } from "~mocks/plugins/upload";
 
 export const backendPublicPageFooterFourColumnsWithCompanyMission = {
   id: 1,
@@ -55,3 +57,12 @@ export const backendMeta = {
   favicon: backendMediaRoundIcon,
   _meta: {},
 } as IBackendMeta;
+
+export const backendMainPage = {
+  id: 1,
+  locale: `en`,
+  createdAt: `2023-03-31T15:14:49.896Z`,
+  updatedAt: `2023-04-02T11:55:25.729Z`,
+  publishedAt: `2023-02-14T22:43:25.891Z`,
+  pageBlocks: [backendFeatureSectionBlockSimpleThreeColumn],
+} as IBackendMainPage;

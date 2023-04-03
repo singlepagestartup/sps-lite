@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Reviews, { IReviewsBlock } from ".";
-import { backendReviewsBlockSimpleWithAvatars } from "~mocks/page-blocks";
-import { backendReview } from "~mocks/collection-types";
+import { backendReview } from "~mocks/collection-types/sps-lite";
+import { backendReviewsBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
 
 const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
 export default meta;

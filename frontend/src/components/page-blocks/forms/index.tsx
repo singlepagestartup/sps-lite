@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IBackendFormBlock } from "types/page-blocks";
+import { IBackendFormBlock } from "types/components/page-blocks/sps-lite";
 
 export interface IFormBlock
   extends Omit<IBackendFormBlock, `id` | `className` | `anchor`> {

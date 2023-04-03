@@ -2,11 +2,10 @@ import { IPricingsBlock } from ".";
 import { useMemo } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";
-import Link from "next/link";
 import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
 import SimpleButtons from "~components/buttons/simple-buttons";
-import { IBackendTier } from "types/collection-types";
+import { IBackendTier } from "types/collection-types/sps-lite";
 
 const cardsConfig = {
   emptyLength: 3,

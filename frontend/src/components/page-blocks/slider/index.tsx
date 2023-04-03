@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Simple from "./Simple";
-import { IBackendSliderBlock } from "types/page-blocks";
+import { IBackendSliderBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISliderBlock extends IBackendSliderBlock {}
 

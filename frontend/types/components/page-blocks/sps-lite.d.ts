@@ -1,5 +1,24 @@
-import { IBackendSlider } from "./collection-types";
-import { IBackendMedia } from "./strapi";
+import {
+  IBackendForm,
+  IBackendReview,
+  IBackendSlider,
+  IBackendTier,
+} from "types/collection-types/sps-lite";
+import {
+  IBackendButton,
+  IBackendButtonsArray,
+  IBackendFaq,
+  IBackendFeature,
+  IBackendLogotype,
+} from "types/components/elements/sps-lite";
+import { IBackendMedia } from "types/plugins/upload";
+import { pageBlockComponents } from "~utils/api/components";
+
+export interface IBackendPageBlock {
+  id: number;
+  _Component: keyof typeof pageBlockComponents;
+  [key: string]: any;
+}
 
 export interface IBackendContactSectonBlock {
   id: number;

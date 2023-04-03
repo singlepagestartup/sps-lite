@@ -4,7 +4,7 @@ import WithAppScreenshot from "./WithAppScreenshot";
 import Split from "./Split";
 import SplitWithScreenshotOnDark from "./SplitWithScreenshotOnDark";
 import WithAngledImageOnRight from "./WithAngledImageOnRight";
-import { IBackendHeroSectionBlock } from "types/page-blocks";
+import { IBackendHeroSectionBlock } from "types/components/page-blocks/sps-lite";
 
 export interface IHeroSectionBlock
   extends Omit<IBackendHeroSectionBlock, `id`> {}

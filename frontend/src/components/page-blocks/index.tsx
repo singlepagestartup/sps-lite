@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { IBackendPageBlock } from "types";
+import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
 import { pageBlockComponents } from "~utils/api/components";
 
 export interface IPageBlockBlock {
