@@ -6,9 +6,8 @@ import {
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
 } from "./sps-lite";
-import { ISpsProBackendTier } from "./sps-pro";
 
-export interface IBackendTier extends ISpsProBackendTier {}
+export interface IBackendTier extends ISpsLiteBackendTier {}
 
 export interface IBackendModal extends ISpsLiteBackendModal {}
 

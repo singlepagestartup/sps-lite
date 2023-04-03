@@ -1,12 +1,14 @@
 import { FC } from "react";
 import { IBackendHeroSectionBlock } from "types/components/page-blocks";
-import { variants as spsLiteVariants } from "./sps-lite";
+import { spsLiteVariants } from "./sps-lite";
+import { spsVariants } from "./sps";
 
 export interface IHeroSectionBlock
   extends Omit<IBackendHeroSectionBlock, `id`> {}
 
 const variants = {
   ...spsLiteVariants,
+  ...spsVariants,
 };
 
 export default function HeroSections(props: IHeroSectionBlock) {

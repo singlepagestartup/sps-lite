@@ -100,12 +100,7 @@ export interface ISpsLiteBackendHeaderSectionBlock {
 
 export interface ISpsLiteBackendHeroSectionBlock {
   id: number;
-  variant:
-    | `split`
-    | `simple-centered`
-    | `split-with-screenshot-on-dark`
-    | `with-app-screenshot`
-    | `with-angled-image-on-right`;
+  variant: `simple-centered`;
   title: string | null;
   description: string | null;
   buttons?: IBackendButton[] | null;

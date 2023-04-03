@@ -15,6 +15,7 @@ import {
   ISpsLiteBackendReviewsTableBlock,
   ISpsLiteBackendSliderBlock,
 } from "./sps-lite";
+import { ISpsBackendHeroSectionBlock } from "./sps";
 
 export interface IBackendPageBlock extends ISpsLiteBackendPageBlock {}
 
@@ -34,8 +35,7 @@ export interface IBackendFormBlock extends ISpsLiteBackendFormBlock {}
 export interface IBackendHeaderSectionBlock
   extends ISpsLiteBackendHeaderSectionBlock {}
 
-export interface IBackendHeroSectionBlock
-  extends ISpsLiteBackendHeroSectionBlock {}
+export interface IBackendHeroSectionBlock extends ISpsBackendHeroSectionBlock {}
 
 export interface IBackendIncentivesBlock
   extends ISpsLiteBackendIncentivesBlock {}
