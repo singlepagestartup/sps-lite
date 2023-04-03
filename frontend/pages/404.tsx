@@ -1,8 +1,8 @@
-import { IPublicPage } from "types";
+import { IBackendPublicPage } from "types";
 import PublicPageLayouts from "~components/layouts/public-page-layouts";
 import Page from "~utils/api/Page";
 
-export default function NotFoundPage(props: IPublicPage) {
+export default function NotFoundPage(props: IBackendPublicPage) {
   return <PublicPageLayouts {...props} />;
 }
 

@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { IBackendForm } from "types/models";
 import Simple from "./Simple";
+import { IBackendFormBlock } from "types/page-blocks";
 
-export interface IFormBlock {
-  variant: keyof typeof variants;
-  form: IBackendForm;
+export interface IFormBlock
+  extends Omit<IBackendFormBlock, `id` | `className` | `anchor`> {
   className?: string | null;
   anchor?: string | null;
 }

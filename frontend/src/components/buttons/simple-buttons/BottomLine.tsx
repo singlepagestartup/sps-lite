@@ -8,7 +8,7 @@ export default function BottomLine(props: IButton) {
 
   if (props?.onClick) {
     return (
-      <div className={props?.className}>
+      <div className={props?.className || ``}>
         <button
           {...additionalAttributes}
           onClick={props.onClick}
@@ -22,7 +22,7 @@ export default function BottomLine(props: IButton) {
 
   if (url) {
     return (
-      <div className={props?.className}>
+      <div className={props?.className || ``}>
         <Link
           {...additionalAttributes}
           href={url}

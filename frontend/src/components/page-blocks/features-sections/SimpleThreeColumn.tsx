@@ -26,7 +26,7 @@ export default function SimpleThreeColumn(props: IFeaturesSectionBlock) {
         </div>
         <p className="mb-6">{props?.description}</p>
         <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-          {props.features.map((feature, index) => (
+          {props.features?.map((feature, index) => (
             <div key={index}>
               <dt>
                 {feature?.media?.length ? (

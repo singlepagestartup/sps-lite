@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { IBackendFaq } from "types/components";
 import CenteredAccordion from "./CenteredAccordion";
 import CenteredAccordionOnDark from "./CenteredAccordionOnDark";
 import OffsetWithSupportingText from "./OffsetWithSupportingText";
@@ -10,14 +9,9 @@ import ThreeColumnsWithCenteredIntroduction from "./ThreeColumnsWithCenteredIntr
 import TwoColumns from "./TwoColumns";
 import TwoColumnsOnDark from "./TwoColumnsOnDark";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
+import { IBackendFaqBlock } from "types/page-blocks";
 
-export interface IFaqsBlock {
-  variant: keyof typeof variants;
-  title?: string;
-  description?: string;
-  faqs?: IBackendFaq[];
-  anchor?: string;
-}
+export interface IFaqsBlock extends IBackendFaqBlock {}
 
 const variants = {
   "centered-accordion": CenteredAccordion,

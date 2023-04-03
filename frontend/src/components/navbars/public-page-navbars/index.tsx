@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IBackendPublicPageNavbar } from "types/models";
+import { IBackendPublicPageNavbar } from "types/single-types";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 
 export interface INavbarBlock extends IBackendPublicPageNavbar {}

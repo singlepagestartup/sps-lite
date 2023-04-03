@@ -9,7 +9,7 @@ import { useMemo } from "react";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import Cards, { ICardProps, ICardSkeletonProps } from "~components/cards";
 import { IReviewsBlock } from ".";
-import { IBackendReview } from "types/models";
+import { IBackendReview } from "types/collection-types";
 
 const cardsConfig = {
   emptyLength: 3,

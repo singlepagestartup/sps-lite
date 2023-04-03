@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendPublicPageTopbarSimple } from "~mocks/models";
 import PublicPageTopbars from ".";
+import { backendPublicPageTopbarSimple } from "~mocks/single-types";
 
 const meta = { component: PublicPageTopbars } satisfies Meta<
   typeof PublicPageTopbars

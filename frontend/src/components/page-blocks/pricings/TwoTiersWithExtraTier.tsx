@@ -5,8 +5,8 @@ import useTranslations from "~hooks/use-translations";
 import Link from "next/link";
 import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
-import { IBackendTier } from "types/models";
 import SimpleButtons from "~components/buttons/simple-buttons";
+import { IBackendTier } from "types/collection-types";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -57,7 +57,7 @@ export default function TwoTiersWithExtraTier(props: IPricingsBlock) {
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <Cards
               variant="simple"
-              items={props.tiers}
+              items={props.tiers ? props.tiers : []}
               showSkeletons={false}
               cardsConfig={cardsConfig}
             />

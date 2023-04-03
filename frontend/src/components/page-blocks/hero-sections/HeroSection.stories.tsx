@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendButtonDefault } from "~mocks/components";
 import HeroSections from ".";
+import { backendHeroSectionBlockSimpleCentered } from "~mocks/page-blocks";
 
 const meta = { component: HeroSections } satisfies Meta<typeof HeroSections>;
 export default meta;
@@ -8,12 +8,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const SimpleCentered: Story = {
-  args: {
-    variant: `simple-centered`,
-    title: `OpenSource "под капотом"`,
-    description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
-    buttons: [backendButtonDefault],
-  },
+  args: backendHeroSectionBlockSimpleCentered,
 };
 
 export const WithAppScreenshot: Story = {

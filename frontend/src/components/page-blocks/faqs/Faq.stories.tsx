@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendFaq } from "~mocks/components";
 import Faqs from ".";
+import { backendFaqBlockThreeColumns } from "~mocks/page-blocks";
 
 const meta = { component: Faqs } satisfies Meta<typeof Faqs>;
 export default meta;
@@ -8,12 +8,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const ThreeColumns: Story = {
-  args: {
-    title: `Hello world`,
-    variant: `three-columns`,
-    description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-    faqs: Array(4).fill(backendFaq),
-  },
+  args: backendFaqBlockThreeColumns,
 };
 
 export const CenteredAccordion: Story = {

@@ -1,17 +1,8 @@
 import { FC } from "react";
-import { IBackendMedia, IBackendTier } from "types/models";
 import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
+import { IBackendPricingsBlock } from "types/page-blocks";
 
-export interface IPricingsBlock {
-  title: string | null;
-  subtitle: string | null;
-  description: string | null;
-  background?: IBackendMedia;
-  variant: keyof typeof variants;
-  anchor?: string;
-  tiers: IBackendTier[];
-  className: string | null;
-}
+export interface IPricingsBlock extends IBackendPricingsBlock {}
 
 const variants = {
   "two-tiers-with-extra-tier": TwoTiersWithExtraTier,

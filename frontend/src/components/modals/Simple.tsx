@@ -15,7 +15,7 @@ export default function Simple(props: IModal) {
         onClose={() => {
           setIsOpen(false);
           /**
-           * Without asPath on close route
+           * Without asPath on close, the route
            * "/products/1?opened_popup=simple"
            * becomes "/products/[id]"
            */

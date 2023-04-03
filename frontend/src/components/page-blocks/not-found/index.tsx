@@ -1,14 +1,8 @@
 import { FC } from "react";
-import { IBackendButton } from "types/components";
 import Simple from "./Simple";
+import { IBackendNotFoundBlock } from "types/page-blocks";
 
-export interface INotFoundBlock {
-  variant: keyof typeof variants;
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  buttons?: IBackendButton[];
-}
+export interface INotFoundBlock extends IBackendNotFoundBlock {}
 
 const variants = {
   simple: Simple,

@@ -35,7 +35,10 @@ export default function SplitWithGridOnRight(props: ILogotypesCloudBlock) {
                   key={index}
                   className="col-span-1 flex justify-center bg-gray-50 py-8 px-8"
                 >
-                  <Link href={logotype?.url} className="relative h-12 w-full">
+                  <Link
+                    href={logotype?.url || ``}
+                    className="relative h-12 w-full"
+                  >
                     {logotype.media.length ? (
                       <Image
                         fill={true}

@@ -24,7 +24,10 @@ export default function SimpleWithHeadingOnBrand(props: ILogotypesCloudBlock) {
                   key={index}
                   className="flex flex-shrink-0 flex-grow justify-center lg:flex-grow-0"
                 >
-                  <Link href={logotype?.url} className="relative h-12 w-full">
+                  <Link
+                    href={logotype?.url || ``}
+                    className="relative h-12 w-full"
+                  >
                     {logotype.media.length ? (
                       <Image
                         fill={true}

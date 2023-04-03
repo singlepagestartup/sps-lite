@@ -9,9 +9,9 @@ import {
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import Simple from "./Simple";
-import { IBackendModal } from "types/models";
+import { IBackendModal } from "types/collection-types";
 
-export interface IModal extends IBackendModal {
+export interface IModal extends Omit<IBackendModal, `id`> {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
 }
@@ -24,7 +24,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const router = useRouter();
   const { query } = router;
   const [isOpen, setIsOpen] = useState(false);
-  const [modalProps, setModalProps] = useState<IBackendModal>();
+  const [modalProps, setModalProps] = useState<Omit<IBackendModal, `id`>>();
 
   const { data: backendModals } = useGetModalsQuery({});
 

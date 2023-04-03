@@ -1,11 +1,19 @@
 import { FC } from "react";
-import { IBackendButton } from "types/components";
 import ClientOnlyWrapper from "~components/wrappers/client-only";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
+import { IBackendButton } from "types/elements";
 
-export interface IButton extends IBackendButton {
+export interface IButton
+  extends Omit<
+    IBackendButton,
+    `id` | `url` | `description` | `className` | `additionalAttributes`
+  > {
+  url?: string | null;
+  description?: string | null;
+  className?: string | null;
+  additionalAttributes?: any | null;
   onClick?: any;
 }
 

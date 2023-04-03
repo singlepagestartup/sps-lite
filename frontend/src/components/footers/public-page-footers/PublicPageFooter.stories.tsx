@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendPublicPageFooterFourColumnsWithCompanyMission } from "~mocks/models";
 import PublicPageFooters from ".";
+import { backendPublicPageFooterFourColumnsWithCompanyMission } from "~mocks/single-types";
 
 const meta = { component: PublicPageFooters } satisfies Meta<
   typeof PublicPageFooters

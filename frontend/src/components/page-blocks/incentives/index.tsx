@@ -1,6 +1,4 @@
 import { FC } from "react";
-import { IBackendFeature } from "types/components";
-import { IBackendMedia } from "types/models";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import ThreeColumnWithIcons from "./ThreeColumnWithIcons";
 import ThreeColumnWithIconsAndSupportingText from "./ThreeColumnWithIconsAndSupportingText";
@@ -9,15 +7,9 @@ import ThreeColumnWithIllustrationsAndHeader from "./ThreeColumnWithIllustration
 import ThreeColumnWithIllustrationsAndHeading from "./ThreeColumnWithIllustrationsAndHeading";
 import ThreeColumnWithIllustrationsAndSplitHeader from "./ThreeColumnWithIllustrationsAndSplitHeader";
 import TwoXTwoGridWithIllustrations from "./TwoXTwoGridWithIllustrations";
+import { IBackendIncentivesBlock } from "types/page-blocks";
 
-export interface IIncentivesBlock {
-  features?: IBackendFeature[];
-  title?: string;
-  description?: string;
-  media?: IBackendMedia[];
-  variant: keyof typeof variants;
-  anchor?: string;
-}
+export interface IIncentivesBlock extends IBackendIncentivesBlock {}
 
 const variants = {
   "four-column-with-illustrations": FourColumnWithIllustrations,

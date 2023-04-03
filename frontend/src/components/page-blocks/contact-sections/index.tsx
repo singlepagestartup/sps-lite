@@ -1,17 +1,8 @@
 import { FC } from "react";
-import { IBackendButtonsArray } from "types/components";
-import { IBackendForm, IBackendMedia } from "types/models";
 import SplitBrandPanel from "./SplitBrandPanel";
+import { IBackendContactSectonBlock } from "types/page-blocks";
 
-export interface IContactSectonBlock {
-  variant: keyof typeof variants;
-  title?: string;
-  description?: string;
-  media?: IBackendMedia;
-  form?: IBackendForm;
-  buttonsArrays?: IBackendButtonsArray[];
-  anchor?: string;
-}
+export interface IContactSectonBlock extends IBackendContactSectonBlock {}
 
 const variants = {
   "split-brand-panel": SplitBrandPanel,

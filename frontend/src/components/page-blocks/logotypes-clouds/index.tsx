@@ -4,16 +4,9 @@ import OffWhiteGrid from "./OffWhiteGrid";
 import SimpleWithHeading from "./SimpleWithHeading";
 import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
 import SplitWithGridOnRight from "./SplitWithGridOnRight";
-import { IBackendButton, IBackendLogotype } from "types/components";
+import { IBackendLogotypesCloudBlock } from "types/page-blocks";
 
-export interface ILogotypesCloudBlock {
-  variant: keyof typeof variants;
-  title?: string;
-  logotypes?: IBackendLogotype[];
-  buttons?: IBackendButton[];
-  description?: string;
-  anchor?: string;
-}
+export interface ILogotypesCloudBlock extends IBackendLogotypesCloudBlock {}
 
 const variants = {
   simple: Simple,

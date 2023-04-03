@@ -32,7 +32,10 @@ export default function Simple(props: ILogotypesCloudBlock) {
                 className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
               >
                 {logotype?.url ? (
-                  <Link href={logotype.url} className="relative h-12 w-full">
+                  <Link
+                    href={logotype.url || ``}
+                    className="relative h-12 w-full"
+                  >
                     {logotype.media.length ? (
                       <Image
                         fill={true}

@@ -16,7 +16,7 @@ import { IExtendedSlide, ISlider } from ".";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import SimpleButtons from "~components/buttons/simple-buttons";
-import { IBackendSlide } from "types/components";
+import { IBackendSlide } from "types/elements";
 
 interface INavigationButton {
   isNext?: boolean;
@@ -89,7 +89,7 @@ export default function FadeWithPreviews(props: ISlider) {
 
   return (
     <>
-      <div className={className}>
+      <div className={`${className || ``}`}>
         <FullScreen
           isOpen={fullScreen}
           setIsOpen={setFullScreen}
@@ -110,7 +110,7 @@ export default function FadeWithPreviews(props: ISlider) {
                     style={{ ...style, ...baseStyles }}
                   >
                     <SlideComponent
-                      showBackdrop={showBackdrop}
+                      showBackdrop={showBackdrop ? true : false}
                       slide={slides[index]}
                     />
                   </animated.div>
@@ -175,12 +175,14 @@ function DefaultSlideComponent({
   return (
     <div className="slide">
       <div className="slide__container">
-        <Image
-          src={getImageUrl(slide.media[0], { BACKEND_URL })}
-          alt=""
-          fill={true}
-          className="background"
-        />
+        {slide.media?.length ? (
+          <Image
+            src={getImageUrl(slide.media[0], { BACKEND_URL })}
+            alt=""
+            fill={true}
+            className="background"
+          />
+        ) : null}
         {showBackdrop ? <div className="backdrop"></div> : null}
         <div className="content__container">
           <div className="content">
@@ -217,12 +219,14 @@ function DefaultPreviewsComponent({
             className="preview__slide"
             onClick={() => handleNavigation({ slideNumber: index })}
           >
-            <Image
-              src={getImageUrl(slide.media[0], { BACKEND_URL })}
-              alt=""
-              fill={true}
-              className="image"
-            />
+            {slide.media?.length ? (
+              <Image
+                src={getImageUrl(slide.media[0], { BACKEND_URL })}
+                alt=""
+                fill={true}
+                className="image"
+              />
+            ) : null}
           </div>
         );
       })}
@@ -331,6 +335,8 @@ function FullScreen(props: {
                 className="full_screen_slider"
                 showFullScreen={false}
                 showPreviews={true}
+                showBackdrop={false}
+                aspectRatioClassName={``}
               />
             </Dialog.Panel>
           </div>

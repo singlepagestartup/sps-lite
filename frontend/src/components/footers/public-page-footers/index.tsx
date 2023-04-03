@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IBackendPublicPageFooter } from "types/models";
+import { IBackendPublicPageFooter } from "types/single-types";
 import FourColumnsSimple from "./FourColumnsSimple";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
 import FourColumnsSimpleDark from "./FourColunsSimpleDark";

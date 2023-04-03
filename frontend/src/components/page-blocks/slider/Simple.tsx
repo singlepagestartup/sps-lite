@@ -20,7 +20,7 @@ export default function Simple(props: ISliderBlock) {
     >
       <div className="max-w-7xl container mx-auto">
         <div className="w-full">
-          <Slider {...props.slider} />
+          {props.slider ? <Slider {...props.slider} /> : null}
         </div>
       </div>
     </section>

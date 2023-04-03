@@ -1,17 +1,9 @@
 import { FC } from "react";
-import { IBackendButton } from "types/components";
-import { IBackendMedia } from "types/models";
 import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
 import SimpleCentered from "./SimpleCentered";
+import { IBackendCtaSectionBlock } from "types/page-blocks";
 
-export interface ICtaSectionsBlock {
-  title?: string;
-  description?: string;
-  media?: IBackendMedia[];
-  variant: keyof typeof variants;
-  anchor?: string;
-  buttons?: IBackendButton[];
-}
+export interface ICtaSectionsBlock extends IBackendCtaSectionBlock {}
 
 const variants = {
   "simple-centered": SimpleCentered,

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import SimpleButtons from ".";
 import {
   backendButtonBottomLine,
   backendButtonDefault,
   backendButtonPrimary,
-} from "~mocks/components";
-import SimpleButtons from ".";
+} from "~mocks/elements";
 
 const meta = {
   component: SimpleButtons,

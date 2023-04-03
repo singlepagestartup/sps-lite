@@ -1,19 +1,10 @@
 import { FC } from "react";
-import { IBackendFeature } from "types/components";
-import { IBackendMedia } from "types/models";
 import SimpleThreeColumn from "./SimpleThreeColumn";
 import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
 import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
+import { IBackendFeaturesSectionBlock } from "types/page-blocks";
 
-export interface IFeaturesSectionBlock {
-  features: IBackendFeature[];
-  variant: keyof typeof variants;
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  anchor?: string;
-  media?: IBackendMedia[];
-}
+export interface IFeaturesSectionBlock extends IBackendFeaturesSectionBlock {}
 
 const variants = {
   "simple-three-column": SimpleThreeColumn,

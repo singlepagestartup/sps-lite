@@ -1,13 +1,12 @@
 import { FC } from "react";
 import Simple from "./Simple";
+import { IBackendReviewsTableBlock } from "types/page-blocks";
+
+export interface IReviewsTableBlock extends IBackendReviewsTableBlock {}
 
 const variants = {
   simple: Simple,
 };
-
-export interface IReviewsTableBlock {
-  variant: keyof typeof variants;
-}
 
 export default function ReviewsTables(props: IReviewsTableBlock) {
   const Comp = variants[

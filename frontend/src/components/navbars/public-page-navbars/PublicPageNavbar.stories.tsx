@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendPublicPageNavbarSimpleLinksOnLeft } from "~mocks/models";
 import PublicPageNavbars from ".";
+import { backendPublicPageNavbarSimpleLinksOnLeft } from "~mocks/single-types";
 
 const meta = { component: PublicPageNavbars } satisfies Meta<
   typeof PublicPageNavbars

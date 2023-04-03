@@ -1,17 +1,12 @@
 import { FC } from "react";
-import { IBackendReview } from "types/models";
 import SimpleWithAvatars from "./SimpleWithAvatars";
+import { IBackendReviewsBlock } from "types/page-blocks";
+
+export interface IReviewsBlock extends IBackendReviewsBlock {}
 
 const variants = {
   "simple-with-avatars": SimpleWithAvatars,
 };
-
-export interface IReviewsBlock {
-  variant: keyof typeof variants;
-  reviews?: IBackendReview[];
-  showAll?: boolean;
-  anchor?: string;
-}
 
 export default function Reviews(props: IReviewsBlock) {
   const Comp = variants[

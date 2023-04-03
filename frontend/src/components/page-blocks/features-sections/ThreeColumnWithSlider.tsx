@@ -1,11 +1,5 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
-import { Tab } from "@headlessui/react";
-import Image from "next/image";
 import { IFeaturesSectionBlock } from ".";
-import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
-import { IBackendFeature } from "types/components";
 
 export default function ThreeColumnWithSlider(props: IFeaturesSectionBlock) {
   const additionalAttributes = useMemo(() => {

@@ -13,7 +13,6 @@ const { GTMPageView, loadScripts } = utils.vanilla;
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const { pathname } = useRouter();
 
   useEffect(() => {
     if (pageProps?.meta?.gtmKey) {
@@ -27,7 +26,7 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    const { events, query, asPath } = router;
+    const { events, query } = router;
     const handleRouteChange = (url: any) => GTMPageView(url);
     const referrer = query[`utm_referrer`] || query[`utm_referer`];
     events.on(`routeChangeComplete`, handleRouteChange);

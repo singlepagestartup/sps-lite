@@ -3,9 +3,9 @@ import { useMemo } from "react";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import utils from "@rogwild/next-utils";
-import { IBackendMeta } from "~mocks/models";
+import { IBackendMeta } from "types/single-types";
 
-export default function MetaBlock(props: IBackendMeta) {
+export default function Meta(props: IBackendMeta) {
   const favicon = useMemo(() => {
     if (props?.favicon) {
       return getImageUrl(props.favicon, { BACKEND_URL });

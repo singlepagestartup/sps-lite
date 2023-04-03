@@ -1,20 +1,15 @@
 import { FC } from "react";
-import { IPublicPage } from "types";
+import { IBackendPublicPage } from "types";
 import Simple from "./Simple";
-
-export interface IPublicPageLayout {
-  id: number;
-  variant: keyof typeof variants;
-}
 
 const variants = {
   simple: Simple,
 };
 
-export default function PublicPageLayouts(props: IPublicPage) {
+export default function PublicPageLayouts(props: IBackendPublicPage) {
   const Comp = variants[
     props.publicPageLayout?.variant as keyof typeof variants
-  ] as FC<IPublicPage>;
+  ] as FC<IBackendPublicPage>;
 
   if (!Comp) {
     return <></>;

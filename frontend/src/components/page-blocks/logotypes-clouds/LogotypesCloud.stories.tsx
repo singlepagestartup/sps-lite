@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendLogotype } from "~mocks/components";
 import LogotypesClouds from ".";
+import { backendLogotypesCloudBlockSimple } from "~mocks/page-blocks";
 
 const meta = { component: LogotypesClouds } satisfies Meta<
   typeof LogotypesClouds
@@ -10,11 +10,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
-  args: {
-    title: `Hello world`,
-    variant: `simple`,
-    logotypes: Array(5).fill(backendLogotype),
-  },
+  args: backendLogotypesCloudBlockSimple,
 };
 
 export const OffWhiteGrid: Story = {

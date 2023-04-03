@@ -43,7 +43,7 @@ export default function WithProductScreenshotOnLeft(
             {props.description}
           </p>
           <dl className="flex flex-col gap-3 mt-4">
-            {props.features.map((feature, index) => (
+            {props.features?.map((feature, index) => (
               <div key={index}>
                 <div className="flex items-center gap-4">
                   {feature.media ? (

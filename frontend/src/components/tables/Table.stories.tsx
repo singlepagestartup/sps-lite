@@ -1,12 +1,12 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { backendReview } from "~mocks/models";
 import Tables, {
   ICellCompProps,
   IDropdownButtonProps,
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from ".";
+import { backendReview } from "~mocks/collection-types";
 
 const meta = {
   component: Tables,

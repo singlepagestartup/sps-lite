@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IBackendPublicPageTopbar } from "types/models";
+import { IBackendPublicPageTopbar } from "types/single-types";
 import Simple from "./Simple";
 
 export interface IBackendPublicPageBlock extends IBackendPublicPageTopbar {}

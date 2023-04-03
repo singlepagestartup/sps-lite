@@ -1,12 +1,8 @@
 import { FC } from "react";
-import { IBackendSlider } from "types/models";
 import Simple from "./Simple";
+import { IBackendSliderBlock } from "types/page-blocks";
 
-export interface ISliderBlock {
-  variant: keyof typeof variants;
-  anchor?: string;
-  slider: IBackendSlider;
-}
+export interface ISliderBlock extends IBackendSliderBlock {}
 
 const variants = {
   simple: Simple,

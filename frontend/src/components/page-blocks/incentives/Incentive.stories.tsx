@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { backendFeature } from "~mocks/components";
 import Incentives from ".";
+import { backendIncentivesBlockFourColumnWithIllustrations } from "~mocks/page-blocks";
 
 const meta = { component: Incentives } satisfies Meta<typeof Incentives>;
 export default meta;
@@ -8,10 +8,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const FourColumnWithIllustrations: Story = {
-  args: {
-    variant: `four-column-with-illustrations`,
-    features: Array(4).fill(backendFeature),
-  },
+  args: backendIncentivesBlockFourColumnWithIllustrations,
 };
 
 export const ThreeColumnWithIcons: Story = {

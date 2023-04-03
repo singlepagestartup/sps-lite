@@ -2,8 +2,8 @@ import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
 import FadeWithPreviews from "./FadeWithPreviews";
-import { IBackendSlider } from "types/models";
-import { IBackendSlide } from "types/components";
+import { IBackendSlider } from "types/collection-types";
+import { IBackendSlide } from "types/elements";
 
 const variants = {
   "fade-with-previews": FadeWithPreviews,
@@ -21,7 +21,9 @@ export default function Slider(props: IBackendSlider) {
     return slides.map((slide) => {
       return {
         ...slide,
-        renderType: parseMimeType(slide.media[0].mime)?.renderType || `image`,
+        renderType: slide.media?.length
+          ? parseMimeType(slide.media[0].mime)?.renderType
+          : `image` || `image`,
       } as IExtendedSlide;
     });
   }, [slides]);
@@ -48,11 +50,11 @@ export interface ISlider {
   NavigationButton?: FC<any>;
   SlideComponent?: FC<any>;
   PreviewsComponent?: FC<any>;
-  className?: string;
-  showFullScreen?: boolean;
-  showBackdrop?: boolean;
-  showPreviews?: boolean;
-  aspectRatioClassName?: string;
+  className: string | null;
+  showFullScreen: boolean | null;
+  showBackdrop: boolean | null;
+  showPreviews: boolean | null;
+  aspectRatioClassName: string | null;
 }
 
 export interface IExtendedSlide extends IBackendSlide {

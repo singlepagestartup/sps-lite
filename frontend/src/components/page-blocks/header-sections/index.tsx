@@ -4,16 +4,9 @@ import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
 import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
 import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
 import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
-import { IBackendMedia } from "types/models";
+import { IBackendHeaderSectionBlock } from "types/page-blocks";
 
-export interface IHeaderSectionBlock {
-  title?: string;
-  description?: string;
-  variant: keyof typeof variants;
-  subtitle?: string;
-  media?: IBackendMedia[];
-  anchor?: string;
-}
+export interface IHeaderSectionBlock extends IBackendHeaderSectionBlock {}
 
 const variants = {
   "simple-centered": SimpleCentered,
