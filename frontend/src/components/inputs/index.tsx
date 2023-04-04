@@ -9,14 +9,14 @@ import SwitchInput from "./switch";
 import TextInput from "./text";
 
 export interface IInputProps extends UseControllerProps {
-  label?: string;
+  label?: string | null;
   options?: any;
   ButtonComp?: any;
   index?: number;
   OptionComp?: any;
-  placeholder?: string;
+  placeholder?: string | null;
   initialValue?: any;
-  multiple?: boolean;
+  multiple?: boolean | null;
   accept?: string;
   by?: string;
   className?: string;
@@ -26,7 +26,7 @@ export interface IInputProps extends UseControllerProps {
   baseKey?: string;
   inputs?: any;
   rules?: any;
-  type?: string;
+  type?: string | null;
   rows?: number;
   removeButtonTitle?: string;
   addButtonTitle?: string;

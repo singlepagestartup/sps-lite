@@ -1,26 +1,23 @@
-import { IBackendForm } from "types/collection-types";
+import { ISpsLiteBackendForm } from "types/collection-types/sps-lite";
 import {
-  IBackendButton,
-  IBackendButtonsArray,
-  IBackendLogotype,
-} from "types/components/elements";
-import { IBackendPageBlock } from "types/components/page-blocks";
-import { IBackendMedia } from "types/plugins/upload";
+  ISpsLiteBackendButton,
+  ISpsLiteBackendButtonsArray,
+  ISpsLiteBackendLogotype,
+} from "types/components/elements/sps-lite";
+import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 import { IButtons } from "~components/buttons";
 
 export interface ISpsLiteBackendPublicPageFooter {
   id: number;
-  logotype?: IBackendLogotype | null;
-  socialNetworksButtons?: IBackendButtonsArray[] | null;
-  buttonsArrays?: IBackendButtonsArray[] | null;
-  policiesButtons?: IBackendButtonsArray[] | null;
+  logotype?: ISpsLiteBackendLogotype | null;
+  socialNetworksButtons?: ISpsLiteBackendButtonsArray[] | null;
+  buttonsArrays?: ISpsLiteBackendButtonsArray[] | null;
+  policiesButtons?: ISpsLiteBackendButtonsArray[] | null;
   copyrights: string | null;
-  variant:
-    | `four-columns-simple`
-    | `four-columns-simple-dark`
-    | `four-columns-with-company-mission`;
+  variant: `four-columns-with-company-mission`;
   description: string | null;
-  form?: IBackendForm | null;
+  form?: ISpsLiteBackendForm | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -30,7 +27,7 @@ export interface ISpsLiteBackendPublicPageFooter {
 
 export interface ISpsLiteBackendPublicPageNavbar {
   id: number;
-  logotype?: IBackendLogotype | null;
+  logotype?: ISpsLiteBackendLogotype | null;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
   additionalButtons?: IButtons[];
@@ -42,7 +39,7 @@ export interface ISpsLiteBackendPublicPageNavbar {
 export interface ISpsLiteBackendPublicPageTopbar {
   title: string | null;
   variant: `simple`;
-  buttons?: IBackendButton[] | null;
+  buttons?: ISpsLiteBackendButton[] | null;
 }
 
 export interface ISpsLiteBackendPublicPageLayout {
@@ -53,8 +50,8 @@ export interface ISpsLiteBackendPublicPageLayout {
 export interface ISpsLiteBackendMeta {
   title?: string | null;
   description?: string | null;
-  favicon?: IBackendMedia | null;
-  image?: IBackendMedia | null;
+  favicon?: ISpsLiteBackendUploadPluginBackendMedia | null;
+  image?: ISpsLiteBackendUploadPluginBackendMedia | null;
   domain?: string | null;
   gtmKey?: string | null;
   script?: string | null;
@@ -65,7 +62,7 @@ export interface ISpsLiteBackendMainPage {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  pageBlocks?: IBackendPageBlock[] | null;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
 export interface ISpsLiteBackendNotFoundPage {
@@ -73,5 +70,5 @@ export interface ISpsLiteBackendNotFoundPage {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  pageBlocks?: IBackendPageBlock[] | null;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }

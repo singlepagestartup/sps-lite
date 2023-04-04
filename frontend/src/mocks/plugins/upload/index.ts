@@ -1,4 +1,4 @@
-import { IBackendMedia } from "types/plugins/upload";
+import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
 import {
   spsLiteUploadPluginBackendMediaLogotypeIcon,
   spsLiteUploadPluginBackendMediaRoundIcon,
@@ -7,12 +7,12 @@ import {
 
 export const backendMediaRoundIcon = {
   ...spsLiteUploadPluginBackendMediaRoundIcon,
-} as IBackendMedia;
+} as IBackendUploadPluginBackendMedia;
 
 export const backendMediaLogotypeIcon = {
   ...spsLiteUploadPluginBackendMediaLogotypeIcon,
-} as IBackendMedia;
+} as IBackendUploadPluginBackendMedia;
 
 export const backendMediaTableAndHands = {
   ...spsLiteUploadPluginBackendMediaTableAndHands,
-} as IBackendMedia;
+} as IBackendUploadPluginBackendMedia;

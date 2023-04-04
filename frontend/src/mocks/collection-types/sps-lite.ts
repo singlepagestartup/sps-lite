@@ -51,6 +51,7 @@ export const spsLiteBackendTier = {
 
 export const spsLiteBackendForm = {
   id: 1,
+  variant: `simple`,
   title: `Есть вопросы по продукту?`,
   subtitle: null,
   description: `Заполните форму и мы свяжемся с вами в ближайшее время`,
@@ -66,6 +67,8 @@ export const spsLiteBackendForm = {
     spsLiteBackendPolicyInput,
   ],
   button: spsLiteBackendButtonDefault,
+  className: null,
+  additionalAttributes: null,
 } as ISpsLiteBackendForm;
 
 export const spsLiteBackendReview = {

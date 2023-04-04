@@ -1,18 +1,18 @@
 import {
-  IBackendForm,
-  IBackendReview,
-  IBackendSlider,
-  IBackendTier,
-} from "types/collection-types";
-import {
-  IBackendButton,
-  IBackendButtonsArray,
-  IBackendFaq,
-  IBackendFeature,
-  IBackendLogotype,
-} from "types/components/elements";
-import { IBackendMedia } from "types/plugins/upload";
+  ISpsLiteBackendForm,
+  ISpsLiteBackendReview,
+  ISpsLiteBackendSlider,
+  ISpsLiteBackendTier,
+} from "types/collection-types/sps-lite";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 import { pageBlockComponents } from "~utils/api/components";
+import {
+  ISpsLiteBackendButton,
+  ISpsLiteBackendButtonsArray,
+  ISpsLiteBackendFaq,
+  ISpsLiteBackendFeature,
+  ISpsLiteBackendLogotype,
+} from "../elements/sps-lite";
 
 export interface ISpsLiteBackendPageBlock {
   id: number;
@@ -26,9 +26,9 @@ export interface ISpsLiteBackendContactSectonBlock {
   variant: `centered`;
   title: string | null;
   description: string | null;
-  media?: IBackendMedia | null;
-  form?: IBackendForm | null;
-  buttonsArrays?: IBackendButtonsArray[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia | null;
+  form?: ISpsLiteBackendForm | null;
+  buttonsArrays?: ISpsLiteBackendButtonsArray[] | null;
   anchor: string | null;
 }
 
@@ -38,9 +38,9 @@ export interface ISpsLiteBackendCtaSectionBlock {
   variant: `dark-panel-with-app-screenshot`;
   title?: string;
   description?: string;
-  media?: IBackendMedia[];
+  media?: ISpsLiteBackendUploadPluginBackendMedia[];
   anchor?: string;
-  buttons?: IBackendButton[];
+  buttons?: ISpsLiteBackendButton[];
 }
 
 export interface ISpsLiteBackendFaqBlock {
@@ -49,7 +49,7 @@ export interface ISpsLiteBackendFaqBlock {
   variant: `two-columns-with-centered-introduction`;
   title: string | null;
   description: string | null;
-  faqs?: IBackendFaq[] | null;
+  faqs?: ISpsLiteBackendFaq[] | null;
   anchor: string | null;
 }
 
@@ -57,21 +57,12 @@ export interface ISpsLiteBackendFeaturesSectionBlock {
   id: number;
   __component: `page-blocks.features-section-block`;
   variant: `with-product-screenshot` | `centered-two-x-two-grid`;
-  features?: IBackendFeature[] | null;
+  features?: ISpsLiteBackendFeature[] | null;
   title: string | null;
   subtitle: string | null;
   description: string | null;
   anchor: string | null;
-  media?: IBackendMedia[] | null;
-}
-
-export interface ISpsLiteBackendFormBlock {
-  id: number;
-  __component: `page-blocks.form-block`;
-  variant: `simple`;
-  form?: IBackendForm | null;
-  className: string | null;
-  anchor: string | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendHeaderSectionBlock {
@@ -81,7 +72,7 @@ export interface ISpsLiteBackendHeaderSectionBlock {
   title: string | null;
   description: string | null;
   subtitle: string | null;
-  media?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   anchor: string | null;
 }
 
@@ -91,20 +82,20 @@ export interface ISpsLiteBackendHeroSectionBlock {
   variant: `simple-centered`;
   title: string | null;
   description: string | null;
-  buttons?: IBackendButton[] | null;
-  media?: IBackendMedia[] | null;
+  buttons?: ISpsLiteBackendButton[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   anchor: string | null;
-  background?: IBackendMedia | null;
+  background?: ISpsLiteBackendUploadPluginBackendMedia | null;
 }
 
 export interface ISpsLiteBackendIncentivesBlock {
   id: number;
   __component: `page-blocks.incentives-block`;
   variant: `four-column-with-illustrations`;
-  features?: IBackendFeature[] | null;
+  features?: ISpsLiteBackendFeature[] | null;
   title: string | null;
   description: string | null;
-  media?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   anchor: string | null;
 }
 
@@ -113,8 +104,8 @@ export interface ISpsLiteBackendLogotypesCloudBlock {
   __component: `page-blocks.logotypes-cloud-block`;
   variant: `simple-with-heading`;
   title: string | null;
-  logotypes?: IBackendLogotype[] | null;
-  buttons?: IBackendButton[] | null;
+  logotypes?: ISpsLiteBackendLogotype[] | null;
+  buttons?: ISpsLiteBackendButton[] | null;
   description: string | null;
   anchor: string | null;
 }
@@ -126,7 +117,7 @@ export interface ISpsLiteBackendNotFoundBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  buttons?: IBackendButton[] | null;
+  buttons?: ISpsLiteBackendButton[] | null;
 }
 
 export interface ISpsLiteBackendPricingsBlock {
@@ -136,9 +127,9 @@ export interface ISpsLiteBackendPricingsBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  background?: IBackendMedia;
+  background?: ISpsLiteBackendUploadPluginBackendMedia;
   anchor?: string;
-  tiers?: IBackendTier[] | null;
+  tiers?: ISpsLiteBackendTier[] | null;
   className: string | null;
 }
 
@@ -146,7 +137,7 @@ export interface ISpsLiteBackendReviewsBlock {
   id: number;
   __component: `page-blocks.reviews-block`;
   variant: `simple-with-avatars`;
-  reviews?: IBackendReview[] | null;
+  reviews?: ISpsLiteBackendReview[] | null;
   showAll: boolean | null;
   anchor: string | null;
 }
@@ -162,5 +153,5 @@ export interface ISpsLiteBackendSliderBlock {
   __component: `page-blocks.slider-block`;
   variant: `simple`;
   anchor: string | null;
-  slider?: IBackendSlider | null;
+  slider?: ISpsLiteBackendSlider | null;
 }

@@ -53,8 +53,8 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": ["four-columns-simple", "four-columns-simple-dark", "four-columns-with-company-mission"],
-            "default": "four-columns-simple",
+            "enum": ["four-columns-with-company-mission"],
+            "default": "four-columns-with-company-mission",
             "required": true,
             "pluginOptions": {
                 "i18n": {

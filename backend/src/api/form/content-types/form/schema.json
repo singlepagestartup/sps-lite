@@ -21,6 +21,18 @@
             "type": "richtext",
             "required": true
         },
+        "class_name": {
+            "type": "text"
+        },
+        "additional_attributes": {
+            "type": "json"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        },
         "subtitle": {
             "type": "richtext"
         },

@@ -224,14 +224,14 @@ export default function FileInput(props: IInputProps) {
             onBlur={onBlur}
             value={value}
             accept={accept}
-            multiple={multiple}
+            multiple={multiple ? multiple : undefined}
             ref={(e) => {
               if (e) {
                 ref(e);
                 fileInputRef.current = e;
               }
             }}
-            placeholder={placeholder}
+            placeholder={placeholder ? placeholder : undefined}
             className="hidden"
           />
           <ButtonComp
@@ -261,8 +261,8 @@ function DefaultButton({
   placeholder,
 }: {
   accept: string;
-  multiple: boolean;
-  placeholder?: string;
+  multiple?: boolean | null;
+  placeholder?: string | null;
 }) {
   return (
     <div className="button">

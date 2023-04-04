@@ -1,4 +1,4 @@
-export interface ISpsLiteUploadPluginBackendMedia {
+export interface ISpsLiteBackendUploadPluginBackendMedia {
   id: number;
   url: string;
   alternativeText: string | null;

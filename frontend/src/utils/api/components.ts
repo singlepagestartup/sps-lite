@@ -3,7 +3,6 @@ import HeroSections from "~components/page-blocks/hero-sections";
 import Reviews from "~components/page-blocks/reviews";
 import Faqs from "~components/page-blocks/faqs";
 import Slider from "~components/page-blocks/slider";
-import Forms from "~components/page-blocks/forms";
 import NotFound from "~components/page-blocks/not-found";
 import ContactSectons from "~components/page-blocks/contact-sections";
 import Incentives from "~components/page-blocks/incentives";
@@ -21,7 +20,6 @@ const liteBlockComponents = {
   [`page-blocks.faqs-block`]: Faqs,
   [`page-blocks.logotypes-cloud-block`]: LogotypesClouds,
   [`page-blocks.slider-block`]: Slider,
-  [`page-blocks.form-block`]: Forms,
   [`page-blocks.not-found-block`]: NotFound,
   [`page-blocks.contact-section-block`]: ContactSectons,
   [`page-blocks.incentives-block`]: Incentives,

@@ -1,4 +1,4 @@
-import { ISpsLiteUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export const spsLiteUploadPluginBackendMediaTableAndHands = {
   id: 907,
@@ -17,7 +17,7 @@ export const spsLiteUploadPluginBackendMediaTableAndHands = {
   providerMetadata: null,
   createdAt: `2023-04-01T20:54:54.396Z`,
   updatedAt: `2023-04-01T20:54:54.396Z`,
-} as ISpsLiteUploadPluginBackendMedia;
+} as ISpsLiteBackendUploadPluginBackendMedia;
 
 export const spsLiteUploadPluginBackendMediaRoundIcon = {
   id: 918,
@@ -37,7 +37,7 @@ export const spsLiteUploadPluginBackendMediaRoundIcon = {
   providerMetadata: null,
   createdAt: `2023-04-01T21:02:54.372Z`,
   updatedAt: `2023-04-01T21:02:54.372Z`,
-} as ISpsLiteUploadPluginBackendMedia;
+} as ISpsLiteBackendUploadPluginBackendMedia;
 
 export const spsLiteUploadPluginBackendMediaLogotypeIcon = {
   id: 918,
@@ -57,4 +57,4 @@ export const spsLiteUploadPluginBackendMediaLogotypeIcon = {
   providerMetadata: null,
   createdAt: `2023-04-01T21:02:54.372Z`,
   updatedAt: `2023-04-01T21:02:54.372Z`,
-} as ISpsLiteUploadPluginBackendMedia;
+} as ISpsLiteBackendUploadPluginBackendMedia;

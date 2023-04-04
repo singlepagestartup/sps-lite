@@ -3,7 +3,6 @@ import {
   IBackendCtaSectionBlock,
   IBackendFaqBlock,
   IBackendFeaturesSectionBlock,
-  IBackendFormBlock,
   IBackendHeaderSectionBlock,
   IBackendHeroSectionBlock,
   IBackendIncentivesBlock,
@@ -19,7 +18,6 @@ import {
   spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot,
   spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
   spsLiteBackendFeatureSectionBlockWithProductScreenshot,
-  spsLiteBackendFormBlockSimple,
   spsLiteBackendHeaderSectionBlockSimpleCentered,
   spsLiteBackendHeroSectionBlockSimpleCentered,
   spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
@@ -46,10 +44,6 @@ export const backendCtaSectionBlockDarkPanelWithAppScreenshot = {
 export const backendFaqBlockTwoColumnsWithCenteredIntroduction = {
   ...spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
 } as IBackendFaqBlock;
-
-export const backendFormBlockSimple = {
-  ...spsLiteBackendFormBlockSimple,
-} as IBackendFormBlock;
 
 export const backendHeaderSectionBlockSimpleCentered = {
   ...spsLiteBackendHeaderSectionBlockSimpleCentered,

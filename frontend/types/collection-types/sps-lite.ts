@@ -1,24 +1,23 @@
 import {
-  IBackendButton,
-  IBackendFeature,
-  IBackendInput,
-  IBackendSlide,
-} from "types/components/elements";
-import { IBackendPageBlock } from "types/components/page-blocks";
-import { IBackendMedia } from "types/plugins/upload";
-import { IBackendCurrency } from ".";
+  ISpsLiteBackendButton,
+  ISpsLiteBackendFeature,
+  ISpsLiteBackendInput,
+  ISpsLiteBackendSlide,
+} from "types/components/elements/sps-lite";
+import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export interface ISpsLiteBackendTier {
   id: number;
   title: string | null;
   description: string | null;
-  features?: IBackendFeature[] | null;
+  features?: ISpsLiteBackendFeature[] | null;
   price: string | null;
   oldPrice: string | null;
   period: number | null;
-  currency?: IBackendCurrency | null;
+  currency?: ISpsLiteBackendCurrency | null;
   type: `one-time` | `regularly`;
-  buttons?: IBackendButton[] | null;
+  buttons?: ISpsLiteBackendButton[] | null;
 }
 
 export interface ISpsLiteBackendModal {
@@ -26,17 +25,20 @@ export interface ISpsLiteBackendModal {
   title: string | null;
   variant: `simple`;
   dialogPanelClassName: string | null;
-  pageBlocks?: IBackendPageBlock[] | null;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
   uid: string;
 }
 
 export interface ISpsLiteBackendForm {
   id: number;
+  variant: `simple`;
   title: string | null;
-  inputs?: IBackendInput[];
+  inputs?: ISpsLiteBackendInput[];
   subtitle: string | null;
   description: string | null;
-  button?: IBackendButton;
+  className: string | null;
+  additionalAttributes: string | null;
+  button?: ISpsLiteBackendButton;
 }
 
 export interface ISpsLiteBackendReview {
@@ -46,13 +48,13 @@ export interface ISpsLiteBackendReview {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   createdAt: string;
 }
 
 export interface ISpsLiteBackendSlider {
-  slides: IBackendSlide[];
+  slides: ISpsLiteBackendSlide[];
   className: string | null;
   aspectRatioClassName: string | null;
   variant: `fade-with-previews`;

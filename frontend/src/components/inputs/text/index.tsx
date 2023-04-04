@@ -114,7 +114,7 @@ export default function TextInput(props: IInputProps) {
                 inputRef.current = e;
               }
             }}
-            placeholder={placeholder}
+            placeholder={placeholder ? placeholder : undefined}
             className="input"
             id={htmlNodeId}
             rows={rows || 3}

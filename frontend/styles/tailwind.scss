@@ -42,6 +42,14 @@ button:focus {
     @apply inline-flex w-full h-full justify-center items-center lg:border-b-2 px-2 py-4 lg:px-1 lg:py-1 text-sm font-medium aria-[selected='true']:border-primary-500 aria-[selected='true']:text-gray-900;
   }
 
+  .form__container {
+    @apply grid grid-cols-4 gap-3;
+
+    .submit__button_container {
+      @apply col-span-4;
+    }
+  }
+
   .table__container {
     @apply w-full rounded-md bg-white overflow-hidden;
 

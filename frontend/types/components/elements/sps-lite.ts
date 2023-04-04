@@ -1,5 +1,4 @@
-import { IBackendMedia } from "types/plugins/upload";
-import { IBackendButton, IBackendInputOption } from ".";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export interface ISpsLiteBackendButton {
   id: number;
@@ -8,8 +7,8 @@ export interface ISpsLiteBackendButton {
   title: string | null;
   url: string | null;
   description: string | null;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   className: string | null;
   additionalAttributes: any | null;
 }
@@ -19,11 +18,11 @@ export interface ISpsLiteBackendButtonsArray {
   __component: `elements.buttons-array`;
   variant: `simple` | `dropdown`;
   title: string | null;
-  buttons: IBackendButton[];
+  buttons: ISpsLiteBackendButton[];
   description: string | null;
   className: string | null;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendFaq {
@@ -39,8 +38,8 @@ export interface ISpsLiteBackendFeature {
   title: string | null;
   description: string | null;
   subtitle: string | null;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendInputOption {
@@ -58,7 +57,7 @@ export interface ISpsLiteBackendInput {
   isRequired: boolean;
   value: string | null;
   name: string;
-  options?: IBackendInputOption[];
+  options?: ISpsLiteBackendInputOption[];
   label: string | null;
   className: string | null;
   type: `text` | `textarea` | `file` | `date` | null;
@@ -68,8 +67,8 @@ export interface ISpsLiteBackendInput {
 export interface ISpsLiteBackendLogotype {
   id: number;
   __component: `elements.logotype`;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   url: string | null;
   title: string | null;
 }
@@ -81,6 +80,6 @@ export interface ISpsLiteBackendSlide {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  media?: IBackendMedia[] | null;
-  additionalMedia?: IBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }

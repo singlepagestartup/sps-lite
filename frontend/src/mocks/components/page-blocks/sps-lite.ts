@@ -3,7 +3,6 @@ import {
   ISpsLiteBackendCtaSectionBlock,
   ISpsLiteBackendFaqBlock,
   ISpsLiteBackendFeaturesSectionBlock,
-  ISpsLiteBackendFormBlock,
   ISpsLiteBackendHeaderSectionBlock,
   ISpsLiteBackendHeroSectionBlock,
   ISpsLiteBackendIncentivesBlock,
@@ -15,7 +14,6 @@ import {
   ISpsLiteBackendSliderBlock,
 } from "types/components/page-blocks/sps-lite";
 import {
-  spsLiteBackendForm,
   spsLiteBackendSliderFadeWithPreviews,
   spsLiteBackendTier,
 } from "~mocks/collection-types/sps-lite";
@@ -63,15 +61,6 @@ export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction = {
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   faqs: Array(4).fill(spsLiteBackendFaq),
 } as ISpsLiteBackendFaqBlock;
-
-export const spsLiteBackendFormBlockSimple = {
-  id: 9,
-  anchor: null,
-  className: null,
-  __component: `page-blocks.form-block`,
-  form: spsLiteBackendForm,
-  variant: `simple`,
-} as ISpsLiteBackendFormBlock;
 
 export const spsLiteBackendHeaderSectionBlockSimpleCentered = {
   id: 9,

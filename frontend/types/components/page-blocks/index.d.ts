@@ -3,7 +3,6 @@ import {
   ISpsLiteBackendCtaSectionBlock,
   ISpsLiteBackendFaqBlock,
   ISpsLiteBackendFeaturesSectionBlock,
-  ISpsLiteBackendFormBlock,
   ISpsLiteBackendHeaderSectionBlock,
   ISpsLiteBackendHeroSectionBlock,
   ISpsLiteBackendIncentivesBlock,
@@ -29,8 +28,6 @@ export interface IBackendFaqBlock extends ISpsLiteBackendFaqBlock {}
 
 export interface IBackendFeaturesSectionBlock
   extends ISpsLiteBackendFeaturesSectionBlock {}
-
-export interface IBackendFormBlock extends ISpsLiteBackendFormBlock {}
 
 export interface IBackendHeaderSectionBlock
   extends ISpsLiteBackendHeaderSectionBlock {}

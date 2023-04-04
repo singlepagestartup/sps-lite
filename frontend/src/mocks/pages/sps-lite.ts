@@ -1,19 +1,18 @@
-import { IMainPage } from "pages";
 import {
-  backendMainPage,
-  backendMeta,
-  backendPublicPageFooterFourColumnsWithCompanyMission,
-  backendPublicPageLayout,
-  backendPublicPageNavbarSimpleLinksOnLeft,
-  backendPublicPageTopbarSimple,
-} from "~mocks/single-types";
+  spsLiteBackendMainPage,
+  spsLiteBackendMeta,
+  spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission,
+  spsLiteBackendPublicPageLayout,
+  spsLiteBackendPublicPageNavbarSimpleLinksOnLeft,
+  spsLiteBackendPublicPageTopbarSimple,
+} from "~mocks/single-types/sps-lite";
 
 export const spsLiteMainPage = {
-  ...backendMainPage,
+  ...spsLiteBackendMainPage,
   _meta: {},
-  publicPageLayout: backendPublicPageLayout,
-  meta: backendMeta,
-  publicPageTopbar: backendPublicPageTopbarSimple,
-  publicPageNavbar: backendPublicPageNavbarSimpleLinksOnLeft,
-  publicPageFooter: backendPublicPageFooterFourColumnsWithCompanyMission,
-} as IMainPage;
+  publicPageLayout: spsLiteBackendPublicPageLayout,
+  meta: spsLiteBackendMeta,
+  publicPageTopbar: spsLiteBackendPublicPageTopbarSimple,
+  publicPageNavbar: spsLiteBackendPublicPageNavbarSimpleLinksOnLeft,
+  publicPageFooter: spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission,
+};
