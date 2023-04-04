@@ -15,26 +15,28 @@ import {
   spsLiteBackendPublicPageTopbarSimple,
 } from "./sps-lite";
 
-export const backendPublicPageFooterFourColumnsWithCompanyMission = {
-  ...spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission,
-} as IBackendPublicPageFooter;
+export const backendPublicPageFooterFourColumnsWithCompanyMission: IBackendPublicPageFooter =
+  {
+    ...spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission,
+  };
 
-export const backendPublicPageNavbarSimpleLinksOnLeft = {
-  ...spsLiteBackendPublicPageNavbarSimpleLinksOnLeft,
-} as IBackendPublicPageNavbar;
+export const backendPublicPageNavbarSimpleLinksOnLeft: IBackendPublicPageNavbar =
+  {
+    ...spsLiteBackendPublicPageNavbarSimpleLinksOnLeft,
+  };
 
-export const backendPublicPageTopbarSimple = {
+export const backendPublicPageTopbarSimple: IBackendPublicPageTopbar = {
   ...spsLiteBackendPublicPageTopbarSimple,
-} as IBackendPublicPageTopbar;
+};
 
-export const backendPublicPageLayout = {
+export const backendPublicPageLayout: IBackendPublicPageLayout = {
   ...spsLiteBackendPublicPageLayout,
-} as IBackendPublicPageLayout;
+};
 
-export const backendMeta = {
+export const backendMeta: IBackendMeta = {
   ...spsLiteBackendMeta,
-} as IBackendMeta;
+};
 
-export const backendMainPage = {
+export const backendMainPage: IBackendMainPage = {
   ...spsLiteBackendMainPage,
-} as IBackendMainPage;
+};

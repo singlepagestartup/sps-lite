@@ -15,26 +15,26 @@ import {
   spsLiteBackendTier,
 } from "./sps-lite";
 
-export const backendSliderFadeWithPreviews = {
+export const backendSliderFadeWithPreviews: IBackendSlider = {
   ...spsLiteBackendSliderFadeWithPreviews,
-} as IBackendSlider;
+};
 
-export const backendCurrency = {
+export const backendCurrency: IBackendCurrency = {
   ...spsLiteBackendCurrency,
-} as IBackendCurrency;
+};
 
-export const backendTier = {
+export const backendTier: IBackendTier = {
   ...spsLiteBackendTier,
-} as IBackendTier;
+};
 
-export const backendForm = {
+export const backendForm: IBackendForm = {
   ...spsLiteBackendForm,
-} as IBackendForm;
+};
 
-export const backendReview = {
+export const backendReview: IBackendReview = {
   ...spsLiteBackendReview,
-} as IBackendReview;
+};
 
-export const backendModal = {
+export const backendModal: IBackendModal = {
   ...spsLiteBackendModal,
-} as IBackendModal;
+};

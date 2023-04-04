@@ -24,58 +24,58 @@ import {
   spsLiteBackendTierInput,
 } from "./sps-lite";
 
-export const backendButtonDefault = {
+export const backendButtonDefault: IBackendButton = {
   ...spsLiteBackendButtonDefault,
-} as IBackendButton;
+};
 
-export const backendButtonPrimary = {
+export const backendButtonPrimary: IBackendButton = {
   ...spsLiteBackendButtonPrimary,
-} as IBackendButton;
+};
 
-export const backendButtonBottomLine = {
+export const backendButtonBottomLine: IBackendButton = {
   ...spsLiteBackendButtonBottomLine,
-} as IBackendButton;
+};
 
-export const backendButtonsArraySimple = {
+export const backendButtonsArraySimple: IBackendButtonsArray = {
   ...spsLiteBackendButtonsArraySimple,
-} as IBackendButtonsArray;
+};
 
-export const backendButtonsArrayDropdown = {
+export const backendButtonsArrayDropdown: IBackendButtonsArray = {
   ...spsLiteBackendButtonsArrayDropdown,
-} as IBackendButtonsArray;
+};
 
-export const backendFaq = {
+export const backendFaq: IBackendFaq = {
   ...spsLiteBackendFaq,
-} as IBackendFaq;
+};
 
-export const backendFeature = {
+export const backendFeature: IBackendFeature = {
   ...spsLiteBackendFeature,
-} as IBackendFeature;
+};
 
-export const backendNameInput = {
+export const backendNameInput: IBackendInput = {
   ...spsLiteBackendNameInput,
-} as IBackendInput;
+};
 
-export const backendEmailInput = {
+export const backendEmailInput: IBackendInput = {
   ...spsLiteBackendEmailInput,
-} as IBackendInput;
+};
 
-export const backendTierInput = {
+export const backendTierInput: IBackendInput = {
   ...spsLiteBackendTierInput,
-} as IBackendInput;
+};
 
-export const backendQuestionInput = {
+export const backendQuestionInput: IBackendInput = {
   ...spsLiteBackendQuestionInput,
-} as IBackendInput;
+};
 
-export const backendPolicyInput = {
+export const backendPolicyInput: IBackendInput = {
   ...spsLiteBackendPolicyInput,
-} as IBackendInput;
+};
 
-export const backendLogotype = {
+export const backendLogotype: IBackendLogotype = {
   ...spsLiteBackendLogotype,
-} as IBackendLogotype;
+};
 
-export const backendSlide = {
+export const backendSlide: IBackendSlide = {
   ...spsLiteBackendSlide,
-} as IBackendSlide;
+};

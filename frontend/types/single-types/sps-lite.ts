@@ -30,39 +30,63 @@ export interface ISpsLiteBackendPublicPageNavbar {
   logotype?: ISpsLiteBackendLogotype | null;
   buttons?: IButtons[];
   profileButtons?: IButtons[];
+  locale: string;
   additionalButtons?: IButtons[];
   ctaButtons?: IButtons[];
   className: string | null;
   variant: `simple-links-on-left`;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  _meta?: any;
 }
 
 export interface ISpsLiteBackendPublicPageTopbar {
+  id: number;
   title: string | null;
+  locale: string;
   variant: `simple`;
   buttons?: ISpsLiteBackendButton[] | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  _meta?: any;
 }
 
 export interface ISpsLiteBackendPublicPageLayout {
   id: number;
   variant: `simple`;
+  locale: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  _meta?: any;
 }
 
 export interface ISpsLiteBackendMeta {
+  id: number;
   title?: string | null;
   description?: string | null;
   favicon?: ISpsLiteBackendUploadPluginBackendMedia | null;
   image?: ISpsLiteBackendUploadPluginBackendMedia | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
   domain?: string | null;
   gtmKey?: string | null;
   script?: string | null;
+  _meta?: any;
 }
 
 export interface ISpsLiteBackendMainPage {
   id: number;
+  locale: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  _meta?: any;
 }
 
 export interface ISpsLiteBackendNotFoundPage {
@@ -71,4 +95,5 @@ export interface ISpsLiteBackendNotFoundPage {
   updatedAt: string;
   publishedAt: string;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  _meta?: any;
 }

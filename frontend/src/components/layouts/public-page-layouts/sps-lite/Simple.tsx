@@ -8,7 +8,7 @@ import Topbars from "~components/topbars/public-page-topbars";
 export default function Simple(props: IPublicPage) {
   return (
     <>
-      <Meta {...props.meta} />
+      {props.meta ? <Meta {...props.meta} /> : null}
       <div className="relative">
         {props.publicPageTopbar ? (
           <Topbars {...props.publicPageTopbar} />

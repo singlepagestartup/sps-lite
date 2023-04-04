@@ -1,8 +1,6 @@
-import { IPublicPage } from "types/pages";
+import { INotFoundPage } from "types/pages";
 import PublicPageLayouts from "~components/layouts/public-page-layouts";
 import Page from "~utils/api/Page";
-
-export interface INotFoundPage extends IPublicPage {}
 
 export default function NotFoundPage(props: INotFoundPage) {
   return <PublicPageLayouts {...props} />;

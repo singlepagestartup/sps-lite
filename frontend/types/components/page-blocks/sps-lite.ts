@@ -126,9 +126,9 @@ export interface ISpsLiteBackendPricingsBlock {
   variant: `single-price-with-details`;
   title: string | null;
   subtitle: string | null;
+  anchor: string | null;
   description: string | null;
   background?: ISpsLiteBackendUploadPluginBackendMedia;
-  anchor?: string;
   tiers?: ISpsLiteBackendTier[] | null;
   className: string | null;
 }
@@ -144,6 +144,7 @@ export interface ISpsLiteBackendReviewsBlock {
 
 export interface ISpsLiteBackendReviewsTableBlock {
   id: number;
+  anchor: string | null;
   __component: `page-blocks.reviews-table-block`;
   variant: `simple`;
 }

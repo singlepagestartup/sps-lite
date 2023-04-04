@@ -29,54 +29,61 @@ import {
   spsLiteBackendSliderBlockSimple,
 } from "./sps-lite";
 
-export const backendFeatureSectionBlockWithProductScreenshot = {
-  ...spsLiteBackendFeatureSectionBlockWithProductScreenshot,
-} as IBackendFeaturesSectionBlock;
+export const backendFeatureSectionBlockWithProductScreenshot: IBackendFeaturesSectionBlock =
+  {
+    ...spsLiteBackendFeatureSectionBlockWithProductScreenshot,
+  };
 
-export const backendContactSectionBlockCentered = {
+export const backendContactSectionBlockCentered: IBackendContactSectonBlock = {
   ...spsLiteBackendContactSectionBlockCentered,
-} as IBackendContactSectonBlock;
+};
 
-export const backendCtaSectionBlockDarkPanelWithAppScreenshot = {
-  ...spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot,
-} as IBackendCtaSectionBlock;
+export const backendCtaSectionBlockDarkPanelWithAppScreenshot: IBackendCtaSectionBlock =
+  {
+    ...spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot,
+  };
 
-export const backendFaqBlockTwoColumnsWithCenteredIntroduction = {
-  ...spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
-} as IBackendFaqBlock;
+export const backendFaqBlockTwoColumnsWithCenteredIntroduction: IBackendFaqBlock =
+  {
+    ...spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
+  };
 
-export const backendHeaderSectionBlockSimpleCentered = {
-  ...spsLiteBackendHeaderSectionBlockSimpleCentered,
-} as IBackendHeaderSectionBlock;
+export const backendHeaderSectionBlockSimpleCentered: IBackendHeaderSectionBlock =
+  {
+    ...spsLiteBackendHeaderSectionBlockSimpleCentered,
+  };
 
-export const backendHeroSectionBlockSimpleCentered = {
+export const backendHeroSectionBlockSimpleCentered: IBackendHeroSectionBlock = {
   ...spsLiteBackendHeroSectionBlockSimpleCentered,
-} as IBackendHeroSectionBlock;
+};
 
-export const backendIncentivesBlockFourColumnWithIllustrations = {
-  ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
-} as IBackendIncentivesBlock;
+export const backendIncentivesBlockFourColumnWithIllustrations: IBackendIncentivesBlock =
+  {
+    ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
+  };
 
-export const backendLogotypesCloudBlockSimpleWithHeading = {
-  ...spsLiteBackendLogotypesCloudBlockSimpleWithHeading,
-} as IBackendLogotypesCloudBlock;
+export const backendLogotypesCloudBlockSimpleWithHeading: IBackendLogotypesCloudBlock =
+  {
+    ...spsLiteBackendLogotypesCloudBlockSimpleWithHeading,
+  };
 
-export const backendNotFoundBlockSimple = {
+export const backendNotFoundBlockSimple: IBackendNotFoundBlock = {
   ...spsLiteBackendNotFoundBlockSimple,
-} as IBackendNotFoundBlock;
+};
 
-export const backendPricingBlockSinglePriceWithDetails = {
-  ...spsLiteBackendPricingBlockSinglePriceWithDetails,
-} as IBackendPricingsBlock;
+export const backendPricingBlockSinglePriceWithDetails: IBackendPricingsBlock =
+  {
+    ...spsLiteBackendPricingBlockSinglePriceWithDetails,
+  };
 
-export const backendReviewsBlockSimpleWithAvatars = {
+export const backendReviewsBlockSimpleWithAvatars: IBackendReviewsBlock = {
   ...spsLiteBackendReviewsBlockSimpleWithAvatars,
-} as IBackendReviewsBlock;
+};
 
-export const backendReviewsTableBlockSimple = {
+export const backendReviewsTableBlockSimple: IBackendReviewsTableBlock = {
   ...spsLiteBackendReviewsTableBlockSimple,
-} as IBackendReviewsTableBlock;
+};
 
-export const backendSliderBlockSimple = {
+export const backendSliderBlockSimple: IBackendSliderBlock = {
   ...spsLiteBackendSliderBlockSimple,
-} as IBackendSliderBlock;
+};

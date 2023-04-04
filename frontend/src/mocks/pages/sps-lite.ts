@@ -1,3 +1,4 @@
+import { ISpsLiteMainPage } from "types/pages/sps-lite";
 import {
   spsLiteBackendMainPage,
   spsLiteBackendMeta,
@@ -7,9 +8,8 @@ import {
   spsLiteBackendPublicPageTopbarSimple,
 } from "~mocks/single-types/sps-lite";
 
-export const spsLiteMainPage = {
+export const spsLiteMainPage: ISpsLiteMainPage = {
   ...spsLiteBackendMainPage,
-  _meta: {},
   publicPageLayout: spsLiteBackendPublicPageLayout,
   meta: spsLiteBackendMeta,
   publicPageTopbar: spsLiteBackendPublicPageTopbarSimple,

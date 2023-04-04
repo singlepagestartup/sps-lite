@@ -1,8 +1,6 @@
-import { IPublicPage } from "types/pages";
+import { IMainPage } from "types/pages";
 import PublicPageLayouts from "~components/layouts/public-page-layouts";
 import Page from "~utils/api/Page";
-
-export interface IMainPage extends IPublicPage {}
 
 export default function MainPage(props: IMainPage) {
   return <PublicPageLayouts {...props} />;

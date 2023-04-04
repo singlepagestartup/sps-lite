@@ -5,7 +5,9 @@ import { BACKEND_URL } from "~utils/envs";
 import utils from "@rogwild/next-utils";
 import { IBackendMeta } from "types/single-types";
 
-export default function Meta(props: IBackendMeta) {
+export interface IMetaBlock extends IBackendMeta {}
+
+export default function Meta(props: IMetaBlock) {
   const favicon = useMemo(() => {
     if (props?.favicon) {
       return getImageUrl(props.favicon, { BACKEND_URL });
@@ -25,7 +27,9 @@ export default function Meta(props: IBackendMeta) {
   return (
     <Head>
       <title className="text-base text-green-400">
-        {`${props?.title || `SPS`} | ${props?.description || ``}`}
+        {`${props?.title || `Single Page Startup`} | ${
+          props?.description || ``
+        }`}
       </title>
       <meta name="description" content={props?.description || ``} />
       <link rel="icon" href={favicon} />

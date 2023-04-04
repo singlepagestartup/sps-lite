@@ -5,14 +5,14 @@ import {
   spsLiteUploadPluginBackendMediaTableAndHands,
 } from "./sps-lite";
 
-export const backendMediaRoundIcon = {
+export const backendMediaRoundIcon: IBackendUploadPluginBackendMedia = {
   ...spsLiteUploadPluginBackendMediaRoundIcon,
-} as IBackendUploadPluginBackendMedia;
+};
 
-export const backendMediaLogotypeIcon = {
+export const backendMediaLogotypeIcon: IBackendUploadPluginBackendMedia = {
   ...spsLiteUploadPluginBackendMediaLogotypeIcon,
-} as IBackendUploadPluginBackendMedia;
+};
 
-export const backendMediaTableAndHands = {
+export const backendMediaTableAndHands: IBackendUploadPluginBackendMedia = {
   ...spsLiteUploadPluginBackendMediaTableAndHands,
-} as IBackendUploadPluginBackendMedia;
+};
