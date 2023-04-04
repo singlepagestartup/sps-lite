@@ -8,9 +8,9 @@
     "attributes": {
         "variant": {
             "type": "enumeration",
-            "enum": ["two-tiers-with-extra-tier"],
+            "enum": ["single-price-with-details"],
             "required": true,
-            "default": "two-tiers-with-extra-tier"
+            "default": "single-price-with-details"
         },
         "title": {
             "type": "richtext"

@@ -7,13 +7,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const SimpleCentered: Story = {
-  args: SpsLiteSimpleCentered.args,
-};
-
 export const Split: Story = {
   args: {
-    ...SimpleCentered.args,
+    ...SpsLiteSimpleCentered.args,
     variant: `split`,
   },
 };

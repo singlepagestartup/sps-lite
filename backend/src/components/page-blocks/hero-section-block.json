@@ -26,14 +26,8 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": [
-                "split",
-                "simple-centered",
-                "split-with-screenshot-on-dark",
-                "with-app-screenshot",
-                "with-angled-image-on-right"
-            ],
-            "default": "split",
+            "enum": ["simple-centered"],
+            "default": "simple-centered",
             "required": true
         },
         "anchor": {

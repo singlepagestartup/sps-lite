@@ -11,12 +11,12 @@ import {
   spsLiteBackendForm,
   spsLiteBackendModal,
   spsLiteBackendReview,
-  spsLiteBackendSlider,
+  spsLiteBackendSliderFadeWithPreviews,
   spsLiteBackendTier,
 } from "./sps-lite";
 
-export const backendSlider = {
-  ...spsLiteBackendSlider,
+export const backendSliderFadeWithPreviews = {
+  ...spsLiteBackendSliderFadeWithPreviews,
 } as IBackendSlider;
 
 export const backendCurrency = {

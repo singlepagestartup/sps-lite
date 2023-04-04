@@ -1,19 +1,11 @@
 import { FC } from "react";
-import Simple from "./Simple";
-import OffWhiteGrid from "./OffWhiteGrid";
-import SimpleWithHeading from "./SimpleWithHeading";
-import SimpleWithHeadingOnBrand from "./SimpleWithHeadingOnBrand";
-import SplitWithGridOnRight from "./SplitWithGridOnRight";
 import { IBackendLogotypesCloudBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface ILogotypesCloudBlock extends IBackendLogotypesCloudBlock {}
 
 const variants = {
-  simple: Simple,
-  "simple-with-heading": SimpleWithHeading,
-  "simple-with-heading-on-brang": SimpleWithHeadingOnBrand,
-  "off-white-grid": OffWhiteGrid,
-  "split-with-grid-on-right": SplitWithGridOnRight,
+  ...spsLiteVariants,
 };
 
 export default function LogotypesClouds(props: ILogotypesCloudBlock) {

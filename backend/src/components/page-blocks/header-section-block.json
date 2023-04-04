@@ -21,13 +21,7 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": [
-                "simple-centered",
-                "simple-with-select-menu-dark",
-                "simple-with-select-menu",
-                "branded-with-background-image",
-                "with-background-image-and-overlapping-cards"
-            ],
+            "enum": ["simple-centered"],
             "required": true,
             "default": "simple-centered"
         },

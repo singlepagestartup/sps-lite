@@ -1,13 +1,11 @@
 import { FC } from "react";
-import DarkPanelWithAppScreenshot from "./DarkPanelWithAppScreenshot";
-import SimpleCentered from "./SimpleCentered";
 import { IBackendCtaSectionBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface ICtaSectionsBlock extends IBackendCtaSectionBlock {}
 
 const variants = {
-  "simple-centered": SimpleCentered,
-  "dark-panel-with-app-screenshot": DarkPanelWithAppScreenshot,
+  ...spsLiteVariants,
 };
 
 export default function CtaSections(props: ICtaSectionsBlock) {

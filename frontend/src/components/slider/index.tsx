@@ -1,12 +1,12 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
-import FadeWithPreviews from "./FadeWithPreviews";
 import { IBackendSlider } from "types/collection-types";
 import { IBackendSlide } from "types/components/elements";
+import { spsLiteVariants } from "./sps-lite";
 
 const variants = {
-  "fade-with-previews": FadeWithPreviews,
+  ...spsLiteVariants,
 };
 
 export default function Slider(props: IBackendSlider) {

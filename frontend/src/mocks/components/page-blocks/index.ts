@@ -15,36 +15,36 @@ import {
   IBackendSliderBlock,
 } from "types/components/page-blocks";
 import {
-  spsLiteBackendContactSectionBlockSplitBrandPanel,
-  spsLiteBackendCtaSectionBlockSimpleCentered,
-  spsLiteBackendFaqBlockThreeColumns,
-  spsLiteBackendFeatureSectionBlockSimpleThreeColumn,
+  spsLiteBackendContactSectionBlockCentered,
+  spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot,
+  spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
+  spsLiteBackendFeatureSectionBlockWithProductScreenshot,
   spsLiteBackendFormBlockSimple,
   spsLiteBackendHeaderSectionBlockSimpleCentered,
   spsLiteBackendHeroSectionBlockSimpleCentered,
   spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
-  spsLiteBackendLogotypesCloudBlockSimple,
+  spsLiteBackendLogotypesCloudBlockSimpleWithHeading,
   spsLiteBackendNotFoundBlockSimple,
-  spsLiteBackendPricingBlocktwoTiersWithExtraTier,
+  spsLiteBackendPricingBlockSinglePriceWithDetails,
   spsLiteBackendReviewsBlockSimpleWithAvatars,
   spsLiteBackendReviewsTableBlockSimple,
   spsLiteBackendSliderBlockSimple,
 } from "./sps-lite";
 
-export const backendFeatureSectionBlockSimpleThreeColumn = {
-  ...spsLiteBackendFeatureSectionBlockSimpleThreeColumn,
+export const backendFeatureSectionBlockWithProductScreenshot = {
+  ...spsLiteBackendFeatureSectionBlockWithProductScreenshot,
 } as IBackendFeaturesSectionBlock;
 
-export const backendContactSectionBlockSplitBrandPanel = {
-  ...spsLiteBackendContactSectionBlockSplitBrandPanel,
+export const backendContactSectionBlockCentered = {
+  ...spsLiteBackendContactSectionBlockCentered,
 } as IBackendContactSectonBlock;
 
-export const backendCtaSectionBlockSimpleCentered = {
-  ...spsLiteBackendCtaSectionBlockSimpleCentered,
+export const backendCtaSectionBlockDarkPanelWithAppScreenshot = {
+  ...spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot,
 } as IBackendCtaSectionBlock;
 
-export const backendFaqBlockThreeColumns = {
-  ...spsLiteBackendFaqBlockThreeColumns,
+export const backendFaqBlockTwoColumnsWithCenteredIntroduction = {
+  ...spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
 } as IBackendFaqBlock;
 
 export const backendFormBlockSimple = {
@@ -63,16 +63,16 @@ export const backendIncentivesBlockFourColumnWithIllustrations = {
   ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
 } as IBackendIncentivesBlock;
 
-export const backendLogotypesCloudBlockSimple = {
-  ...spsLiteBackendLogotypesCloudBlockSimple,
+export const backendLogotypesCloudBlockSimpleWithHeading = {
+  ...spsLiteBackendLogotypesCloudBlockSimpleWithHeading,
 } as IBackendLogotypesCloudBlock;
 
 export const backendNotFoundBlockSimple = {
   ...spsLiteBackendNotFoundBlockSimple,
 } as IBackendNotFoundBlock;
 
-export const backendPricingBlocktwoTiersWithExtraTier = {
-  ...spsLiteBackendPricingBlocktwoTiersWithExtraTier,
+export const backendPricingBlockSinglePriceWithDetails = {
+  ...spsLiteBackendPricingBlockSinglePriceWithDetails,
 } as IBackendPricingsBlock;
 
 export const backendReviewsBlockSimpleWithAvatars = {

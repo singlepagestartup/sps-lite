@@ -21,8 +21,8 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": ["simple-three-column", "with-product-screenshot-on-left", "three-column-with-slider"],
-            "default": "simple-three-column",
+            "enum": ["with-product-screenshot", "centered-two-x-two-grid"],
+            "default": "with-product-screenshot",
             "required": true
         },
         "anchor": {

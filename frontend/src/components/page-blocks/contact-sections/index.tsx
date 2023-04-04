@@ -1,11 +1,11 @@
 import { FC } from "react";
-import SplitBrandPanel from "./SplitBrandPanel";
 import { IBackendContactSectonBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IContactSectonBlock extends IBackendContactSectonBlock {}
 
 const variants = {
-  "split-brand-panel": SplitBrandPanel,
+  ...spsLiteVariants,
 };
 
 export default function ContactSectons(props: IContactSectonBlock) {

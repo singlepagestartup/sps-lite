@@ -8,8 +8,8 @@ import {
 } from "react";
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
-import Simple from "./Simple";
 import { IBackendModal } from "types/collection-types";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IModal extends Omit<IBackendModal, `id`> {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -17,7 +17,7 @@ export interface IModal extends Omit<IBackendModal, `id`> {
 }
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export default function Modals({ modals = [] }: { modals?: IModal[] }) {

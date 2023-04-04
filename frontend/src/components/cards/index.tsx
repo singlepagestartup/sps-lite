@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Simple from "./Simple";
+import { spsLiteVariants } from "./sps-lite";
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export interface ICardsConfig {
@@ -29,7 +29,7 @@ export interface ICardSkeletonProps extends ICardProps {
 }
 
 export interface ICardsProps extends ICardsBlock {
-  variant: `simple`;
+  variant: keyof typeof variants;
 }
 
 export default function Cards(props: ICardsProps) {

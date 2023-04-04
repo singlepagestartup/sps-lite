@@ -3,8 +3,9 @@ import { IBackendButton, IBackendInputOption } from ".";
 
 export interface ISpsLiteBackendButton {
   id: number;
-  title: string | null;
+  __component: `elements.button`;
   variant: `bottom-line` | `primary` | `default`;
+  title: string | null;
   url: string | null;
   description: string | null;
   media?: IBackendMedia[] | null;
@@ -15,23 +16,26 @@ export interface ISpsLiteBackendButton {
 
 export interface ISpsLiteBackendButtonsArray {
   id: number;
+  __component: `elements.buttons-array`;
+  variant: `simple` | `dropdown`;
   title: string | null;
   buttons: IBackendButton[];
   description: string | null;
   className: string | null;
-  variant: `simple` | `dropdown`;
   media?: IBackendMedia[] | null;
   additionalMedia?: IBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendFaq {
   id: number;
+  __component: `elements.faq`;
   title: string | null;
   description: string | null;
 }
 
 export interface ISpsLiteBackendFeature {
   id: number;
+  __component: `elements.feature`;
   title: string | null;
   description: string | null;
   subtitle: string | null;
@@ -39,10 +43,18 @@ export interface ISpsLiteBackendFeature {
   additionalMedia?: IBackendMedia[] | null;
 }
 
+export interface ISpsLiteBackendInputOption {
+  id: number;
+  __component: `elements.input-option`;
+  title: string | null;
+  description: string | null;
+}
+
 export interface ISpsLiteBackendInput {
   id: number;
-  placeholder: string | null;
+  __component: `elements.input`;
   component: `text` | `listbox` | `radio-group` | `switch` | `file`;
+  placeholder: string | null;
   isRequired: boolean;
   value: string | null;
   name: string;
@@ -53,14 +65,9 @@ export interface ISpsLiteBackendInput {
   multiple: boolean | null;
 }
 
-export interface ISpsLiteBackendInputOption {
-  id: number;
-  title: string | null;
-  description: string | null;
-}
-
 export interface ISpsLiteBackendLogotype {
   id: number;
+  __component: `elements.logotype`;
   media?: IBackendMedia[] | null;
   additionalMedia?: IBackendMedia[] | null;
   url: string | null;
@@ -69,6 +76,7 @@ export interface ISpsLiteBackendLogotype {
 
 export interface ISpsLiteBackendSlide {
   id: number;
+  __component: `elements.slide`;
   buttons?: any[];
   title: string | null;
   subtitle: string | null;

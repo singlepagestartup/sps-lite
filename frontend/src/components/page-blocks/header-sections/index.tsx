@@ -1,20 +1,11 @@
 import { FC } from "react";
-import SimpleCentered from "./SimpleCentered";
-import BrandedWithBackgroundImage from "./BrandedWithBackgroundImage";
-import SimpleWithSelectMenu from "./SimpleWithSelectMenu";
-import SimpleWithSelectMenuDark from "./SimpleWithSelectMenuDark";
-import WithBackgroundImageAndOverlappingCards from "./WithBackgroundImageAndOverlappingCards";
 import { IBackendHeaderSectionBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IHeaderSectionBlock extends IBackendHeaderSectionBlock {}
 
 const variants = {
-  "simple-centered": SimpleCentered,
-  "simple-with-select-menu-dark": SimpleWithSelectMenuDark,
-  "simple-with-select-menu": SimpleWithSelectMenu,
-  "branded-with-background-image": BrandedWithBackgroundImage,
-  "with-background-image-and-overlapping-cards":
-    WithBackgroundImageAndOverlappingCards,
+  ...spsLiteVariants,
 };
 
 export default function HeaderSections(props: IHeaderSectionBlock) {

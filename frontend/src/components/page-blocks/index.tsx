@@ -12,7 +12,7 @@ export default function PageBlocks(props: IPageBlockBlock) {
     <div className="page-blocks">
       {props?.pageBlocks?.length
         ? props.pageBlocks.map((pageBlock, index) => {
-            const key = pageBlock._Component;
+            const key = pageBlock.__component;
             const PageBlock = pageBlockComponents[key] as FC<any>;
 
             if (!PageBlock) {

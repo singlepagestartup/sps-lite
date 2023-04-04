@@ -9,13 +9,13 @@ const components = {
   "elements.flyout-menu": FlyoutMenues,
 };
 export interface IButtons extends IButton, IButtonsArray {
-  _Component: keyof typeof components;
+  __component: any;
   variant: any;
 }
 
 export default function Buttons(props: IButtons) {
   const Comp = components[
-    props._Component as keyof typeof components
+    props.__component as keyof typeof components
   ] as FC<IButtons>;
 
   if (!Comp) {

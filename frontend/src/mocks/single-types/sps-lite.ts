@@ -11,7 +11,7 @@ import {
   spsLiteBackendButtonsArraySimple,
   spsLiteBackendLogotype,
 } from "~mocks/components/elements/sps-lite";
-import { spsLiteBackendFeatureSectionBlockSimpleThreeColumn } from "~mocks/components/page-blocks/sps-lite";
+import { spsLiteBackendFeatureSectionBlockWithProductScreenshot } from "~mocks/components/page-blocks/sps-lite";
 import { spsLiteUploadPluginBackendMediaRoundIcon } from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendPublicPageFooterFourColumnsWithCompanyMission = {
@@ -64,5 +64,5 @@ export const spsLiteBackendMainPage = {
   createdAt: `2023-03-31T15:14:49.896Z`,
   updatedAt: `2023-04-02T11:55:25.729Z`,
   publishedAt: `2023-02-14T22:43:25.891Z`,
-  pageBlocks: [spsLiteBackendFeatureSectionBlockSimpleThreeColumn],
+  pageBlocks: [spsLiteBackendFeatureSectionBlockWithProductScreenshot],
 } as ISpsLiteBackendMainPage;

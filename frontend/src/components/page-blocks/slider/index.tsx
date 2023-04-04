@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Simple from "./Simple";
 import { IBackendSliderBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface ISliderBlock extends IBackendSliderBlock {}
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export default function Slider(props: ISliderBlock) {

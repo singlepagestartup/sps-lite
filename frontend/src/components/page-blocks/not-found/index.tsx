@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Simple from "./Simple";
 import { IBackendNotFoundBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface INotFoundBlock extends IBackendNotFoundBlock {}
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export default function NotFound(props: INotFoundBlock) {

@@ -19,8 +19,8 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": ["split-brand-panel"],
-            "default": "split-brand-panel",
+            "enum": ["centered"],
+            "default": "centered",
             "required": true
         },
         "media": {

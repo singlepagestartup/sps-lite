@@ -25,16 +25,7 @@
         },
         "variant": {
             "type": "enumeration",
-            "enum": [
-                "four-column-with-illustrations",
-                "three-column-with-illustrations-and-split-header",
-                "three-column-with-illustrations-and-heading",
-                "three-column-with-illustrations-and-header",
-                "three-column-with-illustrations-and-centered-text",
-                "three-column-with-icons",
-                "three-column-with-icons-and-supporting-text",
-                "two-x-two-grid-with-illustrations"
-            ],
+            "enum": ["four-column-with-illustrations"],
             "default": "four-column-with-illustrations",
             "required": true
         },

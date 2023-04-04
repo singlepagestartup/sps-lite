@@ -1,11 +1,11 @@
 import { FC } from "react";
-import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 import { IBackendPublicPageNavbar } from "types/single-types";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface INavbarBlock extends IBackendPublicPageNavbar {}
 
 const variants = {
-  "simple-links-on-left": SimpleLinksOnLeft,
+  ...spsLiteVariants,
 };
 
 export default function PublicPageNavbars(props: INavbarBlock) {

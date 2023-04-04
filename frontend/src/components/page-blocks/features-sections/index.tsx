@@ -1,15 +1,11 @@
 import { FC } from "react";
-import SimpleThreeColumn from "./SimpleThreeColumn";
-import ThreeColumnWithSlider from "./ThreeColumnWithSlider";
-import WithProductScreenshotOnLeft from "./WithProductScreenshotOnLeft";
 import { IBackendFeaturesSectionBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IFeaturesSectionBlock extends IBackendFeaturesSectionBlock {}
 
 const variants = {
-  "simple-three-column": SimpleThreeColumn,
-  "with-product-screenshot-on-left": WithProductScreenshotOnLeft,
-  "three-column-with-slider": ThreeColumnWithSlider,
+  ...spsLiteVariants,
 };
 
 export default function FeaturesSections(props: IFeaturesSectionBlock) {

@@ -1,12 +1,12 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import Simple from "./Simple";
+import { spsLiteVariants } from "./sps-lite";
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 interface ITablesBlock extends ITableProps {
-  variant: `simple`;
+  variant: keyof typeof variants;
 }
 
 /**

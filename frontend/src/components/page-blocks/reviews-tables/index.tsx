@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Simple from "./Simple";
 import { IBackendReviewsTableBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IReviewsTableBlock extends IBackendReviewsTableBlock {}
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export default function ReviewsTables(props: IReviewsTableBlock) {

@@ -16,13 +16,14 @@ import { pageBlockComponents } from "~utils/api/components";
 
 export interface ISpsLiteBackendPageBlock {
   id: number;
-  _Component: keyof typeof pageBlockComponents;
+  __component: keyof typeof pageBlockComponents;
   [key: string]: any;
 }
 
 export interface ISpsLiteBackendContactSectonBlock {
   id: number;
-  variant: `split-brand-panel`;
+  __component: `page-blocks.contact-section-block`;
+  variant: `centered`;
   title: string | null;
   description: string | null;
   media?: IBackendMedia | null;
@@ -33,27 +34,19 @@ export interface ISpsLiteBackendContactSectonBlock {
 
 export interface ISpsLiteBackendCtaSectionBlock {
   id: number;
+  __component: `page-blocks.cta-section-block`;
+  variant: `dark-panel-with-app-screenshot`;
   title?: string;
   description?: string;
   media?: IBackendMedia[];
-  variant: `simple-centered` | `dark-panel-with-app-screenshot`;
   anchor?: string;
   buttons?: IBackendButton[];
 }
 
 export interface ISpsLiteBackendFaqBlock {
   id: number;
-  variant:
-    | `centered-accordion`
-    | `offset-with-supporting-text`
-    | `centered-accordion-on-dark`
-    | `side-by-side`
-    | `three-columns`
-    | `three-columns-on-dark`
-    | `three-columns-with-centered-introduction`
-    | `two-columns`
-    | `two-columns-on-dark`
-    | `two-columns-with-centered-introduction`;
+  __component: `page-blocks.faqs-block`;
+  variant: `two-columns-with-centered-introduction`;
   title: string | null;
   description: string | null;
   faqs?: IBackendFaq[] | null;
@@ -62,12 +55,9 @@ export interface ISpsLiteBackendFaqBlock {
 
 export interface ISpsLiteBackendFeaturesSectionBlock {
   id: number;
+  __component: `page-blocks.features-section-block`;
+  variant: `with-product-screenshot` | `centered-two-x-two-grid`;
   features?: IBackendFeature[] | null;
-  _Component: `page-blocks.features-section-block`;
-  variant:
-    | `simple-three-column`
-    | `with-product-screenshot-on-left`
-    | `three-column-with-slider`;
   title: string | null;
   subtitle: string | null;
   description: string | null;
@@ -77,6 +67,7 @@ export interface ISpsLiteBackendFeaturesSectionBlock {
 
 export interface ISpsLiteBackendFormBlock {
   id: number;
+  __component: `page-blocks.form-block`;
   variant: `simple`;
   form?: IBackendForm | null;
   className: string | null;
@@ -85,14 +76,10 @@ export interface ISpsLiteBackendFormBlock {
 
 export interface ISpsLiteBackendHeaderSectionBlock {
   id: number;
+  __component: `page-blocks.header-section-block`;
+  variant: `simple-centered`;
   title: string | null;
   description: string | null;
-  variant:
-    | `simple-centered`
-    | `simple-with-select-menu-dark`
-    | `simple-with-select-menu`
-    | `branded-with-background-image`
-    | `with-background-image-and-overlapping-cards`;
   subtitle: string | null;
   media?: IBackendMedia[] | null;
   anchor: string | null;
@@ -100,6 +87,7 @@ export interface ISpsLiteBackendHeaderSectionBlock {
 
 export interface ISpsLiteBackendHeroSectionBlock {
   id: number;
+  __component: `page-blocks.hero-section-block`;
   variant: `simple-centered`;
   title: string | null;
   description: string | null;
@@ -107,35 +95,23 @@ export interface ISpsLiteBackendHeroSectionBlock {
   media?: IBackendMedia[] | null;
   anchor: string | null;
   background?: IBackendMedia | null;
-  _Component: `page-blocks.hero-section-block`;
 }
 
 export interface ISpsLiteBackendIncentivesBlock {
   id: number;
+  __component: `page-blocks.incentives-block`;
+  variant: `four-column-with-illustrations`;
   features?: IBackendFeature[] | null;
   title: string | null;
   description: string | null;
   media?: IBackendMedia[] | null;
-  variant:
-    | `four-column-with-illustrations`
-    | `three-column-with-illustrations-and-split-header`
-    | `three-column-with-illustrations-and-heading`
-    | `three-column-with-illustrations-and-header`
-    | `three-column-with-illustrations-and-centered-text`
-    | `three-column-with-icons`
-    | `three-column-with-icons-and-supporting-text`
-    | `two-x-two-grid-with-illustrations`;
   anchor: string | null;
 }
 
 export interface ISpsLiteBackendLogotypesCloudBlock {
   id: number;
-  variant:
-    | `simple`
-    | `simple-with-heading`
-    | `simple-with-heading-on-brang`
-    | `off-white-grid`
-    | `split-with-grid-on-right`;
+  __component: `page-blocks.logotypes-cloud-block`;
+  variant: `simple-with-heading`;
   title: string | null;
   logotypes?: IBackendLogotype[] | null;
   buttons?: IBackendButton[] | null;
@@ -145,6 +121,7 @@ export interface ISpsLiteBackendLogotypesCloudBlock {
 
 export interface ISpsLiteBackendNotFoundBlock {
   id: number;
+  __component: `page-blocks.not-found-block`;
   variant: `simple`;
   title: string | null;
   subtitle: string | null;
@@ -154,11 +131,12 @@ export interface ISpsLiteBackendNotFoundBlock {
 
 export interface ISpsLiteBackendPricingsBlock {
   id: number;
+  __component: `page-blocks.pricing-block`;
+  variant: `single-price-with-details`;
   title: string | null;
   subtitle: string | null;
   description: string | null;
   background?: IBackendMedia;
-  variant: `two-tiers-with-extra-tier`;
   anchor?: string;
   tiers?: IBackendTier[] | null;
   className: string | null;
@@ -166,6 +144,7 @@ export interface ISpsLiteBackendPricingsBlock {
 
 export interface ISpsLiteBackendReviewsBlock {
   id: number;
+  __component: `page-blocks.reviews-block`;
   variant: `simple-with-avatars`;
   reviews?: IBackendReview[] | null;
   showAll: boolean | null;
@@ -174,11 +153,13 @@ export interface ISpsLiteBackendReviewsBlock {
 
 export interface ISpsLiteBackendReviewsTableBlock {
   id: number;
+  __component: `page-blocks.reviews-table-block`;
   variant: `simple`;
 }
 
 export interface ISpsLiteBackendSliderBlock {
   id: number;
+  __component: `page-blocks.slider-block`;
   variant: `simple`;
   anchor: string | null;
   slider?: IBackendSlider | null;

@@ -14,9 +14,11 @@ import {
 } from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendButtonDefault = {
+  id: 4,
   title: `Button`,
   url: `https://nextjs.com`,
   variant: `default`,
+  __component: `elements.button`,
 } as ISpsLiteBackendButton;
 
 export const spsLiteBackendButtonPrimary = {
@@ -30,6 +32,8 @@ export const spsLiteBackendButtonBottomLine = {
 } as ISpsLiteBackendButton;
 
 export const spsLiteBackendButtonsArraySimple = {
+  id: 5,
+  __component: `elements.buttons-array`,
   title: `Buttons Array`,
   buttons: [spsLiteBackendButtonDefault, spsLiteBackendButtonDefault],
   variant: `simple`,
@@ -41,12 +45,15 @@ export const spsLiteBackendButtonsArrayDropdown = {
 } as ISpsLiteBackendButtonsArray;
 
 export const spsLiteBackendFaq = {
+  id: 3,
+  __component: `elements.faq`,
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
 } as ISpsLiteBackendFaq;
 
 export const spsLiteBackendFeature = {
   id: 136,
+  __component: `elements.feature`,
   title: `Конструктор PageBlock'ов`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   subtitle: `Не повторяйся`,
@@ -55,6 +62,7 @@ export const spsLiteBackendFeature = {
 
 export const spsLiteBackendNameInput = {
   id: 56,
+  __component: `elements.input`,
   placeholder: `Введите ваше имя`,
   component: `text`,
   isRequired: true,
@@ -69,6 +77,7 @@ export const spsLiteBackendNameInput = {
 
 export const spsLiteBackendEmailInput = {
   id: 57,
+  __component: `elements.input`,
   placeholder: `Введите вашу электронную почту`,
   component: `text`,
   isRequired: true,
@@ -83,6 +92,7 @@ export const spsLiteBackendEmailInput = {
 
 export const spsLiteBackendTierInput = {
   id: 58,
+  __component: `elements.input`,
   placeholder: `Выберите тариф`,
   component: `listbox`,
   isRequired: false,
@@ -108,6 +118,7 @@ export const spsLiteBackendTierInput = {
 
 export const spsLiteBackendQuestionInput = {
   id: 59,
+  __component: `elements.input`,
   placeholder: `Напишите ваш вопрос`,
   component: `text`,
   isRequired: false,
@@ -122,6 +133,7 @@ export const spsLiteBackendQuestionInput = {
 
 export const spsLiteBackendPolicyInput = {
   id: 60,
+  __component: `elements.input`,
   placeholder: null,
   component: `switch`,
   isRequired: true,
@@ -135,6 +147,8 @@ export const spsLiteBackendPolicyInput = {
 } as ISpsLiteBackendInput;
 
 export const spsLiteBackendLogotype = {
+  id: 5,
+  __component: `elements.logotype`,
   media: [spsLiteUploadPluginBackendMediaLogotypeIcon],
   additionalMedia: null,
   title: ``,
@@ -143,6 +157,7 @@ export const spsLiteBackendLogotype = {
 
 export const spsLiteBackendSlide = {
   id: 1,
+  __component: `elements.slide`,
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   media: [spsLiteUploadPluginBackendMediaTableAndHands],

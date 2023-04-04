@@ -1,15 +1,11 @@
 import { FC } from "react";
-import FourColumnsSimple from "./FourColumnsSimple";
-import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
-import FourColumnsSimpleDark from "./FourColunsSimpleDark";
 import { IBackendPublicPageFooter } from "types/single-types";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IPublicPageFooterBlock extends IBackendPublicPageFooter {}
 
 const variants = {
-  "four-columns-simple": FourColumnsSimple,
-  "four-columns-simple-dark": FourColumnsSimpleDark,
-  "four-columns-with-company-mission": FourColumnsWithCompanyMission,
+  ...spsLiteVariants,
 };
 
 export default function PublicPageFooters(props: IPublicPageFooterBlock) {

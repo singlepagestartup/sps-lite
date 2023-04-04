@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Simple from "./Simple";
 import { IPublicPage } from "types/pages";
+import { spsLiteVariants } from "./sps-lite";
 
 const variants = {
-  simple: Simple,
+  ...spsLiteVariants,
 };
 
 export default function PublicPageLayouts(props: IPublicPage) {

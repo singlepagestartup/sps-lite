@@ -7,14 +7,8 @@
     "attributes": {
         "variant": {
             "type": "enumeration",
-            "enum": [
-                "simple",
-                "simple-with-heading",
-                "simple-with-heading-on-brang",
-                "off-white-grid",
-                "split-with-grid-on-right"
-            ],
-            "default": "simple",
+            "enum": ["simple-with-heading"],
+            "default": "simple-with-heading",
             "required": true
         },
         "title": {

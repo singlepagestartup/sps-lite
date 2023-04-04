@@ -1,26 +1,28 @@
 import { FC } from "react";
 import ClientOnlyWrapper from "~components/wrappers/client-only";
-import BottomLine from "./BottomLine";
-import Default from "./Default";
-import Primary from "./Primary";
 import { IBackendButton } from "types/components/elements";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IButton
   extends Omit<
     IBackendButton,
-    `id` | `url` | `description` | `className` | `additionalAttributes`
+    | `id`
+    | `url`
+    | `description`
+    | `className`
+    | `additionalAttributes`
+    | `__component`
   > {
   url?: string | null;
   description?: string | null;
   className?: string | null;
   additionalAttributes?: any | null;
   onClick?: any;
+  __component?: IBackendButton[`__component`];
 }
 
 const variants = {
-  "bottom-line": BottomLine,
-  primary: Primary,
-  default: Default,
+  ...spsLiteVariants,
 };
 
 export default function SimpleButtons(props: IButton) {

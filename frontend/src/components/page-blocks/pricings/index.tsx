@@ -1,11 +1,11 @@
 import { FC } from "react";
-import TwoTiersWithExtraTier from "./TwoTiersWithExtraTier";
 import { IBackendPricingsBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IPricingsBlock extends IBackendPricingsBlock {}
 
 const variants = {
-  "two-tiers-with-extra-tier": TwoTiersWithExtraTier,
+  ...spsLiteVariants,
 };
 
 export default function Pricings(props: IPricingsBlock) {

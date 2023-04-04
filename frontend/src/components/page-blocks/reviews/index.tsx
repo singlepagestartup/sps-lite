@@ -1,11 +1,11 @@
 import { FC } from "react";
-import SimpleWithAvatars from "./SimpleWithAvatars";
 import { IBackendReviewsBlock } from "types/components/page-blocks";
+import { spsLiteVariants } from "./sps-lite";
 
 export interface IReviewsBlock extends IBackendReviewsBlock {}
 
 const variants = {
-  "simple-with-avatars": SimpleWithAvatars,
+  ...spsLiteVariants,
 };
 
 export default function Reviews(props: IReviewsBlock) {
