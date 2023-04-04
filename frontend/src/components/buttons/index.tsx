@@ -1,6 +1,6 @@
 import { FC } from "react";
-import SimpleButtons from "./simple-buttons";
-import ButtonsArrays from "./buttons-arrays";
+import SimpleButtons, { IButton } from "./simple-buttons";
+import ButtonsArrays, { IButtonsArray } from "./buttons-arrays";
 import FlyoutMenues from "./flyout-menues";
 
 const components = {
@@ -8,8 +8,9 @@ const components = {
   "elements.button": SimpleButtons,
   "elements.flyout-menu": FlyoutMenues,
 };
-export interface IButtons {
+export interface IButtons extends IButton, IButtonsArray {
   _Component: keyof typeof components;
+  variant: any;
 }
 
 export default function Buttons(props: IButtons) {

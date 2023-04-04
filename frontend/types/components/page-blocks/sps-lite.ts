@@ -107,6 +107,7 @@ export interface ISpsLiteBackendHeroSectionBlock {
   media?: IBackendMedia[] | null;
   anchor: string | null;
   background?: IBackendMedia | null;
+  _Component: `page-blocks.hero-section-block`;
 }
 
 export interface ISpsLiteBackendIncentivesBlock {

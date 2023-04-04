@@ -3,7 +3,11 @@ import Dropdown from "./Dropdown";
 import Simple from "./Simple";
 import { IBackendButtonsArray } from "types/components/elements";
 
-export interface IButtonsArray extends Omit<IBackendButtonsArray, `id`> {}
+export interface IButtonsArray
+  extends Omit<IBackendButtonsArray, `id` | `description` | `className`> {
+  description?: string | null;
+  className?: string | null;
+}
 
 const variants = { simple: Simple, dropdown: Dropdown };
 

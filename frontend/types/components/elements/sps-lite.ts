@@ -15,10 +15,10 @@ export interface ISpsLiteBackendButton {
 
 export interface ISpsLiteBackendButtonsArray {
   id: number;
-  title?: string;
+  title: string | null;
   buttons: IBackendButton[];
-  description?: string;
-  className?: string;
+  description: string | null;
+  className: string | null;
   variant: `simple` | `dropdown`;
   media?: IBackendMedia[] | null;
   additionalMedia?: IBackendMedia[] | null;

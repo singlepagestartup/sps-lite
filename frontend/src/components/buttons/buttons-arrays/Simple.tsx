@@ -5,7 +5,7 @@ export default function Simple(props: IButtonsArray) {
   const { title, buttons } = props;
 
   return (
-    <div className={props.className}>
+    <div className={props?.className || ``}>
       <div className="flex flex-col gap-2 relative">
         {title ? (
           <div

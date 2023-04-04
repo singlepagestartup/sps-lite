@@ -1,11 +1,11 @@
-import { IBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendPageBlock } from "types/components/page-blocks";
 import {
   IBackendMeta,
   IBackendPublicPageFooter,
   IBackendPublicPageLayout,
   IBackendPublicPageNavbar,
   IBackendPublicPageTopbar,
-} from "types/single-types/sps-lite";
+} from "types/single-types";
 
 export interface ISpsLitePublicPage {
   meta?: IBackendMeta | null;

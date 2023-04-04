@@ -78,6 +78,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered = {
   title: `OpenSource "под капотом"`,
   description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
   buttons: [spsLiteBackendButtonDefault],
+  _Component: `page-blocks.hero-section-block`,
 } as ISpsLiteBackendHeroSectionBlock;
 
 export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations = {
