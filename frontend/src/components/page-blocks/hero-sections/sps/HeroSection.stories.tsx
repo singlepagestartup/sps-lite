@@ -1,15 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
-import HeroSections from "..";
-import { SimpleCentered as SpsLiteSimpleCentered } from "../sps-lite/HeroSection.stories";
+import SpsHeroSections from ".";
+import { spsBackendHeroSectionBlockSplit } from "~mocks/components/page-blocks/sps";
 
-const meta = { component: HeroSections } satisfies Meta<typeof HeroSections>;
+const meta = { component: SpsHeroSections } satisfies Meta<
+  typeof SpsHeroSections
+>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Split: Story = {
-  args: {
-    ...SpsLiteSimpleCentered.args,
-    variant: `split`,
-  },
+  args: spsBackendHeroSectionBlockSplit,
 };

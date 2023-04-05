@@ -1,12 +1,15 @@
 import nextUtils from "@rogwild/next-utils";
-import Link from "next/link";
 const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
-import { IHeroSectionBlock } from "..";
 import SimpleButtons from "~components/buttons/simple-buttons";
+import { ISpsLiteHeroSectionBlock } from ".";
 
-export default function SimpleCentered(props: IHeroSectionBlock) {
+export default function SimpleCentered<T extends ISpsLiteHeroSectionBlock>(
+  props: T
+) {
+  console.log(`🚀 ~ props:`, props.logotype);
+
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (

@@ -4,7 +4,6 @@ import {
   IBackendFaqBlock,
   IBackendFeaturesSectionBlock,
   IBackendHeaderSectionBlock,
-  IBackendHeroSectionBlock,
   IBackendIncentivesBlock,
   IBackendLogotypesCloudBlock,
   IBackendNotFoundBlock,
@@ -19,7 +18,6 @@ import {
   spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction,
   spsLiteBackendFeatureSectionBlockWithProductScreenshot,
   spsLiteBackendHeaderSectionBlockSimpleCentered,
-  spsLiteBackendHeroSectionBlockSimpleCentered,
   spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
   spsLiteBackendLogotypesCloudBlockSimpleWithHeading,
   spsLiteBackendNotFoundBlockSimple,
@@ -28,6 +26,7 @@ import {
   spsLiteBackendReviewsTableBlockSimple,
   spsLiteBackendSliderBlockSimple,
 } from "./sps-lite";
+import { spsLiteUploadPluginBackendMediaLogotypeIcon } from "~mocks/plugins/upload/sps-lite";
 
 export const backendFeatureSectionBlockWithProductScreenshot: IBackendFeaturesSectionBlock =
   {
@@ -52,10 +51,6 @@ export const backendHeaderSectionBlockSimpleCentered: IBackendHeaderSectionBlock
   {
     ...spsLiteBackendHeaderSectionBlockSimpleCentered,
   };
-
-export const backendHeroSectionBlockSimpleCentered: IBackendHeroSectionBlock = {
-  ...spsLiteBackendHeroSectionBlockSimpleCentered,
-};
 
 export const backendIncentivesBlockFourColumnWithIllustrations: IBackendIncentivesBlock =
   {

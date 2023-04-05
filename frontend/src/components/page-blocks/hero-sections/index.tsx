@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { IBackendHeroSectionBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-import { spsVariants } from "./sps";
-
-export interface IHeroSectionBlock
-  extends Omit<IBackendHeroSectionBlock, `id`> {}
+import {
+  ISpsLiteHeroSectionBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
+import { ISpsHeroSectionBlock, variants as spsVariants } from "./sps";
 
 const variants = {
   ...spsLiteVariants,
   ...spsVariants,
 };
 
-export default function HeroSections(props: IHeroSectionBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IHeroSectionBlock>;
+export default function HeroSections<
+  T extends ISpsLiteHeroSectionBlock | ISpsHeroSectionBlock
+>(props: T) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

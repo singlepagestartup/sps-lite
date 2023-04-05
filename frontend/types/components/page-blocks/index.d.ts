@@ -32,8 +32,6 @@ export interface IBackendFeaturesSectionBlock
 export interface IBackendHeaderSectionBlock
   extends ISpsLiteBackendHeaderSectionBlock {}
 
-export interface IBackendHeroSectionBlock extends ISpsBackendHeroSectionBlock {}
-
 export interface IBackendIncentivesBlock
   extends ISpsLiteBackendIncentivesBlock {}
 

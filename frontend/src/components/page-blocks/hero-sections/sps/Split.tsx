@@ -1,14 +1,13 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { IHeroSectionBlock } from "..";
 import { BACKEND_URL } from "~utils/envs";
 import SimpleButtons from "~components/buttons/simple-buttons";
+import { ISpsHeroSectionBlock } from ".";
 
-export default function Split(props: IHeroSectionBlock) {
+export default function Split<T extends ISpsHeroSectionBlock>(props: T) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -34,6 +33,17 @@ export default function Split(props: IHeroSectionBlock) {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
               <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
                 <div className="lg:pr-16">
+                  <div className="mb-6">
+                    {props.logotype ? (
+                      <Image
+                        src={getImageUrl(props.logotype, { BACKEND_URL })}
+                        className="object-contain"
+                        width={150}
+                        height={50}
+                        alt=""
+                      />
+                    ) : null}
+                  </div>
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                     {props.title}
                   </h1>
