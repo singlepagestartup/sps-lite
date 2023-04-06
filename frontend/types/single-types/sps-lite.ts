@@ -6,7 +6,6 @@ import {
 } from "types/components/elements/sps-lite";
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
-import { IButtons } from "~components/elements/buttons";
 
 export interface ISpsLiteBackendPublicPageFooter {
   id: number;
@@ -28,11 +27,11 @@ export interface ISpsLiteBackendPublicPageFooter {
 export interface ISpsLiteBackendPublicPageNavbar {
   id: number;
   logotype?: ISpsLiteBackendLogotype | null;
-  buttons?: IButtons[];
-  profileButtons?: IButtons[];
+  buttons?: ISpsLiteBackendButton[];
+  profileButtons?: ISpsLiteBackendButton[];
   locale: string;
-  additionalButtons?: IButtons[];
-  ctaButtons?: IButtons[];
+  additionalButtons?: ISpsLiteBackendButton[];
+  ctaButtons?: ISpsLiteBackendButton[];
   className: string | null;
   variant: `simple-links-on-left`;
   createdAt: string;

@@ -1,12 +1,12 @@
-import { IBackendButton } from "types/components/elements";
 import BottomLine from "./BottomLine";
 import Default from "./Default";
 import Primary from "./Primary";
 import { FC } from "react";
+import { ISpsLiteBackendButton } from "types/components/elements/sps-lite";
 
 export interface ISpsLiteButton
   extends Omit<
-    IBackendButton,
+    ISpsLiteBackendButton,
     | `id`
     | `url`
     | `description`
@@ -19,7 +19,7 @@ export interface ISpsLiteButton
   className?: string | null;
   additionalAttributes?: any | null;
   onClick?: any;
-  __component?: IBackendButton[`__component`];
+  __component?: ISpsLiteBackendButton[`__component`];
 }
 
 export const variants = {

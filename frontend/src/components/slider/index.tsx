@@ -1,15 +1,15 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
-import { IBackendSlider } from "types/collection-types";
-import { IBackendSlide } from "types/components/elements";
 import { variants as spsLiteVariants } from "./sps-lite";
+import { ISpsLiteBackendSlider } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Slider(props: IBackendSlider) {
+export default function Slider(props: ISpsLiteBackendSlider) {
   const { slides } = props;
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -57,6 +57,6 @@ export interface ISlider {
   aspectRatioClassName: string | null;
 }
 
-export interface IExtendedSlide extends IBackendSlide {
+export interface IExtendedSlide extends ISpsLiteBackendSlide {
   renderType: string;
 }

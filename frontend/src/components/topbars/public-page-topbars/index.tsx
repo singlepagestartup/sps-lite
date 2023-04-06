@@ -1,11 +1,8 @@
 import { FC } from "react";
-import { IBackendPublicPageTopbar } from "types/single-types";
 import {
   ISpsLitePublicPageTopbarBlock,
   variants as spsLiteVariants,
 } from "./sps-lite";
-
-export interface IBackendPublicPageBlock extends IBackendPublicPageTopbar {}
 
 const variants = {
   ...spsLiteVariants,

@@ -15,12 +15,12 @@ import { BACKEND_URL } from "~utils/envs";
 import { IExtendedSlide, ISlider } from "..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { IBackendSlide } from "types/components/elements";
 import Buttons from "~components/elements/buttons";
+import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
 
 interface INavigationButton {
   isNext?: boolean;
-  slides: IBackendSlide[];
+  slides: ISpsLiteBackendSlide[];
   activeSlide: number;
   onClick: MouseEventHandler;
 }

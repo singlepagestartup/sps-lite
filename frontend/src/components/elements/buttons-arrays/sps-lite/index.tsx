@@ -1,16 +1,16 @@
-import { IBackendButtonsArray } from "types/components/elements";
 import Dropdown from "./Dropdown";
 import Simple from "./Simple";
 import { FC } from "react";
+import { ISpsLiteBackendButtonsArray } from "types/components/elements/sps-lite";
 
 export interface IButtonsArray
   extends Omit<
-    IBackendButtonsArray,
+    ISpsLiteBackendButtonsArray,
     `id` | `description` | `className` | `__component`
   > {
   description?: string | null;
   className?: string | null;
-  __component?: IBackendButtonsArray[`__component`];
+  __component?: ISpsLiteBackendButtonsArray[`__component`];
 }
 
 export const variants = {
