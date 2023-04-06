@@ -17,7 +17,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
         />
       ) : null}
 
-      <div className="relative pt-6 pb-16 sm:pb-24">
+      <div className="relative pt-6 pb-16">
         <main className="mx-auto mt-16 max-w-2xl lg:max-w-7xl px-4 sm:mt-24">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight xl:inline text-gray-900 sm:text-5xl md:text-6xl">
@@ -40,7 +40,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
             src={getImageUrl(props.media[0], { BACKEND_URL })}
             alt=""
             fill={true}
-            className="object-contain object-bottom"
+            className="object-cover"
           />
         </div>
       ) : null}

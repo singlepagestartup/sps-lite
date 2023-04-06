@@ -34,9 +34,11 @@ export default function Split(props: ISpsHeroSectionBlock) {
               <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
                 <div className="lg:pr-16">
                   <div className="mb-6">
-                    {props.logotype ? (
+                    {props.logotype?.media?.length ? (
                       <Image
-                        src={getImageUrl(props.logotype, { BACKEND_URL })}
+                        src={getImageUrl(props.logotype.media[0], {
+                          BACKEND_URL,
+                        })}
                         className="object-contain"
                         width={150}
                         height={50}

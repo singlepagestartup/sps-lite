@@ -43,7 +43,7 @@ Simple.parameters = {
   nextjs: {
     router: {
       query: {
-        opened_popup: `hello-world`,
+        opened_popup: spsLiteBackendModal.uid,
       },
     },
   },

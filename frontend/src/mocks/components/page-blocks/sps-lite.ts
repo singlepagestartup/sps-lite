@@ -91,6 +91,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
     description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
     buttons: [spsLiteBackendButtonDefault],
     __component: `page-blocks.hero-section-block`,
+    media: [spsLiteUploadPluginBackendMediaTableAndHands],
   };
 
 export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations: ISpsLiteBackendIncentivesBlock =
