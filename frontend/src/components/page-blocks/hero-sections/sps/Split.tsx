@@ -7,7 +7,7 @@ import { BACKEND_URL } from "~utils/envs";
 import { ISpsHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 
-export default function Split<T extends ISpsHeroSectionBlock>(props: T) {
+export default function Split(props: ISpsHeroSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

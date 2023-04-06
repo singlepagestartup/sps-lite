@@ -5,9 +5,7 @@ import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 
-export default function SimpleCentered<T extends ISpsLiteHeroSectionBlock>(
-  props: T
-) {
+export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (
