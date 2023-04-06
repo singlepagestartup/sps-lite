@@ -18,9 +18,6 @@ import { ISpsBackendHeroSectionBlock } from "./sps";
 
 export interface IBackendPageBlock extends ISpsLiteBackendPageBlock {}
 
-export interface IBackendContactSectonBlock
-  extends ISpsLiteBackendContactSectonBlock {}
-
 export interface IBackendCtaSectionBlock
   extends ISpsLiteBackendCtaSectionBlock {}
 

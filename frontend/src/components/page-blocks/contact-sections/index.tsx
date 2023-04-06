@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { IBackendContactSectonBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface IContactSectonBlock extends IBackendContactSectonBlock {}
+import {
+  ISpsLiteContactSectonBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function ContactSectons(props: IContactSectonBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IContactSectonBlock>;
+export default function ContactSectons<T extends ISpsLiteContactSectonBlock>(
+  props: T
+) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

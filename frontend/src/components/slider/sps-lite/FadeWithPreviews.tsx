@@ -15,8 +15,8 @@ import { BACKEND_URL } from "~utils/envs";
 import { IExtendedSlide, ISlider } from "..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import SimpleButtons from "~components/buttons/simple-buttons";
 import { IBackendSlide } from "types/components/elements";
+import Buttons from "~components/elements/buttons";
 
 interface INavigationButton {
   isNext?: boolean;
@@ -190,7 +190,7 @@ function DefaultSlideComponent({
             <p>{slide.description}</p>
             <div className="buttons__container">
               {slide.buttons?.map((button, index: number) => {
-                return <SimpleButtons key={index} {...button} />;
+                return <Buttons key={index} {...button} />;
               })}
             </div>
           </div>

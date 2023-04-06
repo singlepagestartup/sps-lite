@@ -6,7 +6,7 @@ import Tables, {
   IHeaderCompProps,
 } from "~components/tables";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
-import { IReviewsTableBlock } from "..";
+import { ISpsLiteReviewsTableBlock } from ".";
 
 const tableConfig = {
   columns: [
@@ -54,7 +54,7 @@ const tableConfig = {
   },
 };
 
-export default function Simple(props: IReviewsTableBlock) {
+export default function Simple(props: ISpsLiteReviewsTableBlock) {
   const {
     data: reviews,
     isLoading,

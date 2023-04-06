@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Reviews, { IReviewsBlock } from "..";
-import { backendReview } from "~mocks/collection-types";
-import { backendReviewsBlockSimpleWithAvatars } from "~mocks/components/page-blocks";
+import Reviews, { ISpsLiteReviewsBlock } from ".";
+import { spsLiteBackendReviewsBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
+import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 
 const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
 export default meta;
@@ -15,16 +15,16 @@ type Story = StoryObj<typeof meta>;
 
 const worker = setupWorker(
   rest.get(`${BACKEND_URL}/api/reviews`, (req, res, ctx) => {
-    return res(ctx.json(Array(5).fill(backendReview)));
+    return res(ctx.json(Array(5).fill(spsLiteBackendReview)));
   })
 );
 
 export const SimpleCentered: Story = {
   render: (args) => <ReviewsComponent {...args} />,
-  args: backendReviewsBlockSimpleWithAvatars,
+  args: spsLiteBackendReviewsBlockSimpleWithAvatars,
 };
 
-function ReviewsComponent(args: IReviewsBlock) {
+function ReviewsComponent(args: ISpsLiteReviewsBlock) {
   useEffect(() => {
     worker.start();
   }, []);

@@ -1,11 +1,13 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IIncentivesBlock } from "..";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
+import { ISpsLiteIncentivesBlock } from ".";
 
-export default function FourColumnWithIllustrations(props: IIncentivesBlock) {
+export default function FourColumnWithIllustrations(
+  props: ISpsLiteIncentivesBlock
+) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

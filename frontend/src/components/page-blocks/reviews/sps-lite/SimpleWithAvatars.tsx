@@ -8,8 +8,8 @@ import dayjs from "dayjs";
 import { useMemo } from "react";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import Cards, { ICardProps, ICardSkeletonProps } from "~components/cards";
-import { IReviewsBlock } from "..";
 import { IBackendReview } from "types/collection-types";
+import { ISpsLiteReviewsBlock } from ".";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -18,7 +18,7 @@ const cardsConfig = {
   className: `grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8`,
 };
 
-export default function SimpleWithAvatars(props: IReviewsBlock) {
+export default function SimpleWithAvatars(props: ISpsLiteReviewsBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { IBackendIncentivesBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface IIncentivesBlock extends IBackendIncentivesBlock {}
+import {
+  ISpsLiteIncentivesBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Incentives(props: IIncentivesBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IIncentivesBlock>;
+export default function Incentives<T extends ISpsLiteIncentivesBlock>(
+  props: T
+) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

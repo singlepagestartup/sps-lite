@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { ICardProps, ICardsBlock, ICardSkeletonProps } from "..";
+import { ICardProps, ICardSkeletonProps } from "..";
+import { ISpsLiteCatdsProps } from ".";
 
 export const animationClassName = `bg-gray-200 animate-pulse`;
 
-export default function Simple(props: ICardsBlock) {
+export default function Simple(props: ISpsLiteCatdsProps) {
   const { cardsConfig, items, showSkeletons } = props;
 
   const localItems = useMemo(() => {

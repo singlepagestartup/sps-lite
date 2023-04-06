@@ -3,11 +3,11 @@ const { getImageUrl } = utils.api;
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { BACKEND_URL } from "~utils/envs";
-import ButtonsArrays from "~components/buttons/buttons-arrays";
-import { IPublicPageFooterBlock } from "..";
+import ButtonsArrays from "~components/elements/buttons-arrays";
+import { ISpsLitePublicPageFooterBlock } from ".";
 
 export default function FourColumnsWithCompanyMission(
-  props: IPublicPageFooterBlock
+  props: ISpsLitePublicPageFooterBlock
 ) {
   const {
     buttonsArrays,

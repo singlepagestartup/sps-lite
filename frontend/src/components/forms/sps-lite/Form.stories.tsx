@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Forms, { IForm } from "..";
-import { backendForm } from "~mocks/collection-types";
+import Forms from ".";
+import { spsLiteBackendForm } from "~mocks/collection-types/sps-lite";
+import { ISpsLiteFormBlock } from ".";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
 export default meta;
@@ -20,10 +21,10 @@ const worker = setupWorker(
 
 export const SimpleCentered: Story = {
   render: (args) => <FormComponent {...args} />,
-  args: backendForm,
+  args: spsLiteBackendForm,
 };
 
-function FormComponent(args: IForm) {
+function FormComponent(args: ISpsLiteFormBlock) {
   useEffect(() => {
     worker.start();
   }, []);

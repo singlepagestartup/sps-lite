@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
-import CtaSections from "..";
-import { backendSliderBlockSimple } from "~mocks/components/page-blocks";
+import Slider from ".";
+import { spsLiteBackendSliderBlockSimple } from "~mocks/components/page-blocks/sps-lite";
 
-const meta = { component: CtaSections } satisfies Meta<typeof CtaSections>;
+const meta = { component: Slider } satisfies Meta<typeof Slider>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const SimpleCentered: Story = {
-  args: backendSliderBlockSimple,
+export const Simple: Story = {
+  args: spsLiteBackendSliderBlockSimple,
 };

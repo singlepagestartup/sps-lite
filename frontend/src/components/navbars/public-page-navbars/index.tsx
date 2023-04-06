@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { IBackendPublicPageNavbar } from "types/single-types";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface INavbarBlock extends IBackendPublicPageNavbar {}
+import {
+  ISpsLitePublicPageNavbarBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function PublicPageNavbars(props: INavbarBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<INavbarBlock>;
+export default function PublicPageNavbars<
+  T extends ISpsLitePublicPageNavbarBlock
+>(props: T) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

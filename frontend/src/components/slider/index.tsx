@@ -3,7 +3,7 @@ import utils from "@rogwild/next-utils";
 const { parseMimeType } = utils.formatters;
 import { IBackendSlider } from "types/collection-types";
 import { IBackendSlide } from "types/components/elements";
-import { spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,

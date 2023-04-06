@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { IBackendCtaSectionBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface ICtaSectionsBlock extends IBackendCtaSectionBlock {}
+import {
+  ISpsLiteCtaSectionsBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function CtaSections(props: ICtaSectionsBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ICtaSectionsBlock>;
+export default function CtaSections<T extends ISpsLiteCtaSectionsBlock>(
+  props: T
+) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { ISliderBlock } from "..";
 import Slider from "~components/slider";
+import { ISpsLiteSliderBlock } from ".";
 
-export default function Simple(props: ISliderBlock) {
+export default function Simple(props: ISpsLiteSliderBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

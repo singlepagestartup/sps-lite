@@ -6,7 +6,7 @@ import Tables, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "..";
-import { backendReview } from "~mocks/collection-types";
+import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 
 const meta = {
   component: Tables,
@@ -62,7 +62,7 @@ const tableConfig = {
   },
 };
 
-const reviews = Array(5).fill(backendReview);
+const reviews = Array(5).fill(spsLiteBackendReview);
 
 export const Simple: Story = {
   args: {

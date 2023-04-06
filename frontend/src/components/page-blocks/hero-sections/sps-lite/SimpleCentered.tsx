@@ -2,14 +2,12 @@ import nextUtils from "@rogwild/next-utils";
 const { getImageUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
-import SimpleButtons from "~components/buttons/simple-buttons";
 import { ISpsLiteHeroSectionBlock } from ".";
+import Buttons from "~components/elements/buttons";
 
 export default function SimpleCentered<T extends ISpsLiteHeroSectionBlock>(
   props: T
 ) {
-  console.log(`🚀 ~ props:`, props.logotype);
-
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (
@@ -32,7 +30,7 @@ export default function SimpleCentered<T extends ISpsLiteHeroSectionBlock>(
             </p>
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
               {props?.buttons?.map((button, index) => {
-                return <SimpleButtons key={index} {...button} />;
+                return <Buttons key={index} {...button} />;
               })}
             </div>
           </div>

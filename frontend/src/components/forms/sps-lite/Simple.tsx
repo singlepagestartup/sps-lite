@@ -1,11 +1,11 @@
-import { IForm } from "..";
 import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
-import SimpleButtons from "~components/buttons/simple-buttons";
+import { ISpsLiteFormBlock } from ".";
+import Buttons from "~components/elements/buttons";
 
-export default function Simple(props: IForm) {
+export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
 
   const methods = useForm<any>({
@@ -139,7 +139,7 @@ export default function Simple(props: IForm) {
             by="id"
           />
           <div className="submit__button_container">
-            <SimpleButtons
+            <Buttons
               variant={props.button?.variant || `default`}
               onClick={handleSubmit(onSubmit)}
               title={props.button?.title || `Submit`}

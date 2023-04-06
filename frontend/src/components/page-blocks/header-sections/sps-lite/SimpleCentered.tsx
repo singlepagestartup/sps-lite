@@ -1,8 +1,8 @@
-import { IHeaderSectionBlock } from "..";
+import { ISpsLiteHeaderSectionBlock } from ".";
 import ReactMarkdown from "react-markdown";
 import { useMemo } from "react";
 
-export default function SimpleCentered(props: IHeaderSectionBlock) {
+export default function SimpleCentered(props: ISpsLiteHeaderSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

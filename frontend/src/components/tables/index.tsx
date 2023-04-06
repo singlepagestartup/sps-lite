@@ -1,11 +1,11 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-interface ITablesBlock extends ITableProps {
+export interface ITablesBlock extends ITableProps {
   variant: keyof typeof variants;
 }
 

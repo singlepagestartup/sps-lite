@@ -1,17 +1,12 @@
 import { FC } from "react";
-import { IBackendPricingsBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface IPricingsBlock extends IBackendPricingsBlock {}
+import { ISpsLitePricingsBlock, variants as spsLiteVariants } from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Pricings(props: IPricingsBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IPricingsBlock>;
+export default function Pricings<T extends ISpsLitePricingsBlock>(props: T) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

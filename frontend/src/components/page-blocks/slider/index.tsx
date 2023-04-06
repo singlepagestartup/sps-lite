@@ -1,17 +1,12 @@
 import { FC } from "react";
-import { IBackendSliderBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface ISliderBlock extends IBackendSliderBlock {}
+import { variants as spsLiteVariants, ISpsLiteSliderBlock } from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Slider(props: ISliderBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISliderBlock>;
+export default function Slider<T extends ISpsLiteSliderBlock>(props: T) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

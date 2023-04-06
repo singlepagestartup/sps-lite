@@ -14,12 +14,13 @@
 */
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { ISpsLiteContactSectonBlock } from ".";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(` `);
 }
 
-export default function Centered() {
+export default function Centered(props: ISpsLiteContactSectonBlock) {
   const [agreed, setAgreed] = useState(false);
 
   return (

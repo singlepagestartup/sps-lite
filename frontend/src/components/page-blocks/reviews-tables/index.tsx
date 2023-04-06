@@ -1,17 +1,17 @@
 import { FC } from "react";
-import { IBackendReviewsTableBlock } from "types/components/page-blocks";
-import { spsLiteVariants } from "./sps-lite";
-
-export interface IReviewsTableBlock extends IBackendReviewsTableBlock {}
+import {
+  ISpsLiteReviewsTableBlock,
+  variants as spsLiteVariants,
+} from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function ReviewsTables(props: IReviewsTableBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IReviewsTableBlock>;
+export default function ReviewsTables<T extends ISpsLiteReviewsTableBlock>(
+  props: T
+) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {
     return <></>;

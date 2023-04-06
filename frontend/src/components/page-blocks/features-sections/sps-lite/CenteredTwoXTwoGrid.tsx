@@ -1,11 +1,13 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { IFeaturesSectionBlock } from "..";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
+import { ISpsLiteFeaturesSectionBlock } from ".";
 
-export default function CenteredTwoXTwoGrid(props: IFeaturesSectionBlock) {
+export default function CenteredTwoXTwoGrid(
+  props: ISpsLiteFeaturesSectionBlock
+) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

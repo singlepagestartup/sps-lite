@@ -1,11 +1,11 @@
-import { IPublicPage } from "types/pages";
 import PublicPageFooters from "~components/footers/public-page-footers";
 import Meta from "~components/meta";
 import PublicPageNavbars from "~components/navbars/public-page-navbars";
 import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars/public-page-topbars";
+import { ISpsLitePublicPageLayoutBlock } from ".";
 
-export default function Simple(props: IPublicPage) {
+export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
   return (
     <>
       {props.meta ? <Meta {...props.meta} /> : null}

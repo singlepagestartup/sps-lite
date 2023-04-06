@@ -1,11 +1,11 @@
-import { IPricingsBlock } from "..";
 import { useMemo } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";
 import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
-import SimpleButtons from "~components/buttons/simple-buttons";
 import { IBackendTier } from "types/collection-types";
+import { ISpsLitePricingsBlock } from ".";
+import Buttons from "~components/elements/buttons";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -13,7 +13,7 @@ const cardsConfig = {
   className: `mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2 lg:gap-8 items-start`,
 };
 
-export default function SinglePriceWithDetails(props: IPricingsBlock) {
+export default function SinglePriceWithDetails(props: ISpsLitePricingsBlock) {
   const translate = useTranslations();
 
   const additionalAttributes = useMemo(() => {
@@ -134,7 +134,7 @@ function TierCard(props: ICardProps) {
           </ul>
           <div className="mt-8">
             {item.buttons?.map((button, index) => {
-              return <SimpleButtons key={index} {...button} />;
+              return <Buttons key={index} {...button} />;
             })}
           </div>
         </div>

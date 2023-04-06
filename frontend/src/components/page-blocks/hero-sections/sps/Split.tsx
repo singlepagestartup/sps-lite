@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { BACKEND_URL } from "~utils/envs";
-import SimpleButtons from "~components/buttons/simple-buttons";
 import { ISpsHeroSectionBlock } from ".";
+import Buttons from "~components/elements/buttons";
 
 export default function Split<T extends ISpsHeroSectionBlock>(props: T) {
   const additionalAttributes = useMemo(() => {
@@ -54,7 +54,7 @@ export default function Split<T extends ISpsHeroSectionBlock>(props: T) {
                   ) : null}
                   <div className="mt-6 flex gap-2 flex-wrap">
                     {props.buttons?.map((button, index) => {
-                      return <SimpleButtons key={index} {...button} />;
+                      return <Buttons key={index} {...button} />;
                     })}
                   </div>
                 </div>

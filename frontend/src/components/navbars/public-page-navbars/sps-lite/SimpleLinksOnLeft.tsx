@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import utils from "@rogwild/next-utils";
 import { BACKEND_URL } from "~utils/envs";
-import Buttons from "~components/buttons";
-import { INavbarBlock } from "..";
+import Buttons from "~components/elements/buttons";
+import { ISpsLitePublicPageNavbarBlock } from ".";
 const { getImageUrl } = utils.api;
 
-export default function SimpleLinksOnLeft(props: INavbarBlock) {
+export default function SimpleLinksOnLeft(
+  props: ISpsLitePublicPageNavbarBlock
+) {
   return (
     <Disclosure as="nav" className="bg-white shadow w-screen z-30 fixed">
       {({ open }) => (

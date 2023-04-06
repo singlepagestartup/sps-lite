@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 
 const variants = {
   ...spsLiteVariants,

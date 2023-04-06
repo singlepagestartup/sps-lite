@@ -6,7 +6,7 @@ import {
 } from "types/components/elements/sps-lite";
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
-import { IButtons } from "~components/buttons";
+import { IButtons } from "~components/elements/buttons";
 
 export interface ISpsLiteBackendPublicPageFooter {
   id: number;

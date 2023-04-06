@@ -1,12 +1,14 @@
 import utils from "@rogwild/next-utils";
 const { getImageUrl } = utils.api;
 import Image from "next/image";
-import { ICtaSectionsBlock } from "..";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
-import SimpleButtons from "~components/buttons/simple-buttons";
+import { ISpsLiteCtaSectionsBlock } from ".";
+import Buttons from "~components/elements/buttons";
 
-export default function DarkPanelWithAppScreenshot(props: ICtaSectionsBlock) {
+export default function DarkPanelWithAppScreenshot(
+  props: ISpsLiteCtaSectionsBlock
+) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -50,7 +52,7 @@ export default function DarkPanelWithAppScreenshot(props: ICtaSectionsBlock) {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               {props?.buttons?.map((button, index) => {
-                return <SimpleButtons key={index} {...button} />;
+                return <Buttons key={index} {...button} />;
               })}
             </div>
           </div>

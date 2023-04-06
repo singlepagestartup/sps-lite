@@ -1,0 +1,21 @@
+import { FC } from "react";
+import ClientOnlyWrapper from "~components/wrappers/client-only";
+import { ISpsLiteButton, variants as spsLiteVariants } from "./sps-lite";
+
+const variants = {
+  ...spsLiteVariants,
+};
+
+export default function Buttons<T extends ISpsLiteButton>(props: T) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+
+  if (!Comp) {
+    return <></>;
+  }
+
+  return (
+    <ClientOnlyWrapper>
+      <Comp {...props} />
+    </ClientOnlyWrapper>
+  );
+}

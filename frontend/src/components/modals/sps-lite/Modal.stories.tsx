@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Modals from "..";
-import { backendModal } from "~mocks/collection-types";
+import { spsLiteBackendModal } from "~mocks/collection-types/sps-lite";
 
 const meta = {
   component: Modals,
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 const worker = setupWorker(
   rest.get(`${BACKEND_URL}/api/modals`, (req, res, ctx) => {
-    return res(ctx.json([backendModal]));
+    return res(ctx.json([spsLiteBackendModal]));
   })
 );
 

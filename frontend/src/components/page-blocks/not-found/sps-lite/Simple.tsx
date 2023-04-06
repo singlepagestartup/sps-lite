@@ -1,7 +1,7 @@
-import { INotFoundBlock } from "..";
-import SimpleButtons from "~components/buttons/simple-buttons";
+import Buttons from "~components/elements/buttons";
+import { ISpsLiteNotFoundBlock } from ".";
 
-export default function Simple(props: INotFoundBlock) {
+export default function Simple(props: ISpsLiteNotFoundBlock) {
   return (
     <div className="min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
       <div className="mx-auto max-w-max">
@@ -20,7 +20,7 @@ export default function Simple(props: INotFoundBlock) {
             </div>
             <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
               {props.buttons?.map((button, index) => {
-                return <SimpleButtons key={index} {...button} />;
+                return <Buttons key={index} {...button} />;
               })}
             </div>
           </div>

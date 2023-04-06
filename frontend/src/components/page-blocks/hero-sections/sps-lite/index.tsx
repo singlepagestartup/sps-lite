@@ -2,18 +2,16 @@ import { ISpsLiteBackendHeroSectionBlock } from "types/components/page-blocks/sp
 import SimpleCentered from "./SimpleCentered";
 import { FC } from "react";
 
-export const variants = {
-  "simple-centered": SimpleCentered,
-};
-
 export interface ISpsLiteHeroSectionBlock
   extends ISpsLiteBackendHeroSectionBlock {
   [key: string]: any;
 }
 
-export default function HeroSections<T extends ISpsLiteHeroSectionBlock>(
-  props: T
-) {
+export const variants = {
+  "simple-centered": SimpleCentered,
+};
+
+export default function HeroSections(props: ISpsLiteHeroSectionBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
   ] as FC<ISpsLiteHeroSectionBlock>;
