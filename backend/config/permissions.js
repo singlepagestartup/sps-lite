@@ -1,5 +1,5 @@
 const spsLiteActions = {
-    'api::modal.modal': ['find', 'findOne'],
+    'api::modal.modal': ['find'],
     'api::meta.meta': ['find'],
     'api::not-found-page.not-found-page': ['find'],
     'api::slider.slider': ['find'],
@@ -9,11 +9,12 @@ const spsLiteActions = {
     'api::public-page-navbar.public-page-navbar': ['find'],
     'api::public-page-footer.public-page-footer': ['find'],
     'api::theme.theme': ['find'],
-    'api::form.form': ['find', 'findOne'],
+    'api::form.form': ['find'],
     'api::form-request.form-request': ['create'],
-    'api::review.review': ['find', 'findOne'],
-    'api::tier.tier': ['find', 'findOne'],
+    'api::review.review': ['find'],
+    'api::tier.tier': ['find'],
     'api::currency.currency': ['find'],
+    'api::slide-over.slide-over': ['find'],
 };
 
 module.exports = () => ({

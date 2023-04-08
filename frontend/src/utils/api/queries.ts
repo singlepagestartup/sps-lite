@@ -160,6 +160,10 @@ export const pageBlocksPopulate = {
   },
 };
 
+export const slideOverPropulate = {
+  ...pageBlocksPopulate,
+};
+
 export const modalPopulate = {
   ...pageBlocksPopulate,
 };

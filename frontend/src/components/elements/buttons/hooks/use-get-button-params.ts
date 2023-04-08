@@ -6,15 +6,14 @@ export default function useGetButtonParams(props: {
   url?: string | null;
 }) {
   const router = useRouter();
-  const { url } = props;
 
   const isActive = useMemo(() => {
-    if (!url) {
+    if (!props.url) {
       return;
     }
 
-    return router.asPath.replace(`/`, ``) === url;
-  }, [router, url]);
+    return router.asPath.replace(`/`, ``) === props.url;
+  }, [router, props.url]);
 
   const additionalAttributes = useMemo(() => {
     if (!props.additionalAttributes) {
@@ -24,5 +23,17 @@ export default function useGetButtonParams(props: {
     return { ...props.additionalAttributes };
   }, [props]);
 
-  return { additionalAttributes, isActive };
+  const url = useMemo(() => {
+    if (
+      router.pathname.includes(`[`) &&
+      props.url &&
+      [`?`].includes(props.url[0])
+    ) {
+      return `${router.asPath}${props.url}`.replace(`//`, `/`);
+    }
+
+    return props.url;
+  }, [router, props.url]);
+
+  return { additionalAttributes, isActive, url };
 }

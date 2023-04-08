@@ -3,8 +3,7 @@ import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
 
 export default function Default(props: ISpsLiteButton) {
-  const { url, title } = props;
-  const { isActive, additionalAttributes } = useGetButtonParams(props);
+  const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   if (props?.onClick) {
     return (
@@ -14,7 +13,7 @@ export default function Default(props: ISpsLiteButton) {
           onClick={props.onClick}
           className="button-default"
         >
-          {title}
+          {props.title}
         </button>
       </div>
     );
@@ -29,7 +28,7 @@ export default function Default(props: ISpsLiteButton) {
           aria-selected={isActive}
           className="button-default"
         >
-          {title}
+          {props.title}
         </Link>
       </div>
     );

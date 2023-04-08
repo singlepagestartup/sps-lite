@@ -27,7 +27,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const tagTypes = [`Currency`, `Modal`, `Review`];
+const tagTypes = [`Currency`, `Modal`, `Review`, `SlideOver`];
 
 export const backendServiceApi = createApi({
   baseQuery,

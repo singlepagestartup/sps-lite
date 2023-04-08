@@ -28,7 +28,6 @@ export interface ISpsLiteBackendPublicPageNavbar {
   id: number;
   logotype?: ISpsLiteBackendLogotype | null;
   buttons?: ISpsLiteBackendButton[];
-  profileButtons?: ISpsLiteBackendButton[];
   locale: string;
   additionalButtons?: ISpsLiteBackendButton[];
   ctaButtons?: ISpsLiteBackendButton[];

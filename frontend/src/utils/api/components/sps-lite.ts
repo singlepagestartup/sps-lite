@@ -12,7 +12,7 @@ import ReviewsTables from "~components/page-blocks/reviews-tables";
 import FeaturesSections from "~components/page-blocks/features-sections";
 import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
 
-const liteBlockComponents = {
+export const pageBlockComponents = {
   [`page-blocks.header-section-block`]: HeaderSections,
   [`page-blocks.hero-section-block`]: HeroSections,
   [`page-blocks.reviews-block`]: Reviews,
@@ -26,8 +26,4 @@ const liteBlockComponents = {
   [`page-blocks.cta-section-block`]: CtaSections,
   [`page-blocks.pricing-block`]: Pricings,
   [`page-blocks.reviews-table-block`]: ReviewsTables,
-};
-
-export const pageBlockComponents = {
-  ...liteBlockComponents,
 };

@@ -3,6 +3,7 @@ import {
   ISpsLiteBackendForm,
   ISpsLiteBackendModal,
   ISpsLiteBackendReview,
+  ISpsLiteBackendSlideOver,
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
 } from "types/collection-types/sps-lite";
@@ -16,7 +17,10 @@ import {
   spsLiteBackendSlide,
   spsLiteBackendTierInput,
 } from "~mocks/components/elements/sps-lite";
-import { spsLiteBackendHeroSectionBlockSimpleCentered } from "~mocks/components/page-blocks/sps-lite";
+import {
+  spsLiteBackendHeroSectionBlockSimpleCentered,
+  spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
+} from "~mocks/components/page-blocks/sps-lite";
 import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendSliderFadeWithPreviews: ISpsLiteBackendSlider = {
@@ -105,4 +109,21 @@ export const spsLiteBackendModal: ISpsLiteBackendModal = {
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
   pageBlocks: [spsLiteBackendHeroSectionBlockSimpleCentered],
+};
+
+export const spsLiteBackendSlideOver: ISpsLiteBackendSlideOver = {
+  id: 1,
+  title: `Hello world`,
+  locale: "en",
+  className: null,
+  position: "right",
+  uid: `hero-section`,
+  variant: `simple`,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [
+    spsLiteBackendHeroSectionBlockSimpleCentered,
+    spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
+  ],
 };

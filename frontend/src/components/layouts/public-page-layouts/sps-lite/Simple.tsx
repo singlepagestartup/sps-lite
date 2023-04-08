@@ -4,6 +4,7 @@ import PublicPageNavbars from "~components/navbars/public-page-navbars";
 import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars/public-page-topbars";
 import { ISpsLitePublicPageLayoutBlock } from ".";
+import SlideOvers from "~components/slide-overs";
 
 export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
   return (
@@ -18,6 +19,7 @@ export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
           <PageBlocks {...props} />
         </div>
         <PublicPageFooters {...props.publicPageFooter} />
+        <SlideOvers />
       </div>
     </>
   );

@@ -89,3 +89,17 @@ export interface ISpsLiteBackendTier {
   updatedAt: string;
   publishedAt: string;
 }
+
+export interface ISpsLiteBackendSlideOver {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  position: `left` | `right`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
