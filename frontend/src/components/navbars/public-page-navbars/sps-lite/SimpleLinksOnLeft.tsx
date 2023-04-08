@@ -12,7 +12,12 @@ export default function SimpleLinksOnLeft(
   props: ISpsLitePublicPageNavbarBlock
 ) {
   return (
-    <Disclosure as="nav" className="bg-white shadow w-screen z-30 fixed">
+    <Disclosure
+      as="nav"
+      className={`bg-white shadow w-screen z-30 fixed ${
+        props.topbar?.variant === `simple` ? `mt-8` : ``
+      }`}
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2">

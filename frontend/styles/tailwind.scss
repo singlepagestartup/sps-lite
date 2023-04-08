@@ -46,6 +46,10 @@ button:focus {
     @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-white flex justify-between overflow-scroll;
   }
 
+  .sidebar__simple {
+    @apply pr-2;
+  }
+
   .form__container {
     @apply grid grid-cols-4 gap-3;
 

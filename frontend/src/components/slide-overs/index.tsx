@@ -1,23 +1,20 @@
 import { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
-import {
-  ISpsLiteSlideOverBlock,
-  variants as spsStoreVariants,
-} from "./sps-lite";
+import { ISpsLiteSlideOver, variants as spsStoreVariants } from "./sps-lite";
 import { useGetSlideOversQuery } from "~redux/services/backend/models/slide-overs";
 
 const variants = {
   ...spsStoreVariants,
 };
 
-export interface ISlideOverBlock extends ISpsLiteSlideOverBlock {}
+export interface ISlideOver extends ISpsLiteSlideOver {}
 
 export default function SlideOvers() {
   const router = useRouter();
   const { query } = router;
   const [isOpen, setIsOpen] = useState(false);
   const [slideOverProps, setSlideOverProps] =
-    useState<Omit<ISlideOverBlock, `isOpen` | `setIsOpen`>>();
+    useState<Omit<ISlideOver, `isOpen` | `setIsOpen`>>();
 
   const { data: slideOvers } = useGetSlideOversQuery({});
 
@@ -43,7 +40,7 @@ export default function SlideOvers() {
 
   const Comp = variants[
     slideOverProps?.variant as keyof typeof variants
-  ] as FC<ISlideOverBlock>;
+  ] as FC<ISlideOver>;
 
   if (!Comp || !slideOverProps) {
     return <></>;

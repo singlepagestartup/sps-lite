@@ -1,9 +1,14 @@
-import { ISpsLiteBackendPublicPageNavbar } from "types/single-types/sps-lite";
+import {
+  ISpsLiteBackendPublicPageNavbar,
+  ISpsLiteBackendPublicPageTopbar,
+} from "types/single-types/sps-lite";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 import { FC } from "react";
 
 export interface ISpsLitePublicPageNavbarBlock
-  extends ISpsLiteBackendPublicPageNavbar {}
+  extends ISpsLiteBackendPublicPageNavbar {
+  topbar?: ISpsLiteBackendPublicPageTopbar;
+}
 
 export const variants = {
   "simple-links-on-left": SimpleLinksOnLeft,

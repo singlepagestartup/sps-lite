@@ -5,9 +5,9 @@ import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars/public-page-topbars";
 import { ISpsLitePublicPageLayoutBlock } from ".";
 import SlideOvers from "~components/slide-overs";
+import Sidebars from "~components/sidebars";
 
 export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
-  console.log(`🚀 ~ Simple ~ props:`, props);
   return (
     <>
       {props.meta ? <Meta {...props.meta} /> : null}
@@ -15,14 +15,15 @@ export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
         {props.publicPageTopbar ? (
           <Topbars {...props.publicPageTopbar} />
         ) : null}
-        <PublicPageNavbars {...props.publicPageNavbar} />
+        <PublicPageNavbars
+          {...props.publicPageNavbar}
+          topbar={props.publicPageTopbar}
+        />
         <div className="pt-16">
-          {props.publicPageLayout.sidebar?.pageBlocks?.length ? (
-            <div className="w-full flex flex-row">
+          {props.publicPageLayout.sidebar ? (
+            <div className="w-full flex flex-row mx-auto max-w-7xl px-2">
               <div className="lg:w-3/12">
-                <PageBlocks
-                  pageBlocks={props.publicPageLayout.sidebar.pageBlocks}
-                />
+                <Sidebars {...props.publicPageLayout.sidebar} />
               </div>
               <div className="lg:w-9/12">
                 <PageBlocks {...props} />
