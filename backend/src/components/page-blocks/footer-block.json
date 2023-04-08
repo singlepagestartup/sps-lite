@@ -1,28 +1,26 @@
 {
-  "collectionName": "components_page_blocks_footer_blocks",
-  "info": {
-    "displayName": "Footer Block"
-  },
-  "options": {},
-  "attributes": {
-    "copyrights": {
-      "type": "richtext"
+    "collectionName": "components_page_blocks_footer_blocks",
+    "info": {
+        "displayName": "Footer Block"
     },
-    "description": {
-      "type": "richtext"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "four-columns-with-company-mission"
-      ],
-      "default": "four-columns-with-company-mission",
-      "required": true
-    },
-    "logotype": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.logotype"
+    "options": {},
+    "attributes": {
+        "copyrights": {
+            "type": "richtext"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["four-columns-with-company-mission"],
+            "default": "four-columns-with-company-mission",
+            "required": true
+        },
+        "logotype": {
+            "type": "component",
+            "repeatable": false,
+            "component": "elements.logotype"
+        }
     }
-  }
 }

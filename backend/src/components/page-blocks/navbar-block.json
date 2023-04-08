@@ -1,28 +1,26 @@
 {
-  "collectionName": "components_page_blocks_navbar_blocks",
-  "info": {
-    "displayName": "Navbar Block"
-  },
-  "options": {},
-  "attributes": {
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "simple-links-on-left"
-      ],
-      "default": "simple-links-on-left",
-      "required": true
+    "collectionName": "components_page_blocks_navbar_blocks",
+    "info": {
+        "displayName": "Navbar Block"
     },
-    "description": {
-      "type": "richtext"
-    },
-    "class_name": {
-      "type": "string"
-    },
-    "logotype": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.logotype"
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple-links-on-left"],
+            "default": "simple-links-on-left",
+            "required": true
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "logotype": {
+            "type": "component",
+            "repeatable": false,
+            "component": "elements.logotype"
+        }
     }
-  }
 }
