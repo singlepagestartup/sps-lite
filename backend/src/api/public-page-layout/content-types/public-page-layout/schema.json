@@ -1,38 +1,36 @@
 {
-  "kind": "singleType",
-  "collectionName": "public_page_layouts",
-  "info": {
-    "singularName": "public-page-layout",
-    "pluralName": "public-page-layouts",
-    "displayName": "Public Page Layout",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
-  "attributes": {
-    "variant": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
-      "default": "simple",
-      "required": true
+    "kind": "singleType",
+    "collectionName": "public_page_layouts",
+    "info": {
+        "singularName": "public-page-layout",
+        "pluralName": "public-page-layouts",
+        "displayName": "Public Page Layout",
+        "description": ""
     },
-    "sidebar": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::sidebar.sidebar"
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "variant": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        },
+        "sidebar": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::sidebar.sidebar"
+        }
     }
-  }
 }
