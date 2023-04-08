@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SlideOvers from "..";
-import { spsLiteBackendSlideOver } from "~mocks/collection-types/sps-lite";
+import { spsLiteBackendSlideOverSimpleRight } from "~mocks/collection-types/sps-lite";
 import { rest, setupWorker } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import { useEffect } from "react";
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 const worker = setupWorker(
   rest.get(`${BACKEND_URL}/api/slide-overs`, (req, res, ctx) => {
-    return res(ctx.json([spsLiteBackendSlideOver]));
+    return res(ctx.json([spsLiteBackendSlideOverSimpleRight]));
   })
 );
 
@@ -40,7 +40,7 @@ Simple.parameters = {
   nextjs: {
     router: {
       query: {
-        opened_slide_over: spsLiteBackendSlideOver.uid,
+        opened_slide_over: spsLiteBackendSlideOverSimpleRight.uid,
       },
     },
   },

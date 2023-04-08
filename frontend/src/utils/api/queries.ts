@@ -80,8 +80,6 @@ export const metaPopulate = {
   },
 };
 
-export const publicPageLayoutPopulate = {};
-
 export const footerPopulate = {
   logotype: {
     populate: logotypePopulate,
@@ -156,6 +154,14 @@ export const pageBlocksPopulate = {
       form: {
         populate: formPopulate,
       },
+    },
+  },
+};
+
+export const publicPageLayoutPopulate = {
+  sidebar: {
+    populate: {
+      ...pageBlocksPopulate,
     },
   },
 };

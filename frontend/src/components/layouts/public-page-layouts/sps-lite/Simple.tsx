@@ -7,6 +7,7 @@ import { ISpsLitePublicPageLayoutBlock } from ".";
 import SlideOvers from "~components/slide-overs";
 
 export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
+  console.log(`🚀 ~ Simple ~ props:`, props);
   return (
     <>
       {props.meta ? <Meta {...props.meta} /> : null}
@@ -16,7 +17,20 @@ export default function Simple(props: ISpsLitePublicPageLayoutBlock) {
         ) : null}
         <PublicPageNavbars {...props.publicPageNavbar} />
         <div className="pt-16">
-          <PageBlocks {...props} />
+          {props.publicPageLayout.sidebar?.pageBlocks?.length ? (
+            <div className="w-full flex flex-row">
+              <div className="lg:w-3/12">
+                <PageBlocks
+                  pageBlocks={props.publicPageLayout.sidebar.pageBlocks}
+                />
+              </div>
+              <div className="lg:w-9/12">
+                <PageBlocks {...props} />
+              </div>
+            </div>
+          ) : (
+            <PageBlocks {...props} />
+          )}
         </div>
         <PublicPageFooters {...props.publicPageFooter} />
         <SlideOvers />

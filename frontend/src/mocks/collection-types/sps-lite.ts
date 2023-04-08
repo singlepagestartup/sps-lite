@@ -3,6 +3,7 @@ import {
   ISpsLiteBackendForm,
   ISpsLiteBackendModal,
   ISpsLiteBackendReview,
+  ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
@@ -111,7 +112,7 @@ export const spsLiteBackendModal: ISpsLiteBackendModal = {
   pageBlocks: [spsLiteBackendHeroSectionBlockSimpleCentered],
 };
 
-export const spsLiteBackendSlideOver: ISpsLiteBackendSlideOver = {
+export const spsLiteBackendSlideOverSimpleRight: ISpsLiteBackendSlideOver = {
   id: 1,
   title: `Hello world`,
   locale: "en",
@@ -126,4 +127,17 @@ export const spsLiteBackendSlideOver: ISpsLiteBackendSlideOver = {
     spsLiteBackendHeroSectionBlockSimpleCentered,
     spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
   ],
+};
+
+export const spsLiteBackendSidebarSimple: ISpsLiteBackendSidebar = {
+  id: 1,
+  title: `Ads sidebar`,
+  locale: "en",
+  className: null,
+  uid: `ads-sidebar`,
+  variant: `simple`,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [spsLiteBackendIncentivesBlockFourColumnWithIllustrations],
 };

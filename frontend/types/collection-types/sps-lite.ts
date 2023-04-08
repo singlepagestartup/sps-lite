@@ -103,3 +103,16 @@ export interface ISpsLiteBackendSlideOver {
   position: `left` | `right`;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
+
+export interface ISpsLiteBackendSidebar {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}

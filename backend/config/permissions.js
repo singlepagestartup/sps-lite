@@ -15,6 +15,7 @@ const spsLiteActions = {
     'api::tier.tier': ['find'],
     'api::currency.currency': ['find'],
     'api::slide-over.slide-over': ['find'],
+    'api::sidebar.sidebar': ['find'],
 };
 
 module.exports = () => ({

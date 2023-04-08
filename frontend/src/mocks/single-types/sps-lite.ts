@@ -6,6 +6,7 @@ import {
   ISpsLiteBackendPublicPageNavbar,
   ISpsLiteBackendPublicPageTopbar,
 } from "types/single-types/sps-lite";
+import { spsLiteBackendSidebarSimple } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteBackendButtonDefault,
   spsLiteBackendButtonsArraySimple,
@@ -61,6 +62,7 @@ export const spsLiteBackendPublicPageLayout: ISpsLiteBackendPublicPageLayout = {
   createdAt: `2023-03-31T15:14:49.896Z`,
   updatedAt: `2023-04-02T11:55:25.729Z`,
   publishedAt: `2023-02-14T22:43:25.891Z`,
+  sidebar: spsLiteBackendSidebarSimple,
 };
 
 export const spsLiteBackendMeta: ISpsLiteBackendMeta = {

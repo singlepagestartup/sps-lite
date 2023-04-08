@@ -1,4 +1,7 @@
-import { ISpsLiteBackendForm } from "types/collection-types/sps-lite";
+import {
+  ISpsLiteBackendForm,
+  ISpsLiteBackendSidebar,
+} from "types/collection-types/sps-lite";
 import {
   ISpsLiteBackendButton,
   ISpsLiteBackendButtonsArray,
@@ -58,6 +61,7 @@ export interface ISpsLiteBackendPublicPageLayout {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  sidebar?: ISpsLiteBackendSidebar | null;
   _meta?: any;
 }
 
