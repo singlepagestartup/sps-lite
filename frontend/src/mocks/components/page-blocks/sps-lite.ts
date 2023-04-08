@@ -3,10 +3,12 @@ import {
   ISpsLiteBackendCtaSectionBlock,
   ISpsLiteBackendFaqBlock,
   ISpsLiteBackendFeaturesSectionBlock,
+  ISpsLiteBackendFooterBlock,
   ISpsLiteBackendHeaderSectionBlock,
   ISpsLiteBackendHeroSectionBlock,
   ISpsLiteBackendIncentivesBlock,
   ISpsLiteBackendLogotypesCloudBlock,
+  ISpsLiteBackendNavbarBlock,
   ISpsLiteBackendNotFoundBlock,
   ISpsLiteBackendPricingsBlock,
   ISpsLiteBackendReviewsBlock,
@@ -24,7 +26,10 @@ import {
   spsLiteBackendFeature,
   spsLiteBackendLogotype,
 } from "~mocks/components/elements/sps-lite";
-import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
+import {
+  spsLiteUploadPluginBackendMediaLogotypeIcon,
+  spsLiteUploadPluginBackendMediaTableAndHands,
+} from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendFeatureSectionBlockWithProductScreenshot: ISpsLiteBackendFeaturesSectionBlock =
   {
@@ -162,4 +167,21 @@ export const spsLiteBackendSliderBlockSimple: ISpsLiteBackendSliderBlock = {
   variant: `simple`,
   slider: spsLiteBackendSliderFadeWithPreviews,
   anchor: null,
+};
+
+export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
+  id: 2,
+  __component: `page-blocks.navbar-block`,
+  variant: `simple-links-on-left`,
+  description: null,
+  className: null,
+  logotype: spsLiteBackendLogotype,
+};
+
+export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
+  id: 2,
+  __component: `page-blocks.footer-block`,
+  variant: `four-columns-with-company-mission`,
+  className: null,
+  logotype: spsLiteBackendLogotype,
 };

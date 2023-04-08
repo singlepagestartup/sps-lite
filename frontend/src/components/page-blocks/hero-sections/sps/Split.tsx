@@ -8,6 +8,8 @@ import { ISpsHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 
 export default function Split(props: ISpsHeroSectionBlock) {
+  console.log(`🚀 ~ Split ~ props:`, props);
+
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

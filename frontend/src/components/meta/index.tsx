@@ -3,11 +3,11 @@ import { useMemo } from "react";
 const { getImageUrl } = utils.api;
 import { BACKEND_URL } from "~utils/envs";
 import utils from "@rogwild/next-utils";
-import { IBackendMeta } from "types/single-types";
+import { ISpsLiteBackendMetatag } from "types/collection-types/sps-lite";
 
-export interface IMetaBlock extends IBackendMeta {}
+export interface ISpsLiteMetatag extends ISpsLiteBackendMetatag {}
 
-export default function Meta(props: IMetaBlock) {
+export default function Meta(props: ISpsLiteMetatag) {
   const favicon = useMemo(() => {
     if (props?.favicon) {
       return getImageUrl(props.favicon, { BACKEND_URL });
@@ -16,13 +16,13 @@ export default function Meta(props: IMetaBlock) {
     return `/images/favicon.svg`;
   }, [props]);
 
-  const image = useMemo(() => {
-    if (props?.image) {
-      return getImageUrl(props.image, { BACKEND_URL });
-    }
+  // const image = useMemo(() => {
+  //   if (props?.image) {
+  //     return getImageUrl(props.image, { BACKEND_URL });
+  //   }
 
-    return `/images/favicon.svg`;
-  }, [props]);
+  //   return `/images/favicon.svg`;
+  // }, [props]);
 
   return (
     <Head>
@@ -35,8 +35,8 @@ export default function Meta(props: IMetaBlock) {
       <link rel="icon" href={favicon} />
       <meta name="title" content={props?.title || `SPS`} />
       <meta name="description" content={props?.description || ``} />
-      <meta name="image" content={image} />
-      <meta name="url" content={props?.domain || ``} />
+      {/* <meta name="image" content={image} /> */}
+      {/* <meta name="url" content={props?.domain || ``} /> */}
       {props?.script ? <script>{props.script}</script> : null}
     </Head>
   );

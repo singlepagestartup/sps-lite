@@ -4,8 +4,11 @@ import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import { useRouter } from "next/router";
 
 export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
+  const router = useRouter();
+
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (

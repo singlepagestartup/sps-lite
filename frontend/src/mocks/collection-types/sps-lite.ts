@@ -1,15 +1,19 @@
 import {
   ISpsLiteBackendCurrency,
   ISpsLiteBackendForm,
+  ISpsLiteBackendMetatag,
   ISpsLiteBackendModal,
+  ISpsLiteBackendNavbar,
   ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
+  ISpsLiteBackendTopbar,
 } from "types/collection-types/sps-lite";
 import {
   spsLiteBackendButtonDefault,
+  spsLiteBackendButtonPrimary,
   spsLiteBackendEmailInput,
   spsLiteBackendFeature,
   spsLiteBackendNameInput,
@@ -19,10 +23,15 @@ import {
   spsLiteBackendTierInput,
 } from "~mocks/components/elements/sps-lite";
 import {
+  spsLiteBackendFooterBlockSimple,
   spsLiteBackendHeroSectionBlockSimpleCentered,
   spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
+  spsLiteBackendNavbarBlockSimple,
 } from "~mocks/components/page-blocks/sps-lite";
-import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
+import {
+  spsLiteUploadPluginBackendMediaRoundIcon,
+  spsLiteUploadPluginBackendMediaTableAndHands,
+} from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendSliderFadeWithPreviews: ISpsLiteBackendSlider = {
   id: 6,
@@ -60,8 +69,8 @@ export const spsLiteBackendTier: ISpsLiteBackendTier = {
   updatedAt: `2023-02-14T08:49:53.551Z`,
   publishedAt: `2023-02-14T22:48:50.378Z`,
   features: Array(4).fill(spsLiteBackendFeature),
-  currency: spsLiteBackendCurrency,
-  buttons: [spsLiteBackendButtonDefault],
+  currency: { ...spsLiteBackendCurrency },
+  buttons: [{ ...spsLiteBackendButtonDefault }],
 };
 
 export const spsLiteBackendForm: ISpsLiteBackendForm = {
@@ -75,13 +84,13 @@ export const spsLiteBackendForm: ISpsLiteBackendForm = {
   updatedAt: `2023-03-26T20:40:29.554Z`,
   publishedAt: `2023-02-14T22:44:48.245Z`,
   inputs: [
-    spsLiteBackendNameInput,
-    spsLiteBackendEmailInput,
-    spsLiteBackendTierInput,
-    spsLiteBackendQuestionInput,
-    spsLiteBackendPolicyInput,
+    { ...spsLiteBackendNameInput },
+    { ...spsLiteBackendEmailInput },
+    { ...spsLiteBackendTierInput },
+    { ...spsLiteBackendQuestionInput },
+    { ...spsLiteBackendPolicyInput },
   ],
-  button: spsLiteBackendButtonDefault,
+  button: { ...spsLiteBackendButtonDefault },
   className: null,
   additionalAttributes: null,
 };
@@ -93,7 +102,7 @@ export const spsLiteBackendReview: ISpsLiteBackendReview = {
   description: `I had the pleasure of working with this startup and I was very impressed with their innovation and dedication to their customers. Their team is very knowledgeable and professional and I am confident that they have great potential for future success. I am looking forward to seeing what new innovations they come up with next. I highly recommend this startup to anyone looking for innovative solutions.`,
   subtitle: `Looking Forward to Future Innovations`,
   rating: 5,
-  media: [spsLiteUploadPluginBackendMediaTableAndHands],
+  media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
   additionalMedia: null,
   createdAt: `2023-02-14T08:49:14.623Z`,
   updatedAt: `2023-02-14T08:49:53.551Z`,
@@ -109,35 +118,87 @@ export const spsLiteBackendModal: ISpsLiteBackendModal = {
   createdAt: `2023-03-28T11:07:56.252Z`,
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
-  pageBlocks: [spsLiteBackendHeroSectionBlockSimpleCentered],
+  pageBlocks: [{ ...spsLiteBackendHeroSectionBlockSimpleCentered }],
 };
 
 export const spsLiteBackendSlideOverSimpleRight: ISpsLiteBackendSlideOver = {
   id: 1,
   title: `Hello world`,
-  locale: "en",
+  locale: `en`,
   className: null,
-  position: "right",
+  position: `right`,
   uid: `hero-section`,
   variant: `simple`,
   createdAt: `2023-03-28T11:07:56.252Z`,
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
   pageBlocks: [
-    spsLiteBackendHeroSectionBlockSimpleCentered,
-    spsLiteBackendIncentivesBlockFourColumnWithIllustrations,
+    { ...spsLiteBackendHeroSectionBlockSimpleCentered },
+    { ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations },
   ],
 };
 
 export const spsLiteBackendSidebarSimple: ISpsLiteBackendSidebar = {
   id: 1,
   title: `Ads sidebar`,
-  locale: "en",
+  locale: `en`,
   className: null,
   uid: `ads-sidebar`,
   variant: `simple`,
   createdAt: `2023-03-28T11:07:56.252Z`,
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
-  pageBlocks: [spsLiteBackendIncentivesBlockFourColumnWithIllustrations],
+  pageBlocks: [{ ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations }],
+};
+
+export const spsLiteBackendMetatg: ISpsLiteBackendMetatag = {
+  id: 1,
+  title: `Single Page Startup`,
+  uid: `single-page-startup`,
+  locale: `en`,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  description: `Boilerplate for lean startup developers`,
+  script: null,
+  favicon: spsLiteUploadPluginBackendMediaRoundIcon,
+};
+
+export const spsLiteBackendTopbarSimple: ISpsLiteBackendTopbar = {
+  id: 1,
+  title: `Public Page Topbar`,
+  uid: `public-page-topbar`,
+  locale: `en`,
+  variant: `simple`,
+  className: null,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [{ ...spsLiteBackendButtonPrimary }],
+};
+
+export const spsLiteBackendNavbarSimple: ISpsLiteBackendNavbar = {
+  id: 1,
+  title: `Public Page Navbar`,
+  uid: `public-page-navbar`,
+  locale: `en`,
+  variant: `simple`,
+  className: null,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [{ ...spsLiteBackendNavbarBlockSimple }],
+};
+
+export const spsLiteBackendFooterSimple: ISpsLiteBackendNavbar = {
+  id: 1,
+  title: `Public Page Footer`,
+  uid: `public-page-footer`,
+  locale: `en`,
+  variant: `simple`,
+  className: null,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [{ ...spsLiteBackendFooterBlockSimple }],
 };

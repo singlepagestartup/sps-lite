@@ -46,6 +46,18 @@ export interface ISpsLiteBackendModal {
   publishedAt: string;
 }
 
+export interface ISpsLiteBackendPage {
+  id: number;
+  title: string | null;
+  url: string;
+  locale: string;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  localizations: ISpsLiteBackendPage[] | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
 export interface ISpsLiteBackendReview {
   id: number;
   name: string | null;
@@ -115,4 +127,73 @@ export interface ISpsLiteBackendSidebar {
   publishedAt: string;
   variant: `simple`;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
+
+export interface ISpsLiteBackendMetatag {
+  id: number;
+  locale: string;
+  title: string;
+  description: string;
+  script?: string | null;
+  favicon?: ISpsLiteBackendUploadPluginBackendMedia | null;
+  uid: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface ISpsLiteBackendTopbar {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
+
+export interface ISpsLiteBackendNavbar {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
+
+export interface ISpsLiteBackendFooter {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
+
+export interface ISpsLiteBackendLayout {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  meta?: ISpsLiteBackendMetatag | null;
+  topbar?: ISpsLiteBackendTopbar | null;
+  navbar?: ISpsLiteBackendNavbar | null;
+  sidebar?: ISpsLiteBackendSidebar | null;
+  footer?: ISpsLiteBackendFooter | null;
 }

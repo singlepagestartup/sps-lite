@@ -185,30 +185,32 @@ export const reviewsPopulate = {
 
 export const currenciesPopulate = {};
 
-export const publicPageAdditonalModels = [
-  {
-    key: `publicPageLayout`,
-    model: `public-page-layout`,
-    populate: publicPageLayoutPopulate,
+export const publicPageAdditonalModels = [];
+
+export const pagePopulate = {
+  ...pageBlocksPopulate,
+  layout: {
+    populate: {
+      topbar: {
+        populate: {
+          ...pageBlocksPopulate,
+        },
+      },
+      navbar: {
+        populate: {
+          ...pageBlocksPopulate,
+        },
+      },
+      sidebar: {
+        populate: {
+          ...pageBlocksPopulate,
+        },
+      },
+      footer: {
+        populate: {
+          ...pageBlocksPopulate,
+        },
+      },
+    },
   },
-  {
-    key: `meta`,
-    model: `meta`,
-    populate: metaPopulate,
-  },
-  {
-    key: `publicPageTopbar`,
-    model: `public-page-topbar`,
-    populate: topbarPopulate,
-  },
-  {
-    key: `publicPageNavbar`,
-    model: `public-page-navbar`,
-    populate: navbarPopulate,
-  },
-  {
-    key: `publicPageFooter`,
-    model: `public-page-footer`,
-    populate: footerPopulate,
-  },
-];
+};

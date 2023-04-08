@@ -2,10 +2,15 @@ import {
   ISpsLiteBackendCurrency,
   ISpsLiteBackendForm,
   ISpsLiteBackendModal,
+  ISpsLiteBackendPage,
   ISpsLiteBackendReview,
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
 } from "./sps-lite";
+
+/**
+ * Interfaces for RTK
+ */
 
 export interface IBackendTier extends ISpsLiteBackendTier {}
 
@@ -18,3 +23,5 @@ export interface IBackendReview extends ISpsLiteBackendReview {}
 export interface IBackendSlider extends ISpsLiteBackendSlider {}
 
 export interface IBackendCurrency extends ISpsLiteBackendCurrency {}
+
+export interface IBackendPage extends ISpsLiteBackendPage {}

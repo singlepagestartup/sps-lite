@@ -1,19 +1,14 @@
+import { ISpsLiteBackendLayout } from "types/collection-types/sps-lite";
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
-import {
-  ISpsLiteBackendMeta,
-  ISpsLiteBackendPublicPageFooter,
-  ISpsLiteBackendPublicPageLayout,
-  ISpsLiteBackendPublicPageNavbar,
-  ISpsLiteBackendPublicPageTopbar,
-} from "types/single-types/sps-lite";
 
 export interface ISpsLitePublicPage {
-  meta?: ISpsLiteBackendMeta | null;
+  id: number;
+  locale: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  layout?: ISpsLiteBackendLayout | null;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-  publicPageTopbar?: ISpsLiteBackendPublicPageTopbar;
-  publicPageNavbar: ISpsLiteBackendPublicPageNavbar;
-  publicPageFooter: ISpsLiteBackendPublicPageFooter;
-  publicPageLayout: ISpsLiteBackendPublicPageLayout;
 }
 
 export interface ISpsLiteMainPage extends ISpsLitePublicPage {}

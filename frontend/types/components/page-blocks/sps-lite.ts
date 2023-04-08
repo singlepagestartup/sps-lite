@@ -156,3 +156,20 @@ export interface ISpsLiteBackendSliderBlock {
   anchor: string | null;
   slider?: ISpsLiteBackendSlider | null;
 }
+
+export interface ISpsLiteBackendNavbarBlock {
+  id: number;
+  __component: `page-blocks.navbar-block`;
+  variant: `simple-links-on-left`;
+  className: string | null;
+  description: string | null;
+  logotype: ISpsLiteBackendLogotype | null;
+}
+
+export interface ISpsLiteBackendFooterBlock {
+  id: number;
+  __component: `page-blocks.footer-block`;
+  variant: `four-columns-with-company-mission`;
+  className: string | null;
+  logotype: ISpsLiteBackendLogotype | null;
+}

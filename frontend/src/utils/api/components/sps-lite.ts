@@ -11,6 +11,9 @@ import Pricings from "~components/page-blocks/pricings";
 import ReviewsTables from "~components/page-blocks/reviews-tables";
 import FeaturesSections from "~components/page-blocks/features-sections";
 import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
+import Navbars from "~components/page-blocks/navbars";
+import Buttons from "~components/elements/buttons";
+import Footers from "~components/page-blocks/footer";
 
 export const pageBlockComponents = {
   [`page-blocks.header-section-block`]: HeaderSections,
@@ -26,4 +29,7 @@ export const pageBlockComponents = {
   [`page-blocks.cta-section-block`]: CtaSections,
   [`page-blocks.pricing-block`]: Pricings,
   [`page-blocks.reviews-table-block`]: ReviewsTables,
+  [`page-blocks.navbar-block`]: Navbars,
+  [`page-blocks.footer-block`]: Footers,
+  [`elements.button`]: Buttons,
 };

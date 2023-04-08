@@ -1,16 +1,34 @@
-import { INotFoundPage } from "types/pages";
-import PublicPageLayouts from "~components/layouts/public-page-layouts";
-import Page from "~utils/api/Page";
+import { IBackendPage } from "types/collection-types";
+import Layouts from "~components/layouts";
+import { getBackendData } from "~utils/api";
+import { pagePopulate } from "~utils/api/queries";
+import { BACKEND_URL } from "~utils/envs";
 
-export default function NotFoundPage(props: INotFoundPage) {
-  return <PublicPageLayouts {...props} />;
+export default function NotFoundPage(props: IBackendPage) {
+  return <Layouts {...props} />;
 }
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
-  const page = await new Page({ name: `not-found-page`, locale }).get();
+  const pages = await getBackendData({
+    url: `${BACKEND_URL}/api/pages`,
+    params: {
+      locale,
+      populate: pagePopulate,
+      filters: {
+        url: `/404`,
+      },
+    },
+  });
+
+  if (!pages?.length) {
+    return {
+      props: {},
+      revalidate: 600,
+    };
+  }
 
   return {
-    props: page,
+    props: pages[0],
     revalidate: 600,
   };
 };
