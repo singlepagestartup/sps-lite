@@ -1,9 +1,11 @@
 import {
   ISpsLiteBackendCurrency,
   ISpsLiteBackendForm,
+  ISpsLiteBackendLayout,
   ISpsLiteBackendMetatag,
   ISpsLiteBackendModal,
   ISpsLiteBackendNavbar,
+  ISpsLiteBackendPage,
   ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
@@ -148,7 +150,11 @@ export const spsLiteBackendSidebarSimple: ISpsLiteBackendSidebar = {
   createdAt: `2023-03-28T11:07:56.252Z`,
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
-  pageBlocks: [{ ...spsLiteBackendIncentivesBlockFourColumnWithIllustrations }],
+  pageBlocks: [
+    { ...spsLiteBackendButtonPrimary },
+    { ...spsLiteBackendButtonPrimary },
+    { ...spsLiteBackendButtonPrimary },
+  ],
 };
 
 export const spsLiteBackendMetatg: ISpsLiteBackendMetatag = {
@@ -201,4 +207,33 @@ export const spsLiteBackendFooterSimple: ISpsLiteBackendNavbar = {
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
   pageBlocks: [{ ...spsLiteBackendFooterBlockSimple }],
+};
+
+export const spsLiteBackendLayoutSimple: ISpsLiteBackendLayout = {
+  id: 3,
+  locale: `en`,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  title: `Public Page Layout`,
+  uid: `public-page-layout`,
+  variant: `simple`,
+  sidebar: spsLiteBackendSidebarSimple,
+  topbar: spsLiteBackendTopbarSimple,
+  footer: spsLiteBackendFooterSimple,
+  navbar: spsLiteBackendNavbarSimple,
+  className: null,
+};
+
+export const spsLiteBackendPageMainPage: ISpsLiteBackendPage = {
+  id: 3,
+  locale: `en`,
+  title: `Main Page`,
+  url: `/`,
+  layout: spsLiteBackendLayoutSimple,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  localizations: [],
+  pageBlocks: [{ ...spsLiteBackendHeroSectionBlockSimpleCentered }],
 };

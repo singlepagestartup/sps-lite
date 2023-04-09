@@ -11,7 +11,7 @@ export default function Page(props: IBackendPage) {
 export async function getStaticPaths() {
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: `all`, fields: [`url`, `locale`] },
+    params: { locale: `all` },
   });
 
   let paths =
@@ -44,7 +44,6 @@ export async function getStaticPaths() {
         url: `${BACKEND_URL}/api/${model}`,
         params: {
           locale: `all`,
-          fields: [modelParam, `locale`],
           pagination: { limit: `-1` },
         },
       });
@@ -99,7 +98,7 @@ export const getStaticProps = async (params: any) => {
 
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: `all`, fields: [`url`, `locale`] },
+    params: { locale: `all` },
   });
 
   const filledPages = [];
@@ -155,7 +154,7 @@ export const getStaticProps = async (params: any) => {
   }
 
   const targetPage = filledPages.find((page) => {
-    if (page.urls.includes(pageUrl)) {
+    if (page.urls.includes(pageUrl) && page.locale === locale) {
       return true;
     }
   });

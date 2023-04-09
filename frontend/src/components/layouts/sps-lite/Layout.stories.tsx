@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Layouts from ".";
-import { spsLiteMainPage } from "~mocks/pages/sps-lite";
 import { ISpsLiteLayout } from ".";
 import store from "~redux/index";
 import { Provider } from "react-redux";
+import { spsLiteBackendPageMainPage } from "~mocks/collection-types/sps-lite";
 
 const meta = { component: Layouts } satisfies Meta<typeof Layouts>;
 export default meta;
@@ -22,5 +22,5 @@ function LayoutComponent(args: ISpsLiteLayout) {
 
 export const Simple: Story = {
   render: (args) => <LayoutComponent {...args} />,
-  args: spsLiteMainPage,
+  args: spsLiteBackendPageMainPage,
 };

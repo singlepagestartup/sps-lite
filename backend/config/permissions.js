@@ -1,8 +1,6 @@
 const spsLiteActions = {
     'api::modal.modal': ['find'],
-    'api::not-found-page.not-found-page': ['find'],
     'api::slider.slider': ['find'],
-    'api::main-page.main-page': ['find'],
     'api::theme.theme': ['find'],
     'api::form.form': ['find'],
     'api::form-request.form-request': ['create'],

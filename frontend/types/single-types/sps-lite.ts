@@ -1,3 +1,4 @@
+import { ISpsLiteBackendLayout } from "types/collection-types/sps-lite";
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISpsLiteBackendMainPage {
@@ -7,6 +8,7 @@ export interface ISpsLiteBackendMainPage {
   updatedAt: string;
   publishedAt: string;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  layout?: ISpsLiteBackendLayout | null;
   _meta?: any;
 }
 

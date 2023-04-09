@@ -5,5 +5,5 @@ import { spsLiteBackendLogotype } from "../elements/sps-lite";
 export const spsBackendHeroSectionBlockSplit: ISpsBackendHeroSectionBlock = {
   ...spsLiteBackendHeroSectionBlockSimpleCentered,
   variant: `split`,
-  logotype: spsLiteBackendLogotype,
+  logotype: { ...spsLiteBackendLogotype },
 };

@@ -53,6 +53,7 @@ export interface ISpsLiteBackendPage {
   locale: string;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
   localizations: ISpsLiteBackendPage[] | null;
+  layout?: ISpsLiteBackendLayout | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

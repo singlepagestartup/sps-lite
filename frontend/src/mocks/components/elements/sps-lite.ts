@@ -62,7 +62,7 @@ export const spsLiteBackendFeature: ISpsLiteBackendFeature = {
   title: `Конструктор PageBlock'ов`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   subtitle: `Не повторяйся`,
-  media: [spsLiteUploadPluginBackendMediaRoundIcon],
+  media: [{ ...spsLiteUploadPluginBackendMediaRoundIcon }],
 };
 
 export const spsLiteBackendNameInput: ISpsLiteBackendInput = {
@@ -156,7 +156,7 @@ export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
 export const spsLiteBackendLogotype: ISpsLiteBackendLogotype = {
   id: 5,
   __component: `elements.logotype`,
-  media: [spsLiteUploadPluginBackendMediaLogotypeIcon],
+  media: [{ ...spsLiteUploadPluginBackendMediaLogotypeIcon }],
   additionalMedia: null,
   title: ``,
   url: `https://singlepagestartup.com`,
@@ -168,6 +168,6 @@ export const spsLiteBackendSlide: ISpsLiteBackendSlide = {
   title: `Конструктор блоков страниц`,
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   subtitle: null,
-  media: [spsLiteUploadPluginBackendMediaTableAndHands],
-  buttons: [spsLiteBackendButtonDefault],
+  media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
+  buttons: [{ ...spsLiteBackendButtonDefault }],
 };
