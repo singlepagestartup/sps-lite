@@ -44,7 +44,7 @@ export async function getStaticPaths() {
         url: `${BACKEND_URL}/api/${model}`,
         params: {
           locale: `all`,
-          fields: [modelParam],
+          fields: [modelParam, `locale`],
           pagination: { limit: `-1` },
         },
       });
@@ -59,9 +59,22 @@ export async function getStaticPaths() {
             return url;
           });
 
-          path.params.url = pathUrl;
+          const resPath = {
+            ...path,
+            params: {
+              ...path.params,
+              url: pathUrl,
+            },
+          };
+
+          if (modelEntity.locale) {
+            resPath.locale = modelEntity.locale;
+          }
+
+          filledPaths.push(resPath);
         }
       }
+      continue;
     }
 
     /**
@@ -102,7 +115,7 @@ export const getStaticProps = async (params: any) => {
       const modelEntites = await getBackendData({
         url: `${BACKEND_URL}/api/${model}`,
         params: {
-          locale: `all`,
+          locale: page.locale,
           fields: [modelParam],
           pagination: { limit: `-1` },
         },
@@ -155,7 +168,7 @@ export const getStaticProps = async (params: any) => {
   }
 
   const filters = {
-    url: pageUrl,
+    id: targetPage.id,
   };
 
   const page = await getBackendData({
