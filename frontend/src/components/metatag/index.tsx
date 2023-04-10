@@ -7,7 +7,7 @@ import { ISpsLiteBackendMetatag } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteMetatag extends ISpsLiteBackendMetatag {}
 
-export default function Meta(props: ISpsLiteMetatag) {
+export default function Metatag(props: ISpsLiteMetatag) {
   const favicon = useMemo(() => {
     if (props?.favicon) {
       return getImageUrl(props.favicon, { BACKEND_URL });

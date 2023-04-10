@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IButtonsArray, variants as spsLiteVariants } from "./sps-lite";
+import ClientOnlyWrapper from "~components/wrappers/client-only";
 
 const variants = { ...spsLiteVariants };
 
@@ -10,5 +11,9 @@ export default function ButtonsArrays<T extends IButtonsArray>(props: T) {
     return <></>;
   }
 
-  return <Comp {...props} />;
+  return (
+    <ClientOnlyWrapper>
+      <Comp {...props} />
+    </ClientOnlyWrapper>
+  );
 }

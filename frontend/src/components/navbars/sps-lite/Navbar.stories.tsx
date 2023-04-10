@@ -9,6 +9,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const SimpleLinksOnLeft: Story = {
+export const Simple: Story = {
   args: spsLiteBackendNavbarSimple,
 };

@@ -1,4 +1,4 @@
-const spsLiteActions = {
+const spsLitePublicActions = {
     'api::modal.modal': ['find'],
     'api::slider.slider': ['find'],
     'api::theme.theme': ['find'],
@@ -21,7 +21,7 @@ module.exports = () => ({
     authenticated: {
         role: 1,
         actions: {
-            ...spsLiteActions,
+            ...spsLitePublicActions,
             'plugin::content-type-builder.components': [],
             'plugin::content-type-builder.content-types': [],
             'plugin::email.email': [],
@@ -36,7 +36,7 @@ module.exports = () => ({
     public: {
         role: 2,
         actions: {
-            ...spsLiteActions,
+            ...spsLitePublicActions,
             'plugin::content-type-builder.components': [],
             'plugin::content-type-builder.content-types': [],
             'plugin::email.email': [],

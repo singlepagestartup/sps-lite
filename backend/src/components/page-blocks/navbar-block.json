@@ -21,6 +21,16 @@
             "type": "component",
             "repeatable": false,
             "component": "elements.logotype"
+        },
+        "buttons_arrays": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array"
+        },
+        "additional_buttons_arrays": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.buttons-array"
         }
     }
 }

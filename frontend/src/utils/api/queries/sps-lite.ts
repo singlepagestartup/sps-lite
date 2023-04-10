@@ -1,6 +1,6 @@
-const mediaPopulate = `*`;
+export const mediaPopulate = `*`;
 
-const buttonPopulate = {
+export const buttonPopulate = {
   media: {
     populate: mediaPopulate,
   },
@@ -9,13 +9,13 @@ const buttonPopulate = {
   },
 };
 
-const buttonArrayPopulate = {
+export const buttonArrayPopulate = {
   buttons: {
     populate: buttonPopulate,
   },
 };
 
-const logotypePopulate = {
+export const logotypePopulate = {
   media: {
     populate: mediaPopulate,
   },
@@ -24,7 +24,7 @@ const logotypePopulate = {
   },
 };
 
-const featurePopulate = {
+export const featurePopulate = {
   media: {
     populate: mediaPopulate,
   },
@@ -33,7 +33,7 @@ const featurePopulate = {
   },
 };
 
-const tierPopulate = {
+export const tierPopulate = {
   features: {
     populate: featurePopulate,
   },
@@ -42,7 +42,7 @@ const tierPopulate = {
   },
 };
 
-const slidePopulate = {
+export const slidePopulate = {
   media: {
     populate: mediaPopulate,
   },
@@ -51,19 +51,19 @@ const slidePopulate = {
   },
 };
 
-const sliderPopulate = {
+export const sliderPopulate = {
   slides: {
     populate: slidePopulate,
   },
 };
 
-const inputPopulate = {
+export const inputPopulate = {
   options: {
     populate: `*`,
   },
 };
 
-const formPopulate = {
+export const formPopulate = {
   inputs: {
     populate: inputPopulate,
   },
@@ -72,66 +72,7 @@ const formPopulate = {
   },
 };
 
-const faqPopulate = `*`;
-
-export const metaPopulate = {
-  favicon: {
-    populate: mediaPopulate,
-  },
-};
-
-export const footerPopulate = {
-  logotype: {
-    populate: logotypePopulate,
-  },
-  social_networks_buttons: {
-    populate: buttonArrayPopulate,
-  },
-  policies_buttons: {
-    populate: buttonArrayPopulate,
-  },
-  buttons_arrays: {
-    populate: buttonArrayPopulate,
-  },
-};
-
-export const topbarPopulate = {
-  buttons: {
-    populate: buttonPopulate,
-  },
-};
-
-export const navbarPopulate = {
-  logotype: {
-    populate: logotypePopulate,
-  },
-  buttons: {
-    populate: {
-      buttons: {
-        populate: buttonPopulate,
-      },
-      buttons_arrays: {
-        populate: buttonArrayPopulate,
-      },
-    },
-  },
-  additional_buttons: {
-    populate: buttonPopulate,
-  },
-  cta_buttons: {
-    populate: buttonPopulate,
-  },
-  profile_buttons: {
-    populate: buttonPopulate,
-  },
-  topbar: {
-    populate: {
-      buttons: {
-        populate: buttonPopulate,
-      },
-    },
-  },
-};
+export const faqPopulate = `*`;
 
 export const pageBlocksPopulate = {
   page_blocks: {
@@ -141,7 +82,11 @@ export const pageBlocksPopulate = {
       buttons_arrays: {
         populate: buttonArrayPopulate,
       },
+      additional_buttons_arrays: {
+        populate: buttonArrayPopulate,
+      },
       media: { populate: mediaPopulate },
+      additional_media: { populate: mediaPopulate },
       tiers: {
         populate: tierPopulate,
       },
@@ -154,14 +99,6 @@ export const pageBlocksPopulate = {
       form: {
         populate: formPopulate,
       },
-    },
-  },
-};
-
-export const publicPageLayoutPopulate = {
-  sidebar: {
-    populate: {
-      ...pageBlocksPopulate,
     },
   },
 };
@@ -191,6 +128,11 @@ export const pagePopulate = {
   ...pageBlocksPopulate,
   layout: {
     populate: {
+      metatag: {
+        favicon: {
+          populate: mediaPopulate,
+        },
+      },
       topbar: {
         populate: {
           ...pageBlocksPopulate,

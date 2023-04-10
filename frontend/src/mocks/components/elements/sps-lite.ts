@@ -42,7 +42,20 @@ export const spsLiteBackendButtonsArraySimple: ISpsLiteBackendButtonsArray = {
   variant: `simple`,
   description: null,
   className: null,
+  url: null,
 };
+
+export const spsLiteBackendButtonsArrayBottomLine: ISpsLiteBackendButtonsArray =
+  {
+    id: 5,
+    __component: `elements.buttons-array`,
+    title: `About Us`,
+    buttons: [],
+    variant: `bottom-line`,
+    description: null,
+    className: null,
+    url: `/about-us`,
+  };
 
 export const spsLiteBackendButtonsArrayDropdown: ISpsLiteBackendButtonsArray = {
   ...spsLiteBackendButtonsArraySimple,

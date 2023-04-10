@@ -16,11 +16,12 @@ export interface ISpsLiteBackendButton {
 export interface ISpsLiteBackendButtonsArray {
   id: number;
   __component: `elements.buttons-array`;
-  variant: `simple` | `dropdown`;
+  variant: `simple` | `dropdown` | `primary` | `default` | `bottom-line`;
   title: string | null;
   buttons: ISpsLiteBackendButton[];
   description: string | null;
   className: string | null;
+  url: string | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
