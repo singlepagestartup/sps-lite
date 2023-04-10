@@ -1,6 +1,6 @@
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
-import { pageBlocksPopulate } from "~utils/api/queries";
+import { pageBlockPopulate } from "~utils/api/queries";
 
 export default class Page {
   name: string;
@@ -12,7 +12,7 @@ export default class Page {
   }
 
   async get(props: any = {}) {
-    const { populate = pageBlocksPopulate } = props;
+    const { populate = pageBlockPopulate } = props;
 
     const pageData = (await getBackendData({
       url: `${BACKEND_URL}/api/${this.name}`,

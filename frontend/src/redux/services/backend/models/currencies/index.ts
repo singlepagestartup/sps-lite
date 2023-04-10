@@ -1,7 +1,7 @@
 import { backendServiceApi } from "../..";
 import utils from "@rogwild/next-utils";
 import { IBackendCurrency } from "types/collection-types";
-import { currenciesPopulate } from "~utils/api/queries";
+import { currencyPopulate } from "~utils/api/queries";
 
 const model = `currencies`;
 
@@ -9,7 +9,7 @@ export const categoriesApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getCurrencies: build.query({
       query: (params = {}) => {
-        const { populate = currenciesPopulate, filters } = params;
+        const { populate = currencyPopulate, filters } = params;
 
         return {
           url: model,

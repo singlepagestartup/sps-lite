@@ -1,14 +1,14 @@
 import {
-  pageBlocksPopulate as spsLitePageBlocksPopulate,
+  pageBlockPopulate as spsLitePageBlockPopulate,
   slideOverPropulate as spsLiteSlideOverPropulate,
   modalPopulate as spsLiteModalPopulate,
-  reviewsPopulate as spsLiteReviewsPopulate,
-  currenciesPopulate as spsLiteCurrenciesPopulate,
+  reviewPopulate as spsLiteReviewPopulate,
+  currencyPopulate as spsLiteCurrencyPopulate,
   pagePopulate as spsLitePagePopulate,
 } from "./sps-lite";
 
-export const pageBlocksPopulate = {
-  ...spsLitePageBlocksPopulate,
+export const pageBlockPopulate = {
+  ...spsLitePageBlockPopulate,
 };
 
 export const slideOverPropulate = {
@@ -19,12 +19,12 @@ export const modalPopulate = {
   ...spsLiteModalPopulate,
 };
 
-export const reviewsPopulate = {
-  ...spsLiteReviewsPopulate,
+export const reviewPopulate = {
+  ...spsLiteReviewPopulate,
 };
 
-export const currenciesPopulate = {
-  ...spsLiteCurrenciesPopulate,
+export const currencyPopulate = {
+  ...spsLiteCurrencyPopulate,
 };
 
 export const pagePopulate = {

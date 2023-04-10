@@ -74,7 +74,7 @@ export const formPopulate = {
 
 export const faqPopulate = `*`;
 
-export const pageBlocksPopulate = {
+export const pageBlockPopulate = {
   page_blocks: {
     populate: {
       buttons: { populate: buttonPopulate },
@@ -104,14 +104,14 @@ export const pageBlocksPopulate = {
 };
 
 export const slideOverPropulate = {
-  ...pageBlocksPopulate,
+  ...pageBlockPopulate,
 };
 
 export const modalPopulate = {
-  ...pageBlocksPopulate,
+  ...pageBlockPopulate,
 };
 
-export const reviewsPopulate = {
+export const reviewPopulate = {
   media: {
     populate: mediaPopulate,
   },
@@ -120,12 +120,10 @@ export const reviewsPopulate = {
   },
 };
 
-export const currenciesPopulate = {};
-
-export const publicPageAdditonalModels = [];
+export const currencyPopulate = {};
 
 export const pagePopulate = {
-  ...pageBlocksPopulate,
+  ...pageBlockPopulate,
   layout: {
     populate: {
       metatag: {
@@ -135,22 +133,22 @@ export const pagePopulate = {
       },
       topbar: {
         populate: {
-          ...pageBlocksPopulate,
+          ...pageBlockPopulate,
         },
       },
       navbar: {
         populate: {
-          ...pageBlocksPopulate,
+          ...pageBlockPopulate,
         },
       },
       sidebar: {
         populate: {
-          ...pageBlocksPopulate,
+          ...pageBlockPopulate,
         },
       },
       footer: {
         populate: {
-          ...pageBlocksPopulate,
+          ...pageBlockPopulate,
         },
       },
     },
