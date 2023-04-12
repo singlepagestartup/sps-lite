@@ -2,9 +2,9 @@ import { useState, useEffect, FC, useMemo } from "react";
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import { IBackendModal } from "types/collection-types";
-import { ISpsModal, variants as spsLiteVariants } from "./sps-lite";
+import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
 
-export interface IModal extends ISpsModal {}
+export interface IModal extends ISpsLiteModal {}
 
 const variants = {
   ...spsLiteVariants,

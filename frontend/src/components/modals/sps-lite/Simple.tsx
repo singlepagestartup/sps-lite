@@ -3,9 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import PageBlocks from "~components/page-blocks";
-import { ISpsModal } from ".";
+import { ISpsLiteModal } from ".";
 
-export default function Simple(props: ISpsModal) {
+export default function Simple(props: ISpsLiteModal) {
   const router = useRouter();
   const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
 
