@@ -1,38 +1,36 @@
 {
-  "collectionName": "components_page_blocks_pricing_blocks",
-  "info": {
-    "displayName": "Pricing Block",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "two-columns-card"
-      ],
-      "required": true,
-      "default": "two-columns-card"
+    "collectionName": "components_page_blocks_pricing_blocks",
+    "info": {
+        "displayName": "Pricing Block",
+        "description": ""
     },
-    "title": {
-      "type": "richtext"
-    },
-    "subtitle": {
-      "type": "richtext"
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "class_name": {
-      "type": "text"
-    },
-    "tiers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tier.tier"
-    },
-    "anchor": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["two-columns-card"],
+            "required": true,
+            "default": "two-columns-card"
+        },
+        "title": {
+            "type": "richtext"
+        },
+        "subtitle": {
+            "type": "richtext"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "class_name": {
+            "type": "text"
+        },
+        "tiers": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tier.tier"
+        },
+        "anchor": {
+            "type": "string"
+        }
     }
-  }
 }

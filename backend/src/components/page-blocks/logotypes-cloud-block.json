@@ -1,43 +1,41 @@
 {
-  "collectionName": "components_page_blocks_logotypes_cloud_blocks",
-  "info": {
-    "displayName": "Logotypes Cloud Block",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "simple-with-heading"
-      ],
-      "default": "simple-with-heading",
-      "required": true
+    "collectionName": "components_page_blocks_logotypes_cloud_blocks",
+    "info": {
+        "displayName": "Logotypes Cloud Block",
+        "description": ""
     },
-    "title": {
-      "type": "richtext"
-    },
-    "buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.button"
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "anchor": {
-      "type": "string"
-    },
-    "class_name": {
-      "type": "string"
-    },
-    "logotypes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.logotype"
-    },
-    "subtitle": {
-      "type": "richtext"
+    "options": {},
+    "attributes": {
+        "variant": {
+            "type": "enumeration",
+            "enum": ["simple-with-heading"],
+            "default": "simple-with-heading",
+            "required": true
+        },
+        "title": {
+            "type": "richtext"
+        },
+        "buttons": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.button"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "logotypes": {
+            "type": "component",
+            "repeatable": true,
+            "component": "elements.logotype"
+        },
+        "subtitle": {
+            "type": "richtext"
+        }
     }
-  }
 }
