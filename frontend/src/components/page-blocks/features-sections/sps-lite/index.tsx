@@ -1,14 +1,12 @@
 import { ISpsLiteBackendFeaturesSectionBlock } from "types/components/page-blocks/sps-lite";
-import CenteredTwoXTwoGrid from "./CenteredTwoXTwoGrid";
-import WithProductScreenshot from "./WithProductScreenshot";
+import WithIcon from "./WithIcon";
 import { FC } from "react";
 
 export interface ISpsLiteFeaturesSectionBlock
   extends ISpsLiteBackendFeaturesSectionBlock {}
 
 export const variants = {
-  "with-product-screenshot": WithProductScreenshot,
-  "centered-two-x-two-grid": CenteredTwoXTwoGrid,
+  "with-icon": WithIcon,
 };
 
 export default function FeaturesSections(props: ISpsLiteFeaturesSectionBlock) {

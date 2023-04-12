@@ -1,7 +1,4 @@
-import {
-  ISpsLiteBackendFooterBlock,
-  ISpsLiteBackendIncentivesBlock,
-} from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendFooterBlock } from "types/components/page-blocks/sps-lite";
 import { FC } from "react";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
 

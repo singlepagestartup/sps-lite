@@ -56,7 +56,7 @@ export interface ISpsLiteBackendFaqBlock {
 export interface ISpsLiteBackendFeaturesSectionBlock {
   id: number;
   __component: `page-blocks.features-section-block`;
-  variant: `with-product-screenshot` | `centered-two-x-two-grid`;
+  variant: `with-icon`;
   features?: ISpsLiteBackendFeature[] | null;
   title: string | null;
   subtitle: string | null;
@@ -104,6 +104,7 @@ export interface ISpsLiteBackendLogotypesCloudBlock {
   __component: `page-blocks.logotypes-cloud-block`;
   variant: `simple-with-heading`;
   title: string | null;
+  subtitle: string | null;
   logotypes?: ISpsLiteBackendLogotype[] | null;
   buttons?: ISpsLiteBackendButton[] | null;
   description: string | null;
@@ -123,7 +124,7 @@ export interface ISpsLiteBackendNotFoundBlock {
 export interface ISpsLiteBackendPricingsBlock {
   id: number;
   __component: `page-blocks.pricing-block`;
-  variant: `single-price-with-details`;
+  variant: `two-columns`;
   title: string | null;
   subtitle: string | null;
   anchor: string | null;
@@ -173,5 +174,10 @@ export interface ISpsLiteBackendFooterBlock {
   __component: `page-blocks.footer-block`;
   variant: `four-columns-with-company-mission`;
   className: string | null;
+  copyrights: string | null;
+  description: string | null;
   logotype: ISpsLiteBackendLogotype | null;
+  buttonsArrays: ISpsLiteBackendButtonsArray[] | null;
+  additionalButtonsArrays: ISpsLiteBackendButtonsArray[] | null;
+  extraButtonsArrays: ISpsLiteBackendButtonsArray[] | null;
 }

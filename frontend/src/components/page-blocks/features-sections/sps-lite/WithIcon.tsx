@@ -5,9 +5,7 @@ import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
 import { ISpsLiteFeaturesSectionBlock } from ".";
 
-export default function CenteredTwoXTwoGrid(
-  props: ISpsLiteFeaturesSectionBlock
-) {
+export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

@@ -57,6 +57,28 @@ export const spsLiteBackendButtonsArrayBottomLine: ISpsLiteBackendButtonsArray =
     url: `/about-us`,
   };
 
+export const spsLiteBackendButtonsArrayPrimary: ISpsLiteBackendButtonsArray = {
+  id: 5,
+  __component: `elements.buttons-array`,
+  title: `Login`,
+  buttons: [],
+  variant: `primary`,
+  description: null,
+  className: null,
+  url: `/about-us`,
+};
+
+export const spsLiteBackendButtonsArrayDefault: ISpsLiteBackendButtonsArray = {
+  id: 5,
+  __component: `elements.buttons-array`,
+  title: `Registration`,
+  buttons: [],
+  variant: `default`,
+  description: null,
+  className: null,
+  url: `/about-us`,
+};
+
 export const spsLiteBackendButtonsArrayDropdown: ISpsLiteBackendButtonsArray = {
   ...spsLiteBackendButtonsArraySimple,
   variant: `dropdown`,

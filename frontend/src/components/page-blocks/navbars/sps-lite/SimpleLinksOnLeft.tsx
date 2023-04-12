@@ -10,23 +10,30 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   return (
     <div className="mx-auto max-w-7xl px-2">
       <div className="flex h-16 justify-between">
-        <div className="flex px-2 lg:px-0">
-          {props.logotype?.media?.length ? (
-            <div className="flex flex-shrink-0 items-center">
-              <Link href="/" className="relative w-32 h-8">
-                <Image
-                  src={getImageUrl(props.logotype.media[0], {
-                    BACKEND_URL,
-                  })}
-                  alt=""
-                  className="object-contain object-left"
-                  fill={true}
-                />
-              </Link>
+        <div className="flex w-full px-2 lg:px-0 justify-between">
+          <div className="flex">
+            {props.logotype?.media?.length ? (
+              <div className="flex flex-shrink-0 items-center">
+                <Link href="/" className="relative w-32 h-8">
+                  <Image
+                    src={getImageUrl(props.logotype.media[0], {
+                      BACKEND_URL,
+                    })}
+                    alt=""
+                    className="object-contain object-left"
+                    fill={true}
+                  />
+                </Link>
+              </div>
+            ) : null}
+            <div className="hidden lg:ml-6 lg:flex lg:space-x-6">
+              {props.buttonsArrays?.map((buttonsArray, index) => {
+                return <ButtonsArrays key={index} {...buttonsArray} />;
+              })}
             </div>
-          ) : null}
-          <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-            {props.buttonsArrays?.map((buttonsArray, index) => {
+          </div>
+          <div className="hidden lg:flex lg:space-x-2">
+            {props.additionalButtonsArrays?.map((buttonsArray, index) => {
               return <ButtonsArrays key={index} {...buttonsArray} />;
             })}
           </div>

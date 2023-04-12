@@ -1,11 +1,11 @@
 import { ISpsLiteBackendPricingsBlock } from "types/components/page-blocks/sps-lite";
-import SinglePriceWithDetails from "./SinglePriceWithDetails";
+import TwoColumns from "./TwoColumns";
 import { FC } from "react";
 
 export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {}
 
 export const variants = {
-  "single-price-with-details": SinglePriceWithDetails,
+  "two-columns": TwoColumns,
 };
 
 export default function Pricings(props: ISpsLitePricingsBlock) {

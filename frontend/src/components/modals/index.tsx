@@ -1,20 +1,10 @@
-import {
-  useState,
-  useEffect,
-  FC,
-  SetStateAction,
-  Dispatch,
-  useMemo,
-} from "react";
+import { useState, useEffect, FC, useMemo } from "react";
 import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import { IBackendModal } from "types/collection-types";
-import { spsLiteVariants } from "./sps-lite";
+import { ISpsModal, variants as spsLiteVariants } from "./sps-lite";
 
-export interface IModal extends Omit<IBackendModal, `id`> {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
-}
+export interface IModal extends ISpsModal {}
 
 const variants = {
   ...spsLiteVariants,
@@ -42,14 +32,14 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
     }
 
     for (const modal of localModals) {
-      if (query.opened_popup === modal.uid) {
+      if (query.opened_modal === modal.uid) {
         setModalProps(modal);
       }
     }
-  }, [localModals, query.opened_popup]);
+  }, [localModals, query.opened_modal]);
 
   useEffect(() => {
-    if (query.opened_popup && !isOpen) {
+    if (query.opened_modal && !isOpen) {
       setIsOpen(true);
     }
   }, [query]);

@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { IModal } from "..";
 import PageBlocks from "~components/page-blocks";
+import { ISpsModal } from ".";
 
-export default function Simple(props: IModal) {
+export default function Simple(props: ISpsModal) {
   const router = useRouter();
   const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
 
@@ -47,7 +47,7 @@ export default function Simple(props: IModal) {
           leaveTo="opacity-0 scale-95"
         >
           {props.pageBlocks ? (
-            <div className="fixed inset-0 overflow-y-scroll p-4 flex h-screen">
+            <div className="fixed inset-0 overflow-y-scroll px-4 pt-4 pb-20 flex h-screen">
               <Dialog.Panel
                 className={`m-auto rounded bg-white ${
                   dialogPanelClassName || `w-full`

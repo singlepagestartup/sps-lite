@@ -26,32 +26,34 @@ export default function FourColumnsWithCompanyMission(
                 height={200}
               />
             ) : null}
-            {/* {description ? (
-              <ReactMarkdown className="text-xs text-gray-300">
-                {description}
-              </ReactMarkdown>
-            ) : null} */}
+            <div className="max-w-xs">
+              {props.description ? (
+                <ReactMarkdown className="text-xs text-gray-300">
+                  {props.description}
+                </ReactMarkdown>
+              ) : null}
+            </div>
             <div className="flex space-x-6">
-              {/* {socialNetworksButtons?.map((buttonsArray, index) => {
+              {props.extraButtonsArrays?.map((buttonsArray, index) => {
                 return <ButtonsArrays key={index} {...buttonsArray} />;
-              })} */}
+              })}
             </div>
           </div>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 xl:col-span-2 xl:mt-0 lg:ml-auto">
-            {/* {buttonsArrays?.map((buttonsArray, index) => {
+            {props.buttonsArrays?.map((buttonsArray, index) => {
               return <ButtonsArrays key={index} {...buttonsArray} />;
-            })} */}
+            })}
           </div>
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-row items-center justify-between">
-          {/* {props.copyrights ? (
+          {props.copyrights ? (
             <ReactMarkdown className="text-sm text-gray-500">
               {props.copyrights}
             </ReactMarkdown>
           ) : null}
-          {policiesButtons?.map((buttonsArray, index) => {
+          {props.additionalButtonsArrays?.map((buttonsArray, index) => {
             return <ButtonsArrays key={index} {...buttonsArray} />;
-          })} */}
+          })}
         </div>
       </div>
     </footer>

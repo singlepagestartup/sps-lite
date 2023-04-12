@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Modals from "..";
+import Modals from ".";
 import { spsLiteBackendModal } from "~mocks/collection-types/sps-lite";
 
 const meta = {

@@ -7,6 +7,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const FourColumnWithIllustrations: Story = {
+export const FourColumnsWithCompanyMission: Story = {
   args: spsLiteBackendFooterBlockSimple,
 };

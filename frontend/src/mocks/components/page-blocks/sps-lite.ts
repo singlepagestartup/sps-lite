@@ -22,6 +22,8 @@ import {
 import {
   spsLiteBackendButtonDefault,
   spsLiteBackendButtonsArrayBottomLine,
+  spsLiteBackendButtonsArrayDefault,
+  spsLiteBackendButtonsArrayPrimary,
   spsLiteBackendButtonsArraySimple,
   spsLiteBackendFaq,
   spsLiteBackendFeature,
@@ -29,13 +31,13 @@ import {
 } from "~mocks/components/elements/sps-lite";
 import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
 
-export const spsLiteBackendFeatureSectionBlockWithProductScreenshot: ISpsLiteBackendFeaturesSectionBlock =
+export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesSectionBlock =
   {
     id: 32,
-    title: `Hello world`,
-    variant: `with-product-screenshot`,
-    subtitle: null,
-    anchor: null,
+    title: `Title`,
+    variant: `with-icon`,
+    subtitle: `Subtitle`,
+    anchor: `anchor`,
     description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
     __component: `page-blocks.features-section-block`,
     features: Array(4).fill({ ...spsLiteBackendFeature }),
@@ -48,7 +50,7 @@ export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSe
     title: `Hello world`,
     variant: `centered`,
     __component: `page-blocks.contact-section-block`,
-    anchor: null,
+    anchor: `anchor`,
     description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
     buttonsArrays: [{ ...spsLiteBackendButtonsArraySimple }],
   };
@@ -67,7 +69,7 @@ export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteB
   {
     id: 2,
     title: `Hello world`,
-    anchor: null,
+    anchor: `anchor`,
     variant: `two-columns-with-centered-introduction`,
     __component: `page-blocks.faqs-block`,
     description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
@@ -80,8 +82,8 @@ export const spsLiteBackendHeaderSectionBlockSimpleCentered: ISpsLiteBackendHead
     variant: `simple-centered`,
     __component: `page-blocks.header-section-block`,
     title: `Используемые коцепции`,
-    subtitle: null,
-    anchor: null,
+    subtitle: `Subtitle`,
+    anchor: `anchor`,
     description: `Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.`,
   };
 
@@ -89,7 +91,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
   {
     id: 4,
     variant: `simple-centered`,
-    anchor: null,
+    anchor: `anchor`,
     title: `OpenSource "под капотом"`,
     description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
     buttons: [{ ...spsLiteBackendButtonDefault }],
@@ -100,9 +102,9 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
 export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations: ISpsLiteBackendIncentivesBlock =
   {
     id: 9,
-    title: null,
-    description: null,
-    anchor: null,
+    title: `Title`,
+    description: `Description`,
+    anchor: `anchor`,
     __component: `page-blocks.incentives-block`,
     variant: `four-column-with-illustrations`,
     features: Array(4).fill({ ...spsLiteBackendFeature }),
@@ -112,10 +114,11 @@ export const spsLiteBackendLogotypesCloudBlockSimpleWithHeading: ISpsLiteBackend
   {
     id: 5,
     __component: `page-blocks.logotypes-cloud-block`,
-    title: `Hello world`,
     variant: `simple-with-heading`,
-    description: null,
-    anchor: null,
+    title: `Hello world`,
+    subtitle: `Subtitle`,
+    description: `Description`,
+    anchor: `anchor`,
     logotypes: Array(5).fill({ ...spsLiteBackendLogotype }),
   };
 
@@ -129,17 +132,17 @@ export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
   buttons: Array(1).fill({ ...spsLiteBackendButtonDefault }),
 };
 
-export const spsLiteBackendPricingBlockSinglePriceWithDetails: ISpsLiteBackendPricingsBlock =
+export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock =
   {
     id: 2,
     __component: `page-blocks.pricing-block`,
-    variant: `single-price-with-details`,
+    variant: `two-columns`,
     title: `Один шаг чтобы стать Lean Startup разработчиком`,
-    subtitle: null,
-    anchor: null,
+    subtitle: `Subtitle`,
+    anchor: `anchor`,
     description: `Сэкономьте более 250 часов работы разработчика (7'500$) и постоянный доступ к обновлениям кодовой базы. Таким образом все разработанные на базе SPS проекты можно будет обновлять прямо из репозитория SPS. Не нужно копировать-вставлять блоки кода при обновлении.`,
     className: null,
-    tiers: Array(2).fill({ ...spsLiteBackendTier }),
+    tiers: Array(2).fill(spsLiteBackendTier),
   };
 
 export const spsLiteBackendReviewsBlockSimpleWithAvatars: ISpsLiteBackendReviewsBlock =
@@ -148,7 +151,7 @@ export const spsLiteBackendReviewsBlockSimpleWithAvatars: ISpsLiteBackendReviews
     __component: `page-blocks.reviews-block`,
     variant: `simple-with-avatars`,
     showAll: null,
-    anchor: null,
+    anchor: `anchor`,
   };
 
 export const spsLiteBackendReviewsTableBlockSimple: ISpsLiteBackendReviewsTableBlock =
@@ -171,20 +174,37 @@ export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
   id: 2,
   __component: `page-blocks.navbar-block`,
   variant: `simple-links-on-left`,
-  description: null,
-  className: null,
+  description: `Description`,
+  className: `class-name`,
   logotype: { ...spsLiteBackendLogotype },
   buttonsArrays: [
     spsLiteBackendButtonsArrayBottomLine,
     spsLiteBackendButtonsArrayBottomLine,
   ],
-  additionalButtonsArrays: null,
+  additionalButtonsArrays: [
+    spsLiteBackendButtonsArrayPrimary,
+    spsLiteBackendButtonsArrayDefault,
+  ],
 };
 
 export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
   id: 2,
   __component: `page-blocks.footer-block`,
   variant: `four-columns-with-company-mission`,
-  className: null,
+  className: `class-name`,
   logotype: { ...spsLiteBackendLogotype },
+  copyrights: `All rights are reserved | Single Page Startup`,
+  description: `Create your startup in a few hours and gradually step-by-step expand the functionality. Finalize it to a complete product without wasting time on developing product from scratch.`,
+  buttonsArrays: [
+    spsLiteBackendButtonsArraySimple,
+    spsLiteBackendButtonsArraySimple,
+  ],
+  additionalButtonsArrays: [
+    spsLiteBackendButtonsArrayBottomLine,
+    spsLiteBackendButtonsArrayBottomLine,
+  ],
+  extraButtonsArrays: [
+    spsLiteBackendButtonsArrayBottomLine,
+    spsLiteBackendButtonsArrayBottomLine,
+  ],
 };
