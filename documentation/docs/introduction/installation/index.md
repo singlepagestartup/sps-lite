@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Создание проекта
@@ -19,6 +19,30 @@ git remote add upstream https://github.com/singlepagestartup/sps-lite.git
 git pull upstream main
 git push origin main
 ```
+
+:::info
+Перед первым коммитом необходимо настроить [Husky](https://github.com/typicode/husky), иначе может появиться ошибка
+
+```bash
+git commit -m "Check husky 2" \
+.husky/pre-commit: line 2: .husky/\_/husky.sh: No such file or directory
+```
+
+Для решения этой задачи нужно вызвать следующую команду в рут директории проекта:
+
+```bash
+npx husky install
+```
+
+или
+
+```bash
+npm i
+```
+
+:::
+
+## Объяснение выполняемых команд
 
 Данная команда подключает репозиторий sps-lite как родительский к вашему проекту
 

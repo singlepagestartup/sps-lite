@@ -2,7 +2,7 @@
 
 Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.
 
-![preview](./documentation/images/preview.png)
+![preview](./documentation/docs/introduction/img/preview.png)
 
 # Не повторяй себя
 
