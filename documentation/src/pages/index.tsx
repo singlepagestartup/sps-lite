@@ -1,25 +1,25 @@
 import React from "react";
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-
-import styles from "./index.module.css";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className="h-screen flex items-center py-20">
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <h1 className="text-primary-600 text-6xl text-center font-bold mb-4">
+          {siteConfig.title}
+        </h1>
+        <p className="text-center text-gray-400 text-2xl mb-5">
+          {siteConfig.tagline}
+        </p>
+        <div className="flex items-center justify-center">
           <Link
-            className="button button--secondary button--lg"
+            className="px-8 py-3 rounded-md bg-primary-600 uppercase text-sm font-bold no-underline hover:no-underline text-white hover:text-white hover:bg-black transition duration-200"
             to="/docs/introduction"
           >
-            Начать
+            <span className="">Начать</span>
           </Link>
         </div>
       </div>
@@ -36,9 +36,7 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <main></main>
     </Layout>
   );
 }

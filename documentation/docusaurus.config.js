@@ -44,7 +44,7 @@ const config = {
           showReadingTime: true,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
@@ -60,6 +60,7 @@ const config = {
         logo: {
           alt: "Single Page Startup Logo",
           src: "img/sps-logo.svg",
+          srcDark: "img/sps-logo-white.svg",
         },
         items: [
           {
@@ -72,6 +73,7 @@ const config = {
             href: "https://github.com/singlepagestartup",
             label: "GitHub",
             position: "right",
+            className: "flex items-center",
           },
         ],
       },
@@ -86,6 +88,7 @@ const config = {
     }),
 
   plugins: [
+    "docusaurus-plugin-sass",
     async function tailwindCssPlugin(context, options) {
       return {
         name: "docusaurus-tailwindcss",

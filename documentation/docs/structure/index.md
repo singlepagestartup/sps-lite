@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import ProjectStructure from '../../src/components/ProjectStructure.tsx'
+import ProjectStructure from '../../src/components/docs/ProjectStructure.tsx'
 
 # Структура директорий
 
