@@ -2,7 +2,7 @@ module.exports = ({ env }) => {
     const config = {
         [`users-permissions`]: {
             config: {
-                appName: env('APP_NAME', 'Store'),
+                appName: env('APP_NAME', 'Single Page Startup'),
                 registerByEmailCode: false,
                 authFactors: ['auth.callback', 'auth.emailConfirmation', 'user.checkOtp'],
             },
@@ -12,7 +12,7 @@ module.exports = ({ env }) => {
     const emailProvider = env('EMAIL_PROVIDER') ? env('EMAIL_PROVIDER') : 'mailtrap';
 
     config.email = {
-        config: { ...emailProviders[emailProvider](env), appName: env('APP_NAME', 'Store') },
+        config: { ...emailProviders[emailProvider](env), appName: env('APP_NAME', 'Single Page Startup') },
     };
 
     if (env('AWS_ACCESS_KEY_ID')) {

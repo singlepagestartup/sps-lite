@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    image: frontend
+    restart: always
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+
+  backend:
+    container_name: backend
+    image: backend
+    restart: always
+    env_file: ./backend/.env
+    expose:
+      - 1337
+    ports:
+      - 1337:1337

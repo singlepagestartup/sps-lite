@@ -49,7 +49,7 @@ jobs:
       - name: Send webhook for service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_TEST_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          url: ${{ secrets.PORTAINER_STAGING_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"
 
   create-frontend-image:
@@ -89,5 +89,5 @@ jobs:
       - name: Send webhook for service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_TEST_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"
