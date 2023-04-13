@@ -22,12 +22,12 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
     <div className="bg-white py-12" {...additionalAttributes}>
       <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-indigo-600 w-fit">
-            {props?.title}
-          </h2>
-          <p className="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl w-fit">
+          <p className="text-lg font-semibold text-indigo-600 w-fit">
             {props?.subtitle}
           </p>
+          <h2 className="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl w-fit">
+            {props?.title}
+          </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 text-center">
             {props.description}
           </p>
