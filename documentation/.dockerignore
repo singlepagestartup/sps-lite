@@ -1,0 +1,6 @@
+package-lock.json
+yarn.lock
+package-lock.json
+node_modules
+.docusaurus
+build
