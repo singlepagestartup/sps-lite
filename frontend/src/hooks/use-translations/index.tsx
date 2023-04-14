@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCallback, useEffect } from "react";
 
+/**
+ * Хук для получения переводов на основе ключей в файлах локализации
+ */
 export default function useTranslations() {
   const router = useRouter();
   const { locale } = router;
