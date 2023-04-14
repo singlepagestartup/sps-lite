@@ -89,3 +89,13 @@ npm run develop
 ![Select backend](./img/select-backend.png)
 
 ![Debug Console](./img/debug-console.png)
+
+## Панель адмнистрирования
+
+После запуска проекта станет доступна панель администрирования по адресу [http://127.0.0.1:1337/admin](http://127.0.0.1:1337/admin). При первом посещении необходимо создать администратора.
+
+![Strapi login](./img/strapi-login.png)
+
+После создания пользователя и входа в аккаунт откроется главная страница панели администрирования Strapi. Подробную информация о том что такое Strapi можно узнать в [Официальной документации](https://docs.strapi.io/dev-docs/quick-start).
+
+![Strapi main](./img/strapi-main.png)
