@@ -74,3 +74,9 @@ h4 {
 h5 {
   @apply text-xl;
 }
+
+.markdown {
+  a {
+    @apply text-primary-700 hover:text-primary-900 duration-200;
+  }
+}
