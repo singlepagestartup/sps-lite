@@ -11,12 +11,10 @@ try {
 
 const config = {
   content: [
-    `./src/**/*.{html,js,jsx,tsx}`,
-    `./src/**/**/*.{html,js,jsx,tsx}`,
-    `./pages/*.{html,js,jsx,tsx}`,
-    `./pages/**/*.{html,js,jsx,tsx}`,
-    `./node_modules/@rogwild/next-utils/src/components/**/*.{html,js,jsx}`,
-    `./node_modules/@rogwild/next-utils/dist/index.js`,
+    `./src/**/*.{html,js,jsx,tsx,md,mdx}`,
+    `./src/**/**/*.{html,js,jsx,tsx,md,mdx}`,
+    `./docs/*.{html,js,jsx,tsx,md,mdx}`,
+    `./docs/**/*.{html,js,jsx,tsx,md,mdx}`,
   ],
   safelist: [
     { pattern: /w-(1|2|3|4|5|6|7|8|9|10|11)\/12/ },
@@ -46,11 +44,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    require(`@tailwindcss/forms`),
-    require(`@tailwindcss/typography`),
-    require(`@tailwindcss/aspect-ratio`),
-  ],
+  plugins: [],
   darkMode: `class`,
 };
 
