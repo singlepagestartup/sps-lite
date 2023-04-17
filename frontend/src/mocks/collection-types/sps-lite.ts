@@ -14,7 +14,7 @@ import {
   ISpsLiteBackendTopbar,
 } from "types/collection-types/sps-lite";
 import {
-  spsLiteBackendButtonDefault,
+  spsLiteBackendButtonSecondary,
   spsLiteBackendButtonPrimary,
   spsLiteBackendEmailInput,
   spsLiteBackendFeature,
@@ -72,7 +72,7 @@ export const spsLiteBackendTier: ISpsLiteBackendTier = {
   publishedAt: `2023-02-14T22:48:50.378Z`,
   features: Array(4).fill(spsLiteBackendFeature),
   currency: { ...spsLiteBackendCurrency },
-  buttons: [{ ...spsLiteBackendButtonDefault }],
+  buttons: [{ ...spsLiteBackendButtonSecondary }],
 };
 
 export const spsLiteBackendForm: ISpsLiteBackendForm = {
@@ -92,7 +92,7 @@ export const spsLiteBackendForm: ISpsLiteBackendForm = {
     { ...spsLiteBackendQuestionInput },
     { ...spsLiteBackendPolicyInput },
   ],
-  button: { ...spsLiteBackendButtonDefault },
+  button: { ...spsLiteBackendButtonSecondary },
   className: null,
   additionalAttributes: null,
 };

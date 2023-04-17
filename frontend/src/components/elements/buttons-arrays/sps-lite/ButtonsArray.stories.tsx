@@ -5,7 +5,16 @@ import {
   spsLiteBackendButtonsArraySimple,
 } from "~mocks/components/elements/sps-lite";
 
-const meta = { component: ButtonsArrays } satisfies Meta<typeof ButtonsArrays>;
+const meta = {
+  component: ButtonsArrays,
+  decorators: [
+    (Story) => (
+      <div className="px-32 pt-5">
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof ButtonsArrays>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;

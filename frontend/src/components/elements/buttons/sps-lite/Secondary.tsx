@@ -2,7 +2,7 @@ import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
 
-export default function Default(props: ISpsLiteButton) {
+export default function Secondary(props: ISpsLiteButton) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   if (props?.onClick) {
@@ -11,7 +11,7 @@ export default function Default(props: ISpsLiteButton) {
         <button
           {...additionalAttributes}
           onClick={props.onClick}
-          className="button-default"
+          className="button-secondary"
         >
           {props.title}
         </button>
@@ -26,7 +26,7 @@ export default function Default(props: ISpsLiteButton) {
           {...additionalAttributes}
           href={url}
           aria-selected={isActive}
-          className="button-default"
+          className="button-secondary"
         >
           {props.title}
         </Link>

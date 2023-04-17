@@ -122,35 +122,7 @@ export const reviewPopulate = {
 
 export const currencyPopulate = {};
 
-export const pagePopulate = {
-  ...pageBlockPopulate,
-  layout: {
-    populate: {
-      metatag: {
-        favicon: {
-          populate: mediaPopulate,
-        },
-      },
-      topbar: {
-        populate: {
-          ...pageBlockPopulate,
-        },
-      },
-      navbar: {
-        populate: {
-          ...pageBlockPopulate,
-        },
-      },
-      sidebar: {
-        populate: {
-          ...pageBlockPopulate,
-        },
-      },
-      footer: {
-        populate: {
-          ...pageBlockPopulate,
-        },
-      },
-    },
-  },
-};
+/**
+ * Модель имеет промежуточный слой, который проставляет deepPopulate
+ */
+export const pagePopulate = `*`;

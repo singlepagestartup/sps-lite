@@ -6,6 +6,7 @@ const variants = {
 };
 
 export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
+  console.log(`🚀 ~ props:`, props);
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp) {

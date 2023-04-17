@@ -20,7 +20,7 @@ import {
   spsLiteBackendTier,
 } from "~mocks/collection-types/sps-lite";
 import {
-  spsLiteBackendButtonDefault,
+  spsLiteBackendButtonSecondary,
   spsLiteBackendButtonsArrayBottomLine,
   spsLiteBackendButtonsArrayDefault,
   spsLiteBackendButtonsArrayPrimary,
@@ -62,7 +62,7 @@ export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBa
     variant: `dark-panel-with-app-screenshot`,
     __component: `page-blocks.cta-section-block`,
     description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
-    buttons: Array(3).fill({ ...spsLiteBackendButtonDefault }),
+    buttons: Array(3).fill({ ...spsLiteBackendButtonSecondary }),
   };
 
 export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteBackendFaqBlock =
@@ -94,7 +94,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
     anchor: `anchor`,
     title: `OpenSource "под капотом"`,
     description: `Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.`,
-    buttons: [{ ...spsLiteBackendButtonDefault }],
+    buttons: [{ ...spsLiteBackendButtonSecondary }],
     __component: `page-blocks.hero-section-block`,
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
   };
@@ -129,7 +129,7 @@ export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
   title: `404`,
   subtitle: `Page not found`,
   description: `Come to main page and start again`,
-  buttons: Array(1).fill({ ...spsLiteBackendButtonDefault }),
+  buttons: Array(1).fill({ ...spsLiteBackendButtonSecondary }),
 };
 
 export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock =

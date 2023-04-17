@@ -31,7 +31,6 @@ module.exports = ({ env }) => {
 
     return [
         'strapi::errors',
-        'strapi::security',
         security,
         {
             name: 'strapi::cors',
@@ -42,7 +41,17 @@ module.exports = ({ env }) => {
         'strapi::poweredBy',
         'strapi::logger',
         'strapi::query',
-        'strapi::body',
+        {
+            name: 'strapi::body',
+            config: {
+                formLimit: '256mb',
+                jsonLimit: '256mb',
+                textLimit: '256mb',
+                formidable: {
+                    maxFileSize: 200 * 1024 * 1024,
+                },
+            },
+        },
         'strapi::session',
         'strapi::favicon',
         'strapi::public',

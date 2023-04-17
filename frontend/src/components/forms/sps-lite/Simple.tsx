@@ -140,7 +140,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
           />
           <div className="submit__button_container">
             <Buttons
-              variant={props.button?.variant || `default`}
+              variant={props.button?.variant || `secondary`}
               onClick={handleSubmit(onSubmit)}
               title={props.button?.title || `Submit`}
             />

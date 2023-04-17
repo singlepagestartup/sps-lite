@@ -13,11 +13,11 @@ import {
   spsLiteUploadPluginBackendMediaLogotypeIcon,
 } from "~mocks/plugins/upload/sps-lite";
 
-export const spsLiteBackendButtonDefault: ISpsLiteBackendButton = {
+export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   id: 4,
   title: `Button`,
   url: `https://nextjs.com`,
-  variant: `default`,
+  variant: `secondary`,
   __component: `elements.button`,
   description: null,
   className: null,
@@ -25,12 +25,12 @@ export const spsLiteBackendButtonDefault: ISpsLiteBackendButton = {
 };
 
 export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
-  ...spsLiteBackendButtonDefault,
+  ...spsLiteBackendButtonSecondary,
   variant: `primary`,
 };
 
 export const spsLiteBackendButtonBottomLine: ISpsLiteBackendButton = {
-  ...spsLiteBackendButtonDefault,
+  ...spsLiteBackendButtonSecondary,
   variant: `bottom-line`,
 };
 
@@ -38,7 +38,7 @@ export const spsLiteBackendButtonsArraySimple: ISpsLiteBackendButtonsArray = {
   id: 5,
   __component: `elements.buttons-array`,
   title: `Buttons Array`,
-  buttons: [spsLiteBackendButtonDefault, spsLiteBackendButtonDefault],
+  buttons: [spsLiteBackendButtonSecondary, spsLiteBackendButtonSecondary],
   variant: `simple`,
   description: null,
   className: null,
@@ -204,5 +204,5 @@ export const spsLiteBackendSlide: ISpsLiteBackendSlide = {
   description: `Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.`,
   subtitle: null,
   media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
-  buttons: [{ ...spsLiteBackendButtonDefault }],
+  buttons: [{ ...spsLiteBackendButtonSecondary }],
 };

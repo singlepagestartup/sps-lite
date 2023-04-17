@@ -1,5 +1,5 @@
 import BottomLine from "./BottomLine";
-import Default from "./Default";
+import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
 import { ISpsLiteBackendButton } from "types/components/elements/sps-lite";
@@ -25,7 +25,7 @@ export interface ISpsLiteButton
 export const variants = {
   "bottom-line": BottomLine,
   primary: Primary,
-  default: Default,
+  secondary: Secondary,
 };
 
 export default function SimpleButtons(props: ISpsLiteButton) {
