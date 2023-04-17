@@ -1,54 +1,49 @@
 {
-  "kind": "collectionType",
-  "collectionName": "menus",
-  "info": {
-    "singularName": "menu",
-    "pluralName": "menus",
-    "displayName": "Menu",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
-  "attributes": {
-    "variant": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
-      "default": "simple",
-      "required": true
+    "kind": "collectionType",
+    "collectionName": "menus",
+    "info": {
+        "singularName": "menu",
+        "pluralName": "menus",
+        "displayName": "Menu",
+        "description": ""
     },
-    "page_blocks": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "elements.buttons-array",
-        "elements.button"
-      ]
+    "options": {
+        "draftAndPublish": true
     },
-    "title": {
-      "pluginOptions": {
+    "pluginOptions": {
         "i18n": {
-          "localized": false
+            "localized": true
         }
-      },
-      "type": "string",
-      "required": true
+    },
+    "attributes": {
+        "variant": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "enumeration",
+            "enum": ["simple"],
+            "default": "simple",
+            "required": true
+        },
+        "page_blocks": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "dynamiczone",
+            "components": ["elements.buttons-array", "elements.button"]
+        },
+        "title": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "type": "string",
+            "required": true
+        }
     }
-  }
 }

@@ -1,64 +1,49 @@
 {
-  "collectionName": "components_elements_buttons",
-  "info": {
-    "displayName": "Button",
-    "icon": "closed-captioning",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "url": {
-      "type": "text"
+    "collectionName": "components_elements_buttons",
+    "info": {
+        "displayName": "Button",
+        "icon": "closed-captioning",
+        "description": ""
     },
-    "media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos",
-        "audios",
-        "files"
-      ]
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "bottom-line",
-        "primary",
-        "secondary",
-        "text"
-      ],
-      "default": "primary",
-      "required": true
-    },
-    "additional_media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "title": {
-      "type": "richtext"
-    },
-    "additional_attributes": {
-      "type": "json"
-    },
-    "class_name": {
-      "type": "string"
-    },
-    "menu": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::menu.menu"
+    "options": {},
+    "attributes": {
+        "url": {
+            "type": "text"
+        },
+        "media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "videos", "audios", "files"]
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "variant": {
+            "type": "enumeration",
+            "enum": ["bottom-line", "primary", "secondary", "text"],
+            "default": "primary",
+            "required": true
+        },
+        "additional_media": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        "title": {
+            "type": "richtext"
+        },
+        "additional_attributes": {
+            "type": "json"
+        },
+        "class_name": {
+            "type": "string"
+        },
+        "menu": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::menu.menu"
+        }
     }
-  }
 }
