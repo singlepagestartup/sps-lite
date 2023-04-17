@@ -1,20 +1,18 @@
 {
-  "collectionName": "components_functions_configs",
-  "info": {
-    "displayName": "Config",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "provider": {
-      "type": "enumeration",
-      "enum": [
-        "google"
-      ],
-      "required": true
+    "collectionName": "components_functions_configs",
+    "info": {
+        "displayName": "Config",
+        "description": ""
     },
-    "config": {
-      "type": "json"
+    "options": {},
+    "attributes": {
+        "provider": {
+            "type": "enumeration",
+            "enum": ["google"],
+            "required": true
+        },
+        "config": {
+            "type": "json"
+        }
     }
-  }
 }
