@@ -10,7 +10,7 @@ async function getGoogleSheetsService() {
         },
     });
 
-    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google-drive');
+    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google');
 
     if (!googleDriveConfig) {
         console.log('No Google Config items in Strapi Configuration');
@@ -37,7 +37,7 @@ async function addToSheet({ payload }) {
         },
     });
 
-    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google-drive');
+    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google');
 
     if (!googleDriveConfig) {
         console.log('No Google Config items in Strapi Configuration');

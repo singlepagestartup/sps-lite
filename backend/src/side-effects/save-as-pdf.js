@@ -39,7 +39,7 @@ async function saveAsPdf({ event, sideEffect, payload, templateConfig }) {
                 data: {},
             })
             .then((res) => res[0]);
-    } else if (sideEffect.provider === 'google-drive') {
+    } else if (sideEffect.provider === 'google') {
         return await uploadFileToGoogleDrive(pdfFileMeta);
     }
 }
@@ -55,7 +55,7 @@ async function getGoogleDriveService() {
         },
     });
 
-    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google-drive');
+    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google');
 
     if (!googleDriveConfig) {
         console.log('No Google Config items in Strapi Configuration');
@@ -81,7 +81,7 @@ async function uploadFileToGoogleDrive(pdfFileMeta) {
         },
     });
 
-    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google-drive');
+    const googleDriveConfig = configs.configs.find((c) => c.provider === 'google');
 
     if (!googleDriveConfig) {
         console.log('No Google Config items in Strapi Configuration');
