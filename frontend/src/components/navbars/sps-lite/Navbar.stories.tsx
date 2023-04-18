@@ -1,10 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import PublicPageNavbars from ".";
+import Navbars from ".";
 import { spsLiteBackendNavbarSimple } from "~mocks/collection-types/sps-lite";
 
-const meta = { component: PublicPageNavbars } satisfies Meta<
-  typeof PublicPageNavbars
->;
+const meta = { component: Navbars } satisfies Meta<typeof Navbars>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;

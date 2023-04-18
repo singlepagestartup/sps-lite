@@ -21,9 +21,6 @@ import {
 } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteBackendButtonSecondary,
-  spsLiteBackendButtonsArrayBottomLine,
-  spsLiteBackendButtonsArrayDefault,
-  spsLiteBackendButtonsArrayPrimary,
   spsLiteBackendButtonsArraySimple,
   spsLiteBackendFaq,
   spsLiteBackendFeature,
@@ -177,13 +174,10 @@ export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
   description: `Description`,
   className: `class-name`,
   logotype: { ...spsLiteBackendLogotype },
-  buttonsArrays: [
-    spsLiteBackendButtonsArrayBottomLine,
-    spsLiteBackendButtonsArrayBottomLine,
-  ],
-  additionalButtonsArrays: [
-    spsLiteBackendButtonsArrayPrimary,
-    spsLiteBackendButtonsArrayDefault,
+  buttons: [spsLiteBackendButtonSecondary, spsLiteBackendButtonSecondary],
+  additionalButtons: [
+    spsLiteBackendButtonSecondary,
+    spsLiteBackendButtonSecondary,
   ],
 };
 
@@ -200,11 +194,11 @@ export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
     spsLiteBackendButtonsArraySimple,
   ],
   additionalButtonsArrays: [
-    spsLiteBackendButtonsArrayBottomLine,
-    spsLiteBackendButtonsArrayBottomLine,
+    spsLiteBackendButtonsArraySimple,
+    spsLiteBackendButtonsArraySimple,
   ],
   extraButtonsArrays: [
-    spsLiteBackendButtonsArrayBottomLine,
-    spsLiteBackendButtonsArrayBottomLine,
+    spsLiteBackendButtonsArraySimple,
+    spsLiteBackendButtonsArraySimple,
   ],
 };

@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { ISpsLiteBackendMenu } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendFlyoutMenu } from "types/collection-types/sps-lite";
 import Simple from "./Simple";
 
-export interface ISpsLiteMenu extends ISpsLiteBackendMenu {}
+export interface ISpsLiteMenu extends ISpsLiteBackendFlyoutMenu {}
 
 export const variants = {
   simple: Simple,

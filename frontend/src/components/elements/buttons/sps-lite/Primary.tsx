@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
+import FlyoutMenus from "~components/flyout-menus";
 
 export default function Primary(props: ISpsLiteButton) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
@@ -15,6 +16,14 @@ export default function Primary(props: ISpsLiteButton) {
         >
           {props.title}
         </button>
+      </div>
+    );
+  }
+
+  if (props?.flyoutMenu) {
+    return (
+      <div className={props?.className || ``}>
+        <FlyoutMenus {...props} />
       </div>
     );
   }

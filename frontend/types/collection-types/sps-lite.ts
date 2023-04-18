@@ -169,7 +169,7 @@ export interface ISpsLiteBackendNavbar {
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
-export interface ISpsLiteBackendMenu {
+export interface ISpsLiteBackendFlyoutMenu {
   id: number;
   locale: string;
   title: string;

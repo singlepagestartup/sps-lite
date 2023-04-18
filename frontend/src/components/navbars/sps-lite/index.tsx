@@ -13,7 +13,7 @@ export const variants = {
   simple: Simple,
 };
 
-export default function PublicPageNavbars(props: ISpsLiteNavbar) {
+export default function Navbars(props: ISpsLiteNavbar) {
   const Comp = variants[
     props.variant as keyof typeof variants
   ] as FC<ISpsLiteNavbar>;

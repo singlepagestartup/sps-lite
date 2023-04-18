@@ -8,14 +8,12 @@ export default function Simple(props: IButtonsArray) {
     <div className={props?.className || ``}>
       <div className="flex flex-col gap-2 relative">
         {title ? (
-          <div
-            className={`inline-flex items-center font-medium leading-relaxed justify-center text-center px-8 py-3 text-gray-900`}
-          >
+          <div className="relative inline-flex w-full font-medium leading-relaxed justify-center items-center px-8 py-3">
             <span>{title}</span>
           </div>
         ) : null}
 
-        <div className="overflow-hidden w-full">
+        <div className="w-full">
           <div className="w-full flex flex-col gap-2">
             {buttons?.map((button, index) => {
               return <Buttons key={index} {...button} />;

@@ -21,7 +21,7 @@ export default function FourColumnsWithCompanyMission(
               <Image
                 src={getImageUrl(props.logotype.media[0], { BACKEND_URL })}
                 alt=""
-                className="object-contain object-top object-left"
+                className="object-contain object-left"
                 width={200}
                 height={200}
               />

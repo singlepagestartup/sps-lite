@@ -35,7 +35,7 @@ button:focus {
   }
 
   .button-primary {
-    @apply relative inline-flex w-full justify-center items-center rounded-md border border-transparent bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black transition duration-150 ease-in-out;
+    @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
   }
 
   .button-bottom-line {

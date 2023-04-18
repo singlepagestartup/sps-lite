@@ -1,5 +1,6 @@
 import {
   ISpsLiteBackendCurrency,
+  ISpsLiteBackendFlyoutMenu,
   ISpsLiteBackendForm,
   ISpsLiteBackendLayout,
   ISpsLiteBackendMetatag,
@@ -194,6 +195,22 @@ export const spsLiteBackendNavbarSimple: ISpsLiteBackendNavbar = {
   updatedAt: `2023-03-28T11:07:57.474Z`,
   publishedAt: `2023-03-28T11:07:57.457Z`,
   pageBlocks: [{ ...spsLiteBackendNavbarBlockSimple }],
+};
+
+export const spsLiteBackendMenuSimple: ISpsLiteBackendFlyoutMenu = {
+  id: 1,
+  title: `Main Menu`,
+  uid: `main-menu`,
+  locale: `en`,
+  variant: `simple`,
+  className: null,
+  createdAt: `2023-03-28T11:07:56.252Z`,
+  updatedAt: `2023-03-28T11:07:57.474Z`,
+  publishedAt: `2023-03-28T11:07:57.457Z`,
+  pageBlocks: [
+    { ...spsLiteBackendButtonSecondary },
+    { ...spsLiteBackendButtonSecondary },
+  ],
 };
 
 export const spsLiteBackendFooterSimple: ISpsLiteBackendNavbar = {

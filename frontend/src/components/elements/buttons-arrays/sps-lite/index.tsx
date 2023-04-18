@@ -1,10 +1,6 @@
-import BottomLine from "./BottomLine";
-import Default from "./Default";
-import Dropdown from "./Dropdown";
 import Simple from "./Simple";
 import { FC } from "react";
 import { ISpsLiteBackendButtonsArray } from "types/components/elements/sps-lite";
-import Primary from "./Primary";
 
 export interface IButtonsArray
   extends Omit<
@@ -19,10 +15,6 @@ export interface IButtonsArray
 
 export const variants = {
   simple: Simple,
-  dropdown: Dropdown,
-  "bottom-line": BottomLine,
-  default: Default,
-  primary: Primary,
 };
 
 export default function ButtonsArrays(props: IButtonsArray) {

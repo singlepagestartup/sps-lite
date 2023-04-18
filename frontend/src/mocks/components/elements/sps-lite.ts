@@ -22,6 +22,7 @@ export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   description: null,
   className: null,
   additionalAttributes: null,
+  flyoutMenu: null,
 };
 
 export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
@@ -43,45 +44,6 @@ export const spsLiteBackendButtonsArraySimple: ISpsLiteBackendButtonsArray = {
   description: null,
   className: null,
   url: null,
-};
-
-export const spsLiteBackendButtonsArrayBottomLine: ISpsLiteBackendButtonsArray =
-  {
-    id: 5,
-    __component: `elements.buttons-array`,
-    title: `About Us`,
-    buttons: [],
-    variant: `bottom-line`,
-    description: null,
-    className: null,
-    url: `/about-us`,
-  };
-
-export const spsLiteBackendButtonsArrayPrimary: ISpsLiteBackendButtonsArray = {
-  id: 5,
-  __component: `elements.buttons-array`,
-  title: `Login`,
-  buttons: [],
-  variant: `primary`,
-  description: null,
-  className: null,
-  url: `/about-us`,
-};
-
-export const spsLiteBackendButtonsArrayDefault: ISpsLiteBackendButtonsArray = {
-  id: 5,
-  __component: `elements.buttons-array`,
-  title: `Registration`,
-  buttons: [],
-  variant: `default`,
-  description: null,
-  className: null,
-  url: `/about-us`,
-};
-
-export const spsLiteBackendButtonsArrayDropdown: ISpsLiteBackendButtonsArray = {
-  ...spsLiteBackendButtonsArraySimple,
-  variant: `dropdown`,
 };
 
 export const spsLiteBackendFaq: ISpsLiteBackendFaq = {
