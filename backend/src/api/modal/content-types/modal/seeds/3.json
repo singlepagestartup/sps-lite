@@ -7,6 +7,7 @@
     "createdAt": "2023-03-31T16:24:15.965Z",
     "updatedAt": "2023-04-02T11:55:25.869Z",
     "publishedAt": "2023-03-28T11:07:57.457Z",
+    "locale": "en",
     "page_blocks": [
         {
             "__component": "page-blocks.hero-section-block",
@@ -21,6 +22,8 @@
             "background": null
         }
     ],
+    "layouts": [],
     "createdBy": null,
-    "updatedBy": null
+    "updatedBy": null,
+    "localizations": []
 }

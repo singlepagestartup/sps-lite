@@ -9,6 +9,9 @@
     "createdAt": "2023-03-31T16:22:17.165Z",
     "updatedAt": "2023-04-02T13:32:15.844Z",
     "publishedAt": "2023-03-28T10:46:50.780Z",
+    "title": null,
+    "uid": null,
+    "locale": "en",
     "slides": [
         {
             "id": 29,
@@ -91,9 +94,7 @@
                     "variant": "default",
                     "title": "Начать",
                     "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null
+                    "class_name": null
                 }
             ],
             "additional_media": null
@@ -189,6 +190,19 @@
         "blocked": false,
         "preferedLanguage": null,
         "createdAt": "2023-02-13T22:32:56.592Z",
-        "updatedAt": "2023-02-13T22:32:56.592Z"
-    }
+        "updatedAt": "2023-02-13T22:32:56.592Z",
+        "roles": [
+            {
+                "id": 1,
+                "name": "Super Admin",
+                "code": "strapi-super-admin",
+                "description": "Super Admins can access and manage all features and settings.",
+                "createdAt": "2023-02-13T22:26:07.622Z",
+                "updatedAt": "2023-02-13T22:26:07.622Z"
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "localizations": []
 }
