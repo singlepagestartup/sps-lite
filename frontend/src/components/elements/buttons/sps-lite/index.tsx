@@ -3,6 +3,7 @@ import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
 import { ISpsLiteBackendButton } from "types/components/elements/sps-lite";
+import { ISpsLiteBackendMenu } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteButton
   extends Omit<
@@ -13,6 +14,7 @@ export interface ISpsLiteButton
     | `className`
     | `additionalAttributes`
     | `__component`
+    | `menu`
   > {
   url?: string | null;
   description?: string | null;
@@ -20,6 +22,7 @@ export interface ISpsLiteButton
   additionalAttributes?: any | null;
   onClick?: any;
   __component?: ISpsLiteBackendButton[`__component`];
+  menu?: ISpsLiteBackendButton[`menu`];
 }
 
 export const variants = {

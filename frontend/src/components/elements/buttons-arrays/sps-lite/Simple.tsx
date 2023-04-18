@@ -9,7 +9,7 @@ export default function Simple(props: IButtonsArray) {
       <div className="flex flex-col gap-2 relative">
         {title ? (
           <div
-            className={`inline-flex items-center border-b-2 p-1 text-sm font-medium border-primary-500 text-gray-900`}
+            className={`inline-flex items-center font-medium leading-relaxed justify-center text-center px-8 py-3 text-gray-900`}
           >
             <span>{title}</span>
           </div>

@@ -1,3 +1,4 @@
+import { ISpsLiteBackendMenu } from "types/collection-types/sps-lite";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export interface ISpsLiteBackendButton {
@@ -11,6 +12,7 @@ export interface ISpsLiteBackendButton {
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   className: string | null;
   additionalAttributes: any | null;
+  menu: ISpsLiteBackendMenu | null;
 }
 
 export interface ISpsLiteBackendButtonsArray {

@@ -175,8 +175,6 @@ export const getStaticProps = async (params: any) => {
     params: { locale, populate: pagePopulate, filters },
   });
 
-  console.log(`🚀 ~ getStaticProps ~ page:`, page);
-
   if (!page?.length) {
     return {
       props: {},

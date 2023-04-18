@@ -14,6 +14,7 @@ import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
 import Navbars from "~components/page-blocks/navbars";
 import Buttons from "~components/elements/buttons";
 import Footers from "~components/page-blocks/footer";
+import ButtonsArrays from "~components/elements/buttons-arrays";
 
 export const pageBlockComponents = {
   [`page-blocks.header-section-block`]: HeaderSections,
@@ -31,5 +32,6 @@ export const pageBlockComponents = {
   [`page-blocks.reviews-table-block`]: ReviewsTables,
   [`page-blocks.navbar-block`]: Navbars,
   [`page-blocks.footer-block`]: Footers,
+  [`elements.buttons-array`]: ButtonsArrays,
   [`elements.button`]: Buttons,
 };

@@ -165,8 +165,8 @@ export interface ISpsLiteBackendNavbarBlock {
   className: string | null;
   description: string | null;
   logotype: ISpsLiteBackendLogotype | null;
-  buttonsArrays: ISpsLiteBackendButtonsArray[] | null;
-  additionalButtonsArrays: ISpsLiteBackendButtonsArray[] | null;
+  buttons: ISpsLiteBackendButton[] | null;
+  additionalButtons: ISpsLiteBackendButton[] | null;
 }
 
 export interface ISpsLiteBackendFooterBlock {

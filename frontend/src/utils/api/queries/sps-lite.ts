@@ -7,6 +7,9 @@ export const buttonPopulate = {
   additionalMedia: {
     populate: mediaPopulate,
   },
+  menu: {
+    populate: `*`,
+  },
 };
 
 export const buttonArrayPopulate = {
@@ -122,7 +125,27 @@ export const reviewPopulate = {
 
 export const currencyPopulate = {};
 
-/**
- * Модель имеет промежуточный слой, который проставляет deepPopulate
- */
-export const pagePopulate = `*`;
+export const pagePopulate = {
+  ...pageBlockPopulate,
+  layout: {
+    populate: {
+      metatag: {
+        favicon: {
+          populate: mediaPopulate,
+        },
+      },
+      topbar: {
+        populate: `*`,
+      },
+      navbar: {
+        populate: `*`,
+      },
+      sidebar: {
+        populate: `*`,
+      },
+      footer: {
+        populate: `*`,
+      },
+    },
+  },
+};

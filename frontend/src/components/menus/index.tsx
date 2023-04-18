@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { ISpsLiteFooter, variants as spsLiteVariants } from "./sps-lite";
+import { ISpsLiteMenu, variants as spsLiteVariants } from "./sps-lite";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { pageBlockPopulate } from "~utils/api/queries";
@@ -8,12 +8,12 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Footers<T extends ISpsLiteFooter>(props: T) {
+export default function Menus<T extends ISpsLiteMenu>(props: T) {
   const [data, setData] = useState<any>();
 
   useEffect(() => {
     getBackendData({
-      url: `${BACKEND_URL}/api/footers/${props.id}`,
+      url: `${BACKEND_URL}/api/menus/${props.id}`,
       params: {
         locale: props.locale,
         populate: pageBlockPopulate,
@@ -29,5 +29,5 @@ export default function Footers<T extends ISpsLiteFooter>(props: T) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...data} />;
 }

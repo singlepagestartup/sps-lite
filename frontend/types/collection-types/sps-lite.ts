@@ -169,6 +169,19 @@ export interface ISpsLiteBackendNavbar {
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
+export interface ISpsLiteBackendMenu {
+  id: number;
+  locale: string;
+  title: string;
+  uid: string | null;
+  className: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  variant: `simple`;
+  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+}
+
 export interface ISpsLiteBackendFooter {
   id: number;
   locale: string;

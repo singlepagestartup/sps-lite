@@ -3,7 +3,7 @@ import Link from "next/link";
 import utils from "@rogwild/next-utils";
 import { BACKEND_URL } from "~utils/envs";
 import { ISpsLiteNavbarBlock } from ".";
-import ButtonsArrays from "~components/elements/buttons-arrays";
+import Buttons from "~components/elements/buttons";
 const { getImageUrl } = utils.api;
 
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
@@ -26,15 +26,15 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
                 </Link>
               </div>
             ) : null}
-            <div className="hidden lg:ml-6 lg:flex lg:space-x-6">
-              {props.buttonsArrays?.map((buttonsArray, index) => {
-                return <ButtonsArrays key={index} {...buttonsArray} />;
+            <div className="hidden lg:ml-6 lg:flex lg:space-x-6 items-center">
+              {props.buttons?.map((button, index) => {
+                return <Buttons key={index} {...button} />;
               })}
             </div>
           </div>
-          <div className="hidden lg:flex lg:space-x-2">
-            {props.additionalButtonsArrays?.map((buttonsArray, index) => {
-              return <ButtonsArrays key={index} {...buttonsArray} />;
+          <div className="hidden lg:flex lg:space-x-2 items-center">
+            {props.additionalButtons?.map((button, index) => {
+              return <Buttons key={index} {...button} />;
             })}
           </div>
         </div>
