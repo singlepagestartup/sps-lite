@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,28 +24,65 @@
     "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
-      "~store/*": ["./src/store/*"],
-      "~api/*": ["./src/api/*"],
-      "~components/*": ["./src/components/*"],
-      "~ui/*": ["./src/components/ui/*"],
-      "~utils/*": ["./src/utils/*"],
-      "~redux/*": ["./src/redux/*"],
-      "~transformers/*": ["./src/utils/transformers/*"],
-      "~hooks/*": ["./src/hooks/*"],
-      "~web3/*": ["./src/web3/*"],
-      "~abi/*": ["./src/web3/configs/abi/*"],
-      "~backend/*": ["./src/redux/services/backend/*"],
-      "~translations/*": ["./translations/*"],
-      "~mocks/*": ["./src/mocks/*"]
+      "~store/*": [
+        "./src/store/*"
+      ],
+      "~api/*": [
+        "./src/api/*"
+      ],
+      "~components/*": [
+        "./src/components/*"
+      ],
+      "~ui/*": [
+        "./src/components/ui/*"
+      ],
+      "~utils/*": [
+        "./src/utils/*"
+      ],
+      "~redux/*": [
+        "./src/redux/*"
+      ],
+      "~transformers/*": [
+        "./src/utils/transformers/*"
+      ],
+      "~hooks/*": [
+        "./src/hooks/*"
+      ],
+      "~web3/*": [
+        "./src/web3/*"
+      ],
+      "~abi/*": [
+        "./src/web3/configs/abi/*"
+      ],
+      "~backend/*": [
+        "./src/redux/services/backend/*"
+      ],
+      "~translations/*": [
+        "./translations/*"
+      ],
+      "~mocks/*": [
+        "./src/mocks/*"
+      ]
     },
-    "typeRoots": ["./node_modules/@types", "types"]
+    "typeRoots": [
+      "./node_modules/@types",
+      "types"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "src/api/transformers.js",
-    "src/components/page-blocks/product-overviews/hooks/useGetAttributes"
+    "src/components/page-blocks/product-overviews/hooks/useGetAttributes",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

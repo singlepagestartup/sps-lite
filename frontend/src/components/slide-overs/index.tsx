@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect, FC } from "react";
-import { useRouter } from "next/router";
 import { ISpsLiteSlideOver, variants as spsStoreVariants } from "./sps-lite";
 import { useGetSlideOversQuery } from "~redux/services/backend/models/slide-overs";
+import { useSearchParams } from "next/navigation";
 
 const variants = {
   ...spsStoreVariants,
@@ -10,8 +12,8 @@ const variants = {
 export interface ISlideOver extends ISpsLiteSlideOver {}
 
 export default function SlideOvers() {
-  const router = useRouter();
-  const { query } = router;
+  const query = useSearchParams();
+  const openedSlideOver = query?.get(`opened_slide_over`);
   const [isOpen, setIsOpen] = useState(false);
   const [slideOverProps, setSlideOverProps] =
     useState<Omit<ISlideOver, `isOpen` | `setIsOpen`>>();
@@ -24,16 +26,16 @@ export default function SlideOvers() {
     }
 
     for (const slideOver of slideOvers) {
-      if (query.opened_slide_over === slideOver.uid) {
+      if (openedSlideOver === slideOver.uid) {
         setSlideOverProps(slideOver);
       }
     }
-  }, [slideOvers, query.opened_slide_over]);
+  }, [slideOvers, openedSlideOver]);
 
   useEffect(() => {
-    if (query.opened_slide_over && !isOpen) {
+    if (openedSlideOver && !isOpen) {
       setIsOpen(true);
-    } else if (!query.opened_slide_over && isOpen) {
+    } else if (!openedSlideOver && isOpen) {
       setIsOpen(false);
     }
   }, [query]);

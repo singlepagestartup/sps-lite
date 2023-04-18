@@ -1,8 +1,10 @@
+"use client";
+
 import { useState, useEffect, FC, useMemo } from "react";
-import { useRouter } from "next/router";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import { IBackendModal } from "types/collection-types";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
+import { useSearchParams } from "next/navigation";
 
 export interface IModal extends ISpsLiteModal {}
 
@@ -11,8 +13,8 @@ const variants = {
 };
 
 export default function Modals({ modals = [] }: { modals?: IModal[] }) {
-  const router = useRouter();
-  const { query } = router;
+  const query = useSearchParams();
+  const openedModal = query?.get(`opened_modal`);
   const [isOpen, setIsOpen] = useState(false);
   const [modalProps, setModalProps] = useState<Omit<IBackendModal, `id`>>();
 
@@ -32,14 +34,14 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
     }
 
     for (const modal of localModals) {
-      if (query.opened_modal === modal.uid) {
+      if (openedModal === modal.uid) {
         setModalProps(modal);
       }
     }
-  }, [localModals, query.opened_modal]);
+  }, [localModals, openedModal]);
 
   useEffect(() => {
-    if (query.opened_modal && !isOpen) {
+    if (openedModal && !isOpen) {
       setIsOpen(true);
     }
   }, [query]);

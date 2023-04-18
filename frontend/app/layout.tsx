@@ -1,0 +1,27 @@
+import "../styles/fonts.css";
+import "../styles/tailwind.scss";
+import Modals from "~components/modals";
+import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
+import { ReduxProvider } from "~redux/index";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html className="scroll-smooth">
+      <body>
+        <div className="relative">
+          <TranslationsContextWrapper>
+            <ReduxProvider>
+              {children}
+              <div id="notification" />
+              <Modals />
+            </ReduxProvider>
+          </TranslationsContextWrapper>
+        </div>
+      </body>
+    </html>
+  );
+}

@@ -1,19 +1,19 @@
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 export default function useGetButtonParams(props: {
   additionalAttributes?: any;
   url?: string | null;
 }) {
-  const router = useRouter();
+  const pathname = usePathname();
 
   const isActive = useMemo(() => {
     if (!props.url) {
       return;
     }
 
-    return router.asPath.replace(`/`, ``) === props.url;
-  }, [router, props.url]);
+    return pathname?.replace(`/`, ``) === props.url;
+  }, [pathname, props.url]);
 
   const additionalAttributes = useMemo(() => {
     if (!props.additionalAttributes) {
@@ -24,16 +24,12 @@ export default function useGetButtonParams(props: {
   }, [props]);
 
   const url = useMemo(() => {
-    if (
-      router.pathname.includes(`[`) &&
-      props.url &&
-      [`?`].includes(props.url[0])
-    ) {
-      return `${router.asPath}${props.url}`.replace(`//`, `/`);
+    if (pathname?.includes(`[`) && props.url && [`?`].includes(props.url[0])) {
+      return `${pathname}${props.url}`.replace(`//`, `/`);
     }
 
     return props.url;
-  }, [router, props.url]);
+  }, [pathname, props.url]);
 
   return { additionalAttributes, isActive, url };
 }

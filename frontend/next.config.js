@@ -10,6 +10,7 @@ module.exports = {
       `localhost`,
       `apisps.ru`,
       `singlepageshop.ru`,
+      `singlepagestartup.com`,
       `vercel.app`,
       `tailwindui.com`,
       `images.unsplash.com`,
@@ -22,5 +23,8 @@ module.exports = {
     locales: process.env.LOCALES.split(`,`) || [`en`],
     defaultLocale: process.env.DEFAULT_LOCALE || `en`,
     localeDetection: false,
+  },
+  experimental: {
+    appDir: true,
   },
 };

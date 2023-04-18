@@ -1,43 +1,44 @@
-import utils from "@rogwild/next-utils";
-import axios from "axios";
 import { stringify } from "qs";
-const { transformResponseItem } = utils.api;
+import { transformResponseItem } from "./transform-response-item";
 
-interface IAxiosProps {
+interface IFetchProps {
   url: string;
   params?: any;
   data?: any;
   method?: `GET` | `POST` | `PUT` | `DELETE`;
 }
 
-export async function getBackendData(props: IAxiosProps) {
+export async function getBackendData(props: IFetchProps) {
   const { url, params, data, method = `GET` } = props;
 
   const query = stringify(params || {}, {
     encodeValuesOnly: true,
   });
 
-  return await axios({
-    url: `${url}?${query}`,
+  const backendData = await fetch(`${url}?${query}`, {
     method,
-    data,
+    body: data,
   })
-    .then((res) => {
-      if (Array.isArray(res.data?.data)) {
-        const result: any = res.data.data?.map((item: any) =>
+    .then(async (res) => {
+      const jsonRes = await res.json();
+
+      if (Array.isArray(jsonRes.data)) {
+        const result: any = jsonRes.data.map((item: any) =>
           transformResponseItem(item)
         );
-        result[`_meta`] = res.data?.meta as any;
+        result[`_meta`] = jsonRes?.meta as any;
 
         return result;
       } else {
         return {
-          ...transformResponseItem(res.data?.data),
-          _meta: res.data?.meta,
+          ...transformResponseItem(jsonRes.data),
+          _meta: jsonRes.meta,
         };
       }
     })
     .catch((error) => {
       console.error(`\n ${method} ${url}?${query} | ${error.message}`);
     });
+
+  return backendData;
 }
