@@ -1,4 +1,4 @@
-import BottomLine from "./BottomLine";
+import Text from "./Text";
 import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
@@ -25,7 +25,7 @@ export interface ISpsLiteButton
 }
 
 export const variants = {
-  "bottom-line": BottomLine,
+  text: Text,
   primary: Primary,
   secondary: Secondary,
 };

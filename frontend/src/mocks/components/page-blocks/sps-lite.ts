@@ -21,6 +21,7 @@ import {
 } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteBackendButtonSecondary,
+  spsLiteBackendButtonText,
   spsLiteBackendButtonsArraySimple,
   spsLiteBackendFaq,
   spsLiteBackendFeature,
@@ -174,11 +175,8 @@ export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
   description: `Description`,
   className: `class-name`,
   logotype: { ...spsLiteBackendLogotype },
-  buttons: [spsLiteBackendButtonSecondary, spsLiteBackendButtonSecondary],
-  additionalButtons: [
-    spsLiteBackendButtonSecondary,
-    spsLiteBackendButtonSecondary,
-  ],
+  buttons: [spsLiteBackendButtonText, spsLiteBackendButtonText],
+  additionalButtons: [spsLiteBackendButtonSecondary],
 };
 
 export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {

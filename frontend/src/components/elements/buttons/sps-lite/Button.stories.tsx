@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
-  spsLiteBackendButtonBottomLine,
+  spsLiteBackendButtonText,
   spsLiteBackendButtonPrimary,
   spsLiteBackendButtonSecondary,
 } from "~mocks/components/elements/sps-lite";
@@ -22,6 +22,6 @@ export const Primary = {
   args: spsLiteBackendButtonPrimary,
 };
 
-export const BottomLine = {
-  args: spsLiteBackendButtonBottomLine,
+export const Text = {
+  args: spsLiteBackendButtonText,
 };

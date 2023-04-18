@@ -38,8 +38,8 @@ button:focus {
     @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
   }
 
-  .button-bottom-line {
-    @apply inline-flex w-full h-full justify-center items-center lg:border-b-2 px-2 py-4 lg:px-1 lg:py-1 text-sm font-medium aria-[selected='true']:border-primary-500 aria-[selected='true']:text-gray-900;
+  .button-text {
+    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
   }
 
   .slide__over__simple {

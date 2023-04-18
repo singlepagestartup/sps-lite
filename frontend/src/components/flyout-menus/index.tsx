@@ -36,8 +36,8 @@ export default function Menus<T extends ISpsLiteButton>(props: T) {
       {(popoverProps) => {
         return (
           <div className="relative">
-            <Popover.Button>
-              <Buttons {...props} url="" onClick={() => {}} />
+            <Popover.Button className="w-full">
+              <Buttons {...props} url="" onClick={() => {}} flyoutMenu={null} />
             </Popover.Button>
             <Comp {...data} {...popoverProps} />
           </div>

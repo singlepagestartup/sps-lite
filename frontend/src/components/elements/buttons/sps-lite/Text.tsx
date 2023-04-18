@@ -1,8 +1,9 @@
 import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
+import FlyoutMenus from "~components/flyout-menus";
 
-export default function BottomLine(props: ISpsLiteButton) {
+export default function Secondary(props: ISpsLiteButton) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   if (props?.onClick) {
@@ -11,10 +12,18 @@ export default function BottomLine(props: ISpsLiteButton) {
         <button
           {...additionalAttributes}
           onClick={props.onClick}
-          className="button-bottom-line"
+          className="button-text"
         >
           {props.title}
         </button>
+      </div>
+    );
+  }
+
+  if (props?.flyoutMenu) {
+    return (
+      <div className={props?.className || ``}>
+        <FlyoutMenus {...props} />
       </div>
     );
   }
@@ -26,7 +35,7 @@ export default function BottomLine(props: ISpsLiteButton) {
           {...additionalAttributes}
           href={url}
           aria-selected={isActive}
-          className="button-bottom-line"
+          className="button-text"
         >
           {props.title}
         </Link>

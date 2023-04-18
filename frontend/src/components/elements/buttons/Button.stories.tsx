@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import {
   Secondary as SpsLiteSecondary,
   Primary as SpsLitePrimary,
-  BottomLine as SpsLiteBottomLine,
+  Text as SpsLiteText,
 } from "./sps-lite/Button.stories";
 import Buttons from ".";
 
@@ -18,4 +18,4 @@ export const Secondary = SpsLiteSecondary;
 
 export const Primary = SpsLitePrimary;
 
-export const BottomLine = SpsLiteBottomLine;
+export const Text = SpsLiteText;

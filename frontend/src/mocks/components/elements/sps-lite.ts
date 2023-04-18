@@ -30,9 +30,9 @@ export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
   variant: `primary`,
 };
 
-export const spsLiteBackendButtonBottomLine: ISpsLiteBackendButton = {
+export const spsLiteBackendButtonText: ISpsLiteBackendButton = {
   ...spsLiteBackendButtonSecondary,
-  variant: `bottom-line`,
+  variant: `text`,
 };
 
 export const spsLiteBackendButtonsArraySimple: ISpsLiteBackendButtonsArray = {

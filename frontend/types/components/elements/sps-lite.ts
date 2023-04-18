@@ -4,7 +4,7 @@ import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sp
 export interface ISpsLiteBackendButton {
   id: number;
   __component: `elements.button`;
-  variant: `bottom-line` | `primary` | `secondary`;
+  variant: `text` | `primary` | `secondary`;
   title: string | null;
   url: string | null;
   description: string | null;
