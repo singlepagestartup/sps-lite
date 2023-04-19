@@ -129,24 +129,6 @@ export const currencyPopulate = {};
 export const pagePopulate = {
   ...pageBlockPopulate,
   layout: {
-    populate: {
-      metatag: {
-        favicon: {
-          populate: mediaPopulate,
-        },
-      },
-      topbar: {
-        populate: `*`,
-      },
-      navbar: {
-        populate: `*`,
-      },
-      sidebar: {
-        populate: `*`,
-      },
-      footer: {
-        populate: `*`,
-      },
-    },
+    populate: `*`,
   },
 };

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@rogwild/strapi-utils": "^6.4.1"
+    "@rogwild/strapi-utils": "^6.4.1",
+    "axios": "^1.3.5"
   }
 }

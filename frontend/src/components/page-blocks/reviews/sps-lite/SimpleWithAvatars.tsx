@@ -1,5 +1,7 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
+"use client";
+
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { BACKEND_URL } from "~utils/envs";
 import { StarIcon } from "@heroicons/react/20/solid";
@@ -63,7 +65,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
         {item.media?.length ? (
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100">
             <Image
-              src={getImageUrl(item.media[0], { BACKEND_URL })}
+              src={getFileUrl(item.media[0], { BACKEND_URL })}
               alt=""
               fill={true}
               className="object-cover object-center"

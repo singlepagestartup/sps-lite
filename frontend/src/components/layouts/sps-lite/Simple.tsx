@@ -1,4 +1,3 @@
-import Metatag from "~components/metatag";
 import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars";
 import { ISpsLiteLayout } from ".";
@@ -10,7 +9,6 @@ import Footers from "~components/footers";
 export default function Simple(props: ISpsLiteLayout) {
   return (
     <>
-      {props.layout?.meta ? <Metatag {...props.layout.meta} /> : null}
       <div className="relative">
         {props.layout?.topbar ? <Topbars {...props.layout.topbar} /> : null}
         {props.layout?.navbar ? (

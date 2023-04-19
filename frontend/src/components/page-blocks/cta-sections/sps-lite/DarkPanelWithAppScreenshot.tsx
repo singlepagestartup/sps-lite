@@ -1,5 +1,7 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
+"use client";
+
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
@@ -60,7 +62,7 @@ export default function DarkPanelWithAppScreenshot(
             <div className="w-full relative aspect-w-6 aspect-h-4">
               {props.media?.length ? (
                 <Image
-                  src={getImageUrl(props.media[0], { BACKEND_URL })}
+                  src={getFileUrl(props.media[0], { BACKEND_URL })}
                   alt=""
                   className="object-contain object-center"
                   fill={true}

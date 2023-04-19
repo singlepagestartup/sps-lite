@@ -1,5 +1,7 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
+"use client";
+
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
@@ -38,7 +40,7 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
               <dt>
                 {feature?.media?.length ? (
                   <Image
-                    src={getImageUrl(feature.media[0], { BACKEND_URL })}
+                    src={getFileUrl(feature.media[0], { BACKEND_URL })}
                     height={100}
                     width={100}
                     alt=""

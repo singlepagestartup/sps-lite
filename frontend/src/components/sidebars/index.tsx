@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useEffect, useState } from "react";
 import { ISpsLiteSidebar, variants as spsLiteVariants } from "./sps-lite";
 import { getBackendData } from "~utils/api";

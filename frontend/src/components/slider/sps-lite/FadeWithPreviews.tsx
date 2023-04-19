@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   useEffect,
   useState,
@@ -9,8 +11,8 @@ import React, {
   useMemo,
 } from "react";
 import { animated, useTransition, useSpringRef } from "@react-spring/web";
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import { BACKEND_URL } from "~utils/envs";
 import { IExtendedSlide, ISlider } from "..";
 import Image from "next/image";
@@ -177,7 +179,7 @@ function DefaultSlideComponent({
       <div className="slide__container">
         {slide.media?.length ? (
           <Image
-            src={getImageUrl(slide.media[0], { BACKEND_URL })}
+            src={getFileUrl(slide.media[0], { BACKEND_URL })}
             alt=""
             fill={true}
             className="background"
@@ -221,7 +223,7 @@ function DefaultPreviewsComponent({
           >
             {slide.media?.length ? (
               <Image
-                src={getImageUrl(slide.media[0], { BACKEND_URL })}
+                src={getFileUrl(slide.media[0], { BACKEND_URL })}
                 alt=""
                 fill={true}
                 className="image"

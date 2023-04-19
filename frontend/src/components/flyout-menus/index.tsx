@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useEffect, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { getBackendData } from "~utils/api";
@@ -37,7 +39,14 @@ export default function Menus<T extends ISpsLiteButton>(props: T) {
         return (
           <div className="relative">
             <Popover.Button as="div" className="w-full">
-              <Buttons {...props} url="" onClick={() => {}} flyoutMenu={null} />
+              <Buttons
+                {...({
+                  ...props,
+                  url: ``,
+                  onClick: () => {},
+                  flyoutMenu: null,
+                } as T)}
+              />
             </Popover.Button>
             <Comp {...data} {...popoverProps} />
           </div>

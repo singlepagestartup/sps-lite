@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useRouter } from "next/router";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import PageBlocks from "~components/page-blocks";
 import { ISpsLiteModal } from ".";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Simple(props: ISpsLiteModal) {
+  const pathname = usePathname();
   const router = useRouter();
   const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
 
@@ -14,14 +15,9 @@ export default function Simple(props: ISpsLiteModal) {
       <Dialog
         onClose={() => {
           setIsOpen(false);
-          /**
-           * Without asPath on close, the route
-           * "/products/1?opened_popup=simple"
-           * becomes "/products/[id]"
-           */
-          router.replace(router.asPath.split(`?`)[0], undefined, {
-            shallow: true,
-          });
+          if (pathname) {
+            router.replace(pathname);
+          }
         }}
         className="relative z-50"
       >
@@ -56,9 +52,9 @@ export default function Simple(props: ISpsLiteModal) {
                 <button
                   onClick={() => {
                     setIsOpen(false);
-                    router.replace(router.asPath.split(`?`)[0], undefined, {
-                      shallow: true,
-                    });
+                    if (pathname) {
+                      router.replace(pathname);
+                    }
                   }}
                   className="absolute right-2 top-2"
                 >

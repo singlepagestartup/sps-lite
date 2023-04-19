@@ -1,20 +1,21 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useRouter } from "next/router";
 import PageBlocks from "~components/page-blocks";
 import { ISpsLiteSlideOver } from ".";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Simple(props: ISpsLiteSlideOver) {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <Transition show={props.isOpen} as={Fragment}>
       <Dialog
         onClose={() => {
           props.setIsOpen(false);
-          router.replace(router.asPath.split(`?`)[0], undefined, {
-            shallow: true,
-          });
+          if (pathname) {
+            router.replace(pathname);
+          }
         }}
         className="relative z-50"
       >

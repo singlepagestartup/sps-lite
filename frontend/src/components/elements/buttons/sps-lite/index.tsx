@@ -30,7 +30,7 @@ export const variants = {
   secondary: Secondary,
 };
 
-export default function SimpleButtons(props: ISpsLiteButton) {
+export default function Buttons(props: ISpsLiteButton) {
   const Comp = variants[
     props.variant as keyof typeof variants
   ] as FC<ISpsLiteButton>;

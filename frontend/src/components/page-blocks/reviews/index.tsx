@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { ISpsLiteReviewsBlock, variants as spsLiteVariants } from "./sps-lite";
 

@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import utils from "@rogwild/next-utils";
+import nextUtils from "@rogwild/next-utils";
 import { BACKEND_URL } from "~utils/envs";
 import { ISpsLiteNavbarBlock } from ".";
 import Buttons from "~components/elements/buttons";
-const { getImageUrl } = utils.api;
+const { getFileUrl } = nextUtils.api;
 
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   return (
@@ -16,7 +18,7 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
               <div className="flex flex-shrink-0 items-center">
                 <Link href="/" className="relative w-32 h-8">
                   <Image
-                    src={getImageUrl(props.logotype.media[0], {
+                    src={getFileUrl(props.logotype.media[0], {
                       BACKEND_URL,
                     })}
                     alt=""

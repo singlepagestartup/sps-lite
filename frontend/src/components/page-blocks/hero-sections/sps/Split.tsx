@@ -1,5 +1,7 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
+"use client";
+
+import nextUtils from "@rogwild/next-utils";
+const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
@@ -8,8 +10,6 @@ import { ISpsHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 
 export default function Split(props: ISpsHeroSectionBlock) {
-  console.log(`🚀 ~ Split ~ props:`, props);
-
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
@@ -38,7 +38,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
                   <div className="mb-6">
                     {props.logotype?.media?.length ? (
                       <Image
-                        src={getImageUrl(props.logotype.media[0], {
+                        src={getFileUrl(props.logotype.media[0], {
                           BACKEND_URL,
                         })}
                         className="object-contain"
@@ -69,7 +69,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
             <div className="relative h-full w-full object-cover object-center">
               {props.media?.length ? (
                 <Image
-                  src={getImageUrl(props.media[0], { BACKEND_URL })}
+                  src={getFileUrl(props.media[0], { BACKEND_URL })}
                   alt=""
                   fill={true}
                   className="object-cover object-center"
