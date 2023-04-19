@@ -1,8 +1,10 @@
 import Simple from "./Simple";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { ISpsLitePublicPage } from "types/pages/sps-lite";
 
-export interface ISpsLiteLayout extends ISpsLitePublicPage {}
+export interface ISpsLiteLayout extends ISpsLitePublicPage {
+  children: ReactNode;
+}
 
 export const variants = {
   simple: Simple,

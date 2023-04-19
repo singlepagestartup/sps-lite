@@ -10,12 +10,12 @@ export default function Simple(props: ISpsLiteLayout) {
   return (
     <>
       <div className="relative">
-        {props.layout?.topbar ? <Topbars {...props.layout.topbar} /> : null}
-        {props.layout?.navbar ? (
-          <Navbars {...props.layout?.navbar} topbar={props.layout?.topbar} />
+        {props?.topbar ? <Topbars {...props.topbar} /> : null}
+        {props?.navbar ? (
+          <Navbars {...props?.navbar} topbar={props?.topbar} />
         ) : null}
         <div className="pt-16">
-          {props.layout?.sidebar ? (
+          {/* {props.layout?.sidebar ? (
             <div className="w-full flex flex-row mx-auto max-w-7xl px-2">
               <div className="lg:w-3/12">
                 <Sidebars {...props.layout.sidebar} />
@@ -26,9 +26,10 @@ export default function Simple(props: ISpsLiteLayout) {
             </div>
           ) : (
             <PageBlocks pageBlocks={props.pageBlocks} />
-          )}
+          )} */}
+          {props.children}
         </div>
-        {props.layout?.footer ? <Footers {...props.layout?.footer} /> : null}
+        {props?.footer ? <Footers {...props?.footer} /> : null}
         <SlideOvers />
       </div>
     </>

@@ -128,7 +128,6 @@ export const currencyPopulate = {};
 
 export const pagePopulate = {
   ...pageBlockPopulate,
-  layout: {
-    populate: `*`,
-  },
 };
+
+export const layoutPopulate = `*`;

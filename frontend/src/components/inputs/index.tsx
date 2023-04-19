@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useMemo } from "react";
 import { UseControllerProps } from "react-hook-form";
 import FileInput from "./file";

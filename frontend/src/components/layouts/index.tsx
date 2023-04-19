@@ -1,18 +1,23 @@
+"use client";
+
 import { FC } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
+import { useGetLayoutsQuery } from "~redux/services/backend/models/layouts";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Layouts<T extends ISpsLiteLayout>(props: T) {
-  const Comp = variants[
-    props.layout?.variant as keyof typeof variants
-  ] as FC<T>;
+export default function Layouts(props: any) {
+  const { data: layouts } = useGetLayoutsQuery({});
 
-  if (!Comp) {
+  const Comp = layouts?.length
+    ? (variants[layouts[0]?.variant as keyof typeof variants] as FC<any>)
+    : undefined;
+
+  if (!Comp || !layouts?.length) {
     return <></>;
   }
 
-  return <Comp {...props} />;
+  return <Comp {...layouts[0]} {...props} />;
 }

@@ -1,6 +1,7 @@
 import {
   ISpsLiteBackendCurrency,
   ISpsLiteBackendForm,
+  ISpsLiteBackendLayout,
   ISpsLiteBackendModal,
   ISpsLiteBackendPage,
   ISpsLiteBackendReview,
@@ -25,3 +26,5 @@ export interface IBackendSlider extends ISpsLiteBackendSlider {}
 export interface IBackendCurrency extends ISpsLiteBackendCurrency {}
 
 export interface IBackendPage extends ISpsLiteBackendPage {}
+
+export interface IBackendLayout extends ISpsLiteBackendLayout {}

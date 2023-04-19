@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { IBackendPage } from "types/collection-types";
 import Layouts from "~components/layouts";
+import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
@@ -172,5 +173,5 @@ async function getPage(props: any) {
 export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
-  return <Layouts {...pageProps} />;
+  return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
 }

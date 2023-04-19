@@ -5,6 +5,7 @@ import {
   reviewPopulate as spsLiteReviewPopulate,
   currencyPopulate as spsLiteCurrencyPopulate,
   pagePopulate as spsLitePagePopulate,
+  layoutPopulate as spsLiteLayoutPopulate,
 } from "./sps-lite";
 
 export const pageBlockPopulate = {
@@ -30,3 +31,5 @@ export const currencyPopulate = {
 export const pagePopulate = {
   ...spsLitePagePopulate,
 };
+
+export const layoutPopulate = spsLiteLayoutPopulate;

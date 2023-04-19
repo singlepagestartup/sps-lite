@@ -41,7 +41,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.40.0",
-    "react-markdown": "6.0.0",
+    "react-markdown": "^8.0.7",
     "react-redux": "^8.0.5",
     "react-table": "^7.8.0",
     "react-transition-group": "^4.4.5",

@@ -11,6 +11,7 @@ const variants = {
 };
 
 export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
+  console.log(`🚀 ~ props:`, props);
   const [data, setData] = useState<any>();
 
   useEffect(() => {
