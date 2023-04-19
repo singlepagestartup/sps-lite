@@ -19,11 +19,6 @@ module.exports = {
     ],
   },
   trailingSlash: true,
-  i18n: {
-    locales: process.env.LOCALES.split(`,`) || [`en`],
-    defaultLocale: process.env.DEFAULT_LOCALE || `en`,
-    localeDetection: false,
-  },
   experimental: {
     appDir: true,
   },
