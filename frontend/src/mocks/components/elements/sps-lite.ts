@@ -7,6 +7,7 @@ import {
   ISpsLiteBackendLogotype,
   ISpsLiteBackendSlide,
 } from "types/components/elements/sps-lite";
+import { spsLiteBackendFlyoutMenuSimple } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteUploadPluginBackendMediaTableAndHands,
   spsLiteUploadPluginBackendMediaRoundIcon,
@@ -24,6 +25,19 @@ export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   additionalAttributes: null,
   flyoutMenu: null,
 };
+
+export const spsLiteBackendButtonSecondaryWithFlyoutMenu: ISpsLiteBackendButton =
+  {
+    id: 4,
+    title: `Button`,
+    url: `https://nextjs.com`,
+    variant: `secondary`,
+    __component: `elements.button`,
+    description: null,
+    className: null,
+    additionalAttributes: null,
+    flyoutMenu: spsLiteBackendFlyoutMenuSimple,
+  };
 
 export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
   ...spsLiteBackendButtonSecondary,

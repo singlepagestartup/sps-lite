@@ -5,7 +5,6 @@ import {
   spsLiteBackendButtonSecondary,
 } from "~mocks/components/elements/sps-lite";
 import Buttons from "..";
-
 const meta = {
   component: Buttons,
 } satisfies Meta<typeof Buttons>;

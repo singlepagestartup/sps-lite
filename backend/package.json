@@ -29,7 +29,6 @@
         "ts-node": "^10.9.1"
     },
     "dependencies": {
-        "@faker-js/faker": "^7.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@strapi/plugin-i18n": "4.6.0",
