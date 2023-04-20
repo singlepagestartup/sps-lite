@@ -42,7 +42,7 @@ module.exports = () => ({
             'plugin::content-type-builder.content-types': [],
             'plugin::email.email': [],
             'plugin::upload.content-api': [],
-            'plugin::i18n.locales': [],
+            'plugin::i18n.locales': ['listLocales'],
             'plugin::users-permissions.auth': [],
             'plugin::users-permissions.user': [],
             'plugin::users-permissions.role': [],

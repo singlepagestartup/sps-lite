@@ -9,13 +9,14 @@ export const modalsApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getLayouts: build.query({
       query: (params = {}) => {
-        const { populate = layoutPopulate, filter } = params;
+        const { populate = layoutPopulate, filters, locale } = params;
 
         return {
           url: model,
           params: {
             populate,
-            filter,
+            filters,
+            locale,
           },
         };
       },

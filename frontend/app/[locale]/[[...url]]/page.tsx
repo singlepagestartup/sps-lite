@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { IBackendPage } from "types/collection-types";
-import Layouts from "~components/layouts";
 import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { pagePopulate } from "~utils/api/queries";
@@ -22,7 +21,7 @@ export async function generateStaticParams() {
 
       const path = {
         url: routeElements,
-        // locale: page.locale,
+        locale: page.locale,
       };
 
       return path;
@@ -58,11 +57,11 @@ export async function generateStaticParams() {
 
           const resPath = {
             url: pathUrl,
-          };
+          } as any;
 
-          // if (modelEntity.locale) {
-          //   resPath.locale = modelEntity.locale;
-          // }
+          if (modelEntity.locale) {
+            resPath.locale = modelEntity.locale;
+          }
 
           filledPaths.push(resPath);
         }
@@ -85,7 +84,7 @@ export async function generateStaticParams() {
 
 async function getPage(props: any) {
   const pageUrl = `/${props.params?.url?.join(`/`) || ``}`;
-  const locale = `en`;
+  const { locale }: { locale: string } = props.params;
 
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
@@ -105,8 +104,8 @@ async function getPage(props: any) {
       const modelEntites = await getBackendData({
         url: `${BACKEND_URL}/api/${model}`,
         params: {
-          locale: page.locale,
           fields: [modelParam],
+          locale: page.locale,
           pagination: { limit: `-1` },
         },
       });
@@ -145,7 +144,7 @@ async function getPage(props: any) {
   }
 
   const targetPage = filledPages.find((page) => {
-    if (page.urls.includes(pageUrl)) {
+    if (page.urls.includes(pageUrl) && page.locale === locale) {
       return true;
     }
   });
