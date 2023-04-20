@@ -1,8 +1,8 @@
 import Simple from "./Simple";
 import { FC, ReactNode } from "react";
-import { ISpsLitePublicPage } from "types/pages/sps-lite";
+import { IBackendLayout } from "types/collection-types";
 
-export interface ISpsLiteLayout extends ISpsLitePublicPage {
+export interface ISpsLiteLayout extends IBackendLayout {
   children: ReactNode;
 }
 
@@ -12,7 +12,7 @@ export const variants = {
 
 export default function Layouts(props: ISpsLiteLayout) {
   const Comp = variants[
-    props.layout?.variant as keyof typeof variants
+    props.variant as keyof typeof variants
   ] as FC<ISpsLiteLayout>;
 
   if (!Comp) {

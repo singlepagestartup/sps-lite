@@ -4,9 +4,6 @@ import "../styles/tailwind.scss";
 import Modals from "~components/modals";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 import { ReduxProvider } from "~redux/index";
-import { BACKEND_URL } from "~utils/envs";
-import { getBackendData } from "~utils/api";
-import { pagePopulate } from "~utils/api/queries";
 
 export default async function RootLayout({
   children,

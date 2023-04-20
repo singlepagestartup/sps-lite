@@ -1,4 +1,3 @@
-import PageBlocks from "~components/page-blocks";
 import Topbars from "~components/topbars";
 import { ISpsLiteLayout } from ".";
 import SlideOvers from "~components/slide-overs";
@@ -15,19 +14,16 @@ export default function Simple(props: ISpsLiteLayout) {
           <Navbars {...props?.navbar} topbar={props?.topbar} />
         ) : null}
         <div className="pt-16">
-          {/* {props.layout?.sidebar ? (
+          {props?.sidebar ? (
             <div className="w-full flex flex-row mx-auto max-w-7xl px-2">
               <div className="lg:w-3/12">
-                <Sidebars {...props.layout.sidebar} />
+                <Sidebars {...props.sidebar} />
               </div>
-              <div className="lg:w-9/12">
-                <PageBlocks pageBlocks={props.pageBlocks} />
-              </div>
+              <div className="lg:w-9/12">{props.children}</div>
             </div>
           ) : (
-            <PageBlocks pageBlocks={props.pageBlocks} />
-          )} */}
-          {props.children}
+            <>{props.children}</>
+          )}
         </div>
         {props?.footer ? <Footers {...props?.footer} /> : null}
         <SlideOvers />

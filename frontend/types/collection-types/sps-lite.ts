@@ -210,4 +210,5 @@ export interface ISpsLiteBackendLayout {
   navbar?: ISpsLiteBackendNavbar | null;
   sidebar?: ISpsLiteBackendSidebar | null;
   footer?: ISpsLiteBackendFooter | null;
+  pages?: ISpsLiteBackendPage[] | null;
 }

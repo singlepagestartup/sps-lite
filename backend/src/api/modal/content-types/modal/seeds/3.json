@@ -5,7 +5,7 @@
     "dialog_panel_class_name": "container",
     "variant": "simple",
     "createdAt": "2023-03-31T16:24:15.965Z",
-    "updatedAt": "2023-04-02T11:55:25.869Z",
+    "updatedAt": "2023-04-19T14:45:55.499Z",
     "publishedAt": "2023-03-28T11:07:57.457Z",
     "locale": "en",
     "page_blocks": [
@@ -22,8 +22,285 @@
             "background": null
         }
     ],
-    "layouts": [],
+    "layouts": [
+        {
+            "id": 1,
+            "title": "Public Page Layout With Sidebar",
+            "uid": "public-page-layout",
+            "variant": "simple",
+            "createdAt": "2023-04-08T12:04:55.015Z",
+            "updatedAt": "2023-04-20T10:23:03.493Z",
+            "publishedAt": "2023-04-08T12:04:56.606Z",
+            "locale": "en",
+            "class_name": null,
+            "sidebar": {
+                "id": 1,
+                "variant": "simple",
+                "title": "Ads Sidebar",
+                "uid": "ads-sidebar-1",
+                "createdAt": "2023-04-08T00:35:27.553Z",
+                "updatedAt": "2023-04-19T14:51:51.634Z",
+                "publishedAt": "2023-04-08T00:35:29.006Z",
+                "locale": "en",
+                "class_name": null
+            },
+            "topbar": null,
+            "footer": {
+                "id": 1,
+                "title": "Public Page Footer",
+                "uid": "public-page-footer",
+                "createdAt": "2023-04-08T13:49:07.005Z",
+                "updatedAt": "2023-04-18T17:26:31.361Z",
+                "publishedAt": "2023-04-08T13:49:09.150Z",
+                "locale": "en",
+                "variant": "simple",
+                "class_name": null
+            },
+            "slide_overs": [
+                {
+                    "id": 1,
+                    "variant": "simple",
+                    "title": "faq block slide over",
+                    "uid": "faq-block-slide-over",
+                    "position": "right",
+                    "class_name": "sps-lite-slide-over",
+                    "createdAt": "2023-04-07T23:54:16.534Z",
+                    "updatedAt": "2023-04-19T14:52:02.103Z",
+                    "publishedAt": "2023-04-07T23:54:17.781Z",
+                    "locale": "en"
+                }
+            ],
+            "modals": [
+                {
+                    "id": 3,
+                    "title": "Hello world",
+                    "uid": "hello-world",
+                    "dialog_panel_class_name": "container",
+                    "variant": "simple",
+                    "createdAt": "2023-03-31T16:24:15.965Z",
+                    "updatedAt": "2023-04-19T14:45:55.499Z",
+                    "publishedAt": "2023-03-28T11:07:57.457Z",
+                    "locale": "en"
+                }
+            ],
+            "navbar": {
+                "id": 1,
+                "title": "Public Page Navbar",
+                "uid": "public-page-navbar",
+                "createdAt": "2023-04-08T12:04:20.760Z",
+                "updatedAt": "2023-04-20T11:20:58.903Z",
+                "publishedAt": "2023-04-08T12:04:22.148Z",
+                "locale": "en",
+                "variant": "simple",
+                "class_name": null
+            },
+            "metatag": null,
+            "pages": [
+                {
+                    "id": 3,
+                    "title": "About Us",
+                    "createdAt": "2023-04-08T20:00:13.006Z",
+                    "updatedAt": "2023-04-08T20:00:14.528Z",
+                    "publishedAt": "2023-04-08T20:00:14.519Z",
+                    "locale": "en",
+                    "url": "/about-us"
+                },
+                {
+                    "id": 4,
+                    "title": "Currency Page",
+                    "createdAt": "2023-04-08T20:28:36.386Z",
+                    "updatedAt": "2023-04-08T20:56:05.900Z",
+                    "publishedAt": "2023-04-08T20:28:37.947Z",
+                    "locale": "en",
+                    "url": "/currencies/[currencies.id]"
+                },
+                {
+                    "id": 5,
+                    "title": "Not found page",
+                    "createdAt": "2023-04-08T21:42:59.904Z",
+                    "updatedAt": "2023-04-20T11:19:49.495Z",
+                    "publishedAt": "2023-04-20T11:18:21.051Z",
+                    "locale": "en",
+                    "url": "/404"
+                }
+            ],
+            "createdBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "updatedBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "localizations": [
+                {
+                    "id": 2,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout-1",
+                    "variant": "simple",
+                    "createdAt": "2023-04-08T22:05:14.411Z",
+                    "updatedAt": "2023-04-20T10:23:03.704Z",
+                    "publishedAt": "2023-04-08T22:05:16.329Z",
+                    "locale": "ru",
+                    "class_name": null
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Public Page Layout",
+            "uid": "public-page-layout-2",
+            "variant": "simple",
+            "createdAt": "2023-04-20T10:23:36.202Z",
+            "updatedAt": "2023-04-20T10:23:38.461Z",
+            "publishedAt": "2023-04-20T10:23:38.447Z",
+            "locale": "en",
+            "class_name": null,
+            "sidebar": null,
+            "topbar": null,
+            "footer": {
+                "id": 1,
+                "title": "Public Page Footer",
+                "uid": "public-page-footer",
+                "createdAt": "2023-04-08T13:49:07.005Z",
+                "updatedAt": "2023-04-18T17:26:31.361Z",
+                "publishedAt": "2023-04-08T13:49:09.150Z",
+                "locale": "en",
+                "variant": "simple",
+                "class_name": null
+            },
+            "slide_overs": [
+                {
+                    "id": 1,
+                    "variant": "simple",
+                    "title": "faq block slide over",
+                    "uid": "faq-block-slide-over",
+                    "position": "right",
+                    "class_name": "sps-lite-slide-over",
+                    "createdAt": "2023-04-07T23:54:16.534Z",
+                    "updatedAt": "2023-04-19T14:52:02.103Z",
+                    "publishedAt": "2023-04-07T23:54:17.781Z",
+                    "locale": "en"
+                }
+            ],
+            "modals": [
+                {
+                    "id": 3,
+                    "title": "Hello world",
+                    "uid": "hello-world",
+                    "dialog_panel_class_name": "container",
+                    "variant": "simple",
+                    "createdAt": "2023-03-31T16:24:15.965Z",
+                    "updatedAt": "2023-04-19T14:45:55.499Z",
+                    "publishedAt": "2023-03-28T11:07:57.457Z",
+                    "locale": "en"
+                }
+            ],
+            "navbar": {
+                "id": 1,
+                "title": "Public Page Navbar",
+                "uid": "public-page-navbar",
+                "createdAt": "2023-04-08T12:04:20.760Z",
+                "updatedAt": "2023-04-20T11:20:58.903Z",
+                "publishedAt": "2023-04-08T12:04:22.148Z",
+                "locale": "en",
+                "variant": "simple",
+                "class_name": null
+            },
+            "metatag": null,
+            "pages": [
+                {
+                    "id": 1,
+                    "title": "Main page",
+                    "createdAt": "2023-04-08T19:06:02.556Z",
+                    "updatedAt": "2023-04-19T14:46:56.065Z",
+                    "publishedAt": "2023-04-08T19:06:05.277Z",
+                    "locale": "en",
+                    "url": "/"
+                }
+            ],
+            "createdBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "updatedBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "localizations": []
+        }
+    ],
     "createdBy": null,
-    "updatedBy": null,
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z",
+        "roles": [
+            {
+                "id": 1,
+                "name": "Super Admin",
+                "code": "strapi-super-admin",
+                "description": "Super Admins can access and manage all features and settings.",
+                "createdAt": "2023-02-13T22:26:07.622Z",
+                "updatedAt": "2023-02-13T22:26:07.622Z"
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null
+    },
     "localizations": []
 }

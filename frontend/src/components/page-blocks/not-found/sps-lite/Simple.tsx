@@ -2,6 +2,7 @@ import Buttons from "~components/elements/buttons";
 import { ISpsLiteNotFoundBlock } from ".";
 
 export default function Simple(props: ISpsLiteNotFoundBlock) {
+  console.log(`🚀 ~ Simple ~ props:`, props);
   return (
     <div className="min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
       <div className="mx-auto max-w-max">

@@ -21,6 +21,7 @@ import {
 } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteBackendButtonSecondary,
+  spsLiteBackendButtonSecondaryWithFlyoutMenu,
   spsLiteBackendButtonText,
   spsLiteBackendButtonsArraySimple,
   spsLiteBackendFaq,
@@ -140,7 +141,7 @@ export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock 
     anchor: `anchor`,
     description: `Сэкономьте более 250 часов работы разработчика (7'500$) и постоянный доступ к обновлениям кодовой базы. Таким образом все разработанные на базе SPS проекты можно будет обновлять прямо из репозитория SPS. Не нужно копировать-вставлять блоки кода при обновлении.`,
     className: null,
-    tiers: Array(2).fill(spsLiteBackendTier),
+    tiers: Array(2).fill({ ...spsLiteBackendTier }),
   };
 
 export const spsLiteBackendReviewsBlockSimpleWithAvatars: ISpsLiteBackendReviewsBlock =
@@ -175,8 +176,8 @@ export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
   description: `Description`,
   className: `class-name`,
   logotype: { ...spsLiteBackendLogotype },
-  buttons: [spsLiteBackendButtonText, spsLiteBackendButtonText],
-  additionalButtons: [spsLiteBackendButtonSecondary],
+  buttons: [{ ...spsLiteBackendButtonText }, { ...spsLiteBackendButtonText }],
+  additionalButtons: [{ ...spsLiteBackendButtonSecondary }],
 };
 
 export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
@@ -188,15 +189,15 @@ export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
   copyrights: `All rights are reserved | Single Page Startup`,
   description: `Create your startup in a few hours and gradually step-by-step expand the functionality. Finalize it to a complete product without wasting time on developing product from scratch.`,
   buttonsArrays: [
-    spsLiteBackendButtonsArraySimple,
-    spsLiteBackendButtonsArraySimple,
+    { ...spsLiteBackendButtonsArraySimple },
+    { ...spsLiteBackendButtonsArraySimple },
   ],
   additionalButtonsArrays: [
-    spsLiteBackendButtonsArraySimple,
-    spsLiteBackendButtonsArraySimple,
+    { ...spsLiteBackendButtonsArraySimple },
+    { ...spsLiteBackendButtonsArraySimple },
   ],
   extraButtonsArrays: [
-    spsLiteBackendButtonsArraySimple,
-    spsLiteBackendButtonsArraySimple,
+    { ...spsLiteBackendButtonsArraySimple },
+    { ...spsLiteBackendButtonsArraySimple },
   ],
 };

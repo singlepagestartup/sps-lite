@@ -3,7 +3,7 @@ import Layouts from ".";
 import { ISpsLiteLayout } from ".";
 import store from "~redux/index";
 import { Provider } from "react-redux";
-import { spsLiteBackendPageMainPage } from "~mocks/collection-types/sps-lite";
+import { spsLiteBackendLayoutSimple } from "~mocks/collection-types/sps-lite";
 
 const meta = { component: Layouts } satisfies Meta<typeof Layouts>;
 export default meta;
@@ -20,7 +20,15 @@ function LayoutComponent(args: ISpsLiteLayout) {
   );
 }
 
+function PageBlocks() {
+  return (
+    <div>
+      <p>Page Blocks</p>
+    </div>
+  );
+}
+
 export const Simple: Story = {
   render: (args) => <LayoutComponent {...args} />,
-  args: spsLiteBackendPageMainPage,
+  args: { ...spsLiteBackendLayoutSimple, children: <PageBlocks /> },
 };

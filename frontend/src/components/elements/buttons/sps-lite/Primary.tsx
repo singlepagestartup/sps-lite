@@ -43,5 +43,11 @@ export default function Primary(props: ISpsLiteButton) {
     );
   }
 
-  return <></>;
+  return (
+    <div className={props?.className || ``}>
+      <button {...additionalAttributes} className="button-primary">
+        {props.title}
+      </button>
+    </div>
+  );
 }

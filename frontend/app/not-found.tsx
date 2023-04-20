@@ -1,10 +1,10 @@
 import { IBackendPage } from "types/collection-types";
-import Layouts from "~components/layouts";
+import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
 
-export default async function NotFoundPage(props: IBackendPage) {
+export default async function NotFoundPage() {
   const pages = (await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
     params: {
@@ -19,5 +19,5 @@ export default async function NotFoundPage(props: IBackendPage) {
     <div>Not found</div>;
   }
 
-  return <Layouts {...pages[0]} />;
+  return <PageBlocks pageBlocks={pages[0].pageBlocks} />;
 }

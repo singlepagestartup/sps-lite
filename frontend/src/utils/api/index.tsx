@@ -18,6 +18,7 @@ export async function getBackendData(props: IFetchProps) {
   const backendData = await fetch(`${url}?${query}`, {
     method,
     body: data,
+    next: { revalidate: 10 },
   })
     .then(async (res) => {
       const jsonRes = await res.json();

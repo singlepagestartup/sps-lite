@@ -30,13 +30,13 @@ export const spsLiteBackendButtonSecondaryWithFlyoutMenu: ISpsLiteBackendButton 
   {
     id: 4,
     title: `Button`,
-    url: `https://nextjs.com`,
+    url: null,
     variant: `secondary`,
     __component: `elements.button`,
     description: null,
     className: null,
     additionalAttributes: null,
-    flyoutMenu: spsLiteBackendFlyoutMenuSimple,
+    flyoutMenu: { ...spsLiteBackendFlyoutMenuSimple },
   };
 
 export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
@@ -53,7 +53,10 @@ export const spsLiteBackendButtonsArraySimple: ISpsLiteBackendButtonsArray = {
   id: 5,
   __component: `elements.buttons-array`,
   title: `Buttons Array`,
-  buttons: [spsLiteBackendButtonSecondary, spsLiteBackendButtonSecondary],
+  buttons: [
+    { ...spsLiteBackendButtonSecondary },
+    { ...spsLiteBackendButtonSecondary },
+  ],
   variant: `simple`,
   description: null,
   className: null,

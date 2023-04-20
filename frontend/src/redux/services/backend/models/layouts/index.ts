@@ -15,6 +15,7 @@ export const modalsApi = backendServiceApi.injectEndpoints({
           url: model,
           params: {
             populate,
+            filter,
           },
         };
       },
