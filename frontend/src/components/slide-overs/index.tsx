@@ -18,7 +18,11 @@ export default function SlideOvers() {
   const [slideOverProps, setSlideOverProps] =
     useState<Omit<ISlideOver, `isOpen` | `setIsOpen`>>();
 
-  const { data: slideOvers } = useGetSlideOversQuery({});
+  const { data: slideOvers } = useGetSlideOversQuery({
+    params: {
+      locale: `all`,
+    },
+  });
 
   useEffect(() => {
     if (!slideOvers) {

@@ -4,7 +4,7 @@ import { useState, useEffect, FC, useMemo } from "react";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import { IBackendModal } from "types/collection-types";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 export interface IModal extends ISpsLiteModal {}
 
@@ -14,6 +14,7 @@ const variants = {
 
 export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const query = useSearchParams();
+  const params = useParams();
   const openedModal = query?.get(`opened_modal`);
   const [isOpen, setIsOpen] = useState(false);
   const [modalProps, setModalProps] = useState<Omit<IBackendModal, `id`>>();

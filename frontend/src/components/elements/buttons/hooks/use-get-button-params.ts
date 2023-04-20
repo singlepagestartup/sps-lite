@@ -24,11 +24,19 @@ export default function useGetButtonParams(props: {
   }, [props]);
 
   const url = useMemo(() => {
-    if (pathname?.includes(`[`) && props.url && [`?`].includes(props.url[0])) {
-      return `${pathname}${props.url}`.replace(`//`, `/`);
+    const nextLinkUrl = {
+      pathname: props.url?.includes(`http`)
+        ? props.url
+        : props.url?.split(`?`)[0],
+      query: props.url?.includes(`http`) ? `` : props.url?.split(`?`)[1],
+    };
+
+    if (pathname && !nextLinkUrl.pathname) {
+      // return `${pathname}${props.url}`.replace(`//`, `/`);
+      nextLinkUrl.pathname = pathname;
     }
 
-    return props.url;
+    return nextLinkUrl;
   }, [pathname, props.url]);
 
   return { additionalAttributes, isActive, url };

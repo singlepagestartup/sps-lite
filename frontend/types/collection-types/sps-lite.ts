@@ -212,3 +212,12 @@ export interface ISpsLiteBackendLayout {
   footer?: ISpsLiteBackendFooter | null;
   pages?: ISpsLiteBackendPage[] | null;
 }
+
+export interface ISpsLiteBackendLocale {
+  id: number;
+  name: string;
+  code: string;
+  createdAt: string;
+  updatedAt: string;
+  isDefault: boolean;
+}

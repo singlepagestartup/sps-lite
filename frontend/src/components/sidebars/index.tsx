@@ -23,7 +23,7 @@ export default function Sidebars<T extends ISpsLiteSidebar>(props: T) {
     }).then((res) => {
       setData(res);
     });
-  }, []);
+  }, [props]);
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

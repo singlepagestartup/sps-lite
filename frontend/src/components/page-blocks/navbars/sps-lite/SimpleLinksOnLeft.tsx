@@ -16,16 +16,29 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
           <div className="flex">
             {props.logotype?.media?.length ? (
               <div className="flex flex-shrink-0 items-center">
-                <Link href="/" className="relative w-32 h-8">
-                  <Image
-                    src={getFileUrl(props.logotype.media[0], {
-                      BACKEND_URL,
-                    })}
-                    alt=""
-                    className="object-contain object-left"
-                    fill={true}
-                  />
-                </Link>
+                {props.logotype.url ? (
+                  <Link href="/" className="relative w-32 h-8">
+                    <Image
+                      src={getFileUrl(props.logotype.media[0], {
+                        BACKEND_URL,
+                      })}
+                      alt=""
+                      className="object-contain object-left"
+                      fill={true}
+                    />
+                  </Link>
+                ) : (
+                  <div className="relative w-32 h-8">
+                    <Image
+                      src={getFileUrl(props.logotype.media[0], {
+                        BACKEND_URL,
+                      })}
+                      alt=""
+                      className="object-contain object-left"
+                      fill={true}
+                    />
+                  </div>
+                )}
               </div>
             ) : null}
             <div className="hidden lg:ml-6 lg:flex lg:space-x-6 items-center">

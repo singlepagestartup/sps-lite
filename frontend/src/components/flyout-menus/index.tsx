@@ -20,6 +20,7 @@ export default function Menus<T extends ISpsLiteButton>(props: T) {
     getBackendData({
       url: `${BACKEND_URL}/api/flyout-menus/${props.flyoutMenu?.id}`,
       params: {
+        locale: props.flyoutMenu?.locale,
         populate: pageBlockPopulate,
       },
     }).then((res) => {
