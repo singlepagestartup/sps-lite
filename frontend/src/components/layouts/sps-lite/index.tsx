@@ -1,8 +1,8 @@
 import Simple from "./Simple";
 import { FC, ReactNode } from "react";
-import { IBackendLayout } from "types/collection-types";
+import { ISpsLiteBackendLayout } from "types/collection-types/sps-lite";
 
-export interface ISpsLiteLayout extends IBackendLayout {
+export interface ISpsLiteLayout extends ISpsLiteBackendLayout {
   children: ReactNode;
 }
 
