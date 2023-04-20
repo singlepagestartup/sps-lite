@@ -16,37 +16,32 @@ const spsLitePublicActions = {
     'api::metatag.metatag': ['find'],
     'api::flyout-menu.flyout-menu': ['find', 'findOne'],
     'api::page.page': ['find', 'findOne'],
+    'plugin::users-permissions.auth': [],
+    'plugin::users-permissions.user': [],
+    'plugin::users-permissions.role': [],
+    'plugin::i18n.locales': ['listLocales'],
+    'plugin::email.email': [],
+    'plugin::users-permissions.permissions': [],
+    'plugin::upload.content-api': [],
+    'plugin::content-type-builder.components': [],
+    'plugin::content-type-builder.content-types': [],
+};
+
+const spsLiteAuthenticatedActions = {
+    ...spsLitePublicActions,
 };
 
 module.exports = () => ({
     authenticated: {
         role: 1,
         actions: {
-            ...spsLitePublicActions,
-            'plugin::content-type-builder.components': [],
-            'plugin::content-type-builder.content-types': [],
-            'plugin::email.email': [],
-            'plugin::i18n.locales': ['listLocales'],
-            'plugin::users-permissions.auth': [],
-            'plugin::users-permissions.user': [],
-            'plugin::users-permissions.role': [],
-            'plugin::users-permissions.permission': [],
-            'plugin::upload.content-api': [],
+            ...spsLiteAuthenticatedActions,
         },
     },
     public: {
         role: 2,
         actions: {
             ...spsLitePublicActions,
-            'plugin::content-type-builder.components': [],
-            'plugin::content-type-builder.content-types': [],
-            'plugin::email.email': [],
-            'plugin::upload.content-api': [],
-            'plugin::i18n.locales': ['listLocales'],
-            'plugin::users-permissions.auth': [],
-            'plugin::users-permissions.user': [],
-            'plugin::users-permissions.role': [],
-            'plugin::users-permissions.permissiosn': [],
         },
     },
 });
