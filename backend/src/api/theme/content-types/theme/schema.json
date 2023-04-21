@@ -1,18 +1,24 @@
 {
-    "kind": "singleType",
-    "collectionName": "themes",
-    "info": {
-        "singularName": "theme",
-        "pluralName": "themes",
-        "displayName": "Theme"
+  "kind": "singleType",
+  "collectionName": "themes",
+  "info": {
+    "singularName": "theme",
+    "pluralName": "themes",
+    "displayName": "Theme",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "colors": {
+      "type": "json"
     },
-    "options": {
-        "draftAndPublish": true
-    },
-    "pluginOptions": {},
-    "attributes": {
-        "colors": {
-            "type": "json"
-        }
+    "fonts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.font"
     }
+  }
 }

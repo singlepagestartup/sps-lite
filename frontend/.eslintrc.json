@@ -18,7 +18,7 @@
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
     "comma-dangle": ["off"],
-    "quotes": ["warn", "backtick"],
+    "quotes": ["warn", "double"],
     "semi": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "no-empty-pattern": ["off"],

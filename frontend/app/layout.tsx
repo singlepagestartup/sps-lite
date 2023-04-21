@@ -4,6 +4,7 @@ import "../styles/tailwind.scss";
 import Modals from "~components/modals";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 import { ReduxProvider } from "~redux/index";
+import { fonts } from "./fonts";
 
 export default async function RootLayout({
   children,
@@ -12,7 +13,7 @@ export default async function RootLayout({
 }) {
   return (
     <html className="scroll-smooth">
-      <body>
+      <body className={`${fonts.defaultFont.variable}`}>
         <div className="relative">
           <TranslationsContextWrapper>
             <ReduxProvider>

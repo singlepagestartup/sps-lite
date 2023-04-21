@@ -19,7 +19,7 @@ input {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-default), sans-serif;
 }
 
 input:focus,
