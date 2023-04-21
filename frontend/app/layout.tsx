@@ -13,7 +13,9 @@ export default async function RootLayout({
 }) {
   return (
     <html className="scroll-smooth">
-      <body className={`${fonts.defaultFont.variable}`}>
+      <body
+        className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
+      >
         <div className="relative">
           <TranslationsContextWrapper>
             <ReduxProvider>

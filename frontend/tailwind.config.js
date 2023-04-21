@@ -57,11 +57,11 @@ const config = {
 
 if (themeFile) {
   for (const color of Object.keys(config.theme.extend.colors)) {
-    if (themeFile.colors[color]) {
+    if (themeFile.theme.colors[color]) {
       for (const rate of Object.keys(config.theme.extend.colors[color])) {
-        if (themeFile.colors[color][rate]) {
+        if (themeFile.theme.colors[color][rate]) {
           config.theme.extend.colors[color][rate] =
-            themeFile.colors[color][rate];
+            themeFile.theme.colors[color][rate];
         }
       }
     }

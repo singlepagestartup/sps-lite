@@ -1,34 +1,48 @@
 {
-    "collectionName": "components_elements_fonts",
-    "info": {
-        "displayName": "Font",
-        "description": ""
+  "collectionName": "components_elements_fonts",
+  "info": {
+    "displayName": "Font",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
     },
-    "options": {},
-    "attributes": {
-        "media": {
-            "type": "media",
-            "multiple": false,
-            "required": true,
-            "allowedTypes": ["files"]
-        },
-        "weight": {
-            "type": "enumeration",
-            "enum": ["light", "regular", "medium", "semi_bold", "bold"],
-            "required": true,
-            "default": "regular"
-        },
-        "style": {
-            "type": "enumeration",
-            "enum": ["normal", "italic"],
-            "default": "normal",
-            "required": true
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["default"],
-            "default": "default",
-            "required": true
-        }
+    "weight": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "regular",
+        "medium",
+        "semi_bold",
+        "bold"
+      ],
+      "required": true,
+      "default": "regular"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "italic"
+      ],
+      "default": "normal",
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "primary"
+      ],
+      "default": "default",
+      "required": true
     }
+  }
 }
