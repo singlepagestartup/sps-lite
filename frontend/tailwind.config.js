@@ -55,7 +55,7 @@ const config = {
   darkMode: "class",
 };
 
-if (themeFile) {
+if (themeFile && themeFile.theme?.colors) {
   for (const color of Object.keys(config.theme.extend.colors)) {
     if (themeFile.theme.colors[color]) {
       for (const rate of Object.keys(config.theme.extend.colors[color])) {
