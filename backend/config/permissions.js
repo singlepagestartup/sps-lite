@@ -13,7 +13,7 @@ const spsLitePublicActions = {
     'api::navbar.navbar': ['find', 'findOne'],
     'api::footer.footer': ['find', 'findOne'],
     'api::layout.layout': ['find', 'findOne'],
-    'api::metatag.metatag': ['find'],
+    'api::metatag.metatag': ['find', 'findOne'],
     'api::flyout-menu.flyout-menu': ['find', 'findOne'],
     'api::page.page': ['find', 'findOne'],
     'plugin::users-permissions.auth': [],

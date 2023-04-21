@@ -1,4 +1,4 @@
-export const mediaPopulate = `*`;
+export const mediaPopulate = "*";
 
 export const buttonPopulate = {
   media: {
@@ -8,7 +8,7 @@ export const buttonPopulate = {
     populate: mediaPopulate,
   },
   flyout_menu: {
-    populate: `*`,
+    populate: "*",
   },
 };
 
@@ -41,7 +41,7 @@ export const tierPopulate = {
     populate: featurePopulate,
   },
   currency: {
-    populate: `*`,
+    populate: "*",
   },
 };
 
@@ -62,7 +62,7 @@ export const sliderPopulate = {
 
 export const inputPopulate = {
   options: {
-    populate: `*`,
+    populate: "*",
   },
 };
 
@@ -75,7 +75,13 @@ export const formPopulate = {
   },
 };
 
-export const faqPopulate = `*`;
+export const faqPopulate = "*";
+
+export const metatagPopulate = {
+  favicon: {
+    populate: mediaPopulate,
+  },
+};
 
 export const pageBlockPopulate = {
   page_blocks: {
@@ -130,4 +136,4 @@ export const pagePopulate = {
   ...pageBlockPopulate,
 };
 
-export const layoutPopulate = `*`;
+export const layoutPopulate = "*";

@@ -6,6 +6,7 @@ import {
   currencyPopulate as spsLiteCurrencyPopulate,
   pagePopulate as spsLitePagePopulate,
   layoutPopulate as spsLiteLayoutPopulate,
+  metatagPopulate as spsLiteMetatagPopulate,
 } from "./sps-lite";
 
 export const pageBlockPopulate = {
@@ -30,6 +31,10 @@ export const currencyPopulate = {
 
 export const pagePopulate = {
   ...spsLitePagePopulate,
+};
+
+export const metatagPopulate = {
+  ...spsLiteMetatagPopulate,
 };
 
 export const layoutPopulate = spsLiteLayoutPopulate;

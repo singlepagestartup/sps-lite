@@ -20,7 +20,7 @@ export interface ISpsLiteBackendCurrency {
 
 export interface ISpsLiteBackendForm {
   id: number;
-  variant: `simple`;
+  variant: "simple";
   title: string | null;
   inputs?: ISpsLiteBackendInput[];
   uid: string;
@@ -37,7 +37,7 @@ export interface ISpsLiteBackendForm {
 export interface ISpsLiteBackendModal {
   id: number;
   title: string | null;
-  variant: `simple`;
+  variant: "simple";
   dialogPanelClassName: string | null;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
   uid: string;
@@ -57,6 +57,7 @@ export interface ISpsLiteBackendPage {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  metatag?: ISpsLiteBackendMetatag | null;
 }
 
 export interface ISpsLiteBackendReview {
@@ -78,7 +79,7 @@ export interface ISpsLiteBackendSlider {
   slides: ISpsLiteBackendSlide[];
   className: string | null;
   aspectRatioClassName: string | null;
-  variant: `fade-with-previews`;
+  variant: "fade-with-previews";
   showFullScreen: boolean | null;
   showBackdrop: boolean | null;
   showPreviews: boolean | null;
@@ -96,7 +97,7 @@ export interface ISpsLiteBackendTier {
   oldPrice: string | null;
   period: number | null;
   currency?: ISpsLiteBackendCurrency | null;
-  type: `one-time` | `regularly`;
+  type: "one-time" | "regularly";
   buttons?: ISpsLiteBackendButton[] | null;
   createdAt: string;
   updatedAt: string;
@@ -112,8 +113,8 @@ export interface ISpsLiteBackendSlideOver {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
-  position: `left` | `right`;
+  variant: "simple";
+  position: "left" | "right";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -126,7 +127,7 @@ export interface ISpsLiteBackendSidebar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
+  variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -152,7 +153,7 @@ export interface ISpsLiteBackendTopbar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
+  variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -165,7 +166,7 @@ export interface ISpsLiteBackendNavbar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
+  variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -178,7 +179,7 @@ export interface ISpsLiteBackendFlyoutMenu {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
+  variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -191,7 +192,7 @@ export interface ISpsLiteBackendFooter {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
+  variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -204,8 +205,7 @@ export interface ISpsLiteBackendLayout {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: `simple`;
-  meta?: ISpsLiteBackendMetatag | null;
+  variant: "simple";
   topbar?: ISpsLiteBackendTopbar | null;
   navbar?: ISpsLiteBackendNavbar | null;
   sidebar?: ISpsLiteBackendSidebar | null;
