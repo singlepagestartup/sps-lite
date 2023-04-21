@@ -22,7 +22,7 @@ export async function middleware(request: any) {
     // The new URL is now /en/<route>
     return NextResponse.redirect(
       new URL(
-        `/${defauleLocale?.code}/${pathname}${searchParams || ``}`,
+        `/${defauleLocale?.code}/${pathname}${searchParams || ""}`,
         request.url
       )
     );
@@ -32,7 +32,7 @@ export async function middleware(request: any) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    `/((?!_next).*)`,
+    "/((?!_next).*)",
     // Optional: only run on root (/) URL
     // '/'
   ],
