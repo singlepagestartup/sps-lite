@@ -4,6 +4,7 @@ import {
   ISpsLiteBackendLayout,
   ISpsLiteBackendLocale,
   ISpsLiteBackendModal,
+  ISpsLiteBackendNavbar,
   ISpsLiteBackendPage,
   ISpsLiteBackendReview,
   ISpsLiteBackendSlider,
@@ -29,5 +30,7 @@ export interface IBackendCurrency extends ISpsLiteBackendCurrency {}
 export interface IBackendPage extends ISpsLiteBackendPage {}
 
 export interface IBackendLayout extends ISpsLiteBackendLayout {}
+
+export interface IBackendNavbar extends ISpsLiteBackendNavbar {}
 
 export interface IBackendLocale extends ISpsLiteBackendLocale {}

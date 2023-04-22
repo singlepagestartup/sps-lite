@@ -1,14 +1,17 @@
+"use client";
+
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ISpsLiteNavbar } from ".";
 import PageBlocks from "~components/page-blocks";
 
 export default function Simple(props: ISpsLiteNavbar) {
+  console.log("🚀 ~ Simple ~ props:", props);
   return (
     <Disclosure
       as="nav"
       className={`bg-white shadow w-screen z-30 fixed ${
-        props.topbar?.variant === `simple` ? `mt-10` : ``
+        props.topbar?.variant === "simple" ? "mt-10" : ""
       }`}
     >
       {({ open }) => (

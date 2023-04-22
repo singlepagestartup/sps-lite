@@ -5,7 +5,6 @@ import { ISpsLiteFooter, variants as spsLiteVariants } from "./sps-lite";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { pageBlockPopulate } from "~utils/api/queries";
-import { useParams } from "next/navigation";
 
 const variants = {
   ...spsLiteVariants,
@@ -13,7 +12,6 @@ const variants = {
 
 export default function Footers<T extends ISpsLiteFooter>(props: T) {
   const [data, setData] = useState<any>();
-  const params = useParams();
 
   useEffect(() => {
     getBackendData({
