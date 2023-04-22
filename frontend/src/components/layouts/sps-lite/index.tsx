@@ -1,13 +1,15 @@
-import Simple from "./Simple";
+import Wide from "./Wide";
 import { FC, ReactNode } from "react";
 import { ISpsLiteBackendLayout } from "types/collection-types/sps-lite";
+import Boxed from "./Boxed";
 
 export interface ISpsLiteLayout extends ISpsLiteBackendLayout {
   children: ReactNode;
 }
 
 export const variants = {
-  simple: Simple,
+  wide: Wide,
+  boxed: Boxed,
 };
 
 export default function Layouts(props: ISpsLiteLayout) {

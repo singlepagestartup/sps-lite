@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import PublicPageNavbars from ".";
-import { Simple as SpsLiteSimple } from "./sps-lite/Navbar.stories";
+import { Boxed as SpsLiteBoxed } from "./sps-lite/Navbar.stories";
 
 const meta = { component: PublicPageNavbars } satisfies Meta<
   typeof PublicPageNavbars
@@ -9,4 +9,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const SimpleLinksOnLeft = SpsLiteSimple;
+export const Boxed = SpsLiteBoxed;

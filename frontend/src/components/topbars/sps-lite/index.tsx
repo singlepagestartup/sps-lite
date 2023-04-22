@@ -1,13 +1,14 @@
-import Simple from "./Simple";
+import Boxed from "./Boxed";
 import { FC } from "react";
 import { ISpsLiteBackendTopbar } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteTopbar extends ISpsLiteBackendTopbar {
   isLoading?: boolean;
+  topbarRef?: any;
 }
 
 export const variants = {
-  simple: Simple,
+  boxed: Boxed,
 };
 
 export default function PublicPageTopbars(props: ISpsLiteTopbar) {

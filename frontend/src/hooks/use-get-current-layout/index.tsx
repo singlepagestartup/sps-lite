@@ -62,12 +62,14 @@ export default function useGetCurrentLayout({
                 }
               }
             }
-            if (pathEquals) {
+            if (pathEquals && backendLayout.locale === params?.locale) {
               targetLayout = backendLayout;
             }
           } else {
             if (!splittedPageUrl.length) {
-              targetLayout = backendLayout;
+              if (backendLayout.locale === params?.locale) {
+                targetLayout = backendLayout;
+              }
             }
           }
         }

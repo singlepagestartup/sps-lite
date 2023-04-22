@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { ISpsLiteBackendFooter } from "types/collection-types/sps-lite";
-import Simple from "./Simple";
+import Boxed from "./Boxed";
 
 export interface ISpsLiteFooter extends ISpsLiteBackendFooter {
   isLoading?: boolean;
 }
 
 export const variants = {
-  simple: Simple,
+  boxed: Boxed,
 };
 
 export default function Footers(props: ISpsLiteFooter) {

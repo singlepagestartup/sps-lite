@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import Simple from "./Simple";
+import RightSideHalfWidth from "./RightSideHalfWidth";
 import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteSlideOver extends ISpsLiteBackendSlideOver {
@@ -8,7 +8,7 @@ export interface ISpsLiteSlideOver extends ISpsLiteBackendSlideOver {
 }
 
 export const variants = {
-  simple: Simple,
+  "right-side-half-width": RightSideHalfWidth,
 };
 
 export default function Pricings(props: ISpsLiteSlideOver) {

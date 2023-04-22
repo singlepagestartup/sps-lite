@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Simple from "./Simple";
+import OneQuarter from "./OneQuarter";
 import { ISpsLiteBackendSidebar } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteSidebar extends ISpsLiteBackendSidebar {
@@ -7,7 +7,7 @@ export interface ISpsLiteSidebar extends ISpsLiteBackendSidebar {
 }
 
 export const variants = {
-  simple: Simple,
+  "one-quarter": OneQuarter,
 };
 
 export default function Sidebars(props: ISpsLiteSidebar) {

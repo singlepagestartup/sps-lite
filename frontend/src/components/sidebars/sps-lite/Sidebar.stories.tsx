@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { spsLiteBackendSidebarSimple } from "~mocks/collection-types/sps-lite";
+import { spsLiteBackendSidebarOneQuarter } from "~mocks/collection-types/sps-lite";
 import Sidebars, { ISpsLiteSidebar } from ".";
 
 const meta = { component: Sidebars } satisfies Meta<typeof Sidebars>;
@@ -15,7 +15,7 @@ function SidebarComponent(args: ISpsLiteSidebar) {
   );
 }
 
-export const Simple: Story = {
+export const OneQuarter: Story = {
   render: (args) => <SidebarComponent {...args} />,
-  args: spsLiteBackendSidebarSimple,
+  args: spsLiteBackendSidebarOneQuarter,
 };

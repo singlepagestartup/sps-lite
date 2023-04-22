@@ -113,8 +113,7 @@ export interface ISpsLiteBackendSlideOver {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
-  position: "left" | "right";
+  variant: "right-side-half-width";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -127,7 +126,8 @@ export interface ISpsLiteBackendSidebar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
+  variant: "one-quarter";
+  side: "left" | "right";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -153,7 +153,7 @@ export interface ISpsLiteBackendTopbar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
+  variant: "boxed";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -166,7 +166,9 @@ export interface ISpsLiteBackendNavbar {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
+  variant: "boxed";
+  position: "fixed";
+  side: "top";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -192,7 +194,7 @@ export interface ISpsLiteBackendFooter {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
+  variant: "boxed";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
@@ -205,7 +207,7 @@ export interface ISpsLiteBackendLayout {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "simple";
+  variant: "wide" | "boxed";
   topbar?: ISpsLiteBackendTopbar | null;
   navbar?: ISpsLiteBackendNavbar | null;
   sidebar?: ISpsLiteBackendSidebar | null;

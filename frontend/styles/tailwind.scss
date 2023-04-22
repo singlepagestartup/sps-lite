@@ -42,7 +42,7 @@ button:focus {
     @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
   }
 
-  .slide__over__simple {
+  .slide__over__right_side_half_width {
     @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-white flex justify-between overflow-scroll;
   }
 
