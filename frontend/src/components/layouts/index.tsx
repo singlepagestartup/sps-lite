@@ -8,7 +8,7 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Layouts({ children }: { children: ReactNode }) {
+export default function Layouts({ children }: { children?: ReactNode }) {
   const layout = useGetCurrentLayout();
 
   const Comp = layout

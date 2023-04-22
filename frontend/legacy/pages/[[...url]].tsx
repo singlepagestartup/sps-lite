@@ -5,20 +5,20 @@ import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function Page(props: IBackendPage) {
-  return <Layouts {...props} />;
+  // return <Layouts {...props} />;
 }
 
 export async function getStaticPaths() {
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: `all` },
+    params: { locale: "all" },
   });
 
   let paths =
     pages?.map((page: IBackendPage) => {
       const routeElements = page.url
-        .split(`/`)
-        .filter((element) => element !== ``);
+        .split("/")
+        .filter((element) => element !== "");
 
       const path = {
         params: { url: routeElements },
@@ -31,20 +31,20 @@ export async function getStaticPaths() {
   const filledPaths = [];
 
   for (const path of paths) {
-    if (path.params.url?.find((url: string) => url.includes(`.`))) {
+    if (path.params.url?.find((url: string) => url.includes("."))) {
       const modelRoute = path.params.url.find((url: string) =>
-        url.includes(`.`)
+        url.includes(".")
       );
 
-      const sanitizedRoute = modelRoute.replace(`[`, ``).replace(`]`, ``);
-      const model = sanitizedRoute.split(`.`)[0];
-      const modelParam = sanitizedRoute.split(`.`)[1];
+      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
+      const model = sanitizedRoute.split(".")[0];
+      const modelParam = sanitizedRoute.split(".")[1];
 
       const modelEntites = await getBackendData({
         url: `${BACKEND_URL}/api/${model}`,
         params: {
-          locale: `all`,
-          pagination: { limit: `-1` },
+          locale: "all",
+          pagination: { limit: "-1" },
         },
       });
 
@@ -79,7 +79,7 @@ export async function getStaticPaths() {
     /**
      * Specific for "next export", should be added as a file
      */
-    if (path.params.url[0] === `404` || path.params.url[0] === `500`) {
+    if (path.params.url[0] === "404" || path.params.url[0] === "500") {
       continue;
     }
 
@@ -93,30 +93,30 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (params: any) => {
-  const pageUrl = `/${params.params?.url?.join(`/`) || ``}`;
+  const pageUrl = `/${params.params?.url?.join("/") || ""}`;
   const { locale }: { locale: string } = params;
 
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: `all` },
+    params: { locale: "all" },
   });
 
   const filledPages = [];
   for (const page of pages) {
-    if (page.url.includes(`.`)) {
+    if (page.url.includes(".")) {
       const modelRoute = page.url
-        .split(`/`)
-        .find((url: string) => url.includes(`.`));
-      const sanitizedRoute = modelRoute.replace(`[`, ``).replace(`]`, ``);
-      const model = sanitizedRoute.split(`.`)[0];
-      const modelParam = sanitizedRoute.split(`.`)[1];
+        .split("/")
+        .find((url: string) => url.includes("."));
+      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
+      const model = sanitizedRoute.split(".")[0];
+      const modelParam = sanitizedRoute.split(".")[1];
 
       const modelEntites = await getBackendData({
         url: `${BACKEND_URL}/api/${model}`,
         params: {
           locale: page.locale,
           fields: [modelParam],
-          pagination: { limit: `-1` },
+          pagination: { limit: "-1" },
         },
       });
 
@@ -125,7 +125,7 @@ export const getStaticProps = async (params: any) => {
         for (const modelEntity of modelEntites) {
           const uri = `${modelEntity[modelParam]}`;
           const pathUrl = page.url
-            .split(`/`)
+            .split("/")
             .map((url: string) => {
               if (url === modelRoute) {
                 return uri;
@@ -133,9 +133,9 @@ export const getStaticProps = async (params: any) => {
 
               return url;
             })
-            .filter((url: string) => url !== ``);
+            .filter((url: string) => url !== "");
 
-          entitesUrls.push(`/${pathUrl.join(`/`)}`);
+          entitesUrls.push(`/${pathUrl.join("/")}`);
         }
 
         filledPages.push({

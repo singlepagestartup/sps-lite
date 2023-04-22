@@ -5,7 +5,7 @@ import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function ErrorPage(props: IBackendPage) {
-  return <Layouts {...props} />;
+  // return <Layouts {...props} />;
 }
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
@@ -15,7 +15,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       locale,
       populate: pagePopulate,
       filters: {
-        url: `/500`,
+        url: "/500",
       },
     },
   });
