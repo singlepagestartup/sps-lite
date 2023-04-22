@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { IBackendPage } from "types/collection-types";
 import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
@@ -11,7 +10,7 @@ export const dynamicParams = true;
 export async function generateStaticParams() {
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: "all" },
+    params: { locale: "all", pagination: { limit: -1 } },
   });
 
   let paths =
@@ -158,7 +157,7 @@ async function getPage(props: any) {
 
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
-    params: { locale: "all" },
+    params: { locale: "all", pagination: { limit: -1 } },
   });
 
   const filledPages = [];

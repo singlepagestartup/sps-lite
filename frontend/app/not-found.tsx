@@ -10,7 +10,7 @@ export default async function NotFoundPage() {
     params: {
       populate: pagePopulate,
       filters: {
-        url: `/404`,
+        url: "/404",
       },
     },
   })) as IBackendPage[];
