@@ -2,14 +2,15 @@
 
 import { useParams, usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { useGetLayoutsQuery } from "~redux/services/backend/models/layouts";
+import { IBackendLayout } from "types/collection-types";
 
-export default function useGetCurrentLayout() {
+export default function useGetCurrentLayout({
+  layouts,
+}: {
+  layouts?: IBackendLayout[];
+}) {
   const pathname = usePathname();
   const params = useParams();
-  const { data: layouts } = useGetLayoutsQuery({
-    locale: params?.locale,
-  });
 
   const layout = useMemo(() => {
     if (!layouts?.length) {
@@ -18,8 +19,8 @@ export default function useGetCurrentLayout() {
 
     let targetLayout;
     const splittedPathname = pathname
-      ?.split(`/`)
-      .filter((element) => element !== ``)
+      ?.split("/")
+      .filter((element) => element !== "")
       .map((element) => {
         if (params?.locale) {
           if (element !== params.locale) {
@@ -35,8 +36,8 @@ export default function useGetCurrentLayout() {
       if (backendLayout.pages) {
         for (const page of backendLayout.pages) {
           const splittedPageUrl = page.url
-            .split(`/`)
-            .filter((element) => element !== ``);
+            .split("/")
+            .filter((element) => element !== "");
 
           if (splittedPathname?.length) {
             let pathEquals = true;
@@ -46,14 +47,14 @@ export default function useGetCurrentLayout() {
             ] of splittedPathname.entries()) {
               if (splittedPathnameItem !== splittedPageUrl[index]) {
                 if (
-                  splittedPageUrl[index]?.includes(`[`) &&
+                  splittedPageUrl[index]?.includes("[") &&
                   splittedPathnameItem &&
                   parseInt(splittedPathnameItem)
                 ) {
                   continue;
                 } else if (
-                  splittedPathname.includes(`auth`) &&
-                  splittedPageUrl.includes(`auth`)
+                  splittedPathname.includes("auth") &&
+                  splittedPageUrl.includes("auth")
                 ) {
                   continue;
                 } else {

@@ -2,7 +2,9 @@ import { FC } from "react";
 import { ISpsLiteBackendFooter } from "types/collection-types/sps-lite";
 import Simple from "./Simple";
 
-export interface ISpsLiteFooter extends ISpsLiteBackendFooter {}
+export interface ISpsLiteFooter extends ISpsLiteBackendFooter {
+  isLoading?: boolean;
+}
 
 export const variants = {
   simple: Simple,

@@ -9,16 +9,20 @@ const variants = {
 };
 
 export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
-  const { data: navbar } = useGetNavbarByIdQuery(
-    { id: props.id },
-    { skip: !props.id }
-  );
+  const {
+    data: backendNavbar,
+    isLoading,
+    isError,
+    isFetching,
+  } = useGetNavbarByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
-  if (!Comp || !navbar) {
+  if (!Comp || isError) {
     return <></>;
   }
 
-  return <Comp {...props} {...navbar} />;
+  return (
+    <Comp {...props} {...backendNavbar} isLoading={isLoading || isFetching} />
+  );
 }

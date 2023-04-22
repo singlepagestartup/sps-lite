@@ -18,8 +18,8 @@ const baseQuery = fetchBaseQuery({
 
     if (token) {
       headers.set(
-        `Authorization`,
-        token.startsWith(`Bearer `) ? token : `Bearer ${token}`
+        "Authorization",
+        token.startsWith("Bearer ") ? token : `Bearer ${token}`
       );
     }
 
@@ -27,12 +27,23 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const tagTypes = [`Currency`, `Modal`, `Layout`, `Review`, `SlideOver`];
+const tagTypes = [
+  "Currency",
+  "Navbar",
+  "Modal",
+  "Footer",
+  "FlyoutMenu",
+  "Layout",
+  "Sidebar",
+  "Review",
+  "SlideOver",
+  "Topbar",
+];
 
 export const backendServiceApi = createApi({
   baseQuery,
   tagTypes,
-  reducerPath: `backend`,
+  reducerPath: "backend",
   endpoints: () => ({}),
 });
 

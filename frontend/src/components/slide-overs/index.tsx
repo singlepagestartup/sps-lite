@@ -13,15 +13,13 @@ export interface ISlideOver extends ISpsLiteSlideOver {}
 
 export default function SlideOvers() {
   const query = useSearchParams();
-  const openedSlideOver = query?.get(`opened_slide_over`);
+  const openedSlideOver = query?.get("opened_slide_over");
   const [isOpen, setIsOpen] = useState(false);
   const [slideOverProps, setSlideOverProps] =
-    useState<Omit<ISlideOver, `isOpen` | `setIsOpen`>>();
+    useState<Omit<ISlideOver, "isOpen" | "setIsOpen">>();
 
   const { data: slideOvers } = useGetSlideOversQuery({
-    params: {
-      locale: `all`,
-    },
+    locale: "all",
   });
 
   useEffect(() => {

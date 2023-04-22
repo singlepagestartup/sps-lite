@@ -6,7 +6,12 @@ import { ISpsLiteNavbar } from ".";
 import PageBlocks from "~components/page-blocks";
 
 export default function Simple(props: ISpsLiteNavbar) {
-  console.log("🚀 ~ Simple ~ props:", props);
+  if (props.isLoading) {
+    return (
+      <div className="shadow w-screen z-30 fixed h-16 bg-slate-100 animate-pulse"></div>
+    );
+  }
+
   return (
     <Disclosure
       as="nav"

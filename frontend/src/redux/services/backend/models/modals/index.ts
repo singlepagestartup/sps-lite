@@ -3,18 +3,19 @@ import utils from "@rogwild/next-utils";
 import { IBackendModal } from "types/collection-types";
 import { modalPopulate } from "~utils/api/queries";
 
-const model = `modals`;
+const model = "modals";
 
 export const modalsApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getModals: build.query({
       query: (params = {}) => {
-        const { populate = modalPopulate } = params;
+        const { populate = modalPopulate, pagination = { limit: -1 } } = params;
 
         return {
           url: model,
           params: {
             populate,
+            pagination,
           },
         };
       },
@@ -27,12 +28,12 @@ export const modalsApi = backendServiceApi.injectEndpoints({
         return result?.length
           ? [
               ...result.map(({ id }: { id: number }) => ({
-                type: `Modal`,
+                type: "Modal",
                 id,
               })),
-              { type: `Modal`, id: `LIST` },
+              { type: "Modal", id: "LIST" },
             ]
-          : [{ type: `Modal`, id: `LIST` }];
+          : [{ type: "Modal", id: "LIST" }];
       },
     }),
   }),

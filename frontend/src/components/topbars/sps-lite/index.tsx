@@ -2,7 +2,9 @@ import Simple from "./Simple";
 import { FC } from "react";
 import { ISpsLiteBackendTopbar } from "types/collection-types/sps-lite";
 
-export interface ISpsLiteTopbar extends ISpsLiteBackendTopbar {}
+export interface ISpsLiteTopbar extends ISpsLiteBackendTopbar {
+  isLoading?: boolean;
+}
 
 export const variants = {
   simple: Simple,

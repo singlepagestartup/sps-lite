@@ -1,36 +1,25 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
-import { variants as spsLiteVariants } from "./sps-lite";
-import { getBackendData } from "~utils/api";
-import { BACKEND_URL } from "~utils/envs";
-import { pageBlockPopulate } from "~utils/api/queries";
+import { FC } from "react";
+import { ISpsLiteFlyoutMenu, variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
-import Buttons from "~components/elements/buttons";
-import { ISpsLiteButton } from "~components/elements/buttons/sps-lite";
+import { useGetFlyoutMenuByIdQuery } from "~redux/services/backend/models/flyout-menus";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Menus<T extends ISpsLiteButton>(props: T) {
-  const [data, setData] = useState<any>();
+export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
+  const { data, isLoading, isError, isFetching } = useGetFlyoutMenuByIdQuery(
+    {
+      id: props.id,
+    },
+    { skip: !props.id }
+  );
 
-  useEffect(() => {
-    getBackendData({
-      url: `${BACKEND_URL}/api/flyout-menus/${props.flyoutMenu?.id}`,
-      params: {
-        locale: props.flyoutMenu?.locale,
-        populate: pageBlockPopulate,
-      },
-    }).then((res) => {
-      setData(res);
-    });
-  }, [props.flyoutMenu]);
+  const Comp = variants[props?.variant as keyof typeof variants] as FC<any>;
 
-  const Comp = variants[data?.variant as keyof typeof variants] as FC<any>;
-
-  if (!Comp) {
+  if (!Comp || isError) {
     return <></>;
   }
 
@@ -40,16 +29,13 @@ export default function Menus<T extends ISpsLiteButton>(props: T) {
         return (
           <div className="relative">
             <Popover.Button as="div" className="w-full">
-              <Buttons
-                {...({
-                  ...props,
-                  url: ``,
-                  onClick: () => {},
-                  flyoutMenu: null,
-                } as T)}
-              />
+              {props.children}
             </Popover.Button>
-            <Comp {...data} {...popoverProps} />
+            <Comp
+              {...data}
+              {...popoverProps}
+              isLoading={isLoading || isFetching}
+            />
           </div>
         );
       }}

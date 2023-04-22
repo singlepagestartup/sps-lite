@@ -37,4 +37,4 @@ export const metatagPopulate = {
   ...spsLiteMetatagPopulate,
 };
 
-export const layoutPopulate = spsLiteLayoutPopulate;
+export const layoutPopulate = { ...spsLiteLayoutPopulate };

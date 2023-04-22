@@ -242,13 +242,5 @@ async function getPage(props: any) {
 export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
-  return (
-    <Suspense fallback={<PageFallback />}>
-      <PageBlocks pageBlocks={pageProps.pageBlocks} />
-    </Suspense>
-  );
-}
-
-function PageFallback() {
-  return <div className="w-full p-6 bg-red-400"></div>;
+  return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
 }

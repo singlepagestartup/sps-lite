@@ -136,4 +136,12 @@ export const pagePopulate = {
   ...pageBlockPopulate,
 };
 
-export const layoutPopulate = "*";
+export const layoutPopulate = {
+  navbar: "*",
+  topbar: "*",
+  footer: "*",
+  sidebar: "*",
+  slide_overs: "*",
+  modals: "*",
+  pages: "*",
+};

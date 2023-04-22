@@ -7,6 +7,7 @@ import Simple from "./Simple";
 
 export interface ISpsLiteNavbar extends ISpsLiteBackendNavbar {
   topbar?: ISpsLiteBackendTopbar | null;
+  isLoading?: boolean;
 }
 
 export const variants = {

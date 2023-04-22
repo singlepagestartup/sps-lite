@@ -5,12 +5,24 @@ import Modals from "~components/modals";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 import { ReduxProvider } from "~redux/index";
 import { fonts } from "./fonts";
+import SlideOvers from "~components/slide-overs";
+import { getBackendData } from "~utils/api";
+import { BACKEND_URL } from "~utils/envs";
+import { layoutPopulate } from "~utils/api/queries";
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const layouts = await getBackendData({
+    url: `${BACKEND_URL}/api/layouts`,
+    params: {
+      locale: "all",
+      populate: layoutPopulate,
+    },
+  });
+
   return (
     <html className="scroll-smooth">
       <body
@@ -19,9 +31,9 @@ export default async function RootLayout({
         <div className="relative">
           <TranslationsContextWrapper>
             <ReduxProvider>
-              <Layouts>{children}</Layouts>
-              <div id="notification" />
+              <Layouts layouts={layouts}>{children}</Layouts>
               <Modals />
+              <SlideOvers />
             </ReduxProvider>
           </TranslationsContextWrapper>
         </div>
