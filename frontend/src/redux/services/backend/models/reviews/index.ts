@@ -1,9 +1,9 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
 import { IBackendReview } from "types/collection-types";
 import { reviewPopulate } from "~utils/api/queries";
+import { transformResponseItem } from "~utils/api/transform-response-item";
 
-const model = `reviews`;
+const model = "reviews";
 
 export const reviewsApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
@@ -20,19 +20,21 @@ export const reviewsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IBackendReview[];
+        return transformResponseItem(
+          result
+        ) as TransformedApiArray<IBackendReview>;
       },
 
       providesTags: (result) => {
         return result?.length
           ? [
               ...result.map(({ id }: { id: number }) => ({
-                type: `Review`,
+                type: "Review",
                 id,
               })),
-              { type: `Review`, id: `LIST` },
+              { type: "Review", id: "LIST" },
             ]
-          : [{ type: `Review`, id: `LIST` }];
+          : [{ type: "Review", id: "LIST" }];
       },
     }),
   }),

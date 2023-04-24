@@ -1,9 +1,9 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
 import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
 import { slideOverPropulate } from "~utils/api/queries";
+import { transformResponseItem } from "~utils/api/transform-response-item";
 
-const model = `slide-overs`;
+const model = "slide-overs";
 
 export const modalsApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
@@ -20,21 +20,21 @@ export const modalsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(
+        return transformResponseItem(
           result
-        ) as ISpsLiteBackendSlideOver[];
+        ) as TransformedApiArray<ISpsLiteBackendSlideOver>;
       },
 
       providesTags: (result) => {
         return result?.length
           ? [
               ...result.map((props) => ({
-                type: `SlideOver`,
-                id: props?.id || `LIST`,
+                type: "SlideOver",
+                id: props?.id || "LIST",
               })),
-              { type: `SlideOver`, id: `LIST` },
+              { type: "SlideOver", id: "LIST" },
             ]
-          : [{ type: `SlideOver`, id: `LIST` }];
+          : [{ type: "SlideOver", id: "LIST" }];
       },
     }),
   }),

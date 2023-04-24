@@ -5,4 +5,8 @@ declare global {
     utmReferer?: string | string[];
     offsetWidth: number;
   }
+
+  interface TransformedApiArray<T> extends Array<T> {
+    _meta: IBackendPagination;
+  }
 }

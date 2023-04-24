@@ -1,7 +1,7 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
 import { IBackendModal } from "types/collection-types";
 import { modalPopulate } from "~utils/api/queries";
+import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "modals";
 
@@ -21,7 +21,9 @@ export const modalsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IBackendModal[];
+        return transformResponseItem(
+          result
+        ) as TransformedApiArray<IBackendModal>;
       },
 
       providesTags: (result) => {

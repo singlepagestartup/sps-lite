@@ -1,8 +1,8 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
-const { prepareFormDataToSend } = utils.api;
+import { transformResponseItem } from "~utils/api/transform-response-item";
+import { prepareFormDataToSend } from "~utils/api/preapare-form-data-to-send";
 
-const model = `form-requests`;
+const model = "form-requests";
 
 export const reviewsApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
@@ -13,7 +13,7 @@ export const reviewsApi = backendServiceApi.injectEndpoints({
 
         return {
           url: `${model}`,
-          method: `POST`,
+          method: "POST",
           params: {
             populate,
           },
@@ -22,7 +22,7 @@ export const reviewsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result);
+        return transformResponseItem(result);
       },
     }),
   }),

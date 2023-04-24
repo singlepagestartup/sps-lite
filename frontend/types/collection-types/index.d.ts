@@ -15,6 +15,15 @@ import {
  * Interfaces for RTK
  */
 
+export interface IBackendPagination {
+  pagination: {
+    page: number;
+    pageCount: number;
+    pageSize: number;
+    total: number;
+  };
+}
+
 export interface IBackendTier extends ISpsLiteBackendTier {}
 
 export interface IBackendModal extends ISpsLiteBackendModal {}

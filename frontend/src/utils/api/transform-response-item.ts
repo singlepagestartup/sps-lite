@@ -1,14 +1,14 @@
 export function isObject(data: any) {
-  return data && typeof data === `object`;
+  return data && typeof data === "object";
 }
 
 export function snakeToCamel(str: string) {
-  if (str[0] === `_`) {
+  if (str[0] === "_") {
     return str;
   }
 
   return str.replace(/([-_][a-z])/gi, (char) => {
-    return char.toUpperCase().replace(`-`, ``).replace(`_`, ``);
+    return char.toUpperCase().replace("-", "").replace("_", "");
   });
 }
 
@@ -39,30 +39,35 @@ export function transformEntriesInObj(item: any) {
 }
 
 export function transformResponseItem(resItem: any) {
+  let passItem;
+
   if (isArray(resItem)) {
-    return resItem.map((item: any) => transformResponseItem(item));
+    passItem = resItem.map((item: any) => transformResponseItem(item));
+    return passItem;
   }
 
   if (isObject(resItem)) {
+    passItem = { ...resItem } as any;
+
     if (isArray(resItem.data)) {
-      resItem = [...resItem.data];
+      passItem = [...resItem.data];
     } else if (isObject(resItem.data)) {
-      resItem = transformEntriesInObj(resItem.data);
+      passItem = transformEntriesInObj(resItem.data);
     } else if (resItem.data === null) {
-      resItem = null;
+      passItem = null;
     } else {
-      resItem = transformEntriesInObj(resItem);
+      passItem = transformEntriesInObj(resItem);
     }
 
-    if (isObject(resItem) && isObject(resItem.meta)) {
-      resItem._meta = resItem.meta;
+    if (resItem?.meta && isObject(resItem.meta)) {
+      passItem._meta = { ...resItem.meta };
     }
 
-    for (const key in resItem) {
-      resItem[key] = transformResponseItem(resItem[key]);
+    for (const key in passItem) {
+      passItem[key] = transformResponseItem(passItem[key]);
     }
 
-    return resItem;
+    return passItem;
   }
 
   return resItem;

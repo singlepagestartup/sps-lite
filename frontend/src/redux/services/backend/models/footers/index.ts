@@ -1,7 +1,7 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
 import { IBackendNavbar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
+import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "footers";
 
@@ -22,7 +22,7 @@ export const footersApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IBackendNavbar;
+        return transformResponseItem(result) as IBackendNavbar;
       },
 
       providesTags: (result) => {

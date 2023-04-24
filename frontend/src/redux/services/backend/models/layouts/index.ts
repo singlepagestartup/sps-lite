@@ -1,7 +1,7 @@
 import { backendServiceApi } from "../..";
-import utils from "@rogwild/next-utils";
 import { IBackendLayout } from "types/collection-types";
 import { layoutPopulate } from "~utils/api/queries";
+import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "layouts";
 
@@ -28,7 +28,9 @@ export const layoutsApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return utils.api.transformResponseItem(result) as IBackendLayout[];
+        return transformResponseItem(
+          result
+        ) as TransformedApiArray<IBackendLayout>;
       },
 
       providesTags: (result) => {
