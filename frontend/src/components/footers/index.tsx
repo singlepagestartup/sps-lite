@@ -9,10 +9,8 @@ const variants = {
 };
 
 export default function Footers<T extends ISpsLiteFooter>(props: T) {
-  const { data, isLoading, isError, isFetching } = useGetFooterByIdQuery(
-    { id: props.id },
-    { skip: !props.id }
-  );
+  const { data, isLoading, isError, isFetching, isUninitialized } =
+    useGetFooterByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
@@ -20,5 +18,11 @@ export default function Footers<T extends ISpsLiteFooter>(props: T) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} isLoading={isLoading || isFetching} />;
+  return (
+    <Comp
+      {...props}
+      {...data}
+      isLoading={isLoading || isFetching || isUninitialized}
+    />
+  );
 }

@@ -9,10 +9,8 @@ const variants = {
 };
 
 export default function Sidebars<T extends ISpsLiteSidebar>(props: T) {
-  const { data, isLoading, isError, isFetching } = useGetSidebarByIdQuery(
-    { id: props.id },
-    { skip: !props.id }
-  );
+  const { data, isLoading, isError, isFetching, isUninitialized } =
+    useGetSidebarByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
@@ -20,5 +18,11 @@ export default function Sidebars<T extends ISpsLiteSidebar>(props: T) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} isLoading={isLoading || isFetching} />;
+  return (
+    <Comp
+      {...props}
+      {...data}
+      isLoading={isLoading || isFetching || isUninitialized}
+    />
+  );
 }

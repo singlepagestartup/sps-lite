@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { ICardProps, ICardSkeletonProps } from "..";
+import { ICardProps } from "..";
 import { ISpsLiteCatdsProps } from ".";
 
-export const animationClassName = `bg-gray-200 animate-pulse`;
+export const animationClassName = "bg-gray-200 animate-pulse";
 
 export default function Simple(props: ISpsLiteCatdsProps) {
   const { cardsConfig, items, showSkeletons } = props;
@@ -33,14 +33,14 @@ export default function Simple(props: ISpsLiteCatdsProps) {
 
   if (isEmpty) {
     return (
-      <div data-is-empty={isEmpty} className={`${cardsConfig.className || ``}`}>
+      <div data-is-empty={isEmpty} className={`${cardsConfig.className || ""}`}>
         <EmptyRenderComponent cardsConfig={cardsConfig} />
       </div>
     );
   }
 
   return (
-    <div data-is-empty={isEmpty} className={`${cardsConfig.className || ``}`}>
+    <div data-is-empty={isEmpty} className={`${cardsConfig.className || ""}`}>
       {localItems?.map((item: any, index: number) => {
         return <Card key={index} {...props} item={item} index={index} />;
       })}
@@ -64,12 +64,7 @@ function Card(props: ICardProps) {
   }, [cardsConfig]);
 
   if (showSkeletons) {
-    return (
-      <SkeletonRenderComponent
-        {...props}
-        animationClassName={animationClassName}
-      />
-    );
+    return <SkeletonRenderComponent {...props} />;
   }
 
   return <RenderComponent {...props} />;
@@ -83,8 +78,6 @@ function DefaultEmptyComponent() {
   );
 }
 
-function DefaultCardSkeletonComponent(props: ICardSkeletonProps) {
-  const { animationClassName } = props;
-
-  return <div className={`w-full h-[150px] ${animationClassName}`}></div>;
+function DefaultCardSkeletonComponent() {
+  return <div className="w-full h-[150px] skeleton"></div>;
 }

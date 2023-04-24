@@ -26,10 +26,6 @@ export interface ICardProps extends ICardsBlock {
   index: number;
 }
 
-export interface ICardSkeletonProps extends ICardProps {
-  animationClassName: string;
-}
-
 export interface ICardsProps extends ICardsBlock {
   variant: keyof typeof variants;
 }

@@ -30,6 +30,10 @@ button:focus {
 @tailwind utilities;
 
 @layer components {
+  .skeleton {
+    @apply bg-slate-100 animate-pulse rounded-md;
+  }
+
   .button-secondary {
     @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
   }

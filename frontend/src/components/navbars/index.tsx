@@ -14,6 +14,7 @@ export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
     isLoading,
     isError,
     isFetching,
+    isUninitialized,
   } = useGetNavbarByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
@@ -23,6 +24,10 @@ export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
   }
 
   return (
-    <Comp {...props} {...backendNavbar} isLoading={isLoading || isFetching} />
+    <Comp
+      {...props}
+      {...backendNavbar}
+      isLoading={isLoading || isFetching || isUninitialized}
+    />
   );
 }

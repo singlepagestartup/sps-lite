@@ -8,8 +8,6 @@ import {
   IDropdownRowCompProps,
 } from "..";
 
-export const animationClassName = `bg-gray-200 animate-pulse`;
-
 /**
  *
  *
@@ -45,11 +43,11 @@ export default function Simple(props: ITableProps) {
   }, [items, showSkeletons]);
 
   return (
-    <div className={tableConfig?.className || ``}>
+    <div className={tableConfig?.className || ""}>
       <div className="table__container">
         <div className="table__header">
           <div className="table__header__item">
-            {typeof tableConfig.dropdown?.Comp === `function` ? (
+            {typeof tableConfig.dropdown?.Comp === "function" ? (
               <div
                 className={`${tableConfig.dropdown?.button.widthClassName} table__dropdown__button`}
               ></div>
@@ -109,12 +107,12 @@ function TableItem(props: ITableItemProps) {
 
   return (
     <div
-      data-dropdow={typeof tableConfig?.dropdown?.Comp === `function`}
+      data-dropdow={typeof tableConfig?.dropdown?.Comp === "function"}
       className="table__item"
     >
       <div className="table__item__content">
         <div className="table__row">
-          {typeof tableConfig.dropdown?.Comp === `function` ? (
+          {typeof tableConfig.dropdown?.Comp === "function" ? (
             <div
               className={`${tableConfig.dropdown?.button?.widthClassName} table__dropdown__button`}
             >
@@ -141,13 +139,13 @@ function TableItem(props: ITableItemProps) {
           )}
         </div>
 
-        <div data-is-open={isOpen} className={`table__dropdown`}>
-          {typeof tableConfig.dropdown?.Comp === `function` ? (
+        <div data-is-open={isOpen} className={"table__dropdown"}>
+          {typeof tableConfig.dropdown?.Comp === "function" ? (
             <div
               className={`${tableConfig.dropdown?.button?.widthClassName} table__dropdown__button`}
             ></div>
           ) : null}
-          {typeof tableConfig.dropdown?.Comp === `function` ? (
+          {typeof tableConfig.dropdown?.Comp === "function" ? (
             <DropdownRow {...props} />
           ) : null}
         </div>
@@ -176,14 +174,16 @@ function DefaultDropdownButtonCell(props: IDropdownButtonProps) {
   return (
     <div
       onClick={() => setIsOpen(!isOpen)}
-      className={`cursor-pointer flex items-center justify-center w-[20px] h-[20px] mx-auto`}
+      className={
+        "cursor-pointer flex items-center justify-center w-[20px] h-[20px] mx-auto"
+      }
     >
       <svg
         viewBox="0 0 10 6"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={`fill-current w-[10px] transform duration-200 ${
-          isOpen ? `rotate-0` : `-rotate-90`
+          isOpen ? "rotate-0" : "-rotate-90"
         }`}
       >
         <path
@@ -208,7 +208,7 @@ function DropdownRow(props: IDropdownRowCompProps) {
   }
 
   return (
-    <div className={`dropdown__row w-full`}>
+    <div className={"dropdown__row w-full"}>
       <RenderComponent {...props} />
     </div>
   );

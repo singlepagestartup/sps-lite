@@ -9,10 +9,8 @@ const variants = {
 };
 
 export default function PublicPageTopbars<T extends ISpsLiteTopbar>(props: T) {
-  const { data, isLoading, isError, isFetching } = useGetTopbarByIdQuery(
-    { id: props.id },
-    { skip: !props.id }
-  );
+  const { data, isLoading, isError, isFetching, isUninitialized } =
+    useGetTopbarByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
@@ -20,5 +18,11 @@ export default function PublicPageTopbars<T extends ISpsLiteTopbar>(props: T) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} isLoading={isLoading || isFetching} />;
+  return (
+    <Comp
+      {...props}
+      {...data}
+      isLoading={isLoading || isFetching || isUninitialized}
+    />
+  );
 }

@@ -10,12 +10,13 @@ const variants = {
 };
 
 export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
-  const { data, isLoading, isError, isFetching } = useGetFlyoutMenuByIdQuery(
-    {
-      id: props.id,
-    },
-    { skip: !props.id }
-  );
+  const { data, isLoading, isError, isFetching, isUninitialized } =
+    useGetFlyoutMenuByIdQuery(
+      {
+        id: props.id,
+      },
+      { skip: !props.id }
+    );
 
   const Comp = variants[props?.variant as keyof typeof variants] as FC<any>;
 
@@ -34,7 +35,7 @@ export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
             <Comp
               {...data}
               {...popoverProps}
-              isLoading={isLoading || isFetching}
+              isLoading={isLoading || isFetching || isUninitialized}
             />
           </div>
         );

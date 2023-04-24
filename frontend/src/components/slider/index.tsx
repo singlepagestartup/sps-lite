@@ -25,7 +25,7 @@ export default function Slider(props: ISpsLiteBackendSlider) {
         ...slide,
         renderType: slide.media?.length
           ? parseMimeType(slide.media[0].mime)?.renderType
-          : `image` || `image`,
+          : "image" || "image",
       } as IExtendedSlide;
     });
   }, [slides]);

@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
 import { BACKEND_URL } from "~utils/envs";
-import Cards, { ICardProps, ICardSkeletonProps } from "..";
+import Cards, { ICardProps } from "..";
 import { IBackendReview } from "types/collection-types";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 
@@ -22,12 +22,13 @@ const cardsConfig = {
   emptyLength: 3,
   Comp: SimpleWithAvatarCard,
   SkeletonComp: SimpleWithAvatarCardSkeleton,
-  className: `grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8`,
+  className:
+    "grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8",
 };
 
 export const Simple: Story = {
   args: {
-    variant: `simple`,
+    variant: "simple",
     items: reviews,
     cardsConfig,
     showSkeletons: false,
@@ -51,23 +52,23 @@ function SimpleWithAvatarCard(props: ICardProps) {
           </div>
         ) : null}
       </div>
-      <div className={`flex-1 py-10`}>
+      <div className={"flex-1 py-10"}>
         <h3 className="font-medium text-gray-900">{item.name}</h3>
         <p>
           <time dateTime={item.createdAt}>
-            {dayjs(item.createdAt).format(`DD.MM.YYYY`)}
+            {dayjs(item.createdAt).format("DD.MM.YYYY")}
           </time>
         </p>
 
-        {typeof item.rating === `number` ? (
+        {typeof item.rating === "number" ? (
           <div className="mt-4 flex items-center">
             {[0, 1, 2, 3, 4].map((rating) => (
               <StarIcon
                 key={rating}
                 className={`h-5 w-5 flex-shrink-0 ${
                   item.rating && item.rating > rating
-                    ? `text-yellow-400`
-                    : `text-gray-300`
+                    ? "text-yellow-400"
+                    : "text-gray-300"
                 }`}
                 aria-hidden="true"
               />
@@ -86,29 +87,25 @@ function SimpleWithAvatarCard(props: ICardProps) {
   );
 }
 
-function SimpleWithAvatarCardSkeleton(props: ICardSkeletonProps) {
-  const { animationClassName } = props;
-
+function SimpleWithAvatarCardSkeleton() {
   return (
     <div className="w-full rounded-md overflow-hidden flex gap-3 p-5 drop-shadow bg-white">
-      <div
-        className={`w-[40px] h-[40px] rounded-full flex flex-shrink-0 ${animationClassName}`}
-      ></div>
+      <div className="w-[40px] h-[40px] rounded-full flex flex-shrink-0 skeleton"></div>
       <div className="w-full flex flex-col gap-2">
-        <div className={`h-4 w-4/12 ${animationClassName}`}></div>
-        <div className={`h-4 w-5/12 ${animationClassName}`}></div>
-        <div className={`my-2 flex items-center`}>
+        <div className="h-4 w-4/12 skeleton"></div>
+        <div className="h-4 w-5/12 skeleton"></div>
+        <div className="my-2 flex items-center">
           {[0, 1, 2, 3, 4].map((rating) => (
             <StarIcon
               key={rating}
-              className={`h-5 w-5 flex-shrink-0 text-gray-300`}
+              className="h-5 w-5 flex-shrink-0 text-gray-300"
               aria-hidden="true"
             />
           ))}
         </div>
-        <div className={`h-4 ${animationClassName}`}></div>
-        <div className={`h-4 ${animationClassName}`}></div>
-        <div className={`h-4 w-4/12 ${animationClassName}`}></div>
+        <div className="h-4 skeleton"></div>
+        <div className="h-4 skeleton"></div>
+        <div className="h-4 w-4/12 skeleton"></div>
       </div>
     </div>
   );

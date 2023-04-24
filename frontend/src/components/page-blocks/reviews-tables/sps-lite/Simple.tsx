@@ -12,36 +12,36 @@ const tableConfig = {
   columns: [
     {
       header: {
-        title: `Name`,
-        accessor: `name`,
+        title: "Name",
+        accessor: "name",
         Comp: HeaderCell,
-        widthClassName: `w-[30%]`,
+        widthClassName: "w-[30%]",
       },
       cell: {
         Comp: NameCell,
-        widthClassName: `w-[30%]`,
+        widthClassName: "w-[30%]",
       },
     },
     {
       header: {
-        title: `Title`,
-        accessor: `title`,
-        widthClassName: `w-[30%]`,
+        title: "Title",
+        accessor: "title",
+        widthClassName: "w-[30%]",
       },
       cell: {
         Comp: TitleCell,
-        widthClassName: `w-[30%]`,
+        widthClassName: "w-[30%]",
       },
     },
     {
       header: {
-        title: `SubTitle`,
-        accessor: `subtitle`,
-        widthClassName: `w-[40%]`,
+        title: "SubTitle",
+        accessor: "subtitle",
+        widthClassName: "w-[40%]",
       },
       cell: {
         Comp: SubTitleCell,
-        widthClassName: `w-[40%]`,
+        widthClassName: "w-[40%]",
       },
     },
   ],
@@ -49,7 +49,7 @@ const tableConfig = {
     Comp: DropdownRow,
     button: {
       Comp: DropdownCell,
-      widthClassName: `w-[5%]`,
+      widthClassName: "w-[5%]",
     },
   },
 };
@@ -100,12 +100,12 @@ function DropdownCell(props: IDropdownButtonProps) {
 
   return (
     <div
-      className={`h-5 w-5 rounded-full cursor-pointer`}
+      className={"h-5 w-5 rounded-full cursor-pointer"}
       onClick={() => setIsOpen((prev) => !prev)}
     >
       <ChevronDownIcon
         className={`w-5 h-5 transform duration-200 ${
-          isOpen ? `rotate-0` : `-rotate-90`
+          isOpen ? "rotate-0" : "-rotate-90"
         }`}
       />
     </div>
