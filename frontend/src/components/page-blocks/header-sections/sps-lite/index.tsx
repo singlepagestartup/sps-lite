@@ -3,7 +3,9 @@ import SimpleCentered from "./SimpleCentered";
 import { FC } from "react";
 
 export interface ISpsLiteHeaderSectionBlock
-  extends ISpsLiteBackendHeaderSectionBlock {}
+  extends ISpsLiteBackendHeaderSectionBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "simple-centered": SimpleCentered,

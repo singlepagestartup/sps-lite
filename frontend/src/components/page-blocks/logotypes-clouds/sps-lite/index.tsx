@@ -3,7 +3,9 @@ import SimpleWithHeading from "./SimpleWithHeading";
 import { FC } from "react";
 
 export interface ISpsLiteLogotypesCloudBlock
-  extends ISpsLiteBackendLogotypesCloudBlock {}
+  extends ISpsLiteBackendLogotypesCloudBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "simple-with-heading": SimpleWithHeading,

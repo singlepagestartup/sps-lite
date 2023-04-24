@@ -3,7 +3,9 @@ import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import { FC } from "react";
 
 export interface ISpsLiteIncentivesBlock
-  extends ISpsLiteBackendIncentivesBlock {}
+  extends ISpsLiteBackendIncentivesBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "four-column-with-illustrations": FourColumnWithIllustrations,

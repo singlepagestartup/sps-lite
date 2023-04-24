@@ -2,7 +2,9 @@ import { ISpsLiteBackendPricingsBlock } from "types/components/page-blocks/sps-l
 import TwoColumns from "./TwoColumns";
 import { FC } from "react";
 
-export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {}
+export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "two-columns": TwoColumns,

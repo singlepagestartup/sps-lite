@@ -3,7 +3,9 @@ import WithIcon from "./WithIcon";
 import { FC } from "react";
 
 export interface ISpsLiteFeaturesSectionBlock
-  extends ISpsLiteBackendFeaturesSectionBlock {}
+  extends ISpsLiteBackendFeaturesSectionBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "with-icon": WithIcon,

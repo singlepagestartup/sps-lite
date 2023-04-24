@@ -78,51 +78,45 @@ const getThemeFromBackend = async (props) => {
           });
         }
       }
+    }
+  }
 
-      const existingFonts = await fs.readdir(
-        path.join(__dirname, "./themes/fonts")
-      );
+  const existingFonts = await fs.readdir(
+    path.join(__dirname, "./themes/fonts")
+  );
 
-      if (!existingFonts.includes("Default-Regular.ttf")) {
-        await fs.copyFile(
-          path.join(
-            __dirname,
-            "./styles/fonts/Montserrat/Montserrat-Regular.ttf"
-          ),
-          path.join(__dirname, "./themes/fonts/Default-Regular.ttf")
-        );
-      }
+  if (!existingFonts.includes("Default-Regular.ttf")) {
+    await fs.copyFile(
+      path.join(__dirname, "./styles/fonts/Montserrat/Montserrat-Regular.ttf"),
+      path.join(__dirname, "./themes/fonts/Default-Regular.ttf")
+    );
+  }
 
-      if (!existingFonts.includes("Primary-Regular.ttf")) {
-        await fs.copyFile(
-          path.join(
-            __dirname,
-            "./styles/fonts/Montserrat/Montserrat-Regular.ttf"
-          ),
-          path.join(__dirname, "./themes/fonts/Primary-Regular.ttf")
-        );
-      }
+  if (!existingFonts.includes("Primary-Regular.ttf")) {
+    await fs.copyFile(
+      path.join(__dirname, "./styles/fonts/Montserrat/Montserrat-Regular.ttf"),
+      path.join(__dirname, "./themes/fonts/Primary-Regular.ttf")
+    );
+  }
 
-      for (const requiredFontVariant of requiredFontVariants) {
-        for (const requiredFontWeight of requiredFontWeights) {
-          for (const requiredFontStyle of requiredFontStyles) {
-            if (
-              !existingFonts.includes(
-                `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
-              )
-            ) {
-              await fs.copyFile(
-                path.join(
-                  __dirname,
-                  `./themes/fonts/${requiredFontVariant}-Regular.ttf`
-                ),
-                path.join(
-                  __dirname,
-                  `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
-                )
-              );
-            }
-          }
+  for (const requiredFontVariant of requiredFontVariants) {
+    for (const requiredFontWeight of requiredFontWeights) {
+      for (const requiredFontStyle of requiredFontStyles) {
+        if (
+          !existingFonts.includes(
+            `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
+          )
+        ) {
+          await fs.copyFile(
+            path.join(
+              __dirname,
+              `./themes/fonts/${requiredFontVariant}-Regular.ttf`
+            ),
+            path.join(
+              __dirname,
+              `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
+            )
+          );
         }
       }
     }

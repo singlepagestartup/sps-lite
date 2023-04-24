@@ -3,6 +3,7 @@ import Split from "./Split";
 import { FC } from "react";
 
 export interface ISpsHeroSectionBlock extends ISpsBackendHeroSectionBlock {
+  isLoading?: boolean;
   [key: string]: any;
 }
 

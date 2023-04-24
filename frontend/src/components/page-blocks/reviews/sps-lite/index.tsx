@@ -2,7 +2,9 @@ import { ISpsLiteBackendReviewsBlock } from "types/components/page-blocks/sps-li
 import SimpleWithAvatars from "./SimpleWithAvatars";
 import { FC } from "react";
 
-export interface ISpsLiteReviewsBlock extends ISpsLiteBackendReviewsBlock {}
+export interface ISpsLiteReviewsBlock extends ISpsLiteBackendReviewsBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "simple-with-avatars": SimpleWithAvatars,

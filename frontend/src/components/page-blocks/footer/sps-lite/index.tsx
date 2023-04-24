@@ -2,7 +2,9 @@ import { ISpsLiteBackendFooterBlock } from "types/components/page-blocks/sps-lit
 import { FC } from "react";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
 
-export interface ISpsLiteFooterBlock extends ISpsLiteBackendFooterBlock {}
+export interface ISpsLiteFooterBlock extends ISpsLiteBackendFooterBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "four-columns-with-company-mission": FourColumnsWithCompanyMission,

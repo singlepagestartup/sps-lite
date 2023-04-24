@@ -11,6 +11,19 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 const { getFileUrl } = nextUtils.api;
 
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
+  if (props.isLoading) {
+    return (
+      <div className="w-full items-center flex h-16 p-2 justify-between">
+        <div className="flex items-center">
+          <div className="w-32 h-10 bg-slate-100 animate-pulse rounded-md"></div>
+          <div className="w-32 lg:ml-6 h-6 bg-slate-100 animate-pulse rounded-md"></div>
+          <div className="w-32 lg:ml-6 h-6 bg-slate-100 animate-pulse rounded-md"></div>
+          <div className="w-32 lg:ml-6 h-6 bg-slate-100 animate-pulse rounded-md"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Disclosure as="div" className="w-full">
       {({ open }) => (

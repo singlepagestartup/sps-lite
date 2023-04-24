@@ -4,6 +4,7 @@ import { ISpsLiteBackendContactSectonBlock } from "types/components/page-blocks/
 
 export interface ISpsLiteContactSectonBlock
   extends ISpsLiteBackendContactSectonBlock {
+  isLoading?: boolean;
   [key: string]: any;
 }
 

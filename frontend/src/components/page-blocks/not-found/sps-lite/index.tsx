@@ -2,7 +2,9 @@ import { ISpsLiteBackendNotFoundBlock } from "types/components/page-blocks/sps-l
 import Simple from "./Simple";
 import { FC } from "react";
 
-export interface ISpsLiteNotFoundBlock extends ISpsLiteBackendNotFoundBlock {}
+export interface ISpsLiteNotFoundBlock extends ISpsLiteBackendNotFoundBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   simple: Simple,

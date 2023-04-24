@@ -11,7 +11,7 @@ export default function Simple(props: ISpsLiteModal) {
   const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
 
   return (
-    <Transition show={isOpen} as={`div`}>
+    <Transition show={isOpen} as={"div"}>
       <Dialog
         onClose={() => {
           setIsOpen(false);
@@ -46,7 +46,7 @@ export default function Simple(props: ISpsLiteModal) {
             <div className="fixed inset-0 overflow-y-scroll px-4 pt-4 pb-20 flex h-screen">
               <Dialog.Panel
                 className={`m-auto rounded bg-white ${
-                  dialogPanelClassName || `w-full`
+                  dialogPanelClassName || "w-full"
                 }`}
               >
                 <button
@@ -60,7 +60,11 @@ export default function Simple(props: ISpsLiteModal) {
                 >
                   <XMarkIcon className="w-6 text-gray-500" />
                 </button>
-                <PageBlocks pageBlocks={pageBlocks} setIsOpen={setIsOpen} />
+                <PageBlocks
+                  pageBlocks={pageBlocks}
+                  isLoading={props.isLoading}
+                  setIsOpen={setIsOpen}
+                />
               </Dialog.Panel>
             </div>
           ) : null}

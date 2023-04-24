@@ -2,7 +2,9 @@ import { ISpsLiteBackendSliderBlock } from "types/components/page-blocks/sps-lit
 import Simple from "./Simple";
 import { FC } from "react";
 
-export interface ISpsLiteSliderBlock extends ISpsLiteBackendSliderBlock {}
+export interface ISpsLiteSliderBlock extends ISpsLiteBackendSliderBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   simple: Simple,

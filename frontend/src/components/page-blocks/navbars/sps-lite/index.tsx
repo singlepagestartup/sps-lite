@@ -2,7 +2,9 @@ import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 import { FC } from "react";
 import { ISpsLiteBackendNavbarBlock } from "types/components/page-blocks/sps-lite";
 
-export interface ISpsLiteNavbarBlock extends ISpsLiteBackendNavbarBlock {}
+export interface ISpsLiteNavbarBlock extends ISpsLiteBackendNavbarBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "simple-links-on-left": SimpleLinksOnLeft,

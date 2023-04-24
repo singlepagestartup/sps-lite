@@ -3,7 +3,9 @@ import Simple from "./Simple";
 import { FC } from "react";
 
 export interface ISpsLiteReviewsTableBlock
-  extends ISpsLiteBackendReviewsTableBlock {}
+  extends ISpsLiteBackendReviewsTableBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   simple: Simple,

@@ -2,7 +2,9 @@ import { FC } from "react";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
 import { ISpsLiteBackendFaqBlock } from "types/components/page-blocks/sps-lite";
 
-export interface ISpsLiteFaqBlock extends ISpsLiteBackendFaqBlock {}
+export interface ISpsLiteFaqBlock extends ISpsLiteBackendFaqBlock {
+  isLoading?: boolean;
+}
 
 export const variants = {
   "two-columns-with-centered-introduction": TwoColumnsWithCenteredIntroduction,

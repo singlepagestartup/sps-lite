@@ -6,6 +6,7 @@ import { pageBlockComponents } from "~utils/api/components";
 
 export interface IPageBlockBlock {
   pageBlocks?: IBackendPageBlock[] | null;
+  isLoading?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -25,6 +26,7 @@ export default function PageBlocks(props: IPageBlockBlock) {
               <PageBlock
                 pageProps={props}
                 {...pageBlock}
+                isLoading={props.isLoading}
                 key={`${index}-${key}`}
               />
             );
