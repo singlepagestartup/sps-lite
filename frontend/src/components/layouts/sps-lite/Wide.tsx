@@ -30,8 +30,10 @@ export default function Wide(props: ISpsLiteLayout) {
         >
           {props?.sidebar ? (
             <div
-              className={`w-full flex ${
-                props.sidebar.side === "left" ? "flex-row" : "flex-row-reverse"
+              className={`w-full flex flex-col ${
+                props.sidebar.side === "left"
+                  ? "lg:flex-row"
+                  : "lg:flex-row-reverse"
               }`}
             >
               <div
