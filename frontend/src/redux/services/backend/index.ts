@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import qs from "qs";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
-import utils from "@rogwild/next-utils";
 import { BACKEND_URL } from "~utils/envs";
-const { SpringNotification } = utils.components;
-const { createNotification } = SpringNotification;
+import { createNotification } from "~components/notifications";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${BACKEND_URL}/api`,

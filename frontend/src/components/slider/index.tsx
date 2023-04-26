@@ -1,11 +1,10 @@
 "use client";
 
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
-import nextUtils from "@rogwild/next-utils";
-const { parseMimeType } = nextUtils.formatters;
 import { variants as spsLiteVariants } from "./sps-lite";
 import { ISpsLiteBackendSlider } from "types/collection-types/sps-lite";
 import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
+import parseMimeType from "~utils/formatters/parse-mime-type";
 
 const variants = {
   ...spsLiteVariants,

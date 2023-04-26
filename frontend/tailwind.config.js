@@ -16,8 +16,6 @@ const config = {
     "./src/**/**/*.{html,js,jsx,tsx}",
     "./pages/*.{html,js,jsx,tsx}",
     "./pages/**/*.{html,js,jsx,tsx}",
-    "./node_modules/@rogwild/next-utils/src/components/**/*.{html,js,jsx}",
-    "./node_modules/@rogwild/next-utils/dist/index.js",
   ],
   safelist: [
     { pattern: /w-(1|2|3|4|5|6|7|8|9|10|11)\/12/ },

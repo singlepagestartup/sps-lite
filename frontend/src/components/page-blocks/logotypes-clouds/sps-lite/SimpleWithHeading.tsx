@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
-import { BACKEND_URL } from "~utils/envs";
 import Link from "next/link";
 import { ISpsLiteLogotypesCloudBlock } from ".";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function SimpleWithHeading(props: ISpsLiteLogotypesCloudBlock) {
   return (
@@ -32,13 +30,13 @@ export default function SimpleWithHeading(props: ISpsLiteLogotypesCloudBlock) {
                     className="flex flex-shrink-0 flex-grow justify-center lg:flex-grow-0"
                   >
                     <Link
-                      href={logotype?.url || ``}
+                      href={logotype?.url || ""}
                       className="relative h-12 w-full"
                     >
                       {logotype.media.length ? (
                         <Image
                           fill={true}
-                          src={getFileUrl(logotype.media[0], { BACKEND_URL })}
+                          src={getFileUrl(logotype.media[0])}
                           alt="Tuple"
                         />
                       ) : null}

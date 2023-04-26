@@ -1,13 +1,11 @@
 "use client";
 
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { BACKEND_URL } from "~utils/envs";
 import { ISpsHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function Split(props: ISpsHeroSectionBlock) {
   const additionalAttributes = useMemo(() => {
@@ -38,9 +36,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
                   <div className="mb-6">
                     {props.logotype?.media?.length ? (
                       <Image
-                        src={getFileUrl(props.logotype.media[0], {
-                          BACKEND_URL,
-                        })}
+                        src={getFileUrl(props.logotype.media[0])}
                         className="object-contain"
                         width={150}
                         height={50}
@@ -69,7 +65,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
             <div className="relative h-full w-full object-cover object-center">
               {props.media?.length ? (
                 <Image
-                  src={getFileUrl(props.media[0], { BACKEND_URL })}
+                  src={getFileUrl(props.media[0])}
                   alt=""
                   fill={true}
                   className="object-cover object-center"

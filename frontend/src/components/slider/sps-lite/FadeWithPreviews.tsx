@@ -11,14 +11,12 @@ import React, {
   useMemo,
 } from "react";
 import { animated, useTransition, useSpringRef } from "@react-spring/web";
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
-import { BACKEND_URL } from "~utils/envs";
 import { IExtendedSlide, ISlider } from "..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import Buttons from "~components/elements/buttons";
 import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
+import getFileUrl from "~utils/api/get-file-url";
 
 interface INavigationButton {
   isNext?: boolean;
@@ -91,7 +89,7 @@ export default function FadeWithPreviews(props: ISlider) {
 
   return (
     <>
-      <div className={`${className || ``}`}>
+      <div className={`${className || ""}`}>
         <FullScreen
           isOpen={fullScreen}
           setIsOpen={setFullScreen}
@@ -100,7 +98,7 @@ export default function FadeWithPreviews(props: ISlider) {
           setActiveSlide={setActiveSlide}
         />
         <div
-          className={`slider__fade_with_previews ${aspectRatioClassName || ``}`}
+          className={`slider__fade_with_previews ${aspectRatioClassName || ""}`}
         >
           <div className="slider">
             <div className="slider__container" ref={containerRef}>
@@ -179,7 +177,7 @@ function DefaultSlideComponent({
       <div className="slide__container">
         {slide.media?.length ? (
           <Image
-            src={getFileUrl(slide.media[0], { BACKEND_URL })}
+            src={getFileUrl(slide.media[0])}
             alt=""
             fill={true}
             className="background"
@@ -223,7 +221,7 @@ function DefaultPreviewsComponent({
           >
             {slide.media?.length ? (
               <Image
-                src={getFileUrl(slide.media[0], { BACKEND_URL })}
+                src={getFileUrl(slide.media[0])}
                 alt=""
                 fill={true}
                 className="image"
@@ -320,7 +318,7 @@ function FullScreen(props: {
           />
         </Transition.Child>
         <Transition.Child
-          as={`div`}
+          as={"div"}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -338,7 +336,7 @@ function FullScreen(props: {
                 showFullScreen={false}
                 showPreviews={true}
                 showBackdrop={false}
-                aspectRatioClassName={``}
+                aspectRatioClassName={""}
               />
             </Dialog.Panel>
           </div>

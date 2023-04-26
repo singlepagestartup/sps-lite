@@ -2,15 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import nextUtils from "@rogwild/next-utils";
-import { BACKEND_URL } from "~utils/envs";
 import { ISpsLiteNavbarBlock } from ".";
 import Buttons from "~components/elements/buttons";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-const { getFileUrl } = nextUtils.api;
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   if (props.isLoading) {
@@ -62,9 +60,7 @@ function DisclosureInner({
                   {props.logotype.url ? (
                     <Link href="/" className="relative w-32 h-8">
                       <Image
-                        src={getFileUrl(props.logotype.media[0], {
-                          BACKEND_URL,
-                        })}
+                        src={getFileUrl(props.logotype.media[0])}
                         alt=""
                         className="object-contain object-left"
                         fill={true}
@@ -73,9 +69,7 @@ function DisclosureInner({
                   ) : (
                     <div className="relative w-32 h-8">
                       <Image
-                        src={getFileUrl(props.logotype.media[0], {
-                          BACKEND_URL,
-                        })}
+                        src={getFileUrl(props.logotype.media[0])}
                         alt=""
                         className="object-contain object-left"
                         fill={true}

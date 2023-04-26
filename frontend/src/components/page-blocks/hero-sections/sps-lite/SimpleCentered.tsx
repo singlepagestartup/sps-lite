@@ -1,11 +1,9 @@
 "use client";
 
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
-import { BACKEND_URL } from "~utils/envs";
 import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   if (props.isLoading) {
@@ -26,7 +24,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.background ? (
         <Image
-          src={getFileUrl(props.background, { BACKEND_URL })}
+          src={getFileUrl(props.background)}
           alt=""
           fill={true}
           className="object-cover object-center"
@@ -53,7 +51,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
       {props.media?.length ? (
         <div className="w-full relative aspect-w-4 aspect-h-2">
           <Image
-            src={getFileUrl(props.media[0], { BACKEND_URL })}
+            src={getFileUrl(props.media[0])}
             alt=""
             fill={true}
             className="object-cover"

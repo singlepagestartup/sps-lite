@@ -1,9 +1,6 @@
 "use client";
 
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
-import { BACKEND_URL } from "~utils/envs";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
@@ -12,6 +9,7 @@ import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import Cards, { ICardProps } from "~components/cards";
 import { IBackendReview } from "types/collection-types";
 import { ISpsLiteReviewsBlock } from ".";
+import getFileUrl from "~utils/api/get-file-url";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -66,7 +64,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
         {item.media?.length ? (
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100">
             <Image
-              src={getFileUrl(item.media[0], { BACKEND_URL })}
+              src={getFileUrl(item.media[0])}
               alt=""
               fill={true}
               className="object-cover object-center"

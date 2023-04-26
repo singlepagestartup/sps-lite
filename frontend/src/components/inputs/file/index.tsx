@@ -1,13 +1,11 @@
 import { CloudArrowUpIcon, TrashIcon } from "@heroicons/react/24/outline";
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
-import { BACKEND_URL } from "~utils/envs";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -22,7 +20,7 @@ export default function FileInput(props: IInputProps) {
     initialValue,
     ButtonComp = DefaultButton,
     index,
-    type = `file`,
+    type = "file",
   } = props;
 
   const translate = useTranslationsContext();
@@ -34,7 +32,7 @@ export default function FileInput(props: IInputProps) {
 
   const ctxProps = useFormContext();
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const {
@@ -49,7 +47,7 @@ export default function FileInput(props: IInputProps) {
     defaultValue: null,
   });
 
-  const [value, setValue] = useState(field.value || ``);
+  const [value, setValue] = useState(field.value || "");
 
   useEffect(() => {
     if (!passedVal && value && localFiles?.length) {
@@ -87,9 +85,9 @@ export default function FileInput(props: IInputProps) {
       addFilesToCards(filesArray);
     }
 
-    const uploadFiles = ctxProps.getValues(`files`);
+    const uploadFiles = ctxProps.getValues("files");
 
-    ctxProps.setValue(`files`, {
+    ctxProps.setValue("files", {
       ...uploadFiles,
       [name]: filesArray,
     });
@@ -108,7 +106,7 @@ export default function FileInput(props: IInputProps) {
 
     if (Array.isArray(initialValue)) {
       for (const serverFile of initialValue) {
-        const fileUrl = getFileUrl(serverFile, { BACKEND_URL });
+        const fileUrl = getFileUrl(serverFile);
 
         const newFile = new File(
           [await (await fetch(fileUrl)).blob()],
@@ -121,7 +119,7 @@ export default function FileInput(props: IInputProps) {
         dataTransfer.items.add(newFile);
       }
     } else {
-      const fileUrl = getFileUrl(initialValue, { BACKEND_URL });
+      const fileUrl = getFileUrl(initialValue);
 
       const newFile = new File(
         [await (await fetch(fileUrl)).blob()],
@@ -132,7 +130,7 @@ export default function FileInput(props: IInputProps) {
     }
 
     fileInputRef.current.files = dataTransfer.files;
-    const evt = new Event(`change`);
+    const evt = new Event("change");
     // console.log(`🚀 ~ setInitFiles ~ fileInputRef`, fileInputRef);
     fileInputRef.current.dispatchEvent(evt);
     onFileInputChange(evt);
@@ -167,7 +165,7 @@ export default function FileInput(props: IInputProps) {
 
     fileInputRef.current.files = newFiles.files;
 
-    const evt = new Event(`change`);
+    const evt = new Event("change");
     fileInputRef.current.dispatchEvent(evt);
     onFileInputChange(evt);
   }
@@ -196,7 +194,7 @@ export default function FileInput(props: IInputProps) {
 
     fileInputRef.current.files = newFiles.files;
 
-    const evt = new Event(`change`);
+    const evt = new Event("change");
     fileInputRef.current.dispatchEvent(evt);
     onFileInputChange(evt);
   }
@@ -205,8 +203,8 @@ export default function FileInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label>
-          {` `}
-          {typeof translate === `function` && label ? translate(label) : label}
+          {" "}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div className="files__input">
@@ -218,7 +216,7 @@ export default function FileInput(props: IInputProps) {
           className="input"
         >
           <input
-            type={type || `file`}
+            type={type || "file"}
             id={htmlNodeId}
             onChange={onFileInputChangeProxy}
             onBlur={onBlur}
@@ -245,7 +243,7 @@ export default function FileInput(props: IInputProps) {
       {inputError?.message ? (
         <div className="inputs__error">
           <p>
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>
@@ -283,7 +281,7 @@ function FilesArray({
     <div className="files__array">
       {files?.map((file, index) => {
         const url = URL.createObjectURL(file);
-        const isImage = file.type.includes(`image`);
+        const isImage = file.type.includes("image");
 
         return (
           <div key={index} className="file">

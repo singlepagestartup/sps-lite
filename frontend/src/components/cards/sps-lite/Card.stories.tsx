@@ -1,14 +1,12 @@
-import utils from "@rogwild/next-utils";
-const { getImageUrl } = utils.api;
 import ReactMarkdown from "react-markdown";
 import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
-import { BACKEND_URL } from "~utils/envs";
 import Cards, { ICardProps } from "..";
 import { IBackendReview } from "types/collection-types";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
+import getFileUrl from "~utils/api/get-file-url";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 
@@ -44,7 +42,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
         {item.media?.length ? (
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100">
             <Image
-              src={getImageUrl(item.media[0], { BACKEND_URL })}
+              src={getFileUrl(item.media[0])}
               alt=""
               fill={true}
               className="object-cover object-center"

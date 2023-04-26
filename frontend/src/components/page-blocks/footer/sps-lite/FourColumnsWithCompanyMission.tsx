@@ -1,12 +1,10 @@
 "use client";
 
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { BACKEND_URL } from "~utils/envs";
 import ButtonsArrays from "~components/elements/buttons-arrays";
 import { ISpsLiteFooterBlock } from ".";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function FourColumnsWithCompanyMission(
   props: ISpsLiteFooterBlock
@@ -52,7 +50,7 @@ export default function FourColumnsWithCompanyMission(
           <div className="space-y-8 xl:col-span-1">
             {props.logotype?.media?.length ? (
               <Image
-                src={getFileUrl(props.logotype.media[0], { BACKEND_URL })}
+                src={getFileUrl(props.logotype.media[0])}
                 alt=""
                 className="object-contain object-left"
                 width={200}

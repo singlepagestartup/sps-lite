@@ -1,11 +1,9 @@
 "use client";
 
-import nextUtils from "@rogwild/next-utils";
-const { getFileUrl } = nextUtils.api;
 import Image from "next/image";
-import { BACKEND_URL } from "~utils/envs";
 import { useMemo } from "react";
 import { ISpsLiteFeaturesSectionBlock } from ".";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
   const additionalAttributes = useMemo(() => {
@@ -40,7 +38,7 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
               <dt>
                 {feature?.media?.length ? (
                   <Image
-                    src={getFileUrl(feature.media[0], { BACKEND_URL })}
+                    src={getFileUrl(feature.media[0])}
                     height={100}
                     width={100}
                     alt=""
