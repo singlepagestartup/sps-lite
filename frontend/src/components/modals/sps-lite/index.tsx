@@ -5,7 +5,7 @@ import { ISpsLiteBackendModal } from "types/collection-types/sps-lite";
 export interface ISpsLiteModal extends Omit<ISpsLiteBackendModal, "id"> {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

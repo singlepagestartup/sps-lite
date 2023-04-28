@@ -18,7 +18,7 @@ export default function Simple(props: ISpsLiteFlyoutMenu) {
         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-2 bg-white">
           <PageBlocks
             pageBlocks={props.pageBlocks}
-            isLoading={props.isLoading}
+            showSkeletons={props.showSkeletons}
           />
         </div>
       </Popover.Panel>

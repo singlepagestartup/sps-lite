@@ -7,7 +7,7 @@ import Boxed from "./Boxed";
 
 export interface ISpsLiteNavbar extends ISpsLiteBackendNavbar {
   topbar?: ISpsLiteBackendTopbar | null;
-  isLoading?: boolean;
+  showSkeletons?: boolean;
   topbarRef: any;
 }
 

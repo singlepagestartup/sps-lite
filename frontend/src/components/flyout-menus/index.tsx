@@ -35,7 +35,7 @@ export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
             <Comp
               {...data}
               {...popoverProps}
-              isLoading={isLoading || isFetching || isUninitialized}
+              showSkeletons={isLoading || isFetching || isUninitialized}
             />
           </div>
         );

@@ -3,7 +3,7 @@ import { FC } from "react";
 import { ISpsLiteBackendTopbar } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteTopbar extends ISpsLiteBackendTopbar {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
   topbarRef?: any;
 }
 

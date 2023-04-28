@@ -66,7 +66,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
       {...modalProps}
       isOpen={isOpen}
       setIsOpen={setIsOpen}
-      isLoading={isLoading || isFetching}
+      showSkeletons={isLoading || isFetching}
     />
   );
 }

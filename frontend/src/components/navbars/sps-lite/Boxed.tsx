@@ -19,7 +19,7 @@ export default function Boxed(props: ISpsLiteNavbar) {
         <div className="w-full mx-auto max-w-7xl">
           <PageBlocks
             pageBlocks={props.pageBlocks}
-            isLoading={props.isLoading}
+            showSkeletons={props.showSkeletons}
           />
         </div>
       </nav>

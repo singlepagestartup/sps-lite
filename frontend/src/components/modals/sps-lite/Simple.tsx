@@ -62,7 +62,7 @@ export default function Simple(props: ISpsLiteModal) {
                 </button>
                 <PageBlocks
                   pageBlocks={pageBlocks}
-                  isLoading={props.isLoading}
+                  showSkeletons={props.showSkeletons}
                   setIsOpen={setIsOpen}
                 />
               </Dialog.Panel>

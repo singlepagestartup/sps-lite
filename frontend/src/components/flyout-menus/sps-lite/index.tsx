@@ -4,7 +4,7 @@ import Simple from "./Simple";
 
 export interface ISpsLiteFlyoutMenu extends ISpsLiteBackendFlyoutMenu {
   children: ReactNode;
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

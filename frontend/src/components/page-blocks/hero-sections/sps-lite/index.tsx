@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export interface ISpsLiteHeroSectionBlock
   extends ISpsLiteBackendHeroSectionBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
   [key: string]: any;
 }
 

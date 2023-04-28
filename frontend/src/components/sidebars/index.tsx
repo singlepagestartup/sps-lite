@@ -22,7 +22,7 @@ export default function Sidebars<T extends ISpsLiteSidebar>(props: T) {
     <Comp
       {...props}
       {...data}
-      isLoading={isLoading || isFetching || isUninitialized}
+      showSkeletons={isLoading || isFetching || isUninitialized}
     />
   );
 }

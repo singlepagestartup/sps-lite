@@ -3,7 +3,7 @@ import OneQuarter from "./OneQuarter";
 import { ISpsLiteBackendSidebar } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteSidebar extends ISpsLiteBackendSidebar {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

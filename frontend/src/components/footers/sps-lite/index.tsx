@@ -3,7 +3,7 @@ import { ISpsLiteBackendFooter } from "types/collection-types/sps-lite";
 import Boxed from "./Boxed";
 
 export interface ISpsLiteFooter extends ISpsLiteBackendFooter {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

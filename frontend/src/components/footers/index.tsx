@@ -22,7 +22,7 @@ export default function Footers<T extends ISpsLiteFooter>(props: T) {
     <Comp
       {...props}
       {...data}
-      isLoading={isLoading || isFetching || isUninitialized}
+      showSkeletons={isLoading || isFetching || isUninitialized}
     />
   );
 }
