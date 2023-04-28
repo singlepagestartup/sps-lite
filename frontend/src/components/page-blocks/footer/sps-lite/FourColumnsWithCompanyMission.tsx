@@ -46,8 +46,8 @@ export default function FourColumnsWithCompanyMission(
         Footer
       </h2>
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-        <div className="flex flex-col lg:flex-row">
-          <div className="space-y-8 xl:col-span-1">
+        <div className="flex flex-col gap-4 lg:flex-row">
+          <div className="flex flex-col gap-4 w-full lg:w-3/12">
             {props.logotype?.media?.length ? (
               <Image
                 src={getFileUrl(props.logotype.media[0])}
@@ -57,26 +57,30 @@ export default function FourColumnsWithCompanyMission(
                 height={200}
               />
             ) : null}
-            <div className="max-w-xs">
+            <div className="lg:max-w-xs">
               {props.description ? (
                 <ReactMarkdown className="text-xs text-gray-300">
                   {props.description}
                 </ReactMarkdown>
               ) : null}
             </div>
-            <div className="flex space-x-6">
+            <div className="w-full flex gap-4">
               {props.extraButtonsArrays?.map((buttonsArray, index) => {
                 return <ButtonsArrays key={index} {...buttonsArray} />;
               })}
             </div>
           </div>
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 xl:col-span-2 xl:mt-0 lg:ml-auto">
+          <div className="lg:mt-12 flex lg:justify-end w-full lg:w-9/12 gap-4">
             {props.buttonsArrays?.map((buttonsArray, index) => {
-              return <ButtonsArrays key={index} {...buttonsArray} />;
+              return (
+                <div key={index} className="w-6/12 lg:w-3/12">
+                  <ButtonsArrays {...buttonsArray} />
+                </div>
+              );
             })}
           </div>
         </div>
-        <div className="mt-12 border-t border-gray-200 pt-8 flex flex-row items-center justify-between">
+        <div className="mt-8 lg:mt-12 border-t border-gray-200 pt-4 lg:pt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           {props.copyrights ? (
             <ReactMarkdown className="text-sm text-gray-500">
               {props.copyrights}

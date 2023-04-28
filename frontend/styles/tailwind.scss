@@ -44,6 +44,10 @@ button:focus {
 
   .button-text {
     @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
+
+    .icon__container {
+      @apply w-10 h-10;
+    }
   }
 
   .slide__over__right_side_half_width {

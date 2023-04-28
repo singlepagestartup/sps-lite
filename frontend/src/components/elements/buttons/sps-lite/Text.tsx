@@ -3,6 +3,8 @@ import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
 import FlyoutMenus from "~components/flyout-menus";
 import Buttons from "..";
+import getFileUrl from "~utils/api/get-file-url";
+import Image from "next/image";
 
 export default function Secondary(props: ISpsLiteButton) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
@@ -40,6 +42,16 @@ export default function Secondary(props: ISpsLiteButton) {
           aria-selected={isActive}
           className="button-text"
         >
+          {props.media?.length ? (
+            <div className="icon__container">
+              <Image
+                src={getFileUrl(props.media[0])}
+                alt=""
+                className="object-contain object-center"
+                fill={true}
+              />
+            </div>
+          ) : null}
           {props.title}
         </Link>
       </div>

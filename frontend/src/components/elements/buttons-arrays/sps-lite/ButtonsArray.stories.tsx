@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import ButtonsArrays from ".";
-import { spsLiteBackendButtonsArraySimple } from "~mocks/components/elements/sps-lite";
+import { spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary } from "~mocks/components/elements/sps-lite";
 
 const meta = {
   component: ButtonsArrays,
@@ -17,5 +17,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
-  args: spsLiteBackendButtonsArraySimple,
+  args: spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary,
 };

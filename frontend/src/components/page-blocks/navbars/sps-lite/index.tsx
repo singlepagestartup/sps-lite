@@ -3,7 +3,7 @@ import { FC } from "react";
 import { ISpsLiteBackendNavbarBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISpsLiteNavbarBlock extends ISpsLiteBackendNavbarBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

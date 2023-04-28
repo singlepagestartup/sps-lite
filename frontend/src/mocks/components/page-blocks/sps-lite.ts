@@ -21,9 +21,11 @@ import {
 } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteBackendButtonSecondary,
-  spsLiteBackendButtonSecondaryWithFlyoutMenu,
   spsLiteBackendButtonText,
-  spsLiteBackendButtonsArraySimple,
+  spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary,
+  spsLiteBackendButtonsArrayColumnWithTitleButtonsText,
+  spsLiteBackendButtonsArrayRowButtonsText,
+  spsLiteBackendButtonsArrayRowButtonsTextMedia,
   spsLiteBackendFaq,
   spsLiteBackendFeature,
   spsLiteBackendLogotype,
@@ -53,7 +55,9 @@ export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSe
     anchor: "anchor",
     description:
       "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
-    buttonsArrays: [{ ...spsLiteBackendButtonsArraySimple }],
+    buttonsArrays: [
+      { ...spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary },
+    ],
   };
 
 export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBackendCtaSectionBlock =
@@ -197,15 +201,12 @@ export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
   description:
     "Create your startup in a few hours and gradually step-by-step expand the functionality. Finalize it to a complete product without wasting time on developing product from scratch.",
   buttonsArrays: [
-    { ...spsLiteBackendButtonsArraySimple },
-    { ...spsLiteBackendButtonsArraySimple },
+    { ...spsLiteBackendButtonsArrayColumnWithTitleButtonsText },
+    { ...spsLiteBackendButtonsArrayColumnWithTitleButtonsText },
   ],
-  additionalButtonsArrays: [
-    { ...spsLiteBackendButtonsArraySimple },
-    { ...spsLiteBackendButtonsArraySimple },
-  ],
+  additionalButtonsArrays: [{ ...spsLiteBackendButtonsArrayRowButtonsText }],
   extraButtonsArrays: [
-    { ...spsLiteBackendButtonsArraySimple },
-    { ...spsLiteBackendButtonsArraySimple },
+    { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
+    { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
   ],
 };

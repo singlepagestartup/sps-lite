@@ -11,7 +11,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import getFileUrl from "~utils/api/get-file-url";
 
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
-  if (props.isLoading) {
+  if (props.showSkeletons) {
     return (
       <div className="w-full items-center flex h-16 p-2 justify-between">
         <div className="w-full flex items-center justify-between lg:justify-start">

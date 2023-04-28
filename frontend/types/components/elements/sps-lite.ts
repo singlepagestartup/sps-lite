@@ -3,8 +3,8 @@ import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sp
 
 export interface ISpsLiteBackendButton {
   id: number;
-  __component: `elements.button`;
-  variant: `text` | `primary` | `secondary`;
+  __component: "elements.button";
+  variant: "text" | "primary" | "secondary";
   title: string | null;
   url: string | null;
   description: string | null;
@@ -17,8 +17,8 @@ export interface ISpsLiteBackendButton {
 
 export interface ISpsLiteBackendButtonsArray {
   id: number;
-  __component: `elements.buttons-array`;
-  variant: `simple`;
+  __component: "elements.buttons-array";
+  variant: "column-with-title" | "row";
   title: string | null;
   buttons: ISpsLiteBackendButton[];
   description: string | null;
@@ -30,14 +30,14 @@ export interface ISpsLiteBackendButtonsArray {
 
 export interface ISpsLiteBackendFaq {
   id: number;
-  __component: `elements.faq`;
+  __component: "elements.faq";
   title: string | null;
   description: string | null;
 }
 
 export interface ISpsLiteBackendFeature {
   id: number;
-  __component: `elements.feature`;
+  __component: "elements.feature";
   title: string | null;
   description: string | null;
   subtitle: string | null;
@@ -47,15 +47,15 @@ export interface ISpsLiteBackendFeature {
 
 export interface ISpsLiteBackendInputOption {
   id: number;
-  __component: `elements.input-option`;
+  __component: "elements.input-option";
   title: string | null;
   description: string | null;
 }
 
 export interface ISpsLiteBackendInput {
   id: number;
-  __component: `elements.input`;
-  component: `text` | `listbox` | `radio-group` | `switch` | `file`;
+  __component: "elements.input";
+  component: "text" | "listbox" | "radio-group" | "switch" | "file";
   placeholder: string | null;
   isRequired: boolean;
   value: string | null;
@@ -63,13 +63,13 @@ export interface ISpsLiteBackendInput {
   options?: ISpsLiteBackendInputOption[];
   label: string | null;
   className: string | null;
-  type: `text` | `textarea` | `file` | `date` | null;
+  type: "text" | "textarea" | "file" | "date" | null;
   multiple: boolean | null;
 }
 
 export interface ISpsLiteBackendLogotype {
   id: number;
-  __component: `elements.logotype`;
+  __component: "elements.logotype";
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   url: string | null;
@@ -78,7 +78,7 @@ export interface ISpsLiteBackendLogotype {
 
 export interface ISpsLiteBackendSlide {
   id: number;
-  __component: `elements.slide`;
+  __component: "elements.slide";
   buttons?: any[];
   title: string | null;
   subtitle: string | null;
