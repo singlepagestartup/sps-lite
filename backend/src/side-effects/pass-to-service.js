@@ -1,4 +1,3 @@
-const strapiUtils = require('@rogwild/strapi-utils');
 const { google } = require('googleapis');
 
 async function getGoogleSheetsService() {

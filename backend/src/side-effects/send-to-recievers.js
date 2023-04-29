@@ -1,4 +1,4 @@
-const strapiUtils = require('@rogwild/strapi-utils');
+const createDocumentFromTemplate = require('../utils/create-document-from-template');
 
 async function sendToRecievers({ event, sideEffect, payload }) {
     const { result } = event;
@@ -6,7 +6,7 @@ async function sendToRecievers({ event, sideEffect, payload }) {
     if (sideEffect.provider === 'email') {
         const emailSettings = strapi.config.get('plugin.email');
 
-        const template = await strapiUtils.api.createDocumentFromTemplate({
+        const template = await createDocumentFromTemplate({
             uid: payload.uid,
             params: payload,
         });

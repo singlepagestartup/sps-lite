@@ -38,6 +38,18 @@ module.exports = ({ env }) => {
 };
 
 const emailProviders = {
+    'amazon-ses': (env) => ({
+        provider: 'amazon-ses',
+        providerOptions: {
+            key: env('AWS_SES_KEY'),
+            secret: env('AWS_SES_SECRET'),
+            amazon: env('AWS_SES_HOST'),
+        },
+        settings: {
+            defaultFrom: env('AWS_SES_DEFAULT_FROM'),
+            defaultReplyTo: env('AWS_SES_DEFAULT_REPLY_TO'),
+        },
+    }),
     mailtrap: (env) => ({
         provider: 'mailtrap',
         providerOptions: {

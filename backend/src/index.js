@@ -1,13 +1,15 @@
 'use strict';
 const strapiUtils = require('@rogwild/strapi-utils');
 const path = require('path');
+const customizeCoreStrapi = require('./utils/bootstrap/customize-core-strapi');
+const setPermissions = require('./utils/bootstrap/set-permissions');
 
 module.exports = {
     register(/*{ strapi }*/) {},
 
     async bootstrap({ strapi }) {
-        await strapiUtils.utils.customizeCoreStrapi({ strapi });
-        await strapiUtils.utils.setPermissions();
+        customizeCoreStrapi({ strapi });
+        await setPermissions();
 
         if (process.env.SEED_ENTITES) {
             try {

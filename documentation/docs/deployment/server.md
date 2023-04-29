@@ -151,32 +151,10 @@ sudo usermod -aG docker code
 
 Теперь мы можем работать с **Docker** без вызова `sudo` при использовании пользователя `code`.
 
-## Установка Docker Compose
-
-**Docker Compose** позволяет запускать контейнеры _Docker_ на основе `.yaml` файлов, как это происходило при локальной разработке. Только на локальном компьютере **Docker Compose** сразу установлен в **Docker**, а на сервере необходимо его настроить отдельно.
-
-Мы проверим текущую версию и при необходимости обновим ее с помощью следующей команды:
+Установка Docker Compose с помощью следующей команды:
 
 ```bash
-sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-```
-
-После этого мы настроим разрешения:
-
-```bash
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-Затем мы проверим, что установка прошла успешно, с помощью проверки версии:
-
-```bash
-docker-compose --version
-```
-
-В результате должна быть выведена установленная нами версия:
-
-```bash
-docker-compose version 1.21.2, build a133471
+sudo apt install docker-compose-plugin
 ```
 
 Теперь сервер настроен и мы можем подключиться от имени пользователя `code` и настроить **Docker Swarm** для запуска проектов.

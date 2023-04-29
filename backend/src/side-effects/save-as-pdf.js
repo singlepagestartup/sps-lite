@@ -1,6 +1,6 @@
-const strapiUtils = require('@rogwild/strapi-utils');
 const { Readable } = require('stream');
 const { google } = require('googleapis');
+const createDocumentFromTemplate = require('../utils/create-document-from-template');
 
 async function saveAsPdf({ event, sideEffect, payload, templateConfig }) {
     const { result } = event;
@@ -15,7 +15,7 @@ async function saveAsPdf({ event, sideEffect, payload, templateConfig }) {
         template.uid = payload.uid;
     }
 
-    const pdfBuffer = await strapiUtils.api.createDocumentFromTemplate({
+    const pdfBuffer = await createDocumentFromTemplate({
         ...template,
         params: payload,
         format: 'pdf',
