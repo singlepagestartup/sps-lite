@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 const worker = setupWorker(
   rest.post(`${BACKEND_URL}/api/form-requests`, (req, res, ctx) => {
     return res(ctx.json({}));
-  })
+  }),
 );
 
 export const SimpleCentered: Story = {

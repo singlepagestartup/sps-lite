@@ -13,7 +13,7 @@ export async function generateStaticParams() {
     params: { locale: "all", pagination: { limit: -1 } },
   });
 
-  let paths =
+  const paths =
     pages?.map((page: IBackendPage) => {
       const routeElements = page.url
         .split("/")

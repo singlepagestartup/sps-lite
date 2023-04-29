@@ -17,7 +17,7 @@ const baseQuery = fetchBaseQuery({
     if (token) {
       headers.set(
         "Authorization",
-        token.startsWith("Bearer ") ? token : `Bearer ${token}`
+        token.startsWith("Bearer ") ? token : `Bearer ${token}`,
       );
     }
 

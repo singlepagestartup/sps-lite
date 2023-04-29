@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ITablesBlock } from "..";
 import Simple from "./Simple";
 
-export interface ISpsLiteTablesBlock extends ITablesBlock {}
+export type ISpsLiteTablesBlock = ITablesBlock;
 
 export const variants = {
   simple: Simple,

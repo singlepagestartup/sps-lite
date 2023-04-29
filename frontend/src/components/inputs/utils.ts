@@ -9,7 +9,7 @@ interface IFormError {
 
 export function getInputErrors(errors: FieldErrors<FieldValues>) {
   return (field: string) => {
-    const errorPath = field.replaceAll(`[`, `.`).replaceAll(`]`, ``).split(`.`);
+    const errorPath = field.replaceAll("[", ".").replaceAll("]", "").split(".");
     let inputError = path(errorPath, errors) as IFormError;
 
     if (Array.isArray(inputError)) {

@@ -1,7 +1,7 @@
 import { ISpsLiteFaqBlock } from ".";
 
 export default function TwoColumnsWithCenteredIntroduction(
-  props: ISpsLiteFaqBlock
+  props: ISpsLiteFaqBlock,
 ) {
   return (
     <div className="bg-white">

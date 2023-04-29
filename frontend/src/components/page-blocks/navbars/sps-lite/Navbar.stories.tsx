@@ -13,15 +13,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-console.log(`If you don't see page block in storybook - refresh the page`);
+console.log("If you don't see page block in storybook - refresh the page");
 
 const worker = setupWorker(
   rest.get(
     `${BACKEND_URL}/api/flyout-menus/${spsLiteBackendFlyoutMenuSimple.id}`,
     (req, res, ctx) => {
       return res(ctx.json({ data: spsLiteBackendFlyoutMenuSimple }));
-    }
-  )
+    },
+  ),
 );
 
 function NavbarBlockComponent(args: ISpsLiteNavbarBlock) {

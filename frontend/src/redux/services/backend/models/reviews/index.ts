@@ -21,7 +21,7 @@ export const reviewsApi = backendServiceApi.injectEndpoints({
 
       transformResponse: (result) => {
         return transformResponseItem(
-          result
+          result,
         ) as TransformedApiArray<IBackendReview>;
       },
 

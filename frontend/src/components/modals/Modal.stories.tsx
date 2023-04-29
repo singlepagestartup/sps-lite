@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 const worker = setupWorker(
   rest.get(`${BACKEND_URL}/api/modals`, (req, res, ctx) => {
     return res(ctx.json([spsLiteBackendModal]));
-  })
+  }),
 );
 
 function ModalComponent() {

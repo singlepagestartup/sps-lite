@@ -11,7 +11,7 @@ const variants = {
 };
 
 export default function HeroSections<
-  T extends ISpsLiteHeroSectionBlock | ISpsHeroSectionBlock
+  T extends ISpsLiteHeroSectionBlock | ISpsHeroSectionBlock,
 >(props: T) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

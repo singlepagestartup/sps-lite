@@ -14,7 +14,7 @@ export default function RangeInput(props: IInputProps) {
     placeholder,
     className,
     initialValue,
-    type = `text`,
+    type = "text",
     rows,
     valueAsNumber,
     step,
@@ -26,7 +26,7 @@ export default function RangeInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
@@ -60,7 +60,7 @@ export default function RangeInput(props: IInputProps) {
 
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
-      const evt = new Event(`change`);
+      const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       const target = evt.target as HTMLInputElement;
@@ -69,8 +69,8 @@ export default function RangeInput(props: IInputProps) {
         return;
       }
       if (
-        target.value === `` &&
-        (type === `date` || type === `datetime-local`)
+        target.value === "" &&
+        (type === "date" || type === "datetime-local")
       ) {
         onChange(null);
       } else {
@@ -88,7 +88,7 @@ export default function RangeInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label htmlFor={htmlNodeId}>
-          {typeof translate === `function` && label ? translate(label) : label}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div className="range__input">
@@ -128,7 +128,7 @@ export default function RangeInput(props: IInputProps) {
           min={min}
           max={max}
           onBlur={onBlur}
-          value={value || ``}
+          value={value || ""}
           ref={(e) => {
             if (e) {
               ref(e);
@@ -142,7 +142,7 @@ export default function RangeInput(props: IInputProps) {
       {inputError?.message ? (
         <div className="inputs__error">
           <p>
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>

@@ -30,7 +30,6 @@ vscode:
     - dbaeumer.vscode-eslint
     - mhutchie.git-graph
     - eamodio.gitlens
-    - bierner.jsdoc-markdown-highlighting
     - esbenp.prettier-vscode
     - chakrounanas.turbo-console-log
     - hbenl.vscode-test-explorer

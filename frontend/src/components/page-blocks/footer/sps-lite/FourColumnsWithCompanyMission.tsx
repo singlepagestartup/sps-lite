@@ -7,7 +7,7 @@ import { ISpsLiteFooterBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 
 export default function FourColumnsWithCompanyMission(
-  props: ISpsLiteFooterBlock
+  props: ISpsLiteFooterBlock,
 ) {
   if (props.isLoading) {
     return (

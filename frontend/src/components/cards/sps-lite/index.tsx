@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ICardsProps } from "..";
 import Simple from "./Simple";
 
-export interface ISpsLiteCatdsProps extends ICardsProps {}
+export type ISpsLiteCatdsProps = ICardsProps;
 
 export const variants = {
   simple: Simple,

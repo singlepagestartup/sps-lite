@@ -12,7 +12,7 @@ export interface ISpsLiteBackendUploadPluginBackendMedia {
   mime: string;
   size: number;
   previewUrl: string | null;
-  provider: `local` | `aws-s3`;
+  provider: "local" | "aws-s3";
   providerMetadata?: any;
   createdAt?: string;
   updatedAt?: string;

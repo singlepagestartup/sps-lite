@@ -24,7 +24,7 @@ const getThemeFromBackend = async (props) => {
 
   const themeData = await axios
     .get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/theme?populate[fonts][populate]=%2A`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/theme?populate[fonts][populate]=%2A`,
     )
     .then((res) => {
       return res.data?.data;
@@ -40,7 +40,7 @@ const getThemeFromBackend = async (props) => {
 
     if (themeData.fonts) {
       const oldExistingFonts = await fs.readdir(
-        path.join(__dirname, "./themes/fonts")
+        path.join(__dirname, "./themes/fonts"),
       );
 
       for (const oldExistingFont of oldExistingFonts) {
@@ -49,7 +49,7 @@ const getThemeFromBackend = async (props) => {
           oldExistingFont !== ".gitignore"
         ) {
           await fs.unlink(
-            path.join(__dirname, `./themes/fonts/${oldExistingFont}`)
+            path.join(__dirname, `./themes/fonts/${oldExistingFont}`),
           );
         }
       }
@@ -60,7 +60,7 @@ const getThemeFromBackend = async (props) => {
           const fontVariant =
             font.variant === "default" ? "Default" : "Primary";
           const fontWeight = snakeToCamel(
-            font.weight.charAt(0).toUpperCase() + font.weight.slice(1)
+            font.weight.charAt(0).toUpperCase() + font.weight.slice(1),
           );
           const fontStyle = font.style === "normal" ? "" : "Italic";
           const fileName = `${fontVariant}-${fontWeight}${fontStyle}${fontData.ext}`;
@@ -72,8 +72,8 @@ const getThemeFromBackend = async (props) => {
           }).then(async (response) => {
             await response.data.pipe(
               createWriteStream(
-                path.join(__dirname, `./themes/fonts/${fileName}`)
-              )
+                path.join(__dirname, `./themes/fonts/${fileName}`),
+              ),
             );
           });
         }
@@ -82,20 +82,20 @@ const getThemeFromBackend = async (props) => {
   }
 
   const existingFonts = await fs.readdir(
-    path.join(__dirname, "./themes/fonts")
+    path.join(__dirname, "./themes/fonts"),
   );
 
   if (!existingFonts.includes("Default-Regular.ttf")) {
     await fs.copyFile(
       path.join(__dirname, "./styles/fonts/Montserrat/Montserrat-Regular.ttf"),
-      path.join(__dirname, "./themes/fonts/Default-Regular.ttf")
+      path.join(__dirname, "./themes/fonts/Default-Regular.ttf"),
     );
   }
 
   if (!existingFonts.includes("Primary-Regular.ttf")) {
     await fs.copyFile(
       path.join(__dirname, "./styles/fonts/Montserrat/Montserrat-Regular.ttf"),
-      path.join(__dirname, "./themes/fonts/Primary-Regular.ttf")
+      path.join(__dirname, "./themes/fonts/Primary-Regular.ttf"),
     );
   }
 
@@ -104,18 +104,18 @@ const getThemeFromBackend = async (props) => {
       for (const requiredFontStyle of requiredFontStyles) {
         if (
           !existingFonts.includes(
-            `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
+            `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
           )
         ) {
           await fs.copyFile(
             path.join(
               __dirname,
-              `./themes/fonts/${requiredFontVariant}-Regular.ttf`
+              `./themes/fonts/${requiredFontVariant}-Regular.ttf`,
             ),
             path.join(
               __dirname,
-              `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`
-            )
+              `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
+            ),
           );
         }
       }

@@ -9,7 +9,7 @@ import { BACKEND_URL } from "~utils/envs";
 export default async function GlobalError({ error, reset }: any) {
   const [page, setPage] = useState<any>();
   useEffect(() => {
-    console.log(`logging error:`, error);
+    console.log("logging error:", error);
   }, [error]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default async function GlobalError({ error, reset }: any) {
       params: {
         populate: pagePopulate,
         filters: {
-          url: `/500`,
+          url: "/500",
         },
       },
     }).then((res) => {

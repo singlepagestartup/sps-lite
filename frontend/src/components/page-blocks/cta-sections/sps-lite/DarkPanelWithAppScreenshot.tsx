@@ -7,7 +7,7 @@ import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
 
 export default function DarkPanelWithAppScreenshot(
-  props: ISpsLiteCtaSectionsBlock
+  props: ISpsLiteCtaSectionsBlock,
 ) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {

@@ -9,7 +9,7 @@ const variants = {
 };
 
 export default function LogotypesClouds<T extends ISpsLiteLogotypesCloudBlock>(
-  props: T
+  props: T,
 ) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

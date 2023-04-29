@@ -4,24 +4,24 @@ import React, { useState } from "react";
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/readyState#value
 const HAVE_FUTURE_DATA = 3;
 
-const VideoPreview = ({ url, mime, className = `` }) => {
+const VideoPreview = ({ url, mime, className = "" }) => {
   const [duration, setDuration] = useState(0);
 
   const handleTimeUpdate = (e) => {
     if (e.target.currentTime > 0) {
       const video = e.target;
-      const canvas = document.createElement(`canvas`);
+      const canvas = document.createElement("canvas");
 
       canvas.height = video.videoHeight;
       canvas.width = video.videoWidth;
       canvas
-        .getContext(`2d`)
+        .getContext("2d")
         .drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
       video.replaceWith(canvas);
 
       setDuration(video.duration);
-      canvas.setAttribute(`class`, className);
+      canvas.setAttribute("class", className);
     }
   };
 
@@ -54,10 +54,10 @@ const VideoPreview = ({ url, mime, className = `` }) => {
 export default VideoPreview;
 
 const formatDuration = (durationInSecond) => {
-  const formatter = new Intl.DateTimeFormat(`default`, {
-    hour: `numeric`,
-    minute: `numeric`,
-    second: `numeric`,
+  const formatter = new Intl.DateTimeFormat("default", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
   });
 
   const date = new Date(1970, 0, 1);

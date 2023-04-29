@@ -6,7 +6,7 @@ import { IBackendModal } from "types/collection-types";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
 import { useSearchParams } from "next/navigation";
 
-export interface IModal extends ISpsLiteModal {}
+export type IModal = ISpsLiteModal;
 
 const variants = {
   ...spsLiteVariants,

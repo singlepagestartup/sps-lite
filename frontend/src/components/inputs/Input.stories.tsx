@@ -38,13 +38,13 @@ export const Text = {
 };
 
 function FileInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ FileInput ~ watchData:`, watchData);
+    console.log("🚀 ~ FileInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -61,13 +61,13 @@ function FileInput() {
 }
 
 function ListboxInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ ListboxInput ~ watchData:`, watchData);
+    console.log("🚀 ~ ListboxInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -80,11 +80,11 @@ function ListboxInput() {
         options={[
           {
             id: 1,
-            title: `Lite version`,
+            title: "Lite version",
           },
           {
             id: 2,
-            title: `Pro version`,
+            title: "Pro version",
           },
         ]}
         placeholder="Select category"
@@ -94,13 +94,13 @@ function ListboxInput() {
 }
 
 function RadioGroupInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ RadioGroupInput ~ watchData:`, watchData);
+    console.log("🚀 ~ RadioGroupInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -113,11 +113,11 @@ function RadioGroupInput() {
         options={[
           {
             id: 1,
-            title: `Lite version`,
+            title: "Lite version",
           },
           {
             id: 2,
-            title: `Pro version`,
+            title: "Pro version",
           },
         ]}
         placeholder="Select category"
@@ -127,13 +127,13 @@ function RadioGroupInput() {
 }
 
 function RangeInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ RangeInput ~ watchData:`, watchData);
+    console.log("🚀 ~ RangeInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -151,13 +151,13 @@ function RangeInput() {
 }
 
 function RepeatableInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ RepeatableInput ~ watchData:`, watchData);
+    console.log("🚀 ~ RepeatableInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -168,28 +168,28 @@ function RepeatableInput() {
         label="Shipping information"
         inputs={[
           {
-            component: `text`,
-            name: `address`,
-            label: `Address`,
-            placeholder: `Place your address`,
+            component: "text",
+            name: "address",
+            label: "Address",
+            placeholder: "Place your address",
             rules: {
               required: {
                 value: true,
-                message: `Required field`,
+                message: "Required field",
               },
             },
           },
           {
-            component: `text`,
-            name: `apartments`,
-            label: `Apartments`,
-            placeholder: `Place your apartments info`,
+            component: "text",
+            name: "apartments",
+            label: "Apartments",
+            placeholder: "Place your apartments info",
           },
           {
-            component: `text`,
-            name: `phone`,
-            label: `Phone number`,
-            placeholder: `Place your phone number`,
+            component: "text",
+            name: "phone",
+            label: "Phone number",
+            placeholder: "Place your phone number",
           },
         ]}
       />
@@ -198,13 +198,13 @@ function RepeatableInput() {
 }
 
 function SwitchInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ SwitchInput ~ watchData:`, watchData);
+    console.log("🚀 ~ SwitchInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (
@@ -219,13 +219,13 @@ function SwitchInput() {
 }
 
 function TextInput() {
-  const methods = useForm({ mode: `all` });
+  const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
   const watchData = watch();
 
   useEffect(() => {
-    console.log(`🚀 ~ TextInput ~ watchData:`, watchData);
+    console.log("🚀 ~ TextInput ~ watchData:", watchData);
   }, [JSON.stringify(watchData)]);
 
   return (

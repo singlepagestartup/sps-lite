@@ -3,7 +3,7 @@ import Simple from "./Simple";
 import { FC } from "react";
 
 export interface ISpsLiteFormBlock
-  extends Omit<ISpsLiteBackendForm, `id` | `className` | `anchor`> {
+  extends Omit<ISpsLiteBackendForm, "id" | "className" | "anchor"> {
   className?: string | null;
   anchor?: string | null;
 }

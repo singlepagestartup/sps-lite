@@ -12,7 +12,8 @@ export async function middleware(request: any) {
 
   const pathnameIsMissingLocale = backendLocales.every(
     (locale) =>
-      !pathname.startsWith(`/${locale.code}/`) && pathname !== `/${locale.code}`
+      !pathname.startsWith(`/${locale.code}/`) &&
+      pathname !== `/${locale.code}`,
   );
 
   // Redirect if there is no locale
@@ -23,8 +24,8 @@ export async function middleware(request: any) {
     return NextResponse.redirect(
       new URL(
         `/${defauleLocale?.code}/${pathname}${searchParams || ""}`,
-        request.url
-      )
+        request.url,
+      ),
     );
   }
 }

@@ -9,7 +9,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
 
   const methods = useForm<any>({
-    mode: `all`,
+    mode: "all",
   });
 
   const {
@@ -55,13 +55,13 @@ export default function Simple(props: ISpsLiteFormBlock) {
       let inputName = input.name;
       let isFile = false;
 
-      if ([`listbox`, `radio-group`].includes(input.component)) {
+      if (["listbox", "radio-group"].includes(input.component)) {
         inputName = input.multiple
           ? `inputs[${index}].options`
           : `inputs[${index}].option`;
-      } else if ([`switch`].includes(input.component)) {
+      } else if (["switch"].includes(input.component)) {
         inputName = `inputs[${index}].is_true`;
-      } else if ([`file`].includes(input.component)) {
+      } else if (["file"].includes(input.component)) {
         inputName = `inputs[${index}].files`;
         isFile = true;
       } else {
@@ -85,7 +85,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
   }, [props]);
 
   return (
-    <div className={props.className || ``}>
+    <div className={props.className || ""}>
       <div className="form__container">
         <FormProvider {...methods}>
           {preparedInputs?.map((input, index: number) => {
@@ -95,13 +95,13 @@ export default function Simple(props: ISpsLiteFormBlock) {
                 key={index}
                 options={input.options}
                 name={input.inputName}
-                className={input.input?.className || ``}
+                className={input.input?.className || ""}
                 defaultValue=""
                 by="title"
                 rules={{
                   required: {
                     value: input.input?.isRequired,
-                    message: `Required field`,
+                    message: "Required field",
                   },
                 }}
               />
@@ -123,7 +123,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
                 rules={{
                   required: {
                     value: input.input?.isRequired,
-                    message: `Required field`,
+                    message: "Required field",
                   },
                 }}
               />
@@ -140,9 +140,9 @@ export default function Simple(props: ISpsLiteFormBlock) {
           />
           <div className="submit__button_container">
             <Buttons
-              variant={props.button?.variant || `secondary`}
+              variant={props.button?.variant || "secondary"}
               onClick={handleSubmit(onSubmit)}
-              title={props.button?.title || `Submit`}
+              title={props.button?.title || "Submit"}
             />
           </div>
         </FormProvider>

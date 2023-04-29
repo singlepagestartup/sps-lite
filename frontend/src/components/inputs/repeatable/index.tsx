@@ -19,7 +19,7 @@ export interface IInsideComponentProps {
 
 function camelToSnake(name: string) {
   return name.replace(/([A-Z])/g, function ($1) {
-    return `_` + $1.toLowerCase();
+    return "_" + $1.toLowerCase();
   });
 }
 
@@ -27,13 +27,13 @@ function snakeToCamel(str: string) {
   return str
     .toLowerCase()
     .replace(/([-_][a-z])/g, (group) =>
-      group.toUpperCase().replace(`-`, ``).replace(`_`, ``)
+      group.toUpperCase().replace("-", "").replace("_", ""),
     );
 }
 
 function camelCaseKeysToSnake(obj: any) {
   // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
-  if (typeof obj != `object`) return obj;
+  if (typeof obj != "object") return obj;
 
   if (Array.isArray(obj)) {
     const newObj = [] as any;
@@ -47,7 +47,7 @@ function camelCaseKeysToSnake(obj: any) {
   } else {
     // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
     const newObj = { ...obj };
-    for (var oldName in newObj) {
+    for (const oldName in newObj) {
       // console.log(`🚀 ~ camelCaseKeysToSnake ~ oldName`, oldName);
       // Camel to underscore
       const newName = camelToSnake(oldName);
@@ -62,7 +62,7 @@ function camelCaseKeysToSnake(obj: any) {
       }
 
       // Recursion
-      if (typeof newObj[newName] == `object`) {
+      if (typeof newObj[newName] == "object") {
         newObj[newName] = camelCaseKeysToSnake(newObj[newName]);
       }
     }
@@ -73,14 +73,14 @@ function camelCaseKeysToSnake(obj: any) {
 }
 
 function oldRemoveUnnecessaryKeys(obj: any, inputs: any) {
-  console.log(`🚀 ~ removeUnnecessaryKeys ~ inputs`, inputs, obj);
+  console.log("🚀 ~ removeUnnecessaryKeys ~ inputs", inputs, obj);
 
   return JSON.parse(
     JSON.stringify(obj, (k, v) => {
-      console.log(`🚀 ~ JSON.stringify ~ k, v`, k, v);
+      console.log("🚀 ~ JSON.stringify ~ k, v", k, v);
 
-      return k === `id` ? undefined : v;
-    })
+      return k === "id" ? undefined : v;
+    }),
   );
 }
 
@@ -88,7 +88,7 @@ function oldRemoveUnnecessaryKeys(obj: any, inputs: any) {
  * Removes id in objects, if they are in components, or not passed to
  * input with by="id"
  */
-function removeUnnecessaryKeys(obj: any, keys = [`id`], inputs: any): any {
+function removeUnnecessaryKeys(obj: any, keys = ["id"], inputs: any): any {
   let newObj: any;
   if (Array.isArray(obj)) {
     newObj = [...obj];
@@ -100,7 +100,7 @@ function removeUnnecessaryKeys(obj: any, keys = [`id`], inputs: any): any {
     return newObj.map(function (item) {
       return removeUnnecessaryKeys(item, keys, inputs);
     });
-  } else if (typeof newObj === `object` && newObj != null) {
+  } else if (typeof newObj === "object" && newObj != null) {
     Object.getOwnPropertyNames(newObj).forEach(function (key) {
       const currentInput = inputs.find((input: any) => {
         if (input?.name === key) {
@@ -115,7 +115,7 @@ function removeUnnecessaryKeys(obj: any, keys = [`id`], inputs: any): any {
 
       if (removeKeys.includes(key)) {
         delete newObj[key];
-      } else if (typeof newObj[key] === `object`) {
+      } else if (typeof newObj[key] === "object") {
         const passInput = currentInput?.inputs
           ? currentInput?.inputs
           : [currentInput];
@@ -130,7 +130,7 @@ function removeUnnecessaryKeys(obj: any, keys = [`id`], inputs: any): any {
 
 export default function RepeatableInput(props: IInputProps) {
   // console.log(`🚀 ~ RepeatableInput ~ props`, props);
-  let {
+  const {
     label,
     name,
     rules,
@@ -150,7 +150,7 @@ export default function RepeatableInput(props: IInputProps) {
   const translate = useTranslationsContext();
 
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const {
@@ -194,14 +194,14 @@ export default function RepeatableInput(props: IInputProps) {
       ) {
         if (!inputErrors) {
           setError(name, {
-            type: `minLength`,
-            message: rules.minLength?.message || `Lenth is wrong`,
+            type: "minLength",
+            message: rules.minLength?.message || "Lenth is wrong",
           });
         }
       } else if (
         watchData[name].length >= (rules?.minLength?.value || rules?.minLength)
       ) {
-        if (inputErrors?.type === `minLength`) {
+        if (inputErrors?.type === "minLength") {
           clearErrors(name);
           // console.log(`🚀 ~ useEffect ~ watchData[name]`, watchData[name]);
         }
@@ -227,7 +227,7 @@ export default function RepeatableInput(props: IInputProps) {
             initValue[input.name] !== undefined ||
             initValue[snakeToCamel(input.name)] !== undefined
           ) {
-            if (input.component === `file`) {
+            if (input.component === "file") {
               // adding near Inputs component
             } else {
               if (initValue[input.name] !== undefined) {
@@ -241,7 +241,7 @@ export default function RepeatableInput(props: IInputProps) {
         }
 
         const clearedPass = camelCaseKeysToSnake(
-          removeUnnecessaryKeys(passToComponentInitialValue, [`id`], inputs)
+          removeUnnecessaryKeys(passToComponentInitialValue, ["id"], inputs),
         );
 
         resInputs.push(clearedPass);
@@ -276,7 +276,7 @@ export default function RepeatableInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label htmlFor={htmlNodeId}>
-          {typeof translate === `function` && label ? translate(label) : label}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div id={htmlNodeId} className="repeatable__input">
@@ -286,12 +286,12 @@ export default function RepeatableInput(props: IInputProps) {
               {inputs.map((input: any, index: number) => {
                 const additionalPropsForInput = {} as any;
 
-                const inputName = `${parentKey ? `${parentKey}.` : ``}${String(
-                  baseKey
+                const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
+                  baseKey,
                 )}[${fieldIndex}].${input.name}`;
 
                 const parentKeyName = `${
-                  parentKey ? `${parentKey}.` : ``
+                  parentKey ? `${parentKey}.` : ""
                 }${String(baseKey)}[${fieldIndex}]`;
 
                 if (initialValue?.length) {
@@ -350,14 +350,14 @@ export default function RepeatableInput(props: IInputProps) {
                 <TrashIcon />
                 <p>
                   {removeButtonTitle !== undefined
-                    ? typeof translate === `function`
+                    ? typeof translate === "function"
                       ? translate(removeButtonTitle)
                       : removeButtonTitle
                     : `${
-                        typeof translate === `function`
-                          ? translate(`Delete`)
-                          : `Delete`
-                      } ${label !== undefined ? label : ``}`}
+                        typeof translate === "function"
+                          ? translate("Delete")
+                          : "Delete"
+                      } ${label !== undefined ? label : ""}`}
                 </p>
               </div>
             </div>
@@ -372,19 +372,19 @@ export default function RepeatableInput(props: IInputProps) {
           <PlusIcon />
           <p>
             {addButtonTitle !== undefined
-              ? typeof translate === `function`
+              ? typeof translate === "function"
                 ? translate(addButtonTitle)
                 : addButtonTitle
               : `${
-                  typeof translate === `function` ? translate(`Add`) : `Add`
-                } ${label !== undefined ? label : ``}`}
+                  typeof translate === "function" ? translate("Add") : "Add"
+                } ${label !== undefined ? label : ""}`}
           </p>
         </div>
       </div>
       {inputError?.message ? (
         <div className="inputs__error">
           <p>
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>

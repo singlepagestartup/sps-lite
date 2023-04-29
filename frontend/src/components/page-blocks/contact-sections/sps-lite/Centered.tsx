@@ -2,7 +2,7 @@ import { Switch } from "@headlessui/react";
 import { ISpsLiteContactSectonBlock } from ".";
 
 function classNames(...classes: any) {
-  return classes.filter(Boolean).join(` `);
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Centered(props: ISpsLiteContactSectonBlock) {
@@ -205,7 +205,7 @@ export default function Centered(props: ISpsLiteContactSectonBlock) {
                   name="message"
                   rows={4}
                   className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  defaultValue={``}
+                  defaultValue={""}
                 />
               </div>
             </div>
@@ -214,12 +214,11 @@ export default function Centered(props: ISpsLiteContactSectonBlock) {
                 <div className="flex-shrink-0"></div>
                 <div className="ml-3">
                   <p className="text-base text-gray-500">
-                    By selecting this, you agree to the{` `}
+                    By selecting this, you agree to the{" "}
                     <a href="#" className="font-medium text-gray-700 underline">
                       Privacy Policy
-                    </a>
-                    {` `}
-                    and{` `}
+                    </a>{" "}
+                    and{" "}
                     <a href="#" className="font-medium text-gray-700 underline">
                       Cookie Policy
                     </a>

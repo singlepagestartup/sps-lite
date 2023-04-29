@@ -27,8 +27,8 @@ export const NotificationsWrapper = ({ children }: { children: ReactNode }) => {
   const remove = (timestampId: number) => {
     setNotifications((alertNotifications) =>
       alertNotifications.filter(
-        (alertInfo: any) => alertInfo?.id !== timestampId
-      )
+        (alertInfo: any) => alertInfo?.id !== timestampId,
+      ),
     );
   };
 
@@ -41,7 +41,7 @@ export const NotificationsWrapper = ({ children }: { children: ReactNode }) => {
     } as any;
     setNotifications(
       (alertNotifications: any) =>
-        [...alertNotifications, newNotification] as any
+        [...alertNotifications, newNotification] as any,
     );
 
     if (duration !== 0) {
@@ -78,8 +78,8 @@ const OverlayWrapper = ({ notify = () => ({}) }: { notify: any }) => {
   const remove = (timestampId: number) => {
     setNotifications((alertNotifications) =>
       alertNotifications.filter(
-        (alertInfo: any) => alertInfo.id !== timestampId
-      )
+        (alertInfo: any) => alertInfo.id !== timestampId,
+      ),
     );
   };
 
@@ -93,7 +93,7 @@ const OverlayWrapper = ({ notify = () => ({}) }: { notify: any }) => {
     setNotifications((alertNotifications: any) =>
       isFromTop
         ? ([newNotification, ...alertNotifications] as any)
-        : ([...alertNotifications, newNotification] as any)
+        : ([...alertNotifications, newNotification] as any),
     );
 
     if (duration !== 0) {

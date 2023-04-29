@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ISlider } from "..";
 import FadeWithPreviews from "./FadeWithPreviews";
 
-export interface ISpsLiteSliderBlock extends ISlider {}
+export type ISpsLiteSliderBlock = ISlider;
 
 export const variants = {
   "fade-with-previews": FadeWithPreviews,

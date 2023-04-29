@@ -12,7 +12,7 @@ export default function useGetButtonParams(props: {
       return;
     }
 
-    return router.asPath.replace(`/`, ``) === props.url;
+    return router.asPath.replace("/", "") === props.url;
   }, [router, props.url]);
 
   const additionalAttributes = useMemo(() => {
@@ -25,11 +25,11 @@ export default function useGetButtonParams(props: {
 
   const url = useMemo(() => {
     if (
-      router.pathname.includes(`[`) &&
+      router.pathname.includes("[") &&
       props.url &&
-      [`?`].includes(props.url[0])
+      ["?"].includes(props.url[0])
     ) {
-      return `${router.asPath}${props.url}`.replace(`//`, `/`);
+      return `${router.asPath}${props.url}`.replace("//", "/");
     }
 
     return props.url;

@@ -15,7 +15,7 @@ export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
       {
         id: props.id,
       },
-      { skip: !props.id }
+      { skip: !props.id },
     );
 
   const Comp = variants[props?.variant as keyof typeof variants] as FC<any>;

@@ -22,7 +22,7 @@ export const categoriesApi = backendServiceApi.injectEndpoints({
 
       transformResponse: (result) => {
         return transformResponseItem(
-          result
+          result,
         ) as TransformedApiArray<IBackendCurrency>;
       },
 

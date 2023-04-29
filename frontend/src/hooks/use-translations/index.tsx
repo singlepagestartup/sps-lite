@@ -28,7 +28,7 @@ export default function useTranslations() {
 
       return key;
     },
-    [translations]
+    [translations],
   );
 
   return translate;

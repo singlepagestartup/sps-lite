@@ -15,7 +15,7 @@ export default function Simple(props: ISpsLiteSliderBlock) {
 
   return (
     <section
-      className={`bg-white relative w-full my-10`}
+      className={"bg-white relative w-full my-10"}
       {...additionalAttributes}
     >
       <div className="max-w-7xl container mx-auto">

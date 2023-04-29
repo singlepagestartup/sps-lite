@@ -9,7 +9,7 @@ const variants = {
 };
 
 export default function Incentives<T extends ISpsLiteIncentivesBlock>(
-  props: T
+  props: T,
 ) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

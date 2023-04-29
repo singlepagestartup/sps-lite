@@ -23,7 +23,7 @@ export default function SwitchInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const {
@@ -44,10 +44,10 @@ export default function SwitchInput(props: IInputProps) {
   useEffect(() => {
     if (
       initialValue !== undefined &&
-      initialValue !== `` &&
+      initialValue !== "" &&
       inputRef?.current
     ) {
-      const evt = new Event(`change`);
+      const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       onChange(evt);
@@ -67,7 +67,7 @@ export default function SwitchInput(props: IInputProps) {
         <Switch
           as="div"
           // role="button"
-          checked={value !== undefined && value !== `` ? value : false}
+          checked={value !== undefined && value !== "" ? value : false}
           onChange={(e) => {
             if (!disabled) {
               onChange(e);
@@ -84,7 +84,7 @@ export default function SwitchInput(props: IInputProps) {
           <div role="tablist">
             <div
               aria-selected={
-                value !== undefined && value !== `` ? value : false
+                value !== undefined && value !== "" ? value : false
               }
               role="tab"
               className="check"
@@ -97,7 +97,7 @@ export default function SwitchInput(props: IInputProps) {
           <label htmlFor={htmlNodeId}>
             {label ? (
               <ReactMarkdown>
-                {typeof translate === `function` ? translate(label) : label}
+                {typeof translate === "function" ? translate(label) : label}
               </ReactMarkdown>
             ) : null}
           </label>
@@ -106,7 +106,7 @@ export default function SwitchInput(props: IInputProps) {
       {inputError?.message ? (
         <div className="inputs__error">
           <p>
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>

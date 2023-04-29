@@ -29,7 +29,7 @@ export interface IDropdownButtonProps extends ITableItemProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export interface IDropdownRowCompProps extends ITableItemProps {}
+export type IDropdownRowCompProps = ITableItemProps;
 
 export interface ITableCollumn {
   header: {

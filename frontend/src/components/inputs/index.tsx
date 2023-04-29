@@ -44,13 +44,13 @@ export interface IInputProps extends UseControllerProps {
 
 export interface IInputsProps extends IInputProps {
   component:
-    | `text`
-    | `listbox`
-    | `radio-group`
-    | `switch`
-    | `file`
-    | `repeatable`
-    | `range`;
+    | "text"
+    | "listbox"
+    | "radio-group"
+    | "switch"
+    | "file"
+    | "repeatable"
+    | "range";
 }
 
 export default function Inputs(props: IInputsProps) {
@@ -58,19 +58,19 @@ export default function Inputs(props: IInputsProps) {
 
   const Comp = useMemo(() => {
     switch (component) {
-      case `text`:
+      case "text":
         return TextInput;
-      case `file`:
+      case "file":
         return FileInput;
-      case `listbox`:
+      case "listbox":
         return ListboxInput;
-      case `switch`:
+      case "switch":
         return SwitchInput;
-      case `radio-group`:
+      case "radio-group":
         return RadioGroupInput;
-      case `repeatable`:
+      case "repeatable":
         return RepeatableInput;
-      case `range`:
+      case "range":
         return RangeInput;
       default:
         return TextInput;

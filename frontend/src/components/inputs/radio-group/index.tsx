@@ -22,7 +22,7 @@ export default function RadioGroupInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const {
@@ -44,7 +44,7 @@ export default function RadioGroupInput(props: IInputProps) {
 
   useEffect(() => {
     if (initialValue && inputRef?.current) {
-      const evt = new Event(`change`);
+      const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       onChange(evt);
@@ -60,7 +60,7 @@ export default function RadioGroupInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label htmlFor={htmlNodeId}>
-          {typeof translate === `function` && label ? translate(label) : label}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div className="radio__group__input">
@@ -81,12 +81,12 @@ export default function RadioGroupInput(props: IInputProps) {
             {options?.map((option: any, index: number) => (
               <RadioGroup.Option key={option.id || index} value={option}>
                 {({ checked, active }) => (
-                  <div aria-selected={checked} className={`option`}>
+                  <div aria-selected={checked} className={"option"}>
                     <div className="check">
                       {checked ? <div className="checked" /> : null}
                     </div>
                     <RadioGroup.Label as="div" className="label">
-                      {typeof renderOptionValue === `function`
+                      {typeof renderOptionValue === "function"
                         ? renderOptionValue(option)
                         : option.title || option}
                     </RadioGroup.Label>
@@ -100,7 +100,7 @@ export default function RadioGroupInput(props: IInputProps) {
       {inputError?.message ? (
         <div className="inputs__error">
           <p className="text-red-500 text-xs">
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>

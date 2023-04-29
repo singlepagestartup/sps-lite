@@ -22,7 +22,7 @@ export default function ListboxInput(props: IInputProps) {
     defaultValue = null,
     className,
     initialValue,
-    placeholder = ``,
+    placeholder = "",
     ButtonComp = DefaultButton,
     OptionComp = DefaultOption,
     by,
@@ -34,7 +34,7 @@ export default function ListboxInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const additionalProps = useMemo(() => {
@@ -65,7 +65,7 @@ export default function ListboxInput(props: IInputProps) {
 
   useEffect(() => {
     if (initialValue && inputRef?.current) {
-      const evt = new Event(`change`);
+      const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       onChange(evt);
@@ -79,7 +79,7 @@ export default function ListboxInput(props: IInputProps) {
    * fiels.
    */
   useEffect(() => {
-    if (JSON.stringify(value) === `{}`) {
+    if (JSON.stringify(value) === "{}") {
       setValue(name, undefined);
     }
   }, [JSON.stringify(value)]);
@@ -93,7 +93,7 @@ export default function ListboxInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label htmlFor={htmlNodeId}>
-          {typeof translate === `function` && label ? translate(label) : label}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div className="listbox__input">
@@ -148,7 +148,7 @@ export default function ListboxInput(props: IInputProps) {
       </div>
       {inputError?.message ? (
         <p className="text-red-500 text-xs">
-          {typeof translate === `function`
+          {typeof translate === "function"
             ? translate(inputError.message)
             : inputError.message}
         </p>
@@ -167,7 +167,7 @@ function DefaultButton({ value, placeholder, renderOptionValue }: any) {
 
             return title;
           })
-          .join(`, `);
+          .join(", ");
       } else {
         return placeholder;
       }
@@ -176,9 +176,9 @@ function DefaultButton({ value, placeholder, renderOptionValue }: any) {
         return value.title;
       } else {
         return value !== undefined &&
-          value !== `` &&
-          (typeof value === `string` || typeof value === `number`)
-          ? typeof renderOptionValue === `function`
+          value !== "" &&
+          (typeof value === "string" || typeof value === "number")
+          ? typeof renderOptionValue === "function"
             ? renderOptionValue(value)
             : value
           : placeholder;
@@ -210,7 +210,7 @@ function DefaultOption({
   return (
     <div aria-selected={selected} className="option">
       <span className="title">
-        {(typeof renderOptionValue === `function`
+        {(typeof renderOptionValue === "function"
           ? renderOptionValue(option)
           : option.title) || option}
       </span>

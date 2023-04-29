@@ -6,7 +6,7 @@ import { ISpsLiteIncentivesBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 
 export default function FourColumnWithIllustrations(
-  props: ISpsLiteIncentivesBlock
+  props: ISpsLiteIncentivesBlock,
 ) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {

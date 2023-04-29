@@ -11,6 +11,6 @@ export interface ISpsLitePublicPage {
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
-export interface ISpsLiteMainPage extends ISpsLitePublicPage {}
+export type ISpsLiteMainPage = ISpsLitePublicPage;
 
-export interface ISpsLiteNotFoundPage extends ISpsLitePublicPage {}
+export type ISpsLiteNotFoundPage = ISpsLitePublicPage;

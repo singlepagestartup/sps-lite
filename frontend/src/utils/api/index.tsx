@@ -5,11 +5,11 @@ interface IFetchProps {
   url: string;
   params?: any;
   data?: any;
-  method?: `GET` | `POST` | `PUT` | `DELETE`;
+  method?: "GET" | "POST" | "PUT" | "DELETE";
 }
 
 export async function getBackendData(props: IFetchProps) {
-  const { url, params, data, method = `GET` } = props;
+  const { url, params, data, method = "GET" } = props;
 
   const query = stringify(params || {}, {
     encodeValuesOnly: true,
@@ -25,9 +25,9 @@ export async function getBackendData(props: IFetchProps) {
 
       if (Array.isArray(jsonRes.data)) {
         const result: any = jsonRes.data.map((item: any) =>
-          transformResponseItem(item)
+          transformResponseItem(item),
         );
-        result[`_meta`] = jsonRes?.meta as any;
+        result["_meta"] = jsonRes?.meta as any;
 
         return result;
       } else {

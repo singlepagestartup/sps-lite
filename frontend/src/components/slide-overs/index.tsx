@@ -9,7 +9,7 @@ const variants = {
   ...spsStoreVariants,
 };
 
-export interface ISlideOver extends ISpsLiteSlideOver {}
+export type ISlideOver = ISpsLiteSlideOver;
 
 export default function SlideOvers() {
   const query = useSearchParams();

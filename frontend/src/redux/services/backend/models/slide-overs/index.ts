@@ -21,7 +21,7 @@ export const modalsApi = backendServiceApi.injectEndpoints({
 
       transformResponse: (result) => {
         return transformResponseItem(
-          result
+          result,
         ) as TransformedApiArray<ISpsLiteBackendSlideOver>;
       },
 

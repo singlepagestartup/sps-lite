@@ -5,7 +5,7 @@ export default function getFileUrl(
   obj: IBackendUploadPluginBackendMedia,
   options: {
     size?: string;
-  } = {}
+  } = {},
 ) {
   const { size } = options;
   if (!obj) {

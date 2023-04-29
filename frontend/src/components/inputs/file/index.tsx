@@ -73,7 +73,7 @@ export default function FileInput(props: IInputProps) {
     // console.log(`🚀 ~ onFileInputChange ~ e`, e);
     let filesArray;
 
-    let target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
 
     setValue(target?.value);
 
@@ -111,7 +111,9 @@ export default function FileInput(props: IInputProps) {
         const newFile = new File(
           [await (await fetch(fileUrl)).blob()],
           serverFile.name,
-          { type: serverFile.mime }
+          {
+            type: serverFile.mime,
+          },
         );
 
         // console.log(`🚀 ~ setInitFiles ~ newFile`, newFile);
@@ -124,7 +126,9 @@ export default function FileInput(props: IInputProps) {
       const newFile = new File(
         [await (await fetch(fileUrl)).blob()],
         initialValue.name,
-        { type: initialValue.mime }
+        {
+          type: initialValue.mime,
+        },
       );
       dataTransfer.items.add(newFile);
     }
@@ -175,7 +179,7 @@ export default function FileInput(props: IInputProps) {
       return;
     }
 
-    let target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
 
     const newFiles = new DataTransfer();
     if (localFiles) {

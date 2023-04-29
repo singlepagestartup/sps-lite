@@ -14,7 +14,7 @@ export default function TextInput(props: IInputProps) {
     placeholder,
     className,
     initialValue,
-    type = `text`,
+    type = "text",
     rows,
     valueAsNumber,
     step,
@@ -27,7 +27,7 @@ export default function TextInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace(`[`, `_`).replace(`]`, `_`).replace(`.`, `_`);
+    return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
@@ -63,7 +63,7 @@ export default function TextInput(props: IInputProps) {
 
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
-      const evt = new Event(`change`);
+      const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
@@ -72,8 +72,8 @@ export default function TextInput(props: IInputProps) {
         return;
       }
       if (
-        target.value === `` &&
-        (type === `date` || type === `datetime-local`)
+        target.value === "" &&
+        (type === "date" || type === "datetime-local")
       ) {
         onChange(null);
       } else {
@@ -91,11 +91,11 @@ export default function TextInput(props: IInputProps) {
     <div className={className}>
       <div className="inputs__label">
         <label htmlFor={htmlNodeId}>
-          {typeof translate === `function` && label ? translate(label) : label}
+          {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
       <div className="text__input">
-        {type === `textarea` ? (
+        {type === "textarea" ? (
           <textarea
             onChange={(e) => {
               if (valueAsNumber) {
@@ -107,7 +107,7 @@ export default function TextInput(props: IInputProps) {
             }}
             disabled={disabled}
             onBlur={onBlur}
-            value={value !== undefined ? value : ``}
+            value={value !== undefined ? value : ""}
             ref={(e) => {
               if (e) {
                 ref(e);
@@ -122,7 +122,7 @@ export default function TextInput(props: IInputProps) {
           ></textarea>
         ) : (
           <input
-            type={valueAsNumber ? `number` : type || `text`}
+            type={valueAsNumber ? "number" : type || "text"}
             disabled={disabled}
             onChange={(e) => {
               if (valueAsNumber) {
@@ -130,9 +130,9 @@ export default function TextInput(props: IInputProps) {
                 return;
               }
 
-              if (type === `date`) {
+              if (type === "date") {
                 const preparedDate =
-                  e.target.value === `` ? null : e.target.value;
+                  e.target.value === "" ? null : e.target.value;
 
                 onChange(preparedDate);
                 return;
@@ -142,7 +142,7 @@ export default function TextInput(props: IInputProps) {
             }}
             id={htmlNodeId}
             onBlur={onBlur}
-            value={value !== undefined ? value : ``}
+            value={value !== undefined ? value : ""}
             ref={(e) => {
               if (e) {
                 ref(e);
@@ -150,7 +150,7 @@ export default function TextInput(props: IInputProps) {
               }
             }}
             placeholder={
-              typeof translate === `function` && placeholder
+              typeof translate === "function" && placeholder
                 ? translate(placeholder)
                 : placeholder
             }
@@ -162,7 +162,7 @@ export default function TextInput(props: IInputProps) {
       {inputError?.message ? (
         <div className="inputs__error">
           <p>
-            {typeof translate === `function`
+            {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}
           </p>

@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 const worker = setupWorker(
   rest.get(`${BACKEND_URL}/api/slide-overs`, (req, res, ctx) => {
     return res(ctx.json([spsLiteBackendSlideOverRightSideHalfWidth]));
-  })
+  }),
 );
 
 function SlideOverComponent() {

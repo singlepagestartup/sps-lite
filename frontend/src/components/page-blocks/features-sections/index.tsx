@@ -9,7 +9,7 @@ const variants = {
 };
 
 export default function FeaturesSections<
-  T extends ISpsLiteFeaturesSectionBlock
+  T extends ISpsLiteFeaturesSectionBlock,
 >(props: T) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

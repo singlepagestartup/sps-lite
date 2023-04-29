@@ -52,7 +52,7 @@ const Overlay = ({
 
   const transitions = useTransition(
     notifications,
-    transitionConfigWithHeightAnimation
+    transitionConfigWithHeightAnimation,
   );
 
   return (

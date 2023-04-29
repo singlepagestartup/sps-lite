@@ -135,7 +135,7 @@ function TableItem(props: ITableItemProps) {
                   <CellComp {...props} column={column} index={cIndex} />
                 </div>
               );
-            }
+            },
           )}
         </div>
 

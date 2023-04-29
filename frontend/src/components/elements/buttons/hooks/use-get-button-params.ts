@@ -40,7 +40,7 @@ export default function useGetButtonParams(props: {
       if (props.url?.includes("http")) {
         nextLinkUrl.query = "";
       } else {
-        let resultQuery = {} as any;
+        const resultQuery = {} as any;
 
         const newQueryString = props.url?.split("?")[1];
         const newQueryArray = newQueryString

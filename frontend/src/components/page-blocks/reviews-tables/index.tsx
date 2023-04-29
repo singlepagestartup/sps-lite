@@ -11,7 +11,7 @@ const variants = {
 };
 
 export default function ReviewsTables<T extends ISpsLiteReviewsTableBlock>(
-  props: T
+  props: T,
 ) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
