@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Layouts from ".";
-import { ISpsLiteLayout } from ".";
+import Layouts, { ISpsLiteLayout } from ".";
 import store from "~redux/index";
 import { Provider } from "react-redux";
 import { spsLiteBackendLayoutWide } from "~mocks/collection-types/sps-lite";

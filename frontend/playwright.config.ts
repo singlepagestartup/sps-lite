@@ -6,7 +6,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 require("dotenv").config({
   path: (() => {
-    return `.env.development`;
+    return ".env.development";
   })(),
 });
 

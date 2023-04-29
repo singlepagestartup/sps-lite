@@ -4,9 +4,8 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Forms from ".";
+import Forms, { ISpsLiteFormBlock } from ".";
 import { spsLiteBackendForm } from "~mocks/collection-types/sps-lite";
-import { ISpsLiteFormBlock } from ".";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
 export default meta;

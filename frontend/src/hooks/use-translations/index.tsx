@@ -1,8 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
-import { useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 export default function useTranslations() {
   const params = useParams();

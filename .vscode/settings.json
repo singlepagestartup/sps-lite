@@ -1,0 +1,35 @@
+{
+  "editor.wordWrap": "on",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "[javascript|javascriptreact|typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "turboConsoleLog.includeFileNameAndLineNum": false,
+  "turboConsoleLog.insertEnclosingClass": false,
+  "turboConsoleLog.quote": "`",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.validate.enable": true,
+  "playwright.reuseBrowser": true,
+  "editor.fontSize": 13,
+  "window.zoomLevel": -2,
+  "eslint.format.enable": true,
+  "workbench.colorTheme": "Default Light+"
+}

@@ -206,7 +206,7 @@ function DefaultPreviewsComponent({
   activeSlide,
 }: {
   slides: IExtendedSlide[];
-  handleNavigation: Function;
+  handleNavigation: any;
   activeSlide: number;
 }) {
   return (
