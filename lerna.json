@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "useWorkspaces": true,
+  "packages": ["frontend", "backend"],
+  "version": "independent"
+}

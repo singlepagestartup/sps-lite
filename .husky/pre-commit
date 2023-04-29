@@ -5,4 +5,4 @@
 # npm run prettier
 # npm run lint
 
-cd frontend && npm run format
+lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
