@@ -8,9 +8,5 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "lerna": "^6.6.1"
-  },
-  "workspaces": [
-    "frontend",
-    "backend"
-  ]
+  }
 }
