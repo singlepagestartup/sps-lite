@@ -4,10 +4,11 @@ import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
+import { useMemo } from "react";
+import { useEffect } from "react";
 
 export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   if (props.showSkeletons) {
-    console.log(lupa);
     return (
       <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
         <div className="relative pt-6 pb-16 w-full">
