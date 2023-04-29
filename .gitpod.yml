@@ -3,10 +3,13 @@ image:
 
 ports:
   - port: 1337
+    name: Backend
     visibility: public
   - port: 3000
+    name: Frontend
     visibility: public
   - port: 8080
+    name: Adminer
     visibility: public
 
 tasks:
@@ -15,9 +18,10 @@ tasks:
   - name: "database"
     command: docker-compose -f docker-compose.db.yaml up
   - name: "backend"
-    command: cd backend && npm i
+    init: cd backend && npm i
+    command: npm run develop
   - name: "frontend"
-    command: cd frontend && npm i
+    init: cd frontend && npm i
 
 vscode:
   extensions:
