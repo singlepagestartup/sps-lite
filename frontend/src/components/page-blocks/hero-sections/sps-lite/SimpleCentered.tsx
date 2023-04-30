@@ -14,11 +14,11 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
             <div className="w-6/12 h-16 skeleton"></div>
 
             <div className="w-7/12 h-5 skeleton mt-3 h-200"></div>
-		            <div className="w-4/12 h-5 skeleton mt-3">
-</div>
+
+            <div className="w-4/12 h-5 skeleton mt-3"></div>
           </main>
-   </div>
-  					    </div>
+        </div>
+      </div>
     );
   }
 
