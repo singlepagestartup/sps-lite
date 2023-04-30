@@ -1,32 +1,32 @@
 {
-    "kind": "collectionType",
-    "collectionName": "currencies",
-    "info": {
-        "singularName": "currency",
-        "pluralName": "currencies",
-        "displayName": "Currency"
+  "kind": "collectionType",
+  "collectionName": "currencies",
+  "info": {
+    "singularName": "currency",
+    "pluralName": "currencies",
+    "displayName": "Currency"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
     },
-    "options": {
-        "draftAndPublish": true
+    "unicode": {
+      "type": "string",
+      "required": true,
+      "unique": true
     },
-    "pluginOptions": {},
-    "attributes": {
-        "title": {
-            "type": "string"
-        },
-        "unicode": {
-            "type": "string",
-            "required": true,
-            "unique": true
-        },
-        "is_default": {
-            "type": "boolean"
-        },
-        "tiers": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::tier.tier",
-            "mappedBy": "currency"
-        }
+    "is_default": {
+      "type": "boolean"
+    },
+    "tiers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tier.tier",
+      "mappedBy": "currency"
     }
+  }
 }

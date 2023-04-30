@@ -1,19 +1,19 @@
 {
-    "collectionName": "components_page_blocks_reviews_table_blocks",
-    "info": {
-        "displayName": "Reviews Table Block",
-        "description": ""
+  "collectionName": "components_page_blocks_reviews_table_blocks",
+  "info": {
+    "displayName": "Reviews Table Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true
     },
-    "options": {},
-    "attributes": {
-        "variant": {
-            "type": "enumeration",
-            "enum": ["simple"],
-            "default": "simple",
-            "required": true
-        },
-        "anchor": {
-            "type": "string"
-        }
+    "anchor": {
+      "type": "string"
     }
+  }
 }

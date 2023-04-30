@@ -2,6 +2,6 @@
  * metatag service
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreService('api::metatag.metatag');
+export default factories.createCoreService("api::metatag.metatag");

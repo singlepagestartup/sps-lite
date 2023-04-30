@@ -1,64 +1,67 @@
 {
-    "name": "backend",
-    "private": true,
-    "version": "0.1.0",
-    "description": "A Strapi application",
-    "scripts": {
-        "develop": "strapi develop",
-        "debug": "node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
-        "start": "strapi start",
-        "build": "strapi build",
-        "strapi": "strapi",
-        "lint": "eslint . --ext .js,.ts",
-        "lint:quiet": "eslint --quiet . --ext .js,.ts",
-        "lint:fix": "eslint --fix . --ext .js,.ts",
-        "prettier": "prettier --write .",
-        "prettier:check": "prettier --check .",
-        "test": "jest --forceExit --detectOpenHandles"
-    },
-    "devDependencies": {
-        "@types/jest": "^29.4.0",
-        "@typescript-eslint/eslint-plugin": "^5.43.0",
-        "@typescript-eslint/parser": "^5.43.0",
-        "eslint": "^8.18.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "jest": "^29.0.0",
-        "prettier": "^2.8.4",
-        "ts-jest": "^29.0.5",
-        "ts-node": "^10.9.1"
-    },
-    "dependencies": {
-        "@fortawesome/free-solid-svg-icons": "^6.2.1",
-        "@fortawesome/react-fontawesome": "^0.2.0",
-        "@rogwild/strapi-utils": "^6.6.0",
-        "@strapi/plugin-i18n": "4.6.0",
-        "@strapi/plugin-users-permissions": "4.6.0",
-        "@strapi/provider-email-amazon-ses": "^4.10.1",
-        "@strapi/provider-email-mailtrap": "./src/providers/email-mailtrap",
-        "@strapi/provider-email-sendpulse": "./src/providers/email-sendpulse",
-        "@strapi/provider-upload-aws-s3": "4.6.0",
-        "@strapi/strapi": "4.6.0",
-        "axios": "^0.21.4",
-        "better-sqlite3": "7.4.6",
-        "googleapis": "^111.0.0",
-        "nodemailer": "^6.7.5",
-        "pg": "8.6.0",
-        "ramda": "^0.28.0",
-        "sendpulse-api": "^1.1.5",
-        "strapi-plugin-country-select": "^1.0.0",
-        "strapi-plugin-email-designer": "^2.1.1",
-        "stream": "^0.0.2"
-    },
-    "author": {
-        "name": "A Strapi developer"
-    },
-    "strapi": {
-        "uuid": "d93a2874-3de32-4fb0-a224-9bad4e320a31"
-    },
-    "engines": {
-        "node": ">=14.19.1 <=18.x.x",
-        "npm": ">=6.0.0"
-    },
-    "license": "MIT"
+  "name": "backend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "debug": "node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:quiet": "eslint --quiet . --ext .js,.ts",
+    "lint:fix": "eslint --fix . --ext .js,.ts",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test": "jest --forceExit --detectOpenHandles",
+    "format": "npm run prettier:fix && npm run lint:fix",
+    "precommit": "npm run format"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.0.0",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@rogwild/strapi-utils": "^6.6.0",
+    "@strapi/plugin-i18n": "4.6.0",
+    "@strapi/plugin-users-permissions": "4.6.0",
+    "@strapi/provider-email-amazon-ses": "^4.10.1",
+    "@strapi/provider-email-mailtrap": "./src/providers/email-mailtrap",
+    "@strapi/provider-email-sendpulse": "./src/providers/email-sendpulse",
+    "@strapi/provider-upload-aws-s3": "4.6.0",
+    "@strapi/strapi": "4.6.0",
+    "axios": "^0.21.4",
+    "better-sqlite3": "7.4.6",
+    "googleapis": "^111.0.0",
+    "nodemailer": "^6.7.5",
+    "pg": "8.6.0",
+    "ramda": "^0.28.0",
+    "sendpulse-api": "^1.1.5",
+    "strapi-plugin-country-select": "^1.0.0",
+    "strapi-plugin-email-designer": "^2.1.1",
+    "stream": "^0.0.2"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "d93a2874-3de32-4fb0-a224-9bad4e320a31"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }

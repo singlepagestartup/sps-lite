@@ -1,58 +1,58 @@
 {
-    "kind": "collectionType",
-    "collectionName": "tiers",
-    "info": {
-        "singularName": "tier",
-        "pluralName": "tiers",
-        "displayName": "Tier",
-        "description": ""
+  "kind": "collectionType",
+  "collectionName": "tiers",
+  "info": {
+    "singularName": "tier",
+    "pluralName": "tiers",
+    "displayName": "Tier",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "pluginOptions": {},
+      "type": "richtext"
     },
-    "options": {
-        "draftAndPublish": true
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "title": {
-            "pluginOptions": {},
-            "type": "richtext"
-        },
-        "description": {
-            "pluginOptions": {},
-            "type": "richtext"
-        },
-        "price": {
-            "pluginOptions": {},
-            "type": "float"
-        },
-        "currency": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::currency.currency",
-            "inversedBy": "tiers"
-        },
-        "type": {
-            "pluginOptions": {},
-            "type": "enumeration",
-            "enum": ["one-time", "regularly"]
-        },
-        "period": {
-            "pluginOptions": {},
-            "type": "integer"
-        },
-        "features": {
-            "type": "component",
-            "repeatable": true,
-            "pluginOptions": {},
-            "component": "elements.feature"
-        },
-        "old_price": {
-            "pluginOptions": {},
-            "type": "float"
-        },
-        "buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        }
+    "price": {
+      "pluginOptions": {},
+      "type": "float"
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::currency.currency",
+      "inversedBy": "tiers"
+    },
+    "type": {
+      "pluginOptions": {},
+      "type": "enumeration",
+      "enum": ["one-time", "regularly"]
+    },
+    "period": {
+      "pluginOptions": {},
+      "type": "integer"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {},
+      "component": "elements.feature"
+    },
+    "old_price": {
+      "pluginOptions": {},
+      "type": "float"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
     }
+  }
 }

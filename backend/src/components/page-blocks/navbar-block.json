@@ -1,37 +1,37 @@
 {
-    "collectionName": "components_page_blocks_navbar_blocks",
-    "info": {
-        "displayName": "Navbar Block",
-        "description": ""
+  "collectionName": "components_page_blocks_navbar_blocks",
+  "info": {
+    "displayName": "Navbar Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple-links-on-left"],
+      "default": "simple-links-on-left",
+      "required": true
     },
-    "options": {},
-    "attributes": {
-        "variant": {
-            "type": "enumeration",
-            "enum": ["simple-links-on-left"],
-            "default": "simple-links-on-left",
-            "required": true
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "logotype": {
-            "type": "component",
-            "repeatable": false,
-            "component": "elements.logotype"
-        },
-        "buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        },
-        "additional_buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "logotype": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.logotype"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "additional_buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
     }
+  }
 }

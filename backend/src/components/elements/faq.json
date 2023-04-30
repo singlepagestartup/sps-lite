@@ -1,17 +1,17 @@
 {
-    "collectionName": "components_elements_faqs",
-    "info": {
-        "displayName": "Faq",
-        "icon": "question-circle",
-        "description": ""
+  "collectionName": "components_elements_faqs",
+  "info": {
+    "displayName": "Faq",
+    "icon": "question-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "description": {
-            "type": "richtext"
-        },
-        "title": {
-            "type": "richtext"
-        }
+    "title": {
+      "type": "richtext"
     }
+  }
 }

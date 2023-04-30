@@ -1,11 +1,19 @@
 {
-    "extends": "@strapi/typescript-utils/tsconfigs/server",
-    "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": ".",
-        "allowJs": true,
-        "sourceMap": true
-    },
-    "include": ["./", "src/**/*.json"],
-    "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "src/plugins/**"]
+  "extends": "@strapi/typescript-utils/tsconfigs/server",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "allowJs": true,
+    "sourceMap": true
+  },
+  "include": ["./", "src/**/*.json"],
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "dist/",
+    ".cache/",
+    ".tmp/",
+    "src/admin/",
+    "src/plugins/**"
+  ]
 }

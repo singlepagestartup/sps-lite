@@ -1,4 +1,4 @@
-const assignFilterKeys = require('../api/assign-filter-keys');
+const assignFilterKeys = require("../api/assign-filter-keys");
 
 /**
  *
@@ -27,26 +27,26 @@ const assignFilterKeys = require('../api/assign-filter-keys');
  *      await findOrCreate({data, config}, { uid, schema });
  */
 async function findOrCreate(params, { uid, schema }) {
-    const populate = params.populate; //?
+  const populate = params.populate; //?
 
-    const filters = assignFilterKeys({
-        schema,
-        config: params.config,
-        data: params.data,
-    }); //?
-    const data = params.data;
+  const filters = assignFilterKeys({
+    schema,
+    config: params.config,
+    data: params.data,
+  }); //?
+  const data = params.data;
 
-    const entities = await strapi.entityService.findMany(uid, {
-        populate,
-        filters,
-    }); //?
-    let entity = entities.length ? entities[0] : undefined; //?
-    if (!entity) {
-        entity = await strapi.entityService.create(uid, { populate, data });
-    }
+  const entities = await strapi.entityService.findMany(uid, {
+    populate,
+    filters,
+  }); //?
+  let entity = entities.length ? entities[0] : undefined; //?
+  if (!entity) {
+    entity = await strapi.entityService.create(uid, { populate, data });
+  }
 
-    entity; //?
-    return entity;
+  entity; //?
+  return entity;
 }
 
 module.exports = findOrCreate;

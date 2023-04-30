@@ -1,41 +1,41 @@
 {
-    "collectionName": "components_page_blocks_features_section_blocks",
-    "info": {
-        "displayName": "Features Section Block"
+  "collectionName": "components_page_blocks_features_section_blocks",
+  "info": {
+    "displayName": "Features Section Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "subtitle": {
-            "type": "richtext"
-        },
-        "features": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.feature"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["with-icon"],
-            "default": "with-icon",
-            "required": true
-        },
-        "anchor": {
-            "type": "string"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "media": {
-            "type": "media",
-            "multiple": true,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["with-icon"],
+      "default": "with-icon",
+      "required": true
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
     }
+  }
 }

@@ -1,34 +1,34 @@
 {
-    "collectionName": "components_page_blocks_faqs_blocks",
-    "info": {
-        "displayName": "Faqs Block",
-        "icon": "question",
-        "description": ""
+  "collectionName": "components_page_blocks_faqs_blocks",
+  "info": {
+    "displayName": "Faqs Block",
+    "icon": "question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "faqs": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.faq"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["two-columns-with-centered-introduction"],
-            "required": true,
-            "default": "two-columns-with-centered-introduction"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "anchor": {
-            "type": "string"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.faq"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["two-columns-with-centered-introduction"],
+      "required": true,
+      "default": "two-columns-with-centered-introduction"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
     }
+  }
 }

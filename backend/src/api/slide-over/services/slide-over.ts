@@ -2,6 +2,6 @@
  * slide-over service
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreService('api::slide-over.slide-over');
+export default factories.createCoreService("api::slide-over.slide-over");

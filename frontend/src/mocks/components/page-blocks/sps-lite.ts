@@ -100,7 +100,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
     id: 4,
     variant: "simple-centered",
     anchor: "anchor",
-    title: "OpenSource \"под капотом\"",
+    title: "OpenSource 'под капотом'",
     description:
       "Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.",
     buttons: [{ ...spsLiteBackendButtonSecondary }],

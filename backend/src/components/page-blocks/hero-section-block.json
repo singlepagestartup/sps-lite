@@ -1,45 +1,45 @@
 {
-    "collectionName": "components_page_blocks_hero_section_blocks",
-    "info": {
-        "displayName": "Hero Section Block",
-        "icon": "window-restore",
-        "description": ""
+  "collectionName": "components_page_blocks_hero_section_blocks",
+  "info": {
+    "displayName": "Hero Section Block",
+    "icon": "window-restore",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "media": {
-            "type": "media",
-            "multiple": true,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["simple-centered"],
-            "default": "simple-centered",
-            "required": true
-        },
-        "anchor": {
-            "type": "string"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "background": {
-            "allowedTypes": ["images", "files", "videos", "audios"],
-            "type": "media",
-            "multiple": false
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple-centered"],
+      "default": "simple-centered",
+      "required": true
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "background": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": false
     }
+  }
 }

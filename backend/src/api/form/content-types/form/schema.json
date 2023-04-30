@@ -1,64 +1,64 @@
 {
-    "kind": "collectionType",
-    "collectionName": "forms",
-    "info": {
-        "singularName": "form",
-        "pluralName": "forms",
-        "displayName": "Form",
-        "description": ""
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "Form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "inputs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.input"
     },
-    "options": {
-        "draftAndPublish": true
+    "title": {
+      "type": "richtext",
+      "required": true
     },
-    "pluginOptions": {},
-    "attributes": {
-        "inputs": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.input"
-        },
-        "title": {
-            "type": "richtext",
-            "required": true
-        },
-        "class_name": {
-            "type": "text"
-        },
-        "additional_attributes": {
-            "type": "json"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["simple"],
-            "default": "simple",
-            "required": true
-        },
-        "subtitle": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "button": {
-            "type": "component",
-            "repeatable": false,
-            "component": "elements.button"
-        },
-        "form_requests": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::form-request.form-request",
-            "mappedBy": "form"
-        },
-        "uid": {
-            "type": "uid",
-            "targetField": "title",
-            "required": true
-        },
-        "side_effects": {
-            "type": "component",
-            "repeatable": true,
-            "component": "functions.form-side-effect"
-        }
+    "class_name": {
+      "type": "text"
+    },
+    "additional_attributes": {
+      "type": "json"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button"
+    },
+    "form_requests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::form-request.form-request",
+      "mappedBy": "form"
+    },
+    "uid": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "side_effects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "functions.form-side-effect"
     }
+  }
 }

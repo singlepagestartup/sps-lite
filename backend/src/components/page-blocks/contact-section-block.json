@@ -1,42 +1,42 @@
 {
-    "collectionName": "components_page_blocks_contact_section_blocks",
-    "info": {
-        "displayName": "Contact Section Block"
+  "collectionName": "components_page_blocks_contact_section_blocks",
+  "info": {
+    "displayName": "Contact Section Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "anchor": {
-            "type": "text"
-        },
-        "class_name": {
-            "type": "text"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["centered"],
-            "default": "centered",
-            "required": true
-        },
-        "media": {
-            "allowedTypes": ["images", "videos"],
-            "type": "media",
-            "multiple": false
-        },
-        "form": {
-            "type": "relation",
-            "relation": "oneToOne",
-            "target": "api::form.form"
-        },
-        "buttons_arrays": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.buttons-array"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "anchor": {
+      "type": "text"
+    },
+    "class_name": {
+      "type": "text"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["centered"],
+      "default": "centered",
+      "required": true
+    },
+    "media": {
+      "allowedTypes": ["images", "videos"],
+      "type": "media",
+      "multiple": false
+    },
+    "form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::form.form"
+    },
+    "buttons_arrays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.buttons-array"
     }
+  }
 }

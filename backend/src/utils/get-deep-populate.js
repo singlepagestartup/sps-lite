@@ -1,4 +1,4 @@
-const { merge } = require('lodash/fp');
+const { merge } = require("lodash/fp");
 
 /**
  * Populate the model for Dynamic Zone components
@@ -10,11 +10,11 @@ const { merge } = require('lodash/fp');
  * @returns {{populate: Object}}
  */
 function getPopulateForDZ(attribute, options, level) {
-    const populatedComponents = (attribute.components || []).map((componentUID) =>
-        getDeepPopulate(componentUID, options, level + 1)
-    );
+  const populatedComponents = (attribute.components || []).map((componentUID) =>
+    getDeepPopulate(componentUID, options, level + 1),
+  );
 
-    return { populate: populatedComponents.reduce(merge, {}) };
+  return { populate: populatedComponents.reduce(merge, {}) };
 }
 
 /**
@@ -28,32 +28,32 @@ function getPopulateForDZ(attribute, options, level) {
  * @returns {Object}
  */
 function getPopulateFor(attributeName, model, options, level) {
-    const attribute = model.attributes[attributeName];
+  const attribute = model.attributes[attributeName];
 
-    switch (attribute.type) {
-        case 'relation':
-            return {
-                [attributeName]: {
-                    populate: getDeepPopulate(attribute.target, options, level + 1),
-                },
-            };
-        case 'component':
-            return {
-                [attributeName]: {
-                    populate: getDeepPopulate(attribute.component, options, level + 1),
-                },
-            };
-        case 'media':
-            return {
-                [attributeName]: { populate: 'folder' },
-            };
-        case 'dynamiczone':
-            return {
-                [attributeName]: getPopulateForDZ(attribute, options, level),
-            };
-        default:
-            return {};
-    }
+  switch (attribute.type) {
+    case "relation":
+      return {
+        [attributeName]: {
+          populate: getDeepPopulate(attribute.target, options, level + 1),
+        },
+      };
+    case "component":
+      return {
+        [attributeName]: {
+          populate: getDeepPopulate(attribute.component, options, level + 1),
+        },
+      };
+    case "media":
+      return {
+        [attributeName]: { populate: "folder" },
+      };
+    case "dynamiczone":
+      return {
+        [attributeName]: getPopulateForDZ(attribute, options, level),
+      };
+    default:
+      return {};
+  }
 }
 
 /**
@@ -65,17 +65,20 @@ function getPopulateFor(attributeName, model, options, level) {
  * @returns {Object}
  */
 const getDeepPopulate = (uid, { maxLevel = 4 } = {}, level = 1) => {
-    if (level > maxLevel) {
-        return {};
-    }
+  if (level > maxLevel) {
+    return {};
+  }
 
-    const model = strapi.getModel(uid);
+  const model = strapi.getModel(uid);
 
-    return Object.keys(model.attributes).reduce(
-        (populateAcc, attributeName) =>
-            merge(populateAcc, getPopulateFor(attributeName, model, { maxLevel }, level)),
-        {}
-    );
+  return Object.keys(model.attributes).reduce(
+    (populateAcc, attributeName) =>
+      merge(
+        populateAcc,
+        getPopulateFor(attributeName, model, { maxLevel }, level),
+      ),
+    {},
+  );
 };
 
 module.exports = getDeepPopulate;

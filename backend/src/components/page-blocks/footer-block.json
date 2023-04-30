@@ -1,41 +1,41 @@
 {
-    "collectionName": "components_page_blocks_footer_blocks",
-    "info": {
-        "displayName": "Footer Block"
+  "collectionName": "components_page_blocks_footer_blocks",
+  "info": {
+    "displayName": "Footer Block"
+  },
+  "options": {},
+  "attributes": {
+    "copyrights": {
+      "type": "richtext"
     },
-    "options": {},
-    "attributes": {
-        "copyrights": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "variant": {
-            "type": "enumeration",
-            "enum": ["four-columns-with-company-mission"],
-            "default": "four-columns-with-company-mission",
-            "required": true
-        },
-        "logotype": {
-            "type": "component",
-            "repeatable": false,
-            "component": "elements.logotype"
-        },
-        "buttons_arrays": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.buttons-array"
-        },
-        "additional_buttons_arrays": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.buttons-array"
-        },
-        "extra_buttons_arrays": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.buttons-array"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["four-columns-with-company-mission"],
+      "default": "four-columns-with-company-mission",
+      "required": true
+    },
+    "logotype": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.logotype"
+    },
+    "buttons_arrays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.buttons-array"
+    },
+    "additional_buttons_arrays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.buttons-array"
+    },
+    "extra_buttons_arrays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.buttons-array"
     }
+  }
 }

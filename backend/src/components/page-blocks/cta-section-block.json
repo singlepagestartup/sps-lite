@@ -1,39 +1,39 @@
 {
-    "collectionName": "components_page_blocks_cta_section_blocks",
-    "info": {
-        "displayName": "CTA Section Block",
-        "description": ""
+  "collectionName": "components_page_blocks_cta_section_blocks",
+  "info": {
+    "displayName": "CTA Section Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": ["dark-panel-with-app-screenshot"],
+      "default": "dark-panel-with-app-screenshot",
+      "required": true
     },
-    "options": {},
-    "attributes": {
-        "variant": {
-            "type": "enumeration",
-            "enum": ["dark-panel-with-app-screenshot"],
-            "default": "dark-panel-with-app-screenshot",
-            "required": true
-        },
-        "anchor": {
-            "type": "string"
-        },
-        "class_name": {
-            "type": "string"
-        },
-        "title": {
-            "type": "richtext"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "media": {
-            "type": "media",
-            "multiple": true,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "buttons": {
-            "type": "component",
-            "repeatable": true,
-            "component": "elements.button"
-        }
+    "anchor": {
+      "type": "string"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
     }
+  }
 }
