@@ -1,3 +1,3 @@
 import { ISpsLiteBackendPageBlock } from "./sps-lite";
 
-export type IBackendPageBlock = ISpsLiteBackendPageBlock;
+export interface IBackendPageBlock extends ISpsLiteBackendPageBlock {}
