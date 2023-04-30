@@ -13,7 +13,7 @@
     "lint:fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
     "prettier:fix": "prettier --write . --config ./.prettierrc",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "precommit": "npm run format",
+    "precommit": "lint-staged",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
