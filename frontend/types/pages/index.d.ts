@@ -4,8 +4,8 @@ import {
   ISpsLitePublicPage,
 } from "./sps-lite";
 
-export type IPublicPage = ISpsLitePublicPage;
+export interface IPublicPage extends ISpsLitePublicPage {}
 
-export type IMainPage = ISpsLiteMainPage;
+export interface IMainPage extends ISpsLiteMainPage {}
 
-export type INotFoundPage = ISpsLiteNotFoundPage;
+export interface INotFoundPage extends ISpsLiteNotFoundPage {}

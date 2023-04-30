@@ -24,22 +24,22 @@ export interface IBackendPagination {
   };
 }
 
-export type IBackendTier = ISpsLiteBackendTier;
+export interface IBackendTier extends ISpsLiteBackendTier {}
 
-export type IBackendModal = ISpsLiteBackendModal;
+export interface IBackendModal extends ISpsLiteBackendModal {}
 
-export type IBackendForm = ISpsLiteBackendForm;
+export interface IBackendForm extends ISpsLiteBackendForm {}
 
-export type IBackendReview = ISpsLiteBackendReview;
+export interface IBackendReview extends ISpsLiteBackendReview {}
 
-export type IBackendSlider = ISpsLiteBackendSlider;
+export interface IBackendSlider extends ISpsLiteBackendSlider {}
 
-export type IBackendCurrency = ISpsLiteBackendCurrency;
+export interface IBackendCurrency extends ISpsLiteBackendCurrency {}
 
-export type IBackendPage = ISpsLiteBackendPage;
+export interface IBackendPage extends ISpsLiteBackendPage {}
 
-export type IBackendLayout = ISpsLiteBackendLayout;
+export interface IBackendLayout extends ISpsLiteBackendLayout {}
 
-export type IBackendNavbar = ISpsLiteBackendNavbar;
+export interface IBackendNavbar extends ISpsLiteBackendNavbar {}
 
-export type IBackendLocale = ISpsLiteBackendLocale;
+export interface IBackendLocale extends ISpsLiteBackendLocale {}
