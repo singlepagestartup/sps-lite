@@ -9,10 +9,7 @@
   "tiers": [
     {
       "id": 2,
-      "title": "Pro",
-      "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
-      "price": 99,
-      "type": "one-time",
+      "title": "Pro","description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа","price": 99,"type": "one-time",
       "period": null,
       "old_price": 199,
       "createdAt": "2023-02-14T08:51:37.439Z",
