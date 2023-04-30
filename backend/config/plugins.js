@@ -24,19 +24,19 @@ module.exports = ({ env }) => {
     },
   };
 
-  if (env("AWS_ACCESS_KEY_ID")) {
+  if (env("AWS_S3_ACCESS_KEY_ID")) {
     config.upload = {
       config: {
         provider: "aws-s3",
         providerOptions: {
-          accessKeyId: env("AWS_ACCESS_KEY_ID"),
-          secretAccessKey: env("AWS_ACCESS_SECRET"),
-          region: env("AWS_REGION", "ru-1"),
-          endpoint: env("AWS_ENDPOINT"),
+          accessKeyId: env("AWS_S3_ACCESS_KEY_ID"),
+          secretAccessKey: env("AWS_S3_ACCESS_SECRET"),
+          region: env("AWS_S3_REGION", "ru-1"),
+          endpoint: env("AWS_S3_ENDPOINT"),
           apiVersion: "latest",
           signatureVersion: "v4",
           params: {
-            Bucket: env("AWS_BUCKET"),
+            Bucket: env("AWS_S3_BUCKET"),
           },
         },
       },
@@ -50,9 +50,9 @@ const emailProviders = {
   "amazon-ses": (env) => ({
     provider: "amazon-ses",
     providerOptions: {
-      key: env("AWS_SES_KEY"),
-      secret: env("AWS_SES_SECRET"),
-      amazon: env("AWS_SES_HOST"),
+      key: env("AWS_SES_ACCESS_KEY_ID"),
+      secret: env("AWS_SES_ACCESS_SECRET"),
+      amazon: env("AWS_SES_URL"),
     },
     settings: {
       defaultFrom: env("AWS_SES_DEFAULT_FROM"),

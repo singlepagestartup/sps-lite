@@ -1,5 +1,5 @@
 module.exports = ({ env }) => {
-  const security = env("AWS_ACCESS_KEY_ID")
+  const security = env("AWS_S3_ACCESS_KEY_ID")
     ? {
         name: "strapi::security",
         config: {
@@ -12,14 +12,14 @@ module.exports = ({ env }) => {
                 "'self'",
                 "blob:",
                 "data:",
-                env("AWS_URL", "*.selcdn.ru"),
+                env("AWS_S3_URL", "*.selcdn.ru"),
               ],
               "connect-src": ["'self'", "https:"],
               "media-src": [
                 "'self'",
                 "blob:",
                 "data:",
-                env("AWS_URL", "*.selcdn.ru"),
+                env("AWS_S3_URL", "*.selcdn.ru"),
               ],
               upgradeInsecureRequests: null,
             },
