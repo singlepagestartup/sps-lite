@@ -87,3 +87,12 @@ export interface ISpsLiteBackendSlide {
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
+
+export interface ISpsLiteBackendFont {
+  id: number;
+  __component: "elements.font";
+  media?: ISpsLiteBackendUploadPluginBackendMedia;
+  weight: "light" | "regular" | "medium" | "semi_bold" | "bold";
+  style: "normal" | "italic";
+  variant: "primary" | "default";
+}

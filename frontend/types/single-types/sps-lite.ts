@@ -1,22 +1,12 @@
-import { ISpsLiteBackendLayout } from "types/collection-types/sps-lite";
-import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendFont } from "types/components/elements/sps-lite";
 
-export interface ISpsLiteBackendMainPage {
+export interface ISpsLiteBackendTheme {
   id: number;
   locale: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-  layout?: ISpsLiteBackendLayout | null;
-  _meta?: any;
-}
-
-export interface ISpsLiteBackendNotFoundPage {
-  id: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  theme: any;
+  fonts?: ISpsLiteBackendFont[] | null;
   _meta?: any;
 }
