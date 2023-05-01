@@ -8,7 +8,7 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Navbars<T extends ISpsLiteNavbar>(props: T) {
+export default function Navbars<T extends ISpsLiteNavbar>(props: any) {
   const {
     data: backendNavbar,
     isLoading,

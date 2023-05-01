@@ -9,7 +9,7 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Menus<T extends ISpsLiteFlyoutMenu>(props: T) {
+export default function Menus<T extends ISpsLiteFlyoutMenu>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     useGetFlyoutMenuByIdQuery(
       {

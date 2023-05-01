@@ -8,7 +8,7 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Footers<T extends ISpsLiteFooter>(props: T) {
+export default function Footers<T extends ISpsLiteFooter>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     useGetFooterByIdQuery({ id: props.id }, { skip: !props.id });
 

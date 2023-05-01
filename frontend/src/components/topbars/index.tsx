@@ -8,7 +8,9 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function PublicPageTopbars<T extends ISpsLiteTopbar>(props: T) {
+export default function PublicPageTopbars<T extends ISpsLiteTopbar>(
+  props: any,
+) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     useGetTopbarByIdQuery({ id: props.id }, { skip: !props.id });
 

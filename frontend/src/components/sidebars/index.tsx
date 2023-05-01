@@ -8,7 +8,7 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Sidebars<T extends ISpsLiteSidebar>(props: T) {
+export default function Sidebars<T extends ISpsLiteSidebar>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     useGetSidebarByIdQuery({ id: props.id }, { skip: !props.id });
 
