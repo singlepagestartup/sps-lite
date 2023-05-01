@@ -2,10 +2,6 @@ const axios = require("axios");
 const fs = require("fs/promises");
 const { createWriteStream } = require("fs");
 const path = require("path");
-const BACKEND_URL =
-  process.env.BACKEND_URL ||
-  process.env.NEXT_PUBLIC_BACKEND_URL ||
-  "http://localhost:1337";
 
 const requiredFontVariants = ["Default", "Primary"];
 // "" means "normal"
@@ -35,6 +31,9 @@ function getFileUrl(obj, options = {}) {
   if (httpsExists) {
     return url;
   }
+
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:1337";
 
   return `${BACKEND_URL || ""}${url}`;
 }
@@ -90,20 +89,24 @@ const getThemeFromBackend = async (props) => {
             url: getFileUrl(fontData),
             method: "GET",
             responseType: "stream",
-          }).then(async (response) => {
-            await response.data.pipe(
-              createWriteStream(
-                path.join(__dirname, `./themes/fonts/${fileName}`),
-              ),
-            );
+          })
+            .then(async (response) => {
+              await response.data.pipe(
+                createWriteStream(
+                  path.join(__dirname, `./themes/fonts/${fileName}`),
+                ),
+              );
 
-            /**
-             * Without that Next.js doesn't add all fonts
-             */
-            const existingFonts = await fs.readdir(
-              path.join(__dirname, "./themes/fonts"),
-            );
-          });
+              /**
+               * Without that Next.js doesn't add all fonts
+               */
+              const existingFonts = await fs.readdir(
+                path.join(__dirname, "./themes/fonts"),
+              );
+            })
+            .catch((error) => {
+              console.log("createWriteStream error: ", error.message);
+            });
         }
       }
     }

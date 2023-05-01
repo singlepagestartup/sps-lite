@@ -7,16 +7,22 @@ module.exports = {
   reactStrictMode: false,
   images: {
     domains: [
+      "127.0.0.1",
       "localhost",
-      "apisps.ru",
-      "singlepageshop.ru",
-      "singlepagestartup.com",
-      "*.singlepagestartup.com",
       "vercel.app",
       "tailwindui.com",
       "images.unsplash.com",
       "unsplash.com",
-      "721511.selcdn.ru",
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.singlepagestartup.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.selcdn.ru",
+      },
     ],
   },
   trailingSlash: true,
