@@ -80,6 +80,7 @@ export interface ISpsLiteBackendHeroSectionBlock {
   id: number;
   __component: "page-blocks.hero-section-block";
   variant: "simple-centered";
+  className: string | null;
   title: string | null;
   description: string | null;
   buttons?: ISpsLiteBackendButton[] | null;

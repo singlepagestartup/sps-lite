@@ -88,6 +88,9 @@ export const pageBlockPopulate = {
     populate: {
       buttons: { populate: buttonPopulate },
       additional_buttons: { populate: buttonPopulate },
+      extra_buttons_arrays: {
+        populate: buttonArrayPopulate,
+      },
       background: { populate: mediaPopulate },
       buttons_arrays: {
         populate: buttonArrayPopulate,

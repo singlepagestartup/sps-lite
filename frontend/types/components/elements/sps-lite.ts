@@ -20,6 +20,7 @@ export interface ISpsLiteBackendButtonsArray {
   __component: "elements.buttons-array";
   variant: "column-with-title" | "row";
   title: string | null;
+  additionalAttributes: any;
   buttons: ISpsLiteBackendButton[];
   description: string | null;
   className: string | null;

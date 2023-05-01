@@ -17,6 +17,9 @@
       "default": "four-columns-with-company-mission",
       "required": true
     },
+    "class_name": {
+      "type": "string"
+    },
     "logotype": {
       "type": "component",
       "repeatable": false,
