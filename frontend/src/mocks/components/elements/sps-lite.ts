@@ -66,6 +66,7 @@ export const spsLiteBackendButtonsArrayRowButtonsTextMedia: ISpsLiteBackendButto
   {
     id: 5,
     __component: "elements.buttons-array",
+    additionalAttributes: null,
     title: null,
     buttons: [
       { ...spsLiteBackendButtonTextIcon },
@@ -81,6 +82,7 @@ export const spsLiteBackendButtonsArrayRowButtonsText: ISpsLiteBackendButtonsArr
   {
     id: 5,
     __component: "elements.buttons-array",
+    additionalAttributes: null,
     title: null,
     buttons: [{ ...spsLiteBackendButtonText }, { ...spsLiteBackendButtonText }],
     variant: "row",
@@ -93,6 +95,7 @@ export const spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary: ISpsLite
   {
     id: 5,
     __component: "elements.buttons-array",
+    additionalAttributes: null,
     title: "Column With Title",
     buttons: [
       { ...spsLiteBackendButtonSecondary },
@@ -108,6 +111,7 @@ export const spsLiteBackendButtonsArrayColumnWithTitleButtonsText: ISpsLiteBacke
   {
     id: 5,
     __component: "elements.buttons-array",
+    additionalAttributes: null,
     title: "Column With Title",
     buttons: [{ ...spsLiteBackendButtonText }, { ...spsLiteBackendButtonText }],
     variant: "column-with-title",

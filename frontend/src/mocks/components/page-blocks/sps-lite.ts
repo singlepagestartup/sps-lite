@@ -99,6 +99,7 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
   {
     id: 4,
     variant: "simple-centered",
+    className: null,
     anchor: "anchor",
     title: "OpenSource 'под капотом'",
     description:
