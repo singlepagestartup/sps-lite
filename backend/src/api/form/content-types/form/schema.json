@@ -17,10 +17,6 @@
       "repeatable": true,
       "component": "elements.input"
     },
-    "title": {
-      "type": "richtext",
-      "required": true
-    },
     "class_name": {
       "type": "text"
     },
@@ -29,15 +25,11 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple"],
+      "enum": [
+        "simple"
+      ],
       "default": "simple",
       "required": true
-    },
-    "subtitle": {
-      "type": "richtext"
-    },
-    "description": {
-      "type": "richtext"
     },
     "button": {
       "type": "component",
@@ -52,13 +44,17 @@
     },
     "uid": {
       "type": "uid",
-      "targetField": "title",
-      "required": true
+      "required": true,
+      "targetField": "title"
     },
     "side_effects": {
       "type": "component",
       "repeatable": true,
       "component": "functions.form-side-effect"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }

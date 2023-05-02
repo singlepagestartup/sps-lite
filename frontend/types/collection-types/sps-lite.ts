@@ -21,11 +21,9 @@ export interface ISpsLiteBackendCurrency {
 export interface ISpsLiteBackendForm {
   id: number;
   variant: "simple";
-  title: string | null;
-  inputs?: ISpsLiteBackendInput[];
+  title: string;
   uid: string;
-  subtitle: string | null;
-  description: string | null;
+  inputs?: ISpsLiteBackendInput[];
   className: string | null;
   additionalAttributes: any | null;
   button?: ISpsLiteBackendButton;

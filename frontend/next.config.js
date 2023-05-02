@@ -7,8 +7,6 @@ module.exports = {
   reactStrictMode: false,
   images: {
     domains: [
-      "127.0.0.1",
-      "localhost",
       "vercel.app",
       "tailwindui.com",
       "images.unsplash.com",

@@ -27,7 +27,7 @@ export default function Navbars<T extends ISpsLiteNavbar>(props: any) {
     <Comp
       {...props}
       {...backendNavbar}
-      isLoading={isLoading || isFetching || isUninitialized}
+      showSkeletons={isLoading || isFetching || isUninitialized}
     />
   );
 }
