@@ -4,6 +4,7 @@ import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { metatagPopulate, pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
+import getImageUrl from "~utils/api/get-file-url";
 
 export const dynamicParams = true;
 
@@ -128,7 +129,7 @@ export async function generateMetadata(props: any) {
 
     if (defaultMetatag.favicon?.url) {
       defaultMetadata.icons = {
-        icon: defaultMetatag.favicon?.url,
+        icon: getImageUrl(defaultMetatag.favicon),
       };
     }
 
@@ -144,7 +145,7 @@ export async function generateMetadata(props: any) {
 
   if (metatag.favicon?.url) {
     metadata.icons = {
-      icon: metatag.favicon?.url,
+      icon: getImageUrl(metatag.favicon),
     };
   }
 
