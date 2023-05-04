@@ -23,27 +23,26 @@
         }
       },
       "type": "enumeration",
-      "enum": ["one-quarter"],
+      "enum": [
+        "one-quarter"
+      ],
       "default": "one-quarter",
       "required": true
     },
     "title": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",
       "required": true
     },
     "uid": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "page_blocks": {
       "pluginOptions": {
@@ -80,7 +79,10 @@
         }
       },
       "type": "enumeration",
-      "enum": ["left", "right"],
+      "enum": [
+        "left",
+        "right"
+      ],
       "default": "left",
       "required": true
     }

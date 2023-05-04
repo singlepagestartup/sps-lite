@@ -10,18 +10,37 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "inputs": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.input"
+      "component": "elements.input",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "class_name": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "additional_attributes": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "variant": {
       "type": "enumeration",
@@ -29,12 +48,22 @@
         "simple"
       ],
       "default": "simple",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "button": {
       "type": "component",
       "repeatable": false,
-      "component": "elements.button"
+      "component": "elements.button",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "form_requests": {
       "type": "relation",
@@ -50,11 +79,21 @@
     "side_effects": {
       "type": "component",
       "repeatable": true,
-      "component": "functions.form-side-effect"
+      "component": "functions.form-side-effect",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

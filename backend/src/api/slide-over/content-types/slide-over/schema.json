@@ -23,27 +23,26 @@
         }
       },
       "type": "enumeration",
-      "enum": ["right-side-half-width"],
+      "enum": [
+        "right-side-half-width"
+      ],
       "default": "right-side-half-width",
       "required": true
     },
     "title": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",
       "required": true
     },
     "uid": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "class_name": {
       "pluginOptions": {
@@ -60,7 +59,9 @@
         }
       },
       "type": "dynamiczone",
-      "components": ["page-blocks.faqs-block"]
+      "components": [
+        "page-blocks.faqs-block"
+      ]
     },
     "layouts": {
       "type": "relation",

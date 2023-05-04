@@ -6,11 +6,11 @@
     "subtitle": "Looking Forward to Future Innovations",
     "rating": 5,
     "createdAt": "2023-03-31T16:47:22.383Z",
-    "updatedAt": "2023-04-02T11:54:34.217Z",
+    "updatedAt": "2023-05-04T10:08:47.130Z",
     "publishedAt": "2023-03-12T11:34:53.754Z",
     "media": [
         {
-            "id": 460,
+            "id": 508,
             "name": "pexels-edmond-dantès-4347368.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_edmond_dantes_4347368_568c4a9fb1.jpg",
-                    "hash": "large_pexels_edmond_dantes_4347368_568c4a9fb1",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_edmond_dantes_4347368_07ba5fd533.jpg",
+                    "hash": "large_pexels_edmond_dantes_4347368_07ba5fd533",
                     "mime": "image/jpeg",
                     "name": "large_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_edmond_dantes_4347368_568c4a9fb1.jpg",
-                    "hash": "small_pexels_edmond_dantes_4347368_568c4a9fb1",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_edmond_dantes_4347368_07ba5fd533.jpg",
+                    "hash": "small_pexels_edmond_dantes_4347368_07ba5fd533",
                     "mime": "image/jpeg",
                     "name": "small_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_edmond_dantes_4347368_568c4a9fb1.jpg",
-                    "hash": "medium_pexels_edmond_dantes_4347368_568c4a9fb1",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_edmond_dantes_4347368_07ba5fd533.jpg",
+                    "hash": "medium_pexels_edmond_dantes_4347368_07ba5fd533",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_edmond_dantes_4347368_568c4a9fb1.jpg",
-                    "hash": "thumbnail_pexels_edmond_dantes_4347368_568c4a9fb1",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_edmond_dantes_4347368_07ba5fd533.jpg",
+                    "hash": "thumbnail_pexels_edmond_dantes_4347368_07ba5fd533",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_edmond_dantes_4347368_568c4a9fb1",
+            "hash": "pexels_edmond_dantes_4347368_07ba5fd533",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 6751.8,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_568c4a9fb1.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_07ba5fd533.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-04-02T11:54:34.053Z",
-            "updatedAt": "2023-04-02T11:54:34.053Z",
+            "createdAt": "2023-05-04T10:08:47.023Z",
+            "updatedAt": "2023-05-04T10:08:47.023Z",
             "folder": null
         }
     ],

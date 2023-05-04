@@ -18,7 +18,8 @@
   "attributes": {
     "uid": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "page_blocks": {
       "type": "dynamiczone",
@@ -45,7 +46,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple"],
+      "enum": [
+        "simple"
+      ],
       "default": "simple",
       "required": true,
       "pluginOptions": {

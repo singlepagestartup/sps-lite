@@ -7,16 +7,18 @@
     "period": null,
     "old_price": 199,
     "createdAt": "2023-02-14T08:51:37.439Z",
-    "updatedAt": "2023-04-02T11:55:21.239Z",
+    "updatedAt": "2023-05-04T10:09:08.577Z",
     "publishedAt": "2023-02-14T22:48:56.695Z",
+    "locale": "en",
     "currency": {
         "id": 1,
         "title": "USD",
         "unicode": "$",
         "is_default": true,
         "createdAt": "2023-03-29T23:09:51.671Z",
-        "updatedAt": "2023-04-02T11:55:21.325Z",
+        "updatedAt": "2023-05-04T10:07:54.607Z",
         "publishedAt": "2023-03-29T23:09:52.898Z",
+        "locale": "en",
         "tiers": [
             {
                 "id": 2,
@@ -27,44 +29,46 @@
                 "period": null,
                 "old_price": 199,
                 "createdAt": "2023-02-14T08:51:37.439Z",
-                "updatedAt": "2023-04-02T11:55:21.239Z",
+                "updatedAt": "2023-05-04T10:09:08.577Z",
                 "publishedAt": "2023-02-14T22:48:56.695Z",
+                "locale": "en",
                 "currency": {
                     "id": 1,
                     "title": "USD",
                     "unicode": "$",
                     "is_default": true,
                     "createdAt": "2023-03-29T23:09:51.671Z",
-                    "updatedAt": "2023-04-02T11:55:21.325Z",
-                    "publishedAt": "2023-03-29T23:09:52.898Z"
+                    "updatedAt": "2023-05-04T10:07:54.607Z",
+                    "publishedAt": "2023-03-29T23:09:52.898Z",
+                    "locale": "en"
                 },
                 "features": [
                     {
-                        "id": 395,
+                        "id": 504,
                         "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
                         "description": null,
                         "subtitle": null
                     },
                     {
-                        "id": 396,
+                        "id": 505,
                         "title": "Настроенный фронтенд с библиотекой компонентов",
                         "description": null,
                         "subtitle": null
                     },
                     {
-                        "id": 397,
+                        "id": 506,
                         "title": "Все модели для построения стартапа любой сложности",
                         "description": null,
                         "subtitle": null
                     },
                     {
-                        "id": 398,
+                        "id": 507,
                         "title": "Доступ к репозиторию с исходниками",
                         "description": null,
                         "subtitle": null
                     },
                     {
-                        "id": 399,
+                        "id": 508,
                         "title": "Доступ к комьюнити",
                         "description": null,
                         "subtitle": null
@@ -72,7 +76,8 @@
                 ],
                 "buttons": [],
                 "createdBy": null,
-                "updatedBy": null
+                "updatedBy": null,
+                "localizations": []
             }
         ],
         "createdBy": {
@@ -128,11 +133,12 @@
             ],
             "createdBy": null,
             "updatedBy": null
-        }
+        },
+        "localizations": []
     },
     "features": [
         {
-            "id": 395,
+            "id": 504,
             "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
             "description": null,
             "subtitle": null,
@@ -140,7 +146,7 @@
             "additional_media": null
         },
         {
-            "id": 396,
+            "id": 505,
             "title": "Настроенный фронтенд с библиотекой компонентов",
             "description": null,
             "subtitle": null,
@@ -148,7 +154,7 @@
             "additional_media": null
         },
         {
-            "id": 397,
+            "id": 506,
             "title": "Все модели для построения стартапа любой сложности",
             "description": null,
             "subtitle": null,
@@ -156,7 +162,7 @@
             "additional_media": null
         },
         {
-            "id": 398,
+            "id": 507,
             "title": "Доступ к репозиторию с исходниками",
             "description": null,
             "subtitle": null,
@@ -164,7 +170,7 @@
             "additional_media": null
         },
         {
-            "id": 399,
+            "id": 508,
             "title": "Доступ к комьюнити",
             "description": null,
             "subtitle": null,
@@ -174,5 +180,6 @@
     ],
     "buttons": [],
     "createdBy": null,
-    "updatedBy": null
+    "updatedBy": null,
+    "localizations": []
 }

@@ -6,11 +6,11 @@
     "subtitle": "A Game-Changer for Business Owners",
     "rating": 5,
     "createdAt": "2023-03-31T16:47:30.183Z",
-    "updatedAt": "2023-04-02T11:54:43.811Z",
+    "updatedAt": "2023-05-04T10:08:56.750Z",
     "publishedAt": "2023-03-12T11:34:27.387Z",
     "media": [
         {
-            "id": 463,
+            "id": 511,
             "name": "pexels-karolina-grabowska-5882683.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
-                    "hash": "large_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_f2f86dcae3.jpg",
+                    "hash": "large_pexels_karolina_grabowska_5882683_f2f86dcae3",
                     "mime": "image/jpeg",
                     "name": "large_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
-                    "hash": "small_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_f2f86dcae3.jpg",
+                    "hash": "small_pexels_karolina_grabowska_5882683_f2f86dcae3",
                     "mime": "image/jpeg",
                     "name": "small_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
-                    "hash": "medium_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_f2f86dcae3.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_5882683_f2f86dcae3",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
-                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_b501e7eda7",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_f2f86dcae3.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_f2f86dcae3",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_karolina_grabowska_5882683_b501e7eda7",
+            "hash": "pexels_karolina_grabowska_5882683_f2f86dcae3",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 109.43,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_b501e7eda7.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_f2f86dcae3.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-04-02T11:54:43.692Z",
-            "updatedAt": "2023-04-02T11:54:43.692Z",
+            "createdAt": "2023-05-04T10:08:56.657Z",
+            "updatedAt": "2023-05-04T10:08:56.657Z",
             "folder": null
         }
     ],
