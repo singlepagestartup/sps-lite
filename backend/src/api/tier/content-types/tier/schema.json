@@ -53,10 +53,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "one-time",
-        "regularly"
-      ]
+      "enum": ["one-time", "regularly"]
     },
     "period": {
       "pluginOptions": {

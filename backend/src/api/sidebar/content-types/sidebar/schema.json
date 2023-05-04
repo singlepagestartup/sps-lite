@@ -23,9 +23,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "one-quarter"
-      ],
+      "enum": ["one-quarter"],
       "default": "one-quarter",
       "required": true
     },
@@ -79,10 +77,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "left",
-        "right"
-      ],
+      "enum": ["left", "right"],
       "default": "left",
       "required": true
     }

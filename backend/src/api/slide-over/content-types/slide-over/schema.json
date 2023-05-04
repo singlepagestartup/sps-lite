@@ -23,9 +23,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "right-side-half-width"
-      ],
+      "enum": ["right-side-half-width"],
       "default": "right-side-half-width",
       "required": true
     },
@@ -59,9 +57,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "page-blocks.faqs-block"
-      ]
+      "components": ["page-blocks.faqs-block"]
     },
     "layouts": {
       "type": "relation",

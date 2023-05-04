@@ -44,9 +44,7 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
+      "enum": ["simple"],
       "default": "simple",
       "required": true,
       "pluginOptions": {
