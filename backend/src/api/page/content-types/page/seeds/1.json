@@ -2,7 +2,7 @@
     "id": 1,
     "title": "Main page",
     "createdAt": "2023-04-08T19:06:02.556Z",
-    "updatedAt": "2023-05-04T10:08:30.830Z",
+    "updatedAt": "2023-05-04T15:14:45.331Z",
     "publishedAt": "2023-04-08T19:06:05.277Z",
     "locale": "en",
     "url": "/",
@@ -23,7 +23,7 @@
             "title": "Public Page Footer",
             "uid": "public-page-footer",
             "createdAt": "2023-05-04T10:25:13.563Z",
-            "updatedAt": "2023-05-04T10:25:15.042Z",
+            "updatedAt": "2023-05-04T15:36:53.767Z",
             "publishedAt": "2023-05-04T10:25:15.030Z",
             "locale": "en",
             "variant": "boxed",
@@ -57,7 +57,7 @@
                     "__component": "page-blocks.footer-block",
                     "id": 2,
                     "copyrights": "2023 Single Page Startup",
-                    "description": null,
+                    "description": "The fastest way to develop your startup",
                     "variant": "four-columns-with-company-mission",
                     "class_name": null
                 }
@@ -243,7 +243,7 @@
             "title": "Public Page Navbar",
             "uid": "public-page-navbar",
             "createdAt": "2023-04-08T12:04:20.760Z",
-            "updatedAt": "2023-05-04T10:26:32.031Z",
+            "updatedAt": "2023-05-04T15:30:06.394Z",
             "publishedAt": "2023-04-08T12:04:22.148Z",
             "locale": "en",
             "variant": "boxed",
@@ -320,7 +320,7 @@
                 "id": 1,
                 "title": "Main page",
                 "createdAt": "2023-04-08T19:06:02.556Z",
-                "updatedAt": "2023-05-04T10:08:30.830Z",
+                "updatedAt": "2023-05-04T15:14:45.331Z",
                 "publishedAt": "2023-04-08T19:06:05.277Z",
                 "locale": "en",
                 "url": "/",
@@ -339,9 +339,28 @@
                     {
                         "__component": "page-blocks.hero-section-block",
                         "id": 71,
-                        "title": "Boilerplate for Lean Startup Developers",
-                        "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+                        "title": "Jumpstart Your Lean Startup with Our Developer-Friendly Boilerplate",
+                        "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                         "variant": "simple-centered",
+                        "anchor": null,
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.cta-section-block",
+                        "id": 25,
+                        "variant": "dark-panel-with-app-screenshot",
+                        "anchor": null,
+                        "title": "Minimum Viable Product is Ready",
+                        "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.features-section-block",
+                        "id": 7,
+                        "title": "Don't repeat yourself",
+                        "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                        "subtitle": null,
+                        "variant": "with-icon",
                         "anchor": null,
                         "class_name": null
                     },
@@ -352,25 +371,6 @@
                         "description": "Fill in all the fields below and our manager will contact you.",
                         "anchor": null,
                         "variant": "centered",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.cta-section-block",
-                        "id": 25,
-                        "variant": "dark-panel-with-app-screenshot",
-                        "anchor": null,
-                        "title": "Только вперед",
-                        "description": "Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.features-section-block",
-                        "id": 7,
-                        "title": "Don't repeat yourself",
-                        "description": "Мы постарались сделать так, чтобы вам не нужно было описывать бизнес логику, которая повторяется из проекта в проект.",
-                        "subtitle": null,
-                        "variant": "with-icon",
-                        "anchor": null,
                         "class_name": null
                     }
                 ],
@@ -386,6 +386,69 @@
                     "locale": "en",
                     "is_default": true
                 },
+                "createdBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "localizations": []
+            },
+            {
+                "id": 8,
+                "title": "Terms and Conditions",
+                "createdAt": "2023-05-04T15:38:21.137Z",
+                "updatedAt": "2023-05-04T15:38:36.931Z",
+                "publishedAt": "2023-05-04T15:38:22.465Z",
+                "locale": "en",
+                "url": "/terms-and-conditions",
+                "layout": {
+                    "id": 3,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-2",
+                    "variant": "wide",
+                    "createdAt": "2023-04-20T10:23:36.202Z",
+                    "updatedAt": "2023-05-04T10:08:23.614Z",
+                    "publishedAt": "2023-04-20T10:23:38.447Z",
+                    "locale": "en",
+                    "class_name": null
+                },
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.hero-section-block",
+                        "id": 75,
+                        "title": "Terms and Conditions",
+                        "description": "",
+                        "variant": "simple-centered",
+                        "anchor": null,
+                        "class_name": null
+                    }
+                ],
+                "metatag": null,
                 "createdBy": {
                     "id": 1,
                     "firstname": "rogwild",
@@ -479,8 +542,8 @@
         {
             "__component": "page-blocks.hero-section-block",
             "id": 71,
-            "title": "Boilerplate for Lean Startup Developers",
-            "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+            "title": "Jumpstart Your Lean Startup with Our Developer-Friendly Boilerplate",
+            "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
             "variant": "simple-centered",
             "anchor": null,
             "class_name": null,
@@ -552,8 +615,221 @@
                     "folder": null
                 }
             ],
-            "buttons": [],
+            "buttons": [
+                {
+                    "id": 200,
+                    "url": "https://github.com/singlepagestartup/sps-lite",
+                    "description": null,
+                    "variant": "primary",
+                    "title": "Start For Free",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null,
+                    "flyout_menu": null
+                }
+            ],
             "background": null
+        },
+        {
+            "__component": "page-blocks.cta-section-block",
+            "id": 25,
+            "variant": "dark-panel-with-app-screenshot",
+            "anchor": null,
+            "title": "Minimum Viable Product is Ready",
+            "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+            "class_name": null,
+            "media": [
+                {
+                    "id": 517,
+                    "name": "28.png",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 5708,
+                    "height": 3981,
+                    "formats": {
+                        "large": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_28_7b601ba70d.png",
+                            "hash": "large_28_7b601ba70d",
+                            "mime": "image/png",
+                            "name": "large_28.png",
+                            "path": null,
+                            "size": 728.16,
+                            "width": 1000,
+                            "height": 697
+                        },
+                        "small": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_28_7b601ba70d.png",
+                            "hash": "small_28_7b601ba70d",
+                            "mime": "image/png",
+                            "name": "small_28.png",
+                            "path": null,
+                            "size": 210.42,
+                            "width": 500,
+                            "height": 349
+                        },
+                        "medium": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_28_7b601ba70d.png",
+                            "hash": "medium_28_7b601ba70d",
+                            "mime": "image/png",
+                            "name": "medium_28.png",
+                            "path": null,
+                            "size": 433.34,
+                            "width": 750,
+                            "height": 523
+                        },
+                        "thumbnail": {
+                            "ext": ".png",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_28_7b601ba70d.png",
+                            "hash": "thumbnail_28_7b601ba70d",
+                            "mime": "image/png",
+                            "name": "thumbnail_28.png",
+                            "path": null,
+                            "size": 54.32,
+                            "width": 224,
+                            "height": 156
+                        }
+                    },
+                    "hash": "28_7b601ba70d",
+                    "ext": ".png",
+                    "mime": "image/png",
+                    "size": 3537.22,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/28_7b601ba70d.png",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-05-04T14:34:42.450Z",
+                    "updatedAt": "2023-05-04T14:34:42.450Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 199,
+                    "url": "https://github.com/singlepagestartup/sps-lite",
+                    "description": null,
+                    "variant": "primary",
+                    "title": "Open GitHub",
+                    "additional_attributes": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null,
+                    "flyout_menu": null
+                }
+            ]
+        },
+        {
+            "__component": "page-blocks.features-section-block",
+            "id": 7,
+            "title": "Don't repeat yourself",
+            "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+            "subtitle": null,
+            "variant": "with-icon",
+            "anchor": null,
+            "class_name": null,
+            "media": null,
+            "features": [
+                {
+                    "id": 490,
+                    "title": "Ready-to-Use UI Components",
+                    "description": "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 491,
+                    "title": "Global-Ready",
+                    "description": "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 492,
+                    "title": "Streamlined Authentication & Authorization",
+                    "description": "Save 20 to 100 hours of development time with our ready-to-use, best-practice authentication and authorization system. Focus on your core features and let us handle the rest.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 493,
+                    "title": "Easy Avatar Integration",
+                    "description": "Enhance user profiles with our pre-built avatar functionality. Simply add the PageBlock to the profile page and let your users personalize their accounts with custom avatars.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 494,
+                    "title": "Seamless Third-Party Service Integration",
+                    "description": "Quickly add essential features to your MVP with built-in support for popular services such as authentication, payment gateways, and analytics tools. Less hassle, more productivity.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 495,
+                    "title": "Effortless Document Generation",
+                    "description": "Generate documents based on user data or completed forms with ease using our built-in document generation functionality. Just incorporate it into your business logic and you're set.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 496,
+                    "title": "Comprehensive E-Commerce Features",
+                    "description": "Utilize our ready-to-use product catalog, product pages, shopping cart, delivery options, and order history to jumpstart your e-commerce project.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 497,
+                    "title": "Built-In Blogging Capabilities",
+                    "description": "Establish your personal brand by enabling our integrated blogging functionality, perfect for sharing news and insights with your audience.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 498,
+                    "title": "Flexible Customization and Extensibility",
+                    "description": "Tailor your project to your needs using the Strapi admin panel, extend its capabilities with plugins, or create your own custom features.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 499,
+                    "title": "Hassle-Free Data Migration and Seeding",
+                    "description": "Easily migrate or seed data by completing your project locally, running a data dump, and migrating it to your server, or by describing your data as JSON and adding it to the data seeding process.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 500,
+                    "title": "Rapid Deployment (CI/CD)",
+                    "description": "With pre-configured deployment tools and processes, our boilerplate enables you to quickly deploy your MVP to your preferred hosting platform. This helps you reduce the time-to-market and start gathering valuable customer feedback sooner.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                },
+                {
+                    "id": 509,
+                    "title": "Modular and Scalable",
+                    "description": "Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.",
+                    "subtitle": null,
+                    "media": null,
+                    "additional_media": null
+                }
+            ]
         },
         {
             "__component": "page-blocks.contact-section-block",
@@ -569,7 +845,7 @@
                 "title": "Есть вопросы по продукту?",
                 "uid": "question",
                 "createdAt": "2023-03-31T16:24:12.733Z",
-                "updatedAt": "2023-05-04T10:07:54.935Z",
+                "updatedAt": "2023-05-04T15:13:52.947Z",
                 "publishedAt": "2023-02-14T22:44:48.245Z",
                 "variant": "simple",
                 "class_name": null,
@@ -578,48 +854,48 @@
                 "inputs": [
                     {
                         "id": 186,
-                        "placeholder": "Введите ваше имя",
+                        "placeholder": "Type your name",
                         "component": "text",
                         "is_required": true,
                         "value": null,
                         "name": "name",
-                        "label": "Имя",
+                        "label": "Name",
                         "class_name": "col-span-2",
                         "type": null,
                         "multiple": null
                     },
                     {
                         "id": 187,
-                        "placeholder": "Введите вашу электронную почту",
+                        "placeholder": "Type your email",
                         "component": "text",
                         "is_required": true,
                         "value": null,
                         "name": "email",
-                        "label": "Электронная почта",
+                        "label": "Email",
                         "class_name": "col-span-2",
                         "type": null,
                         "multiple": null
                     },
                     {
                         "id": 188,
-                        "placeholder": "Выберите тариф",
+                        "placeholder": "Choose target tier",
                         "component": "listbox",
                         "is_required": false,
                         "value": null,
                         "name": "tier",
-                        "label": "Тариф",
+                        "label": "Tier",
                         "class_name": "col-span-4",
                         "type": null,
                         "multiple": null
                     },
                     {
                         "id": 189,
-                        "placeholder": "Напишите ваш вопрос",
+                        "placeholder": "Type your question",
                         "component": "text",
                         "is_required": false,
                         "value": null,
                         "name": "querstion",
-                        "label": "Вопрос",
+                        "label": "Question",
                         "class_name": "col-span-4",
                         "type": "textarea",
                         "multiple": null
@@ -631,7 +907,7 @@
                         "is_required": true,
                         "value": null,
                         "name": "policy",
-                        "label": "Я согласен с Политикой конфиденциальности",
+                        "label": "I agree with Terms and Conditions",
                         "class_name": "col-span-4",
                         "type": null,
                         "multiple": null
@@ -642,7 +918,7 @@
                     "url": null,
                     "description": null,
                     "variant": "primary",
-                    "title": "Отправить",
+                    "title": "Send Request",
                     "additional_attributes": null,
                     "class_name": null
                 },
@@ -673,131 +949,6 @@
                 "localizations": []
             },
             "buttons_arrays": []
-        },
-        {
-            "__component": "page-blocks.cta-section-block",
-            "id": 25,
-            "variant": "dark-panel-with-app-screenshot",
-            "anchor": null,
-            "title": "Только вперед",
-            "description": "Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.",
-            "class_name": null,
-            "media": null,
-            "buttons": [
-                {
-                    "id": 195,
-                    "url": "/opened_modal=hello-world",
-                    "description": null,
-                    "variant": "primary",
-                    "title": "Modal",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
-                }
-            ]
-        },
-        {
-            "__component": "page-blocks.features-section-block",
-            "id": 7,
-            "title": "Don't repeat yourself",
-            "description": "Мы постарались сделать так, чтобы вам не нужно было описывать бизнес логику, которая повторяется из проекта в проект.",
-            "subtitle": null,
-            "variant": "with-icon",
-            "anchor": null,
-            "class_name": null,
-            "media": null,
-            "features": [
-                {
-                    "id": 490,
-                    "title": "Конструктор блоков страниц",
-                    "description": "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 491,
-                    "title": "Мультиязычность",
-                    "description": "Ваш стартап обязательно станет интернациональным, мы позаботились об этом и уже все подготовили за вас. Просто выберите какие языки поддерживать.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 492,
-                    "title": "Аутентификация и авторизация пользователей с мульти-факторным подтверждением входа",
-                    "description": "Разработка аутентификаци, авторизации и всех сопутствующих страниц занимает от 20 до 100 часов работы команды. Больше не нужно тратить на это время, все уже есть и работает. Просто воспользуйтесь наработками в своем стартапе.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 493,
-                    "title": "Личный кабинет пользователя с настройками профиля",
-                    "description": "После того как пользователь зарегистрировался, он захочет поставить аватар, мы уже сделали это, просто включите этот PageBlock на страницу профиля пользователя.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 494,
-                    "title": "Интеграции",
-                    "description": "Мы сделали интеграции с Google Drive и Google Sheets для данных, которые отправляются в формах на сайте. Вы можете использовать их или добавить свои варианты интеграций.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 495,
-                    "title": "Генератор PDF файлов на основе создаваемых пользователем данных",
-                    "description": "Хотите генерировать документы на основе данных пользователя или заполненной формы? Не проблема, просто включите этот функционал в вашу бизнес логику.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 496,
-                    "title": "Функционал интернет-магазина",
-                    "description": "Каталог товаров с выбором вариантов, страницы товаров, корзина, выбор способов доставки, история заказов все это можно использовать в вашем проекте",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 497,
-                    "title": "Функционал блога",
-                    "description": "Пишите новости или ведите блог, включите этот функционал и приступайте к развитию вашего личного бренда.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 498,
-                    "title": "Панель администрирования",
-                    "description": "Настраивайте ваш проект через панель администрирования Strapi, расширяйте функционал с помощью плагинов или пишите свои.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 499,
-                    "title": "Миграции данных",
-                    "description": "Можете заполнить проект на локальной машине и сделать дамп данных, после чего на сервере запустите миграцию и контент будет заполнен. Либо можете описать данные в виде JSON и добавить их в сидинг данных и проект будет заполнен этими данными",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 500,
-                    "title": "CI/CD",
-                    "description": "Мы уже написали скрипты CI/CD для GitHub Actions и инструкции по развертыванию проекта на сервере. Значит вам не нужно будет думать о том, как запустить проект на сервере, просто последовательно выполните команды и сможете обновлять проект автоматически через GitHub версионирование.",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                }
-            ]
         }
     ],
     "metatag": {
@@ -837,7 +988,7 @@
                 "id": 1,
                 "title": "Main page",
                 "createdAt": "2023-04-08T19:06:02.556Z",
-                "updatedAt": "2023-05-04T10:08:30.830Z",
+                "updatedAt": "2023-05-04T15:14:45.331Z",
                 "publishedAt": "2023-04-08T19:06:05.277Z",
                 "locale": "en",
                 "url": "/",
@@ -856,9 +1007,28 @@
                     {
                         "__component": "page-blocks.hero-section-block",
                         "id": 71,
-                        "title": "Boilerplate for Lean Startup Developers",
-                        "description": "Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.",
+                        "title": "Jumpstart Your Lean Startup with Our Developer-Friendly Boilerplate",
+                        "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                         "variant": "simple-centered",
+                        "anchor": null,
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.cta-section-block",
+                        "id": 25,
+                        "variant": "dark-panel-with-app-screenshot",
+                        "anchor": null,
+                        "title": "Minimum Viable Product is Ready",
+                        "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.features-section-block",
+                        "id": 7,
+                        "title": "Don't repeat yourself",
+                        "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                        "subtitle": null,
+                        "variant": "with-icon",
                         "anchor": null,
                         "class_name": null
                     },
@@ -869,25 +1039,6 @@
                         "description": "Fill in all the fields below and our manager will contact you.",
                         "anchor": null,
                         "variant": "centered",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.cta-section-block",
-                        "id": 25,
-                        "variant": "dark-panel-with-app-screenshot",
-                        "anchor": null,
-                        "title": "Только вперед",
-                        "description": "Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.features-section-block",
-                        "id": 7,
-                        "title": "Don't repeat yourself",
-                        "description": "Мы постарались сделать так, чтобы вам не нужно было описывать бизнес логику, которая повторяется из проекта в проект.",
-                        "subtitle": null,
-                        "variant": "with-icon",
-                        "anchor": null,
                         "class_name": null
                     }
                 ],
@@ -3319,6 +3470,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,
@@ -5655,6 +5854,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,

@@ -56,7 +56,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
             src={getFileUrl(props.media[0])}
             alt=""
             fill={true}
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       ) : null}

@@ -3,7 +3,7 @@
     "title": "Есть вопросы по продукту?",
     "uid": "question",
     "createdAt": "2023-03-31T16:24:12.733Z",
-    "updatedAt": "2023-05-04T10:07:54.935Z",
+    "updatedAt": "2023-05-04T15:13:52.947Z",
     "publishedAt": "2023-02-14T22:44:48.245Z",
     "variant": "simple",
     "class_name": null,
@@ -12,12 +12,12 @@
     "inputs": [
         {
             "id": 186,
-            "placeholder": "Введите ваше имя",
+            "placeholder": "Type your name",
             "component": "text",
             "is_required": true,
             "value": null,
             "name": "name",
-            "label": "Имя",
+            "label": "Name",
             "class_name": "col-span-2",
             "type": null,
             "multiple": null,
@@ -25,12 +25,12 @@
         },
         {
             "id": 187,
-            "placeholder": "Введите вашу электронную почту",
+            "placeholder": "Type your email",
             "component": "text",
             "is_required": true,
             "value": null,
             "name": "email",
-            "label": "Электронная почта",
+            "label": "Email",
             "class_name": "col-span-2",
             "type": null,
             "multiple": null,
@@ -38,12 +38,12 @@
         },
         {
             "id": 188,
-            "placeholder": "Выберите тариф",
+            "placeholder": "Choose target tier",
             "component": "listbox",
             "is_required": false,
             "value": null,
             "name": "tier",
-            "label": "Тариф",
+            "label": "Tier",
             "class_name": "col-span-4",
             "type": null,
             "multiple": null,
@@ -62,12 +62,12 @@
         },
         {
             "id": 189,
-            "placeholder": "Напишите ваш вопрос",
+            "placeholder": "Type your question",
             "component": "text",
             "is_required": false,
             "value": null,
             "name": "querstion",
-            "label": "Вопрос",
+            "label": "Question",
             "class_name": "col-span-4",
             "type": "textarea",
             "multiple": null,
@@ -80,7 +80,7 @@
             "is_required": true,
             "value": null,
             "name": "policy",
-            "label": "Я согласен с Политикой конфиденциальности",
+            "label": "I agree with Terms and Conditions",
             "class_name": "col-span-4",
             "type": null,
             "multiple": null,
@@ -92,7 +92,7 @@
         "url": null,
         "description": null,
         "variant": "primary",
-        "title": "Отправить",
+        "title": "Send Request",
         "additional_attributes": null,
         "class_name": null,
         "media": null,
@@ -2443,6 +2443,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,

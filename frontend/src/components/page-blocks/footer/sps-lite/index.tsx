@@ -3,7 +3,7 @@ import { FC } from "react";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
 
 export interface ISpsLiteFooterBlock extends ISpsLiteBackendFooterBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

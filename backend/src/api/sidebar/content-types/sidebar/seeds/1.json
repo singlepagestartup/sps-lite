@@ -107,7 +107,7 @@
                 "title": "Public Page Footer",
                 "uid": "public-page-footer",
                 "createdAt": "2023-05-04T10:25:13.563Z",
-                "updatedAt": "2023-05-04T10:25:15.042Z",
+                "updatedAt": "2023-05-04T15:36:53.767Z",
                 "publishedAt": "2023-05-04T10:25:15.030Z",
                 "locale": "en",
                 "variant": "boxed",
@@ -141,7 +141,7 @@
                         "__component": "page-blocks.footer-block",
                         "id": 2,
                         "copyrights": "2023 Single Page Startup",
-                        "description": null,
+                        "description": "The fastest way to develop your startup",
                         "variant": "four-columns-with-company-mission",
                         "class_name": null
                     }
@@ -327,7 +327,7 @@
                 "title": "Public Page Navbar",
                 "uid": "public-page-navbar",
                 "createdAt": "2023-04-08T12:04:20.760Z",
-                "updatedAt": "2023-05-04T10:26:32.031Z",
+                "updatedAt": "2023-05-04T15:30:06.394Z",
                 "publishedAt": "2023-04-08T12:04:22.148Z",
                 "locale": "en",
                 "variant": "boxed",
@@ -402,12 +402,12 @@
             "pages": [
                 {
                     "id": 3,
-                    "title": "About",
+                    "title": "Page With Sidebar Layout",
                     "createdAt": "2023-04-08T20:00:13.006Z",
-                    "updatedAt": "2023-05-04T10:27:34.703Z",
+                    "updatedAt": "2023-05-04T15:29:46.768Z",
                     "publishedAt": "2023-04-08T20:00:14.519Z",
                     "locale": "en",
-                    "url": "/about",
+                    "url": "/page-with-sidebar-layout",
                     "layout": {
                         "id": 1,
                         "title": "Public Page Layout With Sidebar",
@@ -423,8 +423,8 @@
                         {
                             "__component": "page-blocks.hero-section-block",
                             "id": 72,
-                            "title": "About",
-                            "description": "About Page",
+                            "title": "Page With Sidebar Layout",
+                            "description": "With Page Blocks",
                             "variant": "simple-centered",
                             "anchor": null,
                             "class_name": null
@@ -2912,6 +2912,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,
@@ -5248,6 +5296,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,

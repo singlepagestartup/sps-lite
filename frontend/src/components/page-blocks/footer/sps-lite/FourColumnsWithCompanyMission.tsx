@@ -9,7 +9,7 @@ import getFileUrl from "~utils/api/get-file-url";
 export default function FourColumnsWithCompanyMission(
   props: ISpsLiteFooterBlock,
 ) {
-  if (props.isLoading) {
+  if (props.showSkeletons) {
     return (
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="flex flex-col lg:flex-row">
@@ -70,7 +70,7 @@ export default function FourColumnsWithCompanyMission(
               })}
             </div>
           </div>
-          <div className="lg:mt-12 flex lg:justify-end w-full lg:w-9/12 gap-4">
+          <div className="flex lg:justify-end w-full lg:w-9/12 gap-4">
             {props.buttonsArrays?.map((buttonsArray, index) => {
               return (
                 <div key={index} className="w-6/12 lg:w-3/12">
@@ -80,7 +80,7 @@ export default function FourColumnsWithCompanyMission(
             })}
           </div>
         </div>
-        <div className="mt-8 lg:mt-12 border-t border-gray-200 pt-4 lg:pt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div className="mt-8 border-t border-gray-200 pt-4 lg:pt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           {props.copyrights ? (
             <ReactMarkdown className="text-sm text-gray-500">
               {props.copyrights}

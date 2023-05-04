@@ -1,166 +1,194 @@
 {
-    "id": 1,
-    "title": "Public Page Navbar",
-    "uid": "public-page-navbar",
-    "createdAt": "2023-04-08T12:04:20.760Z",
-    "updatedAt": "2023-05-04T15:30:06.394Z",
-    "publishedAt": "2023-04-08T12:04:22.148Z",
+    "id": 8,
+    "title": "Terms and Conditions",
+    "createdAt": "2023-05-04T15:38:21.137Z",
+    "updatedAt": "2023-05-04T15:38:36.931Z",
+    "publishedAt": "2023-05-04T15:38:22.465Z",
     "locale": "en",
-    "variant": "boxed",
-    "class_name": null,
-    "position": "fixed",
-    "side": "top",
-    "page_blocks": [
-        {
-            "__component": "page-blocks.navbar-block",
-            "id": 5,
-            "variant": "simple-links-on-left",
-            "description": null,
+    "url": "/terms-and-conditions",
+    "layout": {
+        "id": 3,
+        "title": "Public Page Layout",
+        "uid": "public-page-layout-2",
+        "variant": "wide",
+        "createdAt": "2023-04-20T10:23:36.202Z",
+        "updatedAt": "2023-05-04T10:08:23.614Z",
+        "publishedAt": "2023-04-20T10:23:38.447Z",
+        "locale": "en",
+        "class_name": null,
+        "sidebar": null,
+        "topbar": null,
+        "footer": {
+            "id": 2,
+            "title": "Public Page Footer",
+            "uid": "public-page-footer",
+            "createdAt": "2023-05-04T10:25:13.563Z",
+            "updatedAt": "2023-05-04T15:36:53.767Z",
+            "publishedAt": "2023-05-04T10:25:15.030Z",
+            "locale": "en",
+            "variant": "boxed",
             "class_name": null,
-            "logotype": {
-                "id": 12,
-                "title": null,
-                "url": "/",
-                "media": [
-                    {
-                        "id": 505,
-                        "name": "sps-full black.svg",
-                        "alternativeText": null,
-                        "caption": null,
-                        "width": 2226,
-                        "height": 340,
-                        "formats": null,
-                        "hash": "sps_full_black_21eec72f8d",
-                        "ext": ".svg",
-                        "mime": "image/svg+xml",
-                        "size": 1.97,
-                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/sps_full_black_21eec72f8d.svg",
-                        "previewUrl": null,
-                        "provider": "aws-s3",
-                        "provider_metadata": null,
-                        "folderPath": "/",
-                        "createdAt": "2023-05-04T10:08:26.457Z",
-                        "updatedAt": "2023-05-04T10:08:26.457Z",
-                        "folder": null
-                    }
-                ],
-                "additional_media": null
-            },
-            "buttons": [
+            "layouts": [
                 {
-                    "id": 190,
-                    "url": "/",
-                    "description": null,
-                    "variant": "text",
-                    "title": "Main page",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
+                    "id": 3,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-2",
+                    "variant": "wide",
+                    "createdAt": "2023-04-20T10:23:36.202Z",
+                    "updatedAt": "2023-05-04T10:08:23.614Z",
+                    "publishedAt": "2023-04-20T10:23:38.447Z",
+                    "locale": "en",
+                    "class_name": null
                 },
                 {
-                    "id": 203,
-                    "url": "/page-with-sidebar-layout",
-                    "description": null,
-                    "variant": "text",
-                    "title": "Sidebar",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
-                },
-                {
-                    "id": 191,
-                    "url": null,
-                    "description": null,
-                    "variant": "text",
-                    "title": "Flyout Menu",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": {
-                        "id": 1,
-                        "variant": "simple",
-                        "createdAt": "2023-04-18T15:26:14.714Z",
-                        "updatedAt": "2023-05-04T10:07:54.672Z",
-                        "publishedAt": "2023-04-18T15:27:02.762Z",
-                        "locale": "en",
-                        "title": "Flyout Menu With Page Blocks",
-                        "uid": "flyout-menu-with-page-blocks",
-                        "class_name": null
-                    }
-                },
-                {
-                    "id": 192,
-                    "url": "?opened_modal=this-is-modal",
-                    "description": null,
-                    "variant": "text",
-                    "title": "Modal",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
-                },
-                {
-                    "id": 193,
-                    "url": "?opened_slide_over=this-is-slide-over",
-                    "description": null,
-                    "variant": "text",
-                    "title": "Slide Over",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "createdAt": "2023-04-08T12:04:55.015Z",
+                    "updatedAt": "2023-05-04T10:26:18.509Z",
+                    "publishedAt": "2023-04-08T12:04:56.606Z",
+                    "locale": "en",
+                    "class_name": null
                 }
             ],
-            "additional_buttons": [
+            "page_blocks": [
                 {
-                    "id": 194,
-                    "url": "https://github.com/singlepagestartup/sps-lite",
-                    "description": null,
-                    "variant": "secondary",
-                    "title": "GitHub",
-                    "additional_attributes": null,
-                    "class_name": null,
-                    "media": null,
-                    "additional_media": null,
-                    "flyout_menu": null
+                    "__component": "page-blocks.footer-block",
+                    "id": 2,
+                    "copyrights": "2023 Single Page Startup",
+                    "description": "The fastest way to develop your startup",
+                    "variant": "four-columns-with-company-mission",
+                    "class_name": null
                 }
-            ]
-        }
-    ],
-    "layouts": [
-        {
-            "id": 1,
-            "title": "Public Page Layout With Sidebar",
-            "uid": "public-page-layout",
-            "variant": "boxed",
-            "createdAt": "2023-04-08T12:04:55.015Z",
-            "updatedAt": "2023-05-04T10:26:18.509Z",
-            "publishedAt": "2023-04-08T12:04:56.606Z",
-            "locale": "en",
-            "class_name": null,
-            "sidebar": {
+            ],
+            "createdBy": {
                 "id": 1,
-                "variant": "one-quarter",
-                "title": "Ads Sidebar",
-                "uid": "ads-sidebar-1",
-                "createdAt": "2023-04-08T00:35:27.553Z",
-                "updatedAt": "2023-05-04T10:27:15.002Z",
-                "publishedAt": "2023-04-08T00:35:29.006Z",
-                "class_name": null,
-                "side": "right",
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "updatedBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-02-13T22:32:56.592Z",
+                "updatedAt": "2023-02-13T22:32:56.592Z"
+            },
+            "localizations": []
+        },
+        "slide_overs": [
+            {
+                "id": 1,
+                "variant": "right-side-half-width",
+                "title": "This Is Slide Over",
+                "uid": "this-is-slide-over",
+                "class_name": "sps-lite-slide-over",
+                "createdAt": "2023-04-07T23:54:16.534Z",
+                "updatedAt": "2023-05-04T10:08:56.932Z",
+                "publishedAt": "2023-04-07T23:54:17.781Z",
+                "locale": "en",
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.faqs-block",
+                        "id": 3,
+                        "title": "This Is Slide Over",
+                        "description": "With Page Blocks",
+                        "variant": "two-columns-with-centered-introduction",
+                        "anchor": null,
+                        "class_name": null
+                    }
+                ],
+                "layouts": [
+                    {
+                        "id": 1,
+                        "title": "Public Page Layout With Sidebar",
+                        "uid": "public-page-layout",
+                        "variant": "boxed",
+                        "createdAt": "2023-04-08T12:04:55.015Z",
+                        "updatedAt": "2023-05-04T10:26:18.509Z",
+                        "publishedAt": "2023-04-08T12:04:56.606Z",
+                        "locale": "en",
+                        "class_name": null
+                    },
+                    {
+                        "id": 3,
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-2",
+                        "variant": "wide",
+                        "createdAt": "2023-04-20T10:23:36.202Z",
+                        "updatedAt": "2023-05-04T10:08:23.614Z",
+                        "publishedAt": "2023-04-20T10:23:38.447Z",
+                        "locale": "en",
+                        "class_name": null
+                    }
+                ],
+                "createdBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "localizations": []
+            }
+        ],
+        "modals": [
+            {
+                "id": 3,
+                "title": "This Is Modal",
+                "uid": "this-is-modal",
+                "dialog_panel_class_name": "container",
+                "variant": "simple",
+                "createdAt": "2023-03-31T16:24:15.965Z",
+                "updatedAt": "2023-05-04T10:08:25.021Z",
+                "publishedAt": "2023-03-28T11:07:57.457Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.hero-section-block",
-                        "id": 74,
-                        "title": "Sidebar",
+                        "id": 70,
+                        "title": "This Is Modal",
                         "description": "With Page Blocks",
                         "variant": "simple-centered",
                         "anchor": null,
@@ -178,293 +206,6 @@
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
                         "class_name": null
-                    }
-                ],
-                "createdBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "updatedBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "localizations": []
-            },
-            "topbar": null,
-            "footer": {
-                "id": 2,
-                "title": "Public Page Footer",
-                "uid": "public-page-footer",
-                "createdAt": "2023-05-04T10:25:13.563Z",
-                "updatedAt": "2023-05-04T15:36:53.767Z",
-                "publishedAt": "2023-05-04T10:25:15.030Z",
-                "locale": "en",
-                "variant": "boxed",
-                "class_name": null,
-                "layouts": [
-                    {
-                        "id": 3,
-                        "title": "Public Page Layout",
-                        "uid": "public-page-layout-2",
-                        "variant": "wide",
-                        "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-04T10:08:23.614Z",
-                        "publishedAt": "2023-04-20T10:23:38.447Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
-                    }
-                ],
-                "page_blocks": [
-                    {
-                        "__component": "page-blocks.footer-block",
-                        "id": 2,
-                        "copyrights": "2023 Single Page Startup",
-                        "description": "The fastest way to develop your startup",
-                        "variant": "four-columns-with-company-mission",
-                        "class_name": null
-                    }
-                ],
-                "createdBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "updatedBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "localizations": []
-            },
-            "slide_overs": [
-                {
-                    "id": 1,
-                    "variant": "right-side-half-width",
-                    "title": "This Is Slide Over",
-                    "uid": "this-is-slide-over",
-                    "class_name": "sps-lite-slide-over",
-                    "createdAt": "2023-04-07T23:54:16.534Z",
-                    "updatedAt": "2023-05-04T10:08:56.932Z",
-                    "publishedAt": "2023-04-07T23:54:17.781Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.faqs-block",
-                            "id": 3,
-                            "title": "This Is Slide Over",
-                            "description": "With Page Blocks",
-                            "variant": "two-columns-with-centered-introduction",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
-                            "publishedAt": "2023-04-08T12:04:56.606Z",
-                            "locale": "en",
-                            "class_name": null
-                        },
-                        {
-                            "id": 3,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-2",
-                            "variant": "wide",
-                            "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-04T10:08:23.614Z",
-                            "publishedAt": "2023-04-20T10:23:38.447Z",
-                            "locale": "en",
-                            "class_name": null
-                        }
-                    ],
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                }
-            ],
-            "modals": [
-                {
-                    "id": 3,
-                    "title": "This Is Modal",
-                    "uid": "this-is-modal",
-                    "dialog_panel_class_name": "container",
-                    "variant": "simple",
-                    "createdAt": "2023-03-31T16:24:15.965Z",
-                    "updatedAt": "2023-05-04T10:08:25.021Z",
-                    "publishedAt": "2023-03-28T11:07:57.457Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 70,
-                            "title": "This Is Modal",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
-                            "publishedAt": "2023-04-08T12:04:56.606Z",
-                            "locale": "en",
-                            "class_name": null
-                        },
-                        {
-                            "id": 3,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-2",
-                            "variant": "wide",
-                            "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-04T10:08:23.614Z",
-                            "publishedAt": "2023-04-20T10:23:38.447Z",
-                            "locale": "en",
-                            "class_name": null
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                }
-            ],
-            "navbar": {
-                "id": 1,
-                "title": "Public Page Navbar",
-                "uid": "public-page-navbar",
-                "createdAt": "2023-04-08T12:04:20.760Z",
-                "updatedAt": "2023-05-04T15:30:06.394Z",
-                "publishedAt": "2023-04-08T12:04:22.148Z",
-                "locale": "en",
-                "variant": "boxed",
-                "class_name": null,
-                "position": "fixed",
-                "side": "top",
-                "page_blocks": [
-                    {
-                        "__component": "page-blocks.navbar-block",
-                        "id": 5,
-                        "variant": "simple-links-on-left",
-                        "description": null,
-                        "class_name": null
-                    }
-                ],
-                "layouts": [
-                    {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
                     },
                     {
                         "id": 3,
@@ -478,21 +219,7 @@
                         "class_name": null
                     }
                 ],
-                "createdBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
+                "createdBy": null,
                 "updatedBy": {
                     "id": 1,
                     "firstname": "rogwild",
@@ -509,134 +236,51 @@
                     "updatedAt": "2023-02-13T22:32:56.592Z"
                 },
                 "localizations": []
-            },
-            "pages": [
+            }
+        ],
+        "navbar": {
+            "id": 1,
+            "title": "Public Page Navbar",
+            "uid": "public-page-navbar",
+            "createdAt": "2023-04-08T12:04:20.760Z",
+            "updatedAt": "2023-05-04T15:30:06.394Z",
+            "publishedAt": "2023-04-08T12:04:22.148Z",
+            "locale": "en",
+            "variant": "boxed",
+            "class_name": null,
+            "position": "fixed",
+            "side": "top",
+            "page_blocks": [
                 {
-                    "id": 3,
-                    "title": "Page With Sidebar Layout",
-                    "createdAt": "2023-04-08T20:00:13.006Z",
-                    "updatedAt": "2023-05-04T15:29:46.768Z",
-                    "publishedAt": "2023-04-08T20:00:14.519Z",
-                    "locale": "en",
-                    "url": "/page-with-sidebar-layout",
-                    "layout": {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 72,
-                            "title": "Page With Sidebar Layout",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "metatag": null,
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                },
-                {
+                    "__component": "page-blocks.navbar-block",
                     "id": 5,
-                    "title": "Not found page",
-                    "createdAt": "2023-04-08T21:42:59.904Z",
-                    "updatedAt": "2023-05-04T10:08:31.030Z",
-                    "publishedAt": "2023-04-20T11:18:21.051Z",
+                    "variant": "simple-links-on-left",
+                    "description": null,
+                    "class_name": null
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "createdAt": "2023-04-08T12:04:55.015Z",
+                    "updatedAt": "2023-05-04T10:26:18.509Z",
+                    "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "url": "/404",
-                    "layout": {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.not-found-block",
-                            "id": 15,
-                            "variant": "simple",
-                            "title": "404",
-                            "description": null,
-                            "class_name": null,
-                            "anchor": null,
-                            "subtitle": "Not found"
-                        }
-                    ],
-                    "metatag": null,
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
+                    "class_name": null
+                },
+                {
+                    "id": 3,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-2",
+                    "variant": "wide",
+                    "createdAt": "2023-04-20T10:23:36.202Z",
+                    "updatedAt": "2023-05-04T10:08:23.614Z",
+                    "publishedAt": "2023-04-20T10:23:38.447Z",
+                    "locale": "en",
+                    "class_name": null
                 }
             ],
             "createdBy": {
@@ -652,19 +296,7 @@
                 "blocked": false,
                 "preferedLanguage": null,
                 "createdAt": "2023-02-13T22:32:56.592Z",
-                "updatedAt": "2023-02-13T22:32:56.592Z",
-                "roles": [
-                    {
-                        "id": 1,
-                        "name": "Super Admin",
-                        "code": "strapi-super-admin",
-                        "description": "Super Admins can access and manage all features and settings.",
-                        "createdAt": "2023-02-13T22:26:07.622Z",
-                        "updatedAt": "2023-02-13T22:26:07.622Z"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null
+                "updatedAt": "2023-02-13T22:32:56.592Z"
             },
             "updatedBy": {
                 "id": 1,
@@ -679,299 +311,81 @@
                 "blocked": false,
                 "preferedLanguage": null,
                 "createdAt": "2023-02-13T22:32:56.592Z",
-                "updatedAt": "2023-02-13T22:32:56.592Z",
-                "roles": [
-                    {
-                        "id": 1,
-                        "name": "Super Admin",
-                        "code": "strapi-super-admin",
-                        "description": "Super Admins can access and manage all features and settings.",
-                        "createdAt": "2023-02-13T22:26:07.622Z",
-                        "updatedAt": "2023-02-13T22:26:07.622Z"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null
+                "updatedAt": "2023-02-13T22:32:56.592Z"
             },
             "localizations": []
         },
-        {
-            "id": 3,
-            "title": "Public Page Layout",
-            "uid": "public-page-layout-2",
-            "variant": "wide",
-            "createdAt": "2023-04-20T10:23:36.202Z",
-            "updatedAt": "2023-05-04T10:08:23.614Z",
-            "publishedAt": "2023-04-20T10:23:38.447Z",
-            "locale": "en",
-            "class_name": null,
-            "sidebar": null,
-            "topbar": null,
-            "footer": {
-                "id": 2,
-                "title": "Public Page Footer",
-                "uid": "public-page-footer",
-                "createdAt": "2023-05-04T10:25:13.563Z",
-                "updatedAt": "2023-05-04T15:36:53.767Z",
-                "publishedAt": "2023-05-04T10:25:15.030Z",
+        "pages": [
+            {
+                "id": 1,
+                "title": "Main page",
+                "createdAt": "2023-04-08T19:06:02.556Z",
+                "updatedAt": "2023-05-04T15:14:45.331Z",
+                "publishedAt": "2023-04-08T19:06:05.277Z",
                 "locale": "en",
-                "variant": "boxed",
-                "class_name": null,
-                "layouts": [
-                    {
-                        "id": 3,
-                        "title": "Public Page Layout",
-                        "uid": "public-page-layout-2",
-                        "variant": "wide",
-                        "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-04T10:08:23.614Z",
-                        "publishedAt": "2023-04-20T10:23:38.447Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
-                    }
-                ],
-                "page_blocks": [
-                    {
-                        "__component": "page-blocks.footer-block",
-                        "id": 2,
-                        "copyrights": "2023 Single Page Startup",
-                        "description": "The fastest way to develop your startup",
-                        "variant": "four-columns-with-company-mission",
-                        "class_name": null
-                    }
-                ],
-                "createdBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "updatedBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "localizations": []
-            },
-            "slide_overs": [
-                {
-                    "id": 1,
-                    "variant": "right-side-half-width",
-                    "title": "This Is Slide Over",
-                    "uid": "this-is-slide-over",
-                    "class_name": "sps-lite-slide-over",
-                    "createdAt": "2023-04-07T23:54:16.534Z",
-                    "updatedAt": "2023-05-04T10:08:56.932Z",
-                    "publishedAt": "2023-04-07T23:54:17.781Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.faqs-block",
-                            "id": 3,
-                            "title": "This Is Slide Over",
-                            "description": "With Page Blocks",
-                            "variant": "two-columns-with-centered-introduction",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
-                            "publishedAt": "2023-04-08T12:04:56.606Z",
-                            "locale": "en",
-                            "class_name": null
-                        },
-                        {
-                            "id": 3,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-2",
-                            "variant": "wide",
-                            "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-04T10:08:23.614Z",
-                            "publishedAt": "2023-04-20T10:23:38.447Z",
-                            "locale": "en",
-                            "class_name": null
-                        }
-                    ],
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                }
-            ],
-            "modals": [
-                {
+                "url": "/",
+                "layout": {
                     "id": 3,
-                    "title": "This Is Modal",
-                    "uid": "this-is-modal",
-                    "dialog_panel_class_name": "container",
-                    "variant": "simple",
-                    "createdAt": "2023-03-31T16:24:15.965Z",
-                    "updatedAt": "2023-05-04T10:08:25.021Z",
-                    "publishedAt": "2023-03-28T11:07:57.457Z",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-2",
+                    "variant": "wide",
+                    "createdAt": "2023-04-20T10:23:36.202Z",
+                    "updatedAt": "2023-05-04T10:08:23.614Z",
+                    "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 70,
-                            "title": "This Is Modal",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
-                            "publishedAt": "2023-04-08T12:04:56.606Z",
-                            "locale": "en",
-                            "class_name": null
-                        },
-                        {
-                            "id": 3,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-2",
-                            "variant": "wide",
-                            "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-04T10:08:23.614Z",
-                            "publishedAt": "2023-04-20T10:23:38.447Z",
-                            "locale": "en",
-                            "class_name": null
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                }
-            ],
-            "navbar": {
-                "id": 1,
-                "title": "Public Page Navbar",
-                "uid": "public-page-navbar",
-                "createdAt": "2023-04-08T12:04:20.760Z",
-                "updatedAt": "2023-05-04T15:30:06.394Z",
-                "publishedAt": "2023-04-08T12:04:22.148Z",
-                "locale": "en",
-                "variant": "boxed",
-                "class_name": null,
-                "position": "fixed",
-                "side": "top",
+                    "class_name": null
+                },
                 "page_blocks": [
                     {
-                        "__component": "page-blocks.navbar-block",
-                        "id": 5,
-                        "variant": "simple-links-on-left",
-                        "description": null,
-                        "class_name": null
-                    }
-                ],
-                "layouts": [
-                    {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
+                        "__component": "page-blocks.hero-section-block",
+                        "id": 71,
+                        "title": "Jumpstart Your Lean Startup with Our Developer-Friendly Boilerplate",
+                        "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                        "variant": "simple-centered",
+                        "anchor": null,
                         "class_name": null
                     },
                     {
-                        "id": 3,
-                        "title": "Public Page Layout",
-                        "uid": "public-page-layout-2",
-                        "variant": "wide",
-                        "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-04T10:08:23.614Z",
-                        "publishedAt": "2023-04-20T10:23:38.447Z",
-                        "locale": "en",
+                        "__component": "page-blocks.cta-section-block",
+                        "id": 25,
+                        "variant": "dark-panel-with-app-screenshot",
+                        "anchor": null,
+                        "title": "Minimum Viable Product is Ready",
+                        "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.features-section-block",
+                        "id": 7,
+                        "title": "Don't repeat yourself",
+                        "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                        "subtitle": null,
+                        "variant": "with-icon",
+                        "anchor": null,
+                        "class_name": null
+                    },
+                    {
+                        "__component": "page-blocks.contact-section-block",
+                        "id": 7,
+                        "title": "We’re ready to help",
+                        "description": "Fill in all the fields below and our manager will contact you.",
+                        "anchor": null,
+                        "variant": "centered",
                         "class_name": null
                     }
                 ],
+                "metatag": {
+                    "id": 1,
+                    "title": "Lite Single Page Startup",
+                    "description": "The fastest way to create startup",
+                    "script": null,
+                    "gtm_key": null,
+                    "createdAt": "2023-04-08T13:09:21.850Z",
+                    "updatedAt": "2023-05-04T10:08:24.878Z",
+                    "publishedAt": "2023-04-08T13:09:23.027Z",
+                    "locale": "en",
+                    "is_default": true
+                },
                 "createdBy": {
                     "id": 1,
                     "firstname": "rogwild",
@@ -1004,230 +418,141 @@
                 },
                 "localizations": []
             },
-            "pages": [
+            {
+                "id": 8,
+                "title": "Terms and Conditions",
+                "createdAt": "2023-05-04T15:38:21.137Z",
+                "updatedAt": "2023-05-04T15:38:36.931Z",
+                "publishedAt": "2023-05-04T15:38:22.465Z",
+                "locale": "en",
+                "url": "/terms-and-conditions",
+                "layout": {
+                    "id": 3,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-2",
+                    "variant": "wide",
+                    "createdAt": "2023-04-20T10:23:36.202Z",
+                    "updatedAt": "2023-05-04T10:08:23.614Z",
+                    "publishedAt": "2023-04-20T10:23:38.447Z",
+                    "locale": "en",
+                    "class_name": null
+                },
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.hero-section-block",
+                        "id": 75,
+                        "title": "Terms and Conditions",
+                        "description": "",
+                        "variant": "simple-centered",
+                        "anchor": null,
+                        "class_name": null
+                    }
+                ],
+                "metatag": null,
+                "createdBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-02-13T22:32:56.592Z",
+                    "updatedAt": "2023-02-13T22:32:56.592Z"
+                },
+                "localizations": []
+            }
+        ],
+        "createdBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T22:32:56.592Z",
+            "updatedAt": "2023-02-13T22:32:56.592Z",
+            "roles": [
                 {
                     "id": 1,
-                    "title": "Main page",
-                    "createdAt": "2023-04-08T19:06:02.556Z",
-                    "updatedAt": "2023-05-04T15:14:45.331Z",
-                    "publishedAt": "2023-04-08T19:06:05.277Z",
-                    "locale": "en",
-                    "url": "/",
-                    "layout": {
-                        "id": 3,
-                        "title": "Public Page Layout",
-                        "uid": "public-page-layout-2",
-                        "variant": "wide",
-                        "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-04T10:08:23.614Z",
-                        "publishedAt": "2023-04-20T10:23:38.447Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 71,
-                            "title": "Jumpstart Your Lean Startup with Our Developer-Friendly Boilerplate",
-                            "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": null
-                        },
-                        {
-                            "__component": "page-blocks.cta-section-block",
-                            "id": 25,
-                            "variant": "dark-panel-with-app-screenshot",
-                            "anchor": null,
-                            "title": "Minimum Viable Product is Ready",
-                            "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
-                            "class_name": null
-                        },
-                        {
-                            "__component": "page-blocks.features-section-block",
-                            "id": 7,
-                            "title": "Don't repeat yourself",
-                            "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
-                            "subtitle": null,
-                            "variant": "with-icon",
-                            "anchor": null,
-                            "class_name": null
-                        },
-                        {
-                            "__component": "page-blocks.contact-section-block",
-                            "id": 7,
-                            "title": "We’re ready to help",
-                            "description": "Fill in all the fields below and our manager will contact you.",
-                            "anchor": null,
-                            "variant": "centered",
-                            "class_name": null
-                        }
-                    ],
-                    "metatag": {
-                        "id": 1,
-                        "title": "Lite Single Page Startup",
-                        "description": "The fastest way to create startup",
-                        "script": null,
-                        "gtm_key": null,
-                        "createdAt": "2023-04-08T13:09:21.850Z",
-                        "updatedAt": "2023-05-04T10:08:24.878Z",
-                        "publishedAt": "2023-04-08T13:09:23.027Z",
-                        "locale": "en",
-                        "is_default": true
-                    },
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
-                },
-                {
-                    "id": 8,
-                    "title": "Terms and Conditions",
-                    "createdAt": "2023-05-04T15:38:21.137Z",
-                    "updatedAt": "2023-05-04T15:38:36.931Z",
-                    "publishedAt": "2023-05-04T15:38:22.465Z",
-                    "locale": "en",
-                    "url": "/terms-and-conditions",
-                    "layout": {
-                        "id": 3,
-                        "title": "Public Page Layout",
-                        "uid": "public-page-layout-2",
-                        "variant": "wide",
-                        "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-04T10:08:23.614Z",
-                        "publishedAt": "2023-04-20T10:23:38.447Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 75,
-                            "title": "Terms and Conditions",
-                            "description": "",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": null
-                        }
-                    ],
-                    "metatag": null,
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
+                    "name": "Super Admin",
+                    "code": "strapi-super-admin",
+                    "description": "Super Admins can access and manage all features and settings.",
+                    "createdAt": "2023-02-13T22:26:07.622Z",
+                    "updatedAt": "2023-02-13T22:26:07.622Z"
                 }
             ],
-            "createdBy": {
-                "id": 1,
-                "firstname": "rogwild",
-                "lastname": "design",
-                "username": null,
-                "email": "rogwild.design@gmail.com",
-                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                "resetPasswordToken": null,
-                "registrationToken": null,
-                "isActive": true,
-                "blocked": false,
-                "preferedLanguage": null,
-                "createdAt": "2023-02-13T22:32:56.592Z",
-                "updatedAt": "2023-02-13T22:32:56.592Z",
-                "roles": [
-                    {
-                        "id": 1,
-                        "name": "Super Admin",
-                        "code": "strapi-super-admin",
-                        "description": "Super Admins can access and manage all features and settings.",
-                        "createdAt": "2023-02-13T22:26:07.622Z",
-                        "updatedAt": "2023-02-13T22:26:07.622Z"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null
-            },
-            "updatedBy": {
-                "id": 1,
-                "firstname": "rogwild",
-                "lastname": "design",
-                "username": null,
-                "email": "rogwild.design@gmail.com",
-                "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                "resetPasswordToken": null,
-                "registrationToken": null,
-                "isActive": true,
-                "blocked": false,
-                "preferedLanguage": null,
-                "createdAt": "2023-02-13T22:32:56.592Z",
-                "updatedAt": "2023-02-13T22:32:56.592Z",
-                "roles": [
-                    {
-                        "id": 1,
-                        "name": "Super Admin",
-                        "code": "strapi-super-admin",
-                        "description": "Super Admins can access and manage all features and settings.",
-                        "createdAt": "2023-02-13T22:26:07.622Z",
-                        "updatedAt": "2023-02-13T22:26:07.622Z"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null
-            },
-            "localizations": []
+            "createdBy": null,
+            "updatedBy": null
+        },
+        "updatedBy": {
+            "id": 1,
+            "firstname": "rogwild",
+            "lastname": "design",
+            "username": null,
+            "email": "rogwild.design@gmail.com",
+            "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+            "resetPasswordToken": null,
+            "registrationToken": null,
+            "isActive": true,
+            "blocked": false,
+            "preferedLanguage": null,
+            "createdAt": "2023-02-13T22:32:56.592Z",
+            "updatedAt": "2023-02-13T22:32:56.592Z",
+            "roles": [
+                {
+                    "id": 1,
+                    "name": "Super Admin",
+                    "code": "strapi-super-admin",
+                    "description": "Super Admins can access and manage all features and settings.",
+                    "createdAt": "2023-02-13T22:26:07.622Z",
+                    "updatedAt": "2023-02-13T22:26:07.622Z"
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null
+        },
+        "localizations": []
+    },
+    "page_blocks": [
+        {
+            "__component": "page-blocks.hero-section-block",
+            "id": 75,
+            "title": "Terms and Conditions",
+            "description": "",
+            "variant": "simple-centered",
+            "anchor": null,
+            "class_name": null,
+            "media": null,
+            "buttons": [],
+            "background": null
         }
     ],
+    "metatag": null,
     "createdBy": {
         "id": 1,
         "firstname": "rogwild",

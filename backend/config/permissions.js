@@ -2,6 +2,7 @@ const spsLitePublicActions = {
   "api::modal.modal": ["find", "findOne"],
   "api::slider.slider": ["find", "findOne"],
   "api::theme.theme": ["find"],
+  "api::robot.robot": ["find"],
   "api::form.form": ["find", "findOne"],
   "api::form-request.form-request": ["create"],
   "api::review.review": ["find", "findOne"],

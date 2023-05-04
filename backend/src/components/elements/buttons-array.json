@@ -22,11 +22,19 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "videos", "audios", "files"]
+      "allowedTypes": [
+        "images",
+        "videos",
+        "audios",
+        "files"
+      ]
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["column-with-title"],
+      "enum": [
+        "column-with-title",
+        "row"
+      ],
       "default": "column-with-title",
       "required": true
     },
@@ -37,7 +45,12 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "url": {
       "type": "string"

@@ -62,7 +62,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -99,7 +99,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -110,12 +110,12 @@
                 "pages": [
                     {
                         "id": 3,
-                        "title": "About",
+                        "title": "Page With Sidebar Layout",
                         "createdAt": "2023-04-08T20:00:13.006Z",
-                        "updatedAt": "2023-05-04T10:27:34.703Z",
+                        "updatedAt": "2023-05-04T15:29:46.768Z",
                         "publishedAt": "2023-04-08T20:00:14.519Z",
                         "locale": "en",
-                        "url": "/about"
+                        "url": "/page-with-sidebar-layout"
                     },
                     {
                         "id": 5,
@@ -222,7 +222,7 @@
         "title": "Public Page Footer",
         "uid": "public-page-footer",
         "createdAt": "2023-05-04T10:25:13.563Z",
-        "updatedAt": "2023-05-04T10:25:15.042Z",
+        "updatedAt": "2023-05-04T15:36:53.767Z",
         "publishedAt": "2023-05-04T10:25:15.030Z",
         "locale": "en",
         "variant": "boxed",
@@ -245,7 +245,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -282,7 +282,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -295,10 +295,19 @@
                         "id": 1,
                         "title": "Main page",
                         "createdAt": "2023-04-08T19:06:02.556Z",
-                        "updatedAt": "2023-05-04T10:08:30.830Z",
+                        "updatedAt": "2023-05-04T15:14:45.331Z",
                         "publishedAt": "2023-04-08T19:06:05.277Z",
                         "locale": "en",
                         "url": "/"
+                    },
+                    {
+                        "id": 8,
+                        "title": "Terms and Conditions",
+                        "createdAt": "2023-05-04T15:38:21.137Z",
+                        "updatedAt": "2023-05-04T15:38:36.931Z",
+                        "publishedAt": "2023-05-04T15:38:22.465Z",
+                        "locale": "en",
+                        "url": "/terms-and-conditions"
                     }
                 ],
                 "createdBy": {
@@ -361,7 +370,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -398,7 +407,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -409,12 +418,12 @@
                 "pages": [
                     {
                         "id": 3,
-                        "title": "About",
+                        "title": "Page With Sidebar Layout",
                         "createdAt": "2023-04-08T20:00:13.006Z",
-                        "updatedAt": "2023-05-04T10:27:34.703Z",
+                        "updatedAt": "2023-05-04T15:29:46.768Z",
                         "publishedAt": "2023-04-08T20:00:14.519Z",
                         "locale": "en",
-                        "url": "/about"
+                        "url": "/page-with-sidebar-layout"
                     },
                     {
                         "id": 5,
@@ -464,7 +473,7 @@
                 "__component": "page-blocks.footer-block",
                 "id": 2,
                 "copyrights": "2023 Single Page Startup",
-                "description": null,
+                "description": "The fastest way to develop your startup",
                 "variant": "four-columns-with-company-mission",
                 "class_name": null,
                 "logotype": {
@@ -472,9 +481,39 @@
                     "title": null,
                     "url": "/"
                 },
-                "buttons_arrays": [],
-                "additional_buttons_arrays": [],
-                "extra_buttons_arrays": []
+                "buttons_arrays": [
+                    {
+                        "id": 25,
+                        "title": "Links",
+                        "class_name": null,
+                        "variant": "column-with-title",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null
+                    }
+                ],
+                "additional_buttons_arrays": [
+                    {
+                        "id": 26,
+                        "title": null,
+                        "class_name": null,
+                        "variant": "row",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null
+                    }
+                ],
+                "extra_buttons_arrays": [
+                    {
+                        "id": 27,
+                        "title": null,
+                        "class_name": null,
+                        "variant": "row",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null
+                    }
+                ]
             }
         ],
         "createdBy": {
@@ -585,7 +624,7 @@
                         "title": "Public Page Footer",
                         "uid": "public-page-footer",
                         "createdAt": "2023-05-04T10:25:13.563Z",
-                        "updatedAt": "2023-05-04T10:25:15.042Z",
+                        "updatedAt": "2023-05-04T15:36:53.767Z",
                         "publishedAt": "2023-05-04T10:25:15.030Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -622,7 +661,7 @@
                         "title": "Public Page Navbar",
                         "uid": "public-page-navbar",
                         "createdAt": "2023-04-08T12:04:20.760Z",
-                        "updatedAt": "2023-05-04T10:26:32.031Z",
+                        "updatedAt": "2023-05-04T15:30:06.394Z",
                         "publishedAt": "2023-04-08T12:04:22.148Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -633,12 +672,12 @@
                     "pages": [
                         {
                             "id": 3,
-                            "title": "About",
+                            "title": "Page With Sidebar Layout",
                             "createdAt": "2023-04-08T20:00:13.006Z",
-                            "updatedAt": "2023-05-04T10:27:34.703Z",
+                            "updatedAt": "2023-05-04T15:29:46.768Z",
                             "publishedAt": "2023-04-08T20:00:14.519Z",
                             "locale": "en",
-                            "url": "/about"
+                            "url": "/page-with-sidebar-layout"
                         },
                         {
                             "id": 5,
@@ -699,7 +738,7 @@
                         "title": "Public Page Footer",
                         "uid": "public-page-footer",
                         "createdAt": "2023-05-04T10:25:13.563Z",
-                        "updatedAt": "2023-05-04T10:25:15.042Z",
+                        "updatedAt": "2023-05-04T15:36:53.767Z",
                         "publishedAt": "2023-05-04T10:25:15.030Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -736,7 +775,7 @@
                         "title": "Public Page Navbar",
                         "uid": "public-page-navbar",
                         "createdAt": "2023-04-08T12:04:20.760Z",
-                        "updatedAt": "2023-05-04T10:26:32.031Z",
+                        "updatedAt": "2023-05-04T15:30:06.394Z",
                         "publishedAt": "2023-04-08T12:04:22.148Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -749,10 +788,19 @@
                             "id": 1,
                             "title": "Main page",
                             "createdAt": "2023-04-08T19:06:02.556Z",
-                            "updatedAt": "2023-05-04T10:08:30.830Z",
+                            "updatedAt": "2023-05-04T15:14:45.331Z",
                             "publishedAt": "2023-04-08T19:06:05.277Z",
                             "locale": "en",
                             "url": "/"
+                        },
+                        {
+                            "id": 8,
+                            "title": "Terms and Conditions",
+                            "createdAt": "2023-05-04T15:38:21.137Z",
+                            "updatedAt": "2023-05-04T15:38:36.931Z",
+                            "publishedAt": "2023-05-04T15:38:22.465Z",
+                            "locale": "en",
+                            "url": "/terms-and-conditions"
                         }
                     ],
                     "createdBy": {
@@ -899,7 +947,7 @@
                         "title": "Public Page Footer",
                         "uid": "public-page-footer",
                         "createdAt": "2023-05-04T10:25:13.563Z",
-                        "updatedAt": "2023-05-04T10:25:15.042Z",
+                        "updatedAt": "2023-05-04T15:36:53.767Z",
                         "publishedAt": "2023-05-04T10:25:15.030Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -936,7 +984,7 @@
                         "title": "Public Page Navbar",
                         "uid": "public-page-navbar",
                         "createdAt": "2023-04-08T12:04:20.760Z",
-                        "updatedAt": "2023-05-04T10:26:32.031Z",
+                        "updatedAt": "2023-05-04T15:30:06.394Z",
                         "publishedAt": "2023-04-08T12:04:22.148Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -947,12 +995,12 @@
                     "pages": [
                         {
                             "id": 3,
-                            "title": "About",
+                            "title": "Page With Sidebar Layout",
                             "createdAt": "2023-04-08T20:00:13.006Z",
-                            "updatedAt": "2023-05-04T10:27:34.703Z",
+                            "updatedAt": "2023-05-04T15:29:46.768Z",
                             "publishedAt": "2023-04-08T20:00:14.519Z",
                             "locale": "en",
-                            "url": "/about"
+                            "url": "/page-with-sidebar-layout"
                         },
                         {
                             "id": 5,
@@ -1013,7 +1061,7 @@
                         "title": "Public Page Footer",
                         "uid": "public-page-footer",
                         "createdAt": "2023-05-04T10:25:13.563Z",
-                        "updatedAt": "2023-05-04T10:25:15.042Z",
+                        "updatedAt": "2023-05-04T15:36:53.767Z",
                         "publishedAt": "2023-05-04T10:25:15.030Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -1050,7 +1098,7 @@
                         "title": "Public Page Navbar",
                         "uid": "public-page-navbar",
                         "createdAt": "2023-04-08T12:04:20.760Z",
-                        "updatedAt": "2023-05-04T10:26:32.031Z",
+                        "updatedAt": "2023-05-04T15:30:06.394Z",
                         "publishedAt": "2023-04-08T12:04:22.148Z",
                         "locale": "en",
                         "variant": "boxed",
@@ -1063,10 +1111,19 @@
                             "id": 1,
                             "title": "Main page",
                             "createdAt": "2023-04-08T19:06:02.556Z",
-                            "updatedAt": "2023-05-04T10:08:30.830Z",
+                            "updatedAt": "2023-05-04T15:14:45.331Z",
                             "publishedAt": "2023-04-08T19:06:05.277Z",
                             "locale": "en",
                             "url": "/"
+                        },
+                        {
+                            "id": 8,
+                            "title": "Terms and Conditions",
+                            "createdAt": "2023-05-04T15:38:21.137Z",
+                            "updatedAt": "2023-05-04T15:38:36.931Z",
+                            "publishedAt": "2023-05-04T15:38:22.465Z",
+                            "locale": "en",
+                            "url": "/terms-and-conditions"
                         }
                     ],
                     "createdBy": {
@@ -1138,7 +1195,7 @@
         "title": "Public Page Navbar",
         "uid": "public-page-navbar",
         "createdAt": "2023-04-08T12:04:20.760Z",
-        "updatedAt": "2023-05-04T10:26:32.031Z",
+        "updatedAt": "2023-05-04T15:30:06.394Z",
         "publishedAt": "2023-04-08T12:04:22.148Z",
         "locale": "en",
         "variant": "boxed",
@@ -1164,6 +1221,15 @@
                         "description": null,
                         "variant": "text",
                         "title": "Main page",
+                        "additional_attributes": null,
+                        "class_name": null
+                    },
+                    {
+                        "id": 203,
+                        "url": "/page-with-sidebar-layout",
+                        "description": null,
+                        "variant": "text",
+                        "title": "Sidebar",
                         "additional_attributes": null,
                         "class_name": null
                     },
@@ -1198,10 +1264,10 @@
                 "additional_buttons": [
                     {
                         "id": 194,
-                        "url": "/about",
+                        "url": "https://github.com/singlepagestartup/sps-lite",
                         "description": null,
                         "variant": "secondary",
-                        "title": "About",
+                        "title": "GitHub",
                         "additional_attributes": null,
                         "class_name": null
                     }
@@ -1237,7 +1303,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1274,7 +1340,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1285,12 +1351,12 @@
                 "pages": [
                     {
                         "id": 3,
-                        "title": "About",
+                        "title": "Page With Sidebar Layout",
                         "createdAt": "2023-04-08T20:00:13.006Z",
-                        "updatedAt": "2023-05-04T10:27:34.703Z",
+                        "updatedAt": "2023-05-04T15:29:46.768Z",
                         "publishedAt": "2023-04-08T20:00:14.519Z",
                         "locale": "en",
-                        "url": "/about"
+                        "url": "/page-with-sidebar-layout"
                     },
                     {
                         "id": 5,
@@ -1351,7 +1417,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1388,7 +1454,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1401,10 +1467,19 @@
                         "id": 1,
                         "title": "Main page",
                         "createdAt": "2023-04-08T19:06:02.556Z",
-                        "updatedAt": "2023-05-04T10:08:30.830Z",
+                        "updatedAt": "2023-05-04T15:14:45.331Z",
                         "publishedAt": "2023-04-08T19:06:05.277Z",
                         "locale": "en",
                         "url": "/"
+                    },
+                    {
+                        "id": 8,
+                        "title": "Terms and Conditions",
+                        "createdAt": "2023-05-04T15:38:21.137Z",
+                        "updatedAt": "2023-05-04T15:38:36.931Z",
+                        "publishedAt": "2023-05-04T15:38:22.465Z",
+                        "locale": "en",
+                        "url": "/terms-and-conditions"
                     }
                 ],
                 "createdBy": {
@@ -1499,12 +1574,12 @@
     "pages": [
         {
             "id": 3,
-            "title": "About",
+            "title": "Page With Sidebar Layout",
             "createdAt": "2023-04-08T20:00:13.006Z",
-            "updatedAt": "2023-05-04T10:27:34.703Z",
+            "updatedAt": "2023-05-04T15:29:46.768Z",
             "publishedAt": "2023-04-08T20:00:14.519Z",
             "locale": "en",
-            "url": "/about",
+            "url": "/page-with-sidebar-layout",
             "layout": {
                 "id": 1,
                 "title": "Public Page Layout With Sidebar",
@@ -1533,7 +1608,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1570,7 +1645,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1581,12 +1656,12 @@
                 "pages": [
                     {
                         "id": 3,
-                        "title": "About",
+                        "title": "Page With Sidebar Layout",
                         "createdAt": "2023-04-08T20:00:13.006Z",
-                        "updatedAt": "2023-05-04T10:27:34.703Z",
+                        "updatedAt": "2023-05-04T15:29:46.768Z",
                         "publishedAt": "2023-04-08T20:00:14.519Z",
                         "locale": "en",
-                        "url": "/about"
+                        "url": "/page-with-sidebar-layout"
                     },
                     {
                         "id": 5,
@@ -1634,8 +1709,8 @@
                 {
                     "__component": "page-blocks.hero-section-block",
                     "id": 72,
-                    "title": "About",
-                    "description": "About Page",
+                    "title": "Page With Sidebar Layout",
+                    "description": "With Page Blocks",
                     "variant": "simple-centered",
                     "anchor": null,
                     "class_name": null,
@@ -1737,7 +1812,7 @@
                     "title": "Public Page Footer",
                     "uid": "public-page-footer",
                     "createdAt": "2023-05-04T10:25:13.563Z",
-                    "updatedAt": "2023-05-04T10:25:15.042Z",
+                    "updatedAt": "2023-05-04T15:36:53.767Z",
                     "publishedAt": "2023-05-04T10:25:15.030Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1774,7 +1849,7 @@
                     "title": "Public Page Navbar",
                     "uid": "public-page-navbar",
                     "createdAt": "2023-04-08T12:04:20.760Z",
-                    "updatedAt": "2023-05-04T10:26:32.031Z",
+                    "updatedAt": "2023-05-04T15:30:06.394Z",
                     "publishedAt": "2023-04-08T12:04:22.148Z",
                     "locale": "en",
                     "variant": "boxed",
@@ -1785,12 +1860,12 @@
                 "pages": [
                     {
                         "id": 3,
-                        "title": "About",
+                        "title": "Page With Sidebar Layout",
                         "createdAt": "2023-04-08T20:00:13.006Z",
-                        "updatedAt": "2023-05-04T10:27:34.703Z",
+                        "updatedAt": "2023-05-04T15:29:46.768Z",
                         "publishedAt": "2023-04-08T20:00:14.519Z",
                         "locale": "en",
-                        "url": "/about"
+                        "url": "/page-with-sidebar-layout"
                     },
                     {
                         "id": 5,
@@ -4242,6 +4317,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,
@@ -6578,6 +6701,54 @@
                         "conditions": [],
                         "createdAt": "2023-05-04T10:22:39.181Z",
                         "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
                     }
                 ],
                 "createdBy": null,
