@@ -28,7 +28,51 @@
                 "old_price": 199,
                 "createdAt": "2023-02-14T08:51:37.439Z",
                 "updatedAt": "2023-04-02T11:55:21.239Z",
-                "publishedAt": "2023-02-14T22:48:56.695Z"
+                "publishedAt": "2023-02-14T22:48:56.695Z",
+                "currency": {
+                    "id": 1,
+                    "title": "USD",
+                    "unicode": "$",
+                    "is_default": true,
+                    "createdAt": "2023-03-29T23:09:51.671Z",
+                    "updatedAt": "2023-04-02T11:55:21.325Z",
+                    "publishedAt": "2023-03-29T23:09:52.898Z"
+                },
+                "features": [
+                    {
+                        "id": 395,
+                        "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
+                        "description": null,
+                        "subtitle": null
+                    },
+                    {
+                        "id": 396,
+                        "title": "Настроенный фронтенд с библиотекой компонентов",
+                        "description": null,
+                        "subtitle": null
+                    },
+                    {
+                        "id": 397,
+                        "title": "Все модели для построения стартапа любой сложности",
+                        "description": null,
+                        "subtitle": null
+                    },
+                    {
+                        "id": 398,
+                        "title": "Доступ к репозиторию с исходниками",
+                        "description": null,
+                        "subtitle": null
+                    },
+                    {
+                        "id": 399,
+                        "title": "Доступ к комьюнити",
+                        "description": null,
+                        "subtitle": null
+                    }
+                ],
+                "buttons": [],
+                "createdBy": null,
+                "updatedBy": null
             }
         ],
         "createdBy": {
@@ -44,7 +88,19 @@
             "blocked": false,
             "preferedLanguage": null,
             "createdAt": "2023-02-13T22:32:56.592Z",
-            "updatedAt": "2023-02-13T22:32:56.592Z"
+            "updatedAt": "2023-02-13T22:32:56.592Z",
+            "roles": [
+                {
+                    "id": 1,
+                    "name": "Super Admin",
+                    "code": "strapi-super-admin",
+                    "description": "Super Admins can access and manage all features and settings.",
+                    "createdAt": "2023-02-13T22:26:07.622Z",
+                    "updatedAt": "2023-02-13T22:26:07.622Z"
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null
         },
         "updatedBy": {
             "id": 1,
@@ -59,7 +115,19 @@
             "blocked": false,
             "preferedLanguage": null,
             "createdAt": "2023-02-13T22:32:56.592Z",
-            "updatedAt": "2023-02-13T22:32:56.592Z"
+            "updatedAt": "2023-02-13T22:32:56.592Z",
+            "roles": [
+                {
+                    "id": 1,
+                    "name": "Super Admin",
+                    "code": "strapi-super-admin",
+                    "description": "Super Admins can access and manage all features and settings.",
+                    "createdAt": "2023-02-13T22:26:07.622Z",
+                    "updatedAt": "2023-02-13T22:26:07.622Z"
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null
         }
     },
     "features": [

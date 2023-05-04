@@ -6,10 +6,12 @@ services:
     # image: registry.hub.docker.com/your_dockerhub_username/sps_backend:0.0.1
     networks:
       - traefik_overlay
-    environment:
-      NODE_ENV: production
     volumes:
       - ./sps_backend_uploads:/usr/src/app/public/uploads
+    env_file:
+      - ./sps-lite.env
+    environment:
+      - NODE_ENV=production
     deploy:
       placement:
         constraints:
