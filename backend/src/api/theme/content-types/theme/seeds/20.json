@@ -1,7 +1,7 @@
 {
     "id": 20,
     "createdAt": "2023-05-04T10:09:08.309Z",
-    "updatedAt": "2023-05-04T10:09:08.309Z",
+    "updatedAt": "2023-05-04T15:59:00.813Z",
     "publishedAt": "2023-02-13T23:01:44.156Z",
     "theme": {
         "colors": {
@@ -19,86 +19,2523 @@
     "fonts": [
         {
             "id": 4,
-            "weight": "regular",
+            "weight": "medium",
             "style": "normal",
             "variant": "default",
             "media": {
-                "id": 514,
-                "name": "montserrat-regular.ttf",
+                "id": 523,
+                "name": "Montserrat-Medium.ttf",
                 "alternativeText": null,
                 "caption": null,
                 "width": null,
                 "height": null,
                 "formats": null,
-                "hash": "montserrat_regular_20ffdcb9ad",
+                "hash": "Montserrat_Medium_33ee580c23",
                 "ext": ".ttf",
                 "mime": "font/ttf",
-                "size": 197.98,
-                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_regular_20ffdcb9ad.ttf",
+                "size": 198.1,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/Montserrat_Medium_33ee580c23.ttf",
                 "previewUrl": null,
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-05-04T10:09:04.335Z",
-                "updatedAt": "2023-05-04T10:09:04.335Z",
+                "createdAt": "2023-05-04T15:58:01.050Z",
+                "updatedAt": "2023-05-04T15:58:01.050Z",
                 "folder": null
             }
         },
         {
             "id": 5,
-            "weight": "bold",
+            "weight": "light",
             "style": "normal",
             "variant": "default",
             "media": {
-                "id": 515,
-                "name": "montserrat-bold.ttf",
+                "id": 519,
+                "name": "Montserrat-Light.ttf",
                 "alternativeText": null,
                 "caption": null,
                 "width": null,
                 "height": null,
                 "formats": null,
-                "hash": "montserrat_bold_d34a708b11",
+                "hash": "Montserrat_Light_4b2fe1b8bc",
                 "ext": ".ttf",
                 "mime": "font/ttf",
                 "size": 198.07,
-                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_bold_d34a708b11.ttf",
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/Montserrat_Light_4b2fe1b8bc.ttf",
                 "previewUrl": null,
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-05-04T10:09:06.291Z",
-                "updatedAt": "2023-05-04T10:09:06.291Z",
+                "createdAt": "2023-05-04T15:58:01.008Z",
+                "updatedAt": "2023-05-04T15:58:01.008Z",
                 "folder": null
             }
         },
         {
             "id": 6,
-            "weight": "medium",
+            "weight": "semi_bold",
             "style": "normal",
             "variant": "default",
             "media": {
-                "id": 516,
-                "name": "montserrat-medium.ttf",
+                "id": 522,
+                "name": "Montserrat-SemiBold.ttf",
                 "alternativeText": null,
                 "caption": null,
                 "width": null,
                 "height": null,
                 "formats": null,
-                "hash": "montserrat_medium_74754c74c4",
+                "hash": "Montserrat_Semi_Bold_43256a7f70",
                 "ext": ".ttf",
                 "mime": "font/ttf",
-                "size": 198.1,
-                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_medium_74754c74c4.ttf",
+                "size": 198.2,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/Montserrat_Semi_Bold_43256a7f70.ttf",
                 "previewUrl": null,
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-05-04T10:09:08.190Z",
-                "updatedAt": "2023-05-04T10:09:08.190Z",
+                "createdAt": "2023-05-04T15:58:01.043Z",
+                "updatedAt": "2023-05-04T15:58:01.043Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 7,
+            "weight": "regular",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 521,
+                "name": "Montserrat-Regular.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "Montserrat_Regular_3e6a6acc3f",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 197.98,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/Montserrat_Regular_3e6a6acc3f.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-05-04T15:58:01.038Z",
+                "updatedAt": "2023-05-04T15:58:01.038Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 8,
+            "weight": "bold",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 520,
+                "name": "Montserrat-Bold.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "Montserrat_Bold_fa5c1c59ba",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.07,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/Montserrat_Bold_fa5c1c59ba.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-05-04T15:58:01.033Z",
+                "updatedAt": "2023-05-04T15:58:01.033Z",
                 "folder": null
             }
         }
     ],
     "createdBy": null,
-    "updatedBy": null
+    "updatedBy": {
+        "id": 1,
+        "firstname": "rogwild",
+        "lastname": "design",
+        "username": null,
+        "email": "rogwild.design@gmail.com",
+        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+        "resetPasswordToken": null,
+        "registrationToken": null,
+        "isActive": true,
+        "blocked": false,
+        "preferedLanguage": null,
+        "createdAt": "2023-02-13T22:32:56.592Z",
+        "updatedAt": "2023-02-13T22:32:56.592Z",
+        "roles": [
+            {
+                "id": 1,
+                "name": "Super Admin",
+                "code": "strapi-super-admin",
+                "description": "Super Admins can access and manage all features and settings.",
+                "createdAt": "2023-02-13T22:26:07.622Z",
+                "updatedAt": "2023-02-13T22:26:07.622Z",
+                "users": [
+                    {
+                        "id": 1,
+                        "firstname": "rogwild",
+                        "lastname": "design",
+                        "username": null,
+                        "email": "rogwild.design@gmail.com",
+                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                        "resetPasswordToken": null,
+                        "registrationToken": null,
+                        "isActive": true,
+                        "blocked": false,
+                        "preferedLanguage": null,
+                        "createdAt": "2023-02-13T22:32:56.592Z",
+                        "updatedAt": "2023-02-13T22:32:56.592Z"
+                    }
+                ],
+                "permissions": [
+                    {
+                        "id": 155,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::configuration.configuration",
+                        "properties": {
+                            "fields": [
+                                "configs.provider",
+                                "configs.config"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:11.770Z",
+                        "updatedAt": "2023-02-13T22:26:11.770Z"
+                    },
+                    {
+                        "id": 159,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:11.874Z",
+                        "updatedAt": "2023-02-13T22:26:11.874Z"
+                    },
+                    {
+                        "id": 172,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::configuration.configuration",
+                        "properties": {
+                            "fields": [
+                                "configs.provider",
+                                "configs.config"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:12.181Z",
+                        "updatedAt": "2023-02-13T22:26:12.181Z"
+                    },
+                    {
+                        "id": 176,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:12.416Z",
+                        "updatedAt": "2023-02-13T22:26:12.416Z"
+                    },
+                    {
+                        "id": 189,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::configuration.configuration",
+                        "properties": {
+                            "fields": [
+                                "configs.provider",
+                                "configs.config"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:12.730Z",
+                        "updatedAt": "2023-02-13T22:26:12.730Z"
+                    },
+                    {
+                        "id": 193,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:12.803Z",
+                        "updatedAt": "2023-02-13T22:26:12.803Z"
+                    },
+                    {
+                        "id": 205,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "plugin::users-permissions.user",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.060Z",
+                        "updatedAt": "2023-02-13T22:26:13.060Z"
+                    },
+                    {
+                        "id": 206,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::configuration.configuration",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.076Z",
+                        "updatedAt": "2023-02-13T22:26:13.076Z"
+                    },
+                    {
+                        "id": 210,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::form-request.form-request",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.164Z",
+                        "updatedAt": "2023-02-13T22:26:13.164Z"
+                    },
+                    {
+                        "id": 217,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::review.review",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.307Z",
+                        "updatedAt": "2023-02-13T22:26:13.307Z"
+                    },
+                    {
+                        "id": 219,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::theme.theme",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.346Z",
+                        "updatedAt": "2023-02-13T22:26:13.346Z"
+                    },
+                    {
+                        "id": 231,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::review.review",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.578Z",
+                        "updatedAt": "2023-02-13T22:26:13.578Z"
+                    },
+                    {
+                        "id": 233,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::theme.theme",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.608Z",
+                        "updatedAt": "2023-02-13T22:26:13.608Z"
+                    },
+                    {
+                        "id": 235,
+                        "action": "plugin::content-manager.single-types.configure-view",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.638Z",
+                        "updatedAt": "2023-02-13T22:26:13.638Z"
+                    },
+                    {
+                        "id": 236,
+                        "action": "plugin::content-manager.collection-types.configure-view",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.658Z",
+                        "updatedAt": "2023-02-13T22:26:13.658Z"
+                    },
+                    {
+                        "id": 237,
+                        "action": "plugin::content-manager.components.configure-layout",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.690Z",
+                        "updatedAt": "2023-02-13T22:26:13.690Z"
+                    },
+                    {
+                        "id": 238,
+                        "action": "plugin::content-type-builder.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.709Z",
+                        "updatedAt": "2023-02-13T22:26:13.709Z"
+                    },
+                    {
+                        "id": 239,
+                        "action": "plugin::email.settings.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.728Z",
+                        "updatedAt": "2023-02-13T22:26:13.728Z"
+                    },
+                    {
+                        "id": 240,
+                        "action": "plugin::upload.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.749Z",
+                        "updatedAt": "2023-02-13T22:26:13.749Z"
+                    },
+                    {
+                        "id": 241,
+                        "action": "plugin::upload.assets.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.766Z",
+                        "updatedAt": "2023-02-13T22:26:13.766Z"
+                    },
+                    {
+                        "id": 242,
+                        "action": "plugin::upload.assets.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.789Z",
+                        "updatedAt": "2023-02-13T22:26:13.789Z"
+                    },
+                    {
+                        "id": 243,
+                        "action": "plugin::upload.assets.download",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.805Z",
+                        "updatedAt": "2023-02-13T22:26:13.805Z"
+                    },
+                    {
+                        "id": 244,
+                        "action": "plugin::upload.assets.copy-link",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.824Z",
+                        "updatedAt": "2023-02-13T22:26:13.824Z"
+                    },
+                    {
+                        "id": 245,
+                        "action": "plugin::upload.configure-view",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.844Z",
+                        "updatedAt": "2023-02-13T22:26:13.844Z"
+                    },
+                    {
+                        "id": 246,
+                        "action": "plugin::upload.settings.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.879Z",
+                        "updatedAt": "2023-02-13T22:26:13.879Z"
+                    },
+                    {
+                        "id": 247,
+                        "action": "plugin::users-permissions.roles.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.896Z",
+                        "updatedAt": "2023-02-13T22:26:13.896Z"
+                    },
+                    {
+                        "id": 248,
+                        "action": "plugin::users-permissions.roles.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.915Z",
+                        "updatedAt": "2023-02-13T22:26:13.915Z"
+                    },
+                    {
+                        "id": 249,
+                        "action": "plugin::users-permissions.roles.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.938Z",
+                        "updatedAt": "2023-02-13T22:26:13.938Z"
+                    },
+                    {
+                        "id": 250,
+                        "action": "plugin::users-permissions.roles.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.961Z",
+                        "updatedAt": "2023-02-13T22:26:13.961Z"
+                    },
+                    {
+                        "id": 251,
+                        "action": "plugin::users-permissions.providers.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:13.981Z",
+                        "updatedAt": "2023-02-13T22:26:13.981Z"
+                    },
+                    {
+                        "id": 252,
+                        "action": "plugin::users-permissions.providers.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.011Z",
+                        "updatedAt": "2023-02-13T22:26:14.011Z"
+                    },
+                    {
+                        "id": 253,
+                        "action": "plugin::users-permissions.email-templates.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.054Z",
+                        "updatedAt": "2023-02-13T22:26:14.054Z"
+                    },
+                    {
+                        "id": 254,
+                        "action": "plugin::users-permissions.email-templates.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.083Z",
+                        "updatedAt": "2023-02-13T22:26:14.083Z"
+                    },
+                    {
+                        "id": 255,
+                        "action": "plugin::users-permissions.advanced-settings.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.113Z",
+                        "updatedAt": "2023-02-13T22:26:14.113Z"
+                    },
+                    {
+                        "id": 256,
+                        "action": "plugin::users-permissions.advanced-settings.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.170Z",
+                        "updatedAt": "2023-02-13T22:26:14.170Z"
+                    },
+                    {
+                        "id": 257,
+                        "action": "plugin::i18n.locale.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.198Z",
+                        "updatedAt": "2023-02-13T22:26:14.198Z"
+                    },
+                    {
+                        "id": 258,
+                        "action": "plugin::i18n.locale.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.212Z",
+                        "updatedAt": "2023-02-13T22:26:14.212Z"
+                    },
+                    {
+                        "id": 259,
+                        "action": "plugin::i18n.locale.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.231Z",
+                        "updatedAt": "2023-02-13T22:26:14.231Z"
+                    },
+                    {
+                        "id": 260,
+                        "action": "plugin::i18n.locale.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.255Z",
+                        "updatedAt": "2023-02-13T22:26:14.255Z"
+                    },
+                    {
+                        "id": 261,
+                        "action": "admin::marketplace.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.272Z",
+                        "updatedAt": "2023-02-13T22:26:14.272Z"
+                    },
+                    {
+                        "id": 262,
+                        "action": "admin::marketplace.plugins.install",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.287Z",
+                        "updatedAt": "2023-02-13T22:26:14.287Z"
+                    },
+                    {
+                        "id": 263,
+                        "action": "admin::marketplace.plugins.uninstall",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.304Z",
+                        "updatedAt": "2023-02-13T22:26:14.304Z"
+                    },
+                    {
+                        "id": 264,
+                        "action": "admin::webhooks.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.323Z",
+                        "updatedAt": "2023-02-13T22:26:14.323Z"
+                    },
+                    {
+                        "id": 265,
+                        "action": "admin::webhooks.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.343Z",
+                        "updatedAt": "2023-02-13T22:26:14.343Z"
+                    },
+                    {
+                        "id": 266,
+                        "action": "admin::webhooks.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.384Z",
+                        "updatedAt": "2023-02-13T22:26:14.384Z"
+                    },
+                    {
+                        "id": 267,
+                        "action": "admin::webhooks.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.403Z",
+                        "updatedAt": "2023-02-13T22:26:14.403Z"
+                    },
+                    {
+                        "id": 268,
+                        "action": "admin::users.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.430Z",
+                        "updatedAt": "2023-02-13T22:26:14.430Z"
+                    },
+                    {
+                        "id": 269,
+                        "action": "admin::users.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.447Z",
+                        "updatedAt": "2023-02-13T22:26:14.447Z"
+                    },
+                    {
+                        "id": 270,
+                        "action": "admin::users.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.469Z",
+                        "updatedAt": "2023-02-13T22:26:14.469Z"
+                    },
+                    {
+                        "id": 271,
+                        "action": "admin::users.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.484Z",
+                        "updatedAt": "2023-02-13T22:26:14.484Z"
+                    },
+                    {
+                        "id": 272,
+                        "action": "admin::roles.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.507Z",
+                        "updatedAt": "2023-02-13T22:26:14.507Z"
+                    },
+                    {
+                        "id": 273,
+                        "action": "admin::roles.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.526Z",
+                        "updatedAt": "2023-02-13T22:26:14.526Z"
+                    },
+                    {
+                        "id": 274,
+                        "action": "admin::roles.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.543Z",
+                        "updatedAt": "2023-02-13T22:26:14.543Z"
+                    },
+                    {
+                        "id": 275,
+                        "action": "admin::roles.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.582Z",
+                        "updatedAt": "2023-02-13T22:26:14.582Z"
+                    },
+                    {
+                        "id": 276,
+                        "action": "admin::api-tokens.access",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.609Z",
+                        "updatedAt": "2023-02-13T22:26:14.609Z"
+                    },
+                    {
+                        "id": 277,
+                        "action": "admin::api-tokens.create",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.625Z",
+                        "updatedAt": "2023-02-13T22:26:14.625Z"
+                    },
+                    {
+                        "id": 278,
+                        "action": "admin::api-tokens.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.644Z",
+                        "updatedAt": "2023-02-13T22:26:14.644Z"
+                    },
+                    {
+                        "id": 279,
+                        "action": "admin::api-tokens.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.670Z",
+                        "updatedAt": "2023-02-13T22:26:14.670Z"
+                    },
+                    {
+                        "id": 280,
+                        "action": "admin::api-tokens.regenerate",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.685Z",
+                        "updatedAt": "2023-02-13T22:26:14.685Z"
+                    },
+                    {
+                        "id": 281,
+                        "action": "admin::api-tokens.delete",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.700Z",
+                        "updatedAt": "2023-02-13T22:26:14.700Z"
+                    },
+                    {
+                        "id": 282,
+                        "action": "admin::project-settings.update",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.715Z",
+                        "updatedAt": "2023-02-13T22:26:14.715Z"
+                    },
+                    {
+                        "id": 283,
+                        "action": "admin::project-settings.read",
+                        "subject": null,
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-02-13T22:26:14.729Z",
+                        "updatedAt": "2023-02-13T22:26:14.729Z"
+                    },
+                    {
+                        "id": 679,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::flyout-menu.flyout-menu",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.074Z",
+                        "updatedAt": "2023-04-21T07:47:00.074Z"
+                    },
+                    {
+                        "id": 680,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.109Z",
+                        "updatedAt": "2023-04-21T07:47:00.109Z"
+                    },
+                    {
+                        "id": 688,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout_menu",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.264Z",
+                        "updatedAt": "2023-04-21T07:47:00.264Z"
+                    },
+                    {
+                        "id": 690,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::flyout-menu.flyout-menu",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.291Z",
+                        "updatedAt": "2023-04-21T07:47:00.291Z"
+                    },
+                    {
+                        "id": 691,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.324Z",
+                        "updatedAt": "2023-04-21T07:47:00.324Z"
+                    },
+                    {
+                        "id": 699,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout_menu",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.458Z",
+                        "updatedAt": "2023-04-21T07:47:00.458Z"
+                    },
+                    {
+                        "id": 701,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::flyout-menu.flyout-menu",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.509Z",
+                        "updatedAt": "2023-04-21T07:47:00.509Z"
+                    },
+                    {
+                        "id": 702,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.529Z",
+                        "updatedAt": "2023-04-21T07:47:00.529Z"
+                    },
+                    {
+                        "id": 710,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout_menu",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.685Z",
+                        "updatedAt": "2023-04-21T07:47:00.685Z"
+                    },
+                    {
+                        "id": 712,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::flyout-menu.flyout-menu",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.720Z",
+                        "updatedAt": "2023-04-21T07:47:00.720Z"
+                    },
+                    {
+                        "id": 713,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.735Z",
+                        "updatedAt": "2023-04-21T07:47:00.735Z"
+                    },
+                    {
+                        "id": 714,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.747Z",
+                        "updatedAt": "2023-04-21T07:47:00.747Z"
+                    },
+                    {
+                        "id": 715,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.758Z",
+                        "updatedAt": "2023-04-21T07:47:00.758Z"
+                    },
+                    {
+                        "id": 717,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.804Z",
+                        "updatedAt": "2023-04-21T07:47:00.804Z"
+                    },
+                    {
+                        "id": 718,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.818Z",
+                        "updatedAt": "2023-04-21T07:47:00.818Z"
+                    },
+                    {
+                        "id": 721,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.878Z",
+                        "updatedAt": "2023-04-21T07:47:00.878Z"
+                    },
+                    {
+                        "id": 722,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.903Z",
+                        "updatedAt": "2023-04-21T07:47:00.903Z"
+                    },
+                    {
+                        "id": 723,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::flyout-menu.flyout-menu",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.919Z",
+                        "updatedAt": "2023-04-21T07:47:00.919Z"
+                    },
+                    {
+                        "id": 724,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.939Z",
+                        "updatedAt": "2023-04-21T07:47:00.939Z"
+                    },
+                    {
+                        "id": 725,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.955Z",
+                        "updatedAt": "2023-04-21T07:47:00.955Z"
+                    },
+                    {
+                        "id": 726,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:00.990Z",
+                        "updatedAt": "2023-04-21T07:47:00.990Z"
+                    },
+                    {
+                        "id": 728,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:01.039Z",
+                        "updatedAt": "2023-04-21T07:47:01.039Z"
+                    },
+                    {
+                        "id": 729,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:01.058Z",
+                        "updatedAt": "2023-04-21T07:47:01.058Z"
+                    },
+                    {
+                        "id": 732,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:01.107Z",
+                        "updatedAt": "2023-04-21T07:47:01.107Z"
+                    },
+                    {
+                        "id": 733,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T07:47:01.123Z",
+                        "updatedAt": "2023-04-21T07:47:01.123Z"
+                    },
+                    {
+                        "id": 740,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::theme.theme",
+                        "properties": {
+                            "fields": [
+                                "theme",
+                                "fonts.media",
+                                "fonts.weight",
+                                "fonts.style",
+                                "fonts.variant"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T10:37:32.026Z",
+                        "updatedAt": "2023-04-21T10:37:32.026Z"
+                    },
+                    {
+                        "id": 741,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::theme.theme",
+                        "properties": {
+                            "fields": [
+                                "theme",
+                                "fonts.media",
+                                "fonts.weight",
+                                "fonts.style",
+                                "fonts.variant"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T10:37:32.112Z",
+                        "updatedAt": "2023-04-21T10:37:32.112Z"
+                    },
+                    {
+                        "id": 742,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::theme.theme",
+                        "properties": {
+                            "fields": [
+                                "theme",
+                                "fonts.media",
+                                "fonts.weight",
+                                "fonts.style",
+                                "fonts.variant"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T10:37:32.130Z",
+                        "updatedAt": "2023-04-21T10:37:32.130Z"
+                    },
+                    {
+                        "id": 743,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:19:22.587Z",
+                        "updatedAt": "2023-04-21T11:19:22.587Z"
+                    },
+                    {
+                        "id": 745,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:19:22.623Z",
+                        "updatedAt": "2023-04-21T11:19:22.623Z"
+                    },
+                    {
+                        "id": 747,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:19:22.665Z",
+                        "updatedAt": "2023-04-21T11:19:22.665Z"
+                    },
+                    {
+                        "id": 750,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:20:13.062Z",
+                        "updatedAt": "2023-04-21T11:20:13.062Z"
+                    },
+                    {
+                        "id": 752,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:20:13.128Z",
+                        "updatedAt": "2023-04-21T11:20:13.128Z"
+                    },
+                    {
+                        "id": 754,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:20:13.175Z",
+                        "updatedAt": "2023-04-21T11:20:13.175Z"
+                    },
+                    {
+                        "id": 755,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "script",
+                                "gtm_key",
+                                "favicon",
+                                "pages",
+                                "is_default"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:46:18.917Z",
+                        "updatedAt": "2023-04-21T11:46:18.917Z"
+                    },
+                    {
+                        "id": 756,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "script",
+                                "gtm_key",
+                                "favicon",
+                                "pages",
+                                "is_default"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:46:18.935Z",
+                        "updatedAt": "2023-04-21T11:46:18.935Z"
+                    },
+                    {
+                        "id": 757,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "script",
+                                "gtm_key",
+                                "favicon",
+                                "pages",
+                                "is_default"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-21T11:46:18.946Z",
+                        "updatedAt": "2023-04-21T11:46:18.946Z"
+                    },
+                    {
+                        "id": 758,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "variant",
+                                "class_name",
+                                "layouts",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T21:18:03.511Z",
+                        "updatedAt": "2023-04-22T21:18:03.511Z"
+                    },
+                    {
+                        "id": 759,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "variant",
+                                "class_name",
+                                "layouts",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T21:18:03.583Z",
+                        "updatedAt": "2023-04-22T21:18:03.583Z"
+                    },
+                    {
+                        "id": 760,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "variant",
+                                "class_name",
+                                "layouts",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T21:18:03.631Z",
+                        "updatedAt": "2023-04-22T21:18:03.631Z"
+                    },
+                    {
+                        "id": 767,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "variant",
+                                "page_blocks",
+                                "layouts",
+                                "class_name",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T22:32:55.484Z",
+                        "updatedAt": "2023-04-22T22:32:55.484Z"
+                    },
+                    {
+                        "id": 768,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "variant",
+                                "page_blocks",
+                                "layouts",
+                                "class_name",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T22:32:55.517Z",
+                        "updatedAt": "2023-04-22T22:32:55.517Z"
+                    },
+                    {
+                        "id": 769,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "variant",
+                                "page_blocks",
+                                "layouts",
+                                "class_name",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-04-22T22:32:55.530Z",
+                        "updatedAt": "2023-04-22T22:32:55.530Z"
+                    },
+                    {
+                        "id": 797,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "plugin::users-permissions.user",
+                        "properties": {
+                            "fields": [
+                                "username",
+                                "email",
+                                "provider",
+                                "password",
+                                "resetPasswordToken",
+                                "confirmationToken",
+                                "confirmed",
+                                "blocked",
+                                "role"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.927Z",
+                        "updatedAt": "2023-05-04T09:19:34.927Z"
+                    },
+                    {
+                        "id": 798,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::review.review",
+                        "properties": {
+                            "fields": [
+                                "name",
+                                "title",
+                                "description",
+                                "subtitle",
+                                "rating",
+                                "media",
+                                "additional_media"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.946Z",
+                        "updatedAt": "2023-05-04T09:19:34.946Z"
+                    },
+                    {
+                        "id": 799,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "plugin::users-permissions.user",
+                        "properties": {
+                            "fields": [
+                                "username",
+                                "email",
+                                "provider",
+                                "password",
+                                "resetPasswordToken",
+                                "confirmationToken",
+                                "confirmed",
+                                "blocked",
+                                "role"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.951Z",
+                        "updatedAt": "2023-05-04T09:19:34.951Z"
+                    },
+                    {
+                        "id": 800,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::review.review",
+                        "properties": {
+                            "fields": [
+                                "name",
+                                "title",
+                                "description",
+                                "subtitle",
+                                "rating",
+                                "media",
+                                "additional_media"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.957Z",
+                        "updatedAt": "2023-05-04T09:19:34.957Z"
+                    },
+                    {
+                        "id": 801,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "plugin::users-permissions.user",
+                        "properties": {
+                            "fields": [
+                                "username",
+                                "email",
+                                "provider",
+                                "password",
+                                "resetPasswordToken",
+                                "confirmationToken",
+                                "confirmed",
+                                "blocked",
+                                "role"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.963Z",
+                        "updatedAt": "2023-05-04T09:19:34.963Z"
+                    },
+                    {
+                        "id": 802,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::review.review",
+                        "properties": {
+                            "fields": [
+                                "name",
+                                "title",
+                                "description",
+                                "subtitle",
+                                "rating",
+                                "media",
+                                "additional_media"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T09:19:34.969Z",
+                        "updatedAt": "2023-05-04T09:19:34.969Z"
+                    },
+                    {
+                        "id": 803,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout_menu"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:12:00.717Z",
+                        "updatedAt": "2023-05-04T10:12:00.717Z"
+                    },
+                    {
+                        "id": 804,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout_menu"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:12:00.730Z",
+                        "updatedAt": "2023-05-04T10:12:00.730Z"
+                    },
+                    {
+                        "id": 805,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout_menu"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:12:00.737Z",
+                        "updatedAt": "2023-05-04T10:12:00.737Z"
+                    },
+                    {
+                        "id": 806,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:12:00.745Z",
+                        "updatedAt": "2023-05-04T10:12:00.745Z"
+                    },
+                    {
+                        "id": 807,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:12:00.752Z",
+                        "updatedAt": "2023-05-04T10:12:00.752Z"
+                    },
+                    {
+                        "id": 818,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "class_name",
+                                "layouts",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:16:35.033Z",
+                        "updatedAt": "2023-05-04T10:16:35.033Z"
+                    },
+                    {
+                        "id": 819,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "class_name",
+                                "layouts",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:16:35.048Z",
+                        "updatedAt": "2023-05-04T10:16:35.048Z"
+                    },
+                    {
+                        "id": 820,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "class_name",
+                                "layouts",
+                                "side"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:16:35.055Z",
+                        "updatedAt": "2023-05-04T10:16:35.055Z"
+                    },
+                    {
+                        "id": 821,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:16:35.063Z",
+                        "updatedAt": "2023-05-04T10:16:35.063Z"
+                    },
+                    {
+                        "id": 822,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:16:35.070Z",
+                        "updatedAt": "2023-05-04T10:16:35.070Z"
+                    },
+                    {
+                        "id": 828,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "unicode",
+                                "is_default",
+                                "tiers"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:18:17.819Z",
+                        "updatedAt": "2023-05-04T10:18:17.819Z"
+                    },
+                    {
+                        "id": 829,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "unicode",
+                                "is_default",
+                                "tiers"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:18:17.833Z",
+                        "updatedAt": "2023-05-04T10:18:17.833Z"
+                    },
+                    {
+                        "id": 830,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "unicode",
+                                "is_default",
+                                "tiers"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:18:17.841Z",
+                        "updatedAt": "2023-05-04T10:18:17.841Z"
+                    },
+                    {
+                        "id": 831,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:18:17.850Z",
+                        "updatedAt": "2023-05-04T10:18:17.850Z"
+                    },
+                    {
+                        "id": 832,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:18:17.857Z",
+                        "updatedAt": "2023-05-04T10:18:17.857Z"
+                    },
+                    {
+                        "id": 833,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:20:54.403Z",
+                        "updatedAt": "2023-05-04T10:20:54.403Z"
+                    },
+                    {
+                        "id": 834,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:20:54.419Z",
+                        "updatedAt": "2023-05-04T10:20:54.419Z"
+                    },
+                    {
+                        "id": 835,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:20:54.425Z",
+                        "updatedAt": "2023-05-04T10:20:54.425Z"
+                    },
+                    {
+                        "id": 836,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:20:54.433Z",
+                        "updatedAt": "2023-05-04T10:20:54.433Z"
+                    },
+                    {
+                        "id": 837,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:20:54.440Z",
+                        "updatedAt": "2023-05-04T10:20:54.440Z"
+                    },
+                    {
+                        "id": 838,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:21:34.496Z",
+                        "updatedAt": "2023-05-04T10:21:34.496Z"
+                    },
+                    {
+                        "id": 839,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:21:34.510Z",
+                        "updatedAt": "2023-05-04T10:21:34.510Z"
+                    },
+                    {
+                        "id": 840,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:21:34.517Z",
+                        "updatedAt": "2023-05-04T10:21:34.517Z"
+                    },
+                    {
+                        "id": 841,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:21:34.524Z",
+                        "updatedAt": "2023-05-04T10:21:34.524Z"
+                    },
+                    {
+                        "id": 842,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:21:34.531Z",
+                        "updatedAt": "2023-05-04T10:21:34.531Z"
+                    },
+                    {
+                        "id": 843,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout_menu",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:22:39.148Z",
+                        "updatedAt": "2023-05-04T10:22:39.148Z"
+                    },
+                    {
+                        "id": 844,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout_menu",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:22:39.161Z",
+                        "updatedAt": "2023-05-04T10:22:39.161Z"
+                    },
+                    {
+                        "id": 845,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout_menu",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:22:39.167Z",
+                        "updatedAt": "2023-05-04T10:22:39.167Z"
+                    },
+                    {
+                        "id": 846,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:22:39.175Z",
+                        "updatedAt": "2023-05-04T10:22:39.175Z"
+                    },
+                    {
+                        "id": 847,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "locales": [
+                                "ru",
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T10:22:39.181Z",
+                        "updatedAt": "2023-05-04T10:22:39.181Z"
+                    },
+                    {
+                        "id": 848,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.008Z",
+                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                    },
+                    {
+                        "id": 849,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.034Z",
+                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                    },
+                    {
+                        "id": 850,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::robot.robot",
+                        "properties": {
+                            "fields": [
+                                "robots"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.040Z",
+                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                    },
+                    {
+                        "id": 851,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::robot.robot",
+                        "properties": {},
+                        "conditions": [],
+                        "createdAt": "2023-05-04T13:53:50.048Z",
+                        "updatedAt": "2023-05-04T13:53:50.048Z"
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null
+    }
 }

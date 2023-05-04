@@ -3,7 +3,7 @@
     "title": "Public Page Footer",
     "uid": "public-page-footer",
     "createdAt": "2023-05-04T10:25:13.563Z",
-    "updatedAt": "2023-05-04T15:36:53.767Z",
+    "updatedAt": "2023-05-04T15:41:05.789Z",
     "publishedAt": "2023-05-04T10:25:15.030Z",
     "locale": "en",
     "variant": "boxed",
@@ -26,7 +26,7 @@
                 "title": "Public Page Footer",
                 "uid": "public-page-footer",
                 "createdAt": "2023-05-04T10:25:13.563Z",
-                "updatedAt": "2023-05-04T15:36:53.767Z",
+                "updatedAt": "2023-05-04T15:41:05.789Z",
                 "publishedAt": "2023-05-04T10:25:15.030Z",
                 "locale": "en",
                 "variant": "boxed",
@@ -624,7 +624,7 @@
                 "title": "Public Page Footer",
                 "uid": "public-page-footer",
                 "createdAt": "2023-05-04T10:25:13.563Z",
-                "updatedAt": "2023-05-04T15:36:53.767Z",
+                "updatedAt": "2023-05-04T15:41:05.789Z",
                 "publishedAt": "2023-05-04T10:25:15.030Z",
                 "locale": "en",
                 "variant": "boxed",
@@ -1140,6 +1140,37 @@
                 "additional_media": null
             },
             "buttons_arrays": [
+                {
+                    "id": 28,
+                    "title": "Pages",
+                    "class_name": null,
+                    "variant": "column-with-title",
+                    "description": null,
+                    "url": null,
+                    "additional_attributes": null,
+                    "buttons": [
+                        {
+                            "id": 206,
+                            "url": "/page-with-sidebar-layout",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Page With Sidebar",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 207,
+                            "url": "/terms-and-conditions",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Terms and Conditions",
+                            "additional_attributes": null,
+                            "class_name": null
+                        }
+                    ],
+                    "media": null,
+                    "additional_media": null
+                },
                 {
                     "id": 25,
                     "title": "Links",
