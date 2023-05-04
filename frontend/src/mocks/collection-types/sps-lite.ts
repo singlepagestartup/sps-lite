@@ -80,10 +80,8 @@ export const spsLiteBackendTier: ISpsLiteBackendTier = {
 export const spsLiteBackendForm: ISpsLiteBackendForm = {
   id: 1,
   variant: "simple",
-  title: "Есть вопросы по продукту?",
-  subtitle: null,
-  description: "Заполните форму и мы свяжемся с вами в ближайшее время",
-  uid: "question",
+  title: "Product Questions",
+  uid: "product-questions",
   createdAt: "2023-02-14T10:12:40.873Z",
   updatedAt: "2023-03-26T20:40:29.554Z",
   publishedAt: "2023-02-14T22:44:48.245Z",
