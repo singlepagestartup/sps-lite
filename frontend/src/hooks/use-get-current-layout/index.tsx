@@ -73,6 +73,16 @@ export default function useGetCurrentLayout({
             }
           }
         }
+
+        // Not found routes doesn't have a page
+        if (!targetLayout) {
+          const notFoundPage = backendLayout.pages.find(
+            (page) => page.url === "/404",
+          );
+          if (notFoundPage) {
+            targetLayout = backendLayout;
+          }
+        }
       }
     }
 

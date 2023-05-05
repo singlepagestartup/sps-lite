@@ -17,13 +17,13 @@ export async function middleware(request: any) {
   );
 
   // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
+  if (pathnameIsMissingLocale && backendLocales?.length) {
     const defauleLocale = backendLocales.find((locale) => locale.isDefault);
 
-    // The new URL is now /en/<route>
-    return NextResponse.redirect(
+    // The rewrite URL is now /en/<route>
+    return NextResponse.rewrite(
       new URL(
-        `/${defauleLocale?.code}/${pathname}${searchParams || ""}`,
+        `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
         request.url,
       ),
     );
