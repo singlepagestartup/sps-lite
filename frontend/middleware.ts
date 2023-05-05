@@ -32,9 +32,7 @@ export async function middleware(request: any) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
+    // Skip all internal paths (_next, images, sitemap, robots)
     "/((?!_next|images|sitemap|robots).*)",
-    // Optional: only run on root (/) URL
-    // '/'
   ],
 };
