@@ -4,8 +4,10 @@
  */
 
 module.exports = {
+  // output: "export",
   reactStrictMode: false,
   images: {
+    // unoptimized: true,
     domains: [
       "vercel.app",
       "tailwindui.com",

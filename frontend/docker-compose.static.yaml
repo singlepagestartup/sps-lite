@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 8000:80
+    volumes:
+      - ./out:/var/www
+      - ./static.conf/:/etc/nginx/conf.d/static.conf

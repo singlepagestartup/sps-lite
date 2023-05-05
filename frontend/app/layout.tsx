@@ -9,6 +9,7 @@ import SlideOvers from "~components/slide-overs";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { layoutPopulate } from "~utils/api/queries";
+import { Suspense } from "react";
 
 export default async function RootLayout({
   children,
@@ -29,13 +30,16 @@ export default async function RootLayout({
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
         <div className="relative">
-          <TranslationsContextWrapper>
-            <ReduxProvider>
-              <Layouts layouts={layouts}>{children}</Layouts>
-              <Modals />
-              <SlideOvers />
-            </ReduxProvider>
-          </TranslationsContextWrapper>
+          {/* Suspense here is for static build, without that build will return nothing */}
+          <Suspense>
+            <TranslationsContextWrapper>
+              <ReduxProvider>
+                <Layouts layouts={layouts}>{children}</Layouts>
+                <Modals />
+                <SlideOvers />
+              </ReduxProvider>
+            </TranslationsContextWrapper>
+          </Suspense>
         </div>
       </body>
     </html>
