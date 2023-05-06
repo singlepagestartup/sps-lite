@@ -3,7 +3,7 @@ import SimpleWithAvatars from "./SimpleWithAvatars";
 import { FC } from "react";
 
 export interface ISpsLiteReviewsBlock extends ISpsLiteBackendReviewsBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

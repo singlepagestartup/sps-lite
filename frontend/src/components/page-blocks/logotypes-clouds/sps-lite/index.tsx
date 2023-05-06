@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export interface ISpsLiteLogotypesCloudBlock
   extends ISpsLiteBackendLogotypesCloudBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

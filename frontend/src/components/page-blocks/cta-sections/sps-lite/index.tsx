@@ -4,7 +4,7 @@ import { ISpsLiteBackendCtaSectionBlock } from "types/components/page-blocks/sps
 
 export interface ISpsLiteCtaSectionsBlock
   extends ISpsLiteBackendCtaSectionBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
   [key: string]: any;
 }
 

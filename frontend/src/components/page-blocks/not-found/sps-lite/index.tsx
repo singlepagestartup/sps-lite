@@ -3,7 +3,7 @@ import Simple from "./Simple";
 import { FC } from "react";
 
 export interface ISpsLiteNotFoundBlock extends ISpsLiteBackendNotFoundBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

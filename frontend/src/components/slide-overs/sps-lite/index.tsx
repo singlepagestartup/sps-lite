@@ -5,6 +5,7 @@ import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
 export interface ISpsLiteSlideOver extends ISpsLiteBackendSlideOver {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

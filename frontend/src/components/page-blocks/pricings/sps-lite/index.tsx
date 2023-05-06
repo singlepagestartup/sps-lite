@@ -3,7 +3,7 @@ import TwoColumns from "./TwoColumns";
 import { FC } from "react";
 
 export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

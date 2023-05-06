@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export interface ISpsLiteIncentivesBlock
   extends ISpsLiteBackendIncentivesBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

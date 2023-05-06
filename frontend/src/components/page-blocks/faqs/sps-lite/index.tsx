@@ -3,7 +3,7 @@ import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduc
 import { ISpsLiteBackendFaqBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISpsLiteFaqBlock extends ISpsLiteBackendFaqBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

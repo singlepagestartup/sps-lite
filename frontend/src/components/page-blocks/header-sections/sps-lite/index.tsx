@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export interface ISpsLiteHeaderSectionBlock
   extends ISpsLiteBackendHeaderSectionBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {

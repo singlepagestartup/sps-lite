@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export interface ISpsLiteReviewsTableBlock
   extends ISpsLiteBackendReviewsTableBlock {
-  isLoading?: boolean;
+  showSkeletons?: boolean;
 }
 
 export const variants = {
