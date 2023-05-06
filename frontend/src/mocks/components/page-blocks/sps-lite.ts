@@ -64,7 +64,7 @@ export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBa
   {
     id: 3,
     title: "Hello world",
-    variant: "dark-panel-with-app-screenshot",
+    variant: "dark-with-image",
     __component: "page-blocks.cta-section-block",
     description:
       "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",

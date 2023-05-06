@@ -348,7 +348,7 @@
           {
             "__component": "page-blocks.cta-section-block",
             "id": 25,
-            "variant": "dark-panel-with-app-screenshot",
+            "variant": "dark-with-image",
             "anchor": null,
             "title": "Minimum Viable Product is Ready",
             "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
@@ -1016,7 +1016,7 @@
           {
             "__component": "page-blocks.cta-section-block",
             "id": 25,
-            "variant": "dark-panel-with-app-screenshot",
+            "variant": "dark-with-image",
             "anchor": null,
             "title": "Minimum Viable Product is Ready",
             "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
