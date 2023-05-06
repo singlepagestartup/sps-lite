@@ -43,6 +43,9 @@ const config = {
           900: colors.indigo[900],
         },
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
     },
   },
   plugins: [

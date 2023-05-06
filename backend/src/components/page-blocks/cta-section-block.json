@@ -8,8 +8,10 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["dark-panel-with-app-screenshot"],
-      "default": "dark-panel-with-app-screenshot",
+      "enum": [
+        "dark-with-image"
+      ],
+      "default": "dark-with-image",
       "required": true
     },
     "anchor": {
@@ -28,7 +30,12 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "buttons": {
       "type": "component",

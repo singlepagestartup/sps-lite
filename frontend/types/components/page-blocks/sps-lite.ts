@@ -35,7 +35,7 @@ export interface ISpsLiteBackendContactSectonBlock {
 export interface ISpsLiteBackendCtaSectionBlock {
   id: number;
   __component: "page-blocks.cta-section-block";
-  variant: "dark-panel-with-app-screenshot";
+  variant: "dark-with-image";
   title?: string;
   description?: string;
   media?: ISpsLiteBackendUploadPluginBackendMedia[];
