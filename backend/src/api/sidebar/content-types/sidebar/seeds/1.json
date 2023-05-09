@@ -30,7 +30,7 @@
             "uid": "public-page-layout",
             "variant": "boxed",
             "createdAt": "2023-04-08T12:04:55.015Z",
-            "updatedAt": "2023-05-04T10:26:18.509Z",
+            "updatedAt": "2023-05-05T13:35:07.829Z",
             "publishedAt": "2023-04-08T12:04:56.606Z",
             "locale": "en",
             "class_name": null,
@@ -63,7 +63,7 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
+                        "updatedAt": "2023-05-05T13:35:07.829Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
                         "class_name": null
@@ -130,7 +130,7 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
+                        "updatedAt": "2023-05-05T13:35:07.829Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
                         "class_name": null
@@ -207,7 +207,7 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
+                            "updatedAt": "2023-05-05T13:35:07.829Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
                             "class_name": null
@@ -286,7 +286,7 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-04T10:26:18.509Z",
+                            "updatedAt": "2023-05-05T13:35:07.829Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
                             "class_name": null
@@ -350,7 +350,7 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
+                        "updatedAt": "2023-05-05T13:35:07.829Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
                         "class_name": null
@@ -404,7 +404,7 @@
                     "id": 3,
                     "title": "Page With Sidebar Layout",
                     "createdAt": "2023-04-08T20:00:13.006Z",
-                    "updatedAt": "2023-05-04T15:29:46.768Z",
+                    "updatedAt": "2023-05-05T13:37:34.624Z",
                     "publishedAt": "2023-04-08T20:00:14.519Z",
                     "locale": "en",
                     "url": "/page-with-sidebar-layout",
@@ -414,7 +414,7 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
+                        "updatedAt": "2023-05-05T13:35:07.829Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
                         "class_name": null
@@ -461,71 +461,17 @@
                         "createdAt": "2023-02-13T22:32:56.592Z",
                         "updatedAt": "2023-02-13T22:32:56.592Z"
                     },
-                    "localizations": []
-                },
-                {
-                    "id": 5,
-                    "title": "Not found page",
-                    "createdAt": "2023-04-08T21:42:59.904Z",
-                    "updatedAt": "2023-05-04T10:08:31.030Z",
-                    "publishedAt": "2023-04-20T11:18:21.051Z",
-                    "locale": "en",
-                    "url": "/404",
-                    "layout": {
-                        "id": 1,
-                        "title": "Public Page Layout With Sidebar",
-                        "uid": "public-page-layout",
-                        "variant": "boxed",
-                        "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-04T10:26:18.509Z",
-                        "publishedAt": "2023-04-08T12:04:56.606Z",
-                        "locale": "en",
-                        "class_name": null
-                    },
-                    "page_blocks": [
+                    "localizations": [
                         {
-                            "__component": "page-blocks.not-found-block",
-                            "id": 15,
-                            "variant": "simple",
-                            "title": "404",
-                            "description": null,
-                            "class_name": null,
-                            "anchor": null,
-                            "subtitle": "Not found"
+                            "id": 10,
+                            "title": "Страница с сайдбаром",
+                            "createdAt": "2023-05-05T13:34:48.247Z",
+                            "updatedAt": "2023-05-05T13:37:34.558Z",
+                            "publishedAt": "2023-05-05T13:37:34.537Z",
+                            "locale": "ru",
+                            "url": "/page-with-sidebar-layout"
                         }
-                    ],
-                    "metatag": null,
-                    "createdBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "updatedBy": {
-                        "id": 1,
-                        "firstname": "rogwild",
-                        "lastname": "design",
-                        "username": null,
-                        "email": "rogwild.design@gmail.com",
-                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                        "resetPasswordToken": null,
-                        "registrationToken": null,
-                        "isActive": true,
-                        "blocked": false,
-                        "preferedLanguage": null,
-                        "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
-                    },
-                    "localizations": []
+                    ]
                 }
             ],
             "createdBy": {
@@ -582,7 +528,79 @@
                 "createdBy": null,
                 "updatedBy": null
             },
-            "localizations": []
+            "localizations": [
+                {
+                    "id": 5,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout-with-sidebar",
+                    "variant": "wide",
+                    "createdAt": "2023-05-05T13:35:00.679Z",
+                    "updatedAt": "2023-05-05T13:35:07.783Z",
+                    "publishedAt": "2023-05-05T13:35:01.911Z",
+                    "locale": "ru",
+                    "class_name": null,
+                    "sidebar": null,
+                    "topbar": null,
+                    "footer": null,
+                    "slide_overs": [],
+                    "modals": [],
+                    "navbar": null,
+                    "pages": [
+                        {
+                            "id": 10,
+                            "title": "Страница с сайдбаром",
+                            "createdAt": "2023-05-05T13:34:48.247Z",
+                            "updatedAt": "2023-05-05T13:37:34.558Z",
+                            "publishedAt": "2023-05-05T13:37:34.537Z",
+                            "locale": "ru",
+                            "url": "/page-with-sidebar-layout"
+                        }
+                    ],
+                    "createdBy": {
+                        "id": 1,
+                        "firstname": "rogwild",
+                        "lastname": "design",
+                        "username": null,
+                        "email": "rogwild.design@gmail.com",
+                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                        "resetPasswordToken": null,
+                        "registrationToken": null,
+                        "isActive": true,
+                        "blocked": false,
+                        "preferedLanguage": null,
+                        "createdAt": "2023-02-13T22:32:56.592Z",
+                        "updatedAt": "2023-02-13T22:32:56.592Z"
+                    },
+                    "updatedBy": {
+                        "id": 1,
+                        "firstname": "rogwild",
+                        "lastname": "design",
+                        "username": null,
+                        "email": "rogwild.design@gmail.com",
+                        "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
+                        "resetPasswordToken": null,
+                        "registrationToken": null,
+                        "isActive": true,
+                        "blocked": false,
+                        "preferedLanguage": null,
+                        "createdAt": "2023-02-13T22:32:56.592Z",
+                        "updatedAt": "2023-02-13T22:32:56.592Z"
+                    },
+                    "localizations": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "createdAt": "2023-04-08T12:04:55.015Z",
+                            "updatedAt": "2023-05-05T13:35:07.829Z",
+                            "publishedAt": "2023-04-08T12:04:56.606Z",
+                            "locale": "en",
+                            "class_name": null
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "createdBy": {
