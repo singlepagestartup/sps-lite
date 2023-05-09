@@ -4,3 +4,8 @@ node_modules
 .next
 .env
 .env.local
+.well-known
+.dfx
+canister_ids.json
+out
+.ic-assets.json
