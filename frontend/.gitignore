@@ -42,3 +42,7 @@ package-lock.json
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+#icp
+.dfx
+canister_ids.json
