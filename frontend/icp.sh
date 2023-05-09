@@ -1,5 +1,5 @@
 #!/bin/bash
-npm run build
+npm run build:icp
 
 # ICP has bug with encodeURI()
 # GET https://7jwa3-hqaaa-aaaao-aanuq-cai.icp0.io/_next/static/chunks/app/%5Blocale%5D/%5B%5B...url%5D%5D/page-eed475f3356c9ad1.js net::ERR_ABORTED 502

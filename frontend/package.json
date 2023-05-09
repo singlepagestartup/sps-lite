@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "ENV_FILE=development node theme.js && next dev",
     "build": "ENV_FILE=production node theme.js && next build",
+    "build:icp": "ENV_FILE=production node theme.js && SERVER_ENVIRONMENT=icp next build",
     "start": "next start",
     "test": "jest --watch",
     "test:e2e": "playwright test",
