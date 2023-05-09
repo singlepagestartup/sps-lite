@@ -1,110 +1,63 @@
 # Boilerplate for Lean Startup Developers
 
-Создай свой стартап за несколько часов и постепенно расширяя функционал доработай его до полноценного продукта, при этом не тратя время на разработку функционала с нуля.
+Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.
+
+### [Documentation](https://doc.singlepagestartup.com/)
 
 ![preview](./documentation/docs/introduction/img/preview.png)
 
-# Не повторяй себя
+# Minimum Viable Product is Ready
 
-Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.
+Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.
 
-Архитектура проекта настроена таким образом, что вы расширяете функционал, при этом не ломая уже работающий функционал.
+# Don't repeat yourself
 
-# Enterprise практики с первого дня
+SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.
 
-Мы постарались сделать так, чтобы вам не нужно было описывать бизнес логику, которая повторяется из проекта в проект.
+## Ready-to-Use UI Components
 
-## Конструктор блоков страниц
+Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.
 
-Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.
+## Global-Ready
 
-## Мультиязычность
+Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.
 
-Ваш стартап обязательно станет интернациональным, мы позаботились об этом и уже все подготовили за вас. Просто выберите какие языки поддерживать.
+## Streamlined Authentication & Authorization
 
-## Аутентификация и авторизация пользователей с мульти-факторным подтверждением входа
+Save 20 to 100 hours of development time with our ready-to-use, best-practice authentication and authorization system. Focus on your core features and let us handle the rest.
 
-Разработка аутентификаци, авторизации и всех сопутствующих страниц занимает от 20 до 100 часов работы команды. Больше не нужно тратить на это время, все уже есть и работает. Просто воспользуйтесь наработками в своем стартапе.
+## Easy Avatar Integration
 
-## Личный кабинет пользователя с настройками профиля
+Enhance user profiles with our pre-built avatar functionality. Simply add the PageBlock to the profile page and let your users personalize their accounts with custom avatars.
 
-После того как пользователь зарегистрировался, он захочет поставить аватар, мы уже сделали это, просто включите этот PageBlock на страницу профиля пользователя.
+## Seamless Third-Party Service Integration
 
-## Интеграции
+Quickly add essential features to your MVP with built-in support for popular services such as authentication, payment gateways, and analytics tools. Less hassle, more productivity.
 
-Мы сделали интеграции с Google Drive и Google Sheets для данных, которые отправляются в формах на сайте. Вы можете использовать их или добавить свои варианты интеграций.
+## Effortless Document Generation
 
-## Генератор PDF файлов на основе создаваемых пользователем данных
+Generate documents based on user data or completed forms with ease using our built-in document generation functionality. Just incorporate it into your business logic and you're set.
 
-Хотите генерировать документы на основе данных пользователя или заполненной формы? Не проблема, просто включите этот функционал в вашу бизнес логику.
+## Comprehensive E-Commerce Features
 
-## Панель администрирования
+Utilize our ready-to-use product catalog, product pages, shopping cart, delivery options, and order history to jumpstart your e-commerce project.
 
-Настраивайте ваш проект через панель администрирования Strapi, расширяйте функционал с помощью плагинов или пишите свои.
+## Built-In Blogging Capabilities
 
-## Миграции данных
+Establish your personal brand by enabling our integrated blogging functionality, perfect for sharing news and insights with your audience.
 
-Можете заполнить проект на локальной машине и сделать дамп данных, после чего на сервере запустите миграцию и контент будет заполнен.
+## Flexible Customization and Extensibility
 
-## CI/CD
+Tailor your project to your needs using the Strapi admin panel, extend its capabilities with plugins, or create your own custom features.
 
-Мы уже написали скрипты CI/CD для GitHub Actions и инструкции по развертыванию проекта на сервере. Значит вам не нужно будет думать о том, как запустить проект на сервере, просто последовательно выполните команды и сможете обновлять проект автоматически через GitHub версионирование.
+## Hassle-Free Data Migration and Seeding
 
-## Типизация
+Easily migrate or seed data by completing your project locally, running a data dump, and migrating it to your server, or by describing your data as JSON and adding it to the data seeding process.
 
-В проекте уже настроены типы и структуры данных, получаемые фронтендом от бекенда.
+## Rapid Deployment (CI/CD)
 
-## Получение данных от бекенда
+With pre-configured deployment tools and processes, our boilerplate enables you to quickly deploy your MVP to your preferred hosting platform. This helps you reduce the time-to-market and start gathering valuable customer feedback sooner.
 
-В проекте описана логика получения фронтендом данных от бекенда.
+## Modular and Scalable
 
-## Storybook, Playwright
-
-В проекте уже настроен Storybook для удобного просмотра доступных Page-Block’ов. Также мы настроили Playwright и написали тесты для проверки функционала работы авторизации и аутентификации, вы можете взять их за основу своей системы тестирования.
-
-# Справится даже Junior-разработчик
-
-Создавая проект мы старались сделать его удобным и понятным даже начинающему разработчику.
-
-Используя SPS вы сразу же получаете конструктор страниц и авторизацию пользователей, добавьте бизнес логику вашего продукта и опубликуйте в интернете.
-
-Архитектура проекта настроена таким образом, чтобы добавляя новый функционал не ломался старый, для того чтобы была возможность получать обновления SPS и используемых в проекте OpenSource пакетов для максимальной актуальности используемых в проекте решений.
-
-# Занимайтесь продуктом, не кодом
-
-Меняйте страницы вашего проекта хоть каждый день, делайте A/B тесты. Все это может делать менеджер контента через панель управления сайтом. Не нужно писать разработчикам, а менеджеру контента не надо становиться программистом, панель управления сайтом интуитивно понятна и не позволит сломать функционал проекта.
-
-# OpenSource “под капотом”
-
-Данный подход имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности, актуальность используемых подходов.
-
-## Next.js
-
-1. Фреймворк, что добавляет ограничения, которые не дадут разработчику написать основу проекта “неправильно”
-2. Качественная документация
-3. Большое комьюнити, вследствие чего вы сможете легко найти нужную вам информация
-4. Рендеринг на стороне клиента даст вашим лендингам преимущество по скорости отдачи и правильное сканирование поисковыми роботами
-
-## Strapi
-
-1. Гибкий фреймворк на Node.js завоевавший сердца тысяч разработчиков потому что лишает головной боли бекенд разработчика.
-2. Под капотом уже есть ORM, конструктор моделей и связей, архитектура с политиками и промежуточными слоями.
-3. Практически любой стартап можно сделать с помощью Strapi, так как ограничений нет, вы просто пишете код на Node.js там, где его ожидает Strapi.
-4. Качественная документация и активное комьюнити решит любой ваш вопрос.
-5. Постоянная разработка фреймворка расширяет функционал системы и улучшает пользовательский опыт.
-
-## Tailwind CSS
-
-1. Фреймворк для верстки, который не ограничивает разработчика и не требует от него изменения ядра фреймворка для решения неординарных задач, так как вы пишите CSS классами. Только без проблем рендеринга, которые встречаются в всех CSS-in-JS решениях.
-2. Качественная документация
-3. Большое комьюнити, вследствие чего вы сможете легко найти нужную вам информация
-
-# Обновления через Git
-
-Мы разработали стратегию обновления проекта через Git из основной ветки нашего репозитория. Преднамеренно мы ушли от концепции npm-пакета, так как он накладывает жесткие ограничения на расширение кодовой базы и требует лишних усложнений проекта в целом.
-
-Вместо этого мы решили использовать git upstream подход. Работать с этим проще, чем с npm-пакетом, главное соблюдать несложные правила - используйте расширение имеющегося функционала, а не сужение и все будет хорошо. Но если не пользоваться данным правилом, то придется решать небольшие merge-конфликты и типах и импортах.
-
-# Документация
-
-Подрбнее читайте в разделе [Документация](documentation/README.md)
+Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.
