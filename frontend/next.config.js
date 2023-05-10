@@ -34,6 +34,7 @@ function makeConfig() {
 
   if (serverEnvironment === "icp") {
     config.output = "export";
+    config.images.unoptimized = true;
   }
 
   return config;
