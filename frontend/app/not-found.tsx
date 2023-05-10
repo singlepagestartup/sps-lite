@@ -16,7 +16,7 @@ export default async function NotFoundPage() {
   })) as IBackendPage[];
 
   if (!pages?.length) {
-    <div>Not found</div>;
+    return <div>Not found</div>;
   }
 
   return <PageBlocks pageBlocks={pages[0].pageBlocks} />;

@@ -14,6 +14,8 @@ function makeConfig() {
         "tailwindui.com",
         "images.unsplash.com",
         "unsplash.com",
+        "localhost",
+        "127.0.0.1",
       ],
       remotePatterns: [
         {

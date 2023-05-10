@@ -41,6 +41,10 @@ export default function useGetCurrentLayout({
 
           if (splittedPathname?.length) {
             let pathEquals = true;
+            if (splittedPathname.length !== splittedPageUrl.length) {
+              pathEquals = false;
+            }
+
             for (const [
               index,
               splittedPathnameItem,
