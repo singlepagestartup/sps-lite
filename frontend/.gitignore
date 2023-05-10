@@ -48,3 +48,4 @@ package-lock.json
 canister_ids.json
 .well-known/
 .ic-assets.json
+.env
