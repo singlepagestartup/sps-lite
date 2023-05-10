@@ -20,6 +20,29 @@ git pull upstream main
 git push origin main
 ```
 
+:::danger title="remote upstream already exists"
+Если при попытке изменить `remote upstream` появляется ошибка `remote upstream already exists.`:
+
+```bash
+git:(main) git remote add upstream https://github.com/singlepagestartup/sps.git
+error: remote upstream already exists.
+```
+
+Необходимо выполнить команду
+
+```bash
+git remote rm upstream
+```
+
+После чего повторить попытку подключения `remote upstream`
+
+```bash
+git:(main) git remote add upstream https://github.com/singlepagestartup/sps.git
+git:(main)
+```
+
+:::
+
 :::info
 Перед первым коммитом необходимо настроить [Husky](https://github.com/typicode/husky), иначе может появиться ошибка
 
