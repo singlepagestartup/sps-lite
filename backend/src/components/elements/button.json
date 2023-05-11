@@ -14,24 +14,14 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "videos",
-        "audios",
-        "files"
-      ]
+      "allowedTypes": ["images", "videos", "audios", "files"]
     },
     "description": {
       "type": "richtext"
     },
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "primary",
-        "secondary",
-        "text",
-        "locale"
-      ],
+      "enum": ["primary", "secondary", "text", "locale"],
       "default": "primary",
       "required": true
     },
@@ -39,12 +29,7 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "title": {
       "type": "richtext"
