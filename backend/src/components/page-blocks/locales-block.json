@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_page_blocks_locales_blocks",
+  "info": {
+    "displayName": "Locales Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "simple"
+      ],
+      "default": "simple",
+      "required": true
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "class_name": {
+      "type": "string"
+    }
+  }
+}

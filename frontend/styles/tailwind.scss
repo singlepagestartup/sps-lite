@@ -38,6 +38,10 @@ button:focus {
     @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
   }
 
+  .button-locale {
+    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white uppercase;
+  }
+
   .button-primary {
     @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
   }

@@ -33,6 +33,10 @@ export default function useGetCurrentLayout({
       .filter((element) => element !== undefined);
 
     for (const backendLayout of layouts) {
+      if (backendLayout.locale !== params?.locale) {
+        continue;
+      }
+
       if (backendLayout.pages) {
         for (const page of backendLayout.pages) {
           const splittedPageUrl = page.url

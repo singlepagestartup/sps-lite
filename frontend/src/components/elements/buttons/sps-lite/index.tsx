@@ -3,6 +3,7 @@ import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
 import { ISpsLiteBackendButton } from "types/components/elements/sps-lite";
+import Locale from "./Locale";
 
 export interface ISpsLiteButton
   extends Omit<
@@ -28,6 +29,7 @@ export const variants = {
   text: Text,
   primary: Primary,
   secondary: Secondary,
+  locale: Locale,
 };
 
 export default function Buttons(props: ISpsLiteButton) {
