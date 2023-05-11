@@ -598,6 +598,14 @@ button:focus {
       }
     }
   }
+
+  .flyout {
+    @apply absolute left-1/2 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform;
+
+    .flyout_container {
+      @apply overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-2 bg-white;
+    }
+  }
 }
 
 /* Chrome, Safari, Edge, Opera */
