@@ -1,24 +1,32 @@
 import Buttons from "~components/elements/buttons";
 import { IButtonsArray } from ".";
+import Image from "next/image";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function ColumnWithTitle(props: IButtonsArray) {
   const { title, buttons } = props;
 
   return (
-    <div className={props?.className || ""}>
-      <div className="flex flex-col gap-2 relative">
+    <div
+      data-variant={props.variant}
+      className={`buttons-array ${props?.className || ""}`}
+    >
+      <div className="buttons-array-column-with-title">
         {title ? (
-          <div className="relative inline-flex text-sm w-full leading-relaxed opacity-50 uppercase">
+          <div className="buttons-array-title">
+            {props.media?.length ? (
+              <div className="icon-container">
+                <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
+              </div>
+            ) : null}
             {title}
           </div>
         ) : null}
 
-        <div className="w-full">
-          <div className="w-full items-start flex flex-col gap-2">
-            {buttons?.map((button, index) => {
-              return <Buttons key={index} {...button} />;
-            })}
-          </div>
+        <div className="buttons-array-buttons-container">
+          {buttons?.map((button, index) => {
+            return <Buttons key={index} {...button} />;
+          })}
         </div>
       </div>
     </div>

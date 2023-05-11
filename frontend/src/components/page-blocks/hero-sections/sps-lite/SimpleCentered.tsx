@@ -8,7 +8,10 @@ import getFileUrl from "~utils/api/get-file-url";
 export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   if (props.showSkeletons) {
     return (
-      <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
+      <div
+        data-page-block={props.__component}
+        className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl"
+      >
         <div className="relative pt-6 pb-16 w-full">
           <main className="mx-auto mt-16 max-w-2xl lg:max-w-7xl px-4 sm:mt-24 flex justify-center items-center flex-col">
             <div className="w-6/12 h-16 skeleton"></div>
@@ -23,7 +26,10 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   }
 
   return (
-    <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
+    <div
+      data-page-block={props.__component}
+      className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl"
+    >
       {props.background ? (
         <Image
           src={getFileUrl(props.background)}

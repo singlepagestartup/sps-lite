@@ -20,6 +20,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
 
   return (
     <div
+      data-page-block={props.__component}
       className="flex flex-col border-b border-gray-200 lg:border-0"
       {...additionalAttributes}
     >

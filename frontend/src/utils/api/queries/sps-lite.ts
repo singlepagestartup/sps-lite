@@ -7,7 +7,7 @@ export const buttonPopulate = {
   additionalMedia: {
     populate: mediaPopulate,
   },
-  flyout_menu: {
+  flyout: {
     populate: "*",
   },
 };

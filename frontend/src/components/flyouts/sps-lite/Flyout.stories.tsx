@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FlyoutMenu from ".";
-import { spsLiteBackendFlyoutMenuSimple } from "~mocks/collection-types/sps-lite";
+import Flyout from ".";
+import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
 
 const meta = {
-  component: FlyoutMenu,
-} satisfies Meta<typeof FlyoutMenu>;
+  component: Flyout,
+} satisfies Meta<typeof Flyout>;
 
 export default meta;
 
@@ -19,5 +19,5 @@ function RenderButton() {
 }
 
 export const Simple: Story = {
-  args: { ...spsLiteBackendFlyoutMenuSimple, children: <RenderButton /> },
+  args: { ...spsLiteBackendFlyoutSimple, children: <RenderButton /> },
 };

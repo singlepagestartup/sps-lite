@@ -30,7 +30,7 @@ const tagTypes = [
   "Navbar",
   "Modal",
   "Footer",
-  "FlyoutMenu",
+  "Flyout",
   "Layout",
   "Sidebar",
   "Review",

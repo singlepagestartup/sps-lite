@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
-import { ISpsLiteBackendFlyoutMenu } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendFlyout } from "types/collection-types/sps-lite";
 import Simple from "./Simple";
 
-export interface ISpsLiteFlyoutMenu extends ISpsLiteBackendFlyoutMenu {
+export interface ISpsLiteFlyout extends ISpsLiteBackendFlyout {
   children: ReactNode;
   showSkeletons?: boolean;
 }
@@ -11,10 +11,10 @@ export const variants = {
   simple: Simple,
 };
 
-export default function Menus(props: ISpsLiteFlyoutMenu) {
+export default function Menus(props: ISpsLiteFlyout) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ISpsLiteFlyoutMenu>;
+  ] as FC<ISpsLiteFlyout>;
 
   if (!Comp) {
     return <></>;

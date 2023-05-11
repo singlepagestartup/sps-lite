@@ -55,10 +55,10 @@
     "class_name": {
       "type": "string"
     },
-    "flyout_menu": {
+    "flyout": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::flyout-menu.flyout-menu"
+      "target": "api::flyout.flyout"
     }
   }
 }

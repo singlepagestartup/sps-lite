@@ -18,7 +18,11 @@ export default function DarkWithImage(props: ISpsLiteCtaSectionsBlock) {
   }, [props]);
 
   return (
-    <div className="bg-white" {...additionalAttributes}>
+    <div
+      data-page-block={props.__component}
+      className="bg-white"
+      {...additionalAttributes}
+    >
       <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="relative isolate grid grid-rows-2 lg:grid-rows-1 grid-cols-4 gap-4 overflow-hidden px-6 pt-16 bg-gray-900 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:px-24 lg:pt-0">
           <div className="absolute top-1/2 left-1/2 -z-10 h-[80vw] w-[80vw] -translate-y-1/2 lg:left-1/2 lg:ml-0 lg:translate-y-0 lg:-translate-x-1/2 rounded-full bg-gradient-radial from-primary-600 to-transparent [mask-image:radial-gradient(closest-side,white,transparent)]"></div>

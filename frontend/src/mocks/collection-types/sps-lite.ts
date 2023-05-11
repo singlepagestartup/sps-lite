@@ -1,6 +1,6 @@
 import {
   ISpsLiteBackendCurrency,
-  ISpsLiteBackendFlyoutMenu,
+  ISpsLiteBackendFlyout,
   ISpsLiteBackendFooter,
   ISpsLiteBackendForm,
   ISpsLiteBackendLayout,
@@ -200,7 +200,7 @@ export const spsLiteBackendNavbarBoxed: ISpsLiteBackendNavbar = {
   pageBlocks: [{ ...spsLiteBackendNavbarBlockSimple }],
 };
 
-export const spsLiteBackendFlyoutMenuSimple: ISpsLiteBackendFlyoutMenu = {
+export const spsLiteBackendFlyoutSimple: ISpsLiteBackendFlyout = {
   id: 1,
   title: "Main Menu",
   uid: "main-menu",

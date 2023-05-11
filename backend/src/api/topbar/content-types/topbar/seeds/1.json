@@ -22,7 +22,7 @@
             "class_name": null,
             "media": null,
             "additional_media": null,
-            "flyout_menu": null
+            "flyout": null
         }
     ],
     "layouts": [],
@@ -898,55 +898,6 @@
                         "updatedAt": "2023-05-04T13:53:50.048Z"
                     },
                     {
-                        "id": 712,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.010Z",
-                        "updatedAt": "2023-05-11T13:44:31.010Z"
-                    },
-                    {
-                        "id": 805,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.030Z",
-                        "updatedAt": "2023-05-11T13:44:31.030Z"
-                    },
-                    {
                         "id": 839,
                         "action": "plugin::content-manager.explorer.read",
                         "subject": "api::slide-over.slide-over",
@@ -1121,89 +1072,6 @@
                         "updatedAt": "2023-05-11T13:44:31.099Z"
                     },
                     {
-                        "id": 710,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.105Z",
-                        "updatedAt": "2023-05-11T13:44:31.105Z"
-                    },
-                    {
-                        "id": 844,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.112Z",
-                        "updatedAt": "2023-05-11T13:44:31.112Z"
-                    },
-                    {
                         "id": 846,
                         "action": "plugin::content-manager.explorer.delete",
                         "subject": "api::form.form",
@@ -1215,42 +1083,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.118Z",
                         "updatedAt": "2023-05-11T13:44:31.118Z"
-                    },
-                    {
-                        "id": 803,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.123Z",
-                        "updatedAt": "2023-05-11T13:44:31.123Z"
                     },
                     {
                         "id": 760,
@@ -1318,26 +1150,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.144Z",
                         "updatedAt": "2023-05-11T13:44:31.144Z"
-                    },
-                    {
-                        "id": 701,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.150Z",
-                        "updatedAt": "2023-05-11T13:44:31.150Z"
                     },
                     {
                         "id": 718,
@@ -1430,42 +1242,6 @@
                         "updatedAt": "2023-05-11T13:44:31.191Z"
                     },
                     {
-                        "id": 804,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.197Z",
-                        "updatedAt": "2023-05-11T13:44:31.197Z"
-                    },
-                    {
                         "id": 757,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::metatag.metatag",
@@ -1525,43 +1301,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.215Z",
                         "updatedAt": "2023-05-11T13:44:31.215Z"
-                    },
-                    {
-                        "id": 688,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.221Z",
-                        "updatedAt": "2023-05-11T13:44:31.221Z"
                     },
                     {
                         "id": 806,
@@ -1713,26 +1452,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.281Z",
                         "updatedAt": "2023-05-11T13:44:31.281Z"
-                    },
-                    {
-                        "id": 690,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.287Z",
-                        "updatedAt": "2023-05-11T13:44:31.287Z"
                     },
                     {
                         "id": 831,
@@ -1965,52 +1684,6 @@
                         "updatedAt": "2023-05-11T13:44:31.387Z"
                     },
                     {
-                        "id": 843,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.404Z",
-                        "updatedAt": "2023-05-11T13:44:31.404Z"
-                    },
-                    {
                         "id": 758,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::navbar.navbar",
@@ -2045,63 +1718,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.476Z",
                         "updatedAt": "2023-05-11T13:44:31.476Z"
-                    },
-                    {
-                        "id": 699,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.492Z",
-                        "updatedAt": "2023-05-11T13:44:31.492Z"
-                    },
-                    {
-                        "id": 679,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.499Z",
-                        "updatedAt": "2023-05-11T13:44:31.499Z"
                     },
                     {
                         "id": 829,
@@ -2170,19 +1786,6 @@
                         "updatedAt": "2023-05-11T13:44:31.530Z"
                     },
                     {
-                        "id": 723,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.541Z",
-                        "updatedAt": "2023-05-11T13:44:31.541Z"
-                    },
-                    {
                         "id": 767,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::topbar.topbar",
@@ -2230,52 +1833,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.564Z",
                         "updatedAt": "2023-05-11T13:44:31.564Z"
-                    },
-                    {
-                        "id": 845,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.572Z",
-                        "updatedAt": "2023-05-11T13:44:31.572Z"
                     },
                     {
                         "id": 680,
@@ -2331,6 +1888,449 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.591Z",
                         "updatedAt": "2023-05-11T13:44:31.591Z"
+                    },
+                    {
+                        "id": 864,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:14.844Z",
+                        "updatedAt": "2023-05-11T23:21:14.844Z"
+                    },
+                    {
+                        "id": 865,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:14.852Z",
+                        "updatedAt": "2023-05-11T23:21:14.852Z"
+                    },
+                    {
+                        "id": 866,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.804Z",
+                        "updatedAt": "2023-05-11T23:21:50.804Z"
+                    },
+                    {
+                        "id": 867,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.818Z",
+                        "updatedAt": "2023-05-11T23:21:50.818Z"
+                    },
+                    {
+                        "id": 868,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.826Z",
+                        "updatedAt": "2023-05-11T23:21:50.826Z"
+                    },
+                    {
+                        "id": 869,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.802Z",
+                        "updatedAt": "2023-05-11T23:22:53.802Z"
+                    },
+                    {
+                        "id": 870,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.824Z",
+                        "updatedAt": "2023-05-11T23:22:53.824Z"
+                    },
+                    {
+                        "id": 871,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.835Z",
+                        "updatedAt": "2023-05-11T23:22:53.835Z"
+                    },
+                    {
+                        "id": 872,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.849Z",
+                        "updatedAt": "2023-05-11T23:22:53.849Z"
+                    },
+                    {
+                        "id": 873,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.858Z",
+                        "updatedAt": "2023-05-11T23:22:53.858Z"
+                    },
+                    {
+                        "id": 874,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.869Z",
+                        "updatedAt": "2023-05-11T23:22:53.869Z"
+                    },
+                    {
+                        "id": 875,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.877Z",
+                        "updatedAt": "2023-05-11T23:22:53.877Z"
+                    },
+                    {
+                        "id": 876,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.888Z",
+                        "updatedAt": "2023-05-11T23:22:53.888Z"
+                    },
+                    {
+                        "id": 877,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.901Z",
+                        "updatedAt": "2023-05-11T23:22:53.901Z"
                     }
                 ],
                 "createdBy": null,
@@ -3212,55 +3212,6 @@
                         "updatedAt": "2023-05-04T13:53:50.048Z"
                     },
                     {
-                        "id": 712,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.010Z",
-                        "updatedAt": "2023-05-11T13:44:31.010Z"
-                    },
-                    {
-                        "id": 805,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.030Z",
-                        "updatedAt": "2023-05-11T13:44:31.030Z"
-                    },
-                    {
                         "id": 839,
                         "action": "plugin::content-manager.explorer.read",
                         "subject": "api::slide-over.slide-over",
@@ -3435,89 +3386,6 @@
                         "updatedAt": "2023-05-11T13:44:31.099Z"
                     },
                     {
-                        "id": 710,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.105Z",
-                        "updatedAt": "2023-05-11T13:44:31.105Z"
-                    },
-                    {
-                        "id": 844,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.112Z",
-                        "updatedAt": "2023-05-11T13:44:31.112Z"
-                    },
-                    {
                         "id": 846,
                         "action": "plugin::content-manager.explorer.delete",
                         "subject": "api::form.form",
@@ -3529,42 +3397,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.118Z",
                         "updatedAt": "2023-05-11T13:44:31.118Z"
-                    },
-                    {
-                        "id": 803,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.123Z",
-                        "updatedAt": "2023-05-11T13:44:31.123Z"
                     },
                     {
                         "id": 760,
@@ -3632,26 +3464,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.144Z",
                         "updatedAt": "2023-05-11T13:44:31.144Z"
-                    },
-                    {
-                        "id": 701,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.150Z",
-                        "updatedAt": "2023-05-11T13:44:31.150Z"
                     },
                     {
                         "id": 718,
@@ -3744,42 +3556,6 @@
                         "updatedAt": "2023-05-11T13:44:31.191Z"
                     },
                     {
-                        "id": 804,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout_menu"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.197Z",
-                        "updatedAt": "2023-05-11T13:44:31.197Z"
-                    },
-                    {
                         "id": 757,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::metatag.metatag",
@@ -3839,43 +3615,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.215Z",
                         "updatedAt": "2023-05-11T13:44:31.215Z"
-                    },
-                    {
-                        "id": 688,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.221Z",
-                        "updatedAt": "2023-05-11T13:44:31.221Z"
                     },
                     {
                         "id": 806,
@@ -4027,26 +3766,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.281Z",
                         "updatedAt": "2023-05-11T13:44:31.281Z"
-                    },
-                    {
-                        "id": 690,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.287Z",
-                        "updatedAt": "2023-05-11T13:44:31.287Z"
                     },
                     {
                         "id": 831,
@@ -4279,52 +3998,6 @@
                         "updatedAt": "2023-05-11T13:44:31.387Z"
                     },
                     {
-                        "id": 843,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.404Z",
-                        "updatedAt": "2023-05-11T13:44:31.404Z"
-                    },
-                    {
                         "id": 758,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::navbar.navbar",
@@ -4359,63 +4032,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.476Z",
                         "updatedAt": "2023-05-11T13:44:31.476Z"
-                    },
-                    {
-                        "id": 699,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout_menu",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.492Z",
-                        "updatedAt": "2023-05-11T13:44:31.492Z"
-                    },
-                    {
-                        "id": 679,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.499Z",
-                        "updatedAt": "2023-05-11T13:44:31.499Z"
                     },
                     {
                         "id": 829,
@@ -4484,19 +4100,6 @@
                         "updatedAt": "2023-05-11T13:44:31.530Z"
                     },
                     {
-                        "id": 723,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::flyout-menu.flyout-menu",
-                        "properties": {
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.541Z",
-                        "updatedAt": "2023-05-11T13:44:31.541Z"
-                    },
-                    {
                         "id": 767,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::topbar.topbar",
@@ -4544,52 +4147,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.564Z",
                         "updatedAt": "2023-05-11T13:44:31.564Z"
-                    },
-                    {
-                        "id": 845,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout_menu",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.572Z",
-                        "updatedAt": "2023-05-11T13:44:31.572Z"
                     },
                     {
                         "id": 680,
@@ -4645,6 +4202,449 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.591Z",
                         "updatedAt": "2023-05-11T13:44:31.591Z"
+                    },
+                    {
+                        "id": 864,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:14.844Z",
+                        "updatedAt": "2023-05-11T23:21:14.844Z"
+                    },
+                    {
+                        "id": 865,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:14.852Z",
+                        "updatedAt": "2023-05-11T23:21:14.852Z"
+                    },
+                    {
+                        "id": 866,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.804Z",
+                        "updatedAt": "2023-05-11T23:21:50.804Z"
+                    },
+                    {
+                        "id": 867,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.818Z",
+                        "updatedAt": "2023-05-11T23:21:50.818Z"
+                    },
+                    {
+                        "id": 868,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:21:50.826Z",
+                        "updatedAt": "2023-05-11T23:21:50.826Z"
+                    },
+                    {
+                        "id": 869,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.802Z",
+                        "updatedAt": "2023-05-11T23:22:53.802Z"
+                    },
+                    {
+                        "id": 870,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.824Z",
+                        "updatedAt": "2023-05-11T23:22:53.824Z"
+                    },
+                    {
+                        "id": 871,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.835Z",
+                        "updatedAt": "2023-05-11T23:22:53.835Z"
+                    },
+                    {
+                        "id": 872,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.849Z",
+                        "updatedAt": "2023-05-11T23:22:53.849Z"
+                    },
+                    {
+                        "id": 873,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.858Z",
+                        "updatedAt": "2023-05-11T23:22:53.858Z"
+                    },
+                    {
+                        "id": 874,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.869Z",
+                        "updatedAt": "2023-05-11T23:22:53.869Z"
+                    },
+                    {
+                        "id": 875,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.component",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.877Z",
+                        "updatedAt": "2023-05-11T23:22:53.877Z"
+                    },
+                    {
+                        "id": 876,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.888Z",
+                        "updatedAt": "2023-05-11T23:22:53.888Z"
+                    },
+                    {
+                        "id": 877,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-11T23:22:53.901Z",
+                        "updatedAt": "2023-05-11T23:22:53.901Z"
                     }
                 ],
                 "createdBy": null,

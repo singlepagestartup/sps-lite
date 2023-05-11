@@ -3,7 +3,10 @@ import Forms from "~components/forms";
 
 export default function Centered(props: ISpsLiteContactSectonBlock) {
   return (
-    <div className="overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
+    <div
+      data-page-block={props.__component}
+      className="overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24"
+    >
       <div className="relative mx-auto max-w-xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

@@ -1,17 +1,17 @@
 "use client";
 
 import { FC } from "react";
-import { ISpsLiteFlyoutMenu, variants as spsLiteVariants } from "./sps-lite";
+import { ISpsLiteFlyout, variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
-import { useGetFlyoutMenuByIdQuery } from "~redux/services/backend/models/flyout-menus";
+import { useGetFlyoutByIdQuery } from "~redux/services/backend/models/flyout-menus";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Menus<T extends ISpsLiteFlyoutMenu>(props: any) {
+export default function Flyouts<T extends ISpsLiteFlyout>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
-    useGetFlyoutMenuByIdQuery(
+    useGetFlyoutByIdQuery(
       {
         id: props.id,
       },

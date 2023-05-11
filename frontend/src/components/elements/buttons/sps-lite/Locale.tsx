@@ -1,9 +1,11 @@
 import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
 import { ISpsLiteButton } from ".";
-import FlyoutMenus from "~components/flyout-menus";
+import Flyouts from "~components/flyouts";
 import Buttons from "..";
 import { useParams } from "next/navigation";
+import Image from "next/image";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function Locale(props: ISpsLiteButton) {
   const params = useParams();
@@ -11,37 +13,56 @@ export default function Locale(props: ISpsLiteButton) {
 
   if (props.onClick) {
     return (
-      <div className={props?.className || ""}>
+      <div
+        data-variant={props.variant}
+        className={`button ${props?.className || ""}`}
+      >
         <button
+          className="button-locale"
           {...additionalAttributes}
           onClick={props.onClick}
-          className="button-locale"
         >
+          {props.media?.length ? (
+            <div className="icon-container">
+              <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
+            </div>
+          ) : null}
           {props.title || `${params?.locale || ""}`}
         </button>
       </div>
     );
   }
 
-  if (props.flyoutMenu) {
+  if (props.flyout) {
     return (
-      <div className={props?.className || ""}>
-        <FlyoutMenus {...props.flyoutMenu}>
+      <div
+        data-variant={props.variant}
+        className={`button ${props?.className || ""}`}
+      >
+        <Flyouts {...props.flyout}>
           <Buttons
             {...props}
             title={props.title || `${params?.locale || ""}`}
-            flyoutMenu={null}
+            flyout={null}
             onClick={null}
             url={null}
           />
-        </FlyoutMenus>
+        </Flyouts>
       </div>
     );
   }
 
   return (
-    <div className={props?.className || ""}>
-      <button {...additionalAttributes} className="button-locale">
+    <div
+      data-variant={props.variant}
+      className={`button ${props?.className || ""}`}
+    >
+      <button className="button-locale" {...additionalAttributes}>
+        {props.media?.length ? (
+          <div className="icon-container">
+            <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
+          </div>
+        ) : null}
         {props.title}
       </button>
     </div>

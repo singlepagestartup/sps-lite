@@ -1,13 +1,13 @@
 import { backendServiceApi } from "../..";
-import { IBackendNavbar } from "types/collection-types";
+import { IBackendFlyout } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
-const model = "flyout-menus";
+const model = "flyouts";
 
 export const flyoutMenusApi = backendServiceApi.injectEndpoints({
   endpoints: (build) => ({
-    getFlyoutMenuById: build.query({
+    getFlyoutById: build.query({
       query: (params = {}) => {
         const { populate = pageBlockPopulate, filters, locale, id } = params;
 
@@ -22,14 +22,14 @@ export const flyoutMenusApi = backendServiceApi.injectEndpoints({
       },
 
       transformResponse: (result) => {
-        return transformResponseItem(result) as IBackendNavbar;
+        return transformResponseItem(result) as IBackendFlyout;
       },
 
       providesTags: (result) => {
         return result?.id
           ? [
               {
-                type: "FlyoutMenu",
+                type: "Flyout",
                 id: result.id,
               },
             ]
@@ -39,4 +39,4 @@ export const flyoutMenusApi = backendServiceApi.injectEndpoints({
   }),
 });
 
-export const { useGetFlyoutMenuByIdQuery } = flyoutMenusApi;
+export const { useGetFlyoutByIdQuery } = flyoutMenusApi;

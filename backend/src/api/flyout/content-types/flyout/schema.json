@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "flyout_menus",
+  "collectionName": "flyouts",
   "info": {
-    "singularName": "flyout-menu",
-    "pluralName": "flyout-menus",
-    "displayName": "Flyout Menu",
-    "description": ""
+    "singularName": "flyout",
+    "pluralName": "flyouts",
+    "displayName": "Flyout"
   },
   "options": {
     "draftAndPublish": true
@@ -23,9 +22,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
+      "enum": ["simple"],
       "default": "simple",
       "required": true
     },

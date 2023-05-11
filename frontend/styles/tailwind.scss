@@ -22,6 +22,10 @@ body {
   font-family: var(--font-default);
 }
 
+.font-primary {
+  font-family: var(--font-primary);
+}
+
 input:focus,
 button:focus {
   @apply outline-none;
@@ -34,25 +38,80 @@ button:focus {
     @apply bg-slate-100 animate-pulse rounded-md;
   }
 
-  .button-secondary {
-    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
+  .buttons-array {
+    &[data-variant="column-with-title"] {
+      .buttons-array-column-with-title {
+        @apply flex flex-col gap-2 relative;
+
+        .buttons-array-title {
+          @apply relative inline-flex text-sm w-full leading-relaxed opacity-50 uppercase;
+
+          .icon-container {
+            img {
+              @apply object-contain object-center;
+            }
+          }
+        }
+
+        .buttons-array-buttons-container {
+          @apply w-full items-start flex flex-col gap-2;
+        }
+      }
+    }
+
+    &[data-variant="row"] {
+      .buttons-array-row {
+        @apply flex flex-row gap-2 relative;
+
+        .buttons-array-buttons-container {
+          @apply flex gap-4 relative;
+        }
+      }
+    }
   }
 
-  .button-locale {
-    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white uppercase;
+  .button {
+    .icon-container {
+      @apply w-10 h-10;
+
+      img {
+        @apply object-contain object-center;
+      }
+    }
+
+    &[data-variant="text"] {
+      /**
+      * Using just a, button { ... }
+      * will not work because of specificity CSS rules
+      * lower code overrides the upper one
+      */
+      .button-text {
+        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
+      }
+    }
+
+    &[data-variant="locale"] {
+      .button-locale {
+        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white uppercase;
+      }
+    }
+  }
+
+  .button-secondary {
+    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
   }
 
   .button-primary {
     @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
   }
 
-  .button-text {
-    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
+  // .button-text {
+  //   @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
 
-    .icon__container {
-      @apply w-10 h-10;
-    }
-  }
+  //   .icon__container {
+  //     @apply w-10 h-10;
+  //   }
+  // }
 
   .slide__over__right_side_half_width {
     @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-white flex justify-between overflow-scroll;

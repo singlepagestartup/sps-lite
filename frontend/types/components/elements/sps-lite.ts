@@ -1,4 +1,4 @@
-import { ISpsLiteBackendFlyoutMenu } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendFlyout } from "types/collection-types/sps-lite";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export interface ISpsLiteBackendButton {
@@ -12,7 +12,7 @@ export interface ISpsLiteBackendButton {
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   className: string | null;
   additionalAttributes: any | null;
-  flyoutMenu: ISpsLiteBackendFlyoutMenu | null;
+  flyout: ISpsLiteBackendFlyout | null;
 }
 
 export interface ISpsLiteBackendButtonsArray {

@@ -14,7 +14,7 @@ export interface ISpsLiteButton
     | "className"
     | "additionalAttributes"
     | "__component"
-    | "flyoutMenu"
+    | "flyout"
   > {
   url?: string | null;
   description?: string | null;
@@ -22,7 +22,7 @@ export interface ISpsLiteButton
   additionalAttributes?: any | null;
   onClick?: any;
   __component?: ISpsLiteBackendButton["__component"];
-  flyoutMenu?: ISpsLiteBackendButton["flyoutMenu"];
+  flyout?: ISpsLiteBackendButton["flyout"];
 }
 
 export const variants = {
