@@ -46,6 +46,7 @@ export default function Slider(props: ISpsLiteBackendSlider) {
 
 export interface ISlider {
   slides: IExtendedSlide[];
+  variant: "fade-with-previews";
   activeSlide?: number;
   setActiveSlide: Dispatch<SetStateAction<number>>;
   NavigationButton?: FC<any>;

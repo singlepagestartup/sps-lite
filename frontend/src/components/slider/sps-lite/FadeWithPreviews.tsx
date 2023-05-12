@@ -88,80 +88,87 @@ export default function FadeWithPreviews(props: ISlider) {
   }
 
   return (
-    <>
-      <div className={`${className || ""}`}>
+    <div
+      data-collection-type="slider"
+      data-variant={props.variant}
+      className={className || ""}
+    >
+      {showFullScreen ? (
         <FullScreen
           isOpen={fullScreen}
           setIsOpen={setFullScreen}
           slides={slides}
+          variant={props.variant}
           activeSlide={activeSlide}
           setActiveSlide={setActiveSlide}
         />
-        <div
-          className={`slider__fade_with_previews ${aspectRatioClassName || ""}`}
-        >
-          <div className="slider">
-            <div className="slider__container" ref={containerRef}>
-              {transitions((style, index) => {
-                return (
-                  <animated.div
-                    key={index}
-                    className="animated__slide"
-                    style={{ ...style, ...baseStyles }}
-                  >
-                    <SlideComponent
-                      showBackdrop={showBackdrop ? true : false}
-                      slide={slides[index]}
-                    />
-                  </animated.div>
-                );
-              })}
-              {slides.length > 1 ? (
-                <NavigationButton
-                  isNext={false}
-                  slides={slides}
-                  activeSlide={activeSlide}
-                  onClick={() => {
-                    const previousSlideNumber = activeSlide - 1;
-                    if (previousSlideNumber >= 0) {
-                      handleNavigation({ slideNumber: previousSlideNumber });
-                    }
-                  }}
+      ) : null}
+      <div
+        className={
+          aspectRatioClassName ||
+          "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10"
+        }
+      >
+        <div className="slides-container" ref={containerRef}>
+          {transitions((style, index) => {
+            return (
+              <animated.div
+                key={index}
+                className="animated-slide"
+                style={{ ...style, ...baseStyles }}
+              >
+                <SlideComponent
+                  showBackdrop={showBackdrop ? true : false}
+                  slide={slides[index]}
                 />
-              ) : null}
-              {slides.length > 1 ? (
-                <NavigationButton
-                  isNext={true}
-                  slides={slides}
-                  activeSlide={activeSlide}
-                  onClick={() => {
-                    const nextSlideNumber = activeSlide + 1;
-                    if (nextSlideNumber <= slides.length - 1) {
-                      handleNavigation({ slideNumber: nextSlideNumber });
-                    }
-                  }}
-                />
-              ) : null}
-              {showFullScreen ? (
-                <button
-                  onClick={() => setFullScreen(true)}
-                  className="full_screen__button"
-                >
-                  <FullScreenIcon />
-                </button>
-              ) : null}
-            </div>
-            {showPreviews ? (
-              <PreviewsComponent
-                slides={slides}
-                activeSlide={activeSlide}
-                handleNavigation={handleNavigation}
-              />
-            ) : null}
-          </div>
+              </animated.div>
+            );
+          })}
+          {slides.length > 1 ? (
+            <NavigationButton
+              isNext={false}
+              slides={slides}
+              activeSlide={activeSlide}
+              onClick={() => {
+                const previousSlideNumber = activeSlide - 1;
+                if (previousSlideNumber >= 0) {
+                  handleNavigation({ slideNumber: previousSlideNumber });
+                }
+              }}
+            />
+          ) : null}
+          {slides.length > 1 ? (
+            <NavigationButton
+              isNext={true}
+              slides={slides}
+              activeSlide={activeSlide}
+              onClick={() => {
+                const nextSlideNumber = activeSlide + 1;
+                if (nextSlideNumber <= slides.length - 1) {
+                  handleNavigation({ slideNumber: nextSlideNumber });
+                }
+              }}
+            />
+          ) : null}
+          {showFullScreen ? (
+            <button
+              onClick={() => setFullScreen(true)}
+              className="full-screen-button"
+            >
+              <FullScreenIcon />
+            </button>
+          ) : null}
         </div>
       </div>
-    </>
+
+      {showPreviews ? (
+        <PreviewsComponent
+          slides={slides}
+          activeSlide={activeSlide}
+          handleNavigation={handleNavigation}
+        />
+      ) : null}
+    </div>
   );
 }
 
@@ -174,7 +181,7 @@ function DefaultSlideComponent({
 }) {
   return (
     <div className="slide">
-      <div className="slide__container">
+      <div className="slide-container">
         {slide.media?.length ? (
           <Image
             src={getFileUrl(slide.media[0])}
@@ -184,11 +191,11 @@ function DefaultSlideComponent({
           />
         ) : null}
         {showBackdrop ? <div className="backdrop"></div> : null}
-        <div className="content__container">
+        <div className="content–container">
           <div className="content">
             <h3>{slide.title}</h3>
             <p>{slide.description}</p>
-            <div className="buttons__container">
+            <div className="buttons-container">
               {slide.buttons?.map((button, index: number) => {
                 return <Buttons key={index} {...button} />;
               })}
@@ -210,22 +217,17 @@ function DefaultPreviewsComponent({
   activeSlide: number;
 }) {
   return (
-    <div className="previews__container">
+    <div className="previews-container">
       {slides.map((slide, index) => {
         return (
           <div
             key={index}
             data-active={index === activeSlide}
-            className="preview__slide"
+            className="preview-slide"
             onClick={() => handleNavigation({ slideNumber: index })}
           >
             {slide.media?.length ? (
-              <Image
-                src={getFileUrl(slide.media[0])}
-                alt=""
-                fill={true}
-                className="image"
-              />
+              <Image src={getFileUrl(slide.media[0])} alt="" fill={true} />
             ) : null}
           </div>
         );
@@ -263,7 +265,7 @@ function DefaultNavigaionButton({
       className="navigation"
       onClick={onClick}
     >
-      <div className="icon__container">
+      <div className="icon-container">
         <ChevronIcon />
       </div>
     </div>
@@ -294,14 +296,17 @@ function FullScreen(props: {
   slides: IExtendedSlide[];
   activeSlide: number;
   setActiveSlide: Dispatch<SetStateAction<number>>;
+  variant: string;
 }) {
   const { isOpen, setIsOpen, slides, activeSlide, setActiveSlide } = props;
 
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog
+        data-collection-type="slider"
+        data-variant={props.variant}
         onClose={() => setIsOpen(false)}
-        className="full_screen_slider_dialog"
+        className="slider-fade-with-previews-full-screen-dialog"
       >
         <Transition.Child
           as={Fragment}
@@ -312,10 +317,7 @@ function FullScreen(props: {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div
-            className="full_screen_slider_dialog_backdrop"
-            aria-hidden="true"
-          />
+          <div className="backdrop" aria-hidden="true" />
         </Transition.Child>
         <Transition.Child
           as={"div"}
@@ -326,17 +328,18 @@ function FullScreen(props: {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="full_screen_slider_dialog_container">
-            <Dialog.Panel className="full_screen_slider_dialog_content">
+          <div className="dialog-container">
+            <Dialog.Panel className="dialog-panel">
               <FadeWithPreviews
                 slides={slides}
+                variant="fade-with-previews"
                 activeSlide={activeSlide}
                 setActiveSlide={setActiveSlide}
-                className="full_screen_slider"
+                className="full-screen-slider"
                 showFullScreen={false}
                 showPreviews={true}
                 showBackdrop={false}
-                aspectRatioClassName={""}
+                aspectRatioClassName="full-screen-aspect-ratio"
               />
             </Dialog.Panel>
           </div>
