@@ -31,8 +31,12 @@ async function sendToRecievers({ event, sideEffect, payload }) {
       await strapi.plugins["email"].services.email.send({
         to: reciever,
         from:
-          emailSettings.settings?.defaultFrom?.email || "no-reply@apisps.ru", //e.g. single sender verification in SendGrid
-        replyTo: emailSettings.settings?.defaultReplyTo || "support@apisps.ru",
+          emailSettings.settings?.defaultFrom?.email ||
+          emailSettings.settings?.defaultFrom ||
+          "no-reply@mail.singlepagestartup.com",
+        replyTo:
+          emailSettings.settings?.defaultReplyTo ||
+          "support@singlepagestartup.com",
         subject: `${emailSettings.appName} | New ${payload.uid} Request`,
         html: template,
       });

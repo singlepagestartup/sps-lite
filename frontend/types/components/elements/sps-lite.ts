@@ -56,7 +56,7 @@ export interface ISpsLiteBackendInputOption {
 export interface ISpsLiteBackendInput {
   id: number;
   __component: "elements.input";
-  component: "text" | "listbox" | "radio-group" | "switch" | "file";
+  variant: "text" | "listbox" | "radio-group" | "switch" | "file" | "range";
   placeholder: string | null;
   isRequired: boolean;
   value: string | null;

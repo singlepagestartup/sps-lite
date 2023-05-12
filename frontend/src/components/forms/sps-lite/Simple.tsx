@@ -35,7 +35,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    // console.log(`🚀 ~ onSubmit ~ data`, data);
+    console.log("🚀 ~ onSubmit ~ data", data);
     // const componentsData = prepareDataForComponent({
     //   data,
     //   inputs: props.form.inputs,
@@ -55,13 +55,13 @@ export default function Simple(props: ISpsLiteFormBlock) {
       let inputName = input.name;
       let isFile = false;
 
-      if (["listbox", "radio-group"].includes(input.component)) {
+      if (["listbox", "radio-group"].includes(input.variant)) {
         inputName = input.multiple
           ? `inputs[${index}].options`
           : `inputs[${index}].option`;
-      } else if (["switch"].includes(input.component)) {
+      } else if (["switch"].includes(input.variant)) {
         inputName = `inputs[${index}].is_true`;
-      } else if (["file"].includes(input.component)) {
+      } else if (["file"].includes(input.variant)) {
         inputName = `inputs[${index}].files`;
         isFile = true;
       } else {
@@ -117,7 +117,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
               <Inputs
                 {...input}
                 key={index}
-                component="text"
+                variant="text"
                 type="text"
                 name={`inputs[${index}].key`}
                 initialValue={input.input.name}
@@ -135,7 +135,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
           })}
 
           <Inputs
-            component="radio-group"
+            variant="radio-group"
             name="form"
             initialValue={props}
             options={[props]}
