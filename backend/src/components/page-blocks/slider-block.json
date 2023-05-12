@@ -9,9 +9,7 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
+      "enum": ["simple"],
       "default": "simple"
     },
     "slider": {
