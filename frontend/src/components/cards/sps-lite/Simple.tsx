@@ -2,8 +2,6 @@ import { useMemo } from "react";
 import { ICardProps } from "..";
 import { ISpsLiteCatdsProps } from ".";
 
-export const animationClassName = "bg-gray-200 animate-pulse";
-
 export default function Simple(props: ISpsLiteCatdsProps) {
   const { cardsConfig, items, showSkeletons } = props;
 
@@ -33,14 +31,24 @@ export default function Simple(props: ISpsLiteCatdsProps) {
 
   if (isEmpty) {
     return (
-      <div data-is-empty={isEmpty} className={`${cardsConfig.className || ""}`}>
+      <div
+        data-ui="components.card"
+        data-variant={props.variant}
+        data-is-empty={isEmpty}
+        className={cardsConfig.className || ""}
+      >
         <EmptyRenderComponent cardsConfig={cardsConfig} />
       </div>
     );
   }
 
   return (
-    <div data-is-empty={isEmpty} className={`${cardsConfig.className || ""}`}>
+    <div
+      data-ui="components.card"
+      data-variant={props.variant}
+      data-is-empty={isEmpty}
+      className={cardsConfig.className || ""}
+    >
       {localItems?.map((item: any, index: number) => {
         return <Card key={index} {...props} item={item} index={index} />;
       })}
@@ -72,12 +80,12 @@ function Card(props: ICardProps) {
 
 function DefaultEmptyComponent() {
   return (
-    <div className="w-full flex items-center justify-center py-10 border-2 border-gray-200 border-dashed rounded-md">
-      <p className="text-gray-500">There are no items</p>
+    <div className="default-empty-card">
+      <p>There are no items</p>
     </div>
   );
 }
 
 function DefaultCardSkeletonComponent() {
-  return <div className="w-full h-[150px] skeleton"></div>;
+  return <div className="default-skeleton-card"></div>;
 }

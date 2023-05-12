@@ -19,7 +19,12 @@ export default function FourColumnWithIllustrations(
   }, [props]);
 
   return (
-    <div className="bg-gray-50" {...additionalAttributes}>
+    <div
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-gray-50`}
+      {...additionalAttributes}
+    >
       <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <h3 className="text-3xl mb-3">{props.title}</h3>
         <p className="mb-6">{props.description}</p>

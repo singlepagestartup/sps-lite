@@ -163,17 +163,17 @@
             "uid": "public-page-layout",
             "variant": "boxed",
             "createdAt": "2023-04-08T12:04:55.015Z",
-            "updatedAt": "2023-05-12T14:14:35.881Z",
+            "updatedAt": "2023-05-12T15:34:58.777Z",
             "publishedAt": "2023-04-08T12:04:56.606Z",
             "locale": "en",
-            "class_name": "[&>.layout-container]:pt-16",
+            "class_name": null,
             "sidebar": {
                 "id": 1,
                 "variant": "one-quarter",
                 "title": "Ads Sidebar",
                 "uid": "ads-sidebar-1",
                 "createdAt": "2023-04-08T00:35:27.553Z",
-                "updatedAt": "2023-05-04T10:27:15.002Z",
+                "updatedAt": "2023-05-12T15:38:20.054Z",
                 "publishedAt": "2023-04-08T00:35:29.006Z",
                 "class_name": null,
                 "side": "right",
@@ -186,7 +186,7 @@
                         "description": "With Page Blocks",
                         "variant": "simple-centered",
                         "anchor": null,
-                        "class_name": null
+                        "class_name": "pt-16"
                     }
                 ],
                 "layouts": [
@@ -196,10 +196,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     }
                 ],
                 "createdBy": {
@@ -263,10 +263,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     }
                 ],
                 "page_blocks": [
@@ -330,7 +330,8 @@
                             "description": "With Page Blocks",
                             "variant": "two-columns-with-centered-introduction",
                             "anchor": null,
-                            "class_name": null
+                            "class_name": null,
+                            "subtitle": null
                         }
                     ],
                     "layouts": [
@@ -340,10 +341,10 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-12T14:14:35.881Z",
+                            "updatedAt": "2023-05-12T15:34:58.777Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": "[&>.layout-container]:pt-16"
+                            "class_name": null
                         },
                         {
                             "id": 3,
@@ -420,10 +421,10 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-12T14:14:35.881Z",
+                            "updatedAt": "2023-05-12T15:34:58.777Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": "[&>.layout-container]:pt-16"
+                            "class_name": null
                         },
                         {
                             "id": 3,
@@ -484,10 +485,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     },
                     {
                         "id": 3,
@@ -538,7 +539,7 @@
                     "id": 3,
                     "title": "Page With Sidebar Layout",
                     "createdAt": "2023-04-08T20:00:13.006Z",
-                    "updatedAt": "2023-05-12T14:09:34.485Z",
+                    "updatedAt": "2023-05-12T15:35:26.155Z",
                     "publishedAt": "2023-04-08T20:00:14.519Z",
                     "locale": "en",
                     "url": "/page-with-sidebar-layout",
@@ -548,10 +549,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     },
                     "page_blocks": [
                         {
@@ -559,7 +560,10 @@
                             "id": 45,
                             "variant": "simple",
                             "anchor": null,
-                            "class_name": null
+                            "class_name": "pt-16",
+                            "title": null,
+                            "description": null,
+                            "subtitle": null
                         }
                     ],
                     "metatag": null,
@@ -692,10 +696,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     }
                 ],
                 "page_blocks": [
@@ -759,7 +763,8 @@
                             "description": "With Page Blocks",
                             "variant": "two-columns-with-centered-introduction",
                             "anchor": null,
-                            "class_name": null
+                            "class_name": null,
+                            "subtitle": null
                         }
                     ],
                     "layouts": [
@@ -769,10 +774,10 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-12T14:14:35.881Z",
+                            "updatedAt": "2023-05-12T15:34:58.777Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": "[&>.layout-container]:pt-16"
+                            "class_name": null
                         },
                         {
                             "id": 3,
@@ -849,10 +854,10 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-12T14:14:35.881Z",
+                            "updatedAt": "2023-05-12T15:34:58.777Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": "[&>.layout-container]:pt-16"
+                            "class_name": null
                         },
                         {
                             "id": 3,
@@ -913,10 +918,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     },
                     {
                         "id": 3,
@@ -967,7 +972,7 @@
                     "id": 1,
                     "title": "Main page",
                     "createdAt": "2023-04-08T19:06:02.556Z",
-                    "updatedAt": "2023-05-12T14:09:48.818Z",
+                    "updatedAt": "2023-05-12T16:08:56.620Z",
                     "publishedAt": "2023-04-08T19:06:05.277Z",
                     "locale": "en",
                     "url": "/",
@@ -990,7 +995,7 @@
                             "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                             "variant": "simple-centered",
                             "anchor": null,
-                            "class_name": null
+                            "class_name": "pt-16"
                         },
                         {
                             "__component": "page-blocks.cta-section-block",
@@ -999,7 +1004,8 @@
                             "anchor": null,
                             "title": "Minimum Viable Product is Ready",
                             "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
-                            "class_name": null
+                            "class_name": null,
+                            "subtitle": null
                         },
                         {
                             "__component": "page-blocks.features-section-block",
@@ -1012,13 +1018,25 @@
                             "class_name": null
                         },
                         {
+                            "__component": "page-blocks.reviews-block",
+                            "id": 13,
+                            "variant": "simple-with-avatars",
+                            "show_all": true,
+                            "anchor": null,
+                            "class_name": null,
+                            "title": "Happy customers reviews",
+                            "subtitle": null,
+                            "description": null
+                        },
+                        {
                             "__component": "page-blocks.contact-section-block",
                             "id": 7,
                             "title": "We’re ready to help",
                             "description": "Fill in all the fields below and our manager will contact you.",
                             "anchor": null,
                             "variant": "centered",
-                            "class_name": null
+                            "class_name": null,
+                            "subtitle": null
                         }
                     ],
                     "metatag": {

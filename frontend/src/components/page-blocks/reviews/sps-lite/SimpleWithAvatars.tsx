@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
-import dayjs from "dayjs";
 import { useMemo } from "react";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import Cards, { ICardProps } from "~components/cards";
@@ -12,7 +11,7 @@ import { ISpsLiteReviewsBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 
 const cardsConfig = {
-  emptyLength: 3,
+  emptyLength: 4,
   Comp: SimpleWithAvatarCard,
   SkeletonComp: SimpleWithAvatarCardSkeleton,
   className:
@@ -38,11 +37,14 @@ export default function SimpleWithAvatars(props: ISpsLiteReviewsBlock) {
   } = useGetReviewsQuery({});
 
   return (
-    <div className="bg-white mx-auto max-w-7xl my-16" {...additionalAttributes}>
+    <div
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-white mx-auto max-w-7xl my-16`}
+      {...additionalAttributes}
+    >
       <div>
-        <h2 className="text-center font-bold text-3xl mb-8">
-          Customer Reviews
-        </h2>
+        <h2 className="text-center font-bold text-3xl mb-8">{props.title}</h2>
 
         <Cards
           variant="simple"
@@ -74,14 +76,10 @@ function SimpleWithAvatarCard(props: ICardProps) {
       </div>
       <div className={"flex-1 py-10"}>
         <h3 className="font-medium text-gray-900">{item.name}</h3>
-        <p>
-          <time dateTime={item.createdAt}>
-            {dayjs(item.createdAt).format("DD.MM.YYYY")}
-          </time>
-        </p>
+        <p>{item.subtitle}</p>
 
         {typeof item?.rating === "number" ? (
-          <div className="mt-4 flex items-center">
+          <div className="mt-2 flex items-center">
             {[0, 1, 2, 3, 4].map((rating) => (
               <StarIcon
                 key={rating}
@@ -109,7 +107,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
 
 function SimpleWithAvatarCardSkeleton() {
   return (
-    <div className="w-full rounded-md overflow-hidden flex gap-3 p-5 drop-shadow bg-white">
+    <div className="w-full rounded-md overflow-hidden flex gap-3 py-10 bg-white">
       <div className="w-[40px] h-[40px] rounded-full flex flex-shrink-0 skeleton"></div>
       <div className="w-full flex flex-col gap-2">
         <div className="h-4 w-4/12 skeleton"></div>

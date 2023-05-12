@@ -58,10 +58,6 @@ export default function RangeInput(props: IInputProps) {
     defaultValue: initialValue !== undefined ? initialValue : +defaultValue,
   });
 
-  console.log("🚀 ~ RangeInput ~ value:", value);
-  console.log("🚀 ~ RangeInput ~ initialValue:", initialValue);
-  console.log("🚀 ~ RangeInput ~ defaultValue:", +defaultValue);
-
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
       const evt = new Event("change");

@@ -16,10 +16,13 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
     return {};
   }, [props]);
 
-  // console.log(props)
-
   return (
-    <div className="bg-white py-12" {...additionalAttributes}>
+    <div
+      data-component={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-white py-12`}
+      {...additionalAttributes}
+    >
       <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex flex-col items-center mb-16">
           <p className="text-lg font-semibold text-indigo-600 w-fit">

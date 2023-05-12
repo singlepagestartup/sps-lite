@@ -5,7 +5,6 @@ import { ISpsLiteBackendCtaSectionBlock } from "types/components/page-blocks/sps
 export interface ISpsLiteCtaSectionsBlock
   extends ISpsLiteBackendCtaSectionBlock {
   showSkeletons?: boolean;
-  [key: string]: any;
 }
 
 export const variants = {

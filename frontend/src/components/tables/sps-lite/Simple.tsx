@@ -12,13 +12,13 @@ import {
  *
  *
  * |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|‾‾‾‾‾‾‾‾‾‾‾‾‾|
- * |  .table__dropdown__button   |       DefaultHeader      |       DefaultHeader      |     ...     |
+ * |  .table-dropdown-button   |       DefaultHeader      |       DefaultHeader      |     ...     |
  * |—–––––———————————————––––––––+——————————————————————————+——————————————————————————+—————————————|
- * | .table__dropdown__button    |                          |                          |             |
+ * | .table-dropdown-button    |                          |                          |             |
  * |      dropdown.button.Comp   |    column.cell.Comp      |    column.cell.Comp      |     ...     |
  * |                             |                          |                          |             |
  * |- - - - - - - - - - - -  -  —+— - - - - - - - - - - - - +— - - - - - - - - - - - - + - - - - - - |
- * |  .table__dropdown__button   |                           DropdownRow                             |
+ * |  .table-dropdown-button   |                           DropdownRow                             |
  * |—————————————————————————————————————————————————————————————————————————————————————————————————|
  * |                                         ...                                                     |
  * |                                                                                                 |
@@ -43,13 +43,17 @@ export default function Simple(props: ITableProps) {
   }, [items, showSkeletons]);
 
   return (
-    <div className={tableConfig?.className || ""}>
-      <div className="table__container">
-        <div className="table__header">
-          <div className="table__header__item">
+    <div
+      data-ui="components.table"
+      data-variant={props.variant}
+      className={tableConfig?.className || ""}
+    >
+      <div className="table-container">
+        <div className="table-header">
+          <div className="table-header-item">
             {typeof tableConfig.dropdown?.Comp === "function" ? (
               <div
-                className={`${tableConfig.dropdown?.button.widthClassName} table__dropdown__button`}
+                className={`${tableConfig.dropdown?.button.widthClassName} table-dropdown-button`}
               ></div>
             ) : null}
             {tableConfig?.columns?.map((column: any, index: number) => {
@@ -62,7 +66,7 @@ export default function Simple(props: ITableProps) {
               return (
                 <div
                   key={index}
-                  className={`table__cell ${column?.header?.widthClassName}`}
+                  className={`table-cell ${column?.header?.widthClassName}`}
                 >
                   <RenderComp {...props} column={column} index={index} />
                 </div>
@@ -70,7 +74,7 @@ export default function Simple(props: ITableProps) {
             })}
           </div>
         </div>
-        <div className="table__body">
+        <div className="table-body">
           {localItems?.map((item: any, index: number) => {
             return (
               <TableItem
@@ -108,13 +112,13 @@ function TableItem(props: ITableItemProps) {
   return (
     <div
       data-dropdow={typeof tableConfig?.dropdown?.Comp === "function"}
-      className="table__item"
+      className="table-item"
     >
-      <div className="table__item__content">
-        <div className="table__row">
+      <div className="table-item-content">
+        <div className="table-row">
           {typeof tableConfig.dropdown?.Comp === "function" ? (
             <div
-              className={`${tableConfig.dropdown?.button?.widthClassName} table__dropdown__button`}
+              className={`${tableConfig.dropdown?.button?.widthClassName} table-dropdown-button`}
             >
               <DropdownButtonCell
                 {...props}
@@ -130,7 +134,7 @@ function TableItem(props: ITableItemProps) {
               return (
                 <div
                   key={cIndex}
-                  className={`table__cell ${column?.cell?.widthClassName}`}
+                  className={`table-cell ${column?.cell?.widthClassName}`}
                 >
                   <CellComp {...props} column={column} index={cIndex} />
                 </div>
@@ -139,10 +143,10 @@ function TableItem(props: ITableItemProps) {
           )}
         </div>
 
-        <div data-is-open={isOpen} className={"table__dropdown"}>
+        <div data-is-open={isOpen} className={"table-dropdown"}>
           {typeof tableConfig.dropdown?.Comp === "function" ? (
             <div
-              className={`${tableConfig.dropdown?.button?.widthClassName} table__dropdown__button`}
+              className={`${tableConfig.dropdown?.button?.widthClassName} table-dropdown-button`}
             ></div>
           ) : null}
           {typeof tableConfig.dropdown?.Comp === "function" ? (
@@ -208,7 +212,7 @@ function DropdownRow(props: IDropdownRowCompProps) {
   }
 
   return (
-    <div className={"dropdown__row w-full"}>
+    <div className={"dropdown-row w-full"}>
       <RenderComponent {...props} />
     </div>
   );

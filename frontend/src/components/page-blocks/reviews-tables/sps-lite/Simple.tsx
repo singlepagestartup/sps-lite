@@ -63,7 +63,11 @@ export default function Simple(props: ISpsLiteReviewsTableBlock) {
   } = useGetReviewsQuery({});
 
   return (
-    <div className="bg-gray-50">
+    <div
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-gray-50`}
+    >
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h3 className="mb-6 text-3xl text-center font-bold">Reviews table</h3>
         <Tables

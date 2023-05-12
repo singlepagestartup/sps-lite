@@ -8,7 +8,9 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["two-columns-card"],
+      "enum": [
+        "two-columns-card"
+      ],
       "required": true,
       "default": "two-columns-card"
     },
@@ -31,6 +33,26 @@
     },
     "anchor": {
       "type": "string"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "additional_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

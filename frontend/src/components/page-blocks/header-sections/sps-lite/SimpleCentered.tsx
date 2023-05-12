@@ -14,7 +14,12 @@ export default function SimpleCentered(props: ISpsLiteHeaderSectionBlock) {
   }, [props]);
 
   return (
-    <div className="bg-white" {...additionalAttributes}>
+    <div
+      data-component={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-white`}
+      {...additionalAttributes}
+    >
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-lg font-semibold text-primary-600">

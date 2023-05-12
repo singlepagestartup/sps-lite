@@ -1,7 +1,8 @@
 {
   "collectionName": "components_page_blocks_features_section_blocks",
   "info": {
-    "displayName": "Features Section Block"
+    "displayName": "Features Section Block",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -21,7 +22,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["with-icon"],
+      "enum": [
+        "with-icon"
+      ],
       "default": "with-icon",
       "required": true
     },
@@ -35,7 +38,22 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "additional_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

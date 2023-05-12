@@ -16,6 +16,7 @@ interface NotificationMessage {
   title?: string;
   message?: string;
   duration?: number;
+  className?: string;
 }
 
 const isBrowser = typeof window !== "undefined";
@@ -57,21 +58,22 @@ export const NotificationsWrapper = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  const isFromTop = isBrowser && window.innerWidth < 540;
+  const position = isBrowser && window.innerWidth < 540 ? "top" : "bottom";
+
   return (
     <NotificationsContext.Provider value={{ add } as any}>
       {children}
       <Overlay
         notifications={notifications}
         remove={remove}
-        isFromTop={isFromTop}
+        position={position}
       />
     </NotificationsContext.Provider>
   );
 };
 
 const OverlayWrapper = ({ notify = () => ({}) }: { notify: any }) => {
-  const isFromTop = isBrowser && window.innerWidth < 540;
+  const position = isBrowser && window.innerWidth < 540 ? "top" : "bottom";
 
   const [notifications, setNotifications] = useState([]);
   // use state fns to avoid passing stale alerts array to showAlert and removeAlert functions
@@ -91,7 +93,7 @@ const OverlayWrapper = ({ notify = () => ({}) }: { notify: any }) => {
       ...props,
     };
     setNotifications((alertNotifications: any) =>
-      isFromTop
+      position === "top"
         ? ([newNotification, ...alertNotifications] as any)
         : ([...alertNotifications, newNotification] as any),
     );
@@ -109,7 +111,7 @@ const OverlayWrapper = ({ notify = () => ({}) }: { notify: any }) => {
     <Overlay
       notifications={notifications}
       remove={remove}
-      isFromTop={isFromTop}
+      position={position}
     />
   );
 };

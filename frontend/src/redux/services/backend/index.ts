@@ -55,6 +55,7 @@ export const rtkQueryErrorLogger = (api: any) => {
           createNotification({
             title: action.payload.data.error.name,
             message: action.payload.data.error.message,
+            className: "notification-error",
             duration: 10000,
           });
         }

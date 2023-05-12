@@ -25,7 +25,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["four-column-with-illustrations"],
+      "enum": [
+        "four-column-with-illustrations"
+      ],
       "default": "four-column-with-illustrations",
       "required": true
     },
@@ -33,7 +35,26 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "subtitle": {
+      "type": "richtext"
     }
   }
 }

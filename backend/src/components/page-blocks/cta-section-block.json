@@ -8,7 +8,9 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["dark-with-image"],
+      "enum": [
+        "dark-with-image"
+      ],
       "default": "dark-with-image",
       "required": true
     },
@@ -28,12 +30,30 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "buttons": {
       "type": "component",
       "repeatable": true,
       "component": "elements.button"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "additional_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

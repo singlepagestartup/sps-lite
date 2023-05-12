@@ -3,7 +3,13 @@ import { ISpsLiteNotFoundBlock } from ".";
 
 export default function Simple(props: ISpsLiteNotFoundBlock) {
   return (
-    <div className="min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+    <div
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${
+        props.className || ""
+      } min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8`}
+    >
       <div className="mx-auto max-w-max">
         <main className="sm:flex">
           <p className="text-4xl font-bold tracking-tight text-primary-600 sm:text-5xl">

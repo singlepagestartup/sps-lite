@@ -2,7 +2,7 @@
     "id": 3,
     "title": "Page With Sidebar Layout",
     "createdAt": "2023-04-08T20:00:13.006Z",
-    "updatedAt": "2023-05-12T14:09:34.485Z",
+    "updatedAt": "2023-05-12T15:35:26.155Z",
     "publishedAt": "2023-04-08T20:00:14.519Z",
     "locale": "en",
     "url": "/page-with-sidebar-layout",
@@ -12,17 +12,17 @@
         "uid": "public-page-layout",
         "variant": "boxed",
         "createdAt": "2023-04-08T12:04:55.015Z",
-        "updatedAt": "2023-05-12T14:14:35.881Z",
+        "updatedAt": "2023-05-12T15:34:58.777Z",
         "publishedAt": "2023-04-08T12:04:56.606Z",
         "locale": "en",
-        "class_name": "[&>.layout-container]:pt-16",
+        "class_name": null,
         "sidebar": {
             "id": 1,
             "variant": "one-quarter",
             "title": "Ads Sidebar",
             "uid": "ads-sidebar-1",
             "createdAt": "2023-04-08T00:35:27.553Z",
-            "updatedAt": "2023-05-04T10:27:15.002Z",
+            "updatedAt": "2023-05-12T15:38:20.054Z",
             "publishedAt": "2023-04-08T00:35:29.006Z",
             "class_name": null,
             "side": "right",
@@ -35,7 +35,7 @@
                     "description": "With Page Blocks",
                     "variant": "simple-centered",
                     "anchor": null,
-                    "class_name": null
+                    "class_name": "pt-16"
                 }
             ],
             "layouts": [
@@ -45,10 +45,10 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-12T14:14:35.881Z",
+                    "updatedAt": "2023-05-12T15:34:58.777Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": "[&>.layout-container]:pt-16"
+                    "class_name": null
                 }
             ],
             "createdBy": {
@@ -112,10 +112,10 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-12T14:14:35.881Z",
+                    "updatedAt": "2023-05-12T15:34:58.777Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": "[&>.layout-container]:pt-16"
+                    "class_name": null
                 }
             ],
             "page_blocks": [
@@ -179,7 +179,8 @@
                         "description": "With Page Blocks",
                         "variant": "two-columns-with-centered-introduction",
                         "anchor": null,
-                        "class_name": null
+                        "class_name": null,
+                        "subtitle": null
                     }
                 ],
                 "layouts": [
@@ -189,10 +190,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     },
                     {
                         "id": 3,
@@ -269,10 +270,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-12T14:14:35.881Z",
+                        "updatedAt": "2023-05-12T15:34:58.777Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": "[&>.layout-container]:pt-16"
+                        "class_name": null
                     },
                     {
                         "id": 3,
@@ -333,10 +334,10 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-12T14:14:35.881Z",
+                    "updatedAt": "2023-05-12T15:34:58.777Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": "[&>.layout-container]:pt-16"
+                    "class_name": null
                 },
                 {
                     "id": 3,
@@ -387,7 +388,7 @@
                 "id": 3,
                 "title": "Page With Sidebar Layout",
                 "createdAt": "2023-04-08T20:00:13.006Z",
-                "updatedAt": "2023-05-12T14:09:34.485Z",
+                "updatedAt": "2023-05-12T15:35:26.155Z",
                 "publishedAt": "2023-04-08T20:00:14.519Z",
                 "locale": "en",
                 "url": "/page-with-sidebar-layout",
@@ -397,10 +398,10 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-12T14:14:35.881Z",
+                    "updatedAt": "2023-05-12T15:34:58.777Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": "[&>.layout-container]:pt-16"
+                    "class_name": null
                 },
                 "page_blocks": [
                     {
@@ -408,7 +409,10 @@
                         "id": 45,
                         "variant": "simple",
                         "anchor": null,
-                        "class_name": null
+                        "class_name": "pt-16",
+                        "title": null,
+                        "description": null,
+                        "subtitle": null
                     }
                 ],
                 "metatag": null,
@@ -507,7 +511,10 @@
             "id": 45,
             "variant": "simple",
             "anchor": null,
-            "class_name": null,
+            "class_name": "pt-16",
+            "title": null,
+            "description": null,
+            "subtitle": null,
             "slider": {
                 "id": 5,
                 "variant": "fade-with-previews",

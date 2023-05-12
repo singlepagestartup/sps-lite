@@ -17,7 +17,12 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "buttons": {
       "type": "component",
@@ -26,7 +31,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple-centered"],
+      "enum": [
+        "simple-centered"
+      ],
       "default": "simple-centered",
       "required": true
     },
@@ -36,10 +43,16 @@
     "class_name": {
       "type": "string"
     },
-    "background": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
+    "additional_media": {
       "type": "media",
-      "multiple": false
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -8,6 +8,9 @@
     "title": {
       "type": "richtext"
     },
+    "subtitle": {
+      "type": "richtext"
+    },
     "description": {
       "type": "richtext"
     },
@@ -24,7 +27,7 @@
       "required": true
     },
     "media": {
-      "allowedTypes": ["images", "videos"],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": false
     },
@@ -37,6 +40,11 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.buttons-array"
+    },
+    "additional_media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
     }
   }
 }

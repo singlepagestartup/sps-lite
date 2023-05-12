@@ -28,7 +28,12 @@ export default function TwoColumns(props: ISpsLitePricingsBlock) {
   }, [props]);
 
   return (
-    <div className="bg-gray-900" {...additionalAttributes}>
+    <div
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} bg-gray-900`}
+      {...additionalAttributes}
+    >
       <div className="relative overflow-hidden pt-32 pb-96 lg:pt-40">
         <div>
           <Image

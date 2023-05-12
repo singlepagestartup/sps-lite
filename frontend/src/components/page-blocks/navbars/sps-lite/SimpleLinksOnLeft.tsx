@@ -28,7 +28,12 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   }
 
   return (
-    <Disclosure as="div" className="w-full">
+    <Disclosure
+      as="div"
+      data-page-block={props.__component}
+      data-variant={props.variant}
+      className={`${props.className || ""} w-full`}
+    >
       {(disclosure) => {
         return <DisclosureInner disclosure={disclosure} props={props} />;
       }}

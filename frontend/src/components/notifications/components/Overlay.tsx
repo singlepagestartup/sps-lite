@@ -7,7 +7,7 @@ const defaultNotificationHeight = 44;
 const Overlay = ({
   notifications = [],
   remove = () => ({}),
-  isFromTop = false,
+  position = "bottom",
   className,
 }: any) => {
   // use weakmap to get div height for alert items
@@ -20,7 +20,7 @@ const Overlay = ({
     from: {
       opacity: 0,
       height: 0,
-      transform: `translateY(${isFromTop ? "-100%" : 0}) scale(1)`,
+      transform: `translateY(${position === "top" ? "-100%" : 0}) scale(1)`,
       marginBottom: 0,
     },
     enter: (item: any) => async (next: any) => {
@@ -57,9 +57,9 @@ const Overlay = ({
 
   return (
     <div
-      className={`spring_notification ${className ? className : ""} ${
-        isFromTop ? "is_from_top" : ""
-      }`}
+      data-ui="components.notification"
+      data-position={position}
+      className={className || ""}
     >
       {transitions((styles, item) => {
         return (

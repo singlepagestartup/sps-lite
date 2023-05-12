@@ -656,57 +656,77 @@ input[type="number"] {
     }
   }
 
-  .table__container {
-    @apply w-full rounded-md bg-white overflow-hidden;
+  [data-ui="components.card"] {
+    &[data-variant="simple"] {
+      .default-skeleton-card {
+        @apply w-full h-[150px] skeleton;
+      }
 
-    // To make space for dropdown button on all levels
-    // width of that block will passed in tableConfig.dropdown.widthClassName
-    .table__dropdown__button {
-      @apply flex flex-shrink-0 items-center justify-center;
-    }
+      .default-empty-card {
+        @apply w-full flex items-center justify-center py-10 border-2 border-gray-200 border-dashed rounded-md;
 
-    .table__header {
-      @apply bg-white flex flex-row text-sm z-10 rounded-t-md w-full;
-
-      .table__header__item {
-        @apply w-full flex flex-row;
-
-        .table__cell {
-          @apply py-4 first:pl-6 last:pr-6 px-2 text-left;
+        p {
+          @apply text-gray-500;
         }
       }
     }
+  }
 
-    .table__body {
-      @apply bg-white w-full;
+  [data-ui="components.table"] {
+    &[data-variant="simple"] {
+      .table-container {
+        @apply w-full rounded-md bg-white overflow-hidden;
 
-      .table__item {
-        @apply w-full odd:bg-gray-100 flex flex-row items-start;
+        // To make space for dropdown button on all levels
+        // width of that block will passed in tableConfig.dropdown.widthClassName
+        .table-dropdown-button {
+          @apply flex flex-shrink-0 items-center justify-center;
+        }
 
-        .table__item__content {
-          @apply w-full flex flex-col;
+        .table-header {
+          @apply bg-white flex flex-row text-sm z-10 rounded-t-md w-full;
 
-          .table__dropdown {
-            @apply w-full flex-row;
+          .table-header-item {
+            @apply w-full flex flex-row;
 
-            &[data-is-open="true"] {
-              @apply flex;
-            }
-
-            &[data-is-open="false"] {
-              @apply hidden;
-            }
-
-            .dropdown__row {
-              @apply w-full px-2;
+            .table-cell {
+              @apply py-4 first:pl-6 last:pr-6 px-2 text-left;
             }
           }
+        }
 
-          .table__row {
-            @apply w-full py-2 flex flex-row items-center;
+        .table-body {
+          @apply bg-white w-full;
 
-            .table__cell {
-              @apply first:pl-6 last:pr-6 px-2 overflow-hidden;
+          .table-item {
+            @apply w-full odd:bg-gray-100 flex flex-row items-start;
+
+            .table-item-content {
+              @apply w-full flex flex-col;
+
+              .table-dropdown {
+                @apply w-full flex-row;
+
+                &[data-is-open="true"] {
+                  @apply flex;
+                }
+
+                &[data-is-open="false"] {
+                  @apply hidden;
+                }
+
+                .dropdown-row {
+                  @apply w-full px-2;
+                }
+              }
+
+              .table-row {
+                @apply w-full py-2 flex flex-row items-center;
+
+                .table-cell {
+                  @apply first:pl-6 last:pr-6 px-2 overflow-hidden;
+                }
+              }
             }
           }
         }
@@ -714,40 +734,60 @@ input[type="number"] {
     }
   }
 
-  .spring_notification {
+  [data-ui="components.notification"] {
     @apply z-50 fixed right-0 flex items-end flex-col mx-4 bottom-0 mb-4;
 
-    &.is_from_top {
+    &[data-position="top"] {
       @apply mb-0 top-0 mt-4;
     }
 
-    .notification_container {
+    .notification {
       @apply relative overflow-hidden drop-shadow-md;
 
-      .wrapper {
+      .notification-container {
         @apply relative flex flex-row items-start rounded-sm pr-8 py-2 bg-white;
 
-        .body {
+        .notification-body {
           @apply flex flex-col items-start;
 
           &[data-message="true"] {
             @apply gap-2;
           }
 
-          .heading {
+          .notification-heading {
             @apply pl-2 text-sm;
           }
 
-          .message {
+          .notification-message {
             @apply pl-2 text-xs;
           }
         }
 
-        .close_button {
-          @apply absolute right-1 top-1 text-black w-3 z-50 cursor-pointer;
+        .button-close {
+          @apply absolute right-2 top-2 text-black w-3 z-50 cursor-pointer;
 
           svg {
             @apply fill-current w-3;
+          }
+        }
+      }
+
+      &.notification-warning {
+        .notification-container {
+          .notification-body {
+            .notification-heading {
+              @apply text-orange-400;
+            }
+          }
+        }
+      }
+
+      &.notification-error {
+        .notification-container {
+          .notification-body {
+            .notification-heading {
+              @apply text-red-500;
+            }
           }
         }
       }

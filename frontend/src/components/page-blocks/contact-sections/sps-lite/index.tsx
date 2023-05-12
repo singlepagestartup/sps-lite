@@ -5,7 +5,6 @@ import { ISpsLiteBackendContactSectonBlock } from "types/components/page-blocks/
 export interface ISpsLiteContactSectonBlock
   extends ISpsLiteBackendContactSectonBlock {
   showSkeletons?: boolean;
-  [key: string]: any;
 }
 
 export const variants = {

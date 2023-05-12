@@ -20,7 +20,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["two-columns-with-centered-introduction"],
+      "enum": [
+        "two-columns-with-centered-introduction"
+      ],
       "required": true,
       "default": "two-columns-with-centered-introduction"
     },
@@ -29,6 +31,9 @@
     },
     "anchor": {
       "type": "string"
+    },
+    "subtitle": {
+      "type": "richtext"
     }
   }
 }
