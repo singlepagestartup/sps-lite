@@ -7,7 +7,7 @@
     "class_name": null,
     "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
     "createdAt": "2023-03-31T16:22:17.165Z",
-    "updatedAt": "2023-05-04T10:09:02.151Z",
+    "updatedAt": "2023-05-12T10:27:00.631Z",
     "publishedAt": "2023-03-28T10:46:50.780Z",
     "title": "Features Slider",
     "uid": "features-slider",
@@ -15,9 +15,9 @@
     "slides": [
         {
             "id": 31,
-            "title": "Конструктор блоков страниц",
-            "description": "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
-            "subtitle": null,
+            "title": "Jumpstart Your Startup Journey",
+            "description": "Our pre-built boilerplate offers a comprehensive set of features and tools to accelerate your startup's development process. Say goodbye to repetitive tasks and focus on your core business logic with our customizable, efficient, and scalable solution.",
+            "subtitle": "Get ahead with our lean startup developer boilerplate",
             "media": [
                 {
                     "id": 512,
@@ -89,10 +89,10 @@
             "buttons": [
                 {
                     "id": 197,
-                    "url": "/",
+                    "url": "https://github.com/singlepagestartup/sps-lite",
                     "description": null,
                     "variant": "primary",
-                    "title": "Начать",
+                    "title": "Get started",
                     "additional_attributes": null,
                     "class_name": null,
                     "media": null,
@@ -104,9 +104,9 @@
         },
         {
             "id": 32,
-            "title": "Hello world",
-            "description": "Lupa pupa",
-            "subtitle": null,
+            "title": "Empower Your MVP with Best Practices",
+            "description": "Our boilerplate comes with essential features like authentication, multilingual support, and integrations with popular third-party services. With minimum viable product (MVP) readiness in mind, we help you save time, effort, and resources as you bring your startup idea to life.",
+            "subtitle": "Launch faster with our ready-to-use components",
             "media": [
                 {
                     "id": 513,
@@ -172,6 +172,82 @@
                     "folderPath": "/",
                     "createdAt": "2023-05-04T10:09:01.898Z",
                     "updatedAt": "2023-05-04T10:09:01.898Z",
+                    "folder": null
+                }
+            ],
+            "buttons": [],
+            "additional_media": null
+        },
+        {
+            "id": 33,
+            "title": "Built for Agile Development",
+            "description": "Our lean startup developer boilerplate is designed for agile development, allowing you to adapt and evolve your project rapidly. Stay ahead in the ever-changing startup landscape with built-in feedback mechanisms, seamless collaboration, and continuous improvement capabilities.",
+            "subtitle": "Foster innovation with a flexible and iterative approach",
+            "media": [
+                {
+                    "id": 489,
+                    "name": "pexels-tima-miroshnichenko-5198239.jpg",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 6000,
+                    "height": 4000,
+                    "formats": {
+                        "large": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_4dfda81f34.jpg",
+                            "hash": "large_pexels_tima_miroshnichenko_5198239_4dfda81f34",
+                            "mime": "image/jpeg",
+                            "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
+                            "path": null,
+                            "size": 81.72,
+                            "width": 1000,
+                            "height": 667
+                        },
+                        "small": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_4dfda81f34.jpg",
+                            "hash": "small_pexels_tima_miroshnichenko_5198239_4dfda81f34",
+                            "mime": "image/jpeg",
+                            "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
+                            "path": null,
+                            "size": 29.41,
+                            "width": 500,
+                            "height": 333
+                        },
+                        "medium": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_4dfda81f34.jpg",
+                            "hash": "medium_pexels_tima_miroshnichenko_5198239_4dfda81f34",
+                            "mime": "image/jpeg",
+                            "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
+                            "path": null,
+                            "size": 53.04,
+                            "width": 750,
+                            "height": 500
+                        },
+                        "thumbnail": {
+                            "ext": ".jpg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_4dfda81f34.jpg",
+                            "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_4dfda81f34",
+                            "mime": "image/jpeg",
+                            "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
+                            "path": null,
+                            "size": 9.6,
+                            "width": 234,
+                            "height": 156
+                        }
+                    },
+                    "hash": "pexels_tima_miroshnichenko_5198239_4dfda81f34",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "size": 4287.67,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_4dfda81f34.jpg",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-05-04T10:02:48.903Z",
+                    "updatedAt": "2023-05-04T10:02:48.903Z",
                     "folder": null
                 }
             ],
@@ -2067,52 +2143,6 @@
                         "updatedAt": "2023-05-11T23:21:50.826Z"
                     },
                     {
-                        "id": 869,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T23:22:53.802Z",
-                        "updatedAt": "2023-05-11T23:22:53.802Z"
-                    },
-                    {
                         "id": 870,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::slider.slider",
@@ -2186,52 +2216,6 @@
                         "updatedAt": "2023-05-11T23:22:53.835Z"
                     },
                     {
-                        "id": 872,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T23:22:53.849Z",
-                        "updatedAt": "2023-05-11T23:22:53.849Z"
-                    },
-                    {
                         "id": 873,
                         "action": "plugin::content-manager.explorer.read",
                         "subject": "api::slider.slider",
@@ -2303,52 +2287,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.869Z",
                         "updatedAt": "2023-05-11T23:22:53.869Z"
-                    },
-                    {
-                        "id": 875,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.component",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T23:22:53.877Z",
-                        "updatedAt": "2023-05-11T23:22:53.877Z"
                     },
                     {
                         "id": 876,
@@ -2488,6 +2426,153 @@
                         "conditions": [],
                         "createdAt": "2023-05-12T00:03:46.094Z",
                         "updatedAt": "2023-05-12T00:03:46.094Z"
+                    },
+                    {
+                        "id": 887,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.variant",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "inputs.min",
+                                "inputs.max",
+                                "inputs.step",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T13:04:54.662Z",
+                        "updatedAt": "2023-05-12T13:04:54.662Z"
+                    },
+                    {
+                        "id": 888,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.variant",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "inputs.min",
+                                "inputs.max",
+                                "inputs.step",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T13:04:54.675Z",
+                        "updatedAt": "2023-05-12T13:04:54.675Z"
+                    },
+                    {
+                        "id": 889,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.variant",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "inputs.min",
+                                "inputs.max",
+                                "inputs.step",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T13:04:54.682Z",
+                        "updatedAt": "2023-05-12T13:04:54.682Z"
                     }
                 ],
                 "createdBy": null,
