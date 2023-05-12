@@ -793,4 +793,18 @@ input[type="number"] {
       }
     }
   }
+
+  // Place custom classes below and put them in the components
+  // They will override the above styles
+  //
+  // .custom-class {
+  //  [data-component="elements.button"] {
+  //    &[data-variant="primary"] {
+  //      .button-primary {
+  //        @apply bg-red-500;
+  //      }
+  //    }
+  //  }
+  //
+  //  That code will override the primary button color to red, but save the rest of the styles
 }
