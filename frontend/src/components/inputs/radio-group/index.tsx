@@ -57,13 +57,17 @@ export default function RadioGroupInput(props: IInputProps) {
   }, [errors, props]);
 
   return (
-    <div className={className}>
-      <div className="inputs__label">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-radio-group ${className || ""}`}
+    >
+      <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="radio__group__input">
+      <div className="input-container">
         <RadioGroup
           as="div"
           id={htmlNodeId}
@@ -77,7 +81,7 @@ export default function RadioGroupInput(props: IInputProps) {
             }
           }}
         >
-          <div className="radio__group">
+          <div className="radio-group">
             {options?.map((option: any, index: number) => (
               <RadioGroup.Option key={option.id || index} value={option}>
                 {({ checked, active }) => (
@@ -98,8 +102,8 @@ export default function RadioGroupInput(props: IInputProps) {
         </RadioGroup>
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
-          <p className="text-red-500 text-xs">
+        <div className="input-error">
+          <p>
             {typeof translate === "function"
               ? translate(inputError.message)
               : inputError.message}

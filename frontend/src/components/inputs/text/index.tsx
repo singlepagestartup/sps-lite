@@ -88,13 +88,17 @@ export default function TextInput(props: IInputProps) {
   }, [errors]);
 
   return (
-    <div className={className}>
-      <div className="inputs__label">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-text ${className || ""}`}
+    >
+      <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="text__input">
+      <div className="input-container">
         {type === "textarea" ? (
           <textarea
             onChange={(e) => {
@@ -115,7 +119,6 @@ export default function TextInput(props: IInputProps) {
               }
             }}
             placeholder={placeholder ? placeholder : undefined}
-            className="input"
             id={htmlNodeId}
             rows={rows || 3}
             {...additionalAttributes}
@@ -154,13 +157,12 @@ export default function TextInput(props: IInputProps) {
                 ? translate(placeholder)
                 : placeholder
             }
-            className="input"
             {...additionalAttributes}
           />
         )}
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
+        <div className="input-error">
           <p>
             {typeof translate === "function"
               ? translate(inputError.message)

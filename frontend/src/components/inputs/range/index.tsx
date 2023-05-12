@@ -55,8 +55,12 @@ export default function RangeInput(props: IInputProps) {
     control,
     rules,
     shouldUnregister,
-    defaultValue: initialValue !== undefined ? initialValue : defaultValue,
+    defaultValue: initialValue !== undefined ? initialValue : +defaultValue,
   });
+
+  console.log("🚀 ~ RangeInput ~ value:", value);
+  console.log("🚀 ~ RangeInput ~ initialValue:", initialValue);
+  console.log("🚀 ~ RangeInput ~ defaultValue:", +defaultValue);
 
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
@@ -85,21 +89,27 @@ export default function RangeInput(props: IInputProps) {
   }, [errors]);
 
   return (
-    <div className={className}>
-      <div className="inputs__label">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-range ${className || ""}`}
+    >
+      <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="range__input">
-        {max && value ? (
+      <div className="input-container">
+        {max && value !== undefined ? (
           <>
             <div
               className="dragger"
               style={{
                 left: `${(value / max) * 100}%`,
               }}
-            ></div>
+            >
+              <p className="dragger-value">{value}</p>
+            </div>
             <div
               className="ms-fill-lower"
               style={{
@@ -128,7 +138,7 @@ export default function RangeInput(props: IInputProps) {
           min={min}
           max={max}
           onBlur={onBlur}
-          value={value || ""}
+          value={value !== undefined ? value : ""}
           ref={(e) => {
             if (e) {
               ref(e);
@@ -138,9 +148,15 @@ export default function RangeInput(props: IInputProps) {
           className="input"
           {...additionalAttributes}
         />
+        {min && max ? (
+          <div className="limit-values-container">
+            <p className="min">{min}</p>
+            <p className="max">{max}</p>
+          </div>
+        ) : null}
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
+        <div className="input-error">
           <p>
             {typeof translate === "function"
               ? translate(inputError.message)

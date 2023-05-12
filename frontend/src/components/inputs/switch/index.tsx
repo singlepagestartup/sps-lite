@@ -62,8 +62,12 @@ export default function SwitchInput(props: IInputProps) {
   }, [errors]);
 
   return (
-    <div className={className}>
-      <div className="switch__input">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-switch ${className || ""}`}
+    >
+      <div className="input-container">
         <Switch
           as="div"
           // role="button"
@@ -89,7 +93,7 @@ export default function SwitchInput(props: IInputProps) {
               role="tab"
               className="check"
             >
-              {value ? <CheckIcon className="checked" /> : null}
+              {value ? <CheckIcon /> : null}
             </div>
           </div>
         </Switch>
@@ -104,7 +108,7 @@ export default function SwitchInput(props: IInputProps) {
         </div>
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
+        <div className="input-error">
           <p>
             {typeof translate === "function"
               ? translate(inputError.message)

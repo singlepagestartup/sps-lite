@@ -204,14 +204,17 @@ export default function FileInput(props: IInputProps) {
   }
 
   return (
-    <div className={className}>
-      <div className="inputs__label">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-file ${className || ""}`}
+    >
+      <div className="input-label">
         <label>
-          {" "}
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="files__input">
+      <div className="input-container">
         <label
           htmlFor={htmlNodeId}
           data-multiple={multiple ? true : false}
@@ -242,10 +245,14 @@ export default function FileInput(props: IInputProps) {
             placeholder={placeholder}
           />
         </label>
-        <FilesArray files={localFiles} onFileDelete={onFileDelete} />
+        <FilesArray
+          multiple={multiple ? true : false}
+          files={localFiles}
+          onFileDelete={onFileDelete}
+        />
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
+        <div className="input-error">
           <p>
             {typeof translate === "function"
               ? translate(inputError.message)
@@ -268,8 +275,10 @@ function DefaultButton({
 }) {
   return (
     <div className="button">
-      <CloudArrowUpIcon />
-      <p>{placeholder}</p>
+      <div className="button-container">
+        <CloudArrowUpIcon />
+        <p>{placeholder}</p>
+      </div>
     </div>
   );
 }
@@ -277,12 +286,14 @@ function DefaultButton({
 function FilesArray({
   files,
   onFileDelete,
+  multiple,
 }: {
+  multiple: boolean;
   files?: File[];
   onFileDelete: any;
 }) {
   return (
-    <div className="files__array">
+    <div data-multiple={multiple} className="files-array">
       {files?.map((file, index) => {
         const url = URL.createObjectURL(file);
         const isImage = file.type.includes("image");

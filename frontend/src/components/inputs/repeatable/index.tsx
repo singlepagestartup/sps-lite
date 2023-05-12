@@ -274,7 +274,7 @@ export default function RepeatableInput(props: IInputProps) {
 
   return (
     <div className={className}>
-      <div className="inputs__label">
+      <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
@@ -382,7 +382,7 @@ export default function RepeatableInput(props: IInputProps) {
         </div>
       </div>
       {inputError?.message ? (
-        <div className="inputs__error">
+        <div className="input-error">
           <p>
             {typeof translate === "function"
               ? translate(inputError.message)

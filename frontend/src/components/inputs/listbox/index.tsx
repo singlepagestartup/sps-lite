@@ -90,13 +90,17 @@ export default function ListboxInput(props: IInputProps) {
   }, [errors]);
 
   return (
-    <div className={className}>
-      <div className="inputs__label">
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-listbox ${className || ""}`}
+    >
+      <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="listbox__input">
+      <div className="input-container">
         <Listbox
           as="div"
           id={htmlNodeId}
@@ -147,11 +151,13 @@ export default function ListboxInput(props: IInputProps) {
         </Listbox>
       </div>
       {inputError?.message ? (
-        <p className="text-red-500 text-xs">
-          {typeof translate === "function"
-            ? translate(inputError.message)
-            : inputError.message}
-        </p>
+        <div className="input-error">
+          <p>
+            {typeof translate === "function"
+              ? translate(inputError.message)
+              : inputError.message}
+          </p>
+        </div>
       ) : null}
     </div>
   );
@@ -189,8 +195,8 @@ function DefaultButton({ value, placeholder, renderOptionValue }: any) {
   return (
     <>
       <span className="title">{renderValue}</span>
-      <div className="icon__box">
-        <ChevronUpDownIcon className="icon" aria-hidden="true" />
+      <div className="icon-container">
+        <ChevronUpDownIcon aria-hidden="true" />
       </div>
     </>
   );
@@ -215,8 +221,8 @@ function DefaultOption({
           : option.title) || option}
       </span>
       {selected ? (
-        <div className="icon__box">
-          <CheckIcon className="icon" aria-hidden="true" />
+        <div className="icon-container">
+          <CheckIcon aria-hidden="true" />
         </div>
       ) : null}
     </div>

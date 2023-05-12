@@ -10,9 +10,16 @@
     "placeholder": {
       "type": "string"
     },
-    "component": {
+    "variant": {
       "type": "enumeration",
-      "enum": ["text", "listbox", "radio-group", "switch", "file"],
+      "enum": [
+        "text",
+        "listbox",
+        "radio-group",
+        "switch",
+        "file",
+        "range"
+      ],
       "default": "text",
       "required": true
     },
@@ -41,11 +48,25 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["text", "textarea", "file", "date"],
+      "enum": [
+        "text",
+        "textarea",
+        "file",
+        "date"
+      ],
       "required": false
     },
     "multiple": {
       "type": "boolean"
+    },
+    "min": {
+      "type": "float"
+    },
+    "max": {
+      "type": "float"
+    },
+    "step": {
+      "type": "float"
     }
   }
 }

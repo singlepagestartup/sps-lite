@@ -40,10 +40,7 @@ export interface IInputProps extends UseControllerProps {
   min?: number;
   max?: number;
   disabled?: boolean;
-}
-
-export interface IInputsProps extends IInputProps {
-  component:
+  variant:
     | "text"
     | "listbox"
     | "radio-group"
@@ -53,11 +50,11 @@ export interface IInputsProps extends IInputProps {
     | "range";
 }
 
-export default function Inputs(props: IInputsProps) {
-  const { component } = props;
+export default function Inputs(props: IInputProps) {
+  const { variant } = props;
 
   const Comp = useMemo(() => {
-    switch (component) {
+    switch (variant) {
       case "text":
         return TextInput;
       case "file":
@@ -75,7 +72,7 @@ export default function Inputs(props: IInputsProps) {
       default:
         return TextInput;
     }
-  }, [component]);
+  }, [variant]);
 
   return <Comp {...props} />;
 }
