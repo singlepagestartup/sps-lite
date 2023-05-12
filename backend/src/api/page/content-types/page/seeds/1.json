@@ -2,20 +2,20 @@
     "id": 1,
     "title": "Main page",
     "createdAt": "2023-04-08T19:06:02.556Z",
-    "updatedAt": "2023-05-12T10:11:47.745Z",
+    "updatedAt": "2023-05-12T14:09:48.818Z",
     "publishedAt": "2023-04-08T19:06:05.277Z",
     "locale": "en",
     "url": "/",
     "layout": {
         "id": 3,
-        "title": "Шаблон Публичных Страниц",
-        "uid": "public-page-layout-2",
+        "title": "Public Page Layout",
+        "uid": "public-page-layout-1",
         "variant": "wide",
         "createdAt": "2023-04-20T10:23:36.202Z",
-        "updatedAt": "2023-05-11T12:56:04.923Z",
+        "updatedAt": "2023-05-12T14:12:13.250Z",
         "publishedAt": "2023-04-20T10:23:38.447Z",
         "locale": "en",
-        "class_name": null,
+        "class_name": "[&>.layout-container]:pt-16",
         "sidebar": null,
         "topbar": null,
         "footer": {
@@ -31,14 +31,14 @@
             "layouts": [
                 {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 {
                     "id": 1,
@@ -46,10 +46,10 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-05T13:35:07.829Z",
+                    "updatedAt": "2023-05-12T14:14:35.881Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 }
             ],
             "page_blocks": [
@@ -123,21 +123,21 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "createdBy": {
@@ -203,21 +203,21 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "createdBy": null,
@@ -267,21 +267,21 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "createdAt": "2023-04-08T12:04:55.015Z",
-                    "updatedAt": "2023-05-05T13:35:07.829Z",
+                    "updatedAt": "2023-05-12T14:14:35.881Z",
                     "publishedAt": "2023-04-08T12:04:56.606Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 }
             ],
             "createdBy": {
@@ -321,20 +321,20 @@
                 "id": 1,
                 "title": "Main page",
                 "createdAt": "2023-04-08T19:06:02.556Z",
-                "updatedAt": "2023-05-12T10:11:47.745Z",
+                "updatedAt": "2023-05-12T14:09:48.818Z",
                 "publishedAt": "2023-04-08T19:06:05.277Z",
                 "locale": "en",
                 "url": "/",
                 "layout": {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 "page_blocks": [
                     {
@@ -353,13 +353,6 @@
                         "anchor": null,
                         "title": "Minimum Viable Product is Ready",
                         "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.slider-block",
-                        "id": 44,
-                        "variant": "simple",
-                        "anchor": null,
                         "class_name": null
                     },
                     {
@@ -436,14 +429,14 @@
                 "url": "/terms-and-conditions",
                 "layout": {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 "page_blocks": [
                     {
@@ -499,14 +492,14 @@
                 "url": "/404",
                 "layout": {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 "page_blocks": [
                     {
@@ -793,65 +786,6 @@
                     "flyout": null
                 }
             ]
-        },
-        {
-            "__component": "page-blocks.slider-block",
-            "id": 44,
-            "variant": "simple",
-            "anchor": null,
-            "class_name": null,
-            "slider": {
-                "id": 5,
-                "variant": "fade-with-previews",
-                "show_backdrop": true,
-                "show_full_screen": true,
-                "show_previews": true,
-                "class_name": null,
-                "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
-                "createdAt": "2023-03-31T16:22:17.165Z",
-                "updatedAt": "2023-05-12T10:27:00.631Z",
-                "publishedAt": "2023-03-28T10:46:50.780Z",
-                "title": "Features Slider",
-                "uid": "features-slider",
-                "locale": "en",
-                "slides": [
-                    {
-                        "id": 31,
-                        "title": "Jumpstart Your Startup Journey",
-                        "description": "Our pre-built boilerplate offers a comprehensive set of features and tools to accelerate your startup's development process. Say goodbye to repetitive tasks and focus on your core business logic with our customizable, efficient, and scalable solution.",
-                        "subtitle": "Get ahead with our lean startup developer boilerplate"
-                    },
-                    {
-                        "id": 32,
-                        "title": "Empower Your MVP with Best Practices",
-                        "description": "Our boilerplate comes with essential features like authentication, multilingual support, and integrations with popular third-party services. With minimum viable product (MVP) readiness in mind, we help you save time, effort, and resources as you bring your startup idea to life.",
-                        "subtitle": "Launch faster with our ready-to-use components"
-                    },
-                    {
-                        "id": 33,
-                        "title": "Built for Agile Development",
-                        "description": "Our lean startup developer boilerplate is designed for agile development, allowing you to adapt and evolve your project rapidly. Stay ahead in the ever-changing startup landscape with built-in feedback mechanisms, seamless collaboration, and continuous improvement capabilities.",
-                        "subtitle": "Foster innovation with a flexible and iterative approach"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": {
-                    "id": 1,
-                    "firstname": "rogwild",
-                    "lastname": "design",
-                    "username": null,
-                    "email": "rogwild.design@gmail.com",
-                    "password": "$2a$10$Bcwg3xxcASmaZ/LF6TDXwuFbdbhuMCiVaW78mI6YxE9oAhaKwpWCG",
-                    "resetPasswordToken": null,
-                    "registrationToken": null,
-                    "isActive": true,
-                    "blocked": false,
-                    "preferedLanguage": null,
-                    "createdAt": "2023-02-13T22:32:56.592Z",
-                    "updatedAt": "2023-02-13T22:32:56.592Z"
-                },
-                "localizations": []
-            }
         },
         {
             "__component": "page-blocks.features-section-block",
@@ -1179,20 +1113,20 @@
                 "id": 1,
                 "title": "Main page",
                 "createdAt": "2023-04-08T19:06:02.556Z",
-                "updatedAt": "2023-05-12T10:11:47.745Z",
+                "updatedAt": "2023-05-12T14:09:48.818Z",
                 "publishedAt": "2023-04-08T19:06:05.277Z",
                 "locale": "en",
                 "url": "/",
                 "layout": {
                     "id": 3,
-                    "title": "Шаблон Публичных Страниц",
-                    "uid": "public-page-layout-2",
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
                     "variant": "wide",
                     "createdAt": "2023-04-20T10:23:36.202Z",
-                    "updatedAt": "2023-05-11T12:56:04.923Z",
+                    "updatedAt": "2023-05-12T14:12:13.250Z",
                     "publishedAt": "2023-04-20T10:23:38.447Z",
                     "locale": "en",
-                    "class_name": null
+                    "class_name": "[&>.layout-container]:pt-16"
                 },
                 "page_blocks": [
                     {
@@ -1211,13 +1145,6 @@
                         "anchor": null,
                         "title": "Minimum Viable Product is Ready",
                         "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
-                        "class_name": null
-                    },
-                    {
-                        "__component": "page-blocks.slider-block",
-                        "id": 44,
-                        "variant": "simple",
-                        "anchor": null,
                         "class_name": null
                     },
                     {

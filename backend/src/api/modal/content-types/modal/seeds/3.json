@@ -30,10 +30,10 @@
             "uid": "public-page-layout",
             "variant": "boxed",
             "createdAt": "2023-04-08T12:04:55.015Z",
-            "updatedAt": "2023-05-05T13:35:07.829Z",
+            "updatedAt": "2023-05-12T14:14:35.881Z",
             "publishedAt": "2023-04-08T12:04:56.606Z",
             "locale": "en",
-            "class_name": null,
+            "class_name": "[&>.layout-container]:pt-16",
             "sidebar": {
                 "id": 1,
                 "variant": "one-quarter",
@@ -63,10 +63,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "createdBy": {
@@ -115,14 +115,14 @@
                 "layouts": [
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 1,
@@ -130,10 +130,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "page_blocks": [
@@ -207,21 +207,21 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-05T13:35:07.829Z",
+                            "updatedAt": "2023-05-12T14:14:35.881Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         },
                         {
                             "id": 3,
-                            "title": "Шаблон Публичных Страниц",
-                            "uid": "public-page-layout-2",
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
                             "variant": "wide",
                             "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-11T12:56:04.923Z",
+                            "updatedAt": "2023-05-12T14:12:13.250Z",
                             "publishedAt": "2023-04-20T10:23:38.447Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         }
                     ],
                     "createdBy": {
@@ -287,21 +287,21 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-05T13:35:07.829Z",
+                            "updatedAt": "2023-05-12T14:14:35.881Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         },
                         {
                             "id": 3,
-                            "title": "Шаблон Публичных Страниц",
-                            "uid": "public-page-layout-2",
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
                             "variant": "wide",
                             "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-11T12:56:04.923Z",
+                            "updatedAt": "2023-05-12T14:12:13.250Z",
                             "publishedAt": "2023-04-20T10:23:38.447Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         }
                     ],
                     "createdBy": null,
@@ -351,21 +351,21 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "createdBy": {
@@ -405,7 +405,7 @@
                     "id": 3,
                     "title": "Page With Sidebar Layout",
                     "createdAt": "2023-04-08T20:00:13.006Z",
-                    "updatedAt": "2023-05-05T13:37:34.624Z",
+                    "updatedAt": "2023-05-12T14:09:34.485Z",
                     "publishedAt": "2023-04-08T20:00:14.519Z",
                     "locale": "en",
                     "url": "/page-with-sidebar-layout",
@@ -415,18 +415,16 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     "page_blocks": [
                         {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 72,
-                            "title": "Page With Sidebar Layout",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
+                            "__component": "page-blocks.slider-block",
+                            "id": 45,
+                            "variant": "simple",
                             "anchor": null,
                             "class_name": null
                         }
@@ -523,14 +521,14 @@
         },
         {
             "id": 3,
-            "title": "Шаблон Публичных Страниц",
-            "uid": "public-page-layout-2",
+            "title": "Public Page Layout",
+            "uid": "public-page-layout-1",
             "variant": "wide",
             "createdAt": "2023-04-20T10:23:36.202Z",
-            "updatedAt": "2023-05-11T12:56:04.923Z",
+            "updatedAt": "2023-05-12T14:12:13.250Z",
             "publishedAt": "2023-04-20T10:23:38.447Z",
             "locale": "en",
-            "class_name": null,
+            "class_name": "[&>.layout-container]:pt-16",
             "sidebar": null,
             "topbar": null,
             "footer": {
@@ -546,14 +544,14 @@
                 "layouts": [
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 1,
@@ -561,10 +559,10 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "page_blocks": [
@@ -638,21 +636,21 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-05T13:35:07.829Z",
+                            "updatedAt": "2023-05-12T14:14:35.881Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         },
                         {
                             "id": 3,
-                            "title": "Шаблон Публичных Страниц",
-                            "uid": "public-page-layout-2",
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
                             "variant": "wide",
                             "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-11T12:56:04.923Z",
+                            "updatedAt": "2023-05-12T14:12:13.250Z",
                             "publishedAt": "2023-04-20T10:23:38.447Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         }
                     ],
                     "createdBy": {
@@ -718,21 +716,21 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "createdAt": "2023-04-08T12:04:55.015Z",
-                            "updatedAt": "2023-05-05T13:35:07.829Z",
+                            "updatedAt": "2023-05-12T14:14:35.881Z",
                             "publishedAt": "2023-04-08T12:04:56.606Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         },
                         {
                             "id": 3,
-                            "title": "Шаблон Публичных Страниц",
-                            "uid": "public-page-layout-2",
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
                             "variant": "wide",
                             "createdAt": "2023-04-20T10:23:36.202Z",
-                            "updatedAt": "2023-05-11T12:56:04.923Z",
+                            "updatedAt": "2023-05-12T14:12:13.250Z",
                             "publishedAt": "2023-04-20T10:23:38.447Z",
                             "locale": "en",
-                            "class_name": null
+                            "class_name": "[&>.layout-container]:pt-16"
                         }
                     ],
                     "createdBy": null,
@@ -782,21 +780,21 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "createdAt": "2023-04-08T12:04:55.015Z",
-                        "updatedAt": "2023-05-05T13:35:07.829Z",
+                        "updatedAt": "2023-05-12T14:14:35.881Z",
                         "publishedAt": "2023-04-08T12:04:56.606Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     }
                 ],
                 "createdBy": {
@@ -836,20 +834,20 @@
                     "id": 1,
                     "title": "Main page",
                     "createdAt": "2023-04-08T19:06:02.556Z",
-                    "updatedAt": "2023-05-12T10:11:47.745Z",
+                    "updatedAt": "2023-05-12T14:09:48.818Z",
                     "publishedAt": "2023-04-08T19:06:05.277Z",
                     "locale": "en",
                     "url": "/",
                     "layout": {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     "page_blocks": [
                         {
@@ -868,13 +866,6 @@
                             "anchor": null,
                             "title": "Minimum Viable Product is Ready",
                             "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
-                            "class_name": null
-                        },
-                        {
-                            "__component": "page-blocks.slider-block",
-                            "id": 44,
-                            "variant": "simple",
-                            "anchor": null,
                             "class_name": null
                         },
                         {
@@ -951,14 +942,14 @@
                     "url": "/terms-and-conditions",
                     "layout": {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     "page_blocks": [
                         {
@@ -1014,14 +1005,14 @@
                     "url": "/404",
                     "layout": {
                         "id": 3,
-                        "title": "Шаблон Публичных Страниц",
-                        "uid": "public-page-layout-2",
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
                         "variant": "wide",
                         "createdAt": "2023-04-20T10:23:36.202Z",
-                        "updatedAt": "2023-05-11T12:56:04.923Z",
+                        "updatedAt": "2023-05-12T14:12:13.250Z",
                         "publishedAt": "2023-04-20T10:23:38.447Z",
                         "locale": "en",
-                        "class_name": null
+                        "class_name": "[&>.layout-container]:pt-16"
                     },
                     "page_blocks": [
                         {
