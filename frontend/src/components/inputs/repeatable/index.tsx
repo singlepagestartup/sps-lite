@@ -273,16 +273,20 @@ export default function RepeatableInput(props: IInputProps) {
   }
 
   return (
-    <div className={className}>
+    <div
+      data-component="elements.input"
+      data-variant={props.variant}
+      className={`input-repeatable ${className || ""}`}
+    >
       <div className="input-label">
         <label htmlFor={htmlNodeId}>
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div id={htmlNodeId} className="repeatable__input">
+      <div id={htmlNodeId} className="input-container">
         {fields.map((field: any, fieldIndex: number) => {
           return (
-            <div className="repeatable__inputs" key={field.id}>
+            <div className="repeatable-inputs" key={field.id}>
               {inputs.map((input: any, index: number) => {
                 const additionalPropsForInput = {} as any;
 
@@ -345,7 +349,7 @@ export default function RepeatableInput(props: IInputProps) {
               <div
                 role="button"
                 onClick={() => remove(fieldIndex)}
-                className="remove__button"
+                className="button-remove-input"
               >
                 <TrashIcon />
                 <p>
@@ -367,7 +371,7 @@ export default function RepeatableInput(props: IInputProps) {
         <div
           role="button"
           onClick={() => append(emptyValues)}
-          className="add_button"
+          className="button-add-input"
         >
           <PlusIcon />
           <p>
