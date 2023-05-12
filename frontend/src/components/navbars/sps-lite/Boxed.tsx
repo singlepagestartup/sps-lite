@@ -5,24 +5,24 @@ import PageBlocks from "~components/page-blocks";
 
 export default function Boxed(props: ISpsLiteNavbar) {
   return (
-    <div className={props.className || ""}>
-      <nav
-        className="bg-white shadow w-screen z-30 fixed"
-        style={{
-          marginTop: `${
-            (props.topbar &&
-              props.topbarRef?.current?.querySelector("div")?.offsetHeight) ||
-            0
-          }px`,
-        }}
-      >
-        <div className="w-full mx-auto max-w-7xl">
-          <PageBlocks
-            pageBlocks={props.pageBlocks}
-            showSkeletons={props.showSkeletons}
-          />
-        </div>
-      </nav>
-    </div>
+    <nav
+      data-collection-type="navbar"
+      data-variant={props.variant}
+      className={props.className || ""}
+      style={{
+        marginTop: `${
+          (props.topbar &&
+            props.topbarRef?.current?.querySelector("div")?.offsetHeight) ||
+          0
+        }px`,
+      }}
+    >
+      <div className="navbar-container">
+        <PageBlocks
+          pageBlocks={props.pageBlocks}
+          showSkeletons={props.showSkeletons}
+        />
+      </div>
+    </nav>
   );
 }

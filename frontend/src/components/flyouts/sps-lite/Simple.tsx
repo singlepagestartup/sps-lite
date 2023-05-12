@@ -14,8 +14,12 @@ export default function Simple(props: ISpsLiteFlyout) {
       leaveFrom="opacity-100 translate-y-0"
       leaveTo="opacity-0 translate-y-1"
     >
-      <Popover.Panel className={`${props.className || ""} flyout`}>
-        <div className="flyout_container">
+      <Popover.Panel
+        data-collection-type="flyout"
+        data-variant={props.variant}
+        className={props.className || ""}
+      >
+        <div className="flyout-container">
           <PageBlocks
             pageBlocks={props.pageBlocks}
             showSkeletons={props.showSkeletons}

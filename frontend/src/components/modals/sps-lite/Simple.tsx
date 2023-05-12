@@ -19,7 +19,9 @@ export default function Simple(props: ISpsLiteModal) {
             router.replace(pathname);
           }
         }}
-        className="relative z-50"
+        data-collection-type="modal"
+        data-variant={props.variant}
+        className={props.className || ""}
       >
         <Transition.Child
           as={Fragment}
@@ -30,7 +32,7 @@ export default function Simple(props: ISpsLiteModal) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+          <div className="backdrop" aria-hidden="true" />
         </Transition.Child>
 
         <Transition.Child
@@ -43,10 +45,10 @@ export default function Simple(props: ISpsLiteModal) {
           leaveTo="opacity-0 scale-95"
         >
           {props.pageBlocks ? (
-            <div className="fixed inset-0 overflow-y-scroll px-4 pt-4 pb-20 flex h-screen">
+            <div className="modal-container">
               <Dialog.Panel
-                className={`m-auto rounded bg-white ${
-                  dialogPanelClassName || "w-full"
+                className={`dialog-panel ${
+                  props.dialogPanelClassName || "w-full"
                 }`}
               >
                 <button
@@ -56,9 +58,9 @@ export default function Simple(props: ISpsLiteModal) {
                       router.replace(pathname);
                     }
                   }}
-                  className="absolute right-2 top-2"
+                  className="button-close"
                 >
-                  <XMarkIcon className="w-6 text-gray-500" />
+                  <XMarkIcon />
                 </button>
                 <PageBlocks
                   pageBlocks={pageBlocks}

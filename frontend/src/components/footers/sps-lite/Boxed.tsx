@@ -3,8 +3,12 @@ import PageBlocks from "~components/page-blocks";
 
 export default function Boxed(props: ISpsLiteFooter) {
   return (
-    <footer className={props.className || ""}>
-      <div className="mx-auto max-w-7xl">
+    <footer
+      data-collection-type="footer"
+      data-variant={props.variant}
+      className={props.className || ""}
+    >
+      <div className="footer-container">
         <PageBlocks
           pageBlocks={props.pageBlocks}
           showSkeletons={props.showSkeletons}

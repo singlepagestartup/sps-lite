@@ -10,7 +10,11 @@ export default function Boxed(props: ISpsLiteLayout) {
 
   return (
     <>
-      <div className="relative">
+      <div
+        data-collection-type="layout"
+        data-variant={props.variant}
+        className={props.className || ""}
+      >
         {props?.topbar ? (
           <Topbars {...props.topbar} topbarRef={topbarRef} />
         ) : null}
@@ -21,13 +25,7 @@ export default function Boxed(props: ISpsLiteLayout) {
             topbarRef={topbarRef}
           />
         ) : null}
-        <div
-          className={`${
-            props.navbar?.side === "top" && props.navbar?.position === "fixed"
-              ? "pt-16"
-              : ""
-          } w-full max-w-7xl mx-auto`}
-        >
+        <div className={"layout-container"}>
           {props?.sidebar ? (
             <div
               className={`w-full flex flex-col ${

@@ -11,13 +11,15 @@ export default function RightSideHalfWidth(props: ISpsLiteSlideOver) {
   return (
     <Transition show={props.isOpen} as={Fragment}>
       <Dialog
+        data-collection-type="slide-over"
+        data-variant={props.variant}
+        className={props.className || ""}
         onClose={() => {
           props.setIsOpen(false);
           if (pathname) {
             router.replace(pathname);
           }
         }}
-        className="relative z-50"
       >
         <Transition.Child
           as={Fragment}
@@ -28,7 +30,7 @@ export default function RightSideHalfWidth(props: ISpsLiteSlideOver) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+          <div className="backdrop" aria-hidden="true" />
         </Transition.Child>
         <Transition.Child
           as={Fragment}
@@ -39,12 +41,8 @@ export default function RightSideHalfWidth(props: ISpsLiteSlideOver) {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 -right-[100%]"
         >
-          <div
-            className={`slide__over__right_side_half_width ${
-              props.className || ""
-            }`}
-          >
-            <Dialog.Panel className="w-full flex flex-col justify-between">
+          <div className="slide-over-container">
+            <Dialog.Panel className="dialog-panel">
               <PageBlocks pageBlocks={props.pageBlocks} />
             </Dialog.Panel>
           </div>

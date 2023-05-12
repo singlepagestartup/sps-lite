@@ -31,6 +31,18 @@ button:focus {
   @apply outline-none;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @tailwind utilities;
 
 @layer components {
@@ -38,7 +50,7 @@ button:focus {
     @apply bg-slate-100 animate-pulse rounded-md;
   }
 
-  .buttons-array {
+  [data-component="elements.buttons-array"] {
     &[data-variant="column-with-title"] {
       .buttons-array-column-with-title {
         @apply flex flex-col gap-2 relative;
@@ -70,7 +82,7 @@ button:focus {
     }
   }
 
-  .button {
+  [data-component="elements.button"] {
     .icon-container {
       @apply w-10 h-10;
 
@@ -81,7 +93,7 @@ button:focus {
 
     &[data-variant="text"] {
       /**
-      * Using just a, button { ... }
+      * Using just "a, button { ... }"
       * will not work because of specificity CSS rules
       * lower code overrides the upper one
       */
@@ -95,37 +107,121 @@ button:focus {
         @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white uppercase;
       }
     }
+
+    &[data-variant="secondary"] {
+      .button-secondary {
+        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
+      }
+    }
+
+    &[data-variant="primary"] {
+      .button-primary {
+        @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
+      }
+    }
   }
 
-  .button-secondary {
-    @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
+  [data-collection-type="flyout"] {
+    &[data-variant="simple"] {
+      @apply absolute left-1/2 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform;
+
+      .flyout-container {
+        @apply overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-2 bg-white;
+      }
+    }
   }
 
-  .button-primary {
-    @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
+  [data-collection-type="footer"] {
+    &[data-variant="boxed"] {
+      .footer-container {
+        @apply w-full mx-auto max-w-7xl;
+      }
+    }
   }
 
-  // .button-text {
-  //   @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
+  [data-collection-type="form"] {
+    &[data-variant="simple"] {
+      .form-container {
+        @apply grid grid-cols-4 gap-3;
 
-  //   .icon__container {
-  //     @apply w-10 h-10;
-  //   }
-  // }
-
-  .slide__over__right_side_half_width {
-    @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-white flex justify-between overflow-scroll;
+        .submit-button-container {
+          @apply col-span-4;
+        }
+      }
+    }
   }
 
-  .sidebar__simple {
-    @apply pr-2 h-full;
+  [data-collection-type="layout"] {
+    &[data-variant="wide"] {
+      .layout-container {
+        @apply w-full mx-auto;
+      }
+    }
+
+    &[data-variant="boxed"] {
+      .layout-container {
+        @apply w-full mx-auto max-w-7xl;
+      }
+    }
   }
 
-  .form__container {
-    @apply grid grid-cols-4 gap-3;
+  [data-collection-type="modal"] {
+    &[data-variant="simple"] {
+      @apply relative z-50;
 
-    .submit__button_container {
-      @apply col-span-4;
+      .backdrop {
+        @apply fixed inset-0 bg-black/30;
+      }
+
+      .modal-container {
+        @apply fixed inset-0 overflow-y-scroll px-4 pt-4 pb-20 flex h-screen;
+
+        .dialog-panel {
+          @apply m-auto relative rounded bg-white;
+
+          .button-close {
+            @apply absolute z-30 right-2 top-2;
+
+            svg {
+              @apply w-6 text-gray-500;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  [data-collection-type="navbar"] {
+    &[data-variant="boxed"] {
+      @apply bg-white shadow w-screen z-30 fixed;
+
+      .navbar-container {
+        @apply w-full mx-auto max-w-7xl;
+      }
+    }
+  }
+
+  [data-collection-type="sidebar"] {
+    &[data-variant="one-quarter"] {
+      @apply w-full;
+    }
+  }
+
+  [data-collection-type="slide-over"] {
+    &[data-variant="right-side-half-width"] {
+      @apply relative z-50;
+
+      .backdrop {
+        @apply fixed inset-0 bg-black/30;
+      }
+
+      .slide-over-container {
+        @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-white flex justify-between overflow-scroll;
+
+        .dialog-panel {
+          @apply w-full relative;
+        }
+      }
     }
   }
 
@@ -465,56 +561,6 @@ button:focus {
     }
   }
 
-  .form__example__address__input {
-    .repeatable__input {
-      .repeatable__inputs {
-        @apply grid grid-cols-4 gap-4;
-
-        .form__example__phone__input {
-          @apply col-span-4;
-
-          .form__example__phone__number__input {
-            @apply col-span-3;
-          }
-
-          .remove__button {
-            @apply col-span-1;
-          }
-        }
-
-        .remove__button {
-          @apply col-span-4;
-        }
-      }
-    }
-  }
-
-  .product__attribute {
-    .inputs__label {
-      @apply capitalize;
-    }
-
-    .radio__group {
-      @apply flex flex-row gap-3 my-2;
-
-      .option {
-        @apply border-2 border-gray-200 px-4 py-2 rounded-md gap-3 items-center relative flex cursor-pointer uppercase;
-
-        .check {
-          @apply hidden;
-        }
-
-        &[aria-selected="true"] {
-          @apply border-primary-600 bg-primary-600;
-
-          .label {
-            @apply text-white;
-          }
-        }
-      }
-    }
-  }
-
   .slider__fade_with_previews {
     @apply flex w-full;
 
@@ -657,60 +703,4 @@ button:focus {
       }
     }
   }
-
-  .flyout {
-    @apply absolute left-1/2 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform;
-
-    .flyout_container {
-      @apply overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-2 bg-white;
-    }
-  }
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.markdown h1 {
-  @apply font-semibold text-[36px] md:text-[54px] mt-10 mb-6;
-}
-
-.markdown h2 {
-  @apply font-semibold text-[24px] lg:text-[36px] mt-6 mb-4;
-}
-
-.markdown h3 {
-  @apply font-semibold text-[18px] lg:text-[22px] mt-4 mb-3;
-}
-
-.markdown_paragraph-indent p {
-  margin-bottom: 20px;
-}
-
-.markdown_paragraph-indent p:last-of-type {
-  margin-bottom: 0;
-}
-
-.markdown.text-block strong {
-  @apply font-semibold;
-}
-
-.terms.markdown p a {
-  @apply underline;
-}
-
-.terms.markdown ol {
-  @apply list-decimal  ml-5;
-}
-
-.project.markdown ul {
-  @apply ml-5;
 }

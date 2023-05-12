@@ -85,8 +85,12 @@ export default function Simple(props: ISpsLiteFormBlock) {
   }, [props]);
 
   return (
-    <div className={props.className || ""}>
-      <div className="form__container">
+    <div
+      data-collection-type="form"
+      data-variant={props.variant}
+      className={props.className || ""}
+    >
+      <div className="form-container">
         <FormProvider {...methods}>
           {preparedInputs?.map((input, index: number) => {
             return (
@@ -138,7 +142,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
             className="hidden"
             by="id"
           />
-          <div className="submit__button_container">
+          <div className="submit-button-container">
             <Buttons
               variant={props.button?.variant || "secondary"}
               onClick={handleSubmit(onSubmit)}

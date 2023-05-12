@@ -1659,27 +1659,6 @@
                         "updatedAt": "2023-05-11T13:44:31.344Z"
                     },
                     {
-                        "id": 834,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.351Z",
-                        "updatedAt": "2023-05-11T13:44:31.351Z"
-                    },
-                    {
                         "id": 743,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::layout.layout",
@@ -1837,27 +1816,6 @@
                         "updatedAt": "2023-05-11T13:44:31.506Z"
                     },
                     {
-                        "id": 833,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.512Z",
-                        "updatedAt": "2023-05-11T13:44:31.512Z"
-                    },
-                    {
                         "id": 713,
                         "action": "plugin::content-manager.explorer.delete",
                         "subject": "api::footer.footer",
@@ -1952,27 +1910,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.579Z",
                         "updatedAt": "2023-05-11T13:44:31.579Z"
-                    },
-                    {
-                        "id": 835,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.585Z",
-                        "updatedAt": "2023-05-11T13:44:31.585Z"
                     },
                     {
                         "id": 725,
@@ -2429,6 +2366,72 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.901Z",
                         "updatedAt": "2023-05-11T23:22:53.901Z"
+                    },
+                    {
+                        "id": 878,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.054Z",
+                        "updatedAt": "2023-05-12T00:03:46.054Z"
+                    },
+                    {
+                        "id": 879,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.080Z",
+                        "updatedAt": "2023-05-12T00:03:46.080Z"
+                    },
+                    {
+                        "id": 880,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.094Z",
+                        "updatedAt": "2023-05-12T00:03:46.094Z"
                     }
                 ],
                 "createdBy": null,
@@ -3973,27 +3976,6 @@
                         "updatedAt": "2023-05-11T13:44:31.344Z"
                     },
                     {
-                        "id": 834,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.351Z",
-                        "updatedAt": "2023-05-11T13:44:31.351Z"
-                    },
-                    {
                         "id": 743,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::layout.layout",
@@ -4151,27 +4133,6 @@
                         "updatedAt": "2023-05-11T13:44:31.506Z"
                     },
                     {
-                        "id": 833,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.512Z",
-                        "updatedAt": "2023-05-11T13:44:31.512Z"
-                    },
-                    {
                         "id": 713,
                         "action": "plugin::content-manager.explorer.delete",
                         "subject": "api::footer.footer",
@@ -4266,27 +4227,6 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.579Z",
                         "updatedAt": "2023-05-11T13:44:31.579Z"
-                    },
-                    {
-                        "id": 835,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-05-11T13:44:31.585Z",
-                        "updatedAt": "2023-05-11T13:44:31.585Z"
                     },
                     {
                         "id": 725,
@@ -4743,6 +4683,72 @@
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.901Z",
                         "updatedAt": "2023-05-11T23:22:53.901Z"
+                    },
+                    {
+                        "id": 878,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.054Z",
+                        "updatedAt": "2023-05-12T00:03:46.054Z"
+                    },
+                    {
+                        "id": 879,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.080Z",
+                        "updatedAt": "2023-05-12T00:03:46.080Z"
+                    },
+                    {
+                        "id": 880,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-12T00:03:46.094Z",
+                        "updatedAt": "2023-05-12T00:03:46.094Z"
                     }
                 ],
                 "createdBy": null,

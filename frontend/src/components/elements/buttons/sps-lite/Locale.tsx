@@ -14,6 +14,7 @@ export default function Locale(props: ISpsLiteButton) {
   if (props.onClick) {
     return (
       <div
+        data-component="elements.button"
         data-variant={props.variant}
         className={`button ${props?.className || ""}`}
       >
@@ -36,6 +37,7 @@ export default function Locale(props: ISpsLiteButton) {
   if (props.flyout) {
     return (
       <div
+        data-component="elements.button"
         data-variant={props.variant}
         className={`button ${props?.className || ""}`}
       >
@@ -54,6 +56,7 @@ export default function Locale(props: ISpsLiteButton) {
 
   return (
     <div
+      data-component="elements.button"
       data-variant={props.variant}
       className={`button ${props?.className || ""}`}
     >

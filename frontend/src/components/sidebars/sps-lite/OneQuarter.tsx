@@ -3,7 +3,11 @@ import { ISpsLiteSidebar } from ".";
 
 export default function OneQuarter(props: ISpsLiteSidebar) {
   return (
-    <div className={props.className || ""}>
+    <div
+      data-collection-type="sidebar"
+      data-variant={props.variant}
+      className={props.className || ""}
+    >
       <PageBlocks
         pageBlocks={props.pageBlocks}
         showSkeletons={props.showSkeletons}

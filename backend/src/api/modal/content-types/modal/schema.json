@@ -46,7 +46,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple"],
+      "enum": [
+        "simple"
+      ],
       "default": "simple",
       "required": true,
       "pluginOptions": {
@@ -69,6 +71,14 @@
       "relation": "manyToMany",
       "target": "api::layout.layout",
       "mappedBy": "modals"
+    },
+    "class_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

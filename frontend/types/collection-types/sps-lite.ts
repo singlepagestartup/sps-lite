@@ -36,6 +36,7 @@ export interface ISpsLiteBackendModal {
   id: number;
   title: string | null;
   variant: "simple";
+  className: string | null;
   dialogPanelClassName: string | null;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
   uid: string;

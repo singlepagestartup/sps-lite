@@ -11,7 +11,11 @@ export default function Secondary(props: ISpsLiteButton) {
 
   if (props.onClick) {
     return (
-      <div data-variant={props.variant} className={props?.className || ""}>
+      <div
+        data-component="elements.button"
+        data-variant={props.variant}
+        className={props?.className || ""}
+      >
         <button
           {...additionalAttributes}
           onClick={props.onClick}
@@ -35,7 +39,11 @@ export default function Secondary(props: ISpsLiteButton) {
 
   if (props.flyout) {
     return (
-      <div data-variant={props.variant} className={props?.className || ""}>
+      <div
+        data-component="elements.button"
+        data-variant={props.variant}
+        className={props?.className || ""}
+      >
         <Flyouts {...props.flyout}>
           <Buttons {...props} flyout={null} onClick={null} url={null} />
         </Flyouts>
@@ -45,7 +53,11 @@ export default function Secondary(props: ISpsLiteButton) {
 
   if (url && props.url) {
     return (
-      <div data-variant={props.variant} className={props?.className || ""}>
+      <div
+        data-component="elements.button"
+        data-variant={props.variant}
+        className={props?.className || ""}
+      >
         <Link
           {...additionalAttributes}
           href={url}
@@ -69,7 +81,11 @@ export default function Secondary(props: ISpsLiteButton) {
   }
 
   return (
-    <div data-variant={props.variant} className={props?.className || ""}>
+    <div
+      data-component="elements.button"
+      data-variant={props.variant}
+      className={props?.className || ""}
+    >
       <button {...additionalAttributes} className="button-secondary">
         {props.media?.length ? (
           <div className="icon__container">

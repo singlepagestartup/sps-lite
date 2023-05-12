@@ -8,8 +8,9 @@ export default function Row(props: IButtonsArray) {
 
   return (
     <div
+      data-component="elements.buttons-array"
       data-variant={props.variant}
-      className={`buttons-array ${props?.className || ""}`}
+      className={props?.className || ""}
     >
       <div className="buttons-array-row">
         {title ? (
