@@ -50,7 +50,7 @@ function FileInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="file"
+        variant="file"
         name="cover"
         label="Cover"
         multiple={false}
@@ -73,7 +73,7 @@ function ListboxInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="listbox"
+        variant="listbox"
         name="category"
         label="Category"
         by="id"
@@ -106,7 +106,7 @@ function RadioGroupInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="radio-group"
+        variant="radio-group"
         name="category"
         label="Category"
         by="id"
@@ -139,7 +139,7 @@ function RangeInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="range"
+        variant="range"
         name="price"
         label="Price"
         min={0}
@@ -163,12 +163,12 @@ function RepeatableInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="repeatable"
+        variant="repeatable"
         name="shipping"
         label="Shipping information"
         inputs={[
           {
-            component: "text",
+            variant: "text",
             name: "address",
             label: "Address",
             placeholder: "Place your address",
@@ -180,13 +180,13 @@ function RepeatableInput() {
             },
           },
           {
-            component: "text",
+            variant: "text",
             name: "apartments",
             label: "Apartments",
             placeholder: "Place your apartments info",
           },
           {
-            component: "text",
+            variant: "text",
             name: "phone",
             label: "Phone number",
             placeholder: "Place your phone number",
@@ -210,7 +210,7 @@ function SwitchInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="switch"
+        variant="switch"
         name="terms"
         label="I agree with Terms & Conditions"
       />
@@ -231,7 +231,7 @@ function TextInput() {
   return (
     <FormProvider {...methods}>
       <Inputs
-        component="text"
+        variant="text"
         name="username"
         label="Username"
         placeholder="Place your username"

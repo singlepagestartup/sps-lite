@@ -38,6 +38,7 @@ export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesS
     id: 32,
     title: "Title",
     variant: "with-icon",
+    className: null,
     subtitle: "Subtitle",
     anchor: "anchor",
     description:
@@ -52,6 +53,8 @@ export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSe
     id: 5,
     title: "Hello world",
     variant: "centered",
+    className: null,
+    subtitle: null,
     __component: "page-blocks.contact-section-block",
     anchor: "anchor",
     description:
@@ -66,6 +69,9 @@ export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBa
     id: 3,
     title: "Hello world",
     variant: "dark-with-image",
+    className: null,
+    subtitle: null,
+    anchor: null,
     __component: "page-blocks.cta-section-block",
     description:
       "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
@@ -77,6 +83,8 @@ export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteB
     id: 2,
     title: "Hello world",
     anchor: "anchor",
+    className: null,
+    subtitle: null,
     variant: "two-columns-with-centered-introduction",
     __component: "page-blocks.faqs-block",
     description:
@@ -90,6 +98,7 @@ export const spsLiteBackendHeaderSectionBlockSimpleCentered: ISpsLiteBackendHead
     variant: "simple-centered",
     __component: "page-blocks.header-section-block",
     title: "Используемые коцепции",
+    className: null,
     subtitle: "Subtitle",
     anchor: "anchor",
     description:
@@ -115,6 +124,8 @@ export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations: ISpsLiteB
     id: 9,
     title: "Title",
     description: "Description",
+    subtitle: null,
+    className: null,
     anchor: "anchor",
     __component: "page-blocks.incentives-block",
     variant: "four-column-with-illustrations",
@@ -129,6 +140,7 @@ export const spsLiteBackendLogotypesCloudBlockSimpleWithHeading: ISpsLiteBackend
     title: "Hello world",
     subtitle: "Subtitle",
     description: "Description",
+    className: null,
     anchor: "anchor",
     logotypes: Array(5).fill({ ...spsLiteBackendLogotype }),
   };
@@ -139,6 +151,7 @@ export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
   variant: "simple",
   title: "404",
   subtitle: "Page not found",
+  className: null,
   description: "Come to main page and start again",
   buttons: Array(1).fill({ ...spsLiteBackendButtonSecondary }),
 };
@@ -162,6 +175,10 @@ export const spsLiteBackendReviewsBlockSimpleWithAvatars: ISpsLiteBackendReviews
     id: 5,
     __component: "page-blocks.reviews-block",
     variant: "simple-with-avatars",
+    subtitle: null,
+    description: null,
+    className: null,
+    title: null,
     showAll: null,
     anchor: "anchor",
   };
@@ -171,6 +188,7 @@ export const spsLiteBackendReviewsTableBlockSimple: ISpsLiteBackendReviewsTableB
     id: 9,
     __component: "page-blocks.reviews-table-block",
     variant: "simple",
+    className: null,
     anchor: null,
   };
 
@@ -178,6 +196,10 @@ export const spsLiteBackendSliderBlockSimple: ISpsLiteBackendSliderBlock = {
   id: 2,
   __component: "page-blocks.slider-block",
   variant: "simple",
+  className: null,
+  title: null,
+  subtitle: null,
+  description: null,
   slider: { ...spsLiteBackendSliderFadeWithPreviews },
   anchor: null,
 };

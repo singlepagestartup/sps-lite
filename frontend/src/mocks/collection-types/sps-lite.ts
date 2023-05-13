@@ -117,6 +117,7 @@ export const spsLiteBackendModal: ISpsLiteBackendModal = {
   title: "Hello world",
   uid: "hello-world",
   dialogPanelClassName: "container",
+  className: null,
   variant: "simple",
   createdAt: "2023-03-28T11:07:56.252Z",
   updatedAt: "2023-03-28T11:07:57.474Z",

@@ -3,7 +3,7 @@ import Navbars, { ISpsLiteNavbarBlock } from ".";
 import { spsLiteBackendNavbarBlockSimple } from "~mocks/components/page-blocks/sps-lite";
 import { rest, setupWorker } from "msw";
 import { BACKEND_URL } from "~utils/envs";
-import { spsLiteBackendFlyoutMenuSimple } from "~mocks/collection-types/sps-lite";
+import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
@@ -17,9 +17,9 @@ console.log("If you don't see page block in storybook - refresh the page");
 
 const worker = setupWorker(
   rest.get(
-    `${BACKEND_URL}/api/flyout-menus/${spsLiteBackendFlyoutMenuSimple.id}`,
+    `${BACKEND_URL}/api/flyout-menus/${spsLiteBackendFlyoutSimple.id}`,
     (req, res, ctx) => {
-      return res(ctx.json({ data: spsLiteBackendFlyoutMenuSimple }));
+      return res(ctx.json({ data: spsLiteBackendFlyoutSimple }));
     },
   ),
 );

@@ -7,7 +7,7 @@ import {
   ISpsLiteBackendLogotype,
   ISpsLiteBackendSlide,
 } from "types/components/elements/sps-lite";
-import { spsLiteBackendFlyoutMenuSimple } from "~mocks/collection-types/sps-lite";
+import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteUploadPluginBackendMediaTableAndHands,
   spsLiteUploadPluginBackendMediaRoundIcon,
@@ -23,7 +23,7 @@ export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   description: null,
   className: null,
   additionalAttributes: null,
-  flyoutMenu: null,
+  flyout: null,
 };
 
 export const spsLiteBackendButtonTextIcon: ISpsLiteBackendButton = {
@@ -36,7 +36,7 @@ export const spsLiteBackendButtonTextIcon: ISpsLiteBackendButton = {
   description: null,
   className: null,
   additionalAttributes: null,
-  flyoutMenu: null,
+  flyout: null,
 };
 
 export const spsLiteBackendButtonSecondaryWithFlyoutMenu: ISpsLiteBackendButton =
@@ -49,7 +49,7 @@ export const spsLiteBackendButtonSecondaryWithFlyoutMenu: ISpsLiteBackendButton 
     description: null,
     className: null,
     additionalAttributes: null,
-    flyoutMenu: { ...spsLiteBackendFlyoutMenuSimple },
+    flyout: { ...spsLiteBackendFlyoutSimple },
   };
 
 export const spsLiteBackendButtonPrimary: ISpsLiteBackendButton = {
@@ -142,7 +142,7 @@ export const spsLiteBackendNameInput: ISpsLiteBackendInput = {
   id: 56,
   __component: "elements.input",
   placeholder: "Введите ваше имя",
-  component: "text",
+  variant: "text",
   isRequired: true,
   value: null,
   name: "name",
@@ -157,7 +157,7 @@ export const spsLiteBackendEmailInput: ISpsLiteBackendInput = {
   id: 57,
   __component: "elements.input",
   placeholder: "Введите вашу электронную почту",
-  component: "text",
+  variant: "text",
   isRequired: true,
   value: null,
   name: "email",
@@ -172,7 +172,7 @@ export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
   id: 58,
   __component: "elements.input",
   placeholder: "Выберите тариф",
-  component: "listbox",
+  variant: "listbox",
   isRequired: false,
   value: null,
   name: "tier",
@@ -200,7 +200,7 @@ export const spsLiteBackendQuestionInput: ISpsLiteBackendInput = {
   id: 59,
   __component: "elements.input",
   placeholder: "Напишите ваш вопрос",
-  component: "text",
+  variant: "text",
   isRequired: false,
   value: null,
   name: "querstion",
@@ -215,7 +215,7 @@ export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
   id: 60,
   __component: "elements.input",
   placeholder: null,
-  component: "switch",
+  variant: "switch",
   isRequired: true,
   value: null,
   name: "policy",
