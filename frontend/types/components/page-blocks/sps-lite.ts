@@ -211,11 +211,3 @@ export interface ISpsLiteBackendFooterBlock {
   additionalButtonsArrays: ISpsLiteBackendButtonsArray[] | null;
   extraButtonsArrays: ISpsLiteBackendButtonsArray[] | null;
 }
-
-export interface ISpsLiteBackendLocalesBlock {
-  id: number;
-  __component: "page-blocks.locales-block";
-  variant: "simple";
-  className: string | null;
-  buttons?: ISpsLiteBackendButton[] | null;
-}

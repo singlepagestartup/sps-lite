@@ -22,7 +22,9 @@
         }
       },
       "type": "enumeration",
-      "enum": ["simple"],
+      "enum": [
+        "simple"
+      ],
       "default": "simple",
       "required": true
     },
@@ -36,8 +38,7 @@
       "components": [
         "elements.buttons-array",
         "elements.button",
-        "page-blocks.hero-section-block",
-        "page-blocks.locales-block"
+        "page-blocks.hero-section-block"
       ]
     },
     "title": {

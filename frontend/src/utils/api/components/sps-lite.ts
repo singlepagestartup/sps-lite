@@ -15,7 +15,6 @@ import Navbars from "~components/page-blocks/navbars";
 import Buttons from "~components/elements/buttons";
 import Footers from "~components/page-blocks/footer";
 import ButtonsArrays from "~components/elements/buttons-arrays";
-import Locales from "~components/page-blocks/locales";
 
 export const pageBlockComponents = {
   ["page-blocks.header-section-block"]: HeaderSections,
@@ -35,5 +34,4 @@ export const pageBlockComponents = {
   ["page-blocks.footer-block"]: Footers,
   ["elements.buttons-array"]: ButtonsArrays,
   ["elements.button"]: Buttons,
-  ["page-blocks.locales-block"]: Locales,
 };

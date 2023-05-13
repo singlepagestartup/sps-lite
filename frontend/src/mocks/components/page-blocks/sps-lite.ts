@@ -15,7 +15,6 @@ import {
   ISpsLiteBackendReviewsTableBlock,
   ISpsLiteBackendSliderBlock,
 } from "types/components/page-blocks/sps-lite";
-import { ISpsLiteLocalesBlock } from "~components/page-blocks/locales/sps-lite";
 import {
   spsLiteBackendSliderFadeWithPreviews,
   spsLiteBackendTier,
@@ -233,12 +232,4 @@ export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
     { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
     { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
   ],
-};
-
-export const spsLiteBackendLocalesBlockSimple: ISpsLiteLocalesBlock = {
-  id: 2,
-  __component: "page-blocks.locales-block",
-  variant: "simple",
-  className: null,
-  buttons: [{ ...spsLiteBackendButtonText }, { ...spsLiteBackendButtonText }],
 };
