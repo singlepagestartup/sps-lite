@@ -38,6 +38,8 @@ async function createDocumentFromTemplate(ctx) {
       });
     } catch (error) {
       console.log("🚀 ~ createDocumentFromTemplate ~ error", error);
+
+      strapi.plugin("sentry").service("sentry").sendError(error);
     }
   }
 

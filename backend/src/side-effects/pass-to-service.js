@@ -71,6 +71,8 @@ async function addToSheet({ payload }) {
     });
   } catch (error) {
     console.log(error.message);
+
+    strapi.plugin("sentry").service("sentry").sendError(error);
   }
 
   if (!sheetRange) {

@@ -37,6 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@rogwild/strapi-utils": "^6.6.0",
     "@strapi/plugin-i18n": "4.6.0",
+    "@strapi/plugin-sentry": "^4.10.5",
     "@strapi/plugin-users-permissions": "4.6.0",
     "@strapi/provider-email-amazon-ses": "^4.10.1",
     "@strapi/provider-email-mailtrap": "./src/providers/email-mailtrap",

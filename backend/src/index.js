@@ -9,12 +9,18 @@ module.exports = {
     customizeCoreStrapi({ strapi });
     await setPermissions();
 
+    strapi.errorCatcher = async (error) => {
+      strapi.plugin("sentry").service("sentry").sendError(error);
+    };
+
     if (process.env.SEED_ENTITES) {
       try {
         const apiPath = path.join(__dirname, "./api");
         strapiUtils.seeder(apiPath);
       } catch (error) {
         console.log("🚀 ~ bootstrap ~ seeder ~ error: ", error.message);
+
+        strapi.errorCatcher(error);
       }
     }
 
