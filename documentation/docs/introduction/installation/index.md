@@ -65,6 +65,30 @@ npm i
 
 :::
 
+:::danger .husky/pre-commit: line 4: lerna: command not found
+При выполнении коммита может возникнуть ошибка
+
+```bash
+.husky/pre-commit: line 4: lerna: command not found
+husky - pre-commit hook exited with code 127 (error)
+husky - command not found in PATH=/Library/Developer/CommandLineTools/usr/libexec/git-core:/Users/<your_pc_name>/.local/bin
+```
+
+Для её решения попробуйте взвать команду в root директории проекта
+
+```
+npm install husky --save-dev
+```
+
+Если это не поможет, тогда необходимо добавить строчку
+
+```
+export PATH="$PATH:./node_modules/.bin"
+```
+
+В файл конфигурационный файл терминала `~/.bashrc`, `~/.zshrc`
+:::
+
 ## Объяснение выполняемых команд
 
 Данная команда подключает репозиторий sps-lite как родительский к вашему проекту
