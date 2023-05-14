@@ -9,6 +9,7 @@ function makeConfig() {
   const config = {
     reactStrictMode: false,
     images: {
+      unoptimized: true,
       domains: [
         "vercel.app",
         "tailwindui.com",
@@ -36,7 +37,6 @@ function makeConfig() {
 
   if (serverEnvironment === "icp") {
     config.output = "export";
-    config.images.unoptimized = true;
   }
 
   return config;
