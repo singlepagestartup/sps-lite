@@ -63,7 +63,8 @@
         "page-blocks.reviews-table-block",
         "page-blocks.slider-block",
         "elements.buttons-array",
-        "elements.button"
+        "elements.button",
+        "page-blocks.reviews-list-block"
       ]
     },
     "metatag": {

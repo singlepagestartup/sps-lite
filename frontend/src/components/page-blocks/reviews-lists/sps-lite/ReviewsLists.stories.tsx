@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Reviews, { ISpsLiteReviewsBlock } from ".";
-import { spsLiteBackendReviewsBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
+import ReviewsLists, { ISpsLiteReviewsListBlock } from ".";
+import { spsLiteBackendReviewsListBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 
-const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
+const meta = { component: ReviewsLists } satisfies Meta<typeof ReviewsLists>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -20,11 +20,11 @@ const worker = setupWorker(
 );
 
 export const SimpleCentered: Story = {
-  render: (args) => <ReviewsComponent {...args} />,
-  args: spsLiteBackendReviewsBlockSimpleWithAvatars,
+  render: (args) => <ReviewsListsComponent {...args} />,
+  args: spsLiteBackendReviewsListBlockSimpleWithAvatars,
 };
 
-function ReviewsComponent(args: ISpsLiteReviewsBlock) {
+function ReviewsListsComponent(args: ISpsLiteReviewsListBlock) {
   useEffect(() => {
     worker.start();
   }, []);
@@ -32,7 +32,7 @@ function ReviewsComponent(args: ISpsLiteReviewsBlock) {
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>
-        <Reviews {...args} />
+        <ReviewsLists {...args} />
       </Provider>
     </div>
   );

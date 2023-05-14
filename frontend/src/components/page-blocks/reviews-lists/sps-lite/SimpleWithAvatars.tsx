@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
 import Cards, { ICardProps } from "~components/cards";
 import { IBackendReview } from "types/collection-types";
-import { ISpsLiteReviewsBlock } from ".";
+import { ISpsLiteReviewsListBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 
 const cardsConfig = {
@@ -18,7 +18,7 @@ const cardsConfig = {
     "grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8",
 };
 
-export default function SimpleWithAvatars(props: ISpsLiteReviewsBlock) {
+export default function SimpleWithAvatars(props: ISpsLiteReviewsListBlock) {
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

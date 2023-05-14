@@ -1,6 +1,6 @@
 import HeaderSections from "~components/page-blocks/header-sections";
 import HeroSections from "~components/page-blocks/hero-sections";
-import Reviews from "~components/page-blocks/reviews";
+import ReviewsLists from "~components/page-blocks/reviews-lists";
 import Faqs from "~components/page-blocks/faqs";
 import Slider from "~components/page-blocks/slider";
 import NotFound from "~components/page-blocks/not-found";
@@ -19,7 +19,7 @@ import ButtonsArrays from "~components/elements/buttons-arrays";
 export const pageBlockComponents = {
   ["page-blocks.header-section-block"]: HeaderSections,
   ["page-blocks.hero-section-block"]: HeroSections,
-  ["page-blocks.reviews-block"]: Reviews,
+  ["page-blocks.reviews-list-block"]: ReviewsLists,
   ["page-blocks.features-section-block"]: FeaturesSections,
   ["page-blocks.faqs-block"]: Faqs,
   ["page-blocks.logotypes-cloud-block"]: LogotypesClouds,

@@ -155,9 +155,9 @@ export interface ISpsLiteBackendPricingsBlock {
   className: string | null;
 }
 
-export interface ISpsLiteBackendReviewsBlock {
+export interface ISpsLiteBackendReviewsListBlock {
   id: number;
-  __component: "page-blocks.reviews-block";
+  __component: "page-blocks.reviews-list-block";
   variant: "simple-with-avatars";
   title: string | null;
   subtitle: string | null;

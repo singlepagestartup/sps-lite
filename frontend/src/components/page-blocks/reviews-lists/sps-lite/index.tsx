@@ -1,8 +1,9 @@
-import { ISpsLiteBackendReviewsBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendReviewsListBlock } from "types/components/page-blocks/sps-lite";
 import SimpleWithAvatars from "./SimpleWithAvatars";
 import { FC } from "react";
 
-export interface ISpsLiteReviewsBlock extends ISpsLiteBackendReviewsBlock {
+export interface ISpsLiteReviewsListBlock
+  extends ISpsLiteBackendReviewsListBlock {
   showSkeletons?: boolean;
 }
 
@@ -10,10 +11,10 @@ export const variants = {
   "simple-with-avatars": SimpleWithAvatars,
 };
 
-export default function Reviews(props: ISpsLiteReviewsBlock) {
+export default function Reviews(props: ISpsLiteReviewsListBlock) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ISpsLiteReviewsBlock>;
+  ] as FC<ISpsLiteReviewsListBlock>;
 
   if (!Comp) {
     return <></>;

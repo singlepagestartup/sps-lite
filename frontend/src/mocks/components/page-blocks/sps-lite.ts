@@ -11,7 +11,7 @@ import {
   ISpsLiteBackendNavbarBlock,
   ISpsLiteBackendNotFoundBlock,
   ISpsLiteBackendPricingsBlock,
-  ISpsLiteBackendReviewsBlock,
+  ISpsLiteBackendReviewsListBlock,
   ISpsLiteBackendReviewsTableBlock,
   ISpsLiteBackendSliderBlock,
 } from "types/components/page-blocks/sps-lite";
@@ -169,10 +169,10 @@ export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock 
     tiers: Array(2).fill({ ...spsLiteBackendTier }),
   };
 
-export const spsLiteBackendReviewsBlockSimpleWithAvatars: ISpsLiteBackendReviewsBlock =
+export const spsLiteBackendReviewsListBlockSimpleWithAvatars: ISpsLiteBackendReviewsListBlock =
   {
     id: 5,
-    __component: "page-blocks.reviews-block",
+    __component: "page-blocks.reviews-list-block",
     variant: "simple-with-avatars",
     subtitle: null,
     description: null,
