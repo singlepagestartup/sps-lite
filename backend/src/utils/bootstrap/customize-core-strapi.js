@@ -30,6 +30,12 @@ const customizeControllersFactory = ({ strapi }) => {
 
         return sanitize.contentAPI.input(data, contentType, { auth });
       },
+
+      sanitizeQuery(ctx) {
+        const auth = getAuthFromKoaContext(ctx);
+
+        return sanitize.contentAPI.query(ctx.query, contentType, { auth });
+      },
     };
 
     strapi.container.get("controllers").get(controllerUid).__proto__.__proto__ =

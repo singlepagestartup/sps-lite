@@ -11,7 +11,7 @@
       "sourceMaps": true,
       "outputCapture": "std",
       "name": "backend",
-      "runtimeVersion": "16",
+      "runtimeVersion": "18",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run-script", "debug", "--preserve-symlinks"],
       "cwd": "${workspaceFolder}/backend",
