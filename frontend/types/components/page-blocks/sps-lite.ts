@@ -197,6 +197,7 @@ export interface ISpsLiteBackendNavbarBlock {
   logotype: ISpsLiteBackendLogotype | null;
   buttons: ISpsLiteBackendButton[] | null;
   additionalButtons: ISpsLiteBackendButton[] | null;
+  extraButtons: ISpsLiteBackendButton[] | null;
 }
 
 export interface ISpsLiteBackendFooterBlock {

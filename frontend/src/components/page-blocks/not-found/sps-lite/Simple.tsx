@@ -4,7 +4,7 @@ import { ISpsLiteNotFoundBlock } from ".";
 export default function Simple(props: ISpsLiteNotFoundBlock) {
   return (
     <div
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${
         props.className || ""

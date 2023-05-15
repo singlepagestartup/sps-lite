@@ -13,7 +13,13 @@ import getFileUrl from "~utils/api/get-file-url";
 export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   if (props.showSkeletons) {
     return (
-      <div className="w-full items-center flex h-16 p-2 justify-between">
+      <div
+        data-component={props.__component}
+        data-variant={props.variant}
+        className={`${
+          props.className || ""
+        } w-full items-center flex h-16 p-2 justify-between`}
+      >
         <div className="w-full flex items-center justify-between lg:justify-start">
           <div className="w-32 h-10 skeleton"></div>
           <div className="hidden lg:flex">
@@ -30,7 +36,7 @@ export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
   return (
     <Disclosure
       as="div"
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${props.className || ""} w-full`}
     >
@@ -94,6 +100,9 @@ function DisclosureInner({
             </div>
             <div className="hidden lg:flex lg:space-x-2 items-center">
               {props.additionalButtons?.map((button, index) => {
+                return <Buttons key={index} {...button} />;
+              })}
+              {props.extraButtons?.map((button, index) => {
                 return <Buttons key={index} {...button} />;
               })}
             </div>

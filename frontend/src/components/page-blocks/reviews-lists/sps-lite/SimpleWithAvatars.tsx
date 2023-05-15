@@ -38,7 +38,7 @@ export default function SimpleWithAvatars(props: ISpsLiteReviewsListBlock) {
 
   return (
     <div
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${props.className || ""} bg-white mx-auto max-w-7xl my-16`}
       {...additionalAttributes}

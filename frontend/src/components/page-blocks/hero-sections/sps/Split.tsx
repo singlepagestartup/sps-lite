@@ -20,7 +20,7 @@ export default function Split(props: ISpsHeroSectionBlock) {
 
   return (
     <div
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${
         props.className || ""

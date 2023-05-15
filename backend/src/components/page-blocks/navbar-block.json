@@ -32,6 +32,11 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.button"
+    },
+    "extra_buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
     }
   }
 }

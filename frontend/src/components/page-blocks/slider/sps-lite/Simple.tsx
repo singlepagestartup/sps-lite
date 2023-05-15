@@ -15,7 +15,7 @@ export default function Simple(props: ISpsLiteSliderBlock) {
 
   return (
     <section
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${props.className || ""} bg-white relative w-full my-10`}
       {...additionalAttributes}

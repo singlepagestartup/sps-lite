@@ -8,7 +8,7 @@ import getFileUrl from "~utils/api/get-file-url";
 export default function SimpleWithHeading(props: ISpsLiteLogotypesCloudBlock) {
   return (
     <div
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${props.className || ""} bg-indigo-200 bg-opacity-25`}
     >

@@ -9,7 +9,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
   if (props.showSkeletons) {
     return (
       <div
-        data-page-block={props.__component}
+        data-component={props.__component}
         data-variant={props.variant}
         className={`${
           props.className || ""
@@ -30,7 +30,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
 
   return (
     <div
-      data-page-block={props.__component}
+      data-component={props.__component}
       data-variant={props.variant}
       className={`${
         props.className || ""
