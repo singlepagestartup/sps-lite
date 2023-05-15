@@ -212,6 +212,7 @@ export const spsLiteBackendNavbarBlockSimple: ISpsLiteBackendNavbarBlock = {
   logotype: { ...spsLiteBackendLogotype },
   buttons: [{ ...spsLiteBackendButtonText }, { ...spsLiteBackendButtonText }],
   additionalButtons: [{ ...spsLiteBackendButtonSecondary }],
+  extraButtons: [{ ...spsLiteBackendButtonSecondary }],
 };
 
 export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
