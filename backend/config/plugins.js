@@ -4,11 +4,9 @@ module.exports = ({ env }) => {
       config: {
         appName: env("APP_NAME", "Single Page Startup"),
         registerByEmailCode: false,
-        authFactors: [
-          "auth.callback",
-          "auth.emailConfirmation",
-          "user.checkOtp",
-        ],
+        authFactors: {
+          factors: [],
+        },
       },
     },
   };
@@ -49,6 +47,19 @@ module.exports = ({ env }) => {
       config: {
         dsn: env("SENTRY_DSN"),
         sendMetadata: true,
+      },
+    };
+  }
+
+  if (env("PROSTOR_SMS_LOGIN")) {
+    config["users-permissions"] = {
+      ...config["users-permissions"],
+      config: {
+        ...config["users-permissions"].config,
+        sms: {
+          login: env("PROSTOR_SMS_LOGIN"),
+          password: env("PROSTOR_SMS_PASSWORD"),
+        },
       },
     };
   }
@@ -100,6 +111,22 @@ const emailProviders = {
       defaultReplyTo: env(
         "SENDPULSE_DEFAULT_REPLY_TO",
         "contact@singlepagestartup.com",
+      ),
+    },
+  }),
+  sendgrid: (env) => ({
+    provider: "sendgrid",
+    providerOptions: {
+      apiKey: env("SENDGRID_API_KEY"),
+    },
+    settings: {
+      defaultFrom: env(
+        "SENDGRID_DEFAULT_FROM",
+        "no-reply@mail.singlepagestartup.com",
+      ),
+      defaultReplyTo: env(
+        "SENDGRID_DEFAULT_REPLY_TO",
+        "contact@mail.singlepagestartup.com",
       ),
     },
   }),
