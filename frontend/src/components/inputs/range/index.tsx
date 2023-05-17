@@ -155,7 +155,7 @@ export default function RangeInput(props: IInputProps) {
           className="input"
           {...additionalAttributes}
         />
-        {min && max ? (
+        {min !== undefined && max !== undefined ? (
           <div className="limit-values-container">
             <p className="min">{min}</p>
             <p className="max">{max}</p>
