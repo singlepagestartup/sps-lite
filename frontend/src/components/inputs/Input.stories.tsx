@@ -37,6 +37,10 @@ export const Text = {
   render: () => <TextInput />,
 };
 
+export const Date = {
+  render: () => <DateInput />,
+};
+
 function FileInput() {
   const methods = useForm({ mode: "all" });
 
@@ -235,6 +239,37 @@ function TextInput() {
         name="username"
         label="Username"
         placeholder="Place your username"
+      />
+    </FormProvider>
+  );
+}
+
+function DateInput() {
+  const methods = useForm({ mode: "all" });
+
+  const { watch } = methods;
+  const watchData = watch();
+
+  useEffect(() => {
+    console.log("🚀 ~ DateInput ~ watchData:", watchData);
+  }, [JSON.stringify(watchData)]);
+
+  return (
+    <FormProvider {...methods}>
+      <Inputs
+        variant="date"
+        name="start_at"
+        options={{
+          inline: true,
+          time_24hr: true,
+          enableTime: true,
+          locale: {
+            firstDayOfWeek: 1,
+          },
+        }}
+        initialValue="2023-05-14T08:02:05.182Z"
+        label="Booking Date"
+        placeholder="Select date"
       />
     </FormProvider>
   );

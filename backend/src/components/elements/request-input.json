@@ -31,6 +31,12 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.input-option"
+    },
+    "date_value": {
+      "type": "date"
+    },
+    "datetime_value": {
+      "type": "datetime"
     }
   }
 }

@@ -1,3 +1,5 @@
+@import "flatpickr/dist/themes/light.css";
+
 html {
   -moz-osx-font-smoothing: grayscale !important; /*(For Firefox)*/
   -webkit-font-smoothing: antialiased !important; /*(For Chrome and Safari)*/
@@ -439,6 +441,18 @@ input[type="number"] {
         }
       }
     }
+
+    &[data-variant="date"] {
+      &.input-date {
+        .flatpickr-input {
+          @apply w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm;
+        }
+
+        .flatpickr-input:has(+ .flatpickr-calendar.inline) {
+          @apply hidden;
+        }
+      }
+    }
   }
 
   [data-collection-type="layout"] {
@@ -807,4 +821,148 @@ input[type="number"] {
   //  }
   //
   //  That code will override the primary button color to red, but save the rest of the styles
+}
+
+.flatpickr-calendar {
+  @apply w-[340px];
+
+  &:before,
+  &:after {
+    @apply hidden;
+  }
+
+  &.open,
+  &.inline {
+    @apply max-h-none;
+  }
+
+  .flatpickr-month,
+  .flatpickr-weekdays,
+  .flatpickr-weekday,
+  .flatpickr-monthDropdown-months {
+    @apply bg-transparent;
+  }
+
+  .flatpickr-month {
+    @apply max-w-[307px] mx-auto pt-4 h-12;
+  }
+
+  .flatpickr-months {
+    @apply bg-white;
+  }
+
+  .flatpickr-months .flatpickr-prev-month:hover svg,
+  .flatpickr-months .flatpickr-next-month:hover svg {
+    @apply fill-primary-500;
+  }
+
+  .flatpickr-day {
+    &.today {
+      @apply border-gray-200;
+
+      &:hover,
+      &:focus {
+        @apply text-black;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      @apply bg-gray-100 border-gray-200;
+    }
+
+    &.selected,
+    &.startRange,
+    &.endRange,
+    &.selected.inRange,
+    &.startRange.inRange,
+    &.endRange.inRange,
+    &.selected:focus,
+    &.startRange:focus,
+    &.endRange:focus,
+    &.selected:hover,
+    &.startRange:hover,
+    &.endRange:hover,
+    &.selected.prevMonthDay,
+    &.startRange.prevMonthDay,
+    &.endRange.prevMonthDay,
+    &.selected.nextMonthDay,
+    &.startRange.nextMonthDay,
+    &.endRange.nextMonthDay {
+      @apply bg-primary-500 border-primary-500;
+    }
+  }
+
+  .numInputWrapper {
+    -webkit-appearance: none;
+
+    &:hover {
+      @apply bg-transparent outline-none;
+    }
+
+    span {
+      @apply bg-transparent outline-none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        @apply bg-transparent outline-none;
+      }
+    }
+  }
+
+  .flatpickr-current-month .flatpickr-monthDropdown-months {
+    @apply w-auto max-w-none min-w-0 text-center p-0 outline-none overflow-visible leading-normal;
+    -webkit-appearance: none;
+
+    &:hover {
+      @apply bg-transparent outline-none;
+    }
+
+    &:active,
+    &:focus {
+      @apply outline-none;
+      -webkit-box-shadow: none;
+    }
+  }
+
+  .flatpickr-current-month input.cur-year {
+    -webkit-appearance: none;
+
+    &:active,
+    &:focus {
+      @apply outline-none;
+      -webkit-box-shadow: none;
+    }
+  }
+
+  .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
+  .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {
+    @apply left-4 top-4;
+  }
+
+  .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,
+  .flatpickr-months .flatpickr-next-month.flatpickr-next-month {
+    @apply right-4 top-4;
+  }
+
+  .flatpickr-weekdays {
+    @apply pt-10 pb-4 h-20;
+  }
+
+  .flatpickr-innerContainer {
+    @apply w-full border-none mx-auto;
+
+    .flatpickr-rContainer {
+      @apply mx-auto pb-4;
+    }
+  }
+
+  .flatpickr-calendar {
+    @apply rounded-md overflow-hidden border border-gray-300;
+  }
+
+  .flatpickr-days {
+    @apply rounded-b-md border-none;
+  }
 }

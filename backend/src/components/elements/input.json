@@ -12,7 +12,15 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["text", "listbox", "radio-group", "switch", "file", "range"],
+      "enum": [
+        "text",
+        "listbox",
+        "radio-group",
+        "switch",
+        "file",
+        "range",
+        "date"
+      ],
       "default": "text",
       "required": true
     },
@@ -41,7 +49,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["text", "textarea", "file", "date"],
+      "enum": ["text", "textarea", "date", "datetime"],
       "required": false
     },
     "multiple": {

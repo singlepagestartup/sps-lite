@@ -41,7 +41,7 @@ module.exports = {
 
     if (createdModel.form && createdModel.form?.side_effects) {
       for (const sideEffect of createdModel.form.side_effects) {
-        sideEffects({ event, sideEffect });
+        await sideEffects({ event, sideEffect });
       }
     }
   },
@@ -76,10 +76,14 @@ async function sideEffects({ event, sideEffect }) {
       payload[key] = input.option?.title;
     } else if (input.options?.length) {
       payload[key] = input.options.map((option) => option.title).join(", ");
-    } else if (input.files) {
+    } else if (input.files !== null) {
       payload[key] = input.files.map((file) => file.url);
-    } else if (input.is_true !== undefined) {
+    } else if ([true, false].includes(input.is_true)) {
       payload[key] = `${input.is_true}`;
+    } else if (input.date_value) {
+      payload[key] = `${input.date_value}`;
+    } else if (input.datetime_value) {
+      payload[key] = `${input.datetime_value}`;
     } else {
       payload[key] = "";
     }

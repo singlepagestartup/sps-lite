@@ -25,7 +25,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
   const watchData = watch();
 
   useEffect(() => {
-    // console.log(`🚀 ~ Simple ~ watchData`, watchData);
+    console.log("🚀 ~ Simple ~ watchData", watchData);
   }, [watchData]);
 
   useEffect(() => {
@@ -64,16 +64,28 @@ export default function Simple(props: ISpsLiteFormBlock) {
       } else if (["file"].includes(input.variant)) {
         inputName = `inputs[${index}].files`;
         isFile = true;
+      } else if (input.type && ["date"].includes(input.type)) {
+        inputName = `inputs[${index}].date_value`;
+      } else if (input.type && ["datetime"].includes(input.type)) {
+        inputName = `inputs[${index}].datetime_value`;
       } else {
         inputName = `inputs[${index}].value`;
       }
 
-      const options = input.options?.map((option: any) => {
-        const passOption = { ...option };
-        delete passOption.id;
+      let options;
 
-        return passOption;
-      });
+      if (["listbox", "radio-group"].includes(input.variant)) {
+        options = input.options?.map((option: any) => {
+          const passOption = { ...option };
+          delete passOption.id;
+
+          return passOption;
+        });
+      } else if (input.type && ["date", "datetime"].includes(input.type)) {
+        options = {
+          enableTime: input.type === "datetime",
+        };
+      }
 
       return {
         input,

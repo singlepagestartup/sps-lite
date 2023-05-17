@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Flatpickr from "react-flatpickr";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
+import dayjs from "dayjs";
 
-export default function RangeInput(props: IInputProps) {
+export default function DateInput(props: IInputProps) {
   const {
     label,
     name,
@@ -20,25 +22,31 @@ export default function RangeInput(props: IInputProps) {
     step,
     min,
     max,
+    disabled,
+    options,
   } = props;
 
   const translate = useTranslationsContext();
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const flatpickrRef = useRef<Flatpickr>(null);
+
   const htmlNodeId = useMemo(() => {
     return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
     step?: number;
+    min?: number;
+    max?: number;
   }>({});
 
   useEffect(() => {
-    if (step && step !== additionalAttributes.step) {
-      setAdditionalAttributes((prev) => {
-        return { ...prev, step };
-      });
-    }
+    setAdditionalAttributes({
+      step,
+      min,
+      max,
+    });
   }, [props]);
 
   const {
@@ -55,18 +63,7 @@ export default function RangeInput(props: IInputProps) {
     control,
     rules,
     shouldUnregister,
-    defaultValue:
-      initialValue !== undefined
-        ? initialValue
-        : defaultValue
-        ? +defaultValue
-        : min
-        ? valueAsNumber
-          ? +min
-          : `${+min}`
-        : valueAsNumber
-        ? 0
-        : "0",
+    defaultValue: initialValue !== undefined ? initialValue : defaultValue,
   });
 
   useEffect(() => {
@@ -74,7 +71,7 @@ export default function RangeInput(props: IInputProps) {
       const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
-      const target = evt.target as HTMLInputElement;
+      const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
       if (valueAsNumber) {
         onChange(+target?.value);
         return;
@@ -99,7 +96,7 @@ export default function RangeInput(props: IInputProps) {
     <div
       data-component="elements.input"
       data-variant={props.variant}
-      className={`input-range ${className || ""}`}
+      className={`input-date ${className || ""}`}
     >
       <div className="input-label">
         <label htmlFor={htmlNodeId}>
@@ -107,60 +104,27 @@ export default function RangeInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
-        {max && value !== undefined ? (
-          <>
-            <div
-              className="dragger"
-              style={{
-                left: `${(value / max) * 100}%`,
-              }}
-            >
-              <p className="dragger-value">{value}</p>
-            </div>
-            <div
-              className="ms-fill-lower"
-              style={{
-                width: `${(value / max) * 100}%`,
-              }}
-            ></div>
-            <div
-              className="ms-fill-upper"
-              style={{
-                width: `${((max - value) / max) * 100}%`,
-              }}
-            ></div>
-          </>
-        ) : null}
-        <input
-          id={htmlNodeId}
-          type="range"
-          onChange={(e) => {
-            if (valueAsNumber) {
-              onChange(+e.target.value);
-              return;
-            }
-
-            onChange(e);
+        <Flatpickr
+          options={{
+            ...options,
+            time_24hr: true,
+            locale: {
+              firstDayOfWeek: 1,
+            },
           }}
-          min={min}
-          max={max}
-          onBlur={onBlur}
+          placeholder={
+            typeof translate === "function" && placeholder
+              ? translate(placeholder)
+              : placeholder
+              ? placeholder
+              : ""
+          }
+          ref={flatpickrRef}
           value={value !== undefined ? value : ""}
-          ref={(e) => {
-            if (e) {
-              ref(e);
-              inputRef.current = e;
-            }
+          onChange={(e) => {
+            onChange(e[0]);
           }}
-          className="input"
-          {...additionalAttributes}
         />
-        {min && max ? (
-          <div className="limit-values-container">
-            <p className="min">{min}</p>
-            <p className="max">{max}</p>
-          </div>
-        ) : null}
       </div>
       {inputError?.message ? (
         <div className="input-error">

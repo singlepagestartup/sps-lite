@@ -56,7 +56,14 @@ export interface ISpsLiteBackendInputOption {
 export interface ISpsLiteBackendInput {
   id: number;
   __component: "elements.input";
-  variant: "text" | "listbox" | "radio-group" | "switch" | "file" | "range";
+  variant:
+    | "text"
+    | "listbox"
+    | "radio-group"
+    | "switch"
+    | "file"
+    | "range"
+    | "date";
   placeholder: string | null;
   isRequired: boolean;
   value: string | null;
@@ -64,7 +71,7 @@ export interface ISpsLiteBackendInput {
   options?: ISpsLiteBackendInputOption[];
   label: string | null;
   className: string | null;
-  type: "text" | "textarea" | "file" | "date" | null;
+  type: "text" | "textarea" | "file" | "date" | "datetime" | null;
   multiple: boolean | null;
 }
 

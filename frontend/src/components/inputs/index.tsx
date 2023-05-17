@@ -9,6 +9,7 @@ import RangeInput from "./range";
 import RepeatableInput, { IInsideComponentProps } from "./repeatable";
 import SwitchInput from "./switch";
 import TextInput from "./text";
+import DateInput from "./date";
 
 export interface IInputProps extends UseControllerProps {
   label?: string | null;
@@ -47,7 +48,8 @@ export interface IInputProps extends UseControllerProps {
     | "switch"
     | "file"
     | "repeatable"
-    | "range";
+    | "range"
+    | "date";
 }
 
 export default function Inputs(props: IInputProps) {
@@ -69,6 +71,8 @@ export default function Inputs(props: IInputProps) {
         return RepeatableInput;
       case "range":
         return RangeInput;
+      case "date":
+        return DateInput;
       default:
         return TextInput;
     }
