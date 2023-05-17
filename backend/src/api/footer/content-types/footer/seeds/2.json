@@ -1326,28 +1326,6 @@
                         "updatedAt": "2023-02-13T22:26:11.770Z"
                     },
                     {
-                        "id": 159,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:11.874Z",
-                        "updatedAt": "2023-02-13T22:26:11.874Z"
-                    },
-                    {
                         "id": 172,
                         "action": "plugin::content-manager.explorer.read",
                         "subject": "api::configuration.configuration",
@@ -1362,28 +1340,6 @@
                         "updatedAt": "2023-02-13T22:26:12.181Z"
                     },
                     {
-                        "id": 176,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:12.416Z",
-                        "updatedAt": "2023-02-13T22:26:12.416Z"
-                    },
-                    {
                         "id": 189,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::configuration.configuration",
@@ -1396,28 +1352,6 @@
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:12.730Z",
                         "updatedAt": "2023-02-13T22:26:12.730Z"
-                    },
-                    {
-                        "id": 193,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:12.803Z",
-                        "updatedAt": "2023-02-13T22:26:12.803Z"
                     },
                     {
                         "id": 205,
@@ -3624,6 +3558,78 @@
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.431Z",
                         "updatedAt": "2023-05-14T14:11:25.431Z"
+                    },
+                    {
+                        "id": 896,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.350Z",
+                        "updatedAt": "2023-05-17T12:28:44.350Z"
+                    },
+                    {
+                        "id": 897,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.366Z",
+                        "updatedAt": "2023-05-17T12:28:44.366Z"
+                    },
+                    {
+                        "id": 898,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.371Z",
+                        "updatedAt": "2023-05-17T12:28:44.371Z"
                     }
                 ],
                 "createdBy": null,
@@ -3688,28 +3694,6 @@
                         "updatedAt": "2023-02-13T22:26:11.770Z"
                     },
                     {
-                        "id": 159,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:11.874Z",
-                        "updatedAt": "2023-02-13T22:26:11.874Z"
-                    },
-                    {
                         "id": 172,
                         "action": "plugin::content-manager.explorer.read",
                         "subject": "api::configuration.configuration",
@@ -3724,28 +3708,6 @@
                         "updatedAt": "2023-02-13T22:26:12.181Z"
                     },
                     {
-                        "id": 176,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:12.416Z",
-                        "updatedAt": "2023-02-13T22:26:12.416Z"
-                    },
-                    {
                         "id": 189,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::configuration.configuration",
@@ -3758,28 +3720,6 @@
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:12.730Z",
                         "updatedAt": "2023-02-13T22:26:12.730Z"
-                    },
-                    {
-                        "id": 193,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::form-request.form-request",
-                        "properties": {
-                            "fields": [
-                                "inputs.key",
-                                "inputs.value",
-                                "inputs.files",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.is_true",
-                                "inputs.option.title",
-                                "inputs.option.description",
-                                "files",
-                                "form"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-02-13T22:26:12.803Z",
-                        "updatedAt": "2023-02-13T22:26:12.803Z"
                     },
                     {
                         "id": 205,
@@ -5986,6 +5926,78 @@
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.431Z",
                         "updatedAt": "2023-05-14T14:11:25.431Z"
+                    },
+                    {
+                        "id": 896,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.350Z",
+                        "updatedAt": "2023-05-17T12:28:44.350Z"
+                    },
+                    {
+                        "id": 897,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.366Z",
+                        "updatedAt": "2023-05-17T12:28:44.366Z"
+                    },
+                    {
+                        "id": 898,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::form-request.form-request",
+                        "properties": {
+                            "fields": [
+                                "inputs.key",
+                                "inputs.value",
+                                "inputs.files",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.is_true",
+                                "inputs.option.title",
+                                "inputs.option.description",
+                                "inputs.date_value",
+                                "inputs.datetime_value",
+                                "files",
+                                "form"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-05-17T12:28:44.371Z",
+                        "updatedAt": "2023-05-17T12:28:44.371Z"
                     }
                 ],
                 "createdBy": null,
