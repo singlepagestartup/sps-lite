@@ -4,7 +4,7 @@ export const buttonPopulate = {
   media: {
     populate: mediaPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: mediaPopulate,
   },
   flyout: {
@@ -22,7 +22,7 @@ export const logotypePopulate = {
   media: {
     populate: mediaPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: mediaPopulate,
   },
 };
@@ -31,7 +31,7 @@ export const featurePopulate = {
   media: {
     populate: mediaPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: mediaPopulate,
   },
 };
