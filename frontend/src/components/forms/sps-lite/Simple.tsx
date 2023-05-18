@@ -4,9 +4,13 @@ import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
 import { ISpsLiteFormBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import { useSearchParams } from "next/navigation";
+import qs from "qs";
 
 export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
+  const searchParams = useSearchParams();
+  const searchParamsStringified = searchParams?.toString();
 
   const methods = useForm<any>({
     mode: "all",
@@ -25,7 +29,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
   const watchData = watch();
 
   useEffect(() => {
-    console.log("🚀 ~ Simple ~ watchData", watchData);
+    // console.log("🚀 ~ Simple ~ watchData", watchData);
   }, [watchData]);
 
   useEffect(() => {
@@ -54,6 +58,13 @@ export default function Simple(props: ISpsLiteFormBlock) {
     return props.inputs?.map((input, index: number) => {
       let inputName = input.name;
       let isFile = false;
+
+      if (searchParamsStringified) {
+        const parsedSearchParams = qs.parse(searchParamsStringified);
+        if (parsedSearchParams[inputName]) {
+          input.initialValue = parsedSearchParams[inputName];
+        }
+      }
 
       if (["listbox", "radio-group"].includes(input.variant)) {
         inputName = input.multiple
@@ -94,7 +105,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
         options,
       };
     });
-  }, [props]);
+  }, [props, searchParamsStringified]);
 
   return (
     <div
