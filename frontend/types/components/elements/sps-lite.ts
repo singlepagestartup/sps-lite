@@ -65,7 +65,6 @@ export interface ISpsLiteBackendInput {
     | "range"
     | "date";
   placeholder: string | null;
-  initialValue: any | null;
   isRequired: boolean;
   value: string | null;
   name: string;

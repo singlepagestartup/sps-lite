@@ -6,6 +6,11 @@ import { ISpsLiteFormBlock } from ".";
 import Buttons from "~components/elements/buttons";
 import { useSearchParams } from "next/navigation";
 import qs from "qs";
+import { ISpsLiteBackendInput } from "types/components/elements/sps-lite";
+
+export interface ISpsLiteFromInput extends ISpsLiteBackendInput {
+  initialValue?: any;
+}
 
 export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
@@ -50,7 +55,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
-      const localInput = { ...input };
+      const localInput: ISpsLiteFromInput = { ...input };
       let inputName = input.name;
       let isFile = false;
 
