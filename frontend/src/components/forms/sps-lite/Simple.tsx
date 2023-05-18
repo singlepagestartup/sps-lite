@@ -4,9 +4,18 @@ import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
 import { ISpsLiteFormBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import { useSearchParams } from "next/navigation";
+import qs from "qs";
+import { ISpsLiteBackendInput } from "types/components/elements/sps-lite";
+
+export interface ISpsLiteFromInput extends ISpsLiteBackendInput {
+  initialValue?: any;
+}
 
 export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
+  const searchParams = useSearchParams();
+  const searchParamsStringified = searchParams?.toString();
 
   const methods = useForm<any>({
     mode: "all",
@@ -25,35 +34,40 @@ export default function Simple(props: ISpsLiteFormBlock) {
   const watchData = watch();
 
   useEffect(() => {
-    console.log("🚀 ~ Simple ~ watchData", watchData);
+    // console.log("🚀 ~ Simple ~ watchData", watchData);
   }, [watchData]);
 
   useEffect(() => {
     if (data) {
       reset();
+
+      if (typeof props.successCallback === "function") {
+        props.successCallback(data);
+      }
     }
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data", data);
-    // const componentsData = prepareDataForComponent({
-    //   data,
-    //   inputs: props.form.inputs,
-    // });
-
-    // const passData = {
-    //   inputs: componentsData,
-    // };
-
-    // console.log(`🚀 ~ onSubmit ~ setDataToComponent ~ res`, res);
+    // console.log("🚀 ~ onSubmit ~ data", data);
 
     createFormRequest({ data, files: data.files });
   }
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
+      const localInput: ISpsLiteFromInput = { ...input };
       let inputName = input.name;
       let isFile = false;
+
+      if (searchParamsStringified) {
+        const parsedSearchParams = qs.parse(
+          decodeURIComponent(searchParamsStringified),
+        );
+
+        if (parsedSearchParams[inputName]) {
+          localInput.initialValue = parsedSearchParams[inputName];
+        }
+      }
 
       if (["listbox", "radio-group"].includes(input.variant)) {
         inputName = input.multiple
@@ -88,13 +102,13 @@ export default function Simple(props: ISpsLiteFormBlock) {
       }
 
       return {
-        input,
+        input: localInput,
         inputName,
         isFile,
         options,
       };
     });
-  }, [props]);
+  }, [props, searchParamsStringified]);
 
   return (
     <div
@@ -156,6 +170,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
           />
           <div className="submit-button-container">
             <Buttons
+              {...props.button}
               variant={props.button?.variant || "secondary"}
               onClick={handleSubmit(onSubmit)}
               title={props.button?.title || "Submit"}
