@@ -50,13 +50,17 @@ export default function Simple(props: ISpsLiteFormBlock) {
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
+      const localInput = { ...input };
       let inputName = input.name;
       let isFile = false;
 
       if (searchParamsStringified) {
-        const parsedSearchParams = qs.parse(searchParamsStringified);
+        const parsedSearchParams = qs.parse(
+          decodeURIComponent(searchParamsStringified),
+        );
+
         if (parsedSearchParams[inputName]) {
-          input.initialValue = parsedSearchParams[inputName];
+          localInput.initialValue = parsedSearchParams[inputName];
         }
       }
 
@@ -93,7 +97,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
       }
 
       return {
-        input,
+        input: localInput,
         inputName,
         isFile,
         options,
@@ -161,6 +165,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
           />
           <div className="submit-button-container">
             <Buttons
+              {...props.button}
               variant={props.button?.variant || "secondary"}
               onClick={handleSubmit(onSubmit)}
               title={props.button?.title || "Submit"}
