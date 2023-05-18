@@ -6,6 +6,7 @@ export interface ISpsLiteFormBlock
   extends Omit<ISpsLiteBackendForm, "id" | "className" | "anchor"> {
   className?: string | null;
   anchor?: string | null;
+  successCallback?: any;
 }
 
 export const variants = {

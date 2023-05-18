@@ -35,21 +35,15 @@ export default function Simple(props: ISpsLiteFormBlock) {
   useEffect(() => {
     if (data) {
       reset();
+
+      if (typeof props.successCallback === "function") {
+        props.successCallback(data);
+      }
     }
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data", data);
-    // const componentsData = prepareDataForComponent({
-    //   data,
-    //   inputs: props.form.inputs,
-    // });
-
-    // const passData = {
-    //   inputs: componentsData,
-    // };
-
-    // console.log(`🚀 ~ onSubmit ~ setDataToComponent ~ res`, res);
+    // console.log("🚀 ~ onSubmit ~ data", data);
 
     createFormRequest({ data, files: data.files });
   }
