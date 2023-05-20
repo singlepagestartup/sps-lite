@@ -4,8 +4,8 @@ sidebar_position: 2
 
 import ProjectStructure from '../../src/components/docs/ProjectStructure.tsx'
 
-# Структура директорий
+# The structure of the directories
 
-После [создания проекта](/docs/introduction/installation) он будет иметь следующую структуру директорий
+After [Creating project](/docs/introduction/installation) it will have the following directory structure:
 
 <ProjectStructure />

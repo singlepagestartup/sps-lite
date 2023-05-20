@@ -37,8 +37,8 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
         </div>
         <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           {props.features?.map((feature, index) => (
-            <div key={index}>
-              <dt>
+            <div key={index} className="flex flex-col gap-3">
+              <div>
                 {feature?.media?.length ? (
                   <Image
                     src={getFileUrl(feature.media[0])}
@@ -48,13 +48,13 @@ export default function WithIcon(props: ISpsLiteFeaturesSectionBlock) {
                     className="object-contain"
                   />
                 ) : null}
-                <p className="text-lg font-medium leading-6 text-gray-900">
-                  {feature.title}
-                </p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-500">
+              </div>
+              <p className="text-lg font-medium leading-6 text-gray-900">
+                {feature.title}
+              </p>
+              <div className="text-base text-gray-500">
                 {feature?.description}
-              </dd>
+              </div>
             </div>
           ))}
         </dl>

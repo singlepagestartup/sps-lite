@@ -2,39 +2,39 @@
 sidebar_position: 2
 ---
 
-# Работа с Page-Block'ами
+# Working with Page Blocks
 
-Концепция Page-Block'ов предствляет собой способ описания контента и логических элементов на бекенде и передачу их на фронтенд. Все Page-Block'и имеют параметр `variant` на основе этого параметра определяется то, как будет отображаться компонент на фронтенде. Также от этого параметра может зависеть логическая составляющая компонента на фронтенде.
+Page Blocks concept is a way of describing content and logical elements on the backend and passing them to the frontend. All Page Blocks have a `variant` parameter, which determines how the component will be displayed on the frontend. The logical component of the component on the frontend may also depend on this parameter.
 
-## Данные передаваемые в Page-Block
+## Data passed to Page-Block
 
-Каждый Page-Block имеет свой набор необходимых параметров для отображения. Обязательным праметром являет `variant`. Остальные поля могут быть опциональными.
+Each Page-Block has its own set of required parameters for display. The `variant` parameter is mandatory in Single Page Startup architecture. The other fields can be optional.
 
 ![Hero section page block](./img/hero-section-pb.png)
 
-## Создание нового Page-Block
+## Creating a new Page-Block
 
-Для создания нового Page-Block нужно перейти в раздел [Content-Type-Builder](http://localhost:1337/admin/plugins/content-type-builder/content-types/api::configuration.configuration) и нажать на кнопку `+ Create new component`.
+To create a new Page-Block, go to the [Content-Type-Builder](http://localhost:1337/admin/plugins/content-type-builder/content-types/api::configuration.configuration) section and click on the `+ Create new component` button.
 
 ![Create page block button](./img/create-new-conponent-button.png)
 
-После чего в открывшемся окне нужно ввести название нового Page-Block'а в формате `New Page Block` и выбрать `page-blocks` в выпадающем списке вариантов.
+After that, in the opened window, you need to enter the name of the new Page-Block in the format `New Page Block` and select `page-blocks` from the drop-down list of options.
 
 ![Create page block](./img/new-page-block.png)
 
-Затем нужно добавить обязательное `Enumeration` поле с названием `variant`.
+Then you need to add a mandatory `Enumeration` field with the name `variant`.
 
 ![Select fields](./img/add-fields-component.png)
 
 ![Add enum fields](./img/add-enumeration-field.png)
 
-После чего можно добавить необходимые поля, если они требуются и сохранить Page-Block, нажав на кнопку `Save`.
+After that, necessary fields can be added if needed and the Page-Block can be saved by clicking on the `Save` button.
 
 ![Save Page Block](./img/save-page-block.png)
 
-## Подключение нового Page-Block к моделям
+## Connecting a new Page-Block to models
 
-После того как новый Page-Block создан, необходимо подключить его к модели, например к модели Page. Для этого требуется перейти в раздел [Content-Type-Builder](http://localhost:1337/admin/plugins/content-type-builder/content-types/api::page.page) модели Page и добавить созданный Page-Block в Dynamic-Zone поле `page_blocks`.
+After creating a new Page-Block, it is necessary to connect it to the model, for example, to the `Page` model. To do this, go to the [Content-Type-Builder](http://localhost:1337/admin/plugins/content-type-builder/content-types/api::page.page) section of the Page model and add the created Page-Block to the Dynamic-Zone field `page_blocks`. You can connect that page block to every model that has a `page_blocks` Dynamic-Zone field, such as Navbar, Sidebar, Modal, and Footer.
 
 ![Add dynamic zone component](./img/add-dz-component.png)
 
@@ -42,6 +42,6 @@ sidebar_position: 2
 
 ![Save Page Model](./img/save-page-model.png)
 
-Выполнив данные шаги созданный Page-Block станет доступен для выбора в поле `page_blocks` при создании или изменении страницы.
+After completing these steps, the created Page-Block will be available for selection in the `page_blocks` field when creating or editing a page.
 
 ![Select New Page Block](./img/page-select-new-page-block.png)

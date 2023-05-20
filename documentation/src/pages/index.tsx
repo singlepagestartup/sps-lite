@@ -19,7 +19,7 @@ function HomepageHeader() {
             className="px-8 py-3 rounded-md bg-primary-600 uppercase text-sm font-bold no-underline hover:no-underline text-white hover:text-white hover:bg-black transition duration-200"
             to="/docs/introduction"
           >
-            <span className="">Начать</span>
+            <span className="">Get started</span>
           </Link>
         </div>
       </div>

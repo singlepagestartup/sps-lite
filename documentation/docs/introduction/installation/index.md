@@ -2,17 +2,17 @@
 sidebar_position: 1
 ---
 
-# Создание проекта
+# Creating project
 
-## Через интерфейс GitHub
+## Via GitHub Interface
 
-Для создания проекта вы можете воспользоваться шаблоном [sps-lite](https://github.com/singlepagestartup/sps-lite) через инетфейс GitHub, нажав на кнопку **Use this template** появится несколько вариантов использования: **Create a new repository** и **Open in codespace**.
+For creating project you can use [sps-lite](https://github.com/singlepagestartup/sps-lite) template by GitHub interface. Press **Use this template** and select one of variants: **Create a new repository** or **Open in codespace**.
 
 ![Use this template](./img/use-this-template.png)
 
-## Через CLI команду
+## Via CLI command
 
-Вы также можете создать пустой репозиторий и затем скачав репозиторий локально в рут репозитория выполнить несколько CLI команд
+You can also create an empty repository and then download it locally to the root of the repository and execute several CLI commands.
 
 ```bash
 git remote add upstream https://github.com/singlepagestartup/sps-lite.git
@@ -20,100 +20,97 @@ git pull upstream main
 git push origin main
 ```
 
-:::danger title="remote upstream already exists"
-Если при попытке изменить `remote upstream` появляется ошибка `remote upstream already exists.`:
+:::danger Error: remote upstream already exists
+
+If you get the error `remote upstream already exists` when trying to change the `remote upstream`:
 
 ```bash
 git:(main) git remote add upstream https://github.com/singlepagestartup/sps.git
 error: remote upstream already exists.
 ```
 
-Необходимо выполнить команду
+It is necessary to execute the command:
 
 ```bash
 git remote rm upstream
 ```
 
-После чего повторить попытку подключения `remote upstream`
+After that, try to connect `remote upstream` again.
 
 ```bash
-git:(main) git remote add upstream https://github.com/singlepagestartup/sps.git
-git:(main)
+git remote add upstream https://github.com/singlepagestartup/sps.git
 ```
 
 :::
 
-:::info
-Перед первым коммитом необходимо настроить [Husky](https://github.com/typicode/husky), иначе может появиться ошибка
+:::info First commit
+
+Before the first commit, you need to set up [Husky](https://github.com/typicode/husky), otherwise an error may occur.
 
 ```bash
 git commit -m "Check husky 2" \
 .husky/pre-commit: line 2: .husky/\_/husky.sh: No such file or directory
 ```
 
-Для решения этой задачи нужно вызвать следующую команду в рут директории проекта:
+To solve this problem, you need to call the next command in the root directory of the project:
 
 ```bash
-npx husky install
-```
-
-или
-
-```bash
-npm i
+npx husky install && npm install
 ```
 
 :::
 
-:::danger .husky/pre-commit: line 4: lerna: command not found
-При выполнении коммита может возникнуть ошибка
+:::danger Error: .husky/pre-commit: line 4: lerna: command not found
+
+When performing a commit that error may occur
 
 ```bash
+...
 .husky/pre-commit: line 4: lerna: command not found
 husky - pre-commit hook exited with code 127 (error)
 husky - command not found in PATH=/Library/Developer/CommandLineTools/usr/libexec/git-core:/Users/<your_pc_name>/.local/bin
 ```
 
-Для её решения попробуйте взвать команду в root директории проекта
+To solve this problem, you need to call the next command in the root directory of the project:
 
-```
+```bash
 npm install husky --save-dev
 ```
 
-Если это не поможет, тогда необходимо добавить строчку
+If this does not help, then you need to add a line to the `~/.bashrc` or `~/.zshrc` file
 
-```
+```bash
 export PATH="$PATH:./node_modules/.bin"
 ```
 
-В файл конфигурационный файл терминала `~/.bashrc`, `~/.zshrc`
 :::
 
-## Объяснение выполняемых команд
-
-Данная команда подключает репозиторий sps-lite как родительский к вашему проекту
+## Describing the commands
 
 ```bash
 git remote add upstream https://github.com/singlepagestartup/sps-lite.git
 ```
 
-Данная команда берет изменения из проекта, который подключен как `upstream`
+This command connects the `sps-lite` repository as the parent to your project.
 
 ```bash
 git pull upstream main
 ```
 
-:::danger
-Если при `git pull` вы получаете ошибку `hint: You have divergent branches and need to specify how to reconcile them.`, то необходимо выполнить команду:
+This command takes changes from the project that is connected as `upstream`
+
+```bash
+git push origin main
+```
+
+This command sends changes to your repository.
+
+:::danger Error: hint: You have divergent branches and need to specify how to reconcile them.
+
+If you receive the error `hint: You have divergent branches and need to specify how to reconcile them.` during `git pull`, you need to execute the command:
 
 ```bash
 git config pull.rebase false
 ```
 
 :::
-
-Эта команда отправляет изменения в ваш репозиторий
-
-```bash
-git push origin main
-```

@@ -4,4 +4,4 @@ sidebar_position: 2
 
 # sps-lite
 
-Минимальная версия Single Page Startup проекта, включающая в себя только те части, которые позволяют сделать многостраничный сайт с формами обратной связи, галереей, подключенным бекендом и миграцией данных.
+Minimal version of a Single Page Startup project, including only the parts needed to create a multi-page website with feedback forms, a gallery, connected backend, and data migration.

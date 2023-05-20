@@ -2,113 +2,113 @@
 sidebar_position: 1
 ---
 
-# Модели
+# Models
 
-Для того, чтобы ознакомиться с моделями, которые уже созданы в Single Page Startup нужно перейти в раздел `Content-Type-Builder`
+To familiarize yourself with the models that have already been created in Single Page Startup, you need to go to the `Content-Type-Builder` section.
 
 ![Strapi Content-Type-Builder Button](./img/strapi-ctb-button.png)
 
-На открывшейся страницы показано какие модели и связи имеются в проекте.
+On the opened page, the models and connections available in the project are shown.
 
 ![Strapi Content-Type-Builder](./img/strapi-ctb.png)
 
 ## Collection Type
 
-Модели, которые являются основой бизнес логики проекта, либо должны быть связаны с другими моделями.
+Models that are the foundation of the project's business logic should either be linked to other models.
 
 ### Currency
 
-Модель валют, используется в `Tiers Page Block` и участвует в бизнес логике проектов, наследуемых от `sps-lite`.
+The currency model is used in the `Tiers Page Block` and is involved in the business logic of projects inherited from `sps-lite`.
 
 ![Currency model](./img/strapi-ct-currency.png)
 
 ### Footer
 
-Модель контейнера футера, который используется на страницах проекта. В него помещается Page-Block `Footer Block`. Вынесен в модель потому что может повторяться в разных `Layout` и может быть мультиязычным.
+Container model for the footer used on project pages. It contains a Page-Block called `Footer Block`. It was extracted into a model because it may be repeated in different layouts and can be multilingual.
 
 ![Footer model](./img/strapi-ct-footer.png)
 
 ### Form
 
-Конструктор форм, может быть мультиязычной и повторяться в разных Page-Block.
+Form builder can be multilingual and repeated in different Page-Blocks.
 
 ![Form model](./img/strapi-ct-form.png)
 
 ### Form Request
 
-Модель, экземпляр которой создается после того, как пользователь заполнил и отправил форму на фронтенде. Участвует в сайт-эффектах на отправку формы, так как данные в сайд-эффекты передаются из нее.
+Model, an instance of which is created after the user fills out and submits a form on the frontend. It participates in website effects upon form submission, as the data is passed from it to the side effects.
 
 ![Form Request model](./img/strapi-ct-form-request.png)
 
 ### Layout
 
-Модель, на основе которой отображается страница на фронтенде. Является связующим звеном частей страницы - `Navbar`, `Footer`, `Modal` и других.
+Model, based on which the frontend page is displayed. It is a connecting link between the parts of the page - `Navbar`, `Footer`, `Modal` and others.
 
 ![Layout model](./img/strapi-ct-layout.png)
 
 ### Metatag
 
-Модель участвующая в формировании `meta-тегов` страниц сайта.
+Model participating in the formation of `meta-tags` for website pages.
 
 ![Metatag model](./img/strapi-ct-metatag.png)
 
 ### Modal
 
-Конструктор модальных окон, используемых на сайте.
+Modal window builder used on the website.
 
 ![Modal model](./img/strapi-ct-modal.png)
 
 ### Navbar
 
-Модель контейнера навигационного меню, который используется на страницах проекта. В него помещается Page-Block `Navbar Block`. Вынесен в модель потому что может повторяться в разных `Layout` и может быть мультиязычным.
+Navigation menu container model used on project pages. The `Navbar Block` is placed inside. It is made into a model because it can be repeated in different `Layouts` and can be multilingual.
 
 ![Navbar model](./img/strapi-ct-navbar.png)
 
 ### Page
 
-Модель страниц, создавая новые экземпляры данной модели создаются страницы, которые будут доступны на фронтенде по адресу, указанному в `url` создаваемого экземпляра.
+When creating new instances of this model, pages are created that will be available on the frontend at the URL specified in the `url` of the created instance.
 
 ![Page model](./img/strapi-ct-page.png)
 
 ### Review
 
-Модель отзывов, используется в Page-Block `Reviews Block` и `Reviews Table Block`.
+Reviews model is used in the `Reviews Block` and `Reviews Table Block` Page-Blocks.
 
 ![Review model](./img/strapi-ct-review.png)
 
 ### Sidebar
 
-Модель контейнера сайдбара, который используется на страницах проекта. Вынесен в модель потому что может повторяться в разных `Layout` и может быть мультиязычным.
+Container model for the sidebar used on project pages. Moved to the model because it can be repeated in different `Layouts` and can be multilingual.
 
 ![Sidebar model](./img/strapi-ct-sidebar.png)
 
 ### Slide Over
 
-Модель выезжающего блока с контентом. Вынесен в модель потому что может повторяться в разных `Layout` и может быть мультиязычным.
+Model of an expandable content block. It is made into a model because it can be repeated in different `Layouts` and can be multilingual.
 
 ![Slide Over model](./img/strapi-ct-slide-over.png)
 
 ### Slider
 
-Конструктор для слайдера с контентом.
+Constructor for a content slider.
 
 ![Slider model](./img/strapi-ct-slider.png)
 
 ### Tier
 
-Модель уровня подписки, используется в `Tiers Page Block` и участвует в бизнес логике проектов, наследуемых от `sps-lite`.
+Subscription level model, used in `Tiers Page Block` and involved in the business logic of `sps-lite` inherited projects.
 
 ![Tier model](./img/strapi-ct-tier.png)
 
 ### Topbar
 
-Модель контейнера топбара, который используется на страницах проекта. Вынесен в модель потому что может повторяться в разных `Layout` и может быть мультиязычным.
+Container model for the top bar used on project pages. It was moved to the model because it can be repeated in different `Layouts` and can be multilingual.
 
 ![Topbar model](./img/strapi-ct-topbar.png)
 
 ### User
 
-Модель пользователя, является стандартной моделью `Users-Permissions Plugin`.
+The user model is a standard model of the `[Users-Permissions Plugin](https://docs.strapi.io/dev-docs/plugins/users-permissions)`.
 
 ![Users-Permissions User model](./img/strapi-ct-up-user.png)
 
@@ -116,13 +116,13 @@ sidebar_position: 1
 
 ### Configuration
 
-Модель для настройки конфигурации сайд-эффектов.
+Model for configuring side-effect configuration.
 
 ![Configuration model](./img/strapi-st-configuration.png)
 
 ### Theme
 
-Модель для настройки цветовых токенов интерфейса.
+Model for configuring interface color tokens.
 
 ![Theme model](./img/strapi-st-theme.png)
 
@@ -132,73 +132,73 @@ sidebar_position: 1
 
 #### Button
 
-Компонент кнопки
+Button component
 
 ![Button component](./img/strapi-c-e-button.png)
 
 #### Buttons Array
 
-Компонент для выпадающего списка с кнопками либо просто списка кнопок
+Component for a dropdown list with buttons or just a list of buttons
 
 ![Buttons Array component](./img/strapi-c-e-buttons-array.png)
 
 #### Faq
 
-Компонент для элемента FAQ, используемого в Page-Block `Faq Block`
+Component for FAQ element used in Page-Block `FAQ Block`
 
 ![Faq component](./img/strapi-c-e-faq.png)
 
 #### Feature
 
-Компонент для элементов, используемых в Page-Block'ах `Features Section Block`, `Incentives Block`.
+Component for the elements used in Page-Blocks `Features Section Block`, `Incentives Block`.
 
 ![Feature component](./img/strapi-c-e-feature.png)
 
 #### Input
 
-Компонент, используемый в конструкторе форм модели [Form](/docs/backend/development/#form).
+Component used in the form builder of the `Form` model.
 
 ![Input component](./img/strapi-c-e-input.png)
 
 #### Input Option
 
-Компонент варианта, используемый в поле ввода конструктора форм модели [Form](/docs/backend/development/#input).
+Variant component used in the input field of the `Form` model constructor.
 
 ![Input Option component](./img/strapi-c-e-input-option.png)
 
 #### Logotype
 
-Компонент логотипа, используется в Page-Block'ах `Footer Block`, `Navbar Block` и `Logotypes Cloud`.
+Logo component used in Page-Blocks such as `Footer Block`, `Navbar Block`, and `Logotypes Cloud`.
 
 ![Logotype component](./img/strapi-c-e-logotype.png)
 
 #### Reciever
 
-Получатель результата сайт-эффекта при взаимодействии с моделью [Form](/docs/backend/development/#input).
+Recipient of side effect result when interacting with the `Form` model.
 
 ![Reciever component](./img/strapi-c-e-reciever.png)
 
 #### Request Input
 
-Компонент, используемый при построении экземпляра [Form Request](/docs/backend/development#form-request).
+Component used when creating an instance of `Form Request`.
 
 ![Request Input component](./img/strapi-c-e-request-input.png)
 
 #### Slide
 
-Компонент конструктора слайдов модели [Slider](/docs/backend/development#slider)
+Slider model of slide builder component `Slider`
 
 ![Slide component](./img/strapi-c-e-slide.png)
 
 #### Config
 
-Элемент, используемый при создании модели [Configuration](/docs/backend/development#configuration)
+Element used in creating a `Configuration` model
 
 ![Config component](./img/strapi-c-e-config.png)
 
 #### Form Side Effect
 
-Элемент для настройки сайд-эффектов при создании модели [Form](/docs/backend/development#form).
+Element for configuring side effects when creating a `Form` model.
 
 ![Form Side Effect component](./img/strapi-c-e-form-side-effect.png)
 

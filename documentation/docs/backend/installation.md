@@ -2,21 +2,21 @@
 sidebar_position: 2
 ---
 
-# Установка и запуск
+# Install and launch
 
-Для запуска бекенда необходимо перейти в директорию `backend` и выполнять все указанные на этой странице команды и действия
+To run the backend, you need to go to the `backend` directory and execute all the commands and actions specified on this page.
 
-## Переменные окружения
+## Environment variables
 
-Для корректной работы бекенда нужно установить переменные окружения в файлe `.env`
+For the backend to work correctly, you need to set environment variables in the `.env` file.
 
 :::info
-В директории бекенда есть файл `.env.example`, который является примером файла `.env`
+For the backend to work correctly, you need to set environment variables in the `.env` file.
 :::
 
-Подробную информацию по доступным переменным среды окружения можно узнать в [Официальной документации Strapi](https://docs.strapi.io/dev-docs/configurations)
+For detailed information on available environment variables, refer to the [Official Strapi Documentation](https://docs.strapi.io/dev-docs/configurations).
 
-Ниже представлены дополнительные переменные среды, которые используются в **Single Page Startup**
+Below are additional environment variables used in **Single Page Startup**
 
 ```txt title=".env"
 APP_NAME="Single Page Startup"
@@ -45,66 +45,65 @@ AWS_S3_REGION=XXXX
 AWS_S3_ENDPOINT=XXXXXXXXXXXXXXXXXX
 ```
 
-:::tip
-Мы рекомендуем сразу воспользоваться [управляемыми хостинг-провайдерами базами данных](https://www.digitalocean.com/products/managed-databases-postgresql) и [S3](https://www.digitalocean.com/products/spaces) для хранения файлов
+We recommend using [managed database hosting providers](https://www.digitalocean.com/products/managed-databases-postgresql) and [S3](https://www.digitalocean.com/products/spaces) for storing files.
 
-Это нужно чтобы создать надежную и отказоустойчивую инфраструктуру, так как развернутая самостоятельно Postgres может становиться точкой отказа проекта. А хранилище S3 обходится гараздо дешевле, чем зарезервированное пространство на сервере.
-:::
+This is necessary to create a reliable and fault-tolerant infrastructure, as self-deployed Postgres can become a project failure point. And S3 storage is much cheaper than reserved space on the server.
 
-### Описание дополнительных переменных среды
+### Description of Additional Environment Variables
 
-| Название        | Описание                                                                                                                                                                                                                                        | Обязательно? | Значение по умолчанию |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------------- | --- |
-| APP_NAME        | Название проекта, данный параметр будет проставлен как отправитель в письмах отправленных Email плагином Strapi                                                                                                                                 | нет          | Single Page Startup   |
-| SEED_ENTITES    | Параметр, определяющий будет ли сделан сидинг данных на основе model/seeds/\*.json файлов                                                                                                                                                       | нет          | undfined              |
-| MAKE_NEW_SEED   | Параметр, определяющий будет ли сделан дамп данных на основе данных, добавленных в панели администрирования в файлы model/seeds/\*.json. Нельзя вызывать одновременно с `SEED_ENTITES=true`                                                     | нет          | undfined              |
-| EMAIL_PROVIDER  | Используемый провайдер отправки Email-писем. Более подробно про возможные варианты использования можно почитать в [Официальной документации Strapi](https://docs.strapi.io/dev-docs/plugins/email)                                              | нет          | undfined              |
-| SENDPULSE\_\*\* | Параметры конфигурации провайдера Email-писем [Sendpulse](https://sendpulse.com/)                                                                                                                                                               | нет          | undefined             |     |
-| AWS\_\*\*       | Параметры для настройки S3 хранилища. Мы настоятельно рекомендуем использовать его, так как это позволит вам настроить более надежную инфраструктуру и мигрировать данные в продакшн среду без необходимости вручную переносить файлы на сервер | нет          | undefined             |
+| Name            | Description                                                                                                                                                                                      | Required | Default Value       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------------------- |
+| APP_NAME        | Project name. This parameter will be set as the sender in emails sent by the Strapi Email plugin.                                                                                                | No       | Single Page Startup |
+| SEED_ENTITIES   | Parameter that determines whether data seeding will be done based on the model/seeds/\*.json files.                                                                                              | No       | undefined           |
+| MAKE_NEW_SEED   | Parameter that determines whether a data dump will be made based on the data added in the admin panel to the model/seeds/\*.json files. Cannot be called simultaneously with SEED_ENTITIES=true. | No       | undefined           |
+| EMAIL_PROVIDER  | Email sending provider used. For more information about possible usage options, see https://docs.strapi.io/dev-docs/plugins/email.                                                               | No       | undefined           |
+| SENDPULSE\_\*\* | Configuration parameters for the email provider https://sendpulse.com/.                                                                                                                          | No       | undefined           |
+| AWS\_\*\*       | Parameters for configuring S3 storage.                                                                                                                                                           | No       | undefined           |
 
-## База данных
+## Database
 
-Для локальной разработки можно использовать [SQLite](https://docs.strapi.io/dev-docs/configurations/database), либо поднять локальную Postgress.
+For local development, you can use [SQLite](https://docs.strapi.io/dev-docs/configurations/database), or set up a local Postgres instance.
 
-Если вы решили использовать Postgress, то для её запуска необходимо запустить `docker-compose.db.yaml` файл, который находится в `root` директории проекта. Для этого нужно вызвать следующую команду:
+If you choose to use Postgres, you need to run the `docker-compose.db.yaml` file located in the `root` directory of the project. To do this, run the following command:
 
-```bash title="Inside root folder"
+```bash
 docker compose up -f docker-compose.db.yaml up
 ```
 
-## Запуск
+## Launch
 
-```bash title="Inside backend folder"
+To run the backend, you need to execute the command in the `backend` directory.
+
+On the first run:
+
+```bash
 npm install && npm run develop
 ```
 
-:::info
-В последующие разы можно использовать консоль Debugger в VS Code для запуска бекенда, либо вызывать команду:
+On subsequent runs:
 
 ```bash
 npm run develop
 ```
 
-:::
+## Debug mode
 
-## Debug-режим
-
-Если вы используете **VS Code**, то вам сразу доступен способ запуска проекта через дебаггер. Для этого откройте вкладку `Run and Debug` в левой части окна **VS Code**.
+If you are using **VS Code**, you have immediate access to a way to run your project through a debugger. To do this, open the `Run and Debug` tab on the left side of the **VS Code** window.
 
 ![Debuger button](./img/debug-button.png)
 
-В открывшемся окне наверху выберите `backend` и нажмите на иконку с треугольником. Во вкладке `Debug console` будет отображаться информация от вебсервера.
+In the opened window, select `backend` at the top and click on the icon with a triangle. The `Debug console` tab will display information from the web server.
 
 ![Select backend](./img/select-backend.png)
 
 ![Debug Console](./img/debug-console.png)
 
-## Панель адмнистрирования
+## Admin Panel
 
-После запуска проекта станет доступна панель администрирования по адресу [http://127.0.0.1:1337/admin](http://127.0.0.1:1337/admin). При первом посещении необходимо создать администратора.
+After launching the project, an administration panel will be available at [http://127.0.0.1:1337/admin](http://127.0.0.1:1337/admin). Upon first visit, it is necessary to create an administrator.
 
 ![Strapi login](./img/strapi-login.png)
 
-После создания пользователя и входа в аккаунт откроется главная страница панели администрирования Strapi. Подробную информация о том что такое Strapi можно узнать в [Официальной документации](https://docs.strapi.io/dev-docs/quick-start).
+After creating a user and logging into the account, the Strapi administration panel's home page will open. Detailed information about what Strapi is can be found in the [Official Documentation](https://docs.strapi.io/dev-docs/quick-start).
 
 ![Strapi main](./img/strapi-main.png)

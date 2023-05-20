@@ -2,8 +2,8 @@
 sidebar_position: 3
 ---
 
-# Бекенд
+# Backend
 
-На бекенде в проекте используется [Strapi](https://strapi.io/), основную информацию о том, как работать с данным решением можно найти в [Официальной документации](https://strapi.io/documentation/developer-docs/).
+On the backend of the project, [Strapi](https://strapi.io/) is used. You can find the main information on how to work with this solution in the [Official Documentation](https://strapi.io/documentation/developer-docs/).
 
 ![Strapi](./img/strapi.png)

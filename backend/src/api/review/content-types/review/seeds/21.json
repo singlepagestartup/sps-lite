@@ -114,7 +114,19 @@
                         "blocked": false,
                         "preferedLanguage": null,
                         "createdAt": "2023-02-13T22:32:56.592Z",
-                        "updatedAt": "2023-02-13T22:32:56.592Z"
+                        "updatedAt": "2023-02-13T22:32:56.592Z",
+                        "roles": [
+                            {
+                                "id": 1,
+                                "name": "Super Admin",
+                                "code": "strapi-super-admin",
+                                "description": "Super Admins can access and manage all features and settings.",
+                                "createdAt": "2023-02-13T22:26:07.622Z",
+                                "updatedAt": "2023-02-13T22:26:07.622Z"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null
                     }
                 ],
                 "permissions": [
@@ -130,7 +142,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:11.770Z",
-                        "updatedAt": "2023-02-13T22:26:11.770Z"
+                        "updatedAt": "2023-02-13T22:26:11.770Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 172,
@@ -144,7 +166,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:12.181Z",
-                        "updatedAt": "2023-02-13T22:26:12.181Z"
+                        "updatedAt": "2023-02-13T22:26:12.181Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 189,
@@ -158,7 +190,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:12.730Z",
-                        "updatedAt": "2023-02-13T22:26:12.730Z"
+                        "updatedAt": "2023-02-13T22:26:12.730Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 205,
@@ -167,7 +209,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.060Z",
-                        "updatedAt": "2023-02-13T22:26:13.060Z"
+                        "updatedAt": "2023-02-13T22:26:13.060Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 206,
@@ -176,7 +228,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.076Z",
-                        "updatedAt": "2023-02-13T22:26:13.076Z"
+                        "updatedAt": "2023-02-13T22:26:13.076Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 210,
@@ -185,7 +247,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.164Z",
-                        "updatedAt": "2023-02-13T22:26:13.164Z"
+                        "updatedAt": "2023-02-13T22:26:13.164Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 217,
@@ -194,7 +266,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.307Z",
-                        "updatedAt": "2023-02-13T22:26:13.307Z"
+                        "updatedAt": "2023-02-13T22:26:13.307Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 219,
@@ -203,7 +285,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.346Z",
-                        "updatedAt": "2023-02-13T22:26:13.346Z"
+                        "updatedAt": "2023-02-13T22:26:13.346Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 231,
@@ -212,7 +304,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.578Z",
-                        "updatedAt": "2023-02-13T22:26:13.578Z"
+                        "updatedAt": "2023-02-13T22:26:13.578Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 233,
@@ -221,7 +323,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.608Z",
-                        "updatedAt": "2023-02-13T22:26:13.608Z"
+                        "updatedAt": "2023-02-13T22:26:13.608Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 235,
@@ -230,7 +342,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.638Z",
-                        "updatedAt": "2023-02-13T22:26:13.638Z"
+                        "updatedAt": "2023-02-13T22:26:13.638Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 236,
@@ -239,7 +361,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.658Z",
-                        "updatedAt": "2023-02-13T22:26:13.658Z"
+                        "updatedAt": "2023-02-13T22:26:13.658Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 237,
@@ -248,7 +380,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.690Z",
-                        "updatedAt": "2023-02-13T22:26:13.690Z"
+                        "updatedAt": "2023-02-13T22:26:13.690Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 238,
@@ -257,7 +399,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.709Z",
-                        "updatedAt": "2023-02-13T22:26:13.709Z"
+                        "updatedAt": "2023-02-13T22:26:13.709Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 239,
@@ -266,7 +418,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.728Z",
-                        "updatedAt": "2023-02-13T22:26:13.728Z"
+                        "updatedAt": "2023-02-13T22:26:13.728Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 240,
@@ -275,7 +437,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.749Z",
-                        "updatedAt": "2023-02-13T22:26:13.749Z"
+                        "updatedAt": "2023-02-13T22:26:13.749Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 241,
@@ -284,7 +456,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.766Z",
-                        "updatedAt": "2023-02-13T22:26:13.766Z"
+                        "updatedAt": "2023-02-13T22:26:13.766Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 242,
@@ -293,7 +475,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.789Z",
-                        "updatedAt": "2023-02-13T22:26:13.789Z"
+                        "updatedAt": "2023-02-13T22:26:13.789Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 243,
@@ -302,7 +494,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.805Z",
-                        "updatedAt": "2023-02-13T22:26:13.805Z"
+                        "updatedAt": "2023-02-13T22:26:13.805Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 244,
@@ -311,7 +513,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.824Z",
-                        "updatedAt": "2023-02-13T22:26:13.824Z"
+                        "updatedAt": "2023-02-13T22:26:13.824Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 245,
@@ -320,7 +532,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.844Z",
-                        "updatedAt": "2023-02-13T22:26:13.844Z"
+                        "updatedAt": "2023-02-13T22:26:13.844Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 246,
@@ -329,7 +551,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.879Z",
-                        "updatedAt": "2023-02-13T22:26:13.879Z"
+                        "updatedAt": "2023-02-13T22:26:13.879Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 247,
@@ -338,7 +570,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.896Z",
-                        "updatedAt": "2023-02-13T22:26:13.896Z"
+                        "updatedAt": "2023-02-13T22:26:13.896Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 248,
@@ -347,7 +589,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.915Z",
-                        "updatedAt": "2023-02-13T22:26:13.915Z"
+                        "updatedAt": "2023-02-13T22:26:13.915Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 249,
@@ -356,7 +608,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.938Z",
-                        "updatedAt": "2023-02-13T22:26:13.938Z"
+                        "updatedAt": "2023-02-13T22:26:13.938Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 250,
@@ -365,7 +627,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.961Z",
-                        "updatedAt": "2023-02-13T22:26:13.961Z"
+                        "updatedAt": "2023-02-13T22:26:13.961Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 251,
@@ -374,7 +646,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:13.981Z",
-                        "updatedAt": "2023-02-13T22:26:13.981Z"
+                        "updatedAt": "2023-02-13T22:26:13.981Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 252,
@@ -383,7 +665,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.011Z",
-                        "updatedAt": "2023-02-13T22:26:14.011Z"
+                        "updatedAt": "2023-02-13T22:26:14.011Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 253,
@@ -392,7 +684,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.054Z",
-                        "updatedAt": "2023-02-13T22:26:14.054Z"
+                        "updatedAt": "2023-02-13T22:26:14.054Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 254,
@@ -401,7 +703,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.083Z",
-                        "updatedAt": "2023-02-13T22:26:14.083Z"
+                        "updatedAt": "2023-02-13T22:26:14.083Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 255,
@@ -410,7 +722,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.113Z",
-                        "updatedAt": "2023-02-13T22:26:14.113Z"
+                        "updatedAt": "2023-02-13T22:26:14.113Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 256,
@@ -419,7 +741,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.170Z",
-                        "updatedAt": "2023-02-13T22:26:14.170Z"
+                        "updatedAt": "2023-02-13T22:26:14.170Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 257,
@@ -428,7 +760,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.198Z",
-                        "updatedAt": "2023-02-13T22:26:14.198Z"
+                        "updatedAt": "2023-02-13T22:26:14.198Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 258,
@@ -437,7 +779,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.212Z",
-                        "updatedAt": "2023-02-13T22:26:14.212Z"
+                        "updatedAt": "2023-02-13T22:26:14.212Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 259,
@@ -446,7 +798,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.231Z",
-                        "updatedAt": "2023-02-13T22:26:14.231Z"
+                        "updatedAt": "2023-02-13T22:26:14.231Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 260,
@@ -455,7 +817,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.255Z",
-                        "updatedAt": "2023-02-13T22:26:14.255Z"
+                        "updatedAt": "2023-02-13T22:26:14.255Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 261,
@@ -464,7 +836,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.272Z",
-                        "updatedAt": "2023-02-13T22:26:14.272Z"
+                        "updatedAt": "2023-02-13T22:26:14.272Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 264,
@@ -473,7 +855,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.323Z",
-                        "updatedAt": "2023-02-13T22:26:14.323Z"
+                        "updatedAt": "2023-02-13T22:26:14.323Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 265,
@@ -482,7 +874,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.343Z",
-                        "updatedAt": "2023-02-13T22:26:14.343Z"
+                        "updatedAt": "2023-02-13T22:26:14.343Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 266,
@@ -491,7 +893,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.384Z",
-                        "updatedAt": "2023-02-13T22:26:14.384Z"
+                        "updatedAt": "2023-02-13T22:26:14.384Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 267,
@@ -500,7 +912,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.403Z",
-                        "updatedAt": "2023-02-13T22:26:14.403Z"
+                        "updatedAt": "2023-02-13T22:26:14.403Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 268,
@@ -509,7 +931,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.430Z",
-                        "updatedAt": "2023-02-13T22:26:14.430Z"
+                        "updatedAt": "2023-02-13T22:26:14.430Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 269,
@@ -518,7 +950,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.447Z",
-                        "updatedAt": "2023-02-13T22:26:14.447Z"
+                        "updatedAt": "2023-02-13T22:26:14.447Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 270,
@@ -527,7 +969,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.469Z",
-                        "updatedAt": "2023-02-13T22:26:14.469Z"
+                        "updatedAt": "2023-02-13T22:26:14.469Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 271,
@@ -536,7 +988,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.484Z",
-                        "updatedAt": "2023-02-13T22:26:14.484Z"
+                        "updatedAt": "2023-02-13T22:26:14.484Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 272,
@@ -545,7 +1007,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.507Z",
-                        "updatedAt": "2023-02-13T22:26:14.507Z"
+                        "updatedAt": "2023-02-13T22:26:14.507Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 273,
@@ -554,7 +1026,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.526Z",
-                        "updatedAt": "2023-02-13T22:26:14.526Z"
+                        "updatedAt": "2023-02-13T22:26:14.526Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 274,
@@ -563,7 +1045,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.543Z",
-                        "updatedAt": "2023-02-13T22:26:14.543Z"
+                        "updatedAt": "2023-02-13T22:26:14.543Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 275,
@@ -572,7 +1064,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.582Z",
-                        "updatedAt": "2023-02-13T22:26:14.582Z"
+                        "updatedAt": "2023-02-13T22:26:14.582Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 276,
@@ -581,7 +1083,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.609Z",
-                        "updatedAt": "2023-02-13T22:26:14.609Z"
+                        "updatedAt": "2023-02-13T22:26:14.609Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 277,
@@ -590,7 +1102,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.625Z",
-                        "updatedAt": "2023-02-13T22:26:14.625Z"
+                        "updatedAt": "2023-02-13T22:26:14.625Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 278,
@@ -599,7 +1121,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.644Z",
-                        "updatedAt": "2023-02-13T22:26:14.644Z"
+                        "updatedAt": "2023-02-13T22:26:14.644Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 279,
@@ -608,7 +1140,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.670Z",
-                        "updatedAt": "2023-02-13T22:26:14.670Z"
+                        "updatedAt": "2023-02-13T22:26:14.670Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 280,
@@ -617,7 +1159,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.685Z",
-                        "updatedAt": "2023-02-13T22:26:14.685Z"
+                        "updatedAt": "2023-02-13T22:26:14.685Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 281,
@@ -626,7 +1178,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.700Z",
-                        "updatedAt": "2023-02-13T22:26:14.700Z"
+                        "updatedAt": "2023-02-13T22:26:14.700Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 282,
@@ -635,7 +1197,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.715Z",
-                        "updatedAt": "2023-02-13T22:26:14.715Z"
+                        "updatedAt": "2023-02-13T22:26:14.715Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 283,
@@ -644,7 +1216,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-02-13T22:26:14.729Z",
-                        "updatedAt": "2023-02-13T22:26:14.729Z"
+                        "updatedAt": "2023-02-13T22:26:14.729Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 740,
@@ -661,7 +1243,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-04-21T10:37:32.026Z",
-                        "updatedAt": "2023-04-21T10:37:32.026Z"
+                        "updatedAt": "2023-04-21T10:37:32.026Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 741,
@@ -678,7 +1270,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-04-21T10:37:32.112Z",
-                        "updatedAt": "2023-04-21T10:37:32.112Z"
+                        "updatedAt": "2023-04-21T10:37:32.112Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 742,
@@ -695,7 +1297,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-04-21T10:37:32.130Z",
-                        "updatedAt": "2023-04-21T10:37:32.130Z"
+                        "updatedAt": "2023-04-21T10:37:32.130Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 797,
@@ -716,7 +1328,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.927Z",
-                        "updatedAt": "2023-05-04T09:19:34.927Z"
+                        "updatedAt": "2023-05-04T09:19:34.927Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 798,
@@ -735,7 +1357,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.946Z",
-                        "updatedAt": "2023-05-04T09:19:34.946Z"
+                        "updatedAt": "2023-05-04T09:19:34.946Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 799,
@@ -756,7 +1388,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.951Z",
-                        "updatedAt": "2023-05-04T09:19:34.951Z"
+                        "updatedAt": "2023-05-04T09:19:34.951Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 800,
@@ -775,7 +1417,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.957Z",
-                        "updatedAt": "2023-05-04T09:19:34.957Z"
+                        "updatedAt": "2023-05-04T09:19:34.957Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 801,
@@ -796,7 +1448,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.963Z",
-                        "updatedAt": "2023-05-04T09:19:34.963Z"
+                        "updatedAt": "2023-05-04T09:19:34.963Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 802,
@@ -815,7 +1477,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T09:19:34.969Z",
-                        "updatedAt": "2023-05-04T09:19:34.969Z"
+                        "updatedAt": "2023-05-04T09:19:34.969Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 848,
@@ -828,7 +1500,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T13:53:50.008Z",
-                        "updatedAt": "2023-05-04T13:53:50.008Z"
+                        "updatedAt": "2023-05-04T13:53:50.008Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 849,
@@ -841,7 +1523,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T13:53:50.034Z",
-                        "updatedAt": "2023-05-04T13:53:50.034Z"
+                        "updatedAt": "2023-05-04T13:53:50.034Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 850,
@@ -854,7 +1546,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-04T13:53:50.040Z",
-                        "updatedAt": "2023-05-04T13:53:50.040Z"
+                        "updatedAt": "2023-05-04T13:53:50.040Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 851,
@@ -863,7 +1565,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-04T13:53:50.048Z",
-                        "updatedAt": "2023-05-04T13:53:50.048Z"
+                        "updatedAt": "2023-05-04T13:53:50.048Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 839,
@@ -884,7 +1596,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.036Z",
-                        "updatedAt": "2023-05-11T13:44:31.036Z"
+                        "updatedAt": "2023-05-11T13:44:31.036Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 702,
@@ -905,7 +1627,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.043Z",
-                        "updatedAt": "2023-05-11T13:44:31.043Z"
+                        "updatedAt": "2023-05-11T13:44:31.043Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 847,
@@ -918,7 +1650,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.049Z",
-                        "updatedAt": "2023-05-11T13:44:31.049Z"
+                        "updatedAt": "2023-05-11T13:44:31.049Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 820,
@@ -940,7 +1682,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.058Z",
-                        "updatedAt": "2023-05-11T13:44:31.058Z"
+                        "updatedAt": "2023-05-11T13:44:31.058Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 732,
@@ -953,7 +1705,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.064Z",
-                        "updatedAt": "2023-05-11T13:44:31.064Z"
+                        "updatedAt": "2023-05-11T13:44:31.064Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 841,
@@ -966,7 +1728,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.072Z",
-                        "updatedAt": "2023-05-11T13:44:31.072Z"
+                        "updatedAt": "2023-05-11T13:44:31.072Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 726,
@@ -979,7 +1751,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.078Z",
-                        "updatedAt": "2023-05-11T13:44:31.078Z"
+                        "updatedAt": "2023-05-11T13:44:31.078Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 755,
@@ -1001,7 +1783,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.084Z",
-                        "updatedAt": "2023-05-11T13:44:31.084Z"
+                        "updatedAt": "2023-05-11T13:44:31.084Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 769,
@@ -1024,7 +1816,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.093Z",
-                        "updatedAt": "2023-05-11T13:44:31.093Z"
+                        "updatedAt": "2023-05-11T13:44:31.093Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 821,
@@ -1037,7 +1839,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.099Z",
-                        "updatedAt": "2023-05-11T13:44:31.099Z"
+                        "updatedAt": "2023-05-11T13:44:31.099Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 846,
@@ -1050,7 +1862,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.118Z",
-                        "updatedAt": "2023-05-11T13:44:31.118Z"
+                        "updatedAt": "2023-05-11T13:44:31.118Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 760,
@@ -1073,7 +1895,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.130Z",
-                        "updatedAt": "2023-05-11T13:44:31.130Z"
+                        "updatedAt": "2023-05-11T13:44:31.130Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 691,
@@ -1094,7 +1926,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.135Z",
-                        "updatedAt": "2023-05-11T13:44:31.135Z"
+                        "updatedAt": "2023-05-11T13:44:31.135Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 759,
@@ -1117,7 +1959,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.144Z",
-                        "updatedAt": "2023-05-11T13:44:31.144Z"
+                        "updatedAt": "2023-05-11T13:44:31.144Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 718,
@@ -1130,7 +1982,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.157Z",
-                        "updatedAt": "2023-05-11T13:44:31.157Z"
+                        "updatedAt": "2023-05-11T13:44:31.157Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 828,
@@ -1149,7 +2011,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.172Z",
-                        "updatedAt": "2023-05-11T13:44:31.172Z"
+                        "updatedAt": "2023-05-11T13:44:31.172Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 768,
@@ -1172,7 +2044,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.179Z",
-                        "updatedAt": "2023-05-11T13:44:31.179Z"
+                        "updatedAt": "2023-05-11T13:44:31.179Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 837,
@@ -1185,7 +2067,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.185Z",
-                        "updatedAt": "2023-05-11T13:44:31.185Z"
+                        "updatedAt": "2023-05-11T13:44:31.185Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 818,
@@ -1207,7 +2099,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.191Z",
-                        "updatedAt": "2023-05-11T13:44:31.191Z"
+                        "updatedAt": "2023-05-11T13:44:31.191Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 757,
@@ -1229,7 +2131,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.203Z",
-                        "updatedAt": "2023-05-11T13:44:31.203Z"
+                        "updatedAt": "2023-05-11T13:44:31.203Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 722,
@@ -1242,7 +2154,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.209Z",
-                        "updatedAt": "2023-05-11T13:44:31.209Z"
+                        "updatedAt": "2023-05-11T13:44:31.209Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 747,
@@ -1268,7 +2190,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.215Z",
-                        "updatedAt": "2023-05-11T13:44:31.215Z"
+                        "updatedAt": "2023-05-11T13:44:31.215Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 806,
@@ -1281,7 +2213,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.227Z",
-                        "updatedAt": "2023-05-11T13:44:31.227Z"
+                        "updatedAt": "2023-05-11T13:44:31.227Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 838,
@@ -1302,7 +2244,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.233Z",
-                        "updatedAt": "2023-05-11T13:44:31.233Z"
+                        "updatedAt": "2023-05-11T13:44:31.233Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 832,
@@ -1315,7 +2267,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.240Z",
-                        "updatedAt": "2023-05-11T13:44:31.240Z"
+                        "updatedAt": "2023-05-11T13:44:31.240Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 721,
@@ -1328,7 +2290,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.247Z",
-                        "updatedAt": "2023-05-11T13:44:31.247Z"
+                        "updatedAt": "2023-05-11T13:44:31.247Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 807,
@@ -1341,7 +2313,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.257Z",
-                        "updatedAt": "2023-05-11T13:44:31.257Z"
+                        "updatedAt": "2023-05-11T13:44:31.257Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 752,
@@ -1361,7 +2343,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.263Z",
-                        "updatedAt": "2023-05-11T13:44:31.263Z"
+                        "updatedAt": "2023-05-11T13:44:31.263Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 830,
@@ -1380,7 +2372,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.269Z",
-                        "updatedAt": "2023-05-11T13:44:31.269Z"
+                        "updatedAt": "2023-05-11T13:44:31.269Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 745,
@@ -1406,7 +2408,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.275Z",
-                        "updatedAt": "2023-05-11T13:44:31.275Z"
+                        "updatedAt": "2023-05-11T13:44:31.275Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 822,
@@ -1419,7 +2431,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.281Z",
-                        "updatedAt": "2023-05-11T13:44:31.281Z"
+                        "updatedAt": "2023-05-11T13:44:31.281Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 831,
@@ -1432,7 +2454,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.294Z",
-                        "updatedAt": "2023-05-11T13:44:31.294Z"
+                        "updatedAt": "2023-05-11T13:44:31.294Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 733,
@@ -1445,7 +2477,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.304Z",
-                        "updatedAt": "2023-05-11T13:44:31.304Z"
+                        "updatedAt": "2023-05-11T13:44:31.304Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 715,
@@ -1458,7 +2500,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.315Z",
-                        "updatedAt": "2023-05-11T13:44:31.315Z"
+                        "updatedAt": "2023-05-11T13:44:31.315Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 754,
@@ -1478,7 +2530,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.322Z",
-                        "updatedAt": "2023-05-11T13:44:31.322Z"
+                        "updatedAt": "2023-05-11T13:44:31.322Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 836,
@@ -1491,7 +2553,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.328Z",
-                        "updatedAt": "2023-05-11T13:44:31.328Z"
+                        "updatedAt": "2023-05-11T13:44:31.328Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 724,
@@ -1504,7 +2576,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.334Z",
-                        "updatedAt": "2023-05-11T13:44:31.334Z"
+                        "updatedAt": "2023-05-11T13:44:31.334Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 756,
@@ -1526,7 +2608,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.344Z",
-                        "updatedAt": "2023-05-11T13:44:31.344Z"
+                        "updatedAt": "2023-05-11T13:44:31.344Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 743,
@@ -1552,7 +2644,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.358Z",
-                        "updatedAt": "2023-05-11T13:44:31.358Z"
+                        "updatedAt": "2023-05-11T13:44:31.358Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 819,
@@ -1574,7 +2676,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.368Z",
-                        "updatedAt": "2023-05-11T13:44:31.368Z"
+                        "updatedAt": "2023-05-11T13:44:31.368Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 717,
@@ -1587,7 +2699,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.375Z",
-                        "updatedAt": "2023-05-11T13:44:31.375Z"
+                        "updatedAt": "2023-05-11T13:44:31.375Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 750,
@@ -1607,7 +2729,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.381Z",
-                        "updatedAt": "2023-05-11T13:44:31.381Z"
+                        "updatedAt": "2023-05-11T13:44:31.381Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 840,
@@ -1628,7 +2760,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.387Z",
-                        "updatedAt": "2023-05-11T13:44:31.387Z"
+                        "updatedAt": "2023-05-11T13:44:31.387Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 758,
@@ -1651,7 +2793,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.421Z",
-                        "updatedAt": "2023-05-11T13:44:31.421Z"
+                        "updatedAt": "2023-05-11T13:44:31.421Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 729,
@@ -1664,7 +2816,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.476Z",
-                        "updatedAt": "2023-05-11T13:44:31.476Z"
+                        "updatedAt": "2023-05-11T13:44:31.476Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 829,
@@ -1683,7 +2845,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.506Z",
-                        "updatedAt": "2023-05-11T13:44:31.506Z"
+                        "updatedAt": "2023-05-11T13:44:31.506Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 713,
@@ -1696,7 +2868,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.522Z",
-                        "updatedAt": "2023-05-11T13:44:31.522Z"
+                        "updatedAt": "2023-05-11T13:44:31.522Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 842,
@@ -1709,7 +2891,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.530Z",
-                        "updatedAt": "2023-05-11T13:44:31.530Z"
+                        "updatedAt": "2023-05-11T13:44:31.530Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 767,
@@ -1732,7 +2924,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.547Z",
-                        "updatedAt": "2023-05-11T13:44:31.547Z"
+                        "updatedAt": "2023-05-11T13:44:31.547Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 714,
@@ -1745,7 +2947,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.554Z",
-                        "updatedAt": "2023-05-11T13:44:31.554Z"
+                        "updatedAt": "2023-05-11T13:44:31.554Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 728,
@@ -1758,7 +2970,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.564Z",
-                        "updatedAt": "2023-05-11T13:44:31.564Z"
+                        "updatedAt": "2023-05-11T13:44:31.564Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 680,
@@ -1779,7 +3001,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.579Z",
-                        "updatedAt": "2023-05-11T13:44:31.579Z"
+                        "updatedAt": "2023-05-11T13:44:31.579Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 725,
@@ -1792,7 +3024,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T13:44:31.591Z",
-                        "updatedAt": "2023-05-11T13:44:31.591Z"
+                        "updatedAt": "2023-05-11T13:44:31.591Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 864,
@@ -1805,7 +3047,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:21:14.844Z",
-                        "updatedAt": "2023-05-11T23:21:14.844Z"
+                        "updatedAt": "2023-05-11T23:21:14.844Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 865,
@@ -1818,7 +3070,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:21:14.852Z",
-                        "updatedAt": "2023-05-11T23:21:14.852Z"
+                        "updatedAt": "2023-05-11T23:21:14.852Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 866,
@@ -1838,7 +3100,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:21:50.804Z",
-                        "updatedAt": "2023-05-11T23:21:50.804Z"
+                        "updatedAt": "2023-05-11T23:21:50.804Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 867,
@@ -1858,7 +3130,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:21:50.818Z",
-                        "updatedAt": "2023-05-11T23:21:50.818Z"
+                        "updatedAt": "2023-05-11T23:21:50.818Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 868,
@@ -1878,7 +3160,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:21:50.826Z",
-                        "updatedAt": "2023-05-11T23:21:50.826Z"
+                        "updatedAt": "2023-05-11T23:21:50.826Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 870,
@@ -1915,7 +3207,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.824Z",
-                        "updatedAt": "2023-05-11T23:22:53.824Z"
+                        "updatedAt": "2023-05-11T23:22:53.824Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 871,
@@ -1951,7 +3253,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.835Z",
-                        "updatedAt": "2023-05-11T23:22:53.835Z"
+                        "updatedAt": "2023-05-11T23:22:53.835Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 873,
@@ -1988,7 +3300,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.858Z",
-                        "updatedAt": "2023-05-11T23:22:53.858Z"
+                        "updatedAt": "2023-05-11T23:22:53.858Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 874,
@@ -2024,7 +3346,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.869Z",
-                        "updatedAt": "2023-05-11T23:22:53.869Z"
+                        "updatedAt": "2023-05-11T23:22:53.869Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 876,
@@ -2061,7 +3393,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.888Z",
-                        "updatedAt": "2023-05-11T23:22:53.888Z"
+                        "updatedAt": "2023-05-11T23:22:53.888Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 877,
@@ -2097,7 +3439,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-11T23:22:53.901Z",
-                        "updatedAt": "2023-05-11T23:22:53.901Z"
+                        "updatedAt": "2023-05-11T23:22:53.901Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 878,
@@ -2119,7 +3471,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T00:03:46.054Z",
-                        "updatedAt": "2023-05-12T00:03:46.054Z"
+                        "updatedAt": "2023-05-12T00:03:46.054Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 879,
@@ -2141,7 +3503,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T00:03:46.080Z",
-                        "updatedAt": "2023-05-12T00:03:46.080Z"
+                        "updatedAt": "2023-05-12T00:03:46.080Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 880,
@@ -2163,7 +3535,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T00:03:46.094Z",
-                        "updatedAt": "2023-05-12T00:03:46.094Z"
+                        "updatedAt": "2023-05-12T00:03:46.094Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 887,
@@ -2212,7 +3594,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T13:04:54.662Z",
-                        "updatedAt": "2023-05-12T13:04:54.662Z"
+                        "updatedAt": "2023-05-12T13:04:54.662Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 888,
@@ -2261,7 +3653,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T13:04:54.675Z",
-                        "updatedAt": "2023-05-12T13:04:54.675Z"
+                        "updatedAt": "2023-05-12T13:04:54.675Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 889,
@@ -2310,7 +3712,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-12T13:04:54.682Z",
-                        "updatedAt": "2023-05-12T13:04:54.682Z"
+                        "updatedAt": "2023-05-12T13:04:54.682Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 890,
@@ -2319,7 +3731,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.399Z",
-                        "updatedAt": "2023-05-14T14:11:25.399Z"
+                        "updatedAt": "2023-05-14T14:11:25.399Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 891,
@@ -2328,7 +3750,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.411Z",
-                        "updatedAt": "2023-05-14T14:11:25.411Z"
+                        "updatedAt": "2023-05-14T14:11:25.411Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 892,
@@ -2337,7 +3769,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.417Z",
-                        "updatedAt": "2023-05-14T14:11:25.417Z"
+                        "updatedAt": "2023-05-14T14:11:25.417Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 893,
@@ -2346,7 +3788,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.421Z",
-                        "updatedAt": "2023-05-14T14:11:25.421Z"
+                        "updatedAt": "2023-05-14T14:11:25.421Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 894,
@@ -2355,7 +3807,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.426Z",
-                        "updatedAt": "2023-05-14T14:11:25.426Z"
+                        "updatedAt": "2023-05-14T14:11:25.426Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 895,
@@ -2364,7 +3826,17 @@
                         "properties": {},
                         "conditions": [],
                         "createdAt": "2023-05-14T14:11:25.431Z",
-                        "updatedAt": "2023-05-14T14:11:25.431Z"
+                        "updatedAt": "2023-05-14T14:11:25.431Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 896,
@@ -2388,7 +3860,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-17T12:28:44.350Z",
-                        "updatedAt": "2023-05-17T12:28:44.350Z"
+                        "updatedAt": "2023-05-17T12:28:44.350Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 897,
@@ -2412,7 +3894,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-17T12:28:44.366Z",
-                        "updatedAt": "2023-05-17T12:28:44.366Z"
+                        "updatedAt": "2023-05-17T12:28:44.366Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     },
                     {
                         "id": 898,
@@ -2436,7 +3928,17 @@
                         },
                         "conditions": [],
                         "createdAt": "2023-05-17T12:28:44.371Z",
-                        "updatedAt": "2023-05-17T12:28:44.371Z"
+                        "updatedAt": "2023-05-17T12:28:44.371Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-02-13T22:26:07.622Z",
+                            "updatedAt": "2023-02-13T22:26:07.622Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
                     }
                 ],
                 "createdBy": null,

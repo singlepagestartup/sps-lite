@@ -2,6 +2,6 @@
 sidebar_position: 2
 ---
 
-# Что уже есть в проекте?
+# What exists in the project
 
-Коцепция наследования присутствует не только на уровне Page-Block'ов, но и на уровне репозиториев. Каждый следующий по уровню репозиторий `sps-lite`, `sps`, `sps-store` наследует впереди идущий. Таким образом проект `sps` имеет всё, что есть в `sps-lite`, а `sps-store` имеет все, что есть в `sps`. Планируется развивать версии дальше и добавлять новые типы репозиториев с разными функционалом.
+The concept of inheritance is present not only at the level of Page-Blocks, but also at the level of repositories. Each repository at a higher level, such as `sps-lite`, `sps`, `sps-store`, inherits from the preceding one. Thus, the `sps` project has everything that `sps-lite` has, and `sps-store` has everything that `sps` has. It is planned to further develop versions and add new types of repositories with different functionality.

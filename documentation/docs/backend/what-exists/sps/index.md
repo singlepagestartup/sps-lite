@@ -4,10 +4,10 @@ sidebar_position: 3
 
 # sps
 
-Версия Single Page Startup с помощью которой можно сделать MVP стартапа в кротчайшие сроки. В данной версии есть все то, что имеется в [sps-lite](/docs/backend/what-exists/sps-lite) и добавлены следующие элементы:
+Version of Single Page Startup that allows you to create a startup MVP in the shortest possible time. This version includes everything that is available in [sps-lite](/docs/backend/what-exists/sps-lite), and the following elements have been added:
 
-- Функционал и Page-Block'и аутентификации, авторизации пользователей
-- Многофакторная авторизация пользователей
-- Функционал подтверждения действий пользователя через один из факторов аутентификации
-- Page-Block'и для создания личного кабинета пользователя
-- Лейауты с возможностью разграничения доступов пользователя на основе ролей
+- Authentication and user authorization functionality and Page-Blocks
+- Multi-factor user authentication
+- Functionality for confirming user actions through one of the authentication factors
+- Page-Blocks for creating a user's personal account
+- Layouts with the ability to restrict user access based on roles

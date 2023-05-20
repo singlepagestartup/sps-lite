@@ -11,52 +11,53 @@ export default function ProjectStructure() {
           <br />
           {"|     ├────"} workflows{" "}
           <span className="comment">
-            # Директория с файлами конфигурации{" "}
+            #{" "}
             <a href="https://github.com/features/actions" target="_blank">
               Github Actions
-            </a>
+            </a>{" "}
+            configuration Directory
           </span>
           <br />
           {"|     |     ├ "}
           production.yml
           <span className="comment">
             {" "}
-            # Конфигурация для деплоя проекта в продакшн-среду
+            # Configuration for deploying the project to the production
           </span>
           <br />
           {"|     |     └ "}
           staging.yml
           <span className="comment">
             {" "}
-            # Конфигурация для деплоя проекта в стейдж-среду
+            # Configuration for deploying the project to the staging
           </span>
           <br />
           ├──── .husky{" "}
           <span className="comment">
-            # Директория с файлами конфигурации{" "}
+            #{" "}
             <a href="https://github.com/typicode/husky" target="_blank">
               Husky
-            </a>
+            </a>{" "}
+            configuration folder
           </span>
           <br />
           ├──── .vscode{" "}
-          <span className="comment">
-            # Директория с файлами конфигурации VS Code
-          </span>
+          <span className="comment"># VS Code configuration folder</span>
           <br />
           ├──── backend{" "}
           <span className="comment">
-            # Директория с бекендом проекта на основе{" "}
+            #{" "}
             <a href="https://strapi.io/" target="_blank">
               Strapi
-            </a>
+            </a>{" "}
+            based backend folder
           </span>
           <br />
           {"|     ├ "}
           ...{" "}
           <span className="comment">
-            Ниже перечислены только те файлы, которые имеют отличия от
-            стандартного проекта на Strapi
+            The following are listed only those files that have differences from
+            the standard project on Strapi
           </span>
           <br />
           {"|     ├──── "}
@@ -68,12 +69,12 @@ export default function ProjectStructure() {
           {"|     |     ├ "}
           premissions.js{" "}
           <span className="comment">
-            # Файл с конфигурацией ролей доступа к контенту
+            # File with configuration of user-permission roles
           </span>
           <br />
           {"|     |     └ "}
           plugins.js{" "}
-          <span className="comment"># Файл с конфигурацией плагинов</span>
+          <span className="comment"># Plugins configuration file</span>
           <br />
           {"|     ├──── "}
           src
@@ -88,197 +89,260 @@ export default function ProjectStructure() {
           seeds <br />
           {"|     |     |     |     |     |     └ "}
           {"<number>.json"}{" "}
-          <span className="comment"># Файлы с данными для плагина сидинга</span>
+          <span className="comment"># Seeding files for migrating data</span>
           <br />
           {"|     |     ├──── "}
           side-effects <br />
           {"|     |     |     ├ "}
           index.js{" "}
           <span className="comment">
-            # Основной файл для подключения сайд эффектов, которые используются
-            при создании нового form-request
+            # The main file for connecting the side effects that are calls after
+            create Form-Request
           </span>{" "}
           <br />
           {"|     |     |     ├ "}
           pass-to-service.js{" "}
           <span className="comment">
-            # Функция проксирования данных с формы в другую систему, например
-            Google Drive
+            # The function of proxiding data from form to another system, such
+            as Google Drive
           </span>{" "}
           <br />
           {"|     |     |     ├ "}
           save-as-pdf.js{" "}
           <span className="comment">
-            # Функция для сохранения данных в PDF-файл
+            # Function for saving data in the PDF file
           </span>{" "}
           <br />
           {"|     |     |     ├ "}
           send-to-recievers.js{" "}
           <span className="comment">
-            # Функция отправки полученных данных реципиентам в нужный сервис,
-            например на почту
+            # The function of sending the received data to recipients to the
+            desired service, for example, by mail
           </span>{" "}
           <br />
           {"|     |     |     └ "}
           utils.js{" "}
-          <span className="comment"># Файл с утилитами для функций</span> <br />
+          <span className="comment">
+            # File with utilities for side effect functions
+          </span>{" "}
+          <br />
           ├──── frontend{" "}
           <span className="comment">
-            # Директория с фронтендом проекта на основе{" "}
+            #{" "}
             <a href="https://nextjs.org/" target="_blank">
               Next.js
-            </a>
+            </a>{" "}
+            based frontend folder
           </span>
           <br />
           {"|     ├ "}
           ...{" "}
           <span className="comment">
-            # Ниже перечислены только те файлы, которые имеют отличия от
-            стандартного проекта на Next.js
+            # The following are listed only those files that have differences
+            from the standard project on Next.js
           </span>
           <br />
           {"|     ├──── "}
           .storybook{" "}
           <span className="comment">
-            # Директория с файлами конфигурации{" "}
+            #{" "}
             <a href="https://storybook.js.org/" target="_blank">
               Storybook
-            </a>
+            </a>{" "}
+            configuration folder
           </span>
           <br />
-          {"|     |     ├──── "}
-          pages{" "}
+          {"|     ├──── "}
+          app{" "}
           <span className="comment">
-            # Директория со страницами, которые будут отображаться на фронтенде.
-            Более подробно можно изучить в{" "}
+            # Directory with pages that will be displayed on the frontend. In
+            more detail, you can study in the{" "}
             <a
-              href="https://nextjs.org/docs/basic-features/pages/"
+              href="https://nextjs.org/docs/app/building-your-application/routing/defining-routes"
               target="_blank"
             >
-              Документации Next.js
+              Documentation Next.js
             </a>
           </span>
           <br />
-          {"|     |     |     ├ "}
+          {"|     |     ├ "}
           ...
           <br />
-          {"|     |     |     ├ "}
-          [[url.tsx]]{" "}
+          {"|     |     ├──── "}
+          [locale] <br />
+          {"|     |     |     ├──── "}
+          [[url]] <br />
+          {"|     |     |     |     └ "}
+          page.tsx{" "}
           <span className="comment">
-            # Файл для рендеринга страниц на основе модели Page на бекенде
+            # File for rendering pages based on Page on the Beckend
           </span>
           <br />
+          {"|     |     ├──── "}
+          robots.txt <br />
           {"|     |     |     └ "}
-          custom.tsx{" "}
+          route.ts{" "}
           <span className="comment">
-            # Пример страницы, переопределяющий роут, название которого
-            соответствует названия файла. Если такой же роут будет добавлен
-            через модель Pages на бекенде, он не будет обработан в файле
-            [[url.tsx]]
-          </span>
-          <br />
-          {"|     |     ├──── "}
-          src{" "}
-          <span className="comment">
-            # Директория с основными ресурсами, используемыми на фронтенде
-          </span>
-          <br />
-          {"|     |     |     ├──── "}
-          components{" "}
-          <span className="comment"># Директория с компонентами</span>
-          <br />
-          {"|     |     |     ├──── "}
-          hooks{" "}
-          <span className="comment">
-            # Директория с хуками, используемыми более чем в одном компоненте
-          </span>
-          <br />
-          {"|     |     |     ├──── "}
-          mocks{" "}
-          <span className="comment">
-            # Директория с моковыми данными, используемыми в Storybook файлах,
-            также может быть использовано в тестах
-          </span>
-          <br />
-          {"|     |     |     ├──── "}
-          redux <span className="comment"># Директория с настойками Redux</span>
-          <br />
-          {"|     |     |     └──── "}
-          utils{" "}
-          <span className="comment">
-            # Директория с утилитами, используемыми более чем в одном компоненте
-          </span>
-          <br />
-          {"|     |     ├──── "}
-          styles{" "}
-          <span className="comment">
-            # Директория с SCSS и CSS стилями для Tailwind CSS
-          </span>
-          <br />
-          {"|     |     ├──── "}
-          tests{" "}
-          <span className="comment">
-            # Директория с{" "}
-            <a href="https://playwright.dev/" target="_blank">
-              Playwright
+            # File for rendering the{" "}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt"
+              target="_blank"
+            >
+              robots.txt
             </a>{" "}
-            тестами
+            file
           </span>
           <br />
           {"|     |     ├──── "}
-          themes{" "}
+          sitemap.xml <br />
+          {"|     |     |     └ "}
+          route.ts{" "}
           <span className="comment">
-            # Директория с настройками стилей, полученных с бекенда из модели
-            Theme (создается автоматически после первого запуска)
-          </span>
-          <br />
-          {"|     |     ├──── "}
-          translations{" "}
-          <span className="comment">
-            # Директория с переводами для компонентов, которые являются общими и
-            не зависят от данных, получаемых с бекенда
-          </span>
-          <br />
-          {"|     |     ├──── "}
-          types{" "}
-          <span className="comment">
-            # Директория с типами моделей, получаемых с бекенда
+            # File for rendering the{" "}
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Glossary/Site_map"
+              target="_blank"
+            >
+              sitemap.xml
+            </a>{" "}
+            file
           </span>
           <br />
           {"|     |     ├ "}
-          ... <br />
-          {"|     |     ├ "}
-          playwright.config.ts{" "}
+          fonts.tsx{" "}
           <span className="comment">
-            # Файл конфигурации{" "}
-            <a href="https://playwright.dev/" target="_blank">
-              Playwright
-            </a>
+            # File for connecting fonts loaded from backend to the directory
+            /frontend/themes/fonts
           </span>
           <br />
           {"|     |     ├ "}
-          postcss.config.js{" "}
-          <span className="comment">
-            # Файл конфигурации Post CSS для{" "}
-            <a href="https://tailwindcss.com/" target="_blank">
-              Tailwind CSS
-            </a>
-          </span>
+          global-error.tsx{" "}
+          <span className="comment"># File for catching frontend errors</span>
           <br />
           {"|     |     ├ "}
-          tailwind.config.js{" "}
+          layout.tsx{" "}
           <span className="comment">
-            # Файл конфигурации{" "}
-            <a href="https://tailwindcss.com/" target="_blank">
-              Tailwind CSS
-            </a>
+            # File for rendering the layout based on the data received from the
+            backend via the /api/layouts request.
           </span>
           <br />
           {"|     |     └ "}
+          not-found.tsx{" "}
+          <span className="comment">
+            # A 404 page with data received from the backend via the
+            /api/pages/filters[url]=/404 request
+          </span>
+          <br />
+          {"|     ├──── "}
+          src{" "}
+          <span className="comment">
+            # Directory with main resources used on the frontend
+          </span>
+          <br />
+          {"|     |     ├──── "}
+          components{" "}
+          <span className="comment"># Directory with components</span>
+          <br />
+          {"|     |     ├──── "}
+          hooks{" "}
+          <span className="comment">
+            # Directory with hooks used in more than one component
+          </span>
+          <br />
+          {"|     |     ├──── "}
+          mocks{" "}
+          <span className="comment">
+            # Directory with mock data used in Storybook files and can also be
+            used in tests
+          </span>
+          <br />
+          {"|     |     ├──── "}
+          redux <span className="comment"># Directory with Redux settings</span>
+          <br />
+          {"|     |     └──── "}
+          utils{" "}
+          <span className="comment">
+            # Directory with utilities used in more than one component
+          </span>
+          <br />
+          {"|     ├──── "}
+          styles{" "}
+          <span className="comment">
+            # Directory with SCSS and CSS styles for Tailwind CSS
+          </span>
+          <br />
+          {"|     ├──── "}
+          tests{" "}
+          <span className="comment">
+            # Directory with{" "}
+            <a href="https://playwright.dev/" target="_blank">
+              Playwright
+            </a>{" "}
+            tests
+          </span>
+          <br />
+          {"|     ├──── "}
+          themes{" "}
+          <span className="comment">
+            # Directory with settings for styles obtained from the Theme model
+            on the backend (created automatically after the first launch)
+          </span>
+          <br />
+          {"|     ├──── "}
+          translations{" "}
+          <span className="comment">
+            # Directory with translations for components that are common and do
+            not depend on data obtained from the backend
+          </span>
+          <br />
+          {"|     |     └ "}
+          ru.json{" "}
+          <span className="comment">
+            # Example Russian language translations
+          </span>
+          <br />
+          {"|     ├──── "}
+          types{" "}
+          <span className="comment">
+            # Directory with types of models obtained from the backend
+          </span>
+          <br />
+          {"|     ├ "}
+          ... <br />
+          {"|     ├ "}
+          playwright.config.ts{" "}
+          <span className="comment">
+            #{" "}
+            <a href="https://playwright.dev/" target="_blank">
+              Playwright
+            </a>{" "}
+            configuration file
+          </span>
+          <br />
+          {"|     ├ "}
+          postcss.config.js{" "}
+          <span className="comment">
+            # Post CSS configuration for{" "}
+            <a href="https://tailwindcss.com/" target="_blank">
+              Tailwind CSS
+            </a>
+          </span>
+          <br />
+          {"|     ├ "}
+          tailwind.config.js{" "}
+          <span className="comment">
+            #{" "}
+            <a href="https://tailwindcss.com/" target="_blank">
+              Tailwind CSS
+            </a>{" "}
+            configuration
+          </span>
+          <br />
+          {"|     └ "}
           theme.js{" "}
           <span className="comment">
-            # Функция для взятия данных из модели Theme на бекенде и размещения
-            полученного в результате файла в папку themes
+            # A function for retrieving data from the Theme model on the backend
+            and placing the resulting file in the themes directory
           </span>
           <br />
         </code>
