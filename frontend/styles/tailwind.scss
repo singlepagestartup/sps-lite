@@ -824,18 +824,37 @@ input[type="number"] {
 }
 
 .flatpickr-calendar {
-  @apply w-[340px];
+  @apply w-[340px] bg-transparent opacity-0 hidden text-center invisible p-0 animate-none border-0 text-sm rounded-md absolute box-border touch-manipulation shadow-md;
 
   &:before,
   &:after {
-    @apply hidden;
+    @apply absolute block pointer-events-none border-solid border-transparent content-none h-0 w-0 left-[22px];
   }
-
+  &:before {
+    @apply border-[5px] mx-0 -my-[5px];
+  }
+  &:after {
+    @apply border-[4px] mx-0 -my-[4px];
+  }
+  &:focus {
+    @apply outline-none;
+  }
   &.open,
   &.inline {
-    @apply max-h-none;
+    @apply max-h-none opacity-100 visible;
   }
-
+  &.open {
+    @apply inline-block z-[99999];
+  }
+  &.inline {
+    @apply block relative top-0.5;
+  }
+  &.static {
+    @apply absolute;
+  }
+  &.static.open {
+    @apply z-[99999] block;
+  }
   .flatpickr-month,
   .flatpickr-weekdays,
   .flatpickr-weekday,
@@ -848,9 +867,11 @@ input[type="number"] {
   }
 
   .flatpickr-months {
-    @apply bg-white;
+    @apply bg-white flex;
   }
-
+  .flatpickr-wrapper {
+    @apply relative inline-block;
+  }
   .flatpickr-months .flatpickr-prev-month:hover svg,
   .flatpickr-months .flatpickr-next-month:hover svg {
     @apply fill-primary-500;
@@ -935,10 +956,21 @@ input[type="number"] {
       -webkit-box-shadow: none;
     }
   }
-
+  .flatpickr-months .flatpickr-prev-month,
+  .flatpickr-months .flatpickr-next-month {
+    @apply no-underline cursor-pointer absolute top-0 h-[34px] p-2.5 z-[3] text-[#5a6171] fill-[#5a6171];
+  }
   .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
   .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {
     @apply left-4 top-4;
+  }
+  .flatpickr-months .flatpickr-prev-month.flatpickr-disabled,
+  .flatpickr-months .flatpickr-next-month.flatpickr-disabled {
+    @apply hidden;
+  }
+  .flatpickr-months .flatpickr-prev-month i,
+  .flatpickr-months .flatpickr-next-month i {
+    @apply relative;
   }
 
   .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,
