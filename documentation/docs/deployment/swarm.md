@@ -4,44 +4,42 @@ sidebar_position: 5
 
 # Docker Swarm
 
-## Подключаемся к серверу от имени пользователя `code`
+## Connecting to the server as user "code"
 
-Если пользователь не создан, то необходимо выполнить шаги, описанные в [документации по настройке сервера](http://localhost:3333/docs/deployment/server).
+If the user is not created, it is necessary to follow the steps described in `Server configuration`.
 
-## Создание Docker Swarm
+## Creating a Docker Swarm
 
-Для конфигурации **Docker Swarm** можно воспользоваться [официальной документацией](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) или просто выполнить создание 1 инстанции **Swarm Manager**, выполнив команду:
+To configure Docker Swarm, you can use the [official documentation](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm) or simply create a Swarm Manager by executing the command:
 
-```bash
+```bash title="in any folder"
 docker swarm init
 ```
 
-После того, как создан `Docker Swarm` можно перейти к настройке окружения, в котором будет работать проект.
+After creating a `Docker Swarm`, you can proceed to configuring the environment in which the project will work.
 
-## Настройка окружения
+## Environment configuration
 
-В репозитории Single Page Startup имеется директория `deployment`, в ней находятся все необходимые `docker-compose` файлы.
+The Single Page Startup repository contains a `deployment` directory that contains all the necessary `docker-compose` files.
 
 ![Directory](./img/directory.png)
 
-:::danger
-Все нижеперечисленные команды надо выполнять в директории `code`, которую мы создали в корневой директории сервера
-:::
+All the commands listed below must be executed in the `code` directory, which we created in the root directory of the server.
 
 ## Traefik
 
-Для настройки **Traefik** нужно создать `docker-compose.traefik.yaml` файл и файл конфигурации **Traefik** `traefik.yml`. В файле `docker-compose.traefik.yaml` нужно заменить поле **Host(\`traefik.yourstartup.com\`)** в соответствии с доменом и поддоменом, который был указан при настройке `DNS-записей` в ходе выполнения пунктов раздела [SSL-сертификаты](/docs/deployment/certificates).
+To configure Traefik, you need to create a `docker-compose.traefik.yaml` file and a `traefik.yml` configuration file. In the `docker-compose.traefik.yaml` file, you need to replace the field `Host(\`traefik.yourstartup.com\`)`according to the domain and subdomain that was specified during the`DNS records`setup in the`SSL certificates` section.
 
-Для панели администрирования **Traefik** нужно создать пароль и поместить его в `docker-compose.traefik.yaml`
+To create a password for the Traefik administration panel, you need to add it to the `docker-compose.traefik.yaml` file.
 
-```bash
+```bash title="in any folder"
 echo $(htpasswd -nb user password) | sed -e s/\\$/\\$\\$/g
-			        |    |
-					|    └ заменить на необходимый пароль
-					└ заменить на необходимое имя
+			 	    |    |
+			 	    |    └ replace with the required password
+			 	    └ replace with the required name
 ```
 
-Также нужно разместить сертификаты, полученные в ходе выполнения пунктов раздела [SSL-сертификаты](/docs/deployment/certificates), в папке `certs`
+It is also necessary to place the certificates obtained during the execution of the section `SSL-certificates` in the `certs` folder.
 
 ```bash
 certs
@@ -49,103 +47,80 @@ certs
 └ <domain_name>.key
 ```
 
-Для запуска **Traefik** выполняется команда
+To launch Traefik, execute the command:
 
-```bash
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.traefik.yaml traefik
 ```
 
-После успешного запуска **Traefik** мы должны получить к нему доступ по адресу `traefik.<your_domain.com>`.
+After a successful launch, the management panel for Traefik should become available at the address `traefik.<your_domain.com>`.
+
+![Traefik dashboard](./img/traefik-dashboard.png)
 
 ## Portainer
 
-Нужно создать файл `docker-compose.portainer.yaml` и директорию `portainer_data`. В файле `docker-compose.portainer.yaml` нужно заменить поле **Host(\`portainer.yourstartup.com\`)** в соответствии с доменом и поддоменом, который был указан при настройке `DNS-записей` в ходе выполнения пунктов раздела [SSL-сертификаты](/docs/deployment/certificates).
+You need to create a file named `docker-compose.portainer.yaml` and a directory named `portainer_data`. In the `docker-compose.portainer.yaml` file, replace the field `Host(\`portainer.yourstartup.com\`)`with the domain and subdomain that were specified during the setup of DNS records in the`SSL-certificates` section.
 
-После чего в командной строке сервиса запустить их
+After that, start them in the service command line.
 
-```bash
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.portainer.yaml portainer
 ```
 
-После успешного запуска **Portainer** мы должны получить к нему доступ по адресу `portainer.<your_domain.com>`.
+After a successful launch of `Portainer`, it should be accessible at `portainer.<your_domain.com>` address.
+
+![Portainer dashboard](./img/portainer-dashboard.png)
 
 ## Postgres
 
-Нужно создать директорию `postgres_data` и файл `docker-compose.postgres.yaml`
+Create a directory called `postgres_data` and a file named `docker-compose.postgres.yaml`.
 
-```bash
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.postgres.yaml postgres
 ```
 
 ## Adminer
 
-Нужно создать файл `docker-compose.adminer.yaml`. В файле `docker-compose.adminer.yaml` нужно заменить поле **Host(\`adminer.yourstartup.com\`)** в соответствии с доменом и поддоменом, который был указан при настройке `DNS-записей` в ходе выполнения пунктов раздела [SSL-сертификаты](/docs/deployment/certificates).
+It is necessary to create a file named `docker-compose.adminer.yaml`. In the file `docker-compose.adminer.yaml`, the field `Host(\`adminer.yourstartup.com\`)`should be replaced according to the domain and subdomain specified during the configuration of`DNS records`in the steps outlined in the`SSL-certificates` section.
 
-```bash
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.adminer.yaml adminer
 ```
 
-После успешного запуска **Adminer** мы должны получить к нему доступ по адресу `adminer.<your_domain.com>`.
+After a successful launch, Adminer should be available at `adminer.<your_domain.com>`.
+
+![Adminer](./img/adminer.png)
 
 ## Backend
 
-Нужно создать директорию `sps_backend_uploads` и файл `docker-compose.sps_backend.yaml`. В файле `docker-compose.sps_backend.yaml` нужно заменить поле **Host(\`api.yourstartup.com\`)** в соответствии с доменом и поддоменом, который был указан при настройке `DNS-записей` в ходе выполнения пунктов раздела [SSL-сертификаты](/docs/deployment/certificates).
+It is necessary to create the `sps_backend_uploads` directory, `docker-compose.sps_backend.yaml`, and `sps-lite.env` files.
 
-Запуск сервиса осуществляется командой
+In the `sps-lite.env` file, all parameters should be set according to your configuration.
 
-```bash
+In the `docker-compose.sps_backend.yaml` file, the `environment` parameters should be replaced according to your configuration, and the `Host(\`api.yourstartup.com\`)`field should be changed to the domain and subdomain specified during the`DNS records`setup in the`SSL-certificates` section.
+
+The service can be launched with the following command:
+
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.sps_backend.yaml sps_backend
 ```
 
-После чего нужно добавить `Config` в `Portainer` данного сервиса, куда поместить переменные окружения:
-
-```txt
-
-NODE_ENV=production
-
-APP_KEYS=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-JWT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-ADMIN_JWT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-API_TOKEN_SALT=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-DATABASE_HOST=postgres_postgres
-DATABASE_PASSWORD=password
-```
-
-**APP_KEYS** - строка
-
-**JWT_SECRET** - ключ JWT, если его поменять после создания пользователя в сервисе бекенда, то зайти в аккаунт пользователя не получится
-
-**ADMIN_JWT_SECRET** - ключ JWT для администратора, если его поменять после создания пользователя в сервисе бекенда, то зайти в аккаунт администратора не получится. Надо будет удалять пользователя через adminer.
-
-**DATABASE_PASSWORD** - был установлен в `docker-compose.db.yaml`
-
-Более детальную информация о передаваемых параметрах можно найти в официальной документации [Strapi](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations.html)
-
-> Созданный файл конфигурации нужно установить в сервисе `sps_backend` в разделе `Config` с параметром `Path in container` равным `/usr/src/app/.env` после чего перезапустить сервис.
-
-После успешного запуска **Backend** мы должны получить к нему доступ по адресу `api.<your_domain.com>`.
-
 ## Frontend
 
-Нужно создать файл `docker-compose.sps_frontend.yaml`. В файле `docker-compose.sps_frontend.yaml` нужно заменить поле **Host(\`yourstartup.com\`)** в соответствии с доменом и поддоменом, который был указан при настройке `DNS-записей` в ходе выполнения пунктов раздела [SSL-сертификаты]
+It is necessary to create a file named `docker-compose.sps_frontend.yaml`. In the `docker-compose.sps_frontend.yaml` file, the field `Host(\`yourstartup.com\`)`needs to be replaced with the domain and subdomain specified during the configuration of`DNS records`in the steps of the`SSL-certificates` section.
 
-Запуск сервиса осуществляется командой
+The service can be launched with the following command:
 
-```bash
+```bash title="in folder with docker-compose files"
 docker stack deploy -c=docker-compose.sps_frontend.yaml sps_frontend
 ```
 
-После чего нужно добавить `Config` в `Portainer` данного сервиса, куда поместить следующие данные:
+Frontend configuration parameters are taken from the `/frontend/.env.production` file, but they can be overwritten using Portainer. To do this, create a new entry in the `Config` section.
 
-```txt
-BACKEND_URL=https://api.apisps.ru
-NEXT_PUBLIC_BACKEND_URL=https://api.apisps.ru
-```
+![Portainer config](./img/portainer-config.png)
 
-**BACKEND_URL** - домен, на котором работает `sps_backend`
-**NEXT_PUBLIC_BACKEND_URL** - домен, на котором работает `sps_backend`
+![Portainer env](./img/portainer-new-env.png)
 
-> Созданный файл конфигурации нужно установить в сервиса `sps_frontend` в разделе `Config` с параметром `Path in container` равным `/usr/src/app/.env.production` после чего перезапустить сервис.
+The created configuration file should be installed in the `sps_frontend` service under the `Config` section with the `Path in container` parameter set to `/usr/src/app/.env.production`. Then, click on the `Apply changes` button and restart the service by clicking on the `Update the service` button.
 
-После успешного запуска **Frontend** мы должны получить к нему доступ по адресу `<your_domain.com>`.
+![Portainer container config](./img/portainer-container-config.png)

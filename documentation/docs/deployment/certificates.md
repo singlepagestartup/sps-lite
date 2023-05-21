@@ -2,93 +2,89 @@
 sidebar_position: 4
 ---
 
-# SSL-cертификаты
+# SSL-certificates
 
-Для безопасной работы с проектом необходимо использовать `SSL-сертификаты` для вашего домена.
-
-:::tip
-Прежде чем получать сертификаты необхоидмо преобрести домен для своего проекта, это можно сделать на таких сервисах как [Google Domains](https://domains.google/), [Namecheap](https://www.namecheap.com/), [GoDaddy](https://www.godaddy.com/) и других
-:::
+Before obtaining certificates, you need to purchase a domain for your project. This can be done on services such as [Google Domains](https://domains.google/), [Namecheap](https://www.namecheap.com/), [GoDaddy](https://www.godaddy.com/), and others.
 
 ## Cloudflare
 
-Мы рекомендуем использовать [Cloudflare](https://cloudflare.com/) для работы с `SSL-сертификатами` и `DNS-записями` вашего домена. Для этого вам нужно создать там аккаунт и делегировать домен на их `DNS-серверы`.
+We recommend using [Cloudflare](https://cloudflare.com/) to manage your domain's `SSL certificates` and `DNS records`. To do this, you need to create an account there and delegate your domain to their `DNS servers`.
 
-Для делегирования вашего домена на серверы **Cloudflare** просто следуйте описанным пунктам в панели администрирования домена **Cloudflare**.
+To delegate your domain to Cloudflare's servers, simply follow the steps described in the Cloudflare domain administration panel.
 
-### Добавьте домен
+### Add a domain
 
 ![Add domain](./img/add-domain.png)
 
-### Выберите Free тариф
+### Choose the Free plan
 
 ![Select free plan](./img/select-free-plan.png)
 
-### Добавьте nameservers в административной панели, где покупали домен
+### Add nameservers in the administrative panel where you purchased the domain
 
 ![Add nameservers](./img/add-nameservers.png)
+After completion, click on the `Done, check nameservers` button. It may take some time for the changes to the NS servers to take effect.
 
-После завершения нажмите кнопку "Done, check nameservers". Может потребоваться некоторое время, чтобы изменения `NS-серверов` вступили в силу.
+Once the changes take effect, you will be able to edit DNS records and issue SSL certificates through Cloudflare.
 
-После того, как изменения вступят в силу, вы сможете редактировать `DNS-записи` и выдавать `SSL-сертификаты` через **Cloudflare**.
+## **Adding DNS Records**
 
-## Добавление DNS-записи
+Through Cloudflare, you can manage domain DNS records. DNS records allow the browser to determine where to direct user traffic when they try to visit your project on the internet.
 
-Через **Cloudflare** вы можете управлять `DNS-записями` домена. `DNS-записи` позволяют браузеру определить куда направлять трафик пользователя, когда он пытается постетить ваш проект в интернете.
+You need to add several DNS records to allow visitors to use your project. We will need subdomains for `traefik`, `portainer`, `adminer` (optional), `backend`, `frontend`.
 
-Необходимо добавить несколько DNS-записей для того, чтобы вашим проектом смогли пользоваться посетители. Нам понадобятся поддомены для **Traefik**, **Portainer**, **Adminer** (по желанию), **Backend**, **Frontend**.
-
-Для этого нужно перейти в раздел **DNS** в сайдбаре панели администрирования **Cloudflare**.
+To do this, go to the DNS section in the Cloudflare administration panel sidebar.
 
 ![DNS button](./img/dns-button.png)
 
-Далее нужно нажать на кнопку "Add record"
+Next, you need to click on the `Add record` button
+
 ![Add button](./img/add-button.png)
 
-После чего нужно добавить несколько записей типа **А** с включенным проксированием через **Cloudflare**. В появившихся полях ввода мы должны вписать название поддомена, на котором хотим видеть тот или иной сервис и `IP адрес сервера`, который мы настраивали в разделе [Сервер](/docs/deployment/server).
+Afterwards, you need to add several records of type `A` with proxying enabled through Cloudflare. In the fields that appear, we should enter the subdomain name where we want to see a particular service and the `server IP address` that we configured in the `Server configuration` section.
 
-:::tip
-IP адрес сервера мы вводили в SSH-консоль, поэтому его можно взять оттуда
-:::
+We also entered the server's `IP address` in the `SSH console`, so we can take it from there.
 
 ![Add record](./img/record.png)
 
-:::info
-При вводе вышеуказанных параметров мы получили следующий результат: мы сказали доменному регистратору что домен управляется **Cloudflare**, поэтому трафик пользователя направляй на NS-серверы **Cloudflare**. А **Cloudflare** мы сказали, что хотим чтобы он при получении запроса от пользователя на получение сайта по адресу `traefik.new-startup.com`, весь трафик направлял на сервер, который находится по `IP-адресу: 138.197.199.199`
-:::
+When entering the above parameters, we got the following result:
 
-Таким же способом добавляем остальные домены.
+We told the domain registrar that the domain is managed by Cloudflare, so route user traffic to Cloudflare's NS servers.
 
-Для того, чтобы сам домен направить куда-либо в поле ввода **Name (required)** надо ввести `@`
+We told Cloudflare that when receiving a request from the user to the address `traefik.new-startup.com`, route all traffic to the server located at `IP address: 138.197.199.199`.
+
+We add the rest of the domains in the same way.
+
+To route the domain itself somewhere, enter `@` in the `Name (required)` input field.
 
 ![Root record](./img/root-domain.png)
 
-В конечном итоге должны получить примерно такой результат (поддомены могут быть выбраны на усмотрение руководства стартапа):
+Ultimately, the result should be something like this (subdomains can be chosen at your discretion):
 
 ![Domains list](./img/domains-list.png)
 
-## Получение SSL-сертификата
+## Obtaining an SSL Certificate
 
-После того как мы определили доменный роутинг проекта необходимо получить `SSL-сертификат` и настроить способ его проверки. Для этого нужно перейти в раздел `SSL/TLS`.
+After we have defined the domain routing for the project, it is necessary to obtain an SSL certificate and configure the method of its verification. To do this, you need to go to the `SSL/TLS` section.
 
 ![SSL](./img/ssl.png)
 
-Выбираем **Full (strict)**
+Choose `Full (strict)`
 
 ![Full SSL](./img/full-strict.png)
 
-Переходим в раздел **Origin Server**
+Go to the `Origin Server` section
 
 ![Origin server](./img/origin.png)
 
-Нажимаем **Create certificate**
+Click on `Create certificate`.
 
 ![Create certificate](./img/create-certificate.png)
 
-Подтверждаем создание сертификатов **Create**
+Confirm the creation of certificates `Create`
 
 ![Confirm](./img/confirm-create-certificate.png)
 
-Копируем сертификат **Origin Certificate** и сохраняем его содержимое в файл с именем домена и расширением `.crt`, например `new-startup.com.crt`. **Private Key** сохраняем также, только с расширением `.key`. После чего нажимаем **OK**. Впоследствии надо будет разместить эти файлы на сервере в папке `certs`, о ней будет написано в разделе [Docker Swarm](/docs/deployment/swarm).
+Copy the `Origin Certificate` and save its contents in a file with the domain name and extension `.crt`, for example `new-startup.com.crt`. Save the Private Key \*\*\*\* in the same way, but with the extension `.key`. Then click `OK`. Later, these files will need to be placed on the server in the `certs` folder, which will be described in the `Docker Swarm` section.
 
 ![Certificates](./img/certificates.png)

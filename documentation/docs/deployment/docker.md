@@ -4,154 +4,131 @@ sidebar_position: 2
 
 # Docker Images
 
-Проект на базе Single Page Startup можно запустить используя окружение [Docker](https://www.docker.com/) и образы, созданные на основе `Dockerfile`, размещенных в директории `backend` и `frontend`.
+It is possible to launch a Single Page Startup project using Docker environment and images created based on the `Dockerfile`, located in the `backend` and `frontend` directories.
 
-:::tip
-Для успешного выполнения следующих шагов убедитесь что на машине, где выполняете данные команды установлен Docker:
+To successfully execute the following steps, make sure that Docker is installed on the machine where you execute these commands:
 
-```bash
-✗ docker -v
+```bash title="in any folder"
+docker -v
 Docker version 20.10.20, build 9fdeb9c
 ```
 
-:::
+## Image Storage System
 
-## Система хранения образов
+In order for the server to receive images on the basis of which the frontend and backend containers will be launched, they need to be uploaded to the appropriate system. The most popular of these is [Docker Hub](https://hub.docker.com/).
 
-Для того, чтобы сервер получил образы на основе которых будет запущен контейнер фронтенда и бекенда нужно загрузить их в соответствующую систему. Самая популярная их них это [Docker Hub](https://hub.docker.com/).
+To upload images to Docker Hub, you need to create an account there and corresponding repositories for the frontend and backend.
 
-Для загрузки образов в Docker Hub нужно создать там аккаунт и соответствующие репозитори для фронтенда и бекенда:
+After registering with Docker Hub, create a new repository.
 
 ![Create repo](./img/create-repository.png)
+
+Give a name to the repository. In case you are using GitHub Actions that are located in the Single Page Startup, the names of the repositories should follow the following pattern - `<APP_NAME>_<backend|frontend>`.
+
+`APP_NAME` is specified in the GitHub Secrets. The backend project will be built into the `_backend` image, while the frontend will be built into the `_frontend` image.
 
 ![Repo name](./img/add-repo-name.png)
 
 ![Created](./img/created.png)
 
-## Создание и проверка работоспособности образов на локальной машине
+## Creating and testing images on a local machine
 
-Создать образы бекенда и фронтенда можно выполнив следующие команды в соответствующих директориях.
+You can create backend and frontend images by running the following commands in the respective directories.
 
-```bash title="Inside backend folder"
+```bash title="in backend folder"
 docker build -t backend .
 ```
 
-```bash title="Inside frontend folder"
+```bash title="in frontend folder"
 docker build -t frontend .
 ```
 
-После чего данные образы можно запустить через `docker-compose` файлы, находящиеся в `root` директории проекта:
+After that, you can launch these data images via the `docker-compose` files located in the `root` directory of the project:
 
-```bash title="Inside root folder"
+```bash title="in root folder"
 docker compose up -f docker-compose.db.yaml up
 ```
 
-Если образы запускаются и работают в штатном режиме, можно отправить их в [Docker Hub](https://hub.docker.com/) или любую другую подобную систему хранения образов Docker.
+If the images are launched and working properly, they can be uploaded to [Docker Hub](https://hub.docker.com/) or any other similar Docker image storage system.
 
-Для этого надо иметь аккаунт в выбранной системе, после чего аутентифицировать локальную машину, используя команду `docker login`. Затем можно будет загрузить туда созданные образы.
+To do this, you need to have an account in the chosen system, then authenticate your local machine using the `docker login` command. After that, you can upload the created images to the system.
 
-Для загрузки образов нужно затегировать созданные образы в соответствии с вашим аккаунтом и созданными репозиториями
+To upload the images, you need to tag the created images according to your account and the created repositories.
 
 ```bash
 docker image tag <local_image_name> <docker_hub_account>/<repository_name>:<tag>
 ```
 
-```bash title="Example | Tagging frontend image"
-docker image tag frontend singlepagestartup/new_repo:latest
+```bash title="in any folder"
+docker image tag backend singlepagestartup/new_app_backend:latest
+docker image tag frontend singlepagestartup/new_app_frontend:latest
 ```
 
-Повторите то же самое для образа бекенда.
+If you use a container image storage system other than Docker Hub, you may need to specify the full path to your account. For more information, refer to the [Docker documentation](https://docs.docker.com/engine/reference/commandline/push/#all-tags).
 
-:::caution
-Если вы используете отличную от Docker Hub систему хранения образов, то вам может понадобиться задать полный путь до аккаунта. Более подробно читайте в документации [Docker](https://docs.docker.com/engine/reference/commandline/push/#all-tags)
-:::
-
-После того, как образы затегированы, вы можете отправить их в систему хранения образов. Для этого выполните команду:
+Once your images are tagged, you can push them to the image storage system using a command like this:
 
 ```bash
 docker image push <docker_hub_account>/<repository_name>:<tag>
 ```
 
-```bash title="Example | Push frontend image"
-docker image push singlepagestartup/new_repo:latest
+```bash title="in any folder"
+docker image push singlepagestartup/new_app_backend:latest
+docker image push singlepagestartup/new_app_frontend:latest
 ```
 
-:::info
-Мы не рекомендуем создавать образы прямо на сервере, так как создание образов потребляет большое количество ресурсов. Используйте [GitHub Actions](/docs/deployment/#github-actions) для этих нужд.
-:::
+We do not recommend creating images on the server, as this consumes a lot of resources. Instead, use GitHub Actions for these purposes. We also provide configurations for using GitHub Actions.
 
 ## GitHub Actions
 
-В проекте, созданном на основе Single Page Startup уже есть файлы для запуска GitHub Actions, они находятся в директории `.github/workflows`. Но для их корректной работы нужно добавить [Secrets](https://docs.github.com/ru/actions/security-guides/encrypted-secrets) параметры в настройки репозитория **GitHub**.
+The project created based on Single Page Startup already has files for running GitHub Actions, located in the `.github/workflows` directory. But for them to work correctly, you need to add [Secrets](https://docs.github.com/ru/actions/security-guides/encrypted-secrets) parameters to the GitHub repository settings.
 
 ### GitHub Action Secrets
 
 #### DOCKER_HUB_URL
 
-Данный параметр определяет куда отправлять образы, вы можете отправлять образы в **Docker Hub** или использовать другую систему хранения образов.
+This parameter determines where to send images. You can send images to Docker Hub or use another image storage system.
 
-- `registry.hub.docker.com` - если загрузка должна происходить в [Docker Hub](https://hub.docker.com/)
-- `cr.selcloud.ru` - если вы выбрали для себя систему хранения образов от [Selectel](https://selectel.ru/services/cloud/container-registry/)
+- `registry.hub.docker.com` - if the upload should be done to [Docker Hub](https://hub.docker.com/)
+- `cr.selcloud.ru` - if you have chosen an image storage system from [Selectel](https://selectel.ru/services/cloud/container-registry/)
 
 #### DOCKER_HUB_USERNAME
 
-Директория, в которую будет загружен образ. Если вы используете **Docker Hub**, то этот параметр соответствует имени пользователя. Если вы выбрали другую систему хранения образов, то обратитесь к документации соответствующей системы.
+The directory to which the image will be uploaded. If you are using Docker Hub, this parameter corresponds to the account name. If you have chosen another image storage system, refer to the documentation for that system.
 
-- `singlepagestartup` - для **Docker Hub** параметр соответствует логину аккаунта
-- `sps` - для **Selectel** параметр соответствует названию проекта, который вы создали в панели **Container Registry**
+- For Docker Hub, the parameter corresponds to the account login, in the examples above we used `singlepagestartup`
+- For other systems, refer to the documentation
 
 #### DOCKER_HUB_LOGIN_USERNAME
 
-Логин, используемый для аутентификации в системе. Для **Docker Hub** он соответсвует логину аккаунта.
-
-- `singlepagestartup` - для **Docker Hub**
-- `token` - для **Selectel** он одинаковый у всех пользователей, так как вы аутентифицируетесь по токену
+The login used for authentication in the system. For Docker Hub, it corresponds to the account login.
 
 #### DOCKER_HUB_PASSWORD
 
-Пароль для системы хранения образов. В **Docker Hub** он соответствует паролю от аккаунта.
-
-- `<secret_password>` - для **Docker Hub** это пароль от аккаунта
-- `<secret_token>` - для **Selectel** это специальный токен, который вы можете получить в панели **Container Registry**
+The password for the image storage system. In Docker Hub, it corresponds to the account password.
 
 #### APP_NAME
 
-Название проекта или репозитория. Данный параметр проставляется как чать названия будущих образов. Для фронтенда это будет `<APP_NAME>_frontend` и `<APP_NAME>_backend` для бекенда. Именно с такими названиямы нужно создать репозитории в системе хранения образов. Например `sps_lite_frontend` и `sps_lite_backend`.
+The name of the project or repository. This parameter is set as part of the future image names. For the frontend, it will be `<APP_NAME>_frontend` and `<APP_NAME>_backend` for the backend. You need to create repositories with these names in the image storage system.
 
-- `<repository_name>` - название проекта
+In the examples above, we used `new_app`
 
-:::tip
-Советуем использовать названия соответсвтующие названию репозитория в `snake_case`.
-:::
+We recommend using names corresponding to the repository name in `snake_case`.
 
 #### PORTAINER_STAGING_BACKEND_UPDATE_URL
 
-Ссылка для обновления `staging` сервиса бекенда в [Portainer](https://www.portainer.io/). Этот параметр можно проставить после того, как проект будет загружен на сервер.
-
-- `https://<portainer_host.your_domain.com/token>` - адрес обновления `staging` сервиса бекенда в **Portainer**
+Link to update the `staging` backend service in [Portainer](https://www.portainer.io/). This parameter can be set after the project is loaded onto the server. Usually, this link looks like `https://<portainer_host.your_domain.com>/<token>`
 
 #### PORTAINER_STAGING_FRONTEND_UPDATE_URL
 
-Ссылка для обновления `staging` сервиса фронтенда в [Portainer](https://www.portainer.io/). Этот параметр можно проставить после того, как проект будет загружен на сервер.
+Link to update the `staging` frontend service in [Portainer](https://www.portainer.io/). This parameter can be set after the project is loaded onto the server. Usually, this link looks like `https://<portainer_host.your_domain.com>/<token>`
 
-- `https://<portainer_host.your_domain.com/token>` - адрес обновления `staging` сервиса фронтенда в **Portainer**
-
-:::tip
-Вы можете использовать только `staging` среду, так как она подразумевает загрузку и скачивание образа на сервере.
-:::
-
-:::danger
-Нельзя использовать только `production` среду, так как она не подразумевает создание и загрузку образов, а только запуск образа с заданным через [GitHub Releases тегом](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
-:::
+If you do not want to use 2 types of environments, then use the `staging` environment as the main one, as it assumes loading and downloading images on the server.
 
 #### PORTAINER_PRODUCTION_BACKEND_UPDATE_URL
 
-Ссылка для обновления `production` сервиса бекенда в [Portainer](https://www.portainer.io/). Этот параметр можно проставить после того, как проект будет загружен на сервер.
-
-- `https://<portainer_host.your_domain.com/token>` - адрес обновления `production` сервиса бекенда в **Portainer**
+Link to update the `production` backend service in [Portainer](https://www.portainer.io/). This parameter can be set after the project is loaded onto the server. This command does not involve creating and uploading images to registries, but only sends a request to Portainer to update the service. Usually, this link looks like `https://<portainer_host.your_domain.com>/<token>`
 
 #### PORTAINER_PRODUCTION_FRONTEND_UPDATE_URL
 
-Ссылка для обновления `production` сервиса фронтенда в [Portainer](https://www.portainer.io/). Этот параметр можно проставить после того, как проект будет загружен на сервер.
-
-- `https://<portainer_host.your_domain.com/token>` - адрес обновления `production` сервиса фронтенда в **Portainer**
+Link to update the `production` frontend service in [Portainer](https://www.portainer.io/). This parameter can be set after the project is loaded onto the server. This command does not involve creating and uploading images to registries, but only sends a request to Portainer to update the service. Usually, this link looks like `https://<portainer_host.your_domain.com>/<token>`
