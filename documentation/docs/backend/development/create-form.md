@@ -2,104 +2,92 @@
 sidebar_position: 3
 ---
 
-# Подключение формы обратной связи
+# Connecting the feedback form
 
-Для подключения формы обратной связи нужно создать запись в модели Form и настроить ей сайд-эффекты. Для этого нужно перейти на страницу модели Form и создать запись.
+To connect a feedback form, you need to create a record in the `Form` model and configure its side effects. To do this, go to the `Form` model page and create a record.
 
 ![Forms](./img/strapi-forms.png)
 
-При создании новой записи есть поля, определяющие характеристики отображения формы и её логику работы.
+When creating a new record, there are fields that determine the display characteristics of the form and its logic.
 
-- **inputs\*** - поля, отображаемые в форме
-
-  - **placeholder** - плейсхолдер в форме ввода
-
-  - **component\*** - компонент формы, в котором будет отображено поле ввода
-
-  - **is_required\*** - обязательность поля
-
-  - **value** - начальное значение, если оно требуется
-
-  - **name\*** - имя поля ввода, используется для дальнейшей постановки в виде key в модель Form Request
-
-  - **options** - варианты для выбора, если выбран component `listbox`, `radio-group`.
-
-  - **label** - название, которое отображается выше поля ввода
-
-  - **class_name** - дополнительный класс для стилизации
-
-  - **type** - тип, если необходим
-
-  - **multiple** - множественное поле или нет
-
-- **button** - кнопка для отправки формы
-
-- **uid** - идентификатор формы
-
-- **side_effects** - сайд эффекты, отвечающие за последующие действия, которые будут выполнены после её отправки пользователем.
+- `inputs` - fields displayed in the form
+  - `placeholder` - placeholder in the input form
+  - `variant` - Input component variant used on the frontend
+    - `text` - text input, must have type `text` or `textarea`
+    - `listbox` - drop-down list, can be `multiple`, must have a filled **options** field
+    - `radio-group` - radio buttons
+    - `switch` - checkbox
+    - `file` - input for uploading files
+    - `range` - slider input
+    - `date` - date or date with time selector, must have type `date` or `datetime`
+  - `is_required` - field requirement
+  - `value` - initial value, if required
+  - `name` - input field name, used for further placement in the `key` field of the `Form Request` model
+  - `options` - options for selection, if **variant** `listbox` or `radio-group` is selected.
+  - `label` - name displayed above the input field
+  - `class_name` - additional class for styling
+  - `type` - type, if required and supported by the selected variant
+  - `multiple` - multiple field or not (if supported by the selected variant)
+  - `min` - minimum value (if supported by the selected variant)
+  - `max` - maximum value (if supported by the selected variant)
+  - `step` - step (if supported by the selected variant)
+- `button` - button for submitting the form, it will contain the `onClick` method to submit the form
+- `uid` - form identifier
+- `side_effects` - side effects responsible for subsequent actions that will be performed after the user submits it
 
 ## Side Effects
 
-Конструктор форм имеет функционал настройки действий, которые будут вызваны после её отправки пользователем на страницах сайта. Эти действия называются Side Effects. На данный момент существует несколько вариантов Side Effects.
+Form builder has a functionality to configure actions that will be triggered after it is submitted by the user on website pages. These actions are called `Side Effects`. Currently, there are several options for `Side Effects`.
 
-### Отправить письмо на почту
+### Send an email
 
-Действие, которое отправляет данные формы указанным в поле `recievers` получателям. Для отправки данных формы на почту необходимо заполнить поля следующими данными.
+An action that sends form data to recipients specified in the `recievers` field. To send form data to email, the following fields must be filled with the following data.
+
+To configure this side effect, you need to set the following parameters. For each recipient, you can only select one of the parameters `admin`, `user`, or `identifier`. If the `Form Request` needs to be sent to multiple recipients, then you need to add multiple `receivers`, which can be done by clicking on the `+ Add an entry` button.
+
+- `type` - you need to select `send-to-receivers`
+- `admin` - you can select an administrator from those registered in the Strapi administration panel
+- `user` - you can select a user registered on the website through the client-side
+- `identifier` - explicit indication of the email address to which to send the `Form Request`
 
 ![Send to recievers](./img/send-to-recievers.png)
 
-#### type
+### Save data as a PDF file
 
-`send-to-recievers`
+An action that saves user-entered data as a PDF file to local storage or Google Drive.
 
-#### recievers
+To save a PDF file to the backend's local storage, the following parameters must be set:
 
-В данном поле нужно заполнить один из доступных полей ввода
+- `type` - `save-as-pdf`
+- `provider` - `local`. If S3 storage is configured, the created file will be uploaded there.
 
-- `identifier` - явное указание получателя, с данном случае почтовый ящик
-- `admin` - аккаунт администратора
-- `user` - аккаунт пользователя
+To save a PDF file to Google Drive, the following parameters must be set:
 
-#### provider
-
-`email` - отправка письма на электорнную почту
-
-### Сохранить данные в виде PDF файла
-
-Действие, которое сохраняет введенные пользователем данные в виде PDF-файла в локальное хранилище или на Google Drive.
+- `type` - `save-as-pdf`
+- `provider` - `google-drive`
 
 ![Save as PDF loca](./img/save-as-pdf-local.png)
 
-#### type
+### Send data to Google Sheets
 
-`save-as-pdf`
+An action that saves user-entered data to Google Sheets.
 
-#### provider
+To set up this action, the following parameters must be specified:
 
-- `local` - для сохранение файла в **Media-Library**.
-- `google-drive` - для сохранения файла в Google Drive. Для этого требуется добавить [Configuration](/docs/backend/development/create-configuration) для Google.
+- `type` - `pass-to-service`
+- `provider` - `google-sheets`
 
-### Отправить данные в Google Sheets
-
-Действие, которое сохраняет введенные пользователем данные в Google Sheets.
+To save data to `Google Sheets`, a `Configuration` for Google must be added.
 
 ![Save as PDF loca](./img/pass-to-service-google-sheets.png)
 
-#### type
+### Adding a new Side Effect
 
-`pass-to-service`
+To add a new `side-effect`, you need to add a function responsible for performing this action and the parameters necessary for selecting this `side-effect` in the administration panel.
 
-#### provider
+#### Adding a Function
 
-- `google-sheets` - для сохранения данных в Google Sheets. Требуется добавить [Configuration](/docs/backend/development/create-configuration) для Google.
-
-### Добавление нового Side Effect
-
-Для добавление нового Side Effect надо добавить функцию, которая будет отвечать за выполнение этого действия и параметры, необходимые для выбора данного Side Effect в панели администрирования.
-
-#### Добавление функции
-
-Функции Side Effect хранятся в директории `./backend/src/side-effects`. За выбор вызываемой функции отвечает файл `./backend/src/side-effects/index.js`.
+`side-effect` functions are stored in the directory `./backend/src/side-effects`. The file `./backend/src/side-effects/index.js` is responsible for selecting the function to be called.
 
 ```javascript title="./backend/src/side-effects/index.js"
 const saveAsPdf = require("./save-as-pdf");
@@ -119,6 +107,8 @@ async function sideEffectsEmmiter({ event, sideEffect, payload }) {
 module.exports = sideEffectsEmmiter;
 ```
 
+To add a new `side-effect`, it is necessary to add a new type and function.
+
 ```javascript title="./backend/src/side-effects/index.js"
 ...
 const newIntegration = require("./new-integration.js");
@@ -134,7 +124,7 @@ async function sideEffectsEmmiter({ event, sideEffect, payload }) {
 module.exports = sideEffectsEmmiter;
 ```
 
-Новая функция добавляется в виде файла, подобно файлу `./backend/src/side-effects/send-to-recievers.js`.
+A new feature is added as a file, similar to the file `./backend/src/side-effects/send-to-recievers.js`.
 
 ```javascript title="./backend/src/side-effects/new-integration.js"
 async function newIntegration({ event, sideEffect, payload }) {
@@ -144,16 +134,18 @@ async function newIntegration({ event, sideEffect, payload }) {
 module.exports = newIntegration;
 ```
 
-- `payload` - данные заполненной формы
-- `sideEffect` - данные, введенные администратором при заполнении поля side_effects в модели Form.
-- `event` - Strapi lifecycle [событие](https://docs.strapi.io/dev-docs/backend-customization/models#lifecycle-hooks)
+These are the parameters that are passed to this function:
 
-#### Добавление параметров Side Effect
+- `payload` - data from the filled out form
+- `sideEffect` - data entered by an administrator when filling out the `side_effects` field in the `Form` model
+- `event` - Strapi lifecycle [event](https://docs.strapi.io/dev-docs/backend-customization/models#lifecycle-hooks)
 
-Для того, чтобы администратор смог выбрать новый Side Effect необходимо добавить его ключ и дополнительные параметры (если нужно) в Content-Type-Builder [компонента Form Side Effect](http://localhost:1337/admin/plugins/content-type-builder/component-categories/functions/functions.form-side-effect).
+#### Adding Side Effect Parameters
+
+In order for the administrator to be able to choose a new `side-effect`, it is necessary to add its key and additional parameters (if necessary) to the `Content-Type-Builder` of the [Form Side Effect component](http://localhost:1337/admin/plugins/content-type-builder/component-categories/functions/functions.form-side-effect).
 
 ![CTB](./img/strapi-ctb-c-form-side-effect.png)
 
-Нужно добавить ключ, определяющий выбор данного Side Effect в панели администрирования.
+It is necessary to add a key that determines the selection of this `side-effect` in the administration panel, in our case this key is `new-integration`
 
 ![CTB new-integration](./img/strapi-ctb-c-form-side-effect-new-integration.png)

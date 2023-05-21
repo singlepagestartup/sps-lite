@@ -2,11 +2,11 @@
 sidebar_position: 4
 ---
 
-# Добавление конфигурации
+# Adding configuration
 
 ## Google
 
-Для подключения Side Effects, связанных с Google сервисами нужно создать [Service Account](https://cloud.google.com/iam/docs/service-account-overview). В результате чего выполучите JSON-файл со следующим содержанием:
+To connect side-effects related to Google services, you need to create a [Service Account](https://cloud.google.com/iam/docs/service-account-overview). As a result, you will receive a JSON file with the following contents:
 
 ```json
 {
@@ -23,18 +23,19 @@ sidebar_position: 4
 }
 ```
 
-Содержимое данного файла нужно добавить в поле `config` и выбрать `google` в поле `provider`.
+To use this file, add its contents to the `config` field and select `google` as the `provider` field.
 
-:::tip
-Если требуется интеграция с [Google Sheets](/docs/backend/development/create-form#отправить-данные-в-google-sheets), то необходимо добавить поле `sheet` в полученный JSON файл.
+## Google Sheets
+
+If you need integration with Google Sheets, in addition to adding the standard Service Account JSON object, you need to add a `sheet` field to the generated JSON file with the definition of the Google Sheet document to which the backend data will be added.
 
 ```json
 {
+  "type": "service_account",
+  "project_id": "<PROJECT_ID>",
   ...,
   "sheet": "<GOOGLE_SHEET_ID>"
 }
 ```
-
-:::
 
 ![Add Configuration](./img/add-configuration.png)

@@ -1,15 +1,5 @@
 module.exports = ({ env }) => {
-  const config = {
-    ["users-permissions"]: {
-      config: {
-        appName: env("APP_NAME", "Single Page Startup"),
-        registerByEmailCode: false,
-        authFactors: {
-          factors: [],
-        },
-      },
-    },
-  };
+  const config = {};
 
   const emailProvider = env("EMAIL_PROVIDER")
     ? env("EMAIL_PROVIDER")

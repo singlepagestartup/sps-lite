@@ -2,13 +2,9 @@
 sidebar_position: 6
 ---
 
-# Уменьшение вложенности
+# Reducing nesting
 
-:::tip Зачем?
-Для упрощения навигации по данным на фронтенде
-:::
-
-По умолчанию API ответы, отправляемые Strapi возвращаются в формате:
+By default, the API responses sent by Strapi are returned in a format with a high level of nested child models, with all model data being placed in the `data` object.
 
 ```json
 {
@@ -31,26 +27,23 @@ sidebar_position: 6
 }
 ```
 
-Для приведения вложенности типа `data.another_model.data.next_another_model.data` к типу `data.another_model.next_another_model` используется фукнция `customizeCoreStrapi`, которая запускается вместе с запуском приложения.
+Function `customizeCoreStrapi` is used to simplify nested structures such as `data.another_model.data.next_another_model.data` to `data.another_model.next_another_model`. This function runs when the application starts.
 
 ```javascript title="./backend/src/index.js"
+"use strict";
 ...
-const strapiUtils = require('@rogwild/strapi-utils');
-...
+const customizeCoreStrapi = require("./utils/bootstrap/customize-core-strapi");
 
 module.exports = {
-    register(/*{ strapi }*/) {},
-
     async bootstrap({ strapi }) {
-        await strapiUtils.utils.customizeCoreStrapi({ strapi });
+        customizeCoreStrapi({ strapi });
 
         ...
     },
 };
-
 ```
 
-В результате запуска данной функции API ответы от сервера приводятся к виду:
+As a result of running this API function, server responses are formatted as follows:
 
 ```json
 {

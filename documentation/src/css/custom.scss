@@ -6,6 +6,9 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+}
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to

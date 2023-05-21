@@ -29,6 +29,7 @@ const config = {
       variants: [`sm`, `md`, `lg`, `xl`],
     },
   ],
+  corePlugins: { preflight: false },
   theme: {
     extend: {
       colors: {

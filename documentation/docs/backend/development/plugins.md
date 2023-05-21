@@ -2,19 +2,25 @@
 sidebar_position: 8
 ---
 
-# Настройка плагинов
+# Plugin configuration
 
-:::danger
-Данный функционал присутствует в версии `sps` и выше. В `sps-lite` данный функционал отстуствует.
-:::
+Since Single Page Startup uses Strapi, plugins [Strapi](https://docs.strapi.io/dev-docs/plugins-extension) are used and their configuration is done in the `./backend/config/plugins.js` file.
 
-Так как Single Page Startup использует Strapi, используются плагины [Strapi](https://docs.strapi.io/dev-docs/plugins-extension) и их настройка происходит в файле `./backend/config/plugins.js`.
-
-В этом файле можно настроить плагины для отправки писем электронной почты `config.email.config`, настроить плагин загрузки файлов `config.upload.config`, а также плагин [Users-Permissions](https://docs.strapi.io/dev-docs/plugins/users-permissions) `config.users-permissions.config`.
+In this file, you can configure plugins for sending email messages `config.email.config`, configure the file upload plugin `config.upload.config`, as well as the [Users-Permissions](https://docs.strapi.io/dev-docs/plugins/users-permissions) plugin `config.users-permissions.config`.
 
 ## config.users-permissions.config
 
-Данный объект конфигурации отвечает за то, как будет работать Users Permissions плагин и дополнительные функции, предоставляемые Single Page Startup.
+:::danger
+This functionality is available in version sps and higher. This functionality is not available in sps-lite.
+:::
+
+This configuration object is responsible for how the Users Permissions plugin and additional functions provided by Single Page Startup will work.
+
+The following parameters are used when configuring the authentication and authorization plugin:
+
+- `appName` - the name of the application, which will be used in email templates
+- `registerByEmailCode` - a parameter that determines whether users can register using only a code from an email without setting a password
+- `authFactors` - an object that describes the steps for authenticating users
 
 ```javascript title="./backend/config/plugins.js"
 const config = {
@@ -25,12 +31,12 @@ const config = {
       authFactors: {
         factors: [
           { handler: "auth.callback" },
-          // // Если все обязательные, но будут на одной странице
+          // If all are required, but will be on one page
           // {
           //     handler: ['auth.phoneConfirmation', 'auth.emailConfirmation'],
           //     type: 'parallel',
           // },
-          // Если один на выбор в порядке приоритета
+          // If one is to be chosen in priority order
           // {
           //     handler: ['auth.emailConfirmation', 'auth.phoneConfirmation'],
           //     type: 'one',
@@ -43,52 +49,76 @@ const config = {
 };
 ```
 
-- appName - название приложения, будет использоваться в шаблонах писем
-- registerByEmailCode - параметр, отвечающий за то, можно ли регистрироваться пользователям используя только код с почты, без установки пароля
-- authFactors - объект, описывающий шаги аутентификации пользователей
-
 ### config.users-permissions.config.authFactors
 
-Данный объект может описывать несколько вариантов работы шагов аутентификации пользователей.
+This object can describe several options for authenticating users.
 
-Если требуется сделать аутентификацию, где каждый последующий шаг будет отображаться только после прохождения предыдущего, тогда объект конфигурации будет выглядеть следующим образом. В примере ниже все 4 шага аутентификации обязательные, в случае если у пользователя проставлены параметры `is_phone_confirmation_enabled`, `is_email_confirmation_enabled`, `is_otp_confirmation_enabled`. Если какой-то из параметров проставлен в значение `null | false`, тогда данный шаг будет пропущен.
+If you need to make authentication where each subsequent step will be displayed only after passing the previous one, then the configuration object will look like this. In the example below, all 4 authentication steps are mandatory in case the user has the parameters `is_phone_confirmation_enabled`, `is_email_confirmation_enabled`, `is_otp_confirmation_enabled`. If any of the parameters is set to `null | false`, then this step will be skipped.
 
-```javascript title="config.users-permissions.config.authFactors"
-{
-    factors: [
-        { handler: "auth.callback" },
-        { handler: "auth.phoneConfirmation" },
-        { handler: "auth.emailConfirmation" },
-        { handler: "user.checkOtp" },
-    ],
-}
+```javascript title="./backend/config/plugins.js"
+const config = {
+  [`users-permissions`]: {
+    config: {
+      appName: env("APP_NAME", "Single Page Startup"),
+      registerByEmailCode: false,
+      authFactors: {
+        factors: [
+          { handler: "auth.callback" },
+          { handler: "auth.phoneConfirmation" },
+          { handler: "auth.emailConfirmation" },
+          { handler: "user.checkOtp" },
+        ],
+      },
+    },
+  },
+};
 ```
 
-Если требуется сделать аутентификацию, где есть 3 шага аутентификации, но второй шаг может быть одним из нескольких, в данном случае `auth.emailConfirmation` или `auth.phoneConfirmation` (в порядке приоритета). Тогда конфигурация будет выглядеть следующим образом.
+If authentication is required and there are 3 authentication steps, but the second step can be either `auth.emailConfirmation` or `auth.phoneConfirmation` (in order of priority), then the configuration will look like this.
 
-```javascript title="config.users-permissions.config.authFactors"
-{
-    factors: [
-        { handler: "auth.callback" },
-        {
+```javascript title="./backend/config/plugins.js"
+const config = {
+  [`users-permissions`]: {
+    config: {
+      appName: env("APP_NAME", "Single Page Startup"),
+      registerByEmailCode: false,
+      authFactors: {
+        factors: [
+          { handler: "auth.callback" },
+          {
             handler: ["auth.emailConfirmation", "auth.phoneConfirmation"],
             type: "one",
-        },
-        { handler: "user.checkOtp" },
-    ],
-}
+          },
+          { handler: "user.checkOtp" },
+        ],
+      },
+    },
+  },
+};
 ```
 
-Если требуется сделать аутентификацию, где есть 2 шага аутентификации, но при этом пользователь должен пройти все дополнительные факторы аутентификации на одной странице, тогда файл конфигурации будет выглядеть следующим образом.
+If you need to perform authentication with 2-factor authentication, but the user must complete all additional authentication factors on one page, then the configuration file will look like this.
 
 ```javascript title="config.users-permissions.config.authFactors"
-{
-    factors: [
-        { handler: "auth.callback" },
-        {
-            handler: ["auth.emailConfirmation", "auth.phoneConfirmation", "user.checkOtp"],
+const config = {
+  [`users-permissions`]: {
+    config: {
+      appName: env("APP_NAME", "Single Page Startup"),
+      registerByEmailCode: false,
+      authFactors: {
+        factors: [
+          { handler: "auth.callback" },
+          {
+            handler: [
+              "auth.emailConfirmation",
+              "auth.phoneConfirmation",
+              "user.checkOtp",
+            ],
             type: "parallel",
-        },
-    ],
-}
+          },
+        ],
+      },
+    },
+  },
+};
 ```
