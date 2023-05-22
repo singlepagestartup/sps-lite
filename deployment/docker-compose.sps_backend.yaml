@@ -12,6 +12,24 @@ services:
       - ./sps-lite.env
     environment:
       - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=1337
+      - SEED_ENTITES=true
+      - DATABASE_HOST=<your_database_host>
+      - DATABASE_CLIENT=postgres
+      - DATABASE_PORT=<your_database_port>
+      - DATABASE_NAME=<your_database_name>
+      - DATABASE_USERNAME=<your_database_username>
+      - SET_PERMISSIONS=true
+      # if you are using Amazon SES
+      - EMAIL_PROVIDER=amazon-ses
+      - AWS_SES_URL=<your_aws_ses_url>
+      - AWS_SES_DEFAULT_FROM=<your_no_reply_email_address>
+      - AWS_SES_DEFAULT_REPLY_TO=<your_email_address>
+      # if you are using Amazon S3
+      - AWS_S3_ACCESS_KEY_ID=<your_aws_access_key_id>
+      - AWS_S3_BUCKET=<your_aws_s3_bucket>
+      - AWS_S3_ENDPOINT=<your_aws_s3_endpoint>
     deploy:
       placement:
         constraints:
