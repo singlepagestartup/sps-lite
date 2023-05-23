@@ -1,15 +1,26 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-require("dotenv").config();
+const nextJest = require("next/jest");
+require("dotenv").config({
+  path: (() => {
+    return ".env.development";
+  })(),
+});
 
-module.exports = {
+const createJestConfig = nextJest({
+  dir: "./",
+});
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
   testTimeout: 30000,
-  moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/__mock__/fileMock.js",
-    "\\.(css|less)$": "<rootDir>/src/__mock__/styleMock.js",
-  },
-  testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
-  transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-  },
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  testPathIgnorePatterns: [
+    "<rootDir>/.next/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/tests/e2e/",
+  ],
+  testEnvironment: "jest-environment-jsdom",
 };
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig);
