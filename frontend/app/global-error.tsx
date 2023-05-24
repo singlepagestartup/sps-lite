@@ -5,11 +5,12 @@ import Layouts from "~components/layouts";
 import { getBackendData } from "~utils/api";
 import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
+import { fonts } from "./fonts";
 
 export default async function GlobalError({ error, reset }: any) {
   const [page, setPage] = useState<any>();
   useEffect(() => {
-    console.log("logging error:", error);
+    console.log("GlobalError error:", error);
   }, [error]);
 
   useEffect(() => {
@@ -29,12 +30,26 @@ export default async function GlobalError({ error, reset }: any) {
   }, []);
 
   if (page) {
-    return <Layouts {...page} />;
+    return (
+      <html className="scroll-smooth">
+        <body
+          className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
+        >
+          <div className="relative">
+            <Layouts {...page} />
+          </div>
+        </body>
+      </html>
+    );
   }
 
   return (
-    <div>
-      <p className="text-sm">{error?.message}</p>
-    </div>
+    <html>
+      <body>
+        <div>
+          <p className="text-sm">{error?.message}</p>
+        </div>
+      </body>
+    </html>
   );
 }
