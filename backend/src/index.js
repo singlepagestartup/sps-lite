@@ -9,9 +9,13 @@ module.exports = {
     customizeCoreStrapi({ strapi });
     await setPermissions();
 
-    strapi.errorCatcher = async (error) => {
+    strapi.errorCatcher = (...error) => {
+      console.log("🚀 ~ strapi.errorCatcher= ~ error:", error);
+
       strapi.plugin("sentry").service("sentry").sendError(error);
     };
+
+    console.error = strapi.errorCatcher;
 
     if (process.env.SEED_ENTITES) {
       try {
