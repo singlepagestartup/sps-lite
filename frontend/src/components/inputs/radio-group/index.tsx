@@ -4,6 +4,9 @@ import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
+import Image from "next/image";
+import getFileUrl from "~utils/api/get-file-url";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export default function RadioGroupInput(props: IInputProps) {
   const {
@@ -90,9 +93,31 @@ export default function RadioGroupInput(props: IInputProps) {
                       {checked ? <div className="checked" /> : null}
                     </div>
                     <RadioGroup.Label as="div" className="label">
-                      {typeof renderOptionValue === "function"
-                        ? renderOptionValue(option)
-                        : option.title || option}
+                      <div className="title-container">
+                        <div
+                          data-media={option.media && option.media?.length > 0}
+                          className="media-container"
+                        >
+                          {option?.media?.map(
+                            (
+                              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+                              index: number,
+                            ) => (
+                              <Image
+                                key={index}
+                                src={getFileUrl(mediaItem)}
+                                fill={true}
+                                alt=""
+                              />
+                            ),
+                          )}
+                        </div>
+                        <span className="title">
+                          {typeof renderOptionValue === "function"
+                            ? renderOptionValue(option)
+                            : option.title || option}
+                        </span>
+                      </div>
                     </RadioGroup.Label>
                   </div>
                 )}

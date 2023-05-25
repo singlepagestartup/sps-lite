@@ -393,8 +393,20 @@ input[type="number"] {
                 }
               }
 
-              .label {
-                @apply flex flex-1 text-sm font-medium text-gray-900;
+              .title-container {
+                @apply w-full flex items-center gap-2;
+
+                .media-container {
+                  @apply hidden;
+
+                  &[data-media="true"] {
+                    @apply flex relative w-5 h-5;
+                  }
+                }
+
+                .label {
+                  @apply flex flex-1 text-sm font-medium text-gray-900;
+                }
               }
             }
           }
