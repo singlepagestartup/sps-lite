@@ -5,6 +5,9 @@ import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
+import Image from "next/image";
+import getFileUrl from "~utils/api/get-file-url";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -118,12 +121,18 @@ export default function ListboxInput(props: IInputProps) {
           {...additionalProps}
         >
           <div className="listbox">
-            <Listbox.Button className="button">
-              <ButtonComp
-                value={value}
-                placeholder={placeholder}
-                renderOptionValue={renderOptionValue}
-              />
+            <Listbox.Button className="button-container">
+              {(listboxProps) => {
+                return (
+                  <ButtonComp
+                    {...listboxProps}
+                    placeholder={placeholder}
+                    renderOptionValue={renderOptionValue}
+                    media={props.media}
+                    additionalMedia={props.additionalMedia}
+                  />
+                );
+              }}
             </Listbox.Button>
             <Transition
               as={Fragment}
@@ -140,6 +149,7 @@ export default function ListboxInput(props: IInputProps) {
                           option={option}
                           params={params}
                           renderOptionValue={renderOptionValue}
+                          extraMedia={props.extraMedia}
                         />
                       );
                     }}
@@ -163,7 +173,19 @@ export default function ListboxInput(props: IInputProps) {
   );
 }
 
-function DefaultButton({ value, placeholder, renderOptionValue }: any) {
+function DefaultButton({
+  value,
+  placeholder,
+  renderOptionValue,
+  media,
+  additionalMedia,
+}: {
+  value: any;
+  placeholder: string;
+  renderOptionValue?: (value: any) => string;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[];
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+}) {
   const renderValue = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
@@ -192,13 +214,63 @@ function DefaultButton({ value, placeholder, renderOptionValue }: any) {
     }
   }, [value, placeholder]);
 
+  const renderIcons: ISpsLiteBackendUploadPluginBackendMedia[] = useMemo(() => {
+    if (Array.isArray(value)) {
+      if (value.length) {
+        return value.reduce((prev, selectedValue, index) => {
+          if (selectedValue.media?.length > 0) {
+            return [...prev, ...selectedValue.media];
+          }
+        }, []);
+      }
+    } else {
+      if (value?.media?.length) {
+        return value.media;
+      }
+    }
+  }, [value]);
+
   return (
-    <>
-      <span className="title">{renderValue}</span>
-      <div className="icon-container">
-        <ChevronUpDownIcon aria-hidden="true" />
+    <div className="button">
+      <div data-media={media && media?.length > 0} className="media-container">
+        {media?.map(
+          (
+            mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+            index: number,
+          ) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ),
+        )}
       </div>
-    </>
+      <div className="title-container">
+        <div
+          data-media={renderIcons && renderIcons?.length > 0}
+          className="selected-icon-container"
+        >
+          {renderIcons?.map((selectedIcon, index) => {
+            return (
+              <div key={index} className="icon-container">
+                <Image src={getFileUrl(selectedIcon)} fill={true} alt="" />
+              </div>
+            );
+          })}
+        </div>
+        <span className="title">{renderValue}</span>
+      </div>
+      <div
+        data-media={additionalMedia && additionalMedia?.length > 0}
+        className="additional-media-container"
+      >
+        {additionalMedia?.map(
+          (
+            mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+            index: number,
+          ) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ),
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -206,25 +278,55 @@ function DefaultOption({
   params,
   option,
   renderOptionValue,
+  extraMedia,
 }: {
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
+  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
 }) {
   const { selected } = params;
 
   return (
     <div aria-selected={selected} className="option">
-      <span className="title">
-        {(typeof renderOptionValue === "function"
-          ? renderOptionValue(option)
-          : option.title) || option}
-      </span>
-      {selected ? (
-        <div className="icon-container">
-          <CheckIcon aria-hidden="true" />
+      <div
+        data-media={extraMedia && extraMedia?.length > 0}
+        className="extra-media-container"
+      >
+        {extraMedia?.map(
+          (
+            mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+            index: number,
+          ) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ),
+        )}
+      </div>
+      <div className="title-container">
+        <div
+          data-media={option.media && option.media?.length > 0}
+          className="media-container"
+        >
+          {option?.media?.map(
+            (
+              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+              index: number,
+            ) => (
+              <Image
+                key={index}
+                src={getFileUrl(mediaItem)}
+                fill={true}
+                alt=""
+              />
+            ),
+          )}
         </div>
-      ) : null}
+        <span className="title">
+          {(typeof renderOptionValue === "function"
+            ? renderOptionValue(option)
+            : option.title) || option}
+        </span>
+      </div>
     </div>
   );
 }

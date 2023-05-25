@@ -63,6 +63,21 @@ export const sliderPopulate = {
 export const inputPopulate = {
   options: {
     populate: "*",
+    media: {
+      populate: mediaPopulate,
+    },
+    additional_media: {
+      populate: mediaPopulate,
+    },
+  },
+  media: {
+    populate: mediaPopulate,
+  },
+  additional_media: {
+    populate: mediaPopulate,
+  },
+  extra_media: {
+    populate: mediaPopulate,
   },
 };
 

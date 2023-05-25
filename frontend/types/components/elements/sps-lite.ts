@@ -51,6 +51,9 @@ export interface ISpsLiteBackendInputOption {
   __component: "elements.input-option";
   title: string | null;
   description: string | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendInput {
@@ -73,6 +76,8 @@ export interface ISpsLiteBackendInput {
   className: string | null;
   type: "text" | "textarea" | "file" | "date" | "datetime" | null;
   multiple: boolean | null;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendLogotype {

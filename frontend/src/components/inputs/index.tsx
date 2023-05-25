@@ -10,6 +10,7 @@ import RepeatableInput, { IInsideComponentProps } from "./repeatable";
 import SwitchInput from "./switch";
 import TextInput from "./text";
 import DateInput from "./date";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
 export interface IInputProps extends UseControllerProps {
   label?: string | null;
@@ -41,6 +42,9 @@ export interface IInputProps extends UseControllerProps {
   min?: number;
   max?: number;
   disabled?: boolean;
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   variant:
     | "text"
     | "listbox"

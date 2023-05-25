@@ -3,6 +3,8 @@ import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
+import Image from "next/image";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function TextInput(props: IInputProps) {
   const {
@@ -99,6 +101,14 @@ export default function TextInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
+        <div
+          data-media={props.media && props.media?.length > 0}
+          className="media-container"
+        >
+          {props.media?.map((media, index) => (
+            <Image key={index} src={getFileUrl(media)} fill={true} alt="" />
+          ))}
+        </div>
         {type === "textarea" ? (
           <textarea
             onChange={(e) => {
@@ -160,6 +170,21 @@ export default function TextInput(props: IInputProps) {
             {...additionalAttributes}
           />
         )}
+        <div
+          data-media={
+            props.additionalMedia && props.additionalMedia?.length > 0
+          }
+          className="additional-media-container"
+        >
+          {props.additionalMedia?.map((additionalMedia, index) => (
+            <Image
+              key={index}
+              src={getFileUrl(additionalMedia)}
+              fill={true}
+              alt=""
+            />
+          ))}
+        </div>
       </div>
       {inputError?.message ? (
         <div className="input-error">
