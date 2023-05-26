@@ -222,6 +222,8 @@ input[type="number"] {
 
     &[data-variant="listbox"] {
       &.input-listbox {
+        @apply w-full;
+
         .input-container {
           .listbox {
             @apply relative mt-1;
