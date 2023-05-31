@@ -9,7 +9,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,7 +20,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -29,26 +35,67 @@
     "prettier/prettier": "error",
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
-    "comma-dangle": ["off"],
-    "quotes": ["warn", "double"],
-    "semi": ["off"],
+    "comma-dangle": [
+      "off"
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "semi": [
+      "off"
+    ],
     "no-duplicate-imports": "error",
-    "react/react-in-jsx-scope": ["off"],
-    "no-empty-pattern": ["off"],
-    "react/display-name": ["off"],
-    "react/prop-types": ["off"],
-    "array-callback-return": ["off"],
-    "indent": ["off"],
-    "multiline-ternary": ["off"],
-    "no-loss-of-precision": ["off"],
-    "@typescript-eslint/no-empty-function": ["off"],
-    "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
-    "@typescript-eslint/ban-ts-comment": ["warn"],
-    "@typescript-eslint/no-var-requires": ["off"],
-    "@typescript-eslint/no-unused-vars": ["off"],
-    "@typescript-eslint/no-explicit-any": ["off"],
-    "no-prototype-builtins": ["warn"],
-    "@typescript-eslint/no-empty-interface": ["off"],
-    "@typescript-eslint/consistent-type-definitions": ["off"]
+    "react/react-in-jsx-scope": [
+      "off"
+    ],
+    "no-empty-pattern": [
+      "off"
+    ],
+    "react/display-name": [
+      "off"
+    ],
+    "react/prop-types": [
+      "off"
+    ],
+    "array-callback-return": [
+      "off"
+    ],
+    "indent": [
+      "off"
+    ],
+    "multiline-ternary": [
+      "off"
+    ],
+    "no-loss-of-precision": [
+      "off"
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "off"
+    ],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": [
+      "warn"
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "warn"
+    ],
+    "@typescript-eslint/no-var-requires": [
+      "off"
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "off"
+    ],
+    "@typescript-eslint/no-explicit-any": [
+      "off"
+    ],
+    "no-prototype-builtins": [
+      "warn"
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "off"
+    ],
+    "@typescript-eslint/consistent-type-definitions": [
+      "off"
+    ]
   }
 }

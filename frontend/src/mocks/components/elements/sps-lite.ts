@@ -123,30 +123,30 @@ export const spsLiteBackendButtonsArrayColumnWithTitleButtonsText: ISpsLiteBacke
 export const spsLiteBackendFaq: ISpsLiteBackendFaq = {
   id: 3,
   __component: "elements.faq",
-  title: "Конструктор блоков страниц",
+  title: "Question",
   description:
-    "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+    "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
 };
 
 export const spsLiteBackendFeature: ISpsLiteBackendFeature = {
   id: 136,
   __component: "elements.feature",
-  title: "Конструктор PageBlock'ов",
+  title: "Don't repeat yourself",
   description:
-    "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
-  subtitle: "Не повторяйся",
+    "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+  subtitle: "MVP-ready",
   media: [{ ...spsLiteUploadPluginBackendMediaRoundIcon }],
 };
 
 export const spsLiteBackendNameInput: ISpsLiteBackendInput = {
   id: 56,
   __component: "elements.input",
-  placeholder: "Введите ваше имя",
+  placeholder: "Type your name",
   variant: "text",
   isRequired: true,
   value: null,
   name: "name",
-  label: "Имя",
+  label: "Name",
   className: "col-span-4",
   type: null,
   multiple: null,
@@ -156,12 +156,12 @@ export const spsLiteBackendNameInput: ISpsLiteBackendInput = {
 export const spsLiteBackendEmailInput: ISpsLiteBackendInput = {
   id: 57,
   __component: "elements.input",
-  placeholder: "Введите вашу электронную почту",
+  placeholder: "Type your email",
   variant: "text",
   isRequired: true,
   value: null,
   name: "email",
-  label: "Электронная почта",
+  label: "Email",
   className: "col-span-4",
   type: null,
   multiple: null,
@@ -171,12 +171,12 @@ export const spsLiteBackendEmailInput: ISpsLiteBackendInput = {
 export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
   id: 58,
   __component: "elements.input",
-  placeholder: "Выберите тариф",
+  placeholder: "Choose tier",
   variant: "listbox",
   isRequired: false,
   value: null,
   name: "tier",
-  label: "Тариф",
+  label: "Tier",
   className: "col-span-4",
   type: null,
   multiple: null,
@@ -199,12 +199,12 @@ export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
 export const spsLiteBackendQuestionInput: ISpsLiteBackendInput = {
   id: 59,
   __component: "elements.input",
-  placeholder: "Напишите ваш вопрос",
+  placeholder: "Type your question",
   variant: "text",
   isRequired: false,
   value: null,
   name: "querstion",
-  label: "Вопрос",
+  label: "Question",
   className: "col-span-4",
   type: "textarea",
   multiple: null,
@@ -219,7 +219,7 @@ export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
   isRequired: true,
   value: null,
   name: "policy",
-  label: "Я согласен с Политикой конфиденциальности",
+  label: "I agree with the privacy policy",
   className: "col-span-4",
   type: null,
   multiple: null,
@@ -238,9 +238,9 @@ export const spsLiteBackendLogotype: ISpsLiteBackendLogotype = {
 export const spsLiteBackendSlide: ISpsLiteBackendSlide = {
   id: 1,
   __component: "elements.slide",
-  title: "Конструктор блоков страниц",
+  title: "Page Builder",
   description:
-    "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+    "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
   subtitle: null,
   media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
   buttons: [{ ...spsLiteBackendButtonSecondary }],

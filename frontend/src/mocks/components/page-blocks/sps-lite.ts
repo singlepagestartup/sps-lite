@@ -35,13 +35,13 @@ import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upl
 export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesSectionBlock =
   {
     id: 32,
-    title: "Title",
+    title: "Title Of Feature Section Block With Icon",
     variant: "with-icon",
     className: null,
-    subtitle: "Subtitle",
+    subtitle: "Subtitle Of Feature Section Block With Icon",
     anchor: "anchor",
     description:
-      "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
     __component: "page-blocks.features-section-block",
     features: Array(4).fill({ ...spsLiteBackendFeature }),
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
@@ -50,14 +50,14 @@ export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesS
 export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSectonBlock =
   {
     id: 5,
-    title: "Hello world",
+    title: "We are ready to help",
     variant: "centered",
     className: null,
     subtitle: null,
     __component: "page-blocks.contact-section-block",
     anchor: "anchor",
     description:
-      "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+      "Fill in all the fields below and our manager will contact you.",
     buttonsArrays: [
       { ...spsLiteBackendButtonsArrayColumnWithTitleButtonsSecondary },
     ],
@@ -66,28 +66,29 @@ export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSe
 export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBackendCtaSectionBlock =
   {
     id: 3,
-    title: "Hello world",
+    title: "Minimum Viable Product is Ready",
     variant: "dark-with-image",
-    className: null,
-    subtitle: null,
-    anchor: null,
+    className: "cta_class_name",
+    subtitle: "Subtitle",
+    anchor: "pb-cta-section",
     __component: "page-blocks.cta-section-block",
     description:
-      "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
     buttons: Array(3).fill({ ...spsLiteBackendButtonSecondary }),
+    media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
   };
 
 export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteBackendFaqBlock =
   {
     id: 2,
-    title: "Hello world",
-    anchor: "anchor",
-    className: null,
-    subtitle: null,
+    title: "Fruequently Asked Questions",
+    anchor: "faq-anchor",
+    className: "faq_class_name",
+    subtitle: "Subtitle",
     variant: "two-columns-with-centered-introduction",
     __component: "page-blocks.faqs-block",
     description:
-      "Навигационные элементы, Формы, Галерея фотографий, Текстовые блоки, CTA элементы и многое другое уже сделано, нужно просто воспользоваться этим в ваших интересах.",
+      "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
     faqs: Array(4).fill({ ...spsLiteBackendFaq }),
   };
 
@@ -96,23 +97,23 @@ export const spsLiteBackendHeaderSectionBlockSimpleCentered: ISpsLiteBackendHead
     id: 9,
     variant: "simple-centered",
     __component: "page-blocks.header-section-block",
-    title: "Используемые коцепции",
-    className: null,
+    title: "Minimum Viable Product is Ready",
+    className: "header_section_class_name",
     subtitle: "Subtitle",
-    anchor: "anchor",
+    anchor: "header-section-anchor",
     description:
-      "Концепции, используемые в SPS позволяют постепенно дорабатывать проект при этом давая возможность пользователям получить ваш продукт сразу же. Не нужно разрабатывать проект месяцами, просто начните с одной страницы и добавляйте функционал по мере необходимости. А когда поймете что уперлись в потолок, доработайте функционал под ваши нужды, SPS не ограничивает вас ничем, вы просто пишите JS код на бекенде (Stapi) и фронтенде (Next.js + Tailwind CSS). Не нужно учить новый язык, шаблонизатор или пытаться добавить функционал в закрытую систему.",
+      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
   };
 
 export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSectionBlock =
   {
     id: 4,
     variant: "simple-centered",
-    className: null,
-    anchor: "anchor",
-    title: "OpenSource 'под капотом'",
+    className: "hero_section_class_name",
+    anchor: "hero-section-anchor",
+    title: "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
     description:
-      "Используем OpenSource инструменты под капотом, это имеет ряд преимуществ, таких как быстрая фиксация багов в ядре, лучший уровень безопасности.",
+      "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
     buttons: [{ ...spsLiteBackendButtonSecondary }],
     __component: "page-blocks.hero-section-block",
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
@@ -160,11 +161,11 @@ export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock 
     id: 2,
     __component: "page-blocks.pricing-block",
     variant: "two-columns",
-    title: "Один шаг чтобы стать Lean Startup разработчиком",
+    title: "Minimum Viable Product is Ready",
     subtitle: "Subtitle",
     anchor: "anchor",
     description:
-      "Сэкономьте более 250 часов работы разработчика (7'500$) и постоянный доступ к обновлениям кодовой базы. Таким образом все разработанные на базе SPS проекты можно будет обновлять прямо из репозитория SPS. Не нужно копировать-вставлять блоки кода при обновлении.",
+      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
     className: null,
     tiers: Array(2).fill({ ...spsLiteBackendTier }),
   };

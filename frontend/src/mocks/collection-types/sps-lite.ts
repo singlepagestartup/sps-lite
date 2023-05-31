@@ -64,7 +64,7 @@ export const spsLiteBackendCurrency: ISpsLiteBackendCurrency = {
 export const spsLiteBackendTier: ISpsLiteBackendTier = {
   id: 1,
   title: "Lite",
-  description: "Если хочешь попробовать концепцию в деле",
+  description: "If you're just starting out",
   price: null,
   type: "one-time",
   period: null,
