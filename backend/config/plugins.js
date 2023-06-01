@@ -17,14 +17,16 @@ module.exports = ({ env }) => {
       config: {
         provider: "aws-s3",
         providerOptions: {
-          accessKeyId: env("AWS_S3_ACCESS_KEY_ID"),
-          secretAccessKey: env("AWS_S3_ACCESS_SECRET"),
-          region: env("AWS_S3_REGION", "ru-1"),
-          endpoint: env("AWS_S3_ENDPOINT"),
-          apiVersion: "latest",
-          signatureVersion: "v4",
-          params: {
-            Bucket: env("AWS_S3_BUCKET"),
+          s3Options: {
+            accessKeyId: env("AWS_S3_ACCESS_KEY_ID"),
+            secretAccessKey: env("AWS_S3_ACCESS_SECRET"),
+            region: env("AWS_S3_REGION", "ru-1"),
+            endpoint: env("AWS_S3_ENDPOINT"),
+            apiVersion: "latest",
+            signatureVersion: "v4",
+            params: {
+              Bucket: env("AWS_S3_BUCKET"),
+            },
           },
         },
       },

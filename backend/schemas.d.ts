@@ -893,6 +893,8 @@ export interface UserCartProduct extends ComponentSchema {
 }
 
 declare global {
+  const strapi: any;
+
   namespace Strapi {
     interface Schemas {
       "admin::permission": AdminPermission;

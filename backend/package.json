@@ -7,7 +7,7 @@
     "develop": "strapi develop",
     "debug": "node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "NODE_OPTIONS=\"--max_old_space_size=4096\" strapi build",
     "strapi": "strapi",
     "lint": "eslint . --ext .js,.ts",
     "lint:quiet": "eslint --quiet . --ext .js,.ts",
