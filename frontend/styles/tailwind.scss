@@ -1036,7 +1036,7 @@ input[type="number"] {
     -webkit-box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
   }
   .flatpickr-month {
-    @apply max-w-[307px] mx-auto pt-4 h-12;
+    @apply mx-auto pt-4 h-12;
   }
   .hasWeeks .dayContainer {
     @apply border-l-0;
@@ -1080,7 +1080,7 @@ input[type="number"] {
     @apply fill-primary-500;
   }
   .flatpickr-months .flatpickr-month {
-    @apply rounded-t-[5px] bg-[#eceef1] text-[#5a6171] fill-[#5a6171] h-[34px] leading-none text-center relative select-none overflow-hidden flex-1;
+    @apply rounded-t-[5px]  text-[#5a6171] fill-[#5a6171] leading-none text-center relative select-none overflow-hidden flex-1;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -1137,7 +1137,7 @@ input[type="number"] {
     &.selected.nextMonthDay,
     &.startRange.nextMonthDay,
     &.endRange.nextMonthDay {
-      @apply bg-primary-500 border-primary-500 text-white;
+      @apply bg-neutral-900 border-neutral-900 text-white;
     }
     &.selected.startRange,
     &.startRange.startRange,
@@ -1299,11 +1299,11 @@ input[type="number"] {
   }
   .flatpickr-months .flatpickr-prev-month:hover,
   .flatpickr-months .flatpickr-next-month:hover {
-    @apply text-[#bbb];
+    @apply text-slate-300;
   }
   .flatpickr-months .flatpickr-prev-month:hover svg,
   .flatpickr-months .flatpickr-next-month:hover svg {
-    @apply fill-[#f64747];
+    @apply fill-neutral-300;
   }
   .flatpickr-months .flatpickr-prev-month svg,
   .flatpickr-months .flatpickr-next-month svg {
@@ -1326,7 +1326,7 @@ input[type="number"] {
       }
     }
     .numInputWrapper {
-      @apply w-[7em] inline-block;
+      @apply inline-block;
 
       span.arrowUp:after {
         @apply border-b-[#5a6171];
@@ -1336,7 +1336,7 @@ input[type="number"] {
       }
     }
     input.cur-year {
-      @apply bg-transparent box-border cursor-text pl-[0.5ch] m-0 inline-block font-[inherit] text-inherit font-light leading-[inherit] h-auto border-0 rounded-none align-[inital];
+      @apply bg-transparent box-border cursor-text pl-3.5 m-0 inline-block font-[inherit] text-inherit font-light leading-[inherit] h-auto border-0 rounded-none align-[inital];
       -webkit-appearance: textfield;
       -moz-appearance: textfield;
 
@@ -1345,7 +1345,7 @@ input[type="number"] {
       }
     }
     .flatpickr-monthDropdown-months {
-      @apply bg-[#eceef1] border-none rounded-none box-border cursor-pointer font-[inherit] text-inherit font-light h-auto leading-[inherit] -mt-[1px] outline-none pl-[0.5ch] relative align-[inital] w-auto;
+      @apply border-none rounded-none box-border cursor-pointer font-[inherit] text-inherit font-light h-auto leading-[inherit] -mt-[1px] outline-none  relative align-[inital] w-auto;
       -webkit-box-sizing: border-box;
       -webkit-appearance: menulist;
       -moz-appearance: menulist;
@@ -1366,7 +1366,7 @@ input[type="number"] {
     @apply outline-none;
   }
   .flatpickr-weekdays {
-    @apply pt-10 pb-4 bg-[#eceef1] text-center overflow-hidden w-full flex items-center h-7;
+    @apply pt-10 pb-6 text-center overflow-hidden w-full flex items-center h-7;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -1383,7 +1383,7 @@ input[type="number"] {
     @apply w-full border-none mx-auto;
 
     .flatpickr-rContainer {
-      @apply mx-auto pb-4;
+      @apply mx-auto;
     }
   }
   .dayContainer {
@@ -1431,7 +1431,7 @@ input[type="number"] {
     -webkit-box-sizing: border-box;
   }
   span.flatpickr-weekday {
-    @apply cursor-default text-[90%] bg-[#eceef1] text-[#5a6171] leading-none m-0 text-center block flex-1 font-[bolder];
+    @apply cursor-default text-[90%] text-[#5a6171] leading-none m-0 text-center block flex-1 font-[bolder];
   }
   .flatpickr-time {
     @apply text-center outline-none h-0 leading-10 max-h-10 box-border invisible flex bg-white rounded-b-[5px];
@@ -1508,7 +1508,7 @@ input[type="number"] {
   }
 
   .flatpickr-days {
-    @apply rounded-b-md border-none relative overflow-hidden flex items-start w-[307.875px] border-l-[1px] border-r-[1px]  border-[#eceef1];
+    @apply rounded-b-md border-none relative overflow-hidden flex items-start  border-l-[1px] border-r-[1px]  border-[#eceef1];
     &:focus {
       @apply outline-none;
     }
