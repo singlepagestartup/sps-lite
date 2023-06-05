@@ -1,0 +1,20 @@
+import { test, expect } from "../web3fixtures";
+// @ts-ignore
+import * as metamask from "@synthetixio/synpress/commands/metamask";
+
+test("Simple test example", async ({ page: startPage, context }) => {
+  test.slow();
+
+  const page = await context.newPage();
+
+  // If use startPage, will get error, because Metamask works only on focused page
+  await page.goto("https://app.uniswap.org", { waitUntil: "load" });
+
+  await page.locator("data-testid=navbar-connect-wallet").click();
+  await page.locator("data-testid=wallet-option-INJECTED").click();
+  await metamask.acceptAccess();
+
+  await expect(
+    page.locator("data-testid=navbar-connect-wallet"),
+  ).not.toBeVisible();
+});

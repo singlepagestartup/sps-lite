@@ -9,4 +9,6 @@ declare global {
   interface TransformedApiArray<T> extends Array<T> {
     _meta: IBackendPagination;
   }
+
+  const expect: any;
 }

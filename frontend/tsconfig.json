@@ -35,6 +35,7 @@
       "~mocks/*": ["./src/mocks/*"]
     },
     "typeRoots": ["./node_modules/@types", "types"],
+    "types": ["@synthetixio/synpress/support"],
     "plugins": [
       {
         "name": "next"
