@@ -261,11 +261,6 @@ function DateInput() {
         name="start_at"
         options={{
           inline: true,
-          time_24hr: true,
-          enableTime: true,
-          locale: {
-            firstDayOfWeek: 1,
-          },
         }}
         initialValue="2023-05-14T08:02:05.182Z"
         label="Booking Date"

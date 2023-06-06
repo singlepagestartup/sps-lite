@@ -978,566 +978,345 @@ input[type="number"] {
   //  That code will override the primary button color to red, but save the rest of the styles
 }
 
-.flatpickr-calendar {
-  @apply w-full bg-transparent opacity-0 hidden text-center invisible p-0 animate-none border-0 text-sm rounded-[40px] absolute box-border touch-manipulation shadow-md bg-white;
-
-  &:before,
-  &:after {
-    @apply absolute block pointer-events-none border-solid border-transparent content-none h-0 w-0 left-[22px];
-  }
-
-  // .animate.open {
-  //   -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);
-  // }
-
-  &:before {
-    @apply border-[5px] mx-0 -my-[5px];
-  }
-
-  &:after {
-    @apply border-[4px] mx-0 -my-[4px];
-  }
-
-  &:focus {
-    @apply outline-none;
-  }
-
-  &.open,
-  &.inline {
-    @apply max-h-none opacity-100 visible;
-  }
-
-  &.open {
-    @apply inline-block z-[99999];
-  }
-
-  &.inline {
-    @apply block relative top-0.5;
-  }
-
-  &.static {
-    @apply absolute;
-
-    &.open {
-      @apply z-[99999] block;
-    }
-  }
-
-  .flatpickr-weekday,
-  .flatpickr-monthDropdown-months {
-    @apply bg-transparent;
-  }
-
-  .multiMonth {
-    & .flatpickr-days .dayContainer {
-      &:nth-child(n + 1) .flatpickr-day.inRange:nth-child(7n + 7) {
-        @apply shadow-none;
-      }
-
-      &:nth-child(n + 2) .flatpickr-day.inRange:nth-child(7n + 1) {
-        @apply shadow-[-2px_0_0_#e6e6e6,5px_0_0_#e6e6e6];
-      }
-    }
-  }
-
-  .flatpickr-month {
-    @apply bg-transparent mx-auto h-12;
-  }
-
-  .hasWeeks .dayContainer {
-    @apply border-l-0;
-  }
-
-  .hasTime {
-    & .flatpickr-time {
-      @apply h-10 border-t-[1px] border-solid border-[#eceef1];
-    }
-
-    & .flatpickr-innerContainer {
-      @apply border-b-0;
-    }
-  }
-
-  .noCalendar.hasTime .flatpickr-time {
-    @apply h-auto;
-  }
-
-  .arrowTop {
-    &:before {
-      @apply border-b-[#eceef1];
-    }
-
-    &:after {
-      @apply border-b-[#eceef1];
-    }
-  }
-
-  .arrowBottom {
-    &:before {
-      @apply border-t-[#eceef1];
-    }
-
-    &:after {
-      @apply border-t-[#eceef1];
-    }
-  }
-
-  .flatpickr-wrapper {
-    @apply relative inline-block;
-  }
-
-  .flatpickr-day {
-    &.today {
-      @apply border-gray-200;
-
-      &:hover,
-      &:focus {
-        @apply text-black;
-      }
-    }
-
-    // &.hidden {
-    //   @apply opacity-0;
-    // }
-
-    &:hover,
-    &:focus {
-      @apply bg-gray-100 border-gray-200 text-white;
-    }
-
-    &.inRange,
-    &.prevMonthDay.inRange,
-    &.nextMonthDay.inRange,
-    &.today.inRange,
-    &.prevMonthDay.today.inRange,
-    &.nextMonthDay.today.inRange,
-    &:hover,
-    &.prevMonthDay:hover,
-    &.nextMonthDay:hover,
-    &:focus,
-    &.prevMonthDay:focus,
-    &.nextMonthDay:focus {
-      @apply cursor-pointer outline-none bg-[#e2e2e2] border-[#e2e2e2];
-    }
-
-    &.selected,
-    &.startRange,
-    &.endRange,
-    &.selected.inRange,
-    &.startRange.inRange,
-    &.endRange.inRange,
-    &.selected:focus,
-    &.startRange:focus,
-    &.endRange:focus,
-    &.selected:hover,
-    &.startRange:hover,
-    &.endRange:hover,
-    &.selected.prevMonthDay,
-    &.startRange.prevMonthDay,
-    &.endRange.prevMonthDay,
-    &.selected.nextMonthDay,
-    &.startRange.nextMonthDay,
-    &.endRange.nextMonthDay {
-      @apply bg-neutral-900 border-neutral-900 text-white;
-    }
-
-    &.selected.startRange,
-    &.startRange.startRange,
-    &.endRange.startRange {
-      @apply rounded-l-[50px];
-    }
-
-    &.selected.endRange,
-    &.startRange.endRange,
-    &.endRange.endRange {
-      @apply rounded-r-[50px];
-    }
-
-    &.selected.startRange + .endRange:not(:nth-child(7n + 1)),
-    &.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
-    &.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-      @apply shadow-[-10px_0_0_#ff5a5f];
-    }
-
-    &.selected.startRange.endRange,
-    &.startRange.startRange.endRange,
-    &.endRange.startRange.endRange {
-      @apply rounded-[50px];
-    }
-
-    .inRange {
-      @apply rounded-none shadow-[-5px_0_0_#e2e2e2,5px_0_0_#e2e2e2];
-    }
-
-    &.flatpickr-disabled,
-    &.flatpickr-disabled:hover,
-    &.prevMonthDay,
-    &.nextMonthDay,
-    &.notAllowed,
-    &.notAllowed.prevMonthDay,
-    &.notAllowed.nextMonthDay {
-      @apply text-[#c8c8c8] bg-transparent border-transparent cursor-default;
-    }
-
-    &.flatpickr-disabled,
-    &.flatpickr-disabled:hover {
-      @apply cursor-not-allowed text-[#ededed];
-    }
-
-    .week.selected {
-      @apply rounded-none shadow-[-5px_0_0_#ff5a5f,5px_0_0_#ff5a5f];
-    }
-  }
-
-  .rangeMode .flatpickr-day {
-    @apply mt-px;
-  }
-  .numInputWrapper {
-    @apply relative h-auto;
-
-    & input {
-      & span {
-        @apply inline-block;
-      }
-    }
-
-    input {
-      @apply w-full;
-
-      &::-ms-clear {
-        @apply hidden;
-      }
-    }
-
-    &:hover {
-      @apply bg-[#f2f2f2] outline-none;
-    }
-
-    span {
-      @apply bg-transparent outline-none absolute right-0 w-3.5 pr-1 pl-0.5 h-3/6 opacity-0 cursor-pointer leading-[50%] border-[1px] border-solid border-[rgba(72,72,72,0.15)] box-border;
-
-      &:hover {
-        @apply bg-[#e6e6e6];
-
-        span {
-          @apply opacity-100;
-        }
-      }
-
-      &:active {
-        @apply bg-[#cccccc];
-      }
-
-      &:after {
-        @apply block content-none absolute;
-      }
-
-      .arrowUp {
-        @apply top-0 border-b-0;
-
-        &:after {
-          @apply border-l-4 border-solid border-transparent border-r-4 border-b-4 border-b-[#919191] top-[26%];
-        }
-      }
-
-      .arrowDown {
-        @apply bottom-0;
-
-        &:after {
-          @apply border-l-4 border-solid border-transparent border-r-4 border-t-4 border-t-[#919191] top-[40%];
-        }
-      }
-
-      span {
-        & svg {
-          @apply h-auto;
-
-          & path {
-            @apply fill-[#adb0b8];
-          }
-        }
-      }
-
-      &:focus,
-      &:active {
-        @apply bg-transparent outline-none;
-      }
-    }
-  }
-
-  .numInputWrapper {
-    & input::-webkit-outer-spin-button,
-    & input::-webkit-inner-spin-button {
-      @apply m-0;
-    }
-  }
-
-  .flatpickr-current-month {
-    & input.cur-year {
-      &:active,
-      &:focus {
-        @apply outline-none;
-        -webkit-box-shadow: none;
-      }
-    }
-
-    .flatpickr-monthDropdown-months {
-      @apply w-auto max-w-none min-w-0 text-center p-0 outline-none overflow-visible leading-normal;
-
-      &:hover {
-        @apply bg-transparent outline-none;
-      }
-
-      &:active,
-      &:focus {
-        @apply outline-none;
-      }
-    }
-  }
-
-  .flatpickr-months {
-    @apply flex w-full pt-10 mx-auto;
-
-    & .flatpickr-month {
-      @apply rounded-t-[5px]  text-[#5a6171] fill-[#5a6171] leading-none text-center relative select-none overflow-hidden flex-1;
-    }
-
-    & .flatpickr-prev-month,
-    & .flatpickr-next-month {
-      @apply no-underline cursor-pointer  top-0 h-[34px] p-2.5 z-[3] text-[#5a6171] fill-[#5a6171];
-
-      &:hover svg {
-        @apply fill-primary-500;
-      }
-
-      &.flatpickr-prev-month {
-        @apply left-4 top-[42px];
-      }
-
-      &.flatpickr-disabled {
-        @apply hidden;
-      }
-
-      & i {
-        @apply relative;
-      }
-
-      &.flatpickr-next-month {
-        @apply right-4 top-[42px];
-
-        &:hover {
-          @apply text-slate-300;
-
-          & svg {
-            @apply fill-neutral-300;
-          }
-        }
-      }
-
-      & svg {
-        @apply w-3.5 h-3.5;
-
-        & path {
-          @apply fill-inherit;
-          -webkit-transition: fill 0.1s;
-        }
-      }
-    }
-  }
-
-  .flatpickr-current-month {
-    @apply text-[135%] font-light text-inherit  pt-[7.48px] leading-none h-[34px] inline-block text-center;
-    -webkit-transform: translate3d(0px, 0px, 0px);
-
-    span.cur-month {
-      @apply font-[inherit] font-bold text-[inherit] inline-block ml-[0.5ch] p-0;
-
-      &:hover {
-        @apply bg-[#f2f2f2];
-      }
-    }
-    .numInputWrapper {
-      @apply inline-block w-full;
-
-      span {
-        &.arrowDown:after {
-          @apply border-t-[#5a6171];
-        }
-
-        &.arrowUp:after {
-          @apply border-b-[#5a6171];
-        }
-      }
-    }
-
-    input.cur-year {
-      @apply bg-transparent box-border cursor-text pl-3.5 m-0 inline-block font-[inherit] text-inherit font-light leading-[inherit] h-auto border-0 rounded-none align-[inital];
-
-      &:focus {
-        @apply outline-none;
-      }
-    }
-
-    .flatpickr-monthDropdown-months {
-      @apply border-none rounded-none box-border cursor-pointer font-[inherit] text-inherit font-light h-auto leading-[inherit] -mt-[1px] outline-none  relative align-[inital] w-auto;
-
-      & .flatpickr-monthDropdown-month {
-        @apply bg-[#eceef1] outline-none p-0;
-      }
-
-      &:hover {
-        @apply bg-[#f2f2f2];
-      }
-    }
-  }
-
-  .flatpickr-current-month {
-    & input.cur-year[disabled] {
-      &,
-      &:hover {
-        @apply text-[100%] text-[#adb0b8] bg-transparent pointer-events-none;
-      }
-    }
-
-    & .flatpickr-monthDropdown-months {
-      &:focus,
-      &:active {
-        @apply outline-none;
-      }
-    }
-  }
-  .flatpickr-weekdays {
-    @apply bg-transparent pt-10 pb-6 text-center overflow-hidden w-full flex items-center h-7;
-
-    .flatpickr-weekdaycontainer {
-      @apply flex flex-1 gap-2.5;
-    }
-  }
-
-  .flatpickr-innerContainer {
-    @apply w-full border-none mx-auto;
-
-    .flatpickr-rContainer {
-      @apply mx-auto;
-    }
-  }
-
-  .dayContainer {
-    @apply grid p-0 w-full outline-none text-left gap-4 grid-cols-7;
-
-    .flatpickr-day {
-      @apply bg-none border-[1px] border-solid border-transparent rounded-[150px] box-border text-[#484848] cursor-pointer font-normal w-full m-0 relative text-center flex items-center justify-center leading-[0px] text-base;
-      aspect-ratio: 1 / 1;
-    }
-  }
-
-  .flatpickr-weekwrapper {
-    @apply float-left;
-
-    .flatpickr-weeks {
-      @apply px-0 py-3;
-    }
-
-    .flatpickr-weekday {
-      @apply float-none w-full leading-7;
-    }
-
-    &span.flatpickr-day {
-      &:hover {
-        @apply block w-full max-w-none bg-transparent cursor-default border-none;
-      }
-    }
-  }
-
-  .flatpickr-innerContainer {
-    @apply flex box-border border-b-[1px] border-solid border-[#eceef1];
-  }
-
-  .flatpickr-rContainer {
-    @apply inline-block p-0 box-border w-full;
-  }
-
-  span.flatpickr-weekday {
-    @apply cursor-default text-xs text-[#5a6171] leading-none m-0 text-center block flex-1;
-  }
-
-  .flatpickr-time {
-    @apply text-center outline-none h-0 leading-10 max-h-10 box-border invisible flex bg-white rounded-b-[5px];
-
-    &:after {
-      @apply content-none table clear-both;
-    }
-    .numInputWrapper {
-      @apply flex-1 w-[40%] h-10 float-left;
-
-      span.arrowUp:after {
-        @apply border-b-[#484848];
-      }
-
-      span.arrowDown:after {
-        @apply border-t-[#484848];
-      }
-    }
-
-    &.hasSeconds .numInputWrapper {
-      @apply w-[26%];
-    }
-
-    &.time24hr .numInputWrapper {
-      @apply w-[49%];
-    }
-
-    input {
-      @apply bg-transparent shadow-none border-0 rounded-none text-center m-0 p-0 h-[inherit] leading-[inherit] text-[#484848] text-sm relative box-border;
-
-      &.flatpickr-hour {
-        @apply font-bold;
-      }
-      &.flatpickr-minute {
-        &.flatpickr-second {
-          @apply font-normal;
-        }
-      }
-      &:focus {
-        @apply outline-none border-0;
-      }
-    }
-    .flatpickr-am-pm {
-      @apply outline-none w-[18%] cursor-pointer text-center font-normal;
-    }
-  }
-
-  .flatpickr-time {
-    & .flatpickr-time-separator,
-    & .flatpickr-am-pm {
-      @apply h-[inherit] float-left leading-[inherit] text-[#484848] font-bold w-[2%] select-none self-center;
-    }
-
-    & input:hover,
-    & .flatpickr-am-pm:hover,
-    & input:focus,
-    & .flatpickr-am-pm:focus {
-      @apply bg-[#eaeaea];
-    }
-  }
-
-  .flatpickr-input[readonly] {
-    @apply cursor-pointer;
-  }
-
-  .dayContainer,
-  .flatpickr-weeks {
-    @apply pt-[1px];
-  }
-
-  .flatpickr-calendar {
-    @apply rounded-md overflow-hidden border border-gray-300;
-  }
-
-  .flatpickr-days {
-    @apply rounded-b-md border-none relative overflow-hidden flex items-start  border-l-[1px] border-r-[1px]  border-[#eceef1];
-    &:focus {
-      @apply outline-none;
-    }
-  }
+.react-datetimerange-picker {
+  display: inline-flex;
+  position: relative;
+}
+
+.react-datetimerange-picker,
+.react-datetimerange-picker *,
+.react-datetimerange-picker *:before,
+.react-datetimerange-picker *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-datetimerange-picker--disabled {
+  background-color: #f0f0f0;
+  color: #6d6d6d;
+}
+
+.react-datetimerange-picker__wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  align-items: center;
+  border: thin solid gray;
+}
+
+.react-datetimerange-picker__inputGroup {
+  min-width: calc(4px + (4px * 3) + 0.54em * 6 + 0.217em * 2);
+  height: 100%;
+  flex-grow: 1;
+  padding: 0 2px;
+}
+
+.react-datetimerange-picker__inputGroup__divider {
+  padding: 1px 0;
+}
+
+.react-datetimerange-picker__inputGroup__divider,
+.react-datetimerange-picker__inputGroup__leadingZero {
+  display: inline-block;
+}
+
+.react-datetimerange-picker__inputGroup__input {
+  min-width: 0.54em;
+  height: calc(100% - 2px);
+  position: relative;
+  padding: 1px;
+  border: 0;
+  background: none;
+  color: currentColor;
+  font: inherit;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.react-datetimerange-picker__inputGroup__input::-webkit-outer-spin-button,
+.react-datetimerange-picker__inputGroup__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.react-datetimerange-picker__inputGroup__input:invalid {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.react-datetimerange-picker__inputGroup__input--hasLeadingZero {
+  margin-left: -0.54em;
+  padding-left: calc(1px + 0.54em);
+}
+
+.react-datetimerange-picker__inputGroup__amPm {
+  font: inherit;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  appearance: menulist;
+}
+
+.react-datetimerange-picker__button {
+  border: 0;
+  background: transparent;
+  padding: 4px 6px;
+}
+
+.react-datetimerange-picker__button:enabled {
+  cursor: pointer;
+}
+
+.react-datetimerange-picker__button:enabled:hover
+  .react-datetimerange-picker__button__icon,
+.react-datetimerange-picker__button:enabled:focus
+  .react-datetimerange-picker__button__icon {
+  stroke: #0078d7;
+}
+
+.react-datetimerange-picker__button:disabled
+  .react-datetimerange-picker__button__icon {
+  stroke: #6d6d6d;
+}
+
+.react-datetimerange-picker__button svg {
+  display: inherit;
+}
+
+.react-datetimerange-picker__calendar,
+.react-datetimerange-picker__clock {
+  z-index: 1;
+}
+
+.react-datetimerange-picker__calendar--closed,
+.react-datetimerange-picker__clock--closed {
+  display: none;
+}
+
+.react-datetimerange-picker__calendar {
+  width: 350px;
+  max-width: 100vw;
+}
+
+.react-datetimerange-picker__calendar .react-calendar {
+  border-width: thin;
+}
+
+.react-datetimerange-picker__clock {
+  width: 200px;
+  height: 200px;
+  max-width: 100vw;
+  padding: 25px;
+  background-color: white;
+  border: thin solid #a0a096;
+}
+
+.react-calendar {
+  width: 350px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #a0a096;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+}
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 1em;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__tile--now {
+  background: #ffff76;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+
+.react-calendar__tile--hasActive {
+  background: #76baff;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #a9d4ff;
+}
+
+.react-calendar__tile--active {
+  background: #006edc;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #1087ff;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+.react-clock {
+  display: block;
+  position: relative;
+}
+
+.react-clock,
+.react-clock *,
+.react-clock *:before,
+.react-clock *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-clock__face {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.react-clock__hand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+}
+
+.react-clock__hand__body {
+  position: absolute;
+  background-color: black;
+  transform: translateX(-50%);
+}
+
+.react-clock__mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+}
+
+.react-clock__mark__body {
+  position: absolute;
+  background-color: black;
+  transform: translateX(-50%);
+}
+
+.react-clock__mark__number {
+  position: absolute;
+  left: -40px;
+  width: 80px;
+  text-align: center;
+}
+
+.react-clock__second-hand__body {
+  background-color: red;
 }

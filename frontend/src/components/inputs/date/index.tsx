@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import Flatpickr from "react-flatpickr";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
-import dayjs from "dayjs";
+import DateTimeRangePicker from "@wojtekmaj/react-datetimerange-picker";
+import Calendar from "react-calendar";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -29,7 +29,6 @@ export default function DateInput(props: IInputProps) {
   const translate = useTranslationsContext();
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
-  const flatpickrRef = useRef<Flatpickr>(null);
 
   const htmlNodeId = useMemo(() => {
     return name.replace("[", "_").replace("]", "_").replace(".", "_");
@@ -104,27 +103,21 @@ export default function DateInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
-        <Flatpickr
-          options={{
-            ...options,
-            time_24hr: true,
-            locale: {
-              firstDayOfWeek: 1,
-            },
-          }}
-          placeholder={
-            typeof translate === "function" && placeholder
-              ? translate(placeholder)
-              : placeholder
-              ? placeholder
-              : ""
-          }
-          ref={flatpickrRef}
-          value={value !== undefined ? value : ""}
-          onChange={(e) => {
-            onChange(e[0]);
-          }}
-        />
+        {options.inline ? (
+          <DateTimeRangePicker
+            value={value !== undefined ? value : ""}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        ) : (
+          <Calendar
+            value={value !== undefined ? value : ""}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        )}
       </div>
       {inputError?.message ? (
         <div className="input-error">
