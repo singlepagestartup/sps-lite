@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
@@ -25,6 +25,12 @@ export default function DateInput(props: IInputProps) {
     disabled,
     options,
   } = props;
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   const translate = useTranslationsContext();
 
@@ -91,6 +97,14 @@ export default function DateInput(props: IInputProps) {
     // console.log(`🚀 ~ useEffect ~ errors`, errors);
   }, [errors]);
 
+  const Comp = useMemo(() => {
+    if (options.inline) {
+      return DateTimeRangePicker;
+    }
+
+    return Calendar;
+  }, [options]);
+
   return (
     <div
       data-component="elements.input"
@@ -102,23 +116,16 @@ export default function DateInput(props: IInputProps) {
           {typeof translate === "function" && label ? translate(label) : label}
         </label>
       </div>
-      <div className="input-container">
-        {options.inline ? (
-          <DateTimeRangePicker
+      {domLoaded ? (
+        <div className="input-container">
+          <Comp
             value={value !== undefined ? value : ""}
             onChange={(e) => {
               onChange(e);
             }}
           />
-        ) : (
-          <Calendar
-            value={value !== undefined ? value : ""}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
-        )}
-      </div>
+        </div>
+      ) : null}
       {inputError?.message ? (
         <div className="input-error">
           <p>

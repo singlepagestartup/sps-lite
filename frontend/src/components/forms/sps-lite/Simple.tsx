@@ -97,6 +97,7 @@ export default function Simple(props: ISpsLiteFormBlock) {
         });
       } else if (input.type && ["date", "datetime"].includes(input.type)) {
         options = {
+          inline: true,
           enableTime: input.type === "datetime",
         };
       }
