@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
 import { slideOverPropulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "slide-overs";
 
-export const modalsApi = backendServiceApi.injectEndpoints({
+export const modalsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getSlideOvers: build.query({
       query: (params = {}) => {

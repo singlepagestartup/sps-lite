@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { ISpsLiteFlyout, variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
-import { useGetFlyoutByIdQuery } from "~redux/services/backend/models/flyout-menus";
+import { useGetFlyoutByIdQuery } from "~redux/services/backend/models/flyouts";
 
 const variants = {
   ...spsLiteVariants,

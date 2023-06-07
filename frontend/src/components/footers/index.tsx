@@ -12,6 +12,8 @@ export default function Footers<T extends ISpsLiteFooter>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     useGetFooterByIdQuery({ id: props.id }, { skip: !props.id });
 
+  console.log("🚀 ~ data:", data);
+
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 
   if (!Comp || isError) {

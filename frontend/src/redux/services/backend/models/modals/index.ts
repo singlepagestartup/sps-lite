@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendModal } from "types/collection-types";
 import { modalPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "modals";
 
-export const modalsApi = backendServiceApi.injectEndpoints({
+export const modalsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getModals: build.query({
       query: (params = {}) => {

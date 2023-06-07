@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendLayout } from "types/collection-types";
 import { layoutPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "layouts";
 
-export const layoutsApi = backendServiceApi.injectEndpoints({
+export const layoutsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getLayouts: build.query({
       query: (params = {}) => {

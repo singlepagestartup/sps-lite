@@ -1,29 +1,30 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import qs from "qs";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 import { createNotification } from "~components/notifications";
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: `${BACKEND_URL}/api`,
-  paramsSerializer: (object) => {
-    return qs.stringify(object, {
-      encodeValuesOnly: true,
-    });
-  },
-  prepareHeaders: (headers) => {
-    const token = localStorage.jwt;
+const getBaseQuery = (baseUrl: string) =>
+  fetchBaseQuery({
+    baseUrl: `${baseUrl}/api`,
+    paramsSerializer: (object) => {
+      return qs.stringify(object, {
+        encodeValuesOnly: true,
+      });
+    },
+    prepareHeaders: (headers) => {
+      const token = localStorage.jwt;
 
-    if (token) {
-      headers.set(
-        "Authorization",
-        token.startsWith("Bearer ") ? token : `Bearer ${token}`,
-      );
-    }
+      if (token) {
+        headers.set(
+          "Authorization",
+          token.startsWith("Bearer ") ? token : `Bearer ${token}`,
+        );
+      }
 
-    return headers;
-  },
-});
+      return headers;
+    },
+  });
 
 const tagTypes = [
   "Currency",
@@ -39,9 +40,16 @@ const tagTypes = [
 ];
 
 export const backendServiceApi = createApi({
-  baseQuery,
+  baseQuery: getBaseQuery(BACKEND_URL),
   tagTypes,
   reducerPath: "backend",
+  endpoints: () => ({}),
+});
+
+export const frontendServiceApi = createApi({
+  baseQuery: getBaseQuery(FRONTEND_URL),
+  tagTypes,
+  reducerPath: "frontend",
   endpoints: () => ({}),
 });
 

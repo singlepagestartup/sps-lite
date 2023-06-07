@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendNavbar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "sidebars";
 
-export const sidebarsApi = backendServiceApi.injectEndpoints({
+export const sidebarsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getSidebarById: build.query({
       query: (params = {}) => {

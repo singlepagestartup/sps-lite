@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendNavbar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "topbars";
 
-export const topbarsApi = backendServiceApi.injectEndpoints({
+export const topbarsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getTopbarById: build.query({
       query: (params = {}) => {

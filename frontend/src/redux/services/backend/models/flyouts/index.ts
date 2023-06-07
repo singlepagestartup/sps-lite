@@ -1,11 +1,11 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendFlyout } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "flyouts";
 
-export const flyoutMenusApi = backendServiceApi.injectEndpoints({
+export const flyoutMenusApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getFlyoutById: build.query({
       query: (params = {}) => {

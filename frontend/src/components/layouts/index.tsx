@@ -3,19 +3,14 @@
 import { FC, ReactNode } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
 import useGetCurrentLayout from "~hooks/use-get-current-layout";
-import { IBackendLayout } from "types/collection-types";
+import { useGetLayoutsQuery } from "~redux/services/backend/models/layouts";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Layouts({
-  children,
-  layouts,
-}: {
-  children?: ReactNode;
-  layouts: IBackendLayout[];
-}) {
+export default function Layouts({ children }: { children?: ReactNode }) {
+  const { data: layouts } = useGetLayoutsQuery({});
   const layout = useGetCurrentLayout({ layouts });
 
   const Comp = layout
