@@ -12,7 +12,7 @@ export const modalsApi = frontendServiceApi.injectEndpoints({
         const { populate = slideOverPropulate } = params;
 
         return {
-          url: model,
+          url: `${model}.json`,
           params: {
             populate,
           },

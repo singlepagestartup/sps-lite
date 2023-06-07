@@ -12,7 +12,7 @@ export const sidebarsApi = frontendServiceApi.injectEndpoints({
         const { populate = pageBlockPopulate, filters, locale, id } = params;
 
         return {
-          url: `${model}/${id}`,
+          url: `${model}/${id}.json`,
           params: {
             populate,
             filters,

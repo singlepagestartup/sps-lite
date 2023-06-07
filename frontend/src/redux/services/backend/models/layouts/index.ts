@@ -17,7 +17,7 @@ export const layoutsApi = frontendServiceApi.injectEndpoints({
         } = params;
 
         return {
-          url: model,
+          url: `${model}.json`,
           params: {
             populate,
             filters,

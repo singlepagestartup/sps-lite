@@ -12,7 +12,7 @@ export const modalsApi = frontendServiceApi.injectEndpoints({
         const { populate = modalPopulate, pagination = { limit: -1 } } = params;
 
         return {
-          url: model,
+          url: `${model}.json`,
           params: {
             populate,
             pagination,

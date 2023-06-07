@@ -27,17 +27,20 @@ export async function generateStaticParams() {
   const paths = [];
 
   for (const model of models) {
-    const path = `${BACKEND_URL}/api/${model.url}`;
-    const items = await fetch(path).then((res) => res.json());
+    const backendPath = `${BACKEND_URL}/api/${model.url}`;
+    const items = await fetch(backendPath).then((res) => res.json());
+
+    const path = model.url.split("/");
+    path[path.length - 1] = `${path[path.length - 1]}.json`;
 
     paths.push({
-      url: model.url.split("/"),
+      url: path,
     });
 
     if (items?.data?.length) {
       for (const item of items.data) {
         paths.push({
-          url: [...model.url.split("/"), `${item.id}`],
+          url: [...model.url.split("/"), `${item.id}.json`],
         });
       }
     }
@@ -47,14 +50,19 @@ export async function generateStaticParams() {
 }
 
 export async function GET(request: Request, { params }: any) {
-  const model = models.find((item) => item.url.includes(params.url[0]));
+  const paramsModel = params.url[0].replace(".json", "");
+  const sanitizedParamsUrl = params.url.map((param: string) => {
+    return param.replace(".json", "");
+  });
+
+  const model = models.find((item) => item.url.includes(paramsModel));
 
   const query = QueryString.stringify({
     locale: "all",
     populate: model?.populate ? model.populate : pageBlockPopulate,
   });
 
-  const path = `${BACKEND_URL}/api/${params.url.join("/")}?${query}`;
+  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join("/")}?${query}`;
 
   const res = await fetch(path);
   const data = await res.json();
