@@ -1158,6 +1158,12 @@ input[type="number"] {
 .react-calendar__month-view__days__day--weekend {
   @apply text-black;
 }
+.react-calendar__month-view__days {
+  @apply gap-y-4;
+}
+.react-calendar__tile--range {
+  @apply rounded-none;
+}
 
 .react-calendar__month-view__days__day--neighboringMonth {
   @apply text-[#757575];
@@ -1173,7 +1179,7 @@ input[type="number"] {
   @apply max-w-full bg-none text-center leading-4 aspect-w-7 aspect-h-1;
 }
 .react-calendar__tile > * {
-  @apply absolute h-full w-full top-[50%] right-0 left-0 bottom-0;
+  @apply absolute h-full w-full  right-0 left-0 inset-y-1/2;
 }
 
 .react-calendar__tile:disabled {
@@ -1196,7 +1202,12 @@ input[type="number"] {
 .react-calendar__tile--rangeEnd {
   @apply rounded-r-full;
 }
+
 .react-calendar__tile--rangeStart {
+  @apply rounded-l-full;
+}
+
+.react-calendar__tile--hoverStart {
   @apply rounded-l-full;
 }
 
@@ -1206,7 +1217,7 @@ input[type="number"] {
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  @apply bg-[#e6e6e6];
+  @apply bg-neutral-800 rounded-none;
 }
 
 .react-calendar__tile--active {
@@ -1215,7 +1226,7 @@ input[type="number"] {
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  @apply bg-black;
+  @apply bg-neutral-800 rounded-none;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {
