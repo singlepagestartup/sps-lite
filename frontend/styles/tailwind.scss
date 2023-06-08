@@ -1148,7 +1148,7 @@ input[type="number"] {
   @apply aspect-w-7 aspect-h-1 text-center;
 }
 .react-calendar__month-view__weekdays__weekday > * {
-  @apply absolute h-full w-full top-[50%] right-0 left-0 bottom-0;
+  @apply absolute h-full w-full right-0 left-0 lg:inset-y-1/2 top-[35%];
 }
 
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
@@ -1179,7 +1179,7 @@ input[type="number"] {
   @apply max-w-full bg-none text-center leading-4 aspect-w-7 aspect-h-1;
 }
 .react-calendar__tile > * {
-  @apply absolute h-full w-full  right-0 left-0 inset-y-1/2;
+  @apply absolute h-full w-full right-0 left-0 lg:inset-y-1/2 top-[35%];
 }
 
 .react-calendar__tile:disabled {
@@ -1200,15 +1200,19 @@ input[type="number"] {
   @apply bg-[#ffffa9];
 }
 .react-calendar__tile--rangeEnd {
-  @apply rounded-r-full;
+  @apply rounded-r-full bg-black;
 }
 
 .react-calendar__tile--rangeStart {
   @apply rounded-l-full;
 }
 
-.react-calendar__tile--hoverStart {
-  @apply rounded-l-full bg-neutral-950;
+.react-calendar__tile--hoverStart:enabled:hover {
+  @apply rounded-l-full bg-neutral-950 rounded-r-none;
+}
+
+.react-calendar__tile--hoverEnd:enabled:hover {
+  @apply rounded-r-full bg-neutral-950 rounded-l-none;
 }
 
 .react-calendar__tile--hasActive {
@@ -1231,6 +1235,12 @@ input[type="number"] {
 
     &.react-calendar__tile--rangeEnd:hover {
       @apply rounded-r-full;
+    }
+    &.react-calendar__tile--hoverEnd:focus {
+      @apply rounded-r-full bg-neutral-950 rounded-l-none;
+    }
+    &.react-calendar__tile--hoverStart:focus {
+      @apply rounded-l-full bg-neutral-950 rounded-r-none;
     }
   }
 }
