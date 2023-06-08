@@ -1208,7 +1208,7 @@ input[type="number"] {
 }
 
 .react-calendar__tile--hoverStart {
-  @apply rounded-l-full;
+  @apply rounded-l-full bg-neutral-950;
 }
 
 .react-calendar__tile--hasActive {
@@ -1217,16 +1217,22 @@ input[type="number"] {
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  @apply bg-neutral-800 rounded-none;
+  @apply bg-neutral-800 rounded-l-full rounded-r-none;
 }
 
 .react-calendar__tile--active {
   @apply bg-black text-white;
-}
 
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  @apply bg-neutral-800 rounded-none;
+  &:enabled {
+    &:hover,
+    &:enabled:focus {
+      @apply bg-neutral-800 rounded-none;
+    }
+
+    &.react-calendar__tile--rangeEnd:hover {
+      @apply rounded-r-full;
+    }
+  }
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {
