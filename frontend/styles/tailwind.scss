@@ -1087,7 +1087,7 @@ input[type="number"] {
 }
 
 .react-calendar {
-  @apply max-w-full bg-white  leading-[1.125em] rounded-[40px];
+  @apply max-w-full bg-white  leading-[1.125em] rounded-[40px] pb-10;
 }
 
 .react-calendar--doubleView {
