@@ -114,3 +114,13 @@ git config pull.rebase false
 ```
 
 :::
+
+:::danger fatal: refusing to merge unrelated histories
+
+If you get error with text "fatal: refusing to merge unrelated histories", that means your repo has confilict in history with `sps` repo. You can pull `sps` updates by calling:
+
+```bash
+git pull upstream main --allow-unrelated-histories
+```
+
+:::

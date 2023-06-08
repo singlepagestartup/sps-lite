@@ -26,7 +26,7 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple-centered"],
+      "enum": ["simple-centered", "split"],
       "default": "simple-centered",
       "required": true
     },
