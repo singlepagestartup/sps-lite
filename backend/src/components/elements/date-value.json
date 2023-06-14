@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_date_values",
+  "info": {
+    "displayName": "Date Value"
+  },
+  "options": {},
+  "attributes": {
+    "date_value": {
+      "type": "date"
+    },
+    "datetime_value": {
+      "type": "datetime"
+    },
+    "time_value": {
+      "type": "time"
+    }
+  }
+}

@@ -17,7 +17,12 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "options": {
       "type": "component",
@@ -37,6 +42,11 @@
     },
     "datetime_value": {
       "type": "datetime"
+    },
+    "dates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.date-value"
     }
   }
 }

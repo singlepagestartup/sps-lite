@@ -49,7 +49,15 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["text", "textarea", "date", "datetime"],
+      "enum": [
+        "text",
+        "textarea",
+        "date",
+        "date_inline",
+        "datetime_inline",
+        "daterange_inline",
+        "datetimerange_inline"
+      ],
       "required": false
     },
     "multiple": {
@@ -68,18 +76,34 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "additional_media": {
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "extra_media": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

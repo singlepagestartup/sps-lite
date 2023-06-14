@@ -1,10 +1,20 @@
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  Fragment,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import DateTimeRangePicker from "@wojtekmaj/react-datetimerange-picker";
 import Calendar from "react-calendar";
+import DatePicker from "react-date-picker";
+import DateRangePicker from "@wojtekmaj/react-daterange-picker";
+import DateTimePicker from "react-datetime-picker";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -16,7 +26,7 @@ export default function DateInput(props: IInputProps) {
     placeholder,
     className,
     initialValue,
-    type = "text",
+    type = "date",
     rows,
     valueAsNumber,
     step,
@@ -71,23 +81,34 @@ export default function DateInput(props: IInputProps) {
     defaultValue: initialValue !== undefined ? initialValue : defaultValue,
   });
 
+  const [localValue, setLocalValue] = useState<any>();
+
+  function onChangeProxy(e: any) {
+    setLocalValue(e);
+
+    if (typeof e === "object" && e !== null && e.length > 1) {
+      if (type === "daterange_inline") {
+        return onChange([{ date_value: e[0] }, { date_value: e[1] }]);
+      } else if (type === "datetimerange_inline") {
+        return onChange([{ datetime_value: e[0] }, { datetime_value: e[1] }]);
+      }
+
+      return onChange(e);
+    } else {
+      return onChange(e);
+    }
+  }
+
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
       const evt = new Event("change");
       inputRef.current.value = initialValue;
       inputRef.current.dispatchEvent(evt);
       const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
-      if (valueAsNumber) {
-        onChange(+target?.value);
-        return;
-      }
-      if (
-        target.value === "" &&
-        (type === "date" || type === "datetime-local")
-      ) {
-        onChange(null);
+      if (target.value === "") {
+        onChangeProxy(null);
       } else {
-        onChange(evt);
+        onChangeProxy(evt);
       }
     }
   }, [initialValue, inputRef?.current]);
@@ -98,7 +119,13 @@ export default function DateInput(props: IInputProps) {
   }, [errors]);
 
   const Comp = useMemo(() => {
-    if (options.inline) {
+    if (type === "daterange_inline") {
+      return DateRangePicker;
+    } else if (type === "date_inline") {
+      return DatePicker;
+    } else if (type === "datetime_inline") {
+      return DateTimePicker;
+    } else if (type === "datetimerange_inline") {
       return DateTimeRangePicker;
     }
 
@@ -119,9 +146,13 @@ export default function DateInput(props: IInputProps) {
       {domLoaded ? (
         <div className="input-container">
           <Comp
-            value={value !== undefined ? value : ""}
+            value={localValue !== undefined ? localValue : ""}
+            /* @ts-ignore */
+            options={{
+              inline: type?.includes("inline"),
+            }}
             onChange={(e) => {
-              onChange(e);
+              onChangeProxy(e);
             }}
           />
         </div>

@@ -78,10 +78,19 @@ export default function Simple(props: ISpsLiteFormBlock) {
       } else if (["file"].includes(input.variant)) {
         inputName = `inputs[${index}].files`;
         isFile = true;
-      } else if (input.type && ["date"].includes(input.type)) {
-        inputName = `inputs[${index}].date_value`;
-      } else if (input.type && ["datetime"].includes(input.type)) {
-        inputName = `inputs[${index}].datetime_value`;
+      } else if (input.variant === "date") {
+        if (input.type && ["date", "date_inline"].includes(input?.type)) {
+          inputName = `inputs[${index}].dates[0].date_value`;
+        } else {
+          inputName = `inputs[${index}].dates[0].datetime_value`;
+        }
+
+        if (
+          input.type &&
+          ["daterange_inline", "datetimerange_inline"].includes(input?.type)
+        ) {
+          inputName = `inputs[${index}].dates`;
+        }
       } else {
         inputName = `inputs[${index}].value`;
       }

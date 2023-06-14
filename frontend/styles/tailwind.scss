@@ -599,30 +599,60 @@ input[type="number"] {
 
     &[data-variant="date"] {
       &.input-date {
-        .react-datetimerange-picker {
+        .react-datetimerange-picker,
+        .react-datetime-picker,
+        .react-date-picker,
+        .react-daterange-picker {
           @apply box-border flex flex-col relative w-full;
 
-          &.react-datetimerange-picker--disabled {
+          &.react-datetimerange-picker--disabled,
+          &.react-datetime-picker--disabled,
+          &.react-daterange-picker--disabled {
             @apply bg-[#f0f0f0] text-[#6d6d6d];
           }
 
-          &.react-datetimerange-picker--open {
+          &.react-daterange-picker--closed,
+          &.react-date-picker--closed,
+          &.react-datetime-picker--closed {
           }
 
-          &.react-datetimerange-picker--enabled {
+          &.react-daterange-picker--enabled,
+          &.react-date-picker--enabled,
+          &.react-datetime-picker--enabled {
           }
 
-          .react-datetimerange-picker__wrapper {
+          &.react-datetimerange-picker--open,
+          &.react-datetime-picker--open,
+          &.react-date-picker--open,
+          &.react-daterange-picker--open {
+          }
+
+          &.react-datetimerange-picker--enabled,
+          &.react-datetime-picker--enabled,
+          &.react-date-picker--enabled,
+          &.react-daterange-picker--enabled {
+          }
+
+          .react-datetimerange-picker__wrapper,
+          .react-datetime-picker__wrapper,
+          .react-date-picker__wrapper,
+          .react-daterange-picker__wrapper {
             @apply flex grow shrink-0 items-center px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 gap-2;
 
-            .react-datetimerange-picker__inputGroup {
+            .react-datetimerange-picker__inputGroup,
+            .react-datetime-picker__inputGroup,
+            .react-date-picker__inputGroup,
+            .react-daterange-picker__inputGroup {
               @apply w-full grow;
 
               .react-datetime-picker__inputGroup__divider {
               }
 
-              .react-datetimerange-picker__inputGroup__input {
-                @apply min-w-[0.54em] relative p-px border-0 bg-none box-content;
+              .react-datetimerange-picker__inputGroup__input,
+              .react-datetime-picker__inputGroup__input,
+              .react-date-picker__inputGroup__input,
+              .react-daterange-picker__inputGroup__input {
+                @apply min-w-[0.54em] relative text-sm border-0 bg-none box-content;
 
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {
@@ -633,35 +663,55 @@ input[type="number"] {
                   // @apply bg-[#ffe6e6];
                 }
 
-                &.react-datetimerange-picker__inputGroup__month {
+                &.react-datetimerange-picker__inputGroup__month,
+                &.react-datetime-picker__inputGroup__month,
+                &.react-date-picker__inputGroup__month,
+                &.react-daterange-picker__inputGroup__month {
                 }
 
-                &.react-datetimerange-picker__inputGroup__year {
+                &.react-datetimerange-picker__inputGroup__year,
+                &.react-datetime-picker__inputGroup__year,
+                &.react-date-picker__inputGroup__year,
+                &.react-daterange-picker__inputGroup__year {
                   @apply pr-2;
                 }
 
-                &.react-datetimerange-picker__inputGroup__hour {
+                &.react-datetimerange-picker__inputGroup__hour,
+                &.react-datetime-picker__inputGroup__hour {
                 }
 
-                &.react-datetimerange-picker__inputGroup__minute {
+                &.react-datetimerange-picker__inputGroup__minute,
+                &.react-datetime-picker__inputGroup__minute {
                 }
 
-                &.react-datetimerange-picker__inputGroup__input--hasLeadingZero {
+                &.react-datetimerange-picker__inputGroup__input--hasLeadingZero,
+                &.react-date-picker__inputGroup__input--hasLeadingZero,
+                &.react-datetime-picker__inputGroup__input--hasLeadingZero,
+                &.react-daterange-picker__inputGroup__input--hasLeadingZero {
                   // padding-left: calc(1px + 0.54em);
                   // @apply -ml-[0.54em];
                 }
+              }
 
-                &.react-datetimerange-picker__inputGroup__leadingZero {
-                  // @apply inline-block;
-                }
+              .react-datetimerange-picker__inputGroup__leadingZero,
+              .react-date-picker__inputGroup__leadingZero,
+              .react-datetime-picker__inputGroup__leadingZero,
+              .react-daterange-picker__inputGroup__leadingZero {
+                @apply text-sm;
               }
             }
 
-            .react-datetimerange-picker__range-divider {
+            .react-datetimerange-picker__range-divider,
+            .react-date-picker__range-divider,
+            .react-datetime-picker__range-divider,
+            .react-daterange-picker__range-divider {
               @apply px-2;
             }
 
-            .react-datetimerange-picker__button {
+            .react-datetimerange-picker__button,
+            .react-date-picker__button,
+            .react-datetime-picker__button,
+            .react-daterange-picker__button {
               @apply border-0 bg-transparent;
 
               &:enabled {
@@ -685,31 +735,47 @@ input[type="number"] {
                 display: inherit;
               }
 
-              &.react-datetimerange-picker__clear-button {
+              &.react-datetimerange-picker__clear-button,
+              &.react-date-picker__clear-button,
+              &.react-datetime-picker__clear-button,
+              &.react-daterange-picker__clear-button {
               }
 
-              &.react-datetimerange-picker__calendar-button {
+              &.react-datetimerange-picker__calendar-button,
+              &.react-date-picker__calendar-button,
+              &.react-datetime-picker__calendar-button,
+              &.react-daterange-picker__calendar-button {
               }
             }
           }
 
-          .react-datetimerange-picker__calendar {
-            @apply w-full z-10 mt-1;
+          .react-datetimerange-picker__calendar,
+          .react-date-picker__calendar,
+          .react-datetime-picker__calendar,
+          .react-daterange-picker__calendar {
+            @apply w-full z-10 my-1;
 
-            &.react-datetimerange-picker__calendar--open {
+            &.react-datetimerange-picker__calendar--open,
+            &.react-date-picker__calendar--open,
+            &.react-datetime-picker__calendar--open,
+            &.react-daterange-picker__calendar--open {
               @apply block;
             }
 
-            &.react-datetimerange-picker__calendar--closed {
+            &.react-datetimerange-picker__calendar--closed,
+            &.react-date-picker__calendar--closed,
+            &.react-datetime-picker__calendar--closed,
+            &.react-daterange-picker__calendar--closed {
               @apply hidden;
             }
           }
 
           .react-datetimerange-picker__clock {
-            @apply z-10 w-[200px] h-[200px] max-w-[100vw] p-[25px] bg-white border border-solid border-[#a0a096];
+            // @apply z-10 w-[200px] h-[200px] max-w-[100vw] p-[25px] bg-white border border-solid border-[#a0a096];
+            @apply hidden;
 
             &.react-datetimerange-picker__clock--open {
-              @apply block;
+              @apply hidden;
             }
 
             &.react-datetimerange-picker__clock--closed {
@@ -769,7 +835,7 @@ input[type="number"] {
       }
 
       .react-calendar {
-        @apply rounded-md border border-gray-300 shadow-sm box-border max-w-full bg-white  leading-[1.125em];
+        @apply rounded-md border border-gray-300 shadow-sm box-border max-w-full bg-white leading-[1.125em];
 
         & *,
         & *:before,
@@ -850,6 +916,14 @@ input[type="number"] {
                 }
 
                 &.react-calendar__month-view__days__day {
+                  &.react-calendar__tile--now {
+                    @apply bg-neutral-100;
+
+                    &:not(.react-calendar__tile--active) {
+                      @apply rounded-full;
+                    }
+                  }
+
                   &.react-calendar__tile--range {
                     &.react-calendar__tile--active {
                       @apply bg-black text-white;
@@ -865,10 +939,6 @@ input[type="number"] {
 
                     &.react-calendar__tile--rangeBothEnds {
                       @apply bg-black text-white rounded-full;
-                    }
-
-                    &.react-calendar__tile--now {
-                      @apply bg-[#ffff76];
                     }
 
                     &.react-calendar__tile--hover {
