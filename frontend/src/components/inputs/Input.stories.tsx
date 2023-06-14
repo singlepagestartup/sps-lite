@@ -38,7 +38,10 @@ export const Text = {
 };
 
 export const Date = {
-  render: () => <DateInput />,
+  render: (args: any) => <DateInput {...args} />,
+  args: {
+    inline: true,
+  },
 };
 
 function FileInput() {
@@ -244,7 +247,7 @@ function TextInput() {
   );
 }
 
-function DateInput() {
+function DateInput({ inline }: any) {
   const methods = useForm({ mode: "all" });
 
   const { watch } = methods;
@@ -260,7 +263,7 @@ function DateInput() {
         variant="date"
         name="start_at"
         options={{
-          inline: true,
+          inline,
         }}
         initialValue="2023-05-14T08:02:05.182Z"
         label="Booking Date"
