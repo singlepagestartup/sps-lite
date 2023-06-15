@@ -6,32 +6,32 @@
     "type": "one-time",
     "period": null,
     "old_price": null,
-    "createdAt": "2023-02-14T08:49:14.623Z",
-    "updatedAt": "2023-05-04T10:09:08.474Z",
-    "publishedAt": "2023-02-14T22:48:50.378Z",
+    "createdAt": "2023-06-08T05:18:28.841Z",
+    "updatedAt": "2023-06-08T05:18:28.841Z",
+    "publishedAt": "2023-02-14T20:48:50.378Z",
     "locale": "en",
     "currency": null,
     "features": [
         {
-            "id": 501,
+            "id": 1,
+            "description": null,
             "title": "Конструктор PageBlock'ов",
-            "description": null,
             "subtitle": null,
             "media": null,
             "additional_media": null
         },
         {
-            "id": 502,
+            "id": 3,
+            "description": null,
             "title": "Настроенный фронтенд",
-            "description": null,
             "subtitle": null,
             "media": null,
             "additional_media": null
         },
         {
-            "id": 503,
-            "title": "Базовые модели для одностраничного сайта",
+            "id": 2,
             "description": null,
+            "title": "Базовые модели для одностраничного сайта",
             "subtitle": null,
             "media": null,
             "additional_media": null

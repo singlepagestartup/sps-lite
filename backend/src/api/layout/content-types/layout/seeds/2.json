@@ -1,337 +1,14 @@
 {
-    "id": 1,
-    "title": "Public Page Layout With Sidebar",
-    "uid": "public-page-layout",
-    "variant": "boxed",
-    "class_name": null,
-    "createdAt": "2023-06-08T05:19:32.951Z",
-    "updatedAt": "2023-06-08T05:19:35.037Z",
-    "publishedAt": "2023-04-08T10:04:56.606Z",
+    "id": 2,
+    "title": "Public Page Layout",
+    "uid": "public-page-layout-1",
+    "variant": "wide",
+    "class_name": "[&>.layout-container]:pt-16",
+    "createdAt": "2023-06-08T05:19:33.000Z",
+    "updatedAt": "2023-06-08T05:19:35.068Z",
+    "publishedAt": "2023-04-20T08:23:38.447Z",
     "locale": "en",
-    "sidebar": {
-        "id": 1,
-        "variant": "one-quarter",
-        "title": "Ads Sidebar",
-        "uid": "ads-sidebar-1",
-        "class_name": null,
-        "side": "right",
-        "createdAt": "2023-06-08T05:20:30.478Z",
-        "updatedAt": "2023-06-08T05:20:30.478Z",
-        "publishedAt": "2023-04-07T22:35:29.006Z",
-        "locale": "en",
-        "page_blocks": [
-            {
-                "__component": "page-blocks.hero-section-block",
-                "id": 7,
-                "title": "Sidebar",
-                "description": "With Page Blocks",
-                "variant": "simple-centered",
-                "anchor": null,
-                "class_name": "pt-16",
-                "media": null,
-                "buttons": [],
-                "additional_media": null
-            }
-        ],
-        "layouts": [
-            {
-                "id": 1,
-                "title": "Public Page Layout With Sidebar",
-                "uid": "public-page-layout",
-                "variant": "boxed",
-                "class_name": null,
-                "createdAt": "2023-06-08T05:19:32.951Z",
-                "updatedAt": "2023-06-08T05:19:35.037Z",
-                "publishedAt": "2023-04-08T10:04:56.606Z",
-                "locale": "en",
-                "sidebar": {
-                    "id": 1,
-                    "variant": "one-quarter",
-                    "title": "Ads Sidebar",
-                    "uid": "ads-sidebar-1",
-                    "class_name": null,
-                    "side": "right",
-                    "createdAt": "2023-06-08T05:20:30.478Z",
-                    "updatedAt": "2023-06-08T05:20:30.478Z",
-                    "publishedAt": "2023-04-07T22:35:29.006Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 7,
-                            "title": "Sidebar",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": "pt-16"
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
-                            "locale": "en"
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": null,
-                    "localizations": []
-                },
-                "topbar": null,
-                "footer": {
-                    "id": 1,
-                    "title": "Public Page Footer",
-                    "uid": "public-page-footer",
-                    "variant": "boxed",
-                    "class_name": null,
-                    "createdAt": "2023-06-08T05:19:34.741Z",
-                    "updatedAt": "2023-06-08T05:19:34.741Z",
-                    "publishedAt": "2023-05-04T08:25:15.030Z",
-                    "locale": "en",
-                    "layouts": [
-                        {
-                            "id": 2,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-1",
-                            "variant": "wide",
-                            "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
-                            "locale": "en"
-                        },
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
-                            "locale": "en"
-                        }
-                    ],
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.footer-block",
-                            "id": 1,
-                            "copyrights": "2023 Single Page Startup",
-                            "description": "The fastest way to develop your startup",
-                            "variant": "four-columns-with-company-mission",
-                            "class_name": null
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": null,
-                    "localizations": []
-                },
-                "slide_overs": [
-                    {
-                        "id": 1,
-                        "variant": "right-side-half-width",
-                        "title": "This Is Slide Over",
-                        "uid": "this-is-slide-over",
-                        "class_name": null,
-                        "createdAt": "2023-06-08T05:20:30.595Z",
-                        "updatedAt": "2023-06-08T05:20:30.595Z",
-                        "publishedAt": "2023-04-07T21:54:17.781Z",
-                        "locale": "en",
-                        "page_blocks": [
-                            {
-                                "__component": "page-blocks.faqs-block",
-                                "id": 1,
-                                "title": "This Is Slide Over",
-                                "description": "With Page Blocks",
-                                "variant": "two-columns-with-centered-introduction",
-                                "class_name": null,
-                                "anchor": null,
-                                "subtitle": null
-                            }
-                        ],
-                        "layouts": [
-                            {
-                                "id": 1,
-                                "title": "Public Page Layout With Sidebar",
-                                "uid": "public-page-layout",
-                                "variant": "boxed",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:19:32.951Z",
-                                "updatedAt": "2023-06-08T05:19:35.037Z",
-                                "publishedAt": "2023-04-08T10:04:56.606Z",
-                                "locale": "en"
-                            },
-                            {
-                                "id": 2,
-                                "title": "Public Page Layout",
-                                "uid": "public-page-layout-1",
-                                "variant": "wide",
-                                "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2023-06-08T05:19:33.000Z",
-                                "updatedAt": "2023-06-08T05:19:35.068Z",
-                                "publishedAt": "2023-04-20T08:23:38.447Z",
-                                "locale": "en"
-                            }
-                        ],
-                        "createdBy": null,
-                        "updatedBy": null,
-                        "localizations": []
-                    }
-                ],
-                "modals": [
-                    {
-                        "id": 1,
-                        "uid": "this-is-modal",
-                        "dialog_panel_class_name": "w-8/12",
-                        "variant": "simple",
-                        "title": "This Is Modal",
-                        "class_name": null,
-                        "createdAt": "2023-06-08T05:19:35.862Z",
-                        "updatedAt": "2023-06-08T05:19:35.862Z",
-                        "publishedAt": "2023-03-28T09:07:57.457Z",
-                        "locale": "en",
-                        "page_blocks": [
-                            {
-                                "__component": "page-blocks.hero-section-block",
-                                "id": 4,
-                                "title": "This Is Modal",
-                                "description": "With Page Blocks",
-                                "variant": "simple-centered",
-                                "anchor": null,
-                                "class_name": null
-                            }
-                        ],
-                        "layouts": [
-                            {
-                                "id": 1,
-                                "title": "Public Page Layout With Sidebar",
-                                "uid": "public-page-layout",
-                                "variant": "boxed",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:19:32.951Z",
-                                "updatedAt": "2023-06-08T05:19:35.037Z",
-                                "publishedAt": "2023-04-08T10:04:56.606Z",
-                                "locale": "en"
-                            },
-                            {
-                                "id": 2,
-                                "title": "Public Page Layout",
-                                "uid": "public-page-layout-1",
-                                "variant": "wide",
-                                "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2023-06-08T05:19:33.000Z",
-                                "updatedAt": "2023-06-08T05:19:35.068Z",
-                                "publishedAt": "2023-04-20T08:23:38.447Z",
-                                "locale": "en"
-                            }
-                        ],
-                        "createdBy": null,
-                        "updatedBy": null,
-                        "localizations": []
-                    }
-                ],
-                "navbar": {
-                    "id": 1,
-                    "title": "Public Page Navbar",
-                    "uid": "public-page-navbar",
-                    "variant": "boxed",
-                    "class_name": null,
-                    "position": "fixed",
-                    "side": "top",
-                    "createdAt": "2023-06-08T05:19:36.905Z",
-                    "updatedAt": "2023-06-08T05:19:36.905Z",
-                    "publishedAt": "2023-04-08T10:04:22.148Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.navbar-block",
-                            "id": 1,
-                            "variant": "simple-links-on-left",
-                            "description": null,
-                            "class_name": null
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
-                            "locale": "en"
-                        },
-                        {
-                            "id": 2,
-                            "title": "Public Page Layout",
-                            "uid": "public-page-layout-1",
-                            "variant": "wide",
-                            "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
-                            "locale": "en"
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": null,
-                    "localizations": []
-                },
-                "pages": [
-                    {
-                        "id": 2,
-                        "title": "Page With Sidebar Layout",
-                        "url": "/page-with-sidebar-layout",
-                        "createdAt": "2023-06-08T05:19:32.833Z",
-                        "updatedAt": "2023-06-08T05:20:16.409Z",
-                        "publishedAt": "2023-04-08T18:00:14.519Z",
-                        "locale": "en",
-                        "layout": {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
-                            "locale": "en"
-                        },
-                        "page_blocks": [
-                            {
-                                "__component": "page-blocks.slider-block",
-                                "id": 2,
-                                "variant": "simple",
-                                "anchor": null,
-                                "class_name": "pt-16",
-                                "title": null,
-                                "description": null,
-                                "subtitle": null
-                            }
-                        ],
-                        "metatag": null,
-                        "createdBy": null,
-                        "updatedBy": null,
-                        "localizations": []
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null,
-                "localizations": []
-            }
-        ],
-        "createdBy": null,
-        "updatedBy": null,
-        "localizations": []
-    },
+    "sidebar": null,
     "topbar": null,
     "footer": {
         "id": 1,
@@ -3411,62 +3088,24 @@
     },
     "pages": [
         {
-            "id": 2,
-            "title": "Page With Sidebar Layout",
-            "url": "/page-with-sidebar-layout",
-            "createdAt": "2023-06-08T05:19:32.833Z",
-            "updatedAt": "2023-06-08T05:20:16.409Z",
-            "publishedAt": "2023-04-08T18:00:14.519Z",
+            "id": 1,
+            "title": "Main page",
+            "url": "/",
+            "createdAt": "2023-06-08T05:19:25.363Z",
+            "updatedAt": "2023-06-08T05:20:16.347Z",
+            "publishedAt": "2023-04-08T17:06:05.277Z",
             "locale": "en",
             "layout": {
-                "id": 1,
-                "title": "Public Page Layout With Sidebar",
-                "uid": "public-page-layout",
-                "variant": "boxed",
-                "class_name": null,
-                "createdAt": "2023-06-08T05:19:32.951Z",
-                "updatedAt": "2023-06-08T05:19:35.037Z",
-                "publishedAt": "2023-04-08T10:04:56.606Z",
+                "id": 2,
+                "title": "Public Page Layout",
+                "uid": "public-page-layout-1",
+                "variant": "wide",
+                "class_name": "[&>.layout-container]:pt-16",
+                "createdAt": "2023-06-08T05:19:33.000Z",
+                "updatedAt": "2023-06-08T05:19:35.068Z",
+                "publishedAt": "2023-04-20T08:23:38.447Z",
                 "locale": "en",
-                "sidebar": {
-                    "id": 1,
-                    "variant": "one-quarter",
-                    "title": "Ads Sidebar",
-                    "uid": "ads-sidebar-1",
-                    "class_name": null,
-                    "side": "right",
-                    "createdAt": "2023-06-08T05:20:30.478Z",
-                    "updatedAt": "2023-06-08T05:20:30.478Z",
-                    "publishedAt": "2023-04-07T22:35:29.006Z",
-                    "locale": "en",
-                    "page_blocks": [
-                        {
-                            "__component": "page-blocks.hero-section-block",
-                            "id": 7,
-                            "title": "Sidebar",
-                            "description": "With Page Blocks",
-                            "variant": "simple-centered",
-                            "anchor": null,
-                            "class_name": "pt-16"
-                        }
-                    ],
-                    "layouts": [
-                        {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
-                            "locale": "en"
-                        }
-                    ],
-                    "createdBy": null,
-                    "updatedBy": null,
-                    "localizations": []
-                },
+                "sidebar": null,
                 "topbar": null,
                 "footer": {
                     "id": 1,
@@ -3671,34 +3310,156 @@
                 },
                 "pages": [
                     {
-                        "id": 2,
-                        "title": "Page With Sidebar Layout",
-                        "url": "/page-with-sidebar-layout",
-                        "createdAt": "2023-06-08T05:19:32.833Z",
-                        "updatedAt": "2023-06-08T05:20:16.409Z",
-                        "publishedAt": "2023-04-08T18:00:14.519Z",
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2023-06-08T05:19:25.363Z",
+                        "updatedAt": "2023-06-08T05:20:16.347Z",
+                        "publishedAt": "2023-04-08T17:06:05.277Z",
                         "locale": "en",
                         "layout": {
-                            "id": 1,
-                            "title": "Public Page Layout With Sidebar",
-                            "uid": "public-page-layout",
-                            "variant": "boxed",
-                            "class_name": null,
-                            "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
                             "locale": "en"
                         },
                         "page_blocks": [
                             {
-                                "__component": "page-blocks.slider-block",
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 5,
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 2,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 2,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 2,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 2,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "metatag": {
+                            "id": 1,
+                            "title": "Lite Single Page Startup",
+                            "description": "The fastest way to create startup",
+                            "script": null,
+                            "gtm_key": null,
+                            "is_default": true,
+                            "createdAt": "2023-06-08T05:19:35.768Z",
+                            "updatedAt": "2023-06-08T05:19:35.768Z",
+                            "publishedAt": "2023-04-08T11:09:23.027Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Terms and Conditions",
+                        "url": "/terms-and-conditions",
+                        "createdAt": "2023-06-08T05:19:32.927Z",
+                        "updatedAt": "2023-06-08T05:20:16.484Z",
+                        "publishedAt": "2023-05-04T13:38:22.465Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 6,
+                                "title": "Terms and Conditions",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "metatag": null,
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 3,
+                        "title": "Not found page",
+                        "url": "/404",
+                        "createdAt": "2023-06-08T05:19:32.900Z",
+                        "updatedAt": "2023-06-08T05:20:16.456Z",
+                        "publishedAt": "2023-04-20T09:18:21.051Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.not-found-block",
                                 "id": 2,
                                 "variant": "simple",
-                                "anchor": null,
-                                "class_name": "pt-16",
-                                "title": null,
+                                "title": "404",
                                 "description": null,
-                                "subtitle": null
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": "Not found"
                             }
                         ],
                         "metatag": null,
@@ -3713,52 +3474,2273 @@
             },
             "page_blocks": [
                 {
-                    "__component": "page-blocks.slider-block",
-                    "id": 2,
-                    "variant": "simple",
+                    "__component": "page-blocks.hero-section-block",
+                    "id": 5,
+                    "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                    "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                    "variant": "simple-centered",
                     "anchor": null,
                     "class_name": "pt-16",
-                    "title": null,
-                    "description": null,
+                    "media": [
+                        {
+                            "id": 27,
+                            "name": "preview.jpg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 1790,
+                            "height": 863,
+                            "formats": {
+                                "large": {
+                                    "ext": ".jpg",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_preview_32ab16d902.jpg",
+                                    "hash": "large_preview_32ab16d902",
+                                    "mime": "image/jpeg",
+                                    "name": "large_preview.jpg",
+                                    "path": null,
+                                    "size": 38.26,
+                                    "width": 1000,
+                                    "height": 482
+                                },
+                                "small": {
+                                    "ext": ".jpg",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_preview_32ab16d902.jpg",
+                                    "hash": "small_preview_32ab16d902",
+                                    "mime": "image/jpeg",
+                                    "name": "small_preview.jpg",
+                                    "path": null,
+                                    "size": 12.72,
+                                    "width": 500,
+                                    "height": 241
+                                },
+                                "medium": {
+                                    "ext": ".jpg",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_preview_32ab16d902.jpg",
+                                    "hash": "medium_preview_32ab16d902",
+                                    "mime": "image/jpeg",
+                                    "name": "medium_preview.jpg",
+                                    "path": null,
+                                    "size": 24.97,
+                                    "width": 750,
+                                    "height": 362
+                                },
+                                "thumbnail": {
+                                    "ext": ".jpg",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_preview_32ab16d902.jpg",
+                                    "hash": "thumbnail_preview_32ab16d902",
+                                    "mime": "image/jpeg",
+                                    "name": "thumbnail_preview.jpg",
+                                    "path": null,
+                                    "size": 4.4,
+                                    "width": 245,
+                                    "height": 118
+                                }
+                            },
+                            "hash": "preview_32ab16d902",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 87,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/preview_32ab16d902.jpg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-06-08T05:19:38.003Z",
+                            "updatedAt": "2023-06-08T05:19:38.003Z",
+                            "folder": null
+                        }
+                    ],
+                    "buttons": [
+                        {
+                            "id": 21,
+                            "url": "https://github.com/singlepagestartup/sps-lite",
+                            "description": null,
+                            "variant": "primary",
+                            "title": "Start For Free",
+                            "additional_attributes": null,
+                            "class_name": null,
+                            "media": null,
+                            "additional_media": null,
+                            "flyout": null
+                        }
+                    ],
+                    "additional_media": null
+                },
+                {
+                    "__component": "page-blocks.cta-section-block",
+                    "id": 2,
+                    "variant": "dark-with-image",
+                    "anchor": null,
+                    "class_name": null,
+                    "title": "Minimum Viable Product is Ready",
+                    "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
                     "subtitle": null,
-                    "slider": {
+                    "media": [
+                        {
+                            "id": 28,
+                            "name": "28.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 5708,
+                            "height": 3981,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_28_452f98fbfc.png",
+                                    "hash": "large_28_452f98fbfc",
+                                    "mime": "image/png",
+                                    "name": "large_28.png",
+                                    "path": null,
+                                    "size": 673.33,
+                                    "width": 1000,
+                                    "height": 697
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_28_452f98fbfc.png",
+                                    "hash": "small_28_452f98fbfc",
+                                    "mime": "image/png",
+                                    "name": "small_28.png",
+                                    "path": null,
+                                    "size": 187.82,
+                                    "width": 500,
+                                    "height": 349
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_28_452f98fbfc.png",
+                                    "hash": "medium_28_452f98fbfc",
+                                    "mime": "image/png",
+                                    "name": "medium_28.png",
+                                    "path": null,
+                                    "size": 393.92,
+                                    "width": 750,
+                                    "height": 523
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_28_452f98fbfc.png",
+                                    "hash": "thumbnail_28_452f98fbfc",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_28.png",
+                                    "path": null,
+                                    "size": 47.5,
+                                    "width": 224,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "28_452f98fbfc",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 3431.52,
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/28_452f98fbfc.png",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2023-06-08T05:19:43.116Z",
+                            "updatedAt": "2023-06-08T05:19:43.116Z",
+                            "folder": null
+                        }
+                    ],
+                    "buttons": [
+                        {
+                            "id": 22,
+                            "url": "https://github.com/singlepagestartup/sps-lite",
+                            "description": null,
+                            "variant": "primary",
+                            "title": "Open GitHub",
+                            "additional_attributes": null,
+                            "class_name": null,
+                            "media": null,
+                            "additional_media": null,
+                            "flyout": null
+                        }
+                    ],
+                    "additional_media": null
+                },
+                {
+                    "__component": "page-blocks.features-section-block",
+                    "id": 2,
+                    "title": "Don't repeat yourself",
+                    "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                    "subtitle": null,
+                    "variant": "with-icon",
+                    "anchor": null,
+                    "class_name": null,
+                    "media": null,
+                    "additional_media": null,
+                    "features": [
+                        {
+                            "id": 23,
+                            "description": "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
+                            "title": "Ready-to-Use UI Components",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 29,
+                                    "name": "augmented reality_ar.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_augmented_reality_ar_821c6e6891.png",
+                                            "hash": "large_augmented_reality_ar_821c6e6891",
+                                            "mime": "image/png",
+                                            "name": "large_augmented reality_ar.png",
+                                            "path": null,
+                                            "size": 984.37,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_augmented_reality_ar_821c6e6891.png",
+                                            "hash": "small_augmented_reality_ar_821c6e6891",
+                                            "mime": "image/png",
+                                            "name": "small_augmented reality_ar.png",
+                                            "path": null,
+                                            "size": 268.47,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_augmented_reality_ar_821c6e6891.png",
+                                            "hash": "medium_augmented_reality_ar_821c6e6891",
+                                            "mime": "image/png",
+                                            "name": "medium_augmented reality_ar.png",
+                                            "path": null,
+                                            "size": 580.28,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_augmented_reality_ar_821c6e6891.png",
+                                            "hash": "thumbnail_augmented_reality_ar_821c6e6891",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_augmented reality_ar.png",
+                                            "path": null,
+                                            "size": 30.71,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "augmented_reality_ar_821c6e6891",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 287.08,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/augmented_reality_ar_821c6e6891.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:45.596Z",
+                                    "updatedAt": "2023-06-08T05:19:45.596Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 22,
+                            "description": "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
+                            "title": "Global-Ready",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 30,
+                                    "name": "earth.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_earth_e765ef156f.png",
+                                            "hash": "large_earth_e765ef156f",
+                                            "mime": "image/png",
+                                            "name": "large_earth.png",
+                                            "path": null,
+                                            "size": 1053.93,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_earth_e765ef156f.png",
+                                            "hash": "small_earth_e765ef156f",
+                                            "mime": "image/png",
+                                            "name": "small_earth.png",
+                                            "path": null,
+                                            "size": 264.83,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_earth_e765ef156f.png",
+                                            "hash": "medium_earth_e765ef156f",
+                                            "mime": "image/png",
+                                            "name": "medium_earth.png",
+                                            "path": null,
+                                            "size": 592.77,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_earth_e765ef156f.png",
+                                            "hash": "thumbnail_earth_e765ef156f",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_earth.png",
+                                            "path": null,
+                                            "size": 33.16,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "earth_e765ef156f",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 887.89,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/earth_e765ef156f.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:48.387Z",
+                                    "updatedAt": "2023-06-08T05:19:48.387Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 26,
+                            "description": "Save 20 to 100 hours of development time with our ready-to-use, best-practice authentication and authorization system. Focus on your core features and let us handle the rest.",
+                            "title": "Streamlined Authentication & Authorization",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 31,
+                                    "name": "security lock.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_security_lock_82c175cd40.png",
+                                            "hash": "large_security_lock_82c175cd40",
+                                            "mime": "image/png",
+                                            "name": "large_security lock.png",
+                                            "path": null,
+                                            "size": 920.25,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_security_lock_82c175cd40.png",
+                                            "hash": "small_security_lock_82c175cd40",
+                                            "mime": "image/png",
+                                            "name": "small_security lock.png",
+                                            "path": null,
+                                            "size": 249.49,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_security_lock_82c175cd40.png",
+                                            "hash": "medium_security_lock_82c175cd40",
+                                            "mime": "image/png",
+                                            "name": "medium_security lock.png",
+                                            "path": null,
+                                            "size": 543.73,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_security_lock_82c175cd40.png",
+                                            "hash": "thumbnail_security_lock_82c175cd40",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_security lock.png",
+                                            "path": null,
+                                            "size": 28.56,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "security_lock_82c175cd40",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 332.18,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/security_lock_82c175cd40.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:50.766Z",
+                                    "updatedAt": "2023-06-08T05:19:50.766Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 25,
+                            "description": "Enhance user profiles with our pre-built avatar functionality. Simply add the PageBlock to the profile page and let your users personalize their accounts with custom avatars.",
+                            "title": "Easy Avatar Integration",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 32,
+                                    "name": "users group.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_users_group_49b40641e9.png",
+                                            "hash": "large_users_group_49b40641e9",
+                                            "mime": "image/png",
+                                            "name": "large_users group.png",
+                                            "path": null,
+                                            "size": 991.04,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_users_group_49b40641e9.png",
+                                            "hash": "small_users_group_49b40641e9",
+                                            "mime": "image/png",
+                                            "name": "small_users group.png",
+                                            "path": null,
+                                            "size": 280.56,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_users_group_49b40641e9.png",
+                                            "hash": "medium_users_group_49b40641e9",
+                                            "mime": "image/png",
+                                            "name": "medium_users group.png",
+                                            "path": null,
+                                            "size": 596.56,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_users_group_49b40641e9.png",
+                                            "hash": "thumbnail_users_group_49b40641e9",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_users group.png",
+                                            "path": null,
+                                            "size": 34.11,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "users_group_49b40641e9",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 386.31,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/users_group_49b40641e9.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:52.971Z",
+                                    "updatedAt": "2023-06-08T05:19:52.971Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 21,
+                            "description": "Quickly add essential features to your MVP with built-in support for popular services such as authentication, payment gateways, and analytics tools. Less hassle, more productivity.",
+                            "title": "Seamless Third-Party Service Integration",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 33,
+                                    "name": "api socket.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_api_socket_18f41d272d.png",
+                                            "hash": "large_api_socket_18f41d272d",
+                                            "mime": "image/png",
+                                            "name": "large_api socket.png",
+                                            "path": null,
+                                            "size": 706.77,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_api_socket_18f41d272d.png",
+                                            "hash": "small_api_socket_18f41d272d",
+                                            "mime": "image/png",
+                                            "name": "small_api socket.png",
+                                            "path": null,
+                                            "size": 184.76,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_api_socket_18f41d272d.png",
+                                            "hash": "medium_api_socket_18f41d272d",
+                                            "mime": "image/png",
+                                            "name": "medium_api socket.png",
+                                            "path": null,
+                                            "size": 409.46,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_api_socket_18f41d272d.png",
+                                            "hash": "thumbnail_api_socket_18f41d272d",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_api socket.png",
+                                            "path": null,
+                                            "size": 22.03,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "api_socket_18f41d272d",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 579.91,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/api_socket_18f41d272d.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:55.426Z",
+                                    "updatedAt": "2023-06-08T05:19:55.426Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 27,
+                            "description": "Generate documents based on user data or completed forms with ease using our built-in document generation functionality. Just incorporate it into your business logic and you're set.",
+                            "title": "Effortless Document Generation",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 34,
+                                    "name": "file pdf.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_file_pdf_0439d675a3.png",
+                                            "hash": "large_file_pdf_0439d675a3",
+                                            "mime": "image/png",
+                                            "name": "large_file pdf.png",
+                                            "path": null,
+                                            "size": 715.34,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_file_pdf_0439d675a3.png",
+                                            "hash": "small_file_pdf_0439d675a3",
+                                            "mime": "image/png",
+                                            "name": "small_file pdf.png",
+                                            "path": null,
+                                            "size": 197.93,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_file_pdf_0439d675a3.png",
+                                            "hash": "medium_file_pdf_0439d675a3",
+                                            "mime": "image/png",
+                                            "name": "medium_file pdf.png",
+                                            "path": null,
+                                            "size": 433.38,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_file_pdf_0439d675a3.png",
+                                            "hash": "thumbnail_file_pdf_0439d675a3",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_file pdf.png",
+                                            "path": null,
+                                            "size": 22.3,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "file_pdf_0439d675a3",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 224.3,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/file_pdf_0439d675a3.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:57.477Z",
+                                    "updatedAt": "2023-06-08T05:19:57.477Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 24,
+                            "description": "Utilize our ready-to-use product catalog, product pages, shopping cart, delivery options, and order history to jumpstart your e-commerce project.",
+                            "title": "Comprehensive E-Commerce Features",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 35,
+                                    "name": "empty cart.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_empty_cart_3b4bc54b1d.png",
+                                            "hash": "large_empty_cart_3b4bc54b1d",
+                                            "mime": "image/png",
+                                            "name": "large_empty cart.png",
+                                            "path": null,
+                                            "size": 810.94,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_empty_cart_3b4bc54b1d.png",
+                                            "hash": "small_empty_cart_3b4bc54b1d",
+                                            "mime": "image/png",
+                                            "name": "small_empty cart.png",
+                                            "path": null,
+                                            "size": 206.8,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_empty_cart_3b4bc54b1d.png",
+                                            "hash": "medium_empty_cart_3b4bc54b1d",
+                                            "mime": "image/png",
+                                            "name": "medium_empty cart.png",
+                                            "path": null,
+                                            "size": 459.14,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_empty_cart_3b4bc54b1d.png",
+                                            "hash": "thumbnail_empty_cart_3b4bc54b1d",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_empty cart.png",
+                                            "path": null,
+                                            "size": 26.26,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "empty_cart_3b4bc54b1d",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 699.94,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/empty_cart_3b4bc54b1d.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:19:59.835Z",
+                                    "updatedAt": "2023-06-08T05:19:59.835Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 28,
+                            "description": "Establish your personal brand by enabling our integrated blogging functionality, perfect for sharing news and insights with your audience.",
+                            "title": "Built-In Blogging Capabilities",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 36,
+                                    "name": "sign doc.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_sign_doc_faa41ff79c.png",
+                                            "hash": "large_sign_doc_faa41ff79c",
+                                            "mime": "image/png",
+                                            "name": "large_sign doc.png",
+                                            "path": null,
+                                            "size": 895.03,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_sign_doc_faa41ff79c.png",
+                                            "hash": "small_sign_doc_faa41ff79c",
+                                            "mime": "image/png",
+                                            "name": "small_sign doc.png",
+                                            "path": null,
+                                            "size": 216.68,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_sign_doc_faa41ff79c.png",
+                                            "hash": "medium_sign_doc_faa41ff79c",
+                                            "mime": "image/png",
+                                            "name": "medium_sign doc.png",
+                                            "path": null,
+                                            "size": 499.01,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_sign_doc_faa41ff79c.png",
+                                            "hash": "thumbnail_sign_doc_faa41ff79c",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_sign doc.png",
+                                            "path": null,
+                                            "size": 24.34,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "sign_doc_faa41ff79c",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 745.29,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/sign_doc_faa41ff79c.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:20:02.365Z",
+                                    "updatedAt": "2023-06-08T05:20:02.365Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 29,
+                            "description": "Tailor your project to your needs using the Strapi admin panel, extend its capabilities with plugins, or create your own custom features.",
+                            "title": "Flexible Customization and Extensibility",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 37,
+                                    "name": "catalog.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_catalog_8563dffc22.png",
+                                            "hash": "large_catalog_8563dffc22",
+                                            "mime": "image/png",
+                                            "name": "large_catalog.png",
+                                            "path": null,
+                                            "size": 1440.7,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_catalog_8563dffc22.png",
+                                            "hash": "small_catalog_8563dffc22",
+                                            "mime": "image/png",
+                                            "name": "small_catalog.png",
+                                            "path": null,
+                                            "size": 354.63,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_catalog_8563dffc22.png",
+                                            "hash": "medium_catalog_8563dffc22",
+                                            "mime": "image/png",
+                                            "name": "medium_catalog.png",
+                                            "path": null,
+                                            "size": 811.29,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_catalog_8563dffc22.png",
+                                            "hash": "thumbnail_catalog_8563dffc22",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_catalog.png",
+                                            "path": null,
+                                            "size": 37.05,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "catalog_8563dffc22",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 1279.43,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/catalog_8563dffc22.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:20:06.759Z",
+                                    "updatedAt": "2023-06-08T05:20:06.759Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 30,
+                            "description": "Easily migrate or seed data by completing your project locally, running a data dump, and migrating it to your server, or by describing your data as JSON and adding it to the data seeding process.",
+                            "title": "Hassle-Free Data Migration and Seeding",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 38,
+                                    "name": "eight ways.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_eight_ways_56dac08687.png",
+                                            "hash": "large_eight_ways_56dac08687",
+                                            "mime": "image/png",
+                                            "name": "large_eight ways.png",
+                                            "path": null,
+                                            "size": 797.89,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_eight_ways_56dac08687.png",
+                                            "hash": "small_eight_ways_56dac08687",
+                                            "mime": "image/png",
+                                            "name": "small_eight ways.png",
+                                            "path": null,
+                                            "size": 206.99,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_eight_ways_56dac08687.png",
+                                            "hash": "medium_eight_ways_56dac08687",
+                                            "mime": "image/png",
+                                            "name": "medium_eight ways.png",
+                                            "path": null,
+                                            "size": 456.31,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_eight_ways_56dac08687.png",
+                                            "hash": "thumbnail_eight_ways_56dac08687",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_eight ways.png",
+                                            "path": null,
+                                            "size": 26.63,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "eight_ways_56dac08687",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 696.95,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/eight_ways_56dac08687.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:20:09.150Z",
+                                    "updatedAt": "2023-06-08T05:20:09.150Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 31,
+                            "description": "With pre-configured deployment tools and processes, our boilerplate enables you to quickly deploy your MVP to your preferred hosting platform. This helps you reduce the time-to-market and start gathering valuable customer feedback sooner.",
+                            "title": "Rapid Deployment (CI/CD)",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 39,
+                                    "name": "cloud storage.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_cloud_storage_685453cdd6.png",
+                                            "hash": "large_cloud_storage_685453cdd6",
+                                            "mime": "image/png",
+                                            "name": "large_cloud storage.png",
+                                            "path": null,
+                                            "size": 966.22,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_cloud_storage_685453cdd6.png",
+                                            "hash": "small_cloud_storage_685453cdd6",
+                                            "mime": "image/png",
+                                            "name": "small_cloud storage.png",
+                                            "path": null,
+                                            "size": 234.42,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_cloud_storage_685453cdd6.png",
+                                            "hash": "medium_cloud_storage_685453cdd6",
+                                            "mime": "image/png",
+                                            "name": "medium_cloud storage.png",
+                                            "path": null,
+                                            "size": 538.34,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_cloud_storage_685453cdd6.png",
+                                            "hash": "thumbnail_cloud_storage_685453cdd6",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_cloud storage.png",
+                                            "path": null,
+                                            "size": 26.87,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "cloud_storage_685453cdd6",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 811.4,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/cloud_storage_685453cdd6.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:20:13.331Z",
+                                    "updatedAt": "2023-06-08T05:20:13.331Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        },
+                        {
+                            "id": 32,
+                            "description": "Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.",
+                            "title": "Modular and Scalable",
+                            "subtitle": null,
+                            "media": [
+                                {
+                                    "id": 40,
+                                    "name": "three block.png",
+                                    "alternativeText": null,
+                                    "caption": null,
+                                    "width": 1920,
+                                    "height": 1920,
+                                    "formats": {
+                                        "large": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_three_block_46988382a4.png",
+                                            "hash": "large_three_block_46988382a4",
+                                            "mime": "image/png",
+                                            "name": "large_three block.png",
+                                            "path": null,
+                                            "size": 1062.72,
+                                            "width": 1000,
+                                            "height": 1000
+                                        },
+                                        "small": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_three_block_46988382a4.png",
+                                            "hash": "small_three_block_46988382a4",
+                                            "mime": "image/png",
+                                            "name": "small_three block.png",
+                                            "path": null,
+                                            "size": 290.24,
+                                            "width": 500,
+                                            "height": 500
+                                        },
+                                        "medium": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_three_block_46988382a4.png",
+                                            "hash": "medium_three_block_46988382a4",
+                                            "mime": "image/png",
+                                            "name": "medium_three block.png",
+                                            "path": null,
+                                            "size": 629.91,
+                                            "width": 750,
+                                            "height": 750
+                                        },
+                                        "thumbnail": {
+                                            "ext": ".png",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_three_block_46988382a4.png",
+                                            "hash": "thumbnail_three_block_46988382a4",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_three block.png",
+                                            "path": null,
+                                            "size": 33.46,
+                                            "width": 156,
+                                            "height": 156
+                                        }
+                                    },
+                                    "hash": "three_block_46988382a4",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 414.59,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/three_block_46988382a4.png",
+                                    "previewUrl": null,
+                                    "provider": "aws-s3",
+                                    "provider_metadata": null,
+                                    "folderPath": "/",
+                                    "createdAt": "2023-06-08T05:20:15.900Z",
+                                    "updatedAt": "2023-06-08T05:20:15.900Z",
+                                    "folder": null
+                                }
+                            ],
+                            "additional_media": null
+                        }
+                    ]
+                },
+                {
+                    "__component": "page-blocks.reviews-list-block",
+                    "id": 2,
+                    "variant": "simple-with-avatars",
+                    "show_all": true,
+                    "anchor": null,
+                    "class_name": null,
+                    "title": "Happy customers reviews",
+                    "subtitle": null,
+                    "description": null,
+                    "reviews": []
+                },
+                {
+                    "__component": "page-blocks.contact-section-block",
+                    "id": 2,
+                    "title": "We’re ready to help",
+                    "subtitle": null,
+                    "description": "Fill in all the fields below and our manager will contact you.",
+                    "anchor": null,
+                    "class_name": null,
+                    "variant": "centered",
+                    "media": null,
+                    "additional_media": null,
+                    "form": {
                         "id": 1,
-                        "variant": "fade-with-previews",
-                        "show_backdrop": true,
-                        "show_full_screen": true,
-                        "show_previews": true,
                         "class_name": null,
-                        "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
-                        "title": "Features Slider",
-                        "uid": "features-slider",
-                        "createdAt": "2023-06-08T05:19:32.748Z",
-                        "updatedAt": "2023-06-08T05:20:37.248Z",
-                        "publishedAt": "2023-03-28T08:46:50.780Z",
+                        "additional_attributes": null,
+                        "variant": "simple",
+                        "uid": "question",
+                        "title": "Есть вопросы по продукту?",
+                        "createdAt": "2023-06-08T05:19:25.251Z",
+                        "updatedAt": "2023-06-15T20:32:11.509Z",
+                        "publishedAt": "2023-02-14T20:44:48.245Z",
                         "locale": "en",
-                        "slides": [
+                        "inputs": [
                             {
-                                "id": 6,
-                                "title": "Jumpstart Your Startup Journey",
-                                "description": "Our pre-built boilerplate offers a comprehensive set of features and tools to accelerate your startup's development process. Say goodbye to repetitive tasks and focus on your core business logic with our customizable, efficient, and scalable solution.",
-                                "subtitle": "Get ahead with our lean startup developer boilerplate"
+                                "id": 10,
+                                "placeholder": "Type your name",
+                                "variant": "text",
+                                "is_required": true,
+                                "value": null,
+                                "name": "name",
+                                "label": "Name",
+                                "class_name": "col-span-2",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
                             },
                             {
-                                "id": 4,
-                                "title": "Empower Your MVP with Best Practices",
-                                "description": "Our boilerplate comes with essential features like authentication, multilingual support, and integrations with popular third-party services. With minimum viable product (MVP) readiness in mind, we help you save time, effort, and resources as you bring your startup idea to life.",
-                                "subtitle": "Launch faster with our ready-to-use components"
+                                "id": 12,
+                                "placeholder": "Type your email",
+                                "variant": "text",
+                                "is_required": true,
+                                "value": null,
+                                "name": "email",
+                                "label": "Email",
+                                "class_name": "col-span-2",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
                             },
                             {
+                                "id": 18,
+                                "placeholder": "Choose target tier",
+                                "variant": "listbox",
+                                "is_required": false,
+                                "value": null,
+                                "name": "tier",
+                                "label": "Tier",
+                                "class_name": "col-span-4",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            },
+                            {
+                                "id": 17,
+                                "placeholder": "Select hosting type",
+                                "variant": "radio-group",
+                                "is_required": false,
+                                "value": null,
+                                "name": "self_hosted",
+                                "label": "Self Hosted",
+                                "class_name": "col-span-4",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            },
+                            {
+                                "id": 11,
+                                "placeholder": "Monthly visitors",
+                                "variant": "range",
+                                "is_required": false,
+                                "value": null,
+                                "name": "visitors",
+                                "label": "Monthly visitors",
+                                "class_name": "col-span-4",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": 10000,
+                                "step": 100
+                            },
+                            {
+                                "id": 13,
+                                "placeholder": "Type your question",
+                                "variant": "text",
+                                "is_required": false,
+                                "value": null,
+                                "name": "querstion",
+                                "label": "Question",
+                                "class_name": "col-span-4",
+                                "type": "textarea",
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            },
+                            {
+                                "id": 15,
+                                "placeholder": "Select release date",
+                                "variant": "date",
+                                "is_required": false,
+                                "value": null,
+                                "name": "release",
+                                "label": "Release",
+                                "class_name": "col-span-4",
+                                "type": "daterange_inline",
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            },
+                            {
+                                "id": 14,
+                                "placeholder": "Upload design file",
+                                "variant": "file",
+                                "is_required": false,
+                                "value": null,
+                                "name": "design",
+                                "label": "Design",
+                                "class_name": null,
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            },
+                            {
+                                "id": 16,
+                                "placeholder": null,
+                                "variant": "switch",
+                                "is_required": true,
+                                "value": null,
+                                "name": "policy",
+                                "label": "I agree with Terms and Conditions",
+                                "class_name": "col-span-4",
+                                "type": null,
+                                "multiple": null,
+                                "min": null,
+                                "max": null,
+                                "step": null
+                            }
+                        ],
+                        "button": {
+                            "id": 13,
+                            "url": null,
+                            "description": null,
+                            "variant": "primary",
+                            "title": "Send Request",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        "form_requests": [
+                            {
+                                "id": 1,
+                                "createdAt": "2023-06-14T16:20:20.766Z",
+                                "updatedAt": "2023-06-14T16:20:20.766Z"
+                            },
+                            {
+                                "id": 2,
+                                "createdAt": "2023-06-14T16:28:04.588Z",
+                                "updatedAt": "2023-06-14T16:28:04.588Z"
+                            },
+                            {
+                                "id": 3,
+                                "createdAt": "2023-06-14T20:00:12.979Z",
+                                "updatedAt": "2023-06-14T20:00:12.979Z"
+                            }
+                        ],
+                        "side_effects": [
+                            {
+                                "id": 2,
+                                "type": "send-to-recievers",
+                                "provider": "email"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$km70691TymghJRJD0KIbTu2D/ynnYvvOx4Vh4JAySfQt3YJxEpn5W",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2023-06-08T05:20:26.307Z",
+                            "updatedAt": "2023-06-08T05:20:26.307Z"
+                        },
+                        "localizations": []
+                    },
+                    "buttons_arrays": []
+                }
+            ],
+            "metatag": {
+                "id": 1,
+                "title": "Lite Single Page Startup",
+                "description": "The fastest way to create startup",
+                "script": null,
+                "gtm_key": null,
+                "is_default": true,
+                "createdAt": "2023-06-08T05:19:35.768Z",
+                "updatedAt": "2023-06-08T05:19:35.768Z",
+                "publishedAt": "2023-04-08T11:09:23.027Z",
+                "locale": "en",
+                "favicon": {
+                    "id": 25,
+                    "name": "favicon.svg",
+                    "alternativeText": null,
+                    "caption": null,
+                    "width": 485,
+                    "height": 485,
+                    "formats": null,
+                    "hash": "favicon_6e5d9ffe9c",
+                    "ext": ".svg",
+                    "mime": "image/svg+xml",
+                    "size": 2.61,
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_6e5d9ffe9c.svg",
+                    "previewUrl": null,
+                    "provider": "aws-s3",
+                    "provider_metadata": null,
+                    "folderPath": "/",
+                    "createdAt": "2023-06-08T05:19:35.694Z",
+                    "updatedAt": "2023-06-08T05:19:35.694Z",
+                    "folder": null
+                },
+                "pages": [
+                    {
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2023-06-08T05:19:25.363Z",
+                        "updatedAt": "2023-06-08T05:20:16.347Z",
+                        "publishedAt": "2023-04-08T17:06:05.277Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
                                 "id": 5,
-                                "title": "Built for Agile Development",
-                                "description": "Our lean startup developer boilerplate is designed for agile development, allowing you to adapt and evolve your project rapidly. Stay ahead in the ever-changing startup landscape with built-in feedback mechanisms, seamless collaboration, and continuous improvement capabilities.",
-                                "subtitle": "Foster innovation with a flexible and iterative approach"
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 2,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 2,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 2,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 2,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "metatag": {
+                            "id": 1,
+                            "title": "Lite Single Page Startup",
+                            "description": "The fastest way to create startup",
+                            "script": null,
+                            "gtm_key": null,
+                            "is_default": true,
+                            "createdAt": "2023-06-08T05:19:35.768Z",
+                            "updatedAt": "2023-06-08T05:19:35.768Z",
+                            "publishedAt": "2023-04-08T11:09:23.027Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        },
+        {
+            "id": 4,
+            "title": "Terms and Conditions",
+            "url": "/terms-and-conditions",
+            "createdAt": "2023-06-08T05:19:32.927Z",
+            "updatedAt": "2023-06-08T05:20:16.484Z",
+            "publishedAt": "2023-05-04T13:38:22.465Z",
+            "locale": "en",
+            "layout": {
+                "id": 2,
+                "title": "Public Page Layout",
+                "uid": "public-page-layout-1",
+                "variant": "wide",
+                "class_name": "[&>.layout-container]:pt-16",
+                "createdAt": "2023-06-08T05:19:33.000Z",
+                "updatedAt": "2023-06-08T05:19:35.068Z",
+                "publishedAt": "2023-04-20T08:23:38.447Z",
+                "locale": "en",
+                "sidebar": null,
+                "topbar": null,
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2023-06-08T05:19:34.741Z",
+                    "updatedAt": "2023-06-08T05:19:34.741Z",
+                    "publishedAt": "2023-05-04T08:25:15.030Z",
+                    "locale": "en",
+                    "layouts": [
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2023-06-08T05:19:32.951Z",
+                            "updatedAt": "2023-06-08T05:19:35.037Z",
+                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": null,
+                        "createdAt": "2023-06-08T05:20:30.595Z",
+                        "updatedAt": "2023-06-08T05:20:30.595Z",
+                        "publishedAt": "2023-04-07T21:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2023-06-08T05:19:32.951Z",
+                                "updatedAt": "2023-06-08T05:19:35.037Z",
+                                "publishedAt": "2023-04-08T10:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2023-06-08T05:19:33.000Z",
+                                "updatedAt": "2023-06-08T05:19:35.068Z",
+                                "publishedAt": "2023-04-20T08:23:38.447Z",
+                                "locale": "en"
                             }
                         ],
                         "createdBy": null,
                         "updatedBy": null,
                         "localizations": []
                     }
+                ],
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2023-06-08T05:19:35.862Z",
+                        "updatedAt": "2023-06-08T05:19:35.862Z",
+                        "publishedAt": "2023-03-28T09:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 4,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2023-06-08T05:19:32.951Z",
+                                "updatedAt": "2023-06-08T05:19:35.037Z",
+                                "publishedAt": "2023-04-08T10:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2023-06-08T05:19:33.000Z",
+                                "updatedAt": "2023-06-08T05:19:35.068Z",
+                                "publishedAt": "2023-04-20T08:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2023-06-08T05:19:36.905Z",
+                    "updatedAt": "2023-06-08T05:19:36.905Z",
+                    "publishedAt": "2023-04-08T10:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2023-06-08T05:19:32.951Z",
+                            "updatedAt": "2023-06-08T05:19:35.037Z",
+                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "pages": [
+                    {
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2023-06-08T05:19:25.363Z",
+                        "updatedAt": "2023-06-08T05:20:16.347Z",
+                        "publishedAt": "2023-04-08T17:06:05.277Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 5,
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 2,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 2,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 2,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 2,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "metatag": {
+                            "id": 1,
+                            "title": "Lite Single Page Startup",
+                            "description": "The fastest way to create startup",
+                            "script": null,
+                            "gtm_key": null,
+                            "is_default": true,
+                            "createdAt": "2023-06-08T05:19:35.768Z",
+                            "updatedAt": "2023-06-08T05:19:35.768Z",
+                            "publishedAt": "2023-04-08T11:09:23.027Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Terms and Conditions",
+                        "url": "/terms-and-conditions",
+                        "createdAt": "2023-06-08T05:19:32.927Z",
+                        "updatedAt": "2023-06-08T05:20:16.484Z",
+                        "publishedAt": "2023-05-04T13:38:22.465Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 6,
+                                "title": "Terms and Conditions",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "metatag": null,
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 3,
+                        "title": "Not found page",
+                        "url": "/404",
+                        "createdAt": "2023-06-08T05:19:32.900Z",
+                        "updatedAt": "2023-06-08T05:20:16.456Z",
+                        "publishedAt": "2023-04-20T09:18:21.051Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.not-found-block",
+                                "id": 2,
+                                "variant": "simple",
+                                "title": "404",
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": "Not found"
+                            }
+                        ],
+                        "metatag": null,
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.hero-section-block",
+                    "id": 6,
+                    "title": "Terms and Conditions",
+                    "description": null,
+                    "variant": "simple-centered",
+                    "anchor": null,
+                    "class_name": null,
+                    "media": null,
+                    "buttons": [],
+                    "additional_media": null
+                }
+            ],
+            "metatag": null,
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        },
+        {
+            "id": 3,
+            "title": "Not found page",
+            "url": "/404",
+            "createdAt": "2023-06-08T05:19:32.900Z",
+            "updatedAt": "2023-06-08T05:20:16.456Z",
+            "publishedAt": "2023-04-20T09:18:21.051Z",
+            "locale": "en",
+            "layout": {
+                "id": 2,
+                "title": "Public Page Layout",
+                "uid": "public-page-layout-1",
+                "variant": "wide",
+                "class_name": "[&>.layout-container]:pt-16",
+                "createdAt": "2023-06-08T05:19:33.000Z",
+                "updatedAt": "2023-06-08T05:19:35.068Z",
+                "publishedAt": "2023-04-20T08:23:38.447Z",
+                "locale": "en",
+                "sidebar": null,
+                "topbar": null,
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2023-06-08T05:19:34.741Z",
+                    "updatedAt": "2023-06-08T05:19:34.741Z",
+                    "publishedAt": "2023-05-04T08:25:15.030Z",
+                    "locale": "en",
+                    "layouts": [
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2023-06-08T05:19:32.951Z",
+                            "updatedAt": "2023-06-08T05:19:35.037Z",
+                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": null,
+                        "createdAt": "2023-06-08T05:20:30.595Z",
+                        "updatedAt": "2023-06-08T05:20:30.595Z",
+                        "publishedAt": "2023-04-07T21:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2023-06-08T05:19:32.951Z",
+                                "updatedAt": "2023-06-08T05:19:35.037Z",
+                                "publishedAt": "2023-04-08T10:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2023-06-08T05:19:33.000Z",
+                                "updatedAt": "2023-06-08T05:19:35.068Z",
+                                "publishedAt": "2023-04-20T08:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2023-06-08T05:19:35.862Z",
+                        "updatedAt": "2023-06-08T05:19:35.862Z",
+                        "publishedAt": "2023-03-28T09:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 4,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2023-06-08T05:19:32.951Z",
+                                "updatedAt": "2023-06-08T05:19:35.037Z",
+                                "publishedAt": "2023-04-08T10:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2023-06-08T05:19:33.000Z",
+                                "updatedAt": "2023-06-08T05:19:35.068Z",
+                                "publishedAt": "2023-04-20T08:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2023-06-08T05:19:36.905Z",
+                    "updatedAt": "2023-06-08T05:19:36.905Z",
+                    "publishedAt": "2023-04-08T10:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2023-06-08T05:19:32.951Z",
+                            "updatedAt": "2023-06-08T05:19:35.037Z",
+                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "pages": [
+                    {
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2023-06-08T05:19:25.363Z",
+                        "updatedAt": "2023-06-08T05:20:16.347Z",
+                        "publishedAt": "2023-04-08T17:06:05.277Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 5,
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 2,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 2,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 2,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 2,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "metatag": {
+                            "id": 1,
+                            "title": "Lite Single Page Startup",
+                            "description": "The fastest way to create startup",
+                            "script": null,
+                            "gtm_key": null,
+                            "is_default": true,
+                            "createdAt": "2023-06-08T05:19:35.768Z",
+                            "updatedAt": "2023-06-08T05:19:35.768Z",
+                            "publishedAt": "2023-04-08T11:09:23.027Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Terms and Conditions",
+                        "url": "/terms-and-conditions",
+                        "createdAt": "2023-06-08T05:19:32.927Z",
+                        "updatedAt": "2023-06-08T05:20:16.484Z",
+                        "publishedAt": "2023-05-04T13:38:22.465Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 6,
+                                "title": "Terms and Conditions",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "metatag": null,
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 3,
+                        "title": "Not found page",
+                        "url": "/404",
+                        "createdAt": "2023-06-08T05:19:32.900Z",
+                        "updatedAt": "2023-06-08T05:20:16.456Z",
+                        "publishedAt": "2023-04-20T09:18:21.051Z",
+                        "locale": "en",
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2023-06-08T05:19:33.000Z",
+                            "updatedAt": "2023-06-08T05:19:35.068Z",
+                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.not-found-block",
+                                "id": 2,
+                                "variant": "simple",
+                                "title": "404",
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": "Not found"
+                            }
+                        ],
+                        "metatag": null,
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.not-found-block",
+                    "id": 2,
+                    "variant": "simple",
+                    "title": "404",
+                    "description": null,
+                    "class_name": null,
+                    "anchor": null,
+                    "subtitle": "Not found",
+                    "media": null,
+                    "buttons": [
+                        {
+                            "id": 23,
+                            "url": "/",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Main",
+                            "additional_attributes": null,
+                            "class_name": null,
+                            "media": null,
+                            "additional_media": null,
+                            "flyout": null
+                        }
+                    ],
+                    "additional_media": null
                 }
             ],
             "metatag": null,

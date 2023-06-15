@@ -1,24 +1,26 @@
 {
     "id": 1,
-    "variant": "right-side-half-width",
-    "title": "This Is Slide Over",
-    "uid": "this-is-slide-over",
+    "uid": "this-is-modal",
+    "dialog_panel_class_name": "w-8/12",
+    "variant": "simple",
+    "title": "This Is Modal",
     "class_name": null,
-    "createdAt": "2023-06-08T05:20:30.595Z",
-    "updatedAt": "2023-06-08T05:20:30.595Z",
-    "publishedAt": "2023-04-07T21:54:17.781Z",
+    "createdAt": "2023-06-08T05:19:35.862Z",
+    "updatedAt": "2023-06-08T05:19:35.862Z",
+    "publishedAt": "2023-03-28T09:07:57.457Z",
     "locale": "en",
     "page_blocks": [
         {
-            "__component": "page-blocks.faqs-block",
-            "id": 1,
-            "title": "This Is Slide Over",
+            "__component": "page-blocks.hero-section-block",
+            "id": 4,
+            "title": "This Is Modal",
             "description": "With Page Blocks",
-            "variant": "two-columns-with-centered-introduction",
-            "class_name": null,
+            "variant": "simple-centered",
             "anchor": null,
-            "subtitle": null,
-            "faqs": []
+            "class_name": null,
+            "media": null,
+            "buttons": [],
+            "additional_media": null
         }
     ],
     "layouts": [

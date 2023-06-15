@@ -1,0 +1,82 @@
+{
+    "id": 4,
+    "name": "Olivia Smith",
+    "title": "Outstanding Support and Flexibility",
+    "description": "The Single Page Startup has not only provided us with a solid foundation for our product but also outstanding support and flexibility. The boilerplate's developers have been responsive to our needs, and the customization options have allowed us to tailor the solution to our specific requirements. It's been a pleasure working with such a reliable and adaptable solution.",
+    "subtitle": "TravelTrail, Head of Engineering",
+    "rating": 5,
+    "createdAt": "2023-06-08T05:19:23.682Z",
+    "updatedAt": "2023-06-08T05:20:29.119Z",
+    "publishedAt": "2023-03-12T09:33:57.476Z",
+    "media": [
+        {
+            "id": 44,
+            "name": "pexels-andrea-piacquadio-3756679.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 5299,
+            "height": 3533,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_andrea_piacquadio_3756679_9e4e36ccfb.jpg",
+                    "hash": "large_pexels_andrea_piacquadio_3756679_9e4e36ccfb",
+                    "mime": "image/jpeg",
+                    "name": "large_pexels-andrea-piacquadio-3756679.jpg",
+                    "path": null,
+                    "size": 60.11,
+                    "width": 1000,
+                    "height": 667
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_andrea_piacquadio_3756679_9e4e36ccfb.jpg",
+                    "hash": "small_pexels_andrea_piacquadio_3756679_9e4e36ccfb",
+                    "mime": "image/jpeg",
+                    "name": "small_pexels-andrea-piacquadio-3756679.jpg",
+                    "path": null,
+                    "size": 21.98,
+                    "width": 500,
+                    "height": 333
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_andrea_piacquadio_3756679_9e4e36ccfb.jpg",
+                    "hash": "medium_pexels_andrea_piacquadio_3756679_9e4e36ccfb",
+                    "mime": "image/jpeg",
+                    "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
+                    "path": null,
+                    "size": 39.95,
+                    "width": 750,
+                    "height": 500
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_andrea_piacquadio_3756679_9e4e36ccfb.jpg",
+                    "hash": "thumbnail_pexels_andrea_piacquadio_3756679_9e4e36ccfb",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
+                    "path": null,
+                    "size": 7.5,
+                    "width": 234,
+                    "height": 156
+                }
+            },
+            "hash": "pexels_andrea_piacquadio_3756679_9e4e36ccfb",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 811.66,
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_andrea_piacquadio_3756679_9e4e36ccfb.jpg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2023-06-08T05:20:29.075Z",
+            "updatedAt": "2023-06-08T05:20:29.075Z",
+            "folder": null
+        }
+    ],
+    "additional_media": null,
+    "createdBy": null,
+    "updatedBy": null
+}

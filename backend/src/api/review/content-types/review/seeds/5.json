@@ -1,0 +1,82 @@
+{
+    "id": 5,
+    "name": "Michael Johnson",
+    "title": "Tailored to Startup Success",
+    "description": "The Single Page Startup boilerplate has been instrumental in our startup's success. Its focus on MVP readiness and adaptability has allowed us to quickly test and validate our ideas, making it easy to pivot and refine our product offering. It has been a crucial part of our journey, and we couldn't imagine building our startup without it.",
+    "subtitle": "EduSphere, Founder & CEO",
+    "rating": 5,
+    "createdAt": "2023-06-08T05:19:24.911Z",
+    "updatedAt": "2023-06-08T05:20:30.363Z",
+    "publishedAt": "2023-03-12T09:34:27.387Z",
+    "media": [
+        {
+            "id": 45,
+            "name": "pexels-karolina-grabowska-5882683.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1280,
+            "height": 853,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+                    "hash": "large_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "mime": "image/jpeg",
+                    "name": "large_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 72.41,
+                    "width": 1000,
+                    "height": 666
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+                    "hash": "small_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "mime": "image/jpeg",
+                    "name": "small_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 25.51,
+                    "width": 500,
+                    "height": 333
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "mime": "image/jpeg",
+                    "name": "medium_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 46.24,
+                    "width": 750,
+                    "height": 500
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
+                    "path": null,
+                    "size": 8.01,
+                    "width": 234,
+                    "height": 156
+                }
+            },
+            "hash": "pexels_karolina_grabowska_5882683_692a4459ec",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 109.43,
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2023-06-08T05:20:30.324Z",
+            "updatedAt": "2023-06-08T05:20:30.324Z",
+            "folder": null
+        }
+    ],
+    "additional_media": null,
+    "createdBy": null,
+    "updatedBy": null
+}
