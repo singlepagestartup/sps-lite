@@ -13,7 +13,7 @@ import FeaturesSections from "~components/page-blocks/features-sections";
 import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
 import Navbars from "~components/page-blocks/navbars";
 import Buttons from "~components/elements/buttons";
-import Footers from "~components/page-blocks/footer";
+import Footers from "~components/page-blocks/footers";
 import ButtonsArrays from "~components/elements/buttons-arrays";
 
 export const pageBlockComponents = {
