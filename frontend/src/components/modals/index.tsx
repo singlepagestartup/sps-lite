@@ -51,6 +51,10 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
     if (openedModal && !isOpen) {
       setIsOpen(true);
     }
+
+    if (!openedModal && isOpen) {
+      setIsOpen(false);
+    }
   }, [openedModal]);
 
   const Comp = variants[

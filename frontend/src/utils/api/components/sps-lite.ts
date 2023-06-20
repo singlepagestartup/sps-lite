@@ -15,6 +15,7 @@ import Navbars from "~components/page-blocks/navbars";
 import Buttons from "~components/elements/buttons";
 import Footers from "~components/page-blocks/footers";
 import ButtonsArrays from "~components/elements/buttons-arrays";
+import Alerts from "~components/page-blocks/alert";
 
 export const pageBlockComponents = {
   ["page-blocks.header-section-block"]: HeaderSections,
@@ -34,4 +35,5 @@ export const pageBlockComponents = {
   ["page-blocks.footer-block"]: Footers,
   ["elements.buttons-array"]: ButtonsArrays,
   ["elements.button"]: Buttons,
+  ["page-blocks.alert-block"]: Alerts,
 };

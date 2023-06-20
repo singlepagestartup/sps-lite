@@ -47,7 +47,10 @@
         }
       },
       "type": "enumeration",
-      "enum": ["wide", "boxed"],
+      "enum": [
+        "wide",
+        "boxed"
+      ],
       "default": "wide",
       "required": true
     },

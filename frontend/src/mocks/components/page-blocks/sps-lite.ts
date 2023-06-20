@@ -1,4 +1,5 @@
 import {
+  ISpsLiteBackendAlertBlock,
   ISpsLiteBackendContactSectonBlock,
   ISpsLiteBackendCtaSectionBlock,
   ISpsLiteBackendFaqBlock,
@@ -234,4 +235,52 @@ export const spsLiteBackendFooterBlockSimple: ISpsLiteBackendFooterBlock = {
     { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
     { ...spsLiteBackendButtonsArrayRowButtonsTextMedia },
   ],
+};
+
+export const spsLiteBackendAlertBlockSimple: ISpsLiteBackendAlertBlock = {
+  id: 1,
+  __component: "page-blocks.alert-block",
+  title: "Success alert!",
+  subtitle: null,
+  description:
+    "The content of the alert block includes a strong tag with the text 'Success!' to indicate that the action has been successful, and a message that says 'Your changes have been saved' to provide more context about the success.",
+  className: null,
+  anchor: null,
+  variant: "centered",
+  buttons: [
+    {
+      id: 25,
+      url: "/",
+      __component: "elements.button",
+      description: null,
+      variant: "primary",
+      title: "Close",
+      additionalAttributes: null,
+      className: null,
+      media: null,
+      additionalMedia: null,
+      flyout: null,
+    },
+  ],
+  media: [
+    {
+      id: 52,
+      name: "Approved.png",
+      alternativeText: null,
+      caption: null,
+      width: 960,
+      height: 960,
+      hash: "Approved_6d5a366648",
+      ext: ".png",
+      mime: "image/png",
+      size: 381.88,
+      url: "https://721511.selcdn.ru/sps-lite-rogwild/Approved_6d5a366648.png",
+      previewUrl: null,
+      provider: "aws-s3",
+      providerMetadata: null,
+      createdAt: "2023-06-20T18:36:29.451Z",
+      updatedAt: "2023-06-20T18:36:29.451Z",
+    },
+  ],
+  additionalMedia: null,
 };
