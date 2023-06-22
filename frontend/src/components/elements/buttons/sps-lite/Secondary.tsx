@@ -69,7 +69,7 @@ export default function Secondary(props: ISpsLiteButton) {
       >
         <Comp
           {...additionalAttributes}
-          href={url}
+          href={urlPrepared}
           aria-selected={isActive}
           className="button-secondary"
         >

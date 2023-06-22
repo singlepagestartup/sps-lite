@@ -98,6 +98,15 @@ export const metatagPopulate = {
   },
 };
 
+export const reviewPopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  additional_media: {
+    populate: mediaPopulate,
+  },
+};
+
 export const pageBlockPopulate = {
   page_blocks: {
     populate: {
@@ -128,6 +137,9 @@ export const pageBlockPopulate = {
       form: {
         populate: formPopulate,
       },
+      reviews: {
+        populate: reviewPopulate,
+      },
     },
   },
 };
@@ -138,15 +150,6 @@ export const slideOverPropulate = {
 
 export const modalPopulate = {
   ...pageBlockPopulate,
-};
-
-export const reviewPopulate = {
-  media: {
-    populate: mediaPopulate,
-  },
-  additional_media: {
-    populate: mediaPopulate,
-  },
 };
 
 export const currencyPopulate = {};
