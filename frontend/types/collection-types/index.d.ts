@@ -3,6 +3,7 @@ import {
   IYourProjectBackendFlyout,
   IYourProjectBackendFooter,
   IYourProjectBackendForm,
+  IYourProjectBackendLayout,
   IYourProjectBackendLocale,
   IYourProjectBackendMetatag,
   IYourProjectBackendModal,
@@ -51,7 +52,7 @@ export interface IBackendTopbar extends IYourProjectBackendTopbar {}
 
 export interface IBackendPage extends IYourProjectBackendPage {}
 
-export interface IBackendLayout extends ISpsLiteBackendLayout {}
+export interface IBackendLayout extends IYourProjectBackendLayout {}
 
 export interface IBackendNavbar extends IYourProjectBackendNavbar {}
 
