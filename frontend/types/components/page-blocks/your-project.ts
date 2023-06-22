@@ -18,7 +18,8 @@ import {
   ISpsLiteBackendSliderBlock,
 } from "./sps-lite";
 
-export interface IYourProjectkendPageBlock extends ISpsLiteBackendPageBlock {}
+export interface IYourProjectBackendPageBlock
+  extends ISpsLiteBackendPageBlock {}
 
 export interface IYourProjectkendContactSectonBlock
   extends ISpsLiteBackendContactSectonBlock {}

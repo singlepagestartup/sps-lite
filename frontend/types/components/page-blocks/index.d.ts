@@ -1,3 +1,3 @@
-import { IYourProjectkendPageBlock } from "./your-project";
+import { IYourProjectBackendPageBlock } from "./your-project";
 
-export interface IBackendPageBlock extends IYourProjectkendPageBlock {}
+export interface IBackendPageBlock extends IYourProjectBackendPageBlock {}
