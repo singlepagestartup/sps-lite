@@ -1,16 +1,20 @@
 import {
-  ISpsLiteBackendCurrency,
-  ISpsLiteBackendFlyout,
-  ISpsLiteBackendForm,
-  ISpsLiteBackendLayout,
-  ISpsLiteBackendLocale,
-  ISpsLiteBackendModal,
-  ISpsLiteBackendNavbar,
-  ISpsLiteBackendPage,
-  ISpsLiteBackendReview,
-  ISpsLiteBackendSlider,
-  ISpsLiteBackendTier,
-} from "./sps-lite";
+  IYourProjectBackendCurrency,
+  IYourProjectBackendFlyout,
+  IYourProjectBackendFooter,
+  IYourProjectBackendForm,
+  IYourProjectBackendLocale,
+  IYourProjectBackendMetatag,
+  IYourProjectBackendModal,
+  IYourProjectBackendNavbar,
+  IYourProjectBackendPage,
+  IYourProjectBackendReview,
+  IYourProjectBackendSidebar,
+  IYourProjectBackendSlideOver,
+  IYourProjectBackendSlider,
+  IYourProjectBackendTier,
+  IYourProjectBackendTopbar,
+} from "./your-project";
 
 /**
  * Interfaces for RTK
@@ -25,24 +29,34 @@ export interface IBackendPagination {
   };
 }
 
-export interface IBackendTier extends ISpsLiteBackendTier {}
+export interface IBackendTier extends IYourProjectBackendTier {}
 
-export interface IBackendModal extends ISpsLiteBackendModal {}
+export interface IBackendModal extends IYourProjectBackendModal {}
 
-export interface IBackendForm extends ISpsLiteBackendForm {}
+export interface IBackendForm extends IYourProjectBackendForm {}
 
-export interface IBackendReview extends ISpsLiteBackendReview {}
+export interface IBackendReview extends IYourProjectBackendReview {}
 
-export interface IBackendSlider extends ISpsLiteBackendSlider {}
+export interface IBackendSlider extends IYourProjectBackendSlider {}
 
-export interface IBackendCurrency extends ISpsLiteBackendCurrency {}
+export interface IBackendCurrency extends IYourProjectBackendCurrency {}
 
-export interface IBackendPage extends ISpsLiteBackendPage {}
+export interface IBackendSlideOver extends IYourProjectBackendSlideOver {}
+
+export interface IBackendSidebar extends IYourProjectBackendSidebar {}
+
+export interface IBackendMetatag extends IYourProjectBackendMetatag {}
+
+export interface IBackendTopbar extends IYourProjectBackendTopbar {}
+
+export interface IBackendPage extends IYourProjectBackendPage {}
 
 export interface IBackendLayout extends ISpsLiteBackendLayout {}
 
-export interface IBackendNavbar extends ISpsLiteBackendNavbar {}
+export interface IBackendNavbar extends IYourProjectBackendNavbar {}
 
-export interface IBackendFlyout extends ISpsLiteBackendFlyout {}
+export interface IBackendFlyout extends IYourProjectBackendFlyout {}
 
-export interface IBackendLocale extends ISpsLiteBackendLocale {}
+export interface IBackendFooter extends IYourProjectBackendFooter {}
+
+export interface IBackendLocale extends IYourProjectBackendLocale {}

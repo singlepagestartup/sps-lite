@@ -1,4 +1,4 @@
-import { ISpsLiteBackendUploadPluginBackendMedia } from "./sps-lite";
+import { IYourProjectBackendUploadPluginBackendMedia } from "./your-project";
 
 export interface IBackendUploadPluginBackendMedia
-  extends ISpsLiteBackendUploadPluginBackendMedia {}
+  extends IYourProjectBackendUploadPluginBackendMedia {}
