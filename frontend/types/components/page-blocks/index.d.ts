@@ -1,3 +1,3 @@
-import { ISpsLiteBackendPageBlock } from "./sps-lite";
+import { IYourProjectkendPageBlock } from "./your-project";
 
-export interface IBackendPageBlock extends ISpsLiteBackendPageBlock {}
+export interface IBackendPageBlock extends IYourProjectkendPageBlock {}

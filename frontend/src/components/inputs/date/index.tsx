@@ -15,6 +15,7 @@ import Calendar from "react-calendar";
 import DatePicker from "react-date-picker";
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import DateTimePicker from "react-datetime-picker";
+import QueryString from "qs";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -43,8 +44,6 @@ export default function DateInput(props: IInputProps) {
   }, []);
 
   const translate = useTranslationsContext();
-
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 
   const htmlNodeId = useMemo(() => {
     return name.replace("[", "_").replace("]", "_").replace(".", "_");
@@ -100,18 +99,24 @@ export default function DateInput(props: IInputProps) {
   }
 
   useEffect(() => {
-    if (initialValue !== undefined && inputRef?.current) {
-      const evt = new Event("change");
-      inputRef.current.value = initialValue;
-      inputRef.current.dispatchEvent(evt);
-      const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
-      if (target.value === "") {
-        onChangeProxy(null);
-      } else {
-        onChangeProxy(evt);
+    if (initialValue !== undefined) {
+      let preparedInitialValue = initialValue;
+
+      if (Array.isArray(initialValue)) {
+        preparedInitialValue = [];
+
+        for (const value of initialValue) {
+          if (value.date_value) {
+            preparedInitialValue.push(value.date_value);
+          } else if (value.datetime_value) {
+            preparedInitialValue.push(value.datetime_value);
+          }
+        }
       }
+
+      setLocalValue(preparedInitialValue);
     }
-  }, [initialValue, inputRef?.current]);
+  }, [initialValue]);
 
   useEffect(() => {
     // console.log(`🚀 ~ TextWithControlled ~ props`, props);

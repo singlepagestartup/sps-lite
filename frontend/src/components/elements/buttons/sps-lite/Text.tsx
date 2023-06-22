@@ -5,9 +5,18 @@ import Flyouts from "~components/flyouts";
 import Buttons from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import Image from "next/image";
+import { useMemo } from "react";
 
-export default function Secondary(props: ISpsLiteButton) {
+export default function Text(props: ISpsLiteButton) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
+
+  // Bug with Next.js Link component and hash links
+  // https://github.com/vercel/next.js/issues/44295
+  const [Comp, urlPrepared] = useMemo(() => {
+    return url?.pathname?.includes("#")
+      ? ["a", `${url.pathname}${url?.query ? `?${url.query}` : ""}`]
+      : [Link, url];
+  }, [url]);
 
   if (props.onClick) {
     return (
@@ -53,9 +62,9 @@ export default function Secondary(props: ISpsLiteButton) {
         data-variant={props.variant}
         className={`button ${props?.className || ""}`}
       >
-        <Link
+        <Comp
           {...additionalAttributes}
-          href={url}
+          href={urlPrepared}
           className="button-text"
           aria-selected={isActive}
         >
@@ -65,7 +74,7 @@ export default function Secondary(props: ISpsLiteButton) {
             </div>
           ) : null}
           {props.title}
-        </Link>
+        </Comp>
       </div>
     );
   }
