@@ -7,13 +7,13 @@
     "period": null,
     "old_price": null,
     "createdAt": "2023-06-08T05:18:28.841Z",
-    "updatedAt": "2023-06-08T05:18:28.841Z",
-    "publishedAt": "2023-02-14T20:48:50.378Z",
+    "updatedAt": "2023-06-25T17:47:57.576Z",
+    "publishedAt": "2023-02-14T17:48:50.378Z",
     "locale": "en",
     "currency": null,
     "features": [
         {
-            "id": 1,
+            "id": 113,
             "description": null,
             "title": "Конструктор PageBlock'ов",
             "subtitle": null,
@@ -21,7 +21,7 @@
             "additional_media": null
         },
         {
-            "id": 3,
+            "id": 115,
             "description": null,
             "title": "Настроенный фронтенд",
             "subtitle": null,
@@ -29,7 +29,7 @@
             "additional_media": null
         },
         {
-            "id": 2,
+            "id": 114,
             "description": null,
             "title": "Базовые модели для одностраничного сайта",
             "subtitle": null,

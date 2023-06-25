@@ -6,11 +6,11 @@
     "subtitle": "FinX Solutions, Lead Developer",
     "rating": 4,
     "createdAt": "2023-06-08T05:19:13.852Z",
-    "updatedAt": "2023-06-08T05:20:19.757Z",
-    "publishedAt": "2023-03-12T09:33:21.047Z",
+    "updatedAt": "2023-06-25T17:46:51.639Z",
+    "publishedAt": "2023-03-12T06:33:21.047Z",
     "media": [
         {
-            "id": 41,
+            "id": 149,
             "name": "pexels-tima-miroshnichenko-5198239.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_3efb9b8744.jpg",
-                    "hash": "large_pexels_tima_miroshnichenko_5198239_3efb9b8744",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_14581068a0.jpg",
+                    "hash": "large_pexels_tima_miroshnichenko_5198239_14581068a0",
                     "mime": "image/jpeg",
                     "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_3efb9b8744.jpg",
-                    "hash": "small_pexels_tima_miroshnichenko_5198239_3efb9b8744",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_14581068a0.jpg",
+                    "hash": "small_pexels_tima_miroshnichenko_5198239_14581068a0",
                     "mime": "image/jpeg",
                     "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_3efb9b8744.jpg",
-                    "hash": "medium_pexels_tima_miroshnichenko_5198239_3efb9b8744",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_14581068a0.jpg",
+                    "hash": "medium_pexels_tima_miroshnichenko_5198239_14581068a0",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_3efb9b8744.jpg",
-                    "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_3efb9b8744",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_14581068a0.jpg",
+                    "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_14581068a0",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_tima_miroshnichenko_5198239_3efb9b8744",
+            "hash": "pexels_tima_miroshnichenko_5198239_14581068a0",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 4287.67,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_3efb9b8744.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_14581068a0.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-08T05:20:19.702Z",
-            "updatedAt": "2023-06-08T05:20:19.702Z",
+            "createdAt": "2023-06-25T17:46:51.602Z",
+            "updatedAt": "2023-06-25T17:46:51.602Z",
             "folder": null
         }
     ],

@@ -6,11 +6,11 @@
     "subtitle": "GreenTech Innovations, Co-Founder & CTO",
     "rating": 5,
     "createdAt": "2023-06-08T05:19:18.957Z",
-    "updatedAt": "2023-06-08T05:20:24.464Z",
-    "publishedAt": "2023-03-12T09:34:53.754Z",
+    "updatedAt": "2023-06-25T17:47:14.931Z",
+    "publishedAt": "2023-03-12T06:34:53.754Z",
     "media": [
         {
-            "id": 42,
+            "id": 150,
             "name": "pexels-edmond-dantès-4347368.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_edmond_dantes_4347368_3a37f9e35e.jpg",
-                    "hash": "large_pexels_edmond_dantes_4347368_3a37f9e35e",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_edmond_dantes_4347368_283973a94e.jpg",
+                    "hash": "large_pexels_edmond_dantes_4347368_283973a94e",
                     "mime": "image/jpeg",
                     "name": "large_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_edmond_dantes_4347368_3a37f9e35e.jpg",
-                    "hash": "small_pexels_edmond_dantes_4347368_3a37f9e35e",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_edmond_dantes_4347368_283973a94e.jpg",
+                    "hash": "small_pexels_edmond_dantes_4347368_283973a94e",
                     "mime": "image/jpeg",
                     "name": "small_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_edmond_dantes_4347368_3a37f9e35e.jpg",
-                    "hash": "medium_pexels_edmond_dantes_4347368_3a37f9e35e",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_edmond_dantes_4347368_283973a94e.jpg",
+                    "hash": "medium_pexels_edmond_dantes_4347368_283973a94e",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_edmond_dantes_4347368_3a37f9e35e.jpg",
-                    "hash": "thumbnail_pexels_edmond_dantes_4347368_3a37f9e35e",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_edmond_dantes_4347368_283973a94e.jpg",
+                    "hash": "thumbnail_pexels_edmond_dantes_4347368_283973a94e",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_edmond_dantes_4347368_3a37f9e35e",
+            "hash": "pexels_edmond_dantes_4347368_283973a94e",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 6751.8,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_3a37f9e35e.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_edmond_dantes_4347368_283973a94e.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-08T05:20:24.416Z",
-            "updatedAt": "2023-06-08T05:20:24.416Z",
+            "createdAt": "2023-06-25T17:47:14.898Z",
+            "updatedAt": "2023-06-25T17:47:14.898Z",
             "folder": null
         }
     ],

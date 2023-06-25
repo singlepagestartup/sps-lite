@@ -5,8 +5,8 @@
     "variant": "boxed",
     "class_name": null,
     "createdAt": "2023-06-08T05:19:34.741Z",
-    "updatedAt": "2023-06-08T05:19:34.741Z",
-    "publishedAt": "2023-05-04T08:25:15.030Z",
+    "updatedAt": "2023-06-25T17:45:14.163Z",
+    "publishedAt": "2023-05-04T05:25:15.030Z",
     "locale": "en",
     "layouts": [
         {
@@ -16,8 +16,8 @@
             "variant": "wide",
             "class_name": "[&>.layout-container]:pt-16",
             "createdAt": "2023-06-08T05:19:33.000Z",
-            "updatedAt": "2023-06-08T05:19:35.068Z",
-            "publishedAt": "2023-04-20T08:23:38.447Z",
+            "updatedAt": "2023-06-25T17:45:14.460Z",
+            "publishedAt": "2023-04-20T05:23:38.447Z",
             "locale": "en",
             "sidebar": null,
             "topbar": null,
@@ -28,8 +28,8 @@
                 "variant": "boxed",
                 "class_name": null,
                 "createdAt": "2023-06-08T05:19:34.741Z",
-                "updatedAt": "2023-06-08T05:19:34.741Z",
-                "publishedAt": "2023-05-04T08:25:15.030Z",
+                "updatedAt": "2023-06-25T17:45:14.163Z",
+                "publishedAt": "2023-05-04T05:25:15.030Z",
                 "locale": "en",
                 "layouts": [
                     {
@@ -39,8 +39,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -51,20 +51,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -77,8 +77,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -91,8 +91,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -101,8 +101,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -110,8 +110,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -119,8 +119,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -135,8 +135,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -146,8 +146,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -158,20 +158,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -184,8 +184,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -198,8 +198,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -208,8 +208,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -221,19 +221,19 @@
                 "page_blocks": [
                     {
                         "__component": "page-blocks.footer-block",
-                        "id": 1,
+                        "id": 3,
                         "copyrights": "2023 Single Page Startup",
                         "description": "The fastest way to develop your startup",
                         "variant": "four-columns-with-company-mission",
                         "class_name": null,
                         "logotype": {
-                            "id": 1,
+                            "id": 5,
                             "title": null,
                             "url": "/"
                         },
                         "buttons_arrays": [
                             {
-                                "id": 2,
+                                "id": 10,
                                 "title": "Pages",
                                 "class_name": null,
                                 "variant": "column-with-title",
@@ -242,7 +242,7 @@
                                 "additional_attributes": null
                             },
                             {
-                                "id": 1,
+                                "id": 9,
                                 "title": "Links",
                                 "class_name": null,
                                 "variant": "column-with-title",
@@ -253,7 +253,7 @@
                         ],
                         "additional_buttons_arrays": [
                             {
-                                "id": 3,
+                                "id": 11,
                                 "title": null,
                                 "class_name": null,
                                 "variant": "row",
@@ -264,7 +264,7 @@
                         ],
                         "extra_buttons_arrays": [
                             {
-                                "id": 4,
+                                "id": 12,
                                 "title": null,
                                 "class_name": null,
                                 "variant": "row",
@@ -281,19 +281,19 @@
             },
             "slide_overs": [
                 {
-                    "id": 1,
+                    "id": 3,
                     "variant": "right-side-half-width",
                     "title": "This Is Slide Over",
                     "uid": "this-is-slide-over",
-                    "class_name": null,
-                    "createdAt": "2023-06-08T05:20:30.595Z",
-                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                    "class_name": "sps-lite-slide-over",
+                    "createdAt": "2023-06-25T17:47:26.660Z",
+                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                    "publishedAt": "2023-04-07T18:54:17.781Z",
                     "locale": "en",
                     "page_blocks": [
                         {
                             "__component": "page-blocks.faqs-block",
-                            "id": 1,
+                            "id": 2,
                             "title": "This Is Slide Over",
                             "description": "With Page Blocks",
                             "variant": "two-columns-with-centered-introduction",
@@ -311,8 +311,8 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "updatedAt": "2023-06-25T17:45:14.401Z",
+                            "publishedAt": "2023-04-08T07:04:56.606Z",
                             "locale": "en",
                             "sidebar": {
                                 "id": 1,
@@ -322,8 +322,8 @@
                                 "class_name": null,
                                 "side": "right",
                                 "createdAt": "2023-06-08T05:20:30.478Z",
-                                "updatedAt": "2023-06-08T05:20:30.478Z",
-                                "publishedAt": "2023-04-07T22:35:29.006Z",
+                                "updatedAt": "2023-06-25T17:47:26.597Z",
+                                "publishedAt": "2023-04-07T19:35:29.006Z",
                                 "locale": "en"
                             },
                             "topbar": null,
@@ -334,20 +334,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -360,8 +360,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -374,8 +374,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -384,8 +384,8 @@
                                     "title": "Page With Sidebar Layout",
                                     "url": "/page-with-sidebar-layout",
                                     "createdAt": "2023-06-08T05:19:32.833Z",
-                                    "updatedAt": "2023-06-08T05:20:16.409Z",
-                                    "publishedAt": "2023-04-08T18:00:14.519Z",
+                                    "updatedAt": "2023-06-25T17:46:40.396Z",
+                                    "publishedAt": "2023-04-08T15:00:14.519Z",
                                     "locale": "en"
                                 }
                             ],
@@ -400,8 +400,8 @@
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
                             "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "updatedAt": "2023-06-25T17:45:14.460Z",
+                            "publishedAt": "2023-04-20T05:23:38.447Z",
                             "locale": "en",
                             "sidebar": null,
                             "topbar": null,
@@ -412,20 +412,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -438,8 +438,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -452,8 +452,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -462,8 +462,8 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-06-08T05:19:25.363Z",
-                                    "updatedAt": "2023-06-08T05:20:16.347Z",
-                                    "publishedAt": "2023-04-08T17:06:05.277Z",
+                                    "updatedAt": "2023-06-25T17:46:40.284Z",
+                                    "publishedAt": "2023-04-08T14:06:05.277Z",
                                     "locale": "en"
                                 },
                                 {
@@ -471,8 +471,8 @@
                                     "title": "Terms and Conditions",
                                     "url": "/terms-and-conditions",
                                     "createdAt": "2023-06-08T05:19:32.927Z",
-                                    "updatedAt": "2023-06-08T05:20:16.484Z",
-                                    "publishedAt": "2023-05-04T13:38:22.465Z",
+                                    "updatedAt": "2023-06-25T17:46:40.441Z",
+                                    "publishedAt": "2023-05-04T10:38:22.465Z",
                                     "locale": "en"
                                 },
                                 {
@@ -480,8 +480,8 @@
                                     "title": "Not found page",
                                     "url": "/404",
                                     "createdAt": "2023-06-08T05:19:32.900Z",
-                                    "updatedAt": "2023-06-08T05:20:16.456Z",
-                                    "publishedAt": "2023-04-20T09:18:21.051Z",
+                                    "updatedAt": "2023-06-25T17:46:40.350Z",
+                                    "publishedAt": "2023-04-20T06:18:21.051Z",
                                     "locale": "en"
                                 }
                             ],
@@ -504,13 +504,13 @@
                     "title": "This Is Modal",
                     "class_name": null,
                     "createdAt": "2023-06-08T05:19:35.862Z",
-                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                    "publishedAt": "2023-03-28T06:07:57.457Z",
                     "locale": "en",
                     "page_blocks": [
                         {
                             "__component": "page-blocks.hero-section-block",
-                            "id": 4,
+                            "id": 19,
                             "title": "This Is Modal",
                             "description": "With Page Blocks",
                             "variant": "simple-centered",
@@ -529,8 +529,8 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "updatedAt": "2023-06-25T17:45:14.401Z",
+                            "publishedAt": "2023-04-08T07:04:56.606Z",
                             "locale": "en",
                             "sidebar": {
                                 "id": 1,
@@ -540,8 +540,8 @@
                                 "class_name": null,
                                 "side": "right",
                                 "createdAt": "2023-06-08T05:20:30.478Z",
-                                "updatedAt": "2023-06-08T05:20:30.478Z",
-                                "publishedAt": "2023-04-07T22:35:29.006Z",
+                                "updatedAt": "2023-06-25T17:47:26.597Z",
+                                "publishedAt": "2023-04-07T19:35:29.006Z",
                                 "locale": "en"
                             },
                             "topbar": null,
@@ -552,20 +552,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -578,8 +578,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -592,8 +592,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -602,8 +602,8 @@
                                     "title": "Page With Sidebar Layout",
                                     "url": "/page-with-sidebar-layout",
                                     "createdAt": "2023-06-08T05:19:32.833Z",
-                                    "updatedAt": "2023-06-08T05:20:16.409Z",
-                                    "publishedAt": "2023-04-08T18:00:14.519Z",
+                                    "updatedAt": "2023-06-25T17:46:40.396Z",
+                                    "publishedAt": "2023-04-08T15:00:14.519Z",
                                     "locale": "en"
                                 }
                             ],
@@ -618,8 +618,8 @@
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
                             "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "updatedAt": "2023-06-25T17:45:14.460Z",
+                            "publishedAt": "2023-04-20T05:23:38.447Z",
                             "locale": "en",
                             "sidebar": null,
                             "topbar": null,
@@ -630,20 +630,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -656,8 +656,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -670,8 +670,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -680,8 +680,8 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-06-08T05:19:25.363Z",
-                                    "updatedAt": "2023-06-08T05:20:16.347Z",
-                                    "publishedAt": "2023-04-08T17:06:05.277Z",
+                                    "updatedAt": "2023-06-25T17:46:40.284Z",
+                                    "publishedAt": "2023-04-08T14:06:05.277Z",
                                     "locale": "en"
                                 },
                                 {
@@ -689,8 +689,8 @@
                                     "title": "Terms and Conditions",
                                     "url": "/terms-and-conditions",
                                     "createdAt": "2023-06-08T05:19:32.927Z",
-                                    "updatedAt": "2023-06-08T05:20:16.484Z",
-                                    "publishedAt": "2023-05-04T13:38:22.465Z",
+                                    "updatedAt": "2023-06-25T17:46:40.441Z",
+                                    "publishedAt": "2023-05-04T10:38:22.465Z",
                                     "locale": "en"
                                 },
                                 {
@@ -698,8 +698,8 @@
                                     "title": "Not found page",
                                     "url": "/404",
                                     "createdAt": "2023-06-08T05:19:32.900Z",
-                                    "updatedAt": "2023-06-08T05:20:16.456Z",
-                                    "publishedAt": "2023-04-20T09:18:21.051Z",
+                                    "updatedAt": "2023-06-25T17:46:40.350Z",
+                                    "publishedAt": "2023-04-20T06:18:21.051Z",
                                     "locale": "en"
                                 }
                             ],
@@ -722,24 +722,24 @@
                 "position": "fixed",
                 "side": "top",
                 "createdAt": "2023-06-08T05:19:36.905Z",
-                "updatedAt": "2023-06-08T05:19:36.905Z",
-                "publishedAt": "2023-04-08T10:04:22.148Z",
+                "updatedAt": "2023-06-25T17:45:17.249Z",
+                "publishedAt": "2023-04-08T07:04:22.148Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.navbar-block",
-                        "id": 1,
+                        "id": 3,
                         "variant": "simple-links-on-left",
                         "description": null,
                         "class_name": null,
                         "logotype": {
-                            "id": 2,
+                            "id": 6,
                             "title": null,
                             "url": "/"
                         },
                         "buttons": [
                             {
-                                "id": 14,
+                                "id": 66,
                                 "url": "/",
                                 "description": null,
                                 "variant": "text",
@@ -748,7 +748,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 15,
+                                "id": 67,
                                 "url": "/page-with-sidebar-layout",
                                 "description": null,
                                 "variant": "text",
@@ -757,7 +757,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 17,
+                                "id": 69,
                                 "url": null,
                                 "description": null,
                                 "variant": "text",
@@ -766,7 +766,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 16,
+                                "id": 68,
                                 "url": "?opened_modal=this-is-modal",
                                 "description": null,
                                 "variant": "text",
@@ -775,7 +775,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 18,
+                                "id": 70,
                                 "url": "?opened_slide_over=this-is-slide-over",
                                 "description": null,
                                 "variant": "text",
@@ -786,7 +786,7 @@
                         ],
                         "additional_buttons": [
                             {
-                                "id": 19,
+                                "id": 71,
                                 "url": "https://github.com/singlepagestartup/sps-lite",
                                 "description": null,
                                 "variant": "secondary",
@@ -795,7 +795,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 20,
+                                "id": 72,
                                 "url": null,
                                 "description": null,
                                 "variant": "locale",
@@ -815,8 +815,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -826,8 +826,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -838,20 +838,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -864,8 +864,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -878,8 +878,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -888,8 +888,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -904,8 +904,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -916,20 +916,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -942,8 +942,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -956,8 +956,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -966,8 +966,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -975,8 +975,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -984,8 +984,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -995,7 +995,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$km70691TymghJRJD0KIbTu2D/ynnYvvOx4Vh4JAySfQt3YJxEpn5W",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-06-08T05:20:26.307Z",
+                    "updatedAt": "2023-06-08T05:20:26.307Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "pages": [
@@ -1004,8 +1030,8 @@
                     "title": "Main page",
                     "url": "/",
                     "createdAt": "2023-06-08T05:19:25.363Z",
-                    "updatedAt": "2023-06-08T05:20:16.347Z",
-                    "publishedAt": "2023-04-08T17:06:05.277Z",
+                    "updatedAt": "2023-06-25T17:46:40.284Z",
+                    "publishedAt": "2023-04-08T14:06:05.277Z",
                     "locale": "en",
                     "layout": {
                         "id": 2,
@@ -1014,8 +1040,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -1026,20 +1052,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -1052,8 +1078,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -1066,8 +1092,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -1076,8 +1102,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -1085,8 +1111,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -1094,8 +1120,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -1106,7 +1132,7 @@
                     "page_blocks": [
                         {
                             "__component": "page-blocks.hero-section-block",
-                            "id": 5,
+                            "id": 20,
                             "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
                             "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                             "variant": "simple-centered",
@@ -1114,7 +1140,7 @@
                             "class_name": "pt-16",
                             "media": [
                                 {
-                                    "id": 27,
+                                    "id": 134,
                                     "name": "preview.jpg",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1123,41 +1149,41 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".jpg",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_preview_32ab16d902.jpg",
-                                            "hash": "large_preview_32ab16d902",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_preview_764d1e8eac.jpg",
+                                            "hash": "large_preview_764d1e8eac",
                                             "mime": "image/jpeg",
                                             "name": "large_preview.jpg",
                                             "path": null,
-                                            "size": 38.26,
+                                            "size": 38.28,
                                             "width": 1000,
                                             "height": 482
                                         },
                                         "small": {
                                             "ext": ".jpg",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_preview_32ab16d902.jpg",
-                                            "hash": "small_preview_32ab16d902",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_preview_764d1e8eac.jpg",
+                                            "hash": "small_preview_764d1e8eac",
                                             "mime": "image/jpeg",
                                             "name": "small_preview.jpg",
                                             "path": null,
-                                            "size": 12.72,
+                                            "size": 12.73,
                                             "width": 500,
                                             "height": 241
                                         },
                                         "medium": {
                                             "ext": ".jpg",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_preview_32ab16d902.jpg",
-                                            "hash": "medium_preview_32ab16d902",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_preview_764d1e8eac.jpg",
+                                            "hash": "medium_preview_764d1e8eac",
                                             "mime": "image/jpeg",
                                             "name": "medium_preview.jpg",
                                             "path": null,
-                                            "size": 24.97,
+                                            "size": 24.99,
                                             "width": 750,
                                             "height": 362
                                         },
                                         "thumbnail": {
                                             "ext": ".jpg",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_preview_32ab16d902.jpg",
-                                            "hash": "thumbnail_preview_32ab16d902",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_preview_764d1e8eac.jpg",
+                                            "hash": "thumbnail_preview_764d1e8eac",
                                             "mime": "image/jpeg",
                                             "name": "thumbnail_preview.jpg",
                                             "path": null,
@@ -1166,23 +1192,23 @@
                                             "height": 118
                                         }
                                     },
-                                    "hash": "preview_32ab16d902",
+                                    "hash": "preview_764d1e8eac",
                                     "ext": ".jpg",
                                     "mime": "image/jpeg",
-                                    "size": 87,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/preview_32ab16d902.jpg",
+                                    "size": 86.93,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/preview_764d1e8eac.jpg",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-06-08T05:19:38.003Z",
-                                    "updatedAt": "2023-06-08T05:19:38.003Z",
+                                    "createdAt": "2023-06-25T17:45:19.152Z",
+                                    "updatedAt": "2023-06-25T17:45:19.152Z",
                                     "folder": null
                                 }
                             ],
                             "buttons": [
                                 {
-                                    "id": 21,
+                                    "id": 73,
                                     "url": "https://github.com/singlepagestartup/sps-lite",
                                     "description": null,
                                     "variant": "primary",
@@ -1195,7 +1221,7 @@
                         },
                         {
                             "__component": "page-blocks.cta-section-block",
-                            "id": 2,
+                            "id": 6,
                             "variant": "dark-with-image",
                             "anchor": null,
                             "class_name": null,
@@ -1204,7 +1230,7 @@
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 28,
+                                    "id": 135,
                                     "name": "28.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1213,66 +1239,66 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_28_452f98fbfc.png",
-                                            "hash": "large_28_452f98fbfc",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_28_031c9be00c.png",
+                                            "hash": "large_28_031c9be00c",
                                             "mime": "image/png",
                                             "name": "large_28.png",
                                             "path": null,
-                                            "size": 673.33,
+                                            "size": 681.41,
                                             "width": 1000,
                                             "height": 697
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_28_452f98fbfc.png",
-                                            "hash": "small_28_452f98fbfc",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_28_031c9be00c.png",
+                                            "hash": "small_28_031c9be00c",
                                             "mime": "image/png",
                                             "name": "small_28.png",
                                             "path": null,
-                                            "size": 187.82,
+                                            "size": 188.64,
                                             "width": 500,
                                             "height": 349
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_28_452f98fbfc.png",
-                                            "hash": "medium_28_452f98fbfc",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_28_031c9be00c.png",
+                                            "hash": "medium_28_031c9be00c",
                                             "mime": "image/png",
                                             "name": "medium_28.png",
                                             "path": null,
-                                            "size": 393.92,
+                                            "size": 397.58,
                                             "width": 750,
                                             "height": 523
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_28_452f98fbfc.png",
-                                            "hash": "thumbnail_28_452f98fbfc",
+                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_28_031c9be00c.png",
+                                            "hash": "thumbnail_28_031c9be00c",
                                             "mime": "image/png",
                                             "name": "thumbnail_28.png",
                                             "path": null,
-                                            "size": 47.5,
+                                            "size": 47.62,
                                             "width": 224,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "28_452f98fbfc",
+                                    "hash": "28_031c9be00c",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 3431.52,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/28_452f98fbfc.png",
+                                    "size": 3374.58,
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/28_031c9be00c.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-06-08T05:19:43.116Z",
-                                    "updatedAt": "2023-06-08T05:19:43.116Z",
+                                    "createdAt": "2023-06-25T17:45:33.165Z",
+                                    "updatedAt": "2023-06-25T17:45:33.165Z",
                                     "folder": null
                                 }
                             ],
                             "buttons": [
                                 {
-                                    "id": 22,
+                                    "id": 74,
                                     "url": "https://github.com/singlepagestartup/sps-lite",
                                     "description": null,
                                     "variant": "primary",
@@ -1285,7 +1311,7 @@
                         },
                         {
                             "__component": "page-blocks.features-section-block",
-                            "id": 2,
+                            "id": 6,
                             "title": "Don't repeat yourself",
                             "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
                             "subtitle": null,
@@ -1296,73 +1322,73 @@
                             "additional_media": null,
                             "features": [
                                 {
-                                    "id": 23,
+                                    "id": 101,
                                     "description": "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
                                     "title": "Ready-to-Use UI Components",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 22,
+                                    "id": 103,
                                     "description": "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
                                     "title": "Global-Ready",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 26,
+                                    "id": 106,
                                     "description": "Save 20 to 100 hours of development time with our ready-to-use, best-practice authentication and authorization system. Focus on your core features and let us handle the rest.",
                                     "title": "Streamlined Authentication & Authorization",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 25,
+                                    "id": 107,
                                     "description": "Enhance user profiles with our pre-built avatar functionality. Simply add the PageBlock to the profile page and let your users personalize their accounts with custom avatars.",
                                     "title": "Easy Avatar Integration",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 21,
+                                    "id": 102,
                                     "description": "Quickly add essential features to your MVP with built-in support for popular services such as authentication, payment gateways, and analytics tools. Less hassle, more productivity.",
                                     "title": "Seamless Third-Party Service Integration",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 27,
+                                    "id": 104,
                                     "description": "Generate documents based on user data or completed forms with ease using our built-in document generation functionality. Just incorporate it into your business logic and you're set.",
                                     "title": "Effortless Document Generation",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 24,
+                                    "id": 105,
                                     "description": "Utilize our ready-to-use product catalog, product pages, shopping cart, delivery options, and order history to jumpstart your e-commerce project.",
                                     "title": "Comprehensive E-Commerce Features",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 28,
+                                    "id": 108,
                                     "description": "Establish your personal brand by enabling our integrated blogging functionality, perfect for sharing news and insights with your audience.",
                                     "title": "Built-In Blogging Capabilities",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 29,
+                                    "id": 109,
                                     "description": "Tailor your project to your needs using the Strapi admin panel, extend its capabilities with plugins, or create your own custom features.",
                                     "title": "Flexible Customization and Extensibility",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 30,
+                                    "id": 110,
                                     "description": "Easily migrate or seed data by completing your project locally, running a data dump, and migrating it to your server, or by describing your data as JSON and adding it to the data seeding process.",
                                     "title": "Hassle-Free Data Migration and Seeding",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 31,
+                                    "id": 111,
                                     "description": "With pre-configured deployment tools and processes, our boilerplate enables you to quickly deploy your MVP to your preferred hosting platform. This helps you reduce the time-to-market and start gathering valuable customer feedback sooner.",
                                     "title": "Rapid Deployment (CI/CD)",
                                     "subtitle": null
                                 },
                                 {
-                                    "id": 32,
+                                    "id": 112,
                                     "description": "Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.",
                                     "title": "Modular and Scalable",
                                     "subtitle": null
@@ -1371,7 +1397,7 @@
                         },
                         {
                             "__component": "page-blocks.reviews-list-block",
-                            "id": 2,
+                            "id": 6,
                             "variant": "simple-with-avatars",
                             "show_all": true,
                             "anchor": null,
@@ -1383,7 +1409,7 @@
                         },
                         {
                             "__component": "page-blocks.contact-section-block",
-                            "id": 2,
+                            "id": 6,
                             "title": "We’re ready to help",
                             "subtitle": null,
                             "description": "Fill in all the fields below and our manager will contact you.",
@@ -1400,8 +1426,8 @@
                                 "uid": "question",
                                 "title": "Есть вопросы по продукту?",
                                 "createdAt": "2023-06-08T05:19:25.251Z",
-                                "updatedAt": "2023-06-15T20:32:11.509Z",
-                                "publishedAt": "2023-02-14T20:44:48.245Z",
+                                "updatedAt": "2023-06-25T17:45:14.345Z",
+                                "publishedAt": "2023-02-14T17:44:48.245Z",
                                 "locale": "en"
                             },
                             "buttons_arrays": []
@@ -1415,28 +1441,28 @@
                         "gtm_key": null,
                         "is_default": true,
                         "createdAt": "2023-06-08T05:19:35.768Z",
-                        "updatedAt": "2023-06-08T05:19:35.768Z",
-                        "publishedAt": "2023-04-08T11:09:23.027Z",
+                        "updatedAt": "2023-06-25T17:49:48.795Z",
+                        "publishedAt": "2023-04-08T08:09:23.027Z",
                         "locale": "en",
                         "favicon": {
-                            "id": 25,
+                            "id": 132,
                             "name": "favicon.svg",
                             "alternativeText": null,
                             "caption": null,
                             "width": 485,
                             "height": 485,
                             "formats": null,
-                            "hash": "favicon_6e5d9ffe9c",
+                            "hash": "favicon_00344014e9",
                             "ext": ".svg",
                             "mime": "image/svg+xml",
                             "size": 2.61,
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_6e5d9ffe9c.svg",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/favicon_00344014e9.svg",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2023-06-08T05:19:35.694Z",
-                            "updatedAt": "2023-06-08T05:19:35.694Z",
+                            "createdAt": "2023-06-25T17:45:15.495Z",
+                            "updatedAt": "2023-06-25T17:45:15.495Z",
                             "folder": null
                         },
                         "pages": [
@@ -1445,17 +1471,56 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             }
                         ],
                         "createdBy": null,
                         "updatedBy": null,
-                        "localizations": []
+                        "localizations": [
+                            {
+                                "id": 3,
+                                "title": "Lite Single Page Startup",
+                                "description": "Самый быстрый способ создать стартап",
+                                "script": null,
+                                "gtm_key": null,
+                                "is_default": true,
+                                "createdAt": "2023-06-25T17:49:47.844Z",
+                                "updatedAt": "2023-06-25T17:49:48.771Z",
+                                "publishedAt": "2023-06-25T17:49:48.765Z",
+                                "locale": "ru"
+                            }
+                        ]
                     },
                     "createdBy": null,
-                    "updatedBy": null,
+                    "updatedBy": {
+                        "id": 1,
+                        "firstname": "rogwild",
+                        "lastname": "design",
+                        "username": null,
+                        "email": "rogwild.design@gmail.com",
+                        "password": "$2a$10$km70691TymghJRJD0KIbTu2D/ynnYvvOx4Vh4JAySfQt3YJxEpn5W",
+                        "resetPasswordToken": null,
+                        "registrationToken": null,
+                        "isActive": true,
+                        "blocked": false,
+                        "preferedLanguage": null,
+                        "createdAt": "2023-06-08T05:20:26.307Z",
+                        "updatedAt": "2023-06-08T05:20:26.307Z",
+                        "roles": [
+                            {
+                                "id": 1,
+                                "name": "Super Admin",
+                                "code": "strapi-super-admin",
+                                "description": "Super Admins can access and manage all features and settings.",
+                                "createdAt": "2023-06-08T05:18:00.556Z",
+                                "updatedAt": "2023-06-08T05:18:00.556Z"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
                     "localizations": []
                 },
                 {
@@ -1463,8 +1528,8 @@
                     "title": "Terms and Conditions",
                     "url": "/terms-and-conditions",
                     "createdAt": "2023-06-08T05:19:32.927Z",
-                    "updatedAt": "2023-06-08T05:20:16.484Z",
-                    "publishedAt": "2023-05-04T13:38:22.465Z",
+                    "updatedAt": "2023-06-25T17:46:40.441Z",
+                    "publishedAt": "2023-05-04T10:38:22.465Z",
                     "locale": "en",
                     "layout": {
                         "id": 2,
@@ -1473,8 +1538,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -1485,20 +1550,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -1511,8 +1576,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -1525,8 +1590,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -1535,8 +1600,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -1544,8 +1609,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -1553,8 +1618,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -1565,7 +1630,7 @@
                     "page_blocks": [
                         {
                             "__component": "page-blocks.hero-section-block",
-                            "id": 6,
+                            "id": 21,
                             "title": "Terms and Conditions",
                             "description": null,
                             "variant": "simple-centered",
@@ -1586,8 +1651,8 @@
                     "title": "Not found page",
                     "url": "/404",
                     "createdAt": "2023-06-08T05:19:32.900Z",
-                    "updatedAt": "2023-06-08T05:20:16.456Z",
-                    "publishedAt": "2023-04-20T09:18:21.051Z",
+                    "updatedAt": "2023-06-25T17:46:40.350Z",
+                    "publishedAt": "2023-04-20T06:18:21.051Z",
                     "locale": "en",
                     "layout": {
                         "id": 2,
@@ -1596,8 +1661,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -1608,20 +1673,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -1634,8 +1699,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -1648,8 +1713,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -1658,8 +1723,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -1667,8 +1732,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -1676,8 +1741,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -1688,7 +1753,7 @@
                     "page_blocks": [
                         {
                             "__component": "page-blocks.not-found-block",
-                            "id": 2,
+                            "id": 6,
                             "variant": "simple",
                             "title": "404",
                             "description": null,
@@ -1698,7 +1763,7 @@
                             "media": null,
                             "buttons": [
                                 {
-                                    "id": 23,
+                                    "id": 75,
                                     "url": "/",
                                     "description": null,
                                     "variant": "text",
@@ -1727,8 +1792,8 @@
             "variant": "boxed",
             "class_name": null,
             "createdAt": "2023-06-08T05:19:32.951Z",
-            "updatedAt": "2023-06-08T05:19:35.037Z",
-            "publishedAt": "2023-04-08T10:04:56.606Z",
+            "updatedAt": "2023-06-25T17:45:14.401Z",
+            "publishedAt": "2023-04-08T07:04:56.606Z",
             "locale": "en",
             "sidebar": {
                 "id": 1,
@@ -1738,13 +1803,13 @@
                 "class_name": null,
                 "side": "right",
                 "createdAt": "2023-06-08T05:20:30.478Z",
-                "updatedAt": "2023-06-08T05:20:30.478Z",
-                "publishedAt": "2023-04-07T22:35:29.006Z",
+                "updatedAt": "2023-06-25T17:47:26.597Z",
+                "publishedAt": "2023-04-07T19:35:29.006Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.hero-section-block",
-                        "id": 7,
+                        "id": 22,
                         "title": "Sidebar",
                         "description": "With Page Blocks",
                         "variant": "simple-centered",
@@ -1763,8 +1828,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -1774,8 +1839,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -1786,20 +1851,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -1812,8 +1877,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -1826,8 +1891,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -1836,8 +1901,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -1858,8 +1923,8 @@
                 "variant": "boxed",
                 "class_name": null,
                 "createdAt": "2023-06-08T05:19:34.741Z",
-                "updatedAt": "2023-06-08T05:19:34.741Z",
-                "publishedAt": "2023-05-04T08:25:15.030Z",
+                "updatedAt": "2023-06-25T17:45:14.163Z",
+                "publishedAt": "2023-05-04T05:25:15.030Z",
                 "locale": "en",
                 "layouts": [
                     {
@@ -1869,8 +1934,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -1881,20 +1946,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -1907,8 +1972,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -1921,8 +1986,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -1931,8 +1996,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -1940,8 +2005,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -1949,8 +2014,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -1965,8 +2030,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -1976,8 +2041,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -1988,20 +2053,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -2014,8 +2079,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -2028,8 +2093,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -2038,8 +2103,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -2051,19 +2116,19 @@
                 "page_blocks": [
                     {
                         "__component": "page-blocks.footer-block",
-                        "id": 1,
+                        "id": 3,
                         "copyrights": "2023 Single Page Startup",
                         "description": "The fastest way to develop your startup",
                         "variant": "four-columns-with-company-mission",
                         "class_name": null,
                         "logotype": {
-                            "id": 1,
+                            "id": 5,
                             "title": null,
                             "url": "/"
                         },
                         "buttons_arrays": [
                             {
-                                "id": 2,
+                                "id": 10,
                                 "title": "Pages",
                                 "class_name": null,
                                 "variant": "column-with-title",
@@ -2072,7 +2137,7 @@
                                 "additional_attributes": null
                             },
                             {
-                                "id": 1,
+                                "id": 9,
                                 "title": "Links",
                                 "class_name": null,
                                 "variant": "column-with-title",
@@ -2083,7 +2148,7 @@
                         ],
                         "additional_buttons_arrays": [
                             {
-                                "id": 3,
+                                "id": 11,
                                 "title": null,
                                 "class_name": null,
                                 "variant": "row",
@@ -2094,7 +2159,7 @@
                         ],
                         "extra_buttons_arrays": [
                             {
-                                "id": 4,
+                                "id": 12,
                                 "title": null,
                                 "class_name": null,
                                 "variant": "row",
@@ -2111,19 +2176,19 @@
             },
             "slide_overs": [
                 {
-                    "id": 1,
+                    "id": 3,
                     "variant": "right-side-half-width",
                     "title": "This Is Slide Over",
                     "uid": "this-is-slide-over",
-                    "class_name": null,
-                    "createdAt": "2023-06-08T05:20:30.595Z",
-                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                    "class_name": "sps-lite-slide-over",
+                    "createdAt": "2023-06-25T17:47:26.660Z",
+                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                    "publishedAt": "2023-04-07T18:54:17.781Z",
                     "locale": "en",
                     "page_blocks": [
                         {
                             "__component": "page-blocks.faqs-block",
-                            "id": 1,
+                            "id": 2,
                             "title": "This Is Slide Over",
                             "description": "With Page Blocks",
                             "variant": "two-columns-with-centered-introduction",
@@ -2141,8 +2206,8 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "updatedAt": "2023-06-25T17:45:14.401Z",
+                            "publishedAt": "2023-04-08T07:04:56.606Z",
                             "locale": "en",
                             "sidebar": {
                                 "id": 1,
@@ -2152,8 +2217,8 @@
                                 "class_name": null,
                                 "side": "right",
                                 "createdAt": "2023-06-08T05:20:30.478Z",
-                                "updatedAt": "2023-06-08T05:20:30.478Z",
-                                "publishedAt": "2023-04-07T22:35:29.006Z",
+                                "updatedAt": "2023-06-25T17:47:26.597Z",
+                                "publishedAt": "2023-04-07T19:35:29.006Z",
                                 "locale": "en"
                             },
                             "topbar": null,
@@ -2164,20 +2229,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2190,8 +2255,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2204,8 +2269,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -2214,8 +2279,8 @@
                                     "title": "Page With Sidebar Layout",
                                     "url": "/page-with-sidebar-layout",
                                     "createdAt": "2023-06-08T05:19:32.833Z",
-                                    "updatedAt": "2023-06-08T05:20:16.409Z",
-                                    "publishedAt": "2023-04-08T18:00:14.519Z",
+                                    "updatedAt": "2023-06-25T17:46:40.396Z",
+                                    "publishedAt": "2023-04-08T15:00:14.519Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2230,8 +2295,8 @@
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
                             "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "updatedAt": "2023-06-25T17:45:14.460Z",
+                            "publishedAt": "2023-04-20T05:23:38.447Z",
                             "locale": "en",
                             "sidebar": null,
                             "topbar": null,
@@ -2242,20 +2307,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2268,8 +2333,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2282,8 +2347,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -2292,8 +2357,8 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-06-08T05:19:25.363Z",
-                                    "updatedAt": "2023-06-08T05:20:16.347Z",
-                                    "publishedAt": "2023-04-08T17:06:05.277Z",
+                                    "updatedAt": "2023-06-25T17:46:40.284Z",
+                                    "publishedAt": "2023-04-08T14:06:05.277Z",
                                     "locale": "en"
                                 },
                                 {
@@ -2301,8 +2366,8 @@
                                     "title": "Terms and Conditions",
                                     "url": "/terms-and-conditions",
                                     "createdAt": "2023-06-08T05:19:32.927Z",
-                                    "updatedAt": "2023-06-08T05:20:16.484Z",
-                                    "publishedAt": "2023-05-04T13:38:22.465Z",
+                                    "updatedAt": "2023-06-25T17:46:40.441Z",
+                                    "publishedAt": "2023-05-04T10:38:22.465Z",
                                     "locale": "en"
                                 },
                                 {
@@ -2310,8 +2375,8 @@
                                     "title": "Not found page",
                                     "url": "/404",
                                     "createdAt": "2023-06-08T05:19:32.900Z",
-                                    "updatedAt": "2023-06-08T05:20:16.456Z",
-                                    "publishedAt": "2023-04-20T09:18:21.051Z",
+                                    "updatedAt": "2023-06-25T17:46:40.350Z",
+                                    "publishedAt": "2023-04-20T06:18:21.051Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2334,13 +2399,13 @@
                     "title": "This Is Modal",
                     "class_name": null,
                     "createdAt": "2023-06-08T05:19:35.862Z",
-                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                    "publishedAt": "2023-03-28T06:07:57.457Z",
                     "locale": "en",
                     "page_blocks": [
                         {
                             "__component": "page-blocks.hero-section-block",
-                            "id": 4,
+                            "id": 19,
                             "title": "This Is Modal",
                             "description": "With Page Blocks",
                             "variant": "simple-centered",
@@ -2359,8 +2424,8 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:32.951Z",
-                            "updatedAt": "2023-06-08T05:19:35.037Z",
-                            "publishedAt": "2023-04-08T10:04:56.606Z",
+                            "updatedAt": "2023-06-25T17:45:14.401Z",
+                            "publishedAt": "2023-04-08T07:04:56.606Z",
                             "locale": "en",
                             "sidebar": {
                                 "id": 1,
@@ -2370,8 +2435,8 @@
                                 "class_name": null,
                                 "side": "right",
                                 "createdAt": "2023-06-08T05:20:30.478Z",
-                                "updatedAt": "2023-06-08T05:20:30.478Z",
-                                "publishedAt": "2023-04-07T22:35:29.006Z",
+                                "updatedAt": "2023-06-25T17:47:26.597Z",
+                                "publishedAt": "2023-04-07T19:35:29.006Z",
                                 "locale": "en"
                             },
                             "topbar": null,
@@ -2382,20 +2447,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2408,8 +2473,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2422,8 +2487,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -2432,8 +2497,8 @@
                                     "title": "Page With Sidebar Layout",
                                     "url": "/page-with-sidebar-layout",
                                     "createdAt": "2023-06-08T05:19:32.833Z",
-                                    "updatedAt": "2023-06-08T05:20:16.409Z",
-                                    "publishedAt": "2023-04-08T18:00:14.519Z",
+                                    "updatedAt": "2023-06-25T17:46:40.396Z",
+                                    "publishedAt": "2023-04-08T15:00:14.519Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2448,8 +2513,8 @@
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
                             "createdAt": "2023-06-08T05:19:33.000Z",
-                            "updatedAt": "2023-06-08T05:19:35.068Z",
-                            "publishedAt": "2023-04-20T08:23:38.447Z",
+                            "updatedAt": "2023-06-25T17:45:14.460Z",
+                            "publishedAt": "2023-04-20T05:23:38.447Z",
                             "locale": "en",
                             "sidebar": null,
                             "topbar": null,
@@ -2460,20 +2525,20 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:34.741Z",
-                                "updatedAt": "2023-06-08T05:19:34.741Z",
-                                "publishedAt": "2023-05-04T08:25:15.030Z",
+                                "updatedAt": "2023-06-25T17:45:14.163Z",
+                                "publishedAt": "2023-05-04T05:25:15.030Z",
                                 "locale": "en"
                             },
                             "slide_overs": [
                                 {
-                                    "id": 1,
+                                    "id": 3,
                                     "variant": "right-side-half-width",
                                     "title": "This Is Slide Over",
                                     "uid": "this-is-slide-over",
-                                    "class_name": null,
-                                    "createdAt": "2023-06-08T05:20:30.595Z",
-                                    "updatedAt": "2023-06-08T05:20:30.595Z",
-                                    "publishedAt": "2023-04-07T21:54:17.781Z",
+                                    "class_name": "sps-lite-slide-over",
+                                    "createdAt": "2023-06-25T17:47:26.660Z",
+                                    "updatedAt": "2023-06-25T17:47:26.660Z",
+                                    "publishedAt": "2023-04-07T18:54:17.781Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2486,8 +2551,8 @@
                                     "title": "This Is Modal",
                                     "class_name": null,
                                     "createdAt": "2023-06-08T05:19:35.862Z",
-                                    "updatedAt": "2023-06-08T05:19:35.862Z",
-                                    "publishedAt": "2023-03-28T09:07:57.457Z",
+                                    "updatedAt": "2023-06-25T17:45:15.643Z",
+                                    "publishedAt": "2023-03-28T06:07:57.457Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2500,8 +2565,8 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-06-08T05:19:36.905Z",
-                                "updatedAt": "2023-06-08T05:19:36.905Z",
-                                "publishedAt": "2023-04-08T10:04:22.148Z",
+                                "updatedAt": "2023-06-25T17:45:17.249Z",
+                                "publishedAt": "2023-04-08T07:04:22.148Z",
                                 "locale": "en"
                             },
                             "pages": [
@@ -2510,8 +2575,8 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-06-08T05:19:25.363Z",
-                                    "updatedAt": "2023-06-08T05:20:16.347Z",
-                                    "publishedAt": "2023-04-08T17:06:05.277Z",
+                                    "updatedAt": "2023-06-25T17:46:40.284Z",
+                                    "publishedAt": "2023-04-08T14:06:05.277Z",
                                     "locale": "en"
                                 },
                                 {
@@ -2519,8 +2584,8 @@
                                     "title": "Terms and Conditions",
                                     "url": "/terms-and-conditions",
                                     "createdAt": "2023-06-08T05:19:32.927Z",
-                                    "updatedAt": "2023-06-08T05:20:16.484Z",
-                                    "publishedAt": "2023-05-04T13:38:22.465Z",
+                                    "updatedAt": "2023-06-25T17:46:40.441Z",
+                                    "publishedAt": "2023-05-04T10:38:22.465Z",
                                     "locale": "en"
                                 },
                                 {
@@ -2528,8 +2593,8 @@
                                     "title": "Not found page",
                                     "url": "/404",
                                     "createdAt": "2023-06-08T05:19:32.900Z",
-                                    "updatedAt": "2023-06-08T05:20:16.456Z",
-                                    "publishedAt": "2023-04-20T09:18:21.051Z",
+                                    "updatedAt": "2023-06-25T17:46:40.350Z",
+                                    "publishedAt": "2023-04-20T06:18:21.051Z",
                                     "locale": "en"
                                 }
                             ],
@@ -2552,24 +2617,24 @@
                 "position": "fixed",
                 "side": "top",
                 "createdAt": "2023-06-08T05:19:36.905Z",
-                "updatedAt": "2023-06-08T05:19:36.905Z",
-                "publishedAt": "2023-04-08T10:04:22.148Z",
+                "updatedAt": "2023-06-25T17:45:17.249Z",
+                "publishedAt": "2023-04-08T07:04:22.148Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.navbar-block",
-                        "id": 1,
+                        "id": 3,
                         "variant": "simple-links-on-left",
                         "description": null,
                         "class_name": null,
                         "logotype": {
-                            "id": 2,
+                            "id": 6,
                             "title": null,
                             "url": "/"
                         },
                         "buttons": [
                             {
-                                "id": 14,
+                                "id": 66,
                                 "url": "/",
                                 "description": null,
                                 "variant": "text",
@@ -2578,7 +2643,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 15,
+                                "id": 67,
                                 "url": "/page-with-sidebar-layout",
                                 "description": null,
                                 "variant": "text",
@@ -2587,7 +2652,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 17,
+                                "id": 69,
                                 "url": null,
                                 "description": null,
                                 "variant": "text",
@@ -2596,7 +2661,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 16,
+                                "id": 68,
                                 "url": "?opened_modal=this-is-modal",
                                 "description": null,
                                 "variant": "text",
@@ -2605,7 +2670,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 18,
+                                "id": 70,
                                 "url": "?opened_slide_over=this-is-slide-over",
                                 "description": null,
                                 "variant": "text",
@@ -2616,7 +2681,7 @@
                         ],
                         "additional_buttons": [
                             {
-                                "id": 19,
+                                "id": 71,
                                 "url": "https://github.com/singlepagestartup/sps-lite",
                                 "description": null,
                                 "variant": "secondary",
@@ -2625,7 +2690,7 @@
                                 "class_name": null
                             },
                             {
-                                "id": 20,
+                                "id": 72,
                                 "url": null,
                                 "description": null,
                                 "variant": "locale",
@@ -2645,8 +2710,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -2656,8 +2721,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -2668,20 +2733,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -2694,8 +2759,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -2708,8 +2773,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -2718,8 +2783,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -2734,8 +2799,8 @@
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
                         "createdAt": "2023-06-08T05:19:33.000Z",
-                        "updatedAt": "2023-06-08T05:19:35.068Z",
-                        "publishedAt": "2023-04-20T08:23:38.447Z",
+                        "updatedAt": "2023-06-25T17:45:14.460Z",
+                        "publishedAt": "2023-04-20T05:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
                         "topbar": null,
@@ -2746,20 +2811,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -2772,8 +2837,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -2786,8 +2851,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -2796,8 +2861,8 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-06-08T05:19:25.363Z",
-                                "updatedAt": "2023-06-08T05:20:16.347Z",
-                                "publishedAt": "2023-04-08T17:06:05.277Z",
+                                "updatedAt": "2023-06-25T17:46:40.284Z",
+                                "publishedAt": "2023-04-08T14:06:05.277Z",
                                 "locale": "en"
                             },
                             {
@@ -2805,8 +2870,8 @@
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
                                 "createdAt": "2023-06-08T05:19:32.927Z",
-                                "updatedAt": "2023-06-08T05:20:16.484Z",
-                                "publishedAt": "2023-05-04T13:38:22.465Z",
+                                "updatedAt": "2023-06-25T17:46:40.441Z",
+                                "publishedAt": "2023-05-04T10:38:22.465Z",
                                 "locale": "en"
                             },
                             {
@@ -2814,8 +2879,8 @@
                                 "title": "Not found page",
                                 "url": "/404",
                                 "createdAt": "2023-06-08T05:19:32.900Z",
-                                "updatedAt": "2023-06-08T05:20:16.456Z",
-                                "publishedAt": "2023-04-20T09:18:21.051Z",
+                                "updatedAt": "2023-06-25T17:46:40.350Z",
+                                "publishedAt": "2023-04-20T06:18:21.051Z",
                                 "locale": "en"
                             }
                         ],
@@ -2825,7 +2890,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$km70691TymghJRJD0KIbTu2D/ynnYvvOx4Vh4JAySfQt3YJxEpn5W",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-06-08T05:20:26.307Z",
+                    "updatedAt": "2023-06-08T05:20:26.307Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "pages": [
@@ -2834,8 +2925,8 @@
                     "title": "Page With Sidebar Layout",
                     "url": "/page-with-sidebar-layout",
                     "createdAt": "2023-06-08T05:19:32.833Z",
-                    "updatedAt": "2023-06-08T05:20:16.409Z",
-                    "publishedAt": "2023-04-08T18:00:14.519Z",
+                    "updatedAt": "2023-06-25T17:46:40.396Z",
+                    "publishedAt": "2023-04-08T15:00:14.519Z",
                     "locale": "en",
                     "layout": {
                         "id": 1,
@@ -2844,8 +2935,8 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-06-08T05:19:32.951Z",
-                        "updatedAt": "2023-06-08T05:19:35.037Z",
-                        "publishedAt": "2023-04-08T10:04:56.606Z",
+                        "updatedAt": "2023-06-25T17:45:14.401Z",
+                        "publishedAt": "2023-04-08T07:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
                             "id": 1,
@@ -2855,8 +2946,8 @@
                             "class_name": null,
                             "side": "right",
                             "createdAt": "2023-06-08T05:20:30.478Z",
-                            "updatedAt": "2023-06-08T05:20:30.478Z",
-                            "publishedAt": "2023-04-07T22:35:29.006Z",
+                            "updatedAt": "2023-06-25T17:47:26.597Z",
+                            "publishedAt": "2023-04-07T19:35:29.006Z",
                             "locale": "en"
                         },
                         "topbar": null,
@@ -2867,20 +2958,20 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-06-08T05:19:34.741Z",
-                            "updatedAt": "2023-06-08T05:19:34.741Z",
-                            "publishedAt": "2023-05-04T08:25:15.030Z",
+                            "updatedAt": "2023-06-25T17:45:14.163Z",
+                            "publishedAt": "2023-05-04T05:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 1,
+                                "id": 3,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
-                                "class_name": null,
-                                "createdAt": "2023-06-08T05:20:30.595Z",
-                                "updatedAt": "2023-06-08T05:20:30.595Z",
-                                "publishedAt": "2023-04-07T21:54:17.781Z",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2023-06-25T17:47:26.660Z",
+                                "updatedAt": "2023-06-25T17:47:26.660Z",
+                                "publishedAt": "2023-04-07T18:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
@@ -2893,8 +2984,8 @@
                                 "title": "This Is Modal",
                                 "class_name": null,
                                 "createdAt": "2023-06-08T05:19:35.862Z",
-                                "updatedAt": "2023-06-08T05:19:35.862Z",
-                                "publishedAt": "2023-03-28T09:07:57.457Z",
+                                "updatedAt": "2023-06-25T17:45:15.643Z",
+                                "publishedAt": "2023-03-28T06:07:57.457Z",
                                 "locale": "en"
                             }
                         ],
@@ -2907,8 +2998,8 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-06-08T05:19:36.905Z",
-                            "updatedAt": "2023-06-08T05:19:36.905Z",
-                            "publishedAt": "2023-04-08T10:04:22.148Z",
+                            "updatedAt": "2023-06-25T17:45:17.249Z",
+                            "publishedAt": "2023-04-08T07:04:22.148Z",
                             "locale": "en"
                         },
                         "pages": [
@@ -2917,8 +3008,8 @@
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
                                 "createdAt": "2023-06-08T05:19:32.833Z",
-                                "updatedAt": "2023-06-08T05:20:16.409Z",
-                                "publishedAt": "2023-04-08T18:00:14.519Z",
+                                "updatedAt": "2023-06-25T17:46:40.396Z",
+                                "publishedAt": "2023-04-08T15:00:14.519Z",
                                 "locale": "en"
                             }
                         ],
@@ -2929,7 +3020,7 @@
                     "page_blocks": [
                         {
                             "__component": "page-blocks.slider-block",
-                            "id": 2,
+                            "id": 6,
                             "variant": "simple",
                             "anchor": null,
                             "class_name": "pt-16",
@@ -2947,8 +3038,8 @@
                                 "title": "Features Slider",
                                 "uid": "features-slider",
                                 "createdAt": "2023-06-08T05:19:32.748Z",
-                                "updatedAt": "2023-06-08T05:20:37.248Z",
-                                "publishedAt": "2023-03-28T08:46:50.780Z",
+                                "updatedAt": "2023-06-25T17:47:44.544Z",
+                                "publishedAt": "2023-03-28T05:46:50.780Z",
                                 "locale": "en"
                             }
                         }
@@ -2967,35 +3058,35 @@
     "page_blocks": [
         {
             "__component": "page-blocks.footer-block",
-            "id": 1,
+            "id": 3,
             "copyrights": "2023 Single Page Startup",
             "description": "The fastest way to develop your startup",
             "variant": "four-columns-with-company-mission",
             "class_name": null,
             "logotype": {
-                "id": 1,
+                "id": 5,
                 "title": null,
                 "url": "/",
                 "media": [
                     {
-                        "id": 23,
+                        "id": 130,
                         "name": "sps-full dark.svg",
                         "alternativeText": null,
                         "caption": null,
                         "width": 4725,
                         "height": 729,
                         "formats": null,
-                        "hash": "sps_full_dark_3840d3cea3",
+                        "hash": "sps_full_dark_fe0ed18664",
                         "ext": ".svg",
                         "mime": "image/svg+xml",
                         "size": 16.9,
-                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/sps_full_dark_3840d3cea3.svg",
+                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/sps_full_dark_fe0ed18664.svg",
                         "previewUrl": null,
                         "provider": "aws-s3",
                         "provider_metadata": null,
                         "folderPath": "/",
-                        "createdAt": "2023-06-08T05:19:33.859Z",
-                        "updatedAt": "2023-06-08T05:19:33.859Z",
+                        "createdAt": "2023-06-25T17:45:12.866Z",
+                        "updatedAt": "2023-06-25T17:45:12.866Z",
                         "folder": null
                     }
                 ],
@@ -3003,7 +3094,7 @@
             },
             "buttons_arrays": [
                 {
-                    "id": 2,
+                    "id": 10,
                     "title": "Pages",
                     "class_name": null,
                     "variant": "column-with-title",
@@ -3012,7 +3103,7 @@
                     "additional_attributes": null,
                     "buttons": [
                         {
-                            "id": 7,
+                            "id": 59,
                             "url": "/page-with-sidebar-layout",
                             "description": null,
                             "variant": "text",
@@ -3024,7 +3115,7 @@
                             "flyout": null
                         },
                         {
-                            "id": 8,
+                            "id": 61,
                             "url": "/terms-and-conditions",
                             "description": null,
                             "variant": "text",
@@ -3040,7 +3131,7 @@
                     "additional_media": null
                 },
                 {
-                    "id": 1,
+                    "id": 9,
                     "title": "Links",
                     "class_name": null,
                     "variant": "column-with-title",
@@ -3049,7 +3140,7 @@
                     "additional_attributes": null,
                     "buttons": [
                         {
-                            "id": 9,
+                            "id": 62,
                             "url": "https://github.com/singlepagestartup/sps-lite",
                             "description": null,
                             "variant": "text",
@@ -3061,7 +3152,7 @@
                             "flyout": null
                         },
                         {
-                            "id": 10,
+                            "id": 60,
                             "url": "https://doc.singlepagestartup.com/",
                             "description": null,
                             "variant": "text",
@@ -3079,7 +3170,7 @@
             ],
             "additional_buttons_arrays": [
                 {
-                    "id": 3,
+                    "id": 11,
                     "title": null,
                     "class_name": null,
                     "variant": "row",
@@ -3088,7 +3179,7 @@
                     "additional_attributes": null,
                     "buttons": [
                         {
-                            "id": 11,
+                            "id": 63,
                             "url": "/terms-and-conditions",
                             "description": null,
                             "variant": "text",
@@ -3106,7 +3197,7 @@
             ],
             "extra_buttons_arrays": [
                 {
-                    "id": 4,
+                    "id": 12,
                     "title": null,
                     "class_name": null,
                     "variant": "row",
@@ -3115,7 +3206,7 @@
                     "additional_attributes": null,
                     "buttons": [
                         {
-                            "id": 12,
+                            "id": 64,
                             "url": "https://github.com/singlepagestartup/sps-lite",
                             "description": null,
                             "variant": "text",
@@ -3124,24 +3215,24 @@
                             "class_name": null,
                             "media": [
                                 {
-                                    "id": 24,
+                                    "id": 131,
                                     "name": "github.svg",
                                     "alternativeText": null,
                                     "caption": null,
                                     "width": 100,
                                     "height": 100,
                                     "formats": null,
-                                    "hash": "github_f378d045b5",
+                                    "hash": "github_791192c41e",
                                     "ext": ".svg",
                                     "mime": "image/svg+xml",
                                     "size": 1.37,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/github_f378d045b5.svg",
+                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/github_791192c41e.svg",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-06-08T05:19:34.533Z",
-                                    "updatedAt": "2023-06-08T05:19:34.533Z",
+                                    "createdAt": "2023-06-25T17:45:13.912Z",
+                                    "updatedAt": "2023-06-25T17:45:13.912Z",
                                     "folder": null
                                 }
                             ],

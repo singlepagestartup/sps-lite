@@ -6,11 +6,11 @@
     "subtitle": "EduSphere, Founder & CEO",
     "rating": 5,
     "createdAt": "2023-06-08T05:19:24.911Z",
-    "updatedAt": "2023-06-08T05:20:30.363Z",
-    "publishedAt": "2023-03-12T09:34:27.387Z",
+    "updatedAt": "2023-06-25T17:46:42.418Z",
+    "publishedAt": "2023-03-12T06:34:27.387Z",
     "media": [
         {
-            "id": 45,
+            "id": 148,
             "name": "pexels-karolina-grabowska-5882683.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
-                    "hash": "large_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_0adcb73ae0.jpg",
+                    "hash": "large_pexels_karolina_grabowska_5882683_0adcb73ae0",
                     "mime": "image/jpeg",
                     "name": "large_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
-                    "hash": "small_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_0adcb73ae0.jpg",
+                    "hash": "small_pexels_karolina_grabowska_5882683_0adcb73ae0",
                     "mime": "image/jpeg",
                     "name": "small_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
-                    "hash": "medium_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_0adcb73ae0.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_5882683_0adcb73ae0",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_692a4459ec.jpg",
-                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_692a4459ec",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_0adcb73ae0.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_0adcb73ae0",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_karolina_grabowska_5882683_692a4459ec",
+            "hash": "pexels_karolina_grabowska_5882683_0adcb73ae0",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 109.43,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_692a4459ec.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_0adcb73ae0.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-08T05:20:30.324Z",
-            "updatedAt": "2023-06-08T05:20:30.324Z",
+            "createdAt": "2023-06-25T17:46:42.372Z",
+            "updatedAt": "2023-06-25T17:46:42.372Z",
             "folder": null
         }
     ],

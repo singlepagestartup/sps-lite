@@ -1,0 +1,158 @@
+{
+    "id": 2,
+    "theme": {
+        "colors": {
+            "primary": {
+                "50": "#FFF9CC",
+                "300": "#FFF297",
+                "400": "#FFDF01",
+                "500": "#FFCF01",
+                "600": "#FFC501",
+                "700": "#FFB201",
+                "900": "#FFA101"
+            }
+        }
+    },
+    "createdAt": "2023-06-25T17:47:57.451Z",
+    "updatedAt": "2023-06-25T17:47:57.451Z",
+    "publishedAt": "2023-02-13T18:01:44.156Z",
+    "fonts": [
+        {
+            "id": 6,
+            "weight": "medium",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 156,
+                "name": "montserrat-medium.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_medium_eb5e9fc529",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.1,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_medium_eb5e9fc529.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-06-25T17:47:47.038Z",
+                "updatedAt": "2023-06-25T17:47:47.038Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 8,
+            "weight": "light",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 157,
+                "name": "montserrat-light.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_light_54420f1273",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.07,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_light_54420f1273.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-06-25T17:47:49.504Z",
+                "updatedAt": "2023-06-25T17:47:49.504Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 7,
+            "weight": "semi_bold",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 158,
+                "name": "montserrat-semibold.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_semibold_c81f723dc4",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.2,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_semibold_c81f723dc4.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-06-25T17:47:52.789Z",
+                "updatedAt": "2023-06-25T17:47:52.789Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 9,
+            "weight": "regular",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 159,
+                "name": "montserrat-regular.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_regular_8773ea3e53",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 197.98,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_regular_8773ea3e53.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-06-25T17:47:55.006Z",
+                "updatedAt": "2023-06-25T17:47:55.006Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 10,
+            "weight": "bold",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 160,
+                "name": "montserrat-bold.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_bold_a1ab1142fa",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.07,
+                "url": "https://721511.selcdn.ru/sps-lite-rogwild/montserrat_bold_a1ab1142fa.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2023-06-25T17:47:57.373Z",
+                "updatedAt": "2023-06-25T17:47:57.373Z",
+                "folder": null
+            }
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null
+}

@@ -1,21 +1,23 @@
 {
     "id": 1,
-    "variant": "simple",
-    "title": "Locales Flyout",
-    "uid": "locales-flyout",
+    "title": "Public Page Topbar",
+    "uid": "public-page-topbar",
+    "variant": "boxed",
     "class_name": null,
-    "createdAt": "2023-06-08T05:18:29.133Z",
-    "updatedAt": "2023-06-25T17:42:58.666Z",
-    "publishedAt": "2023-05-11T18:28:36.473Z",
+    "position": "fixed",
+    "side": "top",
+    "createdAt": "2023-06-25T17:37:10.792Z",
+    "updatedAt": "2023-06-25T17:47:57.693Z",
+    "publishedAt": "2023-04-08T08:35:32.350Z",
     "locale": "en",
     "page_blocks": [
         {
             "__component": "elements.button",
-            "id": 53,
-            "url": "/en",
+            "id": 77,
+            "url": "/",
             "description": null,
-            "variant": "text",
-            "title": "EN (English)",
+            "variant": "primary",
+            "title": "Main page",
             "additional_attributes": null,
             "class_name": null,
             "media": null,
@@ -23,6 +25,7 @@
             "flyout": null
         }
     ],
+    "layouts": [],
     "createdBy": null,
     "updatedBy": null,
     "localizations": []
