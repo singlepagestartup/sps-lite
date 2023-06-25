@@ -6,12 +6,12 @@
     "uid": "question",
     "title": "Есть вопросы по продукту?",
     "createdAt": "2023-06-08T05:19:25.251Z",
-    "updatedAt": "2023-06-25T17:45:14.345Z",
+    "updatedAt": "2023-06-25T20:34:52.312Z",
     "publishedAt": "2023-02-14T17:44:48.245Z",
     "locale": "en",
     "inputs": [
         {
-            "id": 46,
+            "id": 82,
             "placeholder": "Type your name",
             "variant": "text",
             "is_required": true,
@@ -30,7 +30,7 @@
             "extra_media": null
         },
         {
-            "id": 48,
+            "id": 84,
             "placeholder": "Type your email",
             "variant": "text",
             "is_required": true,
@@ -49,7 +49,7 @@
             "extra_media": null
         },
         {
-            "id": 54,
+            "id": 89,
             "placeholder": "Choose target tier",
             "variant": "listbox",
             "is_required": false,
@@ -64,14 +64,14 @@
             "step": null,
             "options": [
                 {
-                    "id": 27,
+                    "id": 43,
                     "title": "Lite",
                     "description": null,
                     "media": null,
                     "additional_media": null
                 },
                 {
-                    "id": 28,
+                    "id": 44,
                     "title": "Pro",
                     "description": null,
                     "media": null,
@@ -83,7 +83,7 @@
             "extra_media": null
         },
         {
-            "id": 53,
+            "id": 90,
             "placeholder": "Select hosting type",
             "variant": "radio-group",
             "is_required": false,
@@ -98,14 +98,14 @@
             "step": null,
             "options": [
                 {
-                    "id": 29,
+                    "id": 45,
                     "title": "Yes",
                     "description": null,
                     "media": null,
                     "additional_media": null
                 },
                 {
-                    "id": 30,
+                    "id": 46,
                     "title": "No",
                     "description": null,
                     "media": null,
@@ -117,7 +117,7 @@
             "extra_media": null
         },
         {
-            "id": 47,
+            "id": 83,
             "placeholder": "Monthly visitors",
             "variant": "range",
             "is_required": false,
@@ -136,7 +136,7 @@
             "extra_media": null
         },
         {
-            "id": 51,
+            "id": 87,
             "placeholder": "Type your question",
             "variant": "text",
             "is_required": false,
@@ -155,7 +155,7 @@
             "extra_media": null
         },
         {
-            "id": 50,
+            "id": 86,
             "placeholder": "Select release date",
             "variant": "date",
             "is_required": false,
@@ -174,7 +174,7 @@
             "extra_media": null
         },
         {
-            "id": 49,
+            "id": 85,
             "placeholder": "Upload design file",
             "variant": "file",
             "is_required": false,
@@ -193,7 +193,7 @@
             "extra_media": null
         },
         {
-            "id": 52,
+            "id": 88,
             "placeholder": null,
             "variant": "switch",
             "is_required": true,
@@ -213,7 +213,7 @@
         }
     ],
     "button": {
-        "id": 65,
+        "id": 118,
         "url": null,
         "description": null,
         "variant": "primary",
@@ -360,12 +360,12 @@
                 "uid": "question",
                 "title": "Есть вопросы по продукту?",
                 "createdAt": "2023-06-08T05:19:25.251Z",
-                "updatedAt": "2023-06-25T17:45:14.345Z",
+                "updatedAt": "2023-06-25T20:34:52.312Z",
                 "publishedAt": "2023-02-14T17:44:48.245Z",
                 "locale": "en",
                 "inputs": [
                     {
-                        "id": 46,
+                        "id": 82,
                         "placeholder": "Type your name",
                         "variant": "text",
                         "is_required": true,
@@ -384,7 +384,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 48,
+                        "id": 84,
                         "placeholder": "Type your email",
                         "variant": "text",
                         "is_required": true,
@@ -403,7 +403,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 54,
+                        "id": 89,
                         "placeholder": "Choose target tier",
                         "variant": "listbox",
                         "is_required": false,
@@ -418,12 +418,12 @@
                         "step": null,
                         "options": [
                             {
-                                "id": 27,
+                                "id": 43,
                                 "title": "Lite",
                                 "description": null
                             },
                             {
-                                "id": 28,
+                                "id": 44,
                                 "title": "Pro",
                                 "description": null
                             }
@@ -433,7 +433,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 53,
+                        "id": 90,
                         "placeholder": "Select hosting type",
                         "variant": "radio-group",
                         "is_required": false,
@@ -448,12 +448,12 @@
                         "step": null,
                         "options": [
                             {
-                                "id": 29,
+                                "id": 45,
                                 "title": "Yes",
                                 "description": null
                             },
                             {
-                                "id": 30,
+                                "id": 46,
                                 "title": "No",
                                 "description": null
                             }
@@ -463,7 +463,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 47,
+                        "id": 83,
                         "placeholder": "Monthly visitors",
                         "variant": "range",
                         "is_required": false,
@@ -482,7 +482,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 51,
+                        "id": 87,
                         "placeholder": "Type your question",
                         "variant": "text",
                         "is_required": false,
@@ -501,7 +501,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 50,
+                        "id": 86,
                         "placeholder": "Select release date",
                         "variant": "date",
                         "is_required": false,
@@ -520,7 +520,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 49,
+                        "id": 85,
                         "placeholder": "Upload design file",
                         "variant": "file",
                         "is_required": false,
@@ -539,7 +539,7 @@
                         "extra_media": null
                     },
                     {
-                        "id": 52,
+                        "id": 88,
                         "placeholder": null,
                         "variant": "switch",
                         "is_required": true,
@@ -559,7 +559,7 @@
                     }
                 ],
                 "button": {
-                    "id": 65,
+                    "id": 118,
                     "url": null,
                     "description": null,
                     "variant": "primary",
@@ -658,7 +658,7 @@
                             "uid": "question",
                             "title": "Есть вопросы по продукту?",
                             "createdAt": "2023-06-08T05:19:25.251Z",
-                            "updatedAt": "2023-06-25T17:45:14.345Z",
+                            "updatedAt": "2023-06-25T20:34:52.312Z",
                             "publishedAt": "2023-02-14T17:44:48.245Z",
                             "locale": "en"
                         },
@@ -668,12 +668,12 @@
                 ],
                 "side_effects": [
                     {
-                        "id": 6,
+                        "id": 10,
                         "type": "send-to-recievers",
                         "provider": "email",
                         "recievers": [
                             {
-                                "id": 6,
+                                "id": 10,
                                 "identifier": "rogwild.design@gmail.com"
                             }
                         ]
@@ -715,12 +715,12 @@
     ],
     "side_effects": [
         {
-            "id": 6,
+            "id": 10,
             "type": "send-to-recievers",
             "provider": "email",
             "recievers": [
                 {
-                    "id": 6,
+                    "id": 10,
                     "identifier": "rogwild.design@gmail.com",
                     "admin": null,
                     "user": null
@@ -2466,1508 +2466,7 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 255,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::sidebar.sidebar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.232Z",
-                        "updatedAt": "2023-06-25T11:38:30.232Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 266,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::metatag.metatag",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.245Z",
-                        "updatedAt": "2023-06-25T11:38:30.245Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 206,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.variant",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.options.media",
-                                "inputs.options.additional_media",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "inputs.min",
-                                "inputs.max",
-                                "inputs.step",
-                                "inputs.media",
-                                "inputs.additional_media",
-                                "inputs.extra_media",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.251Z",
-                        "updatedAt": "2023-06-25T11:38:30.251Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 268,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::navbar.navbar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.257Z",
-                        "updatedAt": "2023-06-25T11:38:30.257Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 237,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.262Z",
-                        "updatedAt": "2023-06-25T11:38:30.262Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 212,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::page.page",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "url",
-                                "layout",
-                                "page_blocks",
-                                "metatag"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.267Z",
-                        "updatedAt": "2023-06-25T11:38:30.267Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 236,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::slide-over.slide-over",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "title",
-                                "uid",
-                                "class_name",
-                                "page_blocks",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.272Z",
-                        "updatedAt": "2023-06-25T11:38:30.272Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 185,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::footer.footer",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "layouts",
-                                "page_blocks",
-                                "variant",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.277Z",
-                        "updatedAt": "2023-06-25T11:38:30.277Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 216,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::slide-over.slide-over",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "title",
-                                "uid",
-                                "class_name",
-                                "page_blocks",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.286Z",
-                        "updatedAt": "2023-06-25T11:38:30.286Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 271,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::sidebar.sidebar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.291Z",
-                        "updatedAt": "2023-06-25T11:38:30.291Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 239,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.296Z",
-                        "updatedAt": "2023-06-25T11:38:30.296Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 263,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::footer.footer",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.301Z",
-                        "updatedAt": "2023-06-25T11:38:30.301Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 200,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::topbar.topbar",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "variant",
-                                "page_blocks",
-                                "layouts",
-                                "class_name",
-                                "position",
-                                "side"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.307Z",
-                        "updatedAt": "2023-06-25T11:38:30.307Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 257,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.314Z",
-                        "updatedAt": "2023-06-25T11:38:30.314Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 240,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::topbar.topbar",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "variant",
-                                "page_blocks",
-                                "layouts",
-                                "class_name",
-                                "position",
-                                "side"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.319Z",
-                        "updatedAt": "2023-06-25T11:38:30.319Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 184,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::flyout.flyout",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.323Z",
-                        "updatedAt": "2023-06-25T11:38:30.323Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 248,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::layout.layout",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.328Z",
-                        "updatedAt": "2023-06-25T11:38:30.328Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 223,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::currency.currency",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "unicode",
-                                "is_default",
-                                "tiers"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.333Z",
-                        "updatedAt": "2023-06-25T11:38:30.333Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 189,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::metatag.metatag",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "script",
-                                "gtm_key",
-                                "favicon",
-                                "pages",
-                                "is_default"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.338Z",
-                        "updatedAt": "2023-06-25T11:38:30.338Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 224,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::flyout.flyout",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.343Z",
-                        "updatedAt": "2023-06-25T11:38:30.343Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 275,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.348Z",
-                        "updatedAt": "2023-06-25T11:38:30.348Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 264,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.353Z",
-                        "updatedAt": "2023-06-25T11:38:30.353Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 205,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::footer.footer",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "layouts",
-                                "page_blocks",
-                                "variant",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.359Z",
-                        "updatedAt": "2023-06-25T11:38:30.359Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 220,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::topbar.topbar",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "variant",
-                                "page_blocks",
-                                "layouts",
-                                "class_name",
-                                "position",
-                                "side"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.364Z",
-                        "updatedAt": "2023-06-25T11:38:30.364Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 272,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::slide-over.slide-over",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.369Z",
-                        "updatedAt": "2023-06-25T11:38:30.369Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 209,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::metatag.metatag",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "script",
-                                "gtm_key",
-                                "favicon",
-                                "pages",
-                                "is_default"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.374Z",
-                        "updatedAt": "2023-06-25T11:38:30.374Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 232,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::page.page",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "url",
-                                "layout",
-                                "page_blocks",
-                                "metatag"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.379Z",
-                        "updatedAt": "2023-06-25T11:38:30.379Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 215,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::sidebar.sidebar",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "title",
-                                "uid",
-                                "page_blocks",
-                                "class_name",
-                                "layouts",
-                                "side"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.385Z",
-                        "updatedAt": "2023-06-25T11:38:30.385Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 208,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::layout.layout",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "sidebar",
-                                "variant",
-                                "topbar",
-                                "footer",
-                                "slide_overs",
-                                "modals",
-                                "navbar",
-                                "class_name",
-                                "pages"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.390Z",
-                        "updatedAt": "2023-06-25T11:38:30.390Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 261,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::currency.currency",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.395Z",
-                        "updatedAt": "2023-06-25T11:38:30.395Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 211,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::navbar.navbar",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "page_blocks",
-                                "variant",
-                                "class_name",
-                                "layouts",
-                                "position",
-                                "side"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.400Z",
-                        "updatedAt": "2023-06-25T11:38:30.400Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 199,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::tier.tier",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "description",
-                                "price",
-                                "currency",
-                                "type",
-                                "period",
-                                "features.media",
-                                "features.description",
-                                "features.additional_media",
-                                "features.title",
-                                "features.subtitle",
-                                "old_price",
-                                "buttons.url",
-                                "buttons.media",
-                                "buttons.description",
-                                "buttons.variant",
-                                "buttons.additional_media",
-                                "buttons.title",
-                                "buttons.additional_attributes",
-                                "buttons.class_name",
-                                "buttons.flyout"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.404Z",
-                        "updatedAt": "2023-06-25T11:38:30.404Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 192,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::page.page",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "url",
-                                "layout",
-                                "page_blocks",
-                                "metatag"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.410Z",
-                        "updatedAt": "2023-06-25T11:38:30.410Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 265,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::layout.layout",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.415Z",
-                        "updatedAt": "2023-06-25T11:38:30.415Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 260,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::topbar.topbar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.419Z",
-                        "updatedAt": "2023-06-25T11:38:30.419Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 183,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::currency.currency",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "unicode",
-                                "is_default",
-                                "tiers"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.424Z",
-                        "updatedAt": "2023-06-25T11:38:30.424Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 196,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::slide-over.slide-over",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "title",
-                                "uid",
-                                "class_name",
-                                "page_blocks",
-                                "layouts"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.429Z",
-                        "updatedAt": "2023-06-25T11:38:30.429Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 246,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.434Z",
-                        "updatedAt": "2023-06-25T11:38:30.434Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 250,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.439Z",
-                        "updatedAt": "2023-06-25T11:38:30.439Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 217,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "slides.title",
-                                "slides.description",
-                                "slides.subtitle",
-                                "slides.media",
-                                "slides.buttons.url",
-                                "slides.buttons.media",
-                                "slides.buttons.description",
-                                "slides.buttons.variant",
-                                "slides.buttons.additional_media",
-                                "slides.buttons.title",
-                                "slides.buttons.additional_attributes",
-                                "slides.buttons.class_name",
-                                "slides.buttons.flyout",
-                                "slides.additional_media",
-                                "show_backdrop",
-                                "show_full_screen",
-                                "show_previews",
-                                "class_name",
-                                "aspect_ratio_class_name",
-                                "title",
-                                "uid"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.445Z",
-                        "updatedAt": "2023-06-25T11:38:30.445Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 256,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::slide-over.slide-over",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.449Z",
-                        "updatedAt": "2023-06-25T11:38:30.449Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 186,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::form.form",
-                        "properties": {
-                            "fields": [
-                                "inputs.placeholder",
-                                "inputs.variant",
-                                "inputs.is_required",
-                                "inputs.value",
-                                "inputs.name",
-                                "inputs.options.title",
-                                "inputs.options.description",
-                                "inputs.options.media",
-                                "inputs.options.additional_media",
-                                "inputs.label",
-                                "inputs.class_name",
-                                "inputs.type",
-                                "inputs.multiple",
-                                "inputs.min",
-                                "inputs.max",
-                                "inputs.step",
-                                "inputs.media",
-                                "inputs.additional_media",
-                                "inputs.extra_media",
-                                "class_name",
-                                "additional_attributes",
-                                "variant",
-                                "button.url",
-                                "button.media",
-                                "button.description",
-                                "button.variant",
-                                "button.additional_media",
-                                "button.title",
-                                "button.additional_attributes",
-                                "button.class_name",
-                                "button.flyout",
-                                "form_requests",
-                                "uid",
-                                "side_effects.type",
-                                "side_effects.recievers.identifier",
-                                "side_effects.recievers.admin",
-                                "side_effects.recievers.user",
-                                "side_effects.provider",
-                                "title"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.454Z",
-                        "updatedAt": "2023-06-25T11:38:30.454Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 243,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::currency.currency",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.459Z",
-                        "updatedAt": "2023-06-25T11:38:30.459Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 230,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.465Z",
-                        "updatedAt": "2023-06-25T11:38:30.465Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 251,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::navbar.navbar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.473Z",
-                        "updatedAt": "2023-06-25T11:38:30.473Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 225,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::footer.footer",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "layouts",
-                                "page_blocks",
-                                "variant",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.477Z",
-                        "updatedAt": "2023-06-25T11:38:30.477Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 228,
-                        "action": "plugin::content-manager.explorer.update",
-                        "subject": "api::layout.layout",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "sidebar",
-                                "variant",
-                                "topbar",
-                                "footer",
-                                "slide_overs",
-                                "modals",
-                                "navbar",
-                                "class_name",
-                                "pages"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.482Z",
-                        "updatedAt": "2023-06-25T11:38:30.482Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 229,
+                        "id": 576,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::metatag.metatag",
                         "properties": {
@@ -3981,13 +2480,12 @@
                                 "is_default"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.487Z",
-                        "updatedAt": "2023-06-25T11:38:30.487Z",
+                        "createdAt": "2023-06-25T21:17:03.552Z",
+                        "updatedAt": "2023-06-25T21:17:03.552Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4000,119 +2498,7 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 273,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::slider.slider",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.491Z",
-                        "updatedAt": "2023-06-25T11:38:30.491Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 210,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "fields": [
-                                "uid",
-                                "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
-                                "layouts",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.496Z",
-                        "updatedAt": "2023-06-25T11:38:30.496Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 269,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::page.page",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.501Z",
-                        "updatedAt": "2023-06-25T11:38:30.501Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 204,
-                        "action": "plugin::content-manager.explorer.read",
-                        "subject": "api::flyout.flyout",
-                        "properties": {
-                            "fields": [
-                                "variant",
-                                "page_blocks",
-                                "title",
-                                "uid",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.506Z",
-                        "updatedAt": "2023-06-25T11:38:30.506Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 226,
+                        "id": 574,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::form.form",
                         "properties": {
@@ -4158,13 +2544,12 @@
                                 "title"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.511Z",
-                        "updatedAt": "2023-06-25T11:38:30.511Z",
+                        "createdAt": "2023-06-25T21:17:03.560Z",
+                        "updatedAt": "2023-06-25T21:17:03.560Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4177,146 +2562,27 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 252,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::page.page",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.516Z",
-                        "updatedAt": "2023-06-25T11:38:30.516Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 245,
-                        "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::footer.footer",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.521Z",
-                        "updatedAt": "2023-06-25T11:38:30.521Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 190,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::modal.modal",
+                        "id": 570,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::topbar.topbar",
                         "properties": {
                             "fields": [
+                                "title",
                                 "uid",
+                                "variant",
                                 "page_blocks",
-                                "dialog_panel_class_name",
-                                "variant",
-                                "title",
                                 "layouts",
-                                "class_name"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.525Z",
-                        "updatedAt": "2023-06-25T11:38:30.525Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 188,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::layout.layout",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "sidebar",
-                                "variant",
-                                "topbar",
-                                "footer",
-                                "slide_overs",
-                                "modals",
-                                "navbar",
                                 "class_name",
-                                "pages"
-                            ],
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.530Z",
-                        "updatedAt": "2023-06-25T11:38:30.530Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 191,
-                        "action": "plugin::content-manager.explorer.create",
-                        "subject": "api::navbar.navbar",
-                        "properties": {
-                            "fields": [
-                                "title",
-                                "uid",
-                                "page_blocks",
-                                "variant",
-                                "class_name",
-                                "layouts",
                                 "position",
                                 "side"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.535Z",
-                        "updatedAt": "2023-06-25T11:38:30.535Z",
+                        "createdAt": "2023-06-25T21:17:03.565Z",
+                        "updatedAt": "2023-06-25T21:17:03.565Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4329,56 +2595,8 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 276,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::topbar.topbar",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.539Z",
-                        "updatedAt": "2023-06-25T11:38:30.539Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 267,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::modal.modal",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.544Z",
-                        "updatedAt": "2023-06-25T11:38:30.544Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 219,
-                        "action": "plugin::content-manager.explorer.read",
+                        "id": 583,
+                        "action": "plugin::content-manager.explorer.update",
                         "subject": "api::tier.tier",
                         "properties": {
                             "fields": [
@@ -4405,13 +2623,12 @@
                                 "buttons.flyout"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.549Z",
-                        "updatedAt": "2023-06-25T11:38:30.549Z",
+                        "createdAt": "2023-06-25T21:17:03.571Z",
+                        "updatedAt": "2023-06-25T21:17:03.571Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4424,7 +2641,803 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 197,
+                        "id": 567,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.577Z",
+                        "updatedAt": "2023-06-25T21:17:03.577Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 546,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.variant",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.options.media",
+                                "inputs.options.additional_media",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "inputs.min",
+                                "inputs.max",
+                                "inputs.step",
+                                "inputs.media",
+                                "inputs.additional_media",
+                                "inputs.extra_media",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.583Z",
+                        "updatedAt": "2023-06-25T21:17:03.583Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 606,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.589Z",
+                        "updatedAt": "2023-06-25T21:17:03.589Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 547,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.595Z",
+                        "updatedAt": "2023-06-25T21:17:03.595Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 599,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.601Z",
+                        "updatedAt": "2023-06-25T21:17:03.601Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 582,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.606Z",
+                        "updatedAt": "2023-06-25T21:17:03.606Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 548,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "script",
+                                "gtm_key",
+                                "favicon",
+                                "pages",
+                                "is_default"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.612Z",
+                        "updatedAt": "2023-06-25T21:17:03.612Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 579,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.619Z",
+                        "updatedAt": "2023-06-25T21:17:03.619Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 588,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.626Z",
+                        "updatedAt": "2023-06-25T21:17:03.626Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 605,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.632Z",
+                        "updatedAt": "2023-06-25T21:17:03.632Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 607,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.638Z",
+                        "updatedAt": "2023-06-25T21:17:03.638Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 585,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.644Z",
+                        "updatedAt": "2023-06-25T21:17:03.644Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 597,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.650Z",
+                        "updatedAt": "2023-06-25T21:17:03.650Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 604,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.656Z",
+                        "updatedAt": "2023-06-25T21:17:03.656Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 594,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.663Z",
+                        "updatedAt": "2023-06-25T21:17:03.663Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 595,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.670Z",
+                        "updatedAt": "2023-06-25T21:17:03.670Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 611,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.678Z",
+                        "updatedAt": "2023-06-25T21:17:03.678Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 553,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.685Z",
+                        "updatedAt": "2023-06-25T21:17:03.685Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 566,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "class_name",
+                                "layouts",
+                                "side"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.696Z",
+                        "updatedAt": "2023-06-25T21:17:03.696Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 591,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.703Z",
+                        "updatedAt": "2023-06-25T21:17:03.703Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 601,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.711Z",
+                        "updatedAt": "2023-06-25T21:17:03.711Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 549,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.719Z",
+                        "updatedAt": "2023-06-25T21:17:03.719Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 610,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.727Z",
+                        "updatedAt": "2023-06-25T21:17:03.727Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 571,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "unicode",
+                                "is_default",
+                                "tiers"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.734Z",
+                        "updatedAt": "2023-06-25T21:17:03.734Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 586,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.742Z",
+                        "updatedAt": "2023-06-25T21:17:03.742Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 612,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.750Z",
+                        "updatedAt": "2023-06-25T21:17:03.750Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 560,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "fields": [
+                                "inputs.placeholder",
+                                "inputs.variant",
+                                "inputs.is_required",
+                                "inputs.value",
+                                "inputs.name",
+                                "inputs.options.title",
+                                "inputs.options.description",
+                                "inputs.options.media",
+                                "inputs.options.additional_media",
+                                "inputs.label",
+                                "inputs.class_name",
+                                "inputs.type",
+                                "inputs.multiple",
+                                "inputs.min",
+                                "inputs.max",
+                                "inputs.step",
+                                "inputs.media",
+                                "inputs.additional_media",
+                                "inputs.extra_media",
+                                "class_name",
+                                "additional_attributes",
+                                "variant",
+                                "button.url",
+                                "button.media",
+                                "button.description",
+                                "button.variant",
+                                "button.additional_media",
+                                "button.title",
+                                "button.additional_attributes",
+                                "button.class_name",
+                                "button.flyout",
+                                "form_requests",
+                                "uid",
+                                "side_effects.type",
+                                "side_effects.recievers.identifier",
+                                "side_effects.recievers.admin",
+                                "side_effects.recievers.user",
+                                "side_effects.provider",
+                                "title"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.758Z",
+                        "updatedAt": "2023-06-25T21:17:03.758Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 554,
                         "action": "plugin::content-manager.explorer.create",
                         "subject": "api::slider.slider",
                         "properties": {
@@ -4453,13 +3466,12 @@
                                 "uid"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.553Z",
-                        "updatedAt": "2023-06-25T11:38:30.553Z",
+                        "createdAt": "2023-06-25T21:17:03.765Z",
+                        "updatedAt": "2023-06-25T21:17:03.765Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4472,18 +3484,17 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 244,
+                        "id": 598,
                         "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::flyout.flyout",
+                        "subject": "api::topbar.topbar",
                         "properties": {
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.559Z",
-                        "updatedAt": "2023-06-25T11:38:30.559Z",
+                        "createdAt": "2023-06-25T21:17:03.777Z",
+                        "updatedAt": "2023-06-25T21:17:03.777Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4496,8 +3507,232 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 195,
+                        "id": 563,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.785Z",
+                        "updatedAt": "2023-06-25T21:17:03.785Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 544,
                         "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.792Z",
+                        "updatedAt": "2023-06-25T21:17:03.792Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 551,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.798Z",
+                        "updatedAt": "2023-06-25T21:17:03.798Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 562,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::metatag.metatag",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "script",
+                                "gtm_key",
+                                "favicon",
+                                "pages",
+                                "is_default"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.805Z",
+                        "updatedAt": "2023-06-25T21:17:03.805Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 573,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.812Z",
+                        "updatedAt": "2023-06-25T21:17:03.812Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 587,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.819Z",
+                        "updatedAt": "2023-06-25T21:17:03.819Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 608,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::sidebar.sidebar",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.825Z",
+                        "updatedAt": "2023-06-25T21:17:03.825Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 596,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.832Z",
+                        "updatedAt": "2023-06-25T21:17:03.832Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 580,
+                        "action": "plugin::content-manager.explorer.update",
                         "subject": "api::sidebar.sidebar",
                         "properties": {
                             "fields": [
@@ -4510,13 +3745,12 @@
                                 "side"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.564Z",
-                        "updatedAt": "2023-06-25T11:38:30.564Z",
+                        "createdAt": "2023-06-25T21:17:03.839Z",
+                        "updatedAt": "2023-06-25T21:17:03.839Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4529,7 +3763,102 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 231,
+                        "id": 557,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::currency.currency",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "unicode",
+                                "is_default",
+                                "tiers"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.846Z",
+                        "updatedAt": "2023-06-25T21:17:03.846Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 564,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "variant",
+                                "class_name",
+                                "layouts",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.853Z",
+                        "updatedAt": "2023-06-25T21:17:03.853Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 550,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "page_blocks",
+                                "variant",
+                                "class_name",
+                                "layouts",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.861Z",
+                        "updatedAt": "2023-06-25T21:17:03.861Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 578,
                         "action": "plugin::content-manager.explorer.update",
                         "subject": "api::navbar.navbar",
                         "properties": {
@@ -4544,13 +3873,12 @@
                                 "side"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.568Z",
-                        "updatedAt": "2023-06-25T11:38:30.568Z",
+                        "createdAt": "2023-06-25T21:17:03.869Z",
+                        "updatedAt": "2023-06-25T21:17:03.869Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4563,32 +3891,8 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 262,
-                        "action": "plugin::content-manager.explorer.publish",
-                        "subject": "api::flyout.flyout",
-                        "properties": {
-                            "locales": [
-                                "en",
-                                "ru"
-                            ]
-                        },
-                        "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.573Z",
-                        "updatedAt": "2023-06-25T11:38:30.573Z",
-                        "role": {
-                            "id": 1,
-                            "name": "Super Admin",
-                            "code": "strapi-super-admin",
-                            "description": "Super Admins can access and manage all features and settings.",
-                            "createdAt": "2023-06-08T05:18:00.556Z",
-                            "updatedAt": "2023-06-08T05:18:00.556Z"
-                        },
-                        "createdBy": null,
-                        "updatedBy": null
-                    },
-                    {
-                        "id": 235,
-                        "action": "plugin::content-manager.explorer.update",
+                        "id": 552,
+                        "action": "plugin::content-manager.explorer.create",
                         "subject": "api::sidebar.sidebar",
                         "properties": {
                             "fields": [
@@ -4601,13 +3905,12 @@
                                 "side"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.581Z",
-                        "updatedAt": "2023-06-25T11:38:30.581Z",
+                        "createdAt": "2023-06-25T21:17:03.878Z",
+                        "updatedAt": "2023-06-25T21:17:03.878Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4620,18 +3923,80 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 259,
+                        "id": 558,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.885Z",
+                        "updatedAt": "2023-06-25T21:17:03.885Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 556,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "variant",
+                                "page_blocks",
+                                "layouts",
+                                "class_name",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.894Z",
+                        "updatedAt": "2023-06-25T21:17:03.894Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 593,
                         "action": "plugin::content-manager.explorer.delete",
-                        "subject": "api::tier.tier",
+                        "subject": "api::page.page",
                         "properties": {
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.589Z",
-                        "updatedAt": "2023-06-25T11:38:30.589Z",
+                        "createdAt": "2023-06-25T21:17:03.900Z",
+                        "updatedAt": "2023-06-25T21:17:03.900Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4644,18 +4009,40 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 249,
+                        "id": 600,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.908Z",
+                        "updatedAt": "2023-06-25T21:17:03.908Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 590,
                         "action": "plugin::content-manager.explorer.delete",
                         "subject": "api::metatag.metatag",
                         "properties": {
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.596Z",
-                        "updatedAt": "2023-06-25T11:38:30.596Z",
+                        "createdAt": "2023-06-25T21:17:03.914Z",
+                        "updatedAt": "2023-06-25T21:17:03.914Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",
@@ -4668,8 +4055,529 @@
                         "updatedBy": null
                     },
                     {
-                        "id": 203,
+                        "id": 569,
                         "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.920Z",
+                        "updatedAt": "2023-06-25T21:17:03.920Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 565,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::page.page",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "url",
+                                "layout",
+                                "page_blocks",
+                                "metatag"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.926Z",
+                        "updatedAt": "2023-06-25T21:17:03.926Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 559,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.933Z",
+                        "updatedAt": "2023-06-25T21:17:03.933Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 568,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::slider.slider",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "slides.title",
+                                "slides.description",
+                                "slides.subtitle",
+                                "slides.media",
+                                "slides.buttons.url",
+                                "slides.buttons.media",
+                                "slides.buttons.description",
+                                "slides.buttons.variant",
+                                "slides.buttons.additional_media",
+                                "slides.buttons.title",
+                                "slides.buttons.additional_attributes",
+                                "slides.buttons.class_name",
+                                "slides.buttons.flyout",
+                                "slides.additional_media",
+                                "show_backdrop",
+                                "show_full_screen",
+                                "show_previews",
+                                "class_name",
+                                "aspect_ratio_class_name",
+                                "title",
+                                "uid"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.939Z",
+                        "updatedAt": "2023-06-25T21:17:03.939Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 577,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::modal.modal",
+                        "properties": {
+                            "fields": [
+                                "uid",
+                                "page_blocks",
+                                "dialog_panel_class_name",
+                                "variant",
+                                "title",
+                                "layouts",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.945Z",
+                        "updatedAt": "2023-06-25T21:17:03.945Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 575,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.952Z",
+                        "updatedAt": "2023-06-25T21:17:03.952Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 572,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::flyout.flyout",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "page_blocks",
+                                "title",
+                                "uid",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.962Z",
+                        "updatedAt": "2023-06-25T21:17:03.962Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 603,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.968Z",
+                        "updatedAt": "2023-06-25T21:17:03.968Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 592,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::navbar.navbar",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.973Z",
+                        "updatedAt": "2023-06-25T21:17:03.973Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 581,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "fields": [
+                                "variant",
+                                "title",
+                                "uid",
+                                "class_name",
+                                "page_blocks",
+                                "layouts"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.979Z",
+                        "updatedAt": "2023-06-25T21:17:03.979Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 561,
+                        "action": "plugin::content-manager.explorer.read",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "sidebar",
+                                "variant",
+                                "topbar",
+                                "footer",
+                                "slide_overs",
+                                "modals",
+                                "navbar",
+                                "class_name",
+                                "pages"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.984Z",
+                        "updatedAt": "2023-06-25T21:17:03.984Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 555,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::tier.tier",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "description",
+                                "price",
+                                "currency",
+                                "type",
+                                "period",
+                                "features.media",
+                                "features.description",
+                                "features.additional_media",
+                                "features.title",
+                                "features.subtitle",
+                                "old_price",
+                                "buttons.url",
+                                "buttons.media",
+                                "buttons.description",
+                                "buttons.variant",
+                                "buttons.additional_media",
+                                "buttons.title",
+                                "buttons.additional_attributes",
+                                "buttons.class_name",
+                                "buttons.flyout"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.989Z",
+                        "updatedAt": "2023-06-25T21:17:03.989Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 589,
+                        "action": "plugin::content-manager.explorer.delete",
+                        "subject": "api::layout.layout",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:03.995Z",
+                        "updatedAt": "2023-06-25T21:17:03.995Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 545,
+                        "action": "plugin::content-manager.explorer.create",
+                        "subject": "api::footer.footer",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "layouts",
+                                "page_blocks",
+                                "variant",
+                                "class_name"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:04.003Z",
+                        "updatedAt": "2023-06-25T21:17:04.003Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 584,
+                        "action": "plugin::content-manager.explorer.update",
+                        "subject": "api::topbar.topbar",
+                        "properties": {
+                            "fields": [
+                                "title",
+                                "uid",
+                                "variant",
+                                "page_blocks",
+                                "layouts",
+                                "class_name",
+                                "position",
+                                "side"
+                            ],
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:04.010Z",
+                        "updatedAt": "2023-06-25T21:17:04.010Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 609,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::slide-over.slide-over",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:04.015Z",
+                        "updatedAt": "2023-06-25T21:17:04.015Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 543,
+                        "action": "plugin::content-manager.explorer.create",
                         "subject": "api::currency.currency",
                         "properties": {
                             "fields": [
@@ -4679,13 +4587,35 @@
                                 "tiers"
                             ],
                             "locales": [
-                                "en",
-                                "ru"
+                                "en"
                             ]
                         },
                         "conditions": [],
-                        "createdAt": "2023-06-25T11:38:30.605Z",
-                        "updatedAt": "2023-06-25T11:38:30.605Z",
+                        "createdAt": "2023-06-25T21:17:04.021Z",
+                        "updatedAt": "2023-06-25T21:17:04.021Z",
+                        "role": {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-06-08T05:18:00.556Z",
+                            "updatedAt": "2023-06-08T05:18:00.556Z"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
+                    {
+                        "id": 602,
+                        "action": "plugin::content-manager.explorer.publish",
+                        "subject": "api::form.form",
+                        "properties": {
+                            "locales": [
+                                "en"
+                            ]
+                        },
+                        "conditions": [],
+                        "createdAt": "2023-06-25T21:17:04.026Z",
+                        "updatedAt": "2023-06-25T21:17:04.026Z",
                         "role": {
                             "id": 1,
                             "name": "Super Admin",

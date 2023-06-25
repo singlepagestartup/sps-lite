@@ -5,13 +5,13 @@
     "uid": "locales-flyout",
     "class_name": null,
     "createdAt": "2023-06-08T05:18:29.133Z",
-    "updatedAt": "2023-06-25T17:42:58.666Z",
+    "updatedAt": "2023-06-25T20:32:34.105Z",
     "publishedAt": "2023-05-11T18:28:36.473Z",
     "locale": "en",
     "page_blocks": [
         {
             "__component": "elements.button",
-            "id": 53,
+            "id": 106,
             "url": "/en",
             "description": null,
             "variant": "text",
