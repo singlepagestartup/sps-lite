@@ -5,6 +5,8 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
+import { OnChange } from "@react-spring/web";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function TextInput(props: IInputProps) {
   const {
@@ -23,6 +25,7 @@ export default function TextInput(props: IInputProps) {
     min,
     max,
     disabled,
+    ResetIcon = DeafultResetIcon,
   } = props;
 
   const translate = useTranslationsContext();
@@ -63,6 +66,10 @@ export default function TextInput(props: IInputProps) {
     defaultValue: initialValue !== undefined ? initialValue : defaultValue,
   });
 
+  function reset(e: any) {
+    onChange({ ...e, target: { value: "" } });
+  }
+
   useEffect(() => {
     if (initialValue !== undefined && inputRef?.current) {
       const evt = new Event("change");
@@ -101,6 +108,14 @@ export default function TextInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
+        <div className="reset-button-container">
+          <button onClick={reset} className="reset-button">
+            <div className="icon">
+              <ResetIcon className="w-4 h-5" />
+            </div>
+            <p>{translate("Reset")}</p>
+          </button>
+        </div>
         <div
           data-media={props.media && props.media?.length > 0}
           className="media-container"
@@ -197,4 +212,8 @@ export default function TextInput(props: IInputProps) {
       ) : null}
     </div>
   );
+}
+
+function DeafultResetIcon() {
+  return <XMarkIcon />;
 }

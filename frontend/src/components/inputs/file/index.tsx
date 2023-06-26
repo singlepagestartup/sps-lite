@@ -1,4 +1,8 @@
-import { CloudArrowUpIcon, TrashIcon } from "@heroicons/react/24/outline";
+import {
+  CloudArrowUpIcon,
+  TrashIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
@@ -19,6 +23,7 @@ export default function FileInput(props: IInputProps) {
     multiple = false,
     initialValue,
     ButtonComp = DefaultButton,
+    ResetIcon = DeafultResetIcon,
     index,
     type = "file",
   } = props;
@@ -48,6 +53,10 @@ export default function FileInput(props: IInputProps) {
   });
 
   const [value, setValue] = useState(field.value || "");
+
+  function reset(e: any) {
+    setInitFiles([]);
+  }
 
   useEffect(() => {
     if (!passedVal && value && localFiles?.length) {
@@ -215,6 +224,14 @@ export default function FileInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
+        <div className="reset-button-container">
+          <button onClick={reset} className="reset-button">
+            <div className="icon">
+              <ResetIcon className="w-4 h-5" />
+            </div>
+            <p>{translate("Reset")}</p>
+          </button>
+        </div>
         <label
           htmlFor={htmlNodeId}
           data-multiple={multiple ? true : false}
@@ -293,7 +310,11 @@ function FilesArray({
   onFileDelete: any;
 }) {
   return (
-    <div data-multiple={multiple} className="files-array">
+    <div
+      data-multiple={multiple}
+      data-files={files?.length}
+      className="files-array"
+    >
       {files?.map((file, index) => {
         const url = URL.createObjectURL(file);
         const isImage = file.type.includes("image");
@@ -321,4 +342,8 @@ function FilesArray({
       })}
     </div>
   );
+}
+
+function DeafultResetIcon() {
+  return <XMarkIcon />;
 }

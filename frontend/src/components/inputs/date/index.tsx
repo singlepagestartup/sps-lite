@@ -16,6 +16,7 @@ import DatePicker from "react-date-picker";
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import DateTimePicker from "react-datetime-picker";
 import QueryString from "qs";
+import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -35,6 +36,8 @@ export default function DateInput(props: IInputProps) {
     max,
     disabled,
     options,
+    ResetIcon = DeafultResetIcon,
+    CalendarIcon = DefaultCalendarIcon,
   } = props;
 
   const [domLoaded, setDomLoaded] = useState(false);
@@ -81,6 +84,11 @@ export default function DateInput(props: IInputProps) {
   });
 
   const [localValue, setLocalValue] = useState<any>();
+
+  function reset(e: any) {
+    onChange({ ...e, target: { value: "" } });
+    setLocalValue(undefined);
+  }
 
   function onChangeProxy(e: any) {
     setLocalValue(e);
@@ -150,6 +158,14 @@ export default function DateInput(props: IInputProps) {
       </div>
       {domLoaded ? (
         <div className="input-container">
+          <div className="reset-button-container">
+            <button onClick={reset} className="reset-button">
+              <div className="icon">
+                <ResetIcon className="w-4 h-5" />
+              </div>
+              <p>{translate("Reset")}</p>
+            </button>
+          </div>
           <Comp
             value={localValue !== undefined ? localValue : ""}
             /* @ts-ignore */
@@ -159,6 +175,7 @@ export default function DateInput(props: IInputProps) {
             onChange={(e) => {
               onChangeProxy(e);
             }}
+            calendarIcon={<CalendarIcon />}
           />
         </div>
       ) : null}
@@ -171,6 +188,18 @@ export default function DateInput(props: IInputProps) {
           </p>
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function DeafultResetIcon() {
+  return <XMarkIcon />;
+}
+
+function DefaultCalendarIcon() {
+  return (
+    <div className="w-5 h-5">
+      <CalendarIcon />
     </div>
   );
 }

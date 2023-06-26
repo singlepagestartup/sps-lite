@@ -1,5 +1,9 @@
 import { Transition, Listbox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Fragment, useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
@@ -28,6 +32,7 @@ export default function ListboxInput(props: IInputProps) {
     placeholder = "",
     ButtonComp = DefaultButton,
     OptionComp = DefaultOption,
+    ResetIcon = DeafultResetIcon,
     by,
     multiple,
     renderOptionValue,
@@ -63,6 +68,10 @@ export default function ListboxInput(props: IInputProps) {
     shouldUnregister,
     defaultValue: multiple ? [] : defaultValue,
   });
+
+  function reset(e: any) {
+    onChange({ ...e, target: { value: "" } });
+  }
 
   const inputError = getInputErrors(errors)(name);
 
@@ -104,6 +113,14 @@ export default function ListboxInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
+        <div className="reset-button-container">
+          <button onClick={reset} className="reset-button">
+            <div className="icon">
+              <ResetIcon className="w-4 h-5" />
+            </div>
+            <p>{translate("Reset")}</p>
+          </button>
+        </div>
         <Listbox
           as="div"
           id={htmlNodeId}
@@ -329,4 +346,8 @@ function DefaultOption({
       </div>
     </div>
   );
+}
+
+function DeafultResetIcon() {
+  return <XMarkIcon />;
 }

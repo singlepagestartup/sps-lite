@@ -7,6 +7,7 @@ import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -26,6 +27,7 @@ export default function ListboxInput(props: IInputProps) {
     initialValue,
     placeholder = "",
     OptionComp = DefaultOption,
+    ResetIcon = DeafultResetIcon,
     by,
     multiple,
     renderOptionValue,
@@ -63,6 +65,10 @@ export default function ListboxInput(props: IInputProps) {
   });
 
   const inputError = getInputErrors(errors)(name);
+
+  function reset(e: any) {
+    onChange({ ...e, target: { value: "" } });
+  }
 
   useEffect(() => {
     if (initialValue && inputRef?.current) {
@@ -102,6 +108,14 @@ export default function ListboxInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
+        <div className="reset-button-container">
+          <button onClick={reset} className="reset-button">
+            <div className="icon">
+              <ResetIcon className="w-4 h-5" />
+            </div>
+            <p>{translate("Reset")}</p>
+          </button>
+        </div>
         <Listbox
           as="div"
           id={htmlNodeId}
@@ -215,4 +229,8 @@ function DefaultOption({
       </div>
     </div>
   );
+}
+
+function DeafultResetIcon() {
+  return <XMarkIcon />;
 }

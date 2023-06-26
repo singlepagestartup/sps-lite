@@ -1,21 +1,14 @@
 import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
 import { ISpsLiteFormBlock } from ".";
 import Buttons from "~components/elements/buttons";
-import { useSearchParams } from "next/navigation";
-import qs from "qs";
-import { ISpsLiteBackendInput } from "types/components/elements/sps-lite";
-
-export interface ISpsLiteFromInput extends ISpsLiteBackendInput {
-  initialValue?: any;
-}
+import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 
 export default function Simple(props: ISpsLiteFormBlock) {
   const [createFormRequest, { data }] = useCreateFormRequestMutation();
-  const searchParams = useSearchParams();
-  const searchParamsStringified = searchParams?.toString();
+  const preparedInputs = useGetPreparedFormInputs(props);
 
   const methods = useForm<any>({
     mode: "all",
@@ -23,7 +16,6 @@ export default function Simple(props: ISpsLiteFormBlock) {
 
   const {
     register,
-    control,
     handleSubmit,
     setValue,
     watch,
@@ -52,73 +44,6 @@ export default function Simple(props: ISpsLiteFormBlock) {
 
     createFormRequest({ data, files: data.files });
   }
-
-  const preparedInputs = useMemo(() => {
-    return props.inputs?.map((input, index: number) => {
-      const localInput: ISpsLiteFromInput = { ...input };
-      let inputName = input.name;
-      let isFile = false;
-
-      if (searchParamsStringified) {
-        const parsedSearchParams = qs.parse(
-          decodeURIComponent(searchParamsStringified),
-        );
-
-        if (parsedSearchParams[inputName]) {
-          localInput.initialValue = parsedSearchParams[inputName];
-        }
-      }
-
-      if (["listbox", "radio-group"].includes(input.variant)) {
-        inputName = input.multiple
-          ? `inputs[${index}].options`
-          : `inputs[${index}].option`;
-      } else if (["switch"].includes(input.variant)) {
-        inputName = `inputs[${index}].is_true`;
-      } else if (["file"].includes(input.variant)) {
-        inputName = `inputs[${index}].files`;
-        isFile = true;
-      } else if (input.variant === "date") {
-        if (input.type && ["date", "date_inline"].includes(input?.type)) {
-          inputName = `inputs[${index}].dates[0].date_value`;
-        } else {
-          inputName = `inputs[${index}].dates[0].datetime_value`;
-        }
-
-        if (
-          input.type &&
-          ["daterange_inline", "datetimerange_inline"].includes(input?.type)
-        ) {
-          inputName = `inputs[${index}].dates`;
-        }
-      } else {
-        inputName = `inputs[${index}].value`;
-      }
-
-      let options;
-
-      if (["listbox", "radio-group"].includes(input.variant)) {
-        options = input.options?.map((option: any) => {
-          const passOption = { ...option };
-          delete passOption.id;
-
-          return passOption;
-        });
-      } else if (input.type && ["date", "datetime"].includes(input.type)) {
-        options = {
-          inline: true,
-          enableTime: input.type === "datetime",
-        };
-      }
-
-      return {
-        input: localInput,
-        inputName,
-        isFile,
-        options,
-      };
-    });
-  }, [props, searchParamsStringified]);
 
   return (
     <div
