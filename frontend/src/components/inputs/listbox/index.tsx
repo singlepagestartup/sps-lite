@@ -290,7 +290,7 @@ function DefaultOption({
   return (
     <div aria-selected={selected} className="option">
       <div
-        data-media={extraMedia && extraMedia?.length > 0}
+        data-media={extraMedia?.length ? true : false}
         className="extra-media-container"
       >
         {extraMedia?.map(

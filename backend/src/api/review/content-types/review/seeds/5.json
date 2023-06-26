@@ -5,12 +5,12 @@
     "description": "The Single Page Startup boilerplate has been instrumental in our startup's success. Its focus on MVP readiness and adaptability has allowed us to quickly test and validate our ideas, making it easy to pivot and refine our product offering. It has been a crucial part of our journey, and we couldn't imagine building our startup without it.",
     "subtitle": "EduSphere, Founder & CEO",
     "rating": 5,
-    "createdAt": "2023-06-25T11:41:58.146Z",
-    "updatedAt": "2023-06-26T14:06:57.553Z",
+    "createdAt": "2023-06-08T05:19:24.911Z",
+    "updatedAt": "2023-06-25T21:16:13.406Z",
     "publishedAt": "2023-03-12T06:34:27.387Z",
     "media": [
         {
-            "id": 860,
+            "id": 367,
             "name": "pexels-karolina-grabowska-5882683.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "/uploads/large_pexels_karolina_grabowska_5882683_a77f180701.jpg",
-                    "hash": "large_pexels_karolina_grabowska_5882683_a77f180701",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_aa3adb220a.jpg",
+                    "hash": "large_pexels_karolina_grabowska_5882683_aa3adb220a",
                     "mime": "image/jpeg",
                     "name": "large_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "/uploads/small_pexels_karolina_grabowska_5882683_a77f180701.jpg",
-                    "hash": "small_pexels_karolina_grabowska_5882683_a77f180701",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_aa3adb220a.jpg",
+                    "hash": "small_pexels_karolina_grabowska_5882683_aa3adb220a",
                     "mime": "image/jpeg",
                     "name": "small_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "/uploads/medium_pexels_karolina_grabowska_5882683_a77f180701.jpg",
-                    "hash": "medium_pexels_karolina_grabowska_5882683_a77f180701",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_aa3adb220a.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_5882683_aa3adb220a",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "/uploads/thumbnail_pexels_karolina_grabowska_5882683_a77f180701.jpg",
-                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_a77f180701",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_aa3adb220a.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_5882683_aa3adb220a",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_karolina_grabowska_5882683_a77f180701",
+            "hash": "pexels_karolina_grabowska_5882683_aa3adb220a",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 109.43,
-            "url": "/uploads/pexels_karolina_grabowska_5882683_a77f180701.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_aa3adb220a.jpg",
             "previewUrl": null,
-            "provider": "local",
+            "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-26T14:06:57.533Z",
-            "updatedAt": "2023-06-26T14:06:57.533Z",
+            "createdAt": "2023-06-25T21:16:13.379Z",
+            "updatedAt": "2023-06-25T21:16:13.379Z",
             "folder": null
         }
     ],

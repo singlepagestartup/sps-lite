@@ -1,5 +1,5 @@
-import { RadioGroup } from "@headlessui/react";
-import { useEffect, useMemo, useRef } from "react";
+import { Transition, Listbox } from "@headlessui/react";
+import { Fragment, useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
@@ -8,16 +8,26 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 
-export default function RadioGroupInput(props: IInputProps) {
+interface OptionRenderPropArg {
+  active: boolean;
+  selected: boolean;
+  disabled: boolean;
+}
+
+export default function ListboxInput(props: IInputProps) {
   const {
     label,
     name,
     rules,
     options,
     shouldUnregister,
-    initialValue,
-    by,
+    defaultValue = null,
     className,
+    initialValue,
+    placeholder = "",
+    OptionComp = DefaultOption,
+    by,
+    multiple,
     renderOptionValue,
   } = props;
 
@@ -28,9 +38,18 @@ export default function RadioGroupInput(props: IInputProps) {
     return name.replace("[", "_").replace("]", "_").replace(".", "_");
   }, [name]);
 
+  const additionalProps = useMemo(() => {
+    if (multiple) {
+      return { multiple: true };
+    }
+
+    return {};
+  }, [multiple]);
+
   const {
     control,
     formState: { errors },
+    setValue,
   } = useFormContext();
 
   const {
@@ -40,7 +59,7 @@ export default function RadioGroupInput(props: IInputProps) {
     control,
     rules,
     shouldUnregister,
-    defaultValue: null,
+    defaultValue: multiple ? [] : defaultValue,
   });
 
   const inputError = getInputErrors(errors)(name);
@@ -54,10 +73,22 @@ export default function RadioGroupInput(props: IInputProps) {
     }
   }, [JSON.stringify(initialValue), inputRef?.current]);
 
+  /**
+   * If using in repeatable component
+   * useForm set {} as value of input
+   * and validation required skips that
+   * fiels.
+   */
+  useEffect(() => {
+    if (JSON.stringify(value) === "{}") {
+      setValue(name, undefined);
+    }
+  }, [JSON.stringify(value)]);
+
   useEffect(() => {
     // console.log(`🚀 ~ TextWithControlled ~ props`, props);
     // console.log(`🚀 ~ useEffect ~ errors`, errors);
-  }, [errors, props]);
+  }, [errors]);
 
   return (
     <div
@@ -71,60 +102,41 @@ export default function RadioGroupInput(props: IInputProps) {
         </label>
       </div>
       <div className="input-container">
-        <RadioGroup
+        <Listbox
           as="div"
           id={htmlNodeId}
           value={value}
-          onChange={onChange}
           by={by}
+          onChange={(e) => {
+            onChange(e);
+          }}
           ref={(e: any) => {
             if (e) {
               ref(e);
               inputRef.current = e;
             }
           }}
+          {...additionalProps}
         >
           <div className="radio-group">
-            {options?.map((option: any, index: number) => (
-              <RadioGroup.Option key={option.id || index} value={option}>
-                {({ checked, active }) => (
-                  <div aria-selected={checked} className={"option"}>
-                    <div className="check">
-                      {checked ? <div className="checked" /> : null}
-                    </div>
-                    <RadioGroup.Label as="div" className="label">
-                      <div className="title-container">
-                        <div
-                          data-media={option.media && option.media?.length > 0}
-                          className="media-container"
-                        >
-                          {option?.media?.map(
-                            (
-                              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
-                              index: number,
-                            ) => (
-                              <Image
-                                key={index}
-                                src={getFileUrl(mediaItem)}
-                                fill={true}
-                                alt=""
-                              />
-                            ),
-                          )}
-                        </div>
-                        <span className="title">
-                          {typeof renderOptionValue === "function"
-                            ? renderOptionValue(option)
-                            : option.title || option}
-                        </span>
-                      </div>
-                    </RadioGroup.Label>
-                  </div>
-                )}
-              </RadioGroup.Option>
-            ))}
+            <Listbox.Options static={true} className="options">
+              {options?.map((option: any, index: number) => (
+                <Listbox.Option key={index} value={option}>
+                  {(params) => {
+                    return (
+                      <OptionComp
+                        option={option}
+                        params={params}
+                        renderOptionValue={renderOptionValue}
+                        extraMedia={props.extraMedia}
+                      />
+                    );
+                  }}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
           </div>
-        </RadioGroup>
+        </Listbox>
       </div>
       {inputError?.message ? (
         <div className="input-error">
@@ -135,6 +147,72 @@ export default function RadioGroupInput(props: IInputProps) {
           </p>
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function DefaultOption({
+  params,
+  option,
+  renderOptionValue,
+  extraMedia,
+}: {
+  params: OptionRenderPropArg;
+  option: any;
+  renderOptionValue: (option: any) => string;
+  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+}) {
+  const { selected } = params;
+
+  return (
+    <div aria-selected={selected} className="option">
+      <div
+        data-media={extraMedia?.length ? true : false}
+        className="extra-media-container"
+      >
+        {extraMedia?.length ? (
+          extraMedia?.map(
+            (
+              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+              index: number,
+            ) => (
+              <Image
+                key={index}
+                src={getFileUrl(mediaItem)}
+                fill={true}
+                alt=""
+              />
+            ),
+          )
+        ) : (
+          <div className="check"></div>
+        )}
+      </div>
+      <div className="title-container">
+        <div
+          data-media={option.media && option.media?.length > 0}
+          className="media-container"
+        >
+          {option?.media?.map(
+            (
+              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+              index: number,
+            ) => (
+              <Image
+                key={index}
+                src={getFileUrl(mediaItem)}
+                fill={true}
+                alt=""
+              />
+            ),
+          )}
+        </div>
+        <span className="title">
+          {(typeof renderOptionValue === "function"
+            ? renderOptionValue(option)
+            : option.title) || option}
+        </span>
+      </div>
     </div>
   );
 }
