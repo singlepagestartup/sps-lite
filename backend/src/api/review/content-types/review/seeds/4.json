@@ -5,12 +5,12 @@
     "description": "The Single Page Startup has not only provided us with a solid foundation for our product but also outstanding support and flexibility. The boilerplate's developers have been responsive to our needs, and the customization options have allowed us to tailor the solution to our specific requirements. It's been a pleasure working with such a reliable and adaptable solution.",
     "subtitle": "TravelTrail, Head of Engineering",
     "rating": 5,
-    "createdAt": "2023-06-08T05:19:23.682Z",
-    "updatedAt": "2023-06-25T21:16:11.103Z",
+    "createdAt": "2023-06-25T11:41:56.577Z",
+    "updatedAt": "2023-06-26T14:06:56.442Z",
     "publishedAt": "2023-03-12T06:33:57.476Z",
     "media": [
         {
-            "id": 366,
+            "id": 859,
             "name": "pexels-andrea-piacquadio-3756679.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_andrea_piacquadio_3756679_3c5d221614.jpg",
-                    "hash": "large_pexels_andrea_piacquadio_3756679_3c5d221614",
+                    "url": "/uploads/large_pexels_andrea_piacquadio_3756679_0e4dd324e7.jpg",
+                    "hash": "large_pexels_andrea_piacquadio_3756679_0e4dd324e7",
                     "mime": "image/jpeg",
                     "name": "large_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_andrea_piacquadio_3756679_3c5d221614.jpg",
-                    "hash": "small_pexels_andrea_piacquadio_3756679_3c5d221614",
+                    "url": "/uploads/small_pexels_andrea_piacquadio_3756679_0e4dd324e7.jpg",
+                    "hash": "small_pexels_andrea_piacquadio_3756679_0e4dd324e7",
                     "mime": "image/jpeg",
                     "name": "small_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_andrea_piacquadio_3756679_3c5d221614.jpg",
-                    "hash": "medium_pexels_andrea_piacquadio_3756679_3c5d221614",
+                    "url": "/uploads/medium_pexels_andrea_piacquadio_3756679_0e4dd324e7.jpg",
+                    "hash": "medium_pexels_andrea_piacquadio_3756679_0e4dd324e7",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_andrea_piacquadio_3756679_3c5d221614.jpg",
-                    "hash": "thumbnail_pexels_andrea_piacquadio_3756679_3c5d221614",
+                    "url": "/uploads/thumbnail_pexels_andrea_piacquadio_3756679_0e4dd324e7.jpg",
+                    "hash": "thumbnail_pexels_andrea_piacquadio_3756679_0e4dd324e7",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_andrea_piacquadio_3756679_3c5d221614",
+            "hash": "pexels_andrea_piacquadio_3756679_0e4dd324e7",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 811.66,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_andrea_piacquadio_3756679_3c5d221614.jpg",
+            "url": "/uploads/pexels_andrea_piacquadio_3756679_0e4dd324e7.jpg",
             "previewUrl": null,
-            "provider": "aws-s3",
+            "provider": "local",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T21:16:11.070Z",
-            "updatedAt": "2023-06-25T21:16:11.070Z",
+            "createdAt": "2023-06-26T14:06:56.420Z",
+            "updatedAt": "2023-06-26T14:06:56.420Z",
             "folder": null
         }
     ],

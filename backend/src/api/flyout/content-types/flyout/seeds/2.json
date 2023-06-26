@@ -4,14 +4,14 @@
     "title": "Hero Flyout",
     "uid": "hero-flyout",
     "class_name": null,
-    "createdAt": "2023-06-08T05:18:29.190Z",
-    "updatedAt": "2023-06-25T20:32:34.139Z",
+    "createdAt": "2023-06-25T11:40:46.947Z",
+    "updatedAt": "2023-06-26T14:04:34.922Z",
     "publishedAt": "2023-05-11T20:03:51.955Z",
     "locale": "en",
     "page_blocks": [
         {
             "__component": "page-blocks.hero-section-block",
-            "id": 36,
+            "id": 95,
             "title": "Flyout",
             "description": "With Page Blocks",
             "variant": "simple-centered",

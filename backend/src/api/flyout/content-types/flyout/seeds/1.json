@@ -4,14 +4,14 @@
     "title": "Locales Flyout",
     "uid": "locales-flyout",
     "class_name": null,
-    "createdAt": "2023-06-08T05:18:29.133Z",
-    "updatedAt": "2023-06-25T20:32:34.105Z",
+    "createdAt": "2023-06-25T11:40:46.864Z",
+    "updatedAt": "2023-06-26T14:04:34.884Z",
     "publishedAt": "2023-05-11T18:28:36.473Z",
     "locale": "en",
     "page_blocks": [
         {
             "__component": "elements.button",
-            "id": 106,
+            "id": 369,
             "url": "/en",
             "description": null,
             "variant": "text",

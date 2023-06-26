@@ -3,6 +3,7 @@ import strapiUtils from "@rogwild/strapi-utils";
 import path from "path";
 import customizeCoreStrapi from "./utils/bootstrap/customize-core-strapi";
 import setPermissions from "./utils/bootstrap/set-permissions";
+import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 
 export default {
   async bootstrap({ strapi }) {
@@ -17,10 +18,18 @@ export default {
 
     console.error = strapi.errorCatcher;
 
+    if (process.env.CLEAR_MEDIA_LIBRARY && !process.env.SEED_ENTITES) {
+      clearMediaLibrary();
+    }
+
     if (process.env.SEED_ENTITES) {
       try {
         const apiPath = path.join(__dirname, "./api");
-        strapiUtils.seeder(apiPath);
+        strapiUtils.seeder(apiPath).then(() => {
+          if (process.env.CLEAR_MEDIA_LIBRARY) {
+            clearMediaLibrary();
+          }
+        });
       } catch (error) {
         console.log("🚀 ~ bootstrap ~ seeder ~ error: ", error.message);
 
