@@ -874,7 +874,7 @@ input[type="number"] {
               .react-datetime-picker__inputGroup,
               .react-date-picker__inputGroup,
               .react-daterange-picker__inputGroup {
-                @apply w-full grow;
+                @apply w-full grow cursor-text;
 
                 .react-datetime-picker__inputGroup__divider {
                 }
@@ -1170,11 +1170,15 @@ input[type="number"] {
 
                 &.react-calendar__month-view__days__day {
                   &.react-calendar__tile--now {
-                    @apply bg-neutral-100;
+                    @apply ring-black;
 
                     &:not(.react-calendar__tile--active) {
-                      @apply rounded-full;
+                      @apply rounded-full ring-[1px];
                     }
+                  }
+
+                  &.react-calendar__month-view__days__day--neighboringMonth {
+                    @apply text-neutral-300;
                   }
 
                   &.react-calendar__tile--range {
