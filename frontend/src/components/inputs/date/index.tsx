@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  Fragment,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import { getInputErrors } from "../utils";
@@ -15,7 +8,6 @@ import Calendar from "react-calendar";
 import DatePicker from "react-date-picker";
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import DateTimePicker from "react-datetime-picker";
-import QueryString from "qs";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
@@ -198,6 +190,7 @@ export default function DateInput(props: IInputProps) {
               onChangeProxy(e);
             }}
             calendarIcon={<CalendarIcon {...props} />}
+            yearPlaceholder={placeholder || ""}
           />
         </div>
       ) : null}

@@ -885,6 +885,22 @@ input[type="number"] {
                 .react-daterange-picker__inputGroup__input {
                   @apply min-w-[0.54em] text-sm border-0 bg-none box-content;
 
+                  &:placeholder-shown {
+                    @apply hidden;
+
+                    & + .react-datetime-picker__inputGroup__divider,
+                    & + .react-date-picker__inputGroup__divider {
+                      @apply hidden;
+                    }
+
+                    &.react-datetimerange-picker__inputGroup__year,
+                    &.react-datetime-picker__inputGroup__year,
+                    &.react-date-picker__inputGroup__year,
+                    &.react-daterange-picker__inputGroup__year {
+                      @apply block w-full;
+                    }
+                  }
+
                   &::-webkit-outer-spin-button,
                   &::-webkit-inner-spin-button {
                     @apply appearance-none m-0;

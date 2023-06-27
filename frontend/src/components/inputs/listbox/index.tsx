@@ -1,9 +1,5 @@
 import { Transition, Listbox } from "@headlessui/react";
-import {
-  CheckIcon,
-  ChevronUpDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Fragment, useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
