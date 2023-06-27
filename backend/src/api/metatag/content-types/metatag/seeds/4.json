@@ -1575,7 +1575,7 @@
                         "uid": "question",
                         "title": "Есть вопросы по продукту?",
                         "createdAt": "2023-06-08T05:19:25.251Z",
-                        "updatedAt": "2023-06-27T11:42:42.027Z",
+                        "updatedAt": "2023-06-27T18:34:01.232Z",
                         "publishedAt": "2023-02-14T17:44:48.245Z",
                         "locale": "en",
                         "inputs": [
@@ -1678,7 +1678,7 @@
                                 "name": "release",
                                 "label": "Release",
                                 "class_name": "col-span-4",
-                                "type": "datetimerange_inline",
+                                "type": "date_inline",
                                 "multiple": null,
                                 "min": null,
                                 "max": null,
