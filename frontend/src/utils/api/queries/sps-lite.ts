@@ -195,3 +195,12 @@ export const layoutPopulate = {
     },
   },
 };
+
+export const loaderPopulate = {
+  media: {
+    populate: mediaPopulate,
+  },
+  additional_media: {
+    populate: mediaPopulate,
+  },
+};

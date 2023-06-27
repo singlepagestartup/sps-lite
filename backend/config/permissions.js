@@ -17,6 +17,7 @@ const spsLitePublicActions = {
   "api::metatag.metatag": ["find", "findOne"],
   "api::flyout.flyout": ["find", "findOne"],
   "api::page.page": ["find", "findOne"],
+  "api::loader.loader": ["find"],
   "plugin::users-permissions.auth": [],
   "plugin::users-permissions.user": [],
   "plugin::users-permissions.role": [],

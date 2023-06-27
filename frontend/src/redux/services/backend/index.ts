@@ -37,6 +37,7 @@ const tagTypes = [
   "Review",
   "SlideOver",
   "Topbar",
+  "Loader",
 ];
 
 export const backendServiceApi = createApi({

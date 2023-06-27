@@ -1571,6 +1571,14 @@ input[type="number"] {
     }
   }
 
+  [data-single-type="loader"] {
+    &[data-variant="simple"] {
+      .loader-container {
+        @apply fixed w-screen h-screen bg-white z-50 flex items-center justify-center;
+      }
+    }
+  }
+
   // Place custom classes below and put them in the components
   // They will override the above styles
   //

@@ -4,6 +4,7 @@ import { FC, ReactNode } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
 import useGetCurrentLayout from "~hooks/use-get-current-layout";
 import { useGetLayoutsQuery } from "~redux/services/backend/models/layouts";
+import { useGetLoaderQuery } from "~redux/services/backend/models/loaders";
 
 const variants = {
   ...spsLiteVariants,

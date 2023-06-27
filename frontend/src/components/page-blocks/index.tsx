@@ -5,6 +5,7 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { IBackendPageBlock } from "types/components/page-blocks";
 import { pageBlockComponents } from "~utils/api/components";
 import Errors from "./errors";
+import Loaders from "~components/loader";
 export interface IPageBlockBlock {
   pageBlocks?: IBackendPageBlock[] | null;
   showSkeletons?: boolean;
