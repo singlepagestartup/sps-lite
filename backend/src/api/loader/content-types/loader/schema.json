@@ -15,9 +15,7 @@
     "variant": {
       "pluginOptions": {},
       "type": "enumeration",
-      "enum": [
-        "simple"
-      ],
+      "enum": ["simple"],
       "default": "simple",
       "required": true
     },
@@ -25,24 +23,14 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "pluginOptions": {}
     },
     "additional_media": {
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "pluginOptions": {}
     },
     "class_name": {
