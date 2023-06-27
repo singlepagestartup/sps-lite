@@ -67,7 +67,11 @@ export default function ListboxInput(props: IInputProps) {
   const inputError = getInputErrors(errors)(name);
 
   function reset(e: any) {
-    onChange({ ...e, target: { value: "" } });
+    if (multiple) {
+      onChange({ ...e, target: { value: [] } });
+    } else {
+      onChange({ ...e, target: { value: "" } });
+    }
   }
 
   useEffect(() => {

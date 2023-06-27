@@ -626,8 +626,12 @@ input[type="number"] {
               .button-container {
                 @apply flex flex-col items-center justify-center border w-full rounded-md border-gray-300 border-dashed cursor-pointer text-gray-400;
 
-                svg {
-                  @apply flex-shrink-0 w-5 mb-1;
+                .icon-container {
+                  @apply w-6 h-6 flex items-center justify-center relative mb-1;
+
+                  svg {
+                    @apply flex-shrink-0 w-5;
+                  }
                 }
 
                 p {
@@ -663,16 +667,20 @@ input[type="number"] {
                 @apply object-cover object-center;
               }
 
-              .delete {
-                @apply absolute top-[50%] bottom-[50%] left-[50%] right-[50%] flex w-8 h-8 items-center justify-center bg-black rounded-full text-white cursor-pointer -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-200;
+              .delete-button {
+                @apply absolute top-[50%] bottom-[50%] left-[50%] right-[50%] flex w-8 h-8 items-center justify-center bg-primary-700 rounded-full text-white cursor-pointer -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-200;
 
-                .icon {
-                  @apply w-4;
+                .icon-container {
+                  @apply w-5 h-5 flex items-center justify-center relative;
+
+                  svg {
+                    @apply flex-shrink-0;
+                  }
                 }
               }
 
               &:hover {
-                .delete {
+                .delete-button {
                   @apply opacity-100;
                 }
               }
@@ -802,6 +810,26 @@ input[type="number"] {
         .input-container {
           @apply relative;
 
+          .media-container {
+            @apply hidden;
+
+            &[data-media="true"] {
+              @apply absolute flex top-[7px] left-2 w-6 h-6;
+
+              & ~ .react-datetimerange-picker,
+              & ~ .react-datetime-picker,
+              & ~ .react-date-picker,
+              & ~ .react-daterange-picker {
+                .react-datetimerange-picker__wrapper,
+                .react-datetime-picker__wrapper,
+                .react-date-picker__wrapper,
+                .react-daterange-picker__wrapper {
+                  @apply pl-10;
+                }
+              }
+            }
+          }
+
           .react-datetimerange-picker,
           .react-datetime-picker,
           .react-date-picker,
@@ -840,7 +868,7 @@ input[type="number"] {
             .react-datetime-picker__wrapper,
             .react-date-picker__wrapper,
             .react-daterange-picker__wrapper {
-              @apply flex grow shrink-0 items-center px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 gap-2;
+              @apply flex grow shrink-0 items-center gap-2 rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2;
 
               .react-datetimerange-picker__inputGroup,
               .react-datetime-picker__inputGroup,
@@ -855,7 +883,7 @@ input[type="number"] {
                 .react-datetime-picker__inputGroup__input,
                 .react-date-picker__inputGroup__input,
                 .react-daterange-picker__inputGroup__input {
-                  @apply min-w-[0.54em] relative text-sm border-0 bg-none box-content;
+                  @apply min-w-[0.54em] text-sm border-0 bg-none box-content;
 
                   &::-webkit-outer-spin-button,
                   &::-webkit-inner-spin-button {
@@ -916,6 +944,10 @@ input[type="number"] {
               .react-datetime-picker__button,
               .react-daterange-picker__button {
                 @apply border-0 bg-transparent;
+
+                .icon-container {
+                  @apply relative w-5 h-5 aspect-w-2 aspect-h-2;
+                }
 
                 &:enabled {
                   @apply cursor-pointer stroke-black transition duration-200;
@@ -1574,7 +1606,7 @@ input[type="number"] {
   [data-single-type="loader"] {
     &[data-variant="simple"] {
       .loader-container {
-        @apply fixed w-screen h-screen bg-white z-50 flex items-center justify-center;
+        @apply fixed w-screen h-screen bg-white flex items-center justify-center;
       }
     }
   }

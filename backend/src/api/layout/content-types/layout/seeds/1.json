@@ -5983,6 +5983,84 @@
                             "conditions": [],
                             "createdAt": "2023-06-25T21:17:04.026Z",
                             "updatedAt": "2023-06-25T21:17:04.026Z"
+                        },
+                        {
+                            "id": 618,
+                            "action": "plugin::content-manager.explorer.create",
+                            "subject": "api::loader.loader",
+                            "properties": {
+                                "fields": [
+                                    "variant",
+                                    "media",
+                                    "additional_media",
+                                    "class_name",
+                                    "anchor",
+                                    "title",
+                                    "subtitle",
+                                    "description"
+                                ]
+                            },
+                            "conditions": [],
+                            "createdAt": "2023-06-27T08:25:26.217Z",
+                            "updatedAt": "2023-06-27T08:25:26.217Z"
+                        },
+                        {
+                            "id": 619,
+                            "action": "plugin::content-manager.explorer.read",
+                            "subject": "api::loader.loader",
+                            "properties": {
+                                "fields": [
+                                    "variant",
+                                    "media",
+                                    "additional_media",
+                                    "class_name",
+                                    "anchor",
+                                    "title",
+                                    "subtitle",
+                                    "description"
+                                ]
+                            },
+                            "conditions": [],
+                            "createdAt": "2023-06-27T08:25:26.231Z",
+                            "updatedAt": "2023-06-27T08:25:26.231Z"
+                        },
+                        {
+                            "id": 620,
+                            "action": "plugin::content-manager.explorer.update",
+                            "subject": "api::loader.loader",
+                            "properties": {
+                                "fields": [
+                                    "variant",
+                                    "media",
+                                    "additional_media",
+                                    "class_name",
+                                    "anchor",
+                                    "title",
+                                    "subtitle",
+                                    "description"
+                                ]
+                            },
+                            "conditions": [],
+                            "createdAt": "2023-06-27T08:25:26.237Z",
+                            "updatedAt": "2023-06-27T08:25:26.237Z"
+                        },
+                        {
+                            "id": 621,
+                            "action": "plugin::content-manager.explorer.delete",
+                            "subject": "api::loader.loader",
+                            "properties": {},
+                            "conditions": [],
+                            "createdAt": "2023-06-27T08:25:26.245Z",
+                            "updatedAt": "2023-06-27T08:25:26.245Z"
+                        },
+                        {
+                            "id": 622,
+                            "action": "plugin::content-manager.explorer.publish",
+                            "subject": "api::loader.loader",
+                            "properties": {},
+                            "conditions": [],
+                            "createdAt": "2023-06-27T08:25:26.251Z",
+                            "updatedAt": "2023-06-27T08:25:26.251Z"
                         }
                     ],
                     "createdBy": null,

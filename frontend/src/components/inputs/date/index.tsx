@@ -17,6 +17,9 @@ import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import DateTimePicker from "react-datetime-picker";
 import QueryString from "qs";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import getFileUrl from "~utils/api/get-file-url";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -38,6 +41,7 @@ export default function DateInput(props: IInputProps) {
     options,
     ResetIcon = DeafultResetIcon,
     CalendarIcon = DefaultCalendarIcon,
+    media,
   } = props;
 
   const [domLoaded, setDomLoaded] = useState(false);
@@ -166,6 +170,24 @@ export default function DateInput(props: IInputProps) {
               <p>{translate("Reset")}</p>
             </button>
           </div>
+          <div
+            data-media={media && media?.length > 0}
+            className="media-container"
+          >
+            {media?.map(
+              (
+                mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
+                index: number,
+              ) => (
+                <Image
+                  key={index}
+                  src={getFileUrl(mediaItem)}
+                  fill={true}
+                  alt=""
+                />
+              ),
+            )}
+          </div>
           <Comp
             value={localValue !== undefined ? localValue : ""}
             /* @ts-ignore */
@@ -175,7 +197,7 @@ export default function DateInput(props: IInputProps) {
             onChange={(e) => {
               onChangeProxy(e);
             }}
-            calendarIcon={<CalendarIcon />}
+            calendarIcon={<CalendarIcon {...props} />}
           />
         </div>
       ) : null}
@@ -196,9 +218,17 @@ function DeafultResetIcon() {
   return <XMarkIcon />;
 }
 
-function DefaultCalendarIcon() {
+function DefaultCalendarIcon(props: IInputProps) {
+  if (props?.additionalMedia?.length) {
+    return (
+      <div className="icon-container">
+        <Image src={getFileUrl(props.additionalMedia[0])} fill={true} alt="" />
+      </div>
+    );
+  }
+
   return (
-    <div className="w-5 h-5">
+    <div className="icon-container">
       <CalendarIcon />
     </div>
   );

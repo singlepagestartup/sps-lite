@@ -10,6 +10,7 @@ import { useTranslationsContext } from "~hooks/use-translations/TranslationsCont
 import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import getFileUrl from "~utils/api/get-file-url";
+import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -257,12 +258,14 @@ export default function FileInput(props: IInputProps) {
             className="hidden"
           />
           <ButtonComp
+            {...props}
             accept={accept}
             multiple={multiple}
             placeholder={placeholder}
           />
         </label>
         <FilesArray
+          {...props}
           multiple={multiple ? true : false}
           files={localFiles}
           onFileDelete={onFileDelete}
@@ -284,16 +287,26 @@ export default function FileInput(props: IInputProps) {
 function DefaultButton({
   accept,
   multiple,
+  media,
+  additionalMedia,
   placeholder,
 }: {
   accept: string;
   multiple?: boolean | null;
   placeholder?: string | null;
+  media?: IBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: IBackendUploadPluginBackendMedia[] | null;
 }) {
   return (
     <div className="button">
       <div className="button-container">
-        <CloudArrowUpIcon />
+        <div className="icon-container">
+          {media?.length ? (
+            <Image src={getFileUrl(media[0])} fill={true} alt="" />
+          ) : (
+            <CloudArrowUpIcon />
+          )}
+        </div>
         <p>{placeholder}</p>
       </div>
     </div>
@@ -304,10 +317,12 @@ function FilesArray({
   files,
   onFileDelete,
   multiple,
+  additionalMedia,
 }: {
   multiple: boolean;
   files?: File[];
   onFileDelete: any;
+  additionalMedia?: IBackendUploadPluginBackendMedia[] | null;
 }) {
   return (
     <div
@@ -329,14 +344,24 @@ function FilesArray({
               </div>
             )}
 
-            <div
+            <button
               onClick={() => {
                 onFileDelete(index);
               }}
-              className="delete"
+              className="delete-button"
             >
-              <TrashIcon className="icon" />
-            </div>
+              <div className="icon-container">
+                {additionalMedia?.length ? (
+                  <Image
+                    src={getFileUrl(additionalMedia[0])}
+                    fill={true}
+                    alt=""
+                  />
+                ) : (
+                  <TrashIcon />
+                )}
+              </div>
+            </button>
           </div>
         );
       })}
