@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ./backend/.env.sqlite
+    expose:
+      - 1337
+    ports:
+      - 1337:1337
+
+  frontend:
+    depends_on:
+      - backend
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
