@@ -12,3 +12,4 @@ node_modules
 .node_history
 package-lock.json
 db_data
+out
