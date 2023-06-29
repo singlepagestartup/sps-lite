@@ -13,3 +13,4 @@ node_modules
 package-lock.json
 db_data
 out
+static

@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     restart: always
     env_file: ./backend/.env.sqlite
+    volumes:
+      - ./static/backend/src/api/metatag/content-types/metatag/seeds:/usr/src/app/dist/src/api/metatag/content-types/metatag/seeds
     expose:
       - 1337
     ports:
@@ -21,7 +23,7 @@ services:
       context: frontend
       dockerfile: Dockerfile.static
     volumes:
-      - ./out:/usr/src/app/out
+      - ./static/frontend/out:/usr/src/app/out
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:1337
       - NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000
