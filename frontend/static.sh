@@ -13,7 +13,7 @@ file=$(find out/_next/static/chunks -name "webpack-*.js" -type f)
 echo $file
 
 # add regex, because 's' and 'e' in s.tu(e) can be any string
-old_function="s.tu(e)"
+old_function="l.tu(e)"
 new_function="decodeURI($old_function)"
 sed -i '' -e "s/$old_function/$new_function/gi" $file
 

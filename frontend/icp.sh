@@ -22,4 +22,4 @@ rm -rf out/en/
 cp .ic-assets.json out/.ic-assets.json
 cp -R .well-known out/
 
-dfx canister install sps_lite --mode reinstall --network ic
+yes | dfx canister install sps_lite --mode reinstall --network ic

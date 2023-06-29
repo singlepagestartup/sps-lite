@@ -1,37 +1,37 @@
 version: "3"
 
 services:
-  # backend:
-  #   container_name: backend
-  #   build:
-  #     context: backend
-  #     dockerfile: Dockerfile
-  #   restart: always
-  #   env_file: ./backend/.env.sqlite
-  #   volumes:
-  #     - ./static/backend/src/api/metatag/content-types/metatag/seeds:/usr/src/app/dist/src/api/metatag/content-types/metatag/seeds
-  #   expose:
-  #     - 1337
-  #   ports:
-  #     - 1337:1337
+  backend:
+    container_name: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ./backend/.env.sqlite
+    volumes:
+      - ./static/backend/src/api/metatag/content-types/metatag/seeds:/usr/src/app/dist/src/api/metatag/content-types/metatag/seeds
+    expose:
+      - 1337
+    ports:
+      - 1337:1337
 
-  # frontend:
-  #   depends_on:
-  #     - backend
-  #   container_name: frontend
-  #   build:
-  #     context: frontend
-  #     dockerfile: Dockerfile.static
-  #   volumes:
-  #     - ./static/frontend/out:/usr/src/app/out
-  #   environment:
-  #     - NEXT_PUBLIC_BACKEND_URL=http://backend:1337
-  #     - NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000
-  #   restart: on-failure
-  #   expose:
-  #     - 3000
-  #   ports:
-  #     - 3000:3000
+  frontend:
+    depends_on:
+      - backend
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile.static
+    volumes:
+      - ./static/frontend/out:/usr/src/app/out
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://backend:1337
+      - NEXT_PUBLIC_FRONTEND_URL=https://vt6g7-qaaaa-aaaak-aeyuq-cai.icp0.io
+    restart: on-failure
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
 
   deployer:
     # depends_on:
