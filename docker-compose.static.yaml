@@ -34,9 +34,9 @@ services:
       - 3000:3000
 
   deployer:
-    # depends_on:
-    #   - backend
-    #   - frontend
+    depends_on:
+      - backend
+      - frontend
     container_name: deployer
     build:
       context: deployer
