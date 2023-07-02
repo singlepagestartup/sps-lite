@@ -1,5 +1,5 @@
 #!/bin/bash
-sleep 180
+# sleep 180
 
 rm -rf .next out
 
@@ -13,8 +13,10 @@ file=$(find ./out/_next/static/chunks -name "webpack-*.js" -type f)
 echo $file
 
 # add regex, because 's' and 'e' in s.tu(e) can be any string
-old_function="l.tu(e)"
-new_function="decodeURI($old_function)"
+# 's/\([a-zA-Z0-9_.]\+\)\.\([a-zA-Z0-9_.]\+\)(\([a-zA-Z0-9_.]\+\))/decodeURI(\1.\2(\3))/g')
+# old_function="l.tu(e)"
+old_function="([a-zA-Z0-9_.]+)\.([a-zA-Z0-9_.]){2}\(([a-zA-Z0-9_.])\)"
+new_function="decodeURI(\1.\2(\3))/g)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   sed -i '' -e "s/$old_function/$new_function/gi" $file
