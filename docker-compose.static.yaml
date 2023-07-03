@@ -22,6 +22,8 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    # command: sh -c "sleep 180 && ./start.sh"
+    command: sh -c "./static.sh"
     volumes:
       - ./static/frontend/out:/usr/src/app/out
     environment:
