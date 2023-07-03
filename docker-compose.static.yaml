@@ -21,7 +21,7 @@ services:
     container_name: frontend
     build:
       context: frontend
-      dockerfile: Dockerfile.static
+      dockerfile: Dockerfile
     volumes:
       - ./static/frontend/out:/usr/src/app/out
     environment:

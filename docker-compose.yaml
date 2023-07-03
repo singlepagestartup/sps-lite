@@ -3,6 +3,7 @@ version: "3"
 services:
   frontend:
     container_name: frontend
+    entrypoint: ["/usr/src/app/start.sh"]
     image: frontend
     restart: always
     expose:
