@@ -1,6 +1,4 @@
 #!/bin/bash
-sleep 180
-
 rm -rf .next out
 
 npm run build:icp
