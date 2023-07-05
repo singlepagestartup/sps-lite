@@ -1,5 +1,5 @@
 #!/bin/bash
-sleep 180
+# sleep 180
 
 rm -rf .next out
 
