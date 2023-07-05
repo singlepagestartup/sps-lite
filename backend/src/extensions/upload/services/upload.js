@@ -1,6 +1,6 @@
 const fs = require("fs");
 const { Readable } = require("stream");
-const { ApplicationError } = require("@strapi/utils/lib/errors");
+const { ApplicationError } = require("@strapi/utils").errors;
 
 module.exports = {
   async enhanceAndValidateFile(file, fileInfo = {}, metas = {}) {
