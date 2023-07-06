@@ -32,6 +32,7 @@ done
 
 # Moving files from out/en/ folder to out/
 cp -r out/en/. out/
-cp dfx.json out/
-cp .ic-assets.json out/
-cp -r .well-known out/
+
+# cp dfx.json out/
+# cp .ic-assets.json out/
+# cp -r .well-known out/
