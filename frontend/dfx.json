@@ -1,7 +1,7 @@
 {
   "canisters": {
     "sps_lite": {
-      "source": ["out"],
+      "source": ["."],
       "type": "assets"
     }
   },
