@@ -1,6 +1,12 @@
 FROM node:18
 WORKDIR /usr/src/app/
 
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+
 # https://stackoverflow.com/questions/58134793/error-while-loading-shared-libraries-libnss3-so-while-running-gtlab-ci-job-to
 # RUN apt-get update
 # RUN apt-get -y install curl
