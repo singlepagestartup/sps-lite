@@ -33,6 +33,7 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@rogwild/strapi-utils": "^6.7.0",

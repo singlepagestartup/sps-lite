@@ -6,6 +6,7 @@ export default {
       handler: "telegram.webhook",
       config: {
         policies: [],
+        middlewares: ["api::telegram.create-webhook"],
       },
     },
   ],

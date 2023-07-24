@@ -40,6 +40,7 @@ export default {
 
     if (process.env.RUN_TELEGRAM_BOT) {
       const telegramBot = new Telegram();
+      strapi.telegram = telegramBot;
     }
 
     if (process.env.MAKE_NEW_SEED) {

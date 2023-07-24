@@ -3,6 +3,7 @@ WORKDIR /usr/src/app/
 
 RUN apt-get update && \
     apt-get -qy full-upgrade && \
+    apt-get install ffmpeg && \
     apt-get install -qy curl && \
     apt-get install -qy curl && \
     curl -sSL https://get.docker.com/ | sh

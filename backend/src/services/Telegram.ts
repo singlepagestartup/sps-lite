@@ -2,10 +2,13 @@ import { message } from "telegraf/filters";
 import { type Context, Telegraf, session } from "telegraf";
 import axios from "axios";
 import ffmpeg from "fluent-ffmpeg";
+import ffmpegPath from "@ffmpeg-installer/ffmpeg";
 import fs from "fs/promises";
 import path from "path";
 import OpenAI from "./OpenAi";
 import type { Update } from "telegraf/types";
+
+ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 interface TelegramBotContext<U extends Update = Update> extends Context<U> {
   session: {
@@ -26,12 +29,9 @@ class Telegram {
 
     this.setHandlers();
 
-    this.bot.launch({
-      webhook: {
-        domain: process.env.BACKEND_HOST || "",
-        port: Number(process.env.PORT) || 1337,
-        hookPath: "/api/telegram/webhook",
-      },
+    this.bot.createWebhook({
+      domain: process.env.BACKEND_HOST || "",
+      path: "/api/telegram/webhook",
     });
 
     this.openAi = new OpenAI();
