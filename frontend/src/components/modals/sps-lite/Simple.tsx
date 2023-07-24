@@ -16,7 +16,7 @@ export default function Simple(props: ISpsLiteModal) {
         onClose={() => {
           setIsOpen(false);
           if (pathname) {
-            router.replace(pathname);
+            router.replace(pathname, { scroll: false });
           }
         }}
         data-collection-type="modal"
@@ -55,7 +55,7 @@ export default function Simple(props: ISpsLiteModal) {
                   onClick={() => {
                     setIsOpen(false);
                     if (pathname) {
-                      router.replace(pathname);
+                      router.replace(pathname, { scroll: false });
                     }
                   }}
                   className="button-close"

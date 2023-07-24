@@ -31,6 +31,7 @@ do
 done
 
 # Moving files from out/en/ folder to out/
+# @todo: change /en to default locale from backend
 cp -r out/en/. out/
 
 # cp dfx.json out/

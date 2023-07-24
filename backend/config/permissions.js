@@ -18,6 +18,7 @@ const spsLitePublicActions = {
   "api::flyout.flyout": ["find", "findOne"],
   "api::page.page": ["find", "findOne"],
   "api::loader.loader": ["find"],
+  "api::telegram.telegram": ["webhook"],
   "plugin::users-permissions.auth": [],
   "plugin::users-permissions.user": [],
   "plugin::users-permissions.role": [],
