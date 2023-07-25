@@ -5,6 +5,7 @@ import customizeCoreStrapi from "./utils/bootstrap/customize-core-strapi";
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
+// import GoogleCloud from "./services/GoogleCloud";
 
 export default {
   async bootstrap({ strapi }) {
