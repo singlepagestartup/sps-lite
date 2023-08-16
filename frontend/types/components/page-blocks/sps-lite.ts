@@ -30,7 +30,7 @@ export interface ISpsLiteBackendContactSectonBlock {
   className: string | null;
   anchor: string | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   form?: ISpsLiteBackendForm | null;
   buttonsArrays?: ISpsLiteBackendButtonsArray[] | null;
 }

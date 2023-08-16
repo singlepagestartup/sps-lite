@@ -118,7 +118,9 @@ export default function ListboxInput(props: IInputProps) {
             <div className="icon">
               <ResetIcon className="w-4 h-5" />
             </div>
-            <p>{translate("Reset")}</p>
+            <p>
+              {typeof translate === "function" ? translate("Reset") : "Reset"}
+            </p>
           </button>
         </div>
         <Listbox
