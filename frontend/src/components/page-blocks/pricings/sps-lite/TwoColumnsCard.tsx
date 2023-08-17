@@ -6,6 +6,7 @@ import Image from "next/image";
 import { IBackendTier } from "types/collection-types";
 import { ISpsLitePricingsBlock } from ".";
 import Buttons from "~components/elements/buttons";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -14,7 +15,7 @@ const cardsConfig = {
     "mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2 lg:gap-8 items-start",
 };
 
-export default function TwoColumns(props: ISpsLitePricingsBlock) {
+export default function TwoColumnsCard(props: ISpsLitePricingsBlock) {
   const translate = useTranslations();
 
   const additionalAttributes = useMemo(() => {
@@ -45,15 +46,21 @@ export default function TwoColumns(props: ISpsLitePricingsBlock) {
         </div>
         <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl">
-            <h2 className="text-lg font-semibold leading-8 text-indigo-400">
-              {props.subtitle}
-            </h2>
-            <p className="mt-2 text-4xl font-bold tracking-tight text-white">
-              {props.title}
-            </p>
-            <p className="mt-6 text-lg leading-8 text-white/60">
-              {props.description}
-            </p>
+            {props.subtitle ? (
+              <h2 className="text-lg font-semibold leading-8 text-indigo-400">
+                <ReactMarkdown>{props.subtitle}</ReactMarkdown>
+              </h2>
+            ) : null}
+            {props.title ? (
+              <ReactMarkdown className="mt-2 text-4xl font-bold tracking-tight text-white">
+                {props.title}
+              </ReactMarkdown>
+            ) : null}
+            {props.description ? (
+              <ReactMarkdown className="mt-6 text-lg leading-8 text-white/60">
+                {props.description}
+              </ReactMarkdown>
+            ) : null}
           </div>
         </div>
       </div>

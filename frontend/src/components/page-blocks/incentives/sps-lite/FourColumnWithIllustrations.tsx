@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { ISpsLiteIncentivesBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function FourColumnWithIllustrations(
   props: ISpsLiteIncentivesBlock,
@@ -26,8 +27,14 @@ export default function FourColumnWithIllustrations(
       {...additionalAttributes}
     >
       <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
-        <h3 className="text-3xl mb-3">{props.title}</h3>
-        <p className="mb-6">{props.description}</p>
+        {props.title ? (
+          <h3 className="text-3xl mb-3">
+            <ReactMarkdown>{props.title}</ReactMarkdown>
+          </h3>
+        ) : null}
+        {props.description ? (
+          <ReactMarkdown className="mb-6">{props.description}</ReactMarkdown>
+        ) : null}
         <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
           {props.features?.length
             ? props.features.map((feature, index) => (
@@ -44,12 +51,16 @@ export default function FourColumnWithIllustrations(
                       className="object-contain"
                     />
                   ) : null}
-                  <h3 className="mt-6 text-sm font-medium text-gray-900">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-500">
-                    {feature?.description}
-                  </p>
+                  {feature.title ? (
+                    <h3 className="mt-6 text-sm font-medium text-gray-900">
+                      <ReactMarkdown>{feature.title}</ReactMarkdown>
+                    </h3>
+                  ) : null}
+                  {feature?.description ? (
+                    <ReactMarkdown className="mt-2 text-sm text-gray-500">
+                      {feature?.description}
+                    </ReactMarkdown>
+                  ) : null}
                 </div>
               ))
             : null}

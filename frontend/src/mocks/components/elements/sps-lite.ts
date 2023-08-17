@@ -125,7 +125,7 @@ export const spsLiteBackendFaq: ISpsLiteBackendFaq = {
   __component: "elements.faq",
   title: "Question",
   description:
-    "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
+    "To register on our website, go to the [registration page](https://singlepagestartup.com/auth/registration) and fill in the **required fields**.",
 };
 
 export const spsLiteBackendFeature: ISpsLiteBackendFeature = {
@@ -151,6 +151,9 @@ export const spsLiteBackendNameInput: ISpsLiteBackendInput = {
   type: null,
   multiple: null,
   options: [],
+  min: null,
+  max: null,
+  step: null,
 };
 
 export const spsLiteBackendEmailInput: ISpsLiteBackendInput = {
@@ -166,6 +169,9 @@ export const spsLiteBackendEmailInput: ISpsLiteBackendInput = {
   type: null,
   multiple: null,
   options: [],
+  min: null,
+  max: null,
+  step: null,
 };
 
 export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
@@ -179,17 +185,18 @@ export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
   label: "Tier",
   className: "col-span-4",
   type: null,
+  min: null,
+  max: null,
+  step: null,
   multiple: null,
   options: [
     {
       id: 24,
-      __component: "elements.input-option",
       title: "Lite",
       description: null,
     },
     {
       id: 25,
-      __component: "elements.input-option",
       title: "Pro",
       description: null,
     },
@@ -209,6 +216,9 @@ export const spsLiteBackendQuestionInput: ISpsLiteBackendInput = {
   type: "textarea",
   multiple: null,
   options: [],
+  min: null,
+  max: null,
+  step: null,
 };
 
 export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
@@ -224,6 +234,9 @@ export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
   type: null,
   multiple: null,
   options: [],
+  min: null,
+  max: null,
+  step: null,
 };
 
 export const spsLiteBackendLogotype: ISpsLiteBackendLogotype = {

@@ -20,6 +20,66 @@ export const spsLiteUploadPluginBackendMediaTableAndHands: ISpsLiteBackendUpload
     updatedAt: "2023-04-01T20:54:54.396Z",
   };
 
+export const spsLiteUploadPluginBackendAditionalMediaTableAndHands: ISpsLiteBackendUploadPluginBackendMedia =
+  {
+    id: 907,
+    name: "Bitcoin_BTC%20Flower.png",
+    alternativeText: null,
+    caption: null,
+    width: 1360,
+    height: 1536,
+    hash: "Bitcoin_BTC%20Flower33",
+    ext: ".png",
+    mime: "image/png",
+    size: 129.77,
+    url: "https://721511.selcdn.ru/sps-storybook/Bitcoin_BTC%20Flower.png",
+    previewUrl: null,
+    provider: "aws-s3",
+    providerMetadata: null,
+    createdAt: "2023-04-01T20:54:54.396Z",
+    updatedAt: "2023-04-01T20:54:54.396Z",
+  };
+
+export const spsLiteUploadPluginBackendAditionalMediaIncentives: ISpsLiteBackendUploadPluginBackendMedia =
+  {
+    id: 907,
+    name: "Blockchain.png",
+    alternativeText: null,
+    caption: null,
+    width: 1360,
+    height: 1536,
+    hash: "Blockchain",
+    ext: ".png",
+    mime: "image/png",
+    size: 129.77,
+    url: "https://721511.selcdn.ru/sps-storybook/Blockchain.png",
+    previewUrl: null,
+    provider: "aws-s3",
+    providerMetadata: null,
+    createdAt: "2023-04-01T20:54:54.396Z",
+    updatedAt: "2023-04-01T20:54:54.396Z",
+  };
+
+export const spsLiteUploadPluginBackendAditionalMediaHeader: ISpsLiteBackendUploadPluginBackendMedia =
+  {
+    id: 907,
+    name: "Network.png",
+    alternativeText: null,
+    caption: null,
+    width: 1360,
+    height: 1536,
+    hash: "Network",
+    ext: ".png",
+    mime: "image/png",
+    size: 129.77,
+    url: "https://721511.selcdn.ru/sps-storybook/Network.png",
+    previewUrl: null,
+    provider: "aws-s3",
+    providerMetadata: null,
+    createdAt: "2023-04-01T20:54:54.396Z",
+    updatedAt: "2023-04-01T20:54:54.396Z",
+  };
+
 export const spsLiteUploadPluginBackendMediaRoundIcon: ISpsLiteBackendUploadPluginBackendMedia =
   {
     id: 918,
@@ -60,4 +120,23 @@ export const spsLiteUploadPluginBackendMediaLogotypeIcon: ISpsLiteBackendUploadP
     providerMetadata: null,
     createdAt: "2023-04-01T21:02:54.372Z",
     updatedAt: "2023-04-01T21:02:54.372Z",
+  };
+export const spsLiteUploadPluginBackendAditionalMedia: ISpsLiteBackendUploadPluginBackendMedia =
+  {
+    id: 907,
+    name: "Bitcoin_BTC%20Flower.png",
+    alternativeText: null,
+    caption: null,
+    width: 1360,
+    height: 1536,
+    hash: "Bitcoin_BTC%20Flower",
+    ext: ".png",
+    mime: "image/png",
+    size: 129.77,
+    url: "https://721511.selcdn.ru/sps-storybook/Bitcoin_BTC%20Flower.png",
+    previewUrl: null,
+    provider: "aws-s3",
+    providerMetadata: null,
+    createdAt: "2023-04-01T20:54:54.396Z",
+    updatedAt: "2023-04-01T20:54:54.396Z",
   };

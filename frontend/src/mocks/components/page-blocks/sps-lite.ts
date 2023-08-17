@@ -31,21 +31,28 @@ import {
   spsLiteBackendFeature,
   spsLiteBackendLogotype,
 } from "~mocks/components/elements/sps-lite";
-import { spsLiteUploadPluginBackendMediaTableAndHands } from "~mocks/plugins/upload/sps-lite";
+import {
+  spsLiteUploadPluginBackendAditionalMedia,
+  spsLiteUploadPluginBackendAditionalMediaHeader,
+  spsLiteUploadPluginBackendAditionalMediaIncentives,
+  spsLiteUploadPluginBackendAditionalMediaTableAndHands,
+  spsLiteUploadPluginBackendMediaTableAndHands,
+} from "~mocks/plugins/upload/sps-lite";
 
 export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesSectionBlock =
   {
     id: 32,
-    title: "Title Of Feature Section Block With Icon",
+    title: "Powerful Features for Unleashing Your Business Potential",
     variant: "with-icon",
     className: null,
-    subtitle: "Subtitle Of Feature Section Block With Icon",
+    subtitle: "Discover the Tools That Will Transform Your Operations",
     anchor: "anchor",
     description:
-      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+      "Our Features Block is packed with an array of powerful tools and functionalities designed to propel your business forward. From seamless workflow automation to advanced analytics, our platform provides everything you need to streamline processes, make data-driven decisions, and achieve your goals. Explore our comprehensive feature set and unlock the potential of your business.",
     __component: "page-blocks.features-section-block",
     features: Array(4).fill({ ...spsLiteBackendFeature }),
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
+    additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMedia }],
   };
 
 export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSectonBlock =
@@ -783,16 +790,19 @@ export const spsLiteBackendContactSectionBlockCentered: ISpsLiteBackendContactSe
 export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBackendCtaSectionBlock =
   {
     id: 3,
-    title: "Minimum Viable Product is Ready",
+    title: "Subscribe Today!",
     variant: "dark-with-image",
     className: "cta_class_name",
     subtitle: "Subtitle",
     anchor: "pb-cta-section",
     __component: "page-blocks.cta-section-block",
     description:
-      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+      "Receive exclusive offers, promotions, and updates by subscribing to our newsletter. Stay up to date with the latest news!",
     buttons: Array(3).fill({ ...spsLiteBackendButtonSecondary }),
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
+    additionalMedia: [
+      { ...spsLiteUploadPluginBackendAditionalMediaTableAndHands },
+    ],
   };
 
 export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteBackendFaqBlock =
@@ -805,7 +815,7 @@ export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteB
     variant: "two-columns-with-centered-introduction",
     __component: "page-blocks.faqs-block",
     description:
-      "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+      "Below you will find answers to the most frequently asked questions.",
     faqs: Array(4).fill({ ...spsLiteBackendFaq }),
   };
 
@@ -814,12 +824,14 @@ export const spsLiteBackendHeaderSectionBlockSimpleCentered: ISpsLiteBackendHead
     id: 9,
     variant: "simple-centered",
     __component: "page-blocks.header-section-block",
-    title: "Minimum Viable Product is Ready",
+    title: "Welcome to our website!",
     className: "header_section_class_name",
-    subtitle: "Subtitle",
+    subtitle: "Discover the Difference",
     anchor: "header-section-anchor",
     description:
-      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+      "We offer a wide selection of high-quality products. Spend time with us and enjoy the convenience of shopping.",
+    media: null,
+    additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
   };
 
 export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSectionBlock =
@@ -834,19 +846,27 @@ export const spsLiteBackendHeroSectionBlockSimpleCentered: ISpsLiteBackendHeroSe
     buttons: [{ ...spsLiteBackendButtonSecondary }],
     __component: "page-blocks.hero-section-block",
     media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
+    additionalMedia: [
+      { ...spsLiteUploadPluginBackendAditionalMediaTableAndHands },
+    ],
   };
 
 export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations: ISpsLiteBackendIncentivesBlock =
   {
     id: 9,
-    title: "Title",
-    description: "Description",
+    title: "Our Incentive Programs",
+    description:
+      "We offer various incentive programs to help you achieve your goals",
     subtitle: null,
     className: null,
     anchor: "anchor",
     __component: "page-blocks.incentives-block",
     variant: "four-column-with-illustrations",
     features: Array(4).fill({ ...spsLiteBackendFeature }),
+    media: null,
+    additionalMedia: [
+      { ...spsLiteUploadPluginBackendAditionalMediaIncentives },
+    ],
   };
 
 export const spsLiteBackendLogotypesCloudBlockSimpleWithHeading: ISpsLiteBackendLogotypesCloudBlock =
@@ -854,12 +874,14 @@ export const spsLiteBackendLogotypesCloudBlockSimpleWithHeading: ISpsLiteBackend
     id: 5,
     __component: "page-blocks.logotypes-cloud-block",
     variant: "simple-with-heading",
-    title: "Hello world",
-    subtitle: "Subtitle",
-    description: "Description",
+    title: "Logotypes Cloud",
+    subtitle: "Discover the Perfect Logo",
+    description:
+      "We offer an extensive collection of logos that allow you to represent your company in an effective and professional style",
     className: null,
     anchor: "anchor",
     logotypes: Array(5).fill({ ...spsLiteBackendLogotype }),
+    buttons: null,
   };
 
 export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
@@ -871,20 +893,24 @@ export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
   className: null,
   description: "Come to main page and start again",
   buttons: Array(1).fill({ ...spsLiteBackendButtonSecondary }),
+  media: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
+  additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
 };
 
 export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock =
   {
     id: 2,
     __component: "page-blocks.pricing-block",
-    variant: "two-columns",
-    title: "Minimum Viable Product is Ready",
-    subtitle: "Subtitle",
+    variant: "two-columns-card",
+    title: "Choose the Perfect Plan for Your Business",
+    subtitle: "Find the Right Pricing Package for Your Needs",
     anchor: "anchor",
     description:
-      "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+      "Explore our range of pricing plans and choose the one that best suits your business requirements. Whether you're a startup, small business, or enterprise, we have flexible options designed to accommodate your budget and goals. Compare features, prices, and benefits to make an informed decision and take your business to the next level.",
     className: null,
     tiers: Array(2).fill({ ...spsLiteBackendTier }),
+    media: null,
+    additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
   };
 
 export const spsLiteBackendReviewsListBlockSimpleWithAvatars: ISpsLiteBackendReviewsListBlock =

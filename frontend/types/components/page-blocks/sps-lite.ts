@@ -72,7 +72,7 @@ export interface ISpsLiteBackendFeaturesSectionBlock {
   anchor: string | null;
   className: string | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendHeaderSectionBlock {
@@ -84,7 +84,7 @@ export interface ISpsLiteBackendHeaderSectionBlock {
   subtitle: string | null;
   className: string | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   anchor: string | null;
 }
 
@@ -111,7 +111,7 @@ export interface ISpsLiteBackendIncentivesBlock {
   description: string | null;
   className: string | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   anchor: string | null;
 }
 
@@ -137,20 +137,20 @@ export interface ISpsLiteBackendNotFoundBlock {
   description: string | null;
   className: string | null;
   buttons?: ISpsLiteBackendButton[] | null;
-  media?: ISpsLiteBackendUploadPluginBackendMedia[];
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 
 export interface ISpsLiteBackendPricingsBlock {
   id: number;
   __component: "page-blocks.pricing-block";
-  variant: "two-columns";
+  variant: "two-columns-card";
   title: string | null;
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  media?: ISpsLiteBackendUploadPluginBackendMedia[];
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   tiers?: ISpsLiteBackendTier[] | null;
   className: string | null;
 }
