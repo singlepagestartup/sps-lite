@@ -6,6 +6,7 @@ import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Forms, { ISpsLiteFormBlock } from ".";
 import { spsLiteBackendForm } from "~mocks/collection-types/sps-lite";
+import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
 export default meta;
@@ -30,9 +31,11 @@ function FormComponent(args: ISpsLiteFormBlock) {
 
   return (
     <div className="relative w-full min-h-screen">
-      <Provider store={store}>
-        <Forms {...args} />
-      </Provider>
+      <TranslationsContextWrapper>
+        <Provider store={store}>
+          <Forms {...args} />
+        </Provider>
+      </TranslationsContextWrapper>
     </div>
   );
 }

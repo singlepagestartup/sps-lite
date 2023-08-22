@@ -1,5 +1,5 @@
 import { ISpsLiteBackendPricingsBlock } from "types/components/page-blocks/sps-lite";
-import TwoColumns from "./TwoColumns";
+import TwoColumnsCard from "./TwoColumnsCard";
 import { FC } from "react";
 
 export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {
@@ -7,7 +7,7 @@ export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {
 }
 
 export const variants = {
-  "two-columns": TwoColumns,
+  "two-columns-card": TwoColumnsCard,
 };
 
 export default function Pricings(props: ISpsLitePricingsBlock) {

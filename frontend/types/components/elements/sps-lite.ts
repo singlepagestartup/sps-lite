@@ -3,7 +3,7 @@ import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sp
 
 export interface ISpsLiteBackendButton {
   id: number;
-  __component: "elements.button";
+  __component?: "elements.button";
   variant: "text" | "primary" | "secondary";
   title: string | null;
   url: string | null;
@@ -71,12 +71,23 @@ export interface ISpsLiteBackendInput {
   isRequired: boolean;
   value: string | null;
   name: string;
-  options?: ISpsLiteBackendInputOption[];
+  options?: Omit<ISpsLiteBackendInputOption, "__component">[];
   label: string | null;
   className: string | null;
-  type: "text" | "textarea" | "file" | "date" | "datetime" | null;
+  type:
+    | "text"
+    | "textarea"
+    | "file"
+    | "date"
+    | "datetime"
+    | "date_inline"
+    | null;
   multiple: boolean | null;
+  min: number | null;
+  max: number | null;
+  step: number | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
 }
 

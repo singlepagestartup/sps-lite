@@ -1,3 +1,4 @@
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ISpsLiteContactSectonBlock } from ".";
 import Forms from "~components/forms";
 
@@ -13,10 +14,12 @@ export default function Centered(props: ISpsLiteContactSectonBlock) {
       <div className="relative mx-auto max-w-xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {props.title}
+            {props.title ? <ReactMarkdown>{props.title}</ReactMarkdown> : null}
           </h2>
           <p className="mt-4 text-lg leading-6 text-gray-500">
-            {props.description}
+            {props.description ? (
+              <ReactMarkdown>{props.description}</ReactMarkdown>
+            ) : null}
           </p>
         </div>
         <div className="mt-12">

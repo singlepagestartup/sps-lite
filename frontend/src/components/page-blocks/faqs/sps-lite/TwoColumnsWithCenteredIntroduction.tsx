@@ -1,3 +1,4 @@
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ISpsLiteFaqBlock } from ".";
 
 export default function TwoColumnsWithCenteredIntroduction(
@@ -20,12 +21,16 @@ export default function TwoColumnsWithCenteredIntroduction(
           <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 md:space-y-0">
             {props.faqs?.map((faq, index) => (
               <div key={index}>
-                <dt className="text-lg font-medium leading-6 text-gray-900">
-                  {faq.title}
-                </dt>
-                <dd className="mt-2 text-base text-gray-500">
-                  {faq.description}
-                </dd>
+                {faq.title ? (
+                  <ReactMarkdown className="text-lg font-medium leading-6 text-gray-900">
+                    {faq.title}
+                  </ReactMarkdown>
+                ) : null}
+                {faq.description ? (
+                  <ReactMarkdown className="mt-2 text-base text-gray-500">
+                    {faq.description}
+                  </ReactMarkdown>
+                ) : null}
               </div>
             ))}
           </dl>

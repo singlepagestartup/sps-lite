@@ -44,7 +44,11 @@ export default function SimpleWithAvatars(props: ISpsLiteReviewsListBlock) {
       {...additionalAttributes}
     >
       <div>
-        <h2 className="text-center font-bold text-3xl mb-8">{props.title}</h2>
+        {props.title ? (
+          <h2 className="text-center font-bold text-3xl mb-8">
+            <ReactMarkdown>{props.title}</ReactMarkdown>
+          </h2>
+        ) : null}
 
         <Cards
           variant="simple"

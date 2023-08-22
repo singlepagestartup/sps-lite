@@ -7,8 +7,9 @@ import { BACKEND_URL } from "~utils/envs";
 import ReviewsLists, { ISpsLiteReviewsListBlock } from ".";
 import { spsLiteBackendReviewsListBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
+import Reviews from "./index";
 
-const meta = { component: ReviewsLists } satisfies Meta<typeof ReviewsLists>;
+const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;

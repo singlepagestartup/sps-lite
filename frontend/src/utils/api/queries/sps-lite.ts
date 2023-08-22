@@ -131,6 +131,7 @@ export const pageBlockPopulate = {
       features: { populate: featurePopulate },
       faqs: { populate: faqPopulate },
       logotype: { populate: logotypePopulate },
+      logotypes: { populate: logotypePopulate },
       slider: {
         populate: sliderPopulate,
       },
