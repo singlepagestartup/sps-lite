@@ -38,9 +38,9 @@ export interface IInputProps extends UseControllerProps {
   renderOptionValue?: (option: any) => string;
   valueAsNumber?: boolean;
   InsideComponent?: FC<IInsideComponentProps>;
-  step?: number;
-  min?: number;
-  max?: number;
+  step?: number | null;
+  min?: number | null;
+  max?: number | null;
   disabled?: boolean;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;

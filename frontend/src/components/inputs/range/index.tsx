@@ -142,8 +142,8 @@ export default function RangeInput(props: IInputProps) {
 
             onChange(e);
           }}
-          min={min}
-          max={max}
+          min={min !== null && min !== undefined ? min : undefined}
+          max={max !== null && min !== undefined ? max : undefined}
           onBlur={onBlur}
           value={value !== undefined ? value : ""}
           ref={(e) => {

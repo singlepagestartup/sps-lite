@@ -49,9 +49,9 @@ export default function DateInput(props: IInputProps) {
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
-    step?: number;
-    min?: number;
-    max?: number;
+    step?: number | null;
+    min?: number | null;
+    max?: number | null;
   }>({});
 
   useEffect(() => {

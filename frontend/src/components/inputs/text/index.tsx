@@ -43,9 +43,9 @@ export default function TextInput(props: IInputProps) {
 
   useEffect(() => {
     setAdditionalAttributes({
-      step,
-      min,
-      max,
+      step: step !== undefined && step !== null ? step : undefined,
+      min: min !== undefined && min !== null ? min : undefined,
+      max: max !== undefined && max !== null ? max : undefined,
     });
   }, [props]);
 
