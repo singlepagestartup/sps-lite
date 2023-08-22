@@ -126,6 +126,7 @@ export async function generateMetadata(props: any) {
 
 async function getPage(props: any) {
   const { locale }: { locale: string } = props.params;
+
   const targetPage = await getTargetPage(props.params);
 
   if (!targetPage) {
