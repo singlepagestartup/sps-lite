@@ -32,41 +32,13 @@ export async function generateStaticParams() {
 
   for (const path of paths) {
     if (path.url?.find((url: string) => url.includes("."))) {
-      const modelRoute = path.url.find((url: string) => url.includes("."));
+      const modelRoutes = path.url.filter((url: string) => url.includes("."));
+      const paths = await getPaths({ modelRoutes, path });
 
-      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-      const model = sanitizedRoute.split(".")[0];
-      const modelParam = sanitizedRoute.split(".")[1];
-
-      const modelEntites = await getBackendData({
-        url: `${BACKEND_URL}/api/${model}`,
-        params: {
-          locale: "all",
-          pagination: { limit: "-1" },
-        },
+      paths.forEach((p) => {
+        filledPaths.push(p);
       });
 
-      if (modelEntites?.length) {
-        for (const modelEntity of modelEntites) {
-          const uri = `${modelEntity[modelParam]}`;
-          const pathUrl = path.url.map((url: string) => {
-            if (url === modelRoute) {
-              return uri;
-            }
-            return url;
-          });
-
-          const resPath = {
-            url: pathUrl,
-          } as any;
-
-          if (modelEntity.locale) {
-            resPath.locale = modelEntity.locale;
-          }
-
-          filledPaths.push(resPath);
-        }
-      }
       continue;
     }
 
@@ -164,43 +136,17 @@ async function getPage(props: any) {
   const filledPages = [];
   for (const page of pages) {
     if (page.url.includes(".")) {
-      const modelRoute = page.url
+      const modelRoutes = page.url
         .split("/")
-        .find((url: string) => url.includes("."));
-      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-      const model = sanitizedRoute.split(".")[0];
-      const modelParam = sanitizedRoute.split(".")[1];
+        .filter((url: string) => url.includes("."));
 
-      const modelEntites = await getBackendData({
-        url: `${BACKEND_URL}/api/${model}`,
-        params: {
-          fields: [modelParam],
-          locale: page.locale,
-          pagination: { limit: "-1" },
-        },
-      });
+      const pgs = await getPages({ modelRoutes, page });
 
-      if (modelEntites?.length) {
-        const entitesUrls = [];
-        for (const modelEntity of modelEntites) {
-          const uri = `${modelEntity[modelParam]}`;
-          const pathUrl = page.url
-            .split("/")
-            .map((url: string) => {
-              if (url === modelRoute) {
-                return uri;
-              }
+      // console.log("🚀 ~ getPage ~ pgs:", pgs);
 
-              return url;
-            })
-            .filter((url: string) => url !== "");
-
-          entitesUrls.push(`/${pathUrl.join("/")}`);
-        }
-
-        filledPages.push({
-          ...page,
-          urls: entitesUrls,
+      if (pgs.length) {
+        pgs.forEach((p) => {
+          filledPages.push(p);
         });
       }
 
@@ -243,4 +189,154 @@ export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
   return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
+}
+
+async function getPages({ filters, modelRoutes, page }: any) {
+  const localFilters = { ...filters };
+  const filledPages = [];
+
+  const modelRoute = modelRoutes[0];
+  const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
+  const model = sanitizedRoute.split(".")[0];
+  const modelParam = sanitizedRoute.split(".")[1];
+
+  const modelEntites = await getBackendData({
+    url: `${BACKEND_URL}/api/${model}`,
+    params: {
+      fields: [modelParam],
+      locale: page.locale,
+      filters: localFilters,
+      pagination: { limit: "-1" },
+    },
+  });
+
+  if (modelEntites?.length) {
+    const entitesUrls = [];
+    for (const modelEntity of modelEntites) {
+      if (modelRoutes.length === 1) {
+        const uri = `${modelEntity[modelParam]}`;
+        const pathUrl = page.url
+          .split("/")
+          .map((url: string) => {
+            if (url === modelRoute) {
+              return uri;
+            }
+
+            if (url.includes(".") && filters && Object.keys(filters)) {
+              const sanitizedRoute = url.replace("[", "").replace("]", "");
+              const model = sanitizedRoute.split(".")[0];
+              if (filters[model]) {
+                return filters[model];
+              }
+            }
+
+            return url;
+          })
+          .filter((url: string) => url !== "");
+
+        entitesUrls.push(`/${pathUrl.join("/")}`);
+      } else {
+        const sanitizedModelRoutes = modelRoutes.filter(
+          (mr: string) => mr !== modelRoute,
+        );
+
+        const filters = {
+          [model]: `${modelEntity.id}`,
+        };
+
+        const p = await getPages({
+          filters,
+          modelRoutes: sanitizedModelRoutes,
+          page,
+        });
+
+        if (p.length) {
+          p.forEach((pg) => {
+            pg.urls.forEach((u: string) => {
+              entitesUrls.push(u);
+            });
+          });
+        }
+      }
+    }
+
+    filledPages.push({
+      ...page,
+      urls: entitesUrls,
+    });
+  }
+
+  return filledPages;
+}
+
+async function getPaths({ filters, path, modelRoutes }: any) {
+  const pagesPaths = [];
+  const localFilters = { ...filters };
+
+  const modelRoute = modelRoutes[0];
+  const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
+  const model = sanitizedRoute.split(".")[0];
+  const modelParam = sanitizedRoute.split(".")[1];
+
+  const modelEntites = await getBackendData({
+    url: `${BACKEND_URL}/api/${model}`,
+    params: {
+      locale: "all",
+      filters: localFilters,
+      pagination: { limit: "-1" },
+    },
+  });
+
+  if (modelEntites?.length) {
+    for (const modelEntity of modelEntites) {
+      const uri = `${modelEntity[modelParam]}`;
+      const pathUrl = path.url.map((url: string) => {
+        if (url === modelRoute) {
+          return uri;
+        }
+
+        if (url.includes(".") && filters && Object.keys(filters)) {
+          const sanitizedRoute = url.replace("[", "").replace("]", "");
+          const model = sanitizedRoute.split(".")[0];
+          if (filters[model]) {
+            return filters[model];
+          }
+        }
+
+        return url;
+      });
+
+      const resPath = {
+        url: pathUrl,
+      } as any;
+
+      if (modelEntity.locale) {
+        resPath.locale = modelEntity.locale;
+      }
+      if (modelRoutes.length === 1) {
+        pagesPaths.push(resPath);
+      } else {
+        const sanitizedModelRoutes = modelRoutes.filter(
+          (mr: string) => mr !== modelRoute,
+        );
+        const filters = {
+          [model]: `${modelEntity.id}`,
+        };
+
+        const p = await getPaths({
+          filters,
+          modelRoutes: sanitizedModelRoutes,
+          path,
+        });
+
+        if (p.length) {
+          p.forEach((pt) => {
+            pagesPaths.push(pt);
+          });
+        }
+      }
+    }
+  }
+
+  return pagesPaths;
 }
