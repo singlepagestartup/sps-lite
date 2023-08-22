@@ -166,6 +166,30 @@ export async function getPages({ filters, modelRoutes, page }: any) {
   return filledPages;
 }
 
+export function getFiltersFromPageUrl({ page, params }: any): any[] {
+  const filters = [];
+
+  const pageUrls = page.url.split("/").filter((u: string) => u !== "");
+
+  for (const [index, pageUrl] of pageUrls.entries()) {
+    if (pageUrl.includes(".") && params?.url && params.url[index]) {
+      const key = pageUrl.replace("[", "").replace("]", "").split(".")[0];
+
+      const filter = {
+        [key]: {
+          id: {
+            $in: [params.url[index]],
+          },
+        },
+      };
+
+      filters.push(filter);
+    }
+  }
+
+  return filters;
+}
+
 export async function getPaths({ filters, path, modelRoutes }: any) {
   const pagesPaths = [];
   const localFilters = { ...filters };
