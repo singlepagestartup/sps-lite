@@ -150,7 +150,6 @@ async function getPage(props: any) {
 }
 
 export default async function Page(props: any) {
-  console.log("🚀 ~ Page ~ props:", props);
   const pageProps = await getPage(props);
 
   return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
