@@ -8,9 +8,9 @@
     "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
     "title": "Features Slider",
     "uid": "features-slider",
-    "createdAt": "2023-06-08T05:19:32.748Z",
-    "updatedAt": "2023-06-25T20:37:18.108Z",
-    "publishedAt": "2023-03-28T05:46:50.780Z",
+    "createdAt": "2023-06-08T03:19:32.748Z",
+    "updatedAt": "2023-06-25T18:37:18.108Z",
+    "publishedAt": "2023-03-28T03:46:50.780Z",
     "locale": "en",
     "slides": [
         {
@@ -81,8 +81,8 @@
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:04.548Z",
-                    "updatedAt": "2023-06-25T20:37:04.548Z",
+                    "createdAt": "2023-06-25T18:37:04.548Z",
+                    "updatedAt": "2023-06-25T18:37:04.548Z",
                     "folder": null
                 }
             ],
@@ -170,8 +170,8 @@
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:10.092Z",
-                    "updatedAt": "2023-06-25T20:37:10.092Z",
+                    "createdAt": "2023-06-25T18:37:10.092Z",
+                    "updatedAt": "2023-06-25T18:37:10.092Z",
                     "folder": null
                 }
             ],
@@ -246,8 +246,8 @@
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:17.972Z",
-                    "updatedAt": "2023-06-25T20:37:17.972Z",
+                    "createdAt": "2023-06-25T18:37:17.972Z",
+                    "updatedAt": "2023-06-25T18:37:17.972Z",
                     "folder": null
                 }
             ],

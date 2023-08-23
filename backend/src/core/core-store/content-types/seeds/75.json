@@ -1,7 +1,7 @@
 {
     "id": 75,
     "key": "plugin_upload_metrics",
-    "value": "{\"weeklySchedule\":\"45 45 16 * * 0\",\"lastWeeklyUpdate\":1687693545041}",
+    "value": "{\"weeklySchedule\":\"41 46 19 * * 3\",\"lastWeeklyUpdate\":1692204401092}",
     "type": "object",
     "environment": null,
     "tag": null

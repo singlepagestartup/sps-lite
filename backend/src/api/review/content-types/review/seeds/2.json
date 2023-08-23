@@ -5,9 +5,9 @@
     "description": "The Single Page Startup has been a game-changer for our company. It has dramatically reduced our development time and allowed us to focus on building the innovative solutions our customers need. The pre-built features and integrations have made it easy to get started and scale our product. We couldn't be happier with the results.",
     "subtitle": "GreenTech Innovations, Co-Founder & CTO",
     "rating": 5,
-    "createdAt": "2023-06-08T05:19:18.957Z",
-    "updatedAt": "2023-06-25T21:16:01.350Z",
-    "publishedAt": "2023-03-12T06:34:53.754Z",
+    "createdAt": "2023-06-08T03:19:18.957Z",
+    "updatedAt": "2023-06-25T19:16:01.350Z",
+    "publishedAt": "2023-03-12T04:34:53.754Z",
     "media": [
         {
             "id": 364,
@@ -71,8 +71,8 @@
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T21:16:01.319Z",
-            "updatedAt": "2023-06-25T21:16:01.319Z",
+            "createdAt": "2023-06-25T19:16:01.319Z",
+            "updatedAt": "2023-06-25T19:16:01.319Z",
             "folder": null
         }
     ],

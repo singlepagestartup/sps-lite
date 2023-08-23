@@ -13,9 +13,9 @@
             }
         }
     },
-    "createdAt": "2023-06-25T21:16:26.408Z",
-    "updatedAt": "2023-06-25T21:16:26.408Z",
-    "publishedAt": "2023-02-13T18:01:44.156Z",
+    "createdAt": "2023-06-25T19:16:26.408Z",
+    "updatedAt": "2023-06-25T19:16:26.408Z",
+    "publishedAt": "2023-02-13T16:01:44.156Z",
     "fonts": [
         {
             "id": 31,
@@ -39,8 +39,8 @@
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-06-25T21:16:15.999Z",
-                "updatedAt": "2023-06-25T21:16:15.999Z",
+                "createdAt": "2023-06-25T19:16:15.999Z",
+                "updatedAt": "2023-06-25T19:16:15.999Z",
                 "folder": null
             }
         },
@@ -66,8 +66,8 @@
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-06-25T21:16:18.621Z",
-                "updatedAt": "2023-06-25T21:16:18.621Z",
+                "createdAt": "2023-06-25T19:16:18.621Z",
+                "updatedAt": "2023-06-25T19:16:18.621Z",
                 "folder": null
             }
         },
@@ -93,8 +93,8 @@
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-06-25T21:16:20.972Z",
-                "updatedAt": "2023-06-25T21:16:20.972Z",
+                "createdAt": "2023-06-25T19:16:20.972Z",
+                "updatedAt": "2023-06-25T19:16:20.972Z",
                 "folder": null
             }
         },
@@ -120,8 +120,8 @@
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-06-25T21:16:23.339Z",
-                "updatedAt": "2023-06-25T21:16:23.339Z",
+                "createdAt": "2023-06-25T19:16:23.339Z",
+                "updatedAt": "2023-06-25T19:16:23.339Z",
                 "folder": null
             }
         },
@@ -147,8 +147,8 @@
                 "provider": "aws-s3",
                 "provider_metadata": null,
                 "folderPath": "/",
-                "createdAt": "2023-06-25T21:16:26.325Z",
-                "updatedAt": "2023-06-25T21:16:26.325Z",
+                "createdAt": "2023-06-25T19:16:26.325Z",
+                "updatedAt": "2023-06-25T19:16:26.325Z",
                 "folder": null
             }
         }

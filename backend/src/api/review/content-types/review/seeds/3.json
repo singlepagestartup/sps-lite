@@ -5,9 +5,9 @@
     "description": "Our team has been able to move quickly and iteratively thanks to that boilerplate. The built-in feedback mechanisms have helped us ensure our product remains aligned with user needs, and the agile development environment has fostered a culture of innovation within our team. We highly recommend it to any startup looking to launch quickly and efficiently.",
     "subtitle": "HealthBridge, Product Manager",
     "rating": 4,
-    "createdAt": "2023-06-08T05:19:21.599Z",
-    "updatedAt": "2023-06-25T21:16:06.946Z",
-    "publishedAt": "2023-03-12T06:32:42.951Z",
+    "createdAt": "2023-06-08T03:19:21.599Z",
+    "updatedAt": "2023-06-25T19:16:06.946Z",
+    "publishedAt": "2023-03-12T04:32:42.951Z",
     "media": [
         {
             "id": 365,
@@ -71,8 +71,8 @@
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T21:16:06.919Z",
-            "updatedAt": "2023-06-25T21:16:06.919Z",
+            "createdAt": "2023-06-25T19:16:06.919Z",
+            "updatedAt": "2023-06-25T19:16:06.919Z",
             "folder": null
         }
     ],

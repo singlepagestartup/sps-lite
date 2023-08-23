@@ -5,9 +5,9 @@
     "description": "The Single Page Startup boilerplate has been instrumental in our startup's success. Its focus on MVP readiness and adaptability has allowed us to quickly test and validate our ideas, making it easy to pivot and refine our product offering. It has been a crucial part of our journey, and we couldn't imagine building our startup without it.",
     "subtitle": "EduSphere, Founder & CEO",
     "rating": 5,
-    "createdAt": "2023-06-08T05:19:24.911Z",
-    "updatedAt": "2023-06-25T21:16:13.406Z",
-    "publishedAt": "2023-03-12T06:34:27.387Z",
+    "createdAt": "2023-06-08T03:19:24.911Z",
+    "updatedAt": "2023-06-25T19:16:13.406Z",
+    "publishedAt": "2023-03-12T04:34:27.387Z",
     "media": [
         {
             "id": 367,
@@ -71,8 +71,8 @@
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T21:16:13.379Z",
-            "updatedAt": "2023-06-25T21:16:13.379Z",
+            "createdAt": "2023-06-25T19:16:13.379Z",
+            "updatedAt": "2023-06-25T19:16:13.379Z",
             "folder": null
         }
     ],
