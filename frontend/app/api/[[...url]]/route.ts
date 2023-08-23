@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import QueryString from "qs";
 import {
+  currencyPopulate,
   layoutPopulate,
+  loaderPopulate,
   modalPopulate,
   pageBlockPopulate,
+  reviewPopulate,
   slideOverPropulate,
 } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
@@ -21,6 +24,9 @@ const models = [
   { url: "sidebars", populate: pageBlockPopulate },
   { url: "slide-overs", populate: slideOverPropulate },
   { url: "topbars", populate: pageBlockPopulate },
+  { url: "reviews", populate: reviewPopulate },
+  { url: "loaders", populate: loaderPopulate },
+  { url: "currencies", populate: currencyPopulate },
 ];
 
 export async function generateStaticParams() {

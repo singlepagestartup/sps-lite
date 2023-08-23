@@ -1,18 +1,18 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendReview } from "types/collection-types";
 import { reviewPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "reviews";
 
-export const reviewsApi = backendServiceApi.injectEndpoints({
+export const reviewsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getReviews: build.query({
       query: (params = {}) => {
         const { populate = reviewPopulate } = params;
 
         return {
-          url: model,
+          url: `${model}.json`,
           params: {
             populate,
           },

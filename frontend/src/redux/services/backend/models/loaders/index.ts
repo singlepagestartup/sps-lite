@@ -1,11 +1,11 @@
-import { backendServiceApi, frontendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendLoader } from "types/single-types";
 import { loaderPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "loader";
 
-export const layoutsApi = backendServiceApi.injectEndpoints({
+export const layoutsApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getLoader: build.query({
       query: (params = {}) => {
@@ -17,7 +17,7 @@ export const layoutsApi = backendServiceApi.injectEndpoints({
         } = params;
 
         return {
-          url: `${model}`,
+          url: `${model}.json`,
           params: {
             populate,
             filters,

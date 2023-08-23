@@ -1,18 +1,18 @@
-import { backendServiceApi } from "../..";
+import { frontendServiceApi } from "../..";
 import { IBackendCurrency } from "types/collection-types";
 import { currencyPopulate } from "~utils/api/queries";
 import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "currencies";
 
-export const categoriesApi = backendServiceApi.injectEndpoints({
+export const categoriesApi = frontendServiceApi.injectEndpoints({
   endpoints: (build) => ({
     getCurrencies: build.query({
       query: (params = {}) => {
         const { populate = currencyPopulate, filters } = params;
 
         return {
-          url: model,
+          url: `${model}.json`,
           params: {
             populate,
             filters,
