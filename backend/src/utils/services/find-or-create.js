@@ -1,4 +1,4 @@
-const assignFilterKeys = require("../api/assign-filter-keys");
+const assignFilterKeys = require("../assign-filter-keys");
 
 /**
  *
