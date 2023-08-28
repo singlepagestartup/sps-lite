@@ -44,6 +44,14 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @tailwind utilities;
 
 @layer components {

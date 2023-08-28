@@ -9,6 +9,10 @@ interface IFetchProps {
   method?: "GET" | "POST" | "PUT" | "DELETE";
 }
 
+interface IHeaders {
+  [key: string]: string;
+}
+
 export async function getBackendData(props: IFetchProps) {
   const { url, params, data, method = "GET" } = props;
 
@@ -16,10 +20,19 @@ export async function getBackendData(props: IFetchProps) {
     encodeValuesOnly: true,
   });
 
+  const headers: IHeaders = {};
+
+  if (process.env.NEXT_PUBLIC_BACKEND_TOKEN) {
+    headers[
+      "Authorization"
+    ] = `Bearer ${process.env.NEXT_PUBLIC_BACKEND_TOKEN}`;
+  }
+
   const backendData = await fetch(`${url}?${query}`, {
     method,
     body: data,
     next: { revalidate: 10 },
+    headers,
   })
     .then(async (res) => {
       const jsonRes = await res.json();
@@ -46,7 +59,8 @@ export async function getBackendData(props: IFetchProps) {
 }
 
 export async function getTargetPage({ url, locale }: any) {
-  const localUrl = `/${url?.join("/") || ""}`;
+  const localUrl =
+    typeof url === "string" ? `/${url}` : `/${url?.join("/") || ""}`;
 
   const pages = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,

@@ -9,7 +9,21 @@ function assignFilterKeys({ schema, config, data }) {
     configKey; //?
     if (attributes[configKey]) {
       attributes[configKey]; //?
-      filters[configKey] = data[config[configKey]];
+      if (data[config[configKey]]) {
+        if (data[config[configKey]]?.id) {
+          filters[configKey] = {
+            id: {
+              $eq: data[config[configKey]].id,
+            },
+          };
+        } else {
+          filters[configKey] = data[config[configKey]];
+        }
+      } else {
+        filters[configKey] = {
+          $null: true,
+        };
+      }
     }
   }
 
