@@ -45,6 +45,18 @@ async function findOrCreate(params, { uid, schema }) {
     entity = await strapi.entityService.create(uid, { populate, data });
   }
 
+  for (const [key, value] of Object.entries(entity)) {
+    if (Array.isArray(data[key])) {
+      const updatedValue = [...value, ...data[key]];
+      entity = await strapi.entityService.update(uid, entity.id, {
+        data: {
+          [key]: updatedValue,
+        },
+        populate,
+      });
+    }
+  }
+
   entity; //?
   return entity;
 }

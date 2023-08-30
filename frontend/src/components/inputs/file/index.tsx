@@ -120,7 +120,7 @@ export default function FileInput(props: IInputProps) {
 
         const newFile = new File(
           [await (await fetch(fileUrl)).blob()],
-          serverFile.name,
+          `${(Math.random() * 1e10).toFixed(0)}`,
           {
             type: serverFile.mime,
           },
@@ -135,7 +135,7 @@ export default function FileInput(props: IInputProps) {
 
       const newFile = new File(
         [await (await fetch(fileUrl)).blob()],
-        initialValue.name,
+        `${(Math.random() * 1e10).toFixed(0)}`,
         {
           type: initialValue.mime,
         },
