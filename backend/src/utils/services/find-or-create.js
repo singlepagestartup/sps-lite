@@ -37,7 +37,7 @@ async function findOrCreate(params, { uid, schema }) {
   const data = params.data;
 
   const entities = await strapi.entityService.findMany(uid, {
-    populate,
+    populate: "*",
     filters,
   }); //?
   let entity = entities.length ? entities[0] : undefined; //?
@@ -48,7 +48,7 @@ async function findOrCreate(params, { uid, schema }) {
   for (const [key, value] of Object.entries(entity)) {
     if (Array.isArray(data[key])) {
       const updatedValue = [...value, ...data[key]];
-      entity = await strapi.entityService.update(uid, entity.id, {
+      await strapi.entityService.update(uid, entity.id, {
         data: {
           [key]: updatedValue,
         },
@@ -57,8 +57,11 @@ async function findOrCreate(params, { uid, schema }) {
     }
   }
 
-  entity; //?
-  return entity;
+  const populatedEntity = await strapi.entityService.findOne(uid, entity.id, {
+    populate,
+  });
+
+  return populatedEntity;
 }
 
 module.exports = findOrCreate;

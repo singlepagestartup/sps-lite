@@ -20,9 +20,11 @@ function assignFilterKeys({ schema, config, data }) {
           filters[configKey] = data[config[configKey]];
         }
       } else {
-        filters[configKey] = {
-          $null: true,
-        };
+        if (schema.attributes[configKey].type === "relation") {
+          filters[configKey] = {
+            $null: true,
+          };
+        }
       }
     }
   }
