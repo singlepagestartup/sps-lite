@@ -12,7 +12,7 @@ class GoogleCloud {
   }
 
   async setConfig() {
-    const configs = await strapi.entityService.findMany(
+    const configs: any = await strapi.entityService.findMany(
       "api::configuration.configuration",
       {
         populate: {
