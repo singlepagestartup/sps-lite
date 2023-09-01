@@ -74,7 +74,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image
-        run: docker build ./frontend \
+        run: docker build . \
           --file Dockerfile \
           --build-arg \
           NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }} \
