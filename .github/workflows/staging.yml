@@ -58,14 +58,16 @@ jobs:
   create-frontend-image:
     name: Frontend version
     runs-on: ubuntu-latest
-    # needs:
-    #   - create-backend-image
+    needs:
+      - create-backend-image
     defaults:
       run:
         working-directory: ./frontend
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: Sleep until backend starts
+        run: sleep 180
       - name: Login to registry
         uses: docker/login-action@v1
         with:
