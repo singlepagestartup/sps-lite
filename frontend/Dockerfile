@@ -8,8 +8,6 @@ RUN apt-get update && \
 
 WORKDIR /usr/src/app/
 
-RUN env
-
 # Installing dependencies
 COPY package.json ./
 
