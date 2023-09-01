@@ -58,8 +58,8 @@ jobs:
   create-frontend-image:
     name: Frontend version
     runs-on: ubuntu-latest
-    needs:
-      - create-backend-image
+    # needs:
+    #   - create-backend-image
     defaults:
       run:
         working-directory: ./frontend
