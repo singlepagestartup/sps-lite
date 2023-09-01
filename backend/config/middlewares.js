@@ -1,5 +1,5 @@
 module.exports = ({ env }) => {
-  const security = env("AWS_S3_ACCESS_KEY_ID")
+  const security = env("AWS_S3_URL")
     ? {
         name: "strapi::security",
         config: {
@@ -8,21 +8,9 @@ module.exports = ({ env }) => {
             directives: {
               "script-src": ["'self'", "editor.unlayer.com"],
               "frame-src": ["'self'", "editor.unlayer.com"],
-              "img-src": [
-                "'self'",
-                "blob:",
-                "data:",
-                "*.amazonaws.com",
-                env("AWS_S3_URL", "*.selcdn.ru"),
-              ],
+              "img-src": ["'self'", "blob:", "data:", env("AWS_S3_URL")],
               "connect-src": ["'self'", "https:"],
-              "media-src": [
-                "'self'",
-                "blob:",
-                "data:",
-                "*.amazonaws.com",
-                env("AWS_S3_URL", "*.selcdn.ru"),
-              ],
+              "media-src": ["'self'", "blob:", "data:", env("AWS_S3_URL")],
               upgradeInsecureRequests: null,
             },
           },
@@ -41,7 +29,14 @@ module.exports = ({ env }) => {
                 "cdn.jsdelivr.net",
                 "strapi.io",
                 "*.amazonaws.com",
-                "s3.amazonaws.com",
+                "*.selcdn.ru",
+              ],
+              "media-src": [
+                "'self'",
+                "blob:",
+                "data:",
+                "*.amazonaws.com",
+                "*.selcdn.ru",
               ],
             },
           },

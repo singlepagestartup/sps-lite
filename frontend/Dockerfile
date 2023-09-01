@@ -8,6 +8,8 @@ RUN apt-get update && \
 
 WORKDIR /usr/src/app/
 
+RUN env
+
 # Installing dependencies
 COPY package.json ./
 
@@ -15,7 +17,7 @@ COPY package.json ./
 COPY . .
 
 RUN npm install
-# RUN npm run build
+RUN npm run build
 
 EXPOSE 3000
 

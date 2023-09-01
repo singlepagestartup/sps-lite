@@ -6,8 +6,11 @@ services:
     # image: registry.hub.docker.com/your_dockerhub_username/sps_frontend:0.0.1
     networks:
       - traefik_overlay
+    command: "sh -c './build-start.sh'"
+    # command: "sh -c './start.sh'"
     environment:
       NODE_ENV: production
+      NEXT_PUBLIC_BACKEND_TOKEN: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     deploy:
       placement:
         constraints:

@@ -9,6 +9,8 @@ env:
   FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_frontend:${{ github.event.release.tag_name }}
   BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_backend:${{ github.event.release.tag_name }}
   DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_documentation:${{ github.event.release.tag_name }}
+  NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+  NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
 
 jobs:
   create-backend-image:
@@ -72,12 +74,15 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: ./frontend
           push: false
           load: true
           tags: ${{ env.FRONTEND_IMAGE_URL }}
+          secrets: |
+            NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }} \
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ env.NEXT_PUBLIC_BACKEND_TOKEN }}
       - name: Inspect image
         run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
       - name: Push to registry
