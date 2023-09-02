@@ -1,6 +1,7 @@
 import { stringify } from "qs";
 import { transformResponseItem } from "./transform-response-item";
 import { BACKEND_URL } from "~utils/envs";
+import { plural } from "pluralize";
 
 interface IFetchProps {
   url: string;
@@ -110,9 +111,10 @@ export async function getPages({ filters, modelRoutes, page }: any) {
   const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
   const model = sanitizedRoute.split(".")[0];
   const modelParam = sanitizedRoute.split(".")[1];
+  const pluralModel = plural(model);
 
   const modelEntites = await getBackendData({
-    url: `${BACKEND_URL}/api/${model}`,
+    url: `${BACKEND_URL}/api/${pluralModel}`,
     params: {
       fields: [modelParam],
       locale: page.locale,
@@ -212,9 +214,10 @@ export async function getPaths({ filters, path, modelRoutes }: any) {
   const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
   const model = sanitizedRoute.split(".")[0];
   const modelParam = sanitizedRoute.split(".")[1];
+  const pluralModel = plural(model);
 
   const modelEntites = await getBackendData({
-    url: `${BACKEND_URL}/api/${model}`,
+    url: `${BACKEND_URL}/api/${pluralModel}`,
     params: {
       locale: "all",
       filters: localFilters,
