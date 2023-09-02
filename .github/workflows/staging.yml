@@ -11,6 +11,7 @@ env:
   DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_documentation:${{ github.event.release.tag_name }}
   NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
   NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
+  NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
 
 jobs:
   create-backend-image:
@@ -85,6 +86,7 @@ jobs:
           build-args: |
             NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }}
             NEXT_PUBLIC_BACKEND_TOKEN=${{ env.NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ env.NEXT_PUBLIC_FRONTEND_URL }}
       - name: Inspect image
         run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
       - name: Push to registry
