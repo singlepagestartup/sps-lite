@@ -71,11 +71,13 @@ module.exports = ({ env }) => {
           "Accept",
           "Next-Auth-Factor-Key",
           "Policies-Data",
+          "Query-Encoding",
         ],
       },
     },
     "strapi::poweredBy",
     "strapi::logger",
+    "global::ungzip-query",
     "strapi::query",
     {
       name: "strapi::body",

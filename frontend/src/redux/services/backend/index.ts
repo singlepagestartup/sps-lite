@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { gzip } from "pako";
 import qs from "qs";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
@@ -8,9 +9,15 @@ const getBaseQuery = (baseUrl: string) =>
   fetchBaseQuery({
     baseUrl: `${baseUrl}/api`,
     paramsSerializer: (object) => {
-      return qs.stringify(object, {
+      const stringifiedQuery = qs.stringify(object, {
         encodeValuesOnly: true,
       });
+
+      const compressedQuery = gzip(stringifiedQuery);
+      const base64CompressedQuery =
+        Buffer.from(compressedQuery).toString("base64");
+
+      return base64CompressedQuery;
     },
     prepareHeaders: (headers) => {
       const token = localStorage.jwt;

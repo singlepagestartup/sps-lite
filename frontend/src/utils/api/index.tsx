@@ -2,6 +2,7 @@ import { stringify } from "qs";
 import { transformResponseItem } from "./transform-response-item";
 import { BACKEND_URL } from "~utils/envs";
 import { plural } from "pluralize";
+import { gzip } from "pako";
 
 interface IFetchProps {
   url: string;
@@ -21,7 +22,12 @@ export async function getBackendData(props: IFetchProps) {
     encodeValuesOnly: true,
   });
 
-  const headers: IHeaders = {};
+  const compressedQuery = gzip(query);
+  const base64CompressedQuery = Buffer.from(compressedQuery).toString("base64");
+
+  const headers: IHeaders = {
+    "Query-Encoding": "application/gzip",
+  };
 
   if (process.env.NEXT_PUBLIC_BACKEND_TOKEN) {
     headers[
@@ -29,7 +35,7 @@ export async function getBackendData(props: IFetchProps) {
     ] = `Bearer ${process.env.NEXT_PUBLIC_BACKEND_TOKEN}`;
   }
 
-  const backendData = await fetch(`${url}?${query}`, {
+  const backendData = await fetch(`${url}?${base64CompressedQuery}`, {
     method,
     body: data,
     next: { revalidate: 10 },

@@ -53,6 +53,7 @@
     "html-pdf-node": "^1.0.8",
     "nodemailer": "^6.7.5",
     "openai": "^3.3.0",
+    "pako": "^2.1.0",
     "pg": "^8.10.0",
     "ramda": "^0.28.0",
     "sendpulse-api": "^1.1.5",
