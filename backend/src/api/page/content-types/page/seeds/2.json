@@ -2,8 +2,8 @@
     "id": 2,
     "title": "Page With Sidebar Layout",
     "url": "/page-with-sidebar-layout",
-    "createdAt": "2023-06-08T03:19:32.833Z",
-    "updatedAt": "2023-06-25T18:36:20.652Z",
+    "createdAt": "2023-09-05T09:51:21.766Z",
+    "updatedAt": "2023-09-05T09:54:37.079Z",
     "publishedAt": "2023-04-08T13:00:14.519Z",
     "locale": "en",
     "layout": {
@@ -12,8 +12,8 @@
         "uid": "public-page-layout",
         "variant": "boxed",
         "class_name": null,
-        "createdAt": "2023-06-08T03:19:32.951Z",
-        "updatedAt": "2023-06-25T18:34:52.362Z",
+        "createdAt": "2023-09-05T09:51:21.833Z",
+        "updatedAt": "2023-09-05T09:52:30.702Z",
         "publishedAt": "2023-04-08T05:04:56.606Z",
         "locale": "en",
         "sidebar": {
@@ -23,14 +23,14 @@
             "uid": "ads-sidebar-1",
             "class_name": null,
             "side": "right",
-            "createdAt": "2023-06-08T03:20:30.478Z",
-            "updatedAt": "2023-06-25T18:37:02.309Z",
+            "createdAt": "2023-09-05T09:55:38.963Z",
+            "updatedAt": "2023-09-05T09:55:38.963Z",
             "publishedAt": "2023-04-07T17:35:29.006Z",
             "locale": "en",
             "page_blocks": [
                 {
                     "__component": "page-blocks.hero-section-block",
-                    "id": 42,
+                    "id": 7,
                     "title": "Sidebar",
                     "description": "With Page Blocks",
                     "variant": "simple-centered",
@@ -48,8 +48,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2023-06-08T03:19:32.951Z",
-                    "updatedAt": "2023-06-25T18:34:52.362Z",
+                    "createdAt": "2023-09-05T09:51:21.833Z",
+                    "updatedAt": "2023-09-05T09:52:30.702Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "sidebar": {
@@ -59,8 +59,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2023-06-08T03:20:30.478Z",
-                        "updatedAt": "2023-06-25T18:37:02.309Z",
+                        "createdAt": "2023-09-05T09:55:38.963Z",
+                        "updatedAt": "2023-09-05T09:55:38.963Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en"
                     },
@@ -71,34 +71,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -111,8 +111,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -121,8 +121,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2023-06-08T03:19:32.833Z",
-                            "updatedAt": "2023-06-25T18:36:20.652Z",
+                            "createdAt": "2023-09-05T09:51:21.766Z",
+                            "updatedAt": "2023-09-05T09:54:37.079Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en"
                         }
@@ -143,8 +143,8 @@
             "uid": "public-page-footer",
             "variant": "boxed",
             "class_name": null,
-            "createdAt": "2023-06-08T03:19:34.741Z",
-            "updatedAt": "2023-06-25T18:34:52.130Z",
+            "createdAt": "2023-09-05T09:51:26.058Z",
+            "updatedAt": "2023-09-05T09:51:26.058Z",
             "publishedAt": "2023-05-04T03:25:15.030Z",
             "locale": "en",
             "layouts": [
@@ -154,8 +154,8 @@
                     "uid": "public-page-layout-1",
                     "variant": "wide",
                     "class_name": "[&>.layout-container]:pt-16",
-                    "createdAt": "2023-06-08T03:19:33.000Z",
-                    "updatedAt": "2023-06-25T18:34:52.416Z",
+                    "createdAt": "2023-09-05T09:51:21.872Z",
+                    "updatedAt": "2023-09-05T09:52:30.748Z",
                     "publishedAt": "2023-04-20T03:23:38.447Z",
                     "locale": "en",
                     "sidebar": null,
@@ -166,34 +166,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -206,8 +206,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -216,8 +216,8 @@
                             "id": 1,
                             "title": "Main page",
                             "url": "/",
-                            "createdAt": "2023-06-08T03:19:25.363Z",
-                            "updatedAt": "2023-06-25T18:36:20.593Z",
+                            "createdAt": "2023-09-05T09:50:54.289Z",
+                            "updatedAt": "2023-09-05T09:54:37.018Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en"
                         },
@@ -225,8 +225,8 @@
                             "id": 4,
                             "title": "Terms and Conditions",
                             "url": "/terms-and-conditions",
-                            "createdAt": "2023-06-08T03:19:32.927Z",
-                            "updatedAt": "2023-06-25T18:36:20.735Z",
+                            "createdAt": "2023-09-05T09:51:21.817Z",
+                            "updatedAt": "2023-09-05T09:54:37.167Z",
                             "publishedAt": "2023-05-04T08:38:22.465Z",
                             "locale": "en"
                         },
@@ -234,8 +234,8 @@
                             "id": 3,
                             "title": "Not found page",
                             "url": "/404",
-                            "createdAt": "2023-06-08T03:19:32.900Z",
-                            "updatedAt": "2023-06-25T18:36:20.704Z",
+                            "createdAt": "2023-09-05T09:51:21.800Z",
+                            "updatedAt": "2023-09-05T09:54:37.134Z",
                             "publishedAt": "2023-04-20T04:18:21.051Z",
                             "locale": "en"
                         }
@@ -250,8 +250,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2023-06-08T03:19:32.951Z",
-                    "updatedAt": "2023-06-25T18:34:52.362Z",
+                    "createdAt": "2023-09-05T09:51:21.833Z",
+                    "updatedAt": "2023-09-05T09:52:30.702Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "sidebar": {
@@ -261,8 +261,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2023-06-08T03:20:30.478Z",
-                        "updatedAt": "2023-06-25T18:37:02.309Z",
+                        "createdAt": "2023-09-05T09:55:38.963Z",
+                        "updatedAt": "2023-09-05T09:55:38.963Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en"
                     },
@@ -273,34 +273,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -313,8 +313,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -323,8 +323,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2023-06-08T03:19:32.833Z",
-                            "updatedAt": "2023-06-25T18:36:20.652Z",
+                            "createdAt": "2023-09-05T09:51:21.766Z",
+                            "updatedAt": "2023-09-05T09:54:37.079Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en"
                         }
@@ -337,19 +337,19 @@
             "page_blocks": [
                 {
                     "__component": "page-blocks.footer-block",
-                    "id": 5,
+                    "id": 1,
                     "copyrights": "2023 Single Page Startup",
                     "description": "The fastest way to develop your startup",
                     "variant": "four-columns-with-company-mission",
                     "class_name": null,
                     "logotype": {
-                        "id": 9,
+                        "id": 1,
                         "title": null,
                         "url": "/"
                     },
                     "buttons_arrays": [
                         {
-                            "id": 17,
+                            "id": 1,
                             "title": "Pages",
                             "class_name": null,
                             "variant": "column-with-title",
@@ -358,7 +358,7 @@
                             "additional_attributes": null
                         },
                         {
-                            "id": 18,
+                            "id": 2,
                             "title": "Links",
                             "class_name": null,
                             "variant": "column-with-title",
@@ -369,7 +369,7 @@
                     ],
                     "additional_buttons_arrays": [
                         {
-                            "id": 19,
+                            "id": 3,
                             "title": null,
                             "class_name": null,
                             "variant": "row",
@@ -380,7 +380,7 @@
                     ],
                     "extra_buttons_arrays": [
                         {
-                            "id": 20,
+                            "id": 4,
                             "title": null,
                             "class_name": null,
                             "variant": "row",
@@ -397,19 +397,19 @@
         },
         "slide_overs": [
             {
-                "id": 5,
+                "id": 1,
                 "variant": "right-side-half-width",
                 "title": "This Is Slide Over",
                 "uid": "this-is-slide-over",
                 "class_name": "sps-lite-slide-over",
-                "createdAt": "2023-06-25T18:37:02.365Z",
-                "updatedAt": "2023-06-25T18:37:02.365Z",
+                "createdAt": "2023-09-05T09:55:39.048Z",
+                "updatedAt": "2023-09-05T09:55:39.048Z",
                 "publishedAt": "2023-04-07T16:54:17.781Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.faqs-block",
-                        "id": 4,
+                        "id": 1,
                         "title": "This Is Slide Over",
                         "description": "With Page Blocks",
                         "variant": "two-columns-with-centered-introduction",
@@ -426,8 +426,8 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:32.951Z",
-                        "updatedAt": "2023-06-25T18:34:52.362Z",
+                        "createdAt": "2023-09-05T09:51:21.833Z",
+                        "updatedAt": "2023-09-05T09:52:30.702Z",
                         "publishedAt": "2023-04-08T05:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
@@ -437,8 +437,8 @@
                             "uid": "ads-sidebar-1",
                             "class_name": null,
                             "side": "right",
-                            "createdAt": "2023-06-08T03:20:30.478Z",
-                            "updatedAt": "2023-06-25T18:37:02.309Z",
+                            "createdAt": "2023-09-05T09:55:38.963Z",
+                            "updatedAt": "2023-09-05T09:55:38.963Z",
                             "publishedAt": "2023-04-07T17:35:29.006Z",
                             "locale": "en"
                         },
@@ -449,34 +449,34 @@
                             "uid": "public-page-footer",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-06-08T03:19:34.741Z",
-                            "updatedAt": "2023-06-25T18:34:52.130Z",
+                            "createdAt": "2023-09-05T09:51:26.058Z",
+                            "updatedAt": "2023-09-05T09:51:26.058Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
                                 "class_name": "sps-lite-slide-over",
-                                "createdAt": "2023-06-25T18:37:02.365Z",
-                                "updatedAt": "2023-06-25T18:37:02.365Z",
+                                "createdAt": "2023-09-05T09:55:39.048Z",
+                                "updatedAt": "2023-09-05T09:55:39.048Z",
                                 "publishedAt": "2023-04-07T16:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
                         "modals": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "uid": "this-is-modal",
                                 "dialog_panel_class_name": "w-8/12",
                                 "variant": "simple",
                                 "title": "This Is Modal",
                                 "class_name": null,
-                                "createdAt": "2023-06-25T18:21:33.774Z",
-                                "updatedAt": "2023-06-25T18:34:53.605Z",
+                                "createdAt": "2023-09-05T09:52:32.686Z",
+                                "updatedAt": "2023-09-05T09:52:32.686Z",
                                 "publishedAt": "2023-03-28T04:07:57.457Z",
                                 "locale": "en"
                             }
@@ -489,8 +489,8 @@
                             "class_name": null,
                             "position": "fixed",
                             "side": "top",
-                            "createdAt": "2023-06-08T03:19:36.905Z",
-                            "updatedAt": "2023-06-25T18:34:55.275Z",
+                            "createdAt": "2023-09-05T09:52:34.964Z",
+                            "updatedAt": "2023-09-05T09:52:34.964Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -499,8 +499,8 @@
                                 "id": 2,
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
-                                "createdAt": "2023-06-08T03:19:32.833Z",
-                                "updatedAt": "2023-06-25T18:36:20.652Z",
+                                "createdAt": "2023-09-05T09:51:21.766Z",
+                                "updatedAt": "2023-09-05T09:54:37.079Z",
                                 "publishedAt": "2023-04-08T13:00:14.519Z",
                                 "locale": "en"
                             }
@@ -515,8 +515,8 @@
                         "uid": "public-page-layout-1",
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
-                        "createdAt": "2023-06-08T03:19:33.000Z",
-                        "updatedAt": "2023-06-25T18:34:52.416Z",
+                        "createdAt": "2023-09-05T09:51:21.872Z",
+                        "updatedAt": "2023-09-05T09:52:30.748Z",
                         "publishedAt": "2023-04-20T03:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
@@ -527,34 +527,34 @@
                             "uid": "public-page-footer",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-06-08T03:19:34.741Z",
-                            "updatedAt": "2023-06-25T18:34:52.130Z",
+                            "createdAt": "2023-09-05T09:51:26.058Z",
+                            "updatedAt": "2023-09-05T09:51:26.058Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
                                 "class_name": "sps-lite-slide-over",
-                                "createdAt": "2023-06-25T18:37:02.365Z",
-                                "updatedAt": "2023-06-25T18:37:02.365Z",
+                                "createdAt": "2023-09-05T09:55:39.048Z",
+                                "updatedAt": "2023-09-05T09:55:39.048Z",
                                 "publishedAt": "2023-04-07T16:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
                         "modals": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "uid": "this-is-modal",
                                 "dialog_panel_class_name": "w-8/12",
                                 "variant": "simple",
                                 "title": "This Is Modal",
                                 "class_name": null,
-                                "createdAt": "2023-06-25T18:21:33.774Z",
-                                "updatedAt": "2023-06-25T18:34:53.605Z",
+                                "createdAt": "2023-09-05T09:52:32.686Z",
+                                "updatedAt": "2023-09-05T09:52:32.686Z",
                                 "publishedAt": "2023-03-28T04:07:57.457Z",
                                 "locale": "en"
                             }
@@ -567,8 +567,8 @@
                             "class_name": null,
                             "position": "fixed",
                             "side": "top",
-                            "createdAt": "2023-06-08T03:19:36.905Z",
-                            "updatedAt": "2023-06-25T18:34:55.275Z",
+                            "createdAt": "2023-09-05T09:52:34.964Z",
+                            "updatedAt": "2023-09-05T09:52:34.964Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -577,8 +577,8 @@
                                 "id": 1,
                                 "title": "Main page",
                                 "url": "/",
-                                "createdAt": "2023-06-08T03:19:25.363Z",
-                                "updatedAt": "2023-06-25T18:36:20.593Z",
+                                "createdAt": "2023-09-05T09:50:54.289Z",
+                                "updatedAt": "2023-09-05T09:54:37.018Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -586,8 +586,8 @@
                                 "id": 4,
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
-                                "createdAt": "2023-06-08T03:19:32.927Z",
-                                "updatedAt": "2023-06-25T18:36:20.735Z",
+                                "createdAt": "2023-09-05T09:51:21.817Z",
+                                "updatedAt": "2023-09-05T09:54:37.167Z",
                                 "publishedAt": "2023-05-04T08:38:22.465Z",
                                 "locale": "en"
                             },
@@ -595,8 +595,8 @@
                                 "id": 3,
                                 "title": "Not found page",
                                 "url": "/404",
-                                "createdAt": "2023-06-08T03:19:32.900Z",
-                                "updatedAt": "2023-06-25T18:36:20.704Z",
+                                "createdAt": "2023-09-05T09:51:21.800Z",
+                                "updatedAt": "2023-09-05T09:54:37.134Z",
                                 "publishedAt": "2023-04-20T04:18:21.051Z",
                                 "locale": "en"
                             }
@@ -613,20 +613,20 @@
         ],
         "modals": [
             {
-                "id": 5,
+                "id": 1,
                 "uid": "this-is-modal",
                 "dialog_panel_class_name": "w-8/12",
                 "variant": "simple",
                 "title": "This Is Modal",
                 "class_name": null,
-                "createdAt": "2023-06-25T18:21:33.774Z",
-                "updatedAt": "2023-06-25T18:34:53.605Z",
+                "createdAt": "2023-09-05T09:52:32.686Z",
+                "updatedAt": "2023-09-05T09:52:32.686Z",
                 "publishedAt": "2023-03-28T04:07:57.457Z",
                 "locale": "en",
                 "page_blocks": [
                     {
                         "__component": "page-blocks.hero-section-block",
-                        "id": 39,
+                        "id": 4,
                         "title": "This Is Modal",
                         "description": "With Page Blocks",
                         "variant": "simple-centered",
@@ -644,8 +644,8 @@
                         "uid": "public-page-layout",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:32.951Z",
-                        "updatedAt": "2023-06-25T18:34:52.362Z",
+                        "createdAt": "2023-09-05T09:51:21.833Z",
+                        "updatedAt": "2023-09-05T09:52:30.702Z",
                         "publishedAt": "2023-04-08T05:04:56.606Z",
                         "locale": "en",
                         "sidebar": {
@@ -655,8 +655,8 @@
                             "uid": "ads-sidebar-1",
                             "class_name": null,
                             "side": "right",
-                            "createdAt": "2023-06-08T03:20:30.478Z",
-                            "updatedAt": "2023-06-25T18:37:02.309Z",
+                            "createdAt": "2023-09-05T09:55:38.963Z",
+                            "updatedAt": "2023-09-05T09:55:38.963Z",
                             "publishedAt": "2023-04-07T17:35:29.006Z",
                             "locale": "en"
                         },
@@ -667,34 +667,34 @@
                             "uid": "public-page-footer",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-06-08T03:19:34.741Z",
-                            "updatedAt": "2023-06-25T18:34:52.130Z",
+                            "createdAt": "2023-09-05T09:51:26.058Z",
+                            "updatedAt": "2023-09-05T09:51:26.058Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
                                 "class_name": "sps-lite-slide-over",
-                                "createdAt": "2023-06-25T18:37:02.365Z",
-                                "updatedAt": "2023-06-25T18:37:02.365Z",
+                                "createdAt": "2023-09-05T09:55:39.048Z",
+                                "updatedAt": "2023-09-05T09:55:39.048Z",
                                 "publishedAt": "2023-04-07T16:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
                         "modals": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "uid": "this-is-modal",
                                 "dialog_panel_class_name": "w-8/12",
                                 "variant": "simple",
                                 "title": "This Is Modal",
                                 "class_name": null,
-                                "createdAt": "2023-06-25T18:21:33.774Z",
-                                "updatedAt": "2023-06-25T18:34:53.605Z",
+                                "createdAt": "2023-09-05T09:52:32.686Z",
+                                "updatedAt": "2023-09-05T09:52:32.686Z",
                                 "publishedAt": "2023-03-28T04:07:57.457Z",
                                 "locale": "en"
                             }
@@ -707,8 +707,8 @@
                             "class_name": null,
                             "position": "fixed",
                             "side": "top",
-                            "createdAt": "2023-06-08T03:19:36.905Z",
-                            "updatedAt": "2023-06-25T18:34:55.275Z",
+                            "createdAt": "2023-09-05T09:52:34.964Z",
+                            "updatedAt": "2023-09-05T09:52:34.964Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -717,8 +717,8 @@
                                 "id": 2,
                                 "title": "Page With Sidebar Layout",
                                 "url": "/page-with-sidebar-layout",
-                                "createdAt": "2023-06-08T03:19:32.833Z",
-                                "updatedAt": "2023-06-25T18:36:20.652Z",
+                                "createdAt": "2023-09-05T09:51:21.766Z",
+                                "updatedAt": "2023-09-05T09:54:37.079Z",
                                 "publishedAt": "2023-04-08T13:00:14.519Z",
                                 "locale": "en"
                             }
@@ -733,8 +733,8 @@
                         "uid": "public-page-layout-1",
                         "variant": "wide",
                         "class_name": "[&>.layout-container]:pt-16",
-                        "createdAt": "2023-06-08T03:19:33.000Z",
-                        "updatedAt": "2023-06-25T18:34:52.416Z",
+                        "createdAt": "2023-09-05T09:51:21.872Z",
+                        "updatedAt": "2023-09-05T09:52:30.748Z",
                         "publishedAt": "2023-04-20T03:23:38.447Z",
                         "locale": "en",
                         "sidebar": null,
@@ -745,34 +745,34 @@
                             "uid": "public-page-footer",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-06-08T03:19:34.741Z",
-                            "updatedAt": "2023-06-25T18:34:52.130Z",
+                            "createdAt": "2023-09-05T09:51:26.058Z",
+                            "updatedAt": "2023-09-05T09:51:26.058Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
                         "slide_overs": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "variant": "right-side-half-width",
                                 "title": "This Is Slide Over",
                                 "uid": "this-is-slide-over",
                                 "class_name": "sps-lite-slide-over",
-                                "createdAt": "2023-06-25T18:37:02.365Z",
-                                "updatedAt": "2023-06-25T18:37:02.365Z",
+                                "createdAt": "2023-09-05T09:55:39.048Z",
+                                "updatedAt": "2023-09-05T09:55:39.048Z",
                                 "publishedAt": "2023-04-07T16:54:17.781Z",
                                 "locale": "en"
                             }
                         ],
                         "modals": [
                             {
-                                "id": 5,
+                                "id": 1,
                                 "uid": "this-is-modal",
                                 "dialog_panel_class_name": "w-8/12",
                                 "variant": "simple",
                                 "title": "This Is Modal",
                                 "class_name": null,
-                                "createdAt": "2023-06-25T18:21:33.774Z",
-                                "updatedAt": "2023-06-25T18:34:53.605Z",
+                                "createdAt": "2023-09-05T09:52:32.686Z",
+                                "updatedAt": "2023-09-05T09:52:32.686Z",
                                 "publishedAt": "2023-03-28T04:07:57.457Z",
                                 "locale": "en"
                             }
@@ -785,8 +785,8 @@
                             "class_name": null,
                             "position": "fixed",
                             "side": "top",
-                            "createdAt": "2023-06-08T03:19:36.905Z",
-                            "updatedAt": "2023-06-25T18:34:55.275Z",
+                            "createdAt": "2023-09-05T09:52:34.964Z",
+                            "updatedAt": "2023-09-05T09:52:34.964Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -795,8 +795,8 @@
                                 "id": 1,
                                 "title": "Main page",
                                 "url": "/",
-                                "createdAt": "2023-06-08T03:19:25.363Z",
-                                "updatedAt": "2023-06-25T18:36:20.593Z",
+                                "createdAt": "2023-09-05T09:50:54.289Z",
+                                "updatedAt": "2023-09-05T09:54:37.018Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -804,8 +804,8 @@
                                 "id": 4,
                                 "title": "Terms and Conditions",
                                 "url": "/terms-and-conditions",
-                                "createdAt": "2023-06-08T03:19:32.927Z",
-                                "updatedAt": "2023-06-25T18:36:20.735Z",
+                                "createdAt": "2023-09-05T09:51:21.817Z",
+                                "updatedAt": "2023-09-05T09:54:37.167Z",
                                 "publishedAt": "2023-05-04T08:38:22.465Z",
                                 "locale": "en"
                             },
@@ -813,8 +813,8 @@
                                 "id": 3,
                                 "title": "Not found page",
                                 "url": "/404",
-                                "createdAt": "2023-06-08T03:19:32.900Z",
-                                "updatedAt": "2023-06-25T18:36:20.704Z",
+                                "createdAt": "2023-09-05T09:51:21.800Z",
+                                "updatedAt": "2023-09-05T09:54:37.134Z",
                                 "publishedAt": "2023-04-20T04:18:21.051Z",
                                 "locale": "en"
                             }
@@ -837,25 +837,25 @@
             "class_name": null,
             "position": "fixed",
             "side": "top",
-            "createdAt": "2023-06-08T03:19:36.905Z",
-            "updatedAt": "2023-06-25T18:34:55.275Z",
+            "createdAt": "2023-09-05T09:52:34.964Z",
+            "updatedAt": "2023-09-05T09:52:34.964Z",
             "publishedAt": "2023-04-08T05:04:22.148Z",
             "locale": "en",
             "page_blocks": [
                 {
                     "__component": "page-blocks.navbar-block",
-                    "id": 5,
+                    "id": 1,
                     "variant": "simple-links-on-left",
                     "description": null,
                     "class_name": null,
                     "logotype": {
-                        "id": 10,
+                        "id": 2,
                         "title": null,
                         "url": "/"
                     },
                     "buttons": [
                         {
-                            "id": 119,
+                            "id": 14,
                             "url": "/",
                             "description": null,
                             "variant": "text",
@@ -864,7 +864,7 @@
                             "class_name": null
                         },
                         {
-                            "id": 120,
+                            "id": 16,
                             "url": "/page-with-sidebar-layout",
                             "description": null,
                             "variant": "text",
@@ -873,7 +873,7 @@
                             "class_name": null
                         },
                         {
-                            "id": 121,
+                            "id": 15,
                             "url": null,
                             "description": null,
                             "variant": "text",
@@ -882,7 +882,7 @@
                             "class_name": null
                         },
                         {
-                            "id": 122,
+                            "id": 17,
                             "url": "?opened_modal=this-is-modal",
                             "description": null,
                             "variant": "text",
@@ -891,7 +891,7 @@
                             "class_name": null
                         },
                         {
-                            "id": 123,
+                            "id": 18,
                             "url": "?opened_slide_over=this-is-slide-over",
                             "description": null,
                             "variant": "text",
@@ -902,7 +902,7 @@
                     ],
                     "additional_buttons": [
                         {
-                            "id": 124,
+                            "id": 19,
                             "url": "https://github.com/singlepagestartup/sps-lite",
                             "description": null,
                             "variant": "secondary",
@@ -911,7 +911,7 @@
                             "class_name": null
                         },
                         {
-                            "id": 125,
+                            "id": 20,
                             "url": null,
                             "description": null,
                             "variant": "locale",
@@ -930,8 +930,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2023-06-08T03:19:32.951Z",
-                    "updatedAt": "2023-06-25T18:34:52.362Z",
+                    "createdAt": "2023-09-05T09:51:21.833Z",
+                    "updatedAt": "2023-09-05T09:52:30.702Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "sidebar": {
@@ -941,8 +941,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2023-06-08T03:20:30.478Z",
-                        "updatedAt": "2023-06-25T18:37:02.309Z",
+                        "createdAt": "2023-09-05T09:55:38.963Z",
+                        "updatedAt": "2023-09-05T09:55:38.963Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en"
                     },
@@ -953,34 +953,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -993,8 +993,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1003,8 +1003,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2023-06-08T03:19:32.833Z",
-                            "updatedAt": "2023-06-25T18:36:20.652Z",
+                            "createdAt": "2023-09-05T09:51:21.766Z",
+                            "updatedAt": "2023-09-05T09:54:37.079Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en"
                         }
@@ -1019,8 +1019,8 @@
                     "uid": "public-page-layout-1",
                     "variant": "wide",
                     "class_name": "[&>.layout-container]:pt-16",
-                    "createdAt": "2023-06-08T03:19:33.000Z",
-                    "updatedAt": "2023-06-25T18:34:52.416Z",
+                    "createdAt": "2023-09-05T09:51:21.872Z",
+                    "updatedAt": "2023-09-05T09:52:30.748Z",
                     "publishedAt": "2023-04-20T03:23:38.447Z",
                     "locale": "en",
                     "sidebar": null,
@@ -1031,34 +1031,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -1071,8 +1071,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1081,8 +1081,8 @@
                             "id": 1,
                             "title": "Main page",
                             "url": "/",
-                            "createdAt": "2023-06-08T03:19:25.363Z",
-                            "updatedAt": "2023-06-25T18:36:20.593Z",
+                            "createdAt": "2023-09-05T09:50:54.289Z",
+                            "updatedAt": "2023-09-05T09:54:37.018Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en"
                         },
@@ -1090,8 +1090,8 @@
                             "id": 4,
                             "title": "Terms and Conditions",
                             "url": "/terms-and-conditions",
-                            "createdAt": "2023-06-08T03:19:32.927Z",
-                            "updatedAt": "2023-06-25T18:36:20.735Z",
+                            "createdAt": "2023-09-05T09:51:21.817Z",
+                            "updatedAt": "2023-09-05T09:54:37.167Z",
                             "publishedAt": "2023-05-04T08:38:22.465Z",
                             "locale": "en"
                         },
@@ -1099,8 +1099,8 @@
                             "id": 3,
                             "title": "Not found page",
                             "url": "/404",
-                            "createdAt": "2023-06-08T03:19:32.900Z",
-                            "updatedAt": "2023-06-25T18:36:20.704Z",
+                            "createdAt": "2023-09-05T09:51:21.800Z",
+                            "updatedAt": "2023-09-05T09:54:37.134Z",
                             "publishedAt": "2023-04-20T04:18:21.051Z",
                             "locale": "en"
                         }
@@ -1111,33 +1111,7 @@
                 }
             ],
             "createdBy": null,
-            "updatedBy": {
-                "id": 1,
-                "firstname": "rogwild",
-                "lastname": "design",
-                "username": null,
-                "email": "rogwild.design@gmail.com",
-                "password": "$2a$10$km70691TymghJRJD0KIbTu2D/ynnYvvOx4Vh4JAySfQt3YJxEpn5W",
-                "resetPasswordToken": null,
-                "registrationToken": null,
-                "isActive": true,
-                "blocked": false,
-                "preferedLanguage": null,
-                "createdAt": "2023-06-08T03:20:26.307Z",
-                "updatedAt": "2023-06-08T03:20:26.307Z",
-                "roles": [
-                    {
-                        "id": 1,
-                        "name": "Super Admin",
-                        "code": "strapi-super-admin",
-                        "description": "Super Admins can access and manage all features and settings.",
-                        "createdAt": "2023-06-08T03:18:00.556Z",
-                        "updatedAt": "2023-06-08T03:18:00.556Z"
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null
-            },
+            "updatedBy": null,
             "localizations": []
         },
         "pages": [
@@ -1145,8 +1119,8 @@
                 "id": 2,
                 "title": "Page With Sidebar Layout",
                 "url": "/page-with-sidebar-layout",
-                "createdAt": "2023-06-08T03:19:32.833Z",
-                "updatedAt": "2023-06-25T18:36:20.652Z",
+                "createdAt": "2023-09-05T09:51:21.766Z",
+                "updatedAt": "2023-09-05T09:54:37.079Z",
                 "publishedAt": "2023-04-08T13:00:14.519Z",
                 "locale": "en",
                 "layout": {
@@ -1155,8 +1129,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2023-06-08T03:19:32.951Z",
-                    "updatedAt": "2023-06-25T18:34:52.362Z",
+                    "createdAt": "2023-09-05T09:51:21.833Z",
+                    "updatedAt": "2023-09-05T09:52:30.702Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "sidebar": {
@@ -1166,8 +1140,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2023-06-08T03:20:30.478Z",
-                        "updatedAt": "2023-06-25T18:37:02.309Z",
+                        "createdAt": "2023-09-05T09:55:38.963Z",
+                        "updatedAt": "2023-09-05T09:55:38.963Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en"
                     },
@@ -1178,34 +1152,34 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2023-06-08T03:19:34.741Z",
-                        "updatedAt": "2023-06-25T18:34:52.130Z",
+                        "createdAt": "2023-09-05T09:51:26.058Z",
+                        "updatedAt": "2023-09-05T09:51:26.058Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
                     "slide_overs": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "variant": "right-side-half-width",
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2023-06-25T18:37:02.365Z",
-                            "updatedAt": "2023-06-25T18:37:02.365Z",
+                            "createdAt": "2023-09-05T09:55:39.048Z",
+                            "updatedAt": "2023-09-05T09:55:39.048Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en"
                         }
                     ],
                     "modals": [
                         {
-                            "id": 5,
+                            "id": 1,
                             "uid": "this-is-modal",
                             "dialog_panel_class_name": "w-8/12",
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2023-06-25T18:21:33.774Z",
-                            "updatedAt": "2023-06-25T18:34:53.605Z",
+                            "createdAt": "2023-09-05T09:52:32.686Z",
+                            "updatedAt": "2023-09-05T09:52:32.686Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en"
                         }
@@ -1218,8 +1192,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2023-06-08T03:19:36.905Z",
-                        "updatedAt": "2023-06-25T18:34:55.275Z",
+                        "createdAt": "2023-09-05T09:52:34.964Z",
+                        "updatedAt": "2023-09-05T09:52:34.964Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1228,8 +1202,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2023-06-08T03:19:32.833Z",
-                            "updatedAt": "2023-06-25T18:36:20.652Z",
+                            "createdAt": "2023-09-05T09:51:21.766Z",
+                            "updatedAt": "2023-09-05T09:54:37.079Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en"
                         }
@@ -1241,7 +1215,7 @@
                 "page_blocks": [
                     {
                         "__component": "page-blocks.slider-block",
-                        "id": 10,
+                        "id": 2,
                         "variant": "simple",
                         "anchor": null,
                         "class_name": "pt-16",
@@ -1258,8 +1232,8 @@
                             "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
                             "title": "Features Slider",
                             "uid": "features-slider",
-                            "createdAt": "2023-06-08T03:19:32.748Z",
-                            "updatedAt": "2023-06-25T18:37:18.108Z",
+                            "createdAt": "2023-09-05T09:51:21.710Z",
+                            "updatedAt": "2023-09-05T09:56:02.791Z",
                             "publishedAt": "2023-03-28T03:46:50.780Z",
                             "locale": "en"
                         }
@@ -1278,7 +1252,7 @@
     "page_blocks": [
         {
             "__component": "page-blocks.slider-block",
-            "id": 10,
+            "id": 2,
             "variant": "simple",
             "anchor": null,
             "class_name": "pt-16",
@@ -1295,19 +1269,19 @@
                 "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
                 "title": "Features Slider",
                 "uid": "features-slider",
-                "createdAt": "2023-06-08T03:19:32.748Z",
-                "updatedAt": "2023-06-25T18:37:18.108Z",
+                "createdAt": "2023-09-05T09:51:21.710Z",
+                "updatedAt": "2023-09-05T09:56:02.791Z",
                 "publishedAt": "2023-03-28T03:46:50.780Z",
                 "locale": "en",
                 "slides": [
                     {
-                        "id": 30,
+                        "id": 6,
                         "title": "Jumpstart Your Startup Journey",
                         "description": "Our pre-built boilerplate offers a comprehensive set of features and tools to accelerate your startup's development process. Say goodbye to repetitive tasks and focus on your core business logic with our customizable, efficient, and scalable solution.",
                         "subtitle": "Get ahead with our lean startup developer boilerplate",
                         "media": [
                             {
-                                "id": 306,
+                                "id": 68,
                                 "name": "pexels-karolina-grabowska-5882683.jpg",
                                 "alternativeText": null,
                                 "caption": null,
@@ -1316,8 +1290,8 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                                        "hash": "large_pexels_karolina_grabowska_5882683_51a552efc0",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                                        "hash": "large_pexels_karolina_grabowska_5882683_43f904253f",
                                         "mime": "image/jpeg",
                                         "name": "large_pexels-karolina-grabowska-5882683.jpg",
                                         "path": null,
@@ -1327,8 +1301,8 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                                        "hash": "small_pexels_karolina_grabowska_5882683_51a552efc0",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                                        "hash": "small_pexels_karolina_grabowska_5882683_43f904253f",
                                         "mime": "image/jpeg",
                                         "name": "small_pexels-karolina-grabowska-5882683.jpg",
                                         "path": null,
@@ -1338,8 +1312,8 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                                        "hash": "medium_pexels_karolina_grabowska_5882683_51a552efc0",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                                        "hash": "medium_pexels_karolina_grabowska_5882683_43f904253f",
                                         "mime": "image/jpeg",
                                         "name": "medium_pexels-karolina-grabowska-5882683.jpg",
                                         "path": null,
@@ -1349,8 +1323,8 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                                        "hash": "thumbnail_pexels_karolina_grabowska_5882683_51a552efc0",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                                        "hash": "thumbnail_pexels_karolina_grabowska_5882683_43f904253f",
                                         "mime": "image/jpeg",
                                         "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
                                         "path": null,
@@ -1359,23 +1333,23 @@
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_karolina_grabowska_5882683_51a552efc0",
+                                "hash": "pexels_karolina_grabowska_5882683_43f904253f",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 109.43,
-                                "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_51a552efc0.jpg",
+                                "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_karolina_grabowska_5882683_43f904253f.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-06-25T18:37:04.548Z",
-                                "updatedAt": "2023-06-25T18:37:04.548Z",
+                                "createdAt": "2023-09-05T09:55:42.652Z",
+                                "updatedAt": "2023-09-05T09:55:42.652Z",
                                 "folder": null
                             }
                         ],
                         "buttons": [
                             {
-                                "id": 129,
+                                "id": 24,
                                 "url": "https://github.com/singlepagestartup/sps-lite",
                                 "description": null,
                                 "variant": "primary",
@@ -1387,13 +1361,13 @@
                         "additional_media": null
                     },
                     {
-                        "id": 28,
+                        "id": 4,
                         "title": "Empower Your MVP with Best Practices",
                         "description": "Our boilerplate comes with essential features like authentication, multilingual support, and integrations with popular third-party services. With minimum viable product (MVP) readiness in mind, we help you save time, effort, and resources as you bring your startup idea to life.",
                         "subtitle": "Launch faster with our ready-to-use components",
                         "media": [
                             {
-                                "id": 307,
+                                "id": 69,
                                 "name": "pexels-andrea-piacquadio-3756679.jpg",
                                 "alternativeText": null,
                                 "caption": null,
@@ -1402,8 +1376,8 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                                        "hash": "large_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                                        "hash": "large_pexels_andrea_piacquadio_3756679_14e40d522f",
                                         "mime": "image/jpeg",
                                         "name": "large_pexels-andrea-piacquadio-3756679.jpg",
                                         "path": null,
@@ -1413,8 +1387,8 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                                        "hash": "small_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                                        "hash": "small_pexels_andrea_piacquadio_3756679_14e40d522f",
                                         "mime": "image/jpeg",
                                         "name": "small_pexels-andrea-piacquadio-3756679.jpg",
                                         "path": null,
@@ -1424,8 +1398,8 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                                        "hash": "medium_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                                        "hash": "medium_pexels_andrea_piacquadio_3756679_14e40d522f",
                                         "mime": "image/jpeg",
                                         "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
                                         "path": null,
@@ -1435,8 +1409,8 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                                        "hash": "thumbnail_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                                        "hash": "thumbnail_pexels_andrea_piacquadio_3756679_14e40d522f",
                                         "mime": "image/jpeg",
                                         "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
                                         "path": null,
@@ -1445,17 +1419,17 @@
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                                "hash": "pexels_andrea_piacquadio_3756679_14e40d522f",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 811.66,
-                                "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
+                                "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-06-25T18:37:10.092Z",
-                                "updatedAt": "2023-06-25T18:37:10.092Z",
+                                "createdAt": "2023-09-05T09:55:48.353Z",
+                                "updatedAt": "2023-09-05T09:55:48.353Z",
                                 "folder": null
                             }
                         ],
@@ -1463,13 +1437,13 @@
                         "additional_media": null
                     },
                     {
-                        "id": 29,
+                        "id": 5,
                         "title": "Built for Agile Development",
                         "description": "Our lean startup developer boilerplate is designed for agile development, allowing you to adapt and evolve your project rapidly. Stay ahead in the ever-changing startup landscape with built-in feedback mechanisms, seamless collaboration, and continuous improvement capabilities.",
                         "subtitle": "Foster innovation with a flexible and iterative approach",
                         "media": [
                             {
-                                "id": 308,
+                                "id": 70,
                                 "name": "pexels-tima-miroshnichenko-5198239.jpg",
                                 "alternativeText": null,
                                 "caption": null,
@@ -1478,8 +1452,8 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                                        "hash": "large_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                                        "hash": "large_pexels_tima_miroshnichenko_5198239_3277708561",
                                         "mime": "image/jpeg",
                                         "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
                                         "path": null,
@@ -1489,8 +1463,8 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                                        "hash": "small_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                                        "hash": "small_pexels_tima_miroshnichenko_5198239_3277708561",
                                         "mime": "image/jpeg",
                                         "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
                                         "path": null,
@@ -1500,8 +1474,8 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                                        "hash": "medium_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                                        "hash": "medium_pexels_tima_miroshnichenko_5198239_3277708561",
                                         "mime": "image/jpeg",
                                         "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
                                         "path": null,
@@ -1511,8 +1485,8 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                                        "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                                        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                                        "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_3277708561",
                                         "mime": "image/jpeg",
                                         "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
                                         "path": null,
@@ -1521,17 +1495,17 @@
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_tima_miroshnichenko_5198239_000362d9e9",
+                                "hash": "pexels_tima_miroshnichenko_5198239_3277708561",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 4287.67,
-                                "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
+                                "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_tima_miroshnichenko_5198239_3277708561.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-06-25T18:37:17.972Z",
-                                "updatedAt": "2023-06-25T18:37:17.972Z",
+                                "createdAt": "2023-09-05T09:56:02.632Z",
+                                "updatedAt": "2023-09-05T09:56:02.632Z",
                                 "folder": null
                             }
                         ],

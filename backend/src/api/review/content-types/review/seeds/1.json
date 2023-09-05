@@ -5,12 +5,12 @@
     "description": "As a lead developer, I've seen firsthand the time and effort it takes to build a startup from scratch. The Single Page Startup has saved our team countless hours in development by providing us with ready-to-use components and features. It has been an invaluable resource, allowing us to focus on delivering value to our users.",
     "subtitle": "FinX Solutions, Lead Developer",
     "rating": 4,
-    "createdAt": "2023-06-08T03:19:13.852Z",
-    "updatedAt": "2023-06-25T19:15:44.309Z",
+    "createdAt": "2023-09-05T09:49:02.371Z",
+    "updatedAt": "2023-09-05T09:54:55.118Z",
     "publishedAt": "2023-03-12T04:33:21.047Z",
     "media": [
         {
-            "id": 363,
+            "id": 63,
             "name": "pexels-tima-miroshnichenko-5198239.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_53b471e793.jpg",
-                    "hash": "large_pexels_tima_miroshnichenko_5198239_53b471e793",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_tima_miroshnichenko_5198239_ff8c457301.jpg",
+                    "hash": "large_pexels_tima_miroshnichenko_5198239_ff8c457301",
                     "mime": "image/jpeg",
                     "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_53b471e793.jpg",
-                    "hash": "small_pexels_tima_miroshnichenko_5198239_53b471e793",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_tima_miroshnichenko_5198239_ff8c457301.jpg",
+                    "hash": "small_pexels_tima_miroshnichenko_5198239_ff8c457301",
                     "mime": "image/jpeg",
                     "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_53b471e793.jpg",
-                    "hash": "medium_pexels_tima_miroshnichenko_5198239_53b471e793",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_tima_miroshnichenko_5198239_ff8c457301.jpg",
+                    "hash": "medium_pexels_tima_miroshnichenko_5198239_ff8c457301",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_53b471e793.jpg",
-                    "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_53b471e793",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_tima_miroshnichenko_5198239_ff8c457301.jpg",
+                    "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_ff8c457301",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_tima_miroshnichenko_5198239_53b471e793",
+            "hash": "pexels_tima_miroshnichenko_5198239_ff8c457301",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 4287.67,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_53b471e793.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_tima_miroshnichenko_5198239_ff8c457301.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T19:15:44.266Z",
-            "updatedAt": "2023-06-25T19:15:44.266Z",
+            "createdAt": "2023-09-05T09:54:55.065Z",
+            "updatedAt": "2023-09-05T09:54:55.065Z",
             "folder": null
         }
     ],

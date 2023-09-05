@@ -6,8 +6,8 @@
     "type": "one-time",
     "period": null,
     "old_price": 199,
-    "createdAt": "2023-06-08T03:18:28.946Z",
-    "updatedAt": "2023-06-26T11:16:34.710Z",
+    "createdAt": "2023-09-05T09:46:31.187Z",
+    "updatedAt": "2023-09-05T09:56:24.834Z",
     "publishedAt": "2023-02-14T15:48:56.695Z",
     "locale": "en",
     "currency": {
@@ -15,8 +15,8 @@
         "title": "USD",
         "unicode": "$",
         "is_default": true,
-        "createdAt": "2023-06-08T03:18:28.992Z",
-        "updatedAt": "2023-06-26T11:16:34.743Z",
+        "createdAt": "2023-09-05T09:46:31.209Z",
+        "updatedAt": "2023-09-05T09:46:31.209Z",
         "publishedAt": "2023-03-29T16:09:52.898Z",
         "locale": "en",
         "tiers": [
@@ -28,8 +28,8 @@
                 "type": "one-time",
                 "period": null,
                 "old_price": 199,
-                "createdAt": "2023-06-08T03:18:28.946Z",
-                "updatedAt": "2023-06-26T11:16:34.710Z",
+                "createdAt": "2023-09-05T09:46:31.187Z",
+                "updatedAt": "2023-09-05T09:56:24.834Z",
                 "publishedAt": "2023-02-14T15:48:56.695Z",
                 "locale": "en",
                 "currency": {
@@ -37,8 +37,8 @@
                     "title": "USD",
                     "unicode": "$",
                     "is_default": true,
-                    "createdAt": "2023-06-08T03:18:28.992Z",
-                    "updatedAt": "2023-06-26T11:16:34.743Z",
+                    "createdAt": "2023-09-05T09:46:31.209Z",
+                    "updatedAt": "2023-09-05T09:46:31.209Z",
                     "publishedAt": "2023-03-29T16:09:52.898Z",
                     "locale": "en",
                     "tiers": [
@@ -50,8 +50,8 @@
                             "type": "one-time",
                             "period": null,
                             "old_price": 199,
-                            "createdAt": "2023-06-08T03:18:28.946Z",
-                            "updatedAt": "2023-06-26T11:16:34.710Z",
+                            "createdAt": "2023-09-05T09:46:31.187Z",
+                            "updatedAt": "2023-09-05T09:56:24.834Z",
                             "publishedAt": "2023-02-14T15:48:56.695Z",
                             "locale": "en"
                         }
@@ -62,7 +62,7 @@
                 },
                 "features": [
                     {
-                        "id": 205,
+                        "id": 36,
                         "description": null,
                         "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
                         "subtitle": null,
@@ -70,7 +70,7 @@
                         "additional_media": null
                     },
                     {
-                        "id": 204,
+                        "id": 37,
                         "description": null,
                         "title": "Настроенный фронтенд с библиотекой компонентов",
                         "subtitle": null,
@@ -78,7 +78,7 @@
                         "additional_media": null
                     },
                     {
-                        "id": 206,
+                        "id": 38,
                         "description": null,
                         "title": "Все модели для построения стартапа любой сложности",
                         "subtitle": null,
@@ -86,7 +86,7 @@
                         "additional_media": null
                     },
                     {
-                        "id": 207,
+                        "id": 39,
                         "description": null,
                         "title": "Доступ к репозиторию с исходниками",
                         "subtitle": null,
@@ -94,7 +94,7 @@
                         "additional_media": null
                     },
                     {
-                        "id": 208,
+                        "id": 40,
                         "description": null,
                         "title": "Доступ к комьюнити",
                         "subtitle": null,
@@ -114,7 +114,7 @@
     },
     "features": [
         {
-            "id": 205,
+            "id": 36,
             "description": null,
             "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
             "subtitle": null,
@@ -122,7 +122,7 @@
             "additional_media": null
         },
         {
-            "id": 204,
+            "id": 37,
             "description": null,
             "title": "Настроенный фронтенд с библиотекой компонентов",
             "subtitle": null,
@@ -130,7 +130,7 @@
             "additional_media": null
         },
         {
-            "id": 206,
+            "id": 38,
             "description": null,
             "title": "Все модели для построения стартапа любой сложности",
             "subtitle": null,
@@ -138,7 +138,7 @@
             "additional_media": null
         },
         {
-            "id": 207,
+            "id": 39,
             "description": null,
             "title": "Доступ к репозиторию с исходниками",
             "subtitle": null,
@@ -146,7 +146,7 @@
             "additional_media": null
         },
         {
-            "id": 208,
+            "id": 40,
             "description": null,
             "title": "Доступ к комьюнити",
             "subtitle": null,
