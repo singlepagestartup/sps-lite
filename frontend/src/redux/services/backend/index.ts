@@ -21,6 +21,7 @@ const getBaseQuery = (baseUrl: string) =>
     },
     prepareHeaders: (headers) => {
       const token = localStorage.jwt;
+      headers.set("Query-Encoding", "application/gzip");
 
       if (token) {
         headers.set(

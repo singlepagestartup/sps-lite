@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { gzip } from "pako";
 import QueryString from "qs";
 import {
   currencyPopulate,
@@ -68,9 +69,20 @@ export async function GET(request: Request, { params }: any) {
     populate: model?.populate ? model.populate : pageBlockPopulate,
   });
 
-  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join("/")}?${query}`;
+  const headers: any = {
+    "Query-Encoding": "application/gzip",
+  };
 
-  const res = await fetch(path);
+  const compressedQuery = gzip(query);
+  const base64CompressedQuery = Buffer.from(compressedQuery).toString("base64");
+
+  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join(
+    "/",
+  )}?${base64CompressedQuery}`;
+
+  const res = await fetch(path, {
+    headers,
+  });
   const data = await res.json();
 
   return NextResponse.json(data);
