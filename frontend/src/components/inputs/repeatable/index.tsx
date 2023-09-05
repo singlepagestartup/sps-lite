@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import Inputs, { IInputProps } from "..";
 import { getInputErrors } from "../utils";
@@ -148,6 +148,7 @@ export default function RepeatableInput(props: IInputProps) {
   } = props;
 
   const translate = useTranslationsContext();
+  const [initWasSet, setInitWasSet] = useState<boolean>(false);
 
   const htmlNodeId = useMemo(() => {
     return name.replace("[", "_").replace("]", "_").replace(".", "_");
@@ -240,8 +241,20 @@ export default function RepeatableInput(props: IInputProps) {
           }
         }
 
+        const removeKeys = ["id"].filter((key) => {
+          return !inputs.find((input: any) => {
+            if (input?.name === key) {
+              return true;
+            }
+          });
+        });
+
         const clearedPass = camelCaseKeysToSnake(
-          removeUnnecessaryKeys(passToComponentInitialValue, ["id"], inputs),
+          removeUnnecessaryKeys(
+            passToComponentInitialValue,
+            removeKeys,
+            inputs,
+          ),
         );
 
         resInputs.push(clearedPass);
@@ -299,12 +312,16 @@ export default function RepeatableInput(props: IInputProps) {
                 }${String(baseKey)}[${fieldIndex}]`;
 
                 if (initialValue?.length) {
-                  // if (input.component === `file`) {
                   for (const [
                     initialIndex,
                     initValue,
                   ] of initialValue.entries()) {
-                    if (
+                    // The second and others renders will get data from watchData
+                    if (watchData[baseKey][fieldIndex]) {
+                      additionalPropsForInput.initialValue =
+                        watchData[baseKey][fieldIndex][input.name];
+                    } else if (
+                      // Just for the first render
                       initialIndex === fieldIndex &&
                       (initValue[input.name] !== undefined ||
                         initValue[snakeToCamel(input.name)] !== undefined)
@@ -314,7 +331,6 @@ export default function RepeatableInput(props: IInputProps) {
                         initValue[snakeToCamel(input.name)];
                     }
                   }
-                  // }
                 }
 
                 return (

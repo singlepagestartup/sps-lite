@@ -6,7 +6,6 @@ import getFileUrl from "~utils/api/get-file-url";
 import Buttons from "~components/elements/buttons";
 
 export default function Centered(props: ISpsLiteAlertBlock) {
-  console.log("🚀 ~ Centered ~ props:", props);
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
