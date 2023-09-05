@@ -68,7 +68,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Sleep until backend starts
-        run: sleep 180
+        run: sleep 360
       - name: Login to registry
         uses: docker/login-action@v1
         with:
