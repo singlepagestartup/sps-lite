@@ -231,9 +231,15 @@ export default function RepeatableInput(props: IInputProps) {
             if (input.component === "file") {
               // adding near Inputs component
             } else {
-              if (initValue[input.name] !== undefined) {
+              if (
+                initValue[input.name] !== undefined &&
+                initValue[input.name] !== null
+              ) {
                 passToComponentInitialValue[input.name] = initValue[input.name];
-              } else if (initValue[snakeToCamel(input.name)] !== undefined) {
+              } else if (
+                initValue[snakeToCamel(input.name)] !== undefined &&
+                initValue[snakeToCamel(input.name)] !== null
+              ) {
                 passToComponentInitialValue[input.name] =
                   initValue[snakeToCamel(input.name)];
               }
