@@ -317,18 +317,22 @@ export default function RepeatableInput(props: IInputProps) {
                     initValue,
                   ] of initialValue.entries()) {
                     // The second and others renders will get data from watchData
-                    if (watchData[baseKey][fieldIndex]) {
-                      additionalPropsForInput.initialValue =
+                    if (watchData?.[baseKey]?.[fieldIndex]) {
+                      const watchInputData =
                         watchData[baseKey][fieldIndex][input.name];
+
+                      additionalPropsForInput.initialValue = watchInputData;
                     } else if (
                       // Just for the first render
                       initialIndex === fieldIndex &&
                       (initValue[input.name] !== undefined ||
                         initValue[snakeToCamel(input.name)] !== undefined)
                     ) {
-                      additionalPropsForInput.initialValue =
+                      const initInputData =
                         initValue[input.name] ||
                         initValue[snakeToCamel(input.name)];
+
+                      additionalPropsForInput.initialValue = initInputData;
                     }
                   }
                 }

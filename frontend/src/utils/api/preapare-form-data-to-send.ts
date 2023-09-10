@@ -16,20 +16,17 @@ export function appendFilesToFormData(formData: any, files: any) {
 
 export function prepareFormDataToSend(params: any) {
   const { data, files } = params;
-  // console.log(`🚀 ~ prepareFormDataToSend ~ files`, files);
 
   let passData = { ...data };
   delete passData.files;
 
   if (files) {
-    for (const key of Object.keys(data.files)) {
-      // console.log(`🚀 ~ prepareFormDataToSend ~ key`, key, data.files[key]);
-
+    for (const key of Object.keys(files)) {
       const delPath = key.replaceAll("[", ".")?.replaceAll("]", "")?.split(".");
 
       const cleared = delByPath({ ...passData }, delPath);
 
-      // console.log(`🚀 ~ prepareFormDataToSend ~ cleared`, cleared);
+      // console.log("🚀 ~ prepareFormDataToSend ~ cleared", cleared);
 
       passData = cleared;
     }
@@ -42,10 +39,11 @@ export function prepareFormDataToSend(params: any) {
     appendFilesToFormData(formData, files);
   }
 
-  // console.log(`🚀 ~ prepareFormDataToSend ~ passData`, passData, files);
+  // console.log("🚀 ~ prepareFormDataToSend ~ passData", passData, files);
 
   return formData;
 }
+
 function delByPath(obj: any, path: any[]): any {
   if (path.length > 1) {
     if (Array.isArray(obj)) {
