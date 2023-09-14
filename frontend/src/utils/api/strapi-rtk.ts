@@ -123,6 +123,7 @@ export function strapiCreate<T>({
   populate: passedPopulate = {},
   model,
   rtkType,
+  invalidatesTagsFunc,
 }: {
   build: EndpointBuilder<
     BaseQueryFn<
@@ -138,6 +139,7 @@ export function strapiCreate<T>({
   populate: any;
   model: string;
   rtkType: string;
+  invalidatesTagsFunc?: (result: any) => any[];
 }) {
   return build.mutation({
     query: (params: any = {}) => {
@@ -158,7 +160,9 @@ export function strapiCreate<T>({
       return transformResponseItem(result);
     },
 
-    invalidatesTags: [{ type: rtkType, id: "LIST" }],
+    invalidatesTags: invalidatesTagsFunc
+      ? invalidatesTagsFunc
+      : [{ type: rtkType, id: "LIST" }],
   });
 }
 
@@ -167,6 +171,7 @@ export function strapiUpdate<T>({
   populate: passedPopulate = {},
   model,
   rtkType,
+  invalidatesTagsFunc,
 }: {
   build: EndpointBuilder<
     BaseQueryFn<
@@ -182,6 +187,7 @@ export function strapiUpdate<T>({
   populate: any;
   model: string;
   rtkType: string;
+  invalidatesTagsFunc?: (result: any) => any[];
 }) {
   return build.mutation({
     query: (params: any = {}) => {
@@ -202,12 +208,14 @@ export function strapiUpdate<T>({
       return transformResponseItem(result);
     },
 
-    invalidatesTags: (result: any) => {
-      return [
-        { type: rtkType, id: result.id },
-        { type: rtkType, id: "LIST" },
-      ];
-    },
+    invalidatesTags: invalidatesTagsFunc
+      ? invalidatesTagsFunc
+      : (result: any) => {
+          return [
+            { type: rtkType, id: result.id },
+            { type: rtkType, id: "LIST" },
+          ];
+        },
   });
 }
 
@@ -216,6 +224,7 @@ export function strapiDelete<T>({
   populate: passedPopulate = {},
   model,
   rtkType,
+  invalidatesTagsFunc,
 }: {
   build: EndpointBuilder<
     BaseQueryFn<
@@ -231,6 +240,7 @@ export function strapiDelete<T>({
   populate: any;
   model: string;
   rtkType: string;
+  invalidatesTagsFunc?: (result: any) => any[];
 }) {
   return build.mutation({
     query: (params: any = {}) => {
@@ -251,8 +261,10 @@ export function strapiDelete<T>({
       return transformResponseItem(result);
     },
 
-    invalidatesTags: (result: any) => {
-      return [{ type: rtkType, id: "LIST" }];
-    },
+    invalidatesTags: invalidatesTagsFunc
+      ? invalidatesTagsFunc
+      : (result: any) => {
+          return [{ type: rtkType, id: "LIST" }];
+        },
   });
 }

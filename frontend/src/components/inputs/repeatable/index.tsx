@@ -145,6 +145,8 @@ export default function RepeatableInput(props: IInputProps) {
     removeButtonTitle,
     addButtonTitle,
     InsideComponent,
+    onAppend,
+    onRemove,
   } = props;
 
   const translate = useTranslationsContext();
@@ -374,7 +376,13 @@ export default function RepeatableInput(props: IInputProps) {
 
               <div
                 role="button"
-                onClick={() => remove(fieldIndex)}
+                onClick={() => {
+                  remove(fieldIndex);
+
+                  if (typeof onRemove === "function") {
+                    onRemove(fieldIndex);
+                  }
+                }}
                 className="button-remove-input"
               >
                 <TrashIcon />
@@ -396,7 +404,13 @@ export default function RepeatableInput(props: IInputProps) {
 
         <div
           role="button"
-          onClick={() => append(emptyValues)}
+          onClick={() => {
+            append(emptyValues);
+
+            if (typeof onAppend === "function") {
+              onAppend(fields);
+            }
+          }}
           className="button-add-input"
         >
           <PlusIcon />
