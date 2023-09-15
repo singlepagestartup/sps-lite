@@ -4,7 +4,7 @@ import { useState, useEffect, FC, useMemo } from "react";
 import { useGetModalsQuery } from "~redux/services/backend/models/modals";
 import { IBackendModal } from "types/collection-types";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export type IModal = ISpsLiteModal;
 
@@ -14,6 +14,8 @@ const variants = {
 
 export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const query = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
   const openedModal = query?.get("opened_modal");
   const [isOpen, setIsOpen] = useState(false);
   const [modalProps, setModalProps] = useState<Omit<IBackendModal, "id">>();
@@ -56,6 +58,12 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
       setIsOpen(false);
     }
   }, [openedModal]);
+
+  useEffect(() => {
+    if (!isOpen && pathname) {
+      router.replace(pathname, { scroll: false });
+    }
+  }, [isOpen, pathname, router]);
 
   const Comp = variants[
     modalProps?.variant as keyof typeof variants

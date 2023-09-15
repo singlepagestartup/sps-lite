@@ -29,7 +29,7 @@ export function strapiFind<T>({
   model: string;
   rtkType: string;
 }) {
-  return build.query({
+  return build.query<TransformedApiArray<T>, any>({
     query: (params: any = {}) => {
       const { populate = passedPopulate, locale, filters, pagination } = params;
 
@@ -45,7 +45,7 @@ export function strapiFind<T>({
     },
 
     transformResponse: (result) => {
-      return transformResponseItem(result) as TransformedApiArray<T>;
+      return transformResponseItem(result);
     },
 
     providesTags: (result: any) => {
@@ -83,7 +83,7 @@ export function strapiFindOne<T>({
   model: string;
   rtkType: string;
 }) {
-  return build.query({
+  return build.query<T, any>({
     query: (params: any = {}) => {
       const {
         id,
@@ -104,7 +104,7 @@ export function strapiFindOne<T>({
     },
 
     transformResponse: (result) => {
-      return transformResponseItem(result) as T;
+      return transformResponseItem(result);
     },
 
     providesTags: (result: any) => {
@@ -141,7 +141,7 @@ export function strapiCreate<T>({
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
 }) {
-  return build.mutation({
+  return build.mutation<T, any>({
     query: (params: any = {}) => {
       const { populate = passedPopulate } = params;
       const formData = prepareFormDataToSend(params);
@@ -189,7 +189,7 @@ export function strapiUpdate<T>({
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
 }) {
-  return build.mutation({
+  return build.mutation<T, any>({
     query: (params: any = {}) => {
       const { id, populate = passedPopulate } = params;
       const formData = prepareFormDataToSend(params);
@@ -242,7 +242,7 @@ export function strapiDelete<T>({
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
 }) {
-  return build.mutation({
+  return build.mutation<T, any>({
     query: (params: any = {}) => {
       const { id, populate = passedPopulate } = params;
       const formData = prepareFormDataToSend(params);
