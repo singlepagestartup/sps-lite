@@ -1,40 +1,20 @@
-import { frontendServiceApi } from "../..";
+import { serviceApi } from "../..";
 import { IBackendNavbar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFindOne } from "~utils/api/strapi-rtk";
 
 const model = "navbars";
+const rtkType = "Navbar";
+const populate = pageBlockPopulate;
 
-export const navbarsApi = frontendServiceApi.injectEndpoints({
+export const navbarsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getNavbarById: build.query({
-      query: (params = {}) => {
-        const { populate = pageBlockPopulate, filters, locale, id } = params;
-
-        return {
-          url: `${model}/${id}.json`,
-          params: {
-            populate,
-            filters,
-            locale,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(result) as IBackendNavbar;
-      },
-
-      providesTags: (result) => {
-        return result?.id
-          ? [
-              {
-                type: "Navbar",
-                id: result.id,
-              },
-            ]
-          : [];
-      },
+    getNavbarById: strapiFindOne<IBackendNavbar>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

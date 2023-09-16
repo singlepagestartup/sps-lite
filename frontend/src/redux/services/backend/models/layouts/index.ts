@@ -1,49 +1,21 @@
-import { frontendServiceApi } from "../..";
+import { serviceApi } from "../..";
 import { IBackendLayout } from "types/collection-types";
 import { layoutPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFind } from "~utils/api/strapi-rtk";
 
 const model = "layouts";
+const rtkType = "Layout";
+const populate = layoutPopulate;
+const routePostfix = ".json";
 
-export const layoutsApi = frontendServiceApi.injectEndpoints({
+export const layoutsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getLayouts: build.query({
-      query: (params = {}) => {
-        const {
-          populate = layoutPopulate,
-          filters,
-          locale,
-          pagination = { limit: -1 },
-        } = params;
-
-        return {
-          url: `${model}.json`,
-          params: {
-            populate,
-            filters,
-            locale,
-            pagination,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(
-          result,
-        ) as TransformedApiArray<IBackendLayout>;
-      },
-
-      providesTags: (result) => {
-        return result?.length
-          ? [
-              ...result.map(({ id }: { id: number }) => ({
-                type: "Layout",
-                id,
-              })),
-              { type: "Layout", id: "LIST" },
-            ]
-          : [{ type: "Layout", id: "LIST" }];
-      },
+    getLayouts: strapiFind<IBackendLayout>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

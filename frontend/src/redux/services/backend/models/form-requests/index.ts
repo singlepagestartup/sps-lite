@@ -1,29 +1,18 @@
-import { backendServiceApi } from "../..";
-import { transformResponseItem } from "~utils/api/transform-response-item";
-import { prepareFormDataToSend } from "~utils/api/preapare-form-data-to-send";
+import { serviceApi } from "../..";
+import { strapiCreate } from "~utils/api/strapi-rtk";
 
 const model = "form-requests";
+const rtkType = "FormRequest";
+const populate = {};
 
-export const reviewsApi = backendServiceApi.injectEndpoints({
+export const reviewsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    createFormRequest: build.mutation({
-      query: (params = {}) => {
-        const { populate = {} } = params;
-        const formData = prepareFormDataToSend(params);
-
-        return {
-          url: `${model}`,
-          method: "POST",
-          params: {
-            populate,
-          },
-          body: formData,
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(result);
-      },
+    createFormRequest: strapiCreate<any>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

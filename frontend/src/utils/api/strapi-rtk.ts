@@ -1,4 +1,5 @@
 import {
+  Api,
   BaseQueryFn,
   FetchArgs,
   FetchBaseQueryError,
@@ -7,13 +8,29 @@ import {
 import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
+import { coreModuleName } from "@reduxjs/toolkit/dist/query/core/module";
+import { reactHooksModuleName } from "@reduxjs/toolkit/dist/query/react/module";
 
 export function strapiFind<T>({
+  serviceApi,
   build,
   populate: passedPopulate,
   model,
   rtkType,
 }: {
+  serviceApi: Api<
+    BaseQueryFn<
+      string | FetchArgs,
+      unknown,
+      FetchBaseQueryError,
+      any,
+      FetchBaseQueryMeta
+    >,
+    any,
+    any,
+    any,
+    any
+  >;
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -23,18 +40,20 @@ export function strapiFind<T>({
       FetchBaseQueryMeta
     >,
     string,
-    "backend"
+    "backend" | "frontend"
   >;
   populate: any;
   model: string;
   rtkType: string;
 }) {
+  const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
+
   return build.query<TransformedApiArray<T>, any>({
     query: (params: any = {}) => {
       const { populate = passedPopulate, locale, filters, pagination } = params;
 
       return {
-        url: `${model}`,
+        url: `${model}${routePostfix ? routePostfix : ""}`,
         params: {
           populate,
           locale,
@@ -63,11 +82,25 @@ export function strapiFind<T>({
 }
 
 export function strapiFindOne<T>({
+  serviceApi,
   build,
   populate: passedPopulate,
   model,
   rtkType,
 }: {
+  serviceApi: Api<
+    BaseQueryFn<
+      string | FetchArgs,
+      unknown,
+      FetchBaseQueryError,
+      any,
+      FetchBaseQueryMeta
+    >,
+    any,
+    any,
+    any,
+    any
+  >;
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -77,12 +110,14 @@ export function strapiFindOne<T>({
       FetchBaseQueryMeta
     >,
     string,
-    "backend"
+    "backend" | "frontend"
   >;
   populate: any;
   model: string;
   rtkType: string;
 }) {
+  const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
+
   return build.query<T, any>({
     query: (params: any = {}) => {
       const {
@@ -94,11 +129,12 @@ export function strapiFindOne<T>({
       } = params;
 
       return {
-        url: `${model}/${id}`,
+        url: `${model}/${id}${routePostfix ? routePostfix : ""}`,
         params: {
           populate,
           locale,
           filters,
+          pagination,
         },
       };
     },
@@ -119,12 +155,27 @@ export function strapiFindOne<T>({
 }
 
 export function strapiCreate<T>({
+  serviceApi,
   build,
   populate: passedPopulate = {},
   model,
   rtkType,
   invalidatesTagsFunc,
+  routePostfix,
 }: {
+  serviceApi: Api<
+    BaseQueryFn<
+      string | FetchArgs,
+      unknown,
+      FetchBaseQueryError,
+      any,
+      FetchBaseQueryMeta
+    >,
+    any,
+    any,
+    any,
+    any
+  >;
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -134,12 +185,13 @@ export function strapiCreate<T>({
       FetchBaseQueryMeta
     >,
     string,
-    "backend"
+    "backend" | "frontend"
   >;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
+  routePostfix?: string;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -147,7 +199,7 @@ export function strapiCreate<T>({
       const formData = prepareFormDataToSend(params);
 
       return {
-        url: `${model}`,
+        url: `${model}${routePostfix ? routePostfix : ""}`,
         method: "POST",
         params: {
           populate,
@@ -167,12 +219,27 @@ export function strapiCreate<T>({
 }
 
 export function strapiUpdate<T>({
+  serviceApi,
   build,
   populate: passedPopulate = {},
   model,
   rtkType,
   invalidatesTagsFunc,
+  routePostfix,
 }: {
+  serviceApi: Api<
+    BaseQueryFn<
+      string | FetchArgs,
+      unknown,
+      FetchBaseQueryError,
+      any,
+      FetchBaseQueryMeta
+    >,
+    any,
+    any,
+    any,
+    any
+  >;
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -182,12 +249,13 @@ export function strapiUpdate<T>({
       FetchBaseQueryMeta
     >,
     string,
-    "backend"
+    "backend" | "frontend"
   >;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
+  routePostfix?: string;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -195,7 +263,7 @@ export function strapiUpdate<T>({
       const formData = prepareFormDataToSend(params);
 
       return {
-        url: `${model}/${id}`,
+        url: `${model}/${id}${routePostfix ? routePostfix : ""}`,
         method: "PUT",
         params: {
           populate,
@@ -220,12 +288,27 @@ export function strapiUpdate<T>({
 }
 
 export function strapiDelete<T>({
+  serviceApi,
   build,
   populate: passedPopulate = {},
   model,
   rtkType,
   invalidatesTagsFunc,
+  routePostfix,
 }: {
+  serviceApi: Api<
+    BaseQueryFn<
+      string | FetchArgs,
+      unknown,
+      FetchBaseQueryError,
+      any,
+      FetchBaseQueryMeta
+    >,
+    any,
+    any,
+    any,
+    any
+  >;
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -235,12 +318,13 @@ export function strapiDelete<T>({
       FetchBaseQueryMeta
     >,
     string,
-    "backend"
+    "backend" | "frontend"
   >;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
+  routePostfix?: string;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -248,7 +332,7 @@ export function strapiDelete<T>({
       const formData = prepareFormDataToSend(params);
 
       return {
-        url: `${model}/${id}`,
+        url: `${model}/${id}${routePostfix ? routePostfix : ""}`,
         method: "DELETE",
         params: {
           populate,

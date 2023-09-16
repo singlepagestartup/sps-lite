@@ -1,42 +1,24 @@
-import { frontendServiceApi } from "../..";
-import { IBackendNavbar } from "types/collection-types";
+import { serviceApi } from "../..";
+import { IBackendFooter } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFindOne } from "~utils/api/strapi-rtk";
 
 const model = "footers";
+const rtkType = "Footer";
+const populate = pageBlockPopulate;
 
-export const footersApi = frontendServiceApi.injectEndpoints({
-  endpoints: (build) => ({
-    getFooterById: build.query({
-      query: (params = {}) => {
-        const { populate = pageBlockPopulate, filters, locale, id } = params;
-
-        return {
-          url: `${model}/${id}.json`,
-          params: {
-            populate,
-            filters,
-            locale,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(result) as IBackendNavbar;
-      },
-
-      providesTags: (result) => {
-        return result?.id
-          ? [
-              {
-                type: "Footer",
-                id: result.id,
-              },
-            ]
-          : [];
-      },
-    }),
-  }),
+export const footersApi = serviceApi.injectEndpoints({
+  endpoints: (build) => {
+    return {
+      getFooterById: strapiFindOne<IBackendFooter>({
+        serviceApi,
+        build,
+        populate,
+        model,
+        rtkType,
+      }),
+    };
+  },
 });
 
 export const { useGetFooterByIdQuery } = footersApi;

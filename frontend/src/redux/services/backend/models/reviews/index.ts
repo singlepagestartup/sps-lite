@@ -1,41 +1,20 @@
-import { frontendServiceApi } from "../..";
+import { serviceApi } from "../..";
 import { IBackendReview } from "types/collection-types";
 import { reviewPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFind } from "~utils/api/strapi-rtk";
 
 const model = "reviews";
+const rtkType = "Review";
+const populate = reviewPopulate;
 
-export const reviewsApi = frontendServiceApi.injectEndpoints({
+export const reviewsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getReviews: build.query({
-      query: (params = {}) => {
-        const { populate = reviewPopulate } = params;
-
-        return {
-          url: `${model}.json`,
-          params: {
-            populate,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(
-          result,
-        ) as TransformedApiArray<IBackendReview>;
-      },
-
-      providesTags: (result) => {
-        return result?.length
-          ? [
-              ...result.map(({ id }: { id: number }) => ({
-                type: "Review",
-                id,
-              })),
-              { type: "Review", id: "LIST" },
-            ]
-          : [{ type: "Review", id: "LIST" }];
-      },
+    getReviews: strapiFind<IBackendReview>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });
