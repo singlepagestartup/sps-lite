@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "description": "Backend of boilerplate for lean-startup developers",
   "scripts": {
-    "develop": "strapi develop",
-    "debug": "node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
+    "develop": "rm -rf ./types && strapi develop",
+    "debug": "rm -rf ./types && node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
-    "build": "NODE_OPTIONS=\"--max_old_space_size=8192\" strapi build",
+    "build": "rm -rf ./types && NODE_OPTIONS=\"--max_old_space_size=8192\" strapi build",
     "strapi": "strapi",
     "lint": "eslint . --ext .js,.ts",
     "lint:quiet": "eslint --quiet . --ext .js,.ts",
