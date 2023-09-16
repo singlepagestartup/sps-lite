@@ -6,7 +6,6 @@ import { strapiFind } from "~utils/api/strapi-rtk";
 const model = "loader";
 const rtkType = "Loader";
 const populate = loaderPopulate;
-const routePostfix = ".json";
 
 export const layoutsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
