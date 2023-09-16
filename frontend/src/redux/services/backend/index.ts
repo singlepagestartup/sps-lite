@@ -82,9 +82,10 @@ export const frontendServiceApi = createApi({
  * with data in api folder. Without that pages will be empty.
  */
 export const serviceApi = (() => {
-  let api: any = backendServiceApi;
+  let api = backendServiceApi;
 
   if (process.env.SERVER_ENVIRONMENT === "icp") {
+    // @ts-ignore
     api = frontendServiceApi;
   }
 

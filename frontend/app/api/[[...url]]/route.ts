@@ -4,8 +4,9 @@ import QueryString from "qs";
 import { frontendApiStaticModels } from "~redux/services/backend";
 import { pageBlockPopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
+let generateStaticParams;
 
-async function POST(request: NextRequest, { params }: any) {
+function preparePathAndHeaders({ params }: any) {
   const paramsModel = params.url[0].replace(".json", "");
   const sanitizedParamsUrl = params.url.map((param: string) => {
     return param.replace(".json", "");
@@ -31,10 +32,19 @@ async function POST(request: NextRequest, { params }: any) {
     "/",
   )}?${base64CompressedQuery}`;
 
+  return { headers, path };
+}
+
+async function POST(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
   const formData = await request.formData();
   const res = await fetch(path, {
     method: "POST",
-    headers,
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
     body: formData,
   });
   const data = await res.json();
@@ -42,36 +52,46 @@ async function POST(request: NextRequest, { params }: any) {
   return NextResponse.json(data);
 }
 
-let generateStaticParams;
+async function PUT(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
 
-async function GET(request: NextRequest, { params }: any) {
-  const paramsModel = params.url[0].replace(".json", "");
-  const sanitizedParamsUrl = params.url.map((param: string) => {
-    return param.replace(".json", "");
+  const formData = await request.formData();
+  const res = await fetch(path, {
+    method: "PUT",
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+    body: formData,
   });
+  const data = await res.json();
 
-  const model = frontendApiStaticModels.find((item) =>
-    item.url.includes(paramsModel),
-  );
+  return NextResponse.json(data);
+}
 
-  const query = QueryString.stringify({
-    locale: "all",
-    populate: model?.populate ? model.populate : pageBlockPopulate,
-  });
-
-  const headers: any = {
-    "Query-Encoding": "application/gzip",
-  };
-
-  const compressedQuery = gzip(query);
-  const base64CompressedQuery = Buffer.from(compressedQuery).toString("base64");
-
-  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join(
-    "/",
-  )}?${base64CompressedQuery}`;
+async function DELETE(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
 
   const res = await fetch(path, {
-    headers,
+    method: "DELETE",
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+  });
+  const data = await res.json();
+
+  return NextResponse.json(data);
+}
+
+async function GET(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
+  const res = await fetch(path, {
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
   });
   const data = await res.json();
 
@@ -110,4 +130,4 @@ if (process.env.SERVER_ENVIRONMENT === "icp") {
   };
 }
 
-export { GET, POST, generateStaticParams };
+export { GET, POST, PUT, DELETE, generateStaticParams };
