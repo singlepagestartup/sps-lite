@@ -6,18 +6,13 @@ import { ISpsLiteModal } from ".";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Simple(props: ISpsLiteModal) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const { isOpen, setIsOpen, dialogPanelClassName, pageBlocks } = props;
+  const { isOpenModal, closeModal, dialogPanelClassName, pageBlocks } = props;
 
   return (
-    <Transition show={isOpen} as={"div"}>
+    <Transition show={isOpenModal} as={"div"}>
       <Dialog
         onClose={() => {
-          setIsOpen(false);
-          if (pathname) {
-            router.replace(pathname, { scroll: false });
-          }
+          closeModal();
         }}
         data-collection-type="modal"
         data-variant={props.variant}
@@ -53,10 +48,7 @@ export default function Simple(props: ISpsLiteModal) {
               >
                 <button
                   onClick={() => {
-                    setIsOpen(false);
-                    if (pathname) {
-                      router.replace(pathname, { scroll: false });
-                    }
+                    closeModal();
                   }}
                   className="button-close"
                 >
@@ -65,7 +57,7 @@ export default function Simple(props: ISpsLiteModal) {
                 <PageBlocks
                   pageBlocks={pageBlocks}
                   showSkeletons={props.showSkeletons}
-                  setIsOpen={setIsOpen}
+                  closeModal={closeModal}
                 />
               </Dialog.Panel>
             </div>

@@ -11,6 +11,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
+import axios from "axios";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -125,28 +126,40 @@ export default function FileInput(props: IInputProps) {
       for (const serverFile of initialValue) {
         const fileUrl = getFileUrl(serverFile);
 
-        const newFile = new File(
-          [await (await fetch(fileUrl)).blob()],
-          `${(Math.random() * 1e10).toFixed(0)}`,
-          {
-            type: serverFile.mime,
-          },
-        );
+        const file = await axios({
+          url: fileUrl,
+          method: "GET",
+          responseType: "blob",
+        }).then((response) => {
+          return new File(
+            [response.data],
+            `${(Math.random() * 1e10).toFixed(0)}`,
+            {
+              type: serverFile.mime,
+            },
+          );
+        });
 
-        dataTransfer.items.add(newFile);
+        dataTransfer.items.add(file);
       }
     } else {
       const fileUrl = getFileUrl(initialValue);
 
-      const newFile = new File(
-        [await (await fetch(fileUrl)).blob()],
-        `${(Math.random() * 1e10).toFixed(0)}`,
-        {
-          type: initialValue.mime,
-        },
-      );
+      const file = await axios({
+        url: fileUrl,
+        method: "GET",
+        responseType: "blob",
+      }).then((response) => {
+        return new File(
+          [response.data],
+          `${(Math.random() * 1e10).toFixed(0)}`,
+          {
+            type: initialValue.mime,
+          },
+        );
+      });
 
-      dataTransfer.items.add(newFile);
+      dataTransfer.items.add(file);
     }
 
     fileInputRef.current.files = dataTransfer.files;

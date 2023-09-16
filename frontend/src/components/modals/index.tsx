@@ -59,15 +59,17 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
     }
   }, [openedModal]);
 
-  useEffect(() => {
-    if (!isOpen && pathname) {
-      router.replace(pathname, { scroll: false });
-    }
-  }, [isOpen, pathname, router]);
-
   const Comp = variants[
     modalProps?.variant as keyof typeof variants
   ] as FC<IModal>;
+
+  function closeModal() {
+    setIsOpen(false);
+
+    if (typeof router?.replace === "function") {
+      router.replace(pathname, { scroll: false });
+    }
+  }
 
   if (!Comp || !modalProps || isError) {
     return <></>;
@@ -76,8 +78,8 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   return (
     <Comp
       {...modalProps}
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
+      isOpenModal={isOpen}
+      closeModal={closeModal}
       showSkeletons={isLoading || isFetching}
     />
   );

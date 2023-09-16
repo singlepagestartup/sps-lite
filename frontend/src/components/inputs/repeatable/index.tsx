@@ -380,7 +380,7 @@ export default function RepeatableInput(props: IInputProps) {
                   remove(fieldIndex);
 
                   if (typeof onRemove === "function") {
-                    onRemove(fieldIndex);
+                    onRemove({ fieldIndex });
                   }
                 }}
                 className="button-remove-input"
@@ -408,7 +408,7 @@ export default function RepeatableInput(props: IInputProps) {
             append(emptyValues);
 
             if (typeof onAppend === "function") {
-              onAppend(fields);
+              onAppend({ fieldIndex: fields.length || 0 });
             }
           }}
           className="button-add-input"

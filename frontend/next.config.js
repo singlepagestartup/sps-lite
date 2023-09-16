@@ -28,6 +28,10 @@ function makeConfig() {
           protocol: "https",
           hostname: "**.selcdn.ru",
         },
+        {
+          protocol: "https",
+          hostname: "**.amazonaws.com",
+        },
       ],
     },
     trailingSlash: true,

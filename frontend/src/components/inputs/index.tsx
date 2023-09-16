@@ -47,8 +47,8 @@ export interface IInputProps extends UseControllerProps {
   extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   ResetIcon?: any;
   CalendarIcon?: any;
-  onAppend?: any;
-  onRemove?: any;
+  onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;
+  onRemove?: ({ fieldIndex }: { fieldIndex: number }) => any;
   variant:
     | "text"
     | "listbox"

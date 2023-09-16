@@ -10,6 +10,7 @@ export interface IPageBlockBlock {
   pageBlocks?: IBackendPageBlock[] | null;
   showSkeletons?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  closeModal?: () => void;
 }
 
 export default function PageBlocks(props: IPageBlockBlock) {
