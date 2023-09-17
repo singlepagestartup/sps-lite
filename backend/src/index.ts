@@ -26,7 +26,7 @@ export default {
 
     if (process.env.SEED_ENTITES) {
       try {
-        const apiPath = path.join(__dirname, "./api");
+        const apiPath = path.join(__dirname, "../../src/", "./api");
         strapiUtils.seeder(apiPath).then(() => {
           if (process.env.CLEAR_MEDIA_LIBRARY) {
             clearMediaLibrary();
@@ -45,7 +45,7 @@ export default {
     }
 
     if (process.env.MAKE_NEW_SEED) {
-      const mainApiPath = path.join(__dirname, "../../src", "./api");
+      const mainApiPath = path.join(__dirname, "../../src/", "./api");
       await strapiUtils.dumper(mainApiPath);
     }
   },
