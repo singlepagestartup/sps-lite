@@ -88,17 +88,6 @@ dfx wallet balance --network=ic
 
 # Now you can deploy your canisters to Internet Computer network
 # You need to prepare your repo for deploying
-touch .ic-assets.json && mkdir -p .well-known && touch .well-known/ic-domains
-
-# Fill .ic-assets.json with data
-echo '[
-  {
-    "match": ".well-known",
-    "ignore": false
-  }
-]
-' > .ic-assets.json
-
 # Fill well-known/ic-domains with data
 # Replace your_domain_name.com with your domain
 # echo "<your_domain_name.com>" > .well-known/ic-domains
@@ -107,7 +96,7 @@ domain="sps-lite.singlepagestartup.com"
 echo $domain > .well-known/ic-domains
 
 # Set your domain in .env.icp file
-sed -i -e "s/sps-lite.singlepagestartup.com/$domain/" .env.icp && rm .env.icp-e
+sed -i -e "s/icp.singlepagestartup.com/$domain/" .env.test && rm .env.test-e
 
 # Your repo is ready for deploying now
 # Give access to ./static.sh script
@@ -117,3 +106,24 @@ chmod +x ./static.sh
 # It will build your frontend for Internet Computer network
 # !!! Your backend should be started at your local machine !!!
 ./static.sh
+
+# Give access to initialization script
+chmod +x ./icp-init-canister.sh
+
+# Run initialization script
+./icp-init-canister.sh
+
+# Create init deployment
+dfx deploy --network ic
+
+# Give access to deployer script
+chmod +x ./icp.sh
+
+# Run deployment to Internet Computer network
+./icp.sh
+
+# Give access to connect domain script
+chmod +x ./icp-domain.sh
+
+# Connect domain to your project
+./icp-domain.sh $domain

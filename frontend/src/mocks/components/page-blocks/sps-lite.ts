@@ -895,6 +895,7 @@ export const spsLiteBackendNotFoundBlockSimple: ISpsLiteBackendNotFoundBlock = {
   buttons: Array(1).fill({ ...spsLiteBackendButtonSecondary }),
   media: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
   additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
+  anchor: null,
 };
 
 export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock =

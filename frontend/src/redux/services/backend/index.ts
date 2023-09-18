@@ -82,12 +82,13 @@ export const frontendServiceApi = createApi({
  * with data in api folder. Without that pages will be empty.
  */
 export const serviceApi = (() => {
-  let api = backendServiceApi;
+  // You can set backendServiceApi if you wouldn't use Next.js server for proxying and caching data
+  const api = frontendServiceApi;
 
-  if (process.env.SERVER_ENVIRONMENT === "icp") {
-    // @ts-ignore
-    api = frontendServiceApi;
-  }
+  // if (process.env.SERVER_ENVIRONMENT === "icp") {
+  //   // @ts-ignore
+  //   api = frontendServiceApi;
+  // }
 
   return api;
 })();

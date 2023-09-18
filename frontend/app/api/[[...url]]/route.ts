@@ -35,7 +35,7 @@ function preparePathAndHeaders({ params }: any) {
   return { headers, path };
 }
 
-async function POST(request: NextRequest, { params }: any) {
+let POST = async function POST(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const formData = await request.formData();
@@ -50,9 +50,9 @@ async function POST(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-}
+};
 
-async function PUT(request: NextRequest, { params }: any) {
+let PUT = async function PUT(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const formData = await request.formData();
@@ -67,9 +67,9 @@ async function PUT(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-}
+};
 
-async function DELETE(request: NextRequest, { params }: any) {
+let DELETE = async function DELETE(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const res = await fetch(path, {
@@ -82,14 +82,14 @@ async function DELETE(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-}
+};
 
 async function GET(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const res = await fetch(path, {
     headers: {
-      ...request.headers,
+      // ...request.headers,
       ...headers,
     },
   });
@@ -98,11 +98,11 @@ async function GET(request: NextRequest, { params }: any) {
   return NextResponse.json(data);
 }
 
-/**
- * That function needs only for static export, or it will break POST requests -
- * you will get "405 Method not allowed" on any POST reuqest
- */
-if (process.env.SERVER_ENVIRONMENT === "icp") {
+// NODE_ENV=test is ICP deployment workflow
+// because Next.js doesn't support envs, except "local" | "development" | "test" | "production"
+// If set NODE_ENV=local and .env.local to ICP deployment. You should create and
+// delete that file for npm run dev, because "local" has the highest priority
+if (process.env.NODE_ENV === "test") {
   generateStaticParams = async function generateStaticParams() {
     const paths = [];
 
@@ -128,6 +128,14 @@ if (process.env.SERVER_ENVIRONMENT === "icp") {
 
     return paths;
   };
+
+  // If you allow that methods on static export, you wouldn't get static pages in /out/api/
+  // @ts-ignore
+  POST = undefined;
+  // @ts-ignore
+  PUT = undefined;
+  // @ts-ignore
+  DELETE = undefined;
 }
 
-export { GET, POST, PUT, DELETE, generateStaticParams };
+export { POST, PUT, DELETE, GET, generateStaticParams };

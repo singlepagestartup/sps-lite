@@ -47,7 +47,6 @@ package-lock.json
 
 #icp
 .dfx
-canister_ids.json
 *.key
 *.pem
 *-wallet.txt
