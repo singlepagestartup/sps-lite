@@ -37,7 +37,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@google-cloud/aiplatform": "^2.17.0",
-    "@rogwild/strapi-utils": "^6.7.3",
+    "@rogwild/strapi-utils": "^6.8.0",
     "@strapi/plugin-i18n": "4.12.5",
     "@strapi/plugin-sentry": "4.12.5",
     "@strapi/plugin-users-permissions": "4.12.5",
