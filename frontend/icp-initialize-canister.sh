@@ -1,5 +1,6 @@
 #!/bin/bash
-./icp-create-identity.sh
+# Do every stage in icp-create-identity.sh
+# ./icp-create-identity.sh
 
 # Now you can deploy your canisters to Internet Computer network
 # You need to prepare your repo for deploying
@@ -16,28 +17,23 @@ sed -i -e "s/sps-lite.singlepagestartup.com/$domain/" .env.production && rm .env
 sed -i -e "s/https:\/\/sps-lite-api.singlepagestartup.com/http:\/\/127.0.0.1:1337/" .env.production && rm .env.production-e
 
 # Your repo is ready for deploying now
-# Give access to ./static.sh script
-chmod +x ./static.sh
+# Give access to ./icp-build-static.sh script
+chmod +x ./icp-build-static.sh
 
 # Run that script
 # It will build your frontend for Internet Computer network
 # !!! Your backend should be started at your local machine !!!
-./static.sh
+./icp-build-static.sh
+
+# Delete canister_ids.json that you get from sps-lite repository
+# You will create your own canister_ids.json with your canister_id
+rm -rf ./canister_ids.json
 
 # Give access to initialization script
 chmod +x ./icp-create-canister.sh
 
 # Run initialization script
 ./icp-create-canister.sh
-
-# Create init deployment
-dfx deploy --network ic
-
-# Give access to deployer script
-chmod +x ./icp-build-static.sh
-
-# Run deployment to Internet Computer network
-./icp-build-static.sh
 
 # Give access to connect domain script
 chmod +x ./icp-connect-domain.sh
