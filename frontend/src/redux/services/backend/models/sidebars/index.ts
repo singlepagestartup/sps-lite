@@ -1,40 +1,20 @@
-import { frontendServiceApi } from "../..";
-import { IBackendNavbar } from "types/collection-types";
+import { serviceApi } from "../..";
+import { IBackendSidebar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFindOne } from "~utils/api/strapi-rtk";
 
 const model = "sidebars";
+const rtkType = "Sidebar";
+const populate = pageBlockPopulate;
 
-export const sidebarsApi = frontendServiceApi.injectEndpoints({
+export const sidebarsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getSidebarById: build.query({
-      query: (params = {}) => {
-        const { populate = pageBlockPopulate, filters, locale, id } = params;
-
-        return {
-          url: `${model}/${id}.json`,
-          params: {
-            populate,
-            filters,
-            locale,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(result) as IBackendNavbar;
-      },
-
-      providesTags: (result) => {
-        return result?.id
-          ? [
-              {
-                type: "Sidebar",
-                id: result.id,
-              },
-            ]
-          : [];
-      },
+    getSidebarById: strapiFindOne<IBackendSidebar>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

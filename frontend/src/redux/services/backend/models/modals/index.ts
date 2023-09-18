@@ -1,42 +1,20 @@
-import { frontendServiceApi } from "../..";
+import { serviceApi } from "../..";
 import { IBackendModal } from "types/collection-types";
 import { modalPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFind } from "~utils/api/strapi-rtk";
 
 const model = "modals";
+const rtkType = "Modal";
+const populate = modalPopulate;
 
-export const modalsApi = frontendServiceApi.injectEndpoints({
+export const modalsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getModals: build.query({
-      query: (params = {}) => {
-        const { populate = modalPopulate, pagination = { limit: -1 } } = params;
-
-        return {
-          url: `${model}.json`,
-          params: {
-            populate,
-            pagination,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(
-          result,
-        ) as TransformedApiArray<IBackendModal>;
-      },
-
-      providesTags: (result) => {
-        return result?.length
-          ? [
-              ...result.map(({ id }: { id: number }) => ({
-                type: "Modal",
-                id,
-              })),
-              { type: "Modal", id: "LIST" },
-            ]
-          : [{ type: "Modal", id: "LIST" }];
-      },
+    getModals: strapiFind<IBackendModal>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

@@ -1,40 +1,20 @@
-import { frontendServiceApi } from "../..";
-import { IBackendNavbar } from "types/collection-types";
+import { serviceApi } from "../..";
+import { IBackendTopbar } from "types/collection-types";
 import { pageBlockPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFindOne } from "~utils/api/strapi-rtk";
 
 const model = "topbars";
+const rtkType = "Topbar";
+const populate = pageBlockPopulate;
 
-export const topbarsApi = frontendServiceApi.injectEndpoints({
+export const topbarsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getTopbarById: build.query({
-      query: (params = {}) => {
-        const { populate = pageBlockPopulate, filters, locale, id } = params;
-
-        return {
-          url: `${model}/${id}.json`,
-          params: {
-            populate,
-            filters,
-            locale,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(result) as IBackendNavbar;
-      },
-
-      providesTags: (result) => {
-        return result?.id
-          ? [
-              {
-                type: "Topbar",
-                id: result.id,
-              },
-            ]
-          : [];
-      },
+    getTopbarById: strapiFindOne<IBackendTopbar>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

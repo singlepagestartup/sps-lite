@@ -1,8 +1,8 @@
 {
     "id": 70,
-    "key": "core_admin_auth",
-    "value": "{\"providers\":{\"autoRegister\":false,\"defaultRole\":null}}",
-    "type": "object",
+    "key": "plugin_i18n_default_locale",
+    "value": "\"en\"",
+    "type": "string",
     "environment": null,
     "tag": null
 }

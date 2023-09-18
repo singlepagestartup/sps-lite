@@ -5,7 +5,7 @@
     "rootDir": ".",
     "allowJs": true,
     "sourceMap": true,
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "@strapi/strapi"]
   },
   "include": ["./", "src/**/*.json"],
   "exclude": [
@@ -15,6 +15,7 @@
     ".cache/",
     ".tmp/",
     "src/admin/",
-    "src/plugins/**"
+    "src/plugins/**",
+    "src/api/**/seeds/**"
   ]
 }

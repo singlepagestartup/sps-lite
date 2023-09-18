@@ -1,41 +1,20 @@
-import { frontendServiceApi } from "../..";
-import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
+import { serviceApi } from "../..";
+import { IBackendSlideOver } from "types/collection-types";
 import { slideOverPropulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFind } from "~utils/api/strapi-rtk";
 
 const model = "slide-overs";
+const rtkType = "SlideOver";
+const populate = slideOverPropulate;
 
-export const modalsApi = frontendServiceApi.injectEndpoints({
+export const modalsApi = serviceApi.injectEndpoints({
   endpoints: (build) => ({
-    getSlideOvers: build.query({
-      query: (params = {}) => {
-        const { populate = slideOverPropulate } = params;
-
-        return {
-          url: `${model}.json`,
-          params: {
-            populate,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(
-          result,
-        ) as TransformedApiArray<ISpsLiteBackendSlideOver>;
-      },
-
-      providesTags: (result) => {
-        return result?.length
-          ? [
-              ...result.map((props) => ({
-                type: "SlideOver",
-                id: props?.id || "LIST",
-              })),
-              { type: "SlideOver", id: "LIST" },
-            ]
-          : [{ type: "SlideOver", id: "LIST" }];
-      },
+    getSlideOvers: strapiFind<IBackendSlideOver>({
+      serviceApi,
+      build,
+      populate,
+      model,
+      rtkType,
     }),
   }),
 });

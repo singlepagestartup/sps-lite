@@ -1,44 +1,24 @@
-import { backendServiceApi } from "../..";
+import { serviceApi } from "../..";
 import { IBackendCurrency } from "types/collection-types";
 import { currencyPopulate } from "~utils/api/queries";
-import { transformResponseItem } from "~utils/api/transform-response-item";
+import { strapiFind } from "~utils/api/strapi-rtk";
 
 const model = "currencies";
+const rtkType = "Currency";
+const populate = currencyPopulate;
 
-export const categoriesApi = backendServiceApi.injectEndpoints({
-  endpoints: (build) => ({
-    getCurrencies: build.query({
-      query: (params = {}) => {
-        const { populate = currencyPopulate, filters } = params;
-
-        return {
-          url: model,
-          params: {
-            populate,
-            filters,
-          },
-        };
-      },
-
-      transformResponse: (result) => {
-        return transformResponseItem(
-          result,
-        ) as TransformedApiArray<IBackendCurrency>;
-      },
-
-      providesTags: (result) => {
-        return result?.length
-          ? [
-              ...result.map(({ id }: { id: number }) => ({
-                type: "Currency",
-                id,
-              })),
-              { type: "Currency", id: "LIST" },
-            ]
-          : [{ type: "Currency", id: "LIST" }];
-      },
-    }),
-  }),
+export const categoriesApi = serviceApi.injectEndpoints({
+  endpoints: (build) => {
+    return {
+      getCurrencies: strapiFind<IBackendCurrency>({
+        serviceApi,
+        build,
+        populate,
+        model,
+        rtkType,
+      }),
+    };
+  },
 });
 
 export const { useGetCurrenciesQuery } = categoriesApi;

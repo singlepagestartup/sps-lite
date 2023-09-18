@@ -1,4 +1,8 @@
-export const mediaPopulate = "*";
+export const mediaPopulate = {
+  formats: {
+    populate: "*",
+  },
+};
 
 export const buttonPopulate = {
   media: {

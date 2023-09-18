@@ -75,6 +75,7 @@ export interface ISpsLiteBackendInput {
   label: string | null;
   className: string | null;
   type:
+    | "number"
     | "text"
     | "textarea"
     | "file"

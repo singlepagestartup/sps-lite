@@ -38,15 +38,17 @@ export interface IInputProps extends UseControllerProps {
   renderOptionValue?: (option: any) => string;
   valueAsNumber?: boolean;
   InsideComponent?: FC<IInsideComponentProps>;
-  step?: number;
-  min?: number;
-  max?: number;
+  step?: number | null;
+  min?: number | null;
+  max?: number | null;
   disabled?: boolean;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   ResetIcon?: any;
   CalendarIcon?: any;
+  onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;
+  onRemove?: ({ fieldIndex }: { fieldIndex: number }) => any;
   variant:
     | "text"
     | "listbox"

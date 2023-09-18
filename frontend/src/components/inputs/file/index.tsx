@@ -11,6 +11,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
+import axios from "axios";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -54,6 +55,7 @@ export default function FileInput(props: IInputProps) {
   });
 
   const [value, setValue] = useState(field.value || "");
+  // console.log("🚀 ~ FileInput ~ value:", value);
 
   function reset(e: any) {
     setInitFiles([]);
@@ -80,7 +82,6 @@ export default function FileInput(props: IInputProps) {
   }
 
   function onFileInputChange(e: ChangeEvent | Event) {
-    // console.log(`🚀 ~ onFileInputChange ~ e`, e);
     let filesArray;
 
     const target = e.target as HTMLInputElement;
@@ -106,9 +107,16 @@ export default function FileInput(props: IInputProps) {
   }
 
   async function setInitFiles(initialValue: any) {
-    // console.log(`🚀 ~ setInitFiles ~ initialValue`, initialValue);
+    // console.log("🚀 ~ setInitFiles ~ initialValue:", initialValue);
+    // second and other rerenders in repeatable
+    if (typeof initialValue === "string") {
+      return;
+    }
 
-    if (!fileInputRef?.current?.files) {
+    if (
+      !fileInputRef?.current?.files ||
+      Object.keys(initialValue).length === 0
+    ) {
       return;
     }
 
@@ -118,29 +126,40 @@ export default function FileInput(props: IInputProps) {
       for (const serverFile of initialValue) {
         const fileUrl = getFileUrl(serverFile);
 
-        const newFile = new File(
-          [await (await fetch(fileUrl)).blob()],
-          serverFile.name,
-          {
-            type: serverFile.mime,
-          },
-        );
+        const file = await axios({
+          url: fileUrl,
+          method: "GET",
+          responseType: "blob",
+        }).then((response) => {
+          return new File(
+            [response.data],
+            `${(Math.random() * 1e10).toFixed(0)}`,
+            {
+              type: serverFile.mime,
+            },
+          );
+        });
 
-        // console.log(`🚀 ~ setInitFiles ~ newFile`, newFile);
-
-        dataTransfer.items.add(newFile);
+        dataTransfer.items.add(file);
       }
     } else {
       const fileUrl = getFileUrl(initialValue);
 
-      const newFile = new File(
-        [await (await fetch(fileUrl)).blob()],
-        initialValue.name,
-        {
-          type: initialValue.mime,
-        },
-      );
-      dataTransfer.items.add(newFile);
+      const file = await axios({
+        url: fileUrl,
+        method: "GET",
+        responseType: "blob",
+      }).then((response) => {
+        return new File(
+          [response.data],
+          `${(Math.random() * 1e10).toFixed(0)}`,
+          {
+            type: initialValue.mime,
+          },
+        );
+      });
+
+      dataTransfer.items.add(file);
     }
 
     fileInputRef.current.files = dataTransfer.files;
@@ -238,7 +257,7 @@ export default function FileInput(props: IInputProps) {
         <label
           htmlFor={htmlNodeId}
           data-multiple={multiple ? true : false}
-          data-filled={value ? true : false}
+          data-filled={value?.length ? true : false}
           data-files={localFiles?.length ? localFiles.length : 0}
           className="input"
         >
@@ -247,7 +266,9 @@ export default function FileInput(props: IInputProps) {
             id={htmlNodeId}
             onChange={onFileInputChangeProxy}
             onBlur={onBlur}
-            value={value}
+            // If pass data in repeatable component, get an error
+            // InvalidStateError: Failed to set the 'value' property on 'HTMLInputElement': This input element accepts a filename, which may only be programmatically set to the empty string.
+            // value={value || ""}
             accept={accept}
             multiple={multiple ? multiple : undefined}
             ref={(e) => {

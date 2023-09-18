@@ -1,71 +1,133 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { gzip } from "pako";
 import QueryString from "qs";
-import {
-  layoutPopulate,
-  modalPopulate,
-  pageBlockPopulate,
-  slideOverPropulate,
-} from "~utils/api/queries";
+import { frontendApiStaticModels } from "~redux/services/backend";
+import { pageBlockPopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
+let generateStaticParams;
 
-const models = [
-  {
-    url: "flyouts",
-    populate: pageBlockPopulate,
-  },
-  { url: "footers", populate: pageBlockPopulate },
-  { url: "i18n/locales", populate: pageBlockPopulate },
-  { url: "layouts", populate: layoutPopulate },
-  { url: "modals", populate: modalPopulate },
-  { url: "navbars", populate: pageBlockPopulate },
-  { url: "sidebars", populate: pageBlockPopulate },
-  { url: "slide-overs", populate: slideOverPropulate },
-  { url: "topbars", populate: pageBlockPopulate },
-];
-
-export async function generateStaticParams() {
-  const paths = [];
-
-  for (const model of models) {
-    const backendPath = `${BACKEND_URL}/api/${model.url}`;
-    const items = await fetch(backendPath).then((res) => res.json());
-
-    const path = model.url.split("/");
-    path[path.length - 1] = `${path[path.length - 1]}.json`;
-
-    paths.push({
-      url: path,
-    });
-
-    if (items?.data?.length) {
-      for (const item of items.data) {
-        paths.push({
-          url: [...model.url.split("/"), `${item.id}.json`],
-        });
-      }
-    }
-  }
-
-  return paths;
-}
-
-export async function GET(request: Request, { params }: any) {
+function preparePathAndHeaders({ params }: any) {
   const paramsModel = params.url[0].replace(".json", "");
   const sanitizedParamsUrl = params.url.map((param: string) => {
     return param.replace(".json", "");
   });
 
-  const model = models.find((item) => item.url.includes(paramsModel));
+  const model = frontendApiStaticModels.find((item) =>
+    item.url.includes(paramsModel),
+  );
 
   const query = QueryString.stringify({
     locale: "all",
     populate: model?.populate ? model.populate : pageBlockPopulate,
   });
 
-  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join("/")}?${query}`;
+  const headers: any = {
+    "Query-Encoding": "application/gzip",
+  };
 
-  const res = await fetch(path);
+  const compressedQuery = gzip(query);
+  const base64CompressedQuery = Buffer.from(compressedQuery).toString("base64");
+
+  const path = `${BACKEND_URL}/api/${sanitizedParamsUrl.join(
+    "/",
+  )}?${base64CompressedQuery}`;
+
+  return { headers, path };
+}
+
+async function POST(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
+  const formData = await request.formData();
+  const res = await fetch(path, {
+    method: "POST",
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+    body: formData,
+  });
   const data = await res.json();
 
   return NextResponse.json(data);
 }
+
+async function PUT(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
+  const formData = await request.formData();
+  const res = await fetch(path, {
+    method: "PUT",
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+    body: formData,
+  });
+  const data = await res.json();
+
+  return NextResponse.json(data);
+}
+
+async function DELETE(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
+  const res = await fetch(path, {
+    method: "DELETE",
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+  });
+  const data = await res.json();
+
+  return NextResponse.json(data);
+}
+
+async function GET(request: NextRequest, { params }: any) {
+  const { headers, path } = preparePathAndHeaders({ params });
+
+  const res = await fetch(path, {
+    headers: {
+      ...request.headers,
+      ...headers,
+    },
+  });
+  const data = await res.json();
+
+  return NextResponse.json(data);
+}
+
+/**
+ * That function needs only for static export, or it will break POST requests -
+ * you will get "405 Method not allowed" on any POST reuqest
+ */
+if (process.env.SERVER_ENVIRONMENT === "icp") {
+  generateStaticParams = async function generateStaticParams() {
+    const paths = [];
+
+    for (const model of frontendApiStaticModels) {
+      const backendPath = `${BACKEND_URL}/api/${model.url}`;
+      const items = await fetch(backendPath).then((res) => res.json());
+
+      const path = model.url.split("/");
+      path[path.length - 1] = `${path[path.length - 1]}.json`;
+
+      paths.push({
+        url: path,
+      });
+
+      if (items?.data?.length) {
+        for (const item of items.data) {
+          paths.push({
+            url: [...model.url.split("/"), `${item.id}.json`],
+          });
+        }
+      }
+    }
+
+    return paths;
+  };
+}
+
+export { GET, POST, PUT, DELETE, generateStaticParams };

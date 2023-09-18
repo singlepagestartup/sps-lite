@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { IBackendPage } from "types/collection-types";
 import PageBlocks from "~components/page-blocks";
-import { getBackendData } from "~utils/api";
+import { getBackendData, getPaths, getTargetPage } from "~utils/api";
 import { metatagPopulate, pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
 import getImageUrl from "~utils/api/get-file-url";
@@ -32,41 +32,13 @@ export async function generateStaticParams() {
 
   for (const path of paths) {
     if (path.url?.find((url: string) => url.includes("."))) {
-      const modelRoute = path.url.find((url: string) => url.includes("."));
+      const modelRoutes = path.url.filter((url: string) => url.includes("."));
+      const paths = await getPaths({ modelRoutes, path });
 
-      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-      const model = sanitizedRoute.split(".")[0];
-      const modelParam = sanitizedRoute.split(".")[1];
-
-      const modelEntites = await getBackendData({
-        url: `${BACKEND_URL}/api/${model}`,
-        params: {
-          locale: "all",
-          pagination: { limit: "-1" },
-        },
+      paths.forEach((p) => {
+        filledPaths.push(p);
       });
 
-      if (modelEntites?.length) {
-        for (const modelEntity of modelEntites) {
-          const uri = `${modelEntity[modelParam]}`;
-          const pathUrl = path.url.map((url: string) => {
-            if (url === modelRoute) {
-              return uri;
-            }
-            return url;
-          });
-
-          const resPath = {
-            url: pathUrl,
-          } as any;
-
-          if (modelEntity.locale) {
-            resPath.locale = modelEntity.locale;
-          }
-
-          filledPaths.push(resPath);
-        }
-      }
       continue;
     }
 
@@ -153,71 +125,9 @@ export async function generateMetadata(props: any) {
 }
 
 async function getPage(props: any) {
-  const pageUrl = `/${props.params?.url?.join("/") || ""}`;
   const { locale }: { locale: string } = props.params;
 
-  const pages = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
-    params: { locale: "all", pagination: { limit: -1 } },
-  });
-
-  const filledPages = [];
-  for (const page of pages) {
-    if (page.url.includes(".")) {
-      const modelRoute = page.url
-        .split("/")
-        .find((url: string) => url.includes("."));
-      const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-      const model = sanitizedRoute.split(".")[0];
-      const modelParam = sanitizedRoute.split(".")[1];
-
-      const modelEntites = await getBackendData({
-        url: `${BACKEND_URL}/api/${model}`,
-        params: {
-          fields: [modelParam],
-          locale: page.locale,
-          pagination: { limit: "-1" },
-        },
-      });
-
-      if (modelEntites?.length) {
-        const entitesUrls = [];
-        for (const modelEntity of modelEntites) {
-          const uri = `${modelEntity[modelParam]}`;
-          const pathUrl = page.url
-            .split("/")
-            .map((url: string) => {
-              if (url === modelRoute) {
-                return uri;
-              }
-
-              return url;
-            })
-            .filter((url: string) => url !== "");
-
-          entitesUrls.push(`/${pathUrl.join("/")}`);
-        }
-
-        filledPages.push({
-          ...page,
-          urls: entitesUrls,
-        });
-      }
-
-      continue;
-    }
-
-    filledPages.push({
-      ...page,
-      urls: [page.url],
-    });
-  }
-
-  const targetPage = filledPages.find((page) => {
-    if (page.urls.includes(pageUrl) && page.locale === locale) {
-      return true;
-    }
-  });
+  const targetPage = await getTargetPage(props.params);
 
   if (!targetPage) {
     return notFound();

@@ -5,12 +5,12 @@
     "description": "Our team has been able to move quickly and iteratively thanks to that boilerplate. The built-in feedback mechanisms have helped us ensure our product remains aligned with user needs, and the agile development environment has fostered a culture of innovation within our team. We highly recommend it to any startup looking to launch quickly and efficiently.",
     "subtitle": "HealthBridge, Product Manager",
     "rating": 4,
-    "createdAt": "2023-06-08T05:19:21.599Z",
-    "updatedAt": "2023-06-25T21:16:06.946Z",
-    "publishedAt": "2023-03-12T06:32:42.951Z",
+    "createdAt": "2023-09-05T09:49:36.026Z",
+    "updatedAt": "2023-09-05T09:55:28.894Z",
+    "publishedAt": "2023-03-12T04:32:42.951Z",
     "media": [
         {
-            "id": 365,
+            "id": 65,
             "name": "pexels-karolina-grabowska-4467687 (1).jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_4467687_1_6c70965e4c.jpg",
-                    "hash": "large_pexels_karolina_grabowska_4467687_1_6c70965e4c",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_karolina_grabowska_4467687_1_82a4a5fd31.jpg",
+                    "hash": "large_pexels_karolina_grabowska_4467687_1_82a4a5fd31",
                     "mime": "image/jpeg",
                     "name": "large_pexels-karolina-grabowska-4467687 (1).jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_4467687_1_6c70965e4c.jpg",
-                    "hash": "small_pexels_karolina_grabowska_4467687_1_6c70965e4c",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_karolina_grabowska_4467687_1_82a4a5fd31.jpg",
+                    "hash": "small_pexels_karolina_grabowska_4467687_1_82a4a5fd31",
                     "mime": "image/jpeg",
                     "name": "small_pexels-karolina-grabowska-4467687 (1).jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_4467687_1_6c70965e4c.jpg",
-                    "hash": "medium_pexels_karolina_grabowska_4467687_1_6c70965e4c",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_karolina_grabowska_4467687_1_82a4a5fd31.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_4467687_1_82a4a5fd31",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-karolina-grabowska-4467687 (1).jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_4467687_1_6c70965e4c.jpg",
-                    "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_6c70965e4c",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_karolina_grabowska_4467687_1_82a4a5fd31.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_82a4a5fd31",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-karolina-grabowska-4467687 (1).jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_karolina_grabowska_4467687_1_6c70965e4c",
+            "hash": "pexels_karolina_grabowska_4467687_1_82a4a5fd31",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 1177.43,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_4467687_1_6c70965e4c.jpg",
+            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_karolina_grabowska_4467687_1_82a4a5fd31.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-06-25T21:16:06.919Z",
-            "updatedAt": "2023-06-25T21:16:06.919Z",
+            "createdAt": "2023-09-05T09:55:28.859Z",
+            "updatedAt": "2023-09-05T09:55:28.859Z",
             "folder": null
         }
     ],

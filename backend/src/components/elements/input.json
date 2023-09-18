@@ -50,6 +50,7 @@
     "type": {
       "type": "enumeration",
       "enum": [
+        "number",
         "text",
         "textarea",
         "date",

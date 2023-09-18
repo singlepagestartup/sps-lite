@@ -12,6 +12,7 @@ import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
+import dayjs from "dayjs";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -49,9 +50,9 @@ export default function DateInput(props: IInputProps) {
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
-    step?: number;
-    min?: number;
-    max?: number;
+    step?: number | null;
+    min?: number | null;
+    max?: number | null;
   }>({});
 
   useEffect(() => {
@@ -98,6 +99,12 @@ export default function DateInput(props: IInputProps) {
 
       return onChange(e);
     } else {
+      if (type && ["date_inline", "date"].includes(type)) {
+        const parsedDate = dayjs(e).format("YYYY-MM-DD");
+
+        return onChange(parsedDate);
+      }
+
       return onChange(e);
     }
   }

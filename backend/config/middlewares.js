@@ -1,5 +1,5 @@
 module.exports = ({ env }) => {
-  const security = env("AWS_S3_ACCESS_KEY_ID")
+  const security = env("AWS_S3_URL")
     ? {
         name: "strapi::security",
         config: {
@@ -12,14 +12,16 @@ module.exports = ({ env }) => {
                 "'self'",
                 "blob:",
                 "data:",
-                env("AWS_S3_URL", "*.selcdn.ru"),
+                "*.strapi.io",
+                env("AWS_S3_URL"),
               ],
               "connect-src": ["'self'", "https:"],
               "media-src": [
                 "'self'",
                 "blob:",
                 "data:",
-                env("AWS_S3_URL", "*.selcdn.ru"),
+                "*.strapi.io",
+                env("AWS_S3_URL"),
               ],
               upgradeInsecureRequests: null,
             },
@@ -36,9 +38,20 @@ module.exports = ({ env }) => {
               "img-src": [
                 "'self'",
                 "data:",
+                "blob:",
                 "cdn.jsdelivr.net",
                 "strapi.io",
-                "s3.amazonaws.com",
+                "*.amazonaws.com",
+                "*.selcdn.ru",
+                "*.strapi.io",
+              ],
+              "media-src": [
+                "'self'",
+                "blob:",
+                "data:",
+                "*.amazonaws.com",
+                "*.selcdn.ru",
+                "*.strapi.io",
               ],
             },
           },
@@ -57,11 +70,14 @@ module.exports = ({ env }) => {
           "Origin",
           "Accept",
           "Next-Auth-Factor-Key",
+          "Policies-Data",
+          "Query-Encoding",
         ],
       },
     },
     "strapi::poweredBy",
     "strapi::logger",
+    "global::ungzip-query",
     "strapi::query",
     {
       name: "strapi::body",

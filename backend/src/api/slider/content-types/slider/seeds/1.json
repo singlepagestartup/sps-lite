@@ -8,19 +8,19 @@
     "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
     "title": "Features Slider",
     "uid": "features-slider",
-    "createdAt": "2023-06-08T05:19:32.748Z",
-    "updatedAt": "2023-06-25T20:37:18.108Z",
-    "publishedAt": "2023-03-28T05:46:50.780Z",
+    "createdAt": "2023-09-05T09:51:21.710Z",
+    "updatedAt": "2023-09-05T09:56:02.791Z",
+    "publishedAt": "2023-03-28T03:46:50.780Z",
     "locale": "en",
     "slides": [
         {
-            "id": 30,
+            "id": 6,
             "title": "Jumpstart Your Startup Journey",
             "description": "Our pre-built boilerplate offers a comprehensive set of features and tools to accelerate your startup's development process. Say goodbye to repetitive tasks and focus on your core business logic with our customizable, efficient, and scalable solution.",
             "subtitle": "Get ahead with our lean startup developer boilerplate",
             "media": [
                 {
-                    "id": 306,
+                    "id": 68,
                     "name": "pexels-karolina-grabowska-5882683.jpg",
                     "alternativeText": null,
                     "caption": null,
@@ -29,8 +29,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                            "hash": "large_pexels_karolina_grabowska_5882683_51a552efc0",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                            "hash": "large_pexels_karolina_grabowska_5882683_43f904253f",
                             "mime": "image/jpeg",
                             "name": "large_pexels-karolina-grabowska-5882683.jpg",
                             "path": null,
@@ -40,8 +40,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                            "hash": "small_pexels_karolina_grabowska_5882683_51a552efc0",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                            "hash": "small_pexels_karolina_grabowska_5882683_43f904253f",
                             "mime": "image/jpeg",
                             "name": "small_pexels-karolina-grabowska-5882683.jpg",
                             "path": null,
@@ -51,8 +51,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                            "hash": "medium_pexels_karolina_grabowska_5882683_51a552efc0",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                            "hash": "medium_pexels_karolina_grabowska_5882683_43f904253f",
                             "mime": "image/jpeg",
                             "name": "medium_pexels-karolina-grabowska-5882683.jpg",
                             "path": null,
@@ -62,8 +62,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_karolina_grabowska_5882683_51a552efc0.jpg",
-                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_51a552efc0",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_karolina_grabowska_5882683_43f904253f.jpg",
+                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_43f904253f",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
                             "path": null,
@@ -72,23 +72,23 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_karolina_grabowska_5882683_51a552efc0",
+                    "hash": "pexels_karolina_grabowska_5882683_43f904253f",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 109.43,
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_karolina_grabowska_5882683_51a552efc0.jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_karolina_grabowska_5882683_43f904253f.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:04.548Z",
-                    "updatedAt": "2023-06-25T20:37:04.548Z",
+                    "createdAt": "2023-09-05T09:55:42.652Z",
+                    "updatedAt": "2023-09-05T09:55:42.652Z",
                     "folder": null
                 }
             ],
             "buttons": [
                 {
-                    "id": 129,
+                    "id": 24,
                     "url": "https://github.com/singlepagestartup/sps-lite",
                     "description": null,
                     "variant": "primary",
@@ -103,13 +103,13 @@
             "additional_media": null
         },
         {
-            "id": 28,
+            "id": 4,
             "title": "Empower Your MVP with Best Practices",
             "description": "Our boilerplate comes with essential features like authentication, multilingual support, and integrations with popular third-party services. With minimum viable product (MVP) readiness in mind, we help you save time, effort, and resources as you bring your startup idea to life.",
             "subtitle": "Launch faster with our ready-to-use components",
             "media": [
                 {
-                    "id": 307,
+                    "id": 69,
                     "name": "pexels-andrea-piacquadio-3756679.jpg",
                     "alternativeText": null,
                     "caption": null,
@@ -118,8 +118,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                            "hash": "large_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                            "hash": "large_pexels_andrea_piacquadio_3756679_14e40d522f",
                             "mime": "image/jpeg",
                             "name": "large_pexels-andrea-piacquadio-3756679.jpg",
                             "path": null,
@@ -129,8 +129,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                            "hash": "small_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                            "hash": "small_pexels_andrea_piacquadio_3756679_14e40d522f",
                             "mime": "image/jpeg",
                             "name": "small_pexels-andrea-piacquadio-3756679.jpg",
                             "path": null,
@@ -140,8 +140,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                            "hash": "medium_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                            "hash": "medium_pexels_andrea_piacquadio_3756679_14e40d522f",
                             "mime": "image/jpeg",
                             "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
                             "path": null,
@@ -151,8 +151,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
-                            "hash": "thumbnail_pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
+                            "hash": "thumbnail_pexels_andrea_piacquadio_3756679_14e40d522f",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
                             "path": null,
@@ -161,17 +161,17 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_andrea_piacquadio_3756679_ed4b1397ae",
+                    "hash": "pexels_andrea_piacquadio_3756679_14e40d522f",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 811.66,
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_andrea_piacquadio_3756679_ed4b1397ae.jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_andrea_piacquadio_3756679_14e40d522f.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:10.092Z",
-                    "updatedAt": "2023-06-25T20:37:10.092Z",
+                    "createdAt": "2023-09-05T09:55:48.353Z",
+                    "updatedAt": "2023-09-05T09:55:48.353Z",
                     "folder": null
                 }
             ],
@@ -179,13 +179,13 @@
             "additional_media": null
         },
         {
-            "id": 29,
+            "id": 5,
             "title": "Built for Agile Development",
             "description": "Our lean startup developer boilerplate is designed for agile development, allowing you to adapt and evolve your project rapidly. Stay ahead in the ever-changing startup landscape with built-in feedback mechanisms, seamless collaboration, and continuous improvement capabilities.",
             "subtitle": "Foster innovation with a flexible and iterative approach",
             "media": [
                 {
-                    "id": 308,
+                    "id": 70,
                     "name": "pexels-tima-miroshnichenko-5198239.jpg",
                     "alternativeText": null,
                     "caption": null,
@@ -194,8 +194,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/large_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                            "hash": "large_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                            "hash": "large_pexels_tima_miroshnichenko_5198239_3277708561",
                             "mime": "image/jpeg",
                             "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
                             "path": null,
@@ -205,8 +205,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/small_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                            "hash": "small_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                            "hash": "small_pexels_tima_miroshnichenko_5198239_3277708561",
                             "mime": "image/jpeg",
                             "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
                             "path": null,
@@ -216,8 +216,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/medium_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                            "hash": "medium_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                            "hash": "medium_pexels_tima_miroshnichenko_5198239_3277708561",
                             "mime": "image/jpeg",
                             "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
                             "path": null,
@@ -227,8 +227,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild/thumbnail_pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
-                            "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_000362d9e9",
+                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_tima_miroshnichenko_5198239_3277708561.jpg",
+                            "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_3277708561",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
                             "path": null,
@@ -237,17 +237,17 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_tima_miroshnichenko_5198239_000362d9e9",
+                    "hash": "pexels_tima_miroshnichenko_5198239_3277708561",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 4287.67,
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild/pexels_tima_miroshnichenko_5198239_000362d9e9.jpg",
+                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_tima_miroshnichenko_5198239_3277708561.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-06-25T20:37:17.972Z",
-                    "updatedAt": "2023-06-25T20:37:17.972Z",
+                    "createdAt": "2023-09-05T09:56:02.632Z",
+                    "updatedAt": "2023-09-05T09:56:02.632Z",
                     "folder": null
                 }
             ],
