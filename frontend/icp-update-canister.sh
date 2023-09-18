@@ -1,4 +1,6 @@
 #!/bin/bash
+./icp-build-static.sh
+
 cp .ic-assets.json out/.ic-assets.json
 cp -R .well-known out/
 

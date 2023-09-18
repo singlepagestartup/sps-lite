@@ -98,11 +98,9 @@ async function GET(request: NextRequest, { params }: any) {
   return NextResponse.json(data);
 }
 
-// NODE_ENV=test is ICP deployment workflow
-// because Next.js doesn't support envs, except "local" | "development" | "test" | "production"
-// If set NODE_ENV=local and .env.local to ICP deployment. You should create and
-// delete that file for npm run dev, because "local" has the highest priority
-if (process.env.NODE_ENV === "test") {
+// Internet Computer deployment workflow
+// generateStaticParams creates /api/<models>/...json files with data
+if (process.env.SERVER_ENVIRONMENT === "icp") {
   generateStaticParams = async function generateStaticParams() {
     const paths = [];
 
