@@ -8,7 +8,6 @@ import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function DarkWithImage(props: ISpsLiteCtaSectionsBlock) {
-  console.log("🚀 ~ DarkWithImage ~ props:", props);
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {
