@@ -80,3 +80,40 @@ dfx identity use sps-lite-exported-deployer
 
 # Connect wallet to your identity
 dfx identity set-wallet --network ic $wallet_canister_id
+
+# Now you can test that wallet is connected by running command
+# It should return something like that
+# 2.124 TC (trillion cycles).
+dfx wallet balance --network=ic
+
+# Now you can deploy your canisters to Internet Computer network
+# You need to prepare your repo for deploying
+touch .ic-assets.json && mkdir -p .well-known && touch .well-known/ic-domains
+
+# Fill .ic-assets.json with data
+echo '[
+  {
+    "match": ".well-known",
+    "ignore": false
+  }
+]
+' > .ic-assets.json
+
+# Fill well-known/ic-domains with data
+# Replace your_domain_name.com with your domain
+# echo "<your_domain_name.com>" > .well-known/ic-domains
+# domain="<your_domain_name.com>"
+domain="sps-lite.singlepagestartup.com"
+echo $domain > .well-known/ic-domains
+
+# Set your domain in .env.icp file
+sed -i -e "s/sps-lite.singlepagestartup.com/$domain/" .env.icp && rm .env.icp-e
+
+# Your repo is ready for deploying now
+# Give access to ./static.sh script
+chmod +x ./static.sh
+
+# Run that script
+# It will build your frontend for Internet Computer network
+# !!! Your backend should be started at your local machine !!!
+./static.sh

@@ -6,7 +6,7 @@
     "dev": "rm -rf .next && ENV_FILE=development node theme.js && next dev",
     "debug": "ENV_FILE=development node theme.js && NODE_OPTIONS='--inspect' next dev",
     "build": "ENV_FILE=production node theme.js && next build",
-    "build:icp": "ENV_FILE=production node theme.js && SERVER_ENVIRONMENT=icp next build",
+    "build:icp": "ENV_FILE=icp node theme.js && SERVER_ENVIRONMENT=icp next build",
     "start": "next start",
     "test:e2e:codegen": "npx playwright codegen",
     "test:e2e": "playwright test",
