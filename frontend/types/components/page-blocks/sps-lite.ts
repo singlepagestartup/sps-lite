@@ -139,6 +139,7 @@ export interface ISpsLiteBackendNotFoundBlock {
   buttons?: ISpsLiteBackendButton[] | null;
   media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
   additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  anchor: string | null;
 }
 
 export interface ISpsLiteBackendPricingsBlock {

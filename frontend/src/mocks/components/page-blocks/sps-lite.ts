@@ -830,7 +830,7 @@ export const spsLiteBackendHeaderSectionBlockSimpleCentered: ISpsLiteBackendHead
     anchor: "header-section-anchor",
     description:
       "We offer a wide selection of high-quality products. Spend time with us and enjoy the convenience of shopping.",
-    media: null,
+    media: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
     additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
   };
 
@@ -863,7 +863,7 @@ export const spsLiteBackendIncentivesBlockFourColumnWithIllustrations: ISpsLiteB
     __component: "page-blocks.incentives-block",
     variant: "four-column-with-illustrations",
     features: Array(4).fill({ ...spsLiteBackendFeature }),
-    media: null,
+    media: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
     additionalMedia: [
       { ...spsLiteUploadPluginBackendAditionalMediaIncentives },
     ],
@@ -909,7 +909,7 @@ export const spsLiteBackendPricingBlockTwoColumns: ISpsLiteBackendPricingsBlock 
       "Explore our range of pricing plans and choose the one that best suits your business requirements. Whether you're a startup, small business, or enterprise, we have flexible options designed to accommodate your budget and goals. Compare features, prices, and benefits to make an informed decision and take your business to the next level.",
     className: null,
     tiers: Array(2).fill({ ...spsLiteBackendTier }),
-    media: null,
+    media: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
     additionalMedia: [{ ...spsLiteUploadPluginBackendAditionalMediaHeader }],
   };
 
