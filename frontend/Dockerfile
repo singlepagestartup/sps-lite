@@ -33,6 +33,6 @@ EXPOSE 3000
 RUN ["chmod", "-R", "777", "/usr/src/app"]
 RUN ["chmod", "+x", "/usr/src/app/start.sh"]
 RUN ["chmod", "+x", "/usr/src/app/build-start.sh"]
-RUN ["chmod", "+x", "/usr/src/app/static.sh"]
+RUN ["chmod", "+x", "/usr/src/app/icp-build-static.sh"]
 
 CMD ["tail", "-f", "/dev/null"]
