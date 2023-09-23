@@ -6,6 +6,7 @@ on:
 
 jobs:
   run-backend-and-frontens:
+    timeout-minutes: 15
     name: Run backend and frontend
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +18,7 @@ jobs:
           npm i
           npm run build
           cp .env.sqlite.example .env
-          npm run start &
+          npm run start
       - name: Run frontend
         run: |
           cd frontend
