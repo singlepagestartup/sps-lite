@@ -14,3 +14,6 @@ package-lock.json
 db_data
 out
 static
+
+**/.terraform*
+**/terraform.tfstate*

@@ -1,0 +1,17 @@
+name: Run backend and frontend
+on:
+    push:
+        branches:    
+        - main
+
+jobs:
+    run-backend-and-frontens:
+      name: Run backend and frontend
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repository code
+          uses: actions/checkout@v2
+        - name: Run backend
+          run: cd backend && npm i && npm run build && npm run start &
+        - name: Run frontend
+          run: cd frontend && npm i && npm run build && npm run start &
