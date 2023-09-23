@@ -18,6 +18,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Check envs
         run: env
+        env:
+          AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
+          AWS_S3_ENDPOINT: ${{ vars.AWS_S3_ENDPOINT }}
+          AWS_S3_REGION: ${{ vars.AWS_S3_REGION }}
       # - name: Run backend
       #   run: |
       #     cd backend
