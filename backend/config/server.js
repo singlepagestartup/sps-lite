@@ -10,5 +10,5 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array("APP_KEYS"),
   },
-  watchIgnoreFiles: ["**/seeds/**", "**/**.spec.ts"],
+  watchIgnoreFiles: ["**/seeds/**", "**/**.spec.ts", "**/seeded.txt"],
 });

@@ -16,3 +16,4 @@ build
 .strapi-updater.json
 .env
 tests
+seeded.txt

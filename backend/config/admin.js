@@ -10,5 +10,5 @@ module.exports = ({ env }) => ({
       salt: env("TRANSFER_TOKEN_SALT", "XXXXXXXXXXX"),
     },
   },
-  watchIgnoreFiles: ["**/seeds/**", "**/**.spec.ts"],
+  watchIgnoreFiles: ["**/seeds/**", "**/**.spec.ts", "**/seeded.txt"],
 });
