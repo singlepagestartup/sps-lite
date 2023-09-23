@@ -40,6 +40,7 @@ jobs:
           ICP_DEPLOYER_WALLET: ${{ vars.ICP_DEPLOYER_WALLET }}
           ICP_DEPLOYER_KEY: ${{ secrets.ICP_DEPLOYER_KEY }}
         run: |
+          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
           ./frontend/icp-pass-envs-to-files.sh
           ./frontend/icp-import-identity.sh
       # - name: Run frontend
