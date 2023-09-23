@@ -5,24 +5,21 @@
 # Now you can deploy your canisters to Internet Computer network
 # You need to prepare your repo for deploying
 # Fill well-known/ic-domains with data
-# Replace your_domain_name.com with your domain
-# echo "<your_domain_name.com>" > .well-known/ic-domains
-# domain="<your_domain_name.com>"
-domain=$1
-echo $domain > .well-known/ic-domains
+FULL_DOMAIN=$(cat .env.icp | grep "NEXT_PUBLIC_FRONTEND_URL" | cut -d '=' -f2 | sed 's/https:\/\///g')
+echo $FULL_DOMAIN > .well-known/ic-domains
 
 # Delete canister_ids.json that you get from sps-lite repository
 # You will create your own canister_ids.json with your canister_id
 rm -rf ./canister_ids.json
 
-# Give access to initialization script
-chmod +x ./icp-update-canister.sh
-
 # Run initialization script
+chmod +x ./icp-update-canister.sh
 ./icp-update-canister.sh
+
+# Create records in Cloudflare
+chmod +x ./icp-create-dns-records-in-cloudflare.sh
+./icp-create-dns-records-in-cloudflare.sh $FULL_DOMAIN
 
 # Give access to connect domain script
 chmod +x ./icp-connect-domain.sh
-
-# Connect domain to your project
 ./icp-connect-domain.sh $domain

@@ -51,6 +51,7 @@ package-lock.json
 *.pem
 *.pem.base64
 *-wallet.txt
+.env.cloudflare
 
 # Sentry Auth Token
 .sentryclirc

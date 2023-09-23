@@ -12,34 +12,24 @@ dfx identity list
 # For selecting created identity "sps-lite-deployer" run command
 dfx identity use sps-lite-deployer
 
+# Export your identity by running command
+# And store exported key at the file
+# You can use that file on another machine for deploying canisters
+# !!! DO NOT COMMIT IT TO GIT !!!
+dfx identity export sps-lite-deployer > sps-lite-deployer.pem
+
+# Transform to base64 for github actions
+openssl base64 -in sps-lite-deployer.pem -out sps-lite-deployer.pem.base64
+
 # Check that you selected correct identity by running command
 # Should return "sps-lite-deployer"
 dfx identity whoami
 
-# If you run commad for checking your wallet balance
-# You will get an error:
-# Error: Failed to setup wallet caller.
-# Caused by: Failed to setup wallet caller.
-#   Failed to get wallet canister caller for identity 'sps-lite-deployer' on network 'ic'.
-dfx wallet balance --network ic
-
-# For solving this problem you need to create wallet canister
-# For that you need to transfer some icp to your ledger wallet, that also exists in your identity
-# For getting your ledger wallet address run command
-dfx ledger --network=ic account-id
-
-# Your ledger wallet is empty now, for checking that, run command
-# You will get 0.00000000 ICP
-dfx ledger --network ic balance
-
-# Transfer 2-3 ICP to that address from your main wallet or crypto exchange
-
 # Check your ledger wallet balance now
-# You should get something like that 3.00000000 ICP
-dfx ledger --network ic balance
+# And fill it with ICP if needed
+chmod +x ./icp-wait-for-account-topped-up.sh
+./icp-wait-for-account-topped-up.sh
 
-# Give access to run that script
-chmod +x ./icp-save-wallet-address.sh
 
 # Now run command for creating wallet for cycles and
 # passing data to get-wallet-address script, that creates .txt file with wallet id
@@ -47,6 +37,7 @@ chmod +x ./icp-save-wallet-address.sh
 # Transfer sent at block height 6719981
 # Using transfer at block height 6719981
 # Canister created with id: "cfhaf-gaaaa-aaaal-qccpq-cai"
+chmod +x ./icp-save-wallet-address.sh
 dfx ledger --network ic create-canister $(dfx identity get-principal) --amount 1 | ./icp-save-wallet-address.sh
 
 # Set canister id to variable
@@ -64,12 +55,3 @@ dfx identity --network=ic deploy-wallet $wallet_canister_id
 # You will get something like that
 # 2.124 TC (trillion cycles).
 dfx wallet balance --network=ic
-
-# Export your identity by running command
-# And store exported key at the file
-# You can use that file on another machine for deploying canisters
-# !!! DO NOT COMMIT IT TO GIT !!!
-dfx identity export sps-lite-deployer > sps-lite-deployer.pem
-
-# Transform to base64 for github actions
-openssl base64 -in sps-lite-deployer.pem -out sps-lite-deployer.pem.base64
