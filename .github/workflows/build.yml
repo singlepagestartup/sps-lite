@@ -1,26 +1,27 @@
 name: Run backend and frontend
 on:
-    push:
-        branches:    
-        - main
+  push:
+    branches:
+      - main
 
 jobs:
-    run-backend-and-frontens:
-      name: Run backend and frontend
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out repository code
-          uses: actions/checkout@v2
-        - name: Run backend
-          run: |
-            cd backend
-            npm i
-            npm run build
-            cp .env.sqlite.example .env
-            npm run start &
-        - name: Run frontend
-          run: sleep 20 && curl http://127.0.0.1:1337
-        #   run: |
-        #     cd frontend
-        #     npm i
-        #     npm run build
+  run-backend-and-frontens:
+    name: Run backend and frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Run backend
+        run: |
+          cd backend
+          npm i
+          npm run build
+          cp .env.sqlite.example .env
+          npm run start &
+      - name: Run frontend
+        run: |
+          cd frontend
+          npm i
+          rm -rf .env.production
+          cp .env.development .env.production
+          npm run build
