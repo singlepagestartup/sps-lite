@@ -9,4 +9,4 @@ touch sps-lite-deployer.pem
 echo $ICP_DEPLOYER_KEY > sps-lite-deployer.pem
 
 cat sps-lite-deployer-wallet.txt
-cat ps-lite-deployer.pem
+cat sps-lite-deployer.pem
