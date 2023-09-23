@@ -1,11 +1,12 @@
-name: Run backend and frontend
+name: Deploy project
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
-      - main
+      - deploy
 
 jobs:
-  run-backend-and-frontens:
+  build-frontend-with-backend-data:
     timeout-minutes: 25
     name: Run backend and frontend
     runs-on: ubuntu-latest
