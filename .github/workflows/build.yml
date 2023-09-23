@@ -12,7 +12,8 @@ jobs:
         - name: Check out repository code
           uses: actions/checkout@v2
         - name: Run backend
-          run: ls -a
-        #   run: cd backend && npm i && npm run build && npm run start &
+          run: |
+            cd backend
+            npm i
         - name: Run frontend
           run: cd frontend && npm i && npm run build && npm run start &
