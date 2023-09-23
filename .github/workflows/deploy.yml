@@ -34,7 +34,8 @@ jobs:
           chmod +x \
           ./wait-for-seeed.sh \
           ./frontend/icp-pass-envs-to-files.sh \
-          ./frontend/icp-import-identity.sh
+          ./frontend/icp-import-identity.sh \
+          ./frontend/icp-update-canister.sh
       - name: Run frontend
         env:
           ICP_DEPLOYER_WALLET: ${{ vars.ICP_DEPLOYER_WALLET }}
@@ -44,11 +45,7 @@ jobs:
           cd frontend
           ./icp-pass-envs-to-files.sh
           ./icp-import-identity.sh
-      # - name: Run frontend
-      #   run: |
-      #     ./wait-for-seeed.sh
-      #     cd frontend
       #     npm i
       #     rm -rf .env.production
       #     cp .env.development .env.production
-      #     npm run build
+      #     ./icp-update-canister.sh

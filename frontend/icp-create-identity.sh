@@ -39,7 +39,7 @@ dfx ledger --network ic balance
 dfx ledger --network ic balance
 
 # Give access to run that script
-chmod +x ./save-wallet-address.sh 
+chmod +x ./icp-save-wallet-address.sh
 
 # Now run command for creating wallet for cycles and
 # passing data to get-wallet-address script, that creates .txt file with wallet id
@@ -47,7 +47,7 @@ chmod +x ./save-wallet-address.sh
 # Transfer sent at block height 6719981
 # Using transfer at block height 6719981
 # Canister created with id: "cfhaf-gaaaa-aaaal-qccpq-cai"
-dfx ledger --network ic create-canister $(dfx identity get-principal) --amount 1 | ./save-wallet-address.sh
+dfx ledger --network ic create-canister $(dfx identity get-principal) --amount 1 | ./icp-save-wallet-address.sh
 
 # Set canister id to variable
 wallet_canister_id=$(cat sps-lite-deployer-wallet.txt)
@@ -72,19 +72,4 @@ dfx wallet balance --network=ic
 dfx identity export sps-lite-deployer > sps-lite-deployer.pem
 
 # Transform to base64 for github actions
-./icp-pem-to-base64.sh
-
-# Now you are ready to deploy your canisters to Internet Computer network
-# You can set your exported deployer as new by adding it with identity import
-dfx identity import sps-lite-exported-deployer sps-lite-deployer.pem --storage-mode plaintext
-
-# Set that deployer as current
-dfx identity use sps-lite-exported-deployer
-
-# Connect wallet to your identity
-dfx identity set-wallet --network ic $wallet_canister_id
-
-# Now you can test that wallet is connected by running command
-# It should return something like that
-# 2.124 TC (trillion cycles).
-dfx wallet balance --network=ic
+openssl base64 -in sps-lite-deployer.pem -out sps-lite-deployer.pem.base64

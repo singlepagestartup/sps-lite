@@ -8,8 +8,6 @@ import {
 import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
-import { coreModuleName } from "@reduxjs/toolkit/dist/query/core/module";
-import { reactHooksModuleName } from "@reduxjs/toolkit/dist/query/react/module";
 
 export function strapiFind<T>({
   serviceApi,
