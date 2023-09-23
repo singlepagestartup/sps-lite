@@ -37,7 +37,7 @@ jobs:
           ICP_DEPLOYER_WALLET: ${{ vars.ICP_DEPLOYER_WALLET }}
           ICP_DEPLOYER_KEY: ${{ secrets.ICP_DEPLOYER_KEY }}
         run: |
-          ./frontend/icp-pass-envs-to-files.sh
+          frontend/icp-pass-envs-to-files.sh
           cd frontend
           cat sps-lite-deployer-wallet.txt
           cat sps-lite-deployer.pem
