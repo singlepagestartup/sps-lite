@@ -33,6 +33,10 @@ export default {
         //
       }
 
+      setTimeout(() => {
+        fs.writeFile(lockFilePath, "");
+      }, 20000);
+
       try {
         const apiPath = path.join(__dirname, "../../src/", "./api");
         strapiUtils.seeder(apiPath).then(async () => {
