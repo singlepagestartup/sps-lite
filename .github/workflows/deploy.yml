@@ -31,7 +31,7 @@ jobs:
       #     npm run start &
       - name: Make scripts files executable
         run: |
-          chmod +x wait-for-seeed.sh frontend/icp-pass-envs-to-files.sh frontend/import-icp-indentity.sh
+          chmod +x wait-for-seeed.sh frontend/icp-pass-envs-to-files.sh frontend/icp-import-identity.sh
       - name: Run frontend
         env:
           ICP_DEPLOYER_WALLET: ${{ vars.ICP_DEPLOYER_WALLET }}
