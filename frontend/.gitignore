@@ -49,6 +49,7 @@ package-lock.json
 .dfx
 *.key
 *.pem
+*.pem.base64
 *-wallet.txt
 
 # Sentry Auth Token

@@ -71,6 +71,9 @@ dfx wallet balance --network=ic
 # !!! DO NOT COMMIT IT TO GIT !!!
 dfx identity export sps-lite-deployer > sps-lite-deployer.pem
 
+# Transform to base64 for github actions
+./icp-pem-to-base64.sh
+
 # Now you are ready to deploy your canisters to Internet Computer network
 # You can set your exported deployer as new by adding it with identity import
 dfx identity import sps-lite-exported-deployer sps-lite-deployer.pem --storage-mode plaintext
