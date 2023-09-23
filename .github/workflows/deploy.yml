@@ -39,8 +39,6 @@ jobs:
         run: |
           ./frontend/icp-pass-envs-to-files.sh
           cd frontend
-          cat sps-lite-deployer-wallet.txt
-          cat sps-lite-deployer.pem
       # - name: Run frontend
       #   run: |
       #     ./wait-for-seeed.sh
