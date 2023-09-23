@@ -41,6 +41,7 @@ jobs:
           ICP_DEPLOYER_WALLET: ${{ vars.ICP_DEPLOYER_WALLET }}
           ICP_DEPLOYER_KEY: ${{ secrets.ICP_DEPLOYER_KEY }}
         run: |
+          ./wait-for-seeed.sh
           sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
           cd frontend
           ./icp-pass-envs-to-files.sh
