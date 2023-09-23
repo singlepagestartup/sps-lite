@@ -29,13 +29,13 @@ jobs:
           npm run build
           cp .env.deployer .env
           npm run start &
-      # - name: Make the script files executable
-      #   run: chmod +x wait-for-seeed.sh
-      # - name: Run frontend
-      #   run: |
-      #     ./wait-for-seeed.sh
-      #     cd frontend
-      #     npm i
-      #     rm -rf .env.production
-      #     cp .env.development .env.production
-      #     npm run build
+      - name: Make the script files executable
+        run: chmod +x wait-for-seeed.sh
+      - name: Run frontend
+        run: |
+          ./wait-for-seeed.sh
+          cd frontend
+          npm i
+          rm -rf .env.production
+          cp .env.development .env.production
+          npm run build
