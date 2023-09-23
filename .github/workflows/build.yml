@@ -19,7 +19,7 @@ jobs:
             cp .env.sqlite.example .env
             npm run start &
         - name: Run frontend
-          run: curl http://127.0.0.1:1337
+          run: sleep 20 && curl http://127.0.0.1:1337
         #   run: |
         #     cd frontend
         #     npm i
