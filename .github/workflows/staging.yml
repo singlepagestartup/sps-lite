@@ -6,12 +6,12 @@ on:
       - released
 
 env:
-  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_frontend:${{ github.event.release.tag_name }}
-  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_backend:${{ github.event.release.tag_name }}
-  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.APP_NAME }}_documentation:${{ github.event.release.tag_name }}
-  NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+  FRONTEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_frontend:${{ github.event.release.tag_name }}
+  BACKEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_backend:${{ github.event.release.tag_name }}
+  DOCUMENTATION_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_documentation:${{ github.event.release.tag_name }}
+  NEXT_PUBLIC_BACKEND_URL: ${{ vars.NEXT_PUBLIC_BACKEND_URL }}
   NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
-  NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
+  NEXT_PUBLIC_FRONTEND_URL: ${{ vars.NEXT_PUBLIC_FRONTEND_URL }}
 
 jobs:
   create-backend-image:
@@ -27,8 +27,8 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          registry: ${{ vars.DOCKER_HUB_URL }}
+          username: ${{ vars.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image
@@ -72,8 +72,8 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          registry: ${{ vars.DOCKER_HUB_URL }}
+          username: ${{ vars.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image
@@ -116,8 +116,8 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          registry: ${{ vars.DOCKER_HUB_URL }}
+          username: ${{ vars.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image
