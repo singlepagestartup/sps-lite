@@ -51,7 +51,6 @@ $RECYCLE.BIN/
 *.dll
 *.exe
 *.o
-*.seed
 *.so
 *.swo
 *.swp
