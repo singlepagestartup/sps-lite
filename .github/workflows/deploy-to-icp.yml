@@ -1,4 +1,4 @@
-name: Deploy project
+name: Deploy project to internetcomputer
 on:
   # push:
   #   branches:
@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - deploy
+      - deploy-to-icp
 
 jobs:
   build-frontend-with-backend-data:

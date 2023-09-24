@@ -1,12 +1,9 @@
-name: Deploy project
+name: Seed database
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
-      - main
-  # pull_request:
-  #   types: [closed]
-  #   branches:
-  #     - deploy
+      - seed-database
 
 jobs:
   fill-database-with-seed-data:
