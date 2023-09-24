@@ -34,10 +34,10 @@ jobs:
           npm i
           npm run build
           cp .env.seed .env
-          npm run start
+          npm run start &
       - name: Make scripts files executable
         run: |
           chmod +x ./wait-for-seeed.sh
-      - name: Run frontend
+      - name: Wait until seed is finished
         run: |
           ./wait-for-seeed.sh
