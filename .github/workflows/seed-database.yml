@@ -24,8 +24,8 @@ jobs:
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          DATABASE_SSL: true
-          DATABASE_SSL_SELF_SIGNED: true
+          DATABASE_SSL: ${{ vars.DATABASE_SSL == true }}
+          DATABASE_SSL_SELF_SIGNED: ${{ vars.DATABASE_SSL_SELF_SIGNED == true }}
         run: |
           cd backend
           npm i
