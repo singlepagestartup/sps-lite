@@ -16,7 +16,7 @@ const spsLitePublicActions = {
   "api::layout.layout": ["find", "findOne"],
   "api::metatag.metatag": ["find", "findOne"],
   "api::flyout.flyout": ["find", "findOne"],
-  "api::page.page": ["find", "findOne"],
+  "api::page.page": ["find", "findOne", "getByUrl"],
   "api::loader.loader": ["find"],
   "api::telegram.telegram": ["webhook"],
   "plugin::users-permissions.auth": [],

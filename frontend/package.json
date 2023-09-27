@@ -10,6 +10,7 @@
     "start": "next start",
     "test:e2e:codegen": "npx playwright codegen",
     "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "test:unit": "jest --watch",
     "test:unit:check": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -59,7 +60,7 @@
     "transition-component": "^1.2.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.31.2",
+    "@playwright/test": "^1.38.1",
     "@storybook/addon-actions": "^7.3.1",
     "@storybook/addon-controls": "^7.3.1",
     "@storybook/addon-essentials": "^7.3.1",

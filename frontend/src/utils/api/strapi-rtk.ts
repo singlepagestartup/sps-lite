@@ -48,7 +48,13 @@ export function strapiFind<T>({
 
   return build.query<TransformedApiArray<T>, any>({
     query: (params: any = {}) => {
-      const { populate = passedPopulate, locale, filters, pagination } = params;
+      const {
+        populate = passedPopulate,
+        locale,
+        filters,
+        pagination,
+        sort,
+      } = params;
 
       return {
         url: `${model}${routePostfix ? routePostfix : ""}`,
@@ -57,6 +63,7 @@ export function strapiFind<T>({
           locale,
           filters,
           pagination,
+          sort,
         },
       };
     },

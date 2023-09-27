@@ -69,42 +69,22 @@ export async function getTargetPage({ url, locale }: any) {
   const localUrl =
     typeof url === "string" ? `/${url}` : `/${url?.join("/") || ""}`;
 
-  const pages = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
-    params: { locale: "all", pagination: { limit: -1 } },
-  });
-
-  const filledPages = [];
-  for (const page of pages) {
-    if (page.url.includes(".")) {
-      const modelRoutes = page.url
-        .split("/")
-        .filter((url: string) => url.includes("."));
-
-      const pgs = await getPages({ modelRoutes, page });
-
-      // console.log("🚀 ~ getPage ~ pgs:", pgs);
-
-      if (pgs.length) {
-        pgs.forEach((p) => {
-          filledPages.push(p);
-        });
-      }
-
-      continue;
-    }
-
-    filledPages.push({
-      ...page,
-      urls: [page.url],
-    });
+  if (!localUrl) {
+    return;
   }
 
-  const targetPage = filledPages.find((page) => {
-    if (page.urls.includes(localUrl) && page.locale === locale) {
-      return true;
-    }
+  const targetPage = await getBackendData({
+    url: `${BACKEND_URL}/api/pages/get-by-url`,
+    params: {
+      url: localUrl,
+      locale: "all",
+      pagination: { limit: -1 },
+    },
   });
+
+  if (!targetPage.id) {
+    return;
+  }
 
   return targetPage;
 }
@@ -189,9 +169,13 @@ export async function getPages({ filters, modelRoutes, page }: any) {
 }
 
 export function getFiltersFromPageUrl({ page, params }: any): any[] {
+  if (!page.id) {
+    return [];
+  }
+
   const filters = [];
 
-  const pageUrls = page.url.split("/").filter((u: string) => u !== "");
+  const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
 
   for (const [index, pageUrl] of pageUrls.entries()) {
     if (pageUrl.includes(".") && params?.url && params.url[index]) {
