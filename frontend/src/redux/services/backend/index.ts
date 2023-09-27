@@ -56,6 +56,7 @@ const tagTypes = [
   "Topbar",
   "Loader",
   "FormRequest",
+  "Page",
 ];
 
 export const backendServiceApi = createApi({
