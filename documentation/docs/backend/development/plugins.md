@@ -26,7 +26,7 @@ The following parameters are used when configuring the authentication and author
 const config = {
   [`users-permissions`]: {
     config: {
-      appName: env("APP_NAME", "Single Page Startup"),
+      appName: env("PROJECT_NAME", "Single Page Startup"),
       registerByEmailCode: false,
       authFactors: {
         factors: [
@@ -59,7 +59,7 @@ If you need to make authentication where each subsequent step will be displayed 
 const config = {
   [`users-permissions`]: {
     config: {
-      appName: env("APP_NAME", "Single Page Startup"),
+      appName: env("PROJECT_NAME", "Single Page Startup"),
       registerByEmailCode: false,
       authFactors: {
         factors: [
@@ -80,7 +80,7 @@ If authentication is required and there are 3 authentication steps, but the seco
 const config = {
   [`users-permissions`]: {
     config: {
-      appName: env("APP_NAME", "Single Page Startup"),
+      appName: env("PROJECT_NAME", "Single Page Startup"),
       registerByEmailCode: false,
       authFactors: {
         factors: [
@@ -103,7 +103,7 @@ If you need to perform authentication with 2-factor authentication, but the user
 const config = {
   [`users-permissions`]: {
     config: {
-      appName: env("APP_NAME", "Single Page Startup"),
+      appName: env("PROJECT_NAME", "Single Page Startup"),
       registerByEmailCode: false,
       authFactors: {
         factors: [

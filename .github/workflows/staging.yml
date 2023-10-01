@@ -6,8 +6,8 @@ on:
       - released
 
 env:
-  FRONTEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_frontend:${{ github.event.release.tag_name }}
-  BACKEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_backend:${{ github.event.release.tag_name }}
+  FRONTEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.PROJECT_NAME }}_frontend:${{ github.event.release.tag_name }}
+  BACKEND_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.PROJECT_NAME }}_backend:${{ github.event.release.tag_name }}
   NEXT_PUBLIC_BACKEND_URL: ${{ vars.NEXT_PUBLIC_BACKEND_URL }}
   NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
   NEXT_PUBLIC_FRONTEND_URL: ${{ vars.NEXT_PUBLIC_FRONTEND_URL }}

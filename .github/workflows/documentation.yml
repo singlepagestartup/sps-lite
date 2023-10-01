@@ -6,7 +6,7 @@ on:
       - documentation
 
 env:
-  DOCUMENTATION_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.APP_NAME }}_documentation:latest
+  DOCUMENTATION_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.PROJECT_NAME }}_documentation:latest
 
 jobs:
   create-documentation-image:
