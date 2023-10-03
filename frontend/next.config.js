@@ -35,9 +35,6 @@ function makeConfig() {
       ],
     },
     trailingSlash: true,
-    experimental: {
-      appDir: true,
-    },
   };
 
   if (serverEnvironment === "icp") {

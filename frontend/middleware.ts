@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { IBackendLocale } from "types/collection-types";
-import { FRONTEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "~utils/envs";
 
 export async function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -8,7 +8,7 @@ export async function middleware(request: any) {
   const searchParams = request.nextUrl.search;
 
   try {
-    const req = await fetch(`${FRONTEND_URL}/api/i18n/locales`);
+    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
     const backendLocales: IBackendLocale[] = await req.json();
 
     const pathnameIsMissingLocale = backendLocales.every(
