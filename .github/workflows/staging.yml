@@ -54,6 +54,7 @@ jobs:
         with:
           url: ${{ vars.PORTAINER_STAGING_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"
+          timeout: 20000
 
   create-frontend-image:
     name: Frontend version
@@ -102,3 +103,4 @@ jobs:
         with:
           url: ${{ vars.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"
+          timeout: 20000
