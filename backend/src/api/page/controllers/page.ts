@@ -18,46 +18,23 @@ export default factories.createCoreController(
         throw new Error("Wrong query type");
       }
 
-      const pages = await strapi.entityService.findMany("api::page.page", {
-        populate: "*",
-        limit: -1,
+      const sanitizedQuery = await this.sanitizeQuery(ctx);
+      const filledPages = await getFilledPages({
+        ...sanitizedQuery,
+        filters: { url: queryUrl },
       });
-
-      const filledPages = [];
-      for (const page of pages) {
-        if (page.url.includes(".")) {
-          const modelRoutes = page.url
-            .split("/")
-            .filter((url: string) => url.includes("."));
-
-          const pgs = await getModelPages({ modelRoutes, page });
-
-          // console.log("🚀 ~ getPage ~ pgs:", pgs);
-
-          if (pgs.length) {
-            pgs.forEach((p) => {
-              filledPages.push(p);
-            });
-          }
-
-          continue;
-        }
-
-        filledPages.push({
-          ...page,
-          urls: [page.url],
-        });
-      }
 
       const targetPage = filledPages.find((page) => {
         const cuttedLastSlash =
           queryUrl !== "/" ? queryUrl.replace(/\/$/, "") : queryUrl;
 
-        if (page.urls.includes(cuttedLastSlash)) {
-          if (ctx.locale && page.locale !== ctx.locale) {
-            return false;
-          }
-
+        if (
+          page.urls.find((urlParam) => {
+            if (urlParam.url === cuttedLastSlash) {
+              return true;
+            }
+          })
+        ) {
           return true;
         }
       });
@@ -66,8 +43,54 @@ export default factories.createCoreController(
 
       return this.transformResponse(sanitizedResults, {});
     },
+
+    async getUrls(ctx) {
+      // const sanitizedQuery = await this.sanitizeQuery(ctx);
+      const query = ctx.query;
+
+      const filledPages = await getFilledPages(query);
+      const urls = filledPages.map((page) => page.urls).flat();
+
+      const sanitizedResults = await this.sanitizeOutput({ urls }, ctx);
+
+      return this.transformResponse(sanitizedResults, {});
+    },
   }),
 );
+
+async function getFilledPages({ locale, populate = "*", limit = -1, filters }) {
+  const { results: pages, pagination } = await strapi
+    .service("api::page.page")
+    .find({ filters, locale, populate, pagination: { limit } });
+
+  const filledPages = [];
+  for (const page of pages) {
+    if (page.url.includes(".")) {
+      const modelRoutes = page.url
+        .split("/")
+        .filter((url: string) => url.includes("."));
+
+      const pgs = await getModelPages({ modelRoutes, page });
+
+      // console.log("🚀 ~ getPage ~ pgs:", pgs);
+
+      if (pgs.length) {
+        pgs.forEach((p) => {
+          filledPages.push(p);
+        });
+      }
+
+      continue;
+    }
+
+    filledPages.push({
+      ...page,
+      urls: [{ url: page.url, locale: page.locale }],
+    });
+  }
+
+  return filledPages;
+}
 
 async function getModelPages({ filters, modelRoutes, page }: any) {
   const filledPages = [];
@@ -112,7 +135,7 @@ async function getModelPages({ filters, modelRoutes, page }: any) {
           })
           .filter((url: string) => url !== "");
 
-        entitesUrls.push(`/${pathUrl.join("/")}`);
+        entitesUrls.push({ url: `/${pathUrl.join("/")}`, locale: page.locale });
       } else {
         const sanitizedModelRoutes = modelRoutes.filter(
           (mr: string) => mr !== modelRoute,

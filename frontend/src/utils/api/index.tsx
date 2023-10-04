@@ -38,7 +38,8 @@ export async function getBackendData(props: IFetchProps) {
   const backendData = await fetch(`${url}?${base64CompressedQuery}`, {
     method,
     body: data,
-    next: { revalidate: 10 },
+    // next: { revalidate: 10 },
+    cache: "no-cache",
     headers,
   })
     .then(async (res) => {
@@ -77,7 +78,7 @@ export async function getTargetPage({ url, locale }: any) {
     url: `${BACKEND_URL}/api/pages/get-by-url`,
     params: {
       url: localUrl,
-      locale: "all",
+      locale,
       pagination: { limit: -1 },
     },
   });
@@ -194,77 +195,4 @@ export function getFiltersFromPageUrl({ page, params }: any): any[] {
   }
 
   return filters;
-}
-
-export async function getPaths({ filters, path, modelRoutes }: any) {
-  const pagesPaths = [];
-  const localFilters = { ...filters };
-
-  const modelRoute = modelRoutes[0];
-  const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-  const model = sanitizedRoute.split(".")[0];
-  const modelParam = sanitizedRoute.split(".")[1];
-  const pluralModel = plural(model);
-
-  const modelEntites = await getBackendData({
-    url: `${BACKEND_URL}/api/${pluralModel}`,
-    params: {
-      locale: "all",
-      filters: localFilters,
-      pagination: { limit: "-1" },
-    },
-  });
-
-  if (modelEntites?.length) {
-    for (const modelEntity of modelEntites) {
-      const uri = `${modelEntity[modelParam]}`;
-      const pathUrl = path.url.map((url: string) => {
-        if (url === modelRoute) {
-          return uri;
-        }
-
-        if (url.includes(".") && filters && Object.keys(filters)) {
-          const sanitizedRoute = url.replace("[", "").replace("]", "");
-          const model = sanitizedRoute.split(".")[0];
-          if (filters[model]) {
-            return filters[model];
-          }
-        }
-
-        return url;
-      });
-
-      const resPath = {
-        url: pathUrl,
-      } as any;
-
-      if (modelEntity.locale) {
-        resPath.locale = modelEntity.locale;
-      }
-      if (modelRoutes.length === 1) {
-        pagesPaths.push(resPath);
-      } else {
-        const sanitizedModelRoutes = modelRoutes.filter(
-          (mr: string) => mr !== modelRoute,
-        );
-        const filters = {
-          [model]: `${modelEntity.id}`,
-        };
-
-        const p = await getPaths({
-          filters,
-          modelRoutes: sanitizedModelRoutes,
-          path,
-        });
-
-        if (p.length) {
-          p.forEach((pt) => {
-            pagesPaths.push(pt);
-          });
-        }
-      }
-    }
-  }
-
-  return pagesPaths;
 }

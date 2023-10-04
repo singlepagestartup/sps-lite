@@ -6,5 +6,11 @@ export default {
       handler: "page.getByUrl",
       config: {},
     },
+    {
+      method: "GET",
+      path: "/pages/get-urls",
+      handler: "page.getUrls",
+      config: {},
+    },
   ],
 };

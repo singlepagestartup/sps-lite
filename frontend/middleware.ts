@@ -22,12 +22,14 @@ export async function middleware(request: any) {
       const defauleLocale = backendLocales.find((locale) => locale.isDefault);
 
       // The rewrite URL is now /en/<route>
-      return NextResponse.rewrite(
+      const response = NextResponse.rewrite(
         new URL(
           `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
           request.url,
         ),
       );
+
+      return response;
     }
   } catch (error) {
     console.log("🚀 ~ middleware ~ error:", error);
@@ -37,6 +39,6 @@ export async function middleware(request: any) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next, images, sitemap, robots)
-    "/((?!_next|images|sitemap|robots|api).*)",
+    "/((?!_next|images|sitemap|robots|api|favicon).*)",
   ],
 };

@@ -35,7 +35,7 @@ function preparePathAndHeaders({ params }: any) {
   return { headers, path };
 }
 
-let POST = async function POST(request: NextRequest, { params }: any) {
+export async function POST(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const formData = await request.formData();
@@ -50,9 +50,9 @@ let POST = async function POST(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-};
+}
 
-let PUT = async function PUT(request: NextRequest, { params }: any) {
+export async function PUT(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const formData = await request.formData();
@@ -67,9 +67,9 @@ let PUT = async function PUT(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-};
+}
 
-let DELETE = async function DELETE(request: NextRequest, { params }: any) {
+export async function DELETE(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const res = await fetch(path, {
@@ -82,9 +82,9 @@ let DELETE = async function DELETE(request: NextRequest, { params }: any) {
   const data = await res.json();
 
   return NextResponse.json(data);
-};
+}
 
-async function GET(request: NextRequest, { params }: any) {
+export async function GET(request: NextRequest, { params }: any) {
   const { headers, path } = preparePathAndHeaders({ params });
 
   const res = await fetch(path, {
@@ -98,42 +98,42 @@ async function GET(request: NextRequest, { params }: any) {
   return NextResponse.json(data);
 }
 
-// Internet Computer deployment workflow
-// generateStaticParams creates /api/<models>/...json files with data
-if (process.env.SERVER_ENVIRONMENT === "icp") {
-  generateStaticParams = async function generateStaticParams() {
-    const paths = [];
+// // Internet Computer deployment workflow
+// // generateStaticParams creates /api/<models>/...json files with data
+// if (process.env.SERVER_ENVIRONMENT === "icp") {
+//   generateStaticParams = async function generateStaticParams() {
+//     const paths = [];
 
-    for (const model of frontendApiStaticModels) {
-      const backendPath = `${BACKEND_URL}/api/${model.url}`;
-      const items = await fetch(backendPath).then((res) => res.json());
+//     for (const model of frontendApiStaticModels) {
+//       const backendPath = `${BACKEND_URL}/api/${model.url}`;
+//       const items = await fetch(backendPath).then((res) => res.json());
 
-      const path = model.url.split("/");
-      path[path.length - 1] = `${path[path.length - 1]}.json`;
+//       const path = model.url.split("/");
+//       path[path.length - 1] = `${path[path.length - 1]}.json`;
 
-      paths.push({
-        url: path,
-      });
+//       paths.push({
+//         url: path,
+//       });
 
-      if (items?.data?.length) {
-        for (const item of items.data) {
-          paths.push({
-            url: [...model.url.split("/"), `${item.id}.json`],
-          });
-        }
-      }
-    }
+//       if (items?.data?.length) {
+//         for (const item of items.data) {
+//           paths.push({
+//             url: [...model.url.split("/"), `${item.id}.json`],
+//           });
+//         }
+//       }
+//     }
 
-    return paths;
-  };
+//     return paths;
+//   };
 
-  // If you allow that methods on static export, you wouldn't get static pages in /out/api/
-  // @ts-ignore
-  POST = undefined;
-  // @ts-ignore
-  PUT = undefined;
-  // @ts-ignore
-  DELETE = undefined;
-}
+//   // If you allow that methods on static export, you wouldn't get static pages in /out/api/
+//   // @ts-ignore
+//   POST = undefined;
+//   // @ts-ignore
+//   PUT = undefined;
+//   // @ts-ignore
+//   DELETE = undefined;
+// }
 
-export { POST, PUT, DELETE, GET, generateStaticParams };
+// export { POST, PUT, DELETE, GET, generateStaticParams };
