@@ -21,7 +21,7 @@ export default factories.createCoreController(
       const sanitizedQuery = await this.sanitizeQuery(ctx);
       const filledPages = await getFilledPages({
         ...sanitizedQuery,
-        filters: { url: queryUrl },
+        filters: { locale: sanitizedQuery.locale },
       });
 
       const targetPage = filledPages.find((page) => {
@@ -45,10 +45,9 @@ export default factories.createCoreController(
     },
 
     async getUrls(ctx) {
-      // const sanitizedQuery = await this.sanitizeQuery(ctx);
-      const query = ctx.query;
+      const sanitizedQuery = await this.sanitizeQuery(ctx);
 
-      const filledPages = await getFilledPages(query);
+      const filledPages = await getFilledPages(sanitizedQuery);
       const urls = filledPages.map((page) => page.urls).flat();
 
       const sanitizedResults = await this.sanitizeOutput({ urls }, ctx);
@@ -58,10 +57,8 @@ export default factories.createCoreController(
   }),
 );
 
-async function getFilledPages({ locale, populate = "*", limit = -1, filters }) {
-  const { results: pages, pagination } = await strapi
-    .service("api::page.page")
-    .find({ filters, locale, populate, pagination: { limit } });
+async function getFilledPages(query: any) {
+  const { results: pages } = await strapi.service("api::page.page").find(query);
 
   const filledPages = [];
   for (const page of pages) {

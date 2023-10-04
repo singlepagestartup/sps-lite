@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   });
 
   const paths =
-    pagesUrls?.urls.map((pageParams: { url: string; locale: string }) => {
+    pagesUrls?.urls?.map((pageParams: { url: string; locale: string }) => {
       return {
         ...pageParams,
         url:
