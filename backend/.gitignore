@@ -114,3 +114,5 @@ build
 .strapi-updater.json
 sendpulse_token
 seeded.txt
+.env.local
+.env.production

@@ -17,3 +17,5 @@ build
 .env
 tests
 seeded.txt
+.env.local
+.env.production

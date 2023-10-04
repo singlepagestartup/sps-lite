@@ -84,7 +84,7 @@ export const frontendServiceApi = createApi({
  */
 export const serviceApi = (() => {
   // You can set backendServiceApi if you wouldn't use Next.js server for proxying and caching data
-  const api = frontendServiceApi;
+  const api = backendServiceApi;
 
   // if (process.env.SERVER_ENVIRONMENT === "icp") {
   //   // @ts-ignore
