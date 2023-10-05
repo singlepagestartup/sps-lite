@@ -29,6 +29,7 @@ export default function SwitchInput(props: IInputProps) {
   const {
     control,
     formState: { errors },
+    setValue,
   } = useFormContext();
 
   const {
@@ -98,7 +99,12 @@ export default function SwitchInput(props: IInputProps) {
           </div>
         </Switch>
         <div className="label">
-          <label htmlFor={htmlNodeId}>
+          <label
+            htmlFor={htmlNodeId}
+            onClick={() => {
+              setValue(name, !value, { shouldValidate: true });
+            }}
+          >
             {label ? (
               <ReactMarkdown>
                 {typeof translate === "function" ? translate(label) : label}

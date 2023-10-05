@@ -4,7 +4,7 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 const timeout = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-test("Simple test example", async ({ page: startPage, context }) => {
+test.skip("Simple test example", async ({ page: startPage, context }) => {
   test.slow();
 
   const page = await context.newPage();

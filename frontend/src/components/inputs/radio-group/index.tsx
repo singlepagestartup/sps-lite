@@ -61,7 +61,7 @@ export default function ListboxInput(props: IInputProps) {
     control,
     rules,
     shouldUnregister,
-    defaultValue: multiple ? [] : defaultValue,
+    defaultValue: multiple ? [] : null,
   });
 
   const inputError = getInputErrors(errors)(name);

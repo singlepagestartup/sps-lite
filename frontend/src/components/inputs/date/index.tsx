@@ -77,7 +77,7 @@ export default function DateInput(props: IInputProps) {
     control,
     rules,
     shouldUnregister,
-    defaultValue: initialValue !== undefined ? initialValue : defaultValue,
+    defaultValue: initialValue !== undefined ? initialValue : null,
   });
 
   const [localValue, setLocalValue] = useState<any>();
