@@ -41,6 +41,18 @@ test("Fill all form inputs works", async ({ page }) => {
 
   await page.getByLabel("Name").fill("Tester");
   await page.getByLabel("Email").fill("tester@example.com");
+  await page.locator("#inputs_2__options").click();
+  await page.locator("#inputs_2__options").locator(".options").first().click();
+  await page.getByRole("option", { name: "No" }).click();
+
+  await page.getByLabel("Question").fill("Big question description");
+
+  await page.getByPlaceholder("Select release date").click();
+  await page
+    .locator(".react-calendar__tile.react-calendar__month-view__days__day")
+    .first()
+    .click();
+
   await page.getByText("I agree with Terms and Conditions").click();
 
   await setFile({
