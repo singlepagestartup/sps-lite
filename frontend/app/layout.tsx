@@ -11,6 +11,7 @@ import Loaders from "~components/loader";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { loaderPopulate } from "~utils/api/queries";
+import GoogleTagManager from "~components/scripts/google-tag-manager";
 
 export default async function RootLayout({
   children,
@@ -29,6 +30,9 @@ export default async function RootLayout({
       <body
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
+        <Suspense>
+          <GoogleTagManager />
+        </Suspense>
         <div className="relative">
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>

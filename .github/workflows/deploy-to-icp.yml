@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Run backend
         env:
           AWS_S3_BUCKET: ${{ vars.ICP_AWS_S3_BUCKET }}

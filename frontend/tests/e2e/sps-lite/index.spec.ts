@@ -43,11 +43,6 @@ test("Fill all form inputs works", async ({ page }) => {
   await page.getByLabel("Email").fill("tester@example.com");
   await page.getByText("I agree with Terms and Conditions").click();
 
-  // await page
-  //   .locator("div")
-  //   .filter({ hasText: /^Upload design file$/ })
-  //   .nth(1);
-
   await setFile({
     page: page,
     htmlNodeId: "#inputs_7__files",
