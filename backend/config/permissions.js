@@ -13,7 +13,7 @@ const spsLitePublicActions = {
   "api::topbar.topbar": ["find", "findOne"],
   "api::navbar.navbar": ["find", "findOne"],
   "api::footer.footer": ["find", "findOne"],
-  "api::layout.layout": ["find", "findOne"],
+  "api::layout.layout": ["find", "findOne", "findByPageUrl"],
   "api::metatag.metatag": ["find", "findOne"],
   "api::flyout.flyout": ["find", "findOne"],
   "api::page.page": ["find", "findOne", "getByUrl", "getUrls"],

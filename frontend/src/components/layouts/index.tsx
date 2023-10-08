@@ -2,16 +2,23 @@
 
 import { FC, ReactNode } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
-import useGetCurrentLayout from "~hooks/use-get-current-layout";
-import { useGetLayoutsQuery } from "~redux/services/backend/models/layouts";
+import { useGetLayoutByPageUrlQuery } from "~redux/services/backend/models/layouts";
+import { useParams, usePathname } from "next/navigation";
 
 const variants = {
   ...spsLiteVariants,
 };
 
 export default function Layouts({ children }: { children?: ReactNode }) {
-  const { data: layouts } = useGetLayoutsQuery({});
-  const layout = useGetCurrentLayout({ layouts });
+  const pathname = usePathname();
+  const params = useParams();
+  const { data: layout } = useGetLayoutByPageUrlQuery(
+    {
+      url: pathname?.includes("/auth") ? "/auth" : pathname,
+      ...params,
+    },
+    { skip: !pathname },
+  );
 
   const Comp = layout
     ? (variants[layout.variant as keyof typeof variants] as FC<ISpsLiteLayout>)

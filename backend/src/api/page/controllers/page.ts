@@ -57,7 +57,7 @@ export default factories.createCoreController(
   }),
 );
 
-async function getFilledPages(query: any) {
+export async function getFilledPages(query: any) {
   const { results: pages } = await strapi.service("api::page.page").find(query);
 
   const filledPages = [];

@@ -30,6 +30,7 @@ export default function Text(props: ISpsLiteButton) {
           className="button-text"
           onClick={props.onClick}
         >
+          {props.children ? props.children : null}
           {props.media?.length ? (
             <div className="icon-container">
               <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
@@ -48,7 +49,7 @@ export default function Text(props: ISpsLiteButton) {
         data-variant={props.variant}
         className={`button ${props?.className || ""}`}
       >
-        <Flyouts {...props.flyout}>
+        <Flyouts flyout={props.flyout}>
           <Buttons {...props} flyout={null} onClick={null} url={null} />
         </Flyouts>
       </div>
@@ -68,6 +69,7 @@ export default function Text(props: ISpsLiteButton) {
           className="button-text"
           aria-selected={isActive}
         >
+          {props.children ? props.children : null}
           {props.media?.length ? (
             <div className="icon-container">
               <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
@@ -86,6 +88,7 @@ export default function Text(props: ISpsLiteButton) {
       className={`button ${props?.className || ""}`}
     >
       <button {...additionalAttributes} className="button-text">
+        {props.children ? props.children : null}
         {props.media?.length ? (
           <div className="icon-container">
             <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
