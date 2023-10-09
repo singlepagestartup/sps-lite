@@ -1,4 +1,4 @@
-import { path } from "ramda";
+const R = require("ramda");
 import { FieldErrors, FieldValues } from "react-hook-form";
 
 interface IFormError {
@@ -10,7 +10,7 @@ interface IFormError {
 export function getInputErrors(errors: FieldErrors<FieldValues>) {
   return (field: string) => {
     const errorPath = field.replaceAll("[", ".").replaceAll("]", "").split(".");
-    let inputError = path(errorPath, errors) as IFormError;
+    let inputError = R.path(errorPath, errors) as IFormError;
 
     if (Array.isArray(inputError)) {
       inputError = inputError.root as IFormError;
