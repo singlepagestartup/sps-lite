@@ -15,6 +15,8 @@ export interface IInsideComponentProps {
   snakeToCamel: (str: string) => string;
   globalErrors: any;
   initialValue: any;
+  remove: (index: number) => void;
+  append: (value: any) => void;
 }
 
 function camelToSnake(name: string) {
@@ -371,6 +373,8 @@ export default function RepeatableInput(props: IInputProps) {
                   snakeToCamel={snakeToCamel}
                   globalErrors={errors}
                   initialValue={initialValue}
+                  remove={remove}
+                  append={append}
                 />
               ) : null}
 
