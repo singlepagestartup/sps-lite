@@ -1,0 +1,10 @@
+ungrouped:
+  hosts:
+    XX.XXX.XXX.XXX:
+      ansible_user: <username>
+      ansible_password: <password>
+    XX.XXX.XXX.XXX:
+      ansible_ssh_user: <username>
+      # You need to restrict the access to the private key file
+      # chmod 400 ./private_key.pem
+      ansible_ssh_private_key_file: <path_to_private_key>
