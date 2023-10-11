@@ -12,6 +12,8 @@ import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { loaderPopulate } from "~utils/api/queries";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
+import AdditionalHeadersWrapper from "src/contexts/additional-headers";
+import { HocParamsProvider } from "src/contexts/hoc-params";
 
 export default async function RootLayout({
   children,
@@ -37,13 +39,17 @@ export default async function RootLayout({
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>
             <TranslationsContextWrapper>
-              <ReduxProvider>
-                <Loaders {...loader}>
-                  <Layouts>{children}</Layouts>
-                  <Modals />
-                  <SlideOvers />
-                </Loaders>
-              </ReduxProvider>
+              <HocParamsProvider>
+                <AdditionalHeadersWrapper>
+                  <ReduxProvider>
+                    <Loaders {...loader}>
+                      <Layouts>{children}</Layouts>
+                      <Modals />
+                      <SlideOvers />
+                    </Loaders>
+                  </ReduxProvider>
+                </AdditionalHeadersWrapper>
+              </HocParamsProvider>
             </TranslationsContextWrapper>
           </Suspense>
         </div>

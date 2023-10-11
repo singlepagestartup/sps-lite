@@ -27,7 +27,7 @@ services:
         - traefik.http.services.portainer.loadbalancer.server.port=9000
         - traefik.http.routers.portainer.entrypoints=websecure
         - traefik.http.routers.portainer.tls=true
-        - traefik.http.routers.portainer.rule=Host(`portainer.{{ DOMAIN}}`)
+        - traefik.http.routers.portainer.rule=Host(`{{ SERVICE_URL }}`)
         - traefik.docker.network=traefik_overlay
 
 networks:

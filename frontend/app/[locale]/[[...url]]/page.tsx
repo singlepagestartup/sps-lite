@@ -120,5 +120,5 @@ async function getPage(props: any) {
 export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
-  return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
+  return <PageBlocks pageParams={props} pageBlocks={pageProps.pageBlocks} />;
 }

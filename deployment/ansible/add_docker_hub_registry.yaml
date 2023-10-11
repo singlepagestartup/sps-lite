@@ -10,10 +10,11 @@
     - docker_hub_password: "{{ DOCKER_HUB_PASSWORD }}"
     - docker_hub_url: "{{ DOCKER_HUB_URL }}"
     - docker_hub_login_username: "{{ DOCKER_HUB_LOGIN_USERNAME }}"
+    - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
     - name: Login to Portainer
       uri:
-        url: "https://portainer.{{ domain }}/api/auth"
+        url: "https://{{ portainer_url }}/api/auth"
         method: POST
         body_format: json
         body:
@@ -23,7 +24,7 @@
 
     - name: Add DockerHub registry
       uri:
-        url: "https://portainer.{{ domain }}/api/registries"
+        url: "https://{{ portainer_url }}/api/registries"
         method: POST
         body_format: json
         headers:

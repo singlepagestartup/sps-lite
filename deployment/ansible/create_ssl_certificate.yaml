@@ -9,6 +9,8 @@
     - state: "{{ STATE }}"
     - frontend_url: "{{ FRONTEND_URL }}"
     - backend_url: "{{ BACKEND_URL }}"
+    - portainer_url: "{{ PORTAINER_URL }}"
+    - traefik_url: "{{ TRAEFIK_URL }}"
   tasks:
     - name: Copy prepare_csr_body script file
       copy:
@@ -24,8 +26,8 @@
         -days 5475 \
         -subj '/C=US/ST=California/L=/O=/CN={{ domain }}' \
         -addext 'subjectAltName=\
-        DNS:traefik.{{ domain }},\
-        DNS:portainer.{{ domain }},\
+        DNS:{{ traefik_url }},\
+        DNS:{{ portainer_url }},\
         DNS:{{ frontend_url }},\
         DNS:{{ backend_url }}' \
         -keyout /home/code/{{ domain }}.key \
@@ -53,8 +55,8 @@
         body_format: json
         body:
           hostnames:
-            - "traefik.{{ domain }}"
-            - "portainer.{{ domain }}"
+            - "{{ traefik_url }}"
+            - "{{ portainer_url }}"
             - "{{ frontend_url }}"
             - "{{ backend_url }}"
             # - "{{ domain }}"

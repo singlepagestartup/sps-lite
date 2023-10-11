@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // import { ErrorBoundary } from "@sentry/nextjs";
 import { Dispatch, FC, SetStateAction } from "react";
@@ -7,6 +7,7 @@ import { pageBlockComponents } from "~utils/api/components";
 // import Errors from "./errors";
 
 export interface IPageBlockBlock {
+  pageParams: any;
   pageBlocks?: IBackendPageBlock[] | null;
   showSkeletons?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;

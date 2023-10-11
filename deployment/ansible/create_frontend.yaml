@@ -11,6 +11,7 @@
     - portainer_password: "{{ PORTAINER_PASSWORD }}"
     - docker_hub_repository_name: "{{ DOCKER_HUB_URL }}/{{ BACKEND_DOCKER_HUB_REPOSITORY_NAME }}"
     - domain: "{{ DOMAIN }}"
+    - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
     - name: Copy set-portainer-webhook.js
       copy:
@@ -28,7 +29,7 @@
 
     - name: Login to Portainer
       uri:
-        url: "https://portainer.{{ domain }}/api/auth"
+        url: "https://{{ portainer_url }}/api/auth"
         method: POST
         body_format: json
         body:
@@ -77,7 +78,7 @@
 
     - name: Get service data
       uri:
-        url: "https://portainer.{{ domain }}/api/endpoints/1/docker/services/{{ service_id }}"
+        url: "https://{{ portainer_url }}/api/endpoints/1/docker/services/{{ service_id }}"
         method: GET
         body_format: json
         headers:
@@ -86,7 +87,7 @@
 
     - name: Run set-portainer-webhook.js
       shell:
-        cmd: node /home/code/set-portainer-webhook.js "{{ frontend_service_id }}" "{{ cmd_docker_hub_registry_id.stdout }}" "{{ domain }}" "{{ portainer_username }}" "{{ portainer_password }}" "frontend_webhook"
+        cmd: node /home/code/set-portainer-webhook.js "{{ frontend_service_id }}" "{{ cmd_docker_hub_registry_id.stdout }}" "{{ portainer_url }}" "{{ portainer_username }}" "{{ portainer_password }}" "frontend_webhook"
       register: cmd_set_frontend_webhook
 
     # - debug:
@@ -96,7 +97,7 @@
     # without that all webhooks will be failed
     - name: Set image
       uri:
-        url: "https://portainer.{{ domain }}/api/endpoints/1/docker/services/{{ frontend_service_id }}/update?version={{ service_version }}"
+        url: "https://{{ portainer_url }}/api/endpoints/1/docker/services/{{ frontend_service_id }}/update?version={{ service_version }}"
         method: POST
         body_format: json
         headers:

@@ -36,7 +36,7 @@ services:
         - traefik.http.routers.traefik.tls=true
         - traefik.http.routers.traefik.middlewares=admin
         - traefik.http.routers.traefik.service=api@internal
-        - traefik.http.routers.traefik.rule=Host(`traefik.{{ DOMAIN }}`)
+        - traefik.http.routers.traefik.rule=Host(`{{ SERVICE_URL }}`)
         - traefik.http.middlewares.admin.basicauth.users={{ TRAEFIK_BASIC_AUTH }}
         - traefik.http.services.traefik.loadbalancer.server.port=8080
         - traefik.docker.network=traefik_overlay

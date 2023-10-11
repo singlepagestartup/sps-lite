@@ -10,11 +10,12 @@
     - docker_hub_password: "{{ DOCKER_HUB_PASSWORD }}"
     - docker_hub_url: "{{ DOCKER_HUB_URL }}"
     - docker_hub_login_username: "{{ DOCKER_HUB_LOGIN_USERNAME }}"
+    - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
     - name: Create Portainer user request
       ignore_errors: yes
       uri:
-        url: "https://portainer.{{ domain }}/api/users/admin/init"
+        url: "https://{{ portainer_url }}/api/users/admin/init"
         method: POST
         body: "{{ lookup('template','create_portainer_user_body.json.j2') | to_json }}"
         body_format: json

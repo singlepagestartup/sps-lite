@@ -9,12 +9,14 @@
     - state: "{{ STATE }}"
     - frontend_a: "{{ FRONTEND_A }}"
     - backend_a: "{{ BACKEND_A }}"
+    - traefik_a: "{{ TRAEFIK_A }}"
+    - portainer_a: "{{ PORTAINER_A }}"
   tasks:
     - name: Traefik DNS record
       community.general.cloudflare_dns:
         state: "{{ state }}"
         zone: "{{ domain }}"
-        record: traefik
+        record: "{{ traefik_a }}"
         type: A
         proxied: true
         value: "{{ inventory_hostname }}"
@@ -25,7 +27,7 @@
       community.general.cloudflare_dns:
         state: "{{ state }}"
         zone: "{{ domain }}"
-        record: portainer
+        record: "{{ portainer_a }}"
         type: A
         proxied: true
         value: "{{ inventory_hostname }}"

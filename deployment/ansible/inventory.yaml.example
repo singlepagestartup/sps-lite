@@ -1,4 +1,6 @@
 ungrouped:
+  vars:
+    ansible_ssh_common_args: "-o UserKnownHostsFile=/dev/null"
   hosts:
     XX.XXX.XXX.XXX:
       ansible_user: <username>

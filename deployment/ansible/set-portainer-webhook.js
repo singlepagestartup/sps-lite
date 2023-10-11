@@ -31,9 +31,9 @@ function httpsPost({ body, ...options }) {
   });
 }
 
-function loginToPortainer({ domain, portainer_username, portainer_password }) {
+function loginToPortainer({ url, portainer_username, portainer_password }) {
   return httpsPost({
-    hostname: `portainer.${domain}`,
+    hostname: url,
     path: `/api/auth`,
     headers: {
       "Content-Type": "application/json",
@@ -52,18 +52,18 @@ function loginToPortainer({ domain, portainer_username, portainer_password }) {
 function createWebhook({
   service_id,
   registry_id,
-  domain,
+  url,
   portainer_username,
   portainer_password,
   file_name,
 }) {
   return loginToPortainer({
-    domain,
+    url,
     portainer_username,
     portainer_password,
   }).then((jwt) => {
     return httpsPost({
-      hostname: `portainer.${domain}`,
+      hostname: url,
       path: `/api/webhooks`,
       headers: {
         "Content-Type": "application/json",
@@ -111,8 +111,8 @@ const service_id = args[0];
 
 const registry_id = args[1];
 // console.log(`🚀 ~ registry_id:`, registry_id);
-const domain = args[2];
-// console.log(`🚀 ~ domain:`, domain);
+const url = args[2];
+// console.log(`🚀 ~ url:`, url);
 const portainer_username = args[3];
 // console.log(`🚀 ~ portainer_username:`, portainer_username);
 const portainer_password = args[4];
@@ -123,7 +123,7 @@ const file_name = args[5];
 createWebhook({
   service_id,
   registry_id,
-  domain,
+  url,
   portainer_username,
   portainer_password,
   file_name,
