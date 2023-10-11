@@ -1,0 +1,9 @@
+- name: Create working directory
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create working directory
+      file:
+        path: /home/code
+        state: directory
+        mode: "0755"

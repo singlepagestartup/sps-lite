@@ -1,0 +1,9 @@
+---
+- name: Init Docker Swarm
+  hosts: all
+  become: yes
+  tasks:
+    - name: Init Docker swarm
+      community.docker.docker_swarm:
+        state: present
+        advertise_addr: "{{ inventory_hostname }}"

@@ -1,0 +1,21 @@
+---
+- name: Delete Postgres
+  hosts: all
+  become: yes
+  tasks:
+    - name: Delete Postgres service
+      community.docker.docker_stack:
+        state: absent
+        name: postgres
+        compose:
+          - /home/code/docker-compose.postgres.yaml
+
+    - name: Copy docker-compose file
+      file:
+        path: /home/code/docker-compose.postgres.yaml
+        state: absent
+
+    # - name: Delete postgres_data directory
+    #   file:
+    #     path: /home/code/postgres_data
+    #     state: absent

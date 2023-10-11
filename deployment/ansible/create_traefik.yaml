@@ -1,0 +1,27 @@
+---
+- name: Create Traefik
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy traefik.yml file
+      ansible.builtin.template:
+        src: traefik.yml.j2
+        dest: /home/code/traefik.yml
+
+    - name: Copy docker-compose file
+      ansible.builtin.template:
+        src: docker-compose.traefik.yaml.j2
+        dest: /home/code/docker-compose.traefik.yaml
+
+    - name: Install jsondiff Python package
+      pip:
+        name: jsondiff
+        executable: pip3
+        extra_args: --no-build-isolation
+
+    - name: Run Traefik service
+      community.docker.docker_stack:
+        state: present
+        name: traefik
+        compose:
+          - /home/code/docker-compose.traefik.yaml

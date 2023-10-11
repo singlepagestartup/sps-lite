@@ -1,0 +1,21 @@
+---
+- name: Create Postgres
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create postgres_data directory
+      file:
+        path: /home/code/postgres_data
+        state: directory
+
+    - name: Copy docker-compose file
+      ansible.builtin.template:
+        src: docker-compose.postgres.yaml.j2
+        dest: /home/code/docker-compose.postgres.yaml
+
+    - name: Run Postgres service
+      community.docker.docker_stack:
+        state: present
+        name: postgres
+        compose:
+          - /home/code/docker-compose.postgres.yaml

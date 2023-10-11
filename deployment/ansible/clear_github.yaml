@@ -1,0 +1,41 @@
+---
+- name: Clear GitHub from envs
+  hosts: all
+  become: yes
+  vars:
+    - github_token: "{{ GITHUB_TOKEN }}"
+    - github_repository: "{{ GITHUB_REPOSITORY }}"
+  tasks:
+    - name: Delete variables from GitHub
+      shell:
+        cmd: "gh variable delete {{ item }} --repo {{ github_repository }}"
+      loop:
+        - PROJECT_NAME
+        - AWS_S3_ACCESS_KEY
+        - AWS_S3_BUCKET
+        - AWS_S3_ENDPOINT
+        - DOCKER_HUB_USERNAME
+        - DOCKER_HUB_LOGIN_USERNAME
+        - DOCKER_HUB_URL
+        - NEXT_PUBLIC_BACKEND_URL
+        - NEXT_PUBLIC_FRONTEND_URL
+        - DATABASE_NAME
+        - PORTAINER_STAGING_BACKEND_UPDATE_URL
+        - PORTAINER_STAGING_FRONTEND_UPDATE_URL
+      ignore_errors: yes
+
+    - name: Delete secrets from GitHub
+      shell:
+        cmd: "gh secret delete {{ item }} --repo {{ github_repository }}"
+      loop:
+        - AWS_S3_SECRET_ACCESS_KEY
+        - DATABASE_HOST
+        - DATABASE_PASSWORD
+        - DATABASE_USERNAME
+        - DOCKER_HUB_PASSWORD
+      ignore_errors: yes
+
+    - name: Delete gh_token.txt file
+      file:
+        path: /home/code/gh_token.txt
+        state: absent

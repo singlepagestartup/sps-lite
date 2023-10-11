@@ -1,0 +1,32 @@
+---
+- name: Delete IAM user
+  hosts: all
+  become: yes
+  vars:
+    aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+    project_name: "{{ PROJECT_NAME }}"
+  tasks:
+    - name: Install required Python packages
+      pip:
+        name: "{{ item }}"
+        state: present
+        executable: pip3
+        extra_args: --no-build-isolation
+      loop:
+        - boto
+        - boto3
+        - botocore
+        - awscli
+
+    - name: Delete IAM user
+      amazon.aws.iam_user:
+        name: "{{ project_name }}"
+        state: absent
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_access_key: "{{ aws_secret_access_key }}"
+
+    - name: Delete file
+      file:
+        path: "/home/code/iam.env"
+        state: absent

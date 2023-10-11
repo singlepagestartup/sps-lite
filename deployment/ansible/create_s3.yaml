@@ -1,0 +1,52 @@
+---
+- name: Create S3 bucket
+  hosts: all
+  become: yes
+  vars:
+    aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+    aws_s3_region: "{{ AWS_S3_REGION }}"
+    project_name: "{{ PROJECT_NAME }}"
+  tasks:
+    - name: Install required Python packages
+      pip:
+        name: "{{ item }}"
+        state: present
+        executable: pip3
+        extra_args: --no-build-isolation
+      loop:
+        - boto
+        - boto3
+        - botocore
+        - awscli
+
+    - name: Create S3 bucket
+      amazon.aws.s3_bucket:
+        name: "{{ project_name }}"
+        access_key: "{{ aws_access_key }}"
+        secret_key: "{{ aws_secret_access_key }}"
+        state: present
+        region: "{{ aws_s3_region }}"
+        versioning: no
+        object_ownership: BucketOwnerPreferred
+        public_access:
+          block_public_acls: false
+          ignore_public_acls: false
+          block_public_policy: false
+          restrict_public_buckets: false
+
+    - name: Set CORS permissions
+      community.aws.s3_cors:
+        name: "{{ project_name }}"
+        access_key: "{{ aws_access_key }}"
+        secret_key: "{{ aws_secret_access_key }}"
+        state: present
+        rules:
+          - allowed_origins:
+              - "*"
+            allowed_methods:
+              - GET
+              - HEAD
+            allowed_headers:
+              - "*"
+            max_age_seconds: 30000

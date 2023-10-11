@@ -1,0 +1,62 @@
+---
+- name: Install Docker to server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop:
+        - ca-certificates
+        - curl
+        - gnupg-agent
+        - software-properties-common
+
+    - name: Insall gh
+      shell:
+        cmd: |
+          type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && sudo apt update \
+          && sudo apt install gh -y
+
+    - name: Add Docker apt-key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+
+    - name: Install Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+    # - name: Add user permission
+    #   shell: usermod -aG docker ansible
+
+    - name: Install Python package manager
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Install Docker pip packages
+      pip:
+        name: "{{ item }}"
+        state: present
+        executable: pip3
+        extra_args: --no-build-isolation
+      loop:
+        - virtualenv
+        - docker
+        - docker-compose

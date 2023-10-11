@@ -1,0 +1,33 @@
+---
+- name: Delete Backend
+  hosts: all
+  become: yes
+  vars:
+    - service_name: "{{ SERVICE_NAME }}"
+  tasks:
+    - name: Remove Backend service
+      community.docker.docker_stack:
+        state: absent
+        name: backend
+        compose:
+          - /home/code/docker-compose.backend.yaml
+
+    - name: Delete env file
+      file:
+        path: "/home/code/{{ service_name }}.env"
+        state: absent
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.backend.yaml
+        state: absent
+
+    - name: Delete webhook info file
+      file:
+        path: /home/code/backend_webhook.json
+        state: absent
+
+    - name: Delete webhook token file
+      file:
+        path: /home/code/backend_webhook_token
+        state: absent

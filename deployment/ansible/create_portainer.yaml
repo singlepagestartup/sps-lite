@@ -1,0 +1,21 @@
+---
+- name: Create Portainer
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create portainer_data directory
+      file:
+        path: /home/code/portainer_data
+        state: directory
+
+    - name: Copy docker-compose file
+      ansible.builtin.template:
+        src: docker-compose.portainer.yaml.j2
+        dest: /home/code/docker-compose.portainer.yaml
+
+    - name: Run Portainer service
+      community.docker.docker_stack:
+        state: present
+        name: portainer
+        compose:
+          - /home/code/docker-compose.portainer.yaml

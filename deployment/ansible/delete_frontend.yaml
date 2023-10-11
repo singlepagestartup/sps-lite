@@ -1,0 +1,28 @@
+---
+- name: Delete Frontend
+  hosts: all
+  become: yes
+  vars:
+    - service_name: "{{ SERVICE_NAME }}"
+  tasks:
+    - name: Remove Frontend service
+      community.docker.docker_stack:
+        state: absent
+        name: frontend
+        compose:
+          - /home/code/docker-compose.frontend.yaml
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.frontend.yaml
+        state: absent
+
+    - name: Delete webhook info file
+      file:
+        path: /home/code/frontend_webhook.json
+        state: absent
+
+    - name: Delete webhook token file
+      file:
+        path: /home/code/frontend_webhook_token
+        state: absent
