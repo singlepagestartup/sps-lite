@@ -1,12 +1,21 @@
-"use client";
-
 import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from ".";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useMemo } from "react";
 
 export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
+  const additionalAttributes = useMemo(() => {
+    if (props?.anchor) {
+      return {
+        id: props.anchor,
+      };
+    }
+
+    return {};
+  }, [props]);
+
   if (props.showSkeletons) {
     return (
       <div
@@ -36,6 +45,7 @@ export default function SimpleCentered(props: ISpsLiteHeroSectionBlock) {
       className={`${
         props.className || ""
       } relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl`}
+      {...additionalAttributes}
     >
       {props.additionalMedia?.length ? (
         <Image

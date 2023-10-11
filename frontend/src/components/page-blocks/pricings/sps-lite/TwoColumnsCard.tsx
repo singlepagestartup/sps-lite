@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";
@@ -16,8 +18,6 @@ const cardsConfig = {
 };
 
 export default function TwoColumnsCard(props: ISpsLitePricingsBlock) {
-  const translate = useTranslations();
-
   const additionalAttributes = useMemo(() => {
     if (props?.anchor) {
       return {

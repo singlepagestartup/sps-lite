@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ISpsLiteContactSectonBlock } from ".";
 import Forms from "~components/forms";
