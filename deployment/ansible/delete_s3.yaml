@@ -7,17 +7,39 @@
     aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
     project_name: "{{ PROJECT_NAME }}"
   tasks:
-    - name: Install required Python packages
-      pip:
-        name: "{{ item }}"
-        state: present
-        executable: pip3
-        extra_args: --no-build-isolation
-      loop:
-        - boto
-        - boto3
-        - botocore
-        - awscli
+    - name: Get ansible ansible_system_vendor
+      set_fact:
+        ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
+
+    - name: If DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation --break-system-packages
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor == "DigitalOcean"
+
+    - name: If not DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor != "DigitalOcean"
 
     - name: Delete S3 bucket
       amazon.aws.s3_bucket:
