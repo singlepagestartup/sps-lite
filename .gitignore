@@ -15,6 +15,5 @@ db_data
 out
 static
 
-
 **/.terraform*
 **/terraform.tfstate*
