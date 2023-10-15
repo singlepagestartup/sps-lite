@@ -15,3 +15,16 @@
         minute: "0"
         hour: "*"
         job: "yes | docker container prune  >> /home/code/docker_container_prune.log"
+
+    - name: Create postgres dump directory
+      file:
+        path: /home/code/db_backups
+        state: directory
+        mode: 0755
+
+    - name: create postgres dump
+      cron:
+        name: "create postgres dump"
+        minute: "0"
+        hour: "0"
+        job: "/home/code/create_db_dump.sh"
