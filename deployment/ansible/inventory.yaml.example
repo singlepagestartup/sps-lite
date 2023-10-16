@@ -14,5 +14,5 @@ ungrouped:
     # You need to restrict the access to the private key file
     # chmod 400 ./id_rsa
     XX.XXX.XXX.XXX:
-      ansible_ssh_user: <username>
-      ansible_ssh_private_key_file: <path_to_private_key>
+      ansible_ssh_user: root
+      ansible_ssh_private_key_file: ./id_rsa
