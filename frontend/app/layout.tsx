@@ -15,6 +15,8 @@ import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "src/contexts/additional-headers";
 import { HocParamsProvider } from "src/contexts/hoc-params";
 
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: {
