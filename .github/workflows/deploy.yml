@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-frontend-with-backend-data:
-    timeout-minutes: 5
+    timeout-minutes: 20
     name: Run ansible playbook
     runs-on: ubuntu-latest
     steps:
