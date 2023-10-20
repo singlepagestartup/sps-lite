@@ -2,7 +2,7 @@ iams
 certs
 *.env
 *.env.backup
-inventory.yaml
+inventory.yaml*
 frontend_webhook.json
 backend_webhook.json
 *.pem

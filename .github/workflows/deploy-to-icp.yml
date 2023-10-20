@@ -18,11 +18,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Run backend
         env:
-          AWS_S3_BUCKET: ${{ vars.ICP_AWS_S3_BUCKET }}
-          AWS_S3_ENDPOINT: ${{ vars.ICP_AWS_S3_ENDPOINT }}
-          AWS_S3_REGION: ${{ vars.ICP_AWS_S3_REGION }}
-          AWS_S3_ACCESS_KEY_ID: ${{ secrets.ICP_AWS_S3_ACCESS_KEY_ID }}
-          AWS_S3_ACCESS_SECRET: ${{ secrets.ICP_AWS_S3_ACCESS_SECRET }}
+          AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
+          AWS_S3_ENDPOINT: ${{ vars.AWS_S3_ENDPOINT }}
+          AWS_S3_REGION: ${{ vars.AWS_S3_REGION }}
+          AWS_S3_ACCESS_KEY: ${{ vars.AWS_S3_ACCESS_KEY }}
+          AWS_S3_SECRET_ACCESS_KET: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY }}
         run: |
           cd backend
           npm i
