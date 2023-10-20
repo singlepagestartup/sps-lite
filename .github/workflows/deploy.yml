@@ -16,7 +16,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Go to ansible directory
-        run: cd /deployment/ansible
+        run: cd deployment/ansible
       - name: Create inventory file
         run: |
           echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > inventory.yaml
