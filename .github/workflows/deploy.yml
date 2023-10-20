@@ -18,15 +18,17 @@ jobs:
         uses: actions/checkout@v3
       - name: Go to ansible directory
         run: cd ./deployment/ansible
-      - name: Create inventory file
-        run: |
-          echo "${{ secrets.INVENTORY_BASE64 }}" | base64 -d > ./deployment/ansible/inventory.yaml
-      - name: Make scripts files executable
-        run: |
-          cd ./deployment/ansible && \
-          chmod +x \
-          ./server.sh
-      - name: Run scripts
-        run: |
-          cd ./deployment/ansible && \
-          ./server.sh
+      - name: Check md5
+        run: echo -n fit | md5sum | awk '{print $1}'
+      # - name: Create inventory file
+      #   run: |
+      #     echo "${{ secrets.INVENTORY_BASE64 }}" | base64 -d > ./deployment/ansible/inventory.yaml
+      # - name: Make scripts files executable
+      #   run: |
+      #     cd ./deployment/ansible && \
+      #     chmod +x \
+      #     ./server.sh
+      # - name: Run scripts
+      #   run: |
+      #     cd ./deployment/ansible && \
+      #     ./server.sh
