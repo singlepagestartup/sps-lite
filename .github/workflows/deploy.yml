@@ -20,10 +20,10 @@ jobs:
       - name: Create inventory file
         run: |
           echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > inventory.yaml
+      - name: Get inventory file
+        run: cat inventory.yaml
       - name: Make scripts files executable
         run: |
-          chmod +x \
-          ./server.sh
+          chmod +x ./server.sh
       - name: Run scripts
-        run: |
-            ./server.sh
+        run: ./server.sh
