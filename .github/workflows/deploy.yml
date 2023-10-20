@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Go to ansible directory
-        run: cd ./deployment/ansible
       # - name: Check md5
       #   run: echo -n fit | md5sum | awk '{print $1}'
       - name: Create inventory file
