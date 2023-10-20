@@ -23,9 +23,9 @@ After registering with Docker Hub, create a new repository.
 
 ![Create repo](./img/create-repository.png)
 
-Give a name to the repository. In case you are using GitHub Actions that are located in the Single Page Startup, the names of the repositories should follow the following pattern - `<APP_NAME>_<backend|frontend>`.
+Give a name to the repository. In case you are using GitHub Actions that are located in the Single Page Startup, the names of the repositories should follow the following pattern - `<PROJECT_NAME>_<backend|frontend>`.
 
-`APP_NAME` is specified in the GitHub Secrets. The backend project will be built into the `_backend` image, while the frontend will be built into the `_frontend` image.
+`PROJECT_NAME` is specified in the GitHub Secrets. The backend project will be built into the `_backend` image, while the frontend will be built into the `_frontend` image.
 
 ![Repo name](./img/add-repo-name.png)
 
@@ -107,9 +107,9 @@ The login used for authentication in the system. For Docker Hub, it corresponds 
 
 The password for the image storage system. In Docker Hub, it corresponds to the account password.
 
-#### APP_NAME
+#### PROJECT_NAME
 
-The name of the project or repository. This parameter is set as part of the future image names. For the frontend, it will be `<APP_NAME>_frontend` and `<APP_NAME>_backend` for the backend. You need to create repositories with these names in the image storage system.
+The name of the project or repository. This parameter is set as part of the future image names. For the frontend, it will be `<PROJECT_NAME>_frontend` and `<PROJECT_NAME>_backend` for the backend. You need to create repositories with these names in the image storage system.
 
 In the examples above, we used `new_app`
 

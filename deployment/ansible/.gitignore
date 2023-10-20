@@ -1,0 +1,11 @@
+iams
+certs
+*.env
+*.env.backup
+inventory.yaml*
+frontend_webhook.json
+backend_webhook.json
+*.pem
+*.key
+*.pub
+*rsa

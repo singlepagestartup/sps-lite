@@ -8,18 +8,18 @@ module.exports = ({ env }) => {
   config.email = {
     config: {
       ...emailProviders[emailProvider](env),
-      appName: env("APP_NAME", "Single Page Startup"),
+      appName: env("PROJECT_NAME", "Single Page Startup"),
     },
   };
 
-  if (env("AWS_S3_ACCESS_KEY_ID")) {
+  if (env("AWS_S3_ACCESS_KEY")) {
     config.upload = {
       config: {
         provider: "aws-s3",
         providerOptions: {
           s3Options: {
-            accessKeyId: env("AWS_S3_ACCESS_KEY_ID"),
-            secretAccessKey: env("AWS_S3_ACCESS_SECRET"),
+            accessKeyId: env("AWS_S3_ACCESS_KEY"),
+            secretAccessKey: env("AWS_S3_SECRET_ACCESS_KEY"),
             region: env("AWS_S3_REGION", "eu-central-1"),
             endpoint: env("AWS_S3_ENDPOINT"),
             apiVersion: "latest",
@@ -63,8 +63,8 @@ const emailProviders = {
   "amazon-ses": (env) => ({
     provider: "amazon-ses",
     providerOptions: {
-      key: env("AWS_SES_ACCESS_KEY_ID"),
-      secret: env("AWS_SES_ACCESS_SECRET"),
+      key: env("AWS_SES_ACCESS_KEY"),
+      secret: env("AWS_SES_SECRET_ACCESS_KEY"),
       amazon: env("AWS_SES_URL"),
     },
     settings: {

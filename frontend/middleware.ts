@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { IBackendLocale } from "types/collection-types";
-import { FRONTEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "~utils/envs";
 
 export async function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -8,7 +8,7 @@ export async function middleware(request: any) {
   const searchParams = request.nextUrl.search;
 
   try {
-    const req = await fetch(`${FRONTEND_URL}/api/i18n/locales`);
+    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
     const backendLocales: IBackendLocale[] = await req.json();
 
     const pathnameIsMissingLocale = backendLocales.every(
@@ -22,12 +22,14 @@ export async function middleware(request: any) {
       const defauleLocale = backendLocales.find((locale) => locale.isDefault);
 
       // The rewrite URL is now /en/<route>
-      return NextResponse.rewrite(
+      const response = NextResponse.rewrite(
         new URL(
           `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
           request.url,
         ),
       );
+
+      return response;
     }
   } catch (error) {
     console.log("🚀 ~ middleware ~ error:", error);
@@ -37,6 +39,6 @@ export async function middleware(request: any) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next, images, sitemap, robots)
-    "/((?!_next|images|sitemap|robots|api).*)",
+    "/((?!_next|images|sitemap|robots|api|favicon).*)",
   ],
 };

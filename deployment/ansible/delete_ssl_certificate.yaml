@@ -1,0 +1,42 @@
+---
+- name: Delete SSL certificate
+  hosts: all
+  become: yes
+  vars:
+    - account_email: "{{ CLOUDFLARE_ACCOUNT_EMAIL }}"
+    - account_api_key: "{{ CLOUDFLARE_ACCOUNT_API_KEY }}"
+    - domain: "{{ DOMAIN }}"
+    - state: "{{ STATE }}"
+  tasks:
+    - name: Delete prepare_csr_body script file
+      file:
+        path: /home/code/prepare_csr_body.sh
+        state: absent
+
+    - name: Get certificate_id
+      shell:
+        cmd: "cat /home/code/certs/certificate_id"
+      register: certificate_id
+      ignore_errors: yes
+
+    - name: Delete SSL certificate csr
+      file:
+        path: /home/code/{{ domain }}.csr
+        state: absent
+
+    - name: Delete SSL certificate from Cloudflare
+      uri:
+        url: "https://api.cloudflare.com/client/v4/certificates/{{ certificate_id.stdout }}"
+        method: DELETE
+        headers:
+          Content-Type: "application/json"
+          X-Auth-Key: "{{ account_api_key }}"
+          X-Auth-Email: "{{ account_email }}"
+      register: cloudflare_cert
+      ignore_errors: yes
+      when: certificate_id is defined
+
+    - name: Delete certificates folder
+      file:
+        path: /home/code/certs
+        state: absent

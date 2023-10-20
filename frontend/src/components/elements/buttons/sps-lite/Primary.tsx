@@ -30,6 +30,7 @@ export default function Primary(props: ISpsLiteButton) {
           onClick={props.onClick}
           className="button-primary"
         >
+          {props.children ? props.children : null}
           {props.media?.length ? (
             <div className="icon__container">
               <Image
@@ -53,7 +54,7 @@ export default function Primary(props: ISpsLiteButton) {
         data-variant={props.variant}
         className={props?.className || ""}
       >
-        <Flyouts {...props.flyout}>
+        <Flyouts flyout={props.flyout}>
           <Buttons {...props} flyout={null} onClick={null} url={null} />
         </Flyouts>
       </div>
@@ -73,6 +74,7 @@ export default function Primary(props: ISpsLiteButton) {
           aria-selected={isActive}
           className="button-primary"
         >
+          {props.children ? props.children : null}
           {props.media?.length ? (
             <div className="icon__container">
               <Image
@@ -96,6 +98,7 @@ export default function Primary(props: ISpsLiteButton) {
       className={props?.className || ""}
     >
       <button {...additionalAttributes} className="button-primary">
+        {props.children ? props.children : null}
         {props.media?.length ? (
           <div className="icon__container">
             <Image

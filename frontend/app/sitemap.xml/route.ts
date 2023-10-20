@@ -6,7 +6,16 @@ async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
     params: { locale: "all", pagination: { limit: -1 } },
+  }).catch((error) => {
+    console.log("🚀 ~ generateSiteMap ~ error:", error);
   });
+
+  if (!pages) {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+    </urlset>
+  `;
+  }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">

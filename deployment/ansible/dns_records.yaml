@@ -1,0 +1,59 @@
+---
+- name: Cloudflare DNS records
+  hosts: all
+  become: yes
+  vars:
+    - account_email: "{{ CLOUDFLARE_ACCOUNT_EMAIL }}"
+    - account_api_key: "{{ CLOUDFLARE_ACCOUNT_API_KEY }}"
+    - domain: "{{ DOMAIN }}"
+    - state: "{{ STATE }}"
+    - frontend_a: "{{ FRONTEND_A }}"
+    - backend_a: "{{ BACKEND_A }}"
+    - traefik_a: "{{ TRAEFIK_A }}"
+    - portainer_a: "{{ PORTAINER_A }}"
+  tasks:
+    - name: Traefik DNS record
+      community.general.cloudflare_dns:
+        state: "{{ state }}"
+        zone: "{{ domain }}"
+        record: "{{ traefik_a }}"
+        type: A
+        proxied: true
+        value: "{{ inventory_hostname }}"
+        account_email: "{{ account_email }}"
+        account_api_key: "{{ account_api_key }}"
+
+    - name: Portainer DNS record
+      community.general.cloudflare_dns:
+        state: "{{ state }}"
+        zone: "{{ domain }}"
+        record: "{{ portainer_a }}"
+        type: A
+        proxied: true
+        value: "{{ inventory_hostname }}"
+        account_email: "{{ account_email }}"
+        account_api_key: "{{ account_api_key }}"
+
+    - name: Frontend DNS record
+      community.general.cloudflare_dns:
+        state: "{{ state }}"
+        zone: "{{ domain }}"
+        record: "{{ frontend_a }}"
+        type: A
+        proxied: true
+        value: "{{ inventory_hostname }}"
+        account_email: "{{ account_email }}"
+        account_api_key: "{{ account_api_key }}"
+      when: (frontend_a != "") or (state == "absent")
+
+    - name: Backend DNS record
+      community.general.cloudflare_dns:
+        state: "{{ state }}"
+        zone: "{{ domain }}"
+        record: "{{ backend_a }}"
+        type: A
+        proxied: true
+        value: "{{ inventory_hostname }}"
+        account_email: "{{ account_email }}"
+        account_api_key: "{{ account_api_key }}"
+      when: (backend_a != "") or (state == "absent")

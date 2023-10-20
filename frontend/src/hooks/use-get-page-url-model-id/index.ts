@@ -2,7 +2,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { IYourProjectBackendPage } from "types/collection-types/your-project";
 import { getFiltersFromPageUrl, getTargetPage } from "~utils/api";
-import * as R from "ramda";
+const R = require("ramda");
 
 export default function useGetPageUrlModelId({
   modelName,

@@ -19,8 +19,10 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
         );
 
         if (parsedSearchParams[inputName]) {
-          // @ts-ignore
-          localInput.initialValue = parsedSearchParams[inputName];
+          if (localInput) {
+            // @ts-ignore
+            localInput.initialValue = parsedSearchParams[inputName];
+          }
         }
       }
 

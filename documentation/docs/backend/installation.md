@@ -19,7 +19,7 @@ For detailed information on available environment variables, refer to the [Offic
 Below are additional environment variables used in **Single Page Startup**
 
 ```txt title=".env"
-APP_NAME="Single Page Startup"
+PROJECT_NAME="Single Page Startup"
 SEED_ENTITES=true
 MAKE_NEW_SEED=true
 
@@ -53,7 +53,7 @@ This is necessary to create a reliable and fault-tolerant infrastructure, as sel
 
 | Name            | Description                                                                                                                                                                                      | Required | Default Value       |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------------------- |
-| APP_NAME        | Project name. This parameter will be set as the sender in emails sent by the Strapi Email plugin.                                                                                                | No       | Single Page Startup |
+| PROJECT_NAME    | Project name. This parameter will be set as the sender in emails sent by the Strapi Email plugin.                                                                                                | No       | Single Page Startup |
 | SEED_ENTITIES   | Parameter that determines whether data seeding will be done based on the model/seeds/\*.json files.                                                                                              | No       | undefined           |
 | MAKE_NEW_SEED   | Parameter that determines whether a data dump will be made based on the data added in the admin panel to the model/seeds/\*.json files. Cannot be called simultaneously with SEED_ENTITIES=true. | No       | undefined           |
 | EMAIL_PROVIDER  | Email sending provider used. For more information about possible usage options, see https://docs.strapi.io/dev-docs/plugins/email.                                                               | No       | undefined           |

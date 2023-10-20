@@ -11,6 +11,11 @@ import Loaders from "~components/loader";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
 import { loaderPopulate } from "~utils/api/queries";
+import GoogleTagManager from "~components/scripts/google-tag-manager";
+import AdditionalHeadersWrapper from "src/contexts/additional-headers";
+import { HocParamsProvider } from "src/contexts/hoc-params";
+
+export const dynamic = "force-dynamic";
 
 export default async function RootLayout({
   children,
@@ -29,17 +34,24 @@ export default async function RootLayout({
       <body
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
+        <Suspense>
+          <GoogleTagManager />
+        </Suspense>
         <div className="relative">
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>
             <TranslationsContextWrapper>
-              <ReduxProvider>
-                <Loaders {...loader}>
-                  <Layouts>{children}</Layouts>
-                  <Modals />
-                  <SlideOvers />
-                </Loaders>
-              </ReduxProvider>
+              <HocParamsProvider>
+                <AdditionalHeadersWrapper>
+                  <ReduxProvider>
+                    <Loaders {...loader}>
+                      <Layouts>{children}</Layouts>
+                      <Modals />
+                      <SlideOvers />
+                    </Loaders>
+                  </ReduxProvider>
+                </AdditionalHeadersWrapper>
+              </HocParamsProvider>
             </TranslationsContextWrapper>
           </Suspense>
         </div>

@@ -1,0 +1,18 @@
+- name: Install postgresql
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop:
+        - postgresql-client-common
+        - postgresql-client
+
+    - name: Move create_db_dump.sh
+      copy:
+        src: create_db_dump.sh
+        dest: /home/code/create_db_dump.sh
+        mode: 0755

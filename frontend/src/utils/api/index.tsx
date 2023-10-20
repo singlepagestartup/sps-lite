@@ -38,7 +38,8 @@ export async function getBackendData(props: IFetchProps) {
   const backendData = await fetch(`${url}?${base64CompressedQuery}`, {
     method,
     body: data,
-    next: { revalidate: 10 },
+    // next: { revalidate: 10 },
+    cache: "no-cache",
     headers,
   })
     .then(async (res) => {
@@ -69,42 +70,22 @@ export async function getTargetPage({ url, locale }: any) {
   const localUrl =
     typeof url === "string" ? `/${url}` : `/${url?.join("/") || ""}`;
 
-  const pages = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
-    params: { locale: "all", pagination: { limit: -1 } },
-  });
-
-  const filledPages = [];
-  for (const page of pages) {
-    if (page.url.includes(".")) {
-      const modelRoutes = page.url
-        .split("/")
-        .filter((url: string) => url.includes("."));
-
-      const pgs = await getPages({ modelRoutes, page });
-
-      // console.log("🚀 ~ getPage ~ pgs:", pgs);
-
-      if (pgs.length) {
-        pgs.forEach((p) => {
-          filledPages.push(p);
-        });
-      }
-
-      continue;
-    }
-
-    filledPages.push({
-      ...page,
-      urls: [page.url],
-    });
+  if (!localUrl) {
+    return;
   }
 
-  const targetPage = filledPages.find((page) => {
-    if (page.urls.includes(localUrl) && page.locale === locale) {
-      return true;
-    }
+  const targetPage = await getBackendData({
+    url: `${BACKEND_URL}/api/pages/get-by-url`,
+    params: {
+      url: localUrl,
+      locale,
+      pagination: { limit: -1 },
+    },
   });
+
+  if (!targetPage.id) {
+    return;
+  }
 
   return targetPage;
 }
@@ -189,9 +170,13 @@ export async function getPages({ filters, modelRoutes, page }: any) {
 }
 
 export function getFiltersFromPageUrl({ page, params }: any): any[] {
+  if (!page.id) {
+    return [];
+  }
+
   const filters = [];
 
-  const pageUrls = page.url.split("/").filter((u: string) => u !== "");
+  const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
 
   for (const [index, pageUrl] of pageUrls.entries()) {
     if (pageUrl.includes(".") && params?.url && params.url[index]) {
@@ -210,77 +195,4 @@ export function getFiltersFromPageUrl({ page, params }: any): any[] {
   }
 
   return filters;
-}
-
-export async function getPaths({ filters, path, modelRoutes }: any) {
-  const pagesPaths = [];
-  const localFilters = { ...filters };
-
-  const modelRoute = modelRoutes[0];
-  const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-  const model = sanitizedRoute.split(".")[0];
-  const modelParam = sanitizedRoute.split(".")[1];
-  const pluralModel = plural(model);
-
-  const modelEntites = await getBackendData({
-    url: `${BACKEND_URL}/api/${pluralModel}`,
-    params: {
-      locale: "all",
-      filters: localFilters,
-      pagination: { limit: "-1" },
-    },
-  });
-
-  if (modelEntites?.length) {
-    for (const modelEntity of modelEntites) {
-      const uri = `${modelEntity[modelParam]}`;
-      const pathUrl = path.url.map((url: string) => {
-        if (url === modelRoute) {
-          return uri;
-        }
-
-        if (url.includes(".") && filters && Object.keys(filters)) {
-          const sanitizedRoute = url.replace("[", "").replace("]", "");
-          const model = sanitizedRoute.split(".")[0];
-          if (filters[model]) {
-            return filters[model];
-          }
-        }
-
-        return url;
-      });
-
-      const resPath = {
-        url: pathUrl,
-      } as any;
-
-      if (modelEntity.locale) {
-        resPath.locale = modelEntity.locale;
-      }
-      if (modelRoutes.length === 1) {
-        pagesPaths.push(resPath);
-      } else {
-        const sanitizedModelRoutes = modelRoutes.filter(
-          (mr: string) => mr !== modelRoute,
-        );
-        const filters = {
-          [model]: `${modelEntity.id}`,
-        };
-
-        const p = await getPaths({
-          filters,
-          modelRoutes: sanitizedModelRoutes,
-          path,
-        });
-
-        if (p.length) {
-          p.forEach((pt) => {
-            pagesPaths.push(pt);
-          });
-        }
-      }
-    }
-  }
-
-  return pagesPaths;
 }

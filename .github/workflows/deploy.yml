@@ -1,32 +1,30 @@
-name: Deploy project
+name: Deploy project to internetcomputer
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - deploy
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - deploy
 
 jobs:
   build-frontend-with-backend-data:
-    timeout-minutes: 25
-    name: Run backend and frontend
+    timeout-minutes: 5
+    name: Run ansible playbook
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: Run backend
+        uses: actions/checkout@v3
+      - name: Go to ansible directory
+        run: cd /deployment/ansible
+      - name: Create inventory file
         run: |
-          cd backend
-          npm i
-          npm run build
-          cp .env.sqlite.example .env
-          npm run start &
-      - name: Make the script files executable
-        run: chmod +x wait-for-seeed.sh
-      - name: Run frontend
+          echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > inventory.yaml
+      - name: Make scripts files executable
         run: |
-          ./wait-for-seeed.sh
-          cd frontend
-          npm i
-          rm -rf .env.production
-          cp .env.development .env.production
-          npm run build
+          chmod +x \
+          ./server.sh
+      - name: Run scripts
+        run: |
+            ./server.sh

@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Tables, {
   ICellCompProps,

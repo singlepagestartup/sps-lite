@@ -8,8 +8,6 @@ import {
 import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
-import { coreModuleName } from "@reduxjs/toolkit/dist/query/core/module";
-import { reactHooksModuleName } from "@reduxjs/toolkit/dist/query/react/module";
 
 export function strapiFind<T>({
   serviceApi,
@@ -50,7 +48,13 @@ export function strapiFind<T>({
 
   return build.query<TransformedApiArray<T>, any>({
     query: (params: any = {}) => {
-      const { populate = passedPopulate, locale, filters, pagination } = params;
+      const {
+        populate = passedPopulate,
+        locale,
+        filters,
+        pagination,
+        sort,
+      } = params;
 
       return {
         url: `${model}${routePostfix ? routePostfix : ""}`,
@@ -59,6 +63,7 @@ export function strapiFind<T>({
           locale,
           filters,
           pagination,
+          sort,
         },
       };
     },

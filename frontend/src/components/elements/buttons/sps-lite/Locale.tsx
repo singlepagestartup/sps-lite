@@ -23,6 +23,7 @@ export default function Locale(props: ISpsLiteButton) {
           {...additionalAttributes}
           onClick={props.onClick}
         >
+          {props.children ? props.children : null}
           {props.media?.length ? (
             <div className="icon-container">
               <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
@@ -41,7 +42,7 @@ export default function Locale(props: ISpsLiteButton) {
         data-variant={props.variant}
         className={`button ${props?.className || ""}`}
       >
-        <Flyouts {...props.flyout}>
+        <Flyouts flyout={props.flyout}>
           <Buttons
             {...props}
             title={props.title || `${params?.locale || ""}`}
@@ -61,6 +62,7 @@ export default function Locale(props: ISpsLiteButton) {
       className={`button ${props?.className || ""}`}
     >
       <button className="button-locale" {...additionalAttributes}>
+        {props.children ? props.children : null}
         {props.media?.length ? (
           <div className="icon-container">
             <Image src={getFileUrl(props.media[0])} alt="" fill={true} />

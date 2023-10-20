@@ -780,10 +780,9 @@ export interface ApiCurrencyCurrency extends Schema.CollectionType {
       }>;
     unicode: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     is_default: Attribute.Boolean &

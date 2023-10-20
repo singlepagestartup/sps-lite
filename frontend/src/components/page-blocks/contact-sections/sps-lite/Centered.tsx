@@ -1,8 +1,19 @@
+"use client";
+
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ISpsLiteContactSectonBlock } from ".";
 import Forms from "~components/forms";
+import { createNotification } from "~components/notifications";
 
 export default function Centered(props: ISpsLiteContactSectonBlock) {
+  function successCallbackAction() {
+    createNotification({
+      title: "Form was successfully submitted",
+      className: "",
+      duration: 5000,
+    });
+  }
+
   return (
     <div
       data-component={props.__component}
@@ -25,7 +36,9 @@ export default function Centered(props: ISpsLiteContactSectonBlock) {
           ) : null}
         </div>
         <div className="mt-12">
-          {props.form ? <Forms {...props.form} /> : null}
+          {props.form ? (
+            <Forms {...props.form} successCallback={successCallbackAction} />
+          ) : null}
         </div>
       </div>
     </div>

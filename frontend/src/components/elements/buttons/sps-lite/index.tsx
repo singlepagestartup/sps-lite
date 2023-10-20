@@ -23,6 +23,7 @@ export interface ISpsLiteButton
   onClick?: any;
   __component?: ISpsLiteBackendButton["__component"];
   flyout?: ISpsLiteBackendButton["flyout"];
+  children?: any;
 }
 
 export const variants = {

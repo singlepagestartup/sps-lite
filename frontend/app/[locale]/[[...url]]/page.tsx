@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import { IBackendPage } from "types/collection-types";
 import PageBlocks from "~components/page-blocks";
-import { getBackendData, getPaths, getTargetPage } from "~utils/api";
+import { getBackendData, getTargetPage } from "~utils/api";
 import { metatagPopulate, pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";
 import getImageUrl from "~utils/api/get-file-url";
@@ -9,50 +8,23 @@ import getImageUrl from "~utils/api/get-file-url";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const pages = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
+  const pagesUrls = await getBackendData({
+    url: `${BACKEND_URL}/api/pages/get-urls`,
     params: { locale: "all", pagination: { limit: -1 } },
   });
 
   const paths =
-    pages?.map((page: IBackendPage) => {
-      const routeElements = page.url
-        .split("/")
-        .filter((element) => element !== "");
-
-      const path = {
-        url: routeElements,
-        locale: page.locale,
+    pagesUrls?.urls?.map((pageParams: { url: string; locale: string }) => {
+      return {
+        ...pageParams,
+        url:
+          pageParams.url === "/"
+            ? []
+            : pageParams.url.split("/").filter((p) => p !== ""),
       };
-
-      return path;
     }) || [];
 
-  const filledPaths = [];
-
-  for (const path of paths) {
-    if (path.url?.find((url: string) => url.includes("."))) {
-      const modelRoutes = path.url.filter((url: string) => url.includes("."));
-      const paths = await getPaths({ modelRoutes, path });
-
-      paths.forEach((p) => {
-        filledPaths.push(p);
-      });
-
-      continue;
-    }
-
-    /**
-     * Specific for "next export", should be added as a file
-     */
-    if (path.url[0] === "404" || path.url[0] === "500") {
-      continue;
-    }
-
-    filledPaths.push(path);
-  }
-
-  return filledPaths;
+  return paths;
 }
 
 export async function generateMetadata(props: any) {
@@ -87,7 +59,7 @@ export async function generateMetadata(props: any) {
         title: "Single Page Startup",
         description: "The fastest way to create startup",
         icons: {
-          icon: "/images/favicon.svg",
+          icon: "/assets/images/favicon.svg",
         },
       };
     }
@@ -133,24 +105,20 @@ async function getPage(props: any) {
     return notFound();
   }
 
-  const filters = {
-    id: targetPage.id,
-  };
-
-  const filledTargetPages = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
-    params: { locale, populate: pagePopulate, filters },
+  const filledTargetPage = await getBackendData({
+    url: `${BACKEND_URL}/api/pages/${targetPage.id}`,
+    params: { locale, populate: pagePopulate },
   });
 
-  if (!filledTargetPages.length) {
+  if (!filledTargetPage) {
     return notFound();
   }
 
-  return filledTargetPages[0];
+  return filledTargetPage;
 }
 
 export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
-  return <PageBlocks pageBlocks={pageProps.pageBlocks} />;
+  return <PageBlocks pageParams={props} pageBlocks={pageProps.pageBlocks} />;
 }

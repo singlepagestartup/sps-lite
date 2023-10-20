@@ -9,3 +9,4 @@ out
 *.key
 *.pem
 *-wallet.txt
+.env.cloudflare

@@ -1,0 +1,21 @@
+---
+- name: Delete Traefik
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Traefik service
+      community.docker.docker_stack:
+        state: absent
+        name: traefik
+        compose:
+          - /home/code/docker-compose.traefik.yaml
+
+    - name: Delete traefik.yml file
+      file:
+        path: /home/code/traefik.yml
+        state: absent
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.traefik.yaml
+        state: absent

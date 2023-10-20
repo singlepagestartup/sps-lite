@@ -1,4 +1,4 @@
-import { drop } from "ramda";
+const R = require("ramda");
 
 export function appendFilesToFormData(formData: any, files: any) {
   if (Object.keys(files).length) {
@@ -51,7 +51,7 @@ function delByPath(obj: any, path: any[]): any {
 
       for (const [index, el] of obj.entries()) {
         if (`${index}` === path[0]) {
-          passArray.push(delByPath(obj[path[0]], drop(1, path)));
+          passArray.push(delByPath(obj[path[0]], R.drop(1, path)));
 
           continue;
         }
@@ -63,7 +63,7 @@ function delByPath(obj: any, path: any[]): any {
     } else {
       return {
         ...obj,
-        [path[0]]: delByPath(obj[path[0]], drop(1, path)),
+        [path[0]]: delByPath(obj[path[0]], R.drop(1, path)),
       };
     }
   }

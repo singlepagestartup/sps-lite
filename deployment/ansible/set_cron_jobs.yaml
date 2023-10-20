@@ -1,0 +1,30 @@
+- name: Set cron jobs
+  hosts: all
+  become: yes
+  tasks:
+    - name: docker image prune cron
+      cron:
+        name: "docker image prune"
+        minute: "20,40"
+        hour: "*"
+        job: "yes | docker image prune  >> /home/code/docker_image_prune.log"
+
+    - name: docker container prune cron
+      cron:
+        name: "docker container prune"
+        minute: "0"
+        hour: "*"
+        job: "yes | docker container prune  >> /home/code/docker_container_prune.log"
+
+    - name: Create postgres dump directory
+      file:
+        path: /home/code/db_backups
+        state: directory
+        mode: 0755
+
+    - name: create postgres dump
+      cron:
+        name: "create postgres dump"
+        minute: "0"
+        hour: "0"
+        job: "/home/code/create_db_dump.sh"
