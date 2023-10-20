@@ -16,16 +16,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Go to ansible directory
-        run: cd deployment/ansible
+        run: cd ./deployment/ansible
       - name: Create inventory file
         run: |
-          echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > inventory.yaml
-      - name: Get inventory file
-        run: cat inventory.yaml
-      - name: List directory
-        run: ls -la
+          echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > ./deployment/ansible/inventory.yaml
       - name: Make scripts files executable
         run: |
-          chmod +x ./server.sh
+          cd ./deployment/ansible && \
+          chmod +x \
+          ./server.sh
       - name: Run scripts
-        run: ./server.sh
+        run: |
+          cd ./deployment/ansible && \
+          ./server.sh
