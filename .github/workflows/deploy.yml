@@ -29,6 +29,9 @@ jobs:
           echo "${{ secrets.ENV_BASE64 }}" | base64 -d > .env
       # - name: List directory
       #   run: ls -la
+      - name: Add secret to file
+        run: |
+          echo "SECRET_PASSWORD=${{ secrets.SECRET_PASSWORD }}" >> .env
       - name: Check .env file
         run: cat .env
       # - name: Make scripts files executable
