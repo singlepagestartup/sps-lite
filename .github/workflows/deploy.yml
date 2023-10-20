@@ -20,7 +20,7 @@ jobs:
         run: cd ./deployment/ansible
       - name: Create inventory file
         run: |
-          echo "${{ vars.INVENTORY_BASE64 }}" | base64 -d > ./deployment/ansible/inventory.yaml
+          echo "${{ secrets.INVENTORY_BASE64 }}" | base64 -d > ./deployment/ansible/inventory.yaml
       - name: Make scripts files executable
         run: |
           cd ./deployment/ansible && \
