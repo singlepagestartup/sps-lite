@@ -81,6 +81,7 @@
       register: frontend_webhook_token
 
     - name: Set variables to GitHub
+      no_log: true
       shell:
         cmd: "gh variable set {{ item.name }} --repo {{ github_repository }} --body {{ item.data }}"
       loop:
@@ -111,6 +112,7 @@
           }
 
     - name: Set secrets to GitHub
+      no_log: true
       shell:
         cmd: "gh secret set {{ item.name }} --repo {{ github_repository }} --body {{ item.data }}"
       loop:
