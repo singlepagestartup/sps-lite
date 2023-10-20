@@ -7,6 +7,7 @@ on:
   #   types: [closed]
   #   branches:
   #     - deploy
+
 jobs:
   build-frontend-with-backend-data:
     timeout-minutes: 5
