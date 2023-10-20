@@ -7,6 +7,15 @@
 function makeConfig() {
   const serverEnvironment = process.env.SERVER_ENVIRONMENT;
 
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL.replace(
+    "https://",
+    "",
+  ).replace("http://", "");
+  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL.replace(
+    "https://",
+    "",
+  ).replace("http://", "");
+
   let config = {
     reactStrictMode: false,
     images: {
@@ -18,6 +27,8 @@ function makeConfig() {
         "unsplash.com",
         "localhost",
         "127.0.0.1",
+        backendHost,
+        frontendHost,
       ],
       remotePatterns: [
         {
