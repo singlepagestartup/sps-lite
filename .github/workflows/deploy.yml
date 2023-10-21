@@ -29,9 +29,24 @@ jobs:
           echo "${{ secrets.ENV_BASE64 }}" | base64 -d > .env
       # - name: List directory
       #   run: ls -la
-      - name: Add secret to file
+      - name: Add CLOUDFLARE_ACCOUNT_EMAIL to env file
         run: |
-          echo -e "\nSECRET_PASSWORD=${{ secrets.SECRET_PASSWORD }}" >> .env
+          echo -e "\CLOUDFLARE_ACCOUNT_EMAIL=${{ vars.CLOUDFLARE_ACCOUNT_EMAIL }}" >> .env
+      - name: Add CLOUDFLARE_ACCOUNT_API_KEY to env file
+        run: |
+          echo -e "\CLOUDFLARE_ACCOUNT_API_KEY=${{ secrets.CLOUDFLARE_ACCOUNT_API_KEY }}" >> .env
+      - name: Add ROOT_AWS_ACCESS_KEY to env file
+        run: |
+          echo -e "\ROOT_AWS_ACCESS_KEY=${{ secrets.ROOT_AWS_ACCESS_KEY }}" >> .env
+      - name: Add ROOT_AWS_SECRET_ACCESS_KEY to env file
+        run: |
+          echo -e "\ROOT_AWS_SECRET_ACCESS_KEY=${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}" >> .env
+      - name: Add DOCKER_HUB_PASSWORD to env file
+        run: |
+          echo -e "\DOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> .env
+      - name: Add GITHUB_TOKEN to env file
+        run: |
+          echo -e "\GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
       - name: Check .env file
         run: cat .env
       # - name: Make scripts files executable
