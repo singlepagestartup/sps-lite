@@ -37,7 +37,7 @@ fi
 
 if [ "$1" == "up" ]
 then
-    ansible-playbook fill_github.yaml \
+    ansible-playbook fill_github.yaml delete_ansible_secrets_from_github.yaml \
         -e "GITHUB_TOKEN=$GITHUB_TOKEN \
             GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
             PROJECT_NAME=$PROJECT_NAME \
@@ -53,7 +53,7 @@ then
             PORTAINER_URL=$PORTAINER_URL \
             AWS_S3_REGION=$AWS_S3_REGION"
 else
-    ansible-playbook clear_github.yaml \
+    ansible-playbook clear_github.yaml delete_ansible_secrets_from_github.yaml \
         -e "GITHUB_TOKEN=$GITHUB_TOKEN \
             GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
             PROJECT_NAME=$PROJECT_NAME \
@@ -66,5 +66,6 @@ else
             DATABASE_NAME=$DATABASE_NAME \
             DATABASE_PASSWORD=$DATABASE_PASSWORD \
             DATABASE_USERNAME=$DATABASE_USERNAME \
-            PORTAINER_URL=$PORTAINER_URL"
+            PORTAINER_URL=$PORTAINER_URL \
+            AWS_S3_REGION=$AWS_S3_REGION"
 fi

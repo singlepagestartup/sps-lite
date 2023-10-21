@@ -22,6 +22,7 @@
         - DATABASE_NAME
         - PORTAINER_STAGING_BACKEND_UPDATE_URL
         - PORTAINER_STAGING_FRONTEND_UPDATE_URL
+        - AWS_S3_REGION
       ignore_errors: yes
 
     - name: Delete secrets from GitHub

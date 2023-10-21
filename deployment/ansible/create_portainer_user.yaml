@@ -14,6 +14,8 @@
   tasks:
     - name: Create Portainer user request
       ignore_errors: yes
+      retries: 3
+      delay: 3
       uri:
         url: "https://{{ portainer_url }}/api/users/admin/init"
         method: POST

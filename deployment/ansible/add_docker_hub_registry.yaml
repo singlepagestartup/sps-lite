@@ -13,6 +13,8 @@
     - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
     - name: Login to Portainer
+      retries: 3
+      delay: 3
       uri:
         url: "https://{{ portainer_url }}/api/auth"
         method: POST

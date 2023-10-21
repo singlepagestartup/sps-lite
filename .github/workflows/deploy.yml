@@ -1,16 +1,14 @@
-name: Deploy project to internetcomputer
+name: Deploy project to server
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - deploy
-  # pull_request:
-  #   types: [closed]
-  #   branches:
-  #     - deploy
 
 jobs:
-  build-frontend-with-backend-data:
-    timeout-minutes: 20
+  deploy-project-to-server:
+    if: github.event.pull_request.merged == true
+    timeout-minutes: 60
     name: Run ansible playbook
     runs-on: ubuntu-latest
     defaults:
@@ -19,42 +17,71 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      # - name: Check md5
-      #   run: echo -n fit | md5sum | awk '{print $1}'
       - name: Create inventory file
         run: |
-          echo "${{ secrets.INVENTORY_BASE64 }}" | base64 -d > inventory.yaml
+          cp gh_actions_inventory.yaml inventory.yaml
+      - name: Check inventory file
+        run: cat inventory.yaml
+      - name: Replace ANSIBLE_HOST in inventory.yaml
+        run: |
+          sed -ie "s/ANSIBLE_HOST/${{ secrets.ANSIBLE_HOST }}/g" inventory.yaml
+      - name: Replace ANSIBLE_PASSWORD in inventory.yaml
+        run: |
+          sed -ie "s/ANSIBLE_PASSWORD/${{ secrets.ANSIBLE_PASSWORD }}/g" inventory.yaml
+      - name: Check inventory.yaml
+        run: cat inventory.yaml
       - name: Create .env file
         run: |
-          echo "${{ secrets.ENV_BASE64 }}" | base64 -d > .env
-      # - name: List directory
-      #   run: ls -la
+          echo "${{ secrets.ANSIBLE_ENV_BASE64 }}" | base64 -d > .env
       - name: Add CLOUDFLARE_ACCOUNT_EMAIL to env file
         run: |
-          echo -e "\CLOUDFLARE_ACCOUNT_EMAIL=${{ vars.CLOUDFLARE_ACCOUNT_EMAIL }}" >> .env
+          echo -e "\nCLOUDFLARE_ACCOUNT_EMAIL=${{ secrets.CLOUDFLARE_ACCOUNT_EMAIL }}" >> .env
       - name: Add CLOUDFLARE_ACCOUNT_API_KEY to env file
         run: |
-          echo -e "\CLOUDFLARE_ACCOUNT_API_KEY=${{ secrets.CLOUDFLARE_ACCOUNT_API_KEY }}" >> .env
+          echo -e "\nCLOUDFLARE_ACCOUNT_API_KEY=${{ secrets.CLOUDFLARE_ACCOUNT_API_KEY }}" >> .env
       - name: Add ROOT_AWS_ACCESS_KEY to env file
         run: |
-          echo -e "\ROOT_AWS_ACCESS_KEY=${{ secrets.ROOT_AWS_ACCESS_KEY }}" >> .env
+          echo -e "\nROOT_AWS_ACCESS_KEY=${{ secrets.ROOT_AWS_ACCESS_KEY }}" >> .env
       - name: Add ROOT_AWS_SECRET_ACCESS_KEY to env file
         run: |
-          echo -e "\ROOT_AWS_SECRET_ACCESS_KEY=${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}" >> .env
+          echo -e "\nROOT_AWS_SECRET_ACCESS_KEY=${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}" >> .env
       - name: Add DOCKER_HUB_PASSWORD to env file
         run: |
-          echo -e "\DOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> .env
+          echo -e "\nDOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> .env
       - name: Add GITHUB_TOKEN to env file
         run: |
-          echo -e "\GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
+          echo -e "\nGITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
+      - name: Add TRAEFIK_PASSWORD to env file
+        run: |
+          echo -e "\nTRAEFIK_PASSWORD=${{ secrets.TRAEFIK_PASSWORD }}" >> .env
+      - name: Add PORTAINER_PASSWORD to env file
+        run: |
+          echo -e "\nPORTAINER_PASSWORD=${{ secrets.PORTAINER_PASSWORD }}" >> .env
+      - name: Add POSTGRES_PASSWORD to env file
+        run: |
+          echo -e "\nPOSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
       - name: Check .env file
         run: cat .env
-      # - name: Make scripts files executable
-      #   run: |
-      #     cd ./deployment/ansible && \
-      #     chmod +x \
-      #     ./server.sh
-      # - name: Run scripts
-      #   run: |
-      #     cd ./deployment/ansible && \
-      #     ./server.sh
+      - name: Make scripts files executable
+        run: |
+          chmod +x \
+          ./server.sh \
+          ./aws.sh \
+          ./cloudflare.sh \
+          ./services.sh \
+          ./github.sh
+      - name: Run server.sh
+        run: |
+          ./server.sh up
+      - name: Run aws.sh
+        run: |
+          ./aws.sh up
+      - name: Run cloudflare.sh
+        run: |
+          ./cloudflare.sh up
+      - name: Run services.sh
+        run: |
+          ./services.sh up
+      - name: Run github.sh
+        run: |
+          ./github.sh up

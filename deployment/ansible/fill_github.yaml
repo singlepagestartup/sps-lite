@@ -44,6 +44,7 @@
       register: aws_secret_access_key
 
     - name: Create AWS_ACCESS_KEY and AWS_SECRET_ACCESS_KEY file
+      no_log: true
       copy:
         content: "{{ item.data }}"
         dest: "/home/code/{{ item.name }}"
