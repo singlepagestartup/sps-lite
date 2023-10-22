@@ -14,7 +14,7 @@ jobs:
       - name: Send webhook for service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ vars.PORTAINER_PRODUCTION_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          url: ${{ secrets.PORTAINER_PRODUCTION_BACKEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"
 
   deploy-frontend:
@@ -25,5 +25,5 @@ jobs:
       - name: Send webhook for service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ vars.PORTAINER_PRODUCTION_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
+          url: ${{ secrets.PORTAINER_PRODUCTION_FRONTEND_UPDATE_URL }}?tag=${{ github.event.release.tag_name }}
           method: "POST"

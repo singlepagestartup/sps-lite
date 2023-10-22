@@ -6,7 +6,7 @@ on:
       - documentation
 
 env:
-  DOCUMENTATION_IMAGE_URL: ${{ vars.DOCKER_HUB_URL }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.PROJECT_NAME }}_documentation:latest
+  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation:latest
 
 jobs:
   create-documentation-image:
@@ -21,8 +21,8 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ vars.DOCKER_HUB_URL }}
-          username: ${{ vars.DOCKER_HUB_LOGIN_USERNAME }}
+          registry: ${{ secrets.DOCKER_HUB_URL }}
+          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
       - name: Build image

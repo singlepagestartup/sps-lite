@@ -28,11 +28,6 @@
         cmd: "gh auth login --with-token < /home/code/gh_token.txt"
       register: github_login
 
-    - name: Get repository variables
-      shell:
-        cmd: "gh variable list --repo {{ github_repository }}"
-      register: repository_variables
-
     - name: Get AWS_ACCESS_KEY from iam.env file
       shell:
         cmd: "echo $(cat /home/code/iam.env | grep AWS_ACCESS_KEY | cut -d '=' -f2)"
@@ -55,9 +50,9 @@
             data: "{{ aws_secret_access_key.stdout }}",
           }
 
-    - name: Set AWS_S3_ACCESS_KEY to GitHub variable
+    - name: Set AWS_S3_ACCESS_KEY to GitHub secret
       shell:
-        cmd: "gh variable set AWS_S3_ACCESS_KEY --repo {{ github_repository }} < /home/code/AWS_ACCESS_KEY"
+        cmd: "gh secret set AWS_S3_ACCESS_KEY --repo {{ github_repository }} < /home/code/AWS_ACCESS_KEY"
 
     - name: Set AWS_S3_SECRET_ACCESS_KEY to GitHub secrets
       shell:
@@ -81,10 +76,10 @@
         cmd: "cat /home/code/frontend_webhook_token"
       register: frontend_webhook_token
 
-    - name: Set variables to GitHub
+    - name: Set secrets to GitHub
       no_log: true
       shell:
-        cmd: "gh variable set {{ item.name }} --repo {{ github_repository }} --body {{ item.data }}"
+        cmd: "gh secret set {{ item.name }} --repo {{ github_repository }} --body {{ item.data }}"
       loop:
         - { name: PROJECT_NAME, data: "{{ project_name }}" }
         - { name: PROJECT_NAME, data: "{{ project_name }}" }
@@ -103,6 +98,10 @@
         - { name: NEXT_PUBLIC_BACKEND_URL, data: "https://{{ backend_url }}" }
         - { name: NEXT_PUBLIC_FRONTEND_URL, data: "https://{{ frontend_url }}" }
         - { name: DATABASE_NAME, data: "{{ database_name }}" }
+        - { name: DATABASE_HOST, data: "{{ inventory_hostname }}" }
+        - { name: DATABASE_PASSWORD, data: "{{ database_password }}" }
+        - { name: DATABASE_USERNAME, data: "{{ database_username }}" }
+        - { name: DOCKER_HUB_PASSWORD, data: "{{ docker_hub_password }}" }
         - {
             name: PORTAINER_STAGING_BACKEND_UPDATE_URL,
             data: "https://{{ portainer_url }}/api/webhooks/{{ backend_webhook_token.stdout }}",
@@ -111,13 +110,3 @@
             name: PORTAINER_STAGING_FRONTEND_UPDATE_URL,
             data: "https://{{ portainer_url }}/api/webhooks/{{ frontend_webhook_token.stdout }}",
           }
-
-    - name: Set secrets to GitHub
-      no_log: true
-      shell:
-        cmd: "gh secret set {{ item.name }} --repo {{ github_repository }} --body {{ item.data }}"
-      loop:
-        - { name: DATABASE_HOST, data: "{{ inventory_hostname }}" }
-        - { name: DATABASE_PASSWORD, data: "{{ database_password }}" }
-        - { name: DATABASE_USERNAME, data: "{{ database_username }}" }
-        - { name: DOCKER_HUB_PASSWORD, data: "{{ docker_hub_password }}" }
