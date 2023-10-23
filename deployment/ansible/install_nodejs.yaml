@@ -6,14 +6,14 @@
       apt:
         name: nodejs
         state: present
-        update_cache: yes
+        # update_cache: yes
         cache_valid_time: 3600
 
     - name: Install npm
       apt:
         name: npm
         state: present
-        update_cache: yes
+        # update_cache: yes
         cache_valid_time: 3600
 
     - name: Check version
