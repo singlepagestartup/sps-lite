@@ -7,7 +7,7 @@ get_env() {
         ENV_FILE=$PASS_FILE
     fi
 
-    ENV=$(grep "^$1=" $ENV_FILE | cut -d '=' -f2)
+    ENV=$(grep "$1=" $ENV_FILE | cut -d '=' -f2)
 
     echo $ENV
 }
