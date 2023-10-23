@@ -28,6 +28,7 @@
         - DATABASE_PASSWORD
         - DATABASE_USERNAME
         - DOCKER_HUB_PASSWORD
+        - GH_TOKEN
       ignore_errors: yes
 
     - name: Delete gh_token.txt file

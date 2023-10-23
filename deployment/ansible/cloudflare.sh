@@ -48,7 +48,7 @@ then
             TRAEFIK_A=$TRAEFIK_A \
             TRAEFIK_URL=$TRAEFIK_URL \
             PORTAINER_A=$PORTAINER_A \
-            PORTAINER_URL=$PORTAINER_URL"
+            PORTAINER_URL=$PORTAINER_URL" -vvvvv
 else
     ansible-playbook dns_records.yaml delete_ssl_certificate.yaml \
         -e "DOMAIN=$DOMAIN \
@@ -61,5 +61,5 @@ else
             TRAEFIK_A=$TRAEFIK_A \
             TRAEFIK_URL=$TRAEFIK_URL \
             PORTAINER_A=$PORTAINER_A \
-            PORTAINER_URL=$PORTAINER_URL"
+            PORTAINER_URL=$PORTAINER_URL" -vvvvv
 fi

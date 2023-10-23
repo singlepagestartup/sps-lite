@@ -12,6 +12,9 @@
     - traefik_a: "{{ TRAEFIK_A }}"
     - portainer_a: "{{ PORTAINER_A }}"
   tasks:
+    - debug:
+        msg: "{{ state }}"
+
     - name: Traefik DNS record
       community.general.cloudflare_dns:
         state: "{{ state }}"
