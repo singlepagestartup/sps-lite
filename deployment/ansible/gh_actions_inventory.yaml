@@ -1,0 +1,7 @@
+ungrouped:
+  vars:
+    ansible_ssh_common_args: "-o UserKnownHostsFile=/dev/null"
+  hosts:
+    ANSIBLE_HOST:
+      ansible_user: root
+      ansible_password: "ANSIBLE_PASSWORD"
