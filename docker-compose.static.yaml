@@ -35,15 +35,15 @@ services:
     ports:
       - 3000:3000
 
-  deployer:
-    depends_on:
-      - backend
-      - frontend
-    container_name: deployer
-    build:
-      context: deployer
-      dockerfile: Dockerfile
-    volumes:
-      - ./static:/usr/src/app/static
-      - ./deployer/.config:/root/.config
-    restart: on-failure
+  # deployer:
+  #   depends_on:
+  #     - backend
+  #     - frontend
+  #   container_name: deployer
+  #   build:
+  #     context: deployer
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./static:/usr/src/app/static
+  #     - ./deployer/.config:/root/.config
+  #   restart: on-failure
