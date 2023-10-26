@@ -238,11 +238,15 @@ export default function FileInput(props: IInputProps) {
       data-variant={props.variant}
       className={`input-file ${className || ""}`}
     >
-      <div className="input-label">
-        <label>
-          {typeof translate === "function" && label ? translate(label) : label}
-        </label>
-      </div>
+      {label ? (
+        <div className="input-label">
+          <label>
+            {typeof translate === "function" && label
+              ? translate(label)
+              : label}
+          </label>
+        </div>
+      ) : null}
       <div className="input-container">
         <div className="reset-button-container">
           <button onClick={reset} className="reset-button">
