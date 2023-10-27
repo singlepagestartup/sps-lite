@@ -1,19 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import { ISpsLiteFeaturesSectionBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { useState } from "react";
 import Buttons from "~components/elements/buttons";
 
 export default function Component(props: ISpsLiteFeaturesSectionBlock) {
-  const [i, setI] = useState(0);
-
-  function nextImage() {
-    setI(i + 1);
-  }
-
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex flex-col items-center mb-16">
@@ -31,16 +22,13 @@ export default function Component(props: ISpsLiteFeaturesSectionBlock) {
           </ReactMarkdown>
         ) : null}
       </div>
-      <div className="flex items-center justify-center">
-        <Buttons variant="primary" title="Next" onClick={nextImage} />
-      </div>
       <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
         {props.features?.map((feature, index) => (
           <div key={index} className="flex flex-col gap-3">
             <div>
               {feature?.media?.length ? (
                 <Image
-                  src={getFileUrl(feature.media[i])}
+                  src={getFileUrl(feature.media[0])}
                   height={100}
                   width={100}
                   alt=""

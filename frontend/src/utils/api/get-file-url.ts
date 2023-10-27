@@ -9,10 +9,14 @@ export default function getFileUrl(
 ) {
   const { size } = options;
   if (!obj) {
-    return null;
+    throw new Error("No file object provided");
   }
 
   const url = size ? obj.formats?.[size]?.url || obj.url : obj.url;
+
+  if (!url) {
+    throw new Error("No file url provided");
+  }
 
   const httpsExists = url.match(/^https?:\/\//);
 
