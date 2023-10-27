@@ -5,8 +5,8 @@ const variants = {
   ...spsLiteVariants,
 };
 
-export default function Errors<T extends ISpsLiteErrorBlock>(props: T) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+export default function Errors(props: any) {
+  const Comp = variants["simple"];
 
   if (!Comp) {
     return <></>;

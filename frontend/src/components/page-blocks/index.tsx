@@ -1,8 +1,8 @@
-// import { ErrorBoundary } from "@sentry/nextjs";
+import { ErrorBoundary } from "@sentry/nextjs";
 import { Dispatch, FC, SetStateAction } from "react";
 import { IBackendPageBlock } from "types/components/page-blocks";
 import { pageBlockComponents } from "~utils/api/components";
-// import Errors from "./errors";
+import Error from "./features-sections/sps-lite/WithIcon/Error";
 
 export interface IPageBlockBlock {
   pageParams?: any;
@@ -28,12 +28,20 @@ export default function PageBlocks(props: IPageBlockBlock) {
             }
 
             return (
-              <PageBlock
-                pageProps={props}
-                {...pageBlock}
-                showSkeletons={props.showSkeletons}
-                key={`${index}-${key}`}
-              />
+              <ErrorBoundary key={`${index}-${key}`} fallback={Error}>
+                <div
+                  data-component={pageBlock.__component}
+                  data-variant={pageBlock.variant}
+                  className={`${pageBlock.className || ""}`}
+                  {...(pageBlock?.anchor ? { anchor: pageBlock.anchor } : {})}
+                >
+                  <PageBlock
+                    pageProps={props}
+                    {...pageBlock}
+                    showSkeletons={props.showSkeletons}
+                  />
+                </div>
+              </ErrorBoundary>
             );
           })
         : null}

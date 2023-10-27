@@ -5,6 +5,7 @@ export interface ISpsLiteErrorBlock {
   __component: "page-blocks.error-block";
   className: string | null;
   variant: "simple";
+  title?: string | null;
   showSkeletons?: boolean;
 }
 

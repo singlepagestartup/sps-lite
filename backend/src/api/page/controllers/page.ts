@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
+const { ValidationError } = require("@strapi/utils").errors;
 
 export default factories.createCoreController(
   "api::page.page",
@@ -15,7 +16,7 @@ export default factories.createCoreController(
       } else if (Array.isArray(queryUrl)) {
         queryUrl = `/${queryUrl.join("/") || ""}`;
       } else {
-        throw new Error("Wrong query type");
+        throw new ValidationError("Wrong query 'url' passed");
       }
 
       const sanitizedQuery = await this.sanitizeQuery(ctx);

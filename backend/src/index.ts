@@ -13,10 +13,10 @@ export default {
     customizeCoreStrapi({ strapi });
     await setPermissions();
 
-    strapi.errorCatcher = (...error) => {
-      console.log("🚀 ~ strapi.errorCatcher= ~ error:", error);
-
-      strapi.plugin("sentry").service("sentry").sendError(error);
+    strapi.errorCatcher = (error) => {
+      if (process.env.SENTRY_DSN) {
+        strapi.plugin("sentry").service("sentry").sendError(error);
+      }
     };
 
     console.error = strapi.errorCatcher;

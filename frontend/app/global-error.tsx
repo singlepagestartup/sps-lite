@@ -10,7 +10,7 @@ import { fonts } from "./fonts";
 export default function GlobalError({ error, reset }: any) {
   const [page, setPage] = useState<any>();
   useEffect(() => {
-    console.log("GlobalError error:", error);
+    console.error("GlobalError error:", error);
   }, [error]);
 
   useEffect(() => {
