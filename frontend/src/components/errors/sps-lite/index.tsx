@@ -1,22 +1,19 @@
 import { FC } from "react";
 import Simple from "./Simple";
+import { ErrorBoundaryState } from "~components/wrappers/error-boundary";
 
-export interface ISpsLiteErrorBlock {
-  __component: "page-blocks.error-block";
-  className: string | null;
+export interface ISpsLiteError extends ErrorBoundaryState {
   variant: "simple";
-  title?: string | null;
-  showSkeletons?: boolean;
 }
 
 export const variants = {
   simple: Simple,
 };
 
-export default function Errors(props: ISpsLiteErrorBlock) {
+export default function Errors(props: ISpsLiteError) {
   const Comp = variants[
     props.variant as keyof typeof variants
-  ] as FC<ISpsLiteErrorBlock>;
+  ] as FC<ISpsLiteError>;
 
   if (!Comp) {
     return <></>;
