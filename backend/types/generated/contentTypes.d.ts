@@ -1563,6 +1563,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         "elements.buttons-array",
         "elements.button",
         "page-blocks.reviews-list-block",
+        "page-blocks.alert-block",
       ]
     > &
       Attribute.SetPluginOptions<{
