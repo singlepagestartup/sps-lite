@@ -11,6 +11,8 @@ export default factories.createCoreController(
     async findByPageUrl(ctx) {
       let queryUrl = ctx.query.url;
 
+      console.log("🚀 ~ findByPageUrl ~ queryUrl:", queryUrl);
+
       if (typeof queryUrl === "string") {
         queryUrl = queryUrl;
       } else if (Array.isArray(queryUrl)) {
@@ -24,6 +26,8 @@ export default factories.createCoreController(
         ...sanitizedQuery,
         filters: { locale: sanitizedQuery.locale },
       });
+
+      console.log("🚀 ~ findByPageUrl ~ filledPages:", filledPages);
 
       const targetPage = filledPages.find((page) => {
         const cuttedLastSlash =
