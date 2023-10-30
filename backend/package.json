@@ -69,8 +69,8 @@
     "typescript": "^4.8.4"
   },
   "engines": {
-    "node": ">=18.X.X <=20.X.X",
-    "npm": ">=9.X.X"
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
   },
   "strapi": {
     "uuid": "dsdf93a287-3de32-4fb0-a224-9bad4e320a31"
