@@ -608,7 +608,7 @@ export interface PageBlocksSliderBlock extends Schema.Component {
   };
 }
 
-declare module "@strapi/strapi" {
+declare module "@strapi/types" {
   export namespace Shared {
     export interface Components {
       "elements.button": ElementsButton;

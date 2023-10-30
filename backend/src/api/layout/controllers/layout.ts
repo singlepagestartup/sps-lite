@@ -52,6 +52,7 @@ export default factories.createCoreController(
         "api::page.page",
         targetPage.id,
         {
+          // @ts-ignore
           populate: {
             layout: "*",
           },
@@ -60,6 +61,7 @@ export default factories.createCoreController(
 
       const layout = await strapi
         .service("api::layout.layout")
+        // @ts-ignore
         .findOne(populatedPage.layout.id, sanitizedQuery);
 
       const sanitizedResults = await this.sanitizeOutput(layout, ctx);

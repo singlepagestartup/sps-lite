@@ -75,8 +75,8 @@ const getThemeFromBackend = async (props) => {
       }
 
       for (const font of themeData.fonts) {
-        if (font.media.data) {
-          const fontData = font.media.data;
+        if (font.media) {
+          const fontData = font.media;
           const fontVariant =
             font.variant === "default" ? "Default" : "Primary";
           const fontWeight = snakeToCamel(

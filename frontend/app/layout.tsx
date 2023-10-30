@@ -29,6 +29,8 @@ export default async function RootLayout({
     },
   });
 
+  console.log("🚀 ~ fonts:", fonts);
+
   return (
     <html className="scroll-smooth">
       <body

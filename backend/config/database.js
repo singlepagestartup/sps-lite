@@ -33,7 +33,7 @@ const connections = {
           pool: {
             acquireConnectionTimeout: 5000,
             pool: {
-              min: 0,
+              min: 1,
               max: 10,
               createTimeoutMillis: 8000,
               acquireTimeoutMillis: 8000,

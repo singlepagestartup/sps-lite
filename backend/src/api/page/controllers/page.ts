@@ -90,7 +90,18 @@ export async function getFilledPages(query: any) {
   return filledPages;
 }
 
-async function getModelPages({ filters, modelRoutes, page }: any) {
+async function getModelPages({
+  filters,
+  modelRoutes,
+  page,
+}: {
+  filters?: any;
+  modelRoutes?: any;
+  page?: {
+    locale: string;
+    url: string;
+  };
+}) {
   const filledPages = [];
 
   const modelRoute = modelRoutes[0];
@@ -104,7 +115,8 @@ async function getModelPages({ filters, modelRoutes, page }: any) {
     strapiModel = `api::${model}.${model}`;
   }
 
-  const modelEntites = await strapi.entityService.findMany(strapiModel, {
+  const modelEntites: any = await strapi.entityService.findMany(strapiModel, {
+    // @ts-ignore
     locale: page.locale,
     pagination: { limit: "-1" },
   });

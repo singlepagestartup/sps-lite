@@ -1,7 +1,6 @@
 "use strict";
 import strapiUtils from "@rogwild/strapi-utils";
 import path from "path";
-import customizeCoreStrapi from "./utils/bootstrap/customize-core-strapi";
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
@@ -10,7 +9,6 @@ import fs from "fs/promises";
 
 export default {
   async bootstrap({ strapi }) {
-    customizeCoreStrapi({ strapi });
     await setPermissions();
 
     strapi.errorCatcher = (error) => {
