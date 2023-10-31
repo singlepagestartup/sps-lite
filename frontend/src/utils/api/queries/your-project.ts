@@ -29,10 +29,11 @@ export const reviewPopulate = {
 export const currencyPopulate = spsLiteCurrencyPopulate;
 
 export const pagePopulate = {
-  ...spsLitePagePopulate,
+  ...pageBlockPopulate,
 };
 
 export const metatagPopulate = {
+  ...spsLitePagePopulate,
   ...spsLiteMetatagPopulate,
 };
 
