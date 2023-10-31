@@ -1,45 +1,51 @@
-function flattenArray(obj) {
-  return obj.map((e) => flatten(e));
-}
+const strapiFlatten = (data) => {
+  const isObject = (data) =>
+    Object.prototype.toString.call(data) === "[object Object]";
+  const isArray = (data) =>
+    Object.prototype.toString.call(data) === "[object Array]";
 
-function flattenData(obj) {
-  return flatten(obj.data);
-}
+  const flatten = (data) => {
+    if (!data.attributes) return data;
 
-function flattenAttrs(obj) {
-  let attrs = {};
-  for (var key in obj.attributes) {
-    attrs[key] = flatten(obj.attributes[key]);
-  }
-  return {
-    id: obj.id,
-    ...attrs,
+    return {
+      id: data.id,
+      ...data.attributes,
+    };
   };
-}
 
-function flatten(obj) {
-  if (Array.isArray(obj)) {
-    return flattenArray(obj);
+  if (isArray(data)) {
+    return data.map((item) => strapiFlatten(item));
   }
-  if (obj && obj.data) {
-    return flattenData(obj);
+
+  if (isObject(data)) {
+    if (isArray(data.data)) {
+      data = [...data.data];
+    } else if (isObject(data.data)) {
+      data = flatten({ ...data.data });
+    } else if (data.data === null) {
+      data = null;
+    } else {
+      data = flatten(data);
+    }
+
+    for (const key in data) {
+      data[key] = strapiFlatten(data[key]);
+    }
+
+    return data;
   }
-  if (obj && obj.attributes) {
-    return flattenAttrs(obj);
-  }
-  return obj;
-}
+
+  return data;
+};
 
 async function respond(ctx, next) {
   await next();
-  if (!ctx.url.startsWith("/api")) {
+  if (!ctx.url.startsWith("/api") || !ctx.response.body.data) {
     return;
   }
-  console.log(
-    `API request (${ctx.url}) detected, transforming response json...`,
-  );
+
   ctx.response.body = {
-    data: flatten(ctx.response.body.data),
+    data: strapiFlatten(ctx.response.body.data),
     meta: ctx.response.body.meta,
   };
 }
