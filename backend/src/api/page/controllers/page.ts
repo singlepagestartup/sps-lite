@@ -20,9 +20,14 @@ export default factories.createCoreController(
       }
 
       const sanitizedQuery = await this.sanitizeQuery(ctx);
+
+      const defaultLocale = await strapi
+        .service("plugin::i18n.locales")
+        .getDefaultLocale();
+
       const filledPages = await getFilledPages({
         ...sanitizedQuery,
-        filters: { locale: sanitizedQuery.locale },
+        filters: { locale: sanitizedQuery.locale || defaultLocale },
       });
 
       const targetPage = filledPages.find((page) => {
