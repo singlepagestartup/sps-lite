@@ -1,15 +1,5 @@
 module.exports = ({ env }) => {
-  const config = {
-    transformer: {
-      enabled: true,
-      config: {
-        responseTransforms: {
-          removeAttributesKey: true,
-          removeDataKey: true,
-        },
-      },
-    },
-  };
+  const config = {};
 
   const emailProvider = env("EMAIL_PROVIDER")
     ? env("EMAIL_PROVIDER")

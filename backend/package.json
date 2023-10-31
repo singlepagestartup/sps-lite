@@ -50,7 +50,6 @@
     "sendpulse-api": "^1.1.5",
     "strapi-plugin-country-select": "^1.0.0",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-transformer": "^3.1.2",
     "stream": "^0.0.2",
     "telegraf": "^4.12.2"
   },

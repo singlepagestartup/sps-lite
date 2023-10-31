@@ -91,6 +91,7 @@ module.exports = ({ env }) => {
       },
     },
     "strapi::session",
+    "global::flatten-response",
     "strapi::favicon",
     "strapi::public",
   ];
