@@ -1,45 +1,29 @@
 import {
-  pageBlockPopulate as spsLitePageBlockPopulate,
-  slideOverPropulate as spsLiteSlideOverPropulate,
-  modalPopulate as spsLiteModalPopulate,
-  reviewPopulate as spsLiteReviewPopulate,
-  currencyPopulate as spsLiteCurrencyPopulate,
-  pagePopulate as spsLitePagePopulate,
-  layoutPopulate as spsLiteLayoutPopulate,
-  metatagPopulate as spsLiteMetatagPopulate,
-  loaderPopulate as spsLiteLoaderPopulate,
-} from "./sps-lite";
+  pageBlockPopulate as yourProjectPageBlockPopulate,
+  slideOverPropulate as yourProjectSlideOverPropulate,
+  modalPopulate as yourProjectModalPopulate,
+  reviewPopulate as yourProjectReviewPopulate,
+  currencyPopulate as yourProjectCurrencyPopulate,
+  pagePopulate as yourProjectPagePopulate,
+  layoutPopulate as yourProjectLayoutPopulate,
+  metatagPopulate as yourProjectMetatagPopulate,
+  loaderPopulate as yourProjectLoaderPopulate,
+} from "./your-project";
 
-export const pageBlockPopulate = {
-  ...spsLitePageBlockPopulate,
-};
+export const pageBlockPopulate = yourProjectPageBlockPopulate;
 
-export const slideOverPropulate = {
-  ...spsLiteSlideOverPropulate,
-};
+export const slideOverPropulate = yourProjectSlideOverPropulate;
 
-export const modalPopulate = {
-  ...spsLiteModalPopulate,
-};
+export const modalPopulate = yourProjectModalPopulate;
 
-export const reviewPopulate = {
-  ...spsLiteReviewPopulate,
-};
+export const reviewPopulate = yourProjectReviewPopulate;
 
-export const currencyPopulate = {
-  ...spsLiteCurrencyPopulate,
-};
+export const currencyPopulate = yourProjectCurrencyPopulate;
 
-export const pagePopulate = {
-  ...spsLitePagePopulate,
-};
+export const pagePopulate = yourProjectPagePopulate;
 
-export const metatagPopulate = {
-  ...spsLiteMetatagPopulate,
-};
+export const metatagPopulate = yourProjectMetatagPopulate;
 
-export const layoutPopulate = { ...spsLiteLayoutPopulate };
+export const layoutPopulate = yourProjectLayoutPopulate;
 
-export const loaderPopulate = {
-  ...spsLiteLoaderPopulate,
-};
+export const loaderPopulate = yourProjectLoaderPopulate;

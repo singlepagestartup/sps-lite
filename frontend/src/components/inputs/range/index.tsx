@@ -101,11 +101,15 @@ export default function RangeInput(props: IInputProps) {
       data-variant={props.variant}
       className={`input-range ${className || ""}`}
     >
-      <div className="input-label">
-        <label htmlFor={htmlNodeId}>
-          {typeof translate === "function" && label ? translate(label) : label}
-        </label>
-      </div>
+      {label ? (
+        <div className="input-label">
+          <label htmlFor={htmlNodeId}>
+            {typeof translate === "function" && label
+              ? translate(label)
+              : label}
+          </label>
+        </div>
+      ) : null}
       <div className="input-container">
         {max && value !== undefined ? (
           <>

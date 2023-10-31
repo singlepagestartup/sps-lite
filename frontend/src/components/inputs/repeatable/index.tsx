@@ -301,11 +301,15 @@ export default function RepeatableInput(props: IInputProps) {
       data-variant={props.variant}
       className={`input-repeatable ${className || ""}`}
     >
-      <div className="input-label">
-        <label htmlFor={htmlNodeId}>
-          {typeof translate === "function" && label ? translate(label) : label}
-        </label>
-      </div>
+      {label ? (
+        <div className="input-label">
+          <label htmlFor={htmlNodeId}>
+            {typeof translate === "function" && label
+              ? translate(label)
+              : label}
+          </label>
+        </div>
+      ) : null}
       <div id={htmlNodeId} className="input-container">
         {fields.map((field: any, fieldIndex: number) => {
           return (

@@ -154,11 +154,15 @@ export default function DateInput(props: IInputProps) {
       data-variant={props.variant}
       className={`input-date ${className || ""}`}
     >
-      <div className="input-label">
-        <label htmlFor={htmlNodeId}>
-          {typeof translate === "function" && label ? translate(label) : label}
-        </label>
-      </div>
+      {label ? (
+        <div className="input-label">
+          <label htmlFor={htmlNodeId}>
+            {typeof translate === "function" && label
+              ? translate(label)
+              : label}
+          </label>
+        </div>
+      ) : null}
       {domLoaded ? (
         <div className="input-container">
           <div className="reset-button-container">

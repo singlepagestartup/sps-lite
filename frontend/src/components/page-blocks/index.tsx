@@ -32,7 +32,7 @@ export default function PageBlocks(props: IPageBlockBlock) {
                   data-component={pageBlock.__component}
                   data-variant={pageBlock.variant}
                   className={`${pageBlock.className || ""}`}
-                  {...(pageBlock?.anchor ? { anchor: pageBlock.anchor } : {})}
+                  {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
                 >
                   <PageBlock
                     pageProps={props}

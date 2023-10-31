@@ -40,12 +40,14 @@ export const featurePopulate = {
   },
 };
 
+export const currencyPopulate = "*";
+
 export const tierPopulate = {
   features: {
     populate: featurePopulate,
   },
   currency: {
-    populate: "*",
+    populate: currencyPopulate,
   },
 };
 
@@ -156,8 +158,6 @@ export const slideOverPropulate = {
 export const modalPopulate = {
   ...pageBlockPopulate,
 };
-
-export const currencyPopulate = {};
 
 export const pagePopulate = {
   ...pageBlockPopulate,
