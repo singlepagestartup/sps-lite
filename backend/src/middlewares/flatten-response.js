@@ -5,7 +5,8 @@ const strapiFlatten = (data) => {
     Object.prototype.toString.call(data) === "[object Array]";
 
   const flatten = (data) => {
-    if (!data.attributes) return data;
+    // no strapi model attributes or attributes is a relation model
+    if (!data.attributes || Array.isArray(data.attributes)) return data;
 
     return {
       id: data.id,
