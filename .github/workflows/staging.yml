@@ -88,6 +88,7 @@ jobs:
             NEXT_PUBLIC_BACKEND_TOKEN=${{ env.NEXT_PUBLIC_BACKEND_TOKEN }}
             NEXT_PUBLIC_FRONTEND_URL=${{ env.NEXT_PUBLIC_FRONTEND_URL }}
             NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
       - name: Inspect image
         run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
       - name: Push to registry

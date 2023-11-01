@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   {{ SERVICE_NAME }}:
-    image: {{ DOCKER_HUB_SERVICE_REPOSITORY }}
+    image: {{ DOCKER_HUB_URL }}/{{ DOCKER_HUB_SERVICE_REPOSITORY }}
     networks:
       - traefik_overlay
     command: "sh -c './start.sh'"
