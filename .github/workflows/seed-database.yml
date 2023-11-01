@@ -1,4 +1,5 @@
 name: Seed database
+
 on:
   pull_request:
     types: [closed]
@@ -7,34 +8,5 @@ on:
 
 jobs:
   fill-database-with-seed-data:
-    timeout-minutes: 25
-    name: Seed backend data
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Run backend
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-          AWS_S3_REGION: ${{ secrets.AWS_S3_REGION }}
-          AWS_S3_ACCESS_KEY: ${{ secrets.AWS_S3_ACCESS_KEY }}
-          AWS_S3_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY }}
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          DATABASE_SSL: ${{ secrets.DATABASE_SSL == true }}
-          DATABASE_SSL_SELF_SIGNED: ${{ secrets.DATABASE_SSL_SELF_SIGNED == true }}
-        run: |
-          cd backend
-          npm i
-          npm run build
-          cp .env.seed .env
-          npm run start &
-      - name: Make scripts files executable
-        run: |
-          chmod +x ./wait-for-seeed.sh
-      - name: Wait until seed is finished
-        run: |
-          ./wait-for-seeed.sh
+    uses: ./.github/workflows/database.yml
+    secrets: inherit

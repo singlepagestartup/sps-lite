@@ -17,11 +17,16 @@ jobs:
       TAG: ${{ github.event.release.tag_name }}
       ENVIRONMENT: "staging"
 
+  fill-database-with-seed-data:
+    uses: ./.github/workflows/database.yml
+    secrets: inherit
+
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
     needs:
       - update-backend
+      - fill-database-with-seed-data
     with:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
