@@ -1,6 +1,7 @@
 name: Create prerelease version deployment
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - deploy-frontend
 
