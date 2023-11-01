@@ -10,3 +10,5 @@ jobs:
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
+    with:
+      SLEEP_TIME: 360

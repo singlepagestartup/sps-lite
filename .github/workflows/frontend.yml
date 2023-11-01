@@ -3,6 +3,10 @@ name: Update frontend
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      SLEEP_TIME:
+        required: true
+        type: number
 
 env:
   FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ github.sha }}
@@ -20,6 +24,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Sleep before start
+        run: sleep ${{ github.event.inputs.SLEEP_TIME }}
       - name: Login to registry
         uses: docker/login-action@v1
         with:
