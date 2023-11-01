@@ -1,4 +1,4 @@
-name: Create prerelease version deployment
+name: Update on staging
 
 on:
   release:
