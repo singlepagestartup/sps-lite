@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd ../db/ && ./dump.sh password;
+# npx lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents;
 
-npx lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
+cd ./db && ./dump.sh password
