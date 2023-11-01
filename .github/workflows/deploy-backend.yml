@@ -1,16 +1,15 @@
-name: Deploy frontend
+name: Deploy backend
 
 on:
   pull_request:
     types: [closed]
     branches:
-      - deploy-frontend
+      - deploy-backend
 
 jobs:
-  update-frontend:
-    uses: ./.github/workflows/frontend.yml
+  update-backend:
+    uses: ./.github/workflows/backend.yml
     secrets: inherit
     with:
-      SLEEP_TIME: 0
       TAG: ${{ github.sha }}
       ENVIRONMENT: "staging"
