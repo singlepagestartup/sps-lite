@@ -5,15 +5,13 @@
     - name: docker image prune cron
       cron:
         name: "docker image prune"
-        minute: "20,40"
-        hour: "*"
+        minute: "*/5"
         job: "yes | docker image prune  >> /home/code/docker_image_prune.log"
 
     - name: docker container prune cron
       cron:
         name: "docker container prune"
-        minute: "0"
-        hour: "*"
+        minute: "*/5"
         job: "yes | docker container prune  >> /home/code/docker_container_prune.log"
 
     - name: Create postgres dump directory
