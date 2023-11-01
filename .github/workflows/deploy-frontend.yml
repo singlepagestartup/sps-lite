@@ -13,3 +13,4 @@ jobs:
     with:
       SLEEP_TIME: 0
       TAG: ${{ github.sha }}
+      ENVIRONMENT: "staging"

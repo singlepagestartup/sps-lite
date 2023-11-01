@@ -10,6 +10,9 @@ on:
       TAG:
         required: true
         type: string
+      ENVIRONMENT:
+        required: true
+        type: string
 
 env:
   FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ inputs.TAG }}
@@ -60,9 +63,17 @@ jobs:
     needs:
       - create-frontend-image
     steps:
-      - name: Send webhook for service update
+      - name: Send webhook for staging service update
+        if: ${{ inputs.ENVIRONMENT == 'staging' }}
         uses: fjogeleit/http-request-action@master
         with:
           url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          method: "POST"
+          timeout: 40000
+      - name: Send webhook for service update
+        if: ${{ inputs.ENVIRONMENT == 'production' }}
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_PRODUCTION_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
