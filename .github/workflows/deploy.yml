@@ -39,9 +39,15 @@ jobs:
       - name: Add CLOUDFLARE_ACCOUNT_API_KEY to env file
         run: |
           echo -e "\nCLOUDFLARE_ACCOUNT_API_KEY=${{ secrets.CLOUDFLARE_ACCOUNT_API_KEY }}" >> .env
-      - name: Add ROOT_AWS_ACCESS_KEY to env file
+      - name: Add SENTRY_ROOT_API_KEY to env file
         run: |
-          echo -e "\nROOT_AWS_ACCESS_KEY=${{ secrets.ROOT_AWS_ACCESS_KEY }}" >> .env
+          echo -e "\SENTRY_ROOT_API_KEY=${{ secrets.SENTRY_ROOT_API_KEY }}" >> .env
+      - name: Add SENTRY_ROOT_ORGANIZATION_SLUG to env file
+        run: |
+          echo -e "\SENTRY_ROOT_ORGANIZATION_SLUG=${{ secrets.SENTRY_ROOT_ORGANIZATION_SLUG }}" >> .env
+      - name: Add SENTRY_ROOT_TEAM_SLUG to env file
+        run: |
+          echo -e "\SENTRY_ROOT_TEAM_SLUG=${{ secrets.SENTRY_ROOT_TEAM_SLUG }}" >> .env
       - name: Add ROOT_AWS_SECRET_ACCESS_KEY to env file
         run: |
           echo -e "\nROOT_AWS_SECRET_ACCESS_KEY=${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}" >> .env
@@ -67,6 +73,7 @@ jobs:
           chmod +x \
           ./server.sh \
           ./aws.sh \
+          ./sentry.sh \
           ./cloudflare.sh \
           ./services.sh \
           ./github.sh
@@ -76,6 +83,9 @@ jobs:
       - name: Run aws.sh
         run: |
           ./aws.sh up
+      - name: Run sentry.sh
+        run: |
+          ./sentry.sh up
       - name: Run cloudflare.sh
         run: |
           ./cloudflare.sh up

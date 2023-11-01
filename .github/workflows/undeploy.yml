@@ -66,6 +66,7 @@ jobs:
         run: |
           chmod +x \
           ./aws.sh \
+          ./sentry.sh \
           ./cloudflare.sh \
           ./github.sh
       - name: Run aws.sh
