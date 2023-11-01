@@ -12,4 +12,4 @@ jobs:
     secrets: inherit
     with:
       TAG: ${{ github.sha }}
-      ENVIRONMENT: "staging"
+      ENVIRONMENT: staging
