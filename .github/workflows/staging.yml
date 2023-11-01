@@ -20,12 +20,13 @@ jobs:
   fill-database-with-seed-data:
     uses: ./.github/workflows/database.yml
     secrets: inherit
+    needs:
+      - update-backend
 
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
     needs:
-      - update-backend
       - fill-database-with-seed-data
     with:
       SLEEP_TIME: 360
