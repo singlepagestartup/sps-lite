@@ -1,0 +1,59 @@
+name: Update frontend
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+env:
+  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ github.sha }}
+  NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+  NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
+  NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
+
+jobs:
+  create-frontend-image:
+    name: Frontend version
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Login to registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.DOCKER_HUB_URL }}
+          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          logout: false
+      - name: Build image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          push: false
+          load: true
+          tags: ${{ env.FRONTEND_IMAGE_URL }}
+          build-args: |
+            NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ env.NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ env.NEXT_PUBLIC_FRONTEND_URL }}
+            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+      - name: Inspect image
+        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
+      - name: Push to registry
+        run: docker push ${{ env.FRONTEND_IMAGE_URL }}
+
+  deploy-frontend:
+    name: Run deployer
+    runs-on: ubuntu-latest
+    needs:
+      - create-frontend-image
+    steps:
+      - name: Send webhook for service update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ github.sha }}
+          method: "POST"
+          timeout: 40000
