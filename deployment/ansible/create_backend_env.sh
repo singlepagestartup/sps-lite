@@ -10,6 +10,8 @@ AWS_S3_REGION=$(get_env AWS_S3_REGION)
 
 AWS_ACCESS_KEY=$(grep "^AWS_ACCESS_KEY=" iam.env | cut -d '=' -f2)
 AWS_SECRET_ACCESS_KEY=$(grep "^AWS_SECRET_ACCESS_KEY=" iam.env | cut -d '=' -f2)
+SENTRY_DSN=$(cat backend_sentry_dsn.env)
+
 # Clear file
 > backend.env
 
@@ -48,3 +50,5 @@ add_env "AWS_S3_SECRET_ACCESS_KEY" $AWS_SECRET_ACCESS_KEY
 add_env "AWS_S3_BUCKET" $PROJECT_NAME
 add_env "AWS_S3_REGION" $AWS_S3_REGION
 add_env "AWS_S3_ENDPOINT" "https://s3.amazonaws.com/$PROJECT_NAME"
+
+add_env "SENTRY_DSN" $SENTRY_DSN

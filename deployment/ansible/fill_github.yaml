@@ -76,6 +76,11 @@
         cmd: "cat /home/code/frontend_webhook_token"
       register: frontend_webhook_token
 
+    - name: Get sentry dsn key from frontend_sentry_dsn.env file
+      shell:
+        cmd: "cat /home/code/frontend_sentry_dsn.env"
+      register: frontend_sentry_dsn
+
     - name: Set secrets to GitHub
       no_log: true
       shell:
@@ -109,4 +114,8 @@
         - {
             name: PORTAINER_STAGING_FRONTEND_UPDATE_URL,
             data: "https://{{ portainer_url }}/api/webhooks/{{ frontend_webhook_token.stdout }}",
+          }
+        - {
+            name: NEXT_PUBLIC_SENTRY_DSN,
+            data: "{{ frontend_sentry_dsn.stdout }}",
           }

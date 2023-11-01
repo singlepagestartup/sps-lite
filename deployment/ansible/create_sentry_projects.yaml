@@ -1,0 +1,62 @@
+---
+- name: Create Sentry Projects
+  hosts: all
+  become: yes
+  vars:
+    sentry_root_api_key: "{{ SENTRY_ROOT_API_KEY }}"
+    sentry_root_organization_slug: "{{ SENTRY_ROOT_ORGANIZATION_SLUG }}"
+    sentry_root_team_slug: "{{ SENTRY_ROOT_TEAM_SLUG }}"
+    project_name: "{{ PROJECT_NAME }}"
+  tasks:
+    - name: Create sentry projects
+      uri:
+        url: "https://sentry.io/api/0/teams/{{ sentry_root_organization_slug }}/{{ sentry_root_team_slug }}/projects/"
+        method: POST
+        body_format: json
+        headers:
+          Authorization: "Bearer {{ sentry_root_api_key }}"
+        body:
+          name: "{{ project_name }}_{{ item.name }}"
+          slug: "{{ project_name }}_{{ item.name }}"
+          platform: "{{ item.platform }}"
+        status_code: 200, 201
+      loop:
+        - { name: "backend", platform: "node" }
+        - { name: "frontend", platform: "javascript-react" }
+
+    - name: Get sentry frontend project DSN key
+      uri:
+        url: "https://sentry.io/api/0/projects/{{ sentry_root_organization_slug }}/{{ project_name }}_frontend/keys/"
+        method: GET
+        headers:
+          Authorization: "Bearer {{ sentry_root_api_key }}"
+      register: frontend_project_dsn
+
+    - name: Get sentry backend project DSN key
+      uri:
+        url: "https://sentry.io/api/0/projects/{{ sentry_root_organization_slug }}/{{ project_name }}_backend/keys/"
+        method: GET
+        headers:
+          Authorization: "Bearer {{ sentry_root_api_key }}"
+      register: backend_project_dsn
+
+    - name: Save sentry frontend projects DSN keys to sentry.env files
+      copy:
+        content: "{{ frontend_project_dsn.json[0].dsn.secret }}"
+        dest: /home/code/frontend_sentry_dsn.env
+        mode: 0600
+
+    - name: Save sentry backend projects DSN keys to sentry.env files
+      copy:
+        content: "{{ backend_project_dsn.json[0].dsn.secret }}"
+        dest: /home/code/backend_sentry_dsn.env
+        mode: 0600
+
+    - name: Copy sentry project DSN key files to local
+      fetch:
+        src: "/home/code/{{ item }}_sentry_dsn.env"
+        dest: "./"
+        flat: yes
+      loop:
+        - "backend"
+        - "frontend"

@@ -1,0 +1,22 @@
+#!/bin/bash
+. ./get_env.sh
+
+PROJECT_NAME=$(get_env PROJECT_NAME)
+SENTRY_ROOT_API_KEY=$(get_env SENTRY_ROOT_API_KEY)
+SENTRY_ROOT_ORGANIZATION_SLUG=$(get_env SENTRY_ROOT_ORGANIZATION_SLUG)
+SENTRY_ROOT_TEAM_SLUG=$(get_env SENTRY_ROOT_TEAM_SLUG)
+
+if [ "$1" == "up" ]
+then
+    ansible-playbook create_sentry_projects.yaml \
+        -e "PROJECT_NAME=$PROJECT_NAME \
+            SENTRY_ROOT_API_KEY=$SENTRY_ROOT_API_KEY \
+            SENTRY_ROOT_ORGANIZATION_SLUG=$SENTRY_ROOT_ORGANIZATION_SLUG \
+            SENTRY_ROOT_TEAM_SLUG=$SENTRY_ROOT_TEAM_SLUG"
+else
+    ansible-playbook delete_sentry_projects.yaml \
+        -e "PROJECT_NAME=$PROJECT_NAME \
+            SENTRY_ROOT_API_KEY=$SENTRY_ROOT_API_KEY \
+            SENTRY_ROOT_ORGANIZATION_SLUG=$SENTRY_ROOT_ORGANIZATION_SLUG \
+            SENTRY_ROOT_TEAM_SLUG=$SENTRY_ROOT_TEAM_SLUG"
+fi

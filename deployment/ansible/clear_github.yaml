@@ -28,6 +28,7 @@
         - DATABASE_PASSWORD
         - DATABASE_USERNAME
         - DOCKER_HUB_PASSWORD
+        - NEXT_PUBLIC_SENTRY_DSN
         - GH_TOKEN
       ignore_errors: yes
 
