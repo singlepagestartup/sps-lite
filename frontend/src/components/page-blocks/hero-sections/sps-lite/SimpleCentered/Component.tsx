@@ -1,10 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useTransition } from "react";
 
 export default function Component(props: ISpsLiteHeroSectionBlock) {
+  const [isPending, startTransition] = useTransition();
+
+  const handleClick = () => {
+    startTransition(() => {
+      throw new Error("This failed");
+    });
+  };
+
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.additionalMedia?.length ? (
@@ -29,6 +40,9 @@ export default function Component(props: ISpsLiteHeroSectionBlock) {
                 {props?.description}
               </ReactMarkdown>
             ) : null}
+            <div className="w-full p-6 flex items-center justify-center">
+              <Buttons onClick={handleClick} title="Error" variant="primary" />
+            </div>
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
               {props?.buttons?.map((button, index) => {
                 return <Buttons key={index} {...button} />;

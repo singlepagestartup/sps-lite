@@ -12,9 +12,6 @@ export interface IPageBlockBlock {
 }
 
 export default function PageBlocks(props: IPageBlockBlock) {
-  /**
-   * Add error ErrorBoundary
-   */
   return (
     <div className="page-blocks">
       {props.pageBlocks?.length

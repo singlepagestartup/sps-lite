@@ -4,6 +4,7 @@
 
 import { factories } from "@strapi/strapi";
 import { getFilledPages } from "../../page/controllers/page";
+const { ValidationError, NotFoundError } = require("@strapi/utils").errors;
 
 export default factories.createCoreController(
   "api::layout.layout",
@@ -13,12 +14,14 @@ export default factories.createCoreController(
 
       // console.log("🚀 ~ findByPageUrl ~ queryUrl:", queryUrl);
 
+      console.error(new Error("hello from strapi error catcher"), ctx);
+
       if (typeof queryUrl === "string") {
         queryUrl = queryUrl;
       } else if (Array.isArray(queryUrl)) {
         queryUrl = `/${queryUrl.join("/") || ""}`;
       } else {
-        throw new Error("Wrong query type");
+        throw new ValidationError("Wrong query 'url' passed");
       }
 
       const sanitizedQuery = await this.sanitizeQuery(ctx);
@@ -50,7 +53,7 @@ export default factories.createCoreController(
       });
 
       if (!targetPage) {
-        throw new Error("Layout not found");
+        throw new NotFoundError("Layout not found");
       }
 
       const populatedPage = await strapi.entityService.findOne(

@@ -41,13 +41,16 @@ const strapiFlatten = (data) => {
 
 async function respond(ctx, next) {
   await next();
-  if (!ctx.url.startsWith("/api") || !ctx.response.body.data) {
+  if (!ctx.url.startsWith("/api") || !ctx.response?.body?.data) {
     return;
   }
 
+  const data = strapiFlatten(ctx.response.body.data);
+  const meta = ctx.response.body.meta;
+
   ctx.response.body = {
-    data: strapiFlatten(ctx.response.body.data),
-    meta: ctx.response.body.meta,
+    data,
+    meta,
   };
 }
 

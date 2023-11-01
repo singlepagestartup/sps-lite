@@ -11,7 +11,7 @@ export default {
   async bootstrap({ strapi }) {
     await setPermissions();
 
-    strapi.errorCatcher = (error) => {
+    strapi.errorCatcher = (error, ctx) => {
       if (process.env.SENTRY_DSN) {
         strapi.plugin("sentry").service("sentry").sendError(error);
       }
