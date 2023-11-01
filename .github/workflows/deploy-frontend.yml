@@ -9,3 +9,4 @@ on:
 jobs:
   update-frontend:
     uses: ./.github/workflows/frontend.yml
+    secrets: inherit
