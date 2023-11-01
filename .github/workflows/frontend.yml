@@ -7,9 +7,12 @@ on:
       SLEEP_TIME:
         required: true
         type: number
+      TAG:
+        required: true
+        type: string
 
 env:
-  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ github.sha }}
+  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ inputs.TAG }}
   NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
   NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
   NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
@@ -60,6 +63,6 @@ jobs:
       - name: Send webhook for service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ github.sha }}
+          url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000

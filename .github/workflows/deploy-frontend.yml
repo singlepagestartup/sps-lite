@@ -11,4 +11,5 @@ jobs:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
     with:
-      SLEEP_TIME: 360
+      SLEEP_TIME: 0
+      TAG: ${{ github.sha }}
