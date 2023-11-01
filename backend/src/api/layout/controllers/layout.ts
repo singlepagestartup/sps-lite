@@ -14,8 +14,6 @@ export default factories.createCoreController(
 
       // console.log("🚀 ~ findByPageUrl ~ queryUrl:", queryUrl);
 
-      console.error(new Error("hello from strapi error catcher"), ctx);
-
       if (typeof queryUrl === "string") {
         queryUrl = queryUrl;
       } else if (Array.isArray(queryUrl)) {
