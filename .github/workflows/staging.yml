@@ -6,9 +6,6 @@ on:
       - published
       - released
 
-env:
-  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_backend:${{ github.event.release.tag_name }}
-
 jobs:
   update-backend:
     uses: ./.github/workflows/backend.yml
