@@ -1,4 +1,5 @@
 name: Deploy project to server
+
 on:
   pull_request:
     types: [closed]

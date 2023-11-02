@@ -1,15 +1,22 @@
-name: Deploy documentation
+name: Update documentation
+
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - documentation
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      TAG:
+        required: true
+        type: string
+      ENVIRONMENT:
+        required: true
+        type: string
 
 env:
   DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation:latest
 
 jobs:
   create-documentation-image:
+    if: ${{ inputs.ENVIRONMENT == 'staging' }}
     name: Documentation version
     runs-on: ubuntu-latest
     defaults:
@@ -43,8 +50,17 @@ jobs:
     needs:
       - create-documentation-image
     steps:
-      - name: Send webhook for service update
+      - name: Send webhook for staging service update
+        if: ${{ inputs.ENVIRONMENT == 'staging' }}
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL }}?tag=latest
+          url: ${{ secrets.PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
+          timeout: 40000
+      - name: Send webhook for production service update
+        if: ${{ inputs.ENVIRONMENT == 'production' }}
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.PORTAINER_PRODUCTION_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          method: "POST"
+          timeout: 40000

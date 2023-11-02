@@ -1,0 +1,28 @@
+---
+- name: Delete Documentation
+  hosts: all
+  become: yes
+  vars:
+    - service_name: "{{ SERVICE_NAME }}"
+  tasks:
+    - name: Remove Documentation service
+      community.docker.docker_stack:
+        state: absent
+        name: documentation
+        compose:
+          - /home/code/docker-compose.documentation.yaml
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.documentation.yaml
+        state: absent
+
+    - name: Delete webhook info file
+      file:
+        path: /home/code/documentation_webhook.json
+        state: absent
+
+    - name: Delete webhook token file
+      file:
+        path: /home/code/documentation_webhook_token
+        state: absent

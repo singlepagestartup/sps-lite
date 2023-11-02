@@ -8,6 +8,7 @@
     - domain: "{{ DOMAIN }}"
     - state: "{{ STATE }}"
     - frontend_url: "{{ FRONTEND_URL }}"
+    - documentation_url: "{{ DOCUMENTATION_URL }}"
     - backend_url: "{{ BACKEND_URL }}"
     - portainer_url: "{{ PORTAINER_URL }}"
     - traefik_url: "{{ TRAEFIK_URL }}"
@@ -29,6 +30,7 @@
         DNS:{{ traefik_url }},\
         DNS:{{ portainer_url }},\
         DNS:{{ frontend_url }},\
+        DNS:{{ documentation_url }},\
         DNS:{{ backend_url }}' \
         -keyout /home/code/{{ domain }}.key \
         -out /home/code/{{ domain }}.csr"
@@ -58,6 +60,7 @@
             - "{{ traefik_url }}"
             - "{{ portainer_url }}"
             - "{{ frontend_url }}"
+            - "{{ documentation_url }}"
             - "{{ backend_url }}"
             # - "{{ domain }}"
             # - "*.{{ domain }}"

@@ -9,7 +9,7 @@ COPY package.json ./
 COPY . .
 
 RUN npm install
-# RUN npm run build
+RUN npm run build
 
 EXPOSE 3000
 
@@ -17,4 +17,5 @@ EXPOSE 3000
 # Running the app
 RUN ["chmod", "-R", "777", "/usr/src/app"]
 RUN ["chmod", "+x", "/usr/src/app/start.sh"]
-ENTRYPOINT ["sh", "/usr/src/app/start.sh"]
+
+CMD ["tail", "-f", "/dev/null"]

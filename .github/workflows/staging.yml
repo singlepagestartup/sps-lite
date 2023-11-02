@@ -1,4 +1,4 @@
-name: Update on staging
+name: Update frontend and backend on staging
 
 on:
   release:

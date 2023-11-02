@@ -1,10 +1,10 @@
-name: Deploy backend
+name: Update backend
 
 on:
   pull_request:
     types: [closed]
     branches:
-      - deploy-backend
+      - update-backend
 
 jobs:
   update-backend:

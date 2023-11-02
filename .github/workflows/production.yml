@@ -1,4 +1,4 @@
-name: Update on production
+name: Update frontend and backend on production
 on:
   release:
     types:

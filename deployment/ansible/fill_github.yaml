@@ -76,6 +76,11 @@
         cmd: "cat /home/code/frontend_webhook_token"
       register: frontend_webhook_token
 
+    - name: Get Portainer documentation webhook token
+      shell:
+        cmd: "cat /home/code/documentation_webhook_token"
+      register: documentation_webhook_token
+
     - name: Get sentry dsn key from frontend_sentry_dsn.env file
       shell:
         cmd: "cat /home/code/frontend_sentry_dsn.env"
@@ -114,6 +119,10 @@
         - {
             name: PORTAINER_STAGING_FRONTEND_UPDATE_URL,
             data: "https://{{ portainer_url }}/api/webhooks/{{ frontend_webhook_token.stdout }}",
+          }
+        - {
+            name: PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL,
+            data: "https://{{ portainer_url }}/api/webhooks/{{ documentation_webhook_token.stdout }}",
           }
         - {
             name: NEXT_PUBLIC_SENTRY_DSN,
