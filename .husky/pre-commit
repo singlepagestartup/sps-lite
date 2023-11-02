@@ -2,17 +2,47 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 BACKEND_ENV=./backend/.env
-cat $BACKEND_ENV
 
-if test -f "$BACKEND_ENV"; then
-    DATABASE_HOST=$(grep "^DATABASE_HOST=" $BACKEND_ENV | cut -d '=' -f2)
-    DATABASE_NAME=$(grep "^DATABASE_NAME=" $BACKEND_ENV | cut -d '=' -f2)
-    DATABASE_USERNAME=$(grep "^DATABASE_USERNAME=" $BACKEND_ENV | cut -d '=' -f2)
-    DATABASE_PASSWORD=$(grep "^DATABASE_PASSWORD=" $BACKEND_ENV | cut -d '=' -f2)
-    DATABASE_PORT=$(grep "^DATABASE_PORT=" $BACKEND_ENV | cut -d '=' -f2)
+if test -f "$BACKEND_ENV"
+then
+    DATABASE_CLIENT=$(grep "^DATABASE_CLIENT=" $BACKEND_ENV | cut -d '=' -f2)
 
-    cd ./db && PGPASSWORD=$DATABASE_PASSWORD pg_dump $DATABASE_NAME > dump.sql -h $DATABASE_HOST -p $DATABASE_PORT -U $DATABASE_USERNAME
-    git add .
+    if [ "$DATABASE_CLIENT" != "sqlite" ]
+    then
+        DATABASE_HOST=$(grep "^DATABASE_HOST=" $BACKEND_ENV | cut -d '=' -f2)
+        DATABASE_NAME=$(grep "^DATABASE_NAME=" $BACKEND_ENV | cut -d '=' -f2)
+        DATABASE_USERNAME=$(grep "^DATABASE_USERNAME=" $BACKEND_ENV | cut -d '=' -f2)
+        DATABASE_PASSWORD=$(grep "^DATABASE_PASSWORD=" $BACKEND_ENV | cut -d '=' -f2)
+        DATABASE_PORT=$(grep "^DATABASE_PORT=" $BACKEND_ENV | cut -d '=' -f2)
+        
+        if [ -z "$DATABASE_HOST" ]
+        then
+            DATABASE_HOST="localhost"
+        fi
+
+        if [ -z "$DATABASE_NAME" ]
+        then
+            DATABASE_NAME="sps"
+        fi
+
+        if [ -z "$DATABASE_USERNAME" ]
+        then
+            DATABASE_USERNAME="postgres"
+        fi
+
+        if [ -z "$DATABASE_PASSWORD" ]
+        then
+            DATABASE_PASSWORD="password"
+        fi
+
+        if [ -z "$DATABASE_PORT" ]
+        then
+            DATABASE_PORT="5432"
+        fi
+
+        cd ./db && PGPASSWORD=$DATABASE_PASSWORD pg_dump $DATABASE_NAME > dump.sql -h $DATABASE_HOST -p $DATABASE_PORT -U $DATABASE_USERNAME
+        git add .
+    fi
 fi
 
 npx lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
