@@ -115,7 +115,7 @@ const getThemeFromBackend = async (props) => {
   } else {
     iteration++;
 
-    if (iteration < 5) {
+    if (iteration < 5 && process.env.NODE_ENV === "production") {
       setTimeout(() => {
         getThemeFromBackend();
       }, 5000);
