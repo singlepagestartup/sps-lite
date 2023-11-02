@@ -3,6 +3,8 @@ const fs = require("fs/promises");
 const { createWriteStream } = require("fs");
 const path = require("path");
 
+let iteration = 0;
+
 const requiredFontVariants = ["Default", "Primary"];
 // "" means "normal"
 const requiredFontStyles = ["", "Italic"];
@@ -109,6 +111,14 @@ const getThemeFromBackend = async (props) => {
             });
         }
       }
+    }
+  } else {
+    iteration++;
+
+    if (iteration < 5) {
+      setTimeout(() => {
+        getThemeFromBackend();
+      }, 5000);
     }
   }
 
