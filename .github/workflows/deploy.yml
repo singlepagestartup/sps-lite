@@ -7,66 +7,22 @@ on:
       - deploy
 
 jobs:
+  create-ansible-env:
+    uses: ./.github/workflows/create-ansible-env.yml
+    secrets: inherit
+
   deploy-project-to-server:
-    if: github.event.pull_request.merged == true
     timeout-minutes: 60
     name: Run ansible playbook
     runs-on: ubuntu-latest
+    needs:
+      - create-ansible-env
     defaults:
       run:
         working-directory: ./deployment/ansible
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Create inventory file
-        run: |
-          cp gh_actions_inventory.yaml inventory.yaml
-      - name: Check inventory file
-        run: cat inventory.yaml
-      - name: Replace ANSIBLE_HOST in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_HOST/${{ secrets.ANSIBLE_HOST }}/g" inventory.yaml
-      - name: Replace ANSIBLE_PASSWORD in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_PASSWORD/${{ secrets.ANSIBLE_PASSWORD }}/g" inventory.yaml
-      - name: Check inventory.yaml
-        run: cat inventory.yaml
-      - name: Create .env file
-        run: |
-          echo "${{ secrets.ANSIBLE_ENV_BASE64 }}" | base64 -d > .env
-      - name: Add CLOUDFLARE_ACCOUNT_EMAIL to env file
-        run: |
-          echo -e "\nCLOUDFLARE_ACCOUNT_EMAIL=${{ secrets.CLOUDFLARE_ACCOUNT_EMAIL }}" >> .env
-      - name: Add CLOUDFLARE_ACCOUNT_API_KEY to env file
-        run: |
-          echo -e "\nCLOUDFLARE_ACCOUNT_API_KEY=${{ secrets.CLOUDFLARE_ACCOUNT_API_KEY }}" >> .env
-      - name: Add SENTRY_ROOT_API_KEY to env file
-        run: |
-          echo -e "\SENTRY_ROOT_API_KEY=${{ secrets.SENTRY_ROOT_API_KEY }}" >> .env
-      - name: Add SENTRY_ROOT_ORGANIZATION_SLUG to env file
-        run: |
-          echo -e "\SENTRY_ROOT_ORGANIZATION_SLUG=${{ secrets.SENTRY_ROOT_ORGANIZATION_SLUG }}" >> .env
-      - name: Add SENTRY_ROOT_TEAM_SLUG to env file
-        run: |
-          echo -e "\SENTRY_ROOT_TEAM_SLUG=${{ secrets.SENTRY_ROOT_TEAM_SLUG }}" >> .env
-      - name: Add ROOT_AWS_SECRET_ACCESS_KEY to env file
-        run: |
-          echo -e "\nROOT_AWS_SECRET_ACCESS_KEY=${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}" >> .env
-      - name: Add DOCKER_HUB_PASSWORD to env file
-        run: |
-          echo -e "\nDOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> .env
-      - name: Add GITHUB_TOKEN to env file
-        run: |
-          echo -e "\nGITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
-      - name: Add TRAEFIK_PASSWORD to env file
-        run: |
-          echo -e "\nTRAEFIK_PASSWORD=${{ secrets.TRAEFIK_PASSWORD }}" >> .env
-      - name: Add PORTAINER_PASSWORD to env file
-        run: |
-          echo -e "\nPORTAINER_PASSWORD=${{ secrets.PORTAINER_PASSWORD }}" >> .env
-      - name: Add POSTGRES_PASSWORD to env file
-        run: |
-          echo -e "\nPOSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
       - name: Check .env file
         run: cat .env
       - name: Make scripts files executable
@@ -81,18 +37,18 @@ jobs:
       - name: Run server.sh
         run: |
           ./server.sh up
-      - name: Run aws.sh
-        run: |
-          ./aws.sh up
-      - name: Run sentry.sh
-        run: |
-          ./sentry.sh up
-      - name: Run cloudflare.sh
-        run: |
-          ./cloudflare.sh up
-      - name: Run services.sh
-        run: |
-          ./services.sh up
-      - name: Run github.sh
-        run: |
-          ./github.sh up
+      # - name: Run aws.sh
+      #   run: |
+      #     ./aws.sh up
+      # - name: Run sentry.sh
+      #   run: |
+      #     ./sentry.sh up
+      # - name: Run cloudflare.sh
+      #   run: |
+      #     ./cloudflare.sh up
+      # - name: Run services.sh
+      #   run: |
+      #     ./services.sh up
+      # - name: Run github.sh
+      #   run: |
+      #     ./github.sh up
