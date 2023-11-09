@@ -10,6 +10,12 @@ SENTRY_TEAM_SLUG=$(get_env ROOT_SENTRY_TEAM_SLUG)
 GITHUB_TOKEN=$(get_env GITHUB_TOKEN)
 GITHUB_REPOSITORY=$(get_env GITHUB_REPOSITORY)
 
+if [ -z $SENTRY_API_KEY ]
+then
+    echo "No Sentry API Key provided."
+    exit 0
+fi
+
 if [ "$1" != "down" ]
 then
     SERVICE_NAME=$2
