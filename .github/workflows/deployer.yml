@@ -11,7 +11,7 @@ env:
 
 jobs:
   deploy-project-to-server:
-    if: contains(github.ref_name, 'deploy')
+    if: contains(github.ref_name, 'deploy') && github.event.pull_request.merged == true
     timeout-minutes: 60
     name: Run ansible playbook
     runs-on: ubuntu-latest
