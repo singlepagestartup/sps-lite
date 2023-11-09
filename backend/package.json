@@ -46,7 +46,6 @@
     "ramda": "^0.28.0",
     "semver": "^7.5.4",
     "sendpulse-api": "^1.1.5",
-    "sharp": "^0.32.6",
     "strapi-plugin-country-select": "^1.0.0",
     "strapi-plugin-email-designer": "^2.1.1",
     "stream": "^0.0.2",
