@@ -7,8 +7,6 @@ BACKEND_ENV=../backend/.env
 
 CREATE_DUMP_ON_COMMIT=$(get_env CREATE_DUMP_ON_COMMIT $DB_ENV)
 
-echo $CREATE_DUMP_ON_COMMIT;
-
 if [ $CREATE_DUMP_ON_COMMIT == "false" ]
 then
     exit 0
