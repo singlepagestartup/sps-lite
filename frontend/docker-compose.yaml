@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  frontend:
+    extends:
+      file: ./docker-compose.frontend.yaml
+      service: frontend
+    networks:
+      - sps_db_network
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: http://backend:1337
+    ports:
+      - 3000:3000
+
+networks:
+  sps_db_network:
+    external: true

@@ -1,0 +1,23 @@
+---
+- name: Cloudflare DNS records
+  hosts: all
+  become: yes
+  vars:
+    - account_email: "{{ CLOUDFLARE_ACCOUNT_EMAIL }}"
+    - account_api_key: "{{ CLOUDFLARE_ACCOUNT_API_KEY }}"
+    - domain: "{{ DOMAIN }}"
+    - state: "{{ STATE }}"
+    - service_url: "{{ SERVICE_URL }}"
+    - service_a: "{{ SERVICE_A }}"
+  tasks:
+    - name: DNS record
+      community.general.cloudflare_dns:
+        state: "{{ state }}"
+        zone: "{{ domain }}"
+        record: "{{ service_a }}"
+        type: A
+        proxied: true
+        value: "{{ inventory_hostname }}"
+        account_email: "{{ account_email }}"
+        account_api_key: "{{ account_api_key }}"
+      when: (service_a != "") or (state == "absent")

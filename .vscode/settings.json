@@ -1,7 +1,5 @@
 {
   "editor.wordWrap": "on",
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
   "[javascript|javascriptreact|typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -28,8 +26,9 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.validate.enable": true,
   "playwright.reuseBrowser": true,
-  "editor.fontSize": 13,
-  "window.zoomLevel": -2,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "Default Light+"
+  "workbench.colorTheme": "Default Light+",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredLightColorTheme": "Default Light+",
+  "workbench.preferredDarkColorTheme": "Default Dark+"
 }

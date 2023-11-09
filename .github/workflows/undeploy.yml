@@ -57,9 +57,9 @@ jobs:
       - name: Add PORTAINER_PASSWORD to env file
         run: |
           echo -e "\nPORTAINER_PASSWORD=${{ secrets.PORTAINER_PASSWORD }}" >> .env
-      - name: Add POSTGRES_PASSWORD to env file
+      - name: Add DATABASE_PASSWORD to env file
         run: |
-          echo -e "\nPOSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          echo -e "\nDATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
       - name: Check .env file
         run: cat .env
       - name: Make scripts files executable

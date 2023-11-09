@@ -1,0 +1,67 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "main",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container. More info: https://containers.dev/features
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/jshint:2": {},
+    "ghcr.io/devcontainers-contrib/features/prettier:1": {},
+    // That type of docker not allows to connect to localhost from devcontainer
+    // "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [1337, 3000, 8080],
+
+  "portsAttributes": {
+    "1337": {
+      "label": "backend"
+    },
+    "3000": {
+      "label": "frontend"
+    },
+    "8080": {
+      "label": "adminer"
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "",
+  "postAttachCommand": {
+    "db": "/bin/bash ./.devcontainer/postAttachCommand.sh db",
+    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend && cd frontend",
+    "backend": "/bin/bash ./.devcontainer/postAttachCommand.sh backend && cd backend"
+  },
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {},
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "dsznajder.es7-react-js-snippets",
+        "dbaeumer.vscode-eslint",
+        "mhutchie.git-graph",
+        "chakrounanas.turbo-console-log",
+        "GitHub.copilot",
+        "esbenp.prettier-vscode",
+        "MS-vsliveshare.vsliveshare",
+        "github.vscode-github-actions",
+        "ms-playwright.playwright",
+        "bradlc.vscode-tailwindcss",
+        "redhat.vscode-yaml",
+        "bierner.jsdoc-markdown-highlighting"
+      ]
+    }
+  }
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}

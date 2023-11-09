@@ -2,21 +2,49 @@
 . ./get_env.sh
 
 PROJECT_NAME=$(get_env PROJECT_NAME)
-SENTRY_ROOT_API_KEY=$(get_env SENTRY_ROOT_API_KEY)
-SENTRY_ROOT_ORGANIZATION_SLUG=$(get_env SENTRY_ROOT_ORGANIZATION_SLUG)
-SENTRY_ROOT_TEAM_SLUG=$(get_env SENTRY_ROOT_TEAM_SLUG)
 
-if [ "$1" == "up" ]
+SENTRY_API_KEY=$(get_env ROOT_SENTRY_API_KEY)
+SENTRY_ORGANIZATION_SLUG=$(get_env ROOT_SENTRY_ORGANIZATION_SLUG)
+SENTRY_TEAM_SLUG=$(get_env ROOT_SENTRY_TEAM_SLUG)
+
+GITHUB_TOKEN=$(get_env GITHUB_TOKEN)
+GITHUB_REPOSITORY=$(get_env GITHUB_REPOSITORY)
+
+if [ "$1" != "down" ]
 then
-    ansible-playbook create_sentry_projects.yaml \
+    SERVICE_NAME=$2
+    PLATFORM=$3
+    SECRET_NAME=$4
+
+    ansible-playbook \
+        ./sentry/create_sentry_project.yaml \
         -e "PROJECT_NAME=$PROJECT_NAME \
-            SENTRY_ROOT_API_KEY=$SENTRY_ROOT_API_KEY \
-            SENTRY_ROOT_ORGANIZATION_SLUG=$SENTRY_ROOT_ORGANIZATION_SLUG \
-            SENTRY_ROOT_TEAM_SLUG=$SENTRY_ROOT_TEAM_SLUG"
+            PLATFORM=$PLATFORM \
+            SERVICE_NAME=$SERVICE_NAME \
+            SENTRY_API_KEY=$SENTRY_API_KEY \
+            SENTRY_ORGANIZATION_SLUG=$SENTRY_ORGANIZATION_SLUG \
+            SENTRY_TEAM_SLUG=$SENTRY_TEAM_SLUG" && \
+    ansible-playbook \
+        ./sentry/fill_github.yaml \
+        -e "GITHUB_TOKEN=$GITHUB_TOKEN \
+            GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
+            PROJECT_NAME=$PROJECT_NAME \
+            SERVICE_NAME=$SERVICE_NAME \
+            SECRET_NAME=$SECRET_NAME"
 else
-    ansible-playbook delete_sentry_projects.yaml \
+    SERVICE_NAME=$2
+    SECRET_NAME=$3
+
+    ansible-playbook \
+        ./sentry/delete_sentry_project.yaml \
         -e "PROJECT_NAME=$PROJECT_NAME \
-            SENTRY_ROOT_API_KEY=$SENTRY_ROOT_API_KEY \
-            SENTRY_ROOT_ORGANIZATION_SLUG=$SENTRY_ROOT_ORGANIZATION_SLUG \
-            SENTRY_ROOT_TEAM_SLUG=$SENTRY_ROOT_TEAM_SLUG"
+            SENTRY_API_KEY=$SENTRY_API_KEY \
+            SERVICE_NAME=$SERVICE_NAME \
+            SENTRY_ORGANIZATION_SLUG=$SENTRY_ORGANIZATION_SLUG \
+            SENTRY_TEAM_SLUG=$SENTRY_TEAM_SLUG" && \
+    ansible-playbook \
+        ./sentry/clear_github.yaml \
+        -e "GITHUB_TOKEN=$GITHUB_TOKEN \
+            GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
+            SECRET_NAME=$SECRET_NAME"
 fi

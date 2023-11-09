@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: develop.Dockerfile
+      network: host
+    restart: always
+    volumes:
+      - .:/usr/src/app
+    expose:
+      - 3000

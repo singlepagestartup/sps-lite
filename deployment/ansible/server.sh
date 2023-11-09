@@ -1,3 +1,10 @@
 #!/bin/bash
 
-ansible-playbook update_packages.yaml create_working_directory.yaml install_psql.yaml set_cron_jobs.yaml install_nodejs.yaml install_docker.yaml init_docker_swarm.yaml
+ansible-playbook \
+    ./server/update_packages.yaml \
+    ./server/create_working_directory.yaml \
+    ./server/install_psql.yaml \
+    ./server/set_cron_jobs.yaml \
+    ./server/install_nodejs.yaml \
+    ./server/install_docker.yaml \
+    ./server/init_docker_swarm.yaml

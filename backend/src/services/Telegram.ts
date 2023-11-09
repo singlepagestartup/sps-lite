@@ -1,14 +1,14 @@
 import { message } from "telegraf/filters";
 import { type Context, Telegraf, session } from "telegraf";
 import axios from "axios";
-import ffmpeg from "fluent-ffmpeg";
-import ffmpegPath from "@ffmpeg-installer/ffmpeg";
+// import ffmpeg from "fluent-ffmpeg";
+// const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 import fs from "fs/promises";
 import path from "path";
 import OpenAI from "./OpenAi";
 import type { Update } from "telegraf/types";
 
-ffmpeg.setFfmpegPath(ffmpegPath.path);
+// ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 interface TelegramBotContext<U extends Update = Update> extends Context<U> {
   session: {
@@ -91,21 +91,21 @@ class Telegram {
           voiceBuffer,
         );
 
-        await new Promise((resolve, reject) => {
-          ffmpeg()
-            .input(path.join(__dirname, `${tmpFileName}.ogg`))
-            .inputOptions("-t 30")
-            .toFormat("mp3")
-            .on("end", () => {
-              fs.unlink(path.join(__dirname, `${tmpFileName}.ogg`));
-              resolve("");
-            })
-            .on("error", (error) => {
-              reject(error);
-            })
-            .output(path.join(__dirname, `${tmpFileName}.mp3`))
-            .run();
-        });
+        // await new Promise((resolve, reject) => {
+        //   ffmpeg()
+        //     .input(path.join(__dirname, `${tmpFileName}.ogg`))
+        //     .inputOptions("-t 30")
+        //     .toFormat("mp3")
+        //     .on("end", () => {
+        //       fs.unlink(path.join(__dirname, `${tmpFileName}.ogg`));
+        //       resolve("");
+        //     })
+        //     .on("error", (error) => {
+        //       reject(error);
+        //     })
+        //     .output(path.join(__dirname, `${tmpFileName}.mp3`))
+        //     .run();
+        // });
 
         const text = await this.openAi.transcript(
           path.join(__dirname, `${tmpFileName}.mp3`),

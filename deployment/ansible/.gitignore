@@ -3,8 +3,10 @@ certs
 *.env
 *.env.backup
 inventory.yaml*
+!inventory.yaml.example
 frontend_webhook.json
 backend_webhook.json
+node_modules
 *.pem
 *.key
 *.pub
