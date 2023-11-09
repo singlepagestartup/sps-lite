@@ -3,6 +3,17 @@
   hosts: all
   become: true
   tasks:
+    - name: Remove /usr/share/keyrings/nodesource.gpg file
+      file:
+        path: /usr/share/keyrings/nodesource.gpg
+        state: absent
+
+    - name: Set repo for Node.js
+      shell: |
+        curl -L -o nsolid_setup_deb.sh https://deb.nodesource.com/nsolid_setup_deb.sh
+        chmod +x nsolid_setup_deb.sh
+        ./nsolid_setup_deb.sh 20
+
     - name: Install Node.js
       shell: |
-        curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs
+        apt-get install nodejs -y
