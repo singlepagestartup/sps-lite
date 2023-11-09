@@ -1,6 +1,16 @@
 #! /bin/bash
+. ../deployment/ansible/get_env.sh
+
+DB_ENV=.env
 
 BACKEND_ENV=../backend/.env
+
+CREATE_DUMP_ON_COMMIT=$(get_env CREATE_DUMP_ON_COMMIT $DB_ENV)
+
+if [ $CREATE_DUMP_ON_COMMIT == "false"]
+then
+    exit 0
+fi
 
 if test -f "$BACKEND_ENV"
 then
