@@ -32,7 +32,7 @@ export default function TextInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace("[", "_").replace("]", "_").replace(".", "_");
+    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
 
   const [additionalAttributes, setAdditionalAttributes] = useState<{
