@@ -86,22 +86,8 @@ SECRETS=(\
 )
 
 BRANCHES=( \
-    "deploy" \
-    "deploy-aws" \
-    "deploy-traefik" \
-    "deploy-portainer" \
-    "deploy-postgres" \
-    "deploy-frontend" \
-    "deploy-backend" \
-    "deploy-documentation" \
-    "undeploy" \
-    "undeploy-aws" \
-    "undeploy-traefik" \
-    "undeploy-portainer" \
-    "undeploy-postgres" \
-    "undeploy-frontend" \
-    "undeploy-backend" \
-    "undeploy-documentation" \
+    "ansible-up" \
+    "ansible-down" \
 )
 
 if [ "$1" != "down" ]
