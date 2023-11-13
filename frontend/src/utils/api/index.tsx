@@ -83,7 +83,7 @@ export async function getTargetPage({ url, locale }: any) {
     },
   });
 
-  if (!targetPage.id) {
+  if (!targetPage?.id) {
     return;
   }
 

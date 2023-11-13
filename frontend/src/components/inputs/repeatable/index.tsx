@@ -155,7 +155,7 @@ export default function RepeatableInput(props: IInputProps) {
   const [initWasSet, setInitWasSet] = useState<boolean>(false);
 
   const htmlNodeId = useMemo(() => {
-    return name.replace("[", "_").replace("]", "_").replace(".", "_");
+    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
 
   const {

@@ -27,6 +27,8 @@ if [ ! -z $CODESPACE_NAME ]; then
     add_env "FRONTEND_URL" $FRONTEND_URL
 fi
 
+add_env "HOST" "localhost"
+
 JWT_SECRET=$(generate_random_string)
 add_env "JWT_SECRET" $JWT_SECRET
 

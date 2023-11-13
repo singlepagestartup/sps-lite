@@ -38,7 +38,7 @@ export default function ListboxInput(props: IInputProps) {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
-    return name.replace("[", "_").replace("]", "_").replace(".", "_");
+    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
 
   const additionalProps = useMemo(() => {
