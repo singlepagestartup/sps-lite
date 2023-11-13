@@ -33,6 +33,8 @@ add_env "CREATE_DUMP_ON_COMMIT" "true"
 
 REPO_NAME=$(basename -s .git `git config --get remote.origin.url`)
 
+add_env "COMPOSE_PROJECT_NAME" $REPO_NAME
+
 add_env "POSTGRES_DB" $REPO_NAME
 
 add_env "POSTGRES_USER" $REPO_NAME
