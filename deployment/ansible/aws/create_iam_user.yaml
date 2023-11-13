@@ -102,7 +102,7 @@
             iam_name: "{{ project_name }}dev"
             state: present
             policy_name: "single-s3-bucket-policy-{{ project_name }}dev"
-            policy_json: "{{ lookup('template','single_s3_dev_bucket_policy.j2.j2') }}"
+            policy_json: "{{ lookup('template','single_s3_dev_bucket_policy.j2') }}"
             aws_access_key: "{{ aws_access_key }}"
             aws_secret_access_key: "{{ aws_secret_access_key }}"
 
