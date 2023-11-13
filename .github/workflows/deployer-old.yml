@@ -1,0 +1,91 @@
+name: Deployer
+on:
+  pull_request:
+    types: [closed]
+  # push:
+  #   branches:
+  #     - main
+
+env:
+  BRANCH_NAME: ${{ github.ref_name }}
+
+jobs:
+  deploy-project-to-server:
+    if: contains(github.ref_name, 'deploy') && github.event.pull_request.merged == true
+    timeout-minutes: 60
+    name: Run ansible playbook
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./deployment/ansible
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: BRANCH_NAME
+        run: echo ${{ env.BRANCH_NAME }}
+      - name: Check inventory.yaml and .env file
+        run: |
+          cat .env
+          cat inventory.yaml
+      - name: Make scripts files executable
+        run: |
+          chmod +x \
+            ./server.sh \
+            ./aws.sh \
+            ./traefik.sh \
+            ./portainer.sh \
+            ./postgres.sh \
+            ./backend.sh \
+            ./frontend.sh
+      - name: Server Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-traefik' || env.BRANCH_NAME == 'deploy-portainer' || env.BRANCH_NAME == 'deploy-aws' || env.BRANCH_NAME == 'deploy-frontend' || env.BRANCH_NAME == 'deploy-backend' || env.BRANCH_NAME == 'deploy-documentation' }}
+        run: ./server.sh
+
+      - name: AWS Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'undeploy-aws' || env.BRANCH_NAME == 'redeploy-aws' }}
+        run: ./aws.sh down
+      - name: AWS Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-aws' || env.BRANCH_NAME == 'deploy-backend' || env.BRANCH_NAME == 'redeploy-backend' }}
+        run: ./aws.sh
+
+      - name: Traefik Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'undeploy-traefik' || env.BRANCH_NAME == 'redeploy-traefik' }}
+        run: ./traefik.sh down
+      - name: Traefik Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-traefik' || env.BRANCH_NAME == 'redeploy-traefik' }}
+        run: ./traefik.sh
+
+      - name: Portainer Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'redeploy-portainer' || env.BRANCH_NAME == 'undeploy-portainer' }}
+        run: ./portainer.sh down
+      - name: Portainer Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'redeploy-portainer' || env.BRANCH_NAME == 'deploy-portainer' }}
+        run: ./portainer.sh
+
+      - name: Postgres Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'redeploy-postgres' }}
+        run: ./postgres.sh down
+      - name: Postgres Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-postgres' || env.BRANCH_NAME == 'redeploy-postgres' || env.BRANCH_NAME == 'deploy-backend' }}
+        run: ./postgres.sh
+
+      - name: Backend Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'deploy-backend' || env.BRANCH_NAME == 'redeploy-backend' }}
+        run: ./backend.sh down
+      - name: Backend Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-backend' || env.BRANCH_NAME == 'redeploy-backend' }}
+        run: ./backend.sh
+
+      - name: Frontend Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'undeploy-frontend' || env.BRANCH_NAME == 'redeploy-frontend' }}
+        run: ./frontend.sh down
+      - name: Frontend Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-frontend' }}
+        run: ./frontend.sh
+
+      - name: Documentation Down
+        if: ${{ env.BRANCH_NAME == 'undeploy' || env.BRANCH_NAME == 'undeploy-documentation' || env.BRANCH_NAME == 'redeploy-documentation' }}
+        run: ./documentation.sh down
+      - name: Documentation Up
+        if: ${{ env.BRANCH_NAME == 'deploy' || env.BRANCH_NAME == 'deploy-documentation' }}
+        run: ./documentation.sh
