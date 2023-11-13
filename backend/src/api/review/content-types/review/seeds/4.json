@@ -5,12 +5,12 @@
     "description": "The Single Page Startup has not only provided us with a solid foundation for our product but also outstanding support and flexibility. The boilerplate's developers have been responsive to our needs, and the customization options have allowed us to tailor the solution to our specific requirements. It's been a pleasure working with such a reliable and adaptable solution.",
     "subtitle": "TravelTrail, Head of Engineering",
     "rating": 5,
-    "createdAt": "2023-09-05T09:49:42.370Z",
-    "updatedAt": "2023-09-05T09:55:35.274Z",
+    "createdAt": "2023-11-13T12:31:00.602Z",
+    "updatedAt": "2023-11-13T12:39:40.217Z",
     "publishedAt": "2023-03-12T04:33:57.476Z",
     "media": [
         {
-            "id": 66,
+            "id": 142,
             "name": "pexels-andrea-piacquadio-3756679.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_andrea_piacquadio_3756679_d0cfcb7ec2.jpg",
-                    "hash": "large_pexels_andrea_piacquadio_3756679_d0cfcb7ec2",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_andrea_piacquadio_3756679_b56b8b0c57.jpg",
+                    "hash": "large_pexels_andrea_piacquadio_3756679_b56b8b0c57",
                     "mime": "image/jpeg",
                     "name": "large_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_andrea_piacquadio_3756679_d0cfcb7ec2.jpg",
-                    "hash": "small_pexels_andrea_piacquadio_3756679_d0cfcb7ec2",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_andrea_piacquadio_3756679_b56b8b0c57.jpg",
+                    "hash": "small_pexels_andrea_piacquadio_3756679_b56b8b0c57",
                     "mime": "image/jpeg",
                     "name": "small_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_andrea_piacquadio_3756679_d0cfcb7ec2.jpg",
-                    "hash": "medium_pexels_andrea_piacquadio_3756679_d0cfcb7ec2",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_andrea_piacquadio_3756679_b56b8b0c57.jpg",
+                    "hash": "medium_pexels_andrea_piacquadio_3756679_b56b8b0c57",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_andrea_piacquadio_3756679_d0cfcb7ec2.jpg",
-                    "hash": "thumbnail_pexels_andrea_piacquadio_3756679_d0cfcb7ec2",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_andrea_piacquadio_3756679_b56b8b0c57.jpg",
+                    "hash": "thumbnail_pexels_andrea_piacquadio_3756679_b56b8b0c57",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_andrea_piacquadio_3756679_d0cfcb7ec2",
+            "hash": "pexels_andrea_piacquadio_3756679_b56b8b0c57",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 811.66,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_andrea_piacquadio_3756679_d0cfcb7ec2.jpg",
+            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_andrea_piacquadio_3756679_b56b8b0c57.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-09-05T09:55:35.238Z",
-            "updatedAt": "2023-09-05T09:55:35.238Z",
+            "createdAt": "2023-11-13T12:39:40.165Z",
+            "updatedAt": "2023-11-13T12:39:40.165Z",
             "folder": null
         }
     ],

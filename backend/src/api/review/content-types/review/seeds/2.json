@@ -5,12 +5,12 @@
     "description": "The Single Page Startup has been a game-changer for our company. It has dramatically reduced our development time and allowed us to focus on building the innovative solutions our customers need. The pre-built features and integrations have made it easy to get started and scale our product. We couldn't be happier with the results.",
     "subtitle": "GreenTech Innovations, Co-Founder & CTO",
     "rating": 5,
-    "createdAt": "2023-09-05T09:49:28.874Z",
-    "updatedAt": "2023-09-05T09:55:19.193Z",
+    "createdAt": "2023-11-13T12:30:57.231Z",
+    "updatedAt": "2023-11-13T12:39:37.175Z",
     "publishedAt": "2023-03-12T04:34:53.754Z",
     "media": [
         {
-            "id": 64,
+            "id": 140,
             "name": "pexels-edmond-dantès-4347368.jpg",
             "alternativeText": null,
             "caption": null,
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_pexels_edmond_dantes_4347368_dbb5922bba.jpg",
-                    "hash": "large_pexels_edmond_dantes_4347368_dbb5922bba",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_edmond_dantes_4347368_1507cbfd8b.jpg",
+                    "hash": "large_pexels_edmond_dantes_4347368_1507cbfd8b",
                     "mime": "image/jpeg",
                     "name": "large_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_pexels_edmond_dantes_4347368_dbb5922bba.jpg",
-                    "hash": "small_pexels_edmond_dantes_4347368_dbb5922bba",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_edmond_dantes_4347368_1507cbfd8b.jpg",
+                    "hash": "small_pexels_edmond_dantes_4347368_1507cbfd8b",
                     "mime": "image/jpeg",
                     "name": "small_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_pexels_edmond_dantes_4347368_dbb5922bba.jpg",
-                    "hash": "medium_pexels_edmond_dantes_4347368_dbb5922bba",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_edmond_dantes_4347368_1507cbfd8b.jpg",
+                    "hash": "medium_pexels_edmond_dantes_4347368_1507cbfd8b",
                     "mime": "image/jpeg",
                     "name": "medium_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_pexels_edmond_dantes_4347368_dbb5922bba.jpg",
-                    "hash": "thumbnail_pexels_edmond_dantes_4347368_dbb5922bba",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_edmond_dantes_4347368_1507cbfd8b.jpg",
+                    "hash": "thumbnail_pexels_edmond_dantes_4347368_1507cbfd8b",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels-edmond-dantès-4347368.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_edmond_dantes_4347368_dbb5922bba",
+            "hash": "pexels_edmond_dantes_4347368_1507cbfd8b",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 6751.8,
-            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/pexels_edmond_dantes_4347368_dbb5922bba.jpg",
+            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_edmond_dantes_4347368_1507cbfd8b.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2023-09-05T09:55:19.160Z",
-            "updatedAt": "2023-09-05T09:55:19.160Z",
+            "createdAt": "2023-11-13T12:39:37.124Z",
+            "updatedAt": "2023-11-13T12:39:37.124Z",
             "folder": null
         }
     ],

@@ -5,29 +5,29 @@
     "script": null,
     "gtm_key": null,
     "is_default": true,
-    "createdAt": "2023-09-05T09:52:32.591Z",
-    "updatedAt": "2023-09-05T09:52:32.591Z",
+    "createdAt": "2023-11-13T12:31:37.414Z",
+    "updatedAt": "2023-11-13T12:39:03.936Z",
     "publishedAt": "2023-04-08T06:09:23.027Z",
     "locale": "en",
     "favicon": {
-        "id": 47,
+        "id": 123,
         "name": "favicon.svg",
         "alternativeText": null,
         "caption": null,
         "width": 485,
         "height": 485,
         "formats": null,
-        "hash": "favicon_978e138f35",
+        "hash": "favicon_4e76e2c87b",
         "ext": ".svg",
         "mime": "image/svg+xml",
         "size": 2.61,
-        "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/favicon_978e138f35.svg",
+        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/favicon_4e76e2c87b.svg",
         "previewUrl": null,
         "provider": "aws-s3",
         "provider_metadata": null,
         "folderPath": "/",
-        "createdAt": "2023-09-05T09:52:32.529Z",
-        "updatedAt": "2023-09-05T09:52:32.529Z",
+        "createdAt": "2023-11-13T12:39:03.868Z",
+        "updatedAt": "2023-11-13T12:39:03.868Z",
         "folder": null
     },
     "pages": [
@@ -35,8 +35,8 @@
             "id": 1,
             "title": "Main page",
             "url": "/",
-            "createdAt": "2023-09-05T09:50:54.289Z",
-            "updatedAt": "2023-09-05T09:54:37.018Z",
+            "createdAt": "2023-11-13T12:31:16.037Z",
+            "updatedAt": "2023-11-13T12:39:31.236Z",
             "publishedAt": "2023-04-08T12:06:05.277Z",
             "locale": "en",
             "layout": {
@@ -45,8 +45,8 @@
                 "uid": "public-page-layout-1",
                 "variant": "wide",
                 "class_name": "[&>.layout-container]:pt-16",
-                "createdAt": "2023-09-05T09:51:21.872Z",
-                "updatedAt": "2023-09-05T09:52:30.748Z",
+                "createdAt": "2023-11-13T12:31:21.274Z",
+                "updatedAt": "2023-11-13T12:39:03.212Z",
                 "publishedAt": "2023-04-20T03:23:38.447Z",
                 "locale": "en",
                 "sidebar": null,
@@ -57,8 +57,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2023-09-05T09:51:26.058Z",
-                    "updatedAt": "2023-09-05T09:51:26.058Z",
+                    "createdAt": "2023-11-13T12:31:22.737Z",
+                    "updatedAt": "2023-11-13T12:38:48.648Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "layouts": [
@@ -68,8 +68,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -79,8 +79,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-09-05T09:51:21.833Z",
-                            "updatedAt": "2023-09-05T09:52:30.702Z",
+                            "createdAt": "2023-11-13T12:31:21.248Z",
+                            "updatedAt": "2023-11-13T12:39:03.126Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         }
@@ -88,7 +88,7 @@
                     "page_blocks": [
                         {
                             "__component": "page-blocks.footer-block",
-                            "id": 1,
+                            "id": 2,
                             "copyrights": "2023 Single Page Startup",
                             "description": "The fastest way to develop your startup",
                             "variant": "four-columns-with-company-mission",
@@ -106,14 +106,14 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2023-09-05T09:55:39.048Z",
-                        "updatedAt": "2023-09-05T09:55:39.048Z",
+                        "createdAt": "2023-11-13T12:32:18.657Z",
+                        "updatedAt": "2023-11-13T12:39:41.292Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.faqs-block",
-                                "id": 1,
+                                "id": 2,
                                 "title": "This Is Slide Over",
                                 "description": "With Page Blocks",
                                 "variant": "two-columns-with-centered-introduction",
@@ -129,8 +129,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2023-09-05T09:51:21.833Z",
-                                "updatedAt": "2023-09-05T09:52:30.702Z",
+                                "createdAt": "2023-11-13T12:31:21.248Z",
+                                "updatedAt": "2023-11-13T12:39:03.126Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -140,8 +140,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2023-09-05T09:51:21.872Z",
-                                "updatedAt": "2023-09-05T09:52:30.748Z",
+                                "createdAt": "2023-11-13T12:31:21.274Z",
+                                "updatedAt": "2023-11-13T12:39:03.212Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -159,14 +159,14 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2023-09-05T09:52:32.686Z",
-                        "updatedAt": "2023-09-05T09:52:32.686Z",
+                        "createdAt": "2023-11-13T12:31:37.477Z",
+                        "updatedAt": "2023-11-13T12:39:04.055Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.hero-section-block",
-                                "id": 4,
+                                "id": 11,
                                 "title": "This Is Modal",
                                 "description": "With Page Blocks",
                                 "variant": "simple-centered",
@@ -181,8 +181,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2023-09-05T09:51:21.833Z",
-                                "updatedAt": "2023-09-05T09:52:30.702Z",
+                                "createdAt": "2023-11-13T12:31:21.248Z",
+                                "updatedAt": "2023-11-13T12:39:03.126Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -192,8 +192,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2023-09-05T09:51:21.872Z",
-                                "updatedAt": "2023-09-05T09:52:30.748Z",
+                                "createdAt": "2023-11-13T12:31:21.274Z",
+                                "updatedAt": "2023-11-13T12:39:03.212Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -211,14 +211,14 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2023-09-05T09:52:34.964Z",
-                    "updatedAt": "2023-09-05T09:52:34.964Z",
+                    "createdAt": "2023-11-13T12:31:38.358Z",
+                    "updatedAt": "2023-11-13T12:39:05.026Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
                         {
                             "__component": "page-blocks.navbar-block",
-                            "id": 1,
+                            "id": 2,
                             "variant": "simple-links-on-left",
                             "description": null,
                             "class_name": null
@@ -231,8 +231,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2023-09-05T09:51:21.833Z",
-                            "updatedAt": "2023-09-05T09:52:30.702Z",
+                            "createdAt": "2023-11-13T12:31:21.248Z",
+                            "updatedAt": "2023-11-13T12:39:03.126Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -242,8 +242,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -257,8 +257,8 @@
                         "id": 1,
                         "title": "Main page",
                         "url": "/",
-                        "createdAt": "2023-09-05T09:50:54.289Z",
-                        "updatedAt": "2023-09-05T09:54:37.018Z",
+                        "createdAt": "2023-11-13T12:31:16.037Z",
+                        "updatedAt": "2023-11-13T12:39:31.236Z",
                         "publishedAt": "2023-04-08T12:06:05.277Z",
                         "locale": "en",
                         "layout": {
@@ -267,15 +267,15 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.hero-section-block",
-                                "id": 5,
+                                "id": 12,
                                 "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
                                 "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                                 "variant": "simple-centered",
@@ -284,7 +284,7 @@
                             },
                             {
                                 "__component": "page-blocks.cta-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "variant": "dark-with-image",
                                 "anchor": null,
                                 "class_name": null,
@@ -294,7 +294,7 @@
                             },
                             {
                                 "__component": "page-blocks.features-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "title": "Don't repeat yourself",
                                 "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
                                 "subtitle": null,
@@ -304,7 +304,7 @@
                             },
                             {
                                 "__component": "page-blocks.reviews-list-block",
-                                "id": 2,
+                                "id": 4,
                                 "variant": "simple-with-avatars",
                                 "show_all": true,
                                 "anchor": null,
@@ -315,7 +315,7 @@
                             },
                             {
                                 "__component": "page-blocks.contact-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "title": "We’re ready to help",
                                 "subtitle": null,
                                 "description": "Fill in all the fields below and our manager will contact you.",
@@ -331,8 +331,8 @@
                             "script": null,
                             "gtm_key": null,
                             "is_default": true,
-                            "createdAt": "2023-09-05T09:52:32.591Z",
-                            "updatedAt": "2023-09-05T09:52:32.591Z",
+                            "createdAt": "2023-11-13T12:31:37.414Z",
+                            "updatedAt": "2023-11-13T12:39:03.936Z",
                             "publishedAt": "2023-04-08T06:09:23.027Z",
                             "locale": "en"
                         },
@@ -344,8 +344,8 @@
                         "id": 4,
                         "title": "Terms and Conditions",
                         "url": "/terms-and-conditions",
-                        "createdAt": "2023-09-05T09:51:21.817Z",
-                        "updatedAt": "2023-09-05T09:54:37.167Z",
+                        "createdAt": "2023-11-13T12:31:21.239Z",
+                        "updatedAt": "2023-11-13T12:39:31.322Z",
                         "publishedAt": "2023-05-04T08:38:22.465Z",
                         "locale": "en",
                         "layout": {
@@ -354,15 +354,15 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.hero-section-block",
-                                "id": 6,
+                                "id": 13,
                                 "title": "Terms and Conditions",
                                 "description": null,
                                 "variant": "simple-centered",
@@ -379,8 +379,8 @@
                         "id": 3,
                         "title": "Not found page",
                         "url": "/404",
-                        "createdAt": "2023-09-05T09:51:21.800Z",
-                        "updatedAt": "2023-09-05T09:54:37.134Z",
+                        "createdAt": "2023-11-13T12:31:21.218Z",
+                        "updatedAt": "2023-11-13T12:39:31.301Z",
                         "publishedAt": "2023-04-20T04:18:21.051Z",
                         "locale": "en",
                         "layout": {
@@ -389,15 +389,15 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.not-found-block",
-                                "id": 2,
+                                "id": 4,
                                 "variant": "simple",
                                 "title": "404",
                                 "description": null,
@@ -419,7 +419,7 @@
             "page_blocks": [
                 {
                     "__component": "page-blocks.hero-section-block",
-                    "id": 5,
+                    "id": 12,
                     "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
                     "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                     "variant": "simple-centered",
@@ -427,7 +427,7 @@
                     "class_name": "pt-16",
                     "media": [
                         {
-                            "id": 49,
+                            "id": 125,
                             "name": "preview.jpg",
                             "alternativeText": null,
                             "caption": null,
@@ -436,8 +436,8 @@
                             "formats": {
                                 "large": {
                                     "ext": ".jpg",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_preview_cb02f3919b.jpg",
-                                    "hash": "large_preview_cb02f3919b",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_preview_2abf434f18.jpg",
+                                    "hash": "large_preview_2abf434f18",
                                     "mime": "image/jpeg",
                                     "name": "large_preview.jpg",
                                     "path": null,
@@ -447,8 +447,8 @@
                                 },
                                 "small": {
                                     "ext": ".jpg",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_preview_cb02f3919b.jpg",
-                                    "hash": "small_preview_cb02f3919b",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_preview_2abf434f18.jpg",
+                                    "hash": "small_preview_2abf434f18",
                                     "mime": "image/jpeg",
                                     "name": "small_preview.jpg",
                                     "path": null,
@@ -458,8 +458,8 @@
                                 },
                                 "medium": {
                                     "ext": ".jpg",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_preview_cb02f3919b.jpg",
-                                    "hash": "medium_preview_cb02f3919b",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_preview_2abf434f18.jpg",
+                                    "hash": "medium_preview_2abf434f18",
                                     "mime": "image/jpeg",
                                     "name": "medium_preview.jpg",
                                     "path": null,
@@ -469,8 +469,8 @@
                                 },
                                 "thumbnail": {
                                     "ext": ".jpg",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_preview_cb02f3919b.jpg",
-                                    "hash": "thumbnail_preview_cb02f3919b",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_preview_2abf434f18.jpg",
+                                    "hash": "thumbnail_preview_2abf434f18",
                                     "mime": "image/jpeg",
                                     "name": "thumbnail_preview.jpg",
                                     "path": null,
@@ -479,23 +479,23 @@
                                     "height": 118
                                 }
                             },
-                            "hash": "preview_cb02f3919b",
+                            "hash": "preview_2abf434f18",
                             "ext": ".jpg",
                             "mime": "image/jpeg",
                             "size": 86.93,
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/preview_cb02f3919b.jpg",
+                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/preview_2abf434f18.jpg",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2023-09-05T09:52:37.979Z",
-                            "updatedAt": "2023-09-05T09:52:37.979Z",
+                            "createdAt": "2023-11-13T12:39:05.955Z",
+                            "updatedAt": "2023-11-13T12:39:05.955Z",
                             "folder": null
                         }
                     ],
                     "buttons": [
                         {
-                            "id": 21,
+                            "id": 46,
                             "url": "https://github.com/singlepagestartup/sps-lite",
                             "description": null,
                             "variant": "primary",
@@ -511,7 +511,7 @@
                 },
                 {
                     "__component": "page-blocks.cta-section-block",
-                    "id": 2,
+                    "id": 4,
                     "variant": "dark-with-image",
                     "anchor": null,
                     "class_name": null,
@@ -520,7 +520,7 @@
                     "subtitle": null,
                     "media": [
                         {
-                            "id": 50,
+                            "id": 126,
                             "name": "28.png",
                             "alternativeText": null,
                             "caption": null,
@@ -529,66 +529,66 @@
                             "formats": {
                                 "large": {
                                     "ext": ".png",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_28_cc3bf7cf96.png",
-                                    "hash": "large_28_cc3bf7cf96",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_28_6495a5c2dd.png",
+                                    "hash": "large_28_6495a5c2dd",
                                     "mime": "image/png",
                                     "name": "large_28.png",
                                     "path": null,
-                                    "size": 671.9,
+                                    "size": 668.2,
                                     "width": 1000,
                                     "height": 697
                                 },
                                 "small": {
                                     "ext": ".png",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_28_cc3bf7cf96.png",
-                                    "hash": "small_28_cc3bf7cf96",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_28_6495a5c2dd.png",
+                                    "hash": "small_28_6495a5c2dd",
                                     "mime": "image/png",
                                     "name": "small_28.png",
                                     "path": null,
-                                    "size": 185.23,
+                                    "size": 184.23,
                                     "width": 500,
                                     "height": 349
                                 },
                                 "medium": {
                                     "ext": ".png",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_28_cc3bf7cf96.png",
-                                    "hash": "medium_28_cc3bf7cf96",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_28_6495a5c2dd.png",
+                                    "hash": "medium_28_6495a5c2dd",
                                     "mime": "image/png",
                                     "name": "medium_28.png",
                                     "path": null,
-                                    "size": 391.89,
+                                    "size": 388.34,
                                     "width": 750,
                                     "height": 523
                                 },
                                 "thumbnail": {
                                     "ext": ".png",
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_28_cc3bf7cf96.png",
-                                    "hash": "thumbnail_28_cc3bf7cf96",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_28_6495a5c2dd.png",
+                                    "hash": "thumbnail_28_6495a5c2dd",
                                     "mime": "image/png",
                                     "name": "thumbnail_28.png",
                                     "path": null,
-                                    "size": 47.01,
+                                    "size": 46.87,
                                     "width": 224,
                                     "height": 156
                                 }
                             },
-                            "hash": "28_cc3bf7cf96",
+                            "hash": "28_6495a5c2dd",
                             "ext": ".png",
                             "mime": "image/png",
-                            "size": 3169.32,
-                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/28_cc3bf7cf96.png",
+                            "size": 3057.77,
+                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/28_6495a5c2dd.png",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2023-09-05T09:52:54.705Z",
-                            "updatedAt": "2023-09-05T09:52:54.705Z",
+                            "createdAt": "2023-11-13T12:39:09.698Z",
+                            "updatedAt": "2023-11-13T12:39:09.698Z",
                             "folder": null
                         }
                     ],
                     "buttons": [
                         {
-                            "id": 22,
+                            "id": 47,
                             "url": "https://github.com/singlepagestartup/sps-lite",
                             "description": null,
                             "variant": "primary",
@@ -604,7 +604,7 @@
                 },
                 {
                     "__component": "page-blocks.features-section-block",
-                    "id": 2,
+                    "id": 4,
                     "title": "Don't repeat yourself",
                     "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
                     "subtitle": null,
@@ -615,13 +615,13 @@
                     "additional_media": null,
                     "features": [
                         {
-                            "id": 21,
+                            "id": 61,
                             "description": "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
                             "title": "Ready-to-Use UI Components",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 51,
+                                    "id": 127,
                                     "name": "augmented reality_ar.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -630,8 +630,8 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_augmented_reality_ar_b5993ae0df.png",
-                                            "hash": "large_augmented_reality_ar_b5993ae0df",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_augmented_reality_ar_ce4847a5f7.png",
+                                            "hash": "large_augmented_reality_ar_ce4847a5f7",
                                             "mime": "image/png",
                                             "name": "large_augmented reality_ar.png",
                                             "path": null,
@@ -641,8 +641,8 @@
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_augmented_reality_ar_b5993ae0df.png",
-                                            "hash": "small_augmented_reality_ar_b5993ae0df",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_augmented_reality_ar_ce4847a5f7.png",
+                                            "hash": "small_augmented_reality_ar_ce4847a5f7",
                                             "mime": "image/png",
                                             "name": "small_augmented reality_ar.png",
                                             "path": null,
@@ -652,8 +652,8 @@
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_augmented_reality_ar_b5993ae0df.png",
-                                            "hash": "medium_augmented_reality_ar_b5993ae0df",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_augmented_reality_ar_ce4847a5f7.png",
+                                            "hash": "medium_augmented_reality_ar_ce4847a5f7",
                                             "mime": "image/png",
                                             "name": "medium_augmented reality_ar.png",
                                             "path": null,
@@ -663,8 +663,8 @@
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_augmented_reality_ar_b5993ae0df.png",
-                                            "hash": "thumbnail_augmented_reality_ar_b5993ae0df",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_augmented_reality_ar_ce4847a5f7.png",
+                                            "hash": "thumbnail_augmented_reality_ar_ce4847a5f7",
                                             "mime": "image/png",
                                             "name": "thumbnail_augmented reality_ar.png",
                                             "path": null,
@@ -673,30 +673,30 @@
                                             "height": 156
                                         }
                                     },
-                                    "hash": "augmented_reality_ar_b5993ae0df",
+                                    "hash": "augmented_reality_ar_ce4847a5f7",
                                     "ext": ".png",
                                     "mime": "image/png",
                                     "size": 287.08,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/augmented_reality_ar_b5993ae0df.png",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/augmented_reality_ar_ce4847a5f7.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:01.913Z",
-                                    "updatedAt": "2023-09-05T09:53:01.913Z",
+                                    "createdAt": "2023-11-13T12:39:11.256Z",
+                                    "updatedAt": "2023-11-13T12:39:11.256Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 23,
+                            "id": 62,
                             "description": "Your startup's international expansion is a breeze with our boilerplate's built-in multilingual support. Just select the languages you want to support, and you're good to go.",
                             "title": "Global-Ready",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 52,
+                                    "id": 128,
                                     "name": "earth.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -705,73 +705,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_earth_484de35bfe.png",
-                                            "hash": "large_earth_484de35bfe",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_earth_aa41fd58cb.png",
+                                            "hash": "large_earth_aa41fd58cb",
                                             "mime": "image/png",
                                             "name": "large_earth.png",
                                             "path": null,
-                                            "size": 966.19,
+                                            "size": 961.73,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_earth_484de35bfe.png",
-                                            "hash": "small_earth_484de35bfe",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_earth_aa41fd58cb.png",
+                                            "hash": "small_earth_aa41fd58cb",
                                             "mime": "image/png",
                                             "name": "small_earth.png",
                                             "path": null,
-                                            "size": 248.27,
+                                            "size": 247.59,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_earth_484de35bfe.png",
-                                            "hash": "medium_earth_484de35bfe",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_earth_aa41fd58cb.png",
+                                            "hash": "medium_earth_aa41fd58cb",
                                             "mime": "image/png",
                                             "name": "medium_earth.png",
                                             "path": null,
-                                            "size": 548.27,
+                                            "size": 546.16,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_earth_484de35bfe.png",
-                                            "hash": "thumbnail_earth_484de35bfe",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_earth_aa41fd58cb.png",
+                                            "hash": "thumbnail_earth_aa41fd58cb",
                                             "mime": "image/png",
                                             "name": "thumbnail_earth.png",
                                             "path": null,
-                                            "size": 31.7,
+                                            "size": 31.72,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "earth_484de35bfe",
+                                    "hash": "earth_aa41fd58cb",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 637.95,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/earth_484de35bfe.png",
+                                    "size": 623.89,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/earth_aa41fd58cb.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:09.343Z",
-                                    "updatedAt": "2023-09-05T09:53:09.343Z",
+                                    "createdAt": "2023-11-13T12:39:13.374Z",
+                                    "updatedAt": "2023-11-13T12:39:13.374Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 26,
+                            "id": 63,
                             "description": "Save 20 to 100 hours of development time with our ready-to-use, best-practice authentication and authorization system. Focus on your core features and let us handle the rest.",
                             "title": "Streamlined Authentication & Authorization",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 53,
+                                    "id": 129,
                                     "name": "security lock.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -780,8 +780,8 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_security_lock_ebe1696680.png",
-                                            "hash": "large_security_lock_ebe1696680",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_security_lock_cea27624ea.png",
+                                            "hash": "large_security_lock_cea27624ea",
                                             "mime": "image/png",
                                             "name": "large_security lock.png",
                                             "path": null,
@@ -791,8 +791,8 @@
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_security_lock_ebe1696680.png",
-                                            "hash": "small_security_lock_ebe1696680",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_security_lock_cea27624ea.png",
+                                            "hash": "small_security_lock_cea27624ea",
                                             "mime": "image/png",
                                             "name": "small_security lock.png",
                                             "path": null,
@@ -802,8 +802,8 @@
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_security_lock_ebe1696680.png",
-                                            "hash": "medium_security_lock_ebe1696680",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_security_lock_cea27624ea.png",
+                                            "hash": "medium_security_lock_cea27624ea",
                                             "mime": "image/png",
                                             "name": "medium_security lock.png",
                                             "path": null,
@@ -813,8 +813,8 @@
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_security_lock_ebe1696680.png",
-                                            "hash": "thumbnail_security_lock_ebe1696680",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_security_lock_cea27624ea.png",
+                                            "hash": "thumbnail_security_lock_cea27624ea",
                                             "mime": "image/png",
                                             "name": "thumbnail_security lock.png",
                                             "path": null,
@@ -823,30 +823,30 @@
                                             "height": 156
                                         }
                                     },
-                                    "hash": "security_lock_ebe1696680",
+                                    "hash": "security_lock_cea27624ea",
                                     "ext": ".png",
                                     "mime": "image/png",
                                     "size": 332.18,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/security_lock_ebe1696680.png",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/security_lock_cea27624ea.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:16.512Z",
-                                    "updatedAt": "2023-09-05T09:53:16.512Z",
+                                    "createdAt": "2023-11-13T12:39:14.972Z",
+                                    "updatedAt": "2023-11-13T12:39:14.972Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 25,
+                            "id": 64,
                             "description": "Enhance user profiles with our pre-built avatar functionality. Simply add the PageBlock to the profile page and let your users personalize their accounts with custom avatars.",
                             "title": "Easy Avatar Integration",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 54,
+                                    "id": 130,
                                     "name": "users group.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -855,8 +855,8 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_users_group_3e665d0af1.png",
-                                            "hash": "large_users_group_3e665d0af1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_users_group_7e9ef44362.png",
+                                            "hash": "large_users_group_7e9ef44362",
                                             "mime": "image/png",
                                             "name": "large_users group.png",
                                             "path": null,
@@ -866,8 +866,8 @@
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_users_group_3e665d0af1.png",
-                                            "hash": "small_users_group_3e665d0af1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_users_group_7e9ef44362.png",
+                                            "hash": "small_users_group_7e9ef44362",
                                             "mime": "image/png",
                                             "name": "small_users group.png",
                                             "path": null,
@@ -877,8 +877,8 @@
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_users_group_3e665d0af1.png",
-                                            "hash": "medium_users_group_3e665d0af1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_users_group_7e9ef44362.png",
+                                            "hash": "medium_users_group_7e9ef44362",
                                             "mime": "image/png",
                                             "name": "medium_users group.png",
                                             "path": null,
@@ -888,8 +888,8 @@
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_users_group_3e665d0af1.png",
-                                            "hash": "thumbnail_users_group_3e665d0af1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_users_group_7e9ef44362.png",
+                                            "hash": "thumbnail_users_group_7e9ef44362",
                                             "mime": "image/png",
                                             "name": "thumbnail_users group.png",
                                             "path": null,
@@ -898,30 +898,30 @@
                                             "height": 156
                                         }
                                     },
-                                    "hash": "users_group_3e665d0af1",
+                                    "hash": "users_group_7e9ef44362",
                                     "ext": ".png",
                                     "mime": "image/png",
                                     "size": 386.31,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/users_group_3e665d0af1.png",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/users_group_7e9ef44362.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:23.729Z",
-                                    "updatedAt": "2023-09-05T09:53:23.729Z",
+                                    "createdAt": "2023-11-13T12:39:16.663Z",
+                                    "updatedAt": "2023-11-13T12:39:16.663Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 22,
+                            "id": 65,
                             "description": "Quickly add essential features to your MVP with built-in support for popular services such as authentication, payment gateways, and analytics tools. Less hassle, more productivity.",
                             "title": "Seamless Third-Party Service Integration",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 55,
+                                    "id": 131,
                                     "name": "api socket.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -930,73 +930,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_api_socket_78a0fa3931.png",
-                                            "hash": "large_api_socket_78a0fa3931",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_api_socket_ff8a351341.png",
+                                            "hash": "large_api_socket_ff8a351341",
                                             "mime": "image/png",
                                             "name": "large_api socket.png",
                                             "path": null,
-                                            "size": 700.4,
+                                            "size": 698.45,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_api_socket_78a0fa3931.png",
-                                            "hash": "small_api_socket_78a0fa3931",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_api_socket_ff8a351341.png",
+                                            "hash": "small_api_socket_ff8a351341",
                                             "mime": "image/png",
                                             "name": "small_api socket.png",
                                             "path": null,
-                                            "size": 182.29,
+                                            "size": 182.12,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_api_socket_78a0fa3931.png",
-                                            "hash": "medium_api_socket_78a0fa3931",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_api_socket_ff8a351341.png",
+                                            "hash": "medium_api_socket_ff8a351341",
                                             "mime": "image/png",
                                             "name": "medium_api socket.png",
                                             "path": null,
-                                            "size": 402.27,
+                                            "size": 401.6,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_api_socket_78a0fa3931.png",
-                                            "hash": "thumbnail_api_socket_78a0fa3931",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_api_socket_ff8a351341.png",
+                                            "hash": "thumbnail_api_socket_ff8a351341",
                                             "mime": "image/png",
                                             "name": "thumbnail_api socket.png",
                                             "path": null,
-                                            "size": 21.99,
+                                            "size": 22.04,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "api_socket_78a0fa3931",
+                                    "hash": "api_socket_ff8a351341",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 454.53,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/api_socket_78a0fa3931.png",
+                                    "size": 448.56,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/api_socket_ff8a351341.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:30.890Z",
-                                    "updatedAt": "2023-09-05T09:53:30.890Z",
+                                    "createdAt": "2023-11-13T12:39:18.372Z",
+                                    "updatedAt": "2023-11-13T12:39:18.372Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 24,
+                            "id": 66,
                             "description": "Generate documents based on user data or completed forms with ease using our built-in document generation functionality. Just incorporate it into your business logic and you're set.",
                             "title": "Effortless Document Generation",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 56,
+                                    "id": 132,
                                     "name": "file pdf.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1005,8 +1005,8 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_file_pdf_ff59e85ca1.png",
-                                            "hash": "large_file_pdf_ff59e85ca1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_file_pdf_8cdf4970dc.png",
+                                            "hash": "large_file_pdf_8cdf4970dc",
                                             "mime": "image/png",
                                             "name": "large_file pdf.png",
                                             "path": null,
@@ -1016,8 +1016,8 @@
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_file_pdf_ff59e85ca1.png",
-                                            "hash": "small_file_pdf_ff59e85ca1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_file_pdf_8cdf4970dc.png",
+                                            "hash": "small_file_pdf_8cdf4970dc",
                                             "mime": "image/png",
                                             "name": "small_file pdf.png",
                                             "path": null,
@@ -1027,8 +1027,8 @@
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_file_pdf_ff59e85ca1.png",
-                                            "hash": "medium_file_pdf_ff59e85ca1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_file_pdf_8cdf4970dc.png",
+                                            "hash": "medium_file_pdf_8cdf4970dc",
                                             "mime": "image/png",
                                             "name": "medium_file pdf.png",
                                             "path": null,
@@ -1038,8 +1038,8 @@
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_file_pdf_ff59e85ca1.png",
-                                            "hash": "thumbnail_file_pdf_ff59e85ca1",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_file_pdf_8cdf4970dc.png",
+                                            "hash": "thumbnail_file_pdf_8cdf4970dc",
                                             "mime": "image/png",
                                             "name": "thumbnail_file pdf.png",
                                             "path": null,
@@ -1048,30 +1048,30 @@
                                             "height": 156
                                         }
                                     },
-                                    "hash": "file_pdf_ff59e85ca1",
+                                    "hash": "file_pdf_8cdf4970dc",
                                     "ext": ".png",
                                     "mime": "image/png",
                                     "size": 224.3,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/file_pdf_ff59e85ca1.png",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/file_pdf_8cdf4970dc.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:37.337Z",
-                                    "updatedAt": "2023-09-05T09:53:37.337Z",
+                                    "createdAt": "2023-11-13T12:39:19.896Z",
+                                    "updatedAt": "2023-11-13T12:39:19.896Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 27,
+                            "id": 67,
                             "description": "Utilize our ready-to-use product catalog, product pages, shopping cart, delivery options, and order history to jumpstart your e-commerce project.",
                             "title": "Comprehensive E-Commerce Features",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 57,
+                                    "id": 133,
                                     "name": "empty cart.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1080,73 +1080,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_empty_cart_a725f1f531.png",
-                                            "hash": "large_empty_cart_a725f1f531",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_empty_cart_25d85c27ad.png",
+                                            "hash": "large_empty_cart_25d85c27ad",
                                             "mime": "image/png",
                                             "name": "large_empty cart.png",
                                             "path": null,
-                                            "size": 800.15,
+                                            "size": 797.45,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_empty_cart_a725f1f531.png",
-                                            "hash": "small_empty_cart_a725f1f531",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_empty_cart_25d85c27ad.png",
+                                            "hash": "small_empty_cart_25d85c27ad",
                                             "mime": "image/png",
                                             "name": "small_empty cart.png",
                                             "path": null,
-                                            "size": 204.06,
+                                            "size": 203.59,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_empty_cart_a725f1f531.png",
-                                            "hash": "medium_empty_cart_a725f1f531",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_empty_cart_25d85c27ad.png",
+                                            "hash": "medium_empty_cart_25d85c27ad",
                                             "mime": "image/png",
                                             "name": "medium_empty cart.png",
                                             "path": null,
-                                            "size": 452.92,
+                                            "size": 452.07,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_empty_cart_a725f1f531.png",
-                                            "hash": "thumbnail_empty_cart_a725f1f531",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_empty_cart_25d85c27ad.png",
+                                            "hash": "thumbnail_empty_cart_25d85c27ad",
                                             "mime": "image/png",
                                             "name": "thumbnail_empty cart.png",
                                             "path": null,
-                                            "size": 25.74,
+                                            "size": 25.66,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "empty_cart_a725f1f531",
+                                    "hash": "empty_cart_25d85c27ad",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 530.45,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/empty_cart_a725f1f531.png",
+                                    "size": 503.04,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/empty_cart_25d85c27ad.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:45.793Z",
-                                    "updatedAt": "2023-09-05T09:53:45.793Z",
+                                    "createdAt": "2023-11-13T12:39:21.690Z",
+                                    "updatedAt": "2023-11-13T12:39:21.690Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 28,
+                            "id": 68,
                             "description": "Establish your personal brand by enabling our integrated blogging functionality, perfect for sharing news and insights with your audience.",
                             "title": "Built-In Blogging Capabilities",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 58,
+                                    "id": 134,
                                     "name": "sign doc.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1155,73 +1155,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_sign_doc_badadbb3be.png",
-                                            "hash": "large_sign_doc_badadbb3be",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_sign_doc_c44ff4f991.png",
+                                            "hash": "large_sign_doc_c44ff4f991",
                                             "mime": "image/png",
                                             "name": "large_sign doc.png",
                                             "path": null,
-                                            "size": 851.37,
+                                            "size": 843.55,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_sign_doc_badadbb3be.png",
-                                            "hash": "small_sign_doc_badadbb3be",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_sign_doc_c44ff4f991.png",
+                                            "hash": "small_sign_doc_c44ff4f991",
                                             "mime": "image/png",
                                             "name": "small_sign doc.png",
                                             "path": null,
-                                            "size": 208.64,
+                                            "size": 207.48,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_sign_doc_badadbb3be.png",
-                                            "hash": "medium_sign_doc_badadbb3be",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_sign_doc_c44ff4f991.png",
+                                            "hash": "medium_sign_doc_c44ff4f991",
                                             "mime": "image/png",
                                             "name": "medium_sign doc.png",
                                             "path": null,
-                                            "size": 477.19,
+                                            "size": 473.06,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_sign_doc_badadbb3be.png",
-                                            "hash": "thumbnail_sign_doc_badadbb3be",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_sign_doc_c44ff4f991.png",
+                                            "hash": "thumbnail_sign_doc_c44ff4f991",
                                             "mime": "image/png",
                                             "name": "thumbnail_sign doc.png",
                                             "path": null,
-                                            "size": 24.04,
+                                            "size": 24.02,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "sign_doc_badadbb3be",
+                                    "hash": "sign_doc_c44ff4f991",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 596.27,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/sign_doc_badadbb3be.png",
+                                    "size": 593.59,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/sign_doc_c44ff4f991.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:53:56.276Z",
-                                    "updatedAt": "2023-09-05T09:53:56.276Z",
+                                    "createdAt": "2023-11-13T12:39:23.379Z",
+                                    "updatedAt": "2023-11-13T12:39:23.379Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 29,
+                            "id": 69,
                             "description": "Tailor your project to your needs using the Strapi admin panel, extend its capabilities with plugins, or create your own custom features.",
                             "title": "Flexible Customization and Extensibility",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 59,
+                                    "id": 135,
                                     "name": "catalog.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1230,73 +1230,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_catalog_56d900c72a.png",
-                                            "hash": "large_catalog_56d900c72a",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_catalog_bbb5fecc11.png",
+                                            "hash": "large_catalog_bbb5fecc11",
                                             "mime": "image/png",
                                             "name": "large_catalog.png",
                                             "path": null,
-                                            "size": 1489.01,
+                                            "size": 1478.85,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_catalog_56d900c72a.png",
-                                            "hash": "small_catalog_56d900c72a",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_catalog_bbb5fecc11.png",
+                                            "hash": "small_catalog_bbb5fecc11",
                                             "mime": "image/png",
                                             "name": "small_catalog.png",
                                             "path": null,
-                                            "size": 354.53,
+                                            "size": 353.62,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_catalog_56d900c72a.png",
-                                            "hash": "medium_catalog_56d900c72a",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_catalog_bbb5fecc11.png",
+                                            "hash": "medium_catalog_bbb5fecc11",
                                             "mime": "image/png",
                                             "name": "medium_catalog.png",
                                             "path": null,
-                                            "size": 825.38,
+                                            "size": 821.38,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_catalog_56d900c72a.png",
-                                            "hash": "thumbnail_catalog_56d900c72a",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_catalog_bbb5fecc11.png",
+                                            "hash": "thumbnail_catalog_bbb5fecc11",
                                             "mime": "image/png",
                                             "name": "thumbnail_catalog.png",
                                             "path": null,
-                                            "size": 36.37,
+                                            "size": 36.45,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "catalog_56d900c72a",
+                                    "hash": "catalog_bbb5fecc11",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 1046.94,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/catalog_56d900c72a.png",
+                                    "size": 1004.88,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/catalog_bbb5fecc11.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:54:09.641Z",
-                                    "updatedAt": "2023-09-05T09:54:09.641Z",
+                                    "createdAt": "2023-11-13T12:39:25.608Z",
+                                    "updatedAt": "2023-11-13T12:39:25.608Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 30,
+                            "id": 70,
                             "description": "Easily migrate or seed data by completing your project locally, running a data dump, and migrating it to your server, or by describing your data as JSON and adding it to the data seeding process.",
                             "title": "Hassle-Free Data Migration and Seeding",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 60,
+                                    "id": 136,
                                     "name": "eight ways.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1305,73 +1305,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_eight_ways_45454577a7.png",
-                                            "hash": "large_eight_ways_45454577a7",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_eight_ways_7b7ebc3059.png",
+                                            "hash": "large_eight_ways_7b7ebc3059",
                                             "mime": "image/png",
                                             "name": "large_eight ways.png",
                                             "path": null,
-                                            "size": 838.27,
+                                            "size": 827.14,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_eight_ways_45454577a7.png",
-                                            "hash": "small_eight_ways_45454577a7",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_eight_ways_7b7ebc3059.png",
+                                            "hash": "small_eight_ways_7b7ebc3059",
                                             "mime": "image/png",
                                             "name": "small_eight ways.png",
                                             "path": null,
-                                            "size": 215.42,
+                                            "size": 214.02,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_eight_ways_45454577a7.png",
-                                            "hash": "medium_eight_ways_45454577a7",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_eight_ways_7b7ebc3059.png",
+                                            "hash": "medium_eight_ways_7b7ebc3059",
                                             "mime": "image/png",
                                             "name": "medium_eight ways.png",
                                             "path": null,
-                                            "size": 477.86,
+                                            "size": 473.32,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_eight_ways_45454577a7.png",
-                                            "hash": "thumbnail_eight_ways_45454577a7",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_eight_ways_7b7ebc3059.png",
+                                            "hash": "thumbnail_eight_ways_7b7ebc3059",
                                             "mime": "image/png",
                                             "name": "thumbnail_eight ways.png",
                                             "path": null,
-                                            "size": 26.74,
+                                            "size": 26.78,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "eight_ways_45454577a7",
+                                    "hash": "eight_ways_7b7ebc3059",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 560.39,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/eight_ways_45454577a7.png",
+                                    "size": 532.76,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/eight_ways_7b7ebc3059.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:54:18.310Z",
-                                    "updatedAt": "2023-09-05T09:54:18.310Z",
+                                    "createdAt": "2023-11-13T12:39:27.384Z",
+                                    "updatedAt": "2023-11-13T12:39:27.384Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 31,
+                            "id": 71,
                             "description": "With pre-configured deployment tools and processes, our boilerplate enables you to quickly deploy your MVP to your preferred hosting platform. This helps you reduce the time-to-market and start gathering valuable customer feedback sooner.",
                             "title": "Rapid Deployment (CI/CD)",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 61,
+                                    "id": 137,
                                     "name": "cloud storage.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1380,73 +1380,73 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_cloud_storage_c3c3d3119c.png",
-                                            "hash": "large_cloud_storage_c3c3d3119c",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_cloud_storage_6d0d6d1b70.png",
+                                            "hash": "large_cloud_storage_6d0d6d1b70",
                                             "mime": "image/png",
                                             "name": "large_cloud storage.png",
                                             "path": null,
-                                            "size": 955.21,
+                                            "size": 953.19,
                                             "width": 1000,
                                             "height": 1000
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_cloud_storage_c3c3d3119c.png",
-                                            "hash": "small_cloud_storage_c3c3d3119c",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_cloud_storage_6d0d6d1b70.png",
+                                            "hash": "small_cloud_storage_6d0d6d1b70",
                                             "mime": "image/png",
                                             "name": "small_cloud storage.png",
                                             "path": null,
-                                            "size": 232.66,
+                                            "size": 232.63,
                                             "width": 500,
                                             "height": 500
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_cloud_storage_c3c3d3119c.png",
-                                            "hash": "medium_cloud_storage_c3c3d3119c",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_cloud_storage_6d0d6d1b70.png",
+                                            "hash": "medium_cloud_storage_6d0d6d1b70",
                                             "mime": "image/png",
                                             "name": "medium_cloud storage.png",
                                             "path": null,
-                                            "size": 532.99,
+                                            "size": 532.91,
                                             "width": 750,
                                             "height": 750
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_cloud_storage_c3c3d3119c.png",
-                                            "hash": "thumbnail_cloud_storage_c3c3d3119c",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_cloud_storage_6d0d6d1b70.png",
+                                            "hash": "thumbnail_cloud_storage_6d0d6d1b70",
                                             "mime": "image/png",
                                             "name": "thumbnail_cloud storage.png",
                                             "path": null,
-                                            "size": 26.54,
+                                            "size": 26.52,
                                             "width": 156,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "cloud_storage_c3c3d3119c",
+                                    "hash": "cloud_storage_6d0d6d1b70",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 679.45,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/cloud_storage_c3c3d3119c.png",
+                                    "size": 650.73,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/cloud_storage_6d0d6d1b70.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:54:26.889Z",
-                                    "updatedAt": "2023-09-05T09:54:26.889Z",
+                                    "createdAt": "2023-11-13T12:39:29.182Z",
+                                    "updatedAt": "2023-11-13T12:39:29.182Z",
                                     "folder": null
                                 }
                             ],
                             "additional_media": null
                         },
                         {
-                            "id": 32,
+                            "id": 72,
                             "description": "Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.",
                             "title": "Modular and Scalable",
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 62,
+                                    "id": 138,
                                     "name": "three block.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -1455,8 +1455,8 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/large_three_block_20b0b5581d.png",
-                                            "hash": "large_three_block_20b0b5581d",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_three_block_bc42d874ff.png",
+                                            "hash": "large_three_block_bc42d874ff",
                                             "mime": "image/png",
                                             "name": "large_three block.png",
                                             "path": null,
@@ -1466,8 +1466,8 @@
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/small_three_block_20b0b5581d.png",
-                                            "hash": "small_three_block_20b0b5581d",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_three_block_bc42d874ff.png",
+                                            "hash": "small_three_block_bc42d874ff",
                                             "mime": "image/png",
                                             "name": "small_three block.png",
                                             "path": null,
@@ -1477,8 +1477,8 @@
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/medium_three_block_20b0b5581d.png",
-                                            "hash": "medium_three_block_20b0b5581d",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_three_block_bc42d874ff.png",
+                                            "hash": "medium_three_block_bc42d874ff",
                                             "mime": "image/png",
                                             "name": "medium_three block.png",
                                             "path": null,
@@ -1488,8 +1488,8 @@
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/thumbnail_three_block_20b0b5581d.png",
-                                            "hash": "thumbnail_three_block_20b0b5581d",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_three_block_bc42d874ff.png",
+                                            "hash": "thumbnail_three_block_bc42d874ff",
                                             "mime": "image/png",
                                             "name": "thumbnail_three block.png",
                                             "path": null,
@@ -1498,17 +1498,17 @@
                                             "height": 156
                                         }
                                     },
-                                    "hash": "three_block_20b0b5581d",
+                                    "hash": "three_block_bc42d874ff",
                                     "ext": ".png",
                                     "mime": "image/png",
                                     "size": 414.59,
-                                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/three_block_20b0b5581d.png",
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/three_block_bc42d874ff.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-09-05T09:54:36.648Z",
-                                    "updatedAt": "2023-09-05T09:54:36.648Z",
+                                    "createdAt": "2023-11-13T12:39:30.959Z",
+                                    "updatedAt": "2023-11-13T12:39:30.959Z",
                                     "folder": null
                                 }
                             ],
@@ -1518,7 +1518,7 @@
                 },
                 {
                     "__component": "page-blocks.reviews-list-block",
-                    "id": 2,
+                    "id": 4,
                     "variant": "simple-with-avatars",
                     "show_all": true,
                     "anchor": null,
@@ -1530,7 +1530,7 @@
                 },
                 {
                     "__component": "page-blocks.contact-section-block",
-                    "id": 2,
+                    "id": 4,
                     "title": "We’re ready to help",
                     "subtitle": null,
                     "description": "Fill in all the fields below and our manager will contact you.",
@@ -1546,13 +1546,13 @@
                         "variant": "simple",
                         "uid": "question",
                         "title": "Есть вопросы по продукту?",
-                        "createdAt": "2023-09-05T09:50:54.168Z",
-                        "updatedAt": "2023-09-05T09:52:30.651Z",
+                        "createdAt": "2023-11-13T12:31:15.982Z",
+                        "updatedAt": "2023-11-13T12:39:03.082Z",
                         "publishedAt": "2023-02-14T15:44:48.245Z",
                         "locale": "en",
                         "inputs": [
                             {
-                                "id": 10,
+                                "id": 34,
                                 "placeholder": "Type your name",
                                 "variant": "text",
                                 "is_required": true,
@@ -1567,7 +1567,7 @@
                                 "step": null
                             },
                             {
-                                "id": 12,
+                                "id": 33,
                                 "placeholder": "Type your email",
                                 "variant": "text",
                                 "is_required": true,
@@ -1582,7 +1582,7 @@
                                 "step": null
                             },
                             {
-                                "id": 17,
+                                "id": 35,
                                 "placeholder": "Choose target tier",
                                 "variant": "listbox",
                                 "is_required": false,
@@ -1597,7 +1597,7 @@
                                 "step": null
                             },
                             {
-                                "id": 18,
+                                "id": 36,
                                 "placeholder": "Select hosting type",
                                 "variant": "radio-group",
                                 "is_required": false,
@@ -1612,7 +1612,7 @@
                                 "step": null
                             },
                             {
-                                "id": 11,
+                                "id": 29,
                                 "placeholder": "Monthly visitors",
                                 "variant": "range",
                                 "is_required": false,
@@ -1627,7 +1627,7 @@
                                 "step": 100
                             },
                             {
-                                "id": 13,
+                                "id": 31,
                                 "placeholder": "Type your question",
                                 "variant": "text",
                                 "is_required": false,
@@ -1642,7 +1642,7 @@
                                 "step": null
                             },
                             {
-                                "id": 14,
+                                "id": 30,
                                 "placeholder": "Select release date",
                                 "variant": "date",
                                 "is_required": false,
@@ -1657,7 +1657,7 @@
                                 "step": null
                             },
                             {
-                                "id": 15,
+                                "id": 32,
                                 "placeholder": "Upload design file",
                                 "variant": "file",
                                 "is_required": false,
@@ -1672,7 +1672,7 @@
                                 "step": null
                             },
                             {
-                                "id": 16,
+                                "id": 28,
                                 "placeholder": null,
                                 "variant": "switch",
                                 "is_required": true,
@@ -1688,7 +1688,7 @@
                             }
                         ],
                         "button": {
-                            "id": 13,
+                            "id": 38,
                             "url": null,
                             "description": null,
                             "variant": "primary",
@@ -1699,7 +1699,7 @@
                         "form_requests": [],
                         "side_effects": [
                             {
-                                "id": 2,
+                                "id": 4,
                                 "type": "send-to-recievers",
                                 "provider": "email"
                             }
@@ -1718,29 +1718,29 @@
                 "script": null,
                 "gtm_key": null,
                 "is_default": true,
-                "createdAt": "2023-09-05T09:52:32.591Z",
-                "updatedAt": "2023-09-05T09:52:32.591Z",
+                "createdAt": "2023-11-13T12:31:37.414Z",
+                "updatedAt": "2023-11-13T12:39:03.936Z",
                 "publishedAt": "2023-04-08T06:09:23.027Z",
                 "locale": "en",
                 "favicon": {
-                    "id": 47,
+                    "id": 123,
                     "name": "favicon.svg",
                     "alternativeText": null,
                     "caption": null,
                     "width": 485,
                     "height": 485,
                     "formats": null,
-                    "hash": "favicon_978e138f35",
+                    "hash": "favicon_4e76e2c87b",
                     "ext": ".svg",
                     "mime": "image/svg+xml",
                     "size": 2.61,
-                    "url": "https://721511.selcdn.ru/sps-lite-rogwild-2/favicon_978e138f35.svg",
+                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/favicon_4e76e2c87b.svg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2023-09-05T09:52:32.529Z",
-                    "updatedAt": "2023-09-05T09:52:32.529Z",
+                    "createdAt": "2023-11-13T12:39:03.868Z",
+                    "updatedAt": "2023-11-13T12:39:03.868Z",
                     "folder": null
                 },
                 "pages": [
@@ -1748,8 +1748,8 @@
                         "id": 1,
                         "title": "Main page",
                         "url": "/",
-                        "createdAt": "2023-09-05T09:50:54.289Z",
-                        "updatedAt": "2023-09-05T09:54:37.018Z",
+                        "createdAt": "2023-11-13T12:31:16.037Z",
+                        "updatedAt": "2023-11-13T12:39:31.236Z",
                         "publishedAt": "2023-04-08T12:06:05.277Z",
                         "locale": "en",
                         "layout": {
@@ -1758,15 +1758,15 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2023-09-05T09:51:21.872Z",
-                            "updatedAt": "2023-09-05T09:52:30.748Z",
+                            "createdAt": "2023-11-13T12:31:21.274Z",
+                            "updatedAt": "2023-11-13T12:39:03.212Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "page_blocks": [
                             {
                                 "__component": "page-blocks.hero-section-block",
-                                "id": 5,
+                                "id": 12,
                                 "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
                                 "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
                                 "variant": "simple-centered",
@@ -1775,7 +1775,7 @@
                             },
                             {
                                 "__component": "page-blocks.cta-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "variant": "dark-with-image",
                                 "anchor": null,
                                 "class_name": null,
@@ -1785,7 +1785,7 @@
                             },
                             {
                                 "__component": "page-blocks.features-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "title": "Don't repeat yourself",
                                 "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
                                 "subtitle": null,
@@ -1795,7 +1795,7 @@
                             },
                             {
                                 "__component": "page-blocks.reviews-list-block",
-                                "id": 2,
+                                "id": 4,
                                 "variant": "simple-with-avatars",
                                 "show_all": true,
                                 "anchor": null,
@@ -1806,7 +1806,7 @@
                             },
                             {
                                 "__component": "page-blocks.contact-section-block",
-                                "id": 2,
+                                "id": 4,
                                 "title": "We’re ready to help",
                                 "subtitle": null,
                                 "description": "Fill in all the fields below and our manager will contact you.",
@@ -1822,8 +1822,8 @@
                             "script": null,
                             "gtm_key": null,
                             "is_default": true,
-                            "createdAt": "2023-09-05T09:52:32.591Z",
-                            "updatedAt": "2023-09-05T09:52:32.591Z",
+                            "createdAt": "2023-11-13T12:31:37.414Z",
+                            "updatedAt": "2023-11-13T12:39:03.936Z",
                             "publishedAt": "2023-04-08T06:09:23.027Z",
                             "locale": "en"
                         },
