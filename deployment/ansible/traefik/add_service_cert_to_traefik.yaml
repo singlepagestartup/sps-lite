@@ -14,18 +14,17 @@
       shell:
         cmd: "python3 /home/code/yaml_editor.py {{ service_url }}"
 
-    - name: Trigger updates in Traefik
+    - name: Wait until service is running
       retries: 5
-      delay: 5
-      # until: >
-      #   update_service.stdout_lines.find("Service converged") != -1
+      delay: 15
+      shell:
+        cmd: "docker service ls | grep traefik_traefik | grep 1/1"
+      register: service_running
+
+    - name: Trigger updates in Traefik
       shell:
         cmd: "docker service update traefik_traefik --force"
       register: update_service
-
-    # - name: debug
-    #   debug:
-    #     var: update_service
 
     - name: Delete artifact files
       file:

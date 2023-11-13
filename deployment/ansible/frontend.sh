@@ -27,6 +27,12 @@ else
     SERVICE_URL=$SERVICE_SUBDOMAIN.$DOMAIN
 fi
 
+if [ -z $DOCKER_HUB_SERVICE_REPOSITORY ]
+then
+    echo "No docker hub repository name for service $SERVICE_NAME"
+    exit 0
+fi
+
 if [ "$1" != "down" ]
 then
     ./sentry.sh up $SERVICE_NAME javascript-react NEXT_PUBLIC_SENTRY_DSN && \
