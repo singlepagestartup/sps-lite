@@ -7,7 +7,7 @@
     - github_repository: "{{ GITHUB_REPOSITORY }}"
     - project_name: "{{ PROJECT_NAME }}"
     - aws_s3_region: "{{ AWS_S3_REGION }}"
-    - aws_s3_bucket_name: "{{ AWS_S3_BUCKET_NAME }}"
+    - aws_s3_bucket: "{{ AWS_S3_BUCKET_NAME }}"
   tasks:
     - name: Create github-node-api directory
       file:
@@ -65,7 +65,7 @@
           }
         - {
             secret_name: AWS_S3_BUCKET,
-            secret_content: "{{ aws_s3_bucket_name }}dev",
+            secret_content: "{{ aws_s3_bucket }}dev",
             secret_scope: codespaces,
           }
         - {
@@ -75,12 +75,12 @@
           }
         - {
             secret_name: AWS_S3_ENDPOINT,
-            secret_content: "https://s3.amazonaws.com/{{ aws_s3_bucket_name }}dev",
+            secret_content: "https://s3.amazonaws.com/{{ aws_s3_bucket }}dev",
             secret_scope: codespaces,
           }
         - {
             secret_name: AWS_S3_BUCKET,
-            secret_content: "{{ aws_s3_bucket_name }}",
+            secret_content: "{{ aws_s3_bucket }}",
             secret_scope: actions,
           }
         - {
@@ -90,7 +90,7 @@
           }
         - {
             secret_name: AWS_S3_ENDPOINT,
-            secret_content: "https://s3.amazonaws.com/{{ aws_s3_bucket_name }}",
+            secret_content: "https://s3.amazonaws.com/{{ aws_s3_bucket }}",
             secret_scope: actions,
           }
         - {
