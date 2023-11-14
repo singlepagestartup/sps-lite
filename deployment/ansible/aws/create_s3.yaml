@@ -3,10 +3,11 @@
   hosts: all
   become: yes
   vars:
-    aws_access_key: "{{ AWS_ACCESS_KEY }}"
-    aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
-    aws_s3_region: "{{ AWS_S3_REGION }}"
-    project_name: "{{ PROJECT_NAME }}"
+    - aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    - aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+    - aws_s3_region: "{{ AWS_S3_REGION }}"
+    - project_name: "{{ PROJECT_NAME }}"
+    - aws_s3_bucket_name: "{{ AWS_S3_BUCKET_NAME }}"
   tasks:
     - name: Check is S3 file exists
       stat:
@@ -64,8 +65,8 @@
               block_public_policy: false
               restrict_public_buckets: false
           loop:
-            - "{{ project_name }}"
-            - "{{ project_name }}dev"
+            - "{{ aws_s3_bucket_name }}"
+            - "{{ aws_s3_bucket_name }}dev"
 
         - name: Create S3 name file
           copy:
@@ -73,8 +74,8 @@
             dest: "/home/code/{{ item.name }}.env"
             mode: 0600
           loop:
-            - { name: "s3_bucket", content: "{{ project_name }}" }
-            - { name: "s3_bucket_dev", content: "{{ project_name }}dev" }
+            - { name: "s3_bucket", content: "{{ aws_s3_bucket_name }}" }
+            - { name: "s3_bucket_dev", content: "{{ aws_s3_bucket_name }}dev" }
 
         - name: Set CORS permissions
           community.aws.s3_cors:
@@ -92,6 +93,6 @@
                   - "*"
                 max_age_seconds: 30000
           loop:
-            - "{{ project_name }}"
-            - "{{ project_name }}dev"  
+            - "{{ aws_s3_bucket_name }}"
+            - "{{ aws_s3_bucket_name }}dev"
       when: s3_bucket_file.stat.exists == False

@@ -22,6 +22,8 @@ ADMIN_JWT_SECRET=$(get_env ADMIN_JWT_SECRET)
 APP_KEYS=$(get_env APP_KEYS)
 API_TOKEN_SALT=$(get_env API_TOKEN_SALT)
 
+AWS_S3_BUCKET_NAME=$(get_env AWS_S3_BUCKET_NAME)
+
 DATABASE_NAME=$(get_env DATABASE_NAME)
 DATABASE_USERNAME=$(get_env DATABASE_USERNAME)
 DATABASE_PASSWORD=$(get_env DATABASE_PASSWORD)
@@ -64,6 +66,7 @@ SECRETS=(\
     "ADMIN_JWT_SECRET $ADMIN_JWT_SECRET" \
     "APP_KEYS $APP_KEYS" \
     "API_TOKEN_SALT $API_TOKEN_SALT" \
+    "AWS_S3_BUCKET_NAME $AWS_S3_BUCKET_NAME" \
     "DATABASE_NAME $DATABASE_NAME" \
     "DATABASE_USERNAME $DATABASE_USERNAME" \
     "DATABASE_PASSWORD $DATABASE_PASSWORD" \
@@ -108,11 +111,14 @@ then
         SECRET_NAME="${i%% *}"
         SECRET_CONTENT="${i#* }"
 
-        node ./github/github-node-api/create_secret.js \
-            $GITHUB_TOKEN \
-            $GITHUB_REPOSITORY \
-            $SECRET_NAME \
-            $SECRET_CONTENT
+        if [ ! -z $SECRET_CONTENT ]
+        then
+            node ./github/github-node-api/create_secret.js \
+                $GITHUB_TOKEN \
+                $GITHUB_REPOSITORY \
+                $SECRET_NAME \
+                $SECRET_CONTENT
+        fi
     done
 else
     cd ./github/github-node-api && npm install && cd ../..
