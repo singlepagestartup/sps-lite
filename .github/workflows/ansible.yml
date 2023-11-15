@@ -59,6 +59,8 @@ jobs:
             "JWT_SECRET ${{ secrets.JWT_SECRET }}"\
             "ADMIN_JWT_SECRET ${{ secrets.ADMIN_JWT_SECRET }}"\
             "APP_KEYS ${{ secrets.APP_KEYS }}"\
+            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
+            "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
             "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
@@ -80,8 +82,12 @@ jobs:
             "DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME }}"\
             "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
             "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
+            "TELEGRAM_BOT_TOKEN ${{ secrets.TELEGRAM_BOT_TOKEN }}"\
+            "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
+            "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
+            "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
           )
-          
+
           for secret in "${secrets[@]}"; do
             secret_name=$(echo "$secret" | cut -d' ' -f1)
             secret_value=$(echo "$secret" | cut -d' ' -f2)
@@ -98,4 +104,4 @@ jobs:
             ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh
       - name: Run service script
         run: |
-            ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)
+          ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)

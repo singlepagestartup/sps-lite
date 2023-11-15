@@ -53,8 +53,14 @@ export default {
     }
 
     if (process.env.MAKE_NEW_SEED) {
-      const mainApiPath = path.join(__dirname, "../../src/", "./api");
-      await strapiUtils.dumper(mainApiPath);
+      try {
+        const mainApiPath = path.join(__dirname, "../../src/", "./api");
+        await strapiUtils.dumper(mainApiPath);
+      } catch (error) {
+        console.log("🚀 ~ bootstrap ~ MAKE_NEW_SEED ~ error:", error);
+
+        strapi.errorCatcher(error);
+      }
     }
   },
 };
