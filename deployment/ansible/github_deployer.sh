@@ -104,6 +104,10 @@ SECRETS=(\
 BRANCHES=( \
     "ansible-up" \
     "ansible-down" \
+    "ansible-backend-up" \
+    "ansible-backend-down" \
+    "ansible-frontend-up" \
+    "ansible-frontend-down" \
 )
 
 if [ "$1" != "down" ]
