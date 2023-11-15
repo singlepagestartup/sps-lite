@@ -30,10 +30,7 @@
         cmd: "node ./delete_secret.js {{ github_token }} {{ github_repository }} {{ item.secret_name }} {{ item.secret_scope }}"
         chdir: "/home/code/github-node-api"
       loop:
-        - {
-            secret_name: PORTAINER_STAGING_FRONTEND_UPDATE_URL,
-            secret_scope: actions,
-          }
+        - { secret_name: PORTAINER_FRONTEND_UPDATE_URL, secret_scope: actions }
         - { secret_name: NEXT_PUBLIC_FRONTEND_URL, secret_scope: actions }
 
     - name: Delete artifacts

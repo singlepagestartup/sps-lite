@@ -38,7 +38,7 @@
         chdir: "/home/code/github-node-api"
       loop:
         - {
-            secret_name: PORTAINER_STAGING_FRONTEND_UPDATE_URL,
+            secret_name: PORTAINER_FRONTEND_UPDATE_URL,
             secret_content: "https://{{ portainer_url }}/api/webhooks/{{ frontend_webhook_token.stdout }}",
             secret_scope: actions,
           }

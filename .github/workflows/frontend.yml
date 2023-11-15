@@ -10,19 +10,15 @@ on:
       TAG:
         required: true
         type: string
-      ENVIRONMENT:
+      PRERELEASE:
         required: true
-        type: string
+        type: boolean
 
 env:
-  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend:${{ inputs.TAG }}
-  NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
-  NEXT_PUBLIC_BACKEND_TOKEN: ${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
-  NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
+  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend
 
 jobs:
   create-frontend-image:
-    if: ${{ inputs.ENVIRONMENT == 'staging' }}
     name: Frontend version
     runs-on: ubuntu-latest
     defaults:
@@ -40,23 +36,47 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
-      - name: Build image
+      - if: ${{ inputs.PRERELEASE == true }}
+        name: Build image
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
           push: false
           load: true
-          tags: ${{ env.FRONTEND_IMAGE_URL }}
+          tags: |
+            ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
           build-args: |
-            NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }}
-            NEXT_PUBLIC_BACKEND_TOKEN=${{ env.NEXT_PUBLIC_BACKEND_TOKEN }}
-            NEXT_PUBLIC_FRONTEND_URL=${{ env.NEXT_PUBLIC_FRONTEND_URL }}
+            NEXT_PUBLIC_BACKEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_FRONTEND_URL }}
+            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.STAGING_NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.STAGING_NEXT_PUBLIC_SENTRY_DSN }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Build image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          push: false
+          load: true
+          tags: |
+            ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
+            ${{ env.FRONTEND_IMAGE_URL }}:latest
+          build-args: |
+            NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
             NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
-      - name: Inspect image
-        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}
-      - name: Push to registry
-        run: docker push ${{ env.FRONTEND_IMAGE_URL }}
+      - name: Inspect release tag image
+        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Inspect latest tag image
+        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}:latest
+      - name: Push release tag to registry
+        run: docker push ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Push latest tag to registry
+        run: docker push ${{ env.FRONTEND_IMAGE_URL }}:latest
 
   deploy-frontend:
     name: Run deployer
@@ -65,16 +85,16 @@ jobs:
       - create-frontend-image
     steps:
       - name: Send webhook for staging service update
-        if: ${{ inputs.ENVIRONMENT == 'staging' }}
+        if: ${{ inputs.PRERELEASE == true }}
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.STAGING_PORTAINER_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
       - name: Send webhook for production service update
-        if: ${{ inputs.ENVIRONMENT == 'production' }}
+        if: ${{ inputs.PRERELEASE == false }}
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_PRODUCTION_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.PORTAINER_FRONTEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000

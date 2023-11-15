@@ -30,7 +30,7 @@ class Telegram {
     this.setHandlers();
 
     this.bot.createWebhook({
-      domain: process.env.BACKEND_HOST || "",
+      domain: process.env.BACKEND_URL || "",
       path: "/api/telegram/webhook",
     });
 

@@ -1,9 +1,8 @@
-name: Update frontend and backend on staging
+name: Create frontend and backend release
 
 on:
   release:
     types:
-      - published
       - released
 
 jobs:
@@ -12,7 +11,7 @@ jobs:
     secrets: inherit
     with:
       TAG: ${{ github.event.release.tag_name }}
-      ENVIRONMENT: "staging"
+      PRERELEASE: ${{ github.event.release.prerelease }}
 
   fill-database-with-seed-data:
     uses: ./.github/workflows/database.yml
@@ -28,4 +27,4 @@ jobs:
     with:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
-      ENVIRONMENT: "staging"
+      PRERELEASE: ${{ github.event.release.prerelease }}

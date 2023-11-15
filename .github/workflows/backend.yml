@@ -7,16 +7,15 @@ on:
       TAG:
         required: true
         type: string
-      ENVIRONMENT:
+      PRERELEASE:
         required: true
-        type: string
+        type: boolean
 
 env:
-  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_backend:${{ inputs.TAG }}
+  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_backend
 
 jobs:
   create-backend-image:
-    if: ${{ inputs.ENVIRONMENT == 'staging' }}
     name: Backend version
     runs-on: ubuntu-latest
     defaults:
@@ -32,17 +31,35 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
-      - name: Build image
+      - if: ${{ inputs.PRERELEASE == true }}
+        name: Build image
         uses: docker/build-push-action@v2
         with:
           context: ./backend
           push: false
           load: true
-          tags: ${{ env.BACKEND_IMAGE_URL }}
-      - name: Inspect image
-        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}
-      - name: Push to registry
-        run: docker push ${{ env.BACKEND_IMAGE_URL }}
+          tags: |
+            ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./backend
+          push: false
+          load: true
+          tags: |
+            ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
+            ${{ env.BACKEND_IMAGE_URL }}:latest
+      - name: Inspect release tag image
+        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Inspect latest tag image
+        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}:latest
+      - name: Push release tag to registry
+        run: docker push ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Push latest tag to registry
+        run: docker push ${{ env.BACKEND_IMAGE_URL }}:latest
 
   deploy-backend:
     name: Run deployer
@@ -51,16 +68,16 @@ jobs:
       - create-backend-image
     steps:
       - name: Send webhook for staging service update
-        if: ${{ inputs.ENVIRONMENT == 'staging' }}
+        if: ${{ inputs.PRERELEASE == true }}
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_BACKEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.STAGING_PORTAINER_BACKEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
       - name: Send webhook for production service update
-        if: ${{ inputs.ENVIRONMENT == 'production' }}
+        if: ${{ inputs.PRERELEASE == false }}
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_PRODUCTION_BACKEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.PORTAINER_BACKEND_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
