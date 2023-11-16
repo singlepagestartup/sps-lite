@@ -86,6 +86,9 @@ jobs:
             "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
             "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
             "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
+            "ZERO_X_PROCESSING_TEST_PAYMENTS ${{ secrets.ZERO_X_PROCESSING_TEST_PAYMENTS }}" \
+            "ZERO_X_PROCESSING_SHOP_ID ${{ secrets.ZERO_X_PROCESSING_SHOP_ID }}" \
+            "ZERO_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.ZERO_X_PROCESSING_WEBHOOK_PASSWORD }}" \
           )
 
           for secret in "${secrets[@]}"; do
