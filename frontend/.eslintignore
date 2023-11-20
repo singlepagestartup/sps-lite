@@ -3,3 +3,5 @@ node_modules
 .storybook
 public
 out
+playwright-report
+test-results

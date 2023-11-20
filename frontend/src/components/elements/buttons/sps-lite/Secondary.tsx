@@ -8,7 +8,7 @@ import getFileUrl from "~utils/api/get-file-url";
 import { useMemo } from "react";
 
 export default function Secondary(props: ISpsLiteButton) {
-  const { isActive, additionalAttributes, url } = useGetButtonParams(props);
+  const { isActive, additionalAttributes, url } = useGetButtonParams(props); //?
 
   // Bug with Next.js Link component and hash links
   // https://github.com/vercel/next.js/issues/44295

@@ -14,7 +14,7 @@ export default function useGetButtonParams(props: {
       return;
     }
 
-    return pathname?.replace("/", "") === props.url;
+    return pathname === `${props.url}/`;
   }, [pathname, props.url]);
 
   const additionalAttributes = useMemo(() => {
