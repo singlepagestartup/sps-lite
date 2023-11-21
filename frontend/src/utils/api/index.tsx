@@ -1,7 +1,6 @@
 import { stringify } from "qs";
 import { transformResponseItem } from "./transform-response-item";
 import { BACKEND_URL } from "~utils/envs";
-import { plural } from "pluralize";
 import { gzip } from "pako";
 
 interface IFetchProps {
@@ -88,85 +87,6 @@ export async function getTargetPage({ url, locale }: any) {
   }
 
   return targetPage;
-}
-
-export async function getPages({ filters, modelRoutes, page }: any) {
-  const localFilters = { ...filters };
-  const filledPages = [];
-
-  const modelRoute = modelRoutes[0];
-  const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-  const model = sanitizedRoute.split(".")[0];
-  const modelParam = sanitizedRoute.split(".")[1];
-  const pluralModel = plural(model);
-
-  const modelEntites = await getBackendData({
-    url: `${BACKEND_URL}/api/${pluralModel}`,
-    params: {
-      fields: [modelParam],
-      locale: page.locale,
-      filters: localFilters,
-      pagination: { limit: "-1" },
-    },
-  });
-
-  if (modelEntites?.length) {
-    const entitesUrls = [];
-    for (const modelEntity of modelEntites) {
-      if (modelRoutes.length === 1) {
-        const uri = `${modelEntity[modelParam]}`;
-        const pathUrl = page.url
-          .split("/")
-          .map((url: string) => {
-            if (url === modelRoute) {
-              return uri;
-            }
-
-            if (url.includes(".") && filters && Object.keys(filters)) {
-              const sanitizedRoute = url.replace("[", "").replace("]", "");
-              const model = sanitizedRoute.split(".")[0];
-              if (filters[model]) {
-                return filters[model];
-              }
-            }
-
-            return url;
-          })
-          .filter((url: string) => url !== "");
-
-        entitesUrls.push(`/${pathUrl.join("/")}`);
-      } else {
-        const sanitizedModelRoutes = modelRoutes.filter(
-          (mr: string) => mr !== modelRoute,
-        );
-
-        const filters = {
-          [model]: `${modelEntity.id}`,
-        };
-
-        const p = await getPages({
-          filters,
-          modelRoutes: sanitizedModelRoutes,
-          page,
-        });
-
-        if (p.length) {
-          p.forEach((pg) => {
-            pg.urls.forEach((u: string) => {
-              entitesUrls.push(u);
-            });
-          });
-        }
-      }
-    }
-
-    filledPages.push({
-      ...page,
-      urls: entitesUrls,
-    });
-  }
-
-  return filledPages;
 }
 
 export function getFiltersFromPageUrl({ page, params }: any): any[] {

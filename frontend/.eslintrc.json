@@ -52,6 +52,7 @@
     "no-prototype-builtins": ["warn"],
     "@typescript-eslint/no-empty-interface": ["off"],
     "@typescript-eslint/consistent-type-definitions": ["off"],
-    "testing-library/prefer-screen-queries": ["off"]
+    "testing-library/prefer-screen-queries": ["warn"],
+    "testing-library/no-node-access": ["warn"]
   }
 }
