@@ -34,7 +34,14 @@ export const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["html", { outputDir: "./tests/artifacts/", outputFile: "report.html" }],
+    [
+      "html",
+      {
+        outputFolder: "./tests/artifacts/playwright/",
+        outputFile: "./report.html",
+        open: "never",
+      },
+    ],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -91,7 +98,7 @@ export const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: "tests/artifacts/test-results/",
+  outputDir: "./tests/artifacts/playwright/",
 
   /* Run your local dev server before starting the tests */
   // webServer: {
