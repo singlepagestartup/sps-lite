@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -6,14 +6,14 @@ import { defineConfig, devices } from "@playwright/test";
  */
 require("dotenv").config({
   path: (() => {
-    return ".env.testing";
+    return ".env.development";
   })(),
 });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export const config: PlaywrightTestConfig = {
   testDir: "./tests/e2e/",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -39,14 +39,15 @@ export default defineConfig({
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `${process.env.PROTOCOL || "http"}://${
-      process.env.URL || "127.0.0.1"
-    }:${process.env.PORT || "3000"}`,
+    baseURL: `${
+      process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000"
+    }`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    video: "on-first-retry",
 
-    headless: false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */
@@ -95,4 +96,6 @@ export default defineConfig({
   //   command: `npm run start`,
   //   port: 3333,
   // },
-});
+};
+
+export default defineConfig(config);
