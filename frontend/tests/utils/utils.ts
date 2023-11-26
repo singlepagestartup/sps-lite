@@ -1,5 +1,7 @@
 const R = require("ramda");
-import { ICustomWorld } from "./custom-world";
+import { ICustomWorld } from "../features/bdd-utils/custom-world";
+import { Page } from "@playwright/test";
+import path from "path";
 
 export function replaceValue({
   world,
@@ -30,4 +32,27 @@ export function replaceValue({
   }
 
   return value;
+}
+
+export async function setFile({
+  page,
+  htmlNodeId,
+  files,
+}: {
+  page: Page;
+  htmlNodeId: string;
+  files: string | string[];
+}) {
+  const [firstPageDocument] = await Promise.all([
+    page.waitForEvent("filechooser"),
+    page.locator(htmlNodeId).locator("..").click(),
+  ]);
+
+  if (Array.isArray(files)) {
+    for (const file of files) {
+      await firstPageDocument.setFiles(path.join(__dirname, `./${file}`));
+    }
+  } else {
+    await firstPageDocument.setFiles(path.join(__dirname, `./${files}`));
+  }
 }

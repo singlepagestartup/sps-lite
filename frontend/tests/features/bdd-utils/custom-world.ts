@@ -6,7 +6,7 @@ import {
   PlaywrightTestOptions,
   APIRequestContext,
 } from "@playwright/test";
-import { User } from "tests/features/utils/identites/User";
+import { User } from "../../utils/identites/User";
 
 export interface CucumberWorldConstructorParams {
   parameters: { [key: string]: string };

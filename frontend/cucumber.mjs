@@ -10,7 +10,7 @@ const config = {
   requireModule: ["ts-node/register"],
   require: ["tests/features/**/!(*.spec).ts"],
   format: [
-    "html:tests/features/artifacts/reports/report.html",
+    "html:tests/artifacts/reports/report.html",
     "summary",
     "progress-bar",
   ],

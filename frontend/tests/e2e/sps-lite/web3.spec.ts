@@ -1,4 +1,4 @@
-import { test, expect } from "../web3fixtures";
+import { test, expect } from "../../utils/web3fixtures";
 // @ts-ignore
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 

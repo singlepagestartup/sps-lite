@@ -24,8 +24,8 @@ let browser: ChromiumBrowser;
 //   var browser: ChromiumBrowser;
 // }
 
-const tracesDir = "tests/features/artifacts/traces";
-const screenshotsDir = "tests/features/artifacts/screenshots";
+const tracesDir = "tests/artifacts/traces";
+const screenshotsDir = "tests/artifacts/screenshots";
 
 const launchOptions: LaunchOptions = {
   slowMo: 0,

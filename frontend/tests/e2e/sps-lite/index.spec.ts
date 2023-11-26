@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { setFile } from "../../utils/utils";
 import { FRONTEND_URL } from "~utils/envs";
-import { setFile } from "../utils";
 
 test("Main page loads", async ({ page }) => {
   await page.goto(FRONTEND_URL);
