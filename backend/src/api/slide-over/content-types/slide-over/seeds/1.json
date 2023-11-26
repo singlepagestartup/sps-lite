@@ -88,7 +88,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -128,7 +128,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -160,7 +160,7 @@
                 "variant": "boxed",
                 "class_name": null,
                 "createdAt": "2023-11-13T12:31:22.737Z",
-                "updatedAt": "2023-11-13T12:38:48.648Z",
+                "updatedAt": "2023-11-26T00:37:24.521Z",
                 "publishedAt": "2023-05-04T03:25:15.030Z",
                 "locale": "en",
                 "layouts": [
@@ -183,7 +183,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -223,7 +223,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -233,7 +233,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -290,7 +290,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -330,7 +330,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -408,7 +408,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-11-13T09:40:52.183Z",
+                    "updatedAt": "2023-11-13T09:40:52.183Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-11-13T09:40:28.864Z",
+                            "updatedAt": "2023-11-13T09:40:28.864Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "slide_overs": [
@@ -466,7 +492,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -506,7 +532,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -544,7 +570,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -584,7 +610,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -594,7 +620,7 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-11-13T12:31:16.037Z",
-                                    "updatedAt": "2023-11-13T12:39:31.236Z",
+                                    "updatedAt": "2023-11-26T00:27:36.537Z",
                                     "publishedAt": "2023-04-08T12:06:05.277Z",
                                     "locale": "en"
                                 },
@@ -684,7 +710,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -724,7 +750,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -762,7 +788,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -802,7 +828,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -812,7 +838,7 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-11-13T12:31:16.037Z",
-                                    "updatedAt": "2023-11-13T12:39:31.236Z",
+                                    "updatedAt": "2023-11-26T00:27:36.537Z",
                                     "publishedAt": "2023-04-08T12:06:05.277Z",
                                     "locale": "en"
                                 },
@@ -854,7 +880,7 @@
                 "position": "fixed",
                 "side": "top",
                 "createdAt": "2023-11-13T12:31:38.358Z",
-                "updatedAt": "2023-11-13T12:39:05.026Z",
+                "updatedAt": "2023-11-26T00:28:09.163Z",
                 "publishedAt": "2023-04-08T05:04:22.148Z",
                 "locale": "en",
                 "page_blocks": [
@@ -970,7 +996,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -1010,7 +1036,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -1048,7 +1074,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -1088,7 +1114,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -1098,7 +1124,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -1127,7 +1153,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-11-13T09:40:52.183Z",
+                    "updatedAt": "2023-11-13T09:40:52.183Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-11-13T09:40:28.864Z",
+                            "updatedAt": "2023-11-13T09:40:28.864Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "pages": [
@@ -1169,7 +1221,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -1209,7 +1261,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -1249,7 +1301,7 @@
                                 "title": "Features Slider",
                                 "uid": "features-slider",
                                 "createdAt": "2023-11-13T12:31:21.141Z",
-                                "updatedAt": "2023-11-13T12:39:46.812Z",
+                                "updatedAt": "2023-11-26T00:40:41.438Z",
                                 "publishedAt": "2023-03-28T03:46:50.780Z",
                                 "locale": "en"
                             }
@@ -1284,7 +1336,7 @@
                 "variant": "boxed",
                 "class_name": null,
                 "createdAt": "2023-11-13T12:31:22.737Z",
-                "updatedAt": "2023-11-13T12:38:48.648Z",
+                "updatedAt": "2023-11-26T00:37:24.521Z",
                 "publishedAt": "2023-05-04T03:25:15.030Z",
                 "locale": "en",
                 "layouts": [
@@ -1307,7 +1359,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -1347,7 +1399,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -1357,7 +1409,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -1414,7 +1466,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -1454,7 +1506,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -1532,7 +1584,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-11-13T09:40:52.183Z",
+                    "updatedAt": "2023-11-13T09:40:52.183Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-11-13T09:40:28.864Z",
+                            "updatedAt": "2023-11-13T09:40:28.864Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "slide_overs": [
@@ -1590,7 +1668,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -1630,7 +1708,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -1668,7 +1746,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -1708,7 +1786,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -1718,7 +1796,7 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-11-13T12:31:16.037Z",
-                                    "updatedAt": "2023-11-13T12:39:31.236Z",
+                                    "updatedAt": "2023-11-26T00:27:36.537Z",
                                     "publishedAt": "2023-04-08T12:06:05.277Z",
                                     "locale": "en"
                                 },
@@ -1808,7 +1886,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -1848,7 +1926,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -1886,7 +1964,7 @@
                                 "variant": "boxed",
                                 "class_name": null,
                                 "createdAt": "2023-11-13T12:31:22.737Z",
-                                "updatedAt": "2023-11-13T12:38:48.648Z",
+                                "updatedAt": "2023-11-26T00:37:24.521Z",
                                 "publishedAt": "2023-05-04T03:25:15.030Z",
                                 "locale": "en"
                             },
@@ -1926,7 +2004,7 @@
                                 "position": "fixed",
                                 "side": "top",
                                 "createdAt": "2023-11-13T12:31:38.358Z",
-                                "updatedAt": "2023-11-13T12:39:05.026Z",
+                                "updatedAt": "2023-11-26T00:28:09.163Z",
                                 "publishedAt": "2023-04-08T05:04:22.148Z",
                                 "locale": "en"
                             },
@@ -1936,7 +2014,7 @@
                                     "title": "Main page",
                                     "url": "/",
                                     "createdAt": "2023-11-13T12:31:16.037Z",
-                                    "updatedAt": "2023-11-13T12:39:31.236Z",
+                                    "updatedAt": "2023-11-26T00:27:36.537Z",
                                     "publishedAt": "2023-04-08T12:06:05.277Z",
                                     "locale": "en"
                                 },
@@ -1978,7 +2056,7 @@
                 "position": "fixed",
                 "side": "top",
                 "createdAt": "2023-11-13T12:31:38.358Z",
-                "updatedAt": "2023-11-13T12:39:05.026Z",
+                "updatedAt": "2023-11-26T00:28:09.163Z",
                 "publishedAt": "2023-04-08T05:04:22.148Z",
                 "locale": "en",
                 "page_blocks": [
@@ -2094,7 +2172,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -2134,7 +2212,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -2172,7 +2250,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -2212,7 +2290,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -2222,7 +2300,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -2251,7 +2329,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-11-13T09:40:52.183Z",
+                    "updatedAt": "2023-11-13T09:40:52.183Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-11-13T09:40:28.864Z",
+                            "updatedAt": "2023-11-13T09:40:28.864Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             },
             "pages": [
@@ -2260,7 +2364,7 @@
                     "title": "Main page",
                     "url": "/",
                     "createdAt": "2023-11-13T12:31:16.037Z",
-                    "updatedAt": "2023-11-13T12:39:31.236Z",
+                    "updatedAt": "2023-11-26T00:27:36.537Z",
                     "publishedAt": "2023-04-08T12:06:05.277Z",
                     "locale": "en",
                     "layout": {
@@ -2282,7 +2386,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -2322,7 +2426,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -2332,7 +2436,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -2370,69 +2474,69 @@
                             "class_name": "pt-16",
                             "media": [
                                 {
-                                    "id": 125,
-                                    "name": "preview.jpg",
+                                    "id": 152,
+                                    "name": "preview.png",
                                     "alternativeText": null,
                                     "caption": null,
-                                    "width": 1790,
-                                    "height": 863,
+                                    "width": 2050,
+                                    "height": 1286,
                                     "formats": {
                                         "large": {
-                                            "ext": ".jpg",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_preview_2abf434f18.jpg",
-                                            "hash": "large_preview_2abf434f18",
-                                            "mime": "image/jpeg",
-                                            "name": "large_preview.jpg",
+                                            "ext": ".png",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_preview_552260eef6.png",
+                                            "hash": "large_preview_552260eef6",
+                                            "mime": "image/png",
+                                            "name": "large_preview.png",
                                             "path": null,
-                                            "size": 38.28,
+                                            "size": 249.02,
                                             "width": 1000,
-                                            "height": 482
+                                            "height": 627
                                         },
                                         "small": {
-                                            "ext": ".jpg",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_preview_2abf434f18.jpg",
-                                            "hash": "small_preview_2abf434f18",
-                                            "mime": "image/jpeg",
-                                            "name": "small_preview.jpg",
+                                            "ext": ".png",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_preview_552260eef6.png",
+                                            "hash": "small_preview_552260eef6",
+                                            "mime": "image/png",
+                                            "name": "small_preview.png",
                                             "path": null,
-                                            "size": 12.73,
+                                            "size": 65.96,
                                             "width": 500,
-                                            "height": 241
+                                            "height": 314
                                         },
                                         "medium": {
-                                            "ext": ".jpg",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_preview_2abf434f18.jpg",
-                                            "hash": "medium_preview_2abf434f18",
-                                            "mime": "image/jpeg",
-                                            "name": "medium_preview.jpg",
+                                            "ext": ".png",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_preview_552260eef6.png",
+                                            "hash": "medium_preview_552260eef6",
+                                            "mime": "image/png",
+                                            "name": "medium_preview.png",
                                             "path": null,
-                                            "size": 24.99,
+                                            "size": 150.59,
                                             "width": 750,
-                                            "height": 362
+                                            "height": 470
                                         },
                                         "thumbnail": {
-                                            "ext": ".jpg",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_preview_2abf434f18.jpg",
-                                            "hash": "thumbnail_preview_2abf434f18",
-                                            "mime": "image/jpeg",
-                                            "name": "thumbnail_preview.jpg",
+                                            "ext": ".png",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_preview_552260eef6.png",
+                                            "hash": "thumbnail_preview_552260eef6",
+                                            "mime": "image/png",
+                                            "name": "thumbnail_preview.png",
                                             "path": null,
-                                            "size": 4.4,
+                                            "size": 21.73,
                                             "width": 245,
-                                            "height": 118
+                                            "height": 154
                                         }
                                     },
-                                    "hash": "preview_2abf434f18",
-                                    "ext": ".jpg",
-                                    "mime": "image/jpeg",
-                                    "size": 86.93,
-                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/preview_2abf434f18.jpg",
+                                    "hash": "preview_552260eef6",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "size": 223.32,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/preview_552260eef6.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-11-13T12:39:05.955Z",
-                                    "updatedAt": "2023-11-13T12:39:05.955Z",
+                                    "createdAt": "2023-11-26T00:23:22.809Z",
+                                    "updatedAt": "2023-11-26T00:23:22.809Z",
                                     "folder": null
                                 }
                             ],
@@ -2460,7 +2564,7 @@
                             "subtitle": null,
                             "media": [
                                 {
-                                    "id": 126,
+                                    "id": 176,
                                     "name": "28.png",
                                     "alternativeText": null,
                                     "caption": null,
@@ -2469,60 +2573,60 @@
                                     "formats": {
                                         "large": {
                                             "ext": ".png",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_28_6495a5c2dd.png",
-                                            "hash": "large_28_6495a5c2dd",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_28_13da4662de.png",
+                                            "hash": "large_28_13da4662de",
                                             "mime": "image/png",
                                             "name": "large_28.png",
                                             "path": null,
-                                            "size": 668.2,
+                                            "size": 667.84,
                                             "width": 1000,
                                             "height": 697
                                         },
                                         "small": {
                                             "ext": ".png",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_28_6495a5c2dd.png",
-                                            "hash": "small_28_6495a5c2dd",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_28_13da4662de.png",
+                                            "hash": "small_28_13da4662de",
                                             "mime": "image/png",
                                             "name": "small_28.png",
                                             "path": null,
-                                            "size": 184.23,
+                                            "size": 187.63,
                                             "width": 500,
                                             "height": 349
                                         },
                                         "medium": {
                                             "ext": ".png",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_28_6495a5c2dd.png",
-                                            "hash": "medium_28_6495a5c2dd",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_28_13da4662de.png",
+                                            "hash": "medium_28_13da4662de",
                                             "mime": "image/png",
                                             "name": "medium_28.png",
                                             "path": null,
-                                            "size": 388.34,
+                                            "size": 390.56,
                                             "width": 750,
                                             "height": 523
                                         },
                                         "thumbnail": {
                                             "ext": ".png",
-                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_28_6495a5c2dd.png",
-                                            "hash": "thumbnail_28_6495a5c2dd",
+                                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_28_13da4662de.png",
+                                            "hash": "thumbnail_28_13da4662de",
                                             "mime": "image/png",
                                             "name": "thumbnail_28.png",
                                             "path": null,
-                                            "size": 46.87,
+                                            "size": 47.62,
                                             "width": 224,
                                             "height": 156
                                         }
                                     },
-                                    "hash": "28_6495a5c2dd",
+                                    "hash": "28_13da4662de",
                                     "ext": ".png",
                                     "mime": "image/png",
-                                    "size": 3057.77,
-                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/28_6495a5c2dd.png",
+                                    "size": 3537.21,
+                                    "url": "https://spslitedev.s3.amazonaws.com/spslitedev/28_13da4662de.png",
                                     "previewUrl": null,
                                     "provider": "aws-s3",
                                     "provider_metadata": null,
                                     "folderPath": "/",
-                                    "createdAt": "2023-11-13T12:39:09.698Z",
-                                    "updatedAt": "2023-11-13T12:39:09.698Z",
+                                    "createdAt": "2023-11-26T00:25:14.196Z",
+                                    "updatedAt": "2023-11-26T00:25:14.196Z",
                                     "folder": null
                                 }
                             ],
@@ -2656,7 +2760,7 @@
                                 "uid": "question",
                                 "title": "Есть вопросы по продукту?",
                                 "createdAt": "2023-11-13T12:31:15.982Z",
-                                "updatedAt": "2023-11-13T12:39:03.082Z",
+                                "updatedAt": "2023-11-26T00:41:19.593Z",
                                 "publishedAt": "2023-02-14T15:44:48.245Z",
                                 "locale": "en"
                             },
@@ -2671,28 +2775,28 @@
                         "gtm_key": null,
                         "is_default": true,
                         "createdAt": "2023-11-13T12:31:37.414Z",
-                        "updatedAt": "2023-11-13T12:39:03.936Z",
+                        "updatedAt": "2023-11-26T00:40:13.260Z",
                         "publishedAt": "2023-04-08T06:09:23.027Z",
                         "locale": "en",
                         "favicon": {
-                            "id": 123,
+                            "id": 194,
                             "name": "favicon.svg",
                             "alternativeText": null,
                             "caption": null,
                             "width": 485,
                             "height": 485,
                             "formats": null,
-                            "hash": "favicon_4e76e2c87b",
+                            "hash": "favicon_ab3913391a",
                             "ext": ".svg",
                             "mime": "image/svg+xml",
                             "size": 2.61,
-                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/favicon_4e76e2c87b.svg",
+                            "url": "https://spslitedev.s3.amazonaws.com/spslitedev/favicon_ab3913391a.svg",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2023-11-13T12:39:03.868Z",
-                            "updatedAt": "2023-11-13T12:39:03.868Z",
+                            "createdAt": "2023-11-26T00:40:10.389Z",
+                            "updatedAt": "2023-11-26T00:40:10.389Z",
                             "folder": null
                         },
                         "pages": [
@@ -2701,17 +2805,57 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             }
                         ],
                         "createdBy": null,
-                        "updatedBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2023-11-13T09:40:52.183Z",
+                            "updatedAt": "2023-11-13T09:40:52.183Z"
+                        },
                         "localizations": []
                     },
                     "createdBy": null,
-                    "updatedBy": null,
+                    "updatedBy": {
+                        "id": 1,
+                        "firstname": "rogwild",
+                        "lastname": "design",
+                        "username": null,
+                        "email": "rogwild.design@gmail.com",
+                        "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                        "resetPasswordToken": null,
+                        "registrationToken": null,
+                        "isActive": true,
+                        "blocked": false,
+                        "preferedLanguage": null,
+                        "createdAt": "2023-11-13T09:40:52.183Z",
+                        "updatedAt": "2023-11-13T09:40:52.183Z",
+                        "roles": [
+                            {
+                                "id": 1,
+                                "name": "Super Admin",
+                                "code": "strapi-super-admin",
+                                "description": "Super Admins can access and manage all features and settings.",
+                                "createdAt": "2023-11-13T09:40:28.864Z",
+                                "updatedAt": "2023-11-13T09:40:28.864Z"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null
+                    },
                     "localizations": []
                 },
                 {
@@ -2741,7 +2885,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -2781,7 +2925,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -2791,7 +2935,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -2864,7 +3008,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -2904,7 +3048,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -2914,7 +3058,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
