@@ -33,7 +33,9 @@ export const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    ["html", { outputDir: "./tests/artifacts/", outputFile: "report.html" }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -89,7 +91,7 @@ export const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
+  outputDir: "tests/artifacts/test-results/",
 
   /* Run your local dev server before starting the tests */
   // webServer: {
