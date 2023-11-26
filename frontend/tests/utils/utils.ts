@@ -1,5 +1,5 @@
 const R = require("ramda");
-import { ICustomWorld } from "../features/bdd-utils/custom-world";
+import { ICustomWorld } from "../bdd/bdd-utils/custom-world";
 import { Page } from "@playwright/test";
 import path from "path";
 

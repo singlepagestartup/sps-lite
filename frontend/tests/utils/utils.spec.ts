@@ -1,5 +1,5 @@
 import { replaceValue } from "./utils";
-import { ICustomWorld } from "../features/bdd-utils/custom-world";
+import { ICustomWorld } from "../bdd/bdd-utils/custom-world";
 
 describe("replaceValue", () => {
   let world: ICustomWorld;
