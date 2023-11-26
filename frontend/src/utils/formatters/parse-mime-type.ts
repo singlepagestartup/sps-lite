@@ -5,8 +5,8 @@ export default function parseMimeType(mime: string) {
   const splittedMime = mime?.split("/");
 
   const type = splittedMime[0];
-  const ext = splittedMime[1];
-  let renderType = type;
+  const ext = splittedMime[1]; //?
+  let renderType = type; //?
 
   if (type === "image" && !allowedImageExtensions.includes(ext)) {
     renderType = "file";

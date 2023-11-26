@@ -1,0 +1,6 @@
+screenshots/*
+!screenshots/.gitkeep
+traces/*
+!traces/.gitkeep
+reports/*
+!reports/.gitkeep

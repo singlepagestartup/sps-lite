@@ -25,7 +25,7 @@
   "turboConsoleLog.quote": "`",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.validate.enable": true,
-  "playwright.reuseBrowser": true,
+  "playwright.reuseBrowser": false,
   "eslint.format.enable": true,
   "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
