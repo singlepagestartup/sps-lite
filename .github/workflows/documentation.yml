@@ -7,16 +7,15 @@ on:
       TAG:
         required: true
         type: string
-      ENVIRONMENT:
+      PRERELEASE:
         required: true
-        type: string
+        type: boolean
 
 env:
-  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation:latest
+  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation
 
 jobs:
   create-documentation-image:
-    if: ${{ inputs.ENVIRONMENT == 'staging' }}
     name: Documentation version
     runs-on: ubuntu-latest
     defaults:
@@ -32,17 +31,35 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: false
-      - name: Build image
+      - if: ${{ inputs.PRERELEASE == true }}
+        name: Build image
         uses: docker/build-push-action@v2
         with:
           context: ./documentation
           push: false
           load: true
-          tags: ${{ env.DOCUMENTATION_IMAGE_URL }}
+          tags: |
+            ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./documentation
+          push: false
+          load: true
+          tags: |
+            ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
+            ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Inspect image
+        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
       - name: Inspect image
-        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}
+        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
       - name: Push to registry
-        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}
+        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Push to registry
+        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
 
   deploy-documentation:
     name: Run deployer
@@ -50,17 +67,17 @@ jobs:
     needs:
       - create-documentation-image
     steps:
-      - name: Send webhook for staging service update
-        if: ${{ inputs.ENVIRONMENT == 'staging' }}
+      - if: ${{ inputs.PRERELEASE == true }}
+        name: Send webhook for staging service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.STAGING_PORTAINER_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
-      - name: Send webhook for production service update
-        if: ${{ inputs.ENVIRONMENT == 'production' }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Send webhook for production service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_PRODUCTION_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.PORTAINER_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000

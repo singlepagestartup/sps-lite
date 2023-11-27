@@ -31,7 +31,7 @@
         chdir: "/home/code/github-node-api"
       loop:
         - {
-            secret_name: PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL,
+            secret_name: PORTAINER_DOCUMENTATION_UPDATE_URL,
             secret_scope: actions,
           }
 
