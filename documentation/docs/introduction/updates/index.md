@@ -28,8 +28,6 @@ Then there may be a need to solve merge conflicts, which usually occur when the 
 git checkout --theirs "./backend/src/api/**/seeds/*.json"
 ```
 
-Добавить примеры и как их исправлять
-
 ## Many merge conflicts
 
 This issue can also occur if Husky was not launched before starting work on a freshly downloaded project from GitHub, and a problem related to project linting arose.
