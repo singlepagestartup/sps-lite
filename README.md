@@ -2,7 +2,7 @@
 
 Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.
 
-### [Documentation](https://doc.singlepagestartup.com/)
+### [Documentation](https://sps-lite-documentation.singlepagestartup.com/)
 
 ![preview](./documentation/docs/introduction/img/preview.jpg)
 
