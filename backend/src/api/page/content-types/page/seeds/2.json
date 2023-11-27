@@ -72,7 +72,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -112,7 +112,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -144,7 +144,7 @@
             "variant": "boxed",
             "class_name": null,
             "createdAt": "2023-11-13T12:31:22.737Z",
-            "updatedAt": "2023-11-13T12:38:48.648Z",
+            "updatedAt": "2023-11-26T00:37:24.521Z",
             "publishedAt": "2023-05-04T03:25:15.030Z",
             "locale": "en",
             "layouts": [
@@ -167,7 +167,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -207,7 +207,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -217,7 +217,7 @@
                             "title": "Main page",
                             "url": "/",
                             "createdAt": "2023-11-13T12:31:16.037Z",
-                            "updatedAt": "2023-11-13T12:39:31.236Z",
+                            "updatedAt": "2023-11-26T00:27:36.537Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en"
                         },
@@ -274,7 +274,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -314,7 +314,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -392,7 +392,33 @@
                 }
             ],
             "createdBy": null,
-            "updatedBy": null,
+            "updatedBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-11-13T09:40:52.183Z",
+                "updatedAt": "2023-11-13T09:40:52.183Z",
+                "roles": [
+                    {
+                        "id": 1,
+                        "name": "Super Admin",
+                        "code": "strapi-super-admin",
+                        "description": "Super Admins can access and manage all features and settings.",
+                        "createdAt": "2023-11-13T09:40:28.864Z",
+                        "updatedAt": "2023-11-13T09:40:28.864Z"
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null
+            },
             "localizations": []
         },
         "slide_overs": [
@@ -450,7 +476,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -490,7 +516,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -528,7 +554,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -568,7 +594,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -578,7 +604,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -668,7 +694,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -708,7 +734,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -746,7 +772,7 @@
                             "variant": "boxed",
                             "class_name": null,
                             "createdAt": "2023-11-13T12:31:22.737Z",
-                            "updatedAt": "2023-11-13T12:38:48.648Z",
+                            "updatedAt": "2023-11-26T00:37:24.521Z",
                             "publishedAt": "2023-05-04T03:25:15.030Z",
                             "locale": "en"
                         },
@@ -786,7 +812,7 @@
                             "position": "fixed",
                             "side": "top",
                             "createdAt": "2023-11-13T12:31:38.358Z",
-                            "updatedAt": "2023-11-13T12:39:05.026Z",
+                            "updatedAt": "2023-11-26T00:28:09.163Z",
                             "publishedAt": "2023-04-08T05:04:22.148Z",
                             "locale": "en"
                         },
@@ -796,7 +822,7 @@
                                 "title": "Main page",
                                 "url": "/",
                                 "createdAt": "2023-11-13T12:31:16.037Z",
-                                "updatedAt": "2023-11-13T12:39:31.236Z",
+                                "updatedAt": "2023-11-26T00:27:36.537Z",
                                 "publishedAt": "2023-04-08T12:06:05.277Z",
                                 "locale": "en"
                             },
@@ -838,7 +864,7 @@
             "position": "fixed",
             "side": "top",
             "createdAt": "2023-11-13T12:31:38.358Z",
-            "updatedAt": "2023-11-13T12:39:05.026Z",
+            "updatedAt": "2023-11-26T00:28:09.163Z",
             "publishedAt": "2023-04-08T05:04:22.148Z",
             "locale": "en",
             "page_blocks": [
@@ -954,7 +980,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -994,7 +1020,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1032,7 +1058,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -1072,7 +1098,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1082,7 +1108,7 @@
                             "title": "Main page",
                             "url": "/",
                             "createdAt": "2023-11-13T12:31:16.037Z",
-                            "updatedAt": "2023-11-13T12:39:31.236Z",
+                            "updatedAt": "2023-11-26T00:27:36.537Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en"
                         },
@@ -1111,7 +1137,33 @@
                 }
             ],
             "createdBy": null,
-            "updatedBy": null,
+            "updatedBy": {
+                "id": 1,
+                "firstname": "rogwild",
+                "lastname": "design",
+                "username": null,
+                "email": "rogwild.design@gmail.com",
+                "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                "resetPasswordToken": null,
+                "registrationToken": null,
+                "isActive": true,
+                "blocked": false,
+                "preferedLanguage": null,
+                "createdAt": "2023-11-13T09:40:52.183Z",
+                "updatedAt": "2023-11-13T09:40:52.183Z",
+                "roles": [
+                    {
+                        "id": 1,
+                        "name": "Super Admin",
+                        "code": "strapi-super-admin",
+                        "description": "Super Admins can access and manage all features and settings.",
+                        "createdAt": "2023-11-13T09:40:28.864Z",
+                        "updatedAt": "2023-11-13T09:40:28.864Z"
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null
+            },
             "localizations": []
         },
         "pages": [
@@ -1153,7 +1205,7 @@
                         "variant": "boxed",
                         "class_name": null,
                         "createdAt": "2023-11-13T12:31:22.737Z",
-                        "updatedAt": "2023-11-13T12:38:48.648Z",
+                        "updatedAt": "2023-11-26T00:37:24.521Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en"
                     },
@@ -1193,7 +1245,7 @@
                         "position": "fixed",
                         "side": "top",
                         "createdAt": "2023-11-13T12:31:38.358Z",
-                        "updatedAt": "2023-11-13T12:39:05.026Z",
+                        "updatedAt": "2023-11-26T00:28:09.163Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en"
                     },
@@ -1233,7 +1285,7 @@
                             "title": "Features Slider",
                             "uid": "features-slider",
                             "createdAt": "2023-11-13T12:31:21.141Z",
-                            "updatedAt": "2023-11-13T12:39:46.812Z",
+                            "updatedAt": "2023-11-26T00:40:41.438Z",
                             "publishedAt": "2023-03-28T03:46:50.780Z",
                             "locale": "en"
                         }
@@ -1270,7 +1322,7 @@
                 "title": "Features Slider",
                 "uid": "features-slider",
                 "createdAt": "2023-11-13T12:31:21.141Z",
-                "updatedAt": "2023-11-13T12:39:46.812Z",
+                "updatedAt": "2023-11-26T00:40:41.438Z",
                 "publishedAt": "2023-03-28T03:46:50.780Z",
                 "locale": "en",
                 "slides": [
@@ -1281,8 +1333,8 @@
                         "subtitle": "Get ahead with our lean startup developer boilerplate",
                         "media": [
                             {
-                                "id": 144,
-                                "name": "pexels-karolina-grabowska-5882683.jpg",
+                                "id": 182,
+                                "name": "pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                                 "alternativeText": null,
                                 "caption": null,
                                 "width": 1280,
@@ -1290,10 +1342,10 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_karolina_grabowska_5882683_99f4deb655.jpg",
-                                        "hash": "large_pexels_karolina_grabowska_5882683_99f4deb655",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e.jpg",
+                                        "hash": "large_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e",
                                         "mime": "image/jpeg",
-                                        "name": "large_pexels-karolina-grabowska-5882683.jpg",
+                                        "name": "large_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                                         "path": null,
                                         "size": 72.41,
                                         "width": 1000,
@@ -1301,10 +1353,10 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_karolina_grabowska_5882683_99f4deb655.jpg",
-                                        "hash": "small_pexels_karolina_grabowska_5882683_99f4deb655",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e.jpg",
+                                        "hash": "small_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e",
                                         "mime": "image/jpeg",
-                                        "name": "small_pexels-karolina-grabowska-5882683.jpg",
+                                        "name": "small_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                                         "path": null,
                                         "size": 25.51,
                                         "width": 500,
@@ -1312,10 +1364,10 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_karolina_grabowska_5882683_99f4deb655.jpg",
-                                        "hash": "medium_pexels_karolina_grabowska_5882683_99f4deb655",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e.jpg",
+                                        "hash": "medium_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e",
                                         "mime": "image/jpeg",
-                                        "name": "medium_pexels-karolina-grabowska-5882683.jpg",
+                                        "name": "medium_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                                         "path": null,
                                         "size": 46.24,
                                         "width": 750,
@@ -1323,27 +1375,27 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_karolina_grabowska_5882683_99f4deb655.jpg",
-                                        "hash": "thumbnail_pexels_karolina_grabowska_5882683_99f4deb655",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e.jpg",
+                                        "hash": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e",
                                         "mime": "image/jpeg",
-                                        "name": "thumbnail_pexels-karolina-grabowska-5882683.jpg",
+                                        "name": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                                         "path": null,
                                         "size": 8.01,
                                         "width": 234,
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_karolina_grabowska_5882683_99f4deb655",
+                                "hash": "pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 109.43,
-                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_karolina_grabowska_5882683_99f4deb655.jpg",
+                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_karolina_grabowska_5882683_3f2b11722e_c7e8495f9e.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-11-13T12:39:42.276Z",
-                                "updatedAt": "2023-11-13T12:39:42.276Z",
+                                "createdAt": "2023-11-26T00:33:11.208Z",
+                                "updatedAt": "2023-11-26T00:33:11.208Z",
                                 "folder": null
                             }
                         ],
@@ -1367,8 +1419,8 @@
                         "subtitle": "Launch faster with our ready-to-use components",
                         "media": [
                             {
-                                "id": 145,
-                                "name": "pexels-andrea-piacquadio-3756679.jpg",
+                                "id": 181,
+                                "name": "pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                                 "alternativeText": null,
                                 "caption": null,
                                 "width": 5299,
@@ -1376,10 +1428,10 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_andrea_piacquadio_3756679_4ecc662857.jpg",
-                                        "hash": "large_pexels_andrea_piacquadio_3756679_4ecc662857",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d.jpg",
+                                        "hash": "large_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d",
                                         "mime": "image/jpeg",
-                                        "name": "large_pexels-andrea-piacquadio-3756679.jpg",
+                                        "name": "large_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                                         "path": null,
                                         "size": 60.11,
                                         "width": 1000,
@@ -1387,10 +1439,10 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_andrea_piacquadio_3756679_4ecc662857.jpg",
-                                        "hash": "small_pexels_andrea_piacquadio_3756679_4ecc662857",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d.jpg",
+                                        "hash": "small_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d",
                                         "mime": "image/jpeg",
-                                        "name": "small_pexels-andrea-piacquadio-3756679.jpg",
+                                        "name": "small_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                                         "path": null,
                                         "size": 21.98,
                                         "width": 500,
@@ -1398,10 +1450,10 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_andrea_piacquadio_3756679_4ecc662857.jpg",
-                                        "hash": "medium_pexels_andrea_piacquadio_3756679_4ecc662857",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d.jpg",
+                                        "hash": "medium_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d",
                                         "mime": "image/jpeg",
-                                        "name": "medium_pexels-andrea-piacquadio-3756679.jpg",
+                                        "name": "medium_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                                         "path": null,
                                         "size": 39.95,
                                         "width": 750,
@@ -1409,27 +1461,27 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_andrea_piacquadio_3756679_4ecc662857.jpg",
-                                        "hash": "thumbnail_pexels_andrea_piacquadio_3756679_4ecc662857",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d.jpg",
+                                        "hash": "thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d",
                                         "mime": "image/jpeg",
-                                        "name": "thumbnail_pexels-andrea-piacquadio-3756679.jpg",
+                                        "name": "thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                                         "path": null,
                                         "size": 7.5,
                                         "width": 234,
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_andrea_piacquadio_3756679_4ecc662857",
+                                "hash": "pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 811.66,
-                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_andrea_piacquadio_3756679_4ecc662857.jpg",
+                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_andrea_piacquadio_3756679_b3a857a74f_c681cbf06d.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-11-13T12:39:43.654Z",
-                                "updatedAt": "2023-11-13T12:39:43.654Z",
+                                "createdAt": "2023-11-26T00:32:39.256Z",
+                                "updatedAt": "2023-11-26T00:32:39.256Z",
                                 "folder": null
                             }
                         ],
@@ -1443,8 +1495,8 @@
                         "subtitle": "Foster innovation with a flexible and iterative approach",
                         "media": [
                             {
-                                "id": 146,
-                                "name": "pexels-tima-miroshnichenko-5198239.jpg",
+                                "id": 178,
+                                "name": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                                 "alternativeText": null,
                                 "caption": null,
                                 "width": 6000,
@@ -1452,10 +1504,10 @@
                                 "formats": {
                                     "large": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_tima_miroshnichenko_5198239_1597c6be2b.jpg",
-                                        "hash": "large_pexels_tima_miroshnichenko_5198239_1597c6be2b",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a.jpg",
+                                        "hash": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a",
                                         "mime": "image/jpeg",
-                                        "name": "large_pexels-tima-miroshnichenko-5198239.jpg",
+                                        "name": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                                         "path": null,
                                         "size": 81.84,
                                         "width": 1000,
@@ -1463,10 +1515,10 @@
                                     },
                                     "small": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_tima_miroshnichenko_5198239_1597c6be2b.jpg",
-                                        "hash": "small_pexels_tima_miroshnichenko_5198239_1597c6be2b",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a.jpg",
+                                        "hash": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a",
                                         "mime": "image/jpeg",
-                                        "name": "small_pexels-tima-miroshnichenko-5198239.jpg",
+                                        "name": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                                         "path": null,
                                         "size": 29.45,
                                         "width": 500,
@@ -1474,10 +1526,10 @@
                                     },
                                     "medium": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_tima_miroshnichenko_5198239_1597c6be2b.jpg",
-                                        "hash": "medium_pexels_tima_miroshnichenko_5198239_1597c6be2b",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a.jpg",
+                                        "hash": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a",
                                         "mime": "image/jpeg",
-                                        "name": "medium_pexels-tima-miroshnichenko-5198239.jpg",
+                                        "name": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                                         "path": null,
                                         "size": 53.16,
                                         "width": 750,
@@ -1485,27 +1537,27 @@
                                     },
                                     "thumbnail": {
                                         "ext": ".jpg",
-                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_tima_miroshnichenko_5198239_1597c6be2b.jpg",
-                                        "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_1597c6be2b",
+                                        "url": "https://spslitedev.s3.amazonaws.com/spslitedev/thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a.jpg",
+                                        "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a",
                                         "mime": "image/jpeg",
-                                        "name": "thumbnail_pexels-tima-miroshnichenko-5198239.jpg",
+                                        "name": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                                         "path": null,
                                         "size": 9.57,
                                         "width": 234,
                                         "height": 156
                                     }
                                 },
-                                "hash": "pexels_tima_miroshnichenko_5198239_1597c6be2b",
+                                "hash": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a",
                                 "ext": ".jpg",
                                 "mime": "image/jpeg",
                                 "size": 4287.67,
-                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_tima_miroshnichenko_5198239_1597c6be2b.jpg",
+                                "url": "https://spslitedev.s3.amazonaws.com/spslitedev/pexels_tima_miroshnichenko_5198239_dfb1d4b60d_1f6777f39a.jpg",
                                 "previewUrl": null,
                                 "provider": "aws-s3",
                                 "provider_metadata": null,
                                 "folderPath": "/",
-                                "createdAt": "2023-11-13T12:39:46.714Z",
-                                "updatedAt": "2023-11-13T12:39:46.714Z",
+                                "createdAt": "2023-11-26T00:31:07.416Z",
+                                "updatedAt": "2023-11-26T00:31:07.416Z",
                                 "folder": null
                             }
                         ],
@@ -1514,7 +1566,33 @@
                     }
                 ],
                 "createdBy": null,
-                "updatedBy": null,
+                "updatedBy": {
+                    "id": 1,
+                    "firstname": "rogwild",
+                    "lastname": "design",
+                    "username": null,
+                    "email": "rogwild.design@gmail.com",
+                    "password": "$2a$10$EuD31TuMw4TPd4f5zP0EFu2XQcahosVLn86gYA7nN1OuCRbyu4JUm",
+                    "resetPasswordToken": null,
+                    "registrationToken": null,
+                    "isActive": true,
+                    "blocked": false,
+                    "preferedLanguage": null,
+                    "createdAt": "2023-11-13T09:40:52.183Z",
+                    "updatedAt": "2023-11-13T09:40:52.183Z",
+                    "roles": [
+                        {
+                            "id": 1,
+                            "name": "Super Admin",
+                            "code": "strapi-super-admin",
+                            "description": "Super Admins can access and manage all features and settings.",
+                            "createdAt": "2023-11-13T09:40:28.864Z",
+                            "updatedAt": "2023-11-13T09:40:28.864Z"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null
+                },
                 "localizations": []
             }
         }

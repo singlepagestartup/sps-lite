@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -6,14 +6,14 @@ import { defineConfig, devices } from "@playwright/test";
  */
 require("dotenv").config({
   path: (() => {
-    return ".env.testing";
+    return ".env.development";
   })(),
 });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export const config: PlaywrightTestConfig = {
   testDir: "./tests/e2e/",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -33,20 +33,30 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    [
+      "html",
+      {
+        outputFolder: "./tests/artifacts/playwright/",
+        outputFile: "./report.html",
+        open: "never",
+      },
+    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `${process.env.PROTOCOL || "http"}://${
-      process.env.URL || "127.0.0.1"
-    }:${process.env.PORT || "3000"}`,
+    baseURL: `${
+      process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000"
+    }`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    video: "on-first-retry",
 
-    headless: false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */
@@ -88,11 +98,13 @@ export default defineConfig({
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
+  outputDir: "./tests/artifacts/playwright/",
 
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: `npm run start`,
   //   port: 3333,
   // },
-});
+};
+
+export default defineConfig(config);
