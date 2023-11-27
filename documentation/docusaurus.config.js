@@ -46,6 +46,9 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
         },
+        googleTagManager: {
+          containerId: process.env.GOOGLE_TAG_MANAGER_ID || "GTM-XXXXXXX",
+        },
       }),
     ],
   ],
