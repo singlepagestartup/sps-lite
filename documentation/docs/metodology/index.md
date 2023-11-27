@@ -16,6 +16,10 @@ This prompted us to think, "Is it possible to create such a project foundation t
 
 ## Conclusions
 
+### BDD (Behavior-Driven Development)
+
+After years of developing major projects, we have realized the importance of close collaboration with business owners for successful project implementation. In order to involve them in the work, effective communication in a shared language is necessary. To achieve this, we utilize BDD (Behavior-Driven Development), which is based on User Stories. By using Cucumber.js and Gherkin files, we can describe the required business processes and deliver the product that meets the needs of the business owners to the customers.
+
 ### Rest API and normalized data on the backend
 
 Using normalized data on the backend is also a good idea because it allows for more efficient data storage and retrieval. Normalizing data involves breaking it down into smaller, more manageable pieces and storing it in separate tables, which can then be joined together when needed. This approach reduces data redundancy and ensures data consistency, making it easier to maintain and update the database over time. By using both a REST API and normalized data, you can create a scalable and efficient web application that is easy to maintain and update in the future.
@@ -37,3 +41,9 @@ After having extensive experience in creating several startups and dozens of reg
 By dividing any project into Page-Blocks, you can ensure that each component is given the appropriate attention and that the overall user experience is enhanced. Importantly, Page-Blocks should not be seen as mere blocks that can only be located in the main content area but can be used throughout the project.
 
 This allows for greater flexibility in design and ensures that the user interface is consistent and easy to navigate. Furthermore, utilizing variations and inheritance techniques can enable flexible customization of interface parts without breaking the logic of the main project, thereby ensuring that the application is functional and user-friendly..
+
+### CI/CD
+
+Implementing CI/CD (Continuous Integration/Continuous Deployment) is crucial for successful product development. We choose to utilize CI/CD in our projects for several reasons. It allows for faster and more frequent delivery of features and updates by automating the build, testing, and deployment processes. This ensures timely release and promotes efficient iteration. CI/CD enhances product quality and reliability through automated tests and continuous integration, reducing the risk of bugs and improving the user experience.
+
+It fosters collaboration and transparency within development teams, keeping all members synchronized and promoting better communication and coordination. Furthermore, CI/CD enables the embracing of DevOps principles by automating tasks, encouraging collaboration and continuous improvement. In summary, our experience has shown that CI/CD is vital for exceptional product development, enabling faster delivery, improved quality, collaboration, and the implementation of DevOps practices.
