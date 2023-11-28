@@ -1,28 +1,49 @@
 import { replaceValue } from "../../../../utils/utils";
-import { User } from "../../../../utils/identites/User";
-import { ICustomWorld } from "../../../bdd-utils/custom-world";
+import { User } from "../../../../utils/elements/User";
+import { When, Then, Given } from "@cucumber/cucumber";
+import { World } from "../../../../utils/elements/World";
 
-const { When, Then, Given } = require("@cucumber/cucumber");
+Given("I am a guest user", async function (this: World) {
+  const user = new User();
+  this.users?.push(user);
+  this.me = user;
 
-Given("I'm a guest user", async function () {});
+  await user.openBrowser();
+});
 
-When(
-  "I am on the {string} page",
-  async function (this: ICustomWorld, url: string) {
-    const pageUrl = replaceValue({ world: this, value: url });
+When("I am on {string} page", async function (this: World, url: string) {
+  const pageUrl = replaceValue({ world: this, value: url });
 
-    if (!this.user) {
-      const user = new User({ page: this.page! });
-      this.user = user;
-    }
+  if (!this.me) {
+    throw new Error("No user");
+  }
 
-    await this.user.goTo(pageUrl);
-  },
-);
+  await this.me.goTo(pageUrl);
+});
+
+Then("I can read {string} text", async function (this: World, message: string) {
+  if (!this.me) {
+    throw new Error("No user");
+  }
+
+  await this.me.readText({ text: message });
+});
+
+When("I click {string} button", async function (this: World, string: string) {
+  if (!this.me) {
+    throw new Error("No user");
+  }
+
+  await this.me.clickButton({ title: string });
+});
 
 Then(
-  "text {string} should be shown",
-  async function (this: ICustomWorld, message: string) {
-    await this.user?.readText({ text: message });
+  "I should be redirected to the {string} page",
+  async function (this: World, url: string) {
+    if (!this.me) {
+      throw new Error("No user");
+    }
+
+    await this.me.checkRoute({ route: url });
   },
 );

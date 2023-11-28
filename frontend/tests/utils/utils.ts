@@ -1,25 +1,46 @@
 const R = require("ramda");
-import { ICustomWorld } from "../bdd/bdd-utils/custom-world";
-import { Page } from "@playwright/test";
+import { test as baseTest, expect, Locator, Page } from "@playwright/test";
 import path from "path";
+import { User } from "./elements/User";
+import { World } from "./elements/World";
 
 export function replaceValue({
   world,
   value,
 }: {
-  world: ICustomWorld;
+  world: World;
   value: string;
 }) {
   if (value.includes("__world.")) {
-    const slicedValue = value.split("__");
+    const slicedValue = value.split("__"); //?
+    const indexOftoReplaceValue = slicedValue.findIndex((item) =>
+      item.includes("world."),
+    ); //?
     const toReplaceValue =
       slicedValue.length >= 2 ? value.split("__")[1] : value.split("__")[0];
-    const path = toReplaceValue.replace("world.", "").split(".");
-    const replacedValue = R.path(path, world);
-    const joinedValue =
-      slicedValue.length >= 2
-        ? `${slicedValue[0]}${replacedValue}`
-        : `${replacedValue}${slicedValue[0]}`;
+    const path = toReplaceValue
+      .replace("world.", "")
+      .split(".")
+      .map((p) => {
+        if (p.includes("[")) {
+          const [key, index] = p.split("[");
+
+          return [key, parseInt(index.replace("]", ""))];
+        }
+
+        return p;
+      })
+      .flat(1); //?
+    const replacedValue = R.path(path, world); //?
+    const joinedValue = `${slicedValue
+      .map((value, index) => {
+        if (index === indexOftoReplaceValue) {
+          return replacedValue;
+        }
+
+        return value;
+      })
+      .join("")}`; //?
 
     return joinedValue;
   }

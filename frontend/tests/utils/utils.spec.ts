@@ -1,8 +1,7 @@
 import { replaceValue } from "./utils";
-import { ICustomWorld } from "../bdd/bdd-utils/custom-world";
 
 describe("replaceValue", () => {
-  let world: ICustomWorld;
+  let world: any;
 
   beforeEach(() => {
     // Initialize the world object before each test
@@ -28,6 +27,34 @@ describe("replaceValue", () => {
     expect(value).toEqual(
       "/auth/reset-password/?code=examplecode123&email=tester@example.com",
     );
+  });
+
+  it("should replace the __world.project.id__ in the '/users/__world.project.id__/apply/' by world.users.id value", () => {
+    world.user = {
+      id: 3,
+    } as any;
+
+    const value = replaceValue({
+      world,
+      value: "/users/__world.user.id__/apply/",
+    }); //?
+
+    expect(value).toEqual("/users/3/apply/");
+  });
+
+  it("should replace the __world.users[0].id__ in the '/users/__world.users[0].id__/apply/' by world.users[0].id value", () => {
+    world.users = [
+      {
+        id: 1,
+      },
+    ];
+
+    const value = replaceValue({
+      world,
+      value: "/users/__world.users[0].id__/apply/",
+    }); //?
+
+    expect(value).toEqual("/users/1/apply/");
   });
 
   it("should replace __random__@example.com with tester<number>@example.com", () => {

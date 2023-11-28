@@ -1,14 +1,12 @@
 const getWorldParams = () => {
-  const params = {
-    foo: "bar",
-  };
+  const params = {};
 
   return params;
 };
 
 const config = {
   requireModule: ["ts-node/register"],
-  require: ["tests/bdd/**/!(*.spec).ts"],
+  require: ["tests/bdd/**/!(*.spec).ts", "tests/utils/**/!(*.spec).ts"],
   format: [
     "html:tests/artifacts/reports/report.html",
     "summary",
