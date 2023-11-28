@@ -8,11 +8,16 @@ export class User {
   browser?: Browser;
   registered = false;
 
-  constructor() {
+  constructor(props?: { page?: Page }) {
+    this.page = props?.page;
     this.type = "public";
   }
 
   async openBrowser() {
+    if (this.page) {
+      return;
+    }
+
     this.browser = new Browser();
     await this.browser.open();
     this.page = this.browser.pages[0];

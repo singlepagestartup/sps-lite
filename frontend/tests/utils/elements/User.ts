@@ -1,7 +1,8 @@
+import { Page } from "@playwright/test";
 import { User as SpsLiteUser } from "./sps-lite/User";
 
 export class User extends SpsLiteUser {
-  constructor() {
-    super();
+  constructor(props?: { page?: Page }) {
+    super(props);
   }
 }
