@@ -56,7 +56,7 @@ export const config: PlaywrightTestConfig = {
     trace: "on-first-retry",
     video: "on-first-retry",
 
-    headless: false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */

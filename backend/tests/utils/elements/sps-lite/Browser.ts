@@ -52,7 +52,9 @@ export class Browser {
     });
   }
 
-  async close({ hookParameter }: { hookParameter?: ITestCaseHookParameter }) {
+  async close(params?: { hookParameter?: ITestCaseHookParameter }) {
+    const { hookParameter } = params || {};
+
     const contexts = this.instance?.contexts();
     if (contexts) {
       for (const context of contexts) {

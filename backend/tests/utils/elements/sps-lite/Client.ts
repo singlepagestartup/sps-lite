@@ -10,6 +10,10 @@ export class Client {
     this.baseUrl = playwrightConfig.use.baseURL;
   }
 
+  async sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async request({
     method,
     url,
@@ -31,11 +35,7 @@ export class Client {
       request["body"] = data;
     }
 
-    function sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    await sleep(500);
+    await this.sleep(1000);
 
     const response = await axios({
       method,
