@@ -2,12 +2,12 @@ import {
   World as CucumberWorld,
   IWorldOptions as ICucumberWorldOptions,
 } from "@cucumber/cucumber";
-import { Client } from "./Client";
+import { ApiClient } from "./ApiClient";
 import { User } from "./User";
 
 export class World extends CucumberWorld {
-  clients: Client[] = [];
-  me?: Client | User;
+  apiClients: ApiClient[] = [];
+  me?: ApiClient | User;
   users: User[] = [];
   cache: any = {};
 

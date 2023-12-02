@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import { pathReplacer, replaceValue } from "../../utils";
-import { Client } from "../Client";
+import { ApiClient } from "../ApiClient";
 import { User } from "../User";
 import { World } from "../World";
 const R = require("ramda");
@@ -65,12 +65,12 @@ export const steps = {
   debug: async function (this: World) {
     console.log("👾 ~ debug ~ this:", JSON.stringify(this, null, 2));
   },
-  "I am RestAPI client": async function (this: World) {
-    const client = new Client();
-    this.clients?.push(client);
-    this.me = client;
+  "I am RestAPI ApiClient": async function (this: World) {
+    const apiClient = new ApiClient();
+    this.apiClients?.push(apiClient);
+    this.me = apiClient;
 
-    // await client.openBrowser();
+    // await ApiClient.openBrowser();
   },
   "I request {string} {string}": async function (
     this: World,
@@ -83,7 +83,7 @@ export const steps = {
       throw new Error("No user");
     }
 
-    if (this.me instanceof Client) {
+    if (this.me instanceof ApiClient) {
       const response = await this.me.request({ method, url: pageUrl });
     }
     // console.log("🚀 ~ response:", response);
@@ -110,7 +110,7 @@ export const steps = {
       throw new Error("No user");
     }
 
-    if (this.me instanceof Client) {
+    if (this.me instanceof ApiClient) {
       await this.me.request({ method, url: pageUrl, data: body });
     }
   },
@@ -134,7 +134,7 @@ export const steps = {
 
       let requestError;
       try {
-        if (this.me instanceof Client) {
+        if (this.me instanceof ApiClient) {
           await this.me.request({ method, url: pageUrl, data: body });
         }
       } catch (error) {

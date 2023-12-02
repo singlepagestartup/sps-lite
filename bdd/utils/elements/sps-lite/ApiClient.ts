@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BACKEND_URL } from "../../constants";
 
-export class Client {
+export class ApiClient {
   baseUrl: string = BACKEND_URL;
   requests: any[] = [];
   lastRequest?: any;
