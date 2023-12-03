@@ -120,8 +120,7 @@ async function getModelPages({
     strapiModel = `api::${model}.${model}`;
   }
 
-  const modelEntites: any = await strapi.entityService.findMany(strapiModel, {
-    // @ts-ignore
+  const { results: modelEntites } = await strapi.service(strapiModel).find({
     locale: page.locale,
     pagination: { limit: "-1" },
   });

@@ -54,20 +54,16 @@ export default factories.createCoreController(
         throw new NotFoundError("Layout not found");
       }
 
-      const populatedPage = await strapi.entityService.findOne(
-        "api::page.page",
-        targetPage.id,
-        {
-          // @ts-ignore
+      const populatedPage = await strapi
+        .service("api::page.page")
+        .findOne(targetPage.id, {
           populate: {
             layout: "*",
           },
-        },
-      );
+        });
 
       const layout = await strapi
         .service("api::layout.layout")
-        // @ts-ignore
         .findOne(populatedPage.layout.id, sanitizedQuery);
 
       const sanitizedResults = await this.sanitizeOutput(layout, ctx);

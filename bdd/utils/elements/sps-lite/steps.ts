@@ -65,7 +65,7 @@ export const steps = {
   debug: async function (this: World) {
     console.log("👾 ~ debug ~ this:", JSON.stringify(this, null, 2));
   },
-  "I am RestAPI ApiClient": async function (this: World) {
+  "I am RestAPI client": async function (this: World) {
     const apiClient = new ApiClient();
     this.apiClients?.push(apiClient);
     this.me = apiClient;

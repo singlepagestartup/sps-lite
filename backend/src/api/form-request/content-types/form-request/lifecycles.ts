@@ -56,7 +56,7 @@ async function sideEffects({ event, sideEffect }) {
   await new Promise((resolve) => {
     const tm = setTimeout(() => {
       clearTimeout(tm);
-      resolve();
+      resolve(null);
     }, 20000);
   });
 
