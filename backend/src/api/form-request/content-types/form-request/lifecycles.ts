@@ -35,9 +35,13 @@ const populate = {
 module.exports = {
   async afterCreate(event) {
     const { result } = event;
-    const createdModel = await strapi.entityService.findOne(uid, result.id, {
-      populate,
-    });
+    const createdModel: any = await strapi.entityService.findOne(
+      uid,
+      result.id,
+      {
+        populate,
+      },
+    );
 
     if (createdModel.form && createdModel.form?.side_effects) {
       for (const sideEffect of createdModel.form.side_effects) {
@@ -60,7 +64,7 @@ async function sideEffects({ event, sideEffect }) {
     }, 20000);
   });
 
-  const createdModel = await strapi.entityService.findOne(uid, result.id, {
+  const createdModel: any = await strapi.entityService.findOne(uid, result.id, {
     populate,
   });
 

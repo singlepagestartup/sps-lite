@@ -120,10 +120,22 @@ async function getModelPages({
     strapiModel = `api::${model}.${model}`;
   }
 
-  const { results: modelEntites } = await strapi.service(strapiModel).find({
-    locale: page.locale,
+  const findProps = {
     pagination: { limit: "-1" },
-  });
+  };
+
+  const modelHasLocalization =
+    // @ts-ignore
+    strapi.api[strapiModel]?.contentTypes[strapiModel]?.pluginOptions?.i18n
+      ?.localized;
+
+  if (modelHasLocalization) {
+    findProps["locale"] = page.locale;
+  }
+
+  const { results: modelEntites } = await strapi
+    .service(strapiModel)
+    .find(findProps);
 
   if (modelEntites?.length) {
     const entitesUrls = [];

@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
-import { Browser } from "./Browser";
+import { Browser } from "../Browser";
 
 export class User {
   page?: Page;
