@@ -8,7 +8,6 @@ Feature: Clients can get page data by RestAPI
 
   Scenario: Client request layout by specific url
     Given I am RestAPI client
-
     When I request "GET" "/api/layouts/by-page-url?url=/"
     Then I recieve JSON data with field "data.variant" having type "string"
 
