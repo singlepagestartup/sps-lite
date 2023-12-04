@@ -32,6 +32,6 @@
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Default Dark+",
   "[feature]": {
-    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
