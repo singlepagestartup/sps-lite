@@ -9,7 +9,8 @@
     "format": "npm run prettier:fix && npm run lint:fix",
     "test:bdd": "PWVIDEO=true ./node_modules/.bin/cucumber-js **/*.feature",
     "test:bdd:only": "BDD_CUCUMBER_PRETTY=true PWVIDEO=true ./node_modules/.bin/cucumber-js $1",
-    "test:bdd:trace": "playwright show-trace $1"
+    "test:bdd:trace": "playwright show-trace $1",
+    "precommit": "npm run format"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
