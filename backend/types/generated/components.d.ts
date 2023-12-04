@@ -609,7 +609,7 @@ export interface PageBlocksSliderBlock extends Schema.Component {
 }
 
 declare module "@strapi/types" {
-  export namespace Shared {
+  export module Shared {
     export interface Components {
       "elements.button": ElementsButton;
       "elements.buttons-array": ElementsButtonsArray;

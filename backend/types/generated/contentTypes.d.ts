@@ -2161,7 +2161,7 @@ export interface ApiTopbarTopbar extends Schema.CollectionType {
 }
 
 declare module "@strapi/types" {
-  export namespace Shared {
+  export module Shared {
     export interface ContentTypes {
       "admin::permission": AdminPermission;
       "admin::user": AdminUser;
