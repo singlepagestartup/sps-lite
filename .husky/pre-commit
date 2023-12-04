@@ -3,4 +3,5 @@
 
 cd ./db && ./dump.sh && git add .
 
+npm run format
 npx lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents

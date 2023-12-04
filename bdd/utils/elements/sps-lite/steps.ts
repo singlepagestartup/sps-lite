@@ -43,7 +43,7 @@ export const steps = {
   },
   "I should be redirected to the {string} page": async function (
     this: World,
-    url: string
+    url: string,
   ) {
     if (!this.me) {
       throw new Error("No user");
@@ -75,7 +75,7 @@ export const steps = {
   "I request {string} {string}": async function (
     this: World,
     method: string,
-    url: string
+    url: string,
   ) {
     const pageUrl = replaceValue({ world: this, value: url });
 
@@ -92,7 +92,7 @@ export const steps = {
     this: World,
     method: string,
     url: string,
-    dataTable: any
+    dataTable: any,
   ) {
     let body = {};
 
@@ -141,7 +141,7 @@ export const steps = {
         requestError = error;
         console.log(
           "~ that test catchs an error:",
-          JSON.stringify(error, null, 2)
+          JSON.stringify(error, null, 2),
         );
       }
 
@@ -163,7 +163,7 @@ export const steps = {
   "I recieve JSON data with field {string} equals {string}": async function (
     this: World,
     path: string,
-    value: string
+    value: string,
   ) {
     const expectedValue = replaceValue({ world: this, value });
 
@@ -212,7 +212,7 @@ export const steps = {
   },
   "save request to world.cache {string}": async function (
     this: World,
-    path: string
+    path: string,
   ) {
     if (!this.me) {
       throw new Error("No user");

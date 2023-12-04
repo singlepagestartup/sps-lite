@@ -1,0 +1,15 @@
+# Copy paste from /frontend/.prettierignore and /backend/.prettierignore
+# https://github.com/prettier/prettier/issues/4081
+node_modules
+.next
+.storybook
+public
+out
+playwright-report
+test-results
+coverage
+**/artifacts
+.cache
+build
+dist
+**/seeds

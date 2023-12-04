@@ -11,7 +11,7 @@ When("I click {string} button", steps["I click {string} button"]);
 
 Then(
   "I should be redirected to the {string} page",
-  steps["I should be redirected to the {string} page"]
+  steps["I should be redirected to the {string} page"],
 );
 
 Given("I press key {string}", steps["I press key {string}"]);

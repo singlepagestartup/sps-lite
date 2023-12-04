@@ -1,28 +1,12 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "jest": true
-  },
-  "extends": [
-    "next",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:testing-library/react",
-    "prettier",
-    "plugin:storybook/recommended"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "testing-library", "@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "cucumber"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -30,16 +14,11 @@
   },
   "rules": {
     "prettier/prettier": "error",
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off",
     "comma-dangle": ["off"],
     "quotes": ["warn", "double"],
     "semi": ["off"],
     "no-duplicate-imports": "error",
-    "react/react-in-jsx-scope": ["off"],
     "no-empty-pattern": ["off"],
-    "react/display-name": ["off"],
-    "react/prop-types": ["off"],
     "array-callback-return": ["off"],
     "indent": ["off"],
     "multiline-ternary": ["off"],
@@ -52,13 +31,11 @@
     "@typescript-eslint/no-explicit-any": ["off"],
     "no-prototype-builtins": ["warn"],
     "@typescript-eslint/no-empty-interface": ["off"],
-    "@typescript-eslint/consistent-type-definitions": ["off"],
-    "testing-library/prefer-screen-queries": ["warn"],
-    "testing-library/no-node-access": ["warn"]
+    "@typescript-eslint/consistent-type-definitions": ["off"]
   },
   "overrides": [
     {
-      "files": "**/**.(js|jsx|ts|tsx)"
+      "files": "**/**.(js|jsx|ts|tsx|feature)"
     }
   ]
 }

@@ -30,5 +30,8 @@
   "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Default Light+",
-  "workbench.preferredDarkColorTheme": "Default Dark+"
+  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "[feature]": {
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+  }
 }

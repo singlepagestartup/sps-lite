@@ -21,7 +21,7 @@ function httpsPost({ body, ...options }) {
           }
           resolve(resBody);
         });
-      }
+      },
     );
     req.on("error", reject);
     if (body) {
@@ -34,7 +34,7 @@ function httpsPost({ body, ...options }) {
 function loginToPortainer({ url, portainer_username, portainer_password }) {
   return httpsPost({
     hostname: url,
-    path: `/api/auth`,
+    path: "/api/auth",
     headers: {
       "Content-Type": "application/json",
     },
@@ -64,7 +64,7 @@ function createWebhook({
   }).then((jwt) => {
     return httpsPost({
       hostname: url,
-      path: `/api/webhooks`,
+      path: "/api/webhooks",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
@@ -81,7 +81,7 @@ function createWebhook({
       if (webhook) {
         fs.writeFileSync(
           path.join(__dirname, `./${file_name}.json`),
-          JSON.stringify(webhook)
+          JSON.stringify(webhook),
         );
 
         createdFiles.push(path.join(__dirname, `./${file_name}.json`));
@@ -89,7 +89,7 @@ function createWebhook({
         if (webhook.Token) {
           fs.writeFileSync(
             path.join(__dirname, `./${file_name}_token`),
-            webhook.Token
+            webhook.Token,
           );
 
           createdFiles.push(path.join(__dirname, `./${file_name}_token`));

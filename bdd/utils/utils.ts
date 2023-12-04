@@ -2,6 +2,7 @@ const R = require("ramda");
 import { Page } from "@playwright/test";
 import { World } from "./elements/World";
 import path from "path";
+import { faker } from "@faker-js/faker";
 
 export function pathReplacer({ parent, path }: { parent: any; path: string }) {
   const replacedPath = path.replace(/\[/g, ".").replace(/\]/g, "");
@@ -20,7 +21,7 @@ export function replaceValue({
   if (value.includes("__world.")) {
     const slicedValue = value.split("__"); //?
     const indexOftoReplaceValue = slicedValue.findIndex((item) =>
-      item.includes("world.")
+      item.includes("world."),
     ); //?
     const toReplaceValue =
       slicedValue.length >= 2 ? value.split("__")[1] : value.split("__")[0];
@@ -57,6 +58,13 @@ export function replaceValue({
     const replacedValue = value.replace("__random__", randomValue);
 
     return replacedValue;
+  }
+
+  if (value.includes("__faker.")) {
+    const fakerValue = value.replace("__faker.", "").replace("__", ""); //?
+    const fakerFunction = R.path(fakerValue.split("."), faker);
+
+    return fakerFunction();
   }
 
   return value;

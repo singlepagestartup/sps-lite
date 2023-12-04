@@ -9,7 +9,7 @@
     - name: Get ansible ansible_system_vendor
       set_fact:
         ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
-    
+
     - name: Copy create_traefik_user.sh file
       ansible.builtin.template:
         src: create_traefik_user.sh

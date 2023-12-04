@@ -45,4 +45,3 @@
             - "{{ service_url }}.key"
             - "{{ service_url }}_certificate_id"
       when: certificate_id_file.stat.exists == True
-

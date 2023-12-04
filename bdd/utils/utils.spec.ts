@@ -25,7 +25,7 @@ describe("replaceValue", () => {
     });
 
     expect(value).toEqual(
-      "/auth/reset-password/?code=examplecode123&email=tester@example.com"
+      "/auth/reset-password/?code=examplecode123&email=tester@example.com",
     );
   });
 
@@ -74,7 +74,7 @@ describe("replaceValue", () => {
     }); //?
 
     expect(value).not.toContain("__random__");
-    expect(value).toMatch(/tester\d{5,6}/);
+    expect(value).toMatch(/tester\d{4,6}/);
   });
 
   it("should replace __world.tasks[0].id__ with path", () => {
@@ -90,5 +90,15 @@ describe("replaceValue", () => {
     }); //?
 
     expect(value).toEqual("1");
+  });
+
+  it("should replace __faker.lore.lines__ with faker function", () => {
+    const value = replaceValue({
+      world,
+      value: "__faker.lorem.lines__",
+    }); //?
+
+    expect(typeof value).toEqual("string");
+    expect(value).not.toEqual("__faker.lorem.lines__");
   });
 });

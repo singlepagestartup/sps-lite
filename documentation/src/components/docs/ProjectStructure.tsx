@@ -356,15 +356,15 @@ function Parent({
     children && Array.isArray(children)
       ? children
       : children
-      ? [children]
-      : null;
+        ? [children]
+        : null;
 
   return (
     <span>
       <span>
         {tabs ? Array.from({ length: tabs }, () => "|     ").join("") : null}
         {isLast ? "└" : "├"}
-        {`────`} {title}{" "}
+        {"────"} {title}{" "}
         {comment ? <span className="comment"># {comment}</span> : null}
         <br />
       </span>

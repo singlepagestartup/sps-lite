@@ -39,7 +39,7 @@ export class User {
   }: {
     locator: string;
     value: string;
-    type?: "text" | "checkbox";
+    type?: "text" | "checkbox" | "options";
   }) {
     if (!this.page) {
       return;
@@ -50,6 +50,15 @@ export class User {
         await this.page.locator(locator).click();
       }
 
+      return;
+    } else if (type === "options") {
+      await this.page.locator(locator).click();
+      await this.page
+        .locator(locator)
+        .locator(".options")
+        .getByText(value, { exact: true })
+        .first()
+        .click();
       return;
     }
 

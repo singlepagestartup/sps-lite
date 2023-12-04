@@ -29,7 +29,7 @@ function Reporter(options: any) {
           urlTemplate: "http://localhost:5000/tms/%s",
         },
       ],
-    }
+    },
   );
 }
 
