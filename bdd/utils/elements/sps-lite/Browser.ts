@@ -10,10 +10,10 @@ import {
 import { Status } from "@cucumber/cucumber";
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
 import { ensureDir } from "fs-extra";
-import { config as playwrightConfig } from "../../../../playwright.config";
+import { config as playwrightConfig } from "../../../playwright.config";
 
-const tracesDir = "bdd/artifacts/traces";
-const screenshotsDir = "bdd/artifacts/screenshots";
+const tracesDir = "artifacts/traces";
+const screenshotsDir = "artifacts/screenshots";
 
 const launchOptions: LaunchOptions = {
   ...playwrightConfig.use,

@@ -1,11 +1,11 @@
 import { PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
-import { FRONTEND_URL } from "./bdd/utils/constants";
+import { FRONTEND_URL } from "./utils/constants";
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export const config: PlaywrightTestConfig = {
-  testDir: "bdd/e2e/",
+  testDir: "e2e/",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -28,7 +28,7 @@ export const config: PlaywrightTestConfig = {
     [
       "html",
       {
-        outputFolder: "bdd/artifacts/playwright/",
+        outputFolder: "artifacts/playwright/",
         outputFile: "./report.html",
         open: "never",
       },
@@ -87,7 +87,7 @@ export const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: "bdd/artifacts/playwright/",
+  outputDir: "artifacts/playwright/",
 
   /* Run your local dev server before starting the tests */
   // webServer: {

@@ -19,6 +19,6 @@
     "typeRoots": ["./node_modules/@types", "types"],
     "plugins": []
   },
-  "include": ["bdd/**/*.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["node_modules"]
 }
