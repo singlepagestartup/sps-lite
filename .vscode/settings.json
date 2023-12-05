@@ -1,6 +1,6 @@
 {
   "editor.wordWrap": "on",
-  "[javascript|javascriptreact|typescriptreact]": {
+  "[javascript|javascriptreact|typescriptreact|feature]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
@@ -30,8 +30,5 @@
   "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Default Light+",
-  "workbench.preferredDarkColorTheme": "Default Dark+",
-  "[feature]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "workbench.preferredDarkColorTheme": "Default Dark+"
 }
