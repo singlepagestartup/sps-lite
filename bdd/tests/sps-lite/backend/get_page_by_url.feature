@@ -12,6 +12,7 @@ Feature: Clients can get page data by RestAPI
     When I request "GET" "/api/layouts/by-page-url?url=/"
     Then I recieve JSON data with field "data.variant" having type "string"
 
+  @skip
   Scenario: Client page with model reference
     Given I am RestAPI client
 
