@@ -12,6 +12,7 @@ describe("replaceValue", () => {
       parameters: {},
     };
   });
+
   it("should replace the __world.user.email__ in the '/auth/reset-password/?code=examplecode123&email=__world.user.email__' by world.user.email value", () => {
     world.user = {
       email: "tester@example.com",
