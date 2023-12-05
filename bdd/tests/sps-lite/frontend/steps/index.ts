@@ -1,5 +1,5 @@
 import { When, Then, Given } from "@cucumber/cucumber";
-import { steps } from "../../../utils/elements/steps";
+import { steps } from "../../../../utils/elements/steps";
 
 Given("I am a guest user", steps["I am a guest user"]);
 

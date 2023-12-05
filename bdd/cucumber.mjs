@@ -6,7 +6,7 @@ const getWorldParams = () => {
 
 const config = {
   requireModule: ["ts-node/register"],
-  require: ["**/!(*.spec).ts"],
+  require: ["tests/**/*.ts", "utils/**/!(*.spec).ts"],
   format: ["html:artifacts/reports/report.html", "summary", "progress-bar"],
   formatOptions: { snippetInterface: "async-await" },
   worldParameters: getWorldParams(),

@@ -7,7 +7,7 @@
     "lint:fix": "eslint --fix .",
     "prettier:fix": "prettier --write .",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "test:bdd": "PWVIDEO=true ./node_modules/.bin/cucumber-js **/*.feature",
+    "test:bdd": "PWVIDEO=true ./node_modules/.bin/cucumber-js tests/**/*.feature",
     "test:bdd:only": "BDD_CUCUMBER_PRETTY=true PWVIDEO=true ./node_modules/.bin/cucumber-js $1",
     "test:bdd:trace": "playwright show-trace $1",
     "precommit": "lint-staged"

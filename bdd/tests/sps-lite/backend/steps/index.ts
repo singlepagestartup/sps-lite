@@ -1,5 +1,5 @@
 import { When, Then, Given } from "@cucumber/cucumber";
-import { steps } from "../../../utils/elements/steps";
+import { steps } from "../../../../utils/elements/steps";
 
 Given("I am RestAPI client", steps["I am RestAPI client"]);
 
