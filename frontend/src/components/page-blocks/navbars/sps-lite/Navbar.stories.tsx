@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Navbars, { ISpsLiteNavbarBlock } from ".";
 import { spsLiteBackendNavbarBlockSimple } from "~mocks/components/page-blocks/sps-lite";
-import { rest, setupWorker } from "msw";
+import { setupServer } from "msw/node";
+import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
 import { useEffect } from "react";
@@ -15,18 +16,18 @@ type Story = StoryObj<typeof meta>;
 
 console.log("If you don't see page block in storybook - refresh the page");
 
-const worker = setupWorker(
-  rest.get(
+const server = setupServer(
+  http.get(
     `${BACKEND_URL}/api/flyout-menus/${spsLiteBackendFlyoutSimple.id}`,
-    (req, res, ctx) => {
-      return res(ctx.json({ data: spsLiteBackendFlyoutSimple }));
+    ({ request }) => {
+      return HttpResponse.json({ data: spsLiteBackendFlyoutSimple });
     },
   ),
 );
 
 function NavbarBlockComponent(args: ISpsLiteNavbarBlock) {
   useEffect(() => {
-    worker.start();
+    server.listen();
   }, []);
 
   return (

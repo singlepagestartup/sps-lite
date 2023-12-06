@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { rest, setupWorker } from "msw";
+import { setupServer } from "msw/node";
+import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
@@ -14,9 +15,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const worker = setupWorker(
-  rest.get(`${BACKEND_URL}/api/reviews`, (req, res, ctx) => {
-    return res(ctx.json(Array(5).fill(spsLiteBackendReview)));
+const server = setupServer(
+  http.get(`${BACKEND_URL}/api/reviews`, ({ request }) => {
+    return HttpResponse.json(Array(5).fill(spsLiteBackendReview));
   }),
 );
 
@@ -27,7 +28,7 @@ export const Simple: Story = {
 
 function ReviewsTableComponent(args: ISpsLiteReviewsTableBlock) {
   useEffect(() => {
-    worker.start();
+    server.listen();
   }, []);
 
   return (

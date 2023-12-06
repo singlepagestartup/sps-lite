@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { setupWorker, rest } from "msw";
+import { http, HttpResponse } from "msw";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
@@ -15,15 +15,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const worker = setupWorker(
-  rest.get(`${BACKEND_URL}/api/modals`, (req, res, ctx) => {
-    return res(ctx.json([spsLiteBackendModal]));
-  }),
-);
-
 function ModalComponent() {
   useEffect(() => {
-    worker.start();
+    http.get(`${BACKEND_URL}/api/modals`, ({ request }) => {
+      return HttpResponse.json([spsLiteBackendModal]);
+    });
   }, []);
 
   return (

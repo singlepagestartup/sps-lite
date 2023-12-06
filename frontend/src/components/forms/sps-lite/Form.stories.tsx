@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { rest, setupWorker } from "msw";
+import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
@@ -13,12 +13,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const worker = setupWorker(
-  rest.post(`${BACKEND_URL}/api/form-requests`, (req, res, ctx) => {
-    return res(ctx.json({}));
-  }),
-);
-
 export const SimpleCentered: Story = {
   render: (args) => <FormComponent {...args} />,
   args: spsLiteBackendForm,
@@ -26,7 +20,9 @@ export const SimpleCentered: Story = {
 
 function FormComponent(args: ISpsLiteFormBlock) {
   useEffect(() => {
-    worker.start();
+    http.post(`${BACKEND_URL}/api/form-requests`, ({ request }) => {
+      return HttpResponse.json({});
+    });
   }, []);
 
   return (

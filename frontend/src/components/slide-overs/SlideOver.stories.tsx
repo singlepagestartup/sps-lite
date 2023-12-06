@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SlideOvers from ".";
 import { spsLiteBackendSlideOverRightSideHalfWidth } from "~mocks/collection-types/sps-lite";
-import { rest, setupWorker } from "msw";
+import { setupServer } from "msw/node";
+import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
@@ -12,15 +13,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const worker = setupWorker(
-  rest.get(`${BACKEND_URL}/api/slide-overs`, (req, res, ctx) => {
-    return res(ctx.json([spsLiteBackendSlideOverRightSideHalfWidth]));
+const server = setupServer(
+  http.get(`${BACKEND_URL}/api/slide-overs`, ({ request }) => {
+    return HttpResponse.json([spsLiteBackendSlideOverRightSideHalfWidth]);
   }),
 );
 
 function SlideOverComponent() {
   useEffect(() => {
-    worker.start();
+    server.listen();
   }, []);
 
   return (

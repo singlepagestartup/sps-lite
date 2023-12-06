@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { rest, setupWorker } from "msw";
 import ContactSectons, { ISpsLiteContactSectonBlock } from ".";
 import { spsLiteBackendContactSectionBlockCentered } from "~mocks/components/page-blocks/sps-lite";
 import { useEffect } from "react";
