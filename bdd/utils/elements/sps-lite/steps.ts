@@ -15,7 +15,6 @@ export const steps = {
   },
   "I am on {string} page": async function (this: World, url: string) {
     const pageUrl = replaceValue({ world: this, value: url });
-    console.log("🚀 ~ pageUrl:", pageUrl);
 
     if (!this.me) {
       throw new Error("No user");
