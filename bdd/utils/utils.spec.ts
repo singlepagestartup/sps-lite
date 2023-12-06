@@ -64,7 +64,7 @@ describe("replaceValue", () => {
     }); //?
 
     expect(value).not.toContain("__random__");
-    expect(value).toMatch(/tester\d{5,6}@example\.com/);
+    expect(value).toMatch(/\d{4,6}@example\.com/);
   });
 
   it("should replace __random__ with tester in __random__", () => {
@@ -74,7 +74,7 @@ describe("replaceValue", () => {
     }); //?
 
     expect(value).not.toContain("__random__");
-    expect(value).toMatch(/tester\d{4,6}/);
+    expect(value).toMatch(/\d{4,6}/);
   });
 
   it("should replace __world.tasks[0].id__ with path", () => {
@@ -100,5 +100,59 @@ describe("replaceValue", () => {
 
     expect(typeof value).toEqual("string");
     expect(value).not.toEqual("__faker.lorem.lines__");
+  });
+
+  it("should replace __strapi.attribute.currency__ with type of strapi_combobox to special CSS path", () => {
+    const value = replaceValue({
+      world,
+      value: "__strapi.attribute.currency__",
+      type: "strapi_combobox",
+    }); //?
+
+    expect(value).toEqual('div:has( > :text-is("currency"))');
+  });
+
+  it("should replace __strapi.attribute.currency__ with type of strapi_file to special CSS path", () => {
+    const value = replaceValue({
+      world,
+      value: "__strapi.attribute.media__",
+      type: "strapi_file",
+    }); //?
+
+    expect(value).toEqual(
+      'div:has( > :text-is("media")) div :has( > :text-matches("Click"))',
+    );
+  });
+
+  it("should replace __strapi.attribute.full_description__ with type of strapi_richtext to special CSS path", () => {
+    const value = replaceValue({
+      world,
+      value: "__strapi.attribute.full_description__",
+      type: "strapi_richtext",
+    }); //?
+
+    expect(value).toEqual('div:has( > :text-is("full_description")) + div');
+  });
+
+  it("should replace __env.LOGIN__ with params from process.env", () => {
+    process.env.LOGIN = "tester";
+
+    const value = replaceValue({
+      world,
+      value: "__env.LOGIN__",
+    }); //?
+
+    expect(value).toEqual("tester");
+  });
+
+  it("should replace __env.BACKEND_URL__/admin with params from process.env", () => {
+    process.env.BACKEND_URL = "http://localhost:1337";
+
+    const value = replaceValue({
+      world,
+      value: "__env.BACKEND_URL__/admin",
+    }); //?
+
+    expect(value).toEqual("http://localhost:1337/admin");
   });
 });

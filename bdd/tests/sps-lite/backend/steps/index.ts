@@ -45,3 +45,10 @@ When(
 );
 
 Then("sleep {string}", steps["sleep {string}"]);
+
+When(
+  "I fill in the following details:",
+  steps["I fill in the following details:"],
+);
+
+Given("I am a dashboard admin user", steps["I am a dashboard admin user"]);

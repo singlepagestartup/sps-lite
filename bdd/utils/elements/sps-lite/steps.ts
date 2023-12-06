@@ -15,6 +15,7 @@ export const steps = {
   },
   "I am on {string} page": async function (this: World, url: string) {
     const pageUrl = replaceValue({ world: this, value: url });
+    console.log("🚀 ~ pageUrl:", pageUrl);
 
     if (!this.me) {
       throw new Error("No user");
@@ -171,7 +172,10 @@ export const steps = {
       throw new Error("No user");
     }
 
-    const result = pathReplacer({ parent: this.me.lastRequest.response, path });
+    const result = pathReplacer({
+      parent: this.me.lastRequest.response,
+      path,
+    });
 
     expect(result).toEqual(expectedValue);
   },
@@ -225,5 +229,38 @@ export const steps = {
   "sleep {string}": async function (this: World, timeout: string) {
     const ms = parseInt(timeout);
     await new Promise((resolve) => setTimeout(resolve, ms));
+  },
+  "I fill in the following details:": async function (
+    this: World,
+    dataTable: any,
+  ) {
+    if (!this.me) {
+      throw new Error("No user");
+    }
+
+    for (const row of dataTable.hashes() as any[]) {
+      const value = replaceValue({ world: this, value: row.value });
+      const locator = replaceValue({
+        world: this,
+        value: row.locator,
+        type: row.type,
+      });
+
+      if (this.me instanceof User) {
+        await this.me.fillInput({
+          locator,
+          value,
+          type: row.type,
+        });
+      }
+    }
+  },
+  "I am a dashboard admin user": async function (this: World) {
+    const user = new User();
+    this.users?.push(user);
+    this.me = user;
+
+    await user.openBrowser();
+    await user.loginToDashboard();
   },
 };
