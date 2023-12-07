@@ -82,6 +82,8 @@ export interface ISpsLiteBackendInput {
     | "date"
     | "datetime"
     | "date_inline"
+    | "daterange_inline"
+    | "datetimerange_inline"
     | null;
   multiple: boolean | null;
   min: number | null;

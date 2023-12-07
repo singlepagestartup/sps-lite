@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { IYourProjectBackendPage } from "types/collection-types/your-project";
+import { IBackendPage } from "types/collection-types";
 import { getFiltersFromPageUrl, getTargetPage } from "~utils/api";
 const R = require("ramda");
 
@@ -9,8 +9,8 @@ export default function useGetPageUrlModelId({
 }: {
   modelName: string;
 }) {
-  const params = useParams();
-  const [page, setPage] = useState<IYourProjectBackendPage>();
+  const params = useParams(); //?
+  const [page, setPage] = useState<IBackendPage>(); //?
 
   useEffect(() => {
     if (params) {

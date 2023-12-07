@@ -16,7 +16,7 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
       if (searchParamsStringified) {
         const parsedSearchParams = QueryString.parse(
           decodeURIComponent(searchParamsStringified),
-        );
+        ); //?
 
         if (parsedSearchParams[inputName]) {
           if (localInput) {

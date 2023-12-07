@@ -1,17 +1,17 @@
 import { useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import { IYourProjectBackendPage } from "types/collection-types/your-project";
-import { getFiltersFromPageUrl, getTargetPage } from "~utils/api";
+import { useEffect, useMemo } from "react";
+import { useLazyGetTargetPageQuery } from "~redux/services/backend/models/pages";
+import { getFiltersFromPageUrl } from "~utils/api";
 
 export default function useGetPageUrlFiltersQuery() {
   const params = useParams();
-  const [page, setPage] = useState<IYourProjectBackendPage>();
+  const [getTargetPage, { data: page }] = useLazyGetTargetPageQuery();
 
   useEffect(() => {
     if (params) {
-      getTargetPage(params).then((res) => {
-        setPage(res);
-      });
+      const passParams = params.url ? params : { ...params, url: "/" }; //?
+
+      getTargetPage(passParams);
     }
   }, [JSON.stringify(params)]);
 
@@ -20,12 +20,12 @@ export default function useGetPageUrlFiltersQuery() {
       return;
     }
 
-    const pageUrlFilters = getFiltersFromPageUrl({ page, params });
+    const pageUrlFilters = getFiltersFromPageUrl({ page, params }); //?
 
     return {
       $and: pageUrlFilters,
     };
   }, [page, params]);
 
-  return filters;
+  return filters; //?
 }

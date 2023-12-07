@@ -11,6 +11,7 @@ export default function useTranslations() {
     if (params?.locale) {
       try {
         import(`../../../translations/${params.locale}.json`).then((res) => {
+          res; //?
           setTranslations(res);
         });
       } catch (error) {
@@ -19,8 +20,12 @@ export default function useTranslations() {
     }
   }, [params?.locale]);
 
+  translations; //?
+
   const translate = useCallback(
     (key: string) => {
+      key; //?
+      translations; //?
       if (translations && translations[key]) {
         return translations[key];
       }

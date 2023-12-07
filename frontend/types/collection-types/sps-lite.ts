@@ -52,12 +52,13 @@ export interface ISpsLiteBackendPage {
   url: string;
   locale: string;
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-  localizations: ISpsLiteBackendPage[] | null;
+  localizations?: ISpsLiteBackendPage[] | null;
   layout?: ISpsLiteBackendLayout | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   metatag?: ISpsLiteBackendMetatag | null;
+  urls?: { url: string; locale: string }[] | null;
 }
 
 export interface ISpsLiteBackendReview {
