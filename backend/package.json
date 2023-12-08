@@ -14,7 +14,7 @@
     "format": "npm run prettier:fix && npm run lint:fix",
     "lint": "eslint . --resolve-plugins-relative-to .",
     "lint:fix": "eslint --fix . --resolve-plugins-relative-to .",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm run build",
     "prettier:fix": "prettier --write . --config .prettierrc",
     "start": "strapi start",
     "strapi": "strapi",

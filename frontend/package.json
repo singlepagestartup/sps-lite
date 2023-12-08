@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix . --resolve-plugins-relative-to .",
     "prettier:fix": "prettier --write . --config .prettierrc",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
