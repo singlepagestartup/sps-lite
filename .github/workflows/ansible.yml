@@ -1,4 +1,4 @@
-name: Sub env
+name: Ansible
 
 on:
   workflow_dispatch:
@@ -63,6 +63,7 @@ jobs:
             "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
             "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
             "SEED_ENTITES ${{ secrets.SEED_ENTITES }}"\
+            "UPLOAD_PROVIDER ${{ secrets.UPLOAD_PROVIDER }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
             "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
