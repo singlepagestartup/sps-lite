@@ -59,6 +59,7 @@ export async function getBackendData(props: IFetchProps) {
       }
     })
     .catch((error) => {
+      error; //?
       console.error(`\n ${method} ${url}?${query} | ${error.message}`);
     });
 

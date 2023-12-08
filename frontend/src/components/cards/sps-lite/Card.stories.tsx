@@ -7,6 +7,10 @@ import Cards, { ICardProps } from "..";
 import { IBackendReview } from "types/collection-types";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
+import { HttpResponse, http } from "msw";
+import { useEffect } from "react";
+import axios from "axios";
+import { BACKEND_URL } from "~utils/envs";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 
@@ -31,10 +35,31 @@ export const Simple: Story = {
     cardsConfig,
     showSkeletons: false,
   },
+  parameters: {
+    msw: {
+      handlers: [
+        http.get(`${BACKEND_URL}/user`, ({ request }) => {
+          return HttpResponse.json({
+            firstName: "Neil",
+            lastName: "Maverick",
+          });
+        }),
+      ],
+    },
+  },
 };
 
 function SimpleWithAvatarCard(props: ICardProps) {
   const { item }: { item: IBackendReview } = props;
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `${BACKEND_URL}/user`,
+    }).then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <div className="flex space-x-4 text-sm text-gray-500">
