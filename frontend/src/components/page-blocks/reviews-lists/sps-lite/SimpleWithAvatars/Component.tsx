@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
-import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
+import { api as reviewApi } from "~redux/services/backend/models/review/api";
 import Cards, { ICardProps } from "~components/cards";
-import { IBackendReview } from "types/collection-types";
 import { ISpsLiteReviewsListBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
+import { IBackendReview } from "~redux/services/backend/models/review/interfaces";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -23,7 +23,7 @@ export default function Component(props: ISpsLiteReviewsListBlock) {
     isLoading,
     isFetching,
     isUninitialized,
-  } = useGetReviewsQuery({});
+  } = reviewApi.useGetQuery({});
 
   return (
     <div className="bg-white mx-auto max-w-7xl my-16">

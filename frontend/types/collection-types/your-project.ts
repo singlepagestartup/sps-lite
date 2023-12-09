@@ -4,7 +4,6 @@ import {
   ISpsLiteBackendForm,
   ISpsLiteBackendLocale,
   ISpsLiteBackendMetatag,
-  ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
   ISpsLiteBackendSlider,
@@ -15,8 +14,6 @@ import {
 export interface IYourProjectBackendTier extends ISpsLiteBackendTier {}
 
 export interface IYourProjectBackendForm extends ISpsLiteBackendForm {}
-
-export interface IYourProjectBackendReview extends ISpsLiteBackendReview {}
 
 export interface IYourProjectBackendSlider extends ISpsLiteBackendSlider {}
 

@@ -4,13 +4,13 @@ import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
 import Cards, { ICardProps } from "..";
-import { IBackendReview } from "types/collection-types";
 import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
 import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "~utils/envs";
+import { IBackendReview } from "~redux/services/backend/models/review/interfaces";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 

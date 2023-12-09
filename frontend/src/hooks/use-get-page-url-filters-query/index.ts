@@ -1,17 +1,17 @@
 import { useParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
-import { useLazyGetTargetPageQuery } from "~redux/services/backend/models/pages";
+import { api as pageApi } from "~redux/services/backend/models/page/api";
 import { getFiltersFromPageUrl } from "~utils/api";
 
 export default function useGetPageUrlFiltersQuery() {
   const params = useParams();
-  const [getTargetPage, { data: page }] = useLazyGetTargetPageQuery();
+  const [getByUrl, { data: page }] = pageApi.useLazyGetByUrlQuery();
 
   useEffect(() => {
     if (params) {
       const passParams = params.url ? params : { ...params, url: "/" }; //?
 
-      getTargetPage(passParams);
+      getByUrl(passParams);
     }
   }, [JSON.stringify(params)]);
 

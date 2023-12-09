@@ -1,5 +1,5 @@
-import { IBackendPage } from "types/collection-types";
 import PageBlocks from "~components/page-blocks";
+import { IBackendPage } from "~redux/services/backend/models/page/interfaces";
 import { getBackendData } from "~utils/api";
 import { pagePopulate } from "~utils/api/queries";
 import { BACKEND_URL } from "~utils/envs";

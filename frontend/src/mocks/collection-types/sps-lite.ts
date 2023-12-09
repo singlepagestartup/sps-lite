@@ -2,7 +2,6 @@ import {
   ISpsLiteBackendFlyout,
   ISpsLiteBackendForm,
   ISpsLiteBackendMetatag,
-  ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
   ISpsLiteBackendSlider,
@@ -36,6 +35,7 @@ import { ISpsLiteBackendLayout } from "~redux/services/backend/models/layout/int
 import { ISpsLiteBackendModal } from "~redux/services/backend/models/modal/interfaces/sps-lite";
 import { ISpsLiteBackendNavbar } from "~redux/services/backend/models/navbar/interfaces/sps-lite";
 import { ISpsLiteBackendPage } from "~redux/services/backend/models/page/interfaces/sps-lite";
+import { ISpsLiteBackendReview } from "~redux/services/backend/models/review/interfaces/sps-lite";
 
 export const spsLiteBackendSliderFadeWithPreviews: ISpsLiteBackendSlider = {
   id: 6,

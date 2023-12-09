@@ -1,6 +1,6 @@
+import { IBackendPage } from "~redux/services/backend/models/page/interfaces";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
-import { IBackendPage } from "types/collection-types";
 
 async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({

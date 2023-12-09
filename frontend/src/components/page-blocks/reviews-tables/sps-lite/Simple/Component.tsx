@@ -7,7 +7,7 @@ import Tables, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "~components/tables";
-import { useGetReviewsQuery } from "~redux/services/backend/models/reviews";
+import { api as reviewApi } from "~redux/services/backend/models/review/api";
 import { ISpsLiteReviewsTableBlock } from "..";
 
 const tableConfig = {
@@ -62,7 +62,7 @@ export default function Component(props: ISpsLiteReviewsTableBlock) {
     isLoading,
     isFetching,
     isUninitialized,
-  } = useGetReviewsQuery({});
+  } = reviewApi.useGetQuery({});
 
   return (
     <div className="bg-gray-50 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">

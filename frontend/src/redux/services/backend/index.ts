@@ -2,14 +2,10 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 import { createNotification } from "~components/notifications";
-import {
-  pageBlockPopulate,
-  reviewPopulate,
-  slideOverPropulate,
-} from "~utils/api/queries";
+import { pageBlockPopulate, slideOverPropulate } from "~utils/api/queries";
 import { strapiFetchBaseQueryBuilder } from "~utils/api/strapi-rtk";
 
-const tagTypes = ["Sidebar", "Review", "SlideOver", "Topbar", "FormRequest"];
+const tagTypes = ["Sidebar", "SlideOver", "Topbar", "FormRequest"];
 
 export const backendServiceApi = createApi({
   baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
@@ -78,5 +74,4 @@ export const frontendApiStaticModels = [
   { url: "sidebars", populate: pageBlockPopulate },
   { url: "slide-overs", populate: slideOverPropulate },
   { url: "topbars", populate: pageBlockPopulate },
-  { url: "reviews", populate: reviewPopulate },
 ];

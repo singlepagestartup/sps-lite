@@ -16,6 +16,7 @@ import { api as loaderApi } from "~redux/services/backend/models/loader/api";
 import { api as modalApi } from "~redux/services/backend/models/modal/api";
 import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
 import { api as pageApi } from "~redux/services/backend/models/page/api";
+import { api as reviewApi } from "~redux/services/backend/models/review/api";
 
 const middlewares = [
   backendServiceApi.middleware,
@@ -29,6 +30,7 @@ const middlewares = [
   modalApi.middleware,
   navbarApi.middleware,
   pageApi.middleware,
+  reviewApi.middleware,
   rtkQueryErrorLogger,
 ];
 
@@ -45,6 +47,7 @@ const store: any = configureStore({
     [modalApi.reducerPath]: modalApi.reducer,
     [navbarApi.reducerPath]: navbarApi.reducer,
     [pageApi.reducerPath]: pageApi.reducer,
+    [reviewApi.reducerPath]: reviewApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),

@@ -1,6 +1,5 @@
 import {
   ISpsLiteBackendForm,
-  ISpsLiteBackendReview,
   ISpsLiteBackendSlider,
   ISpsLiteBackendTier,
 } from "types/collection-types/sps-lite";
@@ -13,6 +12,7 @@ import {
   ISpsLiteBackendFeature,
   ISpsLiteBackendLogotype,
 } from "../elements/sps-lite";
+import { ISpsLiteBackendReview } from "~redux/services/backend/models/review/interfaces/sps-lite";
 
 export interface ISpsLiteBackendPageBlock {
   id: number;

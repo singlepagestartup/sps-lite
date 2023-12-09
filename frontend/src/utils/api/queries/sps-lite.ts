@@ -1,4 +1,5 @@
 import { populate as currencyPopulate } from "~redux/services/backend/models/currency/populate";
+import { populate as reviewPopulate } from "~redux/services/backend/models/review/populate";
 
 export const mediaPopulate = {
   formats: {
@@ -100,15 +101,6 @@ export const faqPopulate = "*";
 
 export const metatagPopulate = {
   favicon: {
-    populate: mediaPopulate,
-  },
-};
-
-export const reviewPopulate = {
-  media: {
-    populate: mediaPopulate,
-  },
-  additional_media: {
     populate: mediaPopulate,
   },
 };

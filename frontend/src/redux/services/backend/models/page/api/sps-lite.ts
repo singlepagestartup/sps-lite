@@ -20,7 +20,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getPages: strapiFind<IBackendPage>({
+    get: strapiFind<IBackendPage>({
       serviceApi: this,
       build,
       populate,
@@ -28,7 +28,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getPageById: strapiFindOne<IBackendPage>({
+    getById: strapiFindOne<IBackendPage>({
       serviceApi: this,
       build,
       populate,
@@ -36,7 +36,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getTargetPage: build.query<IBackendPage, any>({
+    getByUrl: build.query<IBackendPage, any>({
       query: (params: any = {}) => {
         const { populate, locale, filters, pagination, url } = params;
 

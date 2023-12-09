@@ -6,7 +6,6 @@ import {
   IYourProjectBackendLayout,
   IYourProjectBackendLocale,
   IYourProjectBackendMetatag,
-  IYourProjectBackendReview,
   IYourProjectBackendSidebar,
   IYourProjectBackendSlideOver,
   IYourProjectBackendSlider,
@@ -30,8 +29,6 @@ export interface IBackendPagination {
 export interface IBackendTier extends IYourProjectBackendTier {}
 
 export interface IBackendForm extends IYourProjectBackendForm {}
-
-export interface IBackendReview extends IYourProjectBackendReview {}
 
 export interface IBackendSlider extends IYourProjectBackendSlider {}
 

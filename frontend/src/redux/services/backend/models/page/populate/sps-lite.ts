@@ -1,4 +1,4 @@
-import { reviewPopulate } from "~utils/api/queries";
+import { populate as reviewPopulate } from "~redux/services/backend/models/review/populate/sps-lite";
 import {
   buttonArrayPopulate,
   buttonPopulate,
