@@ -2,8 +2,8 @@ import Text from "./Text";
 import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
-import { ISpsLiteBackendButton } from "types/components/elements/sps-lite";
 import Locale from "./Locale";
+import { ISpsLiteBackendButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
 
 export interface ISpsLiteButton
   extends Omit<

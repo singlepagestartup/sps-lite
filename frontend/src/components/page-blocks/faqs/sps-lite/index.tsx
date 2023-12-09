@@ -1,8 +1,8 @@
 import { FC } from "react";
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
-import { ISpsLiteBackendFaqBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendFaqsBlock } from "~redux/services/backend/components/page-blocks/faqs-block/interfaces/sps-lite";
 
-export interface ISpsLiteFaqBlock extends ISpsLiteBackendFaqBlock {
+export interface ISpsLiteFaqBlock extends ISpsLiteBackendFaqsBlock {
   showSkeletons?: boolean;
 }
 

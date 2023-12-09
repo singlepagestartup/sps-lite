@@ -4,10 +4,10 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import useTranslations from "~hooks/use-translations";
 import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
-import { IBackendTier } from "types/collection-types";
 import { ISpsLitePricingsBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { ISpsLiteBackendTier } from "~redux/services/backend/models/tier/interfaces/sps-lite";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -90,7 +90,7 @@ export default function Component(props: ISpsLitePricingsBlock) {
 
 function TierCard(props: ICardProps) {
   const translate = useTranslations();
-  const { item }: { item: IBackendTier } = props;
+  const { item }: { item: ISpsLiteBackendTier } = props;
 
   return (
     <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">

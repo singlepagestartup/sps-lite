@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPricingsBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendPricingsBlock } from "~redux/services/backend/components/page-blocks/pricing-block/interfaces/sps-lite";
 import TwoColumnsCard from "./TwoColumnsCard";
 import { FC } from "react";
 

@@ -1,4 +1,4 @@
-import { ISpsLiteBackendReviewsTableBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendReviewsTableBlock } from "~redux/services/backend/components/page-blocks/reviews-table-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 

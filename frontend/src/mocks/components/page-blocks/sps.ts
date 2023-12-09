@@ -1,6 +1,6 @@
-import { ISpsBackendHeroSectionBlock } from "types/components/page-blocks/sps";
 import { spsLiteBackendHeroSectionBlockSimpleCentered } from "./sps-lite";
 import { spsLiteBackendLogotype } from "../elements/sps-lite";
+import { ISpsBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps";
 
 export const spsBackendHeroSectionBlockSplit: ISpsBackendHeroSectionBlock = {
   ...spsLiteBackendHeroSectionBlockSimpleCentered,

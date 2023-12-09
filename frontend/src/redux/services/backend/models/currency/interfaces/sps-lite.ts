@@ -1,4 +1,4 @@
-import { ISpsLiteBackendTier } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendTier } from "../../tier/interfaces/sps-lite";
 
 export interface ISpsLiteBackendCurrency {
   id: number;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FC } from "react";
 import { ISpsLiteSlideOver, variants as spsStoreVariants } from "./sps-lite";
-import { useGetSlideOversQuery } from "~redux/services/backend/models/slide-overs";
+import { api as slideOverApi } from "~redux/services/backend/models/slide-over/api";
 import { useSearchParams } from "next/navigation";
 
 const variants = {
@@ -18,7 +18,7 @@ export default function SlideOvers() {
   const [slideOverProps, setSlideOverProps] =
     useState<Omit<ISlideOver, "isOpen" | "setIsOpen">>();
 
-  const { data: slideOvers } = useGetSlideOversQuery({
+  const { data: slideOvers } = slideOverApi.useGetQuery({
     locale: "all",
   });
 

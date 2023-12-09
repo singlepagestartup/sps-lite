@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteTopbar, variants as spsLiteVariants } from "./sps-lite";
-import { useGetTopbarByIdQuery } from "~redux/services/backend/models/topbars";
+import { api as topbarApi } from "~redux/services/backend/models/topbar/api";
 
 const variants = {
   ...spsLiteVariants,
@@ -12,7 +12,7 @@ export default function PublicPageTopbars<T extends ISpsLiteTopbar>(
   props: any,
 ) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
-    useGetTopbarByIdQuery({ id: props.id }, { skip: !props.id });
+    topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

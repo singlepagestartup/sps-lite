@@ -10,9 +10,9 @@ import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import DateTimePicker from "react-datetime-picker";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
 import dayjs from "dayjs";
+import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -180,10 +180,7 @@ export default function DateInput(props: IInputProps) {
             className="media-container"
           >
             {media?.map(
-              (
-                mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
-                index: number,
-              ) => (
+              (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
                 <Image
                   key={index}
                   src={getFileUrl(mediaItem)}

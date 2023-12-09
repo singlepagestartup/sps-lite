@@ -1,4 +1,4 @@
-import { ISpsLiteBackendFeaturesSectionBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendFeaturesSectionBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces/sps-lite";
 import WithIcon from "./WithIcon";
 import { FC } from "react";
 

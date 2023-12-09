@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteSidebar, variants as spsLiteVariants } from "./sps-lite";
-import { useGetSidebarByIdQuery } from "~redux/services/backend/models/sidebars";
+import { api as sidebarApi } from "~redux/services/backend/models/sidebar/api";
 
 const variants = {
   ...spsLiteVariants,
@@ -10,7 +10,7 @@ const variants = {
 
 export default function Sidebars<T extends ISpsLiteSidebar>(props: any) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
-    useGetSidebarByIdQuery({ id: props.id }, { skip: !props.id });
+    sidebarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

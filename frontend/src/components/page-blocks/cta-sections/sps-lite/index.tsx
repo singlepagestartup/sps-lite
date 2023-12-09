@@ -1,6 +1,6 @@
+import { ISpsLiteBackendCtaSectionBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces/sps-lite";
 import DarkWithImage from "./DarkWithImage";
 import { FC } from "react";
-import { ISpsLiteBackendCtaSectionBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISpsLiteCtaSectionsBlock
   extends ISpsLiteBackendCtaSectionBlock {

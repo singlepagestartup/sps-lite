@@ -2,9 +2,9 @@
 
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
-import { ISpsLiteBackendSlider } from "types/collection-types/sps-lite";
-import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
 import parseMimeType from "~utils/formatters/parse-mime-type";
+import { ISpsLiteBackendSlider } from "~redux/services/backend/models/slider/interfaces/sps-lite";
+import { ISpsLiteBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 const variants = {
   ...spsLiteVariants,

@@ -1,6 +1,6 @@
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
 import { ISpsLiteBackendLayout } from "../../layout/interfaces/sps-lite";
-import { ISpsLiteBackendMetatag } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendMetatag } from "../../metatag/interfaces/sps-lite";
 
 export interface ISpsLiteBackendPage {
   id: number;

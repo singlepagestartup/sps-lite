@@ -1,4 +1,4 @@
-import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import { ISpsLiteBackendUploadFile } from "../../upload/interfaces/sps-lite";
 
 export interface ISpsLiteBackendReview {
   id: number;
@@ -7,8 +7,8 @@ export interface ISpsLiteBackendReview {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadFile[] | null;
+  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

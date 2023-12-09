@@ -2,10 +2,10 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 import { createNotification } from "~components/notifications";
-import { pageBlockPopulate, slideOverPropulate } from "~utils/api/queries";
+import { populate as pageBlockPopulate } from "~redux/services/backend/components/page-blocks/populate";
 import { strapiFetchBaseQueryBuilder } from "~utils/api/strapi-rtk";
 
-const tagTypes = ["Sidebar", "SlideOver", "Topbar", "FormRequest"];
+const tagTypes = ["FormRequest"];
 
 export const backendServiceApi = createApi({
   baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
@@ -71,7 +71,5 @@ export const frontendApiStaticModels = [
   { url: "footers", populate: pageBlockPopulate },
   { url: "i18n/locales", populate: pageBlockPopulate },
   { url: "navbars", populate: pageBlockPopulate },
-  { url: "sidebars", populate: pageBlockPopulate },
-  { url: "slide-overs", populate: slideOverPropulate },
   { url: "topbars", populate: pageBlockPopulate },
 ];

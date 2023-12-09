@@ -10,7 +10,7 @@ import RepeatableInput, { IInsideComponentProps } from "./repeatable";
 import SwitchInput from "./switch";
 import TextInput from "./text";
 import DateInput from "./date";
-import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
 
 export interface IInputProps extends UseControllerProps {
   label?: string | null;
@@ -42,9 +42,9 @@ export interface IInputProps extends UseControllerProps {
   min?: number | null;
   max?: number | null;
   disabled?: boolean;
-  media?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  additionalMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
-  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[] | null;
+  media?: ISpsLiteBackendUploadFile[] | null;
+  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  extraMedia?: ISpsLiteBackendUploadFile[] | null;
   ResetIcon?: any;
   CalendarIcon?: any;
   onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;

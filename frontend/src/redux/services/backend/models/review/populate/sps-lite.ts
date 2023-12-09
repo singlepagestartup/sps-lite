@@ -1,10 +1,10 @@
-import { mediaPopulate } from "~utils/api/queries/sps-lite";
+import { populate as fileUploadPopulate } from "~redux/services/backend/models/upload/populate";
 
 export const populate = {
   media: {
-    populate: mediaPopulate,
+    populate: fileUploadPopulate,
   },
   additional_media: {
-    populate: mediaPopulate,
+    populate: fileUploadPopulate,
   },
 };

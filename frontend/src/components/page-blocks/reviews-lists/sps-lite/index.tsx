@@ -1,4 +1,4 @@
-import { ISpsLiteBackendReviewsListBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendReviewsListBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces/sps-lite";
 import SimpleWithAvatars from "./SimpleWithAvatars";
 import { FC } from "react";
 

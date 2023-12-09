@@ -1,6 +1,6 @@
+import { ISpsLiteBackendTopbar } from "~redux/services/backend/models/topbar/interfaces/sps-lite";
 import Boxed from "./Boxed";
 import { FC } from "react";
-import { ISpsLiteBackendTopbar } from "types/collection-types/sps-lite";
 
 export interface ISpsLiteTopbar extends ISpsLiteBackendTopbar {
   showSkeletons?: boolean;

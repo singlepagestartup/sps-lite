@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import RightSideHalfWidth from "./RightSideHalfWidth";
-import { ISpsLiteBackendSlideOver } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendSlideOver } from "~redux/services/backend/models/slide-over/interfaces/sps-lite";
 
 export interface ISpsLiteSlideOver extends ISpsLiteBackendSlideOver {
   setIsOpen: Dispatch<SetStateAction<boolean>>;

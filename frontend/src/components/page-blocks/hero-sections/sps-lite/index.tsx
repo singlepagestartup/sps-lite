@@ -1,4 +1,4 @@
-import { ISpsLiteBackendHeroSectionBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps-lite";
 import SimpleCentered from "./SimpleCentered";
 import { FC } from "react";
 

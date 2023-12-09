@@ -1,4 +1,4 @@
-import { ISpsLiteBackendIncentivesBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendIncentivesBlock } from "~redux/services/backend/components/page-blocks/incentives-block/interfaces/sps-lite";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
 import { FC } from "react";
 

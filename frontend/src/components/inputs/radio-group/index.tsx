@@ -6,8 +6,8 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
-import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -184,7 +184,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: ISpsLiteBackendUploadPluginBackendMedia[];
+  extraMedia?: ISpsLiteBackendUploadFile[];
 }) {
   const { selected } = params;
 
@@ -196,10 +196,7 @@ function DefaultOption({
       >
         {extraMedia?.length ? (
           extraMedia?.map(
-            (
-              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
-              index: number,
-            ) => (
+            (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}
@@ -218,10 +215,7 @@ function DefaultOption({
           className="media-container"
         >
           {option?.media?.map(
-            (
-              mediaItem: ISpsLiteBackendUploadPluginBackendMedia,
-              index: number,
-            ) => (
+            (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}

@@ -1,19 +1,17 @@
 import { fa, faker } from "@faker-js/faker";
-import {
-  ISpsLiteBackendButton,
-  ISpsLiteBackendButtonsArray,
-  ISpsLiteBackendFaq,
-  ISpsLiteBackendFeature,
-  ISpsLiteBackendInput,
-  ISpsLiteBackendLogotype,
-  ISpsLiteBackendSlide,
-} from "types/components/elements/sps-lite";
 import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
 import {
   spsLiteUploadPluginBackendMediaTableAndHands,
   spsLiteUploadPluginBackendMediaRoundIcon,
   spsLiteUploadPluginBackendMediaLogotypeIcon,
 } from "~mocks/plugins/upload/sps-lite";
+import { ISpsLiteBackendButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
+import { ISpsLiteBackendButtonsArray } from "~redux/services/backend/components/elements/buttons-array/interfaces/sps-lite";
+import { ISpsLiteBackendFaq } from "~redux/services/backend/components/elements/faq/interfaces/sps-lite";
+import { ISpsLiteBackendFeature } from "~redux/services/backend/components/elements/feature/interfaces/sps-lite";
+import { ISpsLiteBackendInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
+import { ISpsLiteBackendLogotype } from "~redux/services/backend/components/elements/logotype/interfaces/sps-lite";
+import { ISpsLiteBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   id: 4,

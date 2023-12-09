@@ -15,8 +15,8 @@ import { IExtendedSlide, ISlider } from "..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import Buttons from "~components/elements/buttons";
-import { ISpsLiteBackendSlide } from "types/components/elements/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
+import { ISpsLiteBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 interface INavigationButton {
   isNext?: boolean;

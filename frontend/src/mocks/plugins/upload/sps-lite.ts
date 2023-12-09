@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
+import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
 
-export const spsLiteUploadPluginBackendMediaTableAndHands: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendMediaTableAndHands: ISpsLiteBackendUploadFile =
   {
     id: 907,
     name: faker.lorem.slug(),
@@ -23,7 +23,7 @@ export const spsLiteUploadPluginBackendMediaTableAndHands: ISpsLiteBackendUpload
     updatedAt: "2023-04-01T20:54:54.396Z",
   };
 
-export const spsLiteUploadPluginBackendAditionalMediaTableAndHands: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendAditionalMediaTableAndHands: ISpsLiteBackendUploadFile =
   {
     id: 907,
     name: faker.lorem.slug(),
@@ -45,7 +45,7 @@ export const spsLiteUploadPluginBackendAditionalMediaTableAndHands: ISpsLiteBack
     updatedAt: "2023-04-01T20:54:54.396Z",
   };
 
-export const spsLiteUploadPluginBackendAditionalMediaIncentives: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendAditionalMediaIncentives: ISpsLiteBackendUploadFile =
   {
     id: 907,
     name: faker.lorem.slug(),
@@ -67,7 +67,7 @@ export const spsLiteUploadPluginBackendAditionalMediaIncentives: ISpsLiteBackend
     updatedAt: "2023-04-01T20:54:54.396Z",
   };
 
-export const spsLiteUploadPluginBackendAditionalMediaHeader: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendAditionalMediaHeader: ISpsLiteBackendUploadFile =
   {
     id: 907,
     name: faker.lorem.slug(),
@@ -89,7 +89,7 @@ export const spsLiteUploadPluginBackendAditionalMediaHeader: ISpsLiteBackendUplo
     updatedAt: "2023-04-01T20:54:54.396Z",
   };
 
-export const spsLiteUploadPluginBackendMediaRoundIcon: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendMediaRoundIcon: ISpsLiteBackendUploadFile =
   {
     id: 918,
     name: faker.lorem.slug(),
@@ -110,7 +110,7 @@ export const spsLiteUploadPluginBackendMediaRoundIcon: ISpsLiteBackendUploadPlug
     updatedAt: "2023-04-01T21:02:54.372Z",
   };
 
-export const spsLiteUploadPluginBackendMediaLogotypeIcon: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendMediaLogotypeIcon: ISpsLiteBackendUploadFile =
   {
     id: 918,
     name: faker.lorem.slug(),
@@ -130,7 +130,7 @@ export const spsLiteUploadPluginBackendMediaLogotypeIcon: ISpsLiteBackendUploadP
     createdAt: "2023-04-01T21:02:54.372Z",
     updatedAt: "2023-04-01T21:02:54.372Z",
   };
-export const spsLiteUploadPluginBackendAditionalMedia: ISpsLiteBackendUploadPluginBackendMedia =
+export const spsLiteUploadPluginBackendAditionalMedia: ISpsLiteBackendUploadFile =
   {
     id: 907,
     name: faker.lorem.slug(),

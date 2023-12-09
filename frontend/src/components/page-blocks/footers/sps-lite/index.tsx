@@ -1,6 +1,6 @@
-import { ISpsLiteBackendFooterBlock } from "types/components/page-blocks/sps-lite";
 import { FC } from "react";
 import FourColumnsWithCompanyMission from "./FourColumnsWithCompanyMission";
+import { ISpsLiteBackendFooterBlock } from "~redux/services/backend/components/page-blocks/footer-block/interfaces/sps-lite";
 
 export interface ISpsLiteFooterBlock extends ISpsLiteBackendFooterBlock {
   showSkeletons?: boolean;

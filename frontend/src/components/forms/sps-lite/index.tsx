@@ -1,4 +1,4 @@
-import { ISpsLiteBackendForm } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendForm } from "~redux/services/backend/models/form/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 

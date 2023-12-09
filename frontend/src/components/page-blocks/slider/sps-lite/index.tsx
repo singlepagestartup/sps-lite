@@ -1,4 +1,4 @@
-import { ISpsLiteBackendSliderBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 

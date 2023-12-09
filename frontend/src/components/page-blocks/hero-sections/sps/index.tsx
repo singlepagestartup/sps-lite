@@ -1,4 +1,4 @@
-import { ISpsBackendHeroSectionBlock } from "types/components/page-blocks/sps";
+import { ISpsBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps";
 import Split from "./Split";
 import { FC } from "react";
 

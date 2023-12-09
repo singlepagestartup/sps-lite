@@ -1,7 +1,7 @@
 import ColumnWithTitle from "./ColumnWithTitle";
 import { FC } from "react";
-import { ISpsLiteBackendButtonsArray } from "types/components/elements/sps-lite";
 import Row from "./Row";
+import { ISpsLiteBackendButtonsArray } from "~redux/services/backend/components/elements/buttons-array/interfaces/sps-lite";
 
 export interface IButtonsArray
   extends Omit<

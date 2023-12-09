@@ -1,29 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import { ISpsLiteHeroSectionBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { api as currencyServiceApi } from "~redux/services/backend/models/currency/api";
-import { backendServiceApi } from "~redux/services/backend";
-// import { api } from "~redux/services/backend/models/currencies/sps-lite";
-// import { api } from "~redux/services/backend/models/currencies";
 
 export default function Component(props: ISpsLiteHeroSectionBlock) {
-  // const {data} = serviceApi
-  console.log("🚀 ~ Component ~ backendServiceApi:", backendServiceApi);
-  // const { data: modals } = useGetModalsQuery({});
-  // const { data } = serviceApi.useGetCurrenciesQuery();
-  console.log("🚀 ~ Component ~ currencyServiceApi:", currencyServiceApi);
-
-  const [fetchCurrencies] = currencyServiceApi.useLazyGetCurrenciesQuery({});
-
-  // const data = currencyServiceApi.endpoints.getCurrencies.initiate({});
-  // console.log("🚀 ~ Component ~ data:", data);
-
-  // console.log("🚀 ~ Component ~ data:", data);
-
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.additionalMedia?.length ? (
@@ -49,13 +30,7 @@ export default function Component(props: ISpsLiteHeroSectionBlock) {
               </ReactMarkdown>
             ) : null}
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
-              <Buttons
-                variant="primary"
-                onClick={() => {
-                  fetchCurrencies({});
-                }}
-                title="Fetch currencies"
-              />
+              {" "}
               {props?.buttons?.map((button, index) => {
                 return <Buttons key={index} {...button} />;
               })}

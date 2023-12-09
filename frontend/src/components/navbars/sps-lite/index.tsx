@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
-import { ISpsLiteBackendTopbar } from "types/collection-types/sps-lite";
 import Boxed from "./Boxed";
 import { ISpsLiteBackendNavbar } from "~redux/services/backend/models/navbar/interfaces/sps-lite";
+import { ISpsLiteBackendTopbar } from "~redux/services/backend/models/topbar/interfaces/sps-lite";
 
 export interface ISpsLiteNavbar extends ISpsLiteBackendNavbar {
   topbar?: ISpsLiteBackendTopbar | null;

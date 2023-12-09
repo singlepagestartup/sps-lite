@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { IBackendLocale } from "types/collection-types";
+import { IBackendLocale } from "~redux/services/backend/models/locale/interfaces";
 import { BACKEND_URL } from "~utils/envs";
 
 export async function middleware(request: any) {

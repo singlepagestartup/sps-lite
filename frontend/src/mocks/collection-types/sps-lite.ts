@@ -1,23 +1,7 @@
 import {
-  ISpsLiteBackendFlyout,
-  ISpsLiteBackendForm,
-  ISpsLiteBackendMetatag,
-  ISpsLiteBackendSidebar,
-  ISpsLiteBackendSlideOver,
-  ISpsLiteBackendSlider,
-  ISpsLiteBackendTier,
-  ISpsLiteBackendTopbar,
-} from "types/collection-types/sps-lite";
-import {
   spsLiteBackendButtonSecondary,
-  spsLiteBackendButtonPrimary,
-  spsLiteBackendEmailInput,
   spsLiteBackendFeature,
-  spsLiteBackendNameInput,
-  spsLiteBackendPolicyInput,
-  spsLiteBackendQuestionInput,
   spsLiteBackendSlide,
-  spsLiteBackendTierInput,
 } from "~mocks/components/elements/sps-lite";
 import {
   spsLiteBackendFooterBlockSimple,
@@ -30,12 +14,20 @@ import {
   spsLiteUploadPluginBackendMediaTableAndHands,
 } from "~mocks/plugins/upload/sps-lite";
 import { ISpsLiteBackendCurrency } from "~redux/services/backend/models/currency/interfaces/sps-lite";
+import { ISpsLiteBackendFlyout } from "~redux/services/backend/models/flyout/interfaces/sps-lite";
 import { ISpsLiteBackendFooter } from "~redux/services/backend/models/footer/interfaces/sps-lite";
+import { ISpsLiteBackendForm } from "~redux/services/backend/models/form/interfaces/sps-lite";
 import { ISpsLiteBackendLayout } from "~redux/services/backend/models/layout/interfaces/sps-lite";
+import { ISpsLiteBackendMetatag } from "~redux/services/backend/models/metatag/interfaces/sps-lite";
 import { ISpsLiteBackendModal } from "~redux/services/backend/models/modal/interfaces/sps-lite";
 import { ISpsLiteBackendNavbar } from "~redux/services/backend/models/navbar/interfaces/sps-lite";
 import { ISpsLiteBackendPage } from "~redux/services/backend/models/page/interfaces/sps-lite";
 import { ISpsLiteBackendReview } from "~redux/services/backend/models/review/interfaces/sps-lite";
+import { ISpsLiteBackendSidebar } from "~redux/services/backend/models/sidebar/interfaces/sps-lite";
+import { ISpsLiteBackendSlideOver } from "~redux/services/backend/models/slide-over/interfaces/sps-lite";
+import { ISpsLiteBackendSlider } from "~redux/services/backend/models/slider/interfaces/sps-lite";
+import { ISpsLiteBackendTier } from "~redux/services/backend/models/tier/interfaces/sps-lite";
+import { ISpsLiteBackendTopbar } from "~redux/services/backend/models/topbar/interfaces/sps-lite";
 
 export const spsLiteBackendSliderFadeWithPreviews: ISpsLiteBackendSlider = {
   id: 6,

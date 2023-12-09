@@ -1,6 +1,6 @@
 import { FC } from "react";
 import OneQuarter from "./OneQuarter";
-import { ISpsLiteBackendSidebar } from "types/collection-types/sps-lite";
+import { ISpsLiteBackendSidebar } from "~redux/services/backend/models/sidebar/interfaces/sps-lite";
 
 export interface ISpsLiteSidebar extends ISpsLiteBackendSidebar {
   showSkeletons?: boolean;

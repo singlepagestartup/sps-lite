@@ -1,23 +1,5 @@
 import { faker } from "@faker-js/faker";
 import {
-  ISpsLiteBackendAlertBlock,
-  ISpsLiteBackendContactSectonBlock,
-  ISpsLiteBackendCtaSectionBlock,
-  ISpsLiteBackendFaqBlock,
-  ISpsLiteBackendFeaturesSectionBlock,
-  ISpsLiteBackendFooterBlock,
-  ISpsLiteBackendHeaderSectionBlock,
-  ISpsLiteBackendHeroSectionBlock,
-  ISpsLiteBackendIncentivesBlock,
-  ISpsLiteBackendLogotypesCloudBlock,
-  ISpsLiteBackendNavbarBlock,
-  ISpsLiteBackendNotFoundBlock,
-  ISpsLiteBackendPricingsBlock,
-  ISpsLiteBackendReviewsListBlock,
-  ISpsLiteBackendReviewsTableBlock,
-  ISpsLiteBackendSliderBlock,
-} from "types/components/page-blocks/sps-lite";
-import {
   spsLiteBackendSliderFadeWithPreviews,
   spsLiteBackendTier,
 } from "~mocks/collection-types/sps-lite";
@@ -39,6 +21,22 @@ import {
   spsLiteUploadPluginBackendAditionalMediaTableAndHands,
   spsLiteUploadPluginBackendMediaTableAndHands,
 } from "~mocks/plugins/upload/sps-lite";
+import { ISpsLiteBackendAlertBlock } from "~redux/services/backend/components/page-blocks/alert-block/interfaces/sps-lite";
+import { ISpsLiteBackendContactSectonBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendCtaSectionBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendFaqsBlock } from "~redux/services/backend/components/page-blocks/faqs-block/interfaces/sps-lite";
+import { ISpsLiteBackendFeaturesSectionBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendFooterBlock } from "~redux/services/backend/components/page-blocks/footer-block/interfaces/sps-lite";
+import { ISpsLiteBackendHeaderSectionBlock } from "~redux/services/backend/components/page-blocks/header-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendIncentivesBlock } from "~redux/services/backend/components/page-blocks/incentives-block/interfaces/sps-lite";
+import { ISpsLiteBackendLogotypesCloudBlock } from "~redux/services/backend/components/page-blocks/logotypes-cloud-block/interfaces/sps-lite";
+import { ISpsLiteBackendNavbarBlock } from "~redux/services/backend/components/page-blocks/navbar-block/interfaces/sps-lite";
+import { ISpsLiteBackendNotFoundBlock } from "~redux/services/backend/components/page-blocks/not-found-block/interfaces/sps-lite";
+import { ISpsLiteBackendPricingsBlock } from "~redux/services/backend/components/page-blocks/pricing-block/interfaces/sps-lite";
+import { ISpsLiteBackendReviewsListBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces/sps-lite";
+import { ISpsLiteBackendReviewsTableBlock } from "~redux/services/backend/components/page-blocks/reviews-table-block/interfaces/sps-lite";
+import { ISpsLiteBackendSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces/sps-lite";
 
 export const spsLiteBackendFeatureSectionBlockWithIcon: ISpsLiteBackendFeaturesSectionBlock =
   {
@@ -758,7 +756,7 @@ export const spsLiteBackendCtaSectionBlockDarkPanelWithAppScreenshot: ISpsLiteBa
     ],
   };
 
-export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteBackendFaqBlock =
+export const spsLiteBackendFaqBlockTwoColumnsWithCenteredIntroduction: ISpsLiteBackendFaqsBlock =
   {
     id: 2,
     title: faker.lorem.sentence(),

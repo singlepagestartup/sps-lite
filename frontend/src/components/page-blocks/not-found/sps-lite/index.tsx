@@ -1,4 +1,4 @@
-import { ISpsLiteBackendNotFoundBlock } from "types/components/page-blocks/sps-lite";
+import { ISpsLiteBackendNotFoundBlock } from "~redux/services/backend/components/page-blocks/not-found-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 

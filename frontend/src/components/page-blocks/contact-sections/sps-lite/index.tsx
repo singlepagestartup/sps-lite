@@ -1,6 +1,6 @@
+import { ISpsLiteBackendContactSectonBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/interfaces/sps-lite";
 import Centered from "./Centered";
 import { FC } from "react";
-import { ISpsLiteBackendContactSectonBlock } from "types/components/page-blocks/sps-lite";
 
 export interface ISpsLiteContactSectonBlock
   extends ISpsLiteBackendContactSectonBlock {
