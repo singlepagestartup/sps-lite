@@ -4,10 +4,76 @@ import {
   FetchArgs,
   FetchBaseQueryError,
   FetchBaseQueryMeta,
+  fetchBaseQuery,
 } from "@reduxjs/toolkit/dist/query";
-import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
+import {
+  EndpointBuilder,
+  QueryLifecycleApi,
+} from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
+import { gzip } from "pako";
+import QueryString from "qs";
+
+export type TRTKServiceApi = Api<
+  BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError,
+    any,
+    FetchBaseQueryMeta
+  >,
+  any,
+  any,
+  any,
+  any
+>;
+
+export type TRTKBuild = EndpointBuilder<
+  BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError,
+    any,
+    FetchBaseQueryMeta
+  >,
+  string,
+  string
+>;
+
+export type TRTKOnQueryStarted = (
+  arg: any,
+  api: QueryLifecycleApi<any, any, any, any>,
+) => any;
+
+export const strapiFetchBaseQueryBuilder = (baseUrl: string) =>
+  fetchBaseQuery({
+    baseUrl: `${baseUrl}/api`,
+    paramsSerializer: (object) => {
+      const stringifiedQuery = QueryString.stringify(object, {
+        encodeValuesOnly: true,
+      });
+
+      const compressedQuery = gzip(stringifiedQuery);
+      const base64CompressedQuery =
+        Buffer.from(compressedQuery).toString("base64");
+
+      return base64CompressedQuery;
+    },
+    prepareHeaders: (headers) => {
+      const token = localStorage.jwt;
+      headers.set("Query-Encoding", "application/gzip");
+
+      if (token) {
+        headers.set(
+          "Authorization",
+          token.startsWith("Bearer ") ? token : `Bearer ${token}`,
+        );
+      }
+
+      return headers;
+    },
+  });
 
 export function strapiFind<T>({
   serviceApi,
@@ -15,34 +81,14 @@ export function strapiFind<T>({
   populate: passedPopulate,
   model,
   rtkType,
+  onQueryStarted: passedOnQueryStarted,
 }: {
-  serviceApi: Api<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    any,
-    any,
-    any,
-    any
-  >;
-  build: EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    string,
-    "backend" | "frontend"
-  >;
+  serviceApi: TRTKServiceApi;
+  build: TRTKBuild;
   populate: any;
   model: string;
   rtkType: string;
+  onQueryStarted?: TRTKOnQueryStarted;
 }) {
   const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
 
@@ -66,6 +112,12 @@ export function strapiFind<T>({
           sort,
         },
       };
+    },
+
+    async onQueryStarted(...args) {
+      if (typeof passedOnQueryStarted === "function") {
+        passedOnQueryStarted(...args);
+      }
     },
 
     transformResponse: (result) => {
@@ -92,34 +144,14 @@ export function strapiFindOne<T>({
   populate: passedPopulate,
   model,
   rtkType,
+  onQueryStarted: passedOnQueryStarted,
 }: {
-  serviceApi: Api<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    any,
-    any,
-    any,
-    any
-  >;
-  build: EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    string,
-    "backend" | "frontend"
-  >;
+  serviceApi: TRTKServiceApi;
+  build: TRTKBuild;
   populate: any;
   model: string;
   rtkType: string;
+  onQueryStarted?: TRTKOnQueryStarted;
 }) {
   const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
 
@@ -142,6 +174,12 @@ export function strapiFindOne<T>({
           pagination,
         },
       };
+    },
+
+    async onQueryStarted(...args) {
+      if (typeof passedOnQueryStarted === "function") {
+        passedOnQueryStarted(...args);
+      }
     },
 
     transformResponse: (result) => {
@@ -167,36 +205,16 @@ export function strapiCreate<T>({
   rtkType,
   invalidatesTagsFunc,
   routePostfix,
+  onQueryStarted: passedOnQueryStarted,
 }: {
-  serviceApi: Api<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    any,
-    any,
-    any,
-    any
-  >;
-  build: EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    string,
-    "backend" | "frontend"
-  >;
+  serviceApi: TRTKServiceApi;
+  build: TRTKBuild;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
   routePostfix?: string;
+  onQueryStarted?: TRTKOnQueryStarted;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -211,6 +229,13 @@ export function strapiCreate<T>({
         },
         body: formData,
       };
+    },
+
+    async onQueryStarted(...args) {
+      if (typeof passedOnQueryStarted === "function") {
+        // @ts-ignore
+        passedOnQueryStarted(...args);
+      }
     },
 
     transformResponse: (result) => {
@@ -231,36 +256,16 @@ export function strapiUpdate<T>({
   rtkType,
   invalidatesTagsFunc,
   routePostfix,
+  onQueryStarted: passedOnQueryStarted,
 }: {
-  serviceApi: Api<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    any,
-    any,
-    any,
-    any
-  >;
-  build: EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    string,
-    "backend" | "frontend"
-  >;
+  serviceApi: TRTKServiceApi;
+  build: TRTKBuild;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
   routePostfix?: string;
+  onQueryStarted?: TRTKOnQueryStarted;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -275,6 +280,13 @@ export function strapiUpdate<T>({
         },
         body: formData,
       };
+    },
+
+    async onQueryStarted(...args) {
+      if (typeof passedOnQueryStarted === "function") {
+        // @ts-ignore
+        passedOnQueryStarted(...args);
+      }
     },
 
     transformResponse: (result) => {
@@ -300,36 +312,16 @@ export function strapiDelete<T>({
   rtkType,
   invalidatesTagsFunc,
   routePostfix,
+  onQueryStarted: passedOnQueryStarted,
 }: {
-  serviceApi: Api<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    any,
-    any,
-    any,
-    any
-  >;
-  build: EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      any,
-      FetchBaseQueryMeta
-    >,
-    string,
-    "backend" | "frontend"
-  >;
+  serviceApi: TRTKServiceApi;
+  build: TRTKBuild;
   populate: any;
   model: string;
   rtkType: string;
   invalidatesTagsFunc?: (result: any) => any[];
   routePostfix?: string;
+  onQueryStarted?: TRTKOnQueryStarted;
 }) {
   return build.mutation<T, any>({
     query: (params: any = {}) => {
@@ -344,6 +336,13 @@ export function strapiDelete<T>({
         },
         body: formData,
       };
+    },
+
+    async onQueryStarted(...args) {
+      if (typeof passedOnQueryStarted === "function") {
+        // @ts-ignore
+        passedOnQueryStarted(...args);
+      }
     },
 
     transformResponse: (result) => {

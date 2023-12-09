@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteNavbar, variants as spsLiteVariants } from "./sps-lite";
-import { useGetNavbarByIdQuery } from "~redux/services/backend/models/navbars";
+import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
 
 const variants = {
   ...spsLiteVariants,
@@ -15,7 +15,7 @@ export default function Navbars<T extends ISpsLiteNavbar>(props: any) {
     isError,
     isFetching,
     isUninitialized,
-  } = useGetNavbarByIdQuery({ id: props.id }, { skip: !props.id });
+  } = navbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
 

@@ -6,17 +6,8 @@ import {
 } from "types/components/elements/sps-lite";
 import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
 import { ISpsLiteBackendUploadPluginBackendMedia } from "types/plugins/upload/sps-lite";
-
-export interface ISpsLiteBackendCurrency {
-  id: number;
-  title: string | null;
-  unicode: string | null;
-  isDefault: boolean | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  tiers?: ISpsLiteBackendTier;
-}
+import { ISpsLiteBackendCurrency } from "~redux/services/backend/models/currency/interfaces/sps-lite";
+import { ISpsLiteBackendLayout } from "~redux/services/backend/models/layout/interfaces/sps-lite";
 
 export interface ISpsLiteBackendForm {
   id: number;
@@ -31,34 +22,6 @@ export interface ISpsLiteBackendForm {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-}
-
-export interface ISpsLiteBackendModal {
-  id: number;
-  title: string | null;
-  variant: "simple";
-  className: string | null;
-  dialogPanelClassName: string | null;
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-  uid: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-export interface ISpsLiteBackendPage {
-  id: number;
-  title: string | null;
-  url: string;
-  locale: string;
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-  localizations?: ISpsLiteBackendPage[] | null;
-  layout?: ISpsLiteBackendLayout | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  metatag?: ISpsLiteBackendMetatag | null;
-  urls?: { url: string; locale: string }[] | null;
 }
 
 export interface ISpsLiteBackendReview {
@@ -158,21 +121,6 @@ export interface ISpsLiteBackendTopbar {
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
 }
 
-export interface ISpsLiteBackendNavbar {
-  id: number;
-  locale: string;
-  title: string;
-  uid: string | null;
-  className: string | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  variant: "boxed";
-  position: "fixed";
-  side: "top";
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-}
-
 export interface ISpsLiteBackendFlyout {
   id: number;
   locale: string;
@@ -184,36 +132,6 @@ export interface ISpsLiteBackendFlyout {
   publishedAt: string;
   variant: "simple";
   pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-}
-
-export interface ISpsLiteBackendFooter {
-  id: number;
-  locale: string;
-  title: string;
-  uid: string | null;
-  className: string | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  variant: "boxed";
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
-}
-
-export interface ISpsLiteBackendLayout {
-  id: number;
-  locale: string;
-  title: string;
-  uid: string | null;
-  className: string | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  variant: "wide" | "boxed";
-  topbar?: ISpsLiteBackendTopbar | null;
-  navbar?: ISpsLiteBackendNavbar | null;
-  sidebar?: ISpsLiteBackendSidebar | null;
-  footer?: ISpsLiteBackendFooter | null;
-  pages?: ISpsLiteBackendPage[] | null;
 }
 
 export interface ISpsLiteBackendLocale {

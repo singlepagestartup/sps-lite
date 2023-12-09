@@ -1,3 +1,5 @@
+import { populate as currencyPopulate } from "~redux/services/backend/models/currency/populate";
+
 export const mediaPopulate = {
   formats: {
     populate: "*",
@@ -39,8 +41,6 @@ export const featurePopulate = {
     populate: mediaPopulate,
   },
 };
-
-export const currencyPopulate = "*";
 
 export const tierPopulate = {
   features: {
@@ -155,57 +155,6 @@ export const slideOverPropulate = {
   ...pageBlockPopulate,
 };
 
-export const modalPopulate = {
-  ...pageBlockPopulate,
-};
-
 export const pagePopulate = {
   ...pageBlockPopulate,
-};
-
-export const layoutPopulate = {
-  navbar: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  topbar: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  footer: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  sidebar: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  slide_overs: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  modals: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-  pages: {
-    populate: {
-      page_blocks: "*",
-    },
-  },
-};
-
-export const loaderPopulate = {
-  media: {
-    populate: mediaPopulate,
-  },
-  additional_media: {
-    populate: mediaPopulate,
-  },
 };

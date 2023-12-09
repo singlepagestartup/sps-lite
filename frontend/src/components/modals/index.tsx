@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, FC, useMemo } from "react";
-import { useGetModalsQuery } from "~redux/services/backend/models/modals";
-import { IBackendModal } from "types/collection-types";
+import { api as modalApi } from "~redux/services/backend/models/modal/api";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { IBackendModal } from "~redux/services/backend/models/modal/interfaces";
 
 export type IModal = ISpsLiteModal;
 
@@ -25,7 +25,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
     isLoading,
     isError,
     isFetching,
-  } = useGetModalsQuery({
+  } = modalApi.useGetQuery({
     locale: "all",
   });
 

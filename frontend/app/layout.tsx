@@ -10,10 +10,10 @@ import Layouts from "~components/layouts";
 import Loaders from "~components/loader";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
-import { loaderPopulate } from "~utils/api/queries";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "src/contexts/additional-headers";
 import { HocParamsProvider } from "src/contexts/hoc-params";
+import { populate as loaderPopulate } from "~redux/services/backend/models/loader/populate";
 
 export const dynamic = "force-dynamic";
 

@@ -1,14 +1,9 @@
+import { ISpsLiteBackendCurrency } from "~redux/services/backend/models/currency/interfaces/sps-lite";
 import {
-  ISpsLiteBackendCurrency,
   ISpsLiteBackendFlyout,
-  ISpsLiteBackendFooter,
   ISpsLiteBackendForm,
-  ISpsLiteBackendLayout,
   ISpsLiteBackendLocale,
   ISpsLiteBackendMetatag,
-  ISpsLiteBackendModal,
-  ISpsLiteBackendNavbar,
-  ISpsLiteBackendPage,
   ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
@@ -18,8 +13,6 @@ import {
 } from "./sps-lite";
 
 export interface IYourProjectBackendTier extends ISpsLiteBackendTier {}
-
-export interface IYourProjectBackendModal extends ISpsLiteBackendModal {}
 
 export interface IYourProjectBackendForm extends ISpsLiteBackendForm {}
 
@@ -38,14 +31,6 @@ export interface IYourProjectBackendMetatag extends ISpsLiteBackendMetatag {}
 
 export interface IYourProjectBackendTopbar extends ISpsLiteBackendTopbar {}
 
-export interface IYourProjectBackendNavbar extends ISpsLiteBackendNavbar {}
-
 export interface IYourProjectBackendFlyout extends ISpsLiteBackendFlyout {}
 
-export interface IYourProjectBackendFooter extends ISpsLiteBackendFooter {}
-
-export interface IYourProjectBackendPage extends ISpsLiteBackendPage {}
-
 export interface IYourProjectBackendLocale extends ISpsLiteBackendLocale {}
-
-export interface IYourProjectBackendLayout extends ISpsLiteBackendLayout {}

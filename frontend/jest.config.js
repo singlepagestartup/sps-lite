@@ -27,8 +27,7 @@ const customJestConfig = {
   },
   coverageDirectory: "<rootDir>/tests/artifacts/coverage",
   moduleNameMapper: {
-    "react-markdown":
-      "<rootDir>/node_modules/react-markdown/react-markdown.min.js",
+    "react-markdown": "<rootDir>/src/components/stubs/react-markdown/index.tsx",
   },
   globals: {
     fetch,

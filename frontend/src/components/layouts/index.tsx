@@ -2,9 +2,8 @@
 
 import { FC, ReactNode, useEffect } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
-import { useGetLayoutByPageUrlQuery } from "~redux/services/backend/models/layouts";
+import { api as layoutApi } from "~redux/services/backend/models/layout/api";
 import { useParams, usePathname } from "next/navigation";
-import { IBackendLayout } from "types/collection-types";
 
 const variants = {
   ...spsLiteVariants,
@@ -13,7 +12,7 @@ const variants = {
 export default function Layouts({ children }: { children?: ReactNode }) {
   const pathname = usePathname();
   const params = useParams();
-  const { data: layout, error } = useGetLayoutByPageUrlQuery(
+  const { data: layout, error } = layoutApi.useGetByPageUrlQuery(
     {
       url: pathname?.includes("/auth") ? "/auth" : pathname,
       ...params,

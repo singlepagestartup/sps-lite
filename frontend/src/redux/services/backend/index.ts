@@ -1,73 +1,25 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { gzip } from "pako";
-import qs from "qs";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 import { createNotification } from "~components/notifications";
 import {
-  currencyPopulate,
-  layoutPopulate,
-  loaderPopulate,
-  modalPopulate,
   pageBlockPopulate,
   reviewPopulate,
   slideOverPropulate,
 } from "~utils/api/queries";
+import { strapiFetchBaseQueryBuilder } from "~utils/api/strapi-rtk";
 
-const getBaseQuery = (baseUrl: string) =>
-  fetchBaseQuery({
-    baseUrl: `${baseUrl}/api`,
-    paramsSerializer: (object) => {
-      const stringifiedQuery = qs.stringify(object, {
-        encodeValuesOnly: true,
-      });
-
-      const compressedQuery = gzip(stringifiedQuery);
-      const base64CompressedQuery =
-        Buffer.from(compressedQuery).toString("base64");
-
-      return base64CompressedQuery;
-    },
-    prepareHeaders: (headers) => {
-      const token = localStorage.jwt;
-      headers.set("Query-Encoding", "application/gzip");
-
-      if (token) {
-        headers.set(
-          "Authorization",
-          token.startsWith("Bearer ") ? token : `Bearer ${token}`,
-        );
-      }
-
-      return headers;
-    },
-  });
-
-const tagTypes = [
-  "Currency",
-  "Navbar",
-  "Modal",
-  "Footer",
-  "Flyout",
-  "Layout",
-  "Sidebar",
-  "Review",
-  "SlideOver",
-  "Topbar",
-  "Loader",
-  "FormRequest",
-  "Page",
-];
+const tagTypes = ["Sidebar", "Review", "SlideOver", "Topbar", "FormRequest"];
 
 export const backendServiceApi = createApi({
-  baseQuery: getBaseQuery(BACKEND_URL),
+  baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
   tagTypes,
   reducerPath: "backend",
   endpoints: () => ({}),
 });
 
 export const frontendServiceApi = createApi({
-  baseQuery: getBaseQuery(FRONTEND_URL),
+  baseQuery: strapiFetchBaseQueryBuilder(FRONTEND_URL),
   tagTypes,
   reducerPath: "frontend",
   endpoints: () => ({}),
@@ -122,13 +74,9 @@ export const frontendApiStaticModels = [
   },
   { url: "footers", populate: pageBlockPopulate },
   { url: "i18n/locales", populate: pageBlockPopulate },
-  { url: "layouts", populate: layoutPopulate },
-  { url: "modals", populate: modalPopulate },
   { url: "navbars", populate: pageBlockPopulate },
   { url: "sidebars", populate: pageBlockPopulate },
   { url: "slide-overs", populate: slideOverPropulate },
   { url: "topbars", populate: pageBlockPopulate },
   { url: "reviews", populate: reviewPopulate },
-  { url: "loaders", populate: loaderPopulate },
-  { url: "currencies", populate: currencyPopulate },
 ];

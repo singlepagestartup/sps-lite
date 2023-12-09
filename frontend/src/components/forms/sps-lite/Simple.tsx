@@ -1,4 +1,4 @@
-import { useCreateFormRequestMutation } from "~redux/services/backend/models/form-requests";
+import { api as formRequestApi } from "~redux/services/backend/models/form-request/api";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Inputs from "~components/inputs";
@@ -7,7 +7,7 @@ import Buttons from "~components/elements/buttons";
 import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 
 export default function Simple(props: ISpsLiteFormBlock) {
-  const [createFormRequest, { data }] = useCreateFormRequestMutation();
+  const [createFormRequest, { data }] = formRequestApi.useCreateMutation();
   const preparedInputs = useGetPreparedFormInputs(props);
 
   const methods = useForm<any>({

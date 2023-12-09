@@ -1,3 +1,4 @@
+import { fa, faker } from "@faker-js/faker";
 import {
   ISpsLiteBackendButton,
   ISpsLiteBackendButtonsArray,
@@ -16,7 +17,7 @@ import {
 
 export const spsLiteBackendButtonSecondary: ISpsLiteBackendButton = {
   id: 4,
-  title: "Button",
+  title: faker.lorem.words(3),
   url: "https://nextjs.com",
   variant: "secondary",
   __component: "elements.button",
@@ -131,10 +132,9 @@ export const spsLiteBackendFaq: ISpsLiteBackendFaq = {
 export const spsLiteBackendFeature: ISpsLiteBackendFeature = {
   id: 136,
   __component: "elements.feature",
-  title: "Don't repeat yourself",
-  description:
-    "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
-  subtitle: "MVP-ready",
+  title: faker.lorem.words(3),
+  description: faker.lorem.paragraph(),
+  subtitle: faker.lorem.sentences(1),
   media: [{ ...spsLiteUploadPluginBackendMediaRoundIcon }],
 };
 
@@ -206,12 +206,12 @@ export const spsLiteBackendTierInput: ISpsLiteBackendInput = {
 export const spsLiteBackendQuestionInput: ISpsLiteBackendInput = {
   id: 59,
   __component: "elements.input",
-  placeholder: "Type your question",
+  placeholder: faker.lorem.sentence(),
   variant: "text",
   isRequired: false,
   value: null,
   name: "querstion",
-  label: "Question",
+  label: faker.lorem.words(1),
   className: "col-span-4",
   type: "textarea",
   multiple: null,
@@ -229,7 +229,7 @@ export const spsLiteBackendPolicyInput: ISpsLiteBackendInput = {
   isRequired: true,
   value: null,
   name: "policy",
-  label: "I agree with the privacy policy",
+  label: faker.lorem.sentence(),
   className: "col-span-4",
   type: null,
   multiple: null,
@@ -251,9 +251,8 @@ export const spsLiteBackendLogotype: ISpsLiteBackendLogotype = {
 export const spsLiteBackendSlide: ISpsLiteBackendSlide = {
   id: 1,
   __component: "elements.slide",
-  title: "Page Builder",
-  description:
-    "Leverage our pre-built navigation elements, forms, photo galleries, text blocks, CTA elements, and more to create a visually appealing and engaging user experience with minimal effort.",
+  title: faker.lorem.sentence(),
+  description: faker.lorem.paragraph(),
   subtitle: null,
   media: [{ ...spsLiteUploadPluginBackendMediaTableAndHands }],
   buttons: [{ ...spsLiteBackendButtonSecondary }],

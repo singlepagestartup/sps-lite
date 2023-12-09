@@ -1,4 +1,4 @@
-import { ISpsLiteBackendLoader } from "types/single-types/sps-lite";
+import { ISpsLiteBackendLoader } from "~redux/services/backend/models/loader/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC, ReactNode } from "react";
 

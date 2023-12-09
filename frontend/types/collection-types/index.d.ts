@@ -6,9 +6,6 @@ import {
   IYourProjectBackendLayout,
   IYourProjectBackendLocale,
   IYourProjectBackendMetatag,
-  IYourProjectBackendModal,
-  IYourProjectBackendNavbar,
-  IYourProjectBackendPage,
   IYourProjectBackendReview,
   IYourProjectBackendSidebar,
   IYourProjectBackendSlideOver,
@@ -32,8 +29,6 @@ export interface IBackendPagination {
 
 export interface IBackendTier extends IYourProjectBackendTier {}
 
-export interface IBackendModal extends IYourProjectBackendModal {}
-
 export interface IBackendForm extends IYourProjectBackendForm {}
 
 export interface IBackendReview extends IYourProjectBackendReview {}
@@ -50,14 +45,6 @@ export interface IBackendMetatag extends IYourProjectBackendMetatag {}
 
 export interface IBackendTopbar extends IYourProjectBackendTopbar {}
 
-export interface IBackendPage extends IYourProjectBackendPage {}
-
-export interface IBackendLayout extends IYourProjectBackendLayout {}
-
-export interface IBackendNavbar extends IYourProjectBackendNavbar {}
-
 export interface IBackendFlyout extends IYourProjectBackendFlyout {}
-
-export interface IBackendFooter extends IYourProjectBackendFooter {}
 
 export interface IBackendLocale extends IYourProjectBackendLocale {}

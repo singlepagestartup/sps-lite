@@ -1,13 +1,7 @@
 import {
-  ISpsLiteBackendCurrency,
   ISpsLiteBackendFlyout,
-  ISpsLiteBackendFooter,
   ISpsLiteBackendForm,
-  ISpsLiteBackendLayout,
   ISpsLiteBackendMetatag,
-  ISpsLiteBackendModal,
-  ISpsLiteBackendNavbar,
-  ISpsLiteBackendPage,
   ISpsLiteBackendReview,
   ISpsLiteBackendSidebar,
   ISpsLiteBackendSlideOver,
@@ -36,6 +30,12 @@ import {
   spsLiteUploadPluginBackendMediaRoundIcon,
   spsLiteUploadPluginBackendMediaTableAndHands,
 } from "~mocks/plugins/upload/sps-lite";
+import { ISpsLiteBackendCurrency } from "~redux/services/backend/models/currency/interfaces/sps-lite";
+import { ISpsLiteBackendFooter } from "~redux/services/backend/models/footer/interfaces/sps-lite";
+import { ISpsLiteBackendLayout } from "~redux/services/backend/models/layout/interfaces/sps-lite";
+import { ISpsLiteBackendModal } from "~redux/services/backend/models/modal/interfaces/sps-lite";
+import { ISpsLiteBackendNavbar } from "~redux/services/backend/models/navbar/interfaces/sps-lite";
+import { ISpsLiteBackendPage } from "~redux/services/backend/models/page/interfaces/sps-lite";
 
 export const spsLiteBackendSliderFadeWithPreviews: ISpsLiteBackendSlider = {
   id: 6,

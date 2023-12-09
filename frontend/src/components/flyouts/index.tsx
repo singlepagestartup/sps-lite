@@ -3,7 +3,7 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
-import { useGetFlyoutsQuery } from "~redux/services/backend/models/flyouts";
+import { api as flyoutApi } from "~redux/services/backend/models/flyout/api";
 
 const variants = {
   ...spsLiteVariants,
@@ -24,7 +24,7 @@ export default function Flyouts({
     isError,
     isFetching,
     isUninitialized,
-  } = useGetFlyoutsQuery({});
+  } = flyoutApi.useGetFlyoutsQuery({});
 
   const localFlyouts = useMemo(() => {
     if (backendFlyouts) {
