@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 // import { BACKEND_URL } from "~utils/envs";
 import ReviewsLists, { ISpsLiteReviewsListBlock } from ".";
-import { spsLiteBackendReviewsListBlockSimpleWithAvatars } from "~mocks/components/page-blocks/sps-lite";
+import { entity } from "~redux/services/backend/components/page-blocks/reviews-list-block/mock/sps-lite";
 // import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 import Reviews from "./index";
 
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SimpleCentered: Story = {
   render: (args) => <ReviewsListsComponent {...args} />,
-  args: spsLiteBackendReviewsListBlockSimpleWithAvatars,
+  args: { ...entity, variant: "simple-with-avatars" },
 };
 
 function ReviewsListsComponent(args: ISpsLiteReviewsListBlock) {

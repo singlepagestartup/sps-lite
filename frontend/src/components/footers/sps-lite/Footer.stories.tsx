@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { spsLiteBackendFooterBoxed } from "~mocks/collection-types/sps-lite";
+import { entity as footer } from "~redux/services/backend/models/footer/mock/sps-lite";
 import Footers, { ISpsLiteFooter } from ".";
 import { Provider } from "react-redux";
 import store from "~redux/index";
@@ -21,5 +21,5 @@ function FooterComponent(args: ISpsLiteFooter) {
 
 export const Boxed: Story = {
   render: (args) => <FooterComponent {...args} />,
-  args: spsLiteBackendFooterBoxed,
+  args: { ...footer, variant: "boxed" },
 };

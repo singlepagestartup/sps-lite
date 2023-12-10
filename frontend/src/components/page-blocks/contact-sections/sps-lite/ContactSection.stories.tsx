@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import ContactSectons, { ISpsLiteContactSectonBlock } from ".";
-import { spsLiteBackendContactSectionBlockCentered } from "~mocks/components/page-blocks/sps-lite";
+import { entity as contactSectionBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/mock/sps-lite";
 import { useEffect } from "react";
 import { BACKEND_URL } from "~utils/envs";
 import { Provider } from "react-redux";
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Centered: Story = {
   render: (args) => <ContactSectonComponent {...args} />,
-  args: spsLiteBackendContactSectionBlockCentered,
+  args: { ...contactSectionBlock, variant: "centered" },
 };
 
 // const worker = setupWorker(

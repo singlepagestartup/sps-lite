@@ -7,7 +7,7 @@ import store from "~redux/index";
 // import { BACKEND_URL } from "~utils/envs";
 import ReviewsTables, { ISpsLiteReviewsTableBlock } from ".";
 import Reviews from "..";
-import { spsLiteBackendReviewsTableBlockSimple } from "~mocks/components/page-blocks/sps-lite";
+import { entity } from "~redux/services/backend/components/page-blocks/reviews-table-block/mock/sps-lite";
 // import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
 
 const meta = { component: ReviewsTables } satisfies Meta<typeof ReviewsTables>;
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
   render: (args) => <ReviewsTableComponent {...args} />,
-  args: spsLiteBackendReviewsTableBlockSimple,
+  args: { ...entity, variant: "simple" },
 };
 
 function ReviewsTableComponent(args: ISpsLiteReviewsTableBlock) {

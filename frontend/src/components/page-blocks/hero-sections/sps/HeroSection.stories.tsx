@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SpsHeroSections from ".";
-import { spsBackendHeroSectionBlockSplit } from "~mocks/components/page-blocks/sps";
+import { entity } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps";
 
 const meta = { component: SpsHeroSections } satisfies Meta<
   typeof SpsHeroSections
@@ -10,5 +10,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Split: Story = {
-  args: spsBackendHeroSectionBlockSplit,
+  args: { ...entity, variant: "split" },
 };

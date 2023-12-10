@@ -6,7 +6,7 @@ import Tables, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "..";
-import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
+import { entity } from "~redux/services/backend/models/review/mock/sps-lite";
 
 const meta = {
   component: Tables,
@@ -62,7 +62,7 @@ const tableConfig = {
   },
 };
 
-const reviews = Array(5).fill(spsLiteBackendReview);
+const reviews = Array(5).fill(entity);
 
 export const Simple: Story = {
   args: {

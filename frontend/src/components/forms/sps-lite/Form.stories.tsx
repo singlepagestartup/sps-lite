@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Forms, { ISpsLiteFormBlock } from ".";
-import { spsLiteBackendForm } from "~mocks/collection-types/sps-lite";
+import { entity as form } from "~redux/services/backend/models/form/mock/sps-lite";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SimpleCentered: Story = {
   render: (args) => <FormComponent {...args} />,
-  args: spsLiteBackendForm,
+  args: form,
 };
 
 function FormComponent(args: ISpsLiteFormBlock) {

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import PublicPageTopbars from "..";
-import { spsLiteBackendTopbarSimple } from "~mocks/collection-types/sps-lite";
+import { entity } from "~redux/services/backend/models/topbar/mock/sps-lite";
 
 const meta = { component: PublicPageTopbars } satisfies Meta<
   typeof PublicPageTopbars
@@ -10,5 +10,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const SimpleCentered: Story = {
-  args: { ...spsLiteBackendTopbarSimple, showSkeletons: false },
+  args: { ...entity, showSkeletons: false },
 };

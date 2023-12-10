@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { spsLiteBackendSidebarOneQuarter } from "~mocks/collection-types/sps-lite";
+import { entity } from "~redux/services/backend/models/sidebar/mock/sps-lite";
 import Sidebars, { ISpsLiteSidebar } from ".";
 
 const meta = { component: Sidebars } satisfies Meta<typeof Sidebars>;
@@ -17,5 +17,5 @@ function SidebarComponent(args: ISpsLiteSidebar) {
 
 export const OneQuarter: Story = {
   render: (args) => <SidebarComponent {...args} />,
-  args: spsLiteBackendSidebarOneQuarter,
+  args: { ...entity, variant: "one-quarter" },
 };

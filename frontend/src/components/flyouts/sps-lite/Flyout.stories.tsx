@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Flyout from ".";
-import { spsLiteBackendFlyoutSimple } from "~mocks/collection-types/sps-lite";
+import { entity as flyout } from "~redux/services/backend/models/flyout/mock/sps-lite";
 
 const meta = {
   component: Flyout,
@@ -19,5 +19,5 @@ function RenderButton() {
 }
 
 export const Simple: Story = {
-  args: { ...spsLiteBackendFlyoutSimple, children: <RenderButton /> },
+  args: { ...flyout, children: <RenderButton /> },
 };

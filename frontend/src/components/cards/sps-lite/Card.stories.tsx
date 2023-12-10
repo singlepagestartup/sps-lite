@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
 import Cards, { ICardProps } from "..";
-import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
+import { entity as review } from "~redux/services/backend/models/review/mock/sps-lite";
 import getFileUrl from "~utils/api/get-file-url";
 import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const reviews = Array(5).fill(spsLiteBackendReview);
+const reviews = Array(5).fill(review);
 
 const cardsConfig = {
   emptyLength: 3,

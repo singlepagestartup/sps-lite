@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Modals from ".";
-import { spsLiteBackendModal } from "~mocks/collection-types/sps-lite";
+import { entity as modal } from "~redux/services/backend/models/modal/mock/sps-lite";
 
 const meta = {
   component: Modals,
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 function ModalComponent() {
   useEffect(() => {
     http.get(`${BACKEND_URL}/api/modals`, ({ request }) => {
-      return HttpResponse.json([spsLiteBackendModal]);
+      return HttpResponse.json([modal]);
     });
   }, []);
 
@@ -39,7 +39,7 @@ Simple.parameters = {
   nextjs: {
     router: {
       query: {
-        opened_popup: spsLiteBackendModal.uid,
+        opened_popup: modal.uid,
       },
     },
   },

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SlideOvers from ".";
-import { spsLiteBackendSlideOverRightSideHalfWidth } from "~mocks/collection-types/sps-lite";
+import { entity } from "~redux/services/backend/models/slide-over/mock/sps-lite";
 // import { setupServer } from "msw/node";
 // import { HttpResponse, http } from "msw";
 // import { BACKEND_URL } from "~utils/envs";
@@ -41,7 +41,7 @@ RightSideHalfWidth.parameters = {
   nextjs: {
     router: {
       query: {
-        opened_slide_over: spsLiteBackendSlideOverRightSideHalfWidth.uid,
+        opened_slide_over: entity.uid,
       },
     },
   },

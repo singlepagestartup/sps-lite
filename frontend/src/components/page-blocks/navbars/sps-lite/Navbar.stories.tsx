@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Navbars, { ISpsLiteNavbarBlock } from ".";
-import { spsLiteBackendNavbarBlockSimple } from "~mocks/components/page-blocks/sps-lite";
+import { entity } from "~redux/services/backend/components/page-blocks/navbar-block/mock/sps-lite";
 // import { setupServer } from "msw/node";
 // import { HttpResponse, http } from "msw";
 // import { BACKEND_URL } from "~utils/envs";
@@ -41,5 +41,5 @@ function NavbarBlockComponent(args: ISpsLiteNavbarBlock) {
 
 export const SimpleLinksOnLeft: Story = {
   render: (args: ISpsLiteNavbarBlock) => <NavbarBlockComponent {...args} />,
-  args: spsLiteBackendNavbarBlockSimple,
+  args: { ...entity, variant: "simple-links-on-left" },
 };
