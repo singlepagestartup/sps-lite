@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { BACKEND_URL } from "~utils/envs";
-import { strapiFetchBaseQueryBuilder } from "~utils/api/strapi-rtk";
+import { strapiFetchBaseQueryBuilder } from "~redux/strapi-rtk";
 
 const model = "sliders";
 const rtkType = "Slider";

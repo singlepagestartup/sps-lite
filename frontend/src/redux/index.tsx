@@ -3,7 +3,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { rtkQueryErrorLogger } from "~utils/api/rtk-query-error-logger";
+import { rtkQueryErrorLogger } from "~redux/rtk-query-error-logger";
 import { backend } from "./services/backend";
 
 const middlewares = [...backend.middlewares, rtkQueryErrorLogger];

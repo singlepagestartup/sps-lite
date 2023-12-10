@@ -10,8 +10,8 @@ import {
   EndpointBuilder,
   QueryLifecycleApi,
 } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
-import { transformResponseItem } from "./transform-response-item";
-import { prepareFormDataToSend } from "./preapare-form-data-to-send";
+import { transformResponseItem } from "../utils/api/transform-response-item";
+import { prepareFormDataToSend } from "../utils/api/preapare-form-data-to-send";
 import { gzip } from "pako";
 import QueryString from "qs";
 

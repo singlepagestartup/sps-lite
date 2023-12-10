@@ -7,7 +7,7 @@ import {
   strapiFind,
   strapiFindOne,
   strapiUpdate,
-} from "~utils/api/strapi-rtk";
+} from "~redux/strapi-rtk";
 import { IBackendFlyout } from "../interfaces";
 import { populate } from "../populate";
 
