@@ -21,13 +21,23 @@ function LayoutComponent(args: ISpsLiteLayout) {
 
 function PageBlocks() {
   return (
-    <div>
-      <p>Page Blocks</p>
+    <div className="w-full h-screen bg-gray-100 mx-auto border border-dashed border-gray-500 px-5 rounded-md flex items-center justify-center">
+      <p className="text-5xl font-bold text-gray-500">Page Blocks</p>
     </div>
   );
 }
 
 export const Wide: Story = {
   render: (args) => <LayoutComponent {...args} />,
-  args: { ...layout, variant: "wide", children: <PageBlocks /> },
+  args: { ...layout, variant: "wide", children: <PageBlocks />, sidebar: null },
+};
+
+export const Boxed: Story = {
+  render: (args) => <LayoutComponent {...args} />,
+  args: {
+    ...layout,
+    variant: "boxed",
+    children: <PageBlocks />,
+    sidebar: null,
+  },
 };

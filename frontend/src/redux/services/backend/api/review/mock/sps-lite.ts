@@ -1,13 +1,13 @@
+import { faker } from "@faker-js/faker";
 import { ISpsLiteBackendApiReview } from "../interfaces/sps-lite";
 import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
 
 export const entity: ISpsLiteBackendApiReview = {
   id: 5,
-  name: "Emily Wilson",
-  title: "Exceptional Startup with Great Potential",
-  description:
-    "I had the pleasure of working with this startup and I was very impressed with their innovation and dedication to their customers. Their team is very knowledgeable and professional and I am confident that they have great potential for future success. I am looking forward to seeing what new innovations they come up with next. I highly recommend this startup to anyone looking for innovative solutions.",
-  subtitle: "Looking Forward to Future Innovations",
+  name: faker.person.fullName(),
+  title: faker.lorem.sentence(),
+  description: faker.lorem.paragraph(),
+  subtitle: faker.lorem.sentence(),
   rating: 5,
   media: [{ ...file }],
   additionalMedia: null,

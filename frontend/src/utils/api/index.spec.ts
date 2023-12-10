@@ -1,12 +1,12 @@
-import { IBackendPage } from "types/collection-types";
 import { getBackendData, getFiltersFromPageUrl, getTargetPage } from ".";
 import { setupServer } from "msw/node";
 import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import Pako from "pako";
 import QueryString from "qs";
+import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 
-const scopedPage: IBackendPage = {
+const scopedPage: IBackendApiPage = {
   id: 12,
   title: "Article Page",
   url: "/articles/[article.id]",

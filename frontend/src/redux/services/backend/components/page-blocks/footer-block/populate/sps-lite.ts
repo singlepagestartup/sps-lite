@@ -5,13 +5,13 @@ export const populate = {
   logotype: {
     populate: logotypePopulate,
   },
-  buttonsArrays: {
+  buttons_arrays: {
     populate: buttonsArrayPopulate,
   },
-  additionalButtonsArrays: {
+  additional_buttons_arrays: {
     populate: buttonsArrayPopulate,
   },
-  extraButtonsArrays: {
+  extra_buttons_arrays: {
     populate: buttonsArrayPopulate,
   },
 };

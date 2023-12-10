@@ -1,10 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SlideOvers from ".";
 import { entity } from "~redux/services/backend/api/slide-over/mock/sps-lite";
-// import { setupServer } from "msw/node";
-// import { HttpResponse, http } from "msw";
-// import { BACKEND_URL } from "~utils/envs";
-// import { useEffect } from "react";
+import { HttpResponse, http } from "msw";
+import { BACKEND_URL } from "~utils/envs";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 
@@ -13,17 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// const server = setupServer(
-//   http.get(`${BACKEND_URL}/api/slide-overs`, ({ request }) => {
-//     return HttpResponse.json([spsLiteBackendSlideOverRightSideHalfWidth]);
-//   }),
-// );
-
 function SlideOverComponent() {
-  // useEffect(() => {
-  //   server.listen();
-  // }, []);
-
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>
@@ -39,10 +27,20 @@ export const RightSideHalfWidth: Story = {
 
 RightSideHalfWidth.parameters = {
   nextjs: {
+    appDirectory: true,
     router: {
       query: {
         opened_slide_over: entity.uid,
       },
     },
+  },
+  msw: {
+    handlers: [
+      http.get(`${BACKEND_URL}/api/slide-overs`, ({ request }) => {
+        return HttpResponse.json({
+          data: [entity],
+        });
+      }),
+    ],
   },
 };

@@ -1,10 +1,10 @@
+import { IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import getFileUrl from "./get-file-url";
-import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
 import { BACKEND_URL } from "~utils/envs";
 
 describe("getFileUrl", () => {
   it("should return the file URL with the correct backend URL", () => {
-    const obj: IBackendUploadPluginBackendMedia = {
+    const obj: IBackendExtensionUploadApiFile = {
       id: 123,
       name: "example.jpg",
       url: "/uploads/2021/08/12/example.jpg",
@@ -28,7 +28,7 @@ describe("getFileUrl", () => {
   });
 
   it("should return the file URL with the correct S3 URL", () => {
-    const obj: IBackendUploadPluginBackendMedia = {
+    const obj: IBackendExtensionUploadApiFile = {
       id: 123,
       name: "example.jpg",
       url: "https://project.s3.amazonaws.com/bucket/2021/08/12/example.jpg",

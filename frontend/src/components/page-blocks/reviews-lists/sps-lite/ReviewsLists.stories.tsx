@@ -1,13 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-// import { setupServer } from "msw/node";
-// import { HttpResponse, http } from "msw";
-// import { useEffect } from "react";
+import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";
 import store from "~redux/index";
-// import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "~utils/envs";
 import ReviewsLists, { ISpsLiteReviewsListBlock } from ".";
 import { entity } from "~redux/services/backend/components/page-blocks/reviews-list-block/mock/sps-lite";
-// import { spsLiteBackendReview } from "~mocks/collection-types/sps-lite";
+import { entity as review } from "~redux/services/backend/api/review/mock/sps-lite";
 import Reviews from "./index";
 
 const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
@@ -15,22 +13,21 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// const server = setupServer(
-//   http.get(`${BACKEND_URL}/api/reviews`, ({ request }) => {
-//     return HttpResponse.json(Array(5).fill(spsLiteBackendReview));
-//   }),
-// );
-
 export const SimpleCentered: Story = {
   render: (args) => <ReviewsListsComponent {...args} />,
   args: { ...entity, variant: "simple-with-avatars" },
+  parameters: {
+    msw: {
+      handlers: [
+        http.get(`${BACKEND_URL}/api/reviews`, ({ request }) => {
+          return HttpResponse.json(Array(5).fill(review));
+        }),
+      ],
+    },
+  },
 };
 
 function ReviewsListsComponent(args: ISpsLiteReviewsListBlock) {
-  // useEffect(() => {
-  //   server.listen();
-  // }, []);
-
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>

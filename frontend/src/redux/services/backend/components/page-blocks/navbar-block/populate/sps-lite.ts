@@ -8,10 +8,10 @@ export const populate = {
   buttons: {
     populate: buttonPopulate,
   },
-  additionalButtons: {
+  additional_buttons: {
     populate: buttonPopulate,
   },
-  extraButtons: {
+  extra_buttons: {
     populate: buttonPopulate,
   },
 };

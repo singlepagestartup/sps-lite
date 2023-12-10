@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 import { ISpsLiteBackendApiLayout } from "../../layout/interfaces/sps-lite";
 import { ISpsLiteBackendApiLocale } from "../../locale/interfaces/sps-lite";
 import { ISpsLiteBackendApiMetatag } from "../../metatag/interfaces/sps-lite";
@@ -8,7 +8,7 @@ export interface ISpsLiteBackendApiPage {
   title: string | null;
   url: string;
   locale: string;
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  pageBlocks?: IBackendComponentPageBlock[] | null;
   localizations?: ISpsLiteBackendApiLocale[] | null;
   layout?: ISpsLiteBackendApiLayout | null;
   createdAt: string;

@@ -1,9 +1,9 @@
 import { renderHook } from "@testing-library/react";
 import useGetPreparedFormInputs from ".";
-import { IBackendForm } from "types/collection-types";
-import { ISpsLiteBackendInput } from "types/components/elements/sps-lite";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
+import { IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { ISpsLiteBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
 
 jest.mock("next/navigation", () => {
   return {
@@ -13,7 +13,7 @@ jest.mock("next/navigation", () => {
 });
 
 describe("useGetPreparedFormInputs", () => {
-  const scopedForm: IBackendForm = {
+  const scopedForm: IBackendApiForm = {
     id: 1,
     className: null,
     additionalAttributes: null,
@@ -28,7 +28,7 @@ describe("useGetPreparedFormInputs", () => {
   };
 
   it("shoul return prepared inputs array with text input field", async () => {
-    const textInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const textInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 14,
       placeholder: "Type your name",
       variant: "text",
@@ -47,7 +47,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [textInput],
     };
@@ -66,7 +66,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with listbox input field", async () => {
-    const listboxInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const listboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 21,
       placeholder: "Choose target tier",
       variant: "listbox",
@@ -100,7 +100,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [listboxInput],
     };
@@ -123,7 +123,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with multiple listbox input field", async () => {
-    const listboxInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const listboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 21,
       placeholder: "Choose target tier",
       variant: "listbox",
@@ -157,7 +157,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [listboxInput],
     };
@@ -180,7 +180,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with date input field", async () => {
-    const dateInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const dateInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 19,
       placeholder: "Select release date",
       variant: "date",
@@ -199,7 +199,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [dateInput],
     };
@@ -218,7 +218,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with date input field", async () => {
-    const dateInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const dateInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 19,
       placeholder: "Select release date",
       variant: "date",
@@ -237,7 +237,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [dateInput],
     };
@@ -256,7 +256,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with file input field", async () => {
-    const fileInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const fileInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 18,
       placeholder: "Upload design file",
       variant: "file",
@@ -275,7 +275,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [fileInput],
     };
@@ -294,7 +294,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with checkbox input field", async () => {
-    const checkboxInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const checkboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 20,
       placeholder: null,
       variant: "switch",
@@ -313,7 +313,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [checkboxInput],
     };
@@ -349,7 +349,7 @@ describe("useGetPreparedFormInputs", () => {
         } as any),
     );
 
-    const textInput: Omit<ISpsLiteBackendInput, "__component"> = {
+    const textInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
       id: 14,
       placeholder: "Type your name",
       variant: "text",
@@ -368,7 +368,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendForm = {
+    const form: IBackendApiForm = {
       ...scopedForm,
       inputs: [textInput],
     };

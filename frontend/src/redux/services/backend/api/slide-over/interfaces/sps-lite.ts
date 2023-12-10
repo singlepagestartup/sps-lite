@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
 export interface ISpsLiteBackendApiSlideOver {
   id: number;
@@ -10,5 +10,5 @@ export interface ISpsLiteBackendApiSlideOver {
   updatedAt: string;
   publishedAt: string;
   variant: "right-side-half-width";
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  pageBlocks?: IBackendComponentPageBlock[] | null;
 }

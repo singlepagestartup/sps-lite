@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import * as nextNavigation from "next/navigation";
 import useGetPageUrlModelId from ".";
-import { IBackendPage } from "types/collection-types";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "~utils/envs";
 import { HttpResponse, http } from "msw";
+import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 
 jest.mock("next/navigation", () => {
   return {
@@ -13,7 +13,7 @@ jest.mock("next/navigation", () => {
   };
 });
 
-const scopedPage: IBackendPage = {
+const scopedPage: IBackendApiPage = {
   id: 12,
   title: "Article Page",
   url: "/articles/[article.id]",

@@ -3,13 +3,13 @@ import { populate as buttonsArrayPopulate } from "~redux/services/backend/compon
 import { populate as formPopulate } from "~redux/services/backend/api/form/populate";
 
 export const populate = {
-  buttonsArray: {
+  buttons_brray: {
     populate: buttonsArrayPopulate,
   },
   media: {
     populate: fileUploadPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: fileUploadPopulate,
   },
   form: {

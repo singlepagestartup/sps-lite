@@ -13,7 +13,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getCurrencies: strapiFind<IBackendApiCurrency>({
+    get: strapiFind<IBackendApiCurrency>({
       serviceApi: this,
       build,
       populate,

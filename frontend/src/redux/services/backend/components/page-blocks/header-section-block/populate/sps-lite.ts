@@ -4,7 +4,7 @@ export const populate = {
   media: {
     populate: fileUploadPopulate,
   },
-  additionalMedia: {
+  additional_media: {
     populate: fileUploadPopulate,
   },
 };

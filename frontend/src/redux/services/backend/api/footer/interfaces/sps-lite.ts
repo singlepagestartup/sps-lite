@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
 export interface ISpsLiteBackendApiFooter {
   id: number;
@@ -10,5 +10,5 @@ export interface ISpsLiteBackendApiFooter {
   updatedAt: string;
   publishedAt: string;
   variant: "boxed";
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  pageBlocks?: IBackendComponentPageBlock[] | null;
 }

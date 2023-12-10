@@ -1,4 +1,4 @@
-import { ISpsLiteBackendApiTier } from "../../tier/interfaces/sps-lite";
+import { ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
 
 export interface ISpsLiteBackendApiCurrency {
   id: number;

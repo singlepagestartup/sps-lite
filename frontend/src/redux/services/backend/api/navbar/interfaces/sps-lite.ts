@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPageBlock } from "types/components/page-blocks/sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
 export interface ISpsLiteBackendApiNavbar {
   id: number;
@@ -12,5 +12,5 @@ export interface ISpsLiteBackendApiNavbar {
   variant: "boxed";
   position: "fixed";
   side: "top";
-  pageBlocks?: ISpsLiteBackendPageBlock[] | null;
+  pageBlocks?: IBackendComponentPageBlock[] | null;
 }
