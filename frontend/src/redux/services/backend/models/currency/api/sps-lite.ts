@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { backendServiceApi } from "../../..";
+import { api as modalApi } from "~redux/services/backend/models/modal/api";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFind } from "~utils/api/strapi-rtk";
 import { IBackendCurrency } from "../interfaces";
@@ -21,7 +21,7 @@ export const api = createApi({
       rtkType,
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         await queryFulfilled;
-        dispatch(backendServiceApi.util.invalidateTags(["Modal"]));
+        dispatch(modalApi.util.invalidateTags(["Modal"]));
       },
     }),
   }),

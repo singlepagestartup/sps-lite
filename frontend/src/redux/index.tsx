@@ -2,61 +2,15 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import {
-  backendServiceApi,
-  frontendServiceApi,
-  rtkQueryErrorLogger,
-} from "~backend/index";
-import { api as currencyApi } from "~redux/services/backend/models/currency/api";
-import { api as flyoutApi } from "~redux/services/backend/models/flyout/api";
-import { api as footerApi } from "~redux/services/backend/models/footer/api";
-import { api as formRequestApi } from "~redux/services/backend/models/form-request/api";
-import { api as layoutApi } from "~redux/services/backend/models/layout/api";
-import { api as loaderApi } from "~redux/services/backend/models/loader/api";
-import { api as modalApi } from "~redux/services/backend/models/modal/api";
-import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
-import { api as pageApi } from "~redux/services/backend/models/page/api";
-import { api as reviewApi } from "~redux/services/backend/models/review/api";
-import { api as sidebarApi } from "~redux/services/backend/models/sidebar/api";
-import { api as slideOverApi } from "~redux/services/backend/models/slide-over/api";
-import { api as topbarApi } from "~redux/services/backend/models/topbar/api";
 
-const middlewares = [
-  backendServiceApi.middleware,
-  frontendServiceApi.middleware,
-  currencyApi.middleware,
-  flyoutApi.middleware,
-  footerApi.middleware,
-  formRequestApi.middleware,
-  layoutApi.middleware,
-  loaderApi.middleware,
-  modalApi.middleware,
-  navbarApi.middleware,
-  pageApi.middleware,
-  reviewApi.middleware,
-  sidebarApi.middleware,
-  slideOverApi.middleware,
-  topbarApi.middleware,
-  rtkQueryErrorLogger,
-];
+import { rtkQueryErrorLogger } from "~utils/api/rtk-query-error-logger";
+import { backend } from "./services/backend";
+
+const middlewares = [...backend.middlewares, rtkQueryErrorLogger];
 
 const store: any = configureStore({
   reducer: {
-    [backendServiceApi.reducerPath]: backendServiceApi.reducer,
-    [frontendServiceApi.reducerPath]: frontendServiceApi.reducer,
-    [currencyApi.reducerPath]: currencyApi.reducer,
-    [flyoutApi.reducerPath]: flyoutApi.reducer,
-    [footerApi.reducerPath]: footerApi.reducer,
-    [formRequestApi.reducerPath]: formRequestApi.reducer,
-    [layoutApi.reducerPath]: layoutApi.reducer,
-    [loaderApi.reducerPath]: loaderApi.reducer,
-    [modalApi.reducerPath]: modalApi.reducer,
-    [navbarApi.reducerPath]: navbarApi.reducer,
-    [pageApi.reducerPath]: pageApi.reducer,
-    [reviewApi.reducerPath]: reviewApi.reducer,
-    [sidebarApi.reducerPath]: sidebarApi.reducer,
-    [slideOverApi.reducerPath]: slideOverApi.reducer,
-    [topbarApi.reducerPath]: topbarApi.reducer,
+    ...backend.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),

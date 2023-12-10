@@ -1,75 +1,46 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { isRejectedWithValue } from "@reduxjs/toolkit";
-import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
-import { createNotification } from "~components/notifications";
-import { populate as pageBlockPopulate } from "~redux/services/backend/components/page-blocks/populate";
-import { strapiFetchBaseQueryBuilder } from "~utils/api/strapi-rtk";
+import { api as currencyApi } from "~redux/services/backend/models/currency/api";
+import { api as flyoutApi } from "~redux/services/backend/models/flyout/api";
+import { api as footerApi } from "~redux/services/backend/models/footer/api";
+import { api as formRequestApi } from "~redux/services/backend/models/form-request/api";
+import { api as layoutApi } from "~redux/services/backend/models/layout/api";
+import { api as loaderApi } from "~redux/services/backend/models/loader/api";
+import { api as modalApi } from "~redux/services/backend/models/modal/api";
+import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
+import { api as pageApi } from "~redux/services/backend/models/page/api";
+import { api as reviewApi } from "~redux/services/backend/models/review/api";
+import { api as sidebarApi } from "~redux/services/backend/models/sidebar/api";
+import { api as slideOverApi } from "~redux/services/backend/models/slide-over/api";
+import { api as topbarApi } from "~redux/services/backend/models/topbar/api";
 
-const tagTypes = ["FormRequest"];
-
-export const backendServiceApi = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
-  tagTypes,
-  reducerPath: "backend",
-  endpoints: () => ({}),
-});
-
-export const frontendServiceApi = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(FRONTEND_URL),
-  tagTypes,
-  reducerPath: "frontend",
-  endpoints: () => ({}),
-});
-
-/**
- * Using backendServiceApi by default means requests to working backend
- * You can pass requests through Next.js server by setting frontendServiceApi as
- * default api. And you can customize apis in /app/api/[[...url]]/route.ts file, or
- * create handlers by yourself.
- *
- * Static export requires to set frontendServiceApi, that creates json-files
- * with data in api folder. Without that pages will be empty.
- */
-export const serviceApi = (() => {
-  // You can set backendServiceApi if you wouldn't use Next.js server for proxying and caching data
-  const api = backendServiceApi;
-
-  // if (process.env.SERVER_ENVIRONMENT === "icp") {
-  //   // @ts-ignore
-  //   api = frontendServiceApi;
-  // }
-
-  return api;
-})();
-
-export const rtkQueryErrorLogger = (api: any) => {
-  return (next: any) => {
-    return (action: any) => {
-      // RTK Query uses `createAsyncThunk` from redux-toolkit under the hood, so we're able to utilize these matchers!
-      if (isRejectedWithValue(action)) {
-        if (action?.payload?.data?.error?.message) {
-          // console.log(`🚀 ~ return ~ action`, action);
-          createNotification({
-            title: action.payload.data.error.name,
-            message: action.payload.data.error.message,
-            className: "notification-error",
-            duration: 10000,
-          });
-        }
-      }
-
-      return next(action);
-    };
-  };
-};
-
-export const frontendApiStaticModels = [
-  {
-    url: "flyouts",
-    populate: pageBlockPopulate,
+export const backend = {
+  middlewares: [
+    currencyApi.middleware,
+    flyoutApi.middleware,
+    footerApi.middleware,
+    formRequestApi.middleware,
+    layoutApi.middleware,
+    loaderApi.middleware,
+    modalApi.middleware,
+    navbarApi.middleware,
+    pageApi.middleware,
+    reviewApi.middleware,
+    sidebarApi.middleware,
+    slideOverApi.middleware,
+    topbarApi.middleware,
+  ],
+  reducer: {
+    [currencyApi.reducerPath]: currencyApi.reducer,
+    [flyoutApi.reducerPath]: flyoutApi.reducer,
+    [footerApi.reducerPath]: footerApi.reducer,
+    [formRequestApi.reducerPath]: formRequestApi.reducer,
+    [layoutApi.reducerPath]: layoutApi.reducer,
+    [loaderApi.reducerPath]: loaderApi.reducer,
+    [modalApi.reducerPath]: modalApi.reducer,
+    [navbarApi.reducerPath]: navbarApi.reducer,
+    [pageApi.reducerPath]: pageApi.reducer,
+    [reviewApi.reducerPath]: reviewApi.reducer,
+    [sidebarApi.reducerPath]: sidebarApi.reducer,
+    [slideOverApi.reducerPath]: slideOverApi.reducer,
+    [topbarApi.reducerPath]: topbarApi.reducer,
   },
-  { url: "footers", populate: pageBlockPopulate },
-  { url: "i18n/locales", populate: pageBlockPopulate },
-  { url: "navbars", populate: pageBlockPopulate },
-  { url: "topbars", populate: pageBlockPopulate },
-];
+};
