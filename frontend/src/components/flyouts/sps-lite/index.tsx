@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
 import Simple from "./Simple";
-import { ISpsLiteBackendFlyout } from "~redux/services/backend/models/flyout/interfaces/sps-lite";
+import { ISpsLiteBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces/sps-lite";
 
-export interface ISpsLiteFlyout extends ISpsLiteBackendFlyout {
+export interface ISpsLiteFlyout extends ISpsLiteBackendApiFlyout {
   children: ReactNode;
   showSkeletons?: boolean;
 }

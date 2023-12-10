@@ -1,9 +1,9 @@
-import { ISpsLiteBackendCtaSectionBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentCtaSectionBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces/sps-lite";
 import DarkWithImage from "./DarkWithImage";
 import { FC } from "react";
 
 export interface ISpsLiteCtaSectionsBlock
-  extends ISpsLiteBackendCtaSectionBlock {
+  extends ISpsLiteBackendComponentCtaSectionBlock {
   showSkeletons?: boolean;
 }
 

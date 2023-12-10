@@ -1,3 +1,4 @@
-import { ISpsLiteBackendFaq } from "./sps-lite";
+import { ISpsLiteBackendComponentFaq } from "./sps-lite";
 
-export interface IYourProjectBackendFaq extends ISpsLiteBackendFaq {}
+export interface IYourProjectBackendComponentFaq
+  extends ISpsLiteBackendComponentFaq {}

@@ -12,7 +12,7 @@ import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import dayjs from "dayjs";
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
 export default function DateInput(props: IInputProps) {
   const {
@@ -180,7 +180,10 @@ export default function DateInput(props: IInputProps) {
             className="media-container"
           >
             {media?.map(
-              (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
+              (
+                mediaItem: ISpsLiteBackendExtensionUploadApiFile,
+                index: number,
+              ) => (
                 <Image
                   key={index}
                   src={getFileUrl(mediaItem)}

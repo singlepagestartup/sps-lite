@@ -1,6 +1,6 @@
-import { ISpsLiteBackendFaq } from "../interfaces/sps-lite";
+import { ISpsLiteBackendComponentFaq } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendFaq = {
+export const entity: ISpsLiteBackendComponentFaq = {
   id: 3,
   __component: "elements.faq",
   title: "Question",

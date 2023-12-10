@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { entity } from "~redux/services/backend/models/sidebar/mock/sps-lite";
+import { entity } from "~redux/services/backend/api/sidebar/mock/sps-lite";
 import Sidebars, { ISpsLiteSidebar } from ".";
 
 const meta = { component: Sidebars } satisfies Meta<typeof Sidebars>;

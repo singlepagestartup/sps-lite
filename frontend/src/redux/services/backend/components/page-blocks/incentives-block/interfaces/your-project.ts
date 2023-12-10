@@ -1,4 +1,4 @@
-import { ISpsLiteBackendIncentivesBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentIncentivesBlock } from "./sps-lite";
 
-export interface IYourProjectBackendIncentivesBlock
-  extends ISpsLiteBackendIncentivesBlock {}
+export interface IYourProjectBackendComponentIncentivesBlock
+  extends ISpsLiteBackendComponentIncentivesBlock {}

@@ -1,9 +1,9 @@
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendFont {
+export interface ISpsLiteBackendComponentFont {
   id: number;
   __component: "elements.font";
-  media?: ISpsLiteBackendUploadFile;
+  media?: ISpsLiteBackendExtensionUploadApiFile;
   weight: "light" | "regular" | "medium" | "semi_bold" | "bold";
   style: "normal" | "italic";
   variant: "primary" | "default";

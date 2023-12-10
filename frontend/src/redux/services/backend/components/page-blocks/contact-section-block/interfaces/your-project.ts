@@ -1,4 +1,4 @@
-import { ISpsLiteBackendContactSectonBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentContactSectonBlock } from "./sps-lite";
 
-export interface IYourProjectBackendContactSectonBlock
-  extends ISpsLiteBackendContactSectonBlock {}
+export interface IYourProjectBackendComponentContactSectonBlock
+  extends ISpsLiteBackendComponentContactSectonBlock {}

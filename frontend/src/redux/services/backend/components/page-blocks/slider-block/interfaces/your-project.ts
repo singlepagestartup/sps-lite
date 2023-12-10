@@ -1,4 +1,4 @@
-import { ISpsLiteBackendSliderBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentSliderBlock } from "./sps-lite";
 
-export interface IYourProjectBackendSliderBlock
-  extends ISpsLiteBackendSliderBlock {}
+export interface IYourProjectBackendComponentSliderBlock
+  extends ISpsLiteBackendComponentSliderBlock {}

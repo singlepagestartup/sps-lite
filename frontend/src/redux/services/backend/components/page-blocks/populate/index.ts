@@ -1,7 +1,7 @@
 import { populate as alertBlockPopulate } from "../alert-block/populate";
 import { populate as contactSectionBlockPopulate } from "../contact-section-block/populate";
 import { populate as ctaSectionBlockPopulate } from "../cta-section-block/populate";
-import { populate as faqsBlockPopulate } from "../faqs-block/populate";
+import { populate as faqsBlockPopulate } from "../faq-block/populate";
 import { populate as featuresSectionBlockPopulate } from "../features-section-block/populate";
 import { populate as footerBlockPopulate } from "../footer-block/populate";
 import { populate as headerSectionBlockPopulate } from "../header-section-block/populate";

@@ -1,3 +1,4 @@
-import { IYourProjectBackendInputOption } from "./your-project";
+import { IYourProjectBackendComponentInputOption } from "./your-project";
 
-export interface IBackendInputOption extends IYourProjectBackendInputOption {}
+export interface IBackendComponentInputOption
+  extends IYourProjectBackendComponentInputOption {}

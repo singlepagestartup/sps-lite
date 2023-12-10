@@ -1,3 +1,4 @@
-import { IYourProjectBackendNavbarBlock } from "./your-project";
+import { IYourProjectBackendComponentNavbarBlock } from "./your-project";
 
-export interface IBackendNavbarBlock extends IYourProjectBackendNavbarBlock {}
+export interface IBackendComponentNavbarBlock
+  extends IYourProjectBackendComponentNavbarBlock {}

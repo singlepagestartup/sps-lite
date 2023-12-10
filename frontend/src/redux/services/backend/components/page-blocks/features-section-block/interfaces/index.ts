@@ -1,4 +1,4 @@
-import { IYourProjectBackendFeaturesSectionBlock } from "./your-project";
+import { IYourProjectBackendComponentFeaturesSectionBlock } from "./your-project";
 
-export interface IBackendFeaturesSectionBlock
-  extends IYourProjectBackendFeaturesSectionBlock {}
+export interface IBackendComponentFeaturesSectionBlock
+  extends IYourProjectBackendComponentFeaturesSectionBlock {}

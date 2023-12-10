@@ -1,6 +1,6 @@
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendHeaderSectionBlock {
+export interface ISpsLiteBackendComponentHeaderSectionBlock {
   id: number;
   __component: "page-blocks.header-section-block";
   variant: "simple-centered";
@@ -8,7 +8,7 @@ export interface ISpsLiteBackendHeaderSectionBlock {
   description: string | null;
   subtitle: string | null;
   className: string | null;
-  media?: ISpsLiteBackendUploadFile[] | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
   anchor: string | null;
 }

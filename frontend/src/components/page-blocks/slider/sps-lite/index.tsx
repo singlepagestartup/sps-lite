@@ -1,8 +1,9 @@
-import { ISpsLiteBackendSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 
-export interface ISpsLiteSliderBlock extends ISpsLiteBackendSliderBlock {
+export interface ISpsLiteSliderBlock
+  extends ISpsLiteBackendComponentSliderBlock {
   showSkeletons?: boolean;
 }
 

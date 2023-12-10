@@ -1,8 +1,9 @@
-import { ISpsLiteBackendNotFoundBlock } from "~redux/services/backend/components/page-blocks/not-found-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentNotFoundBlock } from "~redux/services/backend/components/page-blocks/not-found-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 
-export interface ISpsLiteNotFoundBlock extends ISpsLiteBackendNotFoundBlock {
+export interface ISpsLiteNotFoundBlock
+  extends ISpsLiteBackendComponentNotFoundBlock {
   showSkeletons?: boolean;
 }
 

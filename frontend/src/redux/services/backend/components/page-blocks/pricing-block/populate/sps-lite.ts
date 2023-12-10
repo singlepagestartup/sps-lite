@@ -1,5 +1,5 @@
-import { populate as fileUploadPopulate } from "~redux/services/backend/models/upload/populate";
-import { populate as tierPopulate } from "~redux/services/backend/models/tier/populate";
+import { populate as fileUploadPopulate } from "~redux/services/backend/extensions/upload/api/file/populate";
+import { populate as tierPopulate } from "~redux/services/backend/api/tier/populate";
 
 export const populate = {
   tiers: {

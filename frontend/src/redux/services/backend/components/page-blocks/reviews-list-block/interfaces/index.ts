@@ -1,4 +1,4 @@
-import { IYourProjectBackendReviewsListBlock } from "./your-project";
+import { IYourProjectBackendComponentReviewsListBlock } from "./your-project";
 
-export interface IBackendReviewsListBlock
-  extends IYourProjectBackendReviewsListBlock {}
+export interface IBackendComponentReviewsListBlock
+  extends IYourProjectBackendComponentReviewsListBlock {}

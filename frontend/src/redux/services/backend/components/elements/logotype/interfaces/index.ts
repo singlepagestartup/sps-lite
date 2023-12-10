@@ -1,3 +1,4 @@
-import { IYourProjectBackendLogotype } from "./your-project";
+import { IYourProjectBackendComponentLogotype } from "./your-project";
 
-export interface IBackendLogotype extends IYourProjectBackendLogotype {}
+export interface IBackendComponentLogotype
+  extends IYourProjectBackendComponentLogotype {}

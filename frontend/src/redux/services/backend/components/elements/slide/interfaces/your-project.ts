@@ -1,3 +1,4 @@
-import { ISpsLiteBackendSlide } from "./sps-lite";
+import { ISpsLiteBackendComponentSlide } from "./sps-lite";
 
-export interface IYourProjectBackendSlide extends ISpsLiteBackendSlide {}
+export interface IYourProjectBackendComponentSlide
+  extends ISpsLiteBackendComponentSlide {}

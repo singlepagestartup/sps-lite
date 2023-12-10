@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import PublicPageTopbars from "..";
-import { entity } from "~redux/services/backend/models/topbar/mock/sps-lite";
+import { entity } from "~redux/services/backend/api/topbar/mock/sps-lite";
 
 const meta = { component: PublicPageTopbars } satisfies Meta<
   typeof PublicPageTopbars

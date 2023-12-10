@@ -1,9 +1,9 @@
-import { ISpsLiteBackendContactSectonBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentContactSectonBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/interfaces/sps-lite";
 import Centered from "./Centered";
 import { FC } from "react";
 
 export interface ISpsLiteContactSectonBlock
-  extends ISpsLiteBackendContactSectonBlock {
+  extends ISpsLiteBackendComponentContactSectonBlock {
   showSkeletons?: boolean;
 }
 

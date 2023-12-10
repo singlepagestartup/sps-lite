@@ -1,16 +1,16 @@
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
-import { ISpsLiteBackendFeature } from "../../../elements/feature/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { ISpsLiteBackendComponentFeature } from "../../../elements/feature/interfaces/sps-lite";
 
-export interface ISpsLiteBackendFeaturesSectionBlock {
+export interface ISpsLiteBackendComponentFeaturesSectionBlock {
   id: number;
   __component: "page-blocks.features-section-block";
   variant: "with-icon";
-  features?: ISpsLiteBackendFeature[] | null;
+  features?: ISpsLiteBackendComponentFeature[] | null;
   title: string | null;
   subtitle: string | null;
   description: string | null;
   anchor: string | null;
   className: string | null;
-  media?: ISpsLiteBackendUploadFile[] | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
 }

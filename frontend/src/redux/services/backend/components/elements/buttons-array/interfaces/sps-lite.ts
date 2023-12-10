@@ -1,16 +1,16 @@
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
-import { ISpsLiteBackendButton } from "../../button/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { ISpsLiteBackendComponentButton } from "../../button/interfaces/sps-lite";
 
-export interface ISpsLiteBackendButtonsArray {
+export interface ISpsLiteBackendComponentButtonsArray {
   id: number;
   __component: "elements.buttons-array";
   variant: "column-with-title" | "row";
   title: string | null;
   additionalAttributes: any;
-  buttons: ISpsLiteBackendButton[];
+  buttons: ISpsLiteBackendComponentButton[];
   description: string | null;
   className: string | null;
   url: string | null;
-  media?: ISpsLiteBackendUploadFile[] | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
 }

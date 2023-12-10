@@ -1,8 +1,8 @@
 import PageBlocks from "~components/page-blocks";
-import { IBackendPage } from "~redux/services/backend/models/page/interfaces";
 import { getBackendData } from "~utils/api";
-import { populate as pagePopulate } from "~redux/services/backend/models/page/populate";
+import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
+import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 
 export default async function NotFoundPage() {
   const pages = (await getBackendData({
@@ -13,7 +13,7 @@ export default async function NotFoundPage() {
         url: "/404",
       },
     },
-  })) as IBackendPage[];
+  })) as IBackendApiPage[];
 
   if (!pages?.length) {
     return <div>Not found</div>;

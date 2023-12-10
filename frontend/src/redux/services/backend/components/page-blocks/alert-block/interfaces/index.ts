@@ -1,3 +1,4 @@
-import { IYourProjectBackendAlertBlock } from "./your-project";
+import { IYourProjectBackendComponentAlertBlock } from "./your-project";
 
-export interface IBackendAlertBlock extends IYourProjectBackendAlertBlock {}
+export interface IBackendComponentAlertBlock
+  extends IYourProjectBackendComponentAlertBlock {}

@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendNavbarBlock } from "../interfaces/sps-lite";
 import { entity as logotype } from "~redux/services/backend/components/elements/logotype/mock/sps-lite";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
+import { ISpsLiteBackendComponentNavbarBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendNavbarBlock = {
+export const entity: ISpsLiteBackendComponentNavbarBlock = {
   id: 2,
   __component: "page-blocks.navbar-block",
   variant: "simple-links-on-left",

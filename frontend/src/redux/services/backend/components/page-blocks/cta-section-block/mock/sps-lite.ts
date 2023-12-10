@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendCtaSectionBlock } from "../interfaces/sps-lite";
 import { entity as spsLiteBackendButton } from "~redux/services/backend/components/elements/button/mock/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { ISpsLiteBackendComponentCtaSectionBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendCtaSectionBlock = {
+export const entity: ISpsLiteBackendComponentCtaSectionBlock = {
   id: 3,
   title: faker.lorem.sentence(),
   variant: "dark-with-image",

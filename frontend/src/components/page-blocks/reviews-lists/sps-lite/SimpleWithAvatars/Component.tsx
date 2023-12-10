@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
-import { api as reviewApi } from "~redux/services/backend/models/review/api";
+import { api as reviewApi } from "~redux/services/backend/api/review/api";
 import Cards, { ICardProps } from "~components/cards";
 import { ISpsLiteReviewsListBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
-import { IBackendReview } from "~redux/services/backend/models/review/interfaces";
+import { ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -44,7 +44,7 @@ export default function Component(props: ISpsLiteReviewsListBlock) {
 }
 
 function SimpleWithAvatarCard(props: ICardProps) {
-  const { item }: { item: IBackendReview } = props;
+  const { item }: { item: ISpsLiteBackendApiReview } = props;
 
   return (
     <div className="flex space-x-4 text-sm text-gray-500">

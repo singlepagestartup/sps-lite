@@ -1,8 +1,9 @@
-import { ISpsLiteBackendNavbarBlock } from "~redux/services/backend/components/page-blocks/navbar-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentNavbarBlock } from "~redux/services/backend/components/page-blocks/navbar-block/interfaces/sps-lite";
 import SimpleLinksOnLeft from "./SimpleLinksOnLeft";
 import { FC } from "react";
 
-export interface ISpsLiteNavbarBlock extends ISpsLiteBackendNavbarBlock {
+export interface ISpsLiteNavbarBlock
+  extends ISpsLiteBackendComponentNavbarBlock {
   showSkeletons?: boolean;
 }
 

@@ -3,7 +3,7 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
-import { api as flyoutApi } from "~redux/services/backend/models/flyout/api";
+import { api as flyoutApi } from "~redux/services/backend/api/flyout/api";
 
 const variants = {
   ...spsLiteVariants,

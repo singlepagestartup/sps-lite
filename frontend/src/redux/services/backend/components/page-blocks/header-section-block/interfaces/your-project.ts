@@ -1,4 +1,4 @@
-import { ISpsLiteBackendHeaderSectionBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentHeaderSectionBlock } from "./sps-lite";
 
-export interface IYourProjectBackendHeaderSectionBlock
-  extends ISpsLiteBackendHeaderSectionBlock {}
+export interface IYourProjectBackendComponentHeaderSectionBlock
+  extends ISpsLiteBackendComponentHeaderSectionBlock {}

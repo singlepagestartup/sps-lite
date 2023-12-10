@@ -1,4 +1,4 @@
-import { populate as reviewPopulate } from "~redux/services/backend/models/review/populate";
+import { populate as reviewPopulate } from "~redux/services/backend/api/review/populate";
 
 export const populate = {
   reviews: {

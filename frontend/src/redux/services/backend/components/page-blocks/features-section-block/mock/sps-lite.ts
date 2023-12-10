@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendFeaturesSectionBlock } from "../interfaces/sps-lite";
 import { entity as spsLiteBackendFeature } from "~redux/services/backend/components/elements/feature/mock/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { ISpsLiteBackendComponentFeaturesSectionBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendFeaturesSectionBlock = {
+export const entity: ISpsLiteBackendComponentFeaturesSectionBlock = {
   id: 32,
   title: faker.lorem.sentence(),
   variant: "with-icon",

@@ -1,4 +1,4 @@
-import { IYourProjectBackendContactSectonBlock } from "./your-project";
+import { IYourProjectBackendComponentContactSectonBlock } from "./your-project";
 
-export interface IBackendContactSectonBlock
-  extends IYourProjectBackendContactSectonBlock {}
+export interface IBackendComponentContactSectonBlock
+  extends IYourProjectBackendComponentContactSectonBlock {}

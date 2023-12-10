@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FC } from "react";
 import { ISpsLiteSlideOver, variants as spsStoreVariants } from "./sps-lite";
-import { api as slideOverApi } from "~redux/services/backend/models/slide-over/api";
+import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
 import { useSearchParams } from "next/navigation";
 
 const variants = {

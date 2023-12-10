@@ -1,8 +1,8 @@
-import { ISpsLiteBackendForm } from "~redux/services/backend/models/form/interfaces/sps-lite";
+import { ISpsLiteBackendApiForm } from "~redux/services/backend/api/form/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 
-export interface ISpsLiteFormBlock extends ISpsLiteBackendForm {
+export interface ISpsLiteFormBlock extends ISpsLiteBackendApiForm {
   successCallback?: any;
 }
 

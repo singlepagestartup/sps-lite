@@ -1,9 +1,9 @@
-import { IBackendPage } from "~redux/services/backend/models/page/interfaces";
+import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 
 async function generateSiteMap() {
-  const pages: IBackendPage[] = await getBackendData({
+  const pages: IBackendApiPage[] = await getBackendData({
     url: `${BACKEND_URL}/api/pages`,
     params: { locale: "all", pagination: { limit: -1 } },
   }).catch((error) => {

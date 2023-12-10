@@ -1,6 +1,6 @@
-import { ISpsLiteBackendReviewsTableBlock } from "../interfaces/sps-lite";
+import { ISpsLiteBackendComponentReviewsTableBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendReviewsTableBlock = {
+export const entity: ISpsLiteBackendComponentReviewsTableBlock = {
   id: 9,
   __component: "page-blocks.reviews-table-block",
   variant: "simple",

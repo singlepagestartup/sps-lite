@@ -1,9 +1,9 @@
-import { ISpsLiteBackendHeaderSectionBlock } from "~redux/services/backend/components/page-blocks/header-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentHeaderSectionBlock } from "~redux/services/backend/components/page-blocks/header-section-block/interfaces/sps-lite";
 import SimpleCentered from "./SimpleCentered";
 import { FC } from "react";
 
 export interface ISpsLiteHeaderSectionBlock
-  extends ISpsLiteBackendHeaderSectionBlock {
+  extends ISpsLiteBackendComponentHeaderSectionBlock {
   showSkeletons?: boolean;
 }
 

@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteTopbar, variants as spsLiteVariants } from "./sps-lite";
-import { api as topbarApi } from "~redux/services/backend/models/topbar/api";
+import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
 
 const variants = {
   ...spsLiteVariants,

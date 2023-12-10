@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, FC, useMemo } from "react";
-import { api as modalApi } from "~redux/services/backend/models/modal/api";
+import { api as modalApi } from "~redux/services/backend/api/modal/api";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IBackendModal } from "~redux/services/backend/models/modal/interfaces";
+import { IBackendApiModal } from "~redux/services/backend/api/modal/interfaces";
 
 export type IModal = ISpsLiteModal;
 
@@ -18,7 +18,7 @@ export default function Modals({ modals = [] }: { modals?: IModal[] }) {
   const router = useRouter();
   const openedModal = query?.get("opened_modal");
   const [isOpen, setIsOpen] = useState(false);
-  const [modalProps, setModalProps] = useState<Omit<IBackendModal, "id">>();
+  const [modalProps, setModalProps] = useState<Omit<IBackendApiModal, "id">>();
 
   const {
     data: backendModals,

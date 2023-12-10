@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteNavbar, variants as spsLiteVariants } from "./sps-lite";
-import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
+import { api as navbarApi } from "~redux/services/backend/api/navbar/api";
 
 const variants = {
   ...spsLiteVariants,

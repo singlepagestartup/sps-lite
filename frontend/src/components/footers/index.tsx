@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { ISpsLiteFooter, variants as spsLiteVariants } from "./sps-lite";
-import { api as footerApi } from "~redux/services/backend/models/footer/api";
+import { api as footerApi } from "~redux/services/backend/api/footer/api";
 
 const variants = {
   ...spsLiteVariants,

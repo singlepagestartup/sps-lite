@@ -1,3 +1,4 @@
-import { ISpsLiteBackendFont } from "./sps-lite";
+import { ISpsLiteBackendComponentFont } from "./sps-lite";
 
-export interface IYourProjectBackendFont extends ISpsLiteBackendFont {}
+export interface IYourProjectBackendComponentFont
+  extends ISpsLiteBackendComponentFont {}

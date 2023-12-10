@@ -1,4 +1,4 @@
-import { IYourProjectBackendLogotypesCloudBlock } from "./your-project";
+import { IYourProjectBackendComponentLogotypesCloudBlock } from "./your-project";
 
-export interface IBackendLogotypesCloudBlock
-  extends IYourProjectBackendLogotypesCloudBlock {}
+export interface IBackendComponentLogotypesCloudBlock
+  extends IYourProjectBackendComponentLogotypesCloudBlock {}

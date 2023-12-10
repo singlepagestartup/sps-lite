@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Layouts from "~components/layouts";
 import { getBackendData } from "~utils/api";
-import { populate as pagePopulate } from "~redux/services/backend/models/page/populate";
+import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
 import { fonts } from "./fonts";
 

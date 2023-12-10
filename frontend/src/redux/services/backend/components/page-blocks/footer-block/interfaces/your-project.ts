@@ -1,4 +1,4 @@
-import { ISpsLiteBackendFooterBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentFooterBlock } from "./sps-lite";
 
-export interface IYourProjectBackendFooterBlock
-  extends ISpsLiteBackendFooterBlock {}
+export interface IYourProjectBackendComponentFooterBlock
+  extends ISpsLiteBackendComponentFooterBlock {}

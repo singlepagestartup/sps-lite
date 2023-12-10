@@ -1,8 +1,8 @@
-import { ISpsLiteBackendLoader } from "~redux/services/backend/models/loader/interfaces/sps-lite";
+import { ISpsLiteBackendApiLoader } from "~redux/services/backend/api/loader/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC, ReactNode } from "react";
 
-export interface ISpsLiteLoaderBlock extends ISpsLiteBackendLoader {
+export interface ISpsLiteLoaderBlock extends ISpsLiteBackendApiLoader {
   children: ReactNode;
 }
 

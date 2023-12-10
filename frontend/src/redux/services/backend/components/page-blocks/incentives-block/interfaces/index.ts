@@ -1,4 +1,4 @@
-import { IYourProjectBackendIncentivesBlock } from "./your-project";
+import { IYourProjectBackendComponentIncentivesBlock } from "./your-project";
 
-export interface IBackendIncentivesBlock
-  extends IYourProjectBackendIncentivesBlock {}
+export interface IBackendComponentIncentivesBlock
+  extends IYourProjectBackendComponentIncentivesBlock {}

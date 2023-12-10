@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
-import { ISpsLiteBackendNotFoundBlock } from "../interfaces/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { ISpsLiteBackendComponentNotFoundBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendNotFoundBlock = {
+export const entity: ISpsLiteBackendComponentNotFoundBlock = {
   id: 3,
   __component: "page-blocks.not-found-block",
   variant: "simple",

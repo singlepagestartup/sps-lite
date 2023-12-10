@@ -1,3 +1,3 @@
-import { IYourProjectBackendFaq } from "./your-project";
+import { IYourProjectBackendComponentFaq } from "./your-project";
 
-export interface IBackendFaq extends IYourProjectBackendFaq {}
+export interface IBackendComponentFaq extends IYourProjectBackendComponentFaq {}

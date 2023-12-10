@@ -1,9 +1,9 @@
-import { ISpsLiteBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps-lite";
 import SimpleCentered from "./SimpleCentered";
 import { FC } from "react";
 
 export interface ISpsLiteHeroSectionBlock
-  extends ISpsLiteBackendHeroSectionBlock {
+  extends ISpsLiteBackendComponentHeroSectionBlock {
   showSkeletons?: boolean;
   [key: string]: any;
 }

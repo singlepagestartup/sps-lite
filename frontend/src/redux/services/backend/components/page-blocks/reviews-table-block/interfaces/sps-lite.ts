@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendReviewsTableBlock {
+export interface ISpsLiteBackendComponentReviewsTableBlock {
   id: number;
   anchor: string | null;
   className: string | null;

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ISpsLitePricingsBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { ISpsLiteBackendTier } from "~redux/services/backend/models/tier/interfaces/sps-lite";
+import { ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -90,7 +90,7 @@ export default function Component(props: ISpsLitePricingsBlock) {
 
 function TierCard(props: ICardProps) {
   const translate = useTranslations();
-  const { item }: { item: ISpsLiteBackendTier } = props;
+  const { item }: { item: ISpsLiteBackendApiTier } = props;
 
   return (
     <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">

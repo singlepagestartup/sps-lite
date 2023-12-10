@@ -3,14 +3,14 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import parseMimeType from "~utils/formatters/parse-mime-type";
-import { ISpsLiteBackendSlider } from "~redux/services/backend/models/slider/interfaces/sps-lite";
-import { ISpsLiteBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
+import { ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
+import { ISpsLiteBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Slider(props: ISpsLiteBackendSlider) {
+export default function Slider(props: ISpsLiteBackendApiSlider) {
   const { slides } = props;
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -59,6 +59,6 @@ export interface ISlider {
   aspectRatioClassName: string | null;
 }
 
-export interface IExtendedSlide extends ISpsLiteBackendSlide {
+export interface IExtendedSlide extends ISpsLiteBackendComponentSlide {
   renderType: string;
 }

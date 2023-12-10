@@ -7,7 +7,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -206,8 +206,8 @@ function DefaultButton({
   value: any;
   placeholder: string;
   renderOptionValue?: (value: any) => string;
-  media?: ISpsLiteBackendUploadFile[];
-  additionalMedia?: ISpsLiteBackendUploadFile[];
+  media?: ISpsLiteBackendExtensionUploadApiFile[];
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[];
 }) {
   const renderValue = useMemo(() => {
     if (Array.isArray(value)) {
@@ -237,7 +237,7 @@ function DefaultButton({
     }
   }, [value, placeholder]);
 
-  const renderIcons: ISpsLiteBackendUploadFile[] = useMemo(() => {
+  const renderIcons: ISpsLiteBackendExtensionUploadApiFile[] = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
         return value.reduce((prev, selectedValue, index) => {
@@ -256,9 +256,11 @@ function DefaultButton({
   return (
     <div className="button">
       <div data-media={media && media?.length > 0} className="media-container">
-        {media?.map((mediaItem: ISpsLiteBackendUploadFile, index: number) => (
-          <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
-        ))}
+        {media?.map(
+          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ),
+        )}
       </div>
       <div className="title-container">
         <div
@@ -280,7 +282,7 @@ function DefaultButton({
         className="additional-media-container"
       >
         {additionalMedia?.map(
-          (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
+          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ),
         )}
@@ -298,7 +300,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: ISpsLiteBackendUploadFile[];
+  extraMedia?: ISpsLiteBackendExtensionUploadApiFile[];
 }) {
   const { selected } = params;
 
@@ -309,7 +311,7 @@ function DefaultOption({
         className="extra-media-container"
       >
         {extraMedia?.map(
-          (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
+          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ),
         )}
@@ -320,7 +322,10 @@ function DefaultOption({
           className="media-container"
         >
           {option?.media?.map(
-            (mediaItem: ISpsLiteBackendUploadFile, index: number) => (
+            (
+              mediaItem: ISpsLiteBackendExtensionUploadApiFile,
+              index: number,
+            ) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}

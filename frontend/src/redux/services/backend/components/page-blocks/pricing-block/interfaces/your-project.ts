@@ -1,4 +1,4 @@
-import { ISpsLiteBackendPricingsBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentPricingsBlock } from "./sps-lite";
 
-export interface IYourProjectBackendPricingsBlock
-  extends ISpsLiteBackendPricingsBlock {}
+export interface IYourProjectBackendComponentPricingsBlock
+  extends ISpsLiteBackendComponentPricingsBlock {}

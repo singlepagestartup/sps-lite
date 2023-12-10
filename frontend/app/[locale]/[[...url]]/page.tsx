@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import PageBlocks from "~components/page-blocks";
 import { getBackendData, getTargetPage } from "~utils/api";
-import { populate as metatagPopulate } from "~redux/services/backend/models/metatag/populate";
-import { populate as pagePopulate } from "~redux/services/backend/models/page/populate";
+import { populate as metatagPopulate } from "~redux/services/backend/api/metatag/populate";
+import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
 import getImageUrl from "~utils/api/get-file-url";
 

@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { entity as feature } from "~redux/services/backend/components/elements/feature/mock/sps-lite";
-import { ISpsLiteBackendIncentivesBlock } from "../interfaces/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { ISpsLiteBackendComponentIncentivesBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendIncentivesBlock = {
+export const entity: ISpsLiteBackendComponentIncentivesBlock = {
   id: 9,
   title: faker.lorem.sentence(),
   description: faker.lorem.paragraph(),

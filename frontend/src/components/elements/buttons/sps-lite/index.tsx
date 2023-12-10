@@ -3,11 +3,11 @@ import Secondary from "./Secondary";
 import Primary from "./Primary";
 import { FC } from "react";
 import Locale from "./Locale";
-import { ISpsLiteBackendButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
+import { ISpsLiteBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
 
 export interface ISpsLiteButton
   extends Omit<
-    ISpsLiteBackendButton,
+    ISpsLiteBackendComponentButton,
     | "id"
     | "url"
     | "description"
@@ -21,8 +21,8 @@ export interface ISpsLiteButton
   className?: string | null;
   additionalAttributes?: any | null;
   onClick?: any;
-  __component?: ISpsLiteBackendButton["__component"];
-  flyout?: ISpsLiteBackendButton["flyout"];
+  __component?: ISpsLiteBackendComponentButton["__component"];
+  flyout?: ISpsLiteBackendComponentButton["flyout"];
   children?: any;
 }
 

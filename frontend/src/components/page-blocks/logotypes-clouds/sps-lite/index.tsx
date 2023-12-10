@@ -1,9 +1,9 @@
-import { ISpsLiteBackendLogotypesCloudBlock } from "~redux/services/backend/components/page-blocks/logotypes-cloud-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentLogotypesCloudBlock } from "~redux/services/backend/components/page-blocks/logotypes-cloud-block/interfaces/sps-lite";
 import SimpleWithHeading from "./SimpleWithHeading";
 import { FC } from "react";
 
 export interface ISpsLiteLogotypesCloudBlock
-  extends ISpsLiteBackendLogotypesCloudBlock {
+  extends ISpsLiteBackendComponentLogotypesCloudBlock {
   showSkeletons?: boolean;
 }
 

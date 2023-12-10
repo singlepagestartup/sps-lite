@@ -1,7 +1,7 @@
-import { ISpsLiteBackendSliderBlock } from "../interfaces/sps-lite";
-import { entity as slider } from "~redux/services/backend/models/slider/mock/sps-lite";
+import { entity as slider } from "~redux/services/backend/api/slider/mock/sps-lite";
+import { ISpsLiteBackendComponentSliderBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendSliderBlock = {
+export const entity: ISpsLiteBackendComponentSliderBlock = {
   id: 2,
   __component: "page-blocks.slider-block",
   variant: "simple",

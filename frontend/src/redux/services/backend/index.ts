@@ -1,16 +1,16 @@
-import { api as currencyApi } from "~redux/services/backend/models/currency/api";
-import { api as flyoutApi } from "~redux/services/backend/models/flyout/api";
-import { api as footerApi } from "~redux/services/backend/models/footer/api";
-import { api as formRequestApi } from "~redux/services/backend/models/form-request/api";
-import { api as layoutApi } from "~redux/services/backend/models/layout/api";
-import { api as loaderApi } from "~redux/services/backend/models/loader/api";
-import { api as modalApi } from "~redux/services/backend/models/modal/api";
-import { api as navbarApi } from "~redux/services/backend/models/navbar/api";
-import { api as pageApi } from "~redux/services/backend/models/page/api";
-import { api as reviewApi } from "~redux/services/backend/models/review/api";
-import { api as sidebarApi } from "~redux/services/backend/models/sidebar/api";
-import { api as slideOverApi } from "~redux/services/backend/models/slide-over/api";
-import { api as topbarApi } from "~redux/services/backend/models/topbar/api";
+import { api as currencyApi } from "~redux/services/backend/api/currency/api";
+import { api as flyoutApi } from "~redux/services/backend/api/flyout/api";
+import { api as footerApi } from "~redux/services/backend/api/footer/api";
+import { api as formRequestApi } from "~redux/services/backend/api/form-request/api";
+import { api as layoutApi } from "~redux/services/backend/api/layout/api";
+import { api as loaderApi } from "~redux/services/backend/api/loader/api";
+import { api as modalApi } from "~redux/services/backend/api/modal/api";
+import { api as navbarApi } from "~redux/services/backend/api/navbar/api";
+import { api as pageApi } from "~redux/services/backend/api/page/api";
+import { api as reviewApi } from "~redux/services/backend/api/review/api";
+import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
+import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
+import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
 
 export const backend = {
   middlewares: [

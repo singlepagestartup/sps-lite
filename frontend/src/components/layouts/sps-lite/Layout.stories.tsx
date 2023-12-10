@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Layouts, { ISpsLiteLayout } from ".";
 import store from "~redux/index";
 import { Provider } from "react-redux";
-import { entity as layout } from "~redux/services/backend/models/layout/mock/sps-lite";
+import { entity as layout } from "~redux/services/backend/api/layout/mock/sps-lite";
 
 const meta = { component: Layouts } satisfies Meta<typeof Layouts>;
 export default meta;

@@ -1,9 +1,9 @@
-import { ISpsLiteBackendFeaturesSectionBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentFeaturesSectionBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces/sps-lite";
 import WithIcon from "./WithIcon";
 import { FC } from "react";
 
 export interface ISpsLiteFeaturesSectionBlock
-  extends ISpsLiteBackendFeaturesSectionBlock {
+  extends ISpsLiteBackendComponentFeaturesSectionBlock {
   showSkeletons?: boolean;
 }
 

@@ -1,4 +1,4 @@
-import { ISpsLiteBackendHeroSectionBlock } from "./sps-lite";
+import { ISpsBackendComponentHeroSectionBlock } from "./sps";
 
-export interface IYourProjectBackendHeroSectionBlock
-  extends ISpsLiteBackendHeroSectionBlock {}
+export interface IYourProjectBackendComponentHeroSectionBlock
+  extends ISpsBackendComponentHeroSectionBlock {}

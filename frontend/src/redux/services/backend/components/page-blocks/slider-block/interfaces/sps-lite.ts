@@ -1,6 +1,6 @@
-import { ISpsLiteBackendSlider } from "~redux/services/backend/models/slider/interfaces/sps-lite";
+import { ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
 
-export interface ISpsLiteBackendSliderBlock {
+export interface ISpsLiteBackendComponentSliderBlock {
   id: number;
   __component: "page-blocks.slider-block";
   variant: "simple";
@@ -9,5 +9,5 @@ export interface ISpsLiteBackendSliderBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  slider?: ISpsLiteBackendSlider | null;
+  slider?: ISpsLiteBackendApiSlider | null;
 }

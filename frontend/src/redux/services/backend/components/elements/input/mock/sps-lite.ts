@@ -1,6 +1,6 @@
-import { ISpsLiteBackendInput } from "../interfaces/sps-lite";
+import { ISpsLiteBackendComponentInput } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendInput = {
+export const entity: ISpsLiteBackendComponentInput = {
   id: 56,
   __component: "elements.input",
   placeholder: "Type your name",

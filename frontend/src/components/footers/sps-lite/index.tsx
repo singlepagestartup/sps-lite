@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Boxed from "./Boxed";
-import { ISpsLiteBackendFooter } from "~redux/services/backend/models/footer/interfaces/sps-lite";
+import { ISpsLiteBackendApiFooter } from "~redux/services/backend/api/footer/interfaces/sps-lite";
 
-export interface ISpsLiteFooter extends ISpsLiteBackendFooter {
+export interface ISpsLiteFooter extends ISpsLiteBackendApiFooter {
   showSkeletons?: boolean;
 }
 

@@ -11,7 +11,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import axios from "axios";
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -321,8 +321,8 @@ function DefaultButton({
   accept: string;
   multiple?: boolean | null;
   placeholder?: string | null;
-  media?: ISpsLiteBackendUploadFile[] | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
 }) {
   return (
     <div className="button">
@@ -349,7 +349,7 @@ function FilesArray({
   multiple: boolean;
   files?: File[];
   onFileDelete: any;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
 }) {
   return (
     <div

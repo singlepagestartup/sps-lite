@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Flyout from ".";
-import { entity as flyout } from "~redux/services/backend/models/flyout/mock/sps-lite";
+import { entity as flyout } from "~redux/services/backend/api/flyout/mock/sps-lite";
 
 const meta = {
   component: Flyout,

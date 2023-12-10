@@ -1,8 +1,8 @@
-import { ISpsLiteBackendForm } from "~redux/services/backend/models/form/interfaces/sps-lite";
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
-import { ISpsLiteBackendButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
+import { ISpsLiteBackendApiForm } from "~redux/services/backend/api/form/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { ISpsLiteBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
 
-export interface ISpsLiteBackendContactSectonBlock {
+export interface ISpsLiteBackendComponentContactSectonBlock {
   id: number;
   __component: "page-blocks.contact-section-block";
   variant: "centered";
@@ -11,8 +11,8 @@ export interface ISpsLiteBackendContactSectonBlock {
   description: string | null;
   className: string | null;
   anchor: string | null;
-  media?: ISpsLiteBackendUploadFile | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
-  form?: ISpsLiteBackendForm | null;
-  buttonsArrays?: ISpsLiteBackendButtonsArray[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  form?: ISpsLiteBackendApiForm | null;
+  buttonsArrays?: ISpsLiteBackendComponentButtonsArray[] | null;
 }

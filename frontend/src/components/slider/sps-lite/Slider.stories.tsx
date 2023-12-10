@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Slider from "..";
-import { entity } from "~redux/services/backend/models/slider/mock/sps-lite";
+import { entity } from "~redux/services/backend/api/slider/mock/sps-lite";
 
 const meta = {
   component: Slider,

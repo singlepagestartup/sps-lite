@@ -1,7 +1,7 @@
-import { ISpsLiteBackendButtonsArray } from "../interfaces/sps-lite";
 import { entity as spsLiteButton } from "~redux/services/backend/components/elements/button/mock/sps-lite";
+import { ISpsLiteBackendComponentButtonsArray } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendButtonsArray = {
+export const entity: ISpsLiteBackendComponentButtonsArray = {
   id: 5,
   __component: "elements.buttons-array",
   additionalAttributes: null,

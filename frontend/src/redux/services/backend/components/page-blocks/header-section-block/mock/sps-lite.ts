@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendHeaderSectionBlock } from "../interfaces/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { ISpsLiteBackendComponentHeaderSectionBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendHeaderSectionBlock = {
+export const entity: ISpsLiteBackendComponentHeaderSectionBlock = {
   id: 9,
   variant: "simple-centered",
   __component: "page-blocks.header-section-block",

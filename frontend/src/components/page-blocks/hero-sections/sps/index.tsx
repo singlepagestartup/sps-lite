@@ -1,8 +1,9 @@
-import { ISpsBackendHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps";
+import { ISpsBackendComponentHeroSectionBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces/sps";
 import Split from "./Split";
 import { FC } from "react";
 
-export interface ISpsHeroSectionBlock extends ISpsBackendHeroSectionBlock {
+export interface ISpsHeroSectionBlock
+  extends ISpsBackendComponentHeroSectionBlock {
   showSkeletons?: boolean;
   [key: string]: any;
 }

@@ -1,4 +1,4 @@
-import { ISpsLiteBackendCtaSectionBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentCtaSectionBlock } from "./sps-lite";
 
-export interface IYourProjectBackendCtaSectionBlock
-  extends ISpsLiteBackendCtaSectionBlock {}
+export interface IYourProjectBackendComponentCtaSectionBlock
+  extends ISpsLiteBackendComponentCtaSectionBlock {}

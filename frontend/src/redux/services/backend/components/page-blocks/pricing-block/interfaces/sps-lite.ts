@@ -1,7 +1,7 @@
-import { ISpsLiteBackendTier } from "~redux/services/backend/models/tier/interfaces/sps-lite";
-import { ISpsLiteBackendUploadFile } from "~redux/services/backend/models/upload/interfaces/sps-lite";
+import { ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
+import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendPricingsBlock {
+export interface ISpsLiteBackendComponentPricingsBlock {
   id: number;
   __component: "page-blocks.pricing-block";
   variant: "two-columns-card";
@@ -9,8 +9,8 @@ export interface ISpsLiteBackendPricingsBlock {
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  media?: ISpsLiteBackendUploadFile[] | null;
-  additionalMedia?: ISpsLiteBackendUploadFile[] | null;
-  tiers?: ISpsLiteBackendTier[] | null;
+  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  tiers?: ISpsLiteBackendApiTier[] | null;
   className: string | null;
 }

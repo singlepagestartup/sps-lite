@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendFaq {
+export interface ISpsLiteBackendComponentFaq {
   id: number;
   __component: "elements.faq";
   title: string | null;

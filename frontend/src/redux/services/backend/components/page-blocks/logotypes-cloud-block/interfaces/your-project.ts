@@ -1,4 +1,4 @@
-import { ISpsLiteBackendLogotypesCloudBlock } from "./sps-lite";
+import { ISpsLiteBackendComponentLogotypesCloudBlock } from "./sps-lite";
 
-export interface IYourProjectBackendLogotypesCloudBlock
-  extends ISpsLiteBackendLogotypesCloudBlock {}
+export interface IYourProjectBackendComponentLogotypesCloudBlock
+  extends ISpsLiteBackendComponentLogotypesCloudBlock {}

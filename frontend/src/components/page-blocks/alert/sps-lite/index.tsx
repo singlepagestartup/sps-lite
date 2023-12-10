@@ -1,8 +1,8 @@
-import { ISpsLiteBackendAlertBlock } from "~redux/services/backend/components/page-blocks/alert-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentAlertBlock } from "~redux/services/backend/components/page-blocks/alert-block/interfaces/sps-lite";
 import Centered from "./Centered";
 import { FC } from "react";
 
-export interface ISpsLiteAlertBlock extends ISpsLiteBackendAlertBlock {
+export interface ISpsLiteAlertBlock extends ISpsLiteBackendComponentAlertBlock {
   showSkeletons?: boolean;
 }
 

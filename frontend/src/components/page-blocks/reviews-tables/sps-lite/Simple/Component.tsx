@@ -7,7 +7,7 @@ import Tables, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "~components/tables";
-import { api as reviewApi } from "~redux/services/backend/models/review/api";
+import { api as reviewApi } from "~redux/services/backend/api/review/api";
 import { ISpsLiteReviewsTableBlock } from "..";
 
 const tableConfig = {

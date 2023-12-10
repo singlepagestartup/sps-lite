@@ -1,9 +1,9 @@
-import { ISpsLiteBackendReviewsTableBlock } from "~redux/services/backend/components/page-blocks/reviews-table-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentReviewsTableBlock } from "~redux/services/backend/components/page-blocks/reviews-table-block/interfaces/sps-lite";
 import Simple from "./Simple";
 import { FC } from "react";
 
 export interface ISpsLiteReviewsTableBlock
-  extends ISpsLiteBackendReviewsTableBlock {
+  extends ISpsLiteBackendComponentReviewsTableBlock {
   showSkeletons?: boolean;
 }
 

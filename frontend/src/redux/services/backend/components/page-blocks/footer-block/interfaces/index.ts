@@ -1,3 +1,4 @@
-import { IYourProjectBackendFooterBlock } from "./your-project";
+import { IYourProjectBackendComponentFooterBlock } from "./your-project";
 
-export interface IBackendFooterBlock extends IYourProjectBackendFooterBlock {}
+export interface IBackendComponentFooterBlock
+  extends IYourProjectBackendComponentFooterBlock {}

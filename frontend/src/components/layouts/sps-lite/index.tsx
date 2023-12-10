@@ -1,12 +1,12 @@
 import Wide from "./Wide";
 import { FC, ReactNode } from "react";
 import Boxed from "./Boxed";
-import { ISpsLiteBackendLayout } from "~redux/services/backend/models/layout/interfaces/sps-lite";
-import { ISpsLiteBackendLoader } from "~redux/services/backend/models/loader/interfaces/sps-lite";
+import { ISpsLiteBackendApiLayout } from "~redux/services/backend/api/layout/interfaces/sps-lite";
+import { ISpsLiteBackendApiLoader } from "~redux/services/backend/api/loader/interfaces/sps-lite";
 
-export interface ISpsLiteLayout extends ISpsLiteBackendLayout {
+export interface ISpsLiteLayout extends ISpsLiteBackendApiLayout {
   children: ReactNode;
-  loader?: ISpsLiteBackendLoader | null;
+  loader?: ISpsLiteBackendApiLoader | null;
 }
 
 export const variants = {

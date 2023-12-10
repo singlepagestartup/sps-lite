@@ -1,4 +1,4 @@
-import { ISpsLiteBackendInputOption } from "./sps-lite";
+import { ISpsLiteBackendComponentInputOption } from "./sps-lite";
 
-export interface IYourProjectBackendInputOption
-  extends ISpsLiteBackendInputOption {}
+export interface IYourProjectBackendComponentInputOption
+  extends ISpsLiteBackendComponentInputOption {}

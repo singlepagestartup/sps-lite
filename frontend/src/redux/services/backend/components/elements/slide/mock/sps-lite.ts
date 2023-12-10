@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendSlide } from "../interfaces/sps-lite";
-import { entity as file } from "~redux/services/backend/models/upload/mock/sps-lite";
+import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
+import { ISpsLiteBackendComponentSlide } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendSlide = {
+export const entity: ISpsLiteBackendComponentSlide = {
   id: 1,
   __component: "elements.slide",
   title: faker.lorem.sentence(),

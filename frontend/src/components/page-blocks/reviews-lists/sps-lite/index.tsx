@@ -1,9 +1,9 @@
-import { ISpsLiteBackendReviewsListBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentReviewsListBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces/sps-lite";
 import SimpleWithAvatars from "./SimpleWithAvatars";
 import { FC } from "react";
 
 export interface ISpsLiteReviewsListBlock
-  extends ISpsLiteBackendReviewsListBlock {
+  extends ISpsLiteBackendComponentReviewsListBlock {
   showSkeletons?: boolean;
 }
 

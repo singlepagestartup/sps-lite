@@ -2,7 +2,7 @@
 
 import { FC, ReactNode, useEffect } from "react";
 import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
-import { api as layoutApi } from "~redux/services/backend/models/layout/api";
+import { api as layoutApi } from "~redux/services/backend/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
 
 const variants = {

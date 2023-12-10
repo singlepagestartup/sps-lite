@@ -1,6 +1,6 @@
-import { ISpsLiteBackendReviewsListBlock } from "../interfaces/sps-lite";
+import { ISpsLiteBackendComponentReviewsListBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendReviewsListBlock = {
+export const entity: ISpsLiteBackendComponentReviewsListBlock = {
   id: 5,
   __component: "page-blocks.reviews-list-block",
   variant: "simple-with-avatars",

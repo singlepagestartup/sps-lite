@@ -1,4 +1,4 @@
-import { populate as sliderPopulate } from "~redux/services/backend/models/slider/populate";
+import { populate as sliderPopulate } from "~redux/services/backend/api/slider/populate";
 
 export const populate = {
   slider: {

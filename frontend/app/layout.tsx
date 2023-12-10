@@ -13,7 +13,7 @@ import { BACKEND_URL } from "~utils/envs";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "src/contexts/additional-headers";
 import { HocParamsProvider } from "src/contexts/hoc-params";
-import { populate as loaderPopulate } from "~redux/services/backend/models/loader/populate";
+import { populate as loaderPopulate } from "~redux/services/backend/api/loader/populate";
 
 export const dynamic = "force-dynamic";
 

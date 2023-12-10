@@ -1,8 +1,9 @@
-import { ISpsLiteBackendPricingsBlock } from "~redux/services/backend/components/page-blocks/pricing-block/interfaces/sps-lite";
+import { ISpsLiteBackendComponentPricingsBlock } from "~redux/services/backend/components/page-blocks/pricing-block/interfaces/sps-lite";
 import TwoColumnsCard from "./TwoColumnsCard";
 import { FC } from "react";
 
-export interface ISpsLitePricingsBlock extends ISpsLiteBackendPricingsBlock {
+export interface ISpsLitePricingsBlock
+  extends ISpsLiteBackendComponentPricingsBlock {
   showSkeletons?: boolean;
 }
 
