@@ -1,3 +1,3 @@
-import { User as SpsLiteUser } from "./sps-lite/User";
+import { User as ParentUser } from "./sps-lite/User";
 
-export class User extends SpsLiteUser {}
+export class User extends ParentUser {}

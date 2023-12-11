@@ -1,6 +1,6 @@
-import { Browser as SpsLiteBrowser } from "./sps-lite/Browser";
+import { Browser as ParentBrowser } from "./sps-lite/Browser";
 
-export class Browser extends SpsLiteBrowser {
+export class Browser extends ParentBrowser {
   constructor() {
     super();
   }
