@@ -1,3 +1,3 @@
-import { ApiClient as parentApiClient } from "./sps-lite/ApiClient";
+import { ApiClient as ParentApiClient } from "./sps-lite/ApiClient";
 
-export class ApiClient extends parentApiClient {}
+export class ApiClient extends ParentApiClient {}
