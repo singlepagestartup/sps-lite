@@ -12,7 +12,7 @@ import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
 import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
 import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
 
-export const backend = {
+export const slices = {
   middlewares: [
     currencyApi.middleware,
     flyoutApi.middleware,
