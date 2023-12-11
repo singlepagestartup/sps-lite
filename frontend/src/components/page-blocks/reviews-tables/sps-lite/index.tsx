@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentReviewsTableBlock } from "~redux/services/backend/components/page-blocks/reviews-table-block/interfaces/sps-lite";
+import { IPageBlock } from "..";
 import Simple from "./Simple";
-import { FC } from "react";
-
-export interface ISpsLiteReviewsTableBlock
-  extends ISpsLiteBackendComponentReviewsTableBlock {
-  showSkeletons?: boolean;
-}
 
 export const variants = {
   simple: Simple,
 };
 
-export default function ReviewsTables(props: ISpsLiteReviewsTableBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteReviewsTableBlock>;
+export default function ReviewsTables(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

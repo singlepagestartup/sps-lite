@@ -1,6 +1,6 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentHeaderSectionBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.header-section-block";
   variant: "simple-centered";

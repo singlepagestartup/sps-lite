@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentHeroSectionBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentHeroSectionBlock
-  extends IYourProjectBackendComponentHeroSectionBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentLogotype } from "./sps-lite";
+import { IBackendComponentElement as IParentBackendComponentElement } from "./sps-lite";
 
-export interface IYourProjectBackendComponentLogotype
-  extends ISpsLiteBackendComponentLogotype {}
+export interface IBackendComponentElement
+  extends IParentBackendComponentElement {}

@@ -5,9 +5,9 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "~redux/services/backend/api/review/api";
 import Cards, { ICardProps } from "~components/cards";
-import { ISpsLiteReviewsListBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
+import { IPageBlock } from "../..";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -17,7 +17,7 @@ const cardsConfig = {
     "grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8",
 };
 
-export default function Component(props: ISpsLiteReviewsListBlock) {
+export default function Component(props: IPageBlock) {
   const {
     data: reviews,
     isLoading,

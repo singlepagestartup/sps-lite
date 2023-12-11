@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentButton } from "./sps-lite";
+import { IBackendComponentElement as IParentBackendComponentElement } from "./sps-lite";
 
-export interface IYourProjectBackendComponentButton
-  extends ISpsLiteBackendComponentButton {}
+export interface IBackendComponentElement
+  extends IParentBackendComponentElement {}

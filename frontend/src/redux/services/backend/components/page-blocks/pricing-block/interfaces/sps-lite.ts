@@ -1,7 +1,7 @@
 import { ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentPricingsBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.pricing-block";
   variant: "two-columns-card";

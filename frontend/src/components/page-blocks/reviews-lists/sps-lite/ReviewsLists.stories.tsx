@@ -3,10 +3,11 @@ import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import ReviewsLists, { ISpsLiteReviewsListBlock } from ".";
+import ReviewsLists from ".";
 import { entity } from "~redux/services/backend/components/page-blocks/reviews-list-block/mock/sps-lite";
 import { entity as review } from "~redux/services/backend/api/review/mock/sps-lite";
 import Reviews from "./index";
+import { IPageBlock } from "..";
 
 const meta = { component: Reviews } satisfies Meta<typeof Reviews>;
 export default meta;
@@ -27,7 +28,7 @@ export const SimpleCentered: Story = {
   },
 };
 
-function ReviewsListsComponent(args: ISpsLiteReviewsListBlock) {
+function ReviewsListsComponent(args: IPageBlock) {
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>

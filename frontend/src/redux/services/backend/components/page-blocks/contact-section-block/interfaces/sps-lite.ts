@@ -1,8 +1,8 @@
 import { ISpsLiteBackendApiForm } from "~redux/services/backend/api/form/interfaces/sps-lite";
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { ISpsLiteBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentContactSectonBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.contact-section-block";
   variant: "centered";

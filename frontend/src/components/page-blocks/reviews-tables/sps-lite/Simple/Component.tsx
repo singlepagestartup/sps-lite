@@ -8,7 +8,7 @@ import Tables, {
   IHeaderCompProps,
 } from "~components/tables";
 import { api as reviewApi } from "~redux/services/backend/api/review/api";
-import { ISpsLiteReviewsTableBlock } from "..";
+import { IPageBlock } from "../..";
 
 const tableConfig = {
   columns: [
@@ -56,7 +56,7 @@ const tableConfig = {
   },
 };
 
-export default function Component(props: ISpsLiteReviewsTableBlock) {
+export default function Component(props: IPageBlock) {
   const {
     data: reviews,
     isLoading,

@@ -1,17 +1,16 @@
-import { FC } from "react";
-import {
-  ISpsLiteFeaturesSectionBlock,
-  variants as spsLiteVariants,
-} from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces";
+
+export interface IPageBlock extends IBackendComponentPageBlock {
+  showSkeletons?: boolean;
+}
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function FeaturesSections<
-  T extends ISpsLiteFeaturesSectionBlock,
->(props: T) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+export default function FeaturesSections(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

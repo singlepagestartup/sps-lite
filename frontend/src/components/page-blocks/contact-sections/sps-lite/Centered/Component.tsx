@@ -1,11 +1,11 @@
 "use client";
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { ISpsLiteContactSectonBlock } from "..";
 import Forms from "~components/forms";
 import { createNotification } from "~components/notifications";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteContactSectonBlock) {
+export default function Component(props: IPageBlock) {
   function successCallbackAction() {
     createNotification({
       title: "Form was successfully submitted",

@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentNotFoundBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentNotFoundBlock
-  extends IYourProjectBackendComponentNotFoundBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentNavbarBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentNavbarBlock
-  extends IYourProjectBackendComponentNavbarBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

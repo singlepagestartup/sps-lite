@@ -1,17 +1,16 @@
-import { FC } from "react";
-import {
-  ISpsLiteCtaSectionsBlock,
-  variants as spsLiteVariants,
-} from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces";
+
+export interface IPageBlock extends IBackendComponentPageBlock {
+  showSkeletons?: boolean;
+}
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function CtaSections<T extends ISpsLiteCtaSectionsBlock>(
-  props: T,
-) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+export default function CtaSections(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

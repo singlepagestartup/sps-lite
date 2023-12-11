@@ -1,8 +1,8 @@
-import { ISpsLiteBackendComponentLogotype } from "../../../elements/logotype/interfaces/sps-lite";
-import { ISpsLiteBackendComponentHeroSectionBlock } from "./sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentLogotype } from "../../../elements/logotype/interfaces/sps-lite";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps-lite";
 
-export interface ISpsBackendComponentHeroSectionBlock
-  extends Omit<ISpsLiteBackendComponentHeroSectionBlock, "variant"> {
-  variant: ISpsLiteBackendComponentHeroSectionBlock["variant"] | "split";
+export interface IBackendComponentPageBlock
+  extends Omit<IParentBackendComponentPageBlock, "variant"> {
+  variant: IParentBackendComponentPageBlock["variant"] | "split";
   logotype?: ISpsLiteBackendComponentLogotype | null;
 }

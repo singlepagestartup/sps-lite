@@ -2,6 +2,12 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { pageBlockComponents } from "~components/page-blocks/aliases";
 import ErrorBoundary from "~components/wrappers/error-boundary";
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
+import { IBackendComponentPageBlock as IBackendBackendComponentPageBlockSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces";
+
+export interface IPageBlock
+  extends IBackendBackendComponentPageBlockSliderBlock {
+  showSkeletons?: boolean;
+}
 
 export interface IPageBlockBlock {
   pageParams?: any;

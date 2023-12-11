@@ -1,9 +1,9 @@
 import Buttons from "~components/elements/buttons";
-import { IButtonsArray } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 import Image from "next/image";
+import { IElement } from "..";
 
-export default function Row(props: IButtonsArray) {
+export default function Row(props: IElement) {
   const { title, buttons } = props;
 
   return (

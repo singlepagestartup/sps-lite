@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentAlertBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps-lite";
 
-export interface IBackendComponentAlertBlock
-  extends IYourProjectBackendComponentAlertBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

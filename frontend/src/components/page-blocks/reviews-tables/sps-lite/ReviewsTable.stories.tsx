@@ -3,8 +3,8 @@ import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import ReviewsTables, { ISpsLiteReviewsTableBlock } from ".";
-import Reviews from "..";
+import ReviewsTables from ".";
+import Reviews, { IPageBlock } from "..";
 import { entity } from "~redux/services/backend/components/page-blocks/reviews-table-block/mock/sps-lite";
 import { entity as review } from "~redux/services/backend/api/review/mock/sps-lite";
 
@@ -29,7 +29,7 @@ export const Simple: Story = {
   },
 };
 
-function ReviewsTableComponent(args: ISpsLiteReviewsTableBlock) {
+function ReviewsTableComponent(args: IPageBlock) {
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>

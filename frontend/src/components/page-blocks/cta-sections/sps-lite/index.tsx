@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentCtaSectionBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces/sps-lite";
+import { IPageBlock } from "..";
 import DarkWithImage from "./DarkWithImage";
-import { FC } from "react";
-
-export interface ISpsLiteCtaSectionsBlock
-  extends ISpsLiteBackendComponentCtaSectionBlock {
-  showSkeletons?: boolean;
-}
 
 export const variants = {
   "dark-with-image": DarkWithImage,
 };
 
-export default function ContactSectons(props: ISpsLiteCtaSectionsBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteCtaSectionsBlock>;
+export default function ContactSectons(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

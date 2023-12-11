@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ISpsLiteLogotypesCloudBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteLogotypesCloudBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
       <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">

@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentContactSectonBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentContactSectonBlock
-  extends IYourProjectBackendComponentContactSectonBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

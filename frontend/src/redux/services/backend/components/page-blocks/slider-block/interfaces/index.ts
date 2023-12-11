@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentSliderBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentSliderBlock
-  extends IYourProjectBackendComponentSliderBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

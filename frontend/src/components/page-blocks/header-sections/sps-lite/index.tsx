@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentHeaderSectionBlock } from "~redux/services/backend/components/page-blocks/header-section-block/interfaces/sps-lite";
+import { IPageBlock } from "..";
 import SimpleCentered from "./SimpleCentered";
-import { FC } from "react";
-
-export interface ISpsLiteHeaderSectionBlock
-  extends ISpsLiteBackendComponentHeaderSectionBlock {
-  showSkeletons?: boolean;
-}
 
 export const variants = {
   "simple-centered": SimpleCentered,
 };
 
-export default function HeaderSections(props: ISpsLiteHeaderSectionBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteHeaderSectionBlock>;
+export default function HeaderSections(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

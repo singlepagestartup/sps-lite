@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendComponentButton } from "../interfaces/sps-lite";
+import { IBackendComponentElement } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendComponentButton = {
+export const entity: IBackendComponentElement = {
   id: 4,
   title: faker.lorem.words(3),
   url: faker.internet.url(),

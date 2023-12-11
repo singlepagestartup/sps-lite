@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentFont } from "~redux/services/backend/components/elements/font/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentFont } from "~redux/services/backend/components/elements/font/interfaces/sps-lite";
 
 export interface ISpsLiteBackendApiTheme {
   id: number;

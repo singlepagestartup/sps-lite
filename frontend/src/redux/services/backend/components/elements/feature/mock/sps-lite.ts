@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
-import { ISpsLiteBackendComponentFeature } from "../interfaces/sps-lite";
+import { IBackendComponentElement } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendComponentFeature = {
+export const entity: IBackendComponentElement = {
   id: 136,
   __component: "elements.feature",
   title: faker.lorem.words(3),

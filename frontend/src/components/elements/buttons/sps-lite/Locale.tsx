@@ -1,13 +1,11 @@
-import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
-import { ISpsLiteButton } from ".";
 import Flyouts from "~components/flyouts";
-import Buttons from "..";
+import Buttons, { IElement } from "..";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 
-export default function Locale(props: ISpsLiteButton) {
+export default function Locale(props: IElement) {
   const params = useParams();
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 

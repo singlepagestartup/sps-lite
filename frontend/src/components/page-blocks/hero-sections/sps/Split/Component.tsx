@@ -1,10 +1,10 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ISpsHeroSectionBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsHeroSectionBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <div className="relative flex flex-col border-b border-gray-200 lg:border-0">
       <div

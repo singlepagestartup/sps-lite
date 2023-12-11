@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentFeaturesSectionBlock } from "~redux/services/backend/components/page-blocks/features-section-block/interfaces/sps-lite";
+import { IPageBlock } from "..";
 import WithIcon from "./WithIcon";
-import { FC } from "react";
-
-export interface ISpsLiteFeaturesSectionBlock
-  extends ISpsLiteBackendComponentFeaturesSectionBlock {
-  showSkeletons?: boolean;
-}
 
 export const variants = {
   "with-icon": WithIcon,
 };
 
-export default function FeaturesSections(props: ISpsLiteFeaturesSectionBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteFeaturesSectionBlock>;
+export default function FeaturesSections(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

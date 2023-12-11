@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentCtaSectionBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentCtaSectionBlock
-  extends IYourProjectBackendComponentCtaSectionBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

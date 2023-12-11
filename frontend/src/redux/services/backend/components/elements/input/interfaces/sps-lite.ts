@@ -1,7 +1,7 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { ISpsLiteBackendComponentInputOption } from "../../input-option/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentInputOption } from "../../input-option/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentInput {
+export interface IBackendComponentElement {
   id: number;
   __component: "elements.input";
   variant:

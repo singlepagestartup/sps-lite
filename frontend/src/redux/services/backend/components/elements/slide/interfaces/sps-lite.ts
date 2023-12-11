@@ -1,6 +1,6 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentSlide {
+export interface IBackendComponentElement {
   id: number;
   __component: "elements.slide";
   buttons?: any[];

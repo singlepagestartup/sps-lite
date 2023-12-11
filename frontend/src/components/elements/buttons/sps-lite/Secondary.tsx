@@ -1,13 +1,12 @@
 import Link from "next/link";
 import useGetButtonParams from "../hooks/use-get-button-params";
-import { ISpsLiteButton } from ".";
 import Flyouts from "~components/flyouts";
-import Buttons from "..";
+import Buttons, { IElement } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { useMemo } from "react";
 
-export default function Secondary(props: ISpsLiteButton) {
+export default function Secondary(props: IElement) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props); //?
 
   // Bug with Next.js Link component and hash links

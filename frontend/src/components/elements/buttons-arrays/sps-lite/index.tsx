@@ -1,28 +1,14 @@
 import ColumnWithTitle from "./ColumnWithTitle";
-import { FC } from "react";
 import Row from "./Row";
-import { ISpsLiteBackendComponentButtonsArray } from "~redux/services/backend/components/elements/buttons-array/interfaces/sps-lite";
-
-export interface IButtonsArray
-  extends Omit<
-    ISpsLiteBackendComponentButtonsArray,
-    "id" | "description" | "className" | "__component"
-  > {
-  description?: string | null;
-  className?: string | null;
-  onClick?: any;
-  __component?: ISpsLiteBackendComponentButtonsArray["__component"];
-}
+import { IElement } from "..";
 
 export const variants = {
   "column-with-title": ColumnWithTitle,
   row: Row,
 };
 
-export default function ButtonsArrays(props: IButtonsArray) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<IButtonsArray>;
+export default function ButtonsArrays(props: IElement) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

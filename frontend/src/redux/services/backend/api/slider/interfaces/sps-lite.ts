@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 export interface ISpsLiteBackendApiSlider {
   id: number;

@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { entity as logotype } from "~redux/services/backend/components/elements/logotype/mock/sps-lite";
-import { ISpsLiteBackendComponentLogotypesCloudBlock } from "../interfaces/sps-lite";
+import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendComponentLogotypesCloudBlock = {
+export const entity: IBackendComponentPageBlock = {
   id: 5,
   __component: "page-blocks.logotypes-cloud-block",
   variant: "simple-with-heading",

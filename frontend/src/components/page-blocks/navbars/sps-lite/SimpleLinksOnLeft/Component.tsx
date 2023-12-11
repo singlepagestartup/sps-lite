@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ISpsLiteNavbarBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import getFileUrl from "~utils/api/get-file-url";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteNavbarBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <Disclosure as="div" className="w-full">
       {(disclosure) => {
@@ -25,7 +25,7 @@ function DisclosureInner({
   props,
 }: {
   disclosure: any;
-  props: ISpsLiteNavbarBlock;
+  props: IPageBlock;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();

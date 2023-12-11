@@ -1,10 +1,10 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import ButtonsArrays from "~components/elements/buttons-arrays";
-import { ISpsLiteFooterBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteFooterBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col gap-4 lg:flex-row">

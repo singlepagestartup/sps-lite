@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentSliderBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces/sps-lite";
 import Simple from "./Simple";
-import { FC } from "react";
-
-export interface ISpsLiteSliderBlock
-  extends ISpsLiteBackendComponentSliderBlock {
-  showSkeletons?: boolean;
-}
+import { IPageBlock } from "../../";
 
 export const variants = {
   simple: Simple,
 };
 
-export default function Slider(props: ISpsLiteSliderBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteSliderBlock>;
+export default function Slider(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

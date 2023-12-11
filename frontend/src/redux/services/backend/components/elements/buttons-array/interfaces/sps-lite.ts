@@ -1,7 +1,7 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { ISpsLiteBackendComponentButton } from "../../button/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "../../button/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentButtonsArray {
+export interface IBackendComponentElement {
   id: number;
   __component: "elements.buttons-array";
   variant: "column-with-title" | "row";

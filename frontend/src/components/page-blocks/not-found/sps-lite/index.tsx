@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentNotFoundBlock } from "~redux/services/backend/components/page-blocks/not-found-block/interfaces/sps-lite";
+import { IPageBlock } from "..";
 import Simple from "./Simple";
-import { FC } from "react";
-
-export interface ISpsLiteNotFoundBlock
-  extends ISpsLiteBackendComponentNotFoundBlock {
-  showSkeletons?: boolean;
-}
 
 export const variants = {
   simple: Simple,
 };
 
-export default function NotFound(props: ISpsLiteNotFoundBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteNotFoundBlock>;
+export default function NotFound(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

@@ -1,5 +1,5 @@
-import { ISpsLiteBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
-import { ISpsLiteBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
 
 export interface ISpsLiteBackendApiForm {
   id: number;

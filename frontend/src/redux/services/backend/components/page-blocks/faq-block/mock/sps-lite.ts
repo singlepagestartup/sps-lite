@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { entity as faq } from "~redux/services/backend/components/elements/faq/mock/sps-lite";
-import { ISpsLiteBackendComponentFaqBlock } from "../interfaces/sps-lite";
+import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendComponentFaqBlock = {
+export const entity: IBackendComponentPageBlock = {
   id: 2,
   title: faker.lorem.sentence(),
   anchor: "faq-anchor",

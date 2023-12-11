@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import ContactSectons, { ISpsLiteContactSectonBlock } from ".";
+import ContactSectons from ".";
 import { entity as contactSectionBlock } from "~redux/services/backend/components/page-blocks/contact-section-block/mock/sps-lite";
 import { useEffect } from "react";
 import { BACKEND_URL } from "~utils/envs";
 import { Provider } from "react-redux";
 import store from "~redux/index";
+import { IPageBlock } from "..";
 
 const meta = { component: ContactSectons } satisfies Meta<
   typeof ContactSectons
@@ -24,7 +25,7 @@ export const Centered: Story = {
 //   }),
 // );
 
-function ContactSectonComponent(args: ISpsLiteContactSectonBlock) {
+function ContactSectonComponent(args: IPageBlock) {
   // useEffect(() => {
   //   worker.start();
   // }, []);

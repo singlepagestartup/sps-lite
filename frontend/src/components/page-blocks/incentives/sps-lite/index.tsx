@@ -1,20 +1,12 @@
-import { ISpsLiteBackendComponentIncentivesBlock } from "~redux/services/backend/components/page-blocks/incentives-block/interfaces/sps-lite";
 import FourColumnWithIllustrations from "./FourColumnWithIllustrations";
-import { FC } from "react";
-
-export interface ISpsLiteIncentivesBlock
-  extends ISpsLiteBackendComponentIncentivesBlock {
-  showSkeletons?: boolean;
-}
+import { IPageBlock } from "..";
 
 export const variants = {
   "four-column-with-illustrations": FourColumnWithIllustrations,
 };
 
-export default function Incentives(props: ISpsLiteIncentivesBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteIncentivesBlock>;
+export default function Incentives(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { ISpsLiteCtaSectionsBlock } from "..";
 import Buttons from "~components/elements/buttons";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteCtaSectionsBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <div className="bg-white mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
       <div className="relative isolate grid grid-rows-2 lg:grid-rows-1 grid-cols-4 gap-4 overflow-hidden px-6 pt-16 bg-gray-900 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:px-24 lg:pt-0">

@@ -1,12 +1,16 @@
-import { FC } from "react";
-import { ISpsLiteAlertBlock, variants as spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/alert-block/interfaces";
+
+export interface IPageBlock extends IBackendComponentPageBlock {
+  showSkeletons?: boolean;
+}
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Alerts<T extends ISpsLiteAlertBlock>(props: T) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+export default function Alerts(props: IPageBlock) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

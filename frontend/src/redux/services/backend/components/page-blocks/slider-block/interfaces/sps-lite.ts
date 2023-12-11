@@ -1,6 +1,6 @@
 import { ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentSliderBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.slider-block";
   variant: "simple";

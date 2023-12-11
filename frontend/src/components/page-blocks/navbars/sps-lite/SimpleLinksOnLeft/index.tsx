@@ -1,10 +1,10 @@
-import { ISpsLiteNavbarBlock } from "..";
 import Component from "./Component";
 import ErrorBoundary from "~components/wrappers/error-boundary";
 import Skeleton from "./Skeleton";
 import Error from "./Error";
+import { IPageBlock } from "../..";
 
-export default function SimpleLinksOnLeft(props: ISpsLiteNavbarBlock) {
+export default function SimpleLinksOnLeft(props: IPageBlock) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? <Skeleton {...props} /> : <Component {...props} />}

@@ -4,14 +4,14 @@ import { default as IndexComp } from "./";
 import { default as Sk } from "./Skeleton";
 import { default as Comp } from "./Component";
 import { default as Er } from "./Error";
-import { ISpsLiteHeroSectionBlock } from "..";
+import { IPageBlock } from "../..";
 
 const meta = { component: IndexComp } satisfies Meta<typeof IndexComp>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const localEntity: ISpsLiteHeroSectionBlock = {
+const localEntity: IPageBlock = {
   ...entity,
   variant: "simple-centered",
 };

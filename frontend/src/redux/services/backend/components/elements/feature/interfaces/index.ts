@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentFeature } from "./your-project";
+import { IBackendComponentElement as IParentBackendComponentElement } from "./your-project";
 
-export interface IBackendComponentFeature
-  extends IYourProjectBackendComponentFeature {}
+export interface IBackendComponentElement
+  extends IParentBackendComponentElement {}

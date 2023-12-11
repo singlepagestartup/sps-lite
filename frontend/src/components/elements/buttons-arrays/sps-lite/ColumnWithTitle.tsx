@@ -1,9 +1,9 @@
 import Buttons from "~components/elements/buttons";
-import { IButtonsArray } from ".";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
+import { IElement } from "..";
 
-export default function ColumnWithTitle(props: IButtonsArray) {
+export default function ColumnWithTitle(props: IElement) {
   const { title, buttons } = props;
 
   return (

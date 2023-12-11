@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentReviewsTableBlock } from "./sps-lite";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps-lite";
 
-export interface IYourProjectBackendComponentReviewsTableBlock
-  extends ISpsLiteBackendComponentReviewsTableBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

@@ -1,6 +1,6 @@
-import { ISpsLiteBackendComponentFaq } from "../../../elements/faq/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentFaq } from "../../../elements/faq/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentFaqBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.faqs-block";
   variant: "two-columns-with-centered-introduction";

@@ -1,6 +1,6 @@
-import { ISpsLiteNavbarBlock } from "..";
+import { IPageBlock } from "../..";
 
-export default function Skeleton(props: ISpsLiteNavbarBlock) {
+export default function Skeleton(props: IPageBlock) {
   return (
     <div className="h-16 p-2 w-full flex items-center justify-between lg:justify-start">
       <div className="w-32 h-10 skeleton"></div>

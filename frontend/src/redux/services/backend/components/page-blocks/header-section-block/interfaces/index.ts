@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentHeaderSectionBlock } from "./your-project";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./your-project";
 
-export interface IBackendComponentHeaderSectionBlock
-  extends IYourProjectBackendComponentHeaderSectionBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

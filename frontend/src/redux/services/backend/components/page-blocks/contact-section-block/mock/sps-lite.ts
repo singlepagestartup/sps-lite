@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendComponentContactSectonBlock } from "../interfaces/sps-lite";
+import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendComponentContactSectonBlock = {
+export const entity: IBackendComponentPageBlock = {
   id: 2,
   __component: "page-blocks.contact-section-block",
   title: faker.lorem.sentence(),

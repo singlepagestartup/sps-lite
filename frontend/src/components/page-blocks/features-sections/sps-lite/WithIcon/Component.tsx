@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { ISpsLiteFeaturesSectionBlock } from "..";
 import getFileUrl from "~utils/api/get-file-url";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { IPageBlock } from "../..";
 
-export default function Component(props: ISpsLiteFeaturesSectionBlock) {
+export default function Component(props: IPageBlock) {
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex flex-col items-center py-16">

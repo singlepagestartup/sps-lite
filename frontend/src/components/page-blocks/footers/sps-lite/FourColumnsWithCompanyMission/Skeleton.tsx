@@ -1,6 +1,6 @@
-import { ISpsLiteFooterBlock } from "..";
+import { IPageBlock } from "../..";
 
-export default function Skeleton(props: ISpsLiteFooterBlock) {
+export default function Skeleton(props: IPageBlock) {
   return (
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col lg:flex-row">

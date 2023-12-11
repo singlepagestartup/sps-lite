@@ -1,7 +1,7 @@
-import { ISpsLiteBackendComponentButton } from "../../../elements/button/interfaces/sps-lite";
-import { ISpsLiteBackendComponentLogotype } from "../../../elements/logotype/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "../../../elements/button/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentLogotype } from "../../../elements/logotype/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentLogotypesCloudBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.logotypes-cloud-block";
   variant: "simple-with-heading";

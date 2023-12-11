@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentNavbarBlock } from "./sps-lite";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps-lite";
 
-export interface IYourProjectBackendComponentNavbarBlock
-  extends ISpsLiteBackendComponentNavbarBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

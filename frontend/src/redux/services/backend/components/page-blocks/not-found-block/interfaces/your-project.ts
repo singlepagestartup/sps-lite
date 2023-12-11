@@ -1,4 +1,4 @@
-import { ISpsLiteBackendComponentNotFoundBlock } from "./sps-lite";
+import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps-lite";
 
-export interface IYourProjectBackendComponentNotFoundBlock
-  extends ISpsLiteBackendComponentNotFoundBlock {}
+export interface IBackendComponentPageBlock
+  extends IParentBackendComponentPageBlock {}

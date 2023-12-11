@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendComponentReviewsTableBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   anchor: string | null;
   className: string | null;

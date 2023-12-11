@@ -1,7 +1,7 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { ISpsLiteBackendComponentFeature } from "../../../elements/feature/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentFeature } from "../../../elements/feature/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentIncentivesBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.incentives-block";
   variant: "four-column-with-illustrations";

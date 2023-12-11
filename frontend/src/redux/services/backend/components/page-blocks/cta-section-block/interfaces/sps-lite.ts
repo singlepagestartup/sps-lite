@@ -1,7 +1,7 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { ISpsLiteBackendComponentButton } from "../../../elements/button/interfaces/sps-lite";
+import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "../../../elements/button/interfaces/sps-lite";
 
-export interface ISpsLiteBackendComponentCtaSectionBlock {
+export interface IBackendComponentPageBlock {
   id: number;
   __component: "page-blocks.cta-section-block";
   variant: "dark-with-image";

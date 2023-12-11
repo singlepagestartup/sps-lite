@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentFont } from "./your-project";
+import { IBackendComponentElement as IParentBackendComponentElement } from "./your-project";
 
-export interface IBackendComponentFont
-  extends IYourProjectBackendComponentFont {}
+export interface IBackendComponentElement
+  extends IParentBackendComponentElement {}
