@@ -1,3 +1,3 @@
-import { api as yourProjectApi } from "./your-project";
+import { api as parentApi } from "./your-project";
 
-export const api = yourProjectApi;
+export const api = parentApi;

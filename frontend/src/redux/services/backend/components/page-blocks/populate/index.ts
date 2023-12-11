@@ -1,5 +1,5 @@
-import { populate as spsLitePopulate } from "./sps-lite";
+import { populate as parentPopulate } from "./sps-lite";
 
 export const populate = {
-  ...spsLitePopulate,
+  ...parentPopulate,
 };

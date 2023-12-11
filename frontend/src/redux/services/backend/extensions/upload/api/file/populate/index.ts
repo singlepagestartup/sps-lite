@@ -1,3 +1,3 @@
-import { populate as yourProjectPopulate } from "./your-project";
+import { populate as parentPopulate } from "./your-project";
 
-export const populate = yourProjectPopulate;
+export const populate = parentPopulate;

@@ -1,3 +1,3 @@
-import { api as spsLiteApi } from "./sps-lite";
+import { api as parentApi } from "./sps-lite";
 
-export const api = spsLiteApi;
+export const api = parentApi;
