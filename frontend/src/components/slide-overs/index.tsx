@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { variants as spsStoreVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
 import { useSearchParams } from "next/navigation";
 import { IBackendApiEntity as IBackendApiSlideOver } from "~redux/services/backend/api/slide-over/interfaces";
@@ -13,7 +13,7 @@ export interface ISlideOver extends IBackendApiSlideOver {
 }
 
 const variants = {
-  ...spsStoreVariants,
+  ...spsLiteVariants,
 };
 
 export default function SlideOvers() {
