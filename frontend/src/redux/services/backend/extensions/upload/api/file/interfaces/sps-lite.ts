@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendExtensionUploadApiFile {
+export interface IBackendExtensionUploadApiEntity {
   id: number;
   url: string;
   alternativeText: string | null;

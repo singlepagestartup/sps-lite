@@ -1,4 +1,4 @@
-import { ISpsLiteBackendExtensionUploadApiFile } from "./sps-lite";
+import { IBackendExtensionUploadApiEntity as IParentBackendExtensionUploadApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendExtensionUploadApiFile
-  extends ISpsLiteBackendExtensionUploadApiFile {}
+export interface IBackendExtensionUploadApiEntity
+  extends IParentBackendExtensionUploadApiEntity {}

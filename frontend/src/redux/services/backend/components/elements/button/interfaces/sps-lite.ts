@@ -1,5 +1,5 @@
-import { IBackendApiEntity as ISpsLiteBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces/sps-lite";
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IBackendComponentElement {
   id: number;
@@ -8,9 +8,9 @@ export interface IBackendComponentElement {
   title: string | null;
   url: string | null;
   description: string | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  media?: IBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
   className: string | null;
   additionalAttributes: any | null;
-  flyout: ISpsLiteBackendApiFlyout | null;
+  flyout: IBackendApiFlyout | null;
 }

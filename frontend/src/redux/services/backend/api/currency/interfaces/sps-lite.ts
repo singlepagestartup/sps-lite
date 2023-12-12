@@ -1,4 +1,4 @@
-import { IBackendApiEntity as ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiTier } from "~redux/services/backend/api/tier/interfaces";
 
 export interface IBackendApiEntity {
   id: number;
@@ -8,5 +8,5 @@ export interface IBackendApiEntity {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  tiers?: ISpsLiteBackendApiTier;
+  tiers?: IBackendApiTier;
 }

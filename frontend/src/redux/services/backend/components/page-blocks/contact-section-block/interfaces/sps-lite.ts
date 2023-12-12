@@ -1,6 +1,6 @@
-import { IBackendApiEntity as ISpsLiteBackendApiForm } from "~redux/services/backend/api/form/interfaces/sps-lite";
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { IBackendComponentElement as ISpsLiteBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IBackendComponentElement as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -11,8 +11,8 @@ export interface IBackendComponentPageBlock {
   description: string | null;
   className: string | null;
   anchor: string | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  form?: ISpsLiteBackendApiForm | null;
-  buttonsArrays?: ISpsLiteBackendComponentButtonsArray[] | null;
+  media?: IBackendExtensionUploadApiFile | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
+  form?: IBackendApiForm | null;
+  buttonsArrays?: IBackendComponentButtonsArray[] | null;
 }

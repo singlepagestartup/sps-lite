@@ -1,4 +1,4 @@
-import { IBackendComponentElement as ISpsLiteBackendComponentFaq } from "../../../elements/faq/interfaces/sps-lite";
+import { IBackendComponentElement as IBackendComponentFaq } from "../../../elements/faq/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -8,6 +8,6 @@ export interface IBackendComponentPageBlock {
   subtitle: string | null;
   className: string | null;
   description: string | null;
-  faqs?: ISpsLiteBackendComponentFaq[] | null;
+  faqs?: IBackendComponentFaq[] | null;
   anchor: string | null;
 }

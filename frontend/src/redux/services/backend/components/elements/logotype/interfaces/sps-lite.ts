@@ -1,10 +1,10 @@
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IBackendComponentElement {
   id: number;
   __component: "elements.logotype";
-  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  media?: IBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
   url: string | null;
   title: string | null;
 }

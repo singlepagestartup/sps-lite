@@ -1,4 +1,4 @@
-import { IYourProjectBackendExtensionUploadApiFile } from "./your-project";
+import { IBackendExtensionUploadApiEntity as IParentBackendExtensionUploadApiEntity } from "./your-project";
 
-export interface IBackendExtensionUploadApiFile
-  extends IYourProjectBackendExtensionUploadApiFile {}
+export interface IBackendExtensionUploadApiEntity
+  extends IParentBackendExtensionUploadApiEntity {}

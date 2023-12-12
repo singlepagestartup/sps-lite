@@ -1,5 +1,5 @@
-import { IBackendComponentElement as ISpsLiteBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces/sps-lite";
-import { IBackendComponentElement as ISpsLiteBackendComponentLogotype } from "../../../elements/logotype/interfaces/sps-lite";
+import { IBackendComponentElement as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
+import { IBackendComponentElement as IBackendComponentLogotype } from "../../../elements/logotype/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -8,8 +8,8 @@ export interface IBackendComponentPageBlock {
   className: string | null;
   copyrights: string | null;
   description: string | null;
-  logotype: ISpsLiteBackendComponentLogotype | null;
-  buttonsArrays: ISpsLiteBackendComponentButtonsArray[] | null;
-  additionalButtonsArrays: ISpsLiteBackendComponentButtonsArray[] | null;
-  extraButtonsArrays: ISpsLiteBackendComponentButtonsArray[] | null;
+  logotype: IBackendComponentLogotype | null;
+  buttonsArrays: IBackendComponentButtonsArray[] | null;
+  additionalButtonsArrays: IBackendComponentButtonsArray[] | null;
+  extraButtonsArrays: IBackendComponentButtonsArray[] | null;
 }

@@ -1,8 +1,8 @@
-import { IBackendApiEntity as ISpsLiteBackendApiFooter } from "../../footer/interfaces/sps-lite";
-import { IBackendApiEntity as ISpsLiteBackendApiNavbar } from "../../navbar/interfaces/sps-lite";
-import { IBackendApiEntity as ISpsLiteBackendApiPage } from "../../page/interfaces/sps-lite";
-import { IBackendApiEntity as ISpsLiteBackendApiSidebar } from "../../sidebar/interfaces/sps-lite";
-import { IBackendApiEntity as ISpsLiteBackendApiTopbar } from "../../topbar/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiFooter } from "../../footer/interfaces";
+import { IBackendApiEntity as IBackendApiNavbar } from "../../navbar/interfaces";
+import { IBackendApiEntity as IBackendApiPage } from "../../page/interfaces";
+import { IBackendApiEntity as IBackendApiSidebar } from "../../sidebar/interfaces";
+import { IBackendApiEntity as IBackendApiTopbar } from "../../topbar/interfaces";
 
 export interface IBackendApiEntity {
   id: number;
@@ -14,9 +14,9 @@ export interface IBackendApiEntity {
   updatedAt: string;
   publishedAt: string;
   variant: "wide" | "boxed";
-  topbar?: ISpsLiteBackendApiTopbar | null;
-  navbar?: ISpsLiteBackendApiNavbar | null;
-  sidebar?: ISpsLiteBackendApiSidebar | null;
-  footer?: ISpsLiteBackendApiFooter | null;
-  pages?: ISpsLiteBackendApiPage[] | null;
+  topbar?: IBackendApiTopbar | null;
+  navbar?: IBackendApiNavbar | null;
+  sidebar?: IBackendApiSidebar | null;
+  footer?: IBackendApiFooter | null;
+  pages?: IBackendApiPage[] | null;
 }

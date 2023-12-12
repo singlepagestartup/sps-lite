@@ -1,5 +1,5 @@
-import { IBackendApiEntity as ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiTier } from "~redux/services/backend/api/tier/interfaces";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -9,8 +9,8 @@ export interface IBackendComponentPageBlock {
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  tiers?: ISpsLiteBackendApiTier[] | null;
+  media?: IBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
+  tiers?: IBackendApiTier[] | null;
   className: string | null;
 }

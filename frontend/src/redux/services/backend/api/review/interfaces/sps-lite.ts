@@ -1,4 +1,4 @@
-import { ISpsLiteBackendExtensionUploadApiFile } from "../../../extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "../../../extensions/upload/api/file/interfaces";
 
 export interface IBackendApiEntity {
   id: number;
@@ -7,8 +7,8 @@ export interface IBackendApiEntity {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  media?: IBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

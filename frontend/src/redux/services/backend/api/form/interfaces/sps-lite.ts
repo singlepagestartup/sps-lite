@@ -1,5 +1,5 @@
-import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
-import { IBackendComponentElement as ISpsLiteBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
+import { IBackendComponentElement as IBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces";
+import { IBackendComponentElement as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
 
 export interface IBackendApiEntity {
   id: number;
@@ -7,10 +7,10 @@ export interface IBackendApiEntity {
   locale: string;
   title: string;
   uid: string;
-  inputs?: Omit<ISpsLiteBackendComponentInput, "__component">[];
+  inputs?: Omit<IBackendComponentInput, "__component">[];
   className: string | null;
   additionalAttributes: any | null;
-  button?: Omit<ISpsLiteBackendComponentButton, "__component">;
+  button?: Omit<IBackendComponentButton, "__component">;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

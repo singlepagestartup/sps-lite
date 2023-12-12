@@ -1,5 +1,5 @@
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { IBackendComponentElement as ISpsLiteBackendComponentInputOption } from "../../input-option/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IBackendComponentElement as IBackendComponentInputOption } from "../../input-option/interfaces";
 
 export interface IBackendComponentElement {
   id: number;
@@ -16,7 +16,7 @@ export interface IBackendComponentElement {
   isRequired: boolean;
   value: string | null;
   name: string;
-  options?: Omit<ISpsLiteBackendComponentInputOption, "__component">[];
+  options?: Omit<IBackendComponentInputOption, "__component">[];
   label: string | null;
   className: string | null;
   type:
@@ -34,7 +34,7 @@ export interface IBackendComponentElement {
   min: number | null;
   max: number | null;
   step: number | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  extraMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[] | null;
+  media?: IBackendExtensionUploadApiFile[] | null;
+  extraMedia?: IBackendExtensionUploadApiFile[] | null;
+  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
 }

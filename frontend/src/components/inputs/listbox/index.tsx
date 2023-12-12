@@ -7,7 +7,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -206,8 +206,8 @@ function DefaultButton({
   value: any;
   placeholder: string;
   renderOptionValue?: (value: any) => string;
-  media?: ISpsLiteBackendExtensionUploadApiFile[];
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[];
+  media?: IBackendExtensionUploadApiFile[];
+  additionalMedia?: IBackendExtensionUploadApiFile[];
 }) {
   const renderValue = useMemo(() => {
     if (Array.isArray(value)) {
@@ -237,7 +237,7 @@ function DefaultButton({
     }
   }, [value, placeholder]);
 
-  const renderIcons: ISpsLiteBackendExtensionUploadApiFile[] = useMemo(() => {
+  const renderIcons: IBackendExtensionUploadApiFile[] = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
         return value.reduce((prev, selectedValue, index) => {
@@ -257,7 +257,7 @@ function DefaultButton({
     <div className="button">
       <div data-media={media && media?.length > 0} className="media-container">
         {media?.map(
-          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
+          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ),
         )}
@@ -282,7 +282,7 @@ function DefaultButton({
         className="additional-media-container"
       >
         {additionalMedia?.map(
-          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
+          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ),
         )}
@@ -300,7 +300,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: ISpsLiteBackendExtensionUploadApiFile[];
+  extraMedia?: IBackendExtensionUploadApiFile[];
 }) {
   const { selected } = params;
 
@@ -311,7 +311,7 @@ function DefaultOption({
         className="extra-media-container"
       >
         {extraMedia?.map(
-          (mediaItem: ISpsLiteBackendExtensionUploadApiFile, index: number) => (
+          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ),
         )}
@@ -322,10 +322,7 @@ function DefaultOption({
           className="media-container"
         >
           {option?.media?.map(
-            (
-              mediaItem: ISpsLiteBackendExtensionUploadApiFile,
-              index: number,
-            ) => (
+            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}

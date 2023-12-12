@@ -1,4 +1,4 @@
-import { IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function getFileUrl(

@@ -7,7 +7,7 @@ import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -184,7 +184,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: ISpsLiteBackendExtensionUploadApiFile[];
+  extraMedia?: IBackendExtensionUploadApiFile[];
 }) {
   const { selected } = params;
 
@@ -196,10 +196,7 @@ function DefaultOption({
       >
         {extraMedia?.length ? (
           extraMedia?.map(
-            (
-              mediaItem: ISpsLiteBackendExtensionUploadApiFile,
-              index: number,
-            ) => (
+            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}
@@ -218,10 +215,7 @@ function DefaultOption({
           className="media-container"
         >
           {option?.media?.map(
-            (
-              mediaItem: ISpsLiteBackendExtensionUploadApiFile,
-              index: number,
-            ) => (
+            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
               <Image
                 key={index}
                 src={getFileUrl(mediaItem)}

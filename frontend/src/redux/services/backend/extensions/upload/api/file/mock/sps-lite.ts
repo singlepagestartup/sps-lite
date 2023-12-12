@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendExtensionUploadApiFile } from "../interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendExtensionUploadApiFile = {
+export const entity: IBackendExtensionUploadApiEntity = {
   id: 907,
   name: faker.lorem.slug(),
   alternativeText: null,

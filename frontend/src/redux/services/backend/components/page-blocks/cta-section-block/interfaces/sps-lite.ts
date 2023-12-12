@@ -1,5 +1,5 @@
-import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
-import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "../../../elements/button/interfaces/sps-lite";
+import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IBackendComponentElement as IBackendComponentButton } from "../../../elements/button/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -8,9 +8,9 @@ export interface IBackendComponentPageBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  media?: ISpsLiteBackendExtensionUploadApiFile[];
-  additionalMedia?: ISpsLiteBackendExtensionUploadApiFile[];
+  media?: IBackendExtensionUploadApiFile[];
+  additionalMedia?: IBackendExtensionUploadApiFile[];
   anchor: string | null;
   className: string | null;
-  buttons?: ISpsLiteBackendComponentButton[];
+  buttons?: IBackendComponentButton[];
 }

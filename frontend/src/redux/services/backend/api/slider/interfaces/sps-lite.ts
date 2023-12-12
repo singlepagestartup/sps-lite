@@ -1,8 +1,8 @@
-import { IBackendComponentElement as ISpsLiteBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
+import { IBackendComponentElement as IBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
 export interface IBackendApiEntity {
   id: number;
-  slides: ISpsLiteBackendComponentSlide[];
+  slides: IBackendComponentSlide[];
   className: string | null;
   aspectRatioClassName: string | null;
   variant: "fade-with-previews";
