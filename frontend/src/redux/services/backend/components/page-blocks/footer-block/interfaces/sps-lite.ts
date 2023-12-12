@@ -1,7 +1,7 @@
 import { IComponent as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
 import { IComponent as IBackendComponentLogotype } from "../../../elements/logotype/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.footer-block";
   variant: "four-columns-with-company-mission";

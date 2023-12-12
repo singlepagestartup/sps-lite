@@ -1,4 +1,4 @@
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   anchor: string | null;
   className: string | null;

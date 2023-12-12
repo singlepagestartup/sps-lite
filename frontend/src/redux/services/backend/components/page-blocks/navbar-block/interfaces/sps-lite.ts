@@ -1,7 +1,7 @@
 import { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
 import { IComponent as IBackendComponentLogotype } from "../../../elements/logotype/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.navbar-block";
   variant: "simple-links-on-left";

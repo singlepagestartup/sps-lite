@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
-import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
+import { IComponent } from "../interfaces/sps-lite";
 
-export const entity: IBackendComponentPageBlock = {
+export const entity: IComponent = {
   id: 1,
   __component: "page-blocks.alert-block",
   title: faker.lorem.sentence(),

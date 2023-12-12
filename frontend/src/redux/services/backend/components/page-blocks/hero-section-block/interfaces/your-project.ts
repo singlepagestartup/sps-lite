@@ -1,4 +1,3 @@
-import { IBackendComponentPageBlock as IParentBackendComponentPageBlock } from "./sps";
+import { IComponent as IParentComponent } from "./sps";
 
-export interface IBackendComponentPageBlock
-  extends IParentBackendComponentPageBlock {}
+export interface IComponent extends IParentComponent {}

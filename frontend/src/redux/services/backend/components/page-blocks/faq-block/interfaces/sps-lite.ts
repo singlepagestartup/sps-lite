@@ -1,6 +1,6 @@
 import { IComponent as IBackendComponentFaq } from "../../../elements/faq/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.faqs-block";
   variant: "two-columns-with-centered-introduction";

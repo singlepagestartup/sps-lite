@@ -1,6 +1,6 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.header-section-block";
   variant: "simple-centered";

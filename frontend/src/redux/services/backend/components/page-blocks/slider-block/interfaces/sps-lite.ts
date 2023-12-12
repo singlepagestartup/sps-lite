@@ -1,6 +1,6 @@
 import { IEntity as IBackendSlider } from "~redux/services/backend/api/slider/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.slider-block";
   variant: "simple";

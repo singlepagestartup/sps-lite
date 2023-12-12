@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { entity as logotype } from "~redux/services/backend/components/elements/logotype/mock/sps-lite";
 import { entity as buttonsArray } from "~redux/services/backend/components/elements/buttons-array/mock/sps-lite";
-import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
+import { IComponent } from "../interfaces/sps-lite";
 
-export const entity: IBackendComponentPageBlock = {
+export const entity: IComponent = {
   id: 2,
   __component: "page-blocks.footer-block",
   variant: "four-columns-with-company-mission",

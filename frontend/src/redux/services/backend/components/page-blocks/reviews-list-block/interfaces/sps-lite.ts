@@ -1,6 +1,6 @@
 import { IEntity as IBackendReview } from "~redux/services/backend/api/review/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.reviews-list-block";
   variant: "simple-with-avatars";

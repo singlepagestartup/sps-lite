@@ -1,6 +1,6 @@
-import { IBackendComponentPageBlock } from "../interfaces/sps-lite";
+import { IComponent } from "../interfaces/sps-lite";
 
-export const entity: IBackendComponentPageBlock = {
+export const entity: IComponent = {
   id: 9,
   __component: "page-blocks.reviews-table-block",
   variant: "simple",

@@ -1,7 +1,7 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
 
-export interface IBackendComponentPageBlock {
+export interface IComponent {
   id: number;
   __component: "page-blocks.cta-section-block";
   variant: "dark-with-image";
