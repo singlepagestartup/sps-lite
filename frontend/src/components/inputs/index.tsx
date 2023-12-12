@@ -10,7 +10,7 @@ import RepeatableInput, { IInsideComponentProps } from "./repeatable";
 import SwitchInput from "./switch";
 import TextInput from "./text";
 import DateInput from "./date";
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IInputProps extends UseControllerProps {
   label?: string | null;
@@ -42,9 +42,9 @@ export interface IInputProps extends UseControllerProps {
   min?: number | null;
   max?: number | null;
   disabled?: boolean;
-  media?: IBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
-  extraMedia?: IBackendExtensionUploadApiFile[] | null;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
+  extraMedia?: IBackendFile[] | null;
   ResetIcon?: any;
   CalendarIcon?: any;
   onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;

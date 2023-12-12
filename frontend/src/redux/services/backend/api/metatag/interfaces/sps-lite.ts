@@ -1,4 +1,4 @@
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IEntity {
   id: number;
@@ -6,7 +6,7 @@ export interface IEntity {
   title: string;
   description: string;
   script?: string | null;
-  favicon?: IBackendExtensionUploadApiFile | null;
+  favicon?: IBackendFile | null;
   uid: string | null;
   createdAt: string;
   updatedAt: string;

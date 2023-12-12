@@ -7,7 +7,7 @@ import { getInputErrors } from "../utils";
 import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -206,8 +206,8 @@ function DefaultButton({
   value: any;
   placeholder: string;
   renderOptionValue?: (value: any) => string;
-  media?: IBackendExtensionUploadApiFile[];
-  additionalMedia?: IBackendExtensionUploadApiFile[];
+  media?: IBackendFile[];
+  additionalMedia?: IBackendFile[];
 }) {
   const renderValue = useMemo(() => {
     if (Array.isArray(value)) {
@@ -237,7 +237,7 @@ function DefaultButton({
     }
   }, [value, placeholder]);
 
-  const renderIcons: IBackendExtensionUploadApiFile[] = useMemo(() => {
+  const renderIcons: IBackendFile[] = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
         return value.reduce((prev, selectedValue, index) => {
@@ -256,11 +256,9 @@ function DefaultButton({
   return (
     <div className="button">
       <div data-media={media && media?.length > 0} className="media-container">
-        {media?.map(
-          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
-          ),
-        )}
+        {media?.map((mediaItem: IBackendFile, index: number) => (
+          <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+        ))}
       </div>
       <div className="title-container">
         <div
@@ -281,11 +279,9 @@ function DefaultButton({
         data-media={additionalMedia && additionalMedia?.length > 0}
         className="additional-media-container"
       >
-        {additionalMedia?.map(
-          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
-          ),
-        )}
+        {additionalMedia?.map((mediaItem: IBackendFile, index: number) => (
+          <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+        ))}
       </div>
     </div>
   );
@@ -300,7 +296,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: IBackendExtensionUploadApiFile[];
+  extraMedia?: IBackendFile[];
 }) {
   const { selected } = params;
 
@@ -310,27 +306,18 @@ function DefaultOption({
         data-media={extraMedia?.length ? true : false}
         className="extra-media-container"
       >
-        {extraMedia?.map(
-          (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
-          ),
-        )}
+        {extraMedia?.map((mediaItem: IBackendFile, index: number) => (
+          <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+        ))}
       </div>
       <div className="title-container">
         <div
           data-media={option.media && option.media?.length > 0}
           className="media-container"
         >
-          {option?.media?.map(
-            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-              <Image
-                key={index}
-                src={getFileUrl(mediaItem)}
-                fill={true}
-                alt=""
-              />
-            ),
-          )}
+          {option?.media?.map((mediaItem: IBackendFile, index: number) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ))}
         </div>
         <span className="title">
           {(typeof renderOptionValue === "function"

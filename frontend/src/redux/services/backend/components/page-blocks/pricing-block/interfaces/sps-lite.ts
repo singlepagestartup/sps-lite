@@ -1,5 +1,5 @@
 import { IEntity as IBackendTier } from "~redux/services/backend/api/tier/interfaces";
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IComponent {
   id: number;
@@ -9,8 +9,8 @@ export interface IComponent {
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  media?: IBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
   tiers?: IBackendTier[] | null;
   className: string | null;
 }

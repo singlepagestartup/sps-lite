@@ -1,4 +1,4 @@
-export interface IBackendExtensionUploadApiEntity {
+export interface IEntity {
   id: number;
   url: string;
   alternativeText: string | null;

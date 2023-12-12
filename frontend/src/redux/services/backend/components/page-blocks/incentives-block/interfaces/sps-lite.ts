@@ -1,4 +1,4 @@
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { IComponent as IBackendComponentFeature } from "../../../elements/feature/interfaces";
 
 export interface IComponent {
@@ -10,7 +10,7 @@ export interface IComponent {
   subtitle: string | null;
   description: string | null;
   className: string | null;
-  media?: IBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
   anchor: string | null;
 }

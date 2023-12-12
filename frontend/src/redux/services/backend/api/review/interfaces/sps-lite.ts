@@ -1,4 +1,4 @@
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "../../../extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "../../../extensions/upload/api/file/interfaces";
 
 export interface IEntity {
   id: number;
@@ -7,8 +7,8 @@ export interface IEntity {
   subtitle: string | null;
   rating: number | null;
   description: string | null;
-  media?: IBackendExtensionUploadApiFile[] | null;
-  additionalMedia?: IBackendExtensionUploadApiFile[] | null;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

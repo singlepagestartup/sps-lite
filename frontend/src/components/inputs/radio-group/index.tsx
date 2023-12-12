@@ -7,7 +7,7 @@ import { IInputProps } from "..";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -184,7 +184,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue: (option: any) => string;
-  extraMedia?: IBackendExtensionUploadApiFile[];
+  extraMedia?: IBackendFile[];
 }) {
   const { selected } = params;
 
@@ -195,16 +195,9 @@ function DefaultOption({
         className="extra-media-container"
       >
         {extraMedia?.length ? (
-          extraMedia?.map(
-            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-              <Image
-                key={index}
-                src={getFileUrl(mediaItem)}
-                fill={true}
-                alt=""
-              />
-            ),
-          )
+          extraMedia?.map((mediaItem: IBackendFile, index: number) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ))
         ) : (
           <div className="check"></div>
         )}
@@ -214,16 +207,9 @@ function DefaultOption({
           data-media={option.media && option.media?.length > 0}
           className="media-container"
         >
-          {option?.media?.map(
-            (mediaItem: IBackendExtensionUploadApiFile, index: number) => (
-              <Image
-                key={index}
-                src={getFileUrl(mediaItem)}
-                fill={true}
-                alt=""
-              />
-            ),
-          )}
+          {option?.media?.map((mediaItem: IBackendFile, index: number) => (
+            <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
+          ))}
         </div>
         <span className="title">
           {(typeof renderOptionValue === "function"
