@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import Simple from "./Simple";
 import { IEntity as ISpsLiteBackendApiModal } from "~redux/services/backend/api/modal/interfaces/sps-lite";
 

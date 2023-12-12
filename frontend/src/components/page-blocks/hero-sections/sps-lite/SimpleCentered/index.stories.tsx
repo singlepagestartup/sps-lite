@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { entity } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
-import { default as IndexComp } from "./";
-import { default as Sk } from "./Skeleton";
-import { default as Comp } from "./Component";
-import { default as Er } from "./Error";
+import Root from ".";
+import Sk from "./Skeleton";
+import Comp from "./Component";
+import Er from "./Error";
 import { IPageBlock } from "../..";
 
-const meta = { component: IndexComp } satisfies Meta<typeof IndexComp>;
+const meta = { component: Root } satisfies Meta<typeof Root>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
