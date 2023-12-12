@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiLocale } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiLocale
-  extends ISpsLiteBackendApiLocale {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

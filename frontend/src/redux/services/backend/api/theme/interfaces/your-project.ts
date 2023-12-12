@@ -1,3 +1,3 @@
-import { ISpsLiteBackendApiTheme } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiTheme extends ISpsLiteBackendApiTheme {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

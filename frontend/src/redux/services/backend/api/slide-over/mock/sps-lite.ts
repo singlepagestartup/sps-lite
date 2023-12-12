@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiSlideOver } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiSlideOver = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Hello world",
   locale: "en",

@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiSlider } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as slide } from "~redux/services/backend/components/elements/slide/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiSlider = {
+export const entity: IBackendApiEntity = {
   id: 6,
   slides: Array(4).fill(slide),
   variant: "fade-with-previews",

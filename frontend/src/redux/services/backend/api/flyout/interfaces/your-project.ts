@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiFlyout } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiFlyout
-  extends ISpsLiteBackendApiFlyout {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

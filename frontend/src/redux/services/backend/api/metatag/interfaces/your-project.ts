@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiMetatag } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiMetatag
-  extends ISpsLiteBackendApiMetatag {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

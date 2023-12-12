@@ -1,9 +1,15 @@
 "use client";
 
-import { FC, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { Popover } from "@headlessui/react";
 import { api as flyoutApi } from "~redux/services/backend/api/flyout/api";
+import { IBackendApiEntity as IBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces";
+
+export interface IFlyout extends IBackendApiFlyout {
+  showSkeletons?: boolean;
+  children: ReactNode;
+}
 
 const variants = {
   ...spsLiteVariants,
@@ -54,9 +60,7 @@ export default function Flyouts({
     }
   }, [localFlyouts, flyout]);
 
-  const Comp = variants[
-    flyoutProps?.variant as keyof typeof variants
-  ] as FC<any>;
+  const Comp = variants[flyoutProps?.variant as keyof typeof variants];
 
   if (!Comp || !children || isError) {
     return <></>;

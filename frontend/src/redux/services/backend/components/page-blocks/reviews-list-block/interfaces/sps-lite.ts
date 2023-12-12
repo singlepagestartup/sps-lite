@@ -1,4 +1,4 @@
-import { ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
 
 export interface IBackendComponentPageBlock {
   id: number;

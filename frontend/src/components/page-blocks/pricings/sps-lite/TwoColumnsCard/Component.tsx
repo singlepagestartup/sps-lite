@@ -6,7 +6,7 @@ import Cards, { ICardProps } from "~components/cards";
 import Image from "next/image";
 import Buttons from "~components/elements/buttons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiTier } from "~redux/services/backend/api/tier/interfaces/sps-lite";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {

@@ -1,20 +1,23 @@
 "use client";
 
-import { FC } from "react";
-import { ISpsLiteTopbar, variants as spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
+import { IBackendApiEntity as IBackendApiTopbar } from "~redux/services/backend/api/topbar/interfaces";
+
+export interface ITopbar extends IBackendApiTopbar {
+  showSkeletons?: boolean;
+  topbarRef?: any;
+}
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function PublicPageTopbars<T extends ISpsLiteTopbar>(
-  props: any,
-) {
+export default function PublicPageTopbars(props: ITopbar) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp || isError) {
     return <></>;

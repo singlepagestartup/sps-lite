@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiLoader } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiLoader
-  extends ISpsLiteBackendApiLoader {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

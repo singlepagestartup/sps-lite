@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { api as modalApi } from "~redux/services/backend/api/modal/api";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFind } from "~redux/strapi-rtk";
-import { IBackendApiCurrency } from "../interfaces";
+import { IBackendApiEntity } from "../interfaces";
 import { populate } from "../populate";
 
 const rtkType = "Currency";
@@ -13,7 +13,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IBackendApiCurrency>({
+    get: strapiFind<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,

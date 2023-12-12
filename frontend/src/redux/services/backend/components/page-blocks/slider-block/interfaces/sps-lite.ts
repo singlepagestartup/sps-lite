@@ -1,4 +1,4 @@
-import { ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
 
 export interface IBackendComponentPageBlock {
   id: number;

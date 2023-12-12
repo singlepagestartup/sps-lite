@@ -1,7 +1,7 @@
 import PageBlocks from "~components/page-blocks";
-import { ISpsLiteSidebar } from ".";
+import { ISidebar } from "..";
 
-export default function OneQuarter(props: ISpsLiteSidebar) {
+export default function OneQuarter(props: ISidebar) {
   return (
     <div
       data-collection-type="sidebar"

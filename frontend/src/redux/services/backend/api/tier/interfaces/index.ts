@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiTier } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiTier extends IYourProjectBackendApiTier {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

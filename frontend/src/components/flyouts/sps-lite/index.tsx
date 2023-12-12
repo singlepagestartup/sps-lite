@@ -1,20 +1,12 @@
-import { FC, ReactNode } from "react";
 import Simple from "./Simple";
-import { ISpsLiteBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces/sps-lite";
-
-export interface ISpsLiteFlyout extends ISpsLiteBackendApiFlyout {
-  children: ReactNode;
-  showSkeletons?: boolean;
-}
+import { IFlyout } from "..";
 
 export const variants = {
   simple: Simple,
 };
 
-export default function Menus(props: ISpsLiteFlyout) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteFlyout>;
+export default function Menus(props: IFlyout) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

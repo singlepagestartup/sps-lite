@@ -2,7 +2,7 @@ import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
-import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
+import { IBackendApiEntity as IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 
 export default async function NotFoundPage() {
   const pages = (await getBackendData({

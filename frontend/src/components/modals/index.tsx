@@ -4,7 +4,7 @@ import { useState, useEffect, FC, useMemo } from "react";
 import { api as modalApi } from "~redux/services/backend/api/modal/api";
 import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IBackendApiModal } from "~redux/services/backend/api/modal/interfaces";
+import { IBackendApiEntity as IBackendApiModal } from "~redux/services/backend/api/modal/interfaces";
 
 export type IModal = ISpsLiteModal;
 

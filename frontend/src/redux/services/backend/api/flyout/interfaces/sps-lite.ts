@@ -1,6 +1,6 @@
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
-export interface ISpsLiteBackendApiFlyout {
+export interface IBackendApiEntity {
   id: number;
   locale: string;
   title: string;

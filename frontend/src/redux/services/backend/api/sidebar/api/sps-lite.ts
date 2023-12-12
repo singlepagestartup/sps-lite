@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFindOne } from "~redux/strapi-rtk";
 import { populate } from "../populate";
-import { IBackendApiSidebar } from "../interfaces";
+import { IBackendApiEntity } from "../interfaces";
 
 const model = "sidebars";
 const rtkType = "Sidebar";
@@ -12,7 +12,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getById: strapiFindOne<IBackendApiSidebar>({
+    getById: strapiFindOne<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,

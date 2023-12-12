@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiCurrency } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiCurrency
-  extends ISpsLiteBackendApiCurrency {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendApiLocale {
+export interface IBackendApiEntity {
   id: number;
   name: string;
   code: string;

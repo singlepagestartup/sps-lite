@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiMetatag } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiMetatag = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Single Page Startup",
   uid: "single-page-startup",

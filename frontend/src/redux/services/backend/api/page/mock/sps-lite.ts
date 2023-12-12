@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiPage } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiPage = {
+export const entity: IBackendApiEntity = {
   id: 3,
   locale: "en",
   title: "Main Page",

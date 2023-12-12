@@ -10,7 +10,7 @@ import {
 } from "~redux/strapi-rtk";
 
 import { populate } from "../populate";
-import { IBackendApiFlyout } from "../interfaces";
+import { IBackendApiEntity } from "../interfaces";
 
 const model = "flyouts";
 const rtkType = "Flyout";
@@ -20,7 +20,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getFlyouts: strapiFind<IBackendApiFlyout>({
+    getFlyouts: strapiFind<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,
@@ -28,7 +28,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getFlyoutById: strapiFindOne<IBackendApiFlyout>({
+    getFlyoutById: strapiFindOne<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,
@@ -36,7 +36,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    createFlyout: strapiCreate<IBackendApiFlyout>({
+    createFlyout: strapiCreate<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,
@@ -44,7 +44,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    updateFlyout: strapiUpdate<IBackendApiFlyout>({
+    updateFlyout: strapiUpdate<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,
@@ -52,7 +52,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    deleteFlyout: strapiDelete<IBackendApiFlyout>({
+    deleteFlyout: strapiDelete<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,

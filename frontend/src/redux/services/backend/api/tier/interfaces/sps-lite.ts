@@ -1,8 +1,8 @@
 import { IBackendComponentElement as ISpsLiteBackendComponentFeature } from "~redux/services/backend/components/elements/feature/interfaces/sps-lite";
-import { ISpsLiteBackendApiCurrency } from "../../currency/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiCurrency } from "../../currency/interfaces/sps-lite";
 import { IBackendComponentElement as ISpsLiteBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces/sps-lite";
 
-export interface ISpsLiteBackendApiTier {
+export interface IBackendApiEntity {
   id: number;
   title: string | null;
   description: string | null;

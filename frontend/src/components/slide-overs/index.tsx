@@ -1,15 +1,20 @@
 "use client";
 
-import { useState, useEffect, FC } from "react";
-import { ISpsLiteSlideOver, variants as spsStoreVariants } from "./sps-lite";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { variants as spsStoreVariants } from "./sps-lite";
 import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
 import { useSearchParams } from "next/navigation";
+import { IBackendApiEntity as IBackendApiSlideOver } from "~redux/services/backend/api/slide-over/interfaces";
+
+export interface ISlideOver extends IBackendApiSlideOver {
+  showSkeletons?: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+}
 
 const variants = {
   ...spsStoreVariants,
 };
-
-export type ISlideOver = ISpsLiteSlideOver;
 
 export default function SlideOvers() {
   const query = useSearchParams();
@@ -42,9 +47,7 @@ export default function SlideOvers() {
     }
   }, [query]);
 
-  const Comp = variants[
-    slideOverProps?.variant as keyof typeof variants
-  ] as FC<ISlideOver>;
+  const Comp = variants[slideOverProps?.variant as keyof typeof variants];
 
   if (!Comp || !slideOverProps) {
     return <></>;

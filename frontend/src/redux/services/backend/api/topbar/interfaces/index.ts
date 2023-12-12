@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiTopbar } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiTopbar extends IYourProjectBackendApiTopbar {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

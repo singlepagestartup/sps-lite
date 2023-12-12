@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useSpring, animated } from "@react-spring/web";
-import { ISpsLiteLoaderBlock } from ".";
 import getFileUrl from "~utils/api/get-file-url";
 import { useEffect, useState } from "react";
+import { ILoader } from "..";
 
-export default function Simple(props: ISpsLiteLoaderBlock) {
+export default function Simple(props: ILoader) {
   const [passed, setPassed] = useState(false);
   const [hideLoader, setHideLoader] = useState(true);
   const [closeLoader, setCloseLoader] = useState(false);

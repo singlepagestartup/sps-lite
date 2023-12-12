@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiFlyout } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiFlyout extends IYourProjectBackendApiFlyout {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

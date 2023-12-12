@@ -1,9 +1,9 @@
 "use client";
 
-import { ISpsLiteNavbar } from ".";
 import PageBlocks from "~components/page-blocks";
+import { INavbar } from "..";
 
-export default function Boxed(props: ISpsLiteNavbar) {
+export default function Boxed(props: INavbar) {
   return (
     <nav
       data-collection-type="navbar"

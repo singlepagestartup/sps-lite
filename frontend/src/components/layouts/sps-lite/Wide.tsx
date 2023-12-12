@@ -1,11 +1,11 @@
 import Topbars from "~components/topbars";
-import { ISpsLiteLayout } from ".";
 import Sidebars from "~components/sidebars";
 import Navbars from "~components/navbars";
 import Footers from "~components/footers";
 import { useRef } from "react";
+import { ILayout } from "..";
 
-export default function Wide(props: ISpsLiteLayout) {
+export default function Wide(props: ILayout) {
   const topbarRef = useRef<any>(null);
 
   return (

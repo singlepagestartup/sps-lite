@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiCurrency } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiCurrency extends IYourProjectBackendApiCurrency {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

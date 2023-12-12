@@ -1,6 +1,6 @@
-import { ISpsLiteBackendApiCurrency } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendApiCurrency = {
+export const entity: IBackendApiEntity = {
   id: 7,
   title: "USD",
   unicode: "$",

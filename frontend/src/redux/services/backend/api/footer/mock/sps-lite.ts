@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiFooter } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/footer-block/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiFooter = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Public Page Footer",
   uid: "public-page-footer",

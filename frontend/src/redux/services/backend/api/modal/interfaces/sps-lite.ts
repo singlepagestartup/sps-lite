@@ -1,6 +1,6 @@
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
-export interface ISpsLiteBackendApiModal {
+export interface IBackendApiEntity {
   id: number;
   title: string | null;
   variant: "simple";

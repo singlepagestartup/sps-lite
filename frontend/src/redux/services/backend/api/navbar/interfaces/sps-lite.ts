@@ -1,6 +1,6 @@
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
-export interface ISpsLiteBackendApiNavbar {
+export interface IBackendApiEntity {
   id: number;
   locale: string;
   title: string;

@@ -1,7 +1,7 @@
-import { ISpsLiteBackendApiNavbar } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/navbar-block/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiNavbar = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Public Page Navbar",
   uid: "public-page-navbar",

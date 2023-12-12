@@ -1,19 +1,12 @@
-import { FC } from "react";
 import Boxed from "./Boxed";
-import { ISpsLiteBackendApiFooter } from "~redux/services/backend/api/footer/interfaces/sps-lite";
-
-export interface ISpsLiteFooter extends ISpsLiteBackendApiFooter {
-  showSkeletons?: boolean;
-}
+import { IFooter } from "..";
 
 export const variants = {
   boxed: Boxed,
 };
 
-export default function Footers(props: ISpsLiteFooter) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteFooter>;
+export default function Footers(props: IFooter) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

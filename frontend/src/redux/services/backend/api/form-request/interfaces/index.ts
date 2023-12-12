@@ -1,4 +1,3 @@
-import { IYourProjectBackendApiFormRequest } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiFormRequest
-  extends IYourProjectBackendApiFormRequest {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

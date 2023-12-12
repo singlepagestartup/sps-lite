@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiLocale } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiLocale extends IYourProjectBackendApiLocale {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

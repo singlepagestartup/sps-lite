@@ -1,9 +1,9 @@
 import { Popover, Transition } from "@headlessui/react";
-import { ISpsLiteFlyout } from ".";
 import PageBlocks from "~components/page-blocks";
 import { Fragment } from "react";
+import { IFlyout } from "..";
 
-export default function Simple(props: ISpsLiteFlyout) {
+export default function Simple(props: IFlyout) {
   return (
     <Transition
       as={Fragment}

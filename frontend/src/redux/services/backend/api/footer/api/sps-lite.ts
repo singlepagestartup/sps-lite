@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFindOne } from "~redux/strapi-rtk";
 import { populate } from "../populate";
-import { IBackendApiFooter } from "../interfaces";
+import { IBackendApiEntity } from "../interfaces";
 
 const model = "footers";
 const rtkType = "Footer";
@@ -12,7 +12,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getFooterById: strapiFindOne<IBackendApiFooter>({
+    getFooterById: strapiFindOne<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,

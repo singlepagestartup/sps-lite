@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiSlideOver } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiSlideOver
-  extends ISpsLiteBackendApiSlideOver {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

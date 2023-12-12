@@ -1,7 +1,7 @@
-import { ISpsLiteTopbar } from ".";
 import PageBlocks from "~components/page-blocks";
+import { ITopbar } from "..";
 
-export default function Boxed(props: ISpsLiteTopbar) {
+export default function Boxed(props: ITopbar) {
   return (
     <div ref={props.topbarRef} className={props.className || ""}>
       <div className="bg-white w-screen fixed z-40">

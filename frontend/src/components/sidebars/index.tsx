@@ -1,18 +1,22 @@
 "use client";
 
-import { FC } from "react";
-import { ISpsLiteSidebar, variants as spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
 import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
+import { IBackendApiEntity as IBackendApiSidebar } from "~redux/services/backend/api/sidebar/interfaces";
+
+export interface ISidebar extends IBackendApiSidebar {
+  showSkeletons?: boolean;
+}
 
 const variants = {
   ...spsLiteVariants,
 };
 
-export default function Sidebars<T extends ISpsLiteSidebar>(props: any) {
+export default function Sidebars(props: ISidebar) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     sidebarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp || isError) {
     return <></>;

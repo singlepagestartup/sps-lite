@@ -1,3 +1,3 @@
-import { ISpsLiteBackendApiForm } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiForm extends ISpsLiteBackendApiForm {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

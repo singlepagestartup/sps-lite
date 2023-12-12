@@ -1,20 +1,12 @@
-import { ISpsLiteBackendApiTopbar } from "~redux/services/backend/api/topbar/interfaces/sps-lite";
 import Boxed from "./Boxed";
-import { FC } from "react";
-
-export interface ISpsLiteTopbar extends ISpsLiteBackendApiTopbar {
-  showSkeletons?: boolean;
-  topbarRef?: any;
-}
+import { ITopbar } from "..";
 
 export const variants = {
   boxed: Boxed,
 };
 
-export default function PublicPageTopbars(props: ISpsLiteTopbar) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteTopbar>;
+export default function PublicPageTopbars(props: ITopbar) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

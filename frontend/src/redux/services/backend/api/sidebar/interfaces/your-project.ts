@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiSidebar } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiSidebar
-  extends ISpsLiteBackendApiSidebar {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

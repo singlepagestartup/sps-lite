@@ -1,6 +1,6 @@
-import { ISpsLiteBackendApiTopbar } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendApiTopbar = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Public Page Topbar",
   uid: "public-page-topbar",

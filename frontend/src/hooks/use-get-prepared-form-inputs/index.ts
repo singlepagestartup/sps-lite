@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
-import { IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { IBackendApiEntity as IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
 
 export default function useGetPreparedFormInputs(props: IBackendApiForm) {
   const searchParams = useSearchParams();

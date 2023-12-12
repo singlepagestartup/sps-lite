@@ -1,9 +1,9 @@
-import { ISpsLiteBackendApiTier } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as currency } from "~redux/services/backend/api/currency/mock/sps-lite";
 import { entity as feature } from "~redux/services/backend/components/elements/feature/mock/sps-lite";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiTier = {
+export const entity: IBackendApiEntity = {
   id: 1,
   title: "Lite",
   description: "If you're just starting out",

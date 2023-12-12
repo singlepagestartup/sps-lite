@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "~redux/services/backend/api/review/api";
 import Cards, { ICardProps } from "~components/cards";
 import getFileUrl from "~utils/api/get-file-url";
-import { ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiReview } from "~redux/services/backend/api/review/interfaces/sps-lite";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {

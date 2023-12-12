@@ -1,7 +1,7 @@
-import { ISpsLiteFooter } from ".";
 import PageBlocks from "~components/page-blocks";
+import { IFooter } from "..";
 
-export default function Boxed(props: ISpsLiteFooter) {
+export default function Boxed(props: IFooter) {
   return (
     <footer
       data-collection-type="footer"

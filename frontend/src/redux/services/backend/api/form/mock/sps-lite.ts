@@ -1,6 +1,6 @@
-import { ISpsLiteBackendApiForm } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 
-export const entity: ISpsLiteBackendApiForm = {
+export const entity: IBackendApiEntity = {
   id: 1,
   className: null,
   additionalAttributes: null,

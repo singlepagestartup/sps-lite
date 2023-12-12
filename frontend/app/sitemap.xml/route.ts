@@ -1,4 +1,4 @@
-import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
+import { IBackendApiEntity as IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 

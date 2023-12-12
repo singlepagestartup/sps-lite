@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
-import { ISpsLiteBackendApiReview } from "../interfaces/sps-lite";
+import { IBackendApiEntity } from "../interfaces/sps-lite";
 import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
 
-export const entity: ISpsLiteBackendApiReview = {
+export const entity: IBackendApiEntity = {
   id: 5,
   name: faker.person.fullName(),
   title: faker.lorem.sentence(),

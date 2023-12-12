@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
+import { IBackendApiEntity as IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
 import { getFiltersFromPageUrl, getTargetPage } from "~utils/api";
 const R = require("ramda");
 

@@ -1,6 +1,6 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "../../../extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendApiReview {
+export interface IBackendApiEntity {
   id: number;
   name: string | null;
   title: string | null;

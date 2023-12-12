@@ -1,19 +1,12 @@
-import { ISpsLiteBackendApiLoader } from "~redux/services/backend/api/loader/interfaces/sps-lite";
 import Simple from "./Simple";
-import { FC, ReactNode } from "react";
-
-export interface ISpsLiteLoaderBlock extends ISpsLiteBackendApiLoader {
-  children: ReactNode;
-}
+import { ILoader } from "..";
 
 export const variants = {
   simple: Simple,
 };
 
-export default function Loaders(props: ISpsLiteLoaderBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ISpsLiteLoaderBlock>;
+export default function Loaders(props: ILoader) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

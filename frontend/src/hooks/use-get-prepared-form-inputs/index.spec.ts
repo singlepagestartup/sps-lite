@@ -2,8 +2,8 @@ import { renderHook } from "@testing-library/react";
 import useGetPreparedFormInputs from ".";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import { IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
-import { ISpsLiteBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces/sps-lite";
+import { IBackendApiEntity as IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { IBackendComponentElement as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
 
 jest.mock("next/navigation", () => {
   return {
@@ -28,7 +28,7 @@ describe("useGetPreparedFormInputs", () => {
   };
 
   it("shoul return prepared inputs array with text input field", async () => {
-    const textInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const textInput: Omit<IBackendComponentInput, "__component"> = {
       id: 14,
       placeholder: "Type your name",
       variant: "text",
@@ -66,7 +66,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with listbox input field", async () => {
-    const listboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const listboxInput: Omit<IBackendComponentInput, "__component"> = {
       id: 21,
       placeholder: "Choose target tier",
       variant: "listbox",
@@ -123,7 +123,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with multiple listbox input field", async () => {
-    const listboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const listboxInput: Omit<IBackendComponentInput, "__component"> = {
       id: 21,
       placeholder: "Choose target tier",
       variant: "listbox",
@@ -180,7 +180,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with date input field", async () => {
-    const dateInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const dateInput: Omit<IBackendComponentInput, "__component"> = {
       id: 19,
       placeholder: "Select release date",
       variant: "date",
@@ -218,7 +218,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with date input field", async () => {
-    const dateInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const dateInput: Omit<IBackendComponentInput, "__component"> = {
       id: 19,
       placeholder: "Select release date",
       variant: "date",
@@ -256,7 +256,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with file input field", async () => {
-    const fileInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const fileInput: Omit<IBackendComponentInput, "__component"> = {
       id: 18,
       placeholder: "Upload design file",
       variant: "file",
@@ -294,7 +294,7 @@ describe("useGetPreparedFormInputs", () => {
   });
 
   it("shoul return prepared inputs array with checkbox input field", async () => {
-    const checkboxInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const checkboxInput: Omit<IBackendComponentInput, "__component"> = {
       id: 20,
       placeholder: null,
       variant: "switch",
@@ -349,7 +349,7 @@ describe("useGetPreparedFormInputs", () => {
         } as any),
     );
 
-    const textInput: Omit<ISpsLiteBackendComponentInput, "__component"> = {
+    const textInput: Omit<IBackendComponentInput, "__component"> = {
       id: 14,
       placeholder: "Type your name",
       variant: "text",

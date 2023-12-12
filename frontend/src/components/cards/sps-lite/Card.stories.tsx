@@ -10,7 +10,7 @@ import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "~utils/envs";
-import { IBackendApiReview } from "~redux/services/backend/api/review/interfaces";
+import { IBackendApiEntity as IBackendApiReview } from "~redux/services/backend/api/review/interfaces";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 

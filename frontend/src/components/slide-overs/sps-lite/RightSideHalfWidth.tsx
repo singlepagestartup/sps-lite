@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import PageBlocks from "~components/page-blocks";
-import { ISpsLiteSlideOver } from ".";
 import { usePathname, useRouter } from "next/navigation";
+import { ISlideOver } from "..";
 
-export default function RightSideHalfWidth(props: ISpsLiteSlideOver) {
+export default function RightSideHalfWidth(props: ISlideOver) {
   const router = useRouter();
   const pathname = usePathname();
 

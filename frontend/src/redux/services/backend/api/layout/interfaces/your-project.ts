@@ -1,4 +1,3 @@
-import { ISpsLiteBackendApiLayout } from "./sps-lite";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
 
-export interface IYourProjectBackendApiLayout
-  extends ISpsLiteBackendApiLayout {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}

@@ -1,15 +1,16 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Layouts, { ISpsLiteLayout } from ".";
+import Layouts from ".";
 import store from "~redux/index";
 import { Provider } from "react-redux";
 import { entity as layout } from "~redux/services/backend/api/layout/mock/sps-lite";
+import { ILayout } from "..";
 
 const meta = { component: Layouts } satisfies Meta<typeof Layouts>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function LayoutComponent(args: ISpsLiteLayout) {
+function LayoutComponent(args: ILayout) {
   return (
     <div className="relative w-full min-h-screen">
       <Provider store={store}>

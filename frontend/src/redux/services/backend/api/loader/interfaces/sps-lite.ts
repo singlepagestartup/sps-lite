@@ -1,6 +1,6 @@
 import { ISpsLiteBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces/sps-lite";
 
-export interface ISpsLiteBackendApiLoader {
+export interface IBackendApiEntity {
   id: number;
   locale: string;
   createdAt: string;

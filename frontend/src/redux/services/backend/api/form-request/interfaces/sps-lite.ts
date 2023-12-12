@@ -1,4 +1,4 @@
-export interface ISpsLiteBackendApiFormRequest {
+export interface IBackendApiEntity {
   id: number;
   createdAt: string;
 }

@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFind } from "~redux/strapi-rtk";
 import { populate } from "../populate";
-import { IBackendApiModal } from "../interfaces";
+import { IBackendApiEntity } from "../interfaces";
 
 const model = "modals";
 const rtkType = "Modal";
@@ -12,7 +12,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IBackendApiModal>({
+    get: strapiFind<IBackendApiEntity>({
       serviceApi: this,
       build,
       populate,

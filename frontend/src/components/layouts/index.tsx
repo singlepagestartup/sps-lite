@@ -1,9 +1,16 @@
 "use client";
 
-import { FC, ReactNode, useEffect } from "react";
-import { ISpsLiteLayout, variants as spsLiteVariants } from "./sps-lite";
+import { ReactNode, useEffect } from "react";
+import { variants as spsLiteVariants } from "./sps-lite";
 import { api as layoutApi } from "~redux/services/backend/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
+import { IBackendApiEntity as IBackendApiLayout } from "~redux/services/backend/api/layout/interfaces";
+import { IBackendApiEntity as IBackendApiLoader } from "~redux/services/backend/api/loader/interfaces";
+
+export interface ILayout extends IBackendApiLayout {
+  children: ReactNode;
+  loader?: IBackendApiLoader | null;
+}
 
 const variants = {
   ...spsLiteVariants,
@@ -33,7 +40,7 @@ export default function Layouts({ children }: { children?: ReactNode }) {
   }, [error]);
 
   const Comp = layout
-    ? (variants[layout.variant as keyof typeof variants] as FC<ISpsLiteLayout>)
+    ? variants[layout.variant as keyof typeof variants]
     : undefined;
 
   if (!Comp || !layout) {

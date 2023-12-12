@@ -1,10 +1,10 @@
-import { ISpsLiteBackendApiFooter } from "../../footer/interfaces/sps-lite";
-import { ISpsLiteBackendApiNavbar } from "../../navbar/interfaces/sps-lite";
-import { ISpsLiteBackendApiPage } from "../../page/interfaces/sps-lite";
-import { ISpsLiteBackendApiSidebar } from "../../sidebar/interfaces/sps-lite";
-import { ISpsLiteBackendApiTopbar } from "../../topbar/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiFooter } from "../../footer/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiNavbar } from "../../navbar/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiPage } from "../../page/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiSidebar } from "../../sidebar/interfaces/sps-lite";
+import { IBackendApiEntity as ISpsLiteBackendApiTopbar } from "../../topbar/interfaces/sps-lite";
 
-export interface ISpsLiteBackendApiLayout {
+export interface IBackendApiEntity {
   id: number;
   locale: string;
   title: string;

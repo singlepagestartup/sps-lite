@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
-import Forms, { ISpsLiteFormBlock } from ".";
+import Forms from ".";
 import { entity as form } from "~redux/services/backend/api/form/mock/sps-lite";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
+import { IForm } from "..";
 
 const meta = { component: Forms } satisfies Meta<typeof Forms>;
 export default meta;
@@ -18,7 +19,7 @@ export const SimpleCentered: Story = {
   args: form,
 };
 
-function FormComponent(args: ISpsLiteFormBlock) {
+function FormComponent(args: IForm) {
   useEffect(() => {
     http.post(`${BACKEND_URL}/api/form-requests`, ({ request }) => {
       return HttpResponse.json({});

@@ -1,3 +1,3 @@
-import { IYourProjectBackendApiMetatag } from "./your-project";
+import { IBackendApiEntity as IParentBackendApiEntity } from "./your-project";
 
-export interface IBackendApiMetatag extends IYourProjectBackendApiMetatag {}
+export interface IBackendApiEntity extends IParentBackendApiEntity {}
