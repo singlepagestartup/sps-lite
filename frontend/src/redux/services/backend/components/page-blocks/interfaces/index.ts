@@ -1,4 +1,4 @@
-import { IYourProjectBackendComponentPageBlock } from "./your-project";
+import { IYourProjectBackendComponentPageBlock } from "./startup";
 
 export interface IBackendComponentPageBlock
   extends IYourProjectBackendComponentPageBlock {}

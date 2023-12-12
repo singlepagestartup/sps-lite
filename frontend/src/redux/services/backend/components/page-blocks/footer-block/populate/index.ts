@@ -1,3 +1,3 @@
-import { populate as parentPopulate } from "./your-project";
+import { populate as parentPopulate } from "./startup";
 
 export const populate = parentPopulate;
