@@ -1,5 +1,5 @@
-import { IBackendComponentElement as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
-import { IBackendComponentElement as IBackendComponentLogotype } from "../../../elements/logotype/interfaces";
+import { IComponent as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
+import { IComponent as IBackendComponentLogotype } from "../../../elements/logotype/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;

@@ -1,4 +1,3 @@
-import { IBackendComponentElement as IParentBackendComponentElement } from "./sps-lite";
+import { IComponent as IParentComponent } from "./sps-lite";
 
-export interface IBackendComponentElement
-  extends IParentBackendComponentElement {}
+export interface IComponent extends IParentComponent {}

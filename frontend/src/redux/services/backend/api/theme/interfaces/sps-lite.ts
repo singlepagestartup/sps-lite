@@ -1,4 +1,4 @@
-import { IBackendComponentElement as IBackendComponentFont } from "~redux/services/backend/components/elements/font/interfaces";
+import { IComponent as IBackendComponentFont } from "~redux/services/backend/components/elements/font/interfaces";
 
 export interface IEntity {
   id: number;

@@ -3,7 +3,7 @@ import useGetPreparedFormInputs from ".";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
 import { IEntity as IBackendForm } from "~redux/services/backend/api/form/interfaces";
-import { IBackendComponentElement as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
+import { IComponent as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
 
 jest.mock("next/navigation", () => {
   return {

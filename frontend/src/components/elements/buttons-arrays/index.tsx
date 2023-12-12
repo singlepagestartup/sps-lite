@@ -1,17 +1,17 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
-import { IBackendComponentElement } from "~redux/services/backend/components/elements/buttons-array/interfaces";
+import { IComponent as IBackendComponent } from "~redux/services/backend/components/elements/buttons-array/interfaces";
 
 export interface IElement
   extends Omit<
-    IBackendComponentElement,
+    IBackendComponent,
     "id" | "description" | "className" | "__component"
   > {
   description?: string | null;
   className?: string | null;
   onClick?: any;
-  __component?: IBackendComponentElement["__component"];
+  __component?: IBackendComponent["__component"];
 }
 
 const variants = { ...spsLiteVariants };

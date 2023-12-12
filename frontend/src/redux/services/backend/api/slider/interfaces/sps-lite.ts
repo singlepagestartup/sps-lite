@@ -1,4 +1,4 @@
-import { IBackendComponentElement as IBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces";
+import { IComponent as IBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
 export interface IEntity {
   id: number;

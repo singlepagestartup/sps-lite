@@ -1,4 +1,3 @@
-import { IBackendComponentElement as IParentBackendComponentElement } from "./your-project";
+import { IComponent as IParentComponent } from "./your-project";
 
-export interface IBackendComponentElement
-  extends IParentBackendComponentElement {}
+export interface IComponent extends IParentComponent {}

@@ -1,4 +1,4 @@
-export interface IBackendComponentElement {
+export interface IComponent {
   id: number;
   __component: "elements.faq";
   title: string | null;

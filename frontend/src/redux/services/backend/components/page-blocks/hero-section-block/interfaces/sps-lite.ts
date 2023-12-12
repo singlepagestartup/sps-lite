@@ -1,5 +1,5 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { IBackendComponentElement as IBackendComponentButton } from "../../../elements/button/interfaces";
+import { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;

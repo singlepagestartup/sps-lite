@@ -1,4 +1,4 @@
-import { IBackendComponentElement as IBackendComponentFaq } from "../../../elements/faq/interfaces";
+import { IComponent as IBackendComponentFaq } from "../../../elements/faq/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;

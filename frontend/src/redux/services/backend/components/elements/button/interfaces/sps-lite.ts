@@ -1,7 +1,7 @@
 import { IEntity as IBackendFlyout } from "~redux/services/backend/api/flyout/interfaces";
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
-export interface IBackendComponentElement {
+export interface IComponent {
   id: number;
   __component?: "elements.button";
   variant: "text" | "primary" | "secondary";

@@ -1,11 +1,11 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
-import { IBackendComponentElement } from "~redux/services/backend/components/elements/button/interfaces";
+import { IComponent as IBackendComponent } from "~redux/services/backend/components/elements/button/interfaces";
 
 export interface IElement
   extends Omit<
-    IBackendComponentElement,
+    IBackendComponent,
     | "id"
     | "url"
     | "description"
@@ -19,8 +19,8 @@ export interface IElement
   className?: string | null;
   additionalAttributes?: any | null;
   onClick?: any;
-  __component?: IBackendComponentElement["__component"];
-  flyout?: IBackendComponentElement["flyout"];
+  __component?: IBackendComponent["__component"];
+  flyout?: IBackendComponent["flyout"];
   children?: any;
 }
 

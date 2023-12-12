@@ -1,7 +1,7 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { IBackendComponentElement as IBackendComponentInputOption } from "../../input-option/interfaces";
+import { IComponent as IBackendComponentInputOption } from "../../input-option/interfaces";
 
-export interface IBackendComponentElement {
+export interface IComponent {
   id: number;
   __component: "elements.input";
   variant:

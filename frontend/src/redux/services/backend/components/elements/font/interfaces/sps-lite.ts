@@ -1,6 +1,6 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
-export interface IBackendComponentElement {
+export interface IComponent {
   id: number;
   __component: "elements.font";
   media?: IBackendExtensionUploadApiFile;

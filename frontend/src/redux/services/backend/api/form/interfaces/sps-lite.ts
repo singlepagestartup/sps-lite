@@ -1,5 +1,5 @@
-import { IBackendComponentElement as IBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces";
-import { IBackendComponentElement as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
+import { IComponent as IBackendComponentButton } from "~redux/services/backend/components/elements/button/interfaces";
+import { IComponent as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
 
 export interface IEntity {
   id: number;
