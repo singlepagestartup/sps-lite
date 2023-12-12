@@ -13,7 +13,7 @@ jest.mock("next/navigation", () => {
 });
 
 describe("useGetPreparedFormInputs", () => {
-  const scopedForm: IBackendApiForm = {
+  const scopedForm: IBackendForm = {
     id: 1,
     className: null,
     additionalAttributes: null,
@@ -47,7 +47,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [textInput],
     };
@@ -100,7 +100,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [listboxInput],
     };
@@ -157,7 +157,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [listboxInput],
     };
@@ -199,7 +199,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [dateInput],
     };
@@ -237,7 +237,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [dateInput],
     };
@@ -275,7 +275,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [fileInput],
     };
@@ -313,7 +313,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [checkboxInput],
     };
@@ -368,7 +368,7 @@ describe("useGetPreparedFormInputs", () => {
       additionalMedia: null,
       extraMedia: null,
     };
-    const form: IBackendApiForm = {
+    const form: IBackendForm = {
       ...scopedForm,
       inputs: [textInput],
     };
