@@ -1,9 +1,8 @@
+import { IPage } from "..";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/cta-section-block/interfaces";
 
-export interface IPageBlock extends IBackendComponentPageBlock {
-  showSkeletons?: boolean;
-}
+export interface IPageBlock extends IBackendComponentPageBlock, IPage {}
 
 const variants = {
   ...spsLiteVariants,

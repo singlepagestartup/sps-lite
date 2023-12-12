@@ -1,10 +1,9 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as spsVariants } from "./sps";
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces";
+import { IPage } from "..";
 
-export interface IPageBlock extends IBackendComponentPageBlock {
-  showSkeletons?: boolean;
-}
+export interface IPageBlock extends IBackendComponentPageBlock, IPage {}
 
 const variants = {
   ...spsLiteVariants,
