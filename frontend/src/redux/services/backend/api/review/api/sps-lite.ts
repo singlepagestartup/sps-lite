@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { BACKEND_URL } from "~utils/envs";
 import { strapiFetchBaseQueryBuilder, strapiFind } from "~redux/strapi-rtk";
 import { populate } from "../populate";
-import { IBackendApiEntity } from "../interfaces";
+import { IEntity } from "../interfaces";
 
 const model = "reviews";
 const rtkType = "Review";
@@ -12,7 +12,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IBackendApiEntity>({
+    get: strapiFind<IEntity>({
       serviceApi: this,
       build,
       populate,

@@ -1,3 +1,3 @@
-import { IBackendApiEntity as IParentBackendApiEntity } from "./sps-lite";
+import { IEntity as IParentEntity } from "./sps-lite";
 
-export interface IBackendApiEntity extends IParentBackendApiEntity {}
+export interface IEntity extends IParentEntity {}

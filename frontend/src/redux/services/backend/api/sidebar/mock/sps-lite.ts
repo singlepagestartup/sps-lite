@@ -1,6 +1,6 @@
-import { IBackendApiEntity } from "../interfaces/sps-lite";
+import { IEntity } from "../interfaces/sps-lite";
 
-export const entity: IBackendApiEntity = {
+export const entity: IEntity = {
   id: 1,
   title: "Ads sidebar",
   locale: "en",

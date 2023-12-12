@@ -4,12 +4,12 @@ import { ReactNode, useEffect } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { api as layoutApi } from "~redux/services/backend/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
-import { IBackendApiEntity as IBackendApiLayout } from "~redux/services/backend/api/layout/interfaces";
-import { IBackendApiEntity as IBackendApiLoader } from "~redux/services/backend/api/loader/interfaces";
+import { IEntity as IBackendLayout } from "~redux/services/backend/api/layout/interfaces";
+import { IEntity as IBackendLoader } from "~redux/services/backend/api/loader/interfaces";
 
-export interface ILayout extends IBackendApiLayout {
+export interface ILayout extends IBackendLayout {
   children: ReactNode;
-  loader?: IBackendApiLoader | null;
+  loader?: IBackendLoader | null;
 }
 
 const variants = {

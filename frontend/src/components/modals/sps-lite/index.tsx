@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import Simple from "./Simple";
-import { IBackendApiEntity as ISpsLiteBackendApiModal } from "~redux/services/backend/api/modal/interfaces/sps-lite";
+import { IEntity as ISpsLiteBackendApiModal } from "~redux/services/backend/api/modal/interfaces/sps-lite";
 
 export interface ISpsLiteModal extends Omit<ISpsLiteBackendApiModal, "id"> {
   isOpenModal: boolean;

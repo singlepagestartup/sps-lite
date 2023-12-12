@@ -1,19 +1,19 @@
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
-import { IBackendApiEntity as IBackendApiLayout } from "../../layout/interfaces";
-import { IBackendApiEntity as IBackendApiLocale } from "../../locale/interfaces";
-import { IBackendApiEntity as IBackendApiMetatag } from "../../metatag/interfaces";
+import { IEntity as IBackendLayout } from "../../layout/interfaces";
+import { IEntity as IBackendLocale } from "../../locale/interfaces";
+import { IEntity as IBackendMetatag } from "../../metatag/interfaces";
 
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   title: string | null;
   url: string;
   locale: string;
   pageBlocks?: IBackendComponentPageBlock[] | null;
-  localizations?: IBackendApiLocale[] | null;
-  layout?: IBackendApiLayout | null;
+  localizations?: IBackendLocale[] | null;
+  layout?: IBackendLayout | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  metatag?: IBackendApiMetatag | null;
+  metatag?: IBackendMetatag | null;
   urls?: { url: string; locale: string }[] | null;
 }

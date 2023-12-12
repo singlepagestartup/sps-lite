@@ -2,9 +2,9 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
-import { IBackendApiEntity as IBackendApiSidebar } from "~redux/services/backend/api/sidebar/interfaces";
+import { IEntity as IBackendSidebar } from "~redux/services/backend/api/sidebar/interfaces";
 
-export interface ISidebar extends IBackendApiSidebar {
+export interface ISidebar extends IBackendSidebar {
   showSkeletons?: boolean;
 }
 

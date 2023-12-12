@@ -10,7 +10,7 @@ import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "~utils/envs";
-import { IBackendApiEntity as IBackendApiReview } from "~redux/services/backend/api/review/interfaces";
+import { IEntity as IBackendReview } from "~redux/services/backend/api/review/interfaces";
 
 const meta = { component: Cards } satisfies Meta<typeof Cards>;
 
@@ -50,7 +50,7 @@ export const Simple: Story = {
 };
 
 function SimpleWithAvatarCard(props: ICardProps) {
-  const { item }: { item: IBackendApiReview } = props;
+  const { item }: { item: IBackendReview } = props;
 
   useEffect(() => {
     axios({

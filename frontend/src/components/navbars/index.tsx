@@ -2,11 +2,11 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { api as navbarApi } from "~redux/services/backend/api/navbar/api";
-import { IBackendApiEntity as IBackendApiNavbar } from "~redux/services/backend/api/navbar/interfaces";
-import { IBackendApiEntity as IBackendApiTopbar } from "~redux/services/backend/api/topbar/interfaces";
+import { IEntity as IBackendNavbar } from "~redux/services/backend/api/navbar/interfaces";
+import { IEntity as IBackendTopbar } from "~redux/services/backend/api/topbar/interfaces";
 
-export interface INavbar extends IBackendApiNavbar {
-  topbar?: IBackendApiTopbar | null;
+export interface INavbar extends IBackendNavbar {
+  topbar?: IBackendTopbar | null;
   showSkeletons?: boolean;
   topbarRef: any;
 }

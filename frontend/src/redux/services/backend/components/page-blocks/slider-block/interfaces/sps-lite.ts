@@ -1,4 +1,4 @@
-import { IBackendApiEntity as IBackendApiSlider } from "~redux/services/backend/api/slider/interfaces";
+import { IEntity as IBackendSlider } from "~redux/services/backend/api/slider/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -9,5 +9,5 @@ export interface IBackendComponentPageBlock {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  slider?: IBackendApiSlider | null;
+  slider?: IBackendSlider | null;
 }

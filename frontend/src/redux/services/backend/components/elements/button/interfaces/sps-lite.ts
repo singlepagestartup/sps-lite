@@ -1,4 +1,4 @@
-import { IBackendApiEntity as IBackendApiFlyout } from "~redux/services/backend/api/flyout/interfaces";
+import { IEntity as IBackendFlyout } from "~redux/services/backend/api/flyout/interfaces";
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IBackendComponentElement {
@@ -12,5 +12,5 @@ export interface IBackendComponentElement {
   additionalMedia?: IBackendExtensionUploadApiFile[] | null;
   className: string | null;
   additionalAttributes: any | null;
-  flyout: IBackendApiFlyout | null;
+  flyout: IBackendFlyout | null;
 }

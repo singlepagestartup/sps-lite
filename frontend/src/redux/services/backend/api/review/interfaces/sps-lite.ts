@@ -1,6 +1,6 @@
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "../../../extensions/upload/api/file/interfaces";
 
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   name: string | null;
   title: string | null;

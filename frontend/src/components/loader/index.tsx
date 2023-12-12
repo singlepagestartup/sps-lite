@@ -1,9 +1,9 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
-import { IBackendApiEntity as IBackendApiLoader } from "~redux/services/backend/api/loader/interfaces";
+import { IEntity as IBackendLoader } from "~redux/services/backend/api/loader/interfaces";
 
-export interface ILoader extends IBackendApiLoader {
+export interface ILoader extends IBackendLoader {
   children?: any;
 }
 

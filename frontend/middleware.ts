@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { IBackendApiEntity as IBackendApiLocale } from "~redux/services/backend/api/locale/interfaces";
+import { IEntity as IBackendLocale } from "~redux/services/backend/api/locale/interfaces";
 import { BACKEND_URL } from "~utils/envs";
 
 export async function middleware(request: any) {
@@ -9,7 +9,7 @@ export async function middleware(request: any) {
 
   try {
     const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
-    const backendLocales: IBackendApiLocale[] = await req.json();
+    const backendLocales: IBackendLocale[] = await req.json();
 
     const pathnameIsMissingLocale = backendLocales.every(
       (locale) =>

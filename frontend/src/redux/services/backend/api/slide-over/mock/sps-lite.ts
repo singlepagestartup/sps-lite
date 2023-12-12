@@ -1,7 +1,7 @@
-import { IBackendApiEntity } from "../interfaces/sps-lite";
+import { IEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
 
-export const entity: IBackendApiEntity = {
+export const entity: IEntity = {
   id: 1,
   title: "Hello world",
   locale: "en",

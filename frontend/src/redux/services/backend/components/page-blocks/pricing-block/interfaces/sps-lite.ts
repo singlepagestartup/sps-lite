@@ -1,4 +1,4 @@
-import { IBackendApiEntity as IBackendApiTier } from "~redux/services/backend/api/tier/interfaces";
+import { IEntity as IBackendTier } from "~redux/services/backend/api/tier/interfaces";
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IBackendComponentPageBlock {
@@ -11,6 +11,6 @@ export interface IBackendComponentPageBlock {
   description: string | null;
   media?: IBackendExtensionUploadApiFile[] | null;
   additionalMedia?: IBackendExtensionUploadApiFile[] | null;
-  tiers?: IBackendApiTier[] | null;
+  tiers?: IBackendTier[] | null;
   className: string | null;
 }

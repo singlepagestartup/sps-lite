@@ -1,9 +1,9 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
-import { IBackendApiEntity as IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { IEntity as IBackendForm } from "~redux/services/backend/api/form/interfaces";
 
-export interface IForm extends IBackendApiForm {
+export interface IForm extends IBackendForm {
   showSkeletons?: boolean;
   successCallback?: any;
 }

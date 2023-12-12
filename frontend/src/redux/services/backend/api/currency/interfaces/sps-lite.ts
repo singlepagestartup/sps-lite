@@ -1,6 +1,6 @@
-import { IBackendApiEntity as IBackendApiTier } from "~redux/services/backend/api/tier/interfaces";
+import { IEntity as IBackendTier } from "~redux/services/backend/api/tier/interfaces";
 
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   title: string | null;
   unicode: string | null;
@@ -8,5 +8,5 @@ export interface IBackendApiEntity {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  tiers?: IBackendApiTier;
+  tiers?: IBackendTier;
 }

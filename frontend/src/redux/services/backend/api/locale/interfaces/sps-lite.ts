@@ -1,4 +1,4 @@
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   name: string;
   code: string;

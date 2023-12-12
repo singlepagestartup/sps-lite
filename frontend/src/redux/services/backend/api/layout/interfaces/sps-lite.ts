@@ -1,10 +1,10 @@
-import { IBackendApiEntity as IBackendApiFooter } from "../../footer/interfaces";
-import { IBackendApiEntity as IBackendApiNavbar } from "../../navbar/interfaces";
-import { IBackendApiEntity as IBackendApiPage } from "../../page/interfaces";
-import { IBackendApiEntity as IBackendApiSidebar } from "../../sidebar/interfaces";
-import { IBackendApiEntity as IBackendApiTopbar } from "../../topbar/interfaces";
+import { IEntity as IBackendFooter } from "../../footer/interfaces";
+import { IEntity as IBackendNavbar } from "../../navbar/interfaces";
+import { IEntity as IBackendPage } from "../../page/interfaces";
+import { IEntity as IBackendSidebar } from "../../sidebar/interfaces";
+import { IEntity as IBackendTopbar } from "../../topbar/interfaces";
 
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   locale: string;
   title: string;
@@ -14,9 +14,9 @@ export interface IBackendApiEntity {
   updatedAt: string;
   publishedAt: string;
   variant: "wide" | "boxed";
-  topbar?: IBackendApiTopbar | null;
-  navbar?: IBackendApiNavbar | null;
-  sidebar?: IBackendApiSidebar | null;
-  footer?: IBackendApiFooter | null;
-  pages?: IBackendApiPage[] | null;
+  topbar?: IBackendTopbar | null;
+  navbar?: IBackendNavbar | null;
+  sidebar?: IBackendSidebar | null;
+  footer?: IBackendFooter | null;
+  pages?: IBackendPage[] | null;
 }

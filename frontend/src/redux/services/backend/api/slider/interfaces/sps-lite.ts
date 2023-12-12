@@ -1,6 +1,6 @@
 import { IBackendComponentElement as IBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
-export interface IBackendApiEntity {
+export interface IEntity {
   id: number;
   slides: IBackendComponentSlide[];
   className: string | null;

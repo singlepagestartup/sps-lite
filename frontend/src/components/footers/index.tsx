@@ -2,9 +2,9 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { api as footerApi } from "~redux/services/backend/api/footer/api";
-import { IBackendApiEntity as IBackendApiFooter } from "~redux/services/backend/api/footer/interfaces";
+import { IEntity as IBackendFooter } from "~redux/services/backend/api/footer/interfaces";
 
-export interface IFooter extends IBackendApiFooter {
+export interface IFooter extends IBackendFooter {
   showSkeletons?: boolean;
 }
 

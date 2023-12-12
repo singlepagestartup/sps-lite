@@ -4,7 +4,7 @@ import { strapiFetchBaseQueryBuilder, strapiFind } from "~redux/strapi-rtk";
 import { populate } from "../populate";
 
 import { transformResponseItem } from "~utils/api/transform-response-item";
-import { IBackendApiEntity } from "../interfaces";
+import { IEntity } from "../interfaces";
 
 const model = "layouts";
 const rtkType = "Layout";
@@ -14,7 +14,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IBackendApiEntity>({
+    get: strapiFind<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -22,7 +22,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getByPageUrl: build.query<IBackendApiEntity, any>({
+    getByPageUrl: build.query<IEntity, any>({
       query: (params: any = {}) => {
         const {
           url,

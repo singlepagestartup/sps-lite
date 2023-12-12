@@ -1,4 +1,4 @@
-import { IBackendApiEntity as IBackendApiForm } from "~redux/services/backend/api/form/interfaces";
+import { IEntity as IBackendForm } from "~redux/services/backend/api/form/interfaces";
 import { IBackendExtensionUploadApiEntity as IBackendExtensionUploadApiFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { IBackendComponentElement as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
 
@@ -13,6 +13,6 @@ export interface IBackendComponentPageBlock {
   anchor: string | null;
   media?: IBackendExtensionUploadApiFile | null;
   additionalMedia?: IBackendExtensionUploadApiFile[] | null;
-  form?: IBackendApiForm | null;
+  form?: IBackendForm | null;
   buttonsArrays?: IBackendComponentButtonsArray[] | null;
 }

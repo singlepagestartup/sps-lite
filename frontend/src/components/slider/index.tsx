@@ -3,7 +3,7 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import parseMimeType from "~utils/formatters/parse-mime-type";
-import { IBackendApiEntity as ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
+import { IEntity as ISpsLiteBackendApiSlider } from "~redux/services/backend/api/slider/interfaces/sps-lite";
 import { IBackendComponentElement as ISpsLiteBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces/sps-lite";
 
 const variants = {

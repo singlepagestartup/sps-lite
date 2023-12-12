@@ -1,4 +1,4 @@
-import { IBackendApiEntity as IBackendApiReview } from "~redux/services/backend/api/review/interfaces";
+import { IEntity as IBackendReview } from "~redux/services/backend/api/review/interfaces";
 
 export interface IBackendComponentPageBlock {
   id: number;
@@ -8,7 +8,7 @@ export interface IBackendComponentPageBlock {
   subtitle: string | null;
   description: string | null;
   className: string | null;
-  reviews?: IBackendApiReview[] | null;
+  reviews?: IBackendReview[] | null;
   showAll: boolean | null;
   anchor: string | null;
 }

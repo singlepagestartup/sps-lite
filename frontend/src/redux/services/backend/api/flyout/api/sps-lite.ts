@@ -10,7 +10,7 @@ import {
 } from "~redux/strapi-rtk";
 
 import { populate } from "../populate";
-import { IBackendApiEntity } from "../interfaces";
+import { IEntity } from "../interfaces";
 
 const model = "flyouts";
 const rtkType = "Flyout";
@@ -20,7 +20,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getFlyouts: strapiFind<IBackendApiEntity>({
+    getFlyouts: strapiFind<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -28,7 +28,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getFlyoutById: strapiFindOne<IBackendApiEntity>({
+    getFlyoutById: strapiFindOne<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -36,7 +36,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    createFlyout: strapiCreate<IBackendApiEntity>({
+    createFlyout: strapiCreate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -44,7 +44,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    updateFlyout: strapiUpdate<IBackendApiEntity>({
+    updateFlyout: strapiUpdate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -52,7 +52,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    deleteFlyout: strapiDelete<IBackendApiEntity>({
+    deleteFlyout: strapiDelete<IEntity>({
       serviceApi: this,
       build,
       populate,

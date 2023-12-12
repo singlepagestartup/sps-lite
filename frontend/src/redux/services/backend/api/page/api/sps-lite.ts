@@ -11,7 +11,7 @@ import {
 
 import { populate } from "../populate";
 import { transformResponseItem } from "~utils/api/transform-response-item";
-import { IBackendApiEntity } from "../interfaces";
+import { IEntity } from "../interfaces";
 
 const model = "pages";
 const rtkType = "Page";
@@ -21,7 +21,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IBackendApiEntity>({
+    get: strapiFind<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -29,7 +29,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getById: strapiFindOne<IBackendApiEntity>({
+    getById: strapiFindOne<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -37,7 +37,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getByUrl: build.query<IBackendApiEntity, any>({
+    getByUrl: build.query<IEntity, any>({
       query: (params: any = {}) => {
         const { populate, locale, filters, pagination, url } = params;
 
@@ -67,7 +67,7 @@ export const api = createApi({
       },
     }),
 
-    createPage: strapiCreate<IBackendApiEntity>({
+    createPage: strapiCreate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -75,7 +75,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    updatePage: strapiUpdate<IBackendApiEntity>({
+    updatePage: strapiUpdate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -83,7 +83,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    deletePage: strapiDelete<IBackendApiEntity>({
+    deletePage: strapiDelete<IEntity>({
       serviceApi: this,
       build,
       populate,
