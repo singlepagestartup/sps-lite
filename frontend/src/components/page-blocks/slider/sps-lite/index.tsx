@@ -1,11 +1,11 @@
 import Simple from "./Simple";
-import { ISlider } from "../";
+import { IPageBlock } from "../";
 
 export const variants = {
   simple: Simple,
 };
 
-export default function Slider(props: ISlider) {
+export default function Slider(props: IPageBlock) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
