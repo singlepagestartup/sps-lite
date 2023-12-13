@@ -1,4 +1,4 @@
-import useGetButtonParams from "../../hooks/use-get-button-params";
+import useGetButtonParams from "~hooks/use-get-button-params";
 import Flyouts from "~components/flyouts";
 import Buttons, { IElement } from "../..";
 import { useParams } from "next/navigation";

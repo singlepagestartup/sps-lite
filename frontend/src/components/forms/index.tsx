@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { IEntity as IBackendForm } from "~redux/services/backend/api/form/interfaces";
 
 export interface IForm extends IBackendForm {
@@ -10,6 +11,7 @@ export interface IForm extends IBackendForm {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Forms(props: IForm) {

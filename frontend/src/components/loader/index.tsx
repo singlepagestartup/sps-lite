@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { IEntity as IBackendLoader } from "~redux/services/backend/api/loader/interfaces";
 
 export interface ILoader extends IBackendLoader {
@@ -9,6 +10,7 @@ export interface ILoader extends IBackendLoader {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Loaders(props: ILoader) {

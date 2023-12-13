@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as footerApi } from "~redux/services/backend/api/footer/api";
 import { IEntity as IBackendFooter } from "~redux/services/backend/api/footer/interfaces";
 
@@ -10,6 +11,7 @@ export interface IFooter extends IBackendFooter {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Footers(props: IFooter) {

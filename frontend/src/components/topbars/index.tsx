@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
 import { IEntity as IBackendTopbar } from "~redux/services/backend/api/topbar/interfaces";
 
@@ -11,6 +12,7 @@ export interface ITopbar extends IBackendTopbar {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function PublicPageTopbars(props: ITopbar) {

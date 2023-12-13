@@ -2,14 +2,20 @@
 
 import { useState, useEffect, FC, useMemo } from "react";
 import { api as modalApi } from "~redux/services/backend/api/modal/api";
-import { ISpsLiteModal, variants as spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { IEntity as IBackendModal } from "~redux/services/backend/api/modal/interfaces";
 
-export type IModal = ISpsLiteModal;
+export interface IModal extends Omit<IBackendModal, "id"> {
+  isOpenModal: boolean;
+  showSkeletons?: boolean;
+  closeModal: () => void;
+}
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Modals({ modals = [] }: { modals?: IModal[] }) {

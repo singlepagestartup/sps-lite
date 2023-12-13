@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
 import { IEntity as IBackendSidebar } from "~redux/services/backend/api/sidebar/interfaces";
 
@@ -10,6 +11,7 @@ export interface ISidebar extends IBackendSidebar {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Sidebars(props: ISidebar) {

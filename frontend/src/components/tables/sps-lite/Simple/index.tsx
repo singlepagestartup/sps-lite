@@ -4,8 +4,8 @@ import {
   IHeaderCompProps,
   ITableCollumn,
   ITableItemProps,
-  ITableProps,
   IDropdownRowCompProps,
+  ITable,
 } from "../..";
 
 /**
@@ -23,7 +23,7 @@ import {
  * |                                         ...                                                     |
  * |                                                                                                 |
  */
-export default function Simple(props: ITableProps) {
+export default function Simple(props: ITable) {
   const { tableConfig, items, showSkeletons } = props;
 
   const localItems = useMemo(() => {

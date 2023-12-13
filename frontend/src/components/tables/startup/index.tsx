@@ -1,12 +1,10 @@
+import { FC } from "react";
 import { ITable } from "..";
-import Simple from "./Simple";
 
-export const variants = {
-  simple: Simple,
-};
+export const variants = {};
 
 export default function Tables(props: ITable) {
-  const Comp = variants[props.variant as keyof typeof variants];
+  const Comp = variants[props.variant as keyof typeof variants] as FC<ITable>;
 
   if (!Comp) {
     return <></>;

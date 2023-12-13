@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { IComponent as IBackendComponent } from "~redux/services/backend/components/elements/button/interfaces";
 
 export interface IElement
@@ -26,6 +27,7 @@ export interface IElement
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Buttons(props: IElement) {

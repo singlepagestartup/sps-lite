@@ -1,6 +1,7 @@
 "use client";
 
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as navbarApi } from "~redux/services/backend/api/navbar/api";
 import { IEntity as IBackendNavbar } from "~redux/services/backend/api/navbar/interfaces";
 import { IEntity as IBackendTopbar } from "~redux/services/backend/api/topbar/interfaces";
@@ -13,6 +14,7 @@ export interface INavbar extends IBackendNavbar {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Navbars(props: INavbar) {

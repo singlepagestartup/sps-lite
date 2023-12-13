@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
 import { useSearchParams } from "next/navigation";
 import { IEntity as IBackendSlideOver } from "~redux/services/backend/api/slide-over/interfaces";
@@ -14,6 +15,7 @@ export interface ISlideOver extends IBackendSlideOver {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function SlideOvers() {

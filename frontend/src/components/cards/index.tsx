@@ -2,9 +2,11 @@
 
 import { FC } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export interface ICardsConfig {

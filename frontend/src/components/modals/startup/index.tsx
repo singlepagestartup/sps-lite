@@ -1,12 +1,10 @@
-import Simple from "./Simple";
+import { FC } from "react";
 import { IModal } from "..";
 
-export const variants = {
-  simple: Simple,
-};
+export const variants = {};
 
 export default function Modals(props: IModal) {
-  const Comp = variants[props.variant as keyof typeof variants];
+  const Comp = variants[props.variant as keyof typeof variants] as FC<IModal>;
 
   if (!Comp) {
     return <></>;

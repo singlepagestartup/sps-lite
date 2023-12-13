@@ -2,12 +2,14 @@
 
 import { Dispatch, FC, SetStateAction } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
-export interface ITablesBlock extends ITableProps {
+export interface ITable extends ITableProps {
   variant: keyof typeof variants;
 }
 
@@ -68,10 +70,8 @@ export interface ITableConfig {
   };
 }
 
-export default function Tables(props: ITablesBlock) {
-  const Comp = variants[
-    props.variant as keyof typeof variants
-  ] as FC<ITableProps>;
+export default function Tables(props: ITable) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

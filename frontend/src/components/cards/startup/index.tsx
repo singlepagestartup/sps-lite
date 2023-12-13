@@ -1,12 +1,12 @@
+import { FC } from "react";
 import { ICardsProps } from "..";
-import Simple from "./Simple";
 
-export const variants = {
-  simple: Simple,
-};
+export const variants = {};
 
 export default function Cards(props: ICardsProps) {
-  const Comp = variants[props.variant as keyof typeof variants];
+  const Comp = variants[
+    props.variant as keyof typeof variants
+  ] as FC<ICardsProps>;
 
   if (!Comp) {
     return <></>;

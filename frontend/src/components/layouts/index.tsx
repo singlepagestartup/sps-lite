@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { api as layoutApi } from "~redux/services/backend/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
 import { IEntity as IBackendLayout } from "~redux/services/backend/api/layout/interfaces";
@@ -14,6 +15,7 @@ export interface ILayout extends IBackendLayout {
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
 export default function Layouts({ children }: { children?: ReactNode }) {

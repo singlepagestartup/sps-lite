@@ -1,8 +1,7 @@
 import { useMemo } from "react";
-import { ICardProps } from "../..";
-import { ISpsLiteCatdsProps } from "..";
+import { ICardProps, ICardsProps } from "../..";
 
-export default function Simple(props: ISpsLiteCatdsProps) {
+export default function Simple(props: ICardsProps) {
   const { cardsConfig, items, showSkeletons } = props;
 
   const localItems = useMemo(() => {
