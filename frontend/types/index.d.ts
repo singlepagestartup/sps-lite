@@ -1,4 +1,11 @@
-export {};
+export interface IBackendPagination {
+  pagination: {
+    page: number;
+    pageCount: number;
+    pageSize: number;
+    total: number;
+  };
+}
 
 declare global {
   interface Window {
