@@ -25,25 +25,25 @@ fi
 if [ "$1" != "down" ]
 then
     ansible-playbook \
-        ./aws/create_iam_user.yaml \
-        -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
-            AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-            PROJECT_NAME=$PROJECT_NAME \
-            AWS_S3_BUCKET=$AWS_S3_BUCKET" && \
+        # ./aws/create_iam_user.yaml \
+        # -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+        #     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+        #     PROJECT_NAME=$PROJECT_NAME \
+        #     AWS_S3_BUCKET=$AWS_S3_BUCKET" && \
     ansible-playbook \
         ./aws/create_s3.yaml \
         -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
             AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             AWS_S3_REGION=$AWS_S3_REGION \
             PROJECT_NAME=$PROJECT_NAME \
-            AWS_S3_BUCKET=$AWS_S3_BUCKET" && \
-    ansible-playbook \
-        ./aws/fill_github.yaml \
-        -e "GITHUB_TOKEN=$GITHUB_TOKEN \
-            GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
-            AWS_S3_REGION=$AWS_S3_REGION \
-            PROJECT_NAME=$PROJECT_NAME \
             AWS_S3_BUCKET=$AWS_S3_BUCKET"
+    # ansible-playbook \
+    #     ./aws/fill_github.yaml \
+    #     -e "GITHUB_TOKEN=$GITHUB_TOKEN \
+    #         GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
+    #         AWS_S3_REGION=$AWS_S3_REGION \
+    #         PROJECT_NAME=$PROJECT_NAME \
+    #         AWS_S3_BUCKET=$AWS_S3_BUCKET"
 else
     ansible-playbook \
         ./aws/clear_github.yaml \
