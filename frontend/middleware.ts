@@ -9,7 +9,10 @@ export async function middleware(request: any) {
 
   try {
     const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
+    console.log("🚀 ~ middleware ~ req:", req);
     const backendLocales: IBackendLocale[] = await req.json();
+
+    console.log("🚀 ~ middleware ~ backendLocales:", backendLocales);
 
     const pathnameIsMissingLocale = backendLocales.every(
       (locale) =>

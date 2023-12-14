@@ -1,39 +1,39 @@
-import HeaderSections from "~components/page-blocks/header-sections";
-import HeroSections from "~components/page-blocks/hero-sections";
-import ReviewsLists from "~components/page-blocks/reviews-lists";
-import Faqs from "~components/page-blocks/faq";
-import Slider from "~components/page-blocks/slider";
-import NotFound from "~components/page-blocks/not-found";
-import ContactSectons from "~components/page-blocks/contact-sections";
-import Incentives from "~components/page-blocks/incentives";
-import CtaSections from "~components/page-blocks/cta-sections";
-import Pricings from "~components/page-blocks/pricings";
-import ReviewsTables from "~components/page-blocks/reviews-tables";
-import FeaturesSections from "~components/page-blocks/features-sections";
-import LogotypesClouds from "~components/page-blocks/logotypes-clouds";
-import Navbars from "~components/page-blocks/navbars";
-import Buttons from "~components/elements/buttons";
-import Footers from "~components/page-blocks/footers";
-import ButtonsArrays from "~components/elements/buttons-arrays";
-import Alerts from "~components/page-blocks/alert";
+import HeaderSection from "~components/page-blocks/header-section-block";
+import HeroSection from "~components/page-blocks/hero-section-block";
+import ReviewsList from "~components/page-blocks/reviews-list-block";
+import Faq from "~components/page-blocks/faq-block";
+import Slider from "~components/page-blocks/slider-block";
+import NotFound from "~components/page-blocks/not-found-block";
+import ContactSecton from "~components/page-blocks/contact-section-block";
+import Incentive from "~components/page-blocks/incentives-block";
+import CtaSection from "~components/page-blocks/cta-section-block";
+import Pricing from "~components/page-blocks/pricing-block";
+import ReviewsTable from "~components/page-blocks/reviews-table-block";
+import FeaturesSection from "~components/page-blocks/features-section-block";
+import LogotypesCloud from "~components/page-blocks/logotypes-cloud-block";
+import Navbar from "~components/page-blocks/navbar-block";
+import Button from "~components/elements/button";
+import Footer from "~components/page-blocks/footer-block";
+import ButtonsArray from "~components/elements/buttons-array";
+import Alert from "~components/page-blocks/alert-block";
 
 export const pageBlockComponents = {
-  ["page-blocks.header-section-block"]: HeaderSections,
-  ["page-blocks.hero-section-block"]: HeroSections,
-  ["page-blocks.reviews-list-block"]: ReviewsLists,
-  ["page-blocks.features-section-block"]: FeaturesSections,
-  ["page-blocks.faqs-block"]: Faqs,
-  ["page-blocks.logotypes-cloud-block"]: LogotypesClouds,
+  ["page-blocks.header-section-block"]: HeaderSection,
+  ["page-blocks.hero-section-block"]: HeroSection,
+  ["page-blocks.reviews-list-block"]: ReviewsList,
+  ["page-blocks.features-section-block"]: FeaturesSection,
+  ["page-blocks.faqs-block"]: Faq,
+  ["page-blocks.logotypes-cloud-block"]: LogotypesCloud,
   ["page-blocks.slider-block"]: Slider,
   ["page-blocks.not-found-block"]: NotFound,
-  ["page-blocks.contact-section-block"]: ContactSectons,
-  ["page-blocks.incentives-block"]: Incentives,
-  ["page-blocks.cta-section-block"]: CtaSections,
-  ["page-blocks.pricing-block"]: Pricings,
-  ["page-blocks.reviews-table-block"]: ReviewsTables,
-  ["page-blocks.navbar-block"]: Navbars,
-  ["page-blocks.footer-block"]: Footers,
-  ["elements.buttons-array"]: ButtonsArrays,
-  ["elements.button"]: Buttons,
-  ["page-blocks.alert-block"]: Alerts,
+  ["page-blocks.contact-section-block"]: ContactSecton,
+  ["page-blocks.incentives-block"]: Incentive,
+  ["page-blocks.cta-section-block"]: CtaSection,
+  ["page-blocks.pricing-block"]: Pricing,
+  ["page-blocks.reviews-table-block"]: ReviewsTable,
+  ["page-blocks.navbar-block"]: Navbar,
+  ["page-blocks.footer-block"]: Footer,
+  ["elements.buttons-array"]: ButtonsArray,
+  ["elements.button"]: Button,
+  ["page-blocks.alert-block"]: Alert,
 };

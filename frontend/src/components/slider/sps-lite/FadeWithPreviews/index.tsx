@@ -14,7 +14,7 @@ import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import { IExtendedSlide, ISlider } from "../..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import Buttons from "~components/elements/buttons";
+import Button from "~components/elements/button";
 import getFileUrl from "~utils/api/get-file-url";
 import { IComponent as IBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
@@ -197,7 +197,7 @@ function DefaultSlideComponent({
             <p>{slide.description}</p>
             <div className="buttons-container">
               {slide.buttons?.map((button, index: number) => {
-                return <Buttons key={index} {...button} />;
+                return <Button key={index} {...button} />;
               })}
             </div>
           </div>

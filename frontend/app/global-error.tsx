@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Layouts from "~components/layouts";
+import Layout from "~components/layout";
 import { getBackendData } from "~utils/api";
 import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
@@ -36,7 +36,7 @@ export default function GlobalError({ error, reset }: any) {
           className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
         >
           <div className="relative">
-            <Layouts {...page} />
+            <Layout {...page} />
           </div>
         </body>
       </html>

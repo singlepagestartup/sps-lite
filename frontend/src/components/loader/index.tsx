@@ -13,7 +13,7 @@ const variants = {
   ...startupVariants,
 };
 
-export default function Loaders(props: ILoader) {
+export default function Loader(props: ILoader) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

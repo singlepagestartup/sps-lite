@@ -1,10 +1,10 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { pageBlockComponents } from "~components/page-blocks/aliases";
-import ErrorBoundary from "~components/wrappers/error-boundary";
+import ErrorBoundary from "~components/wrapper/error-boundary";
 import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
 export interface IPage {
-  pageParams?: any;
+  pageProps?: any;
   pageBlocks?: IBackendComponentPageBlock[] | null;
   showSkeletons?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
