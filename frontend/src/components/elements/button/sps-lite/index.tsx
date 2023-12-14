@@ -11,7 +11,7 @@ export const variants = {
   locale: Locale,
 };
 
-export default function Buttons(props: IElement) {
+export default function SpsLite(props: IElement) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

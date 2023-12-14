@@ -3,7 +3,7 @@ import { IElement } from "..";
 
 export const variants = {};
 
-export default function ButtonsArrays(props: IElement) {
+export default function Startup(props: IElement) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<IElement>;
 
   if (!Comp) {
