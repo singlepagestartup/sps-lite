@@ -8,9 +8,14 @@ export async function middleware(request: any) {
   const searchParams = request.nextUrl.search;
 
   try {
-    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
-    console.log("🚀 ~ middleware ~ req:", req);
-    const backendLocales: IBackendLocale[] = await req.json();
+    let tries = 0;
+    const backendLocales = [];
+
+    do {
+      const locales = await fetchLocales();
+      backendLocales.push(...locales);
+      tries++;
+    } while (backendLocales.length === 0 && tries < 5);
 
     console.log("🚀 ~ middleware ~ backendLocales:", backendLocales);
 
@@ -45,3 +50,18 @@ export const config = {
     "/((?!_next|images|sitemap|robots|api|favicon).*)",
   ],
 };
+
+async function fetchLocales() {
+  try {
+    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
+    console.log("🚀 ~ middleware ~ req:", req);
+    const backendLocales: IBackendLocale[] = await req.json();
+
+    console.log("🚀 ~ fetchLocales ~ backendLocales:", backendLocales);
+
+    return backendLocales;
+  } catch (error) {
+    console.log("🚀 ~ fetchLocales ~ error:", error);
+    return [];
+  }
+}
