@@ -23,6 +23,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik.yml:/etc/traefik/dynamic_conf/conf.yml:ro
     deploy:
+      update_config:
+        order: start-first
       placement:
         constraints:
           - node.role == manager

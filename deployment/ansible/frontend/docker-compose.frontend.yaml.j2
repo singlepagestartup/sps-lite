@@ -7,6 +7,8 @@ services:
       - traefik_overlay
     command: "sh -c './start.sh'"
     deploy:
+      update_config:
+        order: start-first
       placement:
         constraints:
           - node.role == manager
