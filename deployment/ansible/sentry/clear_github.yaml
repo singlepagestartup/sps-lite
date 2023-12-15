@@ -9,6 +9,11 @@
   tasks:
     - name: Delete Sentry secrets from GitHub
       block:
+        - name: Delete artifacts
+          file:
+            path: /home/code/github-node-api/
+            state: absent
+
         - name: Create github-node-api directory
           file:
             path: "/home/code/github-node-api"
