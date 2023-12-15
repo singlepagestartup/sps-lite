@@ -8,6 +8,8 @@ services:
     env_file:
       - ./{{ SERVICE_NAME }}.env
     deploy:
+      update_config:
+          order: start-first
       placement:
         constraints:
           - node.role == manager
