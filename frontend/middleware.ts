@@ -17,9 +17,6 @@ export async function middleware(request: any) {
       tries++;
     } while (backendLocales.length === 0 && tries < 5);
 
-    console.log("🚀 ~ middleware ~ tries:", tries);
-    console.log("🚀 ~ middleware ~ backendLocales:", backendLocales);
-
     const pathnameIsMissingLocale = backendLocales.every(
       (locale) =>
         !pathname.startsWith(`/${locale.code}/`) &&
@@ -55,10 +52,7 @@ export const config = {
 async function fetchLocales() {
   try {
     const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
-    // console.log("🚀 ~ middleware ~ req:", req);
-
     const res = await req.json();
-    console.log("🚀 ~ fetchLocales ~ res:", res);
 
     if (!Array.isArray(res)) {
       if (res?.error?.message) {
@@ -69,8 +63,6 @@ async function fetchLocales() {
     }
 
     const backendLocales: IBackendLocale[] = res;
-
-    console.log("🚀 ~ fetchLocales ~ backendLocales:", backendLocales);
 
     return backendLocales;
   } catch (error) {
