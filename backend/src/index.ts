@@ -1,11 +1,12 @@
 "use strict";
-import strapiUtils from "@rogwild/strapi-utils";
+
 import path from "path";
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
 import fs from "fs/promises";
-// import GoogleCloud from "./services/GoogleCloud";
+import seeder from "./utils/seeder";
+import dumper from "./utils/dumper";
 
 export default {
   async bootstrap({ strapi }) {
@@ -33,7 +34,7 @@ export default {
 
       try {
         const apiPath = path.join(__dirname, "../../src/", "./api");
-        strapiUtils.seeder(apiPath).then(async () => {
+        seeder(apiPath).then(async () => {
           await fs.writeFile(lockFilePath, "");
 
           if (process.env.CLEAR_MEDIA_LIBRARY) {
@@ -55,7 +56,7 @@ export default {
     if (process.env.MAKE_NEW_SEED) {
       try {
         const mainApiPath = path.join(__dirname, "../../src/", "./api");
-        await strapiUtils.dumper(mainApiPath);
+        await dumper(mainApiPath);
       } catch (error) {
         console.log("🚀 ~ bootstrap ~ MAKE_NEW_SEED ~ error:", error);
 
