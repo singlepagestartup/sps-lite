@@ -61,5 +61,3 @@ With pre-configured deployment tools and processes, our boilerplate enables you 
 ## Modular and Scalable
 
 Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.
-
-<!-- Test comment -->
