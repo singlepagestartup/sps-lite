@@ -1,4 +1,5 @@
 const fs = require("fs/promises");
+const fsExtra = require("fs-extra");
 const path = require("path");
 const getDeepPopulate = require("../get-deep-populate");
 
@@ -57,6 +58,24 @@ async function dumper(apiPath) {
     }
   } catch (error) {
     console.log("🚀 ~ dumper ~ error:", error);
+  }
+
+  if (process.env.DUMP_UPLOADS === "true") {
+    const uploadsPath = path.join(apiPath, "../../public/uploads");
+    const dumpPath = path.join(apiPath, "../../dump/uploads");
+
+    try {
+      await fsExtra.emptyDir(dumpPath);
+    } catch (error) {
+      console.log("🚀 ~ dump ~ error:", error);
+    }
+
+    try {
+      await fsExtra.mkdir(dumpPath, { recursive: true });
+      await fsExtra.copy(uploadsPath, dumpPath);
+    } catch (error) {
+      console.log("🚀 ~ dump ~ error:", error);
+    }
   }
 }
 

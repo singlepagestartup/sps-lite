@@ -791,20 +791,31 @@ class Parameter {
         }
       }
 
-      // console.log('🚀 ~ downloadFile ~ value:', value);
-
-      const file = await axios({
-        method: "GET",
-        url: value.url,
-        responseType: "arraybuffer",
-        ...additionalAttributes,
-      })
-        .then(function (response) {
-          return response.data;
+      let file;
+      if (value.url.includes("http")) {
+        file = await axios({
+          method: "GET",
+          url: value.url,
+          responseType: "arraybuffer",
+          ...additionalAttributes,
         })
-        .catch((error) => {
-          console.log("🚀 ~ downloadFile ~ error:", error?.message);
-        });
+          .then(function (response) {
+            return response.data;
+          })
+          .catch((error) => {
+            console.log("🚀 ~ downloadFile ~ error:", error?.message);
+          });
+      } else {
+        const pathToRoot = path.join(this.entity.seeder.dirPath, "../../"); //?
+
+        file = await fs
+          .readFile(`${pathToRoot}/dump/${value.url}`)
+          .catch((error) => {
+            console.log("🚀 ~ downloadFile ~ error:", error?.message);
+          });
+      }
+
+      // console.log('🚀 ~ downloadFile ~ value:', value);
 
       if (!file) {
         return;
