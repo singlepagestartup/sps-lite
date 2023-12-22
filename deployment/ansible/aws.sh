@@ -12,7 +12,7 @@ AWS_S3_BUCKET=$(get_env AWS_S3_BUCKET)
 GITHUB_TOKEN=$(get_env GITHUB_TOKEN)
 GITHUB_REPOSITORY=$(get_env GITHUB_REPOSITORY)
 
-if [-z "$AWS_ACCESS_KEY"]
+if [ -z "$AWS_ACCESS_KEY" ]
 then
     echo "ROOT_AWS_ACCESS_KEY not passed - skipping AWS IAM, S3 and SES creation/deletion"
     exit 0
