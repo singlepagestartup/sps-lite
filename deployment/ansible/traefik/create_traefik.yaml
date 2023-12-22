@@ -16,6 +16,11 @@
         dest: /home/code/create_traefik_user.sh
         mode: 0755
 
+    - name: Kill all
+      shell:
+        cmd: "sudo killall apt apt-get"
+      ignore_errors: yes
+
     - name: Install prerequisites
       apt:
         name: "{{ item }}"
