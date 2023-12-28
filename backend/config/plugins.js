@@ -1,5 +1,28 @@
 module.exports = ({ env }) => {
-  const config = {};
+  const config = {
+    ["users-permissions"]: {
+      config: {
+        appName: env("APP_NAME", "Single Page Startup"),
+        registerByEmailCode: false,
+        authFactors: {
+          factors: [
+            { handler: "auth.callback" },
+            // If all are required, but will be on one page
+            // {
+            //     handler: ['auth.phoneConfirmation', 'auth.emailConfirmation'],
+            //     type: 'parallel',
+            // },
+            // If one is to be chosen in priority order
+            // {
+            //     handler: ['auth.emailConfirmation', 'auth.phoneConfirmation'],
+            //     type: 'one',
+            // },
+            { handler: "user.checkOtp" },
+          ],
+        },
+      },
+    },
+  };
 
   const emailProvider = env("EMAIL_PROVIDER")
     ? env("EMAIL_PROVIDER")
@@ -21,9 +44,6 @@ module.exports = ({ env }) => {
             accessKeyId: env("AWS_S3_ACCESS_KEY"),
             secretAccessKey: env("AWS_S3_SECRET_ACCESS_KEY"),
             region: env("AWS_S3_REGION", "eu-central-1"),
-            endpoint: env("AWS_S3_ENDPOINT"),
-            apiVersion: "latest",
-            signatureVersion: "v4",
             params: {
               Bucket: env("AWS_S3_BUCKET"),
             },
