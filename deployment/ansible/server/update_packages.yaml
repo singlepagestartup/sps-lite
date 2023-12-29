@@ -6,3 +6,6 @@
       apt:
         update_cache: false
         cache_valid_time: 3600
+      register: apt_res
+      retries: 5
+      until: apt_res | success
