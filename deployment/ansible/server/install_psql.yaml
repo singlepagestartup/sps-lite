@@ -10,6 +10,7 @@
         name: "{{ item }}"
         state: present
         update_cache: false
+        force_apt_get: yes
       register: result
       until: result is not failed
       retries: 5
