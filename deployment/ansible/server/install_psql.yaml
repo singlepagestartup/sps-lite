@@ -7,6 +7,10 @@
         name: "{{ item }}"
         state: present
         update_cache: false
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
       loop:
         - postgresql-client-common
         - postgresql-client

@@ -21,6 +21,10 @@
         name: "{{ item }}"
         state: present
         update_cache: false
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
       loop:
         - apache2-utils
 

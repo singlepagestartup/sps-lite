@@ -12,6 +12,10 @@
         name: "{{ item }}"
         state: present
         update_cache: false
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
       loop:
         - ca-certificates
         - curl
@@ -31,6 +35,10 @@
         name: "{{ item }}"
         state: present
         update_cache: false
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
       loop:
         - docker-ce
         - docker-ce-cli
