@@ -12,9 +12,6 @@
         name: "{{ item }}"
         state: present
         update_cache: false
-      register: apt_res
-      retries: 5
-      until: apt_res | success
       loop:
         - ca-certificates
         - curl
@@ -34,9 +31,6 @@
         name: "{{ item }}"
         state: present
         update_cache: false
-      register: apt_res
-      retries: 5
-      until: apt_res | success
       loop:
         - docker-ce
         - docker-ce-cli

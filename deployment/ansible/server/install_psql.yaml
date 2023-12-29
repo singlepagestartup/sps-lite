@@ -7,9 +7,6 @@
         name: "{{ item }}"
         state: present
         update_cache: false
-      register: apt_res
-      retries: 5
-      until: apt_res | success
       loop:
         - postgresql-client-common
         - postgresql-client

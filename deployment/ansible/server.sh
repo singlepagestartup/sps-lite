@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ansible-playbook \
-    ./server/update_packages.yaml \
     ./server/create_working_directory.yaml \
     ./server/install_psql.yaml \
     ./server/set_cron_jobs.yaml \
