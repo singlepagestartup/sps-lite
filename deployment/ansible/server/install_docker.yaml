@@ -11,7 +11,7 @@
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: true
+        update_cache: false
       loop:
         - ca-certificates
         - curl
@@ -30,7 +30,7 @@
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: true
+        update_cache: false
       loop:
         - docker-ce
         - docker-ce-cli

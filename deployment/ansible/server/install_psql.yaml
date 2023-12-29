@@ -6,7 +6,7 @@
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: true
+        update_cache: false
       loop:
         - postgresql-client-common
         - postgresql-client
