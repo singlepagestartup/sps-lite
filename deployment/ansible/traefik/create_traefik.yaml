@@ -17,13 +17,15 @@
         mode: 0755
 
     - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
       shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
 
     - name: Install prerequisites
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: false
         force_apt_get: yes
       register: result
       until: result is not failed
