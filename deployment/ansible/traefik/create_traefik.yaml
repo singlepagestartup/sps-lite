@@ -20,7 +20,7 @@
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: no
+        update_cache: true
       loop:
         - apache2-utils
 
