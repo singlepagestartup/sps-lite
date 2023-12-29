@@ -16,6 +16,9 @@
         dest: /home/code/create_traefik_user.sh
         mode: 0755
 
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
     - name: Install prerequisites
       apt:
         name: "{{ item }}"

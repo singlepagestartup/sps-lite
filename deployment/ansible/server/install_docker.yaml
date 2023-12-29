@@ -7,6 +7,9 @@
       set_fact:
         ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
 
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
     - name: Install prerequisites
       apt:
         name: "{{ item }}"
@@ -30,6 +33,9 @@
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
 
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+    
     - name: Install Docker
       apt:
         name: "{{ item }}"
