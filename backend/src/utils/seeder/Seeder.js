@@ -37,7 +37,11 @@ class Seeder {
       // console.log('🚀 ~ setSeed ~ no seed for model:', this.modelName, ' skipping migration');
     }
 
-    if (!seedFiles?.length) {
+    if (
+      !seedFiles?.length ||
+      !seedFiles?.filter((s) => s.includes(".json"))?.length
+    ) {
+      this.seed = [];
       return;
     }
 

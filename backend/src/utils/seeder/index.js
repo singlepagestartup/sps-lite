@@ -76,6 +76,10 @@ async function seeder(apiPath) {
     const seededModels = {};
 
     for (const modelDirName of apiDirs) {
+      if ([".DS_Store", ".gitkeep"].includes(modelDirName)) {
+        continue;
+      }
+
       try {
         const seed = new Seeder({
           modelDirName,
