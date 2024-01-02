@@ -216,6 +216,8 @@ export default function RepeatableInput(props: IInputProps) {
 
   useEffect(() => {
     if (initialValue) {
+      // console.log("🚀 ~ useEffect ~ inputs:", inputs);
+
       const resInputs = [] as any;
 
       for (const [inputIndex, initValue] of initialValue.entries()) {
@@ -315,6 +317,21 @@ export default function RepeatableInput(props: IInputProps) {
           return (
             <div className="repeatable-inputs" key={field.id}>
               {inputs.map((input: any, index: number) => {
+                return (
+                  <InsideInput
+                    key={index}
+                    watchData={watchData}
+                    control={control}
+                    errors={errors}
+                    input={input}
+                    parentKey={parentKey}
+                    baseKey={baseKey}
+                    fieldIndex={fieldIndex}
+                    initialValue={initialValue}
+                  />
+                );
+              })}
+              {/* {inputs.map((input: any, index: number) => {
                 const additionalPropsForInput = {} as any;
 
                 const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
@@ -364,7 +381,7 @@ export default function RepeatableInput(props: IInputProps) {
                     globalErrors={errors}
                   />
                 );
-              })}
+              })} */}
 
               {InsideComponent ? (
                 <InsideComponent
@@ -443,5 +460,82 @@ export default function RepeatableInput(props: IInputProps) {
         </div>
       ) : null}
     </div>
+  );
+}
+
+function InsideInput({
+  parentKey,
+  baseKey,
+  fieldIndex,
+  input,
+  initialValue,
+  watchData,
+  control,
+  errors,
+}: {
+  parentKey: string | undefined;
+  baseKey: string;
+  fieldIndex: number;
+  input: any;
+  initialValue: any;
+  watchData: any;
+  control: any;
+  errors: any;
+}) {
+  const translate = useTranslationsContext();
+  const [additionalPropsForInput, setAdditionalPropsForInput] = useState<any>(
+    {},
+  );
+
+  const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
+    baseKey,
+  )}[${fieldIndex}].${input.name}`;
+
+  const parentKeyName = `${parentKey ? `${parentKey}.` : ""}${String(
+    baseKey,
+  )}[${fieldIndex}]`;
+
+  useMemo(() => {
+    if (initialValue?.length) {
+      for (const [initialIndex, initValue] of initialValue.entries()) {
+        // The second and others renders will get data from watchData
+        if (watchData?.[baseKey]?.[fieldIndex]) {
+          const watchInputData = watchData[baseKey][fieldIndex][input.name];
+
+          // additionalPropsForInput.initialValue = watchInputData;
+          setAdditionalPropsForInput({
+            ...additionalPropsForInput,
+            initialValue: watchInputData,
+          });
+        } else if (
+          // Just for the first render
+          initialIndex === fieldIndex &&
+          (initValue[input.name] !== undefined ||
+            initValue[snakeToCamel(input.name)] !== undefined)
+        ) {
+          const initInputData =
+            initValue[input.name] || initValue[snakeToCamel(input.name)];
+
+          // additionalPropsForInput.initialValue = initInputData;
+          setAdditionalPropsForInput({
+            ...additionalPropsForInput,
+            initialValue: initInputData,
+          });
+        }
+      }
+    }
+  }, [JSON.stringify(initialValue)]);
+
+  return (
+    <Input
+      {...input}
+      {...additionalPropsForInput}
+      translate={translate}
+      name={inputName}
+      parentKey={parentKeyName}
+      baseKey={input.name}
+      control={control}
+      globalErrors={errors}
+    />
   );
 }
