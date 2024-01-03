@@ -8,9 +8,9 @@
     "name": "Single Page Startup based on Strapi"
   },
   "scripts": {
-    "build": "rm -rf ./types && strapi build",
-    "debug": "rm -rf ./types && node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
-    "develop": "rm -rf ./types && strapi develop",
+    "build": "strapi build",
+    "debug": "node --inspect=0.0.0.0:9230 ./node_modules/@strapi/strapi/bin/strapi.js develop",
+    "develop": "strapi develop",
     "format": "npm run prettier:fix && npm run lint:fix",
     "lint": "eslint . --resolve-plugins-relative-to .",
     "lint:fix": "eslint --fix . --resolve-plugins-relative-to .",
