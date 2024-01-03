@@ -30,11 +30,11 @@ const public = {
   "plugin::content-type-builder.content-types": [],
 };
 
-const authenticated = {
+const authentificated = {
   ...public,
 };
 
 module.exports = {
-  authenticated,
+  authentificated,
   public,
 };
