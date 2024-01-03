@@ -1,10 +1,10 @@
 const public = {};
 
-const authenticated = {
+const authentificated = {
   ...public,
 };
 
 module.exports = {
-  authenticated,
+  authentificated,
   public,
 };
