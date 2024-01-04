@@ -28,10 +28,6 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-RUN cd ./src/plugins/sps-billing-plugin/ && \
-    npm install && \
-    npm run build
-
 RUN cd ./src/plugins/sps-website-builder/ && \
     npm install && \
     npm run build
