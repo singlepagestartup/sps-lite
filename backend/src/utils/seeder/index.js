@@ -38,6 +38,31 @@ async function seeder(apiPath) {
         } catch (error) {
           console.log("🚀 ~ seeder ~ error", extensionDirName, error?.message);
         }
+      } else if (extensionDirName === "sps-website-builder") {
+        const contentTypeDirs = await fs.readdir(
+          path.join(extensionsPath, extensionDirName, "content-types"),
+        );
+        const seededModelNames = [];
+        const seededModels = {};
+
+        for (const contentTypeDir of contentTypeDirs) {
+          try {
+            const seed = new Seeder({
+              modelDirName: extensionDirName,
+              modelName: extensionDirName,
+              entityName: contentTypeDir,
+              dirPath: extensionsPath,
+              type: "plugin",
+              seededModelNames,
+              seededModels,
+            });
+            await seed.setSchema();
+            await seed.setSeed();
+            await seed.seedEntites();
+          } catch (error) {
+            console.log("🚀 ~ seeder ~ error", contentTypeDir, error?.message);
+          }
+        }
       }
     }
   }

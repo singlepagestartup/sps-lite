@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "page_blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "page-blocks.hero-section-block",
+        "page-blocks.incentives-block",
+        "page-blocks.header-section-block",
+        "page-blocks.contact-section-block",
+        "page-blocks.cta-section-block",
+        "page-blocks.faqs-block",
+        "page-blocks.features-section-block",
+        "page-blocks.logotypes-cloud-block",
+        "page-blocks.not-found-block",
+        "page-blocks.pricing-block",
+        "page-blocks.reviews-table-block",
+        "page-blocks.slider-block",
+        "elements.buttons-array",
+        "elements.button",
+        "page-blocks.reviews-list-block",
+        "page-blocks.alert-block"
+      ]
+    },
+    "layout": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-website-builder.layout",
+      "inversedBy": "pages"
+    }
+  }
+}

@@ -13,7 +13,7 @@ import { BACKEND_URL } from "~utils/envs";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "src/contexts/additional-headers";
 import { HocParamsProvider } from "src/contexts/hoc-params";
-import { populate as loaderPopulate } from "~redux/services/backend/api/loader/populate";
+import { populate as loaderPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/loader/populate";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +23,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const loader = await getBackendData({
-    url: `${BACKEND_URL}/api/loader`,
+    url: `${BACKEND_URL}/api/sps-website-builder/loader`,
     params: {
       populate: loaderPopulate,
     },

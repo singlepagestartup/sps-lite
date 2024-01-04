@@ -4,7 +4,7 @@ import useGetPageUrlModelId from ".";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "~utils/envs";
 import { HttpResponse, http } from "msw";
-import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
+import { IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 jest.mock("next/navigation", () => {
   return {

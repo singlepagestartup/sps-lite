@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Layout from "~components/layout";
 import { getBackendData } from "~utils/api";
-import { populate as pagePopulate } from "~redux/services/backend/api/page/populate";
+import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
 import { fonts } from "./fonts";
 
@@ -15,7 +15,7 @@ export default function GlobalError({ error, reset }: any) {
 
   useEffect(() => {
     getBackendData({
-      url: `${BACKEND_URL}/api/pages`,
+      url: `${BACKEND_URL}/api/sps-website-builder/pages`,
       params: {
         populate: pagePopulate,
         filters: {

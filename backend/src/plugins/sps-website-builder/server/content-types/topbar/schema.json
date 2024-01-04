@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_topbars",
+  "info": {
+    "singularName": "topbar",
+    "pluralName": "topbars",
+    "displayName": "Topbar",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "uid": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "variant": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["boxed"],
+      "default": "boxed",
+      "required": true
+    },
+    "page_blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["elements.button"]
+    },
+    "class_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "position": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["fixed"],
+      "default": "fixed",
+      "required": true
+    },
+    "side": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["top"],
+      "default": "top",
+      "required": true
+    },
+    "layouts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-website-builder.layout",
+      "mappedBy": "topbar"
+    }
+  }
+}

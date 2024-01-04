@@ -7,6 +7,7 @@ import sentry from "@strapi/plugin-sentry/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import countrySelect from "strapi-plugin-country-select/strapi-admin";
 import emailDesigner from "strapi-plugin-email-designer/strapi-admin";
+import spsWebsiteBuilder from "../../src/plugins/sps-website-builder/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
@@ -16,5 +17,6 @@ renderAdmin(document.getElementById("strapi"), {
     "users-permissions": usersPermissions,
     "country-select": countrySelect,
     "email-designer": emailDesigner,
+    "sps-website-builder": spsWebsiteBuilder,
   },
 });

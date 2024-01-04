@@ -4,8 +4,8 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { Popover } from "@headlessui/react";
-import { api as flyoutApi } from "~redux/services/backend/api/flyout/api";
-import { IEntity as IBackendFlyout } from "~redux/services/backend/api/flyout/interfaces";
+import { api as flyoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/api";
+import { IEntity as IBackendFlyout } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/interfaces";
 
 export interface IFlyout extends IBackendFlyout {
   showSkeletons?: boolean;

@@ -75,7 +75,7 @@ export async function getTargetPage({ url, locale }: any) {
   }
 
   const targetPage = await getBackendData({
-    url: `${BACKEND_URL}/api/pages/get-by-url`,
+    url: `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url`,
     params: {
       url: localUrl,
       locale,

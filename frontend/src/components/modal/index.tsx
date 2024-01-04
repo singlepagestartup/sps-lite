@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, FC, useMemo } from "react";
-import { api as modalApi } from "~redux/services/backend/api/modal/api";
+import { api as modalApi } from "~redux/services/backend/extensions/sps-website-builder/api/modal/api";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IEntity as IBackendModal } from "~redux/services/backend/api/modal/interfaces";
+import { IEntity as IBackendModal } from "~redux/services/backend/extensions/sps-website-builder/api/modal/interfaces";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;

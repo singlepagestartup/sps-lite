@@ -22,6 +22,10 @@ module.exports = ({ env }) => {
         },
       },
     },
+    "sps-website-builder": {
+      enabled: true,
+      resolve: "./src/plugins/sps-website-builder",
+    },
   };
 
   const emailProvider = env("EMAIL_PROVIDER")

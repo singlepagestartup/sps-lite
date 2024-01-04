@@ -1,10 +1,10 @@
-import { IEntity as IBackendPage } from "~redux/services/backend/api/page/interfaces";
+import { IEntity as IBackendPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL, FRONTEND_URL } from "~utils/envs";
 
 async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
+    url: `${BACKEND_URL}/api/sps-website-builder/pages`,
     params: { locale: "all", pagination: { limit: -1 } },
   }).catch((error) => {
     console.log("🚀 ~ generateSiteMap ~ error:", error);

@@ -1,16 +1,16 @@
 import { api as currencyApi } from "~redux/services/backend/api/currency/api";
-import { api as flyoutApi } from "~redux/services/backend/api/flyout/api";
-import { api as footerApi } from "~redux/services/backend/api/footer/api";
+import { api as flyoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/api";
+import { api as footerApi } from "~redux/services/backend/extensions/sps-website-builder/api/footer/api";
 import { api as formRequestApi } from "~redux/services/backend/api/form-request/api";
-import { api as layoutApi } from "~redux/services/backend/api/layout/api";
-import { api as loaderApi } from "~redux/services/backend/api/loader/api";
-import { api as modalApi } from "~redux/services/backend/api/modal/api";
-import { api as navbarApi } from "~redux/services/backend/api/navbar/api";
-import { api as pageApi } from "~redux/services/backend/api/page/api";
+import { api as layoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/layout/api";
+import { api as loaderApi } from "~redux/services/backend/extensions/sps-website-builder/api/loader/api";
+import { api as modalApi } from "~redux/services/backend/extensions/sps-website-builder/api/modal/api";
+import { api as navbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/navbar/api";
+import { api as pageApi } from "~redux/services/backend/extensions/sps-website-builder/api/page/api";
 import { api as reviewApi } from "~redux/services/backend/api/review/api";
-import { api as sidebarApi } from "~redux/services/backend/api/sidebar/api";
-import { api as slideOverApi } from "~redux/services/backend/api/slide-over/api";
-import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
+import { api as sidebarApi } from "~redux/services/backend/extensions/sps-website-builder/api/sidebar/api";
+import { api as slideOverApi } from "~redux/services/backend/extensions/sps-website-builder/api/slide-over/api";
+import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
 
 export const slices = {
   middlewares: [

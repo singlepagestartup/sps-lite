@@ -2,8 +2,8 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as topbarApi } from "~redux/services/backend/api/topbar/api";
-import { IEntity as IBackendTopbar } from "~redux/services/backend/api/topbar/interfaces";
+import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
+import { IEntity as IBackendTopbar } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/interfaces";
 
 export interface ITopbar extends IBackendTopbar {
   showSkeletons?: boolean;

@@ -8,7 +8,7 @@ const model = "form-requests";
 const rtkType = "FormRequest";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
+  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({

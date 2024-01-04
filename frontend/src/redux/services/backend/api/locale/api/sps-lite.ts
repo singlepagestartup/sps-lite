@@ -6,7 +6,7 @@ const model = "locales";
 const rtkType = "Locale";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(BACKEND_URL),
+  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({}),

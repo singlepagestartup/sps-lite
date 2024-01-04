@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "sps_wb_robots",
+  "info": {
+    "singularName": "robot",
+    "pluralName": "robots",
+    "displayName": "Robot"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "robots": {
+      "type": "text"
+    }
+  }
+}

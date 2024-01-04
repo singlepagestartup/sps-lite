@@ -3,7 +3,7 @@ import { BACKEND_URL } from "~utils/envs";
 
 async function generateRobots() {
   const robots = await getBackendData({
-    url: `${BACKEND_URL}/api/robot`,
+    url: `${BACKEND_URL}/api/sps-website-builder/robot`,
     params: {
       populate: "*",
     },

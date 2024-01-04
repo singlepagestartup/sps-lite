@@ -4,7 +4,7 @@ import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import Pako from "pako";
 import QueryString from "qs";
-import { IBackendApiPage } from "~redux/services/backend/api/page/interfaces";
+import { IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 const scopedPage: IBackendApiPage = {
   id: 12,

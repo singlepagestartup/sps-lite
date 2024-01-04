@@ -48,7 +48,7 @@ export type TRTKOnQueryStarted = (
 
 export const strapiFetchBaseQueryBuilder = (baseUrl: string) =>
   fetchBaseQuery({
-    baseUrl: `${baseUrl}/api`,
+    baseUrl: `${baseUrl}`,
     paramsSerializer: (object) => {
       const stringifiedQuery = QueryString.stringify(object, {
         encodeValuesOnly: true,

@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "sps_wb_themes",
+  "info": {
+    "singularName": "theme",
+    "pluralName": "themes",
+    "displayName": "Theme",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "theme": {
+      "type": "json"
+    },
+    "fonts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.font"
+    }
+  }
+}

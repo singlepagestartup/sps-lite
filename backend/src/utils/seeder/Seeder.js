@@ -79,6 +79,14 @@ class Seeder {
   }
 
   async setSchema() {
+    if (this.uid.includes("plugin")) {
+      this.schema = strapi.plugin(this.modelName).contentTypes[
+        this.entityName
+      ].__schema__;
+
+      return;
+    }
+
     const pathToSchema = path.join(
       this.dirPath,
       `/${this.modelDirName}/content-types${
@@ -97,7 +105,12 @@ class Seeder {
   }
 
   async getSchema(model) {
-    if (model.includes("plugin") || model.includes("strapi::")) {
+    if (model.includes("plugin")) {
+      return strapi.plugin(this.modelName).contentTypes[this.entityName]
+        .__schema__;
+    }
+
+    if (model.includes("strapi::")) {
       return;
     }
 
