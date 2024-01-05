@@ -27,8 +27,8 @@ async function dumper(apiPath) {
     }
   }
 
-  const extensionsDirs = await fs.readdir(extensionsPath);
   const extensionsPath = path.join(apiPath, "../extensions");
+  const extensionsDirs = await fs.readdir(extensionsPath);
 
   if (extensionsDirs.length) {
     for (const extensionDirName of extensionsDirs) {

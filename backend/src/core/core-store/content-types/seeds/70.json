@@ -1,8 +1,8 @@
 {
     "id": 70,
-    "key": "plugin_i18n_default_locale",
-    "value": "\"en\"",
-    "type": "string",
+    "key": "plugin_upload_view_configuration",
+    "value": "{\"pageSize\":10,\"sort\":\"createdAt:DESC\"}",
+    "type": "object",
     "environment": null,
     "tag": null
 }
