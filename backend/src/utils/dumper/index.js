@@ -27,20 +27,37 @@ async function dumper(apiPath) {
     }
   }
 
-  const extensionsPath = path.join(apiPath, "../extensions");
   const extensionsDirs = await fs.readdir(extensionsPath);
-  if (extensionsDirs.length) {
-    for (const modelDirName of extensionsDirs) {
-      if (modelDirName === "plugin-i18n") {
-        const entityName = "locale";
+  const extensionsPath = path.join(apiPath, "../extensions");
 
+  if (extensionsDirs.length) {
+    for (const extensionDirName of extensionsDirs) {
+      if (extensionDirName === "plugin-i18n") {
         await modelDumper({
           dirPath: extensionsPath,
-          modelDirName,
+          modelDirName: extensionDirName,
           modelName: "i18n",
-          entityName,
+          entityName: "locale",
           type: "plugin",
         });
+      } else if (
+        ["sps-billing", "sps-crm", "sps-website-builder"].includes(
+          extensionDirName,
+        )
+      ) {
+        const contentTypeDirs = await fs.readdir(
+          path.join(extensionsPath, extensionDirName, "content-types"),
+        );
+
+        for (const contentTypeDir of contentTypeDirs) {
+          await modelDumper({
+            dirPath: extensionsPath,
+            modelDirName: extensionDirName,
+            modelName: extensionDirName,
+            entityName: contentTypeDir,
+            type: "plugin",
+          });
+        }
       }
     }
   }
