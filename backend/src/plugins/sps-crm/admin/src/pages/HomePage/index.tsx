@@ -4,8 +4,8 @@
  *
  */
 
-import React from 'react';
-import pluginId from '../../pluginId';
+import React from "react";
+import pluginId from "../../pluginId";
 
 const HomePage = () => {
   return (

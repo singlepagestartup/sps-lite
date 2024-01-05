@@ -362,71 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCurrencyCurrency extends Schema.CollectionType {
-  collectionName: "currencies";
-  info: {
-    singularName: "currency";
-    pluralName: "currencies";
-    displayName: "Currency";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    unicode: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    is_default: Attribute.Boolean &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    tiers: Attribute.Relation<
-      "api::currency.currency",
-      "oneToMany",
-      "api::tier.tier"
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "api::currency.currency",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "api::currency.currency",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "api::currency.currency",
-      "oneToMany",
-      "api::currency.currency"
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiTelegramTelegram extends Schema.CollectionType {
   collectionName: "telegrams";
   info: {
@@ -453,92 +388,6 @@ export interface ApiTelegramTelegram extends Schema.CollectionType {
       "admin::user"
     > &
       Attribute.Private;
-  };
-}
-
-export interface ApiTierTier extends Schema.CollectionType {
-  collectionName: "tiers";
-  info: {
-    singularName: "tier";
-    pluralName: "tiers";
-    displayName: "Tier";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    currency: Attribute.Relation<
-      "api::tier.tier",
-      "manyToOne",
-      "api::currency.currency"
-    >;
-    type: Attribute.Enumeration<["one-time", "regularly"]> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    period: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    features: Attribute.Component<"elements.feature", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    old_price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    buttons: Attribute.Component<"elements.button", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<"api::tier.tier", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<"api::tier.tier", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "api::tier.tier",
-      "oneToMany",
-      "api::tier.tier"
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -897,6 +746,350 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "plugin::users-permissions.user",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsBillingCurrency extends Schema.CollectionType {
+  collectionName: "sps_billing_currencies";
+  info: {
+    singularName: "currency";
+    pluralName: "currencies";
+    displayName: "Currency";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    unicode: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    is_default: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tiers: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToMany",
+      "plugin::sps-billing.tier"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToMany",
+      "plugin::sps-billing.currency"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsBillingTier extends Schema.CollectionType {
+  collectionName: "sps_billing_tiers";
+  info: {
+    singularName: "tier";
+    pluralName: "tiers";
+    displayName: "Tier";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
+    type: Attribute.Enumeration<["one-time", "regularly"]> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    period: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features: Attribute.Component<"elements.feature", true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    old_price: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    buttons: Attribute.Component<"elements.button", true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "oneToMany",
+      "plugin::sps-billing.tier"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsCrmConfiguration extends Schema.SingleType {
+  collectionName: "sps_crm_configurations";
+  info: {
+    singularName: "configuration";
+    pluralName: "configurations";
+    displayName: "Configuration";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    configs: Attribute.Component<"functions.config", true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.configuration",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.configuration",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsCrmForm extends Schema.CollectionType {
+  collectionName: "sps_crm_forms";
+  info: {
+    singularName: "form";
+    pluralName: "forms";
+    displayName: "Form";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    inputs: Attribute.Component<"elements.input", true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    class_name: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    additional_attributes: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"simple">;
+    button: Attribute.Component<"elements.button"> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    uid: Attribute.UID<"plugin::sps-crm.form", "title"> & Attribute.Required;
+    side_effects: Attribute.Component<"functions.form-side-effect", true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToMany",
+      "plugin::sps-crm.form"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
+  collectionName: "sps_crm_form_requests";
+  info: {
+    singularName: "form-request";
+    pluralName: "form-requests";
+    displayName: "Form Request";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    inputs: Attribute.Component<"elements.request-input", true>;
+    files: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.form-request",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.form-request",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsCrmReview extends Schema.CollectionType {
+  collectionName: "sps_crm_reviews";
+  info: {
+    singularName: "review";
+    pluralName: "reviews";
+    displayName: "Review";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.RichText;
+    title: Attribute.RichText;
+    description: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    rating: Attribute.Integer;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.review",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.review",
       "oneToOne",
       "admin::user"
     > &
@@ -1976,191 +2169,6 @@ export interface PluginSpsWebsiteBuilderTopbar extends Schema.CollectionType {
   };
 }
 
-export interface PluginSpsCrmConfiguration extends Schema.SingleType {
-  collectionName: "sps_crm_configurations";
-  info: {
-    singularName: "configuration";
-    pluralName: "configurations";
-    displayName: "Configuration";
-    description: "";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    configs: Attribute.Component<"functions.config", true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::sps-crm.configuration",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::sps-crm.configuration",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginSpsCrmForm extends Schema.CollectionType {
-  collectionName: "sps_crm_forms";
-  info: {
-    singularName: "form";
-    pluralName: "forms";
-    displayName: "Form";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    inputs: Attribute.Component<"elements.input", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    class_name: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    additional_attributes: Attribute.JSON &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    variant: Attribute.Enumeration<["simple"]> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<"simple">;
-    button: Attribute.Component<"elements.button"> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    uid: Attribute.UID<"plugin::sps-crm.form", "title"> & Attribute.Required;
-    side_effects: Attribute.Component<"functions.form-side-effect", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::sps-crm.form",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::sps-crm.form",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "plugin::sps-crm.form",
-      "oneToMany",
-      "plugin::sps-crm.form"
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
-  collectionName: "sps_crm_form_requests";
-  info: {
-    singularName: "form-request";
-    pluralName: "form-requests";
-    displayName: "Form Request";
-    description: "";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    inputs: Attribute.Component<"elements.request-input", true>;
-    files: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::sps-crm.form-request",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::sps-crm.form-request",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginSpsCrmReview extends Schema.CollectionType {
-  collectionName: "sps_crm_reviews";
-  info: {
-    singularName: "review";
-    pluralName: "reviews";
-    displayName: "Review";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.RichText;
-    title: Attribute.RichText;
-    description: Attribute.RichText;
-    subtitle: Attribute.RichText;
-    rating: Attribute.Integer;
-    media: Attribute.Media;
-    additional_media: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::sps-crm.review",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::sps-crm.review",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: "i18n_locale";
   info: {
@@ -2264,9 +2272,7 @@ declare module "@strapi/types" {
       "admin::api-token-permission": AdminApiTokenPermission;
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
-      "api::currency.currency": ApiCurrencyCurrency;
       "api::telegram.telegram": ApiTelegramTelegram;
-      "api::tier.tier": ApiTierTier;
       "plugin::upload.file": PluginUploadFile;
       "plugin::upload.folder": PluginUploadFolder;
       "plugin::content-releases.release": PluginContentReleasesRelease;
@@ -2274,6 +2280,12 @@ declare module "@strapi/types" {
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
+      "plugin::sps-billing.currency": PluginSpsBillingCurrency;
+      "plugin::sps-billing.tier": PluginSpsBillingTier;
+      "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
+      "plugin::sps-crm.form": PluginSpsCrmForm;
+      "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
+      "plugin::sps-crm.review": PluginSpsCrmReview;
       "plugin::sps-website-builder.flyout": PluginSpsWebsiteBuilderFlyout;
       "plugin::sps-website-builder.footer": PluginSpsWebsiteBuilderFooter;
       "plugin::sps-website-builder.layout": PluginSpsWebsiteBuilderLayout;
@@ -2288,10 +2300,6 @@ declare module "@strapi/types" {
       "plugin::sps-website-builder.slider": PluginSpsWebsiteBuilderSlider;
       "plugin::sps-website-builder.theme": PluginSpsWebsiteBuilderTheme;
       "plugin::sps-website-builder.topbar": PluginSpsWebsiteBuilderTopbar;
-      "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
-      "plugin::sps-crm.form": PluginSpsCrmForm;
-      "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
-      "plugin::sps-crm.review": PluginSpsCrmReview;
       "plugin::i18n.locale": PluginI18NLocale;
       "plugin::email-designer.email-template": PluginEmailDesignerEmailTemplate;
     }

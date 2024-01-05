@@ -39,7 +39,9 @@ async function seeder(apiPath) {
           console.log("🚀 ~ seeder ~ error", extensionDirName, error?.message);
         }
       } else if (
-        ["sps-website-builder", "sps-crm"].includes(extensionDirName)
+        ["sps-billing", "sps-crm", "sps-website-builder"].includes(
+          extensionDirName,
+        )
       ) {
         const contentTypeDirs = await fs.readdir(
           path.join(extensionsPath, extensionDirName, "content-types"),

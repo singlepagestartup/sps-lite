@@ -22,13 +22,17 @@ module.exports = ({ env }) => {
         },
       },
     },
-    "sps-website-builder": {
+    "sps-billing": {
       enabled: true,
-      resolve: "./src/plugins/sps-website-builder",
+      resolve: "./src/plugins/sps-billing",
     },
     "sps-crm": {
       enabled: true,
       resolve: "./src/plugins/sps-crm",
+    },
+    "sps-website-builder": {
+      enabled: true,
+      resolve: "./src/plugins/sps-website-builder",
     },
   };
 

@@ -8,9 +8,7 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "simple-with-avatars"
-      ],
+      "enum": ["simple-with-avatars"],
       "default": "simple-with-avatars",
       "required": true
     },
