@@ -30,6 +30,10 @@ module.exports = ({ env }) => {
       enabled: true,
       resolve: "./src/plugins/sps-crm",
     },
+    "sps-notification": {
+      enabled: true,
+      resolve: "./src/plugins/sps-notification",
+    },
     "sps-website-builder": {
       enabled: true,
       resolve: "./src/plugins/sps-website-builder",

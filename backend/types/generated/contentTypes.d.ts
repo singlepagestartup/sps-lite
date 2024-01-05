@@ -362,35 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTelegramTelegram extends Schema.CollectionType {
-  collectionName: "telegrams";
-  info: {
-    singularName: "telegram";
-    pluralName: "telegrams";
-    displayName: "Telegram";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "api::telegram.telegram",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "api::telegram.telegram",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: "files";
   info: {
@@ -1090,6 +1061,35 @@ export interface PluginSpsCrmReview extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "plugin::sps-crm.review",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsNotificationTelegram extends Schema.CollectionType {
+  collectionName: "sps_notification_telegrams";
+  info: {
+    singularName: "telegram";
+    pluralName: "telegrams";
+    displayName: "Telegram";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-notification.telegram",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-notification.telegram",
       "oneToOne",
       "admin::user"
     > &
@@ -2272,7 +2272,6 @@ declare module "@strapi/types" {
       "admin::api-token-permission": AdminApiTokenPermission;
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
-      "api::telegram.telegram": ApiTelegramTelegram;
       "plugin::upload.file": PluginUploadFile;
       "plugin::upload.folder": PluginUploadFolder;
       "plugin::content-releases.release": PluginContentReleasesRelease;
@@ -2286,6 +2285,7 @@ declare module "@strapi/types" {
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
       "plugin::sps-crm.review": PluginSpsCrmReview;
+      "plugin::sps-notification.telegram": PluginSpsNotificationTelegram;
       "plugin::sps-website-builder.flyout": PluginSpsWebsiteBuilderFlyout;
       "plugin::sps-website-builder.footer": PluginSpsWebsiteBuilderFooter;
       "plugin::sps-website-builder.layout": PluginSpsWebsiteBuilderLayout;

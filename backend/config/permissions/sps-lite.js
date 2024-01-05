@@ -23,7 +23,7 @@ const public = {
     "getUrls",
   ],
   "plugin::sps-website-builder.loader": ["find"],
-  "api::telegram.telegram": ["webhook"],
+  "plugin::sps-notification.telegram": ["webhook"],
   "plugin::users-permissions.auth": [],
   "plugin::users-permissions.user": [],
   "plugin::users-permissions.role": [],
