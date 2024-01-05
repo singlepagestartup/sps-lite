@@ -14,12 +14,13 @@ const path = require("path");
 async function seeder(apiPath) {
   console.log("Seeding is started");
 
+  const seededModelNames = [];
+  const seededModels = {};
+
   const extensionsPath = path.join(apiPath, "../extensions");
   const extensionsDirs = await fs.readdir(extensionsPath);
-  if (extensionsDirs.length) {
-    const seededModelNames = [];
-    const seededModels = {};
 
+  if (extensionsDirs.length) {
     for (const extensionDirName of extensionsDirs) {
       if (extensionDirName === "plugin-i18n") {
         try {
@@ -46,8 +47,6 @@ async function seeder(apiPath) {
         const contentTypeDirs = await fs.readdir(
           path.join(extensionsPath, extensionDirName, "content-types"),
         );
-        const seededModelNames = [];
-        const seededModels = {};
 
         for (const contentTypeDir of contentTypeDirs) {
           try {
@@ -74,9 +73,6 @@ async function seeder(apiPath) {
   const corePath = path.join(apiPath, "../core");
   const coreDirs = await fs.readdir(corePath);
   if (coreDirs.length) {
-    const seededModelNames = [];
-    const seededModels = {};
-
     for (const coreDirName of coreDirs) {
       if (coreDirName === "core-store") {
         try {
@@ -101,9 +97,6 @@ async function seeder(apiPath) {
   const apiDirs = await fs.readdir(apiPath);
 
   if (apiDirs.length) {
-    const seededModelNames = [];
-    const seededModels = {};
-
     for (const modelDirName of apiDirs) {
       if ([".DS_Store", ".gitkeep"].includes(modelDirName)) {
         continue;

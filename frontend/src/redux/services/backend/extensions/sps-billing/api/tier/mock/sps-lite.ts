@@ -1,5 +1,5 @@
 import { IEntity } from "../interfaces/sps-lite";
-import { entity as currency } from "~redux/services/backend/api/currency/mock/sps-lite";
+import { entity as currency } from "~redux/services/backend/extensions/sps-billing/api/currency/mock/sps-lite";
 import { entity as feature } from "~redux/services/backend/components/elements/feature/mock/sps-lite";
 import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
 

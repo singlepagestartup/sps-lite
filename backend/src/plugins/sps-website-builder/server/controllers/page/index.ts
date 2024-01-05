@@ -114,14 +114,19 @@ async function getModelPages({
 
   const modelRoute = modelRoutes[0];
   const sanitizedRoute = modelRoute.replace("[", "").replace("]", "");
-  const model = sanitizedRoute.split(".")[0];
-  const modelParam = sanitizedRoute.split(".")[1];
-  let strapiModel = model;
+  const modelParam =
+    sanitizedRoute.split(".")[sanitizedRoute.split(".").length - 1];
+  let strapiModel = sanitizedRoute;
 
-  if (model.includes("user")) {
-    strapiModel = "plugin::users-permissions.user";
+  if (sanitizedRoute.includes("::")) {
+    const modelReplacedParam = sanitizedRoute
+      .split(".")
+      .slice(0, sanitizedRoute.split(".").length - 1)
+      .join(".");
+
+    strapiModel = modelReplacedParam;
   } else {
-    strapiModel = `api::${model}.${model}`;
+    strapiModel = `api::${sanitizedRoute}.${sanitizedRoute}`;
   }
 
   const findProps = {
@@ -172,7 +177,7 @@ async function getModelPages({
         );
 
         const filters = {
-          [model]: `${modelEntity.id}`,
+          ["model"]: `${modelEntity.id}`,
         };
 
         const p = await getModelPages({

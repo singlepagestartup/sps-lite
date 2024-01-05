@@ -3,7 +3,9 @@
 
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "allowJs": true,
+    "sourceMap": true
   },
 
   "include": [

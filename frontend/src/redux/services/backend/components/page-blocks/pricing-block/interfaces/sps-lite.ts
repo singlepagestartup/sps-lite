@@ -1,4 +1,4 @@
-import { IEntity as IBackendTier } from "~redux/services/backend/api/tier/interfaces";
+import { IEntity as IBackendTier } from "~redux/services/backend/extensions/sps-billing/api/tier/interfaces";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IComponent {

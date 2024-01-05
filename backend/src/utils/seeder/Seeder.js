@@ -554,6 +554,9 @@ class Parameter {
     this.seedValue; //?
     const targetType = this.attributes.target.split("::")[0];
     const targetModelName = this.attributes.target.split("::")[1].split(".")[0]; //?
+    const targetEntityName = this.attributes.target
+      .split("::")[1]
+      .split(".")[1]; //?
 
     // console.log('🚀 ~ seedRelations ~ targetModelName:', targetModelName);
 
@@ -573,7 +576,7 @@ class Parameter {
         type: targetType,
         modelDirName: targetModelName,
         modelName: targetModelName,
-        entityName: targetModelName,
+        entityName: targetEntityName,
         dirPath: this.entity.seeder.dirPath,
         skipModels: [
           ...(this.entity.seeder?.skipModels || []),

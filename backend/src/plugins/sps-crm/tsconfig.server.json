@@ -4,7 +4,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "allowJs": true
+    "allowJs": true,
+    "sourceMap": true
   },
 
   "include": [

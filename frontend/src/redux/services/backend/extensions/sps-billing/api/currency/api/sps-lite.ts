@@ -9,7 +9,7 @@ const rtkType = "Currency";
 const model = "currencies";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api`),
+  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-billing`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({

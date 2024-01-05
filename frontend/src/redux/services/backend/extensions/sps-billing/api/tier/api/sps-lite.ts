@@ -6,7 +6,7 @@ const model = "tiers";
 const rtkType = "Tier";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api`),
+  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-billing`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({}),

@@ -1,4 +1,4 @@
-import { api as currencyApi } from "~redux/services/backend/api/currency/api";
+import { api as currencyApi } from "~redux/services/backend/extensions/sps-billing/api/currency/api";
 import { api as flyoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/api";
 import { api as footerApi } from "~redux/services/backend/extensions/sps-website-builder/api/footer/api";
 import { api as formRequestApi } from "~redux/services/backend/extensions/sps-crm/api/form-request/api";
