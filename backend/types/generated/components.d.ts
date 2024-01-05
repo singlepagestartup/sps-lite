@@ -307,13 +307,13 @@ export interface PageBlocksContactSectionBlock extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<"centered">;
     media: Attribute.Media;
+    buttons_arrays: Attribute.Component<"elements.buttons-array", true>;
+    additional_media: Attribute.Media;
     form: Attribute.Relation<
       "page-blocks.contact-section-block",
       "oneToOne",
-      "api::form.form"
+      "plugin::sps-crm.form"
     >;
-    buttons_arrays: Attribute.Component<"elements.buttons-array", true>;
-    additional_media: Attribute.Media;
   };
 }
 
@@ -554,13 +554,9 @@ export interface PageBlocksReviewsListBlock extends Schema.Component {
   collectionName: "components_page_blocks_reviews_list_blocks";
   info: {
     displayName: "Reviews List Block";
+    description: "";
   };
   attributes: {
-    reviews: Attribute.Relation<
-      "page-blocks.reviews-list-block",
-      "oneToMany",
-      "api::review.review"
-    >;
     variant: Attribute.Enumeration<["simple-with-avatars"]> &
       Attribute.Required &
       Attribute.DefaultTo<"simple-with-avatars">;
@@ -570,6 +566,11 @@ export interface PageBlocksReviewsListBlock extends Schema.Component {
     title: Attribute.RichText;
     subtitle: Attribute.RichText;
     description: Attribute.RichText;
+    reviews: Attribute.Relation<
+      "page-blocks.reviews-list-block",
+      "oneToMany",
+      "plugin::sps-crm.review"
+    >;
   };
 }
 

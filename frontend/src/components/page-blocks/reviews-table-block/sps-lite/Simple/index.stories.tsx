@@ -5,7 +5,7 @@ import store from "~redux/index";
 import { BACKEND_URL } from "~utils/envs";
 import Root from ".";
 import { entity } from "~redux/services/backend/components/page-blocks/reviews-table-block/mock/sps-lite";
-import { entity as review } from "~redux/services/backend/api/review/mock/sps-lite";
+import { entity as review } from "~redux/services/backend/extensions/sps-crm/api/review/mock/sps-lite";
 import { IPageBlock } from "../..";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;

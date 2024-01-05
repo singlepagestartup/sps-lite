@@ -6,7 +6,7 @@ import Table, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "..";
-import { entity } from "~redux/services/backend/api/review/mock/sps-lite";
+import { entity } from "~redux/services/backend/extensions/sps-crm/api/review/mock/sps-lite";
 
 const meta = {
   component: Table,

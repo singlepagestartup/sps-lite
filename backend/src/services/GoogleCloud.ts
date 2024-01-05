@@ -12,16 +12,15 @@ class GoogleCloud {
   }
 
   async setConfig() {
-    const configs: any = await strapi.entityService.findMany(
-      "api::configuration.configuration",
-      {
+    const configs: any = await strapi
+      .plugin("plugin.sps-crm.configuration")
+      .findMany({
         populate: {
           configs: {
             populate: "*",
           },
         },
-      },
-    );
+      });
 
     const googleDriveConfig = configs.configs.find(
       (c) => c.provider === "google",

@@ -31,11 +31,6 @@
       "type": "media",
       "multiple": false
     },
-    "form": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::form.form"
-    },
     "buttons_arrays": {
       "type": "component",
       "repeatable": true,
@@ -45,6 +40,11 @@
       "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": true
+    },
+    "form": {
+      "relation": "oneToOne",
+      "target": "plugin::sps-crm.form",
+      "type": "relation"
     }
   }
 }

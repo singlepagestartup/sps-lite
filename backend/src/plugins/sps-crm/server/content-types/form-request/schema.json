@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_crm_form_requests",
+  "info": {
+    "singularName": "form-request",
+    "pluralName": "form-requests",
+    "displayName": "Form Request",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "inputs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.request-input"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    }
+  }
+}

@@ -7,7 +7,7 @@ import Table, {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "~components/table";
-import { api as reviewApi } from "~redux/services/backend/api/review/api";
+import { api as reviewApi } from "~redux/services/backend/extensions/sps-crm/api/review/api";
 import { IPageBlock } from "../..";
 
 const tableConfig = {

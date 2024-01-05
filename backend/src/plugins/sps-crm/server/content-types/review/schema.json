@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_crm_reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    },
+    "additional_media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

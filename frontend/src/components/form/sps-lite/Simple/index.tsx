@@ -1,4 +1,4 @@
-import { api as formRequestApi } from "~redux/services/backend/api/form-request/api";
+import { api as formRequestApi } from "~redux/services/backend/extensions/sps-crm/api/form-request/api";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Input from "~components/input";
