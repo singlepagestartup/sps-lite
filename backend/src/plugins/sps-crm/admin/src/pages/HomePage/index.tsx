@@ -6,13 +6,27 @@
 
 import React from "react";
 import pluginId from "../../pluginId";
+import { Box, Flex, HeaderLayout, Layout, Main } from "@strapi/design-system";
+import { InformationSquare } from "@strapi/icons";
+import { ContentBox, useTracking } from "@strapi/helper-plugin";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>{pluginId}&apos;s HomePage</h1>
-      <p>Happy coding</p>
-    </div>
+    <Layout>
+      <Main>
+        <HeaderLayout title={pluginId} />
+        <Box paddingLeft={10} paddingRight={10} paddingTop={0}>
+          <Flex direction="column" alignItems="stretch" gap={5}>
+            <ContentBox
+              title="CRM Plugin"
+              subtitle="Here will be Content Manager for CRM"
+              icon={<InformationSquare />}
+              iconBackground="primary100"
+            />
+          </Flex>
+        </Box>
+      </Main>
+    </Layout>
   );
 };
 
