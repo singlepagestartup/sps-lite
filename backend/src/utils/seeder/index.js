@@ -22,12 +22,34 @@ async function seeder(apiPath) {
 
   if (extensionsDirs.length) {
     for (const extensionDirName of extensionsDirs) {
+      const extensionDirNameIsDirectory = await isDirectory(
+        path.join(extensionsPath, extensionDirName),
+      );
+
+      if (!extensionDirNameIsDirectory) {
+        continue;
+      }
+
+      let contentTypeDirs = [];
+      try {
+        contentTypeDirs = await fs.readdir(
+          path.join(extensionsPath, extensionDirName, "content-types"),
+        );
+      } catch (error) {
+        //
+      }
+
+      let modelName = extensionDirName;
       if (extensionDirName === "plugin-i18n") {
+        modelName = "i18n";
+      }
+
+      for (const contentTypeDir of contentTypeDirs) {
         try {
           const seed = new Seeder({
             modelDirName: extensionDirName,
-            modelName: "i18n",
-            entityName: "locale",
+            modelName: modelName,
+            entityName: contentTypeDir,
             dirPath: extensionsPath,
             type: "plugin",
             seededModelNames,
@@ -37,34 +59,7 @@ async function seeder(apiPath) {
           await seed.setSeed();
           await seed.seedEntites();
         } catch (error) {
-          console.log("🚀 ~ seeder ~ error", extensionDirName, error?.message);
-        }
-      } else if (
-        ["sps-billing", "sps-crm", "sps-website-builder"].includes(
-          extensionDirName,
-        )
-      ) {
-        const contentTypeDirs = await fs.readdir(
-          path.join(extensionsPath, extensionDirName, "content-types"),
-        );
-
-        for (const contentTypeDir of contentTypeDirs) {
-          try {
-            const seed = new Seeder({
-              modelDirName: extensionDirName,
-              modelName: extensionDirName,
-              entityName: contentTypeDir,
-              dirPath: extensionsPath,
-              type: "plugin",
-              seededModelNames,
-              seededModels,
-            });
-            await seed.setSchema();
-            await seed.setSeed();
-            await seed.seedEntites();
-          } catch (error) {
-            console.log("🚀 ~ seeder ~ error", contentTypeDir, error?.message);
-          }
+          console.log("🚀 ~ seeder ~ error", contentTypeDir, error?.message);
         }
       }
     }
@@ -125,3 +120,11 @@ async function seeder(apiPath) {
 }
 
 module.exports = seeder;
+
+async function isDirectory(p) {
+  try {
+    return await fs.readdir(p);
+  } catch (err) {
+    return false;
+  }
+}

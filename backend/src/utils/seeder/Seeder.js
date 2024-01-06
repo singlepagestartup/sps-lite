@@ -34,6 +34,7 @@ class Seeder {
     try {
       seedFiles = await fs.readdir(pathToSeed);
     } catch (error) {
+      return;
       // console.log('🚀 ~ setSeed ~ no seed for model:', this.modelName, ' skipping migration');
     }
 
