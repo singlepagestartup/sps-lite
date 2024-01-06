@@ -3,3 +3,8 @@ node_modules
 .storybook
 public
 out
+playwright-report
+test-results
+coverage
+playwright-report
+**/artifacts

@@ -1,0 +1,1289 @@
+{
+    "id": 2,
+    "title": "Page With Sidebar Layout",
+    "url": "/page-with-sidebar-layout",
+    "createdAt": "2024-01-05T18:09:06.405Z",
+    "updatedAt": "2024-01-05T18:09:06.405Z",
+    "publishedAt": "2023-04-08T13:00:14.519Z",
+    "locale": "en",
+    "page_blocks": [
+        {
+            "__component": "page-blocks.slider-block",
+            "id": 1,
+            "variant": "simple",
+            "anchor": null,
+            "class_name": "pt-16",
+            "title": null,
+            "description": null,
+            "subtitle": null,
+            "slider": null
+        }
+    ],
+    "layout": {
+        "id": 1,
+        "title": "Public Page Layout With Sidebar",
+        "uid": "public-page-layout",
+        "variant": "boxed",
+        "class_name": null,
+        "createdAt": "2024-01-05T18:08:37.021Z",
+        "updatedAt": "2024-01-05T18:08:37.021Z",
+        "publishedAt": "2023-04-08T05:04:56.606Z",
+        "locale": "en",
+        "footer": {
+            "id": 1,
+            "title": "Public Page Footer",
+            "uid": "public-page-footer",
+            "variant": "boxed",
+            "class_name": null,
+            "createdAt": "2024-01-05T18:08:36.985Z",
+            "updatedAt": "2024-01-05T18:08:36.985Z",
+            "publishedAt": "2023-05-04T03:25:15.030Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.footer-block",
+                    "id": 1,
+                    "copyrights": "2023 Single Page Startup",
+                    "description": "The fastest way to develop your startup",
+                    "variant": "four-columns-with-company-mission",
+                    "class_name": null,
+                    "logotype": {
+                        "id": 1,
+                        "title": null,
+                        "url": "/"
+                    },
+                    "buttons_arrays": [
+                        {
+                            "id": 1,
+                            "title": "Pages",
+                            "class_name": null,
+                            "variant": "column-with-title",
+                            "description": null,
+                            "url": null,
+                            "additional_attributes": null
+                        },
+                        {
+                            "id": 2,
+                            "title": "Links",
+                            "class_name": null,
+                            "variant": "column-with-title",
+                            "description": null,
+                            "url": null,
+                            "additional_attributes": null
+                        }
+                    ],
+                    "additional_buttons_arrays": [
+                        {
+                            "id": 3,
+                            "title": null,
+                            "class_name": null,
+                            "variant": "row",
+                            "description": null,
+                            "url": null,
+                            "additional_attributes": null
+                        }
+                    ],
+                    "extra_buttons_arrays": [
+                        {
+                            "id": 4,
+                            "title": null,
+                            "class_name": null,
+                            "variant": "row",
+                            "description": null,
+                            "url": null,
+                            "additional_attributes": null
+                        }
+                    ]
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en"
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                {
+                    "id": 2,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
+                    "variant": "wide",
+                    "class_name": "[&>.layout-container]:pt-16",
+                    "createdAt": "2024-01-05T18:08:37.045Z",
+                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": null,
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 1,
+                            "title": "Main page",
+                            "url": "/",
+                            "createdAt": "2024-01-05T18:09:06.380Z",
+                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "publishedAt": "2023-04-08T12:06:05.277Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Not found page",
+                            "url": "/404",
+                            "createdAt": "2024-01-05T18:09:06.426Z",
+                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "publishedAt": "2023-04-20T04:18:21.051Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Terms and Conditions",
+                            "url": "/terms-and-conditions",
+                            "createdAt": "2024-01-05T18:09:06.439Z",
+                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "publishedAt": "2023-05-04T08:38:22.465Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Currency Page",
+                            "url": "/currencies/[plugin::sps-billing.currency.id]",
+                            "createdAt": "2024-01-05T18:09:06.455Z",
+                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "publishedAt": "2023-12-02T23:44:54.598Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        },
+        "modals": [
+            {
+                "id": 1,
+                "uid": "this-is-modal",
+                "dialog_panel_class_name": "w-8/12",
+                "variant": "simple",
+                "title": "This Is Modal",
+                "class_name": null,
+                "createdAt": "2024-01-05T18:08:37.693Z",
+                "updatedAt": "2024-01-05T18:08:37.693Z",
+                "publishedAt": "2023-03-28T04:07:57.457Z",
+                "locale": "en",
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.hero-section-block",
+                        "id": 2,
+                        "title": "This Is Modal",
+                        "description": "With Page Blocks",
+                        "variant": "simple-centered",
+                        "anchor": null,
+                        "class_name": null,
+                        "media": null,
+                        "buttons": [],
+                        "additional_media": null
+                    }
+                ],
+                "layouts": [
+                    {
+                        "id": 1,
+                        "title": "Public Page Layout With Sidebar",
+                        "uid": "public-page-layout",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.021Z",
+                        "updatedAt": "2024-01-05T18:08:37.021Z",
+                        "publishedAt": "2023-04-08T05:04:56.606Z",
+                        "locale": "en",
+                        "footer": {
+                            "id": 1,
+                            "title": "Public Page Footer",
+                            "uid": "public-page-footer",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:36.985Z",
+                            "updatedAt": "2024-01-05T18:08:36.985Z",
+                            "publishedAt": "2023-05-04T03:25:15.030Z",
+                            "locale": "en"
+                        },
+                        "modals": [
+                            {
+                                "id": 1,
+                                "uid": "this-is-modal",
+                                "dialog_panel_class_name": "w-8/12",
+                                "variant": "simple",
+                                "title": "This Is Modal",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.693Z",
+                                "updatedAt": "2024-01-05T18:08:37.693Z",
+                                "publishedAt": "2023-03-28T04:07:57.457Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "navbar": {
+                            "id": 1,
+                            "title": "Public Page Navbar",
+                            "uid": "public-page-navbar",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "position": "fixed",
+                            "side": "top",
+                            "createdAt": "2024-01-05T18:08:38.420Z",
+                            "updatedAt": "2024-01-05T18:08:38.420Z",
+                            "publishedAt": "2023-04-08T05:04:22.148Z",
+                            "locale": "en"
+                        },
+                        "sidebar": {
+                            "id": 1,
+                            "variant": "one-quarter",
+                            "title": "Ads Sidebar",
+                            "uid": "ads-sidebar-1",
+                            "class_name": null,
+                            "side": "right",
+                            "createdAt": "2024-01-05T18:09:06.475Z",
+                            "updatedAt": "2024-01-05T18:09:06.475Z",
+                            "publishedAt": "2023-04-07T17:35:29.006Z",
+                            "locale": "en"
+                        },
+                        "slide_overs": [
+                            {
+                                "id": 1,
+                                "variant": "right-side-half-width",
+                                "title": "This Is Slide Over",
+                                "uid": "this-is-slide-over",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2024-01-05T18:09:06.497Z",
+                                "updatedAt": "2024-01-05T18:09:06.497Z",
+                                "publishedAt": "2023-04-07T16:54:17.781Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "topbar": null,
+                        "pages": [
+                            {
+                                "id": 2,
+                                "title": "Page With Sidebar Layout",
+                                "url": "/page-with-sidebar-layout",
+                                "createdAt": "2024-01-05T18:09:06.405Z",
+                                "updatedAt": "2024-01-05T18:09:06.405Z",
+                                "publishedAt": "2023-04-08T13:00:14.519Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 2,
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
+                        "variant": "wide",
+                        "class_name": "[&>.layout-container]:pt-16",
+                        "createdAt": "2024-01-05T18:08:37.045Z",
+                        "updatedAt": "2024-01-05T18:08:37.045Z",
+                        "publishedAt": "2023-04-20T03:23:38.447Z",
+                        "locale": "en",
+                        "footer": {
+                            "id": 1,
+                            "title": "Public Page Footer",
+                            "uid": "public-page-footer",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:36.985Z",
+                            "updatedAt": "2024-01-05T18:08:36.985Z",
+                            "publishedAt": "2023-05-04T03:25:15.030Z",
+                            "locale": "en"
+                        },
+                        "modals": [
+                            {
+                                "id": 1,
+                                "uid": "this-is-modal",
+                                "dialog_panel_class_name": "w-8/12",
+                                "variant": "simple",
+                                "title": "This Is Modal",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.693Z",
+                                "updatedAt": "2024-01-05T18:08:37.693Z",
+                                "publishedAt": "2023-03-28T04:07:57.457Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "navbar": {
+                            "id": 1,
+                            "title": "Public Page Navbar",
+                            "uid": "public-page-navbar",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "position": "fixed",
+                            "side": "top",
+                            "createdAt": "2024-01-05T18:08:38.420Z",
+                            "updatedAt": "2024-01-05T18:08:38.420Z",
+                            "publishedAt": "2023-04-08T05:04:22.148Z",
+                            "locale": "en"
+                        },
+                        "sidebar": null,
+                        "slide_overs": [
+                            {
+                                "id": 1,
+                                "variant": "right-side-half-width",
+                                "title": "This Is Slide Over",
+                                "uid": "this-is-slide-over",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2024-01-05T18:09:06.497Z",
+                                "updatedAt": "2024-01-05T18:09:06.497Z",
+                                "publishedAt": "2023-04-07T16:54:17.781Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "topbar": null,
+                        "pages": [
+                            {
+                                "id": 1,
+                                "title": "Main page",
+                                "url": "/",
+                                "createdAt": "2024-01-05T18:09:06.380Z",
+                                "updatedAt": "2024-01-05T18:09:06.380Z",
+                                "publishedAt": "2023-04-08T12:06:05.277Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Not found page",
+                                "url": "/404",
+                                "createdAt": "2024-01-05T18:09:06.426Z",
+                                "updatedAt": "2024-01-05T18:09:06.426Z",
+                                "publishedAt": "2023-04-20T04:18:21.051Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Terms and Conditions",
+                                "url": "/terms-and-conditions",
+                                "createdAt": "2024-01-05T18:09:06.439Z",
+                                "updatedAt": "2024-01-05T18:09:06.439Z",
+                                "publishedAt": "2023-05-04T08:38:22.465Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 5,
+                                "title": "Currency Page",
+                                "url": "/currencies/[plugin::sps-billing.currency.id]",
+                                "createdAt": "2024-01-05T18:09:06.455Z",
+                                "updatedAt": "2024-01-05T18:23:53.332Z",
+                                "publishedAt": "2023-12-02T23:44:54.598Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "navbar": {
+            "id": 1,
+            "title": "Public Page Navbar",
+            "uid": "public-page-navbar",
+            "variant": "boxed",
+            "class_name": null,
+            "position": "fixed",
+            "side": "top",
+            "createdAt": "2024-01-05T18:08:38.420Z",
+            "updatedAt": "2024-01-05T18:08:38.420Z",
+            "publishedAt": "2023-04-08T05:04:22.148Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.navbar-block",
+                    "id": 1,
+                    "variant": "simple-links-on-left",
+                    "description": null,
+                    "class_name": null,
+                    "logotype": {
+                        "id": 2,
+                        "title": null,
+                        "url": "/"
+                    },
+                    "buttons": [
+                        {
+                            "id": 9,
+                            "url": "/",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Main",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 10,
+                            "url": "/page-with-sidebar-layout",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Sidebar",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 11,
+                            "url": null,
+                            "description": null,
+                            "variant": "text",
+                            "title": "Flyout",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 12,
+                            "url": "?opened_modal=this-is-modal",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Modal",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 13,
+                            "url": "?opened_slide_over=this-is-slide-over",
+                            "description": null,
+                            "variant": "text",
+                            "title": "Slide Over",
+                            "additional_attributes": null,
+                            "class_name": null
+                        }
+                    ],
+                    "additional_buttons": [
+                        {
+                            "id": 14,
+                            "url": "https://github.com/singlepagestartup/sps-lite",
+                            "description": null,
+                            "variant": "secondary",
+                            "title": "GitHub",
+                            "additional_attributes": null,
+                            "class_name": null
+                        },
+                        {
+                            "id": 15,
+                            "url": null,
+                            "description": null,
+                            "variant": "locale",
+                            "title": null,
+                            "additional_attributes": null,
+                            "class_name": null
+                        }
+                    ],
+                    "extra_buttons": []
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en"
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                {
+                    "id": 2,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
+                    "variant": "wide",
+                    "class_name": "[&>.layout-container]:pt-16",
+                    "createdAt": "2024-01-05T18:08:37.045Z",
+                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": null,
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 1,
+                            "title": "Main page",
+                            "url": "/",
+                            "createdAt": "2024-01-05T18:09:06.380Z",
+                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "publishedAt": "2023-04-08T12:06:05.277Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Not found page",
+                            "url": "/404",
+                            "createdAt": "2024-01-05T18:09:06.426Z",
+                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "publishedAt": "2023-04-20T04:18:21.051Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Terms and Conditions",
+                            "url": "/terms-and-conditions",
+                            "createdAt": "2024-01-05T18:09:06.439Z",
+                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "publishedAt": "2023-05-04T08:38:22.465Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Currency Page",
+                            "url": "/currencies/[plugin::sps-billing.currency.id]",
+                            "createdAt": "2024-01-05T18:09:06.455Z",
+                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "publishedAt": "2023-12-02T23:44:54.598Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        },
+        "sidebar": {
+            "id": 1,
+            "variant": "one-quarter",
+            "title": "Ads Sidebar",
+            "uid": "ads-sidebar-1",
+            "class_name": null,
+            "side": "right",
+            "createdAt": "2024-01-05T18:09:06.475Z",
+            "updatedAt": "2024-01-05T18:09:06.475Z",
+            "publishedAt": "2023-04-07T17:35:29.006Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.hero-section-block",
+                    "id": 6,
+                    "title": "Sidebar",
+                    "description": "With Page Blocks",
+                    "variant": "simple-centered",
+                    "anchor": null,
+                    "class_name": "pt-16",
+                    "media": null,
+                    "buttons": [],
+                    "additional_media": null
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en"
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        },
+        "slide_overs": [
+            {
+                "id": 1,
+                "variant": "right-side-half-width",
+                "title": "This Is Slide Over",
+                "uid": "this-is-slide-over",
+                "class_name": "sps-lite-slide-over",
+                "createdAt": "2024-01-05T18:09:06.497Z",
+                "updatedAt": "2024-01-05T18:09:06.497Z",
+                "publishedAt": "2023-04-07T16:54:17.781Z",
+                "locale": "en",
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.faqs-block",
+                        "id": 1,
+                        "title": "This Is Slide Over",
+                        "description": "With Page Blocks",
+                        "variant": "two-columns-with-centered-introduction",
+                        "class_name": null,
+                        "anchor": null,
+                        "subtitle": null,
+                        "faqs": []
+                    }
+                ],
+                "layouts": [
+                    {
+                        "id": 1,
+                        "title": "Public Page Layout With Sidebar",
+                        "uid": "public-page-layout",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.021Z",
+                        "updatedAt": "2024-01-05T18:08:37.021Z",
+                        "publishedAt": "2023-04-08T05:04:56.606Z",
+                        "locale": "en",
+                        "footer": {
+                            "id": 1,
+                            "title": "Public Page Footer",
+                            "uid": "public-page-footer",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:36.985Z",
+                            "updatedAt": "2024-01-05T18:08:36.985Z",
+                            "publishedAt": "2023-05-04T03:25:15.030Z",
+                            "locale": "en"
+                        },
+                        "modals": [
+                            {
+                                "id": 1,
+                                "uid": "this-is-modal",
+                                "dialog_panel_class_name": "w-8/12",
+                                "variant": "simple",
+                                "title": "This Is Modal",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.693Z",
+                                "updatedAt": "2024-01-05T18:08:37.693Z",
+                                "publishedAt": "2023-03-28T04:07:57.457Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "navbar": {
+                            "id": 1,
+                            "title": "Public Page Navbar",
+                            "uid": "public-page-navbar",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "position": "fixed",
+                            "side": "top",
+                            "createdAt": "2024-01-05T18:08:38.420Z",
+                            "updatedAt": "2024-01-05T18:08:38.420Z",
+                            "publishedAt": "2023-04-08T05:04:22.148Z",
+                            "locale": "en"
+                        },
+                        "sidebar": {
+                            "id": 1,
+                            "variant": "one-quarter",
+                            "title": "Ads Sidebar",
+                            "uid": "ads-sidebar-1",
+                            "class_name": null,
+                            "side": "right",
+                            "createdAt": "2024-01-05T18:09:06.475Z",
+                            "updatedAt": "2024-01-05T18:09:06.475Z",
+                            "publishedAt": "2023-04-07T17:35:29.006Z",
+                            "locale": "en"
+                        },
+                        "slide_overs": [
+                            {
+                                "id": 1,
+                                "variant": "right-side-half-width",
+                                "title": "This Is Slide Over",
+                                "uid": "this-is-slide-over",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2024-01-05T18:09:06.497Z",
+                                "updatedAt": "2024-01-05T18:09:06.497Z",
+                                "publishedAt": "2023-04-07T16:54:17.781Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "topbar": null,
+                        "pages": [
+                            {
+                                "id": 2,
+                                "title": "Page With Sidebar Layout",
+                                "url": "/page-with-sidebar-layout",
+                                "createdAt": "2024-01-05T18:09:06.405Z",
+                                "updatedAt": "2024-01-05T18:09:06.405Z",
+                                "publishedAt": "2023-04-08T13:00:14.519Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 2,
+                        "title": "Public Page Layout",
+                        "uid": "public-page-layout-1",
+                        "variant": "wide",
+                        "class_name": "[&>.layout-container]:pt-16",
+                        "createdAt": "2024-01-05T18:08:37.045Z",
+                        "updatedAt": "2024-01-05T18:08:37.045Z",
+                        "publishedAt": "2023-04-20T03:23:38.447Z",
+                        "locale": "en",
+                        "footer": {
+                            "id": 1,
+                            "title": "Public Page Footer",
+                            "uid": "public-page-footer",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:36.985Z",
+                            "updatedAt": "2024-01-05T18:08:36.985Z",
+                            "publishedAt": "2023-05-04T03:25:15.030Z",
+                            "locale": "en"
+                        },
+                        "modals": [
+                            {
+                                "id": 1,
+                                "uid": "this-is-modal",
+                                "dialog_panel_class_name": "w-8/12",
+                                "variant": "simple",
+                                "title": "This Is Modal",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.693Z",
+                                "updatedAt": "2024-01-05T18:08:37.693Z",
+                                "publishedAt": "2023-03-28T04:07:57.457Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "navbar": {
+                            "id": 1,
+                            "title": "Public Page Navbar",
+                            "uid": "public-page-navbar",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "position": "fixed",
+                            "side": "top",
+                            "createdAt": "2024-01-05T18:08:38.420Z",
+                            "updatedAt": "2024-01-05T18:08:38.420Z",
+                            "publishedAt": "2023-04-08T05:04:22.148Z",
+                            "locale": "en"
+                        },
+                        "sidebar": null,
+                        "slide_overs": [
+                            {
+                                "id": 1,
+                                "variant": "right-side-half-width",
+                                "title": "This Is Slide Over",
+                                "uid": "this-is-slide-over",
+                                "class_name": "sps-lite-slide-over",
+                                "createdAt": "2024-01-05T18:09:06.497Z",
+                                "updatedAt": "2024-01-05T18:09:06.497Z",
+                                "publishedAt": "2023-04-07T16:54:17.781Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "topbar": null,
+                        "pages": [
+                            {
+                                "id": 1,
+                                "title": "Main page",
+                                "url": "/",
+                                "createdAt": "2024-01-05T18:09:06.380Z",
+                                "updatedAt": "2024-01-05T18:09:06.380Z",
+                                "publishedAt": "2023-04-08T12:06:05.277Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Not found page",
+                                "url": "/404",
+                                "createdAt": "2024-01-05T18:09:06.426Z",
+                                "updatedAt": "2024-01-05T18:09:06.426Z",
+                                "publishedAt": "2023-04-20T04:18:21.051Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Terms and Conditions",
+                                "url": "/terms-and-conditions",
+                                "createdAt": "2024-01-05T18:09:06.439Z",
+                                "updatedAt": "2024-01-05T18:09:06.439Z",
+                                "publishedAt": "2023-05-04T08:38:22.465Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 5,
+                                "title": "Currency Page",
+                                "url": "/currencies/[plugin::sps-billing.currency.id]",
+                                "createdAt": "2024-01-05T18:09:06.455Z",
+                                "updatedAt": "2024-01-05T18:23:53.332Z",
+                                "publishedAt": "2023-12-02T23:44:54.598Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "topbar": null,
+        "pages": [
+            {
+                "id": 2,
+                "title": "Page With Sidebar Layout",
+                "url": "/page-with-sidebar-layout",
+                "createdAt": "2024-01-05T18:09:06.405Z",
+                "updatedAt": "2024-01-05T18:09:06.405Z",
+                "publishedAt": "2023-04-08T13:00:14.519Z",
+                "locale": "en",
+                "page_blocks": [
+                    {
+                        "__component": "page-blocks.slider-block",
+                        "id": 1,
+                        "variant": "simple",
+                        "anchor": null,
+                        "class_name": "pt-16",
+                        "title": null,
+                        "description": null,
+                        "subtitle": null,
+                        "slider": null
+                    }
+                ],
+                "layout": {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en"
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en"
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en"
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null,
+        "localizations": []
+    },
+    "createdBy": null,
+    "updatedBy": null,
+    "localizations": []
+}

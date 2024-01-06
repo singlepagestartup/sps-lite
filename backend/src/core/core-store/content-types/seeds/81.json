@@ -1,0 +1,8 @@
+{
+    "id": 81,
+    "key": "plugin_content_manager_configuration_components::functions.config",
+    "value": "{\"uid\":\"functions.config\",\"settings\":{\"bulkable\":true,\"filterable\":true,\"searchable\":true,\"pageSize\":10,\"mainField\":\"id\",\"defaultSortBy\":\"id\",\"defaultSortOrder\":\"ASC\"},\"metadatas\":{\"id\":{\"edit\":{},\"list\":{\"label\":\"id\",\"searchable\":false,\"sortable\":false}},\"provider\":{\"edit\":{\"label\":\"provider\",\"description\":\"\",\"placeholder\":\"\",\"visible\":true,\"editable\":true},\"list\":{\"label\":\"provider\",\"searchable\":true,\"sortable\":true}},\"config\":{\"edit\":{\"label\":\"config\",\"description\":\"\",\"placeholder\":\"\",\"visible\":true,\"editable\":true},\"list\":{\"label\":\"config\",\"searchable\":false,\"sortable\":false}}},\"layouts\":{\"list\":[\"id\",\"provider\"],\"edit\":[[{\"name\":\"provider\",\"size\":6}],[{\"name\":\"config\",\"size\":12}]]},\"isComponent\":true}",
+    "type": "object",
+    "environment": null,
+    "tag": null
+}

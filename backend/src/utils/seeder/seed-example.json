@@ -1,0 +1,35 @@
+[
+  {
+    "id": 3,
+    "title": "Store 1",
+    "address": "Cesar Chavez St 34",
+    "publishedAt": "Fri Jan 27 2023 16:22:16 GMT+0000",
+    "icon": {
+      "mime": "image/vnd.microsoft.icon",
+      "name": "favicon.ico",
+      "url": "https://tailwindui.com/favicon.ico"
+    },
+    "photo": []
+  },
+  {
+    "title": "Store 2",
+    "address": "Cedar St 56",
+    "icon": {
+      "mime": "image/vnd.microsoft.icon",
+      "name": "favicon.ico",
+      "url": "https://tailwindui.com/favicon.ico"
+    },
+    "photo": [
+      {
+        "mime": "image/jpeg",
+        "name": "main.jpeg",
+        "url": "https://images.pexels.com/photos/65438/pexels-photo-65438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      },
+      {
+        "mime": "image/jpeg",
+        "name": "inside.jpeg",
+        "url": "https://images.pexels.com/photos/1884579/pexels-photo-1884579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      }
+    ]
+  }
+]

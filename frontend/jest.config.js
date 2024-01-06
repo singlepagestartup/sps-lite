@@ -19,7 +19,24 @@ const customJestConfig = {
     "<rootDir>/node_modules/",
     "<rootDir>/tests/e2e/",
   ],
-  testEnvironment: "jest-environment-jsdom",
+  transformIgnorePatterns: ["/node_modules/(?!(@bundled-es-modules)/).*/"],
+  // testEnvironment: "jest-environment-jsdom",
+  testEnvironment: "./jest.testEnvironment.mjs",
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
+  coverageDirectory: "<rootDir>/tests/artifacts/coverage",
+  moduleNameMapper: {
+    "react-markdown": "<rootDir>/src/components/stubs/react-markdown/index.tsx",
+  },
+  globals: {
+    fetch,
+    Headers,
+    Request,
+    Response,
+    FormData,
+    Blob,
+  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

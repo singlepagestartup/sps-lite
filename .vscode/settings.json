@@ -1,6 +1,6 @@
 {
   "editor.wordWrap": "on",
-  "[javascript|javascriptreact|typescriptreact]": {
+  "[javascript|javascriptreact|typescriptreact|feature]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
@@ -13,7 +13,7 @@
   ],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.quickSuggestions": {
     "other": true,
@@ -25,7 +25,7 @@
   "turboConsoleLog.quote": "`",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.validate.enable": true,
-  "playwright.reuseBrowser": true,
+  "playwright.reuseBrowser": false,
   "eslint.format.enable": true,
   "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,

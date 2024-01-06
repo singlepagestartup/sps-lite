@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { IBackendLocale } from "types/collection-types";
+import { IEntity as IBackendLocale } from "~redux/services/backend/api/locale/interfaces";
 import { BACKEND_URL } from "~utils/envs";
 
 export async function middleware(request: any) {
@@ -8,8 +8,14 @@ export async function middleware(request: any) {
   const searchParams = request.nextUrl.search;
 
   try {
-    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
-    const backendLocales: IBackendLocale[] = await req.json();
+    let tries = 0;
+    const backendLocales = [];
+
+    do {
+      const locales = await fetchLocales();
+      backendLocales.push(...locales);
+      tries++;
+    } while (backendLocales.length === 0 && tries < 5);
 
     const pathnameIsMissingLocale = backendLocales.every(
       (locale) =>
@@ -42,3 +48,25 @@ export const config = {
     "/((?!_next|images|sitemap|robots|api|favicon).*)",
   ],
 };
+
+async function fetchLocales() {
+  try {
+    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
+    const res = await req.json();
+
+    if (!Array.isArray(res)) {
+      if (res?.error?.message) {
+        throw new Error(res.error.message);
+      }
+
+      throw new Error("No locales found");
+    }
+
+    const backendLocales: IBackendLocale[] = res;
+
+    return backendLocales;
+  } catch (error) {
+    console.log("🚀 ~ fetchLocales ~ error:", error);
+    return [];
+  }
+}

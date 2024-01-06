@@ -1,0 +1,8 @@
+{
+    "id": 80,
+    "key": "plugin_upload_metrics",
+    "value": "{\"weeklySchedule\":\"38 56 12 * * 6\",\"lastWeeklyUpdate\":1704534998080}",
+    "type": "object",
+    "environment": null,
+    "tag": null
+}

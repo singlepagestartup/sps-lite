@@ -2,22 +2,15 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import {
-  backendServiceApi,
-  frontendServiceApi,
-  rtkQueryErrorLogger,
-} from "~backend/index";
 
-const middlewares = [
-  backendServiceApi.middleware,
-  frontendServiceApi.middleware,
-  rtkQueryErrorLogger,
-];
+import { rtkQueryErrorLogger } from "~redux/rtk-query-error-logger";
+import { slices as backendSlices } from "./services/backend/slices";
+
+const middlewares = [...backendSlices.middlewares, rtkQueryErrorLogger];
 
 const store: any = configureStore({
   reducer: {
-    [backendServiceApi.reducerPath]: backendServiceApi.reducer,
-    [frontendServiceApi.reducerPath]: frontendServiceApi.reducer,
+    ...backendSlices.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),

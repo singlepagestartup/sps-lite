@@ -1,12 +1,12 @@
-import { IBackendPage } from "types/collection-types";
 import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
-import { pagePopulate } from "~utils/api/queries";
+import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
+import { IEntity as IBackendPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 export default async function NotFoundPage() {
   const pages = (await getBackendData({
-    url: `${BACKEND_URL}/api/pages`,
+    url: `${BACKEND_URL}/api/sps-website-builder/pages`,
     params: {
       populate: pagePopulate,
       filters: {

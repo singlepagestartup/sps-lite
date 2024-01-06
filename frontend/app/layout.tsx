@@ -1,19 +1,19 @@
 import "../styles/fonts.css";
 import "../styles/tailwind.scss";
-import Modals from "~components/modals";
+import Modals from "~components/modal";
 import TranslationsContextWrapper from "~hooks/use-translations/TranslationsContext";
 import { ReduxProvider } from "~redux/index";
 import { fonts } from "./fonts";
-import SlideOvers from "~components/slide-overs";
+import SlideOvers from "~components/slide-over";
 import { Suspense } from "react";
-import Layouts from "~components/layouts";
-import Loaders from "~components/loader";
+import Layout from "~components/layout";
+import Loader from "~components/loader";
 import { getBackendData } from "~utils/api";
 import { BACKEND_URL } from "~utils/envs";
-import { loaderPopulate } from "~utils/api/queries";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "src/contexts/additional-headers";
 import { HocParamsProvider } from "src/contexts/hoc-params";
+import { populate as loaderPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/loader/populate";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +23,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const loader = await getBackendData({
-    url: `${BACKEND_URL}/api/loader`,
+    url: `${BACKEND_URL}/api/sps-website-builder/loader`,
     params: {
       populate: loaderPopulate,
     },
@@ -44,11 +44,11 @@ export default async function RootLayout({
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
                   <ReduxProvider>
-                    <Loaders {...loader}>
-                      <Layouts>{children}</Layouts>
+                    <Loader {...loader}>
+                      <Layout>{children}</Layout>
                       <Modals />
                       <SlideOvers />
-                    </Loaders>
+                    </Loader>
                   </ReduxProvider>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>

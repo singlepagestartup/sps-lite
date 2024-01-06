@@ -46,7 +46,7 @@ const getThemeFromBackend = async (props) => {
 
   const themeData = await axios
     .get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/theme?populate[fonts][populate]=%2A`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/sps-website-builder/theme?populate[fonts][populate]=%2A`,
     )
     .then((res) => {
       return res.data?.data;

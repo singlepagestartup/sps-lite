@@ -1,8 +1,8 @@
-import { IBackendUploadPluginBackendMedia } from "types/plugins/upload";
+import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { BACKEND_URL } from "~utils/envs";
 
 export default function getFileUrl(
-  obj: IBackendUploadPluginBackendMedia,
+  obj: IBackendFile,
   options: {
     size?: string;
   } = {},

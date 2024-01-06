@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import PageBlocks from "~components/page-blocks";
 import { getBackendData, getTargetPage } from "~utils/api";
-import { metatagPopulate, pagePopulate } from "~utils/api/queries";
+import { populate as metatagPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/metatag/populate";
+import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
 import getImageUrl from "~utils/api/get-file-url";
 
@@ -9,7 +10,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const pagesUrls = await getBackendData({
-    url: `${BACKEND_URL}/api/pages/get-urls`,
+    url: `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
     params: { locale: "all", pagination: { limit: -1 } },
   });
 
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: any) {
   const pageProps = await getPage(props);
   const metatags = await getBackendData({
-    url: `${BACKEND_URL}/api/metatags`,
+    url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
     params: {
       filters: {
         locale: pageProps.locale,
@@ -44,7 +45,7 @@ export async function generateMetadata(props: any) {
 
   if (!metatags?.length) {
     const defaultMetatags = await getBackendData({
-      url: `${BACKEND_URL}/api/metatags`,
+      url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
       params: {
         filters: {
           locale: pageProps.locale,
@@ -106,7 +107,7 @@ async function getPage(props: any) {
   }
 
   const filledTargetPage = await getBackendData({
-    url: `${BACKEND_URL}/api/pages/${targetPage.id}`,
+    url: `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
     params: { locale, populate: pagePopulate },
   });
 
@@ -120,5 +121,5 @@ async function getPage(props: any) {
 export default async function Page(props: any) {
   const pageProps = await getPage(props);
 
-  return <PageBlocks pageParams={props} pageBlocks={pageProps.pageBlocks} />;
+  return <PageBlocks pageProps={props} pageBlocks={pageProps.pageBlocks} />;
 }

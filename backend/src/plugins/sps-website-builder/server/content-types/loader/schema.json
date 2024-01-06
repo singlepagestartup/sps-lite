@@ -1,0 +1,57 @@
+{
+  "kind": "singleType",
+  "collectionName": "sps_wb_loaders",
+  "info": {
+    "singularName": "loader",
+    "pluralName": "loaders",
+    "displayName": "Loader",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "variant": {
+      "pluginOptions": {},
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "pluginOptions": {}
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "pluginOptions": {}
+    },
+    "class_name": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "anchor": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "title": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "subtitle": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
+    }
+  }
+}

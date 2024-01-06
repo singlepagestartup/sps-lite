@@ -15,7 +15,7 @@
     "slider": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::slider.slider"
+      "target": "plugin::sps-website-builder.slider"
     },
     "anchor": {
       "type": "string"

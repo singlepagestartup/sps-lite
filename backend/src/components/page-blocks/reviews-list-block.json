@@ -1,15 +1,11 @@
 {
   "collectionName": "components_page_blocks_reviews_list_blocks",
   "info": {
-    "displayName": "Reviews List Block"
+    "displayName": "Reviews List Block",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review"
-    },
     "variant": {
       "type": "enumeration",
       "enum": ["simple-with-avatars"],
@@ -34,6 +30,11 @@
     },
     "description": {
       "type": "richtext"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-crm.review"
     }
   }
 }

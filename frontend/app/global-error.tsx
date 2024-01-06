@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Layouts from "~components/layouts";
+import Layout from "~components/layout";
 import { getBackendData } from "~utils/api";
-import { pagePopulate } from "~utils/api/queries";
+import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
 import { BACKEND_URL } from "~utils/envs";
 import { fonts } from "./fonts";
 
@@ -15,7 +15,7 @@ export default function GlobalError({ error, reset }: any) {
 
   useEffect(() => {
     getBackendData({
-      url: `${BACKEND_URL}/api/pages`,
+      url: `${BACKEND_URL}/api/sps-website-builder/pages`,
       params: {
         populate: pagePopulate,
         filters: {
@@ -36,7 +36,7 @@ export default function GlobalError({ error, reset }: any) {
           className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
         >
           <div className="relative">
-            <Layouts {...page} />
+            <Layout {...page} />
           </div>
         </body>
       </html>

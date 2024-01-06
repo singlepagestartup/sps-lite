@@ -1,0 +1,29 @@
+{
+    "id": 1,
+    "variant": "simple",
+    "title": "Locales Flyout",
+    "uid": "locales-flyout",
+    "class_name": null,
+    "createdAt": "2024-01-05T18:08:35.639Z",
+    "updatedAt": "2024-01-05T18:08:35.639Z",
+    "publishedAt": "2023-05-11T16:28:36.473Z",
+    "locale": "en",
+    "page_blocks": [
+        {
+            "__component": "elements.button",
+            "id": 2,
+            "url": "/en",
+            "description": null,
+            "variant": "text",
+            "title": "EN (English)",
+            "additional_attributes": null,
+            "class_name": null,
+            "media": null,
+            "additional_media": null,
+            "flyout": null
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null,
+    "localizations": []
+}

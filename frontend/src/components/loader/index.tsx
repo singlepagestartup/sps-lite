@@ -1,14 +1,20 @@
 "use client";
 
-import { FC } from "react";
-import { ISpsLiteLoaderBlock, variants as spsLiteVariants } from "./sps-lite";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
+import { IEntity as IBackendLoader } from "~redux/services/backend/extensions/sps-website-builder/api/loader/interfaces";
+
+export interface ILoader extends IBackendLoader {
+  children?: any;
+}
 
 const variants = {
   ...spsLiteVariants,
+  ...startupVariants,
 };
 
-export default function Loaders<T extends ISpsLiteLoaderBlock>(props: T) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<T>;
+export default function Loader(props: ILoader) {
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <>{props.children}</>;

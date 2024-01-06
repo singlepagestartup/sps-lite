@@ -11,7 +11,9 @@ export interface ElementsButton extends Schema.Component {
     url: Attribute.Text;
     media: Attribute.Media;
     description: Attribute.RichText;
-    variant: Attribute.Enumeration<["primary", "secondary", "text", "locale"]> &
+    variant: Attribute.Enumeration<
+      ["primary", "secondary", "text", "locale", "profile"]
+    > &
       Attribute.Required &
       Attribute.DefaultTo<"primary">;
     additional_media: Attribute.Media;
@@ -21,7 +23,7 @@ export interface ElementsButton extends Schema.Component {
     flyout: Attribute.Relation<
       "elements.button",
       "oneToOne",
-      "api::flyout.flyout"
+      "plugin::sps-website-builder.flyout"
     >;
   };
 }
@@ -305,13 +307,13 @@ export interface PageBlocksContactSectionBlock extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<"centered">;
     media: Attribute.Media;
+    buttons_arrays: Attribute.Component<"elements.buttons-array", true>;
+    additional_media: Attribute.Media;
     form: Attribute.Relation<
       "page-blocks.contact-section-block",
       "oneToOne",
-      "api::form.form"
+      "plugin::sps-crm.form"
     >;
-    buttons_arrays: Attribute.Component<"elements.buttons-array", true>;
-    additional_media: Attribute.Media;
   };
 }
 
@@ -540,7 +542,7 @@ export interface PageBlocksPricingBlock extends Schema.Component {
     tiers: Attribute.Relation<
       "page-blocks.pricing-block",
       "oneToMany",
-      "api::tier.tier"
+      "plugin::sps-billing.tier"
     >;
     anchor: Attribute.String;
     media: Attribute.Media;
@@ -552,13 +554,9 @@ export interface PageBlocksReviewsListBlock extends Schema.Component {
   collectionName: "components_page_blocks_reviews_list_blocks";
   info: {
     displayName: "Reviews List Block";
+    description: "";
   };
   attributes: {
-    reviews: Attribute.Relation<
-      "page-blocks.reviews-list-block",
-      "oneToMany",
-      "api::review.review"
-    >;
     variant: Attribute.Enumeration<["simple-with-avatars"]> &
       Attribute.Required &
       Attribute.DefaultTo<"simple-with-avatars">;
@@ -568,6 +566,11 @@ export interface PageBlocksReviewsListBlock extends Schema.Component {
     title: Attribute.RichText;
     subtitle: Attribute.RichText;
     description: Attribute.RichText;
+    reviews: Attribute.Relation<
+      "page-blocks.reviews-list-block",
+      "oneToMany",
+      "plugin::sps-crm.review"
+    >;
   };
 }
 
@@ -598,7 +601,7 @@ export interface PageBlocksSliderBlock extends Schema.Component {
     slider: Attribute.Relation<
       "page-blocks.slider-block",
       "oneToOne",
-      "api::slider.slider"
+      "plugin::sps-website-builder.slider"
     >;
     anchor: Attribute.String;
     class_name: Attribute.String;
@@ -609,7 +612,7 @@ export interface PageBlocksSliderBlock extends Schema.Component {
 }
 
 declare module "@strapi/types" {
-  export namespace Shared {
+  export module Shared {
     export interface Components {
       "elements.button": ElementsButton;
       "elements.buttons-array": ElementsButtonsArray;
