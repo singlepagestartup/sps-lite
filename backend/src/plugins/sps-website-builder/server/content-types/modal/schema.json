@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_modals",
+  "info": {
+    "singularName": "modal",
+    "pluralName": "modals",
+    "displayName": "Modal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "uid": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "page_blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "page-blocks.hero-section-block",
+        "page-blocks.header-section-block",
+        "page-blocks.faqs-block",
+        "page-blocks.slider-block",
+        "page-blocks.alert-block"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "dialog_panel_class_name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "class_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "layouts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-website-builder.layout",
+      "mappedBy": "modals"
+    }
+  }
+}

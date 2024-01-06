@@ -1,17 +1,17 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { IBackendPageBlock } from "types/components/page-blocks";
-import { pageBlockComponents } from "~utils/api/components";
+import { pageBlockComponents } from "~components/page-blocks/aliases";
 import ErrorBoundary from "~components/wrappers/error-boundary";
+import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
 
-export interface IPageBlockBlock {
-  pageParams?: any;
-  pageBlocks?: IBackendPageBlock[] | null;
+export interface IPage {
+  pageProps?: any;
+  pageBlocks?: IBackendComponentPageBlock[] | null;
   showSkeletons?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;
 }
 
-export default function PageBlocks(props: IPageBlockBlock) {
+export default function PageBlocks(props: IPage) {
   return (
     <div className="page-blocks">
       {props.pageBlocks?.length

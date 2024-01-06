@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Component, ErrorInfo, FC, ReactNode } from "react";
-import Errors from "~components/errors";
+import Errors from "~components/error";
 import * as Sentry from "@sentry/browser";
 
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {

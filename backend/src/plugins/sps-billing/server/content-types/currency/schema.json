@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_billing_currencies",
+  "info": {
+    "singularName": "currency",
+    "pluralName": "currencies",
+    "displayName": "Currency",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "unicode": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "is_default": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "tiers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-billing.tier",
+      "mappedBy": "currency"
+    }
+  }
+}

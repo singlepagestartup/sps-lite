@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_slide_overs",
+  "info": {
+    "singularName": "slide-over",
+    "pluralName": "slide-overs",
+    "displayName": "Slide Over",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "variant": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["right-side-half-width"],
+      "default": "right-side-half-width",
+      "required": true
+    },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "uid": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "class_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "page_blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["page-blocks.faqs-block"]
+    },
+    "layouts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-website-builder.layout",
+      "inversedBy": "slide_overs"
+    }
+  }
+}

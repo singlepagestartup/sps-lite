@@ -1,0 +1,3865 @@
+{
+    "id": 1,
+    "title": "Public Page Layout With Sidebar",
+    "uid": "public-page-layout",
+    "variant": "boxed",
+    "class_name": null,
+    "createdAt": "2024-01-05T18:08:37.021Z",
+    "updatedAt": "2024-01-05T18:08:37.021Z",
+    "publishedAt": "2023-04-08T05:04:56.606Z",
+    "locale": "en",
+    "footer": {
+        "id": 1,
+        "title": "Public Page Footer",
+        "uid": "public-page-footer",
+        "variant": "boxed",
+        "class_name": null,
+        "createdAt": "2024-01-05T18:08:36.985Z",
+        "updatedAt": "2024-01-05T18:08:36.985Z",
+        "publishedAt": "2023-05-04T03:25:15.030Z",
+        "locale": "en",
+        "page_blocks": [
+            {
+                "__component": "page-blocks.footer-block",
+                "id": 1,
+                "copyrights": "2023 Single Page Startup",
+                "description": "The fastest way to develop your startup",
+                "variant": "four-columns-with-company-mission",
+                "class_name": null,
+                "logotype": {
+                    "id": 1,
+                    "title": null,
+                    "url": "/",
+                    "media": [
+                        {
+                            "id": 17,
+                            "name": "sps-full dark.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 4725,
+                            "height": 729,
+                            "formats": null,
+                            "hash": "sps_full_dark_5bf6cb3d86",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 16.9,
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_5bf6cb3d86.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2024-01-05T18:08:36.306Z",
+                            "updatedAt": "2024-01-05T18:08:36.306Z",
+                            "folder": null
+                        }
+                    ],
+                    "additional_media": null
+                },
+                "buttons_arrays": [
+                    {
+                        "id": 1,
+                        "title": "Pages",
+                        "class_name": null,
+                        "variant": "column-with-title",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null,
+                        "buttons": [
+                            {
+                                "id": 3,
+                                "url": "/page-with-sidebar-layout",
+                                "description": null,
+                                "variant": "text",
+                                "title": "Page With Sidebar",
+                                "additional_attributes": null,
+                                "class_name": null
+                            },
+                            {
+                                "id": 4,
+                                "url": "/terms-and-conditions",
+                                "description": null,
+                                "variant": "text",
+                                "title": "Terms and Conditions",
+                                "additional_attributes": null,
+                                "class_name": null
+                            }
+                        ],
+                        "media": null,
+                        "additional_media": null
+                    },
+                    {
+                        "id": 2,
+                        "title": "Links",
+                        "class_name": null,
+                        "variant": "column-with-title",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null,
+                        "buttons": [
+                            {
+                                "id": 5,
+                                "url": "https://github.com/singlepagestartup/sps-lite",
+                                "description": null,
+                                "variant": "text",
+                                "title": "GitHub",
+                                "additional_attributes": null,
+                                "class_name": null
+                            },
+                            {
+                                "id": 6,
+                                "url": "https://doc.singlepagestartup.com/",
+                                "description": null,
+                                "variant": "text",
+                                "title": "Documentation",
+                                "additional_attributes": null,
+                                "class_name": null
+                            }
+                        ],
+                        "media": null,
+                        "additional_media": null
+                    }
+                ],
+                "additional_buttons_arrays": [
+                    {
+                        "id": 3,
+                        "title": null,
+                        "class_name": null,
+                        "variant": "row",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null,
+                        "buttons": [
+                            {
+                                "id": 7,
+                                "url": "/terms-and-conditions",
+                                "description": null,
+                                "variant": "text",
+                                "title": "Terms and Conditions",
+                                "additional_attributes": null,
+                                "class_name": null
+                            }
+                        ],
+                        "media": null,
+                        "additional_media": null
+                    }
+                ],
+                "extra_buttons_arrays": [
+                    {
+                        "id": 4,
+                        "title": null,
+                        "class_name": null,
+                        "variant": "row",
+                        "description": null,
+                        "url": null,
+                        "additional_attributes": null,
+                        "buttons": [
+                            {
+                                "id": 8,
+                                "url": "https://github.com/singlepagestartup/sps-lite",
+                                "description": null,
+                                "variant": "text",
+                                "title": null,
+                                "additional_attributes": null,
+                                "class_name": null
+                            }
+                        ],
+                        "media": null,
+                        "additional_media": null
+                    }
+                ]
+            }
+        ],
+        "layouts": [
+            {
+                "id": 1,
+                "title": "Public Page Layout With Sidebar",
+                "uid": "public-page-layout",
+                "variant": "boxed",
+                "class_name": null,
+                "createdAt": "2024-01-05T18:08:37.021Z",
+                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "publishedAt": "2023-04-08T05:04:56.606Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": {
+                    "id": 1,
+                    "variant": "one-quarter",
+                    "title": "Ads Sidebar",
+                    "uid": "ads-sidebar-1",
+                    "class_name": null,
+                    "side": "right",
+                    "createdAt": "2024-01-05T18:09:06.475Z",
+                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "publishedAt": "2023-04-07T17:35:29.006Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.hero-section-block",
+                            "id": 6,
+                            "title": "Sidebar",
+                            "description": "With Page Blocks",
+                            "variant": "simple-centered",
+                            "anchor": null,
+                            "class_name": "pt-16"
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 2,
+                        "title": "Page With Sidebar Layout",
+                        "url": "/page-with-sidebar-layout",
+                        "createdAt": "2024-01-05T18:09:06.405Z",
+                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "publishedAt": "2023-04-08T13:00:14.519Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.slider-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "anchor": null,
+                                "class_name": "pt-16",
+                                "title": null,
+                                "description": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            {
+                "id": 2,
+                "title": "Public Page Layout",
+                "uid": "public-page-layout-1",
+                "variant": "wide",
+                "class_name": "[&>.layout-container]:pt-16",
+                "createdAt": "2024-01-05T18:08:37.045Z",
+                "updatedAt": "2024-01-05T18:08:37.045Z",
+                "publishedAt": "2023-04-20T03:23:38.447Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": null,
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2024-01-05T18:09:06.380Z",
+                        "updatedAt": "2024-01-05T18:09:06.380Z",
+                        "publishedAt": "2023-04-08T12:06:05.277Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 3,
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 1,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 1,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 1,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 1,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 3,
+                        "title": "Not found page",
+                        "url": "/404",
+                        "createdAt": "2024-01-05T18:09:06.426Z",
+                        "updatedAt": "2024-01-05T18:09:06.426Z",
+                        "publishedAt": "2023-04-20T04:18:21.051Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.not-found-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "title": "404",
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": "Not found"
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Terms and Conditions",
+                        "url": "/terms-and-conditions",
+                        "createdAt": "2024-01-05T18:09:06.439Z",
+                        "updatedAt": "2024-01-05T18:09:06.439Z",
+                        "publishedAt": "2023-05-04T08:38:22.465Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 4,
+                                "title": "Terms and Conditions",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 5,
+                        "title": "Currency Page",
+                        "url": "/currencies/[plugin::sps-billing.currency.id]",
+                        "createdAt": "2024-01-05T18:09:06.455Z",
+                        "updatedAt": "2024-01-05T18:23:53.332Z",
+                        "publishedAt": "2023-12-02T23:44:54.598Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 5,
+                                "title": "Currency Page",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2024-01-05T18:10:54.760Z",
+                            "updatedAt": "2024-01-05T18:10:54.760Z"
+                        },
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null,
+        "localizations": []
+    },
+    "modals": [
+        {
+            "id": 1,
+            "uid": "this-is-modal",
+            "dialog_panel_class_name": "w-8/12",
+            "variant": "simple",
+            "title": "This Is Modal",
+            "class_name": null,
+            "createdAt": "2024-01-05T18:08:37.693Z",
+            "updatedAt": "2024-01-05T18:08:37.693Z",
+            "publishedAt": "2023-03-28T04:07:57.457Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.hero-section-block",
+                    "id": 2,
+                    "title": "This Is Modal",
+                    "description": "With Page Blocks",
+                    "variant": "simple-centered",
+                    "anchor": null,
+                    "class_name": null,
+                    "media": null,
+                    "buttons": [],
+                    "additional_media": null
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.footer-block",
+                                "id": 1,
+                                "copyrights": "2023 Single Page Startup",
+                                "description": "The fastest way to develop your startup",
+                                "variant": "four-columns-with-company-mission",
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 2,
+                                    "title": "This Is Modal",
+                                    "description": "With Page Blocks",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.navbar-block",
+                                "id": 1,
+                                "variant": "simple-links-on-left",
+                                "description": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 6,
+                                "title": "Sidebar",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.faqs-block",
+                                    "id": 1,
+                                    "title": "This Is Slide Over",
+                                    "description": "With Page Blocks",
+                                    "variant": "two-columns-with-centered-introduction",
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.slider-block",
+                                    "id": 1,
+                                    "variant": "simple",
+                                    "anchor": null,
+                                    "class_name": "pt-16",
+                                    "title": null,
+                                    "description": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                {
+                    "id": 2,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
+                    "variant": "wide",
+                    "class_name": "[&>.layout-container]:pt-16",
+                    "createdAt": "2024-01-05T18:08:37.045Z",
+                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.footer-block",
+                                "id": 1,
+                                "copyrights": "2023 Single Page Startup",
+                                "description": "The fastest way to develop your startup",
+                                "variant": "four-columns-with-company-mission",
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 2,
+                                    "title": "This Is Modal",
+                                    "description": "With Page Blocks",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.navbar-block",
+                                "id": 1,
+                                "variant": "simple-links-on-left",
+                                "description": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "sidebar": null,
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.faqs-block",
+                                    "id": 1,
+                                    "title": "This Is Slide Over",
+                                    "description": "With Page Blocks",
+                                    "variant": "two-columns-with-centered-introduction",
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 1,
+                            "title": "Main page",
+                            "url": "/",
+                            "createdAt": "2024-01-05T18:09:06.380Z",
+                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "publishedAt": "2023-04-08T12:06:05.277Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 3,
+                                    "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                    "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": "pt-16"
+                                },
+                                {
+                                    "__component": "page-blocks.cta-section-block",
+                                    "id": 1,
+                                    "variant": "dark-with-image",
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "title": "Minimum Viable Product is Ready",
+                                    "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                    "subtitle": null
+                                },
+                                {
+                                    "__component": "page-blocks.features-section-block",
+                                    "id": 1,
+                                    "title": "Don't repeat yourself",
+                                    "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                    "subtitle": null,
+                                    "variant": "with-icon",
+                                    "anchor": null,
+                                    "class_name": null
+                                },
+                                {
+                                    "__component": "page-blocks.reviews-list-block",
+                                    "id": 1,
+                                    "variant": "simple-with-avatars",
+                                    "show_all": true,
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "title": "Happy customers reviews",
+                                    "subtitle": null,
+                                    "description": null
+                                },
+                                {
+                                    "__component": "page-blocks.contact-section-block",
+                                    "id": 1,
+                                    "title": "We’re ready to help",
+                                    "subtitle": null,
+                                    "description": "Fill in all the fields below and our manager will contact you.",
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "variant": "centered"
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 3,
+                            "title": "Not found page",
+                            "url": "/404",
+                            "createdAt": "2024-01-05T18:09:06.426Z",
+                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "publishedAt": "2023-04-20T04:18:21.051Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.not-found-block",
+                                    "id": 1,
+                                    "variant": "simple",
+                                    "title": "404",
+                                    "description": null,
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": "Not found"
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 4,
+                            "title": "Terms and Conditions",
+                            "url": "/terms-and-conditions",
+                            "createdAt": "2024-01-05T18:09:06.439Z",
+                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "publishedAt": "2023-05-04T08:38:22.465Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 4,
+                                    "title": "Terms and Conditions",
+                                    "description": null,
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 5,
+                            "title": "Currency Page",
+                            "url": "/currencies/[plugin::sps-billing.currency.id]",
+                            "createdAt": "2024-01-05T18:09:06.455Z",
+                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "publishedAt": "2023-12-02T23:44:54.598Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 5,
+                                    "title": "Currency Page",
+                                    "description": null,
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": {
+                                "id": 1,
+                                "firstname": "rogwild",
+                                "lastname": "design",
+                                "username": null,
+                                "email": "rogwild.design@gmail.com",
+                                "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                                "resetPasswordToken": null,
+                                "registrationToken": null,
+                                "isActive": true,
+                                "blocked": false,
+                                "preferedLanguage": null,
+                                "createdAt": "2024-01-05T18:10:54.760Z",
+                                "updatedAt": "2024-01-05T18:10:54.760Z"
+                            },
+                            "localizations": []
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        }
+    ],
+    "navbar": {
+        "id": 1,
+        "title": "Public Page Navbar",
+        "uid": "public-page-navbar",
+        "variant": "boxed",
+        "class_name": null,
+        "position": "fixed",
+        "side": "top",
+        "createdAt": "2024-01-05T18:08:38.420Z",
+        "updatedAt": "2024-01-05T18:08:38.420Z",
+        "publishedAt": "2023-04-08T05:04:22.148Z",
+        "locale": "en",
+        "page_blocks": [
+            {
+                "__component": "page-blocks.navbar-block",
+                "id": 1,
+                "variant": "simple-links-on-left",
+                "description": null,
+                "class_name": null,
+                "logotype": {
+                    "id": 2,
+                    "title": null,
+                    "url": "/",
+                    "media": [
+                        {
+                            "id": 20,
+                            "name": "sps-full dark.svg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 4725,
+                            "height": 729,
+                            "formats": null,
+                            "hash": "sps_full_dark_1896bcceb3",
+                            "ext": ".svg",
+                            "mime": "image/svg+xml",
+                            "size": 16.9,
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_1896bcceb3.svg",
+                            "previewUrl": null,
+                            "provider": "aws-s3",
+                            "provider_metadata": null,
+                            "folderPath": "/",
+                            "createdAt": "2024-01-05T18:08:38.281Z",
+                            "updatedAt": "2024-01-05T18:08:38.281Z",
+                            "folder": null
+                        }
+                    ],
+                    "additional_media": null
+                },
+                "buttons": [
+                    {
+                        "id": 9,
+                        "url": "/",
+                        "description": null,
+                        "variant": "text",
+                        "title": "Main",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": null
+                    },
+                    {
+                        "id": 10,
+                        "url": "/page-with-sidebar-layout",
+                        "description": null,
+                        "variant": "text",
+                        "title": "Sidebar",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": null
+                    },
+                    {
+                        "id": 11,
+                        "url": null,
+                        "description": null,
+                        "variant": "text",
+                        "title": "Flyout",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": {
+                            "id": 2,
+                            "variant": "simple",
+                            "title": "Hero Flyout",
+                            "uid": "hero-flyout",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:35.715Z",
+                            "updatedAt": "2024-01-05T18:08:35.715Z",
+                            "publishedAt": "2023-05-11T18:03:51.955Z",
+                            "locale": "en"
+                        }
+                    },
+                    {
+                        "id": 12,
+                        "url": "?opened_modal=this-is-modal",
+                        "description": null,
+                        "variant": "text",
+                        "title": "Modal",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": null
+                    },
+                    {
+                        "id": 13,
+                        "url": "?opened_slide_over=this-is-slide-over",
+                        "description": null,
+                        "variant": "text",
+                        "title": "Slide Over",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": null
+                    }
+                ],
+                "additional_buttons": [
+                    {
+                        "id": 14,
+                        "url": "https://github.com/singlepagestartup/sps-lite",
+                        "description": null,
+                        "variant": "secondary",
+                        "title": "GitHub",
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": null
+                    },
+                    {
+                        "id": 15,
+                        "url": null,
+                        "description": null,
+                        "variant": "locale",
+                        "title": null,
+                        "additional_attributes": null,
+                        "class_name": null,
+                        "media": null,
+                        "additional_media": null,
+                        "flyout": {
+                            "id": 1,
+                            "variant": "simple",
+                            "title": "Locales Flyout",
+                            "uid": "locales-flyout",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:35.639Z",
+                            "updatedAt": "2024-01-05T18:08:35.639Z",
+                            "publishedAt": "2023-05-11T16:28:36.473Z",
+                            "locale": "en"
+                        }
+                    }
+                ],
+                "extra_buttons": []
+            }
+        ],
+        "layouts": [
+            {
+                "id": 1,
+                "title": "Public Page Layout With Sidebar",
+                "uid": "public-page-layout",
+                "variant": "boxed",
+                "class_name": null,
+                "createdAt": "2024-01-05T18:08:37.021Z",
+                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "publishedAt": "2023-04-08T05:04:56.606Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": {
+                    "id": 1,
+                    "variant": "one-quarter",
+                    "title": "Ads Sidebar",
+                    "uid": "ads-sidebar-1",
+                    "class_name": null,
+                    "side": "right",
+                    "createdAt": "2024-01-05T18:09:06.475Z",
+                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "publishedAt": "2023-04-07T17:35:29.006Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.hero-section-block",
+                            "id": 6,
+                            "title": "Sidebar",
+                            "description": "With Page Blocks",
+                            "variant": "simple-centered",
+                            "anchor": null,
+                            "class_name": "pt-16"
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 2,
+                        "title": "Page With Sidebar Layout",
+                        "url": "/page-with-sidebar-layout",
+                        "createdAt": "2024-01-05T18:09:06.405Z",
+                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "publishedAt": "2023-04-08T13:00:14.519Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.slider-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "anchor": null,
+                                "class_name": "pt-16",
+                                "title": null,
+                                "description": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            {
+                "id": 2,
+                "title": "Public Page Layout",
+                "uid": "public-page-layout-1",
+                "variant": "wide",
+                "class_name": "[&>.layout-container]:pt-16",
+                "createdAt": "2024-01-05T18:08:37.045Z",
+                "updatedAt": "2024-01-05T18:08:37.045Z",
+                "publishedAt": "2023-04-20T03:23:38.447Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": null,
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 1,
+                        "title": "Main page",
+                        "url": "/",
+                        "createdAt": "2024-01-05T18:09:06.380Z",
+                        "updatedAt": "2024-01-05T18:09:06.380Z",
+                        "publishedAt": "2023-04-08T12:06:05.277Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 3,
+                                "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            },
+                            {
+                                "__component": "page-blocks.cta-section-block",
+                                "id": 1,
+                                "variant": "dark-with-image",
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Minimum Viable Product is Ready",
+                                "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                "subtitle": null
+                            },
+                            {
+                                "__component": "page-blocks.features-section-block",
+                                "id": 1,
+                                "title": "Don't repeat yourself",
+                                "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                "subtitle": null,
+                                "variant": "with-icon",
+                                "anchor": null,
+                                "class_name": null
+                            },
+                            {
+                                "__component": "page-blocks.reviews-list-block",
+                                "id": 1,
+                                "variant": "simple-with-avatars",
+                                "show_all": true,
+                                "anchor": null,
+                                "class_name": null,
+                                "title": "Happy customers reviews",
+                                "subtitle": null,
+                                "description": null
+                            },
+                            {
+                                "__component": "page-blocks.contact-section-block",
+                                "id": 1,
+                                "title": "We’re ready to help",
+                                "subtitle": null,
+                                "description": "Fill in all the fields below and our manager will contact you.",
+                                "anchor": null,
+                                "class_name": null,
+                                "variant": "centered"
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 3,
+                        "title": "Not found page",
+                        "url": "/404",
+                        "createdAt": "2024-01-05T18:09:06.426Z",
+                        "updatedAt": "2024-01-05T18:09:06.426Z",
+                        "publishedAt": "2023-04-20T04:18:21.051Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.not-found-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "title": "404",
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": "Not found"
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Terms and Conditions",
+                        "url": "/terms-and-conditions",
+                        "createdAt": "2024-01-05T18:09:06.439Z",
+                        "updatedAt": "2024-01-05T18:09:06.439Z",
+                        "publishedAt": "2023-05-04T08:38:22.465Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 4,
+                                "title": "Terms and Conditions",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    {
+                        "id": 5,
+                        "title": "Currency Page",
+                        "url": "/currencies/[plugin::sps-billing.currency.id]",
+                        "createdAt": "2024-01-05T18:09:06.455Z",
+                        "updatedAt": "2024-01-05T18:23:53.332Z",
+                        "publishedAt": "2023-12-02T23:44:54.598Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 5,
+                                "title": "Currency Page",
+                                "description": null,
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2024-01-05T18:10:54.760Z",
+                            "updatedAt": "2024-01-05T18:10:54.760Z"
+                        },
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null,
+        "localizations": []
+    },
+    "sidebar": {
+        "id": 1,
+        "variant": "one-quarter",
+        "title": "Ads Sidebar",
+        "uid": "ads-sidebar-1",
+        "class_name": null,
+        "side": "right",
+        "createdAt": "2024-01-05T18:09:06.475Z",
+        "updatedAt": "2024-01-05T18:09:06.475Z",
+        "publishedAt": "2023-04-07T17:35:29.006Z",
+        "locale": "en",
+        "page_blocks": [
+            {
+                "__component": "page-blocks.hero-section-block",
+                "id": 6,
+                "title": "Sidebar",
+                "description": "With Page Blocks",
+                "variant": "simple-centered",
+                "anchor": null,
+                "class_name": "pt-16",
+                "media": null,
+                "buttons": [],
+                "additional_media": null
+            }
+        ],
+        "layouts": [
+            {
+                "id": 1,
+                "title": "Public Page Layout With Sidebar",
+                "uid": "public-page-layout",
+                "variant": "boxed",
+                "class_name": null,
+                "createdAt": "2024-01-05T18:08:37.021Z",
+                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "publishedAt": "2023-04-08T05:04:56.606Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": {
+                    "id": 1,
+                    "variant": "one-quarter",
+                    "title": "Ads Sidebar",
+                    "uid": "ads-sidebar-1",
+                    "class_name": null,
+                    "side": "right",
+                    "createdAt": "2024-01-05T18:09:06.475Z",
+                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "publishedAt": "2023-04-07T17:35:29.006Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.hero-section-block",
+                            "id": 6,
+                            "title": "Sidebar",
+                            "description": "With Page Blocks",
+                            "variant": "simple-centered",
+                            "anchor": null,
+                            "class_name": "pt-16"
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 2,
+                        "title": "Page With Sidebar Layout",
+                        "url": "/page-with-sidebar-layout",
+                        "createdAt": "2024-01-05T18:09:06.405Z",
+                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "publishedAt": "2023-04-08T13:00:14.519Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.slider-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "anchor": null,
+                                "class_name": "pt-16",
+                                "title": null,
+                                "description": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null,
+        "localizations": []
+    },
+    "slide_overs": [
+        {
+            "id": 1,
+            "variant": "right-side-half-width",
+            "title": "This Is Slide Over",
+            "uid": "this-is-slide-over",
+            "class_name": "sps-lite-slide-over",
+            "createdAt": "2024-01-05T18:09:06.497Z",
+            "updatedAt": "2024-01-05T18:09:06.497Z",
+            "publishedAt": "2023-04-07T16:54:17.781Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.faqs-block",
+                    "id": 1,
+                    "title": "This Is Slide Over",
+                    "description": "With Page Blocks",
+                    "variant": "two-columns-with-centered-introduction",
+                    "class_name": null,
+                    "anchor": null,
+                    "subtitle": null,
+                    "faqs": []
+                }
+            ],
+            "layouts": [
+                {
+                    "id": 1,
+                    "title": "Public Page Layout With Sidebar",
+                    "uid": "public-page-layout",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:37.021Z",
+                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.footer-block",
+                                "id": 1,
+                                "copyrights": "2023 Single Page Startup",
+                                "description": "The fastest way to develop your startup",
+                                "variant": "four-columns-with-company-mission",
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 2,
+                                    "title": "This Is Modal",
+                                    "description": "With Page Blocks",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.navbar-block",
+                                "id": 1,
+                                "variant": "simple-links-on-left",
+                                "description": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "sidebar": {
+                        "id": 1,
+                        "variant": "one-quarter",
+                        "title": "Ads Sidebar",
+                        "uid": "ads-sidebar-1",
+                        "class_name": null,
+                        "side": "right",
+                        "createdAt": "2024-01-05T18:09:06.475Z",
+                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "publishedAt": "2023-04-07T17:35:29.006Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 6,
+                                "title": "Sidebar",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": "pt-16"
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.faqs-block",
+                                    "id": 1,
+                                    "title": "This Is Slide Over",
+                                    "description": "With Page Blocks",
+                                    "variant": "two-columns-with-centered-introduction",
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 2,
+                            "title": "Page With Sidebar Layout",
+                            "url": "/page-with-sidebar-layout",
+                            "createdAt": "2024-01-05T18:09:06.405Z",
+                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "publishedAt": "2023-04-08T13:00:14.519Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.slider-block",
+                                    "id": 1,
+                                    "variant": "simple",
+                                    "anchor": null,
+                                    "class_name": "pt-16",
+                                    "title": null,
+                                    "description": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                {
+                    "id": 2,
+                    "title": "Public Page Layout",
+                    "uid": "public-page-layout-1",
+                    "variant": "wide",
+                    "class_name": "[&>.layout-container]:pt-16",
+                    "createdAt": "2024-01-05T18:08:37.045Z",
+                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                    "locale": "en",
+                    "footer": {
+                        "id": 1,
+                        "title": "Public Page Footer",
+                        "uid": "public-page-footer",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:36.985Z",
+                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "publishedAt": "2023-05-04T03:25:15.030Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.footer-block",
+                                "id": 1,
+                                "copyrights": "2023 Single Page Startup",
+                                "description": "The fastest way to develop your startup",
+                                "variant": "four-columns-with-company-mission",
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "modals": [
+                        {
+                            "id": 1,
+                            "uid": "this-is-modal",
+                            "dialog_panel_class_name": "w-8/12",
+                            "variant": "simple",
+                            "title": "This Is Modal",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.693Z",
+                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "publishedAt": "2023-03-28T04:07:57.457Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 2,
+                                    "title": "This Is Modal",
+                                    "description": "With Page Blocks",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "navbar": {
+                        "id": 1,
+                        "title": "Public Page Navbar",
+                        "uid": "public-page-navbar",
+                        "variant": "boxed",
+                        "class_name": null,
+                        "position": "fixed",
+                        "side": "top",
+                        "createdAt": "2024-01-05T18:08:38.420Z",
+                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "publishedAt": "2023-04-08T05:04:22.148Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.navbar-block",
+                                "id": 1,
+                                "variant": "simple-links-on-left",
+                                "description": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    },
+                    "sidebar": null,
+                    "slide_overs": [
+                        {
+                            "id": 1,
+                            "variant": "right-side-half-width",
+                            "title": "This Is Slide Over",
+                            "uid": "this-is-slide-over",
+                            "class_name": "sps-lite-slide-over",
+                            "createdAt": "2024-01-05T18:09:06.497Z",
+                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "publishedAt": "2023-04-07T16:54:17.781Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.faqs-block",
+                                    "id": 1,
+                                    "title": "This Is Slide Over",
+                                    "description": "With Page Blocks",
+                                    "variant": "two-columns-with-centered-introduction",
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": null
+                                }
+                            ],
+                            "layouts": [
+                                {
+                                    "id": 1,
+                                    "title": "Public Page Layout With Sidebar",
+                                    "uid": "public-page-layout",
+                                    "variant": "boxed",
+                                    "class_name": null,
+                                    "createdAt": "2024-01-05T18:08:37.021Z",
+                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "publishedAt": "2023-04-08T05:04:56.606Z",
+                                    "locale": "en"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Public Page Layout",
+                                    "uid": "public-page-layout-1",
+                                    "variant": "wide",
+                                    "class_name": "[&>.layout-container]:pt-16",
+                                    "createdAt": "2024-01-05T18:08:37.045Z",
+                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "publishedAt": "2023-04-20T03:23:38.447Z",
+                                    "locale": "en"
+                                }
+                            ],
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        }
+                    ],
+                    "topbar": null,
+                    "pages": [
+                        {
+                            "id": 1,
+                            "title": "Main page",
+                            "url": "/",
+                            "createdAt": "2024-01-05T18:09:06.380Z",
+                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "publishedAt": "2023-04-08T12:06:05.277Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 3,
+                                    "title": "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate",
+                                    "description": "Spend less time on setup and more time building your innovative product with our ready-to-use, feature-packed boilerplate designed for lean startup developers.",
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": "pt-16"
+                                },
+                                {
+                                    "__component": "page-blocks.cta-section-block",
+                                    "id": 1,
+                                    "variant": "dark-with-image",
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "title": "Minimum Viable Product is Ready",
+                                    "description": "Reduce the time and effort required to build and launch an initial product, helping you validate your ideas and gather customer feedback more quickly. This will allow you to iterate and improve upon your product, increasing your chances of success in the competitive startup landscape.",
+                                    "subtitle": null
+                                },
+                                {
+                                    "__component": "page-blocks.features-section-block",
+                                    "id": 1,
+                                    "title": "Don't repeat yourself",
+                                    "description": "SignlePageStartup is designed to help you efficiently create a MVP that you can launch quickly to gather customer feedback and validate your ideas. Here's what you can expect from the MVP-ready feature.",
+                                    "subtitle": null,
+                                    "variant": "with-icon",
+                                    "anchor": null,
+                                    "class_name": null
+                                },
+                                {
+                                    "__component": "page-blocks.reviews-list-block",
+                                    "id": 1,
+                                    "variant": "simple-with-avatars",
+                                    "show_all": true,
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "title": "Happy customers reviews",
+                                    "subtitle": null,
+                                    "description": null
+                                },
+                                {
+                                    "__component": "page-blocks.contact-section-block",
+                                    "id": 1,
+                                    "title": "We’re ready to help",
+                                    "subtitle": null,
+                                    "description": "Fill in all the fields below and our manager will contact you.",
+                                    "anchor": null,
+                                    "class_name": null,
+                                    "variant": "centered"
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 3,
+                            "title": "Not found page",
+                            "url": "/404",
+                            "createdAt": "2024-01-05T18:09:06.426Z",
+                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "publishedAt": "2023-04-20T04:18:21.051Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.not-found-block",
+                                    "id": 1,
+                                    "variant": "simple",
+                                    "title": "404",
+                                    "description": null,
+                                    "class_name": null,
+                                    "anchor": null,
+                                    "subtitle": "Not found"
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 4,
+                            "title": "Terms and Conditions",
+                            "url": "/terms-and-conditions",
+                            "createdAt": "2024-01-05T18:09:06.439Z",
+                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "publishedAt": "2023-05-04T08:38:22.465Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 4,
+                                    "title": "Terms and Conditions",
+                                    "description": null,
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": null,
+                            "localizations": []
+                        },
+                        {
+                            "id": 5,
+                            "title": "Currency Page",
+                            "url": "/currencies/[plugin::sps-billing.currency.id]",
+                            "createdAt": "2024-01-05T18:09:06.455Z",
+                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "publishedAt": "2023-12-02T23:44:54.598Z",
+                            "locale": "en",
+                            "page_blocks": [
+                                {
+                                    "__component": "page-blocks.hero-section-block",
+                                    "id": 5,
+                                    "title": "Currency Page",
+                                    "description": null,
+                                    "variant": "simple-centered",
+                                    "anchor": null,
+                                    "class_name": null
+                                }
+                            ],
+                            "layout": {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            },
+                            "createdBy": null,
+                            "updatedBy": {
+                                "id": 1,
+                                "firstname": "rogwild",
+                                "lastname": "design",
+                                "username": null,
+                                "email": "rogwild.design@gmail.com",
+                                "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                                "resetPasswordToken": null,
+                                "registrationToken": null,
+                                "isActive": true,
+                                "blocked": false,
+                                "preferedLanguage": null,
+                                "createdAt": "2024-01-05T18:10:54.760Z",
+                                "updatedAt": "2024-01-05T18:10:54.760Z"
+                            },
+                            "localizations": []
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                }
+            ],
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        }
+    ],
+    "topbar": null,
+    "pages": [
+        {
+            "id": 2,
+            "title": "Page With Sidebar Layout",
+            "url": "/page-with-sidebar-layout",
+            "createdAt": "2024-01-05T18:09:06.405Z",
+            "updatedAt": "2024-01-05T18:09:06.405Z",
+            "publishedAt": "2023-04-08T13:00:14.519Z",
+            "locale": "en",
+            "page_blocks": [
+                {
+                    "__component": "page-blocks.slider-block",
+                    "id": 1,
+                    "variant": "simple",
+                    "anchor": null,
+                    "class_name": "pt-16",
+                    "title": null,
+                    "description": null,
+                    "subtitle": null,
+                    "slider": null
+                }
+            ],
+            "layout": {
+                "id": 1,
+                "title": "Public Page Layout With Sidebar",
+                "uid": "public-page-layout",
+                "variant": "boxed",
+                "class_name": null,
+                "createdAt": "2024-01-05T18:08:37.021Z",
+                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "publishedAt": "2023-04-08T05:04:56.606Z",
+                "locale": "en",
+                "footer": {
+                    "id": 1,
+                    "title": "Public Page Footer",
+                    "uid": "public-page-footer",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "createdAt": "2024-01-05T18:08:36.985Z",
+                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "publishedAt": "2023-05-04T03:25:15.030Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.footer-block",
+                            "id": 1,
+                            "copyrights": "2023 Single Page Startup",
+                            "description": "The fastest way to develop your startup",
+                            "variant": "four-columns-with-company-mission",
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "modals": [
+                    {
+                        "id": 1,
+                        "uid": "this-is-modal",
+                        "dialog_panel_class_name": "w-8/12",
+                        "variant": "simple",
+                        "title": "This Is Modal",
+                        "class_name": null,
+                        "createdAt": "2024-01-05T18:08:37.693Z",
+                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "publishedAt": "2023-03-28T04:07:57.457Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.hero-section-block",
+                                "id": 2,
+                                "title": "This Is Modal",
+                                "description": "With Page Blocks",
+                                "variant": "simple-centered",
+                                "anchor": null,
+                                "class_name": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "navbar": {
+                    "id": 1,
+                    "title": "Public Page Navbar",
+                    "uid": "public-page-navbar",
+                    "variant": "boxed",
+                    "class_name": null,
+                    "position": "fixed",
+                    "side": "top",
+                    "createdAt": "2024-01-05T18:08:38.420Z",
+                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "publishedAt": "2023-04-08T05:04:22.148Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.navbar-block",
+                            "id": 1,
+                            "variant": "simple-links-on-left",
+                            "description": null,
+                            "class_name": null
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Public Page Layout",
+                            "uid": "public-page-layout-1",
+                            "variant": "wide",
+                            "class_name": "[&>.layout-container]:pt-16",
+                            "createdAt": "2024-01-05T18:08:37.045Z",
+                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "publishedAt": "2023-04-20T03:23:38.447Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "sidebar": {
+                    "id": 1,
+                    "variant": "one-quarter",
+                    "title": "Ads Sidebar",
+                    "uid": "ads-sidebar-1",
+                    "class_name": null,
+                    "side": "right",
+                    "createdAt": "2024-01-05T18:09:06.475Z",
+                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "publishedAt": "2023-04-07T17:35:29.006Z",
+                    "locale": "en",
+                    "page_blocks": [
+                        {
+                            "__component": "page-blocks.hero-section-block",
+                            "id": 6,
+                            "title": "Sidebar",
+                            "description": "With Page Blocks",
+                            "variant": "simple-centered",
+                            "anchor": null,
+                            "class_name": "pt-16"
+                        }
+                    ],
+                    "layouts": [
+                        {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "slide_overs": [
+                    {
+                        "id": 1,
+                        "variant": "right-side-half-width",
+                        "title": "This Is Slide Over",
+                        "uid": "this-is-slide-over",
+                        "class_name": "sps-lite-slide-over",
+                        "createdAt": "2024-01-05T18:09:06.497Z",
+                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "publishedAt": "2023-04-07T16:54:17.781Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.faqs-block",
+                                "id": 1,
+                                "title": "This Is Slide Over",
+                                "description": "With Page Blocks",
+                                "variant": "two-columns-with-centered-introduction",
+                                "class_name": null,
+                                "anchor": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layouts": [
+                            {
+                                "id": 1,
+                                "title": "Public Page Layout With Sidebar",
+                                "uid": "public-page-layout",
+                                "variant": "boxed",
+                                "class_name": null,
+                                "createdAt": "2024-01-05T18:08:37.021Z",
+                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "publishedAt": "2023-04-08T05:04:56.606Z",
+                                "locale": "en"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Public Page Layout",
+                                "uid": "public-page-layout-1",
+                                "variant": "wide",
+                                "class_name": "[&>.layout-container]:pt-16",
+                                "createdAt": "2024-01-05T18:08:37.045Z",
+                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "publishedAt": "2023-04-20T03:23:38.447Z",
+                                "locale": "en"
+                            }
+                        ],
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "topbar": null,
+                "pages": [
+                    {
+                        "id": 2,
+                        "title": "Page With Sidebar Layout",
+                        "url": "/page-with-sidebar-layout",
+                        "createdAt": "2024-01-05T18:09:06.405Z",
+                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "publishedAt": "2023-04-08T13:00:14.519Z",
+                        "locale": "en",
+                        "page_blocks": [
+                            {
+                                "__component": "page-blocks.slider-block",
+                                "id": 1,
+                                "variant": "simple",
+                                "anchor": null,
+                                "class_name": "pt-16",
+                                "title": null,
+                                "description": null,
+                                "subtitle": null
+                            }
+                        ],
+                        "layout": {
+                            "id": 1,
+                            "title": "Public Page Layout With Sidebar",
+                            "uid": "public-page-layout",
+                            "variant": "boxed",
+                            "class_name": null,
+                            "createdAt": "2024-01-05T18:08:37.021Z",
+                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "publishedAt": "2023-04-08T05:04:56.606Z",
+                            "locale": "en"
+                        },
+                        "createdBy": null,
+                        "updatedBy": null,
+                        "localizations": []
+                    }
+                ],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            },
+            "createdBy": null,
+            "updatedBy": null,
+            "localizations": []
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null,
+    "localizations": []
+}

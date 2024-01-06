@@ -1,0 +1,161 @@
+{
+    "id": 2,
+    "title": "Pro",
+    "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+    "price": 99,
+    "type": "one-time",
+    "period": null,
+    "old_price": 199,
+    "createdAt": "2024-01-05T18:08:02.447Z",
+    "updatedAt": "2024-01-05T18:08:02.447Z",
+    "publishedAt": "2023-02-14T15:48:56.695Z",
+    "locale": "en",
+    "currency": {
+        "id": 1,
+        "title": "USD",
+        "unicode": "$",
+        "is_default": true,
+        "createdAt": "2024-01-05T18:08:02.259Z",
+        "updatedAt": "2024-01-05T18:08:02.259Z",
+        "publishedAt": "2023-03-29T16:09:52.898Z",
+        "locale": "en",
+        "tiers": [
+            {
+                "id": 2,
+                "title": "Pro",
+                "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+                "price": 99,
+                "type": "one-time",
+                "period": null,
+                "old_price": 199,
+                "createdAt": "2024-01-05T18:08:02.447Z",
+                "updatedAt": "2024-01-05T18:08:02.447Z",
+                "publishedAt": "2023-02-14T15:48:56.695Z",
+                "locale": "en",
+                "currency": {
+                    "id": 1,
+                    "title": "USD",
+                    "unicode": "$",
+                    "is_default": true,
+                    "createdAt": "2024-01-05T18:08:02.259Z",
+                    "updatedAt": "2024-01-05T18:08:02.259Z",
+                    "publishedAt": "2023-03-29T16:09:52.898Z",
+                    "locale": "en",
+                    "tiers": [
+                        {
+                            "id": 2,
+                            "title": "Pro",
+                            "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+                            "price": 99,
+                            "type": "one-time",
+                            "period": null,
+                            "old_price": 199,
+                            "createdAt": "2024-01-05T18:08:02.447Z",
+                            "updatedAt": "2024-01-05T18:08:02.447Z",
+                            "publishedAt": "2023-02-14T15:48:56.695Z",
+                            "locale": "en"
+                        }
+                    ],
+                    "createdBy": null,
+                    "updatedBy": null,
+                    "localizations": []
+                },
+                "features": [
+                    {
+                        "id": 4,
+                        "description": null,
+                        "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
+                        "subtitle": null,
+                        "media": null,
+                        "additional_media": null
+                    },
+                    {
+                        "id": 5,
+                        "description": null,
+                        "title": "Настроенный фронтенд с библиотекой компонентов",
+                        "subtitle": null,
+                        "media": null,
+                        "additional_media": null
+                    },
+                    {
+                        "id": 6,
+                        "description": null,
+                        "title": "Все модели для построения стартапа любой сложности",
+                        "subtitle": null,
+                        "media": null,
+                        "additional_media": null
+                    },
+                    {
+                        "id": 7,
+                        "description": null,
+                        "title": "Доступ к репозиторию с исходниками",
+                        "subtitle": null,
+                        "media": null,
+                        "additional_media": null
+                    },
+                    {
+                        "id": 8,
+                        "description": null,
+                        "title": "Доступ к комьюнити",
+                        "subtitle": null,
+                        "media": null,
+                        "additional_media": null
+                    }
+                ],
+                "buttons": [],
+                "createdBy": null,
+                "updatedBy": null,
+                "localizations": []
+            }
+        ],
+        "createdBy": null,
+        "updatedBy": null,
+        "localizations": []
+    },
+    "features": [
+        {
+            "id": 4,
+            "description": null,
+            "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
+            "subtitle": null,
+            "media": null,
+            "additional_media": null
+        },
+        {
+            "id": 5,
+            "description": null,
+            "title": "Настроенный фронтенд с библиотекой компонентов",
+            "subtitle": null,
+            "media": null,
+            "additional_media": null
+        },
+        {
+            "id": 6,
+            "description": null,
+            "title": "Все модели для построения стартапа любой сложности",
+            "subtitle": null,
+            "media": null,
+            "additional_media": null
+        },
+        {
+            "id": 7,
+            "description": null,
+            "title": "Доступ к репозиторию с исходниками",
+            "subtitle": null,
+            "media": null,
+            "additional_media": null
+        },
+        {
+            "id": 8,
+            "description": null,
+            "title": "Доступ к комьюнити",
+            "subtitle": null,
+            "media": null,
+            "additional_media": null
+        }
+    ],
+    "buttons": [],
+    "createdBy": null,
+    "updatedBy": null,
+    "localizations": []
+}

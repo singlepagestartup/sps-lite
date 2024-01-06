@@ -482,14 +482,12 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: "i18n_locale";
+export interface PluginContentReleasesRelease extends Schema.CollectionType {
+  collectionName: "strapi_releases";
   info: {
-    singularName: "locale";
-    pluralName: "locales";
-    collectionName: "locales";
-    displayName: "Locale";
-    description: "";
+    singularName: "release";
+    pluralName: "releases";
+    displayName: "Release";
   };
   options: {
     draftAndPublish: false;
@@ -503,22 +501,71 @@ export interface PluginI18NLocale extends Schema.CollectionType {
     };
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
-    code: Attribute.String & Attribute.Unique;
+    name: Attribute.String & Attribute.Required;
+    releasedAt: Attribute.DateTime;
+    actions: Attribute.Relation<
+      "plugin::content-releases.release",
+      "oneToMany",
+      "plugin::content-releases.release-action"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "plugin::i18n.locale",
+      "plugin::content-releases.release",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "plugin::i18n.locale",
+      "plugin::content-releases.release",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginContentReleasesReleaseAction
+  extends Schema.CollectionType {
+  collectionName: "strapi_release_actions";
+  info: {
+    singularName: "release-action";
+    pluralName: "release-actions";
+    displayName: "Release Action";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    "content-manager": {
+      visible: false;
+    };
+    "content-type-builder": {
+      visible: false;
+    };
+  };
+  attributes: {
+    type: Attribute.Enumeration<["publish", "unpublish"]> & Attribute.Required;
+    entry: Attribute.Relation<
+      "plugin::content-releases.release-action",
+      "morphToOne"
+    >;
+    contentType: Attribute.String & Attribute.Required;
+    release: Attribute.Relation<
+      "plugin::content-releases.release-action",
+      "manyToOne",
+      "plugin::content-releases.release"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::content-releases.release-action",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::content-releases.release-action",
       "oneToOne",
       "admin::user"
     > &
@@ -677,87 +724,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginEmailDesignerEmailTemplate
-  extends Schema.CollectionType {
-  collectionName: "email_templates";
-  info: {
-    singularName: "email-template";
-    pluralName: "email-templates";
-    displayName: "Email-template";
-    name: "email-template";
-  };
-  options: {
-    draftAndPublish: false;
-    timestamps: true;
-    increments: true;
-    comment: "";
-  };
-  pluginOptions: {
-    "content-manager": {
-      visible: false;
-    };
-    "content-type-builder": {
-      visible: false;
-    };
-  };
-  attributes: {
-    templateReferenceId: Attribute.Integer & Attribute.Unique;
-    design: Attribute.JSON;
-    name: Attribute.String;
-    subject: Attribute.String;
-    bodyHtml: Attribute.Text;
-    bodyText: Attribute.Text;
-    enabled: Attribute.Boolean & Attribute.DefaultTo<true>;
-    tags: Attribute.JSON;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::email-designer.email-template",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::email-designer.email-template",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiConfigurationConfiguration extends Schema.SingleType {
-  collectionName: "configurations";
-  info: {
-    singularName: "configuration";
-    pluralName: "configurations";
-    displayName: "Configuration";
-    description: "";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    configs: Attribute.Component<"functions.config", true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "api::configuration.configuration",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "api::configuration.configuration",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCurrencyCurrency extends Schema.CollectionType {
-  collectionName: "currencies";
+export interface PluginSpsBillingCurrency extends Schema.CollectionType {
+  collectionName: "sps_billing_currencies";
   info: {
     singularName: "currency";
     pluralName: "currencies";
@@ -793,119 +761,40 @@ export interface ApiCurrencyCurrency extends Schema.CollectionType {
         };
       }>;
     tiers: Attribute.Relation<
-      "api::currency.currency",
+      "plugin::sps-billing.currency",
       "oneToMany",
-      "api::tier.tier"
+      "plugin::sps-billing.tier"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::currency.currency",
+      "plugin::sps-billing.currency",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::currency.currency",
+      "plugin::sps-billing.currency",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::currency.currency",
+      "plugin::sps-billing.currency",
       "oneToMany",
-      "api::currency.currency"
+      "plugin::sps-billing.currency"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiFlyoutFlyout extends Schema.CollectionType {
-  collectionName: "flyouts";
+export interface PluginSpsBillingTier extends Schema.CollectionType {
+  collectionName: "sps_billing_tiers";
   info: {
-    singularName: "flyout";
-    pluralName: "flyouts";
-    displayName: "Flyout";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    variant: Attribute.Enumeration<["simple"]> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<"simple">;
-    page_blocks: Attribute.DynamicZone<
-      [
-        "elements.buttons-array",
-        "elements.button",
-        "page-blocks.hero-section-block",
-      ]
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    uid: Attribute.UID<"api::flyout.flyout", "title"> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    class_name: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "api::flyout.flyout",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "api::flyout.flyout",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "api::flyout.flyout",
-      "oneToMany",
-      "api::flyout.flyout"
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiFooterFooter extends Schema.CollectionType {
-  collectionName: "footers";
-  info: {
-    singularName: "footer";
-    pluralName: "footers";
-    displayName: "Footer";
+    singularName: "tier";
+    pluralName: "tiers";
+    displayName: "Tier";
     description: "";
   };
   options: {
@@ -917,40 +806,54 @@ export interface ApiFooterFooter extends Schema.CollectionType {
     };
   };
   attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    uid: Attribute.UID<"api::footer.footer", "title"> &
-      Attribute.Required &
+    title: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    layouts: Attribute.Relation<
-      "api::footer.footer",
-      "oneToMany",
-      "api::layout.layout"
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "manyToOne",
+      "plugin::sps-billing.currency"
     >;
-    page_blocks: Attribute.DynamicZone<["page-blocks.footer-block"]> &
+    type: Attribute.Enumeration<["one-time", "regularly"]> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    variant: Attribute.Enumeration<["boxed"]> &
-      Attribute.Required &
+    period: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.DefaultTo<"boxed">;
-    class_name: Attribute.String &
+      }>;
+    features: Attribute.Component<"elements.feature", true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    old_price: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    buttons: Attribute.Component<"elements.button", true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -960,28 +863,58 @@ export interface ApiFooterFooter extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::footer.footer",
+      "plugin::sps-billing.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::footer.footer",
+      "plugin::sps-billing.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::footer.footer",
+      "plugin::sps-billing.tier",
       "oneToMany",
-      "api::footer.footer"
+      "plugin::sps-billing.tier"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiFormForm extends Schema.CollectionType {
-  collectionName: "forms";
+export interface PluginSpsCrmConfiguration extends Schema.SingleType {
+  collectionName: "sps_crm_configurations";
+  info: {
+    singularName: "configuration";
+    pluralName: "configurations";
+    displayName: "Configuration";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    configs: Attribute.Component<"functions.config", true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.configuration",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.configuration",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsCrmForm extends Schema.CollectionType {
+  collectionName: "sps_crm_forms";
   info: {
     singularName: "form";
     pluralName: "forms";
@@ -1029,12 +962,7 @@ export interface ApiFormForm extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    form_requests: Attribute.Relation<
-      "api::form.form",
-      "oneToMany",
-      "api::form-request.form-request"
-    >;
-    uid: Attribute.UID<"api::form.form", "title"> & Attribute.Required;
+    uid: Attribute.UID<"plugin::sps-crm.form", "title"> & Attribute.Required;
     side_effects: Attribute.Component<"functions.form-side-effect", true> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1051,21 +979,29 @@ export interface ApiFormForm extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<"api::form.form", "oneToOne", "admin::user"> &
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToOne",
+      "admin::user"
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<"api::form.form", "oneToOne", "admin::user"> &
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToOne",
+      "admin::user"
+    > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::form.form",
+      "plugin::sps-crm.form",
       "oneToMany",
-      "api::form.form"
+      "plugin::sps-crm.form"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiFormRequestFormRequest extends Schema.CollectionType {
-  collectionName: "form_requests";
+export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
+  collectionName: "sps_crm_form_requests";
   info: {
     singularName: "form-request";
     pluralName: "form-requests";
@@ -1078,21 +1014,16 @@ export interface ApiFormRequestFormRequest extends Schema.CollectionType {
   attributes: {
     inputs: Attribute.Component<"elements.request-input", true>;
     files: Attribute.Media;
-    form: Attribute.Relation<
-      "api::form-request.form-request",
-      "manyToOne",
-      "api::form.form"
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::form-request.form-request",
+      "plugin::sps-crm.form-request",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::form-request.form-request",
+      "plugin::sps-crm.form-request",
       "oneToOne",
       "admin::user"
     > &
@@ -1100,8 +1031,233 @@ export interface ApiFormRequestFormRequest extends Schema.CollectionType {
   };
 }
 
-export interface ApiLayoutLayout extends Schema.CollectionType {
-  collectionName: "layouts";
+export interface PluginSpsCrmReview extends Schema.CollectionType {
+  collectionName: "sps_crm_reviews";
+  info: {
+    singularName: "review";
+    pluralName: "reviews";
+    displayName: "Review";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.RichText;
+    title: Attribute.RichText;
+    description: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    rating: Attribute.Integer;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-crm.review",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-crm.review",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsNotificationTelegram extends Schema.CollectionType {
+  collectionName: "sps_notification_telegrams";
+  info: {
+    singularName: "telegram";
+    pluralName: "telegrams";
+    displayName: "Telegram";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-notification.telegram",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-notification.telegram",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
+  collectionName: "sps_wb_flyouts";
+  info: {
+    singularName: "flyout";
+    pluralName: "flyouts";
+    displayName: "Flyout";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"simple">;
+    page_blocks: Attribute.DynamicZone<
+      [
+        "elements.buttons-array",
+        "elements.button",
+        "page-blocks.hero-section-block",
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    uid: Attribute.UID<"plugin::sps-website-builder.flyout", "title"> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    class_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-website-builder.flyout",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-website-builder.flyout",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-website-builder.flyout",
+      "oneToMany",
+      "plugin::sps-website-builder.flyout"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsWebsiteBuilderFooter extends Schema.CollectionType {
+  collectionName: "sps_wb_footers";
+  info: {
+    singularName: "footer";
+    pluralName: "footers";
+    displayName: "Footer";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    uid: Attribute.UID<"plugin::sps-website-builder.footer", "title"> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    page_blocks: Attribute.DynamicZone<["page-blocks.footer-block"]> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    variant: Attribute.Enumeration<["boxed"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"boxed">;
+    class_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    layouts: Attribute.Relation<
+      "plugin::sps-website-builder.footer",
+      "oneToMany",
+      "plugin::sps-website-builder.layout"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-website-builder.footer",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-website-builder.footer",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-website-builder.footer",
+      "oneToMany",
+      "plugin::sps-website-builder.footer"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsWebsiteBuilderLayout extends Schema.CollectionType {
+  collectionName: "sps_wb_layouts";
   info: {
     singularName: "layout";
     pluralName: "layouts";
@@ -1124,17 +1280,12 @@ export interface ApiLayoutLayout extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    uid: Attribute.UID<"api::layout.layout", "title"> &
+    uid: Attribute.UID<"plugin::sps-website-builder.layout", "title"> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    sidebar: Attribute.Relation<
-      "api::layout.layout",
-      "manyToOne",
-      "api::sidebar.sidebar"
-    >;
     variant: Attribute.Enumeration<["wide", "boxed"]> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1143,68 +1294,73 @@ export interface ApiLayoutLayout extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<"wide">;
-    topbar: Attribute.Relation<
-      "api::layout.layout",
-      "manyToOne",
-      "api::topbar.topbar"
-    >;
-    footer: Attribute.Relation<
-      "api::layout.layout",
-      "manyToOne",
-      "api::footer.footer"
-    >;
-    slide_overs: Attribute.Relation<
-      "api::layout.layout",
-      "manyToMany",
-      "api::slide-over.slide-over"
-    >;
-    modals: Attribute.Relation<
-      "api::layout.layout",
-      "manyToMany",
-      "api::modal.modal"
-    >;
-    navbar: Attribute.Relation<
-      "api::layout.layout",
-      "manyToOne",
-      "api::navbar.navbar"
-    >;
     class_name: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    footer: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToOne",
+      "plugin::sps-website-builder.footer"
+    >;
+    modals: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToMany",
+      "plugin::sps-website-builder.modal"
+    >;
+    navbar: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToOne",
+      "plugin::sps-website-builder.navbar"
+    >;
+    sidebar: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToOne",
+      "plugin::sps-website-builder.sidebar"
+    >;
+    slide_overs: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToMany",
+      "plugin::sps-website-builder.slide-over"
+    >;
+    topbar: Attribute.Relation<
+      "plugin::sps-website-builder.layout",
+      "manyToOne",
+      "plugin::sps-website-builder.topbar"
+    >;
     pages: Attribute.Relation<
-      "api::layout.layout",
+      "plugin::sps-website-builder.layout",
       "oneToMany",
-      "api::page.page"
+      "plugin::sps-website-builder.page"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::layout.layout",
+      "plugin::sps-website-builder.layout",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::layout.layout",
+      "plugin::sps-website-builder.layout",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::layout.layout",
+      "plugin::sps-website-builder.layout",
       "oneToMany",
-      "api::layout.layout"
+      "plugin::sps-website-builder.layout"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiLoaderLoader extends Schema.SingleType {
-  collectionName: "loaders";
+export interface PluginSpsWebsiteBuilderLoader extends Schema.SingleType {
+  collectionName: "sps_wb_loaders";
   info: {
     singularName: "loader";
     pluralName: "loaders";
@@ -1229,13 +1385,13 @@ export interface ApiLoaderLoader extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::loader.loader",
+      "plugin::sps-website-builder.loader",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::loader.loader",
+      "plugin::sps-website-builder.loader",
       "oneToOne",
       "admin::user"
     > &
@@ -1243,8 +1399,8 @@ export interface ApiLoaderLoader extends Schema.SingleType {
   };
 }
 
-export interface ApiMetatagMetatag extends Schema.CollectionType {
-  collectionName: "metatags";
+export interface PluginSpsWebsiteBuilderMetatag extends Schema.CollectionType {
+  collectionName: "sps_wb_metatags";
   info: {
     singularName: "metatag";
     pluralName: "metatags";
@@ -1293,9 +1449,9 @@ export interface ApiMetatagMetatag extends Schema.CollectionType {
         };
       }>;
     pages: Attribute.Relation<
-      "api::metatag.metatag",
+      "plugin::sps-website-builder.metatag",
       "oneToMany",
-      "api::page.page"
+      "plugin::sps-website-builder.page"
     >;
     is_default: Attribute.Boolean &
       Attribute.SetPluginOptions<{
@@ -1307,28 +1463,28 @@ export interface ApiMetatagMetatag extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::metatag.metatag",
+      "plugin::sps-website-builder.metatag",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::metatag.metatag",
+      "plugin::sps-website-builder.metatag",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::metatag.metatag",
+      "plugin::sps-website-builder.metatag",
       "oneToMany",
-      "api::metatag.metatag"
+      "plugin::sps-website-builder.metatag"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiModalModal extends Schema.CollectionType {
-  collectionName: "modals";
+export interface PluginSpsWebsiteBuilderModal extends Schema.CollectionType {
+  collectionName: "sps_wb_modals";
   info: {
     singularName: "modal";
     pluralName: "modals";
@@ -1344,7 +1500,8 @@ export interface ApiModalModal extends Schema.CollectionType {
     };
   };
   attributes: {
-    uid: Attribute.UID<"api::modal.modal", "title"> & Attribute.Required;
+    uid: Attribute.UID<"plugin::sps-website-builder.modal", "title"> &
+      Attribute.Required;
     page_blocks: Attribute.DynamicZone<
       [
         "page-blocks.hero-section-block",
@@ -1380,43 +1537,43 @@ export interface ApiModalModal extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    layouts: Attribute.Relation<
-      "api::modal.modal",
-      "manyToMany",
-      "api::layout.layout"
-    >;
     class_name: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    layouts: Attribute.Relation<
+      "plugin::sps-website-builder.modal",
+      "manyToMany",
+      "plugin::sps-website-builder.layout"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::modal.modal",
+      "plugin::sps-website-builder.modal",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::modal.modal",
+      "plugin::sps-website-builder.modal",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::modal.modal",
+      "plugin::sps-website-builder.modal",
       "oneToMany",
-      "api::modal.modal"
+      "plugin::sps-website-builder.modal"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiNavbarNavbar extends Schema.CollectionType {
-  collectionName: "navbars";
+export interface PluginSpsWebsiteBuilderNavbar extends Schema.CollectionType {
+  collectionName: "sps_wb_navbars";
   info: {
     singularName: "navbar";
     pluralName: "navbars";
@@ -1439,7 +1596,7 @@ export interface ApiNavbarNavbar extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    uid: Attribute.UID<"api::navbar.navbar", "title"> &
+    uid: Attribute.UID<"plugin::sps-website-builder.navbar", "title"> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1466,11 +1623,6 @@ export interface ApiNavbarNavbar extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    layouts: Attribute.Relation<
-      "api::navbar.navbar",
-      "oneToMany",
-      "api::layout.layout"
-    >;
     position: Attribute.Enumeration<["fixed"]> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1487,32 +1639,37 @@ export interface ApiNavbarNavbar extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<"top">;
+    layouts: Attribute.Relation<
+      "plugin::sps-website-builder.navbar",
+      "oneToMany",
+      "plugin::sps-website-builder.layout"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::navbar.navbar",
+      "plugin::sps-website-builder.navbar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::navbar.navbar",
+      "plugin::sps-website-builder.navbar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::navbar.navbar",
+      "plugin::sps-website-builder.navbar",
       "oneToMany",
-      "api::navbar.navbar"
+      "plugin::sps-website-builder.navbar"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiPagePage extends Schema.CollectionType {
-  collectionName: "pages";
+export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
+  collectionName: "sps_wb_pages";
   info: {
     singularName: "page";
     pluralName: "pages";
@@ -1542,11 +1699,6 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    layout: Attribute.Relation<
-      "api::page.page",
-      "manyToOne",
-      "api::layout.layout"
-    >;
     page_blocks: Attribute.DynamicZone<
       [
         "page-blocks.hero-section-block",
@@ -1572,66 +1724,37 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    metatag: Attribute.Relation<
-      "api::page.page",
+    layout: Attribute.Relation<
+      "plugin::sps-website-builder.page",
       "manyToOne",
-      "api::metatag.metatag"
+      "plugin::sps-website-builder.layout"
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<"api::page.page", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<"api::page.page", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "api::page.page",
-      "oneToMany",
-      "api::page.page"
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiReviewReview extends Schema.CollectionType {
-  collectionName: "reviews";
-  info: {
-    singularName: "review";
-    pluralName: "reviews";
-    displayName: "Review";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.RichText;
-    title: Attribute.RichText;
-    description: Attribute.RichText;
-    subtitle: Attribute.RichText;
-    rating: Attribute.Integer;
-    media: Attribute.Media;
-    additional_media: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::review.review",
+      "plugin::sps-website-builder.page",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::review.review",
+      "plugin::sps-website-builder.page",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-website-builder.page",
+      "oneToMany",
+      "plugin::sps-website-builder.page"
+    >;
+    locale: Attribute.String;
   };
 }
 
-export interface ApiRobotRobot extends Schema.SingleType {
-  collectionName: "robots";
+export interface PluginSpsWebsiteBuilderRobot extends Schema.SingleType {
+  collectionName: "sps_wb_robots";
   info: {
     singularName: "robot";
     pluralName: "robots";
@@ -1645,13 +1768,13 @@ export interface ApiRobotRobot extends Schema.SingleType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::robot.robot",
+      "plugin::sps-website-builder.robot",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::robot.robot",
+      "plugin::sps-website-builder.robot",
       "oneToOne",
       "admin::user"
     > &
@@ -1659,8 +1782,8 @@ export interface ApiRobotRobot extends Schema.SingleType {
   };
 }
 
-export interface ApiSidebarSidebar extends Schema.CollectionType {
-  collectionName: "sidebars";
+export interface PluginSpsWebsiteBuilderSidebar extends Schema.CollectionType {
+  collectionName: "sps_wb_sidebars";
   info: {
     singularName: "sidebar";
     pluralName: "sidebars";
@@ -1691,11 +1814,11 @@ export interface ApiSidebarSidebar extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    uid: Attribute.UID<"api::sidebar.sidebar", "title"> & Attribute.Required;
+    uid: Attribute.UID<"plugin::sps-website-builder.sidebar", "title"> &
+      Attribute.Required;
     page_blocks: Attribute.DynamicZone<
       [
         "page-blocks.hero-section-block",
-        "page-blocks.header-section-block",
         "elements.button",
         "elements.buttons-array",
       ]
@@ -1711,11 +1834,6 @@ export interface ApiSidebarSidebar extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    layouts: Attribute.Relation<
-      "api::sidebar.sidebar",
-      "oneToMany",
-      "api::layout.layout"
-    >;
     side: Attribute.Enumeration<["left", "right"]> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1724,32 +1842,38 @@ export interface ApiSidebarSidebar extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<"left">;
+    layouts: Attribute.Relation<
+      "plugin::sps-website-builder.sidebar",
+      "oneToMany",
+      "plugin::sps-website-builder.layout"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::sidebar.sidebar",
+      "plugin::sps-website-builder.sidebar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::sidebar.sidebar",
+      "plugin::sps-website-builder.sidebar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::sidebar.sidebar",
+      "plugin::sps-website-builder.sidebar",
       "oneToMany",
-      "api::sidebar.sidebar"
+      "plugin::sps-website-builder.sidebar"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiSlideOverSlideOver extends Schema.CollectionType {
-  collectionName: "slide_overs";
+export interface PluginSpsWebsiteBuilderSlideOver
+  extends Schema.CollectionType {
+  collectionName: "sps_wb_slide_overs";
   info: {
     singularName: "slide-over";
     pluralName: "slide-overs";
@@ -1780,7 +1904,7 @@ export interface ApiSlideOverSlideOver extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    uid: Attribute.UID<"api::slide-over.slide-over", "title"> &
+    uid: Attribute.UID<"plugin::sps-website-builder.slide-over", "title"> &
       Attribute.Required;
     class_name: Attribute.String &
       Attribute.SetPluginOptions<{
@@ -1795,36 +1919,36 @@ export interface ApiSlideOverSlideOver extends Schema.CollectionType {
         };
       }>;
     layouts: Attribute.Relation<
-      "api::slide-over.slide-over",
+      "plugin::sps-website-builder.slide-over",
       "manyToMany",
-      "api::layout.layout"
+      "plugin::sps-website-builder.layout"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::slide-over.slide-over",
+      "plugin::sps-website-builder.slide-over",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::slide-over.slide-over",
+      "plugin::sps-website-builder.slide-over",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::slide-over.slide-over",
+      "plugin::sps-website-builder.slide-over",
       "oneToMany",
-      "api::slide-over.slide-over"
+      "plugin::sps-website-builder.slide-over"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiSliderSlider extends Schema.CollectionType {
-  collectionName: "sliders";
+export interface PluginSpsWebsiteBuilderSlider extends Schema.CollectionType {
+  collectionName: "sps_wb_sliders";
   info: {
     singularName: "slider";
     pluralName: "sliders";
@@ -1893,62 +2017,33 @@ export interface ApiSliderSlider extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    uid: Attribute.UID<"api::slider.slider", "title">;
+    uid: Attribute.UID<"plugin::sps-website-builder.slider", "title">;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::slider.slider",
+      "plugin::sps-website-builder.slider",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::slider.slider",
+      "plugin::sps-website-builder.slider",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::slider.slider",
+      "plugin::sps-website-builder.slider",
       "oneToMany",
-      "api::slider.slider"
+      "plugin::sps-website-builder.slider"
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiTelegramTelegram extends Schema.CollectionType {
-  collectionName: "telegrams";
-  info: {
-    singularName: "telegram";
-    pluralName: "telegrams";
-    displayName: "Telegram";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "api::telegram.telegram",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "api::telegram.telegram",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiThemeTheme extends Schema.SingleType {
-  collectionName: "themes";
+export interface PluginSpsWebsiteBuilderTheme extends Schema.SingleType {
+  collectionName: "sps_wb_themes";
   info: {
     singularName: "theme";
     pluralName: "themes";
@@ -1965,13 +2060,13 @@ export interface ApiThemeTheme extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::theme.theme",
+      "plugin::sps-website-builder.theme",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::theme.theme",
+      "plugin::sps-website-builder.theme",
       "oneToOne",
       "admin::user"
     > &
@@ -1979,94 +2074,8 @@ export interface ApiThemeTheme extends Schema.SingleType {
   };
 }
 
-export interface ApiTierTier extends Schema.CollectionType {
-  collectionName: "tiers";
-  info: {
-    singularName: "tier";
-    pluralName: "tiers";
-    displayName: "Tier";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    currency: Attribute.Relation<
-      "api::tier.tier",
-      "manyToOne",
-      "api::currency.currency"
-    >;
-    type: Attribute.Enumeration<["one-time", "regularly"]> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    period: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    features: Attribute.Component<"elements.feature", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    old_price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    buttons: Attribute.Component<"elements.button", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<"api::tier.tier", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<"api::tier.tier", "oneToOne", "admin::user"> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "api::tier.tier",
-      "oneToMany",
-      "api::tier.tier"
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiTopbarTopbar extends Schema.CollectionType {
-  collectionName: "topbars";
+export interface PluginSpsWebsiteBuilderTopbar extends Schema.CollectionType {
+  collectionName: "sps_wb_topbars";
   info: {
     singularName: "topbar";
     pluralName: "topbars";
@@ -2088,7 +2097,7 @@ export interface ApiTopbarTopbar extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    uid: Attribute.UID<"api::topbar.topbar", "title"> &
+    uid: Attribute.UID<"plugin::sps-website-builder.topbar", "title"> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2109,11 +2118,6 @@ export interface ApiTopbarTopbar extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    layouts: Attribute.Relation<
-      "api::topbar.topbar",
-      "oneToMany",
-      "api::layout.layout"
-    >;
     class_name: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2136,32 +2140,130 @@ export interface ApiTopbarTopbar extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<"top">;
+    layouts: Attribute.Relation<
+      "plugin::sps-website-builder.topbar",
+      "oneToMany",
+      "plugin::sps-website-builder.layout"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "api::topbar.topbar",
+      "plugin::sps-website-builder.topbar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "api::topbar.topbar",
+      "plugin::sps-website-builder.topbar",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "api::topbar.topbar",
+      "plugin::sps-website-builder.topbar",
       "oneToMany",
-      "api::topbar.topbar"
+      "plugin::sps-website-builder.topbar"
     >;
     locale: Attribute.String;
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: "i18n_locale";
+  info: {
+    singularName: "locale";
+    pluralName: "locales";
+    collectionName: "locales";
+    displayName: "Locale";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    "content-manager": {
+      visible: false;
+    };
+    "content-type-builder": {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::i18n.locale",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::i18n.locale",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginEmailDesignerEmailTemplate
+  extends Schema.CollectionType {
+  collectionName: "email_templates";
+  info: {
+    singularName: "email-template";
+    pluralName: "email-templates";
+    displayName: "Email-template";
+    name: "email-template";
+  };
+  options: {
+    draftAndPublish: false;
+    timestamps: true;
+    increments: true;
+    comment: "";
+  };
+  pluginOptions: {
+    "content-manager": {
+      visible: false;
+    };
+    "content-type-builder": {
+      visible: false;
+    };
+  };
+  attributes: {
+    templateReferenceId: Attribute.Integer & Attribute.Unique;
+    design: Attribute.JSON;
+    name: Attribute.String;
+    subject: Attribute.String;
+    bodyHtml: Attribute.Text;
+    bodyText: Attribute.Text;
+    enabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+    tags: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::email-designer.email-template",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::email-designer.email-template",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module "@strapi/types" {
-  export namespace Shared {
+  export module Shared {
     export interface ContentTypes {
       "admin::permission": AdminPermission;
       "admin::user": AdminUser;
@@ -2172,32 +2274,34 @@ declare module "@strapi/types" {
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "plugin::upload.file": PluginUploadFile;
       "plugin::upload.folder": PluginUploadFolder;
-      "plugin::i18n.locale": PluginI18NLocale;
+      "plugin::content-releases.release": PluginContentReleasesRelease;
+      "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
+      "plugin::sps-billing.currency": PluginSpsBillingCurrency;
+      "plugin::sps-billing.tier": PluginSpsBillingTier;
+      "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
+      "plugin::sps-crm.form": PluginSpsCrmForm;
+      "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
+      "plugin::sps-crm.review": PluginSpsCrmReview;
+      "plugin::sps-notification.telegram": PluginSpsNotificationTelegram;
+      "plugin::sps-website-builder.flyout": PluginSpsWebsiteBuilderFlyout;
+      "plugin::sps-website-builder.footer": PluginSpsWebsiteBuilderFooter;
+      "plugin::sps-website-builder.layout": PluginSpsWebsiteBuilderLayout;
+      "plugin::sps-website-builder.loader": PluginSpsWebsiteBuilderLoader;
+      "plugin::sps-website-builder.metatag": PluginSpsWebsiteBuilderMetatag;
+      "plugin::sps-website-builder.modal": PluginSpsWebsiteBuilderModal;
+      "plugin::sps-website-builder.navbar": PluginSpsWebsiteBuilderNavbar;
+      "plugin::sps-website-builder.page": PluginSpsWebsiteBuilderPage;
+      "plugin::sps-website-builder.robot": PluginSpsWebsiteBuilderRobot;
+      "plugin::sps-website-builder.sidebar": PluginSpsWebsiteBuilderSidebar;
+      "plugin::sps-website-builder.slide-over": PluginSpsWebsiteBuilderSlideOver;
+      "plugin::sps-website-builder.slider": PluginSpsWebsiteBuilderSlider;
+      "plugin::sps-website-builder.theme": PluginSpsWebsiteBuilderTheme;
+      "plugin::sps-website-builder.topbar": PluginSpsWebsiteBuilderTopbar;
+      "plugin::i18n.locale": PluginI18NLocale;
       "plugin::email-designer.email-template": PluginEmailDesignerEmailTemplate;
-      "api::configuration.configuration": ApiConfigurationConfiguration;
-      "api::currency.currency": ApiCurrencyCurrency;
-      "api::flyout.flyout": ApiFlyoutFlyout;
-      "api::footer.footer": ApiFooterFooter;
-      "api::form.form": ApiFormForm;
-      "api::form-request.form-request": ApiFormRequestFormRequest;
-      "api::layout.layout": ApiLayoutLayout;
-      "api::loader.loader": ApiLoaderLoader;
-      "api::metatag.metatag": ApiMetatagMetatag;
-      "api::modal.modal": ApiModalModal;
-      "api::navbar.navbar": ApiNavbarNavbar;
-      "api::page.page": ApiPagePage;
-      "api::review.review": ApiReviewReview;
-      "api::robot.robot": ApiRobotRobot;
-      "api::sidebar.sidebar": ApiSidebarSidebar;
-      "api::slide-over.slide-over": ApiSlideOverSlideOver;
-      "api::slider.slider": ApiSliderSlider;
-      "api::telegram.telegram": ApiTelegramTelegram;
-      "api::theme.theme": ApiThemeTheme;
-      "api::tier.tier": ApiTierTier;
-      "api::topbar.topbar": ApiTopbarTopbar;
     }
   }
 }

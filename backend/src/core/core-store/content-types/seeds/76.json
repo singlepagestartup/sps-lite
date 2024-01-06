@@ -1,0 +1,8 @@
+{
+    "id": 76,
+    "key": "core_admin_auth",
+    "value": "{\"providers\":{\"autoRegister\":false,\"defaultRole\":null,\"ssoLockedRoles\":null}}",
+    "type": "object",
+    "environment": null,
+    "tag": null
+}

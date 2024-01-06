@@ -1,0 +1,158 @@
+{
+    "id": 1,
+    "theme": {
+        "colors": {
+            "primary": {
+                "50": "#FFF9CC",
+                "300": "#FFF297",
+                "400": "#FFDF01",
+                "500": "#FFCF01",
+                "600": "#FFC501",
+                "700": "#FFB201",
+                "900": "#FFA101"
+            }
+        }
+    },
+    "createdAt": "2024-01-05T18:09:15.777Z",
+    "updatedAt": "2024-01-05T18:09:15.777Z",
+    "publishedAt": "2023-02-13T16:01:44.156Z",
+    "fonts": [
+        {
+            "id": 1,
+            "weight": "medium",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 38,
+                "name": "montserrat-medium.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_medium_f7c4c1ae0d",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.1,
+                "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/montserrat_medium_f7c4c1ae0d.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2024-01-05T18:09:12.270Z",
+                "updatedAt": "2024-01-05T18:09:12.270Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 3,
+            "weight": "light",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 39,
+                "name": "montserrat-light.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_light_1126fa42b8",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.07,
+                "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/montserrat_light_1126fa42b8.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2024-01-05T18:09:12.979Z",
+                "updatedAt": "2024-01-05T18:09:12.979Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 2,
+            "weight": "semi_bold",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 40,
+                "name": "montserrat-semibold.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_semibold_e4b18d2801",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.2,
+                "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/montserrat_semibold_e4b18d2801.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2024-01-05T18:09:13.873Z",
+                "updatedAt": "2024-01-05T18:09:13.873Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 5,
+            "weight": "regular",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 41,
+                "name": "montserrat-regular.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_regular_96f94acf91",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 197.98,
+                "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/montserrat_regular_96f94acf91.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2024-01-05T18:09:14.728Z",
+                "updatedAt": "2024-01-05T18:09:14.728Z",
+                "folder": null
+            }
+        },
+        {
+            "id": 4,
+            "weight": "bold",
+            "style": "normal",
+            "variant": "default",
+            "media": {
+                "id": 42,
+                "name": "montserrat-bold.ttf",
+                "alternativeText": null,
+                "caption": null,
+                "width": null,
+                "height": null,
+                "formats": null,
+                "hash": "montserrat_bold_77a311ed60",
+                "ext": ".ttf",
+                "mime": "font/ttf",
+                "size": 198.07,
+                "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/montserrat_bold_77a311ed60.ttf",
+                "previewUrl": null,
+                "provider": "aws-s3",
+                "provider_metadata": null,
+                "folderPath": "/",
+                "createdAt": "2024-01-05T18:09:15.693Z",
+                "updatedAt": "2024-01-05T18:09:15.693Z",
+                "folder": null
+            }
+        }
+    ],
+    "createdBy": null,
+    "updatedBy": null
+}

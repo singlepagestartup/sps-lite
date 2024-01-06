@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
-import { IBackendForm } from "types/collection-types";
+import { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
 
 export default function useGetPreparedFormInputs(props: IBackendForm) {
   const searchParams = useSearchParams();
@@ -16,7 +16,7 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
       if (searchParamsStringified) {
         const parsedSearchParams = QueryString.parse(
           decodeURIComponent(searchParamsStringified),
-        );
+        ); //?
 
         if (parsedSearchParams[inputName]) {
           if (localInput) {

@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
@@ -9,6 +10,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:testing-library/react",
     "prettier",
     "plugin:storybook/recommended"
   ],
@@ -20,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "testing-library", "@typescript-eslint", "prettier"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -50,6 +52,13 @@
     "@typescript-eslint/no-explicit-any": ["off"],
     "no-prototype-builtins": ["warn"],
     "@typescript-eslint/no-empty-interface": ["off"],
-    "@typescript-eslint/consistent-type-definitions": ["off"]
-  }
+    "@typescript-eslint/consistent-type-definitions": ["off"],
+    "testing-library/prefer-screen-queries": ["warn"],
+    "testing-library/no-node-access": ["warn"]
+  },
+  "overrides": [
+    {
+      "files": "**/**.(js|jsx|ts|tsx)"
+    }
+  ]
 }

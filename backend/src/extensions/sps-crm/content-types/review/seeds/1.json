@@ -1,0 +1,82 @@
+{
+    "id": 1,
+    "name": "Alex Martin",
+    "title": "Time and Resource Saver",
+    "description": "As a lead developer, I've seen firsthand the time and effort it takes to build a startup from scratch. The Single Page Startup has saved our team countless hours in development by providing us with ready-to-use components and features. It has been an invaluable resource, allowing us to focus on delivering value to our users.",
+    "subtitle": "FinX Solutions, Lead Developer",
+    "rating": 4,
+    "createdAt": "2024-01-05T18:08:24.090Z",
+    "updatedAt": "2024-01-05T18:08:24.090Z",
+    "publishedAt": "2023-03-12T04:33:21.047Z",
+    "media": [
+        {
+            "id": 12,
+            "name": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 6000,
+            "height": 4000,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8.jpg",
+                    "hash": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8",
+                    "mime": "image/jpeg",
+                    "name": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
+                    "path": null,
+                    "size": 81.84,
+                    "width": 1000,
+                    "height": 667
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8.jpg",
+                    "hash": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8",
+                    "mime": "image/jpeg",
+                    "name": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
+                    "path": null,
+                    "size": 29.45,
+                    "width": 500,
+                    "height": 333
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8.jpg",
+                    "hash": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8",
+                    "mime": "image/jpeg",
+                    "name": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
+                    "path": null,
+                    "size": 53.16,
+                    "width": 750,
+                    "height": 500
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8.jpg",
+                    "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
+                    "path": null,
+                    "size": 9.57,
+                    "width": 234,
+                    "height": 156
+                }
+            },
+            "hash": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 4287.67,
+            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_tima_miroshnichenko_5198239_dfb1d4b60d_e59765b2c8.jpg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-01-05T18:08:24.037Z",
+            "updatedAt": "2024-01-05T18:08:24.037Z",
+            "folder": null
+        }
+    ],
+    "additional_media": null,
+    "createdBy": null,
+    "updatedBy": null
+}

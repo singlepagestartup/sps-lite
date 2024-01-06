@@ -1,0 +1,82 @@
+{
+    "id": 2,
+    "name": "Sarah Thompson",
+    "title": "A Game-Changer for Our Startup",
+    "description": "The Single Page Startup has been a game-changer for our company. It has dramatically reduced our development time and allowed us to focus on building the innovative solutions our customers need. The pre-built features and integrations have made it easy to get started and scale our product. We couldn't be happier with the results.",
+    "subtitle": "GreenTech Innovations, Co-Founder & CTO",
+    "rating": 5,
+    "createdAt": "2024-01-05T18:08:31.625Z",
+    "updatedAt": "2024-01-05T18:08:31.625Z",
+    "publishedAt": "2023-03-12T04:34:53.754Z",
+    "media": [
+        {
+            "id": 13,
+            "name": "pexels_edmond_dantes_4347368_5f28ada7bb.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 5462,
+            "height": 8192,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2.jpg",
+                    "hash": "large_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2",
+                    "mime": "image/jpeg",
+                    "name": "large_pexels_edmond_dantes_4347368_5f28ada7bb.jpg",
+                    "path": null,
+                    "size": 70,
+                    "width": 667,
+                    "height": 1000
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2.jpg",
+                    "hash": "small_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2",
+                    "mime": "image/jpeg",
+                    "name": "small_pexels_edmond_dantes_4347368_5f28ada7bb.jpg",
+                    "path": null,
+                    "size": 22.79,
+                    "width": 333,
+                    "height": 500
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2.jpg",
+                    "hash": "medium_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2",
+                    "mime": "image/jpeg",
+                    "name": "medium_pexels_edmond_dantes_4347368_5f28ada7bb.jpg",
+                    "path": null,
+                    "size": 42.95,
+                    "width": 500,
+                    "height": 750
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2.jpg",
+                    "hash": "thumbnail_pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_pexels_edmond_dantes_4347368_5f28ada7bb.jpg",
+                    "path": null,
+                    "size": 3.93,
+                    "width": 104,
+                    "height": 156
+                }
+            },
+            "hash": "pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 6751.8,
+            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_edmond_dantes_4347368_5f28ada7bb_3c55af99b2.jpg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-01-05T18:08:31.590Z",
+            "updatedAt": "2024-01-05T18:08:31.590Z",
+            "folder": null
+        }
+    ],
+    "additional_media": null,
+    "createdBy": null,
+    "updatedBy": null
+}
