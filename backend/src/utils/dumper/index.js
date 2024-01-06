@@ -32,32 +32,36 @@ async function dumper(apiPath) {
 
   if (extensionsDirs.length) {
     for (const extensionDirName of extensionsDirs) {
+      const extensionDirNameIsDirectory = await isDirectory(
+        path.join(extensionsPath, extensionDirName),
+      );
+
+      if (!extensionDirNameIsDirectory) {
+        continue;
+      }
+
+      let contentTypeDirs = [];
+      try {
+        contentTypeDirs = await fs.readdir(
+          path.join(extensionsPath, extensionDirName, "content-types"),
+        );
+      } catch (error) {
+        //
+      }
+
+      let modelName = extensionDirName;
       if (extensionDirName === "plugin-i18n") {
+        modelName = "i18n";
+      }
+
+      for (const contentTypeDir of contentTypeDirs) {
         await modelDumper({
           dirPath: extensionsPath,
           modelDirName: extensionDirName,
-          modelName: "i18n",
-          entityName: "locale",
+          modelName: modelName,
+          entityName: contentTypeDir,
           type: "plugin",
         });
-      } else if (
-        ["sps-billing", "sps-crm", "sps-website-builder"].includes(
-          extensionDirName,
-        )
-      ) {
-        const contentTypeDirs = await fs.readdir(
-          path.join(extensionsPath, extensionDirName, "content-types"),
-        );
-
-        for (const contentTypeDir of contentTypeDirs) {
-          await modelDumper({
-            dirPath: extensionsPath,
-            modelDirName: extensionDirName,
-            modelName: extensionDirName,
-            entityName: contentTypeDir,
-            type: "plugin",
-          });
-        }
       }
     }
   }
@@ -174,3 +178,11 @@ async function modelDumper({
 }
 
 module.exports = dumper;
+
+async function isDirectory(p) {
+  try {
+    return await fs.readdir(p);
+  } catch (err) {
+    return false;
+  }
+}
