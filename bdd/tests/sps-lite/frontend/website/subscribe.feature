@@ -5,10 +5,10 @@ Feature: Guest can subscribe for tier
 
     When I am on "/checkout/2" page
     Then I fill in the following details:
-      | locator | value                | type |
-      | #email  | testuser@example.com | text |
+      | locator | value                    | type |
+      | #email  | rogwild.design@gmail.com | text |
     And I click "Buy" button
-    Then I can read "Эл. почта" text
+    Then I can read "Email" text
     And I fill in the following details:
       | locator      | value                | type |
       | #email       | testuser@example.com | text |
@@ -16,5 +16,5 @@ Feature: Guest can subscribe for tier
       | #cardExpiry  | 0344                 | text |
       | #cardCvc     | 344                  | text |
       | #billingName | BDD Tester           | text |
-    And I click "Оплатить" button
+    And I click "Pay" button
     Then I can read "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate" text

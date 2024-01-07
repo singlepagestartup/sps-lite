@@ -96,6 +96,13 @@
       "relation": "oneToMany",
       "target": "plugin::sps-billing.invoice",
       "mappedBy": "tier"
+    },
+    "attachments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-billing.attachment",
+      "mappedBy": "tiers",
+      "private": true
     }
   }
 }

@@ -27,15 +27,42 @@ async function onSuccessPayment(event: any) {
         });
 
       if (filledInvoice?.user) {
-        await strapi
-          .service("plugin::users-permissions.user")
-          .edit(filledInvoice.user.id, {
-            balance: filledInvoice.user.balance + filledInvoice.amount,
-          });
+        await sendSusccessEmail({ invoice: filledInvoice });
       }
       console.log("🚀 ~ onSuccessPayment ~ invoice is paid");
     }
   } catch (error) {
     console.log("🚀 ~ onSuccessPayment ~ error:", error);
   }
+}
+
+async function sendSusccessEmail({ invoice }: { invoice: any }) {
+  let tier;
+  if (invoice?.tier?.id) {
+    tier = await strapi
+      .service("plugin::sps-billing.tier")
+      .findOne(invoice.tier.id, {
+        populate: "*",
+      });
+  }
+
+  const emailSettings: any = strapi.config.get("plugin.email");
+
+  await strapi.plugins["email"].services.email.send({
+    to: invoice.user.email,
+    from:
+      emailSettings.settings?.defaultFrom?.email ||
+      emailSettings.settings?.defaultFrom ||
+      "no-reply@mail.singlepagestartup.com",
+    replyTo:
+      emailSettings.settings?.defaultReplyTo || "support@singlepagestartup.com",
+    subject: `${emailSettings.appName} | Successfull payment #${invoice.id}`,
+    html: `<p>Hi ${invoice.user.username}${
+      tier?.attachments?.length > 0
+        ? `, here is your secret information: </p></br>${tier.attachments
+            .map((a) => `<p>${a.title}</p>`)
+            .join("<br/>")}`
+        : ", no attachments</p>"
+    }`,
+  });
 }

@@ -738,6 +738,59 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsBillingAttachment extends Schema.CollectionType {
+  collectionName: "sps_billing_attachments";
+  info: {
+    singularName: "attachment";
+    pluralName: "attachments";
+    displayName: "Attachment";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tiers: Attribute.Relation<
+      "plugin::sps-billing.attachment",
+      "manyToMany",
+      "plugin::sps-billing.tier"
+    > &
+      Attribute.Private;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-billing.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-billing.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-billing.attachment",
+      "oneToMany",
+      "plugin::sps-billing.attachment"
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginSpsBillingCurrency extends Schema.CollectionType {
   collectionName: "sps_billing_currencies";
   info: {
@@ -931,6 +984,12 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-billing.invoice"
     >;
+    attachments: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "manyToMany",
+      "plugin::sps-billing.attachment"
+    > &
+      Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2356,6 +2415,7 @@ declare module "@strapi/types" {
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
+      "plugin::sps-billing.attachment": PluginSpsBillingAttachment;
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
       "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
       "plugin::sps-billing.tier": PluginSpsBillingTier;
