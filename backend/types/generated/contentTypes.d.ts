@@ -678,7 +678,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -706,6 +705,21 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "plugin::users-permissions.user",
       "manyToOne",
       "plugin::users-permissions.role"
+    >;
+    form_requests: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-crm.form-request"
+    >;
+    reviews: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-crm.review"
+    >;
+    invoices: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-billing.invoice"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -789,6 +803,59 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsBillingInvoice extends Schema.CollectionType {
+  collectionName: "sps_bp_invoices";
+  info: {
+    singularName: "invoice";
+    pluralName: "invoices";
+    displayName: "Invoice";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sign: Attribute.Text & Attribute.Private;
+    status: Attribute.Enumeration<["new", "pending", "success", "failed"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"new">;
+    provider: Attribute.Enumeration<["stripe", "zero_x_processing"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"stripe">;
+    provider_data: Attribute.JSON & Attribute.Private;
+    amount: Attribute.Float & Attribute.Required;
+    currency: Attribute.String;
+    payment_url: Attribute.Text;
+    redirect_to: Attribute.String & Attribute.DefaultTo<"/">;
+    chain: Attribute.Enumeration<["erc20"]> & Attribute.DefaultTo<"erc20">;
+    tier: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "manyToOne",
+      "plugin::sps-billing.tier"
+    >;
+    user: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginSpsBillingTier extends Schema.CollectionType {
   collectionName: "sps_billing_tiers";
   info: {
@@ -859,6 +926,11 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    invoices: Attribute.Relation<
+      "plugin::sps-billing.tier",
+      "oneToMany",
+      "plugin::sps-billing.invoice"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1014,6 +1086,11 @@ export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
   attributes: {
     inputs: Attribute.Component<"elements.request-input", true>;
     files: Attribute.Media;
+    user: Attribute.Relation<
+      "plugin::sps-crm.form-request",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2280,6 +2357,7 @@ declare module "@strapi/types" {
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
+      "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
       "plugin::sps-billing.tier": PluginSpsBillingTier;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;

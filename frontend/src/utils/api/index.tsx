@@ -101,7 +101,9 @@ export function getFiltersFromPageUrl({ page, params }: any): any[] {
 
   for (const [index, pageUrl] of pageUrls.entries()) {
     if (pageUrl.includes(".") && params?.url && params.url[index]) {
-      const key = pageUrl.replace("[", "").replace("]", "").split(".")[0];
+      const sanitizedPageUrl = pageUrl.replace("[", "").replace("]", "");
+      const key =
+        sanitizedPageUrl.split(".")[sanitizedPageUrl.split(".").length - 2];
 
       const filter = {
         [key]: {

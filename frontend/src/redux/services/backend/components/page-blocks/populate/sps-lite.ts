@@ -13,6 +13,7 @@ import { populate as notFoundBlockPopulate } from "../not-found-block/populate";
 import { populate as pricingBlockPopulate } from "../pricing-block/populate";
 import { populate as reviewsListBlockPopulate } from "../reviews-list-block/populate";
 import { populate as sliderBlockPopulate } from "../slider-block/populate";
+import { populate as checkoutFormBlockPopulate } from "../checkout-form-block/populate";
 
 export const populate = {
   ...alertBlockPopulate,
@@ -30,4 +31,5 @@ export const populate = {
   ...pricingBlockPopulate,
   ...reviewsListBlockPopulate,
   ...sliderBlockPopulate,
+  ...checkoutFormBlockPopulate,
 };

@@ -11,6 +11,8 @@ import { api as reviewApi } from "~redux/services/backend/extensions/sps-crm/api
 import { api as sidebarApi } from "~redux/services/backend/extensions/sps-website-builder/api/sidebar/api";
 import { api as slideOverApi } from "~redux/services/backend/extensions/sps-website-builder/api/slide-over/api";
 import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
+import { api as tierApi } from "~redux/services/backend/extensions/sps-billing/api/tier/api";
+import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
 
 export const slices = {
   middlewares: [
@@ -27,6 +29,8 @@ export const slices = {
     sidebarApi.middleware,
     slideOverApi.middleware,
     topbarApi.middleware,
+    tierApi.middleware,
+    invoiceApi.middleware,
   ],
   reducer: {
     [currencyApi.reducerPath]: currencyApi.reducer,
@@ -42,5 +46,7 @@ export const slices = {
     [sidebarApi.reducerPath]: sidebarApi.reducer,
     [slideOverApi.reducerPath]: slideOverApi.reducer,
     [topbarApi.reducerPath]: topbarApi.reducer,
+    [tierApi.reducerPath]: tierApi.reducer,
+    [invoiceApi.reducerPath]: invoiceApi.reducer,
   },
 };

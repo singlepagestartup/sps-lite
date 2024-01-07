@@ -16,6 +16,7 @@ import Button from "~components/elements/button";
 import Footer from "~components/page-blocks/footer-block";
 import ButtonsArray from "~components/elements/buttons-array";
 import Alert from "~components/page-blocks/alert-block";
+import CheckoutFormBlock from "../checkout-form-block";
 
 export const pageBlockComponents = {
   ["page-blocks.header-section-block"]: HeaderSection,
@@ -36,4 +37,5 @@ export const pageBlockComponents = {
   ["elements.buttons-array"]: ButtonsArray,
   ["elements.button"]: Button,
   ["page-blocks.alert-block"]: Alert,
+  ["page-blocks.checkout-form-block"]: CheckoutFormBlock,
 };

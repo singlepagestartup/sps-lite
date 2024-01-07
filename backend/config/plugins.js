@@ -25,6 +25,14 @@ module.exports = ({ env }) => {
     "sps-billing": {
       enabled: true,
       resolve: "./src/plugins/sps-billing",
+      config: {
+        JWT_SECRET: env("JWT_SECRET"),
+        STRIPE_API_KEY: env("STRIPE_API_KEY"),
+        BACKEND_URL: env("BACKEND_URL"),
+        FRONTEND_URL: env("FRONTEND_URL"),
+        ZERO_X_PROCESSING_SHOP_ID: env("ZERO_X_PROCESSING_SHOP_ID"),
+        ZERO_X_PROCESSING_TEST_PAYMENTS: env("ZERO_X_PROCESSING_TEST_PAYMENTS"),
+      },
     },
     "sps-crm": {
       enabled: true,

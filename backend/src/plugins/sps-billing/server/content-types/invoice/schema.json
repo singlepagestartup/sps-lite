@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_bp_invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sign": {
+      "type": "text",
+      "private": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "pending", "success", "failed"],
+      "default": "new",
+      "required": true
+    },
+    "provider": {
+      "type": "enumeration",
+      "enum": ["stripe", "zero_x_processing"],
+      "default": "stripe",
+      "required": true
+    },
+    "provider_data": {
+      "type": "json",
+      "private": true
+    },
+    "amount": {
+      "type": "float",
+      "required": true
+    },
+    "currency": {
+      "type": "string"
+    },
+    "payment_url": {
+      "type": "text"
+    },
+    "redirect_to": {
+      "type": "string",
+      "default": "/"
+    },
+    "chain": {
+      "type": "enumeration",
+      "enum": ["erc20"],
+      "default": "erc20"
+    },
+    "tier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-billing.tier",
+      "inversedBy": "invoices"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "invoices"
+    }
+  }
+}

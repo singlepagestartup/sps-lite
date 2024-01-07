@@ -90,6 +90,12 @@
           "localized": true
         }
       }
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-billing.invoice",
+      "mappedBy": "tier"
     }
   }
 }

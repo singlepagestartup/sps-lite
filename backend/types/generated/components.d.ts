@@ -292,6 +292,27 @@ export interface PageBlocksAlertBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksCheckoutFormBlock extends Schema.Component {
+  collectionName: "components_page_blocks_checkout_form_blocks";
+  info: {
+    displayName: "Checkout Form Block";
+    icon: "cart-arrow-down";
+    description: "";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["single-step-with-tier"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"single-step-with-tier">;
+    class_name: Attribute.String;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 export interface PageBlocksContactSectionBlock extends Schema.Component {
   collectionName: "components_page_blocks_contact_section_blocks";
   info: {
@@ -629,6 +650,7 @@ declare module "@strapi/types" {
       "functions.config": FunctionsConfig;
       "functions.form-side-effect": FunctionsFormSideEffect;
       "page-blocks.alert-block": PageBlocksAlertBlock;
+      "page-blocks.checkout-form-block": PageBlocksCheckoutFormBlock;
       "page-blocks.contact-section-block": PageBlocksContactSectionBlock;
       "page-blocks.cta-section-block": PageBlocksCtaSectionBlock;
       "page-blocks.faqs-block": PageBlocksFaqsBlock;
