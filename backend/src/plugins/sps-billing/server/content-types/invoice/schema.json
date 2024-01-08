@@ -62,6 +62,12 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "invoices"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order",
+      "mappedBy": "invoice"
     }
   }
 }

@@ -28,6 +28,7 @@ async function onSuccessPayment(event: any) {
 
       if (filledInvoice?.user) {
         await sendSusccessEmail({ invoice: filledInvoice });
+        await changeOrderStatus({ invoice: filledInvoice });
       }
       console.log("🚀 ~ onSuccessPayment ~ invoice is paid");
     }
@@ -65,4 +66,16 @@ async function sendSusccessEmail({ invoice }: { invoice: any }) {
         : ", no attachments</p>"
     }`,
   });
+}
+
+async function changeOrderStatus({ invoice }: { invoice: any }) {
+  if (invoice?.orders.length) {
+    for (const order of invoice.orders) {
+      await strapi.service("plugin::sps-ecommerce.order").update(order.id, {
+        data: {
+          status: "paid",
+        },
+      });
+    }
+  }
 }

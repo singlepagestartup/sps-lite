@@ -57,6 +57,12 @@
         }
       },
       "type": "richtext"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-ecommerce.order",
+      "mappedBy": "products"
     }
   }
 }

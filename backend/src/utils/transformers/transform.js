@@ -1,4 +1,101 @@
 const { isNil, isPlainObject } = require("lodash/fp");
+const strapiUtils = require("@strapi/utils");
+const { yup, validateYupSchema } = require("@strapi/utils");
+
+const callbackSchema = yup.object({
+  identifier: yup.string().required(),
+  password: yup.string().required(),
+});
+
+const registerSchema = yup.object({
+  email: yup.string().email().required(),
+  username: yup.string().required(),
+  password: yup.string().required(),
+});
+
+const sendEmailConfirmationSchema = yup.object({
+  email: yup.string().email().required(),
+});
+
+const validateEmailConfirmationSchema = yup.object({
+  confirmation: yup.string().required(),
+});
+
+const forgotPasswordSchema = yup
+  .object({
+    email: yup.string().email().required(),
+  })
+  .noUnknown();
+
+const resetPasswordSchema = yup
+  .object({
+    password: yup.string().required(),
+    passwordConfirmation: yup.string().required(),
+    code: yup.string().required(),
+  })
+  .noUnknown();
+
+const changePasswordSchema = yup
+  .object({
+    password: yup.string().required(),
+    passwordConfirmation: yup
+      .string()
+      .required()
+      .oneOf([yup.ref("password")], "Passwords do not match"),
+    currentPassword: yup.string().required(),
+  })
+  .noUnknown();
+
+const updateUserBodySchema = yup.object().shape({
+  email: yup.string().email().min(1),
+  username: yup.string().min(1),
+  password: yup.string().min(1),
+  role: yup.lazy((value) =>
+    typeof value === "object"
+      ? yup.object().shape({
+          connect: yup
+            .array()
+            .of(yup.object().shape({ id: yup.strapiID().required() }))
+            .required(),
+          disconnect: yup
+            .array()
+            .test(
+              "CheckDisconnect",
+              "Cannot remove role",
+              function test(disconnectValue) {
+                if (value.connect.length === 0 && disconnectValue.length > 0) {
+                  return false;
+                }
+
+                return true;
+              },
+            )
+            .required(),
+        })
+      : yup.strapiID(),
+  ),
+});
+
+const validateCallbackBody = validateYupSchema(callbackSchema);
+const validateRegisterBody = validateYupSchema(registerSchema);
+const validateSendEmailConfirmationBody = validateYupSchema(
+  sendEmailConfirmationSchema,
+);
+const validateEmailConfirmationBody = validateYupSchema(
+  validateEmailConfirmationSchema,
+);
+const validateForgotPasswordBody = validateYupSchema(forgotPasswordSchema);
+const validateResetPasswordBody = validateYupSchema(resetPasswordSchema);
+const validateChangePasswordBody = validateYupSchema(changePasswordSchema);
+const validateUpdateUserBody = validateYupSchema(updateUserBodySchema);
+
+const parseBody = (ctx) => {
+  if (ctx.is("multipart")) {
+    return strapiUtils.parseMultipartData(ctx);
+  }
+  const { data } = ctx.request.body || {};
+  return { data };
+};
 
 const transformResponse = (resource, meta = {}, { contentType } = {}) => {
   if (isNil(resource)) {
@@ -88,4 +185,13 @@ module.exports = {
   transformComponent,
   transformResponse,
   transformEntry,
+  parseBody,
+  validateCallbackBody,
+  validateChangePasswordBody,
+  validateRegisterBody,
+  validateSendEmailConfirmationBody,
+  validateEmailConfirmationBody,
+  validateForgotPasswordBody,
+  validateResetPasswordBody,
+  validateUpdateUserBody,
 };

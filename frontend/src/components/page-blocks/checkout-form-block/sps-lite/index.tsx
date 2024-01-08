@@ -1,8 +1,10 @@
-import SingleStepWithTier from "./SingleStepWithTier";
 import { IPageBlock } from "..";
+import SingleStepWithTier from "./SingleStepWithTier";
+import SingleStepWithProduct from "./SingleStepWithProduct";
 
 export const variants = {
   "single-step-with-tier": SingleStepWithTier,
+  "single-step-with-product": SingleStepWithProduct,
 };
 
 export default function SpsLite(props: IPageBlock) {

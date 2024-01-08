@@ -721,6 +721,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-billing.invoice"
     >;
+    cart: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToOne",
+      "plugin::sps-ecommerce.cart"
+    >;
+    orders: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -842,6 +852,11 @@ export interface PluginSpsBillingInvoice extends Schema.CollectionType {
       "plugin::sps-billing.invoice",
       "manyToOne",
       "plugin::users-permissions.user"
+    >;
+    orders: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1238,6 +1253,126 @@ export interface PluginSpsEcommerceAttributeKey extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsEcommerceCart extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_carts";
+  info: {
+    singularName: "cart";
+    pluralName: "carts";
+    displayName: "Cart";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    user: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "plugin::users-permissions.user"
+    >;
+    orders: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToMany",
+      "plugin::sps-ecommerce.cart"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceOrder extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_orders";
+  info: {
+    singularName: "order";
+    pluralName: "orders";
+    displayName: "Order";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    status: Attribute.Enumeration<
+      [
+        "cart",
+        "payment",
+        "new",
+        "paid",
+        "canceled",
+        "confirmed",
+        "shipping",
+        "delivered",
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<"cart">;
+    name: Attribute.String;
+    surname: Attribute.String;
+    patronymic: Attribute.String;
+    phone: Attribute.String;
+    comment: Attribute.Text;
+    email: Attribute.Email;
+    products: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    cart: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::sps-ecommerce.cart"
+    >;
+    invoice: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::sps-billing.invoice"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
   collectionName: "sps_ecommerce_products";
   info: {
@@ -1285,6 +1420,11 @@ export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    orders: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "manyToMany",
+      "plugin::sps-ecommerce.order"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2718,6 +2858,8 @@ declare module "@strapi/types" {
       "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
       "plugin::sps-ecommerce.attribute": PluginSpsEcommerceAttribute;
       "plugin::sps-ecommerce.attribute-key": PluginSpsEcommerceAttributeKey;
+      "plugin::sps-ecommerce.cart": PluginSpsEcommerceCart;
+      "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
       "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;

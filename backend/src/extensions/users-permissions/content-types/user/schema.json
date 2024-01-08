@@ -79,6 +79,18 @@
       "relation": "oneToMany",
       "target": "plugin::sps-billing.invoice",
       "mappedBy": "user"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::sps-ecommerce.cart",
+      "inversedBy": "user"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order",
+      "mappedBy": "user"
     }
   }
 }

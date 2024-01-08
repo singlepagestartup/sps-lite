@@ -300,7 +300,9 @@ export interface PageBlocksCheckoutFormBlock extends Schema.Component {
     description: "";
   };
   attributes: {
-    variant: Attribute.Enumeration<["single-step-with-tier"]> &
+    variant: Attribute.Enumeration<
+      ["single-step-with-tier", "single-step-with-product"]
+    > &
       Attribute.Required &
       Attribute.DefaultTo<"single-step-with-tier">;
     class_name: Attribute.String;

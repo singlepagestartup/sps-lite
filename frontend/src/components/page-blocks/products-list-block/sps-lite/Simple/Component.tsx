@@ -82,7 +82,11 @@ function ProductCard(props: ICardProps) {
             <ReactMarkdown>{item.description}</ReactMarkdown>
           </div>
         ) : null}
-        <Button url="" variant="primary" title={buttonTitle} />
+        <Button
+          url={`/checkout/${item.id}`}
+          variant="primary"
+          title={buttonTitle}
+        />
       </div>
     </div>
   );

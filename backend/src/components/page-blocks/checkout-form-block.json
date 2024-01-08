@@ -9,7 +9,10 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["single-step-with-tier"],
+      "enum": [
+        "single-step-with-tier",
+        "single-step-with-product"
+      ],
       "default": "single-step-with-tier",
       "required": true
     },
@@ -29,14 +32,26 @@
       "type": "string"
     },
     "media": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "additional_media": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
