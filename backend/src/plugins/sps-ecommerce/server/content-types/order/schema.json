@@ -51,12 +51,6 @@
     "email": {
       "type": "email"
     },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::sps-ecommerce.product",
-      "inversedBy": "orders"
-    },
     "cart": {
       "type": "relation",
       "relation": "manyToOne",
@@ -68,6 +62,12 @@
       "relation": "manyToOne",
       "target": "plugin::sps-billing.invoice",
       "inversedBy": "orders"
+    },
+    "order_products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order-product",
+      "mappedBy": "order"
     }
   }
 }

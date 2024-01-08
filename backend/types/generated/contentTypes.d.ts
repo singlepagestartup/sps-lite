@@ -1117,6 +1117,11 @@ export interface PluginSpsEcommerceAttribute extends Schema.CollectionType {
       "manyToOne",
       "plugin::sps-billing.currency"
     >;
+    order_products: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToMany",
+      "plugin::sps-ecommerce.order-product"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1341,11 +1346,6 @@ export interface PluginSpsEcommerceOrder extends Schema.CollectionType {
     phone: Attribute.String;
     comment: Attribute.Text;
     email: Attribute.Email;
-    products: Attribute.Relation<
-      "plugin::sps-ecommerce.order",
-      "manyToMany",
-      "plugin::sps-ecommerce.product"
-    >;
     cart: Attribute.Relation<
       "plugin::sps-ecommerce.order",
       "manyToOne",
@@ -1355,6 +1355,11 @@ export interface PluginSpsEcommerceOrder extends Schema.CollectionType {
       "plugin::sps-ecommerce.order",
       "manyToOne",
       "plugin::sps-billing.invoice"
+    >;
+    order_products: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToMany",
+      "plugin::sps-ecommerce.order-product"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1366,6 +1371,51 @@ export interface PluginSpsEcommerceOrder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "plugin::sps-ecommerce.order",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsEcommerceOrderProduct extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_orders_products";
+  info: {
+    singularName: "order-product";
+    pluralName: "orders-products";
+    displayName: "Order Product";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    order: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToOne",
+      "plugin::sps-ecommerce.order"
+    >;
+    product: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToOne",
+      "plugin::sps-ecommerce.product"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
       "oneToOne",
       "admin::user"
     > &
@@ -1420,10 +1470,10 @@ export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    orders: Attribute.Relation<
+    order_products: Attribute.Relation<
       "plugin::sps-ecommerce.product",
-      "manyToMany",
-      "plugin::sps-ecommerce.order"
+      "oneToMany",
+      "plugin::sps-ecommerce.order-product"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2860,6 +2910,7 @@ declare module "@strapi/types" {
       "plugin::sps-ecommerce.attribute-key": PluginSpsEcommerceAttributeKey;
       "plugin::sps-ecommerce.cart": PluginSpsEcommerceCart;
       "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
+      "plugin::sps-ecommerce.order-product": PluginSpsEcommerceOrderProduct;
       "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;

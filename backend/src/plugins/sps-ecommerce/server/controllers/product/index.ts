@@ -44,51 +44,70 @@ export default factories.createCoreController(
           config: orderConfig,
         });
 
-      const updatedOrder = await strapi
-        .service("plugin::sps-ecommerce.order")
-        .update(order.id, {
+      const orderProduct = await strapi
+        .service("plugin::sps-ecommerce.order-product")
+        .create({
           data: {
-            products: [id],
+            order: order,
+            product: id,
           },
         });
 
-      const {
-        results: [productPriceAttribute],
-      } = await strapi.service("plugin::sps-ecommerce.attribute").find({
-        filters: {
-          products: { id: { $in: [id] } },
-          attribute_key: {
-            key: "price",
+      const quantityAttributeKeyConfig = {
+        key: "key",
+        type: "type",
+      };
+      const quantityAttributeKey = await strapi
+        .service("plugin::sps-ecommerce.attribute-key")
+        .findOrCreate({
+          data: {
+            title: "quantity",
+            key: "quantity",
+            type: "number",
           },
-        },
-        populate: "*",
-      });
+          config: quantityAttributeKeyConfig,
+        });
 
-      if (!productPriceAttribute || !productPriceAttribute.attribute_key) {
-        throw new ValidationError("Product doesn't have price attribute");
-      }
+      const quantityAttributeConfig = {
+        attribute_key: "attribute_key",
+        number: "number",
+      };
+      const quantityAttribute = await strapi
+        .service("plugin::sps-ecommerce.attribute")
+        .findOrCreate({
+          data: {
+            attribute_key: quantityAttributeKey,
+            number: 1,
+            type: "number",
+            order_products: [orderProduct],
+          },
+          config: quantityAttributeConfig,
+        });
+
+      const invoiceAmount = await strapi
+        .service("plugin::sps-ecommerce.order")
+        .getTotalAmount({
+          id: order.id,
+        });
 
       const invoice = await strapi
         .service("plugin::sps-billing.invoice")
         .create({
           data: {
             user: data.user,
-            orders: [updatedOrder],
-            amount:
-              productPriceAttribute[productPriceAttribute.attribute_key.type],
+            orders: [order],
+            amount: invoiceAmount,
           },
         });
 
       // change order status "cart" -> "payment"
       // detach cart
-      await strapi
-        .service("plugin::sps-ecommerce.order")
-        .update(updatedOrder.id, {
-          data: {
-            status: "payment",
-            cart: null,
-          },
-        });
+      await strapi.service("plugin::sps-ecommerce.order").update(order.id, {
+        data: {
+          status: "payment",
+          cart: null,
+        },
+      });
 
       const sanitizedInvoice = await strapi
         .controller("plugin::sps-billing.invoice")

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_ecommerce_orders_products",
+  "info": {
+    "singularName": "order-product",
+    "pluralName": "orders-products",
+    "displayName": "Order Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-ecommerce.order",
+      "inversedBy": "order_products"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-ecommerce.product",
+      "inversedBy": "order_products"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-ecommerce.attribute",
+      "inversedBy": "order_products"
+    }
+  }
+}

@@ -58,11 +58,11 @@
       },
       "type": "richtext"
     },
-    "orders": {
+    "order_products": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::sps-ecommerce.order",
-      "mappedBy": "products"
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order-product",
+      "mappedBy": "product"
     }
   }
 }

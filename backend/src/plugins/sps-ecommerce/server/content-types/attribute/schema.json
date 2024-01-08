@@ -105,6 +105,12 @@
       "relation": "manyToOne",
       "target": "plugin::sps-billing.currency",
       "inversedBy": "attributes"
+    },
+    "order_products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-ecommerce.order-product",
+      "mappedBy": "attributes"
     }
   }
 }
