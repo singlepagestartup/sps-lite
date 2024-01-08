@@ -8,8 +8,8 @@
     "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
     "title": "Features Slider",
     "uid": "features-slider",
-    "createdAt": "2024-01-05T18:09:11.499Z",
-    "updatedAt": "2024-01-05T18:09:11.499Z",
+    "createdAt": "2024-01-08T08:01:44.349Z",
+    "updatedAt": "2024-01-08T08:01:44.349Z",
     "publishedAt": "2023-03-28T03:46:50.780Z",
     "locale": "en",
     "slides": [
@@ -29,8 +29,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc.jpg",
-                            "hash": "large_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625.jpg",
+                            "hash": "large_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625",
                             "mime": "image/jpeg",
                             "name": "large_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                             "path": null,
@@ -40,8 +40,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc.jpg",
-                            "hash": "small_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625.jpg",
+                            "hash": "small_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625",
                             "mime": "image/jpeg",
                             "name": "small_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                             "path": null,
@@ -51,8 +51,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc.jpg",
-                            "hash": "medium_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625.jpg",
+                            "hash": "medium_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625",
                             "mime": "image/jpeg",
                             "name": "medium_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                             "path": null,
@@ -62,8 +62,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc.jpg",
-                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625.jpg",
+                            "hash": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
                             "path": null,
@@ -72,17 +72,17 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc",
+                    "hash": "pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 109.43,
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_karolina_grabowska_5882683_3f2b11722e_750317a6cc.jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_karolina_grabowska_5882683_3f2b11722e_a5c1c72625.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2024-01-05T18:09:07.276Z",
-                    "updatedAt": "2024-01-05T18:09:07.276Z",
+                    "createdAt": "2024-01-08T08:01:39.513Z",
+                    "updatedAt": "2024-01-08T08:01:39.513Z",
                     "folder": null
                 }
             ],
@@ -118,8 +118,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e.jpg",
-                            "hash": "large_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2.jpg",
+                            "hash": "large_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2",
                             "mime": "image/jpeg",
                             "name": "large_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                             "path": null,
@@ -129,8 +129,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e.jpg",
-                            "hash": "small_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2.jpg",
+                            "hash": "small_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2",
                             "mime": "image/jpeg",
                             "name": "small_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                             "path": null,
@@ -140,8 +140,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e.jpg",
-                            "hash": "medium_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2.jpg",
+                            "hash": "medium_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2",
                             "mime": "image/jpeg",
                             "name": "medium_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                             "path": null,
@@ -151,8 +151,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e.jpg",
-                            "hash": "thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2.jpg",
+                            "hash": "thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels_andrea_piacquadio_3756679_b3a857a74f.jpg",
                             "path": null,
@@ -161,17 +161,17 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e",
+                    "hash": "pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 811.66,
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_andrea_piacquadio_3756679_b3a857a74f_03e52b8a5e.jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_andrea_piacquadio_3756679_b3a857a74f_8dbb9c55b2.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2024-01-05T18:09:09.154Z",
-                    "updatedAt": "2024-01-05T18:09:09.154Z",
+                    "createdAt": "2024-01-08T08:01:41.972Z",
+                    "updatedAt": "2024-01-08T08:01:41.972Z",
                     "folder": null
                 }
             ],
@@ -194,8 +194,8 @@
                     "formats": {
                         "large": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7.jpg",
-                            "hash": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9.jpg",
+                            "hash": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9",
                             "mime": "image/jpeg",
                             "name": "large_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                             "path": null,
@@ -205,8 +205,8 @@
                         },
                         "small": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7.jpg",
-                            "hash": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9.jpg",
+                            "hash": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9",
                             "mime": "image/jpeg",
                             "name": "small_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                             "path": null,
@@ -216,8 +216,8 @@
                         },
                         "medium": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7.jpg",
-                            "hash": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9.jpg",
+                            "hash": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9",
                             "mime": "image/jpeg",
                             "name": "medium_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                             "path": null,
@@ -227,8 +227,8 @@
                         },
                         "thumbnail": {
                             "ext": ".jpg",
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7.jpg",
-                            "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9.jpg",
+                            "hash": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9",
                             "mime": "image/jpeg",
                             "name": "thumbnail_pexels_tima_miroshnichenko_5198239_dfb1d4b60d.jpg",
                             "path": null,
@@ -237,17 +237,17 @@
                             "height": 156
                         }
                     },
-                    "hash": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7",
+                    "hash": "pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9",
                     "ext": ".jpg",
                     "mime": "image/jpeg",
                     "size": 4287.67,
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_tima_miroshnichenko_5198239_dfb1d4b60d_7626268af7.jpg",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_tima_miroshnichenko_5198239_dfb1d4b60d_59b49b55b9.jpg",
                     "previewUrl": null,
                     "provider": "aws-s3",
                     "provider_metadata": null,
                     "folderPath": "/",
-                    "createdAt": "2024-01-05T18:09:11.395Z",
-                    "updatedAt": "2024-01-05T18:09:11.395Z",
+                    "createdAt": "2024-01-08T08:01:44.278Z",
+                    "updatedAt": "2024-01-08T08:01:44.278Z",
                     "folder": null
                 }
             ],

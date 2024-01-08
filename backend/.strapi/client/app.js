@@ -8,6 +8,7 @@ import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import countrySelect from "strapi-plugin-country-select/strapi-admin";
 import emailDesigner from "strapi-plugin-email-designer/strapi-admin";
 import spsBilling from "../../src/plugins/sps-billing/strapi-admin";
+import spsSubscription from "../../src/plugins/sps-subscription/strapi-admin";
 import spsCrm from "../../src/plugins/sps-crm/strapi-admin";
 import spsNotification from "../../src/plugins/sps-notification/strapi-admin";
 import spsWebsiteBuilder from "../../src/plugins/sps-website-builder/strapi-admin";
@@ -21,6 +22,7 @@ renderAdmin(document.getElementById("strapi"), {
     "country-select": countrySelect,
     "email-designer": emailDesigner,
     "sps-billing": spsBilling,
+    "sps-subscription": spsSubscription,
     "sps-crm": spsCrm,
     "sps-notification": spsNotification,
     "sps-website-builder": spsWebsiteBuilder,

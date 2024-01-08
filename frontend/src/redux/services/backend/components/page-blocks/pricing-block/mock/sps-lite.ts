@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { entity as tier } from "~redux/services/backend/extensions/sps-billing/api/tier/mock/sps-lite";
+import { entity as tier } from "~redux/services/backend/extensions/sps-subscription/api/tier/mock/sps-lite";
 import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
 import { IComponent } from "../interfaces/sps-lite";
 

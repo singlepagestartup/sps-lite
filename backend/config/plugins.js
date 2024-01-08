@@ -34,6 +34,10 @@ module.exports = ({ env }) => {
         ZERO_X_PROCESSING_TEST_PAYMENTS: env("ZERO_X_PROCESSING_TEST_PAYMENTS"),
       },
     },
+    "sps-subscription": {
+      enabled: true,
+      resolve: "./src/plugins/sps-subscription",
+    },
     "sps-crm": {
       enabled: true,
       resolve: "./src/plugins/sps-crm",

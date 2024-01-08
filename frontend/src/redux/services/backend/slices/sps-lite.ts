@@ -11,7 +11,7 @@ import { api as reviewApi } from "~redux/services/backend/extensions/sps-crm/api
 import { api as sidebarApi } from "~redux/services/backend/extensions/sps-website-builder/api/sidebar/api";
 import { api as slideOverApi } from "~redux/services/backend/extensions/sps-website-builder/api/slide-over/api";
 import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
-import { api as tierApi } from "~redux/services/backend/extensions/sps-billing/api/tier/api";
+import { api as tierApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
 import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
 
 export const slices = {

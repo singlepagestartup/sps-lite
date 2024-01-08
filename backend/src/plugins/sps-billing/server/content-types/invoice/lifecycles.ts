@@ -40,7 +40,7 @@ async function sendSusccessEmail({ invoice }: { invoice: any }) {
   let tier;
   if (invoice?.tier?.id) {
     tier = await strapi
-      .service("plugin::sps-billing.tier")
+      .service("plugin::sps-subscription.tier")
       .findOne(invoice.tier.id, {
         populate: "*",
       });

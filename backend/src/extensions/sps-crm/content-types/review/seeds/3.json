@@ -5,8 +5,8 @@
     "description": "Our team has been able to move quickly and iteratively thanks to that boilerplate. The built-in feedback mechanisms have helped us ensure our product remains aligned with user needs, and the agile development environment has fostered a culture of innovation within our team. We highly recommend it to any startup looking to launch quickly and efficiently.",
     "subtitle": "HealthBridge, Product Manager",
     "rating": 4,
-    "createdAt": "2024-01-05T18:08:33.286Z",
-    "updatedAt": "2024-01-05T18:08:33.286Z",
+    "createdAt": "2024-01-08T08:01:02.386Z",
+    "updatedAt": "2024-01-08T08:01:02.386Z",
     "publishedAt": "2023-03-12T04:32:42.951Z",
     "media": [
         {
@@ -19,8 +19,8 @@
             "formats": {
                 "large": {
                     "ext": ".jpg",
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac.jpg",
-                    "hash": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0.jpg",
+                    "hash": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0",
                     "mime": "image/jpeg",
                     "name": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
                     "path": null,
@@ -30,8 +30,8 @@
                 },
                 "small": {
                     "ext": ".jpg",
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac.jpg",
-                    "hash": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0.jpg",
+                    "hash": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0",
                     "mime": "image/jpeg",
                     "name": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
                     "path": null,
@@ -41,8 +41,8 @@
                 },
                 "medium": {
                     "ext": ".jpg",
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac.jpg",
-                    "hash": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0.jpg",
+                    "hash": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0",
                     "mime": "image/jpeg",
                     "name": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
                     "path": null,
@@ -52,8 +52,8 @@
                 },
                 "thumbnail": {
                     "ext": ".jpg",
-                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac.jpg",
-                    "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac",
+                    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0.jpg",
+                    "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0",
                     "mime": "image/jpeg",
                     "name": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
                     "path": null,
@@ -62,17 +62,17 @@
                     "height": 156
                 }
             },
-            "hash": "pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac",
+            "hash": "pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 1177.43,
-            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_4c2b305dac.jpg",
+            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_810e6962b0.jpg",
             "previewUrl": null,
             "provider": "aws-s3",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2024-01-05T18:08:33.245Z",
-            "updatedAt": "2024-01-05T18:08:33.245Z",
+            "createdAt": "2024-01-08T08:01:02.371Z",
+            "updatedAt": "2024-01-08T08:01:02.371Z",
             "folder": null
         }
     ],

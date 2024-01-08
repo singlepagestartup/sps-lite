@@ -1,6 +1,6 @@
 "use client";
 
-import { api as tiersApi } from "~redux/services/backend/extensions/sps-billing/api/tier/api";
+import { api as tiersApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
 import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
 import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
@@ -88,7 +88,7 @@ export default function Component(props: IPageBlock) {
             variant="text"
             name="email"
             placeholder="Input your email"
-            label="Email for payment url"
+            label="Email for getting tier attachments"
           />
           <Button
             variant="primary"

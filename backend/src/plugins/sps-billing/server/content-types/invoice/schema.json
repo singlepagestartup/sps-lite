@@ -54,7 +54,7 @@
     "tier": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::sps-billing.tier",
+      "target": "plugin::sps-subscription.tier",
       "inversedBy": "invoices"
     },
     "user": {

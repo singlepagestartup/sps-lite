@@ -4,8 +4,8 @@
     "uid": "public-page-layout",
     "variant": "boxed",
     "class_name": null,
-    "createdAt": "2024-01-05T18:08:37.021Z",
-    "updatedAt": "2024-01-05T18:08:37.021Z",
+    "createdAt": "2024-01-08T08:01:05.819Z",
+    "updatedAt": "2024-01-08T08:01:05.819Z",
     "publishedAt": "2023-04-08T05:04:56.606Z",
     "locale": "en",
     "footer": {
@@ -14,8 +14,8 @@
         "uid": "public-page-footer",
         "variant": "boxed",
         "class_name": null,
-        "createdAt": "2024-01-05T18:08:36.985Z",
-        "updatedAt": "2024-01-05T18:08:36.985Z",
+        "createdAt": "2024-01-08T08:01:05.791Z",
+        "updatedAt": "2024-01-08T08:01:05.791Z",
         "publishedAt": "2023-05-04T03:25:15.030Z",
         "locale": "en",
         "page_blocks": [
@@ -39,17 +39,17 @@
                             "width": 4725,
                             "height": 729,
                             "formats": null,
-                            "hash": "sps_full_dark_5bf6cb3d86",
+                            "hash": "sps_full_dark_f495b1b2ba",
                             "ext": ".svg",
                             "mime": "image/svg+xml",
                             "size": 16.9,
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_5bf6cb3d86.svg",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_f495b1b2ba.svg",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2024-01-05T18:08:36.306Z",
-                            "updatedAt": "2024-01-05T18:08:36.306Z",
+                            "createdAt": "2024-01-08T08:01:05.227Z",
+                            "updatedAt": "2024-01-08T08:01:05.227Z",
                             "folder": null
                         }
                     ],
@@ -176,8 +176,8 @@
                 "uid": "public-page-layout",
                 "variant": "boxed",
                 "class_name": null,
-                "createdAt": "2024-01-05T18:08:37.021Z",
-                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "createdAt": "2024-01-08T08:01:05.819Z",
+                "updatedAt": "2024-01-08T08:01:05.819Z",
                 "publishedAt": "2023-04-08T05:04:56.606Z",
                 "locale": "en",
                 "footer": {
@@ -186,8 +186,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -207,8 +207,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -218,8 +218,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -236,8 +236,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -258,8 +258,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -269,8 +269,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -288,8 +288,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -308,8 +308,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -319,8 +319,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -336,8 +336,8 @@
                     "uid": "ads-sidebar-1",
                     "class_name": null,
                     "side": "right",
-                    "createdAt": "2024-01-05T18:09:06.475Z",
-                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "createdAt": "2024-01-08T08:01:38.638Z",
+                    "updatedAt": "2024-01-08T08:01:38.638Z",
                     "publishedAt": "2023-04-07T17:35:29.006Z",
                     "locale": "en",
                     "page_blocks": [
@@ -358,8 +358,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         }
@@ -375,8 +375,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -398,8 +398,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -409,8 +409,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -426,8 +426,8 @@
                         "id": 2,
                         "title": "Page With Sidebar Layout",
                         "url": "/page-with-sidebar-layout",
-                        "createdAt": "2024-01-05T18:09:06.405Z",
-                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "createdAt": "2024-01-08T08:01:38.526Z",
+                        "updatedAt": "2024-01-08T08:01:38.526Z",
                         "publishedAt": "2023-04-08T13:00:14.519Z",
                         "locale": "en",
                         "page_blocks": [
@@ -448,8 +448,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -468,8 +468,8 @@
                 "uid": "public-page-layout-1",
                 "variant": "wide",
                 "class_name": "[&>.layout-container]:pt-16",
-                "createdAt": "2024-01-05T18:08:37.045Z",
-                "updatedAt": "2024-01-05T18:08:37.045Z",
+                "createdAt": "2024-01-08T08:01:05.842Z",
+                "updatedAt": "2024-01-08T08:01:05.842Z",
                 "publishedAt": "2023-04-20T03:23:38.447Z",
                 "locale": "en",
                 "footer": {
@@ -478,8 +478,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -499,8 +499,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -510,8 +510,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -528,8 +528,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -550,8 +550,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -561,8 +561,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -580,8 +580,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -600,8 +600,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -611,8 +611,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -629,8 +629,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -652,8 +652,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -663,8 +663,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -680,8 +680,8 @@
                         "id": 1,
                         "title": "Main page",
                         "url": "/",
-                        "createdAt": "2024-01-05T18:09:06.380Z",
-                        "updatedAt": "2024-01-05T18:09:06.380Z",
+                        "createdAt": "2024-01-08T08:01:38.495Z",
+                        "updatedAt": "2024-01-08T08:14:27.884Z",
                         "publishedAt": "2023-04-08T12:06:05.277Z",
                         "locale": "en",
                         "page_blocks": [
@@ -734,6 +734,16 @@
                                 "anchor": null,
                                 "class_name": null,
                                 "variant": "centered"
+                            },
+                            {
+                                "__component": "page-blocks.pricing-block",
+                                "id": 1,
+                                "variant": "two-columns-card",
+                                "title": "Tiers",
+                                "subtitle": null,
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null
                             }
                         ],
                         "layout": {
@@ -742,21 +752,35 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "createdBy": null,
-                        "updatedBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2024-01-08T07:58:00.162Z",
+                            "updatedAt": "2024-01-08T07:58:00.162Z"
+                        },
                         "localizations": []
                     },
                     {
                         "id": 3,
                         "title": "Not found page",
                         "url": "/404",
-                        "createdAt": "2024-01-05T18:09:06.426Z",
-                        "updatedAt": "2024-01-05T18:09:06.426Z",
+                        "createdAt": "2024-01-08T08:01:38.552Z",
+                        "updatedAt": "2024-01-08T08:01:38.552Z",
                         "publishedAt": "2023-04-20T04:18:21.051Z",
                         "locale": "en",
                         "page_blocks": [
@@ -777,8 +801,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -790,8 +814,8 @@
                         "id": 4,
                         "title": "Terms and Conditions",
                         "url": "/terms-and-conditions",
-                        "createdAt": "2024-01-05T18:09:06.439Z",
-                        "updatedAt": "2024-01-05T18:09:06.439Z",
+                        "createdAt": "2024-01-08T08:01:38.570Z",
+                        "updatedAt": "2024-01-08T08:01:38.570Z",
                         "publishedAt": "2023-05-04T08:38:22.465Z",
                         "locale": "en",
                         "page_blocks": [
@@ -811,8 +835,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -822,21 +846,22 @@
                     },
                     {
                         "id": 5,
-                        "title": "Currency Page",
-                        "url": "/currencies/[plugin::sps-billing.currency.id]",
-                        "createdAt": "2024-01-05T18:09:06.455Z",
-                        "updatedAt": "2024-01-05T18:23:53.332Z",
+                        "title": "Checkout Page",
+                        "url": "/checkout/[plugin::sps-subscription.tier.id]",
+                        "createdAt": "2024-01-08T08:01:38.602Z",
+                        "updatedAt": "2024-01-08T08:07:27.765Z",
                         "publishedAt": "2023-12-02T23:44:54.598Z",
                         "locale": "en",
                         "page_blocks": [
                             {
-                                "__component": "page-blocks.hero-section-block",
-                                "id": 5,
-                                "title": "Currency Page",
+                                "__component": "page-blocks.checkout-form-block",
+                                "id": 1,
+                                "variant": "single-step-with-tier",
+                                "class_name": "pt-20",
+                                "title": null,
+                                "subtitle": null,
                                 "description": null,
-                                "variant": "simple-centered",
-                                "anchor": null,
-                                "class_name": null
+                                "anchor": null
                             }
                         ],
                         "layout": {
@@ -845,8 +870,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -857,14 +882,14 @@
                             "lastname": "design",
                             "username": null,
                             "email": "rogwild.design@gmail.com",
-                            "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                            "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
                             "resetPasswordToken": null,
                             "registrationToken": null,
                             "isActive": true,
                             "blocked": false,
                             "preferedLanguage": null,
-                            "createdAt": "2024-01-05T18:10:54.760Z",
-                            "updatedAt": "2024-01-05T18:10:54.760Z"
+                            "createdAt": "2024-01-08T07:58:00.162Z",
+                            "updatedAt": "2024-01-08T07:58:00.162Z"
                         },
                         "localizations": []
                     }
@@ -886,8 +911,8 @@
             "variant": "simple",
             "title": "This Is Modal",
             "class_name": null,
-            "createdAt": "2024-01-05T18:08:37.693Z",
-            "updatedAt": "2024-01-05T18:08:37.693Z",
+            "createdAt": "2024-01-08T08:01:06.315Z",
+            "updatedAt": "2024-01-08T08:01:06.315Z",
             "publishedAt": "2023-03-28T04:07:57.457Z",
             "locale": "en",
             "page_blocks": [
@@ -911,8 +936,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:37.021Z",
-                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "createdAt": "2024-01-08T08:01:05.819Z",
+                    "updatedAt": "2024-01-08T08:01:05.819Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "footer": {
@@ -921,8 +946,8 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:36.985Z",
-                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "createdAt": "2024-01-08T08:01:05.791Z",
+                        "updatedAt": "2024-01-08T08:01:05.791Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en",
                         "page_blocks": [
@@ -942,8 +967,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -953,8 +978,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -971,8 +996,8 @@
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.693Z",
-                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "createdAt": "2024-01-08T08:01:06.315Z",
+                            "updatedAt": "2024-01-08T08:01:06.315Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en",
                             "page_blocks": [
@@ -993,8 +1018,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -1004,8 +1029,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -1023,8 +1048,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2024-01-05T18:08:38.420Z",
-                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "createdAt": "2024-01-08T08:01:07.327Z",
+                        "updatedAt": "2024-01-08T08:01:07.327Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en",
                         "page_blocks": [
@@ -1043,8 +1068,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -1054,8 +1079,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -1071,8 +1096,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2024-01-05T18:09:06.475Z",
-                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "createdAt": "2024-01-08T08:01:38.638Z",
+                        "updatedAt": "2024-01-08T08:01:38.638Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en",
                         "page_blocks": [
@@ -1093,8 +1118,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             }
@@ -1110,8 +1135,8 @@
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2024-01-05T18:09:06.497Z",
-                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "createdAt": "2024-01-08T08:01:38.678Z",
+                            "updatedAt": "2024-01-08T08:01:38.678Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1133,8 +1158,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -1144,8 +1169,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -1161,8 +1186,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2024-01-05T18:09:06.405Z",
-                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "createdAt": "2024-01-08T08:01:38.526Z",
+                            "updatedAt": "2024-01-08T08:01:38.526Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1183,8 +1208,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -1203,8 +1228,8 @@
                     "uid": "public-page-layout-1",
                     "variant": "wide",
                     "class_name": "[&>.layout-container]:pt-16",
-                    "createdAt": "2024-01-05T18:08:37.045Z",
-                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "createdAt": "2024-01-08T08:01:05.842Z",
+                    "updatedAt": "2024-01-08T08:01:05.842Z",
                     "publishedAt": "2023-04-20T03:23:38.447Z",
                     "locale": "en",
                     "footer": {
@@ -1213,8 +1238,8 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:36.985Z",
-                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "createdAt": "2024-01-08T08:01:05.791Z",
+                        "updatedAt": "2024-01-08T08:01:05.791Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en",
                         "page_blocks": [
@@ -1234,8 +1259,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -1245,8 +1270,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -1263,8 +1288,8 @@
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.693Z",
-                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "createdAt": "2024-01-08T08:01:06.315Z",
+                            "updatedAt": "2024-01-08T08:01:06.315Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1285,8 +1310,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -1296,8 +1321,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -1315,8 +1340,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2024-01-05T18:08:38.420Z",
-                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "createdAt": "2024-01-08T08:01:07.327Z",
+                        "updatedAt": "2024-01-08T08:01:07.327Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en",
                         "page_blocks": [
@@ -1335,8 +1360,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -1346,8 +1371,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -1364,8 +1389,8 @@
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2024-01-05T18:09:06.497Z",
-                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "createdAt": "2024-01-08T08:01:38.678Z",
+                            "updatedAt": "2024-01-08T08:01:38.678Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1387,8 +1412,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -1398,8 +1423,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -1415,8 +1440,8 @@
                             "id": 1,
                             "title": "Main page",
                             "url": "/",
-                            "createdAt": "2024-01-05T18:09:06.380Z",
-                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "createdAt": "2024-01-08T08:01:38.495Z",
+                            "updatedAt": "2024-01-08T08:14:27.884Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1469,6 +1494,16 @@
                                     "anchor": null,
                                     "class_name": null,
                                     "variant": "centered"
+                                },
+                                {
+                                    "__component": "page-blocks.pricing-block",
+                                    "id": 1,
+                                    "variant": "two-columns-card",
+                                    "title": "Tiers",
+                                    "subtitle": null,
+                                    "description": null,
+                                    "class_name": null,
+                                    "anchor": null
                                 }
                             ],
                             "layout": {
@@ -1477,21 +1512,35 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
                             "createdBy": null,
-                            "updatedBy": null,
+                            "updatedBy": {
+                                "id": 1,
+                                "firstname": "rogwild",
+                                "lastname": "design",
+                                "username": null,
+                                "email": "rogwild.design@gmail.com",
+                                "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
+                                "resetPasswordToken": null,
+                                "registrationToken": null,
+                                "isActive": true,
+                                "blocked": false,
+                                "preferedLanguage": null,
+                                "createdAt": "2024-01-08T07:58:00.162Z",
+                                "updatedAt": "2024-01-08T07:58:00.162Z"
+                            },
                             "localizations": []
                         },
                         {
                             "id": 3,
                             "title": "Not found page",
                             "url": "/404",
-                            "createdAt": "2024-01-05T18:09:06.426Z",
-                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "createdAt": "2024-01-08T08:01:38.552Z",
+                            "updatedAt": "2024-01-08T08:01:38.552Z",
                             "publishedAt": "2023-04-20T04:18:21.051Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1512,8 +1561,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -1525,8 +1574,8 @@
                             "id": 4,
                             "title": "Terms and Conditions",
                             "url": "/terms-and-conditions",
-                            "createdAt": "2024-01-05T18:09:06.439Z",
-                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "createdAt": "2024-01-08T08:01:38.570Z",
+                            "updatedAt": "2024-01-08T08:01:38.570Z",
                             "publishedAt": "2023-05-04T08:38:22.465Z",
                             "locale": "en",
                             "page_blocks": [
@@ -1546,8 +1595,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -1557,21 +1606,22 @@
                         },
                         {
                             "id": 5,
-                            "title": "Currency Page",
-                            "url": "/currencies/[plugin::sps-billing.currency.id]",
-                            "createdAt": "2024-01-05T18:09:06.455Z",
-                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "title": "Checkout Page",
+                            "url": "/checkout/[plugin::sps-subscription.tier.id]",
+                            "createdAt": "2024-01-08T08:01:38.602Z",
+                            "updatedAt": "2024-01-08T08:07:27.765Z",
                             "publishedAt": "2023-12-02T23:44:54.598Z",
                             "locale": "en",
                             "page_blocks": [
                                 {
-                                    "__component": "page-blocks.hero-section-block",
-                                    "id": 5,
-                                    "title": "Currency Page",
+                                    "__component": "page-blocks.checkout-form-block",
+                                    "id": 1,
+                                    "variant": "single-step-with-tier",
+                                    "class_name": "pt-20",
+                                    "title": null,
+                                    "subtitle": null,
                                     "description": null,
-                                    "variant": "simple-centered",
-                                    "anchor": null,
-                                    "class_name": null
+                                    "anchor": null
                                 }
                             ],
                             "layout": {
@@ -1580,8 +1630,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -1592,14 +1642,14 @@
                                 "lastname": "design",
                                 "username": null,
                                 "email": "rogwild.design@gmail.com",
-                                "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                                "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
                                 "resetPasswordToken": null,
                                 "registrationToken": null,
                                 "isActive": true,
                                 "blocked": false,
                                 "preferedLanguage": null,
-                                "createdAt": "2024-01-05T18:10:54.760Z",
-                                "updatedAt": "2024-01-05T18:10:54.760Z"
+                                "createdAt": "2024-01-08T07:58:00.162Z",
+                                "updatedAt": "2024-01-08T07:58:00.162Z"
                             },
                             "localizations": []
                         }
@@ -1622,8 +1672,8 @@
         "class_name": null,
         "position": "fixed",
         "side": "top",
-        "createdAt": "2024-01-05T18:08:38.420Z",
-        "updatedAt": "2024-01-05T18:08:38.420Z",
+        "createdAt": "2024-01-08T08:01:07.327Z",
+        "updatedAt": "2024-01-08T08:01:07.327Z",
         "publishedAt": "2023-04-08T05:04:22.148Z",
         "locale": "en",
         "page_blocks": [
@@ -1646,17 +1696,17 @@
                             "width": 4725,
                             "height": 729,
                             "formats": null,
-                            "hash": "sps_full_dark_1896bcceb3",
+                            "hash": "sps_full_dark_0bda9f3082",
                             "ext": ".svg",
                             "mime": "image/svg+xml",
                             "size": 16.9,
-                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_1896bcceb3.svg",
+                            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_0bda9f3082.svg",
                             "previewUrl": null,
                             "provider": "aws-s3",
                             "provider_metadata": null,
                             "folderPath": "/",
-                            "createdAt": "2024-01-05T18:08:38.281Z",
-                            "updatedAt": "2024-01-05T18:08:38.281Z",
+                            "createdAt": "2024-01-08T08:01:06.807Z",
+                            "updatedAt": "2024-01-08T08:01:06.807Z",
                             "folder": null
                         }
                     ],
@@ -1703,8 +1753,8 @@
                             "title": "Hero Flyout",
                             "uid": "hero-flyout",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:35.715Z",
-                            "updatedAt": "2024-01-05T18:08:35.715Z",
+                            "createdAt": "2024-01-08T08:01:04.604Z",
+                            "updatedAt": "2024-01-08T08:01:04.604Z",
                             "publishedAt": "2023-05-11T18:03:51.955Z",
                             "locale": "en"
                         }
@@ -1763,8 +1813,8 @@
                             "title": "Locales Flyout",
                             "uid": "locales-flyout",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:35.639Z",
-                            "updatedAt": "2024-01-05T18:08:35.639Z",
+                            "createdAt": "2024-01-08T08:01:04.571Z",
+                            "updatedAt": "2024-01-08T08:01:04.571Z",
                             "publishedAt": "2023-05-11T16:28:36.473Z",
                             "locale": "en"
                         }
@@ -1780,8 +1830,8 @@
                 "uid": "public-page-layout",
                 "variant": "boxed",
                 "class_name": null,
-                "createdAt": "2024-01-05T18:08:37.021Z",
-                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "createdAt": "2024-01-08T08:01:05.819Z",
+                "updatedAt": "2024-01-08T08:01:05.819Z",
                 "publishedAt": "2023-04-08T05:04:56.606Z",
                 "locale": "en",
                 "footer": {
@@ -1790,8 +1840,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -1811,8 +1861,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -1822,8 +1872,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -1840,8 +1890,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -1862,8 +1912,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -1873,8 +1923,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -1892,8 +1942,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -1912,8 +1962,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -1923,8 +1973,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -1940,8 +1990,8 @@
                     "uid": "ads-sidebar-1",
                     "class_name": null,
                     "side": "right",
-                    "createdAt": "2024-01-05T18:09:06.475Z",
-                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "createdAt": "2024-01-08T08:01:38.638Z",
+                    "updatedAt": "2024-01-08T08:01:38.638Z",
                     "publishedAt": "2023-04-07T17:35:29.006Z",
                     "locale": "en",
                     "page_blocks": [
@@ -1962,8 +2012,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         }
@@ -1979,8 +2029,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2002,8 +2052,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2013,8 +2063,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2030,8 +2080,8 @@
                         "id": 2,
                         "title": "Page With Sidebar Layout",
                         "url": "/page-with-sidebar-layout",
-                        "createdAt": "2024-01-05T18:09:06.405Z",
-                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "createdAt": "2024-01-08T08:01:38.526Z",
+                        "updatedAt": "2024-01-08T08:01:38.526Z",
                         "publishedAt": "2023-04-08T13:00:14.519Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2052,8 +2102,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2072,8 +2122,8 @@
                 "uid": "public-page-layout-1",
                 "variant": "wide",
                 "class_name": "[&>.layout-container]:pt-16",
-                "createdAt": "2024-01-05T18:08:37.045Z",
-                "updatedAt": "2024-01-05T18:08:37.045Z",
+                "createdAt": "2024-01-08T08:01:05.842Z",
+                "updatedAt": "2024-01-08T08:01:05.842Z",
                 "publishedAt": "2023-04-20T03:23:38.447Z",
                 "locale": "en",
                 "footer": {
@@ -2082,8 +2132,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -2103,8 +2153,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2114,8 +2164,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -2132,8 +2182,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2154,8 +2204,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2165,8 +2215,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2184,8 +2234,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -2204,8 +2254,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2215,8 +2265,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -2233,8 +2283,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2256,8 +2306,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2267,8 +2317,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2284,8 +2334,8 @@
                         "id": 1,
                         "title": "Main page",
                         "url": "/",
-                        "createdAt": "2024-01-05T18:09:06.380Z",
-                        "updatedAt": "2024-01-05T18:09:06.380Z",
+                        "createdAt": "2024-01-08T08:01:38.495Z",
+                        "updatedAt": "2024-01-08T08:14:27.884Z",
                         "publishedAt": "2023-04-08T12:06:05.277Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2338,6 +2388,16 @@
                                 "anchor": null,
                                 "class_name": null,
                                 "variant": "centered"
+                            },
+                            {
+                                "__component": "page-blocks.pricing-block",
+                                "id": 1,
+                                "variant": "two-columns-card",
+                                "title": "Tiers",
+                                "subtitle": null,
+                                "description": null,
+                                "class_name": null,
+                                "anchor": null
                             }
                         ],
                         "layout": {
@@ -2346,21 +2406,35 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
                         "createdBy": null,
-                        "updatedBy": null,
+                        "updatedBy": {
+                            "id": 1,
+                            "firstname": "rogwild",
+                            "lastname": "design",
+                            "username": null,
+                            "email": "rogwild.design@gmail.com",
+                            "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
+                            "resetPasswordToken": null,
+                            "registrationToken": null,
+                            "isActive": true,
+                            "blocked": false,
+                            "preferedLanguage": null,
+                            "createdAt": "2024-01-08T07:58:00.162Z",
+                            "updatedAt": "2024-01-08T07:58:00.162Z"
+                        },
                         "localizations": []
                     },
                     {
                         "id": 3,
                         "title": "Not found page",
                         "url": "/404",
-                        "createdAt": "2024-01-05T18:09:06.426Z",
-                        "updatedAt": "2024-01-05T18:09:06.426Z",
+                        "createdAt": "2024-01-08T08:01:38.552Z",
+                        "updatedAt": "2024-01-08T08:01:38.552Z",
                         "publishedAt": "2023-04-20T04:18:21.051Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2381,8 +2455,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -2394,8 +2468,8 @@
                         "id": 4,
                         "title": "Terms and Conditions",
                         "url": "/terms-and-conditions",
-                        "createdAt": "2024-01-05T18:09:06.439Z",
-                        "updatedAt": "2024-01-05T18:09:06.439Z",
+                        "createdAt": "2024-01-08T08:01:38.570Z",
+                        "updatedAt": "2024-01-08T08:01:38.570Z",
                         "publishedAt": "2023-05-04T08:38:22.465Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2415,8 +2489,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -2426,21 +2500,22 @@
                     },
                     {
                         "id": 5,
-                        "title": "Currency Page",
-                        "url": "/currencies/[plugin::sps-billing.currency.id]",
-                        "createdAt": "2024-01-05T18:09:06.455Z",
-                        "updatedAt": "2024-01-05T18:23:53.332Z",
+                        "title": "Checkout Page",
+                        "url": "/checkout/[plugin::sps-subscription.tier.id]",
+                        "createdAt": "2024-01-08T08:01:38.602Z",
+                        "updatedAt": "2024-01-08T08:07:27.765Z",
                         "publishedAt": "2023-12-02T23:44:54.598Z",
                         "locale": "en",
                         "page_blocks": [
                             {
-                                "__component": "page-blocks.hero-section-block",
-                                "id": 5,
-                                "title": "Currency Page",
+                                "__component": "page-blocks.checkout-form-block",
+                                "id": 1,
+                                "variant": "single-step-with-tier",
+                                "class_name": "pt-20",
+                                "title": null,
+                                "subtitle": null,
                                 "description": null,
-                                "variant": "simple-centered",
-                                "anchor": null,
-                                "class_name": null
+                                "anchor": null
                             }
                         ],
                         "layout": {
@@ -2449,8 +2524,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         },
@@ -2461,14 +2536,14 @@
                             "lastname": "design",
                             "username": null,
                             "email": "rogwild.design@gmail.com",
-                            "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                            "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
                             "resetPasswordToken": null,
                             "registrationToken": null,
                             "isActive": true,
                             "blocked": false,
                             "preferedLanguage": null,
-                            "createdAt": "2024-01-05T18:10:54.760Z",
-                            "updatedAt": "2024-01-05T18:10:54.760Z"
+                            "createdAt": "2024-01-08T07:58:00.162Z",
+                            "updatedAt": "2024-01-08T07:58:00.162Z"
                         },
                         "localizations": []
                     }
@@ -2489,8 +2564,8 @@
         "uid": "ads-sidebar-1",
         "class_name": null,
         "side": "right",
-        "createdAt": "2024-01-05T18:09:06.475Z",
-        "updatedAt": "2024-01-05T18:09:06.475Z",
+        "createdAt": "2024-01-08T08:01:38.638Z",
+        "updatedAt": "2024-01-08T08:01:38.638Z",
         "publishedAt": "2023-04-07T17:35:29.006Z",
         "locale": "en",
         "page_blocks": [
@@ -2514,8 +2589,8 @@
                 "uid": "public-page-layout",
                 "variant": "boxed",
                 "class_name": null,
-                "createdAt": "2024-01-05T18:08:37.021Z",
-                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "createdAt": "2024-01-08T08:01:05.819Z",
+                "updatedAt": "2024-01-08T08:01:05.819Z",
                 "publishedAt": "2023-04-08T05:04:56.606Z",
                 "locale": "en",
                 "footer": {
@@ -2524,8 +2599,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -2545,8 +2620,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2556,8 +2631,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -2574,8 +2649,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2596,8 +2671,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2607,8 +2682,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2626,8 +2701,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -2646,8 +2721,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2657,8 +2732,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -2674,8 +2749,8 @@
                     "uid": "ads-sidebar-1",
                     "class_name": null,
                     "side": "right",
-                    "createdAt": "2024-01-05T18:09:06.475Z",
-                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "createdAt": "2024-01-08T08:01:38.638Z",
+                    "updatedAt": "2024-01-08T08:01:38.638Z",
                     "publishedAt": "2023-04-07T17:35:29.006Z",
                     "locale": "en",
                     "page_blocks": [
@@ -2696,8 +2771,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         }
@@ -2713,8 +2788,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2736,8 +2811,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2747,8 +2822,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2764,8 +2839,8 @@
                         "id": 2,
                         "title": "Page With Sidebar Layout",
                         "url": "/page-with-sidebar-layout",
-                        "createdAt": "2024-01-05T18:09:06.405Z",
-                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "createdAt": "2024-01-08T08:01:38.526Z",
+                        "updatedAt": "2024-01-08T08:01:38.526Z",
                         "publishedAt": "2023-04-08T13:00:14.519Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2786,8 +2861,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -2812,8 +2887,8 @@
             "title": "This Is Slide Over",
             "uid": "this-is-slide-over",
             "class_name": "sps-lite-slide-over",
-            "createdAt": "2024-01-05T18:09:06.497Z",
-            "updatedAt": "2024-01-05T18:09:06.497Z",
+            "createdAt": "2024-01-08T08:01:38.678Z",
+            "updatedAt": "2024-01-08T08:01:38.678Z",
             "publishedAt": "2023-04-07T16:54:17.781Z",
             "locale": "en",
             "page_blocks": [
@@ -2836,8 +2911,8 @@
                     "uid": "public-page-layout",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:37.021Z",
-                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                    "createdAt": "2024-01-08T08:01:05.819Z",
+                    "updatedAt": "2024-01-08T08:01:05.819Z",
                     "publishedAt": "2023-04-08T05:04:56.606Z",
                     "locale": "en",
                     "footer": {
@@ -2846,8 +2921,8 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:36.985Z",
-                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "createdAt": "2024-01-08T08:01:05.791Z",
+                        "updatedAt": "2024-01-08T08:01:05.791Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2867,8 +2942,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2878,8 +2953,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2896,8 +2971,8 @@
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.693Z",
-                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "createdAt": "2024-01-08T08:01:06.315Z",
+                            "updatedAt": "2024-01-08T08:01:06.315Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en",
                             "page_blocks": [
@@ -2918,8 +2993,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -2929,8 +3004,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -2948,8 +3023,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2024-01-05T18:08:38.420Z",
-                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "createdAt": "2024-01-08T08:01:07.327Z",
+                        "updatedAt": "2024-01-08T08:01:07.327Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en",
                         "page_blocks": [
@@ -2968,8 +3043,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -2979,8 +3054,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -2996,8 +3071,8 @@
                         "uid": "ads-sidebar-1",
                         "class_name": null,
                         "side": "right",
-                        "createdAt": "2024-01-05T18:09:06.475Z",
-                        "updatedAt": "2024-01-05T18:09:06.475Z",
+                        "createdAt": "2024-01-08T08:01:38.638Z",
+                        "updatedAt": "2024-01-08T08:01:38.638Z",
                         "publishedAt": "2023-04-07T17:35:29.006Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3018,8 +3093,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             }
@@ -3035,8 +3110,8 @@
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2024-01-05T18:09:06.497Z",
-                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "createdAt": "2024-01-08T08:01:38.678Z",
+                            "updatedAt": "2024-01-08T08:01:38.678Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3058,8 +3133,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -3069,8 +3144,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -3086,8 +3161,8 @@
                             "id": 2,
                             "title": "Page With Sidebar Layout",
                             "url": "/page-with-sidebar-layout",
-                            "createdAt": "2024-01-05T18:09:06.405Z",
-                            "updatedAt": "2024-01-05T18:09:06.405Z",
+                            "createdAt": "2024-01-08T08:01:38.526Z",
+                            "updatedAt": "2024-01-08T08:01:38.526Z",
                             "publishedAt": "2023-04-08T13:00:14.519Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3108,8 +3183,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -3128,8 +3203,8 @@
                     "uid": "public-page-layout-1",
                     "variant": "wide",
                     "class_name": "[&>.layout-container]:pt-16",
-                    "createdAt": "2024-01-05T18:08:37.045Z",
-                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                    "createdAt": "2024-01-08T08:01:05.842Z",
+                    "updatedAt": "2024-01-08T08:01:05.842Z",
                     "publishedAt": "2023-04-20T03:23:38.447Z",
                     "locale": "en",
                     "footer": {
@@ -3138,8 +3213,8 @@
                         "uid": "public-page-footer",
                         "variant": "boxed",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:36.985Z",
-                        "updatedAt": "2024-01-05T18:08:36.985Z",
+                        "createdAt": "2024-01-08T08:01:05.791Z",
+                        "updatedAt": "2024-01-08T08:01:05.791Z",
                         "publishedAt": "2023-05-04T03:25:15.030Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3159,8 +3234,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -3170,8 +3245,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -3188,8 +3263,8 @@
                             "variant": "simple",
                             "title": "This Is Modal",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.693Z",
-                            "updatedAt": "2024-01-05T18:08:37.693Z",
+                            "createdAt": "2024-01-08T08:01:06.315Z",
+                            "updatedAt": "2024-01-08T08:01:06.315Z",
                             "publishedAt": "2023-03-28T04:07:57.457Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3210,8 +3285,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -3221,8 +3296,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -3240,8 +3315,8 @@
                         "class_name": null,
                         "position": "fixed",
                         "side": "top",
-                        "createdAt": "2024-01-05T18:08:38.420Z",
-                        "updatedAt": "2024-01-05T18:08:38.420Z",
+                        "createdAt": "2024-01-08T08:01:07.327Z",
+                        "updatedAt": "2024-01-08T08:01:07.327Z",
                         "publishedAt": "2023-04-08T05:04:22.148Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3260,8 +3335,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -3271,8 +3346,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -3289,8 +3364,8 @@
                             "title": "This Is Slide Over",
                             "uid": "this-is-slide-over",
                             "class_name": "sps-lite-slide-over",
-                            "createdAt": "2024-01-05T18:09:06.497Z",
-                            "updatedAt": "2024-01-05T18:09:06.497Z",
+                            "createdAt": "2024-01-08T08:01:38.678Z",
+                            "updatedAt": "2024-01-08T08:01:38.678Z",
                             "publishedAt": "2023-04-07T16:54:17.781Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3312,8 +3387,8 @@
                                     "uid": "public-page-layout",
                                     "variant": "boxed",
                                     "class_name": null,
-                                    "createdAt": "2024-01-05T18:08:37.021Z",
-                                    "updatedAt": "2024-01-05T18:08:37.021Z",
+                                    "createdAt": "2024-01-08T08:01:05.819Z",
+                                    "updatedAt": "2024-01-08T08:01:05.819Z",
                                     "publishedAt": "2023-04-08T05:04:56.606Z",
                                     "locale": "en"
                                 },
@@ -3323,8 +3398,8 @@
                                     "uid": "public-page-layout-1",
                                     "variant": "wide",
                                     "class_name": "[&>.layout-container]:pt-16",
-                                    "createdAt": "2024-01-05T18:08:37.045Z",
-                                    "updatedAt": "2024-01-05T18:08:37.045Z",
+                                    "createdAt": "2024-01-08T08:01:05.842Z",
+                                    "updatedAt": "2024-01-08T08:01:05.842Z",
                                     "publishedAt": "2023-04-20T03:23:38.447Z",
                                     "locale": "en"
                                 }
@@ -3340,8 +3415,8 @@
                             "id": 1,
                             "title": "Main page",
                             "url": "/",
-                            "createdAt": "2024-01-05T18:09:06.380Z",
-                            "updatedAt": "2024-01-05T18:09:06.380Z",
+                            "createdAt": "2024-01-08T08:01:38.495Z",
+                            "updatedAt": "2024-01-08T08:14:27.884Z",
                             "publishedAt": "2023-04-08T12:06:05.277Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3394,6 +3469,16 @@
                                     "anchor": null,
                                     "class_name": null,
                                     "variant": "centered"
+                                },
+                                {
+                                    "__component": "page-blocks.pricing-block",
+                                    "id": 1,
+                                    "variant": "two-columns-card",
+                                    "title": "Tiers",
+                                    "subtitle": null,
+                                    "description": null,
+                                    "class_name": null,
+                                    "anchor": null
                                 }
                             ],
                             "layout": {
@@ -3402,21 +3487,35 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
                             "createdBy": null,
-                            "updatedBy": null,
+                            "updatedBy": {
+                                "id": 1,
+                                "firstname": "rogwild",
+                                "lastname": "design",
+                                "username": null,
+                                "email": "rogwild.design@gmail.com",
+                                "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
+                                "resetPasswordToken": null,
+                                "registrationToken": null,
+                                "isActive": true,
+                                "blocked": false,
+                                "preferedLanguage": null,
+                                "createdAt": "2024-01-08T07:58:00.162Z",
+                                "updatedAt": "2024-01-08T07:58:00.162Z"
+                            },
                             "localizations": []
                         },
                         {
                             "id": 3,
                             "title": "Not found page",
                             "url": "/404",
-                            "createdAt": "2024-01-05T18:09:06.426Z",
-                            "updatedAt": "2024-01-05T18:09:06.426Z",
+                            "createdAt": "2024-01-08T08:01:38.552Z",
+                            "updatedAt": "2024-01-08T08:01:38.552Z",
                             "publishedAt": "2023-04-20T04:18:21.051Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3437,8 +3536,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -3450,8 +3549,8 @@
                             "id": 4,
                             "title": "Terms and Conditions",
                             "url": "/terms-and-conditions",
-                            "createdAt": "2024-01-05T18:09:06.439Z",
-                            "updatedAt": "2024-01-05T18:09:06.439Z",
+                            "createdAt": "2024-01-08T08:01:38.570Z",
+                            "updatedAt": "2024-01-08T08:01:38.570Z",
                             "publishedAt": "2023-05-04T08:38:22.465Z",
                             "locale": "en",
                             "page_blocks": [
@@ -3471,8 +3570,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -3482,21 +3581,22 @@
                         },
                         {
                             "id": 5,
-                            "title": "Currency Page",
-                            "url": "/currencies/[plugin::sps-billing.currency.id]",
-                            "createdAt": "2024-01-05T18:09:06.455Z",
-                            "updatedAt": "2024-01-05T18:23:53.332Z",
+                            "title": "Checkout Page",
+                            "url": "/checkout/[plugin::sps-subscription.tier.id]",
+                            "createdAt": "2024-01-08T08:01:38.602Z",
+                            "updatedAt": "2024-01-08T08:07:27.765Z",
                             "publishedAt": "2023-12-02T23:44:54.598Z",
                             "locale": "en",
                             "page_blocks": [
                                 {
-                                    "__component": "page-blocks.hero-section-block",
-                                    "id": 5,
-                                    "title": "Currency Page",
+                                    "__component": "page-blocks.checkout-form-block",
+                                    "id": 1,
+                                    "variant": "single-step-with-tier",
+                                    "class_name": "pt-20",
+                                    "title": null,
+                                    "subtitle": null,
                                     "description": null,
-                                    "variant": "simple-centered",
-                                    "anchor": null,
-                                    "class_name": null
+                                    "anchor": null
                                 }
                             ],
                             "layout": {
@@ -3505,8 +3605,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             },
@@ -3517,14 +3617,14 @@
                                 "lastname": "design",
                                 "username": null,
                                 "email": "rogwild.design@gmail.com",
-                                "password": "$2a$10$aOFXNylSgKOfcTABHwB/pOY1A/9ozxKp3C2o0.OxZGjF5EuUOWUGi",
+                                "password": "$2a$10$y5Uau6DNjVxYCd1CmRFOYuyvu9wW5Mh6rdvnwhq16rui30ii7.EqK",
                                 "resetPasswordToken": null,
                                 "registrationToken": null,
                                 "isActive": true,
                                 "blocked": false,
                                 "preferedLanguage": null,
-                                "createdAt": "2024-01-05T18:10:54.760Z",
-                                "updatedAt": "2024-01-05T18:10:54.760Z"
+                                "createdAt": "2024-01-08T07:58:00.162Z",
+                                "updatedAt": "2024-01-08T07:58:00.162Z"
                             },
                             "localizations": []
                         }
@@ -3545,8 +3645,8 @@
             "id": 2,
             "title": "Page With Sidebar Layout",
             "url": "/page-with-sidebar-layout",
-            "createdAt": "2024-01-05T18:09:06.405Z",
-            "updatedAt": "2024-01-05T18:09:06.405Z",
+            "createdAt": "2024-01-08T08:01:38.526Z",
+            "updatedAt": "2024-01-08T08:01:38.526Z",
             "publishedAt": "2023-04-08T13:00:14.519Z",
             "locale": "en",
             "page_blocks": [
@@ -3568,8 +3668,8 @@
                 "uid": "public-page-layout",
                 "variant": "boxed",
                 "class_name": null,
-                "createdAt": "2024-01-05T18:08:37.021Z",
-                "updatedAt": "2024-01-05T18:08:37.021Z",
+                "createdAt": "2024-01-08T08:01:05.819Z",
+                "updatedAt": "2024-01-08T08:01:05.819Z",
                 "publishedAt": "2023-04-08T05:04:56.606Z",
                 "locale": "en",
                 "footer": {
@@ -3578,8 +3678,8 @@
                     "uid": "public-page-footer",
                     "variant": "boxed",
                     "class_name": null,
-                    "createdAt": "2024-01-05T18:08:36.985Z",
-                    "updatedAt": "2024-01-05T18:08:36.985Z",
+                    "createdAt": "2024-01-08T08:01:05.791Z",
+                    "updatedAt": "2024-01-08T08:01:05.791Z",
                     "publishedAt": "2023-05-04T03:25:15.030Z",
                     "locale": "en",
                     "page_blocks": [
@@ -3599,8 +3699,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -3610,8 +3710,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -3628,8 +3728,8 @@
                         "variant": "simple",
                         "title": "This Is Modal",
                         "class_name": null,
-                        "createdAt": "2024-01-05T18:08:37.693Z",
-                        "updatedAt": "2024-01-05T18:08:37.693Z",
+                        "createdAt": "2024-01-08T08:01:06.315Z",
+                        "updatedAt": "2024-01-08T08:01:06.315Z",
                         "publishedAt": "2023-03-28T04:07:57.457Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3650,8 +3750,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -3661,8 +3761,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -3680,8 +3780,8 @@
                     "class_name": null,
                     "position": "fixed",
                     "side": "top",
-                    "createdAt": "2024-01-05T18:08:38.420Z",
-                    "updatedAt": "2024-01-05T18:08:38.420Z",
+                    "createdAt": "2024-01-08T08:01:07.327Z",
+                    "updatedAt": "2024-01-08T08:01:07.327Z",
                     "publishedAt": "2023-04-08T05:04:22.148Z",
                     "locale": "en",
                     "page_blocks": [
@@ -3700,8 +3800,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },
@@ -3711,8 +3811,8 @@
                             "uid": "public-page-layout-1",
                             "variant": "wide",
                             "class_name": "[&>.layout-container]:pt-16",
-                            "createdAt": "2024-01-05T18:08:37.045Z",
-                            "updatedAt": "2024-01-05T18:08:37.045Z",
+                            "createdAt": "2024-01-08T08:01:05.842Z",
+                            "updatedAt": "2024-01-08T08:01:05.842Z",
                             "publishedAt": "2023-04-20T03:23:38.447Z",
                             "locale": "en"
                         }
@@ -3728,8 +3828,8 @@
                     "uid": "ads-sidebar-1",
                     "class_name": null,
                     "side": "right",
-                    "createdAt": "2024-01-05T18:09:06.475Z",
-                    "updatedAt": "2024-01-05T18:09:06.475Z",
+                    "createdAt": "2024-01-08T08:01:38.638Z",
+                    "updatedAt": "2024-01-08T08:01:38.638Z",
                     "publishedAt": "2023-04-07T17:35:29.006Z",
                     "locale": "en",
                     "page_blocks": [
@@ -3750,8 +3850,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         }
@@ -3767,8 +3867,8 @@
                         "title": "This Is Slide Over",
                         "uid": "this-is-slide-over",
                         "class_name": "sps-lite-slide-over",
-                        "createdAt": "2024-01-05T18:09:06.497Z",
-                        "updatedAt": "2024-01-05T18:09:06.497Z",
+                        "createdAt": "2024-01-08T08:01:38.678Z",
+                        "updatedAt": "2024-01-08T08:01:38.678Z",
                         "publishedAt": "2023-04-07T16:54:17.781Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3790,8 +3890,8 @@
                                 "uid": "public-page-layout",
                                 "variant": "boxed",
                                 "class_name": null,
-                                "createdAt": "2024-01-05T18:08:37.021Z",
-                                "updatedAt": "2024-01-05T18:08:37.021Z",
+                                "createdAt": "2024-01-08T08:01:05.819Z",
+                                "updatedAt": "2024-01-08T08:01:05.819Z",
                                 "publishedAt": "2023-04-08T05:04:56.606Z",
                                 "locale": "en"
                             },
@@ -3801,8 +3901,8 @@
                                 "uid": "public-page-layout-1",
                                 "variant": "wide",
                                 "class_name": "[&>.layout-container]:pt-16",
-                                "createdAt": "2024-01-05T18:08:37.045Z",
-                                "updatedAt": "2024-01-05T18:08:37.045Z",
+                                "createdAt": "2024-01-08T08:01:05.842Z",
+                                "updatedAt": "2024-01-08T08:01:05.842Z",
                                 "publishedAt": "2023-04-20T03:23:38.447Z",
                                 "locale": "en"
                             }
@@ -3818,8 +3918,8 @@
                         "id": 2,
                         "title": "Page With Sidebar Layout",
                         "url": "/page-with-sidebar-layout",
-                        "createdAt": "2024-01-05T18:09:06.405Z",
-                        "updatedAt": "2024-01-05T18:09:06.405Z",
+                        "createdAt": "2024-01-08T08:01:38.526Z",
+                        "updatedAt": "2024-01-08T08:01:38.526Z",
                         "publishedAt": "2023-04-08T13:00:14.519Z",
                         "locale": "en",
                         "page_blocks": [
@@ -3840,8 +3940,8 @@
                             "uid": "public-page-layout",
                             "variant": "boxed",
                             "class_name": null,
-                            "createdAt": "2024-01-05T18:08:37.021Z",
-                            "updatedAt": "2024-01-05T18:08:37.021Z",
+                            "createdAt": "2024-01-08T08:01:05.819Z",
+                            "updatedAt": "2024-01-08T08:01:05.819Z",
                             "publishedAt": "2023-04-08T05:04:56.606Z",
                             "locale": "en"
                         },

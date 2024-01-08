@@ -563,7 +563,7 @@ export interface PageBlocksPricingBlock extends Schema.Component {
     tiers: Attribute.Relation<
       "page-blocks.pricing-block",
       "oneToMany",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     anchor: Attribute.String;
     media: Attribute.Media;

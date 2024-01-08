@@ -738,59 +738,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginSpsBillingAttachment extends Schema.CollectionType {
-  collectionName: "sps_billing_attachments";
-  info: {
-    singularName: "attachment";
-    pluralName: "attachments";
-    displayName: "Attachment";
-    description: "";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    tiers: Attribute.Relation<
-      "plugin::sps-billing.attachment",
-      "manyToMany",
-      "plugin::sps-billing.tier"
-    > &
-      Attribute.Private;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      "plugin::sps-billing.attachment",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      "plugin::sps-billing.attachment",
-      "oneToOne",
-      "admin::user"
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      "plugin::sps-billing.attachment",
-      "oneToMany",
-      "plugin::sps-billing.attachment"
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface PluginSpsBillingCurrency extends Schema.CollectionType {
   collectionName: "sps_billing_currencies";
   info: {
@@ -830,7 +777,7 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
     tiers: Attribute.Relation<
       "plugin::sps-billing.currency",
       "oneToMany",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -884,7 +831,7 @@ export interface PluginSpsBillingInvoice extends Schema.CollectionType {
     tier: Attribute.Relation<
       "plugin::sps-billing.invoice",
       "manyToOne",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     user: Attribute.Relation<
       "plugin::sps-billing.invoice",
@@ -909,8 +856,61 @@ export interface PluginSpsBillingInvoice extends Schema.CollectionType {
   };
 }
 
-export interface PluginSpsBillingTier extends Schema.CollectionType {
-  collectionName: "sps_billing_tiers";
+export interface PluginSpsSubscriptionAttachment extends Schema.CollectionType {
+  collectionName: "sps_subscription_attachments";
+  info: {
+    singularName: "attachment";
+    pluralName: "attachments";
+    displayName: "Attachment";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tiers: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "manyToMany",
+      "plugin::sps-subscription.tier"
+    > &
+      Attribute.Private;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToMany",
+      "plugin::sps-subscription.attachment"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
+  collectionName: "sps_subscription_tiers";
   info: {
     singularName: "tier";
     pluralName: "tiers";
@@ -945,7 +945,7 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
         };
       }>;
     currency: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "manyToOne",
       "plugin::sps-billing.currency"
     >;
@@ -980,35 +980,35 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
         };
       }>;
     invoices: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToMany",
       "plugin::sps-billing.invoice"
     >;
     attachments: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "manyToMany",
-      "plugin::sps-billing.attachment"
+      "plugin::sps-subscription.attachment"
     > &
       Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToMany",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     locale: Attribute.String;
   };
@@ -1853,6 +1853,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "elements.button",
         "page-blocks.reviews-list-block",
         "page-blocks.alert-block",
+        "page-blocks.checkout-form-block",
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -2415,10 +2416,10 @@ declare module "@strapi/types" {
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
-      "plugin::sps-billing.attachment": PluginSpsBillingAttachment;
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
       "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
-      "plugin::sps-billing.tier": PluginSpsBillingTier;
+      "plugin::sps-subscription.attachment": PluginSpsSubscriptionAttachment;
+      "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;

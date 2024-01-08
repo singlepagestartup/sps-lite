@@ -6,7 +6,7 @@ const public = {
   "plugin::sps-crm.form": ["find", "findOne"],
   "plugin::sps-crm.form-request": ["create"],
   "plugin::sps-crm.review": ["find", "findOne"],
-  "plugin::sps-billing.tier": ["find", "findOne"],
+  "plugin::sps-subscription.tier": ["find", "findOne"],
   "plugin::sps-billing.currency": ["find", "findOne"],
   "plugin::sps-billing.invoice": [
     "find",

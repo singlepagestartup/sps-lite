@@ -7,7 +7,7 @@ export default () => {
 
     if (data.tier?.id) {
       const tier = await strapi
-        .service("plugin::sps-billing.tier")
+        .service("plugin::sps-subscription.tier")
         .findOne(data.tier.id);
 
       passValueToBody({ ctx, key: "amount", value: tier.price });

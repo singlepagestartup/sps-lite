@@ -27,7 +27,7 @@
     "tiers": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::sps-billing.tier"
+      "target": "plugin::sps-subscription.tier"
     },
     "anchor": {
       "type": "string"
