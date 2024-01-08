@@ -38,6 +38,10 @@ module.exports = ({ env }) => {
       enabled: true,
       resolve: "./src/plugins/sps-subscription",
     },
+    "sps-ecommerce": {
+      enabled: true,
+      resolve: "./src/plugins/sps-ecommerce",
+    },
     "sps-crm": {
       enabled: true,
       resolve: "./src/plugins/sps-crm",

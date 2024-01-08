@@ -571,6 +571,32 @@ export interface PageBlocksPricingBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksProductsListBlock extends Schema.Component {
+  collectionName: "components_page_blocks_products_list_blocks";
+  info: {
+    displayName: "Products List Block";
+    description: "";
+  };
+  attributes: {
+    show_all_products: Attribute.Boolean & Attribute.DefaultTo<true>;
+    products: Attribute.Relation<
+      "page-blocks.products-list-block",
+      "oneToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"simple">;
+    description: Attribute.RichText;
+    buttons: Attribute.Component<"elements.button", true>;
+    anchor: Attribute.String;
+    class_name: Attribute.String;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    query: Attribute.JSON;
+  };
+}
+
 export interface PageBlocksReviewsListBlock extends Schema.Component {
   collectionName: "components_page_blocks_reviews_list_blocks";
   info: {
@@ -663,6 +689,7 @@ declare module "@strapi/types" {
       "page-blocks.navbar-block": PageBlocksNavbarBlock;
       "page-blocks.not-found-block": PageBlocksNotFoundBlock;
       "page-blocks.pricing-block": PageBlocksPricingBlock;
+      "page-blocks.products-list-block": PageBlocksProductsListBlock;
       "page-blocks.reviews-list-block": PageBlocksReviewsListBlock;
       "page-blocks.reviews-table-block": PageBlocksReviewsTableBlock;
       "page-blocks.slider-block": PageBlocksSliderBlock;

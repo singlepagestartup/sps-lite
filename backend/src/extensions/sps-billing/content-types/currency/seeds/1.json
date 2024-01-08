@@ -3530,6 +3530,94 @@
                                 "conditions": [],
                                 "createdAt": "2024-01-08T07:57:32.151Z",
                                 "updatedAt": "2024-01-08T07:57:32.151Z"
+                            },
+                            {
+                                "id": 384,
+                                "action": "plugin::content-manager.explorer.create",
+                                "actionParameters": {},
+                                "subject": "plugin::sps-ecommerce.product",
+                                "properties": {
+                                    "fields": [
+                                        "title",
+                                        "description",
+                                        "media",
+                                        "full_description"
+                                    ],
+                                    "locales": [
+                                        "en"
+                                    ]
+                                },
+                                "conditions": [],
+                                "createdAt": "2024-01-08T08:45:13.353Z",
+                                "updatedAt": "2024-01-08T08:45:13.353Z"
+                            },
+                            {
+                                "id": 385,
+                                "action": "plugin::content-manager.explorer.read",
+                                "actionParameters": {},
+                                "subject": "plugin::sps-ecommerce.product",
+                                "properties": {
+                                    "fields": [
+                                        "title",
+                                        "description",
+                                        "media",
+                                        "full_description"
+                                    ],
+                                    "locales": [
+                                        "en"
+                                    ]
+                                },
+                                "conditions": [],
+                                "createdAt": "2024-01-08T08:45:13.381Z",
+                                "updatedAt": "2024-01-08T08:45:13.381Z"
+                            },
+                            {
+                                "id": 386,
+                                "action": "plugin::content-manager.explorer.update",
+                                "actionParameters": {},
+                                "subject": "plugin::sps-ecommerce.product",
+                                "properties": {
+                                    "fields": [
+                                        "title",
+                                        "description",
+                                        "media",
+                                        "full_description"
+                                    ],
+                                    "locales": [
+                                        "en"
+                                    ]
+                                },
+                                "conditions": [],
+                                "createdAt": "2024-01-08T08:45:13.437Z",
+                                "updatedAt": "2024-01-08T08:45:13.437Z"
+                            },
+                            {
+                                "id": 387,
+                                "action": "plugin::content-manager.explorer.delete",
+                                "actionParameters": {},
+                                "subject": "plugin::sps-ecommerce.product",
+                                "properties": {
+                                    "locales": [
+                                        "en"
+                                    ]
+                                },
+                                "conditions": [],
+                                "createdAt": "2024-01-08T08:45:13.456Z",
+                                "updatedAt": "2024-01-08T08:45:13.456Z"
+                            },
+                            {
+                                "id": 388,
+                                "action": "plugin::content-manager.explorer.publish",
+                                "actionParameters": {},
+                                "subject": "plugin::sps-ecommerce.product",
+                                "properties": {
+                                    "locales": [
+                                        "en"
+                                    ]
+                                },
+                                "conditions": [],
+                                "createdAt": "2024-01-08T08:45:13.473Z",
+                                "updatedAt": "2024-01-08T08:45:13.473Z"
                             }
                         ],
                         "createdBy": null,

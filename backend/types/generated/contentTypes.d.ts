@@ -779,6 +779,11 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-subscription.tier"
     >;
+    attributes: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1009,6 +1014,296 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
       "plugin::sps-subscription.tier",
       "oneToMany",
       "plugin::sps-subscription.tier"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceAttribute extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_attributes";
+  info: {
+    singularName: "attribute";
+    pluralName: "attributes";
+    displayName: "Attribute";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attribute_key: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToOne",
+      "plugin::sps-ecommerce.attribute-key"
+    >;
+    string: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    number: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    boolean: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    date: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    datetime: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Attribute.Time &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    additional_media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceAttributeKey extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_attribute_keys";
+  info: {
+    singularName: "attribute-key";
+    pluralName: "attribute-keys";
+    displayName: "Attribute Key";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    type: Attribute.Enumeration<
+      ["string", "number", "boolean", "date", "datetime", "time"]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"string">;
+    key: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    prefix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    postfix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_multiple: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    operator: Attribute.Enumeration<["min", "max", "equal"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"equal">;
+    inversed: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    not_to_clear: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute-key"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_products";
+  info: {
+    singularName: "product";
+    pluralName: "products";
+    displayName: "Product";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "manyToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    full_description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToMany",
+      "plugin::sps-ecommerce.product"
     >;
     locale: Attribute.String;
   };
@@ -1854,6 +2149,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.reviews-list-block",
         "page-blocks.alert-block",
         "page-blocks.checkout-form-block",
+        "page-blocks.products-list-block",
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -2420,6 +2716,9 @@ declare module "@strapi/types" {
       "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
       "plugin::sps-subscription.attachment": PluginSpsSubscriptionAttachment;
       "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
+      "plugin::sps-ecommerce.attribute": PluginSpsEcommerceAttribute;
+      "plugin::sps-ecommerce.attribute-key": PluginSpsEcommerceAttributeKey;
+      "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;

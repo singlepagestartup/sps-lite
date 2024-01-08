@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_page_blocks_products_list_blocks",
+  "info": {
+    "displayName": "Products List Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "show_all_products": {
+      "type": "boolean",
+      "default": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.product"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "query": {
+      "type": "json"
+    }
+  }
+}

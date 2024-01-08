@@ -59,7 +59,8 @@
         "elements.button",
         "page-blocks.reviews-list-block",
         "page-blocks.alert-block",
-        "page-blocks.checkout-form-block"
+        "page-blocks.checkout-form-block",
+        "page-blocks.products-list-block"
       ]
     },
     "layout": {

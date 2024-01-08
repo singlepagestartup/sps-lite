@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_ecommerce_attribute_keys",
+  "info": {
+    "singularName": "attribute-key",
+    "pluralName": "attribute-keys",
+    "displayName": "Attribute Key",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.attribute",
+      "mappedBy": "attribute_key"
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": ["string", "number", "boolean", "date", "datetime", "time"],
+      "default": "string",
+      "required": true
+    },
+    "key": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "regex": "^[a-zA-Z0-9-]+$"
+    },
+    "prefix": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "postfix": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "is_multiple": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "operator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": ["min", "max", "equal"],
+      "default": "equal",
+      "required": true
+    },
+    "inversed": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "not_to_clear": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

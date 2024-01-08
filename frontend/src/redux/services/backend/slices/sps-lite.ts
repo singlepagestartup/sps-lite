@@ -13,6 +13,9 @@ import { api as slideOverApi } from "~redux/services/backend/extensions/sps-webs
 import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
 import { api as tierApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
 import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
+import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
+import { api as ecommerceAttributeApi } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/api";
+import { api as ecommerceAttributeKeyApi } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute-key/api";
 
 export const slices = {
   middlewares: [
@@ -31,6 +34,9 @@ export const slices = {
     topbarApi.middleware,
     tierApi.middleware,
     invoiceApi.middleware,
+    productApi.middleware,
+    ecommerceAttributeApi.middleware,
+    ecommerceAttributeKeyApi.middleware,
   ],
   reducer: {
     [currencyApi.reducerPath]: currencyApi.reducer,
@@ -48,5 +54,8 @@ export const slices = {
     [topbarApi.reducerPath]: topbarApi.reducer,
     [tierApi.reducerPath]: tierApi.reducer,
     [invoiceApi.reducerPath]: invoiceApi.reducer,
+    [productApi.reducerPath]: productApi.reducer,
+    [ecommerceAttributeApi.reducerPath]: ecommerceAttributeApi.reducer,
+    [ecommerceAttributeKeyApi.reducerPath]: ecommerceAttributeKeyApi.reducer,
   },
 };
