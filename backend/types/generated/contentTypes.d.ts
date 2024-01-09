@@ -731,6 +731,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-ecommerce.order"
     >;
+    subscriptions: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -858,6 +863,11 @@ export interface PluginSpsBillingInvoice extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-ecommerce.order"
     >;
+    subscription: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "manyToOne",
+      "plugin::sps-subscription.subscription"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -924,6 +934,71 @@ export interface PluginSpsSubscriptionAttachment extends Schema.CollectionType {
       "plugin::sps-subscription.attachment",
       "oneToMany",
       "plugin::sps-subscription.attachment"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionSubscription
+  extends Schema.CollectionType {
+  collectionName: "sps_subscription_subscriptions";
+  info: {
+    singularName: "subscription";
+    pluralName: "subscriptions";
+    displayName: "Subscription";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    tier: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToOne",
+      "plugin::sps-subscription.tier"
+    >;
+    user: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    status: Attribute.Enumeration<["new", "payment", "paid", "canceled"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"new">;
+    invoices: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToMany",
+      "plugin::sps-billing.invoice"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
     >;
     locale: Attribute.String;
   };
@@ -1010,6 +1085,11 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
       "plugin::sps-subscription.attachment"
     > &
       Attribute.Private;
+    subscriptions: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2905,6 +2985,7 @@ declare module "@strapi/types" {
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
       "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
       "plugin::sps-subscription.attachment": PluginSpsSubscriptionAttachment;
+      "plugin::sps-subscription.subscription": PluginSpsSubscriptionSubscription;
       "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
       "plugin::sps-ecommerce.attribute": PluginSpsEcommerceAttribute;
       "plugin::sps-ecommerce.attribute-key": PluginSpsEcommerceAttributeKey;

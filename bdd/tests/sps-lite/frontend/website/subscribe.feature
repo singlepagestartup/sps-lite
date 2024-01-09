@@ -3,7 +3,7 @@ Feature: Guest can subscribe for tier
   Scenario: Guest can subscribe for tier
     Given I am a guest user
 
-    When I am on "/checkout/2" page
+    When I am on "/subscribe/2" page
     Then I fill in the following details:
       | locator | value              | type |
       | #email  | tester@example.com | text |

@@ -103,6 +103,12 @@
       "target": "plugin::sps-subscription.attachment",
       "mappedBy": "tiers",
       "private": true
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-subscription.subscription",
+      "mappedBy": "tier"
     }
   }
 }

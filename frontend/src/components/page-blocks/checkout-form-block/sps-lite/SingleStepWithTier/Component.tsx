@@ -1,6 +1,7 @@
 "use client";
 
-import { api as tiersApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
+import { api as tierApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
+import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
 import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
 import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
@@ -22,12 +23,12 @@ export default function Component(props: IPageBlock) {
     isLoading,
     isFetching,
     isUninitialized,
-  } = tiersApi.useGetByIdQuery({ id }, { skip: !id });
-  const [createInvoice, { data: createInvoiceData }] =
-    invoiceApi.useCreateMutation();
+  } = tierApi.useGetByIdQuery({ id }, { skip: !id });
+  const [createSubscription, { data: createSubscriptionData }] =
+    subscriptionApi.useCreateMutation();
   const { data: invoice, refetch } = invoiceApi.useGetByIdQuery(
-    { id: createInvoiceData?.id },
-    { skip: !createInvoiceData?.id },
+    { id: createSubscriptionData?.id },
+    { skip: !createSubscriptionData?.id },
   );
 
   const methods = useForm<any>({
@@ -46,7 +47,7 @@ export default function Component(props: IPageBlock) {
   const watchData = watch();
 
   useEffect(() => {
-    if (createInvoiceData) {
+    if (createSubscriptionData) {
       reset();
       setInterval(() => {
         refetch();
@@ -57,13 +58,13 @@ export default function Component(props: IPageBlock) {
       //   props.successCallback(data);
       // }
     }
-  }, [createInvoiceData, reset]);
+  }, [createSubscriptionData, reset]);
 
   async function onSubmit(data: any) {
     data.tier = { id };
     console.log("🚀 ~ onSubmit ~ data:", data);
 
-    await createInvoice({ data });
+    await createSubscription({ data });
   }
 
   if (isLoading || isFetching || isUninitialized) {

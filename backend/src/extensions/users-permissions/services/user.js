@@ -8,7 +8,7 @@ module.exports = {
     const uid = "plugin::users-permissions.user";
     const params = {
       config: {
-        email: "email",
+        username: "username",
       },
       data: props,
     };

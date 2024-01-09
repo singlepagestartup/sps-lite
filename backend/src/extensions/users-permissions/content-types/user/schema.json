@@ -91,6 +91,12 @@
       "relation": "oneToMany",
       "target": "plugin::sps-ecommerce.order",
       "mappedBy": "user"
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-subscription.subscription",
+      "mappedBy": "user"
     }
   }
 }

@@ -7,6 +7,7 @@ const public = {
   "plugin::sps-crm.form-request": ["create"],
   "plugin::sps-crm.review": ["find", "findOne"],
   "plugin::sps-subscription.tier": ["find", "findOne"],
+  "plugin::sps-subscription.subscription": ["find", "findOne", "create"],
   "plugin::sps-ecommerce.product": [
     "find",
     "findOne",
@@ -19,13 +20,7 @@ const public = {
   "plugin::sps-ecommerce.order-product": ["find", "findOne"],
   "plugin::sps-ecommerce.order": ["find", "findOne"],
   "plugin::sps-billing.currency": ["find", "findOne"],
-  "plugin::sps-billing.invoice": [
-    "find",
-    "findOne",
-    "create",
-    "confirm",
-    "webhook",
-  ],
+  "plugin::sps-billing.invoice": ["find", "findOne", "confirm", "webhook"],
   "plugin::sps-website-builder.slide-over": ["find", "findOne"],
   "plugin::sps-website-builder.sidebar": ["find", "findOne"],
   "plugin::sps-website-builder.topbar": ["find", "findOne"],

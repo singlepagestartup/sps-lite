@@ -12,6 +12,7 @@ import { api as sidebarApi } from "~redux/services/backend/extensions/sps-websit
 import { api as slideOverApi } from "~redux/services/backend/extensions/sps-website-builder/api/slide-over/api";
 import { api as topbarApi } from "~redux/services/backend/extensions/sps-website-builder/api/topbar/api";
 import { api as tierApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
+import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
 import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
 import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
 import { api as ecommerceAttributeApi } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/api";
@@ -37,6 +38,7 @@ export const slices = {
     slideOverApi.middleware,
     topbarApi.middleware,
     tierApi.middleware,
+    subscriptionApi.middleware,
     invoiceApi.middleware,
     productApi.middleware,
     ecommerceAttributeApi.middleware,
@@ -61,6 +63,7 @@ export const slices = {
     [slideOverApi.reducerPath]: slideOverApi.reducer,
     [topbarApi.reducerPath]: topbarApi.reducer,
     [tierApi.reducerPath]: tierApi.reducer,
+    [subscriptionApi.reducerPath]: subscriptionApi.reducer,
     [invoiceApi.reducerPath]: invoiceApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [ecommerceAttributeApi.reducerPath]: ecommerceAttributeApi.reducer,

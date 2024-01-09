@@ -68,6 +68,12 @@
       "relation": "oneToMany",
       "target": "plugin::sps-ecommerce.order",
       "mappedBy": "invoice"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-subscription.subscription",
+      "inversedBy": "invoices"
     }
   }
 }
