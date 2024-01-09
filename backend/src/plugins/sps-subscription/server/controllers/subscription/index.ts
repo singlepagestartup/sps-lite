@@ -3,13 +3,10 @@
  */
 
 import { factories } from "@strapi/strapi";
-import { parseBody } from "../../utils/transformers/transform";
 
 const uid = "plugin::sps-subscription.subscription";
 export default factories.createCoreController(uid, ({ strapi }) => ({
   async create(ctx) {
-    const { data } = parseBody(ctx);
-
     const { data: subscription } = await super.create(ctx);
 
     const subscriptionInvoice = await strapi

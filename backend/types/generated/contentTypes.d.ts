@@ -731,6 +731,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-subscription.subscription"
     >;
+    notifications: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-notification.notification"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1745,6 +1750,90 @@ export interface PluginSpsCrmReview extends Schema.CollectionType {
       "admin::user"
     > &
       Attribute.Private;
+  };
+}
+
+export interface PluginSpsNotificationNotification
+  extends Schema.CollectionType {
+  collectionName: "sps_notification_notifications";
+  info: {
+    singularName: "notification";
+    pluralName: "notifications";
+    displayName: "Notification";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subtitle: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    json: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    html: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    user: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    was_read: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToMany",
+      "plugin::sps-notification.notification"
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2977,6 +3066,7 @@ declare module "@strapi/types" {
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
       "plugin::sps-crm.review": PluginSpsCrmReview;
+      "plugin::sps-notification.notification": PluginSpsNotificationNotification;
       "plugin::sps-notification.telegram": PluginSpsNotificationTelegram;
       "plugin::sps-website-builder.flyout": PluginSpsWebsiteBuilderFlyout;
       "plugin::sps-website-builder.footer": PluginSpsWebsiteBuilderFooter;

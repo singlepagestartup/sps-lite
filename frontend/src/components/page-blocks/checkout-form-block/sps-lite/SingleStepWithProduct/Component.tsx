@@ -104,6 +104,13 @@ export default function Component(props: IPageBlock) {
         <div className="flex flex-col gap-3">
           <Input
             variant="text"
+            name="quantity"
+            placeholder="Input quantity"
+            initialValue={1}
+            label="Quantity"
+          />
+          <Input
+            variant="text"
             name="email"
             placeholder="Input your email"
             label="Email for getting tier attachments"

@@ -95,20 +95,14 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
           },
         });
 
-        const emailSettings: any = strapi.config.get("plugin.email");
-
-        await strapi.plugins["email"].services.email.send({
-          to: order.user.email,
-          from:
-            emailSettings.settings?.defaultFrom?.email ||
-            emailSettings.settings?.defaultFrom ||
-            "no-reply@mail.singlepagestartup.com",
-          replyTo:
-            emailSettings.settings?.defaultReplyTo ||
-            "support@singlepagestartup.com",
-          subject: `${emailSettings.appName} | Successfull payment #${order.id}`,
-          html: `<p>Hi ${order.user.username}</p>`,
-        });
+        const notification = await strapi
+          .service("plugin::sps-notification.notification")
+          .create({
+            data: {
+              user: order.user,
+              title: `Successfull order #${order.id}`,
+            },
+          });
       }
     }
   },

@@ -12,6 +12,7 @@ import { useMemo } from "react";
 import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import useMyProfile from "~hooks/use-my-profile";
+import Input from "~components/input";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -54,8 +55,12 @@ function ProductCard(props: ICardProps) {
   const priceAttribute = item.attributes?.find(
     (attr) => attr.attributeKey?.key === "price",
   );
-  const [addToCart, { data: addToCartData }] =
-    productApi.useAddToCartMutation();
+  const [incrementInCart, { data: incrementInCartData }] =
+    productApi.useIncrementInCartMutation();
+  const [decrementInCart, { data: decrementInCartData }] =
+    productApi.useDecrementInCartMutation();
+  const [removeFromCart, { data: removeFromCartData }] =
+    productApi.useRemoveFromCartMutation();
 
   const methods = useForm<any>({
     mode: "all",
@@ -84,11 +89,18 @@ function ProductCard(props: ICardProps) {
       : "";
   }, [priceAttribute]);
 
-  async function onSubmit(data: any) {
+  async function incrementSubmit(data: any) {
     // data.tier = { id };
     console.log("🚀 ~ onSubmit ~ data:", data);
 
-    await addToCart({ id: item?.id, data });
+    await incrementInCart({ id: item?.id, data });
+  }
+
+  async function decrementSubmit(data: any) {
+    // data.tier = { id };
+    console.log("🚀 ~ onSubmit ~ data:", data);
+
+    await decrementInCart({ id: item?.id, data });
   }
 
   return (
@@ -117,12 +129,32 @@ function ProductCard(props: ICardProps) {
           title={buttonTitle}
         />
         <FormProvider {...methods}>
+          <Input
+            variant="text"
+            name="quantity"
+            type="number"
+            label="Quantity"
+            initialValue={1}
+          />
           <Button
-            onClick={handleSubmit(onSubmit)}
+            onClick={handleSubmit(incrementSubmit)}
             variant="secondary"
-            title="Add to cart"
+            title="Increment in cart"
+          />
+          <Button
+            onClick={handleSubmit(decrementSubmit)}
+            variant="secondary"
+            title="Decrement in cart"
           />
         </FormProvider>
+
+        <Button
+          onClick={() => {
+            removeFromCart({ id: item.id });
+          }}
+          variant="secondary"
+          title="Remove from cart"
+        />
       </div>
     </div>
   );

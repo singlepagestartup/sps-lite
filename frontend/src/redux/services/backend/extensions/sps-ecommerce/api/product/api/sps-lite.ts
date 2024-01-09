@@ -60,12 +60,64 @@ export const api = createApi({
       // },
     }),
 
-    addToCart: build.mutation({
+    incrementInCart: build.mutation({
       query: (params = {}) => {
         const { data, id, populate = {} } = params;
 
         return {
-          url: `${model}/${id}/add-to-cart`,
+          url: `${model}/${id}/increment-in-cart`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: { data },
+        };
+      },
+
+      transformResponse: (result) => {
+        return transformResponseItem(result) as IEntity;
+      },
+
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        await queryFulfilled;
+        dispatch(userApi.util.invalidateTags(["User"]));
+        dispatch(cartApi.util.invalidateTags(["Cart"]));
+        dispatch(orderApi.util.invalidateTags(["Order"]));
+      },
+    }),
+
+    decrementInCart: build.mutation({
+      query: (params = {}) => {
+        const { data, id, populate = {} } = params;
+
+        return {
+          url: `${model}/${id}/decrement-in-cart`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: { data },
+        };
+      },
+
+      transformResponse: (result) => {
+        return transformResponseItem(result) as IEntity;
+      },
+
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        await queryFulfilled;
+        dispatch(userApi.util.invalidateTags(["User"]));
+        dispatch(cartApi.util.invalidateTags(["Cart"]));
+        dispatch(orderApi.util.invalidateTags(["Order"]));
+      },
+    }),
+
+    removeFromCart: build.mutation({
+      query: (params = {}) => {
+        const { data, id, populate = {} } = params;
+
+        return {
+          url: `${model}/${id}/remove-from-cart`,
           method: "POST",
           params: {
             populate,

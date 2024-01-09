@@ -5,6 +5,7 @@ import { IPageBlock } from "../..";
 import useMyProfile from "~hooks/use-my-profile";
 import { api as cartApi } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/api";
 import { api as orderApi } from "~redux/services/backend/extensions/sps-ecommerce/api/order/api";
+import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
 import { IEntity as IBackendOrder } from "~redux/services/backend/extensions/sps-ecommerce/api/order/interfaces";
 import { IEntity as IBackendOrderProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/order-product/interfaces";
 import { IEntity as IBackendAttribute } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/interfaces";
@@ -67,6 +68,9 @@ function OrderProductComponent({
 }: {
   orderProduct: IBackendOrderProduct;
 }) {
+  const [removeFromCart, { data: removeFromCartData }] =
+    productApi.useRemoveFromCartMutation();
+
   return (
     <div className="border flex justify-between border-gray-200 rounded-md p-5">
       <p className="font-bold">{orderProduct.product?.title}</p>
@@ -74,6 +78,17 @@ function OrderProductComponent({
         {orderProduct.attributes?.map((attribute, index) => {
           return <AttributeComponent key={index} attribute={attribute} />;
         })}
+        <Button
+          variant="text"
+          title="Delete"
+          onClick={() => {
+            if (!orderProduct.product) {
+              return;
+            }
+
+            removeFromCart({ id: orderProduct.product.id });
+          }}
+        />
       </div>
     </div>
   );

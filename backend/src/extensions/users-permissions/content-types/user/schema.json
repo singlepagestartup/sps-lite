@@ -91,6 +91,12 @@
       "relation": "oneToMany",
       "target": "plugin::sps-subscription.subscription",
       "mappedBy": "user"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-notification.notification",
+      "mappedBy": "user"
     }
   }
 }

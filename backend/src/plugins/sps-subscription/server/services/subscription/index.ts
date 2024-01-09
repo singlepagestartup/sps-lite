@@ -41,22 +41,14 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
     });
 
     if (filledInvoice.subscription?.user) {
-      const user = filledInvoice.subscription.user;
-
-      const emailSettings: any = strapi.config.get("plugin.email");
-
-      await strapi.plugins["email"].services.email.send({
-        to: user.email,
-        from:
-          emailSettings.settings?.defaultFrom?.email ||
-          emailSettings.settings?.defaultFrom ||
-          "no-reply@mail.singlepagestartup.com",
-        replyTo:
-          emailSettings.settings?.defaultReplyTo ||
-          "support@singlepagestartup.com",
-        subject: `${emailSettings.appName} | Successfull subscription #${filledInvoice.subscription.id}`,
-        html: `<p>Hi ${user.username}</p>`,
-      });
+      const notification = await strapi
+        .service("plugin::sps-notification.notification")
+        .create({
+          data: {
+            user: filledInvoice.subscription.user.id,
+            title: `Successfull subscription #${filledInvoice.subscription.id}`,
+          },
+        });
     }
   },
 }));

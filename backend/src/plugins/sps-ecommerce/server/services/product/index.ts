@@ -7,7 +7,15 @@ import { factories } from "@strapi/strapi";
 export default factories.createCoreService(
   "plugin::sps-ecommerce.product",
   ({ strapi }) => ({
-    async addToCart({ id, cart }: { id: any; cart: any }) {
+    async updateInCart({
+      id,
+      cart,
+      quantity,
+    }: {
+      id: any;
+      cart: any;
+      quantity: number;
+    }) {
       const users: any = await strapi.entityService?.findMany(
         "plugin::users-permissions.user",
         {
@@ -80,7 +88,7 @@ export default factories.createCoreService(
           populate: "*",
         });
 
-      let quantityValue = 1;
+      let quantityValue = quantity;
       if (existingQuantityAttribute.length) {
         const currentQuantityAttribute = existingQuantityAttribute[0];
         const currentQuantity =
@@ -96,7 +104,13 @@ export default factories.createCoreService(
             },
           });
 
-        quantityValue = currentQuantity + 1;
+        quantityValue = currentQuantity + quantity;
+      }
+
+      if (quantityValue <= 0) {
+        return await strapi
+          .service("plugin::sps-ecommerce.order-product")
+          .delete(orderProduct.id);
       }
 
       const quantityAttributeConfig = {
