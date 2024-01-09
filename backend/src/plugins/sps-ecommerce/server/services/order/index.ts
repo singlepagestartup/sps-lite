@@ -75,4 +75,41 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
     return totalAmount;
   },
+
+  async onSuccessPayment({ invoice }: { invoice: any }) {
+    const filledInvoice = await strapi
+      .service("plugin::sps-billing.invoice")
+      .findOne(invoice.id, {
+        populate: {
+          orders: {
+            populate: "*",
+          },
+        },
+      });
+
+    if (filledInvoice?.orders.length) {
+      for (const order of filledInvoice.orders) {
+        await strapi.service(uid).update(order.id, {
+          data: {
+            status: "paid",
+          },
+        });
+
+        const emailSettings: any = strapi.config.get("plugin.email");
+
+        await strapi.plugins["email"].services.email.send({
+          to: order.user.email,
+          from:
+            emailSettings.settings?.defaultFrom?.email ||
+            emailSettings.settings?.defaultFrom ||
+            "no-reply@mail.singlepagestartup.com",
+          replyTo:
+            emailSettings.settings?.defaultReplyTo ||
+            "support@singlepagestartup.com",
+          subject: `${emailSettings.appName} | Successfull payment #${order.id}`,
+          html: `<p>Hi ${order.user.username}</p>`,
+        });
+      }
+    }
+  },
 }));

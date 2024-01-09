@@ -5,8 +5,8 @@ Feature: Guest can subscribe for tier
 
     When I am on "/subscribe/2" page
     Then I fill in the following details:
-      | locator | value              | type |
-      | #email  | tester@example.com | text |
+      | locator | value                    | type |
+      | #email  | rogwild.design@gmail.com | text |
     And I click "Buy" button
     Then I can read "Email" text
     And I fill in the following details:

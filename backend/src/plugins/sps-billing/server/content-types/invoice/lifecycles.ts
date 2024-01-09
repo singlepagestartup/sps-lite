@@ -20,62 +20,25 @@ async function onSuccessPayment(event: any) {
     }
 
     if (previousInvoice.status !== "success" && result.status === "success") {
-      const filledInvoice = await strapi
-        .service("plugin::sps-billing.invoice")
-        .findOne(result.id, {
-          populate: "*",
-        });
+      const relations = Object.entries(
+        strapi.plugin("sps-billing").contentTypes.invoice["attributes"],
+      ).filter(
+        ([k, v]: any) =>
+          v.type === "relation" && !["createdBy", "updatedBy"].includes(k),
+      ) as [string, any];
 
-      if (filledInvoice?.user) {
-        await sendSusccessEmail({ invoice: filledInvoice });
-        await changeOrderStatus({ invoice: filledInvoice });
+      for (const [relationKey, relationConfig] of relations) {
+        if (
+          typeof strapi.service(relationConfig.target).onSuccessPayment ===
+          "function"
+        ) {
+          await strapi
+            .service(relationConfig.target)
+            .onSuccessPayment({ invoice: result });
+        }
       }
-      console.log("🚀 ~ onSuccessPayment ~ invoice is paid");
     }
   } catch (error) {
     console.log("🚀 ~ onSuccessPayment ~ error:", error);
-  }
-}
-
-async function sendSusccessEmail({ invoice }: { invoice: any }) {
-  let tier;
-  if (invoice?.tier?.id) {
-    tier = await strapi
-      .service("plugin::sps-subscription.tier")
-      .findOne(invoice.tier.id, {
-        populate: "*",
-      });
-  }
-
-  const emailSettings: any = strapi.config.get("plugin.email");
-
-  await strapi.plugins["email"].services.email.send({
-    to: invoice.user.email,
-    from:
-      emailSettings.settings?.defaultFrom?.email ||
-      emailSettings.settings?.defaultFrom ||
-      "no-reply@mail.singlepagestartup.com",
-    replyTo:
-      emailSettings.settings?.defaultReplyTo || "support@singlepagestartup.com",
-    subject: `${emailSettings.appName} | Successfull payment #${invoice.id}`,
-    html: `<p>Hi ${invoice.user.username}${
-      tier?.attachments?.length > 0
-        ? `, here is your secret information: </p></br>${tier.attachments
-            .map((a) => `<p>${a.title}</p>`)
-            .join("<br/>")}`
-        : ", no attachments</p>"
-    }`,
-  });
-}
-
-async function changeOrderStatus({ invoice }: { invoice: any }) {
-  if (invoice?.orders.length) {
-    for (const order of invoice.orders) {
-      await strapi.service("plugin::sps-ecommerce.order").update(order.id, {
-        data: {
-          status: "paid",
-        },
-      });
-    }
   }
 }

@@ -51,18 +51,6 @@
       "enum": ["erc20"],
       "default": "erc20"
     },
-    "tier": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::sps-subscription.tier",
-      "inversedBy": "invoices"
-    },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "invoices"
-    },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",

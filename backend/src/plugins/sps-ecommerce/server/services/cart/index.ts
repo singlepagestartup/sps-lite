@@ -46,7 +46,6 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
     const invoice = await strapi.service("plugin::sps-billing.invoice").create({
       data: {
-        user: cart.user,
         orders: cart.orders,
         amount: invoiceAmount,
       },

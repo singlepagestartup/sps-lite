@@ -74,12 +74,6 @@
       "target": "plugin::sps-crm.review",
       "mappedBy": "user"
     },
-    "invoices": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::sps-billing.invoice",
-      "mappedBy": "user"
-    },
     "cart": {
       "type": "relation",
       "relation": "oneToOne",

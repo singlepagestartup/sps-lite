@@ -716,11 +716,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "oneToMany",
       "plugin::sps-crm.review"
     >;
-    invoices: Attribute.Relation<
-      "plugin::users-permissions.user",
-      "oneToMany",
-      "plugin::sps-billing.invoice"
-    >;
     cart: Attribute.Relation<
       "plugin::users-permissions.user",
       "oneToOne",
@@ -848,16 +843,6 @@ export interface PluginSpsBillingInvoice extends Schema.CollectionType {
     payment_url: Attribute.Text;
     redirect_to: Attribute.String & Attribute.DefaultTo<"/">;
     chain: Attribute.Enumeration<["erc20"]> & Attribute.DefaultTo<"erc20">;
-    tier: Attribute.Relation<
-      "plugin::sps-billing.invoice",
-      "manyToOne",
-      "plugin::sps-subscription.tier"
-    >;
-    user: Attribute.Relation<
-      "plugin::sps-billing.invoice",
-      "manyToOne",
-      "plugin::users-permissions.user"
-    >;
     orders: Attribute.Relation<
       "plugin::sps-billing.invoice",
       "oneToMany",
@@ -1074,11 +1059,6 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    invoices: Attribute.Relation<
-      "plugin::sps-subscription.tier",
-      "oneToMany",
-      "plugin::sps-billing.invoice"
-    >;
     attachments: Attribute.Relation<
       "plugin::sps-subscription.tier",
       "manyToMany",
