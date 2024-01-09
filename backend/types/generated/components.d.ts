@@ -638,6 +638,24 @@ export interface PageBlocksReviewsTableBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksShoppingCartBlock extends Schema.Component {
+  collectionName: "components_page_blocks_shopping_cart_blocks";
+  info: {
+    displayName: "Shopping Cart Block";
+    description: "";
+  };
+  attributes: {
+    anchor: Attribute.String;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"simple">;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    class_name: Attribute.String;
+  };
+}
+
 export interface PageBlocksSliderBlock extends Schema.Component {
   collectionName: "components_page_blocks_slider_blocks";
   info: {
@@ -694,6 +712,7 @@ declare module "@strapi/types" {
       "page-blocks.products-list-block": PageBlocksProductsListBlock;
       "page-blocks.reviews-list-block": PageBlocksReviewsListBlock;
       "page-blocks.reviews-table-block": PageBlocksReviewsTableBlock;
+      "page-blocks.shopping-cart-block": PageBlocksShoppingCartBlock;
       "page-blocks.slider-block": PageBlocksSliderBlock;
     }
   }

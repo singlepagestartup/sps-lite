@@ -61,6 +61,11 @@ export const strapiFetchBaseQueryBuilder = (baseUrl: string) =>
       return base64CompressedQuery;
     },
     prepareHeaders: (headers) => {
+      const username = localStorage.username;
+      if (username) {
+        headers.set("Anonymus-Username", username);
+      }
+
       const token = localStorage.jwt;
       headers.set("Query-Encoding", "application/gzip");
 

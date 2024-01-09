@@ -13,4 +13,56 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
     return await findOrCreate(params, { uid, schema });
   },
+
+  async getTotalAmount({ id }: { id: number }) {
+    const cart = await strapi.service(uid).findOne(id, {
+      populate: "*",
+    });
+
+    let totalAmount = 0;
+    for (const order of cart.orders) {
+      const orderAmount = await strapi
+        .service("plugin::sps-ecommerce.order")
+        .getTotalAmount({
+          id: order.id,
+        });
+
+      totalAmount += orderAmount;
+    }
+
+    return totalAmount;
+  },
+
+  async createInvoice({ id }: { id: number }) {
+    const cart = await strapi.service(uid).findOne(id, {
+      populate: "*",
+    });
+
+    const invoiceAmount = await strapi
+      .service("plugin::sps-ecommerce.cart")
+      .getTotalAmount({
+        id: cart.id,
+      });
+
+    const invoice = await strapi.service("plugin::sps-billing.invoice").create({
+      data: {
+        user: cart.user,
+        orders: cart.orders,
+        amount: invoiceAmount,
+      },
+    });
+
+    for (const order of cart.orders) {
+      // change order status "cart" -> "payment"
+      // detach cart
+      await strapi.service("plugin::sps-ecommerce.order").update(order.id, {
+        data: {
+          status: "payment",
+          cart: null,
+        },
+      });
+    }
+
+    return invoice;
+  },
 }));

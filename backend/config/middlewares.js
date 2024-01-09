@@ -72,6 +72,7 @@ module.exports = ({ env }) => {
           "Next-Auth-Factor-Key",
           "Policies-Data",
           "Query-Encoding",
+          "Anonymus-Username",
         ],
       },
     },

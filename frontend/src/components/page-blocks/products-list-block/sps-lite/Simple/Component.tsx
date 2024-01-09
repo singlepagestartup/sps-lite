@@ -10,6 +10,8 @@ import { IEntity as IBackendProduct } from "~redux/services/backend/extensions/s
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import Button from "~components/elements/button";
+import { FormProvider, useForm } from "react-hook-form";
+import useMyProfile from "~hooks/use-my-profile";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -46,10 +48,30 @@ export default function Component(props: IPageBlock) {
 }
 
 function ProductCard(props: ICardProps) {
+  const { me } = useMyProfile();
+
   const { item }: { item: IBackendProduct } = props;
   const priceAttribute = item.attributes?.find(
     (attr) => attr.attributeKey?.key === "price",
   );
+  const [addToCart, { data: addToCartData }] =
+    productApi.useAddToCartMutation();
+
+  const methods = useForm<any>({
+    mode: "all",
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = methods;
+
+  const watchData = watch();
+
   const buttonTitle = useMemo(() => {
     if (!priceAttribute) {
       return "";
@@ -61,6 +83,13 @@ function ProductCard(props: ICardProps) {
         }`
       : "";
   }, [priceAttribute]);
+
+  async function onSubmit(data: any) {
+    // data.tier = { id };
+    console.log("🚀 ~ onSubmit ~ data:", data);
+
+    await addToCart({ id: item?.id, data });
+  }
 
   return (
     <div className="flex flex-col text-gray-500">
@@ -87,6 +116,13 @@ function ProductCard(props: ICardProps) {
           variant="primary"
           title={buttonTitle}
         />
+        <FormProvider {...methods}>
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            variant="secondary"
+            title="Add to cart"
+          />
+        </FormProvider>
       </div>
     </div>
   );

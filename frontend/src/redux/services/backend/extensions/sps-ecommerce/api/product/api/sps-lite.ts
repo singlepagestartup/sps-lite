@@ -8,6 +8,9 @@ import {
 import { populate } from "../populate";
 import { IEntity } from "../interfaces";
 import { transformResponseItem } from "~utils/api/transform-response-item";
+import { api as userApi } from "~redux/services/backend/extensions/users-permissions/api/user/api";
+import { api as cartApi } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/api";
+import { api as orderApi } from "~redux/services/backend/extensions/sps-ecommerce/api/order/api";
 
 const model = "products";
 const rtkType = "Product";
@@ -55,6 +58,32 @@ export const api = createApi({
       //   await queryFulfilled;
       //   dispatch(cartApi.util.invalidateTags(["Cart"]));
       // },
+    }),
+
+    addToCart: build.mutation({
+      query: (params = {}) => {
+        const { data, id, populate = {} } = params;
+
+        return {
+          url: `${model}/${id}/add-to-cart`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: { data },
+        };
+      },
+
+      transformResponse: (result) => {
+        return transformResponseItem(result) as IEntity;
+      },
+
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        await queryFulfilled;
+        dispatch(userApi.util.invalidateTags(["User"]));
+        dispatch(cartApi.util.invalidateTags(["Cart"]));
+        dispatch(orderApi.util.invalidateTags(["Order"]));
+      },
     }),
   }),
 });

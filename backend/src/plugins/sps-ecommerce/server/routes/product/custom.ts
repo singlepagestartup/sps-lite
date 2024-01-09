@@ -9,5 +9,13 @@ export default {
         middlewares: ["global::pass-email-user-to-body"],
       },
     },
+    {
+      method: "POST",
+      path: "/products/:id/add-to-cart",
+      handler: "product.addToCart",
+      config: {
+        middlewares: ["global::pass-anonymus-username-user-to-body"],
+      },
+    },
   ],
 };

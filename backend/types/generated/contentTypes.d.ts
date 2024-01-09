@@ -1390,7 +1390,6 @@ export interface PluginSpsEcommerceOrderProduct extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
     order: Attribute.Relation<
       "plugin::sps-ecommerce.order-product",
       "manyToOne",
@@ -2340,6 +2339,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.alert-block",
         "page-blocks.checkout-form-block",
         "page-blocks.products-list-block",
+        "page-blocks.shopping-cart-block",
       ]
     > &
       Attribute.SetPluginOptions<{

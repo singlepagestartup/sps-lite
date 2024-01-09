@@ -1,12 +1,14 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as layoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
 import { IEntity as IBackendLayout } from "~redux/services/backend/extensions/sps-website-builder/api/layout/interfaces";
 import { IEntity as IBackendLoader } from "~redux/services/backend/extensions/sps-website-builder/api/loader/interfaces";
+import { slice as userSlice } from "~redux/auth/slice";
 
 export interface ILayout extends IBackendLayout {
   children: ReactNode;
@@ -21,6 +23,9 @@ const variants = {
 export default function Layout({ children }: { children?: ReactNode }) {
   const pathname = usePathname();
   const params = useParams();
+  const dispatch = useDispatch();
+  // const userId = useSelector((state: any) => state.user?.id);
+  // console.log("🚀 ~ Layout ~ userId:", userId);
   const { data: layout, error } = layoutApi.useGetByPageUrlQuery(
     {
       url: pathname?.includes("/auth") ? "/auth" : pathname,
@@ -28,6 +33,10 @@ export default function Layout({ children }: { children?: ReactNode }) {
     },
     { skip: !pathname },
   );
+
+  useEffect(() => {
+    dispatch(userSlice.actions.setAnonymusUsername());
+  }, []);
 
   // Clear cache if user jwt is wrong
   useEffect(() => {

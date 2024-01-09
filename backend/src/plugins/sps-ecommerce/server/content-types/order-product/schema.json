@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
     "order": {
       "type": "relation",
       "relation": "manyToOne",

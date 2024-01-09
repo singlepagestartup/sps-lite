@@ -5,12 +5,14 @@ import { Provider } from "react-redux";
 
 import { rtkQueryErrorLogger } from "~redux/rtk-query-error-logger";
 import { slices as backendSlices } from "./services/backend/slices";
+import { slice as authSlice } from "./auth/slice";
 
 const middlewares = [...backendSlices.middlewares, rtkQueryErrorLogger];
 
 const store: any = configureStore({
   reducer: {
     ...backendSlices.reducer,
+    auth: authSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),

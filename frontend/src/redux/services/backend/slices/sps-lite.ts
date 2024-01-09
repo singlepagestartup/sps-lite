@@ -16,6 +16,10 @@ import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billin
 import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
 import { api as ecommerceAttributeApi } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/api";
 import { api as ecommerceAttributeKeyApi } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute-key/api";
+import { api as ecommerceCartApi } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/api";
+import { api as ecommerceOrderApi } from "~redux/services/backend/extensions/sps-ecommerce/api/order/api";
+import { api as roleApi } from "~redux/services/backend/extensions/users-permissions/api/role/api";
+import { api as userApi } from "~redux/services/backend/extensions/users-permissions/api/user/api";
 
 export const slices = {
   middlewares: [
@@ -37,6 +41,10 @@ export const slices = {
     productApi.middleware,
     ecommerceAttributeApi.middleware,
     ecommerceAttributeKeyApi.middleware,
+    ecommerceCartApi.middleware,
+    ecommerceOrderApi.middleware,
+    roleApi.middleware,
+    userApi.middleware,
   ],
   reducer: {
     [currencyApi.reducerPath]: currencyApi.reducer,
@@ -57,5 +65,9 @@ export const slices = {
     [productApi.reducerPath]: productApi.reducer,
     [ecommerceAttributeApi.reducerPath]: ecommerceAttributeApi.reducer,
     [ecommerceAttributeKeyApi.reducerPath]: ecommerceAttributeKeyApi.reducer,
+    [ecommerceCartApi.reducerPath]: ecommerceCartApi.reducer,
+    [ecommerceOrderApi.reducerPath]: ecommerceOrderApi.reducer,
+    [roleApi.reducerPath]: roleApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
 };

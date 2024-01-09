@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_page_blocks_shopping_cart_blocks",
+  "info": {
+    "displayName": "Shopping Cart Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "anchor": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "default": "simple",
+      "required": true
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "class_name": {
+      "type": "string"
+    }
+  }
+}
