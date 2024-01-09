@@ -6,8 +6,10 @@ import Card, { ICardProps } from "~components/card";
 import Image from "next/image";
 import Button from "~components/elements/button";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IEntity as ISpsLiteBackendApiTier } from "~redux/services/backend/extensions/sps-subscription/api/tier/interfaces/sps-lite";
+import { api as tierApi } from "~redux/services/backend/extensions/sps-subscription/api/tier/api";
+import { IEntity as IBackendTier } from "~redux/services/backend/extensions/sps-subscription/api/tier/interfaces";
 import { IPageBlock } from "../..";
+import { useMemo } from "react";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -17,6 +19,13 @@ const cardsConfig = {
 };
 
 export default function Component(props: IPageBlock) {
+  const {
+    data: tiers,
+    isFetching,
+    isLoading,
+    isUninitialized,
+  } = tierApi.useGetQuery({});
+
   return (
     <div className="bg-gray-900">
       <div className="relative overflow-hidden pt-32 pb-96 lg:pt-40">
@@ -53,8 +62,8 @@ export default function Component(props: IPageBlock) {
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <Card
               variant="simple"
-              items={props.tiers ? props.tiers : []}
-              showSkeletons={false}
+              items={tiers}
+              showSkeletons={isFetching || isLoading || isUninitialized}
               cardsConfig={cardsConfig}
             />
           </div>
@@ -90,7 +99,25 @@ export default function Component(props: IPageBlock) {
 
 function TierCard(props: ICardProps) {
   const translate = useTranslations();
-  const { item }: { item: ISpsLiteBackendApiTier } = props;
+  const { item }: { item: IBackendTier } = props;
+
+  const price = useMemo(() => {
+    if (!item.attributes) {
+      return;
+    }
+
+    const priceAttribute = item.attributes.find(
+      (attribute) => attribute.attributeKey?.key === "price",
+    );
+
+    if (!priceAttribute || !priceAttribute.attributeKey?.type) {
+      return;
+    }
+
+    return `${priceAttribute.currency?.unicode || ""}${
+      priceAttribute[priceAttribute.attributeKey?.type]
+    }`;
+  }, [item]);
 
   return (
     <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">
@@ -99,9 +126,7 @@ function TierCard(props: ICardProps) {
           {item.title}
         </h3>
         <div className="mt-4 flex items-baseline text-5xl font-bold tracking-tight text-gray-900">
-          {item.price
-            ? `${item.currency?.unicode}${item.price}`
-            : translate("Free")}
+          {price || translate("Free")}
           {item?.period ? (
             <span className="text-lg font-semibold leading-8 tracking-normal text-gray-500">
               /mo
@@ -115,7 +140,7 @@ function TierCard(props: ICardProps) {
       <div className="flex flex-1 flex-col p-2">
         <div className="flex flex-1 flex-col justify-between rounded-2xl bg-gray-50 p-6 sm:p-8">
           <ul role="list" className="space-y-6">
-            {item.features?.map((feature: any, fIndex: number) => (
+            {/* {item.features?.map((feature: any, fIndex: number) => (
               <li key={fIndex} className="flex items-start">
                 <div className="flex-shrink-0">
                   <CheckIcon
@@ -127,7 +152,7 @@ function TierCard(props: ICardProps) {
                   {feature.title}
                 </p>
               </li>
-            ))}
+            ))} */}
           </ul>
           <div className="mt-8">
             {item.buttons?.map((button, index) => {

@@ -824,7 +824,7 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
 }
 
 export interface PluginSpsBillingInvoice extends Schema.CollectionType {
-  collectionName: "sps_bp_invoices";
+  collectionName: "sps_billing_invoices";
   info: {
     singularName: "invoice";
     pluralName: "invoices";
@@ -929,6 +929,231 @@ export interface PluginSpsSubscriptionAttachment extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsSubscriptionAttribute extends Schema.CollectionType {
+  collectionName: "sps_subscription_attributes";
+  info: {
+    singularName: "attribute";
+    pluralName: "attributes";
+    displayName: "Attribute";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attribute_key: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToOne",
+      "plugin::sps-subscription.attribute-key"
+    >;
+    string: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    number: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    boolean: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    date: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    datetime: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Attribute.Time &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    additional_media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
+    tiers: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToMany",
+      "plugin::sps-subscription.tier"
+    >;
+    subscriptions: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToMany",
+      "plugin::sps-subscription.subscription"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionAttributeKey
+  extends Schema.CollectionType {
+  collectionName: "sps_subscription_attribute_keys";
+  info: {
+    singularName: "attribute-key";
+    pluralName: "attribute-keys";
+    displayName: "Attribute Key";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    type: Attribute.Enumeration<
+      ["string", "number", "boolean", "date", "datetime", "time"]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"string">;
+    key: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    prefix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    postfix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_multiple: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    operator: Attribute.Enumeration<["min", "max", "equal"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"equal">;
+    inversed: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    not_to_clear: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToMany",
+      "plugin::sps-subscription.attribute-key"
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginSpsSubscriptionSubscription
   extends Schema.CollectionType {
   collectionName: "sps_subscription_subscriptions";
@@ -969,6 +1194,11 @@ export interface PluginSpsSubscriptionSubscription
       "plugin::sps-subscription.subscription",
       "oneToMany",
       "plugin::sps-billing.invoice"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToMany",
+      "plugin::sps-subscription.attribute"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1023,17 +1253,6 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    currency: Attribute.Relation<
-      "plugin::sps-subscription.tier",
-      "manyToOne",
-      "plugin::sps-billing.currency"
-    >;
     type: Attribute.Enumeration<["one-time", "regularly"]> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1041,18 +1260,6 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
         };
       }>;
     period: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    features: Attribute.Component<"elements.feature", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    old_price: Attribute.Float &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1074,6 +1281,11 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
       "plugin::sps-subscription.tier",
       "oneToMany",
       "plugin::sps-subscription.subscription"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "manyToMany",
+      "plugin::sps-subscription.attribute"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2479,7 +2691,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.features-section-block",
         "page-blocks.logotypes-cloud-block",
         "page-blocks.not-found-block",
-        "page-blocks.pricing-block",
+        "page-blocks.tiers-list-block",
         "page-blocks.reviews-table-block",
         "page-blocks.slider-block",
         "elements.buttons-array",
@@ -3054,6 +3266,8 @@ declare module "@strapi/types" {
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
       "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
       "plugin::sps-subscription.attachment": PluginSpsSubscriptionAttachment;
+      "plugin::sps-subscription.attribute": PluginSpsSubscriptionAttribute;
+      "plugin::sps-subscription.attribute-key": PluginSpsSubscriptionAttributeKey;
       "plugin::sps-subscription.subscription": PluginSpsSubscriptionSubscription;
       "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
       "plugin::sps-ecommerce.attribute": PluginSpsEcommerceAttribute;

@@ -7,7 +7,7 @@ import NotFound from "~components/page-blocks/not-found-block";
 import ContactSecton from "~components/page-blocks/contact-section-block";
 import Incentive from "~components/page-blocks/incentives-block";
 import CtaSection from "~components/page-blocks/cta-section-block";
-import Pricing from "~components/page-blocks/pricing-block";
+import TiersListBlock from "~components/page-blocks/tiers-list-block";
 import ReviewsTable from "~components/page-blocks/reviews-table-block";
 import FeaturesSection from "~components/page-blocks/features-section-block";
 import LogotypesCloud from "~components/page-blocks/logotypes-cloud-block";
@@ -32,7 +32,7 @@ export const pageBlockComponents = {
   ["page-blocks.contact-section-block"]: ContactSecton,
   ["page-blocks.incentives-block"]: Incentive,
   ["page-blocks.cta-section-block"]: CtaSection,
-  ["page-blocks.pricing-block"]: Pricing,
+  ["page-blocks.tiers-list-block"]: TiersListBlock,
   ["page-blocks.reviews-table-block"]: ReviewsTable,
   ["page-blocks.navbar-block"]: Navbar,
   ["page-blocks.footer-block"]: Footer,

@@ -5,7 +5,7 @@ import { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
   id: 2,
-  __component: "page-blocks.pricing-block",
+  __component: "page-blocks.tiers-list-block",
   variant: "two-columns-card",
   title: faker.lorem.sentence(),
   subtitle: faker.lorem.sentence(),

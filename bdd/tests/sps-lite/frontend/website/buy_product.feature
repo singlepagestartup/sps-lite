@@ -7,8 +7,8 @@ Feature: Guest can buy products
     And I click "Increment in cart" button
     And I click "Buy for $120" button
     Then I fill in the following details:
-      | locator | value                    | type |
-      | #email  | rogwild.design@gmail.com | text |
+      | locator | value              | type |
+      | #email  | tester@example.com | text |
     And I click "Buy" button
     Then I can read "Email" text
     And I can read "$120.00" text

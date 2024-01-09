@@ -3,7 +3,7 @@ import { IEntity as IBackendFile } from "~redux/services/backend/extensions/uplo
 
 export interface IComponent {
   id: number;
-  __component: "page-blocks.pricing-block";
+  __component: "page-blocks.tiers-list-block";
   variant: "two-columns-card";
   title: string | null;
   subtitle: string | null;

@@ -82,14 +82,14 @@ export default function Component(props: IPageBlock) {
   return (
     <div className="mx-auto max-w-7xl py-16 px-2 lg:px-0">
       <h1 className="text-6xl font-bold mb-8">{tier.title}</h1>
-      <h1 className="text-6xl font-bold mb-8">{tier.price}</h1>
+      {/* <h1 className="text-6xl font-bold mb-8">{tier.price}</h1> */}
       <FormProvider {...methods}>
         <div className="flex flex-col gap-3">
           <Input
             variant="text"
             name="email"
             placeholder="Input your email"
-            label="Email for getting tier attachments"
+            label="Email"
           />
           <Button
             variant="primary"

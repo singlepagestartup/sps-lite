@@ -552,31 +552,6 @@ export interface PageBlocksNotFoundBlock extends Schema.Component {
   };
 }
 
-export interface PageBlocksPricingBlock extends Schema.Component {
-  collectionName: "components_page_blocks_pricing_blocks";
-  info: {
-    displayName: "Pricing Block";
-    description: "";
-  };
-  attributes: {
-    variant: Attribute.Enumeration<["two-columns-card"]> &
-      Attribute.Required &
-      Attribute.DefaultTo<"two-columns-card">;
-    title: Attribute.RichText;
-    subtitle: Attribute.RichText;
-    description: Attribute.RichText;
-    class_name: Attribute.Text;
-    tiers: Attribute.Relation<
-      "page-blocks.pricing-block",
-      "oneToMany",
-      "plugin::sps-subscription.tier"
-    >;
-    anchor: Attribute.String;
-    media: Attribute.Media;
-    additional_media: Attribute.Media;
-  };
-}
-
 export interface PageBlocksProductsListBlock extends Schema.Component {
   collectionName: "components_page_blocks_products_list_blocks";
   info: {
@@ -682,6 +657,31 @@ export interface PageBlocksSliderBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksTiersListBlock extends Schema.Component {
+  collectionName: "components_page_blocks_tiers_list_blocks";
+  info: {
+    displayName: "Tiers List Block";
+    description: "";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["two-columns-card"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"two-columns-card">;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    class_name: Attribute.Text;
+    tiers: Attribute.Relation<
+      "page-blocks.tiers-list-block",
+      "oneToMany",
+      "plugin::sps-subscription.tier"
+    >;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 declare module "@strapi/types" {
   export module Shared {
     export interface Components {
@@ -712,12 +712,12 @@ declare module "@strapi/types" {
       "page-blocks.logotypes-cloud-block": PageBlocksLogotypesCloudBlock;
       "page-blocks.navbar-block": PageBlocksNavbarBlock;
       "page-blocks.not-found-block": PageBlocksNotFoundBlock;
-      "page-blocks.pricing-block": PageBlocksPricingBlock;
       "page-blocks.products-list-block": PageBlocksProductsListBlock;
       "page-blocks.reviews-list-block": PageBlocksReviewsListBlock;
       "page-blocks.reviews-table-block": PageBlocksReviewsTableBlock;
       "page-blocks.shopping-cart-block": PageBlocksShoppingCartBlock;
       "page-blocks.slider-block": PageBlocksSliderBlock;
+      "page-blocks.tiers-list-block": PageBlocksTiersListBlock;
     }
   }
 }

@@ -1,7 +1,7 @@
 import { IPage } from "..";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/pricing-block/interfaces";
+import { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/tiers-list-block/interfaces";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 
@@ -10,7 +10,7 @@ const variants = {
   ...startupVariants,
 };
 
-export default function PricingBlock(props: IPageBlock) {
+export default function TiersListBlock(props: IPageBlock) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

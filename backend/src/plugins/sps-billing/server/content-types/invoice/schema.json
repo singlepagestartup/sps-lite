@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "sps_bp_invoices",
+  "collectionName": "sps_billing_invoices",
   "info": {
     "singularName": "invoice",
     "pluralName": "invoices",

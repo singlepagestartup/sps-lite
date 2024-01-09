@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "plugin::sps-billing.invoice",
       "mappedBy": "subscription"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-subscription.attribute",
+      "inversedBy": "subscriptions"
     }
   }
 }

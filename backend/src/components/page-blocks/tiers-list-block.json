@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_page_blocks_pricing_blocks",
+  "collectionName": "components_page_blocks_tiers_list_blocks",
   "info": {
-    "displayName": "Pricing Block",
+    "displayName": "Tiers List Block",
     "description": ""
   },
   "options": {},

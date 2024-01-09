@@ -10,7 +10,7 @@ import { populate as incentivesBlockPopulate } from "../incentives-block/populat
 import { populate as logotypesCloudBlockPopulate } from "../logotypes-cloud-block/populate";
 import { populate as navbarBlockPopulate } from "../navbar-block/populate";
 import { populate as notFoundBlockPopulate } from "../not-found-block/populate";
-import { populate as pricingBlockPopulate } from "../pricing-block/populate";
+import { populate as pricingBlockPopulate } from "../tiers-list-block/populate";
 import { populate as reviewsListBlockPopulate } from "../reviews-list-block/populate";
 import { populate as sliderBlockPopulate } from "../slider-block/populate";
 import { populate as checkoutFormBlockPopulate } from "../checkout-form-block/populate";

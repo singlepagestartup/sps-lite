@@ -28,8 +28,8 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::sps-subscription.tier",
-      "inversedBy": "attachments",
-      "private": true
+      "private": true,
+      "inversedBy": "attachments"
     }
   }
 }

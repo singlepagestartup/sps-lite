@@ -113,7 +113,7 @@ export default function Component(props: IPageBlock) {
             variant="text"
             name="email"
             placeholder="Input your email"
-            label="Email for getting tier attachments"
+            label="Email"
           />
           <Button
             variant="primary"
