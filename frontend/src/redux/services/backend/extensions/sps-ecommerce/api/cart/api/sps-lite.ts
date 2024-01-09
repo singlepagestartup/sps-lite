@@ -24,5 +24,29 @@ export const api = createApi({
       model,
       rtkType,
     }),
+
+    checkout: build.mutation({
+      query: (params = {}) => {
+        const { data, id, populate = {} } = params;
+
+        return {
+          url: `${model}/${id}/checkout`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: { data },
+        };
+      },
+
+      transformResponse: (result) => {
+        return transformResponseItem(result) as IEntity;
+      },
+
+      // onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+      //   await queryFulfilled;
+      //   dispatch(cartApi.util.invalidateTags(["Cart"]));
+      // },
+    }),
   }),
 });

@@ -20,11 +20,12 @@ Feature: Guest can buy products
     And I click "Pay" button
     Then I can read "Jumpstart Your Lean Startup with Developer-Friendly Boilerplate" text
 
-  Scenario: Guest can add product to cart
+  Scenario: Guest can add product to cart and checkout
     Given I am a guest user
 
     When I am on "/" page
     And I click "Add to cart" button
+    And I click "Checkout" button
     Then I fill in the following details:
       | locator | value              | type |
       | #email  | tester@example.com | text |

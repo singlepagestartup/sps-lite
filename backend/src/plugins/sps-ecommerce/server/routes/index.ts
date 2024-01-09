@@ -1,5 +1,6 @@
 import attribute from "./attribute";
 import attributeKey from "./attribute-key";
+import customCart from "./cart/custom";
 import cart from "./cart";
 import order from "./order";
 import orderProduct from "./order-product";
@@ -8,10 +9,11 @@ import product from "./product";
 
 export default {
   attribute,
-  "attribute-key": attributeKey,
+  attributeKey,
+  customCart,
   cart,
   order,
-  "order-product": orderProduct,
+  orderProduct,
   customProduct,
   product,
 };

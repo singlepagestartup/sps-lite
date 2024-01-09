@@ -15,7 +15,7 @@ const public = {
   ],
   "plugin::sps-ecommerce.attribute": ["find", "findOne"],
   "plugin::sps-ecommerce.attribute-key": ["find", "findOne"],
-  "plugin::sps-ecommerce.cart": ["find", "findOne"],
+  "plugin::sps-ecommerce.cart": ["find", "findOne", "checkout"],
   "plugin::sps-ecommerce.order-product": ["find", "findOne"],
   "plugin::sps-ecommerce.order": ["find", "findOne"],
   "plugin::sps-billing.currency": ["find", "findOne"],

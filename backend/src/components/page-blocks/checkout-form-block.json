@@ -9,7 +9,11 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["single-step-with-tier", "single-step-with-product"],
+      "enum": [
+        "single-step-with-tier",
+        "single-step-with-product",
+        "single-step-with-cart"
+      ],
       "default": "single-step-with-tier",
       "required": true
     },

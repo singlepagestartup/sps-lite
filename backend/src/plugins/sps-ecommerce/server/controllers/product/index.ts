@@ -57,15 +57,13 @@ export default factories.createCoreController(
         cart,
       });
 
-      const invoice = await strapi
+      const cartInvoice = await strapi
         .service("plugin::sps-ecommerce.cart")
-        .createInvoice({
-          id: cart.id,
-        });
+        .checkout({ id: cart.id });
 
       const sanitizedInvoice = await strapi
         .controller("plugin::sps-billing.invoice")
-        .sanitizeOutput(invoice, ctx);
+        .sanitizeOutput(cartInvoice, ctx);
 
       return (
         strapi

@@ -9,6 +9,7 @@ import { IEntity as IBackendOrder } from "~redux/services/backend/extensions/sps
 import { IEntity as IBackendOrderProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/order-product/interfaces";
 import { IEntity as IBackendAttribute } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/interfaces";
 import { useMemo } from "react";
+import Button from "~components/elements/button";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();
@@ -35,6 +36,9 @@ export default function Component(props: IPageBlock) {
           {cart?.orders?.map((order, index) => {
             return <OrderComponent key={index} order={order} />;
           })}
+        </div>
+        <div className="w-full">
+          <Button title="Checkout" variant="primary" url="/checkout" />
         </div>
       </div>
     </div>

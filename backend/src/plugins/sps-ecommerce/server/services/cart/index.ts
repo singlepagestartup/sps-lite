@@ -65,4 +65,16 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
     return invoice;
   },
+
+  async checkout({ id }: { id: number }) {
+    const cart = await strapi.service(uid).findOne(id);
+
+    const invoice = await strapi
+      .service("plugin::sps-ecommerce.cart")
+      .createInvoice({
+        id: cart.id,
+      });
+
+    return invoice;
+  },
 }));
