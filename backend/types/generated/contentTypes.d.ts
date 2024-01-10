@@ -1775,6 +1775,37 @@ export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsMigratorSeeder extends Schema.CollectionType {
+  collectionName: "sps_migrator_seeders";
+  info: {
+    singularName: "seeder";
+    pluralName: "seeders";
+    displayName: "Seeder";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrator.seeder",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrator.seeder",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginSpsCrmConfiguration extends Schema.SingleType {
   collectionName: "sps_crm_configurations";
   info: {
@@ -3279,6 +3310,7 @@ declare module "@strapi/types" {
       "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
       "plugin::sps-ecommerce.order-product": PluginSpsEcommerceOrderProduct;
       "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
+      "plugin::sps-migrator.seeder": PluginSpsMigratorSeeder;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;

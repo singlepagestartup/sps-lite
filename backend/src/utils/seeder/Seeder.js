@@ -143,6 +143,18 @@ class Seeder {
     //     console.log('🚀 ~ seedEntites ~ this.modelName:', this.modelName);
     // }
 
+    const existingEntities = await strapi.db.query(this.uid).findMany();
+    if (
+      existingEntities?.length &&
+      !["plugin::i18n.locale", "strapi::core-store"].includes(this.uid)
+    ) {
+      for (const existingEntity of existingEntities) {
+        await strapi.db
+          .query(this.uid)
+          .delete({ where: { id: existingEntity.id } });
+      }
+    }
+
     if (
       this.schema.kind === "collectionType" ||
       this.modelDirName === "plugin-i18n"
