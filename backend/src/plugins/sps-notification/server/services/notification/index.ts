@@ -19,6 +19,8 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
       const emailSettings: any = strapi.config.get("plugin.email");
 
+      const html = filledNotification.html || filledNotification.title;
+
       await strapi.plugins["email"].services.email.send({
         to: user.email,
         from:
@@ -29,7 +31,7 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
           emailSettings.settings?.defaultReplyTo ||
           "support@singlepagestartup.com",
         subject: result.title,
-        html: `<p>Hi ${user.username}</p>`,
+        html,
       });
     }
 

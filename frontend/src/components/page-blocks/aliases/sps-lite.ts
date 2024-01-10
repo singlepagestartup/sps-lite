@@ -19,6 +19,7 @@ import Alert from "~components/page-blocks/alert-block";
 import CheckoutFormBlock from "~components/page-blocks/checkout-form-block";
 import ProductsListBlock from "~components/page-blocks/products-list-block";
 import ShoppingCartBlock from "~components/page-blocks/shopping-cart-block";
+import EditSubscriptionBlock from "../edit-subscription-block";
 
 export const pageBlockComponents = {
   ["page-blocks.header-section-block"]: HeaderSection,
@@ -42,4 +43,5 @@ export const pageBlockComponents = {
   ["page-blocks.checkout-form-block"]: CheckoutFormBlock,
   ["page-blocks.products-list-block"]: ProductsListBlock,
   ["page-blocks.shopping-cart-block"]: ShoppingCartBlock,
+  ["page-blocks.edit-subscription-block"]: EditSubscriptionBlock,
 };

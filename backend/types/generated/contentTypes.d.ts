@@ -2701,6 +2701,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.checkout-form-block",
         "page-blocks.products-list-block",
         "page-blocks.shopping-cart-block",
+        "page-blocks.edit-subscription-block",
       ]
     > &
       Attribute.SetPluginOptions<{

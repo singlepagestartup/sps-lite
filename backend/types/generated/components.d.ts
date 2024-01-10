@@ -365,6 +365,26 @@ export interface PageBlocksCtaSectionBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksEditSubscriptionBlock extends Schema.Component {
+  collectionName: "components_page_blocks_edit_subscription_blocks";
+  info: {
+    displayName: "Edit Subscription Block";
+    icon: "crown";
+  };
+  attributes: {
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"simple">;
+    class_name: Attribute.String;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 export interface PageBlocksFaqsBlock extends Schema.Component {
   collectionName: "components_page_blocks_faqs_blocks";
   info: {
@@ -703,6 +723,7 @@ declare module "@strapi/types" {
       "page-blocks.checkout-form-block": PageBlocksCheckoutFormBlock;
       "page-blocks.contact-section-block": PageBlocksContactSectionBlock;
       "page-blocks.cta-section-block": PageBlocksCtaSectionBlock;
+      "page-blocks.edit-subscription-block": PageBlocksEditSubscriptionBlock;
       "page-blocks.faqs-block": PageBlocksFaqsBlock;
       "page-blocks.features-section-block": PageBlocksFeaturesSectionBlock;
       "page-blocks.footer-block": PageBlocksFooterBlock;

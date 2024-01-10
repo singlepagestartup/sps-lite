@@ -3,10 +3,10 @@ Feature: Guest can subscribe for tier
   Scenario: Guest can subscribe for tier
     Given I am a guest user
 
-    When I am on "/tiers/2" page
+    When I am on "/tiers/2/subscribe" page
     Then I fill in the following details:
-      | locator | value              | type |
-      | #email  | tester@example.com | text |
+      | locator | value                    | type |
+      | #email  | rogwild.design@gmail.com | text |
     And I click "Buy" button
     Then I can read "$99.00" text
     And I fill in the following details:

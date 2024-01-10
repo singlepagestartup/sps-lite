@@ -16,6 +16,7 @@ import { populate as sliderBlockPopulate } from "../slider-block/populate";
 import { populate as checkoutFormBlockPopulate } from "../checkout-form-block/populate";
 import { populate as productsListBlockPopulate } from "../products-list-block/populate";
 import { populate as shoppingCartBlockPopulate } from "../shopping-cart-block/populate";
+import { populate as editSubscriptionBlockPopulate } from "../edit-subscription-block/populate";
 
 export const populate = {
   ...alertBlockPopulate,
@@ -36,4 +37,5 @@ export const populate = {
   ...checkoutFormBlockPopulate,
   ...productsListBlockPopulate,
   ...shoppingCartBlockPopulate,
+  ...editSubscriptionBlockPopulate,
 };

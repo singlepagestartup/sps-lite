@@ -37,6 +37,11 @@ module.exports = ({ env }) => {
     "sps-subscription": {
       enabled: true,
       resolve: "./src/plugins/sps-subscription",
+      config: {
+        JWT_SECRET: env("JWT_SECRET"),
+        BACKEND_URL: env("BACKEND_URL"),
+        FRONTEND_URL: env("FRONTEND_URL"),
+      },
     },
     "sps-ecommerce": {
       enabled: true,
