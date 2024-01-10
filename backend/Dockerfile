@@ -28,21 +28,23 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-RUN cd ./src/plugins/sps-billing/ && \
-    npm install && \
-    npm run build
+RUN find ./src/plugins -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm install && npm run build" \;
 
-RUN cd ./src/plugins/sps-crm/ && \
-    npm install && \
-    npm run build
+# RUN cd ./src/plugins/sps-billing/ && \
+#     npm install && \
+#     npm run build
 
-RUN cd ./src/plugins/sps-notification/ && \
-    npm install && \
-    npm run build
+# RUN cd ./src/plugins/sps-crm/ && \
+#     npm install && \
+#     npm run build
 
-RUN cd ./src/plugins/sps-website-builder/ && \
-    npm install && \
-    npm run build
+# RUN cd ./src/plugins/sps-notification/ && \
+#     npm install && \
+#     npm run build
+
+# RUN cd ./src/plugins/sps-website-builder/ && \
+#     npm install && \
+#     npm run build
 
 EXPOSE 1337
 

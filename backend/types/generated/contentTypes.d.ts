@@ -2897,7 +2897,9 @@ export interface PluginSpsWebsiteBuilderSlideOver
           localized: true;
         };
       }>;
-    page_blocks: Attribute.DynamicZone<["page-blocks.faqs-block"]> &
+    page_blocks: Attribute.DynamicZone<
+      ["page-blocks.faqs-block", "page-blocks.shopping-cart-block"]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
