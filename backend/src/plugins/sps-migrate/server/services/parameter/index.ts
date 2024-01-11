@@ -30,14 +30,14 @@ export default factories.createCoreService(
       keysToSkip,
       key,
       seedValue,
-      seededModels,
+      seededUids,
       data,
       uid,
     }: {
       keysToSkip: string[];
       key: string;
       seedValue: any;
-      seededModels: any;
+      seededUids: any;
       data: any;
       uid: string;
     }) {
@@ -59,7 +59,7 @@ export default factories.createCoreService(
           keysToSkip,
           key,
           seedValue,
-          seededModels,
+          seededUids,
           data,
           uid,
         });
@@ -70,7 +70,7 @@ export default factories.createCoreService(
           .seedLocalizations({
             keysToSkip,
             seedValue,
-            seededModels,
+            seededUids,
             uid,
           }); //?
       } else if (type === "dynamiczone") {
@@ -79,7 +79,7 @@ export default factories.createCoreService(
           .seedDynamicZone({
             keysToSkip,
             seedValue,
-            seededModels,
+            seededUids,
           }); //?
       } else if (type === "component") {
         return;
@@ -93,11 +93,11 @@ export default factories.createCoreService(
     async seedDynamicZone({
       keysToSkip,
       seedValue,
-      seededModels,
+      seededUids,
     }: {
       keysToSkip: string[];
       seedValue: any;
-      seededModels: any;
+      seededUids: any;
     }) {
       if (!seedValue.length) {
         return;
@@ -111,7 +111,7 @@ export default factories.createCoreService(
           .prepare({
             keysToSkip,
             seed: dzSeedValue,
-            seededModels,
+            seededUids,
             uid: dzSeedValue.__component,
           });
 
@@ -127,9 +127,17 @@ export default factories.createCoreService(
       }
 
       if (Array.isArray(value)) {
+        const createdFiles: any = [];
+
         for (const fileValue of value) {
-          await this.downloadFile({ value: fileValue, uid });
+          const createdFile = await this.downloadFile({
+            value: fileValue,
+            uid,
+          });
+          createdFiles.push(createdFile);
         }
+
+        return createdFiles;
       } else {
         const additionalAttributes = {};
         if (value?.headers) {
@@ -166,8 +174,6 @@ export default factories.createCoreService(
             });
         }
 
-        // console.log('🚀 ~ downloadFile ~ value:', value);
-
         if (!file) {
           return;
         }
@@ -196,14 +202,14 @@ export default factories.createCoreService(
       keysToSkip,
       key,
       seedValue,
-      seededModels,
+      seededUids,
       data,
       uid,
     }: {
       keysToSkip: string[];
       key: string;
       seedValue: any;
-      seededModels: any;
+      seededUids: any;
       data: any;
       uid: string;
     }) {
@@ -214,30 +220,27 @@ export default factories.createCoreService(
       const attributes = strapi
         .service("plugin::sps-migrate.parameter")
         .getAttributes({ key, uid });
-      const targetModelName = attributes.target.split("::")[1].split(".")[0]; //?
 
       const schema = await strapi
         .service("plugin::sps-migrate.seeder")
         .getSchema({ uid });
 
-      // console.log('🚀 ~ seedRelations ~ targetModelName:', targetModelName);
-
-      const alsoSeededModels = Object.keys(seededModels).filter(
-        (modelName) => modelName === targetModelName,
+      const alsoSeededUids = Object.keys(seededUids).filter(
+        (seededUid) => seededUid === uid,
       ); //?
       const { modelName } = strapi
         .service("plugin::sps-migrate.seeder")
         .splitUid({ uid });
 
       if (
-        (alsoSeededModels?.length === 0 &&
-          targetModelName !== modelName &&
+        (alsoSeededUids?.length === 0 &&
+          attributes.target !== uid &&
           schema.attributes[key]?.mappedBy === modelName) ||
         data.__component
       ) {
         await strapi.service("plugin::sps-migrate.seeder").seedEntites({
           uid,
-          seededModels,
+          seededUids,
         });
       }
 
@@ -254,7 +257,7 @@ export default factories.createCoreService(
         for (const relationSeedValue of seedValue) {
           let id;
           if (relationSeedValue.id) {
-            id = seededModels[targetModelName]?.find((seededItems) => {
+            id = seededUids[attributes.target]?.find((seededItems) => {
               if (seededItems.old.id === relationSeedValue.id) {
                 return true;
               }
@@ -285,7 +288,7 @@ export default factories.createCoreService(
       } else {
         let id;
         if (seedValue.id) {
-          id = seededModels[targetModelName]?.find((seededItems) => {
+          id = seededUids[attributes.target]?.find((seededItems) => {
             if (seededItems.old.id === seedValue.id) {
               return true;
             }
@@ -317,12 +320,12 @@ export default factories.createCoreService(
     async seedLocalizations({
       keysToSkip,
       seedValue,
-      seededModels,
+      seededUids,
       uid,
     }: {
       keysToSkip: string[];
       seedValue: any;
-      seededModels: any;
+      seededUids: any;
       uid: string;
     }) {
       if (!strapi.db) {
@@ -330,16 +333,13 @@ export default factories.createCoreService(
       }
 
       const localizations: any[] = [];
-      const { modelName } = strapi
-        .service("plugin::sps-migrate.seeder")
-        .splitUid({ uid });
 
       for (const localizationSeedValue of seedValue) {
         delete localizationSeedValue.localizations;
 
         let id;
         if (localizationSeedValue.id) {
-          id = seededModels[modelName]?.find((seededItems) => {
+          id = seededUids[uid]?.find((seededItems) => {
             if (seededItems.old.id === localizationSeedValue.id) {
               return true;
             }
@@ -357,7 +357,6 @@ export default factories.createCoreService(
             schema,
           });
 
-        filters; //?
         const relationEntities: any = await strapi.db.query(uid).findMany({
           where: filters,
         });
