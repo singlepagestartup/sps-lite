@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "sps_migrator_seeders",
+  "collectionName": "sps_migrate_seeders",
   "info": {
     "singularName": "seeder",
     "pluralName": "seeders",
@@ -11,9 +11,5 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {
-    "name": {
-      "type": "richtext"
-    }
-  }
+  "attributes": {}
 }

@@ -10,7 +10,7 @@ import emailDesigner from "strapi-plugin-email-designer/strapi-admin";
 import spsBilling from "../../src/plugins/sps-billing/strapi-admin";
 import spsSubscription from "../../src/plugins/sps-subscription/strapi-admin";
 import spsEcommerce from "../../src/plugins/sps-ecommerce/strapi-admin";
-import spsMigrator from "../../src/plugins/sps-migrator/strapi-admin";
+import spsMigrate from "../../src/plugins/sps-migrate/strapi-admin";
 import spsCrm from "../../src/plugins/sps-crm/strapi-admin";
 import spsNotification from "../../src/plugins/sps-notification/strapi-admin";
 import spsWebsiteBuilder from "../../src/plugins/sps-website-builder/strapi-admin";
@@ -26,7 +26,7 @@ renderAdmin(document.getElementById("strapi"), {
     "sps-billing": spsBilling,
     "sps-subscription": spsSubscription,
     "sps-ecommerce": spsEcommerce,
-    "sps-migrator": spsMigrator,
+    "sps-migrate": spsMigrate,
     "sps-crm": spsCrm,
     "sps-notification": spsNotification,
     "sps-website-builder": spsWebsiteBuilder,

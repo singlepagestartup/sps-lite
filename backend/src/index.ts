@@ -24,6 +24,9 @@ export default {
       clearMediaLibrary();
     }
 
+    // const apiPath = path.join(__dirname, "../../src/", "./api");
+    await strapi.service("plugin::sps-migrate.seeder").run();
+
     if (process.env.SEED_ENTITES) {
       const lockFilePath = path.join(__dirname, "../../", "seeded.txt");
       try {

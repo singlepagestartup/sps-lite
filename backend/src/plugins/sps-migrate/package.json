@@ -1,5 +1,5 @@
 {
-  "name": "sps-migrator",
+  "name": "sps-migrate",
   "version": "0.0.0",
   "description": "This is the description of the plugin.",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "@strapi/design-system": "^1.6.3",
     "@strapi/helper-plugin": "^4.6.0",
     "@strapi/icons": "^1.6.3",
+    "axios": "^1.6.5",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -44,8 +45,8 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "name": "sps-migrator",
-    "description": "Description of sps-migrator plugin",
+    "name": "sps-migrate",
+    "description": "Description of sps-migrate plugin",
     "kind": "plugin"
   }
 }

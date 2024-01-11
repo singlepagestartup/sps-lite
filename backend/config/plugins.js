@@ -47,9 +47,9 @@ module.exports = ({ env }) => {
       enabled: true,
       resolve: "./src/plugins/sps-ecommerce",
     },
-    "sps-migrator": {
+    "sps-migrate": {
       enabled: true,
-      resolve: "./src/plugins/sps-migrator",
+      resolve: "./src/plugins/sps-migrate",
     },
     "sps-crm": {
       enabled: true,

@@ -1775,8 +1775,68 @@ export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
   };
 }
 
-export interface PluginSpsMigratorSeeder extends Schema.CollectionType {
-  collectionName: "sps_migrator_seeders";
+export interface PluginSpsMigrateEntity extends Schema.CollectionType {
+  collectionName: "sps_migrate_entites";
+  info: {
+    singularName: "entity";
+    pluralName: "entities";
+    displayName: "Entity";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.entity",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.entity",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsMigrateParameter extends Schema.CollectionType {
+  collectionName: "sps_migrate_parameters";
+  info: {
+    singularName: "parameter";
+    pluralName: "parameters";
+    displayName: "Parameter";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.parameter",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.parameter",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsMigrateSeeder extends Schema.CollectionType {
+  collectionName: "sps_migrate_seeders";
   info: {
     singularName: "seeder";
     pluralName: "seeders";
@@ -1787,18 +1847,17 @@ export interface PluginSpsMigratorSeeder extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "plugin::sps-migrator.seeder",
+      "plugin::sps-migrate.seeder",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "plugin::sps-migrator.seeder",
+      "plugin::sps-migrate.seeder",
       "oneToOne",
       "admin::user"
     > &
@@ -3310,7 +3369,9 @@ declare module "@strapi/types" {
       "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
       "plugin::sps-ecommerce.order-product": PluginSpsEcommerceOrderProduct;
       "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
-      "plugin::sps-migrator.seeder": PluginSpsMigratorSeeder;
+      "plugin::sps-migrate.entity": PluginSpsMigrateEntity;
+      "plugin::sps-migrate.parameter": PluginSpsMigrateParameter;
+      "plugin::sps-migrate.seeder": PluginSpsMigrateSeeder;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
