@@ -80,8 +80,6 @@ export default factories.createCoreService(
             keysToSkip,
             seedValue,
             seededModels,
-            uid,
-            key,
           }); //?
       } else if (type === "component") {
         return;

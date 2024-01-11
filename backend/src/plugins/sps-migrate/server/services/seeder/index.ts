@@ -32,106 +32,6 @@ export default factories.createCoreService(
       console.log("Seeding is finished");
     },
 
-    splitUid({ uid }: { uid: string }) {
-      const type = uid.split("::")[0];
-      const modelDirName = uid.split("::")[1].split(".")[0];
-      const entityName = uid.split("::")[1].split(".")[1];
-      let dirPath;
-      if (type === "plugin") {
-        dirPath = path.join(strapi.dirs.app.extensions);
-      } else if (type === "api") {
-        dirPath = path.join(strapi.dirs.app.api);
-      } else {
-        dirPath = path.join(strapi.dirs.app.root);
-      }
-
-      let modelName = modelDirName;
-      if (uid === "plugin-i18n") {
-        modelName = "i18n";
-      }
-
-      return { type, modelDirName, modelName, entityName, dirPath };
-    },
-
-    getSchema({ uid }: { uid: string }) {
-      let schema = strapi.contentTypes[uid]?.["__schema__"];
-
-      if (!schema) {
-        schema = strapi.components[uid]["__schema__"];
-      }
-
-      return schema;
-    },
-
-    async getSeeds({ uid }: { uid: string }) {
-      const { dirPath } = strapi
-        .service("plugin::sps-migrate.seeder")
-        .splitUid({ uid });
-      const schema = strapi
-        .service("plugin::sps-migrate.seeder")
-        .getSchema({ uid });
-      const { type, modelDirName, entityName } = strapi
-        .service("plugin::sps-migrate.seeder")
-        .splitUid({ uid });
-
-      let seed: any[] = [];
-
-      const pathToSeed = path.join(
-        dirPath,
-        `/${modelDirName}/content-types${
-          entityName ? `/${entityName}` : ""
-        }/seeds`,
-      );
-
-      let seedFiles;
-      try {
-        seedFiles = await fs.readdir(pathToSeed);
-      } catch (error) {
-        return;
-      }
-
-      if (
-        !seedFiles?.length ||
-        !seedFiles?.filter((s) => s.includes(".json"))?.length
-      ) {
-        return seed;
-      }
-
-      if (
-        schema.kind === "singleType" &&
-        seedFiles.filter((s) => s.includes(".json")).length > 1
-      ) {
-        throw new Error("Single Type entity can have just one json file");
-      }
-
-      for (const seedFile of seedFiles) {
-        if (!seedFile.includes(".json")) {
-          continue;
-        }
-
-        const readedSeedFile = await fs
-          .readFile(`${pathToSeed}/${seedFile}`, "utf8")
-          .catch((error) => {
-            // console.log(`🚀 ~ seed ~ error`, error);
-          });
-
-        if (
-          schema.kind === "collectionType" ||
-          modelDirName === "plugin-i18n"
-        ) {
-          if (!seedFile) {
-            return seed;
-          }
-
-          seed = [...seed, JSON.parse(readedSeedFile)];
-        } else {
-          seed = JSON.parse(readedSeedFile);
-        }
-      }
-
-      return seed;
-    },
-
     async seedEntites({ uid, seededModels }: { uid: any; seededModels: any }) {
       if (!strapi.db) {
         throw new Error("strapi.db is undefined");
@@ -156,17 +56,17 @@ export default factories.createCoreService(
         return;
       }
 
-      const existingEntities = await strapi.db.query(uid).findMany();
-      if (
-        existingEntities?.length &&
-        !["plugin::i18n.locale", "strapi::core-store"].includes(uid)
-      ) {
-        for (const existingEntity of existingEntities) {
-          await strapi.db
-            .query(uid)
-            .delete({ where: { id: existingEntity.id } });
-        }
-      }
+      // const existingEntities = await strapi.db.query(uid).findMany();
+      // if (
+      //   existingEntities?.length &&
+      //   !["plugin::i18n.locale", "strapi::core-store"].includes(uid)
+      // ) {
+      //   for (const existingEntity of existingEntities) {
+      //     await strapi.db
+      //       .query(uid)
+      //       .delete({ where: { id: existingEntity.id } });
+      //   }
+      // }
 
       if (schema.kind === "collectionType" || modelDirName === "plugin-i18n") {
         for (const seedItem of seeds) {
@@ -376,6 +276,106 @@ export default factories.createCoreService(
 
       seededModels[modelName] = createdEntites;
       return createdEntites;
+    },
+
+    splitUid({ uid }: { uid: string }) {
+      const type = uid.split("::")[0];
+      const modelDirName = uid.split("::")[1].split(".")[0];
+      const entityName = uid.split("::")[1].split(".")[1];
+      let dirPath;
+      if (type === "plugin") {
+        dirPath = path.join(strapi.dirs.app.extensions);
+      } else if (type === "api") {
+        dirPath = path.join(strapi.dirs.app.api);
+      } else {
+        dirPath = path.join(strapi.dirs.app.root);
+      }
+
+      let modelName = modelDirName;
+      if (uid === "plugin-i18n") {
+        modelName = "i18n";
+      }
+
+      return { type, modelDirName, modelName, entityName, dirPath };
+    },
+
+    getSchema({ uid }: { uid: string }) {
+      let schema = strapi.contentTypes[uid]?.["__schema__"];
+
+      if (!schema) {
+        schema = strapi.components[uid]["__schema__"];
+      }
+
+      return schema;
+    },
+
+    async getSeeds({ uid }: { uid: string }) {
+      const { dirPath } = strapi
+        .service("plugin::sps-migrate.seeder")
+        .splitUid({ uid });
+      const schema = strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSchema({ uid });
+      const { type, modelDirName, entityName } = strapi
+        .service("plugin::sps-migrate.seeder")
+        .splitUid({ uid });
+
+      let seed: any[] = [];
+
+      const pathToSeed = path.join(
+        dirPath,
+        `/${modelDirName}/content-types${
+          entityName ? `/${entityName}` : ""
+        }/seeds`,
+      );
+
+      let seedFiles;
+      try {
+        seedFiles = await fs.readdir(pathToSeed);
+      } catch (error) {
+        return;
+      }
+
+      if (
+        !seedFiles?.length ||
+        !seedFiles?.filter((s) => s.includes(".json"))?.length
+      ) {
+        return seed;
+      }
+
+      if (
+        schema.kind === "singleType" &&
+        seedFiles.filter((s) => s.includes(".json")).length > 1
+      ) {
+        throw new Error("Single Type entity can have just one json file");
+      }
+
+      for (const seedFile of seedFiles) {
+        if (!seedFile.includes(".json")) {
+          continue;
+        }
+
+        const readedSeedFile = await fs
+          .readFile(`${pathToSeed}/${seedFile}`, "utf8")
+          .catch((error) => {
+            // console.log(`🚀 ~ seed ~ error`, error);
+          });
+
+        if (
+          schema.kind === "collectionType" ||
+          modelDirName === "plugin-i18n"
+        ) {
+          if (!seedFile) {
+            return seed;
+          }
+
+          seed = [...seed, JSON.parse(readedSeedFile)];
+        } else {
+          seed = JSON.parse(readedSeedFile);
+        }
+      }
+
+      return seed;
     },
   }),
 );

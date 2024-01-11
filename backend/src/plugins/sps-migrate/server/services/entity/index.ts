@@ -2,6 +2,7 @@
  * entity service
  */
 
+import MD5 from "crypto-js/md5";
 import { factories } from "@strapi/strapi";
 
 export default factories.createCoreService(
@@ -69,60 +70,66 @@ export default factories.createCoreService(
       });
 
       if (data) {
-        const schema = await strapi
-          .service("plugin::sps-migrate.seeder")
-          .getSchema({ uid });
-        const filters = strapi
+        const hashedData = strapi
           .service("plugin::sps-migrate.entity")
-          .setFilters({
-            entity: data,
-            toSkip: keysToSkip,
-            schema,
-          });
+          .getDataHash({ data, uid });
 
-        let existingEntities;
+        const { results: existingEntities } = await strapi.service(uid).find({
+          pagination: {
+            limit: -1,
+          },
+        });
 
-        if (Object.keys(filters)?.length) {
-          existingEntities = await strapi.db.query(uid).findMany({
-            where: filters,
-          });
-        }
-
-        const { entityName, modelName } = strapi
-          .service("plugin::sps-migrate.seeder")
-          .splitUid({ uid });
-
-        if (existingEntities?.length) {
-          if (entityName) {
-            const updatedEntity = await strapi
-              .service(uid)
-              .update(existingEntities[0].id, { data });
-
-            return updatedEntity;
-          } else {
-            const updatedEntity = await strapi.db.query(uid).update({
-              where: { id: existingEntities[0].id },
-              data,
-            });
-
-            return updatedEntity;
+        let targetEntity;
+        for (const existingEntity of existingEntities) {
+          const hashedExistingEntity = strapi
+            .service("plugin::sps-migrate.entity")
+            .getDataHash({ data: existingEntity, uid });
+          if (hashedExistingEntity === hashedData) {
+            targetEntity = existingEntity;
+            break;
           }
         }
 
-        if (entityName) {
-          const createdEntity = await strapi.service(uid).create({
-            data,
-          });
+        if (targetEntity) {
+          const updatedEntity = await strapi
+            .service(uid)
+            .update(targetEntity.id, {
+              data,
+            });
 
-          return createdEntity;
+          return updatedEntity;
         } else {
-          const createdEntity = await strapi.db.query(uid).create({
+          const createdEntity = await strapi.service(uid).create({
             data,
           });
 
           return createdEntity;
         }
       }
+    },
+
+    getDataHash({ data, uid }: { data: any; uid: string }) {
+      const schema = strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSchema({ uid });
+
+      const simpleDataKeys = Object.entries(schema.attributes)
+        .filter(
+          ([key, attribute]: [string, any]) =>
+            !["dynamiczone", "relation"].includes(attribute.type),
+        )
+        .map(([key]) => key);
+
+      const notRelationData = {};
+      for (const key of simpleDataKeys) {
+        notRelationData[key] = data[key];
+      }
+      const stringifiedData = JSON.stringify(notRelationData);
+
+      const dataHash = MD5(stringifiedData).toString();
+
+      return dataHash;
     },
 
     setFilters({
