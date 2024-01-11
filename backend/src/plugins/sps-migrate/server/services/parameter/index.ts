@@ -73,19 +73,124 @@ export default factories.createCoreService(
             seededModels,
             uid,
           }); //?
-      } else if (type === "dynamiczone" || type === "component") {
+      } else if (type === "dynamiczone") {
+        return await strapi
+          .service("plugin::sps-migrate.parameter")
+          .seedDynamicZone({
+            keysToSkip,
+            seedValue,
+            seededModels,
+            uid,
+            key,
+          }); //?
+      } else if (type === "component") {
         return;
-        await strapi.service("plugin::sps-migrate.parameter").seedComponents({
-          keysToSkip,
-          seedValue,
-          seededModels,
-          uid,
-          key,
-        }); //?
       } else if (type === "uid") {
         return;
       } else {
         return seedValue;
+      }
+    },
+
+    async seedDynamicZone({
+      keysToSkip,
+      seedValue,
+      seededModels,
+    }: {
+      keysToSkip: string[];
+      seedValue: any;
+      seededModels: any;
+    }) {
+      if (!seedValue.length) {
+        return;
+      }
+
+      const components: any[] = [];
+
+      for (const dzSeedValue of seedValue) {
+        const data = await strapi
+          .service("plugin::sps-migrate.entity")
+          .prepare({
+            keysToSkip,
+            seed: dzSeedValue,
+            seededModels,
+            uid: dzSeedValue.__component,
+          });
+
+        components.push(data);
+      }
+
+      return components;
+    },
+
+    async downloadFile({ value, uid }: { value: any; uid: string }) {
+      if (!value) {
+        return;
+      }
+
+      if (Array.isArray(value)) {
+        for (const fileValue of value) {
+          await this.downloadFile({ value: fileValue, uid });
+        }
+      } else {
+        const additionalAttributes = {};
+        if (value?.headers) {
+          if (Object.keys(value.headers)?.length) {
+            additionalAttributes["headers"] = { ...value.headers };
+          }
+        }
+
+        let file;
+        if (value.url.includes("http")) {
+          file = await axios({
+            method: "GET",
+            url: value.url,
+            responseType: "arraybuffer",
+            ...additionalAttributes,
+          })
+            .then(function (response) {
+              return response.data;
+            })
+            .catch((error) => {
+              console.log("🚀 ~ downloadFile ~ error:", error?.message);
+            });
+        } else {
+          const { dirPath } = strapi
+            .service("plugin::sps-migrate.seeder")
+            .splitUid({ uid });
+
+          const pathToRoot = path.join(dirPath, "../../"); //?
+
+          file = await fs
+            .readFile(`${pathToRoot}/dump/${value.url}`)
+            .catch((error) => {
+              console.log("🚀 ~ downloadFile ~ error:", error?.message);
+            });
+        }
+
+        // console.log('🚀 ~ downloadFile ~ value:', value);
+
+        if (!file) {
+          return;
+        }
+
+        const fileMeta = {
+          name: value.name.toLowerCase(),
+          type: value.mime,
+          size: Buffer.byteLength(file),
+          buffer: file,
+        };
+
+        const createdFile = await strapi
+          .plugin("upload")
+          .service("upload")
+          .upload({
+            files: fileMeta,
+            data: {},
+          })
+          .then((res) => res[0]);
+
+        return createdFile;
       }
     },
 
@@ -246,7 +351,7 @@ export default factories.createCoreService(
           .service("plugin::sps-migrate.seeder")
           .getSchema({ uid });
         const filters = strapi
-          .service("plugin::sps-migrate.seeder")
+          .service("plugin::sps-migrate.parameter")
           .setFilters({
             entity: { ...localizationSeedValue },
             toSkip: keysToSkip,
@@ -265,173 +370,6 @@ export default factories.createCoreService(
       }
 
       return localizations;
-    },
-
-    async seedComponents({
-      keysToSkip,
-      seedValue,
-      seededModels,
-      uid,
-      key,
-    }: {
-      keysToSkip: string[];
-      seedValue: any;
-      seededModels: any;
-      uid: string;
-      key: string;
-    }) {
-      if (!seedValue) {
-        return;
-      }
-
-      const attributes = strapi
-        .service("plugin::sps-migrate.parameter")
-        .getAttributes({ key, uid });
-
-      const { dirPath } = strapi
-        .service("plugin::sps-migrate.seeder")
-        .splitUid({ uid });
-
-      if (Array.isArray(seedValue)) {
-        const components: any[] = [];
-
-        for (const dzSeedValue of seedValue) {
-          let componentPath;
-
-          if (dzSeedValue?.__component) {
-            componentPath = dzSeedValue.__component.replace(".", "/"); //?
-          } else if (attributes?.component) {
-            componentPath = attributes.component.replace(".", "/"); //?
-          } else {
-            return;
-          }
-
-          const pathToSchema = path.join(
-            dirPath,
-            `../components/${componentPath}.json`,
-          ); //?
-          const schema = await fs
-            .readFile(pathToSchema, "utf8")
-            .catch((error) => {
-              // console.log(`🚀 ~ seed ~ error`, error);
-            }); //?
-
-          const data = await await strapi
-            .service("plugin::sps-migrate.entity")
-            .prepare({
-              keysToSkip,
-              seed: dzSeedValue,
-              seededModels,
-              uid,
-            });
-
-          components.push(data);
-        }
-
-        return components;
-      } else {
-        let componentPath;
-
-        if (seedValue?.__component) {
-          componentPath = seedValue.__component.replace(".", "/"); //?
-        } else if (attributes?.component) {
-          componentPath = attributes.component.replace(".", "/"); //?
-        } else {
-          return;
-        }
-
-        const pathToSchema = path.join(
-          dirPath,
-          `../components/${componentPath}.json`,
-        ); //?
-        const schema = await fs
-          .readFile(pathToSchema, "utf8")
-          .catch((error) => {
-            // console.log(`🚀 ~ seed ~ error`, error);
-          }); //?
-
-        const data = await await strapi
-          .service("plugin::sps-migrate.entity")
-          .prepare({
-            keysToSkip,
-            seededModels,
-            seed: seedValue,
-            uid,
-          });
-
-        return data;
-      }
-    },
-
-    async downloadFile({ value, uid }: { value: any; uid: string }) {
-      if (!value) {
-        return;
-      }
-
-      if (Array.isArray(value)) {
-        for (const fileValue of value) {
-          await this.downloadFile({ value: fileValue, uid });
-        }
-      } else {
-        const additionalAttributes = {};
-        if (value?.headers) {
-          if (Object.keys(value.headers)?.length) {
-            additionalAttributes["headers"] = { ...value.headers };
-          }
-        }
-
-        let file;
-        if (value.url.includes("http")) {
-          file = await axios({
-            method: "GET",
-            url: value.url,
-            responseType: "arraybuffer",
-            ...additionalAttributes,
-          })
-            .then(function (response) {
-              return response.data;
-            })
-            .catch((error) => {
-              console.log("🚀 ~ downloadFile ~ error:", error?.message);
-            });
-        } else {
-          const { dirPath } = strapi
-            .service("plugin::sps-migrate.seeder")
-            .splitUid({ uid });
-
-          const pathToRoot = path.join(dirPath, "../../"); //?
-
-          file = await fs
-            .readFile(`${pathToRoot}/dump/${value.url}`)
-            .catch((error) => {
-              console.log("🚀 ~ downloadFile ~ error:", error?.message);
-            });
-        }
-
-        // console.log('🚀 ~ downloadFile ~ value:', value);
-
-        if (!file) {
-          return;
-        }
-
-        const fileMeta = {
-          name: value.name.toLowerCase(),
-          type: value.mime,
-          size: Buffer.byteLength(file),
-          buffer: file,
-        };
-
-        const createdFile = await strapi
-          .plugin("upload")
-          .service("upload")
-          .upload({
-            files: fileMeta,
-            data: {},
-          })
-          .then((res) => res[0]);
-
-        return createdFile;
-      }
     },
 
     setFilters({

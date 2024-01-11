@@ -3,13 +3,35 @@
  */
 
 import { factories } from "@strapi/strapi";
-// import Entity from "../entity/Entity";
 const fs = require("fs/promises");
 const path = require("path");
 
 export default factories.createCoreService(
   "plugin::sps-migrate.seeder",
   ({ strapi }) => ({
+    async run() {
+      console.log("Seeding is started");
+
+      const seededModels = {};
+
+      for (const contentType of Object.keys(strapi.contentTypes)) {
+        if (contentType !== "plugin::sps-website-builder.page") {
+          continue;
+        }
+
+        try {
+          await strapi.service("plugin::sps-migrate.seeder").seedEntites({
+            uid: contentType,
+            seededModels,
+          });
+        } catch (error) {
+          console.log("🚀 ~ run ~ error:", error);
+        }
+      }
+
+      console.log("Seeding is finished");
+    },
+
     splitUid({ uid }: { uid: string }) {
       const type = uid.split("::")[0];
       const modelDirName = uid.split("::")[1].split(".")[0];
@@ -32,7 +54,13 @@ export default factories.createCoreService(
     },
 
     getSchema({ uid }: { uid: string }) {
-      return strapi.contentTypes[uid]["__schema__"];
+      let schema = strapi.contentTypes[uid]?.["__schema__"];
+
+      if (!schema) {
+        schema = strapi.components[uid]["__schema__"];
+      }
+
+      return schema;
     },
 
     async getSeeds({ uid }: { uid: string }) {
@@ -60,7 +88,6 @@ export default factories.createCoreService(
         seedFiles = await fs.readdir(pathToSeed);
       } catch (error) {
         return;
-        // console.log('🚀 ~ setSeed ~ no seed for model:', this.modelName, ' skipping migration');
       }
 
       if (
@@ -105,25 +132,6 @@ export default factories.createCoreService(
       return seed;
     },
 
-    async run() {
-      console.log("Seeding is started");
-
-      const seededModels = {};
-
-      for (const contentType of Object.keys(strapi.contentTypes)) {
-        if (contentType !== "plugin::sps-website-builder.page") {
-          continue;
-        }
-
-        await strapi.service("plugin::sps-migrate.seeder").seedEntites({
-          uid: contentType,
-          seededModels,
-        });
-      }
-
-      console.log("Seeding is finished");
-    },
-
     async seedEntites({ uid, seededModels }: { uid: any; seededModels: any }) {
       if (!strapi.db) {
         throw new Error("strapi.db is undefined");
@@ -164,13 +172,16 @@ export default factories.createCoreService(
         for (const seedItem of seeds) {
           const sanitizedSeed = { ...seedItem };
 
-          if (sanitizedSeed.localizations) {
-            sanitizedSeed.localizations = [];
-            sanitizedSeed.seeder_filter_by = [
-              ...(sanitizedSeed.seeder_filter_by || []),
-              "locale",
-            ];
-          }
+          delete sanitizedSeed.localizations;
+
+          // @todo
+          // if (sanitizedSeed.localizations) {
+          //   sanitizedSeed.localizations = [];
+          //   sanitizedSeed.seeder_filter_by = [
+          //     ...(sanitizedSeed.seeder_filter_by || []),
+          //     "locale",
+          //   ];
+          // }
 
           const mainEntityCreated = await strapi
             .service("plugin::sps-migrate.entity")
@@ -187,83 +198,87 @@ export default factories.createCoreService(
             });
           }
 
-          if (seedItem?.localizations?.length) {
-            for (const localization of seedItem.localizations) {
-              const sanitizedLocalizationSeed = {
-                ...localization,
-                seeder_filter_by: [
-                  ...(localization.seeder_filter_by || []),
-                  "locale",
-                ],
-              };
+          // @todo
+          // if (seedItem?.localizations?.length) {
+          //   for (const localization of seedItem.localizations) {
+          //     const sanitizedLocalizationSeed = {
+          //       ...localization,
+          //       seeder_filter_by: [
+          //         ...(localization.seeder_filter_by || []),
+          //         "locale",
+          //       ],
+          //     };
 
-              const created = await strapi
-                .service("plugin::sps-migrate.entity")
-                .createBySeed({
-                  seed: sanitizedLocalizationSeed,
-                  seededModels,
-                  uid,
-                });
-              if (created) {
-                createdEntites.push({
-                  old: localization,
-                  new: created,
-                });
-              }
+          //     const created = await strapi
+          //       .service("plugin::sps-migrate.entity")
+          //       .createBySeed({
+          //         seed: sanitizedLocalizationSeed,
+          //         seededModels,
+          //         uid,
+          //       });
+          //     if (created) {
+          //       createdEntites.push({
+          //         old: localization,
+          //         new: created,
+          //       });
+          //     }
 
-              const mainEntity: any = await strapi
-                .service(uid)
-                .update(mainEntityCreated.id, {
-                  populate: {
-                    localizations: {
-                      populate: "*",
-                    },
-                  },
-                });
+          //     const mainEntity: any = await strapi
+          //       .service(uid)
+          //       .update(mainEntityCreated.id, {
+          //         populate: {
+          //           localizations: {
+          //             populate: "*",
+          //           },
+          //         },
+          //       });
 
-              await strapi.db.query(uid).update({
-                where: { id: created.id },
-                data: {
-                  localizations: [
-                    ...mainEntity.localizations.filter(
-                      (localization) => localization.locale !== created.locale,
-                    ),
-                    mainEntity.id,
-                  ],
-                },
-              });
+          //     await strapi.db.query(uid).update({
+          //       where: { id: created.id },
+          //       data: {
+          //         localizations: [
+          //           ...mainEntity.localizations.filter(
+          //             (localization) => localization.locale !== created.locale,
+          //           ),
+          //           mainEntity.id,
+          //         ],
+          //       },
+          //     });
 
-              await strapi.db.query(uid).update({
-                where: { id: mainEntity.id },
-                data: {
-                  localizations: [...mainEntity.localizations, created.id],
-                },
-              });
+          //     await strapi.db.query(uid).update({
+          //       where: { id: mainEntity.id },
+          //       data: {
+          //         localizations: [...mainEntity.localizations, created.id],
+          //       },
+          //     });
 
-              for (const mainEntityLocalization of mainEntity.localizations) {
-                await strapi.db.query(uid).update({
-                  where: { id: mainEntityLocalization.id },
-                  data: {
-                    localizations: [
-                      ...mainEntityLocalization.localizations.filter(
-                        (localization) =>
-                          localization.locale !== mainEntityLocalization.locale,
-                      ),
-                      created.id,
-                    ],
-                  },
-                });
-              }
-            }
-          }
+          //     for (const mainEntityLocalization of mainEntity.localizations) {
+          //       await strapi.db.query(uid).update({
+          //         where: { id: mainEntityLocalization.id },
+          //         data: {
+          //           localizations: [
+          //             ...mainEntityLocalization.localizations.filter(
+          //               (localization) =>
+          //                 localization.locale !== mainEntityLocalization.locale,
+          //             ),
+          //             created.id,
+          //           ],
+          //         },
+          //       });
+          //     }
+          //   }
+          // }
         }
       } else if (schema.kind === "singleType") {
         const sanitizedSeed = { ...seeds };
 
-        if (sanitizedSeed.localizations) {
-          sanitizedSeed.localizations = [];
-          sanitizedSeed.seeder_filter_by = ["locale"];
-        }
+        delete sanitizedSeed.localizations;
+
+        // @todo
+        // if (sanitizedSeed.localizations) {
+        //   sanitizedSeed.localizations = [];
+        //   sanitizedSeed.seeder_filter_by = ["locale"];
+        // }
 
         const mainEntityCreated = await strapi
           .service("plugin::sps-migrate.entity")
@@ -280,67 +295,68 @@ export default factories.createCoreService(
           });
         }
 
-        if (seeds?.localizations?.length) {
-          for (const localization of seeds.localizations) {
-            const created = await strapi
-              .service("plugin::sps-migrate.entity")
-              .createBySeed({
-                seed: { ...localization, seeder_filter_by: ["locale"] },
-                seededModels,
-                uid,
-              });
-            if (created) {
-              createdEntites.push({
-                old: localization,
-                new: created,
-              });
-            }
+        // @todo
+        // if (seeds?.localizations?.length) {
+        //   for (const localization of seeds.localizations) {
+        //     const created = await strapi
+        //       .service("plugin::sps-migrate.entity")
+        //       .createBySeed({
+        //         seed: { ...localization, seeder_filter_by: ["locale"] },
+        //         seededModels,
+        //         uid,
+        //       });
+        //     if (created) {
+        //       createdEntites.push({
+        //         old: localization,
+        //         new: created,
+        //       });
+        //     }
 
-            const mainEntity: any = await strapi
-              .service(uid)
-              .update(mainEntityCreated.id, {
-                populate: {
-                  localizations: {
-                    populate: "*",
-                  },
-                },
-              });
+        //     const mainEntity: any = await strapi
+        //       .service(uid)
+        //       .update(mainEntityCreated.id, {
+        //         populate: {
+        //           localizations: {
+        //             populate: "*",
+        //           },
+        //         },
+        //       });
 
-            await strapi.db.query(uid).update({
-              where: { id: created.id },
-              data: {
-                localizations: [
-                  ...mainEntity.localizations.filter(
-                    (localization) => localization.locale !== created.locale,
-                  ),
-                  mainEntity.id,
-                ],
-              },
-            });
+        //     await strapi.db.query(uid).update({
+        //       where: { id: created.id },
+        //       data: {
+        //         localizations: [
+        //           ...mainEntity.localizations.filter(
+        //             (localization) => localization.locale !== created.locale,
+        //           ),
+        //           mainEntity.id,
+        //         ],
+        //       },
+        //     });
 
-            await strapi.db.query(uid).update({
-              where: { id: mainEntity.id },
-              data: {
-                localizations: [...mainEntity.localizations, created.id],
-              },
-            });
+        //     await strapi.db.query(uid).update({
+        //       where: { id: mainEntity.id },
+        //       data: {
+        //         localizations: [...mainEntity.localizations, created.id],
+        //       },
+        //     });
 
-            for (const mainEntityLocalization of mainEntity.localizations) {
-              await strapi.db.query(uid).update({
-                where: { id: mainEntityLocalization.id },
-                data: {
-                  localizations: [
-                    ...mainEntityLocalization.localizations.filter(
-                      (localization) =>
-                        localization.locale !== mainEntityLocalization.locale,
-                    ),
-                    created.id,
-                  ],
-                },
-              });
-            }
-          }
-        }
+        //     for (const mainEntityLocalization of mainEntity.localizations) {
+        //       await strapi.db.query(uid).update({
+        //         where: { id: mainEntityLocalization.id },
+        //         data: {
+        //           localizations: [
+        //             ...mainEntityLocalization.localizations.filter(
+        //               (localization) =>
+        //                 localization.locale !== mainEntityLocalization.locale,
+        //             ),
+        //             created.id,
+        //           ],
+        //         },
+        //       });
+        //     }
+        //   }
+        // }
       }
       const createdIds = createdEntites.map((createdEntity) => {
         return createdEntity.new.id;

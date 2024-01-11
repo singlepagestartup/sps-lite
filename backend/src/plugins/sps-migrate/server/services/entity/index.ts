@@ -60,6 +60,7 @@ export default factories.createCoreService(
         "createdBy",
         "updatedBy",
       ];
+
       const data = await strapi.service("plugin::sps-migrate.entity").prepare({
         keysToSkip,
         seed,
@@ -79,8 +80,6 @@ export default factories.createCoreService(
             schema,
           });
 
-        // console.log('🚀 ~ create ~ filters:', filters);
-
         let existingEntities;
 
         if (Object.keys(filters)?.length) {
@@ -94,48 +93,34 @@ export default factories.createCoreService(
           .splitUid({ uid });
 
         if (existingEntities?.length) {
-          try {
-            if (entityName) {
-              const updatedEntity = await strapi
-                .service(uid)
-                .update(existingEntities[0].id, { data });
+          if (entityName) {
+            const updatedEntity = await strapi
+              .service(uid)
+              .update(existingEntities[0].id, { data });
 
-              return updatedEntity;
-            } else {
-              const updatedEntity = await strapi.db.query(uid).update({
-                where: { id: existingEntities[0].id },
-                data,
-              });
+            return updatedEntity;
+          } else {
+            const updatedEntity = await strapi.db.query(uid).update({
+              where: { id: existingEntities[0].id },
+              data,
+            });
 
-              return updatedEntity;
-            }
-          } catch (error) {
-            console.log(
-              `🚀 ~ Entity ${modelName} ~ update ~ error.message:`,
-              error.message,
-            );
+            return updatedEntity;
           }
         }
 
-        try {
-          if (entityName) {
-            const createdEntity = await strapi.service(uid).create({
-              data,
-            });
+        if (entityName) {
+          const createdEntity = await strapi.service(uid).create({
+            data,
+          });
 
-            return createdEntity;
-          } else {
-            const createdEntity = await strapi.db.query(uid).create({
-              data,
-            });
+          return createdEntity;
+        } else {
+          const createdEntity = await strapi.db.query(uid).create({
+            data,
+          });
 
-            return createdEntity;
-          }
-        } catch (error) {
-          console.log(
-            `🚀 ~ Entity ${modelName} ~ create ~ error.message:`,
-            error.message,
-          );
+          return createdEntity;
         }
       }
     },
