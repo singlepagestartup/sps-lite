@@ -73,14 +73,6 @@ export default factories.createCoreService(
             seededUids,
             uid,
           }); //?
-      } else if (type === "dynamiczone") {
-        return await strapi
-          .service("plugin::sps-migrate.parameter")
-          .seedDynamicZone({
-            keysToSkip,
-            seedValue,
-            seededUids,
-          }); //?
       } else if (type === "component") {
         return;
       } else if (type === "uid") {
@@ -90,48 +82,17 @@ export default factories.createCoreService(
       }
     },
 
-    async seedDynamicZone({
-      keysToSkip,
-      seedValue,
-      seededUids,
-    }: {
-      keysToSkip: string[];
-      seedValue: any;
-      seededUids: any;
-    }) {
-      if (!seedValue.length) {
+    async downloadFile({ seed, uid }: { seed: any; uid: string }) {
+      if (!seed) {
         return;
       }
 
-      const components: any[] = [];
-
-      for (const dzSeedValue of seedValue) {
-        const data = await strapi
-          .service("plugin::sps-migrate.entity")
-          .prepare({
-            keysToSkip,
-            seed: dzSeedValue,
-            seededUids,
-            uid: dzSeedValue.__component,
-          });
-
-        components.push(data);
-      }
-
-      return components;
-    },
-
-    async downloadFile({ value, uid }: { value: any; uid: string }) {
-      if (!value) {
-        return;
-      }
-
-      if (Array.isArray(value)) {
+      if (Array.isArray(seed)) {
         const createdFiles: any = [];
 
-        for (const fileValue of value) {
+        for (const fileValue of seed) {
           const createdFile = await this.downloadFile({
-            value: fileValue,
+            seed: fileValue,
             uid,
           });
           createdFiles.push(createdFile);
@@ -140,17 +101,17 @@ export default factories.createCoreService(
         return createdFiles;
       } else {
         const additionalAttributes = {};
-        if (value?.headers) {
-          if (Object.keys(value.headers)?.length) {
-            additionalAttributes["headers"] = { ...value.headers };
+        if (seed?.headers) {
+          if (Object.keys(seed.headers)?.length) {
+            additionalAttributes["headers"] = { ...seed.headers };
           }
         }
 
         let file;
-        if (value.url.includes("http")) {
+        if (seed.url.includes("http")) {
           file = await axios({
             method: "GET",
-            url: value.url,
+            url: seed.url,
             responseType: "arraybuffer",
             ...additionalAttributes,
           })
@@ -168,7 +129,7 @@ export default factories.createCoreService(
           const pathToRoot = path.join(dirPath, "../../"); //?
 
           file = await fs
-            .readFile(`${pathToRoot}/dump/${value.url}`)
+            .readFile(`${pathToRoot}/dump/${seed.url}`)
             .catch((error) => {
               console.log("🚀 ~ downloadFile ~ error:", error?.message);
             });
@@ -179,8 +140,8 @@ export default factories.createCoreService(
         }
 
         const fileMeta = {
-          name: value.name.toLowerCase(),
-          type: value.mime,
+          name: seed.name.toLowerCase(),
+          type: seed.mime,
           size: Buffer.byteLength(file),
           buffer: file,
         };
@@ -238,7 +199,7 @@ export default factories.createCoreService(
           schema.attributes[key]?.mappedBy === modelName) ||
         data.__component
       ) {
-        await strapi.service("plugin::sps-migrate.seeder").seedEntites({
+        await strapi.service("plugin::sps-migrate.entity").seed({
           uid,
           seededUids,
         });

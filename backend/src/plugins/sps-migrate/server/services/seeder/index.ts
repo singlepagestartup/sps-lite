@@ -20,7 +20,22 @@ export default factories.createCoreService(
         }
 
         try {
-          await strapi.service("plugin::sps-migrate.seeder").seedEntites({
+          await strapi.service("plugin::sps-migrate.entity").seed({
+            uid: contentType,
+            seededUids,
+          });
+        } catch (error) {
+          console.log("🚀 ~ run ~ error:", error);
+        }
+      }
+
+      for (const contentType of Object.keys(strapi.contentTypes)) {
+        if (contentType !== "plugin::sps-website-builder.page") {
+          continue;
+        }
+
+        try {
+          await strapi.service("plugin::sps-migrate.entity").seedRelations({
             uid: contentType,
             seededUids,
           });
@@ -30,34 +45,6 @@ export default factories.createCoreService(
       }
 
       console.log("Seeding is finished");
-    },
-
-    async seedEntites({ uid, seededUids }: { uid: any; seededUids: any }) {
-      if (!strapi.db) {
-        throw new Error("strapi.db is undefined");
-      }
-
-      const createdEntites = await strapi
-        .service("plugin::sps-migrate.entity")
-        .seedEntities({ uid, seededUids });
-
-      const createdIds = createdEntites.map((createdEntity) => {
-        return createdEntity.dbEntity.id;
-      });
-
-      const entites = await strapi.db.query(uid).findMany();
-
-      if (entites?.length) {
-        for (const entity of entites) {
-          if (createdIds.includes(entity.id)) {
-            continue;
-          }
-
-          await strapi.db.query(uid).delete({ where: { id: entity.id } });
-        }
-      }
-
-      return createdEntites;
     },
 
     splitUid({ uid }: { uid: string }) {
@@ -102,7 +89,7 @@ export default factories.createCoreService(
         .service("plugin::sps-migrate.seeder")
         .splitUid({ uid });
 
-      let seed: any[] = [];
+      const seeds: any[] = [];
 
       const pathToSeed = path.join(
         dirPath,
@@ -122,7 +109,7 @@ export default factories.createCoreService(
         !seedFiles?.length ||
         !seedFiles?.filter((s) => s.includes(".json"))?.length
       ) {
-        return seed;
+        return seeds;
       }
 
       if (
@@ -143,21 +130,10 @@ export default factories.createCoreService(
             // console.log(`🚀 ~ seed ~ error`, error);
           });
 
-        if (
-          schema.kind === "collectionType" ||
-          modelDirName === "plugin-i18n"
-        ) {
-          if (!seedFile) {
-            return seed;
-          }
-
-          seed = [...seed, JSON.parse(readedSeedFile)];
-        } else {
-          seed = JSON.parse(readedSeedFile);
-        }
+        seeds.push(JSON.parse(readedSeedFile));
       }
 
-      return seed;
+      return seeds;
     },
   }),
 );

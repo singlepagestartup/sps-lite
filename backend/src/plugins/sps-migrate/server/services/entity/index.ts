@@ -41,255 +41,291 @@ export default factories.createCoreService(
       return data;
     },
 
-    async seedEntities({
+    async seedRelations({
       uid,
       seededUids,
     }: {
       uid: string;
       seededUids: any[];
     }) {
-      const createdEntites: any = [];
+      for (const seededUid of seededUids[uid]) {
+        await strapi
+          .service("plugin::sps-migrate.entity")
+          .updateBySeed({ uid, seededUid, seededUids });
+      }
 
-      const { modelDirName, modelName } = strapi
-        .service("plugin::sps-migrate.seeder")
-        .splitUid({ uid });
+      return seededUids;
+    },
+
+    async updateBySeed({
+      uid,
+      seededUid,
+      seededUids,
+    }: {
+      uid: any;
+      seededUid: any;
+      seededUids: any[];
+    }) {
+      const data = await strapi
+        .service("plugin::sps-migrate.entity")
+        .getStructureSeedData({
+          seededUids,
+          seed: seededUid.seedEntity,
+          uid,
+        });
+
+      if (data) {
+        const updatedDbEntity = await strapi
+          .service(uid)
+          .update(seededUid.dbEntity.id, {
+            data,
+          });
+
+        seededUid.dbEntity = updatedDbEntity;
+      }
+
+      return seededUids;
+    },
+
+    async getStructureSeedData({
+      seed,
+      seededUids,
+      uid,
+    }: {
+      seed: any;
+      uid: string;
+      seededUids: any[];
+    }) {
+      const structureAttributeKeys = strapi
+        .service("plugin::sps-migrate.entity")
+        .getStructureAttributeKeys({ uid });
+
+      if (!structureAttributeKeys.length) {
+        return;
+      }
+
+      const data = {};
+
+      for (const structureAttributeKey of structureAttributeKeys) {
+        const schema = strapi
+          .service("plugin::sps-migrate.seeder")
+          .getSchema({ uid });
+        const structureAttributeKeyConfig =
+          schema.attributes[structureAttributeKey];
+
+        if (structureAttributeKeyConfig.type === "dynamiczone") {
+          const attributeKeyData = await strapi
+            .service("plugin::sps-migrate.entity")
+            .getDynamicZoneSeedData({
+              seed: seed[structureAttributeKey],
+              seededUids,
+            });
+
+          data[structureAttributeKey] = attributeKeyData;
+        } else if (structureAttributeKeyConfig.type === "media") {
+          const attributeKeyData = await strapi
+            .service("plugin::sps-migrate.parameter")
+            .downloadFile({
+              seed: seed[structureAttributeKey],
+              uid: uid,
+            });
+
+          data[structureAttributeKey] = attributeKeyData;
+        } else if (structureAttributeKeyConfig.type === "component") {
+          const attributeKeyData = await strapi
+            .service("plugin::sps-migrate.entity")
+            .getComponentSeedData({
+              seed: seed[structureAttributeKey],
+              seededUids,
+              config: structureAttributeKeyConfig,
+            });
+
+          data[structureAttributeKey] = attributeKeyData;
+        } else if (structureAttributeKeyConfig.type === "relation") {
+          const seedData = seed[structureAttributeKey];
+
+          if (Array.isArray(seedData)) {
+            if (!seedData.length) {
+              continue;
+            }
+          } else {
+            if (!seedData) {
+              continue;
+            }
+          }
+
+          if (!seededUids[structureAttributeKeyConfig.target]) {
+            continue;
+          }
+
+          console.log("🚀 ~ seedData:", seedData);
+        }
+      }
+
+      return data;
+    },
+
+    async getComponentSeedData({
+      seed,
+      seededUids,
+      config,
+    }: {
+      seed: any;
+      seededUids: any[];
+      config: any;
+    }) {
+      let data;
+
+      if (Array.isArray(seed)) {
+        data = [];
+
+        for (const seedData of seed) {
+          let componentData = {};
+
+          const plainData = strapi
+            .service("plugin::sps-migrate.entity")
+            .getPlainSeedData({
+              uid: config.component,
+              seed: seedData,
+            });
+          const structureData = await strapi
+            .service("plugin::sps-migrate.entity")
+            .getStructureSeedData({
+              uid: config.component,
+              seed: seedData,
+              seededUids,
+            });
+
+          if (plainData) {
+            componentData = { ...componentData, ...plainData };
+          }
+          if (structureData) {
+            componentData = { ...componentData, ...structureData };
+          }
+
+          data.push(componentData);
+        }
+      } else {
+        const plainData = strapi
+          .service("plugin::sps-migrate.entity")
+          .getPlainSeedData({
+            uid: config.component,
+            seed,
+          });
+        const structureData = await strapi
+          .service("plugin::sps-migrate.entity")
+          .getStructureSeedData({
+            uid: config.component,
+            seed,
+            seededUids,
+          });
+
+        if (plainData) {
+          data = { ...data, ...plainData };
+        }
+        if (structureData) {
+          data = { ...data, ...structureData };
+        }
+      }
+
+      return data;
+    },
+
+    async getDynamicZoneSeedData({
+      seed,
+      seededUids,
+    }: {
+      seed: any;
+      seededUids: any;
+    }) {
+      const data: any = [];
+
+      for (const seedData of seed) {
+        let dynamiczoneData: any = {
+          __component: seedData.__component,
+        };
+
+        const plainData = strapi
+          .service("plugin::sps-migrate.entity")
+          .getPlainSeedData({
+            uid: seedData.__component,
+            seed: seedData,
+          });
+        const structureData = await strapi
+          .service("plugin::sps-migrate.entity")
+          .getStructureSeedData({
+            uid: seedData.__component,
+            seed: seedData,
+            seededUids,
+          });
+
+        if (plainData) {
+          dynamiczoneData = { ...dynamiczoneData, ...plainData };
+        }
+        if (structureData) {
+          dynamiczoneData = { ...dynamiczoneData, ...structureData };
+        }
+
+        data.push(dynamiczoneData);
+      }
+
+      return data;
+    },
+
+    async seed({ uid, seededUids }: { uid: string; seededUids: any[] }) {
+      const seededEntites: any = [];
+
       const seeds = await strapi
         .service("plugin::sps-migrate.seeder")
         .getSeeds({
           uid,
         });
-      const schema = strapi
-        .service("plugin::sps-migrate.seeder")
-        .getSchema({ uid });
 
       if (!seeds) {
         seededUids[uid] = undefined;
         return;
       }
 
-      if (schema.kind === "collectionType" || modelDirName === "plugin-i18n") {
-        for (const seedItem of seeds) {
-          const sanitizedSeed = { ...seedItem };
-
-          delete sanitizedSeed.localizations;
-
-          // @todo
-          // if (sanitizedSeed.localizations) {
-          //   sanitizedSeed.localizations = [];
-          //   sanitizedSeed.seeder_filter_by = [
-          //     ...(sanitizedSeed.seeder_filter_by || []),
-          //     "locale",
-          //   ];
-          // }
-
-          const mainEntityCreated = await strapi
-            .service("plugin::sps-migrate.entity")
-            .createOrUpdateBySeed({
-              seed: sanitizedSeed,
-              seededUids,
-              uid,
-            });
-
-          if (mainEntityCreated) {
-            createdEntites.push({
-              seedEntity: seedItem,
-              dbEntity: mainEntityCreated,
-            });
-          }
-
-          // @todo
-          // if (seedItem?.localizations?.length) {
-          //   for (const localization of seedItem.localizations) {
-          //     const sanitizedLocalizationSeed = {
-          //       ...localization,
-          //       seeder_filter_by: [
-          //         ...(localization.seeder_filter_by || []),
-          //         "locale",
-          //       ],
-          //     };
-
-          //     const created = await strapi
-          //       .service("plugin::sps-migrate.entity")
-          //       .createOrUpdateBySeed({
-          //         seed: sanitizedLocalizationSeed,
-          //         seededUids,
-          //         uid,
-          //       });
-          //     if (created) {
-          //       createdEntites.push({
-          //         old: localization,
-          //         new: created,
-          //       });
-          //     }
-
-          //     const mainEntity: any = await strapi
-          //       .service(uid)
-          //       .update(mainEntityCreated.id, {
-          //         populate: {
-          //           localizations: {
-          //             populate: "*",
-          //           },
-          //         },
-          //       });
-
-          //     await strapi.db.query(uid).update({
-          //       where: { id: created.id },
-          //       data: {
-          //         localizations: [
-          //           ...mainEntity.localizations.filter(
-          //             (localization) => localization.locale !== created.locale,
-          //           ),
-          //           mainEntity.id,
-          //         ],
-          //       },
-          //     });
-
-          //     await strapi.db.query(uid).update({
-          //       where: { id: mainEntity.id },
-          //       data: {
-          //         localizations: [...mainEntity.localizations, created.id],
-          //       },
-          //     });
-
-          //     for (const mainEntityLocalization of mainEntity.localizations) {
-          //       await strapi.db.query(uid).update({
-          //         where: { id: mainEntityLocalization.id },
-          //         data: {
-          //           localizations: [
-          //             ...mainEntityLocalization.localizations.filter(
-          //               (localization) =>
-          //                 localization.locale !== mainEntityLocalization.locale,
-          //             ),
-          //             created.id,
-          //           ],
-          //         },
-          //       });
-          //     }
-          //   }
-          // }
-        }
-      } else if (schema.kind === "singleType") {
-        const sanitizedSeed = { ...seeds };
+      for (const seedItem of seeds) {
+        const sanitizedSeed = { ...seedItem };
 
         delete sanitizedSeed.localizations;
-
-        // @todo
-        // if (sanitizedSeed.localizations) {
-        //   sanitizedSeed.localizations = [];
-        //   sanitizedSeed.seeder_filter_by = ["locale"];
-        // }
 
         const mainEntityCreated = await strapi
           .service("plugin::sps-migrate.entity")
           .createOrUpdateBySeed({
             seed: sanitizedSeed,
-            seededUids,
             uid,
           });
 
         if (mainEntityCreated) {
-          createdEntites.push({
-            seedEntity: seeds,
+          seededEntites.push({
+            seedEntity: seedItem,
             dbEntity: mainEntityCreated,
           });
         }
-
-        // @todo
-        // if (seeds?.localizations?.length) {
-        //   for (const localization of seeds.localizations) {
-        //     const created = await strapi
-        //       .service("plugin::sps-migrate.entity")
-        //       .createOrUpdateBySeed({
-        //         seed: { ...localization, seeder_filter_by: ["locale"] },
-        //         seededUids,
-        //         uid,
-        //       });
-        //     if (created) {
-        //       createdEntites.push({
-        //         old: localization,
-        //         new: created,
-        //       });
-        //     }
-
-        //     const mainEntity: any = await strapi
-        //       .service(uid)
-        //       .update(mainEntityCreated.id, {
-        //         populate: {
-        //           localizations: {
-        //             populate: "*",
-        //           },
-        //         },
-        //       });
-
-        //     await strapi.db.query(uid).update({
-        //       where: { id: created.id },
-        //       data: {
-        //         localizations: [
-        //           ...mainEntity.localizations.filter(
-        //             (localization) => localization.locale !== created.locale,
-        //           ),
-        //           mainEntity.id,
-        //         ],
-        //       },
-        //     });
-
-        //     await strapi.db.query(uid).update({
-        //       where: { id: mainEntity.id },
-        //       data: {
-        //         localizations: [...mainEntity.localizations, created.id],
-        //       },
-        //     });
-
-        //     for (const mainEntityLocalization of mainEntity.localizations) {
-        //       await strapi.db.query(uid).update({
-        //         where: { id: mainEntityLocalization.id },
-        //         data: {
-        //           localizations: [
-        //             ...mainEntityLocalization.localizations.filter(
-        //               (localization) =>
-        //                 localization.locale !== mainEntityLocalization.locale,
-        //             ),
-        //             created.id,
-        //           ],
-        //         },
-        //       });
-        //     }
-        //   }
-        // }
       }
 
-      seededUids[uid] = createdEntites;
+      await strapi
+        .service("plugin::sps-migrate.entity")
+        .deleteNotSeededEntites({ uid, seededEntites });
 
-      return createdEntites;
+      seededUids[uid] = seededEntites;
+
+      return seededEntites;
     },
 
-    async createOrUpdateBySeed({
-      seed,
-      seededUids,
-      uid,
-    }: {
-      seed: any;
-      seededUids: any;
-      uid: any;
-    }) {
+    async createOrUpdateBySeed({ seed, uid }: { seed: any; uid: any }) {
       if (!strapi.db) {
         throw new Error("strapi.db is undefined");
       }
 
-      const keysToSkip = [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "createdBy",
-        "updatedBy",
-      ];
-
-      const data = await strapi.service("plugin::sps-migrate.entity").prepare({
-        keysToSkip,
-        seed,
-        seededUids,
-        uid,
-      });
+      const data = await strapi
+        .service("plugin::sps-migrate.entity")
+        .getPlainSeedData({
+          seed,
+          uid,
+        });
 
       if (data) {
         const hashedData = strapi
@@ -307,6 +343,7 @@ export default factories.createCoreService(
           const hashedExistingEntity = strapi
             .service("plugin::sps-migrate.entity")
             .getDataHash({ data: existingEntity, uid });
+
           if (hashedExistingEntity === hashedData) {
             targetEntity = existingEntity;
             break;
@@ -331,114 +368,95 @@ export default factories.createCoreService(
       }
     },
 
-    getDataHash({ data, uid }: { data: any; uid: string }) {
+    getPlainSeedData({ seed, uid }: { seed: any; uid: string }) {
+      const data = {};
+
+      const plainAttributeKeys = strapi
+        .service("plugin::sps-migrate.entity")
+        .getPlainAttributeKeys({ uid });
+
+      for (const plainAttributeKey of plainAttributeKeys) {
+        data[plainAttributeKey] = seed[plainAttributeKey];
+      }
+
+      return data;
+    },
+
+    async deleteNotSeededEntites({
+      uid,
+      seededEntites,
+    }: {
+      uid: string;
+      seededEntites: any;
+    }) {
+      if (!strapi.db) {
+        throw new Error("strapi.db is undefined");
+      }
+
+      const seededIds = seededEntites.map((seededEntity) => {
+        return seededEntity.dbEntity.id;
+      });
+
+      const entites = await strapi.db.query(uid).findMany();
+
+      if (entites?.length) {
+        for (const entity of entites) {
+          if (seededIds.includes(entity.id)) {
+            continue;
+          }
+
+          await strapi.db.query(uid).delete({ where: { id: entity.id } });
+        }
+      }
+    },
+
+    getPlainAttributeKeys({ uid }: { uid: string }) {
       const schema = strapi
         .service("plugin::sps-migrate.seeder")
         .getSchema({ uid });
 
-      const simpleDataKeys = Object.entries(schema.attributes)
+      const plainAttributeKeys = Object.entries(schema.attributes)
         .filter(
           ([key, attribute]: [string, any]) =>
-            !["dynamiczone", "relation"].includes(attribute.type),
+            !["dynamiczone", "relation", "component", "media"].includes(
+              attribute.type,
+            ),
         )
         .map(([key]) => key);
 
-      const notRelationData = {};
-      for (const key of simpleDataKeys) {
-        notRelationData[key] = data[key];
+      return plainAttributeKeys;
+    },
+
+    getStructureAttributeKeys({ uid }: { uid: string }) {
+      const schema = strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSchema({ uid });
+
+      const structureAttributeKeys = Object.entries(schema.attributes)
+        .filter(([key, attribute]: [string, any]) =>
+          ["dynamiczone", "relation", "media", "component"].includes(
+            attribute.type,
+          ),
+        )
+        .map(([key]) => key);
+
+      return structureAttributeKeys;
+    },
+
+    getDataHash({ data, uid }: { data: any; uid: string }) {
+      const plainAttributeKeys = strapi
+        .service("plugin::sps-migrate.entity")
+        .getPlainAttributeKeys({ uid });
+
+      const toHashData = {};
+      for (const key of plainAttributeKeys) {
+        toHashData[key] = data[key];
       }
-      const stringifiedData = JSON.stringify(notRelationData);
+      const stringifiedData = JSON.stringify(toHashData);
 
       const dataHash = MD5(stringifiedData).toString();
 
       return dataHash;
     },
-
-    // setFilters({
-    //   entity,
-    //   toSkip = [],
-    //   id,
-    //   schema,
-    // }: {
-    //   entity: any;
-    //   toSkip?: any[];
-    //   id?: any;
-    //   schema?: any;
-    // }) {
-    //   const filters = {};
-
-    //   if (id) {
-    //     filters["id"] = id;
-    //   } else {
-    //     const seederFilterBy = Object.keys(entity).find(
-    //       (key) => key === "seeder_filter_by",
-    //     );
-    //     if (seederFilterBy && entity["seeder_filter_by"]) {
-    //       for (const filterKey of entity["seeder_filter_by"]) {
-    //         if (filterKey.includes(".")) {
-    //           const key = filterKey.split(".");
-    //           if (key.length === 2) {
-    //             if (entity[key[0]] && typeof entity[key[0]] === "object") {
-    //               filters[key[0]] = entity[key[0]][key[1]];
-    //               continue;
-    //             }
-    //           }
-    //         } else {
-    //           if (entity[filterKey]) {
-    //             filters[filterKey] = entity[filterKey];
-    //           }
-    //         }
-    //       }
-
-    //       if (
-    //         entity["seeder_filter_by"].length === 1 &&
-    //         entity["seeder_filter_by"].find((key) => key === "locale")
-    //       ) {
-    //         for (const relationSeedValueKey of Object.keys(entity)) {
-    //           relationSeedValueKey; //?
-    //           if ([...toSkip, "publishedAt"].includes(relationSeedValueKey)) {
-    //             continue;
-    //           }
-
-    //           if (
-    //             typeof entity[relationSeedValueKey] === "string" ||
-    //             typeof entity[relationSeedValueKey] === "number"
-    //           ) {
-    //             filters[relationSeedValueKey] = entity[relationSeedValueKey];
-    //           }
-    //         }
-    //       }
-    //     } else {
-    //       for (const relationSeedValueKey of Object.keys(entity)) {
-    //         relationSeedValueKey; //?
-    //         if ([...toSkip, "publishedAt"].includes(relationSeedValueKey)) {
-    //           continue;
-    //         }
-
-    //         if (
-    //           typeof entity[relationSeedValueKey] === "string" ||
-    //           typeof entity[relationSeedValueKey] === "number"
-    //         ) {
-    //           filters[relationSeedValueKey] = entity[relationSeedValueKey];
-    //         }
-    //       }
-    //     }
-    //   }
-
-    //   const sanitizedFilters = { ...filters };
-
-    //   if (schema) {
-    //     for (const filterKey of Object.keys(filters)) {
-    //       if (["id", "locale"].includes(filterKey)) {
-    //         continue;
-    //       }
-    //       if (!schema.attributes[filterKey]) {
-    //         delete sanitizedFilters[filterKey];
-    //       }
-    //     }
-    //   }
-
-    //   return sanitizedFilters;
-    // },
   }),
 );
