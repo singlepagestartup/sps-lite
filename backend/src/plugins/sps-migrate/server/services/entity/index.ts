@@ -8,6 +8,136 @@ import { factories } from "@strapi/strapi";
 export default factories.createCoreService(
   "plugin::sps-migrate.entity",
   ({ strapi }) => ({
+    async dump({ uid }: { uid: string }) {
+      const seedFolder = await strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSeedsFolder({ uid });
+
+      if (!seedFolder) {
+        return;
+      }
+
+      const { seedFiles, pathToSeedsFolder } = seedFolder;
+
+      const entites = await strapi
+        .service("plugin::sps-migrate.entity")
+        .getDbEntities({ uid });
+
+      return seedFiles;
+    },
+
+    async getDbEntities({ uid }: { uid: any }) {
+      if (!strapi.entityService) {
+        throw new Error("strapi.entityService is undefined");
+      }
+
+      const populate = strapi
+        .service("plugin::sps-migrate.entity")
+        .getPopulate({ uid });
+
+      const entites = await strapi.entityService.findMany(uid, {
+        populate,
+        limit: -1,
+      });
+
+      return entites;
+    },
+
+    getPopulate({ uid }: { uid: any }) {
+      const schema = strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSchema({ uid });
+
+      const populate = {};
+
+      for (const [key, config] of Object.entries(schema.attributes) as any) {
+        const structureAttributeKeys = strapi
+          .service("plugin::sps-migrate.entity")
+          .getStructureAttributeKeys({ uid });
+
+        if (!structureAttributeKeys.includes(key)) {
+          continue;
+        }
+
+        if (["relation", "media"].includes(config.type)) {
+          populate[key] = "*";
+          continue;
+        }
+
+        if (["component"].includes(config.type)) {
+          const componentPopulate = strapi
+            .service("plugin::sps-migrate.entity")
+            .getPopulate({ uid: config.component });
+
+          populate[key] = { populate: componentPopulate };
+          continue;
+        }
+
+        if (["dynamiczone"].includes(config.type)) {
+          let dynamiczonePopulate = {};
+
+          for (const dynamiczoneComponent of config.components) {
+            const componentPopulate = strapi
+              .service("plugin::sps-migrate.entity")
+              .getPopulate({ uid: dynamiczoneComponent });
+
+            dynamiczonePopulate = {
+              ...dynamiczonePopulate,
+              ...componentPopulate,
+            };
+          }
+
+          populate[key] = { populate: dynamiczonePopulate };
+          continue;
+        }
+      }
+
+      return populate;
+    },
+
+    async seed({ uid, seededUids }: { uid: string; seededUids: any[] }) {
+      const seededEntites: any = [];
+
+      const seeds = await strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSeeds({
+          uid,
+        });
+
+      if (!seeds) {
+        seededUids[uid] = undefined;
+        return;
+      }
+
+      for (const seedItem of seeds) {
+        const sanitizedSeed = { ...seedItem };
+
+        delete sanitizedSeed.localizations;
+
+        const mainEntityCreated = await strapi
+          .service("plugin::sps-migrate.entity")
+          .createOrUpdateBySeed({
+            seed: sanitizedSeed,
+            uid,
+          });
+
+        if (mainEntityCreated) {
+          seededEntites.push({
+            seedEntity: seedItem,
+            dbEntity: mainEntityCreated,
+          });
+        }
+      }
+
+      await strapi
+        .service("plugin::sps-migrate.entity")
+        .deleteNotSeededEntites({ uid, seededEntites });
+
+      seededUids[uid] = seededEntites;
+
+      return seededEntites;
+    },
+
     async seedRelations({
       uid,
       seededUids,
@@ -317,49 +447,6 @@ export default factories.createCoreService(
       }
 
       return data;
-    },
-
-    async seed({ uid, seededUids }: { uid: string; seededUids: any[] }) {
-      const seededEntites: any = [];
-
-      const seeds = await strapi
-        .service("plugin::sps-migrate.seeder")
-        .getSeeds({
-          uid,
-        });
-
-      if (!seeds) {
-        seededUids[uid] = undefined;
-        return;
-      }
-
-      for (const seedItem of seeds) {
-        const sanitizedSeed = { ...seedItem };
-
-        delete sanitizedSeed.localizations;
-
-        const mainEntityCreated = await strapi
-          .service("plugin::sps-migrate.entity")
-          .createOrUpdateBySeed({
-            seed: sanitizedSeed,
-            uid,
-          });
-
-        if (mainEntityCreated) {
-          seededEntites.push({
-            seedEntity: seedItem,
-            dbEntity: mainEntityCreated,
-          });
-        }
-      }
-
-      await strapi
-        .service("plugin::sps-migrate.entity")
-        .deleteNotSeededEntites({ uid, seededEntites });
-
-      seededUids[uid] = seededEntites;
-
-      return seededEntites;
     },
 
     async createOrUpdateBySeed({ seed, uid }: { seed: any; uid: any }) {

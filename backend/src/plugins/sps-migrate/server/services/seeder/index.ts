@@ -103,20 +103,15 @@ export default factories.createCoreService(
       return schema;
     },
 
-    async getSeeds({ uid }: { uid: string }) {
+    async getSeedsFolder({ uid }: { uid: string }) {
       const { dirPath } = strapi
         .service("plugin::sps-migrate.seeder")
         .splitUid({ uid });
-      const schema = strapi
-        .service("plugin::sps-migrate.seeder")
-        .getSchema({ uid });
-      const { type, modelDirName, entityName } = strapi
+      const { modelDirName, entityName } = strapi
         .service("plugin::sps-migrate.seeder")
         .splitUid({ uid });
 
-      const seeds: any[] = [];
-
-      const pathToSeed = path.join(
+      const pathToSeedsFolder = path.join(
         dirPath,
         `/${modelDirName}/content-types${
           entityName ? `/${entityName}` : ""
@@ -125,32 +120,50 @@ export default factories.createCoreService(
 
       let seedFiles;
       try {
-        seedFiles = await fs.readdir(pathToSeed);
+        seedFiles = await fs.readdir(pathToSeedsFolder);
       } catch (error) {
         return;
       }
 
-      if (
-        !seedFiles?.length ||
-        !seedFiles?.filter((s) => s.includes(".json"))?.length
-      ) {
+      seedFiles = seedFiles
+        .filter((s) => {
+          return s.includes(".json");
+        })
+        .map((s) => {
+          return `${pathToSeedsFolder}/${s}`;
+        });
+
+      return { seedFiles, pathToSeedsFolder };
+    },
+
+    async getSeeds({ uid }: { uid: string }) {
+      const seedFolder = await strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSeedsFolder({ uid });
+
+      if (!seedFolder) {
+        return;
+      }
+
+      const { seedFiles } = seedFolder;
+
+      const seeds: any[] = [];
+
+      if (!seedFiles?.length || !seedFiles?.length) {
         return seeds;
       }
 
-      if (
-        schema.kind === "singleType" &&
-        seedFiles.filter((s) => s.includes(".json")).length > 1
-      ) {
-        throw new Error("Single Type entity can have just one json file");
+      const schema = strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSchema({ uid });
+
+      if (schema.kind === "singleType" && seedFiles.length > 1) {
+        throw new Error("Single Type entity can't has more than one entity");
       }
 
       for (const seedFile of seedFiles) {
-        if (!seedFile.includes(".json")) {
-          continue;
-        }
-
         const readedSeedFile = await fs
-          .readFile(`${pathToSeed}/${seedFile}`, "utf8")
+          .readFile(seedFile, "utf8")
           .catch((error) => {
             // console.log(`🚀 ~ seed ~ error`, error);
           });

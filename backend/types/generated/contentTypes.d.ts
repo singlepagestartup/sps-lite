@@ -1780,6 +1780,36 @@ export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsMigrateDumper extends Schema.CollectionType {
+  collectionName: "sps_migrate_dumpers";
+  info: {
+    singularName: "dumper";
+    pluralName: "dumpers";
+    displayName: "Dumper";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.dumper",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.dumper",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginSpsMigrateEntity extends Schema.CollectionType {
   collectionName: "sps_migrate_entites";
   info: {
@@ -3374,6 +3404,7 @@ declare module "@strapi/types" {
       "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
       "plugin::sps-ecommerce.order-product": PluginSpsEcommerceOrderProduct;
       "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
+      "plugin::sps-migrate.dumper": PluginSpsMigrateDumper;
       "plugin::sps-migrate.entity": PluginSpsMigrateEntity;
       "plugin::sps-migrate.parameter": PluginSpsMigrateParameter;
       "plugin::sps-migrate.seeder": PluginSpsMigrateSeeder;
