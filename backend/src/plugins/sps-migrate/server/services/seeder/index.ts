@@ -14,13 +14,7 @@ export default factories.createCoreService(
 
       const seededUids = {};
 
-      // const allowedContentTypes: any = [
-      //   // "plugin::sps-website-builder.page",
-      //   "plugin::sps-website-builder.layout",
-      //   "plugin::sps-website-builder.slide-over",
-      //   // "plugin::sps-website-builder.flyout",
-      //   // "plugin::sps-crm.form",
-      // ];
+      // const allowedContentTypes: any = ["plugin::sps-website-builder.page"];
 
       const notAllowedContentTypes: any = [
         "admin::api-token",
@@ -40,6 +34,10 @@ export default factories.createCoreService(
       ];
 
       for (const contentType of Object.keys(strapi.contentTypes)) {
+        // if (!allowedContentTypes.includes(contentType)) {
+        //   continue;
+        // }
+
         if (notAllowedContentTypes.includes(contentType)) {
           continue;
         }
@@ -55,6 +53,10 @@ export default factories.createCoreService(
       }
 
       for (const contentType of Object.keys(strapi.contentTypes)) {
+        // if (!allowedContentTypes.includes(contentType)) {
+        //   continue;
+        // }
+
         if (notAllowedContentTypes.includes(contentType)) {
           continue;
         }

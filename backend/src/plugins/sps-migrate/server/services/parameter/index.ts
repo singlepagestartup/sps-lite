@@ -24,6 +24,11 @@ export default factories.createCoreService(
             seed: fileValue,
             uid,
           });
+
+          if (!createdFile) {
+            continue;
+          }
+
           createdFiles.push(createdFile);
         }
 
@@ -51,6 +56,8 @@ export default factories.createCoreService(
               console.log("🚀 ~ downloadFile ~ error:", error?.message);
             });
         } else {
+          return;
+
           const { dirPath } = strapi
             .service("plugin::sps-migrate.seeder")
             .splitUid({ uid });

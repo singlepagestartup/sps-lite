@@ -4,6 +4,7 @@
 
 import MD5 from "crypto-js/md5";
 import { factories } from "@strapi/strapi";
+const fs = require("fs/promises");
 
 export default factories.createCoreService(
   "plugin::sps-migrate.entity",
@@ -19,9 +20,27 @@ export default factories.createCoreService(
 
       const { seedFiles, pathToSeedsFolder } = seedFolder;
 
-      const entites = await strapi
+      let entites = await strapi
         .service("plugin::sps-migrate.entity")
         .getDbEntities({ uid });
+
+      for (const oldSeedFile of seedFiles) {
+        await fs.unlink(oldSeedFile);
+      }
+
+      if (!entites.length && !entites) {
+        return;
+      }
+
+      if (!entites.length) {
+        entites = [entites];
+      }
+
+      for (const entity of entites) {
+        const seedFileName = `${pathToSeedsFolder}/${entity.id}.json`;
+
+        await fs.writeFile(seedFileName, JSON.stringify(entity, null, 2));
+      }
 
       return seedFiles;
     },
@@ -242,6 +261,10 @@ export default factories.createCoreService(
               seed: seed[structureAttributeKey],
               uid: uid,
             });
+
+          if (!attributeKeyData) {
+            data[structureAttributeKey] = null;
+          }
 
           data[structureAttributeKey] = attributeKeyData;
         } else if (structureAttributeKeyConfig.type === "component") {
