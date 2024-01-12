@@ -789,15 +789,15 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    tiers: Attribute.Relation<
-      "plugin::sps-billing.currency",
-      "oneToMany",
-      "plugin::sps-subscription.tier"
-    >;
     attributes: Attribute.Relation<
       "plugin::sps-billing.currency",
       "oneToMany",
       "plugin::sps-ecommerce.attribute"
+    >;
+    tiers: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToMany",
+      "plugin::sps-subscription.tier"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1286,6 +1286,11 @@ export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
       "plugin::sps-subscription.tier",
       "manyToMany",
       "plugin::sps-subscription.attribute"
+    >;
+    currency: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "manyToOne",
+      "plugin::sps-billing.currency"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

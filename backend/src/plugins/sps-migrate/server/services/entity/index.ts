@@ -8,39 +8,6 @@ import { factories } from "@strapi/strapi";
 export default factories.createCoreService(
   "plugin::sps-migrate.entity",
   ({ strapi }) => ({
-    async prepare({
-      keysToSkip,
-      seed,
-      seededUids,
-      uid,
-    }: {
-      keysToSkip: string[];
-      seed: any;
-      seededUids: any;
-      uid: string;
-    }) {
-      const data = {};
-
-      for (const seedKey of Object.keys(seed)) {
-        const value = await strapi
-          .service("plugin::sps-migrate.parameter")
-          .prpare({
-            keysToSkip,
-            key: seedKey,
-            seedValue: seed[seedKey],
-            seededUids,
-            data,
-            uid,
-          });
-
-        if (value) {
-          data[seedKey] = value;
-        }
-      }
-
-      return data;
-    },
-
     async seedRelations({
       uid,
       seededUids,
@@ -48,6 +15,16 @@ export default factories.createCoreService(
       uid: string;
       seededUids: any[];
     }) {
+      const seeds = await strapi
+        .service("plugin::sps-migrate.seeder")
+        .getSeeds({
+          uid,
+        });
+
+      if (!seeds) {
+        return;
+      }
+
       for (const seededUid of seededUids[uid]) {
         await strapi
           .service("plugin::sps-migrate.entity")
@@ -66,6 +43,10 @@ export default factories.createCoreService(
       seededUid: any;
       seededUids: any[];
     }) {
+      if (!strapi.entityService) {
+        throw new Error("strapi.entityService is undefined");
+      }
+
       const data = await strapi
         .service("plugin::sps-migrate.entity")
         .getStructureSeedData({
@@ -75,11 +56,13 @@ export default factories.createCoreService(
         });
 
       if (data) {
-        const updatedDbEntity = await strapi
-          .service(uid)
-          .update(seededUid.dbEntity.id, {
+        const updatedDbEntity = await strapi.entityService.update(
+          uid,
+          seededUid.dbEntity.id,
+          {
             data,
-          });
+          },
+        );
 
         seededUid.dbEntity = updatedDbEntity;
       }
@@ -142,27 +125,91 @@ export default factories.createCoreService(
 
           data[structureAttributeKey] = attributeKeyData;
         } else if (structureAttributeKeyConfig.type === "relation") {
-          const seedData = seed[structureAttributeKey];
+          const attributeKeyData = await strapi
+            .service("plugin::sps-migrate.entity")
+            .getRelationSeedData({
+              seed: seed[structureAttributeKey],
+              seededUids,
+              config: structureAttributeKeyConfig,
+            });
 
-          if (Array.isArray(seedData)) {
-            if (!seedData.length) {
-              continue;
-            }
-          } else {
-            if (!seedData) {
-              continue;
-            }
-          }
-
-          if (!seededUids[structureAttributeKeyConfig.target]) {
-            continue;
-          }
-
-          console.log("🚀 ~ seedData:", seedData);
+          data[structureAttributeKey] = attributeKeyData;
         }
       }
 
       return data;
+    },
+
+    async getRelationSeedData({
+      seededUids,
+      seed,
+      config,
+    }: {
+      seededUids: any[];
+      seed: any;
+      config: any;
+    }) {
+      if (Array.isArray(seed)) {
+        if (!seed.length) {
+          return;
+        }
+      } else {
+        if (!seed) {
+          return;
+        }
+      }
+
+      if (!seededUids[config.target]) {
+        return;
+      }
+
+      if (config.relation === "oneToOne") {
+        const seededUid = seededUids[config.target].find((seededUid) => {
+          return seededUid.seedEntity.id === seed.id;
+        });
+
+        if (seededUid) {
+          return {
+            id: seededUid.dbEntity.id,
+          };
+        }
+      }
+
+      if (config.relation === "manyToOne") {
+        const seededUid = seededUids[config.target].find((seededUid) => {
+          return seededUid.seedEntity.id === seed.id;
+        });
+
+        if (seededUid) {
+          return {
+            id: seededUid.dbEntity.id,
+          };
+        }
+      }
+
+      if (config.relation === "manyToMany") {
+        if (config.inversedBy) {
+          return;
+        }
+
+        if (Array.isArray(seed)) {
+          const data: any = [];
+
+          for (const seedItem of seed) {
+            const seededUid = seededUids[config.target].find((seededUid) => {
+              return seededUid.seedEntity.id === seedItem.id;
+            });
+
+            if (seededUid) {
+              data.push({
+                id: seededUid.dbEntity.id,
+              });
+            }
+          }
+
+          return data;
+        }
+      }
     },
 
     async getComponentSeedData({
@@ -320,6 +367,10 @@ export default factories.createCoreService(
         throw new Error("strapi.db is undefined");
       }
 
+      if (!strapi.entityService) {
+        throw new Error("strapi.entityService is undefined");
+      }
+
       const data = await strapi
         .service("plugin::sps-migrate.entity")
         .getPlainSeedData({
@@ -332,34 +383,41 @@ export default factories.createCoreService(
           .service("plugin::sps-migrate.entity")
           .getDataHash({ data, uid });
 
-        const { results: existingEntities } = await strapi.service(uid).find({
-          pagination: {
-            limit: -1,
-          },
+        let existingEntities: any = await strapi.entityService.findMany(uid, {
+          limit: -1,
         });
 
         let targetEntity;
-        for (const existingEntity of existingEntities) {
-          const hashedExistingEntity = strapi
-            .service("plugin::sps-migrate.entity")
-            .getDataHash({ data: existingEntity, uid });
 
-          if (hashedExistingEntity === hashedData) {
-            targetEntity = existingEntity;
-            break;
+        if (existingEntities) {
+          if (!Array.isArray(existingEntities) && existingEntities) {
+            existingEntities = [existingEntities];
+          }
+
+          for (const existingEntity of existingEntities) {
+            const hashedExistingEntity = strapi
+              .service("plugin::sps-migrate.entity")
+              .getDataHash({ data: existingEntity, uid });
+
+            if (hashedExistingEntity === hashedData) {
+              targetEntity = existingEntity;
+              break;
+            }
           }
         }
 
         if (targetEntity) {
-          const updatedEntity = await strapi
-            .service(uid)
-            .update(targetEntity.id, {
+          const updatedEntity = await strapi.entityService.update(
+            uid,
+            targetEntity.id,
+            {
               data,
-            });
+            },
+          );
 
           return updatedEntity;
         } else {
-          const createdEntity = await strapi.service(uid).create({
+          const createdEntity: any = await strapi.entityService.create(uid, {
             data,
           });
 
@@ -369,7 +427,7 @@ export default factories.createCoreService(
     },
 
     getPlainSeedData({ seed, uid }: { seed: any; uid: string }) {
-      const data = {};
+      const data: any = {};
 
       const plainAttributeKeys = strapi
         .service("plugin::sps-migrate.entity")
@@ -377,6 +435,10 @@ export default factories.createCoreService(
 
       for (const plainAttributeKey of plainAttributeKeys) {
         data[plainAttributeKey] = seed[plainAttributeKey];
+      }
+
+      if (seed.publishedAt) {
+        data.publishedAt = seed.publishedAt;
       }
 
       return data;

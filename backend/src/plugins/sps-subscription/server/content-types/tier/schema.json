@@ -77,6 +77,12 @@
       "relation": "manyToMany",
       "target": "plugin::sps-subscription.attribute",
       "inversedBy": "tiers"
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-billing.currency",
+      "inversedBy": "tiers"
     }
   }
 }

@@ -42,16 +42,16 @@
         }
       }
     },
-    "tiers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::sps-subscription.tier",
-      "mappedBy": "currency"
-    },
     "attributes": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::sps-ecommerce.attribute",
+      "mappedBy": "currency"
+    },
+    "tiers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-subscription.tier",
       "mappedBy": "currency"
     }
   }
