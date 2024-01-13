@@ -136,8 +136,6 @@ export default factories.createCoreService(
       for (const seedItem of seeds) {
         const sanitizedSeed = { ...seedItem };
 
-        delete sanitizedSeed.localizations;
-
         const dbEntity = await strapi
           .service("plugin::sps-migrate.entity")
           .createOrUpdateBySeed({
@@ -552,11 +550,11 @@ export default factories.createCoreService(
           limit: -1,
         });
 
-        console.log("🚀 ~ createOrUpdateBySeed ~ data:", data);
-        console.log(
-          "🚀 ~ createOrUpdateBySeed ~ existingEntities:",
-          existingEntities,
-        );
+        // console.log("🚀 ~ createOrUpdateBySeed ~ data:", data);
+        // console.log(
+        //   "🚀 ~ createOrUpdateBySeed ~ existingEntities:",
+        //   existingEntities,
+        // );
 
         let targetEntity;
 
@@ -588,11 +586,91 @@ export default factories.createCoreService(
 
           return updatedEntity;
         } else {
-          const createdEntity: any = await strapi.entityService.create(uid, {
-            data,
-          });
+          try {
+            const createdEntity: any = await strapi.entityService.create(uid, {
+              data,
+            });
 
-          return createdEntity;
+            return createdEntity;
+          } catch (error) {
+            const fixedEnties = await strapi
+              .service("plugin::sps-migrate.entity")
+              .fixValidationErrorWithSameAttribute({ error, data });
+
+            if (fixedEnties) {
+              const createdEntity: any = await strapi.entityService.create(
+                uid,
+                {
+                  data,
+                },
+              );
+
+              return createdEntity;
+            }
+
+            throw error;
+          }
+        }
+      }
+    },
+
+    /**
+     * Fixing error like:
+     * YupValidationError: This attribute must be unique
+     * at handleYupError (/usr/src/app/node_modules/@strapi/utils/dist/index.js:408:9)
+     * at /usr/src/app/node_modules/@strapi/utils/dist/index.js:418:7
+     */
+    async fixValidationErrorWithSameAttribute({
+      uid,
+      error,
+      data,
+    }: {
+      uid: any;
+      error: any;
+      data: any;
+    }) {
+      if (!strapi.entityService) {
+        throw new Error("strapi.entityService is undefined");
+      }
+
+      if (error.message === "This attribute must be unique") {
+        const validationErrorPath = error.details?.errors
+          ?.map((e) => e?.path)
+          ?.flat(1);
+
+        if (validationErrorPath) {
+          const filters = {};
+          for (const path of validationErrorPath) {
+            filters[path] = data[path];
+          }
+
+          const existingEntitiesWithSameAttribute: any =
+            await strapi.entityService.findMany(uid, {
+              filters,
+              locale: "all",
+              limit: -1,
+            });
+
+          if (existingEntitiesWithSameAttribute) {
+            const fixedEnties: any[] = [];
+
+            for (const entity of existingEntitiesWithSameAttribute) {
+              const randomizedData = {};
+
+              for (const path of validationErrorPath) {
+                randomizedData[path] = `${data[path]}-${Math.random()}`;
+              }
+
+              const updatedExistingEntity: any =
+                await strapi.entityService.update(uid, entity.id, {
+                  data: randomizedData,
+                });
+
+              fixedEnties.push(updatedExistingEntity);
+            }
+
+            return fixedEnties;
+          }
         }
       }
     },

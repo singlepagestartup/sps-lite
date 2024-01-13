@@ -14,9 +14,8 @@ export default factories.createCoreService(
 
       const seededUids = {};
 
-      // const allowedContentTypes: any = [
-      //   "plugin::sps-billing.currency",
-      //   "plugin::i18n.locale",
+      // const allowedContentTypes: string[] = [
+      //   "plugin::sps-website-builder.navbar",
       // ];
 
       const notAllowedContentTypes: any = [

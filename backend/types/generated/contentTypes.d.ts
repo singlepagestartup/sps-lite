@@ -2243,7 +2243,7 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.flyout", "title"> &
@@ -2303,7 +2303,7 @@ export interface PluginSpsWebsiteBuilderFooter extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.footer", "title"> &
@@ -2383,7 +2383,7 @@ export interface PluginSpsWebsiteBuilderLayout extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.layout", "title"> &
@@ -2562,7 +2562,7 @@ export interface PluginSpsWebsiteBuilderMetatag extends Schema.CollectionType {
     is_default: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -2699,7 +2699,7 @@ export interface PluginSpsWebsiteBuilderNavbar extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.navbar", "title"> &
@@ -3206,7 +3206,7 @@ export interface PluginSpsWebsiteBuilderTopbar extends Schema.CollectionType {
     title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.topbar", "title"> &

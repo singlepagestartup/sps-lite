@@ -1,11 +1,11 @@
 {
   "id": 1,
-  "title": "Pied de page public",
+  "title": "Public Page Footer",
   "uid": "footer",
   "variant": "boxed",
   "class_name": null,
   "createdAt": "2024-01-10T11:45:34.071Z",
-  "updatedAt": "2024-01-12T23:31:13.193Z",
+  "updatedAt": "2024-01-13T09:58:54.399Z",
   "publishedAt": "2024-01-10T11:45:35.047Z",
   "locale": "en",
   "localizations": [
