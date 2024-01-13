@@ -34,7 +34,17 @@ export default factories.createCoreService(
         "plugin::users-permissions.user",
         "plugin::content-releases.release",
         "plugin::content-releases.release-action",
+        "plugin::i18n.locale",
       ];
+
+      try {
+        await strapi.service("plugin::sps-migrate.entity").seed({
+          uid: "plugin::i18n.locale",
+          seededUids,
+        });
+      } catch (error) {
+        console.log("🚀 ~ run ~ error:", error);
+      }
 
       for (const contentType of Object.keys(strapi.contentTypes)) {
         // if (!allowedContentTypes.includes(contentType)) {
