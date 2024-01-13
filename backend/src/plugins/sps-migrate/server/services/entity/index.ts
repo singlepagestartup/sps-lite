@@ -179,16 +179,15 @@ export default factories.createCoreService(
         return;
       }
 
-      console.log("🚀 ~ uid:", uid);
-      console.log("🚀 ~ seedRelations ~ seededUids:", seededUids);
+      if (!Array.isArray(seededUids[uid])) {
+        return;
+      }
 
       for (const seededUid of seededUids[uid]) {
         await strapi
           .service("plugin::sps-migrate.entity")
           .updateBySeed({ uid, seededUid, seededUids });
       }
-
-      return seededUids;
     },
 
     async updateBySeed({
@@ -549,8 +548,15 @@ export default factories.createCoreService(
           .getDataHash({ data, uid });
 
         let existingEntities: any = await strapi.entityService.findMany(uid, {
+          locale: "all",
           limit: -1,
         });
+
+        console.log("🚀 ~ createOrUpdateBySeed ~ data:", data);
+        console.log(
+          "🚀 ~ createOrUpdateBySeed ~ existingEntities:",
+          existingEntities,
+        );
 
         let targetEntity;
 
