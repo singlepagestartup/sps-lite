@@ -71,7 +71,7 @@ export default function Primary(props: IElement) {
           {...additionalAttributes}
           href={urlPrepared}
           aria-selected={isActive}
-          className="button-primary"
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-8 animate-in fade-in zoom-in"
         >
           {props.children ? props.children : null}
           {props.media?.length ? (
