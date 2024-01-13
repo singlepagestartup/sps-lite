@@ -179,6 +179,9 @@ export default factories.createCoreService(
         return;
       }
 
+      console.log("🚀 ~ uid:", uid);
+      console.log("🚀 ~ seedRelations ~ seededUids:", seededUids);
+
       for (const seededUid of seededUids[uid]) {
         await strapi
           .service("plugin::sps-migrate.entity")

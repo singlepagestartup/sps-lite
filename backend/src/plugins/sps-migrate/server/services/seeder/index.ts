@@ -43,7 +43,7 @@ export default factories.createCoreService(
           seededUids,
         });
       } catch (error) {
-        console.log("🚀 ~ run ~ error:", error);
+        console.log("🚀 ~ run ~ error: plugin::i18n.locale", error);
       }
 
       for (const contentType of Object.keys(strapi.contentTypes)) {
@@ -61,7 +61,7 @@ export default factories.createCoreService(
             seededUids,
           });
         } catch (error) {
-          console.log("🚀 ~ run ~ error:", error);
+          console.log("🚀 ~ run ~ error:", contentType, error);
         }
       }
 
@@ -80,7 +80,7 @@ export default factories.createCoreService(
             seededUids,
           });
         } catch (error) {
-          console.log("🚀 ~ run ~ error:", error);
+          console.log("🚀 ~ run ~ error:", contentType, error);
         }
       }
 
