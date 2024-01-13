@@ -595,7 +595,7 @@ export default factories.createCoreService(
           } catch (error) {
             const fixedEnties = await strapi
               .service("plugin::sps-migrate.entity")
-              .fixValidationErrorWithSameAttribute({ error, data });
+              .fixValidationErrorWithSameAttribute({ uid, error, data });
 
             if (fixedEnties) {
               const createdEntity: any = await strapi.entityService.create(
