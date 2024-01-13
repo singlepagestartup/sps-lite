@@ -1,15 +1,30 @@
 {
   "id": 1,
-  "title": "Public Page Navbar",
+  "title": "Barre de navigation des pages publiques",
   "uid": "public-page-navbar",
   "variant": "boxed",
   "class_name": null,
   "position": "fixed",
   "side": "top",
   "createdAt": "2024-01-09T22:27:18.061Z",
-  "updatedAt": "2024-01-10T11:49:08.095Z",
+  "updatedAt": "2024-01-13T00:00:27.203Z",
   "publishedAt": "2023-04-08T05:04:22.148Z",
   "locale": "en",
+  "localizations": [
+    {
+      "id": 2,
+      "title": "Barre de navigation des pages publiques",
+      "uid": "barre-de-navigation-des-pages-publiques",
+      "variant": "boxed",
+      "class_name": null,
+      "position": "fixed",
+      "side": "top",
+      "createdAt": "2024-01-12T23:50:07.941Z",
+      "updatedAt": "2024-01-13T00:00:27.140Z",
+      "publishedAt": "2024-01-12T23:50:09.029Z",
+      "locale": "fr"
+    }
+  ],
   "page_blocks": [
     {
       "__component": "page-blocks.navbar-block",
@@ -143,11 +158,11 @@
           "flyout": {
             "id": 1,
             "variant": "simple",
-            "title": "Locales Flyout",
+            "title": "Icône déroulante Paramètres régionaux",
             "uid": "locales-flyout",
             "class_name": null,
             "createdAt": "2024-01-09T22:27:16.443Z",
-            "updatedAt": "2024-01-09T22:27:16.443Z",
+            "updatedAt": "2024-01-12T23:59:23.470Z",
             "publishedAt": "2023-05-11T16:28:36.473Z",
             "locale": "en"
           }

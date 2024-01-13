@@ -7,8 +7,9 @@
   "datetime": null,
   "time": null,
   "createdAt": "2024-01-09T23:16:06.880Z",
-  "updatedAt": "2024-01-10T11:50:50.351Z",
+  "updatedAt": "2024-01-12T12:49:28.225Z",
   "locale": "en",
+  "localizations": [],
   "attribute_key": {
     "id": 2,
     "title": "quantity",
@@ -28,5 +29,16 @@
   "products": [],
   "additional_media": null,
   "currency": null,
-  "order_products": []
+  "order_products": [
+    {
+      "id": 10,
+      "createdAt": "2024-01-12T12:37:01.903Z",
+      "updatedAt": "2024-01-12T12:37:01.903Z"
+    },
+    {
+      "id": 11,
+      "createdAt": "2024-01-12T12:49:28.126Z",
+      "updatedAt": "2024-01-12T12:49:28.126Z"
+    }
+  ]
 }

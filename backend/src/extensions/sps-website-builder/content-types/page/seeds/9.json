@@ -1,0 +1,124 @@
+{
+  "id": 9,
+  "title": "Page d'accueil",
+  "url": "/",
+  "createdAt": "2024-01-12T23:28:06.267Z",
+  "updatedAt": "2024-01-12T23:28:07.180Z",
+  "publishedAt": "2024-01-12T23:28:07.163Z",
+  "locale": "fr",
+  "localizations": [
+    {
+      "id": 1,
+      "title": "Main page",
+      "url": "/",
+      "createdAt": "2024-01-09T22:27:45.690Z",
+      "updatedAt": "2024-01-12T23:28:07.243Z",
+      "publishedAt": "2023-04-08T12:06:05.277Z",
+      "locale": "en"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.hero-section-block",
+      "id": 6,
+      "title": "Démarrez votre Lean Startup avec un Boilerplate convivial pour les développeurs",
+      "description": "Passez moins de temps à la configuration et plus de temps à créer votre produit innovant grâce à notre modèle prêt à l'emploi et riche en fonctionnalités, conçu pour les développeurs de startups Lean.",
+      "variant": "simple-centered",
+      "anchor": null,
+      "class_name": "pt-16",
+      "media": [
+        {
+          "id": 19,
+          "name": "preview.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 2050,
+          "height": 1286,
+          "formats": {
+            "large": {
+              "ext": ".png",
+              "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_preview_3c23e7e2b1.png",
+              "hash": "large_preview_3c23e7e2b1",
+              "mime": "image/png",
+              "name": "large_preview.png",
+              "path": null,
+              "size": 224.93,
+              "width": 1000,
+              "height": 627
+            },
+            "small": {
+              "ext": ".png",
+              "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_preview_3c23e7e2b1.png",
+              "hash": "small_preview_3c23e7e2b1",
+              "mime": "image/png",
+              "name": "small_preview.png",
+              "path": null,
+              "size": 67.66,
+              "width": 500,
+              "height": 314
+            },
+            "medium": {
+              "ext": ".png",
+              "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_preview_3c23e7e2b1.png",
+              "hash": "medium_preview_3c23e7e2b1",
+              "mime": "image/png",
+              "name": "medium_preview.png",
+              "path": null,
+              "size": 133.63,
+              "width": 750,
+              "height": 470
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_preview_3c23e7e2b1.png",
+              "hash": "thumbnail_preview_3c23e7e2b1",
+              "mime": "image/png",
+              "name": "thumbnail_preview.png",
+              "path": null,
+              "size": 21.76,
+              "width": 245,
+              "height": 154
+            }
+          },
+          "hash": "preview_3c23e7e2b1",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 148.03,
+          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/preview_3c23e7e2b1.png",
+          "previewUrl": null,
+          "provider": "aws-s3",
+          "provider_metadata": null,
+          "folderPath": "/",
+          "createdAt": "2024-01-09T22:27:19.201Z",
+          "updatedAt": "2024-01-09T22:27:19.201Z"
+        }
+      ],
+      "buttons": [
+        {
+          "id": 17,
+          "url": "https://github.com/singlepagestartup/sps-lite",
+          "description": "",
+          "variant": "primary",
+          "title": "Commencez gratuitement",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        }
+      ],
+      "additional_media": null
+    }
+  ],
+  "layout": {
+    "id": 3,
+    "title": "Mise en page publique",
+    "uid": "mise-en-page-publique",
+    "variant": "wide",
+    "class_name": "[&>.layout-container]:pt-16",
+    "createdAt": "2024-01-12T23:28:48.599Z",
+    "updatedAt": "2024-01-12T23:28:53.039Z",
+    "publishedAt": "2024-01-12T23:28:53.035Z",
+    "locale": "fr"
+  }
+}

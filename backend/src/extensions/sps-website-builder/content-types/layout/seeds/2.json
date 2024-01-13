@@ -8,14 +8,15 @@
   "updatedAt": "2024-01-10T13:07:29.820Z",
   "publishedAt": "2023-04-20T03:23:38.447Z",
   "locale": "en",
+  "localizations": [],
   "footer": {
     "id": 1,
-    "title": "Public Footer",
+    "title": "Pied de page public",
     "uid": "footer",
     "variant": "boxed",
     "class_name": null,
     "createdAt": "2024-01-10T11:45:34.071Z",
-    "updatedAt": "2024-01-10T11:45:35.055Z",
+    "updatedAt": "2024-01-12T23:31:13.193Z",
     "publishedAt": "2024-01-10T11:45:35.047Z",
     "locale": "en"
   },
@@ -35,14 +36,14 @@
   ],
   "navbar": {
     "id": 1,
-    "title": "Public Page Navbar",
+    "title": "Barre de navigation des pages publiques",
     "uid": "public-page-navbar",
     "variant": "boxed",
     "class_name": null,
     "position": "fixed",
     "side": "top",
     "createdAt": "2024-01-09T22:27:18.061Z",
-    "updatedAt": "2024-01-10T11:49:08.095Z",
+    "updatedAt": "2024-01-13T00:00:27.203Z",
     "publishedAt": "2023-04-08T05:04:22.148Z",
     "locale": "en"
   },
@@ -78,7 +79,7 @@
       "title": "Main page",
       "url": "/",
       "createdAt": "2024-01-09T22:27:45.690Z",
-      "updatedAt": "2024-01-09T23:15:24.793Z",
+      "updatedAt": "2024-01-12T23:28:07.243Z",
       "publishedAt": "2023-04-08T12:06:05.277Z",
       "locale": "en"
     },

@@ -1,10 +1,8 @@
 "use strict";
 
-import path from "path";
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
-import dumper from "./utils/dumper";
 
 export default {
   async bootstrap({ strapi }) {

@@ -1,26 +1,26 @@
 {
-  "id": 1,
+  "id": 2,
   "title": "Lite Single Page Startup",
-  "description": "The fastest way to create startup",
+  "description": "Le moyen le plus rapide de créer une startup",
   "script": null,
   "gtm_key": null,
   "is_default": true,
-  "createdAt": "2024-01-09T22:27:17.126Z",
-  "updatedAt": "2024-01-13T00:01:32.736Z",
-  "publishedAt": "2023-04-08T06:09:23.027Z",
-  "locale": "en",
+  "createdAt": "2024-01-13T00:01:31.856Z",
+  "updatedAt": "2024-01-13T00:01:32.702Z",
+  "publishedAt": "2024-01-13T00:01:32.693Z",
+  "locale": "fr",
   "localizations": [
     {
-      "id": 2,
+      "id": 1,
       "title": "Lite Single Page Startup",
-      "description": "Le moyen le plus rapide de créer une startup",
+      "description": "The fastest way to create startup",
       "script": null,
       "gtm_key": null,
       "is_default": true,
-      "createdAt": "2024-01-13T00:01:31.856Z",
-      "updatedAt": "2024-01-13T00:01:32.702Z",
-      "publishedAt": "2024-01-13T00:01:32.693Z",
-      "locale": "fr"
+      "createdAt": "2024-01-09T22:27:17.126Z",
+      "updatedAt": "2024-01-13T00:01:32.736Z",
+      "publishedAt": "2023-04-08T06:09:23.027Z",
+      "locale": "en"
     }
   ],
   "favicon": {

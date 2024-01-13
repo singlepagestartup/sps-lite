@@ -1,0 +1,24 @@
+{
+  "id": 3,
+  "title": "Euro",
+  "unicode": "€",
+  "is_default": false,
+  "createdAt": "2024-01-12T13:28:57.773Z",
+  "updatedAt": "2024-01-12T13:29:34.409Z",
+  "publishedAt": "2024-01-12T13:28:58.562Z",
+  "locale": "en",
+  "localizations": [
+    {
+      "id": 4,
+      "title": "Euro",
+      "unicode": "€",
+      "is_default": false,
+      "createdAt": "2024-01-12T13:29:33.461Z",
+      "updatedAt": "2024-01-12T13:29:34.391Z",
+      "publishedAt": "2024-01-12T13:29:34.385Z",
+      "locale": "fr"
+    }
+  ],
+  "attributes": [],
+  "tiers": []
+}

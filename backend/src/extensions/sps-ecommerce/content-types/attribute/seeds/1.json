@@ -9,6 +9,7 @@
   "createdAt": "2024-01-09T23:15:58.212Z",
   "updatedAt": "2024-01-09T23:20:33.498Z",
   "locale": "en",
+  "localizations": [],
   "attribute_key": {
     "id": 1,
     "title": "price",
@@ -40,11 +41,11 @@
   "additional_media": null,
   "currency": {
     "id": 1,
-    "title": "USD",
+    "title": "United States Dollar",
     "unicode": "$",
     "is_default": true,
     "createdAt": "2024-01-09T22:26:48.351Z",
-    "updatedAt": "2024-01-09T22:26:48.351Z",
+    "updatedAt": "2024-01-12T13:26:56.009Z",
     "publishedAt": "2023-03-29T16:09:52.898Z",
     "locale": "en"
   },

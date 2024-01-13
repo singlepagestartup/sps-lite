@@ -3,9 +3,20 @@
   "title": "Main page",
   "url": "/",
   "createdAt": "2024-01-09T22:27:45.690Z",
-  "updatedAt": "2024-01-09T23:15:24.793Z",
+  "updatedAt": "2024-01-12T23:28:07.243Z",
   "publishedAt": "2023-04-08T12:06:05.277Z",
   "locale": "en",
+  "localizations": [
+    {
+      "id": 9,
+      "title": "Page d'accueil",
+      "url": "/",
+      "createdAt": "2024-01-12T23:28:06.267Z",
+      "updatedAt": "2024-01-12T23:28:07.180Z",
+      "publishedAt": "2024-01-12T23:28:07.163Z",
+      "locale": "fr"
+    }
+  ],
   "page_blocks": [
     {
       "__component": "page-blocks.hero-section-block",

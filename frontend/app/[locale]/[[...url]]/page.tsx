@@ -34,11 +34,11 @@ export async function generateMetadata(props: any) {
     url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
     params: {
       filters: {
-        locale: pageProps.locale,
         pages: {
           id: pageProps.id,
         },
       },
+      locale: pageProps.locale,
       populate: metatagPopulate,
     },
   });
@@ -48,9 +48,9 @@ export async function generateMetadata(props: any) {
       url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
       params: {
         filters: {
-          locale: pageProps.locale,
           is_default: true,
         },
+        locale: pageProps.locale,
         populate: metatagPopulate,
       },
     });

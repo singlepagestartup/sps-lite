@@ -1,36 +1,36 @@
 {
-  "id": 1,
+  "id": 2,
   "title": "Pied de page public",
-  "uid": "footer",
+  "uid": "pied-de-page-public",
   "variant": "boxed",
   "class_name": null,
-  "createdAt": "2024-01-10T11:45:34.071Z",
-  "updatedAt": "2024-01-12T23:31:13.193Z",
-  "publishedAt": "2024-01-10T11:45:35.047Z",
-  "locale": "en",
+  "createdAt": "2024-01-12T23:31:12.109Z",
+  "updatedAt": "2024-01-12T23:31:13.171Z",
+  "publishedAt": "2024-01-12T23:31:13.162Z",
+  "locale": "fr",
   "localizations": [
     {
-      "id": 2,
+      "id": 1,
       "title": "Pied de page public",
-      "uid": "pied-de-page-public",
+      "uid": "footer",
       "variant": "boxed",
       "class_name": null,
-      "createdAt": "2024-01-12T23:31:12.109Z",
-      "updatedAt": "2024-01-12T23:31:13.171Z",
-      "publishedAt": "2024-01-12T23:31:13.162Z",
-      "locale": "fr"
+      "createdAt": "2024-01-10T11:45:34.071Z",
+      "updatedAt": "2024-01-12T23:31:13.193Z",
+      "publishedAt": "2024-01-10T11:45:35.047Z",
+      "locale": "en"
     }
   ],
   "page_blocks": [
     {
       "__component": "page-blocks.footer-block",
-      "id": 1,
-      "copyrights": "2024 Single Page Startup",
-      "description": "The fastest way to develop your startup",
+      "id": 2,
+      "copyrights": "2024 Démarrage d'une seule page",
+      "description": "Le moyen le plus rapide de développer votre startup",
       "variant": "four-columns-with-company-mission",
       "class_name": null,
       "logotype": {
-        "id": 2,
+        "id": 3,
         "title": null,
         "url": null,
         "media": [
@@ -64,26 +64,15 @@
   ],
   "layouts": [
     {
-      "id": 2,
-      "title": "Public Page Layout",
-      "uid": "public-page-layout",
+      "id": 3,
+      "title": "Mise en page publique",
+      "uid": "mise-en-page-publique",
       "variant": "wide",
       "class_name": "[&>.layout-container]:pt-16",
-      "createdAt": "2024-01-09T22:27:16.590Z",
-      "updatedAt": "2024-01-10T13:07:29.820Z",
-      "publishedAt": "2023-04-20T03:23:38.447Z",
-      "locale": "en"
-    },
-    {
-      "id": 1,
-      "title": "Public Page Layout With Sidebar",
-      "uid": "public-page-layout-with-sidebar",
-      "variant": "boxed",
-      "class_name": null,
-      "createdAt": "2024-01-09T22:27:16.552Z",
-      "updatedAt": "2024-01-10T13:07:24.042Z",
-      "publishedAt": "2023-04-08T05:04:56.606Z",
-      "locale": "en"
+      "createdAt": "2024-01-12T23:28:48.599Z",
+      "updatedAt": "2024-01-12T23:28:53.039Z",
+      "publishedAt": "2024-01-12T23:28:53.035Z",
+      "locale": "fr"
     }
   ]
 }

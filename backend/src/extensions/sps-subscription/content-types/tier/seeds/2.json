@@ -8,6 +8,7 @@
   "updatedAt": "2024-01-10T09:18:51.554Z",
   "publishedAt": "2023-02-14T15:48:56.695Z",
   "locale": "en",
+  "localizations": [],
   "buttons": [
     {
       "id": 2,
@@ -82,10 +83,18 @@
     },
     {
       "id": 8,
-      "status": "paid",
+      "status": "canceled",
       "createdAt": "2024-01-10T10:41:10.181Z",
-      "updatedAt": "2024-01-10T10:41:17.942Z",
+      "updatedAt": "2024-01-12T13:03:42.145Z",
       "publishedAt": "2024-01-10T10:41:10.173Z",
+      "locale": "en"
+    },
+    {
+      "id": 9,
+      "status": "canceled",
+      "createdAt": "2024-01-12T12:57:38.105Z",
+      "updatedAt": "2024-01-12T13:03:42.154Z",
+      "publishedAt": "2024-01-12T12:57:38.093Z",
       "locale": "en"
     }
   ],

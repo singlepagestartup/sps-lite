@@ -14,7 +14,10 @@ export default factories.createCoreService(
 
       const seededUids = {};
 
-      // const allowedContentTypes: any = ["plugin::sps-website-builder.page"];
+      // const allowedContentTypes: any = [
+      //   "plugin::sps-billing.currency",
+      //   "plugin::i18n.locale",
+      // ];
 
       const notAllowedContentTypes: any = [
         "admin::api-token",
@@ -76,7 +79,7 @@ export default factories.createCoreService(
 
     splitUid({ uid }: { uid: string }) {
       const type = uid.split("::")[0];
-      const modelDirName = uid.split("::")[1].split(".")[0];
+      let modelDirName = uid.split("::")[1].split(".")[0];
       const entityName = uid.split("::")[1].split(".")[1];
       let dirPath;
       if (type === "plugin") {
@@ -87,12 +90,11 @@ export default factories.createCoreService(
         dirPath = path.join(strapi.dirs.app.root);
       }
 
-      let modelName = modelDirName;
-      if (uid === "plugin-i18n") {
-        modelName = "i18n";
+      if (uid === "plugin::i18n.locale") {
+        modelDirName = "plugin-i18n";
       }
 
-      return { type, modelDirName, modelName, entityName, dirPath };
+      return { type, modelDirName, entityName, dirPath };
     },
 
     getSchema({ uid }: { uid: string }) {

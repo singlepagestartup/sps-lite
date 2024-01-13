@@ -1,30 +1,30 @@
 {
-  "id": 1,
+  "id": 3,
   "variant": "simple",
   "title": "Icône déroulante Paramètres régionaux",
-  "uid": "locales-flyout",
+  "uid": "icone-deroulante-parametres-regionaux",
   "class_name": null,
-  "createdAt": "2024-01-09T22:27:16.443Z",
-  "updatedAt": "2024-01-12T23:59:23.470Z",
-  "publishedAt": "2023-05-11T16:28:36.473Z",
-  "locale": "en",
+  "createdAt": "2024-01-12T23:59:22.455Z",
+  "updatedAt": "2024-01-12T23:59:23.454Z",
+  "publishedAt": "2024-01-12T23:59:23.441Z",
+  "locale": "fr",
   "localizations": [
     {
-      "id": 3,
+      "id": 1,
       "variant": "simple",
       "title": "Icône déroulante Paramètres régionaux",
-      "uid": "icone-deroulante-parametres-regionaux",
+      "uid": "locales-flyout",
       "class_name": null,
-      "createdAt": "2024-01-12T23:59:22.455Z",
-      "updatedAt": "2024-01-12T23:59:23.454Z",
-      "publishedAt": "2024-01-12T23:59:23.441Z",
-      "locale": "fr"
+      "createdAt": "2024-01-09T22:27:16.443Z",
+      "updatedAt": "2024-01-12T23:59:23.470Z",
+      "publishedAt": "2023-05-11T16:28:36.473Z",
+      "locale": "en"
     }
   ],
   "page_blocks": [
     {
       "__component": "elements.button",
-      "id": 3,
+      "id": 22,
       "url": "/en",
       "description": null,
       "variant": "text",
@@ -37,7 +37,7 @@
     },
     {
       "__component": "elements.button",
-      "id": 18,
+      "id": 23,
       "url": "/fr",
       "description": null,
       "variant": "text",

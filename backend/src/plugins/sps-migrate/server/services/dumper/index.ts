@@ -10,7 +10,10 @@ export default factories.createCoreService(
     async run() {
       console.log("Dumping is started");
 
-      // const allowedContentTypes: any = ["plugin::sps-website-builder.theme"];
+      // const allowedContentTypes: any = [
+      //   "plugin::sps-billing.currency",
+      //   "plugin::i18n.locale",
+      // ];
 
       const notAllowedContentTypes: any = [
         "admin::api-token",

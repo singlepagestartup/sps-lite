@@ -12,9 +12,6 @@ export default factories.createCoreController(
   ({ strapi }) => ({
     async findByPageUrl(ctx) {
       let queryUrl = ctx.query.url;
-      console.log("🚀 ~ findByPageUrl ~ queryUrl:", queryUrl);
-
-      // console.log("🚀 ~ findByPageUrl ~ queryUrl:", queryUrl);
 
       if (typeof queryUrl === "string") {
         queryUrl = queryUrl;
@@ -36,6 +33,10 @@ export default factories.createCoreController(
       });
 
       // console.log("🚀 ~ findByPageUrl ~ filledPages:", filledPages);
+
+      if (queryUrl.startsWith(`/${sanitizedQuery.locale}/`)) {
+        queryUrl = queryUrl.replace(`/${sanitizedQuery.locale}/`, "/");
+      }
 
       const targetPage = filledPages.find((page) => {
         const cuttedLastSlash =
