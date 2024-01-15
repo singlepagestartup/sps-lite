@@ -8,8 +8,9 @@ import { IPageBlock } from "../..";
 import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useMemo } from "react";
-import Input from "~components/input";
+import Input from "~components/elements/input";
 import { useRouter } from "next/navigation";
+import TextInput from "~components/ui/input/text";
 
 export default function Component(props: IPageBlock) {
   const router = useRouter();
@@ -102,14 +103,14 @@ export default function Component(props: IPageBlock) {
       <h1 className="text-6xl font-bold mb-8">{productPrice}</h1>
       <FormProvider {...methods}>
         <div className="flex flex-col gap-3">
-          <Input
+          <TextInput
             variant="text"
             name="quantity"
             placeholder="Input quantity"
             initialValue={1}
             label="Quantity"
           />
-          <Input
+          <TextInput
             variant="text"
             name="email"
             placeholder="Input your email"

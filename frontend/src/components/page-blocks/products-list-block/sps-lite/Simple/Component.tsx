@@ -12,7 +12,7 @@ import { useMemo } from "react";
 import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import useMyProfile from "~hooks/use-my-profile";
-import Input from "~components/input";
+import TextInput from "~components/ui/input/text";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -129,7 +129,7 @@ function ProductCard(props: ICardProps) {
           title={buttonTitle}
         />
         <FormProvider {...methods}>
-          <Input
+          <TextInput
             variant="text"
             name="quantity"
             type="number"

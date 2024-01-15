@@ -4,7 +4,7 @@ import { useTranslationsContext } from "~hooks/use-translations/TranslationsCont
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { getInputErrors } from "~components/input/utils";
+import { getInputErrors } from "~components/ui/input/utils";
 import { IInputProps } from "..";
 
 export default function TextInput(props: IInputProps) {

@@ -147,6 +147,12 @@
             }
           }
         }
+
+        [data-headlessui-state="active"] {
+          .option {
+            @apply bg-muted;
+          }
+        }
       }
     }
 

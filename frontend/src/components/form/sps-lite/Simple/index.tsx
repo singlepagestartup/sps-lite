@@ -1,10 +1,12 @@
 import { api as formRequestApi } from "~redux/services/backend/extensions/sps-crm/api/form-request/api";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import Input from "~components/input";
+import Input from "~components/elements/input";
 import Button from "~components/elements/button";
 import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
+import TextInput from "~components/ui/input/text";
+import RadioGroupInput from "~components/ui/input/radio-group";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();
@@ -61,21 +63,19 @@ export default function Simple(props: IForm) {
                 options={input.options}
                 name={input.inputName}
                 className={input.input?.className || ""}
-                defaultValue=""
-                by="title"
-                rules={{
-                  required: {
-                    value: input.input?.isRequired,
-                    message: "Required field",
-                  },
-                }}
+                // rules={{
+                //   required: {
+                //     value: input.input?.isRequired,
+                //     message: "Required field",
+                //   },
+                // }}
               />
             );
           })}
 
           {preparedInputs?.map((input, index: number) => {
             return (
-              <Input
+              <TextInput
                 {...input}
                 key={index}
                 variant="text"
@@ -95,7 +95,7 @@ export default function Simple(props: IForm) {
             );
           })}
 
-          <Input
+          <RadioGroupInput
             variant="radio-group"
             name="form"
             initialValue={props}

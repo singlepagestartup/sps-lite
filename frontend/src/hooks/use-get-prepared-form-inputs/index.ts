@@ -2,6 +2,7 @@ import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
 import { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
+import { IComponent as IBackendComponent } from "~redux/services/backend/components/elements/input/interfaces";
 
 export default function useGetPreparedFormInputs(props: IBackendForm) {
   const searchParams = useSearchParams();
@@ -9,7 +10,10 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
-      const localInput = { ...input };
+      const localInput: IBackendComponent = {
+        ...input,
+        __component: "elements.input",
+      };
       let inputName = input.name;
       let isFile = false;
 
@@ -52,7 +56,7 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
         inputName = `inputs[${index}].value`;
       }
 
-      let options;
+      let options: IBackendComponent["options"] = undefined;
 
       if (["listbox", "radio-group"].includes(input.variant)) {
         options = input.options?.map((option: any) => {
@@ -61,12 +65,13 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
 
           return passOption;
         });
-      } else if (input.type && ["date", "datetime"].includes(input.type)) {
-        options = {
-          inline: true,
-          enableTime: input.type === "datetime",
-        };
       }
+      // else if (input.type && ["date", "datetime"].includes(input.type)) {
+      //   options = {
+      //     inline: true,
+      //     enableTime: input.type === "datetime",
+      //   };
+      // }
 
       return {
         input: localInput,

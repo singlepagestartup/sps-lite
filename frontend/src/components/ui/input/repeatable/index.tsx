@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
-import Input from "~components/input";
+import Input from "~components/elements/input";
 import { IInputProps } from "..";
-import { getInputErrors } from "~components/input/utils";
+import { getInputErrors } from "~components/ui/input/utils";
 
 export interface IInsideComponentProps {
   translate?: (message: string) => string;

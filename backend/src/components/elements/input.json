@@ -50,16 +50,24 @@
     "type": {
       "type": "enumeration",
       "enum": [
+        "checkbox",
+        "date",
+        "datetime-local",
+        "email",
+        "file",
+        "hidden",
         "number",
+        "password",
+        "radio",
+        "range",
+        "tel",
         "text",
         "textarea",
-        "date",
-        "date_inline",
-        "datetime_inline",
-        "daterange_inline",
-        "datetimerange_inline"
+        "time",
+        "select"
       ],
-      "required": false
+      "required": true,
+      "default": "text"
     },
     "multiple": {
       "type": "boolean"

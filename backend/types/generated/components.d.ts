@@ -160,16 +160,25 @@ export interface ElementsInput extends Schema.Component {
     class_name: Attribute.String;
     type: Attribute.Enumeration<
       [
+        "checkbox",
+        "date",
+        "datetime-local",
+        "email",
+        "file",
+        "hidden",
         "number",
+        "password",
+        "radio",
+        "range",
+        "tel",
         "text",
         "textarea",
-        "date",
-        "date_inline",
-        "datetime_inline",
-        "daterange_inline",
-        "datetimerange_inline",
+        "time",
+        "select",
       ]
-    >;
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<"text">;
     multiple: Attribute.Boolean;
     min: Attribute.Float;
     max: Attribute.Float;

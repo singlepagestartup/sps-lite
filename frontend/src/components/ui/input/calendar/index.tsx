@@ -11,7 +11,7 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import dayjs from "dayjs";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { getInputErrors } from "~components/input/utils";
+import { getInputErrors } from "~components/ui/input/utils";
 import { IInputProps } from "..";
 
 export default function CalendarInput(props: IInputProps) {

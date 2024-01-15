@@ -14,7 +14,7 @@ export interface IInputProps extends UseControllerProps {
   multiple?: boolean | null;
   accept?: string;
   by?: string;
-  className?: string;
+  className?: string | null;
   inputConfig?: any;
   parentKey?: string;
   defaultValue?: any;

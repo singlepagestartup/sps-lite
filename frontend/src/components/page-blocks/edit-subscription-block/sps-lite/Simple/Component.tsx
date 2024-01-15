@@ -5,7 +5,8 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
-import Input from "~components/input";
+import Input from "~components/elements/input";
+import TextInput from "~components/ui/input/text";
 
 export default function Component(props: IPageBlock) {
   const [updateByEmail, { data: updateByEmailData }] =
@@ -61,7 +62,7 @@ export default function Component(props: IPageBlock) {
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <FormProvider {...methods}>
               <div className="flex flex-col gap-2">
-                <Input
+                <TextInput
                   variant="text"
                   name="email"
                   label="Email"
