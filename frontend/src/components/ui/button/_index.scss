@@ -1,0 +1,56 @@
+&.button {
+  @apply inline-flex w-full items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background whitespace-nowrap;
+
+  &[data-size="default"] {
+    @apply h-10 py-2 px-4;
+  }
+
+  &[data-size="sm"] {
+    @apply h-9 px-3 rounded-md;
+  }
+
+  &[data-size="lg"] {
+    @apply h-11 px-8 rounded-md;
+  }
+
+  &[data-size="icon"] {
+    @apply h-10 w-10;
+  }
+
+  &[data-variant="primary"] {
+    &.button {
+      @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    }
+  }
+
+  &[data-variant="destructive"] {
+    &.button {
+      @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+    }
+  }
+
+  &[data-variant="outline"] {
+    &.button {
+      @apply border border-input hover:bg-accent hover:text-accent-foreground;
+    }
+  }
+
+  &[data-variant="secondary"],
+  &[data-variant="locale"] {
+    &.button {
+      @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    }
+  }
+
+  &[data-variant="ghost"] {
+    &.button {
+      @apply hover:bg-accent hover:text-accent-foreground;
+    }
+  }
+
+  &[data-variant="link"] {
+    &.button {
+      @apply underline-offset-4 hover:underline text-primary;
+    }
+  }
+}

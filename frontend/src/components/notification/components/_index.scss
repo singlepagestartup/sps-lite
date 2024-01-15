@@ -1,0 +1,59 @@
+& {
+  @apply z-50 fixed right-0 flex items-end flex-col mx-4 bottom-0 mb-4;
+
+  &[data-position="top"] {
+    @apply mb-0 top-0 mt-4;
+  }
+
+  .notification {
+    @apply relative overflow-hidden drop-shadow-md;
+
+    .notification-container {
+      @apply relative flex flex-row items-start rounded-sm pr-8 py-2 bg-white;
+
+      .notification-body {
+        @apply flex flex-col items-start;
+
+        &[data-message="true"] {
+          @apply gap-2;
+        }
+
+        .notification-heading {
+          @apply pl-2 text-sm;
+        }
+
+        .notification-message {
+          @apply pl-2 text-xs;
+        }
+      }
+
+      .button-close {
+        @apply absolute right-2 top-2 text-black w-3 z-50 cursor-pointer;
+
+        svg {
+          @apply fill-current w-3;
+        }
+      }
+    }
+
+    &.notification-warning {
+      .notification-container {
+        .notification-body {
+          .notification-heading {
+            @apply text-orange-400;
+          }
+        }
+      }
+    }
+
+    &.notification-error {
+      .notification-container {
+        .notification-body {
+          .notification-heading {
+            @apply text-red-500;
+          }
+        }
+      }
+    }
+  }
+}

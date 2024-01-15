@@ -1,0 +1,22 @@
+[data-component="elements.input"] {
+  .input-label {
+    @apply block mb-1;
+  }
+
+  .input-error {
+    @apply absolute;
+
+    p {
+      @apply text-red-500 text-xs pt-1;
+    }
+  }
+
+  @import "./text/index";
+  @import "./listbox/index";
+  @import "./radio-group/index";
+  @import "./switch/index";
+  @import "./file/index";
+  @import "./range/index";
+  @import "./repeatable/index";
+  @import "./date/index";
+}
