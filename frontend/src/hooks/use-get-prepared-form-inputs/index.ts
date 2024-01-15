@@ -10,7 +10,7 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
-      const localInput: IBackendComponent = {
+      const localInput: IBackendComponent & { by?: any } = {
         ...input,
         __component: "elements.input",
       };
@@ -34,6 +34,7 @@ export default function useGetPreparedFormInputs(props: IBackendForm) {
         inputName = input.multiple
           ? `inputs[${index}].options`
           : `inputs[${index}].option`;
+        localInput.by = "title";
       } else if (["switch"].includes(input.variant)) {
         inputName = `inputs[${index}].is_true`;
       } else if (["file"].includes(input.variant)) {

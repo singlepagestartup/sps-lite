@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import { IInputProps } from "..";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
+import { useGetStringProps } from "../use-get-string-props";
+import { Label } from "~components/ui/label";
 
 export default function RangeInput(props: IInputProps) {
   const {
@@ -23,6 +25,8 @@ export default function RangeInput(props: IInputProps) {
   } = props;
 
   const translate = useTranslationsContext();
+
+  const stringProps = useGetStringProps(props);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const htmlNodeId = useMemo(() => {
@@ -97,17 +101,18 @@ export default function RangeInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-range ${className || ""}`}
+      data-ui-variant="range"
+      className={className || ""}
     >
       {label ? (
-        <div className="input-label">
-          <label htmlFor={htmlNodeId}>
+        <div className="label-container">
+          <Label htmlFor={htmlNodeId}>
             {typeof translate === "function" && label
               ? translate(label)
               : label}
-          </label>
+          </Label>
         </div>
       ) : null}
       <div className="input-container">

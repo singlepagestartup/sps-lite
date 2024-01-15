@@ -63,12 +63,13 @@ export default function Simple(props: IForm) {
                 options={input.options}
                 name={input.inputName}
                 className={input.input?.className || ""}
-                // rules={{
-                //   required: {
-                //     value: input.input?.isRequired,
-                //     message: "Required field",
-                //   },
-                // }}
+                by={input.input?.by || undefined}
+                rules={{
+                  required: {
+                    value: input.input?.isRequired,
+                    message: "Required field",
+                  },
+                }}
               />
             );
           })}
@@ -84,7 +85,7 @@ export default function Simple(props: IForm) {
                 initialValue={input.input.name}
                 defaultValue=""
                 by="id"
-                className="hidden"
+                className="!hidden"
                 rules={{
                   required: {
                     value: input.input?.isRequired,

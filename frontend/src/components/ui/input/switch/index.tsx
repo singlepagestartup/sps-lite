@@ -4,8 +4,9 @@ import { useEffect, useMemo, useRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import { IInputProps } from "..";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
+import { useGetStringProps } from "../use-get-string-props";
 
 export default function SwitchInput(props: IInputProps) {
   const {
@@ -25,6 +26,8 @@ export default function SwitchInput(props: IInputProps) {
   const htmlNodeId = useMemo(() => {
     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
+
+  const stringProps = useGetStringProps(props);
 
   const {
     control,
@@ -64,9 +67,10 @@ export default function SwitchInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-switch ${className || ""}`}
+      data-ui-variant="switch"
+      className={className || ""}
     >
       <div className="input-container">
         <SwitchComp

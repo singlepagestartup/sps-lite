@@ -1,4 +1,4 @@
-&.input-repeatable {
+&[data-ui-variant="repeatable"] {
   .input-container {
     @apply flex flex-col gap-4;
 

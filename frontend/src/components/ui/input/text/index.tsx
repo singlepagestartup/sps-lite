@@ -4,8 +4,11 @@ import { useTranslationsContext } from "~hooks/use-translations/TranslationsCont
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { IInputProps } from "..";
+import { useGetStringProps } from "../use-get-string-props";
+import Button from "~components/ui/button";
+import { Label } from "~components/ui/label";
 
 export default function TextInput(props: IInputProps) {
   const {
@@ -28,6 +31,8 @@ export default function TextInput(props: IInputProps) {
   } = props;
 
   const translate = useTranslationsContext();
+
+  const stringProps = useGetStringProps(props);
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const htmlNodeId = useMemo(() => {
@@ -97,29 +102,28 @@ export default function TextInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-text ${className || ""}`}
+      data-ui-variant="text"
+      className={className || ""}
     >
       {label ? (
-        <div className="input-label">
-          <label htmlFor={htmlNodeId}>
+        <div className="label-container">
+          <Label htmlFor={htmlNodeId}>
             {typeof translate === "function" && label
               ? translate(label)
               : label}
-          </label>
+          </Label>
         </div>
       ) : null}
       <div className="input-container">
         <div className="reset-button-container">
-          <button onClick={reset} className="reset-button">
+          <Button onClick={reset} data-ui-variant="reset" data-ui-size="sm">
             <div className="icon">
               <ResetIcon className="w-4 h-5" />
             </div>
-            <p>
-              {typeof translate === "function" ? translate("Reset") : "Reset"}
-            </p>
-          </button>
+            {typeof translate === "function" ? translate("Reset") : "Reset"}
+          </Button>
         </div>
         <div
           data-media={props.media && props.media?.length > 0}

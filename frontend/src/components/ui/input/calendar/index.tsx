@@ -11,8 +11,11 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import dayjs from "dayjs";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { IInputProps } from "..";
+import { useGetStringProps } from "../use-get-string-props";
+import { Label } from "~components/ui/label";
+import Button from "~components/ui/button";
 
 export default function CalendarInput(props: IInputProps) {
   const {
@@ -36,6 +39,8 @@ export default function CalendarInput(props: IInputProps) {
     CalendarIcon = DefaultCalendarIcon,
     media,
   } = props;
+
+  const stringProps = useGetStringProps(props);
 
   const [domLoaded, setDomLoaded] = useState(false);
 
@@ -152,30 +157,29 @@ export default function CalendarInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-date ${className || ""}`}
+      data-ui-variant="calendar"
+      className={className || ""}
     >
       {label ? (
-        <div className="input-label">
-          <label htmlFor={htmlNodeId}>
+        <div className="label-container">
+          <Label htmlFor={htmlNodeId}>
             {typeof translate === "function" && label
               ? translate(label)
               : label}
-          </label>
+          </Label>
         </div>
       ) : null}
       {domLoaded ? (
         <div className="input-container">
           <div className="reset-button-container">
-            <button onClick={reset} className="reset-button">
+            <Button onClick={reset} data-ui-variant="reset" data-ui-size="sm">
               <div className="icon">
                 <ResetIcon className="w-4 h-5" />
               </div>
-              <p>
-                {typeof translate === "function" ? translate("Reset") : "Reset"}
-              </p>
-            </button>
+              {typeof translate === "function" ? translate("Reset") : "Reset"}
+            </Button>
           </div>
           <div
             data-media={media && media?.length > 0}

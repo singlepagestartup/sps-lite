@@ -1,4 +1,8 @@
-&.input-file {
+&[data-ui-variant="file"] {
+  .label-container {
+    @apply pb-1;
+  }
+
   .input-container {
     @apply relative;
 
@@ -71,19 +75,7 @@
     }
 
     .reset-button-container {
-      @apply absolute right-1 -top-6 z-10;
-
-      .reset-button {
-        @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
-
-        p {
-          @apply text-sm;
-        }
-
-        .icon {
-          @apply hidden;
-        }
-      }
+      @apply absolute right-1 -top-8 z-10;
     }
   }
 }

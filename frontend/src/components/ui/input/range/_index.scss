@@ -1,4 +1,8 @@
-&.input-range {
+&[data-ui-variant="range"] {
+  .label-container {
+    @apply pb-1;
+  }
+
   .input-container {
     @apply relative mt-2;
 

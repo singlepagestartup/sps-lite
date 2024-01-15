@@ -49,4 +49,5 @@ export interface IInputProps extends UseControllerProps {
     | "repeatable"
     | "range"
     | "date";
+  [key: string]: any;
 }

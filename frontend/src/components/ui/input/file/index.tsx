@@ -11,7 +11,10 @@ import getFileUrl from "~utils/api/get-file-url";
 import axios from "axios";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { IInputProps } from "..";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
+import { useGetStringProps } from "../use-get-string-props";
+import { Label } from "~components/ui/label";
+import Button from "~components/ui/button";
 
 export default function FileInput(props: IInputProps) {
   const {
@@ -29,6 +32,8 @@ export default function FileInput(props: IInputProps) {
     index,
     type = "file",
   } = props;
+
+  const stringProps = useGetStringProps(props);
 
   const translate = useTranslationsContext();
 
@@ -234,29 +239,28 @@ export default function FileInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-file ${className || ""}`}
+      data-ui-variant="file"
+      className={className || ""}
     >
       {label ? (
-        <div className="input-label">
-          <label>
+        <div className="label-container">
+          <Label>
             {typeof translate === "function" && label
               ? translate(label)
               : label}
-          </label>
+          </Label>
         </div>
       ) : null}
       <div className="input-container">
         <div className="reset-button-container">
-          <button onClick={reset} className="reset-button">
+          <Button onClick={reset} data-ui-variant="reset" data-ui-size="sm">
             <div className="icon">
               <ResetIcon className="w-4 h-5" />
             </div>
-            <p>
-              {typeof translate === "function" ? translate("Reset") : "Reset"}
-            </p>
-          </button>
+            {typeof translate === "function" ? translate("Reset") : "Reset"}
+          </Button>
         </div>
         <label
           htmlFor={htmlNodeId}

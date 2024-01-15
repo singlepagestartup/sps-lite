@@ -1,4 +1,4 @@
-&.input-switch {
+&[data-ui-variant="switch"] {
   .input-container {
     @apply relative flex gap-2 items-start;
 

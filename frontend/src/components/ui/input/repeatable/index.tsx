@@ -4,7 +4,8 @@ import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import Input from "~components/elements/input";
 import { IInputProps } from "..";
-import { getInputErrors } from "~components/ui/input/utils";
+import { getInputErrors } from "~components/ui/input/get-input-errors";
+import { useGetStringProps } from "../use-get-string-props";
 
 export interface IInsideComponentProps {
   translate?: (message: string) => string;
@@ -169,6 +170,8 @@ export default function RepeatableInput(props: IInputProps) {
     clearErrors,
   } = useFormContext();
 
+  const stringProps = useGetStringProps(props);
+
   const {
     fields,
     append,
@@ -300,9 +303,10 @@ export default function RepeatableInput(props: IInputProps) {
 
   return (
     <div
+      {...stringProps}
       data-ui="input"
-      data-variant={props.variant}
-      className={`input-repeatable ${className || ""}`}
+      data-ui-variant="repeatable"
+      className={className || ""}
     >
       {label ? (
         <div className="input-label">
