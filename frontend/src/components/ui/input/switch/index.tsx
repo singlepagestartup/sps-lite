@@ -64,7 +64,7 @@ export default function SwitchInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-switch ${className || ""}`}
     >

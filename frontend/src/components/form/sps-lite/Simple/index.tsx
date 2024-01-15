@@ -106,13 +106,12 @@ export default function Simple(props: IForm) {
           <div className="submit-button-container">
             {props.button ? (
               <Button
-                {...props.button}
-                id={undefined}
                 className={props.button.className || ""}
-                data-variant={props.button?.variant || "secondary"}
+                data-ui-variant={props.button?.variant || "secondary"}
                 onClick={handleSubmit(onSubmit)}
-                title={props.button?.title || "Submit"}
-              />
+              >
+                {props.button?.title || "Submit"}
+              </Button>
             ) : null}
           </div>
         </FormProvider>

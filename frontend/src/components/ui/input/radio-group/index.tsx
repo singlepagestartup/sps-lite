@@ -102,7 +102,7 @@ export default function RadioGroupInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-radio-group ${className || ""}`}
     >

@@ -1,10 +1,12 @@
-.icon-container {
-  @apply w-10 h-10;
+& {
+  .icon-container {
+    @apply w-10 h-10;
 
-  img {
-    @apply object-contain object-center;
+    img {
+      @apply object-contain object-center;
+    }
   }
-}
 
-@import "./Default/index";
-@import "./Locale/index";
+  @import "./Default/index";
+  @import "./Locale/index";
+}

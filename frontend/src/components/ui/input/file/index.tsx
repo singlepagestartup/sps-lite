@@ -234,7 +234,7 @@ export default function FileInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-file ${className || ""}`}
     >

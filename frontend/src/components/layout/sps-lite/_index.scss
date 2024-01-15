@@ -1,2 +1,4 @@
-@import "./Boxed/index";
-@import "./Wide/index";
+& {
+  @import "./Boxed/index";
+  @import "./Wide/index";
+}

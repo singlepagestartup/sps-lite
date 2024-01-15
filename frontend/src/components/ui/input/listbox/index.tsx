@@ -103,7 +103,7 @@ export default function ListboxInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-listbox ${className || ""}`}
     >

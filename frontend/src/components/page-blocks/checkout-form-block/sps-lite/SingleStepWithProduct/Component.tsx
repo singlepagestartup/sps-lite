@@ -115,11 +115,7 @@ export default function Component(props: IPageBlock) {
             placeholder="Input your email"
             label="Email"
           />
-          <Button
-            data-variant="primary"
-            title="Buy"
-            onClick={handleSubmit(onSubmit)}
-          />
+          <Button onClick={handleSubmit(onSubmit)}>Buy</Button>
         </div>
       </FormProvider>
     </div>

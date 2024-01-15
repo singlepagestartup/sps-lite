@@ -95,7 +95,7 @@ export default function Component(props: IPageBlock) {
             label="Email for getting tier attachments"
           />
           <Button
-            data-variant="primary"
+            data-ui-variant="primary"
             title="Buy"
             onClick={handleSubmit(onSubmit)}
           />

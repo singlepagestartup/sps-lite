@@ -152,7 +152,7 @@ export default function CalendarInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-date ${className || ""}`}
     >

@@ -1,0 +1,10 @@
+[data-ui="input"] {
+  @import "./calendar/index";
+  @import "./file/index";
+  @import "./listbox/index";
+  @import "./radio-group/index";
+  @import "./range/index";
+  @import "./repeatable/index";
+  @import "./switch/index";
+  @import "./text/index";
+}

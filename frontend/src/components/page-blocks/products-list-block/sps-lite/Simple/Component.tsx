@@ -4,7 +4,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
-import Card, { ICardProps } from "~components/card";
+import Card, { ICardProps } from "~components/ui/card";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/product/interfaces";
 import { IPageBlock } from "../..";
@@ -124,7 +124,7 @@ function ProductCard(props: ICardProps) {
             <ReactMarkdown>{item.description}</ReactMarkdown>
           </div>
         ) : null}
-        <Button data-variant="primary" asChild={true}>
+        <Button asChild={true}>
           <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
         </Button>
         <FormProvider {...methods}>
@@ -137,13 +137,13 @@ function ProductCard(props: ICardProps) {
           />
           <Button
             onClick={handleSubmit(incrementSubmit)}
-            data-variant="secondary"
+            data-ui-variant="secondary"
           >
             Increment in cart
           </Button>
           <Button
             onClick={handleSubmit(decrementSubmit)}
-            data-variant="secondary"
+            data-ui-variant="secondary"
           >
             Decrement in cart
           </Button>
@@ -153,7 +153,7 @@ function ProductCard(props: ICardProps) {
           onClick={() => {
             removeFromCart({ id: item.id });
           }}
-          data-variant="secondary"
+          data-ui-variant="secondary"
         >
           Remove from cart
         </Button>

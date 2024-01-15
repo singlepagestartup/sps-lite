@@ -1,3 +1,5 @@
-&[data-variant="one-quarter"] {
-  @apply w-full;
+& {
+  &[data-variant="one-quarter"] {
+    @apply w-full;
+  }
 }

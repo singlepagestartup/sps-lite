@@ -300,7 +300,7 @@ export default function RepeatableInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-repeatable ${className || ""}`}
     >

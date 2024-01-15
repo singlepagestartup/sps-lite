@@ -97,7 +97,7 @@ export default function TextInput(props: IInputProps) {
 
   return (
     <div
-      data-component="elements.input"
+      data-ui="input"
       data-variant={props.variant}
       className={`input-text ${className || ""}`}
     >
