@@ -21,7 +21,15 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["primary", "secondary", "text", "locale", "profile"],
+      "enum": [
+        "primary",
+        "secondary",
+        "locale",
+        "destructive",
+        "outline",
+        "ghost",
+        "link"
+      ],
       "default": "primary",
       "required": true
     },

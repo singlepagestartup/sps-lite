@@ -65,7 +65,7 @@ function DisclosureInner({
                   )}
                 </div>
               ) : null}
-              <div className="hidden lg:ml-6 lg:flex lg:space-x-6 items-center">
+              <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.buttons?.map((button, index) => {
                   return <Button key={index} {...button} />;
                 })}

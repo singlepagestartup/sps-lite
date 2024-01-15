@@ -1,14 +1,16 @@
-import Text from "./Text";
-import Secondary from "./Secondary";
-import Primary from "./Primary";
+import Default from "./Default";
 import Locale from "./Locale";
 import { IElement } from "..";
 
 export const variants = {
-  text: Text,
-  primary: Primary,
-  secondary: Secondary,
+  text: Default,
+  primary: Default,
+  secondary: Default,
   locale: Locale,
+  destructive: Default,
+  outline: Default,
+  ghost: Default,
+  link: Default,
 };
 
 export default function SpsLite(props: IElement) {

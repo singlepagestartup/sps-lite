@@ -4,13 +4,20 @@ import { IEntity as IBackendFile } from "~redux/services/backend/extensions/uplo
 export interface IComponent {
   id: number;
   __component?: "elements.button";
-  variant: "text" | "primary" | "secondary";
+  variant:
+    | "primary"
+    | "secondary"
+    | "locale"
+    | "destructive"
+    | "outline"
+    | "ghost"
+    | "link";
   title: string | null;
   url: string | null;
   description: string | null;
+  className: string | null;
   media?: IBackendFile[] | null;
   additionalMedia?: IBackendFile[] | null;
-  className: string | null;
+  flyout?: IBackendFlyout | null;
   additionalAttributes: any | null;
-  flyout: IBackendFlyout | null;
 }

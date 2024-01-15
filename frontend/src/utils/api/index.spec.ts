@@ -4,7 +4,7 @@ import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "~utils/envs";
 import Pako from "pako";
 import QueryString from "qs";
-import { IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
+import { IEntity as IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 const scopedPage: IBackendApiPage = {
   id: 12,
@@ -23,16 +23,19 @@ describe("utils/api", () => {
       const page = { ...scopedPage };
 
       const server = setupServer(
-        http.get(`${BACKEND_URL}/api/pages`, ({ request }) => {
-          return HttpResponse.json({
-            data: [page],
-          });
-        }),
+        http.get(
+          `${BACKEND_URL}/api/sps-website-builder/pages`,
+          ({ request }) => {
+            return HttpResponse.json({
+              data: [page],
+            });
+          },
+        ),
       );
       server.listen();
 
       const result = await getBackendData({
-        url: `${BACKEND_URL}/api/pages`,
+        url: `${BACKEND_URL}/api/sps-website-builder/pages`,
       }); //?
 
       expect(result).toEqual([page]);
@@ -45,19 +48,22 @@ describe("utils/api", () => {
       const page = { ...scopedPage };
 
       const server = setupServer(
-        http.get(`${BACKEND_URL}/api/pages`, ({ request }) => {
-          request.url.split("?")[1]; //?
-          query = request.url.split("?")[1];
+        http.get(
+          `${BACKEND_URL}/api/sps-website-builder/pages`,
+          ({ request }) => {
+            request.url.split("?")[1]; //?
+            query = request.url.split("?")[1];
 
-          return HttpResponse.json({
-            data: [page],
-          });
-        }),
+            return HttpResponse.json({
+              data: [page],
+            });
+          },
+        ),
       );
       server.listen();
 
       const result = await getBackendData({
-        url: `${BACKEND_URL}/api/pages`,
+        url: `${BACKEND_URL}/api/sps-website-builder/pages`,
         params: {
           populate: "*",
         },
@@ -69,23 +75,26 @@ describe("utils/api", () => {
     });
   });
 
-  describe.only("getTargetPage", () => {
+  describe("getTargetPage", () => {
     it("should ", async () => {
       const page = { ...scopedPage };
       let backendParams = {};
       const server = setupServer(
-        http.get(`${BACKEND_URL}/api/pages/get-by-url`, ({ request }) => {
-          const query = request.url.split("?")[1]; //?
-          const compressedData = Buffer.from(query, "base64");
-          const originalData = Pako.ungzip(compressedData); //?
-          const originalString = new TextDecoder().decode(originalData); //?
-          const params = QueryString.parse(originalString); //?
-          backendParams = params;
+        http.get(
+          `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url`,
+          ({ request }) => {
+            const query = request.url.split("?")[1]; //?
+            const compressedData = Buffer.from(query, "base64");
+            const originalData = Pako.ungzip(compressedData); //?
+            const originalString = new TextDecoder().decode(originalData); //?
+            const params = QueryString.parse(originalString); //?
+            backendParams = params;
 
-          return HttpResponse.json({
-            data: page,
-          });
-        }),
+            return HttpResponse.json({
+              data: page,
+            });
+          },
+        ),
       );
       server.listen();
 

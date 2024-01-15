@@ -3,7 +3,6 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { Popover } from "@headlessui/react";
 import { api as flyoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/api";
 import { IEntity as IBackendFlyout } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/interfaces";
 
@@ -68,22 +67,5 @@ export default function Flyout({
     return <></>;
   }
 
-  return (
-    <Popover>
-      {(popoverProps) => {
-        return (
-          <div className="relative">
-            <Popover.Button as="div" className="w-full">
-              {children}
-            </Popover.Button>
-            <Comp
-              {...flyoutProps}
-              {...popoverProps}
-              showSkeletons={isLoading || isFetching || isUninitialized}
-            />
-          </div>
-        );
-      }}
-    </Popover>
-  );
+  return <Comp {...flyoutProps}>{children}</Comp>;
 }

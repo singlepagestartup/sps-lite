@@ -79,7 +79,7 @@ function OrderProductComponent({
           return <AttributeComponent key={index} attribute={attribute} />;
         })}
         <Button
-          variant="text"
+          variant="primary"
           title="Delete"
           onClick={() => {
             if (!orderProduct.product) {

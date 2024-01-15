@@ -148,6 +148,8 @@ export default function DateInput(props: IInputProps) {
     return Calendar;
   }, [options]);
 
+  const [date, setDate] = useState<Date | undefined>(new Date());
+
   return (
     <div
       data-component="elements.input"

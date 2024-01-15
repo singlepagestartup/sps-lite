@@ -4,10 +4,8 @@ import Button from "~components/ui/button";
 import { IElement } from "../..";
 import { useMemo } from "react";
 import Flyout from "~components/flyout";
-import { useParams } from "next/navigation";
 
 export default function Default(props: IElement) {
-  const params = useParams();
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   // Bug with Next.js Link component and hash links
@@ -41,9 +39,7 @@ export default function Default(props: IElement) {
           data-size="default"
           {...additionalAttributes}
         >
-          {`${
-            !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
-          }`}
+          {props.title}
         </Button>
       </Flyout>
     );

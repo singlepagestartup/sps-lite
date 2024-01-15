@@ -6,7 +6,7 @@ import { ReduxProvider } from "~redux/index";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "~utils/envs";
 import { HttpResponse, http } from "msw";
-import { IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
+import { IEntity as IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 jest.mock("next/navigation", () => {
   return {
@@ -27,11 +27,14 @@ const scopedPage: IBackendApiPage = {
 };
 
 const server = setupServer(
-  http.get(`${BACKEND_URL}/api/pages/get-by-url`, ({ request }) => {
-    return HttpResponse.json({
-      data: scopedPage,
-    });
-  }),
+  http.get(
+    `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url`,
+    ({ request }) => {
+      return HttpResponse.json({
+        data: scopedPage,
+      });
+    },
+  ),
 );
 
 describe("useGetPageUrlFiltersQuery", () => {

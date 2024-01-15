@@ -15,7 +15,7 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
-export default function ListboxInput(props: IInputProps) {
+export default function RadioGroupInput(props: IInputProps) {
   const {
     label,
     name,

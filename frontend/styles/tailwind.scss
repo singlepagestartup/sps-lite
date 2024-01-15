@@ -100,32 +100,60 @@ input[type="number"] {
       }
     }
 
-    &[data-variant="text"] {
-      /**
-      * Using just "a, button { ... }"
-      * will not work because of specificity CSS rules
-      * lower code overrides the upper one
-      */
-      .button-text {
-        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center rounded-md transition duration-150 ease-in-out hover:text-primary-600;
-      }
-    }
+    &.button {
+      @apply inline-flex w-full items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background whitespace-nowrap;
 
-    &[data-variant="locale"] {
-      .button-locale {
-        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white uppercase;
+      &[data-size="default"] {
+        @apply h-10 py-2 px-4;
       }
-    }
 
-    &[data-variant="secondary"] {
-      .button-secondary {
-        @apply relative inline-flex w-full font-medium leading-relaxed justify-center items-center border border-black rounded-md px-8 py-3 transition duration-150 ease-in-out hover:bg-black hover:text-white;
+      &[data-size="sm"] {
+        @apply h-9 px-3 rounded-md;
       }
-    }
 
-    &[data-variant="primary"] {
-      .button-primary {
-        @apply relative inline-flex w-full justify-center items-center rounded-md border border-primary-600 bg-primary-600 px-8 py-3 font-medium text-white hover:bg-black hover:border-black transition duration-150 ease-in-out;
+      &[data-size="lg"] {
+        @apply h-11 px-8 rounded-md;
+      }
+
+      &[data-size="icon"] {
+        @apply h-10 w-10;
+      }
+
+      &[data-variant="primary"] {
+        &.button {
+          @apply bg-primary text-primary-foreground hover:bg-primary/90;
+        }
+      }
+
+      &[data-variant="destructive"] {
+        &.button {
+          @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+        }
+      }
+
+      &[data-variant="outline"] {
+        &.button {
+          @apply border border-input hover:bg-accent hover:text-accent-foreground;
+        }
+      }
+
+      &[data-variant="secondary"],
+      &[data-variant="locale"] {
+        &.button {
+          @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+        }
+      }
+
+      &[data-variant="ghost"] {
+        &.button {
+          @apply hover:bg-accent hover:text-accent-foreground;
+        }
+      }
+
+      &[data-variant="link"] {
+        &.button {
+          @apply underline-offset-4 hover:underline text-primary;
+        }
       }
     }
   }
@@ -178,7 +206,7 @@ input[type="number"] {
         @apply relative;
 
         .input-container {
-          @apply relative flex gap-2 items-center rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2;
+          @apply relative flex gap-2 items-center w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
 
           .media-container {
             @apply hidden;
@@ -231,7 +259,7 @@ input[type="number"] {
             @apply absolute right-1 -top-6 z-10;
 
             .reset-button {
-              @apply flex items-center text-zinc-400 hover:text-zinc-600 justify-center rounded-full transition duration-150 ease-in-out;
+              @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
 
               p {
                 @apply text-sm;
@@ -260,7 +288,7 @@ input[type="number"] {
               @apply w-full;
 
               .button {
-                @apply relative flex items-center gap-2 border border-gray-300 shadow-sm w-full cursor-pointer rounded-lg bg-white py-2 px-3 text-left focus:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-300 sm:text-sm;
+                @apply relative flex items-center gap-2 w-full cursor-pointer rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
 
                 .title-container {
                   @apply w-full flex items-center gap-2;
@@ -345,10 +373,10 @@ input[type="number"] {
             }
 
             .options {
-              @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-20;
+              @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-popover py-1 text-base ring-1 flex flex-col gap-1 ring-border ring-opacity-5 focus:outline-none sm:text-sm z-20 shadow-md;
 
               .option {
-                @apply flex items-center gap-2 hover:bg-primary-50 relative cursor-pointer select-none py-2 px-3 text-gray-900;
+                @apply flex items-center gap-2 hover:bg-muted relative cursor-pointer select-none py-2 px-3 text-popover-foreground mx-1 rounded-md;
 
                 .title-container {
                   @apply relative flex items-center gap-2;
@@ -379,7 +407,7 @@ input[type="number"] {
                 }
 
                 &[aria-selected="true"] {
-                  @apply bg-primary-50 text-primary-900;
+                  @apply bg-muted text-primary;
 
                   .title-container {
                     .title {
@@ -403,7 +431,7 @@ input[type="number"] {
             @apply absolute right-1 -top-6 z-10;
 
             .reset-button {
-              @apply flex items-center text-zinc-400 hover:text-zinc-600 justify-center rounded-full transition duration-150 ease-in-out;
+              @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
 
               p {
                 @apply text-sm;
@@ -432,7 +460,7 @@ input[type="number"] {
               @apply w-full;
 
               .button {
-                @apply relative flex items-center gap-2 border border-gray-300 shadow-sm w-full cursor-pointer rounded-lg bg-white py-2 px-3 text-left focus:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-300 sm:text-sm;
+                @apply relative flex items-center gap-2 border border-primary w-full cursor-pointer rounded-lg py-2 px-3 text-left focus:outline-none focus-visible:border-primary focus-visible:ring-2 sm:text-sm;
 
                 .title-container {
                   @apply w-full flex items-center gap-2;
@@ -520,7 +548,7 @@ input[type="number"] {
               @apply w-fit overflow-auto rounded-md bg-white text-base focus:outline-none sm:text-sm z-10;
 
               .option {
-                @apply flex items-center gap-2 relative cursor-pointer select-none py-2 text-gray-900;
+                @apply flex items-center gap-2 relative cursor-pointer select-none py-2 text-primary;
 
                 .title-container {
                   @apply relative flex items-center gap-2;
@@ -539,7 +567,7 @@ input[type="number"] {
                 }
 
                 .extra-media-container {
-                  @apply w-4 h-4 flex flex-shrink-0 rounded-full border border-gray-300 items-center justify-center;
+                  @apply w-4 h-4 flex flex-shrink-0 rounded-full border border-input items-center justify-center;
 
                   &[data-media="true"] {
                     @apply flex relative w-5 h-5;
@@ -550,7 +578,7 @@ input[type="number"] {
                   }
 
                   .check {
-                    @apply flex flex-shrink-0 w-3 h-3 rounded-full bg-transparent;
+                    @apply flex flex-shrink-0 w-2 h-2 rounded-full bg-transparent;
                   }
                 }
 
@@ -562,6 +590,8 @@ input[type="number"] {
                   }
 
                   .extra-media-container {
+                    @apply border-primary;
+
                     &[data-media="true"] {
                       img {
                         @apply block;
@@ -571,7 +601,7 @@ input[type="number"] {
 
                   .extra-media-container {
                     .check {
-                      @apply bg-primary-600;
+                      @apply bg-primary;
                     }
                   }
                 }
@@ -583,7 +613,7 @@ input[type="number"] {
             @apply absolute right-1 -top-6 z-10;
 
             .reset-button {
-              @apply flex items-center text-zinc-400 hover:text-zinc-600 justify-center rounded-full transition duration-150 ease-in-out;
+              @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
 
               p {
                 @apply text-sm;
@@ -608,10 +638,10 @@ input[type="number"] {
           }
 
           .check {
-            @apply w-5 h-5 flex shrink-0 rounded-md border items-center justify-center border-gray-300  mt-[2px] text-white cursor-pointer;
+            @apply w-5 h-5 flex shrink-0 rounded-md border items-center justify-center border-input mt-[2px] text-white cursor-pointer;
 
             &[aria-selected="true"] {
-              @apply bg-primary-600;
+              @apply bg-primary;
 
               svg {
                 @apply w-4;
@@ -632,7 +662,7 @@ input[type="number"] {
               @apply w-full aspect-w-4 aspect-h-4;
 
               .button-container {
-                @apply flex flex-col items-center justify-center border w-full rounded-md border-gray-300 border-dashed cursor-pointer text-gray-400;
+                @apply flex flex-col items-center justify-center border w-full rounded-md border-input border-dashed cursor-pointer text-primary;
 
                 .icon-container {
                   @apply w-6 h-6 flex items-center justify-center relative mb-1;
@@ -669,14 +699,14 @@ input[type="number"] {
             }
 
             .file {
-              @apply relative w-full aspect-w-4 aspect-h-4 border border-gray-300 rounded-md overflow-hidden;
+              @apply relative w-full aspect-w-4 aspect-h-4 border border-primary-foreground rounded-md overflow-hidden;
 
               img {
                 @apply object-cover object-center;
               }
 
               .delete-button {
-                @apply absolute top-[50%] bottom-[50%] left-[50%] right-[50%] flex w-8 h-8 items-center justify-center bg-primary-700 rounded-full text-white cursor-pointer -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-200;
+                @apply absolute top-[50%] bottom-[50%] left-[50%] right-[50%] flex w-10 h-10 items-center justify-center bg-destructive rounded-full text-white cursor-pointer -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-200;
 
                 .icon-container {
                   @apply w-5 h-5 flex items-center justify-center relative;
@@ -699,7 +729,7 @@ input[type="number"] {
             @apply absolute right-1 -top-6 z-10;
 
             .reset-button {
-              @apply flex items-center text-zinc-400 hover:text-zinc-600 justify-center rounded-full transition duration-150 ease-in-out;
+              @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
 
               p {
                 @apply text-sm;
@@ -721,19 +751,19 @@ input[type="number"] {
 
           // Custom dragger
           .dragger {
-            @apply absolute block py-[3px] px-2 drop-shadow-sm bg-white rounded-md w-fit transform -translate-x-3/4 mt-[13px];
+            @apply absolute block py-[3px] px-2 bg-background rounded-md w-fit transform -translate-x-3/4 mt-[13px] shadow-md;
 
             .dragger-value {
-              @apply text-xs text-gray-500;
+              @apply text-xs text-primary;
             }
           }
 
           .ms-fill-lower {
-            @apply absolute inset-y-0 h-2 bg-primary-500 rounded-l-full;
+            @apply absolute inset-y-0 h-2 bg-primary rounded-l-full;
           }
 
           .ms-fill-upper {
-            @apply absolute inset-y-0 h-2 right-0 bg-gray-100 rounded-r-full;
+            @apply absolute inset-y-0 h-2 right-0 bg-input rounded-r-full;
           }
 
           .input {
@@ -749,7 +779,7 @@ input[type="number"] {
             }
 
             &::-webkit-slider-thumb {
-              @apply relative outline outline-4 outline-primary-500;
+              @apply relative outline outline-4 outline-primary;
 
               -webkit-appearance: none;
               border: theme("borderWidth.0");
@@ -763,12 +793,12 @@ input[type="number"] {
 
             // For Edge and IE only
             &::-ms-fill-lower {
-              background-color: theme("colors.primary.500");
+              background-color: theme("colors.primary.DEFAULT");
             }
 
             // For Edge and IE only
             &::-ms-fill-upper {
-              background-color: theme("colors.gray.100");
+              background-color: theme("colors.input");
             }
           }
 
@@ -776,7 +806,7 @@ input[type="number"] {
             @apply flex justify-between -mt-2;
 
             p {
-              @apply text-xs text-gray-500;
+              @apply text-xs text-primary;
             }
           }
         }
@@ -847,7 +877,7 @@ input[type="number"] {
             &.react-datetimerange-picker--disabled,
             &.react-datetime-picker--disabled,
             &.react-daterange-picker--disabled {
-              @apply bg-[#f0f0f0] text-[#6d6d6d];
+              @apply bg-muted text-muted-foreground;
             }
 
             &.react-daterange-picker--closed,
@@ -876,7 +906,7 @@ input[type="number"] {
             .react-datetime-picker__wrapper,
             .react-date-picker__wrapper,
             .react-daterange-picker__wrapper {
-              @apply flex grow shrink-0 items-center gap-2 rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm px-3 py-2;
+              @apply flex grow shrink-0 items-center gap-2 rounded-md border border-input shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-3 py-2;
 
               .react-datetimerange-picker__inputGroup,
               .react-datetime-picker__inputGroup,
@@ -974,7 +1004,7 @@ input[type="number"] {
                 }
 
                 &:enabled {
-                  @apply cursor-pointer stroke-black transition duration-200;
+                  @apply cursor-pointer stroke-input transition duration-200;
                 }
 
                 &:enabled:hover,
@@ -1097,7 +1127,7 @@ input[type="number"] {
             @apply absolute right-1 -top-6 z-10;
 
             .reset-button {
-              @apply flex items-center text-zinc-400 hover:text-zinc-600 justify-center rounded-full transition duration-150 ease-in-out;
+              @apply flex items-center text-muted-foreground hover:text-primary justify-center rounded-full transition duration-150 ease-in-out;
 
               p {
                 @apply text-sm;
@@ -1112,7 +1142,7 @@ input[type="number"] {
       }
 
       .react-calendar {
-        @apply z-30 rounded-md border border-gray-300 shadow-sm box-border max-w-full bg-white leading-[1.125em] min-w-[250px];
+        @apply z-30 rounded-md border border-input shadow-sm box-border max-w-full bg-popover leading-[1.125em] min-w-[250px];
 
         & *,
         & *:before,
@@ -1193,37 +1223,43 @@ input[type="number"] {
                 }
 
                 &.react-calendar__month-view__days__day {
+                  @apply rounded-md transition-all duration-200;
+
                   &.react-calendar__tile--now {
-                    @apply ring-black;
+                    @apply bg-accent text-accent-foreground border-accent;
 
                     &:not(.react-calendar__tile--active) {
-                      @apply rounded-full ring-[1px];
+                      @apply rounded-md ring-[1px] ring-transparent;
                     }
                   }
 
                   &.react-calendar__month-view__days__day--neighboringMonth {
-                    @apply text-neutral-300;
+                    @apply text-muted-foreground;
+                  }
+
+                  &:hover {
+                    @apply bg-accent text-accent-foreground transition-all duration-200;
                   }
 
                   &.react-calendar__tile--range {
                     &.react-calendar__tile--active {
-                      @apply bg-black text-white;
+                      @apply bg-primary text-primary-foreground;
                     }
 
                     &.react-calendar__tile--rangeStart {
-                      @apply bg-black text-white rounded-l-full;
+                      @apply bg-primary text-primary-foreground rounded-l-full;
                     }
 
                     &.react-calendar__tile--rangeEnd {
-                      @apply bg-black text-white rounded-r-full;
+                      @apply bg-primary text-primary-foreground rounded-r-full;
                     }
 
                     &.react-calendar__tile--rangeBothEnds {
-                      @apply bg-black text-white rounded-full;
+                      @apply bg-primary text-primary-foreground rounded-md;
                     }
 
                     &.react-calendar__tile--hover {
-                      @apply bg-neutral-300 text-white;
+                      @apply text-primary bg-primary hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground;
 
                       &.react-calendar__tile--hoverStart {
                       }

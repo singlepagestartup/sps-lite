@@ -12,7 +12,15 @@ export interface ElementsButton extends Schema.Component {
     media: Attribute.Media;
     description: Attribute.RichText;
     variant: Attribute.Enumeration<
-      ["primary", "secondary", "text", "locale", "profile"]
+      [
+        "primary",
+        "secondary",
+        "locale",
+        "destructive",
+        "outline",
+        "ghost",
+        "link",
+      ]
     > &
       Attribute.Required &
       Attribute.DefaultTo<"primary">;

@@ -1,28 +1,21 @@
 "use client";
 
+import { Props as ButtonProps } from "~components/ui/button";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent as IBackendComponent } from "~redux/services/backend/components/elements/button/interfaces";
 
 export interface IElement
-  extends Omit<
-    IBackendComponent,
-    | "id"
-    | "url"
-    | "description"
-    | "className"
-    | "additionalAttributes"
-    | "__component"
-    | "flyout"
-  > {
-  url?: string | null;
-  description?: string | null;
-  className?: string | null;
-  additionalAttributes?: any | null;
-  onClick?: any;
-  __component?: IBackendComponent["__component"];
-  flyout?: IBackendComponent["flyout"];
-  children?: any;
+  extends Omit<ButtonProps, "id" | "title" | "url" | "className">,
+    Omit<
+      IBackendComponent,
+      "id" | "url" | "description" | "additionalAttributes" | "className"
+    > {
+  id?: number;
+  url?: IBackendComponent["url"];
+  description?: IBackendComponent["description"];
+  additionalAttributes?: IBackendComponent["additionalAttributes"];
+  className?: IBackendComponent["className"];
 }
 
 const variants = {

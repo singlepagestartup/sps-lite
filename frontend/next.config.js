@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 function makeConfig() {
   const serverEnvironment = process.env.SERVER_ENVIRONMENT;
 
@@ -46,7 +50,7 @@ function makeConfig() {
     config.output = "export";
   }
 
-  return config;
+  return withBundleAnalyzer(config);
 }
 
 module.exports = makeConfig();
