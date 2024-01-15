@@ -16,19 +16,18 @@ export default function Default(props: IElement) {
       : [Link, url];
   }, [url]);
 
-  if (props.onClick) {
-    return (
-      <Button
-        data-component="elements.button"
-        data-variant={props.variant}
-        data-size="default"
-        onClick={props.onClick}
-        {...additionalAttributes}
-      >
-        {props.title}
-      </Button>
-    );
-  }
+  // if (props.onClick) {
+  //   return (
+  //     <Button
+  //       data-component="elements.button"
+  //       data-variant={props.variant}
+  //       onClick={props.onClick}
+  //       {...additionalAttributes}
+  //     >
+  //       {props.title}
+  //     </Button>
+  //   );
+  // }
 
   if (props.flyout) {
     return (
@@ -36,7 +35,6 @@ export default function Default(props: IElement) {
         <Button
           data-component="elements.button"
           data-variant={props.variant}
-          data-size="default"
           {...additionalAttributes}
         >
           {props.title}
@@ -51,7 +49,6 @@ export default function Default(props: IElement) {
         <Comp
           data-component="elements.button"
           data-variant={props.variant}
-          data-size="default"
           href={urlPrepared}
           {...additionalAttributes}
         >
@@ -65,7 +62,6 @@ export default function Default(props: IElement) {
     <Button
       data-component="elements.button"
       data-variant={props.variant}
-      data-size="default"
       {...additionalAttributes}
     >
       {props.title}

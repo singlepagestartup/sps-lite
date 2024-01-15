@@ -10,7 +10,8 @@ import { IEntity as IBackendOrder } from "~redux/services/backend/extensions/sps
 import { IEntity as IBackendOrderProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/order-product/interfaces";
 import { IEntity as IBackendAttribute } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/interfaces";
 import { useMemo } from "react";
-import Button from "~components/elements/button";
+import Button from "~components/ui/button";
+import Link from "next/link";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();
@@ -39,7 +40,9 @@ export default function Component(props: IPageBlock) {
           })}
         </div>
         <div className="w-full">
-          <Button title="Checkout" variant="primary" url="/checkout" />
+          <Button data-variant="primary" asChild={true}>
+            <Link href="/checkout">Checkout</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -79,8 +82,7 @@ function OrderProductComponent({
           return <AttributeComponent key={index} attribute={attribute} />;
         })}
         <Button
-          variant="primary"
-          title="Delete"
+          data-variant="primary"
           onClick={() => {
             if (!orderProduct.product) {
               return;
@@ -88,7 +90,9 @@ function OrderProductComponent({
 
             removeFromCart({ id: orderProduct.product.id });
           }}
-        />
+        >
+          Delete
+        </Button>
       </div>
     </div>
   );

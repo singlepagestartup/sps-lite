@@ -9,7 +9,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
   ({ asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
 
-    return <Comp ref={ref} className="button" {...props} />;
+    return <Comp ref={ref} data-size="default" data-ui="button" {...props} />;
   },
 );
 

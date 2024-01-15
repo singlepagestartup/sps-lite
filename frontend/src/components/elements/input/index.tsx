@@ -11,7 +11,7 @@ const variants = {
   ...startupVariants,
 };
 
-export default function Input(props: IElement) {
+export default function Element(props: IElement) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

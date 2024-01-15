@@ -2,11 +2,11 @@ import { api as formRequestApi } from "~redux/services/backend/extensions/sps-cr
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Input from "~components/elements/input";
-import Button from "~components/elements/button";
 import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
 import TextInput from "~components/ui/input/text";
 import RadioGroupInput from "~components/ui/input/radio-group";
+import Button from "~components/ui/button";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();
@@ -107,7 +107,9 @@ export default function Simple(props: IForm) {
             {props.button ? (
               <Button
                 {...props.button}
-                variant={props.button?.variant || "secondary"}
+                id={undefined}
+                className={props.button.className || ""}
+                data-variant={props.button?.variant || "secondary"}
                 onClick={handleSubmit(onSubmit)}
                 title={props.button?.title || "Submit"}
               />

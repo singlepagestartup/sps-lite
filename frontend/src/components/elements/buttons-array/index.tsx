@@ -17,7 +17,7 @@ export interface IElement
 
 const variants = { ...spsLiteVariants, ...startupVariants };
 
-export default function ButtonsArray(props: IElement) {
+export default function Element(props: IElement) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

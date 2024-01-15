@@ -6,12 +6,12 @@ import { api as cartApi } from "~redux/services/backend/extensions/sps-ecommerce
 import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";
-import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import useMyProfile from "~hooks/use-my-profile";
 import TextInput from "~components/ui/input/text";
+import Button from "~components/ui/button";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();
@@ -95,7 +95,7 @@ export default function Component(props: IPageBlock) {
             label="Email for getting tier attachments"
           />
           <Button
-            variant="primary"
+            data-variant="primary"
             title="Buy"
             onClick={handleSubmit(onSubmit)}
           />

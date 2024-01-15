@@ -5,12 +5,11 @@ import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billin
 import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";
-import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useMemo } from "react";
-import Input from "~components/elements/input";
 import { useRouter } from "next/navigation";
 import TextInput from "~components/ui/input/text";
+import Button from "~components/ui/button";
 
 export default function Component(props: IPageBlock) {
   const router = useRouter();
@@ -117,7 +116,7 @@ export default function Component(props: IPageBlock) {
             label="Email"
           />
           <Button
-            variant="primary"
+            data-variant="primary"
             title="Buy"
             onClick={handleSubmit(onSubmit)}
           />

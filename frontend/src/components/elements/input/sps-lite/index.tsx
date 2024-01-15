@@ -17,7 +17,7 @@ export const variants = {
   date: DateInput,
 };
 
-export default function Input(props: IElement) {
+export default function SpsLite(props: IElement) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

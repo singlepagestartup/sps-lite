@@ -9,10 +9,11 @@ import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/product/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
-import Button from "~components/elements/button";
 import { FormProvider, useForm } from "react-hook-form";
 import useMyProfile from "~hooks/use-my-profile";
 import TextInput from "~components/ui/input/text";
+import Button from "~components/ui/button";
+import Link from "next/link";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -123,11 +124,9 @@ function ProductCard(props: ICardProps) {
             <ReactMarkdown>{item.description}</ReactMarkdown>
           </div>
         ) : null}
-        <Button
-          url={`/checkout/${item.id}`}
-          variant="primary"
-          title={buttonTitle}
-        />
+        <Button data-variant="primary" asChild={true}>
+          <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
+        </Button>
         <FormProvider {...methods}>
           <TextInput
             variant="text"
@@ -138,23 +137,26 @@ function ProductCard(props: ICardProps) {
           />
           <Button
             onClick={handleSubmit(incrementSubmit)}
-            variant="secondary"
-            title="Increment in cart"
-          />
+            data-variant="secondary"
+          >
+            Increment in cart
+          </Button>
           <Button
             onClick={handleSubmit(decrementSubmit)}
-            variant="secondary"
-            title="Decrement in cart"
-          />
+            data-variant="secondary"
+          >
+            Decrement in cart
+          </Button>
         </FormProvider>
 
         <Button
           onClick={() => {
             removeFromCart({ id: item.id });
           }}
-          variant="secondary"
-          title="Remove from cart"
-        />
+          data-variant="secondary"
+        >
+          Remove from cart
+        </Button>
       </div>
     </div>
   );

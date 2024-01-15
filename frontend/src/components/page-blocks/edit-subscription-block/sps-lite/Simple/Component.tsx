@@ -1,12 +1,11 @@
 "use client";
 
-import Button from "~components/elements/button";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
-import Input from "~components/elements/input";
 import TextInput from "~components/ui/input/text";
+import Button from "~components/ui/button";
 
 export default function Component(props: IPageBlock) {
   const [updateByEmail, { data: updateByEmailData }] =
@@ -69,9 +68,9 @@ export default function Component(props: IPageBlock) {
                   placeholder="Type your email"
                 />
                 <Button
-                  onClick={handleSubmit(updateByEmailSubmit)}
-                  variant="primary"
+                  data-variant="primary"
                   title="Delete subscription"
+                  onClick={handleSubmit(updateByEmailSubmit)}
                 />
               </div>
             </FormProvider>
