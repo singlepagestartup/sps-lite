@@ -21,10 +21,17 @@ export default function RangeInput(props: IInputProps) {
     valueAsNumber,
     step,
     min,
-    max,
+    max: passedMax,
   } = props;
 
   const translate = useTranslationsContext();
+
+  const max = useMemo(() => {
+    if (passedMax !== undefined && passedMax !== null) {
+      return typeof passedMax === "string" ? parseInt(passedMax) : passedMax;
+    }
+    return undefined;
+  }, [passedMax]);
 
   const stringProps = useGetStringProps(props);
 
@@ -40,7 +47,15 @@ export default function RangeInput(props: IInputProps) {
   useEffect(() => {
     if (step && step !== additionalAttributes.step) {
       setAdditionalAttributes((prev) => {
-        return { ...prev, step };
+        return {
+          ...prev,
+          step:
+            step !== undefined && step !== null
+              ? typeof step === "string"
+                ? parseInt(step)
+                : step
+              : undefined,
+        };
       });
     }
   }, [props]);

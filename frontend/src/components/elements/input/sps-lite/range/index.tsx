@@ -2,5 +2,20 @@ import RangeInput from "~components/ui/input/range";
 import { IElement } from "../..";
 
 export default function Input(props: IElement) {
-  return <RangeInput data-component="elements.input" {...props} />;
+  return (
+    <RangeInput
+      {...props}
+      data-component="elements.input"
+      label={props.label || undefined}
+      placeholder={props.placeholder || undefined}
+      multiple={undefined}
+      className={props.className || ""}
+      type="date"
+      step={undefined}
+      min={undefined}
+      max={undefined}
+      value={undefined}
+      id={undefined}
+    />
+  );
 }

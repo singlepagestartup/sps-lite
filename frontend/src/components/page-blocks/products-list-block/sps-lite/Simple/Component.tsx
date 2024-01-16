@@ -14,6 +14,7 @@ import useMyProfile from "~hooks/use-my-profile";
 import TextInput from "~components/ui/input/text";
 import Button from "~components/ui/button";
 import Link from "next/link";
+import FormField from "~components/ui/form-field";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -128,9 +129,10 @@ function ProductCard(props: ICardProps) {
           <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
         </Button>
         <FormProvider {...methods}>
-          <TextInput
+          <FormField
             variant="text"
             name="quantity"
+            ui="sps"
             type="number"
             label="Quantity"
             initialValue={1}

@@ -62,11 +62,26 @@ export default function CalendarInput(props: IInputProps) {
 
   useEffect(() => {
     setAdditionalAttributes({
-      step,
-      min,
-      max,
+      step:
+        step !== undefined && step !== null
+          ? typeof step === "string"
+            ? parseInt(step)
+            : step
+          : undefined,
+      min:
+        min !== undefined && min !== null
+          ? typeof min === "string"
+            ? parseInt(min)
+            : min
+          : undefined,
+      max:
+        max !== undefined && max !== null
+          ? typeof max === "string"
+            ? parseInt(max)
+            : max
+          : undefined,
     });
-  }, [props]);
+  }, [JSON.stringify(props)]);
 
   const {
     control,

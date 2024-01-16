@@ -83,7 +83,6 @@ export default function Simple(props: IForm) {
                 type="text"
                 name={`inputs[${index}].key`}
                 initialValue={input.input.name}
-                defaultValue=""
                 by="id"
                 className="!hidden"
                 rules={{

@@ -4,7 +4,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
-import TextInput from "~components/ui/input/text";
+import TextInput from "~components/ui/input/text/sps";
 import Button from "~components/ui/button";
 
 export default function Component(props: IPageBlock) {

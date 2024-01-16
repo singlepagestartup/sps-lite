@@ -1,0 +1,74 @@
+[data-ui="form-field"] {
+  @apply block relative;
+
+  .label-container {
+    @apply pb-1;
+  }
+
+  // .input-container {
+  //   @apply relative flex gap-2 items-center w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+
+  //   // &:hover {
+  //   //   .media-container {
+  //   //     &[data-media="true"] {
+  //   //       img {
+  //   //         @apply hidden;
+
+  //   //         &:nth-child(1) {
+  //   //           @apply hidden;
+  //   //         }
+
+  //   //         &:nth-child(2) {
+  //   //           @apply block;
+  //   //         }
+  //   //       }
+  //   //     }
+  //   //   }
+  //   // }
+
+  //   input,
+  //   textarea {
+  //     @apply w-full border-none p-0;
+  //   }
+
+  //   .reset-button-container {
+  //     @apply absolute right-1 -top-8 z-10;
+  //   }
+  // }
+
+  .reset-button-container {
+    @apply absolute right-1 top-0 z-10;
+  }
+
+  .media-container {
+    @apply hidden;
+
+    &[data-media="true"] {
+      @apply flex absolute w-5 h-5 z-10 left-2 top-8;
+
+      // img {
+      //   @apply hidden;
+
+      //   &:nth-child(1) {
+      //     @apply block;
+      //   }
+      // }
+    }
+  }
+
+  .additional-media-container {
+    @apply hidden;
+
+    &[data-media="true"] {
+      @apply flex relative w-5 h-5;
+    }
+  }
+
+  .input-error {
+    @apply absolute left-0 top-full mt-1;
+
+    p {
+      @apply text-xs text-destructive;
+    }
+  }
+}
