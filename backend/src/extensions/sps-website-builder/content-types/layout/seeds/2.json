@@ -79,7 +79,7 @@
       "title": "Main page",
       "url": "/",
       "createdAt": "2024-01-09T22:27:45.690Z",
-      "updatedAt": "2024-01-14T19:26:13.768Z",
+      "updatedAt": "2024-01-16T18:45:53.512Z",
       "publishedAt": "2023-04-08T12:06:05.277Z",
       "locale": "en"
     },
@@ -88,7 +88,7 @@
       "title": "Not found page",
       "url": "/404",
       "createdAt": "2024-01-09T22:27:45.740Z",
-      "updatedAt": "2024-01-09T22:27:45.740Z",
+      "updatedAt": "2024-01-16T18:46:10.720Z",
       "publishedAt": "2023-04-20T04:18:21.051Z",
       "locale": "en"
     },
@@ -115,7 +115,7 @@
       "title": "One Product Checkout",
       "url": "/checkout/[plugin::sps-ecommerce.product.id]",
       "createdAt": "2024-01-09T23:17:13.561Z",
-      "updatedAt": "2024-01-09T23:18:27.844Z",
+      "updatedAt": "2024-01-16T18:47:41.996Z",
       "publishedAt": "2024-01-09T23:17:14.307Z",
       "locale": "en"
     },

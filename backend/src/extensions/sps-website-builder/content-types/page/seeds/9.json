@@ -3,7 +3,7 @@
   "title": "Page d'accueil",
   "url": "/",
   "createdAt": "2024-01-12T23:28:06.267Z",
-  "updatedAt": "2024-01-14T19:26:13.832Z",
+  "updatedAt": "2024-01-16T18:45:53.581Z",
   "publishedAt": "2024-01-12T23:28:07.163Z",
   "locale": "fr",
   "localizations": [
@@ -12,7 +12,7 @@
       "title": "Main page",
       "url": "/",
       "createdAt": "2024-01-09T22:27:45.690Z",
-      "updatedAt": "2024-01-14T19:26:13.768Z",
+      "updatedAt": "2024-01-16T18:45:53.512Z",
       "publishedAt": "2023-04-08T12:06:05.277Z",
       "locale": "en"
     }
