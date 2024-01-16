@@ -28,11 +28,11 @@ export interface ICardProps extends ICardsBlock {
   index: number;
 }
 
-export interface ICardsProps extends ICardsBlock {
+export interface Props extends ICardsBlock {
   variant: keyof typeof variants;
 }
 
-export default function Card(props: ICardsProps) {
+export default function Card(props: Props) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<any>;
 
   if (!Comp) {

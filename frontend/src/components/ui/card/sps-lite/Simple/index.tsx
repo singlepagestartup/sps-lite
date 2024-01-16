@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { ICardProps, ICardsProps } from "../..";
+import { ICardProps, Props } from "../..";
 
-export default function Simple(props: ICardsProps) {
+export default function Simple(props: Props) {
   const { cardsConfig, items, showSkeletons } = props;
 
   const localItems = useMemo(() => {
@@ -32,7 +32,7 @@ export default function Simple(props: ICardsProps) {
     return (
       <div
         data-ui="components.card"
-        data-variant={props.variant}
+        data-ui-variant="simple"
         data-is-empty={isEmpty}
         className={cardsConfig.className || ""}
       >
@@ -44,7 +44,7 @@ export default function Simple(props: ICardsProps) {
   return (
     <div
       data-ui="components.card"
-      data-variant={props.variant}
+      data-ui-variant="simple"
       data-is-empty={isEmpty}
       className={cardsConfig.className || ""}
     >
