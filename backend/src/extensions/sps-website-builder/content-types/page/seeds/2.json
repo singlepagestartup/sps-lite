@@ -3,7 +3,7 @@
   "title": "Page With Sidebar Layout",
   "url": "/page-with-sidebar-layout",
   "createdAt": "2024-01-09T22:27:45.714Z",
-  "updatedAt": "2024-01-09T22:27:45.714Z",
+  "updatedAt": "2024-01-15T10:46:16.330Z",
   "publishedAt": "2023-04-08T13:00:14.519Z",
   "locale": "en",
   "localizations": [],
@@ -17,7 +17,21 @@
       "title": null,
       "description": null,
       "subtitle": null,
-      "slider": null
+      "slider": {
+        "id": 1,
+        "variant": "fade-with-previews",
+        "show_backdrop": true,
+        "show_full_screen": true,
+        "show_previews": true,
+        "class_name": null,
+        "aspect_ratio_class_name": "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
+        "title": "Features Slider",
+        "uid": "features-slider",
+        "createdAt": "2024-01-09T22:27:54.457Z",
+        "updatedAt": "2024-01-09T22:27:54.457Z",
+        "publishedAt": "2023-03-28T03:46:50.780Z",
+        "locale": "en"
+      }
     }
   ],
   "layout": {

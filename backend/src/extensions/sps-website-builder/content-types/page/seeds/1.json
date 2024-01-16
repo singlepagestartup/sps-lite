@@ -3,7 +3,7 @@
   "title": "Main page",
   "url": "/",
   "createdAt": "2024-01-09T22:27:45.690Z",
-  "updatedAt": "2024-01-12T23:28:07.243Z",
+  "updatedAt": "2024-01-14T19:26:13.768Z",
   "publishedAt": "2023-04-08T12:06:05.277Z",
   "locale": "en",
   "localizations": [
@@ -12,12 +12,37 @@
       "title": "Page d'accueil",
       "url": "/",
       "createdAt": "2024-01-12T23:28:06.267Z",
-      "updatedAt": "2024-01-12T23:28:07.180Z",
+      "updatedAt": "2024-01-14T19:26:13.832Z",
       "publishedAt": "2024-01-12T23:28:07.163Z",
       "locale": "fr"
     }
   ],
   "page_blocks": [
+    {
+      "__component": "page-blocks.contact-section-block",
+      "id": 1,
+      "title": "We’re ready to help",
+      "subtitle": null,
+      "description": "Fill in all the fields below and our manager will contact you.",
+      "anchor": null,
+      "class_name": null,
+      "variant": "centered",
+      "media": null,
+      "additional_media": null,
+      "buttons_arrays": [],
+      "form": {
+        "id": 1,
+        "class_name": null,
+        "additional_attributes": null,
+        "variant": "simple",
+        "uid": "question",
+        "title": "Есть вопросы по продукту?",
+        "createdAt": "2024-01-09T22:27:05.608Z",
+        "updatedAt": "2024-01-15T14:40:25.160Z",
+        "publishedAt": "2023-02-14T15:44:48.245Z",
+        "locale": "en"
+      }
+    },
     {
       "__component": "page-blocks.hero-section-block",
       "id": 3,
@@ -95,11 +120,59 @@
       ],
       "buttons": [
         {
-          "id": 11,
-          "url": "https://github.com/singlepagestartup/sps-lite",
+          "id": 27,
+          "url": "/",
           "description": null,
           "variant": "primary",
-          "title": "Start For Free",
+          "title": "Primary",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 11,
+          "url": "/",
+          "description": null,
+          "variant": "outline",
+          "title": "Outline",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 24,
+          "url": "/",
+          "description": null,
+          "variant": "destructive",
+          "title": "Destructive",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 25,
+          "url": "/",
+          "description": null,
+          "variant": "ghost",
+          "title": "Ghost",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 26,
+          "url": "/",
+          "description": null,
+          "variant": "link",
+          "title": "Link",
           "additional_attributes": null,
           "class_name": null,
           "media": null,
@@ -1151,31 +1224,6 @@
       "subtitle": null,
       "description": null,
       "reviews": []
-    },
-    {
-      "__component": "page-blocks.contact-section-block",
-      "id": 1,
-      "title": "We’re ready to help",
-      "subtitle": null,
-      "description": "Fill in all the fields below and our manager will contact you.",
-      "anchor": null,
-      "class_name": null,
-      "variant": "centered",
-      "media": null,
-      "additional_media": null,
-      "buttons_arrays": [],
-      "form": {
-        "id": 1,
-        "class_name": null,
-        "additional_attributes": null,
-        "variant": "simple",
-        "uid": "question",
-        "title": "Есть вопросы по продукту?",
-        "createdAt": "2024-01-09T22:27:05.608Z",
-        "updatedAt": "2024-01-09T22:27:05.608Z",
-        "publishedAt": "2023-02-14T15:44:48.245Z",
-        "locale": "en"
-      }
     }
   ],
   "layout": {

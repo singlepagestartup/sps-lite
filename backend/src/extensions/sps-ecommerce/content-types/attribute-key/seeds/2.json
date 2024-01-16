@@ -23,7 +23,7 @@
       "datetime": null,
       "time": null,
       "createdAt": "2024-01-09T23:16:06.880Z",
-      "updatedAt": "2024-01-12T12:49:28.225Z",
+      "updatedAt": "2024-01-15T18:21:05.838Z",
       "locale": "en"
     },
     {
@@ -35,7 +35,7 @@
       "datetime": null,
       "time": null,
       "createdAt": "2024-01-09T23:16:09.443Z",
-      "updatedAt": "2024-01-10T11:50:50.430Z",
+      "updatedAt": "2024-01-15T18:21:04.027Z",
       "locale": "en"
     },
     {
@@ -60,6 +60,18 @@
       "time": null,
       "createdAt": "2024-01-09T23:20:27.121Z",
       "updatedAt": "2024-01-09T23:20:59.580Z",
+      "locale": "en"
+    },
+    {
+      "id": 6,
+      "string": null,
+      "number": 12,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-01-16T14:27:00.415Z",
+      "updatedAt": "2024-01-16T14:27:07.279Z",
       "locale": "en"
     }
   ]
