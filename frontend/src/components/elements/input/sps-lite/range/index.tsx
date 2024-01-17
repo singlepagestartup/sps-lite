@@ -40,20 +40,20 @@ export default function Input(props: IElement) {
     </>
   );
 
-  return (
-    <RangeInput
-      {...props}
-      data-component="elements.input"
-      label={props.label || undefined}
-      placeholder={props.placeholder || undefined}
-      multiple={undefined}
-      className={props.className || ""}
-      type="date"
-      step={props.step || 1}
-      min={props.min || 0}
-      max={props.max || 100}
-      value={undefined}
-      id={undefined}
-    />
-  );
+  // return (
+  //   <RangeInput
+  //     {...props}
+  //     data-component="elements.input"
+  //     label={props.label || undefined}
+  //     placeholder={props.placeholder || undefined}
+  //     multiple={undefined}
+  //     className={props.className || ""}
+  //     type="date"
+  //     step={props.step || 1}
+  //     min={props.min || 0}
+  //     max={props.max || 100}
+  //     value={undefined}
+  //     id={undefined}
+  //   />
+  // );
 }

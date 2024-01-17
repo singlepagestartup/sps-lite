@@ -1,15 +1,8 @@
 import { forwardRef } from "react";
-import Sps from "./sps";
-import Shadcn from "./shadcn";
-import { IInputProps } from "..";
+import Sps, { Props as SpsProps } from "./sps";
+import Shadcn, { Props as ShadcnProps } from "./shadcn";
 
-export interface Props
-  extends Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      "defaultValue" | "name" | "onChange" | "min" | "max" | "step"
-    >,
-    IInputProps {
-  asChild?: boolean;
+export interface Props extends SpsProps, ShadcnProps {
   ui: "sps" | "shadcn";
   "data-ui-variant"?: string;
   "data-ui-size"?: string;

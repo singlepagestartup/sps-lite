@@ -88,12 +88,12 @@ export default function Component(props: IPageBlock) {
       <h1 className="text-6xl font-bold mb-8">{cart.orders?.length}</h1>
       <FormProvider {...methods}>
         <div className="flex flex-col gap-3">
-          <TextInput
+          {/* <TextInput
             variant="text"
             name="email"
             placeholder="Input your email"
             label="Email for getting tier attachments"
-          />
+          /> */}
           <Button
             data-ui-variant="primary"
             title="Buy"

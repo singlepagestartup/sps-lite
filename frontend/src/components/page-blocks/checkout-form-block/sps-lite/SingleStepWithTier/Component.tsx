@@ -85,12 +85,12 @@ export default function Component(props: IPageBlock) {
       {/* <h1 className="text-6xl font-bold mb-8">{tier.price}</h1> */}
       <FormProvider {...methods}>
         <div className="flex flex-col gap-3">
-          <TextInput
+          {/* <TextInput
             variant="text"
             name="email"
             placeholder="Input your email"
             label="Email"
-          />
+          /> */}
           <Button onClick={handleSubmit(onSubmit)}>Buy</Button>
         </div>
       </FormProvider>

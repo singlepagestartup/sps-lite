@@ -15,14 +15,16 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { IInsideComponentProps } from "./repeatable";
-import TextInput from "./text";
+import TextInput, { Props as TextInputProps } from "./text";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
 import RadioGroupInput from "./radio-group";
-import SelectInput from "./select";
+import SelectInput, { Props as SelectProps } from "./select";
 import RangeInput from "./range";
 import CheckboxInput from "./checkbox";
 import DateInput from "./date";
+
+// export interface CleanedProps extends TextInputProps, SelectProps {}
 
 export interface IInputProps
   extends Omit<UseControllerProps, "name">,

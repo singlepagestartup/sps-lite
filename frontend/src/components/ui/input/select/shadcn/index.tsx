@@ -1,5 +1,4 @@
-import { forwardRef } from "react";
-import { IInputProps } from "../..";
+import { ComponentProps, forwardRef } from "react";
 import {
   Select,
   SelectContent,
@@ -9,7 +8,14 @@ import {
 } from "./shadcn";
 import useGetShadcnOptionsParams from "../../use-get-shadcn-options-params";
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
+export interface Props extends ComponentProps<typeof Select> {
+  options: any[];
+  placeholder?: string;
+  onChange?: (value: any) => void;
+  renderOptionValue?: (option: any) => string;
+}
+
+const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const { localValue, setLocalValue, getLabelFunction } =
     useGetShadcnOptionsParams(props);
 

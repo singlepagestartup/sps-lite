@@ -61,12 +61,12 @@ export default function Component(props: IPageBlock) {
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <FormProvider {...methods}>
               <div className="flex flex-col gap-2">
-                <TextInput
+                {/* <TextInput
                   variant="text"
                   name="email"
                   label="Email"
                   placeholder="Type your email"
-                />
+                /> */}
                 <Button
                   data-variant="primary"
                   title="Delete subscription"

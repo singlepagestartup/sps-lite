@@ -1,6 +1,6 @@
 import { Transition, Listbox } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Fragment, useMemo } from "react";
+import { FC, Fragment, useMemo } from "react";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
@@ -12,7 +12,18 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
-export default function SelectInput(props: IInputProps) {
+export interface Props {
+  options: any[];
+  placeholder?: string;
+  ButtonComp?: FC<any>;
+  OptionComp?: FC<any>;
+  renderOptionValue?: (option: any) => string;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
+  extraMedia?: IBackendFile[] | null;
+}
+
+export default function SelectInput(props: Props) {
   const {
     options,
     placeholder = "",
@@ -65,19 +76,21 @@ export default function SelectInput(props: IInputProps) {
   );
 }
 
+export interface ButtonProps {
+  value: any;
+  placeholder: string;
+  renderOptionValue?: (value: any) => string;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
+}
+
 function DefaultButton({
   value,
   placeholder,
   renderOptionValue,
   media,
   additionalMedia,
-}: {
-  value: any;
-  placeholder: string;
-  renderOptionValue?: (value: any) => string;
-  media?: IBackendFile[];
-  additionalMedia?: IBackendFile[];
-}) {
+}: ButtonProps) {
   const renderValue = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
@@ -156,17 +169,19 @@ function DefaultButton({
   );
 }
 
+export interface OptionProps {
+  params: OptionRenderPropArg;
+  option: any;
+  renderOptionValue?: (option: any) => string;
+  extraMedia?: IBackendFile[] | null;
+}
+
 function DefaultOption({
   params,
   option,
   renderOptionValue,
   extraMedia,
-}: {
-  params: OptionRenderPropArg;
-  option: any;
-  renderOptionValue: (option: any) => string;
-  extraMedia?: IBackendFile[];
-}) {
+}: OptionProps) {
   const { selected } = params;
 
   return (
