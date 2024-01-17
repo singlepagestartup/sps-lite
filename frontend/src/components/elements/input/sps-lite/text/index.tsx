@@ -8,7 +8,7 @@ export default function TextInput(props: IElement) {
         {...props}
         data-component="elements.input"
         ui="sps"
-        label={props.label || undefined}
+        label={"sps | " + props.label || undefined}
         placeholder={props.placeholder || undefined}
         multiple={undefined}
         className={props.className || ""}
@@ -24,7 +24,7 @@ export default function TextInput(props: IElement) {
         {...props}
         data-component="elements.input"
         ui="shadcn"
-        label={props.label || undefined}
+        label={"shadcn | " + props.label || undefined}
         placeholder={props.placeholder || undefined}
         multiple={undefined}
         className={props.className || ""}

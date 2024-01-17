@@ -133,7 +133,7 @@ function ProductCard(props: ICardProps) {
             variant="text"
             name="quantity"
             ui="sps"
-            type="number"
+            type="text"
             label="Quantity"
             initialValue={1}
           />

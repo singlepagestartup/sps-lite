@@ -4,9 +4,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import Input from "~components/elements/input";
 import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
-import TextInput from "~components/ui/input/text";
-import RadioGroupInput from "~components/ui/input/radio-group";
+import RadioGroupInput from "~components/ui/input/radio-group/sps";
 import Button from "~components/ui/button";
+import FormField from "~components/ui/form-field";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();
@@ -76,33 +76,40 @@ export default function Simple(props: IForm) {
 
           {preparedInputs?.map((input, index: number) => {
             return (
-              <TextInput
+              <Input
+                __component="elements.input"
+                id={0}
+                placeholder={null}
+                value={null}
+                label={null}
+                multiple={null}
+                min={null}
+                max={null}
+                step={null}
                 {...input}
                 key={index}
+                ui="sps"
                 variant="text"
                 type="text"
                 name={`inputs[${index}].key`}
                 initialValue={input.input.name}
                 by="id"
                 className="!hidden"
-                rules={{
-                  required: {
-                    value: input.input?.isRequired,
-                    message: "Required field",
-                  },
-                }}
+                isRequired={true}
               />
             );
           })}
 
-          <RadioGroupInput
+          {/* <FormField
+            ui="sps"
             variant="radio-group"
+            type="select"
             name="form"
             initialValue={props}
             options={[props]}
             className="hidden"
             by="id"
-          />
+          /> */}
           <div className="submit-button-container">
             {props.button ? (
               <Button

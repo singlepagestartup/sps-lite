@@ -1,7 +1,7 @@
 import "whatwg-fetch";
 import React from "react";
 import { fireEvent, render, renderHook, screen } from "@testing-library/react";
-import RadioGroupInput from "./index";
+import RadioGroupInput from "./sps/index";
 import "@testing-library/jest-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { act } from "react-dom/test-utils";

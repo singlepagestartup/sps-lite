@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { Label } from "../label";
 import { cn } from "~utils/formatters/cn";
-import Input, { Props as InputProps } from "~components/ui/input/text";
+import Input from "~components/ui/input";
+import { Props as InputProps } from "~components/ui/input/text";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
@@ -11,6 +12,7 @@ import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface Props extends InputProps {
+  ui: "sps" | "shadcn";
   media?: IBackendFile[] | null;
   additionalMedia?: IBackendFile[] | null;
 }
