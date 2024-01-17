@@ -1,7 +1,7 @@
 import "whatwg-fetch";
 import React from "react";
 import { fireEvent, render, renderHook, screen } from "@testing-library/react";
-import ListboxInput from "./index";
+import ListboxInput from "./sps/index";
 import "@testing-library/jest-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { act } from "react-dom/test-utils";

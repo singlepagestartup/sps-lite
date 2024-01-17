@@ -1,48 +1,11 @@
-import { forwardRef, use, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import { IInputProps } from "../..";
 import { RadioGroup, RadioGroupItem } from "./shadcn";
+import useGetShadcnOptionsParams from "../../use-get-shadcn-options-params";
 
 const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
-  const [localValue, setLocalValue] = useState<string | undefined>();
-
-  const getLabelFunction = (option: any) => {
-    if (props.by) {
-      return option[props.by];
-    }
-
-    return option;
-  };
-
-  useEffect(() => {
-    if (props.onChange) {
-      const selectedOption = props.options?.find((option: any) => {
-        return getLabelFunction(option) === localValue;
-      });
-
-      props.onChange(selectedOption);
-    }
-  }, [localValue]);
-
-  useEffect(() => {
-    if (!props.value) {
-      setLocalValue("");
-      return;
-    }
-
-    const propsSelectedOption = props.options?.find((option: any) => {
-      return getLabelFunction(option) === getLabelFunction(props.value);
-    });
-
-    if (!propsSelectedOption) {
-      return;
-    }
-
-    const propsSelectedOptionValue = getLabelFunction(propsSelectedOption);
-
-    if (propsSelectedOptionValue !== localValue) {
-      setLocalValue(propsSelectedOptionValue);
-    }
-  }, [props.value]);
+  const { localValue, setLocalValue, getLabelFunction } =
+    useGetShadcnOptionsParams(props);
 
   if (!props.onChange) {
     return <></>;

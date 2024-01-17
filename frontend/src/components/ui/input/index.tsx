@@ -19,6 +19,8 @@ import TextInput from "./text";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
 import RadioGroupInput from "./radio-group";
+import SelectInput from "./select";
+import RangeInput from "./range";
 
 export interface IInputProps
   extends Omit<UseControllerProps, "name">,
@@ -79,6 +81,8 @@ const inputs: {
   text: TextInput,
   number: TextInput,
   radio: RadioGroupInput,
+  select: SelectInput,
+  range: RangeInput,
 };
 
 const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
@@ -117,6 +121,27 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
   }>({});
 
   const { control, setValue } = useFormContext();
+
+  const getDefaultValue = (props: IInputProps) => {
+    if (props.type === "select") {
+      if (props.multiple) {
+        return [];
+      }
+
+      return "";
+    }
+
+    if (props.type === "radio") {
+      return "";
+    }
+
+    if (props.type === "range") {
+      return 0;
+    }
+
+    return "";
+  };
+
   const {
     field: { onChange, ref, value, onBlur },
   } = useController({
@@ -124,10 +149,27 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
     control,
     rules,
     shouldUnregister,
-    defaultValue: initialValue !== undefined ? initialValue : defaultValue,
+    defaultValue: getDefaultValue(props),
   });
 
   useEffect(() => {
+    if (type === "range") {
+      if (step && step !== additionalAttributes.step) {
+        setAdditionalAttributes((prev) => {
+          return {
+            ...prev,
+            step:
+              step !== undefined && step !== null
+                ? typeof step === "string"
+                  ? parseInt(step)
+                  : step
+                : undefined,
+          };
+        });
+      }
+      return;
+    }
+
     setAdditionalAttributes({
       step:
         step !== undefined && step !== null
@@ -163,7 +205,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
   }, [name]);
 
   useEffect(() => {
-    if (type === "text") {
+    if (["text", "range"].includes(type)) {
       if (initialValue !== undefined && inputRef?.current) {
         const evt = new Event("change");
         inputRef.current.value = initialValue;
@@ -184,11 +226,13 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
           onChange(evt);
         }
       }
-    } else if (type === "select" && inputRef?.current) {
-      const evt = new Event("change");
-      inputRef.current.value = initialValue;
-      inputRef.current.dispatchEvent(evt);
-      onChange(evt);
+    } else if (["select", "radio"].includes(type)) {
+      if (initialValue !== undefined && inputRef?.current) {
+        const evt = new Event("change");
+        inputRef.current.value = initialValue;
+        inputRef.current.dispatchEvent(evt);
+        onChange(evt);
+      }
     }
   }, [JSON.stringify(initialValue), inputRef?.current]);
 

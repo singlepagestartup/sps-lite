@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Label } from "../label";
 import { cn } from "~utils/formatters/cn";
-import Input from "~components/ui/input";
+import Input, { IInputProps } from "~components/ui/input";
 import { Props as InputProps } from "~components/ui/input/text";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
@@ -11,7 +11,7 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
-export interface Props extends InputProps {
+export interface Props extends IInputProps {
   ui: "sps" | "shadcn";
   media?: IBackendFile[] | null;
   additionalMedia?: IBackendFile[] | null;
@@ -38,7 +38,13 @@ const FormField = (props: Props) => {
   });
 
   function reset(e: any) {
-    onChange({ ...e, target: { value: "" } });
+    if (props.multiple) {
+      onChange({ ...e, target: { value: [] } });
+    } else if (props.type === "number" || props.type === "range") {
+      onChange({ ...e, target: { value: props.min || 0 } });
+    } else {
+      onChange({ ...e, target: { value: "" } });
+    }
   }
 
   const error = getInputErrors(errors)(name);
@@ -60,7 +66,7 @@ const FormField = (props: Props) => {
       </div>
       <div
         data-media={props.media && props.media?.length > 0}
-        className="media-container"
+        className="media-container !hidden"
       >
         {props.media?.map((media, index: number) => (
           <Image key={index} src={getFileUrl(media)} fill={true} alt="" />
@@ -69,7 +75,7 @@ const FormField = (props: Props) => {
       <Input {...props} />
       <div
         data-media={props.additionalMedia && props.additionalMedia?.length > 0}
-        className="additional-media-container"
+        className="additional-media-container !hidden"
       >
         {props.additionalMedia?.map((additionalMedia, index: number) => (
           <Image

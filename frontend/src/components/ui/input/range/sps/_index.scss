@@ -1,7 +1,5 @@
 &[data-ui-variant="range"] {
-  .label-container {
-    @apply pb-1;
-  }
+  @apply relative;
 
   .input-container {
     @apply relative mt-2;
@@ -23,7 +21,7 @@
       @apply absolute inset-y-0 h-2 right-0 bg-input rounded-r-full;
     }
 
-    .input {
+    input {
       @apply relative w-full bg-transparent;
 
       &::-webkit-slider-runnable-track {
