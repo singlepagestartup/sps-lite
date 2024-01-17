@@ -1,10 +1,10 @@
 [data-ui="input"] {
-  @import "./calendar/index";
+  @import "./date/sps/index";
   @import "./file/index";
   @import "./select/sps/index";
   @import "./radio-group/sps/index";
   @import "./range/sps/index";
   @import "./repeatable/index";
-  @import "./switch/index";
+  @import "./checkbox/sps/index";
   @import "./text/sps/index";
 }

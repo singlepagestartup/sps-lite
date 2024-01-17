@@ -21,6 +21,8 @@ import useGetFilteredInputProps from "./use-get-filtered-input-props";
 import RadioGroupInput from "./radio-group";
 import SelectInput from "./select";
 import RangeInput from "./range";
+import CheckboxInput from "./checkbox";
+import DateInput from "./date";
 
 export interface IInputProps
   extends Omit<UseControllerProps, "name">,
@@ -50,9 +52,9 @@ export interface IInputProps
   renderOptionValue?: (option: any) => string;
   valueAsNumber?: boolean;
   InsideComponent?: FC<IInsideComponentProps>;
-  step?: number | string;
-  min?: number | string;
-  max?: number | string;
+  step?: number;
+  min?: number;
+  max?: number;
   disabled?: boolean;
   media?: IBackendFile[] | null;
   additionalMedia?: IBackendFile[] | null;
@@ -83,6 +85,8 @@ const inputs: {
   radio: RadioGroupInput,
   select: SelectInput,
   range: RangeInput,
+  checkbox: CheckboxInput,
+  date: DateInput,
 };
 
 const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
@@ -131,12 +135,12 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
       return "";
     }
 
-    if (props.type === "radio") {
-      return "";
+    if (props.type === "range") {
+      return [props.min || 0];
     }
 
-    if (props.type === "range") {
-      return 0;
+    if (props.type === "radio") {
+      return "";
     }
 
     return "";
@@ -233,6 +237,19 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
         inputRef.current.dispatchEvent(evt);
         onChange(evt);
       }
+    } else if (["checkbox"].includes(type)) {
+      if (
+        initialValue !== undefined &&
+        initialValue !== "" &&
+        inputRef?.current
+      ) {
+        const evt = new Event("change");
+        inputRef.current.value = initialValue;
+        inputRef.current.dispatchEvent(evt);
+        onChange(evt);
+      }
+    } else if (["date"].includes(type)) {
+      //
     }
   }, [JSON.stringify(initialValue), inputRef?.current]);
 
@@ -255,13 +272,6 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
   ) => {
     if (valueAsNumber) {
       onChange(+e.target.value);
-      return;
-    }
-
-    if (type === "date") {
-      const preparedDate = e.target.value === "" ? null : e.target.value;
-
-      onChange(preparedDate);
       return;
     }
 

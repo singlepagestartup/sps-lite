@@ -40,8 +40,10 @@ const FormField = (props: Props) => {
   function reset(e: any) {
     if (props.multiple) {
       onChange({ ...e, target: { value: [] } });
-    } else if (props.type === "number" || props.type === "range") {
+    } else if (props.type === "number") {
       onChange({ ...e, target: { value: props.min || 0 } });
+    } else if (props.type === "range") {
+      onChange({ ...e, target: { value: [props.min] || [0] } });
     } else {
       onChange({ ...e, target: { value: "" } });
     }
@@ -51,7 +53,7 @@ const FormField = (props: Props) => {
 
   return (
     <div data-ui="form-field" className={cn("relative w-full", className)}>
-      {htmlNodeId && label ? (
+      {htmlNodeId && label && props.type !== "checkbox" ? (
         <Label htmlFor={htmlNodeId}>{props.label}</Label>
       ) : null}
       <div className="reset-button-container">

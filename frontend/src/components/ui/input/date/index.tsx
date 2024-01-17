@@ -6,7 +6,7 @@ import { IInputProps } from "..";
 export interface Props
   extends Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      "defaultValue" | "name" | "onChange" | "max" | "min" | "step"
+      "defaultValue" | "name" | "onChange" | "step" | "max" | "min"
     >,
     IInputProps {
   asChild?: boolean;

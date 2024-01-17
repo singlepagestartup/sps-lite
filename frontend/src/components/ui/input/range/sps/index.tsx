@@ -1,39 +1,64 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import { IInputProps } from "../..";
 
 export default function RangeInput(props: IInputProps) {
-  const { min, max, value } = props;
+  const [rightSideValue, setRightSideValue] = useState<number | undefined>(
+    props.min || 0,
+  );
+  const { min, max } = props;
+
+  useEffect(() => {
+    if (Array.isArray(props.value) && props.value.length > 0) {
+      const propsRightSideValue = props.value[props.value.length - 1];
+
+      if (propsRightSideValue !== rightSideValue) {
+        setRightSideValue(propsRightSideValue);
+      }
+    }
+  }, [JSON.stringify(props.value)]);
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e?.target?.value) {
+      return;
+    }
+
+    setRightSideValue(parseInt(e?.target?.value));
+  };
+
+  useEffect(() => {
+    if (props.onChange) {
+      props.onChange([rightSideValue] as any);
+    }
+  }, [rightSideValue]);
 
   return (
-    <div {...props} data-ui-variant="range">
+    <div {...props} onChange={undefined} data-ui-variant="range">
       <div className="input-container">
-        {max && value !== undefined ? (
+        {max && rightSideValue !== undefined ? (
           <>
             <div
               className="dragger"
               style={{
-                // @ts-ignore
-                left: `${(value / max) * 100}%`,
+                left: `${(rightSideValue / max) * 100}%`,
               }}
             >
-              <p className="dragger-value">{value}</p>
+              <p className="dragger-value">{rightSideValue}</p>
             </div>
             <div
               className="ms-fill-lower"
               style={{
-                // @ts-ignore
-                width: `${(value / max) * 100}%`,
+                width: `${(rightSideValue / max) * 100}%`,
               }}
             ></div>
             <div
               className="ms-fill-upper"
               style={{
-                // @ts-ignore
-                width: `${((max - value) / max) * 100}%`,
+                width: `${((max - rightSideValue) / max) * 100}%`,
               }}
             ></div>
           </>
         ) : null}
-        <input {...props} />
+        <input {...props} value={rightSideValue} onChange={onChange} />
         {min !== undefined && max !== undefined ? (
           <div className="limit-values-container">
             <p className="min">{min}</p>

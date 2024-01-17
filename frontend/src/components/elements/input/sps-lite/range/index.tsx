@@ -21,7 +21,7 @@ export default function Input(props: IElement) {
         id={undefined}
         name={props.name}
       />
-      {/* <FormField
+      <FormField
         {...props}
         data-component="elements.input"
         ui="shadcn"
@@ -30,13 +30,13 @@ export default function Input(props: IElement) {
         multiple={undefined}
         className={props.className || ""}
         type="range"
-        step={undefined}
-        min={undefined}
-        max={undefined}
+        step={props.step || 1}
+        min={props.min || 0}
+        max={props.max || 100}
         value={undefined}
         id={undefined}
         name={props.name}
-      /> */}
+      />
     </>
   );
 
