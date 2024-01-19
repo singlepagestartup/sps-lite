@@ -1,6 +1,5 @@
 import React, {
   HTMLInputTypeAttribute,
-  MutableRefObject,
   forwardRef,
   useEffect,
   useMemo,
@@ -49,6 +48,7 @@ export interface Props {
   multiple?: boolean;
   ui: "sps" | "shadcn";
   options?: any;
+  by?: string;
 }
 
 // export interface IInputProps
@@ -116,7 +116,9 @@ type RequiredInputProps = Props & {
 };
 
 export type ExtendedInputProps<T> = RequiredInputProps &
-  (T extends "select" ? { options: any } : { options?: any });
+  (T extends "select" | "radio"
+    ? { options: any; by: string }
+    : { options?: any });
 
 const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const {
@@ -129,14 +131,12 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     valueAsNumber,
   } = props;
 
-  const inputRef: MutableRefObject<
-    HTMLInputElement | HTMLTextAreaElement | null
-  > = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const translate = useTranslationsContext();
 
   const translatedLabel = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;
-  }, [label]);
+  }, [label, translate]);
 
   const translatedPlaceholder = useMemo(() => {
     return typeof translate === "function" && placeholder
@@ -157,7 +157,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const { control, setValue } = useFormContext();
 
   const getDefaultValue = (props: Props) => {
-    if (props.type === "select") {
+    if (["select", "radio"].includes(props.type)) {
       if (props.multiple) {
         return [];
       }
@@ -167,10 +167,6 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
     if (props.type === "range") {
       return [props.min || 0];
-    }
-
-    if (props.type === "radio") {
-      return "";
     }
 
     return "";
@@ -230,7 +226,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         onChange(evt);
       }
     } else if (["date"].includes(type)) {
-      //
+      setValue(name, initialValue);
     }
   }, [JSON.stringify(initialValue), inputRef?.current]);
 
@@ -241,7 +237,10 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
    * fiels.
    */
   useEffect(() => {
-    if (props.type === "select" && JSON.stringify(value) === "{}") {
+    if (
+      ["select", "radio"].includes(props.type) &&
+      JSON.stringify(value) === "{}"
+    ) {
       setValue(name, undefined);
     }
   }, [JSON.stringify(value)]);
@@ -273,27 +272,41 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   };
 
   if (props.type === "text") {
-    return <TextInput {...toComponentProps} />;
+    return <TextInput {...toComponentProps} ref={inputRef} />;
   }
 
   if (props.type === "select") {
-    return <SelectInput {...toComponentProps} options={props.options ?? []} />;
+    return (
+      <SelectInput
+        {...toComponentProps}
+        ref={inputRef}
+        options={props.options ?? []}
+        by={props.by ?? "title"}
+      />
+    );
   }
 
   if (props.type === "range") {
-    return <RangeInput {...toComponentProps} />;
+    return <RangeInput {...toComponentProps} ref={inputRef} />;
   }
 
   if (props.type === "radio") {
-    return <RadioGroupInput {...toComponentProps} />;
+    return (
+      <RadioGroupInput
+        {...toComponentProps}
+        ref={inputRef}
+        options={props.options ?? []}
+        by={props.by ?? "title"}
+      />
+    );
   }
 
   if (props.type === "checkbox") {
-    return <CheckboxInput {...toComponentProps} />;
+    return <CheckboxInput {...toComponentProps} ref={inputRef} />;
   }
 
   if (props.type === "date") {
-    return <DateInput {...toComponentProps} />;
+    return <DateInput {...toComponentProps} ref={inputRef} />;
   }
 
   // return (

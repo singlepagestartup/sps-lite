@@ -129,14 +129,13 @@ function ProductCard(props: ICardProps) {
           <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
         </Button>
         <FormProvider {...methods}>
-          {/* <FormField
-            variant="text"
+          <FormField
             name="quantity"
             ui="sps"
             type="text"
             label="Quantity"
             initialValue={1}
-          /> */}
+          />
           <Button
             onClick={handleSubmit(incrementSubmit)}
             data-ui-variant="secondary"

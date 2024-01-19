@@ -10,10 +10,10 @@ const ui = {
 
 interface Props extends ExtendedInputProps<"text"> {}
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const Comp = ui[props.ui] ?? "input";
 
-  return <Comp {...props} className={props.className ?? undefined} />;
+  return <Comp {...props} ref={ref} className={props.className ?? undefined} />;
 });
 
 export default Input;

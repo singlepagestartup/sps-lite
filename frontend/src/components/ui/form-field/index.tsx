@@ -24,6 +24,8 @@ export interface Props {
   max?: number | null;
   step?: number | null;
   placeholder?: string | null;
+  initialValue?: any;
+  options?: any[];
 }
 
 const FormField = (props: Props) => {

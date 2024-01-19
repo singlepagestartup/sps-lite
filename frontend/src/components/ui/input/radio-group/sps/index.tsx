@@ -12,11 +12,11 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
-const RadioGroupInput = forwardRef((props: Props, ref) => {
+const RadioGroupInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { OptionComp = DefaultOption, renderOptionValue } = props;
 
   return (
-    <Listbox data-ui-variant="radio-group" as="div" {...props}>
+    <Listbox data-ui-variant="radio-group" as="div" {...props} ref={ref}>
       <div className="radio-group">
         <Listbox.Options static={true} className="options">
           {props.options?.map((option: any, index: number) => (

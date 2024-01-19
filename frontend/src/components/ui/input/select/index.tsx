@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import Sps, { Props as SpsProps } from "./sps";
-import Shadcn, { Props as ShadcnProps } from "./shadcn";
+import Sps from "./sps";
+import Shadcn from "./shadcn";
 import { ExtendedInputProps } from "..";
 
 const ui = {
@@ -10,10 +10,10 @@ const ui = {
 
 export interface Props extends ExtendedInputProps<"select"> {}
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const Comp = ui[props.ui] ?? "input";
 
-  return <Comp {...props} />;
+  return <Comp {...props} ref={ref} />;
 });
 
 export default Input;

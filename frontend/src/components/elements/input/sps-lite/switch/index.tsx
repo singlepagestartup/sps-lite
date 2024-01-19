@@ -5,13 +5,13 @@ import FormField from "~components/ui/form-field";
 export default function SwitchInput(props: IElement) {
   return (
     <>
-      <FormField
+      {/* <FormField
         {...props}
         data-component="elements.input"
         ui="sps"
         label={"sps | " + props.label || undefined}
         type="checkbox"
-      />
+      /> */}
       <FormField
         {...props}
         data-component="elements.input"

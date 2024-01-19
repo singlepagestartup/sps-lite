@@ -13,10 +13,10 @@ const ui = {
   shadcn: Shadcn,
 };
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const Comp = ui[props.ui] ?? "input";
 
-  return <Comp {...props} className={props.className ?? undefined} />;
+  return <Comp {...props} className={props.className ?? undefined} ref={ref} />;
 });
 
 export default Input;

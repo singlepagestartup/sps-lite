@@ -25,20 +25,21 @@ export default function CalendarInput(props: Props) {
   }, []);
 
   function onChangeProxy(e: any) {
-    if (typeof e === "object" && e !== null && e.length > 1) {
-      if (type === "daterange_inline") {
-        setLocalValue([e[0], e[1]]);
-        return;
-      } else if (type === "datetimerange_inline") {
-        setLocalValue([e[0], e[1]]);
-        return;
-      }
-    } else {
-      if (type && ["date_inline", "date"].includes(type)) {
-        setLocalValue(e);
-        return;
-      }
+    // console.log("🚀 ~ onChangeProxy ~ e:", e);
+    // if (typeof e === "object" && e !== null && e.length > 1) {
+    //   if (type === "daterange_inline") {
+    //     setLocalValue([e[0], e[1]]);
+    //     return;
+    //   } else if (type === "datetimerange_inline") {
+    //     setLocalValue([e[0], e[1]]);
+    //     return;
+    //   }
+    // } else {
+    if (["date"].includes(type)) {
+      setLocalValue(e);
+      return;
     }
+    // }
   }
 
   useEffect(() => {

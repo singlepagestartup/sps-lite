@@ -2,7 +2,7 @@ import { forwardRef, useMemo } from "react";
 import { Slider } from "./shadcn";
 import { Props } from "..";
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const parsedValue = useMemo(() => {
     if (!props.value) {
       return props.min ? [props.min] : [0];
@@ -34,6 +34,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   return (
     <Slider
       {...props}
+      ref={ref}
       dir="ltr"
       value={parsedValue}
       onValueChange={props.onChange as any}

@@ -4,16 +4,16 @@ import Shadcn from "./shadcn";
 import { ExtendedInputProps } from "..";
 
 const ui = {
-  sps: Sps,
   shadcn: Shadcn,
+  sps: Sps,
 };
 
 export interface Props extends ExtendedInputProps<"checkbox"> {}
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
-  const Comp = props.ui ? ui[props.ui] : "input";
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const Comp = ui[props.ui] ?? "input";
 
-  return <Comp {...props} className={props.className ?? undefined} />;
+  return <Comp {...props} className={props.className ?? undefined} ref={ref} />;
 });
 
 export default Input;

@@ -1,7 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import { Props } from "..";
 
-export default function RangeInput(props: Props) {
+const RangeInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const [rightSideValue, setRightSideValue] = useState<number | undefined>(
     props.min || 0,
   );
@@ -58,7 +58,12 @@ export default function RangeInput(props: Props) {
             ></div>
           </>
         ) : null}
-        <input {...props} value={rightSideValue} onChange={onChange} />
+        <input
+          {...props}
+          ref={ref}
+          value={rightSideValue}
+          onChange={onChange}
+        />
         {min !== undefined && max !== undefined ? (
           <div className="limit-values-container">
             <p className="min">{min}</p>
@@ -68,4 +73,6 @@ export default function RangeInput(props: Props) {
       </div>
     </div>
   );
-}
+});
+
+export default RangeInput;

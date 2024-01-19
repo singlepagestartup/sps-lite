@@ -4,11 +4,12 @@ import dayjs from "dayjs";
 import { Props } from "..";
 
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const [localValue, setLocalValue] = useState<Date | undefined>(new Date());
+  const [localValue, setLocalValue] = useState<Date | undefined>(
+    props.value ? new Date(props.value) : new Date(),
+  );
 
   useEffect(() => {
     if (props.value) {
-      // @ts-ignore
       const propsValue = new Date(props.value);
 
       if (propsValue !== localValue) {

@@ -1,6 +1,6 @@
 import { Transition, Listbox } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { FC, Fragment, useMemo } from "react";
+import { FC, Fragment, forwardRef, useMemo } from "react";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
@@ -22,7 +22,7 @@ export interface Props {
   extraMedia?: IBackendFile[] | null;
 }
 
-export default function SelectInput(props: Props) {
+const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     options,
     placeholder = "",
@@ -32,7 +32,7 @@ export default function SelectInput(props: Props) {
   } = props;
 
   return (
-    <Listbox data-ui-variant="listbox" as="div" {...props}>
+    <Listbox data-ui-variant="listbox" as="div" {...props} ref={ref}>
       <div className="listbox">
         <Listbox.Button className="button-container">
           {(listboxProps) => {
@@ -73,7 +73,9 @@ export default function SelectInput(props: Props) {
       </div>
     </Listbox>
   );
-}
+});
+
+export default SelectInput;
 
 export interface ButtonProps {
   value: any;

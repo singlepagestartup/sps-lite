@@ -17,6 +17,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       defaultValue={undefined}
       value={localValue}
       className="flex flex-col space-y-1"
+      ref={ref}
     >
       {props.options?.map((option: any, index: number) => {
         const value = getLabelFunction(option);
