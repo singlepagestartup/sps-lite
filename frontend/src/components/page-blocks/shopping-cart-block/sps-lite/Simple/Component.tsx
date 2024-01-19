@@ -40,7 +40,7 @@ export default function Component(props: IPageBlock) {
           })}
         </div>
         <div className="w-full">
-          <Button data-variant="primary" asChild={true}>
+          <Button ui="shadcn" variant="default" asChild={true}>
             <Link href="/checkout">Checkout</Link>
           </Button>
         </div>
@@ -82,7 +82,8 @@ function OrderProductComponent({
           return <AttributeComponent key={index} attribute={attribute} />;
         })}
         <Button
-          data-variant="primary"
+          ui="shadcn"
+          variant="primary"
           onClick={() => {
             if (!orderProduct.product) {
               return;

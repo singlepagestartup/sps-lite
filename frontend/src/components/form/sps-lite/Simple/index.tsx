@@ -6,7 +6,6 @@ import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
 import RadioGroupInput from "~components/ui/input/radio-group/sps";
 import Button from "~components/ui/button";
-import FormField from "~components/ui/form-field";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();
@@ -42,7 +41,7 @@ export default function Simple(props: IForm) {
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    // console.log("🚀 ~ onSubmit ~ data", data);
+    console.log("🚀 ~ onSubmit ~ data", data);
 
     createFormRequest({ data, files: data.files });
   }
@@ -113,13 +112,22 @@ export default function Simple(props: IForm) {
           <div className="submit-button-container">
             {props.button ? (
               <Button
+                ui="shadcn"
                 className={props.button.className || ""}
-                data-ui-variant={props.button?.variant || "secondary"}
+                variant={"secondary"}
                 onClick={handleSubmit(onSubmit)}
               >
                 {props.button?.title || "Submit"}
               </Button>
-            ) : null}
+            ) : (
+              <Button
+                ui="shadcn"
+                variant={"secondary"}
+                onClick={handleSubmit(onSubmit)}
+              >
+                Submit
+              </Button>
+            )}
           </div>
         </FormProvider>
       </div>

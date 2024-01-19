@@ -68,7 +68,13 @@ const FormField = (props: Props) => {
         <Label htmlFor={htmlNodeId}>{props.label}</Label>
       ) : null}
       <div className="reset-button-container">
-        <Button onClick={reset} data-ui-variant="reset" data-ui-size="sm">
+        <Button
+          ui="shadcn"
+          onClick={reset}
+          variant="reset"
+          size="sm"
+          className="px-0"
+        >
           {ResetIcon ? (
             <div className="icon">
               <ResetIcon className="w-4 h-5" />

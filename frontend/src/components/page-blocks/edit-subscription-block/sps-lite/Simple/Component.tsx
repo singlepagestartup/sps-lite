@@ -68,7 +68,8 @@ export default function Component(props: IPageBlock) {
                   placeholder="Type your email"
                 /> */}
                 <Button
-                  data-variant="primary"
+                  ui="shadcn"
+                  variant="primary"
                   title="Delete subscription"
                   onClick={handleSubmit(updateByEmailSubmit)}
                 />

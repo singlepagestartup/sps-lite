@@ -1,4 +1,5 @@
 import React, {
+  ChangeEvent,
   HTMLInputTypeAttribute,
   forwardRef,
   useEffect,
@@ -15,6 +16,9 @@ import SelectInput from "./select";
 import RangeInput from "./range";
 import CheckboxInput from "./checkbox";
 import DateInput from "./date";
+import FileInput from "./file/sps";
+import getFileUrl from "~utils/api/get-file-url";
+import axios from "axios";
 
 const inputs: {
   [key in HTMLInputTypeAttribute]+?: React.FC<any>;
@@ -107,7 +111,7 @@ export interface Props {
 type RequiredInputProps = Props & {
   ui: "sps" | "shadcn";
   label?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>, ...props: any) => void;
   id: string;
   onBlur: () => void;
   "data-ui": "input";
@@ -154,7 +158,8 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       };
     }, [props]);
 
-  const { control, setValue } = useFormContext();
+  const ctxProps = useFormContext();
+  const { control, setValue } = ctxProps;
 
   const getDefaultValue = (props: Props) => {
     if (["select", "radio"].includes(props.type)) {
@@ -184,6 +189,67 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const htmlNodeId = useMemo(() => {
     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
+
+  async function setInitFiles(initialValue: any) {
+    // second and other rerenders in repeatable
+    if (typeof initialValue === "string") {
+      return;
+    }
+
+    if (!inputRef?.current?.files || Object.keys(initialValue).length === 0) {
+      return;
+    }
+
+    const dataTransfer = new DataTransfer();
+    const initialFiles: File[] = [];
+
+    if (Array.isArray(initialValue)) {
+      for (const serverFile of initialValue) {
+        const fileUrl = getFileUrl(serverFile);
+
+        const file = await axios({
+          url: fileUrl,
+          method: "GET",
+          responseType: "blob",
+        }).then((response) => {
+          return new File(
+            [response.data],
+            `${(Math.random() * 1e10).toFixed(0)}`,
+            {
+              type: serverFile.mime,
+            },
+          );
+        });
+
+        dataTransfer.items.add(file);
+        initialFiles.push(file);
+      }
+    } else {
+      const fileUrl = getFileUrl(initialValue);
+
+      const file = await axios({
+        url: fileUrl,
+        method: "GET",
+        responseType: "blob",
+      }).then((response) => {
+        return new File(
+          [response.data],
+          `${(Math.random() * 1e10).toFixed(0)}`,
+          {
+            type: initialValue.mime,
+          },
+        );
+      });
+
+      dataTransfer.items.add(file);
+      initialFiles.push(file);
+    }
+
+    inputRef.current.files = dataTransfer.files;
+    const evt = new InputEvent("change");
+    inputRef.current.dispatchEvent(evt);
+    onChange(evt);
+  }
 
   useEffect(() => {
     if (["text", "range"].includes(type)) {
@@ -227,6 +293,10 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       }
     } else if (["date"].includes(type)) {
       setValue(name, initialValue);
+    } else if (["file"].includes(type)) {
+      if (initialValue && inputRef.current) {
+        setInitFiles(initialValue);
+      }
     }
   }, [JSON.stringify(initialValue), inputRef?.current]);
 
@@ -247,11 +317,30 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
   const passProps = useGetFilteredInputProps(props);
 
+  function onFileInputChange(e: ChangeEvent | Event, files: File[]) {
+    console.log("🚀 ~ onFileInputChange ~ files:", files);
+
+    const uploadFiles = ctxProps.getValues("files");
+
+    ctxProps.setValue("files", {
+      ...uploadFiles,
+      [name]: files,
+    });
+
+    onChange(e);
+  }
+
   const passedOnChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ...props: any
   ) => {
     if (valueAsNumber) {
       onChange(+e.target.value);
+      return;
+    }
+
+    if (type === "file") {
+      onFileInputChange(e, props[0]);
       return;
     }
 
@@ -307,6 +396,10 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
   if (props.type === "date") {
     return <DateInput {...toComponentProps} ref={inputRef} />;
+  }
+
+  if (props.type === "file") {
+    return <FileInput {...toComponentProps} ref={inputRef} />;
   }
 
   // return (

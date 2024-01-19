@@ -1,26 +1,21 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { forwardRef } from "react";
+// import Sps from "./sps";
+import Shadcn, { Props as ShadcnProps } from "./shadcn";
+// import { ExtendedInputProps } from "..";
 
-export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  asChild?: boolean;
-  "data-ui-variant"?: string;
-  "data-ui-size"?: string;
+const ui = {
+  shadcn: Shadcn,
+  //   sps: Sps,
+};
+
+export interface Props extends ShadcnProps {
+  ui: keyof typeof ui;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, Props>(
-  ({ asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+const Input = forwardRef<HTMLButtonElement, Props>((props, ref) => {
+  const Comp = ui[props.ui] ?? "button";
 
-    return (
-      <Comp
-        ref={ref}
-        data-ui="button"
-        data-ui-size="default"
-        data-ui-variant="primary"
-        {...props}
-      />
-    );
-  },
-);
+  return <Comp {...props} ref={ref} />;
+});
 
-export default Button;
+export default Input;

@@ -19,10 +19,12 @@ export default function useGetButtonParams(props: {
 
   const additionalAttributes = useMemo(() => {
     if (!props.additionalAttributes) {
-      return {};
+      return {
+        ui: "shadcn",
+      };
     }
 
-    return { ...props.additionalAttributes };
+    return { ...props.additionalAttributes, ui: "shadcn" };
   }, [props]);
 
   const url = useMemo(() => {

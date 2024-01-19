@@ -21,7 +21,7 @@ export default function Default(props: IElement) {
   // if (props.onClick) {
   //   return (
   //     <Button
-  //       data-ui-variant={props.variant}
+  //       variant={props.variant}
   //       onClick={props.onClick}
   //       {...additionalAttributes}
   //     >
@@ -35,7 +35,7 @@ export default function Default(props: IElement) {
       <Flyout flyout={props.flyout}>
         <Button
           data-component="elements.button"
-          data-ui-variant={props.variant}
+          variant={props.variant}
           {...additionalAttributes}
         >
           {`${
@@ -48,10 +48,10 @@ export default function Default(props: IElement) {
 
   if (url && props.url) {
     return (
-      <Button asChild={true}>
+      <Button ui="shadcn" asChild={true}>
         <Comp
           data-component="elements.button"
-          data-ui-variant={props.variant}
+          variant={props.variant}
           href={urlPrepared}
           {...additionalAttributes}
         >
@@ -64,7 +64,7 @@ export default function Default(props: IElement) {
   return (
     <Button
       data-component="elements.button"
-      data-ui-variant={props.variant}
+      variant={props.variant}
       {...additionalAttributes}
     >
       {props.title}

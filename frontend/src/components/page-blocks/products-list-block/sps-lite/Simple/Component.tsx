@@ -125,7 +125,7 @@ function ProductCard(props: ICardProps) {
             <ReactMarkdown>{item.description}</ReactMarkdown>
           </div>
         ) : null}
-        <Button asChild={true}>
+        <Button ui="shadcn" asChild={true}>
           <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
         </Button>
         <FormProvider {...methods}>
@@ -137,24 +137,27 @@ function ProductCard(props: ICardProps) {
             initialValue={1}
           />
           <Button
+            ui="shadcn"
             onClick={handleSubmit(incrementSubmit)}
-            data-ui-variant="secondary"
+            variant="secondary"
           >
             Increment in cart
           </Button>
           <Button
+            ui="shadcn"
             onClick={handleSubmit(decrementSubmit)}
-            data-ui-variant="secondary"
+            variant="secondary"
           >
             Decrement in cart
           </Button>
         </FormProvider>
 
         <Button
+          ui="shadcn"
           onClick={() => {
             removeFromCart({ id: item.id });
           }}
-          data-ui-variant="secondary"
+          variant="secondary"
         >
           Remove from cart
         </Button>
