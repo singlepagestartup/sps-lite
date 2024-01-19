@@ -4,7 +4,6 @@ import { FC, Fragment, useMemo } from "react";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { IInputProps } from "../..";
 
 interface OptionRenderPropArg {
   active: boolean;

@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
-import { IInputProps } from "../..";
 import { Checkbox } from "./shadcn";
 import { Label } from "~components/ui/label";
+import { Props } from "..";
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { label, value } = props;
 
   return (

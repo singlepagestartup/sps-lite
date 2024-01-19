@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
-import { IInputProps } from "../..";
 import { RadioGroup, RadioGroupItem } from "./shadcn";
 import useGetShadcnOptionsParams from "../../use-get-shadcn-options-params";
+import { Props } from "..";
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { localValue, setLocalValue, getLabelFunction } =
     useGetShadcnOptionsParams(props);
 

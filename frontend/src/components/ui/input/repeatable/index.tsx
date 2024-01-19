@@ -3,9 +3,9 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import Input from "~components/elements/input";
-import { IInputProps } from "..";
 import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { useGetStringProps } from "../use-get-string-props";
+import { Props } from "..";
 
 export interface IInsideComponentProps {
   translate?: (message: string) => string;
@@ -132,7 +132,7 @@ function removeUnnecessaryKeys(obj: any, keys = ["id"], inputs: any): any {
   }
 }
 
-export default function RepeatableInput(props: IInputProps) {
+export default function RepeatableInput(props: any) {
   // console.log(`🚀 ~ RepeatableInput ~ props`, props);
   const {
     label,

@@ -1,9 +1,9 @@
 import { Switch as SwitchComp } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import ReactMarkdown from "react-markdown";
-import { IInputProps } from "../..";
+import { Props } from "..";
 
-export default function SwitchInput(props: IInputProps) {
+export default function SwitchInput(props: Props) {
   const { label, value } = props;
 
   return (

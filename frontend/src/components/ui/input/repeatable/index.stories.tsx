@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Root from "./index";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { IInputProps } from "..";
+import { Props } from "..";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;
 export default meta;
@@ -10,7 +10,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Index: Story = {
-  render: (args) => <RepeatableInput {...args} />,
+  // render: (args) => <RepeatableInput {...args} />,
+  render: (args) => <></>,
   args: {
     variant: "repeatable",
     name: "shipping",
@@ -44,7 +45,7 @@ export const Index: Story = {
   },
 };
 
-function RepeatableInput(args: IInputProps) {
+function RepeatableInput(args: Props) {
   const methods = useForm({ mode: "all" });
 
   const { watch } = methods;

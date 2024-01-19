@@ -1,18 +1,11 @@
 import { forwardRef } from "react";
 import Sps from "./sps";
 import Shadcn from "./shadcn";
-import { IInputProps } from "..";
+import { ExtendedInputProps } from "..";
 
-export interface Props
-  extends Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      "defaultValue" | "name" | "onChange" | "min" | "max" | "step"
-    >,
-    IInputProps {
-  asChild?: boolean;
-  ui: "sps" | "shadcn";
-  "data-ui-variant"?: string;
-  "data-ui-size"?: string;
+export interface Props extends ExtendedInputProps<"radio"> {
+  renderOptionValue?: (value: any) => string;
+  OptionComp?: React.FC<any>;
 }
 
 const ui = {
@@ -21,9 +14,9 @@ const ui = {
 };
 
 const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
-  const Comp = props.ui ? ui[props.ui] : "input";
+  const Comp = ui[props.ui] ?? "input";
 
-  return <Comp {...props} />;
+  return <Comp {...props} className={props.className ?? undefined} />;
 });
 
 export default Input;

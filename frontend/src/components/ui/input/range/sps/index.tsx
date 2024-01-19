@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { IInputProps } from "../..";
+import { Props } from "..";
 
-export default function RangeInput(props: IInputProps) {
+export default function RangeInput(props: Props) {
   const [rightSideValue, setRightSideValue] = useState<number | undefined>(
     props.min || 0,
   );

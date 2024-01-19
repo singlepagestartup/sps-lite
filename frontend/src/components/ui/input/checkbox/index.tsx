@@ -1,29 +1,19 @@
 import { forwardRef } from "react";
 import Sps from "./sps";
 import Shadcn from "./shadcn";
-import { IInputProps } from "..";
-
-export interface Props
-  extends Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      "defaultValue" | "name" | "onChange" | "max" | "min" | "step"
-    >,
-    IInputProps {
-  asChild?: boolean;
-  ui: "sps" | "shadcn";
-  "data-ui-variant"?: string;
-  "data-ui-size"?: string;
-}
+import { ExtendedInputProps } from "..";
 
 const ui = {
   sps: Sps,
   shadcn: Shadcn,
 };
 
+export interface Props extends ExtendedInputProps<"checkbox"> {}
+
 const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const Comp = props.ui ? ui[props.ui] : "input";
 
-  return <Comp {...props} />;
+  return <Comp {...props} className={props.className ?? undefined} />;
 });
 
 export default Input;

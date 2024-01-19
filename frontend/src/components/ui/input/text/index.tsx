@@ -1,22 +1,19 @@
 import { forwardRef } from "react";
-import Sps, { Props as SpsProps } from "./sps";
-import Shadcn, { Props as ShadcnProps } from "./shadcn";
-
-export interface Props extends SpsProps, ShadcnProps {
-  ui: "sps" | "shadcn";
-  "data-ui-variant"?: string;
-  "data-ui-size"?: string;
-}
+import Sps from "./sps";
+import Shadcn from "./shadcn";
+import { ExtendedInputProps } from "..";
 
 const ui = {
   sps: Sps,
   shadcn: Shadcn,
 };
 
-const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
-  const Comp = props.ui ? ui[props.ui] : "input";
+interface Props extends ExtendedInputProps<"text"> {}
 
-  return <Comp {...props} />;
+const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
+  const Comp = ui[props.ui] ?? "input";
+
+  return <Comp {...props} className={props.className ?? undefined} />;
 });
 
 export default Input;

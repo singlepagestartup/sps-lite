@@ -8,10 +8,10 @@ import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import dayjs from "dayjs";
-import { IInputProps } from "../..";
 import { useGetStringProps } from "../../use-get-string-props";
+import { Props } from "..";
 
-export default function CalendarInput(props: IInputProps) {
+export default function CalendarInput(props: Props) {
   const { placeholder, type, className, options } = props;
 
   const [localValue, setLocalValue] = useState<any>();
@@ -115,14 +115,14 @@ function DeafultResetIcon() {
   return <XMarkIcon />;
 }
 
-function DefaultCalendarIcon(props: IInputProps) {
-  if (props?.additionalMedia?.length) {
-    return (
-      <div className="icon-container">
-        <Image src={getFileUrl(props.additionalMedia[0])} fill={true} alt="" />
-      </div>
-    );
-  }
+function DefaultCalendarIcon(props: Props) {
+  // if (props?.additionalMedia?.length) {
+  //   return (
+  //     <div className="icon-container">
+  //       <Image src={getFileUrl(props.additionalMedia[0])} fill={true} alt="" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="icon-container">

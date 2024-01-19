@@ -1,9 +1,9 @@
 import { forwardRef, useEffect, useState } from "react";
-import { IInputProps } from "../..";
 import { Calendar } from "./shadcn";
 import dayjs from "dayjs";
+import { Props } from "..";
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const [localValue, setLocalValue] = useState<Date | undefined>(new Date());
 
   useEffect(() => {

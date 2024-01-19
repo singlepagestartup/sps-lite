@@ -1,86 +1,24 @@
 import React, {
-  ChangeEventHandler,
-  FC,
   HTMLInputTypeAttribute,
+  MutableRefObject,
   forwardRef,
   useEffect,
   useMemo,
   useRef,
-  useState,
 } from "react";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import {
-  UseControllerProps,
-  useController,
-  useFormContext,
-} from "react-hook-form";
-import { IInsideComponentProps } from "./repeatable";
-import TextInput, { Props as TextInputProps } from "./text";
+import { useController, useFormContext } from "react-hook-form";
+import TextInput from "./text";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
 import RadioGroupInput from "./radio-group";
-import SelectInput, { Props as SelectProps } from "./select";
+import SelectInput from "./select";
 import RangeInput from "./range";
 import CheckboxInput from "./checkbox";
 import DateInput from "./date";
 
-// export interface CleanedProps extends TextInputProps, SelectProps {}
-
-export interface IInputProps
-  extends Omit<UseControllerProps, "name">,
-    React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  options?: any;
-  ButtonComp?: any;
-  index?: number;
-  name: string;
-  OptionComp?: any;
-  placeholder?: string;
-  initialValue?: any;
-  multiple?: boolean;
-  accept?: string;
-  by?: string;
-  className?: string;
-  inputConfig?: any;
-  parentKey?: string;
-  defaultValue?: any;
-  baseKey?: string;
-  inputs?: any;
-  rules?: any;
-  type?: HTMLInputTypeAttribute;
-  rows?: number;
-  removeButtonTitle?: string;
-  addButtonTitle?: string;
-  renderOptionValue?: (option: any) => string;
-  valueAsNumber?: boolean;
-  InsideComponent?: FC<IInsideComponentProps>;
-  step?: number;
-  min?: number;
-  max?: number;
-  disabled?: boolean;
-  media?: IBackendFile[] | null;
-  additionalMedia?: IBackendFile[] | null;
-  extraMedia?: IBackendFile[] | null;
-  ResetIcon?: any;
-  CalendarIcon?: any;
-  onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;
-  onRemove?: ({ fieldIndex }: { fieldIndex: number }) => any;
-  onChange?: <T>(e: React.ChangeEvent<T>) => ChangeEventHandler<T> | undefined;
-  reset?: any;
-  variant:
-    | "text"
-    | "listbox"
-    | "radio-group"
-    | "switch"
-    | "file"
-    | "repeatable"
-    | "range"
-    | "date";
-  [key: string]: any;
-}
-
 const inputs: {
-  [key: string]: FC<HTMLInputElement & IInputProps & any>;
+  [key in HTMLInputTypeAttribute]+?: React.FC<any>;
 } = {
   text: TextInput,
   number: TextInput,
@@ -91,44 +29,134 @@ const inputs: {
   date: DateInput,
 };
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
+export interface Props {
+  type: keyof typeof inputs;
+  label?: string;
+  name: string;
+  placeholder?: string;
+  defaultValue?: any;
+  disabled?: boolean;
+  media?: IBackendFile[] | null;
+  additionalMedia?: IBackendFile[] | null;
+  extraMedia?: IBackendFile[] | null;
+  className?: string;
+  rules?: any;
+  initialValue?: any;
+  valueAsNumber?: boolean;
+  step?: number;
+  min?: number;
+  max?: number;
+  multiple?: boolean;
+  ui: "sps" | "shadcn";
+  options?: any;
+}
+
+// export interface IInputProps
+//   extends Omit<UseControllerProps, "name">,
+//     React.InputHTMLAttributes<HTMLInputElement> {
+//   // label?: string;
+//   options?: any;
+//   ButtonComp?: any;
+//   index?: number;
+//   // name: string;
+//   OptionComp?: any;
+//   // placeholder?: string;
+//   initialValue?: any;
+//   multiple?: boolean;
+//   accept?: string;
+//   by?: string;
+//   className?: string;
+//   inputConfig?: any;
+//   parentKey?: string;
+//   // defaultValue?: any;
+//   baseKey?: string;
+//   inputs?: any;
+//   rules?: any;
+//   // type?: HTMLInputTypeAttribute;
+//   rows?: number;
+//   removeButtonTitle?: string;
+//   addButtonTitle?: string;
+//   renderOptionValue?: (option: any) => string;
+//   valueAsNumber?: boolean;
+//   InsideComponent?: FC<IInsideComponentProps>;
+//   step?: number;
+//   min?: number;
+//   max?: number;
+//   // disabled?: boolean;
+//   // media?: IBackendFile[] | null;
+//   // additionalMedia?: IBackendFile[] | null;
+//   // extraMedia?: IBackendFile[] | null;
+//   ResetIcon?: any;
+//   CalendarIcon?: any;
+//   onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;
+//   onRemove?: ({ fieldIndex }: { fieldIndex: number }) => any;
+//   onChange?: <T>(e: React.ChangeEvent<T>) => ChangeEventHandler<T> | undefined;
+//   reset?: any;
+//   variant:
+//     | "text"
+//     | "listbox"
+//     | "radio-group"
+//     | "switch"
+//     | "file"
+//     | "repeatable"
+//     | "range"
+//     | "date";
+//   // [key: string]: any;
+// }
+
+type RequiredInputProps = Props & {
+  ui: "sps" | "shadcn";
+  label?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  id: string;
+  onBlur: () => void;
+  "data-ui": "input";
+  value: any;
+  placeholder?: string;
+};
+
+export type ExtendedInputProps<T> = RequiredInputProps &
+  (T extends "select" ? { options: any } : { options?: any });
+
+const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const {
     label,
     name,
     rules,
-    shouldUnregister,
-    defaultValue,
     placeholder,
-    className,
     initialValue,
     type = "text",
-    rows,
     valueAsNumber,
-    step,
-    min,
-    max,
-    disabled,
-    ResetIcon,
   } = props;
 
-  const Comp = props.type ? inputs[props.type] : "input";
-
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef: MutableRefObject<
+    HTMLInputElement | HTMLTextAreaElement | null
+  > = useRef(null);
   const translate = useTranslationsContext();
 
   const translatedLabel = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;
   }, [label]);
 
-  const [additionalAttributes, setAdditionalAttributes] = useState<{
-    step?: number;
-    min?: number;
-    max?: number;
-  }>({});
+  const translatedPlaceholder = useMemo(() => {
+    return typeof translate === "function" && placeholder
+      ? translate(placeholder)
+      : placeholder;
+  }, [placeholder, translate]);
+
+  const additionalAttributes: Pick<Props, "step" | "min" | "max" | "multiple"> =
+    useMemo(() => {
+      return {
+        step: props.step,
+        min: props.min,
+        max: props.max,
+        multiple: props.multiple,
+      };
+    }, [props]);
 
   const { control, setValue } = useFormContext();
 
-  const getDefaultValue = (props: IInputProps) => {
+  const getDefaultValue = (props: Props) => {
     if (props.type === "select") {
       if (props.multiple) {
         return [];
@@ -154,57 +182,8 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
     name,
     control,
     rules,
-    shouldUnregister,
     defaultValue: getDefaultValue(props),
   });
-
-  useEffect(() => {
-    if (type === "range") {
-      if (step && step !== additionalAttributes.step) {
-        setAdditionalAttributes((prev) => {
-          return {
-            ...prev,
-            step:
-              step !== undefined && step !== null
-                ? typeof step === "string"
-                  ? parseInt(step)
-                  : step
-                : undefined,
-          };
-        });
-      }
-      return;
-    }
-
-    setAdditionalAttributes({
-      step:
-        step !== undefined && step !== null
-          ? typeof step === "string"
-            ? parseInt(step)
-            : step
-          : undefined,
-      min:
-        min !== undefined && min !== null
-          ? typeof min === "string"
-            ? parseInt(min)
-            : min
-          : undefined,
-      max:
-        max !== undefined && max !== null
-          ? typeof max === "string"
-            ? parseInt(max)
-            : max
-          : undefined,
-    });
-  }, [JSON.stringify(props)]);
-
-  const additionalProps = useMemo(() => {
-    if (props.multiple) {
-      return { multiple: true };
-    }
-
-    return {};
-  }, [props.multiple]);
 
   const htmlNodeId = useMemo(() => {
     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
@@ -280,32 +259,65 @@ const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
     onChange(e);
   };
 
-  return (
-    <Comp
-      {...passProps}
-      data-ui="input"
-      type={valueAsNumber ? "number" : type || "text"}
-      disabled={disabled}
-      label={translatedLabel}
-      onChange={passedOnChange}
-      id={htmlNodeId}
-      onBlur={onBlur}
-      value={value !== undefined ? value : ""}
-      ref={(e) => {
-        if (e) {
-          ref(e);
-          inputRef.current = e;
-        }
-      }}
-      placeholder={
-        typeof translate === "function" && placeholder
-          ? translate(placeholder)
-          : placeholder
-      }
-      {...additionalAttributes}
-      {...additionalProps}
-    />
-  );
+  const toComponentProps: ExtendedInputProps<keyof typeof inputs> = {
+    ...passProps,
+    "data-ui": "input",
+    ui: props.ui,
+    label: translatedLabel,
+    onChange: passedOnChange,
+    id: htmlNodeId,
+    onBlur: onBlur,
+    value: value ?? "",
+    placeholder: translatedPlaceholder,
+    ...additionalAttributes,
+  };
+
+  if (props.type === "text") {
+    return <TextInput {...toComponentProps} />;
+  }
+
+  if (props.type === "select") {
+    return <SelectInput {...toComponentProps} options={props.options ?? []} />;
+  }
+
+  if (props.type === "range") {
+    return <RangeInput {...toComponentProps} />;
+  }
+
+  if (props.type === "radio") {
+    return <RadioGroupInput {...toComponentProps} />;
+  }
+
+  if (props.type === "checkbox") {
+    return <CheckboxInput {...toComponentProps} />;
+  }
+
+  if (props.type === "date") {
+    return <DateInput {...toComponentProps} />;
+  }
+
+  // return (
+  //   <Comp
+  //     {...passProps}
+  //     data-ui="input"
+  //     type={props.type}
+  //     valueAsNumber={props.valueAsNumber}
+  //     disabled={disabled}
+  //     label={translatedLabel}
+  //     onChange={passedOnChange}
+  //     id={htmlNodeId}
+  //     onBlur={onBlur}
+  //     value={value ?? ""}
+  //     // ref={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //     //   if (e) {
+  //     //     ref(e);
+  //     //     inputRef.current = e;
+  //     //   }
+  //     // }}
+  //     placeholder={translatedPlaceholder}
+  //     {...additionalAttributes}
+  //   />
+  // );
 });
 
 export default Input;

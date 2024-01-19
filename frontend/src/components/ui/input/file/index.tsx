@@ -10,13 +10,12 @@ import { useTranslationsContext } from "~hooks/use-translations/TranslationsCont
 import getFileUrl from "~utils/api/get-file-url";
 import axios from "axios";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { IInputProps } from "..";
 import { getInputErrors } from "~components/ui/input/get-input-errors";
 import { useGetStringProps } from "../use-get-string-props";
 import { Label } from "~components/ui/label";
 import Button from "~components/ui/button";
 
-export default function FileInput(props: IInputProps) {
+export default function FileInput(props: any) {
   const {
     label,
     name,

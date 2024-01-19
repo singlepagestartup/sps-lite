@@ -10,32 +10,14 @@ export default function Input(props: IElement) {
         data-component="elements.input"
         ui="sps"
         label={"sps | " + props.label || undefined}
-        placeholder={props.placeholder || undefined}
-        multiple={undefined}
-        className={props.className || ""}
         type="select"
-        step={undefined}
-        min={undefined}
-        max={undefined}
-        value={undefined}
-        id={undefined}
-        name={props.name}
       />
       <FormField
         {...props}
         data-component="elements.input"
         ui="shadcn"
         label={"shadcn | " + props.label || undefined}
-        placeholder={props.placeholder || undefined}
-        multiple={undefined}
-        className={props.className || ""}
         type="select"
-        step={undefined}
-        min={undefined}
-        max={undefined}
-        value={undefined}
-        id={undefined}
-        name={props.name}
       />
     </>
   );

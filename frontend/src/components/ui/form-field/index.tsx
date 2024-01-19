@@ -1,8 +1,7 @@
-import { useMemo } from "react";
+import { FC, HTMLInputTypeAttribute, useMemo } from "react";
 import { Label } from "../label";
 import { cn } from "~utils/formatters/cn";
-import Input, { IInputProps } from "~components/ui/input";
-import { Props as InputProps } from "~components/ui/input/text";
+import Input from "~components/ui/input";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
 import { useTranslationsContext } from "~hooks/use-translations/TranslationsContext";
@@ -11,10 +10,20 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
-export interface Props extends IInputProps {
+export interface Props {
+  label?: string | null;
+  name: string;
+  className?: string | null;
+  ResetIcon?: FC<any>;
   ui: "sps" | "shadcn";
   media?: IBackendFile[] | null;
   additionalMedia?: IBackendFile[] | null;
+  type: HTMLInputTypeAttribute;
+  multiple?: boolean | null;
+  min?: number | null;
+  max?: number | null;
+  step?: number | null;
+  placeholder?: string | null;
 }
 
 const FormField = (props: Props) => {
@@ -31,7 +40,7 @@ const FormField = (props: Props) => {
     formState: { errors },
   } = useFormContext();
   const {
-    field: { onChange, ref, value, onBlur },
+    field: { onChange },
   } = useController({
     name,
     control,
@@ -74,7 +83,16 @@ const FormField = (props: Props) => {
           <Image key={index} src={getFileUrl(media)} fill={true} alt="" />
         ))}
       </div>
-      <Input {...props} />
+      <Input
+        {...props}
+        label={props.label ?? undefined}
+        placeholder={props.placeholder ?? undefined}
+        className={props.className ?? undefined}
+        step={props.step ?? undefined}
+        min={props.min ?? undefined}
+        max={props.max ?? undefined}
+        multiple={props.multiple ?? undefined}
+      />
       <div
         data-media={props.additionalMedia && props.additionalMedia?.length > 0}
         className="additional-media-container !hidden"

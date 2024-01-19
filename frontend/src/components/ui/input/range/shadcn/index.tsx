@@ -1,8 +1,8 @@
 import { forwardRef, useMemo } from "react";
-import { IInputProps } from "../..";
 import { Slider } from "./shadcn";
+import { Props } from "..";
 
-const Input = forwardRef<HTMLInputElement, IInputProps>((props, passedRef) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const parsedValue = useMemo(() => {
     if (!props.value) {
       return props.min ? [props.min] : [0];

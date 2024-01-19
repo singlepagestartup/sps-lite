@@ -4,7 +4,7 @@ import Image from "next/image";
 import getFileUrl from "~utils/api/get-file-url";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
-import { IInputProps } from "../..";
+import { Props } from "..";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -12,7 +12,7 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
-const RadioGroupInput = forwardRef((props: IInputProps, ref) => {
+const RadioGroupInput = forwardRef((props: Props, ref) => {
   const { OptionComp = DefaultOption, renderOptionValue } = props;
 
   return (
@@ -49,8 +49,8 @@ function DefaultOption({
 }: {
   params: OptionRenderPropArg;
   option: any;
-  renderOptionValue: (option: any) => string;
-  extraMedia?: IBackendFile[];
+  renderOptionValue?: (option: any) => string;
+  extraMedia?: IBackendFile[] | null;
 }) {
   const { selected } = params;
 
