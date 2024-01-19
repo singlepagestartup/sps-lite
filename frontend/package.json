@@ -10,7 +10,7 @@
     "start": "next start",
     "test": "npm run test:unit:check",
     "test:unit": "jest --watch",
-    "test:unit:check": "jest --coverage",
+    "test:unit:check": "jest",
     "lint": "eslint . --resolve-plugins-relative-to .",
     "lint:fix": "eslint --fix . --resolve-plugins-relative-to .",
     "prettier:fix": "prettier --write . --config .prettierrc",

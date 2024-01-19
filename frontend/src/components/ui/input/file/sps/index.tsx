@@ -45,6 +45,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
     props.onChange(e);
   }
 
+  // Settinig initValue files
   useEffect(() => {
     const files = formInputRef?.current?.files;
     if (!localFiles) {
@@ -66,7 +67,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
     }
   }, [JSON.stringify(localFiles)]);
 
-  function onFileDeleteByIndex(deleteIndex: number) {
+  function onFileDeleteByIndex(deleteIndex: number): void {
     if (!localFiles?.length) {
       return;
     }
@@ -101,6 +102,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
           ref={ref}
           className="hidden"
           onChange={onChange}
+          data-testid={props.id}
         />
         <ButtonComp {...props} />
       </label>
@@ -138,7 +140,7 @@ function DefaultButton({ media, placeholder }: Props) {
 function FilesArray(props: {
   multiple: boolean;
   files?: File[];
-  onFileDelete: any;
+  onFileDelete: (index: number) => void;
   additionalMedia?: IBackendFile[] | null;
 }) {
   const { files, onFileDelete, multiple, additionalMedia } = props;
@@ -151,7 +153,7 @@ function FilesArray(props: {
     >
       {files?.map((file, index) => {
         const url = URL.createObjectURL(file);
-        const isImage = file.type.includes("image");
+        const isImage = file.type?.includes("image");
 
         return (
           <div key={index} className="file">
@@ -186,8 +188,4 @@ function FilesArray(props: {
       })}
     </div>
   );
-}
-
-function DeafultResetIcon() {
-  return <XMarkIcon />;
 }

@@ -19,6 +19,7 @@ import DateInput from "./date";
 import FileInput from "./file/sps";
 import getFileUrl from "~utils/api/get-file-url";
 import axios from "axios";
+import downloadBackendUploadFile from "~utils/api/download-backend-upload-file";
 
 const inputs: {
   [key in HTMLInputTypeAttribute]+?: React.FC<any>;
@@ -55,59 +56,6 @@ export interface Props {
   by?: string;
 }
 
-// export interface IInputProps
-//   extends Omit<UseControllerProps, "name">,
-//     React.InputHTMLAttributes<HTMLInputElement> {
-//   // label?: string;
-//   options?: any;
-//   ButtonComp?: any;
-//   index?: number;
-//   // name: string;
-//   OptionComp?: any;
-//   // placeholder?: string;
-//   initialValue?: any;
-//   multiple?: boolean;
-//   accept?: string;
-//   by?: string;
-//   className?: string;
-//   inputConfig?: any;
-//   parentKey?: string;
-//   // defaultValue?: any;
-//   baseKey?: string;
-//   inputs?: any;
-//   rules?: any;
-//   // type?: HTMLInputTypeAttribute;
-//   rows?: number;
-//   removeButtonTitle?: string;
-//   addButtonTitle?: string;
-//   renderOptionValue?: (option: any) => string;
-//   valueAsNumber?: boolean;
-//   InsideComponent?: FC<IInsideComponentProps>;
-//   step?: number;
-//   min?: number;
-//   max?: number;
-//   // disabled?: boolean;
-//   // media?: IBackendFile[] | null;
-//   // additionalMedia?: IBackendFile[] | null;
-//   // extraMedia?: IBackendFile[] | null;
-//   ResetIcon?: any;
-//   CalendarIcon?: any;
-//   onAppend?: ({ fieldIndex }: { fieldIndex: number }) => any;
-//   onRemove?: ({ fieldIndex }: { fieldIndex: number }) => any;
-//   onChange?: <T>(e: React.ChangeEvent<T>) => ChangeEventHandler<T> | undefined;
-//   reset?: any;
-//   variant:
-//     | "text"
-//     | "listbox"
-//     | "radio-group"
-//     | "switch"
-//     | "file"
-//     | "repeatable"
-//     | "range"
-//     | "date";
-//   // [key: string]: any;
-// }
-
 type RequiredInputProps = Props & {
   ui: "sps" | "shadcn";
   label?: string;
@@ -138,11 +86,11 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const translate = useTranslationsContext();
 
-  const translatedLabel = useMemo(() => {
+  const translatedLabel: string = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;
   }, [label, translate]);
 
-  const translatedPlaceholder = useMemo(() => {
+  const translatedPlaceholder: string = useMemo(() => {
     return typeof translate === "function" && placeholder
       ? translate(placeholder)
       : placeholder;
@@ -186,7 +134,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     defaultValue: getDefaultValue(props),
   });
 
-  const htmlNodeId = useMemo(() => {
+  const htmlNodeId: string = useMemo(() => {
     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
   }, [name]);
 
@@ -205,41 +153,13 @@ const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
     if (Array.isArray(initialValue)) {
       for (const serverFile of initialValue) {
-        const fileUrl = getFileUrl(serverFile);
-
-        const file = await axios({
-          url: fileUrl,
-          method: "GET",
-          responseType: "blob",
-        }).then((response) => {
-          return new File(
-            [response.data],
-            `${(Math.random() * 1e10).toFixed(0)}`,
-            {
-              type: serverFile.mime,
-            },
-          );
-        });
+        const file = await downloadBackendUploadFile(serverFile);
 
         dataTransfer.items.add(file);
         initialFiles.push(file);
       }
     } else {
-      const fileUrl = getFileUrl(initialValue);
-
-      const file = await axios({
-        url: fileUrl,
-        method: "GET",
-        responseType: "blob",
-      }).then((response) => {
-        return new File(
-          [response.data],
-          `${(Math.random() * 1e10).toFixed(0)}`,
-          {
-            type: initialValue.mime,
-          },
-        );
-      });
+      const file = await downloadBackendUploadFile(initialValue);
 
       dataTransfer.items.add(file);
       initialFiles.push(file);
