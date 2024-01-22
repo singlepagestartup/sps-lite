@@ -1,5 +1,5 @@
 import { usePathname, useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { ButtonHTMLAttributes, useMemo } from "react";
 
 export default function useGetButtonParams(props: {
   additionalAttributes?: any;
@@ -17,22 +17,24 @@ export default function useGetButtonParams(props: {
     return pathname === `${props.url}/`;
   }, [pathname, props.url]);
 
-  const additionalAttributes = useMemo(() => {
-    if (!props.additionalAttributes) {
-      return {
-        ui: "shadcn",
-      };
-    }
+  const additionalAttributes: ButtonHTMLAttributes<HTMLButtonElement> =
+    useMemo(() => {
+      if (!props.additionalAttributes) {
+        return {};
+      }
 
-    return { ...props.additionalAttributes, ui: "shadcn" };
-  }, [props]);
+      return { ...props.additionalAttributes };
+    }, [props]);
 
   const url = useMemo(() => {
-    const nextLinkUrl = {
+    const nextLinkUrl: {
+      pathname: string | undefined;
+      query?: string | { [key: string]: string };
+    } = {
       pathname: props.url?.includes("http")
         ? props.url
         : props.url?.split("?")[0],
-    } as any;
+    };
 
     if (pathname && !nextLinkUrl.pathname) {
       nextLinkUrl.pathname = pathname;
@@ -42,7 +44,7 @@ export default function useGetButtonParams(props: {
       if (props.url?.includes("http")) {
         nextLinkUrl.query = "";
       } else {
-        const resultQuery = {} as any;
+        const resultQuery: { [key: string]: string } = {};
 
         const newQueryString = props.url?.split("?")[1];
         const newQueryArray = newQueryString
@@ -59,7 +61,7 @@ export default function useGetButtonParams(props: {
                 return arrItem;
               });
             }
-          }, [] as any);
+          }, [] as string[]);
 
         for (const newQuery of newQueryArray) {
           const [newQueryKey, newQueryValue] = newQuery;

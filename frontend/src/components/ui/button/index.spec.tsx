@@ -1,6 +1,6 @@
 import "whatwg-fetch";
 import { render, screen } from "@testing-library/react";
-import Button from "./";
+import Button from ".";
 import "@testing-library/jest-dom";
 
 const buttonsVariants = ["text", "primary", "secondary"];

@@ -17,8 +17,6 @@ import RangeInput from "./range";
 import CheckboxInput from "./checkbox";
 import DateInput from "./date";
 import FileInput from "./file/sps";
-import getFileUrl from "~utils/api/get-file-url";
-import axios from "axios";
 import downloadBackendUploadFile from "~utils/api/download-backend-upload-file";
 
 const inputs: {

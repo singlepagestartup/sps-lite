@@ -32,8 +32,9 @@ export default function Default(props: IElement) {
     return (
       <Flyout flyout={props.flyout}>
         <Button
+          ui="shadcn"
           data-component="elements.button"
-          variant={props.variant}
+          variant={props.variant ?? "default"}
           {...additionalAttributes}
         >
           {props.title}
@@ -44,20 +45,21 @@ export default function Default(props: IElement) {
 
   if (url && props.url) {
     return (
-      <Button ui="shadcn" variant={props.variant ?? "default"} asChild={true}>
-        <Comp
-          data-component="elements.button"
-          href={urlPrepared}
-          {...additionalAttributes}
-        >
-          {props.title}
-        </Comp>
+      <Button
+        ui="shadcn"
+        data-component="elements.button"
+        variant={props.variant ?? "default"}
+        asChild={true}
+        {...additionalAttributes}
+      >
+        <Comp href={urlPrepared}>{props.title}</Comp>
       </Button>
     );
   }
 
   return (
     <Button
+      ui="shadcn"
       data-component="elements.button"
       variant={props.variant}
       {...additionalAttributes}

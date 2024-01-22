@@ -1,21 +1,21 @@
 import { forwardRef } from "react";
-// import Sps from "./sps";
+import Sps, { Props as SpsProps } from "./sps";
 import Shadcn, { Props as ShadcnProps } from "./shadcn";
-// import { ExtendedInputProps } from "..";
 
-const ui = {
-  shadcn: Shadcn,
-  //   sps: Sps,
-};
+export type Props =
+  | ({
+      ui: "shadcn";
+    } & ShadcnProps)
+  | ({
+      ui: "sps";
+    } & SpsProps);
 
-export interface Props extends ShadcnProps {
-  ui: keyof typeof ui;
-}
+const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
+  if (props.ui === "shadcn") {
+    return <Shadcn {...props} ref={ref} />;
+  }
 
-const Input = forwardRef<HTMLButtonElement, Props>((props, ref) => {
-  const Comp = ui[props.ui] ?? "button";
-
-  return <Comp {...props} ref={ref} />;
+  return <Sps {...props} ref={ref} />;
 });
 
-export default Input;
+export default Button;
