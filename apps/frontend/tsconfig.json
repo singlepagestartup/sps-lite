@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext", "es2021"],
@@ -19,22 +20,6 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitAny": true,
-    "baseUrl": ".",
-    "paths": {
-      "~store/*": ["./src/store/*"],
-      "~api/*": ["./src/api/*"],
-      "~components/*": ["./src/components/*"],
-      "~ui/*": ["./src/components/ui/*"],
-      "~utils/*": ["./src/utils/*"],
-      "~redux/*": ["./src/redux/*"],
-      "~transformers/*": ["./src/utils/transformers/*"],
-      "~hooks/*": ["./src/hooks/*"],
-      "~web3/*": ["./src/web3/*"],
-      "~abi/*": ["./src/web3/configs/abi/*"],
-      "~backend/*": ["./src/redux/services/backend/*"],
-      "~translations/*": ["./translations/*"],
-      "~mocks/*": ["./src/mocks/*"]
-    },
     "typeRoots": ["./node_modules/@types", "types"],
     "plugins": [
       {

@@ -12,28 +12,22 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
-    // "composite": true,
     "paths": {
-      "@sps/sps-billing": [
-        "libs/plugins/sps-billing/dist/server"
-      ],
-      "~store/*": ["apps/frontend/src/store/*"],
+      "@sps/sps-billing": ["libs/plugins/sps-billing/dist/server"],
+      "~abi/*": ["apps/frontend/src/web3/configs/abi/*"],
       "~api/*": ["apps/frontend/src/api/*"],
+      "~backend/*": ["apps/frontend/src/redux/services/backend/*"],
       "~components/*": ["apps/frontend/src/components/*"],
+      "~hooks/*": ["apps/frontend/src/hooks/*"],
+      "~mocks/*": ["apps/frontend/src/mocks/*"],
+      "~redux/*": ["apps/frontend/src/redux/*"],
+      "~store/*": ["apps/frontend/src/store/*"],
+      "~transformers/*": ["apps/frontend/src/utils/transformers/*"],
+      "~translations/*": ["apps/frontend/translations/*"],
       "~ui/*": ["apps/frontend/src/components/ui/*"],
       "~utils/*": ["apps/frontend/src/utils/*"],
-      "~redux/*": ["apps/frontend/src/redux/*"],
-      "~transformers/*": ["apps/frontend/src/utils/transformers/*"],
-      "~hooks/*": ["apps/frontend/src/hooks/*"],
-      "~web3/*": ["apps/frontend/src/web3/*"],
-      "~abi/*": ["apps/frontend/src/web3/configs/abi/*"],
-      "~backend/*": ["apps/frontend/src/redux/services/backend/*"],
-      "~translations/*": ["apps/frontend/translations/*"],
-      "~mocks/*": ["apps/frontend/src/mocks/*"]
+      "~web3/*": ["apps/frontend/src/web3/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

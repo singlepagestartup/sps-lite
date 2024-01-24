@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
-
+import { createGlobPatternsForDependencies } from "@nx/react/tailwind";
+import { join } from "path";
 import shadcnPreset from "./shadcn";
 
 let themeFile;
@@ -12,11 +13,12 @@ try {
 const config = {
   presets: [shadcnPreset],
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{html,js,jsx,tsx}",
-    "./src/**/**/*.{html,js,jsx,tsx}",
-    "./pages/*.{html,js,jsx,tsx}",
-    "./pages/**/*.{html,js,jsx,tsx}",
+    join(__dirname, "./app/**/*.{js,ts,jsx,tsx}"),
+    join(__dirname, "./src/**/*.{html,js,jsx,tsx}"),
+    join(__dirname, "./src/**/**/*.{html,js,jsx,tsx}"),
+    join(__dirname, "./pages/*.{html,js,jsx,tsx}"),
+    join(__dirname, "./pages/**/*.{html,js,jsx,tsx}"),
+    ...createGlobPatternsForDependencies(__dirname),
   ],
 } satisfies Config;
 

@@ -1,19 +1,29 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "**/*"
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx", "@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
-  "plugins": [
-    "@nx"
-  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.base.json"]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": ["./tsconfig.base.json"]
+      }
+    }
+  },
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -23,9 +33,7 @@
             "depConstraints": [
               {
                 "sourceTag": "*",
-                "onlyDependOnLibsWithTags": [
-                  "*"
-                ]
+                "onlyDependOnLibsWithTags": ["*"]
               }
             ]
           }
@@ -33,24 +41,35 @@
       }
     },
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
-      "extends": [
-        "plugin:@nx/typescript"
-      ],
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
       "rules": {}
     },
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
-      "extends": [
-        "plugin:@nx/javascript"
-      ],
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     }
-  ]
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "comma-dangle": ["off"],
+    "quotes": ["warn", "double"],
+    "semi": ["off"],
+    "no-duplicate-imports": "error",
+    "no-empty-pattern": ["off"],
+    "array-callback-return": ["off"],
+    "indent": ["off"],
+    "multiline-ternary": ["off"],
+    "no-loss-of-precision": ["off"],
+    "@typescript-eslint/no-empty-function": ["off"],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
+    "@typescript-eslint/ban-ts-comment": ["warn"],
+    "@typescript-eslint/no-var-requires": ["off"],
+    "@typescript-eslint/no-unused-vars": ["off"],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "no-prototype-builtins": ["warn"],
+    "@typescript-eslint/no-empty-interface": ["off"],
+    "@typescript-eslint/consistent-type-definitions": ["off"]
+  }
 }

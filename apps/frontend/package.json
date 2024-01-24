@@ -3,21 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && NODE_ENV=development node theme.js && next dev",
-    "debug": "NODE_ENV=development node theme.js && NODE_OPTIONS='--inspect' next dev",
     "build": "rm -rf .next && NODE_ENV=production node theme.js && next build",
+    "build-storybook": "storybook build",
     "build:icp": "NODE_ENV=production node theme.js && SERVER_ENVIRONMENT=icp next build",
-    "start": "next start",
-    "test": "npm run test:unit:check",
-    "test:unit": "jest --watch",
-    "test:unit:check": "jest",
+    "debug": "NODE_ENV=development node theme.js && NODE_OPTIONS='--inspect' next dev",
+    "dev": "rm -rf .next && NODE_ENV=development node theme.js && next dev",
+    "format": "npm run prettier:fix && npm run lint:fix",
     "lint": "eslint . --resolve-plugins-relative-to .",
     "lint:fix": "eslint --fix . --resolve-plugins-relative-to .",
-    "prettier:fix": "prettier --write . --config .prettierrc",
-    "format": "npm run prettier:fix && npm run lint:fix",
     "precommit": "lint-staged && npm run build",
+    "prettier:fix": "prettier --write . --config .prettierrc",
+    "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "npm run test:unit:check",
+    "test:unit": "jest --watch",
+    "test:unit:check": "jest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.5",
@@ -127,14 +127,14 @@
     "url": "^0.11.0",
     "whatwg-fetch": "^3.6.19"
   },
-  "overrides": {
-    "msw": "$msw"
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
   },
   "msw": {
     "workerDirectory": "./public"
   },
-  "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
+  "overrides": {
+    "msw": "$msw"
   }
 }
