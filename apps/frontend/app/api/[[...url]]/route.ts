@@ -3,7 +3,7 @@ import { gzip } from "pako";
 import QueryString from "qs";
 const frontendApiStaticModels: any[] = [];
 import { populate as pageBlockPopulate } from "~redux/services/backend/components/page-blocks/populate";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 let generateStaticParams;
 
 function preparePathAndHeaders({ params }: any) {

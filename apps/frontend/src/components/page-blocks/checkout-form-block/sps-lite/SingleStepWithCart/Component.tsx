@@ -10,8 +10,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import useMyProfile from "~hooks/use-my-profile";
-import TextInput from "~components/ui/input/text/sps";
-import Button from "~components/ui/button";
+import { Button } from "@sps/ui";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();

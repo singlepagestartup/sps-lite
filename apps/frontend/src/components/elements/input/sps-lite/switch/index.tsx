@@ -1,6 +1,5 @@
-import Switch from "~components/ui/input/checkbox/sps";
 import { IElement } from "../..";
-import FormField from "~components/ui/form-field";
+import { FormField } from "@sps/ui";
 
 export default function SwitchInput(props: IElement) {
   return (

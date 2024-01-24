@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { IEntity as IBackendLocale } from "~redux/services/backend/api/locale/interfaces";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 
 export async function middleware(request: any) {
   // Check if there is any supported locale in the pathname

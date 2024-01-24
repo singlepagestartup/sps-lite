@@ -5,7 +5,7 @@ import { entity as flyout } from "~redux/services/backend/extensions/sps-website
 import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";
 import store from "~redux/index";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { IPageBlock } from "../..";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;

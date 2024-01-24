@@ -1,5 +1,5 @@
 import { getBackendData } from "~utils/api";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 
 async function generateRobots() {
   const robots = await getBackendData({

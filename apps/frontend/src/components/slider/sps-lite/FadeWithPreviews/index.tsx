@@ -15,7 +15,7 @@ import { IExtendedSlide, ISlider } from "../..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import Button from "~components/elements/button";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import { IComponent as IBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
 interface INavigationButton {

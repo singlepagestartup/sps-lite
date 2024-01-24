@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Layout from "~components/layout";
 import { getBackendData } from "~utils/api";
 import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { fonts } from "./fonts";
 
 export default function GlobalError({ error, reset }: any) {

@@ -1,3 +1,5 @@
+const { withNx } = require("@nx/next/plugins/with-nx");
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
@@ -53,4 +55,6 @@ function makeConfig() {
   return withBundleAnalyzer(config);
 }
 
-module.exports = makeConfig();
+const config = makeConfig();
+
+module.exports = withNx(config);

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import useGetButtonParams from "~hooks/use-get-button-params";
-import Button from "~components/ui/button";
+import { Button } from "@sps/ui";
 import { IElement } from "../..";
 import { useMemo } from "react";
 import Flyout from "~components/flyout";

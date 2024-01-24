@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import Button from "~components/elements/button";
 import { IPageBlock } from "../..";
 

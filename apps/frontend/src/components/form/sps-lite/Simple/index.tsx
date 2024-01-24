@@ -4,8 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Input from "~components/elements/input";
 import useGetPreparedFormInputs from "~hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
-import RadioGroupInput from "~components/ui/input/radio-group/sps";
-import Button from "~components/ui/button";
+import { Button } from "@sps/ui";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();

@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { strapiFetchBaseQueryBuilder } from "~redux/strapi-rtk";
 
 const model = "theme";

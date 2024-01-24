@@ -1,6 +1,6 @@
 import { stringify } from "qs";
 import { transformResponseItem } from "./transform-response-item";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { gzip } from "pako";
 
 interface IFetchProps {

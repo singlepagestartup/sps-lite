@@ -5,16 +5,16 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
 import Card, { ICardProps } from "~components/ui/card";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import { IEntity as IBackendProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/product/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import useMyProfile from "~hooks/use-my-profile";
-import TextInput from "~components/ui/input/text";
-import Button from "~components/ui/button";
+import { TextInput } from "@sps/ui";
+import { Button } from "@sps/ui";
 import Link from "next/link";
-import FormField from "~components/ui/form-field";
+import { FormField } from "@sps/ui";
 
 const cardsConfig = {
   emptyLength: 4,

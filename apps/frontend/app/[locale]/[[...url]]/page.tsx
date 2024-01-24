@@ -3,8 +3,7 @@ import PageBlocks from "~components/page-blocks";
 import { getBackendData, getTargetPage } from "~utils/api";
 import { populate as metatagPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/metatag/populate";
 import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
-import { BACKEND_URL } from "~utils/envs";
-import getImageUrl from "~utils/api/get-file-url";
+import { getFileUrl, BACKEND_URL } from "@sps/utils";
 
 export const dynamicParams = true;
 
@@ -74,7 +73,7 @@ export async function generateMetadata(props: any) {
 
     if (defaultMetatag.favicon?.url) {
       defaultMetadata.icons = {
-        icon: getImageUrl(defaultMetatag.favicon),
+        icon: getFileUrl(defaultMetatag.favicon),
       };
     }
 
@@ -90,7 +89,7 @@ export async function generateMetadata(props: any) {
 
   if (metatag.favicon?.url) {
     metadata.icons = {
-      icon: getImageUrl(metatag.favicon),
+      icon: getFileUrl(metatag.favicon),
     };
   }
 

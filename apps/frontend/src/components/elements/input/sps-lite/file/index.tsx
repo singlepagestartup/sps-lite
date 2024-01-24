@@ -1,5 +1,5 @@
 import { IElement } from "../..";
-import FormField from "~components/ui/form-field";
+import { FormField } from "@sps/ui";
 
 export default function File(props: IElement) {
   return (

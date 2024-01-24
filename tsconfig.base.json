@@ -13,7 +13,13 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "paths": {
+      "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
+      "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
+      "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
       "@sps/sps-billing": ["libs/plugins/sps-billing/dist/server"],
+      "@sps/ui": ["libs/shared/ui/adapter/src/index.ts"],
+      "@sps/ui/server": ["libs/shared/ui/adapter/src/server.ts"],
+      "@sps/utils": ["libs/shared/utils/src/index.ts"],
       "~abi/*": ["apps/frontend/src/web3/configs/abi/*"],
       "~api/*": ["apps/frontend/src/api/*"],
       "~backend/*": ["apps/frontend/src/redux/services/backend/*"],

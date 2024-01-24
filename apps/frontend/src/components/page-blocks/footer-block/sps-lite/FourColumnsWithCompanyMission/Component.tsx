@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import ButtonArrays from "~components/elements/buttons-array";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import { IPageBlock } from "../..";
 
 export default function Component(props: IPageBlock) {

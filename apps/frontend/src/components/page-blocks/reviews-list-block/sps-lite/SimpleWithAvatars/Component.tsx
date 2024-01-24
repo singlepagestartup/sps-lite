@@ -5,7 +5,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "~redux/services/backend/extensions/sps-crm/api/review/api";
 import Card, { ICardProps } from "~components/ui/card";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import { IEntity as ISpsLiteBackendApiReview } from "~redux/services/backend/extensions/sps-crm/api/review/interfaces/sps-lite";
 import { IPageBlock } from "../..";
 

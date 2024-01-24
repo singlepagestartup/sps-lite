@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";
 import store from "~redux/index";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { entity } from "~redux/services/backend/components/page-blocks/reviews-list-block/mock/sps-lite";
 import { entity as review } from "~redux/services/backend/extensions/sps-crm/api/review/mock/sps-lite";
 import Root from ".";

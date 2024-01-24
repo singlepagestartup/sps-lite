@@ -1,5 +1,5 @@
 import Button from "~components/elements/button";
-import getFileUrl from "~utils/api/get-file-url";
+import { getFileUrl } from "@sps/utils";
 import Image from "next/image";
 import { IElement } from "../..";
 

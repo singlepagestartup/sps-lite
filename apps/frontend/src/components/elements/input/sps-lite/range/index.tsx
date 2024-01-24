@@ -1,6 +1,5 @@
-import RangeInput from "~components/ui/input/range/sps";
 import { IElement } from "../..";
-import FormField from "~components/ui/form-field";
+import { FormField } from "@sps/ui";
 
 export default function Input(props: IElement) {
   return (

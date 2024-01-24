@@ -8,8 +8,7 @@ import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import TextInput from "~components/ui/input/text/sps";
-import Button from "~components/ui/button";
+import { Button } from "@sps/ui";
 
 export default function Component(props: IPageBlock) {
   const router = useRouter();

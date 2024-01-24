@@ -1,7 +1,7 @@
 import { getBackendData, getFiltersFromPageUrl, getTargetPage } from ".";
 import { setupServer } from "msw/node";
 import { HttpResponse, http } from "msw";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import Pako from "pako";
 import QueryString from "qs";
 import { IEntity as IBackendApiPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";

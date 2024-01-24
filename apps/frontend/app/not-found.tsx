@@ -1,7 +1,7 @@
 import PageBlocks from "~components/page-blocks";
 import { getBackendData } from "~utils/api";
 import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
-import { BACKEND_URL } from "~utils/envs";
+import { BACKEND_URL } from "@sps/utils";
 import { IEntity as IBackendPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
 
 export default async function NotFoundPage() {

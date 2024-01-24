@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckIcon } from "@heroicons/react/24/outline";
-import useTranslations from "~hooks/use-translations";
+import { useTranslations } from "@sps/hooks";
 import Card, { ICardProps } from "~components/ui/card";
 import Image from "next/image";
 import Button from "~components/elements/button";

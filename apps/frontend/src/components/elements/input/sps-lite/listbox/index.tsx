@@ -1,6 +1,5 @@
-import ListboxInput from "~components/ui/input/select/sps";
 import { IElement } from "../..";
-import FormField from "~components/ui/form-field";
+import { FormField } from "@sps/ui";
 
 export default function Input(props: IElement) {
   return (
