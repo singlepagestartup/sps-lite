@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Button as ShadcnButton, ButtonProps } from "./shadcn";
+import { Button as ShadcnButton, ButtonProps } from "@sps/shadcn";
 
 export interface Props extends ButtonProps {}
 

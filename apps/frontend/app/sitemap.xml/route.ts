@@ -1,5 +1,5 @@
-import { IEntity as IBackendPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
-import { getBackendData } from "~utils/api";
+import { IEntity as IBackendPage } from "@sps/sps-website-builder/lib/redux/services/api/page/interfaces";
+import { getBackendData } from "@sps/utils";
 import { BACKEND_URL, FRONTEND_URL } from "@sps/utils";
 
 async function generateSiteMap() {

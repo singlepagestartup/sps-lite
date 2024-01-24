@@ -4,10 +4,10 @@ import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as layoutApi } from "~redux/services/backend/extensions/sps-website-builder/api/layout/api";
+import { api as layoutApi } from "@sps/sps-website-builder/lib/redux/services/api/layout/api";
 import { useParams, usePathname } from "next/navigation";
-import { IEntity as IBackendLayout } from "~redux/services/backend/extensions/sps-website-builder/api/layout/interfaces";
-import { IEntity as IBackendLoader } from "~redux/services/backend/extensions/sps-website-builder/api/loader/interfaces";
+import { IEntity as IBackendLayout } from "@sps/sps-website-builder/lib/redux/services/api/layout/interfaces";
+import { IEntity as IBackendLoader } from "@sps/sps-website-builder/lib/redux/services/api/loader/interfaces";
 import { slice as userSlice } from "~redux/auth/slice";
 
 export interface ILayout extends IBackendLayout {

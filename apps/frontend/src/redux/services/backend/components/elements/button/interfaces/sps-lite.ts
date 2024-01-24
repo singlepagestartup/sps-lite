@@ -1,4 +1,4 @@
-import { IEntity as IBackendFlyout } from "~redux/services/backend/extensions/sps-website-builder/api/flyout/interfaces";
+import { IEntity as IBackendFlyout } from "@sps/sps-website-builder/lib/redux/services/api/flyout/interfaces";
 import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 export interface IComponent {

@@ -1,4 +1,4 @@
-import { getBackendData } from "~utils/api";
+import { getBackendData } from "@sps/utils";
 import { BACKEND_URL } from "@sps/utils";
 
 async function generateRobots() {

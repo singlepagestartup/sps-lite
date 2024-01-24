@@ -1,9 +1,12 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "@sps/utils";
-import { strapiFetchBaseQueryBuilder, strapiFindOne } from "~redux/strapi-rtk";
+import {
+  transformResponseItem,
+  strapiFetchBaseQueryBuilder,
+  strapiFindOne,
+  BACKEND_URL,
+} from "@sps/utils";
 import { populate } from "../populate";
 import { IEntity } from "../interfaces";
-import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "users";
 const rtkType = "User";

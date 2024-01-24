@@ -8,12 +8,12 @@ import SlideOvers from "~components/slide-over";
 import { Suspense } from "react";
 import Layout from "~components/layout";
 import Loader from "~components/loader";
-import { getBackendData } from "~utils/api";
+import { getBackendData } from "@sps/utils";
 import { BACKEND_URL } from "@sps/utils";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
-import { populate as loaderPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/loader/populate";
+import { populate as loaderPopulate } from "@sps/sps-website-builder/lib/redux/services/api/loader/populate";
 
 export const dynamic = "force-dynamic";
 

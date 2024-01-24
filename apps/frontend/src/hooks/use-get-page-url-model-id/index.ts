@@ -1,7 +1,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { IEntity as IBackendPage } from "~redux/services/backend/extensions/sps-website-builder/api/page/interfaces";
-import { getFiltersFromPageUrl, getTargetPage } from "~utils/api";
+import { IEntity as IBackendPage } from "@sps/sps-website-builder/lib/redux/services/api/page/interfaces";
+import { getFiltersFromPageUrl, getTargetPage } from "@sps/utils";
 const R = require("ramda");
 
 export default function useGetPageUrlModelId({

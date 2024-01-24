@@ -6,7 +6,7 @@ import ReactCalendar from "react-calendar";
 // import DateTimePicker from "react-datetime-picker";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 // import Image from "next/image";
-// import getFileUrl from "~utils/api/get-file-url";
+// import getFileUrl from "@sps/utils/get-file-url";
 import dayjs from "dayjs";
 import { Props } from "..";
 import { useGetStringProps } from "../../use-get-string-props";

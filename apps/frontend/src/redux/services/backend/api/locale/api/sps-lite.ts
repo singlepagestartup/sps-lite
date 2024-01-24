@@ -1,6 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "@sps/utils";
-import { strapiFetchBaseQueryBuilder } from "~redux/strapi-rtk";
+import { strapiFetchBaseQueryBuilder, BACKEND_URL } from "@sps/utils";
 
 const model = "locales";
 const rtkType = "Locale";

@@ -1,7 +1,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
-import { api as pageApi } from "~redux/services/backend/extensions/sps-website-builder/api/page/api";
-import { getFiltersFromPageUrl } from "~utils/api";
+import { api as pageApi } from "@sps/sps-website-builder/lib/redux/services/api/page/api";
+import { getFiltersFromPageUrl } from "@sps/utils";
 
 export default function useGetPageUrlFiltersQuery() {
   const params = useParams();

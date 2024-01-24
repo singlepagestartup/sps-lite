@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { entity } from "~redux/services/backend/extensions/sps-website-builder/api/sidebar/mock/sps-lite";
+import { entity } from "@sps/sps-website-builder/lib/redux/services/api/sidebar/mock/sps-lite";
 import Root from ".";
 import { ISidebar } from "../..";
 

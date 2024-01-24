@@ -1,13 +1,13 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "@sps/utils";
 import {
   strapiFetchBaseQueryBuilder,
   strapiFind,
   strapiFindOne,
-} from "~redux/strapi-rtk";
+  transformResponseItem,
+  BACKEND_URL,
+} from "@sps/utils";
 import { populate } from "../populate";
 import { IEntity } from "../interfaces";
-import { transformResponseItem } from "~utils/api/transform-response-item";
 import { api as userApi } from "~redux/services/backend/extensions/users-permissions/api/user/api";
 import { api as cartApi } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/api";
 import { api as orderApi } from "~redux/services/backend/extensions/sps-ecommerce/api/order/api";

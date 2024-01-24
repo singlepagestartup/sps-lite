@@ -1,7 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { api as modalApi } from "~redux/services/backend/extensions/sps-website-builder/api/modal/api";
-import { BACKEND_URL } from "@sps/utils";
-import { strapiFetchBaseQueryBuilder, strapiFind } from "~redux/strapi-rtk";
+import { api as modalApi } from "@sps/sps-website-builder/lib/redux/services/api/modal/api";
+import {
+  strapiFetchBaseQueryBuilder,
+  strapiFind,
+  BACKEND_URL,
+} from "@sps/utils";
 import { IEntity } from "../interfaces";
 import { populate } from "../populate";
 

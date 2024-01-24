@@ -32,7 +32,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "../../dist/apps/frontend/.next/types/**/*.ts"
+    "../../dist/apps/frontend/.next/types/**/*.ts",
+    "../../libs/shared/utils/src/lib/strapi-rtk.ts",
+    "../../libs/shared/utils/src/lib/preapare-form-data-to-send.ts",
+    "../../libs/shared/utils/src/lib/transform-response-item.ts"
   ],
   "exclude": ["node_modules", "**/jest*.ts"]
 }

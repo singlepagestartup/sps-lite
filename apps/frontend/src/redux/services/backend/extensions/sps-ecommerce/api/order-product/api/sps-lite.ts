@@ -1,13 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "@sps/utils";
-import {
-  strapiFetchBaseQueryBuilder,
-  strapiFind,
-  strapiFindOne,
-} from "~redux/strapi-rtk";
+import { strapiFetchBaseQueryBuilder, BACKEND_URL } from "@sps/utils";
 import { populate } from "../populate";
 import { IEntity } from "../interfaces";
-import { transformResponseItem } from "~utils/api/transform-response-item";
 
 const model = "orders-products";
 const rtkType = "OrderProduct";

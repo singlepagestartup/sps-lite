@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Layout from "~components/layout";
-import { getBackendData } from "~utils/api";
-import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
+import { getBackendData } from "@sps/utils";
+import { populate as pagePopulate } from "@sps/sps-website-builder/lib/redux/services/api/page/populate";
 import { BACKEND_URL } from "@sps/utils";
 import { fonts } from "./fonts";
 

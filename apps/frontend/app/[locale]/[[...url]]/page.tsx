@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import PageBlocks from "~components/page-blocks";
-import { getBackendData, getTargetPage } from "~utils/api";
-import { populate as metatagPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/metatag/populate";
-import { populate as pagePopulate } from "~redux/services/backend/extensions/sps-website-builder/api/page/populate";
+import { getBackendData, getTargetPage } from "@sps/utils";
+import { populate as metatagPopulate } from "@sps/sps-website-builder/lib/redux/services/api/metatag/populate";
+import { populate as pagePopulate } from "@sps/sps-website-builder/lib/redux/services/api/page/populate";
 import { getFileUrl, BACKEND_URL } from "@sps/utils";
 
 export const dynamicParams = true;

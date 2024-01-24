@@ -1,6 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { BACKEND_URL } from "@sps/utils";
-import { strapiCreate, strapiFetchBaseQueryBuilder } from "~redux/strapi-rtk";
+import {
+  strapiCreate,
+  strapiFetchBaseQueryBuilder,
+  BACKEND_URL,
+} from "@sps/utils";
 import { populate } from "../populate";
 import { IEntity } from "../interfaces";
 

@@ -1,4 +1,4 @@
-import { populate as sliderPopulate } from "~redux/services/backend/extensions/sps-website-builder/api/slider/populate";
+import { populate as sliderPopulate } from "@sps/sps-website-builder/lib/redux/services/api/slider/populate";
 
 export const populate = {
   slider: {
