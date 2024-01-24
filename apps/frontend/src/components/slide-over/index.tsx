@@ -3,9 +3,9 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as slideOverApi } from "@sps/sps-website-builder/lib/redux/services/api/slide-over/api";
+import { api as slideOverApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/slide-over/api";
 import { useSearchParams } from "next/navigation";
-import { IEntity as IBackendSlideOver } from "@sps/sps-website-builder/lib/redux/services/api/slide-over/interfaces";
+import { IEntity as IBackendSlideOver } from "@sps/sps-website-builder-frontend/lib/redux/entities/slide-over/interfaces";
 
 export interface ISlideOver extends IBackendSlideOver {
   showSkeletons?: boolean;

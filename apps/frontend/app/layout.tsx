@@ -13,7 +13,7 @@ import { BACKEND_URL } from "@sps/utils";
 import GoogleTagManager from "~components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
-import { populate as loaderPopulate } from "@sps/sps-website-builder/lib/redux/services/api/loader/populate";
+import { populate as loaderPopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/populate";
 
 export const dynamic = "force-dynamic";
 

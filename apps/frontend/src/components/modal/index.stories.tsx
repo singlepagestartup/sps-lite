@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "@sps/utils";
 import Modals from ".";
-import { entity as modal } from "@sps/sps-website-builder/lib/redux/services/api/modal/mock/sps-lite";
+import { entity as modal } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/mock/sps-lite";
 
 const meta = {
   component: Modals,

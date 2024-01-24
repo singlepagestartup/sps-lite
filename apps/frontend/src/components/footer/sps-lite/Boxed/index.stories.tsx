@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { entity as footer } from "@sps/sps-website-builder/lib/redux/services/api/footer/mock/sps-lite";
+import { entity as footer } from "@sps/sps-website-builder-frontend/lib/redux/entities/footer/mock/sps-lite";
 import Root from ".";
 import { Provider } from "react-redux";
 import store from "~redux/index";

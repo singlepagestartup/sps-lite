@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { entity as spsLiteBackendButton } from "~redux/services/backend/components/elements/button/mock/sps-lite";
-import { entity as file } from "~redux/services/backend/extensions/upload/api/file/mock/sps-lite";
+import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {

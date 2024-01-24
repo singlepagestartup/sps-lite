@@ -8,7 +8,7 @@ import { useTranslationsContext } from "libs/shared/hooks/src/lib/use-translatio
 import { Button } from "@sps/ui";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
 
 export interface Props {
   label?: string | null;

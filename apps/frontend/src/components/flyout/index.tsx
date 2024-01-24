@@ -3,8 +3,8 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as flyoutApi } from "@sps/sps-website-builder/lib/redux/services/api/flyout/api";
-import { IEntity as IBackendFlyout } from "@sps/sps-website-builder/lib/redux/services/api/flyout/interfaces";
+import { api as flyoutApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/flyout/api";
+import { IEntity as IBackendFlyout } from "@sps/sps-website-builder-frontend/lib/redux/entities/flyout/interfaces";
 
 export interface IFlyout extends IBackendFlyout {
   showSkeletons?: boolean;

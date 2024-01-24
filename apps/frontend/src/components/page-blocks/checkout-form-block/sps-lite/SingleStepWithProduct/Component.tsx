@@ -1,7 +1,7 @@
 "use client";
 
-import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
-import { api as invoiceApi } from "~redux/services/backend/extensions/sps-billing/api/invoice/api";
+import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
+import { api as invoiceApi } from "@sps/sps-billing-frontend/lib/redux/entites/invoice/api";
 import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";

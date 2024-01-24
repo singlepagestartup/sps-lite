@@ -1,5 +1,5 @@
-import { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
-import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
+import { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
 import { IComponent as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
 
 export interface IComponent {

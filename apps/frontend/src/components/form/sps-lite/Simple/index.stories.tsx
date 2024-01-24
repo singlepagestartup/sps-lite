@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "@sps/utils";
 import Root from ".";
-import { entity as form } from "~redux/services/backend/extensions/sps-crm/api/form/mock/sps-lite";
+import { entity as form } from "@sps/sps-crm-frontend/lib/redux/entities/form/mock/sps-lite";
 import { TranslationsContextWrapper } from "@sps/hooks";
 import { IForm } from "../..";
 

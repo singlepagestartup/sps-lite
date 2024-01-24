@@ -1,4 +1,4 @@
-import { IEntity as IBackendReview } from "~redux/services/backend/extensions/sps-crm/api/review/interfaces";
+import { IEntity as IBackendReview } from "@sps/sps-crm-frontend/lib/redux/entities/review/interfaces";
 
 export interface IComponent {
   id: number;

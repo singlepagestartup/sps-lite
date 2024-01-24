@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { api as subscriptionApi } from "~redux/services/backend/extensions/sps-subscription/api/subscription/api";
+import { api as subscriptionApi } from "@sps/sps-subscription-frontend/lib/redux/entities/subscription/api";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@sps/ui";

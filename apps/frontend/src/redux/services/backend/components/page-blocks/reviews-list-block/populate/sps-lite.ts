@@ -1,4 +1,4 @@
-import { populate as reviewPopulate } from "~redux/services/backend/extensions/sps-crm/api/review/populate";
+import { populate as reviewPopulate } from "@sps/sps-crm-frontend/lib/redux/entities/review/populate";
 
 export const populate = {
   reviews: {

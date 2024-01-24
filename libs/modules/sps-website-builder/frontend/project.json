@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder",
+  "name": "@sps/sps-website-builder-frontend",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/frontend/src",
   "projectType": "library",

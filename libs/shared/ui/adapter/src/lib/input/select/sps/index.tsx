@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, forwardRef, useMemo } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+import { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;

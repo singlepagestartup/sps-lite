@@ -6,7 +6,7 @@ import { ReduxProvider } from "~redux/index";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "@sps/utils";
 import { HttpResponse, http } from "msw";
-import { IEntity as IBackendApiPage } from "@sps/sps-website-builder/lib/redux/services/api/page/interfaces";
+import { IEntity as IBackendApiPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
 
 jest.mock("next/navigation", () => {
   return {

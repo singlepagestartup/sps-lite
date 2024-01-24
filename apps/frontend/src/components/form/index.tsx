@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
+import { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
 
 export interface IForm extends IBackendForm {
   showSkeletons?: boolean;

@@ -3,12 +3,12 @@
 import ReactMarkdown from "react-markdown";
 import { IPageBlock } from "../..";
 import useMyProfile from "~hooks/use-my-profile";
-import { api as cartApi } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/api";
-import { api as orderApi } from "~redux/services/backend/extensions/sps-ecommerce/api/order/api";
-import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
-import { IEntity as IBackendOrder } from "~redux/services/backend/extensions/sps-ecommerce/api/order/interfaces";
-import { IEntity as IBackendOrderProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/order-product/interfaces";
-import { IEntity as IBackendAttribute } from "~redux/services/backend/extensions/sps-ecommerce/api/attribute/interfaces";
+import { api as cartApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/cart/api";
+import { api as orderApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/api";
+import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
+import { IEntity as IBackendOrder } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/interfaces";
+import { IEntity as IBackendOrderProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order-product/interfaces";
+import { IEntity as IBackendAttribute } from "@sps/sps-ecommerce-frontend/lib/redux/entities/attribute/interfaces";
 import { useMemo } from "react";
 import { Button } from "@sps/ui";
 import Link from "next/link";
