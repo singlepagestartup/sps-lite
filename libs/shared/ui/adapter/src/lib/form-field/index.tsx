@@ -1,5 +1,5 @@
 import { FC, HTMLInputTypeAttribute, useMemo } from "react";
-import { Label } from "../../../../../../../apps/frontend/src/components/ui/label";
+import { Label } from "../label";
 import { cn } from "@sps/utils";
 import { Input } from "@sps/ui";
 import { useController, useFormContext } from "react-hook-form";

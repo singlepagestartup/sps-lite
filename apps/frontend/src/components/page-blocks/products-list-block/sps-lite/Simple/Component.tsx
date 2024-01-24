@@ -4,7 +4,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as productApi } from "~redux/services/backend/extensions/sps-ecommerce/api/product/api";
-import Card, { ICardProps } from "~components/ui/card";
+import { Card, ICardProps } from "@sps/ui";
 import { getFileUrl } from "@sps/utils";
 import { IEntity as IBackendProduct } from "~redux/services/backend/extensions/sps-ecommerce/api/product/interfaces";
 import { IPageBlock } from "../..";

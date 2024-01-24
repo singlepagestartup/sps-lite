@@ -1,10 +1,6 @@
 import PageBlocks from "~components/page-blocks";
 import { IFlyout } from "../..";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
 export default function Simple(props: IFlyout) {
   return (

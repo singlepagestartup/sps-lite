@@ -10,3 +10,4 @@ export { RangeInput } from "./lib/input/range";
 export { SelectInput } from "./lib/input/select";
 export { Input } from "./lib/input";
 export { FormField } from "./lib/form-field";
+export { Card, type ICardProps } from "./lib/card";

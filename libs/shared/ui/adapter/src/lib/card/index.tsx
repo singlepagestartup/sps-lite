@@ -32,7 +32,7 @@ export interface Props extends ICardsBlock {
   variant: keyof typeof variants;
 }
 
-export default function Card(props: Props) {
+export function Card(props: Props) {
   const Comp = variants[props.variant as keyof typeof variants] as FC<any>;
 
   if (!Comp) {
