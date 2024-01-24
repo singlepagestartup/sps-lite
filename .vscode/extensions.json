@@ -15,6 +15,8 @@
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml",
     "bierner.jsdoc-markdown-highlighting",
-    "alexkrechik.cucumberautocomplete"
+    "alexkrechik.cucumberautocomplete",
+    "nrwl.angular-console",
+    "firsttris.vscode-jest-runner"
   ]
 }

@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    // "composite": true,
+    "paths": {
+      "@sps/sps-billing": [
+        "libs/plugins/sps-billing/dist/server"
+      ],
+      "~store/*": ["apps/frontend/src/store/*"],
+      "~api/*": ["apps/frontend/src/api/*"],
+      "~components/*": ["apps/frontend/src/components/*"],
+      "~ui/*": ["apps/frontend/src/components/ui/*"],
+      "~utils/*": ["apps/frontend/src/utils/*"],
+      "~redux/*": ["apps/frontend/src/redux/*"],
+      "~transformers/*": ["apps/frontend/src/utils/transformers/*"],
+      "~hooks/*": ["apps/frontend/src/hooks/*"],
+      "~web3/*": ["apps/frontend/src/web3/*"],
+      "~abi/*": ["apps/frontend/src/web3/configs/abi/*"],
+      "~backend/*": ["apps/frontend/src/redux/services/backend/*"],
+      "~translations/*": ["apps/frontend/translations/*"],
+      "~mocks/*": ["apps/frontend/src/mocks/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}
