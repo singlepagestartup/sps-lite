@@ -27,7 +27,6 @@
   "typescript.validate.enable": true,
   "playwright.reuseBrowser": false,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Default Dark+"

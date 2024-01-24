@@ -42,7 +42,7 @@ function getFileUrl(obj, options = {}) {
 
 const getThemeFromBackend = async (props) => {
   const envFile = process.env.NODE_ENV;
-  require("dotenv").config({ path: `.env.${envFile}` });
+  require("dotenv").config({ path: path.join(__dirname, `.env.${envFile}`) });
 
   const themeData = await axios
     .get(
