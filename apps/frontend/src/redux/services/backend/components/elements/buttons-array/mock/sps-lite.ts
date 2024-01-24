@@ -1,5 +1,5 @@
 import { entity as spsLiteButton } from "~redux/services/backend/components/elements/button/mock/sps-lite";
-import { IComponent } from "../interfaces/sps-lite";
+import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
   id: 5,

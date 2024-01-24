@@ -28,8 +28,8 @@
         "@nx/enforce-module-boundaries": [
           "error",
           {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
+            "enforceBuildableLibDependency": false,
+            "allow": ["@sps/**/interfaces/**/*.ts"],
             "depConstraints": [
               {
                 "sourceTag": "*",

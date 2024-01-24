@@ -1,4 +1,4 @@
-import { IEntity } from "../interfaces/sps-lite";
+import type { IEntity } from "../interfaces/sps-lite";
 // import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
 
 export const entity: IEntity = {

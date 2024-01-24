@@ -1,8 +1,8 @@
-import { IEntity as IBackendFooter } from "../../footer/interfaces";
-import { IEntity as IBackendNavbar } from "../../navbar/interfaces";
-import { IEntity as IBackendPage } from "../../page/interfaces";
-import { IEntity as IBackendSidebar } from "../../sidebar/interfaces";
-import { IEntity as IBackendTopbar } from "../../topbar/interfaces";
+import type { IEntity as IBackendFooter } from "../../footer/interfaces";
+import type { IEntity as IBackendNavbar } from "../../navbar/interfaces";
+import type { IEntity as IBackendPage } from "../../page/interfaces";
+import type { IEntity as IBackendSidebar } from "../../sidebar/interfaces";
+import type { IEntity as IBackendTopbar } from "../../topbar/interfaces";
 
 export interface IEntity {
   id: number;

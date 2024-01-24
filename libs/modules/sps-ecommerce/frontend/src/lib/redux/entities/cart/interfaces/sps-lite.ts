@@ -1,5 +1,5 @@
-import { IEntity as IBackendUser } from "libs/modules/sps-rbac/frontend/src/lib/redux/entities/user/interfaces";
-import { IEntity as IBackendOrder } from "~redux/services/backend/extensions/sps-ecommerce/api/order/interfaces";
+import type { IEntity as IBackendUser } from "@sps/sps-rbac-frontend/lib/redux/entities/user/interfaces";
+import type { IEntity as IBackendOrder } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/interfaces";
 
 export interface IEntity {
   id: number;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 import sha256 from "crypto-js/sha256";
 
 const initialState: IEntity = {

@@ -1,7 +1,7 @@
 import { IPage } from "..";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces";
+import type { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/slider-block/interfaces";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

@@ -1,6 +1,6 @@
-import { IEntity as IBackendUser } from "@sps/sps-rbac-frontend/lib/redux/entities/user/interfaces";
-import { IEntity as IBackendCart } from "../../cart/interfaces";
-import { IEntity as IBackendOrderProduct } from "../../order-product/interfaces";
+import type { IEntity as IBackendUser } from "@sps/sps-rbac-frontend/lib/redux/entities/user/interfaces";
+import type { IEntity as IBackendCart } from "../../cart/interfaces";
+import type { IEntity as IBackendOrderProduct } from "../../order-product/interfaces";
 
 export interface IEntity {
   id: number;

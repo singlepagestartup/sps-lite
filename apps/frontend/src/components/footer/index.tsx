@@ -3,7 +3,7 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as footerApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/footer/api";
-import { IEntity as IBackendFooter } from "@sps/sps-website-builder-frontend/lib/redux/entities/footer/interfaces";
+import type { IEntity as IBackendFooter } from "@sps/sps-website-builder-frontend/lib/redux/entities/footer/interfaces";
 
 export interface IFooter extends IBackendFooter {
   showSkeletons?: boolean;

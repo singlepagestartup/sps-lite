@@ -5,7 +5,7 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as slideOverApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/slide-over/api";
 import { useSearchParams } from "next/navigation";
-import { IEntity as IBackendSlideOver } from "@sps/sps-website-builder-frontend/lib/redux/entities/slide-over/interfaces";
+import type { IEntity as IBackendSlideOver } from "@sps/sps-website-builder-frontend/lib/redux/entities/slide-over/interfaces";
 
 export interface ISlideOver extends IBackendSlideOver {
   showSkeletons?: boolean;

@@ -7,7 +7,7 @@ import {
   BACKEND_URL,
 } from "@sps/utils";
 import { populate } from "../populate";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 import { api as userApi } from "libs/modules/sps-rbac/frontend/src/lib/redux/entities/user/api";
 import { api as cartApi } from "../../cart/api";
 import { api as orderApi } from "../../order/api";

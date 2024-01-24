@@ -6,7 +6,7 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 import { populate } from "../populate";
 
 const rtkType = "Invoice";

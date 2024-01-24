@@ -4,8 +4,8 @@ import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import parseMimeType from "~utils/formatters/parse-mime-type";
-import { IEntity as IBackendSlider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/interfaces";
-import { IComponent as IBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces";
+import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/interfaces";
+import type { IComponent as IBackendSlide } from "~redux/services/backend/components/elements/slide/interfaces";
 
 const variants = {
   ...spsLiteVariants,

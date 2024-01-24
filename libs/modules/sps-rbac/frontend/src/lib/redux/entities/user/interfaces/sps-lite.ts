@@ -1,4 +1,4 @@
-import { IEntity as IBackendCart } from "~redux/services/backend/extensions/sps-ecommerce/api/cart/interfaces";
+import type { IEntity as IBackendCart } from "@sps/sps-ecommerce-frontend/lib/redux/entities/cart/interfaces";
 
 export interface IEntity {
   id: number;

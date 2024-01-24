@@ -2,8 +2,8 @@ import { renderHook } from "@testing-library/react";
 import useGetPreparedFormInputs from ".";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
-import { IComponent as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
+import type { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
+import type { IComponent as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
 
 jest.mock("next/navigation", () => {
   return {

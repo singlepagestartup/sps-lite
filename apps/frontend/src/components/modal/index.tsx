@@ -5,7 +5,7 @@ import { api as modalApi } from "@sps/sps-website-builder-frontend/lib/redux/ent
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IEntity as IBackendModal } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/interfaces";
+import type { IEntity as IBackendModal } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/interfaces";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;

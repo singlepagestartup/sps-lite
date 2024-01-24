@@ -1,6 +1,6 @@
-import { IEntity as IBackendOrder } from "../../order/interfaces";
-import { IEntity as IBackendProduct } from "../../product/interfaces";
-import { IEntity as IBackendAttribute } from "../../attribute/interfaces";
+import type { IEntity as IBackendOrder } from "../../order/interfaces";
+import type { IEntity as IBackendProduct } from "../../product/interfaces";
+import type { IEntity as IBackendAttribute } from "../../attribute/interfaces";
 
 export interface IEntity {
   id: number;

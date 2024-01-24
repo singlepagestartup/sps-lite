@@ -6,7 +6,7 @@ import {
   BACKEND_URL,
 } from "@sps/utils";
 import { populate } from "../populate";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 
 const extension = "sps-subscription/";
 const model = "attribute-keys";

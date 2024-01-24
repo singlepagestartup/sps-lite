@@ -1,4 +1,4 @@
-import { IComponent } from "../interfaces/sps-lite";
+import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
   id: 56,

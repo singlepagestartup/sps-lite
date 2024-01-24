@@ -3,7 +3,7 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as sidebarApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/sidebar/api";
-import { IEntity as IBackendSidebar } from "@sps/sps-website-builder-frontend/lib/redux/entities/sidebar/interfaces";
+import type { IEntity as IBackendSidebar } from "@sps/sps-website-builder-frontend/lib/redux/entities/sidebar/interfaces";
 
 export interface ISidebar extends IBackendSidebar {
   showSkeletons?: boolean;

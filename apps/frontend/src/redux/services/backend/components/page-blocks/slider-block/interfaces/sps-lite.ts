@@ -1,4 +1,4 @@
-import { IEntity as IBackendSlider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/interfaces";
+import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/interfaces";
 
 export interface IComponent {
   id: number;

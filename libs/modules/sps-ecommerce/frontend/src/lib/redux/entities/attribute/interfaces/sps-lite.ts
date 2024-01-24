@@ -1,7 +1,7 @@
-import { IEntity as IBackendProduct } from "../../product/interfaces";
-import { IEntity as IBackendAttributeKey } from "../../attribute-key/interfaces";
-import { IEntity as IBackendCurrency } from "@sps/sps-billing-frontend/lib/redux/entites/currency/interfaces";
-import { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendProduct } from "../../product/interfaces";
+import type { IEntity as IBackendAttributeKey } from "../../attribute-key/interfaces";
+import type { IEntity as IBackendCurrency } from "@sps/sps-billing-frontend/lib/redux/entites/currency/interfaces";
+import type { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
 
 export interface IEntity {
   id: number;

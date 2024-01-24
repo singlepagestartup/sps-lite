@@ -1,3 +1,3 @@
-import { IComponent as IParentComponent } from "./sps-lite";
+import type { IComponent as IParentComponent } from "./sps-lite";
 
 export interface IComponent extends IParentComponent {}

@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
 import { Card, ICardProps } from "@sps/ui";
 import { getFileUrl } from "@sps/utils";
-import { IEntity as IBackendProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/interfaces";
+import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";

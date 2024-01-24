@@ -1,4 +1,4 @@
-import { IComponent as IBackendComponentFaq } from "../../../elements/faq/interfaces";
+import type { IComponent as IBackendComponentFaq } from "../../../elements/faq/interfaces";
 
 export interface IComponent {
   id: number;

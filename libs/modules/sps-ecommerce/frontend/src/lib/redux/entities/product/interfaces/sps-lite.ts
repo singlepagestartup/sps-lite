@@ -1,5 +1,5 @@
-import { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
-import { IEntity as IBackendAttribute } from "../../attribute/interfaces";
+import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendAttribute } from "../../attribute/interfaces";
 
 export interface IEntity {
   id: number;

@@ -10,7 +10,7 @@ import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@sps/utils";
-import { IEntity as IBackendReview } from "~redux/services/backend/extensions/sps-crm/api/review/interfaces";
+import type { IEntity as IBackendReview } from "~redux/services/backend/extensions/sps-crm/api/review/interfaces";
 
 const meta = { component: Card } satisfies Meta<typeof Card>;
 

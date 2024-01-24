@@ -7,7 +7,7 @@ import {
   BACKEND_URL,
 } from "@sps/utils";
 import { populate } from "../populate";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 
 const model = "carts";
 const rtkType = "Cart";

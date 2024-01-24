@@ -6,8 +6,8 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as layoutApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/layout/api";
 import { useParams, usePathname } from "next/navigation";
-import { IEntity as IBackendLayout } from "@sps/sps-website-builder-frontend/lib/redux/entities/layout/interfaces";
-import { IEntity as IBackendLoader } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/interfaces";
+import type { IEntity as IBackendLayout } from "@sps/sps-website-builder-frontend/lib/redux/entities/layout/interfaces";
+import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/interfaces";
 import { slice as userSlice } from "~redux/auth/slice";
 
 export interface ILayout extends IBackendLayout {

@@ -8,7 +8,7 @@ import {
   transformResponseItem,
 } from "@sps/utils";
 import { populate } from "../populate";
-import { IEntity } from "../interfaces";
+import type { IEntity } from "../interfaces";
 
 const model = "subscriptions";
 const rtkType = "Subscription";

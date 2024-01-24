@@ -1,4 +1,4 @@
-import { IEntity } from "../interfaces/sps-lite";
+import type { IEntity } from "../interfaces/sps-lite";
 import { entity as pageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
 
 export const entity: IEntity = {

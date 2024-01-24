@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IEntity as IBackendLoader } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/interfaces";
+import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/interfaces";
 
 export interface ILoader extends IBackendLoader {
   children?: any;

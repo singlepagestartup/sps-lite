@@ -1,5 +1,5 @@
-import { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
-import { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
+import type { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
+import type { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
 
 export interface IComponent {
   id: number;

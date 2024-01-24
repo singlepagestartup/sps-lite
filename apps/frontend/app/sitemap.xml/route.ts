@@ -1,4 +1,4 @@
-import { IEntity as IBackendPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
 import { getBackendData } from "@sps/utils";
 import { BACKEND_URL, FRONTEND_URL } from "@sps/utils";
 

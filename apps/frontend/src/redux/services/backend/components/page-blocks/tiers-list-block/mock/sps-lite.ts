@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { entity as tier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/mock/sps-lite";
 import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
-import { IComponent } from "../interfaces/sps-lite";
+import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
   id: 2,

@@ -1,7 +1,7 @@
 import { IPage } from "..";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces";
+import type { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/reviews-list-block/interfaces";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { IEntity as IBackendLocale } from "@sps/api-frontend/lib/redux/entities/locale/interfaces";
+import type { IEntity as IBackendLocale } from "@sps/api-frontend/lib/redux/entities/locale/interfaces";
 import { BACKEND_URL } from "@sps/utils";
 
 export async function middleware(request: any) {
