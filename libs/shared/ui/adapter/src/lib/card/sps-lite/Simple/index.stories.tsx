@@ -3,12 +3,12 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
-import { entity as review } from "~redux/services/backend/extensions/sps-crm/api/review/mock/sps-lite";
+import { entity as review } from "@sps/sps-crm-frontend/lib/redux/entities/review/mock/sps-lite";
 import { BACKEND_URL, getFileUrl } from "@sps/utils";
 import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
-import type { IEntity as IBackendReview } from "~redux/services/backend/extensions/sps-crm/api/review/interfaces";
+import type { IEntity as IBackendReview } from "@sps/sps-crm-frontend/lib/redux/entities/review/interfaces";
 import { ICardProps, Card } from "../..";
 
 const meta = { component: Card } satisfies Meta<typeof Card>;
