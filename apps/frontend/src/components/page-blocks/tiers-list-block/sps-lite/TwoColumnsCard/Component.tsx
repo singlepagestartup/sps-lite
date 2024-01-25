@@ -2,7 +2,7 @@
 
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "@sps/hooks";
-import { Card, ICardProps } from "@sps/ui";
+import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
 import Button from "../../../../elements/button";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";

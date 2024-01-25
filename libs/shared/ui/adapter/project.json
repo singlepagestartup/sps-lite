@@ -1,5 +1,5 @@
 {
-  "name": "@sps/ui",
+  "name": "@sps/ui-adapter",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/adapter/src",
   "projectType": "library",

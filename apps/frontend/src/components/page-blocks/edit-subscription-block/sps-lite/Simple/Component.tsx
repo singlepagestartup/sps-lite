@@ -4,7 +4,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as subscriptionApi } from "@sps/sps-subscription-frontend/lib/redux/entities/subscription/api";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@sps/ui";
+import { Button } from "@sps/ui-adapter";
 
 export default function Component(props: IPageBlock) {
   const [updateByEmail, { data: updateByEmailData }] =

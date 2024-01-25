@@ -10,7 +10,7 @@ import type { IEntity as IBackendOrder } from "@sps/sps-ecommerce-frontend/lib/r
 import type { IEntity as IBackendOrderProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order-product/interfaces";
 import type { IEntity as IBackendAttribute } from "@sps/sps-ecommerce-frontend/lib/redux/entities/attribute/interfaces";
 import { useMemo } from "react";
-import { Button } from "@sps/ui";
+import { Button } from "@sps/ui-adapter";
 import Link from "next/link";
 
 export default function Component(props: IPageBlock) {

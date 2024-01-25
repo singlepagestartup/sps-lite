@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Input from "../../../elements/input";
 import useGetPreparedFormInputs from "../../../../hooks/use-get-prepared-form-inputs";
 import { IForm } from "../..";
-import { Button } from "@sps/ui";
+import { Button } from "@sps/ui-adapter";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();

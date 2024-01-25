@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/ui",
+  displayName: "@sps/ui-adapter",
   preset: "../../../../jest.preset.js",
   transform: {
     "^.+\\.[tj]sx?$": [

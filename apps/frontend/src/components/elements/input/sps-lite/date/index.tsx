@@ -1,5 +1,5 @@
 import { IElement } from "../..";
-import { FormField } from "@sps/ui";
+import { FormField } from "@sps/ui-adapter";
 
 export default function DateInput(props: IElement) {
   return (
