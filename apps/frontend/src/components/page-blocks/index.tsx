@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { pageBlockComponents } from "./aliases/index";
-import ErrorBoundary from "~components/wrappers/error-boundary";
-import { IBackendComponentPageBlock } from "../../redux/services/backend/components/page-blocks/interfaces/index";
+import ErrorBoundary from "../wrappers/error-boundary";
+import { IBackendComponentPageBlock } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/interfaces";
 
 export interface IPage {
   pageProps?: any;
@@ -16,7 +16,8 @@ export default function PageBlocks(props: IPage) {
     <div className="page-blocks">
       {props.pageBlocks?.length
         ? props.pageBlocks.map((pageBlock, index) => {
-            const key = pageBlock.__component;
+            const key =
+              pageBlock.__component as keyof typeof pageBlockComponents;
             const PageBlock = pageBlockComponents[key] as FC<any>;
 
             if (!PageBlock) {

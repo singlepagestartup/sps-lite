@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import Form from "~components/form";
+import Form from "../../../../form";
 import { createNotification } from "../../../../notification/index";
 import { IPageBlock } from "../..";
 

@@ -25,10 +25,54 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
-          "warn",
+          "error",
           {
             "enforceBuildableLibDependency": false,
-            "allow": ["@sps/**/entities/*"],
+            "banTransitiveDependencies": true,
+            "allow": [
+              // api
+              "@sps/api-frontend/lib/redux/entities/**/interfaces",
+              "@sps/api-frontend/lib/redux/entities/**/api",
+              "@sps/api-frontend/lib/redux/entities/**/populate",
+
+              // sps-billing
+              "@sps/sps-billing-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-billing-frontend/lib/redux/entities/**/api",
+              "@sps/sps-billing-frontend/lib/redux/entities/**/populate",
+
+              // sps-subscription
+              "@sps/sps-subscription-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-subscription-frontend/lib/redux/entities/**/api",
+              "@sps/sps-subscription-frontend/lib/redux/entities/**/populate",
+
+              // sps-crm
+              "@sps/sps-crm-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-crm-frontend/lib/redux/entities/**/api",
+              "@sps/sps-crm-frontend/lib/redux/entities/**/populate",
+
+              // sps-rbac
+              "@sps/sps-rbac-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-rbac-frontend/lib/redux/entities/**/api",
+              "@sps/sps-rbac-frontend/lib/redux/entities/**/populate",
+
+              // sps-ecommerce
+              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/api",
+              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/populate",
+
+              // sps-file-storage
+              "@sps/sps-file-storage-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-file-storage-frontend/lib/redux/entities/**/api",
+
+              // sps-website-builder
+              // entities
+              "@sps/sps-website-builder-frontend/lib/redux/entities/**/interfaces",
+              "@sps/sps-website-builder-frontend/lib/redux/entities/**/api",
+              "@sps/sps-website-builder-frontend/lib/redux/entities/**/populate",
+              // components
+              "@sps/sps-website-builder-frontend/lib/redux/components/**/interfaces",
+              "@sps/sps-website-builder-frontend/lib/redux/components/**/populate"
+            ],
             "depConstraints": [
               {
                 "sourceTag": "*",

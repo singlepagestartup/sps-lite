@@ -1,4 +1,4 @@
-import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
+import { IBackendComponentPageBlock } from "../../../components/page-blocks/interfaces/index";
 
 export interface IEntity {
   id: number;

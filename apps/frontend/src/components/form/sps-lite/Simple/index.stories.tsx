@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
-import store from "~redux/index";
+import store from "../../../../redux";
 import { BACKEND_URL } from "@sps/utils";
 import Root from ".";
 import { entity as form } from "@sps/sps-crm-frontend/lib/redux/entities/form/mock/sps-lite";

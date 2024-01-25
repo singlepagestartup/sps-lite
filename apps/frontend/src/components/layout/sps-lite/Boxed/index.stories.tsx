@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import store from "~redux/index";
+import store from "../../../../redux";
 import { Provider } from "react-redux";
 import { entity as layout } from "@sps/sps-website-builder-frontend/lib/redux/entities/layout/mock/sps-lite";
 import { ILayout } from "../..";

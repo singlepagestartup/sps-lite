@@ -3,7 +3,7 @@
 import { api as tierApi } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/api";
 import { api as subscriptionApi } from "@sps/sps-subscription-frontend/lib/redux/entities/subscription/api";
 import { api as invoiceApi } from "@sps/sps-billing-frontend/lib/redux/entities/invoice/api";
-import useGetPageUrlModelId from "~hooks/use-get-page-url-model-id";
+import useGetPageUrlModelId from "../../../../../hooks/use-get-page-url-model-id";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";

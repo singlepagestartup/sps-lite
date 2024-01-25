@@ -1,4 +1,4 @@
-import type { IComponent as IBackendComponentSlide } from "~redux/services/backend/components/elements/slide/interfaces";
+import type { IComponent as IBackendComponentSlide } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/slide/interfaces";
 
 export interface IEntity {
   id: number;

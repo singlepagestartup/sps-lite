@@ -1,9 +1,9 @@
 import Link from "next/link";
-import useGetButtonParams from "~hooks/use-get-button-params";
+import useGetButtonParams from "../../../../../hooks/use-get-button-params";
 import { Button } from "@sps/ui";
 import { IElement } from "../..";
 import { useMemo } from "react";
-import Flyout from "~components/flyout";
+import Flyout from "../../../../flyout";
 
 export default function Default(props: IElement) {
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);

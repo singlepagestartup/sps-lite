@@ -1,5 +1,5 @@
 import type { IEntity } from "../interfaces/sps-lite";
-import { entity as slide } from "~redux/services/backend/components/elements/slide/mock/sps-lite";
+import { entity as slide } from "../../../components/elements/slide/mock/sps-lite";
 
 export const entity: IEntity = {
   id: 6,

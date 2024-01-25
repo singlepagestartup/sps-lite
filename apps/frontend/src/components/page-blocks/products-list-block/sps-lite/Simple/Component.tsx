@@ -10,7 +10,7 @@ import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-frontend/lib
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import useMyProfile from "~hooks/use-my-profile";
+import useMyProfile from "../../../../../hooks/use-my-profile";
 import Link from "next/link";
 
 const cardsConfig = {

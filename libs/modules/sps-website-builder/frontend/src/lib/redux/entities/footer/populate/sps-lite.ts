@@ -1,4 +1,4 @@
-import { populate as pageBlockPopulate } from "~redux/services/backend/components/page-blocks/populate";
+import { populate as pageBlockPopulate } from "../../../components/page-blocks/populate/index";
 
 export const populate = {
   page_blocks: {

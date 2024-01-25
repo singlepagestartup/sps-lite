@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { http, HttpResponse } from "msw";
 import { Provider } from "react-redux";
-import store from "~redux/index";
+import store from "../../redux";
 import { BACKEND_URL } from "@sps/utils";
 import Modals from ".";
 import { entity as modal } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/mock/sps-lite";

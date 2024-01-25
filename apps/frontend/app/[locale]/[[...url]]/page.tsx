@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import PageBlocks from "~components/page-blocks";
+import PageBlocks from "../../../src/components/page-blocks";
 import {
   getFileUrl,
   BACKEND_URL,

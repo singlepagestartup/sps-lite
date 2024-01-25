@@ -1,4 +1,4 @@
-import { IBackendComponentPageBlock } from "~redux/services/backend/components/page-blocks/interfaces";
+import { IBackendComponentPageBlock } from "../../../components/page-blocks/interfaces/index";
 import type { IEntity as IBackendLayout } from "../../layout/interfaces";
 import type { IEntity as IBackendLocale } from "@sps/api-frontend/lib/redux/entities/locale/interfaces";
 import type { IEntity as IBackendMetatag } from "../../metatag/interfaces";

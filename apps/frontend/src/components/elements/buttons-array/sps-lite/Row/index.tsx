@@ -1,4 +1,4 @@
-import Button from "~components/elements/button";
+import Button from "../../../button";
 import { getFileUrl } from "@sps/utils";
 import Image from "next/image";
 import { IElement } from "../..";

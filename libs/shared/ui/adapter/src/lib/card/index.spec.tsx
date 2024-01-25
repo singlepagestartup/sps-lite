@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Card from "./index";
+import { Card } from "./index";
 
 describe("components/Card", () => {
   it("should show default empty component", () => {

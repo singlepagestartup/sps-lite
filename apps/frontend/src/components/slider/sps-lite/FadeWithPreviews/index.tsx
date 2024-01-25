@@ -14,9 +14,9 @@ import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import { IExtendedSlide, ISlider } from "../..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import Button from "~components/elements/button";
+import Button from "../../../elements/button";
 import { getFileUrl } from "@sps/utils";
-import { IComponent as IBackendSlide } from "../../../../redux/services/backend/components/elements/slide/interfaces/index";
+import { IComponent as IBackendSlide } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/slide/interfaces";
 
 interface INavigationButton {
   isNext?: boolean;

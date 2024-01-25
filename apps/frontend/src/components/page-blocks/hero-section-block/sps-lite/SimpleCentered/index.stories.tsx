@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { entity } from "../../../../../redux/services/backend/components/page-blocks/hero-section-block/mock/sps-lite";
+import { entity } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/hero-section-block/mock/sps-lite";
 import Root from ".";
 import Sk from "./Skeleton";
 import Comp from "./Component";

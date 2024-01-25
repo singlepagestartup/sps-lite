@@ -1,7 +1,7 @@
-import Topbar from "~components/topbar";
-import Sidebar from "~components/sidebar";
-import Navbar from "~components/navbar";
-import Footer from "~components/footer";
+import Topbar from "../../../topbar";
+import Sidebar from "../../../sidebar";
+import Navbar from "../../../navbar";
+import Footer from "../../../footer";
 import { useRef } from "react";
 import { ILayout } from "../..";
 

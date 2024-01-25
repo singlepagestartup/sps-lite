@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity as contactSectionBlock } from "../../../../../redux/services/backend/components/page-blocks/contact-section-block/mock/sps-lite";
+import { entity as contactSectionBlock } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/contact-section-block/mock/sps-lite";
 import { Provider } from "react-redux";
-import store from "~redux/index";
+import store from "../../../../../redux";
 import { IPageBlock } from "../..";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;

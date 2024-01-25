@@ -1,4 +1,4 @@
-import Slider from "~components/slider";
+import Slider from "../../../../slider";
 import { IPageBlock } from "../..";
 
 export default function Component(props: IPageBlock) {

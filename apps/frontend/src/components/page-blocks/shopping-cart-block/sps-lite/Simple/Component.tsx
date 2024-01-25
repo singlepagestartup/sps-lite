@@ -2,7 +2,7 @@
 
 import ReactMarkdown from "react-markdown";
 import { IPageBlock } from "../..";
-import useMyProfile from "~hooks/use-my-profile";
+import useMyProfile from "../../../../../hooks/use-my-profile";
 import { api as cartApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/cart/api";
 import { api as orderApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/api";
 import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";

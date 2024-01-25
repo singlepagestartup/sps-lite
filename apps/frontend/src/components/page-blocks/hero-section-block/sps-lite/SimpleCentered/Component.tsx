@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "~components/elements/button";
+import Button from "../../../../elements/button";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IPageBlock } from "../..";

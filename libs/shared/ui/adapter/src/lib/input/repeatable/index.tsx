@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { useTranslationsContext } from "libs/shared/hooks/src/lib/use-translations/TranslationsContext";
-import Input from "~components/elements/input";
+import { useTranslations } from "@sps/hooks";
+import { Input } from "../../input";
 import { getInputErrors } from "../get-input-errors";
 import { useGetStringProps } from "../use-get-string-props";
 
@@ -152,7 +152,7 @@ export default function RepeatableInput(props: any) {
     onRemove,
   } = props;
 
-  const translate = useTranslationsContext();
+  const translate = useTranslations();
   const [initWasSet, setInitWasSet] = useState<boolean>(false);
 
   const htmlNodeId = useMemo(() => {
@@ -486,7 +486,7 @@ function InsideInput({
   control: any;
   errors: any;
 }) {
-  const translate = useTranslationsContext();
+  const translate = useTranslations();
   const [additionalPropsForInput, setAdditionalPropsForInput] = useState<any>(
     {},
   );

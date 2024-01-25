@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { entity as footer } from "@sps/sps-website-builder-frontend/lib/redux/entities/footer/mock/sps-lite";
 import Root from ".";
 import { Provider } from "react-redux";
-import store from "~redux/index";
+import store from "../../../../redux";
 import { IFooter } from "../..";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;

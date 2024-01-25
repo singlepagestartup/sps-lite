@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Component, ErrorInfo, FC, ReactNode } from "react";
-import Errors from "~components/error";
+import ErrorComponent from "../../error";
 import * as Sentry from "@sentry/browser";
 
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
@@ -53,7 +53,7 @@ class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
       // console.log("🚀 ~ render ~ Comp:", Comp);
 
       if (!Comp) {
-        return <Errors {...this.state} variant="simple" />;
+        return <ErrorComponent {...this.state} variant="simple" />;
       }
 
       return <Comp {...this.state} />;

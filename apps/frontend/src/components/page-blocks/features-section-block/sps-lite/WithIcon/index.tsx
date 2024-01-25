@@ -1,5 +1,5 @@
 import Component from "./Component";
-import ErrorBoundary from "~components/wrappers/error-boundary";
+import ErrorBoundary from "../../../../wrappers/error-boundary";
 import Error from "./Error";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";

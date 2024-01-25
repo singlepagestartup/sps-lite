@@ -1,15 +1,15 @@
 import "../styles/fonts.css";
 import "../styles/tailwind.scss";
-import Modals from "~components/modal";
+import Modal from "../src/components/modal";
 import { TranslationsContextWrapper } from "@sps/hooks";
 import { ReduxProvider } from "../src/redux/index";
 import { fonts } from "./fonts";
-import SlideOvers from "~components/slide-over";
+import SlideOvers from "../src/components/slide-over";
 import { Suspense } from "react";
-import Layout from "~components/layout";
-import Loader from "~components/loader";
+import Layout from "../src/components/layout";
+import Loader from "../src/components/loader";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import GoogleTagManager from "~components/scripts/google-tag-manager";
+import GoogleTagManager from "../src/components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
 import { populate as loaderPopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/populate";
@@ -45,7 +45,7 @@ export default async function RootLayout({
                   <ReduxProvider>
                     <Loader {...loader}>
                       <Layout>{children}</Layout>
-                      <Modals />
+                      <Modal />
                       <SlideOvers />
                     </Loader>
                   </ReduxProvider>

@@ -2,7 +2,7 @@ import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
 import type { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
-import { IComponent as IBackendComponent } from "../../redux/services/backend/components/elements/input/interfaces/index";
+import { IComponent as IBackendComponent } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/input/interfaces";
 
 export default function useGetPreparedFormInputs(props: IBackendForm) {
   const searchParams = useSearchParams();

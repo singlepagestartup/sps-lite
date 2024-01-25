@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import ButtonArrays from "~components/elements/buttons-array";
+import ButtonArrays from "../../../../elements/buttons-array";
 import { getFileUrl } from "@sps/utils";
 import { IPageBlock } from "../..";
 

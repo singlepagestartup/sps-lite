@@ -54,20 +54,7 @@
       ],
       "@sps/ui": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/ui/server": ["libs/shared/ui/adapter/src/server.ts"],
-      "@sps/utils": ["libs/shared/utils/src/index.ts"],
-      "~abi/*": ["apps/frontend/src/web3/configs/abi/*"],
-      "~api/*": ["apps/frontend/src/api/*"],
-      "~backend/*": ["apps/frontend/src/redux/services/backend/*"],
-      "~components/*": ["apps/frontend/src/components/*"],
-      "~hooks/*": ["apps/frontend/src/hooks/*"],
-      "~mocks/*": ["apps/frontend/src/mocks/*"],
-      "~redux/*": ["apps/frontend/src/redux/*"],
-      "~store/*": ["apps/frontend/src/store/*"],
-      "~transformers/*": ["apps/frontend/src/utils/transformers/*"],
-      "~translations/*": ["apps/frontend/translations/*"],
-      "~ui/*": ["apps/frontend/src/components/ui/*"],
-      "~utils/*": ["apps/frontend/src/utils/*"],
-      "~web3/*": ["apps/frontend/src/web3/*"]
+      "@sps/utils": ["libs/shared/utils/src/index.ts"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },

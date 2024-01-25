@@ -1,4 +1,4 @@
-import Button from "~components/elements/button";
+import Button from "../../../../elements/button";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IPageBlock } from "../..";
 

@@ -4,7 +4,7 @@ import { entity } from "@sps/sps-website-builder-frontend/lib/redux/entities/sli
 import { HttpResponse, http } from "msw";
 import { BACKEND_URL } from "@sps/utils";
 import { Provider } from "react-redux";
-import store from "~redux/index";
+import store from "../../../../redux";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;
 export default meta;
