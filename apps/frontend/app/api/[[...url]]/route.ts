@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { gzip } from "pako";
 import QueryString from "qs";
 const frontendApiStaticModels: any[] = [];
-import { populate as pageBlockPopulate } from "../../../src/redux/services/backend/components/page-blocks/populate/index";
+import { populate as pageBlockPopulate } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/populate";
 import { BACKEND_URL } from "@sps/utils";
 let generateStaticParams;
 
