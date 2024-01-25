@@ -3,7 +3,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTranslationsContext } from "libs/shared/hooks/src/lib/use-translations/TranslationsContext";
 import Input from "~components/elements/input";
-import { getInputErrors } from "libs/shared/ui/adapter/src/lib/input/get-input-errors";
+import { getInputErrors } from "../get-input-errors";
 import { useGetStringProps } from "../use-get-string-props";
 
 export interface IInsideComponentProps {

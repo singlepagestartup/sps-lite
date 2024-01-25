@@ -1,13 +1,12 @@
 import { FC, HTMLInputTypeAttribute, useMemo } from "react";
 import { Label } from "../label";
-import { cn } from "@sps/utils";
-import { Input } from "@sps/ui";
+import { getFileUrl, cn } from "@sps/utils";
+import { Input } from "../input";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
-import { useTranslationsContext } from "libs/shared/hooks/src/lib/use-translations/TranslationsContext";
-import { Button } from "@sps/ui";
+import { useTranslations } from "@sps/hooks";
+import { Button } from "../button";
 import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
 import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
 
 export interface Props {
@@ -31,7 +30,7 @@ export interface Props {
 export const FormField = (props: Props) => {
   const { label, name, className, ResetIcon } = props;
 
-  const translate = useTranslationsContext();
+  const translate = useTranslations();
 
   const htmlNodeId = useMemo(() => {
     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");

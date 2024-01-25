@@ -7,7 +7,7 @@
     "frontend:build": "rm -rf apps/frontend/.next && NODE_ENV=production node apps/frontend/theme.js && nx build frontend",
     "frontend:dev": "rm -rf apps/frontend/.next && NODE_ENV=development node apps/frontend/theme.js && nx serve frontend",
     "frontend:production": "npm run frontend:build && nx serve frontend --prod",
-    "lint": "nx run-many --target=lint --all"
+    "lint": "nx run-many --target=lint --parallel=2 --all"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
