@@ -8,7 +8,7 @@ import {
 } from "@sps/utils";
 import { populate } from "../populate";
 import type { IEntity } from "../interfaces";
-import { api as userApi } from "libs/modules/sps-rbac/frontend/src/lib/redux/entities/user/api";
+import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user/api";
 import { api as cartApi } from "../../cart/api";
 import { api as orderApi } from "../../order/api";
 

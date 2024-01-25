@@ -19,18 +19,18 @@
     "sourceType": "module"
   },
   "plugins": ["react", "testing-library", "@typescript-eslint", "prettier"],
-  "rules": {
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off",
-    "react/react-in-jsx-scope": ["off"],
-    "react/display-name": ["off"],
-    "react/prop-types": ["off"],
-    "testing-library/prefer-screen-queries": ["warn"],
-    "testing-library/no-node-access": ["warn"]
-  },
   "overrides": [
     {
-      "files": "**/**.(js|jsx|ts|tsx)"
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "react/no-unescaped-entities": "off",
+        "@next/next/no-page-custom-font": "off",
+        "react/react-in-jsx-scope": ["off"],
+        "react/display-name": ["off"],
+        "react/prop-types": ["off"],
+        "testing-library/prefer-screen-queries": ["warn"],
+        "testing-library/no-node-access": ["warn"]
+      }
     }
   ]
 }

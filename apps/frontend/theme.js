@@ -40,7 +40,7 @@ function getFileUrl(obj, options = {}) {
   return `${BACKEND_URL || ""}${url}`;
 }
 
-const getThemeFromBackend = async (props) => {
+const getThemeFromBackend = async () => {
   const envFile = process.env.NODE_ENV;
   require("dotenv").config({ path: path.join(__dirname, `.env.${envFile}`) });
 

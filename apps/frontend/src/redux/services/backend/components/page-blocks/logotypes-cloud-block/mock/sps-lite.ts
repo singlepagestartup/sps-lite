@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { entity as logotype } from "~redux/services/backend/components/elements/logotype/mock/sps-lite";
+import { entity as logotype } from "../../../elements/logotype/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {

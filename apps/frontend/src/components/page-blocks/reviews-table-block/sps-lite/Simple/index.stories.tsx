@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "~redux/index";
 import { BACKEND_URL } from "@sps/utils";
 import Root from ".";
-import { entity } from "~redux/services/backend/components/page-blocks/reviews-table-block/mock/sps-lite";
+import { entity } from "../../../../../redux/services/backend/components/page-blocks/reviews-table-block/mock/sps-lite";
 import { entity as review } from "@sps/sps-crm-frontend/lib/redux/entities/review/mock/sps-lite";
 import { IPageBlock } from "../..";
 

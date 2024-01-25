@@ -1,4 +1,4 @@
-import { entity as file } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/mock/sps-lite";
+import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {

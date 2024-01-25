@@ -3,7 +3,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { rtkQueryErrorLogger } from "~redux/rtk-query-error-logger";
+import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices as backendSlices } from "./services/backend/slices";
 import { slice as authSlice } from "./auth/slice";
 

@@ -2,7 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
 import useGetPageUrlFiltersQuery from ".";
-import { ReduxProvider } from "~redux/index";
+import { ReduxProvider } from "../../redux/index";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "@sps/utils";
 import { HttpResponse, http } from "msw";

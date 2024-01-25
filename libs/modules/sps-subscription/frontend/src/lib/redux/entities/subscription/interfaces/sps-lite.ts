@@ -1,6 +1,6 @@
-import type { IEntity as IBackendTier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/interfaces";
-import type { IEntity as IBackendInvoice } from "@sps/sps-billing-frontend/lib/redux/entites/invoice/interfaces";
-import type { IEntity as IBackendUser } from "libs/modules/sps-rbac/frontend/src/lib/redux/entities/user/interfaces";
+import { IEntity as IBackendTier } from "../../tier/interfaces/index";
+import type { IEntity as IBackendInvoice } from "@sps/sps-billing-frontend/lib/redux/entities/invoice/interfaces";
+import type { IEntity as IBackendUser } from "@sps/sps-rbac-frontend/lib/redux/entities/user/interfaces";
 
 export interface IEntity {
   id: number;

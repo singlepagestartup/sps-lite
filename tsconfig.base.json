@@ -68,7 +68,8 @@
       "~ui/*": ["apps/frontend/src/components/ui/*"],
       "~utils/*": ["apps/frontend/src/utils/*"],
       "~web3/*": ["apps/frontend/src/web3/*"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "types"]
   },
   "exclude": ["node_modules", "tmp"]
 }

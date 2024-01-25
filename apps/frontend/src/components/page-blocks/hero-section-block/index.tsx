@@ -1,7 +1,7 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { variants as spsVariants } from "./sps";
-import type { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/hero-section-block/interfaces";
+import { IComponent as IBackendPageBlock } from "../../../redux/services/backend/components/page-blocks/hero-section-block/interfaces/index";
 import { IPage } from "..";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}

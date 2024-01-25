@@ -4,17 +4,14 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
-import { Card, ICardProps } from "@sps/ui";
+import { Button, FormField, Card, ICardProps } from "@sps/ui";
 import { getFileUrl } from "@sps/utils";
 import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import useMyProfile from "~hooks/use-my-profile";
-import { TextInput } from "@sps/ui";
-import { Button } from "@sps/ui";
 import Link from "next/link";
-import { FormField } from "@sps/ui";
 
 const cardsConfig = {
   emptyLength: 4,

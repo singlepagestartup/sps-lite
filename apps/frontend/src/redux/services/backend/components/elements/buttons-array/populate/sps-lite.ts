@@ -1,4 +1,4 @@
-import { populate as buttonPopulate } from "~redux/services/backend/components/elements/button/populate";
+import { populate as buttonPopulate } from "../../button/populate/index";
 
 export const populate = {
   buttons: {

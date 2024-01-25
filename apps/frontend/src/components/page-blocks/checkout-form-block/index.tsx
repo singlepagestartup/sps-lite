@@ -3,7 +3,7 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IPage } from "..";
-import type { IComponent as IBackendPageBlock } from "~redux/services/backend/components/page-blocks/checkout-form-block/interfaces";
+import { IComponent as IBackendPageBlock } from "../../../redux/services/backend/components/page-blocks/checkout-form-block/interfaces/index";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

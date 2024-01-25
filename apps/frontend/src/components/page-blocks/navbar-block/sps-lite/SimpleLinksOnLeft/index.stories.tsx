@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity } from "~redux/services/backend/components/page-blocks/navbar-block/mock/sps-lite";
+import { entity } from "../../../../../redux/services/backend/components/page-blocks/navbar-block/mock/sps-lite";
 import { entity as flyout } from "@sps/sps-website-builder-frontend/lib/redux/entities/flyout/mock/sps-lite";
 import { HttpResponse, http } from "msw";
 import { Provider } from "react-redux";

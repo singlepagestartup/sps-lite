@@ -1,4 +1,4 @@
-import { pageBlockComponents } from "~components/page-blocks/aliases";
+import { pageBlockComponents } from "../../../../../../components/page-blocks/aliases/index";
 
 export interface ISpsLiteBackendComponentPageBlock {
   id: number;

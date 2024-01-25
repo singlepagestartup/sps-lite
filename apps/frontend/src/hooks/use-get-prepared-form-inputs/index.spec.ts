@@ -2,8 +2,9 @@ import { renderHook } from "@testing-library/react";
 import useGetPreparedFormInputs from ".";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import type { IEntity as IBackendForm } from "~redux/services/backend/extensions/sps-crm/api/form/interfaces";
-import type { IComponent as IBackendComponentInput } from "~redux/services/backend/components/elements/input/interfaces";
+import type { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
+
+type IBackendComponentInput = any;
 
 jest.mock("next/navigation", () => {
   return {
@@ -108,7 +109,7 @@ describe("useGetPreparedFormInputs", () => {
       return useGetPreparedFormInputs(form);
     }); //?
 
-    const sanitizedInputOptions = listboxInput.options?.map((option) => {
+    const sanitizedInputOptions = listboxInput.options?.map((option: any) => {
       return { ...option, id: undefined };
     });
 
@@ -165,7 +166,7 @@ describe("useGetPreparedFormInputs", () => {
       return useGetPreparedFormInputs(form);
     }); //?
 
-    const sanitizedInputOptions = listboxInput.options?.map((option) => {
+    const sanitizedInputOptions = listboxInput.options?.map((option: any) => {
       return { ...option, id: undefined };
     });
 

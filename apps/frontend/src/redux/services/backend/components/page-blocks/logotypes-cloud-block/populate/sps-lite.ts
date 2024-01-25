@@ -1,6 +1,6 @@
-import { populate as fileUploadPopulate } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/populate";
-import { populate as buttonPopulate } from "~redux/services/backend/components/elements/button/populate";
-import { populate as logotypePopulate } from "~redux/services/backend/components/elements/logotype/populate";
+import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
+import { populate as buttonPopulate } from "../../../elements/button/populate/index";
+import { populate as logotypePopulate } from "../../../elements/logotype/populate/index";
 
 export const populate = {
   logotypes: {

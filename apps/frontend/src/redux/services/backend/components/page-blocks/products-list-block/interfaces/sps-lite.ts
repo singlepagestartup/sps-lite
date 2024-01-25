@@ -1,4 +1,4 @@
-import type { IComponent as IBackendButton } from "~redux/services/backend/components/elements/button/interfaces";
+import { IComponent as IBackendButton } from "../../../elements/button/interfaces/index";
 
 export interface IComponent {
   id: number;

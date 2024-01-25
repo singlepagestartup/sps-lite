@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { entity as feature } from "~redux/services/backend/components/elements/feature/mock/sps-lite";
+import { entity as feature } from "../../../elements/feature/mock/sps-lite";
 import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 

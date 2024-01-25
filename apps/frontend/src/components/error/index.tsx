@@ -1,6 +1,6 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { ErrorBoundaryState } from "~components/wrappers/error-boundary";
+import { ErrorBoundaryState } from "../wrappers/error-boundary/index";
 
 export interface IError extends ErrorBoundaryState {
   variant: "simple";

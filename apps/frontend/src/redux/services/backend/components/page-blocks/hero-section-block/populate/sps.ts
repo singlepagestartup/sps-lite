@@ -1,4 +1,4 @@
-import { populate as logotypePopulate } from "~redux/services/backend/components/elements/logotype/populate";
+import { populate as logotypePopulate } from "../../../elements/logotype/populate/index";
 import { populate as parentPopulate } from "./sps-lite";
 
 export const populate = {

@@ -1,4 +1,4 @@
-import { IError } from "~components/error";
+import { IError } from "../../index";
 
 export default function Simple(props: IError) {
   return (

@@ -1,6 +1,5 @@
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
-import { getBackendData } from "@sps/utils";
-import { BACKEND_URL, FRONTEND_URL } from "@sps/utils";
+import { BACKEND_URL, FRONTEND_URL, getBackendData } from "@sps/utils";
 
 async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({

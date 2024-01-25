@@ -2,7 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext", "es2021"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2021"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,7 +25,6 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitAny": true,
-    "typeRoots": ["./node_modules/@types", "types"],
     "plugins": [
       {
         "name": "next"
@@ -32,10 +36,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "../../dist/apps/frontend/.next/types/**/*.ts",
-    "../../libs/shared/utils/src/lib/strapi-rtk.ts",
-    "../../libs/shared/utils/src/lib/preapare-form-data-to-send.ts",
-    "../../libs/shared/utils/src/lib/transform-response-item.ts"
+    "../../dist/apps/frontend/.next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "**/jest*.ts"]
+  "exclude": [
+    "node_modules"
+  ]
 }

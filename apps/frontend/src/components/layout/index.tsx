@@ -8,7 +8,7 @@ import { api as layoutApi } from "@sps/sps-website-builder-frontend/lib/redux/en
 import { useParams, usePathname } from "next/navigation";
 import type { IEntity as IBackendLayout } from "@sps/sps-website-builder-frontend/lib/redux/entities/layout/interfaces";
 import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/interfaces";
-import { slice as userSlice } from "~redux/auth/slice";
+import { slice as userSlice } from "../../redux/auth/slice/index";
 
 export interface ILayout extends IBackendLayout {
   children: ReactNode;

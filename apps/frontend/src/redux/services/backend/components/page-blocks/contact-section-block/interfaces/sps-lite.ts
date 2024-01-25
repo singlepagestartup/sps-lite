@@ -1,5 +1,5 @@
 import type { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
-import type { IEntity as IBackendFile } from "libs/modules/sps-file-storage/frontend/src/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
 import type { IComponent as IBackendComponentButtonsArray } from "../../../elements/buttons-array/interfaces";
 
 export interface IComponent {

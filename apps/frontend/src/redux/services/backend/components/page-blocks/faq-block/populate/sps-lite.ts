@@ -1,4 +1,4 @@
-import { populate as faqPopulate } from "~redux/services/backend/components/elements/faq/populate";
+import { populate as faqPopulate } from "../../../elements/faq/populate/index";
 
 export const populate = {
   faqs: {

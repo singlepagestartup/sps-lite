@@ -6,7 +6,7 @@ import Table, {
   IDropdownButtonProps,
   IDropdownRowCompProps,
   IHeaderCompProps,
-} from "~components/table";
+} from "../../../../table/index";
 import { api as reviewApi } from "@sps/sps-crm-frontend/lib/redux/entities/review/api";
 import { IPageBlock } from "../..";
 

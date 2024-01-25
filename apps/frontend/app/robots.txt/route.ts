@@ -1,5 +1,4 @@
-import { getBackendData } from "@sps/utils";
-import { BACKEND_URL } from "@sps/utils";
+import { BACKEND_URL, getBackendData } from "@sps/utils";
 
 async function generateRobots() {
   const robots = await getBackendData({

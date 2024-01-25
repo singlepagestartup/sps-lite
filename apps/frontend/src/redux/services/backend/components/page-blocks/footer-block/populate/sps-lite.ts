@@ -1,5 +1,5 @@
-import { populate as buttonsArrayPopulate } from "~redux/services/backend/components/elements/buttons-array/populate";
-import { populate as logotypePopulate } from "~redux/services/backend/components/elements/logotype/populate";
+import { populate as buttonsArrayPopulate } from "../../../elements/buttons-array/populate/index";
+import { populate as logotypePopulate } from "../../../elements/logotype/populate/index";
 
 export const populate = {
   logotype: {

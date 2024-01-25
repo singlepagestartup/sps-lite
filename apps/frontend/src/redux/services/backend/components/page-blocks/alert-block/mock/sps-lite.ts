@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { entity as button } from "~redux/services/backend/components/elements/button/mock/sps-lite";
+import { entity as button } from "../../../elements/button/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
