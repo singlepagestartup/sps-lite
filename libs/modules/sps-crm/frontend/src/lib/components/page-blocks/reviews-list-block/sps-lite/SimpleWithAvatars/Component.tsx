@@ -8,7 +8,6 @@ import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
 import type { IEntity as IBackendReview } from "../../../../../redux/entities/review/interfaces";
 import { IPageBlock } from "../..";
-import { useParams } from "next/navigation";
 
 const cardsConfig = {
   emptyLength: 4,
@@ -19,7 +18,6 @@ const cardsConfig = {
 };
 
 export default function Component(props: IPageBlock) {
-  const params = useParams<{ tag: string; item: string }>();
   const {
     data: reviews,
     isLoading,

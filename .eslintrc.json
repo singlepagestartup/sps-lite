@@ -71,7 +71,9 @@
               "@sps/sps-website-builder-frontend/lib/redux/entities/**/populate",
               // components
               "@sps/sps-website-builder-frontend/lib/redux/components/**/interfaces",
-              "@sps/sps-website-builder-frontend/lib/redux/components/**/populate"
+              "@sps/sps-website-builder-frontend/lib/redux/components/**/populate",
+              // page props
+              "@sps/sps-website-builder-frontend/lib/redux/components/**/page-blocks/props"
             ],
             "depConstraints": [
               {

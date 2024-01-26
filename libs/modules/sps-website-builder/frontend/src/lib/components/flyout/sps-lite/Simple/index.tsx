@@ -9,6 +9,7 @@ export default function Simple(props: IFlyout) {
       <PopoverContent>
         <div className="flyout-container">
           <PageBlocks
+            page={props.page}
             pageBlocks={props.pageBlocks}
             showSkeletons={props.showSkeletons}
           />

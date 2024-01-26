@@ -5,10 +5,14 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as flyoutApi } from "../../redux/entities/flyout/api";
 import type { IEntity as IBackendFlyout } from "../../redux/entities/flyout/interfaces";
+import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import { getTargetPage } from "@sps/utils";
+import { useParams } from "next/navigation";
 
 export interface IFlyout extends IBackendFlyout {
   showSkeletons?: boolean;
   children: ReactNode;
+  page: IBackendPage;
 }
 
 const variants = {
@@ -17,7 +21,17 @@ const variants = {
 };
 
 export function Flyout({ flyout, children }: { flyout?: any; children?: any }) {
+  const params = useParams();
   const [flyoutProps, setFlyoutProps] = useState<any>();
+  const [page, setPage] = useState<IBackendPage>(); //?
+
+  useEffect(() => {
+    if (params) {
+      getTargetPage(params).then((res) => {
+        setPage(res);
+      });
+    }
+  }, [JSON.stringify(params)]);
 
   const {
     data: backendFlyouts,
@@ -57,9 +71,13 @@ export function Flyout({ flyout, children }: { flyout?: any; children?: any }) {
 
   const Comp = variants[flyoutProps?.variant as keyof typeof variants];
 
-  if (!Comp || !children || isError) {
+  if (!Comp || !children || isError || !page) {
     return <></>;
   }
 
-  return <Comp {...flyoutProps}>{children}</Comp>;
+  return (
+    <Comp {...flyoutProps} page={page}>
+      {children}
+    </Comp>
+  );
 }

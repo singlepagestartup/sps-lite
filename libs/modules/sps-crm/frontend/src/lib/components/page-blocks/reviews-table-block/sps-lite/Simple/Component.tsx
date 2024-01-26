@@ -7,7 +7,7 @@ import {
   IDropdownButtonProps,
   IDropdownRowCompProps,
   IHeaderCompProps,
-} from "@sps/sps-website-builder-frontend";
+} from "@sps/ui-adapter";
 import { api as reviewApi } from "../../../../../redux/entities/review/api";
 import { IPageBlock } from "../..";
 

@@ -18,5 +18,5 @@ export default async function NotFoundPage() {
     return <div>Not found</div>;
   }
 
-  return <PageBlocks pageBlocks={pages[0].pageBlocks} />;
+  return <PageBlocks page={pages[0]} pageBlocks={pages[0].pageBlocks} />;
 }

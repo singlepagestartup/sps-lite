@@ -9,20 +9,8 @@ export { SlideOver } from "./lib/components/slide-over";
 export { Loader } from "./lib/components/loader";
 export { Layout } from "./lib/components/layout";
 export { Topbar } from "./lib/components/topbar";
-export {
-  Table,
-  type ICellCompProps,
-  type IHeaderCompProps,
-  type IDropdownButtonProps,
-  type IDropdownRowCompProps,
-  type ITableCollumn,
-  type ITableProps,
-  type ITableItemProps,
-  type ITableConfig,
-} from "./lib/components/table";
 export { Sidebar } from "./lib/components/sidebar";
 export { Flyout } from "./lib/components/flyout";
 export { Navbar } from "./lib/components/navbar";
-export { createNotification } from "./lib/components/notification";
 export { Element as Button } from "./lib/components/elements/button";
 export { ReduxProvider } from "./lib/redux";

@@ -16,7 +16,7 @@ import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { Element as Button } from "../../../elements/button";
 import { getFileUrl } from "@sps/utils";
-import { IComponent as IBackendSlide } from "../../../redux/components/elements/slide/interfaces";
+import { IComponent as IBackendSlide } from "../../../../redux/components/elements/slide/interfaces";
 
 interface INavigationButton {
   isNext?: boolean;

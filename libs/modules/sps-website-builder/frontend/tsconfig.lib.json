@@ -5,8 +5,8 @@
     "types": ["node"]
   },
   "files": [
-    "../../node_modules/@nx/react/typings/cssmodule.d.ts",
-    "../../node_modules/@nx/next/typings/image.d.ts"
+    "../../../../node_modules/@nx/react/typings/cssmodule.d.ts",
+    "../../../../node_modules/@nx/next/typings/image.d.ts"
   ],
   "exclude": [
     "jest.config.ts",
@@ -19,11 +19,5 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/lib/components/table/sps-lite/index.stories.tsx.example"
-  ]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }

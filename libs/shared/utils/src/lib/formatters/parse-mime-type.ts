@@ -1,6 +1,6 @@
 const allowedImageExtensions = ["png", "jpeg", "webp", "tiff"];
 
-export default function parseMimeType(mime: string) {
+export function parseMimeType(mime: string) {
   if (!mime) return {};
   const splittedMime = mime?.split("/");
 

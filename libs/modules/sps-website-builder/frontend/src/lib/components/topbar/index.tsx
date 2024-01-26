@@ -4,10 +4,12 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as topbarApi } from "../../redux/entities/topbar/api";
 import type { IEntity as IBackendTopbar } from "../../redux/entities/topbar/interfaces";
+import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
 
 export interface ITopbar extends IBackendTopbar {
   showSkeletons?: boolean;
   topbarRef?: any;
+  page: IBackendPage;
 }
 
 const variants = {

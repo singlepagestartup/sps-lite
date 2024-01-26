@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
@@ -8,10 +8,13 @@ import { api as layoutApi } from "../../redux/entities/layout/api";
 import { useParams, usePathname } from "next/navigation";
 import type { IEntity as IBackendLayout } from "../../redux/entities/layout/interfaces";
 import type { IEntity as IBackendLoader } from "../../redux/entities/loader/interfaces";
+import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import { getTargetPage } from "@sps/utils";
 // import { slice as userSlice } from "../../../../../../../../apps/frontend/src/redux/auth/slice/index";
 
 export interface ILayout extends IBackendLayout {
   children: ReactNode;
+  page: IBackendPage;
   loader?: IBackendLoader | null;
 }
 
@@ -33,6 +36,15 @@ export function Layout({ children }: { children?: ReactNode }) {
     },
     { skip: !pathname },
   );
+  const [page, setPage] = useState<IBackendPage>(); //?
+
+  useEffect(() => {
+    if (params) {
+      getTargetPage(params).then((res) => {
+        setPage(res);
+      });
+    }
+  }, [JSON.stringify(params)]);
 
   // useEffect(() => {
   //   dispatch(userSlice.actions.setAnonymusUsername());
@@ -54,9 +66,13 @@ export function Layout({ children }: { children?: ReactNode }) {
     ? variants[layout.variant as keyof typeof variants]
     : undefined;
 
-  if (!Comp || !layout) {
+  if (!Comp || !layout || !page) {
     return <></>;
   }
 
-  return <Comp {...layout}>{children}</Comp>;
+  return (
+    <Comp {...layout} page={page}>
+      {children}
+    </Comp>
+  );
 }

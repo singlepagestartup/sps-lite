@@ -14,6 +14,7 @@ export default function Component(props: IPageBlock) {
   const router = useRouter();
   const id = useGetPageUrlModelId({
     modelName: "product",
+    page: props.pageProps,
   });
 
   const {

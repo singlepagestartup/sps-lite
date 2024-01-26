@@ -27,7 +27,8 @@ export function PageBlocks(props: IPage) {
                     {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
                   >
                     <PageBlock
-                      pageProps={props}
+                      page={props.page}
+                      pageProps={props.pageProps}
                       showSkeletons={props.showSkeletons}
                       {...pageBlock}
                     />

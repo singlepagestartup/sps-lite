@@ -5,7 +5,7 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import type { IEntity as IBackendSlider } from "../../redux/entities/slider/interfaces";
 import { IComponent as IBackendSlide } from "../../redux/components/elements/slide/interfaces";
-import parseMimeType from "libs/shared/utils/src/lib/formatters/parse-mime-type";
+import { parseMimeType } from "@sps/utils";
 
 const variants = {
   ...spsLiteVariants,

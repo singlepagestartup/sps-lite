@@ -3,7 +3,7 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Form } from "../../../../form";
 import { IPageBlock } from "../..";
-import { createNotification } from "@sps/sps-website-builder-frontend";
+import { createNotification } from "@sps/ui-adapter";
 
 export default function Component(props: IPageBlock) {
   function successCallbackAction() {

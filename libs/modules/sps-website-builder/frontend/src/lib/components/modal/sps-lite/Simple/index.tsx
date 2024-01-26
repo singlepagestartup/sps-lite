@@ -54,6 +54,7 @@ export default function Simple(props: IModal) {
                   <XMarkIcon />
                 </button>
                 <PageBlocks
+                  page={props.page}
                   pageBlocks={pageBlocks}
                   showSkeletons={props.showSkeletons}
                   closeModal={closeModal}

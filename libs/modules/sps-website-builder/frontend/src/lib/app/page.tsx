@@ -122,11 +122,11 @@ export async function getPage(props: any) {
 }
 
 export async function Page(props: any) {
-  const pageProps = await getPage(props);
+  const page = await getPage(props);
 
   return (
     <div>
-      <PageBlocks pageProps={props} pageBlocks={pageProps.pageBlocks} />
+      <PageBlocks pageProps={props} page={page} pageBlocks={page.pageBlocks} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { isRejectedWithValue } from "@reduxjs/toolkit";
-import { createNotification } from "@sps/sps-website-builder-frontend";
+import { createNotification } from "@sps/ui-adapter";
 
 export const rtkQueryErrorLogger = (api: any) => {
   return (next: any) => {

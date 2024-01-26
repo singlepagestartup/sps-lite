@@ -1,23 +1,21 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
-import { getFiltersFromPageUrl, getTargetPage } from "@sps/utils";
+import { useMemo } from "react";
+import { getFiltersFromPageUrl } from "@sps/utils";
 const R = require("ramda");
 
-export function useGetPageUrlModelId({ modelName }: { modelName: string }) {
-  const params = useParams(); //?
-  const [page, setPage] = useState<IBackendPage>(); //?
-
-  useEffect(() => {
-    if (params) {
-      getTargetPage(params).then((res) => {
-        setPage(res);
-      });
-    }
-  }, [JSON.stringify(params)]);
-
+export function useGetPageUrlModelId({
+  modelName,
+  page,
+}: {
+  modelName: string;
+  page: {
+    id: number;
+    url: string;
+  };
+}) {
+  const params: any = useParams(); //?
   const filters = useMemo(() => {
     if (!page) {
       return;

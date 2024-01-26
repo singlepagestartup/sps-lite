@@ -43,7 +43,7 @@ export default function RightSideHalfWidth(props: ISlideOver) {
         >
           <div className="slide-over-container">
             <Dialog.Panel className="dialog-panel">
-              <PageBlocks pageBlocks={props.pageBlocks} />
+              <PageBlocks page={props.page} pageBlocks={props.pageBlocks} />
             </Dialog.Panel>
           </div>
         </Transition.Child>

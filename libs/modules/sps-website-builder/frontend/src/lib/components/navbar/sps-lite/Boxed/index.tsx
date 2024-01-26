@@ -19,6 +19,7 @@ export default function Boxed(props: INavbar) {
     >
       <div className="navbar-container">
         <PageBlocks
+          page={props.page}
           pageBlocks={props.pageBlocks}
           showSkeletons={props.showSkeletons}
         />

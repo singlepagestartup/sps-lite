@@ -90,7 +90,16 @@ export async function getTargetPage({ url, locale }: any) {
   return targetPage;
 }
 
-export function getFiltersFromPageUrl({ page, params }: any): any[] {
+export function getFiltersFromPageUrl({
+  page,
+  params,
+}: {
+  page: {
+    id: number;
+    url: string;
+  };
+  params: { url: string[] };
+}): any[] {
   if (!page.id) {
     return [];
   }

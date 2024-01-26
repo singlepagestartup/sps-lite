@@ -15,11 +15,12 @@ export default function Wide(props: ILayout) {
       className={props.className || ""}
     >
       {props?.topbar ? (
-        <Topbar {...props.topbar} topbarRef={topbarRef} />
+        <Topbar {...props.topbar} page={props.page} topbarRef={topbarRef} />
       ) : null}
       {props?.navbar ? (
         <Navbar
           {...props?.navbar}
+          page={props.page}
           topbar={props?.topbar}
           topbarRef={topbarRef}
         />
@@ -38,7 +39,7 @@ export default function Wide(props: ILayout) {
                 props.sidebar.variant === "one-quarter" ? "lg:w-3/12" : ""
               }`}
             >
-              <Sidebar {...props.sidebar} />
+              <Sidebar {...props.sidebar} page={props.page} />
             </div>
             <div
               className={`h-full ${
@@ -52,7 +53,7 @@ export default function Wide(props: ILayout) {
           <>{props.children}</>
         )}
       </div>
-      {props?.footer ? <Footer {...props?.footer} /> : null}
+      {props?.footer ? <Footer {...props?.footer} page={props.page} /> : null}
     </div>
   );
 }

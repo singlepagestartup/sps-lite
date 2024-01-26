@@ -2,7 +2,8 @@ import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IPage } from "../../redux/components/page-blocks/props";
 import { pageBlockComponents } from "./aliases";
-// import { PageBlocks as SpsCrmPageBlocks } from "@sps/sps-crm-frontend";
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { PageBlocks as SpsCrmPageBlocks } from "@sps/sps-crm-frontend";
 
 export function PageBlocks(props: IPage) {
   return (
@@ -15,19 +16,21 @@ export function PageBlocks(props: IPage) {
             ] as FC<any>;
 
             if (!PageBlock) {
-              // if (
-              //   [
-              //     "page-blocks.reviews-list-block",
-              //     "page-blocks.contact-section-block",
-              //   ].includes(key)
-              // ) {
-              //   return (
-              //     <SpsCrmPageBlocks
-              //       pageProps={props.pageProps}
-              //       pageBlocks={[pageBlock]}
-              //     />
-              //   );
-              // }
+              if (
+                [
+                  "page-blocks.reviews-list-block",
+                  "page-blocks.contact-section-block",
+                ].includes(key)
+              ) {
+                return (
+                  <SpsCrmPageBlocks
+                    key={`${index}-${key}`}
+                    pageProps={props.pageProps}
+                    page={props.page}
+                    pageBlocks={[pageBlock]}
+                  />
+                );
+              }
 
               return <div key={`${index}-${key}`}></div>;
             }
@@ -41,7 +44,8 @@ export function PageBlocks(props: IPage) {
                   {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
                 >
                   <PageBlock
-                    pageProps={props}
+                    page={props.page}
+                    pageProps={props.pageProps}
                     showSkeletons={props.showSkeletons}
                     {...pageBlock}
                   />

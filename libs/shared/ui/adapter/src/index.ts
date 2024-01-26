@@ -15,3 +15,15 @@ export { SelectInput } from "./lib/input/select";
 export { Input } from "./lib/input";
 export { FormField } from "./lib/form-field";
 export { Card, type ICardProps } from "./lib/card";
+export { createNotification, NotificationsWrapper } from "./lib/notification";
+export {
+  Table,
+  type ICellCompProps,
+  type IHeaderCompProps,
+  type IDropdownButtonProps,
+  type IDropdownRowCompProps,
+  type ITableCollumn,
+  type ITableProps,
+  type ITableItemProps,
+  type ITableConfig,
+} from "./lib/table";

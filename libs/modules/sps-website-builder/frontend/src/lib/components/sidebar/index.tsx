@@ -4,9 +4,11 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as sidebarApi } from "../../redux/entities/sidebar/api";
 import type { IEntity as IBackendSidebar } from "../../redux/entities/sidebar/interfaces";
+import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
 
 export interface ISidebar extends IBackendSidebar {
   showSkeletons?: boolean;
+  page: IBackendPage;
 }
 
 const variants = {
