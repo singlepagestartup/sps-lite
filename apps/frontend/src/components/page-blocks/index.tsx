@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { pageBlockComponents } from "./aliases/index";
-import ErrorBoundary from "../wrappers/error-boundary";
 import { IBackendComponentPageBlock } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/interfaces";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
 export interface IPage {
   pageProps?: any;

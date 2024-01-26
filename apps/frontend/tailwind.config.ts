@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { createGlobPatternsForDependencies } from "@nx/react/tailwind";
 import { join } from "path";
 import shadcnPreset from "./shadcn";
 
@@ -18,7 +17,7 @@ const config = {
     join(__dirname, "./src/**/**/*.{html,js,jsx,tsx}"),
     join(__dirname, "./pages/*.{html,js,jsx,tsx}"),
     join(__dirname, "./pages/**/*.{html,js,jsx,tsx}"),
-    ...createGlobPatternsForDependencies(__dirname),
+    join(__dirname, "../../libs/**/*.{html,js,ts,jsx,tsx}"),
   ],
 } satisfies Config;
 

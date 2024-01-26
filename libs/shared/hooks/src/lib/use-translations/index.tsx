@@ -10,10 +10,10 @@ export function useTranslations() {
   useEffect(() => {
     if (params?.locale) {
       try {
-        import(`./translations/${params.locale}.json`).then((res) => {
-          res; //?
-          setTranslations(res);
-        });
+        // import(`./translations/${params.locale}.json`).then((res) => {
+        //   res; //?
+        //   setTranslations(res);
+        // });
       } catch (error) {
         console.log(error);
       }

@@ -1,7 +1,9 @@
-import Topbar from "../../../topbar";
-import Sidebar from "../../../sidebar";
-import Navbar from "../../../navbar";
-import Footer from "../../../footer";
+import {
+  Topbar,
+  Navbar,
+  Sidebar,
+  Footer,
+} from "@sps/sps-website-builder-frontend";
 import { useRef } from "react";
 import { ILayout } from "../..";
 

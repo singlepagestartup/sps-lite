@@ -2,8 +2,8 @@
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Form from "../../../../form";
-import { createNotification } from "../../../../notification/index";
 import { IPageBlock } from "../..";
+import { createNotification } from "@sps/sps-website-builder-frontend";
 
 export default function Component(props: IPageBlock) {
   function successCallbackAction() {

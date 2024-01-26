@@ -1,5 +1,5 @@
 import Component from "./Component";
-import ErrorBoundary from "../../../../wrappers/error-boundary";
+import { ErrorBoundary } from "@sps/sps-website-builder-frontend";
 import Skeleton from "./Skeleton";
 import Error from "./Error";
 import { IPageBlock } from "../..";

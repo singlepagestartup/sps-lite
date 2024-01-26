@@ -4,12 +4,12 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "@sps/hooks";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
-import Button from "../../../../elements/button";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as tierApi } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/api";
 import type { IEntity as IBackendTier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
+import { Button } from "@sps/sps-website-builder-frontend";
 
 const cardsConfig = {
   emptyLength: 3,
