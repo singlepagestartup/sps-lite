@@ -1,5 +1,4 @@
 import { populate as alertBlockPopulate } from "../alert-block/populate";
-import { populate as contactSectionBlockPopulate } from "../contact-section-block/populate";
 import { populate as ctaSectionBlockPopulate } from "../cta-section-block/populate";
 import { populate as faqsBlockPopulate } from "../faq-block/populate";
 import { populate as featuresSectionBlockPopulate } from "../features-section-block/populate";
@@ -10,14 +9,10 @@ import { populate as incentivesBlockPopulate } from "../incentives-block/populat
 import { populate as logotypesCloudBlockPopulate } from "../logotypes-cloud-block/populate";
 import { populate as navbarBlockPopulate } from "../navbar-block/populate";
 import { populate as notFoundBlockPopulate } from "../not-found-block/populate";
-import { populate as pricingBlockPopulate } from "../tiers-list-block/populate";
-import { populate as reviewsListBlockPopulate } from "../reviews-list-block/populate";
 import { populate as sliderBlockPopulate } from "../slider-block/populate";
-import { populate as editSubscriptionBlockPopulate } from "../edit-subscription-block/populate";
 
 export const populate = {
   ...alertBlockPopulate,
-  ...contactSectionBlockPopulate,
   ...ctaSectionBlockPopulate,
   ...faqsBlockPopulate,
   ...featuresSectionBlockPopulate,
@@ -28,8 +23,5 @@ export const populate = {
   ...logotypesCloudBlockPopulate,
   ...navbarBlockPopulate,
   ...notFoundBlockPopulate,
-  ...pricingBlockPopulate,
-  ...reviewsListBlockPopulate,
   ...sliderBlockPopulate,
-  ...editSubscriptionBlockPopulate,
 };

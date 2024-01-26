@@ -15,12 +15,5 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/lib/components/page-blocks/reviews-list-block/sps-lite/SimpleWithAvatars/index.stories.tsx.example",
-    "src/lib/components/page-blocks/contact-section-block/sps-lite/Centered/index.stories.tsx.example"
-  ]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }

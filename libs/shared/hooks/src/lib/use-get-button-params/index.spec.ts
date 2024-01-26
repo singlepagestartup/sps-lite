@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { usePathname } from "next/navigation";
-import useGetButtonParams from ".";
+import { useGetButtonParams } from ".";
 
 jest.mock("next/navigation", () => {
   return {

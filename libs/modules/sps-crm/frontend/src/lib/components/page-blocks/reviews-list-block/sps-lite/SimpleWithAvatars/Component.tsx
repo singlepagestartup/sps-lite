@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "@sps/sps-crm-frontend/lib/redux/entities/review/api";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as ISpsLiteBackendApiReview } from "@sps/sps-crm-frontend/lib/redux/entities/review/interfaces";
+import type { IEntity as IBackendReview } from "../../../../../redux/entities/review/interfaces";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {
@@ -44,7 +44,7 @@ export default function Component(props: IPageBlock) {
 }
 
 function SimpleWithAvatarCard(props: ICardProps) {
-  const { item }: { item: ISpsLiteBackendApiReview } = props;
+  const { item }: { item: IBackendReview } = props;
 
   return (
     <div className="flex space-x-4 text-sm text-gray-500">

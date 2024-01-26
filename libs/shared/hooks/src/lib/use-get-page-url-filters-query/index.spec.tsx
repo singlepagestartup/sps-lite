@@ -1,8 +1,8 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import useGetPageUrlFiltersQuery from ".";
-import { ReduxProvider } from "../../redux/index";
+import { useGetPageUrlFiltersQuery } from ".";
+// import { ReduxProvider } from "../../redux/index";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "@sps/utils";
 import { HttpResponse, http } from "msw";
@@ -57,9 +57,9 @@ describe("useGetPageUrlFiltersQuery", () => {
       };
     });
     const { result } = renderHook(() => useGetPageUrlFiltersQuery(), {
-      wrapper: ({ children }) => {
-        return <ReduxProvider>{children}</ReduxProvider>;
-      },
+      // wrapper: ({ children }) => {
+      //   return <ReduxProvider>{children}</ReduxProvider>;
+      // },
     });
 
     await waitFor(() => {

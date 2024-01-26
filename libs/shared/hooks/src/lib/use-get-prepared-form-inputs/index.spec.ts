@@ -1,8 +1,8 @@
 import { renderHook } from "@testing-library/react";
-import useGetPreparedFormInputs from ".";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import type { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
+import { IEntity as IBackendForm } from "@sps/sps-crm-frontend/lib/redux/entities/form/interfaces";
+import { useGetPreparedFormInputs } from ".";
 
 type IBackendComponentInput = any;
 

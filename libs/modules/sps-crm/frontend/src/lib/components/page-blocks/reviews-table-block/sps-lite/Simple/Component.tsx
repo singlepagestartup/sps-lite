@@ -1,21 +1,15 @@
+"use client";
+
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import type { Meta, StoryObj } from "@storybook/react";
 import {
   Table,
   ICellCompProps,
   IDropdownButtonProps,
   IDropdownRowCompProps,
   IHeaderCompProps,
-} from "..";
-import { entity } from "@sps/sps-crm-frontend/lib/redux/entities/review/mock/sps-lite";
-
-const meta = {
-  component: Table,
-} satisfies Meta<typeof Table>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
+} from "@sps/sps-website-builder-frontend";
+import { api as reviewApi } from "../../../../../redux/entities/review/api";
+import { IPageBlock } from "../..";
 
 const tableConfig = {
   columns: [
@@ -63,16 +57,26 @@ const tableConfig = {
   },
 };
 
-const reviews = Array(5).fill(entity);
+export default function Component(props: IPageBlock) {
+  const {
+    data: reviews,
+    isLoading,
+    isFetching,
+    isUninitialized,
+  } = reviewApi.useGetQuery({});
 
-export const Simple: Story = {
-  args: {
-    variant: "simple",
-    items: reviews,
-    tableConfig: tableConfig,
-    showSkeletons: false,
-  },
-};
+  return (
+    <div className="bg-gray-50 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <h3 className="mb-6 text-3xl text-center font-bold">Reviews table</h3>
+      <Table
+        variant="simple"
+        items={reviews}
+        tableConfig={tableConfig}
+        showSkeletons={isLoading || isFetching || isUninitialized}
+      />
+    </div>
+  );
+}
 
 function NameCell(props: ICellCompProps) {
   const { item } = props;
