@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendComponent } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/buttons-array/interfaces/index";
+import { IComponent as IBackendComponent } from "../../../redux/components/elements/buttons-array/interfaces";
 
 export interface IElement
   extends Omit<

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 // import DateTimeRangePicker from "@wojtekmaj/react-datetimerange-picker";
 import ReactCalendar from "react-calendar";

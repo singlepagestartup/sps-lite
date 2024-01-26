@@ -1,11 +1,9 @@
 import { useRef } from "react";
 import { ILayout } from "../..";
-import {
-  Topbar,
-  Navbar,
-  Sidebar,
-  Footer,
-} from "@sps/sps-website-builder-frontend";
+import { Topbar } from "../../../topbar";
+import { Navbar } from "../../../navbar";
+import { Sidebar } from "../../../sidebar";
+import Footer from "../../../footer";
 
 export default function Boxed(props: ILayout) {
   const topbarRef = useRef<any>(null);

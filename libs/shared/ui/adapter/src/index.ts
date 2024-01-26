@@ -1,5 +1,9 @@
 // Use this file to export React client components (e.g. those with 'use client' directive) or other non-server utilities
 
+export {
+  ErrorBoundary,
+  type ErrorBoundaryState,
+} from "./lib/wrappers/error-boundary";
 export { Button } from "./lib/button";
 export { TextInput } from "./lib/input/text";
 export { CheckboxInput } from "./lib/input/checkbox";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   ChangeEvent,
   HTMLInputTypeAttribute,
@@ -8,7 +10,7 @@ import React, {
 } from "react";
 // import type { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { useController, useFormContext } from "react-hook-form";
-import { useTranslations } from "@sps/hooks";
+// import { useTranslations } from "@sps/hooks";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
 import { downloadBackendUploadFile } from "@sps/utils";
 import TextInput from "./text";
@@ -84,7 +86,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const translate = useTranslations();
+  const translate: any = null;
 
   const translatedLabel: string = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;

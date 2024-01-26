@@ -59,22 +59,7 @@ input[type="number"] {
     @apply bg-input animate-pulse rounded-md;
   }
 
-  // @import "../src/components/elements/button/index";
-  // @import "../src/components/elements/buttons-array/index";
-  // @import "../src/components/elements/input/index";
-  // @import "../src/components/flyout/index";
-  // @import "../src/components/footer/index";
-  // @import "../src/components/form/index";
-  // @import "../src/components/layout/index";
-  // @import "../src/components/modal/index";
-  // @import "../src/components/navbar/index";
-  // @import "../src/components/topbar/index";
-  // @import "../src/components/sidebar/index";
-  // @import "../src/components/slide-over/index";
-  // @import "../src/components/slider/index";
-  // @import "../src/components/loader/index";
-  // @import "../src/components/notification/index";
-  // @import "../src/components/table/index";
   @import "../../../libs/shared/ui/adapter/src/index";
-  // @import "../../../libs/modules/sps-website-builder/frontend/src/index";
+  @import "../../../libs/modules/sps-website-builder/frontend/src/lib/index";
+  @import "../../../libs/modules/sps-crm/frontend/src/lib/index";
 }

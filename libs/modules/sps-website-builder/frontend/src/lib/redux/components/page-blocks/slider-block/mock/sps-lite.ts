@@ -1,4 +1,3 @@
-// import { entity as slider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {

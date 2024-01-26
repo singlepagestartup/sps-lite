@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/slider-block/mock/sps-lite";
+import { entity } from "../../../../../redux/components/page-blocks/slider-block/mock/sps-lite";
 
 const meta = { component: Root } satisfies Meta<typeof Root>;
 export default meta;

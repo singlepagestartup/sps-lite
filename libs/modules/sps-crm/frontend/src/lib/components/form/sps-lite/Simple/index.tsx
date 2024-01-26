@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { IForm } from "../..";
 import { Button } from "@sps/ui-adapter";
-import { useGetPreparedFormInputs } from "@sps/hooks";
-import { Input } from "@sps/sps-website-builder-frontend";
+import { useGetPreparedFormInputs } from "../../../../hooks/use-get-prepared-form-inputs";
+import { Element as Input } from "../../../elements/input";
 
 export default function Simple(props: IForm) {
   const [createFormRequest, { data }] = formRequestApi.useCreateMutation();

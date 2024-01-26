@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import { Props } from "..";
 

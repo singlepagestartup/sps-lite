@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, useEffect, useState } from "react";
 import { Calendar } from "./shadcn";
 import dayjs from "dayjs";

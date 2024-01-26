@@ -1,5 +1,5 @@
 import type { IComponent as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
-import type { IComponent as IBackendComponentInput } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/input/interfaces";
+import type { IComponent as IBackendComponentInput } from "../../../components/elements/input/interfaces";
 
 export interface IEntity {
   id: number;

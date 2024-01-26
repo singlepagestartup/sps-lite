@@ -3,8 +3,8 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-frontend/lib/redux/entities/slider/interfaces";
-import { IComponent as IBackendSlide } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/slide/interfaces";
+import type { IEntity as IBackendSlider } from "../../redux/entities/slider/interfaces";
+import { IComponent as IBackendSlide } from "../../redux/components/elements/slide/interfaces";
 import parseMimeType from "libs/shared/utils/src/lib/formatters/parse-mime-type";
 
 const variants = {

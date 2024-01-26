@@ -1,11 +1,9 @@
-import {
-  Topbar,
-  Navbar,
-  Sidebar,
-  Footer,
-} from "@sps/sps-website-builder-frontend";
 import { useRef } from "react";
 import { ILayout } from "../..";
+import { Topbar } from "../../../topbar";
+import { Navbar } from "../../../navbar";
+import { Sidebar } from "../../../sidebar";
+import Footer from "../../../footer";
 
 export default function Wide(props: ILayout) {
   const topbarRef = useRef<any>(null);

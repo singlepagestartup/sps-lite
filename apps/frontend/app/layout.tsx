@@ -1,20 +1,13 @@
 import "../styles/fonts.css";
 import "../styles/tailwind.scss";
 import { TranslationsContextWrapper } from "@sps/hooks";
-import { ReduxProvider } from "../src/redux/index";
 import { fonts } from "./fonts";
-import {
-  Modal,
-  SlideOver,
-  Loader,
-  Layout,
-} from "@sps/sps-website-builder-frontend";
+import { RootLayout as SpsWebsiteBuilderRootLayout } from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
-import { BACKEND_URL, getBackendData } from "@sps/utils";
 import GoogleTagManager from "../src/components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
-import { populate as loaderPopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/loader/populate";
+import { ReduxProvider } from "../src/redux";
 
 export const dynamic = "force-dynamic";
 
@@ -23,13 +16,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const loader = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/loader`,
-    params: {
-      populate: loaderPopulate,
-    },
-  });
-
   return (
     <html className="scroll-smooth">
       <body
@@ -45,11 +31,9 @@ export default async function RootLayout({
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
                   <ReduxProvider>
-                    <Loader {...loader}>
-                      <Layout>{children}</Layout>
-                      <Modal />
-                      <SlideOver />
-                    </Loader>
+                    <SpsWebsiteBuilderRootLayout>
+                      {children}
+                    </SpsWebsiteBuilderRootLayout>
                   </ReduxProvider>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>
