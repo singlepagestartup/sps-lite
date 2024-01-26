@@ -1,7 +1,7 @@
-import PageBlocks from "../src/components/page-blocks";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/populate";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
+import { PageBlocks } from "@sps/sps-website-builder-frontend";
 
 export default async function NotFoundPage() {
   const pages = (await getBackendData({

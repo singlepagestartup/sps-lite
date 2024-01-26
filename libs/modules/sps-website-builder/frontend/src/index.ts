@@ -1,9 +1,11 @@
 export * from "./lib/redux/slices";
 export { Footer } from "./lib/components/footer";
 export { Modal } from "./lib/components/modal";
-export { pageBlocks } from "./lib/components/page-blocks";
+export { pageBlocks } from "./lib/components/page-blocks/aliases";
+export { PageBlocks } from "./lib/components/page-blocks";
 export { SlideOver } from "./lib/components/slide-over";
 export { Loader } from "./lib/components/loader";
+export { Layout } from "./lib/components/layout";
 export { Topbar } from "./lib/components/topbar";
 export {
   Table,

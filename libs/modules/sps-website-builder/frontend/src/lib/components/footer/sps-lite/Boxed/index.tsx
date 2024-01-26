@@ -1,4 +1,4 @@
-import PageBlocks from "../../../../../../../../../../apps/frontend/src/components/page-blocks";
+import { PageBlocks } from "../../../page-blocks";
 import { IFooter } from "../..";
 
 export default function Boxed(props: IFooter) {

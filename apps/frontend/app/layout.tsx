@@ -3,9 +3,13 @@ import "../styles/tailwind.scss";
 import { TranslationsContextWrapper } from "@sps/hooks";
 import { ReduxProvider } from "../src/redux/index";
 import { fonts } from "./fonts";
-import { Modal, SlideOver, Loader } from "@sps/sps-website-builder-frontend";
+import {
+  Modal,
+  SlideOver,
+  Loader,
+  Layout,
+} from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
-import Layout from "../src/components/layout";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import GoogleTagManager from "../src/components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";

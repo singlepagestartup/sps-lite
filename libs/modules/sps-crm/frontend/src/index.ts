@@ -1,2 +1,3 @@
 export * from "./lib/redux/slices";
-export * from "./lib/components/page-blocks";
+export { pageBlocks } from "./lib/components/page-blocks";
+export { Form } from "./lib/components/form";

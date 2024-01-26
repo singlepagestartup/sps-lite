@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import PageBlocks from "../../../../../../../../../../apps/frontend/src/components/page-blocks";
+import { PageBlocks } from "../../../page-blocks";
 import { usePathname, useRouter } from "next/navigation";
 import { ISlideOver } from "../..";
 

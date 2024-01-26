@@ -13,9 +13,6 @@ import { populate as notFoundBlockPopulate } from "../not-found-block/populate";
 import { populate as pricingBlockPopulate } from "../tiers-list-block/populate";
 import { populate as reviewsListBlockPopulate } from "../reviews-list-block/populate";
 import { populate as sliderBlockPopulate } from "../slider-block/populate";
-import { populate as checkoutFormBlockPopulate } from "../checkout-form-block/populate";
-import { populate as productsListBlockPopulate } from "../products-list-block/populate";
-import { populate as shoppingCartBlockPopulate } from "../shopping-cart-block/populate";
 import { populate as editSubscriptionBlockPopulate } from "../edit-subscription-block/populate";
 
 export const populate = {
@@ -34,8 +31,5 @@ export const populate = {
   ...pricingBlockPopulate,
   ...reviewsListBlockPopulate,
   ...sliderBlockPopulate,
-  ...checkoutFormBlockPopulate,
-  ...productsListBlockPopulate,
-  ...shoppingCartBlockPopulate,
   ...editSubscriptionBlockPopulate,
 };

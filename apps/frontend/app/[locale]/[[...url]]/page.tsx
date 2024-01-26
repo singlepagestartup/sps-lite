@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import PageBlocks from "../../../src/components/page-blocks";
+
 import {
   getFileUrl,
   BACKEND_URL,
@@ -8,6 +8,7 @@ import {
 } from "@sps/utils";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/metatag/populate";
 import { populate as pagePopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/populate";
+import { PageBlocks } from "@sps/sps-website-builder-frontend";
 
 export const dynamicParams = true;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Layout from "../src/components/layout";
+import Layout from "../../../libs/modules/sps-website-builder/frontend/src/lib/components/layout";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/populate";
 import { fonts } from "./fonts";

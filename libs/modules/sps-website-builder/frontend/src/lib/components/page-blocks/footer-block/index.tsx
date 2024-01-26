@@ -1,4 +1,4 @@
-import { IPage } from "../../../../../../../../../apps/frontend/src/components/page-blocks";
+import { IPage } from "../../../redux/components/page-blocks/props";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent as IBackendPageBlock } from "../../../redux/components/page-blocks/footer-block/interfaces";

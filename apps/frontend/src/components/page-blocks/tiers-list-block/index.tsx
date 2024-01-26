@@ -1,4 +1,4 @@
-import { IPage } from "..";
+import { IPage } from "../../../../../../libs/modules/sps-website-builder/frontend/src/lib/components/page-blocks";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent as IBackendPageBlock } from "@sps/sps-website-builder-frontend/lib/redux/components/page-blocks/tiers-list-block/interfaces/index";
