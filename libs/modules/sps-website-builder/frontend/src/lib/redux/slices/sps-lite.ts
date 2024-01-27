@@ -11,6 +11,7 @@ import { api as slideOverApi } from "../entities/slide-over/api";
 import { api as sliderApi } from "../entities/slider/api";
 import { api as themeApi } from "../entities/theme/api";
 import { api as topbarApi } from "../entities/topbar/api";
+import { api as localeApi } from "../entities/locale/api";
 
 export const slices = {
   middlewares: [
@@ -27,6 +28,7 @@ export const slices = {
     sliderApi.middleware,
     themeApi.middleware,
     topbarApi.middleware,
+    localeApi.middleware,
   ],
   reducer: {
     [flyoutApi.reducerPath]: flyoutApi.reducer,
@@ -42,5 +44,6 @@ export const slices = {
     [sliderApi.reducerPath]: sliderApi.reducer,
     [themeApi.reducerPath]: themeApi.reducer,
     [topbarApi.reducerPath]: topbarApi.reducer,
+    [localeApi.reducerPath]: localeApi.reducer,
   },
 };

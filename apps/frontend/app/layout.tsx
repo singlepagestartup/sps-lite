@@ -2,12 +2,13 @@ import "../styles/fonts.css";
 import "../styles/tailwind.scss";
 import { TranslationsContextWrapper } from "@sps/hooks";
 import { fonts } from "./fonts";
-import { RootLayout as SpsWebsiteBuilderRootLayout } from "@sps/sps-website-builder-frontend";
+import {
+  GoogleTagManager,
+  RootLayout as SpsWebsiteBuilderRootLayout,
+} from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
-import GoogleTagManager from "../src/components/scripts/google-tag-manager";
 import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
 import { ReduxProvider } from "../src/redux";
-import StoreConsumer from "../src/components/StoreConsumer";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +32,6 @@ export default async function RootLayout({
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
                   <ReduxProvider>
-                    <StoreConsumer />
                     <SpsWebsiteBuilderRootLayout>
                       {children}
                     </SpsWebsiteBuilderRootLayout>

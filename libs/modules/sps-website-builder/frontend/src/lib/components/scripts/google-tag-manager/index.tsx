@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
 
-export default function GoogleTagManager() {
+export function GoogleTagManager() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 

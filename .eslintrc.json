@@ -30,11 +30,6 @@
             "enforceBuildableLibDependency": false,
             "banTransitiveDependencies": true,
             "allow": [
-              // api
-              "@sps/api-frontend/lib/redux/entities/**/interfaces",
-              "@sps/api-frontend/lib/redux/entities/**/api",
-              "@sps/api-frontend/lib/redux/entities/**/populate",
-
               // sps-billing
               "@sps/sps-billing-frontend/lib/redux/entities/**/interfaces",
               "@sps/sps-billing-frontend/lib/redux/entities/**/api",
