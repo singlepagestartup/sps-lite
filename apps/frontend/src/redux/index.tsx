@@ -3,10 +3,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
-import { slices as backendSlices } from "./services/backend/slices";
+import { slices as backendSlices } from "./slices";
 
-const middlewares = [...backendSlices.middlewares, rtkQueryErrorLogger];
+const middlewares = [...backendSlices.middlewares];
 
 const store: any = configureStore({
   reducer: {

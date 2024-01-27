@@ -20,7 +20,7 @@ export const globalStore = create(
     (set: any, get: any) => ({
       apis: [] as IReduxApi[],
       addApi: (api: any) => {
-        set((state) => {
+        set((state: State) => {
           const existingApi = state.apis.find(
             (item: any) => item.reducerPath === api.reducerPath,
           );

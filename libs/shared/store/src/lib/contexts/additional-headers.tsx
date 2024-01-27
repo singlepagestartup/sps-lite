@@ -4,7 +4,7 @@ import { useState, createContext } from "react";
 
 export const AdditionalHeadersContext = createContext<any>(null);
 
-function AdditionalHeadersWrapper({ children }: { children: any }) {
+export function AdditionalHeadersWrapper({ children }: { children: any }) {
   const [headers, setHeaders] = useState();
 
   return (
@@ -13,5 +13,3 @@ function AdditionalHeadersWrapper({ children }: { children: any }) {
     </AdditionalHeadersContext.Provider>
   );
 }
-
-export default AdditionalHeadersWrapper;

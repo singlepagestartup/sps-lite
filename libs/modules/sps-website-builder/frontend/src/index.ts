@@ -1,3 +1,4 @@
+export { rtkQueryErrorLogger } from "./lib/redux/rtk-query-error-logger";
 export { rootSlices } from "./lib/redux/root";
 export * as page from "./lib/app/page";
 export { RootLayout } from "./lib/app/root-layout";

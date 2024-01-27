@@ -5,8 +5,7 @@ import { fonts } from "./fonts";
 import { RootLayout as SpsWebsiteBuilderRootLayout } from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
 import GoogleTagManager from "../src/components/scripts/google-tag-manager";
-import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
-import { HocParamsProvider } from "../src/contexts/hoc-params";
+import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
 import { ReduxProvider } from "../src/redux";
 import StoreConsumer from "../src/components/StoreConsumer";
 

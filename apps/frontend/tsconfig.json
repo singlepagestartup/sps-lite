@@ -2,12 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es2021"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es2021"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -37,9 +32,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../../libs/modules/sps-website-builder/frontend/src/lib/components/page-blocks/index.tsx",
-    "../../dist/apps/frontend/.next/types/**/*.ts"
+    "../../dist/apps/frontend/.next/types/**/*.ts",
+    "../../libs/modules/sps-website-builder/frontend/src/lib/redux/rtk-query-error-logger.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

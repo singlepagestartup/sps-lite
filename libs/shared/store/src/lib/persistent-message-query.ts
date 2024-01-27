@@ -10,80 +10,56 @@ interface StoreMessage {
 
 export interface State {
   messages: StoreMessage[];
-  stores: any[];
-  states: any[];
   addMessage: (message: State["messages"][number]) => void;
 }
 
-// export type StoreWithPersist = Mutate<
-//   StoreApi<State>,
-//   [["zustand/persist", unknown]]
-// >;
+export type StoreWithPersist = Mutate<
+  StoreApi<State>,
+  [["zustand/persist", unknown]]
+>;
 
 const name = "persistent-message-query";
 
 export const persistentMessageQuery = create(
   devtools(
-    (set: any, get: any) => ({
-      messages: [] as StoreMessage[],
-      stores: [] as any[],
-      states: [] as any[],
-      addMessage: (message: StoreMessage) => {
-        set((state) => {
-          const newMessagesArray = [message, ...state.messages].slice(0, 3);
+    persist(
+      (set: any, get: any) => ({
+        messages: [] as StoreMessage[],
+        addMessage: (message: StoreMessage) => {
+          set((state: State) => {
+            const newMessagesArray = [message, ...state.messages].slice(0, 3);
 
-          return { messages: newMessagesArray };
-        });
+            return { messages: newMessagesArray };
+          });
 
-        // window.dispatchEvent(new StorageEvent("storage", { key: name }));
+          window.dispatchEvent(new StorageEvent("storage", { key: name }));
+        },
+      }),
+      {
+        name: name,
+        storage: createJSONStorage(() => localStorage),
       },
-    }),
+    ),
     {
       name: name,
     },
   ),
 );
 
-// export const persistentMessageQuery = create(
-//   devtools(
-//     persist(
-//       (set: any, get: any) => ({
-//         messages: [] as StoreMessage[],
-//         addMessage: (message: StoreMessage) => {
-//           set((state) => {
-//             const newMessagesArray = [message, ...state.messages].slice(0, 3);
+export const withStorageDOMEvents = (store: StoreWithPersist) => {
+  if (typeof window === "undefined") return;
 
-//             return { messages: newMessagesArray };
-//           });
+  const storageEventCallback = (e: StorageEvent) => {
+    if (e.key === store.persist.getOptions().name) {
+      store.persist.rehydrate();
+    }
+  };
 
-//           window.dispatchEvent(new StorageEvent("storage", { key: name }));
-//         },
-//       }),
-//       {
-//         name: name,
-//         storage: createJSONStorage(() => localStorage),
-//       },
-//     ),
-//     {
-//       name: name,
-//     },
-//   ),
-// );
+  window.addEventListener("storage", storageEventCallback);
 
-// export const withStorageDOMEvents = (store: StoreWithPersist) => {
-//   if (typeof window === "undefined") return;
+  return () => {
+    window.removeEventListener("storage", storageEventCallback);
+  };
+};
 
-//   const storageEventCallback = (e: StorageEvent) => {
-//     if (e.key === store.persist.getOptions().name) {
-//       store.persist.rehydrate();
-//     }
-//   };
-
-//   window.addEventListener("storage", storageEventCallback);
-
-//   return () => {
-//     window.removeEventListener("storage", storageEventCallback);
-//   };
-// };
-
-// withStorageDOMEvents(persistentMessageQuery);
+withStorageDOMEvents(persistentMessageQuery);
