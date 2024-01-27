@@ -61,10 +61,10 @@ function Observer({ children }: { children: React.ReactNode }) {
       );
     });
 
-    console.log(
-      `🚀 ~ unansweredMessages ~ unansweredMessages:`,
-      unansweredMessages.length,
-    );
+    // console.log(
+    //   `🚀 ~ unansweredMessages ~ unansweredMessages:`,
+    //   unansweredMessages.length,
+    // );
 
     if (unansweredMessages.length) {
       // // console.log(
@@ -76,33 +76,58 @@ function Observer({ children }: { children: React.ReactNode }) {
       //   "getMe",
       // ).queries.getMe?.data;
       // // const meFromReducer = store.getState().users.queries.getMe?.data;
-
       // console.log(
       //   `🚀 ~ persistentMessageQuery.subscribe ~ meFromReducer:`,
       //   meFromReducer,
       // );
-
-      const meFromApi = entities["user"].endpoints["getMe"].select({})(
-        store.getState(),
-      );
-
-      if (meFromApi) {
-        persistentMessageQuery.getState().addMessage({
-          id: Math.random().toString(),
-          service: "sps-rbac",
-          respondedTo: unansweredMessages[0].id,
-          data: JSON.stringify({
-            entity: "user",
-            endpoint: "getMe",
-            data: meFromApi,
-          }),
-        });
-      }
-
+      // const meFromApi = entities["user"].endpoints["getMe"].select({})(
+      //   store.getState(),
+      // );
+      // if (meFromApi) {
+      //   persistentMessageQuery.getState().addMessage({
+      //     id: Math.random().toString(),
+      //     service: "sps-rbac",
+      //     respondedTo: unansweredMessages[0].id,
+      //     data: JSON.stringify({
+      //       entity: "user",
+      //       endpoint: "getMe",
+      //       data: meFromApi,
+      //     }),
+      //   });
+      // }
       // console.log(
       //   `🚀 ~ persistentMessageQuery.subscribe ~ meFromApi:`,
       //   meFromApi,
       // );
+    }
+
+    const stores = state.stores.filter((store) => store.name === "user");
+    const states = state.states.filter((state) => state.name === "user");
+
+    if (!stores.length) {
+      persistentMessageQuery.setState({
+        ...state,
+        stores: [
+          ...state.stores,
+          {
+            name: "user",
+            entity: entities["user"],
+          },
+        ],
+      });
+    }
+
+    if (!states.length) {
+      persistentMessageQuery.setState({
+        ...state,
+        states: [
+          ...state.states,
+          {
+            name: "user",
+            getState: store.getState,
+          },
+        ],
+      });
     }
   });
 
