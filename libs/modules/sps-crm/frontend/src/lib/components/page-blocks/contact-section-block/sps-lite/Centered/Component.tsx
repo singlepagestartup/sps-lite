@@ -8,10 +8,14 @@ import { createNotification } from "@sps/ui-adapter";
 // import { persist, createJSONStorage } from "zustand/middleware";
 // import { useEffect } from "react";
 import { persistentMessageQuery } from "@sps/store";
+import { useEffect, useState } from "react";
 // import { useMyProfile } from "@sps/sps-rbac-frontend";
 
 export default function Component(props: IPageBlock) {
   const messages = persistentMessageQuery((state) => state.messages);
+  const stores = persistentMessageQuery((state) => state.stores);
+  const states = persistentMessageQuery((state) => state.states);
+  const [me, setMe] = useState<any>(null);
 
   function successCallbackAction() {
     createNotification({
@@ -21,10 +25,32 @@ export default function Component(props: IPageBlock) {
     });
   }
 
+  useEffect(() => {
+    const userStore = stores.find((store) => store.name === "user");
+    const state = states.find((state) => {
+      return state.name === "user";
+    });
+
+    if (userStore) {
+      const me = userStore.entity.endpoints["getMe"].select({})(
+        state.getState(),
+      );
+
+      if (me) {
+        setMe(me.data);
+      }
+
+      // console.log(`🚀 ~ useEffect ~ me:`, me);
+    }
+
+    // console.log(`🚀 ~ StoreConsumer ~ stores:`, stores);
+  }, [JSON.stringify(stores)]);
+
   return (
     <div className="relative mx-auto max-w-7xl overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
-      <div className="flex flex-col gap-6 py-20">
+      <div className="flex flex-col gap-6 pb-20">
         <p>Messages: {messages.length}</p>
+        <p>Me: {JSON.stringify(me)}</p>
         <pre className="text-wrap">{JSON.stringify(messages)}</pre>
         <div className="flex gap-4">
           <button
