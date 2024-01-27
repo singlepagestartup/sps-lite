@@ -33,8 +33,8 @@ export default async function RootLayout({
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
                   <SpsRbacReduxProvider>
+                    <StoreConsumer />
                     <ReduxProvider>
-                      <StoreConsumer />
                       <SpsWebsiteBuilderRootLayout>
                         {children}
                       </SpsWebsiteBuilderRootLayout>

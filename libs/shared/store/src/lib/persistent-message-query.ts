@@ -27,7 +27,7 @@ export const persistentMessageQuery = create(
         messages: [] as StoreMessage[],
         addMessage: (message: StoreMessage) => {
           set((state) => {
-            const newMessagesArray = [message, ...state.messages].slice(0, 10);
+            const newMessagesArray = [message, ...state.messages].slice(0, 3);
 
             return { messages: newMessagesArray };
           });
@@ -40,6 +40,9 @@ export const persistentMessageQuery = create(
         storage: createJSONStorage(() => localStorage),
       },
     ),
+    {
+      name: name,
+    },
   ),
 );
 
