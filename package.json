@@ -4,8 +4,8 @@
   "scripts": {
     "backend:build": "nx run backend:build",
     "backend:serve": "nx run backend:develop",
-    "frontend:build": "rm -rf apps/frontend/.next && NODE_ENV=production node apps/frontend/theme.js && nx build frontend",
-    "frontend:dev": "rm -rf apps/frontend/.next && NODE_ENV=development node apps/frontend/theme.js && nx serve frontend",
+    "frontend:build": "rm -rf apps/frontend/.next && NODE_ENV=production ts-node apps/frontend/theme.ts && nx build frontend",
+    "frontend:dev": "rm -rf apps/frontend/.next && NODE_ENV=development ts-node apps/frontend/theme.js && nx serve frontend",
     "frontend:production": "npm run frontend:build && nx serve frontend --prod",
     "lint": "nx run-many --target=lint --parallel=2 --all"
   },

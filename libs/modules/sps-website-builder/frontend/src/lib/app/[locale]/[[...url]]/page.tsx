@@ -7,9 +7,9 @@ import {
   getBackendData,
   getTargetPage,
 } from "@sps/utils";
-import { populate as metatagPopulate } from "../redux/entities/metatag/populate";
-import { populate as pagePopulate } from "../redux/entities/page/populate";
-import { PageBlocks } from "../components/page-blocks";
+import { populate as metatagPopulate } from "../../../redux/entities/metatag/populate";
+import { populate as pagePopulate } from "../../../redux/entities/page/populate";
+import { PageBlocks } from "../../../components/page-blocks";
 
 export async function generateStaticParams() {
   const pagesUrls = await getBackendData({

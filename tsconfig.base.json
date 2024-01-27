@@ -13,6 +13,7 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "paths": {
+      "@sps/buildable": ["lib/shared/buildable/src/index.ts"],
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
@@ -57,5 +58,6 @@
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "include": ["**/*"]
 }

@@ -10,8 +10,6 @@ export function useMyProfile() {
     return state.auth?.username;
   });
 
-  console.log(`🚀 ~ username ~ username:`, username);
-
   const {
     data: myProfileByMe,
     error: meError,

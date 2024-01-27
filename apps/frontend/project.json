@@ -4,6 +4,31 @@
   "sourceRoot": "apps/frontend",
   "projectType": "application",
   "targets": {
+    "build-theme": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "apps/frontend/.theme",
+        "main": "apps/frontend/theme.ts",
+        "tsConfig": "apps/frontend/tsconfig.theme.json",
+        "clean": false,
+        "assets": []
+      }
+    },
+    "theme": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run frontend:build-theme"
+          },
+          {
+            "command": "NODE_ENV=development node apps/frontend/.theme/theme.js"
+          }
+        ]
+      }
+    },
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],

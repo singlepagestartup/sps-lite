@@ -3,8 +3,7 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": ["^build"]
     },
     "lint": {
       "inputs": [
@@ -45,6 +44,7 @@
     ],
     "sharedGlobals": []
   },
+  "pluginsConfig": {},
   "generators": {
     "@nx/react": {
       "application": {
