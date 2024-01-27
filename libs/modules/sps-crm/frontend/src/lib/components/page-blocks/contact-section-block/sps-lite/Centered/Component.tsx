@@ -7,15 +7,19 @@ import { createNotification } from "@sps/ui-adapter";
 // import { Mutate, StoreApi, create } from "zustand";
 // import { persist, createJSONStorage } from "zustand/middleware";
 // import { useEffect } from "react";
-import { persistentMessageQuery } from "@sps/store";
-import { useEffect, useState } from "react";
-// import { useMyProfile } from "@sps/sps-rbac-frontend";
+// import { globalStore, persistentMessageQuery } from "@sps/store";
+// import { useEffect, useState } from "react";
+import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user/api";
+import { useMyProfile } from "@sps/sps-rbac-frontend";
 
 export default function Component(props: IPageBlock) {
-  const messages = persistentMessageQuery((state) => state.messages);
-  const stores = persistentMessageQuery((state) => state.stores);
-  const states = persistentMessageQuery((state) => state.states);
-  const [me, setMe] = useState<any>(null);
+  const { me } = useMyProfile();
+  // const apis = globalStore((state) => state.apis);
+  // const messages = persistentMessageQuery((state) => state.messages);
+  // const stores = persistentMessageQuery((state) => state.stores);
+  // const states = persistentMessageQuery((state) => state.states);
+  // const [me, setMe] = useState<any>(null);
+  // const { data: me } = userApi.useGetMeQuery({});
 
   function successCallbackAction() {
     createNotification({
@@ -25,34 +29,37 @@ export default function Component(props: IPageBlock) {
     });
   }
 
-  useEffect(() => {
-    const userStore = stores.find((store) => store.name === "user");
-    const state = states.find((state) => {
-      return state.name === "user";
-    });
+  // useEffect(() => {
+  //   const userApi = apis.find((api) => api.reducerPath === "users");
+  //   console.log(`🚀 ~ useEffect ~ userApi:`, userApi);
+  //   const me = userApi?.endpoints["getMe"]?.select({})(userApi.getState());
+  //   console.log(`🚀 ~ useEffect ~ me:`, me);
 
-    if (userStore) {
-      const me = userStore.entity.endpoints["getMe"].select({})(
-        state.getState(),
-      );
+  //   // const userStore = stores.find((store) => store.name === "user");
+  //   // const state = states.find((state) => {
+  //   //   return state.name === "user";
+  //   // });
 
-      if (me) {
-        setMe(me.data);
-      }
+  //   // if (userStore) {
+  //   //   const me = userStore.entity.endpoints["getMe"].select({})(
+  //   //     state.getState(),
+  //   //   );
 
-      // console.log(`🚀 ~ useEffect ~ me:`, me);
-    }
+  //   //   if (me) {
+  //   //     setMe(me.data);
+  //   //   }
 
-    // console.log(`🚀 ~ StoreConsumer ~ stores:`, stores);
-  }, [JSON.stringify(stores)]);
+  //   //   // console.log(`🚀 ~ useEffect ~ me:`, me);
+  //   // }
+
+  //   // console.log(`🚀 ~ StoreConsumer ~ stores:`, stores);
+  // }, [JSON.stringify(apis)]);
 
   return (
     <div className="relative mx-auto max-w-7xl overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
       <div className="flex flex-col gap-6 pb-20">
-        <p>Messages: {messages.length}</p>
-        <p>Me: {JSON.stringify(me)}</p>
-        <pre className="text-wrap">{JSON.stringify(messages)}</pre>
-        <div className="flex gap-4">
+        <p>Me: {me?.email}</p>
+        {/* <div className="flex gap-4">
           <button
             className="py-4 px-10 bg-blue-500 text-white rounded-md"
             onClick={() => {
@@ -96,7 +103,7 @@ export default function Component(props: IPageBlock) {
           >
             Answer rbac message
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="text-center">
         {props.title ? (

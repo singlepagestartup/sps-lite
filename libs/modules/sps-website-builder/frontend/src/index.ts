@@ -1,3 +1,4 @@
+export { rootSlices } from "./lib/redux/root";
 export * as page from "./lib/app/page";
 export { RootLayout } from "./lib/app/root-layout";
 export * from "./lib/redux/slices";

@@ -9,7 +9,6 @@ import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
 import { ReduxProvider } from "../src/redux";
 import StoreConsumer from "../src/components/StoreConsumer";
-import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend";
 
 export const dynamic = "force-dynamic";
 
@@ -32,14 +31,12 @@ export default async function RootLayout({
             <TranslationsContextWrapper>
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
-                  <SpsRbacReduxProvider>
+                  <ReduxProvider>
                     <StoreConsumer />
-                    <ReduxProvider>
-                      <SpsWebsiteBuilderRootLayout>
-                        {children}
-                      </SpsWebsiteBuilderRootLayout>
-                    </ReduxProvider>
-                  </SpsRbacReduxProvider>
+                    <SpsWebsiteBuilderRootLayout>
+                      {children}
+                    </SpsWebsiteBuilderRootLayout>
+                  </ReduxProvider>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>
             </TranslationsContextWrapper>

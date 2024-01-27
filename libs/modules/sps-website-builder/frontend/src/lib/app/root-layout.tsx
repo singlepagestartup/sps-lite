@@ -1,4 +1,4 @@
-import { ReduxProvider } from "../redux";
+// import { ReduxProvider } from "../redux";
 import { Suspense } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as loaderPopulate } from "../redux/entities/loader/populate";
@@ -21,13 +21,13 @@ export async function RootLayout({ children }: { children: React.ReactNode }) {
     <section data-app="sps-website-builder" className="relative">
       {/* Suspense here is for static build, without that build will return nothing */}
       <Suspense>
-        <ReduxProvider>
-          <Loader {...loader}>
-            <Layout>{children}</Layout>
-            <Modal />
-            <SlideOver />
-          </Loader>
-        </ReduxProvider>
+        {/* <ReduxProvider> */}
+        <Loader {...loader}>
+          <Layout>{children}</Layout>
+          <Modal />
+          <SlideOver />
+        </Loader>
+        {/* </ReduxProvider> */}
       </Suspense>
     </section>
   );
