@@ -14,6 +14,7 @@ import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
 import { gzip } from "pako";
 import QueryString from "qs";
+import { TransformedApiArray } from "../types";
 
 export type TRTKServiceApi = Api<
   BaseQueryFn<

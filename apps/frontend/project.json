@@ -11,8 +11,7 @@
         "outputPath": "apps/frontend/.theme",
         "main": "apps/frontend/theme.ts",
         "tsConfig": "apps/frontend/tsconfig.theme.json",
-        "clean": false,
-        "assets": []
+        "rootDir": "."
       }
     },
     "theme": {
@@ -32,35 +31,20 @@
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "dependsOn": ["^build"],
+      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/frontend"
-      },
-      "configurations": {
-        "development": {
-          "outputPath": "apps/frontend"
-        },
-        "production": {}
+        "outputPath": "apps/frontend"
       }
     },
     "serve": {
       "executor": "@nx/next:server",
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
       "options": {
         "buildTarget": "frontend:build",
-        "dev": true,
+        "dev": false,
         "port": 3000
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "frontend:build:development",
-          "dev": true
-        },
-        "production": {
-          "buildTarget": "frontend:build:production",
-          "dev": false
-        }
       }
     },
     "export": {

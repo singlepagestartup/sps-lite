@@ -4,8 +4,12 @@
     "target": "es2021",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedModules": false
+    // "sourceMap": false,
+    // "resolveJsonModule": true,
+    // "allowSyntheticDefaultImports": true,
+    // "declaration": false,
   },
   // "exclude": ["node_modules"]
   "include": ["theme.ts"]
