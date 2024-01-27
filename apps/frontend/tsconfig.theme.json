@@ -5,11 +5,11 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "isolatedModules": false
-    // "sourceMap": false,
-    // "resolveJsonModule": true,
-    // "allowSyntheticDefaultImports": true,
-    // "declaration": false,
+    "isolatedModules": false,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": false,
+    "resolveJsonModule": true
   },
   // "exclude": ["node_modules"]
   "include": ["theme.ts"]

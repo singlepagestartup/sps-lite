@@ -1,9 +1,10 @@
-import axios from "axios";
-import * as fs from "fs/promises";
+// import axios from "axios";
+// import * as fs from "fs/promises";
 // import { createWriteStream } from "fs";
 // import path from "path";
 import { snakeCaseToCamelCase } from "@sps/utils";
-console.log("dsfsdf", axios, fs);
+
+console.log(`🚀 ~ snakeCaseToCamelCase:`, snakeCaseToCamelCase);
 
 // let iteration = 0;
 

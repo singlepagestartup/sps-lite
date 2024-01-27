@@ -69,7 +69,7 @@
               // sps-website-builder
               // entities
               "@sps/sps-website-builder-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-website-builder-frontend/lib/redux/entities/**/api",
+              "@sps/sps-website-builder-frontend/lib/redx/entities/**/api",
               "@sps/sps-website-builder-frontend/lib/redux/entities/**/populate",
               "@sps/sps-website-builder-frontend/lib/redux/slices",
               // components

@@ -11,7 +11,12 @@
         "outputPath": "apps/frontend/.theme",
         "main": "apps/frontend/theme.ts",
         "tsConfig": "apps/frontend/tsconfig.theme.json",
-        "rootDir": "."
+        "rootDir": ".",
+        "transformers": [
+          {
+            "name": "typescript-transform-paths/nx-transformer"
+          }
+        ]
       }
     },
     "theme": {
@@ -23,7 +28,7 @@
             "command": "nx run frontend:build-theme"
           },
           {
-            "command": "NODE_ENV=development node apps/frontend/.theme/theme.js"
+            "command": "NODE_ENV=development node apps/frontend/.theme/apps/frontend/theme.js"
           }
         ]
       }
