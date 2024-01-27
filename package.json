@@ -98,7 +98,8 @@
     "tailwindcss-animate": "^1.0.7",
     "telegraf": "^4.12.2",
     "transition-component": "^1.2.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",

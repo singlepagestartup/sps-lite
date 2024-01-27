@@ -8,6 +8,8 @@ import GoogleTagManager from "../src/components/scripts/google-tag-manager";
 import AdditionalHeadersWrapper from "../src/contexts/additional-headers";
 import { HocParamsProvider } from "../src/contexts/hoc-params";
 import { ReduxProvider } from "../src/redux";
+import StoreConsumer from "../src/components/StoreConsumer";
+import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend";
 
 export const dynamic = "force-dynamic";
 
@@ -30,11 +32,14 @@ export default async function RootLayout({
             <TranslationsContextWrapper>
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
-                  <ReduxProvider>
-                    <SpsWebsiteBuilderRootLayout>
-                      {children}
-                    </SpsWebsiteBuilderRootLayout>
-                  </ReduxProvider>
+                  <SpsRbacReduxProvider>
+                    <ReduxProvider>
+                      <StoreConsumer />
+                      <SpsWebsiteBuilderRootLayout>
+                        {children}
+                      </SpsWebsiteBuilderRootLayout>
+                    </ReduxProvider>
+                  </SpsRbacReduxProvider>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>
             </TranslationsContextWrapper>

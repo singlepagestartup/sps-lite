@@ -25,6 +25,7 @@ export default function Component(props: IPageBlock) {
   const router = useRouter();
   const id = useGetPageUrlModelId({
     modelName: "product",
+    page: props.page,
   });
 
   const [checkout, { data: checkoutData }] = cartApi.useCheckoutMutation();

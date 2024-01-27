@@ -52,6 +52,7 @@
       "@sps/sps-website-builder-frontend/*": [
         "libs/modules/sps-website-builder/frontend/src/*"
       ],
+      "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"],
       "@sps/utils": ["libs/shared/utils/src/index.ts"]

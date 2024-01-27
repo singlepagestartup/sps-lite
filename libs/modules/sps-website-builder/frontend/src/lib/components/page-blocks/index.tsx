@@ -3,7 +3,14 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { IPage } from "../../redux/components/page-blocks/props";
 import { pageBlockComponents } from "./aliases";
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { PageBlocks as SpsCrmPageBlocks } from "@sps/sps-crm-frontend";
+import {
+  PageBlocks as SpsCrmPageBlocks,
+  pageBlockComponents as spsCrmPageBlockComponents,
+} from "@sps/sps-crm-frontend";
+// import {
+//   PageBlocks as SpsEcommercePageBlocks,
+//   pageBlockComponents as spsEcommercePageBlockComponents,
+// } from "@sps/sps-ecommerce-frontend";
 
 export function PageBlocks(props: IPage) {
   return (
@@ -16,12 +23,7 @@ export function PageBlocks(props: IPage) {
             ] as FC<any>;
 
             if (!PageBlock) {
-              if (
-                [
-                  "page-blocks.reviews-list-block",
-                  "page-blocks.contact-section-block",
-                ].includes(key)
-              ) {
+              if (Object.keys(spsCrmPageBlockComponents).includes(key)) {
                 return (
                   <SpsCrmPageBlocks
                     key={`${index}-${key}`}
@@ -31,6 +33,17 @@ export function PageBlocks(props: IPage) {
                   />
                 );
               }
+
+              // if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
+              //   return (
+              //     <SpsEcommercePageBlocks
+              //       key={`${index}-${key}`}
+              //       pageProps={props.pageProps}
+              //       page={props.page}
+              //       pageBlocks={[pageBlock]}
+              //     />
+              //   );
+              // }
 
               return <div key={`${index}-${key}`}></div>;
             }

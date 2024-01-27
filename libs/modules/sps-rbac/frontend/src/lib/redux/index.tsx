@@ -3,14 +3,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
-import { slices as backendSlices } from "./services/backend/slices";
+// import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
+import { slices } from "./slices";
+import { slice as authSlice } from "./auth/slice";
 
-const middlewares = [...backendSlices.middlewares, rtkQueryErrorLogger];
+const middlewares = [...slices.middlewares];
 
 const store: any = configureStore({
+  devTools: {
+    name: "sps-rbac",
+  },
   reducer: {
-    ...backendSlices.reducer,
+    ...slices.reducer,
+    auth: authSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
