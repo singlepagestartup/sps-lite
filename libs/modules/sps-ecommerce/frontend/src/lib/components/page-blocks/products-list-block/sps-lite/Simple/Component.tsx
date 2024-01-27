@@ -11,7 +11,7 @@ import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
-import { useMyProfile } from "@sps/sps-rbac-frontend";
+import { useMyProfile } from "@sps/sps-rbac-frontend/lib/hooks/use-my-profile";
 
 const cardsConfig = {
   emptyLength: 4,

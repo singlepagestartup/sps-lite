@@ -11,7 +11,7 @@ import type { IEntity as IBackendAttribute } from "@sps/sps-ecommerce-frontend/l
 import { useMemo } from "react";
 import { Button } from "@sps/ui-adapter";
 import Link from "next/link";
-import { useMyProfile } from "@sps/sps-rbac-frontend";
+import { useMyProfile } from "@sps/sps-rbac-frontend/lib/hooks/use-my-profile";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();

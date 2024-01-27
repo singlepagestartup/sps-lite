@@ -10,7 +10,7 @@ import { createNotification } from "@sps/ui-adapter";
 // import { globalStore, persistentMessageQuery } from "@sps/store";
 // import { useEffect, useState } from "react";
 import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user/api";
-import { useMyProfile } from "@sps/sps-rbac-frontend";
+import { useMyProfile } from "@sps/sps-rbac-frontend/lib/hooks/use-my-profile";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();
@@ -56,7 +56,7 @@ export default function Component(props: IPageBlock) {
   // }, [JSON.stringify(apis)]);
 
   return (
-    <div className="relative mx-auto max-w-7xl overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
+    <div className="relative mx-auto max-w-xl overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
       <div className="flex flex-col gap-6 pb-20">
         <p>Me: {me?.email}</p>
         {/* <div className="flex gap-4">

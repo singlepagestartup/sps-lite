@@ -10,7 +10,7 @@ import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@sps/ui-adapter";
 import { useGetPageUrlModelId } from "@sps/hooks";
-import { useMyProfile } from "@sps/sps-rbac-frontend";
+import { useMyProfile } from "@sps/sps-rbac-frontend/lib/hooks/use-my-profile";
 
 export default function Component(props: IPageBlock) {
   const { me } = useMyProfile();

@@ -9,6 +9,7 @@ import { api as tierApi } from "../../../../../redux/entities/tier/api";
 import type { IEntity as IBackendTier } from "../../../../../redux/entities/tier/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Button } from "@sps/sps-website-builder-frontend";
 
 const cardsConfig = {
