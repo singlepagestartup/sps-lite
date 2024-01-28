@@ -1,3 +1,8 @@
+/**
+ * Tailwind config file compiles to dist folder
+ * This file is in @sps/sps-utils-backend
+ * libs/shared/backend/utils/src/lib/tailwind/tailwind.config.ts
+ */
 const path = require("path");
 
 module.exports = {

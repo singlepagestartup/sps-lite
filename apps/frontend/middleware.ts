@@ -1,3 +1,8 @@
+/**
+ * Middleware file can't be moved to utils,
+ * because fetch with caching is not available in utils
+ */
+
 import { NextResponse } from "next/server";
 import type { IEntity as IBackendLocale } from "@sps/sps-website-builder-frontend/lib/redux/entities/locale/interfaces";
 import { BACKEND_URL } from "@sps/utils";

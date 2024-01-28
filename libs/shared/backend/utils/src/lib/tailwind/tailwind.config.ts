@@ -1,13 +1,17 @@
+/**
+ * Tailwind config file is here for importing presets
+ * https://github.com/tailwindlabs/tailwindcss/issues/11097#issuecomment-1526886184
+ */
 import type { Config } from "tailwindcss";
 import { join } from "path";
 import { preset as shadcnPreset } from "./presets/shadcn";
 
-let themeFile;
-try {
-  themeFile = require("./themes/theme.json");
-} catch (error) {
-  console.log("No theme file");
-}
+// let themeFile;
+// try {
+//   themeFile = require("./themes/theme.json");
+// } catch (error) {
+//   console.log("No theme file");
+// }
 
 const config = {
   presets: [shadcnPreset],
