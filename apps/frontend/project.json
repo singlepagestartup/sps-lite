@@ -33,6 +33,16 @@
         ]
       }
     },
+    "dev": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "dependsOn": ["^build"],
+      "options": {
+        "buildTarget": "frontend:build",
+        "dev": true,
+        "port": 3000
+      }
+    },
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
@@ -42,7 +52,7 @@
         "outputPath": "apps/frontend"
       }
     },
-    "serve": {
+    "start": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "production",
       "dependsOn": ["^build"],
