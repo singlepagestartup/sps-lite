@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 import { join } from "path";
-import { shadcnPreset } from "@sps/sps-utils-backend";
+import { preset as shadcnPreset } from "./presets/shadcn";
 
 let themeFile;
 try {
@@ -12,12 +12,12 @@ try {
 const config = {
   presets: [shadcnPreset],
   content: [
-    join(__dirname, "./app/**/*.{js,ts,jsx,tsx}"),
-    join(__dirname, "./src/**/*.{html,js,jsx,tsx}"),
-    join(__dirname, "./src/**/**/*.{html,js,jsx,tsx}"),
-    join(__dirname, "./pages/*.{html,js,jsx,tsx}"),
-    join(__dirname, "./pages/**/*.{html,js,jsx,tsx}"),
-    join(__dirname, "../../libs/**/*.{html,js,ts,jsx,tsx}"),
+    join(process.cwd(), "", "./app/**/*.{js,ts,jsx,tsx}"),
+    join(process.cwd(), "", "./src/**/*.{html,js,jsx,tsx}"),
+    join(process.cwd(), "", "./src/**/**/*.{html,js,jsx,tsx}"),
+    join(process.cwd(), "", "./pages/*.{html,js,jsx,tsx}"),
+    join(process.cwd(), "", "./pages/**/*.{html,js,jsx,tsx}"),
+    join(process.cwd(), "", "../../libs/**/*.{html,js,ts,jsx,tsx}"),
   ],
 } satisfies Config;
 

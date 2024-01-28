@@ -147,7 +147,7 @@ const shadcnPlugin = plugin(
   },
 );
 
-const shadcnPreset = {
+export const preset = {
   darkMode: ["class"],
   content: [],
   safelist: [
@@ -166,5 +166,3 @@ const shadcnPreset = {
   ],
   plugins: [typographyPlugin, aspectRatioPlugin, animatePlugin, shadcnPlugin],
 } satisfies Config;
-
-export default shadcnPreset;
