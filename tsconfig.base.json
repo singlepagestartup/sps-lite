@@ -46,6 +46,7 @@
       "@sps/sps-subscription-frontend/*": [
         "libs/modules/sps-subscription/frontend/src/*"
       ],
+      "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/src/index.ts"
       ],

@@ -1,18 +1,17 @@
 {
-  "name": "@sps/sps-utils",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-utils/src",
+  "name": "@sps/sps-utils-backend",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/backend/utils/src",
   "projectType": "library",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/shared/utils",
-        "main": "libs/shared/utils/src/index.ts",
-        "tsConfig": "libs/shared/utils/tsconfig.lib.json",
-        "assets": ["libs/shared/utils/*.md"],
+        "outputPath": "dist/libs/shared/backend/utils",
+        "main": "libs/shared/backend/utils/src/index.ts",
+        "tsConfig": "libs/shared/backend/utils/tsconfig.lib.json",
+        "assets": ["libs/shared/backend/utils/*.md"],
         "transformers": [
           {
             "name": "typescript-transform-paths/nx-transformer"
@@ -28,8 +27,9 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/modules/sps-utils/jest.config.ts"
+        "jestConfig": "libs/shared/backend/utils/jest.config.ts"
       }
     }
-  }
+  },
+  "tags": []
 }

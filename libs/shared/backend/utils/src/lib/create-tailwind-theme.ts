@@ -2,7 +2,7 @@ import axios from "axios";
 import * as fs from "fs/promises";
 import { createWriteStream } from "fs";
 import path from "path";
-import { snakeCaseToCamelCase, getFileUrl } from "@sps/utils";
+import { getFileUrl, snakeCaseToCamelCase } from "@sps/utils";
 
 let iteration = 0;
 
@@ -14,14 +14,14 @@ const requiredFontStyles = ["", "Italic"];
 const requiredFontWeights = ["Light", "Regular", "Medium", "SemiBold", "Bold"];
 
 export const getThemeFromBackend = async () => {
-  const envFile = process.env.NODE_ENV;
+  const envFile = process.env["NODE_ENV"];
   require("dotenv").config({
     path: path.join(frontendDir, `.env.${envFile}`),
   });
 
   const themeData = await axios
     .get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/sps-website-builder/theme?populate[fonts][populate]=%2A`,
+      `${process.env["NEXT_PUBLIC_BACKEND_URL"]}/api/sps-website-builder/theme?populate[fonts][populate]=%2A`,
     )
     .then((res: any) => {
       return res.data?.data;
@@ -90,7 +90,7 @@ export const getThemeFromBackend = async () => {
   } else {
     iteration++;
 
-    if (iteration < 5 && process.env.NODE_ENV === "production") {
+    if (iteration < 5 && process.env["NODE_ENV"] === "production") {
       setTimeout(() => {
         getThemeFromBackend();
       }, 5000);
