@@ -3,7 +3,7 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as slideOverApi } from "../../redux/entities/slide-over/api";
+import { api as slideOverApi } from "../../redux/entities/slide-over";
 import { useParams, useSearchParams } from "next/navigation";
 import type { IEntity as IBackendSlideOver } from "../../redux/entities/slide-over/interfaces";
 import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";

@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as footerApi } from "../../redux/entities/footer/api";
+import { api as footerApi } from "../../redux/entities/footer";
 import type { IEntity as IBackendFooter } from "../../redux/entities/footer/interfaces";
 import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
 

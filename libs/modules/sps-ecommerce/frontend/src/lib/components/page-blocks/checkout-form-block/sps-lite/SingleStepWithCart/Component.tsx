@@ -97,9 +97,10 @@ export default function Component(props: IPageBlock) {
           <Button
             ui="shadcn"
             variant="primary"
-            title="Buy"
             onClick={handleSubmit(onSubmit)}
-          />
+          >
+            Buy
+          </Button>
         </div>
       </FormProvider>
     </div>

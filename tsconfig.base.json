@@ -47,6 +47,12 @@
         "libs/modules/sps-subscription/frontend/src/*"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-website-builder-contracts": [
+        "libs/modules/sps-website-builder/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contracts/*": [
+        "libs/modules/sps-website-builder/contracts/src/*"
+      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/src/index.ts"
       ],

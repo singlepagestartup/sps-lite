@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity as buttonsArray } from "../../../../../redux/components/elements/buttons-array/mock/sps-lite";
+import { entity as buttonsArray } from "../../../../../../../../contracts/src/lib/components/elements/buttons-array/mock/sps-lite";
 
 const meta = {
   component: Root,

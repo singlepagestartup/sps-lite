@@ -1,5 +1,5 @@
 import type { IEntity as IBackendAttribute } from "../../attribute/interfaces";
-import type { IComponent as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
+// import type { IComponent as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
 
 export interface IEntity {
   id: number;
@@ -7,7 +7,8 @@ export interface IEntity {
   description: string | null;
   period: number | null;
   type: "one-time" | "regularly";
-  buttons?: IBackendComponentButton[] | null;
+  // buttons?: IBackendComponentButton[] | null;
+  buttons?: any[] | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

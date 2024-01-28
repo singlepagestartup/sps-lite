@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, FC, useMemo } from "react";
-import { api as modalApi } from "../../redux/entities/modal/api";
+import { api as modalApi } from "../../redux/entities/modal";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import {

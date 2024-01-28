@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as topbarApi } from "../../redux/entities/topbar/api";
+import { api as topbarApi } from "../../redux/entities/topbar";
 import type { IEntity as IBackendTopbar } from "../../redux/entities/topbar/interfaces";
 import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
 

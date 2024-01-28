@@ -1,5 +1,5 @@
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
-import type { IComponent as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
+// import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+// import type { IComponent as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
 
 export interface IComponent {
   id: number;
@@ -13,7 +13,7 @@ export interface IComponent {
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  buttons: IBackendComponentButton[] | null;
-  media?: IBackendFile[] | null;
-  additionalMedia?: IBackendFile[] | null;
+  buttons: any[] | null;
+  media?: any[] | null;
+  additionalMedia?: any[] | null;
 }

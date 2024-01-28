@@ -1,16 +1,15 @@
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IPage } from "../../redux/components/page-blocks/props";
+import { IPage } from "@sps/sps-website-builder-contracts";
 import { pageBlockComponents } from "./aliases";
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   PageBlocks as SpsCrmPageBlocks,
   pageBlockComponents as spsCrmPageBlockComponents,
 } from "@sps/sps-crm-frontend";
-// import {
-//   PageBlocks as SpsEcommercePageBlocks,
-//   pageBlockComponents as spsEcommercePageBlockComponents,
-// } from "@sps/sps-ecommerce-frontend";
+import {
+  PageBlocks as SpsEcommercePageBlocks,
+  pageBlockComponents as spsEcommercePageBlockComponents,
+} from "@sps/sps-ecommerce-frontend";
 
 export function PageBlocks(props: IPage) {
   return (
@@ -34,16 +33,16 @@ export function PageBlocks(props: IPage) {
                 );
               }
 
-              // if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
-              //   return (
-              //     <SpsEcommercePageBlocks
-              //       key={`${index}-${key}`}
-              //       pageProps={props.pageProps}
-              //       page={props.page}
-              //       pageBlocks={[pageBlock]}
-              //     />
-              //   );
-              // }
+              if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
+                return (
+                  <SpsEcommercePageBlocks
+                    key={`${index}-${key}`}
+                    pageProps={props.pageProps}
+                    page={props.page}
+                    pageBlocks={[pageBlock]}
+                  />
+                );
+              }
 
               return <div key={`${index}-${key}`}></div>;
             }

@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { api as modalApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/api";
+// import { api as modalApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/api";
 import {
   strapiFetchBaseQueryBuilder,
   strapiFind,
@@ -23,8 +23,8 @@ export const api = createApi({
       model,
       rtkType,
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
-        await queryFulfilled;
-        dispatch(modalApi.util.invalidateTags(["Modal"]));
+        // await queryFulfilled;
+        // dispatch(modalApi.util.invalidateTags(["Modal"]));
       },
     }),
   }),

@@ -1,7 +1,6 @@
-// import { ReduxProvider } from "../redux";
 import { Suspense } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as loaderPopulate } from "../redux/entities/loader/populate";
+import { populate as loaderPopulate } from "../../../../contracts/src/lib/entities/loader/populate";
 import { Loader } from "../components/loader";
 import { Layout } from "../components/layout";
 import { Modal } from "../components/modal";

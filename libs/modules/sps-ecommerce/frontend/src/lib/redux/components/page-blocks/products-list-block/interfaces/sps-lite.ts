@@ -1,4 +1,4 @@
-import { IComponent as IBackendButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
+// import { IComponent as IBackendButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
 
 export interface IComponent {
   id: number;
@@ -11,5 +11,5 @@ export interface IComponent {
   anchor: string | null;
   usePageUrlFilters: boolean;
   query: string | null;
-  buttons?: IBackendButton[] | null;
+  buttons?: any[] | null;
 }

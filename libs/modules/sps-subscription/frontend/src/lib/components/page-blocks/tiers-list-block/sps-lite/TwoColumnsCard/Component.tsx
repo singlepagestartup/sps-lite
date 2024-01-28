@@ -10,7 +10,7 @@ import type { IEntity as IBackendTier } from "../../../../../redux/entities/tier
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { Button } from "@sps/sps-website-builder-frontend";
+// import { Button } from "@sps/sps-website-builder-frontend";
 
 const cardsConfig = {
   emptyLength: 3,
@@ -156,9 +156,9 @@ function TierCard(props: ICardProps) {
             ))} */}
           </ul>
           <div className="mt-8">
-            {item.buttons?.map((button, index) => {
+            {/* {item.buttons?.map((button, index) => {
               return <Button key={index} {...button} />;
-            })}
+            })} */}
           </div>
         </div>
       </div>

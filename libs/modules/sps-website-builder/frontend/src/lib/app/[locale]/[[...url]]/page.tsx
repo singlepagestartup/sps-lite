@@ -7,7 +7,7 @@ import {
   getBackendData,
   getTargetPage,
 } from "@sps/utils";
-import { populate as metatagPopulate } from "../../../redux/entities/metatag/populate";
+import { populate as metatagPopulate } from "../../../../../../contracts/src/lib/entities/metatag/populate";
 import { populate as pagePopulate } from "../../../redux/entities/page/populate";
 import { PageBlocks } from "../../../components/page-blocks";
 
