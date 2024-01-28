@@ -33,6 +33,20 @@
         ]
       }
     },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "rm -rf apps/frontend/.next"
+          },
+          {
+            "command": "nx run frontend:theme"
+          }
+        ]
+      }
+    },
     "dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",

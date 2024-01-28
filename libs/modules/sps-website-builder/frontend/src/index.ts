@@ -1,4 +1,3 @@
-// export * as theme from "./lib/theme";
 export { GoogleTagManager } from "./lib/components/scripts/google-tag-manager";
 export { rtkQueryErrorLogger } from "./lib/redux/rtk-query-error-logger";
 export { rootSlices } from "./lib/redux/root";

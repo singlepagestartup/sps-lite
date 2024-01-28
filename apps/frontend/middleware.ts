@@ -9,7 +9,7 @@ export async function middleware(request: any) {
 
   try {
     let tries = 0;
-    const backendLocales = [];
+    const backendLocales: IBackendLocale[] = [];
 
     do {
       const locales = await fetchLocales();
