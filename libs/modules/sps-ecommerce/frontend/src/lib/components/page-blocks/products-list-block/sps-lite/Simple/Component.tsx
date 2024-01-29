@@ -4,6 +4,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
 import { api as productApi } from "../../../../../redux/entities/product/index";
+import { api as attributeApi } from "../../../../../redux/entities/attribute/index";
 import { Button, FormField, Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
 import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/interfaces";
@@ -51,9 +52,18 @@ function ProductCard(props: ICardProps) {
   const { me } = useMyProfile();
 
   const { item }: { item: IBackendProduct } = props;
-  const priceAttribute = item.attributes?.find(
-    (attr) => attr.attributeKey?.key === "price",
-  );
+  const { data: productAttributes } = attributeApi.useGetQuery({
+    filters: {
+      products: {
+        id: { $in: [item.id] },
+      },
+      attribute_key: {
+        key: "price",
+      },
+    },
+  });
+  console.log(`🚀 ~ ProductCard ~ productAttributes:`, productAttributes);
+
   const [incrementInCart, { data: incrementInCartData }] =
     productApi.useIncrementInCartMutation();
   const [decrementInCart, { data: decrementInCartData }] =
@@ -77,16 +87,17 @@ function ProductCard(props: ICardProps) {
   const watchData = watch();
 
   const buttonTitle = useMemo(() => {
-    if (!priceAttribute) {
+    if (!productAttributes?.length) {
       return "";
     }
+    const priceAttribute = productAttributes[0];
 
     return priceAttribute.attributeKey
       ? `Buy for ${priceAttribute?.currency?.unicode || ""}${
           priceAttribute[priceAttribute?.attributeKey?.type]
         }`
       : "";
-  }, [priceAttribute]);
+  }, [productAttributes]);
 
   async function incrementSubmit(data: any) {
     // data.tier = { id };
