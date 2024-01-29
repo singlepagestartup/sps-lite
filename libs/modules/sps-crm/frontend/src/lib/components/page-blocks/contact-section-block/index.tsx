@@ -1,7 +1,7 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "../../../redux/components/page-blocks/contact-section-block/interfaces";
-import { IPage } from "@sps/sps-website-builder-contracts";
+import { IComponent as IBackendPageBlock } from "@sps/sps-crm-contracts/lib/components/page-blocks/contact-section-block/interfaces";
+import { IPage } from "@sps/sps-crm-contracts/lib/props";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

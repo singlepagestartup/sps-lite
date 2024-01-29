@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { entity } from "../../../../../redux/components/elements/input/mock/sps-lite";
+import { entity } from "@sps/sps-crm-contracts/lib/components/elements/input/mock/sps-lite";
 import Root from ".";
 import { IElement } from "../..";
 import { FormProvider, useForm } from "react-hook-form";

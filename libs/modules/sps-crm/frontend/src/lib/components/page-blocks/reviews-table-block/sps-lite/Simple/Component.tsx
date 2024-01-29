@@ -8,7 +8,7 @@ import {
   IDropdownRowCompProps,
   IHeaderCompProps,
 } from "@sps/ui-adapter";
-import { api as reviewApi } from "../../../../../redux/entities/review/api";
+import { api as reviewApi } from "../../../../../redux/entities/review";
 import { IPageBlock } from "../..";
 
 const tableConfig = {

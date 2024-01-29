@@ -1,5 +1,5 @@
-import { api as currencyApi } from "../entities/currency/api";
-import { api as invoiceApi } from "../entities/invoice/api";
+import { api as currencyApi } from "../entities/currency";
+import { api as invoiceApi } from "../entities/invoice";
 
 export const slices = {
   middlewares: [currencyApi.middleware, invoiceApi.middleware],

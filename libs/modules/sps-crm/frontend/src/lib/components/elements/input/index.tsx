@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendComponent } from "../../../redux/components/elements/input/interfaces";
+import { IComponent as IBackendComponent } from "@sps/sps-crm-contracts/lib/components/elements/input/interfaces";
 
 export interface IElement extends IBackendComponent {
   [key: string]: any;

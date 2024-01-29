@@ -1,6 +1,6 @@
-import { api as formApi } from "../entities/form/api";
-import { api as formRequestApi } from "../entities/form-request/api";
-import { api as reviewApi } from "../entities/review/api";
+import { api as formApi } from "../entities/form";
+import { api as formRequestApi } from "../entities/form-request";
+import { api as reviewApi } from "../entities/review";
 
 export const slices = {
   middlewares: [

@@ -15,5 +15,13 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../contracts/src/lib/components/page-blocks/populate/index.ts",
+    "../contracts/src/lib/components/page-blocks/populate/sps-lite.ts",
+    "../contracts/src/lib/components/page-blocks/populate/startup.ts"
+  ]
 }

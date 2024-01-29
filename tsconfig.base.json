@@ -18,19 +18,39 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
+      "@sps/sps-billing-contracts": [
+        "libs/modules/sps-billing/contracts/src/index.ts"
+      ],
+      "@sps/sps-billing-contracts/*": [
+        "libs/modules/sps-billing/contracts/src/*"
+      ],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/src/index.ts"
       ],
       "@sps/sps-billing-frontend/*": [
         "libs/modules/sps-billing/frontend/src/*"
       ],
+      "@sps/sps-crm-contracts": ["libs/modules/sps-crm/contracts/src/index.ts"],
+      "@sps/sps-crm-contracts/*": ["libs/modules/sps-crm/contracts/src/*"],
       "@sps/sps-crm-frontend": ["libs/modules/sps-crm/frontend/src/index.ts"],
       "@sps/sps-crm-frontend/*": ["libs/modules/sps-crm/frontend/src/*"],
+      "@sps/sps-ecommerce-contracts": [
+        "libs/modules/sps-ecommerce/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-contracts/*": [
+        "libs/modules/sps-ecommerce/contracts/src/*"
+      ],
       "@sps/sps-ecommerce-frontend": [
         "libs/modules/sps-ecommerce/frontend/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend/*": [
         "libs/modules/sps-ecommerce/frontend/src/*"
+      ],
+      "@sps/sps-file-storage-contracts": [
+        "libs/modules/sps-file-storage/contracts/src/index.ts"
+      ],
+      "@sps/sps-file-storage-contracts/*": [
+        "libs/modules/sps-file-storage/contracts/src/*"
       ],
       "@sps/sps-file-storage-frontend": [
         "libs/modules/sps-file-storage/frontend/src/index.ts"
@@ -38,8 +58,18 @@
       "@sps/sps-file-storage-frontend/*": [
         "libs/modules/sps-file-storage/frontend/src/*"
       ],
+      "@sps/sps-rbac-contracts": [
+        "libs/modules/sps-rbac/contracts/src/index.ts"
+      ],
+      "@sps/sps-rbac-contracts/*": ["libs/modules/sps-rbac/contracts/src/*"],
       "@sps/sps-rbac-frontend": ["libs/modules/sps-rbac/frontend/src/index.ts"],
       "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
+      "@sps/sps-subscription-contracts": [
+        "libs/modules/sps-subscription/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-contracts/*": [
+        "libs/modules/sps-subscription/contracts/src/*"
+      ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/src/index.ts"
       ],

@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
-import { api as reviewApi } from "../../../../../redux/entities/review/api";
+import { api as reviewApi } from "../../../../../redux/entities/review";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as IBackendReview } from "../../../../../redux/entities/review/interfaces";
+import type { IEntity as IBackendReview } from "@sps/sps-crm-contracts/lib/entities/review/interfaces";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {

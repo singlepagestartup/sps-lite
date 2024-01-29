@@ -1,6 +1,6 @@
 import type { IEntity as IBackendProduct } from "../../product/interfaces";
 import type { IEntity as IBackendAttributeKey } from "../../attribute-key/interfaces";
-import type { IEntity as IBackendCurrency } from "@sps/sps-billing-frontend/lib/redux/entities/currency/interfaces";
+import type { IEntity as IBackendCurrency } from "libs/modules/sps-billing/contracts/src/lib/entities/currency/interfaces";
 import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
 
 export interface IEntity {
