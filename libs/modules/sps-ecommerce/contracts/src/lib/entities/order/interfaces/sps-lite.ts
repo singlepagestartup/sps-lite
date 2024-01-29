@@ -1,6 +1,3 @@
-import type { IEntity as ICart } from "../../cart/interfaces";
-import type { IEntity as IOrderProduct } from "../../order-product/interfaces";
-
 export interface IEntity {
   id: number;
   createdAt: string;
@@ -19,6 +16,4 @@ export interface IEntity {
   email: string | null;
   phone: string | null;
   comment: string | null;
-  cart?: ICart | null;
-  orderProducts?: IOrderProduct[] | null;
 }

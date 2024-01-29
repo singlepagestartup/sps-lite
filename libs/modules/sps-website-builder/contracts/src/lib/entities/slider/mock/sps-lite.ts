@@ -1,9 +1,7 @@
 import type { IEntity } from "../interfaces/sps-lite";
-import { entity as slide } from "../../../components/elements/slide/mock/sps-lite";
 
 export const entity: IEntity = {
   id: 6,
-  slides: Array(4).fill(slide),
   variant: "fade-with-previews",
   aspectRatioClassName: "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
   showBackdrop: true,

@@ -1,5 +1,3 @@
-import { IComponent as IPageBlock } from "../../../components/page-blocks/interfaces";
-
 export interface IEntity {
   id: number;
   locale: string;
@@ -12,5 +10,4 @@ export interface IEntity {
   variant: "boxed";
   position: "fixed";
   side: "top";
-  pageBlocks?: IPageBlock[] | null;
 }

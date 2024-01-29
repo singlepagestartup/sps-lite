@@ -3,4 +3,8 @@ import { entity as parentEntity } from "@sps/sps-website-builder-contracts/lib/e
 
 export const entity: IEntity = {
   ...parentEntity,
+  sidebar: null,
+  topbar: null,
+  footer: null,
+  navbar: null,
 };

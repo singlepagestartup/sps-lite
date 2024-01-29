@@ -1,8 +1,5 @@
-import type { IComponent as ISlide } from "../../../components/elements/slide/interfaces";
-
 export interface IEntity {
   id: number;
-  slides: ISlide[];
   className: string | null;
   aspectRatioClassName: string | null;
   variant: "fade-with-previews";

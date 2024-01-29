@@ -9,9 +9,5 @@ export const entity: IEntity = {
   title: "Public Page Layout",
   uid: "public-page-layout",
   variant: "wide",
-  sidebar: null,
-  topbar: null,
-  footer: null,
-  navbar: null,
   className: null,
 };

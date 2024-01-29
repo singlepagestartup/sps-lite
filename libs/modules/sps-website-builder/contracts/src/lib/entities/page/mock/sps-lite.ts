@@ -1,5 +1,4 @@
 import type { IEntity } from "../interfaces/sps-lite";
-import { entity as pageBlock } from "../../../components/page-blocks/hero-section-block/mock/sps-lite";
 
 export const entity: IEntity = {
   id: 3,
@@ -10,5 +9,4 @@ export const entity: IEntity = {
   updatedAt: "2023-03-28T11:07:57.474Z",
   publishedAt: "2023-03-28T11:07:57.457Z",
   localizations: [],
-  pageBlocks: [{ ...pageBlock }],
 };

@@ -1,5 +1,3 @@
-import type { IEntity as IAttribute } from "../../attribute/interfaces";
-
 export interface IEntity {
   id: number;
   title: string | null;
@@ -7,7 +5,6 @@ export interface IEntity {
   locale: string;
   createdAt: string;
   updatedAt: string;
-  attributes?: IAttribute[] | null;
   type: "string" | "number" | "boolean" | "date" | "datetime" | "time";
   prefix: string | null;
   postfix: string | null;
