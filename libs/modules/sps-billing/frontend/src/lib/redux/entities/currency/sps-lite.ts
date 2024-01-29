@@ -5,8 +5,8 @@ import {
   strapiFind,
   BACKEND_URL,
 } from "@sps/utils";
-import type { IEntity } from "@sps/sps-billing-contracts/lib/entities/currency/interfaces";
-import { populate } from "@sps/sps-billing-contracts/lib/entities/currency/populate";
+import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/entities/currency/interfaces";
+import { populate } from "@sps/sps-billing-contracts-extended/lib/entities/currency/populate";
 
 const rtkType = "Currency";
 const model = "currencies";

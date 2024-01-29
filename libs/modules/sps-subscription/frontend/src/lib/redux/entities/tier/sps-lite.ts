@@ -5,8 +5,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-subscription-contracts/lib/entities/tier/populate";
-import type { IEntity } from "@sps/sps-subscription-contracts/lib/entities/tier/interfaces";
+import { populate } from "@sps/sps-subscription-contracts-extended/lib/entities/tier/populate";
+import type { IEntity } from "@sps/sps-subscription-contracts-extended/lib/entities/tier/interfaces";
 
 const model = "tiers";
 const rtkType = "Tier";

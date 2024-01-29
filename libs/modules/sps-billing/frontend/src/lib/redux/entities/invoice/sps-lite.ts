@@ -6,8 +6,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import type { IEntity } from "@sps/sps-billing-contracts/lib/entities/invoice/interfaces";
-import { populate } from "@sps/sps-billing-contracts/lib/entities/invoice/populate";
+import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/entities/invoice/interfaces";
+import { populate } from "@sps/sps-billing-contracts-extended/lib/entities/invoice/populate";
 
 const rtkType = "Invoice";
 const model = "invoices";

@@ -1,13 +1,6 @@
-// import type { IEntity as IBackendTier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/interfaces";
+import type { IEntity as IParentEntity } from "@sps/sps-billing-contracts/lib/entities/currency/interfaces";
+import type { IEntity as ITier } from "@sps/sps-subscription-contracts/lib/entities/tier/interfaces";
 
-export interface IEntity {
-  id: number;
-  title: string | null;
-  unicode: string | null;
-  isDefault: boolean | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  // tiers?: IBackendTier;
-  tiers?: unknown;
+export interface IEntity extends IParentEntity {
+  tiers?: ITier;
 }

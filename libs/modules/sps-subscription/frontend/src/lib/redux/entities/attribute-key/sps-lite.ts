@@ -5,8 +5,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-subscription-contracts/lib/entities/attribute-key/populate";
-import type { IEntity } from "@sps/sps-subscription-contracts/lib/entities/attribute-key/interfaces";
+import { populate } from "@sps/sps-subscription-contracts-extended/lib/entities/attribute-key/populate";
+import type { IEntity } from "@sps/sps-subscription-contracts-extended/lib/entities/attribute-key/interfaces";
 
 const extension = "sps-subscription/";
 const model = "attribute-keys";

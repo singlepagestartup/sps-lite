@@ -1,8 +1,3 @@
-export interface IEntity {
-  id: number;
-  name: string;
-  description: string | null;
-  type: "authenticated" | "public";
-  createdAt: string;
-  updatedAt: string;
-}
+import type { IEntity as IParentEntity } from "@sps/sps-rbac-contracts/lib/entities/role/interfaces";
+
+export interface IEntity extends IParentEntity {}

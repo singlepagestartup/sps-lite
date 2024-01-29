@@ -1,9 +1,3 @@
-export interface IEntity {
-  id: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  amount: number;
-  status: "new" | "pending" | "success" | "failed";
-  paymentUrl: string | null;
-}
+import type { IEntity as IParentEntity } from "@sps/sps-billing-contracts/lib/entities/invoice/interfaces";
+
+export interface IEntity extends IParentEntity {}

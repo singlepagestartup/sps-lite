@@ -1,13 +1,8 @@
-import { IEntity as ITier } from "../../tier/interfaces";
+import type { IEntity as IParentEntity } from "@sps/sps-subscription-contracts/lib/entities/subscription/interfaces";
 import type { IEntity as IInvoice } from "@sps/sps-billing-contracts/lib/entities/invoice/interfaces";
 import type { IEntity as IUser } from "@sps/sps-rbac-contracts/lib/entities/user/interfaces";
 
-export interface IEntity {
-  id: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  tier?: ITier | null;
+export interface IEntity extends IParentEntity {
   user?: IUser | null;
   invoices?: IInvoice[] | null;
 }

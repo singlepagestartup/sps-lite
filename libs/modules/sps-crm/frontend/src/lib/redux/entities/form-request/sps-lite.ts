@@ -4,8 +4,8 @@ import {
   strapiFetchBaseQueryBuilder,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-crm-contracts/lib/entities/form-request/populate";
-import type { IEntity } from "@sps/sps-crm-contracts/lib/entities/form-request/interfaces";
+import { populate } from "@sps/sps-crm-contracts-extended/lib/entities/form-request/populate";
+import type { IEntity } from "@sps/sps-crm-contracts-extended/lib/entities/form-request/interfaces";
 
 const model = "form-requests";
 const rtkType = "FormRequest";

@@ -1,14 +1,6 @@
-// nx won't fix issue with circular types import
-// https://github.com/nrwl/nx/issues/9083
-// import type { IEntity as IBackendCart } from "@sps/sps-ecommerce-contracts/lib/entities/cart/interfaces";
-// import { IEntity as IModelRef } from "@sps/buildable";
+import type { IEntity as IParentEntity } from "@sps/sps-rbac-contracts/lib/entities/user/interfaces";
+import { IEntity as ICart } from "@sps/sps-ecommerce-contracts/lib/entities/cart/interfaces";
 
-export interface IEntity {
-  id: number;
-  username: string;
-  email: string;
-  provider: "local";
-  createdAt: string;
-  updatedAt: string;
-  cart?: unknown | null;
+export interface IEntity extends IParentEntity {
+  cart?: ICart | null;
 }

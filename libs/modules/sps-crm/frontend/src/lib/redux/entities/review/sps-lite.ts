@@ -4,8 +4,8 @@ import {
   strapiFind,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-crm-contracts/lib/entities/review/populate";
-import type { IEntity } from "@sps/sps-crm-contracts/lib/entities/review/interfaces";
+import { populate } from "@sps/sps-crm-contracts-extended/lib/entities/review/populate";
+import type { IEntity } from "@sps/sps-crm-contracts-extended/lib/entities/review/interfaces";
 
 const model = "reviews";
 const rtkType = "Review";

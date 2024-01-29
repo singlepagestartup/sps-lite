@@ -1,15 +1,7 @@
+import type { IEntity as IParentEntity } from "@sps/sps-crm-contracts/lib/entities/review/interfaces";
 import type { IEntity as IFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 
-export interface IEntity {
-  id: number;
-  name: string | null;
-  title: string | null;
-  subtitle: string | null;
-  rating: number | null;
-  description: string | null;
+export interface IEntity extends IParentEntity {
   media?: IFile[] | null;
   additionalMedia?: IFile[] | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
 }
