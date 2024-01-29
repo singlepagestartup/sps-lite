@@ -1,5 +1,3 @@
-import type { IEntity as IFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
-
 export interface IEntity {
   id: number;
   locale: string;
@@ -9,6 +7,4 @@ export interface IEntity {
   className: string | null;
   anchor: string | null;
   variant: "simple";
-  media?: IFile[] | null;
-  additionalMedia?: IFile[] | null;
 }

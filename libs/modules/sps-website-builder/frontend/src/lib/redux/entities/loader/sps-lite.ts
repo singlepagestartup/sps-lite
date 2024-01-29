@@ -4,8 +4,8 @@ import {
   strapiFind,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/loader/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/loader/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/interfaces";
 
 const model = "loader";
 const rtkType = "Loader";

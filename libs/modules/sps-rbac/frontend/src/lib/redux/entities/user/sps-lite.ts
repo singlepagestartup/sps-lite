@@ -6,7 +6,7 @@ import {
   BACKEND_URL,
 } from "@sps/utils";
 import { populate } from "@sps/sps-rbac-contracts/lib/entities/user/populate";
-import type { IEntity } from "@sps/sps-rbac-contracts/lib/entities/user/interfaces";
+import type { IEntity } from "@sps/sps-rbac-contracts-extended";
 
 const model = "users";
 const rtkType = "User";

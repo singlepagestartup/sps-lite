@@ -5,8 +5,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-ecommerce-contracts/lib/entities/attribute/populate";
-import type { IEntity } from "@sps/sps-ecommerce-contracts/lib/entities/attribute/interfaces";
+import { populate } from "@sps/sps-ecommerce-contracts-extended/lib/entities/attribute/populate";
+import type { IEntity } from "@sps/sps-ecommerce-contracts-extended/lib/entities/attribute/interfaces";
 
 const extension = "sps-ecommerce/";
 const model = "attributes";

@@ -4,8 +4,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/navbar/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/navbar/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/navbar/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/navbar/interfaces";
 
 const model = "navbars";
 const rtkType = "Navbar";

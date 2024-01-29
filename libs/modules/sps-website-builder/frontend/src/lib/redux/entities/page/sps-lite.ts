@@ -9,8 +9,8 @@ import {
   strapiUpdate,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/page/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/page/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
 const model = "pages";
 const rtkType = "Page";

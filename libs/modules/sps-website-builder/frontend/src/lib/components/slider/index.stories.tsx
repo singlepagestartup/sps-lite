@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity } from "@sps/sps-website-builder-contracts/lib/entities/slider/mock/sps-lite";
+import { entity } from "@sps/sps-website-builder-contracts-extended/lib/entities/slider/mock/sps-lite";
 
 const meta = {
   component: Root,

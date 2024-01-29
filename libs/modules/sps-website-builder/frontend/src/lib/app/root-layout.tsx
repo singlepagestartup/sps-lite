@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as loaderPopulate } from "@sps/sps-website-builder-contracts/lib/entities/loader/populate";
+import { populate as loaderpopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
 import { Loader } from "../components/loader";
 import { Layout } from "../components/layout";
 import { Modal } from "../components/modal";

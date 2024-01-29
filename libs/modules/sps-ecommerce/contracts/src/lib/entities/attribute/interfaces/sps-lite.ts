@@ -1,7 +1,5 @@
 import type { IEntity as IProduct } from "../../product/interfaces";
 import type { IEntity as IAttributeKey } from "../../attribute-key/interfaces";
-import type { IEntity as ICurrency } from "@sps/sps-billing-contracts/lib/entities/currency/interfaces";
-import type { IEntity as IFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 
 export interface IEntity {
   id: number;
@@ -12,10 +10,7 @@ export interface IEntity {
   createdAt: string;
   updatedAt: string;
   locale: string;
-  media?: IFile[] | null;
   products?: IProduct[] | null;
-  currency?: ICurrency | null;
-  additionalMedia?: IFile[] | null;
   date: string | null;
   datetime: string | null;
   time: string | null;

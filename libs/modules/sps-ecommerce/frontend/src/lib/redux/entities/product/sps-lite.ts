@@ -6,8 +6,8 @@ import {
   transformResponseItem,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-ecommerce-contracts/lib/entities/product/populate";
-import type { IEntity } from "@sps/sps-ecommerce-contracts/lib/entities/product/interfaces";
+import { populate } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/populate";
+import type { IEntity } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/interfaces";
 import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user";
 import { api as cartApi } from "../cart";
 import { api as orderApi } from "../order";

@@ -5,8 +5,8 @@ import {
   strapiFind,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/layout/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/layout/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/layout/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/layout/interfaces";
 
 const model = "layouts";
 const rtkType = "Layout";

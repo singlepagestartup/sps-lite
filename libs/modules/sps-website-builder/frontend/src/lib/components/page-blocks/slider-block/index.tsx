@@ -1,4 +1,4 @@
-import { IPage } from "@sps/sps-website-builder-contracts/lib/props";
+import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent as IBackendPageBlock } from "@sps/sps-website-builder-contracts/lib/components/page-blocks/slider-block/interfaces/index";

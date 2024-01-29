@@ -1,1 +1,1 @@
-export * from "./lib/buildable";
+export { type IEntity } from "./lib/model-ref";

@@ -4,8 +4,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/footer/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/footer/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/interfaces";
 
 const model = "footers";
 const rtkType = "Footer";

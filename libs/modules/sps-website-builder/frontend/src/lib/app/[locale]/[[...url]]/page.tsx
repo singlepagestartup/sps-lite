@@ -7,8 +7,8 @@ import {
   getBackendData,
   getTargetPage,
 } from "@sps/utils";
-import { populate as metatagPopulate } from "@sps/sps-website-builder-contracts/lib/entities/metatag/populate";
-import { populate as pagePopulate } from "@sps/sps-website-builder-contracts/lib/entities/page/populate";
+import { populate as metatagpopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/metatag/populate";
+import { populate as pagepopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
 import { PageBlocks } from "../../../components/page-blocks";
 
 export async function generateStaticParams() {

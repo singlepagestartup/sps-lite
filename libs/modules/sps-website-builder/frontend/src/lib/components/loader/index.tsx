@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-contracts/lib/entities/loader/interfaces";
+import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/interfaces";
 
 export interface ILoader extends IBackendLoader {
   children?: any;

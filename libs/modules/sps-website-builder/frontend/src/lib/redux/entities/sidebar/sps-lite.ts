@@ -4,8 +4,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/sidebar/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/sidebar/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/sidebar/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/sidebar/interfaces";
 
 const model = "sidebars";
 const rtkType = "Sidebar";

@@ -4,8 +4,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts/lib/entities/topbar/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/topbar/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/topbar/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/topbar/interfaces";
 
 const model = "topbars";
 const rtkType = "Topbar";
