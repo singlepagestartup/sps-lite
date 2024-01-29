@@ -9,6 +9,6 @@ export interface IComponent {
   description: string | null;
   logotype: ILogotype | null;
   buttons: IButton[] | null;
-  additionalButtons: ILogotype[] | null;
+  additionalButtons: IButton[] | null;
   extraButtons: IButton[] | null;
 }

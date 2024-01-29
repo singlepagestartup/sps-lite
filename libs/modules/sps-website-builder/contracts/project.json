@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/modules/sps-website-builder/contracts",
         "main": "libs/modules/sps-website-builder/contracts/src/index.ts",
         "tsConfig": "libs/modules/sps-website-builder/contracts/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-website-builder/contracts/*.md"]
+        "assets": [],
+        "rootDir": "."
       }
     },
     "lint": {

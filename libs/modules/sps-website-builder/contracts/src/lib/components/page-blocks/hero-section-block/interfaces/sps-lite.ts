@@ -11,5 +11,5 @@ export interface IComponent {
   buttons?: IBackendComponentButton[] | null;
   media?: IBackendFile[] | null;
   anchor: string | null;
-  additionalMedia?: IBackendFile[];
+  additionalMedia?: IBackendFile[] | null;
 }

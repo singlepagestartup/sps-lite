@@ -8,8 +8,8 @@ export interface IComponent {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  media?: IFile[];
-  additionalMedia?: IFile[];
+  media?: IFile[] | null;
+  additionalMedia?: IFile[] | null;
   anchor: string | null;
   className: string | null;
   buttons?: IButton[];

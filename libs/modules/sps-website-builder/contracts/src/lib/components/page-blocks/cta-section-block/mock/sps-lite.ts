@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { entity as spsLiteBackendButton } from "../../../../../../../../contracts/src/lib/components/elements/button/mock/sps-lite";
-import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
-import type { IComponent } from "../../../../../../../../contracts/src/lib/components/page-blocks/cta-section-block/interfaces/sps-lite";
+import { entity as spsLiteBackendButton } from "../../../elements/button/mock/sps-lite";
+// import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
+import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
   id: 3,
@@ -13,6 +13,6 @@ export const entity: IComponent = {
   __component: "page-blocks.cta-section-block",
   description: faker.lorem.paragraph(),
   buttons: Array(3).fill({ ...spsLiteBackendButton }),
-  media: [{ ...file }],
-  additionalMedia: [{ ...file }],
+  media: null,
+  additionalMedia: null,
 };

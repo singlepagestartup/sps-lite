@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { IComponent } from "../interfaces/sps-lite";
+import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
   id: 4,

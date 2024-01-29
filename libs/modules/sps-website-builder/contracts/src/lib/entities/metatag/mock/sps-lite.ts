@@ -1,5 +1,5 @@
 import type { IEntity } from "../interfaces/sps-lite";
-import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
+// import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 
 export const entity: IEntity = {
   id: 1,
@@ -11,5 +11,5 @@ export const entity: IEntity = {
   publishedAt: "2023-03-28T11:07:57.457Z",
   description: "Boilerplate for lean startup developers",
   script: null,
-  favicon: file,
+  favicon: null,
 };

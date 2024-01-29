@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
+// import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
@@ -11,6 +11,6 @@ export const entity: IComponent = {
   subtitle: faker.lorem.sentence(),
   anchor: "header-section-anchor",
   description: faker.lorem.paragraph(),
-  media: [{ ...file }],
-  additionalMedia: [{ ...file }],
+  media: null,
+  additionalMedia: null,
 };

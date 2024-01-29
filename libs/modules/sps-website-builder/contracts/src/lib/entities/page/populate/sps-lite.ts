@@ -1,4 +1,4 @@
-import { populate as pageBlockPopulate } from "../../../../../../../contracts/src/lib/components/page-blocks/populate/index";
+import { populate as pageBlockPopulate } from "../../../components/page-blocks/populate";
 
 export const populate = {
   page_blocks: {

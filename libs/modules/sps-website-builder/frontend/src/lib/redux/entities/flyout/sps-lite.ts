@@ -9,7 +9,7 @@ import {
   BACKEND_URL,
 } from "@sps/utils";
 
-import { populate } from "../../../../../../contracts/src/lib/entities/flyout/populate";
+import { populate } from "@sps/sps-website-builder-contracts/lib/entities/flyout/populate";
 import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/flyout/interfaces";
 
 const model = "flyouts";

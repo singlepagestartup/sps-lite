@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { entity as flyout } from "../../../../../../../contracts/src/lib/entities/flyout/mock/sps-lite";
+import { entity as flyout } from "@sps/sps-website-builder-contracts/lib/entities/flyout/mock/sps-lite";
 
 const meta = {
   component: Root,
@@ -18,6 +18,6 @@ function RenderButton() {
   );
 }
 
-export const Index: Story = {
-  args: { ...flyout, children: <RenderButton /> },
-};
+// export const Index: Story = {
+//   args: { ...flyout, children: <RenderButton /> },
+// };

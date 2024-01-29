@@ -1,18 +1,18 @@
-import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
-import { populate as buttonPopulate } from "../../../../../../../../contracts/src/lib/components/elements/button/populate/index";
-import { populate as formPopulate } from "@sps/sps-crm-frontend/lib/redux/entities/form/populate";
+// import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
+import { populate as buttonPopulate } from "../../../elements/button/populate";
+// import { populate as formPopulate } from "@sps/sps-crm-frontend/lib/redux/entities/form/populate";
 
 export const populate = {
   buttons: {
     populate: buttonPopulate,
   },
   media: {
-    populate: fileUploadPopulate,
+    populate: "*",
   },
   additional_media: {
-    populate: fileUploadPopulate,
+    populate: "*",
   },
   form: {
-    populate: formPopulate,
+    populate: "*",
   },
 };

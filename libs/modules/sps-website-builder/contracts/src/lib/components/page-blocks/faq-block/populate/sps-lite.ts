@@ -1,4 +1,4 @@
-import { populate as faqPopulate } from "../../../../../../../../contracts/src/lib/components/elements/faq/populate/index";
+import { populate as faqPopulate } from "../../../elements/faq/populate";
 
 export const populate = {
   faqs: {

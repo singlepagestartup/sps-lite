@@ -1,11 +1,11 @@
-import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
+// import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
 
 export const populate = {
   media: {
-    populate: fileUploadPopulate,
+    populate: "*",
   },
   additional_media: {
-    populate: fileUploadPopulate,
+    populate: "*",
   },
   flyout: {
     populate: "*",

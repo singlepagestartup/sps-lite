@@ -1,7 +1,7 @@
 import { api as flyoutApi } from "../entities/flyout";
 import { api as footerApi } from "../entities/footer";
 import { api as layoutApi } from "../entities/layout";
-import { api as loaderApi } from "../entities/loader/api";
+import { api as loaderApi } from "../entities/loader";
 import { api as metatagApi } from "../entities/metatag";
 import { api as modalApi } from "../entities/modal";
 import { api as navbarApi } from "../entities/navbar";

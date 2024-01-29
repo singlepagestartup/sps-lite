@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-import { entity as logotype } from "../../../../../../../../contracts/src/lib/components/elements/logotype/mock/sps-lite";
-import type { IComponent } from "../../../../../../../../contracts/src/lib/components/page-blocks/logotypes-cloud-block/interfaces/sps-lite";
+import { entity as logotype } from "../../../elements/logotype/mock/sps-lite";
+import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
   id: 5,

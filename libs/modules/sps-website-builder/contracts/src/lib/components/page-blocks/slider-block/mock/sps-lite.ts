@@ -1,4 +1,4 @@
-import type { IComponent } from "../../../../../../../../contracts/src/lib/components/page-blocks/slider-block/interfaces/sps-lite";
+import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
   id: 2,

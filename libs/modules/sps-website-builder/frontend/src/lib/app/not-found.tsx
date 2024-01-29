@@ -1,6 +1,6 @@
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as pagePopulate } from "../redux/entities/page/populate";
-import type { IEntity as IBackendPage } from "../redux/entities/page/interfaces";
+import { populate as pagePopulate } from "@sps/sps-website-builder-contracts/lib/entities/page/populate";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts/lib/entities/page/interfaces";
 import { PageBlocks } from "../components/page-blocks";
 
 export async function NotFoundPage() {

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-import { entity as spsLiteBackendFeature } from "../../../../../../../../contracts/src/lib/components/elements/feature/mock/sps-lite";
-import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
+import { entity as spsLiteBackendFeature } from "../../../elements/feature/mock/sps-lite";
+// import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
@@ -13,6 +13,6 @@ export const entity: IComponent = {
   description: faker.lorem.paragraph(),
   __component: "page-blocks.features-section-block",
   features: Array(4).fill({ ...spsLiteBackendFeature }),
-  media: [{ ...file }],
-  additionalMedia: [{ ...file }],
+  media: null,
+  additionalMedia: null,
 };
