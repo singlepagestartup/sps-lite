@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendForm } from "@sps/sps-crm-contracts/lib/entities/form/interfaces";
+import type { IEntity as IBackendForm } from "@sps/sps-crm-contracts-extended/lib/entities/form/interfaces";
 
 export interface IForm extends IBackendForm {
   showSkeletons?: boolean;

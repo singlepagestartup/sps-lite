@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "../../../../../redux/entities/review";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as IBackendReview } from "@sps/sps-crm-contracts/lib/entities/review/interfaces";
+import type { IEntity as IBackendReview } from "@sps/sps-crm-contracts-extended/lib/entities/review/interfaces";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {
@@ -49,7 +49,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
   return (
     <div className="flex space-x-4 text-sm text-gray-500">
       <div className="flex-none py-10">
-        {item.media?.length ? (
+        {/* {item.media?.length ? (
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100">
             <Image
               src={getFileUrl(item.media[0])}
@@ -58,7 +58,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
               className="object-cover object-center"
             />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
       <div className={"flex-1 py-10"}>
         <h3 className="font-medium text-gray-900">{item.name}</h3>

@@ -53,7 +53,7 @@ export default function Simple(props: IForm) {
     >
       <div className="form-container">
         <FormProvider {...methods}>
-          {preparedInputs?.map((input, index: number) => {
+          {preparedInputs?.map((input: any, index: number) => {
             return (
               <Input
                 {...input.input}
@@ -72,7 +72,7 @@ export default function Simple(props: IForm) {
             );
           })}
 
-          {preparedInputs?.map((input, index: number) => {
+          {preparedInputs?.map((input: any, index: number) => {
             return (
               <Input
                 __component="elements.input"
@@ -109,7 +109,7 @@ export default function Simple(props: IForm) {
             by="id"
           /> */}
           <div className="submit-button-container">
-            {props.button ? (
+            {/* {props.button ? (
               <Button
                 ui="shadcn"
                 className={props.button.className || ""}
@@ -118,15 +118,15 @@ export default function Simple(props: IForm) {
               >
                 {props.button?.title || "Submit"}
               </Button>
-            ) : (
-              <Button
-                ui="shadcn"
-                variant={"secondary"}
-                onClick={handleSubmit(onSubmit)}
-              >
-                Submit
-              </Button>
-            )}
+            ) : ( */}
+            <Button
+              ui="shadcn"
+              variant={"secondary"}
+              onClick={handleSubmit(onSubmit)}
+            >
+              Submit
+            </Button>
+            {/* )} */}
           </div>
         </FormProvider>
       </div>

@@ -57,64 +57,64 @@ function OrderComponent({ order }: { order: IBackendOrder }) {
 
   return (
     <div className="py-3 flex flex-col gap-3">
-      {filledOrder?.orderProducts?.map((orderProduct, index) => {
+      {/* {filledOrder?.orderProducts?.map((orderProduct, index) => {
         return (
           <OrderProductComponent key={index} orderProduct={orderProduct} />
         );
-      })}
+      })} */}
     </div>
   );
 }
 
-function OrderProductComponent({
-  orderProduct,
-}: {
-  orderProduct: IBackendOrderProduct;
-}) {
-  const [removeFromCart, { data: removeFromCartData }] =
-    productApi.useRemoveFromCartMutation();
+// function OrderProductComponent({
+//   orderProduct,
+// }: {
+//   orderProduct: IBackendOrderProduct;
+// }) {
+//   const [removeFromCart, { data: removeFromCartData }] =
+//     productApi.useRemoveFromCartMutation();
 
-  return (
-    <div className="border flex justify-between border-gray-200 rounded-md p-5">
-      <p className="font-bold">{orderProduct.product?.title}</p>
-      <div className="flex gap-2">
-        {orderProduct.attributes?.map((attribute, index) => {
-          return <AttributeComponent key={index} attribute={attribute} />;
-        })}
-        <Button
-          ui="shadcn"
-          variant="primary"
-          onClick={() => {
-            if (!orderProduct.product) {
-              return;
-            }
+//   return (
+//     <div className="border flex justify-between border-gray-200 rounded-md p-5">
+//       <p className="font-bold">{orderProduct.product?.title}</p>
+//       <div className="flex gap-2">
+//         {orderProduct.attributes?.map((attribute, index) => {
+//           return <AttributeComponent key={index} attribute={attribute} />;
+//         })}
+//         <Button
+//           ui="shadcn"
+//           variant="primary"
+//           onClick={() => {
+//             if (!orderProduct.product) {
+//               return;
+//             }
 
-            removeFromCart({ id: orderProduct.product.id });
-          }}
-        >
-          Delete
-        </Button>
-      </div>
-    </div>
-  );
-}
+//             removeFromCart({ id: orderProduct.product.id });
+//           }}
+//         >
+//           Delete
+//         </Button>
+//       </div>
+//     </div>
+//   );
+// }
 
-function AttributeComponent({ attribute }: { attribute: IBackendAttribute }) {
-  const title = useMemo(() => {
-    return attribute.attributeKey?.title || "";
-  }, [attribute]);
-  const value = useMemo(() => {
-    if (!attribute.attributeKey) {
-      return "";
-    }
+// function AttributeComponent({ attribute }: { attribute: IBackendAttribute }) {
+//   const title = useMemo(() => {
+//     return attribute.attributeKey?.title || "";
+//   }, [attribute]);
+//   const value = useMemo(() => {
+//     if (!attribute.attributeKey) {
+//       return "";
+//     }
 
-    return attribute[attribute.attributeKey?.type] || "";
-  }, [attribute]);
+//     return attribute[attribute.attributeKey?.type] || "";
+//   }, [attribute]);
 
-  return (
-    <div className="p-4 flex gap-2 border items-center border-gray-300 rounded-md">
-      <p className="text-gray-400 text-sm">{title}</p>
-      <p className="font-bold">{value}</p>
-    </div>
-  );
-}
+//   return (
+//     <div className="p-4 flex gap-2 border items-center border-gray-300 rounded-md">
+//       <p className="text-gray-400 text-sm">{title}</p>
+//       <p className="font-bold">{value}</p>
+//     </div>
+//   );
+// }

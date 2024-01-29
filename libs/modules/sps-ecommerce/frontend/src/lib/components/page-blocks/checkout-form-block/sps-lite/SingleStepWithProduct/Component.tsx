@@ -35,17 +35,18 @@ export default function Component(props: IPageBlock) {
       return "";
     }
 
-    const priceAttribute = product.attributes?.find(
-      (attr) => attr.attributeKey?.key === "price",
-    );
+    return "";
+    // const priceAttribute = product.attributes?.find(
+    //   (attr) => attr.attributeKey?.key === "price",
+    // );
 
-    if (!priceAttribute || !priceAttribute.attributeKey) {
-      return "";
-    }
+    // if (!priceAttribute || !priceAttribute.attributeKey) {
+    //   return "";
+    // }
 
-    return `${priceAttribute?.currency?.unicode || ""}${
-      priceAttribute[priceAttribute?.attributeKey?.type]
-    }`;
+    // return `${priceAttribute?.currency?.unicode || ""}${
+    //   priceAttribute[priceAttribute?.attributeKey?.type]
+    // }`;
   }, [product]);
 
   const methods = useForm<any>({

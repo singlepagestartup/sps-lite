@@ -1,4 +1,4 @@
-import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 import { BACKEND_URL, FRONTEND_URL, getBackendData } from "@sps/utils";
 
 async function generateSiteMap() {

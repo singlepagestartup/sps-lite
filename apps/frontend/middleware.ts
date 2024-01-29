@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from "next/server";
-import type { IEntity as IBackendLocale } from "@sps/sps-website-builder-frontend/lib/redux/entities/locale/interfaces";
+import type { IEntity as IBackendLocale } from "@sps/sps-website-builder-contracts-extended/lib/entities/locale/interfaces";
 import { BACKEND_URL } from "@sps/utils";
 
 export async function middleware(request: any) {

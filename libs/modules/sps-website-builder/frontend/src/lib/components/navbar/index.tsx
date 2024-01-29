@@ -3,9 +3,9 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as navbarApi } from "../../redux/entities/navbar";
-import type { IEntity as IBackendNavbar } from "../../redux/entities/navbar/interfaces";
-import type { IEntity as IBackendTopbar } from "../../redux/entities/topbar/interfaces";
-import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import type { IEntity as IBackendNavbar } from "@sps/sps-website-builder-contracts-extended/lib/entities//navbar/interfaces";
+import type { IEntity as IBackendTopbar } from "@sps/sps-website-builder-contracts-extended/lib/entities//topbar/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities//page/interfaces";
 
 export interface INavbar extends IBackendNavbar {
   topbar?: IBackendTopbar | null;

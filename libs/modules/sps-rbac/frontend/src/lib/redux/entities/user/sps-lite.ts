@@ -5,8 +5,8 @@ import {
   strapiFindOne,
   BACKEND_URL,
 } from "@sps/utils";
-import { populate } from "@sps/sps-rbac-contracts/lib/entities/user/populate";
-import type { IEntity } from "@sps/sps-rbac-contracts-extended";
+import { populate } from "@sps/sps-rbac-contracts-extended/lib/entities/user/populate";
+import type { IEntity } from "@sps/sps-rbac-contracts-extended/lib/entities/user/interfaces";
 
 const model = "users";
 const rtkType = "User";

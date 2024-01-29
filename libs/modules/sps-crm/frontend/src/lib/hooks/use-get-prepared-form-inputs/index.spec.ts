@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import * as nextNavigation from "next/navigation";
 import QueryString from "qs";
-import { IEntity as IBackendForm } from "@sps/sps-crm-contracts/lib/entities/form/interfaces";
+import { IEntity as IBackendForm } from "@sps/sps-crm-contracts-extended/lib/entities/form/interfaces";
 import { useGetPreparedFormInputs } from ".";
 
 type IBackendComponentInput = any;
