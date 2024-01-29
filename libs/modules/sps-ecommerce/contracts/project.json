@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/modules/sps-ecommerce/contracts",
         "main": "libs/modules/sps-ecommerce/contracts/src/index.ts",
         "tsConfig": "libs/modules/sps-ecommerce/contracts/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-ecommerce/contracts/*.md"]
+        "assets": [],
+        "rootDir": "."
       }
     },
     "lint": {

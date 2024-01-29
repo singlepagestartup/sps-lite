@@ -1,4 +1,4 @@
-import { api as fileApi } from "../entities/file/api";
+import { api as fileApi } from "../entities/file";
 
 export const slices = {
   middlewares: [fileApi.middleware],

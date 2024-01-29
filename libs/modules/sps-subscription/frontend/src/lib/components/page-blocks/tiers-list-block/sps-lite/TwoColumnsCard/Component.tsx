@@ -5,8 +5,8 @@ import { useTranslations } from "@sps/hooks";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { api as tierApi } from "../../../../../redux/entities/tier/api";
-import type { IEntity as IBackendTier } from "../../../../../redux/entities/tier/interfaces";
+import { api as tierApi } from "../../../../../redux/entities/tier";
+import type { IEntity as IBackendTier } from "@sps/sps-subscription-contracts/lib/entities/tier/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 // eslint-disable-next-line @nx/enforce-module-boundaries

@@ -2,8 +2,8 @@
 
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-import { api as userApi } from "../../redux/entities/user/api";
-import { populate as userPopulate } from "../../redux/entities/user/populate";
+import { api as userApi } from "../../redux/entities/user";
+import { populate as userPopulate } from "@sps/sps-rbac-contracts/lib/entities/user/populate";
 
 export function useMyProfile() {
   const username = useSelector((state: any) => {

@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 import { Props } from "..";
 
 interface OptionRenderPropArg {

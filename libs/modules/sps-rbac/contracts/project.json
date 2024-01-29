@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/modules/sps-rbac/contracts",
         "main": "libs/modules/sps-rbac/contracts/src/index.ts",
         "tsConfig": "libs/modules/sps-rbac/contracts/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-rbac/contracts/*.md"]
+        "assets": [],
+        "rootDir": "."
       }
     },
     "lint": {

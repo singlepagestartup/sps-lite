@@ -2,12 +2,12 @@
 
 import ReactMarkdown from "react-markdown";
 import { IPageBlock } from "../..";
-import { api as cartApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/cart/api";
-import { api as orderApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/api";
-import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
-import type { IEntity as IBackendOrder } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order/interfaces";
-import type { IEntity as IBackendOrderProduct } from "@sps/sps-ecommerce-frontend/lib/redux/entities/order-product/interfaces";
-import type { IEntity as IBackendAttribute } from "@sps/sps-ecommerce-frontend/lib/redux/entities/attribute/interfaces";
+import { api as cartApi } from "../../../../../redux/entities/cart/index";
+import { api as orderApi } from "../../../../../redux/entities/order/index";
+import { api as productApi } from "../../../../../redux/entities/product/index";
+import type { IEntity as IBackendOrder } from "@sps/sps-ecommerce-contracts/lib/entities/order/interfaces";
+import type { IEntity as IBackendOrderProduct } from "@sps/sps-ecommerce-contracts/lib/entities/order-product/interfaces";
+import type { IEntity as IBackendAttribute } from "@sps/sps-ecommerce-contracts/lib/entities/attribute/interfaces";
 import { useMemo } from "react";
 import { Button } from "@sps/ui-adapter";
 import Link from "next/link";

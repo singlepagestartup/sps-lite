@@ -1,4 +1,4 @@
-import type { IEntity as IFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 import type { IComponent as IFeature } from "../../../elements/feature/interfaces";
 
 export interface IComponent {

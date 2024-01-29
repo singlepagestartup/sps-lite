@@ -1,7 +1,7 @@
-import { api as attributeApi } from "../entities/attribute/api";
-import { api as attributeKeyApi } from "../entities/attribute-key/api";
-import { api as subscriptionApi } from "../entities/subscription/api";
-import { api as tierApi } from "../entities/tier/api";
+import { api as attributeApi } from "../entities/attribute";
+import { api as attributeKeyApi } from "../entities/attribute-key";
+import { api as subscriptionApi } from "../entities/subscription";
+import { api as tierApi } from "../entities/tier";
 
 export const slices = {
   middlewares: [

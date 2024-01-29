@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MouseEventHandler, forwardRef } from "react";
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 import { getFileUrl } from "@sps/utils";
 
 export interface Props {

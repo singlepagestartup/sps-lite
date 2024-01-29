@@ -1,5 +1,5 @@
-import { api as roleApi } from "./role/api";
-import { api as userApi } from "./user/api";
+import { api as roleApi } from "./role";
+import { api as userApi } from "./user";
 
 export const entities = {
   role: roleApi,

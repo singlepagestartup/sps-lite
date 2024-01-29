@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { pageBlockComponents } from "./aliases";
-import { IPage } from "@sps/sps-website-builder-contracts";
-// import { ReduxProvider } from "../../redux";
+import { IPage } from "@sps/sps-ecommerce-contracts/lib/props";
 
 export function PageBlocks(props: IPage) {
   return (

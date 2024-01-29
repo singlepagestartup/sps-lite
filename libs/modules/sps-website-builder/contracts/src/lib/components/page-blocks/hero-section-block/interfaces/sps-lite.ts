@@ -1,4 +1,4 @@
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 import type { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
 
 export interface IComponent {

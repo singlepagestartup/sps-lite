@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { api as subscriptionApi } from "../../../../../redux/entities/subscription/api";
+import { api as subscriptionApi } from "../../../../../redux/entities/subscription";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@sps/ui-adapter";

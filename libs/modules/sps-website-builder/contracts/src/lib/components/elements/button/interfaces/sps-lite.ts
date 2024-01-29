@@ -1,5 +1,5 @@
 import type { IEntity as IFlyout } from "../../../../entities/flyout/interfaces";
-import type { IEntity as IFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
+import type { IEntity as IFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
 
 export interface IComponent {
   id: number;

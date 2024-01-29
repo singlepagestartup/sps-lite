@@ -1,1 +1,1 @@
-export * from "./lib/sps-subscription-contracts";
+export {};

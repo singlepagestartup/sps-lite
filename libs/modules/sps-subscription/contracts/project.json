@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/modules/sps-subscription/contracts",
         "main": "libs/modules/sps-subscription/contracts/src/index.ts",
         "tsConfig": "libs/modules/sps-subscription/contracts/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-subscription/contracts/*.md"]
+        "assets": [],
+        "rootDir": "."
       }
     },
     "lint": {

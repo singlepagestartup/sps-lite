@@ -1,5 +1,5 @@
-import { api as roleApi } from "../entities/role/api";
-import { api as userApi } from "../entities/user/api";
+import { api as roleApi } from "../entities/role";
+import { api as userApi } from "../entities/user";
 import { slice as authSlice } from "../auth/slice";
 
 export const slices = {

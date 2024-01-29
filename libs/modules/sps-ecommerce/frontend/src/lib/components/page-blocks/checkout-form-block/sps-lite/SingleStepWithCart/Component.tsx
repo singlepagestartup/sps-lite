@@ -1,8 +1,8 @@
 "use client";
 
-import { api as productApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/product/api";
+import { api as productApi } from "../../../../../redux/entities/product/index";
 import { api as invoiceApi } from "@sps/sps-billing-frontend/lib/redux/entities/invoice";
-import { api as cartApi } from "@sps/sps-ecommerce-frontend/lib/redux/entities/cart/api";
+import { api as cartApi } from "../../../../../redux/entities/cart/index";
 import Skeleton from "./Skeleton";
 import { IPageBlock } from "../..";
 import { FormProvider, useForm } from "react-hook-form";

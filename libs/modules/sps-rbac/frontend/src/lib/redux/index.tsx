@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 // import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices } from "./slices";
-import { api as userApi } from "./entities/user/api";
+import { api as userApi } from "./entities/user";
 import { useEffect } from "react";
 import { globalStore, persistentMessageQuery } from "@sps/store";
 import { entities } from "./entities";
