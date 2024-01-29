@@ -1,5 +1,1 @@
-export const populate = {
-  orders: {
-    populate: "*",
-  },
-};
+export const populate = {};

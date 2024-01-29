@@ -1,7 +1,5 @@
-import { populate as slidePopulate } from "../../../components/elements/slide/populate";
+import { populate as parentPopulate } from "@sps/sps-website-builder-contracts/lib/entities/slider/populate";
 
 export const populate = {
-  slides: {
-    populate: slidePopulate,
-  },
+  ...parentPopulate,
 };

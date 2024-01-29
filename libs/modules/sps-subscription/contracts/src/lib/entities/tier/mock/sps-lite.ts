@@ -9,5 +9,4 @@ export const entity: IEntity = {
   createdAt: "2023-02-14T08:49:14.623Z",
   updatedAt: "2023-02-14T08:49:53.551Z",
   publishedAt: "2023-02-14T22:48:50.378Z",
-  buttons: null,
 };

@@ -1,5 +1,1 @@
-export const populate = {
-  formats: {
-    populate: "*",
-  },
-};
+export const populate = {};

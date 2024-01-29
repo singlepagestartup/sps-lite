@@ -1,7 +1,5 @@
-import { populate as pageBlockPopulate } from "../../../components/page-blocks/populate";
+import { populate as parentPopulate } from "@sps/sps-website-builder-contracts/lib/entities/page/populate";
 
 export const populate = {
-  page_blocks: {
-    populate: pageBlockPopulate,
-  },
+  ...parentPopulate,
 };

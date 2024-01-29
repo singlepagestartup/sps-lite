@@ -703,16 +703,4 @@ export const entity: IEntity = {
       extraMedia: null,
     },
   ],
-  button: {
-    id: 13,
-    url: null,
-    description: null,
-    variant: "primary",
-    title: "Send Request",
-    additionalAttributes: null,
-    className: null,
-    media: null,
-    additionalMedia: null,
-    flyout: null,
-  },
 };

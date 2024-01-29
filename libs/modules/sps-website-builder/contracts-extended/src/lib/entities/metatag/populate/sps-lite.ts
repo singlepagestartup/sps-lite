@@ -1,7 +1,9 @@
-// import { populate as fileUploadPopulate } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/populate";
+import { populate as parentPopulate } from "@sps/sps-website-builder-contracts/lib/entities/metatag/populate";
+import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/entities/file/populate";
 
 export const populate = {
+  ...parentPopulate,
   favicon: {
-    populate: "*",
+    populate: filePopulate,
   },
 };

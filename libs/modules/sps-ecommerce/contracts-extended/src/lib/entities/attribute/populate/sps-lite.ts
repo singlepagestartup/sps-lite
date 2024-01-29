@@ -1,7 +1,17 @@
+import { populate as parentPopulate } from "@sps/sps-ecommerce-contracts/lib/entities/attribute/populate";
+import { populate as attributeKeyPopulate } from "@sps/sps-ecommerce-contracts/lib/entities/attribute-key/populate";
+import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/entities/file/populate";
+import { populate as currencyPopulate } from "@sps/sps-billing-contracts/lib/entities/currency/populate";
+
 export const populate = {
-  media: {
-    populate: "*",
+  ...parentPopulate,
+  attribute_key: {
+    populate: attributeKeyPopulate,
   },
-  attribute_key: "*",
-  currency: "*",
+  media: {
+    populate: filePopulate,
+  },
+  currency: {
+    populate: currencyPopulate,
+  },
 };

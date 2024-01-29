@@ -30,44 +30,38 @@
             "enforceBuildableLibDependency": false,
             "banTransitiveDependencies": true,
             "allow": [
-              // sps-billing
-              "@sps/sps-billing-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-billing-frontend/lib/redux/entities/**/api",
-              "@sps/sps-billing-frontend/lib/redux/entities/**/populate",
-              "@sps/sps-billing-frontend/lib/redux/slices",
-
-              // sps-subscription
-              "@sps/sps-subscription-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-subscription-frontend/lib/redux/entities/**/api",
-              "@sps/sps-subscription-frontend/lib/redux/entities/**/populate",
-              "@sps/sps-subscription-frontend/lib/redux/slices",
-
-              // sps-crm
-              "@sps/sps-crm-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-crm-frontend/lib/redux/entities/**/api",
-              "@sps/sps-crm-frontend/lib/redux/entities/**/populate",
-              "@sps/sps-crm-frontend/lib/redux/slices",
-
-              // sps-rbac
-              "@sps/sps-rbac-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-rbac-frontend/lib/redux/entities/**/api",
-              "@sps/sps-rbac-frontend/lib/redux/entities/**/populate",
-              "@sps/sps-rbac-frontend/lib/redux/slices",
-              "@sps/sps-rbac-frontend/lib/hooks",
-
-              // sps-ecommerce
-              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/api",
-              "@sps/sps-ecommerce-frontend/lib/redux/entities/**/populate",
-              "@sps/sps-ecommerce-frontend/lib/redux/slices",
-
-              // sps-file-storage
-              "@sps/sps-file-storage-frontend/lib/redux/entities/**/interfaces",
-              "@sps/sps-file-storage-frontend/lib/redux/entities/**/api",
-              "@sps/sps-file-storage-frontend/lib/redux/slices",
-
-              // sps-website-builder
-              "@sps/sps-website-builder-frontend/lib/redux/slices"
+              // // sps-billing
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-billing-frontend/lib/redux/slices",
+              // // sps-subscription
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-subscription-frontend/lib/redux/slices",
+              // // sps-crm
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-crm-frontend/lib/redux/slices",
+              // // sps-rbac
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-rbac-frontend/lib/redux/slices",
+              // "@sps/sps-rbac-frontend/lib/hooks",
+              // // sps-ecommerce
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-ecommerce-frontend/lib/redux/slices",
+              // // sps-file-storage
+              // "@sps/sps-file-storage-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-file-storage-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-file-storage-frontend/lib/redux/slices",
+              // // sps-website-builder
+              // "@sps/sps-website-builder-frontend/lib/redux/slices"
             ],
             "depConstraints": [
               {

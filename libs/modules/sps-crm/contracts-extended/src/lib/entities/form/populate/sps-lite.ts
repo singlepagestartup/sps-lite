@@ -1,11 +1,9 @@
-import { populate as inputPopulate } from "../../../components/elements/input/populate";
-// import { populate as buttonPopulate } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/populate";
+import { populate as parentPopulate } from "@sps/sps-crm-contracts/lib/entities/form/populate";
+import { populate as buttonPopulate } from "@sps/sps-website-builder-contracts/lib/components/elements/button/populate";
 
 export const populate = {
-  inputs: {
-    populate: inputPopulate,
-  },
+  ...parentPopulate,
   button: {
-    populate: "*",
+    populate: buttonPopulate,
   },
 };

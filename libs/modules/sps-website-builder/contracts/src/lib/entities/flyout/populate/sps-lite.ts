@@ -1,2 +1,1 @@
-// page block populate
-export const populate = "*";
+export const populate = {};

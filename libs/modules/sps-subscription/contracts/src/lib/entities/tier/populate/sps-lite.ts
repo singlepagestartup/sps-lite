@@ -4,7 +4,4 @@ export const populate = {
   attributes: {
     populate: attributePopulate,
   },
-  buttons: {
-    populate: "*",
-  },
 };

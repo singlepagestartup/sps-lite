@@ -1,1 +1,1 @@
-export const populate = "*";
+export const populate = {};

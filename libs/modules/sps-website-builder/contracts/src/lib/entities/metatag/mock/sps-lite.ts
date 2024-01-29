@@ -11,5 +11,4 @@ export const entity: IEntity = {
   publishedAt: "2023-03-28T11:07:57.457Z",
   description: "Boilerplate for lean startup developers",
   script: null,
-  favicon: null,
 };

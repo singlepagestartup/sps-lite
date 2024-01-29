@@ -1,5 +1,1 @@
-export const populate = {
-  cart: {
-    populate: "*",
-  },
-};
+export const populate = {};
