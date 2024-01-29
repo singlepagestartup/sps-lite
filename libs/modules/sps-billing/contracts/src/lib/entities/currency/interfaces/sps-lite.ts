@@ -1,4 +1,4 @@
-import type { IEntity as IBackendTier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/interfaces";
+// import type { IEntity as IBackendTier } from "@sps/sps-subscription-frontend/lib/redux/entities/tier/interfaces";
 
 export interface IEntity {
   id: number;
@@ -8,5 +8,6 @@ export interface IEntity {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  tiers?: IBackendTier;
+  // tiers?: IBackendTier;
+  tiers?: unknown;
 }

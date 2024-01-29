@@ -11,8 +11,7 @@
         "outputPath": "dist/libs/modules/sps-file-storage/contracts",
         "main": "libs/modules/sps-file-storage/contracts/src/index.ts",
         "tsConfig": "libs/modules/sps-file-storage/contracts/tsconfig.lib.json",
-        "assets": [],
-        "rootDir": "."
+        "assets": []
       }
     },
     "lint": {
