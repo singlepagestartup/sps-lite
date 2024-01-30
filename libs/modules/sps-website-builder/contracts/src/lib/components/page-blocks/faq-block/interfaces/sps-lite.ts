@@ -1,5 +1,3 @@
-import type { IComponent as IFaq } from "../../../elements/faq/interfaces";
-
 export interface IComponent {
   id: number;
   __component: "page-blocks.faqs-block";
@@ -8,6 +6,5 @@ export interface IComponent {
   subtitle: string | null;
   className: string | null;
   description: string | null;
-  faqs?: IFaq[] | null;
   anchor: string | null;
 }

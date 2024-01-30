@@ -10,5 +10,4 @@ export const entity: IComponent = {
   description: null,
   className: null,
   additionalAttributes: null,
-  flyout: null,
 };

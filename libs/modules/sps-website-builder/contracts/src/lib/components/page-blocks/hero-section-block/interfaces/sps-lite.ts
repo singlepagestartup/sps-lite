@@ -1,6 +1,3 @@
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
-import type { IComponent as IBackendComponentButton } from "../../../elements/button/interfaces";
-
 export interface IComponent {
   id: number;
   __component: "page-blocks.hero-section-block";
@@ -8,8 +5,5 @@ export interface IComponent {
   className: string | null;
   title: string | null;
   description: string | null;
-  buttons?: IBackendComponentButton[] | null;
-  media?: IBackendFile[] | null;
   anchor: string | null;
-  additionalMedia?: IBackendFile[] | null;
 }

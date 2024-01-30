@@ -1,5 +1,3 @@
-import type { IEntity as ISlider } from "../../../../entities/slider/interfaces";
-
 export interface IComponent {
   id: number;
   __component: "page-blocks.slider-block";
@@ -9,5 +7,4 @@ export interface IComponent {
   title: string | null;
   subtitle: string | null;
   description: string | null;
-  slider?: ISlider | null;
 }

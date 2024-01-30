@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { entity as logotype } from "../../../elements/logotype/mock/sps-lite";
 import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
@@ -11,6 +10,4 @@ export const entity: IComponent = {
   description: faker.lorem.paragraph(),
   className: null,
   anchor: faker.lorem.slug(),
-  logotypes: Array(5).fill({ ...logotype }),
-  buttons: null,
 };

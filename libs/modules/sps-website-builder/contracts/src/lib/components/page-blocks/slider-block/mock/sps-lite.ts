@@ -8,6 +8,5 @@ export const entity: IComponent = {
   title: null,
   subtitle: null,
   description: null,
-  slider: null,
   anchor: null,
 };

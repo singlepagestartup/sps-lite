@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { entity as faq } from "../../../elements/faq/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
@@ -11,5 +10,4 @@ export const entity: IComponent = {
   variant: "two-columns-with-centered-introduction",
   __component: "page-blocks.faqs-block",
   description: faker.lorem.paragraph(),
-  faqs: Array(4).fill({ ...faq }),
 };

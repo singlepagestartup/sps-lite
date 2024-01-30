@@ -1,6 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { entity as logotype } from "../../../elements/logotype/mock/sps-lite";
-import { entity as buttonsArray } from "../../../elements/buttons-array/mock/sps-lite";
 import type { IComponent } from "../interfaces/sps-lite";
 
 export const entity: IComponent = {
@@ -8,10 +6,6 @@ export const entity: IComponent = {
   __component: "page-blocks.footer-block",
   variant: "four-columns-with-company-mission",
   className: faker.lorem.slug(),
-  logotype: { ...logotype },
   copyrights: faker.lorem.sentence(),
   description: faker.lorem.paragraph(),
-  buttonsArrays: [{ ...buttonsArray }, { ...buttonsArray }],
-  additionalButtonsArrays: [{ ...buttonsArray }],
-  extraButtonsArrays: [{ ...buttonsArray }, { ...buttonsArray }],
 };

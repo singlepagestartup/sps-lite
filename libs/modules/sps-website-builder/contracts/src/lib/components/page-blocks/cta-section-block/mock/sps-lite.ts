@@ -1,6 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { entity as spsLiteBackendButton } from "../../../elements/button/mock/sps-lite";
-// import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 import type { IComponent } from "../interfaces";
 
 export const entity: IComponent = {
@@ -12,7 +10,4 @@ export const entity: IComponent = {
   anchor: faker.lorem.slug(),
   __component: "page-blocks.cta-section-block",
   description: faker.lorem.paragraph(),
-  buttons: Array(3).fill({ ...spsLiteBackendButton }),
-  media: null,
-  additionalMedia: null,
 };
