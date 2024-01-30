@@ -1,11 +1,11 @@
-import { IPageBlock } from "..";
+import { IPageBlock, IPageBlockExtended } from "..";
 import Centered from "./Centered";
 
 export const variants = {
   centered: Centered,
 };
 
-export default function SpsLite(props: IPageBlock) {
+export default function SpsLite(props: IPageBlock | IPageBlockExtended) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

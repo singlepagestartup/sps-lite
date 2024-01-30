@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Element as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.additionalMedia?.length ? (
@@ -30,7 +30,6 @@ export default function Component(props: IPageBlock) {
               </ReactMarkdown>
             ) : null}
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
-              {" "}
               {props?.buttons?.map((button, index) => {
                 return <Button key={index} {...button} />;
               })}

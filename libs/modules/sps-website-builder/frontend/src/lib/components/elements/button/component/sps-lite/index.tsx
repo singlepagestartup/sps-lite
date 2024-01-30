@@ -1,6 +1,6 @@
 import Default from "./Default";
 import Locale from "./Locale";
-import { IElement } from "..";
+import { IElement, IElementExtended } from "..";
 
 export const variants = {
   text: Default,
@@ -13,7 +13,7 @@ export const variants = {
   link: Default,
 };
 
-export default function SpsLite(props: IElement) {
+export default function SpsLite(props: IElement | IElementExtended) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

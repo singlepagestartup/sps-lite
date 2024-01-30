@@ -3,9 +3,10 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-contracts-extended/lib/entities/slider/interfaces";
+import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-contracts/lib/entities/slider/interfaces";
 import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/slide/interfaces";
 import { parseMimeType } from "@sps/utils";
+import { api } from "../api";
 
 const variants = {
   ...spsLiteVariants,
@@ -13,37 +14,47 @@ const variants = {
 };
 
 export function Entity(props: IBackendSlider) {
-  const { slides } = props;
+  const { data: slider } = api.useGetByIdQuery(props.id);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const localMedia = useMemo(() => {
-    if (!slides || !slides.every((slide) => slide?.media?.length)) {
+    if (!slider) {
       return;
     }
 
-    return slides.map((slide) => {
-      return {
-        ...slide,
-        renderType: slide.media?.length
-          ? parseMimeType(slide.media[0].mime)?.renderType
-          : "image" || "image",
-      } as IExtendedSlide;
-    });
-  }, [slides]);
+    // if (
+    //   !slider.slides ||
+    //   !slider.slides.every((slide) => slide?.media?.length)
+    // ) {
+    //   return;
+    // }
+
+    // return slider.slides.map((slide) => {
+    //   return {
+    //     ...slide,
+    //     renderType: slide.media?.length
+    //       ? parseMimeType(slide.media[0].mime)?.renderType
+    //       : "image" || "image",
+    //   } as IExtendedSlide;
+    // });
+
+    return;
+  }, [slider]);
 
   const Comp = variants[props.variant as keyof typeof variants] as FC<ISlider>;
 
-  if (!localMedia) return <div></div>;
+  // if (!localMedia) return <div></div>;
 
-  return (
-    <Comp
-      {...props}
-      activeSlide={activeSlide}
-      setActiveSlide={setActiveSlide}
-      slides={localMedia}
-      // className={props?.className}
-    />
-  );
+  return <div />;
+  // return (
+  //   <Comp
+  //     {...props}
+  //     activeSlide={activeSlide}
+  //     setActiveSlide={setActiveSlide}
+  //     slides={localMedia}
+  //     // className={props?.className}
+  //   />
+  // );
 }
 
 export interface ISlider {

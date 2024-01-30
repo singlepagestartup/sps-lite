@@ -1,11 +1,11 @@
 import TwoColumnsWithCenteredIntroduction from "./TwoColumnsWithCenteredIntroduction";
-import { IPageBlock } from "..";
+import { IPageBlock, IPageBlockExtended } from "..";
 
 export const variants = {
   "two-columns-with-centered-introduction": TwoColumnsWithCenteredIntroduction,
 };
 
-export default function SpsLite(props: IPageBlock) {
+export default function SpsLite(props: IPageBlock | IPageBlockExtended) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

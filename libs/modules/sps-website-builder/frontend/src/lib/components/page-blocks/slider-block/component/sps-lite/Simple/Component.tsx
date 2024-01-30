@@ -1,7 +1,7 @@
 import { Entity as Slider } from "../../../../../../entities/slider/component";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <div className="max-w-7xl container mx-auto bg-white relative w-full my-10">
       <div className="w-full">

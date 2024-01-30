@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Element as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <div className="bg-white mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
       <div className="relative isolate grid grid-rows-2 lg:grid-rows-1 grid-cols-4 gap-4 overflow-hidden px-6 pt-16 bg-gray-900 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:px-24 lg:pt-0">

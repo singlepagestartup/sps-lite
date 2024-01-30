@@ -1,8 +1,8 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Component as Feature } from "../../../../../elements/feature/component";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex flex-col items-center py-16">

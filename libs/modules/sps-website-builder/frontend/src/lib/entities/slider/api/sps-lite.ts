@@ -1,5 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { strapiFetchBaseQueryBuilder, BACKEND_URL } from "@sps/utils";
+import {
+  strapiFetchBaseQueryBuilder,
+  BACKEND_URL,
+  strapiFindOne,
+} from "@sps/utils";
+import { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/slider/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/slider/populate";
 
 const model = "sliders";
 const rtkType = "Slider";
@@ -10,5 +16,13 @@ export const api = createApi({
   ),
   tagTypes: [rtkType],
   reducerPath: model,
-  endpoints: (build) => ({}),
+  endpoints: (build) => ({
+    getById: strapiFindOne<IEntity>({
+      serviceApi: this,
+      build,
+      populate,
+      model,
+      rtkType,
+    }),
+  }),
 });

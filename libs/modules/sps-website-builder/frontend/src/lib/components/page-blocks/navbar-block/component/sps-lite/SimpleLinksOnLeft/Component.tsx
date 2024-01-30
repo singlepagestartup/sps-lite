@@ -8,9 +8,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { getFileUrl } from "@sps/utils";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <Disclosure as="div" className="w-full">
       {(disclosure) => {
@@ -25,7 +25,7 @@ function DisclosureInner({
   props,
 }: {
   disclosure: any;
-  props: IPageBlock;
+  props: IPageBlockExtended;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();

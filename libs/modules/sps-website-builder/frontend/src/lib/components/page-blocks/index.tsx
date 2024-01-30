@@ -2,14 +2,14 @@ import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
 import { pageBlockComponents } from "./aliases";
-import {
-  PageBlocks as SpsCrmPageBlocks,
-  pageBlockComponents as spsCrmPageBlockComponents,
-} from "@sps/sps-crm-frontend";
-import {
-  PageBlocks as SpsEcommercePageBlocks,
-  pageBlockComponents as spsEcommercePageBlockComponents,
-} from "@sps/sps-ecommerce-frontend";
+// import {
+//   PageBlocks as SpsCrmPageBlocks,
+//   pageBlockComponents as spsCrmPageBlockComponents,
+// } from "@sps/sps-crm-frontend";
+// import {
+//   PageBlocks as SpsEcommercePageBlocks,
+//   pageBlockComponents as spsEcommercePageBlockComponents,
+// } from "@sps/sps-ecommerce-frontend";
 
 export function PageBlocks(props: IPage) {
   return (
@@ -21,31 +21,31 @@ export function PageBlocks(props: IPage) {
               key as keyof typeof pageBlockComponents
             ] as FC<any>;
 
-            if (!PageBlock) {
-              if (Object.keys(spsCrmPageBlockComponents).includes(key)) {
-                return (
-                  <SpsCrmPageBlocks
-                    key={`${index}-${key}`}
-                    pageProps={props.pageProps}
-                    page={props.page}
-                    pageBlocks={[pageBlock]}
-                  />
-                );
-              }
+            // if (!PageBlock) {
+            //   if (Object.keys(spsCrmPageBlockComponents).includes(key)) {
+            //     return (
+            //       <SpsCrmPageBlocks
+            //         key={`${index}-${key}`}
+            //         pageProps={props.pageProps}
+            //         page={props.page}
+            //         pageBlocks={[pageBlock]}
+            //       />
+            //     );
+            //   }
 
-              if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
-                return (
-                  <SpsEcommercePageBlocks
-                    key={`${index}-${key}`}
-                    pageProps={props.pageProps}
-                    page={props.page}
-                    pageBlocks={[pageBlock]}
-                  />
-                );
-              }
+            //   if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
+            //     return (
+            //       <SpsEcommercePageBlocks
+            //         key={`${index}-${key}`}
+            //         pageProps={props.pageProps}
+            //         page={props.page}
+            //         pageBlocks={[pageBlock]}
+            //       />
+            //     );
+            //   }
 
-              return <div key={`${index}-${key}`}></div>;
-            }
+            //   return <div key={`${index}-${key}`}></div>;
+            // }
 
             return (
               <ErrorBoundary key={`${index}-${key}`}>
