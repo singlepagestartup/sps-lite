@@ -62,7 +62,6 @@ function ProductCard(props: ICardProps) {
       },
     },
   });
-  console.log(`🚀 ~ ProductCard ~ productAttributes:`, productAttributes);
 
   const [incrementInCart, { data: incrementInCartData }] =
     productApi.useIncrementInCartMutation();

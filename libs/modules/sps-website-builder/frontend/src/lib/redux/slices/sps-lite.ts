@@ -1,17 +1,17 @@
-import { api as flyoutApi } from "../entities/flyout";
-import { api as footerApi } from "../entities/footer";
-import { api as layoutApi } from "../entities/layout";
-import { api as loaderApi } from "../entities/loader";
-import { api as metatagApi } from "../entities/metatag";
-import { api as modalApi } from "../entities/modal";
-import { api as navbarApi } from "../entities/navbar";
-import { api as pageApi } from "../entities/page";
-import { api as sidebarApi } from "../entities/sidebar";
-import { api as slideOverApi } from "../entities/slide-over";
-import { api as sliderApi } from "../entities/slider";
-import { api as themeApi } from "../entities/theme";
-import { api as topbarApi } from "../entities/topbar";
-import { api as localeApi } from "../entities/locale";
+import { api as flyoutApi } from "../../entities/flyout/api";
+import { api as footerApi } from "../../entities/footer/api";
+import { api as layoutApi } from "../../entities/layout/api";
+import { api as loaderApi } from "../../entities/loader/api";
+import { api as metatagApi } from "../../entities/metatag";
+import { api as modalApi } from "../../entities/modal/api";
+import { api as navbarApi } from "../../entities/navbar/api";
+import { api as pageApi } from "../../entities/page";
+import { api as sidebarApi } from "../../entities/sidebar/api";
+import { api as slideOverApi } from "../../entities/slide-over/api";
+import { api as sliderApi } from "../../entities/slider/api";
+import { api as themeApi } from "../../entities/theme";
+import { api as topbarApi } from "../../entities/topbar/api";
+import { api as localeApi } from "../../entities/locale";
 
 export const slices = {
   middlewares: [

@@ -1,17 +1,17 @@
-import FaqBlock from "../faq-block";
-import { Element as Button } from "../../elements/button";
-import { Element as ButtonsArray } from "../../elements/buttons-array";
-import FeaturesSectionBlock from "../features-section-block";
-import FooterBlock from "../footer-block";
-import HeaderSectionBlock from "../header-section-block";
-import HeroSectionBlock from "../hero-section-block";
-import LogotypesCloudBlock from "../logotypes-cloud-block";
-import NotFoundBlock from "../not-found-block";
-import IncentivesBlock from "../incentives-block";
-import CtaSectionBlock from "../cta-section-block";
-import AlertBlock from "../alert-block";
-import SliderBlock from "../slider-block";
-import NavbarBlock from "../navbar-block";
+import { Element as Button } from "../../elements/button/component";
+import { Element as ButtonsArray } from "../../elements/buttons-array/component";
+import { PageBlock as FaqBlock } from "../faq-block/component";
+import { PageBlock as FeaturesSectionBlock } from "../features-section-block/component";
+import { PageBlock as FooterBlock } from "../footer-block/component";
+import { PageBlock as HeaderSectionBlock } from "../header-section-block/component";
+import { PageBlock as HeroSectionBlock } from "../hero-section-block/component";
+import { PageBlock as LogotypesCloudBlock } from "../logotypes-cloud-block/component";
+import { PageBlock as NotFoundBlock } from "../not-found-block/component";
+import { PageBlock as IncentivesBlock } from "../incentives-block/component";
+import { PageBlock as CtaSectionBlock } from "../cta-section-block/component";
+import { PageBlock as AlertBlock } from "../alert-block/component";
+import { PageBlock as SliderBlock } from "../slider-block/component";
+import { PageBlock as NavbarBlock } from "../navbar-block/component";
 
 export const pageBlockComponents = {
   "page-blocks.footer-block": FooterBlock,

@@ -703,8 +703,5 @@ export const entity: IEntity = {
     title: "Send Request",
     additionalAttributes: null,
     className: null,
-    media: null,
-    additionalMedia: null,
-    flyout: null,
   },
 };

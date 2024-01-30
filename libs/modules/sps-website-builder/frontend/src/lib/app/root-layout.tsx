@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as loaderPopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
-import { Loader } from "../components/loader";
-import { Layout } from "../components/layout";
-import { Modal } from "../components/modal";
-import { SlideOver } from "../components/slide-over";
+import { Loader } from "../entities/loader/component";
+import { Layout } from "../entities/layout/component";
+import { Modal } from "../entities/modal/component";
+import { SlideOver } from "../entities/slide-over/component";
 
 export const dynamic = "force-dynamic";
 

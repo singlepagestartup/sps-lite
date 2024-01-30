@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IPage } from "@sps/sps-website-builder-contracts";
+import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
 import { pageBlockComponents } from "./aliases";
 import {
   PageBlocks as SpsCrmPageBlocks,
@@ -53,7 +53,7 @@ export function PageBlocks(props: IPage) {
                   data-component={pageBlock.__component}
                   data-variant={pageBlock.variant}
                   className={`${pageBlock.className || ""}`}
-                  {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
+                  // {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
                 >
                   <PageBlock
                     page={props.page}
