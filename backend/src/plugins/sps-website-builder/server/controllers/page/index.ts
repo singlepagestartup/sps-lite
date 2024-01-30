@@ -32,6 +32,7 @@ export default factories.createCoreController(
 
       const targetPage = filledPages.find((page) => {
         const cuttedLastSlash =
+          // @ts-ignore
           queryUrl !== "/" ? queryUrl.replace(/\/$/, "") : queryUrl;
 
         if (

@@ -1,6 +1,5 @@
-import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Component as Feature } from "../../../../../elements/feature/component";
 import { IPageBlock } from "../..";
 
 export default function Component(props: IPageBlock) {
@@ -23,29 +22,7 @@ export default function Component(props: IPageBlock) {
       </div>
       <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
         {props.features?.map((feature, index) => (
-          <div key={index} className="flex flex-col gap-3">
-            <div>
-              {feature?.media?.length ? (
-                <Image
-                  src={getFileUrl(feature.media[0])}
-                  height={100}
-                  width={100}
-                  alt=""
-                  className="object-contain"
-                />
-              ) : null}
-            </div>
-            {feature.title ? (
-              <ReactMarkdown className="text-lg font-medium leading-6 text-gray-900">
-                {feature.title}
-              </ReactMarkdown>
-            ) : null}
-            {feature?.description ? (
-              <ReactMarkdown className="text-base text-gray-500">
-                {feature?.description}
-              </ReactMarkdown>
-            ) : null}
-          </div>
+          <Feature key={index} {...feature} />
         ))}
       </dl>
     </div>
