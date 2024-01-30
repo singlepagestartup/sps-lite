@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { ISidebar } from "../..";
 
 export default function OneQuarter(props: ISidebar) {

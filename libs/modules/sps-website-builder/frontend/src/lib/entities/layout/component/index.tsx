@@ -23,7 +23,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Layout({ children }: { children?: ReactNode }) {
+export function Entity({ children }: { children?: ReactNode }) {
   const pathname = usePathname();
   const params = useParams();
   const dispatch = useDispatch();

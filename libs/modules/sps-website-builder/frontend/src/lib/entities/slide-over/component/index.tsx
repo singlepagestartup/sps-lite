@@ -5,8 +5,8 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as slideOverApi } from "../api";
 import { useParams, useSearchParams } from "next/navigation";
-import type { IEntity as IBackendSlideOver } from "../../redux/entities/slide-over/interfaces";
-import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import type { IEntity as IBackendSlideOver } from "@sps/sps-website-builder-contracts-extended/lib/entities/slide-over/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 import { getTargetPage } from "@sps/utils";
 
 export interface ISlideOver extends IBackendSlideOver {
@@ -21,7 +21,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function SlideOver() {
+export function Entity() {
   const params = useParams();
   const query = useSearchParams();
   const openedSlideOver = query?.get("opened_slide_over");

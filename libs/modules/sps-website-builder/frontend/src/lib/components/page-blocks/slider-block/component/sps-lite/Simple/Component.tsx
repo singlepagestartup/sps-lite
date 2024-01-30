@@ -1,4 +1,4 @@
-import Slider from "../../../../../redux/entities/slider/component";
+import { Entity as Slider } from "../../../../../../entities/slider/component";
 import { IPageBlock } from "../..";
 
 export default function Component(props: IPageBlock) {

@@ -26,7 +26,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Modal({ modals = [] }: { modals?: IModal[] }) {
+export function Entity({ modals = [] }: { modals?: IModal[] }) {
   const query = useSearchParams();
   const pathname = usePathname();
   const params = useParams();

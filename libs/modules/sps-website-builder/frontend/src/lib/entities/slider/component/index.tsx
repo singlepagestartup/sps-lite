@@ -3,8 +3,8 @@
 import React, { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendSlider } from "../../redux/entities/slider/interfaces";
-import { IComponent as IBackendSlide } from "../../redux/components/elements/slide/interfaces";
+import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-contracts-extended/lib/entities/slider/interfaces";
+import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/slide/interfaces";
 import { parseMimeType } from "@sps/utils";
 
 const variants = {
@@ -12,7 +12,7 @@ const variants = {
   ...startupVariants,
 };
 
-export default function Slider(props: IBackendSlider) {
+export function Entity(props: IBackendSlider) {
   const { slides } = props;
   const [activeSlide, setActiveSlide] = useState(0);
 

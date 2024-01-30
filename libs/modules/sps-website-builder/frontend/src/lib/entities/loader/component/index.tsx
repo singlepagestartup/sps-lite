@@ -13,7 +13,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Loader(props: ILoader) {
+export function Entity(props: ILoader) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

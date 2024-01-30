@@ -3,8 +3,8 @@
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { api as sidebarApi } from "../api";
-import type { IEntity as IBackendSidebar } from "../../redux/entities/sidebar/interfaces";
-import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import type { IEntity as IBackendSidebar } from "@sps/sps-website-builder-contracts-extended/lib/entities/sidebar/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
 export interface ISidebar extends IBackendSidebar {
   showSkeletons?: boolean;
@@ -16,7 +16,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Sidebar(props: ISidebar) {
+export function Entity(props: ISidebar) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     sidebarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 

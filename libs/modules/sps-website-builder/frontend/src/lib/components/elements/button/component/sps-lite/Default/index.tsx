@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@sps/ui-adapter";
 import { IElement } from "../..";
 import { useMemo } from "react";
-import { Flyout } from "../../../../../redux/entities/flyout/component";
+import { Entity as Flyout } from "../../../../../../entities/flyout/component";
 import { useGetButtonParams } from "@sps/hooks";
 
 export default function Default(props: IElement) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { PageBlocks } from "../../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { INavbar } from "../..";
 
 export default function Boxed(props: INavbar) {

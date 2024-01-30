@@ -20,7 +20,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Flyout({ flyout, children }: { flyout?: any; children?: any }) {
+export function Entity({ flyout, children }: { flyout?: any; children?: any }) {
   const params = useParams();
   const [flyoutProps, setFlyoutProps] = useState<any>();
   const [page, setPage] = useState<IBackendPage>(); //?

@@ -19,7 +19,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Navbar(props: INavbar) {
+export function Entity(props: INavbar) {
   const {
     data: backendNavbar,
     isLoading,

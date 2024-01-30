@@ -2,9 +2,9 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as topbarApi } from "../../redux/entities/topbar";
-import type { IEntity as IBackendTopbar } from "../../redux/entities/topbar/interfaces";
-import type { IEntity as IBackendPage } from "../../redux/entities/page/interfaces";
+import { api as topbarApi } from "../api";
+import type { IEntity as IBackendTopbar } from "@sps/sps-website-builder-contracts-extended/lib/entities/topbar/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
 export interface ITopbar extends IBackendTopbar {
   showSkeletons?: boolean;
@@ -17,7 +17,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Topbar(props: ITopbar) {
+export function Entity(props: ITopbar) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 

@@ -16,7 +16,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Footer(props: IFooter) {
+export function Entity(props: IFooter) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     footerApi.useGetFooterByIdQuery({ id: props.id }, { skip: !props.id });
 
@@ -34,5 +34,3 @@ export function Footer(props: IFooter) {
     />
   );
 }
-
-export default Footer;

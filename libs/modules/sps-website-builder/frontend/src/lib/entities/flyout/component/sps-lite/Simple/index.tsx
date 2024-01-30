@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { IFlyout } from "../..";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 

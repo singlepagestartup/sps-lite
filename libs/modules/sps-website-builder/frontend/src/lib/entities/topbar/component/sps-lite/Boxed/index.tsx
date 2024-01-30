@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { ITopbar } from "../..";
 
 export default function Boxed(props: ITopbar) {
