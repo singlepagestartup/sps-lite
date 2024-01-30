@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
-import { Layout } from "../entities/layout/component";
+import { Entity as Layout } from "../entities/layout/component";
 
 export function GlobalError({ error, reset, fonts }: any) {
   const [page, setPage] = useState<any>();

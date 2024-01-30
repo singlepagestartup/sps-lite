@@ -57,6 +57,8 @@ export function PageBlocks(props: IPage) {
                 >
                   <PageBlock
                     page={props.page}
+                    navbar={props.navbar}
+                    footer={props.footer}
                     pageProps={props.pageProps}
                     showSkeletons={props.showSkeletons}
                     {...pageBlock}

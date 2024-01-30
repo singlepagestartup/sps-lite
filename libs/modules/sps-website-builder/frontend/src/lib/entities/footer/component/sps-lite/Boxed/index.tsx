@@ -13,6 +13,7 @@ export default function Boxed(props: IFooter) {
           page={props.page}
           pageBlocks={props.pageBlocks}
           showSkeletons={props.showSkeletons}
+          footer={props}
         />
       </div>
     </footer>

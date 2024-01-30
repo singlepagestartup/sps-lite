@@ -10,6 +10,8 @@ export interface IPage {
     searchParams: any;
   };
   page: any;
+  navbar?: any;
+  footer?: any;
   pageBlocks?: IPageBlock[] | null;
   showSkeletons?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;

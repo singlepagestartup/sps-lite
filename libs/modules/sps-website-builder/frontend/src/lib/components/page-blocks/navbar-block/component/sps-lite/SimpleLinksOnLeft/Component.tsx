@@ -42,7 +42,7 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex">
-              {props.logotype?.media?.length ? (
+              {/* {props.logotype?.media?.length ? (
                 <div className="flex flex-shrink-0 items-center">
                   {props.logotype.url ? (
                     <Link href="/" className="relative w-32 h-8">
@@ -64,7 +64,7 @@ function DisclosureInner({
                     </div>
                   )}
                 </div>
-              ) : null}
+              ) : null} */}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.buttons?.map((button, index) => {
                   return <Button key={index} {...button} />;

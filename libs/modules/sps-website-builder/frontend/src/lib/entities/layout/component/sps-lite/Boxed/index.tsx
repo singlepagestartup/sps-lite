@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { ILayout } from "../..";
-import { Topbar } from "../../../../topbar/component";
-import { Navbar } from "../../../../navbar/component";
-import { Sidebar } from "../../../../sidebar/component";
-import Footer from "../../../../footer/component";
+import { Entity as Topbar } from "../../../../topbar/component";
+import { Entity as Navbar } from "../../../../navbar/component";
+import { Entity as Sidebar } from "../../../../sidebar/component";
+import { Entity as Footer } from "../../../../footer/component";
 
 export default function Boxed(props: ILayout) {
   const topbarRef = useRef<any>(null);
