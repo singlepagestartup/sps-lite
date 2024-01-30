@@ -1,10 +1,11 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { Element as Button } from "../../../../../elements/button/component";
+import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { getFileUrl } from "@sps/utils";
-import { IPageBlock } from "../..";
+import { IPageBlockExtended } from "../..";
 
-export default function Component(props: IPageBlock) {
+export default function Component(props: IPageBlockExtended) {
   return (
     <div className="relative flex flex-col border-b border-gray-200 lg:border-0">
       <div
@@ -17,15 +18,7 @@ export default function Component(props: IPageBlock) {
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
               <div className="lg:pr-16">
                 <div className="mb-6">
-                  {props.logotype?.media?.length ? (
-                    <Image
-                      src={getFileUrl(props.logotype.media[0])}
-                      className="object-contain"
-                      width={150}
-                      height={50}
-                      alt=""
-                    />
-                  ) : null}
+                  {props.logotype ? <Logotype {...props.logotype} /> : null}
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                   {props.title}

@@ -31,5 +31,5 @@ export async function PageBlock(props: IPageBlock) {
     return <Comp showSkeletons={true} {...props} />;
   }
 
-  return <Comp {...pageBlock} />;
+  return <Comp {...props} {...pageBlock} />;
 }

@@ -1,7 +1,6 @@
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { Element as ButtonArrays } from "../../../../../elements/buttons-array/component";
-import { getFileUrl } from "@sps/utils";
+import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { IPageBlockExtended } from "../..";
 
 export default function Component(props: IPageBlockExtended) {
@@ -9,15 +8,7 @@ export default function Component(props: IPageBlockExtended) {
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col gap-4 w-full lg:w-3/12">
-          {props.logotype?.media?.length ? (
-            <Image
-              src={getFileUrl(props.logotype.media[0])}
-              alt=""
-              className="object-contain object-left"
-              width={200}
-              height={200}
-            />
-          ) : null}
+          {props.logotype ? <Logotype {...props.logotype} /> : null}
           <div className="lg:max-w-xs">
             {props.description ? (
               <ReactMarkdown className="text-xs text-gray-300">

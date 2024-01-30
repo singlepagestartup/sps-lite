@@ -1,10 +1,10 @@
-import Component from "./Component";
+import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import Skeleton from "./Skeleton";
 import Error from "./Error";
 import { IElement, IElementExtended } from "../..";
 
-export default function Row(props: IElement | IElementExtended) {
+export function Simple(props: IElement | IElementExtended) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? (

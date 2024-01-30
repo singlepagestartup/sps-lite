@@ -1,35 +1,17 @@
-import { Element as Button } from "../../../../button/component";
-import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
-import { IElement } from "../..";
+import Component from "./Component";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import Skeleton from "./Skeleton";
+import Error from "./Error";
+import { IElement, IElementExtended } from "../..";
 
-export default function ColumnWithTitle(props: IElement) {
-  const { title, buttons } = props;
-
+export default function ColumnWithTitle(props: IElement | IElementExtended) {
   return (
-    <div
-      data-component="elements.buttons-array"
-      data-variant={props.variant}
-      className={props?.className || ""}
-    >
-      <div className="buttons-array-column-with-title">
-        {title ? (
-          <div className="buttons-array-title">
-            {props.media?.length ? (
-              <div className="icon-container">
-                <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
-              </div>
-            ) : null}
-            {title}
-          </div>
-        ) : null}
-
-        <div className="buttons-array-buttons-container">
-          {buttons?.map((button, index) => {
-            return <Button key={index} {...button} />;
-          })}
-        </div>
-      </div>
-    </div>
+    <ErrorBoundary fallback={Error}>
+      {props.showSkeletons ? (
+        <Skeleton {...props} />
+      ) : (
+        <Component {...(props as IElementExtended)} />
+      )}
+    </ErrorBoundary>
   );
 }

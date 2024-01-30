@@ -3,14 +3,14 @@
 import { api } from "../api";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IButton } from "@sps/sps-website-builder-contracts/lib/components/elements/button/interfaces";
-import { IComponent as IButtonExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/interfaces";
+import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/elements/button/interfaces";
+import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/interfaces";
 import { populate } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/populate";
 
-export interface IElement extends IButton {
+export interface IElement extends IComponent {
   showSkeletons?: boolean;
 }
-export interface IElementExtended extends IButtonExtended {
+export interface IElementExtended extends IComponentExtended {
   showSkeletons?: boolean;
 }
 
@@ -20,7 +20,7 @@ const variants = {
 };
 
 export async function Element(props: IElement) {
-  const data = await api.findByIdAndName<IButtonExtended>({
+  const data = await api.findByIdAndName<IComponentExtended>({
     id: props.id,
     name: "elements.button",
     populate,

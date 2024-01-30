@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IPageBlockExtended } from "../..";
+import { Component as Logotype } from "../../../../../elements/logotype/component";
 
 export default function Component(props: IPageBlockExtended) {
   return (
@@ -24,29 +25,7 @@ export default function Component(props: IPageBlockExtended) {
         <div className="mt-8 flow-root self-center lg:mt-0">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {props.logotypes?.map((logotype, index) => {
-              if (!logotype.media) {
-                return <></>;
-              }
-
-              return (
-                <div
-                  key={index}
-                  className="flex flex-shrink-0 flex-grow justify-center lg:flex-grow-0"
-                >
-                  <Link
-                    href={logotype?.url || ""}
-                    className="relative h-12 w-full"
-                  >
-                    {logotype.media.length ? (
-                      <Image
-                        fill={true}
-                        src={getFileUrl(logotype.media[0])}
-                        alt="Tuple"
-                      />
-                    ) : null}
-                  </Link>
-                </div>
-              );
+              return <Logotype key={index} {...logotype} />;
             })}
           </div>
         </div>

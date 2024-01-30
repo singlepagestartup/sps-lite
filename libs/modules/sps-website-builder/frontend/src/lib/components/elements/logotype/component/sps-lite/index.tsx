@@ -1,10 +1,8 @@
-import ColumnWithTitle from "./ColumnWithTitle";
-import Row from "./Row";
 import { IElement, IElementExtended } from "..";
+import { Simple } from "./Simple";
 
 export const variants = {
-  "column-with-title": ColumnWithTitle,
-  row: Row,
+  simple: Simple,
 };
 
 export default function SpsLite(props: IElement | IElementExtended) {
@@ -14,5 +12,5 @@ export default function SpsLite(props: IElement | IElementExtended) {
     return <></>;
   }
 
-  return <Comp {...(props as IElementExtended)} />;
+  return <Comp {...props} />;
 }
