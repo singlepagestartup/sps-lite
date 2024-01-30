@@ -1,37 +1,37 @@
-import { BACKEND_URL, getFileUrl } from "@sps/utils";
+import { variants as spsLiteVariants } from "./sps-lite";
+import { variants as startupVariants } from "./startup";
 import { IComponent as IFeature } from "@sps/sps-website-builder-contracts/lib/components/elements/feature/interfaces";
+import { IComponent as IFeatureExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/feature/interfaces";
 import { populate } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/feature/populate";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import { api } from "../api";
+
+const variants = {
+  ...spsLiteVariants,
+  ...startupVariants,
+};
+
+export interface IComponent extends IFeature {
+  variant: "simple";
+  showSkeletons?: boolean;
+}
+
+export interface IComponentExtended extends IFeatureExtended {
+  variant: "simple";
+  showSkeletons?: boolean;
+}
 
 export async function Component(props: IFeature) {
-  const data = await fetch(
-    `${BACKEND_URL}/api/features/1?populate=${populate}`,
-  );
+  const data = await api.findByIdAndName<IFeatureExtended>({
+    id: props.id,
+    name: "elements.feature",
+    populate,
+  });
 
-  return (
-    <div className="flex flex-col gap-3">
-      {/* <div>
-        {props?.media?.length ? (
-          <Image
-            src={getFileUrl(feature.media[0])}
-            height={100}
-            width={100}
-            alt=""
-            className="object-contain"
-          />
-        ) : null}
-      </div> */}
-      {props.title ? (
-        <ReactMarkdown className="text-lg font-medium leading-6 text-gray-900">
-          {props.title}
-        </ReactMarkdown>
-      ) : null}
-      {props?.description ? (
-        <ReactMarkdown className="text-base text-gray-500">
-          {props?.description}
-        </ReactMarkdown>
-      ) : null}
-    </div>
-  );
+  const Comp = variants["simple"];
+
+  if (!data) {
+    return <Comp showSkeletons={true} variant="simple" {...props} />;
+  }
+
+  return <Comp variant="simple" {...data} />;
 }
