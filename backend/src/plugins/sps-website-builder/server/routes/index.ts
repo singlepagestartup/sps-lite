@@ -1,3 +1,4 @@
+import customComponent from "./component/custom";
 import component from "./component";
 import flyout from "./flyout";
 import footer from "./footer";
@@ -17,6 +18,7 @@ import theme from "./theme";
 import topbar from "./topbar";
 
 export default {
+  customComponent,
   component,
   flyout,
   footer,

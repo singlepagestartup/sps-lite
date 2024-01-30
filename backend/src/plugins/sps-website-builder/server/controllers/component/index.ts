@@ -8,9 +8,8 @@ import { factories } from "@strapi/strapi";
 export default factories.createCoreController(
   "plugin::sps-website-builder.component",
   ({ strapi }) => ({
-    async findOne(ctx) {
-      const { id } = ctx.params;
-      const { component } = ctx.query;
+    async findOneByUid(ctx) {
+      const { id, component } = ctx.params;
 
       if (!component) {
         throw new strapiUtils.errors.ValidationError(
