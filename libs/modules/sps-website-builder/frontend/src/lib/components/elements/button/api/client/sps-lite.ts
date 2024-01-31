@@ -1,14 +1,14 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import {
   strapiFetchBaseQueryBuilder,
-  strapiFindOne,
   BACKEND_URL,
+  strapiFindOne,
 } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/interfaces";
+import { populate } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/populate";
+import type { IComponent } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/interfaces";
 
-const model = "footers";
-const rtkType = "Footer";
+const model = "components/elements.button";
+const rtkType = "Button";
 
 export const api = createApi({
   baseQuery: strapiFetchBaseQueryBuilder(
@@ -17,7 +17,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getFooterById: strapiFindOne<IEntity>({
+    findOne: strapiFindOne<IComponent>({
       serviceApi: this,
       build,
       populate,

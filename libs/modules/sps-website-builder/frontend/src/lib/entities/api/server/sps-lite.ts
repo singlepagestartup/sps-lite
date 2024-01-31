@@ -2,12 +2,12 @@ import { BACKEND_URL, transformResponseItem } from "@sps/utils";
 import QueryString from "qs";
 
 export const api = {
-  findByIdAndName: async <T>(params: {
+  findOne: async <T>(params: {
     id: number;
-    name: string;
+    model: string;
     populate: any;
   }): Promise<T> => {
-    const { id, populate, name } = params;
+    const { id, populate, model } = params;
 
     const stringifiedQuery = QueryString.stringify(
       {
@@ -19,7 +19,7 @@ export const api = {
     );
 
     const res = await fetch(
-      `${BACKEND_URL}/api/sps-website-builder/components/${name}/${id}?${stringifiedQuery}`,
+      `${BACKEND_URL}/api/sps-website-builder/${model}/${id}?${stringifiedQuery}`,
       { next: { revalidate: 3600 } } as any,
     );
 

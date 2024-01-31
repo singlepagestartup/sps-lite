@@ -67,7 +67,7 @@ export function Entity({ children }: { children?: ReactNode }) {
     : undefined;
 
   if (!Comp || !layout || !page) {
-    return <></>;
+    return <>{children}</>;
   }
 
   return (

@@ -30,22 +30,22 @@ export default function Default(props: IElementExtended) {
   //   );
   // }
 
-  if (props.flyout) {
-    return (
-      <Flyout flyout={props.flyout}>
-        <Button
-          ui="shadcn"
-          data-component="elements.button"
-          variant={props.variant}
-          {...additionalAttributes}
-        >
-          {`${
-            !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
-          }`}
-        </Button>
-      </Flyout>
-    );
-  }
+  // if (props.flyout) {
+  //   return (
+  //     <Flyout flyout={props.flyout}>
+  //       <Button
+  //         ui="shadcn"
+  //         data-component="elements.button"
+  //         variant={props.variant}
+  //         {...additionalAttributes}
+  //       >
+  //         {`${
+  //           !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
+  //         }`}
+  //       </Button>
+  //     </Flyout>
+  //   );
+  // }
 
   if (url && props.url) {
     return (

@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Element as Button } from "../../../../../elements/button/component";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { getFileUrl } from "@sps/utils";
+import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { IPageBlockExtended } from "../..";
 
 export default function Component(props: IPageBlockExtended) {
@@ -42,29 +40,7 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex">
-              {/* {props.logotype?.media?.length ? (
-                <div className="flex flex-shrink-0 items-center">
-                  {props.logotype.url ? (
-                    <Link href="/" className="relative w-32 h-8">
-                      <Image
-                        src={getFileUrl(props.logotype.media[0])}
-                        alt=""
-                        className="object-contain object-left"
-                        fill={true}
-                      />
-                    </Link>
-                  ) : (
-                    <div className="relative w-32 h-8">
-                      <Image
-                        src={getFileUrl(props.logotype.media[0])}
-                        alt=""
-                        className="object-contain object-left"
-                        fill={true}
-                      />
-                    </div>
-                  )}
-                </div>
-              ) : null} */}
+              {props.logotype ? <Logotype {...props.logotype} /> : null}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.buttons?.map((button, index) => {
                   return <Button key={index} {...button} />;

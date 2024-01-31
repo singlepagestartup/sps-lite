@@ -21,31 +21,31 @@ export function PageBlocks(props: IPage) {
               key as keyof typeof pageBlockComponents
             ] as FC<any>;
 
-            // if (!PageBlock) {
-            //   if (Object.keys(spsCrmPageBlockComponents).includes(key)) {
-            //     return (
-            //       <SpsCrmPageBlocks
-            //         key={`${index}-${key}`}
-            //         pageProps={props.pageProps}
-            //         page={props.page}
-            //         pageBlocks={[pageBlock]}
-            //       />
-            //     );
-            //   }
+            if (!PageBlock) {
+              //   if (Object.keys(spsCrmPageBlockComponents).includes(key)) {
+              //     return (
+              //       <SpsCrmPageBlocks
+              //         key={`${index}-${key}`}
+              //         pageProps={props.pageProps}
+              //         page={props.page}
+              //         pageBlocks={[pageBlock]}
+              //       />
+              //     );
+              //   }
 
-            //   if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
-            //     return (
-            //       <SpsEcommercePageBlocks
-            //         key={`${index}-${key}`}
-            //         pageProps={props.pageProps}
-            //         page={props.page}
-            //         pageBlocks={[pageBlock]}
-            //       />
-            //     );
-            //   }
+              //   if (Object.keys(spsEcommercePageBlockComponents).includes(key)) {
+              //     return (
+              //       <SpsEcommercePageBlocks
+              //         key={`${index}-${key}`}
+              //         pageProps={props.pageProps}
+              //         page={props.page}
+              //         pageBlocks={[pageBlock]}
+              //       />
+              //     );
+              //   }
 
-            //   return <div key={`${index}-${key}`}></div>;
-            // }
+              return <div key={`${index}-${key}`}></div>;
+            }
 
             return (
               <ErrorBoundary key={`${index}-${key}`}>
@@ -53,12 +53,9 @@ export function PageBlocks(props: IPage) {
                   data-component={pageBlock.__component}
                   data-variant={pageBlock.variant}
                   className={`${pageBlock.className || ""}`}
-                  // {...(pageBlock?.anchor ? { id: pageBlock.anchor } : {})}
                 >
                   <PageBlock
                     page={props.page}
-                    navbar={props.navbar}
-                    footer={props.footer}
                     pageProps={props.pageProps}
                     showSkeletons={props.showSkeletons}
                     {...pageBlock}

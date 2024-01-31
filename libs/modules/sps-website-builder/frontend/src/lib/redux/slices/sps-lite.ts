@@ -1,5 +1,5 @@
 import { api as flyoutApi } from "../../entities/flyout/api";
-import { api as footerApi } from "../../entities/footer/api";
+import { api as footerApi } from "../../entities/footer/api/client";
 import { api as layoutApi } from "../../entities/layout/api";
 import { api as loaderApi } from "../../entities/loader/api";
 import { api as metatagApi } from "../../entities/metatag/api";
@@ -12,6 +12,7 @@ import { api as sliderApi } from "../../entities/slider/api";
 import { api as themeApi } from "../../entities/theme/api";
 import { api as topbarApi } from "../../entities/topbar/api";
 import { api as localeApi } from "../../entities/locale/api";
+import { api as buttonApi } from "../../components/elements/button/api/client";
 
 export const slices = {
   middlewares: [
@@ -29,6 +30,7 @@ export const slices = {
     themeApi.middleware,
     topbarApi.middleware,
     localeApi.middleware,
+    buttonApi.middleware,
   ],
   reducer: {
     [flyoutApi.reducerPath]: flyoutApi.reducer,
@@ -45,5 +47,6 @@ export const slices = {
     [themeApi.reducerPath]: themeApi.reducer,
     [topbarApi.reducerPath]: topbarApi.reducer,
     [localeApi.reducerPath]: localeApi.reducer,
+    [buttonApi.reducerPath]: buttonApi.reducer,
   },
 };
