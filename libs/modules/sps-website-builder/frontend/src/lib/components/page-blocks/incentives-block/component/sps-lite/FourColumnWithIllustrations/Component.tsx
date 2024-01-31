@@ -1,10 +1,10 @@
 // import Image from "next/image";
 // import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IPageBlockExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 import { Component as Feature } from "../../../../../elements/feature/component";
 
-export default function Component(props: IPageBlockExtended) {
+export default function Component(props: IComponentPropsExtended) {
   return (
     <div className="bg-gray-50 mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
       {props.title ? (

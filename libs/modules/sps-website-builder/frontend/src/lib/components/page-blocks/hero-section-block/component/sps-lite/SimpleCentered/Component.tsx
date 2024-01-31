@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Element as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IPageBlockExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 
-export default function Component(props: IPageBlockExtended) {
+export default function Component(props: IComponentPropsExtended) {
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.additionalMedia?.length ? (

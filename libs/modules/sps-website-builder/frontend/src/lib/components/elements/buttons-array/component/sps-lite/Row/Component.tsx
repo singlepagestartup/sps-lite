@@ -1,9 +1,9 @@
 import { Element as Button } from "../../../../button/component";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import { IElementExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 
-export default function Component(props: IElementExtended) {
+export default function Component(props: IComponentPropsExtended) {
   const { title, buttons } = props;
 
   return (

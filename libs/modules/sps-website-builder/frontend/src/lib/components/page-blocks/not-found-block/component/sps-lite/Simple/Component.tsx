@@ -1,8 +1,8 @@
 import { Element as Button } from "../../../../../elements/button/component";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IPageBlockExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 
-export default function Component(props: IPageBlockExtended) {
+export default function Component(props: IComponentPropsExtended) {
   return (
     <div className="mx-auto max-w-max min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
       <main className="sm:flex">

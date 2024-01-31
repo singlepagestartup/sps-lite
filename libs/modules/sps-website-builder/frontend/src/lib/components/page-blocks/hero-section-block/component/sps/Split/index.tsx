@@ -2,15 +2,17 @@ import Component from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import Skeleton from "./Skeleton";
 import Error from "./Error";
-import { IPageBlock, IPageBlockExtended } from "../..";
+import { IComponentProps, IComponentPropsExtended } from "../..";
 
-export default function Split(props: IPageBlock | IPageBlockExtended) {
+export default function Split(
+  props: IComponentProps | IComponentPropsExtended,
+) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? (
         <Skeleton {...props} />
       ) : (
-        <Component {...(props as IPageBlockExtended)} />
+        <Component {...(props as IComponentPropsExtended)} />
       )}
     </ErrorBoundary>
   );

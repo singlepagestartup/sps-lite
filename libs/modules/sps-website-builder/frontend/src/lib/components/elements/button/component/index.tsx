@@ -6,10 +6,10 @@ import { FETCH_TYPE } from "@sps/utils";
 import { Server } from "./server";
 import { Client } from "./client";
 
-export interface IElement extends IComponent {
+export interface IComponentProps extends IComponent {
   showSkeletons?: boolean;
 }
-export interface IElementExtended extends IComponentExtended {
+export interface IComponentPropsExtended extends IComponentExtended {
   showSkeletons?: boolean;
 }
 
@@ -18,7 +18,7 @@ export const variants = {
   ...startupVariants,
 };
 
-export function Element(props: IElement) {
+export function Element(props: IComponentProps) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

@@ -1,9 +1,9 @@
 import { getFileUrl } from "@sps/utils";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { IComponentExtended } from "../../";
+import { IComponentPropsExtended } from "../../";
 
-export function Component(props: IComponentExtended) {
+export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex flex-col gap-3">
       <div>

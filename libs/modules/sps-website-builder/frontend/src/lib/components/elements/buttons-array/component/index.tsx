@@ -2,34 +2,29 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/elements/buttons-array/interfaces";
 import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/buttons-array/interfaces";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/buttons-array/populate";
-import { api } from "../api";
+import { Server } from "./server";
+import { Client } from "./client";
+import { FETCH_TYPE } from "@sps/utils";
 
-export interface IElement extends IComponent {
+export interface IComponentProps extends IComponent {
   showSkeletons?: boolean;
 }
-export interface IElementExtended extends IComponentExtended {
+export interface IComponentPropsExtended extends IComponentExtended {
   showSkeletons?: boolean;
 }
 
-const variants = { ...spsLiteVariants, ...startupVariants };
+export const variants = { ...spsLiteVariants, ...startupVariants };
 
-export async function Element(props: IElement) {
-  const data = await api.findByIdAndName<IComponentExtended>({
-    id: props.id,
-    name: "elements.buttons-array",
-    populate,
-  });
-
+export async function Element(props: IComponentProps) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;
   }
 
-  if (!data) {
-    return <Comp showSkeletons={true} {...props} />;
+  if (FETCH_TYPE === "server") {
+    return <Server {...props} />;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Client {...props} />;
 }

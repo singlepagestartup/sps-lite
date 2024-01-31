@@ -13,6 +13,9 @@ import { api as themeApi } from "../../entities/theme/api";
 import { api as topbarApi } from "../../entities/topbar/api";
 import { api as localeApi } from "../../entities/locale/api";
 import { api as buttonApi } from "../../components/elements/button/api/client";
+import { api as buttonsArrayApi } from "../../components/elements/buttons-array/api/client";
+import { api as featureApi } from "../../components/elements/feature/api/client";
+import { api as logotypeApi } from "../../components/elements/logotype/api/client";
 
 export const slices = {
   middlewares: [
@@ -31,6 +34,9 @@ export const slices = {
     topbarApi.middleware,
     localeApi.middleware,
     buttonApi.middleware,
+    buttonsArrayApi.middleware,
+    featureApi.middleware,
+    logotypeApi.middleware,
   ],
   reducer: {
     [flyoutApi.reducerPath]: flyoutApi.reducer,
@@ -48,5 +54,8 @@ export const slices = {
     [topbarApi.reducerPath]: topbarApi.reducer,
     [localeApi.reducerPath]: localeApi.reducer,
     [buttonApi.reducerPath]: buttonApi.reducer,
+    [buttonsArrayApi.reducerPath]: buttonsArrayApi.reducer,
+    [featureApi.reducerPath]: featureApi.reducer,
+    [logotypeApi.reducerPath]: logotypeApi.reducer,
   },
 };

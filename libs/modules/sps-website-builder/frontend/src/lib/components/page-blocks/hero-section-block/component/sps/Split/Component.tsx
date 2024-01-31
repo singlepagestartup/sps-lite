@@ -3,9 +3,9 @@ import ReactMarkdown from "react-markdown";
 import { Element as Button } from "../../../../../elements/button/component";
 import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { getFileUrl } from "@sps/utils";
-import { IPageBlockExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 
-export default function Component(props: IPageBlockExtended) {
+export default function Component(props: IComponentPropsExtended) {
   return (
     <div className="relative flex flex-col border-b border-gray-200 lg:border-0">
       <div

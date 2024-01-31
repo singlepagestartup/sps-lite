@@ -1,11 +1,11 @@
-import { IPageBlock } from "..";
+import { IComponentProps, IComponentPropsExtended } from "..";
 import Split from "./Split";
 
 export const variants = {
   split: Split,
 };
 
-export default function Sps(props: IPageBlock) {
+export default function Sps(props: IComponentProps | IComponentPropsExtended) {
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {

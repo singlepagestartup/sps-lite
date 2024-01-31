@@ -1,8 +1,8 @@
 import { getFileUrl } from "@sps/utils";
 import Image from "next/image";
-import { IElementExtended } from "../..";
+import { IComponentPropsExtended } from "../..";
 
-export function Component(props: IElementExtended) {
+export function Component(props: IComponentPropsExtended) {
   return (
     <div>
       {props.media?.length ? (

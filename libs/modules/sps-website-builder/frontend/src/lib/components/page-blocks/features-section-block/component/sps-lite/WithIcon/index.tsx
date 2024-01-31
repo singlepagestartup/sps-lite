@@ -2,9 +2,11 @@ import Component from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import Error from "./Error";
 import Skeleton from "./Skeleton";
-import { IPageBlock, IPageBlockExtended } from "../..";
+import { IComponentProps, IComponentPropsExtended } from "../..";
 
-export default function WithIcon(props: IPageBlock | IPageBlockExtended) {
+export default function WithIcon(
+  props: IComponentProps | IComponentPropsExtended,
+) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? <Skeleton {...props} /> : <Component {...props} />}

@@ -1,6 +1,6 @@
-import { IPageBlock } from "../..";
+import { IComponentProps } from "../..";
 
-export default function Skeleton(props: IPageBlock) {
+export default function Skeleton(props: IComponentProps) {
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex flex-col items-center py-16">
