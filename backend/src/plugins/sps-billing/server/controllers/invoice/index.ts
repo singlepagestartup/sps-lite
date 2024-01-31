@@ -8,7 +8,7 @@ import { factories } from "@strapi/strapi";
 export default factories.createCoreController(
   "plugin::sps-billing.invoice",
   ({ strapi }) => ({
-    async confirm(ctx) {
+    async confirm(ctx: any) {
       ctx;
       const { id } = ctx.params;
       const { sign, redirect_to } = ctx.query;
@@ -22,7 +22,7 @@ export default factories.createCoreController(
       }
       return ctx.redirect(`${process.env.FRONTEND_URL}${redirect_to}`);
     },
-    async webhook(ctx) {
+    async webhook(ctx: any) {
       const { Signature, BillingID, PaymentId, Email, Currency } =
         ctx.request.body;
       const string = `${PaymentId}:${process.env.ZERO_X_PROCESSING_SHOP_ID}:${Email}:${Currency}:${process.env.ZERO_X_PROCESSING_WEBHOOK_PASSWORD}`;
