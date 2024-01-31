@@ -1,30 +1,16 @@
-import { useRef } from "react";
 import { ILayout } from "../..";
-import { Entity as Topbar } from "../../../../topbar/component";
 import { Entity as Navbar } from "../../../../navbar/component";
 import { Entity as Sidebar } from "../../../../sidebar/component";
 import { Entity as Footer } from "../../../../footer/component";
 
 export default function Boxed(props: ILayout) {
-  const topbarRef = useRef<any>(null);
-
   return (
     <div
       data-collection-type="layout"
       data-variant={props.variant}
       className={props.className || ""}
     >
-      {props?.topbar ? (
-        <Topbar {...props.topbar} topbarRef={topbarRef} page={props.page} />
-      ) : null}
-      {props?.navbar ? (
-        <Navbar
-          {...props?.navbar}
-          page={props.page}
-          topbar={props?.topbar}
-          topbarRef={topbarRef}
-        />
-      ) : null}
+      {props?.navbar ? <Navbar {...props?.navbar} page={props.page} /> : null}
       <div className={"layout-container"}>
         {props?.sidebar ? (
           <div

@@ -40,8 +40,29 @@ export async function middleware(request: any) {
         ),
       );
 
+      response.headers.set("x-sps-website-builder-pathname", pathname);
+
+      if (defauleLocale) {
+        response.headers.set(
+          "x-sps-website-builder-locale",
+          defauleLocale.code,
+        );
+      }
+
       return response;
     }
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(
+      "x-sps-website-builder-pathname",
+      request.nextUrl.pathname,
+    );
+
+    return NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
   } catch (error) {
     console.log("🚀 ~ middleware ~ error:", error);
   }

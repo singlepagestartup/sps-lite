@@ -14,7 +14,7 @@ export { pageBlockComponents } from "./lib/components/page-blocks/aliases";
 export { PageBlocks } from "./lib/components/page-blocks";
 export { Entity as SlideOver } from "./lib/entities/slide-over/component";
 export { Entity as Loader } from "./lib/entities/loader/component";
-export { Entity as Layout } from "./lib/entities/layout/component";
+export { Component as Layout } from "./lib/entities/layout/component";
 export { Entity as Topbar } from "./lib/entities/topbar/component";
 export { Entity as Sidebar } from "./lib/entities/sidebar/component";
 export { Entity as Flyout } from "./lib/entities/flyout/component";

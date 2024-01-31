@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as topbarApi } from "../api";
+import { api as topbarApi } from "../api/server";
 import type { IEntity as IBackendTopbar } from "@sps/sps-website-builder-contracts-extended/lib/entities/topbar/interfaces";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 

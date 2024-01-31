@@ -9,13 +9,6 @@ export default function Boxed(props: INavbar) {
       data-collection-type="navbar"
       data-variant={props.variant}
       className={props.className || ""}
-      style={{
-        marginTop: `${
-          (props.topbar &&
-            props.topbarRef?.current?.querySelector("div")?.offsetHeight) ||
-          0
-        }px`,
-      }}
     >
       <div className="navbar-container">
         <PageBlocks

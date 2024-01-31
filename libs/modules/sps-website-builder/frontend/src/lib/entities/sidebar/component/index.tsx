@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as sidebarApi } from "../api";
+import { api as sidebarApi } from "../api/client";
 import type { IEntity as IBackendSidebar } from "@sps/sps-website-builder-contracts-extended/lib/entities/sidebar/interfaces";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
