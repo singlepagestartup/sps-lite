@@ -14,7 +14,7 @@ export default factories.createCoreController(uid, ({ strapi }) => ({
     const keys = ["string", "number", "boolean", "date", "datetime", "time"];
 
     const { query } = ctx.request;
-
+    // @ts-ignore
     const { data, files } = parseBody(ctx);
 
     if (!isObject(data)) {

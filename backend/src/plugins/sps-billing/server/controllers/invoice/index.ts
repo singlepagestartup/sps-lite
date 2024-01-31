@@ -16,6 +16,7 @@ export default factories.createCoreController(
         .service("plugin::sps-billing.invoice")
         .findOne(id);
       if (sign === invoice.sign) {
+        // @ts-ignore
         ctx.request.body = { data: { status: "success" } };
         await super.update(ctx);
         return ctx.redirect(`${process.env.FRONTEND_URL}${redirect_to}`);
@@ -24,6 +25,7 @@ export default factories.createCoreController(
     },
     async webhook(ctx) {
       const { Signature, BillingID, PaymentId, Email, Currency } =
+        // @ts-ignore
         ctx.request.body;
       const string = `${PaymentId}:${process.env.ZERO_X_PROCESSING_SHOP_ID}:${Email}:${Currency}:${process.env.ZERO_X_PROCESSING_WEBHOOK_PASSWORD}`;
       const hash = crypto.createHash("md5").update(string).digest("hex");

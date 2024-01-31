@@ -13,6 +13,7 @@ export default factories.createCoreController(uid, ({ strapi }) => ({
 
     const sanitizedInvoice = await strapi
       .controller("plugin::sps-billing.invoice")
+      // @ts-ignore
       .sanitizeOutput(cartInvoice, ctx);
 
     return (
