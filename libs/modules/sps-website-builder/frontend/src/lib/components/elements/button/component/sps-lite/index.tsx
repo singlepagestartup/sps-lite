@@ -1,6 +1,6 @@
 import { Default } from "./Default";
 import { Locale } from "./Locale";
-import { IComponentProps, IComponentPropsExtended } from "..";
+// import { IComponentProps, IComponentPropsExtended } from "..";
 
 export const variants = {
   text: Default,
@@ -13,14 +13,14 @@ export const variants = {
   link: Default,
 };
 
-export default function SpsLite(
-  props: IComponentProps | IComponentPropsExtended,
-) {
-  const Comp = variants[props.variant as keyof typeof variants];
+// export default function SpsLite(
+//   props: IComponentProps | IComponentPropsExtended,
+// ) {
+//   const Comp = variants[props.variant as keyof typeof variants];
 
-  if (!Comp) {
-    return <></>;
-  }
+//   if (!Comp) {
+//     return <></>;
+//   }
 
-  return <Comp {...props} />;
-}
+//   return <Comp {...props} />;
+// }

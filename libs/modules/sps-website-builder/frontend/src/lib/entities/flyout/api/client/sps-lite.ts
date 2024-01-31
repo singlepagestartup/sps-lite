@@ -22,7 +22,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    getFlyouts: strapiFind<IEntity>({
+    find: strapiFind<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -30,7 +30,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getFlyoutById: strapiFindOne<IEntity>({
+    findOne: strapiFindOne<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -38,7 +38,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    createFlyout: strapiCreate<IEntity>({
+    create: strapiCreate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -46,7 +46,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    updateFlyout: strapiUpdate<IEntity>({
+    update: strapiUpdate<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -54,7 +54,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    deleteFlyout: strapiDelete<IEntity>({
+    delete: strapiDelete<IEntity>({
       serviceApi: this,
       build,
       populate,

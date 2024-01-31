@@ -1,83 +1,33 @@
-"use client";
-
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, forwardRef } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as flyoutApi } from "../api/client";
-import type { IEntity as IBackendFlyout } from "@sps/sps-website-builder-contracts-extended/lib/entities/flyout/interfaces";
+import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/flyout/interfaces";
+import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/entities/flyout/interfaces";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
-import { getTargetPage } from "@sps/utils";
-import { useParams } from "next/navigation";
+import { FETCH_TYPE } from "@sps/utils";
+import { Server } from "./server";
+import { Client } from "./client";
 
-export interface IFlyout extends IBackendFlyout {
+export interface IComponentProps extends IEntity {
+  showSkeletons?: boolean;
+  children: ReactNode;
+  page: IBackendPage;
+}
+export interface IComponentPropsExtended extends IEntityExtended {
   showSkeletons?: boolean;
   children: ReactNode;
   page: IBackendPage;
 }
 
-const variants = {
+export const variants = {
   ...spsLiteVariants,
   ...startupVariants,
 };
 
-export function Entity({ flyout, children }: { flyout?: any; children?: any }) {
-  const params = useParams();
-  const [flyoutProps, setFlyoutProps] = useState<any>();
-  const [page, setPage] = useState<IBackendPage>(); //?
-
-  useEffect(() => {
-    if (params) {
-      getTargetPage(params).then((res) => {
-        setPage(res);
-      });
-    }
-  }, [JSON.stringify(params)]);
-
-  const {
-    data: backendFlyouts,
-    isLoading,
-    isError,
-    isFetching,
-    isUninitialized,
-  } = flyoutApi.useGetFlyoutsQuery({});
-
-  const localFlyouts = useMemo(() => {
-    if (backendFlyouts) {
-      if (flyout) {
-        return [flyout, ...backendFlyouts];
-      }
-
-      return backendFlyouts;
-    }
-
-    if (flyout) {
-      return [flyout];
-    }
-
-    return [];
-  }, [flyout, backendFlyouts]);
-
-  useEffect(() => {
-    if (!localFlyouts) {
-      return;
-    }
-
-    for (const f of localFlyouts) {
-      if (flyout.uid === f.uid) {
-        setFlyoutProps(f);
-      }
-    }
-  }, [localFlyouts, flyout]);
-
-  const Comp = variants[flyoutProps?.variant as keyof typeof variants];
-
-  if (!Comp || !children || isError || !page) {
-    return <></>;
+export function Component(props: IComponentProps) {
+  if (FETCH_TYPE === "server") {
+    return <Server {...props} />;
   }
 
-  return (
-    <Comp {...flyoutProps} page={page}>
-      {children}
-    </Comp>
-  );
+  return <Client {...props} />;
 }

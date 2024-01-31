@@ -1,16 +1,17 @@
 import Simple from "./Simple";
-import { IFlyout } from "..";
+import { IComponentProps, IComponentPropsExtended } from "..";
 
 export const variants = {
   simple: Simple,
 };
 
-export default function SpsLite(props: IFlyout) {
-  const Comp = variants[props.variant as keyof typeof variants];
+// export default function SpsLite(
+//   props: IComponentProps | IComponentPropsExtended,
+// ) {
+//   console.log(`🚀 ~ props:`, props);
 
-  if (!Comp) {
-    return <></>;
-  }
+//   // const Comp = variants[props.flyout.variant as keyof typeof variants];
 
-  return <Comp {...props} />;
-}
+//   return <div>{props.children}</div>;
+//   // return <Comp {...props} />;
+// }
