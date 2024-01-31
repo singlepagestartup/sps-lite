@@ -10,7 +10,7 @@ const { ValidationError } = require("@strapi/utils").errors;
 const uid = "plugin::sps-subscription.attribute";
 
 export default factories.createCoreController(uid, ({ strapi }) => ({
-  async create(ctx) {
+  async create(ctx: any) {
     const keys = ["string", "number", "boolean", "date", "datetime", "time"];
 
     const { query } = ctx.request;

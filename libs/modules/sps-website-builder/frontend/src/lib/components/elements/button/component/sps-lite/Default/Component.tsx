@@ -7,10 +7,7 @@ import { useMemo } from "react";
 import { Component as Flyout } from "../../../../../../entities/flyout/component";
 import { useGetButtonParams } from "@sps/hooks";
 
-let render = 0;
 export function Component(props: IComponentPropsExtended) {
-  render++;
-  console.log("render button", props.title, render);
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   // Bug with Next.js Link component and hash links
