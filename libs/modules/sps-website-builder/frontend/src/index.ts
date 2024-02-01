@@ -19,5 +19,5 @@ export { pageBlockComponents } from "./lib/components/page-blocks/aliases";
 // export { Entity as Sidebar } from "./lib/entities/sidebar/component";
 // export { Component as Flyout } from "./lib/entities/flyout/component";
 // export { Entity as Navbar } from "./lib/entities/navbar/component";
-// export { Element as Button } from "./lib/components/elements/button/component";
+// export { Component as Button } from "./lib/components/elements/button/component";
 export { ReduxProvider } from "./lib/redux";

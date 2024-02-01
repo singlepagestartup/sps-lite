@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import { Element as Button } from "../../../../../elements/button/component";
+import { Component as Button } from "../../../../../elements/button/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,26 +1,15 @@
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/elements/button/interfaces";
-import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/interfaces";
+"use client";
+
 import { api } from "../api";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export interface IComponentProps extends IComponent {
-  showSkeletons?: boolean;
-}
-export interface IComponentPropsExtended extends IComponentExtended {
-  showSkeletons?: boolean;
-}
-
-export const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function Element(props: IComponent) {
-  const Comp = variants[props.variant as keyof typeof variants];
+export function Component(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
     id: props.id,
   });
+
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

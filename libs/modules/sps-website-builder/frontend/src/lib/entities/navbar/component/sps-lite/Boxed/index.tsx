@@ -1,5 +1,3 @@
-"use client";
-
 import { PageBlocks } from "../../../../../components/page-blocks";
 import { INavbar } from "../..";
 

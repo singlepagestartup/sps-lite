@@ -1,6 +1,6 @@
 "use client";
 
-import { Element as Button } from "../../../../../elements/button/component";
+import { Component as Button } from "../../../../../elements/button/component";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";

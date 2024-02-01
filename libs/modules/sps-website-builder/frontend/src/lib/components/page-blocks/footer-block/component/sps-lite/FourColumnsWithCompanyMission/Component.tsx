@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Element as ButtonArrays } from "../../../../../elements/buttons-array/component";
+import { Component as ButtonArrays } from "../../../../../elements/buttons-array/component";
 import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { IComponentPropsExtended } from "../../interface";
 

@@ -1,5 +1,5 @@
-import { Element as Button } from "../../elements/button/component";
-import { Element as ButtonsArray } from "../../elements/buttons-array/component";
+import { Component as Button } from "../../elements/button/component";
+import { Component as ButtonsArray } from "../../elements/buttons-array/component";
 import { Component as FaqBlock } from "../faq-block/component";
 import { Component as FeaturesSectionBlock } from "../features-section-block/component";
 import { Component as FooterBlock } from "../footer-block/component";

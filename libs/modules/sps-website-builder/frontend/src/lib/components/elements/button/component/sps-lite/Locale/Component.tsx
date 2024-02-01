@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@sps/ui-adapter";
-import { IComponentPropsExtended } from "../..";
+import { IComponentPropsExtended } from "../../interface";
 import { useMemo } from "react";
 import { Component as Flyout } from "../../../../../../entities/flyout/component";
 import { useParams } from "next/navigation";

@@ -14,7 +14,7 @@ import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import { IExtendedSlide, ISlider } from "../..";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { Element as Button } from "../../../../../components/elements/button/component";
+import { Component as Button } from "../../../../../components/elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/slide/interfaces";
 

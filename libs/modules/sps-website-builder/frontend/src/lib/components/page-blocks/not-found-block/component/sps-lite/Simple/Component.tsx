@@ -1,4 +1,4 @@
-import { Element as Button } from "../../../../../elements/button/component";
+import { Component as Button } from "../../../../../elements/button/component";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "../../interface";
 
