@@ -20,7 +20,7 @@ export function Component(props: IComponentPropsExtended) {
 
   if (props.flyout) {
     return (
-      <Flyout {...props.flyout}>
+      <Flyout isServer={false} {...props.flyout}>
         <Button
           ui="shadcn"
           data-component="elements.button"

@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      <PageBlocks pageBlocks={props.pageBlocks} />
+      <PageBlocks isServer={props.isServer} pageBlocks={props.pageBlocks} />
     </div>
   );
 }

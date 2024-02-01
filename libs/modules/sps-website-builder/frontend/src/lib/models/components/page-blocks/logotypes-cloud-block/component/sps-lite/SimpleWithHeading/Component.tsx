@@ -22,7 +22,9 @@ export function Component(props: IComponentPropsExtended) {
         <div className="mt-8 flow-root self-center lg:mt-0">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {props.logotypes?.map((logotype, index) => {
-              return <Logotype key={index} {...logotype} />;
+              return (
+                <Logotype isServer={props.isServer} key={index} {...logotype} />
+              );
             })}
           </div>
         </div>

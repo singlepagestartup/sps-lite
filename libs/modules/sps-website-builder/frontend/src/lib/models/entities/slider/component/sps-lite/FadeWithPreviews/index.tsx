@@ -197,7 +197,7 @@ function DefaultSlideComponent({
             <p>{slide.description}</p>
             <div className="buttons-container">
               {slide.buttons?.map((button, index: number) => {
-                return <Button key={index} {...button} />;
+                return <Button isServer={false} key={index} {...button} />;
               })}
             </div>
           </div>

@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <div className="footer-container">
-        <PageBlocks pageBlocks={props.pageBlocks} />
+        <PageBlocks isServer={props.isServer} pageBlocks={props.pageBlocks} />
       </div>
     </footer>
   );

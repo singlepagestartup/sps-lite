@@ -1,5 +1,3 @@
-"use client";
-
 import { Component as Navbar } from "../../../../navbar/component";
 import { Component as Sidebar } from "../../../../sidebar/component";
 import { Component as Footer } from "../../../../footer/component";
@@ -12,7 +10,9 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      {props.navbar ? <Navbar {...props.navbar} /> : null}
+      {props.navbar ? (
+        <Navbar isServer={props.isServer} {...props.navbar} />
+      ) : null}
       <div className="layout-container">
         <div
           className={`w-full flex flex-col ${
@@ -23,13 +23,13 @@ export function Component(props: IComponentPropsExtended) {
               : ""
           }`}
         >
-          <div
+          {/* <div
             className={`flex flex-col ${
               props.sidebar?.variant === "one-quarter" ? "lg:w-3/12" : ""
             }`}
           >
             {props.sidebar ? <Sidebar {...props.sidebar} /> : null}
-          </div>
+          </div> */}
           <div
             className={`h-full ${
               props.sidebar
@@ -43,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </div>
-      {props.footer ? <Footer {...props.footer} /> : null}
+      {/* {props.footer ? <Footer {...props.footer} /> : null} */}
     </div>
   );
 }

@@ -8,7 +8,9 @@ export function Component(props: IComponentPropsExtended) {
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col gap-4 w-full lg:w-3/12">
-          {props.logotype ? <Logotype {...props.logotype} /> : null}
+          {props.logotype ? (
+            <Logotype isServer={props.isServer} {...props.logotype} />
+          ) : null}
           <div className="lg:max-w-xs">
             {props.description ? (
               <ReactMarkdown className="text-xs text-gray-300">
@@ -18,7 +20,13 @@ export function Component(props: IComponentPropsExtended) {
           </div>
           <div className="w-full flex gap-4">
             {props.extraButtonsArrays?.map((buttonsArray, index) => {
-              return <ButtonArrays key={index} {...buttonsArray} />;
+              return (
+                <ButtonArrays
+                  isServer={props.isServer}
+                  key={index}
+                  {...buttonsArray}
+                />
+              );
             })}
           </div>
         </div>
@@ -26,7 +34,7 @@ export function Component(props: IComponentPropsExtended) {
           {props.buttonsArrays?.map((buttonsArray, index) => {
             return (
               <div key={index} className="w-6/12 lg:w-3/12">
-                <ButtonArrays {...buttonsArray} />
+                <ButtonArrays isServer={props.isServer} {...buttonsArray} />
               </div>
             );
           })}
@@ -39,7 +47,13 @@ export function Component(props: IComponentPropsExtended) {
           </ReactMarkdown>
         ) : null}
         {props.additionalButtonsArrays?.map((buttonsArray, index) => {
-          return <ButtonArrays key={index} {...buttonsArray} />;
+          return (
+            <ButtonArrays
+              isServer={props.isServer}
+              key={index}
+              {...buttonsArray}
+            />
+          );
         })}
       </div>
     </footer>

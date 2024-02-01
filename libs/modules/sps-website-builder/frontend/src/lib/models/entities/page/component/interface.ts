@@ -1,7 +1,7 @@
 import { IModelExtended } from "../_model";
 
 export interface IComponentProps {
-  isServer?: boolean;
+  isServer: boolean;
   params: { locale: string; [key: string]: any };
   searchParams: { [key: string]: any };
 }

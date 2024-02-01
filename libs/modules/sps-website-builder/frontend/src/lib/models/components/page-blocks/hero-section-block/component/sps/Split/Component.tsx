@@ -18,7 +18,9 @@ export default function Component(props: IComponentPropsExtended) {
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
               <div className="lg:pr-16">
                 <div className="mb-6">
-                  {props.logotype ? <Logotype {...props.logotype} /> : null}
+                  {props.logotype ? (
+                    <Logotype isServer={props.isServer} {...props.logotype} />
+                  ) : null}
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                   {props.title}
@@ -30,7 +32,13 @@ export default function Component(props: IComponentPropsExtended) {
                 ) : null}
                 <div className="mt-6 flex gap-2 flex-wrap">
                   {props.buttons?.map((button, index) => {
-                    return <Button key={index} {...button} />;
+                    return (
+                      <Button
+                        isServer={props.isServer}
+                        key={index}
+                        {...button}
+                      />
+                    );
                   })}
                 </div>
               </div>

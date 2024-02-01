@@ -20,5 +20,5 @@ export async function NotFoundPage() {
     return <div>Not found</div>;
   }
 
-  return <PageBlocks pageBlocks={pages[0].pageBlocks} />;
+  return <PageBlocks isServer={false} pageBlocks={pages[0].pageBlocks} />;
 }

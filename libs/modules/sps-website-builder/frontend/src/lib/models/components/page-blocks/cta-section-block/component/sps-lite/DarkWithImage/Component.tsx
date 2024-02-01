@@ -22,7 +22,9 @@ export function Component(props: IComponentPropsExtended) {
           ) : null}
           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
             {props?.buttons?.map((button, index) => {
-              return <Button key={index} {...button} />;
+              return (
+                <Button isServer={props.isServer} key={index} {...button} />
+              );
             })}
           </div>
         </div>

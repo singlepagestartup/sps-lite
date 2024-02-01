@@ -26,7 +26,9 @@ export function Component(props: IComponentPropsExtended) {
           </div>
           <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
             {props.buttons?.map((button, index) => {
-              return <Button key={index} {...button} />;
+              return (
+                <Button isServer={props.isServer} key={index} {...button} />
+              );
             })}
           </div>
         </div>

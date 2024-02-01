@@ -18,7 +18,9 @@ export function Component(props: IComponentPropsExtended) {
       <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
         {props.features?.length
           ? props.features.map((feature, index) => {
-              return <Feature key={index} {...feature} />;
+              return (
+                <Feature isServer={props.isServer} key={index} {...feature} />
+              );
               // return (
               //   <div
               //     key={index}

@@ -11,7 +11,7 @@ export function Simple(props: IComponentPropsExtended) {
         <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
         <PopoverContent>
           <div className="flyout-container">
-            <PageBlocks pageBlocks={props.pageBlocks} />
+            <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
           </div>
         </PopoverContent>
       </Popover>

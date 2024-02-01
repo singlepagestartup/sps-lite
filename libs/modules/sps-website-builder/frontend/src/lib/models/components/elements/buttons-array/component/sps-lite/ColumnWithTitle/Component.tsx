@@ -26,7 +26,7 @@ export function Component(props: IComponentPropsExtended) {
 
         <div className="buttons-array-buttons-container">
           {buttons?.map((button, index) => {
-            return <Button key={index} {...button} />;
+            return <Button isServer={props.isServer} key={index} {...button} />;
           })}
         </div>
       </div>

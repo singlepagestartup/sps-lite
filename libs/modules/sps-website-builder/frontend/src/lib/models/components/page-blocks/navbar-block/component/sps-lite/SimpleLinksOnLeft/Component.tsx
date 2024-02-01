@@ -40,19 +40,21 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex">
-              {props.logotype ? <Logotype {...props.logotype} /> : null}
+              {props.logotype ? (
+                <Logotype isServer={false} {...props.logotype} />
+              ) : null}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.buttons?.map((button, index) => {
-                  return <Button key={index} {...button} />;
+                  return <Button isServer={false} key={index} {...button} />;
                 })}
               </div>
             </div>
             <div className="hidden lg:flex lg:space-x-2 items-center">
               {props.additionalButtons?.map((button, index) => {
-                return <Button key={index} {...button} />;
+                return <Button isServer={false} key={index} {...button} />;
               })}
               {props.extraButtons?.map((button, index) => {
-                return <Button key={index} {...button} />;
+                return <Button isServer={false} key={index} {...button} />;
               })}
             </div>
           </div>
@@ -72,10 +74,10 @@ function DisclosureInner({
       <Disclosure.Panel className="lg:hidden py-2">
         <div className="flex flex-col gap-3 px-2 ">
           {props.buttons?.map((button, index) => {
-            return <Button key={index} {...button} />;
+            return <Button isServer={false} key={index} {...button} />;
           })}
           {props.additionalButtons?.map((button, index) => {
-            return <Button key={index} {...button} />;
+            return <Button isServer={false} key={index} {...button} />;
           })}
         </div>
       </Disclosure.Panel>
