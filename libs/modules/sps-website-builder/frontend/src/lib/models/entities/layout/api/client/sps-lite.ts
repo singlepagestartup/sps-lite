@@ -1,27 +1,23 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/layout/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/layout/interfaces";
-
-const model = "layouts";
-const rtkType = "Layout";
+import { populate, route, tag, IModelExtended } from "../../_model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
     `${BACKEND_URL}/api/sps-website-builder`,
   ),
-  tagTypes: [rtkType],
-  reducerPath: model,
+  tagTypes: [tag],
+  reducerPath: route,
   endpoints: (build) => ({
-    get: rtk.api.find<IEntity>({
+    get: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
 
-    getByPageUrl: build.query<IEntity, any>({
+    getByPageUrl: build.query<IModelExtended, any>({
       query: (params: any = {}) => {
         const {
           url,
@@ -32,7 +28,7 @@ export const api = createApi({
         } = params;
 
         return {
-          url: `${model}/by-page-url`,
+          url: `${route}/by-page-url`,
           params: {
             url,
             populate: passedPopulate,
@@ -50,8 +46,8 @@ export const api = createApi({
       providesTags: (result: any) => {
         return result?.id
           ? [
-              { type: rtkType, id: result.id },
-              { type: rtkType, id: "LIST" },
+              { type: tag, id: result.id },
+              { type: tag, id: "LIST" },
             ]
           : [];
       },

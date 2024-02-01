@@ -1,17 +1,14 @@
-import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/interfaces";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
 import { fetch } from "@sps/utils";
-
-const model = "loader";
+import { populate, route, IModelExtended } from "../../_model";
 
 export const api = {
   find: async () => {
-    return await fetch.api.find<IEntity>({ model, populate });
+    return await fetch.api.find<IModelExtended>({ model: route, populate });
   },
   findOne: async ({ id }: { id: number }) => {
-    return await fetch.api.findOne<IEntity>({
+    return await fetch.api.findOne<IModelExtended>({
       id,
-      model,
+      model: route,
       populate,
     });
   },

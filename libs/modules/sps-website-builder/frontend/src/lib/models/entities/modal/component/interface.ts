@@ -1,11 +1,10 @@
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/flyout/interfaces";
-import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/entities/flyout/interfaces";
 import { ReactNode } from "react";
+import { IModel, IModelExtended } from "../_model";
 
-export interface IComponentProps extends IEntity {
+export interface IComponentProps extends IModel {
   showSkeletons?: boolean;
   children: ReactNode;
 }
 export interface IComponentPropsExtended
   extends IComponentProps,
-    IEntityExtended {}
+    IModelExtended {}

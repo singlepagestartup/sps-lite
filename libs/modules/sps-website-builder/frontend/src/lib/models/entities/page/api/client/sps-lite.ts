@@ -1,40 +1,36 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
-
-const model = "pages";
-const rtkType = "Page";
+import { populate, route, tag, IModelExtended } from "../../_model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
     `${BACKEND_URL}/api/sps-website-builder`,
   ),
-  tagTypes: [rtkType],
-  reducerPath: model,
+  tagTypes: [tag],
+  reducerPath: route,
   endpoints: (build) => ({
-    get: rtk.api.find<IEntity>({
+    get: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
 
-    getById: rtk.api.findOne<IEntity>({
+    getById: rtk.api.findOne<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
 
-    getByUrl: build.query<IEntity, any>({
+    getByUrl: build.query<IModelExtended, any>({
       query: (params: any = {}) => {
         const { populate, locale, filters, pagination, url } = params;
 
         return {
-          url: `${model}/get-by-url`,
+          url: `${route}/get-by-url`,
           params: {
             url,
             populate,
@@ -52,35 +48,35 @@ export const api = createApi({
       providesTags: (result: any) => {
         return result?.id
           ? [
-              { type: rtkType, id: result.id },
-              { type: rtkType, id: "LIST" },
+              { type: tag, id: result.id },
+              { type: tag, id: "LIST" },
             ]
           : [];
       },
     }),
 
-    createPage: rtk.api.create<IEntity>({
+    createPage: rtk.api.create<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
 
-    updatePage: rtk.api.update<IEntity>({
+    updatePage: rtk.api.update<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
 
-    deletePage: rtk.api.delete<IEntity>({
+    deletePage: rtk.api.delete<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
   }),
 });

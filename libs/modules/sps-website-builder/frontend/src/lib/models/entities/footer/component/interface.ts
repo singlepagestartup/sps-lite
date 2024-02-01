@@ -1,9 +1,8 @@
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/footer/interfaces";
-import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/interfaces";
+import { IModel, IModelExtended } from "../_model";
 
-export interface IComponentProps extends IEntity {
+export interface IComponentProps extends IModel {
   showSkeletons?: boolean;
 }
 export interface IComponentPropsExtended
   extends IComponentProps,
-    IEntityExtended {}
+    IModelExtended {}

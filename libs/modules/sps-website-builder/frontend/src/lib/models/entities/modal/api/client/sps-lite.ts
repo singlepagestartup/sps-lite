@@ -1,24 +1,20 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/modal/populate";
-import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/modal/interfaces";
-
-const model = "modals";
-const rtkType = "Modal";
+import { populate, route, tag, IModelExtended } from "../../_model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
     `${BACKEND_URL}/api/sps-website-builder`,
   ),
-  tagTypes: [rtkType],
-  reducerPath: model,
+  tagTypes: [tag],
+  reducerPath: route,
   endpoints: (build) => ({
-    get: rtk.api.find<IEntity>({
+    get: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
   }),
 });
