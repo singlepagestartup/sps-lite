@@ -54,7 +54,7 @@ export function PageBlocks(props: IPage) {
                   data-variant={pageBlock.variant}
                   className={`${pageBlock.className || ""}`}
                 >
-                  <PageBlock {...pageBlock} />
+                  <PageBlock {...pageBlock} isServer={props.isServer} />
                 </div>
               </ErrorBoundary>
             );

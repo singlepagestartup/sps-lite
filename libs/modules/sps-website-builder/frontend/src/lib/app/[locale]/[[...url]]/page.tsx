@@ -124,5 +124,5 @@ export async function getPage(props: any) {
 export async function Page(props: any) {
   const page = await getPage(props);
 
-  return <PageBlocks pageBlocks={page.pageBlocks} />;
+  return <PageBlocks isServer={true} pageBlocks={page.pageBlocks} />;
 }

@@ -1,22 +1,10 @@
-"use client";
-
-import { api } from "../api/client";
+import dynamic from "next/dynamic";
 import { IComponentProps } from "./interface";
-import { variants } from "./variants";
 
 export function Component(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
-    id: props.id,
-  });
-  const Comp = variants[props.variant as keyof typeof variants];
+  const Comp = props.isServer
+    ? dynamic(() => import("./server"), {})
+    : dynamic(() => import("./client"), {});
 
-  if (!Comp) {
-    return <></>;
-  }
-
-  if (isFetching || isLoading || isUninitialized) {
-    return <Comp showSkeletons={true} {...props} />;
-  }
-
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} />;
 }

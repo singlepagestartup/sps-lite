@@ -14,18 +14,18 @@ import { Component as SliderBlock } from "../slider-block/component";
 import { Component as NavbarBlock } from "../navbar-block/component";
 
 export const pageBlockComponents = {
-  "page-blocks.footer-block": FooterBlock,
-  "page-blocks.header-section-block": HeaderSectionBlock,
+  // "page-blocks.footer-block": FooterBlock,
+  // "page-blocks.header-section-block": HeaderSectionBlock,
   "page-blocks.hero-section-block": HeroSectionBlock,
   "page-blocks.features-section-block": FeaturesSectionBlock,
-  "page-blocks.faqs-block": FaqBlock,
-  "page-blocks.logotypes-cloud-block": LogotypesCloudBlock,
-  "page-blocks.slider-block": SliderBlock,
-  "page-blocks.not-found-block": NotFoundBlock,
-  "page-blocks.incentives-block": IncentivesBlock,
+  // "page-blocks.faqs-block": FaqBlock,
+  // "page-blocks.logotypes-cloud-block": LogotypesCloudBlock,
+  // "page-blocks.slider-block": SliderBlock,
+  // "page-blocks.not-found-block": NotFoundBlock,
+  // "page-blocks.incentives-block": IncentivesBlock,
   "page-blocks.cta-section-block": CtaSectionBlock,
-  "page-blocks.alert-block": AlertBlock,
-  "elements.buttons-array": ButtonsArray,
-  "elements.button": Button,
+  // "page-blocks.alert-block": AlertBlock,
+  // "elements.buttons-array": ButtonsArray,
+  // "elements.button": Button,
   "page-blocks.navbar-block": NavbarBlock,
 };

@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <div className="navbar-container">
-        <PageBlocks pageBlocks={props.pageBlocks} />
+        <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
       </div>
     </nav>
   );

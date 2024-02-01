@@ -3,6 +3,7 @@ import { IModel, IModelExtended } from "../_model";
 
 export interface IComponentProps extends IModel, IPage {
   showSkeletons?: boolean;
+  isServer?: boolean;
 }
 
 export interface IComponentPropsExtended
