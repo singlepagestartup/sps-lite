@@ -1,24 +1,20 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/footer-block/populate";
-import type { IComponent } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/footer-block/interfaces";
-
-const model = "components/page-blocks.footer-block";
-const rtkType = "FooterBlock";
+import { IModelExtended, route, tag, populate } from "../../_model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
     `${BACKEND_URL}/api/sps-website-builder`,
   ),
-  tagTypes: [rtkType],
-  reducerPath: model,
+  tagTypes: [tag],
+  reducerPath: route,
   endpoints: (build) => ({
-    findOne: rtk.api.findOne<IComponent>({
+    findOne: rtk.api.findOne<IModelExtended>({
       serviceApi: this,
       build,
       populate,
-      model,
-      rtkType,
+      model: route,
+      rtkType: tag,
     }),
   }),
 });

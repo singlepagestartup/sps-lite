@@ -12,7 +12,7 @@ export async function RootLayout({ children }: { children: React.ReactNode }) {
     <section data-app="sps-website-builder" className="relative">
       {/* Suspense here is for static build, without that build will return nothing */}
       <Suspense>
-        <Loader isServer={true} />
+        {/* <Loader isServer={true} /> */}
         <Layout>{children}</Layout>
         {/* <Modal />
           <SlideOver /> */}

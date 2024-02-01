@@ -1,13 +1,12 @@
-import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/page-blocks/not-found-block/interfaces";
-import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/not-found-block/interfaces";
 import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
+import { IModel, IModelExtended } from "../_model";
 
-export interface IComponentProps extends IComponent, IPage {
+export interface IComponentProps extends IModel, IPage {
   showSkeletons?: boolean;
 }
 
 export interface IComponentPropsExtended
   extends IComponentProps,
-    IComponentExtended {
+    IModelExtended {
   showSkeletons?: boolean;
 }
