@@ -32,22 +32,22 @@ export function Component(props: IComponentPropsExtended) {
   //   );
   // }
 
-  if (props.flyout) {
-    return (
-      <Flyout {...props.flyout}>
-        <Button
-          ui="shadcn"
-          data-component="elements.button"
-          variant={props.variant}
-          {...additionalAttributes}
-        >
-          {`${
-            !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
-          }`}
-        </Button>
-      </Flyout>
-    );
-  }
+  // if (props.flyout) {
+  //   return (
+  //     <Flyout isServer={props.isServer} {...props.flyout}>
+  //       <Button
+  //         ui="shadcn"
+  //         data-component="elements.button"
+  //         variant={props.variant}
+  //         {...additionalAttributes}
+  //       >
+  //         {`${
+  //           !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
+  //         }`}
+  //       </Button>
+  //     </Flyout>
+  //   );
+  // }
 
   if (url && props.url) {
     return (

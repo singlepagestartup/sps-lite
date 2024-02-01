@@ -1,18 +1,17 @@
-import { PageBlocks } from "../../../../../components/page-blocks";
-import { ITopbar } from "../..";
+import { Component } from "./Component";
+import { Skeleton } from "./Skeleton";
+import { Error } from "./Error";
+import { IComponentProps, IComponentPropsExtended } from "../../interface";
+import { ErrorBoundary } from "@sps/ui-adapter";
 
-export default function Boxed(props: ITopbar) {
+export function Boxed(props: IComponentProps | IComponentPropsExtended) {
   return (
-    <div ref={props.topbarRef} className={props.className || ""}>
-      <div className="bg-white w-screen fixed z-40">
-        <div className="mx-auto max-w-7xl">
-          <PageBlocks
-            page={props.page}
-            pageBlocks={props.pageBlocks}
-            showSkeletons={props.showSkeletons}
-          />
-        </div>
-      </div>
-    </div>
+    <ErrorBoundary fallback={Error}>
+      {props.showSkeletons ? (
+        <Skeleton {...props} />
+      ) : (
+        <Component {...(props as IComponentPropsExtended)} />
+      )}
+    </ErrorBoundary>
   );
 }

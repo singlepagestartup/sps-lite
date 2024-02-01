@@ -11,7 +11,7 @@ import React, {
   useMemo,
 } from "react";
 import { animated, useTransition, useSpringRef } from "@react-spring/web";
-import { IExtendedSlide, ISlider } from "../..";
+import { IExtendedSlide, ISlider } from "../../client";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { Component as Button } from "../../../../../components/elements/button/component";
@@ -25,7 +25,7 @@ interface INavigationButton {
   onClick: MouseEventHandler;
 }
 
-export default function FadeWithPreviews(props: ISlider) {
+export function FadeWithPreviews(props: ISlider) {
   const {
     slides,
     activeSlide = 0,

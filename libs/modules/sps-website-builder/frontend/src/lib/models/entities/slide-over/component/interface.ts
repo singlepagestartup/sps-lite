@@ -1,8 +1,13 @@
-import { IModel, IModelExtended } from "../_model";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
+import { Dispatch, SetStateAction } from "react";
+import { IModelExtended } from "../_model";
 
-export interface IComponentProps extends IModel {
+export interface IComponentProps {
+  isServer: false;
   showSkeletons?: boolean;
-  isServer: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+  page?: IBackendPage;
 }
 export interface IComponentPropsExtended
   extends IComponentProps,
