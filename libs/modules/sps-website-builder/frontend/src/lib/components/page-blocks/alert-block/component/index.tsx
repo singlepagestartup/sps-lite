@@ -3,9 +3,7 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/page-blocks/alert-block/interfaces";
 import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/alert-block/interfaces";
-import { FETCH_TYPE } from "@sps/utils";
-import { Server } from "./server";
-import { Client } from "./client";
+import { api } from "../api";
 
 export interface IComponentProps extends IComponent, IPage {}
 export interface IComponentPropsExtended extends IComponentExtended, IPage {}
@@ -15,16 +13,20 @@ export const variants = {
   ...startupVariants,
 };
 
-export async function PageBlock(props: IComponentProps) {
+export function PageBlock(props: IComponentProps) {
+  const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
+    id: props.id,
+  });
+
   const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;
   }
 
-  if (FETCH_TYPE === "server") {
-    return <Server {...props} />;
+  if (isFetching || isLoading || isUninitialized) {
+    return <Comp showSkeletons={true} {...props} />;
   }
 
-  return <Client {...props} />;
+  return <Comp {...props} {...data} />;
 }

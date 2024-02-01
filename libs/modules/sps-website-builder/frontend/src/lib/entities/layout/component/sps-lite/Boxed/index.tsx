@@ -1,3 +1,5 @@
+"use client";
+
 import { ILayout } from "../..";
 import { Entity as Navbar } from "../../../../navbar/component";
 import { Entity as Sidebar } from "../../../../sidebar/component";

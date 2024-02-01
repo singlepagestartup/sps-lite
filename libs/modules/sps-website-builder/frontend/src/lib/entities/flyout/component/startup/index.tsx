@@ -1,10 +1,14 @@
 import { FC } from "react";
-import { IFlyout } from "..";
+import { IComponentProps, IComponentPropsExtended } from "..";
 
 export const variants = {};
 
-export default function Startup(props: IFlyout) {
-  const Comp = variants[props.variant as keyof typeof variants] as FC<IFlyout>;
+export default function Startup(
+  props: IComponentProps | IComponentPropsExtended,
+) {
+  const Comp = variants[props.variant as keyof typeof variants] as FC<
+    IComponentProps | IComponentPropsExtended
+  >;
 
   if (!Comp) {
     return <></>;

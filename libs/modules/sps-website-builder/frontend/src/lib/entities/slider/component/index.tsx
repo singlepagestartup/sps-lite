@@ -6,7 +6,7 @@ import { variants as startupVariants } from "./startup";
 import type { IEntity as IBackendSlider } from "@sps/sps-website-builder-contracts/lib/entities/slider/interfaces";
 import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/slide/interfaces";
 import { parseMimeType } from "@sps/utils";
-import { api } from "../api/client";
+import { api } from "../api";
 
 const variants = {
   ...spsLiteVariants,

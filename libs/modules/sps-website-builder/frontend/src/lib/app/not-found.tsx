@@ -1,3 +1,5 @@
+"use server";
+
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
@@ -18,5 +20,5 @@ export async function NotFoundPage() {
     return <div>Not found</div>;
   }
 
-  return <PageBlocks page={pages[0]} pageBlocks={pages[0].pageBlocks} />;
+  return <PageBlocks pageBlocks={pages[0].pageBlocks} />;
 }

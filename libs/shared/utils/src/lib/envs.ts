@@ -3,5 +3,3 @@ export const BACKEND_URL =
 export const FRONTEND_URL =
   process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
 export const sentryDsn = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
-export const FETCH_TYPE = "server";
-// export const FETCH_TYPE = "client";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense } from "react";
 // import { BACKEND_URL, getBackendData } from "@sps/utils";
 // import { populate as loaderPopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";

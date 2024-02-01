@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
@@ -54,12 +56,7 @@ export function PageBlocks(props: IPage) {
                   data-variant={pageBlock.variant}
                   className={`${pageBlock.className || ""}`}
                 >
-                  <PageBlock
-                    page={props.page}
-                    pageProps={props.pageProps}
-                    showSkeletons={props.showSkeletons}
-                    {...pageBlock}
-                  />
+                  <PageBlock {...pageBlock} />
                 </div>
               </ErrorBoundary>
             );

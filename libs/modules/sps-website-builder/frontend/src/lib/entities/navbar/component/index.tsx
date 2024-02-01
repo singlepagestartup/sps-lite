@@ -2,13 +2,11 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as navbarApi } from "../api/client";
+import { api as navbarApi } from "../api";
 import type { IEntity as IBackendNavbar } from "@sps/sps-website-builder-contracts-extended/lib/entities/navbar/interfaces";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
 export interface INavbar extends IBackendNavbar {
   showSkeletons?: boolean;
-  page: IBackendPage;
 }
 
 const variants = {

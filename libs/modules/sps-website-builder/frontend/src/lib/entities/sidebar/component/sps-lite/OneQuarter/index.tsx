@@ -9,7 +9,6 @@ export default function OneQuarter(props: ISidebar) {
       className={props.className || ""}
     >
       <PageBlocks
-        page={props.page}
         pageBlocks={props.pageBlocks}
         showSkeletons={props.showSkeletons}
       />

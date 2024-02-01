@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../..";
 import { useMemo } from "react";
-import { Entity as Flyout } from "../../../../../../entities/flyout/component";
+import { Component as Flyout } from "../../../../../../entities/flyout/component";
 import { useParams } from "next/navigation";
 import { useGetButtonParams } from "@sps/hooks";
 
@@ -32,22 +32,22 @@ export function Component(props: IComponentPropsExtended) {
   //   );
   // }
 
-  // if (props.flyout) {
-  //   return (
-  //     <Flyout flyout={props.flyout}>
-  //       <Button
-  //         ui="shadcn"
-  //         data-component="elements.button"
-  //         variant={props.variant}
-  //         {...additionalAttributes}
-  //       >
-  //         {`${
-  //           !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
-  //         }`}
-  //       </Button>
-  //     </Flyout>
-  //   );
-  // }
+  if (props.flyout) {
+    return (
+      <Flyout {...props.flyout}>
+        <Button
+          ui="shadcn"
+          data-component="elements.button"
+          variant={props.variant}
+          {...additionalAttributes}
+        >
+          {`${
+            !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
+          }`}
+        </Button>
+      </Flyout>
+    );
+  }
 
   if (url && props.url) {
     return (

@@ -3,7 +3,7 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as slideOverApi } from "../api/client";
+import { api as slideOverApi } from "../api";
 import { useParams, useSearchParams } from "next/navigation";
 import type { IEntity as IBackendSlideOver } from "@sps/sps-website-builder-contracts-extended/lib/entities/slide-over/interfaces";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";

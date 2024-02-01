@@ -2,7 +2,7 @@
 
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { api as topbarApi } from "../api/server";
+import { api as topbarApi } from "../api";
 import type { IEntity as IBackendTopbar } from "@sps/sps-website-builder-contracts-extended/lib/entities/topbar/interfaces";
 import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
 
@@ -18,20 +18,21 @@ const variants = {
 };
 
 export function Entity(props: ITopbar) {
-  const { data, isLoading, isError, isFetching, isUninitialized } =
-    topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
+  return <></>;
+  // const { data, isLoading, isError, isFetching, isUninitialized } =
+  //   topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
-  const Comp = variants[props.variant as keyof typeof variants];
+  // const Comp = variants[props.variant as keyof typeof variants];
 
-  if (!Comp || isError) {
-    return <></>;
-  }
+  // if (!Comp || isError) {
+  //   return <></>;
+  // }
 
-  return (
-    <Comp
-      {...props}
-      {...data}
-      showSkeletons={isLoading || isFetching || isUninitialized}
-    />
-  );
+  // return (
+  //   <Comp
+  //     {...props}
+  //     {...data}
+  //     showSkeletons={isLoading || isFetching || isUninitialized}
+  //   />
+  // );
 }

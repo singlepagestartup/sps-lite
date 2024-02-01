@@ -5,19 +5,16 @@ import { IComponentPropsExtended } from "../..";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
 export default function Simple(props: IComponentPropsExtended) {
-  return <>{props.children}</>;
-
   return (
     <div>
       <Popover>
         <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
         <PopoverContent>
           <div className="flyout-container p-20 bg-red-400">
-            {/* <PageBlocks
-            page={props.page}
-            pageBlocks={props.pageBlocks}
-            showSkeletons={props.showSkeletons}
-          /> */}
+            <PageBlocks
+              pageBlocks={props.pageBlocks}
+              showSkeletons={props.showSkeletons}
+            />
           </div>
         </PopoverContent>
       </Popover>

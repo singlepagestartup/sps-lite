@@ -1,3 +1,5 @@
+"use server";
+
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 
 async function generateRobots() {

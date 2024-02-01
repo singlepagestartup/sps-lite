@@ -2,9 +2,7 @@ import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
 import { IComponent as IFeature } from "@sps/sps-website-builder-contracts/lib/components/elements/feature/interfaces";
 import { IComponent as IFeatureExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/feature/interfaces";
-import { Server } from "./server";
-import { Client } from "./client";
-import { FETCH_TYPE } from "@sps/utils";
+import { api } from "../api";
 
 export const variants = {
   ...spsLiteVariants,
@@ -22,15 +20,19 @@ export interface IComponentPropsExtended extends IFeatureExtended {
 }
 
 export function Component(props: IFeature) {
+  const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
+    id: props.id,
+  });
+
   const Comp = variants["simple"];
 
   if (!Comp) {
     return <></>;
   }
 
-  if (FETCH_TYPE === "server") {
-    return <Server variant="simple" {...props} />;
+  if (isFetching || isLoading || isUninitialized) {
+    return <Comp variant="simple" showSkeletons={true} {...props} />;
   }
 
-  return <Client variant="simple" {...props} />;
+  return <Comp variant="simple" {...props} {...data} />;
 }
