@@ -32,22 +32,28 @@ export async function middleware(request: any) {
     if (pathnameIsMissingLocale && backendLocales?.length) {
       const defauleLocale = backendLocales.find((locale) => locale.isDefault);
 
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set(
+        "x-sps-website-builder-pathname",
+        request.nextUrl.pathname,
+      );
+
+      if (defauleLocale) {
+        requestHeaders.set("x-sps-website-builder-locale", defauleLocale.code);
+      }
+
       // The rewrite URL is now /en/<route>
       const response = NextResponse.rewrite(
         new URL(
           `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
           request.url,
         ),
+        {
+          request: {
+            headers: requestHeaders,
+          },
+        },
       );
-
-      response.headers.set("x-sps-website-builder-pathname", pathname);
-
-      if (defauleLocale) {
-        response.headers.set(
-          "x-sps-website-builder-locale",
-          defauleLocale.code,
-        );
-      }
 
       return response;
     }

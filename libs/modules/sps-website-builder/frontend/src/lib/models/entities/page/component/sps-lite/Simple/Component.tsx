@@ -1,6 +1,11 @@
 import { PageBlocks } from "../../../../../components/page-blocks/index";
+import { Component as Layout } from "../../../../layout/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
-  return <PageBlocks {...props} />;
+  return (
+    <Layout isServer={props.isServer}>
+      <PageBlocks {...props} />
+    </Layout>
+  );
 }

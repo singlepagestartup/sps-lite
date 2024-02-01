@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      {props?.navbar ? <Navbar {...props?.navbar} /> : null}
+      {props.navbar ? <Navbar {...props.navbar} /> : null}
       <div className="layout-container">
         <div
           className={`w-full flex flex-col ${
@@ -43,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </div>
-      {props?.footer ? <Footer {...props?.footer} /> : null}
+      {props.footer ? <Footer {...props.footer} /> : null}
     </div>
   );
 }

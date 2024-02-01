@@ -5,6 +5,7 @@ import { IModelExtended } from "../_model";
 
 export interface IComponentProps {
   children: ReactNode;
+  isServer?: boolean;
   showSkeletons?: boolean;
 }
 
