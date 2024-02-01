@@ -1,11 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import {
-  strapiCreate,
-  strapiFetchBaseQueryBuilder,
-  strapiFind,
-  strapiFindOne,
-  BACKEND_URL,
-} from "@sps/utils";
+import { rtk, BACKEND_URL } from "@sps/utils";
 import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/entities/invoice/interfaces";
 import { populate } from "@sps/sps-billing-contracts-extended/lib/entities/invoice/populate";
 
@@ -13,11 +7,11 @@ const rtkType = "Invoice";
 const model = "invoices";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-billing`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-billing`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IEntity>({
+    get: rtk.api.find<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -25,7 +19,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getById: strapiFindOne<IEntity>({
+    getById: rtk.api.findOne<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -33,7 +27,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    create: strapiCreate<IEntity>({
+    create: rtk.api.create<IEntity>({
       serviceApi: this,
       build,
       populate,

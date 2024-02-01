@@ -10,7 +10,7 @@ export { RootLayout } from "./lib/app/root-layout";
 export * from "./lib/redux/slices";
 // export { Component as Footer } from "./lib/entities/footer/component";
 // export { Component as Modal } from "./lib/entities/modal/component";
-export { pageBlockComponents } from "./lib/components/page-blocks/aliases";
+export { pageBlockComponents } from "./lib/models/components/page-blocks/_aliases";
 // export { PageBlocks } from "./lib/components/page-blocks";
 // export { Component as SlideOver } from "./lib/entities/slide-over/component";
 // export { Component as Loader } from "./lib/entities/loader/component";

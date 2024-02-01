@@ -1,10 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import {
-  transformResponseItem,
-  strapiFetchBaseQueryBuilder,
-  strapiFindOne,
-  BACKEND_URL,
-} from "@sps/utils";
+import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
 import { populate } from "@sps/sps-rbac-contracts-extended/lib/entities/user/populate";
 import type { IEntity } from "@sps/sps-rbac-contracts-extended/lib/entities/user/interfaces";
 
@@ -12,7 +7,7 @@ const model = "users";
 const rtkType = "User";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
@@ -31,7 +26,7 @@ export const api = createApi({
         result ? [{ type: "User", id: result.id }] : [],
     }),
 
-    getById: strapiFindOne<IEntity>({
+    getById: rtk.api.findOne<IEntity>({
       serviceApi: this,
       build,
       populate,

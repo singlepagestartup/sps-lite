@@ -1,11 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { strapiFetchBaseQueryBuilder, BACKEND_URL } from "@sps/utils";
+import { rtk, BACKEND_URL } from "@sps/utils";
 
 const model = "forms";
 const rtkType = "Form";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-crm`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-crm`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({}),

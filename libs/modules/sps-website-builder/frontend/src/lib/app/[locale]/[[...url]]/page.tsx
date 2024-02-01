@@ -9,7 +9,7 @@ import {
 } from "@sps/utils";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/metatag/populate";
 import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
-import { PageBlocks } from "../../../components/page-blocks";
+import { PageBlocks } from "../../../models/components/page-blocks";
 
 export async function generateStaticParams() {
   const pagesUrls = await getBackendData({

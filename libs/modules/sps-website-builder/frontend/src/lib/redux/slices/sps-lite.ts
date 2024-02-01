@@ -1,5 +1,5 @@
-import { slices as componentsSlices } from "../../components/slices";
-import { slices as entitiesSlices } from "../../entities/slices";
+import { slices as componentsSlices } from "../../models/components/_slices";
+import { slices as entitiesSlices } from "../../models/entities/_slices";
 
 export const slices = {
   middlewares: [...componentsSlices.middlewares, ...entitiesSlices.middlewares],

@@ -1,9 +1,11 @@
+import { api as rtkApi } from "./lib/rtk-api";
+export const rtk = { api: rtkApi };
 export * from "./lib/cn";
 export * from "./lib/envs";
 export * from "./lib/get-file-url";
 export * from "./lib/download-backend-upload-file";
 export * from "./lib/preapare-form-data-to-send";
-export * from "./lib/strapi-rtk";
+export { api as strapiServerFetch } from "./lib/strapi-server-fetch";
 export * from "./lib/transform-response-item";
 export * from "./lib/api";
 export * from "./lib/formatters/parse-mime-type";

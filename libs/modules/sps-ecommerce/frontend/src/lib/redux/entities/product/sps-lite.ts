@@ -1,11 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import {
-  strapiFetchBaseQueryBuilder,
-  strapiFind,
-  strapiFindOne,
-  transformResponseItem,
-  BACKEND_URL,
-} from "@sps/utils";
+import { rtk, transformResponseItem, BACKEND_URL } from "@sps/utils";
 import { populate } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/populate";
 import type { IEntity } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/interfaces";
 import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user";
@@ -16,11 +10,11 @@ const model = "products";
 const rtkType = "Product";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-ecommerce`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-ecommerce`),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IEntity>({
+    get: rtk.api.find<IEntity>({
       serviceApi: this,
       build,
       populate,
@@ -28,7 +22,7 @@ export const api = createApi({
       rtkType,
     }),
 
-    getById: strapiFindOne<IEntity>({
+    getById: rtk.api.findOne<IEntity>({
       serviceApi: this,
       build,
       populate,

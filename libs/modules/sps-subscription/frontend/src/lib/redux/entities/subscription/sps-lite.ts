@@ -1,12 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import {
-  strapiCreate,
-  strapiFetchBaseQueryBuilder,
-  strapiFind,
-  strapiFindOne,
-  BACKEND_URL,
-  transformResponseItem,
-} from "@sps/utils";
+import { rtk, BACKEND_URL, transformResponseItem } from "@sps/utils";
 import { populate } from "@sps/sps-subscription-contracts-extended/lib/entities/subscription/populate";
 import type { IEntity } from "@sps/sps-subscription-contracts-extended/lib/entities/subscription/interfaces";
 
@@ -14,11 +7,13 @@ const model = "subscriptions";
 const rtkType = "Subscription";
 
 export const api = createApi({
-  baseQuery: strapiFetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-subscription`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(
+    `${BACKEND_URL}/api/sps-subscription`,
+  ),
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    create: strapiCreate<IEntity>({
+    create: rtk.api.create<IEntity>({
       serviceApi: this,
       build,
       populate,
