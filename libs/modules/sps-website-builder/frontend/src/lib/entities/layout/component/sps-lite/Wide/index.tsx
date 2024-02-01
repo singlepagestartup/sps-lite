@@ -12,7 +12,7 @@ export default function Wide(props: ILayout) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      {props?.navbar ? <Navbar {...props?.navbar} page={props.page} /> : null}
+      {props?.navbar ? <Navbar {...props?.navbar} /> : null}
       <div className="layout-container">
         <div
           className={`w-full flex flex-col ${
@@ -28,9 +28,7 @@ export default function Wide(props: ILayout) {
               props.sidebar?.variant === "one-quarter" ? "lg:w-3/12" : ""
             }`}
           >
-            {props.sidebar ? (
-              <Sidebar {...props.sidebar} page={props.page} />
-            ) : null}
+            {props.sidebar ? <Sidebar {...props.sidebar} /> : null}
           </div>
           <div
             className={`h-full ${
@@ -45,7 +43,7 @@ export default function Wide(props: ILayout) {
           </div>
         </div>
       </div>
-      {props?.footer ? <Footer {...props?.footer} page={props.page} /> : null}
+      {props?.footer ? <Footer {...props?.footer} /> : null}
     </div>
   );
 }

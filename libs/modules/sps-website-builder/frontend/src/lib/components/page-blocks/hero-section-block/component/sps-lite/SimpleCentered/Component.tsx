@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Element as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { IComponentPropsExtended } from "../..";
+import { IComponentPropsExtended } from "../../interface";
 
 export default function Component(props: IComponentPropsExtended) {
   return (

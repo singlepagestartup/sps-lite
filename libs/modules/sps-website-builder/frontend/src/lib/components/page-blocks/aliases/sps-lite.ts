@@ -1,17 +1,17 @@
 import { Element as Button } from "../../elements/button/component";
 import { Element as ButtonsArray } from "../../elements/buttons-array/component";
-import { PageBlock as FaqBlock } from "../faq-block/component";
-import { PageBlock as FeaturesSectionBlock } from "../features-section-block/component";
-import { PageBlock as FooterBlock } from "../footer-block/component";
-import { PageBlock as HeaderSectionBlock } from "../header-section-block/component";
-import { PageBlock as HeroSectionBlock } from "../hero-section-block/component";
-import { PageBlock as LogotypesCloudBlock } from "../logotypes-cloud-block/component";
-import { PageBlock as NotFoundBlock } from "../not-found-block/component";
-import { PageBlock as IncentivesBlock } from "../incentives-block/component";
-import { PageBlock as CtaSectionBlock } from "../cta-section-block/component";
-import { PageBlock as AlertBlock } from "../alert-block/component";
-import { PageBlock as SliderBlock } from "../slider-block/component";
-import { PageBlock as NavbarBlock } from "../navbar-block/component";
+import { Component as FaqBlock } from "../faq-block/component";
+import { Component as FeaturesSectionBlock } from "../features-section-block/component";
+import { Component as FooterBlock } from "../footer-block/component";
+import { Component as HeaderSectionBlock } from "../header-section-block/component";
+import { Component as HeroSectionBlock } from "../hero-section-block/component";
+import { Component as LogotypesCloudBlock } from "../logotypes-cloud-block/component";
+import { Component as NotFoundBlock } from "../not-found-block/component";
+import { Component as IncentivesBlock } from "../incentives-block/component";
+import { Component as CtaSectionBlock } from "../cta-section-block/component";
+import { Component as AlertBlock } from "../alert-block/component";
+import { Component as SliderBlock } from "../slider-block/component";
+import { Component as NavbarBlock } from "../navbar-block/component";
 
 export const pageBlockComponents = {
   "page-blocks.footer-block": FooterBlock,

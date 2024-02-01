@@ -8,10 +8,7 @@ export default function OneQuarter(props: ISidebar) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      <PageBlocks
-        pageBlocks={props.pageBlocks}
-        showSkeletons={props.showSkeletons}
-      />
+      <PageBlocks pageBlocks={props.pageBlocks} />
     </div>
   );
 }

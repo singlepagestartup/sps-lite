@@ -11,10 +11,7 @@ export default function Simple(props: IComponentPropsExtended) {
         <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
         <PopoverContent>
           <div className="flyout-container p-20 bg-red-400">
-            <PageBlocks
-              pageBlocks={props.pageBlocks}
-              showSkeletons={props.showSkeletons}
-            />
+            <PageBlocks pageBlocks={props.pageBlocks} />
           </div>
         </PopoverContent>
       </Popover>

@@ -16,7 +16,7 @@ export const variants = {
   ...startupVariants,
 };
 
-export function Element(props: IComponentProps) {
+export function Element(props: IComponent) {
   const Comp = variants[props.variant as keyof typeof variants];
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
     id: props.id,

@@ -1,6 +1,6 @@
-import { IComponentProps } from "../..";
+import { IComponentProps } from "../../interface";
 
-export default function Skeleton(props: IComponentProps) {
+export function Skeleton(props: IComponentProps) {
   return (
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col lg:flex-row">

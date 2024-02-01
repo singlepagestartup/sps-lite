@@ -1,10 +1,10 @@
-import Component from "./Component";
+import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
-import Error from "./Error";
-import Skeleton from "./Skeleton";
-import { IComponentProps, IComponentPropsExtended } from "../..";
+import { Error } from "./Error";
+import { Skeleton } from "./Skeleton";
+import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-export default function FourColumnsWithCompanyMission(
+export function FourColumnsWithCompanyMission(
   props: IComponentProps | IComponentPropsExtended,
 ) {
   return (

@@ -12,7 +12,7 @@ export default function Boxed(props: ILayout) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      {props?.navbar ? <Navbar {...props?.navbar} page={props.page} /> : null}
+      {props?.navbar ? <Navbar {...props?.navbar} /> : null}
       <div className={"layout-container"}>
         {props?.sidebar ? (
           <div
@@ -27,7 +27,7 @@ export default function Boxed(props: ILayout) {
                 props.sidebar.variant === "one-quarter" ? "lg:w-3/12" : ""
               }`}
             >
-              <Sidebar {...props.sidebar} page={props.page} />
+              <Sidebar {...props.sidebar} />
             </div>
             <div
               className={`h-full ${
@@ -41,7 +41,7 @@ export default function Boxed(props: ILayout) {
           <>{props.children}</>
         )}
       </div>
-      {props?.footer ? <Footer {...props?.footer} page={props.page} /> : null}
+      {props?.footer ? <Footer {...props?.footer} /> : null}
     </div>
   );
 }

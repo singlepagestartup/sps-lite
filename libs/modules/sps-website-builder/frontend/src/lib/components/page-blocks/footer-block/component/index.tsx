@@ -1,21 +1,10 @@
 "use client";
 
-import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import { IComponent } from "@sps/sps-website-builder-contracts/lib/components/page-blocks/footer-block/interfaces";
-import { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/footer-block/interfaces";
 import { api } from "../api";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export interface IComponentProps extends IComponent, IPage {}
-export interface IComponentPropsExtended extends IComponentExtended, IPage {}
-
-export const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function PageBlock(props: IComponentProps) {
+export function Component(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
     id: props.id,
   });

@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Element as Button } from "../../../../../elements/button/component";
 import { Component as Logotype } from "../../../../../elements/logotype/component";
 import { getFileUrl } from "@sps/utils";
-import { IComponentPropsExtended } from "../..";
+import { IComponentPropsExtended } from "../../interface";
 
 export default function Component(props: IComponentPropsExtended) {
   return (

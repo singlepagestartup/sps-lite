@@ -6,9 +6,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Component as Logotype } from "../../../../../elements/logotype/component";
-import { IComponentPropsExtended } from "../..";
+import { IComponentPropsExtended } from "../../interface";
 
-export default function Component(props: IComponentPropsExtended) {
+export function Component(props: IComponentPropsExtended) {
   return (
     <Disclosure as="div" className="w-full">
       {(disclosure) => {

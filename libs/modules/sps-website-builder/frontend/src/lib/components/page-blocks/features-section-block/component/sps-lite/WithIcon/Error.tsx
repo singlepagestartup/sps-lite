@@ -1,6 +1,6 @@
 "use client";
 
-export default function Error(props: any) {
+export function Error(props: any) {
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 border border-gray-100 border-dashed">
       <div className="flex flex-col items-center py-16">
