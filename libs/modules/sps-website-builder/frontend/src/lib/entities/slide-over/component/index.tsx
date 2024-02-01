@@ -21,7 +21,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Entity() {
+export function Component() {
   const params = useParams();
   const query = useSearchParams();
   const openedSlideOver = query?.get("opened_slide_over");

@@ -17,7 +17,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Entity(props: ITopbar) {
+export function Component(props: ITopbar) {
   return <></>;
   // const { data, isLoading, isError, isFetching, isUninitialized } =
   //   topbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });

@@ -1,27 +1,13 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendLayout } from "@sps/sps-website-builder-contracts-extended/lib/entities/layout/interfaces";
-import type { IEntity as IBackendLoader } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/interfaces";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
+import { useEffect, useState } from "react";
 import { getTargetPage } from "@sps/utils";
 import { useParams, usePathname } from "next/navigation";
 import { api } from "../api";
+import { IComponentProps, IComponentPropsExtended } from "./interface";
+import { variants } from "./variants";
 
-export interface ILayout extends IBackendLayout {
-  children: ReactNode;
-  page: IBackendPage;
-  loader?: IBackendLoader | null;
-}
-
-export const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function Component({ children }: { children?: ReactNode }) {
+export function Component(props: IComponentProps) {
   const pathname = usePathname();
   const params = useParams();
 
@@ -32,7 +18,7 @@ export function Component({ children }: { children?: ReactNode }) {
     },
     { skip: !pathname },
   );
-  const [page, setPage] = useState<IBackendPage>(); //?
+  const [page, setPage] = useState<IComponentPropsExtended["page"]>(); //?
 
   useEffect(() => {
     if (params) {
@@ -59,12 +45,12 @@ export function Component({ children }: { children?: ReactNode }) {
     : undefined;
 
   if (!Comp || !layout || !page) {
-    return <>{children}</>;
+    return <>{props.children}</>;
   }
 
   return (
     <Comp {...layout} page={page}>
-      {children}
+      {props.children}
     </Comp>
   );
 }

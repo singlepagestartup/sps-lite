@@ -1,27 +1,12 @@
 "use client";
 
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import { api as navbarApi } from "../api";
-import type { IEntity as IBackendNavbar } from "@sps/sps-website-builder-contracts-extended/lib/entities/navbar/interfaces";
+import { api } from "../api";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export interface INavbar extends IBackendNavbar {
-  showSkeletons?: boolean;
-}
-
-const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function Entity(props: INavbar) {
-  const {
-    data: backendNavbar,
-    isLoading,
-    isError,
-    isFetching,
-    isUninitialized,
-  } = navbarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
+export function Component(props: IComponentProps) {
+  const { data, isLoading, isError, isFetching, isUninitialized } =
+    api.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants];
 
@@ -32,7 +17,7 @@ export function Entity(props: INavbar) {
   return (
     <Comp
       {...props}
-      {...backendNavbar}
+      {...data}
       showSkeletons={isLoading || isFetching || isUninitialized}
     />
   );

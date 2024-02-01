@@ -1,4 +1,4 @@
-import { Entity as Slider } from "../../../../../../entities/slider/component";
+import { Component as Slider } from "../../../../../../entities/slider/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {

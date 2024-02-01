@@ -1,16 +1,17 @@
-import { PageBlocks } from "../../../../../components/page-blocks";
-import { IFooter } from "../..";
+import { Component } from "./Component";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { Error } from "./Error";
+import { Skeleton } from "./Skeleton";
+import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-export default function Boxed(props: IFooter) {
+export function Boxed(props: IComponentProps | IComponentPropsExtended) {
   return (
-    <footer
-      data-collection-type="footer"
-      data-variant={props.variant}
-      className={props.className || ""}
-    >
-      <div className="footer-container">
-        <PageBlocks pageBlocks={props.pageBlocks} />
-      </div>
-    </footer>
+    <ErrorBoundary fallback={Error}>
+      {props.showSkeletons ? (
+        <Skeleton {...props} />
+      ) : (
+        <Component {...(props as IComponentPropsExtended)} />
+      )}
+    </ErrorBoundary>
   );
 }

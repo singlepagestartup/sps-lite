@@ -1,20 +1,10 @@
 "use client";
 
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import type { IEntity as IBackendFooter } from "@sps/sps-website-builder-contracts-extended/lib/entities/footer/interfaces";
 import { api } from "../api";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export interface IFooter extends IBackendFooter {
-  showSkeletons?: boolean;
-}
-
-export const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function Entity(props: IFooter) {
+export function Component(props: IComponentProps) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     api.useFindOneQuery({ id: props.id }, { skip: !props.id });
 

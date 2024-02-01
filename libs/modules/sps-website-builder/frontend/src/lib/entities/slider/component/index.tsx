@@ -13,7 +13,7 @@ const variants = {
   ...startupVariants,
 };
 
-export function Entity(props: IBackendSlider) {
+export function Component(props: IBackendSlider) {
   const { data: slider } = api.useGetByIdQuery(props.id);
   const [activeSlide, setActiveSlide] = useState(0);
 

@@ -1,14 +1,17 @@
-import { PageBlocks } from "../../../../../components/page-blocks";
-import { ISidebar } from "../..";
+import { Component } from "./Component";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { Skeleton } from "./Skeleton";
+import { Error } from "./Error";
+import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-export default function OneQuarter(props: ISidebar) {
+export function OneQuarter(props: IComponentProps | IComponentPropsExtended) {
   return (
-    <div
-      data-collection-type="sidebar"
-      data-variant={props.variant}
-      className={props.className || ""}
-    >
-      <PageBlocks pageBlocks={props.pageBlocks} />
-    </div>
+    <ErrorBoundary fallback={Error}>
+      {props.showSkeletons ? (
+        <Skeleton {...props} />
+      ) : (
+        <Component {...(props as IComponentPropsExtended)} />
+      )}
+    </ErrorBoundary>
   );
 }

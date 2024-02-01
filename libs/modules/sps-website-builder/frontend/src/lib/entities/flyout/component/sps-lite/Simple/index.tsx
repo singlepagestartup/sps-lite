@@ -1,16 +1,16 @@
 "use client";
 
 import { PageBlocks } from "../../../../../components/page-blocks";
-import { IComponentPropsExtended } from "../..";
+import { IComponentPropsExtended } from "../../interface";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
-export default function Simple(props: IComponentPropsExtended) {
+export function Simple(props: IComponentPropsExtended) {
   return (
     <div>
       <Popover>
         <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
         <PopoverContent>
-          <div className="flyout-container p-20 bg-red-400">
+          <div className="flyout-container">
             <PageBlocks pageBlocks={props.pageBlocks} />
           </div>
         </PopoverContent>

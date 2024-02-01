@@ -1,16 +1,17 @@
-import { PageBlocks } from "../../../../../components/page-blocks";
-import { INavbar } from "../..";
+import { Component } from "./Component";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { Skeleton } from "./Skeleton";
+import { Error } from "./Error";
+import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-export default function Boxed(props: INavbar) {
+export function Boxed(props: IComponentProps | IComponentPropsExtended) {
   return (
-    <nav
-      data-collection-type="navbar"
-      data-variant={props.variant}
-      className={props.className || ""}
-    >
-      <div className="navbar-container">
-        <PageBlocks pageBlocks={props.pageBlocks} />
-      </div>
-    </nav>
+    <ErrorBoundary fallback={Error}>
+      {props.showSkeletons ? (
+        <Skeleton {...props} />
+      ) : (
+        <Component {...(props as IComponentPropsExtended)} />
+      )}
+    </ErrorBoundary>
   );
 }

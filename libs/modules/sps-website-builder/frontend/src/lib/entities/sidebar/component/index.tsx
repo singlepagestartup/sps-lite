@@ -1,22 +1,12 @@
 "use client";
 
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import { api as sidebarApi } from "../api";
-import type { IEntity as IBackendSidebar } from "@sps/sps-website-builder-contracts-extended/lib/entities/sidebar/interfaces";
+import { api } from "../api";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export interface ISidebar extends IBackendSidebar {
-  showSkeletons?: boolean;
-}
-
-const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
-
-export function Entity(props: ISidebar) {
+export function Component(props: IComponentProps) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
-    sidebarApi.useGetByIdQuery({ id: props.id }, { skip: !props.id });
+    api.useGetByIdQuery({ id: props.id }, { skip: !props.id });
 
   const Comp = variants[props.variant as keyof typeof variants];
 

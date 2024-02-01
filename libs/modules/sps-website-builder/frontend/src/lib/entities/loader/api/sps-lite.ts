@@ -3,6 +3,7 @@ import {
   strapiFetchBaseQueryBuilder,
   strapiFind,
   BACKEND_URL,
+  strapiFindOne,
 } from "@sps/utils";
 import { populate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
 import type { IEntity } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/interfaces";
@@ -17,7 +18,7 @@ export const api = createApi({
   tagTypes: [rtkType],
   reducerPath: model,
   endpoints: (build) => ({
-    get: strapiFind<IEntity>({
+    findOne: strapiFindOne<IEntity>({
       serviceApi: this,
       build,
       populate,

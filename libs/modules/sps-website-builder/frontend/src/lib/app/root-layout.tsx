@@ -3,10 +3,10 @@
 import { Suspense } from "react";
 // import { BACKEND_URL, getBackendData } from "@sps/utils";
 // import { populate as loaderPopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/loader/populate";
-// import { Entity as Loader } from "../entities/loader/component";
+// import { Component as Loader } from "../entities/loader/component";
 import { Component as Layout } from "../entities/layout/component";
-// import { Entity as Modal } from "../entities/modal/component";
-// import { Entity as SlideOver } from "../entities/slide-over/component";
+// import { Component as Modal } from "../entities/modal/component";
+// import { Component as SlideOver } from "../entities/slide-over/component";
 
 export const dynamic = "force-dynamic";
 

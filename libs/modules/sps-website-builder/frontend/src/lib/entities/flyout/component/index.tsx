@@ -1,25 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/flyout/interfaces";
-import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/entities/flyout/interfaces";
 import { api } from "../api";
-
-export interface IComponentProps extends IEntity {
-  showSkeletons?: boolean;
-  children: ReactNode;
-}
-export interface IComponentPropsExtended extends IEntityExtended {
-  showSkeletons?: boolean;
-  children: ReactNode;
-}
-
-export const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
 export function Component(props: IComponentProps) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
