@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getTargetPage } from "@sps/utils";
 import { useParams, usePathname } from "next/navigation";
-import { api } from "../api";
+import { api } from "../api/client";
 import { IComponentProps, IComponentPropsExtended } from "./interface";
 import { variants } from "./variants";
 

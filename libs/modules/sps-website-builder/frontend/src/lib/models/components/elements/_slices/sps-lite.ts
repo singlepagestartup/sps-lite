@@ -1,7 +1,7 @@
-import { api as buttonApi } from "../button/api";
-import { api as buttonsArrayApi } from "../buttons-array/api";
-import { api as featureApi } from "../feature/api";
-import { api as logotypeApi } from "../logotype/api";
+import { api as buttonApi } from "../button/api/client";
+import { api as buttonsArrayApi } from "../buttons-array/api/client";
+import { api as featureApi } from "../feature/api/client";
+import { api as logotypeApi } from "../logotype/api/client";
 
 export const slices = {
   middlewares: [

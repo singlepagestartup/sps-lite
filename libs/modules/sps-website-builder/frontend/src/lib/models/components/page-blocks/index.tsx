@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";

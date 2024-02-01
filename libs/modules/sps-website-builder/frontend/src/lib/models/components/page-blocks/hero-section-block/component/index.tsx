@@ -1,4 +1,6 @@
-import { api } from "../api";
+"use client";
+
+import { api } from "../api/client";
 import { IComponentProps } from "./interface";
 import { variants } from "./variants";
 

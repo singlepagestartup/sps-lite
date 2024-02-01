@@ -1,15 +1,15 @@
-import { api as alertBlockApi } from "../alert-block/api";
-import { api as ctaSectionBlockApi } from "../cta-section-block/api";
-import { api as faqBlockApi } from "../faq-block/api";
-import { api as featuresSectionBlockApi } from "../features-section-block/api";
-import { api as footerBlockApi } from "../footer-block/api";
-import { api as headerSectionBlockApi } from "../header-section-block/api";
-import { api as heroSectionBlockApi } from "../hero-section-block/api";
-import { api as incentivesBlockApi } from "../incentives-block/api";
-import { api as logotypesCloudBlockApi } from "../logotypes-cloud-block/api";
-import { api as navbarBlockApi } from "../navbar-block/api";
-import { api as notFoundBlockApi } from "../not-found-block/api";
-import { api as sliderBlockApi } from "../slider-block/api";
+import { api as alertBlockApi } from "../alert-block/api/client";
+import { api as ctaSectionBlockApi } from "../cta-section-block/api/client";
+import { api as faqBlockApi } from "../faq-block/api/client";
+import { api as featuresSectionBlockApi } from "../features-section-block/api/client";
+import { api as footerBlockApi } from "../footer-block/api/client";
+import { api as headerSectionBlockApi } from "../header-section-block/api/client";
+import { api as heroSectionBlockApi } from "../hero-section-block/api/client";
+import { api as incentivesBlockApi } from "../incentives-block/api/client";
+import { api as logotypesCloudBlockApi } from "../logotypes-cloud-block/api/client";
+import { api as navbarBlockApi } from "../navbar-block/api/client";
+import { api as notFoundBlockApi } from "../not-found-block/api/client";
+import { api as sliderBlockApi } from "../slider-block/api/client";
 
 export const slices = {
   middlewares: [

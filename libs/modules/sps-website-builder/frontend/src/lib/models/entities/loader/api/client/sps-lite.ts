@@ -20,5 +20,12 @@ export const api = createApi({
       model,
       rtkType,
     }),
+    find: rtk.api.find<IEntity>({
+      serviceApi: this,
+      build,
+      populate,
+      model,
+      rtkType,
+    }),
   }),
 });

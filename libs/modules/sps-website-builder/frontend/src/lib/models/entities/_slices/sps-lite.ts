@@ -1,16 +1,16 @@
-import { api as flyoutApi } from "../flyout/api";
-import { api as footerApi } from "../footer/api";
-import { api as layoutApi } from "../layout/api";
-import { api as loaderApi } from "../loader/api";
-import { api as localeApi } from "../locale/api";
-import { api as metatagApi } from "../metatag/api";
-import { api as modalApi } from "../modal/api";
-import { api as navbarApi } from "../navbar/api";
-import { api as pageApi } from "../page/api";
-import { api as sidebarApi } from "../sidebar/api";
-import { api as slideOverApi } from "../slide-over/api";
-import { api as sliderApi } from "../slider/api";
-import { api as themeApi } from "../theme/api";
+import { api as flyoutApi } from "../flyout/api/client";
+import { api as footerApi } from "../footer/api/client";
+import { api as layoutApi } from "../layout/api/client";
+import { api as loaderApi } from "../loader/api/client";
+import { api as localeApi } from "../locale/api/client";
+import { api as metatagApi } from "../metatag/api/client";
+import { api as modalApi } from "../modal/api/client";
+import { api as navbarApi } from "../navbar/api/client";
+import { api as pageApi } from "../page/api/client";
+import { api as sidebarApi } from "../sidebar/api/client";
+import { api as slideOverApi } from "../slide-over/api/client";
+import { api as sliderApi } from "../slider/api/client";
+import { api as themeApi } from "../theme/api/client";
 import { api as topbarApi } from "../topbar/api/client";
 
 export const slices = {

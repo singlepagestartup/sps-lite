@@ -8,7 +8,7 @@ import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
   const [passed, setPassed] = useState(false);
-  const [hideLoader, setHideLoader] = useState(true);
+  const [hideLoader, setHideLoader] = useState(false);
   const [closeLoader, setCloseLoader] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
     to: closeLoader ? toLoaderStyles : fromLoaderStyles,
     delay: 1000,
     config: {
-      duration: 500,
+      duration: 2000,
     },
   });
 
@@ -43,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
 
       hideLoaderTm = setTimeout(() => {
         setHideLoader(true);
-      }, 1000);
+      }, 2000);
     }
 
     return () => {
@@ -56,11 +56,11 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-single-type="loader"
       data-variant={props.variant}
-      className={props.className || ""}
+      className={props.className || "absolute inset-0 w-full h-full bg-white"}
     >
-      <animated.div
+      <div
         className={`loader-container ${hideLoader ? "-z-1 hidden" : "z-[200]"}`}
-        style={loaderStyles}
+        // style={loaderStyles}
       >
         {props.media?.length ? (
           <Image
@@ -70,7 +70,7 @@ export function Component(props: IComponentPropsExtended) {
             alt=""
           />
         ) : null}
-      </animated.div>
+      </div>
     </div>
   );
 }

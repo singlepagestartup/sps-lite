@@ -1,3 +1,3 @@
-import { strapiServerFetch } from "@sps/utils";
+import { fetch } from "@sps/utils";
 
-export const api = strapiServerFetch;
+export const api = fetch.api;
