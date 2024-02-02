@@ -1,8 +1,8 @@
 "use server";
 import "server-only";
 
-import { api } from "../../../models/entities/page/api/server";
-import { Component } from "../../../models/entities/page/component";
+import { api } from "../../../models/page/api/server";
+import { Component } from "../../../models/page/component";
 
 export async function generateStaticParams() {
   return api.getUrls();
