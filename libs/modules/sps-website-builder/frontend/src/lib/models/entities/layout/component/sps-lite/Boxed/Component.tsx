@@ -1,6 +1,5 @@
 import { Component as Navbar } from "../../../../navbar/component";
 import { Component as Sidebar } from "../../../../sidebar/component";
-import { Component as Footer } from "../../../../footer/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {

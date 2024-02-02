@@ -1,24 +1,20 @@
-// "use client";
+"use client";
 
 import { PageBlocks } from "../../../../../components/page-blocks";
 import { IComponentPropsExtended } from "../../interface";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
-  return <></>;
-
-  // return (
-  //   <div>
-  //     <Popover>
-  //       <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
-  //       <PopoverContent>
-  //         <div className="flyout-container">
-  //           <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
-  //         </div>
-  //       </PopoverContent>
-  //     </Popover>
-  //   </div>
-  // );
+  return (
+    <Popover>
+      <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
+      <PopoverContent>
+        <div className="flyout-container">
+          <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
 
   // return (
   //   <Transition

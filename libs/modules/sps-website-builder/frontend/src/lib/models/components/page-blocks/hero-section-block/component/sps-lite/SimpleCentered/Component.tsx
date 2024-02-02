@@ -3,6 +3,8 @@ import { Component as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "../../interface";
+import { Button as UiButton } from "@sps/ui-adapter";
+import { Component as Flyout } from "../../../../../../entities/flyout/component";
 
 export default function Component(props: IComponentPropsExtended) {
   return (
@@ -36,6 +38,18 @@ export default function Component(props: IComponentPropsExtended) {
                 );
               })}
             </div>
+
+            {/* {props.title === "Sidebar" ? (
+              <Flyout isServer={true} variant="simple" id={2}>
+                <UiButton
+                  ui="shadcn"
+                  data-component="elements.button"
+                  variant="default"
+                >
+                  FLoyt
+                </UiButton>
+              </Flyout>
+            ) : null} */}
           </div>
         </main>
       </div>
