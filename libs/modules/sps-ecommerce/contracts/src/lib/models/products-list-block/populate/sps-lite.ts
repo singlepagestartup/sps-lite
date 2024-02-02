@@ -1,5 +1,3 @@
 export const populate = {
-  reviews: {
-    populate: "*",
-  },
+  id: true,
 };

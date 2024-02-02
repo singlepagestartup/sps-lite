@@ -1,6 +1,3 @@
-// import type { IModel as IBackendFile } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/interfaces";
-// import type { IModel as IBackendComponentButton } from "@sps/sps-website-builder-frontend/lib/redux/components/elements/button/interfaces";
-
 export interface IModel {
   id: number;
   __component: "page-blocks.checkout-form-block";

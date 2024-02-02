@@ -1,5 +1,3 @@
-import { IModel as IButton } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
-
 export interface IModel {
   id: number;
   __component: "page-blocks.products-list-block";
@@ -11,5 +9,4 @@ export interface IModel {
   anchor: string | null;
   usePageUrlFilters: boolean;
   query: string | null;
-  buttons?: IButton[] | null;
 }
