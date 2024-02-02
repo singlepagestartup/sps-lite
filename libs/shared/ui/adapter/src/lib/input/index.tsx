@@ -8,7 +8,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-// import type { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+// import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { useController, useFormContext } from "react-hook-form";
 // import { useTranslations } from "@sps/hooks";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";

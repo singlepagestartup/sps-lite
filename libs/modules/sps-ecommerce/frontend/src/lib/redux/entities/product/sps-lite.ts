@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, transformResponseItem, BACKEND_URL } from "@sps/utils";
 import { populate } from "@sps/sps-ecommerce-contracts-extended/lib/models/product/populate";
-import type { IEntity } from "@sps/sps-ecommerce-contracts-extended/lib/models/product/interfaces";
+import type { IModel } from "@sps/sps-ecommerce-contracts-extended/lib/models/product/interfaces";
 import { api as userApi } from "@sps/sps-rbac-frontend/lib/redux/entities/user";
 import { api as cartApi } from "../cart";
 import { api as orderApi } from "../order";

@@ -1,8 +1,8 @@
 import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
-import type { IEntity as IBackendForm } from "@sps/sps-crm-contracts-extended/lib/models/form/interfaces";
-import { IComponent as IBackendComponent } from "@sps/sps-crm-contracts/lib/components/elements/input/interfaces";
+import type { IModel as IBackendForm } from "@sps/sps-crm-contracts-extended/lib/models/form/interfaces";
+import { IModel as IBackendComponent } from "@sps/sps-crm-contracts/lib/components/elements/input/interfaces";
 
 export function useGetPreparedFormInputs(props: IBackendForm) {
   const searchParams = useSearchParams();

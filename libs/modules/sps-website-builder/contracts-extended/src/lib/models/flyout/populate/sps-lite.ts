@@ -1,5 +1,7 @@
 import { populate as parentPopulate } from "@sps/sps-website-builder-contracts/lib/models/flyout/populate";
-import { populate as pageBlockPopulate } from "@sps/sps-website-builder-contracts/lib/models/populate";
+import { populate as heroSectionBlockPopulate } from "@sps/sps-website-builder-contracts/lib/models/hero-section-block/populate";
+
+const pageBlockPopulate = { ...heroSectionBlockPopulate };
 
 export const populate = {
   ...parentPopulate,

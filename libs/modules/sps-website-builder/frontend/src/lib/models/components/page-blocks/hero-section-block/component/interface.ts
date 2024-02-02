@@ -1,9 +1,9 @@
-import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
+import { IComponentPropsExtended as IPage } from "../../../../entities/page/component/interface";
 import { IModel, IModelExtended } from "../_model";
 
-export interface IComponentProps extends IModel, IPage {
-  isServer: boolean;
+export interface IComponentProps extends IModel, Omit<IPage, "pageBlocks"> {
   showSkeletons?: boolean;
+  isServer: boolean;
 }
 
 export interface IComponentPropsExtended

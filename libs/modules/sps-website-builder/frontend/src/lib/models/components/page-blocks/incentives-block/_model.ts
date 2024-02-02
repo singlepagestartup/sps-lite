@@ -1,6 +1,6 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-contracts/lib/components/page-blocks/incentives-block/interfaces";
-import type { IModel as IParentModelExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/incentives-block/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/components/page-blocks/incentives-block/populate";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-contracts/lib/models/incentives-block/interfaces";
+import type { IModel as IParentModelExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/incentives-block/interfaces";
+import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/incentives-block/populate";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
 import { Props } from "..";
 
 interface OptionRenderPropArg {
@@ -50,7 +50,7 @@ function DefaultOption({
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue?: (option: any) => string;
-  extraMedia?: IBackendFile[] | null;
+  extraMedia?: IFile[] | null;
 }) {
   const { selected } = params;
 
@@ -61,7 +61,7 @@ function DefaultOption({
         className="extra-media-container"
       >
         {extraMedia?.length ? (
-          extraMedia?.map((mediaItem: IBackendFile, index: number) => (
+          extraMedia?.map((mediaItem: IFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ))
         ) : (
@@ -73,7 +73,7 @@ function DefaultOption({
           data-media={option.media && option.media?.length > 0}
           className="media-container"
         >
-          {option?.media?.map((mediaItem: IBackendFile, index: number) => (
+          {option?.media?.map((mediaItem: IFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ))}
         </div>

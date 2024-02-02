@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getFileUrl } from "./get-file-url";
-// import type { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+// import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 type IBackendFile = any;
 

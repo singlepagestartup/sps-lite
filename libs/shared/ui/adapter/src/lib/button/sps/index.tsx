@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MouseEventHandler, forwardRef } from "react";
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
 import { getFileUrl } from "@sps/utils";
 
 export interface Props {
@@ -8,7 +8,7 @@ export interface Props {
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   children?: React.ReactNode;
-  media?: IBackendFile[];
+  media?: IFile[];
   title?: string;
 }
 

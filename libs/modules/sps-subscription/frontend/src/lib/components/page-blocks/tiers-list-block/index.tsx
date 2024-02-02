@@ -1,7 +1,7 @@
 import { IPage } from "@sps/sps-subscription-contracts/lib/props";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "@sps/sps-subscription-contracts/lib/components/page-blocks/tiers-list-block/interfaces";
+import { IModel as IBackendPageBlock } from "@sps/sps-subscription-contracts/lib/components/page-blocks/tiers-list-block/interfaces";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

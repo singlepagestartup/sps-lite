@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, transformResponseItem, BACKEND_URL } from "@sps/utils";
 import { populate } from "@sps/sps-ecommerce-contracts-extended/lib/models/cart/populate";
-import type { IEntity } from "@sps/sps-ecommerce-contracts-extended/lib/models/cart/interfaces";
+import type { IModel } from "@sps/sps-ecommerce-contracts-extended/lib/models/cart/interfaces";
 
 const model = "carts";
 const rtkType = "Cart";

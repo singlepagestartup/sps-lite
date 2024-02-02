@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IPage } from "@sps/sps-website-builder-contracts-extended/lib/props";
+import { IComponentProps } from "./interface";
 import { pageBlockComponents } from "./_aliases";
 // import {
 //   PageBlocks as SpsCrmPageBlocks,
@@ -11,7 +11,7 @@ import { pageBlockComponents } from "./_aliases";
 //   pageBlockComponents as spsEcommercePageBlockComponents,
 // } from "@sps/sps-ecommerce-frontend";
 
-export function PageBlocks(props: IPage) {
+export function PageBlocks(props: IComponentProps) {
   return (
     <div className="page-blocks">
       {props.pageBlocks?.length

@@ -1,1 +1,1 @@
-export * from "./lib/props";
+export default {};

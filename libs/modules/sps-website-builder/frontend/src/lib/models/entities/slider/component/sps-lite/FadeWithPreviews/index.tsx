@@ -16,7 +16,7 @@ import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { Component as Button } from "../../../../../components/elements/button/component";
 import { getFileUrl } from "@sps/utils";
-import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/models/slide/interfaces";
+import { IModel as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/models/slide/interfaces";
 
 interface INavigationButton {
   isNext?: boolean;

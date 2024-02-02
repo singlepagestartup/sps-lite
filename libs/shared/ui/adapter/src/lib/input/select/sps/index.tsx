@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, forwardRef, useMemo } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as IBackendFile } from "@sps/sps-file-storage-contracts/lib/entities/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -17,9 +17,9 @@ export interface Props {
   ButtonComp?: FC<any>;
   OptionComp?: FC<any>;
   renderOptionValue?: (option: any) => string;
-  media?: IBackendFile[] | null;
-  additionalMedia?: IBackendFile[] | null;
-  extraMedia?: IBackendFile[] | null;
+  media?: IFile[] | null;
+  additionalMedia?: IFile[] | null;
+  extraMedia?: IFile[] | null;
 }
 
 const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
@@ -81,8 +81,8 @@ export interface ButtonProps {
   value: any;
   placeholder: string;
   renderOptionValue?: (value: any) => string;
-  media?: IBackendFile[] | null;
-  additionalMedia?: IBackendFile[] | null;
+  media?: IFile[] | null;
+  additionalMedia?: IFile[] | null;
 }
 
 function DefaultButton({
@@ -120,7 +120,7 @@ function DefaultButton({
     }
   }, [value, placeholder]);
 
-  const renderIcons: IBackendFile[] = useMemo(() => {
+  const renderIcons: IFile[] = useMemo(() => {
     if (Array.isArray(value)) {
       if (value.length) {
         return value.reduce((prev, selectedValue, index) => {
@@ -139,7 +139,7 @@ function DefaultButton({
   return (
     <div className="button">
       <div data-media={media && media?.length > 0} className="media-container">
-        {media?.map((mediaItem: IBackendFile, index: number) => (
+        {media?.map((mediaItem: IFile, index: number) => (
           <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
         ))}
       </div>
@@ -162,7 +162,7 @@ function DefaultButton({
         data-media={additionalMedia && additionalMedia?.length > 0}
         className="additional-media-container"
       >
-        {additionalMedia?.map((mediaItem: IBackendFile, index: number) => (
+        {additionalMedia?.map((mediaItem: IFile, index: number) => (
           <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
         ))}
       </div>
@@ -174,7 +174,7 @@ export interface OptionProps {
   params: OptionRenderPropArg;
   option: any;
   renderOptionValue?: (option: any) => string;
-  extraMedia?: IBackendFile[] | null;
+  extraMedia?: IFile[] | null;
 }
 
 function DefaultOption({
@@ -191,7 +191,7 @@ function DefaultOption({
         data-media={extraMedia?.length ? true : false}
         className="extra-media-container"
       >
-        {extraMedia?.map((mediaItem: IBackendFile, index: number) => (
+        {extraMedia?.map((mediaItem: IFile, index: number) => (
           <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
         ))}
       </div>
@@ -200,7 +200,7 @@ function DefaultOption({
           data-media={option.media && option.media?.length > 0}
           className="media-container"
         >
-          {option?.media?.map((mediaItem: IBackendFile, index: number) => (
+          {option?.media?.map((mediaItem: IFile, index: number) => (
             <Image key={index} src={getFileUrl(mediaItem)} fill={true} alt="" />
           ))}
         </div>

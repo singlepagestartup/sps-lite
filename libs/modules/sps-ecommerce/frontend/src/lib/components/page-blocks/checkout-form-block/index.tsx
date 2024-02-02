@@ -3,7 +3,7 @@
 import { IPage } from "@sps/sps-ecommerce-contracts/lib/props";
 import { variants as spsLiteVariants } from "./sps-lite";
 import { variants as startupVariants } from "./startup";
-import { IComponent as IBackendPageBlock } from "@sps/sps-ecommerce-contracts/lib/components/page-blocks/checkout-form-block/interfaces";
+import { IModel as IBackendPageBlock } from "@sps/sps-ecommerce-contracts/lib/components/page-blocks/checkout-form-block/interfaces";
 
 export interface IPageBlock extends IBackendPageBlock, IPage {}
 

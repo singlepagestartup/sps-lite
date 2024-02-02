@@ -1,4 +1,4 @@
-// import type { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+// import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { BACKEND_URL } from "./envs";
 
 export function getFileUrl(

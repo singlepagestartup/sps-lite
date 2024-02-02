@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/models/invoice/interfaces";
+import type { IModel } from "@sps/sps-billing-contracts-extended/lib/models/invoice/interfaces";
 import { populate } from "@sps/sps-billing-contracts-extended/lib/models/invoice/populate";
 
 const rtkType = "Invoice";

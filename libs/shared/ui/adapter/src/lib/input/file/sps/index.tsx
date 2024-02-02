@@ -13,7 +13,7 @@ import {
   useState,
   ChangeEvent,
 } from "react";
-// import type { IEntity as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
+// import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { ExtendedInputProps } from "../..";
 import { getFileUrl } from "@sps/utils";
 

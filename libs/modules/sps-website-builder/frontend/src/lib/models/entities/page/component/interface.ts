@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { IModelExtended } from "../_model";
 
 export interface IComponentProps {
@@ -8,4 +9,7 @@ export interface IComponentProps {
 
 export interface IComponentPropsExtended
   extends IComponentProps,
-    IModelExtended {}
+    IModelExtended {
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  closeModal?: () => void;
+}

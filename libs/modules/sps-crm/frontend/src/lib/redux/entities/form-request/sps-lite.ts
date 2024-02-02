@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
 import { populate } from "@sps/sps-crm-contracts-extended/lib/models/form-request/populate";
-import type { IEntity } from "@sps/sps-crm-contracts-extended/lib/models/form-request/interfaces";
+import type { IModel } from "@sps/sps-crm-contracts-extended/lib/models/form-request/interfaces";
 
 const model = "form-requests";
 const rtkType = "FormRequest";

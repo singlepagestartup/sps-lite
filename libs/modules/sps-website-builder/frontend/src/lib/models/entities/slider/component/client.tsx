@@ -5,7 +5,7 @@ import { IComponentProps } from "./interface";
 import { api } from "../api/client";
 import { variants } from "./variants";
 import { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
-import { IComponent as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/models/slide/interfaces";
+import { IModel as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/models/slide/interfaces";
 
 // default is required for dynamic import
 export default function Client(props: IComponentProps) {

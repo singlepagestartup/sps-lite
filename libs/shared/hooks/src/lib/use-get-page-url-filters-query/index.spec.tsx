@@ -6,7 +6,7 @@ import { useGetPageUrlFiltersQuery } from ".";
 import { setupServer } from "msw/node";
 import { BACKEND_URL } from "@sps/utils";
 import { HttpResponse, http } from "msw";
-// import type { IEntity as IBackendApiPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
+// import type { IModel as IBackendApiPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
 
 type IBackendApiPage = any;
 

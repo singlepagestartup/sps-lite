@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from "next/server";
-import type { IEntity as IBackendLocale } from "@sps/sps-website-builder-contracts-extended/lib/entities/locale/interfaces";
+import type { IModel as IBackendLocale } from "@sps/sps-website-builder-contracts-extended/lib/models/locale/interfaces";
 import { BACKEND_URL } from "@sps/utils";
 
 export async function middleware(request: any) {
