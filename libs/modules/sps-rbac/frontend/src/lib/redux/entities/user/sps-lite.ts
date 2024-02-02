@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-rbac-contracts-extended/lib/entities/user/populate";
-import type { IEntity } from "@sps/sps-rbac-contracts-extended/lib/entities/user/interfaces";
+import { populate } from "@sps/sps-rbac-contracts-extended/lib/models/user/populate";
+import type { IEntity } from "@sps/sps-rbac-contracts-extended/lib/models/user/interfaces";
 
 const model = "users";
 const rtkType = "User";

@@ -1,6 +1,6 @@
-import type { IModel as IParentEntity } from "@sps/sps-website-builder-contracts/lib/models/sidebar/interfaces";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-contracts/lib/models/sidebar/interfaces";
 import { IModel as IPageBlock } from "@sps/sps-website-builder-contracts/lib/models/interfaces";
 
-export interface IEntity extends IParentEntity {
+export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;
 }

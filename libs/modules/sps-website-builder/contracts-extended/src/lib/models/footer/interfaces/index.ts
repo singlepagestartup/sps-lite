@@ -1,3 +1,3 @@
-import type { IModel as IParentEntity } from "./startup";
+import type { IModel as IParentModel } from "./startup";
 
-export interface IEntity extends IParentEntity {}
+export interface IModel extends IParentModel {}

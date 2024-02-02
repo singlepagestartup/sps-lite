@@ -1,8 +1,8 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 // import { api as modalApi } from "@sps/sps-website-builder-frontend/lib/redux/entities/modal/api";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/entities/currency/interfaces";
-import { populate } from "@sps/sps-billing-contracts-extended/lib/entities/currency/populate";
+import type { IEntity } from "@sps/sps-billing-contracts-extended/lib/models/currency/interfaces";
+import { populate } from "@sps/sps-billing-contracts-extended/lib/models/currency/populate";
 
 const rtkType = "Currency";
 const model = "currencies";

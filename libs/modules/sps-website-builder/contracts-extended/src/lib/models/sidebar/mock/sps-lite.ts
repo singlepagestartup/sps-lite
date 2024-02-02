@@ -1,6 +1,6 @@
-import type { IEntity } from "../interfaces/sps-lite";
+import type { IModel } from "../interfaces/sps-lite";
 import { entity as parentEntity } from "@sps/sps-website-builder-contracts/lib/models/sidebar/mock/sps-lite";
 
-export const entity: IEntity = {
+export const entity: IModel = {
   ...parentEntity,
 };

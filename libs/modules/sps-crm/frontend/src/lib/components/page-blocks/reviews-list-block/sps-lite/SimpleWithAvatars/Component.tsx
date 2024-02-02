@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { api as reviewApi } from "../../../../../redux/entities/review";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as IBackendReview } from "@sps/sps-crm-contracts-extended/lib/entities/review/interfaces";
+import type { IEntity as IBackendReview } from "@sps/sps-crm-contracts-extended/lib/models/review/interfaces";
 import { IPageBlock } from "../..";
 
 const cardsConfig = {

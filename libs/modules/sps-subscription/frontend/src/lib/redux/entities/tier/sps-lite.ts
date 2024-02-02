@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import { populate } from "@sps/sps-subscription-contracts-extended/lib/entities/tier/populate";
-import type { IEntity } from "@sps/sps-subscription-contracts-extended/lib/entities/tier/interfaces";
+import { populate } from "@sps/sps-subscription-contracts-extended/lib/models/tier/populate";
+import type { IEntity } from "@sps/sps-subscription-contracts-extended/lib/models/tier/interfaces";
 
 const model = "tiers";
 const rtkType = "Tier";

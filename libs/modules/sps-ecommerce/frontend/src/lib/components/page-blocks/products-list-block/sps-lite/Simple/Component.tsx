@@ -7,7 +7,7 @@ import { api as productApi } from "../../../../../redux/entities/product/index";
 import { api as attributeApi } from "../../../../../redux/entities/attribute/index";
 import { Button, FormField, Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
-import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-contracts-extended/lib/entities/product/interfaces";
+import type { IEntity as IBackendProduct } from "@sps/sps-ecommerce-contracts-extended/lib/models/product/interfaces";
 import { IPageBlock } from "../..";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
