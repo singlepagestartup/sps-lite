@@ -43,7 +43,9 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </div>
-      {/* {props.footer ? <Footer {...props.footer} /> : null} */}
+      {props.footer ? (
+        <Footer isServer={props.isServer} {...props.footer} />
+      ) : null}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Component as Navbar } from "../../../../navbar/component";
+import { Component as Footer } from "../../../../footer/component";
 import { Component as Sidebar } from "../../../../sidebar/component";
 import { IComponentPropsExtended } from "../../interface";
 
@@ -40,9 +41,9 @@ export function Component(props: IComponentPropsExtended) {
           <>{props.children}</>
         )}
       </div>
-      {/* {props?.footer ? (
-        <Footer isServer={props.isServer} {...props?.footer} />
-      ) : null} */}
+      {props.footer ? (
+        <Footer isServer={props.isServer} {...props.footer} />
+      ) : null}
     </div>
   );
 }

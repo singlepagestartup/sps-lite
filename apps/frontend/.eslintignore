@@ -8,4 +8,4 @@ test-results
 coverage
 playwright-report
 **/artifacts
-themes
+themes/
