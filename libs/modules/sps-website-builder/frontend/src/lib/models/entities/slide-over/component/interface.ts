@@ -1,4 +1,4 @@
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { Dispatch, SetStateAction } from "react";
 import { IModelExtended } from "../_model";
 

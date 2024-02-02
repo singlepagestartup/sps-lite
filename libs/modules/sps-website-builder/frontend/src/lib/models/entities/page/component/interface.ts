@@ -5,6 +5,7 @@ export interface IComponentProps {
   params: { locale: string; [key: string]: any };
   searchParams: { [key: string]: any };
 }
+
 export interface IComponentPropsExtended
   extends IComponentProps,
     IModelExtended {}

@@ -1,6 +1,6 @@
 "use server";
 
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { BACKEND_URL, FRONTEND_URL, getBackendData } from "@sps/utils";
 
 async function generateSiteMap() {

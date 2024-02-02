@@ -6,7 +6,7 @@ import { api } from "../api/client";
 import { variants } from "./variants";
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "next/navigation";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { getTargetPage } from "@sps/utils";
 import { IModelExtended } from "../_model";
 

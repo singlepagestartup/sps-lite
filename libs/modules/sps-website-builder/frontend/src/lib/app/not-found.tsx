@@ -2,7 +2,7 @@
 
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/page/populate";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { PageBlocks } from "../models/components/page-blocks";
 
 export async function NotFoundPage() {

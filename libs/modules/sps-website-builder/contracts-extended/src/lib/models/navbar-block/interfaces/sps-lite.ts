@@ -1,4 +1,4 @@
-import { IModel as IParentModel } from "@sps/sps-website-builder-contracts/lib/models/navbar-block/interfaces";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-contracts/lib/models/navbar-block/interfaces";
 import type { IModel as IButton } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
 import type { IModel as ILogotype } from "@sps/sps-website-builder-contracts/lib/models/logotype/interfaces";
 
