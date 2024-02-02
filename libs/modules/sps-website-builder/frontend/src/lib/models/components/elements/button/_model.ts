@@ -1,6 +1,6 @@
-import type { IComponent } from "@sps/sps-website-builder-contracts/lib/components/elements/button/interfaces";
-import type { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/components/elements/button/populate";
+import type { IComponent } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
+import type { IComponent as IComponentExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/button/interfaces";
+import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/button/populate";
 
 export interface IModel extends IComponent {}
 export interface IModelExtended extends IComponentExtended {}

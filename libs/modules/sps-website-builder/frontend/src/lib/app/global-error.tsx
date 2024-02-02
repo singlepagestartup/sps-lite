@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
+import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/page/populate";
 import { Component as Layout } from "../models/entities/layout/component";
 
 export function GlobalError({ error, reset, fonts }: any) {

@@ -1,4 +1,4 @@
-import { IComponent as IButton } from "@sps/sps-website-builder-contracts/lib/components/elements/button/interfaces";
+import { IComponent as IButton } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
 
 export interface IComponent {
   id: number;

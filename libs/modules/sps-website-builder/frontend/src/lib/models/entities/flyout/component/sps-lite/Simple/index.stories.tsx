@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { Component as flyout } from "@sps/sps-website-builder-contracts-extended/lib/entities/flyout/mock/sps-lite";
+import { Component as flyout } from "@sps/sps-website-builder-contracts-extended/lib/models/flyout/mock/sps-lite";
 
 const meta = {
   component: Root,

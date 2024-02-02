@@ -1,6 +1,6 @@
-import type { IEntity } from "@sps/sps-website-builder-contracts/lib/entities/page/interfaces";
-import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/populate";
+import type { IEntity } from "@sps/sps-website-builder-contracts/lib/models/page/interfaces";
+import type { IEntity as IEntityExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
+import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/page/populate";
 
 export interface IModel extends IEntity {}
 export interface IModelExtended extends IEntityExtended {}

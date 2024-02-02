@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Root from ".";
-import { Component as buttonsArray } from "@sps/sps-website-builder-contracts/lib/components/elements/buttons-array/mock/sps-lite";
+import { Component as buttonsArray } from "@sps/sps-website-builder-contracts/lib/models/buttons-array/mock/sps-lite";
 
 const meta = {
   component: Root,

@@ -1,5 +1,5 @@
-import type { IEntity as ILoader } from "@sps/sps-website-builder-contracts/lib/entities/loader/interfaces";
-import type { IEntity as IPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
+import type { IEntity as ILoader } from "@sps/sps-website-builder-contracts/lib/models/loader/interfaces";
+import type { IEntity as IPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { ReactNode } from "react";
 import { IModelExtended } from "../_model";
 

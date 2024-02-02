@@ -10,8 +10,8 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import type { IEntity as IBackendModal } from "@sps/sps-website-builder-contracts-extended/lib/entities/modal/interfaces";
-import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/entities/page/interfaces";
+import type { IEntity as IBackendModal } from "@sps/sps-website-builder-contracts-extended/lib/models/modal/interfaces";
+import type { IEntity as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { getTargetPage } from "@sps/utils";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
