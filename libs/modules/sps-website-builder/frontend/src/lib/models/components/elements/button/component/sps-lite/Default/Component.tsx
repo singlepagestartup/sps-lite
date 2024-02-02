@@ -18,20 +18,20 @@ export function Component(props: IComponentPropsExtended) {
       : [Link, url];
   }, [url]);
 
-  // if (props.flyout) {
-  //   return (
-  //     <Flyout isServer={false} {...props.flyout}>
-  //       <Button
-  //         ui="shadcn"
-  //         data-component="elements.button"
-  //         variant={props.variant ?? "default"}
-  //         {...additionalAttributes}
-  //       >
-  //         {props.title}
-  //       </Button>
-  //     </Flyout>
-  //   );
-  // }
+  if (props.flyout) {
+    return (
+      <Flyout isServer={false} {...props.flyout}>
+        <Button
+          ui="shadcn"
+          data-component="elements.button"
+          variant={props.variant ?? "default"}
+          {...additionalAttributes}
+        >
+          {props.title}
+        </Button>
+      </Flyout>
+    );
+  }
 
   if (url && props.url) {
     return (

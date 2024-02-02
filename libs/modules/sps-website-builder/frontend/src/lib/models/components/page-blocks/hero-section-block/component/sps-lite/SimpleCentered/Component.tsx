@@ -3,8 +3,8 @@ import { Component as Button } from "../../../../../elements/button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "../../interface";
-import { Button as UiButton } from "@sps/ui-adapter";
-import { Component as Flyout } from "../../../../../../entities/flyout/component";
+// import { Button as UiButton } from "@sps/ui-adapter";
+// import { Component as Flyout } from "../../../../../../entities/flyout/component";
 
 export default function Component(props: IComponentPropsExtended) {
   return (
