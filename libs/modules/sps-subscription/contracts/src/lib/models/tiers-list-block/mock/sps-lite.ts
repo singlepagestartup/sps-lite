@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { entity as tier } from "../../../../entities/tier/mock/sps-lite";
 import type { IModel } from "../interfaces/sps-lite";
 
 export const entity: IModel = {
@@ -11,7 +10,4 @@ export const entity: IModel = {
   anchor: faker.lorem.slug(),
   description: faker.lorem.paragraph(),
   className: null,
-  tiers: [tier],
-  media: null,
-  additionalMedia: null,
 };

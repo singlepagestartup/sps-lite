@@ -1,3 +1,3 @@
 import type { IModel as IParentModel } from "./startup";
 
-export type IComponent = IParentComponent;
+export interface IModel extends IParentModel {}
