@@ -1,10 +1,12 @@
-import dynamic from "next/dynamic";
 import { IComponentProps } from "../interface";
+import { variants } from "./variants";
 
 export function Component(props: IComponentProps) {
-  const Comp = props.isServer
-    ? dynamic(() => import("./server"), {})
-    : dynamic(() => import("./client"), {});
+  const Comp = variants[props.variant as keyof typeof variants];
+
+  if (!Comp) {
+    return <></>;
+  }
 
   return <Comp {...props} />;
 }

@@ -1,5 +1,5 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "../interface";
+import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
 import { ReduxProvider } from "../../../redux";
 import {
@@ -7,7 +7,7 @@ import {
   PageBlock as SpsEcommercePageBlock,
 } from "@sps/sps-ecommerce-frontend";
 
-export function Component(props: IComponentProps) {
+export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
 
   if (!key) {
@@ -18,7 +18,7 @@ export function Component(props: IComponentProps) {
 
   // problem with conflicting types in some constituents
   // that is why here is any
-  const PageBlock: any = pageBlocks[key];
+  const PageBlock: any = pageBlocks[key as keyof typeof pageBlocks];
   if (typeof PageBlock == "function") {
     return (
       <ErrorBoundary>

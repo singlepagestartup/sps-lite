@@ -1,9 +1,9 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "../interface";
+import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
 import { ReduxProvider } from "../../../redux";
 
-export function Component(props: IComponentProps) {
+export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
 
   if (!key) {

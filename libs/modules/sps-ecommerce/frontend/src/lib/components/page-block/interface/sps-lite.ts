@@ -5,7 +5,9 @@ import { Dispatch, SetStateAction } from "react";
 
 type IPageBlock = ICheckoutFormBlock | IProductsListBlock | IShoppingCartBlock;
 
-export type IComponentProps = IPageBlock & {
+export type IComponentProps = IPageBlock;
+
+export type IComponentPropsExtended = IComponentProps & {
   isServer: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;

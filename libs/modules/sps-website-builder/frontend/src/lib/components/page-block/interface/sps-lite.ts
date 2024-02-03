@@ -13,6 +13,7 @@ import type { IModel as INavbarBlock } from "@sps/sps-website-builder-contracts/
 import type { IModel as INotFoundBlock } from "@sps/sps-website-builder-contracts/lib/models/not-found-block/interfaces";
 import type { IModel as ISliderBlock } from "@sps/sps-website-builder-contracts/lib/models/slider-block/interfaces";
 import { Dispatch, SetStateAction } from "react";
+import { IComponentProps as ISpsEcommercePageBlock } from "@sps/sps-ecommerce-frontend/lib/components/page-block/interface";
 
 type IPageBlock =
   | IAlertBlock
@@ -28,9 +29,12 @@ type IPageBlock =
   | INotFoundBlock
   | ISliderBlock
   | IButton
-  | IButtonsArray;
+  | IButtonsArray
+  | ISpsEcommercePageBlock;
 
-export type IComponentProps = IPageBlock & {
+export type IComponentProps = IPageBlock;
+
+export type IComponentPropsExtended = IComponentProps & {
   isServer: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;
