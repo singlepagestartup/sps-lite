@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { PageBlocks } from "../../../../../components/page-blocks/omponent";
+import { Component as PageBlocks } from "../../../../../components/page-blocks/component";
 import { IModal } from "../..";
 
 export default function Simple(props: IModal) {
@@ -54,6 +54,7 @@ export default function Simple(props: IModal) {
                   <XMarkIcon />
                 </button>
                 <PageBlocks
+                  variant="default"
                   isServer={false}
                   pageBlocks={pageBlocks}
                   closeModal={closeModal}

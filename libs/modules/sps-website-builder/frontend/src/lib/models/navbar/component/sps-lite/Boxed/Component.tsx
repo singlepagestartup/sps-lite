@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../../components/page-blocks/omponent";
+import { Component as PageBlocks } from "../../../../../components/page-blocks/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
@@ -9,7 +9,11 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <div className="navbar-container">
-        <PageBlocks isServer={props.isServer} pageBlocks={props.pageBlocks} />
+        <PageBlocks
+          variant="default"
+          isServer={props.isServer}
+          pageBlocks={props.pageBlocks}
+        />
       </div>
     </nav>
   );

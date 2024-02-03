@@ -3,7 +3,7 @@
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/page/populate";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
-import { PageBlocks } from "../components/page-blocks/omponent";
+import { Component as PageBlocks } from "../components/page-blocks/component";
 
 export async function NotFoundPage() {
   const pages = (await getBackendData({
@@ -20,5 +20,11 @@ export async function NotFoundPage() {
     return <div>Not found</div>;
   }
 
-  return <PageBlocks isServer={false} pageBlocks={pages[0].pageBlocks} />;
+  return (
+    <PageBlocks
+      variant="default"
+      isServer={false}
+      pageBlocks={pages[0].pageBlocks}
+    />
+  );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { PageBlocks } from "../../../../../components/page-blocks/omponent";
+import { Component as PageBlocks } from "../../../../../components/page-blocks/component";
 import { IComponentPropsExtended } from "../../interface";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
@@ -10,7 +10,11 @@ export function Component(props: IComponentPropsExtended) {
       <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
       <PopoverContent>
         <div className="flyout-container">
-          <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
+          <PageBlocks
+            variant="default"
+            isServer={false}
+            pageBlocks={props.pageBlocks}
+          />
         </div>
       </PopoverContent>
     </Popover>

@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { PageBlocks } from "../../../../../components/page-blocks/omponent";
+import { Component as PageBlocks } from "../../../../../components/page-blocks/component";
 import { usePathname, useRouter } from "next/navigation";
 import { IComponentPropsExtended } from "../../interface";
 
@@ -45,7 +45,11 @@ export function Component(props: IComponentPropsExtended) {
         >
           <div className="slide-over-container">
             <Dialog.Panel className="dialog-panel">
-              <PageBlocks isServer={false} pageBlocks={props.pageBlocks} />
+              <PageBlocks
+                variant="default"
+                isServer={false}
+                pageBlocks={props.pageBlocks}
+              />
             </Dialog.Panel>
           </div>
         </Transition.Child>
