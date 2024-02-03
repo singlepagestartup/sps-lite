@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import ReactMarkdown from "react-markdown";
-import { api as reviewApi } from "../../../../../redux/entities/review";
+import { api as reviewApi } from "../../../../../models/review";
 import { Card, ICardProps } from "@sps/ui-adapter";
 import { getFileUrl } from "@sps/utils";
 import type { IModel as IBackendReview } from "@sps/sps-crm-contracts-extended/lib/models/review/interfaces";
