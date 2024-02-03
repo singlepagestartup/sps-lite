@@ -31,6 +31,7 @@ type IPageBlock =
   | IButtonsArray;
 
 export interface IComponentProps {
+  variant: "default";
   isServer: boolean;
   pageBlocks?: IPageBlock[] | null;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;

@@ -1,6 +1,6 @@
 "use client";
 
-import { PageBlocks } from "../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks/omponent";
 import { IComponentPropsExtended } from "../../interface";
 import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 

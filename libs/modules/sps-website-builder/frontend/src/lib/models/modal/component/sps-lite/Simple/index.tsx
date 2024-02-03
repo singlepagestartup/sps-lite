@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { PageBlocks } from "../../../../../components/page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks/omponent";
 import { IModal } from "../..";
 
 export default function Simple(props: IModal) {

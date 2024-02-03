@@ -1,9 +1,9 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "./interface";
-import { pageBlocks } from "./_aliases";
-import { ReduxProvider } from "../../redux";
+import { IComponentProps } from "../../../interface";
+import { pageBlocks } from "../../../aliases";
+import { ReduxProvider } from "../../../../../redux";
 
-export function PageBlocks(props: IComponentProps) {
+export function Component(props: IComponentProps) {
   return (
     <ReduxProvider>
       <div className="page-blocks">

@@ -4,7 +4,6 @@ export interface IModel {
   variant:
     | "primary"
     | "secondary"
-    | "locale"
     | "destructive"
     | "outline"
     | "ghost"

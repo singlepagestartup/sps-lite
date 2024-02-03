@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../../components/page-blocks/index";
+import { PageBlocks } from "../../../../../components/page-blocks/omponent";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
