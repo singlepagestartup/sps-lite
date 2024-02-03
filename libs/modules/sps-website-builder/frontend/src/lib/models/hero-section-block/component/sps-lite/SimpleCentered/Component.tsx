@@ -9,6 +9,7 @@ import { IComponentPropsExtended } from "../../interface";
 // import { Button as UiButton } from "@sps/ui-adapter";
 // import { Component as Flyout } from "../../../../../../entities/flyout/component";
 // import { api as logotypeApi } from "../../../../logotype/api/client";
+import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
 
 export default function Component(props: IComponentPropsExtended) {
   // const { data } = logotypeApi.useFindOneQuery({ id: 3 });
@@ -50,15 +51,15 @@ export default function Component(props: IComponentPropsExtended) {
                 );
               })}
             </div>
-            <div className="flex items-center justify-center py-5">
-              {/* <button
+            {/* <div className="flex items-center justify-center py-5">
+              <button
                 onClick={() => {
                   findOneLogotype({ id: 3 });
                 }}
               >
                 Fetch logotype
-              </button> */}
-            </div>
+              </button>
+            </div> */}
 
             {/* {props.title === "Sidebar" ? (
               <Flyout isServer={true} variant="simple" id={2}>
@@ -75,6 +76,9 @@ export default function Component(props: IComponentPropsExtended) {
         </main>
       </div>
       {props.media?.length ? (
+        <File variant="default" isServer={false} {...props.media[0]} />
+      ) : null}
+      {/* {props.media?.length ? (
         <div className="w-full relative aspect-w-4 aspect-h-2">
           <Image
             src={getFileUrl(props.media[0])}
@@ -83,7 +87,7 @@ export default function Component(props: IComponentPropsExtended) {
             className="object-contain"
           />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

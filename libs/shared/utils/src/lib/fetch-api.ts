@@ -38,8 +38,9 @@ async function findOne<T>(params: {
   id: number;
   model: string;
   populate: any;
+  rootPath?: string;
 }): Promise<T> {
-  const { id, populate, model } = params;
+  const { id, populate, model, rootPath = "/api/sps-website-builder" } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -51,7 +52,7 @@ async function findOne<T>(params: {
   );
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/${model}/${id}?${stringifiedQuery}`,
+    `${BACKEND_URL}${rootPath}/${model}/${id}?${stringifiedQuery}`,
     { next: { revalidate: 3600 } } as any,
   );
 

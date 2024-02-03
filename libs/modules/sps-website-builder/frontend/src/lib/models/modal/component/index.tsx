@@ -13,6 +13,7 @@ import {
 import type { IModel as IBackendModal } from "@sps/sps-website-builder-contracts-extended/lib/models/modal/interfaces";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { getTargetPage } from "@sps/utils";
+import { ReduxProvider } from "../../../redux";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;
@@ -101,12 +102,14 @@ export function Component({ modals = [] }: { modals?: IModal[] }) {
   }
 
   return (
-    <Comp
-      {...modalProps}
-      page={page}
-      isOpenModal={isOpen}
-      closeModal={closeModal}
-      showSkeletons={isLoading || isFetching}
-    />
+    <ReduxProvider>
+      <Comp
+        {...modalProps}
+        page={page}
+        isOpenModal={isOpen}
+        closeModal={closeModal}
+        showSkeletons={isLoading || isFetching}
+      />
+    </ReduxProvider>
   );
 }

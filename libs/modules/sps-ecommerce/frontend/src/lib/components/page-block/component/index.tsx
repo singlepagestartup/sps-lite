@@ -1,7 +1,6 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
-import { ReduxProvider } from "../../../redux";
 
 export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
@@ -29,15 +28,13 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <ErrorBoundary>
-      <ReduxProvider>
-        <div
-          data-component={props.__component}
-          data-variant={props.variant}
-          className={`${props.className || ""}`}
-        >
-          <PageBlock {...props} isServer={props.isServer} />
-        </div>
-      </ReduxProvider>
+      <div
+        data-component={props.__component}
+        data-variant={props.variant}
+        className={`${props.className || ""}`}
+      >
+        <PageBlock {...props} isServer={props.isServer} />
+      </div>
     </ErrorBoundary>
   );
 }

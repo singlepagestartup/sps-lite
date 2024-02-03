@@ -20,5 +20,7 @@ export async function NotFoundPage() {
     return <div>Not found</div>;
   }
 
-  return <Component isServer={true} {...pages[0]} />;
+  return <div>404 | Not found</div>;
+
+  // return <Component isServer={true} {...pages[0]} />;
 }

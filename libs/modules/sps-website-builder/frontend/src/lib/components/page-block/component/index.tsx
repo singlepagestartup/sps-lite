@@ -1,7 +1,6 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
-import { ReduxProvider } from "../../../redux";
 import {
   pageBlocks as spsEcommercePageBlocks,
   PageBlock as SpsEcommercePageBlock,
@@ -22,15 +21,13 @@ export function Component(props: IComponentPropsExtended) {
   if (typeof PageBlock == "function") {
     return (
       <ErrorBoundary>
-        <ReduxProvider>
-          <div
-            data-component={props.__component}
-            data-variant={props.variant}
-            className={`${props.className || ""}`}
-          >
-            <PageBlock {...props} />
-          </div>
-        </ReduxProvider>
+        <div
+          data-component={props.__component}
+          data-variant={props.variant}
+          className={`${props.className || ""}`}
+        >
+          <PageBlock {...props} />
+        </div>
       </ErrorBoundary>
     );
   }
