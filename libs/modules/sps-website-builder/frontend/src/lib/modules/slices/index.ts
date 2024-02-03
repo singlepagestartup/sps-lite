@@ -1,4 +1,4 @@
-import { rtkQueryErrorLogger } from "../rtk-query-error-logger";
+import { rtkQueryErrorLogger } from "../../redux/rtk-query-error-logger";
 import { rootSlices as spsLiteRootSlices } from "./sps-lite";
 import { rootSlices as startupRootSlices } from "./startup";
 

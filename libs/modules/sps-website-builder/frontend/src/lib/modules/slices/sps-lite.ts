@@ -1,4 +1,4 @@
-import { slices as spsWebsiteBuilderSlices } from "../slices/index";
+import { slices as spsWebsiteBuilderSlices } from "../../redux/slices/index";
 // import { slices as spsBillingSlices } from "@sps/sps-billing-frontend/lib/redux/slices";
 // import { slices as spsCrmSlices } from "@sps/sps-crm-frontend/lib/redux/slices";
 // import { slices as spsEcommerceSlices } from "@sps/sps-ecommerce-frontend/lib/redux/slices";

@@ -1,12 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import { Component as Button } from "../../../../button/component";
 import { getFileUrl } from "@sps/utils";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "../../interface";
+// import { StateGetter } from "../../../../../components/StateGetter";
 // import { Button as UiButton } from "@sps/ui-adapter";
 // import { Component as Flyout } from "../../../../../../entities/flyout/component";
+// import { api as logotypeApi } from "../../../../logotype/api/client";
 
 export default function Component(props: IComponentPropsExtended) {
+  // const { data } = logotypeApi.useFindOneQuery({ id: 3 });
+  // const [findOneLogotype, { data: findOneLogotypeData }] =
+  //   logotypeApi.useLazyFindOneQuery();
+
+  // console.log(`🚀 ~ Component ~ data:`, data);
+  // console.log(`🚀 ~ Component ~ findOneLogotypeData:`, findOneLogotypeData);
+
   return (
     <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
       {props.additionalMedia?.length ? (
@@ -34,9 +45,19 @@ export default function Component(props: IComponentPropsExtended) {
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
               {props?.buttons?.map((button, index) => {
                 return (
-                  <Button isServer={props.isServer} key={index} {...button} />
+                  // <Button isServer={props.isServer} key={index} {...button} />
+                  <Button isServer={false} key={index} {...button} />
                 );
               })}
+            </div>
+            <div className="flex items-center justify-center py-5">
+              {/* <button
+                onClick={() => {
+                  findOneLogotype({ id: 3 });
+                }}
+              >
+                Fetch logotype
+              </button> */}
             </div>
 
             {/* {props.title === "Sidebar" ? (

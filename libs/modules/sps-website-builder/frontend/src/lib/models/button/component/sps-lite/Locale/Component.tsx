@@ -10,6 +10,10 @@ import { useGetButtonParams } from "@sps/hooks";
 
 export function Component(props: IComponentPropsExtended) {
   const params = useParams();
+  const currentLocale = useMemo(() => {
+    return !Array.isArray(params.locale) ? params.locale.toUpperCase() : "";
+  }, [params.locale]);
+
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
   // Bug with Next.js Link component and hash links
@@ -32,22 +36,20 @@ export function Component(props: IComponentPropsExtended) {
   //   );
   // }
 
-  // if (props.flyout) {
-  //   return (
-  //     <Flyout isServer={props.isServer} {...props.flyout}>
-  //       <Button
-  //         ui="shadcn"
-  //         data-component="elements.button"
-  //         variant={props.variant}
-  //         {...additionalAttributes}
-  //       >
-  //         {`${
-  //           !Array.isArray(params.locale) ? params.locale.toUpperCase() : ""
-  //         }`}
-  //       </Button>
-  //     </Flyout>
-  //   );
-  // }
+  if (props.flyout) {
+    return (
+      <Flyout isServer={false} {...props.flyout}>
+        <Button
+          ui="shadcn"
+          data-component="elements.button"
+          variant={props.variant}
+          {...additionalAttributes}
+        >
+          {currentLocale}
+        </Button>
+      </Flyout>
+    );
+  }
 
   if (url && props.url) {
     return (

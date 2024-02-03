@@ -3,13 +3,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { slices as backendSlices } from "./slices";
+import { slices } from "./slices";
 
-const middlewares = [...backendSlices.middlewares];
+const middlewares = [...slices.middlewares];
 
-const store: any = configureStore({
+const store = configureStore({
   reducer: {
-    ...backendSlices.reducer,
+    ...slices.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),

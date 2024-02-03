@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { PageBlocks } from "../../../../page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { usePathname, useRouter } from "next/navigation";
 import { IComponentPropsExtended } from "../../interface";
 

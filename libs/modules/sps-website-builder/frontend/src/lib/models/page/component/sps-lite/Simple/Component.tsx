@@ -1,4 +1,4 @@
-import { PageBlocks } from "../../../../page-blocks";
+import { PageBlocks } from "../../../../../components/page-blocks";
 import { Component as Layout } from "../../../../layout/component";
 import { IComponentPropsExtended } from "../../interface";
 
