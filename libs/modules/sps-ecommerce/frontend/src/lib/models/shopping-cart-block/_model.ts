@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "ShoppingCartBlock";
-export const route = "shopping-cart-blocks";
+export const route = "components/page-blocks.shopping-cart-block";
 export const populate = modelPopulate;

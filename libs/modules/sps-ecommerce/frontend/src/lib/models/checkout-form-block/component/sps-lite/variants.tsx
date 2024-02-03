@@ -3,7 +3,7 @@ import { SingleStepWithProduct } from "./SingleStepWithProduct";
 import { SingleStepWithTier } from "./SingleStepWithTier";
 
 export const variants = {
-  "single-step-with-tier": SingleStepWithCart,
+  "single-step-with-tier": SingleStepWithTier,
   "single-step-with-product": SingleStepWithProduct,
-  "single-step-with-cart": SingleStepWithTier,
+  "single-step-with-cart": SingleStepWithCart,
 };

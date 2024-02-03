@@ -30,10 +30,8 @@ type IPageBlock =
   | IButton
   | IButtonsArray;
 
-export interface IComponentProps {
-  variant: "default";
+export type IComponentProps = IPageBlock & {
   isServer: boolean;
-  pageBlocks?: IPageBlock[] | null;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;
-}
+};

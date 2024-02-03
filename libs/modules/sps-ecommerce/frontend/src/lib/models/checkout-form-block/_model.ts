@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "CheckoutFormBlock";
-export const route = "checkout-form-blocks";
+export const route = "components/page-blocks.checkout-form-block";
 export const populate = modelPopulate;

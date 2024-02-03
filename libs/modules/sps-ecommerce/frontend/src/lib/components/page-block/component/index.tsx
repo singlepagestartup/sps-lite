@@ -1,0 +1,43 @@
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { IComponentProps } from "../interface";
+import { pageBlocks } from "../aliases";
+import { ReduxProvider } from "../../../redux";
+
+export function Component(props: IComponentProps) {
+  const key = props.__component;
+
+  if (!key) {
+    throw new Error(
+      `PageBlock with props: "${JSON.stringify(props)}" is missing __component`,
+    );
+  }
+
+  // problem with conflicting types in some constituents
+  // that is why here is any
+  const PageBlock: any = pageBlocks[key];
+
+  if (typeof PageBlock !== "function") {
+    // throw new Error(`PageBlock ${key} is not a function`);
+    return (
+      <div
+        data-component={props.__component}
+        data-variant={props.variant}
+        className={`${props.className || ""}`}
+      ></div>
+    );
+  }
+
+  return (
+    <ErrorBoundary>
+      <ReduxProvider>
+        <div
+          data-component={props.__component}
+          data-variant={props.variant}
+          className={`${props.className || ""}`}
+        >
+          <PageBlock {...props} isServer={props.isServer} />
+        </div>
+      </ReduxProvider>
+    </ErrorBoundary>
+  );
+}
