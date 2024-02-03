@@ -67,8 +67,12 @@ async function findOne<T>(params: {
   return transformedData;
 }
 
-async function find<T>(params: { model: string; populate: any }): Promise<T> {
-  const { populate, model } = params;
+async function find<T>(params: {
+  model: string;
+  populate: any;
+  rootPath?: string;
+}): Promise<T> {
+  const { populate, model, rootPath = "/api/sps-website-builder" } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -80,7 +84,7 @@ async function find<T>(params: { model: string; populate: any }): Promise<T> {
   );
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/${model}?${stringifiedQuery}`,
+    `${BACKEND_URL}${rootPath}/${model}?${stringifiedQuery}`,
     { next: { revalidate: 3600 } } as any,
   );
 
