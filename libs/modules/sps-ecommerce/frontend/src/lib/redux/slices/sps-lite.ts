@@ -1,9 +1,9 @@
-import { api as attributeApi } from "../entities/attribute";
-import { api as attributeKeyApi } from "../entities/attribute-key";
-import { api as cartApi } from "../entities/cart";
-import { api as orderApi } from "../entities/order";
-import { api as orderProductApi } from "../entities/order-product";
-import { api as productApi } from "../entities/product";
+import { api as attributeApi } from "../../models/attribute/api/client";
+import { api as attributeKeyApi } from "../../models/attribute-key/api/client";
+import { api as cartApi } from "../../models/cart/api/client";
+import { api as orderApi } from "../../models/order/api/client";
+import { api as orderProductApi } from "../../models/order-product/api/client";
+import { api as productApi } from "../../models/product/api/client";
 
 export const slices = {
   middlewares: [

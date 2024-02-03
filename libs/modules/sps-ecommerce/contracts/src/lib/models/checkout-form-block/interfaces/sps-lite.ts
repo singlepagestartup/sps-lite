@@ -10,7 +10,4 @@ export interface IModel {
   subtitle: string | null;
   anchor: string | null;
   description: string | null;
-  buttons: any[] | null;
-  media?: any[] | null;
-  additionalMedia?: any[] | null;
 }
