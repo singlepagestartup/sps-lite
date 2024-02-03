@@ -31,11 +31,9 @@ export default async function RootLayout({
             <TranslationsContextWrapper>
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
-                  <ReduxProvider>
-                    <SpsWebsiteBuilderRootLayout>
-                      {children}
-                    </SpsWebsiteBuilderRootLayout>
-                  </ReduxProvider>
+                  <SpsWebsiteBuilderRootLayout>
+                    {children}
+                  </SpsWebsiteBuilderRootLayout>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>
             </TranslationsContextWrapper>

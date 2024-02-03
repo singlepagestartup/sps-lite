@@ -16,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
     return url?.pathname?.includes("#")
       ? ["a", `${url.pathname}${url?.query ? `?${url.query}` : ""}`]
       : [Link, url];
-  }, [url]);
+  }, [JSON.stringify(url)]);
 
   if (props.flyout) {
     return (
@@ -33,14 +33,14 @@ export function Component(props: IComponentPropsExtended) {
     );
   }
 
-  if (url && props.url) {
+  if (props.url) {
     return (
       <Button
         ui="shadcn"
         data-component="elements.button"
-        variant={props.variant ?? "default"}
-        asChild={true}
+        variant={props.variant}
         {...additionalAttributes}
+        asChild={true}
       >
         <Comp href={urlPrepared}>{props.title}</Comp>
       </Button>

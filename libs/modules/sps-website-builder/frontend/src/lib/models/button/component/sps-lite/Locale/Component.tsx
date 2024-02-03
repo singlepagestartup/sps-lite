@@ -5,14 +5,15 @@ import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../../interface";
 import { useMemo } from "react";
 import { Component as Flyout } from "../../../../flyout/component";
-import { useParams } from "next/navigation";
 import { useGetButtonParams } from "@sps/hooks";
 
 export function Component(props: IComponentPropsExtended) {
-  const params = useParams();
-  const currentLocale = useMemo(() => {
-    return !Array.isArray(params.locale) ? params.locale.toUpperCase() : "";
-  }, [params.locale]);
+  // Bug https://github.com/vercel/next.js/issues/58788 that trigger rerender and cause infinite loop
+  // PR is opened https://github.com/vercel/next.js/pull/60708
+  // const params = useParams();
+  // const currentLocale = useMemo(() => {
+  //   // return !Array.isArray(params.locale) ? params.locale.toUpperCase() : "";
+  // }, []);
 
   const { isActive, additionalAttributes, url } = useGetButtonParams(props);
 
@@ -22,19 +23,7 @@ export function Component(props: IComponentPropsExtended) {
     return url?.pathname?.includes("#")
       ? ["a", `${url.pathname}${url?.query ? `?${url.query}` : ""}`]
       : [Link, url];
-  }, [url]);
-
-  // if (props.onClick) {
-  //   return (
-  //     <Button
-  //       variant={props.variant}
-  //       onClick={props.onClick}
-  //       {...additionalAttributes}
-  //     >
-  //       {props.title}
-  //     </Button>
-  //   );
-  // }
+  }, [JSON.stringify(url)]);
 
   if (props.flyout) {
     return (
@@ -42,16 +31,16 @@ export function Component(props: IComponentPropsExtended) {
         <Button
           ui="shadcn"
           data-component="elements.button"
-          variant={props.variant}
+          variant={props.variant ?? "default"}
           {...additionalAttributes}
         >
-          {currentLocale}
+          {props.title}
         </Button>
       </Flyout>
     );
   }
 
-  if (url && props.url) {
+  if (props.url) {
     return (
       <Button
         ui="shadcn"
