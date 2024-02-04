@@ -4,13 +4,14 @@ import { FormField } from "@sps/ui-adapter";
 export function Component(props: IComponentPropsExtended) {
   return (
     <>
-      <FormField
+      {/* sps variant has bugs */}
+      {/* <FormField
         {...props}
         data-component="elements.input"
         ui="sps"
         label={"sps | " + props.label || undefined}
         type="range"
-      />
+      /> */}
       <FormField
         {...props}
         data-component="elements.input"

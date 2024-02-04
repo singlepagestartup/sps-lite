@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "Input";
-export const route = "components/input";
+export const route = "components/elements.input";
 export const populate = modelPopulate;

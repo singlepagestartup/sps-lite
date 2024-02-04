@@ -5,7 +5,8 @@ import { api } from "../../../api/client";
 import { useGetPreparedFormInputs } from "../../../../../hooks/use-get-prepared-form-inputs/index";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { Button, Input } from "@sps/ui-adapter";
+import { Button, Input as UiInput } from "@sps/ui-adapter";
+import Input from "../../../../input/component/client";
 
 export function Component(props: IComponentPropsExtended) {
   const [createFormRequest, { data }] = api.useCreateMutation();
@@ -58,8 +59,8 @@ export function Component(props: IComponentPropsExtended) {
             return (
               <Input
                 {...input.input}
+                isServer={false}
                 key={index}
-                options={input.options}
                 name={input.inputName}
                 className={input.input?.className || ""}
                 by={input.input?.by || undefined}
@@ -75,9 +76,10 @@ export function Component(props: IComponentPropsExtended) {
 
           {preparedInputs?.map((input: any, index: number) => {
             return (
-              <Input
+              <UiInput
                 __component="elements.input"
                 id={0}
+                isServer={false}
                 placeholder={null}
                 value={null}
                 label={null}

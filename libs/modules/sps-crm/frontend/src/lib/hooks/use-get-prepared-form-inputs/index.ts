@@ -1,16 +1,16 @@
 import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
-import type { IModel as IBackendForm } from "@sps/sps-crm-contracts-extended/lib/models/form/interfaces";
-import { IModel as IBackendComponent } from "@sps/sps-crm-contracts/lib/components/elements/input/interfaces";
+import type { IModelExtended as IForm } from "../../models/form/_model";
+import { IModelExtended as IInput } from "../../models/input/_model";
 
-export function useGetPreparedFormInputs(props: IBackendForm) {
+export function useGetPreparedFormInputs(props: IForm) {
   const searchParams = useSearchParams();
   const searchParamsStringified = searchParams?.toString();
 
   const preparedInputs = useMemo(() => {
     return props.inputs?.map((input, index: number) => {
-      const localInput: IBackendComponent & { by?: any } = {
+      const localInput: IInput & { by?: any } = {
         ...input,
         __component: "elements.input",
       };
@@ -57,16 +57,16 @@ export function useGetPreparedFormInputs(props: IBackendForm) {
         inputName = `inputs[${index}].value`;
       }
 
-      let options: IBackendComponent["options"] = undefined;
+      // let options: IInput["options"] = undefined;
 
-      if (["listbox", "radio-group"].includes(input.variant)) {
-        options = input.options?.map((option: any) => {
-          const passOption = { ...option };
-          delete passOption.id;
+      // if (["listbox", "radio-group"].includes(input.variant)) {
+      //   options = input.options?.map((option: any) => {
+      //     const passOption = { ...option };
+      //     delete passOption.id;
 
-          return passOption;
-        });
-      }
+      //     return passOption;
+      //   });
+      // }
       // else if (input.type && ["date", "datetime"].includes(input.type)) {
       //   options = {
       //     inline: true,
@@ -78,7 +78,7 @@ export function useGetPreparedFormInputs(props: IBackendForm) {
         input: localInput,
         inputName,
         isFile,
-        options,
+        // options,
       };
     });
   }, [props, searchParamsStringified]);

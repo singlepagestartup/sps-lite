@@ -10,6 +10,7 @@ const notAllowedProps = [
   "additionalMedia",
   "extraMedia",
   "isRequired",
+  "isServer",
 ] as const;
 
 type ReturnType<T> = Omit<T, (typeof notAllowedProps)[number]>;

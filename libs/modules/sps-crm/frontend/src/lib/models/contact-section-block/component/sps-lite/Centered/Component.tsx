@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import { IComponentPropsExtended } from "../../interface";
 import { createNotification } from "@sps/ui-adapter";
+import { Component as Form } from "../../../../form/component";
 
 export function Component(props: IComponentPropsExtended) {
   function successCallbackAction() {
@@ -26,9 +27,7 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
       </div>
       <div className="mt-12">
-        {/* {props.form ? (
-          <Form {...props.form} successCallback={successCallbackAction} />
-        ) : null} */}
+        {props.form ? <Form isServer={false} {...props.form} /> : null}
       </div>
     </div>
   );

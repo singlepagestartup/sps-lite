@@ -54,7 +54,7 @@ const public = {
   "plugin::i18n.locales": ["listLocales"],
   "plugin::email.email": [],
   "plugin::users-permissions.permissions": [],
-  "plugin::upload.content-api": [],
+  "plugin::upload.content-api": ["find", "findOne"],
   "plugin::content-type-builder.components": [],
   "plugin::content-type-builder.content-types": [],
 };
