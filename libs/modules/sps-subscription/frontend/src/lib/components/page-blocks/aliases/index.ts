@@ -1,5 +1,5 @@
-import EditSubscriptionBlock from "../edit-subscription-block";
-import TiersListBlock from "../tiers-list-block";
+import EditSubscriptionBlock from "../../../models/edit-subscription-block";
+import TiersListBlock from "../../../models/tiers-list-block";
 
 export const pageBlockComponents = {
   "page-blocks.tiers-list-block": TiersListBlock,

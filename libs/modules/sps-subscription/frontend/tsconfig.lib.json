@@ -20,6 +20,6 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/lib/components/page-blocks/tiers-list-block/sps-lite/TwoColumnsCard/index.stories.tsx.example"
+    "src/lib/models/tiers-list-block/sps-lite/TwoColumnsCard/index.stories.tsx.example"
   ]
 }
