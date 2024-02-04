@@ -5,10 +5,9 @@ import { Provider } from "react-redux";
 
 // import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices } from "./slices";
-import { api as userApi } from "./entities/user";
+import { api as userApi } from "../models/user/api/client";
 import { useEffect } from "react";
 import { globalStore, persistentMessageQuery } from "@sps/store";
-import { entities } from "./entities";
 
 const middlewares = [...slices.middlewares];
 
@@ -129,11 +128,11 @@ function Observer({ children }: { children: React.ReactNode }) {
   //   }
   // });
 
-  useEffect(() => {
-    console.log(`🚀 ~ useEffect ~ globalStore:`, globalStore);
-    globalStore.getState().addApi({ ...userApi, getState: store.getState });
-    console.log(`🚀 ~ useEffect ~ userApi:`, userApi);
-  }, []);
+  // useEffect(() => {
+  //   console.log(`🚀 ~ useEffect ~ globalStore:`, globalStore);
+  //   globalStore.getState().addApi({ ...userApi, getState: store.getState });
+  //   console.log(`🚀 ~ useEffect ~ userApi:`, userApi);
+  // }, []);
 
   return <>{children}</>;
 }

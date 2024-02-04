@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { IModel } from "../interfaces";
+import type { IModel } from "../_model";
 import sha256 from "crypto-js/sha256";
 
-const initialState: IEntity = {
+const initialState: IModel = {
   username:
     typeof window !== "undefined"
       ? localStorage.getItem("username")
