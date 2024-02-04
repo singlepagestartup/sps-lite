@@ -1,36 +1,135 @@
-import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
-import { Component as Button } from "../../../../button/component";
+"use client";
+
 import { IComponentPropsExtended } from "../../interface";
+import { api } from "../../../api/client";
+import { useGetPreparedFormInputs } from "../../../../../hooks/use-get-prepared-form-inputs/index";
+import { FormProvider, useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { Button, Input } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
+  const [createFormRequest, { data }] = api.useCreateMutation();
+  const preparedInputs = useGetPreparedFormInputs(props);
+
+  const methods = useForm<any>({
+    mode: "all",
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = methods;
+
+  const watchData = watch();
+
+  useEffect(() => {
+    // console.log("🚀 ~ Simple ~ watchData", watchData);
+  }, [watchData]);
+
+  useEffect(() => {
+    if (data) {
+      reset();
+
+      // if (typeof props.successCallback === "function") {
+      //   props.successCallback(data);
+      // }
+    }
+  }, [data, reset]);
+
+  async function onSubmit(data: any) {
+    console.log("🚀 ~ onSubmit ~ data", data);
+
+    createFormRequest({ data, files: data.files });
+  }
+
   return (
-    <div className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <div className="w-2/12 mx-auto mb-8">
-          <div className="aspect-w-3 aspect-h-3 relative">
-            {props.media?.length ? (
-              <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
-            ) : null}
-          </div>
-        </div>
-        <h2 className="text-lg font-semibold text-primary-600">
-          {props.subtitle}
-        </h2>
-        <p className="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-          {props.title}
-        </p>
-        {props.description ? (
-          <ReactMarkdown className="mx-auto my-8 max-w-xl text-xl text-gray-500">
-            {props.description}
-          </ReactMarkdown>
-        ) : null}
-        <div className="flex gap-2 justify-center">
-          {props.buttons?.map((button, index) => {
-            return <Button isServer={props.isServer} key={index} {...button} />;
+    <div
+      data-collection-type="form"
+      data-variant={props.variant}
+      className={props.className || ""}
+    >
+      <div className="form-container">
+        <FormProvider {...methods}>
+          {preparedInputs?.map((input: any, index: number) => {
+            return (
+              <Input
+                {...input.input}
+                key={index}
+                options={input.options}
+                name={input.inputName}
+                className={input.input?.className || ""}
+                by={input.input?.by || undefined}
+                rules={{
+                  required: {
+                    value: input.input?.isRequired,
+                    message: "Required field",
+                  },
+                }}
+              />
+            );
           })}
-        </div>
+
+          {preparedInputs?.map((input: any, index: number) => {
+            return (
+              <Input
+                __component="elements.input"
+                id={0}
+                placeholder={null}
+                value={null}
+                label={null}
+                multiple={null}
+                min={null}
+                max={null}
+                step={null}
+                {...input}
+                key={index}
+                ui="sps"
+                variant="text"
+                type="text"
+                name={`inputs[${index}].key`}
+                initialValue={input.input.name}
+                by="id"
+                className="!hidden"
+                isRequired={true}
+              />
+            );
+          })}
+
+          {/* <FormField
+            ui="sps"
+            variant="radio-group"
+            type="select"
+            name="form"
+            initialValue={props}
+            options={[props]}
+            className="hidden"
+            by="id"
+          /> */}
+          <div className="submit-button-container">
+            {/* {props.button ? (
+              <Button
+                ui="shadcn"
+                className={props.button.className || ""}
+                variant={"secondary"}
+                onClick={handleSubmit(onSubmit)}
+              >
+                {props.button?.title || "Submit"}
+              </Button>
+            ) : ( */}
+            <Button
+              ui="shadcn"
+              variant={"secondary"}
+              onClick={handleSubmit(onSubmit)}
+            >
+              Submit
+            </Button>
+            {/* )} */}
+          </div>
+        </FormProvider>
       </div>
     </div>
   );
