@@ -11,8 +11,6 @@ import type { IModel as IIncentivesBlock } from "@sps/sps-website-builder-contra
 import type { IModel as ILogotypesCloudBlock } from "@sps/sps-website-builder-contracts/lib/models/logotypes-cloud-block/interfaces";
 import type { IModel as INotFoundBlock } from "@sps/sps-website-builder-contracts/lib/models/not-found-block/interfaces";
 import type { IModel as ISliderBlock } from "@sps/sps-website-builder-contracts/lib/models/slider-block/interfaces";
-import type { IModel as IButton } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
-import type { IModel as IButtonsArray } from "@sps/sps-website-builder-contracts/lib/models/buttons-array/interfaces";
 
 type IPageBlock =
   | IAlertBlock
@@ -24,9 +22,7 @@ type IPageBlock =
   | IIncentivesBlock
   | ILogotypesCloudBlock
   | INotFoundBlock
-  | ISliderBlock
-  | IButton
-  | IButtonsArray;
+  | ISliderBlock;
 
 export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;

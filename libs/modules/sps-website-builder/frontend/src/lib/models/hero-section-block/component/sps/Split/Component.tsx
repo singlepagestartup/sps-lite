@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { Component as Button } from "../../../../button/component";
+import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
 import { Component as Logotype } from "../../../../logotype/component";
 import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "../../interface";

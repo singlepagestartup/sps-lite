@@ -1,17 +1,15 @@
-import type { IModel as IAlertBlock } from "@sps/sps-website-builder-contracts/lib/models/alert-block/interfaces";
-import type { IModel as IButton } from "@sps/sps-website-builder-contracts/lib/models/button/interfaces";
-import type { IModel as IButtonsArray } from "@sps/sps-website-builder-contracts/lib/models/buttons-array/interfaces";
-import type { IModel as ICtaSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/cta-section-block/interfaces";
-import type { IModel as IFaqBlock } from "@sps/sps-website-builder-contracts/lib/models/faq-block/interfaces";
-import type { IModel as IFeaturesSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/features-section-block/interfaces";
-import type { IModel as IFooterBlock } from "@sps/sps-website-builder-contracts/lib/models/footer-block/interfaces";
-import type { IModel as IHeaderSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/header-section-block/interfaces";
-import type { IModel as IHeroSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/hero-section-block/interfaces";
-import type { IModel as IIncentivesBlock } from "@sps/sps-website-builder-contracts/lib/models/incentives-block/interfaces";
-import type { IModel as ILogotypesCloudBlock } from "@sps/sps-website-builder-contracts/lib/models/logotypes-cloud-block/interfaces";
-import type { IModel as INavbarBlock } from "@sps/sps-website-builder-contracts/lib/models/navbar-block/interfaces";
-import type { IModel as INotFoundBlock } from "@sps/sps-website-builder-contracts/lib/models/not-found-block/interfaces";
-import type { IModel as ISliderBlock } from "@sps/sps-website-builder-contracts/lib/models/slider-block/interfaces";
+import type { IModel as IAlertBlock } from "../../../models/alert-block/_model";
+import type { IModel as ICtaSectionBlock } from "../../../models/cta-section-block/_model";
+import type { IModel as IFaqBlock } from "../../../models/faq-block/_model";
+import type { IModel as IFeaturesSectionBlock } from "../../../models/features-section-block/_model";
+import type { IModel as IFooterBlock } from "../../../models/footer-block/_model";
+import type { IModel as IHeaderSectionBlock } from "../../../models/header-section-block/_model";
+import type { IModel as IHeroSectionBlock } from "../../../models/hero-section-block/_model";
+import type { IModel as IIncentivesBlock } from "../../../models/incentives-block/_model";
+import type { IModel as ILogotypesCloudBlock } from "../../../models/logotypes-cloud-block/_model";
+import type { IModel as INavbarBlock } from "../../../models/navbar-block/_model";
+import type { IModel as INotFoundBlock } from "../../../models/not-found-block/_model";
+import type { IModel as ISliderBlock } from "../../../models/slider-block/_model";
 import { Dispatch, SetStateAction } from "react";
 import { IComponentProps as ISpsEcommercePageBlock } from "@sps/sps-ecommerce-frontend/lib/components/page-block/interface";
 
@@ -28,8 +26,6 @@ type IPageBlock =
   | INavbarBlock
   | INotFoundBlock
   | ISliderBlock
-  | IButton
-  | IButtonsArray
   | ISpsEcommercePageBlock;
 
 export type IComponentProps = IPageBlock;

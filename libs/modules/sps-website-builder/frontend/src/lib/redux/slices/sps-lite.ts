@@ -1,5 +1,3 @@
-import { api as buttonApi } from "../../models/button/api/client";
-import { api as buttonsArrayApi } from "../../models/buttons-array/api/client";
 import { api as featureApi } from "../../models/feature/api/client";
 import { api as logotypeApi } from "../../models/logotype/api/client";
 import { api as alertBlockApi } from "../../models/alert-block/api/client";
@@ -14,7 +12,6 @@ import { api as logotypesCloudBlockApi } from "../../models/logotypes-cloud-bloc
 import { api as navbarBlockApi } from "../../models/navbar-block/api/client";
 import { api as notFoundBlockApi } from "../../models/not-found-block/api/client";
 import { api as sliderBlockApi } from "../../models/slider-block/api/client";
-import { api as flyoutApi } from "../../models/flyout/api/client";
 import { api as footerApi } from "../../models/footer/api/client";
 import { api as layoutApi } from "../../models/layout/api/client";
 import { api as loaderApi } from "../../models/loader/api/client";
@@ -31,8 +28,6 @@ import { api as topbarApi } from "../../models/topbar/api/client";
 
 export const slices = {
   middlewares: [
-    buttonApi.middleware,
-    buttonsArrayApi.middleware,
     featureApi.middleware,
     logotypeApi.middleware,
     alertBlockApi.middleware,
@@ -47,7 +42,6 @@ export const slices = {
     navbarBlockApi.middleware,
     notFoundBlockApi.middleware,
     sliderBlockApi.middleware,
-    flyoutApi.middleware,
     footerApi.middleware,
     layoutApi.middleware,
     loaderApi.middleware,
@@ -63,8 +57,6 @@ export const slices = {
     localeApi.middleware,
   ],
   reducer: {
-    [buttonApi.reducerPath]: buttonApi.reducer,
-    [buttonsArrayApi.reducerPath]: buttonsArrayApi.reducer,
     [featureApi.reducerPath]: featureApi.reducer,
     [logotypeApi.reducerPath]: logotypeApi.reducer,
     [alertBlockApi.reducerPath]: alertBlockApi.reducer,
@@ -79,7 +71,6 @@ export const slices = {
     [navbarBlockApi.reducerPath]: navbarBlockApi.reducer,
     [notFoundBlockApi.reducerPath]: notFoundBlockApi.reducer,
     [sliderBlockApi.reducerPath]: sliderBlockApi.reducer,
-    [flyoutApi.reducerPath]: flyoutApi.reducer,
     [footerApi.reducerPath]: footerApi.reducer,
     [layoutApi.reducerPath]: layoutApi.reducer,
     [loaderApi.reducerPath]: loaderApi.reducer,

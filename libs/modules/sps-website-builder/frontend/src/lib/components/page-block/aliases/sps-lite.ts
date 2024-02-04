@@ -1,5 +1,3 @@
-import { Component as Button } from "../../../models/button/component";
-import { Component as ButtonsArray } from "../../../models/buttons-array/component";
 import { Component as FaqBlock } from "../../../models/faq-block/component";
 import { Component as FeaturesSectionBlock } from "../../../models/features-section-block/component";
 import { Component as FooterBlock } from "../../../models/footer-block/component";
@@ -25,7 +23,5 @@ export const pageBlocks = {
   "page-blocks.incentives-block": IncentivesBlock,
   "page-blocks.cta-section-block": CtaSectionBlock,
   "page-blocks.alert-block": AlertBlock,
-  "elements.buttons-array": ButtonsArray,
-  "elements.button": Button,
   "page-blocks.navbar-block": NavbarBlock,
 };
