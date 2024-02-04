@@ -1,1 +1,1 @@
-export * from "./lib/redux/slices";
+export default {};

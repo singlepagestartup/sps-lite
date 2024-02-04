@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "ContactSectionBlock";
-export const route = "contact-section-blocks";
+export const route = "components/page-blocks.contact-section-block";
 export const populate = modelPopulate;

@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../../interface";
 
-export default function Component(props: IComponentPropsExtended) {
+export function Component(props: IComponentPropsExtended) {
   const [updateByEmail, { data: updateByEmailData }] =
     subscriptionApi.useUpdateByEmailMutation();
 

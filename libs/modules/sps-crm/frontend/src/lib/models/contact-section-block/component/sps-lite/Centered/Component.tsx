@@ -26,9 +26,9 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
       </div>
       <div className="mt-12">
-        {props.form ? (
+        {/* {props.form ? (
           <Form {...props.form} successCallback={successCallbackAction} />
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );

@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "TiersListBlock";
-export const route = "components/tiers-list-block";
+export const route = "components/page-blocks.tiers-list-block";
 export const populate = modelPopulate;

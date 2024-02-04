@@ -6,5 +6,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "EditSubscriptionBlock";
-export const route = "components/edit-subscription-block";
+export const route = "components/page-blocks.edit-subscription-block";
 export const populate = modelPopulate;

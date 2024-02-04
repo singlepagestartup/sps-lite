@@ -5,6 +5,14 @@ import {
   pageBlocks as spsEcommercePageBlocks,
   PageBlock as SpsEcommercePageBlock,
 } from "@sps/sps-ecommerce-frontend";
+import {
+  pageBlocks as spsCrmPageBlocks,
+  PageBlock as SpsCrmPageBlock,
+} from "@sps/sps-crm-frontend";
+import {
+  pageBlocks as spsSubscriptionPageBlocks,
+  PageBlock as SpsSubscriptionPageBlock,
+} from "@sps/sps-subscription-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
@@ -32,11 +40,25 @@ export function Component(props: IComponentPropsExtended) {
     );
   }
 
-  const SpsEcommercePageBlockKey: any =
+  const SpsEcommerceTargetPageBlock: any =
     spsEcommercePageBlocks[key as keyof typeof spsEcommercePageBlocks];
 
-  if (typeof SpsEcommercePageBlockKey == "function") {
+  if (typeof SpsEcommerceTargetPageBlock == "function") {
     return <SpsEcommercePageBlock {...(props as any)} />;
+  }
+
+  const SpsCrmTargetPageBlock: any =
+    spsCrmPageBlocks[key as keyof typeof spsCrmPageBlocks];
+
+  if (typeof SpsCrmTargetPageBlock == "function") {
+    return <SpsCrmPageBlock {...(props as any)} />;
+  }
+
+  const SpsSubscriptionTargetPageBlock: any =
+    spsSubscriptionPageBlocks[key as keyof typeof spsSubscriptionPageBlocks];
+
+  if (typeof SpsSubscriptionTargetPageBlock == "function") {
+    return <SpsSubscriptionPageBlock {...(props as any)} />;
   }
 
   return (
