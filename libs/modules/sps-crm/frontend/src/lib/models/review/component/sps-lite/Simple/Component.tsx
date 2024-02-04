@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import { Component as Button } from "../../../../button/component";
+// import { Component as Button } from "../../../../button/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
@@ -26,11 +26,11 @@ export function Component(props: IComponentPropsExtended) {
             {props.description}
           </ReactMarkdown>
         ) : null}
-        <div className="flex gap-2 justify-center">
+        {/* <div className="flex gap-2 justify-center">
           {props.buttons?.map((button, index) => {
             return <Button isServer={props.isServer} key={index} {...button} />;
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
