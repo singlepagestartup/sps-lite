@@ -1,0 +1,162 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    "paths": {
+      "@sps/buildable": ["lib/shared/buildable/src/index.ts"],
+      "@sps/buildable/*": ["lib/shared/buildable/src/*"],
+      "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
+      "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
+      "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
+      "@sps/sps-billing-contracts": [
+        "libs/modules/sps-billing/contracts/src/index.ts"
+      ],
+      "@sps/sps-billing-contracts-extended": [
+        "libs/modules/sps-billing/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-billing-contracts-extended/*": [
+        "libs/modules/sps-billing/contracts-extended/src/*"
+      ],
+      "@sps/sps-billing-contracts/*": [
+        "libs/modules/sps-billing/contracts/src/*"
+      ],
+      "@sps/sps-billing-frontend": [
+        "libs/modules/sps-billing/frontend/src/index.ts"
+      ],
+      "@sps/sps-billing-frontend/*": [
+        "libs/modules/sps-billing/frontend/src/*"
+      ],
+      "@sps/sps-crm-contracts": ["libs/modules/sps-crm/contracts/src/index.ts"],
+      "@sps/sps-crm-contracts-extended": [
+        "libs/modules/sps-crm/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-crm-contracts-extended/*": [
+        "libs/modules/sps-crm/contracts-extended/src/*"
+      ],
+      "@sps/sps-crm-contracts/*": ["libs/modules/sps-crm/contracts/src/*"],
+      "@sps/sps-crm-frontend": ["libs/modules/sps-crm/frontend/src/index.ts"],
+      "@sps/sps-crm-frontend/*": ["libs/modules/sps-crm/frontend/src/*"],
+      "@sps/sps-ecommerce-contracts": [
+        "libs/modules/sps-ecommerce/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-contracts-extended": [
+        "libs/modules/sps-ecommerce/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-contracts-extended/*": [
+        "libs/modules/sps-ecommerce/contracts-extended/src/*"
+      ],
+      "@sps/sps-ecommerce-contracts/*": [
+        "libs/modules/sps-ecommerce/contracts/src/*"
+      ],
+      "@sps/sps-ecommerce-frontend": [
+        "libs/modules/sps-ecommerce/frontend/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-frontend/*": [
+        "libs/modules/sps-ecommerce/frontend/src/*"
+      ],
+      "@sps/sps-elements-contracts": [
+        "libs/modules/sps-elements/contracts/src/index.ts"
+      ],
+      "@sps/sps-elements-contracts-extended": [
+        "libs/modules/sps-elements/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-elements-contracts-extended/*": [
+        "libs/modules/sps-elements/contracts-extended/src/*"
+      ],
+      "@sps/sps-elements-contracts/*": [
+        "libs/modules/sps-elements/contracts/src/*"
+      ],
+      "@sps/sps-elements-frontend": [
+        "libs/modules/sps-elements/frontend/src/index.ts"
+      ],
+      "@sps/sps-elements-frontend/*": [
+        "libs/modules/sps-elements/frontend/src/*"
+      ],
+      "@sps/sps-file-storage-contracts": [
+        "libs/modules/sps-file-storage/contracts/src/index.ts"
+      ],
+      "@sps/sps-file-storage-contracts-extended": [
+        "libs/modules/sps-file-storage/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-file-storage-contracts-extended/*": [
+        "libs/modules/sps-file-storage/contracts-extended/src/*"
+      ],
+      "@sps/sps-file-storage-contracts/*": [
+        "libs/modules/sps-file-storage/contracts/src/*"
+      ],
+      "@sps/sps-file-storage-frontend": [
+        "libs/modules/sps-file-storage/frontend/src/index.ts"
+      ],
+      "@sps/sps-file-storage-frontend/*": [
+        "libs/modules/sps-file-storage/frontend/src/*"
+      ],
+      "@sps/sps-rbac-contracts": [
+        "libs/modules/sps-rbac/contracts/src/index.ts"
+      ],
+      "@sps/sps-rbac-contracts-extended": [
+        "libs/modules/sps-rbac/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-contracts-extended/*": [
+        "libs/modules/sps-rbac/contracts-extended/src/*"
+      ],
+      "@sps/sps-rbac-contracts/*": ["libs/modules/sps-rbac/contracts/src/*"],
+      "@sps/sps-rbac-frontend": ["libs/modules/sps-rbac/frontend/src/index.ts"],
+      "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
+      "@sps/sps-subscription-contracts": [
+        "libs/modules/sps-subscription/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-contracts-extended": [
+        "libs/modules/sps-subscription/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-subscription-contracts-extended/*": [
+        "libs/modules/sps-subscription/contracts-extended/src/*"
+      ],
+      "@sps/sps-subscription-contracts/*": [
+        "libs/modules/sps-subscription/contracts/src/*"
+      ],
+      "@sps/sps-subscription-frontend": [
+        "libs/modules/sps-subscription/frontend/src/index.ts"
+      ],
+      "@sps/sps-subscription-frontend/*": [
+        "libs/modules/sps-subscription/frontend/src/*"
+      ],
+      "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-website-builder-contracts": [
+        "libs/modules/sps-website-builder/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contracts-extended": [
+        "libs/modules/sps-website-builder/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contracts-extended/*": [
+        "libs/modules/sps-website-builder/contracts-extended/src/*"
+      ],
+      "@sps/sps-website-builder-contracts/*": [
+        "libs/modules/sps-website-builder/contracts/src/*"
+      ],
+      "@sps/sps-website-builder-frontend": [
+        "libs/modules/sps-website-builder/frontend/src/index.ts"
+      ],
+      "@sps/sps-website-builder-frontend/*": [
+        "libs/modules/sps-website-builder/frontend/src/*"
+      ],
+      "@sps/store": ["libs/shared/store/src/index.ts"],
+      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
+      "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"],
+      "@sps/utils": ["libs/shared/utils/src/index.ts"]
+    },
+    "typeRoots": ["./node_modules/@types", "types"]
+  },
+  "exclude": ["node_modules", "tmp"],
+  "include": ["**/*"]
+}

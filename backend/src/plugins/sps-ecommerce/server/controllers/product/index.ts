@@ -9,7 +9,7 @@ import { parseBody } from "../../utils/transformers/transform";
 export default factories.createCoreController(
   "plugin::sps-ecommerce.product",
   ({ strapi }) => ({
-    async incrementInCart(ctx) {
+    async incrementInCart(ctx: any) {
       const { data } = parseBody(ctx);
       const { id } = ctx.params;
 
@@ -30,7 +30,7 @@ export default factories.createCoreController(
       return data.cart;
     },
 
-    async decrementInCart(ctx) {
+    async decrementInCart(ctx: any) {
       const { data } = parseBody(ctx);
       const { id } = ctx.params;
 
@@ -51,7 +51,7 @@ export default factories.createCoreController(
       return data.cart;
     },
 
-    async removeFromCart(ctx) {
+    async removeFromCart(ctx: any) {
       const { data } = parseBody(ctx);
       const { id } = ctx.params;
 
@@ -79,7 +79,7 @@ export default factories.createCoreController(
       return data.cart;
     },
 
-    async singleStepCheckout(ctx) {
+    async singleStepCheckout(ctx: any) {
       const { data } = parseBody(ctx);
       const { id } = ctx.params;
 
@@ -117,6 +117,7 @@ export default factories.createCoreController(
 
       const sanitizedInvoice = await strapi
         .controller("plugin::sps-billing.invoice")
+        // @ts-ignore
         .sanitizeOutput(cartInvoice, ctx);
 
       return (

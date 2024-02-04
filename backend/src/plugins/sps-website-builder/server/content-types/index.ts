@@ -1,3 +1,4 @@
+import component from "./component";
 import flyout from "./flyout";
 import footer from "./footer";
 import layout from "./layout";
@@ -14,6 +15,7 @@ import theme from "./theme";
 import topbar from "./topbar";
 
 export default {
+  component,
   flyout,
   footer,
   layout,

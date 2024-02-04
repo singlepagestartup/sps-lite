@@ -27,8 +27,9 @@
   "typescript.validate.enable": true,
   "playwright.reuseBrowser": false,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "Default Light+",
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Default Light+",
-  "workbench.preferredDarkColorTheme": "Default Dark+"
+  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

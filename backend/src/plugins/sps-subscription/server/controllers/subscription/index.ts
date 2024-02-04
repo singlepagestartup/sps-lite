@@ -9,7 +9,7 @@ import { parseBody } from "../../utils/transformers/transform";
 
 const uid = "plugin::sps-subscription.subscription";
 export default factories.createCoreController(uid, ({ strapi }) => ({
-  async create(ctx) {
+  async create(ctx: any) {
     const { data: subscription } = await super.create(ctx);
 
     const subscriptionInvoice = await strapi
@@ -24,6 +24,7 @@ export default factories.createCoreController(uid, ({ strapi }) => ({
 
     const sanitizedInvoice = await strapi
       .controller("plugin::sps-billing.invoice")
+      // @ts-ignore
       .sanitizeOutput(subscriptionInvoice, ctx);
 
     return (

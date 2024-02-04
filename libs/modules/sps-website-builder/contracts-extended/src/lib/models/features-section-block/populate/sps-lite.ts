@@ -1,0 +1,16 @@
+import { populate as parentPopulate } from "@sps/sps-website-builder-contracts/lib/models/faq-block/populate";
+import { populate as featurePopulate } from "@sps/sps-website-builder-contracts/lib/models/feature/populate";
+import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/models/file/populate";
+
+export const populate = {
+  ...parentPopulate,
+  features: {
+    populate: featurePopulate,
+  },
+  media: {
+    populate: filePopulate,
+  },
+  additional_media: {
+    populate: filePopulate,
+  },
+};

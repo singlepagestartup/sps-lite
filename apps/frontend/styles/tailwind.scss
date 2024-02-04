@@ -1,0 +1,65 @@
+html {
+  -moz-osx-font-smoothing: grayscale !important; /*(For Firefox)*/
+  -webkit-font-smoothing: antialiased !important; /*(For Chrome and Safari)*/
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+@tailwind base;
+@tailwind components;
+
+.prose {
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-default);
+}
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+input,
+button,
+textarea {
+  @apply focus:outline-none focus:ring-0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@tailwind utilities;
+
+@layer components {
+  .skeleton {
+    @apply bg-input animate-pulse rounded-md;
+  }
+
+  @import "../../../libs/shared/ui/adapter/src/index";
+  @import "../../../libs/modules/sps-website-builder/frontend/src/lib/index";
+  @import "../../../libs/modules/sps-crm/frontend/src/lib/index";
+}

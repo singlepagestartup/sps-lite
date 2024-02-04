@@ -1,3 +1,5 @@
+import customComponent from "./component/custom";
+import component from "./component";
 import flyout from "./flyout";
 import footer from "./footer";
 import customLayout from "./layout/custom";
@@ -16,6 +18,8 @@ import theme from "./theme";
 import topbar from "./topbar";
 
 export default {
+  customComponent,
+  component,
   flyout,
   footer,
   customLayout,

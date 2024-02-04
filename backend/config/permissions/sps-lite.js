@@ -39,6 +39,7 @@ const public = {
   "plugin::sps-website-builder.layout": ["find", "findOne", "findByPageUrl"],
   "plugin::sps-website-builder.metatag": ["find", "findOne"],
   "plugin::sps-website-builder.flyout": ["find", "findOne"],
+  "plugin::sps-website-builder.component": ["findOneByUid"],
   "plugin::sps-website-builder.page": [
     "find",
     "findOne",
@@ -53,7 +54,7 @@ const public = {
   "plugin::i18n.locales": ["listLocales"],
   "plugin::email.email": [],
   "plugin::users-permissions.permissions": [],
-  "plugin::upload.content-api": [],
+  "plugin::upload.content-api": ["find", "findOne"],
   "plugin::content-type-builder.components": [],
   "plugin::content-type-builder.content-types": [],
 };
