@@ -596,7 +596,6 @@ export interface PageBlocksProductsListBlock extends Schema.Component {
     description: "";
   };
   attributes: {
-    show_all_products: Attribute.Boolean & Attribute.DefaultTo<true>;
     products: Attribute.Relation<
       "page-blocks.products-list-block",
       "oneToMany",
@@ -612,6 +611,9 @@ export interface PageBlocksProductsListBlock extends Schema.Component {
     title: Attribute.RichText;
     subtitle: Attribute.RichText;
     query: Attribute.JSON;
+    show_all: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 

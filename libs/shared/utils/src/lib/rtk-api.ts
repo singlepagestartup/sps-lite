@@ -5,11 +5,9 @@ import {
   FetchBaseQueryError,
   FetchBaseQueryMeta,
   fetchBaseQuery,
-} from "@reduxjs/toolkit/dist/query";
-import {
   EndpointBuilder,
-  QueryLifecycleApi,
-} from "@reduxjs/toolkit/dist/query/endpointDefinitions";
+} from "@reduxjs/toolkit/query";
+import { QueryLifecycleApi } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { transformResponseItem } from "./transform-response-item";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
 import { gzip } from "pako";

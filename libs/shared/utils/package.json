@@ -2,6 +2,29 @@
   "name": "@sps/utils",
   "version": "0.0.1",
   "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/redux-toolkit.modern.mjs",
+      "default": "./dist/cjs/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/redux-toolkit-react.modern.mjs",
+      "default": "./dist/react/cjs/index.js"
+    },
+    "./query": {
+      "types": "./dist/query/index.d.ts",
+      "import": "./dist/query/rtk-query.modern.mjs",
+      "default": "./dist/query/cjs/index.js"
+    },
+    "./query/react": {
+      "types": "./dist/query/react/index.d.ts",
+      "import": "./dist/query/react/rtk-query-react.modern.mjs",
+      "default": "./dist/query/react/cjs/index.js"
+    }
+  },
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "dependencies": {

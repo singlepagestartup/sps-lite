@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-import { api as userApi } from "../../models/user";
+import { api as userApi } from "../../models/user/api/client";
 import { populate as userPopulate } from "@sps/sps-rbac-contracts/lib/models/user/populate";
 
 export function useMyProfile() {
@@ -18,7 +18,7 @@ export function useMyProfile() {
   } = userApi.useGetMeQuery(undefined, { skip: !username });
 
   const { data: filledProfile, refetch: refetchProfileById } =
-    userApi.useGetByIdQuery(
+    userApi.useFindOneQuery(
       { id: myProfileByMe?.id, populate: userPopulate },
       {
         skip: !myProfileByMe?.id,

@@ -8,7 +8,6 @@ import {
 } from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
 import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
-import { ReduxProvider } from "../src/redux";
 
 export const dynamic = "force-dynamic";
 

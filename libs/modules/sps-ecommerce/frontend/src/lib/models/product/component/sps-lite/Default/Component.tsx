@@ -1,23 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { IComponentPropsExtended } from "../../interface";
-import { getFileUrl } from "@sps/utils";
 import ReactMarkdown from "react-markdown";
+import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
+import { Button } from "@sps/ui-adapter";
+import { Component as Attribute } from "../../../../attribute/component";
+import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {
-  // const { me } = useMyProfile();
+  // console.log(`🚀 ~ Component ~ globalStoreApis:`, globalStoreApis);
 
-  // const { data: productAttributes } = attributeApi.useGetQuery({
-  //   filters: {
-  //     products: {
-  //       id: { $in: [item.id] },
-  //     },
-  //     attribute_key: {
-  //       key: "price",
-  //     },
-  //   },
-  // });
+  // console.log(`🚀 ~ Product ~ globalState:`, globalState);
+  // const { me } = useMyProfile();
 
   // const [incrementInCart, { data: incrementInCartData }] =
   //   productApi.useIncrementInCartMutation();
@@ -41,19 +35,6 @@ export function Component(props: IComponentPropsExtended) {
 
   // const watchData = watch();
 
-  // const buttonTitle = useMemo(() => {
-  //   if (!productAttributes?.length) {
-  //     return "";
-  //   }
-  //   const priceAttribute = productAttributes[0];
-
-  //   return priceAttribute.attributeKey
-  //     ? `Buy for ${priceAttribute?.currency?.unicode || ""}${
-  //         priceAttribute[priceAttribute?.attributeKey?.type]
-  //       }`
-  //     : "";
-  // }, [productAttributes]);
-
   // async function incrementSubmit(data: any) {
   //   // data.tier = { id };
   //   console.log("🚀 ~ onSubmit ~ data:", data);
@@ -71,14 +52,13 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex flex-col text-gray-500">
       {props.media?.length ? (
-        <div className="relative w-full aspect-w-2 aspect-h-2 overflow-hidden rounded-md bg-gray-100">
-          <Image
-            src={getFileUrl(props.media[0])}
-            alt=""
-            fill={true}
-            className="object-cover object-center"
-          />
-        </div>
+        <File
+          variant="image"
+          isServer={false}
+          containerClassName="relative w-full aspect-w-2 aspect-h-2 overflow-hidden rounded-md bg-gray-100"
+          className="object-cover object-center"
+          {...props.media[0]}
+        />
       ) : null}
       <div className={"flex flex-col gap-2 py-6"}>
         <h3 className="font-medium text-gray-900">{props.title}</h3>
@@ -88,10 +68,20 @@ export function Component(props: IComponentPropsExtended) {
             <ReactMarkdown>{props.description}</ReactMarkdown>
           </div>
         ) : null}
-        {/* <Button ui="shadcn" asChild={true}>
-        <Link href={`/checkout/${item.id}`}>{buttonTitle}</Link>
-      </Button>
-      <FormProvider {...methods}>
+        {props.attributes?.map((attribute, index) => {
+          return (
+            <Attribute
+              isServer={false}
+              variant="default"
+              key={index}
+              {...attribute}
+            />
+          );
+        })}
+        <Button ui="shadcn" asChild={true}>
+          <Link href={`/checkout/${props.id}`}>Buy in 1 step</Link>
+        </Button>
+        {/* <FormProvider {...methods}>
         <FormField
           name="quantity"
           ui="sps"

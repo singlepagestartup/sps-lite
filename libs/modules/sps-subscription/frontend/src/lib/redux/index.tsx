@@ -2,9 +2,9 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
 // import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices } from "./slices";
+import { subscription } from "../models/tier/api/client";
 
 const middlewares = [...slices.middlewares];
 
@@ -18,6 +18,8 @@ const store: any = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
 });
+
+subscription(store);
 
 export default store;
 

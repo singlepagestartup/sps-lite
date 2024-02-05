@@ -8,4 +8,4 @@ export {
   AdditionalHeadersContext,
 } from "./lib/contexts/additional-headers";
 export { persistentMessageQuery } from "./lib/persistent-message-query";
-export { globalStore } from "./lib/global-store";
+export { globalActionsStore, type RtkAction } from "./lib/global-actions-store";

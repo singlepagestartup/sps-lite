@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "show_all_products": {
-      "type": "boolean",
-      "default": true
-    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",
@@ -17,7 +13,9 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple"],
+      "enum": [
+        "simple"
+      ],
       "default": "simple",
       "required": true
     },
@@ -43,6 +41,11 @@
     },
     "query": {
       "type": "json"
+    },
+    "show_all": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
