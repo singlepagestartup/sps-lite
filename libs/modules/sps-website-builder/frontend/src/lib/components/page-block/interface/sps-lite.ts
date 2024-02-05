@@ -11,7 +11,6 @@ import type { IModel as INavbarBlock } from "../../../models/navbar-block/_model
 import type { IModel as INotFoundBlock } from "../../../models/not-found-block/_model";
 import type { IModel as ISliderBlock } from "../../../models/slider-block/_model";
 import { Dispatch, SetStateAction } from "react";
-import { IComponentProps as ISpsEcommercePageBlock } from "@sps/sps-ecommerce-frontend/lib/components/page-block/interface";
 
 type IPageBlock =
   | IAlertBlock
@@ -25,8 +24,7 @@ type IPageBlock =
   | ILogotypesCloudBlock
   | INavbarBlock
   | INotFoundBlock
-  | ISliderBlock
-  | ISpsEcommercePageBlock;
+  | ISliderBlock;
 
 export type IComponentProps = IPageBlock;
 

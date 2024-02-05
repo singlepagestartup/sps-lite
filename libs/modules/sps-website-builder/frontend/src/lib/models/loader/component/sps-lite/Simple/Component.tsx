@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useSpring, animated } from "@react-spring/web";
-import { getFileUrl } from "@sps/utils";
 import { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "../../interface";
+import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
 
 export function Component(props: IComponentPropsExtended) {
   const [passed, setPassed] = useState(false);
@@ -63,11 +62,11 @@ export function Component(props: IComponentPropsExtended) {
         // style={loaderStyles}
       >
         {props.media?.length ? (
-          <Image
-            src={getFileUrl(props.media[0])}
-            width={150}
-            height={150}
-            alt=""
+          <File
+            isServer={false}
+            variant="image"
+            containerClassName="relative w-[150px] h-[150px]"
+            {...props.media[0]}
           />
         ) : null}
       </div>
