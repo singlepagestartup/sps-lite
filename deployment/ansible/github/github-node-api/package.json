@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "libsodium-wrappers": "^0.7.13",
-    "octokit": "^3.1.1"
+    "octokit": "^3.1.2"
   }
 }
