@@ -9,4 +9,5 @@ export const slices = {
     [roleApi.reducerPath]: roleApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
+  subscriptions: [],
 };

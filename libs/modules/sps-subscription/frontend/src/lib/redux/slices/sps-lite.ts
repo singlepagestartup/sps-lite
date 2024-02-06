@@ -16,4 +16,5 @@ export const slices = {
     [subscriptionApi.reducerPath]: subscriptionApi.reducer,
     [tierApi.reducerPath]: tierApi.reducer,
   },
+  subscriptions: [],
 };

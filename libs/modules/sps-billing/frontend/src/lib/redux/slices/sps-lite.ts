@@ -7,4 +7,5 @@ export const slices = {
     [currencyApi.reducerPath]: currencyApi.reducer,
     [invoiceApi.reducerPath]: invoiceApi.reducer,
   },
+  subscriptions: [],
 };

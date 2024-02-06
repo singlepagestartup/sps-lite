@@ -13,4 +13,5 @@ export const slices = {
     [buttonsArrayApi.reducerPath]: buttonsArrayApi.reducer,
     [flyoutApi.reducerPath]: flyoutApi.reducer,
   },
+  subscriptions: [],
 };

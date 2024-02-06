@@ -1,27 +1,15 @@
 "use client";
 
-import { configureStore, createListenerMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 // import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices } from "./slices";
-import { RtkAction, globalActionsStore } from "@sps/store";
+// import { createPassToGlobalActionsStoreMiddleware } from "@sps/store";
 
+const module = "sps-ecommerce";
 const middlewares = [...slices.middlewares];
-
-const passToGlobalActionsStoreMiddleware = createListenerMiddleware();
-passToGlobalActionsStoreMiddleware.startListening({
-  predicate: (action) => {
-    if (action.type.includes("fulfilled")) {
-      return true;
-    }
-
-    return false;
-  },
-  effect: async (action: any) => {
-    action.module = "sps-ecommerce";
-    globalActionsStore.getState().addAction(action as RtkAction);
-  },
-});
+// const passToGlobalActionsStoreMiddleware =
+//   createPassToGlobalActionsStoreMiddleware({ module });
 
 const store: any = configureStore({
   devTools: {
@@ -31,10 +19,14 @@ const store: any = configureStore({
     ...slices.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .prepend(passToGlobalActionsStoreMiddleware.middleware)
-      .concat(middlewares),
+    getDefaultMiddleware().concat(middlewares),
 });
+
+// slices.subscriptions.forEach((subscription: any) => {
+//   if (typeof subscription === "function") {
+//     subscription(store);
+//   }
+// });
 
 export default store;
 

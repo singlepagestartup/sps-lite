@@ -7,4 +7,8 @@ export const slices = {
     ...spsLiteSlices.reducer,
     ...startupSlices.reducer,
   },
+  subscriptions: [
+    ...spsLiteSlices.subscriptions,
+    ...startupSlices.subscriptions,
+  ],
 };

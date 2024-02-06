@@ -2,11 +2,14 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
 // import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
 import { slices } from "./slices";
+// import { createPassToGlobalActionsStoreMiddleware } from "@sps/store";
 
+const module = "sps-billing";
 const middlewares = [...slices.middlewares];
+// const passToGlobalActionsStoreMiddleware =
+//   createPassToGlobalActionsStoreMiddleware({ module });
 
 const store: any = configureStore({
   devTools: {
@@ -18,6 +21,12 @@ const store: any = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
 });
+
+// slices.subscriptions.forEach((subscription: any) => {
+//   if (typeof subscription === "function") {
+//     subscription(store);
+//   }
+// });
 
 export default store;
 
