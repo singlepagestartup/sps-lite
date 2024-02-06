@@ -7,9 +7,14 @@ export const api = {
       id,
       model: route,
       populate,
+      rootPath: "/api/sps-ecommerce",
     });
   },
   find: async () => {
-    return await fetch.api.find<IModelExtended>({ model: route, populate });
+    return await fetch.api.find<IModelExtended>({
+      model: route,
+      populate,
+      rootPath: "/api/sps-ecommerce",
+    });
   },
 };

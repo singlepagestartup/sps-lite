@@ -22,4 +22,5 @@ export const slices = {
     [orderProductApi.reducerPath]: orderProductApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
   },
+  subscriptions: [],
 };

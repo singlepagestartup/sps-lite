@@ -1,7 +1,7 @@
 export interface IModel {
   id: number;
   title: string | null;
-  key: string;
+  uid: string;
   locale: string;
   createdAt: string;
   updatedAt: string;

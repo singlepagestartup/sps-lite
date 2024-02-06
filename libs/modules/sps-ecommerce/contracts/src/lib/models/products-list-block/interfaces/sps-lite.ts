@@ -9,4 +9,5 @@ export interface IModel {
   anchor: string | null;
   usePageUrlFilters: boolean;
   query: string | null;
+  showAll: boolean;
 }

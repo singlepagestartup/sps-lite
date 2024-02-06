@@ -42,7 +42,7 @@
       "default": "string",
       "required": true
     },
-    "key": {
+    "uid": {
       "pluginOptions": {
         "i18n": {
           "localized": false

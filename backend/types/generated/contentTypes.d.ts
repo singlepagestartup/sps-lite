@@ -1080,7 +1080,7 @@ export interface PluginSpsSubscriptionAttributeKey
         };
       }> &
       Attribute.DefaultTo<"string">;
-    key: Attribute.String &
+    uid: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1466,7 +1466,7 @@ export interface PluginSpsEcommerceAttributeKey extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<"string">;
-    key: Attribute.String &
+    uid: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

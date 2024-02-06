@@ -1,3 +1,5 @@
+"use client";
+
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
@@ -6,6 +8,7 @@ import { Component as Button } from "@sps/sps-elements-frontend/lib/models/butto
 import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {
+  // console.log(`🚀 ~ Tier ~ globalStoreApis:`, globalStoreApis);
   // const price = useMemo(() => {
   //   if (!item.attributes) {
   //     return;

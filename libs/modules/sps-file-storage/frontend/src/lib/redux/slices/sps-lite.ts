@@ -5,4 +5,5 @@ export const slices = {
   reducer: {
     [fileApi.reducerPath]: fileApi.reducer,
   },
+  subscriptions: [],
 };

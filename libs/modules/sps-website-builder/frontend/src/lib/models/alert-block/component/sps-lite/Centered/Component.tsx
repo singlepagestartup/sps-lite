@@ -1,19 +1,22 @@
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
 import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
 import { IComponentPropsExtended } from "../../interface";
+import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
       <div className="text-center">
         <div className="w-2/12 mx-auto mb-8">
-          <div className="aspect-w-3 aspect-h-3 relative">
-            {props.media?.length ? (
-              <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
-            ) : null}
-          </div>
+          {props.media?.length ? (
+            <File
+              isServer={false}
+              variant="image"
+              {...props.media[0]}
+              containerClassName="aspect-w-3 aspect-h-3 relative"
+              className=""
+            />
+          ) : null}
         </div>
         <h2 className="text-lg font-semibold text-primary-600">
           {props.subtitle}

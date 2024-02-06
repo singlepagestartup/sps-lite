@@ -14,7 +14,7 @@
     "id": 1,
     "title": "price",
     "type": "number",
-    "key": "price",
+    "uid": "price",
     "prefix": null,
     "postfix": null,
     "is_multiple": false,

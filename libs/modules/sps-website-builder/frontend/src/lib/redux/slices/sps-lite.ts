@@ -85,4 +85,5 @@ export const slices = {
     [topbarApi.reducerPath]: topbarApi.reducer,
     [localeApi.reducerPath]: localeApi.reducer,
   },
+  subscriptions: [],
 };

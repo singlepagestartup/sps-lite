@@ -7,5 +7,6 @@ export {
   AdditionalHeadersWrapper,
   AdditionalHeadersContext,
 } from "./lib/contexts/additional-headers";
-export { persistentMessageQuery } from "./lib/persistent-message-query";
-export { globalStore } from "./lib/global-store";
+// export { persistentMessageQuery } from "./lib/persistent-message-query";
+export { globalActionsStore, type RtkAction } from "./lib/global-actions-store";
+export { create as createPassToGlobalActionsStoreMiddleware } from "./lib/pass-to-global-actions-store-middleware";

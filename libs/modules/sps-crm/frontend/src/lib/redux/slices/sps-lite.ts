@@ -25,4 +25,5 @@ export const slices = {
     [formRequestApi.reducerPath]: formRequestApi.reducer,
     [reviewApi.reducerPath]: reviewApi.reducer,
   },
+  subscriptions: [],
 };
