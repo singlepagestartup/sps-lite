@@ -6,6 +6,7 @@ import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/fil
 import { Button } from "@sps/ui-adapter";
 import { Component as Attribute } from "../../../../attribute/component";
 import Link from "next/link";
+// import { globalActionsStore } from "@sps/store";
 
 export function Component(props: IComponentPropsExtended) {
   // console.log(`🚀 ~ Component ~ globalStoreApis:`, globalStoreApis);

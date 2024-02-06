@@ -6,12 +6,12 @@ import { Provider } from "react-redux";
 import { slice as authSlice } from "./auth/slice";
 import { slices } from "./slices";
 import { useEffect } from "react";
-// import { createPassToGlobalActionsStoreMiddleware } from "@sps/store";
+import { createPassToGlobalActionsStoreMiddleware } from "@sps/store";
 
 const name = "sps-rbac";
 const middlewares = [...slices.middlewares];
-// const passToGlobalActionsStoreMiddleware =
-//   createPassToGlobalActionsStoreMiddleware({ module });
+const passToGlobalActionsStoreMiddleware =
+  createPassToGlobalActionsStoreMiddleware({ name });
 
 const store: any = configureStore({
   devTools: {
@@ -21,14 +21,16 @@ const store: any = configureStore({
     ...slices.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middlewares),
+    getDefaultMiddleware()
+      .prepend(passToGlobalActionsStoreMiddleware.middleware)
+      .concat(middlewares),
 });
 
-// slices.subscriptions.forEach((subscription: any) => {
-//   if (typeof subscription === "function") {
-//     subscription(store);
-//   }
-// });
+slices.subscriptions.forEach((subscription: any) => {
+  if (typeof subscription === "function") {
+    subscription(store);
+  }
+});
 
 export default store;
 

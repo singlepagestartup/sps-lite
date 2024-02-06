@@ -14,7 +14,7 @@
     "id": 2,
     "title": "quantity",
     "type": "number",
-    "key": "quantity",
+    "uid": "quantity",
     "prefix": null,
     "postfix": null,
     "is_multiple": false,
