@@ -58,7 +58,7 @@ export default factories.createCoreService(
         });
 
       const quantityAttributeKeyConfig = {
-        key: "key",
+        uid: "uid",
         type: "type",
       };
       const quantityAttributeKey = await strapi
@@ -66,7 +66,7 @@ export default factories.createCoreService(
         .findOrCreate({
           data: {
             title: "quantity",
-            key: "quantity",
+            uid: "quantity",
             type: "number",
           },
           config: quantityAttributeKeyConfig,
