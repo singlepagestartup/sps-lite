@@ -12,8 +12,15 @@
 // import Link from "next/link";
 // import { useMyProfile } from "@sps/sps-rbac-frontend/lib/hooks/use-my-profile";
 import { IComponentPropsExtended } from "../../interface";
+import { api as cartApi } from "../../../../cart/api/client";
+import { Component as Cart } from "../../../../cart/component";
+import ReactMarkdown from "react-markdown";
 
 export function Component(props: IComponentPropsExtended) {
+  const { data: carts } = cartApi.useFindQuery({});
+  // console.log(`🚀 ~ Component ~ carts:`, carts);
+  // console.log(`🚀 ~ Component ~ props:`, props);
+
   // const { me } = useMyProfile();
   // const { data: cart } = cartApi.useGetByIdQuery(
   //   { id: me?.cart?.id },
@@ -29,17 +36,19 @@ export function Component(props: IComponentPropsExtended) {
         <p className="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
           {props.title}
         </p>
-        {/* {props.description ? (
+        {props.description ? (
           <ReactMarkdown className="mx-auto my-8 max-w-xl text-xl text-gray-500">
             {props.description}
           </ReactMarkdown>
         ) : null}
-        <div className="flex flex-col gap-2 justify-center">
-          {cart?.orders?.map((order, index) => {
-            return <OrderComponent key={index} order={order} />;
+        <div className="flex flex-col gap-2 justify-center py-4">
+          {carts?.map((cart, index) => {
+            return (
+              <Cart key={index} isServer={false} variant="default" {...cart} />
+            );
           })}
         </div>
-        <div className="w-full">
+        {/* <div className="w-full">
           <Button ui="shadcn" variant="default" asChild={true}>
             <Link href="/checkout">Checkout</Link>
           </Button>

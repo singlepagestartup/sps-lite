@@ -3,52 +3,50 @@
 import { IComponentPropsExtended } from "../../interface";
 import ReactMarkdown from "react-markdown";
 import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
-import { Button } from "@sps/ui-adapter";
+import { Button, FormField } from "@sps/ui-adapter";
 import { Component as Attribute } from "../../../../attribute/component";
 import Link from "next/link";
-// import { globalActionsStore } from "@sps/store";
+import { api } from "../../../api/client";
+import { FormProvider, useForm } from "react-hook-form";
 
 export function Component(props: IComponentPropsExtended) {
-  // console.log(`🚀 ~ Component ~ globalStoreApis:`, globalStoreApis);
-
-  // console.log(`🚀 ~ Product ~ globalState:`, globalState);
   // const { me } = useMyProfile();
 
-  // const [incrementInCart, { data: incrementInCartData }] =
-  //   productApi.useIncrementInCartMutation();
-  // const [decrementInCart, { data: decrementInCartData }] =
-  //   productApi.useDecrementInCartMutation();
-  // const [removeFromCart, { data: removeFromCartData }] =
-  //   productApi.useRemoveFromCartMutation();
+  const [incrementInCart, { data: incrementInCartData }] =
+    api.useIncrementInCartMutation();
+  const [decrementInCart, { data: decrementInCartData }] =
+    api.useDecrementInCartMutation();
+  const [removeFromCart, { data: removeFromCartData }] =
+    api.useRemoveFromCartMutation();
 
-  // const methods = useForm<any>({
-  //   mode: "all",
-  // });
+  const methods = useForm<any>({
+    mode: "all",
+  });
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   setValue,
-  //   watch,
-  //   reset,
-  //   formState: { errors },
-  // } = methods;
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = methods;
 
-  // const watchData = watch();
+  const watchData = watch();
 
-  // async function incrementSubmit(data: any) {
-  //   // data.tier = { id };
-  //   console.log("🚀 ~ onSubmit ~ data:", data);
+  async function incrementSubmit(data: any) {
+    // data.tier = { id };
+    console.log("🚀 ~ onSubmit ~ data:", data);
 
-  //   await incrementInCart({ id: item?.id, data });
-  // }
+    await incrementInCart({ id: props?.id, data });
+  }
 
-  // async function decrementSubmit(data: any) {
-  //   // data.tier = { id };
-  //   console.log("🚀 ~ onSubmit ~ data:", data);
+  async function decrementSubmit(data: any) {
+    // data.tier = { id };
+    console.log("🚀 ~ onSubmit ~ data:", data);
 
-  //   await decrementInCart({ id: item?.id, data });
-  // }
+    await decrementInCart({ id: props?.id, data });
+  }
 
   return (
     <div className="flex flex-col text-gray-500">
@@ -82,39 +80,39 @@ export function Component(props: IComponentPropsExtended) {
         <Button ui="shadcn" asChild={true}>
           <Link href={`/checkout/${props.id}`}>Buy in 1 step</Link>
         </Button>
-        {/* <FormProvider {...methods}>
-        <FormField
-          name="quantity"
-          ui="sps"
-          type="text"
-          label="Quantity"
-          initialValue={1}
-        />
-        <Button
-          ui="shadcn"
-          onClick={handleSubmit(incrementSubmit)}
-          variant="secondary"
-        >
-          Increment in cart
-        </Button>
-        <Button
-          ui="shadcn"
-          onClick={handleSubmit(decrementSubmit)}
-          variant="secondary"
-        >
-          Decrement in cart
-        </Button>
-      </FormProvider>
+        <FormProvider {...methods}>
+          <FormField
+            name="quantity"
+            ui="sps"
+            type="text"
+            label="Quantity"
+            initialValue={1}
+          />
+          <Button
+            ui="shadcn"
+            onClick={handleSubmit(incrementSubmit)}
+            variant="secondary"
+          >
+            Increment in cart
+          </Button>
+          <Button
+            ui="shadcn"
+            onClick={handleSubmit(decrementSubmit)}
+            variant="secondary"
+          >
+            Decrement in cart
+          </Button>
+        </FormProvider>
 
-      <Button
-        ui="shadcn"
-        onClick={() => {
-          removeFromCart({ id: item.id });
-        }}
-        variant="secondary"
-      >
-        Remove from cart
-      </Button> */}
+        <Button
+          ui="shadcn"
+          onClick={() => {
+            removeFromCart({ id: props.id });
+          }}
+          variant="secondary"
+        >
+          Remove from cart
+        </Button>
       </div>
     </div>
   );
