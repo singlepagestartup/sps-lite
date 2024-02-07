@@ -1,7 +1,6 @@
-import { IComponentPropsExtended as IPage } from "../../page/component/interface";
 import { IModel, IModelExtended } from "../_model";
 
-export interface IComponentProps extends IModel, Omit<IPage, "pageBlocks"> {
+export interface IComponentProps extends IModel {
   showSkeletons?: boolean;
   isServer: boolean;
 }

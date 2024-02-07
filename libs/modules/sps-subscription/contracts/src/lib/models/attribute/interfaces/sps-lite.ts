@@ -10,4 +10,5 @@ export interface IModel {
   datetime: string | null;
   time: string | null;
   notToClear?: boolean;
+  variant: "default";
 }

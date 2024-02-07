@@ -4,7 +4,7 @@ import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api as tierApi } from "../../../../tier/api/client";
-import type { IModel as ITier } from "../../../../tier/_model";
+import type { IModel as ITier } from "../../../../tier/model";
 import { Component as Tier } from "../../../../tier/component";
 import { IComponentPropsExtended } from "../../interface";
 
