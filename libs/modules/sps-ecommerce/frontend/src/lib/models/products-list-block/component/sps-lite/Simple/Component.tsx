@@ -16,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
           return (
             <Product
               key={index}
-              isServer={false}
+              isServer={props.isServer}
               variant="default"
               {...product}
             />
