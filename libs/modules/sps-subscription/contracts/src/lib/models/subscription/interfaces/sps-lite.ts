@@ -3,5 +3,4 @@ export interface IModel {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "default";
 }

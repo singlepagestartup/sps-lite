@@ -9,7 +9,6 @@ import { variants } from "./variants";
 export default function Client(props: IComponentProps) {
   const { data, isLoading, isError, isFetching, isUninitialized } =
     api.useFindOneQuery({ id: props.id }, { skip: !props.id });
-  // console.log(`🚀 ~ Client ~ props:`, props);
 
   const Comp = variants[props.variant as keyof typeof variants];
 

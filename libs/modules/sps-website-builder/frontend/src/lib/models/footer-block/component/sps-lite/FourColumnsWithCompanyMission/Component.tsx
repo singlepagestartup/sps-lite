@@ -9,7 +9,11 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col gap-4 w-full lg:w-3/12">
           {props.logotype ? (
-            <Logotype isServer={props.isServer} {...props.logotype} />
+            <Logotype
+              isServer={props.isServer}
+              {...props.logotype}
+              variant="default"
+            />
           ) : null}
           <div className="lg:max-w-xs">
             {props.description ? (

@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
-import { populate, route, tag, IModelExtended } from "../../_model";
+import { populate, route, tag, IModelExtended } from "../../model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(

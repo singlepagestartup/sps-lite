@@ -9,7 +9,7 @@ import { variants } from "./variants";
 export default async function Server(props: IComponentProps) {
   const data = await api.findOne({ id: props.id });
 
-  const Comp = variants["simple"];
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp || !data) {
     return <></>;

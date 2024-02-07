@@ -12,5 +12,4 @@ export interface IModel {
   operator: "equal" | "min" | "max";
   notToClear: boolean;
   inversed: boolean;
-  variant: "default";
 }

@@ -3,7 +3,7 @@ import {
   transformResponseItem,
   fetch as utilsFetch,
 } from "@sps/utils";
-import { populate, route, IModelExtended } from "../../_model";
+import { populate, route, IModelExtended } from "../../model";
 import QueryString from "qs";
 
 export const api = {

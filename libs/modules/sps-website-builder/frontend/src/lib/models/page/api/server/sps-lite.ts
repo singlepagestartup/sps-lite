@@ -5,7 +5,7 @@ import {
   getFileUrl,
   getTargetPage,
 } from "@sps/utils";
-import { populate, route, IModelExtended } from "../../_model";
+import { populate, route, IModelExtended } from "../../model";
 import { notFound } from "next/navigation";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/metatag/populate";
 

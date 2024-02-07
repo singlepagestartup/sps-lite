@@ -1,5 +1,5 @@
-import type { IModel as IEditSubscriptionBlock } from "../../../models/edit-subscription-block/_model";
-import type { IModel as ITiersListBlock } from "../../../models/tiers-list-block/_model";
+import type { IModel as IEditSubscriptionBlock } from "../../../models/edit-subscription-block/model";
+import type { IModel as ITiersListBlock } from "../../../models/tiers-list-block/model";
 import { Dispatch, SetStateAction } from "react";
 
 type IPageBlock = IEditSubscriptionBlock | ITiersListBlock;

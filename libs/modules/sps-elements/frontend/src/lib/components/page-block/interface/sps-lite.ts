@@ -1,5 +1,5 @@
-import type { IModel as IButton } from "../../../models/button/_model";
-import type { IModel as IButtonsArray } from "../../../models/buttons-array/_model";
+import type { IModel as IButton } from "../../../models/button/model";
+import type { IModel as IButtonsArray } from "../../../models/buttons-array/model";
 import { Dispatch, SetStateAction } from "react";
 
 type IPageBlock = IButton | IButtonsArray;

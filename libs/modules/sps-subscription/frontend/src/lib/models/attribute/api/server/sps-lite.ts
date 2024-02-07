@@ -1,5 +1,5 @@
 import { fetch } from "@sps/utils";
-import { populate, route, IModelExtended } from "../../_model";
+import { populate, route, IModelExtended } from "../../model";
 
 export const api = {
   findOne: async ({ id }: { id: number }) => {

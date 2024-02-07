@@ -22,7 +22,12 @@ export function Component(props: IComponentPropsExtended) {
       </div>
       <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
         {props.features?.map((feature, index) => (
-          <Feature isServer={props.isServer} key={index} {...feature} />
+          <Feature
+            isServer={props.isServer}
+            key={index}
+            variant="default"
+            {...feature}
+          />
         ))}
       </dl>
     </div>
