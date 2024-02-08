@@ -6,7 +6,7 @@ import { api } from "../api/client";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default function Client(props: IComponentProps) {
+export default function Client<T>(props: IComponentProps<T>) {
   let id: number | undefined;
   let variant = props.variant;
 

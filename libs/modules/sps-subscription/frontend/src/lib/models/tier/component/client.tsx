@@ -6,12 +6,24 @@ import { api } from "../api/client";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default function Client(props: IComponentProps) {
+export default function Client<T>(props: IComponentProps<T>) {
+  const Comp = variants[props.variant as keyof typeof variants];
+
+  if (props.variant === "list") {
+    const { data, isFetching, isLoading, isUninitialized } = api.useFindQuery(
+      {},
+    );
+
+    if (isFetching || isLoading || isUninitialized) {
+      return <Comp showSkeletons={true} {...props} />;
+    }
+
+    return <Comp {...props} list={data} />;
+  }
+
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
     id: props.id,
   });
-
-  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

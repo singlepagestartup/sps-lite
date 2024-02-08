@@ -35,8 +35,8 @@ RUN npm run frontend:build
 EXPOSE 3000
 
 # Running the app
-# RUN ["chmod", "-R", "777", "/usr/src/app"]
-# RUN ["chmod", "+x", "/usr/src/app/start.sh"]
+RUN ["chmod", "-R", "777", "/usr/src/app"]
+RUN ["chmod", "+x", "/usr/src/app/start.sh"]
 # RUN ["chmod", "+x", "/usr/src/app/build-start.sh"]
 # RUN ["chmod", "+x", "/usr/src/app/build-static-icp.sh"]
 
