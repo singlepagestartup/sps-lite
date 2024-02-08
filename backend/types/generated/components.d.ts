@@ -696,6 +696,27 @@ export interface PageBlocksSliderBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksSubscriptionCheckoutFormBlock
+  extends Schema.Component {
+  collectionName: "components_page_blocks_subscription_checkout_form_blocks";
+  info: {
+    displayName: "Subscription Checkout Form Block";
+    icon: "crown";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["single-step"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"single-step">;
+    class_name: Attribute.String;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 export interface PageBlocksTiersListBlock extends Schema.Component {
   collectionName: "components_page_blocks_tiers_list_blocks";
   info: {
@@ -757,6 +778,7 @@ declare module "@strapi/types" {
       "page-blocks.reviews-table-block": PageBlocksReviewsTableBlock;
       "page-blocks.shopping-cart-block": PageBlocksShoppingCartBlock;
       "page-blocks.slider-block": PageBlocksSliderBlock;
+      "page-blocks.subscription-checkout-form-block": PageBlocksSubscriptionCheckoutFormBlock;
       "page-blocks.tiers-list-block": PageBlocksTiersListBlock;
     }
   }
