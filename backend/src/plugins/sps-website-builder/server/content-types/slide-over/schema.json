@@ -57,7 +57,10 @@
         }
       },
       "type": "dynamiczone",
-      "components": ["page-blocks.faqs-block"]
+      "components": [
+        "page-blocks.faqs-block",
+        "page-blocks.shopping-cart-block"
+      ]
     },
     "layouts": {
       "type": "relation",

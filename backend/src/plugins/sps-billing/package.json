@@ -20,7 +20,7 @@
     "@strapi/helper-plugin": "^4.6.0",
     "@strapi/icons": "^1.6.3",
     "prop-types": "^15.7.2",
-    "stripe": "^14.10.0"
+    "stripe": "^14.11.0"
   },
   "devDependencies": {
     "@strapi/typescript-utils": "^4.6.0",

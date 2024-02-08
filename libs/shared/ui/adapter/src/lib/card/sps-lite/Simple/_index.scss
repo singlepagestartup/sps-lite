@@ -1,0 +1,13 @@
+&[data-ui-variant="simple"] {
+  .default-skeleton-card {
+    @apply w-full h-[150px] skeleton;
+  }
+
+  .default-empty-card {
+    @apply w-full flex items-center justify-center py-10 border-2 border-input border-dashed rounded-md;
+
+    p {
+      @apply text-primary;
+    }
+  }
+}

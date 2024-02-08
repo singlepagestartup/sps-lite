@@ -1,0 +1,68 @@
+&[data-ui-variant="range"] {
+  @apply relative;
+
+  .input-container {
+    @apply relative mt-2;
+
+    // Custom dragger
+    .dragger {
+      @apply absolute block py-[3px] px-2 bg-background rounded-md w-fit transform -translate-x-3/4 mt-[13px] shadow-md;
+
+      .dragger-value {
+        @apply text-xs text-primary;
+      }
+    }
+
+    .ms-fill-lower {
+      @apply absolute inset-y-0 h-2 bg-primary rounded-l-full;
+    }
+
+    .ms-fill-upper {
+      @apply absolute inset-y-0 h-2 right-0 bg-input rounded-r-full;
+    }
+
+    input {
+      @apply relative w-full bg-transparent;
+
+      &::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        cursor: theme("cursor.pointer");
+        width: theme("width.full");
+        height: theme("height.2");
+        border: theme("borderWidth.0");
+        border-radius: theme("borderRadius.full");
+      }
+
+      &::-webkit-slider-thumb {
+        @apply relative outline outline-4 outline-primary;
+
+        -webkit-appearance: none;
+        border: theme("borderWidth.0");
+        height: theme("height.3");
+        width: theme("width.3");
+        border-radius: theme("borderRadius.full");
+        background: theme("colors.white");
+        transform: translate(0px, -12px);
+        cursor: pointer;
+      }
+
+      // For Edge and IE only
+      &::-ms-fill-lower {
+        background-color: theme("colors.primary.DEFAULT");
+      }
+
+      // For Edge and IE only
+      &::-ms-fill-upper {
+        background-color: theme("colors.input");
+      }
+    }
+
+    .limit-values-container {
+      @apply flex justify-between -mt-2;
+
+      p {
+        @apply text-xs text-primary;
+      }
+    }
+  }
+}

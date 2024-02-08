@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_migrate_parameters",
+  "info": {
+    "singularName": "parameter",
+    "pluralName": "parameters",
+    "displayName": "Parameter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

@@ -1,0 +1,75 @@
+&[data-ui-variant="file"] {
+  @apply relative;
+
+  .input {
+    .button {
+      @apply w-full aspect-w-4 aspect-h-4;
+
+      .button-container {
+        @apply flex flex-col items-center justify-center border w-full rounded-md border-input border-dashed cursor-pointer text-primary;
+
+        .icon-container {
+          @apply w-6 h-6 flex items-center justify-center relative mb-1;
+
+          svg {
+            @apply flex-shrink-0 w-5;
+          }
+        }
+
+        p {
+          @apply text-center text-xs px-2;
+        }
+      }
+    }
+
+    &[data-multiple="false"][data-filled="true"] {
+      .button {
+        @apply hidden;
+      }
+    }
+  }
+
+  .files-array {
+    &[data-multiple="true"] {
+      @apply w-full grid grid-cols-4 gap-4 mt-4;
+    }
+
+    &[data-multiple="false"] {
+      @apply w-full;
+
+      &[data-files="0"] {
+        @apply hidden;
+      }
+    }
+
+    .file {
+      @apply relative w-full aspect-w-4 aspect-h-4 border border-primary-foreground rounded-md overflow-hidden;
+
+      img {
+        @apply object-cover object-center;
+      }
+
+      .delete-button {
+        @apply absolute top-[50%] bottom-[50%] left-[50%] right-[50%] flex w-10 h-10 items-center justify-center bg-destructive rounded-full text-white cursor-pointer -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-200;
+
+        .icon-container {
+          @apply w-5 h-5 flex items-center justify-center relative;
+
+          svg {
+            @apply flex-shrink-0;
+          }
+        }
+      }
+
+      &:hover {
+        .delete-button {
+          @apply opacity-100;
+        }
+      }
+    }
+  }
+
+  .reset-button-container {
+    @apply absolute right-1 -top-8 z-10;
+  }
+}

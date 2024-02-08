@@ -1,0 +1,11 @@
+& {
+  &[data-variant="row"] {
+    .buttons-array-row {
+      @apply flex flex-row gap-2 relative;
+
+      .buttons-array-buttons-container {
+        @apply flex gap-4 relative;
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "name": "frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/frontend",
+  "projectType": "application",
+  "targets": {
+    "build-theme": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "apps/frontend/.theme",
+        "main": "apps/frontend/theme.ts",
+        "tsConfig": "apps/frontend/tsconfig.theme.json",
+        "rootDir": ".",
+        "transformers": [
+          {
+            "name": "typescript-transform-paths/nx-transformer"
+          }
+        ]
+      }
+    },
+    "theme": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/sps-utils-backend:build"
+          },
+          {
+            "command": "NODE_ENV=development node dist/libs/shared/backend/utils/src/lib/create-tailwind-theme.js"
+          }
+        ]
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "rm -rf apps/frontend/.next"
+          },
+          {
+            "command": "nx run frontend:theme"
+          }
+        ]
+      }
+    },
+    "dev": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "dependsOn": ["^build"],
+      "options": {
+        "buildTarget": "frontend:build",
+        "dev": true,
+        "port": 3000
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "apps/frontend"
+      }
+    },
+    "start": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
+      "options": {
+        "buildTarget": "frontend:build",
+        "dev": false,
+        "port": 3000
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "frontend:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/frontend/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "ignorePath": "apps/frontend/.eslintignore",
+        "quiet": true
+      }
+    }
+  },
+  "tags": []
+}

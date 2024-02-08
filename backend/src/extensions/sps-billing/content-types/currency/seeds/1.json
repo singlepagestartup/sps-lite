@@ -1,148 +1,37 @@
 {
-    "id": 1,
-    "title": "USD",
-    "unicode": "$",
-    "is_default": true,
-    "createdAt": "2024-01-05T18:08:02.259Z",
-    "updatedAt": "2024-01-05T18:08:02.259Z",
-    "publishedAt": "2023-03-29T16:09:52.898Z",
-    "locale": "en",
-    "tiers": [
-        {
-            "id": 2,
-            "title": "Pro",
-            "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
-            "price": 99,
-            "type": "one-time",
-            "period": null,
-            "old_price": 199,
-            "createdAt": "2024-01-05T18:08:02.447Z",
-            "updatedAt": "2024-01-05T18:08:02.447Z",
-            "publishedAt": "2023-02-14T15:48:56.695Z",
-            "locale": "en",
-            "currency": {
-                "id": 1,
-                "title": "USD",
-                "unicode": "$",
-                "is_default": true,
-                "createdAt": "2024-01-05T18:08:02.259Z",
-                "updatedAt": "2024-01-05T18:08:02.259Z",
-                "publishedAt": "2023-03-29T16:09:52.898Z",
-                "locale": "en",
-                "tiers": [
-                    {
-                        "id": 2,
-                        "title": "Pro",
-                        "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
-                        "price": 99,
-                        "type": "one-time",
-                        "period": null,
-                        "old_price": 199,
-                        "createdAt": "2024-01-05T18:08:02.447Z",
-                        "updatedAt": "2024-01-05T18:08:02.447Z",
-                        "publishedAt": "2023-02-14T15:48:56.695Z",
-                        "locale": "en",
-                        "currency": {
-                            "id": 1,
-                            "title": "USD",
-                            "unicode": "$",
-                            "is_default": true,
-                            "createdAt": "2024-01-05T18:08:02.259Z",
-                            "updatedAt": "2024-01-05T18:08:02.259Z",
-                            "publishedAt": "2023-03-29T16:09:52.898Z",
-                            "locale": "en"
-                        },
-                        "features": [
-                            {
-                                "id": 4,
-                                "description": null,
-                                "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
-                                "subtitle": null
-                            },
-                            {
-                                "id": 5,
-                                "description": null,
-                                "title": "Настроенный фронтенд с библиотекой компонентов",
-                                "subtitle": null
-                            },
-                            {
-                                "id": 6,
-                                "description": null,
-                                "title": "Все модели для построения стартапа любой сложности",
-                                "subtitle": null
-                            },
-                            {
-                                "id": 7,
-                                "description": null,
-                                "title": "Доступ к репозиторию с исходниками",
-                                "subtitle": null
-                            },
-                            {
-                                "id": 8,
-                                "description": null,
-                                "title": "Доступ к комьюнити",
-                                "subtitle": null
-                            }
-                        ],
-                        "buttons": [],
-                        "createdBy": null,
-                        "updatedBy": null,
-                        "localizations": []
-                    }
-                ],
-                "createdBy": null,
-                "updatedBy": null,
-                "localizations": []
-            },
-            "features": [
-                {
-                    "id": 4,
-                    "description": null,
-                    "title": "Конструктор PageBlock'ов, аутентификация,  личный кабинет пользователя, интеграции и многое другое",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 5,
-                    "description": null,
-                    "title": "Настроенный фронтенд с библиотекой компонентов",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 6,
-                    "description": null,
-                    "title": "Все модели для построения стартапа любой сложности",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 7,
-                    "description": null,
-                    "title": "Доступ к репозиторию с исходниками",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                },
-                {
-                    "id": 8,
-                    "description": null,
-                    "title": "Доступ к комьюнити",
-                    "subtitle": null,
-                    "media": null,
-                    "additional_media": null
-                }
-            ],
-            "buttons": [],
-            "createdBy": null,
-            "updatedBy": null,
-            "localizations": []
-        }
-    ],
-    "createdBy": null,
-    "updatedBy": null,
-    "localizations": []
+  "id": 1,
+  "title": "United States Dollar",
+  "unicode": "$",
+  "is_default": true,
+  "createdAt": "2024-01-09T22:26:48.351Z",
+  "updatedAt": "2024-01-12T13:26:56.009Z",
+  "publishedAt": "2023-03-29T16:09:52.898Z",
+  "locale": "en",
+  "localizations": [
+    {
+      "id": 2,
+      "title": "Dollar Américain",
+      "unicode": "$",
+      "is_default": true,
+      "createdAt": "2024-01-12T13:25:18.734Z",
+      "updatedAt": "2024-01-12T13:26:55.983Z",
+      "publishedAt": "2024-01-12T13:25:20.537Z",
+      "locale": "fr"
+    }
+  ],
+  "attributes": [
+    {
+      "id": 1,
+      "string": null,
+      "number": 120,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-01-09T23:15:58.212Z",
+      "updatedAt": "2024-01-09T23:20:33.498Z",
+      "locale": "en"
+    }
+  ],
+  "tiers": []
 }

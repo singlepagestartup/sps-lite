@@ -1,7 +1,9 @@
 import currency from "./currency";
-import tier from "./tier";
+import customInvoice from "./invoice/custom";
+import invoice from "./invoice";
 
 export default {
   currency,
-  tier,
+  customInvoice,
+  invoice,
 };
