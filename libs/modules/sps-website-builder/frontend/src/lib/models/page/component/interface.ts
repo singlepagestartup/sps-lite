@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { IModelExtended } from "../_model";
+import { IModelExtended } from "../model";
 
 export interface IComponentProps {
   isServer: boolean;

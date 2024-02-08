@@ -11,7 +11,7 @@ export default function Client(props: IComponentProps) {
     id: props.id,
   });
 
-  const Comp = variants["simple"];
+  const Comp = variants[props.variant as keyof typeof variants];
 
   if (!Comp) {
     return <></>;

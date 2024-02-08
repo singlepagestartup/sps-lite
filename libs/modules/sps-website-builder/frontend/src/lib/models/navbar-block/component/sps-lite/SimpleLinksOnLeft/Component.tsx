@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
+import { Component as Button } from "../../../../button/component";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
@@ -41,7 +41,11 @@ function DisclosureInner({
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex">
               {props.logotype ? (
-                <Logotype isServer={false} {...props.logotype} />
+                <Logotype
+                  isServer={false}
+                  {...props.logotype}
+                  variant="default"
+                />
               ) : null}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.buttons?.map((button, index) => {

@@ -1,5 +1,5 @@
-import { Simple } from "./Simple";
+import { Default } from "./Default";
 
 export const variants = {
-  simple: Simple,
+  default: Default,
 };

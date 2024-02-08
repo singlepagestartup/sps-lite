@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { getTargetPage } from "@sps/utils";
-import { IModelExtended } from "../_model";
+import { IModelExtended } from "../model";
 
 // default is required for dynamic import
 export default function Client(props: IComponentProps) {

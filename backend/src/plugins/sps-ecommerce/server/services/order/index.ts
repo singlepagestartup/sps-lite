@@ -106,4 +106,40 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
       }
     }
   },
+
+  async createInvoice({ id }: { id: number }) {
+    const invoiceAmount = await strapi
+      .service("plugin::sps-ecommerce.order")
+      .getTotalAmount({
+        id,
+      });
+
+    const invoice = await strapi.service("plugin::sps-billing.invoice").create({
+      data: {
+        orders: id,
+        amount: invoiceAmount,
+      },
+    });
+
+    // // change order status "cart" -> "payment"
+    // // detach cart
+    // await strapi.service("plugin::sps-ecommerce.order").update(id, {
+    //   data: {
+    //     status: "payment",
+    //     cart: null,
+    //   },
+    // });
+
+    return invoice;
+  },
+
+  async checkout({ id }: { id: number }) {
+    const invoice = await strapi
+      .service("plugin::sps-ecommerce.order")
+      .createInvoice({
+        id,
+      });
+
+    return invoice;
+  },
 }));

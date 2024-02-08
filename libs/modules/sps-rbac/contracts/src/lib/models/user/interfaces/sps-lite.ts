@@ -5,4 +5,5 @@ export interface IModel {
   provider: "local";
   createdAt: string;
   updatedAt: string;
+  variant: "default";
 }

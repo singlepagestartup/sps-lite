@@ -2250,6 +2250,7 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
     singularName: "flyout";
     pluralName: "flyouts";
     displayName: "Flyout";
+    description: "";
   };
   options: {
     draftAndPublish: true;
@@ -2269,11 +2270,7 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<"simple">;
     page_blocks: Attribute.DynamicZone<
-      [
-        "elements.buttons-array",
-        "elements.button",
-        "page-blocks.hero-section-block",
-      ]
+      ["elements.buttons-array", "elements.button"]
     > &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2868,6 +2865,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.products-list-block",
         "page-blocks.shopping-cart-block",
         "page-blocks.edit-subscription-block",
+        "page-blocks.subscription-checkout-form-block",
       ]
     > &
       Attribute.SetPluginOptions<{

@@ -5,4 +5,5 @@ export interface IModel {
   type: "authenticated" | "public";
   createdAt: string;
   updatedAt: string;
+  variant: "default";
 }

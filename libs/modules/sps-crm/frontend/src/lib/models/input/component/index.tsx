@@ -1,13 +1,10 @@
-// import dynamic from "next/dynamic";
-import Comp from "./client";
 import { IComponentProps } from "./interface";
 import { ReduxProvider } from "../../../redux";
+import Client from "./client";
+import Server from "./server";
 
 export function Component(props: IComponentProps) {
-  // Rerendering on type
-  // const Comp = props.isServer
-  //   ? dynamic(() => import("./server"), {})
-  //   : dynamic(() => import("./client"), {});
+  const Comp = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>

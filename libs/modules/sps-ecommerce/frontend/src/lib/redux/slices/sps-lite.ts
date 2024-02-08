@@ -1,8 +1,18 @@
 import { api as attributeApi } from "../../models/attribute/api/client";
+
 import { api as attributeKeyApi } from "../../models/attribute-key/api/client";
-import { api as cartApi } from "../../models/cart/api/client";
-import { api as orderApi } from "../../models/order/api/client";
-import { api as orderProductApi } from "../../models/order-product/api/client";
+import {
+  api as cartApi,
+  subscription as cartSubscription,
+} from "../../models/cart/api/client";
+import {
+  api as orderApi,
+  subscription as orderSubscription,
+} from "../../models/order/api/client";
+import {
+  api as orderProductApi,
+  subscription as orderProductSubscription,
+} from "../../models/order-product/api/client";
 import { api as productApi } from "../../models/product/api/client";
 
 export const slices = {
@@ -22,5 +32,9 @@ export const slices = {
     [orderProductApi.reducerPath]: orderProductApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
   },
-  subscriptions: [],
+  subscriptions: [
+    cartSubscription,
+    orderSubscription,
+    orderProductSubscription,
+  ],
 };

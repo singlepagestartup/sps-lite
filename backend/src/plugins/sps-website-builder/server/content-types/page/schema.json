@@ -62,7 +62,8 @@
         "page-blocks.checkout-form-block",
         "page-blocks.products-list-block",
         "page-blocks.shopping-cart-block",
-        "page-blocks.edit-subscription-block"
+        "page-blocks.edit-subscription-block",
+        "page-blocks.subscription-checkout-form-block"
       ]
     },
     "layout": {

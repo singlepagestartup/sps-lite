@@ -1,5 +1,5 @@
-import { Centered } from "./Centered";
+import { Default } from "./Default";
 
 export const variants = {
-  centered: Centered,
+  default: Default,
 };

@@ -23,7 +23,12 @@ export function Component(props: IComponentPropsExtended) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {props.logotypes?.map((logotype, index) => {
               return (
-                <Logotype isServer={props.isServer} key={index} {...logotype} />
+                <Logotype
+                  isServer={props.isServer}
+                  key={index}
+                  {...logotype}
+                  variant="default"
+                />
               );
             })}
           </div>

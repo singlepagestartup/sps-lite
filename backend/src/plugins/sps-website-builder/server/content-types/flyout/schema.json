@@ -4,7 +4,8 @@
   "info": {
     "singularName": "flyout",
     "pluralName": "flyouts",
-    "displayName": "Flyout"
+    "displayName": "Flyout",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,11 +34,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "elements.buttons-array",
-        "elements.button",
-        "page-blocks.hero-section-block"
-      ]
+      "components": ["elements.buttons-array", "elements.button"]
     },
     "title": {
       "pluginOptions": {

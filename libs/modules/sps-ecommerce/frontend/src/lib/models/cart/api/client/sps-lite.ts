@@ -1,6 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL, transformResponseItem } from "@sps/utils";
-import { IModelExtended, route, tag, populate } from "../../_model";
+import { IModelExtended, route, tag, populate } from "../../model";
+import { globalActionsStore } from "@sps/store";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-ecommerce`),
@@ -46,3 +47,19 @@ export const api = createApi({
     }),
   }),
 });
+
+export const subscription = (reduxStore: any) => {
+  const triggeredActions: string[] = [];
+  return globalActionsStore.subscribe((state) => {
+    const spsEcommerceState = state.stores["sps-ecommerce"];
+    spsEcommerceState?.actions?.forEach((action: any) => {
+      if (
+        action.type === "products/executeMutation/fulfilled" &&
+        !triggeredActions.includes(action.meta.requestId)
+      ) {
+        reduxStore.dispatch(api.util.invalidateTags([tag]));
+        triggeredActions.push(action.meta.requestId);
+      }
+    });
+  });
+};

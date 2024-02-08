@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
+import { Component as Button } from "../../../../button/component";
 import { Component as Logotype } from "../../../../logotype/component";
 import { IComponentPropsExtended } from "../../interface";
 import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
@@ -18,7 +18,11 @@ export default function Component(props: IComponentPropsExtended) {
               <div className="lg:pr-16">
                 <div className="mb-6">
                   {props.logotype ? (
-                    <Logotype isServer={props.isServer} {...props.logotype} />
+                    <Logotype
+                      isServer={props.isServer}
+                      {...props.logotype}
+                      variant="default"
+                    />
                   ) : null}
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">

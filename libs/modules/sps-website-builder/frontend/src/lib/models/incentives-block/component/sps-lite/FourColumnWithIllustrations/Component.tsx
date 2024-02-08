@@ -17,7 +17,12 @@ export function Component(props: IComponentPropsExtended) {
         {props.features?.length
           ? props.features.map((feature, index) => {
               return (
-                <Feature isServer={props.isServer} key={index} {...feature} />
+                <Feature
+                  isServer={props.isServer}
+                  key={index}
+                  {...feature}
+                  variant="default"
+                />
               );
             })
           : null}

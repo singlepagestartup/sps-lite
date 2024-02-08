@@ -1,11 +1,19 @@
 import { IComponentPropsExtended } from "../../interface";
+import { Component as Order } from "../../../../order/component";
 
 export function Component(props: IComponentPropsExtended) {
+  if (props.variant === "list") {
+    return <></>;
+  }
+
   return (
-    <div className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <p className="text-4xl font-bold">Cart</p>
-      </div>
+    <div className="w-full flex flex-col gap-2 border border-gray-500 rounded-md p-2">
+      <p className="text-2xl font-bold">Orders</p>
+      {props.orders?.map((order, index) => {
+        return (
+          <Order key={index} isServer={false} variant="default" {...order} />
+        );
+      })}
     </div>
   );
 }

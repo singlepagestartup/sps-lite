@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "../../interface";
-import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
 import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {
@@ -62,11 +61,11 @@ export function Component(props: IComponentPropsExtended) {
               </li>
             ))} */}
           </ul>
-          <div className="mt-8">
+          {/* <div className="mt-8">
             {props.buttons?.map((button, index) => {
               return <Button key={index} isServer={false} {...button} />;
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
