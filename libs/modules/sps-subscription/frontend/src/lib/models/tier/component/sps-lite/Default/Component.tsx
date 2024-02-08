@@ -6,7 +6,9 @@ import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "../../interface";
 import Link from "next/link";
 
-export function Component(props: IComponentPropsExtended) {
+export function Component<T extends { variant: "default" }>(
+  props: IComponentPropsExtended<T>,
+) {
   // console.log(`🚀 ~ Tier ~ globalStoreApis:`, globalStoreApis);
   // const price = useMemo(() => {
   //   if (!item.attributes) {
