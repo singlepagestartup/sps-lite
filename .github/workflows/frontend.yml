@@ -15,7 +15,7 @@ on:
         type: boolean
 
 env:
-  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend
+  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
 
 jobs:
   create-frontend-image:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -40,7 +40,7 @@ jobs:
         name: Build image
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend
+          context: ./
           push: false
           load: true
           tags: |
@@ -55,7 +55,7 @@ jobs:
         name: Build image
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend
+          context: ./
           push: false
           load: true
           tags: |
