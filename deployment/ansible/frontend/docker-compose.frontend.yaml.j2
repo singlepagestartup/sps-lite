@@ -5,7 +5,7 @@ services:
     image: {{ DOCKER_HUB_URL }}/{{ DOCKER_HUB_SERVICE_REPOSITORY }}
     networks:
       - traefik_overlay
-    command: "sh -c './start.sh'"
+    command: "sh -c './start.sh frontend'"
     deploy:
       update_config:
         order: start-first
