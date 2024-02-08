@@ -1,0 +1,10 @@
+.git
+.husky
+.devcontainer
+.github
+.nx
+.vscode
+db
+dist
+node_modules
+tmp
