@@ -1,0 +1,35 @@
+{
+  "id": 8,
+  "title": "Unsubscribe Page",
+  "url": "/unsubscribe",
+  "createdAt": "2024-01-10T09:19:35.982Z",
+  "updatedAt": "2024-01-10T09:19:36.809Z",
+  "publishedAt": "2024-01-10T09:19:36.800Z",
+  "locale": "en",
+  "localizations": [],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.edit-subscription-block",
+      "id": 1,
+      "title": "Unsubscribe",
+      "subtitle": null,
+      "description": null,
+      "variant": "simple",
+      "class_name": "pt-20",
+      "anchor": null,
+      "media": null,
+      "additional_media": null
+    }
+  ],
+  "layout": {
+    "id": 2,
+    "title": "Public Page Layout",
+    "uid": "public-page-layout",
+    "variant": "wide",
+    "class_name": "[&>.layout-container]:pt-16",
+    "createdAt": "2024-01-09T22:27:16.590Z",
+    "updatedAt": "2024-01-10T13:07:29.820Z",
+    "publishedAt": "2023-04-20T03:23:38.447Z",
+    "locale": "en"
+  }
+}

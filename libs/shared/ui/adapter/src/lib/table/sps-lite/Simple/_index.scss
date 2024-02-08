@@ -1,0 +1,61 @@
+& {
+  &[data-variant="simple"] {
+    .table-container {
+      @apply w-full rounded-md bg-white overflow-hidden;
+
+      // To make space for dropdown button on all levels
+      // width of that block will passed in tableConfig.dropdown.widthClassName
+      .table-dropdown-button {
+        @apply flex flex-shrink-0 items-center justify-center;
+      }
+
+      .table-header {
+        @apply bg-white flex flex-row text-sm z-10 rounded-t-md w-full;
+
+        .table-header-item {
+          @apply w-full flex flex-row;
+
+          .table-cell {
+            @apply py-4 first:pl-6 last:pr-6 px-2 text-left;
+          }
+        }
+      }
+
+      .table-body {
+        @apply bg-white w-full;
+
+        .table-item {
+          @apply w-full odd:bg-gray-100 flex flex-row items-start;
+
+          .table-item-content {
+            @apply w-full flex flex-col;
+
+            .table-dropdown {
+              @apply w-full flex-row;
+
+              &[data-is-open="true"] {
+                @apply flex;
+              }
+
+              &[data-is-open="false"] {
+                @apply hidden;
+              }
+
+              .dropdown-row {
+                @apply w-full px-2;
+              }
+            }
+
+            .table-row {
+              @apply w-full py-2 flex flex-row items-center;
+
+              .table-cell {
+                @apply first:pl-6 last:pr-6 px-2 overflow-hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

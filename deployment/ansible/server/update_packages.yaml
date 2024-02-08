@@ -4,5 +4,5 @@
   tasks:
     - name: Update packages
       apt:
-        update_cache: yes
+        update_cache: false
         cache_valid_time: 3600

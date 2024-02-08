@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_components",
+  "info": {
+    "singularName": "component",
+    "pluralName": "components",
+    "displayName": "Component"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {}
+}

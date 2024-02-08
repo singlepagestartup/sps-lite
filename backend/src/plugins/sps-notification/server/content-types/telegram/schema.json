@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_notification_telegrams",
+  "info": {
+    "singularName": "telegram",
+    "pluralName": "telegrams",
+    "displayName": "Telegram"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

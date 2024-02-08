@@ -17,38 +17,38 @@
 
     - name: Add DockerHub registry block
       block:
-      - name: Login to Portainer
-        retries: 3
-        delay: 3
-        uri:
-          url: "https://{{ service_url }}/api/auth"
-          method: POST
-          body_format: json
-          body:
-            username: "{{ portainer_username }}"
-            password: "{{ portainer_password }}"
-        register: portainer_login
+        - name: Login to Portainer
+          retries: 3
+          delay: 3
+          uri:
+            url: "https://{{ service_url }}/api/auth"
+            method: POST
+            body_format: json
+            body:
+              username: "{{ portainer_username }}"
+              password: "{{ portainer_password }}"
+          register: portainer_login
 
-      - name: Add DockerHub registry
-        uri:
-          url: "https://{{ service_url }}/api/registries"
-          method: POST
-          body_format: json
-          headers:
-            Authorization: "Bearer {{ portainer_login.json.jwt }}"
-          body:
-            Name: "dockerhub-{{ docker_hub_login_username }}"
-            Type: 3
-            URL: "{{ docker_hub_url }}"
-            Authentication: true
-            Username: "{{ docker_hub_login_username }}"
-            Password: "{{ docker_hub_password }}"
-        register: docker_hub_registry
-        ignore_errors: yes
+        - name: Add DockerHub registry
+          uri:
+            url: "https://{{ service_url }}/api/registries"
+            method: POST
+            body_format: json
+            headers:
+              Authorization: "Bearer {{ portainer_login.json.jwt }}"
+            body:
+              Name: "dockerhub-{{ docker_hub_login_username }}"
+              Type: 3
+              URL: "{{ docker_hub_url }}"
+              Authentication: true
+              Username: "{{ docker_hub_login_username }}"
+              Password: "{{ docker_hub_password }}"
+          register: docker_hub_registry
+          ignore_errors: yes
 
-      - name: Save DockerHub registry id
-        copy:
-          content: "{{ docker_hub_registry.json.Id }}"
-          dest: /home/code/docker_hub_registry_id
-        when: docker_hub_registry.json.Id is defined
+        - name: Save DockerHub registry id
+          copy:
+            content: "{{ docker_hub_registry.json.Id }}"
+            dest: /home/code/docker_hub_registry_id
+          when: docker_hub_registry.json.Id is defined
       when: docker_hub_registry_id_file.stat.exists == False

@@ -4,8 +4,7 @@ certs
 *.env.backup
 inventory.yaml*
 !inventory.yaml.example
-frontend_webhook.json
-backend_webhook.json
+*_webhook.json
 node_modules
 *.pem
 *.key

@@ -16,6 +16,7 @@
     ".tmp/",
     "src/admin/",
     "src/plugins/**",
-    "src/api/**/seeds/**"
+    "src/api/**/seeds/**",
+    "src/extensions/**/seeds/**"
   ]
 }

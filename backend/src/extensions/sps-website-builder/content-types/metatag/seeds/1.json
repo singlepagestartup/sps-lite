@@ -1,0 +1,46 @@
+{
+  "id": 1,
+  "title": "Lite Single Page Startup",
+  "description": "The fastest way to create startup",
+  "script": null,
+  "gtm_key": null,
+  "is_default": true,
+  "createdAt": "2024-01-09T22:27:17.126Z",
+  "updatedAt": "2024-01-13T00:01:32.736Z",
+  "publishedAt": "2023-04-08T06:09:23.027Z",
+  "locale": "en",
+  "localizations": [
+    {
+      "id": 2,
+      "title": "Lite Single Page Startup",
+      "description": "Le moyen le plus rapide de créer une startup",
+      "script": null,
+      "gtm_key": null,
+      "is_default": true,
+      "createdAt": "2024-01-13T00:01:31.856Z",
+      "updatedAt": "2024-01-13T00:01:32.702Z",
+      "publishedAt": "2024-01-13T00:01:32.693Z",
+      "locale": "fr"
+    }
+  ],
+  "favicon": {
+    "id": 17,
+    "name": "favicon.svg",
+    "alternativeText": null,
+    "caption": null,
+    "width": 485,
+    "height": 485,
+    "formats": null,
+    "hash": "favicon_331f141daa",
+    "ext": ".svg",
+    "mime": "image/svg+xml",
+    "size": 2.61,
+    "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/favicon_331f141daa.svg",
+    "previewUrl": null,
+    "provider": "aws-s3",
+    "provider_metadata": null,
+    "folderPath": "/",
+    "createdAt": "2024-01-09T22:27:17.094Z",
+    "updatedAt": "2024-01-09T22:27:17.094Z"
+  }
+}

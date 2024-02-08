@@ -1,0 +1,120 @@
+{
+  "root": true,
+  "plugins": ["@nx", "@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.base.json"]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": ["./tsconfig.base.json"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": false,
+            "banTransitiveDependencies": true,
+            "allow": [
+              // // sps-billing
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-billing-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-billing-frontend/lib/redux/slices",
+              // // sps-subscription
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-subscription-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-subscription-frontend/lib/redux/slices",
+              // // sps-crm
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-crm-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-crm-frontend/lib/redux/slices",
+              // // sps-rbac
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-rbac-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-rbac-frontend/lib/redux/slices",
+              // "@sps/sps-rbac-frontend/lib/hooks",
+              // // sps-ecommerce
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-ecommerce-frontend/lib/redux/entities/**/populate",
+              // "@sps/sps-ecommerce-frontend/lib/redux/slices",
+              // // sps-file-storage
+              // "@sps/sps-file-storage-frontend/lib/redux/entities/**/interfaces",
+              // "@sps/sps-file-storage-frontend/lib/redux/entities/**/api",
+              // "@sps/sps-file-storage-frontend/lib/redux/slices",
+              // // sps-website-builder
+              // "@sps/sps-website-builder-frontend/lib/redux/slices"
+            ],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": "warn"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": ["warn"],
+        "@typescript-eslint/no-unused-vars": ["warn"],
+        "@typescript-eslint/ban-ts-comment": ["warn"],
+        "@typescript-eslint/no-empty-function": ["off"],
+        "@typescript-eslint/no-non-null-asserted-optional-chain": ["warn"],
+        "@typescript-eslint/no-var-requires": ["off"],
+        "@typescript-eslint/consistent-type-definitions": ["off"],
+        "@typescript-eslint/no-empty-interface": ["off"],
+        "@typescript-eslint/no-unused-expressions": ["off"],
+        "no-prototype-builtins": ["warn"]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": ["warn"]
+      }
+    }
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "comma-dangle": ["off"],
+    "quotes": ["warn", "double"],
+    "semi": ["off"],
+    "no-duplicate-imports": "error",
+    "no-empty-pattern": ["off"],
+    "array-callback-return": ["off"],
+    "indent": ["off"],
+    "multiline-ternary": ["off"],
+    "no-loss-of-precision": ["off"],
+    "no-prototype-builtins": ["warn"]
+  }
+}

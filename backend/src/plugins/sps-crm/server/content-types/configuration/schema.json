@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "sps_crm_configurations",
+  "info": {
+    "singularName": "configuration",
+    "pluralName": "configurations",
+    "displayName": "Configuration",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "configs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "functions.config"
+    }
+  }
+}
