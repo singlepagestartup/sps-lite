@@ -12,7 +12,15 @@ export interface ElementsButton extends Schema.Component {
     media: Attribute.Media;
     description: Attribute.RichText;
     variant: Attribute.Enumeration<
-      ["primary", "secondary", "text", "locale", "profile"]
+      [
+        "primary",
+        "secondary",
+        "locale",
+        "destructive",
+        "outline",
+        "ghost",
+        "link",
+      ]
     > &
       Attribute.Required &
       Attribute.DefaultTo<"primary">;
@@ -152,16 +160,25 @@ export interface ElementsInput extends Schema.Component {
     class_name: Attribute.String;
     type: Attribute.Enumeration<
       [
+        "checkbox",
+        "date",
+        "datetime-local",
+        "email",
+        "file",
+        "hidden",
         "number",
+        "password",
+        "radio",
+        "range",
+        "tel",
         "text",
         "textarea",
-        "date",
-        "date_inline",
-        "datetime_inline",
-        "daterange_inline",
-        "datetimerange_inline",
+        "time",
+        "select",
       ]
-    >;
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<"text">;
     multiple: Attribute.Boolean;
     min: Attribute.Float;
     max: Attribute.Float;
@@ -292,6 +309,33 @@ export interface PageBlocksAlertBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksCheckoutFormBlock extends Schema.Component {
+  collectionName: "components_page_blocks_checkout_form_blocks";
+  info: {
+    displayName: "Checkout Form Block";
+    icon: "cart-arrow-down";
+    description: "";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<
+      [
+        "single-step-with-tier",
+        "single-step-with-product",
+        "single-step-with-cart",
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<"single-step-with-tier">;
+    class_name: Attribute.String;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 export interface PageBlocksContactSectionBlock extends Schema.Component {
   collectionName: "components_page_blocks_contact_section_blocks";
   info: {
@@ -334,6 +378,26 @@ export interface PageBlocksCtaSectionBlock extends Schema.Component {
     media: Attribute.Media;
     buttons: Attribute.Component<"elements.button", true>;
     subtitle: Attribute.RichText;
+    additional_media: Attribute.Media;
+  };
+}
+
+export interface PageBlocksEditSubscriptionBlock extends Schema.Component {
+  collectionName: "components_page_blocks_edit_subscription_blocks";
+  info: {
+    displayName: "Edit Subscription Block";
+    icon: "crown";
+  };
+  attributes: {
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"simple">;
+    class_name: Attribute.String;
+    anchor: Attribute.String;
+    media: Attribute.Media;
     additional_media: Attribute.Media;
   };
 }
@@ -525,28 +589,31 @@ export interface PageBlocksNotFoundBlock extends Schema.Component {
   };
 }
 
-export interface PageBlocksPricingBlock extends Schema.Component {
-  collectionName: "components_page_blocks_pricing_blocks";
+export interface PageBlocksProductsListBlock extends Schema.Component {
+  collectionName: "components_page_blocks_products_list_blocks";
   info: {
-    displayName: "Pricing Block";
+    displayName: "Products List Block";
     description: "";
   };
   attributes: {
-    variant: Attribute.Enumeration<["two-columns-card"]> &
+    products: Attribute.Relation<
+      "page-blocks.products-list-block",
+      "oneToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    variant: Attribute.Enumeration<["simple"]> &
       Attribute.Required &
-      Attribute.DefaultTo<"two-columns-card">;
+      Attribute.DefaultTo<"simple">;
+    description: Attribute.RichText;
+    buttons: Attribute.Component<"elements.button", true>;
+    anchor: Attribute.String;
+    class_name: Attribute.String;
     title: Attribute.RichText;
     subtitle: Attribute.RichText;
-    description: Attribute.RichText;
-    class_name: Attribute.Text;
-    tiers: Attribute.Relation<
-      "page-blocks.pricing-block",
-      "oneToMany",
-      "plugin::sps-billing.tier"
-    >;
-    anchor: Attribute.String;
-    media: Attribute.Media;
-    additional_media: Attribute.Media;
+    query: Attribute.JSON;
+    show_all: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -589,6 +656,24 @@ export interface PageBlocksReviewsTableBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksShoppingCartBlock extends Schema.Component {
+  collectionName: "components_page_blocks_shopping_cart_blocks";
+  info: {
+    displayName: "Shopping Cart Block";
+    description: "";
+  };
+  attributes: {
+    anchor: Attribute.String;
+    variant: Attribute.Enumeration<["simple"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"simple">;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    class_name: Attribute.String;
+  };
+}
+
 export interface PageBlocksSliderBlock extends Schema.Component {
   collectionName: "components_page_blocks_slider_blocks";
   info: {
@@ -611,6 +696,52 @@ export interface PageBlocksSliderBlock extends Schema.Component {
   };
 }
 
+export interface PageBlocksSubscriptionCheckoutFormBlock
+  extends Schema.Component {
+  collectionName: "components_page_blocks_subscription_checkout_form_blocks";
+  info: {
+    displayName: "Subscription Checkout Form Block";
+    icon: "crown";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["single-step"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"single-step">;
+    class_name: Attribute.String;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
+export interface PageBlocksTiersListBlock extends Schema.Component {
+  collectionName: "components_page_blocks_tiers_list_blocks";
+  info: {
+    displayName: "Tiers List Block";
+    description: "";
+  };
+  attributes: {
+    variant: Attribute.Enumeration<["two-columns-card"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"two-columns-card">;
+    title: Attribute.RichText;
+    subtitle: Attribute.RichText;
+    description: Attribute.RichText;
+    class_name: Attribute.Text;
+    tiers: Attribute.Relation<
+      "page-blocks.tiers-list-block",
+      "oneToMany",
+      "plugin::sps-subscription.tier"
+    >;
+    anchor: Attribute.String;
+    media: Attribute.Media;
+    additional_media: Attribute.Media;
+  };
+}
+
 declare module "@strapi/types" {
   export module Shared {
     export interface Components {
@@ -629,8 +760,10 @@ declare module "@strapi/types" {
       "functions.config": FunctionsConfig;
       "functions.form-side-effect": FunctionsFormSideEffect;
       "page-blocks.alert-block": PageBlocksAlertBlock;
+      "page-blocks.checkout-form-block": PageBlocksCheckoutFormBlock;
       "page-blocks.contact-section-block": PageBlocksContactSectionBlock;
       "page-blocks.cta-section-block": PageBlocksCtaSectionBlock;
+      "page-blocks.edit-subscription-block": PageBlocksEditSubscriptionBlock;
       "page-blocks.faqs-block": PageBlocksFaqsBlock;
       "page-blocks.features-section-block": PageBlocksFeaturesSectionBlock;
       "page-blocks.footer-block": PageBlocksFooterBlock;
@@ -640,10 +773,13 @@ declare module "@strapi/types" {
       "page-blocks.logotypes-cloud-block": PageBlocksLogotypesCloudBlock;
       "page-blocks.navbar-block": PageBlocksNavbarBlock;
       "page-blocks.not-found-block": PageBlocksNotFoundBlock;
-      "page-blocks.pricing-block": PageBlocksPricingBlock;
+      "page-blocks.products-list-block": PageBlocksProductsListBlock;
       "page-blocks.reviews-list-block": PageBlocksReviewsListBlock;
       "page-blocks.reviews-table-block": PageBlocksReviewsTableBlock;
+      "page-blocks.shopping-cart-block": PageBlocksShoppingCartBlock;
       "page-blocks.slider-block": PageBlocksSliderBlock;
+      "page-blocks.subscription-checkout-form-block": PageBlocksSubscriptionCheckoutFormBlock;
+      "page-blocks.tiers-list-block": PageBlocksTiersListBlock;
     }
   }
 }

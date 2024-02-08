@@ -678,7 +678,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -706,6 +705,36 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       "plugin::users-permissions.user",
       "manyToOne",
       "plugin::users-permissions.role"
+    >;
+    form_requests: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-crm.form-request"
+    >;
+    reviews: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-crm.review"
+    >;
+    cart: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToOne",
+      "plugin::sps-ecommerce.cart"
+    >;
+    orders: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
+    >;
+    subscriptions: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
+    >;
+    notifications: Attribute.Relation<
+      "plugin::users-permissions.user",
+      "oneToMany",
+      "plugin::sps-notification.notification"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -760,10 +789,15 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-billing.currency",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
     tiers: Attribute.Relation<
       "plugin::sps-billing.currency",
       "oneToMany",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -789,8 +823,409 @@ export interface PluginSpsBillingCurrency extends Schema.CollectionType {
   };
 }
 
-export interface PluginSpsBillingTier extends Schema.CollectionType {
-  collectionName: "sps_billing_tiers";
+export interface PluginSpsBillingInvoice extends Schema.CollectionType {
+  collectionName: "sps_billing_invoices";
+  info: {
+    singularName: "invoice";
+    pluralName: "invoices";
+    displayName: "Invoice";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sign: Attribute.Text & Attribute.Private;
+    status: Attribute.Enumeration<["new", "pending", "success", "failed"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"new">;
+    provider: Attribute.Enumeration<["stripe", "zero_x_processing"]> &
+      Attribute.Required &
+      Attribute.DefaultTo<"stripe">;
+    provider_data: Attribute.JSON & Attribute.Private;
+    amount: Attribute.Float & Attribute.Required;
+    currency: Attribute.String;
+    payment_url: Attribute.Text;
+    redirect_to: Attribute.String & Attribute.DefaultTo<"/">;
+    chain: Attribute.Enumeration<["erc20"]> & Attribute.DefaultTo<"erc20">;
+    orders: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
+    >;
+    subscription: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "manyToOne",
+      "plugin::sps-subscription.subscription"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-billing.invoice",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsSubscriptionAttachment extends Schema.CollectionType {
+  collectionName: "sps_subscription_attachments";
+  info: {
+    singularName: "attachment";
+    pluralName: "attachments";
+    displayName: "Attachment";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tiers: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "manyToMany",
+      "plugin::sps-subscription.tier"
+    > &
+      Attribute.Private;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attachment",
+      "oneToMany",
+      "plugin::sps-subscription.attachment"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionAttribute extends Schema.CollectionType {
+  collectionName: "sps_subscription_attributes";
+  info: {
+    singularName: "attribute";
+    pluralName: "attributes";
+    displayName: "Attribute";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attribute_key: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToOne",
+      "plugin::sps-subscription.attribute-key"
+    >;
+    string: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    number: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    boolean: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    date: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    datetime: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Attribute.Time &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    additional_media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
+    tiers: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToMany",
+      "plugin::sps-subscription.tier"
+    >;
+    subscriptions: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "manyToMany",
+      "plugin::sps-subscription.subscription"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attribute",
+      "oneToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionAttributeKey
+  extends Schema.CollectionType {
+  collectionName: "sps_subscription_attribute_keys";
+  info: {
+    singularName: "attribute-key";
+    pluralName: "attribute-keys";
+    displayName: "Attribute Key";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    type: Attribute.Enumeration<
+      ["string", "number", "boolean", "date", "datetime", "time"]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"string">;
+    uid: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    prefix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    postfix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_multiple: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    operator: Attribute.Enumeration<["min", "max", "equal"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"equal">;
+    inversed: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    not_to_clear: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.attribute-key",
+      "oneToMany",
+      "plugin::sps-subscription.attribute-key"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionSubscription
+  extends Schema.CollectionType {
+  collectionName: "sps_subscription_subscriptions";
+  info: {
+    singularName: "subscription";
+    pluralName: "subscriptions";
+    displayName: "Subscription";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    tier: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToOne",
+      "plugin::sps-subscription.tier"
+    >;
+    user: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    status: Attribute.Enumeration<["new", "payment", "paid", "canceled"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<"new">;
+    invoices: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToMany",
+      "plugin::sps-billing.invoice"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "manyToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-subscription.subscription",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsSubscriptionTier extends Schema.CollectionType {
+  collectionName: "sps_subscription_tiers";
   info: {
     singularName: "tier";
     pluralName: "tiers";
@@ -818,17 +1253,6 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    currency: Attribute.Relation<
-      "plugin::sps-billing.tier",
-      "manyToOne",
-      "plugin::sps-billing.currency"
-    >;
     type: Attribute.Enumeration<["one-time", "regularly"]> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -841,45 +1265,638 @@ export interface PluginSpsBillingTier extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    features: Attribute.Component<"elements.feature", true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    old_price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     buttons: Attribute.Component<"elements.button", true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    attachments: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "manyToMany",
+      "plugin::sps-subscription.attachment"
+    > &
+      Attribute.Private;
+    subscriptions: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "oneToMany",
+      "plugin::sps-subscription.subscription"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "manyToMany",
+      "plugin::sps-subscription.attribute"
+    >;
+    currency: Attribute.Relation<
+      "plugin::sps-subscription.tier",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToOne",
       "admin::user"
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      "plugin::sps-billing.tier",
+      "plugin::sps-subscription.tier",
       "oneToMany",
-      "plugin::sps-billing.tier"
+      "plugin::sps-subscription.tier"
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceAttribute extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_attributes";
+  info: {
+    singularName: "attribute";
+    pluralName: "attributes";
+    displayName: "Attribute";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    attribute_key: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToOne",
+      "plugin::sps-ecommerce.attribute-key"
+    >;
+    string: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    number: Attribute.Float &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    boolean: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    date: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    datetime: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Attribute.Time &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    additional_media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToOne",
+      "plugin::sps-billing.currency"
+    >;
+    order_products: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "manyToMany",
+      "plugin::sps-ecommerce.order-product"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceAttributeKey extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_attribute_keys";
+  info: {
+    singularName: "attribute-key";
+    pluralName: "attribute-keys";
+    displayName: "Attribute Key";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    type: Attribute.Enumeration<
+      ["string", "number", "boolean", "date", "datetime", "time"]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"string">;
+    uid: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    prefix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    postfix: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_multiple: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    operator: Attribute.Enumeration<["min", "max", "equal"]> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<"equal">;
+    inversed: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    not_to_clear: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.attribute-key",
+      "oneToMany",
+      "plugin::sps-ecommerce.attribute-key"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceCart extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_carts";
+  info: {
+    singularName: "cart";
+    pluralName: "carts";
+    displayName: "Cart";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    user: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "plugin::users-permissions.user"
+    >;
+    orders: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToMany",
+      "plugin::sps-ecommerce.order"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.cart",
+      "oneToMany",
+      "plugin::sps-ecommerce.cart"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsEcommerceOrder extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_orders";
+  info: {
+    singularName: "order";
+    pluralName: "orders";
+    displayName: "Order";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    status: Attribute.Enumeration<
+      [
+        "cart",
+        "payment",
+        "new",
+        "paid",
+        "canceled",
+        "confirmed",
+        "shipping",
+        "delivered",
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<"cart">;
+    name: Attribute.String;
+    surname: Attribute.String;
+    patronymic: Attribute.String;
+    phone: Attribute.String;
+    comment: Attribute.Text;
+    email: Attribute.Email;
+    cart: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::sps-ecommerce.cart"
+    >;
+    invoice: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "manyToOne",
+      "plugin::sps-billing.invoice"
+    >;
+    order_products: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToMany",
+      "plugin::sps-ecommerce.order-product"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsEcommerceOrderProduct extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_orders_products";
+  info: {
+    singularName: "order-product";
+    pluralName: "orders-products";
+    displayName: "Order Product";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    order: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToOne",
+      "plugin::sps-ecommerce.order"
+    >;
+    product: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToOne",
+      "plugin::sps-ecommerce.product"
+    >;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "manyToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.order-product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsEcommerceProduct extends Schema.CollectionType {
+  collectionName: "sps_ecommerce_products";
+  info: {
+    singularName: "product";
+    pluralName: "products";
+    displayName: "Product";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    attributes: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "manyToMany",
+      "plugin::sps-ecommerce.attribute"
+    >;
+    full_description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order_products: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToMany",
+      "plugin::sps-ecommerce.order-product"
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-ecommerce.product",
+      "oneToMany",
+      "plugin::sps-ecommerce.product"
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface PluginSpsMigrateDumper extends Schema.CollectionType {
+  collectionName: "sps_migrate_dumpers";
+  info: {
+    singularName: "dumper";
+    pluralName: "dumpers";
+    displayName: "Dumper";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.dumper",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.dumper",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsMigrateEntity extends Schema.CollectionType {
+  collectionName: "sps_migrate_entites";
+  info: {
+    singularName: "entity";
+    pluralName: "entities";
+    displayName: "Entity";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.entity",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.entity",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsMigrateParameter extends Schema.CollectionType {
+  collectionName: "sps_migrate_parameters";
+  info: {
+    singularName: "parameter";
+    pluralName: "parameters";
+    displayName: "Parameter";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.parameter",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.parameter",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginSpsMigrateSeeder extends Schema.CollectionType {
+  collectionName: "sps_migrate_seeders";
+  info: {
+    singularName: "seeder";
+    pluralName: "seeders";
+    displayName: "Seeder";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-migrate.seeder",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-migrate.seeder",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1014,6 +2031,11 @@ export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
   attributes: {
     inputs: Attribute.Component<"elements.request-input", true>;
     files: Attribute.Media;
+    user: Attribute.Relation<
+      "plugin::sps-crm.form-request",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1068,6 +2090,90 @@ export interface PluginSpsCrmReview extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsNotificationNotification
+  extends Schema.CollectionType {
+  collectionName: "sps_notification_notifications";
+  info: {
+    singularName: "notification";
+    pluralName: "notifications";
+    displayName: "Notification";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subtitle: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    json: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    html: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    user: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "manyToOne",
+      "plugin::users-permissions.user"
+    >;
+    was_read: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-notification.notification",
+      "oneToMany",
+      "plugin::sps-notification.notification"
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginSpsNotificationTelegram extends Schema.CollectionType {
   collectionName: "sps_notification_telegrams";
   info: {
@@ -1097,12 +2203,54 @@ export interface PluginSpsNotificationTelegram extends Schema.CollectionType {
   };
 }
 
+export interface PluginSpsWebsiteBuilderComponent
+  extends Schema.CollectionType {
+  collectionName: "sps_wb_components";
+  info: {
+    singularName: "component";
+    pluralName: "components";
+    displayName: "Component";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::sps-website-builder.component",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::sps-website-builder.component",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::sps-website-builder.component",
+      "oneToMany",
+      "plugin::sps-website-builder.component"
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
   collectionName: "sps_wb_flyouts";
   info: {
     singularName: "flyout";
     pluralName: "flyouts";
     displayName: "Flyout";
+    description: "";
   };
   options: {
     draftAndPublish: true;
@@ -1122,11 +2270,7 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<"simple">;
     page_blocks: Attribute.DynamicZone<
-      [
-        "elements.buttons-array",
-        "elements.button",
-        "page-blocks.hero-section-block",
-      ]
+      ["elements.buttons-array", "elements.button"]
     > &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1137,7 +2281,7 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.flyout", "title"> &
@@ -1197,7 +2341,7 @@ export interface PluginSpsWebsiteBuilderFooter extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.footer", "title"> &
@@ -1277,7 +2421,7 @@ export interface PluginSpsWebsiteBuilderLayout extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.layout", "title"> &
@@ -1456,7 +2600,7 @@ export interface PluginSpsWebsiteBuilderMetatag extends Schema.CollectionType {
     is_default: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1593,7 +2737,7 @@ export interface PluginSpsWebsiteBuilderNavbar extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.navbar", "title"> &
@@ -1710,13 +2854,18 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.features-section-block",
         "page-blocks.logotypes-cloud-block",
         "page-blocks.not-found-block",
-        "page-blocks.pricing-block",
+        "page-blocks.tiers-list-block",
         "page-blocks.reviews-table-block",
         "page-blocks.slider-block",
         "elements.buttons-array",
         "elements.button",
         "page-blocks.reviews-list-block",
         "page-blocks.alert-block",
+        "page-blocks.checkout-form-block",
+        "page-blocks.products-list-block",
+        "page-blocks.shopping-cart-block",
+        "page-blocks.edit-subscription-block",
+        "page-blocks.subscription-checkout-form-block",
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1912,7 +3061,9 @@ export interface PluginSpsWebsiteBuilderSlideOver
           localized: true;
         };
       }>;
-    page_blocks: Attribute.DynamicZone<["page-blocks.faqs-block"]> &
+    page_blocks: Attribute.DynamicZone<
+      ["page-blocks.faqs-block", "page-blocks.shopping-cart-block"]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2094,7 +3245,7 @@ export interface PluginSpsWebsiteBuilderTopbar extends Schema.CollectionType {
     title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     uid: Attribute.UID<"plugin::sps-website-builder.topbar", "title"> &
@@ -2280,12 +3431,29 @@ declare module "@strapi/types" {
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
       "plugin::sps-billing.currency": PluginSpsBillingCurrency;
-      "plugin::sps-billing.tier": PluginSpsBillingTier;
+      "plugin::sps-billing.invoice": PluginSpsBillingInvoice;
+      "plugin::sps-subscription.attachment": PluginSpsSubscriptionAttachment;
+      "plugin::sps-subscription.attribute": PluginSpsSubscriptionAttribute;
+      "plugin::sps-subscription.attribute-key": PluginSpsSubscriptionAttributeKey;
+      "plugin::sps-subscription.subscription": PluginSpsSubscriptionSubscription;
+      "plugin::sps-subscription.tier": PluginSpsSubscriptionTier;
+      "plugin::sps-ecommerce.attribute": PluginSpsEcommerceAttribute;
+      "plugin::sps-ecommerce.attribute-key": PluginSpsEcommerceAttributeKey;
+      "plugin::sps-ecommerce.cart": PluginSpsEcommerceCart;
+      "plugin::sps-ecommerce.order": PluginSpsEcommerceOrder;
+      "plugin::sps-ecommerce.order-product": PluginSpsEcommerceOrderProduct;
+      "plugin::sps-ecommerce.product": PluginSpsEcommerceProduct;
+      "plugin::sps-migrate.dumper": PluginSpsMigrateDumper;
+      "plugin::sps-migrate.entity": PluginSpsMigrateEntity;
+      "plugin::sps-migrate.parameter": PluginSpsMigrateParameter;
+      "plugin::sps-migrate.seeder": PluginSpsMigrateSeeder;
       "plugin::sps-crm.configuration": PluginSpsCrmConfiguration;
       "plugin::sps-crm.form": PluginSpsCrmForm;
       "plugin::sps-crm.form-request": PluginSpsCrmFormRequest;
       "plugin::sps-crm.review": PluginSpsCrmReview;
+      "plugin::sps-notification.notification": PluginSpsNotificationNotification;
       "plugin::sps-notification.telegram": PluginSpsNotificationTelegram;
+      "plugin::sps-website-builder.component": PluginSpsWebsiteBuilderComponent;
       "plugin::sps-website-builder.flyout": PluginSpsWebsiteBuilderFlyout;
       "plugin::sps-website-builder.footer": PluginSpsWebsiteBuilderFooter;
       "plugin::sps-website-builder.layout": PluginSpsWebsiteBuilderLayout;

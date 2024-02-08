@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_ecommerce_orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "cart",
+        "payment",
+        "new",
+        "paid",
+        "canceled",
+        "confirmed",
+        "shipping",
+        "delivered"
+      ],
+      "default": "cart",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-ecommerce.cart",
+      "inversedBy": "orders"
+    },
+    "invoice": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-billing.invoice",
+      "inversedBy": "orders"
+    },
+    "order_products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order-product",
+      "mappedBy": "order"
+    }
+  }
+}

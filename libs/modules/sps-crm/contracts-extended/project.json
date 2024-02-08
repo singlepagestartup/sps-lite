@@ -1,0 +1,30 @@
+{
+  "name": "@sps/sps-crm-contracts-extended",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/contracts-extended/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/modules/sps-crm/contracts-extended",
+        "main": "libs/modules/sps-crm/contracts-extended/src/index.ts",
+        "tsConfig": "libs/modules/sps-crm/contracts-extended/tsconfig.lib.json",
+        "assets": ["libs/modules/sps-crm/contracts-extended/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-crm/contracts-extended/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

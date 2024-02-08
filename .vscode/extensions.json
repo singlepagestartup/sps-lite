@@ -1,6 +1,4 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=827846
-  // for the documentation about the extensions.json format
   "recommendations": [
     "ms-azuretools.vscode-docker",
     "dsznajder.es7-react-js-snippets",
@@ -15,6 +13,8 @@
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml",
     "bierner.jsdoc-markdown-highlighting",
-    "alexkrechik.cucumberautocomplete"
+    "alexkrechik.cucumberautocomplete",
+    "nrwl.angular-console",
+    "firsttris.vscode-jest-runner"
   ]
 }

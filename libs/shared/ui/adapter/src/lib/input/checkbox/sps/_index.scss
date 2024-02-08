@@ -1,0 +1,21 @@
+&[data-ui-variant="switch"] {
+  &.input-container {
+    @apply relative flex gap-2 items-start;
+
+    .label {
+      @apply text-left relative;
+    }
+
+    .check {
+      @apply w-5 h-5 flex shrink-0 rounded-md border items-center justify-center border-input mt-[2px] text-white cursor-pointer;
+
+      &[aria-selected="true"] {
+        @apply bg-primary;
+
+        svg {
+          @apply w-4;
+        }
+      }
+    }
+  }
+}

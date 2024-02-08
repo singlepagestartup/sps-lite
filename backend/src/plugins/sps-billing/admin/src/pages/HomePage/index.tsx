@@ -18,8 +18,8 @@ const HomePage = () => {
         <Box paddingLeft={10} paddingRight={10} paddingTop={0}>
           <Flex direction="column" alignItems="stretch" gap={5}>
             <ContentBox
-              title="Documentation"
-              subtitle="Learn how to use this plugin"
+              title="Billing Plugin"
+              subtitle="Here will be configuration for the billing plugin."
               icon={<InformationSquare />}
               iconBackground="primary100"
             />

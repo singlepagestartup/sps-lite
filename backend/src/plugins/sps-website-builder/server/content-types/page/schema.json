@@ -52,13 +52,18 @@
         "page-blocks.features-section-block",
         "page-blocks.logotypes-cloud-block",
         "page-blocks.not-found-block",
-        "page-blocks.pricing-block",
+        "page-blocks.tiers-list-block",
         "page-blocks.reviews-table-block",
         "page-blocks.slider-block",
         "elements.buttons-array",
         "elements.button",
         "page-blocks.reviews-list-block",
-        "page-blocks.alert-block"
+        "page-blocks.alert-block",
+        "page-blocks.checkout-form-block",
+        "page-blocks.products-list-block",
+        "page-blocks.shopping-cart-block",
+        "page-blocks.edit-subscription-block",
+        "page-blocks.subscription-checkout-form-block"
       ]
     },
     "layout": {

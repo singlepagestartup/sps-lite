@@ -1,0 +1,16 @@
+[data-component="elements.input"] {
+  .input-label {
+    @apply block mb-1;
+  }
+
+  .input-error {
+    @apply absolute;
+
+    p {
+      @apply text-red-500 text-xs pt-1;
+    }
+  }
+
+  @import "./sps-lite/index";
+  @import "./startup/index";
+}

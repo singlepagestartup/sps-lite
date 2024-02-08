@@ -1,0 +1,48 @@
+[data-ui="button"] {
+  @apply inline-flex w-full items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background whitespace-nowrap transition duration-150 ease-in-out;
+
+  &[data-ui-size="default"] {
+    @apply py-2 px-4;
+  }
+
+  &[data-ui-size="sm"] {
+    @apply py-1 px-3 rounded-md;
+  }
+
+  &[data-ui-size="lg"] {
+    @apply py-3 px-8 rounded-md;
+  }
+
+  &[data-ui-size="icon"] {
+    @apply h-10 w-10;
+  }
+
+  &[data-ui-variant="primary"] {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  &[data-ui-variant="destructive"] {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+
+  &[data-ui-variant="outline"] {
+    @apply border border-input hover:bg-accent hover:text-accent-foreground;
+  }
+
+  &[data-ui-variant="secondary"],
+  &[data-ui-variant="locale"] {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  &[data-ui-variant="ghost"] {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  &[data-ui-variant="link"] {
+    @apply underline-offset-4 hover:underline text-muted-foreground hover:text-primary;
+  }
+
+  &[data-ui-variant="reset"] {
+    @apply p-0 text-input hover:text-destructive;
+  }
+}
