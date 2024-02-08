@@ -13,6 +13,10 @@ import {
   pageBlocks as spsSubscriptionPageBlocks,
   PageBlock as SpsSubscriptionPageBlock,
 } from "@sps/sps-subscription-frontend";
+import {
+  pageBlocks as spsElementsPageBlocks,
+  PageBlock as SpsElementsPageBlock,
+} from "@sps/sps-elements-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
@@ -59,6 +63,13 @@ export function Component(props: IComponentPropsExtended) {
 
   if (typeof SpsSubscriptionTargetPageBlock == "function") {
     return <SpsSubscriptionPageBlock {...(props as any)} />;
+  }
+
+  const SpsElementsTargetPageBlock: any =
+    spsElementsPageBlocks[key as keyof typeof spsElementsPageBlocks];
+
+  if (typeof SpsElementsTargetPageBlock == "function") {
+    return <SpsElementsPageBlock {...(props as any)} />;
   }
 
   return (

@@ -1,11 +1,16 @@
 import { IModel, IModelExtended } from "../../model";
 
-export interface IComponentProps extends IModel {
+export type IComponentProps = (
+  | IModel
+  | {
+      variant: "list";
+      isServer: boolean;
+    }
+) & {
   showSkeletons?: boolean;
   isServer: boolean;
-  variant: "default" | "checkout";
-}
+  variant: "default" | "checkout" | "list";
+};
 
-export interface IComponentPropsExtended
-  extends IComponentProps,
-    IModelExtended {}
+export type IComponentPropsExtended = IComponentProps &
+  (IModelExtended | { variant: "list" });

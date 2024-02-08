@@ -1,11 +1,11 @@
 "use client";
 
-import { api as cartApi } from "../../../../cart/api/client";
-import { Component as Cart } from "../../../../cart/component";
+// import { api as cartApi } from "../../../../cart/api/client";
+import { Component as Cart } from "@sps/sps-ecommerce-frontend/lib/models/cart/component";
 import { IComponentPropsExtended } from "../../interface";
 
 export function Component(props: IComponentPropsExtended) {
-  const { data: carts } = cartApi.useFindQuery({});
+  // const { data: carts } = cartApi.useFindQuery({});
 
   // const { data: invoice, refetch } = invoiceApi.useFindOneQuery(
   //   { id: checkoutData?.id },
@@ -40,11 +40,7 @@ export function Component(props: IComponentPropsExtended) {
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithCart</p>
       <div className="py-4">
-        {carts?.map((cart, index) => {
-          return (
-            <Cart key={index} variant="checkout" isServer={false} {...cart} />
-          );
-        })}
+        <Cart variant="list" isServer={false} />
       </div>
     </div>
   );
