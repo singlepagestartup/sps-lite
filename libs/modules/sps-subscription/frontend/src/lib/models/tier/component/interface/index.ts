@@ -3,7 +3,6 @@ import {
   IComponentPropsExtended as IParentComponentPropsExtended,
 } from "./startup";
 
-export interface IComponentProps extends IParentComponentProps {}
+export type IComponentProps<T> = IParentComponentProps<T>;
 
-export interface IComponentPropsExtended
-  extends IParentComponentPropsExtended {}
+export type IComponentPropsExtended<T> = IParentComponentPropsExtended<T>;

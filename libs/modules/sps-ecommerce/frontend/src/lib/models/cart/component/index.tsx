@@ -3,12 +3,12 @@ import { ReduxProvider } from "../../../redux";
 import Client from "./client";
 import Server from "./server";
 
-export function Component(props: IComponentProps) {
+export function Component<T>(props: IComponentProps<T>) {
   const Comp = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>
-      <Comp {...props} />
+      <Comp<any> {...props} />
     </ReduxProvider>
   );
 }

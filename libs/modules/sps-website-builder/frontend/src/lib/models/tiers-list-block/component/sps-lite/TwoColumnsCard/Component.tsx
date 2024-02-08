@@ -3,7 +3,7 @@
 import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-// import { api as tierApi } from "../../../../tier/api/client";
+import { Component as Tier } from "@sps/sps-subscription-frontend/lib/models/tier/component";
 // import type { IModel as ITier } from "../../../../tier/model";
 // import { Component as Tier } from "../../../../tier/component";
 import { IComponentPropsExtended } from "../../interface";
@@ -55,16 +55,11 @@ export function Component(props: IComponentPropsExtended) {
         </div>
       </div>
       <div className="flow-root bg-white pb-32 lg:pb-40">
-        {/* <div className="relative -mt-80">
+        <div className="relative -mt-80">
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-            <Card
-              variant="simple"
-              items={tiers}
-              showSkeletons={isFetching || isLoading || isUninitialized}
-              cardsConfig={cardsConfig}
-            />
+            <Tier<{ variant: "list" }> isServer={false} variant="list" />
           </div>
-        </div> */}
+        </div>
         {/* <div className="relative mx-auto mt-8 max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-md lg:max-w-4xl">
             <div className="flex flex-col gap-6 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 lg:flex-row lg:items-center lg:gap-8">

@@ -1,13 +1,13 @@
 import { IModel, IModelExtended } from "../../model";
 
-export interface IComponentProps extends IModel {
-  isServer: boolean;
-  showSkeletons?: boolean;
-  variant: "default";
-}
+type IComponentByVariantProps<T> = T extends { variant: "list" }
+  ? { variant: "list"; isServer: boolean }
+  : IModel & { variant: "default" | "list" };
 
-export interface IComponentPropsExtended
-  extends IComponentProps,
-    IModelExtended {
+export type IComponentProps<T> = IComponentByVariantProps<T> & {
   showSkeletons?: boolean;
-}
+  isServer: boolean;
+};
+
+export type IComponentPropsExtended<T> = IComponentProps<T> &
+  (IModelExtended | { variant: "list"; list: IModelExtended[] });
