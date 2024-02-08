@@ -52,7 +52,9 @@
       ignore_errors: yes
       loop:
         - "{{ aws_s3_bucket }}"
-        - "{{ aws_s3_bucket }}dev"
+        # Not to delete development S3 bucket
+        # for saving data
+        # - "{{ aws_s3_bucket }}dev"
 
     - name: Delete S3 name file
       file:

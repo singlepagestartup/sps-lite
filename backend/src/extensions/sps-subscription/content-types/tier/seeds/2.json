@@ -1,0 +1,116 @@
+{
+  "id": 2,
+  "title": "Pro",
+  "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+  "type": "one-time",
+  "period": null,
+  "createdAt": "2024-01-09T22:27:16.400Z",
+  "updatedAt": "2024-01-10T09:18:51.554Z",
+  "publishedAt": "2023-02-14T15:48:56.695Z",
+  "locale": "en",
+  "localizations": [],
+  "buttons": [
+    {
+      "id": 2,
+      "url": "/tiers/2/subscribe",
+      "description": null,
+      "variant": "primary",
+      "title": "Buy",
+      "additional_attributes": null,
+      "class_name": null,
+      "media": null,
+      "additional_media": null,
+      "flyout": null
+    }
+  ],
+  "attachments": [],
+  "subscriptions": [
+    {
+      "id": 1,
+      "status": "new",
+      "createdAt": "2024-01-09T23:07:31.840Z",
+      "updatedAt": "2024-01-09T23:07:31.840Z",
+      "publishedAt": "2024-01-09T23:07:31.834Z",
+      "locale": "en"
+    },
+    {
+      "id": 2,
+      "status": "new",
+      "createdAt": "2024-01-09T23:08:04.566Z",
+      "updatedAt": "2024-01-09T23:08:04.566Z",
+      "publishedAt": "2024-01-09T23:08:04.557Z",
+      "locale": "en"
+    },
+    {
+      "id": 3,
+      "status": "new",
+      "createdAt": "2024-01-09T23:08:40.275Z",
+      "updatedAt": "2024-01-09T23:08:40.275Z",
+      "publishedAt": "2024-01-09T23:08:40.257Z",
+      "locale": "en"
+    },
+    {
+      "id": 4,
+      "status": "new",
+      "createdAt": "2024-01-09T23:10:23.048Z",
+      "updatedAt": "2024-01-09T23:10:23.048Z",
+      "publishedAt": "2024-01-09T23:10:23.038Z",
+      "locale": "en"
+    },
+    {
+      "id": 5,
+      "status": "new",
+      "createdAt": "2024-01-09T23:10:29.921Z",
+      "updatedAt": "2024-01-09T23:10:29.921Z",
+      "publishedAt": "2024-01-09T23:10:29.911Z",
+      "locale": "en"
+    },
+    {
+      "id": 6,
+      "status": "paid",
+      "createdAt": "2024-01-09T23:12:12.293Z",
+      "updatedAt": "2024-01-09T23:12:52.263Z",
+      "publishedAt": "2024-01-09T23:12:12.280Z",
+      "locale": "en"
+    },
+    {
+      "id": 7,
+      "status": "canceled",
+      "createdAt": "2024-01-10T09:41:51.618Z",
+      "updatedAt": "2024-01-10T10:37:27.532Z",
+      "publishedAt": "2024-01-10T09:41:51.603Z",
+      "locale": "en"
+    },
+    {
+      "id": 8,
+      "status": "canceled",
+      "createdAt": "2024-01-10T10:41:10.181Z",
+      "updatedAt": "2024-01-12T13:03:42.145Z",
+      "publishedAt": "2024-01-10T10:41:10.173Z",
+      "locale": "en"
+    },
+    {
+      "id": 9,
+      "status": "canceled",
+      "createdAt": "2024-01-12T12:57:38.105Z",
+      "updatedAt": "2024-01-12T13:03:42.154Z",
+      "publishedAt": "2024-01-12T12:57:38.093Z",
+      "locale": "en"
+    }
+  ],
+  "attributes": [
+    {
+      "id": 1,
+      "string": null,
+      "number": 99,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-01-09T22:38:21.504Z",
+      "updatedAt": "2024-01-09T22:38:21.504Z",
+      "locale": "en"
+    }
+  ],
+  "currency": null
+}

@@ -1,0 +1,51 @@
+{
+  "id": 1,
+  "uid": "this-is-modal",
+  "dialog_panel_class_name": "w-8/12",
+  "variant": "simple",
+  "title": "This Is Modal",
+  "class_name": null,
+  "createdAt": "2024-01-09T22:27:17.191Z",
+  "updatedAt": "2024-01-09T22:27:17.191Z",
+  "publishedAt": "2023-03-28T04:07:57.457Z",
+  "locale": "en",
+  "localizations": [],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.hero-section-block",
+      "id": 2,
+      "title": "This Is Modal",
+      "description": "With Page Blocks",
+      "variant": "simple-centered",
+      "anchor": null,
+      "class_name": null,
+      "media": null,
+      "buttons": [],
+      "additional_media": null
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "title": "Public Page Layout With Sidebar",
+      "uid": "public-page-layout-with-sidebar",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-01-09T22:27:16.552Z",
+      "updatedAt": "2024-01-10T13:07:24.042Z",
+      "publishedAt": "2023-04-08T05:04:56.606Z",
+      "locale": "en"
+    },
+    {
+      "id": 2,
+      "title": "Public Page Layout",
+      "uid": "public-page-layout",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-01-09T22:27:16.590Z",
+      "updatedAt": "2024-01-10T13:07:29.820Z",
+      "publishedAt": "2023-04-20T03:23:38.447Z",
+      "locale": "en"
+    }
+  ]
+}

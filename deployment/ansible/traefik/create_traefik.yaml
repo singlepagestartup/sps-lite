@@ -9,18 +9,28 @@
     - name: Get ansible ansible_system_vendor
       set_fact:
         ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
-    
+
     - name: Copy create_traefik_user.sh file
       ansible.builtin.template:
         src: create_traefik_user.sh
         dest: /home/code/create_traefik_user.sh
         mode: 0755
 
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
     - name: Install prerequisites
       apt:
         name: "{{ item }}"
         state: present
-        update_cache: yes
+        force_apt_get: yes
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
       loop:
         - apache2-utils
 

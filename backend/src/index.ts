@@ -1,11 +1,8 @@
 "use strict";
-import strapiUtils from "@rogwild/strapi-utils";
-import path from "path";
+
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
-import fs from "fs/promises";
-// import GoogleCloud from "./services/GoogleCloud";
 
 export default {
   async bootstrap({ strapi }) {
@@ -24,27 +21,7 @@ export default {
     }
 
     if (process.env.SEED_ENTITES) {
-      const lockFilePath = path.join(__dirname, "../../", "seeded.txt");
-      try {
-        await fs.rm(lockFilePath);
-      } catch (error) {
-        //
-      }
-
-      try {
-        const apiPath = path.join(__dirname, "../../src/", "./api");
-        strapiUtils.seeder(apiPath).then(async () => {
-          await fs.writeFile(lockFilePath, "");
-
-          if (process.env.CLEAR_MEDIA_LIBRARY) {
-            clearMediaLibrary();
-          }
-        });
-      } catch (error) {
-        console.log("🚀 ~ bootstrap ~ seeder ~ error: ", error.message);
-
-        strapi.errorCatcher(error);
-      }
+      await strapi.service("plugin::sps-migrate.seeder").run();
     }
 
     if (process.env.RUN_TELEGRAM_BOT) {
@@ -53,14 +30,7 @@ export default {
     }
 
     if (process.env.MAKE_NEW_SEED) {
-      try {
-        const mainApiPath = path.join(__dirname, "../../src/", "./api");
-        await strapiUtils.dumper(mainApiPath);
-      } catch (error) {
-        console.log("🚀 ~ bootstrap ~ MAKE_NEW_SEED ~ error:", error);
-
-        strapi.errorCatcher(error);
-      }
+      await strapi.service("plugin::sps-migrate.dumper").run();
     }
   },
 };

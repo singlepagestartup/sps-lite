@@ -15,7 +15,7 @@ async function createBranch({ token, ownerWithRepository, branchName }) {
       owner,
       repo,
       ref: "heads/main",
-    }
+    },
   );
 
   const branch = await octokit.request("POST /repos/{owner}/{repo}/git/refs", {

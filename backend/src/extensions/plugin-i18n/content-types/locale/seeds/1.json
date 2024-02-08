@@ -1,9 +1,7 @@
 {
-    "id": 1,
-    "name": "English (en)",
-    "code": "en",
-    "createdAt": "2023-11-13T09:40:28.813Z",
-    "updatedAt": "2023-11-13T12:37:43.743Z",
-    "createdBy": null,
-    "updatedBy": null
+  "id": 1,
+  "name": "English (en)",
+  "code": "en",
+  "createdAt": "2024-01-09T22:25:25.398Z",
+  "updatedAt": "2024-01-09T22:26:45.026Z"
 }

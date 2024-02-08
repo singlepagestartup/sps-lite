@@ -1,0 +1,25 @@
+&[data-ui-variant="repeatable"] {
+  .input-container {
+    @apply flex flex-col gap-4;
+
+    .repeatable-inputs {
+      @apply flex flex-col p-4 border rounded-md gap-4;
+
+      .button-remove-input {
+        @apply flex text-sm items-center justify-center w-fit ml-auto rounded-md border border-red-600 py-1 px-3 font-medium text-red-600 bg-transparent shadow-sm hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-50 text-center duration-200;
+
+        svg {
+          @apply w-4 mr-3;
+        }
+      }
+    }
+
+    .button-add-input {
+      @apply w-fit mr-auto flex items-center justify-center rounded-md border border-gray-300 border-dashed bg-transparent py-1 px-3 text-sm font-medium text-gray-400 hover:border-solid hover:border-primary-500 hover:bg-primary-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-50 text-center duration-200;
+
+      svg {
+        @apply w-4 mr-3;
+      }
+    }
+  }
+}
