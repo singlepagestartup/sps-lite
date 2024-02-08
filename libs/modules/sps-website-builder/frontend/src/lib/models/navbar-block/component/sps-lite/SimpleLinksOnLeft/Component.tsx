@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as Button } from "@sps/sps-elements-frontend/lib/models/button/component";
+import { Component as Button } from "../../../../button/component";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";

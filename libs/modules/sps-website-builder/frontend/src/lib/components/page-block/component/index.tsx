@@ -1,22 +1,6 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
-import {
-  pageBlocks as spsEcommercePageBlocks,
-  PageBlock as SpsEcommercePageBlock,
-} from "@sps/sps-ecommerce-frontend";
-import {
-  pageBlocks as spsCrmPageBlocks,
-  PageBlock as SpsCrmPageBlock,
-} from "@sps/sps-crm-frontend";
-import {
-  pageBlocks as spsSubscriptionPageBlocks,
-  PageBlock as SpsSubscriptionPageBlock,
-} from "@sps/sps-subscription-frontend";
-import {
-  pageBlocks as spsElementsPageBlocks,
-  PageBlock as SpsElementsPageBlock,
-} from "@sps/sps-elements-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const key = props.__component;
@@ -42,34 +26,6 @@ export function Component(props: IComponentPropsExtended) {
         </div>
       </ErrorBoundary>
     );
-  }
-
-  const SpsEcommerceTargetPageBlock: any =
-    spsEcommercePageBlocks[key as keyof typeof spsEcommercePageBlocks];
-
-  if (typeof SpsEcommerceTargetPageBlock == "function") {
-    return <SpsEcommercePageBlock {...(props as any)} />;
-  }
-
-  const SpsCrmTargetPageBlock: any =
-    spsCrmPageBlocks[key as keyof typeof spsCrmPageBlocks];
-
-  if (typeof SpsCrmTargetPageBlock == "function") {
-    return <SpsCrmPageBlock {...(props as any)} />;
-  }
-
-  const SpsSubscriptionTargetPageBlock: any =
-    spsSubscriptionPageBlocks[key as keyof typeof spsSubscriptionPageBlocks];
-
-  if (typeof SpsSubscriptionTargetPageBlock == "function") {
-    return <SpsSubscriptionPageBlock {...(props as any)} />;
-  }
-
-  const SpsElementsTargetPageBlock: any =
-    spsElementsPageBlocks[key as keyof typeof spsElementsPageBlocks];
-
-  if (typeof SpsElementsTargetPageBlock == "function") {
-    return <SpsElementsPageBlock {...(props as any)} />;
   }
 
   return (

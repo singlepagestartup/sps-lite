@@ -11,8 +11,8 @@ import { populate as incentivesBlockPopulate } from "@sps/sps-website-builder-co
 import { populate as logotypesCloudBlockPopulate } from "@sps/sps-website-builder-contracts/lib/models/logotypes-cloud-block/populate";
 import { populate as notFoundBlockPopulate } from "@sps/sps-website-builder-contracts/lib/models/not-found-block/populate";
 import { populate as sliderBlockPopulate } from "@sps/sps-website-builder-contracts/lib/models/slider-block/populate";
-import { populate as buttonPopulate } from "@sps/sps-elements-contracts/lib/models/button/populate";
-import { populate as buttonsArrayPopulate } from "@sps/sps-elements-contracts/lib/models/buttons-array/populate";
+import { populate as buttonPopulate } from "@sps/sps-website-builder-contracts/lib/models/button/populate";
+import { populate as buttonsArrayPopulate } from "@sps/sps-website-builder-contracts/lib/models/buttons-array/populate";
 
 const pageBlockPopulate = {
   ...alertBlockPopulate,

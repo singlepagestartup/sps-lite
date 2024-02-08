@@ -25,6 +25,15 @@ import { api as slideOverApi } from "../../models/slide-over/api/client";
 import { api as sliderApi } from "../../models/slider/api/client";
 import { api as themeApi } from "../../models/theme/api/client";
 import { api as topbarApi } from "../../models/topbar/api/client";
+import { api as buttonApi } from "../../models/button/api/client";
+import { api as buttonsArrayApi } from "../../models/buttons-array/api/client";
+import { api as flyoutApi } from "../../models/flyout/api/client";
+import { api as checkoutFormBlockApi } from "../../models/checkout-form-block/api/client";
+import { api as productsListBlockApi } from "../../models/products-list-block/api/client";
+import { api as shoppingCartBlockApi } from "../../models/shopping-cart-block/api/client";
+import { api as contactSectionBlockApi } from "../../models/contact-section-block/api/client";
+import { api as reviewsListBlockApi } from "../../models/reviews-list-block/api/client";
+import { api as reviewsTableBlockApi } from "../../models/reviews-table-block/api/client";
 
 export const slices = {
   middlewares: [
@@ -55,6 +64,15 @@ export const slices = {
     themeApi.middleware,
     topbarApi.middleware,
     localeApi.middleware,
+    buttonApi.middleware,
+    buttonsArrayApi.middleware,
+    flyoutApi.middleware,
+    checkoutFormBlockApi.middleware,
+    productsListBlockApi.middleware,
+    shoppingCartBlockApi.middleware,
+    contactSectionBlockApi.middleware,
+    reviewsListBlockApi.middleware,
+    reviewsTableBlockApi.middleware,
   ],
   reducer: {
     [featureApi.reducerPath]: featureApi.reducer,
@@ -84,6 +102,15 @@ export const slices = {
     [themeApi.reducerPath]: themeApi.reducer,
     [topbarApi.reducerPath]: topbarApi.reducer,
     [localeApi.reducerPath]: localeApi.reducer,
+    [buttonApi.reducerPath]: buttonApi.reducer,
+    [buttonsArrayApi.reducerPath]: buttonsArrayApi.reducer,
+    [flyoutApi.reducerPath]: flyoutApi.reducer,
+    [checkoutFormBlockApi.reducerPath]: checkoutFormBlockApi.reducer,
+    [productsListBlockApi.reducerPath]: productsListBlockApi.reducer,
+    [shoppingCartBlockApi.reducerPath]: shoppingCartBlockApi.reducer,
+    [contactSectionBlockApi.reducerPath]: contactSectionBlockApi.reducer,
+    [reviewsListBlockApi.reducerPath]: reviewsListBlockApi.reducer,
+    [reviewsTableBlockApi.reducerPath]: reviewsTableBlockApi.reducer,
   },
   subscriptions: [],
 };

@@ -10,6 +10,6 @@ export const api = {
     });
   },
   find: async () => {
-    return await fetch.api.find<IModelExtended>({ model: route, populate });
+    return await fetch.api.find<IModelExtended[]>({ model: route, populate });
   },
 };

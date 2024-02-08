@@ -65,24 +65,6 @@
       "@sps/sps-ecommerce-frontend/*": [
         "libs/modules/sps-ecommerce/frontend/src/*"
       ],
-      "@sps/sps-elements-contracts": [
-        "libs/modules/sps-elements/contracts/src/index.ts"
-      ],
-      "@sps/sps-elements-contracts-extended": [
-        "libs/modules/sps-elements/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-elements-contracts-extended/*": [
-        "libs/modules/sps-elements/contracts-extended/src/*"
-      ],
-      "@sps/sps-elements-contracts/*": [
-        "libs/modules/sps-elements/contracts/src/*"
-      ],
-      "@sps/sps-elements-frontend": [
-        "libs/modules/sps-elements/frontend/src/index.ts"
-      ],
-      "@sps/sps-elements-frontend/*": [
-        "libs/modules/sps-elements/frontend/src/*"
-      ],
       "@sps/sps-file-storage-contracts": [
         "libs/modules/sps-file-storage/contracts/src/index.ts"
       ],
