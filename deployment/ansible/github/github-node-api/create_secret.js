@@ -25,7 +25,7 @@ async function createSecret({
       owner,
       repo,
       secretScope,
-    }
+    },
   );
 
   const publicKey = repositoryPublicKey.data.key;
@@ -41,7 +41,7 @@ async function createSecret({
   // Convert the encrypted Uint8Array to Base64
   const encryptedValue = sodium.to_base64(
     encBytes,
-    sodium.base64_variants.ORIGINAL
+    sodium.base64_variants.ORIGINAL,
   );
 
   const secret = await octokit.request(
@@ -53,7 +53,7 @@ async function createSecret({
       key_id: publicKeyId,
       encrypted_value: encryptedValue,
       secretScope,
-    }
+    },
   );
 
   return secret;

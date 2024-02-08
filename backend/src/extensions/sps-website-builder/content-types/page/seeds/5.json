@@ -1,0 +1,35 @@
+{
+  "id": 5,
+  "title": "Subscription Page",
+  "url": "/tiers/[plugin::sps-subscription.tier.id]/subscribe",
+  "createdAt": "2024-01-09T22:27:45.772Z",
+  "updatedAt": "2024-01-10T09:19:03.351Z",
+  "publishedAt": "2023-12-02T23:44:54.598Z",
+  "locale": "en",
+  "localizations": [],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.checkout-form-block",
+      "id": 1,
+      "variant": "single-step-with-tier",
+      "class_name": "pt-20",
+      "title": "Subscribe for tier",
+      "subtitle": null,
+      "description": null,
+      "anchor": null,
+      "media": null,
+      "additional_media": null
+    }
+  ],
+  "layout": {
+    "id": 2,
+    "title": "Public Page Layout",
+    "uid": "public-page-layout",
+    "variant": "wide",
+    "class_name": "[&>.layout-container]:pt-16",
+    "createdAt": "2024-01-09T22:27:16.590Z",
+    "updatedAt": "2024-01-10T13:07:29.820Z",
+    "publishedAt": "2023-04-20T03:23:38.447Z",
+    "locale": "en"
+  }
+}

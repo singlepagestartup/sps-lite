@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_page_blocks_edit_subscription_blocks",
+  "info": {
+    "displayName": "Edit Subscription Block",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple"],
+      "required": true,
+      "default": "simple"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    },
+    "additional_media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

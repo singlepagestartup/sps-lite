@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_page_blocks_checkout_form_blocks",
+  "info": {
+    "displayName": "Checkout Form Block",
+    "icon": "cart-arrow-down",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "single-step-with-tier",
+        "single-step-with-product",
+        "single-step-with-cart"
+      ],
+      "default": "single-step-with-tier",
+      "required": true
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": 4,
+  "string": null,
+  "number": 3,
+  "boolean": null,
+  "date": null,
+  "datetime": null,
+  "time": null,
+  "createdAt": "2024-01-09T23:18:37.548Z",
+  "updatedAt": "2024-01-09T23:18:37.548Z",
+  "locale": "en",
+  "localizations": [],
+  "attribute_key": {
+    "id": 2,
+    "title": "quantity",
+    "type": "number",
+    "uid": "quantity",
+    "prefix": null,
+    "postfix": null,
+    "is_multiple": false,
+    "operator": "equal",
+    "inversed": false,
+    "not_to_clear": false,
+    "createdAt": "2024-01-09T23:16:06.828Z",
+    "updatedAt": "2024-01-09T23:16:06.828Z",
+    "locale": "en"
+  },
+  "media": null,
+  "products": [],
+  "additional_media": null,
+  "currency": null,
+  "order_products": [
+    {
+      "id": 1,
+      "createdAt": "2024-01-09T23:16:06.788Z",
+      "updatedAt": "2024-01-09T23:16:06.788Z"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "**/*.{js,ts,jsx,tsx}": "npm run format",
+  "**/*.feature": "npm run prettier:fix"
+}

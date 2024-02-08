@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_migrate_entites",
+  "info": {
+    "singularName": "entity",
+    "pluralName": "entities",
+    "displayName": "Entity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

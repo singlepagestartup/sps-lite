@@ -16,4 +16,5 @@ module.exports = {
     "<rootDir>/dist",
   ],
   setupFiles: ["<rootDir>/jest.setupFiles.ts"],
+  coverageDirectory: "<rootDir>/tests/artifacts/coverage",
 } as Config;

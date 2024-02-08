@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_subscription_attributes",
+  "info": {
+    "singularName": "attribute",
+    "pluralName": "attributes",
+    "displayName": "Attribute",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "attribute_key": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-subscription.attribute-key",
+      "inversedBy": "attributes"
+    },
+    "string": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": false
+    },
+    "number": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "float",
+      "min": 0
+    },
+    "boolean": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "datetime": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
+    },
+    "time": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "time"
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-billing.currency",
+      "inversedBy": "attributes"
+    },
+    "tiers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-subscription.tier",
+      "mappedBy": "attributes"
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-subscription.subscription",
+      "mappedBy": "attributes"
+    }
+  }
+}

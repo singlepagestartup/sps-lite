@@ -20,7 +20,7 @@ async function deleteSecret({
       repo,
       secretName,
       secretScope,
-    }
+    },
   );
 
   return secret;

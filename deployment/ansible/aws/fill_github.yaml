@@ -9,6 +9,11 @@
     - aws_s3_region: "{{ AWS_S3_REGION }}"
     - aws_s3_bucket: "{{ AWS_S3_BUCKET }}"
   tasks:
+    - name: Delete artifacts
+      file:
+        path: /home/code/github-node-api/
+        state: absent
+
     - name: Create github-node-api directory
       file:
         path: "/home/code/github-node-api"

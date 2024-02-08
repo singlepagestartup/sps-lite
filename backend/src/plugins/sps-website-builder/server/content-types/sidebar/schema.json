@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_wb_sidebars",
+  "info": {
+    "singularName": "sidebar",
+    "pluralName": "sidebars",
+    "displayName": "Sidebar",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "variant": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["one-quarter"],
+      "default": "one-quarter",
+      "required": true
+    },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "uid": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "page_blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "page-blocks.hero-section-block",
+        "elements.button",
+        "elements.buttons-array"
+      ]
+    },
+    "class_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "side": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "left",
+      "required": true
+    },
+    "layouts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-website-builder.layout",
+      "mappedBy": "sidebar"
+    }
+  }
+}

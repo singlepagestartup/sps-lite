@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "variant": "one-quarter",
+  "title": "Ads Sidebar",
+  "uid": "ads-sidebar-1",
+  "class_name": null,
+  "side": "right",
+  "createdAt": "2024-01-09T22:27:45.795Z",
+  "updatedAt": "2024-01-09T22:27:45.795Z",
+  "publishedAt": "2023-04-07T17:35:29.006Z",
+  "locale": "en",
+  "localizations": [],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.hero-section-block",
+      "id": 5,
+      "title": "Sidebar",
+      "description": "With Page Blocks",
+      "variant": "simple-centered",
+      "anchor": null,
+      "class_name": "pt-16",
+      "media": null,
+      "buttons": [],
+      "additional_media": null
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "title": "Public Page Layout With Sidebar",
+      "uid": "public-page-layout-with-sidebar",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-01-09T22:27:16.552Z",
+      "updatedAt": "2024-01-10T13:07:24.042Z",
+      "publishedAt": "2023-04-08T05:04:56.606Z",
+      "locale": "en"
+    }
+  ]
+}

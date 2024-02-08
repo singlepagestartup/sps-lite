@@ -3,6 +3,7 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
   "configurations": [
     {
       "type": "node",
@@ -11,7 +12,7 @@
       "sourceMaps": true,
       "outputCapture": "std",
       "name": "backend",
-      "runtimeVersion": "18",
+      "runtimeVersion": "18.17",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run-script", "debug", "--preserve-symlinks"],
       "cwd": "${workspaceFolder}/backend",
@@ -26,16 +27,18 @@
       "request": "launch",
       "trace": true,
       "sourceMaps": true,
+      "runtimeVersion": "18.17",
       "outputCapture": "std",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "dev"],
-      "cwd": "${workspaceFolder}/frontend",
-      "localRoot": "${workspaceFolder}/frontend",
-      "skipFiles": ["<node_internals>/**"],
-      "serverReadyAction": {
-        "pattern": "started server on .+, url: (https?://.+)",
-        "uriFormat": "%s",
-        "action": "openExternally"
+      "runtimeArgs": ["run-script", "frontend:dev", "--preserve-symlinks"],
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "openOnSessionStart",
+      "localRoot": "${workspaceFolder}/apps/frontend",
+      "console": "internalConsole",
+      "autoAttachChildProcesses": true,
+      "env": {
+        "TS_NODE_IGNORE": "false",
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/frontend/tsconfig.json"
       }
     }
   ]

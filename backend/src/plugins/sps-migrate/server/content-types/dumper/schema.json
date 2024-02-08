@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_migrate_dumpers",
+  "info": {
+    "singularName": "dumper",
+    "pluralName": "dumpers",
+    "displayName": "Dumper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}
