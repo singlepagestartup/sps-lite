@@ -555,7 +555,9 @@ export interface PageBlocksNavbarBlock extends Schema.Component {
     description: "";
   };
   attributes: {
-    variant: Attribute.Enumeration<["simple-links-on-left"]> &
+    variant: Attribute.Enumeration<
+      ["simple-links-on-left", "centered-logotype"]
+    > &
       Attribute.Required &
       Attribute.DefaultTo<"simple-links-on-left">;
     description: Attribute.RichText;

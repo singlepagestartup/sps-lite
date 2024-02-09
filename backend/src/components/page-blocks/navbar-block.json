@@ -8,7 +8,7 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": ["simple-links-on-left"],
+      "enum": ["simple-links-on-left", "centered-logotype"],
       "default": "simple-links-on-left",
       "required": true
     },
