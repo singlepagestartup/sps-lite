@@ -2270,7 +2270,11 @@ export interface PluginSpsWebsiteBuilderFlyout extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<"simple">;
     page_blocks: Attribute.DynamicZone<
-      ["elements.buttons-array", "elements.button"]
+      [
+        "elements.buttons-array",
+        "elements.button",
+        "page-blocks.hero-section-block",
+      ]
     > &
       Attribute.SetPluginOptions<{
         i18n: {

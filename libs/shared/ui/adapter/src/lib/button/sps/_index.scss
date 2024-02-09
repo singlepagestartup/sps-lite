@@ -1,21 +1,5 @@
 [data-ui="button"] {
-  @apply inline-flex w-full items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background whitespace-nowrap transition duration-150 ease-in-out;
-
-  &[data-ui-size="default"] {
-    @apply py-2 px-4;
-  }
-
-  &[data-ui-size="sm"] {
-    @apply py-1 px-3 rounded-md;
-  }
-
-  &[data-ui-size="lg"] {
-    @apply py-3 px-8 rounded-md;
-  }
-
-  &[data-ui-size="icon"] {
-    @apply h-10 w-10;
-  }
+  @apply inline-flex w-fit items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background whitespace-nowrap transition duration-150 ease-in-out py-2 px-4;
 
   &[data-ui-variant="primary"] {
     @apply bg-primary text-primary-foreground hover:bg-primary/90;

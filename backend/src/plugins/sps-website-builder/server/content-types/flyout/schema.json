@@ -34,7 +34,11 @@
         }
       },
       "type": "dynamiczone",
-      "components": ["elements.buttons-array", "elements.button"]
+      "components": [
+        "elements.buttons-array",
+        "elements.button",
+        "page-blocks.hero-section-block"
+      ]
     },
     "title": {
       "pluginOptions": {
