@@ -16,11 +16,11 @@ export default {
 
     console.error = strapi.errorCatcher;
 
-    if (process.env.CLEAR_MEDIA_LIBRARY && !process.env.SEED_ENTITES) {
+    if (process.env.CLEAR_MEDIA_LIBRARY && !process.env.SEED_ENTITIES) {
       clearMediaLibrary();
     }
 
-    if (process.env.SEED_ENTITES) {
+    if (process.env.SEED_ENTITIES) {
       await strapi.service("plugin::sps-migrate.seeder").run();
     }
 

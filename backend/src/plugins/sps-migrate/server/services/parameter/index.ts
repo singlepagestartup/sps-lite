@@ -56,16 +56,10 @@ export default factories.createCoreService(
               console.log("🚀 ~ downloadFile ~ error:", error?.message);
             });
         } else {
-          return;
-
-          const { dirPath } = strapi
-            .service("plugin::sps-migrate.seeder")
-            .splitUid({ uid });
-
-          const pathToRoot = path.join(dirPath, "../../"); //?
+          const appRoot = path.join(strapi.dirs.app.root);
 
           file = await fs
-            .readFile(`${pathToRoot}/dump/${seed.url}`)
+            .readFile(`${appRoot}/dump${seed.url}`)
             .catch((error) => {
               console.log("🚀 ~ downloadFile ~ error:", error?.message);
             });

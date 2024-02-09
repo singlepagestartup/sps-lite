@@ -1,6 +1,4 @@
 import { BACKEND_URL } from "./envs";
-console.log(`🚀 ~ BACKEND_URL:`, BACKEND_URL);
-console.log(`🚀 ~ process.env:`, process.env);
 import { transformResponseItem } from "./transform-response-item";
 import QueryString from "qs";
 
