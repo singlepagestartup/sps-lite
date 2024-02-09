@@ -30,5 +30,5 @@ export default async function Server<T>(props: IComponentProps<T>) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} {...(data as any)} />;
 }

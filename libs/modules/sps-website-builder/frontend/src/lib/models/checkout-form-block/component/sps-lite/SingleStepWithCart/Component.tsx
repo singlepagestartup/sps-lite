@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithCart</p>
       <div className="py-4">
-        <Cart variant="list" isServer={false} />
+        {/* <Cart variant="default" isServer={false} /> */}
       </div>
     </div>
   );

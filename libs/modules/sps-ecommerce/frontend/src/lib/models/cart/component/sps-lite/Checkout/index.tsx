@@ -4,13 +4,19 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-export function Checkout(props: IComponentProps | IComponentPropsExtended) {
+type IProps =
+  | IComponentProps<{ variant: "checkout" }>
+  | IComponentPropsExtended<{ variant: "checkout" }>;
+
+export function Checkout(props: IProps) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? (
         <Skeleton {...props} />
       ) : (
-        <Component {...(props as IComponentPropsExtended)} />
+        <Component
+          {...(props as IComponentPropsExtended<{ variant: "checkout" }>)}
+        />
       )}
     </ErrorBoundary>
   );
