@@ -1,0 +1,89 @@
+{
+  "id": 1,
+  "title": "Public Page Footer",
+  "uid": "footer",
+  "variant": "boxed",
+  "class_name": null,
+  "createdAt": "2024-01-10T11:45:34.071Z",
+  "updatedAt": "2024-01-13T09:58:54.399Z",
+  "publishedAt": "2024-01-10T11:45:35.047Z",
+  "locale": "en",
+  "localizations": [
+    {
+      "id": 2,
+      "title": "Pied de page public",
+      "uid": "pied-de-page-public",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-01-12T23:31:12.109Z",
+      "updatedAt": "2024-01-12T23:31:13.171Z",
+      "publishedAt": "2024-01-12T23:31:13.162Z",
+      "locale": "fr"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.footer-block",
+      "id": 1,
+      "copyrights": "2024 Single Page Startup",
+      "description": "The fastest way to develop your startup",
+      "variant": "four-columns-with-company-mission",
+      "class_name": null,
+      "logotype": {
+        "id": 2,
+        "title": null,
+        "url": null,
+        "media": [
+          {
+            "id": 18,
+            "name": "sps-full dark.svg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 4725,
+            "height": 729,
+            "formats": null,
+            "hash": "sps_full_dark_e8fb90cd29",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 16.9,
+            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_e8fb90cd29.svg",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-01-09T22:27:17.920Z",
+            "updatedAt": "2024-01-09T22:27:17.920Z"
+          }
+        ],
+        "additional_media": null
+      },
+      "buttons_arrays": [],
+      "additional_buttons_arrays": [],
+      "extra_buttons_arrays": []
+    }
+  ],
+  "layouts": [
+    {
+      "id": 2,
+      "title": "Public Page Layout",
+      "uid": "public-page-layout",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-01-09T22:27:16.590Z",
+      "updatedAt": "2024-01-10T13:07:29.820Z",
+      "publishedAt": "2023-04-20T03:23:38.447Z",
+      "locale": "en"
+    },
+    {
+      "id": 1,
+      "title": "Public Page Layout With Sidebar",
+      "uid": "public-page-layout-with-sidebar",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-01-09T22:27:16.552Z",
+      "updatedAt": "2024-01-10T13:07:24.042Z",
+      "publishedAt": "2023-04-08T05:04:56.606Z",
+      "locale": "en"
+    }
+  ]
+}

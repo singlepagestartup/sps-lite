@@ -27,6 +27,12 @@ else
     SERVICE_URL=$SERVICE_SUBDOMAIN.$DOMAIN
 fi
 
+if [ -z $SERVICE_NAME ]
+then
+    echo "Skip $0"
+    exit 0
+fi
+
 if [ -z $DOCKER_HUB_SERVICE_REPOSITORY ]
 then
     echo "No docker hub repository name for service $SERVICE_NAME"

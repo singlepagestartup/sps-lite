@@ -21,7 +21,15 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["primary", "secondary", "text", "locale"],
+      "enum": [
+        "primary",
+        "secondary",
+        "locale",
+        "destructive",
+        "outline",
+        "ghost",
+        "link"
+      ],
       "default": "primary",
       "required": true
     },
@@ -43,7 +51,7 @@
     "flyout": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::flyout.flyout"
+      "target": "plugin::sps-website-builder.flyout"
     }
   }
 }

@@ -4,23 +4,35 @@ sidebar_position: 1
 
 # Creating project
 
-## Via GitHub Interface
+## GitHub Interface
 
 For creating project you can use [sps-lite](https://github.com/singlepagestartup/sps-lite) template by GitHub interface. Press **Use this template** and select one of variants: **Create a new repository** or **Open in codespace**.
 
 ![Use this template](./img/use-this-template.png)
 
-## Via CLI command
+## CLI command
 
 You can also create an empty repository and then download it locally to the root of the repository and execute several CLI commands.
 
+This command connects the `sps-lite` repository as the parent to your project.
+
 ```bash
 git remote add upstream https://github.com/singlepagestartup/sps-lite.git
+```
+
+This command takes changes from the project that is connected as `upstream`
+
+```bash
 git pull upstream main
+```
+
+This command sends changes to your repository.
+
+```bash
 git push origin main
 ```
 
-:::danger Error: remote upstream already exists
+### Error: remote upstream already exists
 
 If you get the error `remote upstream already exists` when trying to change the `remote upstream`:
 
@@ -41,9 +53,7 @@ After that, try to connect `remote upstream` again.
 git remote add upstream https://github.com/singlepagestartup/sps.git
 ```
 
-:::
-
-:::info First commit
+## First commit
 
 Before the first commit, you need to set up [Husky](https://github.com/typicode/husky), otherwise an error may occur.
 
@@ -58,9 +68,7 @@ To solve this problem, you need to call the next command in the root directory o
 npx husky install && npm install
 ```
 
-:::
-
-:::danger Error: .husky/pre-commit: line 4: lerna: command not found
+### Error: .husky/pre-commit: line 4: lerna: command not found
 
 When performing a commit that error may occur
 
@@ -83,44 +91,10 @@ If this does not help, then you need to add a line to the `~/.bashrc` or `~/.zsh
 export PATH="$PATH:./node_modules/.bin"
 ```
 
-:::
-
-## Describing the commands
-
-```bash
-git remote add upstream https://github.com/singlepagestartup/sps-lite.git
-```
-
-This command connects the `sps-lite` repository as the parent to your project.
-
-```bash
-git pull upstream main
-```
-
-This command takes changes from the project that is connected as `upstream`
-
-```bash
-git push origin main
-```
-
-This command sends changes to your repository.
-
-:::danger Error: hint: You have divergent branches and need to specify how to reconcile them.
+### Error: hint: You have divergent branches and need to specify how to reconcile them.
 
 If you receive the error `hint: You have divergent branches and need to specify how to reconcile them.` during `git pull`, you need to execute the command:
 
 ```bash
 git config pull.rebase false
 ```
-
-:::
-
-:::danger fatal: refusing to merge unrelated histories
-
-If you get error with text "fatal: refusing to merge unrelated histories", that means your repo has confilict in history with `sps` repo. You can pull `sps` updates by calling:
-
-```bash
-git pull upstream main --allow-unrelated-histories
-```
-
-:::

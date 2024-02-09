@@ -1,0 +1,7 @@
+& {
+  &[data-variant="boxed"] {
+    .layout-container {
+      @apply w-full mx-auto max-w-7xl;
+    }
+  }
+}

@@ -1,20 +1,20 @@
 /* @type {import('tailwindcss').Config} */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const colors = require(`tailwindcss/colors`);
+const colors = require("tailwindcss/colors");
 
 let themeFile;
 try {
-  themeFile = require(`./themes/theme.json`);
+  themeFile = require("./themes/theme.json");
 } catch (error) {
-  console.log(`No theme file`);
+  console.log("No theme file");
 }
 
 const config = {
   content: [
-    `./src/**/*.{html,js,jsx,tsx,md,mdx}`,
-    `./src/**/**/*.{html,js,jsx,tsx,md,mdx}`,
-    `./docs/*.{html,js,jsx,tsx,md,mdx}`,
-    `./docs/**/*.{html,js,jsx,tsx,md,mdx}`,
+    "./src/**/*.{html,js,jsx,tsx,md,mdx}",
+    "./src/**/**/*.{html,js,jsx,tsx,md,mdx}",
+    "./docs/*.{html,js,jsx,tsx,md,mdx}",
+    "./docs/**/*.{html,js,jsx,tsx,md,mdx}",
   ],
   safelist: [
     { pattern: /w-(1|2|3|4|5|6|7|8|9|10|11)\/12/ },
@@ -22,11 +22,11 @@ const config = {
     { pattern: /col-span-(1|2|3|4|5|6|7|8|9|10|11|12)/ },
     {
       pattern: /aspect-w-(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20)/,
-      variants: [`sm`, `md`, `lg`, `xl`],
+      variants: ["sm", "md", "lg", "xl"],
     },
     {
       pattern: /aspect-h-(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20)/,
-      variants: [`sm`, `md`, `lg`, `xl`],
+      variants: ["sm", "md", "lg", "xl"],
     },
   ],
   corePlugins: { preflight: false },
@@ -46,7 +46,7 @@ const config = {
     },
   },
   plugins: [],
-  darkMode: `class`,
+  darkMode: "class",
 };
 
 if (themeFile) {

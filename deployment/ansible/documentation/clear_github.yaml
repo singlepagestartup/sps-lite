@@ -6,6 +6,11 @@
     - github_token: "{{ GITHUB_TOKEN }}"
     - github_repository: "{{ GITHUB_REPOSITORY }}"
   tasks:
+    - name: Delete artifacts
+      file:
+        path: /home/code/github-node-api/
+        state: absent
+
     - name: Create github-node-api directory
       file:
         path: "/home/code/github-node-api"
@@ -31,7 +36,7 @@
         chdir: "/home/code/github-node-api"
       loop:
         - {
-            secret_name: PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL,
+            secret_name: PORTAINER_DOCUMENTATION_UPDATE_URL,
             secret_scope: actions,
           }
 

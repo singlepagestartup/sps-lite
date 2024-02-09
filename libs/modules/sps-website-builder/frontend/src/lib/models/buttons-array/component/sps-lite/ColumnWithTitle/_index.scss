@@ -1,0 +1,21 @@
+& {
+  &[data-variant="column-with-title"] {
+    .buttons-array-column-with-title {
+      @apply flex flex-col gap-2 relative;
+
+      .buttons-array-title {
+        @apply relative inline-flex text-sm w-full leading-relaxed opacity-50 uppercase;
+
+        .icon-container {
+          img {
+            @apply object-contain object-center;
+          }
+        }
+      }
+
+      .buttons-array-buttons-container {
+        @apply w-full items-start flex flex-col gap-2;
+      }
+    }
+  }
+}

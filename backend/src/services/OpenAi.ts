@@ -32,12 +32,14 @@ class OpenAI {
 
   async transcript(pathToFile) {
     try {
-      const response = await this.openai.createTranscription(
-        fs.createReadStream(pathToFile),
-        "whisper-1",
-      );
+      const recorderFile = fs.createReadStream(pathToFile);
+      // const response = await this.openai.createTranscription(
+      //   recorderFile,
+      //   "whisper-1",
+      // );
 
-      return response.data.text;
+      // return response.data.text;
+      return "Voice transcript if turned off";
     } catch (error) {
       console.log("🚀 ~ transcript ~ error:", error.message);
     }
