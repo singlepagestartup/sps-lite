@@ -1,7 +1,7 @@
 "use client";
 import "client-only";
 
-import { IComponentProps } from "./interface";
+import { IComponentProps, IComponentPropsExtended } from "./interface";
 import { api } from "../api/client";
 import { variants } from "./variants";
 
@@ -14,11 +14,23 @@ export default function Client<T>(props: IComponentProps<T>) {
       {},
     );
 
-    if (isFetching || isLoading || isUninitialized) {
-      return <Comp showSkeletons={true} {...props} />;
+    const Comp = variants["list"];
+
+    if (isFetching || isLoading || isUninitialized || !data) {
+      return (
+        <Comp
+          showSkeletons={true}
+          {...(props as IComponentProps<{ variant: "list" }>)}
+        />
+      );
     }
 
-    return <Comp {...props} list={data} />;
+    return (
+      <Comp
+        {...(props as IComponentPropsExtended<{ variant: "list" }>)}
+        list={data}
+      />
+    );
   }
 
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
@@ -30,8 +42,8 @@ export default function Client<T>(props: IComponentProps<T>) {
   }
 
   if (isFetching || isLoading || isUninitialized) {
-    return <Comp showSkeletons={true} {...props} />;
+    return <Comp showSkeletons={true} {...(props as any)} />;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...(props as any)} {...(data as any)} />;
 }

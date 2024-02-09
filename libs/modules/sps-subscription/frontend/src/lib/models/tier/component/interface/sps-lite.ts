@@ -9,5 +9,9 @@ export type IComponentProps<T> = IComponentByVariantProps<T> & {
   isServer: boolean;
 };
 
+type IComponentExtendedByVariantProps<T> = T extends { variant: "list" }
+  ? { variant: "list"; list: IModelExtended[] }
+  : IModelExtended;
+
 export type IComponentPropsExtended<T> = IComponentProps<T> &
-  (IModelExtended | { variant: "list"; list: IModelExtended[] });
+  IComponentExtendedByVariantProps<T>;

@@ -29,8 +29,8 @@ export default function Client<T>(props: IComponentProps<T>) {
   }
 
   if (isFetching || isLoading || isUninitialized) {
-    return <Comp showSkeletons={true} {...props} />;
+    return <Comp showSkeletons={true} {...(props as any)} />;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} {...(data as any)} />;
 }

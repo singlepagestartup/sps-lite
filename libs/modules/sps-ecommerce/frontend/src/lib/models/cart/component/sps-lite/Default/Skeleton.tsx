@@ -1,6 +1,6 @@
 import { IComponentProps } from "../../interface";
 
-export function Skeleton(props: IComponentProps) {
+export function Skeleton(props: IComponentProps<{ variant: "default" }>) {
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex flex-col items-center py-16">

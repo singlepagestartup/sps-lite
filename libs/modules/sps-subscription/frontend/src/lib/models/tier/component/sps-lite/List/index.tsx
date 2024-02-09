@@ -12,9 +12,9 @@ export function List(props: IProps) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? (
-        <Skeleton<{ variant: "list" }> {...props} />
+        <Skeleton {...props} />
       ) : (
-        <Component<{ variant: "list" }>
+        <Component
           {...(props as IComponentPropsExtended<{ variant: "list" }>)}
         />
       )}
