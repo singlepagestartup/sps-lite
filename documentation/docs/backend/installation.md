@@ -20,7 +20,7 @@ Below are additional environment variables used in **Single Page Startup**
 
 ```txt title=".env"
 PROJECT_NAME="Single Page Startup"
-SEED_ENTITES=true
+SEED_ENTITIES=true
 MAKE_NEW_SEED=true
 
 EMAIL_PROVIDER=sendpulse

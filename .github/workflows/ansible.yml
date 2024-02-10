@@ -62,7 +62,7 @@ jobs:
             "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
             "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
             "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
-            "SEED_ENTITES ${{ secrets.SEED_ENTITES }}"\
+            "SEED_ENTITIES ${{ secrets.SEED_ENTITIES }}"\
             "UPLOAD_PROVIDER ${{ secrets.UPLOAD_PROVIDER }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
