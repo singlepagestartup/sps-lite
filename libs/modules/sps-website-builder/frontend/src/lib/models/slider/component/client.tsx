@@ -3,13 +3,25 @@ import "client-only";
 
 import { IComponentProps } from "./interface";
 import { api } from "../api/client";
+import { api as slideApi } from "../../slide/api/client";
 import { variants } from "./variants";
 import { Dispatch, FC, SetStateAction, useMemo, useState } from "react";
 import { IModel as IBackendSlide } from "@sps/sps-website-builder-contracts-extended/lib/models/slide/interfaces";
+import { parseMimeType } from "@sps/utils";
 
 // default is required for dynamic import
 export default function Client(props: IComponentProps) {
-  const { data: slider } = api.useGetByIdQuery(props.id);
+  const { data: slider } = api.useFindOneQuery({ id: props.id });
+  const { data: slides } = slideApi.useFindQuery(
+    {
+      filter: {
+        id: {
+          $in: slider?.slides.map((slide) => slide.id) || [],
+        },
+      },
+    },
+    { skip: !slider },
+  );
   const [activeSlide, setActiveSlide] = useState(0);
 
   const localMedia = useMemo(() => {
@@ -17,39 +29,35 @@ export default function Client(props: IComponentProps) {
       return;
     }
 
-    // if (
-    //   !slider.slides ||
-    //   !slider.slides.every((slide) => slide?.media?.length)
-    // ) {
-    //   return;
-    // }
+    if (!slides || !slides.every((slide) => slide?.media?.length)) {
+      return;
+    }
 
-    // return slider.slides.map((slide) => {
-    //   return {
-    //     ...slide,
-    //     renderType: slide.media?.length
-    //       ? parseMimeType(slide.media[0].mime)?.renderType
-    //       : "image" || "image",
-    //   } as IExtendedSlide;
-    // });
+    return slides.map((slide) => {
+      return {
+        ...slide,
+        renderType: slide.media?.length
+          ? parseMimeType(slide.media[0].mime)?.renderType
+          : "image" || "image",
+      } as IExtendedSlide;
+    });
 
     return;
-  }, [slider]);
+  }, [slides]);
 
   const Comp = variants[props.variant as keyof typeof variants];
 
-  // if (!localMedia) return <div></div>;
+  if (!localMedia) return <div></div>;
 
-  return <div className="w-full h-[400px] bg-gray-500 rounded-md" />;
-  // return (
-  //   <Comp
-  //     {...props}
-  //     activeSlide={activeSlide}
-  //     setActiveSlide={setActiveSlide}
-  //     slides={localMedia}
-  //     // className={props?.className}
-  //   />
-  // );
+  return (
+    <Comp
+      {...props}
+      activeSlide={activeSlide}
+      setActiveSlide={setActiveSlide}
+      slides={localMedia}
+      // className={props?.className}
+    />
+  );
 }
 
 export interface ISlider {

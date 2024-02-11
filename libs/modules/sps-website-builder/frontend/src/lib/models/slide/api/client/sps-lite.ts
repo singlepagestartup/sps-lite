@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
-import { populate, route, tag, IModelExtended } from "../../model";
+import { IModelExtended, route, tag, populate } from "../../model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
@@ -10,6 +10,13 @@ export const api = createApi({
   reducerPath: route,
   endpoints: (build) => ({
     findOne: rtk.api.findOne<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+    find: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,

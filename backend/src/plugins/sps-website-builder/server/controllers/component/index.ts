@@ -36,5 +36,33 @@ export default factories.createCoreController(
 
       return componentData;
     },
+    async findByUid(ctx) {
+      const { component } = ctx.params;
+
+      if (!component) {
+        throw new strapiUtils.errors.ValidationError(
+          "Missing 'component' payload in the request query",
+        );
+      }
+
+      const strapiModel = strapi.components[component as unknown as string];
+
+      if (!strapiModel) {
+        throw new strapiUtils.errors.ValidationError(
+          `Wrong component: '${component}' passed in the request query`,
+        );
+      }
+
+      const query = strapiUtils.convertQueryParams.transformParamsToQuery(
+        strapiModel.uid,
+        ctx.query,
+      );
+
+      const componentData = strapi
+        .query(strapiModel.uid)
+        .findMany({ ...query });
+
+      return componentData;
+    },
   }),
 );

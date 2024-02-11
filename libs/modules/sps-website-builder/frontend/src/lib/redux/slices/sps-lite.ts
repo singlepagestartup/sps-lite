@@ -21,6 +21,7 @@ import { api as modalApi } from "../../models/modal/api/client";
 import { api as navbarApi } from "../../models/navbar/api/client";
 import { api as pageApi } from "../../models/page/api/client";
 import { api as sidebarApi } from "../../models/sidebar/api/client";
+import { api as slideApi } from "../../models/slide/api/client";
 import { api as slideOverApi } from "../../models/slide-over/api/client";
 import { api as sliderApi } from "../../models/slider/api/client";
 import { api as themeApi } from "../../models/theme/api/client";
@@ -59,6 +60,7 @@ export const slices = {
     navbarApi.middleware,
     pageApi.middleware,
     sidebarApi.middleware,
+    slideApi.middleware,
     slideOverApi.middleware,
     sliderApi.middleware,
     themeApi.middleware,
@@ -97,6 +99,7 @@ export const slices = {
     [navbarApi.reducerPath]: navbarApi.reducer,
     [pageApi.reducerPath]: pageApi.reducer,
     [sidebarApi.reducerPath]: sidebarApi.reducer,
+    [slideApi.reducerPath]: slideApi.reducer,
     [slideOverApi.reducerPath]: slideOverApi.reducer,
     [sliderApi.reducerPath]: sliderApi.reducer,
     [themeApi.reducerPath]: themeApi.reducer,

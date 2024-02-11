@@ -39,7 +39,7 @@ const public = {
   "plugin::sps-website-builder.layout": ["find", "findOne", "findByPageUrl"],
   "plugin::sps-website-builder.metatag": ["find", "findOne"],
   "plugin::sps-website-builder.flyout": ["find", "findOne"],
-  "plugin::sps-website-builder.component": ["findOneByUid"],
+  "plugin::sps-website-builder.component": ["findByUid", "findOneByUid"],
   "plugin::sps-website-builder.page": [
     "find",
     "findOne",
