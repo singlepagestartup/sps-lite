@@ -5,14 +5,14 @@ import { IComponentPropsExtended } from "../../interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="bg-white mx-auto max-w-7xl my-16">
-      {props.title ? (
+      {props.data.title ? (
         <h2 className="text-center font-bold text-3xl mb-8">
-          <ReactMarkdown>{props.title}</ReactMarkdown>
+          <ReactMarkdown>{props.data.title}</ReactMarkdown>
         </h2>
       ) : null}
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md::grid-cols-2 relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* {props.products?.map((product, index) => {
+        {/* {props.data.products?.map((product, index) => {
           return (
             <Product
               key={index}

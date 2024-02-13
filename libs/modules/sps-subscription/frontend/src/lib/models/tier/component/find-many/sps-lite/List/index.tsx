@@ -4,19 +4,13 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps, IComponentPropsExtended } from "../../interface";
 
-type IProps =
-  | IComponentProps<{ variant: "list" }>
-  | IComponentPropsExtended<{ variant: "list" }>;
-
-export function List(props: IProps) {
+export function List(props: IComponentProps | IComponentPropsExtended) {
   return (
     <ErrorBoundary fallback={Error}>
       {props.showSkeletons ? (
         <Skeleton {...props} />
       ) : (
-        <Component
-          {...(props as IComponentPropsExtended<{ variant: "list" }>)}
-        />
+        <Component {...(props as IComponentPropsExtended)} />
       )}
     </ErrorBoundary>
   );

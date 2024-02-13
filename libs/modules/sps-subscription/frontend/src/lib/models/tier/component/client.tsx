@@ -1,35 +1,38 @@
 "use client";
 import "client-only";
 
-import { IComponentProps } from "./interface";
+import { IComponentProps as IFindOneComponentProps } from "./find-one/interface";
+import { IComponentProps as IFindManyComponentProps } from "./find-many/interface";
 import { api } from "../api/client";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default function Client<T>(props: IComponentProps<T>) {
-  const Comp = variants[props.variant as keyof typeof variants];
-
+export default function Client(
+  props: IFindOneComponentProps | IFindManyComponentProps,
+) {
   if (props.variant === "list") {
-    return <List {...(props as IComponentProps<{ variant: "list" }>)} />;
+    return <FindMany {...props} />;
   }
 
+  const Comp = variants.findOne[props.variant];
+
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
-    id: props.id,
+    id: props.data.id,
   });
 
   if (!Comp) {
     return <></>;
   }
 
-  if (isFetching || isLoading || isUninitialized) {
-    return <Comp showSkeletons={true} {...(props as any)} />;
+  if (isFetching || isLoading || isUninitialized || !data) {
+    return <Comp showSkeletons={true} {...props} />;
   }
 
-  return <Comp {...(props as any)} {...(data as any)} />;
+  return <Comp {...props} data={data} />;
 }
 
-function List(props: IComponentProps<{ variant: "list" }>) {
-  const Comp = variants["list"];
+function FindMany(props: IFindManyComponentProps) {
+  const Comp = variants.findMany[props.variant];
 
   const { data, isFetching, isLoading, isUninitialized } = api.useFindQuery({});
 
@@ -37,5 +40,5 @@ function List(props: IComponentProps<{ variant: "list" }>) {
     return <Comp showSkeletons={true} {...props} />;
   }
 
-  return <Comp {...props} list={data} />;
+  return <Comp {...props} data={data} />;
 }

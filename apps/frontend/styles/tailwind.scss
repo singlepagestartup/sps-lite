@@ -26,6 +26,16 @@ body {
   font-family: var(--font-primary);
 }
 
+.font-default {
+  font-family: var(--font-default);
+}
+
+// for safari
+.text-wrap {
+  white-space: normal;
+  word-break: break-word;
+}
+
 input,
 button,
 textarea {

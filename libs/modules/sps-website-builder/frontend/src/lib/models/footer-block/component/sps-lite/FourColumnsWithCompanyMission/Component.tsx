@@ -8,22 +8,22 @@ export function Component(props: IComponentPropsExtended) {
     <footer className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col gap-4 w-full lg:w-3/12">
-          {props.logotype ? (
+          {props.data.logotype ? (
             <Logotype
               isServer={props.isServer}
-              {...props.logotype}
+              {...props.data.logotype}
               variant="default"
             />
           ) : null}
           <div className="lg:max-w-xs">
-            {props.description ? (
+            {props.data.description ? (
               <ReactMarkdown className="text-xs text-gray-300">
-                {props.description}
+                {props.data.description}
               </ReactMarkdown>
             ) : null}
           </div>
           <div className="w-full flex gap-4">
-            {props.extraButtonsArrays?.map((buttonsArray, index) => {
+            {props.data.extraButtonsArrays?.map((buttonsArray, index) => {
               return (
                 <ButtonArrays
                   isServer={props.isServer}
@@ -35,7 +35,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
         <div className="flex lg:justify-end w-full lg:w-9/12 gap-4">
-          {props.buttonsArrays?.map((buttonsArray, index) => {
+          {props.data.buttonsArrays?.map((buttonsArray, index) => {
             return (
               <div key={index} className="w-6/12 lg:w-3/12">
                 <ButtonArrays isServer={props.isServer} {...buttonsArray} />
@@ -45,12 +45,12 @@ export function Component(props: IComponentPropsExtended) {
         </div>
       </div>
       <div className="mt-8 border-t border-gray-200 pt-4 lg:pt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        {props.copyrights ? (
+        {props.data.copyrights ? (
           <ReactMarkdown className="text-sm text-gray-500">
-            {props.copyrights}
+            {props.data.copyrights}
           </ReactMarkdown>
         ) : null}
-        {props.additionalButtonsArrays?.map((buttonsArray, index) => {
+        {props.data.additionalButtonsArrays?.map((buttonsArray, index) => {
           return (
             <ButtonArrays
               isServer={props.isServer}

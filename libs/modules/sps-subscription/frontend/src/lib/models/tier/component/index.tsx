@@ -1,14 +1,17 @@
-import { IComponentProps } from "./interface";
+import { IComponentProps as IFindOneComponentProps } from "./find-one/interface";
+import { IComponentProps as IFindManyComponentProps } from "./find-many/interface";
 import { ReduxProvider } from "../../../redux";
 import Client from "./client";
 import Server from "./server";
 
-export function Component<T>(props: IComponentProps<T>) {
+export function Component(
+  props: IFindOneComponentProps | IFindManyComponentProps,
+) {
   const Comp = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>
-      <Comp<any> {...props} />
+      <Comp {...props} />
     </ReduxProvider>
   );
 }

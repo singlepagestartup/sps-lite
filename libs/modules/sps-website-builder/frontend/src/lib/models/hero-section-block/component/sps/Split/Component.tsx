@@ -17,24 +17,24 @@ export default function Component(props: IComponentPropsExtended) {
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
               <div className="lg:pr-16">
                 <div className="mb-6">
-                  {props.logotype ? (
+                  {props.data.logotype ? (
                     <Logotype
                       isServer={props.isServer}
-                      {...props.logotype}
+                      {...props.data.logotype}
                       variant="default"
                     />
                   ) : null}
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
-                  {props.title}
+                  {props.data.title}
                 </h1>
-                {props.description ? (
+                {props.data.description ? (
                   <ReactMarkdown className="mt-4 text-xl text-gray-600">
-                    {props.description}
+                    {props.data.description}
                   </ReactMarkdown>
                 ) : null}
                 <div className="mt-6 flex gap-2 flex-wrap">
-                  {props.buttons?.map((button, index) => {
+                  {props.data.buttons?.map((button, index) => {
                     return (
                       <Button
                         isServer={props.isServer}
@@ -49,11 +49,11 @@ export default function Component(props: IComponentPropsExtended) {
           </div>
         </div>
         <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2">
-          {props.media?.length ? (
+          {props.data.media?.length ? (
             <File
               isServer={false}
               variant="image"
-              {...props.media[0]}
+              {...props.data.media[0]}
               className="object-cover object-center"
               containerClassName="relative h-full w-full object-cover object-center"
             />

@@ -1,11 +1,16 @@
+import { IComponentPropsExtended as IPage } from "../../../page/component/interface";
 import { IModel, IModelExtended } from "../../model";
 
-export interface IComponentProps extends IModel {
+type IComponentBase = {
   showSkeletons?: boolean;
   isServer: boolean;
-  variant: "default";
+};
+
+export interface IComponentProps extends IComponentBase {
+  variant: IModel["variant"];
+  data: IModel;
 }
 
-export interface IComponentPropsExtended
-  extends IComponentProps,
-    IModelExtended {}
+export interface IComponentPropsExtended extends IComponentProps {
+  data: IModelExtended;
+}

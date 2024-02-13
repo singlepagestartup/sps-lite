@@ -10,9 +10,9 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div className="bg-white mx-auto max-w-7xl my-16">
-      {props.title ? (
+      {props.data.title ? (
         <h2 className="text-center font-bold text-3xl mb-8">
-          <ReactMarkdown>{props.title}</ReactMarkdown>
+          <ReactMarkdown>{props.data.title}</ReactMarkdown>
         </h2>
       ) : null}
 

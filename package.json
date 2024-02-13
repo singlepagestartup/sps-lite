@@ -61,6 +61,7 @@
     "dayjs": "^1.11.5",
     "decode-html": "^2.0.0",
     "dotenv-cli": "^7.3.0",
+    "embla-carousel-react": "^8.0.0-rc22",
     "googleapis": "^111.0.0",
     "html-pdf-node": "^1.0.8",
     "immer": "^10.0.3",

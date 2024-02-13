@@ -6,9 +6,7 @@ import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "../../interface";
 import Link from "next/link";
 
-export function Component(
-  props: IComponentPropsExtended<{ variant: "default" }>,
-) {
+export function Component(props: IComponentPropsExtended) {
   // console.log(`🚀 ~ Tier ~ globalStoreApis:`, globalStoreApis);
   // const price = useMemo(() => {
   //   if (!item.attributes) {
@@ -32,18 +30,18 @@ export function Component(
     <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">
       <div className="p-8 sm:p-10">
         <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">
-          {props.title}
+          {props.data.title}
         </h3>
         <div className="mt-4 flex items-baseline text-5xl font-bold tracking-tight text-gray-900">
           {/* {price || translate("Free")} */}
-          {props?.period ? (
+          {props?.data.period ? (
             <span className="text-lg font-semibold leading-8 tracking-normal text-gray-500">
               /mo
             </span>
           ) : null}
         </div>
         <p className="mt-6 text-base leading-7 text-gray-600">
-          {props.description}
+          {props.data.description}
         </p>
       </div>
       <div className="flex flex-1 flex-col p-2">

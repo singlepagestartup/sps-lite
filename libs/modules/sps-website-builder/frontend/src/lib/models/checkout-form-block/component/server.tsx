@@ -7,7 +7,7 @@ import { variants } from "./variants";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.findOne({ id: props.id });
+  const data = await api.findOne({ id: props.data.id });
 
   const Comp = variants[props?.variant as keyof typeof variants];
 
@@ -15,5 +15,5 @@ export default async function Server(props: IComponentProps) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} data={data} />;
 }

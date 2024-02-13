@@ -40,24 +40,24 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between items-center">
             <div className="w-1/3 flex justify-between items-center">
-              {props.buttons
-                ?.slice(0, -Math.ceil(props.buttons.length / 2))
+              {props.data.buttons
+                ?.slice(0, -Math.ceil(props.data.buttons.length / 2))
                 ?.map((button, index) => {
                   return <Button isServer={false} key={index} {...button} />;
                 })}
             </div>
-            {props.logotype ? (
+            {props.data.logotype ? (
               <Logotype
                 isServer={false}
-                {...props.logotype}
+                {...props.data.logotype}
                 variant="default"
               />
             ) : null}
             <div className="w-1/3 flex justify-between items-center">
-              {props.buttons
+              {props.data.buttons
                 ?.slice(
-                  Math.floor(props.buttons.length / 2),
-                  props.buttons.length,
+                  Math.floor(props.data.buttons.length / 2),
+                  props.data.buttons.length,
                 )
                 ?.map((button, index) => {
                   return <Button isServer={false} key={index} {...button} />;
@@ -79,10 +79,10 @@ function DisclosureInner({
 
       <Disclosure.Panel className="lg:hidden py-2">
         <div className="flex flex-col gap-3 px-2 ">
-          {props.buttons?.map((button, index) => {
+          {props.data.buttons?.map((button, index) => {
             return <Button isServer={false} key={index} {...button} />;
           })}
-          {props.additionalButtons?.map((button, index) => {
+          {props.data.additionalButtons?.map((button, index) => {
             return <Button isServer={false} key={index} {...button} />;
           })}
         </div>

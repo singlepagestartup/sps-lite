@@ -3,7 +3,6 @@ import {
   IComponentPropsExtended as IParentComponentPropsExtended,
 } from "./sps-lite";
 
-export interface IComponentProps extends IParentComponentProps {}
+export type IComponentProps = IParentComponentProps;
 
-export interface IComponentPropsExtended
-  extends IParentComponentPropsExtended {}
+export type IComponentPropsExtended = IParentComponentPropsExtended;

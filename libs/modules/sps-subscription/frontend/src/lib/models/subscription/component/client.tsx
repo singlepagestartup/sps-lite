@@ -8,7 +8,7 @@ import { variants } from "./variants";
 // default is required for dynamic import
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
-    id: props.id,
+    id: props.data.id,
   });
 
   const Comp = variants[props.variant as keyof typeof variants];
@@ -17,9 +17,9 @@ export default function Client(props: IComponentProps) {
     return <></>;
   }
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading || isUninitialized || !data) {
     return <Comp showSkeletons={true} {...props} />;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} data={data} />;
 }

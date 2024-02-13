@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
   // problem with conflicting types in some constituents
   // that is why here is any
   const PageBlock: any = pageBlocks[key as keyof typeof pageBlocks];
+
   if (typeof PageBlock == "function") {
     return (
       <ErrorBoundary>
@@ -22,7 +23,11 @@ export function Component(props: IComponentPropsExtended) {
           data-variant={props.variant}
           className={`${props.className || ""}`}
         >
-          <PageBlock {...props} />
+          <PageBlock
+            isServer={props.isServer}
+            variant={props.variant}
+            data={props}
+          />
         </div>
       </ErrorBoundary>
     );

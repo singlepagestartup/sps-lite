@@ -36,19 +36,19 @@ export function Component(props: IComponentPropsExtended) {
         </div>
         <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl">
-            {props.subtitle ? (
+            {props.data.subtitle ? (
               <h2 className="text-lg font-semibold leading-8 text-indigo-400">
-                <ReactMarkdown>{props.subtitle}</ReactMarkdown>
+                <ReactMarkdown>{props.data.subtitle}</ReactMarkdown>
               </h2>
             ) : null}
-            {props.title ? (
+            {props.data.title ? (
               <ReactMarkdown className="mt-2 text-4xl font-bold tracking-tight text-white">
-                {props.title}
+                {props.data.title}
               </ReactMarkdown>
             ) : null}
-            {props.description ? (
+            {props.data.description ? (
               <ReactMarkdown className="mt-6 text-lg leading-8 text-white/60">
-                {props.description}
+                {props.data.description}
               </ReactMarkdown>
             ) : null}
           </div>
@@ -57,7 +57,7 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flow-root bg-white pb-32 lg:pb-40">
         <div className="relative -mt-80">
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-            <Tier<{ variant: "list" }> isServer={false} variant="list" />
+            <Tier isServer={false} variant="list" />
           </div>
         </div>
         {/* <div className="relative mx-auto mt-8 max-w-7xl px-6 lg:px-8">
