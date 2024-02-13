@@ -1,14 +1,17 @@
 import { IModelExtended } from "../../../model";
 
-type IComponentBase = {
+export const variants = ["list"] as const;
+
+export interface IComponentBase {
   showSkeletons?: boolean;
   isServer: boolean;
-};
-
-export interface IComponentProps extends IComponentBase {
-  variant: "list";
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
+export interface IComponentProps extends IComponentBase {
+  variant: (typeof variants)[number];
+}
+
+export interface IComponentPropsExtended extends IComponentBase {
+  variant: (typeof variants)[number];
   data: IModelExtended[];
 }
