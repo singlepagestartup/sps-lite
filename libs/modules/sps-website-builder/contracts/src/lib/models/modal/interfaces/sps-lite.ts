@@ -1,7 +1,9 @@
+export const variants = ["simple"] as const;
+
 export interface IModel {
   id: number;
   title: string | null;
-  variant: "simple";
+  variant: (typeof variants)[number];
   className: string | null;
   dialogPanelClassName: string | null;
   uid: string;

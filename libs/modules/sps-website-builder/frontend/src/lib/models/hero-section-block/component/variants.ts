@@ -1,9 +1,7 @@
-import { variants as spsLiteVariants } from "./sps-lite/variants";
-import { variants as startupVariants } from "./startup/variants";
-import { variants as spsVariants } from "./sps/variants";
+import { variants as findOneVariants } from "./find-one/variants";
 
 export const variants = {
-  ...spsLiteVariants,
-  ...spsVariants,
-  ...startupVariants,
+  findOne: {
+    ...findOneVariants,
+  },
 };

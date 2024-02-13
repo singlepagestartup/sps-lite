@@ -1,3 +1,5 @@
+export const variants = ["simple"] as const;
+
 export interface IModel {
   id: number;
   locale: string;
@@ -6,5 +8,5 @@ export interface IModel {
   publishedAt: string;
   className: string | null;
   anchor: string | null;
-  variant: "simple";
+  variant: (typeof variants)[number];
 }

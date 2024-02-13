@@ -1,7 +1,9 @@
+export const variants = ["two-columns-card"] as const;
+
 export interface IModel {
   id: number;
   __component: "page-blocks.tiers-list-block";
-  variant: "two-columns-card";
+  variant: (typeof variants)[number];
   title: string | null;
   subtitle: string | null;
   anchor: string | null;

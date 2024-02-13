@@ -1,7 +1,9 @@
+export const variants = ["simple"] as const;
+
 export interface IModel {
   id: number;
   __component: "page-blocks.products-list-block";
-  variant: "simple";
+  variant: (typeof variants)[number];
   title: string | null;
   subtitle: string | null;
   description: string | null;

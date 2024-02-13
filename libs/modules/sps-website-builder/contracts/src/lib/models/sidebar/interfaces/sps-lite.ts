@@ -1,3 +1,5 @@
+export const variants = ["one-quarter"] as const;
+
 export interface IModel {
   id: number;
   locale: string;
@@ -7,6 +9,6 @@ export interface IModel {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "one-quarter";
+  variant: (typeof variants)[number];
   side: "left" | "right";
 }

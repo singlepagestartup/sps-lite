@@ -1,3 +1,7 @@
-import type { IModel as IParentModel } from "./sps";
+import { IModel as IParentModel, variants as parentVariants } from "./sps";
 
-export interface IModel extends IParentModel {}
+export const variants = [...parentVariants] as const;
+
+export interface IModel extends Omit<IParentModel, "variant"> {
+  variant: (typeof variants)[number];
+}

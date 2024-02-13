@@ -1,5 +1,7 @@
-import type { IModel as IParentModel } from "./sps-lite";
+import { IModel as IParentModel, variants as parentVariants } from "./sps-lite";
+
+export const variants = [...parentVariants, "split"] as const;
 
 export interface IModel extends Omit<IParentModel, "variant"> {
-  variant: IParentModel["variant"] | "split";
+  variant: (typeof variants)[number];
 }

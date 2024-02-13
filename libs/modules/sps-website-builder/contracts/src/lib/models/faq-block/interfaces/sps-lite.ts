@@ -1,7 +1,9 @@
+export const variants = ["two-columns-with-centered-introduction"] as const;
+
 export interface IModel {
   id: number;
   __component: "page-blocks.faqs-block";
-  variant: "two-columns-with-centered-introduction";
+  variant: (typeof variants)[number];
   title: string | null;
   subtitle: string | null;
   className: string | null;

@@ -1,7 +1,9 @@
+export const variants = ["simple-centered"] as const;
+
 export interface IModel {
   id: number;
   __component: "page-blocks.header-section-block";
-  variant: "simple-centered";
+  variant: (typeof variants)[number];
   title: string | null;
   description: string | null;
   subtitle: string | null;

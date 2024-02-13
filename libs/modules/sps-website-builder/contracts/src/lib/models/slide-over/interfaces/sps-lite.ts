@@ -1,3 +1,5 @@
+export const variants = ["right-side-half-width"] as const;
+
 export interface IModel {
   id: number;
   locale: string;
@@ -7,5 +9,5 @@ export interface IModel {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "right-side-half-width";
+  variant: (typeof variants)[number];
 }

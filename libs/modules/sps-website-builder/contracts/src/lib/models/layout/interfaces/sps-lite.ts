@@ -1,3 +1,5 @@
+export const variants = ["wide", "boxed"] as const;
+
 export interface IModel {
   id: number;
   locale: string;
@@ -7,5 +9,5 @@ export interface IModel {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  variant: "wide" | "boxed";
+  variant: (typeof variants)[number];
 }

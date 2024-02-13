@@ -1,7 +1,9 @@
+export const variants = ["simple-with-heading"] as const;
+
 export interface IModel {
   id: number;
   __component: "page-blocks.logotypes-cloud-block";
-  variant: "simple-with-heading";
+  variant: (typeof variants)[number];
   title: string | null;
   subtitle: string | null;
   className: string | null;

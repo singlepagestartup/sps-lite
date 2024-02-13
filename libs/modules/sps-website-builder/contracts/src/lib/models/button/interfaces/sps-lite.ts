@@ -1,13 +1,16 @@
+export const variants = [
+  "primary",
+  "secondary",
+  "destructive",
+  "outline",
+  "ghost",
+  "link",
+] as const;
+
 export interface IModel {
   id: number;
   __component?: "elements.button";
-  variant:
-    | "primary"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link";
+  variant: (typeof variants)[number];
   title: string | null;
   url: string | null;
   description: string | null;
