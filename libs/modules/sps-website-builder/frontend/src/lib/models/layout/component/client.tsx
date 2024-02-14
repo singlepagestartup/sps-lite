@@ -1,15 +1,23 @@
 "use client";
 import "client-only";
 
+import {
+  IComponentProps as IFindOneComponentProps,
+  IComponentPropsExtended as IFindOneComponentPropsExtended,
+  variants as findOneVariants,
+} from "./find-one/interface";
+import { api } from "../api/client";
+import { variants } from "./variants";
 import { useEffect, useState } from "react";
 import { getTargetPage } from "@sps/utils";
 import { useParams, usePathname } from "next/navigation";
-import { api } from "../api/client";
-import { IComponentProps, IComponentPropsExtended } from "./interface";
-import { variants } from "./variants";
 
 // default is required for dynamic import
-export default function Client(props: IComponentProps) {
+export default function Client(props: IFindOneComponentProps) {
+  return <FindOne {...props} />;
+}
+
+function FindOne(props: IFindOneComponentProps) {
   const pathname = usePathname();
   const params = useParams();
 
@@ -20,7 +28,8 @@ export default function Client(props: IComponentProps) {
     },
     { skip: !pathname },
   );
-  const [page, setPage] = useState<IComponentPropsExtended["page"]>(); //?
+  const [page, setPage] =
+    useState<IFindOneComponentPropsExtended["data"]["pages"]>(); //?
 
   useEffect(() => {
     if (params) {
@@ -42,13 +51,15 @@ export default function Client(props: IComponentProps) {
     }
   }, [error]);
 
-  const Comp = data
-    ? variants[data.variant as keyof typeof variants]
-    : undefined;
+  if (!data || !page) {
+    return <></>;
+  }
+
+  const Comp = variants.findOne[data.variant];
 
   if (!Comp || !data || !page) {
     return <>{props.children}</>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} data={data} />;
 }

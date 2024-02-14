@@ -1,7 +1,7 @@
 "use client";
 import "client-only";
 
-import { IComponentProps } from "./interface";
+import { IComponentProps as IFindOneComponentProps } from "./find-one/interface";
 import { api } from "../api/client";
 import { api as slideApi } from "../../slide/api/client";
 import { variants } from "./variants";
@@ -10,8 +10,8 @@ import { IModel as IBackendSlide } from "@sps/sps-website-builder-contracts-exte
 import { parseMimeType } from "@sps/utils";
 
 // default is required for dynamic import
-export default function Client(props: IComponentProps) {
-  const { data: slider } = api.useFindOneQuery({ id: props.id });
+export default function Client(props: IFindOneComponentProps) {
+  const { data: slider } = api.useFindOneQuery({ id: props.data.id });
   const { data: slides } = slideApi.useFindQuery(
     {
       filter: {
@@ -49,15 +49,17 @@ export default function Client(props: IComponentProps) {
 
   if (!localMedia) return <div></div>;
 
-  return (
-    <Comp
-      {...props}
-      activeSlide={activeSlide}
-      setActiveSlide={setActiveSlide}
-      slides={localMedia}
-      // className={props?.className}
-    />
-  );
+  return <></>;
+
+  // return (
+  //   <Comp
+  //     {...props}
+  //     activeSlide={activeSlide}
+  //     setActiveSlide={setActiveSlide}
+  //     slides={localMedia}
+  //     // className={props?.className}
+  //   />
+  // );
 }
 
 export interface ISlider {

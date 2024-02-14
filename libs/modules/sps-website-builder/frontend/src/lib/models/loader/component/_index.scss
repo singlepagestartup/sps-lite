@@ -1,4 +1,3 @@
-[data-single-type="loader"] {
-  @import "./sps-lite/index";
-  @import "./startup/index";
+[data-collection-type="loader"] {
+  @import "./find-one/index";
 }

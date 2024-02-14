@@ -1,4 +1,4 @@
-import { IComponentPropsExtended as IPage } from "../../../../page/component/interface";
+import { IComponentPropsExtended as IPage } from "../../../../page/component/find-one/interface";
 import {
   IModel,
   IModelExtended,

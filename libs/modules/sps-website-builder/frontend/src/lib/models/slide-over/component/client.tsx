@@ -1,7 +1,7 @@
 "use client";
 import "client-only";
 
-import { IComponentProps } from "./interface";
+import { IComponentProps } from "./find-one/interface";
 import { api } from "../api/client";
 import { variants } from "./variants";
 import { useState, useEffect } from "react";
@@ -58,12 +58,13 @@ export default function Client(props: IComponentProps) {
     return <></>;
   }
 
-  return (
-    <Comp
-      {...props}
-      {...slideOverProps}
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
-    />
-  );
+  return <></>;
+  // return (
+  //   <Comp
+  //     {...props}
+  //     {...slideOverProps}
+  //     isOpen={isOpen}
+  //     setIsOpen={setIsOpen}
+  //   />
+  // );
 }

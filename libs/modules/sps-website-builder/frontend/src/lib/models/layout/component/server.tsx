@@ -1,22 +1,30 @@
 "use server";
 import "server-only";
 
-import { IComponentProps } from "./interface";
-import { headers } from "next/headers";
+import {
+  IComponentProps as IFindOneComponentProps,
+  variants as findOneVariants,
+} from "./find-one/interface";
 import { api } from "../api/server";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default async function Server(props: IComponentProps) {
-  const headersList = headers();
-  const pathname = headersList.get("x-sps-website-builder-pathname") || "";
-  const data = await api.getByPageUrl({ url: pathname });
+export default async function Server(props: IFindOneComponentProps) {
+  for (const findOneVariant of findOneVariants) {
+    if (props.variant === findOneVariant) {
+      return <FindOne {...props} />;
+    }
+  }
+}
 
-  const Comp = variants[data?.variant as keyof typeof variants];
+async function FindOne(props: IFindOneComponentProps) {
+  const Comp = variants.findOne[props.variant];
+
+  const data = await api.findOne({ id: props.data.id });
 
   if (!Comp || !data) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} data={data} />;
 }

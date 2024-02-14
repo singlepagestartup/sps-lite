@@ -2,8 +2,8 @@
 
 import { useState, useEffect, FC, useMemo } from "react";
 import { api as modalApi } from "../api/client";
-import { variants as spsLiteVariants } from "./sps-lite";
-import { variants as startupVariants } from "./startup";
+import { variants as spsLiteVariants } from "./find-one/sps-lite";
+import { variants as startupVariants } from "./find-one/startup";
 import {
   useParams,
   usePathname,

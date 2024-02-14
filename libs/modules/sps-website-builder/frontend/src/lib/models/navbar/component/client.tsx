@@ -1,26 +1,36 @@
 "use client";
 import "client-only";
 
+import {
+  IComponentProps as IFindOneComponentProps,
+  variants as findOneVariants,
+} from "./find-one/interface";
 import { api } from "../api/client";
-import { IComponentProps } from "./interface";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default function Client(props: IComponentProps) {
-  const { data, isLoading, isError, isFetching, isUninitialized } =
-    api.useGetByIdQuery({ id: props.id }, { skip: !props.id });
+export default function Client(props: IFindOneComponentProps) {
+  for (const findOneVariant of findOneVariants) {
+    if (props.variant === findOneVariant) {
+      return <FindOne {...props} />;
+    }
+  }
+}
 
-  const Comp = variants[props.variant as keyof typeof variants];
+function FindOne(props: IFindOneComponentProps) {
+  const Comp = variants.findOne[props.variant];
 
-  if (!Comp || isError) {
+  const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
+    id: props.data.id,
+  });
+
+  if (!Comp) {
     return <></>;
   }
 
-  return (
-    <Comp
-      {...props}
-      {...data}
-      showSkeletons={isLoading || isFetching || isUninitialized}
-    />
-  );
+  if (isFetching || isLoading || isUninitialized || !data) {
+    return <Comp showSkeletons={true} {...props} />;
+  }
+
+  return <Comp {...props} data={data} />;
 }

@@ -48,7 +48,8 @@ type IPageBlock =
 
 export type IComponentProps = IPageBlock;
 
-export type IComponentPropsExtended = IComponentProps & {
+export type IComponentPropsExtended = {
+  data: IPageBlock;
   isServer: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;

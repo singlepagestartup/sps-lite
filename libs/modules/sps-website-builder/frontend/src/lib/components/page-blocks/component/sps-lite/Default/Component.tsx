@@ -4,10 +4,14 @@ import { Component as PageBlock } from "../../../../page-block/component";
 export function Component(props: IComponentProps) {
   return (
     <div className="page-blocks">
-      {props.pageBlocks?.length
-        ? props.pageBlocks.map((pageBlock, index) => {
+      {props.data.pageBlocks?.length
+        ? props.data.pageBlocks.map((pageBlock, index) => {
             return (
-              <PageBlock key={index} isServer={props.isServer} {...pageBlock} />
+              <PageBlock
+                key={index}
+                isServer={props.isServer}
+                data={pageBlock}
+              />
             );
           })
         : null}
