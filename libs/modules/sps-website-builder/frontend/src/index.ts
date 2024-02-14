@@ -6,4 +6,4 @@ export * as sitemap from "./lib/app/sitemap.xml/route";
 export * as globalError from "./lib/app/global-error";
 export * as notFound from "./lib/app/not-found";
 export { RootLayout } from "./lib/app/root-layout";
-export { pageBlocks } from "./lib/components/page-block/aliases";
+export { pageBlocks } from "./lib/components/page-blocks/aliases";
