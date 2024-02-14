@@ -8,6 +8,7 @@ import {
 import { headers } from "next/headers";
 import { api } from "../api/server";
 import { variants } from "./variants";
+import { IModelExtended } from "../model";
 
 // default is required for dynamic import
 export default async function Server(props: IFindOneComponentProps) {
@@ -17,7 +18,7 @@ export default async function Server(props: IFindOneComponentProps) {
 async function FindOne(props: IFindOneComponentProps) {
   const headersList = headers();
   const pathname = headersList.get("x-sps-website-builder-pathname") || "";
-  const data = await api.getByPageUrl({ url: pathname });
+  const data: IModelExtended = await api.getByPageUrl({ url: pathname });
 
   const Comp = variants.findOne[data.variant];
 
@@ -25,5 +26,5 @@ async function FindOne(props: IFindOneComponentProps) {
     return <>{props.children}</>;
   }
 
-  return <Comp {...props} data={...data} />;
+  return <Comp {...props} data={data} />;
 }

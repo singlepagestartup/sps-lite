@@ -6,24 +6,24 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex flex-col gap-3">
       <div>
-        {props?.media?.length ? (
+        {props.data?.media?.length ? (
           <File
             isServer={false}
             variant="image"
             className="object-contain"
             containerClassName="relative w-[100px] h-[100px]"
-            {...props.media[0]}
+            {...props.data.media[0]}
           />
         ) : null}
       </div>
-      {props.title ? (
+      {props.data.title ? (
         <ReactMarkdown className="text-lg font-medium leading-6 text-gray-900">
-          {props.title}
+          {props.data.title}
         </ReactMarkdown>
       ) : null}
-      {props?.description ? (
+      {props.data?.description ? (
         <ReactMarkdown className="text-base text-gray-500">
-          {props?.description}
+          {props.data?.description}
         </ReactMarkdown>
       ) : null}
     </div>

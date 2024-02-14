@@ -1,7 +1,10 @@
 import {
   IComponentProps as IParentComponentProps,
-  IComponentPropsExtended as IParentComponentPropsExtended,
+  IPageBlock as IParentPageBlock,
 } from "./startup";
 
-export type IComponentProps = IParentComponentProps;
-export type IComponentPropsExtended = IParentComponentPropsExtended;
+export type IPageBlock = IParentPageBlock;
+
+export interface IComponentProps extends IParentComponentProps {
+  data: IPageBlock;
+}

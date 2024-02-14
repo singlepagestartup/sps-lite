@@ -1,7 +1,10 @@
 import {
+  IPageBlock as IParentPageBlock,
   IComponentProps as IParentComponentProps,
-  IComponentPropsExtended as IParentComponentPropsExtended,
 } from "./sps-lite";
 
-export type IComponentProps = IParentComponentProps;
-export type IComponentPropsExtended = IParentComponentPropsExtended;
+export type IPageBlock = IParentPageBlock;
+
+export interface IComponentProps extends IParentComponentProps {
+  data: IPageBlock;
+}

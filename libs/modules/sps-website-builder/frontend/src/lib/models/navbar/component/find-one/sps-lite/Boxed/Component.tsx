@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
         <PageBlocks
           variant="default"
           isServer={props.isServer}
-          pageBlocks={props.data.pageBlocks}
+          data={props.data}
         />
       </div>
     </nav>

@@ -22,7 +22,7 @@ import type { IModel as IEditSubscriptionBlock } from "../../../models/edit-subs
 import type { IModel as ITiersListBlock } from "../../../models/tiers-list-block/model";
 import { Dispatch, SetStateAction } from "react";
 
-type IPageBlock =
+export type IPageBlock =
   | IAlertBlock
   | ICtaSectionBlock
   | IFaqBlock
@@ -46,11 +46,9 @@ type IPageBlock =
   | IEditSubscriptionBlock
   | ITiersListBlock;
 
-export type IComponentProps = IPageBlock;
-
-export type IComponentPropsExtended = {
+export interface IComponentProps {
   data: IPageBlock;
   isServer: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;
-};
+}

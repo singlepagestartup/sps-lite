@@ -20,8 +20,8 @@ export default function Component(props: IComponentPropsExtended) {
                   {props.data.logotype ? (
                     <Logotype
                       isServer={props.isServer}
-                      {...props.data.logotype}
                       variant="default"
+                      data={props.data.logotype}
                     />
                   ) : null}
                 </div>
@@ -39,7 +39,8 @@ export default function Component(props: IComponentPropsExtended) {
                       <Button
                         isServer={props.isServer}
                         key={index}
-                        {...button}
+                        variant={button.variant}
+                        data={button}
                       />
                     );
                   })}

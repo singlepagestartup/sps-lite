@@ -1,9 +1,8 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentPropsExtended } from "../interface";
+import { IComponentProps } from "../interface";
 import { pageBlocks } from "../aliases";
 
-export function Component(props: IComponentPropsExtended) {
-  console.log(`🚀 ~ Component ~ props:`, props);
+export function Component(props: IComponentProps) {
   const key = props.data.__component;
 
   if (!key) {

@@ -31,7 +31,14 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
         <div className="flex gap-2 justify-center">
           {props.data.buttons?.map((button, index) => {
-            return <Button isServer={props.isServer} key={index} {...button} />;
+            return (
+              <Button
+                isServer={props.isServer}
+                key={index}
+                variant={button.variant}
+                data={button}
+              />
+            );
           })}
         </div>
       </div>

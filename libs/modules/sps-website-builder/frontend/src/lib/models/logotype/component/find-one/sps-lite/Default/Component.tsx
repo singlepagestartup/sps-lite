@@ -4,11 +4,11 @@ import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/fil
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex items-center">
-      {props.media?.length ? (
+      {props.data.media?.length ? (
         <File
           isServer={false}
           variant="image"
-          {...props.media[0]}
+          {...props.data.media[0]}
           containerClassName="relative w-[200px] h-[50px]"
           className="object-contain object-left"
         />

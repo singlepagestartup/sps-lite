@@ -32,7 +32,14 @@ export default function Component(props: IComponentPropsExtended) {
             ) : null}
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
               {props.data?.buttons?.map((button, index) => {
-                return <Button isServer={false} key={index} {...button} />;
+                return (
+                  <Button
+                    isServer={false}
+                    key={index}
+                    variant={button.variant}
+                    data={button}
+                  />
+                );
               })}
             </div>
           </div>
