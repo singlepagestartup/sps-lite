@@ -5,7 +5,7 @@ import { IComponentPropsExtended } from "../../interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <Layout isServer={props.isServer}>
-      <PageBlocks {...props} />
+      <PageBlocks {...props} variant="default" />
     </Layout>
   );
 }

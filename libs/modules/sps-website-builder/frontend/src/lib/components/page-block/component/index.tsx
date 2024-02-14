@@ -3,6 +3,7 @@ import { IComponentPropsExtended } from "../interface";
 import { pageBlocks } from "../aliases";
 
 export function Component(props: IComponentPropsExtended) {
+  console.log(`🚀 ~ Component ~ props:`, props);
   const key = props.data.__component;
 
   if (!key) {
@@ -14,7 +15,6 @@ export function Component(props: IComponentPropsExtended) {
   // problem with conflicting types in some constituents
   // that is why here is any
   const PageBlock: any = pageBlocks[key as keyof typeof pageBlocks];
-  console.log(`🚀 ~ Component ~ PageBlock:`, PageBlock);
 
   if (typeof PageBlock == "function") {
     return (
@@ -27,7 +27,7 @@ export function Component(props: IComponentPropsExtended) {
           <PageBlock
             isServer={props.isServer}
             variant={props.data.variant}
-            data={props}
+            data={props.data}
           />
         </div>
       </ErrorBoundary>

@@ -5,26 +5,25 @@ import {
   IComponentProps as IFindOneComponentProps,
   variants as findOneVariants,
 } from "./find-one/interface";
+import { headers } from "next/headers";
 import { api } from "../api/server";
 import { variants } from "./variants";
 
 // default is required for dynamic import
 export default async function Server(props: IFindOneComponentProps) {
-  for (const findOneVariant of findOneVariants) {
-    if (props.variant === findOneVariant) {
-      return <FindOne {...props} />;
-    }
-  }
+  return <FindOne {...props} />;
 }
 
 async function FindOne(props: IFindOneComponentProps) {
-  const Comp = variants.findOne[props.variant];
+  const headersList = headers();
+  const pathname = headersList.get("x-sps-website-builder-pathname") || "";
+  const data = await api.getByPageUrl({ url: pathname });
 
-  const data = await api.findOne({ id: props.data.id });
+  const Comp = variants.findOne[data.variant];
 
   if (!Comp || !data) {
-    return <></>;
+    return <>{props.children}</>;
   }
 
-  return <Comp {...props} data={data} />;
+  return <Comp {...props} data={...data} />;
 }
