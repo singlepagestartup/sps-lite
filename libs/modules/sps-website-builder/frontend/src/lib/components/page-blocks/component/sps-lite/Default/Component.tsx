@@ -11,6 +11,8 @@ export function Component(props: IComponentProps) {
                 key={index}
                 isServer={props.isServer}
                 data={pageBlock}
+                setIsOpen={props.setIsOpen}
+                closeModal={props.closeModal}
               />
             );
           })

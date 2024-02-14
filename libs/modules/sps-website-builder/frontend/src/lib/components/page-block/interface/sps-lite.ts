@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import type { IModel as IAlertBlock } from "../../../models/alert-block/model";
 import type { IModel as ICtaSectionBlock } from "../../../models/cta-section-block/model";
 import type { IModel as IFaqBlock } from "../../../models/faq-block/model";
@@ -20,7 +21,6 @@ import type { IModel as IReviewsListBlock } from "../../../models/reviews-list-b
 import type { IModel as IReviewsTableBlock } from "../../../models/reviews-table-block/model";
 import type { IModel as IEditSubscriptionBlock } from "../../../models/edit-subscription-block/model";
 import type { IModel as ITiersListBlock } from "../../../models/tiers-list-block/model";
-import { Dispatch, SetStateAction } from "react";
 
 export type IPageBlock =
   | IAlertBlock

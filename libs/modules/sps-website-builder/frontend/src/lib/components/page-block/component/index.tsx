@@ -25,6 +25,8 @@ export function Component(props: IComponentProps) {
         >
           <PageBlock
             isServer={props.isServer}
+            setIsOpen={props.setIsOpen}
+            closeModal={props.closeModal}
             variant={props.data.variant}
             data={props.data}
           />
