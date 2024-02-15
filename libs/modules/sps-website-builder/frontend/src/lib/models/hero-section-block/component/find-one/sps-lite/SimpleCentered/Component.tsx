@@ -1,5 +1,3 @@
-"use client";
-
 import { Component as Button } from "../../../../../button/component";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "../../interface";

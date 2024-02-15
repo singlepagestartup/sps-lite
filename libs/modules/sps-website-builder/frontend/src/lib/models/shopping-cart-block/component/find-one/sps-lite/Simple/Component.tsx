@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
           </ReactMarkdown>
         ) : null}
         <div className="flex flex-col gap-2 justify-center py-4">
-          <Cart<{ variant: "list" }> isServer={false} variant="list" />
+          <Cart isServer={false} variant="list" />
         </div>
         <div className="w-full">
           <Button ui="shadcn" variant="default" asChild={true}>

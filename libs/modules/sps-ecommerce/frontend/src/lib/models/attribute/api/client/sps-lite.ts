@@ -14,7 +14,7 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
-    find: rtk.api.find<IModelExtended>({
+    findMany: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,
