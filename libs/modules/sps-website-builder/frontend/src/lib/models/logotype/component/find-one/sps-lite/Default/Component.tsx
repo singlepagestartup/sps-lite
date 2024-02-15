@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
         <File
           isServer={false}
           variant="image"
-          {...props.data.media[0]}
+          data={props.data.media[0]}
           containerClassName="relative w-[200px] h-[50px]"
           className="object-contain object-left"
         />

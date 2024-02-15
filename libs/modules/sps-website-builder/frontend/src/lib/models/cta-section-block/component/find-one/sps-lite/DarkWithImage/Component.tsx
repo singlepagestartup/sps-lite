@@ -39,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
                 variant="image"
                 isServer={false}
                 className="object-contain object-center"
-                {...props.data.media[0]}
+                data={props.data.media[0]}
               />
             ) : null}
           </div>

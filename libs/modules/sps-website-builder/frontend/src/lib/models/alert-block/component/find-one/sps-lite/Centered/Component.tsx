@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
             <File
               isServer={false}
               variant="image"
-              {...props.data.media[0]}
+              data={props.data.media[0]}
               containerClassName="aspect-w-3 aspect-h-3 relative"
               className=""
             />

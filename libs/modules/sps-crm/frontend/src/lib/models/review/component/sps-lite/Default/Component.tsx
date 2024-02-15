@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
           <File
             isServer={false}
             variant="image"
-            {...props.media[0]}
+            data={props.media[0]}
             containerClassName="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100"
             className="object-cover object-center"
           />

@@ -56,7 +56,7 @@ export function Component(props: IComponentPropsExtended) {
           isServer={false}
           containerClassName="relative w-full aspect-w-2 aspect-h-2 overflow-hidden rounded-md bg-gray-100"
           className="object-cover object-center"
-          {...props.media[0]}
+          data={props.media[0]}
         />
       ) : null}
       <div className={"flex flex-col gap-2 py-6"}>

@@ -55,18 +55,20 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-single-type="loader"
       data-variant={props.variant}
-      className={props.className || "absolute inset-0 w-full h-full bg-white"}
+      className={
+        props.data.className || "absolute inset-0 w-full h-full bg-white"
+      }
     >
       <div
         className={`loader-container ${hideLoader ? "-z-1 hidden" : "z-[200]"}`}
         // style={loaderStyles}
       >
-        {props.media?.length ? (
+        {props.data.media?.length ? (
           <File
             isServer={false}
             variant="image"
             containerClassName="relative w-[150px] h-[150px]"
-            {...props.media[0]}
+            data={props.data.media[0]}
           />
         ) : null}
       </div>

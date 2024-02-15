@@ -54,7 +54,7 @@ export default function Component(props: IComponentPropsExtended) {
             <File
               isServer={false}
               variant="image"
-              {...props.data.media[0]}
+              data={props.data.media[0]}
               className="object-cover object-center"
               containerClassName="relative h-full w-full object-cover object-center"
             />

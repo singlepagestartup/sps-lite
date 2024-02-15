@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="image"
             className="object-contain"
             containerClassName="relative w-[100px] h-[100px]"
-            {...props.data.media[0]}
+            data={props.data.media[0]}
           />
         ) : null}
       </div>

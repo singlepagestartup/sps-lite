@@ -6,7 +6,7 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div className={props.containerClassName ?? ""}>
       <Image
-        src={getFileUrl(props)}
+        src={getFileUrl(props.data)}
         alt=""
         fill={true}
         className={props.className ?? ""}

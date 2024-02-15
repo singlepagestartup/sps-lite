@@ -12,7 +12,7 @@ export default function Component(props: IComponentPropsExtended) {
         <File
           variant="image"
           isServer={false}
-          {...props.data.additionalMedia[0]}
+          data={props.data.additionalMedia[0]}
           className="object-cover object-center"
         />
       ) : null}
@@ -49,9 +49,9 @@ export default function Component(props: IComponentPropsExtended) {
         <File
           variant="image"
           isServer={false}
-          {...props.data.media[0]}
           containerClassName="w-full relative aspect-w-4 aspect-h-2"
           className="object-contain"
+          data={props.data.media[0]}
         />
       ) : null}
     </div>
