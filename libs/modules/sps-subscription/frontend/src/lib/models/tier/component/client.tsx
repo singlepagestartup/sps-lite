@@ -32,7 +32,9 @@ export default function Client(
 function FindMany(props: IFindManyComponentProps) {
   const Comp = variants.findMany[props.variant];
 
-  const { data, isFetching, isLoading, isUninitialized } = api.useFindQuery({});
+  const { data, isFetching, isLoading, isUninitialized } = api.useFindManyQuery(
+    {},
+  );
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Comp showSkeletons={true} {...props} />;

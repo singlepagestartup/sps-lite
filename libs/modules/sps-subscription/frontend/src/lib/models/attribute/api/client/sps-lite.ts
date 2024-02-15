@@ -16,5 +16,12 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
+    findMany: rtk.api.find<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
   }),
 });

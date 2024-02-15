@@ -1,4 +1,4 @@
-import { IComponentProps } from "./interface";
+import { IComponentProps } from "./find-one/interface";
 import { ReduxProvider } from "../../../redux";
 import Client from "./client";
 import Server from "./server";

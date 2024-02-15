@@ -1,7 +1,4 @@
-[data-component="page-blocks.alert-block"] {
-  @import "./find-many/sps-lite/index";
-  @import "./find-one/sps-lite/index";
-
-  @import "./find-many/startup/index";
-  @import "./find-one/startup/index";
+[data-collection-type="tier"] {
+  @import "./find-many/index";
+  @import "./find-one/index";
 }
