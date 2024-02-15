@@ -1,19 +1,26 @@
 "use server";
 import "server-only";
 
-import { IComponentProps } from "./interface";
+import { IComponentProps as IFindOneComponentProps } from "./find-one/interface";
+import { IComponentProps as IFindManyComponentProps } from "./find-many/interface";
 import { api } from "../api/server";
 import { variants } from "./variants";
 
 // default is required for dynamic import
-export default async function Server(props: IComponentProps) {
-  const data = await api.findOne({ id: props.id });
+export default async function Server(
+  props: IFindOneComponentProps | IFindManyComponentProps,
+) {
+  if (props.variant === "list") {
+    return <></>;
+  }
 
-  const Comp = variants[props?.variant as keyof typeof variants];
+  const data = await api.findOne({ id: props.data.id });
+
+  const Comp = variants.findOne[props?.variant];
 
   if (!Comp || !data) {
     return <></>;
   }
 
-  return <Comp {...props} {...data} />;
+  return <Comp {...props} data={data} />;
 }

@@ -4,7 +4,7 @@ import {
   variants as parentVariant,
 } from "./startup";
 
-export const variants = [...parentVariant];
+export const variants = [...parentVariant] as const;
 
 export interface IComponentProps extends IParentComponentProps {}
 

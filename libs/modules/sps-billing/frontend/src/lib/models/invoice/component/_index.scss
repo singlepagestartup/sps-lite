@@ -1,4 +1,4 @@
-[data-component="page-blocks.alert-block"] {
-  @import "./sps-lite/index";
-  @import "./startup/index";
+[data-collection-type="invoice"] {
+  @import "./find-many/index";
+  @import "./find-one/index";
 }

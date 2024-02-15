@@ -1,14 +1,17 @@
+export const variants = [
+  "text",
+  "listbox",
+  "radio-group",
+  "switch",
+  "file",
+  "range",
+  "date",
+] as const;
+
 export interface IModel {
   id: number;
   __component: "elements.input";
-  variant:
-    | "text"
-    | "listbox"
-    | "radio-group"
-    | "switch"
-    | "file"
-    | "range"
-    | "date";
+  variant: (typeof variants)[number];
   placeholder: string | null;
   isRequired: boolean;
   value: string | null;

@@ -33,7 +33,11 @@ export function Component(props: IComponentPropsExtended) {
 
   if (checkoutData?.invoice) {
     return (
-      <Invoice isServer={false} variant="redirect" {...checkoutData.invoice} />
+      <Invoice
+        isServer={false}
+        variant="redirect"
+        data={checkoutData.invoice}
+      />
     );
   }
 
