@@ -89,22 +89,24 @@ export function Component(props: IComponentPropsExtended) {
             initialValue={1}
           />
           <Button
-            ui="shadcn"
+            ui="sps"
             onClick={handleSubmit(incrementSubmit)}
-            variant="secondary"
+            data-ui-variant="secondary"
+            className="w-full"
           >
             Increment in cart
           </Button>
           <Button
-            ui="shadcn"
+            ui="sps"
             onClick={handleSubmit(decrementSubmit)}
-            variant="secondary"
+            data-ui-variant="secondary"
+            className="w-full"
           >
             Decrement in cart
           </Button>
         </FormProvider>
 
-        <Button
+        {/* <Button
           ui="shadcn"
           onClick={() => {
             removeFromCart({ id: props.data.id });
@@ -112,7 +114,7 @@ export function Component(props: IComponentPropsExtended) {
           variant="secondary"
         >
           Remove from cart
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

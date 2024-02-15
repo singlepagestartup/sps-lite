@@ -16,47 +16,46 @@ import { variants } from "./variants";
 export default function Client(
   props: IFindOneComponentProps | IFindManyComponentProps,
 ) {
-  for (const findManyVariant of findManyVariants) {
-    if (props.variant === findManyVariant) {
-      return <FindMany {...props} />;
-    }
-  }
-
-  for (const findOneVariant of findOneVariants) {
-    if (props.variant === findOneVariant) {
-      return <FindOne {...props} />;
-    }
-  }
+  // for (const findManyVariant of findManyVariants) {
+  //   if (props.variant === findManyVariant) {
+  //     return <FindMany {...props} />;
+  //   }
+  // }
+  // for (const findOneVariant of findOneVariants) {
+  //   if (props.variant === findOneVariant) {
+  //     return <FindOne {...props} />;
+  //   }
+  // }
 }
 
-function FindMany(props: IFindManyComponentProps) {
-  const Comp = variants.findMany[props.variant];
+// function FindMany(props: IFindManyComponentProps) {
+//   const Comp = variants.findMany[props.variant];
 
-  const { data, isFetching, isLoading, isUninitialized } = api.useFindManyQuery(
-    {},
-  );
+//   const { data, isFetching, isLoading, isUninitialized } = api.useFindManyQuery(
+//     {},
+//   );
 
-  if (isFetching || isLoading || isUninitialized || !data) {
-    return <Comp showSkeletons={true} {...props} />;
-  }
+//   if (isFetching || isLoading || isUninitialized || !data) {
+//     return <Comp showSkeletons={true} {...props} />;
+//   }
 
-  return <Comp {...props} data={data} />;
-}
+//   return <Comp {...props} data={data} />;
+// }
 
-function FindOne(props: IFindOneComponentProps) {
-  const Comp = variants.findOne[props.variant];
+// function FindOne(props: IFindOneComponentProps) {
+//   const Comp = variants.findOne[props.variant];
 
-  const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
-    id: props.data.id,
-  });
+//   const { data, isFetching, isLoading, isUninitialized } = api.useFindOneQuery({
+//     id: props.data.id,
+//   });
 
-  if (!Comp) {
-    return <></>;
-  }
+//   if (!Comp) {
+//     return <></>;
+//   }
 
-  if (isFetching || isLoading || isUninitialized || !data) {
-    return <Comp showSkeletons={true} {...props} />;
-  }
+//   if (isFetching || isLoading || isUninitialized || !data) {
+//     return <Comp showSkeletons={true} {...props} />;
+//   }
 
-  return <Comp {...props} data={data} />;
-}
+//   return <Comp {...props} data={data} />;
+// }

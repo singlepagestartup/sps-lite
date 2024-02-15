@@ -10,18 +10,8 @@ export function Component(props: IComponentPropsExtended) {
           <ReactMarkdown>{props.data.title}</ReactMarkdown>
         </h2>
       ) : null}
-
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md::grid-cols-2 relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* {props.data.products?.map((product, index) => {
-          return (
-            <Product
-              key={index}
-              isServer={props.isServer}
-              variant="default"
-              {...product}
-            />
-          );
-        })} */}
+      <div className="py-10">
+        <Product isServer={props.isServer} variant="list" />
       </div>
     </div>
   );

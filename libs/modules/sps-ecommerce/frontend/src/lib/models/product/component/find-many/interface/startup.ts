@@ -1,11 +1,11 @@
 import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
-  variants as parentVariant,
+  variants as parentVariants,
   IComponentBase as IParentComponentBase,
 } from "./sps-lite";
 
-export const variants = [...parentVariant] as const;
+export const variants = [...parentVariants] as const;
 
 export interface IComponentBase extends IParentComponentBase {}
 

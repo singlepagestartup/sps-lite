@@ -98,8 +98,12 @@ export function getFiltersFromPageUrl({
     id: number;
     url: string;
   };
-  params: { url: string[] };
+  params: { url: string[] | string };
 }): any[] {
+  const splittedParams = Array.isArray(params.url)
+    ? params.url
+    : params.url.split("/").filter((u: string) => u !== "");
+
   if (!page.id) {
     return [];
   }
@@ -109,7 +113,7 @@ export function getFiltersFromPageUrl({
   const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
 
   for (const [index, pageUrl] of pageUrls.entries()) {
-    if (pageUrl.includes(".") && params?.url && params.url[index]) {
+    if (pageUrl.includes(".") && splittedParams && splittedParams[index]) {
       const sanitizedPageUrl = pageUrl.replace("[", "").replace("]", "");
       const key =
         sanitizedPageUrl.split(".")[sanitizedPageUrl.split(".").length - 2];
@@ -117,7 +121,7 @@ export function getFiltersFromPageUrl({
       const filter = {
         [key]: {
           id: {
-            $in: [params.url[index]],
+            $in: [splittedParams[index]],
           },
         },
       };

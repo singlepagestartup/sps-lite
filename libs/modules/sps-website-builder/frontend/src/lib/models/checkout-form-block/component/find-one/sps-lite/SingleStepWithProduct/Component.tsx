@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // import { api as productApi } from "../../../../../redux/entities/product/index";
 // import { api as invoiceApi } from "@sps/sps-billing-frontend/lib/redux/entities/invoice";
@@ -9,6 +9,7 @@
 // import { Button } from "@sps/ui-adapter";
 // import { useGetPageUrlModelId } from "@sps/hooks";
 import { IComponentPropsExtended } from "../../interface";
+import { Component as Product } from "@sps/sps-ecommerce-frontend/lib/models/product/component";
 
 export function Component(props: IComponentPropsExtended) {
   // const router = useRouter();
@@ -101,6 +102,7 @@ export function Component(props: IComponentPropsExtended) {
     <div className="mx-auto max-w-7xl py-16 px-2 lg:px-0">
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithProduct</p>
+      <Product isServer={true} variant="id-from-url" />
       {/* <h1 className="text-6xl font-bold mb-8">{product.title}</h1>
       <h1 className="text-6xl font-bold mb-8">{productPrice}</h1>
       <FormProvider {...methods}>
