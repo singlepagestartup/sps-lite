@@ -10,7 +10,7 @@ export const api = {
       rootPath: "/api/sps-subscription",
     });
   },
-  find: async () => {
+  findMany: async () => {
     return await fetch.api.find<IModelExtended>({
       model: route,
       populate,
