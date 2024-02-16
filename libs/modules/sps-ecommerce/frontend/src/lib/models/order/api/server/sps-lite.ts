@@ -9,7 +9,7 @@ export const api = {
       populate,
     });
   },
-  find: async () => {
+  findMany: async () => {
     return await fetch.api.find<IModelExtended>({ model: route, populate });
   },
 };

@@ -71,7 +71,7 @@ async function find<T>(params: {
   model: string;
   populate: any;
   rootPath?: string;
-}): Promise<T> {
+}): Promise<T[]> {
   const { populate, model, rootPath = "/api/sps-website-builder" } = params;
 
   const stringifiedQuery = QueryString.stringify(

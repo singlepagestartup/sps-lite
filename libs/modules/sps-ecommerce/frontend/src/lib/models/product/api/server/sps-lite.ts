@@ -11,7 +11,7 @@ export const api = {
     });
   },
   findMany: async () => {
-    return await fetch.api.find<IModelExtended[]>({
+    return await fetch.api.find<IModelExtended>({
       model: route,
       populate,
       rootPath: "/api/sps-ecommerce",
