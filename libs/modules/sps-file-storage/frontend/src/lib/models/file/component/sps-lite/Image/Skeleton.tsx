@@ -1,4 +1,4 @@
-import { IComponentProps } from "../../interface";
+import { IComponentProps } from "./interface";
 
 export function Skeleton(props: IComponentProps) {
   return (

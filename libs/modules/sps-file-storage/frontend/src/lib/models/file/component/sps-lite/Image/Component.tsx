@@ -1,5 +1,5 @@
 import { getFileUrl } from "@sps/utils";
-import { IComponentPropsExtended } from "../../interface";
+import { IComponentPropsExtended } from "./interface";
 import Image from "next/image";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,4 +1,4 @@
-import { IComponentPropsExtended } from "../../interface";
+import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
