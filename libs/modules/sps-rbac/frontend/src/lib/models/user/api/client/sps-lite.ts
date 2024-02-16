@@ -37,3 +37,5 @@ export const api = createApi({
     }),
   }),
 });
+
+export const subscription = (reduxStore: any) => {};

@@ -2,12 +2,14 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-// import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
-import { slices } from "./slices";
-import { createPassToGlobalActionsStoreMiddleware } from "@sps/store";
+import { api, subscription } from "./api/client";
+import {
+  createPassToGlobalActionsStoreMiddleware,
+  globalActionsStore,
+} from "@sps/store";
 
-const name = "sps-subscription";
-const middlewares = [...slices.middlewares];
+const name = `sps-rbac/${api.reducerPath}`;
+const middlewares = [api.middleware];
 const passToGlobalActionsStoreMiddleware =
   createPassToGlobalActionsStoreMiddleware({ name });
 
@@ -16,7 +18,7 @@ const store: any = configureStore({
     name,
   },
   reducer: {
-    ...slices.reducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -24,11 +26,14 @@ const store: any = configureStore({
       .concat(middlewares),
 });
 
-slices.subscriptions.forEach((subscription: any) => {
-  if (typeof subscription === "function") {
-    subscription(store);
-  }
+globalActionsStore.getState().addStore({
+  name,
+  actions: [],
 });
+
+if (typeof subscription === "function") {
+  subscription(store);
+}
 
 export default store;
 

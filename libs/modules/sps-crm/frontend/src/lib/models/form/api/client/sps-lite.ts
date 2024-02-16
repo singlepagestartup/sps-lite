@@ -1,6 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/utils";
 import { IModelExtended, route, tag, populate } from "../../model";
+import { globalActionsStore } from "@sps/store";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-crm`),
@@ -30,3 +31,5 @@ export const api = createApi({
     }),
   }),
 });
+
+export const subscription = (reduxStore: any) => {};

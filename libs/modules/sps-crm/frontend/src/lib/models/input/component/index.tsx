@@ -1,9 +1,13 @@
-import { ReduxProvider } from "../../../redux/index";
+import { ReduxProvider } from "../redux";
 import { IComponentProps } from "./interface";
 import { variants } from "./variants";
 
 export function Component(props: IComponentProps) {
   const Comp = variants[props.variant];
+
+  if (!Comp) {
+    return <></>;
+  }
 
   // type guards works on component rendering
   // as any here is required for dynamic import
