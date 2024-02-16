@@ -17,6 +17,14 @@ export const api = createApi({
       rtkType: tag,
     }),
 
+    findOne: rtk.api.findOne<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+
     getByPageUrl: build.query<IModelExtended, any>({
       query: (params: any = {}) => {
         const {

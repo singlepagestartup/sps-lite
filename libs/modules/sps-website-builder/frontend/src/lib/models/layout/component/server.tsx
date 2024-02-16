@@ -1,30 +1,26 @@
 "use server";
 import "server-only";
 
-import {
-  IComponentProps as IFindOneComponentProps,
-  variants as findOneVariants,
-} from "./find-one/interface";
-import { headers } from "next/headers";
 import { api } from "../api/server";
 import { variants } from "./variants";
-import { IModelExtended } from "../model";
+import { headers } from "next/headers";
+import { ReactNode } from "react";
 
 // default is required for dynamic import
-export default async function Server(props: IFindOneComponentProps) {
-  return <FindOne {...props} />;
-}
-
-async function FindOne(props: IFindOneComponentProps) {
+export default async function Server(props: {
+  isServer: boolean;
+  children: ReactNode;
+}) {
   const headersList = headers();
   const pathname = headersList.get("x-sps-website-builder-pathname") || "";
-  const data: IModelExtended = await api.getByPageUrl({ url: pathname });
+  const data = await api.getByPageUrl({ url: pathname });
 
-  const Comp = variants.findOne[data.variant];
+  const Comp = variants[data.variant as keyof typeof variants];
 
   if (!Comp || !data) {
     return <>{props.children}</>;
   }
 
+  // @ts-ignore
   return <Comp {...props} data={data} />;
 }

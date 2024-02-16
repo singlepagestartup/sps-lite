@@ -43,7 +43,7 @@ export const pageBlocks = {
   "page-blocks.reviews-list-block": ReviewsListBlock,
   "page-blocks.reviews-table-block": ReviewsTableBlock,
   "page-blocks.slider-block": SliderBlock,
-  // "page-blocks.shopping-cart-block": ShoppingCartBlock,
+  "page-blocks.shopping-cart-block": ShoppingCartBlock,
   "page-blocks.subscription-checkout-form-block": SubscriptionCheckoutFormBlock,
   "page-blocks.tiers-list-block": TiersListBlock,
 };

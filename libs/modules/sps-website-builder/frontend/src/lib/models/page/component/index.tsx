@@ -1,14 +1,16 @@
-import { IComponentProps as IFindOneComponentProps } from "./find-one/interface";
-import { ReduxProvider } from "../../../redux";
-import Client from "./client";
-import Server from "./server";
+import { ReduxProvider } from "../../../redux/index";
+import { IComponentProps } from "./interface";
+import { variants } from "./variants";
 
-export function Component(props: IFindOneComponentProps) {
-  const Comp = props.isServer ? Server : Client;
+export function Component(props: IComponentProps) {
+  const Comp = variants["simple"];
 
+  // type guards works on component rendering
+  // as any here is required for dynamic import
+  // or you can use switch case, but it's not recommended
   return (
     <ReduxProvider>
-      <Comp {...props} />
+      <Comp {...(props as any)} />
     </ReduxProvider>
   );
 }

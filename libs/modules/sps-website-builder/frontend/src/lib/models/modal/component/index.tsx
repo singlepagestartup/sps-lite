@@ -2,8 +2,7 @@
 
 import { useState, useEffect, FC, useMemo } from "react";
 import { api as modalApi } from "../api/client";
-import { variants as spsLiteVariants } from "./find-one/sps-lite";
-import { variants as startupVariants } from "./find-one/startup";
+import { variants } from "./variants";
 import {
   useParams,
   usePathname,
@@ -21,11 +20,6 @@ export interface IModal extends Omit<IBackendModal, "id"> {
   page: IBackendPage;
   closeModal: () => void;
 }
-
-const variants = {
-  ...spsLiteVariants,
-  ...startupVariants,
-};
 
 export function Component({ modals = [] }: { modals?: IModal[] }) {
   const query = useSearchParams();
@@ -51,7 +45,7 @@ export function Component({ modals = [] }: { modals?: IModal[] }) {
     isLoading,
     isError,
     isFetching,
-  } = modalApi.useGetQuery({
+  } = modalApi.useFindManyQuery({
     locale: "all",
   });
 

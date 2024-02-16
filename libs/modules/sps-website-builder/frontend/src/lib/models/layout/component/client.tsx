@@ -1,23 +1,17 @@
 "use client";
 import "client-only";
 
-import {
-  IComponentProps as IFindOneComponentProps,
-  IComponentPropsExtended as IFindOneComponentPropsExtended,
-  variants as findOneVariants,
-} from "./find-one/interface";
+import { useParams, usePathname } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
+import { getTargetPage } from "@sps/utils";
 import { api } from "../api/client";
 import { variants } from "./variants";
-import { useEffect, useState } from "react";
-import { getTargetPage } from "@sps/utils";
-import { useParams, usePathname } from "next/navigation";
+import { IComponentProps } from "./interface";
 
-// default is required for dynamic import
-export default function Client(props: IFindOneComponentProps) {
-  return <FindOne {...props} />;
-}
-
-function FindOne(props: IFindOneComponentProps) {
+export default function Client(props: {
+  isServer: boolean;
+  children: ReactNode;
+}) {
   const pathname = usePathname();
   const params = useParams();
 
@@ -28,8 +22,7 @@ function FindOne(props: IFindOneComponentProps) {
     },
     { skip: !pathname },
   );
-  const [page, setPage] =
-    useState<IFindOneComponentPropsExtended["data"]["pages"]>(); //?
+  const [page, setPage] = useState<any>(); //?
 
   useEffect(() => {
     if (params) {
@@ -55,11 +48,12 @@ function FindOne(props: IFindOneComponentProps) {
     return <></>;
   }
 
-  const Comp = variants.findOne[data.variant];
+  const Comp = variants[data.variant as keyof typeof variants];
 
   if (!Comp || !data || !page) {
     return <>{props.children}</>;
   }
 
-  return <Comp {...props} data={data} />;
+  // @ts-ignore
+  return <Comp {...props} variant={data.variant} data={data} />;
 }
