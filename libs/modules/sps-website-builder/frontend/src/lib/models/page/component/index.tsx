@@ -1,4 +1,4 @@
-import { ReduxProvider } from "../../../redux/index";
+import { ReduxProvider } from "../redux";
 import { IComponentProps } from "./interface";
 import { variants } from "./variants";
 

@@ -2,15 +2,14 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-// import { rtkQueryErrorLogger } from "./rtk-query-error-logger";
-import { slices } from "./slices";
+import { api, subscription } from "./api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
 } from "@sps/store";
 
-const name = "sps-website-builder";
-const middlewares = [...slices.middlewares];
+const name = `sps-website-builder/${api.reducerPath}`;
+const middlewares = [api.middleware];
 const passToGlobalActionsStoreMiddleware =
   createPassToGlobalActionsStoreMiddleware({ name });
 
@@ -19,7 +18,7 @@ const store: any = configureStore({
     name,
   },
   reducer: {
-    ...slices.reducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -32,11 +31,9 @@ globalActionsStore.getState().addStore({
   actions: [],
 });
 
-slices.subscriptions.forEach((subscription: any) => {
-  if (typeof subscription === "function") {
-    subscription(store);
-  }
-});
+if (typeof subscription === "function") {
+  subscription(store);
+}
 
 export default store;
 

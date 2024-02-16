@@ -1,5 +1,4 @@
 export { GoogleTagManager } from "./lib/scripts/google-tag-manager";
-export { rtkQueryErrorLogger } from "./lib/redux/rtk-query-error-logger";
 export * as page from "./lib/app/[locale]/[[...url]]/page";
 export * as robots from "./lib/app/robots.txt/route";
 export * as sitemap from "./lib/app/sitemap.xml/route";
