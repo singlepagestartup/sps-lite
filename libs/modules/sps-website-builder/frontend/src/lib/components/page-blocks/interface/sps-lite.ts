@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import type { IModel as IAlertBlock } from "@sps/sps-website-builder-alert-block-contracts";
-import type { IModel as ICtaSectionBlock } from "../../../models/cta-section-block/model";
+import type { IModel as ICtaSectionBlock } from "@sps/sps-website-builder-cta-section-block-contracts";
 import type { IModel as IFaqBlock } from "../../../models/faq-block/model";
 import type { IModel as IFeaturesSectionBlock } from "../../../models/features-section-block/model";
 import type { IModel as IFooterBlock } from "../../../models/footer-block/model";

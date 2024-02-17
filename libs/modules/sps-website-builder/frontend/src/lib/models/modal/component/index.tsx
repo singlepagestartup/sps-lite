@@ -9,7 +9,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import type { IModel as IBackendModal } from "@sps/sps-website-builder-contracts-extended/lib/models/modal/interfaces";
+import type { IModel as IBackendModal } from "libs/modules/sps-website-builder/modal/contracts-extended/src/interfaces";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-contracts-extended/lib/models/page/interfaces";
 import { getTargetPage } from "@sps/utils";
 import { ReduxProvider } from "../../../redux";

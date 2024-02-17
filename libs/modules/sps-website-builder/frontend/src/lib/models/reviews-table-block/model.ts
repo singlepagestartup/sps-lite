@@ -1,9 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-website-builder-contracts/lib/models/reviews-table-block/interfaces";
-import type { IModel as IParentModelExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/reviews-table-block/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/reviews-table-block/populate";
+} from "@sps/sps-website-builder-reviews-table-block-contracts";
+import {
+  IModel as IParentModelExtended,
+  populate as modelPopulate,
+} from "@sps/sps-website-builder-reviews-table-block-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 

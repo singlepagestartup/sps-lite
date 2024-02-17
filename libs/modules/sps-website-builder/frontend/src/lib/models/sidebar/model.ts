@@ -1,9 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-website-builder-contracts/lib/models/sidebar/interfaces";
-import type { IModel as IParentModelExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/sidebar/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/sidebar/populate";
+} from "@sps/sps-website-builder-sidebar-contracts";
+import {
+  IModel as IParentModelExtended,
+  populate as modelPopulate,
+} from "@sps/sps-website-builder-sidebar-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 

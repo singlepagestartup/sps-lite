@@ -7,7 +7,7 @@ import {
 } from "@sps/utils";
 import { populate, route, IModelExtended } from "../model";
 import { notFound } from "next/navigation";
-import { populate as metatagPopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/metatag/populate";
+import { populate as metatagPopulate } from "libs/modules/sps-website-builder/metatag/contracts-extended/src/lib/populate";
 
 async function getPage(props: any) {
   const { locale }: { locale: string } = props.params;

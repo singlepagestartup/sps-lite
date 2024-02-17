@@ -1,9 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-website-builder-contracts/lib/models/shopping-cart-block/interfaces";
-import type { IModel as IParentModelExtended } from "@sps/sps-website-builder-contracts-extended/lib/models/shopping-cart-block/interfaces";
-import { populate as modelPopulate } from "@sps/sps-website-builder-contracts/lib/models/shopping-cart-block/populate";
+} from "@sps/sps-website-builder-shopping-cart-block-contracts";
+import {
+  IModel as IParentModelExtended,
+  populate as modelPopulate,
+} from "@sps/sps-website-builder-shopping-cart-block-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 
