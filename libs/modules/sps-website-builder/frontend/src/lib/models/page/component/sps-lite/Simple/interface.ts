@@ -11,7 +11,7 @@ export interface IComponentProps extends IComponentBase {
   searchParams?: { [key: string]: any };
 }
 
-export interface IComponentPropsExtended extends IComponentBase {
+export interface IComponentPropsExtended extends IComponentProps {
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   closeModal?: () => void;
   data: IModelExtended;

@@ -1,6 +1,6 @@
-import { IModel, IModelExtended } from "../../../model";
+import { IModel, IModelExtended, variants } from "../../../model";
 
-export const variant = "boxed" as const;
+export const variant: (typeof variants)[number] = "boxed" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -13,6 +13,5 @@ export interface IComponentProps extends IComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  isServer: boolean;
   data: IModelExtended;
 }

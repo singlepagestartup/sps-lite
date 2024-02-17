@@ -1,6 +1,6 @@
-import { IModel, IModelExtended } from "../../../model";
+import { IModel, IModelExtended, variants } from "../../../model";
 
-export const variant = "with-icon" as const;
+export const variant: (typeof variants)[number] = "with-icon" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -12,7 +12,6 @@ export interface IComponentProps extends IComponentBase {
   data: IModel;
 }
 
-export interface IComponentPropsExtended extends IComponentBase {
-  isServer: boolean;
+export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
 }

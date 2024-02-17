@@ -1,6 +1,7 @@
-import { IModel, IModelExtended } from "../../../model";
+import { IModel, IModelExtended, variants } from "../../../model";
 
-export const variant = "right-side-half-width" as const;
+export const variant: (typeof variants)[number] =
+  "right-side-half-width" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -15,11 +16,6 @@ export interface IComponentProps extends IComponentBase {
   isOpen: boolean;
 }
 
-export interface IComponentPropsExtended extends IComponentBase {
-  variant: typeof variant;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  isServer: boolean;
-  className?: string;
+export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
 }

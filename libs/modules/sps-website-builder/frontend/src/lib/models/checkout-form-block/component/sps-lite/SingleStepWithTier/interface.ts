@@ -1,6 +1,7 @@
-import { IModel, IModelExtended } from "../../../model";
+import { IModel, IModelExtended, variants } from "../../../model";
 
-export const variant = "single-step-with-tier" as const;
+export const variant: (typeof variants)[number] =
+  "single-step-with-tier" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -12,7 +13,6 @@ export interface IComponentProps extends IComponentBase {
   data: IModel;
 }
 
-export interface IComponentPropsExtended extends IComponentBase {
-  isServer: boolean;
+export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
 }
