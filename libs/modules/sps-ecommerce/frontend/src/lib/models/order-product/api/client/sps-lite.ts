@@ -28,7 +28,7 @@ export const api = createApi({
 export const subscription = (reduxStore: any) => {
   const triggeredActions: string[] = [];
   return globalActionsStore.subscribe((state) => {
-    const spsEcommerceState = state.stores["sps-ecommerce"];
+    const spsEcommerceState = state.stores["sps-ecommerce/orders"];
     spsEcommerceState?.actions?.forEach((action: any) => {
       if (
         action.type === "orders/executeQuery/fulfilled" &&
