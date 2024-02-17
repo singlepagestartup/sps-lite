@@ -1,6 +1,6 @@
-import { Component as AlertBlock } from "../../../models/alert-block/component";
-import { Component as Button } from "../../../models/button/component";
-import { Component as ButtonsArray } from "../../../models/buttons-array/component";
+import { Component as AlertBlock } from "@sps/sps-website-builder-alert-block-component";
+import { Component as Button } from "@sps/sps-website-builder-button-component";
+import { Component as ButtonsArray } from "@sps/sps-website-builder-buttons-array-component";
 import { Component as CheckoutFormBlock } from "../../../models/checkout-form-block/component";
 import { Component as ContactSectonBlock } from "../../../models/contact-section-block/component";
 import { Component as CtaSectionBlock } from "../../../models/cta-section-block/component";
@@ -9,7 +9,7 @@ import { Component as FaqBlock } from "../../../models/faq-block/component";
 import { Component as FeaturesSectionBlock } from "../../../models/features-section-block/component";
 import { Component as FooterBlock } from "../../../models/footer-block/component";
 import { Component as HeaderSectionBlock } from "../../../models/header-section-block/component";
-import { Component as HeroSectionBlock } from "../../../models/hero-section-block/component";
+import { Component as HeroSectionBlock } from "@sps/sps-website-builder-hero-section-block-component";
 import { Component as IncentivesBlock } from "../../../models/incentives-block/component";
 import { Component as LogotypesCloudBlock } from "../../../models/logotypes-cloud-block/component";
 import { Component as NavbarBlock } from "../../../models/navbar-block/component";

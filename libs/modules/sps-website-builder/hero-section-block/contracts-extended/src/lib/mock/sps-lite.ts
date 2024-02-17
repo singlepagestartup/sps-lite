@@ -1,5 +1,5 @@
 import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-hero-section-block-contracts";
-import { entity as button } from "@sps/sps-website-builder-contracts/lib/models/button/mock/sps-lite";
+import { spsLiteEntity as button } from "@sps/sps-website-builder-button-contracts";
 import { entity as file } from "@sps/sps-file-storage-contracts/lib/models//file/mock/sps-lite";
 import type { IModel } from "../interfaces";
 

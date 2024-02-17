@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
-import { Component as Button } from "../../../../button/component";
-import { Component as Logotype } from "../../../../logotype/component";
+import { Component as Button } from "@sps/sps-website-builder-button-component";
+// import { Component as Logotype } from "../../../../logotype/component";
 import { IComponentPropsExtended } from "./interface";
 import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
 
@@ -16,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
             <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
               <div className="lg:pr-16">
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   {props.data.logotype ? (
                     <Logotype
                       isServer={props.isServer}
@@ -24,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
                       data={props.data.logotype}
                     />
                   ) : null}
-                </div>
+                </div> */}
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                   {props.data.title}
                 </h1>

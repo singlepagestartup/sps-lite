@@ -25,7 +25,7 @@ export default function Client(props: IComponentProps) {
 
   useEffect(() => {
     if (params) {
-      getTargetPage(params).then((res) => {
+      getTargetPage(params as any).then((res) => {
         setPage(res);
       });
     }

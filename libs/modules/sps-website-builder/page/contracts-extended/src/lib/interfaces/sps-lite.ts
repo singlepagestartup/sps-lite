@@ -1,7 +1,7 @@
 import type { IModel as IParentModel } from "@sps/sps-website-builder-page-contracts";
 import type { IModel as ILayout } from "@sps/sps-website-builder-contracts/lib/models/layout/interfaces";
 import type { IModel as IMetatag } from "@sps/sps-website-builder-contracts/lib/models/metatag/interfaces";
-import type { IModel as IAlertBlock } from "@sps/sps-website-builder-contracts/lib/models/alert-block/interfaces";
+import type { IModel as IAlertBlock } from "@sps/sps-website-builder-alert-block-contracts";
 import type { IModel as ICtaSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/cta-section-block/interfaces";
 import type { IModel as IFaqBlock } from "@sps/sps-website-builder-contracts/lib/models/faq-block/interfaces";
 import type { IModel as IFeaturesSectionBlock } from "@sps/sps-website-builder-contracts/lib/models/features-section-block/interfaces";

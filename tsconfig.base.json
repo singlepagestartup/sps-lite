@@ -114,6 +114,42 @@
         "libs/modules/sps-subscription/frontend/src/*"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-website-builder-alert-block-api": [
+        "libs/modules/sps-website-builder/alert-block/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-alert-block-component": [
+        "libs/modules/sps-website-builder/alert-block/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-alert-block-contracts": [
+        "libs/modules/sps-website-builder/alert-block/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-alert-block-contracts-extended": [
+        "libs/modules/sps-website-builder/alert-block/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-api": [
+        "libs/modules/sps-website-builder/button/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-component": [
+        "libs/modules/sps-website-builder/button/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-contracts": [
+        "libs/modules/sps-website-builder/button/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-contracts-extended": [
+        "libs/modules/sps-website-builder/button/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-api": [
+        "libs/modules/sps-website-builder/buttons-array/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-component": [
+        "libs/modules/sps-website-builder/buttons-array/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-contracts": [
+        "libs/modules/sps-website-builder/buttons-array/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-contracts-extended": [
+        "libs/modules/sps-website-builder/buttons-array/contracts-extended/src/index.ts"
+      ],
       "@sps/sps-website-builder-contracts": [
         "libs/modules/sps-website-builder/contracts/src/index.ts"
       ],
