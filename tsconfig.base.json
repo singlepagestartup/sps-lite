@@ -150,6 +150,30 @@
       "@sps/sps-website-builder-buttons-array-contracts-extended": [
         "libs/modules/sps-website-builder/buttons-array/contracts-extended/src/index.ts"
       ],
+      "@sps/sps-website-builder-checkout-form-block-api": [
+        "libs/modules/sps-website-builder/checkout-form-block/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-component": [
+        "libs/modules/sps-website-builder/checkout-form-block/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-contracts": [
+        "libs/modules/sps-website-builder/checkout-form-block/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-contracts-extended": [
+        "libs/modules/sps-website-builder/checkout-form-block/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-api": [
+        "libs/modules/sps-website-builder/contact-section-block/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-component": [
+        "libs/modules/sps-website-builder/contact-section-block/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-contracts": [
+        "libs/modules/sps-website-builder/contact-section-block/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-contracts-extended": [
+        "libs/modules/sps-website-builder/contact-section-block/contracts-extended/src/index.ts"
+      ],
       "@sps/sps-website-builder-contracts": [
         "libs/modules/sps-website-builder/contracts/src/index.ts"
       ],

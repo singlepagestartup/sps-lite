@@ -1,8 +1,8 @@
 import { Component as AlertBlock } from "@sps/sps-website-builder-alert-block-component";
 import { Component as Button } from "@sps/sps-website-builder-button-component";
 import { Component as ButtonsArray } from "@sps/sps-website-builder-buttons-array-component";
-import { Component as CheckoutFormBlock } from "../../../models/checkout-form-block/component";
-import { Component as ContactSectonBlock } from "../../../models/contact-section-block/component";
+import { Component as CheckoutFormBlock } from "@sps/sps-website-builder-checkout-form-block-component";
+import { Component as ContactSectonBlock } from "@sps/sps-website-builder-contact-section-block-component";
 import { Component as CtaSectionBlock } from "../../../models/cta-section-block/component";
 import { Component as EditSubscriptionBlock } from "../../../models/edit-subscription-block/component";
 import { Component as FaqBlock } from "../../../models/faq-block/component";

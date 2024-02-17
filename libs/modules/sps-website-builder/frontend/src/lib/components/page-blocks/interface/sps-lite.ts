@@ -13,10 +13,10 @@ import type { IModel as INotFoundBlock } from "../../../models/not-found-block/m
 import type { IModel as ISliderBlock } from "../../../models/slider-block/model";
 import type { IModel as IButton } from "@sps/sps-website-builder-button-contracts";
 import type { IModel as IButtonsArray } from "@sps/sps-website-builder-buttons-array-contracts";
-import type { IModel as ICheckoutFormBlock } from "../../../models/checkout-form-block/model";
+import type { IModel as ICheckoutFormBlock } from "@sps/sps-website-builder-checkout-form-block-contracts";
 import type { IModel as IProductsListBlock } from "../../../models/products-list-block/model";
 import type { IModel as IShoppingCartBlock } from "../../../models/shopping-cart-block/model";
-import type { IModel as IContactSectonBlock } from "../../../models/contact-section-block/model";
+import type { IModel as IContactSectonBlock } from "@sps/sps-website-builder-contact-section-block-contracts";
 import type { IModel as IReviewsListBlock } from "../../../models/reviews-list-block/model";
 import type { IModel as IReviewsTableBlock } from "../../../models/reviews-table-block/model";
 import type { IModel as IEditSubscriptionBlock } from "../../../models/edit-subscription-block/model";
