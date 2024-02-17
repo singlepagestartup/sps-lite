@@ -2,7 +2,7 @@
 import "server-only";
 
 import { api } from "../../../models/page/api/server";
-import { Component } from "../../../models/page/component";
+import { Component } from "@sps/sps-website-builder-page-component";
 
 export async function generateStaticParams() {
   return api.getUrls();

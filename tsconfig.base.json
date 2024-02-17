@@ -132,6 +132,30 @@
       "@sps/sps-website-builder-frontend/*": [
         "libs/modules/sps-website-builder/frontend/src/*"
       ],
+      "@sps/sps-website-builder-hero-section-block-api": [
+        "libs/modules/sps-website-builder/hero-section-block/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-component": [
+        "libs/modules/sps-website-builder/hero-section-block/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-contracts": [
+        "libs/modules/sps-website-builder/hero-section-block/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-contracts-extended": [
+        "libs/modules/sps-website-builder/hero-section-block/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-api": [
+        "libs/modules/sps-website-builder/page/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-component": [
+        "libs/modules/sps-website-builder/page/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-contracts": [
+        "libs/modules/sps-website-builder/page/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-contracts-extended": [
+        "libs/modules/sps-website-builder/page/contracts-extended/src/index.ts"
+      ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"],

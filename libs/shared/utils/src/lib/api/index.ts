@@ -2,6 +2,7 @@ import { stringify } from "qs";
 import { gzip } from "pako";
 import { transformResponseItem } from "../transform-response-item";
 import { BACKEND_URL } from "../envs";
+const R = require("ramda");
 
 interface IFetchProps {
   url: string;
@@ -66,9 +67,19 @@ export async function getBackendData(props: IFetchProps) {
   return backendData;
 }
 
-export async function getTargetPage({ url, locale }: any) {
+export async function getTargetPage({
+  url,
+  locale,
+}: {
+  url: string | string[];
+  locale: string;
+}) {
   const localUrl =
-    typeof url === "string" ? `/${url}` : `/${url?.join("/") || ""}`;
+    typeof url === "string"
+      ? url.startsWith("/")
+        ? url
+        : `/${url}`
+      : `/${url?.join("/") || ""}`;
 
   if (!localUrl) {
     return;
@@ -131,4 +142,30 @@ export function getFiltersFromPageUrl({
   }
 
   return filters;
+}
+
+export async function getPageUrlModelId({
+  url,
+  modelName,
+  locale,
+}: {
+  url: string;
+  modelName: string;
+  locale: string;
+}): Promise<number | undefined> {
+  const page = await getTargetPage({ url, locale });
+
+  const filters = getFiltersFromPageUrl({ page, params: { url } });
+
+  let id;
+
+  const targetFilter = filters.find(
+    (filter) => filter[modelName] !== undefined,
+  );
+
+  if (R.path([modelName, "id", "$in", 0], targetFilter)) {
+    id = targetFilter[modelName].id["$in"][0];
+  }
+
+  return id;
 }
