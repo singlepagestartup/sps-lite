@@ -19,5 +19,16 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../models/attribute/api/src/lib/model.ts",
+    "../models/attribute-key/api/src/lib/model.ts",
+    "../models/cart/api/src/lib/model.ts",
+    "../models/order/api/src/lib/model.ts",
+    "../models/order-product/api/src/lib/model.ts",
+    "../models/product/api/src/lib/model.ts"
+  ]
 }

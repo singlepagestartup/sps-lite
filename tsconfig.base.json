@@ -45,23 +45,83 @@
       "@sps/sps-crm-contracts/*": ["libs/modules/sps-crm/contracts/src/*"],
       "@sps/sps-crm-frontend": ["libs/modules/sps-crm/frontend/src/index.ts"],
       "@sps/sps-crm-frontend/*": ["libs/modules/sps-crm/frontend/src/*"],
-      "@sps/sps-ecommerce-contracts": [
-        "libs/modules/sps-ecommerce/contracts/src/index.ts"
+      "@sps/sps-ecommerce-attribute-api": [
+        "libs/modules/sps-ecommerce/models/attribute/api/src/index.ts"
       ],
-      "@sps/sps-ecommerce-contracts-extended": [
-        "libs/modules/sps-ecommerce/contracts-extended/src/index.ts"
+      "@sps/sps-ecommerce-attribute-component": [
+        "libs/modules/sps-ecommerce/models/attribute/component/src/index.ts"
       ],
-      "@sps/sps-ecommerce-contracts-extended/*": [
-        "libs/modules/sps-ecommerce/contracts-extended/src/*"
+      "@sps/sps-ecommerce-attribute-contracts": [
+        "libs/modules/sps-ecommerce/models/attribute/contracts/src/index.ts"
       ],
-      "@sps/sps-ecommerce-contracts/*": [
-        "libs/modules/sps-ecommerce/contracts/src/*"
+      "@sps/sps-ecommerce-attribute-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/attribute/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-key-api": [
+        "libs/modules/sps-ecommerce/models/attribute-key/api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-key-component": [
+        "libs/modules/sps-ecommerce/models/attribute-key/component/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-key-contracts": [
+        "libs/modules/sps-ecommerce/models/attribute-key/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-key-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/attribute-key/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-api": [
+        "libs/modules/sps-ecommerce/models/cart/api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-component": [
+        "libs/modules/sps-ecommerce/models/cart/component/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-contracts": [
+        "libs/modules/sps-ecommerce/models/cart/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/cart/contracts-extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend": [
         "libs/modules/sps-ecommerce/frontend/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend/*": [
         "libs/modules/sps-ecommerce/frontend/src/*"
+      ],
+      "@sps/sps-ecommerce-order-api": [
+        "libs/modules/sps-ecommerce/models/order/api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-component": [
+        "libs/modules/sps-ecommerce/models/order/component/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-contracts": [
+        "libs/modules/sps-ecommerce/models/order/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/order/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-api": [
+        "libs/modules/sps-ecommerce/models/order-product/api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-component": [
+        "libs/modules/sps-ecommerce/models/order-product/component/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-contracts": [
+        "libs/modules/sps-ecommerce/models/order-product/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/order-product/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-api": [
+        "libs/modules/sps-ecommerce/models/product/api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component": [
+        "libs/modules/sps-ecommerce/models/product/component/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-contracts": [
+        "libs/modules/sps-ecommerce/models/product/contracts/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-contracts-extended": [
+        "libs/modules/sps-ecommerce/models/product/contracts-extended/src/index.ts"
       ],
       "@sps/sps-file-storage-contracts": [
         "libs/modules/sps-file-storage/contracts/src/index.ts"

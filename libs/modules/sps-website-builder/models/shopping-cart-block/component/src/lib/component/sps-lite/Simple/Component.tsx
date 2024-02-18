@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { Component as Cart } from "@sps/sps-ecommerce-frontend/lib/models/cart/component";
+import { Component as Cart } from "@sps/sps-ecommerce-cart-component";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@sps/ui-adapter";
 import Link from "next/link";
