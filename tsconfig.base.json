@@ -125,184 +125,172 @@
         "libs/modules/sps-website-builder/models/alert-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-button-api": [
-        "libs/modules/sps-website-builder/button/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/api/src/index.ts"
       ],
       "@sps/sps-website-builder-button-component": [
-        "libs/modules/sps-website-builder/button/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/component/src/index.ts"
       ],
       "@sps/sps-website-builder-button-contracts": [
-        "libs/modules/sps-website-builder/button/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-button-contracts-extended": [
-        "libs/modules/sps-website-builder/button/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-api": [
-        "libs/modules/sps-website-builder/buttons-array/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/api/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-component": [
-        "libs/modules/sps-website-builder/buttons-array/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/component/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-contracts": [
-        "libs/modules/sps-website-builder/buttons-array/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-contracts-extended": [
-        "libs/modules/sps-website-builder/buttons-array/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-api": [
-        "libs/modules/sps-website-builder/checkout-form-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-component": [
-        "libs/modules/sps-website-builder/checkout-form-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-contracts": [
-        "libs/modules/sps-website-builder/checkout-form-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-contracts-extended": [
-        "libs/modules/sps-website-builder/checkout-form-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-api": [
-        "libs/modules/sps-website-builder/contact-section-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-component": [
-        "libs/modules/sps-website-builder/contact-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-contracts": [
-        "libs/modules/sps-website-builder/contact-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/contact-section-block/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-contracts": [
-        "libs/modules/sps-website-builder/contracts/src/index.ts"
-      ],
-      "@sps/sps-website-builder-contracts-extended": [
-        "libs/modules/sps-website-builder/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-contracts-extended/*": [
-        "libs/modules/sps-website-builder/contracts-extended/src/*"
-      ],
-      "@sps/sps-website-builder-contracts/*": [
-        "libs/modules/sps-website-builder/contracts/src/*"
+        "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-api": [
-        "libs/modules/sps-website-builder/cta-section-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-component": [
-        "libs/modules/sps-website-builder/cta-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-contracts": [
-        "libs/modules/sps-website-builder/cta-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/cta-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-api": [
-        "libs/modules/sps-website-builder/edit-subscription-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-component": [
-        "libs/modules/sps-website-builder/edit-subscription-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-contracts": [
-        "libs/modules/sps-website-builder/edit-subscription-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-contracts-extended": [
-        "libs/modules/sps-website-builder/edit-subscription-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-api": [
-        "libs/modules/sps-website-builder/faq/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/api/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-api": [
-        "libs/modules/sps-website-builder/faq-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-component": [
-        "libs/modules/sps-website-builder/faq-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-contracts": [
-        "libs/modules/sps-website-builder/faq-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-contracts-extended": [
-        "libs/modules/sps-website-builder/faq-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-component": [
-        "libs/modules/sps-website-builder/faq/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/component/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-contracts": [
-        "libs/modules/sps-website-builder/faq/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-contracts-extended": [
-        "libs/modules/sps-website-builder/faq/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-api": [
-        "libs/modules/sps-website-builder/feature/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/api/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-component": [
-        "libs/modules/sps-website-builder/feature/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/component/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-contracts": [
-        "libs/modules/sps-website-builder/feature/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-contracts-extended": [
-        "libs/modules/sps-website-builder/feature/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-features-section-block-api": [
-        "libs/modules/sps-website-builder/features-section-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/features-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-features-section-block-component": [
-        "libs/modules/sps-website-builder/features-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/features-section-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-features-section-block-contracts": [
-        "libs/modules/sps-website-builder/features-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/features-section-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-features-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/features-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/features-section-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-flyout-api": [
-        "libs/modules/sps-website-builder/flyout/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/flyout/api/src/index.ts"
       ],
       "@sps/sps-website-builder-flyout-component": [
-        "libs/modules/sps-website-builder/flyout/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/flyout/component/src/index.ts"
       ],
       "@sps/sps-website-builder-flyout-contracts": [
-        "libs/modules/sps-website-builder/flyout/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/flyout/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-flyout-contracts-extended": [
-        "libs/modules/sps-website-builder/flyout/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/flyout/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-font-api": [
-        "libs/modules/sps-website-builder/font/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/font/api/src/index.ts"
       ],
       "@sps/sps-website-builder-font-component": [
-        "libs/modules/sps-website-builder/font/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/font/component/src/index.ts"
       ],
       "@sps/sps-website-builder-font-contracts": [
-        "libs/modules/sps-website-builder/font/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/font/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-font-contracts-extended": [
-        "libs/modules/sps-website-builder/font/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/font/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-api": [
-        "libs/modules/sps-website-builder/footer/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer/api/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-block-api": [
-        "libs/modules/sps-website-builder/footer-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-block-component": [
-        "libs/modules/sps-website-builder/footer-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-block-contracts": [
-        "libs/modules/sps-website-builder/footer-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-block-contracts-extended": [
-        "libs/modules/sps-website-builder/footer-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-component": [
-        "libs/modules/sps-website-builder/footer/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer/component/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-contracts": [
-        "libs/modules/sps-website-builder/footer/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-footer-contracts-extended": [
-        "libs/modules/sps-website-builder/footer/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/footer/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/src/index.ts"
@@ -311,334 +299,334 @@
         "libs/modules/sps-website-builder/frontend/src/*"
       ],
       "@sps/sps-website-builder-header-section-block-api": [
-        "libs/modules/sps-website-builder/header-section-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/header-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-header-section-block-component": [
-        "libs/modules/sps-website-builder/header-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/header-section-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-header-section-block-contracts": [
-        "libs/modules/sps-website-builder/header-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/header-section-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-header-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/header-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/header-section-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-api": [
-        "libs/modules/sps-website-builder/hero-section-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-component": [
-        "libs/modules/sps-website-builder/hero-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-contracts": [
-        "libs/modules/sps-website-builder/hero-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/hero-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-incentives-block-api": [
-        "libs/modules/sps-website-builder/incentives-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/incentives-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-incentives-block-component": [
-        "libs/modules/sps-website-builder/incentives-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/incentives-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-incentives-block-contracts": [
-        "libs/modules/sps-website-builder/incentives-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/incentives-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-incentives-block-contracts-extended": [
-        "libs/modules/sps-website-builder/incentives-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/incentives-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-api": [
-        "libs/modules/sps-website-builder/layout/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/api/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-component": [
-        "libs/modules/sps-website-builder/layout/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/component/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-contracts": [
-        "libs/modules/sps-website-builder/layout/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-contracts-extended": [
-        "libs/modules/sps-website-builder/layout/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-loader-api": [
-        "libs/modules/sps-website-builder/loader/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/loader/api/src/index.ts"
       ],
       "@sps/sps-website-builder-loader-component": [
-        "libs/modules/sps-website-builder/loader/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/loader/component/src/index.ts"
       ],
       "@sps/sps-website-builder-loader-contracts": [
-        "libs/modules/sps-website-builder/loader/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/loader/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-loader-contracts-extended": [
-        "libs/modules/sps-website-builder/loader/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/loader/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-locale-api": [
-        "libs/modules/sps-website-builder/locale/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/locale/api/src/index.ts"
       ],
       "@sps/sps-website-builder-locale-component": [
-        "libs/modules/sps-website-builder/locale/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/locale/component/src/index.ts"
       ],
       "@sps/sps-website-builder-locale-contracts": [
-        "libs/modules/sps-website-builder/locale/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/locale/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-locale-contracts-extended": [
-        "libs/modules/sps-website-builder/locale/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/locale/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-logotype-api": [
-        "libs/modules/sps-website-builder/logotype/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotype/api/src/index.ts"
       ],
       "@sps/sps-website-builder-logotype-component": [
-        "libs/modules/sps-website-builder/logotype/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotype/component/src/index.ts"
       ],
       "@sps/sps-website-builder-logotype-contracts": [
-        "libs/modules/sps-website-builder/logotype/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotype/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-logotype-contracts-extended": [
-        "libs/modules/sps-website-builder/logotype/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotype/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-api": [
-        "libs/modules/sps-website-builder/logotypes-cloud-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-component": [
-        "libs/modules/sps-website-builder/logotypes-cloud-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-contracts": [
-        "libs/modules/sps-website-builder/logotypes-cloud-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-contracts-extended": [
-        "libs/modules/sps-website-builder/logotypes-cloud-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-metatag-api": [
-        "libs/modules/sps-website-builder/metatag/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/metatag/api/src/index.ts"
       ],
       "@sps/sps-website-builder-metatag-component": [
-        "libs/modules/sps-website-builder/metatag/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/metatag/component/src/index.ts"
       ],
       "@sps/sps-website-builder-metatag-contracts": [
-        "libs/modules/sps-website-builder/metatag/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/metatag/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-metatag-contracts-extended": [
-        "libs/modules/sps-website-builder/metatag/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/metatag/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-api": [
-        "libs/modules/sps-website-builder/modal/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/api/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-component": [
-        "libs/modules/sps-website-builder/modal/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/component/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-contracts": [
-        "libs/modules/sps-website-builder/modal/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-contracts-extended": [
-        "libs/modules/sps-website-builder/modal/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-api": [
-        "libs/modules/sps-website-builder/navbar/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar/api/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-block-api": [
-        "libs/modules/sps-website-builder/navbar-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-block-component": [
-        "libs/modules/sps-website-builder/navbar-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-block-contracts": [
-        "libs/modules/sps-website-builder/navbar-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-block-contracts-extended": [
-        "libs/modules/sps-website-builder/navbar-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-component": [
-        "libs/modules/sps-website-builder/navbar/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar/component/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-contracts": [
-        "libs/modules/sps-website-builder/navbar/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-contracts-extended": [
-        "libs/modules/sps-website-builder/navbar/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/navbar/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-not-found-block-api": [
-        "libs/modules/sps-website-builder/not-found-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/not-found-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-not-found-block-component": [
-        "libs/modules/sps-website-builder/not-found-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/not-found-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-not-found-block-contracts": [
-        "libs/modules/sps-website-builder/not-found-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/not-found-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-not-found-block-contracts-extended": [
-        "libs/modules/sps-website-builder/not-found-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/not-found-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-page-api": [
-        "libs/modules/sps-website-builder/page/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/api/src/index.ts"
       ],
       "@sps/sps-website-builder-page-blocks-component": [
-        "libs/modules/sps-website-builder/page-blocks/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/page-blocks/component/src/index.ts"
       ],
       "@sps/sps-website-builder-page-blocks-contracts": [
-        "libs/modules/sps-website-builder/page-blocks/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/page-blocks/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-page-component": [
-        "libs/modules/sps-website-builder/page/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/component/src/index.ts"
       ],
       "@sps/sps-website-builder-page-contracts": [
-        "libs/modules/sps-website-builder/page/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-page-contracts-extended": [
-        "libs/modules/sps-website-builder/page/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-products-list-block-api": [
-        "libs/modules/sps-website-builder/products-list-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/products-list-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-products-list-block-component": [
-        "libs/modules/sps-website-builder/products-list-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/products-list-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-products-list-block-contracts": [
-        "libs/modules/sps-website-builder/products-list-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/products-list-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-products-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/products-list-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/products-list-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-list-block-api": [
-        "libs/modules/sps-website-builder/reviews-list-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-list-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-list-block-component": [
-        "libs/modules/sps-website-builder/reviews-list-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-list-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-list-block-contracts": [
-        "libs/modules/sps-website-builder/reviews-list-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-list-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/reviews-list-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-list-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-table-block-api": [
-        "libs/modules/sps-website-builder/reviews-table-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-table-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-table-block-component": [
-        "libs/modules/sps-website-builder/reviews-table-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-table-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-table-block-contracts": [
-        "libs/modules/sps-website-builder/reviews-table-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-table-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-reviews-table-block-contracts-extended": [
-        "libs/modules/sps-website-builder/reviews-table-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/reviews-table-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-shopping-cart-block-api": [
-        "libs/modules/sps-website-builder/shopping-cart-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/shopping-cart-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-shopping-cart-block-component": [
-        "libs/modules/sps-website-builder/shopping-cart-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/shopping-cart-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-shopping-cart-block-contracts": [
-        "libs/modules/sps-website-builder/shopping-cart-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/shopping-cart-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-shopping-cart-block-contracts-extended": [
-        "libs/modules/sps-website-builder/shopping-cart-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/shopping-cart-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-sidebar-api": [
-        "libs/modules/sps-website-builder/sidebar/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/sidebar/api/src/index.ts"
       ],
       "@sps/sps-website-builder-sidebar-component": [
-        "libs/modules/sps-website-builder/sidebar/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/sidebar/component/src/index.ts"
       ],
       "@sps/sps-website-builder-sidebar-contracts": [
-        "libs/modules/sps-website-builder/sidebar/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/sidebar/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-sidebar-contracts-extended": [
-        "libs/modules/sps-website-builder/sidebar/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/sidebar/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-api": [
-        "libs/modules/sps-website-builder/slide/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide/api/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-component": [
-        "libs/modules/sps-website-builder/slide/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide/component/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-contracts": [
-        "libs/modules/sps-website-builder/slide/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-contracts-extended": [
-        "libs/modules/sps-website-builder/slide/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-over-api": [
-        "libs/modules/sps-website-builder/slide-over/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide-over/api/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-over-component": [
-        "libs/modules/sps-website-builder/slide-over/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide-over/component/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-over-contracts": [
-        "libs/modules/sps-website-builder/slide-over/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide-over/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-slide-over-contracts-extended": [
-        "libs/modules/sps-website-builder/slide-over/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/slide-over/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-api": [
-        "libs/modules/sps-website-builder/slider/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/api/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-block-api": [
-        "libs/modules/sps-website-builder/slider-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-block-component": [
-        "libs/modules/sps-website-builder/slider-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-block-contracts": [
-        "libs/modules/sps-website-builder/slider-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-block-contracts-extended": [
-        "libs/modules/sps-website-builder/slider-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-component": [
-        "libs/modules/sps-website-builder/slider/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/component/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-contracts": [
-        "libs/modules/sps-website-builder/slider/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-contracts-extended": [
-        "libs/modules/sps-website-builder/slider/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-subscription-checkout-form-block-api": [
-        "libs/modules/sps-website-builder/subscription-checkout-form-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-subscription-checkout-form-block-component": [
-        "libs/modules/sps-website-builder/subscription-checkout-form-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-subscription-checkout-form-block-contracts": [
-        "libs/modules/sps-website-builder/subscription-checkout-form-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-subscription-checkout-form-block-contracts-extended": [
-        "libs/modules/sps-website-builder/subscription-checkout-form-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-theme-api": [
-        "libs/modules/sps-website-builder/theme/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/theme/api/src/index.ts"
       ],
       "@sps/sps-website-builder-theme-component": [
-        "libs/modules/sps-website-builder/theme/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/theme/component/src/index.ts"
       ],
       "@sps/sps-website-builder-theme-contracts": [
-        "libs/modules/sps-website-builder/theme/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/theme/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-theme-contracts-extended": [
-        "libs/modules/sps-website-builder/theme/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/theme/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-tiers-list-block-api": [
-        "libs/modules/sps-website-builder/tiers-list-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/tiers-list-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-tiers-list-block-component": [
-        "libs/modules/sps-website-builder/tiers-list-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/tiers-list-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-tiers-list-block-contracts": [
-        "libs/modules/sps-website-builder/tiers-list-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/tiers-list-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-tiers-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/tiers-list-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/tiers-list-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-topbar-api": [
-        "libs/modules/sps-website-builder/topbar/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/topbar/api/src/index.ts"
       ],
       "@sps/sps-website-builder-topbar-component": [
-        "libs/modules/sps-website-builder/topbar/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/topbar/component/src/index.ts"
       ],
       "@sps/sps-website-builder-topbar-contracts": [
-        "libs/modules/sps-website-builder/topbar/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/topbar/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-topbar-contracts-extended": [
-        "libs/modules/sps-website-builder/topbar/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/topbar/contracts-extended/src/index.ts"
       ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],

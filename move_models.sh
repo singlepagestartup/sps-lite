@@ -3,7 +3,7 @@
 # model_name=$2
 
 module=sps-website-builder
-models=(button buttons-array checkout-form-block contact-section-block contracts contracts-extended cta-section-block edit-subscription-block faq faq-block feature features-section-block flyout font footer footer-block)
+models=(header-section-block)
 folders=(component contracts contracts-extended api)
 
 for model in ${models[@]}; do
@@ -13,5 +13,7 @@ for model in ${models[@]}; do
         fi
     done
 done
+
+
 
 

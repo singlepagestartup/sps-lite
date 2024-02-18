@@ -1,0 +1,32 @@
+{
+  "name": "@sps/sps-website-builder-contact-section-block-contracts-extended",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/modules/sps-website-builder/models/contact-section-block/contracts-extended",
+        "main": "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/src/index.ts",
+        "tsConfig": "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/tsconfig.lib.json",
+        "assets": [
+          "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
