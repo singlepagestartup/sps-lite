@@ -1,4 +1,4 @@
-// import { Component as PageBlocks } from "../../../../../components/page-blocks/component";
+import { Component as PageBlocks } from "@sps/sps-website-builder-page-blocks-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
@@ -8,11 +8,11 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.data.className || ""}
     >
-      {/* <PageBlocks
+      <PageBlocks
         variant="default"
         isServer={props.isServer}
         data={props.data}
-      /> */}
+      />
     </div>
   );
 }

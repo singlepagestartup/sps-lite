@@ -1,4 +1,3 @@
-import { IComponentProps } from "./interface";
 import Client from "./client";
 import Server from "./server";
 import { ReactNode } from "react";

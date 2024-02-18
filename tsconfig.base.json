@@ -113,16 +113,16 @@
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-website-builder-alert-block-api": [
-        "libs/modules/sps-website-builder/alert-block/api/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-component": [
-        "libs/modules/sps-website-builder/alert-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/component/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-contracts": [
-        "libs/modules/sps-website-builder/alert-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-contracts-extended": [
-        "libs/modules/sps-website-builder/alert-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/contracts-extended/src/index.ts"
       ],
       "@sps/sps-website-builder-button-api": [
         "libs/modules/sps-website-builder/button/api/src/index.ts"
@@ -469,17 +469,11 @@
       "@sps/sps-website-builder-page-api": [
         "libs/modules/sps-website-builder/page/api/src/index.ts"
       ],
-      "@sps/sps-website-builder-page-block-api": [
-        "libs/modules/sps-website-builder/page-block/api/src/index.ts"
+      "@sps/sps-website-builder-page-blocks-component": [
+        "libs/modules/sps-website-builder/page-blocks/component/src/index.ts"
       ],
-      "@sps/sps-website-builder-page-block-component": [
-        "libs/modules/sps-website-builder/page-block/component/src/index.ts"
-      ],
-      "@sps/sps-website-builder-page-block-contracts": [
-        "libs/modules/sps-website-builder/page-block/contracts/src/index.ts"
-      ],
-      "@sps/sps-website-builder-page-block-contracts-extended": [
-        "libs/modules/sps-website-builder/page-block/contracts-extended/src/index.ts"
+      "@sps/sps-website-builder-page-blocks-contracts": [
+        "libs/modules/sps-website-builder/page-blocks/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-page-component": [
         "libs/modules/sps-website-builder/page/component/src/index.ts"

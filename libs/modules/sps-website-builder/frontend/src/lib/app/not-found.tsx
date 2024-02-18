@@ -3,7 +3,8 @@
 import { BACKEND_URL, getBackendData } from "@sps/utils";
 import { populate as pagePopulate } from "@sps/sps-website-builder-page-contracts-extended";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-page-contracts";
-import { Component } from "../models/page/component";
+import { Component } from "@sps/sps-website-builder-page-blocks-component";
+import { api } from "@sps/sps-website-builder-page-api";
 
 export async function NotFoundPage() {
   const pages = (await getBackendData({
@@ -19,8 +20,11 @@ export async function NotFoundPage() {
   if (!pages?.length) {
     return <div>Not found</div>;
   }
+  const notFoundPage = await api.server.findOne({ id: pages[0].id });
 
-  return <div>404 | Not found</div>;
+  if (!notFoundPage || !notFoundPage.pageBlocks) {
+    return <div>Not found</div>;
+  }
 
-  // return <Component isServer={true} {...pages[0]} />;
+  return <Component isServer={true} variant="default" data={notFoundPage} />;
 }
