@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as pagePopulate } from "@sps/sps-website-builder-contracts-extended/lib/models/page/populate";
-import { Component as Layout } from "../models/layout/component";
+import { populate as pagePopulate } from "@sps/sps-website-builder-page-contracts";
+import { Component as Layout } from "@sps/sps-website-builder-layout-component";
 
 export function GlobalError({ error, reset, fonts }: any) {
   const [page, setPage] = useState<any>();

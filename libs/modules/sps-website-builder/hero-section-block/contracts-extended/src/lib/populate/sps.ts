@@ -1,4 +1,4 @@
-import { populate as logotypePopulate } from "@sps/sps-website-builder-contracts/lib/models/logotype/populate";
+import { populate as logotypePopulate } from "@sps/sps-website-builder-logotype-contracts";
 import { populate as parentPopulate } from "./sps-lite";
 
 export const populate = {
