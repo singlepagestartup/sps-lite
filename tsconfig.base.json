@@ -17,23 +17,35 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
-      "@sps/sps-billing-contracts": [
-        "libs/modules/sps-billing/contracts/src/index.ts"
+      "@sps/sps-billing-currency-api": [
+        "libs/modules/sps-billing/models/currency/api/src/index.ts"
       ],
-      "@sps/sps-billing-contracts-extended": [
-        "libs/modules/sps-billing/contracts-extended/src/index.ts"
+      "@sps/sps-billing-currency-component": [
+        "libs/modules/sps-billing/models/currency/component/src/index.ts"
       ],
-      "@sps/sps-billing-contracts-extended/*": [
-        "libs/modules/sps-billing/contracts-extended/src/*"
+      "@sps/sps-billing-currency-contracts": [
+        "libs/modules/sps-billing/models/currency/contracts/src/index.ts"
       ],
-      "@sps/sps-billing-contracts/*": [
-        "libs/modules/sps-billing/contracts/src/*"
+      "@sps/sps-billing-currency-contracts-extended": [
+        "libs/modules/sps-billing/models/currency/contracts-extended/src/index.ts"
       ],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/src/index.ts"
       ],
       "@sps/sps-billing-frontend/*": [
         "libs/modules/sps-billing/frontend/src/*"
+      ],
+      "@sps/sps-billing-invoice-api": [
+        "libs/modules/sps-billing/models/invoice/api/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-component": [
+        "libs/modules/sps-billing/models/invoice/component/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-contracts": [
+        "libs/modules/sps-billing/models/invoice/contracts/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-contracts-extended": [
+        "libs/modules/sps-billing/models/invoice/contracts-extended/src/index.ts"
       ],
       "@sps/sps-crm-contracts": ["libs/modules/sps-crm/contracts/src/index.ts"],
       "@sps/sps-crm-contracts-extended": [
