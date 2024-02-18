@@ -469,6 +469,18 @@
       "@sps/sps-website-builder-page-api": [
         "libs/modules/sps-website-builder/page/api/src/index.ts"
       ],
+      "@sps/sps-website-builder-page-block-api": [
+        "libs/modules/sps-website-builder/page-block/api/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-block-component": [
+        "libs/modules/sps-website-builder/page-block/component/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-block-contracts": [
+        "libs/modules/sps-website-builder/page-block/contracts/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-block-contracts-extended": [
+        "libs/modules/sps-website-builder/page-block/contracts-extended/src/index.ts"
+      ],
       "@sps/sps-website-builder-page-component": [
         "libs/modules/sps-website-builder/page/component/src/index.ts"
       ],
