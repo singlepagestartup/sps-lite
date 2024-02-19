@@ -1,9 +1,14 @@
 import { IComponentProps } from "./interface";
 import Client from "./client";
 import Server from "./server";
+import { ReduxProvider } from "@sps/sps-ecommerce-product-component-redux";
 
 export function Component(props: IComponentProps) {
   const Comp = props.isServer ? Server : Client;
 
-  return <Comp {...props} />;
+  return (
+    <ReduxProvider>
+      <Comp {...props} />
+    </ReduxProvider>
+  );
 }

@@ -1,1 +1,1 @@
-export { Component } from "./lib/component";
+export { Component } from "./lib";
