@@ -37,6 +37,9 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # move all files to variant
         mv libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/$variant/* libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib
 
+        # remove old folder
+        rm -rf libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/$folder
+
         # replace $folder in index.ts
         sed -i "" "s/$folder/Component/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
 

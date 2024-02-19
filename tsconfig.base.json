@@ -139,13 +139,22 @@
         "libs/modules/sps-crm/models/review/api/src/index.ts"
       ],
       "@sps/sps-crm-review-component": [
-        "libs/modules/sps-crm/models/review/component/src/index.ts"
+        "libs/modules/sps-crm/models/review/component/root/src/index.ts"
+      ],
+      "@sps/sps-crm-review-component-redux": [
+        "libs/modules/sps-crm/models/review/component/redux/src/index.ts"
+      ],
+      "@sps/sps-crm-review-component-variants-sps-lite-default": [
+        "libs/modules/sps-crm/models/review/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-crm-review-component-variants-sps-lite-list": [
+        "libs/modules/sps-crm/models/review/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-crm-review-contracts": [
-        "libs/modules/sps-crm/models/review/contracts/src/index.ts"
+        "libs/modules/sps-crm/models/review/contracts/root/src/index.ts"
       ],
       "@sps/sps-crm-review-contracts-extended": [
-        "libs/modules/sps-crm/models/review/contracts-extended/src/index.ts"
+        "libs/modules/sps-crm/models/review/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-attribute-api": [
         "libs/modules/sps-ecommerce/models/attribute/api/src/index.ts"
