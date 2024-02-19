@@ -43,7 +43,7 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         mv libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/$variant/* libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib
 
         # replace $folder in index.ts
-        sed -i -e "s/$folder/Component" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
+        sed -i "s/$folder/Component/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
 
         # create export
         echo "export type { IComponentProps, IComponentPropsExtended } from "./lib/interface";export { Component } from "./lib";" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
