@@ -22,4 +22,4 @@ npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir
 cp libs/modules/$module/models/$model_name/component/root/src/lib/redux.tsx libs/modules/$module/models/$model_name/component/redux/src/lib/index.tsx
 
 # write to file
-echo "export { ReduxProvider } from "./lib";" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
+echo "export { ReduxProvider } from './lib';" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
