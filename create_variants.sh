@@ -1,7 +1,7 @@
 #!/bin/bash
 module=sps-crm
 model_name=review
-variants=(default list)
+variants=()
 
 # npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
 
@@ -33,6 +33,10 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/src/lib/
         folder=${folder##*/}
         # to lower case
         folder=$(echo $folder | tr '[:upper:]' '[:lower:]')
-        echo $folder
+        # add folder to variants
+        # variants+=($folder)
+        variant=$folder
+
+        npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
     fi
 done
