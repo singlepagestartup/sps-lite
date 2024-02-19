@@ -56,5 +56,10 @@ mv libs/modules/$module/models/$model_name/component/root/src/lib/component/* li
 # remove old folder
 rm -rf libs/modules/$module/models/$model_name/component/root/src/lib/component
 
-# remove ReduxProvider from index.ts
-sed -i "" "s/import { ReduxProvider } from \"../redux\"\;//g" libs/modules/$module/models/$model_name/component/root/src/lib/index.ts
+# replace in index.ts
+sed -i "" "s/\/component//g" libs/modules/$module/models/$model_name/component/root/src/index.ts
+
+# remove ReduxProvider from root/src/lib/index.tsx
+sed -i "" 's/import { ReduxProvider } from "..\/redux";//g' libs/modules/$module/models/$model_name/component/root/src/lib/index.tsx
+sed -i "" 's/<ReduxProvider>//g' libs/modules/$module/models/$model_name/component/root/src/lib/index.tsx
+sed -i "" 's/<\/ReduxProvider>//g' libs/modules/$module/models/$model_name/component/root/src/lib/index.tsx
