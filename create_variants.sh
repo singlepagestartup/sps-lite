@@ -3,13 +3,13 @@ module=sps-crm
 model_name=review
 variants=(default list)
 
-# npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
+npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
 
 # for variant in ${variants[@]}; do
 #     npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none
 # done
 
-# npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none
+npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none --minimal=true
 
 # # move contracts
 # npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-contracts --destination=libs/modules/$module/models/$model_name/contracts/root
