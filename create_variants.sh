@@ -46,6 +46,6 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         sed -i "s/$folder/Component/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
 
         # create export
-        echo "export type { IComponentProps, IComponentPropsExtended } from "./lib/interface";export { Component } from "./lib";" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
+        echo "export type { IComponentProps, IComponentPropsExtended } from './lib/interface';export { Component } from './lib';" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
     fi
 done
