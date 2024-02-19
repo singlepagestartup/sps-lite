@@ -84,10 +84,10 @@
         "libs/modules/sps-crm/models/form/component/variants/sps-lite/simple/src/index.ts"
       ],
       "@sps/sps-crm-form-contracts": [
-        "libs/modules/sps-crm/models/form/contracts/src/index.ts"
+        "libs/modules/sps-crm/models/form/contracts/root/src/index.ts"
       ],
       "@sps/sps-crm-form-contracts-extended": [
-        "libs/modules/sps-crm/models/form/contracts-extended/src/index.ts"
+        "libs/modules/sps-crm/models/form/contracts/extended/src/index.ts"
       ],
       "@sps/sps-crm-form-request-api": [
         "libs/modules/sps-crm/models/form-request/api/src/index.ts"
