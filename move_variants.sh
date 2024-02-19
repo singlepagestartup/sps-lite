@@ -34,7 +34,7 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # get last string
         folder=${folder##*/}
         # replace uppercase letters with lowercase and dash
-        variant=$(echo $folder | tr '[:upper:]' '[:lower:]' | sed 's/\([A-Z]\)/-\1/g' | sed 's/^-//')
+        variant=$(echo $folder | sed 's/\([A-Z]\)/-\1/g' | sed 's/^-//' | tr '[:upper:]' '[:lower:]')
 
         nx reset
 
