@@ -280,13 +280,22 @@
         "libs/modules/sps-ecommerce/models/order-product/api/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-product-component": [
-        "libs/modules/sps-ecommerce/models/order-product/component/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order-product/component/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-component-redux": [
+        "libs/modules/sps-ecommerce/models/order-product/component/redux/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-component-variants-sps-lite-default": [
+        "libs/modules/sps-ecommerce/models/order-product/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-product-component-variants-sps-lite-list": [
+        "libs/modules/sps-ecommerce/models/order-product/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-product-contracts": [
-        "libs/modules/sps-ecommerce/models/order-product/contracts/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order-product/contracts/root/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-product-contracts-extended": [
-        "libs/modules/sps-ecommerce/models/order-product/contracts-extended/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order-product/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-product-api": [
         "libs/modules/sps-ecommerce/models/product/api/src/index.ts"

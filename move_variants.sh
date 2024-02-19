@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-ecommerce
-model_name=cart
+model_name=order-product
 
 nx reset
 
