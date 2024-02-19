@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-subscription
-model_name=attribute
+model_name=tier
 
 nx reset
 

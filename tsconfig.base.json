@@ -393,25 +393,49 @@
         "libs/modules/sps-subscription/models/attribute/api/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-component": [
-        "libs/modules/sps-subscription/models/attribute/component/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute/component/root/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component-redux": [
+        "libs/modules/sps-subscription/models/attribute/component/redux/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component-variants-sps-lite-default": [
+        "libs/modules/sps-subscription/models/attribute/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component-variants-sps-lite-feature": [
+        "libs/modules/sps-subscription/models/attribute/component/variants/sps-lite/feature/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component-variants-sps-lite-list": [
+        "libs/modules/sps-subscription/models/attribute/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component-variants-sps-lite-price": [
+        "libs/modules/sps-subscription/models/attribute/component/variants/sps-lite/price/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-contracts": [
-        "libs/modules/sps-subscription/models/attribute/contracts/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute/contracts/root/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-contracts-extended": [
-        "libs/modules/sps-subscription/models/attribute/contracts-extended/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute/contracts/extended/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-key-api": [
         "libs/modules/sps-subscription/models/attribute-key/api/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-key-component": [
-        "libs/modules/sps-subscription/models/attribute-key/component/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute-key/component/root/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-component-redux": [
+        "libs/modules/sps-subscription/models/attribute-key/component/redux/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-component-variants-sps-lite-default": [
+        "libs/modules/sps-subscription/models/attribute-key/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-component-variants-sps-lite-list": [
+        "libs/modules/sps-subscription/models/attribute-key/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-key-contracts": [
-        "libs/modules/sps-subscription/models/attribute-key/contracts/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute-key/contracts/root/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-key-contracts-extended": [
-        "libs/modules/sps-subscription/models/attribute-key/contracts-extended/src/index.ts"
+        "libs/modules/sps-subscription/models/attribute-key/contracts/extended/src/index.ts"
       ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/src/index.ts"
@@ -423,25 +447,43 @@
         "libs/modules/sps-subscription/models/subscription/api/src/index.ts"
       ],
       "@sps/sps-subscription-subscription-component": [
-        "libs/modules/sps-subscription/models/subscription/component/src/index.ts"
+        "libs/modules/sps-subscription/models/subscription/component/root/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-component-redux": [
+        "libs/modules/sps-subscription/models/subscription/component/redux/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-component-variants-sps-lite-default": [
+        "libs/modules/sps-subscription/models/subscription/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-component-variants-sps-lite-list": [
+        "libs/modules/sps-subscription/models/subscription/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-subscription-subscription-contracts": [
-        "libs/modules/sps-subscription/models/subscription/contracts/src/index.ts"
+        "libs/modules/sps-subscription/models/subscription/contracts/root/src/index.ts"
       ],
       "@sps/sps-subscription-subscription-contracts-extended": [
-        "libs/modules/sps-subscription/models/subscription/contracts-extended/src/index.ts"
+        "libs/modules/sps-subscription/models/subscription/contracts/extended/src/index.ts"
       ],
       "@sps/sps-subscription-tier-api": [
         "libs/modules/sps-subscription/models/tier/api/src/index.ts"
       ],
       "@sps/sps-subscription-tier-component": [
-        "libs/modules/sps-subscription/models/tier/component/src/index.ts"
+        "libs/modules/sps-subscription/models/tier/component/root/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-component-redux": [
+        "libs/modules/sps-subscription/models/tier/component/redux/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-component-variants-sps-lite-default": [
+        "libs/modules/sps-subscription/models/tier/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-component-variants-sps-lite-list": [
+        "libs/modules/sps-subscription/models/tier/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-subscription-tier-contracts": [
-        "libs/modules/sps-subscription/models/tier/contracts/src/index.ts"
+        "libs/modules/sps-subscription/models/tier/contracts/root/src/index.ts"
       ],
       "@sps/sps-subscription-tier-contracts-extended": [
-        "libs/modules/sps-subscription/models/tier/contracts-extended/src/index.ts"
+        "libs/modules/sps-subscription/models/tier/contracts/extended/src/index.ts"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-website-builder-alert-block-api": [
