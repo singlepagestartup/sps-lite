@@ -659,13 +659,19 @@
         "libs/modules/sps-website-builder/models/logotypes-cloud-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-component": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-logotypes-cloud-block-component-redux": [
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-logotypes-cloud-block-component-variants-sps-lite-simple-with-heading": [
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/component/variants/sps-lite/simple-with-heading/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-contracts": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-logotypes-cloud-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-metatag-api": [
         "libs/modules/sps-website-builder/models/metatag/api/src/index.ts"
