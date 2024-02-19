@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-website-builder
-model_name=logotypes-cloud-block
+model_name=faq
 
 nx reset
 

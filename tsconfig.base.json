@@ -395,73 +395,118 @@
         "libs/modules/sps-website-builder/models/button/api/src/index.ts"
       ],
       "@sps/sps-website-builder-button-component": [
-        "libs/modules/sps-website-builder/models/button/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-component-redux": [
+        "libs/modules/sps-website-builder/models/button/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-button-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/button/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-button-contracts": [
-        "libs/modules/sps-website-builder/models/button/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-button-contracts-extended": [
-        "libs/modules/sps-website-builder/models/button/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-api": [
         "libs/modules/sps-website-builder/models/buttons-array/api/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-component": [
-        "libs/modules/sps-website-builder/models/buttons-array/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-component-redux": [
+        "libs/modules/sps-website-builder/models/buttons-array/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-component-variants-sps-lite-column-with-title": [
+        "libs/modules/sps-website-builder/models/buttons-array/component/variants/sps-lite/column-with-title/src/index.ts"
+      ],
+      "@sps/sps-website-builder-buttons-array-component-variants-sps-lite-row": [
+        "libs/modules/sps-website-builder/models/buttons-array/component/variants/sps-lite/row/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-contracts": [
-        "libs/modules/sps-website-builder/models/buttons-array/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-buttons-array-contracts-extended": [
-        "libs/modules/sps-website-builder/models/buttons-array/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/buttons-array/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-api": [
         "libs/modules/sps-website-builder/models/checkout-form-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-component": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-component-redux": [
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-component-variants-sps-lite-single-step-with-cart": [
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/variants/sps-lite/single-step-with-cart/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-component-variants-sps-lite-single-step-with-product": [
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/variants/sps-lite/single-step-with-product/src/index.ts"
+      ],
+      "@sps/sps-website-builder-checkout-form-block-component-variants-sps-lite-single-step-with-tier": [
+        "libs/modules/sps-website-builder/models/checkout-form-block/component/variants/sps-lite/single-step-with-tier/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-contracts": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-checkout-form-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-api": [
         "libs/modules/sps-website-builder/models/contact-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-component": [
-        "libs/modules/sps-website-builder/models/contact-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-component-redux": [
+        "libs/modules/sps-website-builder/models/contact-section-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-contact-section-block-component-variants-sps-lite-centered": [
+        "libs/modules/sps-website-builder/models/contact-section-block/component/variants/sps-lite/centered/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/contact-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-contact-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/contact-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/contact-section-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-api": [
         "libs/modules/sps-website-builder/models/cta-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-component": [
-        "libs/modules/sps-website-builder/models/cta-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-cta-section-block-component-redux": [
+        "libs/modules/sps-website-builder/models/cta-section-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-cta-section-block-component-variants-sps-lite-dark-with-image": [
+        "libs/modules/sps-website-builder/models/cta-section-block/component/variants/sps-lite/dark-with-image/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/cta-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-cta-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/cta-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/cta-section-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-api": [
         "libs/modules/sps-website-builder/models/edit-subscription-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-component": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-edit-subscription-block-component-redux": [
+        "libs/modules/sps-website-builder/models/edit-subscription-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-edit-subscription-block-component-variants-sps-lite-simple": [
+        "libs/modules/sps-website-builder/models/edit-subscription-block/component/variants/sps-lite/simple/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-contracts": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-edit-subscription-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-api": [
         "libs/modules/sps-website-builder/models/faq/api/src/index.ts"
