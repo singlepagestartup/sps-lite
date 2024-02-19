@@ -115,13 +115,37 @@
         "libs/modules/sps-crm/models/input/api/src/index.ts"
       ],
       "@sps/sps-crm-input-component": [
-        "libs/modules/sps-crm/models/input/component/src/index.ts"
+        "libs/modules/sps-crm/models/input/component/root/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-redux": [
+        "libs/modules/sps-crm/models/input/component/redux/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-date": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/date/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-file": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/file/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-listbox": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/listbox/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-radiogroup": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/radiogroup/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-range": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/range/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-switch": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/switch/src/index.ts"
+      ],
+      "@sps/sps-crm-input-component-variants-sps-lite-text": [
+        "libs/modules/sps-crm/models/input/component/variants/sps-lite/text/src/index.ts"
       ],
       "@sps/sps-crm-input-contracts": [
-        "libs/modules/sps-crm/models/input/contracts/src/index.ts"
+        "libs/modules/sps-crm/models/input/contracts/root/src/index.ts"
       ],
       "@sps/sps-crm-input-contracts-extended": [
-        "libs/modules/sps-crm/models/input/contracts-extended/src/index.ts"
+        "libs/modules/sps-crm/models/input/contracts/extended/src/index.ts"
       ],
       "@sps/sps-crm-input-option-api": [
         "libs/modules/sps-crm/models/input-option/api/src/index.ts"
