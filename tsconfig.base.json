@@ -815,13 +815,19 @@
         "libs/modules/sps-website-builder/models/modal/api/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-component": [
-        "libs/modules/sps-website-builder/models/modal/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-modal-component-redux": [
+        "libs/modules/sps-website-builder/models/modal/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-modal-component-variants-sps-lite-simple": [
+        "libs/modules/sps-website-builder/models/modal/component/variants/sps-lite/simple/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-contracts": [
-        "libs/modules/sps-website-builder/models/modal/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-modal-contracts-extended": [
-        "libs/modules/sps-website-builder/models/modal/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/modal/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-navbar-api": [
         "libs/modules/sps-website-builder/models/navbar/api/src/index.ts"
@@ -890,13 +896,19 @@
         "libs/modules/sps-website-builder/models/page-blocks/contracts/src/index.ts"
       ],
       "@sps/sps-website-builder-page-component": [
-        "libs/modules/sps-website-builder/models/page/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-component-redux": [
+        "libs/modules/sps-website-builder/models/page/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-page-component-variants-sps-lite-simple": [
+        "libs/modules/sps-website-builder/models/page/component/variants/sps-lite/simple/src/index.ts"
       ],
       "@sps/sps-website-builder-page-contracts": [
-        "libs/modules/sps-website-builder/models/page/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-page-contracts-extended": [
-        "libs/modules/sps-website-builder/models/page/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/page/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-products-list-block-api": [
         "libs/modules/sps-website-builder/models/products-list-block/api/src/index.ts"
@@ -1046,13 +1058,19 @@
         "libs/modules/sps-website-builder/models/slider-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-component": [
-        "libs/modules/sps-website-builder/models/slider/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-slider-component-redux": [
+        "libs/modules/sps-website-builder/models/slider/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-slider-component-variants-sps-lite-fade-with-previews": [
+        "libs/modules/sps-website-builder/models/slider/component/variants/sps-lite/fade-with-previews/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-contracts": [
-        "libs/modules/sps-website-builder/models/slider/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-slider-contracts-extended": [
-        "libs/modules/sps-website-builder/models/slider/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/slider/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-subscription-checkout-form-block-api": [
         "libs/modules/sps-website-builder/models/subscription-checkout-form-block/api/src/index.ts"

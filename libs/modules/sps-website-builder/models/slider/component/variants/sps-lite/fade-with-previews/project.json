@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-website-builder-slider-component-variants-sps-lite-fade-with-previews",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/slider/component/variants/sps-lite/fade-with-previews/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-website-builder/models/slider/component/variants/sps-lite/fade-with-previews/jest.config.ts"
+      }
+    }
+  }
+}

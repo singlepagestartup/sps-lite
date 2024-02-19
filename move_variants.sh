@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-website-builder
-model_name=modal
+model_name=slider
 
 nx reset
 

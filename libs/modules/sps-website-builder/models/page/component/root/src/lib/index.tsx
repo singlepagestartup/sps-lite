@@ -2,11 +2,7 @@ import { IComponentProps } from "./interface";
 import { variants } from "./variants";
 
 export function Component(props: IComponentProps) {
-  const Comp = variants[props.variant];
-
-  if (!Comp) {
-    return <></>;
-  }
+  const Comp = variants["simple"];
 
   // type guards works on component rendering
   // as any here is required for dynamic import
