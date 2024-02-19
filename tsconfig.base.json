@@ -581,13 +581,19 @@
         "libs/modules/sps-website-builder/models/hero-section-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-component": [
-        "libs/modules/sps-website-builder/models/hero-section-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-component-redux": [
+        "libs/modules/sps-website-builder/models/hero-section-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-component-variants-sps-lite-simple-centered": [
+        "libs/modules/sps-website-builder/models/hero-section-block/component/variants/sps-lite/simple-centered/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/hero-section-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/hero-section-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/hero-section-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-incentives-block-api": [
         "libs/modules/sps-website-builder/models/incentives-block/api/src/index.ts"
