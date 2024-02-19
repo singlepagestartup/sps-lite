@@ -9,5 +9,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-website-builder/models/shopping-cart-block/contracts/extended',
+    "../../../../../../../coverage/libs/modules/sps-website-builder/models/shopping-cart-block/contracts/extended",
 };

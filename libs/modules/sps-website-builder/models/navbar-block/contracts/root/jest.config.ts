@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-website-builder/models/navbar-block/contracts/root',
+    "../../../../../../../coverage/libs/modules/sps-website-builder/models/navbar-block/contracts/root",
 };

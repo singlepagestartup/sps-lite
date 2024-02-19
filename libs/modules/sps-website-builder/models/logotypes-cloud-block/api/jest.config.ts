@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../coverage/libs/modules/sps-website-builder/models/logotypes-cloud-block/api',
+    "../../../../../../coverage/libs/modules/sps-website-builder/models/logotypes-cloud-block/api",
 };

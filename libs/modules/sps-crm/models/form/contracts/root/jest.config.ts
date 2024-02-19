@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-crm/models/form/contracts/root',
+    "../../../../../../../coverage/libs/modules/sps-crm/models/form/contracts/root",
 };

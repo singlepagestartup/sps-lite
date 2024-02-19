@@ -9,5 +9,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts/root',
+    "../../../../../../../coverage/libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts/root",
 };

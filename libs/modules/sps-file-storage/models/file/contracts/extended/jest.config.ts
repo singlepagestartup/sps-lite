@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-file-storage/models/file/contracts/extended',
+    "../../../../../../../coverage/libs/modules/sps-file-storage/models/file/contracts/extended",
 };

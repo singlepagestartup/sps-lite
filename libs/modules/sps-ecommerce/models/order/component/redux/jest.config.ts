@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-ecommerce/models/order/component/redux',
+    "../../../../../../../coverage/libs/modules/sps-ecommerce/models/order/component/redux",
 };

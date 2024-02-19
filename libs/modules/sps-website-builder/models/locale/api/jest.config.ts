@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../coverage/libs/modules/sps-website-builder/models/locale/api',
+    "../../../../../../coverage/libs/modules/sps-website-builder/models/locale/api",
 };

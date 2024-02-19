@@ -8,9 +8,7 @@
   "attributes": {
     "variant": {
       "type": "enumeration",
-      "enum": [
-        "single-step"
-      ],
+      "enum": ["single-step"],
       "default": "single-step",
       "required": true
     },
@@ -30,22 +28,12 @@
       "type": "string"
     },
     "media": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": true
     },
     "additional_media": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": true
     }

@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-rbac/models/user/contracts/extended',
+    "../../../../../../../coverage/libs/modules/sps-rbac/models/user/contracts/extended",
 };

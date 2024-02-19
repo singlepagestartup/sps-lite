@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-website-builder/models/slide-over/component/root',
+    "../../../../../../../coverage/libs/modules/sps-website-builder/models/slide-over/component/root",
 };

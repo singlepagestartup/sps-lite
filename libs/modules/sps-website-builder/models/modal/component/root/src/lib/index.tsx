@@ -13,7 +13,6 @@ import type { IModel as IBackendModal } from "@sps/sps-website-builder-modal-con
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-page-contracts";
 import { getTargetPage } from "@sps/utils";
 
-
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;
   showSkeletons?: boolean;
@@ -96,7 +95,7 @@ export function Component({ modals = [] }: { modals?: IModal[] }) {
   return <></>;
 
   // return (
-  //   
+  //
   //     <Comp
   //       variant={modalProps.variant}
   //       data={modalProps}
@@ -104,6 +103,6 @@ export function Component({ modals = [] }: { modals?: IModal[] }) {
   //       closeModal={closeModal}
   //       showSkeletons={isLoading || isFetching}
   //     />
-  //   
+  //
   // );
 }

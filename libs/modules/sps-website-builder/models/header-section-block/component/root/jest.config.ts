@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   coverageDirectory:
-    "../../../../../../../coverage/libs/modules/sps-website-builder/models/header-section-block/component/root',
+    "../../../../../../../coverage/libs/modules/sps-website-builder/models/header-section-block/component/root",
 };
