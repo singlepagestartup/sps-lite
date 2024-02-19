@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-website-builder
-model_name=alert-block
+model_name=hero-section-block
 
 nx reset
 
@@ -33,8 +33,8 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
     if [ -d $folder ]; then
         # get last string
         folder=${folder##*/}
-        # to lower case
-        variant=$(echo $folder | tr '[:upper:]' '[:lower:]')
+        # replace uppercase letters with lowercase and dash
+        variant=$(echo $folder | tr '[:upper:]' '[:lower:]' | sed 's/\([A-Z]\)/-\1/g' | sed 's/^-//')
 
         nx reset
 
