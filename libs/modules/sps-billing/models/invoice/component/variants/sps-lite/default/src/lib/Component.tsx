@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { Component as Order } from "@sps/sps-ecommerce-order-component-variants-default";
+// import { Component as Order } from "@sps/sps-ecommerce-order-component-variants-sps-lite-default";
 // import { Component as Order } from "@sps/sps-ecommerce-order-component";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-invoice-component-variants-list",
+  "name": "@sps/sps-billing-invoice-component-variants-sps-lite-list",
   "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/list/src",
   "projectType": "library",

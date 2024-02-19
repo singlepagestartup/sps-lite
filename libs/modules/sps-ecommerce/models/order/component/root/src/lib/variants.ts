@@ -1,9 +1,7 @@
-import { Component as Default } from "@sps/sps-ecommerce-order-component-variants-default";
-import { Component as List } from "@sps/sps-ecommerce-order-component-variants-list";
-import { Component as Checkout } from "@sps/sps-ecommerce-order-component-variants-checkout";
+import { variants as spsLiteVariants } from "./sps-lite/variants";
+import { variants as startupVariants } from "./startup/variants";
 
 export const variants = {
-  default: Default,
-  list: List,
-  checkout: Checkout,
+  ...spsLiteVariants,
+  ...startupVariants,
 };
