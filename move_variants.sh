@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-ecommerce
-model_name=attribute
+model_name=attribute-key
 
 nx reset
 
@@ -49,3 +49,12 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         echo "export type { IComponentProps, IComponentPropsExtended } from './lib/interface';export { Component } from './lib';" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
     fi
 done
+
+# move everything from /component folder to lib
+mv libs/modules/$module/models/$model_name/component/root/src/lib/component/* libs/modules/$module/models/$model_name/component/root/src/lib
+
+# remove old folder
+rm -rf libs/modules/$module/models/$model_name/component/root/src/lib/component
+
+# remove ReduxProvider from index.ts
+sed -i "" "s/import { ReduxProvider } from \"../redux\"\;//g" libs/modules/$module/models/$model_name/component/root/src/lib/index.ts
