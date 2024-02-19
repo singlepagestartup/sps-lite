@@ -1,8 +1,8 @@
 import { useSearchParams } from "next/navigation";
 import QueryString from "qs";
 import { useMemo } from "react";
-import type { IModelExtended as IForm } from "../../models/form/model";
-import { IModelExtended as IInput } from "../../models/input/model";
+import type { IModel as IForm } from "@sps/sps-crm-form-contracts-extended";
+import { IModel as IInput } from "@sps/sps-crm-input-contracts-extended";
 
 export function useGetPreparedFormInputs(props: IForm) {
   const searchParams = useSearchParams();

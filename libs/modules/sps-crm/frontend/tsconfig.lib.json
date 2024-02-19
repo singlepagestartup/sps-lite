@@ -15,5 +15,13 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../models/form/api/src/lib/model.ts",
+    "../models/form/component/src/lib/redux.tsx",
+    "../models/input/api/src/lib/model.ts"
+  ]
 }
