@@ -301,13 +301,28 @@
         "libs/modules/sps-ecommerce/models/product/api/src/index.ts"
       ],
       "@sps/sps-ecommerce-product-component": [
-        "libs/modules/sps-ecommerce/models/product/component/src/index.ts"
+        "libs/modules/sps-ecommerce/models/product/component/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component-redux": [
+        "libs/modules/sps-ecommerce/models/product/component/redux/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component-variants-sps-lite-default": [
+        "libs/modules/sps-ecommerce/models/product/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component-variants-sps-lite-id-from-url": [
+        "libs/modules/sps-ecommerce/models/product/component/variants/sps-lite/id-from-url/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component-variants-sps-lite-in-cart": [
+        "libs/modules/sps-ecommerce/models/product/component/variants/sps-lite/in-cart/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-product-component-variants-sps-lite-list": [
+        "libs/modules/sps-ecommerce/models/product/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-product-contracts": [
-        "libs/modules/sps-ecommerce/models/product/contracts/src/index.ts"
+        "libs/modules/sps-ecommerce/models/product/contracts/root/src/index.ts"
       ],
       "@sps/sps-ecommerce-product-contracts-extended": [
-        "libs/modules/sps-ecommerce/models/product/contracts-extended/src/index.ts"
+        "libs/modules/sps-ecommerce/models/product/contracts/extended/src/index.ts"
       ],
       "@sps/sps-file-storage-contracts": [
         "libs/modules/sps-file-storage/contracts/src/index.ts"

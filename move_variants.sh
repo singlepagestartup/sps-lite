@@ -1,15 +1,20 @@
 #!/bin/bash
 module=sps-ecommerce
-model_name=order-product
+model_name=product
 
 nx reset
 
 npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
 
+nx reset
+
 npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none --minimal=true --component=false
 
 # move contracts
+nx reset
+
 npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-contracts --destination=libs/modules/$module/models/$model_name/contracts/root
+nx reset
 npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-contracts-extended --destination=libs/modules/$module/models/$model_name/contracts/extended
 
 mkdir -p libs/modules/$module/models/$model_name/component/variants/startup
@@ -31,6 +36,8 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # to lower case
         variant=$(echo $folder | tr '[:upper:]' '[:lower:]')
 
+        nx reset
+
         npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
 
         # create lib
@@ -50,6 +57,10 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
 
         # replace import in component/sps-lite/interfaces.ts
         sed -i "" "s/.\/$folder\/interface/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/interface.ts
+
+        sed -i "" "s/{ $folder }/{ Component as $folder }/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.ts
+
+        sed -i "" "s/.\/$folder/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.ts
     fi
 done
 
