@@ -26,7 +26,7 @@ npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component 
 # echo "export { ReduxProvider } from './lib';" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
 
 # read folders names
-for folder in $(ls -d libs/modules/$module/models/$model_name/component/src/lib/component/sps-lite/*); do
+for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/*); do
     # check is directory
     if [ -d $folder ]; then
         # get last string
