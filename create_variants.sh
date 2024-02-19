@@ -9,7 +9,7 @@ npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component 
 #     npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none
 # done
 
-npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none --minimal=true
+npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none --minimal=true --component=false
 
 # # move contracts
 # npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-contracts --destination=libs/modules/$module/models/$model_name/contracts/root
@@ -19,7 +19,8 @@ npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir
 # touch libs/modules/$module/models/$model_name/component/variants/startup/.gitkeep
 
 # copy file
-cp libs/modules/$module/models/$model_name/component/root/src/lib/redux.tsx libs/modules/$module/models/$model_name/component/redux/src/lib/index.tsx
+mkdir -p libs/modules/$module/models/$model_name/component/redux/src/lib
+mv libs/modules/$module/models/$model_name/component/root/src/lib/redux.tsx libs/modules/$module/models/$model_name/component/redux/src/lib/index.tsx
 
 # write to file
 echo "export { ReduxProvider } from './lib';" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
