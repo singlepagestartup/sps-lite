@@ -1,6 +1,8 @@
 #!/bin/bash
 module=sps-crm
-model_name=review
+model_name=input
+
+nx reset
 
 npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
 
