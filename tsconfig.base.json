@@ -354,14 +354,32 @@
       "@sps/sps-rbac-contracts/*": ["libs/modules/sps-rbac/contracts/src/*"],
       "@sps/sps-rbac-frontend": ["libs/modules/sps-rbac/frontend/src/index.ts"],
       "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
+      "@sps/sps-subscription-attribute-api": [
+        "libs/modules/sps-subscription/models/attribute/api/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-component": [
+        "libs/modules/sps-subscription/models/attribute/component/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-contracts": [
+        "libs/modules/sps-subscription/models/attribute/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-contracts-extended": [
+        "libs/modules/sps-subscription/models/attribute/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-api": [
+        "libs/modules/sps-subscription/models/attribute-key/api/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-component": [
+        "libs/modules/sps-subscription/models/attribute-key/component/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-contracts": [
+        "libs/modules/sps-subscription/models/attribute-key/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-attribute-key-contracts-extended": [
+        "libs/modules/sps-subscription/models/attribute-key/contracts-extended/src/index.ts"
+      ],
       "@sps/sps-subscription-contracts": [
         "libs/modules/sps-subscription/contracts/src/index.ts"
-      ],
-      "@sps/sps-subscription-contracts-extended": [
-        "libs/modules/sps-subscription/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-subscription-contracts-extended/*": [
-        "libs/modules/sps-subscription/contracts-extended/src/*"
       ],
       "@sps/sps-subscription-contracts/*": [
         "libs/modules/sps-subscription/contracts/src/*"
@@ -371,6 +389,30 @@
       ],
       "@sps/sps-subscription-frontend/*": [
         "libs/modules/sps-subscription/frontend/src/*"
+      ],
+      "@sps/sps-subscription-subscription-api": [
+        "libs/modules/sps-subscription/models/subscription/api/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-component": [
+        "libs/modules/sps-subscription/models/subscription/component/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-contracts": [
+        "libs/modules/sps-subscription/models/subscription/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-subscription-contracts-extended": [
+        "libs/modules/sps-subscription/models/subscription/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-api": [
+        "libs/modules/sps-subscription/models/tier/api/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-component": [
+        "libs/modules/sps-subscription/models/tier/component/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-contracts": [
+        "libs/modules/sps-subscription/models/tier/contracts/src/index.ts"
+      ],
+      "@sps/sps-subscription-tier-contracts-extended": [
+        "libs/modules/sps-subscription/models/tier/contracts-extended/src/index.ts"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-website-builder-alert-block-api": [

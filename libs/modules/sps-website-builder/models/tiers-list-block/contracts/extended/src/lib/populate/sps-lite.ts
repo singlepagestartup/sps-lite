@@ -1,5 +1,5 @@
 import { populate as parentPopulate } from "@sps/sps-website-builder-tiers-list-block-contracts";
-import { populate as tierPopulate } from "@sps/sps-subscription-contracts/lib/models/tier/populate";
+import { populate as tierPopulate } from "@sps/sps-subscription-tier-contracts";
 import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/models/file/populate";
 
 export const populate = {

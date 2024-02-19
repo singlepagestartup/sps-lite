@@ -1,5 +1,5 @@
 import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-tiers-list-block-contracts";
-import { entity as tier } from "@sps/sps-subscription-contracts/lib/models/tier/mock/sps-lite";
+import { spsLiteEntity as tier } from "@sps/sps-subscription-tier-contracts";
 import type { IModel } from "../interfaces/sps-lite";
 
 export const entity: IModel = {

@@ -2,16 +2,28 @@
 # directory=$1
 # model_name=$2
 
-# npx nx g @nx/react:library --name=@sps/$1-$2-component --dir=libs/modules/$1/models/$2/component --bundler=none --compiler=babel --style=none
-# npx nx g @nx/react:library --name=@sps/$1-$2-component-redux --dir=libs/modules/$1/models/$2/component/redux --bundler=none --compiler=babel --style=none
-# npx nx g @nx/js:lib --name=@sps/$1-$2-contracts --directory=libs/modules/$1/models/$2/contracts --bundler=tsc --unitTestRunner=jest
-# npx nx g @nx/js:lib --name=@sps/$1-$2-contracts-extended --directory=libs/modules/$1/models/$2/contracts-extended --bundler=tsc --unitTestRunner=jest
-# npx nx g @nx/react:library --name=@sps/$1-$2-api --dir=libs/modules/$1/models/$2/api --bundler=none --compiler=babel --style=none
+directory=sps-subscription
+model_name=tier
 
-module=sps-billing
-model_name=currency
-variants=(default list)
+nx reset
+npx nx g @nx/react:library --name=@sps/$directory-$model_name-component --dir=libs/modules/$directory/models/$model_name/component --bundler=none --compiler=babel --style=none
 
-for variant in ${variants[@]}; do
-    npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none
-done
+nx reset
+npx nx g @nx/react:library --name=@sps/$directory-$model_name-component-redux --dir=libs/modules/$directory/models/$model_name/component/redux --bundler=none --compiler=babel --style=none
+
+nx reset
+npx nx g @nx/js:lib --name=@sps/$directory-$model_name-contracts --directory=libs/modules/$directory/models/$model_name/contracts --bundler=tsc --unitTestRunner=jest
+
+nx reset
+npx nx g @nx/js:lib --name=@sps/$directory-$model_name-contracts-extended --directory=libs/modules/$directory/models/$model_name/contracts-extended --bundler=tsc --unitTestRunner=jest
+
+nx reset
+npx nx g @nx/react:library --name=@sps/$directory-$model_name-api --dir=libs/modules/$directory/models/$model_name/api --bundler=none --compiler=babel --style=none
+
+# module=sps-billing
+# model_name=currency
+# variants=(default list)
+
+# for variant in ${variants[@]}; do
+#     npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none
+# done
