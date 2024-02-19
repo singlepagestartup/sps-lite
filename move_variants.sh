@@ -1,6 +1,6 @@
 #!/bin/bash
-module=sps-rbac
-model_name=user
+module=sps-subscription
+model_name=attribute
 
 nx reset
 

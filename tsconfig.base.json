@@ -357,25 +357,37 @@
         "libs/modules/sps-rbac/models/role/api/src/index.ts"
       ],
       "@sps/sps-rbac-role-component": [
-        "libs/modules/sps-rbac/models/role/component/src/index.ts"
+        "libs/modules/sps-rbac/models/role/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-role-component-redux": [
+        "libs/modules/sps-rbac/models/role/component/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-role-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/role/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-rbac-role-contracts": [
-        "libs/modules/sps-rbac/models/role/contracts/src/index.ts"
+        "libs/modules/sps-rbac/models/role/contracts/root/src/index.ts"
       ],
       "@sps/sps-rbac-role-contracts-extended": [
-        "libs/modules/sps-rbac/models/role/contracts-extended/src/index.ts"
+        "libs/modules/sps-rbac/models/role/contracts/extended/src/index.ts"
       ],
       "@sps/sps-rbac-user-api": [
         "libs/modules/sps-rbac/models/user/api/src/index.ts"
       ],
       "@sps/sps-rbac-user-component": [
-        "libs/modules/sps-rbac/models/user/component/src/index.ts"
+        "libs/modules/sps-rbac/models/user/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-component-redux": [
+        "libs/modules/sps-rbac/models/user/component/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/user/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-rbac-user-contracts": [
-        "libs/modules/sps-rbac/models/user/contracts/src/index.ts"
+        "libs/modules/sps-rbac/models/user/contracts/root/src/index.ts"
       ],
       "@sps/sps-rbac-user-contracts-extended": [
-        "libs/modules/sps-rbac/models/user/contracts-extended/src/index.ts"
+        "libs/modules/sps-rbac/models/user/contracts/extended/src/index.ts"
       ],
       "@sps/sps-subscription-attribute-api": [
         "libs/modules/sps-subscription/models/attribute/api/src/index.ts"
