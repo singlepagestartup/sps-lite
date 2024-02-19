@@ -377,13 +377,19 @@
         "libs/modules/sps-website-builder/models/alert-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-component": [
-        "libs/modules/sps-website-builder/models/alert-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-alert-block-component-redux": [
+        "libs/modules/sps-website-builder/models/alert-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-alert-block-component-variants-sps-lite-centered": [
+        "libs/modules/sps-website-builder/models/alert-block/component/variants/sps-lite/centered/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-contracts": [
-        "libs/modules/sps-website-builder/models/alert-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-alert-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/alert-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/alert-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-button-api": [
         "libs/modules/sps-website-builder/models/button/api/src/index.ts"

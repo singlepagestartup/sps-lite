@@ -55,6 +55,17 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # create export
         echo "export type { IComponentProps, IComponentPropsExtended } from './lib/interface';export { Component } from './lib';" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
 
+        # add ReduxProvider
+        importServer="import Server from \".\/server\"\;"
+        importReduxProvider="import { ReduxProvider } from \"@sps\/$module-$model_name-component-redux\"\;"
+
+        sed -i "" "s/$importServer/$importServer$importReduxProvider/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
+
+        returnComponent="return <Comp {...props} \/>\;"
+        returnReduxProvider="return <ReduxProvider><Comp {...props} \/><\/ReduxProvider>\;"
+
+        sed -i "" "s/$returnComponent/$returnReduxProvider/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
+
         # replace import in component/sps-lite/interfaces.ts
         sed -i "" "s/.\/$folder\/interface/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/interface.ts
 
