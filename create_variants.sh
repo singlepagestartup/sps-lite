@@ -3,6 +3,8 @@ module=sps-crm
 model_name=form-request
 variants=(simple list)
 
+npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
+
 for variant in ${variants[@]}; do
     npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none
 done

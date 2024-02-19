@@ -1,0 +1,32 @@
+{
+  "name": "@sps/sps-crm-form-request-contracts-extended",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/form-request/contracts/extended/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/modules/sps-crm/models/form-request/contracts/extended",
+        "main": "libs/modules/sps-crm/models/form-request/contracts/extended/src/index.ts",
+        "tsConfig": "libs/modules/sps-crm/models/form-request/contracts/extended/tsconfig.lib.json",
+        "assets": [
+          "libs/modules/sps-crm/models/form-request/contracts/extended/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-crm/models/form-request/contracts/extended/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

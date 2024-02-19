@@ -93,13 +93,22 @@
         "libs/modules/sps-crm/models/form-request/api/src/index.ts"
       ],
       "@sps/sps-crm-form-request-component": [
-        "libs/modules/sps-crm/models/form-request/component/src/index.ts"
+        "libs/modules/sps-crm/models/form-request/component/root/src/index.ts"
+      ],
+      "@sps/sps-crm-form-request-component-redux": [
+        "libs/modules/sps-crm/models/form-request/component/redux/src/index.ts"
+      ],
+      "@sps/sps-crm-form-request-component-variants-sps-lite-list": [
+        "libs/modules/sps-crm/models/form-request/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-crm-form-request-component-variants-sps-lite-simple": [
+        "libs/modules/sps-crm/models/form-request/component/variants/sps-lite/simple/src/index.ts"
       ],
       "@sps/sps-crm-form-request-contracts": [
-        "libs/modules/sps-crm/models/form-request/contracts/src/index.ts"
+        "libs/modules/sps-crm/models/form-request/contracts/root/src/index.ts"
       ],
       "@sps/sps-crm-form-request-contracts-extended": [
-        "libs/modules/sps-crm/models/form-request/contracts-extended/src/index.ts"
+        "libs/modules/sps-crm/models/form-request/contracts/extended/src/index.ts"
       ],
       "@sps/sps-crm-frontend": ["libs/modules/sps-crm/frontend/src/index.ts"],
       "@sps/sps-crm-input-api": [
