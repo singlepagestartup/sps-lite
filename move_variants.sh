@@ -69,13 +69,11 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # replace import in component/sps-lite/interfaces.ts
         sed -i "" "s/.\/$folder\/interface/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/interface.ts
 
-        sed -i "" "s/{ $folder }/{ Component as $folder }/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.tsx
+        sed -i "" "s/{ $folder }/{ Component as $folder }/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.ts
 
-        sed -i "" "s/.\/$folder/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.tsx
+        sed -i "" "s/.\/$folder/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/variants.ts
     fi
 done
-
-sleep 5
 
 # move everything from /component folder to lib
 mv libs/modules/$module/models/$model_name/component/root/src/lib/component/* libs/modules/$module/models/$model_name/component/root/src/lib
