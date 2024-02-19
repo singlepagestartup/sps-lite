@@ -187,13 +187,22 @@
         "libs/modules/sps-ecommerce/models/attribute/api/src/index.ts"
       ],
       "@sps/sps-ecommerce-attribute-component": [
-        "libs/modules/sps-ecommerce/models/attribute/component/src/index.ts"
+        "libs/modules/sps-ecommerce/models/attribute/component/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-component-redux": [
+        "libs/modules/sps-ecommerce/models/attribute/component/redux/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-component-variants-sps-lite-default": [
+        "libs/modules/sps-ecommerce/models/attribute/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-attribute-component-variants-sps-lite-list": [
+        "libs/modules/sps-ecommerce/models/attribute/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-attribute-contracts": [
-        "libs/modules/sps-ecommerce/models/attribute/contracts/src/index.ts"
+        "libs/modules/sps-ecommerce/models/attribute/contracts/root/src/index.ts"
       ],
       "@sps/sps-ecommerce-attribute-contracts-extended": [
-        "libs/modules/sps-ecommerce/models/attribute/contracts-extended/src/index.ts"
+        "libs/modules/sps-ecommerce/models/attribute/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-attribute-key-api": [
         "libs/modules/sps-ecommerce/models/attribute-key/api/src/index.ts"

@@ -1,6 +1,6 @@
 #!/bin/bash
-module=sps-crm
-model_name=input-option
+module=sps-ecommerce
+model_name=attribute
 
 nx reset
 
