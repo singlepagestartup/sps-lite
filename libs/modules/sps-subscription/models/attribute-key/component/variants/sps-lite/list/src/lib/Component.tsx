@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Tier } from "../../";
+import { Component as Tier } from "@sps/sps-subscription-attribute-key-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
   return (
