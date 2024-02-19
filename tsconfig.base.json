@@ -229,13 +229,22 @@
         "libs/modules/sps-ecommerce/models/cart/api/src/index.ts"
       ],
       "@sps/sps-ecommerce-cart-component": [
-        "libs/modules/sps-ecommerce/models/cart/component/src/index.ts"
+        "libs/modules/sps-ecommerce/models/cart/component/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-component-redux": [
+        "libs/modules/sps-ecommerce/models/cart/component/redux/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-component-variants-sps-lite-default": [
+        "libs/modules/sps-ecommerce/models/cart/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-cart-component-variants-sps-lite-list": [
+        "libs/modules/sps-ecommerce/models/cart/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-cart-contracts": [
-        "libs/modules/sps-ecommerce/models/cart/contracts/src/index.ts"
+        "libs/modules/sps-ecommerce/models/cart/contracts/root/src/index.ts"
       ],
       "@sps/sps-ecommerce-cart-contracts-extended": [
-        "libs/modules/sps-ecommerce/models/cart/contracts-extended/src/index.ts"
+        "libs/modules/sps-ecommerce/models/cart/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend": [
         "libs/modules/sps-ecommerce/frontend/src/index.ts"

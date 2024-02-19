@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-ecommerce
-model_name=attribute-key
+model_name=cart
 
 nx reset
 
@@ -47,6 +47,9 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
 
         # create export
         echo "export type { IComponentProps, IComponentPropsExtended } from './lib/interface';export { Component } from './lib';" > libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/index.ts
+
+        # replace import in component/sps-lite/interfaces.ts
+        sed -i "" "s/.\/$folder\/interface/@sps\/$module-$model_name-component-variants-sps-lite-$variant/g" libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/interface.ts
     fi
 done
 
