@@ -32,10 +32,7 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         # get last string
         folder=${folder##*/}
         # to lower case
-        folder=$(echo $folder | tr '[:upper:]' '[:lower:]')
-        # add folder to variants
-        # variants+=($folder)
-        variant=$folder
+        variant=$(echo $folder | tr '[:upper:]' '[:lower:]')
 
         npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
 
@@ -44,5 +41,11 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
 
         # move all files to variant
         mv libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/$variant/* libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib
+
+        # replace $folder in index.ts
+        sed -i "s/$folder/Component/g" libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib/index.tsx
+
+        # create export
+        echo "export type { IComponentProps, IComponentPropsExtended } from "./lib/interface";export { Component } from "./lib";" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
     fi
 done
