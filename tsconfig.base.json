@@ -710,13 +710,22 @@
         "libs/modules/sps-website-builder/models/layout/api/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-component": [
-        "libs/modules/sps-website-builder/models/layout/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-layout-component-redux": [
+        "libs/modules/sps-website-builder/models/layout/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-layout-component-variants-sps-lite-boxed": [
+        "libs/modules/sps-website-builder/models/layout/component/variants/sps-lite/boxed/src/index.ts"
+      ],
+      "@sps/sps-website-builder-layout-component-variants-sps-lite-wide": [
+        "libs/modules/sps-website-builder/models/layout/component/variants/sps-lite/wide/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-contracts": [
-        "libs/modules/sps-website-builder/models/layout/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-layout-contracts-extended": [
-        "libs/modules/sps-website-builder/models/layout/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/layout/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-loader-api": [
         "libs/modules/sps-website-builder/models/loader/api/src/index.ts"
