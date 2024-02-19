@@ -324,12 +324,6 @@
       "@sps/sps-ecommerce-product-contracts-extended": [
         "libs/modules/sps-ecommerce/models/product/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-file-storage-contracts": [
-        "libs/modules/sps-file-storage/contracts/src/index.ts"
-      ],
-      "@sps/sps-file-storage-contracts/*": [
-        "libs/modules/sps-file-storage/contracts/src/*"
-      ],
       "@sps/sps-file-storage-file-api": [
         "libs/modules/sps-file-storage/models/file/api/src/index.ts"
       ],

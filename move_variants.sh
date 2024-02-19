@@ -1,5 +1,5 @@
 #!/bin/bash
-module=sps-website-builder
+module=sps-file-storage
 model_name=slider
 
 nx reset
