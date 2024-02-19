@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-website-builder
-model_name=faq
+model_name=features-section-block
 
 nx reset
 

@@ -515,34 +515,49 @@
         "libs/modules/sps-website-builder/models/faq-block/api/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-component": [
-        "libs/modules/sps-website-builder/models/faq-block/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-faq-block-component-redux": [
+        "libs/modules/sps-website-builder/models/faq-block/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-faq-block-component-variants-sps-lite-two-columns-with-centered-introduction": [
+        "libs/modules/sps-website-builder/models/faq-block/component/variants/sps-lite/two-columns-with-centered-introduction/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-contracts": [
-        "libs/modules/sps-website-builder/models/faq-block/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/faq-block/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq-block/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-component": [
-        "libs/modules/sps-website-builder/models/faq/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-faq-component-redux": [
+        "libs/modules/sps-website-builder/models/faq/component/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-contracts": [
-        "libs/modules/sps-website-builder/models/faq/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-faq-contracts-extended": [
-        "libs/modules/sps-website-builder/models/faq/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/faq/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-api": [
         "libs/modules/sps-website-builder/models/feature/api/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-component": [
-        "libs/modules/sps-website-builder/models/feature/component/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-feature-component-redux": [
+        "libs/modules/sps-website-builder/models/feature/component/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-feature-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/feature/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-contracts": [
-        "libs/modules/sps-website-builder/models/feature/contracts/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/contracts/root/src/index.ts"
       ],
       "@sps/sps-website-builder-feature-contracts-extended": [
-        "libs/modules/sps-website-builder/models/feature/contracts-extended/src/index.ts"
+        "libs/modules/sps-website-builder/models/feature/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-features-section-block-api": [
         "libs/modules/sps-website-builder/models/features-section-block/api/src/index.ts"
