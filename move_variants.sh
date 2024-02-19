@@ -1,6 +1,6 @@
 #!/bin/bash
 module=sps-crm
-model_name=input
+model_name=input-option
 
 nx reset
 

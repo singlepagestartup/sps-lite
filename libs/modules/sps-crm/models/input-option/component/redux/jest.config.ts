@@ -1,12 +1,12 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-crm-input-option-component",
-  preset: "../../../../../../jest.preset.js",
+  displayName: "@sps/sps-crm-input-option-component-redux",
+  preset: "../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",
     "^.+\\.[tj]sx?$": ["babel-jest", { presets: ["@nx/react/babel"] }],
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   coverageDirectory:
-    "../../../../../../coverage/libs/modules/sps-crm/models/input-option/component",
+    "../../../../../../../coverage/libs/modules/sps-crm/models/input-option/component/redux",
 };

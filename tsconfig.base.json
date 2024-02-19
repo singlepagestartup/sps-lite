@@ -151,13 +151,16 @@
         "libs/modules/sps-crm/models/input-option/api/src/index.ts"
       ],
       "@sps/sps-crm-input-option-component": [
-        "libs/modules/sps-crm/models/input-option/component/src/index.ts"
+        "libs/modules/sps-crm/models/input-option/component/root/src/index.ts"
+      ],
+      "@sps/sps-crm-input-option-component-redux": [
+        "libs/modules/sps-crm/models/input-option/component/redux/src/index.ts"
       ],
       "@sps/sps-crm-input-option-contracts": [
-        "libs/modules/sps-crm/models/input-option/contracts/src/index.ts"
+        "libs/modules/sps-crm/models/input-option/contracts/root/src/index.ts"
       ],
       "@sps/sps-crm-input-option-contracts-extended": [
-        "libs/modules/sps-crm/models/input-option/contracts-extended/src/index.ts"
+        "libs/modules/sps-crm/models/input-option/contracts/extended/src/index.ts"
       ],
       "@sps/sps-crm-review-api": [
         "libs/modules/sps-crm/models/review/api/src/index.ts"

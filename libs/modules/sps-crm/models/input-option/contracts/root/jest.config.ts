@@ -1,12 +1,12 @@
 /* eslint-disable */
 export default {
   displayName: "@sps/sps-crm-input-option-contracts",
-  preset: "../../../../../../jest.preset.js",
+  preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {
     "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }],
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageDirectory:
-    "../../../../../../coverage/libs/modules/sps-crm/models/input-option/contracts",
+    "../../../../../../../coverage/libs/modules/sps-crm/models/input-option/contracts/root',
 };
