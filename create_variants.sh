@@ -38,5 +38,8 @@ for folder in $(ls -d libs/modules/$module/models/$model_name/component/root/src
         variant=$folder
 
         npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
+
+        # move all files to variant
+        mv libs/modules/$module/models/$model_name/component/root/src/lib/component/sps-lite/$variant/* libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant/src/lib
     fi
 done
