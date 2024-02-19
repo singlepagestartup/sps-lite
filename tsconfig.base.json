@@ -21,7 +21,16 @@
         "libs/modules/sps-billing/models/currency/api/src/index.ts"
       ],
       "@sps/sps-billing-currency-component": [
-        "libs/modules/sps-billing/models/currency/component/src/index.ts"
+        "libs/modules/sps-billing/models/currency/component/root/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-component-redux": [
+        "libs/modules/sps-billing/models/currency/component/redux/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-component-variants-sps-lite-default": [
+        "libs/modules/sps-billing/models/currency/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-component-variants-sps-lite-list": [
+        "libs/modules/sps-billing/models/currency/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-billing-currency-contracts": [
         "libs/modules/sps-billing/models/currency/contracts/src/index.ts"
@@ -39,7 +48,19 @@
         "libs/modules/sps-billing/models/invoice/api/src/index.ts"
       ],
       "@sps/sps-billing-invoice-component": [
-        "libs/modules/sps-billing/models/invoice/component/src/index.ts"
+        "libs/modules/sps-billing/models/invoice/component/root/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-component-redux": [
+        "libs/modules/sps-billing/models/invoice/component/redux/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-component-variants-default": [
+        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-component-variants-list": [
+        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-component-variants-redirect": [
+        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/redirect/src/index.ts"
       ],
       "@sps/sps-billing-invoice-contracts": [
         "libs/modules/sps-billing/models/invoice/contracts/src/index.ts"
@@ -155,7 +176,19 @@
         "libs/modules/sps-ecommerce/models/order/api/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-component": [
-        "libs/modules/sps-ecommerce/models/order/component/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order/component/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-component-redux": [
+        "libs/modules/sps-ecommerce/models/order/component/redux/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-component-variants-checkout": [
+        "libs/modules/sps-ecommerce/models/order/component/variants/checkout/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-component-variants-default": [
+        "libs/modules/sps-ecommerce/models/order/component/variants/default/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-order-component-variants-list": [
+        "libs/modules/sps-ecommerce/models/order/component/variants/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-contracts": [
         "libs/modules/sps-ecommerce/models/order/contracts/src/index.ts"

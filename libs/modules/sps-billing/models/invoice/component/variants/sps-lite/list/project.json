@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-billing-invoice-component-variants-list",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/list/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/list/jest.config.ts"
+      }
+    }
+  }
+}
