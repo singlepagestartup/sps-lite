@@ -2,7 +2,7 @@ import type { IModel as IParentModel } from "@sps/sps-subscription-attribute-con
 import type { IModel as ITier } from "@sps/sps-subscription-tier-contracts";
 import type { IModel as IAttributeKey } from "@sps/sps-ecommerce-attribute-key-contracts";
 import type { IModel as ICurrency } from "@sps/sps-billing-currency-contracts";
-import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-file-contracts";
 
 export interface IModel extends IParentModel {
   tiers?: ITier[] | null;

@@ -9,7 +9,7 @@ import { getInputErrors } from "../input/get-input-errors";
 // import { useTranslations } from "@sps/hooks";
 import { Button } from "../button";
 import Image from "next/image";
-import type { IModel as IBackendFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import type { IModel as IBackendFile } from "@sps/sps-file-storage-file-contracts";
 
 export interface Props {
   label?: string | null;

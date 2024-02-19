@@ -1,6 +1,6 @@
 import { populate as parentPopulate } from "@sps/sps-website-builder-incentives-block-contracts";
 import { populate as featurePopulate } from "@sps/sps-website-builder-feature-contracts";
-import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/models/file/populate";
+import { populate as filePopulate } from "@sps/sps-file-storage-file-contracts";
 
 export const populate = {
   ...parentPopulate,

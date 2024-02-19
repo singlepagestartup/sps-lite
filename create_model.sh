@@ -2,8 +2,8 @@
 # directory=$1
 # model_name=$2
 
-directory=sps-rbac
-model_name=user
+directory=sps-file-storage
+model_name=file
 
 nx reset
 npx nx g @nx/react:library --name=@sps/$directory-$model_name-component --dir=libs/modules/$directory/models/$model_name/component --bundler=none --compiler=babel --style=none

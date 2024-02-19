@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended } from "./interface";
 import ReactMarkdown from "react-markdown";
-import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
+import { Component as File } from "@sps/sps-file-storage-file-component";
 import { Button, FormField } from "@sps/ui-adapter";
 import { Component as Attribute } from "@sps/sps-ecommerce-attribute-component";
 import Link from "next/link";

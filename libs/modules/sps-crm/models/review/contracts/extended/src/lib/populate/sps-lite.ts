@@ -1,5 +1,5 @@
 import { populate as parentPopulate } from "@sps/sps-crm-review-contracts";
-import { populate as filePopulate } from "@sps/sps-file-storage-contracts/lib/models/file/populate";
+import { populate as filePopulate } from "@sps/sps-file-storage-file-contracts";
 
 export const populate = {
   ...parentPopulate,

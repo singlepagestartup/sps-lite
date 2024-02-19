@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
+import { Component as File } from "@sps/sps-file-storage-file-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

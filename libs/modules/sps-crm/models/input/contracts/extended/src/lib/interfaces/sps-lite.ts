@@ -1,5 +1,5 @@
 import type { IModel as IParentModel } from "@sps/sps-crm-input-contracts";
-import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-file-contracts";
 import type { IModel as IOption } from "@sps/sps-crm-input-option-contracts";
 
 export interface IModel extends IParentModel {

@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
+import { Component as File } from "@sps/sps-file-storage-file-component";
 import { Button } from "@sps/ui-adapter";
 import { Component as Attribute } from "@sps/sps-ecommerce-attribute-component";
 import { api } from "@sps/sps-ecommerce-product-api";

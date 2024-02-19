@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { Component as Button } from "@sps/sps-website-builder-button-component";
 // import { Component as Logotype } from "@sps/sps-website-builder-logotype-component";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-frontend/lib/models/file/component";
+import { Component as File } from "@sps/sps-file-storage-file-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

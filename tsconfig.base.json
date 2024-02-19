@@ -327,14 +327,20 @@
       "@sps/sps-file-storage-contracts": [
         "libs/modules/sps-file-storage/contracts/src/index.ts"
       ],
-      "@sps/sps-file-storage-contracts-extended": [
-        "libs/modules/sps-file-storage/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-file-storage-contracts-extended/*": [
-        "libs/modules/sps-file-storage/contracts-extended/src/*"
-      ],
       "@sps/sps-file-storage-contracts/*": [
         "libs/modules/sps-file-storage/contracts/src/*"
+      ],
+      "@sps/sps-file-storage-file-api": [
+        "libs/modules/sps-file-storage/models/file/api/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-component": [
+        "libs/modules/sps-file-storage/models/file/component/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-contracts": [
+        "libs/modules/sps-file-storage/models/file/contracts/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-contracts-extended": [
+        "libs/modules/sps-file-storage/models/file/contracts-extended/src/index.ts"
       ],
       "@sps/sps-file-storage-frontend": [
         "libs/modules/sps-file-storage/frontend/src/index.ts"
