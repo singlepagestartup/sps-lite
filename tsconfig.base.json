@@ -342,18 +342,32 @@
       "@sps/sps-file-storage-frontend/*": [
         "libs/modules/sps-file-storage/frontend/src/*"
       ],
-      "@sps/sps-rbac-contracts": [
-        "libs/modules/sps-rbac/contracts/src/index.ts"
-      ],
-      "@sps/sps-rbac-contracts-extended": [
-        "libs/modules/sps-rbac/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-rbac-contracts-extended/*": [
-        "libs/modules/sps-rbac/contracts-extended/src/*"
-      ],
-      "@sps/sps-rbac-contracts/*": ["libs/modules/sps-rbac/contracts/src/*"],
       "@sps/sps-rbac-frontend": ["libs/modules/sps-rbac/frontend/src/index.ts"],
       "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
+      "@sps/sps-rbac-role-api": [
+        "libs/modules/sps-rbac/models/role/api/src/index.ts"
+      ],
+      "@sps/sps-rbac-role-component": [
+        "libs/modules/sps-rbac/models/role/component/src/index.ts"
+      ],
+      "@sps/sps-rbac-role-contracts": [
+        "libs/modules/sps-rbac/models/role/contracts/src/index.ts"
+      ],
+      "@sps/sps-rbac-role-contracts-extended": [
+        "libs/modules/sps-rbac/models/role/contracts-extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-api": [
+        "libs/modules/sps-rbac/models/user/api/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-component": [
+        "libs/modules/sps-rbac/models/user/component/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-contracts": [
+        "libs/modules/sps-rbac/models/user/contracts/src/index.ts"
+      ],
+      "@sps/sps-rbac-user-contracts-extended": [
+        "libs/modules/sps-rbac/models/user/contracts-extended/src/index.ts"
+      ],
       "@sps/sps-subscription-attribute-api": [
         "libs/modules/sps-subscription/models/attribute/api/src/index.ts"
       ],
@@ -377,12 +391,6 @@
       ],
       "@sps/sps-subscription-attribute-key-contracts-extended": [
         "libs/modules/sps-subscription/models/attribute-key/contracts-extended/src/index.ts"
-      ],
-      "@sps/sps-subscription-contracts": [
-        "libs/modules/sps-subscription/contracts/src/index.ts"
-      ],
-      "@sps/sps-subscription-contracts/*": [
-        "libs/modules/sps-subscription/contracts/src/*"
       ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/src/index.ts"

@@ -2,8 +2,8 @@
 
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-import { api as userApi } from "../../models/user/api/client";
-import { populate as userPopulate } from "@sps/sps-rbac-contracts/lib/models/user/populate";
+import { api as userApi } from "@sps/sps-rbac-user-api";
+import { populate as userPopulate } from "@sps/sps-rbac-user-contracts-extended";
 
 export function useMyProfile() {
   const username = useSelector((state: any) => {
@@ -15,10 +15,10 @@ export function useMyProfile() {
     error: meError,
     refetch: refetchMe,
     isUninitialized,
-  } = userApi.useGetMeQuery(undefined, { skip: !username });
+  } = userApi.client.useGetMeQuery(undefined, { skip: !username });
 
   const { data: filledProfile, refetch: refetchProfileById } =
-    userApi.useFindOneQuery(
+    userApi.client.useFindOneQuery(
       { id: myProfileByMe?.id, populate: userPopulate },
       {
         skip: !myProfileByMe?.id,
