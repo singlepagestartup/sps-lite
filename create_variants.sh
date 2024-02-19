@@ -3,11 +3,11 @@ module=sps-crm
 model_name=review
 variants=(default list)
 
-npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
+# npx nx generate @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/component/root
 
-for variant in ${variants[@]}; do
-    npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
-done
+# for variant in ${variants[@]}; do
+#     npx nx g @nx/react:library --name=@sps/$module-$model_name-component-variants-sps-lite-$variant --dir=libs/modules/$module/models/$model_name/component/variants/sps-lite/$variant --bundler=none --compiler=babel --style=none --minimal=true --component=false
+# done
 
 # npx nx g @nx/react:library --name=@sps/$module-$model_name-component-redux --dir=libs/modules/$module/models/$model_name/component/redux --bundler=none --compiler=babel --style=none --minimal=true --component=false
 
@@ -24,3 +24,15 @@ done
 
 # # write to file
 # echo "export { ReduxProvider } from './lib';" > libs/modules/$module/models/$model_name/component/redux/src/index.ts
+
+# read folders names
+for folder in $(ls -d libs/modules/$module/models/$model_name/component/src/lib/component/sps-lite/*); do
+    # check is directory
+    if [ -d $folder ]; then
+        # get last string
+        folder=${folder##*/}
+        # to lower case
+        folder=$(echo $folder | tr '[:upper:]' '[:lower:]')
+        echo $folder
+    fi
+done
