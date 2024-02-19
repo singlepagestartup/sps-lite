@@ -328,13 +328,22 @@
         "libs/modules/sps-file-storage/models/file/api/src/index.ts"
       ],
       "@sps/sps-file-storage-file-component": [
-        "libs/modules/sps-file-storage/models/file/component/src/index.ts"
+        "libs/modules/sps-file-storage/models/file/component/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-component-redux": [
+        "libs/modules/sps-file-storage/models/file/component/redux/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-component-variants-sps-lite-default": [
+        "libs/modules/sps-file-storage/models/file/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-file-storage-file-component-variants-sps-lite-image": [
+        "libs/modules/sps-file-storage/models/file/component/variants/sps-lite/image/src/index.ts"
       ],
       "@sps/sps-file-storage-file-contracts": [
-        "libs/modules/sps-file-storage/models/file/contracts/src/index.ts"
+        "libs/modules/sps-file-storage/models/file/contracts/root/src/index.ts"
       ],
       "@sps/sps-file-storage-file-contracts-extended": [
-        "libs/modules/sps-file-storage/models/file/contracts-extended/src/index.ts"
+        "libs/modules/sps-file-storage/models/file/contracts/extended/src/index.ts"
       ],
       "@sps/sps-file-storage-frontend": [
         "libs/modules/sps-file-storage/frontend/src/index.ts"

@@ -1,6 +1,6 @@
 #!/bin/bash
-module=sps-file-storage
-model_name=slider
+module=sps-rbac
+model_name=user
 
 nx reset
 
