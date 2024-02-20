@@ -113,7 +113,12 @@
       "@sps/sps-crm-form-request-contracts-extended": [
         "libs/modules/sps-crm/models/form-request/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-crm-frontend": ["libs/modules/sps-crm/frontend/src/index.ts"],
+      "@sps/sps-crm-frontend": [
+        "libs/modules/sps-crm/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-crm-frontend-components": [
+        "libs/modules/sps-crm/frontend/components/src/index.ts"
+      ],
       "@sps/sps-crm-input-api": [
         "libs/modules/sps-crm/models/input/api/src/index.ts"
       ],
@@ -250,7 +255,10 @@
         "libs/modules/sps-ecommerce/models/cart/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend": [
-        "libs/modules/sps-ecommerce/frontend/src/index.ts"
+        "libs/modules/sps-ecommerce/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-frontend-components": [
+        "libs/modules/sps-ecommerce/frontend/components/src/index.ts"
       ],
       "@sps/sps-ecommerce-frontend/*": [
         "libs/modules/sps-ecommerce/frontend/src/*"
@@ -349,12 +357,20 @@
         "libs/modules/sps-file-storage/models/file/contracts/extended/src/index.ts"
       ],
       "@sps/sps-file-storage-frontend": [
-        "libs/modules/sps-file-storage/frontend/src/index.ts"
+        "libs/modules/sps-file-storage/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-frontend-components": [
+        "libs/modules/sps-file-storage/frontend/components/src/index.ts"
       ],
       "@sps/sps-file-storage-frontend/*": [
         "libs/modules/sps-file-storage/frontend/src/*"
       ],
-      "@sps/sps-rbac-frontend": ["libs/modules/sps-rbac/frontend/src/index.ts"],
+      "@sps/sps-rbac-frontend": [
+        "libs/modules/sps-rbac/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-frontend-components": [
+        "libs/modules/sps-rbac/frontend/components/src/index.ts"
+      ],
       "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
       "@sps/sps-rbac-role-api": [
         "libs/modules/sps-rbac/models/role/api/src/index.ts"
@@ -441,7 +457,10 @@
         "libs/modules/sps-subscription/models/attribute-key/contracts/extended/src/index.ts"
       ],
       "@sps/sps-subscription-frontend": [
-        "libs/modules/sps-subscription/frontend/src/index.ts"
+        "libs/modules/sps-subscription/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-subscription-frontend-components": [
+        "libs/modules/sps-subscription/frontend/components/src/index.ts"
       ],
       "@sps/sps-subscription-frontend/*": [
         "libs/modules/sps-subscription/frontend/src/*"
@@ -763,7 +782,10 @@
         "libs/modules/sps-website-builder/models/footer/contracts/extended/src/index.ts"
       ],
       "@sps/sps-website-builder-frontend": [
-        "libs/modules/sps-website-builder/frontend/src/index.ts"
+        "libs/modules/sps-website-builder/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-frontend-components": [
+        "libs/modules/sps-website-builder/frontend/components/src/index.ts"
       ],
       "@sps/sps-website-builder-frontend/*": [
         "libs/modules/sps-website-builder/frontend/src/*"

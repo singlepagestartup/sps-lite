@@ -1,10 +1,9 @@
 #!/bin/bash
-module=sps-crm
-
+module=sps-website-builder
 
 nx reset
 
-npx nx g @nx/workspace:move --project=@sps/$module-frontend --destination=libs/modules/sps-billing/frontend/root
+npx nx g @nx/workspace:move --project=@sps/$module-frontend --destination=libs/modules/$module/frontend/root
 
 nx reset
 
