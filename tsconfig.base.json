@@ -271,10 +271,10 @@
         "libs/modules/sps-ecommerce/models/order/component/variants/sps-lite/list/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-contracts": [
-        "libs/modules/sps-ecommerce/models/order/contracts/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order/contracts/root/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-contracts-extended": [
-        "libs/modules/sps-ecommerce/models/order/contracts-extended/src/index.ts"
+        "libs/modules/sps-ecommerce/models/order/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-order-product-api": [
         "libs/modules/sps-ecommerce/models/order-product/api/src/index.ts"
