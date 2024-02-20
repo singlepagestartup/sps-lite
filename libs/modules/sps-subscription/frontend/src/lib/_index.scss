@@ -1,3 +1,4 @@
-[data-module="sps-subscription"] {
-  @import "./models/index";
-}
+@import "../../../models/attribute-key/component/root/src/index";
+@import "../../../models/attribute/component/root/src/index";
+@import "../../../models/subscription/component/root/src/index";
+@import "../../../models/tier/component/root/src/index";

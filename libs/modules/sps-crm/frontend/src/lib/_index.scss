@@ -1,3 +1,5 @@
-[data-module="sps-crm"] {
-  @import "./models/index";
-}
+@import "../../../models/form-request/component/root/src/index";
+@import "../../../models/form/component/root/src/index";
+@import "../../../models/input-option/component/root/src/index";
+@import "../../../models/input/component/root/src/index";
+@import "../../../models/review/component/root/src/index";

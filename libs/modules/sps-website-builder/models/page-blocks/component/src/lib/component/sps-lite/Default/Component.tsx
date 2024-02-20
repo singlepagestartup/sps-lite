@@ -46,19 +46,13 @@ function PageBlock(props: {
   if (typeof PageBlock == "function") {
     return (
       <ErrorBoundary>
-        <div
-          data-component={props.data.__component}
-          data-variant={props.data.variant}
-          className={`${props.data.className || ""}`}
-        >
-          <PageBlock
-            isServer={props.isServer}
-            setIsOpen={props.setIsOpen}
-            closeModal={props.closeModal}
-            variant={props.data.variant}
-            data={props.data}
-          />
-        </div>
+        <PageBlock
+          isServer={props.isServer}
+          setIsOpen={props.setIsOpen}
+          closeModal={props.closeModal}
+          variant={props.data.variant}
+          data={props.data}
+        />
       </ErrorBoundary>
     );
   }
