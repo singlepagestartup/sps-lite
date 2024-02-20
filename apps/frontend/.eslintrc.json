@@ -30,7 +30,7 @@
         "react/prop-types": ["off"],
         "testing-library/prefer-screen-queries": ["warn"],
         "testing-library/no-node-access": ["warn"],
-        "no-ternary": "error"
+        "no-ternary": ["error"]
       }
     }
   ]
