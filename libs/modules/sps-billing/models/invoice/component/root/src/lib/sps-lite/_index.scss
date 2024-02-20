@@ -1,4 +1,3 @@
-// [data-collection-type="invoice"] {
-//   @import "./sps-lite/index";
-//   @import "./startup/index";
-// }
+@import "../../../../variants/sps-lite/default/src/index";
+@import "../../../../variants/sps-lite/list/src/index";
+@import "../../../../variants/sps-lite/redirect/src/index";

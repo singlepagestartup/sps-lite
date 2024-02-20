@@ -1,6 +1,4 @@
-& {
-  @import "./Default/index";
-  @import "./IdFromUrl/index";
-  @import "./InCart/index";
-  @import "./List/index";
-}
+@import "../../../../variants/sps-lite/default/src/index";
+@import "../../../../variants/sps-lite/id-from-url/src/index";
+@import "../../../../variants/sps-lite/in-cart/src/index";
+@import "../../../../variants/sps-lite/list/src/index";
