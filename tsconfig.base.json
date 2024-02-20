@@ -17,26 +17,26 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
-      "@sps/sps-billing-currency-api": [
-        "libs/modules/sps-billing/models/currency/api/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-component": [
-        "libs/modules/sps-billing/models/currency/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-component-redux": [
-        "libs/modules/sps-billing/models/currency/component/redux/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-component-variants-sps-lite-default": [
-        "libs/modules/sps-billing/models/currency/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-component-variants-sps-lite-list": [
-        "libs/modules/sps-billing/models/currency/component/variants/sps-lite/list/src/index.ts"
-      ],
       "@sps/sps-billing-currency-contracts": [
         "libs/modules/sps-billing/models/currency/contracts/root/src/index.ts"
       ],
       "@sps/sps-billing-currency-contracts-extended": [
         "libs/modules/sps-billing/models/currency/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-frontend-api": [
+        "libs/modules/sps-billing/models/currency/frontend/api/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-frontend-component": [
+        "libs/modules/sps-billing/models/currency/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-frontend-component-sps-lite-variants-default": [
+        "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-frontend-component-sps-lite-variants-list": [
+        "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-billing-currency-frontend-redux": [
+        "libs/modules/sps-billing/models/currency/frontend/redux/src/index.ts"
       ],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/root/src/index.ts"
