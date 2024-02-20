@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-billing-frontend",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-billing/frontend/src",
+  "name": "@sps/sps-billing-frontend-components",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-billing/frontend/components/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -13,7 +13,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/modules/sps-billing/frontend/jest.config.ts"
+        "jestConfig": "libs/modules/sps-billing/frontend/components/jest.config.ts"
       }
     }
   }

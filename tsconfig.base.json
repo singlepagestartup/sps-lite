@@ -39,7 +39,10 @@
         "libs/modules/sps-billing/models/currency/contracts/extended/src/index.ts"
       ],
       "@sps/sps-billing-frontend": [
-        "libs/modules/sps-billing/frontend/src/index.ts"
+        "libs/modules/sps-billing/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-billing-frontend-components": [
+        "libs/modules/sps-billing/frontend/components/src/index.ts"
       ],
       "@sps/sps-billing-frontend/*": [
         "libs/modules/sps-billing/frontend/src/*"
