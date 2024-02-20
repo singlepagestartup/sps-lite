@@ -10,7 +10,8 @@
     "frontend:production": "npm run frontend:build && npm run frontend:start",
     "frontend:start": "nx run frontend:start",
     "lib:sps-utils:build": "nx run @sps/sps-utils:build",
-    "lint": "nx run-many --target=lint --parallel=2 --all"
+    "lint": "nx run-many --target=lint --parallel=2 --all",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
