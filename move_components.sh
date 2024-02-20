@@ -34,3 +34,5 @@ done
 nx reset
 
 npx nx g @nx/workspace:move --project=@sps/$module-$model_name-component --destination=libs/modules/$module/models/$model_name/frontend/component/root --newProjectName=@sps/$module-$model_name-frontend-component
+
+# mv libs/modules/$module/models/$model_name/component/variants/startup libs/modules/$module/models/$model_name/frontend/component/variants/startup

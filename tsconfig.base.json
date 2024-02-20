@@ -47,29 +47,29 @@
       "@sps/sps-billing-frontend/*": [
         "libs/modules/sps-billing/frontend/src/*"
       ],
-      "@sps/sps-billing-invoice-api": [
-        "libs/modules/sps-billing/models/invoice/api/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-component": [
-        "libs/modules/sps-billing/models/invoice/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-component-redux": [
-        "libs/modules/sps-billing/models/invoice/component/redux/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-component-variants-sps-lite-default": [
-        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-component-variants-sps-lite-list": [
-        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/list/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-component-variants-sps-lite-redirect": [
-        "libs/modules/sps-billing/models/invoice/component/variants/sps-lite/redirect/src/index.ts"
-      ],
       "@sps/sps-billing-invoice-contracts": [
         "libs/modules/sps-billing/models/invoice/contracts/root/src/index.ts"
       ],
       "@sps/sps-billing-invoice-contracts-extended": [
         "libs/modules/sps-billing/models/invoice/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-api": [
+        "libs/modules/sps-billing/models/invoice/frontend/api/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-component": [
+        "libs/modules/sps-billing/models/invoice/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-component-sps-lite-variants-default": [
+        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-component-sps-lite-variants-list": [
+        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-component-sps-lite-variants-redirect": [
+        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/redirect/src/index.ts"
+      ],
+      "@sps/sps-billing-invoice-frontend-redux": [
+        "libs/modules/sps-billing/models/invoice/frontend/redux/src/index.ts"
       ],
       "@sps/sps-crm-form-api": [
         "libs/modules/sps-crm/models/form/api/src/index.ts"
