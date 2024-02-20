@@ -6,7 +6,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
-      data-collection-type="layout"
+      data-model="layout"
       data-variant={props.variant}
       className={props.data.className || ""}
     >

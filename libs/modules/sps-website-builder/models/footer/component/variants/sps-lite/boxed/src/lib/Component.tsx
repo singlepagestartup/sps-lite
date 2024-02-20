@@ -4,7 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <footer
-      data-collection-type="footer"
+      data-model="footer"
       data-variant={props.variant}
       className={props.data.className || ""}
     >

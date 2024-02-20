@@ -4,8 +4,10 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <Layout isServer={props.isServer}>
-      <PageBlocks {...props} variant="default" />
-    </Layout>
+    <section data-model="page" data-variant="simple">
+      <Layout isServer={props.isServer}>
+        <PageBlocks {...props} variant="default" />
+      </Layout>
+    </section>
   );
 }

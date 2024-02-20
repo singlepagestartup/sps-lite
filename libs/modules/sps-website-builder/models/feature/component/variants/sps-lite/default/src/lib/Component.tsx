@@ -4,7 +4,11 @@ import { Component as File } from "@sps/sps-file-storage-file-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="flex flex-col gap-3">
+    <div
+      data-model="elements.feature"
+      data-variant={props.variant}
+      className="flex flex-col gap-3"
+    >
       <div>
         {props.data?.media?.length ? (
           <File

@@ -3,7 +3,11 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div
+      data-model="page-blocks.header-section-block"
+      data-variant={props.variant}
+      className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
+    >
       <div className="text-center">
         {props.data.subtitle ? (
           <h2 className="text-lg font-semibold text-primary-600">

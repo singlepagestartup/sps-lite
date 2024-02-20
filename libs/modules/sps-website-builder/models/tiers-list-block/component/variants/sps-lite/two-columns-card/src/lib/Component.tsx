@@ -24,7 +24,11 @@ export function Component(props: IComponentPropsExtended) {
   // } = tierApi.useFindQuery({});
 
   return (
-    <div className="bg-gray-900">
+    <div
+      data-model="page-blocks.tiers-list-block"
+      data-variant={props.variant}
+      className="bg-gray-900"
+    >
       <div className="relative overflow-hidden pt-32 pb-96 lg:pt-40">
         <div>
           <Image

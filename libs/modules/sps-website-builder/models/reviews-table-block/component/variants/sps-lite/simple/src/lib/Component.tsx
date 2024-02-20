@@ -66,7 +66,11 @@ export function Component(props: IComponentPropsExtended) {
   // } = reviewApi.useFindQuery({});
 
   return (
-    <div className="bg-gray-50 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div
+      data-model="page-blocks.reviews-table-block"
+      data-variant={props.variant}
+      className="bg-gray-50 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
+    >
       <h3 className="mb-6 text-3xl text-center font-bold">Reviews table</h3>
       {/* <Table
         variant="simple"

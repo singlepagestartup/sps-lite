@@ -5,7 +5,11 @@ import { Component as File } from "@sps/sps-file-storage-file-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
+    <div
+      data-model="page-blocks.hero-section-block"
+      data-variant={props.variant}
+      className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl"
+    >
       {props.data.additionalMedia?.length ? (
         <File
           variant="image"

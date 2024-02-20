@@ -11,7 +11,12 @@ export function Component(props: IComponentPropsExtended) {
   const pathname = usePathname();
 
   return (
-    <Transition show={props.isOpen} as={Fragment}>
+    <Transition
+      data-model="slide-over"
+      data-variant={props.variant}
+      show={props.isOpen}
+      as="div"
+    >
       <Dialog
         data-collection-type="slide-over"
         data-variant={props.variant}

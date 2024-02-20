@@ -10,7 +10,12 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <Disclosure as="div" className="w-full">
+    <Disclosure
+      as="div"
+      data-model="page-blocks.navbar-block"
+      data-variant={props.variant}
+      className="w-full"
+    >
       {(disclosure) => {
         return <DisclosureInner disclosure={disclosure} props={props} />;
       }}

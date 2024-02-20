@@ -4,7 +4,11 @@ import { Component as Logotype } from "@sps/sps-website-builder-logotype-compone
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div
+      data-model="page-blocks.logotypes-cloud-block"
+      data-variant={props.variant}
+      className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
+    >
       <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
         <div>
           {props.data.title ? (

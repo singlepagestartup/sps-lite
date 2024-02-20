@@ -4,7 +4,11 @@ import { Component as Feature } from "@sps/sps-website-builder-feature-component
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="bg-gray-50 mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+    <div
+      data-model="page-blocks.incentives-block"
+      data-variant={props.variant}
+      className="bg-gray-50 mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8"
+    >
       {props.data.title ? (
         <h3 className="text-3xl mb-3">
           <ReactMarkdown>{props.data.title}</ReactMarkdown>

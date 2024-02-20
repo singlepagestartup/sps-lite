@@ -4,7 +4,11 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="bg-white mx-auto max-w-7xl my-16">
+    <div
+      data-model="page-blocks.products-list-block"
+      data-variant={props.variant}
+      className="bg-white mx-auto max-w-7xl my-16"
+    >
       {props.data.title ? (
         <h2 className="text-center font-bold text-3xl mb-8">
           <ReactMarkdown>{props.data.title}</ReactMarkdown>

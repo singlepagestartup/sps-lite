@@ -6,7 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <Popover data-collection-type="flyout">
+    <Popover data-model="flyout" data-variant={props.variant}>
       <PopoverTrigger asChild={true}>{props.children}</PopoverTrigger>
       <PopoverContent>
         <div className="flyout-container">

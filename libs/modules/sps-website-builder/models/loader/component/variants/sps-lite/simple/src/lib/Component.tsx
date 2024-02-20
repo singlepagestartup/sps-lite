@@ -53,7 +53,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
-      data-single-type="loader"
+      data-model="loader"
       data-variant={props.variant}
       className={
         props.data.className || "absolute inset-0 w-full h-full bg-white"

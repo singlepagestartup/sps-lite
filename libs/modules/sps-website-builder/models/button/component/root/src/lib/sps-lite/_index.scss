@@ -1,11 +1,1 @@
-& {
-  .icon-container {
-    @apply w-10 h-10;
-
-    img {
-      @apply object-contain object-center;
-    }
-  }
-
-  @import "./Default/index";
-}
+@import "../../../../variants/sps-lite/default/src/index";

@@ -4,7 +4,11 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div
+      data-model="page-blocks.features-section-block"
+      data-variant={props.variant}
+      className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+    >
       <div className="flex flex-col items-center py-16">
         {props.data?.subtitle ? (
           <ReactMarkdown className="text-lg font-semibold text-indigo-600 w-fit">

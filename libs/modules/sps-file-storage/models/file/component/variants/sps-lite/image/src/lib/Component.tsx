@@ -4,7 +4,11 @@ import Image from "next/image";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className={props.containerClassName ?? ""}>
+    <div
+      data-collection-type="file"
+      data-variant="image"
+      className={props.containerClassName ?? ""}
+    >
       <Image
         src={getFileUrl(props.data)}
         alt=""

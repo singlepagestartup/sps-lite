@@ -4,7 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <nav
-      data-collection-type="navbar"
+      data-model="navbar"
       data-variant={props.variant}
       className={props.data.className || ""}
     >

@@ -80,7 +80,11 @@ export function Component(props: IComponentPropsExtended) {
   // }
 
   return (
-    <div className="mx-auto max-w-7xl py-16 px-2 lg:px-0">
+    <div
+      data-model="page-blocks.subscription-checkout-form-block"
+      data-variant={props.variant}
+      className="mx-auto max-w-7xl py-16 px-2 lg:px-0"
+    >
       <p className="text-4xl font-bold pt-10 pb-2">
         Subscription Checkout Form Block
       </p>

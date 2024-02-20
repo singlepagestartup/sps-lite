@@ -16,6 +16,6 @@ export interface IComponentProps extends IComponentBase {
   data: IModel;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
+export interface IComponentPropsExtended extends Omit<IComponentProps, "data"> {
   data: IModelExtended;
 }

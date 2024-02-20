@@ -33,7 +33,11 @@ export function Component(props: IComponentPropsExtended) {
   // }
 
   return (
-    <div className="">
+    <div
+      data-model="page-blocks.edit-subscription-block"
+      data-variant={props.variant}
+      className=""
+    >
       <div className="relative overflow-hidden pt-32 pb-96 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl">

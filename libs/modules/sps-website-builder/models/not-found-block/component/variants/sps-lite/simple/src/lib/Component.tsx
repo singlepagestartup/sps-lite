@@ -4,7 +4,11 @@ import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="mx-auto max-w-max min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+    <div
+      data-model="page-blocks.not-found-block"
+      data-variant={props.variant}
+      className="mx-auto max-w-max min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8"
+    >
       <main className="sm:flex">
         {props.data.title ? (
           <ReactMarkdown className="text-4xl font-bold tracking-tight text-primary-600 sm:text-5xl">

@@ -6,7 +6,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
-      data-component="elements.buttons-array"
+      data-model="elements.buttons-array"
       data-variant={props.data.variant}
       className={props.data?.className || ""}
     >

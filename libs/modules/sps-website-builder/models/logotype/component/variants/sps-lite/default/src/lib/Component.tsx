@@ -3,7 +3,11 @@ import { Component as File } from "@sps/sps-file-storage-file-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="flex items-center">
+    <div
+      data-model="elements.logotype"
+      data-variant={props.variant}
+      className="flex items-center"
+    >
       {props.data.media?.length ? (
         <File
           isServer={false}

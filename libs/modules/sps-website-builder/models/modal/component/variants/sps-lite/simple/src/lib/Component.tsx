@@ -8,7 +8,12 @@ export function Component(props: IComponentPropsExtended) {
   const { isOpenModal, closeModal, dialogPanelClassName } = props;
 
   return (
-    <Transition show={isOpenModal} as={"div"}>
+    <Transition
+      show={isOpenModal}
+      data-model="modal"
+      data-variant={props.variant}
+      as={"div"}
+    >
       <Dialog
         onClose={() => {
           closeModal();
