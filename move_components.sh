@@ -51,11 +51,11 @@ module=sps-website-builder
 model_name=hero-section-block
 variant=simple-centered
 
-# rm -rf libs/modules/$module/models/$model_name/frontend/component/variants/ptmp
+rm -rf libs/modules/$module/models/$model_name/frontend/component/variants/ptmp
 
-# nx reset
+nx reset
 
-# npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-component-variants-sps-lite-$variant --destination libs/modules/$module/models/$model_name/frontend/component/variants/ptmp/$variant --newProjectName @sps/$module-models-$model_name-frontend-component-variants-sps-lite-$variant
+npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-component-variants-sps-lite-$variant --destination libs/modules/$module/models/$model_name/frontend/component/variants/ptmp/$variant --newProjectName @sps/$module-models-$model_name-frontend-component-variants-sps-lite-$variant
 
 nx reset
 
