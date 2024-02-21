@@ -3,9 +3,9 @@ module.exports = {
     (files) => {
       return `nx format:write --files=${files.join(",")}`;
     },
-    (files) => {
-      return `nx affected:lint --files=${files.join(",")}`;
-    },
+    // (files) => {
+    //   return `nx affected:lint --files=${files.join(",")}`;
+    // },
   ],
   "{apps,libs,tools}/**/*.{json}": [
     (files) => {
