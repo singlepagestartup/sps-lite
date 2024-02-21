@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-crm-input-frontend-component-sps-lite-variants-switch",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/input/frontend/component/variants/sps-lite/switch/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-crm/models/input/frontend/component/variants/sps-lite/switch/jest.config.ts"
+      }
+    }
+  }
+}

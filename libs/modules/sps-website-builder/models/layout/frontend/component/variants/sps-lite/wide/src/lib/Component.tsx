@@ -1,0 +1,59 @@
+import { Component as Navbar } from "@sps/sps-website-builder-navbar-frontend-component";
+import { Component as Sidebar } from "@sps/sps-website-builder-sidebar-frontend-component";
+import { Component as Footer } from "@sps/sps-website-builder-footer-frontend-component";
+import { IComponentPropsExtended } from "./interface";
+
+export function Component(props: IComponentPropsExtended) {
+  return (
+    <div
+      data-model="layout"
+      data-variant={props.variant}
+      className={props.data.className || ""}
+    >
+      {props.data.navbar ? (
+        <Navbar
+          isServer={props.isServer}
+          variant={props.data.navbar.variant}
+          data={props.data.navbar}
+        />
+      ) : null}
+      <div className="layout-container">
+        <div
+          className={`w-full flex flex-col ${
+            props.data.sidebar
+              ? props.data.sidebar?.side === "left"
+                ? "lg:flex-row"
+                : "lg:flex-row-reverse"
+              : ""
+          }`}
+        >
+          {/* <div
+            className={`flex flex-col ${
+              props.sidebar?.variant === "one-quarter" ? "lg:w-3/12" : ""
+            }`}
+          >
+            {props.sidebar ? <Sidebar {...props.sidebar} /> : null}
+          </div> */}
+          <div
+            className={`h-full ${
+              props.data.sidebar
+                ? props.data.sidebar?.variant === "one-quarter"
+                  ? "lg:w-9/12"
+                  : ""
+                : ""
+            }`}
+          >
+            {props.children}
+          </div>
+        </div>
+      </div>
+      {props.data.footer ? (
+        <Footer
+          isServer={props.isServer}
+          variant={props.data.footer.variant}
+          data={props.data.footer}
+        />
+      ) : null}
+    </div>
+  );
+}

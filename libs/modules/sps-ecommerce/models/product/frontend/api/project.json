@@ -1,0 +1,19 @@
+{
+  "name": "@sps/sps-ecommerce-product-frontend-api",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/api/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-ecommerce/models/product/frontend/api/jest.config.ts"
+      }
+    }
+  }
+}

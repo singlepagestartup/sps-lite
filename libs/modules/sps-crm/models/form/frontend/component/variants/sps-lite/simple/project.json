@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-crm-form-frontend-component-sps-lite-variants-simple",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/form/frontend/component/variants/sps-lite/simple/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-crm/models/form/frontend/component/variants/sps-lite/simple/jest.config.ts"
+      }
+    }
+  }
+}

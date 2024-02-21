@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-import { api as userApi } from "@sps/sps-rbac-user-api";
+import { api as userApi } from "@sps/sps-rbac-user-frontend-api";
 import { populate as userPopulate } from "@sps/sps-rbac-user-contracts-extended";
 
 export function useMyProfile() {

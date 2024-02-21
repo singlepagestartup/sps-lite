@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-website-builder-footer-block-frontend-component-sps-lite-variants-four-columns-with-company-mission",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/four-columns-with-company-mission/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/four-columns-with-company-mission/jest.config.ts"
+      }
+    }
+  }
+}

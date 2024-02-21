@@ -1,8 +1,8 @@
 "use server";
 import "server-only";
 
-import { api } from "@sps/sps-website-builder-page-api";
-import { Component } from "@sps/sps-website-builder-page-component";
+import { api } from "@sps/sps-website-builder-page-frontend-api";
+import { Component } from "@sps/sps-website-builder-page-frontend-component";
 
 export async function generateStaticParams() {
   return api.server.getUrls();

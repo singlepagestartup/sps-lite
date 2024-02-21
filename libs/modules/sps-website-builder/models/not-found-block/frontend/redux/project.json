@@ -1,0 +1,20 @@
+{
+  "name": "@sps/sps-website-builder-not-found-block-frontend-redux",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/not-found-block/frontend/redux/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sps-website-builder/models/not-found-block/frontend/redux/jest.config.ts"
+      }
+    }
+  }
+}
