@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-website-builder-hero-section-block-frontend-component-variants-sps-lite-simple-centered",
+  "name": "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/root/src/",
+  "sourceRoot": "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src",
   "projectType": "library",
   "tags": [],
   "targets": {
