@@ -1,5 +1,5 @@
-import { Component as Wide } from "@sps/sps-website-builder-layout-frontend-component-sps-lite-variants-wide";
-import { Component as Boxed } from "@sps/sps-website-builder-layout-frontend-component-sps-lite-variants-boxed";
+import { Component as Wide } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-wide";
+import { Component as Boxed } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-boxed";
 
 export const variants = {
   wide: Wide,

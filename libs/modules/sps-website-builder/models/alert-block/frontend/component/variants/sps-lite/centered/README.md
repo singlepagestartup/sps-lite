@@ -1,7 +1,7 @@
-# @sps/sps-website-builder-alert-block-frontend-component-sps-lite-variants-centered
+# @sps/sps-website-builder-models-alert-block-frontend-component-variants-sps-lite-centered
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-website-builder-alert-block-frontend-component-sps-lite-variants-centered` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-website-builder-models-alert-block-frontend-component-variants-sps-lite-centered` to execute the unit tests via [Jest](https://jestjs.io).

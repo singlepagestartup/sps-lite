@@ -1,3 +1,3 @@
-import { IComponentProps as IOneQuarterComponentProps } from "@sps/sps-website-builder-sidebar-frontend-component-sps-lite-variants-one-quarter";
+import { IComponentProps as IOneQuarterComponentProps } from "@sps/sps-website-builder-models-sidebar-frontend-component-variants-sps-lite-one-quarter";
 
 export type IComponentProps = IOneQuarterComponentProps;

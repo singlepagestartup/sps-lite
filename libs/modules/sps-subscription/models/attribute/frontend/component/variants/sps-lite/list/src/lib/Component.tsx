@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Attribute } from "@sps/sps-subscription-attribute-frontend-component-sps-lite-variants-default";
+import { Component as Attribute } from "@sps/sps-subscription-models-attribute-frontend-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
   return (

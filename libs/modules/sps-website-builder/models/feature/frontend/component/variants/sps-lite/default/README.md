@@ -1,7 +1,7 @@
-# @sps/sps-website-builder-feature-frontend-component-sps-lite-variants-default
+# @sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-default
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-website-builder-feature-frontend-component-sps-lite-variants-default` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-default` to execute the unit tests via [Jest](https://jestjs.io).

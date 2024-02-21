@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-crm-input-frontend-component-sps-lite-variants-range",
+  displayName:
+    "@sps/sps-crm-models-input-frontend-component-variants-sps-lite-range",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

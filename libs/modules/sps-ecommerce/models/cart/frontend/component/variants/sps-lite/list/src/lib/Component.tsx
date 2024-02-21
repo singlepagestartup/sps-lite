@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Cart } from "@sps/sps-ecommerce-cart-frontend-component-sps-lite-variants-default";
+import { Component as Cart } from "@sps/sps-ecommerce-models-cart-frontend-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
   return (

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-navbar-block-frontend-component-sps-lite-variants-centered-logotype",
+  "name": "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-centered-logotype",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/navbar-block/frontend/component/variants/sps-lite/centered-logotype/src",
   "projectType": "library",

@@ -1,3 +1,3 @@
-import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-loader-frontend-component-sps-lite-variants-simple";
+import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-loader-frontend-component-variants-sps-lite-simple";
 
 export type IComponentProps = ISimpleComponentProps;

@@ -1,3 +1,3 @@
-import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-logotype-frontend-component-sps-lite-variants-default";
+import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-default";
 
 export type IComponentProps = IDefaultComponentProps;

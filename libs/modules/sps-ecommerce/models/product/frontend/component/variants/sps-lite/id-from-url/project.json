@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-product-frontend-component-sps-lite-variants-id-from-url",
+  "name": "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-id-from-url",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/id-from-url/src",
   "projectType": "library",

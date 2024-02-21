@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-website-builder-faq-block-frontend-component-sps-lite-variants-two-columns-with-centered-introduction",
+    "@sps/sps-website-builder-models-faq-block-frontend-component-variants-sps-lite-two-columns-with-centered-introduction",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

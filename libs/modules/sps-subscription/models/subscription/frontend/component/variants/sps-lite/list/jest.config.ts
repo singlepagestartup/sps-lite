@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-subscription-subscription-frontend-component-sps-lite-variants-list",
+    "@sps/sps-subscription-models-subscription-frontend-component-variants-sps-lite-list",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

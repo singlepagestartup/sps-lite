@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-file-storage-file-frontend-component-sps-lite-variants-image",
+    "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-image",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

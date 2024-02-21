@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-ecommerce-cart-frontend-component-sps-lite-variants-list",
+    "@sps/sps-ecommerce-models-cart-frontend-component-variants-sps-lite-list",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

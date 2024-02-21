@@ -1,7 +1,7 @@
-# @sps/sps-crm-input-frontend-component-sps-lite-variants-listbox
+# @sps/sps-crm-models-input-frontend-component-variants-sps-lite-listbox
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-crm-input-frontend-component-sps-lite-variants-listbox` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-crm-models-input-frontend-component-variants-sps-lite-listbox` to execute the unit tests via [Jest](https://jestjs.io).

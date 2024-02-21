@@ -1,7 +1,7 @@
-# @sps/sps-crm-input-frontend-component-sps-lite-variants-switch
+# @sps/sps-crm-models-input-frontend-component-variants-sps-lite-switch
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-crm-input-frontend-component-sps-lite-variants-switch` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-crm-models-input-frontend-component-variants-sps-lite-switch` to execute the unit tests via [Jest](https://jestjs.io).

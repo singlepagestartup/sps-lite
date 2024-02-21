@@ -1,7 +1,7 @@
-# @sps/sps-ecommerce-product-frontend-component-sps-lite-variants-id-from-url
+# @sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-id-from-url
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-ecommerce-product-frontend-component-sps-lite-variants-id-from-url` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-id-from-url` to execute the unit tests via [Jest](https://jestjs.io).

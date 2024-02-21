@@ -1,3 +1,3 @@
-import { IComponentProps as IFourColumnsWithCompanyMissionComponentProps } from "@sps/sps-website-builder-footer-block-frontend-component-sps-lite-variants-four-columns-with-company-mission";
+import { IComponentProps as IFourColumnsWithCompanyMissionComponentProps } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-four-columns-with-company-mission";
 
 export type IComponentProps = IFourColumnsWithCompanyMissionComponentProps;

@@ -1,4 +1,4 @@
-import { Component as Default } from "@sps/sps-website-builder-slide-frontend-component-sps-lite-variants-default";
+import { Component as Default } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-default";
 
 export const variants = {
   default: Default,

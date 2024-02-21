@@ -1,7 +1,7 @@
-# @sps/sps-crm-review-frontend-component-sps-lite-variants-list
+# @sps/sps-crm-models-review-frontend-component-variants-sps-lite-list
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-crm-review-frontend-component-sps-lite-variants-list` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-crm-models-review-frontend-component-variants-sps-lite-list` to execute the unit tests via [Jest](https://jestjs.io).

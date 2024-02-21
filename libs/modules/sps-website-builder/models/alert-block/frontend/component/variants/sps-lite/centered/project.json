@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-alert-block-frontend-component-sps-lite-variants-centered",
+  "name": "@sps/sps-website-builder-models-alert-block-frontend-component-variants-sps-lite-centered",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/alert-block/frontend/component/variants/sps-lite/centered/src",
   "projectType": "library",

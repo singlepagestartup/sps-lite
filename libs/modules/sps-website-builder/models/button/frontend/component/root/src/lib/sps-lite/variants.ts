@@ -1,4 +1,4 @@
-import { Component as Default } from "@sps/sps-website-builder-button-frontend-component-sps-lite-variants-default";
+import { Component as Default } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-default";
 
 export const variants = {
   text: Default,

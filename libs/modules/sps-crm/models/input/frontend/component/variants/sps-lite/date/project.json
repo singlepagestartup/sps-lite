@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-input-frontend-component-sps-lite-variants-date",
+  "name": "@sps/sps-crm-models-input-frontend-component-variants-sps-lite-date",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-crm/models/input/frontend/component/variants/sps-lite/date/src",
   "projectType": "library",

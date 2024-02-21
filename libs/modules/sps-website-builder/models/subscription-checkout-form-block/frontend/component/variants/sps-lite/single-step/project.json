@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-subscription-checkout-form-block-frontend-component-sps-lite-variants-single-step",
+  "name": "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-component-variants-sps-lite-single-step",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/component/variants/sps-lite/single-step/src",
   "projectType": "library",

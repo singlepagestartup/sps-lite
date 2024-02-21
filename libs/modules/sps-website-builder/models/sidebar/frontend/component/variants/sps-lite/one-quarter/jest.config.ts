@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-website-builder-sidebar-frontend-component-sps-lite-variants-one-quarter",
+    "@sps/sps-website-builder-models-sidebar-frontend-component-variants-sps-lite-one-quarter",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

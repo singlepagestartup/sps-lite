@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-faq-block-frontend-component-sps-lite-variants-two-columns-with-centered-introduction",
+  "name": "@sps/sps-website-builder-models-faq-block-frontend-component-variants-sps-lite-two-columns-with-centered-introduction",
   "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/faq-block/frontend/component/variants/sps-lite/two-columns-with-centered-introduction/src",
   "projectType": "library",

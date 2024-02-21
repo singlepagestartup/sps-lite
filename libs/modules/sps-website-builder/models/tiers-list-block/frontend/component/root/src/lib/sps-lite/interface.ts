@@ -1,3 +1,3 @@
-import { IComponentProps as ITwoColumnsCardComponentProps } from "@sps/sps-website-builder-tiers-list-block-frontend-component-sps-lite-variants-two-columns-card";
+import { IComponentProps as ITwoColumnsCardComponentProps } from "@sps/sps-website-builder-models-tiers-list-block-frontend-component-variants-sps-lite-two-columns-card";
 
 export type IComponentProps = ITwoColumnsCardComponentProps;

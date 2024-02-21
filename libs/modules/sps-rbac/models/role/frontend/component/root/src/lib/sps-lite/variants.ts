@@ -1,4 +1,4 @@
-import { Component as Default } from "@sps/sps-rbac-role-frontend-component-sps-lite-variants-default";
+import { Component as Default } from "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-default";
 
 export const variants = {
   default: Default,

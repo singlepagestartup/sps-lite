@@ -1,7 +1,7 @@
-# @sps/sps-subscription-attribute-frontend-component-sps-lite-variants-feature
+# @sps/sps-subscription-models-attribute-frontend-component-variants-sps-lite-feature
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-subscription-attribute-frontend-component-sps-lite-variants-feature` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-subscription-models-attribute-frontend-component-variants-sps-lite-feature` to execute the unit tests via [Jest](https://jestjs.io).

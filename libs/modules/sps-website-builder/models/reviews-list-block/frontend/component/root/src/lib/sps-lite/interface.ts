@@ -1,3 +1,3 @@
-import { IComponentProps as ISimpleWithAvatarsComponentProps } from "@sps/sps-website-builder-reviews-list-block-frontend-component-sps-lite-variants-simple-with-avatars";
+import { IComponentProps as ISimpleWithAvatarsComponentProps } from "@sps/sps-website-builder-models-reviews-list-block-frontend-component-variants-sps-lite-simple-with-avatars";
 
 export type IComponentProps = ISimpleWithAvatarsComponentProps;

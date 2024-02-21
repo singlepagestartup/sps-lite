@@ -1,4 +1,4 @@
-import { Component as TwoColumnsCard } from "@sps/sps-website-builder-tiers-list-block-frontend-component-sps-lite-variants-two-columns-card";
+import { Component as TwoColumnsCard } from "@sps/sps-website-builder-models-tiers-list-block-frontend-component-variants-sps-lite-two-columns-card";
 
 export const variants = {
   "two-columns-card": TwoColumnsCard,

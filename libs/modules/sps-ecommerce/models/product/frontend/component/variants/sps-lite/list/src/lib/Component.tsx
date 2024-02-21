@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Product } from "@sps/sps-ecommerce-product-frontend-component-sps-lite-variants-default";
+import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
   return (

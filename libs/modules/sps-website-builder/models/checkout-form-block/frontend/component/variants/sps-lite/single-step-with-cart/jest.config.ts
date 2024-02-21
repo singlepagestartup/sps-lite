@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName:
-    "@sps/sps-website-builder-checkout-form-block-frontend-component-sps-lite-variants-single-step-with-cart",
+    "@sps/sps-website-builder-models-checkout-form-block-frontend-component-variants-sps-lite-single-step-with-cart",
   preset: "../../../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",
