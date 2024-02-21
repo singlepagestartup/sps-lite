@@ -808,9 +808,6 @@
       "@sps/sps-website-builder-header-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/header-section-block/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-hero-section-block-frontend-component-variants-sps-lite-simple-centered": [
-        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
-      ],
       "@sps/sps-website-builder-hero-section-block-contracts": [
         "libs/modules/sps-website-builder/models/hero-section-block/contracts/root/src/index.ts"
       ],
@@ -822,6 +819,9 @@
       ],
       "@sps/sps-website-builder-hero-section-block-frontend-component": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-hero-section-block-frontend-component-variants-sps-lite-simple-centered": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
       ],
       "@sps/sps-website-builder-hero-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/redux/src/index.ts"
