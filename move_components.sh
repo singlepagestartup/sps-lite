@@ -48,17 +48,15 @@ module=sps-website-builder
 #     rm -rf libs/modules/$module/models/$model_name/component
 # done
 
-# model_name=hero-section-block
-# variant=simple-centered
+model_name=hero-section-block
+variant=simple-centered
+
+# rm -rf libs/modules/$module/models/$model_name/frontend/component/variants/ptmp
 
 # nx reset
 
-# npx nx g @nx/workspace:move --project @sps/$module-$model_name-component-variants-sps-lite-$variant --destination libs/modules/$module/models/$model_name/frontend/component/variants/ptmp/$variant --newProjectName @sps/$module-$model_name-frontend-component-variants-sps-lite-$variant
+# npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-component-variants-sps-lite-$variant --destination libs/modules/$module/models/$model_name/frontend/component/variants/ptmp/$variant --newProjectName @sps/$module-models-$model_name-frontend-component-variants-sps-lite-$variant
 
-# nx reset
+nx reset
 
-# npx nx g @nx/workspace:move --project=@sps/$module-$model_name-frontend-component-variants-sps-lite-$variant --destination=libs/modules/$module/models/$model_name/frontend/component/variants/sps-lite/$variant --newProjectName=@sps/$module-$model_name-frontend-component-variants-sps-lite-$variant
-
-# replace "@sps/$module-$model_name-component-variants-sps-lite-$variant" to "sps/$module-$model_name-frontend-component-variants-sps-lite-$variant" in tsconfig.base.json
-
-# sed -i '' "s/@sps\/$module-$model_name-component-variants-sps-lite-$variant/@sps\/$module-$model_name-frontend-component-variants-sps-lite-$variant/g" tsconfig.base.json
+npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-frontend-component-variants-sps-lite-$variant --destination libs/modules/$module/models/$model_name/frontend/component/variants/sps-lite/$variant
