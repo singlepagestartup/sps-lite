@@ -44,9 +44,6 @@
       "@sps/sps-billing-frontend-components": [
         "libs/modules/sps-billing/frontend/components/src/index.ts"
       ],
-      "@sps/sps-billing-frontend/*": [
-        "libs/modules/sps-billing/frontend/src/*"
-      ],
       "@sps/sps-billing-invoice-contracts": [
         "libs/modules/sps-billing/models/invoice/contracts/root/src/index.ts"
       ],
@@ -260,9 +257,6 @@
       "@sps/sps-ecommerce-frontend-components": [
         "libs/modules/sps-ecommerce/frontend/components/src/index.ts"
       ],
-      "@sps/sps-ecommerce-frontend/*": [
-        "libs/modules/sps-ecommerce/frontend/src/*"
-      ],
       "@sps/sps-ecommerce-order-contracts": [
         "libs/modules/sps-ecommerce/models/order/contracts/root/src/index.ts"
       ],
@@ -362,16 +356,12 @@
       "@sps/sps-file-storage-frontend-components": [
         "libs/modules/sps-file-storage/frontend/components/src/index.ts"
       ],
-      "@sps/sps-file-storage-frontend/*": [
-        "libs/modules/sps-file-storage/frontend/src/*"
-      ],
       "@sps/sps-rbac-frontend": [
         "libs/modules/sps-rbac/frontend/root/src/index.ts"
       ],
       "@sps/sps-rbac-frontend-components": [
         "libs/modules/sps-rbac/frontend/components/src/index.ts"
       ],
-      "@sps/sps-rbac-frontend/*": ["libs/modules/sps-rbac/frontend/src/*"],
       "@sps/sps-rbac-role-contracts": [
         "libs/modules/sps-rbac/models/role/contracts/root/src/index.ts"
       ],
@@ -461,9 +451,6 @@
       ],
       "@sps/sps-subscription-frontend-components": [
         "libs/modules/sps-subscription/frontend/components/src/index.ts"
-      ],
-      "@sps/sps-subscription-frontend/*": [
-        "libs/modules/sps-subscription/frontend/src/*"
       ],
       "@sps/sps-subscription-subscription-contracts": [
         "libs/modules/sps-subscription/models/subscription/contracts/root/src/index.ts"
@@ -786,9 +773,6 @@
       ],
       "@sps/sps-website-builder-frontend-components": [
         "libs/modules/sps-website-builder/frontend/components/src/index.ts"
-      ],
-      "@sps/sps-website-builder-frontend/*": [
-        "libs/modules/sps-website-builder/frontend/src/*"
       ],
       "@sps/sps-website-builder-header-section-block-contracts": [
         "libs/modules/sps-website-builder/models/header-section-block/contracts/root/src/index.ts"
