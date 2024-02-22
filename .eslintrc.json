@@ -29,12 +29,7 @@
           {
             "enforceBuildableLibDependency": false,
             "banTransitiveDependencies": true,
-            "allow": [
-              // "@sps/sps-website-builder-page-blocks-component",
-              // "@sps/sps-website-builder-button-component",
-              // "@sps/sps-website-builder-flyout-component",
-              // "@sps/sps-website-builder-buttons-array-component"
-            ],
+            "allow": [],
             "depConstraints": [
               {
                 "sourceTag": "*",
@@ -73,6 +68,13 @@
       "extends": ["plugin:@nx/javascript"],
       "rules": {
         "@typescript-eslint/no-unused-vars": ["warn"]
+      }
+    },
+    {
+      "files": ["./package.json", "./generators.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/nx-plugin-checks": "error"
       }
     }
   ],

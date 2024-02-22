@@ -22,6 +22,7 @@
     "@heroicons/react": "^2.0.13",
     "@hookform/error-message": "^2.0.1",
     "@next/bundle-analyzer": "^14.0.4",
+    "@nx/devkit": "18.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-hover-card": "^1.0.7",
     "@radix-ui/react-label": "^2.0.2",
@@ -198,6 +199,7 @@
     "verdaccio": "^5.0.4",
     "whatwg-fetch": "^3.6.19"
   },
+  "generators": "./generators.json",
   "nx": {
     "includedScripts": []
   }

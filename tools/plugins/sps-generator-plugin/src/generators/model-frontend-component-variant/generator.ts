@@ -28,6 +28,11 @@ export async function modelFrontendComponentVariantGenerator(
     return;
   }
 
+  if (!project.name.includes("component")) {
+    console.error("Only components can have variants");
+    return;
+  }
+
   const name = `${project.name}-variants-${type}-${variant}`;
 
   const projectRoot = project?.root.split("/");
@@ -100,7 +105,7 @@ async function addVariantToRoot({
     rootProjectVariantsPath,
     rootProjectVariants.replace(
       prevExport[0],
-      `export const variants = { '${variant}': ${createdVariantInterface},`,
+      `export const variants = { "${variant}": ${createdVariantInterface},`,
     ),
   );
 }
