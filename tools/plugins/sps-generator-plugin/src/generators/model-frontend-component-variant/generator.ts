@@ -24,14 +24,13 @@ export async function modelFrontendComponentVariantGenerator(
   const project = projects.get(options.project);
 
   if (project.name.includes("variants")) {
+    console.error("Variants could not be created inside a variant");
     return;
   }
 
   const name = `${project.name}-variants-${type}-${variant}`;
 
   const projectRoot = project?.root.split("/");
-
-  // console.log(`🚀 ~ projectRoot:`, projectRoot);
 
   const moduleIndex = projectRoot?.findIndex((dir) => dir === "modules");
   const module = projectRoot?.[moduleIndex + 1];

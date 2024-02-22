@@ -1,5 +1,15 @@
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
-  return <p className="text-md font-bold">{props.data.unicode}</p>;
+  return (
+    <div
+      data-model="<% model %>"
+      data-variant="<%= variant %>"
+      className="w-full py-5 text-center flex flex-col gap-1"
+    >
+      <p className="text-bold">Generated variant</p>
+      <p className="text-bold text-4xl">Model: <%= model %></p>
+      <p className="text-bold text-4xl">Variant: <%= variant %></p>
+    </div>
+  );
 }

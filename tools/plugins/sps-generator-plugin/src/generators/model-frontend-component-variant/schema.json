@@ -13,7 +13,7 @@
       },
       "x-prompt": "What name would you like to use?"
     },
-    "module": {
+    "project": {
       "type": "string",
       "description": "The root component for creating component.",
       "x-prompt": "Select root component?",
@@ -23,5 +23,5 @@
       "x-dropdown": "projects"
     }
   },
-  "required": ["name", "module"]
+  "required": ["name", "project"]
 }

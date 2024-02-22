@@ -9,7 +9,7 @@ import { Component as FaqBlock } from "@sps/sps-website-builder-models-faq-block
 import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder-models-features-section-block-frontend-component";
 import { Component as FooterBlock } from "@sps/sps-website-builder-models-footer-block-frontend-component";
 import { Component as HeaderSectionBlock } from "@sps/sps-website-builder-models-header-section-block-frontend-component";
-import { Component as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered";
+import { Component as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-frontend-component";
 import { Component as IncentivesBlock } from "@sps/sps-website-builder-models-incentives-block-frontend-component";
 import { Component as LogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-component";
 import { Component as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-frontend-component";

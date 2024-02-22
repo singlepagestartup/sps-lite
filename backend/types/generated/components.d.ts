@@ -498,7 +498,9 @@ export interface PageBlocksHeroSectionBlock extends Schema.Component {
     description: Attribute.RichText;
     media: Attribute.Media;
     buttons: Attribute.Component<"elements.button", true>;
-    variant: Attribute.Enumeration<["simple-centered", "split"]> &
+    variant: Attribute.Enumeration<
+      ["simple-centered", "split", "testing-variant"]
+    > &
       Attribute.Required &
       Attribute.DefaultTo<"simple-centered">;
     anchor: Attribute.String;
