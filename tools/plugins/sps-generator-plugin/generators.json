@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "model-frontend-component-variant": {
+      "factory": "./src/generators/model-frontend-component-variant/generator",
+      "schema": "./src/generators/model-frontend-component-variant/schema.json",
+      "description": "model-frontend-component-variant generator"
+    }
+  }
+}

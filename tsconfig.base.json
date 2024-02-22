@@ -356,6 +356,9 @@
       "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-image": [
         "libs/modules/sps-file-storage/models/file/frontend/component/variants/sps-lite/image/src/index.ts"
       ],
+      "@sps/sps-generator-plugin": [
+        "tools/plugins/sps-generator-plugin/src/index.ts"
+      ],
       "@sps/sps-rbac-frontend": [
         "libs/modules/sps-rbac/frontend/root/src/index.ts"
       ],

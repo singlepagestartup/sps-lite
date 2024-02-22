@@ -1,6 +1,6 @@
 #!/bin/bash
-module=sps-subscription
-model_names=(attribute attribute-key subscription tier)
+module=sps-billing
+model_names=(currency invoice)
 
 for model_name in "${model_names[@]}"
 do

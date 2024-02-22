@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "ModelFrontendComponentVariant",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "module": {
+      "type": "string",
+      "description": "The root component for creating component.",
+      "x-prompt": "Select root component?",
+      "x-dropdown": "projects"
+    }
+  },
+  "required": ["name", "module"]
+}

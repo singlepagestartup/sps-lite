@@ -2,8 +2,8 @@
 # directory=$1
 # model_name=$2
 
-module=sps-website-builder
-models=(header-section-block)
+module=sps-billing
+models=()
 folders=(component contracts contracts-extended api)
 
 for model in ${models[@]}; do
