@@ -17,6 +17,9 @@
       "type": "string",
       "description": "The root component for creating component.",
       "x-prompt": "Select root component?",
+      "$default": {
+        "$source": "project"
+      },
       "x-dropdown": "projects"
     }
   },

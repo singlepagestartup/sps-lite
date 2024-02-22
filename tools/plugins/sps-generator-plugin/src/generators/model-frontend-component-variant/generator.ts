@@ -2,6 +2,8 @@ import {
   addProjectConfiguration,
   formatFiles,
   generateFiles,
+  getProjects,
+  names,
   Tree,
 } from "@nx/devkit";
 import * as path from "path";
@@ -16,46 +18,152 @@ export async function modelFrontendComponentVariantGenerator(
   tree: Tree,
   options: ModelFrontendComponentVariantGeneratorSchema,
 ) {
-  const workspace = await fs.readdir(__dirname);
-  console.log(`🚀 ~ workspace:`, workspace);
+  const variant = options.name;
+  const type = "startup";
+  const projects = getProjects(tree);
+  const project = projects.get(options.project);
 
-  // select module
-  // select model
-  // select variant type: sps-lite or startup
-  //
-  // - create react library
-  // - create files for the selected type
-  // - add component to model libs/modules/<module>/models/<model>/frontend/component/root/src/lib/<variant_type>/variants.ts
-  // - add styles to libs/modules/<module>/models/<model>/frontend/component/root/src/lib/<variant_type>/_index.scss
-  // - add interface to libs/modules/<module>/models/<model>/frontend/component/root/src/lib/<variant_type>/interface.ts
-  console.log(`🚀 ~ tree:`, tree);
-  console.log(`🚀 ~ options:`, options);
+  if (project.name.includes("variants")) {
+    return;
+  }
 
-  const projectRoot = `libs/${options.name}`;
+  const name = `${project.name}-variants-${type}-${variant}`;
 
-  console.log(`🚀 ~ projectRoot:`, projectRoot);
+  const projectRoot = project?.root.split("/");
+
+  // console.log(`🚀 ~ projectRoot:`, projectRoot);
+
+  const moduleIndex = projectRoot?.findIndex((dir) => dir === "modules");
+  const module = projectRoot?.[moduleIndex + 1];
+
+  const modelIndex = projectRoot?.findIndex((dir) => dir === "models");
+  const model = projectRoot?.[modelIndex + 1];
+
+  const directory = `${projectRoot
+    ?.slice(0, -1)
+    .join("/")}/variants/${type}/${variant}`;
 
   const libraryOptions = {
-    name: options.name,
-    directory: projectRoot,
+    name,
+    directory,
     linter: "eslint" as Linter.EsLint,
     minimal: true,
     style: "none" as SupportedStyles,
     projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
   };
 
-  console.log(`🚀 ~ libraryOptions:`, libraryOptions);
+  await libraryGenerator(tree, libraryOptions);
 
-  // await libraryGenerator(tree, libraryOptions);
+  generateFiles(tree, path.join(__dirname, "files"), directory, {
+    template: "",
+    variant,
+    module,
+    model,
+  });
 
-  // addProjectConfiguration(tree, options.name, {
-  //   root: projectRoot,
-  //   projectType: "library",
-  //   sourceRoot: `${projectRoot}/src`,
-  //   targets: {},
-  // });
-  // generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
-  // await formatFiles(tree);
+  await addVariantToRoot({ libraryOptions, variant, projectRoot, tree });
+  await addInterfaceToRoot({ libraryOptions, variant, projectRoot, tree });
+  await addStylesToRoot({ projectRoot, tree, type, variant });
+
+  await formatFiles(tree);
 }
 
 export default modelFrontendComponentVariantGenerator;
+
+async function addVariantToRoot({
+  libraryOptions,
+  variant,
+  projectRoot,
+  tree,
+}: {
+  libraryOptions: { name: string };
+  variant: string;
+  projectRoot: string[];
+  tree: Tree;
+}) {
+  const rootProjectVariantsPath =
+    projectRoot.join("/") + "/src/lib/startup/variants.ts";
+
+  let rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
+
+  const capitalizedName = names(variant).className;
+  const createdVariantInterface = `${capitalizedName}`;
+  await fs.writeFile(
+    rootProjectVariantsPath,
+    `import { Component as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectVariants}`,
+  );
+
+  rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
+
+  const prevExport = rootProjectVariants.match(/export const variants = {/);
+
+  await fs.writeFile(
+    rootProjectVariantsPath,
+    rootProjectVariants.replace(
+      prevExport[0],
+      `export const variants = { '${variant}': ${createdVariantInterface},`,
+    ),
+  );
+}
+
+async function addInterfaceToRoot({
+  libraryOptions,
+  variant,
+  projectRoot,
+  tree,
+}: {
+  libraryOptions: { name: string };
+  variant: string;
+  projectRoot: string[];
+  tree: Tree;
+}) {
+  const rootProjectInterfacesPath =
+    projectRoot.join("/") + "/src/lib/startup/interface.ts";
+
+  let rootProjectInterfaces = await tree
+    .read(rootProjectInterfacesPath)
+    .toString();
+
+  // add import to rootProjectInterfaces to the top of the file
+  const capitalizedName = names(variant).className;
+  const createdVariantInterface = `I${capitalizedName}ComponentProps`;
+  await fs.writeFile(
+    rootProjectInterfacesPath,
+    `import { IComponentProps as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectInterfaces}`,
+  );
+
+  rootProjectInterfaces = await tree.read(rootProjectInterfacesPath).toString();
+
+  const prevExport = rootProjectInterfaces.match(
+    /export type IComponentProps =/,
+  );
+
+  await fs.writeFile(
+    rootProjectInterfacesPath,
+    rootProjectInterfaces.replace(
+      prevExport[0],
+      `export type IComponentProps = ${createdVariantInterface} |`,
+    ),
+  );
+}
+
+async function addStylesToRoot({
+  projectRoot,
+  tree,
+  type,
+  variant,
+}: {
+  projectRoot: string[];
+  tree: Tree;
+  type: string;
+  variant: string;
+}) {
+  const rootProjectStylesPath =
+    projectRoot.join("/") + "/src/lib/startup/_index.scss";
+
+  let rootProjectStyles = await tree.read(rootProjectStylesPath).toString();
+  await fs.writeFile(
+    rootProjectStylesPath,
+    `${rootProjectStyles}\n@import "../../../../variants/${type}/${variant}/src/index";`,
+  );
+}
