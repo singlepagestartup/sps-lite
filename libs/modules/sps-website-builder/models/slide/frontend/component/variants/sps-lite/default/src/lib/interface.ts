@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-slide-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-slide-contracts-extended";
+import { IModel } from "@sps/sps-website-builder-models-slide-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-slide-contracts-extended";
 
 export const variant = "default" as const;
 

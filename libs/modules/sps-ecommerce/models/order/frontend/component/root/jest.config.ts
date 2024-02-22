@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-ecommerce-order-frontend-component",
+  displayName: "@sps/sps-ecommerce-models-order-frontend-component",
   preset: "../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

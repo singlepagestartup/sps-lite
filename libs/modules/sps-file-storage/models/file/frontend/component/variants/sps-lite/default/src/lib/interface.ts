@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-file-storage-file-contracts";
-import { IModel as IModelExtended } from "@sps/sps-file-storage-file-contracts-extended";
+import { IModel } from "@sps/sps-file-storage-models-file-contracts";
+import { IModel as IModelExtended } from "@sps/sps-file-storage-models-file-contracts-extended";
 
 export const variant = "default" as const;
 

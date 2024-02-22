@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-crm-form-contracts-extended",
+  displayName: "@sps/sps-crm-models-form-contracts-extended",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-metatag-contracts",
+  displayName: "@sps/sps-website-builder-models-metatag-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

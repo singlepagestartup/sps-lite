@@ -1,10 +1,10 @@
 "use server";
 
 import { BACKEND_URL, getBackendData } from "@sps/utils";
-import { populate as pagePopulate } from "@sps/sps-website-builder-page-contracts-extended";
-import type { IModel as IBackendPage } from "@sps/sps-website-builder-page-contracts";
+import { populate as pagePopulate } from "@sps/sps-website-builder-models-page-contracts-extended";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
 import { Component } from "@sps/sps-website-builder-page-blocks-component";
-import { api } from "@sps/sps-website-builder-page-frontend-api";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export async function NotFoundPage() {
   const pages = (await getBackendData({

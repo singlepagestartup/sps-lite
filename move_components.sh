@@ -1,6 +1,6 @@
 #!/bin/bash
-module=sps-billing
-model_names=(currency invoice)
+module=sps-file-storage
+model_names=(file)
 
 for model_name in "${model_names[@]}"
 do

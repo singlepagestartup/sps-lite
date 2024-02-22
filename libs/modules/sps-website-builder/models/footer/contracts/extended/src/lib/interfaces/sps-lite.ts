@@ -1,5 +1,5 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-footer-contracts";
-import type { IModel as IFooterBlock } from "@sps/sps-website-builder-footer-block-contracts";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-models-footer-contracts";
+import type { IModel as IFooterBlock } from "@sps/sps-website-builder-models-footer-block-contracts";
 
 type IPageBlock = IFooterBlock;
 

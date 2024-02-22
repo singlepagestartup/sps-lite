@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-website-builder-shopping-cart-block-frontend-api";
+import { api } from "@sps/sps-website-builder-models-shopping-cart-block-frontend-api";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

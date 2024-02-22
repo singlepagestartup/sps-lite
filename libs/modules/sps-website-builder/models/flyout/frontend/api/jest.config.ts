@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-flyout-frontend-api",
+  displayName: "@sps/sps-website-builder-models-flyout-frontend-api",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

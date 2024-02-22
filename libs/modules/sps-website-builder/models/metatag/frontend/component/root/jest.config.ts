@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-metatag-frontend-component",
+  displayName: "@sps/sps-website-builder-models-metatag-frontend-component",
   preset: "../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

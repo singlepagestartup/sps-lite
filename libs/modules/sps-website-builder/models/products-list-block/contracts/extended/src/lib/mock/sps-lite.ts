@@ -1,4 +1,4 @@
-import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-products-list-block-contracts";
+import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-products-list-block-contracts";
 
 export const entity = {
   ...parentEntity,

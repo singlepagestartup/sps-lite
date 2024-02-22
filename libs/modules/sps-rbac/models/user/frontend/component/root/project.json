@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-user-frontend-component",
+  "name": "@sps/sps-rbac-models-user-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/user/frontend/component/root/src",
   "projectType": "library",

@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-ecommerce-order-product-contracts";
+import type { IModel as IParentModel } from "@sps/sps-ecommerce-models-order-product-contracts";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-ecommerce-order-product-contracts-extended";
+} from "@sps/sps-ecommerce-models-order-product-contracts-extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

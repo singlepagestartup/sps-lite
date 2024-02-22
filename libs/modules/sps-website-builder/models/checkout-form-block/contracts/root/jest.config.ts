@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-checkout-form-block-contracts",
+  displayName: "@sps/sps-website-builder-models-checkout-form-block-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

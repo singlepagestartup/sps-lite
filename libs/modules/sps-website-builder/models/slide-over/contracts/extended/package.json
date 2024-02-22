@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-slide-over-contracts-extended",
+  "name": "@sps/sps-website-builder-models-slide-over-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

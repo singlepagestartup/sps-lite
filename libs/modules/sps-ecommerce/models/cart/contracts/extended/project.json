@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-cart-contracts-extended",
+  "name": "@sps/sps-ecommerce-models-cart-contracts-extended",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/cart/contracts/extended/src",
   "projectType": "library",

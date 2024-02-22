@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-navbar-block-frontend-api",
+  displayName: "@sps/sps-website-builder-models-navbar-block-frontend-api",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

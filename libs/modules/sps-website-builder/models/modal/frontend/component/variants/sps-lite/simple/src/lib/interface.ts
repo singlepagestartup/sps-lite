@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-modal-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-modal-contracts-extended";
+import { IModel } from "@sps/sps-website-builder-models-modal-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-modal-contracts-extended";
 
 export const variant = "simple" as const;
 

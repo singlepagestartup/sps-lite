@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-logotypes-cloud-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-logotypes-cloud-block-contracts-extended";
+} from "@sps/sps-website-builder-models-logotypes-cloud-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-logotypes-cloud-block-contracts-extended";
 
 export const variant: (typeof variants)[number] =
   "simple-with-heading" as const;

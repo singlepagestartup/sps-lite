@@ -1,9 +1,9 @@
-import { populate as parentPopulate } from "@sps/sps-website-builder-layout-contracts";
-import { populate as topbarPopulate } from "@sps/sps-website-builder-topbar-contracts";
-import { populate as navbarPopulate } from "@sps/sps-website-builder-navbar-contracts";
-import { populate as sidebarPopulate } from "@sps/sps-website-builder-sidebar-contracts";
-import { populate as footerPopulate } from "@sps/sps-website-builder-footer-contracts";
-import { populate as pagePopulate } from "@sps/sps-website-builder-page-contracts";
+import { populate as parentPopulate } from "@sps/sps-website-builder-models-layout-contracts";
+import { populate as topbarPopulate } from "@sps/sps-website-builder-models-topbar-contracts";
+import { populate as navbarPopulate } from "@sps/sps-website-builder-models-navbar-contracts";
+import { populate as sidebarPopulate } from "@sps/sps-website-builder-models-sidebar-contracts";
+import { populate as footerPopulate } from "@sps/sps-website-builder-models-footer-contracts";
+import { populate as pagePopulate } from "@sps/sps-website-builder-models-page-contracts";
 
 export const populate = {
   ...parentPopulate,

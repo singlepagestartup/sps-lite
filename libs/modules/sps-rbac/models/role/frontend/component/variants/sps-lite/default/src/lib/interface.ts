@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-role-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-role-contracts-extended";
+import { IModel } from "@sps/sps-rbac-models-role-contracts";
+import { IModel as IModelExtended } from "@sps/sps-rbac-models-role-contracts-extended";
 
 export const variant = "default" as const;
 

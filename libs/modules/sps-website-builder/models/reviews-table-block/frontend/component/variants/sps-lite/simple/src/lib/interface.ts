@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-reviews-table-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-reviews-table-block-contracts-extended";
+} from "@sps/sps-website-builder-models-reviews-table-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-reviews-table-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "simple" as const;
 

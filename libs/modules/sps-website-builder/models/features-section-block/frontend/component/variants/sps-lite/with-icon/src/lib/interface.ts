@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-features-section-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-features-section-block-contracts-extended";
+} from "@sps/sps-website-builder-models-features-section-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-features-section-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "with-icon" as const;
 

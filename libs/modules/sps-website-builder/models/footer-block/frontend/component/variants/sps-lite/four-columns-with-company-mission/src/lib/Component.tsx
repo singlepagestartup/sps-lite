@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
-import { Component as ButtonArrays } from "@sps/sps-website-builder-buttons-array-frontend-component";
-import { Component as Logotype } from "@sps/sps-website-builder-logotype-frontend-component";
+import { Component as ButtonArrays } from "@sps/sps-website-builder-models-buttons-array-frontend-component";
+import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

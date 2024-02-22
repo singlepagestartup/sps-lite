@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-font-contracts",
+  "name": "@sps/sps-website-builder-models-font-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/font/contracts/root/src",
   "projectType": "library",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-logotype-contracts",
+  "name": "@sps/sps-website-builder-models-logotype-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-form-request-contracts",
+  "name": "@sps/sps-crm-models-form-request-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

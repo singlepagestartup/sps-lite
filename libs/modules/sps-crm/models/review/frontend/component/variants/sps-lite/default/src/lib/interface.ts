@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-crm-review-contracts";
-import { IModel as IModelExtended } from "@sps/sps-crm-review-contracts-extended";
+import { IModel } from "@sps/sps-crm-models-review-contracts";
+import { IModel as IModelExtended } from "@sps/sps-crm-models-review-contracts-extended";
 
 export const variant = "default" as const;
 

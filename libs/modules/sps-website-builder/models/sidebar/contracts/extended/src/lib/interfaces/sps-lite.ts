@@ -1,5 +1,5 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-sidebar-contracts";
-import type { IModel as IHeroSectionBlock } from "@sps/sps-website-builder-hero-section-block-contracts";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-models-sidebar-contracts";
+import type { IModel as IHeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 
 type IPageBlock = IHeroSectionBlock;
 

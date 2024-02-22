@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-ecommerce-attribute-contracts-extended",
+  displayName: "@sps/sps-ecommerce-models-attribute-contracts-extended",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

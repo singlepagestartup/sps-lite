@@ -1,4 +1,4 @@
-import { populate as parentPopulate } from "@sps/sps-rbac-role-contracts";
+import { populate as parentPopulate } from "@sps/sps-rbac-models-role-contracts";
 
 export const populate = {
   ...parentPopulate,

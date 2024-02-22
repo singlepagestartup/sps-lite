@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-form-request-contracts-extended",
+  "name": "@sps/sps-crm-models-form-request-contracts-extended",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-crm/models/form-request/contracts/extended/src",
   "projectType": "library",

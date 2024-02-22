@@ -1,4 +1,4 @@
-import { IModel as IModelExtended } from "@sps/sps-subscription-attribute-contracts-extended";
+import { IModel as IModelExtended } from "@sps/sps-subscription-models-attribute-contracts-extended";
 
 export const variant = "list" as const;
 

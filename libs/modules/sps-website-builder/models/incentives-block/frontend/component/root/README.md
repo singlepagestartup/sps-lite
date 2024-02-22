@@ -1,7 +1,7 @@
-# @sps/sps-website-builder-incentives-block-frontend-component
+# @sps/sps-website-builder-models-incentives-block-frontend-component
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-website-builder-incentives-block-frontend-component` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-website-builder-models-incentives-block-frontend-component` to execute the unit tests via [Jest](https://jestjs.io).

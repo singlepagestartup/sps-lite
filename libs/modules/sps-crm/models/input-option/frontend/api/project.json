@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-input-option-frontend-api",
+  "name": "@sps/sps-crm-models-input-option-frontend-api",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-crm/models/input-option/frontend/api/src",
   "projectType": "library",

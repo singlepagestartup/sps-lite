@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-incentives-block-contracts",
+  displayName: "@sps/sps-website-builder-models-incentives-block-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

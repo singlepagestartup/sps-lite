@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-logotype-frontend-api",
+  "name": "@sps/sps-website-builder-models-logotype-frontend-api",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

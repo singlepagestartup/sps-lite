@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-crm-form-request-frontend-api";
+import { api } from "@sps/sps-crm-models-form-request-frontend-api";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

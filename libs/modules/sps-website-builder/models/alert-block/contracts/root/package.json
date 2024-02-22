@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-alert-block-contracts",
+  "name": "@sps/sps-website-builder-models-alert-block-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

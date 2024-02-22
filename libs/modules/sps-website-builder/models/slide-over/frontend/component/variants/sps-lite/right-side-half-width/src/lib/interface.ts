@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-slide-over-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-slide-over-contracts-extended";
+} from "@sps/sps-website-builder-models-slide-over-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-slide-over-contracts-extended";
 
 export const variant: (typeof variants)[number] =
   "right-side-half-width" as const;

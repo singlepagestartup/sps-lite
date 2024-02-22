@@ -9,7 +9,7 @@
 // import { Button } from "@sps/ui-adapter";
 // import { useGetPageUrlModelId } from "@sps/hooks";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Product } from "@sps/sps-ecommerce-product-frontend-component";
+import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   // const router = useRouter();

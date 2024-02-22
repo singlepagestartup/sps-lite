@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-reviews-table-block-frontend-redux",
+  displayName:
+    "@sps/sps-website-builder-models-reviews-table-block-frontend-redux",
   preset: "../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

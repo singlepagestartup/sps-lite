@@ -5,7 +5,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { Error } from "./Error";
 import { Component } from "./Component";
-import { api } from "@sps/sps-website-builder-page-frontend-api";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentPropsExtended) {

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-form-request-frontend-component",
+  "name": "@sps/sps-crm-models-form-request-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-crm/models/form-request/frontend/component/root/src",
   "projectType": "library",

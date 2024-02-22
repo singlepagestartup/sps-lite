@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, forwardRef, useMemo } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
-import type { IModel as IFile } from "@sps/sps-file-storage-file-contracts";
+import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
 
 interface OptionRenderPropArg {
   active: boolean;

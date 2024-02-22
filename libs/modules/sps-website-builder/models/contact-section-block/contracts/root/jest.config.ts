@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-contact-section-block-contracts",
+  displayName:
+    "@sps/sps-website-builder-models-contact-section-block-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

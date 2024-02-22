@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-subscription-attribute-key-contracts",
+  "name": "@sps/sps-subscription-models-attribute-key-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

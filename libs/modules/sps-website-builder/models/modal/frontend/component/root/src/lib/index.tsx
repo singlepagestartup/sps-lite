@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, FC, useMemo } from "react";
-import { api as modalApi } from "@sps/sps-website-builder-modal-frontend-api";
+import { api as modalApi } from "@sps/sps-website-builder-models-modal-frontend-api";
 import { variants } from "./variants";
 import {
   useParams,
@@ -9,8 +9,8 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import type { IModel as IBackendModal } from "@sps/sps-website-builder-modal-contracts";
-import type { IModel as IBackendPage } from "@sps/sps-website-builder-page-contracts";
+import type { IModel as IBackendModal } from "@sps/sps-website-builder-models-modal-contracts";
+import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
 import { getTargetPage } from "@sps/utils";
 
 export interface IModal extends Omit<IBackendModal, "id"> {

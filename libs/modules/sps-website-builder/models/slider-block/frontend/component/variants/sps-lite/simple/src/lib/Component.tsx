@@ -1,4 +1,4 @@
-import { Component as Slider } from "@sps/sps-website-builder-slider-frontend-component";
+import { Component as Slider } from "@sps/sps-website-builder-models-slider-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

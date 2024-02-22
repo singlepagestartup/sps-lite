@@ -1,12 +1,12 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-crm-form-frontend-api";
+import { api } from "@sps/sps-crm-models-form-frontend-api";
 import { useGetPreparedFormInputs } from "@sps/sps-crm-frontend";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Button, Input as UiInput } from "@sps/ui-adapter";
-import { Component as Input } from "@sps/sps-crm-input-frontend-component";
+import { Component as Input } from "@sps/sps-crm-models-input-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   const [createFormRequest, { data }] = api.client.useCreateMutation();

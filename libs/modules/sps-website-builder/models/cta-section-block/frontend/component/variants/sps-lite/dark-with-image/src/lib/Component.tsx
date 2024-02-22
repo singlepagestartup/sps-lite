@@ -1,7 +1,7 @@
-import { Component as Button } from "@sps/sps-website-builder-button-frontend-component";
+import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-file-frontend-component";
+import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

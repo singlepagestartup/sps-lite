@@ -1,6 +1,6 @@
-import { populate as parentPopulate } from "@sps/sps-website-builder-footer-block-contracts";
-import { populate as logotypePopulate } from "@sps/sps-website-builder-logotype-contracts";
-import { populate as buttonsArrayPopulate } from "@sps/sps-website-builder-buttons-array-contracts";
+import { populate as parentPopulate } from "@sps/sps-website-builder-models-footer-block-contracts";
+import { populate as logotypePopulate } from "@sps/sps-website-builder-models-logotype-contracts";
+import { populate as buttonsArrayPopulate } from "@sps/sps-website-builder-models-buttons-array-contracts";
 
 export const populate = {
   ...parentPopulate,

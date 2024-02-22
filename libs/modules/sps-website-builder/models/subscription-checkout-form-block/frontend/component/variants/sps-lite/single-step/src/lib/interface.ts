@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-subscription-checkout-form-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-subscription-checkout-form-block-contracts-extended";
+} from "@sps/sps-website-builder-models-subscription-checkout-form-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-subscription-checkout-form-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "single-step" as const;
 

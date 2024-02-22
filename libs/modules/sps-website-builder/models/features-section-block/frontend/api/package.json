@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-features-section-block-frontend-api",
+  "name": "@sps/sps-website-builder-models-features-section-block-frontend-api",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

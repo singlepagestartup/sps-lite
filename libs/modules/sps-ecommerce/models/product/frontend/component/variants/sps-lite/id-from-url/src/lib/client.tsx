@@ -2,7 +2,7 @@
 import "client-only";
 
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-ecommerce-product-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { Skeleton } from "./Skeleton";
 import { Component } from "./Component";
 

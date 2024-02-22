@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-file-storage-file-contracts-extended",
+  "name": "@sps/sps-file-storage-models-file-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

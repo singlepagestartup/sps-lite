@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-ecommerce-attribute-contracts";
-import { IModel as IModelExtended } from "@sps/sps-ecommerce-attribute-contracts-extended";
+import { IModel } from "@sps/sps-ecommerce-models-attribute-contracts";
+import { IModel as IModelExtended } from "@sps/sps-ecommerce-models-attribute-contracts-extended";
 
 export const variant = "default" as const;
 

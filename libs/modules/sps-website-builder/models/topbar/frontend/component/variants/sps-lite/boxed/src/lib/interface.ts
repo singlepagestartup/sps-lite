@@ -1,5 +1,8 @@
-import { IModel, variants } from "@sps/sps-website-builder-topbar-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-topbar-contracts-extended";
+import {
+  IModel,
+  variants,
+} from "@sps/sps-website-builder-models-topbar-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-topbar-contracts-extended";
 
 export const variant: (typeof variants)[number] = "boxed" as const;
 

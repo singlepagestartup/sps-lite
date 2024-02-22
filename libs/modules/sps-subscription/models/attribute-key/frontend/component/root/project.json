@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-subscription-attribute-key-frontend-component",
+  "name": "@sps/sps-subscription-models-attribute-key-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-subscription/models/attribute-key/frontend/component/root/src",
   "projectType": "library",

@@ -2,11 +2,11 @@
 
 import { IComponentPropsExtended } from "./interface";
 import ReactMarkdown from "react-markdown";
-import { Component as File } from "@sps/sps-file-storage-file-frontend-component";
+import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { Button, FormField } from "@sps/ui-adapter";
-import { Component as Attribute } from "@sps/sps-ecommerce-attribute-frontend-component";
+import { Component as Attribute } from "@sps/sps-ecommerce-models-attribute-frontend-component";
 import Link from "next/link";
-import { api } from "@sps/sps-ecommerce-product-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { FormProvider, useForm } from "react-hook-form";
 
 export function Component(props: IComponentPropsExtended) {

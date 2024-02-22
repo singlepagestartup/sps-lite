@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-subscription-attribute-key-contracts-extended",
+  displayName: "@sps/sps-subscription-models-attribute-key-contracts-extended",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

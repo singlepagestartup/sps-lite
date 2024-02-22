@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-buttons-array-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-buttons-array-contracts-extended";
+} from "@sps/sps-website-builder-models-buttons-array-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-buttons-array-contracts-extended";
 
 export const variant: (typeof variants)[number] = "column-with-title" as const;
 

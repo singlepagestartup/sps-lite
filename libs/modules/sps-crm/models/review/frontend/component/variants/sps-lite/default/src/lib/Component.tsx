@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Component as File } from "@sps/sps-file-storage-file-frontend-component";
+import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { IComponentPropsExtended } from "../../find-one/interface";
 import { StarIcon } from "@heroicons/react/24/outline";
 

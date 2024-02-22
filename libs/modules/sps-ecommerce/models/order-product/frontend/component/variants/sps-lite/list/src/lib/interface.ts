@@ -1,4 +1,4 @@
-import { IModel as IModelExtended } from "@sps/sps-ecommerce-order-product-contracts-extended";
+import { IModel as IModelExtended } from "@sps/sps-ecommerce-models-order-product-contracts-extended";
 
 export const variant = "list" as const;
 

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-attribute-key-contracts-extended",
+  "name": "@sps/sps-ecommerce-models-attribute-key-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-theme-frontend-api",
+  "name": "@sps/sps-website-builder-models-theme-frontend-api",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/theme/frontend/api/src",
   "projectType": "library",

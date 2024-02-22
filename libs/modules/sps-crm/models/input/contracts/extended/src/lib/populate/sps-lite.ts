@@ -1,6 +1,6 @@
-import { populate as parentPopulate } from "@sps/sps-crm-input-contracts";
-import { populate as filePopulate } from "@sps/sps-file-storage-file-contracts";
-import { populate as inputOptionPopulate } from "@sps/sps-crm-input-option-contracts";
+import { populate as parentPopulate } from "@sps/sps-crm-models-input-contracts";
+import { populate as filePopulate } from "@sps/sps-file-storage-models-file-contracts";
+import { populate as inputOptionPopulate } from "@sps/sps-crm-models-input-option-contracts";
 
 export const populate = {
   ...parentPopulate,

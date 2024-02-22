@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-order-product-contracts",
+  "name": "@sps/sps-ecommerce-models-order-product-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/order-product/contracts/root/src",
   "projectType": "library",

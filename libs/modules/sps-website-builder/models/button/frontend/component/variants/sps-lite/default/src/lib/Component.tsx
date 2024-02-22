@@ -2,7 +2,7 @@
 
 import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Flyout } from "@sps/sps-website-builder-flyout-frontend-component";
+import { Component as Flyout } from "@sps/sps-website-builder-models-flyout-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   if (props.data.flyout) {

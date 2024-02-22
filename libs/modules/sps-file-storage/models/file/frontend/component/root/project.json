@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-file-storage-file-frontend-component",
+  "name": "@sps/sps-file-storage-models-file-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-file-storage/models/file/frontend/component/root/src",
   "projectType": "library",

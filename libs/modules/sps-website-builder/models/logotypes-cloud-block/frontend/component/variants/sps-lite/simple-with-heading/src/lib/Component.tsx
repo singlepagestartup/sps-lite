@@ -1,6 +1,6 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Logotype } from "@sps/sps-website-builder-logotype-frontend-component";
+import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

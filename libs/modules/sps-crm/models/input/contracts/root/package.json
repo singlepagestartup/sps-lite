@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-input-contracts",
+  "name": "@sps/sps-crm-models-input-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

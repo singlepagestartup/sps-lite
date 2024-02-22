@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Component as Product } from "@sps/sps-ecommerce-product-frontend-component";
+import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

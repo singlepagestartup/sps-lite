@@ -1,6 +1,6 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-features-section-block-contracts";
-import type { IModel as IFile } from "@sps/sps-file-storage-file-contracts";
-import type { IModel as IFeature } from "@sps/sps-website-builder-feature-contracts";
+import type { IModel as IParentModel } from "@sps/sps-website-builder-models-features-section-block-contracts";
+import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
+import type { IModel as IFeature } from "@sps/sps-website-builder-models-feature-contracts";
 
 export interface IModel extends IParentModel {
   features?: IFeature[] | null;

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-faq-block-frontend-api",
+  "name": "@sps/sps-website-builder-models-faq-block-frontend-api",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/faq-block/frontend/api/src",
   "projectType": "library",

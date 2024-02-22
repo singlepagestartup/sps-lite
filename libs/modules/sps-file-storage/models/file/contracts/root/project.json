@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-file-storage-file-contracts",
+  "name": "@sps/sps-file-storage-models-file-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-file-storage/models/file/contracts/root/src",
   "projectType": "library",

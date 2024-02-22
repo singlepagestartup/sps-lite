@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-theme-frontend-redux",
+  "name": "@sps/sps-website-builder-models-theme-frontend-redux",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/theme/frontend/redux/src",
   "projectType": "library",

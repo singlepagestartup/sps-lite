@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-alert-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-alert-block-contracts-extended";
+} from "@sps/sps-website-builder-models-alert-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-alert-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "centered" as const;
 

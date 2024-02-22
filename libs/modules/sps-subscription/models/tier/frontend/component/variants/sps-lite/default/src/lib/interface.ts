@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-subscription-tier-contracts";
-import { IModel as IModelExtended } from "@sps/sps-subscription-tier-contracts-extended";
+import { IModel } from "@sps/sps-subscription-models-tier-contracts";
+import { IModel as IModelExtended } from "@sps/sps-subscription-models-tier-contracts-extended";
 
 export const variant = "default" as const;
 

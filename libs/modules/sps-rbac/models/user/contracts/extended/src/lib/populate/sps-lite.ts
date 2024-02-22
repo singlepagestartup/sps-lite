@@ -1,5 +1,5 @@
-import { populate as parentPopulate } from "@sps/sps-rbac-user-contracts";
-import { populate as cartPopulate } from "@sps/sps-ecommerce-cart-contracts";
+import { populate as parentPopulate } from "@sps/sps-rbac-models-user-contracts";
+import { populate as cartPopulate } from "@sps/sps-ecommerce-models-cart-contracts";
 
 export const populate = {
   ...parentPopulate,

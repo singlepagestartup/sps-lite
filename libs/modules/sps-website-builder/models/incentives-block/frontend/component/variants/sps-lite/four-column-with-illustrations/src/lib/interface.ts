@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-incentives-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-incentives-block-contracts-extended";
+} from "@sps/sps-website-builder-models-incentives-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-incentives-block-contracts-extended";
 
 export const variant: (typeof variants)[number] =
   "four-column-with-illustrations" as const;

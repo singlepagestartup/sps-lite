@@ -14,9 +14,9 @@ import React, {
 import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { Component as Button } from "@sps/sps-website-builder-button-frontend-component";
+import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import { getFileUrl } from "@sps/utils";
-import { IModel as IBackendSlide } from "@sps/sps-website-builder-slide-contracts-extended";
+import { IModel as IBackendSlide } from "@sps/sps-website-builder-models-slide-contracts-extended";
 
 interface INavigationButton {
   isNext?: boolean;

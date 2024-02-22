@@ -5,7 +5,7 @@ import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { Error } from "./Error";
 import { IComponentProps, IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder-layout-frontend-api";
+import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getTargetPage } from "@sps/utils";

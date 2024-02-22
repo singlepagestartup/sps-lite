@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-order-product-contracts",
+  "name": "@sps/sps-ecommerce-models-order-product-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

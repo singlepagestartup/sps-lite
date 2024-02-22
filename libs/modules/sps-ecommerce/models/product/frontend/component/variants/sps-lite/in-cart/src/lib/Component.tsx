@@ -1,10 +1,10 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-file-frontend-component";
+import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { Button } from "@sps/ui-adapter";
-import { Component as Attribute } from "@sps/sps-ecommerce-attribute-frontend-component";
-import { api } from "@sps/sps-ecommerce-product-frontend-api";
+import { Component as Attribute } from "@sps/sps-ecommerce-models-attribute-frontend-component";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 
 export function Component(props: IComponentPropsExtended) {
   const [removeFromCart, { data: removeFromCartData }] =

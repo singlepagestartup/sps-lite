@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-user-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-user-contracts-extended";
+import { IModel } from "@sps/sps-rbac-models-user-contracts";
+import { IModel as IModelExtended } from "@sps/sps-rbac-models-user-contracts-extended";
 
 export const variant = "default" as const;
 

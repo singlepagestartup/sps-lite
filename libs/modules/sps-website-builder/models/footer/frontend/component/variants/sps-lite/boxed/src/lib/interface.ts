@@ -1,5 +1,8 @@
-import { IModel, variants } from "@sps/sps-website-builder-footer-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-footer-contracts-extended";
+import {
+  IModel,
+  variants,
+} from "@sps/sps-website-builder-models-footer-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-footer-contracts-extended";
 
 export const variant: (typeof variants)[number] = "boxed" as const;
 

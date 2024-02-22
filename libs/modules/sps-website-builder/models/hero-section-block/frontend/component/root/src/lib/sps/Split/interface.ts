@@ -1,8 +1,8 @@
-import type { IModel as IModelExtended } from "@sps/sps-website-builder-hero-section-block-contracts-extended";
+import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-hero-section-block-contracts-extended";
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-hero-section-block-contracts";
+} from "@sps/sps-website-builder-models-hero-section-block-contracts";
 
 export const variant: (typeof variants)[number] = "split" as const;
 

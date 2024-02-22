@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Order } from "@sps/sps-ecommerce-order-frontend-component";
+import { Component as Order } from "@sps/sps-ecommerce-models-order-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

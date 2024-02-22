@@ -1,6 +1,6 @@
-import { Component as Navbar } from "@sps/sps-website-builder-navbar-frontend-component";
-import { Component as Footer } from "@sps/sps-website-builder-footer-frontend-component";
-import { Component as Sidebar } from "@sps/sps-website-builder-sidebar-frontend-component";
+import { Component as Navbar } from "@sps/sps-website-builder-models-navbar-frontend-component";
+import { Component as Footer } from "@sps/sps-website-builder-models-footer-frontend-component";
+import { Component as Sidebar } from "@sps/sps-website-builder-models-sidebar-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-file-storage-file-frontend-redux",
+  "name": "@sps/sps-file-storage-models-file-frontend-redux",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-file-storage/models/file/frontend/redux/src",
   "projectType": "library",

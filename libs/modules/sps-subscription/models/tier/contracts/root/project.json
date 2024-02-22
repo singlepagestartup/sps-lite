@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-subscription-tier-contracts",
+  "name": "@sps/sps-subscription-models-tier-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-subscription/models/tier/contracts/root/src",
   "projectType": "library",

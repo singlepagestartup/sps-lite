@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-metatag-contracts",
+  "name": "@sps/sps-website-builder-models-metatag-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/metatag/contracts/root/src",
   "projectType": "library",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-attribute-frontend-component",
+  "name": "@sps/sps-ecommerce-models-attribute-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/attribute/frontend/component/root/src",
   "projectType": "library",

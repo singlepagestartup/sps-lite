@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
-import { IModel, variants } from "@sps/sps-website-builder-flyout-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-flyout-contracts-extended";
+import {
+  IModel,
+  variants,
+} from "@sps/sps-website-builder-models-flyout-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-flyout-contracts-extended";
 
 export const variant: (typeof variants)[number] = "simple" as const;
 

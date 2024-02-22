@@ -1,11 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-website-builder-checkout-form-block-contracts";
+} from "@sps/sps-website-builder-models-checkout-form-block-contracts";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-website-builder-checkout-form-block-contracts-extended";
+} from "@sps/sps-website-builder-models-checkout-form-block-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 

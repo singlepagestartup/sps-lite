@@ -1,7 +1,7 @@
 import { IComponentProps } from "./interface";
 import Client from "./client";
 import Server from "./server";
-import { ReduxProvider } from "@sps/sps-crm-form-request-frontend-redux";
+import { ReduxProvider } from "@sps/sps-crm-models-form-request-frontend-redux";
 
 export function Component(props: IComponentProps) {
   const Comp = props.isServer ? Server : Client;

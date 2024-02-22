@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-faq-contracts-extended",
+  "name": "@sps/sps-website-builder-models-faq-contracts-extended",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/faq/contracts/extended/src",
   "projectType": "library",

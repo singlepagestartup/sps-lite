@@ -1,7 +1,7 @@
 import { IComponentProps } from "./interface";
 import Client from "./client";
 import Server from "./server";
-import { ReduxProvider } from "@sps/sps-website-builder-shopping-cart-block-frontend-redux";
+import { ReduxProvider } from "@sps/sps-website-builder-models-shopping-cart-block-frontend-redux";
 
 export function Component(props: IComponentProps) {
   const Comp = props.isServer ? Server : Client;

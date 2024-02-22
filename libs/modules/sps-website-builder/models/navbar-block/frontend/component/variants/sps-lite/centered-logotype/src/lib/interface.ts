@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-navbar-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-navbar-block-contracts-extended";
+} from "@sps/sps-website-builder-models-navbar-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-navbar-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "centered-logotype" as const;
 

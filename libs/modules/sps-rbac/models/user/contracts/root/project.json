@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-user-contracts",
+  "name": "@sps/sps-rbac-models-user-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/user/contracts/root/src",
   "projectType": "library",

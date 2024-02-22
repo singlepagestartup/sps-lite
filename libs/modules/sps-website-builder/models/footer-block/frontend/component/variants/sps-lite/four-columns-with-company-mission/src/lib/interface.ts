@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-footer-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-footer-block-contracts-extended";
+} from "@sps/sps-website-builder-models-footer-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-footer-block-contracts-extended";
 
 export const variant: (typeof variants)[number] =
   "four-columns-with-company-mission" as const;

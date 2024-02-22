@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-hero-section-block-contracts",
+  "name": "@sps/sps-website-builder-models-hero-section-block-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/hero-section-block/contracts/root/src",
   "projectType": "library",

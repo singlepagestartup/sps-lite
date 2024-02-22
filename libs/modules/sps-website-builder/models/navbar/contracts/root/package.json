@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-navbar-contracts",
+  "name": "@sps/sps-website-builder-models-navbar-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

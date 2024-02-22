@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-subscription-checkout-form-block-contracts-extended",
+  "name": "@sps/sps-website-builder-models-subscription-checkout-form-block-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

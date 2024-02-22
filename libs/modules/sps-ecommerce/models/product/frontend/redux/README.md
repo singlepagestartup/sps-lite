@@ -1,7 +1,7 @@
-# @sps/sps-ecommerce-product-frontend-redux
+# @sps/sps-ecommerce-models-product-frontend-redux
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-ecommerce-product-frontend-redux` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-ecommerce-models-product-frontend-redux` to execute the unit tests via [Jest](https://jestjs.io).

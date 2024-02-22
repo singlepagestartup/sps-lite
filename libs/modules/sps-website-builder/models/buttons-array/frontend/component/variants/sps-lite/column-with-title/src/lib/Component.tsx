@@ -1,4 +1,4 @@
-import { Component as Button } from "@sps/sps-website-builder-button-frontend-component";
+import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "./interface";

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-user-frontend-redux",
+  "name": "@sps/sps-rbac-models-user-frontend-redux",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/user/frontend/redux/src",
   "projectType": "library",

@@ -3,7 +3,7 @@
 import { Card, ICardProps } from "@sps/ui-adapter";
 import Image from "next/image";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Component as Tier } from "@sps/sps-subscription-tier-frontend-component";
+import { Component as Tier } from "@sps/sps-subscription-models-tier-frontend-component";
 // import type { IModel as ITier } from "../../../../tier/model";
 // import { Component as Tier } from "../../../../tier/component";
 import { IComponentPropsExtended } from "./interface";

@@ -1,7 +1,7 @@
-# @sps/sps-website-builder-slider-block-frontend-redux
+# @sps/sps-website-builder-models-slider-block-frontend-redux
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @sps/sps-website-builder-slider-block-frontend-redux` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @sps/sps-website-builder-models-slider-block-frontend-redux` to execute the unit tests via [Jest](https://jestjs.io).

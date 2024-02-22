@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-subscription-attribute-key-contracts",
+  "name": "@sps/sps-subscription-models-attribute-key-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-subscription/models/attribute-key/contracts/root/src",
   "projectType": "library",

@@ -1,3 +1,3 @@
-import type { IModel as IParentModel } from "@sps/sps-rbac-role-contracts";
+import type { IModel as IParentModel } from "@sps/sps-rbac-models-role-contracts";
 
 export interface IModel extends IParentModel {}

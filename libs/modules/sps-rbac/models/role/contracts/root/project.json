@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-role-contracts",
+  "name": "@sps/sps-rbac-models-role-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/role/contracts/root/src",
   "projectType": "library",

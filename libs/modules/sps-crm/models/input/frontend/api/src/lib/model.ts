@@ -1,11 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-crm-input-contracts";
+} from "@sps/sps-crm-models-input-contracts";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-crm-input-contracts-extended";
+} from "@sps/sps-crm-models-input-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-crm-input-option-contracts",
+  "name": "@sps/sps-crm-models-input-option-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-crm/models/input-option/contracts/root/src",
   "projectType": "library",

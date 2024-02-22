@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-subscription-attribute-frontend-api";
+import { api } from "@sps/sps-subscription-models-attribute-frontend-api";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

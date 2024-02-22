@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-role-contracts-extended",
+  "name": "@sps/sps-rbac-models-role-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Attribute } from "@sps/sps-subscription-attribute-frontend-component";
+import { Component as Attribute } from "@sps/sps-subscription-models-attribute-frontend-component";
 import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,4 +1,4 @@
-import { spsLiteEntity as parentEntity } from "@sps/sps-ecommerce-product-contracts";
+import { spsLiteEntity as parentEntity } from "@sps/sps-ecommerce-models-product-contracts";
 
 export const entity = {
   ...parentEntity,

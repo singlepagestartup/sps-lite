@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-logotype-frontend-component",
+  "name": "@sps/sps-website-builder-models-logotype-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/logotype/frontend/component/root/src",
   "projectType": "library",

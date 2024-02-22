@@ -1,11 +1,11 @@
 import {
   IModel as IParentModel,
   variants as parentVariants,
-} from "@sps/sps-website-builder-navbar-contracts";
+} from "@sps/sps-website-builder-models-navbar-contracts";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-website-builder-navbar-contracts-extended";
+} from "@sps/sps-website-builder-models-navbar-contracts-extended";
 
 export const variants = [...parentVariants] as const;
 

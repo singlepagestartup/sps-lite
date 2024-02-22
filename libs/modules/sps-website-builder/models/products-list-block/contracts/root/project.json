@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-products-list-block-contracts",
+  "name": "@sps/sps-website-builder-models-products-list-block-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/products-list-block/contracts/root/src",
   "projectType": "library",

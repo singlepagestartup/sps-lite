@@ -1,5 +1,5 @@
-import { populate as parentPopulate } from "@sps/sps-website-builder-footer-contracts";
-import { populate as footerBlockPopulate } from "@sps/sps-website-builder-footer-block-contracts";
+import { populate as parentPopulate } from "@sps/sps-website-builder-models-footer-contracts";
+import { populate as footerBlockPopulate } from "@sps/sps-website-builder-models-footer-block-contracts";
 
 const pageBlockPopulate = {
   ...footerBlockPopulate,

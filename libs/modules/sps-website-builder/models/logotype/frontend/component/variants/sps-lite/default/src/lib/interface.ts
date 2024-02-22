@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-logotype-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-logotype-contracts-extended";
+import { IModel } from "@sps/sps-website-builder-models-logotype-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-logotype-contracts-extended";
 
 export const variant = "default" as const;
 

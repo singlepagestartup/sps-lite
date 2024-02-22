@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import type { IModel as IModelExtended } from "@sps/sps-website-builder-page-contracts-extended";
+import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-page-contracts-extended";
 
 export interface IComponentBase {
   showSkeletons?: boolean;

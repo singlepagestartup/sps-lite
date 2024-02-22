@@ -1,6 +1,6 @@
 import { IComponentProps } from "./interface";
 import Client from "./client";
-import { ReduxProvider } from "@sps/sps-website-builder-slider-frontend-redux";
+import { ReduxProvider } from "@sps/sps-website-builder-models-slider-frontend-redux";
 
 export function Component(props: IComponentProps) {
   const Comp = Client;

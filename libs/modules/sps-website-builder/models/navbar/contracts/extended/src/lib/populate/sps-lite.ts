@@ -1,5 +1,5 @@
-import { populate as parentPopulate } from "@sps/sps-website-builder-navbar-contracts";
-import { populate as navbarBlockPopulate } from "@sps/sps-website-builder-navbar-block-contracts";
+import { populate as parentPopulate } from "@sps/sps-website-builder-models-navbar-contracts";
+import { populate as navbarBlockPopulate } from "@sps/sps-website-builder-models-navbar-block-contracts";
 
 export const populate = {
   ...parentPopulate,

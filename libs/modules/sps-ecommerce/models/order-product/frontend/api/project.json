@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-ecommerce-order-product-frontend-api",
+  "name": "@sps/sps-ecommerce-models-order-product-frontend-api",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/order-product/frontend/api/src",
   "projectType": "library",

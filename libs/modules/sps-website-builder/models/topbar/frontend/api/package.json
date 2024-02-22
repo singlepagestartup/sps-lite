@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-topbar-frontend-api",
+  "name": "@sps/sps-website-builder-models-topbar-frontend-api",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

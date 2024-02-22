@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-logotypes-cloud-block-contracts",
+  displayName:
+    "@sps/sps-website-builder-models-logotypes-cloud-block-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

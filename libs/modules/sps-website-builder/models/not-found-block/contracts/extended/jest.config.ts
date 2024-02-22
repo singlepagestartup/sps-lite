@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-website-builder-not-found-block-contracts-extended",
+  displayName:
+    "@sps/sps-website-builder-models-not-found-block-contracts-extended",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

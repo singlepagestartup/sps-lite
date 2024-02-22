@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-subscription-tier-frontend-component",
+  "name": "@sps/sps-subscription-models-tier-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-subscription/models/tier/frontend/component/root/src",
   "projectType": "library",

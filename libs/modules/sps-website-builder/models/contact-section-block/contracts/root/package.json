@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-contact-section-block-contracts",
+  "name": "@sps/sps-website-builder-models-contact-section-block-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

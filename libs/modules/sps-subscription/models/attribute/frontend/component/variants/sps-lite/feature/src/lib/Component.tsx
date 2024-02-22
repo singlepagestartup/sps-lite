@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as AttributeKey } from "@sps/sps-subscription-attribute-key-frontend-component";
+import { Component as AttributeKey } from "@sps/sps-subscription-models-attribute-key-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   if (!props.data.attributeKey) {

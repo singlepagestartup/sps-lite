@@ -1,5 +1,5 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Component as Feature } from "@sps/sps-website-builder-feature-frontend-component";
+import { Component as Feature } from "@sps/sps-website-builder-models-feature-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

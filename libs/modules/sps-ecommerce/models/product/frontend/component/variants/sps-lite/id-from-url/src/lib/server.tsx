@@ -4,7 +4,7 @@ import "server-only";
 import { IComponentProps } from "./interface";
 import { headers } from "next/headers";
 import { getPageUrlModelId } from "@sps/utils";
-import { api } from "@sps/sps-ecommerce-product-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { Component } from "./Component";
 
 // default is required for dynamic import

@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 
-import { api } from "@sps/sps-website-builder-layout-frontend-api";
+import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { variants } from "./variants";
 import { headers } from "next/headers";
 import { ReactNode } from "react";

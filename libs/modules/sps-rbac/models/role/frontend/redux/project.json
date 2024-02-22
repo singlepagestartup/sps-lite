@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-role-frontend-redux",
+  "name": "@sps/sps-rbac-models-role-frontend-redux",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/role/frontend/redux/src",
   "projectType": "library",

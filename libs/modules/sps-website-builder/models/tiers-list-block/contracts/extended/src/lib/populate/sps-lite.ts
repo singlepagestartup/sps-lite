@@ -1,6 +1,6 @@
-import { populate as parentPopulate } from "@sps/sps-website-builder-tiers-list-block-contracts";
-import { populate as tierPopulate } from "@sps/sps-subscription-tier-contracts";
-import { populate as filePopulate } from "@sps/sps-file-storage-file-contracts";
+import { populate as parentPopulate } from "@sps/sps-website-builder-models-tiers-list-block-contracts";
+import { populate as tierPopulate } from "@sps/sps-subscription-models-tier-contracts";
+import { populate as filePopulate } from "@sps/sps-file-storage-models-file-contracts";
 
 export const populate = {
   ...parentPopulate,

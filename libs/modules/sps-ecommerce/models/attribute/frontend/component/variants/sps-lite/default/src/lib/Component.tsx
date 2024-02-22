@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { Component as AttributeKey } from "@sps/sps-ecommerce-attribute-key-frontend-component";
+import { Component as AttributeKey } from "@sps/sps-ecommerce-models-attribute-key-frontend-component";
 // import { Component as Currency } from "@sps/sps-billing-frontend/lib/models/currency/component";
 
 export function Component(props: IComponentPropsExtended) {

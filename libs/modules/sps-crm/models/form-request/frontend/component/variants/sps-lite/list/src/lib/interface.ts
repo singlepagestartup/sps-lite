@@ -1,4 +1,4 @@
-import { IModel as IModelExtended } from "@sps/sps-crm-form-request-contracts-extended";
+import { IModel as IModelExtended } from "@sps/sps-crm-models-form-request-contracts-extended";
 
 export const variant = "list" as const;
 

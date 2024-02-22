@@ -1,8 +1,8 @@
 import {
   IModel,
   variants,
-} from "@sps/sps-website-builder-tiers-list-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-tiers-list-block-contracts-extended";
+} from "@sps/sps-website-builder-models-tiers-list-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-tiers-list-block-contracts-extended";
 
 export const variant: (typeof variants)[number] = "two-columns-card" as const;
 

@@ -3,7 +3,7 @@
 import { useSpring, animated } from "@react-spring/web";
 import { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-file-frontend-component";
+import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   const [passed, setPassed] = useState(false);

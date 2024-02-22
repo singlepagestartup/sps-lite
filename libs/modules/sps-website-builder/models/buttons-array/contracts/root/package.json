@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-buttons-array-contracts",
+  "name": "@sps/sps-website-builder-models-buttons-array-contracts",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-rbac-role-frontend-component",
+  "name": "@sps/sps-rbac-models-role-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-rbac/models/role/frontend/component/root/src",
   "projectType": "library",
