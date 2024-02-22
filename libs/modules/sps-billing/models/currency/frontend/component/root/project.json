@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-currency-frontend-component",
+  "name": "@sps/sps-billing-models-currency-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-billing/models/currency/frontend/component/root/src",
   "projectType": "library",

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-invoice-frontend-redux",
+  "name": "@sps/sps-billing-models-invoice-frontend-redux",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-billing/models/invoice/frontend/redux/src",
   "projectType": "library",

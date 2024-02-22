@@ -1,4 +1,4 @@
-import { IModel as IModelExtended } from "@sps/sps-billing-invoice-contracts-extended";
+import { IModel as IModelExtended } from "@sps/sps-billing-models-invoice-contracts-extended";
 
 export const variant = "list" as const;
 

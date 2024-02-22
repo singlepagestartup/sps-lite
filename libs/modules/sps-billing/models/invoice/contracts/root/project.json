@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-invoice-contracts",
+  "name": "@sps/sps-billing-models-invoice-contracts",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-billing/models/invoice/contracts/root/src",
   "projectType": "library",

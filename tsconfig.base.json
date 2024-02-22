@@ -17,47 +17,44 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
-      "@sps/sps-billing-currency-contracts": [
-        "libs/modules/sps-billing/models/currency/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-contracts-extended": [
-        "libs/modules/sps-billing/models/currency/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-frontend-api": [
-        "libs/modules/sps-billing/models/currency/frontend/api/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-frontend-component": [
-        "libs/modules/sps-billing/models/currency/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-currency-frontend-redux": [
-        "libs/modules/sps-billing/models/currency/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/root/src/index.ts"
       ],
       "@sps/sps-billing-frontend-components": [
         "libs/modules/sps-billing/frontend/components/src/index.ts"
       ],
-      "@sps/sps-billing-invoice-contracts": [
-        "libs/modules/sps-billing/models/invoice/contracts/root/src/index.ts"
+      "@sps/sps-billing-models-currency-contracts": [
+        "libs/modules/sps-billing/models/currency/contracts/root/src/index.ts"
       ],
-      "@sps/sps-billing-invoice-contracts-extended": [
-        "libs/modules/sps-billing/models/invoice/contracts/extended/src/index.ts"
+      "@sps/sps-billing-models-currency-contracts-extended": [
+        "libs/modules/sps-billing/models/currency/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-billing-invoice-frontend-api": [
-        "libs/modules/sps-billing/models/invoice/frontend/api/src/index.ts"
+      "@sps/sps-billing-models-currency-frontend-api": [
+        "libs/modules/sps-billing/models/currency/frontend/api/src/index.ts"
       ],
-      "@sps/sps-billing-invoice-frontend-component": [
-        "libs/modules/sps-billing/models/invoice/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-invoice-frontend-redux": [
-        "libs/modules/sps-billing/models/invoice/frontend/redux/src/index.ts"
+      "@sps/sps-billing-models-currency-frontend-component": [
+        "libs/modules/sps-billing/models/currency/frontend/component/root/src/index.ts"
       ],
       "@sps/sps-billing-models-currency-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-billing-models-currency-frontend-component-variants-sps-lite-list": [
         "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/list/src/index.ts"
+      ],
+      "@sps/sps-billing-models-currency-frontend-redux": [
+        "libs/modules/sps-billing/models/currency/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-billing-models-invoice-contracts": [
+        "libs/modules/sps-billing/models/invoice/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-invoice-contracts-extended": [
+        "libs/modules/sps-billing/models/invoice/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-billing-models-invoice-frontend-api": [
+        "libs/modules/sps-billing/models/invoice/frontend/api/src/index.ts"
+      ],
+      "@sps/sps-billing-models-invoice-frontend-component": [
+        "libs/modules/sps-billing/models/invoice/frontend/component/root/src/index.ts"
       ],
       "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/default/src/index.ts"
@@ -67,6 +64,9 @@
       ],
       "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-redirect": [
         "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/redirect/src/index.ts"
+      ],
+      "@sps/sps-billing-models-invoice-frontend-redux": [
+        "libs/modules/sps-billing/models/invoice/frontend/redux/src/index.ts"
       ],
       "@sps/sps-crm-form-contracts": [
         "libs/modules/sps-crm/models/form/contracts/root/src/index.ts"

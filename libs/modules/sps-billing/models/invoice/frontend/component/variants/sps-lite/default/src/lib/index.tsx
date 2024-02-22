@@ -1,5 +1,5 @@
 import { IComponentProps } from "./interface";
-import { ReduxProvider } from "@sps/sps-billing-invoice-frontend-redux";
+import { ReduxProvider } from "@sps/sps-billing-models-invoice-frontend-redux";
 import Client from "./client";
 import Server from "./server";
 

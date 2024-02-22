@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-billing-invoice-contracts";
-import { IModel as IModelExtended } from "@sps/sps-billing-invoice-contracts-extended";
+import { IModel } from "@sps/sps-billing-models-invoice-contracts";
+import { IModel as IModelExtended } from "@sps/sps-billing-models-invoice-contracts-extended";
 
 export const variant = "redirect" as const;
 

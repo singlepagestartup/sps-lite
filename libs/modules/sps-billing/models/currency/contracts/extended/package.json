@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-currency-contracts-extended",
+  "name": "@sps/sps-billing-models-currency-contracts-extended",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

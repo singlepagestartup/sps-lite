@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-billing-invoice-frontend-component",
+  "name": "@sps/sps-billing-models-invoice-frontend-component",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-billing/models/invoice/frontend/component/root/src",
   "projectType": "library",

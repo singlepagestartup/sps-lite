@@ -7,9 +7,49 @@ do
     # rename contracts projects
     rm -rf libs/modules/$module/models/$model_name/contracts/tmp-root
 
+    nx reset
     npx nx g @nx/workspace:move --project @sps/$module-$model_name-contracts --destination libs/modules/$module/models/$model_name/contracts/tmp-root --newProjectName @sps/$module-models-$model_name-contracts
     
+    nx reset
     npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-contracts --destination libs/modules/$module/models/$model_name/contracts/root
+
+    rm -rf libs/modules/$module/models/$model_name/contracts/tmp-extended
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-$model_name-contracts-extended --destination libs/modules/$module/models/$model_name/contracts/tmp-extended --newProjectName @sps/$module-models-$model_name-contracts-extended
+    
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-contracts-extended --destination libs/modules/$module/models/$model_name/contracts/extended
+
+    # move frontend api
+    rm -rf libs/modules/$module/models/$model_name/frontend/api-tmp
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-api --destination libs/modules/$module/models/$model_name/frontend/api-tmp --newProjectName @sps/$module-models-$model_name-frontend-api
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-frontend-api --destination libs/modules/$module/models/$model_name/frontend/api
+
+    # move frontend redux
+    rm -rf libs/modules/$module/models/$model_name/frontend/redux-tmp
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-redux --destination libs/modules/$module/models/$model_name/frontend/redux-tmp --newProjectName @sps/$module-models-$model_name-frontend-redux
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-frontend-redux --destination libs/modules/$module/models/$model_name/frontend/redux
+
+    # move frontend component
+    rm -rf libs/modules/$module/models/$model_name/frontend/component/root-tmp
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-$model_name-frontend-component --destination libs/modules/$module/models/$model_name/frontend/component/root-tmp --newProjectName @sps/$module-models-$model_name-frontend-component
+
+    nx reset
+    npx nx g @nx/workspace:move --project @sps/$module-models-$model_name-frontend-component --destination libs/modules/$module/models/$model_name/frontend/component/root
+
+
+
 
     # rm -rf libs/modules/$module/models/$model_name/contracts/tmp-extended
 

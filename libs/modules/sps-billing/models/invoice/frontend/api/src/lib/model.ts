@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-billing-invoice-contracts";
+import type { IModel as IParentModel } from "@sps/sps-billing-models-invoice-contracts";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-billing-invoice-contracts-extended";
+} from "@sps/sps-billing-models-invoice-contracts-extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

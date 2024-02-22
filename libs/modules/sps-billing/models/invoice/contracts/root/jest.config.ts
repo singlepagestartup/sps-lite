@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-billing-invoice-contracts",
+  displayName: "@sps/sps-billing-models-invoice-contracts",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

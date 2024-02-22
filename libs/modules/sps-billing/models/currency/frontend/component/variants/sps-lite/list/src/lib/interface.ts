@@ -1,4 +1,4 @@
-import { IModel as IModelExtended } from "@sps/sps-billing-currency-contracts-extended";
+import { IModel as IModelExtended } from "@sps/sps-billing-models-currency-contracts-extended";
 
 export const variant = "list" as const;
 

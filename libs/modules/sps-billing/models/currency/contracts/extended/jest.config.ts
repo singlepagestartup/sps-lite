@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-billing-currency-contracts-extended",
+  displayName: "@sps/sps-billing-models-currency-contracts-extended",
   preset: "../../../../../../../jest.preset.js",
   testEnvironment: "node",
   transform: {

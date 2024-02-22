@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-billing-currency-contracts";
-import { IModel as IModelExtended } from "@sps/sps-billing-currency-contracts-extended";
+import { IModel } from "@sps/sps-billing-models-currency-contracts";
+import { IModel as IModelExtended } from "@sps/sps-billing-models-currency-contracts-extended";
 
 export const variant = "default" as const;
 

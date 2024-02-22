@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-billing-currency-frontend-component",
+  displayName: "@sps/sps-billing-models-currency-frontend-component",
   preset: "../../../../../../../../jest.preset.js",
   transform: {
     "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "@nx/react/plugins/jest",

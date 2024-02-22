@@ -5,7 +5,7 @@ import { IComponentPropsExtended } from "./interface";
 import { Component as OrderProduct } from "@sps/sps-ecommerce-order-product-frontend-component";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, Input } from "@sps/ui-adapter";
-import { Component as Invoice } from "@sps/sps-billing-invoice-frontend-component";
+import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   const [checkout, { data: checkoutData }] = api.client.useCheckoutMutation();
