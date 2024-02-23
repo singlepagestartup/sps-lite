@@ -13,6 +13,26 @@
       },
       "x-prompt": "What name would you like to use?"
     },
+    "type": {
+      "type": "string",
+      "description": "Type of component",
+      "x-prompt": {
+        "message": "Which type of component would you like to generate?",
+        "type": "list",
+        "default": "startup",
+        "items": [
+          {
+            "value": "startup"
+          },
+          {
+            "value": "sps-lite"
+          },
+          {
+            "value": "sps"
+          }
+        ]
+      }
+    },
     "project": {
       "type": "string",
       "description": "The root component for creating component.",

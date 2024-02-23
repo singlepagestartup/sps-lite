@@ -18,7 +18,7 @@ export async function modelFrontendComponentVariantGenerator(
   options: ModelFrontendComponentVariantGeneratorSchema,
 ) {
   const variant = options.name;
-  const type = "startup";
+  const type = options.type;
   const projects = getProjects(tree);
   const project = projects.get(options.project);
 
@@ -64,8 +64,14 @@ export async function modelFrontendComponentVariantGenerator(
     model,
   });
 
-  await addVariantToRoot({ libraryOptions, variant, projectRoot, tree });
-  await addInterfaceToRoot({ libraryOptions, variant, projectRoot, tree });
+  await addVariantToRoot({ libraryOptions, variant, projectRoot, tree, type });
+  await addInterfaceToRoot({
+    libraryOptions,
+    variant,
+    projectRoot,
+    tree,
+    type,
+  });
   await addStylesToRoot({ projectRoot, tree, type, variant });
 
   await formatFiles(tree);
@@ -78,14 +84,16 @@ async function addVariantToRoot({
   variant,
   projectRoot,
   tree,
+  type,
 }: {
   libraryOptions: { name: string };
   variant: string;
   projectRoot: string[];
   tree: Tree;
+  type: string;
 }) {
   const rootProjectVariantsPath =
-    projectRoot.join("/") + "/src/lib/startup/variants.ts";
+    projectRoot.join("/") + `/src/lib/${type}/variants.ts`;
 
   let rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
 
@@ -114,14 +122,16 @@ async function addInterfaceToRoot({
   variant,
   projectRoot,
   tree,
+  type,
 }: {
   libraryOptions: { name: string };
   variant: string;
   projectRoot: string[];
   tree: Tree;
+  type: string;
 }) {
   const rootProjectInterfacesPath =
-    projectRoot.join("/") + "/src/lib/startup/interface.ts";
+    projectRoot.join("/") + `/src/lib/${type}/interface.ts`;
 
   let rootProjectInterfaces = await tree
     .read(rootProjectInterfacesPath)
@@ -162,7 +172,7 @@ async function addStylesToRoot({
   variant: string;
 }) {
   const rootProjectStylesPath =
-    projectRoot.join("/") + "/src/lib/startup/_index.scss";
+    projectRoot.join("/") + `/src/lib/${type}/_index.scss`;
 
   let rootProjectStyles = await tree.read(rootProjectStylesPath).toString();
   await fs.writeFile(

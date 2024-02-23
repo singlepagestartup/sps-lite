@@ -34,6 +34,7 @@ export async function unlinkModelFrontendComponentVariantGenerator(
     tree,
     project,
     variant,
+    type,
   });
 
   await removeVariantFromRootVariants({
@@ -41,6 +42,7 @@ export async function unlinkModelFrontendComponentVariantGenerator(
     tree,
     project,
     variant,
+    type,
   });
 
   await formatFiles(tree);
@@ -62,7 +64,7 @@ async function removeStylesFromRoot({
   type: string;
 }) {
   const rootProjectStylesPath =
-    rootProjectPath.join("/") + "/src/lib/startup/_index.scss";
+    rootProjectPath.join("/") + `/src/lib/${type}/_index.scss`;
   let rootProjectStyles = await tree.read(rootProjectStylesPath).toString();
 
   await fs.writeFile(
@@ -79,14 +81,16 @@ async function removeInterfaceFromRoot({
   tree,
   project,
   variant,
+  type,
 }: {
   rootProjectPath: string[];
   tree: Tree;
   project: any;
   variant: string;
+  type: string;
 }) {
   const rootProjectInterfacePath =
-    rootProjectPath.join("/") + "/src/lib/startup/interface.ts";
+    rootProjectPath.join("/") + `/src/lib/${type}/interface.ts`;
   let rootProjectInterface = await tree
     .read(rootProjectInterfacePath)
     .toString();
@@ -138,14 +142,16 @@ async function removeVariantFromRootVariants({
   tree,
   project,
   variant,
+  type,
 }: {
   rootProjectPath: string[];
   tree: Tree;
   project: any;
   variant: string;
+  type: string;
 }) {
   const rootProjectVariantsPath =
-    rootProjectPath.join("/") + "/src/lib/startup/variants.ts";
+    rootProjectPath.join("/") + `/src/lib/${type}/variants.ts`;
   let rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
 
   const importVariantRegexPattern = new RegExp(
