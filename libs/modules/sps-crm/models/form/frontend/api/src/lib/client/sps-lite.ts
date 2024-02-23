@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { rtk, BACKEND_URL } from "@sps/utils";
+import { rtk, BACKEND_URL, transformResponseItem } from "@sps/utils";
 import { IModelExtended, route, tag, populate } from "../model";
 import { globalActionsStore } from "@sps/store";
 
@@ -22,12 +22,28 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
-    create: rtk.api.create<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
+    submit: build.mutation({
+      query: (params = {}) => {
+        const { data, id, populate = {} } = params;
+
+        return {
+          url: `${route}/${id}/submit`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: { data },
+        };
+      },
+
+      transformResponse: (result) => {
+        return transformResponseItem(result) as IModelExtended;
+      },
+
+      // onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+      //   await queryFulfilled;
+      //   dispatch(cartApi.util.invalidateTags(["Cart"]));
+      // },
     }),
   }),
 });

@@ -1993,6 +1993,11 @@ export interface PluginSpsCrmForm extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    form_requests: Attribute.Relation<
+      "plugin::sps-crm.form",
+      "oneToMany",
+      "plugin::sps-crm.form-request"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2035,6 +2040,11 @@ export interface PluginSpsCrmFormRequest extends Schema.CollectionType {
       "plugin::sps-crm.form-request",
       "manyToOne",
       "plugin::users-permissions.user"
+    >;
+    form: Attribute.Relation<
+      "plugin::sps-crm.form-request",
+      "manyToOne",
+      "plugin::sps-crm.form"
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

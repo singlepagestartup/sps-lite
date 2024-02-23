@@ -9,7 +9,7 @@ import { Button, Input as UiInput } from "@sps/ui-adapter";
 import { Component as Input } from "@sps/sps-crm-models-input-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  const [createFormRequest, { data }] = api.client.useCreateMutation();
+  const [createFormRequest, { data }] = api.client.useSubmitMutation();
   const preparedInputs = useGetPreparedFormInputs(props.data);
 
   const methods = useForm<any>({
@@ -44,7 +44,7 @@ export function Component(props: IComponentPropsExtended) {
   async function onSubmit(data: any) {
     console.log("🚀 ~ onSubmit ~ data", data);
 
-    createFormRequest({ data, files: data.files });
+    createFormRequest({ id: props.data.id, data, files: data.files });
   }
 
   return (

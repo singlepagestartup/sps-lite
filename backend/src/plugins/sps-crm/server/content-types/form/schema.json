@@ -86,6 +86,12 @@
           "localized": true
         }
       }
+    },
+    "form_requests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-crm.form-request",
+      "mappedBy": "form"
     }
   }
 }

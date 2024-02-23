@@ -1,2 +1,0 @@
-import { Component as TstGen } from "@sps/sps-billing-models-currency-frontend-component-variants-startup-tst-gen";
-export const variants = {};

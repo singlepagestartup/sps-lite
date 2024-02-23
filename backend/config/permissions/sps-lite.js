@@ -3,7 +3,7 @@ const public = {
   "plugin::sps-website-builder.slider": ["find", "findOne"],
   "plugin::sps-website-builder.theme": ["find"],
   "plugin::sps-website-builder.robot": ["find"],
-  "plugin::sps-crm.form": ["find", "findOne"],
+  "plugin::sps-crm.form": ["find", "findOne", "submit"],
   "plugin::sps-crm.form-request": ["create"],
   "plugin::sps-crm.review": ["find", "findOne"],
   "plugin::sps-subscription.tier": ["find", "findOne", "subscribe"],
