@@ -1,12 +1,4 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  getProjects,
-  names,
-  Tree,
-} from "@nx/devkit";
-import * as path from "path";
+import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { UnlinkModelFrontendComponentVariantGeneratorSchema } from "./schema";
 import * as fs from "fs/promises";
 
@@ -16,6 +8,11 @@ export async function unlinkModelFrontendComponentVariantGenerator(
 ) {
   const projects = getProjects(tree);
   const project = projects.get(options.project);
+
+  if (!project.name.includes("variants")) {
+    console.error("Only variants can be unlinked");
+    return;
+  }
 
   const projectRoot = project?.root.split("/");
   const type = projectRoot?.[projectRoot.length - 2];
