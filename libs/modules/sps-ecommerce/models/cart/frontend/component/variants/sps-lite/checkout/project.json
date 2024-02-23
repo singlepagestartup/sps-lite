@@ -1,0 +1,13 @@
+{
+  "name": "@sps/sps-ecommerce-models-cart-frontend-component-variants-sps-lite-checkout",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/cart/frontend/component/variants/sps-lite/checkout/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

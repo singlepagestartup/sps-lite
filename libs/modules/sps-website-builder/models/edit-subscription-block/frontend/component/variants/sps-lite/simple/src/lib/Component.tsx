@@ -1,37 +1,8 @@
-"use client";
-
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-// import { api as subscriptionApi } from "../../../../subscription/api/client";
-import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
+import { Component as Subscription } from "@sps/sps-subscription-models-subscription-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  // const [updateByEmail, { data: updateByEmailData }] =
-  //   subscriptionApi.useUpdateByEmailMutation();
-
-  const methods = useForm<any>({
-    mode: "all",
-  });
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    reset,
-    formState: { errors },
-  } = methods;
-
-  const watchData = watch();
-
-  // async function updateByEmailSubmit(data: any) {
-  //   console.log("🚀 ~ onSubmit ~ data:", data);
-  //   data.status = "canceled";
-
-  //   await updateByEmail({ data });
-  // }
-
   return (
     <div
       data-module="sps-website-builder"
@@ -58,30 +29,9 @@ export function Component(props: IComponentPropsExtended) {
               </ReactMarkdown>
             ) : null}
           </div>
+          <Subscription isServer={props.isServer} variant="update-by-email" />
         </div>
       </div>
-      {/* <div className="flow-root bg-white pb-32 lg:pb-40">
-        <div className="relative -mt-80">
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-            <FormProvider {...methods}>
-              <div className="flex flex-col gap-2">
-                <TextInput
-                  variant="text"
-                  name="email"
-                  label="Email"
-                  placeholder="Type your email"
-                />
-                <Button
-                  ui="shadcn"
-                  variant="primary"
-                  title="Delete subscription"
-                  onClick={handleSubmit(updateByEmailSubmit)}
-                />
-              </div>
-            </FormProvider>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

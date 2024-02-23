@@ -23,13 +23,6 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
-    create: rtk.api.create<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
     updateByEmail: build.mutation({
       query: (params = {}) => {
         const { data, populate = {} } = params;

@@ -17,6 +17,17 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="flex gap-2 items-center text-gray-500"
     >
+      <Button
+        ui="shadcn"
+        onClick={() => {
+          removeFromCart({ id: props.data.id });
+        }}
+        variant="secondary"
+        className="w-fit"
+      >
+        Remove
+      </Button>
+
       {props.data.media?.length ? (
         <File
           variant="image"
@@ -39,16 +50,6 @@ export function Component(props: IComponentPropsExtended) {
           );
         })}
       </div>
-      <Button
-        ui="shadcn"
-        onClick={() => {
-          removeFromCart({ id: props.data.id });
-        }}
-        variant="secondary"
-        className="w-fit"
-      >
-        Remove from cart
-      </Button>
     </div>
   );
 }

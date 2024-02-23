@@ -5,9 +5,9 @@ import { Component as AttributeKey } from "@sps/sps-ecommerce-models-attribute-k
 // import { Component as Currency } from "@sps/sps-billing-frontend/lib/models/currency/component";
 
 export function Component(props: IComponentPropsExtended) {
-  // if (!props.attributeKey) {
-  //   return <></>;
-  // }
+  if (!props.data.attributeKey) {
+    return <></>;
+  }
 
   return (
     <div
@@ -24,10 +24,10 @@ export function Component(props: IComponentPropsExtended) {
         />
       ) : null}
       <div className="flex items-end gap-1">
-        {/* <p className="text-md font-bold">
+        <p className="text-md font-bold">
           {props.data[props.data.attributeKey.type]}
         </p>
-        {props.data.currency ? (
+        {/* {props.data.currency ? (
           <Currency
             isServer={props.isServer}
             variant="default"

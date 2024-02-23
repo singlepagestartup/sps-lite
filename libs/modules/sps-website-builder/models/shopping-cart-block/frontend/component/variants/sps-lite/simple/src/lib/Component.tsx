@@ -1,5 +1,3 @@
-"use client";
-
 import { IComponentPropsExtended } from "./interface";
 import { Component as Cart } from "@sps/sps-ecommerce-models-cart-frontend-component";
 import ReactMarkdown from "react-markdown";

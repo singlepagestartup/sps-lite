@@ -11,7 +11,12 @@ export function Component(props: IComponentPropsExtended) {
     >
       {props.data?.map((item, index) => {
         return (
-          <Tier isServer={false} key={index} variant="default" data={item} />
+          <Tier
+            isServer={props.isServer}
+            key={index}
+            variant="default"
+            data={item}
+          />
         );
       })}
     </div>

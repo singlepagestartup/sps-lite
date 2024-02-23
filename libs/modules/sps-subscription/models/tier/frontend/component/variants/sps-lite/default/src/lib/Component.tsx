@@ -1,32 +1,8 @@
-"use client";
-
-import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Attribute } from "@sps/sps-subscription-models-attribute-frontend-component";
-import Link from "next/link";
+import { Button } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  // console.log(`🚀 ~ Tier ~ globalStoreApis:`, globalStoreApis);
-  // const price = useMemo(() => {
-  //   if (!item.attributes) {
-  //     return;
-  //   }
-
-  //   const priceAttribute = item.attributes.find(
-  //     (attribute) => attribute.attributeKey?.key === "price",
-  //   );
-
-  //   if (!priceAttribute || !priceAttribute.attributeKey?.type) {
-  //     return;
-  //   }
-
-  //   return `${priceAttribute.currency?.unicode || ""}${
-  //     priceAttribute[priceAttribute.attributeKey?.type]
-  //   }`;
-  // }, [item]);
-
   return (
     <div
       data-module="sps-subscription"
@@ -43,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
             return (
               <Attribute
                 key={index}
-                isServer={false}
+                isServer={props.isServer}
                 variant="price"
                 data={attribute}
               />
@@ -61,36 +37,28 @@ export function Component(props: IComponentPropsExtended) {
       </div>
       <div className="flex flex-1 flex-col p-2">
         <div className="flex flex-1 flex-col justify-between rounded-2xl bg-gray-50 p-6 sm:p-8">
-          <ul role="list" className="space-y-6">
+          <div className="flex flex-col space-y-6">
             {props.data.attributes?.map((attribute, index) => {
               return (
                 <Attribute
                   key={index}
-                  isServer={false}
+                  isServer={props.isServer}
                   variant="feature"
                   data={attribute}
                 />
               );
             })}
-            {/* {item.features?.map((feature: any, fIndex: number) => (
-              <li key={fIndex} className="flex items-start">
-                <div className="flex-shrink-0">
-                  <CheckIcon
-                    className="h-6 w-6 text-indigo-600"
-                    aria-hidden="true"
-                  />
-                </div>
-                <p className="ml-3 text-sm leading-6 text-gray-600">
-                  {feature.title}
-                </p>
-              </li>
-            ))} */}
-          </ul>
-          {/* <div className="mt-8">
-            {props.buttons?.map((button, index) => {
-              return <Button key={index} isServer={false} {...button} />;
-            })}
-          </div> */}
+          </div>
+          <div className="mt-8">
+            <Button
+              ui="sps"
+              data-ui-variant="primary"
+              className="w-full"
+              url={`/tiers/${props.data.id}/subscribe`}
+            >
+              Subscribe
+            </Button>
+          </div>
         </div>
       </div>
     </div>

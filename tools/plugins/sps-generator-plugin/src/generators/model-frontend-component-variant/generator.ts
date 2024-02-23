@@ -159,7 +159,7 @@ async function addInterfaceToRoot({
   rootProjectInterfaces = await tree.read(rootProjectInterfacesPath).toString();
 
   const prevExport = rootProjectInterfaces.match(
-    /export type IComponentProps =/,
+    /export type IComponentProps =[\n]?[\s]?[\s]?[|]?/,
   );
 
   await fs.writeFile(
