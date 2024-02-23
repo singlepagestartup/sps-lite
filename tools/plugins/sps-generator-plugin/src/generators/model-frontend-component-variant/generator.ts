@@ -12,6 +12,7 @@ import { libraryGenerator } from "@nx/react";
 import type { SupportedStyles } from "@nx/react/typings/style";
 import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import * as fs from "fs/promises";
+import { exec } from "child_process";
 
 export async function modelFrontendComponentVariantGenerator(
   tree: Tree,
@@ -74,7 +75,17 @@ export async function modelFrontendComponentVariantGenerator(
   });
   await addStylesToRoot({ projectRoot, tree, type, variant });
 
-  await formatFiles(tree);
+  await new Promise((resolve) => {
+    exec(`npx nx format:write`, (err, stdout, stderr) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log(stdout);
+      resolve("");
+    });
+  });
 }
 
 export default modelFrontendComponentVariantGenerator;

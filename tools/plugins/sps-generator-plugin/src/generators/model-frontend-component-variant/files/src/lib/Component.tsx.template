@@ -4,9 +4,9 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="<%= module %>
-      data-model="<% model %>"
+      data-model="<%= model %>"
       data-variant={props.variant}
-      className="w-full py-5 text-center flex flex-col gap-1"
+      className="w-full py-10 text-center flex flex-col gap-1"
     >
       <p className="text-bold">Generated variant</p>
       <p className="text-bold text-4xl">Model: <%= model %></p>

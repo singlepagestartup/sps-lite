@@ -1,6 +1,7 @@
 import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { UnlinkModelFrontendComponentVariantGeneratorSchema } from "./schema";
 import * as fs from "fs/promises";
+import { exec } from "child_process";
 
 export async function unlinkModelFrontendComponentVariantGenerator(
   tree: Tree,
@@ -45,7 +46,17 @@ export async function unlinkModelFrontendComponentVariantGenerator(
     type,
   });
 
-  await formatFiles(tree);
+  await new Promise((resolve) => {
+    exec(`npx nx format:write`, (err, stdout, stderr) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log(stdout);
+      resolve("");
+    });
+  });
 }
 
 export default unlinkModelFrontendComponentVariantGenerator;
