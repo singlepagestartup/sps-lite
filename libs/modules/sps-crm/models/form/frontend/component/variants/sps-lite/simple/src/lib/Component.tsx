@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-crm-models-form-frontend-api";
-import { useGetPreparedFormInputs } from "./use-get-prepared-form-inputs";
+// import { useGetPreparedFormInputs } from "./use-get-prepared-form-inputs";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Button, Input as UiInput } from "@sps/ui-adapter";
@@ -10,7 +10,7 @@ import { Component as Input } from "@sps/sps-crm-models-input-frontend-component
 
 export function Component(props: IComponentPropsExtended) {
   const [createFormRequest, { data }] = api.client.useSubmitMutation();
-  const preparedInputs = useGetPreparedFormInputs(props.data);
+  // const preparedInputs = useGetPreparedFormInputs(props.data);
 
   const methods = useForm<any>({
     mode: "all",
@@ -28,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = watch();
 
   useEffect(() => {
-    // console.log("🚀 ~ Simple ~ watchData", watchData);
+    console.log("🚀 ~ Simple ~ watchData", watchData);
   }, [watchData]);
 
   useEffect(() => {
@@ -42,9 +42,26 @@ export function Component(props: IComponentPropsExtended) {
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data", data);
+    const preparedData: { inputs: any[] } = { inputs: [] };
 
-    createFormRequest({ id: props.data.id, data, files: data.files });
+    Object.keys(data).forEach((key) => {
+      if (typeof data[key] !== "string") {
+        return;
+      }
+
+      preparedData.inputs.push({
+        key,
+        value: data[key],
+      });
+    });
+
+    console.log("🚀 ~ onSubmit ~ preparedData", preparedData);
+
+    createFormRequest({
+      id: props.data.id,
+      data: preparedData,
+      files: data.files,
+    });
   }
 
   return (
@@ -56,7 +73,17 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="form-container">
         <FormProvider {...methods}>
-          {preparedInputs?.map((input: any, index: number) => {
+          {props.data.inputs?.map((input: any, index: number) => {
+            return (
+              <Input
+                key={index}
+                data={input}
+                variant={input?.variant}
+                isServer={false}
+              />
+            );
+          })}
+          {/* {preparedInputs?.map((input: any, index: number) => {
             return (
               <Input
                 data={{ ...input.input, name: input.inputName }}
@@ -65,9 +92,9 @@ export function Component(props: IComponentPropsExtended) {
                 key={index}
               />
             );
-          })}
+          })} */}
 
-          {preparedInputs?.map((input: any, index: number) => {
+          {/* {preparedInputs?.map((input: any, index: number) => {
             return (
               <UiInput
                 __component="elements.input"
@@ -92,18 +119,8 @@ export function Component(props: IComponentPropsExtended) {
                 isRequired={true}
               />
             );
-          })}
+          })} */}
 
-          {/* <FormField
-            ui="sps"
-            variant="radio-group"
-            type="select"
-            name="form"
-            initialValue={props}
-            options={[props]}
-            className="hidden"
-            by="id"
-          /> */}
           <div className="submit-button-container">
             {/* {props.button ? (
               <Button
