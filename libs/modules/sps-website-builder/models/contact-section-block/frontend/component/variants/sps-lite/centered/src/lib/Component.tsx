@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import { IComponentPropsExtended } from "./interface";
 import { createNotification } from "@sps/ui-adapter";
-// import { Component as Form } from "@sps/sps-crm-frontend/lib/models/form/component";
+import { Component as Form } from "@sps/sps-crm-models-form-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   function successCallbackAction() {
@@ -32,7 +32,9 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
       </div>
       <div className="mt-12">
-        {/* {props.data.form ? <Form isServer={false} {...props.data.form} /> : null} */}
+        {props.data.form ? (
+          <Form isServer={false} variant="simple" data={props.data.form} />
+        ) : null}
       </div>
     </div>
   );

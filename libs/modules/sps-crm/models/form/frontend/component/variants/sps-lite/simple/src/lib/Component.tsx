@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-crm-models-form-frontend-api";
-import { useGetPreparedFormInputs } from "@sps/sps-crm-frontend";
+import { useGetPreparedFormInputs } from "./use-get-prepared-form-inputs";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Button, Input as UiInput } from "@sps/ui-adapter";
@@ -10,7 +10,7 @@ import { Component as Input } from "@sps/sps-crm-models-input-frontend-component
 
 export function Component(props: IComponentPropsExtended) {
   const [createFormRequest, { data }] = api.client.useCreateMutation();
-  const preparedInputs = useGetPreparedFormInputs(props);
+  const preparedInputs = useGetPreparedFormInputs(props.data);
 
   const methods = useForm<any>({
     mode: "all",
@@ -59,18 +59,10 @@ export function Component(props: IComponentPropsExtended) {
           {preparedInputs?.map((input: any, index: number) => {
             return (
               <Input
-                {...input.input}
+                data={{ ...input.input, name: input.inputName }}
+                variant={input.input?.variant || "text"}
                 isServer={false}
                 key={index}
-                name={input.inputName}
-                className={input.input?.className || ""}
-                by={input.input?.by || undefined}
-                rules={{
-                  required: {
-                    value: input.input?.isRequired,
-                    message: "Required field",
-                  },
-                }}
               />
             );
           })}

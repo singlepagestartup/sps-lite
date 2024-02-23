@@ -1,13 +1,8 @@
-"use client";
-
 import ReactMarkdown from "react-markdown";
-// import { api as reviewApi } from "../../../../review/api/client";
-// import { Component as Review } from "../../../../review/component";
+import { Component as Review } from "@sps/sps-crm-models-review-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
-  // const { data: reviews } = reviewApi.useFindQuery({});
-
   return (
     <div
       data-module="sps-website-builder"
@@ -21,18 +16,22 @@ export function Component(props: IComponentPropsExtended) {
         </h2>
       ) : null}
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* {reviews?.map((review, index) => {
-          return (
-            <Review
-              key={index}
-              isServer={false}
-              variant="default"
-              {...review}
-            />
-          );
-        })} */}
-      </div>
+      {props.data.showAll ? (
+        <Review isServer={props.isServer} variant="list" />
+      ) : (
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md::grid-cols-3 relative mx-auto max-w-7xl px-6 lg:px-8">
+          {props.data.reviews?.map((review, index) => {
+            return (
+              <Review
+                key={index}
+                isServer={props.isServer}
+                variant="default"
+                data={review}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

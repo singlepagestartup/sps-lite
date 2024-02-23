@@ -1,5 +1,5 @@
 import { StarIcon } from "@heroicons/react/24/outline";
-import { IComponentProps } from "../../find-one/interface";
+import { IComponentProps } from "./interface";
 
 export function Skeleton(props: IComponentProps) {
   return (
