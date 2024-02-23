@@ -67,6 +67,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.reviews-table-block"
       data-variant={props.variant}
       className="bg-gray-50 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8"

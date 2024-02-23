@@ -6,6 +6,7 @@ import { Component as File } from "@sps/sps-file-storage-models-file-frontend-co
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.cta-section-block"
       data-variant={props.variant}
       className="bg-white mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8"

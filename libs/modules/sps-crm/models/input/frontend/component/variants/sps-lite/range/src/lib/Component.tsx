@@ -14,7 +14,9 @@ export function Component(props: IComponentPropsExtended) {
       /> */}
       <FormField
         {...props.data}
-        data-component="elements.input"
+        data-module="sps-crm"
+        data-model="elements.input"
+        data-variant={props.variant}
         ui="shadcn"
         label={"shadcn | " + props.data.label || undefined}
         type="range"

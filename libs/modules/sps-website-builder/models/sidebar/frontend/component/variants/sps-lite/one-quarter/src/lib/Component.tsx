@@ -4,6 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="sidebar"
       data-variant={props.variant}
       className={props.data.className || ""}

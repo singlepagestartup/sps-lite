@@ -12,6 +12,7 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <Disclosure
       as="div"
+      data-module="sps-website-builder"
       data-model="page-blocks.navbar-block"
       data-variant={props.variant}
       className="w-full"

@@ -11,7 +11,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <div className="flex gap-2 items-center">
+    <div
+      data-module="sps-subscription"
+      data-model="attribute"
+      data-variant={props.variant}
+      className="flex gap-2 items-center"
+    >
       <AttributeKey
         isServer={false}
         variant="default"

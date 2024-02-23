@@ -28,7 +28,12 @@ export function Component(props: IComponentPropsExtended) {
   // }, [item]);
 
   return (
-    <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">
+    <div
+      data-module="sps-subscription"
+      data-model="tier"
+      data-variant={props.variant}
+      className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10"
+    >
       <div className="p-8 sm:p-10">
         <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">
           {props.data.title}

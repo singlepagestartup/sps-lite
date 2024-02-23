@@ -3,6 +3,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="elements.slide"
       data-variant="default"
       className="mx-auto max-w-7xl py-16 px-2 lg:px-0"

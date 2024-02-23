@@ -6,6 +6,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <footer
+      data-module="sps-website-builder"
       data-model="page-blocks.footer-block"
       data-variant={props.variant}
       className="bg-white mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8"

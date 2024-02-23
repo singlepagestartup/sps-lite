@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.contact-section-block"
       data-variant={props.variant}
       className="relative mx-auto max-w-xl overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24"

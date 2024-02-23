@@ -11,7 +11,12 @@ export function Component(props: IComponentPropsExtended) {
     api.client.useRemoveFromCartMutation();
 
   return (
-    <div className="flex gap-2 items-center text-gray-500">
+    <div
+      data-module="sps-ecommerce"
+      data-model="product"
+      data-variant={props.variant}
+      className="flex gap-2 items-center text-gray-500"
+    >
       {props.data.media?.length ? (
         <File
           variant="image"

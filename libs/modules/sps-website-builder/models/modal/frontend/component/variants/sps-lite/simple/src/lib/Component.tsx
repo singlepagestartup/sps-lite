@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <Transition
       show={isOpenModal}
+      data-module="sps-website-builder"
       data-model="modal"
       data-variant={props.variant}
       as={"div"}

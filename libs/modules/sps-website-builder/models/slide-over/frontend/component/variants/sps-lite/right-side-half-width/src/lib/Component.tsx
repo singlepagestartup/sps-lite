@@ -12,6 +12,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <Transition
+      data-module="sps-website-builder"
       data-model="slide-over"
       data-variant={props.variant}
       show={props.isOpen}

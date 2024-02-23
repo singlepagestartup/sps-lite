@@ -4,7 +4,12 @@ import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="w-full border flex items-center gap-3 border-gray-500 p-4 rounded-md">
+    <div
+      data-module="sps-ecommerce"
+      data-model="order-product"
+      data-variant={props.variant}
+      className="w-full border flex items-center gap-3 border-gray-500 p-4 rounded-md"
+    >
       <div className="w-2/3">
         {props.data.product ? (
           <Product

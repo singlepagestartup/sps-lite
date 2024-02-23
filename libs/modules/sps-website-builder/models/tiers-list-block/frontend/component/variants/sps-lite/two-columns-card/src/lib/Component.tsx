@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.tiers-list-block"
       data-variant={props.variant}
       className="bg-gray-900"

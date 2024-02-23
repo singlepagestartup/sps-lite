@@ -49,7 +49,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <div className="flex flex-col text-gray-500">
+    <div
+      data-module="sps-ecommerce"
+      data-model="product"
+      data-variant={props.variant}
+      className="flex flex-col text-gray-500"
+    >
       {props.data.media?.length ? (
         <File
           variant="image"

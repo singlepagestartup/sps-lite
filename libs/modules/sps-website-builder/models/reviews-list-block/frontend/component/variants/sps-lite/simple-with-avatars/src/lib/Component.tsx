@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.reviews-list-block"
       data-variant={props.variant}
       className="bg-white mx-auto max-w-7xl my-16"

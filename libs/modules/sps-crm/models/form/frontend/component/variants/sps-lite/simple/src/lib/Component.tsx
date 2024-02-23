@@ -49,8 +49,9 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
-      data-collection-type="form"
-      data-variant={props.data.variant}
+      data-module="sps-crm"
+      data-model="form"
+      data-variant={props.variant}
       className={props.data.className || ""}
     >
       <div className="form-container">

@@ -14,7 +14,9 @@ export function Component(props: IComponentPropsExtended) {
       >
         <Button
           ui="sps"
+          data-module="sps-website-builder"
           data-model="elements.button"
+          data-variant={props.data.variant ?? "default"}
           data-ui-variant={props.data.variant ?? "default"}
         >
           {props.data.title}
@@ -26,7 +28,9 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <Button
       ui="sps"
+      data-module="sps-website-builder"
       data-model="elements.button"
+      data-variant={props.data.variant}
       data-ui-variant={props.data.variant}
       {...(props.data.url ? { url: props.data.url } : {})}
     >

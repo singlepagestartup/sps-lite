@@ -5,8 +5,9 @@ import Image from "next/image";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
-      data-collection-type="file"
-      data-variant="image"
+      data-module="sps-file-storage"
+      data-model="file"
+      data-variant={props.variant}
       className={props.containerClassName ?? ""}
     >
       <Image

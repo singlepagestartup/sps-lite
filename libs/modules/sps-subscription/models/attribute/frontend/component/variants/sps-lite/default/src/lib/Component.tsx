@@ -6,7 +6,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <div className="">
+    <div
+      data-module="sps-subscription"
+      data-model="attribute"
+      data-variant={props.variant}
+      className=""
+    >
       <p className="">{props.data[props.data.attributeKey?.type]}</p>
     </div>
   );

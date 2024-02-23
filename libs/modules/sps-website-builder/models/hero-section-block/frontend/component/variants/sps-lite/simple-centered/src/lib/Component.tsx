@@ -5,7 +5,12 @@ import { Component as Button } from "@sps/sps-website-builder-models-button-fron
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl">
+    <div
+      data-module="sps-website-builder"
+      data-model="page-blocks.hero-section-block"
+      data-variant={props.variant}
+      className="relative flex flex-col items-center justify-between overflow-hidden bg-white mx-auto max-w-7xl"
+    >
       {props.data.additionalMedia?.length ? (
         <File
           variant="image"

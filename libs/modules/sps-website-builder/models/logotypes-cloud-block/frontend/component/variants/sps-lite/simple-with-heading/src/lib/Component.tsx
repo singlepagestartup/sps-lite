@@ -5,6 +5,7 @@ import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.logotypes-cloud-block"
       data-variant={props.variant}
       className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"

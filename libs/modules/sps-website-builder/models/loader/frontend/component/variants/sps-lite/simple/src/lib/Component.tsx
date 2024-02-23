@@ -53,6 +53,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="loader"
       data-variant={props.variant}
       className={

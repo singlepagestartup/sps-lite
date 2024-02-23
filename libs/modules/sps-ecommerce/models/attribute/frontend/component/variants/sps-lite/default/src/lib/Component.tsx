@@ -10,7 +10,12 @@ export function Component(props: IComponentPropsExtended) {
   // }
 
   return (
-    <div className="py-2 flex items-end gap-2">
+    <div
+      data-module="sps-ecommerce"
+      data-model="attribute"
+      data-variant={props.variant}
+      className="py-2 flex items-end gap-2"
+    >
       {props.data.attributeKey ? (
         <AttributeKey
           isServer={props.isServer}

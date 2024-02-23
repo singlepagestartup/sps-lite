@@ -6,7 +6,9 @@ export function Component(props: IComponentPropsExtended) {
     <>
       <FormField
         {...props.data}
-        data-component="elements.input"
+        data-module="sps-crm"
+        data-model="elements.input"
+        data-variant={props.variant}
         ui="sps"
         label={"sps | " + props.data.label || undefined}
         type="file"

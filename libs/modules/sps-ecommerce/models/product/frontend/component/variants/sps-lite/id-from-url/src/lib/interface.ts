@@ -11,7 +11,6 @@ export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
 }
 
-export interface IComponentPropsExtended extends IComponentBase {
-  isServer: boolean;
+export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
 }

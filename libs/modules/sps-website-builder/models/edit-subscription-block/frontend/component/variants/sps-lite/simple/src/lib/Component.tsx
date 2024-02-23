@@ -34,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.edit-subscription-block"
       data-variant={props.variant}
       className=""

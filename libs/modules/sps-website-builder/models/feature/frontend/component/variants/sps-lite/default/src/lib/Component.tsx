@@ -5,6 +5,7 @@ import { Component as File } from "@sps/sps-file-storage-models-file-frontend-co
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="elements.feature"
       data-variant={props.variant}
       className="flex flex-col gap-3"

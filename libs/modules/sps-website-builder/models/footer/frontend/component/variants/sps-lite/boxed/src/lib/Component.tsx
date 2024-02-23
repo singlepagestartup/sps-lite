@@ -4,6 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <footer
+      data-module="sps-website-builder"
       data-model="footer"
       data-variant={props.variant}
       className={props.data.className || ""}

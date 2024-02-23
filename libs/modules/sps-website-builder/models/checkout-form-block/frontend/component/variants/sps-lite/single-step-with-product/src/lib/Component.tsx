@@ -100,6 +100,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.checkout-form-block"
       data-variant={props.variant}
       className="mx-auto max-w-7xl py-16 px-2 lg:px-0"

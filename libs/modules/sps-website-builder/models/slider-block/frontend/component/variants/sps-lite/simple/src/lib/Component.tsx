@@ -4,6 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.slider-block"
       data-variant={props.variant}
       className="max-w-7xl container mx-auto bg-white relative w-full my-10"

@@ -89,6 +89,7 @@ export function Component(props: ISlider) {
 
   return (
     <div
+      data-module="sps-website-builder"
       data-model="slider"
       data-variant={props.variant}
       className={className || ""}

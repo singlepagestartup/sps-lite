@@ -38,7 +38,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <div className="border border-gray-500 rounded-md p-4 flex flex-col gap-2">
+    <div
+      data-module="sps-ecommerce"
+      data-model="order"
+      data-variant={props.variant}
+      className="border border-gray-500 rounded-md p-4 flex flex-col gap-2"
+    >
       {props.data.orderProducts?.map((orderProduct, index) => {
         return (
           <OrderProduct

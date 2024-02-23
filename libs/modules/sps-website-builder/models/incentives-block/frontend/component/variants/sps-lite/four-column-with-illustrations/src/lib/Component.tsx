@@ -5,6 +5,7 @@ import { Component as Feature } from "@sps/sps-website-builder-models-feature-fr
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="sps-website-builder"
       data-model="page-blocks.incentives-block"
       data-variant={props.variant}
       className="bg-gray-50 mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8"
