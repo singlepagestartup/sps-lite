@@ -1,5 +1,7 @@
-[data-model="sidebar"] {
-  &[data-variant="one-quarter"] {
-    @apply w-full;
+[data-module="sps-website-builder"] {
+  &[data-model="sidebar"] {
+    &[data-variant="one-quarter"] {
+      @apply w-full;
+    }
   }
 }

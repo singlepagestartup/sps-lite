@@ -1,10 +1,12 @@
-[data-model="elements.button"] {
-  &[data-variant="default"] {
-    .icon-container {
-      @apply w-10 h-10;
+[data-module="sps-website-builder"] {
+  &[data-model="elements.button"] {
+    &[data-variant="default"] {
+      .icon-container {
+        @apply w-10 h-10;
 
-      img {
-        @apply object-contain object-center;
+        img {
+          @apply object-contain object-center;
+        }
       }
     }
   }

@@ -1,4 +1,6 @@
-[data-model="order"] {
-  &[data-variant="checkout"] {
+[data-module="sps-ecommerce"] {
+  &[data-model="order"] {
+    &[data-variant="checkout"] {
+    }
   }
 }
