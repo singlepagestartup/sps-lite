@@ -810,6 +810,9 @@
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-split": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps/split/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/redux/src/index.ts"
       ],

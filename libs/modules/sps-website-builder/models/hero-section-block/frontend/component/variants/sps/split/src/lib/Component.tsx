@@ -1,12 +1,16 @@
 import ReactMarkdown from "react-markdown";
 import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
-// import { Component as Logotype } from "@sps/sps-website-builder-logotype-component";
 import { IComponentPropsExtended } from "./interface";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div className="relative flex flex-col border-b border-gray-200 lg:border-0">
+    <div
+      data-module="sps-website-builder"
+      data-model="hero-section-block"
+      data-variant={props.variant}
+      className="relative flex flex-col border-b border-gray-200 lg:border-0"
+    >
       <div
         aria-hidden="true"
         className="absolute hidden h-full w-full bg-gray-100 lg:block"

@@ -1,0 +1,13 @@
+{
+  "name": "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-split",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps/split/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

@@ -1,5 +1,3 @@
-import { Split } from "./Split";
+import { Component as Split } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-split";
 
-export const variants = {
-  split: Split,
-};
+export const variants = { split: Split };

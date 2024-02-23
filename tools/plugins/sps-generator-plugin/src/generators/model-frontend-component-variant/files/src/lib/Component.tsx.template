@@ -3,8 +3,9 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
+      data-module="<%= module %>
       data-model="<% model %>"
-      data-variant="<%= variant %>"
+      data-variant={props.variant}
       className="w-full py-5 text-center flex flex-col gap-1"
     >
       <p className="text-bold">Generated variant</p>
