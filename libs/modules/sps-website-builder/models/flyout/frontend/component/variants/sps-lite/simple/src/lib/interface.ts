@@ -15,7 +15,6 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   data: IModel;
-  children: ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
