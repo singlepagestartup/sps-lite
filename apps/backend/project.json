@@ -1,0 +1,58 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend",
+  "projectType": "application",
+  "targets": {
+    "develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "cd apps/backend/ && ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+          }
+        ]
+      }
+    },
+    "debug": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "cd apps/backend/ && node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+          }
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "apps/backend"
+      }
+    },
+    "start": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
+      "options": {
+        "buildTarget": "backend:build",
+        "dev": false,
+        "port": 3000
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "ignorePath": "apps/backend/.eslintignore",
+        "quiet": true
+      }
+    }
+  },
+  "tags": []
+}

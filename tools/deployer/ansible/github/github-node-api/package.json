@@ -1,0 +1,15 @@
+{
+  "name": "github-connector",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "create_secret.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "libsodium-wrappers": "^0.7.13",
+    "octokit": "^3.1.1"
+  }
+}

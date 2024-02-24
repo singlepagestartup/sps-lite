@@ -1,0 +1,102 @@
+---
+- name: Install Docker to server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Get ansible ansible_system_vendor
+      set_fact:
+        ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Install prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+        force_apt_get: yes
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
+      loop:
+        - ca-certificates
+        - curl
+        - gnupg-agent
+        - software-properties-common
+
+    - name: Add Docker apt-key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Install Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+        force_apt_get: yes
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+    # - name: Add user permission
+    #   shell: usermod -aG docker ansible
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Install Python package manager
+      apt:
+        name: python3-pip
+        state: present
+
+    - debug:
+        var: ansible_system_vendor
+
+    - name: If DigitalOcean
+      block:
+        - name: Install Docker pip packages for DigitalOcean
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation --break-system-packages
+          loop:
+            - virtualenv
+            - docker
+            - docker-compose
+      when: ansible_system_vendor == "DigitalOcean"
+
+    - name: If not DigitalOcean
+      block:
+        - name: Install Docker pip packages for DigitalOcean
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation
+          loop:
+            - virtualenv
+            - docker
+            - docker-compose
+      when: ansible_system_vendor != "DigitalOcean"

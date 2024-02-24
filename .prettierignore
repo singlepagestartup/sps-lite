@@ -5,7 +5,8 @@ dist
 .next
 node_modules
 .cache
-bdd
+apps/bdd
 deployment
 documentation
 seeds
+*.feature
