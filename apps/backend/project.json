@@ -27,22 +27,19 @@
       }
     },
     "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
-      "defaultConfiguration": "production",
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "apps/backend"
+        "commands": [
+          "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js build"
+        ]
       }
     },
     "start": {
-      "executor": "@nx/next:server",
-      "defaultConfiguration": "production",
-      "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "backend:build",
-        "dev": false,
-        "port": 3000
+        "commands": [
+          "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js start"
+        ]
       }
     },
     "lint": {
