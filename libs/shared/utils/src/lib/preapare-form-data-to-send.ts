@@ -26,8 +26,6 @@ export function prepareFormDataToSend(params: any) {
 
       const cleared = delByPath({ ...passData }, delPath);
 
-      // console.log("🚀 ~ prepareFormDataToSend ~ cleared", cleared);
-
       passData = cleared;
     }
   }
@@ -38,8 +36,6 @@ export function prepareFormDataToSend(params: any) {
   if (files) {
     appendFilesToFormData(formData, files);
   }
-
-  // console.log("🚀 ~ prepareFormDataToSend ~ passData", passData, files);
 
   return formData;
 }

@@ -10,7 +10,7 @@ export const entity: IModel = {
   name: "name",
   label: "Name",
   className: "col-span-4",
-  type: null,
+  type: "text",
   multiple: null,
   options: [],
   min: null,

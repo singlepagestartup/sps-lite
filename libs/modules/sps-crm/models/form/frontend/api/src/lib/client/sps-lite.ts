@@ -1,5 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { rtk, BACKEND_URL, transformResponseItem } from "@sps/utils";
+import {
+  rtk,
+  BACKEND_URL,
+  transformResponseItem,
+  prepareFormDataToSend,
+} from "@sps/utils";
 import { IModelExtended, route, tag, populate } from "../model";
 import { globalActionsStore } from "@sps/store";
 
@@ -24,7 +29,8 @@ export const api = createApi({
     }),
     submit: build.mutation({
       query: (params = {}) => {
-        const { data, id, populate = {} } = params;
+        const { id, populate = {} } = params;
+        const formData = prepareFormDataToSend(params);
 
         return {
           url: `${route}/${id}/submit`,
@@ -32,7 +38,7 @@ export const api = createApi({
           params: {
             populate,
           },
-          body: { data },
+          body: formData,
         };
       },
 

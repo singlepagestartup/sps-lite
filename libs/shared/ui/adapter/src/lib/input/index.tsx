@@ -220,7 +220,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         setInitFiles(initialValue);
       }
     }
-  }, [JSON.stringify(initialValue), inputRef?.current]);
+  }, [JSON.stringify(initialValue), inputRef]);
 
   /**
    * If using in repeatable component
@@ -240,8 +240,6 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const passProps = useGetFilteredInputProps(props);
 
   function onFileInputChange(e: ChangeEvent | Event, files: File[]) {
-    console.log("🚀 ~ onFileInputChange ~ files:", files);
-
     const uploadFiles = ctxProps.getValues("files");
 
     ctxProps.setValue("files", {

@@ -19,16 +19,21 @@ export interface IModel {
   label: string | null;
   className: string | null;
   type:
+    | "checkbox"
+    | "date"
+    | "datetime-local"
+    | "email"
+    | "file"
+    | "hidden"
     | "number"
+    | "password"
+    | "radio"
+    | "range"
+    | "tel"
     | "text"
     | "textarea"
-    | "file"
-    | "date"
-    | "datetime"
-    | "date_inline"
-    | "daterange_inline"
-    | "datetimerange_inline"
-    | null;
+    | "time"
+    | "select";
   multiple: boolean | null;
   min: number | null;
   max: number | null;

@@ -12,6 +12,7 @@ import {
   useEffect,
   useState,
   ChangeEvent,
+  useRef,
 } from "react";
 // import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { ExtendedInputProps } from "../..";
@@ -26,7 +27,8 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const [localFiles, setLocalFiles] = useState<File[] | null>();
 
   // https://stackoverflow.com/questions/70683188/react-forwardref-property-current-does-not-exist-on-type-forwardedrefhtmlel
-  const formInputRef = ref as MutableRefObject<HTMLInputElement>;
+  // const formInputRef = ref as MutableRefObject<HTMLInputElement>;
+  const formInputRef = useRef<HTMLInputElement>(null);
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
     let filesArray: File[] = [];
@@ -63,13 +65,13 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   }, [JSON.stringify(formInputRef?.current?.files)]);
 
   useEffect(() => {
-    if (localFiles) {
+    if (localFiles && formInputRef?.current) {
       const evt = new InputEvent("change");
       const changeEvent = evt as unknown as ChangeEvent<HTMLInputElement>;
       formInputRef.current.dispatchEvent(evt);
       props.onChange(changeEvent, localFiles);
     }
-  }, [JSON.stringify(localFiles)]);
+  }, [localFiles, formInputRef]);
 
   function onFileDeleteByIndex(deleteIndex: number): void {
     if (!localFiles?.length) {
@@ -103,7 +105,7 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
           {...props}
           // If pass data in repeatable component, get an error
           // InvalidStateError: Failed to set the 'value' property on 'HTMLInputElement': This input element accepts a filename, which may only be programmatically set to the empty string.
-          ref={ref}
+          ref={formInputRef}
           className="hidden"
           onChange={onChange}
           data-testid={props.id}
