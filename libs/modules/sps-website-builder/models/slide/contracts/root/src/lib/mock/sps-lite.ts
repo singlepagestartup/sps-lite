@@ -6,5 +6,6 @@ export const entity: IModel = {
   __component: "elements.slide",
   title: faker.lorem.sentence(),
   description: faker.lorem.paragraph(),
+  showBackdrop: true,
   subtitle: null,
 };

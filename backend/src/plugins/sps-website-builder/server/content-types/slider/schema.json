@@ -37,14 +37,6 @@
         }
       }
     },
-    "show_backdrop": {
-      "type": "boolean",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "show_full_screen": {
       "type": "boolean",
       "pluginOptions": {

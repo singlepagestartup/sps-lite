@@ -3143,12 +3143,6 @@ export interface PluginSpsWebsiteBuilderSlider extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    show_backdrop: Attribute.Boolean &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     show_full_screen: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {

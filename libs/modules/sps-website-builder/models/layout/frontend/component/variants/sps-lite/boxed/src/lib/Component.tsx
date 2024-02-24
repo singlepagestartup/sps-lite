@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       <div
         data-module="sps-website-builder"
         data-model="layout"
-        data-variant={props.variant}
+        data-variant="boxed"
         className={props.data.className || ""}
       >
         {props.data?.navbar ? (
@@ -20,7 +20,7 @@ export function Component(props: IComponentPropsExtended) {
             data={props.data.navbar}
           />
         ) : null}
-        <div className={"layout-container"}>
+        <div className="layout-container">
           {props.data?.sidebar ? (
             <div
               className={`w-full flex flex-col ${

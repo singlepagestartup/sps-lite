@@ -6,7 +6,6 @@ export interface IModel {
   aspectRatioClassName: string | null;
   variant: (typeof variants)[number];
   showFullScreen: boolean | null;
-  showBackdrop: boolean | null;
   showPreviews: boolean | null;
   createdAt: string;
   updatedAt: string;

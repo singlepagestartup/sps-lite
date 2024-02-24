@@ -254,6 +254,12 @@ export interface ElementsSlide extends Schema.Component {
     media: Attribute.Media & Attribute.Required;
     buttons: Attribute.Component<"elements.button", true>;
     additional_media: Attribute.Media;
+    show_backdrop: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 

@@ -14,9 +14,11 @@ import React, {
 import { animated, useTransition, useSpringRef } from "@react-spring/web";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import { getFileUrl } from "@sps/utils";
 import { IModel as IBackendSlide } from "@sps/sps-website-builder-models-slide-contracts-extended";
+import { IComponentPropsExtended } from "./interface";
+import { Component as Slide } from "@sps/sps-website-builder-models-slide-frontend-component";
+import { Button } from "@sps/ui-adapter";
 
 interface INavigationButton {
   isNext?: boolean;
@@ -25,25 +27,12 @@ interface INavigationButton {
   onClick: MouseEventHandler;
 }
 
-export function Component(props: ISlider) {
-  const {
-    slides,
-    activeSlide = 0,
-    setActiveSlide,
-    NavigationButton = DefaultNavigaionButton,
-    SlideComponent = DefaultSlideComponent,
-    PreviewsComponent = DefaultPreviewsComponent,
-    className,
-    aspectRatioClassName,
-    showFullScreen,
-    showBackdrop,
-    showPreviews,
-  } = props;
-
+export function Component(props: IComponentPropsExtended) {
   const containerRef = useRef<HTMLDivElement>(null);
   const transitionsRef = useSpringRef();
   const [baseStyles, setBaseStyles] = useState<any>();
   const [fullScreen, setFullScreen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const [transitions, transitionsApi] = useTransition(activeSlide, () => {
     return {
@@ -92,9 +81,9 @@ export function Component(props: ISlider) {
       data-module="sps-website-builder"
       data-model="slider"
       data-variant={props.variant}
-      className={className || ""}
+      className={props.data.className || ""}
     >
-      {showFullScreen ? (
+      {/* {props.data.showFullScreen ? (
         <FullScreen
           isOpen={fullScreen}
           setIsOpen={setFullScreen}
@@ -103,10 +92,10 @@ export function Component(props: ISlider) {
           activeSlide={activeSlide}
           setActiveSlide={setActiveSlide}
         />
-      ) : null}
+      ) : null} */}
       <div
         className={
-          aspectRatioClassName ||
+          props.data.aspectRatioClassName ||
           "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10"
         }
       >
@@ -118,17 +107,18 @@ export function Component(props: ISlider) {
                 className="animated-slide"
                 style={{ ...style, ...baseStyles }}
               >
-                <SlideComponent
-                  showBackdrop={showBackdrop ? true : false}
-                  slide={slides[index]}
+                <Slide
+                  isServer={false}
+                  variant="default"
+                  data={props.data.slides[index]}
                 />
               </animated.div>
             );
           })}
-          {slides.length > 1 ? (
-            <NavigationButton
+          {props.data.slides.length > 1 ? (
+            <DefaultNavigaionButton
               isNext={false}
-              slides={slides}
+              slides={props.data.slides}
               activeSlide={activeSlide}
               onClick={() => {
                 const previousSlideNumber = activeSlide - 1;
@@ -138,104 +128,69 @@ export function Component(props: ISlider) {
               }}
             />
           ) : null}
-          {slides.length > 1 ? (
-            <NavigationButton
+          {props.data.slides.length > 1 ? (
+            <DefaultNavigaionButton
               isNext={true}
-              slides={slides}
+              slides={props.data.slides}
               activeSlide={activeSlide}
               onClick={() => {
                 const nextSlideNumber = activeSlide + 1;
-                if (nextSlideNumber <= slides.length - 1) {
+                if (nextSlideNumber <= props.data.slides.length - 1) {
                   handleNavigation({ slideNumber: nextSlideNumber });
                 }
               }}
             />
           ) : null}
-          {showFullScreen ? (
+          {/* {props.data.showFullScreen ? (
             <button
               onClick={() => setFullScreen(true)}
               className="full-screen-button"
             >
               <FullScreenIcon />
             </button>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
 
-      {showPreviews ? (
-        <PreviewsComponent
+      {/* {props.data.showPreviews ? (
+        <DefaultPreviewsComponent
           slides={slides}
           activeSlide={activeSlide}
           handleNavigation={handleNavigation}
         />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
 
-function DefaultSlideComponent({
-  slide,
-  showBackdrop,
-}: {
-  slide: IExtendedSlide;
-  showBackdrop?: boolean;
-}) {
-  return (
-    <div className="slide">
-      <div className="slide-container">
-        {slide.media?.length ? (
-          <Image
-            src={getFileUrl(slide.media[0])}
-            alt=""
-            fill={true}
-            className="background"
-          />
-        ) : null}
-        {showBackdrop ? <div className="backdrop"></div> : null}
-        <div className="content–container">
-          <div className="content">
-            <h3>{slide.title}</h3>
-            <p>{slide.description}</p>
-            <div className="buttons-container">
-              {slide.buttons?.map((button, index: number) => {
-                return <Button isServer={false} key={index} {...button} />;
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DefaultPreviewsComponent({
-  slides,
-  handleNavigation,
-  activeSlide,
-}: {
-  slides: IExtendedSlide[];
-  handleNavigation: any;
-  activeSlide: number;
-}) {
-  return (
-    <div className="previews-container">
-      {slides.map((slide, index) => {
-        return (
-          <div
-            key={index}
-            data-active={index === activeSlide}
-            className="preview-slide"
-            onClick={() => handleNavigation({ slideNumber: index })}
-          >
-            {slide.media?.length ? (
-              <Image src={getFileUrl(slide.media[0])} alt="" fill={true} />
-            ) : null}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+// function DefaultPreviewsComponent({
+//   slides,
+//   handleNavigation,
+//   activeSlide,
+// }: {
+//   slides: IExtendedSlide[];
+//   handleNavigation: any;
+//   activeSlide: number;
+// }) {
+//   return (
+//     <div className="previews-container">
+//       {slides.map((slide, index) => {
+//         return (
+//           <div
+//             key={index}
+//             data-active={index === activeSlide}
+//             className="preview-slide"
+//             onClick={() => handleNavigation({ slideNumber: index })}
+//           >
+//             {slide.media?.length ? (
+//               <Image src={getFileUrl(slide.media[0])} alt="" fill={true} />
+//             ) : null}
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
 function DefaultNavigaionButton({
   isNext = false,
@@ -260,16 +215,19 @@ function DefaultNavigaionButton({
   }, [activeSlide, isNext, slides]);
 
   return (
-    <div
-      data-next={isNext}
+    <Button
+      ui="sps"
+      data-ui-variant="transparent"
       data-reachable={reachable}
-      className="navigation"
+      data-next={isNext}
       onClick={onClick}
     >
-      <div className="icon-container">
-        <ChevronIcon />
+      <div className="navigation">
+        <div className="icon-container bg-red-500">
+          <ChevronIcon />
+        </div>
       </div>
-    </div>
+    </Button>
   );
 }
 
@@ -291,64 +249,64 @@ function ChevronIcon() {
   );
 }
 
-function FullScreen(props: {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  slides: IExtendedSlide[];
-  activeSlide: number;
-  setActiveSlide: Dispatch<SetStateAction<number>>;
-  variant: string;
-}) {
-  const { isOpen, setIsOpen, slides, activeSlide, setActiveSlide } = props;
+// function FullScreen(props: {
+//   isOpen: boolean;
+//   setIsOpen: Dispatch<SetStateAction<boolean>>;
+//   slides: IExtendedSlide[];
+//   activeSlide: number;
+//   setActiveSlide: Dispatch<SetStateAction<number>>;
+//   variant: string;
+// }) {
+//   const { isOpen, setIsOpen, slides, activeSlide, setActiveSlide } = props;
 
-  return (
-    <Transition show={isOpen} as={Fragment}>
-      <Dialog
-        data-collection-type="slider"
-        data-variant={props.variant}
-        onClose={() => setIsOpen(false)}
-        className="slider-fade-with-previews-full-screen-dialog"
-      >
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="backdrop" aria-hidden="true" />
-        </Transition.Child>
-        <Transition.Child
-          as={"div"}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="dialog-container">
-            <Dialog.Panel className="dialog-panel">
-              <Component
-                slides={slides}
-                variant="fade-with-previews"
-                activeSlide={activeSlide}
-                setActiveSlide={setActiveSlide}
-                className="full-screen-slider"
-                showFullScreen={false}
-                showPreviews={true}
-                showBackdrop={false}
-                aspectRatioClassName="full-screen-aspect-ratio"
-              />
-            </Dialog.Panel>
-          </div>
-        </Transition.Child>
-      </Dialog>
-    </Transition>
-  );
-}
+//   return (
+//     <Transition show={isOpen} as={Fragment}>
+//       <Dialog
+//         data-collection-type="slider"
+//         data-variant={props.variant}
+//         onClose={() => setIsOpen(false)}
+//         className="slider-fade-with-previews-full-screen-dialog"
+//       >
+//         <Transition.Child
+//           as={Fragment}
+//           enter="ease-out duration-300"
+//           enterFrom="opacity-0"
+//           enterTo="opacity-100"
+//           leave="ease-in duration-200"
+//           leaveFrom="opacity-100"
+//           leaveTo="opacity-0"
+//         >
+//           <div className="backdrop" aria-hidden="true" />
+//         </Transition.Child>
+//         <Transition.Child
+//           as={"div"}
+//           enter="ease-out duration-300"
+//           enterFrom="opacity-0"
+//           enterTo="opacity-100"
+//           leave="ease-in duration-200"
+//           leaveFrom="opacity-100"
+//           leaveTo="opacity-0"
+//         >
+//           <div className="dialog-container">
+//             <Dialog.Panel className="dialog-panel">
+//               <Component
+//                 slides={slides}
+//                 variant="fade-with-previews"
+//                 activeSlide={activeSlide}
+//                 setActiveSlide={setActiveSlide}
+//                 className="full-screen-slider"
+//                 showFullScreen={false}
+//                 showPreviews={true}
+//                 showBackdrop={false}
+//                 aspectRatioClassName="full-screen-aspect-ratio"
+//               />
+//             </Dialog.Panel>
+//           </div>
+//         </Transition.Child>
+//       </Dialog>
+//     </Transition>
+//   );
+// }
 
 function FullScreenIcon() {
   return (
@@ -366,23 +324,4 @@ function FullScreenIcon() {
       />
     </svg>
   );
-}
-
-export interface ISlider {
-  slides: IExtendedSlide[];
-  variant: "fade-with-previews";
-  activeSlide?: number;
-  setActiveSlide: Dispatch<SetStateAction<number>>;
-  NavigationButton?: FC<any>;
-  SlideComponent?: FC<any>;
-  PreviewsComponent?: FC<any>;
-  className: string | null;
-  showFullScreen: boolean | null;
-  showBackdrop: boolean | null;
-  showPreviews: boolean | null;
-  aspectRatioClassName: string | null;
-}
-
-export interface IExtendedSlide extends IBackendSlide {
-  renderType: string;
 }

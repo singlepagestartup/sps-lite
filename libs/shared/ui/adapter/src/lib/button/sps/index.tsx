@@ -15,7 +15,8 @@ export interface Props {
     | "secondary"
     | "ghost"
     | "link"
-    | "reset";
+    | "reset"
+    | "transparent";
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {

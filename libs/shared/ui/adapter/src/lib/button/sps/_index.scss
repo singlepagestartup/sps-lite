@@ -29,4 +29,8 @@
   &[data-ui-variant="reset"] {
     @apply p-0 text-input hover:text-destructive;
   }
+
+  &[data-ui-variant="transparent"] {
+    @apply p-0 cursor-default;
+  }
 }

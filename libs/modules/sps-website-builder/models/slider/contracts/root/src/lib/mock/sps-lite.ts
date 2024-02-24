@@ -4,7 +4,6 @@ export const entity: IModel = {
   id: 6,
   variant: "fade-with-previews",
   aspectRatioClassName: "aspect-h-1 aspect-w-1 xl:aspect-w-15 xl:aspect-h-10",
-  showBackdrop: true,
   showFullScreen: true,
   showPreviews: true,
   className: null,

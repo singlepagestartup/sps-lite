@@ -32,6 +32,14 @@
       "multiple": true,
       "required": false,
       "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "show_backdrop": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
