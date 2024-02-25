@@ -1,19 +1,14 @@
 import strapi from "@strapi/strapi";
-// import { build } from '@strapi/admin';
-
-const appDir = "./apps/backend";
-const distDir = "./apps/backend/dist/apps/backend";
-
-// console.log(`🚀 ~ appDir:`, appDir);
-// console.log(`🚀 ~ distDir:`, distDir)
+import dotenv from "dotenv";
+dotenv.config({
+  path: "apps/backend/.env",
+});
 
 (async () => {
-  // await build({});
+  process.chdir("./apps/backend");
+
+  const appDir = process.cwd();
+  const distDir = process.cwd() + "/dist/apps/backend";
+
   strapi({ appDir, distDir }).start();
 })();
-
-// 🚀 ~ action ~ appDir: /Users/rogwild/code/singlepagestartup/sps-lite/apps/backend
-// 🚀 ~ action ~ distDir: /Users/rogwild/code/singlepagestartup/sps-lite/apps/backend/dist
-
-//   appDir: '/Users/rogwild/code/singlepagestartup/sps-lite/apps/backend',
-//   distDir: '/Users/rogwild/code/singlepagestartup/sps-lite/apps/backend/dist/apps/backend
