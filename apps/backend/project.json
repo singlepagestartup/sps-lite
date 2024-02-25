@@ -31,7 +31,19 @@
       "options": {
         "commands": [
           "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js build"
-        ]
+        ],
+        "assets": ["apps/backend/src/public"]
+      }
+    },
+    "tsc": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "platform": "node",
+        "outputPath": "apps/backend/dist",
+        "tsConfig": "apps/backend/tsconfig.json",
+        "main": "apps/backend/src/index.ts",
+        "assets": ["apps/backend/src/public"]
       }
     },
     "start": {

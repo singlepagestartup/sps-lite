@@ -1,11 +1,21 @@
 {
-  "extends": "@strapi/typescript-utils/tsconfigs/server",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": ".",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["ES2020"],
+    "target": "ES2019",
+    "strict": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
+    "noImplicitThis": true,
     "allowJs": true,
     "sourceMap": true,
-    "types": ["node", "jest", "@strapi/strapi"]
+    "types": ["node", "jest", "../../node_modules/@strapi/strapi"]
   },
   "include": ["./", "src/**/*.json"],
   "exclude": [
