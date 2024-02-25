@@ -1,5 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { transformResponseItem, rtk, BACKEND_URL } from "@sps/utils";
+import {
+  transformResponseItem,
+  rtk,
+  BACKEND_URL,
+} from "@sps/shared-frontend-utils";
 import { populate, route, tag, IModelExtended } from "../model";
 
 export const api = createApi({

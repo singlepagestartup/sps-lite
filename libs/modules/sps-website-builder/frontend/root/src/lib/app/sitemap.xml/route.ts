@@ -1,7 +1,11 @@
 "use server";
 
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
-import { BACKEND_URL, FRONTEND_URL, getBackendData } from "@sps/utils";
+import {
+  BACKEND_URL,
+  FRONTEND_URL,
+  getBackendData,
+} from "@sps/shared-frontend-utils";
 
 async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({

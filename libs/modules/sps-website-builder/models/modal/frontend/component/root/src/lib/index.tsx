@@ -11,7 +11,7 @@ import {
 } from "next/navigation";
 import type { IModel as IBackendModal } from "@sps/sps-website-builder-models-modal-contracts";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
-import { getTargetPage } from "@sps/utils";
+import { getTargetPage } from "@sps/shared-frontend-utils";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;

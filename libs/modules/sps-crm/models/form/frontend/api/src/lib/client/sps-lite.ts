@@ -4,7 +4,7 @@ import {
   BACKEND_URL,
   transformResponseItem,
   prepareFormDataToSend,
-} from "@sps/utils";
+} from "@sps/shared-frontend-utils";
 import { IModelExtended, route, tag, populate } from "../model";
 import { globalActionsStore } from "@sps/store";
 

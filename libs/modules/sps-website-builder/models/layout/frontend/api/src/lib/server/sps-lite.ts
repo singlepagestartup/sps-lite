@@ -2,7 +2,7 @@ import {
   BACKEND_URL,
   transformResponseItem,
   fetch as utilsFetch,
-} from "@sps/utils";
+} from "@sps/shared-frontend-utils";
 import { populate, route, IModelExtended } from "../model";
 import QueryString from "qs";
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import * as fs from "fs/promises";
 import { createWriteStream } from "fs";
 import path from "path";
-import { getFileUrl, snakeCaseToCamelCase } from "@sps/utils";
+import { getFileUrl, snakeCaseToCamelCase } from "@sps/shared-frontend-utils";
 
 let iteration = 0;
 

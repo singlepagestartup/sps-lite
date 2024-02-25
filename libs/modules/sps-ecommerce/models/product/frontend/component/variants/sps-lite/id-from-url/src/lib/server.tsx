@@ -3,7 +3,7 @@ import "server-only";
 
 import { IComponentProps } from "./interface";
 import { headers } from "next/headers";
-import { getPageUrlModelId } from "@sps/utils";
+import { getPageUrlModelId } from "@sps/shared-frontend-utils";
 import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { Component } from "./Component";
 

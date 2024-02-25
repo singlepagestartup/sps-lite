@@ -7,7 +7,7 @@ import { Error } from "./Error";
 import { api } from "@sps/sps-subscription-models-tier-frontend-api";
 import { Component } from "./Component";
 import { headers } from "next/headers";
-import { getPageUrlModelId } from "@sps/utils";
+import { getPageUrlModelId } from "@sps/shared-frontend-utils";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {

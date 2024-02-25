@@ -2,7 +2,7 @@
 
 import { FC, HTMLInputTypeAttribute, useMemo } from "react";
 import { Label } from "../label";
-import { getFileUrl, cn } from "@sps/utils";
+import { getFileUrl, cn } from "@sps/shared-frontend-utils";
 import { Input } from "../input";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";

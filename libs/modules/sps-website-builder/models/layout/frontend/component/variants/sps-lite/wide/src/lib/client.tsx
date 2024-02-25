@@ -8,7 +8,7 @@ import { IComponentProps, IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getTargetPage } from "@sps/utils";
+import { getTargetPage } from "@sps/shared-frontend-utils";
 
 export default function Client(props: IComponentProps) {
   const pathname = usePathname();

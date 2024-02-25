@@ -17,6 +17,7 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
+      "@sps/shared-frontend-utils": ["libs/shared/frontend/utils/src/index.ts"],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/root/src/index.ts"
       ],
@@ -1283,8 +1284,7 @@
       ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
-      "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"],
-      "shared/utils": ["libs/shared/utils/src/index.ts"]
+      "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },

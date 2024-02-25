@@ -1,7 +1,7 @@
 import { Listbox } from "@headlessui/react";
 import { forwardRef } from "react";
 import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
+import { getFileUrl } from "@sps/shared-frontend-utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
 import { Props } from "..";
