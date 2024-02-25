@@ -5,6 +5,16 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/frontend/utils",
+        "main": "libs/shared/frontend/utils/src/index.ts",
+        "tsConfig": "libs/shared/frontend/utils/tsconfig.lib.json",
+        "assets": ["libs/shared/frontend/utils/*.md"]
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
