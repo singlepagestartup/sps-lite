@@ -25,7 +25,7 @@ export default () => {
         );
 
         if (anonymuses.length && anonymuses[0].id !== user.id) {
-          const populatedUser = await strapi.entityService.findOne(
+          const populatedUser: any = await strapi.entityService.findOne(
             "plugin::users-permissions.user",
             user.id,
             {
@@ -41,7 +41,7 @@ export default () => {
               data: {
                 orders: [...populatedUser.orders, ...anonymus.orders],
                 cart: anonymus.cart,
-              },
+              } as any,
             },
           );
 
