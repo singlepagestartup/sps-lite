@@ -15,6 +15,7 @@
     "noImplicitThis": true,
     "allowJs": true,
     "outDir": "dist",
+    // "rootDir": ".",
     "sourceMap": true,
     "types": ["node", "jest", "../../node_modules/@strapi/strapi"]
   },
