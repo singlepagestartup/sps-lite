@@ -3,7 +3,7 @@ import "client-only";
 
 import { useParams, usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
-import { getTargetPage } from "@sps/shared-frontend-utils";
+import { getTargetPage } from "@sps/shared-frontend-utils-client";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { variants } from "./variants";
 import { IComponentProps } from "./interface";

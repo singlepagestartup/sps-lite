@@ -5,7 +5,7 @@ import {
   BACKEND_URL,
   FRONTEND_URL,
   getBackendData,
-} from "@sps/shared-frontend-utils";
+} from "@sps/shared-frontend-utils-client";
 
 async function generateSiteMap() {
   const pages: IBackendPage[] = await getBackendData({

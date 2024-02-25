@@ -4,7 +4,7 @@ import {
   getBackendData,
   getFileUrl,
   getTargetPage,
-} from "@sps/shared-frontend-utils";
+} from "@sps/shared-frontend-utils-client";
 import { populate, route, IModelExtended } from "../model";
 import { notFound } from "next/navigation";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts";

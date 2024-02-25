@@ -1,4 +1,4 @@
-import { fetch } from "@sps/shared-frontend-utils";
+import { fetch } from "@sps/shared-frontend-utils-client";
 import { populate, route, IModelExtended } from "../model";
 
 export const api = {

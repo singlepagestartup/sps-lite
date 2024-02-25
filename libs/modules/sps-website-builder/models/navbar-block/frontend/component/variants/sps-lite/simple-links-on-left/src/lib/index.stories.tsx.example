@@ -5,7 +5,7 @@
 // import { HttpResponse, http } from "msw";
 // import { Provider } from "react-redux";
 // import store from "../../../../../redux";
-// import { BACKEND_URL } from "@sps/shared-frontend-utils";
+// import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 // import { IPageBlock } from "../..";
 
 // const meta = { component: Root } satisfies Meta<typeof Root>;

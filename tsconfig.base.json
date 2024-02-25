@@ -17,7 +17,12 @@
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
-      "@sps/shared-frontend-utils": ["libs/shared/frontend/utils/src/index.ts"],
+      "@sps/shared-frontend-utils-client": [
+        "libs/shared/frontend/utils/client/src/index.ts"
+      ],
+      "@sps/shared-frontend-utils-server": [
+        "libs/shared/frontend/utils/server/src/index.ts"
+      ],
       "@sps/sps-billing-frontend": [
         "libs/modules/sps-billing/frontend/root/src/index.ts"
       ],

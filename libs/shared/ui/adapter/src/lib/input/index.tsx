@@ -12,7 +12,7 @@ import React, {
 import { useController, useFormContext } from "react-hook-form";
 // import { useTranslations } from "@sps/hooks";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
-import { downloadBackendUploadFile } from "@sps/shared-frontend-utils";
+import { downloadBackendUploadFile } from "@sps/shared-frontend-utils-client";
 import TextInput from "./text";
 import RadioInput from "./radio-group";
 import SelectInput from "./select";

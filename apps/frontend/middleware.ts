@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import type { IModel as IBackendLocale } from "@sps/sps-website-builder-models-locale-contracts";
-import { BACKEND_URL } from "@sps/shared-frontend-utils";
+import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 
 export async function middleware(request: any) {
   // Check if there is any supported locale in the pathname

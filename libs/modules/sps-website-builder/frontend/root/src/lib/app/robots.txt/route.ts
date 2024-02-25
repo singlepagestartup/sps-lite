@@ -1,6 +1,6 @@
 "use server";
 
-import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils";
+import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
 
 async function generateRobots() {
   const robots = await getBackendData({

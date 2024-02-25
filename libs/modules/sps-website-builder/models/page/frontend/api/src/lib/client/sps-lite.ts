@@ -3,7 +3,7 @@ import {
   transformResponseItem,
   rtk,
   BACKEND_URL,
-} from "@sps/shared-frontend-utils";
+} from "@sps/shared-frontend-utils-client";
 import { populate, route, tag, IModelExtended } from "../model";
 
 export const api = createApi({

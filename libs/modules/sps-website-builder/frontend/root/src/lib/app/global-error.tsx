@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils";
+import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
 import { populate as pagePopulate } from "@sps/sps-website-builder-models-page-contracts";
 import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@sps/shared-frontend-utils",
+  "name": "@sps/shared-frontend-utils-server",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",

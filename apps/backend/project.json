@@ -8,9 +8,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
         "commands": [
           {
-            "command": "cd apps/backend/ && ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+            "command": "node ../../node_modules/@strapi/strapi/bin/strapi.js develop"
           }
         ]
       }
@@ -19,9 +21,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
         "commands": [
           {
-            "command": "cd apps/backend/ && node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+            "command": "node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
           }
         ]
       }
