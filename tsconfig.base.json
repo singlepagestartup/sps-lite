@@ -1284,7 +1284,7 @@
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"],
-      "@sps/utils": ["libs/shared/utils/src/index.ts"]
+      "shared/utils": ["libs/shared/utils/src/index.ts"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },

@@ -42,15 +42,19 @@
         "platform": "node",
         "outputPath": "apps/backend/dist",
         "tsConfig": "apps/backend/tsconfig.json",
-        "main": "apps/backend/src/index.ts",
+        "main": "apps/backend/index.ts",
         "assets": ["apps/backend/src/public"]
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
+        "parallel": false,
         "commands": [
-          "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js start"
+          "rm -rf apps/backend/dist",
+          "npx nx run backend:build",
+          "mv apps/backend/dist/build apps/backend/dist/apps/backend/build",
+          "node apps/backend/dist/apps/backend/index.js"
         ]
       }
     },

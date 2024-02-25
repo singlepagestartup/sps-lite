@@ -10,5 +10,9 @@ dotenv.config({
   const appDir = process.cwd();
   const distDir = process.cwd() + "/dist/apps/backend";
 
-  strapi({ appDir, distDir }).start();
+  strapi({
+    appDir,
+    distDir,
+    autoReload: true,
+  }).start();
 })();
