@@ -21,6 +21,7 @@ const connections = {
     },
   }),
   postgres: (env) => {
+    console.log("🚀 ~ env:", env("DATABASE_PASSWORD", "password"));
     const config = {
       connection: {
         client: "postgres",
