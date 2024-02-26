@@ -30,11 +30,10 @@ jobs:
           DATABASE_SSL: ${{ secrets.DATABASE_SSL == true }}
           DATABASE_SSL_SELF_SIGNED: ${{ secrets.DATABASE_SSL_SELF_SIGNED == true }}
         run: |
-          cd backend
           npm i
-          npm run build
-          cp .env.seed .env
-          npm run start &
+          npm run backend:build
+          cp apps/backend/.env.seed apps/backend/.env
+          npm run backend:start &
       - name: Make scripts files executable
         run: |
           chmod +x ./wait-for-seeed.sh
