@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./deployment/ansible
+        working-directory: ./tools/deployer/ansible
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
