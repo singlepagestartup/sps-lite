@@ -8,7 +8,6 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "envFile": "apps/backend/.env",
         "cwd": "apps/backend",
         "commands": [
           {
@@ -24,7 +23,6 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "envFile": "apps/backend/.env",
         "cwd": "apps/backend",
         "commands": [
           {
@@ -56,7 +54,6 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "envFile": "apps/backend/.env",
         "cwd": "apps/backend",
         "commands": [
           {
@@ -70,7 +67,6 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": true,
-        "envFile": "apps/backend/.env",
         "cwd": "apps/backend",
         "commands": [
           {
