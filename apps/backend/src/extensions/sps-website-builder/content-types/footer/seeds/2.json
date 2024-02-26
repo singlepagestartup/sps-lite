@@ -4,8 +4,8 @@
   "uid": "pied-de-page-public",
   "variant": "boxed",
   "class_name": null,
-  "createdAt": "2024-01-12T23:31:12.109Z",
-  "updatedAt": "2024-01-12T23:31:13.171Z",
+  "createdAt": "2024-02-01T09:01:22.273Z",
+  "updatedAt": "2024-02-09T15:14:39.866Z",
   "publishedAt": "2024-01-12T23:31:13.162Z",
   "locale": "fr",
   "localizations": [
@@ -15,8 +15,8 @@
       "uid": "footer",
       "variant": "boxed",
       "class_name": null,
-      "createdAt": "2024-01-10T11:45:34.071Z",
-      "updatedAt": "2024-01-13T09:58:54.399Z",
+      "createdAt": "2024-02-01T09:01:22.261Z",
+      "updatedAt": "2024-02-09T18:39:36.997Z",
       "publishedAt": "2024-01-10T11:45:35.047Z",
       "locale": "en"
     }
@@ -24,35 +24,35 @@
   "page_blocks": [
     {
       "__component": "page-blocks.footer-block",
-      "id": 2,
+      "id": 8,
       "copyrights": "2024 Démarrage d'une seule page",
       "description": "Le moyen le plus rapide de développer votre startup",
       "variant": "four-columns-with-company-mission",
       "class_name": null,
       "logotype": {
-        "id": 3,
+        "id": 14,
         "title": null,
         "url": null,
         "media": [
           {
-            "id": 18,
+            "id": 163,
             "name": "sps-full dark.svg",
             "alternativeText": null,
             "caption": null,
             "width": 4725,
             "height": 729,
             "formats": null,
-            "hash": "sps_full_dark_e8fb90cd29",
+            "hash": "sps_full_dark_a497ec2fa3",
             "ext": ".svg",
             "mime": "image/svg+xml",
             "size": 16.9,
-            "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/sps_full_dark_e8fb90cd29.svg",
+            "url": "/uploads/sps_full_dark_a497ec2fa3.svg",
             "previewUrl": null,
-            "provider": "aws-s3",
+            "provider": "local",
             "provider_metadata": null,
             "folderPath": "/",
-            "createdAt": "2024-01-09T22:27:17.920Z",
-            "updatedAt": "2024-01-09T22:27:17.920Z"
+            "createdAt": "2024-02-09T15:14:39.800Z",
+            "updatedAt": "2024-02-09T15:14:39.800Z"
           }
         ],
         "additional_media": null
@@ -69,8 +69,8 @@
       "uid": "mise-en-page-publique",
       "variant": "wide",
       "class_name": "[&>.layout-container]:pt-16",
-      "createdAt": "2024-01-12T23:28:48.599Z",
-      "updatedAt": "2024-01-12T23:28:53.039Z",
+      "createdAt": "2024-02-01T09:01:22.307Z",
+      "updatedAt": "2024-02-09T15:14:39.973Z",
       "publishedAt": "2024-01-12T23:28:53.035Z",
       "locale": "fr"
     }

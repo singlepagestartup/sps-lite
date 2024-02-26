@@ -1,0 +1,45 @@
+{
+  "id": 2,
+  "string": null,
+  "number": 30,
+  "boolean": null,
+  "date": null,
+  "datetime": null,
+  "time": null,
+  "createdAt": "2024-02-15T10:50:13.731Z",
+  "updatedAt": "2024-02-15T10:50:13.731Z",
+  "locale": "en",
+  "localizations": [],
+  "attribute_key": {
+    "id": 2,
+    "title": "period",
+    "type": "number",
+    "prefix": null,
+    "postfix": null,
+    "is_multiple": false,
+    "operator": "equal",
+    "inversed": false,
+    "not_to_clear": false,
+    "createdAt": "2024-02-15T10:49:54.396Z",
+    "updatedAt": "2024-02-15T10:49:54.396Z",
+    "locale": "en",
+    "uid": "period"
+  },
+  "media": null,
+  "additional_media": null,
+  "currency": null,
+  "tiers": [
+    {
+      "id": 2,
+      "title": "Pro",
+      "description": "Получи все преимущества от использования Boilerplate SPS при разработке стартапа",
+      "type": "one-time",
+      "period": null,
+      "createdAt": "2024-02-01T09:01:22.096Z",
+      "updatedAt": "2024-02-09T15:14:21.965Z",
+      "publishedAt": "2023-02-14T15:48:56.695Z",
+      "locale": "en"
+    }
+  ],
+  "subscriptions": []
+}

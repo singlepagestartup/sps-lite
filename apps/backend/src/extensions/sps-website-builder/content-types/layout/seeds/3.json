@@ -4,8 +4,8 @@
   "uid": "mise-en-page-publique",
   "variant": "wide",
   "class_name": "[&>.layout-container]:pt-16",
-  "createdAt": "2024-01-12T23:28:48.599Z",
-  "updatedAt": "2024-01-12T23:28:53.039Z",
+  "createdAt": "2024-02-01T09:01:22.307Z",
+  "updatedAt": "2024-02-09T15:14:39.973Z",
   "publishedAt": "2024-01-12T23:28:53.035Z",
   "locale": "fr",
   "localizations": [],
@@ -15,8 +15,8 @@
     "uid": "pied-de-page-public",
     "variant": "boxed",
     "class_name": null,
-    "createdAt": "2024-01-12T23:31:12.109Z",
-    "updatedAt": "2024-01-12T23:31:13.171Z",
+    "createdAt": "2024-02-01T09:01:22.273Z",
+    "updatedAt": "2024-02-09T15:14:39.866Z",
     "publishedAt": "2024-01-12T23:31:13.162Z",
     "locale": "fr"
   },
@@ -29,8 +29,8 @@
     "class_name": null,
     "position": "fixed",
     "side": "top",
-    "createdAt": "2024-01-12T23:50:07.941Z",
-    "updatedAt": "2024-01-16T18:19:06.259Z",
+    "createdAt": "2024-02-01T09:01:22.393Z",
+    "updatedAt": "2024-02-09T15:14:41.760Z",
     "publishedAt": "2024-01-12T23:50:09.029Z",
     "locale": "fr"
   },
@@ -42,8 +42,8 @@
       "id": 9,
       "title": "Page d'accueil",
       "url": "/",
-      "createdAt": "2024-01-12T23:28:06.267Z",
-      "updatedAt": "2024-01-16T18:45:53.581Z",
+      "createdAt": "2024-02-01T09:01:22.496Z",
+      "updatedAt": "2024-02-24T15:20:53.557Z",
       "publishedAt": "2024-01-12T23:28:07.163Z",
       "locale": "fr"
     }

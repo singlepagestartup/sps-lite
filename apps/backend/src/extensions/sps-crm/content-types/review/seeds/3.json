@@ -5,12 +5,12 @@
   "description": "Our team has been able to move quickly and iteratively thanks to that boilerplate. The built-in feedback mechanisms have helped us ensure our product remains aligned with user needs, and the agile development environment has fostered a culture of innovation within our team. We highly recommend it to any startup looking to launch quickly and efficiently.",
   "subtitle": "HealthBridge, Product Manager",
   "rating": 4,
-  "createdAt": "2024-01-09T22:27:14.290Z",
-  "updatedAt": "2024-01-09T22:27:14.290Z",
+  "createdAt": "2024-02-01T09:01:22.213Z",
+  "updatedAt": "2024-02-09T15:14:37.317Z",
   "publishedAt": "2023-03-12T04:32:42.951Z",
   "media": [
     {
-      "id": 14,
+      "id": 159,
       "name": "pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
       "alternativeText": null,
       "caption": null,
@@ -19,8 +19,8 @@
       "formats": {
         "large": {
           "ext": ".jpg",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9.jpg",
-          "hash": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9",
+          "url": "/uploads/large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b.jpg",
+          "hash": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b",
           "mime": "image/jpeg",
           "name": "large_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
           "path": null,
@@ -30,8 +30,8 @@
         },
         "small": {
           "ext": ".jpg",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9.jpg",
-          "hash": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9",
+          "url": "/uploads/small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b.jpg",
+          "hash": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b",
           "mime": "image/jpeg",
           "name": "small_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
           "path": null,
@@ -41,8 +41,8 @@
         },
         "medium": {
           "ext": ".jpg",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9.jpg",
-          "hash": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9",
+          "url": "/uploads/medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b.jpg",
+          "hash": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b",
           "mime": "image/jpeg",
           "name": "medium_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
           "path": null,
@@ -52,8 +52,8 @@
         },
         "thumbnail": {
           "ext": ".jpg",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9.jpg",
-          "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9",
+          "url": "/uploads/thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b.jpg",
+          "hash": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b",
           "mime": "image/jpeg",
           "name": "thumbnail_pexels_karolina_grabowska_4467687_1_9eaaf9fbe4.jpg",
           "path": null,
@@ -62,17 +62,17 @@
           "height": 156
         }
       },
-      "hash": "pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9",
+      "hash": "pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b",
       "ext": ".jpg",
       "mime": "image/jpeg",
       "size": 1177.43,
-      "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_ffa06a7ea9.jpg",
+      "url": "/uploads/pexels_karolina_grabowska_4467687_1_9eaaf9fbe4_f04048195b.jpg",
       "previewUrl": null,
-      "provider": "aws-s3",
+      "provider": "local",
       "provider_metadata": null,
       "folderPath": "/",
-      "createdAt": "2024-01-09T22:27:14.271Z",
-      "updatedAt": "2024-01-09T22:27:14.271Z"
+      "createdAt": "2024-02-09T15:14:37.302Z",
+      "updatedAt": "2024-02-09T15:14:37.302Z"
     }
   ],
   "additional_media": null

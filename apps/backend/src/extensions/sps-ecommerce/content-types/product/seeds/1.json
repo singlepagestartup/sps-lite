@@ -3,14 +3,14 @@
   "title": "3D Icon Pack",
   "description": "Core services are created for each content-type and could be used by controllers to execute reusable logic through a Strapi project. Core services can be customized to implement your own logic. The following code examples should help you get started.",
   "full_description": null,
-  "createdAt": "2024-01-09T23:14:51.026Z",
-  "updatedAt": "2024-01-09T23:14:51.759Z",
+  "createdAt": "2024-02-01T09:01:22.185Z",
+  "updatedAt": "2024-02-09T15:14:23.718Z",
   "publishedAt": "2024-01-09T23:14:51.755Z",
   "locale": "en",
   "localizations": [],
   "media": [
     {
-      "id": 32,
+      "id": 145,
       "name": "three block.png",
       "alternativeText": null,
       "caption": null,
@@ -19,8 +19,8 @@
       "formats": {
         "large": {
           "ext": ".png",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/large_three_block_afaa502067.png",
-          "hash": "large_three_block_afaa502067",
+          "url": "/uploads/large_three_block_121fcb2e2b.png",
+          "hash": "large_three_block_121fcb2e2b",
           "mime": "image/png",
           "name": "large_three block.png",
           "path": null,
@@ -30,8 +30,8 @@
         },
         "small": {
           "ext": ".png",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/small_three_block_afaa502067.png",
-          "hash": "small_three_block_afaa502067",
+          "url": "/uploads/small_three_block_121fcb2e2b.png",
+          "hash": "small_three_block_121fcb2e2b",
           "mime": "image/png",
           "name": "small_three block.png",
           "path": null,
@@ -41,8 +41,8 @@
         },
         "medium": {
           "ext": ".png",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/medium_three_block_afaa502067.png",
-          "hash": "medium_three_block_afaa502067",
+          "url": "/uploads/medium_three_block_121fcb2e2b.png",
+          "hash": "medium_three_block_121fcb2e2b",
           "mime": "image/png",
           "name": "medium_three block.png",
           "path": null,
@@ -52,8 +52,8 @@
         },
         "thumbnail": {
           "ext": ".png",
-          "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/thumbnail_three_block_afaa502067.png",
-          "hash": "thumbnail_three_block_afaa502067",
+          "url": "/uploads/thumbnail_three_block_121fcb2e2b.png",
+          "hash": "thumbnail_three_block_121fcb2e2b",
           "mime": "image/png",
           "name": "thumbnail_three block.png",
           "path": null,
@@ -62,17 +62,17 @@
           "height": 156
         }
       },
-      "hash": "three_block_afaa502067",
+      "hash": "three_block_121fcb2e2b",
       "ext": ".png",
       "mime": "image/png",
       "size": 414.59,
-      "url": "https://spslitedev.s3.eu-central-1.amazonaws.com/three_block_afaa502067.png",
+      "url": "/uploads/three_block_121fcb2e2b.png",
       "previewUrl": null,
-      "provider": "aws-s3",
+      "provider": "local",
       "provider_metadata": null,
       "folderPath": "/",
-      "createdAt": "2024-01-09T22:27:45.514Z",
-      "updatedAt": "2024-01-09T22:27:45.514Z"
+      "createdAt": "2024-02-09T15:14:23.703Z",
+      "updatedAt": "2024-02-09T15:14:23.703Z"
     }
   ],
   "attributes": [
@@ -84,66 +84,136 @@
       "date": null,
       "datetime": null,
       "time": null,
-      "createdAt": "2024-01-09T23:15:58.212Z",
-      "updatedAt": "2024-01-09T23:20:33.498Z",
+      "createdAt": "2024-02-01T09:01:22.107Z",
+      "updatedAt": "2024-02-09T15:14:21.995Z",
       "locale": "en"
     }
   ],
   "order_products": [
     {
       "id": 1,
-      "createdAt": "2024-01-09T23:16:06.788Z",
-      "updatedAt": "2024-01-09T23:16:06.788Z"
+      "createdAt": "2024-02-06T23:59:33.996Z",
+      "updatedAt": "2024-02-06T23:59:33.996Z"
     },
     {
       "id": 2,
-      "createdAt": "2024-01-09T23:19:48.783Z",
-      "updatedAt": "2024-01-09T23:19:48.783Z"
-    },
-    {
-      "id": 3,
-      "createdAt": "2024-01-09T23:20:26.622Z",
-      "updatedAt": "2024-01-09T23:20:26.622Z"
-    },
-    {
-      "id": 4,
-      "createdAt": "2024-01-09T23:20:42.700Z",
-      "updatedAt": "2024-01-09T23:20:42.700Z"
-    },
-    {
-      "id": 5,
-      "createdAt": "2024-01-09T23:20:44.320Z",
-      "updatedAt": "2024-01-09T23:20:44.320Z"
+      "createdAt": "2024-02-07T01:13:39.757Z",
+      "updatedAt": "2024-02-07T01:13:39.757Z"
     },
     {
       "id": 6,
-      "createdAt": "2024-01-09T23:20:59.078Z",
-      "updatedAt": "2024-01-09T23:20:59.078Z"
-    },
-    {
-      "id": 7,
-      "createdAt": "2024-01-10T10:40:27.188Z",
-      "updatedAt": "2024-01-10T10:40:27.188Z"
-    },
-    {
-      "id": 8,
-      "createdAt": "2024-01-10T10:40:28.798Z",
-      "updatedAt": "2024-01-10T10:40:28.798Z"
+      "createdAt": "2024-02-07T07:59:08.268Z",
+      "updatedAt": "2024-02-07T07:59:08.268Z"
     },
     {
       "id": 9,
-      "createdAt": "2024-01-10T11:49:20.878Z",
-      "updatedAt": "2024-01-10T11:49:20.878Z"
-    },
-    {
-      "id": 10,
-      "createdAt": "2024-01-12T12:37:01.903Z",
-      "updatedAt": "2024-01-12T12:37:01.903Z"
+      "createdAt": "2024-02-07T12:27:38.953Z",
+      "updatedAt": "2024-02-07T12:27:38.953Z"
     },
     {
       "id": 11,
-      "createdAt": "2024-01-12T12:49:28.126Z",
-      "updatedAt": "2024-01-12T12:49:28.126Z"
+      "createdAt": "2024-02-07T13:40:10.715Z",
+      "updatedAt": "2024-02-07T13:40:10.715Z"
+    },
+    {
+      "id": 12,
+      "createdAt": "2024-02-07T13:53:41.206Z",
+      "updatedAt": "2024-02-07T13:53:41.206Z"
+    },
+    {
+      "id": 13,
+      "createdAt": "2024-02-07T14:08:59.336Z",
+      "updatedAt": "2024-02-07T14:08:59.336Z"
+    },
+    {
+      "id": 14,
+      "createdAt": "2024-02-07T14:14:13.015Z",
+      "updatedAt": "2024-02-07T14:14:13.015Z"
+    },
+    {
+      "id": 15,
+      "createdAt": "2024-02-07T15:01:33.009Z",
+      "updatedAt": "2024-02-07T15:01:33.009Z"
+    },
+    {
+      "id": 16,
+      "createdAt": "2024-02-07T15:03:06.444Z",
+      "updatedAt": "2024-02-07T15:03:06.444Z"
+    },
+    {
+      "id": 17,
+      "createdAt": "2024-02-07T15:06:01.451Z",
+      "updatedAt": "2024-02-07T15:06:01.451Z"
+    },
+    {
+      "id": 18,
+      "createdAt": "2024-02-07T15:13:02.559Z",
+      "updatedAt": "2024-02-07T15:13:02.559Z"
+    },
+    {
+      "id": 19,
+      "createdAt": "2024-02-07T15:14:18.371Z",
+      "updatedAt": "2024-02-07T15:14:18.371Z"
+    },
+    {
+      "id": 20,
+      "createdAt": "2024-02-07T15:20:16.802Z",
+      "updatedAt": "2024-02-07T15:20:16.802Z"
+    },
+    {
+      "id": 21,
+      "createdAt": "2024-02-07T15:22:28.660Z",
+      "updatedAt": "2024-02-07T15:22:28.660Z"
+    },
+    {
+      "id": 22,
+      "createdAt": "2024-02-07T15:28:43.053Z",
+      "updatedAt": "2024-02-07T15:28:43.053Z"
+    },
+    {
+      "id": 23,
+      "createdAt": "2024-02-07T20:45:31.080Z",
+      "updatedAt": "2024-02-07T20:45:31.080Z"
+    },
+    {
+      "id": 51,
+      "createdAt": "2024-02-23T17:55:58.220Z",
+      "updatedAt": "2024-02-23T17:55:58.220Z"
+    },
+    {
+      "id": 53,
+      "createdAt": "2024-02-23T19:18:24.078Z",
+      "updatedAt": "2024-02-23T19:18:24.078Z"
+    },
+    {
+      "id": 54,
+      "createdAt": "2024-02-23T19:22:35.723Z",
+      "updatedAt": "2024-02-23T19:22:35.723Z"
+    },
+    {
+      "id": 55,
+      "createdAt": "2024-02-23T19:34:46.207Z",
+      "updatedAt": "2024-02-23T19:34:46.207Z"
+    },
+    {
+      "id": 56,
+      "createdAt": "2024-02-23T19:35:22.789Z",
+      "updatedAt": "2024-02-23T19:35:22.789Z"
+    },
+    {
+      "id": 57,
+      "createdAt": "2024-02-23T20:22:38.081Z",
+      "updatedAt": "2024-02-23T20:22:38.081Z"
+    },
+    {
+      "id": 58,
+      "createdAt": "2024-02-23T22:28:02.040Z",
+      "updatedAt": "2024-02-23T22:28:02.040Z"
+    },
+    {
+      "id": 59,
+      "createdAt": "2024-02-24T21:32:35.942Z",
+      "updatedAt": "2024-02-24T21:32:35.942Z"
     }
   ]
 }
