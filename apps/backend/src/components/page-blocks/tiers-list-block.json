@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_page_blocks_tiers_list_blocks",
+  "info": {
+    "displayName": "Tiers List Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": ["two-columns-card"],
+      "required": true,
+      "default": "two-columns-card"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "class_name": {
+      "type": "text"
+    },
+    "tiers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-subscription.tier"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    },
+    "additional_media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

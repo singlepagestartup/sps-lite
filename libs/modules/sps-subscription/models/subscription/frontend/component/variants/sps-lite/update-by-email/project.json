@@ -1,0 +1,13 @@
+{
+  "name": "@sps/sps-subscription-models-subscription-frontend-component-variants-sps-lite-update-by-email",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-subscription/models/subscription/frontend/component/variants/sps-lite/update-by-email/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

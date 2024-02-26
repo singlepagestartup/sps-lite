@@ -1,0 +1,101 @@
+---
+- name: Create service SSL certificate
+  hosts: all
+  become: yes
+  vars:
+    - account_email: "{{ CLOUDFLARE_ACCOUNT_EMAIL }}"
+    - account_api_key: "{{ CLOUDFLARE_ACCOUNT_API_KEY }}"
+    - domain: "{{ DOMAIN }}"
+    - state: "{{ STATE }}"
+    - service_url: "{{ SERVICE_URL }}"
+  tasks:
+    - name: Create certs directory
+      file:
+        path: /home/code/certs
+        state: directory
+        mode: 0755
+
+    - name: Check is .key file exists
+      stat:
+        path: "/home/code/certs/{{ service_url }}.crt"
+      register: crt_cert
+
+    - name: Create certificate
+      block:
+        - name: Create SSL certificate csr
+          command: "openssl req \
+            -new \
+            -newkey rsa:2048 \
+            -nodes \
+            -days 5475 \
+            -subj '/C=US/ST=California/L=/O=/CN={{ domain }}' \
+            -addext 'subjectAltName=DNS:{{ service_url }}' \
+            -keyout /home/code/certs/{{ service_url }}.key \
+            -out /home/code/certs/{{ service_url }}.csr"
+
+        - name: Copy csr to local machine
+          fetch:
+            src: /home/code/certs/{{ service_url }}.csr
+            dest: certs/
+            flat: yes
+
+        - name: Get csr file data
+          shell:
+            cmd: "cat /home/code/certs/{{ service_url }}.csr"
+          register: csr_file_content
+
+        - name: Register SSL certificate
+          retries: 10
+          delay: 30
+          register: cloudflare_cert
+          until: cloudflare_cert.status == 200
+          uri:
+            url: "https://api.cloudflare.com/client/v4/certificates"
+            method: POST
+            headers:
+              Content-Type: "application/json"
+              X-Auth-Key: "{{ account_api_key }}"
+              X-Auth-Email: "{{ account_email }}"
+            body_format: json
+            body:
+              hostnames:
+                - "{{ service_url }}"
+              requesprted_validity: 5475
+              request_type: "origin-rsa"
+              csr: "{{ csr_file_content.stdout }}"
+
+        - name: Place certificate to certs folder
+          copy:
+            content: "{{ cloudflare_cert.json.result.certificate }}"
+            dest: /home/code/certs/{{ service_url }}.crt
+
+        - name: Place certificate id to certs filder
+          copy:
+            content: "{{ cloudflare_cert.json.result.id }}"
+            dest: "/home/code/certs/{{ service_url }}_certificate_id"
+
+        - name: Copy certificate to local machine
+          fetch:
+            src: /home/code/certs/{{ service_url }}.crt
+            dest: certs/
+            flat: yes
+
+        - name: Copy to key local machine
+          fetch:
+            src: /home/code/certs/{{ service_url }}.key
+            dest: certs/
+            flat: yes
+
+        - name: Copy certificate id to local machine
+          fetch:
+            src: "/home/code/certs/{{ service_url }}_certificate_id"
+            dest: certs/
+            flat: yes
+
+        - name: Delete artifacts
+          file:
+            path: "/home/code/{{ item }}"
+            state: absent
+          loop:
+            - "prepare_csr_body.sh"
+      when: crt_cert.stat.exists == False

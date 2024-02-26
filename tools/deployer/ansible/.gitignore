@@ -1,0 +1,12 @@
+iams
+certs
+*.env
+*.env.backup
+inventory.yaml*
+!inventory.yaml.example
+*_webhook.json
+node_modules
+*.pem
+*.key
+*.pub
+*rsa

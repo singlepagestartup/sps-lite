@@ -1,0 +1,65 @@
+---
+- name: Delete S3 bucket
+  hosts: all
+  become: yes
+  vars:
+    - aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    - aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+    - project_name: "{{ PROJECT_NAME }}"
+    - aws_s3_bucket: "{{ AWS_S3_BUCKET }}"
+  tasks:
+    - name: Get ansible ansible_system_vendor
+      set_fact:
+        ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
+
+    - name: If DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation --break-system-packages
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor == "DigitalOcean"
+
+    - name: If not DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor != "DigitalOcean"
+
+    - name: Delete S3 bucket
+      amazon.aws.s3_bucket:
+        name: "{{ item }}"
+        access_key: "{{ aws_access_key }}"
+        secret_key: "{{ aws_secret_access_key }}"
+        state: absent
+        force: true
+      ignore_errors: yes
+      loop:
+        - "{{ aws_s3_bucket }}"
+        # Not to delete development S3 bucket
+        # for saving data
+        # - "{{ aws_s3_bucket }}dev"
+
+    - name: Delete S3 name file
+      file:
+        path: "/home/code/{{ item }}"
+        state: absent
+      loop:
+        - "s3_bucket"
+        - "s3_bucket_dev"

@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_page_blocks_reviews_list_blocks",
+  "info": {
+    "displayName": "Reviews List Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "enum": ["simple-with-avatars"],
+      "default": "simple-with-avatars",
+      "required": true
+    },
+    "show_all": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-crm.review"
+    }
+  }
+}

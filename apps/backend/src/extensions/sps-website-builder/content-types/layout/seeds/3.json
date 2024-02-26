@@ -1,0 +1,51 @@
+{
+  "id": 3,
+  "title": "Mise en page publique",
+  "uid": "mise-en-page-publique",
+  "variant": "wide",
+  "class_name": "[&>.layout-container]:pt-16",
+  "createdAt": "2024-02-01T09:01:22.307Z",
+  "updatedAt": "2024-02-09T15:14:39.973Z",
+  "publishedAt": "2024-01-12T23:28:53.035Z",
+  "locale": "fr",
+  "localizations": [],
+  "footer": {
+    "id": 2,
+    "title": "Pied de page public",
+    "uid": "pied-de-page-public",
+    "variant": "boxed",
+    "class_name": null,
+    "createdAt": "2024-02-01T09:01:22.273Z",
+    "updatedAt": "2024-02-09T15:14:39.866Z",
+    "publishedAt": "2024-01-12T23:31:13.162Z",
+    "locale": "fr"
+  },
+  "modals": [],
+  "navbar": {
+    "id": 2,
+    "title": "Barre de navigation des pages publiques",
+    "uid": "barre-de-navigation-des-pages-publiques",
+    "variant": "boxed",
+    "class_name": null,
+    "position": "fixed",
+    "side": "top",
+    "createdAt": "2024-02-01T09:01:22.393Z",
+    "updatedAt": "2024-02-09T15:14:41.760Z",
+    "publishedAt": "2024-01-12T23:50:09.029Z",
+    "locale": "fr"
+  },
+  "sidebar": null,
+  "slide_overs": [],
+  "topbar": null,
+  "pages": [
+    {
+      "id": 9,
+      "title": "Page d'accueil",
+      "url": "/",
+      "createdAt": "2024-02-01T09:01:22.496Z",
+      "updatedAt": "2024-02-24T15:20:53.557Z",
+      "publishedAt": "2024-01-12T23:28:07.163Z",
+      "locale": "fr"
+    }
+  ]
+}

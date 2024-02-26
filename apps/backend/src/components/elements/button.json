@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_elements_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "closed-captioning",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "text"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "videos", "audios", "files"]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "locale",
+        "destructive",
+        "outline",
+        "ghost",
+        "link"
+      ],
+      "default": "primary",
+      "required": true
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "additional_attributes": {
+      "type": "json"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "flyout": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::sps-website-builder.flyout"
+    }
+  }
+}

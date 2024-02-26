@@ -1,0 +1,78 @@
+{
+  "id": 2,
+  "title": "quantity",
+  "type": "number",
+  "prefix": null,
+  "postfix": null,
+  "is_multiple": false,
+  "operator": "equal",
+  "inversed": false,
+  "not_to_clear": false,
+  "createdAt": "2024-02-01T09:01:22.178Z",
+  "updatedAt": "2024-02-09T15:14:22.360Z",
+  "locale": "en",
+  "uid": "quantity",
+  "localizations": [],
+  "attributes": [
+    {
+      "id": 5,
+      "string": null,
+      "number": 11,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-02-01T09:01:22.148Z",
+      "updatedAt": "2024-02-23T19:49:25.854Z",
+      "locale": "en"
+    },
+    {
+      "id": 6,
+      "string": null,
+      "number": 12,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-02-01T09:01:22.157Z",
+      "updatedAt": "2024-02-09T15:14:22.297Z",
+      "locale": "en"
+    },
+    {
+      "id": 7,
+      "string": null,
+      "number": 1,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-02-06T23:59:34.151Z",
+      "updatedAt": "2024-02-24T21:32:35.996Z",
+      "locale": "en"
+    },
+    {
+      "id": 8,
+      "string": null,
+      "number": 2,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-02-07T00:16:27.361Z",
+      "updatedAt": "2024-02-23T19:49:22.581Z",
+      "locale": "en"
+    },
+    {
+      "id": 9,
+      "string": null,
+      "number": 3,
+      "boolean": null,
+      "date": null,
+      "datetime": null,
+      "time": null,
+      "createdAt": "2024-02-07T00:50:46.739Z",
+      "updatedAt": "2024-02-23T19:34:46.302Z",
+      "locale": "en"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": 5,
+  "name": "Michael Johnson",
+  "title": "Tailored to Startup Success",
+  "description": "The Single Page Startup boilerplate has been instrumental in our startup's success. Its focus on MVP readiness and adaptability has allowed us to quickly test and validate our ideas, making it easy to pivot and refine our product offering. It has been a crucial part of our journey, and we couldn't imagine building our startup without it.",
+  "subtitle": "EduSphere, Founder & CEO",
+  "rating": 5,
+  "createdAt": "2024-02-01T09:01:22.222Z",
+  "updatedAt": "2024-02-09T15:14:38.744Z",
+  "publishedAt": "2023-03-12T04:34:27.387Z",
+  "media": [
+    {
+      "id": 161,
+      "name": "pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
+      "alternativeText": null,
+      "caption": null,
+      "width": 1280,
+      "height": 853,
+      "formats": {
+        "large": {
+          "ext": ".jpg",
+          "url": "/uploads/large_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b.jpg",
+          "hash": "large_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b",
+          "mime": "image/jpeg",
+          "name": "large_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
+          "path": null,
+          "size": 72.41,
+          "width": 1000,
+          "height": 666
+        },
+        "small": {
+          "ext": ".jpg",
+          "url": "/uploads/small_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b.jpg",
+          "hash": "small_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b",
+          "mime": "image/jpeg",
+          "name": "small_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
+          "path": null,
+          "size": 25.51,
+          "width": 500,
+          "height": 333
+        },
+        "medium": {
+          "ext": ".jpg",
+          "url": "/uploads/medium_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b.jpg",
+          "hash": "medium_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b",
+          "mime": "image/jpeg",
+          "name": "medium_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
+          "path": null,
+          "size": 46.24,
+          "width": 750,
+          "height": 500
+        },
+        "thumbnail": {
+          "ext": ".jpg",
+          "url": "/uploads/thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b.jpg",
+          "hash": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b",
+          "mime": "image/jpeg",
+          "name": "thumbnail_pexels_karolina_grabowska_5882683_3f2b11722e.jpg",
+          "path": null,
+          "size": 8.01,
+          "width": 234,
+          "height": 156
+        }
+      },
+      "hash": "pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b",
+      "ext": ".jpg",
+      "mime": "image/jpeg",
+      "size": 109.43,
+      "url": "/uploads/pexels_karolina_grabowska_5882683_3f2b11722e_a81186904b.jpg",
+      "previewUrl": null,
+      "provider": "local",
+      "provider_metadata": null,
+      "folderPath": "/",
+      "createdAt": "2024-02-09T15:14:38.731Z",
+      "updatedAt": "2024-02-09T15:14:38.731Z"
+    }
+  ],
+  "additional_media": null
+}
