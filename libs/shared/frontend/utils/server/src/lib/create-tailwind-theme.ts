@@ -17,10 +17,20 @@ const requiredFontStyles = ["", "Italic"];
 const requiredFontWeights = ["Light", "Regular", "Medium", "SemiBold", "Bold"];
 
 export const getThemeFromBackend = async () => {
-  const envFile = process.env["NODE_ENV"];
+  const nodeEnv = process.env["NODE_ENV"];
+  const envFilePath = path.join(
+    frontendDir,
+    `.env.${nodeEnv ?? "local" ?? "dev"}`,
+  );
+
   require("dotenv").config({
-    path: path.join(frontendDir, `.env.${envFile}`),
+    path: envFilePath,
   });
+
+  console.log(
+    "NEXT_PUBLIC_BACKEND_URL",
+    process.env["NEXT_PUBLIC_BACKEND_URL"],
+  );
 
   const themeData = await axios
     .get(
