@@ -14,75 +14,10 @@ on:
         required: true
         type: boolean
 
-env:
-  FRONTEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
-
 jobs:
-  create-frontend-image:
-    name: Frontend version
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Sleep before start
-        run: sleep ${{ inputs.SLEEP_TIME }}
-      - name: Login to registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          logout: false
-      - if: ${{ inputs.PRERELEASE == true }}
-        name: Build image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./
-          push: false
-          load: true
-          tags: |
-            ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
-          build-args: |
-            NEXT_PUBLIC_BACKEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_URL }}
-            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_TOKEN }}
-            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_FRONTEND_URL }}
-            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.STAGING_NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
-            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.STAGING_NEXT_PUBLIC_SENTRY_DSN }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Build image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./
-          push: false
-          load: true
-          tags: |
-            ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
-            ${{ env.FRONTEND_IMAGE_URL }}:latest
-          build-args: |
-            NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
-            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
-            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
-            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
-            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
-      - name: Inspect release tag image
-        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Inspect latest tag image
-        run: docker image inspect ${{ env.FRONTEND_IMAGE_URL }}:latest
-      - name: Push release tag to registry
-        run: docker push ${{ env.FRONTEND_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Push latest tag to registry
-        run: docker push ${{ env.FRONTEND_IMAGE_URL }}:latest
-
-  deploy-frontend:
+  trigger-service-update:
     name: Run deployer
     runs-on: ubuntu-latest
-    needs:
-      - create-frontend-image
     steps:
       - name: Send webhook for staging service update
         if: ${{ inputs.PRERELEASE == true }}

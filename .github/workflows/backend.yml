@@ -11,61 +11,10 @@ on:
         required: true
         type: boolean
 
-env:
-  BACKEND_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_backend
-
 jobs:
-  create-backend-image:
-    name: Backend version
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Login to registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          logout: false
-      - if: ${{ inputs.PRERELEASE == true }}
-        name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./backend
-          push: false
-          load: true
-          tags: |
-            ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./backend
-          push: false
-          load: true
-          tags: |
-            ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
-            ${{ env.BACKEND_IMAGE_URL }}:latest
-      - name: Inspect release tag image
-        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Inspect latest tag image
-        run: docker image inspect ${{ env.BACKEND_IMAGE_URL }}:latest
-      - name: Push release tag to registry
-        run: docker push ${{ env.BACKEND_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Push latest tag to registry
-        run: docker push ${{ env.BACKEND_IMAGE_URL }}:latest
-
-  deploy-backend:
+  trigger-service-update:
     name: Run deployer
     runs-on: ubuntu-latest
-    needs:
-      - create-backend-image
     steps:
       - name: Send webhook for staging service update
         if: ${{ inputs.PRERELEASE == true }}

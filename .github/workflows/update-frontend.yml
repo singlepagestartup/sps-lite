@@ -7,9 +7,18 @@ on:
       - update-frontend
 
 jobs:
+  docker-image:
+    uses: ./.github/workflows/docker-image.yml
+    secrets: inherit
+    with:
+      TAG: ${{ github.sha }}
+      PRERELEASE: false
+
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
+    needs:
+      - docker-image
     with:
       SLEEP_TIME: 0
       TAG: ${{ github.sha }}

@@ -11,65 +11,10 @@ on:
         required: true
         type: boolean
 
-env:
-  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation
-
 jobs:
-  create-documentation-image:
-    name: Documentation version
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./documentation
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Login to registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          logout: false
-      - if: ${{ inputs.PRERELEASE == true }}
-        name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./documentation
-          push: false
-          load: true
-          tags: |
-            ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
-          build-args: |
-            DOCUMENTATION_GOOGLE_TAG_MANAGER_ID=${{ secrets.DOCUMENTATION_GOOGLE_TAG_MANAGER_ID }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./documentation
-          push: false
-          load: true
-          tags: |
-            ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
-            ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
-          build-args: |
-            DOCUMENTATION_GOOGLE_TAG_MANAGER_ID=${{ secrets.DOCUMENTATION_GOOGLE_TAG_MANAGER_ID }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Inspect image
-        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
-      - name: Inspect image
-        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
-      - name: Push to registry
-        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}:${{ inputs.TAG }}
-      - if: ${{ inputs.PRERELEASE == false }}
-        name: Push to registry
-        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}:latest
-
-  deploy-documentation:
+  trigger-service-update:
     name: Run deployer
     runs-on: ubuntu-latest
-    needs:
-      - create-documentation-image
     steps:
       - if: ${{ inputs.PRERELEASE == true }}
         name: Send webhook for staging service update
