@@ -4,7 +4,8 @@
   "scripts": {
     "backend:build": "nx run backend:build",
     "backend:debug": "nx run backend:debug",
-    "backend:develop": "nx run backend:develop",
+    "backend:dev": "nx run backend:dev",
+    "backend:start": "nx run backend:start",
     "format": "nx format:write --all",
     "frontend:build": "npm run frontend:prepare && nx run frontend:build",
     "frontend:dev": "npm run frontend:prepare && nx run frontend:dev",

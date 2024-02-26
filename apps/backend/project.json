@@ -4,15 +4,18 @@
   "sourceRoot": "apps/backend",
   "projectType": "application",
   "targets": {
-    "develop": {
+    "dev": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/backend/.env",
-        "cwd": ".",
+        "cwd": "apps/backend",
         "commands": [
           {
-            "command": "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+            "command": "npx nx run backend:plugins:build"
+          },
+          {
+            "command": "node ../../node_modules/@strapi/strapi/bin/strapi.js develop"
           }
         ]
       }
@@ -22,6 +25,84 @@
       "options": {
         "parallel": false,
         "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
+        "commands": [
+          {
+            "command": "npx nx run backend:plugins:build"
+          },
+          {
+            "command": "node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+          }
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
+        "commands": [
+          {
+            "command": "npx nx run backend:plugins:build"
+          },
+          {
+            "command": "node ../../node_modules/@strapi/strapi/bin/strapi.js build"
+          }
+        ],
+        "assets": ["apps/backend/src/public"]
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
+        "commands": [
+          {
+            "command": "node ../../node_modules/@strapi/strapi/bin/strapi.js start"
+          }
+        ],
+        "assets": ["apps/backend/src/public"]
+      }
+    },
+    "plugins:develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": true,
+        "envFile": "apps/backend/.env",
+        "cwd": "apps/backend",
+        "commands": [
+          {
+            "command": "cd src/plugins/sps-billing && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-subscription && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-ecommerce && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-migrate && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-crm && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-notification && npm run develop"
+          },
+          {
+            "command": "cd src/plugins/sps-website-builder && npm run develop"
+          }
+        ]
+      }
+    },
+    "plugins:build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": ".env",
         "cwd": "apps/backend",
         "commands": [
           {
@@ -44,42 +125,7 @@
           },
           {
             "command": "cd src/plugins/sps-website-builder && npm run build"
-          },
-          {
-            "command": "node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
           }
-        ]
-      }
-    },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "cd apps/backend && node ../../node_modules/@strapi/strapi/bin/strapi.js build"
-        ],
-        "assets": ["apps/backend/src/public"]
-      }
-    },
-    "tsc": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "platform": "node",
-        "outputPath": "apps/backend/dist",
-        "tsConfig": "apps/backend/tsconfig.json",
-        "main": "apps/backend/index.ts",
-        "assets": ["apps/backend/src/public"]
-      }
-    },
-    "start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          "rm -rf apps/backend/dist",
-          "npx nx run backend:build",
-          "mv apps/backend/dist/build apps/backend/dist/apps/backend/build",
-          "node apps/backend/dist/apps/backend/index.js"
         ]
       }
     },

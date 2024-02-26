@@ -31,13 +31,14 @@ COPY . .
 
 RUN npm install
 RUN npm run frontend:build
+RUN npm run backend:build
 
 EXPOSE 3000
+EXPOSE 1337
 
 # Running the app
 RUN ["chmod", "-R", "777", "/usr/src/app"]
 RUN ["chmod", "+x", "/usr/src/app/start.sh"]
-# RUN ["chmod", "+x", "/usr/src/app/build-start.sh"]
-# RUN ["chmod", "+x", "/usr/src/app/build-static-icp.sh"]
+RUN ["chmod", "-R", "777", "/usr/src/app/apps/backend/public"]
 
 CMD ["tail", "-f", "/dev/null"]
