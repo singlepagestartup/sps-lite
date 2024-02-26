@@ -1,4 +1,4 @@
-name: Sub env
+name: Ansible
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./deployment/ansible
+        working-directory: ./tools/deployer/ansible
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -62,6 +62,8 @@ jobs:
             "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
             "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
             "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
+            "SEED_ENTITIES ${{ secrets.SEED_ENTITIES }}"\
+            "UPLOAD_PROVIDER ${{ secrets.UPLOAD_PROVIDER }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
             "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
@@ -86,6 +88,9 @@ jobs:
             "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
             "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
             "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
+            "ZERO_X_PROCESSING_TEST_PAYMENTS ${{ secrets.ZERO_X_PROCESSING_TEST_PAYMENTS }}" \
+            "ZERO_X_PROCESSING_SHOP_ID ${{ secrets.ZERO_X_PROCESSING_SHOP_ID }}" \
+            "ZERO_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.ZERO_X_PROCESSING_WEBHOOK_PASSWORD }}" \
           )
 
           for secret in "${secrets[@]}"; do

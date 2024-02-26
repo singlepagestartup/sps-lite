@@ -1,0 +1,58 @@
+{
+  "root": true,
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "globals": {
+    "afterAll": "readonly",
+    "afterEach": "readonly",
+    "beforeAll": "readonly",
+    "beforeEach": "readonly",
+    "strapi": "readonly",
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "jest": "readonly"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "comma-dangle": ["off"],
+    "quotes": ["warn", "double"],
+    "semi": ["off"],
+    "no-duplicate-imports": "error",
+    "@typescript-eslint/ban-ts-comment": ["warn"],
+    "@typescript-eslint/no-var-requires": ["off"],
+    "@typescript-eslint/no-unused-vars": ["off"],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/ban-types": "warn",
+    "no-prototype-builtins": ["warn"],
+    "no-unused-vars": "warn",
+    "no-self-assign": "warn",
+    "no-undef": "warn",
+    "no-useless-escape": "warn",
+    "no-dupe-keys": "warn"
+  },
+  "overrides": [
+    {
+      "files": "**/**.(js|jsx|ts|tsx)"
+    }
+  ]
+}

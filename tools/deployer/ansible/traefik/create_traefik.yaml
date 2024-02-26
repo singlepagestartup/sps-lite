@@ -1,0 +1,90 @@
+---
+- name: Create Traefik
+  hosts: all
+  become: yes
+  vars:
+    - traefik_username: "{{ TRAEFIK_USERNAME }}"
+    - traefik_password: "{{ TRAEFIK_PASSWORD }}"
+  tasks:
+    - name: Get ansible ansible_system_vendor
+      set_fact:
+        ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
+
+    - name: Copy create_traefik_user.sh file
+      ansible.builtin.template:
+        src: create_traefik_user.sh
+        dest: /home/code/create_traefik_user.sh
+        mode: 0755
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Wait for apt lock
+      shell: while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+
+    - name: Install prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+        force_apt_get: yes
+      register: result
+      until: result is not failed
+      retries: 5
+      delay: 5
+      loop:
+        - apache2-utils
+
+    - name: Get basic auth
+      shell:
+        cmd: "/home/code/create_traefik_user.sh {{ traefik_username }} {{ traefik_password }}"
+      register: basic_auth
+
+    - name: Check is traefik.yml file exists
+      stat:
+        path: "/home/code/traefik.yml"
+      register: traefik_yml
+
+    - name: Copy traefik.yml file
+      ansible.builtin.template:
+        src: traefik.yml.j2
+        dest: /home/code/traefik.yml
+      when: traefik_yml.stat.exists == False
+
+    - name: Copy docker-compose file
+      ansible.builtin.template:
+        src: docker-compose.traefik.yaml.j2
+        dest: /home/code/docker-compose.traefik.yaml
+      vars:
+        TRAEFIK_BASIC_AUTH: "{{ basic_auth.stdout }}"
+
+    - name: If DigitalOcean
+      block:
+        - name: Install jsondiff Python package
+          pip:
+            name: jsondiff
+            executable: pip3
+            extra_args: --no-build-isolation --break-system-packages
+      when: ansible_system_vendor == "DigitalOcean"
+
+    - name: If not DigitalOcean
+      block:
+        - name: Install jsondiff Python package
+          pip:
+            name: jsondiff
+            executable: pip3
+            extra_args: --no-build-isolation
+      when: ansible_system_vendor != "DigitalOcean"
+
+    - name: Run Traefik service
+      community.docker.docker_stack:
+        state: present
+        name: traefik
+        compose:
+          - /home/code/docker-compose.traefik.yaml
+
+    - name: Delete artifacts
+      file:
+        path: "/home/code/{{ item }}"
+        state: absent
+      loop:
+        - "create_traefik_user.sh"

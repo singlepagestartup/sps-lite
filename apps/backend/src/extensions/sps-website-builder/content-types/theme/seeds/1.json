@@ -1,0 +1,151 @@
+{
+  "id": 1,
+  "theme": {
+    "colors": {
+      "primary": {
+        "50": "#FFF9CC",
+        "300": "#FFF297",
+        "400": "#FFDF01",
+        "500": "#FFCF01",
+        "600": "#FFC501",
+        "700": "#FFB201",
+        "900": "#FFA101"
+      }
+    }
+  },
+  "createdAt": "2024-02-01T09:01:22.593Z",
+  "updatedAt": "2024-02-09T15:15:07.585Z",
+  "publishedAt": "2023-02-13T16:01:44.156Z",
+  "fonts": [
+    {
+      "id": 16,
+      "weight": "medium",
+      "style": "normal",
+      "variant": "default",
+      "media": {
+        "id": 186,
+        "name": "montserrat-medium.ttf",
+        "alternativeText": null,
+        "caption": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "montserrat_medium_300f932fd9",
+        "ext": ".ttf",
+        "mime": "font/ttf",
+        "size": 198.1,
+        "url": "/uploads/montserrat_medium_300f932fd9.ttf",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "folderPath": "/",
+        "createdAt": "2024-02-09T15:15:05.452Z",
+        "updatedAt": "2024-02-09T15:15:05.452Z"
+      }
+    },
+    {
+      "id": 18,
+      "weight": "light",
+      "style": "normal",
+      "variant": "default",
+      "media": {
+        "id": 187,
+        "name": "montserrat-light.ttf",
+        "alternativeText": null,
+        "caption": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "montserrat_light_077aa196a9",
+        "ext": ".ttf",
+        "mime": "font/ttf",
+        "size": 198.07,
+        "url": "/uploads/montserrat_light_077aa196a9.ttf",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "folderPath": "/",
+        "createdAt": "2024-02-09T15:15:05.890Z",
+        "updatedAt": "2024-02-09T15:15:05.890Z"
+      }
+    },
+    {
+      "id": 17,
+      "weight": "semi_bold",
+      "style": "normal",
+      "variant": "default",
+      "media": {
+        "id": 188,
+        "name": "montserrat-semibold.ttf",
+        "alternativeText": null,
+        "caption": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "montserrat_semibold_54dccff04b",
+        "ext": ".ttf",
+        "mime": "font/ttf",
+        "size": 198.2,
+        "url": "/uploads/montserrat_semibold_54dccff04b.ttf",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "folderPath": "/",
+        "createdAt": "2024-02-09T15:15:06.382Z",
+        "updatedAt": "2024-02-09T15:15:06.382Z"
+      }
+    },
+    {
+      "id": 19,
+      "weight": "regular",
+      "style": "normal",
+      "variant": "default",
+      "media": {
+        "id": 189,
+        "name": "montserrat-regular.ttf",
+        "alternativeText": null,
+        "caption": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "montserrat_regular_1c2d2da3ba",
+        "ext": ".ttf",
+        "mime": "font/ttf",
+        "size": 197.98,
+        "url": "/uploads/montserrat_regular_1c2d2da3ba.ttf",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "folderPath": "/",
+        "createdAt": "2024-02-09T15:15:06.882Z",
+        "updatedAt": "2024-02-09T15:15:06.882Z"
+      }
+    },
+    {
+      "id": 20,
+      "weight": "bold",
+      "style": "normal",
+      "variant": "default",
+      "media": {
+        "id": 190,
+        "name": "montserrat-bold.ttf",
+        "alternativeText": null,
+        "caption": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "montserrat_bold_ae79ce7067",
+        "ext": ".ttf",
+        "mime": "font/ttf",
+        "size": 198.07,
+        "url": "/uploads/montserrat_bold_ae79ce7067.ttf",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "folderPath": "/",
+        "createdAt": "2024-02-09T15:15:07.492Z",
+        "updatedAt": "2024-02-09T15:15:07.492Z"
+      }
+    }
+  ]
+}

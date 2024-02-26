@@ -1,0 +1,103 @@
+{
+  "collectionName": "components_elements_inputs",
+  "info": {
+    "displayName": "Input",
+    "icon": "text-height",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "placeholder": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "listbox",
+        "radio-group",
+        "switch",
+        "file",
+        "range",
+        "date"
+      ],
+      "default": "text",
+      "required": true
+    },
+    "is_required": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "value": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.input-option"
+    },
+    "label": {
+      "type": "richtext"
+    },
+    "class_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "checkbox",
+        "date",
+        "datetime-local",
+        "email",
+        "file",
+        "hidden",
+        "number",
+        "password",
+        "radio",
+        "range",
+        "tel",
+        "text",
+        "textarea",
+        "time",
+        "select"
+      ],
+      "required": true,
+      "default": "text"
+    },
+    "multiple": {
+      "type": "boolean"
+    },
+    "min": {
+      "type": "float"
+    },
+    "max": {
+      "type": "float"
+    },
+    "step": {
+      "type": "float"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "extra_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    }
+  }
+}

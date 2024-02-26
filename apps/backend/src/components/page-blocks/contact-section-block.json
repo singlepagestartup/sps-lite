@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_page_blocks_contact_section_blocks",
+  "info": {
+    "displayName": "Contact Section Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "anchor": {
+      "type": "text"
+    },
+    "class_name": {
+      "type": "text"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["centered"],
+      "default": "centered",
+      "required": true
+    },
+    "media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": false
+    },
+    "buttons_arrays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.buttons-array"
+    },
+    "additional_media": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": true
+    },
+    "form": {
+      "relation": "oneToOne",
+      "target": "plugin::sps-crm.form",
+      "type": "relation"
+    }
+  }
+}

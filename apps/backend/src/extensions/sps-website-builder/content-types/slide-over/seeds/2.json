@@ -1,0 +1,48 @@
+{
+  "id": 2,
+  "variant": "right-side-half-width",
+  "title": "Shopping Cart",
+  "uid": "shopping-cart",
+  "class_name": null,
+  "createdAt": "2024-02-01T09:01:22.563Z",
+  "updatedAt": "2024-02-09T15:15:01.532Z",
+  "publishedAt": "2024-01-10T11:47:04.683Z",
+  "locale": "en",
+  "localizations": [],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.shopping-cart-block",
+      "id": 9,
+      "anchor": null,
+      "variant": "simple",
+      "title": "Cart",
+      "subtitle": null,
+      "description": null,
+      "class_name": null
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "title": "Public Page Layout With Sidebar",
+      "uid": "public-page-layout-with-sidebar",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-02-01T09:01:22.285Z",
+      "updatedAt": "2024-02-09T15:14:39.896Z",
+      "publishedAt": "2023-04-08T05:04:56.606Z",
+      "locale": "en"
+    },
+    {
+      "id": 2,
+      "title": "Public Page Layout",
+      "uid": "public-page-layout",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-02-01T09:01:22.297Z",
+      "updatedAt": "2024-02-09T15:14:39.946Z",
+      "publishedAt": "2023-04-20T03:23:38.447Z",
+      "locale": "en"
+    }
+  ]
+}

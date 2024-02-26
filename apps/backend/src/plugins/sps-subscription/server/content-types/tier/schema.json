@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_subscription_tiers",
+  "info": {
+    "singularName": "tier",
+    "pluralName": "tiers",
+    "displayName": "Tier",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": ["one-time", "regularly"]
+    },
+    "period": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "attachments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-subscription.attachment",
+      "mappedBy": "tiers",
+      "private": true
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-subscription.subscription",
+      "mappedBy": "tier"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::sps-subscription.attribute",
+      "inversedBy": "tiers"
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-billing.currency",
+      "inversedBy": "tiers"
+    }
+  }
+}

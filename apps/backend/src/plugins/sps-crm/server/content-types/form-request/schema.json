@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_crm_form_requests",
+  "info": {
+    "singularName": "form-request",
+    "pluralName": "form-requests",
+    "displayName": "Form Request",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "inputs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.request-input"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "form_requests"
+    },
+    "form": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::sps-crm.form",
+      "inversedBy": "form_requests"
+    }
+  }
+}

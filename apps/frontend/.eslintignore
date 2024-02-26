@@ -1,0 +1,11 @@
+node_modules
+.next
+.storybook
+public
+out
+playwright-report
+test-results
+coverage
+playwright-report
+**/artifacts
+themes/

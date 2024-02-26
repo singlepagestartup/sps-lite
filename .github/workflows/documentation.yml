@@ -7,60 +7,26 @@ on:
       TAG:
         required: true
         type: string
-      ENVIRONMENT:
+      PRERELEASE:
         required: true
-        type: string
-
-env:
-  DOCUMENTATION_IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_documentation:latest
+        type: boolean
 
 jobs:
-  create-documentation-image:
-    if: ${{ inputs.ENVIRONMENT == 'staging' }}
-    name: Documentation version
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./documentation
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Login to registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          logout: false
-      - name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./documentation
-          push: false
-          load: true
-          tags: ${{ env.DOCUMENTATION_IMAGE_URL }}
-      - name: Inspect image
-        run: docker image inspect ${{ env.DOCUMENTATION_IMAGE_URL }}
-      - name: Push to registry
-        run: docker push ${{ env.DOCUMENTATION_IMAGE_URL }}
-
-  deploy-documentation:
+  trigger-service-update:
     name: Run deployer
     runs-on: ubuntu-latest
-    needs:
-      - create-documentation-image
     steps:
-      - name: Send webhook for staging service update
-        if: ${{ inputs.ENVIRONMENT == 'staging' }}
+      - if: ${{ inputs.PRERELEASE == true }}
+        name: Send webhook for staging service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_STAGING_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.STAGING_PORTAINER_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
-      - name: Send webhook for production service update
-        if: ${{ inputs.ENVIRONMENT == 'production' }}
+      - if: ${{ inputs.PRERELEASE == false }}
+        name: Send webhook for production service update
         uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.PORTAINER_PRODUCTION_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
+          url: ${{ secrets.PORTAINER_DOCUMENTATION_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000

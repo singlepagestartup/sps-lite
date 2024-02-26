@@ -1,0 +1,222 @@
+{
+  "id": 1,
+  "title": "Public Page Navbar",
+  "uid": "public-page-navbar",
+  "variant": "boxed",
+  "class_name": null,
+  "position": "fixed",
+  "side": "top",
+  "createdAt": "2024-02-01T09:01:22.378Z",
+  "updatedAt": "2024-02-12T22:09:31.030Z",
+  "publishedAt": "2023-04-08T05:04:22.148Z",
+  "locale": "en",
+  "localizations": [
+    {
+      "id": 2,
+      "title": "Barre de navigation des pages publiques",
+      "uid": "barre-de-navigation-des-pages-publiques",
+      "variant": "boxed",
+      "class_name": null,
+      "position": "fixed",
+      "side": "top",
+      "createdAt": "2024-02-01T09:01:22.393Z",
+      "updatedAt": "2024-02-09T15:14:41.760Z",
+      "publishedAt": "2024-01-12T23:50:09.029Z",
+      "locale": "fr"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.navbar-block",
+      "id": 7,
+      "variant": "simple-links-on-left",
+      "description": null,
+      "class_name": null,
+      "logotype": {
+        "id": 15,
+        "title": null,
+        "url": "/",
+        "media": [
+          {
+            "id": 166,
+            "name": "sps-full dark.svg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 4725,
+            "height": 729,
+            "formats": null,
+            "hash": "sps_full_dark_db65b16c09",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 16.9,
+            "url": "/uploads/sps_full_dark_db65b16c09.svg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-02-09T15:14:41.118Z",
+            "updatedAt": "2024-02-09T15:14:41.118Z"
+          }
+        ],
+        "additional_media": null
+      },
+      "buttons": [
+        {
+          "id": 98,
+          "url": "/",
+          "description": null,
+          "variant": "ghost",
+          "title": "Main",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 96,
+          "url": "/page-with-sidebar-layout",
+          "description": null,
+          "variant": "ghost",
+          "title": "Sidebar",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 100,
+          "url": null,
+          "description": null,
+          "variant": "ghost",
+          "title": "Flyout",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": {
+            "id": 2,
+            "variant": "simple",
+            "title": "Hero Flyout",
+            "uid": "hero-flyout",
+            "class_name": null,
+            "createdAt": "2024-02-01T09:01:22.242Z",
+            "updatedAt": "2024-02-09T22:29:32.386Z",
+            "publishedAt": "2023-05-11T18:03:51.955Z",
+            "locale": "en"
+          }
+        },
+        {
+          "id": 97,
+          "url": "?opened_modal=this-is-modal",
+          "description": null,
+          "variant": "ghost",
+          "title": "Modal",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 99,
+          "url": "?opened_slide_over=this-is-slide-over",
+          "description": null,
+          "variant": "ghost",
+          "title": "Slide Over",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 122,
+          "url": "/ecommerce",
+          "description": null,
+          "variant": "ghost",
+          "title": "Ecommerce",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        }
+      ],
+      "additional_buttons": [
+        {
+          "id": 101,
+          "url": "https://github.com/singlepagestartup/sps-lite",
+          "description": null,
+          "variant": "ghost",
+          "title": "GitHub",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 103,
+          "url": "?opened_slide_over=shopping-cart",
+          "description": null,
+          "variant": "ghost",
+          "title": "Cart",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 102,
+          "url": null,
+          "description": null,
+          "variant": "locale",
+          "title": null,
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": {
+            "id": 4,
+            "variant": "simple",
+            "title": "Locales",
+            "uid": "locales-flyout",
+            "class_name": null,
+            "createdAt": "2024-02-04T09:31:41.332Z",
+            "updatedAt": "2024-02-09T22:29:42.078Z",
+            "publishedAt": "2023-05-11T16:28:36.473Z",
+            "locale": "en"
+          }
+        }
+      ],
+      "extra_buttons": []
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "title": "Public Page Layout With Sidebar",
+      "uid": "public-page-layout-with-sidebar",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-02-01T09:01:22.285Z",
+      "updatedAt": "2024-02-09T15:14:39.896Z",
+      "publishedAt": "2023-04-08T05:04:56.606Z",
+      "locale": "en"
+    },
+    {
+      "id": 2,
+      "title": "Public Page Layout",
+      "uid": "public-page-layout",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-02-01T09:01:22.297Z",
+      "updatedAt": "2024-02-09T15:14:39.946Z",
+      "publishedAt": "2023-04-20T03:23:38.447Z",
+      "locale": "en"
+    }
+  ]
+}

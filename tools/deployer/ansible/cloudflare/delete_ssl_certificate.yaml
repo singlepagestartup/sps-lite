@@ -1,0 +1,47 @@
+---
+- name: Delete SSL certificate
+  hosts: all
+  become: yes
+  vars:
+    - account_email: "{{ CLOUDFLARE_ACCOUNT_EMAIL }}"
+    - account_api_key: "{{ CLOUDFLARE_ACCOUNT_API_KEY }}"
+    - domain: "{{ DOMAIN }}"
+    - state: "{{ STATE }}"
+    - service_url: "{{ SERVICE_URL }}"
+  tasks:
+    - name: Check is certificate_id file exists
+      stat:
+        path: "/home/code/certs/{{ service_url }}_certificate_id"
+      register: certificate_id_file
+
+    - name: Revoke certificates
+      block:
+        - name: Get certificate_id
+          shell:
+            cmd: "cat /home/code/certs/{{ service_url }}_certificate_id"
+          register: certificate_id
+
+        - name: Delete SSL certificate from Cloudflare
+          retries: 10
+          delay: 30
+          register: cloudflare_cert
+          until: cloudflare_cert.status == 200 or cloudflare_cert.status == 400
+          uri:
+            url: "https://api.cloudflare.com/client/v4/certificates/{{ certificate_id.stdout }}"
+            status_code: 200,400
+            method: DELETE
+            headers:
+              Content-Type: "application/json"
+              X-Auth-Key: "{{ account_api_key }}"
+              X-Auth-Email: "{{ account_email }}"
+
+        - name: Delete service certificates
+          file:
+            path: "/home/code/certs/{{ item }}"
+            state: absent
+          loop:
+            - "{{ service_url }}.crt"
+            - "{{ service_url }}.csr"
+            - "{{ service_url }}.key"
+            - "{{ service_url }}_certificate_id"
+      when: certificate_id_file.stat.exists == True

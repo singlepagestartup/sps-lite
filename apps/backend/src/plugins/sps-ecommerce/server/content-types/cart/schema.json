@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sps_ecommerce_carts",
+  "info": {
+    "singularName": "cart",
+    "pluralName": "carts",
+    "displayName": "Cart",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "cart"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::sps-ecommerce.order",
+      "mappedBy": "cart"
+    }
+  }
+}

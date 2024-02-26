@@ -1,0 +1,12 @@
+# Add files here to ignore them from prettier formatting
+dist
+/coverage
+/.nx/cache
+.next
+node_modules
+.cache
+apps/bdd
+deployment
+documentation
+seeds
+*.feature

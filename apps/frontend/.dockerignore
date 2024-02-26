@@ -1,0 +1,15 @@
+package-lock.json
+yarn.lock
+node_modules
+.next
+.env
+.env.local
+.dfx
+out
+*.key
+*.pem
+*-wallet.txt
+.env.cloudflare
+coverage
+playwright-report
+**/artifacts

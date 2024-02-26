@@ -1,0 +1,8 @@
+- name: Update packages
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: false
+        cache_valid_time: 3600

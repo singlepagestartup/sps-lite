@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - /var/lib/docker/volumes/postgres_data/_data:/var/lib/postgresql/data
+    networks:
+      - traefik_overlay
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: XXXXXXXXXXXXXXXXXX
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      # labels:
+      # - traefik.enable=true
+      # - traefik.http.services.postgres.loadbalancer.server.port=6543
+      # - traefik.http.routers.portainer.entrypoints=websecure
+      # - traefik.tcp.routers.postgres.rule=HostSNI(`*`)
+      # - traefik.http.routers.postgres.tls=true
+      # - traefik.http.routers.portainer.rule=Host(`p.yourstartup.com`)
+      # - traefik.docker.network=traefik_overlay
+
+networks:
+  traefik_overlay:
+    external: true
