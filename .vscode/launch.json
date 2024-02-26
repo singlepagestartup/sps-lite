@@ -14,9 +14,9 @@
       "name": "backend",
       "runtimeVersion": "18.17",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "debug", "--preserve-symlinks"],
-      "cwd": "${workspaceFolder}/backend",
-      "localRoot": "${workspaceFolder}/backend",
+      "runtimeArgs": ["run-script", "backend:debug", "--preserve-symlinks"],
+      "cwd": "${workspaceFolder}",
+      "localRoot": "${workspaceFolder}",
       "skipFiles": ["<node_internals>/**"]
     },
     // This is for debugging the frontend server side

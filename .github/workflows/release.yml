@@ -6,9 +6,18 @@ on:
       - released
 
 jobs:
+  docker-image:
+    uses: ./.github/workflows/docker-image.yml
+    secrets: inherit
+    with:
+      TAG: ${{ github.event.release.tag_name }}
+      PRERELEASE: ${{ github.event.release.prerelease }}
+
   update-backend:
     uses: ./.github/workflows/backend.yml
     secrets: inherit
+    needs:
+      - docker-image
     with:
       TAG: ${{ github.event.release.tag_name }}
       PRERELEASE: ${{ github.event.release.prerelease }}

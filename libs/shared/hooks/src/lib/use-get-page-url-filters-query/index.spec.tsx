@@ -4,7 +4,7 @@ import QueryString from "qs";
 import { useGetPageUrlFiltersQuery } from ".";
 // import { ReduxProvider } from "../../redux/index";
 import { setupServer } from "msw/node";
-import { BACKEND_URL } from "@sps/utils";
+import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import { HttpResponse, http } from "msw";
 // import type { IModel as IBackendApiPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
 

@@ -62,3 +62,4 @@ Thumbs.db
 
 # Next.js
 .next
+package-lock.json

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { gzip } from "pako";
 import QueryString from "qs";
 const frontendApiStaticModels: any[] = [];
-import { BACKEND_URL } from "@sps/utils";
+import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 let generateStaticParams;
 const pageBlockPopulate = {};
 

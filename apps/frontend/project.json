@@ -25,10 +25,10 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-utils-backend:build"
+            "command": "nx run @sps/shared-frontend-utils-server:build"
           },
           {
-            "command": "NODE_ENV=development node dist/libs/shared/backend/utils/src/lib/create-tailwind-theme.js"
+            "command": "NODE_ENV=development node dist/libs/shared/frontend/utils/server/src/lib/create-tailwind-theme.js"
           }
         ]
       }

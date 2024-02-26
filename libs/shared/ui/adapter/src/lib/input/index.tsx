@@ -12,7 +12,7 @@ import React, {
 import { useController, useFormContext } from "react-hook-form";
 // import { useTranslations } from "@sps/hooks";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
-import { downloadBackendUploadFile } from "@sps/utils";
+import { downloadBackendUploadFile } from "@sps/shared-frontend-utils-client";
 import TextInput from "./text";
 import RadioInput from "./radio-group";
 import SelectInput from "./select";
@@ -220,7 +220,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         setInitFiles(initialValue);
       }
     }
-  }, [JSON.stringify(initialValue), inputRef?.current]);
+  }, [JSON.stringify(initialValue), inputRef]);
 
   /**
    * If using in repeatable component
@@ -240,8 +240,6 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const passProps = useGetFilteredInputProps(props);
 
   function onFileInputChange(e: ChangeEvent | Event, files: File[]) {
-    console.log("🚀 ~ onFileInputChange ~ files:", files);
-
     const uploadFiles = ctxProps.getValues("files");
 
     ctxProps.setValue("files", {

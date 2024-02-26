@@ -2,7 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import * as nextNavigation from "next/navigation";
 import { useGetPageUrlModelId } from ".";
 import { setupServer } from "msw/node";
-import { BACKEND_URL } from "@sps/utils";
+import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import { HttpResponse, http } from "msw";
 // import type { IModel as IBackendApiPage } from "@sps/sps-website-builder-frontend/lib/redux/entities/page/interfaces";
 type IBackendApiPage = any;

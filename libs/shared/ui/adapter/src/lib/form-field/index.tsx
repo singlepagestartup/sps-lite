@@ -2,14 +2,14 @@
 
 import { FC, HTMLInputTypeAttribute, useMemo } from "react";
 import { Label } from "../label";
-import { getFileUrl, cn } from "@sps/utils";
+import { getFileUrl, cn } from "@sps/shared-frontend-utils-client";
 import { Input } from "../input";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
 // import { useTranslations } from "@sps/hooks";
 import { Button } from "../button";
 import Image from "next/image";
-import type { IModel as IBackendFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import type { IModel as IBackendFile } from "@sps/sps-file-storage-models-file-contracts";
 
 export interface Props {
   label?: string | null;
@@ -69,18 +69,7 @@ export const FormField = (props: Props) => {
         <Label htmlFor={htmlNodeId}>{props.label}</Label>
       ) : null}
       <div className="reset-button-container">
-        <Button
-          ui="shadcn"
-          onClick={reset}
-          variant="reset"
-          size="sm"
-          className="px-0"
-        >
-          {ResetIcon ? (
-            <div className="icon">
-              <ResetIcon className="w-4 h-5" />
-            </div>
-          ) : null}
+        <Button ui="sps" onClick={reset} data-ui-variant="reset">
           {typeof translate === "function" ? translate("Reset") : "Reset"}
         </Button>
       </div>

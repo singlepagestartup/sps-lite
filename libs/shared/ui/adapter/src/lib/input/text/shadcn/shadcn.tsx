@@ -1,4 +1,4 @@
-import { cn } from "@sps/utils";
+import { cn } from "@sps/shared-frontend-utils-client";
 import * as React from "react";
 
 export interface InputProps

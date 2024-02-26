@@ -26,6 +26,16 @@ body {
   font-family: var(--font-primary);
 }
 
+.font-default {
+  font-family: var(--font-default);
+}
+
+// for safari
+.text-wrap {
+  white-space: normal;
+  word-break: break-word;
+}
+
 input,
 button,
 textarea {
@@ -60,6 +70,11 @@ input[type="number"] {
   }
 
   @import "../../../libs/shared/ui/adapter/src/index";
-  @import "../../../libs/modules/sps-website-builder/frontend/src/lib/index";
-  @import "../../../libs/modules/sps-crm/frontend/src/lib/index";
+  @import "../../../libs/modules/sps-website-builder/frontend/root/src/index";
+  @import "../../../libs/modules/sps-billing/frontend/root/src/index";
+  @import "../../../libs/modules/sps-crm/frontend/root/src/index";
+  @import "../../../libs/modules/sps-ecommerce/frontend/root/src/index";
+  @import "../../../libs/modules/sps-file-storage/frontend/root/src/index";
+  @import "../../../libs/modules/sps-rbac/frontend/root/src/index";
+  @import "../../../libs/modules/sps-subscription/frontend/root/src/index";
 }
