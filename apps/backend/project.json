@@ -22,10 +22,31 @@
       "options": {
         "parallel": false,
         "envFile": "apps/backend/.env",
-        "cwd": ".",
+        "cwd": "apps/backend",
         "commands": [
           {
-            "command": "cd apps/backend && node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
+            "command": "cd src/plugins/sps-billing && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-subscription && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-ecommerce && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-migrate && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-crm && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-notification && npm run build"
+          },
+          {
+            "command": "cd src/plugins/sps-website-builder && npm run build"
+          },
+          {
+            "command": "node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
           }
         ]
       }

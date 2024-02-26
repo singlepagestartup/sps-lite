@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  // "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "CommonJS",
     "moduleResolution": "Node",
@@ -15,7 +15,7 @@
     "noImplicitThis": true,
     "allowJs": true,
     "outDir": "dist",
-    // "rootDir": ".",
+    "rootDir": ".",
     "sourceMap": true,
     "types": ["node", "jest", "../../node_modules/@strapi/strapi"]
   },
