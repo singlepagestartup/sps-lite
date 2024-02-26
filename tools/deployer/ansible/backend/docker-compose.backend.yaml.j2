@@ -7,6 +7,7 @@ services:
       - traefik_overlay
     env_file:
       - ./{{ SERVICE_NAME }}.env
+    command: "sh -c './start.sh frontend'"
     deploy:
       update_config:
         order: start-first
