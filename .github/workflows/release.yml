@@ -37,10 +37,3 @@ jobs:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
       PRERELEASE: ${{ github.event.release.prerelease }}
-
-  update-documentation:
-    uses: ./.github/workflows/documentation.yml
-    secrets: inherit
-    with:
-      TAG: ${{ github.event.release.tag_name }}
-      PRERELEASE: ${{ github.event.release.prerelease }}
