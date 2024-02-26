@@ -9,7 +9,7 @@ module.exports = {
   plugins: {
     tailwindcss: {
       config: path.join(
-        "../../dist/libs/shared/backend/utils/src/lib/tailwind/tailwind.config.js",
+        "../../dist/libs/shared/frontend/utils/server/src/lib/tailwind/tailwind.config.js",
       ),
     },
     autoprefixer: {},
