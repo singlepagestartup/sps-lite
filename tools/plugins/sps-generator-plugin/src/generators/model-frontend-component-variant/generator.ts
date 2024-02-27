@@ -1,8 +1,10 @@
 import {
   formatFiles,
   generateFiles,
+  GeneratorCallback,
   getProjects,
   names,
+  runTasksInSerial,
   Tree,
 } from "@nx/devkit";
 import * as path from "path";
@@ -13,9 +15,10 @@ import type { SupportedStyles } from "@nx/react/typings/style";
 import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import * as fs from "fs/promises";
 import { exec } from "child_process";
+import { FsTree } from "nx/src/generators/tree";
 
 export async function modelFrontendComponentVariantGenerator(
-  tree: Tree,
+  tree: FsTree,
   options: ModelFrontendComponentVariantGeneratorSchema,
 ) {
   const variant = options.name;
@@ -65,27 +68,33 @@ export async function modelFrontendComponentVariantGenerator(
     model,
   });
 
-  await addVariantToRoot({ libraryOptions, variant, projectRoot, tree, type });
-  await addInterfaceToRoot({
-    libraryOptions,
-    variant,
-    projectRoot,
-    tree,
-    type,
-  });
-  await addStylesToRoot({ projectRoot, tree, type, variant });
-
-  await new Promise((resolve) => {
-    exec(`npx nx format:write`, (err, stdout, stderr) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log(stdout);
-      resolve("");
+  return async () => {
+    await addVariantToRoot({
+      libraryOptions,
+      variant,
+      projectRoot,
+      tree,
+      type,
     });
-  });
+    await addInterfaceToRoot({
+      libraryOptions,
+      variant,
+      projectRoot,
+      tree,
+      type,
+    });
+    await addStylesToRoot({ projectRoot, tree, type, variant });
+    await new Promise((resolve) => {
+      exec(`npx nx format:write`, (err, stdout, stderr) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(stdout);
+        resolve("");
+      });
+    });
+  };
 }
 
 export default modelFrontendComponentVariantGenerator;
