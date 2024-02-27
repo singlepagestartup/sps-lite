@@ -17,45 +17,45 @@ tmp
 # Strapi
 ############################
 
-.cache
-build
-dist
-seeds
-public/uploads/*
+apps/backend/.cache
+apps/backend/build
+apps/backend/dist
+apps/backend/**/seeds
+apps/backend/public/uploads/*
 
 ############################
 # Bdd
 # Playwright
 ############################
-reports
-schreenshots
-traces
+apps/bdd/artifacts/reports
+apps/bdd/artifacts/schreenshots
+apps/bdd/artifacts/traces
 
 ############################
 # Db
 # Postgres
 ############################
-db_data
+apps/db/db_data
 
 ############################
 # Documentation
 # Docusaurus
 ############################
-static
-.docusarus
+apps/documentation/static
+apps/documentation/.docusarus
 
 ############################
 # Frontend
 # Next.js
 ############################
-.next
-out
-build
-.dfx
+apps/frontend/.next
+apps/frontend/out
+apps/frontend/build
+apps/frontend/.dfx
 
 ############################
 # Frontend
 # Next.js
 # Tailwind
 ############################
-themes/theme.json
+apps/frontend/themes/theme.json
