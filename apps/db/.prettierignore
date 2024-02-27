@@ -1,5 +1,4 @@
 ############################
-# Docusaurus
+# Postgres
 ############################
-static
-.docusaurus
+db_data

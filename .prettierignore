@@ -1,12 +1,13 @@
-# Add files here to ignore them from prettier formatting
-dist
-/coverage
-/.nx/cache
-.next
+############################
+# Node.js
+############################
+
 node_modules
-.cache
-apps/bdd
-deployment
-documentation
-seeds
-*.feature
+
+############################
+# NX
+############################
+
+.nx
+dist
+tmp

@@ -1,5 +1,6 @@
 ############################
-# Docusaurus
+# Playwright
 ############################
-static
-.docusaurus
+reports
+schreenshots
+traces

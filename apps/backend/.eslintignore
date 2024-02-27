@@ -1,5 +1,9 @@
+############################
+# Strapi
+############################
+
 .cache
 build
-**/node_modules/**
 dist
 **/seeds
+public/uploads/*
