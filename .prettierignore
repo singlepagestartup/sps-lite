@@ -22,3 +22,40 @@ build
 dist
 seeds
 public/uploads/*
+
+############################
+# Bdd
+# Playwright
+############################
+reports
+schreenshots
+traces
+
+############################
+# Db
+# Postgres
+############################
+db_data
+
+############################
+# Documentation
+# Docusaurus
+############################
+static
+.docusarus
+
+############################
+# Frontend
+# Next.js
+############################
+.next
+out
+build
+.dfx
+
+############################
+# Frontend
+# Next.js
+# Tailwind
+############################
+themes/theme.json
