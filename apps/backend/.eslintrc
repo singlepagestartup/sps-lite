@@ -1,18 +1,11 @@
 {
-  "root": true,
   "env": {
     "commonjs": true,
     "es2021": true,
     "jest": true,
     "node": true
   },
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": ["../../.eslintrc.json"],
   "parserOptions": {
     "ecmaVersion": "latest"
   },
