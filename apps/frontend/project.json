@@ -8,7 +8,6 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "envFile": "apps/frontend/.env.production",
         "commands": [
           {
             "command": "nx run @sps/shared-frontend-utils-server:build"

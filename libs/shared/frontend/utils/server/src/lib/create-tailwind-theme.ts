@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as fs from "fs/promises";
+import * as fsExtra from "fs-extra";
 import { createWriteStream } from "fs";
 import path from "path";
 import {
@@ -18,19 +19,21 @@ const requiredFontWeights = ["Light", "Regular", "Medium", "SemiBold", "Bold"];
 
 export const getThemeFromBackend = async () => {
   const nodeEnv = process.env["NODE_ENV"];
-  const envFilePath = path.join(
-    frontendDir,
-    `.env.${nodeEnv ?? "local" ?? "dev"}`,
-  );
+  const envFilePathBasedOnNodeEnv = path.join(frontendDir, `.env.${nodeEnv}`);
+
+  let envFilePath = "";
+  if (fsExtra.existsSync(envFilePathBasedOnNodeEnv)) {
+    envFilePath = envFilePathBasedOnNodeEnv;
+  } else {
+    envFilePath = path.join(frontendDir, `.env.development`);
+  }
 
   require("dotenv").config({
     path: envFilePath,
   });
 
-  console.log(
-    "NEXT_PUBLIC_BACKEND_URL",
-    process.env["NEXT_PUBLIC_BACKEND_URL"],
-  );
+  const backendUrl = process.env["NEXT_PUBLIC_BACKEND_URL"];
+  console.log(`🚀 ~ getThemeFromBackend ~ backendUrl:`, backendUrl);
 
   const themeData = await axios
     .get(
