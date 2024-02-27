@@ -7,7 +7,7 @@ import { prepareMetamask } from "@synthetixio/synpress/helpers";
 export const test = base.extend<{
   context: BrowserContext;
 }>({
-  context: async ({}, use) => {
+  context: async (ctx, use) => {
     // required for synpress
     (global as any).expect = expect;
     // download metamask
