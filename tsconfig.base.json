@@ -14,15 +14,9 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "paths": {
-      "@sps/hooks": [
-        "libs/shared/hooks/src/index.ts"
-      ],
-      "@sps/shadcn": [
-        "libs/shared/ui/shadcn/src/index.ts"
-      ],
-      "@sps/shadcn/server": [
-        "libs/shared/ui/shadcn/src/server.ts"
-      ],
+      "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
+      "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
+      "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
       "@sps/shared-frontend-utils-client": [
         "libs/shared/frontend/utils/client/src/index.ts"
       ],
@@ -521,9 +515,7 @@
       "@sps/sps-subscription-models-tier-frontend-redux": [
         "libs/modules/sps-subscription/models/tier/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-utils-backend": [
-        "libs/shared/backend/utils/src/index.ts"
-      ],
+      "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
@@ -1295,26 +1287,12 @@
       "@sps/sps-website-builder-page-blocks-contracts": [
         "libs/modules/sps-website-builder/models/page-blocks/contracts/src/index.ts"
       ],
-      "@sps/store": [
-        "libs/shared/store/src/index.ts"
-      ],
-      "@sps/ui-adapter": [
-        "libs/shared/ui/adapter/src/index.ts"
-      ],
-      "@sps/ui-adapter/server": [
-        "libs/shared/ui/adapter/src/server.ts"
-      ]
+      "@sps/store": ["libs/shared/store/src/index.ts"],
+      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
+      "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"]
     },
-    "typeRoots": [
-      "./node_modules/@types",
-      "types"
-    ]
+    "typeRoots": ["./node_modules/@types", "types"]
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ],
-  "include": [
-    "**/*"
-  ]
+  "exclude": ["node_modules", "tmp"],
+  "include": ["**/*"]
 }

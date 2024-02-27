@@ -62,12 +62,7 @@ const config = {
       appName: env("PROJECT_NAME", "Single Page Startup"),
       registerByEmailCode: false,
       authFactors: {
-        factors: [
-          { handler: "auth.callback" },
-          { handler: "auth.phoneConfirmation" },
-          { handler: "auth.emailConfirmation" },
-          { handler: "user.checkOtp" },
-        ],
+        factors: [{ handler: "auth.callback" }, { handler: "auth.phoneConfirmation" }, { handler: "auth.emailConfirmation" }, { handler: "user.checkOtp" }],
       },
     },
   },
@@ -109,11 +104,7 @@ const config = {
         factors: [
           { handler: "auth.callback" },
           {
-            handler: [
-              "auth.emailConfirmation",
-              "auth.phoneConfirmation",
-              "user.checkOtp",
-            ],
+            handler: ["auth.emailConfirmation", "auth.phoneConfirmation", "user.checkOtp"],
             type: "parallel",
           },
         ],

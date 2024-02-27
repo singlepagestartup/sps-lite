@@ -19,19 +19,9 @@ module.exports = ({ env }) => {
             directives: {
               "script-src": ["'self'", "editor.unlayer.com"],
               "frame-src": ["'self'", "editor.unlayer.com"],
-              "img-src": [
-                "'self'",
-                "blob:",
-                "data:",
-                env("AWS_S3_URL", "*.selcdn.ru"),
-              ],
+              "img-src": ["'self'", "blob:", "data:", env("AWS_S3_URL", "*.selcdn.ru")],
               "connect-src": ["'self'", "https:"],
-              "media-src": [
-                "'self'",
-                "blob:",
-                "data:",
-                env("AWS_S3_URL", "*.selcdn.ru"),
-              ],
+              "media-src": ["'self'", "blob:", "data:", env("AWS_S3_URL", "*.selcdn.ru")],
               upgradeInsecureRequests: null,
             },
           },
@@ -44,13 +34,7 @@ module.exports = ({ env }) => {
             directives: {
               "script-src": ["'self'", "editor.unlayer.com"],
               "frame-src": ["'self'", "editor.unlayer.com"],
-              "img-src": [
-                "'self'",
-                "data:",
-                "cdn.jsdelivr.net",
-                "strapi.io",
-                "s3.amazonaws.com",
-              ],
+              "img-src": ["'self'", "data:", "cdn.jsdelivr.net", "strapi.io", "s3.amazonaws.com"],
             },
           },
         },
@@ -62,13 +46,7 @@ module.exports = ({ env }) => {
     {
       name: "strapi::cors",
       config: {
-        headers: [
-          "Content-Type",
-          "Authorization",
-          "Origin",
-          "Accept",
-          "Next-Auth-Factor-Key",
-        ],
+        headers: ["Content-Type", "Authorization", "Origin", "Accept", "Next-Auth-Factor-Key"],
       },
     },
     "strapi::poweredBy",
