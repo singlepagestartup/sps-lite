@@ -5,6 +5,7 @@ Feature: Admin can login to dashboard
     Given I am a guest user
 
     When I am on "__env.BACKEND_URL__/admin" page
+    # When I am on "__env.BACKEND_URL__/admin" page
     And I fill in the following details:
       | locator             | value                         | type     |
       | [name="email"]      | __env.STRAPI_ADMIN_LOGIN__    | text     |
