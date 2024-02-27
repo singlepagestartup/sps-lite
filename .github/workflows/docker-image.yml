@@ -40,6 +40,12 @@ jobs:
           load: true
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
+          build-args: |
+            NEXT_PUBLIC_BACKEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.STAGING_NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_FRONTEND_URL }}
+            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.STAGING_NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.STAGING_NEXT_PUBLIC_SENTRY_DSN }}
       - if: ${{ inputs.PRERELEASE == false }}
         name: Build image
         uses: docker/build-push-action@v2
@@ -50,6 +56,12 @@ jobs:
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
             ${{ env.IMAGE_URL }}:latest
+          build-args: |
+            NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_BACKEND_TOKEN=${{ secrets.NEXT_PUBLIC_BACKEND_TOKEN }}
+            NEXT_PUBLIC_FRONTEND_URL=${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
+            NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
       - name: Inspect release tag image
         run: docker image inspect ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
       - if: ${{ inputs.PRERELEASE == false }}
