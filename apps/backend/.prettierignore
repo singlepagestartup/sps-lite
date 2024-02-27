@@ -1,9 +1,0 @@
-############################
-# Strapi
-############################
-
-.cache
-build
-dist
-**/seeds
-public/uploads/*

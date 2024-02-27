@@ -11,3 +11,14 @@ node_modules
 .nx
 dist
 tmp
+
+############################
+# Backend
+# Strapi
+############################
+
+.cache
+build
+dist
+seeds
+public/uploads/*
