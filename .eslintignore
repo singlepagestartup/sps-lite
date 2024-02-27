@@ -22,6 +22,7 @@ apps/backend/build
 apps/backend/dist
 apps/backend/**/seeds
 apps/backend/public/uploads/*
+apps/backend/types/*
 
 ############################
 # Bdd
