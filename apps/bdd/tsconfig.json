@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "lib": ["ES2020"],
-    "target": "ES2019",
+    "lib": ["ES2021"],
+    "target": "ES2021",
     "incremental": true,
     "resolveJsonModule": true,
     "noEmitOnError": true,
