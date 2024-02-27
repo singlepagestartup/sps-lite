@@ -78,8 +78,8 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "ignorePath": "apps/frontend/.eslintignore",
-        "quiet": true
+        "ignorePath": ".eslintignore",
+        "quiet": false
       }
     }
   },
