@@ -4,9 +4,7 @@
     "module": "CommonJS",
     "lib": ["ES2021"],
     "target": "ES2021",
-    "incremental": true,
-    "resolveJsonModule": true,
-    "noEmitOnError": true,
-    "noImplicitThis": true
-  }
+    "incremental": false
+  },
+  "include": ["**/*.ts"]
 }
