@@ -356,8 +356,8 @@ function Parent({
     children && Array.isArray(children)
       ? children
       : children
-      ? [children]
-      : null;
+        ? [children]
+        : null;
 
   return (
     <span>

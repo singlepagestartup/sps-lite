@@ -1,15 +1,11 @@
 module.exports = {
-  "{apps,libs,tools}/**/*.{js,jsx,ts,tsx}": [
+  "**/*": "npx prettier . --write --ignore-unknown",
+  "{apps,libs,tools}/**/*.{js,jsx,ts,tsx,feature,json}": [
     (files) => {
-      return `nx format:write`;
+      return ``;
     },
     // (files) => {
     //   return `nx affected:lint --files=${files.join(",")}`;
     // },
-  ],
-  "{apps,libs,tools}/**/*.{json}": [
-    (files) => {
-      return `nx format:write`;
-    },
   ],
 };

@@ -30,9 +30,8 @@ export async function getBackendData(props: IFetchProps) {
   };
 
   if (process.env["NEXT_PUBLIC_BACKEND_TOKEN"]) {
-    headers[
-      "Authorization"
-    ] = `Bearer ${process.env["NEXT_PUBLIC_BACKEND_TOKEN"]}`;
+    headers["Authorization"] =
+      `Bearer ${process.env["NEXT_PUBLIC_BACKEND_TOKEN"]}`;
   }
 
   const backendData = await fetch(`${url}?${base64CompressedQuery}`, {

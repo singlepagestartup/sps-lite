@@ -10,5 +10,6 @@ Feature: Admin can login to dashboard
       | [name="email"]      | __env.STRAPI_ADMIN_LOGIN__    | text     |
       | [name="password"]   | __env.STRAPI_ADMIN_PASSWORD__ | text     |
       | [name="rememberMe"] | checked                       | checkbox |
+
     And I click "Login" button
     Then I can read "Welcome 👋" text

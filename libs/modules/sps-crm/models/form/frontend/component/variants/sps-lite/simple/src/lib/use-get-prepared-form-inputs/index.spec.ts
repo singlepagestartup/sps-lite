@@ -347,7 +347,7 @@ describe("useGetPreparedFormInputs", () => {
           get: (key: keyof typeof queryParams) => {
             return queryParams[key]; //?
           },
-        } as any),
+        }) as any,
     );
 
     const textInput: Omit<IBackendComponentInput, "__component"> = {

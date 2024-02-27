@@ -5,5 +5,5 @@
   "singleQuote": false,
   "jsxSingleQuote": false,
   "bracketSpacing": true,
-  "plugins": []
+  "plugins": ["prettier-plugin-gherkin"]
 }
