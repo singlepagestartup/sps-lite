@@ -76,9 +76,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "ignorePath": ".eslintignore",
+        "eslintConfig": "{projectRoot}/.eslintrc.json",
         "quiet": false
       }
     }

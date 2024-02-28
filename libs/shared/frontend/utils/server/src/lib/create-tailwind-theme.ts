@@ -32,9 +32,6 @@ export const getThemeFromBackend = async () => {
     path: envFilePath,
   });
 
-  const backendUrl = process.env["NEXT_PUBLIC_BACKEND_URL"];
-  console.log(`🚀 ~ getThemeFromBackend ~ backendUrl:`, backendUrl);
-
   const themeData = await axios
     .get(
       `${process.env["NEXT_PUBLIC_BACKEND_URL"]}/api/sps-website-builder/theme?populate[fonts][populate]=%2A`,

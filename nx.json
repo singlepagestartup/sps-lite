@@ -6,11 +6,12 @@
       "dependsOn": ["^build"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "ignorePath": ".eslintignore",
+        "eslintConfig": "{projectRoot}/.eslintrc.json",
+        "quiet": false
+      }
     },
     "@nx/jest:jest": {
       "cache": true,
@@ -49,7 +50,6 @@
     ],
     "sharedGlobals": []
   },
-  "pluginsConfig": {},
   "generators": {
     "@nx/react": {
       "application": {
@@ -65,5 +65,13 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }
