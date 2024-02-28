@@ -74,14 +74,7 @@
         "jestConfig": "apps/frontend/jest.config.ts"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "ignorePath": ".eslintignore",
-        "eslintConfig": "{projectRoot}/.eslintrc.json",
-        "quiet": false
-      }
-    }
+    "lint": {}
   },
   "tags": []
 }

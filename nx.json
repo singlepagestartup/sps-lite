@@ -1,17 +1,18 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"]
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "ignorePath": ".eslintignore",
         "eslintConfig": "{projectRoot}/.eslintrc.json",
         "quiet": false
       }
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
     },
     "@nx/jest:jest": {
       "cache": true,
@@ -50,22 +51,7 @@
     ],
     "sharedGlobals": []
   },
-  "generators": {
-    "@nx/react": {
-      "application": {
-        "babel": true
-      },
-      "library": {
-        "unitTestRunner": "jest"
-      }
-    },
-    "@nx/next": {
-      "application": {
-        "style": "scss",
-        "linter": "eslint"
-      }
-    }
-  },
+  "generators": {},
   "plugins": [
     {
       "plugin": "@nx/eslint/plugin",
