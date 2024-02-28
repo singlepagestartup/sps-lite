@@ -4,16 +4,7 @@
   "sourceRoot": "libs/modules/sps-rbac/models/user/contracts/root/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-rbac/models/user/contracts/root",
-        "main": "libs/modules/sps-rbac/models/user/contracts/root/src/index.ts",
-        "tsConfig": "libs/modules/sps-rbac/models/user/contracts/root/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-rbac/models/user/contracts/root/*.md"]
-      }
-    },
+    "tsc:build": {},
     "lint": {},
     "test": {}
   },

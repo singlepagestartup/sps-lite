@@ -4,16 +4,7 @@
   "sourceRoot": "libs/modules/sps-rbac/models/user/contracts/extended/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-rbac/models/user/contracts/extended",
-        "main": "libs/modules/sps-rbac/models/user/contracts/extended/src/index.ts",
-        "tsConfig": "libs/modules/sps-rbac/models/user/contracts/extended/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-rbac/models/user/contracts/extended/*.md"]
-      }
-    },
+    "tsc:build": {},
     "lint": {},
     "test": {}
   },

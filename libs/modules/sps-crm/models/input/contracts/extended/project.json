@@ -4,16 +4,7 @@
   "sourceRoot": "libs/modules/sps-crm/models/input/contracts/extended/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-crm/models/input/contracts/extended",
-        "main": "libs/modules/sps-crm/models/input/contracts/extended/src/index.ts",
-        "tsConfig": "libs/modules/sps-crm/models/input/contracts/extended/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-crm/models/input/contracts/extended/*.md"]
-      }
-    },
+    "tsc:build": {},
     "lint": {},
     "test": {}
   },

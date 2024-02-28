@@ -4,16 +4,7 @@
   "sourceRoot": "libs/modules/sps-crm/models/review/contracts/root/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-crm/models/review/contracts/root",
-        "main": "libs/modules/sps-crm/models/review/contracts/root/src/index.ts",
-        "tsConfig": "libs/modules/sps-crm/models/review/contracts/root/tsconfig.lib.json",
-        "assets": ["libs/modules/sps-crm/models/review/contracts/root/*.md"]
-      }
-    },
+    "tsc:build": {},
     "lint": {},
     "test": {}
   },
