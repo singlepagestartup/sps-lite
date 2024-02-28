@@ -25,7 +25,7 @@ async function generateSiteMap() {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
      ${pages
-       .map((page) => {
+       ?.map((page) => {
          return `
            <url>
                <loc>${`${FRONTEND_URL}${page.url}`}</loc>
