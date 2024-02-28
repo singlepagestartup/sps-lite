@@ -4,29 +4,9 @@
   "sourceRoot": "libs/modules/sps-website-builder/models/locale/contracts/root/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-website-builder/models/locale/contracts/root",
-        "main": "libs/modules/sps-website-builder/models/locale/contracts/root/src/index.ts",
-        "tsConfig": "libs/modules/sps-website-builder/models/locale/contracts/root/tsconfig.lib.json",
-        "assets": [
-          "libs/modules/sps-website-builder/models/locale/contracts/root/*.md"
-        ]
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "libs/modules/sps-website-builder/models/locale/contracts/root/jest.config.ts"
-      }
-    }
+    "tsc:build": {},
+    "lint": {},
+    "test": {}
   },
   "tags": []
 }

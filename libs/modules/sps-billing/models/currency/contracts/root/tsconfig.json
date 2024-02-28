@@ -9,8 +9,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "files": [],
-  "include": [],
   "references": [
     {
       "path": "./tsconfig.lib.json"
@@ -18,5 +16,7 @@
     {
       "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "include": [],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

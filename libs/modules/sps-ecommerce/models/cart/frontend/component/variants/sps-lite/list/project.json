@@ -5,16 +5,7 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "libs/modules/sps-ecommerce/models/cart/frontend/component/variants/sps-lite/list/jest.config.ts"
-      }
-    }
+    "lint": {},
+    "test": {}
   }
 }
