@@ -66,6 +66,10 @@
     ],
     "sharedGlobals": []
   },
-  "generators": {},
+  "generators": {
+    "@nx/react": {
+      "library": {}
+    }
+  },
   "plugins": []
 }

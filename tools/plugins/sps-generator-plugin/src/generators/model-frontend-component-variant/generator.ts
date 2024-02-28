@@ -4,18 +4,21 @@ import {
   GeneratorCallback,
   getProjects,
   names,
+  offsetFromRoot,
   runTasksInSerial,
   Tree,
+  updateProjectConfiguration,
 } from "@nx/devkit";
 import * as path from "path";
 import { ModelFrontendComponentVariantGeneratorSchema } from "./schema";
-import type { Linter } from "@nx/eslint";
+import { lintInitGenerator, type Linter } from "@nx/eslint";
 import { libraryGenerator } from "@nx/react";
 import type { SupportedStyles } from "@nx/react/typings/style";
 import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import * as fs from "fs/promises";
 import { exec } from "child_process";
 import { FsTree } from "nx/src/generators/tree";
+import * as eslint from "@nx/eslint";
 
 export async function modelFrontendComponentVariantGenerator(
   tree: FsTree,
@@ -53,7 +56,7 @@ export async function modelFrontendComponentVariantGenerator(
   const libraryOptions = {
     name,
     directory,
-    linter: "eslint" as Linter.EsLint,
+    linter: "none" as Linter.EsLint,
     minimal: true,
     style: "none" as SupportedStyles,
     projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
@@ -61,11 +64,23 @@ export async function modelFrontendComponentVariantGenerator(
 
   await libraryGenerator(tree, libraryOptions);
 
+  const offsetFromRootProject = offsetFromRoot(directory);
+  updateProjectConfiguration(tree, name, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
   generateFiles(tree, path.join(__dirname, "files"), directory, {
     template: "",
     variant,
     module,
     model,
+    offset_from_root: offsetFromRootProject,
   });
 
   return async () => {
