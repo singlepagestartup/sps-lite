@@ -1,7 +1,5 @@
 import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { UnlinkModelFrontendComponentVariantGeneratorSchema } from "./schema";
-import * as fs from "fs/promises";
-import { exec } from "child_process";
 
 export async function unlinkModelFrontendComponentVariantGenerator(
   tree: Tree,
@@ -46,17 +44,7 @@ export async function unlinkModelFrontendComponentVariantGenerator(
     type,
   });
 
-  await new Promise((resolve) => {
-    exec(`npx nx format:write`, (err, stdout, stderr) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log(stdout);
-      resolve("");
-    });
-  });
+  await formatFiles(tree);
 }
 
 export default unlinkModelFrontendComponentVariantGenerator;
@@ -77,14 +65,12 @@ async function removeStylesFromRoot({
   const rootProjectStylesPath =
     rootProjectPath.join("/") + `/src/lib/${type}/_index.scss`;
   let rootProjectStyles = await tree.read(rootProjectStylesPath).toString();
-
-  await fs.writeFile(
-    rootProjectStylesPath,
-    rootProjectStyles.replace(
-      `@import "../../../../variants/${type}/${variant}/src/index";`,
-      "",
-    ),
+  const removeImportScssOutput = rootProjectStyles.replace(
+    `@import "../../../../variants/${type}/${variant}/src/index";`,
+    "",
   );
+
+  tree.write(rootProjectStylesPath, removeImportScssOutput);
 }
 
 async function removeInterfaceFromRoot({
@@ -114,11 +100,11 @@ async function removeInterfaceFromRoot({
   const importInterface = rootProjectInterface.match(
     importInterfaceRegexPattern,
   );
-
-  await fs.writeFile(
-    rootProjectInterfacePath,
-    rootProjectInterface.replace(importInterface[0], ``),
+  const removeImportInterfaceOutput = rootProjectInterface.replace(
+    importInterface[0],
+    ``,
   );
+  tree.write(rootProjectInterfacePath, removeImportInterfaceOutput);
 
   rootProjectInterface = await tree.read(rootProjectInterfacePath).toString();
 
@@ -128,23 +114,23 @@ async function removeInterfaceFromRoot({
     .replace("as ", "")
     .replace(" }", "");
 
-  // const exportInterfaceRegexPattern = `/(([|][\s]?${interfaceName})|(${interfaceName}[\s][|]))/gm`;
-
   const preExportInterface = rootProjectInterface.match(`[|] ${interfaceName}`);
   const pastExportInterface = rootProjectInterface.match(
     `${interfaceName} [|]`,
   );
 
   if (preExportInterface) {
-    await fs.writeFile(
-      rootProjectInterfacePath,
-      rootProjectInterface.replace(preExportInterface[0], ``),
+    const removePreExportInterfaceOutput = rootProjectInterface.replace(
+      preExportInterface[0],
+      ``,
     );
+    tree.write(rootProjectInterfacePath, removePreExportInterfaceOutput);
   } else if (pastExportInterface) {
-    await fs.writeFile(
-      rootProjectInterfacePath,
-      rootProjectInterface.replace(pastExportInterface[0], ``),
+    const removePastExportInterfaceOutput = rootProjectInterface.replace(
+      pastExportInterface[0],
+      ``,
     );
+    tree.write(rootProjectInterfacePath, removePastExportInterfaceOutput);
   }
 }
 
@@ -169,17 +155,20 @@ async function removeVariantFromRootVariants({
     `import { Component as [a-zA-z]+ } from "${project.name}";`,
   );
   const importVariant = rootProjectVariants.match(importVariantRegexPattern);
-  await fs.writeFile(
-    rootProjectVariantsPath,
-    rootProjectVariants.replace(importVariant[0], ``),
+  const removeImportVariantOutput = rootProjectVariants.replace(
+    importVariant[0],
+    ``,
   );
+  tree.write(rootProjectVariantsPath, removeImportVariantOutput);
+
   rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
   const exportVariantRegexPattern = new RegExp(
     `(["])?${variant}(["])?: [a-zA-z]+([,])?`,
   );
   const exportVariant = rootProjectVariants.match(exportVariantRegexPattern);
-  await fs.writeFile(
-    rootProjectVariantsPath,
-    rootProjectVariants.replace(exportVariant[0], ``),
+  const removeExportVariantOutput = rootProjectVariants.replace(
+    exportVariant[0],
+    ``,
   );
+  tree.write(rootProjectVariantsPath, removeExportVariantOutput);
 }

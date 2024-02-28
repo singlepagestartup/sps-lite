@@ -1,14 +1,14 @@
 {
   "generators": {
-    "model-frontend-component-variant": {
-      "factory": "./src/generators/model-frontend-component-variant/generator",
-      "schema": "./src/generators/model-frontend-component-variant/schema.json",
-      "description": "model-frontend-component-variant generator"
+    "create-model-frontend-component-variant": {
+      "factory": "./src/generators/create-model-frontend-component-variant/generator",
+      "schema": "./src/generators/create-model-frontend-component-variant/schema.json",
+      "description": "create-model-frontend-component-variant generator"
     },
-    "unlink-model-frontend-component-variant": {
-      "factory": "./src/generators/unlink-model-frontend-component-variant/generator",
-      "schema": "./src/generators/unlink-model-frontend-component-variant/schema.json",
-      "description": "unlink-model-frontend-component-variant generator"
+    "remove-model-frontend-component-variant": {
+      "factory": "./src/generators/remove-model-frontend-component-variant/generator",
+      "schema": "./src/generators/remove-model-frontend-component-variant/schema.json",
+      "description": "remove-model-frontend-component-variant generator"
     }
   }
 }
