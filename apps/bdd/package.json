@@ -1,5 +1,6 @@
 {
   "name": "bdd",
+  "version": "1.0.0",
   "scripts": {
     "format": "npm run prettier:fix && npm run lint:fix",
     "lint": "eslint .",
