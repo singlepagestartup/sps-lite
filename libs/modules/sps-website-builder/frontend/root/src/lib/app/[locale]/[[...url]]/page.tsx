@@ -5,11 +5,11 @@ import { api } from "@sps/sps-website-builder-models-page-frontend-api";
 import { Component } from "@sps/sps-website-builder-models-page-frontend-component";
 
 export async function generateStaticParams() {
-  return api.server.getUrls();
+  return api.fetch.getUrls();
 }
 
 export async function generateMetadata(props: any) {
-  return api.server.generateMetadata(props);
+  return api.fetch.generateMetadata(props);
 }
 
 export async function Page(props: any) {

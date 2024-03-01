@@ -13,7 +13,7 @@ export default async function Server(props: {
 }) {
   const headersList = headers();
   const pathname = headersList.get("x-sps-website-builder-pathname") || "";
-  const data = await api.server.getByPageUrl({ url: pathname });
+  const data = await api.fetch.getByPageUrl({ url: pathname });
 
   const Comp = variants[data.variant as keyof typeof variants];
 

@@ -8,8 +8,8 @@ import {
   globalActionsStore,
 } from "@sps/store";
 
-const name = `sps-rbac/${api.client.reducerPath}`;
-const middlewares = [api.client.middleware];
+const name = `sps-rbac/${api.rtk.reducerPath}`;
+const middlewares = [api.rtk.middleware];
 const passToGlobalActionsStoreMiddleware =
   createPassToGlobalActionsStoreMiddleware({ name });
 
@@ -18,7 +18,7 @@ const store: any = configureStore({
     name,
   },
   reducer: {
-    [api.client.reducerPath]: api.client.reducer,
+    [api.rtk.reducerPath]: api.rtk.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

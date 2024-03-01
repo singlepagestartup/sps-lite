@@ -15,7 +15,7 @@ export default function Client(props: {
   const pathname = usePathname();
   const params = useParams();
 
-  const { data, error } = api.client.useGetByPageUrlQuery(
+  const { data, error } = api.rtk.useGetByPageUrlQuery(
     {
       url: pathname?.includes("/auth") ? "/auth" : pathname,
       ...params,

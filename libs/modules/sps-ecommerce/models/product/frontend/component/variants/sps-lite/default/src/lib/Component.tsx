@@ -13,11 +13,11 @@ export function Component(props: IComponentPropsExtended) {
   // const { me } = useMyProfile();
 
   const [incrementInCart, { data: incrementInCartData }] =
-    api.client.useIncrementInCartMutation();
+    api.rtk.useIncrementInCartMutation();
   const [decrementInCart, { data: decrementInCartData }] =
-    api.client.useDecrementInCartMutation();
+    api.rtk.useDecrementInCartMutation();
   const [removeFromCart, { data: removeFromCartData }] =
-    api.client.useRemoveFromCartMutation();
+    api.rtk.useRemoveFromCartMutation();
 
   const methods = useForm<any>({
     mode: "all",

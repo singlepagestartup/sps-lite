@@ -8,7 +8,7 @@ import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-c
 
 export function Component(props: IComponentPropsExtended) {
   const [createSubscription, { data: createSubscriptionData }] =
-    api.client.useSubscribeMutation();
+    api.rtk.useSubscribeMutation();
 
   const methods = useForm<any>({
     mode: "all",

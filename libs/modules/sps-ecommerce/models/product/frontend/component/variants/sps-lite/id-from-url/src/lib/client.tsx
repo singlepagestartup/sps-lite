@@ -11,7 +11,7 @@ export default function Client(props: IComponentProps) {
   const id = 1;
 
   const { data, isFetching, isLoading, isUninitialized } =
-    api.client.useFindOneQuery({
+    api.rtk.useFindOneQuery({
       id: id,
     });
 

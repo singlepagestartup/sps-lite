@@ -8,7 +8,7 @@ import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 
 export function Component(props: IComponentPropsExtended) {
   const [removeFromCart, { data: removeFromCartData }] =
-    api.client.useRemoveFromCartMutation();
+    api.rtk.useRemoveFromCartMutation();
 
   return (
     <div

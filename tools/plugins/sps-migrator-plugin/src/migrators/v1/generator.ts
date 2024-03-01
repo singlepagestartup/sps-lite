@@ -14,10 +14,6 @@ export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
   const apiProjects = [];
   projects.forEach((project) => {
     if (project.root.includes("/frontend/api")) {
-      if (!project.name.includes("order")) {
-        return;
-      }
-
       apiProjects.push(project);
     }
   });

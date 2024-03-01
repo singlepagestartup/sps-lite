@@ -8,7 +8,7 @@ import { Button } from "@sps/ui-adapter";
 import { Component as Input } from "@sps/sps-crm-models-input-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  const [createFormRequest, { data }] = api.client.useSubmitMutation();
+  const [createFormRequest, { data }] = api.rtk.useSubmitMutation();
 
   const methods = useForm<any>({
     mode: "all",

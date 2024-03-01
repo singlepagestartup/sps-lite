@@ -11,7 +11,7 @@ import { api } from "@sps/sps-subscription-models-tier-frontend-api";
 export default function Client(props: IComponentProps) {
   return <></>;
   // const { data, isFetching, isLoading, isUninitialized } =
-  //   api.client.useFindOneQuery({
+  //   api.rtk.useFindOneQuery({
   //     id: props.data.id,
   //   });
 

@@ -10,7 +10,7 @@ import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-c
 
 export function Component(props: IComponentPropsExtended) {
   const [singleStepCheckout, { data: singleStepCheckoutData }] =
-    api.client.useSingleStepCheckoutMutation();
+    api.rtk.useSingleStepCheckoutMutation();
 
   const methods = useForm<any>({
     mode: "all",

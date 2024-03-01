@@ -10,7 +10,7 @@ import { api } from "@sps/sps-subscription-models-attribute-key-frontend-api";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.client.useFindManyQuery({});
+    api.rtk.useFindManyQuery({});
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Skeleton {...props} />;

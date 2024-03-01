@@ -10,7 +10,7 @@ import { Component } from "./Component";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.client.useFindOneQuery({ id: props.data.id });
+    api.rtk.useFindOneQuery({ id: props.data.id });
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Skeleton {...props} />;

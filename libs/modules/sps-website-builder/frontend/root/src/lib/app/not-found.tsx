@@ -20,7 +20,7 @@ export async function NotFoundPage() {
   if (!pages?.length) {
     return <div>Not found</div>;
   }
-  const notFoundPage = await api.server.findOne({ id: pages[0].id });
+  const notFoundPage = await api.fetch.findOne({ id: pages[0].id });
 
   if (!notFoundPage || !notFoundPage.pageBlocks) {
     return <div>Not found</div>;

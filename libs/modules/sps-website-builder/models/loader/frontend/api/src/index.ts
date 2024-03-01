@@ -1,7 +1,7 @@
-import { api as client, subscription } from "./lib/client";
-import { api as server } from "./lib/server";
+import { api as rtk, subscription } from "./lib/rtk";
+import { api as fetch } from "./lib/fetch";
 export const api = {
-  client,
-  server,
+  rtk,
+  fetch,
   subscription,
 };

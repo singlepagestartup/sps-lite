@@ -7,7 +7,7 @@ import { api } from "@sps/sps-subscription-models-subscription-frontend-api";
 
 export function Component(props: IComponentPropsExtended) {
   const [updateByEmail, { data: updateByEmailData }] =
-    api.client.useUpdateByEmailMutation();
+    api.rtk.useUpdateByEmailMutation();
 
   const methods = useForm<any>({
     mode: "all",
