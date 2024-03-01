@@ -44,8 +44,6 @@ function renameClientToRtk(tree: Tree, projectRoot: string) {
   const rtkFolder = projectRoot + "/src/lib/rtk";
 
   tree.rename(clientFolder, rtkFolder);
-
-  tree.write(rtkFolder + "/index.ts", `export * from "./api";`);
 }
 
 function renameServerToFetch(tree: Tree, projectRoot: string) {
