@@ -43,5 +43,5 @@
       "x-dropdown": "projects"
     }
   },
-  "required": ["name", "project"]
+  "required": ["name", "project", "type"]
 }

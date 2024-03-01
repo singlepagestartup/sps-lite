@@ -5,6 +5,7 @@ import {
   names,
   offsetFromRoot,
   Tree,
+  updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import * as path from "path";
@@ -70,6 +71,14 @@ export async function createModelFrontendComponentVariantGenerator(
     },
   });
 
+  tree.delete(`${directory}/tsconfig.lib.json`);
+  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
+    const updatedJson = { ...json };
+    updatedJson.references = [];
+
+    return updatedJson;
+  });
+
   generateFiles(tree, path.join(__dirname, "files"), directory, {
     template: "",
     variant,
@@ -115,14 +124,14 @@ async function addVariantToRoot({
   const rootProjectVariantsPath =
     projectRoot.join("/") + `/src/lib/${type}/variants.ts`;
 
-  let rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
+  let rootProjectVariants = tree.read(rootProjectVariantsPath).toString();
 
   const capitalizedName = names(variant).className;
   const createdVariantInterface = `${capitalizedName}`;
   const importVariantOutput = `import { Component as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectVariants}`;
   tree.write(rootProjectVariantsPath, importVariantOutput);
 
-  rootProjectVariants = await tree.read(rootProjectVariantsPath).toString();
+  rootProjectVariants = tree.read(rootProjectVariantsPath).toString();
 
   const prevExport = rootProjectVariants.match(/export const variants = {/);
   const exportVariantOutput = rootProjectVariants.replace(
@@ -148,9 +157,7 @@ async function addInterfaceToRoot({
   const rootProjectInterfacesPath =
     projectRoot.join("/") + `/src/lib/${type}/interface.ts`;
 
-  let rootProjectInterfaces = await tree
-    .read(rootProjectInterfacesPath)
-    .toString();
+  let rootProjectInterfaces = tree.read(rootProjectInterfacesPath).toString();
 
   // add import to rootProjectInterfaces to the top of the file
   const capitalizedName = names(variant).className;
@@ -158,7 +165,7 @@ async function addInterfaceToRoot({
   const importInterfaceOutput = `import { IComponentProps as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectInterfaces}`;
   tree.write(rootProjectInterfacesPath, importInterfaceOutput);
 
-  rootProjectInterfaces = await tree.read(rootProjectInterfacesPath).toString();
+  rootProjectInterfaces = tree.read(rootProjectInterfacesPath).toString();
 
   const prevExport = rootProjectInterfaces.match(
     /export type IComponentProps =[\n]?[\s]?[\s]?[|]?/,
@@ -184,7 +191,7 @@ async function addStylesToRoot({
   const rootProjectStylesPath =
     projectRoot.join("/") + `/src/lib/${type}/_index.scss`;
 
-  let rootProjectStyles = await tree.read(rootProjectStylesPath).toString();
+  let rootProjectStyles = tree.read(rootProjectStylesPath).toString();
   const importStyles = `${rootProjectStyles}\n@import "../../../../variants/${type}/${variant}/src/index";`;
   tree.write(rootProjectStylesPath, importStyles);
 }

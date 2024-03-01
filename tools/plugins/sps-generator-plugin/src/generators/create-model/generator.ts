@@ -59,6 +59,22 @@ export async function createModelGenerator(
     module,
   });
 
+  await createFrontendRedux({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
+
+  await createFrontendRootComponent({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
+
   await formatFiles(tree);
 }
 
@@ -184,6 +200,131 @@ async function createFrontendApi({
     model_pluralized: modelNamePluralized,
     offset_from_root: offsetFromRootProject,
   });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    compilerOptions.types = ["node"];
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+}
+
+async function createFrontendRedux({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const apiLibraryName = `${baseName}-frontend-redux`;
+  const directory = `${baseDirectory}/${modelName}/frontend/redux`;
+  const modelNameCapialized = names(modelName).className;
+  const modelNamePluralized = modelName;
+
+  const offsetFromRootProject = offsetFromRoot(directory);
+
+  const libraryOptions = {
+    name: apiLibraryName,
+    directory,
+    linter: "none" as Linter.EsLint,
+    minimal: true,
+    style: "none" as SupportedStyles,
+    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
+    strict: true,
+  };
+
+  await reactLibraryGenerator(tree, libraryOptions);
+
+  updateProjectConfiguration(tree, apiLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
+  generateFiles(tree, path.join(__dirname, `files/frontend/redux`), directory, {
+    template: "",
+    module,
+    model: modelName,
+    model_capitalized: modelNameCapialized,
+    model_pluralized: modelNamePluralized,
+    offset_from_root: offsetFromRootProject,
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    compilerOptions.types = ["node"];
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+}
+
+async function createFrontendRootComponent({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const apiLibraryName = `${baseName}-frontend-component`;
+  const directory = `${baseDirectory}/${modelName}/frontend/component/root`;
+  const modelNameCapialized = names(modelName).className;
+  const modelNamePluralized = modelName;
+
+  const offsetFromRootProject = offsetFromRoot(directory);
+
+  const libraryOptions = {
+    name: apiLibraryName,
+    directory,
+    linter: "none" as Linter.EsLint,
+    minimal: true,
+    style: "none" as SupportedStyles,
+    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
+    strict: true,
+  };
+
+  await reactLibraryGenerator(tree, libraryOptions);
+
+  updateProjectConfiguration(tree, apiLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/frontend/component/root`),
+    directory,
+    {
+      template: "",
+      module,
+      model: modelName,
+      model_capitalized: modelNameCapialized,
+      model_pluralized: modelNamePluralized,
+      offset_from_root: offsetFromRootProject,
+    },
+  );
 
   updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
     const compilerOptions = json.compilerOptions;
