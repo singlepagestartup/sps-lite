@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "v1": {
+      "factory": "./src/migrators/v1/generator",
+      "schema": "./src/migrators/v1/schema.json",
+      "description": "v1 generator"
+    }
+  }
+}

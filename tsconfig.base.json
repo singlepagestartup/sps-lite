@@ -368,6 +368,9 @@
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
+      "@sps/sps-migrator-plugin": [
+        "tools/plugins/sps-migrator-plugin/src/index.ts"
+      ],
       "@sps/sps-rbac-frontend": [
         "libs/modules/sps-rbac/frontend/root/src/index.ts"
       ],

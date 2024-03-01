@@ -1,0 +1,43 @@
+{
+  "name": "@sps/sps-migrator-plugin",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/plugins/sps-migrator-plugin/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/plugins/sps-migrator-plugin",
+        "main": "tools/plugins/sps-migrator-plugin/src/index.ts",
+        "tsConfig": "tools/plugins/sps-migrator-plugin/tsconfig.lib.json",
+        "assets": [
+          "tools/plugins/sps-migrator-plugin/*.md",
+          {
+            "input": "./tools/plugins/sps-migrator-plugin/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/plugins/sps-migrator-plugin/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/plugins/sps-migrator-plugin",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/plugins/sps-migrator-plugin",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": []
+}
