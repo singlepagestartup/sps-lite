@@ -1,4 +1,11 @@
-import { formatFiles, getProjects, Tree } from "@nx/devkit";
+import {
+  formatFiles,
+  getProjects,
+  readCachedProjectGraph,
+  readProjectConfiguration,
+  readProjectsConfigurationFromProjectGraph,
+  Tree,
+} from "@nx/devkit";
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
@@ -7,7 +14,7 @@ export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
   const apiProjects = [];
   projects.forEach((project) => {
     if (project.root.includes("/frontend/api")) {
-      if (!project.name.includes("invoice")) {
+      if (!project.name.includes("order")) {
         return;
       }
 
@@ -15,7 +22,6 @@ export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
     }
   });
 
-  // tree.rename()
   for (const project of apiProjects) {
     renameClientToRtk(tree, project.root);
     renameServerToFetch(tree, project.root);
@@ -25,11 +31,39 @@ export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
 
     updateClientExportToRtk(tree, project.root);
     updateServerExportToFetch(tree, project.root);
+
+    const graph = readCachedProjectGraph();
+    const dependenciesProjectNames = Object.keys(graph.dependencies);
+    const toUpdateImportsProjects = [];
+
+    dependenciesProjectNames.forEach((dependencyProjectName) => {
+      graph.dependencies[dependencyProjectName].forEach((dependency) => {
+        if (dependency.target === project.name) {
+          toUpdateImportsProjects.push(dependency.source);
+        }
+      });
+    });
+
+    for (const toUpdateImportsProject of toUpdateImportsProjects) {
+      const toUpdateImportsProjectConfig = readProjectConfiguration(
+        tree,
+        toUpdateImportsProject,
+      );
+
+      const projectFiles = getAllFiles({
+        tree,
+        root: toUpdateImportsProjectConfig.root,
+      });
+
+      for (const projectFile of projectFiles) {
+        if (projectFile.content?.includes(project.name)) {
+          updateApiImport(tree, projectFile, project);
+        }
+      }
+    }
   }
 
   await formatFiles(tree);
-
-  // console.log(`🚀 ~ v1Generator ~ projects:`, projects);
 }
 
 export default v1Generator;
@@ -126,4 +160,54 @@ function updateServerExportToFetch(tree: Tree, projectRoot: string) {
   const replacedExport = fileContent.replace(/server,/g, `fetch,`);
 
   tree.write(filePath, replacedExport);
+}
+
+function getAllFiles({
+  tree,
+  root,
+}: {
+  tree: Tree;
+  root: string;
+}): { path: string; content: string }[] {
+  const files = [];
+
+  const projectFiles = tree.children(root);
+  projectFiles.forEach((file) => {
+    if (tree.isFile(`${root}/${file}`)) {
+      files.push({
+        path: `${root}/${file}`,
+        content: tree.read(`${root}/${file}`).toString("utf-8"),
+      });
+    }
+
+    files.push([...getAllFiles({ tree, root: `${root}/${file}` })]);
+  });
+
+  const flatted = files.flat(Infinity);
+  return flatted;
+}
+
+function updateApiImport(
+  tree: Tree,
+  file: { path: string; content: string },
+  project: any,
+) {
+  if (!file.content.includes(`import { api } from "${project.name}";`)) {
+    return;
+  }
+
+  if (file.content.includes(`await api.server.`)) {
+    const replaceApiServer = file.content.replace(
+      /await api.server./g,
+      `await api.fetch.`,
+    );
+
+    tree.write(file.path, replaceApiServer);
+  }
+
+  if (file.content.includes(`api.client.`)) {
+    const replaceApiClient = file.content.replace(/api.client./g, `api.rtk.`);
+
+    tree.write(file.path, replaceApiClient);
+  }
 }

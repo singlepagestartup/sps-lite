@@ -8,7 +8,7 @@ import { Button, Input } from "@sps/ui-adapter";
 import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  const [checkout, { data: checkoutData }] = api.client.useCheckoutMutation();
+  const [checkout, { data: checkoutData }] = api.rtk.useCheckoutMutation();
 
   const methods = useForm<any>({
     mode: "all",

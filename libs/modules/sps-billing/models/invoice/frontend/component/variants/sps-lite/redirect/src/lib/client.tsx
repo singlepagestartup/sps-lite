@@ -10,7 +10,7 @@ import { api } from "@sps/sps-billing-models-invoice-frontend-api";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.client.useFindOneQuery({
+    api.rtk.useFindOneQuery({
       id: props.data.id,
     });
 
