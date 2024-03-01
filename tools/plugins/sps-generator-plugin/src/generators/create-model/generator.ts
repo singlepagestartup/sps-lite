@@ -2,11 +2,21 @@ import {
   addProjectConfiguration,
   formatFiles,
   generateFiles,
+  names,
+  offsetFromRoot,
   Tree,
+  updateJson,
+  updateProjectConfiguration,
 } from "@nx/devkit";
 import * as path from "path";
 import { CreateModelGeneratorSchema } from "./schema";
-import { libraryGenerator } from "@nx/js";
+import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
+import {
+  libraryGenerator as reactLibraryGenerator,
+  SupportedStyles,
+} from "@nx/react";
+import { Linter } from "@nx/eslint";
+import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -17,28 +27,169 @@ export async function createModelGenerator(
   // get type [sps-lite, sps, startup]
   //
   // - create model contracts (root, extended)
-  const name = options.name;
+  const modelName = options.name;
   const module = options.module;
 
-  // @sps/sps-website-builder-models-button-contracts
-  const baseName = `@sps/sps-${module}-models-${name}`;
-  const contractsLibraryName = `${baseName}-contracts`;
+  const baseName = `@sps/${module}-models-${modelName}`;
+  const baseDirectory = `libs/modules/${module}/models`;
 
-  // console.log(`🚀 ~ contractsLibraryName:`, contractsLibraryName);
+  await createContracts({
+    tree,
+    baseName,
+    baseDirectory,
+    modelName,
+    type: "root",
+    module,
+  });
 
-  // libraryGenerator(tree, {
-  //   name: options.name,
-  // });
+  await createContracts({
+    tree,
+    baseName,
+    baseDirectory,
+    modelName,
+    type: "extended",
+    module,
+  });
 
-  // const projectRoot = `libs/${options.name}`;
-  // addProjectConfiguration(tree, options.name, {
-  //   root: projectRoot,
-  //   projectType: "library",
-  //   sourceRoot: `${projectRoot}/src`,
-  //   targets: {},
-  // });
-  // generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
-  // await formatFiles(tree);
+  await createFrontendApi({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
+
+  await formatFiles(tree);
 }
 
 export default createModelGenerator;
+
+async function createContracts({
+  tree,
+  baseName,
+  baseDirectory,
+  modelName,
+  type,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  type: "root" | "extended";
+  module: string;
+}) {
+  if (!type) {
+    throw new Error("type is required");
+  }
+
+  const contractsLibraryName = `${baseName}-contracts${type === "extended" ? "-extended" : ""}`;
+  const directory = `${baseDirectory}/${modelName}/contracts/${type}`;
+
+  const offsetFromRootProject = offsetFromRoot(directory);
+
+  await jsLibraryGenerator(tree, {
+    name: contractsLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/contracts/${type}`),
+    directory,
+    {
+      template: "",
+      module,
+      model: modelName,
+      offset_from_root: offsetFromRootProject,
+    },
+  );
+
+  updateProjectConfiguration(tree, contractsLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      "tsc:build": {},
+      test: {},
+    },
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${contractsLibraryName}.ts`.replace("@sps/", "");
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
+}
+
+async function createFrontendApi({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const apiLibraryName = `${baseName}-frontend-api`;
+  const directory = `${baseDirectory}/${modelName}/frontend/api`;
+  const modelNameCapialized = names(modelName).className;
+  const modelNamePluralized = modelName;
+
+  const offsetFromRootProject = offsetFromRoot(directory);
+
+  const libraryOptions = {
+    name: apiLibraryName,
+    directory,
+    linter: "none" as Linter.EsLint,
+    minimal: true,
+    style: "none" as SupportedStyles,
+    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
+    strict: true,
+  };
+
+  await reactLibraryGenerator(tree, libraryOptions);
+
+  updateProjectConfiguration(tree, apiLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
+  generateFiles(tree, path.join(__dirname, `files/frontend/api`), directory, {
+    template: "",
+    module,
+    model: modelName,
+    model_capitalized: modelNameCapialized,
+    model_pluralized: modelNamePluralized,
+    offset_from_root: offsetFromRootProject,
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    compilerOptions.types = ["node"];
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+}

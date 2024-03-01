@@ -1,0 +1,4 @@
+import type { IModel as IParentModel } from "@sps/<%= module %>-models-<%= model %>-contracts";
+
+export interface IModel extends IParentModel {
+}

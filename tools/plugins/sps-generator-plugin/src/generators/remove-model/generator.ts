@@ -1,24 +1,33 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  Tree,
-} from "@nx/devkit";
-import * as path from "path";
+import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { RemoveModelGeneratorSchema } from "./schema";
+import * as nxWorkspace from "@nx/workspace";
 
 export async function removeModelGenerator(
   tree: Tree,
   options: RemoveModelGeneratorSchema,
 ) {
-  const projectRoot = `libs/${options.name}`;
-  addProjectConfiguration(tree, options.name, {
-    root: projectRoot,
-    projectType: "library",
-    sourceRoot: `${projectRoot}/src`,
-    targets: {},
+  const modelName = options.name;
+  const module = options.module;
+
+  const baseName = `@sps/${module}-models-${modelName}`;
+
+  const projects = getProjects(tree);
+
+  const toRemoveProjects = [];
+  projects.forEach(async (project) => {
+    if (project.name.startsWith(baseName)) {
+      toRemoveProjects.push(project);
+    }
   });
-  generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
+
+  for (const project of toRemoveProjects) {
+    await nxWorkspace.removeGenerator(tree, {
+      projectName: project.name,
+      skipFormat: true,
+      forceRemove: true,
+    });
+  }
+
   await formatFiles(tree);
 }
 
