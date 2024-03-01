@@ -4,7 +4,7 @@ Spend less time on setup and more time building your innovative product with our
 
 ### [Documentation](https://sps-lite-documentation.singlepagestartup.com/)
 
-![preview](./documentation/docs/introduction/img/preview.jpg)
+![preview](./apps/documentation/docs/introduction/img/preview.jpg)
 
 # Minimum Viable Product is Ready
 
