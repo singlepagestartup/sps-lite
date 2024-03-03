@@ -1,5 +1,4 @@
 import {
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
   names,
@@ -22,11 +21,6 @@ export async function createModelGenerator(
   tree: Tree,
   options: CreateModelGeneratorSchema,
 ) {
-  // get name <string>
-  // get module [sps-billing, sps-crm, ...]
-  // get type [sps-lite, sps, startup]
-  //
-  // - create model contracts (root, extended)
   const modelName = options.name;
   const module = options.module;
 
