@@ -11,8 +11,9 @@ import {
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
-  // await renameApi({ tree });
+  await renameApi({ tree });
   await deleteTestTargetInComponent({ tree });
+  await deleteBuildTargetInFrontendApi({ tree });
   await deleteUnusedTSCongifs({ tree });
 }
 
@@ -24,16 +25,30 @@ async function deleteTestTargetInComponent({ tree }: { tree: Tree }) {
   const componentProjects = [];
   projects.forEach((project) => {
     if (project.root.includes("/model")) {
-      if (!project.name.includes("currency")) {
-        return;
-      }
-
       componentProjects.push(project);
     }
   });
 
   for (const project of componentProjects) {
     await deleteTestTarget({ tree, project });
+  }
+}
+
+async function deleteBuildTargetInFrontendApi({ tree }: { tree: Tree }) {
+  const projects = getProjects(tree);
+
+  const frontendApiProjects = [];
+  projects.forEach((project) => {
+    if (
+      project.root.includes("/model") &&
+      project.root.includes("/frontend/api")
+    ) {
+      frontendApiProjects.push(project);
+    }
+  });
+
+  for (const project of frontendApiProjects) {
+    await deleteBuildTarget({ tree, project });
   }
 }
 
@@ -66,15 +81,40 @@ async function deleteTestTarget({
   await formatFiles(tree);
 }
 
+async function deleteBuildTarget({
+  tree,
+  project,
+}: {
+  tree: Tree;
+  project: ProjectConfiguration;
+}) {
+  if (!project.targets["tsc:build"]) {
+    return;
+  }
+
+  const filteredTargets = Object.keys(project.targets).reduce((acc, target) => {
+    if (target !== "tsc:build") {
+      acc[target] = project.targets[target];
+    }
+    return acc;
+  }, {});
+
+  updateProjectConfiguration(tree, project.name, {
+    root: project.root,
+    sourceRoot: project.sourceRoot,
+    projectType: "library",
+    tags: [],
+    targets: filteredTargets,
+  });
+
+  await formatFiles(tree);
+}
+
 async function deleteUnusedTSCongifs({ tree }: { tree: Tree }) {
   const projects = getProjects(tree);
 
   const arrayProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("currency")) {
-      return;
-    }
-
     if (project.root.includes("/modules")) {
       arrayProjects.push(project);
     }

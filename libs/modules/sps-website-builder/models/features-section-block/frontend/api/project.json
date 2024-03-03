@@ -3,10 +3,8 @@
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-website-builder/models/features-section-block/frontend/api/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "tsc:build": {},
-    "lint": {},
-    "test": {}
-  },
-  "tags": []
+    "lint": {}
+  }
 }

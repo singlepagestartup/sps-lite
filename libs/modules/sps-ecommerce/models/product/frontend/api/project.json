@@ -3,8 +3,8 @@
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/api/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "lint": {},
-    "test": {}
+    "lint": {}
   }
 }
