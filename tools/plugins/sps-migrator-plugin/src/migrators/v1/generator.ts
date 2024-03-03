@@ -128,7 +128,7 @@ async function deleteTSLibConfig({
   tree: Tree;
   project: ProjectConfiguration;
 }) {
-  if (project.targets.build) {
+  if (project.targets["tsc:build"]) {
     return;
   }
 
