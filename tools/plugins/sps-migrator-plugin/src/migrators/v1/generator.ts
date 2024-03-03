@@ -6,33 +6,76 @@ import {
   readProjectConfiguration,
   Tree,
   updateJson,
+  updateProjectConfiguration,
 } from "@nx/devkit";
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
   // await renameApi({ tree });
+  await deleteTestTargetInComponent({ tree });
   await deleteUnusedTSCongifs({ tree });
-
-  // await formatFiles(tree);
 }
 
 export default v1Generator;
 
-async function deleteUnusedTSCongifs({ tree }: { tree: Tree }) {
+async function deleteTestTargetInComponent({ tree }: { tree: Tree }) {
   const projects = getProjects(tree);
 
-  const frontendProjects = [];
+  const componentProjects = [];
   projects.forEach((project) => {
-    if (project.root.includes("/frontend")) {
+    if (project.root.includes("/model")) {
       if (!project.name.includes("currency")) {
         return;
       }
 
-      frontendProjects.push(project);
+      componentProjects.push(project);
     }
   });
 
-  for (const project of frontendProjects) {
+  for (const project of componentProjects) {
+    await deleteTestTarget({ tree, project });
+  }
+}
+
+async function deleteTestTarget({
+  tree,
+  project,
+}: {
+  tree: Tree;
+  project: ProjectConfiguration;
+}) {
+  if (!project.targets.test) {
+    return;
+  }
+
+  updateProjectConfiguration(tree, project.name, {
+    root: project.root,
+    sourceRoot: project.sourceRoot,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
+  await formatFiles(tree);
+}
+
+async function deleteUnusedTSCongifs({ tree }: { tree: Tree }) {
+  const projects = getProjects(tree);
+
+  const arrayProjects = [];
+  projects.forEach((project) => {
+    if (!project.name.includes("currency")) {
+      return;
+    }
+
+    if (project.root.includes("/modules")) {
+      arrayProjects.push(project);
+    }
+  });
+
+  for (const project of arrayProjects) {
     await deleteTSLibConfig({ tree, project });
     await deleteTSSpecConfig({ tree, project });
   }
@@ -61,7 +104,7 @@ async function deleteTSSpecConfig({
 
     if (projectFile.path.includes("tsconfig.json")) {
       updateJson(tree, projectFile.path, (json) => {
-        json.references = json.references.filter(
+        json.references = json.references?.filter(
           (ref: any) => !ref.path.includes("tsconfig.spec.json"),
         );
 
@@ -96,7 +139,7 @@ async function deleteTSLibConfig({
 
     if (projectFile.path.includes("tsconfig.json")) {
       updateJson(tree, projectFile.path, (json) => {
-        json.references = json.references.filter(
+        json.references = json.references?.filter(
           (ref: any) => !ref.path.includes("tsconfig.lib.json"),
         );
 
