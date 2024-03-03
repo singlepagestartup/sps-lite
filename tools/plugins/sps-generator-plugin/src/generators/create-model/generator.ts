@@ -201,13 +201,13 @@ async function createFrontendApi({
     offset_from_root: offsetFromRootProject,
   });
 
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    compilerOptions.types = ["node"];
-    delete compilerOptions.outDir;
+  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
+    json.references = [];
 
     return json;
   });
+
+  tree.delete(`${directory}/tsconfig.lib.json`);
 }
 
 async function createFrontendRedux({
@@ -261,13 +261,13 @@ async function createFrontendRedux({
     offset_from_root: offsetFromRootProject,
   });
 
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    compilerOptions.types = ["node"];
-    delete compilerOptions.outDir;
+  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
+    json.references = [];
 
     return json;
   });
+
+  tree.delete(`${directory}/tsconfig.lib.json`);
 }
 
 async function createFrontendRootComponent({
@@ -326,11 +326,11 @@ async function createFrontendRootComponent({
     },
   );
 
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    compilerOptions.types = ["node"];
-    delete compilerOptions.outDir;
+  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
+    json.references = [];
 
     return json;
   });
+
+  tree.delete(`${directory}/tsconfig.lib.json`);
 }

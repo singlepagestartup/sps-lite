@@ -1,14 +1,114 @@
 import {
   formatFiles,
   getProjects,
+  ProjectConfiguration,
   readCachedProjectGraph,
   readProjectConfiguration,
-  readProjectsConfigurationFromProjectGraph,
   Tree,
+  updateJson,
 } from "@nx/devkit";
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
+  // await renameApi({ tree });
+  await deleteUnusedTSCongifs({ tree });
+
+  // await formatFiles(tree);
+}
+
+export default v1Generator;
+
+async function deleteUnusedTSCongifs({ tree }: { tree: Tree }) {
+  const projects = getProjects(tree);
+
+  const frontendProjects = [];
+  projects.forEach((project) => {
+    if (project.root.includes("/frontend")) {
+      if (!project.name.includes("currency")) {
+        return;
+      }
+
+      frontendProjects.push(project);
+    }
+  });
+
+  for (const project of frontendProjects) {
+    await deleteTSLibConfig({ tree, project });
+    await deleteTSSpecConfig({ tree, project });
+  }
+}
+
+async function deleteTSSpecConfig({
+  tree,
+  project,
+}: {
+  tree: Tree;
+  project: ProjectConfiguration;
+}) {
+  if (project.targets.test) {
+    return;
+  }
+
+  const projectFiles = getAllFiles({
+    tree,
+    root: project.root,
+  });
+
+  for (const projectFile of projectFiles) {
+    if (projectFile.path.includes("tsconfig.spec.json")) {
+      tree.delete(projectFile.path);
+    }
+
+    if (projectFile.path.includes("tsconfig.json")) {
+      updateJson(tree, projectFile.path, (json) => {
+        json.references = json.references.filter(
+          (ref: any) => !ref.path.includes("tsconfig.spec.json"),
+        );
+
+        return json;
+      });
+    }
+  }
+
+  await formatFiles(tree);
+}
+
+async function deleteTSLibConfig({
+  tree,
+  project,
+}: {
+  tree: Tree;
+  project: ProjectConfiguration;
+}) {
+  if (project.targets.build) {
+    return;
+  }
+
+  const projectFiles = getAllFiles({
+    tree,
+    root: project.root,
+  });
+
+  for (const projectFile of projectFiles) {
+    if (projectFile.path.includes("tsconfig.lib.json")) {
+      tree.delete(projectFile.path);
+    }
+
+    if (projectFile.path.includes("tsconfig.json")) {
+      updateJson(tree, projectFile.path, (json) => {
+        json.references = json.references.filter(
+          (ref: any) => !ref.path.includes("tsconfig.lib.json"),
+        );
+
+        return json;
+      });
+    }
+  }
+
+  await formatFiles(tree);
+}
+
+async function renameApi({ tree }: { tree: Tree }) {
   const projects = getProjects(tree);
 
   const apiProjects = [];
@@ -61,8 +161,6 @@ export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
 
   await formatFiles(tree);
 }
-
-export default v1Generator;
 
 function renameClientToRtk(tree: Tree, projectRoot: string) {
   const clientFolder = projectRoot + "/src/lib/client";
