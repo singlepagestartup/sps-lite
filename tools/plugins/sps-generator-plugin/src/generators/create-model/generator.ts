@@ -134,7 +134,6 @@ async function createContracts({
     targets: {
       lint: {},
       "tsc:build": {},
-      test: {},
     },
   });
 
