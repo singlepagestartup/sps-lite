@@ -48,14 +48,19 @@ async function deleteTestTarget({
     return;
   }
 
+  const filteredTargets = Object.keys(project.targets).reduce((acc, target) => {
+    if (target !== "test") {
+      acc[target] = project.targets[target];
+    }
+    return acc;
+  }, {});
+
   updateProjectConfiguration(tree, project.name, {
     root: project.root,
     sourceRoot: project.sourceRoot,
     projectType: "library",
     tags: [],
-    targets: {
-      lint: {},
-    },
+    targets: filteredTargets,
   });
 
   await formatFiles(tree);
