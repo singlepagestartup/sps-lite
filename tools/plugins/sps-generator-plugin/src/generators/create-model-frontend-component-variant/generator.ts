@@ -73,10 +73,11 @@ export async function createModelFrontendComponentVariantGenerator(
 
   tree.delete(`${directory}/tsconfig.lib.json`);
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
-    const updatedJson = { ...json };
-    updatedJson.references = [];
+    json.references = [];
+    delete json.files;
+    delete json.include;
 
-    return updatedJson;
+    return json;
   });
 
   generateFiles(tree, path.join(__dirname, "files"), directory, {

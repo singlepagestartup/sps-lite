@@ -11,13 +11,67 @@ import {
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
-  await renameApi({ tree });
-  await deleteTestTargetInComponent({ tree });
-  await deleteBuildTargetInFrontendApi({ tree });
-  await deleteUnusedTSCongifs({ tree });
+  // await renameApi({ tree });
+  // await deleteTestTargetInComponent({ tree });
+  // await deleteBuildTargetInFrontendApi({ tree });
+  // await deleteUnusedTSCongifs({ tree });
+  await deleteFilesAndIncludeInTSConfigs({ tree });
 }
 
 export default v1Generator;
+
+async function deleteFilesAndIncludeInTSConfigs({ tree }: { tree: Tree }) {
+  const projects = getProjects(tree);
+
+  const componentApiAndReduxProjects = [];
+  projects.forEach((project) => {
+    if (project.root.includes("/model")) {
+      if (!project.root.includes("currency")) {
+        return;
+      }
+
+      if (
+        project.root.includes("/api") ||
+        project.root.includes("/redux") ||
+        project.root.includes("/component")
+      ) {
+        componentApiAndReduxProjects.push(project);
+      }
+    }
+  });
+
+  for (const project of componentApiAndReduxProjects) {
+    await deleteFilesAndIncludeInTSConfig({ tree, project });
+  }
+}
+
+async function deleteFilesAndIncludeInTSConfig({
+  tree,
+  project,
+}: {
+  tree: Tree;
+  project: ProjectConfiguration;
+}) {
+  const projectFiles = getAllFiles({
+    tree,
+    root: project.root,
+  });
+
+  for (const projectFile of projectFiles) {
+    if (projectFile.path.includes("tsconfig.json")) {
+      console.log(`🚀 ~ projectFile:`, projectFile);
+
+      updateJson(tree, projectFile.path, (json) => {
+        delete json.files;
+        delete json.include;
+
+        return json;
+      });
+    }
+  }
+
+  await formatFiles(tree);
+}
 
 async function deleteTestTargetInComponent({ tree }: { tree: Tree }) {
   const projects = getProjects(tree);

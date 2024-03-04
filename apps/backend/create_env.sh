@@ -1,5 +1,5 @@
 #!/bin/bash
-. ../deployment/ansible/get_env.sh
+. ../../tools/deployer/ansible/get_env.sh
 
 # Check is .env file exists
 if [ -f .env ]; then

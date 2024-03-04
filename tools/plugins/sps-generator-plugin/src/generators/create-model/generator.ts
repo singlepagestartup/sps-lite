@@ -196,6 +196,8 @@ async function createFrontendApi({
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
+    delete json.files;
+    delete json.include;
 
     return json;
   });
@@ -256,6 +258,8 @@ async function createFrontendRedux({
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
+    delete json.files;
+    delete json.include;
 
     return json;
   });
@@ -321,6 +325,8 @@ async function createFrontendRootComponent({
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
+    delete json.files;
+    delete json.include;
 
     return json;
   });
