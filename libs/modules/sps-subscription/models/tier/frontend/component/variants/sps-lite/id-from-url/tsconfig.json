@@ -5,8 +5,6 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true
   },
-  "files": [],
-  "include": [],
   "references": [],
   "extends": "../../../../../../../../../../tsconfig.base.json"
 }

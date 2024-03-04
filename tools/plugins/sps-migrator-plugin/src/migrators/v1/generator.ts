@@ -11,10 +11,10 @@ import {
 import { V1GeneratorSchema } from "./schema";
 
 export async function v1Generator(tree: Tree, options: V1GeneratorSchema) {
-  // await renameApi({ tree });
-  // await deleteTestTargetInComponent({ tree });
-  // await deleteBuildTargetInFrontendApi({ tree });
-  // await deleteUnusedTSCongifs({ tree });
+  await renameApi({ tree });
+  await deleteTestTargetInComponent({ tree });
+  await deleteBuildTargetInFrontendApi({ tree });
+  await deleteUnusedTSCongifs({ tree });
   await deleteFilesAndIncludeInTSConfigs({ tree });
 }
 
@@ -26,10 +26,6 @@ async function deleteFilesAndIncludeInTSConfigs({ tree }: { tree: Tree }) {
   const componentApiAndReduxProjects = [];
   projects.forEach((project) => {
     if (project.root.includes("/model")) {
-      if (!project.root.includes("currency")) {
-        return;
-      }
-
       if (
         project.root.includes("/api") ||
         project.root.includes("/redux") ||
@@ -59,8 +55,6 @@ async function deleteFilesAndIncludeInTSConfig({
 
   for (const projectFile of projectFiles) {
     if (projectFile.path.includes("tsconfig.json")) {
-      console.log(`🚀 ~ projectFile:`, projectFile);
-
       updateJson(tree, projectFile.path, (json) => {
         delete json.files;
         delete json.include;
