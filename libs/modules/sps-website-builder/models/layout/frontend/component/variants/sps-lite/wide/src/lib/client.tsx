@@ -8,7 +8,7 @@ import { IComponentProps, IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getTargetPage } from "@sps/shared-frontend-utils-client";
+import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export default function Client(props: IComponentProps) {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export default function Client(props: IComponentProps) {
 
   useEffect(() => {
     if (params) {
-      getTargetPage(params as any).then((res) => {
+      pageApi.fetch.getByUrl(params as any).then((res) => {
         setPage(res);
       });
     }

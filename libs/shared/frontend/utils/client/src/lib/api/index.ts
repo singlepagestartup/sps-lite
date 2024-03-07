@@ -1,8 +1,6 @@
 import { stringify } from "qs";
 import { gzip } from "pako";
 import { transformResponseItem } from "../transform-response-item";
-import { BACKEND_URL } from "../envs";
-const R = require("ramda");
 
 interface IFetchProps {
   url: string;
@@ -64,107 +62,4 @@ export async function getBackendData(props: IFetchProps) {
     });
 
   return backendData;
-}
-
-export async function getTargetPage({
-  url,
-  locale,
-}: {
-  url: string | string[];
-  locale: string;
-}) {
-  const localUrl =
-    typeof url === "string"
-      ? url.startsWith("/")
-        ? url
-        : `/${url}`
-      : `/${url?.join("/") || ""}`;
-
-  if (!localUrl) {
-    return;
-  }
-
-  const targetPage = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url`,
-    params: {
-      url: localUrl,
-      locale,
-      pagination: { limit: -1 },
-    },
-  });
-
-  if (!targetPage?.id) {
-    return;
-  }
-
-  return targetPage;
-}
-
-export function getFiltersFromPageUrl({
-  page,
-  params,
-}: {
-  page: {
-    id: number;
-    url: string;
-  };
-  params: { url: string[] | string };
-}): any[] {
-  const splittedParams = Array.isArray(params.url)
-    ? params.url
-    : params.url.split("/").filter((u: string) => u !== "");
-
-  if (!page.id) {
-    return [];
-  }
-
-  const filters: any[] = [];
-
-  const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
-
-  for (const [index, pageUrl] of pageUrls.entries()) {
-    if (pageUrl.includes(".") && splittedParams && splittedParams[index]) {
-      const sanitizedPageUrl = pageUrl.replace("[", "").replace("]", "");
-      const key =
-        sanitizedPageUrl.split(".")[sanitizedPageUrl.split(".").length - 2];
-
-      const filter = {
-        [key]: {
-          id: {
-            $in: [splittedParams[index]],
-          },
-        },
-      };
-
-      filters.push(filter);
-    }
-  }
-
-  return filters;
-}
-
-export async function getPageUrlModelId({
-  url,
-  modelName,
-  locale,
-}: {
-  url: string;
-  modelName: string;
-  locale: string;
-}): Promise<number | undefined> {
-  const page = await getTargetPage({ url, locale });
-
-  const filters = getFiltersFromPageUrl({ page, params: { url } });
-
-  let id;
-
-  const targetFilter = filters.find(
-    (filter) => filter[modelName] !== undefined,
-  );
-
-  if (R.path([modelName, "id", "$in", 0], targetFilter)) {
-    id = targetFilter[modelName].id["$in"][0];
-  }
-
-  return id;
 }

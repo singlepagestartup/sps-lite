@@ -11,7 +11,6 @@ import {
 } from "next/navigation";
 import type { IModel as IBackendModal } from "@sps/sps-website-builder-models-modal-contracts";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
-import { getTargetPage } from "@sps/shared-frontend-utils-client";
 
 export interface IModal extends Omit<IBackendModal, "id"> {
   isOpenModal: boolean;
@@ -23,7 +22,6 @@ export interface IModal extends Omit<IBackendModal, "id"> {
 export function Component({ modals = [] }: { modals?: IModal[] }) {
   const query = useSearchParams();
   const pathname = usePathname();
-  const params = useParams();
   const router = useRouter();
   const openedModal = query?.get("opened_modal");
   const [isOpen, setIsOpen] = useState(false);
@@ -31,20 +29,12 @@ export function Component({ modals = [] }: { modals?: IModal[] }) {
 
   const [page, setPage] = useState<IBackendPage>(); //?
 
-  useEffect(() => {
-    if (params) {
-      // getTargetPage(params).then((res) => {
-      //   setPage(res);
-      // });
-    }
-  }, [JSON.stringify(params)]);
-
   const {
     data: backendModals,
     isLoading,
     isError,
     isFetching,
-  } = modalApi.client.useFindManyQuery({
+  } = modalApi.rtk.useFindManyQuery({
     locale: "all",
   });
 

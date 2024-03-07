@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
-import { getFiltersFromPageUrl } from "@sps/shared-frontend-utils-client";
+import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export function useGetPageUrlFiltersQuery({
   page,
@@ -19,7 +19,7 @@ export function useGetPageUrlFiltersQuery({
       return;
     }
 
-    const pageUrlFilters = getFiltersFromPageUrl({ page, params }); //?
+    const pageUrlFilters = pageApi.fetch.getFiltersFromUrl({ page, params }); //?
 
     return {
       $and: pageUrlFilters,

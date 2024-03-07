@@ -7,7 +7,7 @@ import { Error } from "./Error";
 import { api } from "@sps/sps-subscription-models-tier-frontend-api";
 import { Component } from "./Component";
 import { headers } from "next/headers";
-import { getPageUrlModelId } from "@sps/shared-frontend-utils-client";
+import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
@@ -15,7 +15,7 @@ export default async function Server(props: IComponentProps) {
   const pathname = headersList.get("x-sps-website-builder-pathname") || "";
   const locale = headersList.get("x-sps-website-builder-locale") || "";
 
-  const id = await getPageUrlModelId({
+  const id = await pageApi.fetch.getUrlModelId({
     url: pathname,
     locale,
     modelName: "tier",

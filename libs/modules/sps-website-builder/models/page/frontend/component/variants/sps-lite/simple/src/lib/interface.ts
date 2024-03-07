@@ -7,7 +7,7 @@ export interface IComponentBase {
 }
 
 export interface IComponentProps extends IComponentBase {
-  params?: { locale: string; [key: string]: any };
+  params?: { locale: string; url?: string[]; [key: string]: any };
   searchParams?: { [key: string]: any };
 }
 

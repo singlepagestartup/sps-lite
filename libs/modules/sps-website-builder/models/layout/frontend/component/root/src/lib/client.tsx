@@ -3,10 +3,10 @@ import "client-only";
 
 import { useParams, usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
-import { getTargetPage } from "@sps/shared-frontend-utils-client";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
 import { variants } from "./variants";
 import { IComponentProps } from "./interface";
+import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export default function Client(props: {
   isServer: boolean;
@@ -26,7 +26,7 @@ export default function Client(props: {
 
   useEffect(() => {
     if (params) {
-      getTargetPage(params as any).then((res) => {
+      pageApi.fetch.getByUrl(params as any).then((res) => {
         setPage(res);
       });
     }

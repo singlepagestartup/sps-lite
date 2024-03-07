@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
-import { getFiltersFromPageUrl } from "@sps/shared-frontend-utils-client";
+import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 const R = require("ramda");
 
 export function useGetPageUrlModelId({
@@ -21,7 +21,7 @@ export function useGetPageUrlModelId({
       return;
     }
 
-    const pageUrlFilters = getFiltersFromPageUrl({ page, params });
+    const pageUrlFilters = pageApi.fetch.getFiltersFromUrl({ page, params });
     const targetFilter = pageUrlFilters.find(
       (filter) => filter[modelName] !== undefined,
     );
