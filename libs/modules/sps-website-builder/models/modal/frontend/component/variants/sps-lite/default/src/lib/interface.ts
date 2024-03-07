@@ -1,7 +1,7 @@
 import { IModel } from "@sps/sps-website-builder-models-modal-contracts";
 import { IModel as IModelExtended } from "@sps/sps-website-builder-models-modal-contracts-extended";
 
-export const variant = "simple" as const;
+export const variant = "default" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -10,12 +10,11 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  isOpenModal?: boolean;
-  closeModal?: () => void;
-  dialogPanelClassName?: string;
-  className?: string;
+  data: IModel;
+  isOpen: boolean;
+  close: () => void;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended[];
+  data: IModelExtended;
 }

@@ -3,6 +3,7 @@ import { Component as Sidebar } from "@sps/sps-website-builder-models-sidebar-fr
 import { Component as Footer } from "@sps/sps-website-builder-models-footer-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 import { AuthWrapper } from "@sps/sps-rbac-frontend-components";
+import { Component as Modal } from "@sps/sps-website-builder-models-modal-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -57,6 +58,7 @@ export function Component(props: IComponentPropsExtended) {
             data={props.data.footer}
           />
         ) : null}
+        <Modal isServer={props.isServer} variant="list" />
       </div>
     </AuthWrapper>
   );

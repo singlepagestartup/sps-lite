@@ -4,7 +4,7 @@ import Server from "./server";
 import { ReduxProvider } from "@sps/sps-website-builder-models-modal-frontend-redux";
 
 export function Component(props: IComponentProps) {
-  const Comp = Client;
+  const Comp = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>
