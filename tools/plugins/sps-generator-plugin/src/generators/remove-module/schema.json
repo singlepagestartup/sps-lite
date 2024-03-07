@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "RemoveModule",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "module": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What module would you like to delete?"
+    }
+  },
+  "required": ["module"]
+}

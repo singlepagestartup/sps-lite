@@ -19,6 +19,16 @@
       "factory": "./src/generators/remove-model/generator",
       "schema": "./src/generators/remove-model/schema.json",
       "description": "remove-model generator"
+    },
+    "create-module": {
+      "factory": "./src/generators/create-module/generator",
+      "schema": "./src/generators/create-module/schema.json",
+      "description": "create-module generator"
+    },
+    "remove-module": {
+      "factory": "./src/generators/remove-module/generator",
+      "schema": "./src/generators/remove-module/schema.json",
+      "description": "remove-module generator"
     }
   }
 }
