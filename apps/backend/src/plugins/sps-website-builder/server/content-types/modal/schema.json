@@ -46,8 +46,8 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["simple"],
-      "default": "simple",
+      "enum": ["default"],
+      "default": "default",
       "required": true,
       "pluginOptions": {
         "i18n": {

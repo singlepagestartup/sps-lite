@@ -978,9 +978,6 @@
       "@sps/sps-website-builder-models-modal-frontend-component-variants-sps-lite-list": [
         "libs/modules/sps-website-builder/models/modal/frontend/component/variants/sps-lite/list/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-modal-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/modal/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-modal-frontend-redux": [
         "libs/modules/sps-website-builder/models/modal/frontend/redux/src/index.ts"
       ],
