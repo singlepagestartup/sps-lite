@@ -26,13 +26,15 @@ const store: any = configureStore({
       .concat(middlewares),
 });
 
-globalActionsStore.getState().addStore({
-  name,
-  actions: [],
-});
+if (typeof window !== "undefined") {
+  globalActionsStore.getState().addStore({
+    name,
+    actions: [],
+  });
 
-if (typeof api.subscription === "function") {
-  api.subscription(store);
+  if (typeof api.subscription === "function") {
+    api.subscription(store);
+  }
 }
 
 export default store;
