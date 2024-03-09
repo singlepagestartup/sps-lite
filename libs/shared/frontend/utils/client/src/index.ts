@@ -12,3 +12,4 @@ export * from "./lib/api";
 export * from "./lib/formatters/parse-mime-type";
 export * from "./lib/formatters/replacer";
 export * from "./lib/snake-case-to-camel-case";
+export type { IBackendPagination, TransformedApiArray } from "./types";

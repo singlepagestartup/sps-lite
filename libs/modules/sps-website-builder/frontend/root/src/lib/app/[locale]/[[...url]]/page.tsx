@@ -12,6 +12,16 @@ export async function generateMetadata(props: any) {
   return api.fetch.generateMetadata(props);
 }
 
-export async function Page(props: any) {
-  return <Component isServer={true} {...props} />;
+export async function Page(params: {
+  params: { url?: string[]; locale: string };
+  searchParams?: { [key: string]: any };
+}) {
+  return (
+    <Component
+      isServer={true}
+      params={{
+        ...params.params,
+      }}
+    />
+  );
 }

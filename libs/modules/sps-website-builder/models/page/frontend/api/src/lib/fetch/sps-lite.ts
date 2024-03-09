@@ -9,13 +9,12 @@ import { notFound } from "next/navigation";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts";
 const R = require("ramda");
 
-async function getByUrl({
-  url,
-  locale,
-}: {
-  url: string | string[];
-  locale: string;
-}) {
+interface Params {
+  url?: string | string[];
+  locale: string | string[];
+}
+
+async function getByUrl({ url, locale }: Params) {
   const localUrl =
     typeof url === "string"
       ? url.startsWith("/")
@@ -51,11 +50,11 @@ function getFiltersFromUrl({
     id: number;
     url: string;
   };
-  params: { url: string[] | string };
+  params: Params;
 }): any[] {
   const splittedParams = Array.isArray(params.url)
     ? params.url
-    : params.url.split("/").filter((u: string) => u !== "");
+    : params.url?.split("/").filter((u: string) => u !== "");
 
   if (!page.id) {
     return [];
@@ -91,13 +90,13 @@ async function getUrlModelId({
   modelName,
   locale,
 }: {
-  url: string;
+  url: Params["url"];
   modelName: string;
-  locale: string;
+  locale: Params["locale"];
 }): Promise<number | undefined> {
   const page = await getByUrl({ url, locale });
 
-  const filters = getFiltersFromUrl({ page, params: { url } });
+  const filters = getFiltersFromUrl({ page, params: { url, locale } });
 
   let id;
 
@@ -112,10 +111,8 @@ async function getUrlModelId({
   return id;
 }
 
-async function getPage(props: any) {
-  const { locale }: { locale: string } = props.params;
-
-  const targetPage = await getByUrl(props.params);
+async function getPage({ url, locale }: Params) {
+  const targetPage = await getByUrl({ url, locale });
 
   if (!targetPage) {
     return notFound();
