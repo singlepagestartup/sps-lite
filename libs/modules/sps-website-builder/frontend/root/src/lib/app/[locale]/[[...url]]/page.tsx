@@ -13,7 +13,7 @@ export async function generateMetadata(props: any) {
 }
 
 export async function Page(params: {
-  params: { url?: string[]; locale: string };
+  params: { url?: string | string[]; locale: string | string[] };
   searchParams?: { [key: string]: any };
 }) {
   return (
