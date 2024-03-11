@@ -1,3 +1,4 @@
+import { TransformedApiArray } from "../types";
 import { BACKEND_URL } from "./envs";
 import { prepareFormDataToSend } from "./preapare-form-data-to-send";
 import { transformResponseItem } from "./transform-response-item";
@@ -72,7 +73,7 @@ async function find<T>(params: {
   model: string;
   populate: any;
   rootPath?: string;
-}): Promise<T[]> {
+}): Promise<TransformedApiArray<T>> {
   const { populate, model, rootPath = "/api/sps-website-builder" } = params;
 
   const stringifiedQuery = QueryString.stringify(

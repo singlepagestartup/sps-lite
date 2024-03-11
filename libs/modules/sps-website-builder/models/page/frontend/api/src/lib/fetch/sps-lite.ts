@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts";
 const R = require("ramda");
 
-interface Params {
+export interface Params {
   url?: string | string[];
   locale: string | string[];
 }
