@@ -25,11 +25,15 @@ async function findByIdAndName<T>(params: {
     { next: { revalidate: 3600 } } as any,
   );
 
+  const json = await res.json();
+
   if (!res.ok) {
+    if (json.error) {
+      throw new Error(json.error.message || "Failed to fetch data");
+    }
+
     throw new Error("Failed to fetch data");
   }
-
-  const json = await res.json();
 
   const transformedData = transformResponseItem(json);
 
@@ -58,11 +62,15 @@ async function findOne<T>(params: {
     { next: { revalidate: 3600 } } as any,
   );
 
+  const json = await res.json();
+
   if (!res.ok) {
+    if (json.error) {
+      throw new Error(json.error.message || "Failed to fetch data");
+    }
+
     throw new Error("Failed to fetch data");
   }
-
-  const json = await res.json();
 
   const transformedData = transformResponseItem(json);
 
@@ -90,11 +98,15 @@ async function find<T>(params: {
     { next: { revalidate: 3600 } } as any,
   );
 
+  const json = await res.json();
+
   if (!res.ok) {
+    if (json.error) {
+      throw new Error(json.error.message || "Failed to fetch data");
+    }
+
     throw new Error("Failed to fetch data");
   }
-
-  const json = await res.json();
 
   const transformedData = transformResponseItem(json);
 
@@ -125,11 +137,15 @@ async function create<T>(params: {
     { next: { revalidate: 3600 }, method: "POST", body: formData } as any,
   );
 
+  const json = await res.json();
+
   if (!res.ok) {
+    if (json.error) {
+      throw new Error(json.error.message || "Failed to fetch data");
+    }
+
     throw new Error("Failed to fetch data");
   }
-
-  const json = await res.json();
 
   const transformedData = transformResponseItem(json);
 
