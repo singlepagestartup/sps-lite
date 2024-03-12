@@ -14,7 +14,7 @@ export default () => {
         });
 
       if (ctx.request.headers?.["anonymus-username"]) {
-        const anonymuses = await strapi.entityService.findMany(
+        const anonymuses: any = await strapi.entityService.findMany(
           "plugin::users-permissions.user",
           {
             filters: {
