@@ -86,6 +86,7 @@ function findApi<T>({
   model,
   rtkType,
   onQueryStarted: passedOnQueryStarted,
+  onCacheEntryAdded: passedOnCacheEntryAdded,
 }: {
   serviceApi: TRTKServiceApi;
   build: TRTKBuild;
@@ -93,6 +94,7 @@ function findApi<T>({
   model: string;
   rtkType: string;
   onQueryStarted?: TRTKOnQueryStarted;
+  onCacheEntryAdded?: any;
 }) {
   const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
 
@@ -124,6 +126,12 @@ function findApi<T>({
       }
     },
 
+    async onCacheEntryAdded(...props: any) {
+      if (typeof passedOnCacheEntryAdded === "function") {
+        passedOnCacheEntryAdded(...props);
+      }
+    },
+
     transformResponse: (result) => {
       return transformResponseItem(result);
     },
@@ -149,6 +157,7 @@ function findOneApi<T>({
   model,
   rtkType,
   onQueryStarted: passedOnQueryStarted,
+  onCacheEntryAdded: passedOnCacheEntryAdded,
 }: {
   serviceApi: TRTKServiceApi;
   build: TRTKBuild;
@@ -156,6 +165,7 @@ function findOneApi<T>({
   model: string;
   rtkType: string;
   onQueryStarted?: TRTKOnQueryStarted;
+  onCacheEntryAdded?: any;
 }) {
   const routePostfix = serviceApi?.reducerPath === "frontend" ? ".json" : "";
 
@@ -183,6 +193,12 @@ function findOneApi<T>({
     async onQueryStarted(...args) {
       if (typeof passedOnQueryStarted === "function") {
         passedOnQueryStarted(...args);
+      }
+    },
+
+    async onCacheEntryAdded(...props: any) {
+      if (typeof passedOnCacheEntryAdded === "function") {
+        passedOnCacheEntryAdded(...props);
       }
     },
 
