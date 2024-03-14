@@ -148,8 +148,7 @@ export default factories.createCoreController(uid, ({ strapi }) => ({
 
 async function clearExistingAttributesWithTheSameAttributeKey({ data }) {
   const ranWithoutDeadlocks = true;
-  const schema: any =
-    strapi.plugin("sps-ecommerce").contentTypes["attribute-key"];
+  const schema = strapi.contentTypes["api::attribute.attribute"];
 
   const relationAttributes = Object.keys(schema.attributes).filter(
     (key) => schema.attributes[key].type === "relation",
@@ -162,15 +161,21 @@ async function clearExistingAttributesWithTheSameAttributeKey({ data }) {
       }
 
       for (const value of data[key]) {
-        const { results: existingAttributes }: any = await strapi
-          .service(uid)
-          .find({
+        const preparedValue =
+          // @ts-ignore
+          schema.attributes[key]?.relation === "manyToMany"
+            ? { id: { $in: value.id } }
+            : value;
+        const existingAttributes: any = await strapi.entityService.findMany(
+          "api::attribute.attribute",
+          {
             filters: {
               attribute_key: data.attribute_key.id,
-              [key]: value,
+              [key]: preparedValue,
             },
             populate: "*",
-          });
+          },
+        );
 
         if (existingAttributes.length) {
           for (const existingAttribute of existingAttributes) {
