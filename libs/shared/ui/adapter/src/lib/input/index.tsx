@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 // import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { useController, useFormContext } from "react-hook-form";
@@ -67,6 +68,7 @@ type RequiredInputProps = Props & {
   "data-ui": "input";
   value: any;
   placeholder?: string;
+  setLocalRef?: any;
 };
 
 export type ExtendedInputProps<T> = RequiredInputProps &
@@ -86,6 +88,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const [localRef, setLocalRef] = useState<any | null>(null);
   const translate: any = null;
 
   const translatedLabel: string = useMemo(() => {
@@ -146,7 +149,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       return;
     }
 
-    if (!inputRef?.current?.files || Object.keys(initialValue).length === 0) {
+    if (!localRef?.current?.files || Object.keys(initialValue).length === 0) {
       return;
     }
 
@@ -167,9 +170,9 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       initialFiles.push(file);
     }
 
-    inputRef.current.files = dataTransfer.files;
+    localRef.current.files = dataTransfer.files;
     const evt = new InputEvent("change");
-    inputRef.current.dispatchEvent(evt);
+    localRef.current.dispatchEvent(evt);
     onChange(evt);
   }
 
@@ -216,11 +219,11 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     } else if (["date"].includes(type)) {
       setValue(name, initialValue);
     } else if (["file"].includes(type)) {
-      if (initialValue && inputRef.current) {
+      if (initialValue && localRef?.current) {
         setInitFiles(initialValue);
       }
     }
-  }, [JSON.stringify(initialValue), inputRef]);
+  }, [JSON.stringify(initialValue), inputRef, localRef]);
 
   /**
    * If using in repeatable component
@@ -319,7 +322,13 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   }
 
   if (props.type === "file") {
-    return <FileInput {...toComponentProps} ref={inputRef} />;
+    return (
+      <FileInput
+        {...toComponentProps}
+        ref={inputRef}
+        setLocalRef={setLocalRef}
+      />
+    );
   }
 
   // return (

@@ -29,6 +29,13 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   // https://stackoverflow.com/questions/70683188/react-forwardref-property-current-does-not-exist-on-type-forwardedrefhtmlel
   // const formInputRef = ref as MutableRefObject<HTMLInputElement>;
   const formInputRef = useRef<HTMLInputElement>(null);
+  // console.log(`🚀 ~ FileInput ~ formInputRef:`, formInputRef);
+
+  useEffect(() => {
+    if (props.setLocalRef) {
+      props.setLocalRef(formInputRef);
+    }
+  }, [formInputRef]);
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
     let filesArray: File[] = [];
@@ -102,9 +109,11 @@ const FileInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
         className="input"
       >
         <input
-          {...props}
           // If pass data in repeatable component, get an error
           // InvalidStateError: Failed to set the 'value' property on 'HTMLInputElement': This input element accepts a filename, which may only be programmatically set to the empty string.
+          id={props.id}
+          value={props.value}
+          type="file"
           ref={formInputRef}
           className="hidden"
           onChange={onChange}

@@ -11,6 +11,7 @@ const notAllowedProps = [
   "extraMedia",
   "isRequired",
   "isServer",
+  "setLocalRef",
 ] as const;
 
 type ReturnType<T> = Omit<T, (typeof notAllowedProps)[number]>;
