@@ -1,5 +1,5 @@
 import { Listbox } from "@headlessui/react";
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/shared-frontend-utils-client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -16,23 +16,38 @@ const RadioGroupInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { OptionComp = DefaultOption, renderOptionValue } = props;
 
   return (
-    <Listbox data-ui-variant="radio-group" as="div" {...props} ref={ref}>
+    <Listbox
+      data-ui="input"
+      data-ui-variant="radio-group"
+      as="div"
+      className={props.className || ""}
+      by={props.by}
+      disabled={props.disabled}
+      ref={ref}
+      name={props.name}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      value={props.value}
+      id={props.id}
+    >
       <div className="radio-group">
         <Listbox.Options static={true} className="options">
-          {props.options?.map((option: any, index: number) => (
-            <Listbox.Option key={index} value={option}>
-              {(params) => {
-                return (
-                  <OptionComp
-                    option={option}
-                    params={params}
-                    renderOptionValue={renderOptionValue}
-                    extraMedia={props.extraMedia}
-                  />
-                );
-              }}
-            </Listbox.Option>
-          ))}
+          {props.options?.map((option: any, index: number) => {
+            return (
+              <Listbox.Option key={index} value={option}>
+                {(params) => {
+                  return (
+                    <OptionComp
+                      option={option}
+                      params={params}
+                      renderOptionValue={renderOptionValue}
+                      extraMedia={props.extraMedia}
+                    />
+                  );
+                }}
+              </Listbox.Option>
+            );
+          })}
         </Listbox.Options>
       </div>
     </Listbox>

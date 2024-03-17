@@ -56,7 +56,8 @@ export interface Props {
   multiple?: boolean;
   ui: "sps" | "shadcn";
   options?: any;
-  by?: string;
+  by?: any;
+  renderOptionValue?: (option: any) => string;
 }
 
 type RequiredInputProps = Props & {
@@ -294,6 +295,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         ref={inputRef}
         options={props.options ?? []}
         by={props.by ?? "title"}
+        renderOptionValue={props.renderOptionValue}
       />
     );
   }
@@ -309,6 +311,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         ref={inputRef}
         options={props.options ?? []}
         by={props.by ?? "title"}
+        renderOptionValue={props.renderOptionValue}
       />
     );
   }

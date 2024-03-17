@@ -38,8 +38,10 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   useEffect(() => {
     if (urlPrepared) {
       setPassChildren(<Link href={urlPrepared}>{props.children}</Link>);
+    } else {
+      setPassChildren(props.children);
     }
-  }, [Comp, urlPrepared]);
+  }, [Comp, urlPrepared, props.children]);
 
   if (props.ui === "shadcn") {
     return (

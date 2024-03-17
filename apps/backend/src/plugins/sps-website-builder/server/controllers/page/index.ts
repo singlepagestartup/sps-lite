@@ -67,7 +67,7 @@ export default factories.createCoreController(
 export async function getFilledPages(query: any) {
   const { results: pages } = await strapi
     .service("plugin::sps-website-builder.page")
-    .find(query);
+    .find({ ...query, pagination: { limit: "-1" } });
   // console.log("🚀 ~ getFilledPages ~ pages:", pages);
 
   const filledPages: any = [];

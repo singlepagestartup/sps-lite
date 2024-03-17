@@ -27,7 +27,8 @@ export interface Props {
   placeholder?: string | null;
   initialValue?: any;
   options?: any[];
-  by?: string;
+  by?: any;
+  renderOptionValue?: (option: any) => string;
 }
 
 export const FormField = (props: Props) => {
