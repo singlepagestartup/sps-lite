@@ -1,15 +1,18 @@
-import { fetch } from "@sps/shared-frontend-utils-client";
+import { fetch as utilsFetch } from "@sps/shared-frontend-utils-client";
 import { populate, route, IModelExtended } from "../model";
 
 export const api = {
   findOne: async ({ id }: { id: number }) => {
-    return await fetch.api.findOne<IModelExtended>({
+    return await utilsFetch.api.findOne<IModelExtended>({
       id,
       model: route,
       populate,
     });
   },
   find: async () => {
-    return await fetch.api.find<IModelExtended>({ model: route, populate });
+    return await utilsFetch.api.find<IModelExtended>({
+      model: route,
+      populate,
+    });
   },
 };

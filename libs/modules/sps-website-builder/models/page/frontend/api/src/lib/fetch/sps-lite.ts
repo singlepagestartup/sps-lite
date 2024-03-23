@@ -1,6 +1,6 @@
 import {
   BACKEND_URL,
-  fetch,
+  fetch as utilsFetch,
   getBackendData,
   getFileUrl,
 } from "@sps/shared-frontend-utils-client";
@@ -132,14 +132,17 @@ async function getPage({ url, locale }: Params) {
 
 export const api = {
   findOne: async ({ id }: { id: number }) => {
-    return await fetch.api.findOne<IModelExtended>({
+    return await utilsFetch.api.findOne<IModelExtended>({
       id,
       model: route,
       populate,
     });
   },
   find: async () => {
-    return await fetch.api.find<IModelExtended>({ model: route, populate });
+    return await utilsFetch.api.find<IModelExtended>({
+      model: route,
+      populate,
+    });
   },
   getFiltersFromUrl,
   getByUrl,
