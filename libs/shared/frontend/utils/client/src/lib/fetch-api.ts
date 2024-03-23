@@ -81,12 +81,22 @@ async function find<T>(params: {
   model: string;
   populate: any;
   rootPath?: string;
+  filters?: any;
+  pagination?: any;
 }): Promise<TransformedApiArray<T>> {
-  const { populate, model, rootPath = "/api/sps-website-builder" } = params;
+  const {
+    populate,
+    model,
+    rootPath = "/api/sps-website-builder",
+    filters,
+    pagination,
+  } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
       populate,
+      filters,
+      pagination,
     },
     {
       encodeValuesOnly: true,

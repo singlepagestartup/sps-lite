@@ -2,6 +2,7 @@
 
 import React, {
   ChangeEvent,
+  FC,
   HTMLInputTypeAttribute,
   forwardRef,
   useEffect,
@@ -58,6 +59,7 @@ export interface Props {
   options?: any;
   by?: any;
   renderOptionValue?: (option: any) => string;
+  OptionComp?: FC<any>;
 }
 
 type RequiredInputProps = Props & {
@@ -311,6 +313,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         ref={inputRef}
         options={props.options ?? []}
         by={props.by ?? "title"}
+        OptionComp={props.OptionComp}
         renderOptionValue={props.renderOptionValue}
       />
     );

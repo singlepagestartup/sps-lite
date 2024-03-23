@@ -29,6 +29,7 @@ const RadioGroupInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
       onBlur={props.onBlur}
       value={props.value}
       id={props.id}
+      multiple={props.multiple}
     >
       <div className="radio-group">
         <Listbox.Options static={true} className="options">

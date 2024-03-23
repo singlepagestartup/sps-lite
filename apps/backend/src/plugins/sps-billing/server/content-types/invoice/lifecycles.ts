@@ -32,9 +32,13 @@ async function onSuccessPayment(event: any) {
           typeof strapi.service(relationConfig.target).onSuccessPayment ===
           "function"
         ) {
-          await strapi
-            .service(relationConfig.target)
-            .onSuccessPayment({ invoice: result });
+          try {
+            await strapi
+              .service(relationConfig.target)
+              .onSuccessPayment({ invoice: result });
+          } catch (error) {
+            console.log(`🚀 ~ onSuccessPayment ~ error:`, error);
+          }
         }
       }
     }

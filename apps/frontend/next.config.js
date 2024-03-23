@@ -18,6 +18,7 @@ function makeConfig() {
 
   let config = {
     reactStrictMode: false,
+    compress: true,
     images: {
       unoptimized: true,
       domains: [

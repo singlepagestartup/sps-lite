@@ -29,6 +29,7 @@ export interface Props {
   options?: any[];
   by?: any;
   renderOptionValue?: (option: any) => string;
+  OptionComp?: FC<any>;
 }
 
 export const FormField = (props: Props) => {
