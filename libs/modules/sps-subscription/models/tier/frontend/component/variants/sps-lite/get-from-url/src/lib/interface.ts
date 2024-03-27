@@ -1,7 +1,7 @@
 import { IModel } from "@sps/sps-subscription-models-tier-contracts";
 import { IModel as IModelExtended } from "@sps/sps-subscription-models-tier-contracts-extended";
 
-export const variant = "id-from-url" as const;
+export const variant = "get-from-url" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -10,8 +10,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
+  children?: any;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended;
-}
+export interface IComponentPropsExtended extends IComponentProps {}

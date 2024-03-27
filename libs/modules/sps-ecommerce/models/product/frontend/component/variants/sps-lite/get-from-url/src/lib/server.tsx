@@ -1,10 +1,12 @@
 "use server";
 import "server-only";
 
+import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
-import { headers } from "next/headers";
+import { Error } from "./Error";
 import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { Component } from "./Component";
+import { headers } from "next/headers";
 import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 // default is required for dynamic import
@@ -31,5 +33,9 @@ export default async function Server(props: IComponentProps) {
     return <></>;
   }
 
-  return <Component {...props} data={data} />;
+  if (props.children) {
+    return props.children({ data });
+  }
+
+  return <></>;
 }

@@ -1,10 +1,13 @@
+import { IComponentProps as ICheckoutFormComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-checkout-form";
+import { IComponentProps as IGetFromUrlComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-get-from-url";
 import { IComponentProps as IDefaultComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-default";
-import { IComponentProps as IIdFromUrlComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-id-from-url";
+
 import { IComponentProps as IInCartComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-in-cart";
 import { IComponentProps as IListComponentProps } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-list";
 
 export type IComponentProps =
-  | IIdFromUrlComponentProps
+  | ICheckoutFormComponentProps
+  | IGetFromUrlComponentProps
   | IDefaultComponentProps
   | IInCartComponentProps
   | IListComponentProps;

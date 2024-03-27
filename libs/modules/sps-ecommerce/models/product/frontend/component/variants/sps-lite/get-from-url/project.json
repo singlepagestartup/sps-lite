@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-get-from-url",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/get-from-url/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

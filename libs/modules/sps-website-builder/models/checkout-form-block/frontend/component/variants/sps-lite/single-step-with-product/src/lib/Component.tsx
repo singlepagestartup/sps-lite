@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component";
+import { IModel as IProduct } from "@sps/sps-ecommerce-models-product-contracts-extended";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,7 +12,17 @@ export function Component(props: IComponentPropsExtended) {
     >
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithProduct</p>
-      <Product isServer={props.isServer} variant="id-from-url" />
+      <Product isServer={props.isServer} variant="get-from-url">
+        {({ data }: { data: IProduct }) => {
+          return (
+            <Product
+              isServer={props.isServer}
+              variant="checkout-form"
+              data={data}
+            />
+          );
+        }}
+      </Product>
     </div>
   );
 }

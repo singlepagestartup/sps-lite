@@ -1,23 +1,26 @@
 "use client";
 import "client-only";
 
+import { Component } from "./Component";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { Skeleton } from "./Skeleton";
+import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
-import { Skeleton } from "./Skeleton";
-import { Component } from "./Component";
 
-// default is required for dynamic import
 export default function Client(props: IComponentProps) {
-  const id = 1;
-
   const { data, isFetching, isLoading, isUninitialized } =
     api.rtk.useFindOneQuery({
-      id: id,
+      id: props.data.id,
     });
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Skeleton {...props} />;
   }
 
-  return <Component {...props} data={data} />;
+  return (
+    <ErrorBoundary fallback={Error}>
+      <Component {...props} data={data} />
+    </ErrorBoundary>
+  );
 }

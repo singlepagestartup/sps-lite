@@ -33,9 +33,9 @@ export default async function Server(props: IComponentProps) {
     return <></>;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
-  );
+  if (props.children) {
+    return props.children({ data });
+  }
+
+  return <></>;
 }
