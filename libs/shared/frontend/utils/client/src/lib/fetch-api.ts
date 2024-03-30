@@ -8,8 +8,10 @@ async function findByIdAndName<T>(params: {
   id: number;
   name: string;
   populate: any;
+  tag?: string;
+  revalidate?: number;
 }): Promise<T> {
-  const { id, populate, name } = params;
+  const { id, populate, name, tag, revalidate = 3600 } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -20,9 +22,19 @@ async function findByIdAndName<T>(params: {
     },
   );
 
+  const fetchOptions = {
+    next: {
+      revalidate,
+    },
+  } as any;
+
+  if (tag) {
+    fetchOptions.next.tags = [tag];
+  }
+
   const res = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/components/${name}/${id}?${stringifiedQuery}`,
-    { next: { revalidate: 3600 } } as any,
+    fetchOptions as any,
   );
 
   const json = await res.json();
@@ -45,8 +57,17 @@ async function findOne<T>(params: {
   model: string;
   populate: any;
   rootPath?: string;
+  tag?: string;
+  revalidate?: number;
 }): Promise<T> {
-  const { id, populate, model, rootPath = "/api/sps-website-builder" } = params;
+  const {
+    id,
+    populate,
+    model,
+    rootPath = "/api/sps-website-builder",
+    tag,
+    revalidate = 3600,
+  } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -57,9 +78,19 @@ async function findOne<T>(params: {
     },
   );
 
+  const fetchOptions = {
+    next: {
+      revalidate,
+    },
+  } as any;
+
+  if (tag) {
+    fetchOptions.next.tags = [tag];
+  }
+
   const res = await fetch(
     `${BACKEND_URL}${rootPath}/${model}/${id}?${stringifiedQuery}`,
-    { next: { revalidate: 3600 } } as any,
+    fetchOptions,
   );
 
   const json = await res.json();
@@ -83,6 +114,8 @@ async function find<T>(params: {
   rootPath?: string;
   filters?: any;
   pagination?: any;
+  tag?: string;
+  revalidate?: number;
 }): Promise<TransformedApiArray<T>> {
   const {
     populate,
@@ -90,6 +123,8 @@ async function find<T>(params: {
     rootPath = "/api/sps-website-builder",
     filters,
     pagination,
+    tag,
+    revalidate = 3600,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
@@ -103,9 +138,19 @@ async function find<T>(params: {
     },
   );
 
+  const fetchOptions = {
+    next: {
+      revalidate,
+    },
+  } as any;
+
+  if (tag) {
+    fetchOptions.next.tags = [tag];
+  }
+
   const res = await fetch(
     `${BACKEND_URL}${rootPath}/${model}?${stringifiedQuery}`,
-    { next: { revalidate: 3600 } } as any,
+    fetchOptions,
   );
 
   const json = await res.json();
@@ -128,8 +173,16 @@ async function create<T>(params: {
   populate: any;
   rootPath?: string;
   data: any;
+  tag?: string;
+  revalidate?: number;
 }): Promise<T[]> {
-  const { populate, model, rootPath = "/api/sps-website-builder" } = params;
+  const {
+    populate,
+    model,
+    rootPath = "/api/sps-website-builder",
+    tag,
+    revalidate = 3600,
+  } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -142,9 +195,23 @@ async function create<T>(params: {
 
   const formData = prepareFormDataToSend(params.data);
 
+  const fetchOptions = {
+    next: {
+      revalidate,
+    },
+  } as any;
+
+  if (tag) {
+    fetchOptions.next.tags = [tag];
+  }
+
   const res = await fetch(
     `${BACKEND_URL}${rootPath}/${model}?${stringifiedQuery}`,
-    { next: { revalidate: 3600 }, method: "POST", body: formData } as any,
+    {
+      ...fetchOptions,
+      method: "POST",
+      body: formData,
+    } as any,
   );
 
   const json = await res.json();

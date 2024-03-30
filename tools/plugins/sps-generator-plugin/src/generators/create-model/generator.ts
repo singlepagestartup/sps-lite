@@ -158,7 +158,6 @@ async function createFrontendApi({
 }) {
   const apiLibraryName = `${baseName}-frontend-api`;
   const directory = `${baseDirectory}/${modelName}/frontend/api`;
-  const modelNameCapialized = names(modelName).className;
   const modelNamePluralized = modelName;
 
   const offsetFromRootProject = offsetFromRoot(directory);
@@ -189,7 +188,6 @@ async function createFrontendApi({
     template: "",
     module,
     model: modelName,
-    model_capitalized: modelNameCapialized,
     model_pluralized: modelNamePluralized,
     offset_from_root: offsetFromRootProject,
   });
@@ -220,7 +218,6 @@ async function createFrontendRedux({
 }) {
   const apiLibraryName = `${baseName}-frontend-redux`;
   const directory = `${baseDirectory}/${modelName}/frontend/redux`;
-  const modelNameCapialized = names(modelName).className;
   const modelNamePluralized = modelName;
 
   const offsetFromRootProject = offsetFromRoot(directory);
@@ -251,7 +248,6 @@ async function createFrontendRedux({
     template: "",
     module,
     model: modelName,
-    model_capitalized: modelNameCapialized,
     model_pluralized: modelNamePluralized,
     offset_from_root: offsetFromRootProject,
   });
@@ -282,7 +278,6 @@ async function createFrontendRootComponent({
 }) {
   const apiLibraryName = `${baseName}-frontend-component`;
   const directory = `${baseDirectory}/${modelName}/frontend/component/root`;
-  const modelNameCapialized = names(modelName).className;
   const modelNamePluralized = modelName;
 
   const offsetFromRootProject = offsetFromRoot(directory);
@@ -317,7 +312,6 @@ async function createFrontendRootComponent({
       template: "",
       module,
       model: modelName,
-      model_capitalized: modelNameCapialized,
       model_pluralized: modelNamePluralized,
       offset_from_root: offsetFromRootProject,
     },

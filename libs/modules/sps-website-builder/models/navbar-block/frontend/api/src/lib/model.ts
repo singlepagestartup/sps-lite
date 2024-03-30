@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "NavbarBlock";
+export const tag = "navbar-block";
 export const route = "components/page-blocks.navbar-block";
 export const populate = modelPopulate;

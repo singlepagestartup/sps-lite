@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "Slider";
+export const tag = "slider";
 export const route = "sliders";
 export const populate = modelPopulate;

@@ -7,6 +7,6 @@ import {
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "Attribute";
+export const tag = "attribute";
 export const route = "attributes";
 export const populate = modelPopulate;

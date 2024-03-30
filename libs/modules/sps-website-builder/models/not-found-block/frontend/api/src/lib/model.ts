@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "NotFoundBlock";
+export const tag = "not-found-block";
 export const route = "components/page-blocks.not-found-block";
 export const populate = modelPopulate;

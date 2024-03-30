@@ -3,5 +3,5 @@ export interface IModel {
 }
 
 export interface IModelExtended extends IModel {}
-export const tag = "Auth";
+export const tag = "auth";
 export const route = "auth";

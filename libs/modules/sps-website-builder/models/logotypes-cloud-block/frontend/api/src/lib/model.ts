@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "LogotypesCloudBlock";
+export const tag = "logotypes-cloud-block";
 export const route = "components/page-blocks.logotypes-cloud-block";
 export const populate = modelPopulate;

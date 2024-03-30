@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "CtaSectionBlock";
+export const tag = "cta-section-block";
 export const route = "components/page-blocks.cta-section-block";
 export const populate = modelPopulate;

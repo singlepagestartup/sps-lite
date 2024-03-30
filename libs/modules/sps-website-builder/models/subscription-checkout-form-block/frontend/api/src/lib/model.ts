@@ -12,6 +12,6 @@ export const variants = [...parentVariants] as const;
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "SubscriptionCheckoutFormBlock";
+export const tag = "subscription-checkout-form-block";
 export const route = "components/page-blocks.subscription-checkout-form-block";
 export const populate = modelPopulate;

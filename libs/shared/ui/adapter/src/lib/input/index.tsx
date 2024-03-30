@@ -143,7 +143,10 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   });
 
   const htmlNodeId: string = useMemo(() => {
-    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
+    return (
+      name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_") +
+      `${Math.random()}`
+    );
   }, [name]);
 
   async function setInitFiles(initialValue: any) {

@@ -7,6 +7,6 @@ import {
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "Logotype";
+export const tag = "logotype";
 export const route = "components/elements.logotype";
 export const populate = modelPopulate;

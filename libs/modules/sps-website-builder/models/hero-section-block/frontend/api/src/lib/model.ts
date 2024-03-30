@@ -7,6 +7,6 @@ import {
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "HeroSectionBlock";
+export const tag = "hero-section-block";
 export const route = "components/page-blocks.hero-section-block";
 export const populate = modelPopulate;
