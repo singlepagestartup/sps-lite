@@ -8,9 +8,15 @@ import { Component as Attribute } from "@sps/sps-ecommerce-models-attribute-fron
 import Link from "next/link";
 import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
 import { FormProvider, useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { globalActionsStore } from "@sps/store";
+import { useRouter } from "next/navigation";
 
 export function Component(props: IComponentPropsExtended) {
-  // const { me } = useMyProfile();
+  const router = useRouter();
+  const revalidatePromisesSusscess = globalActionsStore((state) =>
+    state.revalidatePromisesSusscess(),
+  );
 
   const [incrementInCart, { data: incrementInCartData }] =
     api.rtk.useIncrementInCartMutation();
@@ -47,6 +53,30 @@ export function Component(props: IComponentPropsExtended) {
 
     await decrementInCart({ id: props.data?.id, data });
   }
+
+  useEffect(() => {
+    if (incrementInCartData) {
+      if (revalidatePromisesSusscess) {
+        router.refresh();
+      }
+    }
+  }, [incrementInCartData, revalidatePromisesSusscess]);
+
+  useEffect(() => {
+    if (decrementInCartData) {
+      if (revalidatePromisesSusscess) {
+        router.refresh();
+      }
+    }
+  }, [decrementInCartData, revalidatePromisesSusscess]);
+
+  useEffect(() => {
+    if (removeFromCartData) {
+      if (revalidatePromisesSusscess) {
+        router.refresh();
+      }
+    }
+  }, [removeFromCartData, revalidatePromisesSusscess]);
 
   return (
     <div

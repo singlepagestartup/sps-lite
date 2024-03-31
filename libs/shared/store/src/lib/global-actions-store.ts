@@ -30,16 +30,23 @@ export interface State {
   stores: {
     [key in string]: RtkStore;
   };
+  revalidatePromises: {
+    [key in string]: string[];
+  };
 }
 
 export interface Actions {
   addStore: (store: RtkStore) => void;
   addAction: (action: RtkAction) => void;
+  addRevalidatePromise: (promise: string) => void;
+  removeRevalidatePromise: (promise: string) => void;
+  revalidatePromisesSusscess: () => boolean;
   reset: () => void;
 }
 
 const initialState: State = {
   stores: {},
+  revalidatePromises: {},
 };
 
 const name = "global-actions-store";
@@ -50,11 +57,25 @@ export const globalActionsStore = create<State & Actions>()(
       persist(
         (set: any, get: any) => ({
           ...initialState,
-          stores: {},
+          addRevalidatePromise: (promise: string) => {
+            set((state: State) => {
+              state.revalidatePromises[promise] = [];
+            });
+          },
+          removeRevalidatePromise: (promise: string) => {
+            set((state: State) => {
+              delete state.revalidatePromises[promise];
+            });
+          },
           addStore: (store: RtkStore) => {
             set((state: State) => {
               state["stores"][store.name] = store;
             });
+          },
+          revalidatePromisesSusscess: () => {
+            const revalidatePromises = get().revalidatePromises;
+
+            return Object.keys(revalidatePromises).length === 0;
           },
           addAction: (action: RtkAction) => {
             set((state: State) => {

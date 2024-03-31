@@ -5,7 +5,7 @@ import {
   transformResponseItem,
 } from "@sps/shared-frontend-utils-client";
 import { IModelExtended, route, tag, populate } from "../model";
-import { globalActionsStore } from "@sps/store";
+import { globalActionsStore, invalidateServerTag } from "@sps/store";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-ecommerce`),
@@ -56,13 +56,14 @@ export const subscription = (reduxStore: any) => {
   const triggeredActions: string[] = [];
   return globalActionsStore.subscribe((state) => {
     const spsEcommerceState = state.stores["sps-ecommerce/carts"];
-    spsEcommerceState?.actions?.forEach((action: any) => {
+    spsEcommerceState?.actions?.forEach(async (action: any) => {
       if (
         action.type === "carts/executeQuery/fulfilled" &&
         !triggeredActions.includes(action.meta.requestId)
       ) {
         reduxStore.dispatch(api.util.invalidateTags([tag]));
         triggeredActions.push(action.meta.requestId);
+        await invalidateServerTag({ tag });
       }
     });
   });

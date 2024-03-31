@@ -12,6 +12,7 @@ const notAllowedProps = [
   "isRequired",
   "isServer",
   "setLocalRef",
+  "htmlNodeId",
 ] as const;
 
 type ReturnType<T> = Omit<T, (typeof notAllowedProps)[number]>;

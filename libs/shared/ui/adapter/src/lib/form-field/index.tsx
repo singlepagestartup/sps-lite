@@ -1,6 +1,12 @@
 "use client";
 
-import { FC, HTMLInputTypeAttribute, useMemo } from "react";
+import {
+  FC,
+  HTMLInputTypeAttribute,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Label } from "../label";
 import { getFileUrl, cn } from "@sps/shared-frontend-utils-client";
 import { Input } from "../input";
@@ -35,10 +41,21 @@ export interface Props {
 export const FormField = (props: Props) => {
   const { label, name, className, ResetIcon } = props;
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
+  }, []);
+
   const translate: any = null;
 
   const htmlNodeId = useMemo(() => {
-    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
+    return (
+      name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_") +
+      `${Math.random().toString(36).substring(7)}`
+    );
   }, [name]);
 
   const {
@@ -66,6 +83,10 @@ export const FormField = (props: Props) => {
 
   const error = getInputErrors(errors)(name);
 
+  if (!isClient) {
+    return <></>;
+  }
+
   return (
     <div data-ui="form-field" className={cn("relative w-full", className)}>
       {htmlNodeId && label && props.type !== "checkbox" ? (
@@ -86,6 +107,7 @@ export const FormField = (props: Props) => {
       </div>
       <Input
         {...props}
+        htmlNodeId={htmlNodeId}
         label={props.label ?? undefined}
         placeholder={props.placeholder ?? undefined}
         className={props.className ?? undefined}

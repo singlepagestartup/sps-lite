@@ -59,6 +59,7 @@ export interface Props {
   options?: any;
   by?: any;
   renderOptionValue?: (option: any) => string;
+  htmlNodeId?: string;
   OptionComp?: FC<any>;
 }
 
@@ -93,6 +94,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [localRef, setLocalRef] = useState<any | null>(null);
   const translate: any = null;
+  const [isClient, setIsClient] = useState(false);
 
   const translatedLabel: string = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;
@@ -116,6 +118,12 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
   const ctxProps = useFormContext();
   const { control, setValue } = ctxProps;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
+  }, []);
 
   const getDefaultValue = (props: Props) => {
     if (["select", "radio"].includes(props.type)) {
@@ -142,12 +150,16 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     defaultValue: getDefaultValue(props),
   });
 
-  const htmlNodeId: string = useMemo(() => {
+  const htmlNodeId: string | undefined = useMemo(() => {
+    if (props.htmlNodeId) {
+      return props.htmlNodeId;
+    }
+
     return (
       name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_") +
-      `${Math.random()}`
+      `${Math.random().toString(36).substring(7)}`
     );
-  }, [name]);
+  }, [name, props]);
 
   async function setInitFiles(initialValue: any) {
     // second and other rerenders in repeatable
@@ -288,6 +300,10 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     placeholder: translatedPlaceholder,
     ...additionalAttributes,
   };
+
+  if (!isClient) {
+    return <></>;
+  }
 
   if (props.type === "text") {
     return <TextInput {...toComponentProps} ref={inputRef} />;
