@@ -37,7 +37,7 @@ export const api = createApi({
       },
 
       providesTags: (result) =>
-        result ? [{ type: "User", id: result.id }] : [],
+        result ? [{ type: "user", id: result.id }] : [],
     }),
   }),
 });
