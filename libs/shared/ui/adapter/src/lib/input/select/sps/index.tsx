@@ -1,6 +1,6 @@
 import { Transition, Listbox } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { FC, Fragment, forwardRef, useMemo } from "react";
+import { FC, Fragment, forwardRef, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { getFileUrl } from "@sps/shared-frontend-utils-client";
 import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
@@ -15,6 +15,14 @@ interface OptionRenderPropArg {
 const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { options, placeholder = "", renderOptionValue } = props;
 
+  const formInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (props.setLocalRef) {
+      props.setLocalRef(formInputRef);
+    }
+  }, [formInputRef]);
+
   return (
     <Listbox
       data-ui="input"
@@ -23,7 +31,7 @@ const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
       className={props.className || ""}
       by={props.by}
       disabled={props.disabled}
-      ref={ref}
+      ref={formInputRef}
       name={props.name}
       onChange={props.onChange}
       onBlur={props.onBlur}

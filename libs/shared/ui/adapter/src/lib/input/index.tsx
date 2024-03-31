@@ -196,10 +196,10 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
   useEffect(() => {
     if (["text", "range"].includes(type)) {
-      if (initialValue !== undefined && inputRef?.current) {
+      if (initialValue !== undefined && localRef?.current) {
         const evt = new Event("change");
-        inputRef.current.value = initialValue;
-        inputRef.current.dispatchEvent(evt);
+        localRef.current.value = initialValue;
+        localRef.current.dispatchEvent(evt);
         const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
 
         if (valueAsNumber) {
@@ -217,10 +217,10 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         }
       }
     } else if (["select", "radio"].includes(type)) {
-      if (initialValue !== undefined && inputRef?.current) {
+      if (initialValue !== undefined && localRef?.current) {
         const evt = new Event("change");
-        inputRef.current.value = initialValue;
-        inputRef.current.dispatchEvent(evt);
+        localRef.current.value = initialValue;
+        localRef.current.dispatchEvent(evt);
         onChange(evt);
       }
     } else if (["checkbox"].includes(type)) {
@@ -241,7 +241,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         setInitFiles(initialValue);
       }
     }
-  }, [JSON.stringify(initialValue), inputRef, localRef]);
+  }, [name, JSON.stringify(initialValue), inputRef, localRef]);
 
   /**
    * If using in repeatable component
@@ -306,7 +306,13 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   }
 
   if (props.type === "text") {
-    return <TextInput {...toComponentProps} ref={inputRef} />;
+    return (
+      <TextInput
+        {...toComponentProps}
+        ref={inputRef}
+        setLocalRef={setLocalRef}
+      />
+    );
   }
 
   if (props.type === "select") {
@@ -317,6 +323,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         options={props.options ?? []}
         by={props.by ?? "title"}
         renderOptionValue={props.renderOptionValue}
+        setLocalRef={setLocalRef}
       />
     );
   }
@@ -334,6 +341,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         by={props.by ?? "title"}
         OptionComp={props.OptionComp}
         renderOptionValue={props.renderOptionValue}
+        setLocalRef={setLocalRef}
       />
     );
   }

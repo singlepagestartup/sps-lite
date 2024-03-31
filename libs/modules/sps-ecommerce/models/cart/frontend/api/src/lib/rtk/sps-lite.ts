@@ -61,6 +61,11 @@ export const subscription = (reduxStore: any) => {
         action.type === "products/executeMutation/fulfilled" &&
         !triggeredActions.includes(action.meta.requestId)
       ) {
+        /**
+         * Order is important, because calling invalidateServerTag before
+         * triggeredActions.push will cause the action to be triggered again
+         * and infinite loop will be created
+         */
         reduxStore.dispatch(api.util.invalidateTags([tag]));
         triggeredActions.push(action.meta.requestId);
         await invalidateServerTag({ tag });
