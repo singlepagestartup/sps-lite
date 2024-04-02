@@ -26,6 +26,12 @@ This command takes changes from the project that is connected as `upstream`
 git pull upstream main
 ```
 
+If you get an error `fatal: refusing to merge unrelated histories`
+
+```bash
+git pull upstream main --allow-unrelated-histories
+```
+
 This command sends changes to your repository.
 
 ```bash

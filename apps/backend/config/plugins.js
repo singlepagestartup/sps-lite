@@ -65,16 +65,16 @@ module.exports = ({ env }) => {
     },
   };
 
-  const emailProvider = env("EMAIL_PROVIDER")
-    ? env("EMAIL_PROVIDER")
-    : "mailtrap";
+  const emailProvider = env("EMAIL_PROVIDER");
 
-  config.email = {
-    config: {
-      ...emailProviders[emailProvider](env),
-      appName: env("PROJECT_NAME", "Single Page Startup"),
-    },
-  };
+  if (emailProvider) {
+    config.email = {
+      config: {
+        ...emailProviders[emailProvider](env),
+        appName: env("PROJECT_NAME", "Single Page Startup"),
+      },
+    };
+  }
 
   if (env("AWS_S3_ACCESS_KEY")) {
     config.upload = {

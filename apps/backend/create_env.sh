@@ -99,3 +99,12 @@ then
 else
     echo "No AWS credentials found. Uploads saving to local storage"
 fi
+
+SEED_ENTITIES=true
+add_env "# SEED_ENTITIES" $SEED_ENTITIES
+
+MAKE_NEW_SEED=true
+add_env "# MAKE_NEW_SEED" $MAKE_NEW_SEED
+
+DUMP_UPLOADS=true
+add_env "# DUMP_UPLOADS" $DUMP_UPLOADS
