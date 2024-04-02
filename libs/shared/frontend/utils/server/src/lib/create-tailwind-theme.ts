@@ -3,10 +3,7 @@ import * as fs from "fs/promises";
 import * as fsExtra from "fs-extra";
 import { createWriteStream } from "fs";
 import path from "path";
-import {
-  getFileUrl,
-  snakeCaseToCamelCase,
-} from "@sps/shared-frontend-utils-client";
+import { snakeCaseToCamelCase } from "@sps/shared-frontend-utils-client";
 
 let iteration = 0;
 
@@ -159,3 +156,29 @@ export const getThemeFromBackend = async () => {
 };
 
 getThemeFromBackend();
+
+function getFileUrl(
+  obj: any,
+  options: {
+    size?: string;
+  } = {},
+) {
+  const { size } = options;
+  if (!obj) {
+    throw new Error("No file object provided");
+  }
+
+  const url = size ? obj.formats?.[size]?.url || obj.url : obj.url;
+
+  if (!url) {
+    throw new Error("No file url provided");
+  }
+
+  const httpsExists = url.match(/^https?:\/\//);
+
+  if (httpsExists) {
+    return url;
+  }
+
+  return `${process.env["NEXT_PUBLIC_BACKEND_URL"] || ""}${url}`;
+}
