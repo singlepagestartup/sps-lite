@@ -1,0 +1,8 @@
+{
+  "name": "@sps/startup-frontend-components",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/startup/frontend/components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

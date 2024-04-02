@@ -1297,6 +1297,12 @@
       "@sps/sps-website-builder-page-blocks-contracts": [
         "libs/modules/sps-website-builder/models/page-blocks/contracts/src/index.ts"
       ],
+      "@sps/startup-frontend": [
+        "libs/modules/startup/frontend/root/src/index.ts"
+      ],
+      "@sps/startup-frontend-components": [
+        "libs/modules/startup/frontend/components/src/index.ts"
+      ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"]
