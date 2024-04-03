@@ -30,7 +30,7 @@ export const pageBlocks = {
   "page-blocks.contact-section-block": ContactSectonBlock,
   "page-blocks.cta-section-block": CtaSectionBlock,
   "page-blocks.edit-subscription-block": EditSubscriptionBlock,
-  "page-blocks.faq-block": FaqBlock,
+  "page-blocks.faqs-block": FaqBlock,
   "page-blocks.features-section-block": FeaturesSectionBlock,
   "page-blocks.footer-block": FooterBlock,
   "page-blocks.header-section-block": HeaderSectionBlock,
