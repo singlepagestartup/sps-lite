@@ -1,6 +1,6 @@
 import { stringify } from "qs";
 import { gzip } from "pako";
-import { transformResponseItem } from "../transform-response-item";
+import { transformResponseItem } from "@sps/shared-utils";
 
 interface IFetchProps {
   url: string;

@@ -1,12 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import {
-  rtk,
-  BACKEND_URL,
-  transformResponseItem,
-  prepareFormDataToSend,
-} from "@sps/shared-frontend-utils-client";
+import { rtk, BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import { IModelExtended, route, tag, populate } from "../model";
 import { globalActionsStore } from "@sps/store";
+import {
+  prepareFormDataToSend,
+  transformResponseItem,
+} from "@sps/shared-utils";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-crm`),

@@ -16,7 +16,7 @@ import {
 } from "react";
 // import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { ExtendedInputProps } from "../..";
-import { getFileUrl } from "@sps/shared-frontend-utils-client";
+import { getFileUrl } from "@sps/shared-utils";
 
 type IBackendFile = any;
 

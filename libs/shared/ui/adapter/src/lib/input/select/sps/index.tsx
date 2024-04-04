@@ -2,7 +2,7 @@ import { Transition, Listbox } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, forwardRef, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
-import { getFileUrl } from "@sps/shared-frontend-utils-client";
+import { getFileUrl } from "@sps/shared-utils";
 import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
 import { Props } from "..";
 

@@ -1,6 +1,6 @@
 import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import Image from "next/image";
-import { getFileUrl } from "@sps/shared-frontend-utils-client";
+import { getFileUrl } from "@sps/shared-utils";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { Label } from "../label";
-import { getFileUrl, cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-utils-client";
 import { Input } from "../input";
 import { useController, useFormContext } from "react-hook-form";
 import { getInputErrors } from "../input/get-input-errors";
@@ -16,6 +16,7 @@ import { getInputErrors } from "../input/get-input-errors";
 import { Button } from "../button";
 import Image from "next/image";
 import type { IModel as IBackendFile } from "@sps/sps-file-storage-models-file-contracts";
+import { getFileUrl } from "@sps/shared-utils";
 
 export interface Props {
   label?: string | null;

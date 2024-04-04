@@ -1,4 +1,4 @@
-import { getFileUrl } from "@sps/shared-frontend-utils-client";
+import { getFileUrl } from "@sps/shared-utils";
 import { IComponentPropsExtended } from "./interface";
 import Image from "next/image";
 

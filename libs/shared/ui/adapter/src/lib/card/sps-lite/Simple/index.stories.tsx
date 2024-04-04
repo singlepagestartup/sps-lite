@@ -3,11 +3,12 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
 import Image from "next/image";
-import { BACKEND_URL, getFileUrl } from "@sps/shared-frontend-utils-client";
+import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import { HttpResponse, http } from "msw";
 import { useEffect } from "react";
 import axios from "axios";
 import { ICardProps, Card } from "../..";
+import { getFileUrl } from "@sps/shared-utils";
 
 type IBackendReview = any;
 

@@ -3,7 +3,7 @@ import * as fs from "fs/promises";
 import * as fsExtra from "fs-extra";
 import { createWriteStream } from "fs";
 import path from "path";
-import { snakeCaseToCamelCase } from "@sps/shared-frontend-utils-client";
+import { snakeCaseToCamelCase } from "@sps/shared-utils";
 
 let iteration = 0;
 

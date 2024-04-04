@@ -1,5 +1,5 @@
+import { getFileUrl } from "@sps/shared-utils";
 import axios from "axios";
-import { getFileUrl } from "./get-file-url";
 // import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 
 type IBackendFile = any;
