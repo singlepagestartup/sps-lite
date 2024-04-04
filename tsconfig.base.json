@@ -1054,6 +1054,12 @@
       "@sps/sps-website-builder-models-page-frontend-component": [
         "libs/modules/sps-website-builder/models/page/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-by-url": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-by-url/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-url-model-id/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/simple/src/index.ts"
       ],

@@ -9,9 +9,16 @@ export function Component(props: IComponentPropsExtended) {
       data-model="page"
       data-variant="simple"
     >
-      <Layout isServer={props.isServer}>
-        <PageBlocks {...props} variant="default" />
-      </Layout>
+      {props.data?.layout ? (
+        <Layout
+          isServer={props.isServer}
+          data={props.data.layout}
+          variant={props.data.layout.variant}
+        >
+          <PageBlocks {...props} variant="default" />
+        </Layout>
+      ) : null}
     </section>
   );
 }
+5;
