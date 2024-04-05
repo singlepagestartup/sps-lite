@@ -155,7 +155,7 @@ export const getThemeFromBackend = async () => {
   }
 };
 
-// getThemeFromBackend();
+getThemeFromBackend();
 
 function getFileUrl(
   obj: any,
