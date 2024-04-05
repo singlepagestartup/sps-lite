@@ -60,12 +60,12 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
       moveFilesToNewDirectory(
         tree,
         `${oldApiDir}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
-        `${project.root}/server/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
+        `${project.root}/${origin}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
       );
       moveFilesToNewDirectory(
         tree,
         `${oldApiDir}/src/lib/model.ts`,
-        `${project.root}/server/src/lib/model.ts`,
+        `${project.root}/${origin}/src/lib/model.ts`,
       );
     }
   }
