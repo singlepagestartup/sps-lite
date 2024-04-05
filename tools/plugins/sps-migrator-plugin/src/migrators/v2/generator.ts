@@ -22,6 +22,8 @@ import {
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { getAllFiles } from "../v1/generator";
 
+const origins = ["server", "client"] as const;
+
 export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   const projects = getProjects(tree);
 
@@ -31,10 +33,22 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
       return;
     }
 
+    if (project.name.includes("-block")) {
+      return;
+    }
+
     if (project.root.includes("/frontend/api")) {
+      for (const origin of origins) {
+        if (project.name.includes(`api-${origin}`)) {
+          return;
+        }
+      }
+
       apiProjects.push(project);
     }
   });
+
+  console.log(`🚀 ~ projects.forEach ~ apiProjects:`, apiProjects);
 
   for (const project of apiProjects) {
     const modelFileContent = tree
@@ -52,8 +66,6 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
     });
 
     tree.delete(`${project.root}/jest.config.ts`);
-
-    const origins = ["server", "client"] as const;
 
     for (const origin of origins) {
       await createFrontendApi({
