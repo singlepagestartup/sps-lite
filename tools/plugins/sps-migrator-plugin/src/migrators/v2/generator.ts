@@ -46,19 +46,28 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
     tree.delete(`${project.root}/jest.config.ts`);
 
-    await createFrontendApi({
-      tree,
-      baseName: project.name,
-      baseDirectory: project.root,
-      origin: "server",
-    });
+    const origins = ["server", "client"] as const;
 
-    // copy old api /lib/fetch and /lib/model.ts to new api
-    moveFilesToNewDirectory(
-      tree,
-      `${oldApiDir}/src/lib/fetch`,
-      `${project.root}/server/src/lib/fetch`,
-    );
+    for (const origin of origins) {
+      await createFrontendApi({
+        tree,
+        baseName: project.name,
+        baseDirectory: project.root,
+        origin,
+      });
+
+      // copy old api /lib/fetch and /lib/model.ts to new api
+      moveFilesToNewDirectory(
+        tree,
+        `${oldApiDir}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
+        `${project.root}/server/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
+      );
+      moveFilesToNewDirectory(
+        tree,
+        `${oldApiDir}/src/lib/model.ts`,
+        `${project.root}/server/src/lib/model.ts`,
+      );
+    }
   }
 
   console.log(`🚀 ~ v2Generator ~ apiProjects:`, apiProjects);
