@@ -51,6 +51,16 @@ export async function createModelGenerator(
     baseName,
     modelName,
     module,
+    origin: "server",
+  });
+
+  await createFrontendApi({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+    origin: "client",
   });
 
   await createFrontendRedux({
@@ -149,15 +159,17 @@ async function createFrontendApi({
   baseName,
   modelName,
   module,
+  origin,
 }: {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
   modelName: string;
   module: string;
+  origin: "server" | "client";
 }) {
-  const apiLibraryName = `${baseName}-frontend-api`;
-  const directory = `${baseDirectory}/${modelName}/frontend/api`;
+  const apiLibraryName = `${baseName}-frontend-api-${origin}`;
+  const directory = `${baseDirectory}/${modelName}/frontend/api/${origin}`;
   const modelNamePluralized = modelName;
 
   const offsetFromRootProject = offsetFromRoot(directory);
@@ -184,13 +196,18 @@ async function createFrontendApi({
     },
   });
 
-  generateFiles(tree, path.join(__dirname, `files/frontend/api`), directory, {
-    template: "",
-    module,
-    model: modelName,
-    model_pluralized: modelNamePluralized,
-    offset_from_root: offsetFromRootProject,
-  });
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/frontend/api/${origin}`),
+    directory,
+    {
+      template: "",
+      module,
+      model: modelName,
+      model_pluralized: modelNamePluralized,
+      offset_from_root: offsetFromRootProject,
+    },
+  );
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];

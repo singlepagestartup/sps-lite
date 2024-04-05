@@ -1,0 +1,12 @@
+import type { IModel as IParentModel } from "@sps/<%= module %>-models-<%= model %>-contracts";
+import {
+  IModel as IParentModelExtended,
+  populate as modelPopulate,
+} from "@sps/<%= module %>-models-<%= model %>-contracts-extended";
+
+export interface IModel extends IParentModel {}
+export interface IModelExtended extends IParentModelExtended {}
+
+export const tag = "<%= model %>";
+export const route = "<%= model_pluralized %>";
+export const populate = modelPopulate;
