@@ -191,6 +191,14 @@ async function createFrontendApi({
       `${directory}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
       {
         template: "",
+      },
+    );
+    generateFiles(
+      tree,
+      path.join(__dirname, `files/model.ts`),
+      `${directory}/src/lib/model.ts`,
+      {
+        template: "",
         module: moduleName,
         model: modelName,
         model_pluralized: modelName,
