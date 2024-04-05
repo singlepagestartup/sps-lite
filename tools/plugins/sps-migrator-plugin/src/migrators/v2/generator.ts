@@ -29,13 +29,13 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("review")) {
-      return;
-    }
+    // if (!project.name.includes("review")) {
+    //   return;
+    // }
 
-    if (project.name.includes("-block")) {
-      return;
-    }
+    // if (project.name.includes("-block")) {
+    //   return;
+    // }
 
     if (project.root.includes("/frontend/api")) {
       for (const origin of origins) {
@@ -47,8 +47,6 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
       apiProjects.push(project);
     }
   });
-
-  console.log(`🚀 ~ projects.forEach ~ apiProjects:`, apiProjects);
 
   for (const project of apiProjects) {
     const modelFileContent = tree
