@@ -5,6 +5,7 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
+import { cookies } from "next/headers";
 
 async function findByIdAndName<T>(params: {
   id: number;
@@ -128,6 +129,13 @@ async function find<T>(params: {
     tag,
     revalidate = 3600,
   } = params;
+
+  const cookiesList = cookies();
+  // console.log(`🚀 ~ cookiesList:`, cookiesList);
+
+  // cookiesList.getAll().map((cookie) => {
+  //   console.log(`🚀 ~ cookiesList.getAll ~ cookie:`, cookie);
+  // });
 
   const stringifiedQuery = QueryString.stringify(
     {

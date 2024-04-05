@@ -1,7 +1,7 @@
 {
   "name": "@sps/sps-ecommerce-models-product-frontend-api",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/api/src",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/old-api/src",
   "projectType": "library",
   "tags": [],
   "targets": {

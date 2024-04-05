@@ -320,7 +320,13 @@
         "libs/modules/sps-ecommerce/models/product/contracts/extended/src/index.ts"
       ],
       "@sps/sps-ecommerce-models-product-frontend-api": [
-        "libs/modules/sps-ecommerce/models/product/frontend/api/src/index.ts"
+        "libs/modules/sps-ecommerce/models/product/frontend/old-api/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-models-product-frontend-api-client": [
+        "libs/modules/sps-ecommerce/models/product/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-ecommerce-models-product-frontend-api-server": [
+        "libs/modules/sps-ecommerce/models/product/frontend/api/server/src/index.ts"
       ],
       "@sps/sps-ecommerce-models-product-frontend-component": [
         "libs/modules/sps-ecommerce/models/product/frontend/component/root/src/index.ts"
