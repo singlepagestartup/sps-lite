@@ -4,11 +4,20 @@ import {
   generateFiles,
   getProjects,
   moveFilesToNewDirectory,
+  offsetFromRoot,
   Tree,
+  updateJson,
+  updateProjectConfiguration,
 } from "@nx/devkit";
 import { moveGenerator } from "@nx/workspace";
-import * as path from "path";
 import { V2GeneratorSchema } from "./schema";
+import { Linter } from "@nx/eslint";
+import path from "path";
+import {
+  libraryGenerator as reactLibraryGenerator,
+  SupportedStyles,
+} from "@nx/react";
+import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 
 export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   const projects = getProjects(tree);
@@ -24,20 +33,33 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
     }
   });
 
-  apiProjects.forEach((project) => {
+  for (const project of apiProjects) {
+    const oldApiDir = project.root.replace("frontend/api", "frontend/old-api");
+
     moveGenerator(tree, {
       projectName: project.name,
-      destination: project.root.replace("frontend/api", "frontend/old-api"),
+      destination: oldApiDir,
       updateImportPath: false,
       newProjectName: project.name.replace("api", "old-api"),
       projectNameAndRootFormat: "as-provided",
     });
-    // moveFilesToNewDirectory(
-    //   tree,
-    //   project.root,
-    //   project.root.replace("frontend/api", "frontend/old-api"),
-    // );
-  });
+
+    tree.delete(`${project.root}/jest.config.ts`);
+
+    await createFrontendApi({
+      tree,
+      baseName: project.name,
+      baseDirectory: project.root,
+      origin: "server",
+    });
+
+    // copy old api /lib/fetch and /lib/model.ts to new api
+    moveFilesToNewDirectory(
+      tree,
+      `${oldApiDir}/src/lib/fetch`,
+      `${project.root}/server/src/lib/fetch`,
+    );
+  }
 
   console.log(`🚀 ~ v2Generator ~ apiProjects:`, apiProjects);
 
@@ -52,3 +74,54 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 }
 
 export default v2Generator;
+
+async function createFrontendApi({
+  tree,
+  baseDirectory,
+  baseName,
+  origin,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  origin: "server" | "client";
+}) {
+  const apiLibraryName = `${baseName}-${origin}`;
+  const directory = `${baseDirectory}/${origin}`;
+
+  const libraryOptions = {
+    name: apiLibraryName,
+    directory,
+    linter: "none" as Linter.EsLint,
+    minimal: true,
+    style: "none" as SupportedStyles,
+    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
+    strict: true,
+  };
+
+  await reactLibraryGenerator(tree, libraryOptions);
+
+  updateProjectConfiguration(tree, apiLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+    },
+  });
+
+  generateFiles(tree, path.join(__dirname, `files/${origin}`), directory, {
+    template: "",
+  });
+
+  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
+    json.references = [];
+    delete json.files;
+    delete json.include;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/tsconfig.lib.json`);
+}
