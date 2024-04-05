@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-crm-models-form-frontend-api";
+import { api } from "@sps/sps-crm-models-form-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Button } from "@sps/ui-adapter";

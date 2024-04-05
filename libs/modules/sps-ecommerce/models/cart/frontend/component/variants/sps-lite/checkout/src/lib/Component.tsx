@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { Component as Cart } from "@sps/sps-ecommerce-models-cart-frontend-component-variants-sps-lite-default";
-import { api } from "@sps/sps-ecommerce-models-cart-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-cart-frontend-api-client";
 import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-component";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, Input } from "@sps/ui-adapter";

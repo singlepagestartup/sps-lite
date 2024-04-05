@@ -4,7 +4,7 @@ import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
 import { populate as pagePopulate } from "@sps/sps-website-builder-models-page-contracts-extended";
 import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
 import { Component } from "@sps/sps-website-builder-page-blocks-component";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 
 export async function NotFoundPage() {
   const pages = (await getBackendData({

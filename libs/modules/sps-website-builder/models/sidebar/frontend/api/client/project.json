@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-sidebar-frontend-api-client",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/sidebar/frontend/api/client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

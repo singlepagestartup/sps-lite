@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 
-import { api } from "@sps/sps-website-builder-models-page-frontend-api";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 import { Component } from "@sps/sps-website-builder-models-page-frontend-component";
 
 export async function generateStaticParams() {

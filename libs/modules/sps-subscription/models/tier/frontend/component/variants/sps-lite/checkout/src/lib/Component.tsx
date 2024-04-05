@@ -3,7 +3,7 @@
 import { Button, Input } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { FormProvider, useForm } from "react-hook-form";
-import { api } from "@sps/sps-subscription-models-tier-frontend-api";
+import { api } from "@sps/sps-subscription-models-tier-frontend-api-client";
 import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {

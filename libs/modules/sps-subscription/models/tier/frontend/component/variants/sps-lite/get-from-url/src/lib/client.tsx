@@ -6,10 +6,9 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-subscription-models-tier-frontend-api";
+import { api } from "@sps/sps-subscription-models-tier-frontend-api-client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export default function Client(props: IComponentProps) {
   const params = useParams();
@@ -25,15 +24,15 @@ export default function Client(props: IComponentProps) {
 
   useEffect(() => {
     if (params) {
-      pageApi.fetch
-        .getUrlModelId({
-          url: params.url,
-          locale: params.locale,
-          modelName: "tier",
-        })
-        .then((res) => {
-          setId(res);
-        });
+      // pageApi.fetch
+      //   .getUrlModelId({
+      //     url: params.url,
+      //     locale: params.locale,
+      //     modelName: "tier",
+      //   })
+      //   .then((res) => {
+      //     setId(res);
+      //   });
     }
   }, [params]);
 

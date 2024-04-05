@@ -29,7 +29,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    // if (!project.name.includes("review")) {
+    // if (!project.name.includes("form-frontend")) {
     //   return;
     // }
 
@@ -229,7 +229,12 @@ function updateApiImport(
     return;
   }
 
-  if (file.path.includes("client.tsx") || file.path.includes("redux.tsx")) {
+  if (
+    file.path.includes("client.tsx") ||
+    file.path.includes("redux.tsx") ||
+    file.path.includes("redux") ||
+    file.content.includes(`use client`)
+  ) {
     const replaceProjectName = file.content.replace(
       new RegExp(project.name, "g"),
       `${project.name}-client`,

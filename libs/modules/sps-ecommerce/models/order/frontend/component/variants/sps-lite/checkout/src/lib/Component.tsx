@@ -1,6 +1,6 @@
 "use client";
 
-import { api } from "@sps/sps-ecommerce-models-order-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-order-frontend-api-client";
 import { IComponentPropsExtended } from "./interface";
 import { Component as OrderProduct } from "@sps/sps-ecommerce-models-order-product-frontend-component";
 import { FormProvider, useForm } from "react-hook-form";

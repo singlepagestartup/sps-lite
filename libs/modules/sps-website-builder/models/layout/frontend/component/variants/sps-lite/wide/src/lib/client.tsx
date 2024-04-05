@@ -5,10 +5,9 @@ import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { Error } from "./Error";
 import { IComponentProps, IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder-models-layout-frontend-api";
+import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 
 export default function Client(props: IComponentProps) {
   const pathname = usePathname();
@@ -25,9 +24,9 @@ export default function Client(props: IComponentProps) {
 
   useEffect(() => {
     if (params) {
-      pageApi.fetch.getByUrl(params as any).then((res) => {
-        setPage(res);
-      });
+      // pageApi.fetch.getByUrl(params as any).then((res) => {
+      //   setPage(res);
+      // });
     }
   }, [JSON.stringify(params)]);
 
