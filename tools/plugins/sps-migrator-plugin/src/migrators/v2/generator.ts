@@ -9,7 +9,7 @@ import {
   updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
-import { moveGenerator } from "@nx/workspace";
+import { copyFile, moveGenerator } from "@nx/workspace";
 import { V2GeneratorSchema } from "./schema";
 import { Linter } from "@nx/eslint";
 import path from "path";
@@ -34,6 +34,10 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   });
 
   for (const project of apiProjects) {
+    const modelFileContent = tree
+      .read(`${project.root}/src/lib/model.ts`)
+      .toString();
+
     const oldApiDir = project.root.replace("frontend/api", "frontend/old-api");
 
     moveGenerator(tree, {
@@ -62,11 +66,18 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
         `${oldApiDir}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
         `${project.root}/${origin}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
       );
-      moveFilesToNewDirectory(
-        tree,
-        `${oldApiDir}/src/lib/model.ts`,
-        `${project.root}/${origin}/src/lib/model.ts`,
-      );
+
+      if (modelFileContent) {
+        tree.write(
+          `${project.root}/${origin}/src/lib/model.ts`,
+          modelFileContent,
+        );
+      }
+      // moveFilesToNewDirectory(
+      //   tree,
+      //   `${oldApiDir}/src/lib/model.ts`,
+      //   `${project.root}/${origin}/src/lib/model.ts`,
+      // );
     }
   }
 
