@@ -49,6 +49,8 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   });
 
   for (const project of apiProjects) {
+    console.log(`🚀 ~ v2Generator ~ migrating:`, project.name);
+
     const modelFileContent = tree
       .read(`${project.root}/src/lib/model.ts`)
       ?.toString();
