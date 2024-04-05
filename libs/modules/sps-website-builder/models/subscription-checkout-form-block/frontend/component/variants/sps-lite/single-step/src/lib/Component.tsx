@@ -8,15 +8,10 @@
 // import { useEffect } from "react";
 // import { useRouter } from "next/navigation";
 // import { Button } from "@sps/ui-adapter";
-// import { useGetPageUrlModelId } from "@sps/hooks";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   // const router = useRouter();
-  // const id = useGetPageUrlModelId({
-  //   modelName: "tier",
-  //   page: props.page,
-  // });
 
   // const {
   //   data: tier,
