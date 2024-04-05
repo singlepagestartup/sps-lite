@@ -155,7 +155,7 @@ async function createFrontendApi({
     },
   });
 
-  generateFiles(tree, path.join(__dirname, `files/${origin}`), directory, {
+  generateFiles(tree, path.join(__dirname, `files/${origin}/src`), directory, {
     template: "",
   });
 
