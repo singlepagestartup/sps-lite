@@ -29,13 +29,13 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    // if (!project.name.includes("invoice")) {
-    //   return;
-    // }
+    if (!project.name.includes("form-frontend")) {
+      return;
+    }
 
-    // if (project.name.includes("-block")) {
-    //   return;
-    // }
+    if (project.name.includes("-block")) {
+      return;
+    }
 
     if (project.root.includes("/frontend/api")) {
       for (const origin of origins) {
@@ -232,7 +232,8 @@ function updateApiImport(
   if (
     file.path.includes("client.tsx") ||
     file.path.includes("redux.tsx") ||
-    file.path.includes("redux")
+    file.path.includes("redux") ||
+    file.content.includes(`use client`)
   ) {
     const replaceProjectName = file.content.replace(
       new RegExp(project.name, "g"),
