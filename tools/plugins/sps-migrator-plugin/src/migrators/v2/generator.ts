@@ -11,7 +11,7 @@ import {
   updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
-import { copyFile, moveGenerator } from "@nx/workspace";
+import { copyFile, moveGenerator, removeGenerator } from "@nx/workspace";
 import { V2GeneratorSchema } from "./schema";
 import { Linter } from "@nx/eslint";
 import path from "path";
@@ -112,6 +112,12 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
         }
       }
     }
+
+    removeGenerator(tree, {
+      projectName: project.name.replace("api", "old-api"),
+      skipFormat: true,
+      forceRemove: false,
+    });
   }
 
   await formatFiles(tree);
@@ -155,9 +161,14 @@ async function createFrontendApi({
     },
   });
 
-  generateFiles(tree, path.join(__dirname, `files/${origin}/src`), directory, {
-    template: "",
-  });
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/${origin}/src`),
+    `${directory}/src`,
+    {
+      template: "",
+    },
+  );
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
