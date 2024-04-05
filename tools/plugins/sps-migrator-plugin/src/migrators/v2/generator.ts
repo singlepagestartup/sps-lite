@@ -113,7 +113,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
       }
     }
 
-    removeGenerator(tree, {
+    await removeGenerator(tree, {
       projectName: project.name.replace("api", "old-api"),
       skipFormat: true,
       forceRemove: false,
