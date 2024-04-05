@@ -195,8 +195,8 @@ async function createFrontendApi({
     );
     generateFiles(
       tree,
-      path.join(__dirname, `files/model.ts`),
-      `${directory}/src/lib/model.ts`,
+      path.join(__dirname, `files/model`),
+      `${directory}/src/lib`,
       {
         template: "",
         module: moduleName,
