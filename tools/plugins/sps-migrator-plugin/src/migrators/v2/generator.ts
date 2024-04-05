@@ -27,7 +27,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("models-order-frontend")) {
+    if (!project.name.includes("input-option")) {
       return;
     }
 
@@ -39,7 +39,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   for (const project of apiProjects) {
     const modelFileContent = tree
       .read(`${project.root}/src/lib/model.ts`)
-      .toString();
+      ?.toString();
 
     const oldApiDir = project.root.replace("frontend/api", "frontend/old-api");
 
@@ -61,6 +61,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
         baseName: project.name,
         baseDirectory: project.root,
         origin,
+        copyApi: !modelFileContent ? true : false,
       });
 
       // copy old api /lib/fetch and /lib/model.ts to new api
@@ -130,12 +131,16 @@ async function createFrontendApi({
   baseDirectory,
   baseName,
   origin,
+  copyApi,
 }: {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
   origin: "server" | "client";
+  copyApi?: boolean;
 }) {
+  console.log(`🚀 ~ baseName:`, baseName);
+
   const apiLibraryName = `${baseName}-${origin}`;
   const directory = `${baseDirectory}/${origin}`;
 
@@ -169,6 +174,29 @@ async function createFrontendApi({
       template: "",
     },
   );
+  if (copyApi) {
+    // replace everything from "models-" to the end of the string
+    const moduleName = baseName.replace("@sps/", "").replace(/-models-.+$/, "");
+    const modelName = baseName
+      .replace("@sps/", "")
+      .replace(`${moduleName}-models-`, "")
+      .replace("-frontend-api", "");
+
+    console.log(`🚀 ~ modelName:`, modelName);
+    // console.log(`🚀 ~ moduleName:`, moduleName);
+
+    generateFiles(
+      tree,
+      path.join(__dirname, `files/${origin === "server" ? "fetch" : "rtk"}`),
+      `${directory}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
+      {
+        template: "",
+        module: moduleName,
+        model: modelName,
+        model_pluralized: modelName,
+      },
+    );
+  }
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
