@@ -6,6 +6,7 @@ import {
   moveFilesToNewDirectory,
   Tree,
 } from "@nx/devkit";
+import { moveGenerator } from "@nx/workspace";
 import * as path from "path";
 import { V2GeneratorSchema } from "./schema";
 
@@ -24,11 +25,18 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   });
 
   apiProjects.forEach((project) => {
-    moveFilesToNewDirectory(
-      tree,
-      project.root,
-      project.root.replace("frontend/api", "frontend/old-api"),
-    );
+    moveGenerator(tree, {
+      projectName: project.name,
+      destination: project.root.replace("frontend/api", "frontend/old-api"),
+      updateImportPath: false,
+      newProjectName: project.name.replace("api", "old-api"),
+      projectNameAndRootFormat: "as-provided",
+    });
+    // moveFilesToNewDirectory(
+    //   tree,
+    //   project.root,
+    //   project.root.replace("frontend/api", "frontend/old-api"),
+    // );
   });
 
   console.log(`🚀 ~ v2Generator ~ apiProjects:`, apiProjects);
