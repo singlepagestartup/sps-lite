@@ -5,6 +5,8 @@ import {
   getProjects,
   moveFilesToNewDirectory,
   offsetFromRoot,
+  readCachedProjectGraph,
+  readProjectConfiguration,
   Tree,
   updateJson,
   updateProjectConfiguration,
@@ -18,6 +20,7 @@ import {
   SupportedStyles,
 } from "@nx/react";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import { getAllFiles } from "../v1/generator";
 
 export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   const projects = getProjects(tree);
@@ -79,17 +82,38 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
       //   `${project.root}/${origin}/src/lib/model.ts`,
       // );
     }
+
+    const graph = readCachedProjectGraph();
+    const dependenciesProjectNames = Object.keys(graph.dependencies);
+    const toUpdateImportsProjects = [];
+
+    dependenciesProjectNames.forEach((dependencyProjectName) => {
+      graph.dependencies[dependencyProjectName].forEach((dependency) => {
+        if (dependency.target === project.name) {
+          toUpdateImportsProjects.push(dependency.source);
+        }
+      });
+    });
+
+    for (const toUpdateImportsProject of toUpdateImportsProjects) {
+      const toUpdateImportsProjectConfig = readProjectConfiguration(
+        tree,
+        toUpdateImportsProject,
+      );
+
+      const projectFiles = getAllFiles({
+        tree,
+        root: toUpdateImportsProjectConfig.root,
+      });
+
+      for (const projectFile of projectFiles) {
+        if (projectFile.content?.includes(project.name)) {
+          updateApiImport(tree, projectFile, project);
+        }
+      }
+    }
   }
 
-  console.log(`🚀 ~ v2Generator ~ apiProjects:`, apiProjects);
-
-  // addProjectConfiguration(tree, options.name, {
-  //   root: projectRoot,
-  //   projectType: "library",
-  //   sourceRoot: `${projectRoot}/src`,
-  //   targets: {},
-  // });
-  // generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
   await formatFiles(tree);
 }
 
@@ -144,4 +168,32 @@ async function createFrontendApi({
   });
 
   tree.delete(`${directory}/tsconfig.lib.json`);
+}
+
+function updateApiImport(
+  tree: Tree,
+  file: { path: string; content: string },
+  project: any,
+) {
+  if (!file.content.includes(`import { api } from "${project.name}";`)) {
+    return;
+  }
+
+  if (file.path.includes("client.tsx") || file.path.includes("redux.tsx")) {
+    const replaceProjectName = file.content.replace(
+      new RegExp(project.name, "g"),
+      `${project.name}-client`,
+    );
+
+    tree.write(file.path, replaceProjectName);
+  }
+
+  if (file.path.includes("server.tsx")) {
+    const replaceProjectName = file.content.replace(
+      new RegExp(project.name, "g"),
+      `${project.name}-server`,
+    );
+
+    tree.write(file.path, replaceProjectName);
+  }
 }

@@ -392,7 +392,7 @@ function updateServerExportToFetch(tree: Tree, projectRoot: string) {
   tree.write(filePath, replacedExport);
 }
 
-function getAllFiles({
+export function getAllFiles({
   tree,
   root,
 }: {
