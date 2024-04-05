@@ -191,6 +191,7 @@ async function createFrontendApi({
       `${directory}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
       {
         template: "",
+        module: moduleName,
       },
     );
     generateFiles(

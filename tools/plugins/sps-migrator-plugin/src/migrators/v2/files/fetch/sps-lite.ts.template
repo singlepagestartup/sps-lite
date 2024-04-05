@@ -7,14 +7,14 @@ export const api = {
       id,
       model: route,
       populate,
-      rootPath: "/api/sps-crm",
+      rootPath: "/api/<%= module %>",
     });
   },
   findMany: async () => {
     return await utilsFetch.api.find<IModelExtended>({
       model: route,
       populate,
-      rootPath: "/api/sps-crm",
+      rootPath: "/api/<%= module %>",
     });
   },
 };

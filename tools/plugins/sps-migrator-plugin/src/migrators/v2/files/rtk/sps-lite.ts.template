@@ -3,7 +3,7 @@ import { rtk, BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import { IModelExtended, route, tag, populate } from "../model";
 
 export const api = createApi({
-  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-crm`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/<%= module %>`),
   tagTypes: [tag],
   reducerPath: route,
   endpoints: (build) => ({
