@@ -4,6 +4,11 @@
       "factory": "./src/migrators/v1/generator",
       "schema": "./src/migrators/v1/schema.json",
       "description": "v1 generator"
+    },
+    "v2": {
+      "factory": "./src/migrators/v2/generator",
+      "schema": "./src/migrators/v2/schema.json",
+      "description": "v2 generator"
     }
   }
 }
