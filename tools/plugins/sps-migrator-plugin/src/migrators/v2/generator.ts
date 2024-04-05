@@ -27,7 +27,7 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("input-option")) {
+    if (!project.name.includes("review")) {
       return;
     }
 
@@ -77,11 +77,6 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
           modelFileContent,
         );
       }
-      // moveFilesToNewDirectory(
-      //   tree,
-      //   `${oldApiDir}/src/lib/model.ts`,
-      //   `${project.root}/${origin}/src/lib/model.ts`,
-      // );
     }
 
     const graph = readCachedProjectGraph();
@@ -139,8 +134,6 @@ async function createFrontendApi({
   origin: "server" | "client";
   copyApi?: boolean;
 }) {
-  console.log(`🚀 ~ baseName:`, baseName);
-
   const apiLibraryName = `${baseName}-${origin}`;
   const directory = `${baseDirectory}/${origin}`;
 
@@ -181,9 +174,6 @@ async function createFrontendApi({
       .replace("@sps/", "")
       .replace(`${moduleName}-models-`, "")
       .replace("-frontend-api", "");
-
-    console.log(`🚀 ~ modelName:`, modelName);
-    // console.log(`🚀 ~ moduleName:`, moduleName);
 
     generateFiles(
       tree,
