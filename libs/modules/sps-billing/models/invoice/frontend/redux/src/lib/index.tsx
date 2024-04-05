@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-billing-models-invoice-frontend-api";
+import { api } from "@sps/sps-billing-models-invoice-frontend-api-client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

@@ -6,7 +6,7 @@ import { Component as File } from "@sps/sps-file-storage-models-file-frontend-co
 import { Button, FormField } from "@sps/ui-adapter";
 import { Component as Attribute } from "@sps/sps-ecommerce-models-attribute-frontend-component";
 import Link from "next/link";
-import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { globalActionsStore } from "@sps/store";

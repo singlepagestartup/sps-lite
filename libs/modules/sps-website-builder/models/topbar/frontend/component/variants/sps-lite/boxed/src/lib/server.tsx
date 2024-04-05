@@ -4,7 +4,7 @@ import "server-only";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/sps-website-builder-models-topbar-frontend-api";
+import { api } from "@sps/sps-website-builder-models-topbar-frontend-api-server";
 import { Component } from "./Component";
 
 // default is required for dynamic import

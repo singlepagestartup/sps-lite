@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, Input } from "@sps/ui-adapter";
-import { api } from "@sps/sps-ecommerce-models-product-frontend-api";
+import { api } from "@sps/sps-ecommerce-models-product-frontend-api-client";
 import { Component as Invoice } from "@sps/sps-billing-models-invoice-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {

@@ -3,7 +3,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { IComponentPropsExtended } from "./interface";
 import { Button, Input } from "@sps/ui-adapter";
-import { api } from "@sps/sps-subscription-models-subscription-frontend-api";
+import { api } from "@sps/sps-subscription-models-subscription-frontend-api-client";
 
 export function Component(props: IComponentPropsExtended) {
   const [updateByEmail, { data: updateByEmailData }] =

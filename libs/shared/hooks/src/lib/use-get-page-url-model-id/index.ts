@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
-import { api as pageApi } from "@sps/sps-website-builder-models-page-frontend-api";
 const R = require("ramda");
 
 export function useGetPageUrlModelId({
@@ -21,14 +20,15 @@ export function useGetPageUrlModelId({
       return;
     }
 
-    const pageUrlFilters = pageApi.fetch.getFiltersFromUrl({ page, params });
+    // const pageUrlFilters = pageApi.fetch.getFiltersFromUrl({ page, params });
+    const pageUrlFilters = [];
     const targetFilter = pageUrlFilters.find(
       (filter) => filter[modelName] !== undefined,
     );
 
-    if (R.path([modelName, "id", "$in", 0], targetFilter)) {
-      return targetFilter[modelName].id["$in"][0];
-    }
+    // if (R.path([modelName, "id", "$in", 0], targetFilter)) {
+    //   return targetFilter[modelName].id["$in"][0];
+    // }
 
     return;
   }, [page, params, modelName]);
