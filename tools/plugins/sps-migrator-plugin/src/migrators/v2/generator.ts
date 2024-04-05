@@ -29,13 +29,13 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
   const apiProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("form-frontend")) {
-      return;
-    }
+    // if (!project.name.includes("form-frontend")) {
+    //   return;
+    // }
 
-    if (project.name.includes("-block")) {
-      return;
-    }
+    // if (project.name.includes("-block")) {
+    //   return;
+    // }
 
     if (project.root.includes("/frontend/api")) {
       for (const origin of origins) {
