@@ -22,24 +22,38 @@ import {
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { getAllFiles } from "../v1/generator";
 
+const origins = ["server", "client"] as const;
+
 export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
   const projects = getProjects(tree);
 
   const apiProjects = [];
   projects.forEach((project) => {
-    if (!project.name.includes("models-order-frontend")) {
-      return;
-    }
+    // if (!project.name.includes("review")) {
+    //   return;
+    // }
+
+    // if (project.name.includes("-block")) {
+    //   return;
+    // }
 
     if (project.root.includes("/frontend/api")) {
+      for (const origin of origins) {
+        if (project.name.includes(`api-${origin}`)) {
+          return;
+        }
+      }
+
       apiProjects.push(project);
     }
   });
 
   for (const project of apiProjects) {
+    console.log(`🚀 ~ v2Generator ~ migrating:`, project.name);
+
     const modelFileContent = tree
       .read(`${project.root}/src/lib/model.ts`)
-      .toString();
+      ?.toString();
 
     const oldApiDir = project.root.replace("frontend/api", "frontend/old-api");
 
@@ -53,14 +67,13 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
 
     tree.delete(`${project.root}/jest.config.ts`);
 
-    const origins = ["server", "client"] as const;
-
     for (const origin of origins) {
       await createFrontendApi({
         tree,
         baseName: project.name,
         baseDirectory: project.root,
         origin,
+        copyApi: !modelFileContent ? true : false,
       });
 
       // copy old api /lib/fetch and /lib/model.ts to new api
@@ -76,11 +89,6 @@ export async function v2Generator(tree: Tree, options: V2GeneratorSchema) {
           modelFileContent,
         );
       }
-      // moveFilesToNewDirectory(
-      //   tree,
-      //   `${oldApiDir}/src/lib/model.ts`,
-      //   `${project.root}/${origin}/src/lib/model.ts`,
-      // );
     }
 
     const graph = readCachedProjectGraph();
@@ -130,11 +138,13 @@ async function createFrontendApi({
   baseDirectory,
   baseName,
   origin,
+  copyApi,
 }: {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
   origin: "server" | "client";
+  copyApi?: boolean;
 }) {
   const apiLibraryName = `${baseName}-${origin}`;
   const directory = `${baseDirectory}/${origin}`;
@@ -169,6 +179,35 @@ async function createFrontendApi({
       template: "",
     },
   );
+  if (copyApi) {
+    // replace everything from "models-" to the end of the string
+    const moduleName = baseName.replace("@sps/", "").replace(/-models-.+$/, "");
+    const modelName = baseName
+      .replace("@sps/", "")
+      .replace(`${moduleName}-models-`, "")
+      .replace("-frontend-api", "");
+
+    generateFiles(
+      tree,
+      path.join(__dirname, `files/${origin === "server" ? "fetch" : "rtk"}`),
+      `${directory}/src/lib/${origin === "server" ? "fetch" : "rtk"}`,
+      {
+        template: "",
+        module: moduleName,
+      },
+    );
+    generateFiles(
+      tree,
+      path.join(__dirname, `files/model`),
+      `${directory}/src/lib`,
+      {
+        template: "",
+        module: moduleName,
+        model: modelName,
+        model_pluralized: modelName,
+      },
+    );
+  }
 
   updateJson(tree, `${directory}/tsconfig.json`, (json) => {
     json.references = [];
