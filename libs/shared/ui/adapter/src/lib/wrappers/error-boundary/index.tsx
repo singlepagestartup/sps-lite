@@ -48,7 +48,16 @@ export class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
   public render() {
     // console.log("🚀 ~ render ~ this.state:", this.state);
 
-    if (this.state && this.state?.error?.message === "NEXT_REDIRECT") {
+    /**
+     * In production build "NEXT_REDIRECT" becomes
+     * "An error occurred in the Server Components..."
+     */
+    if (
+      (this.state && this.state?.error?.message === "NEXT_REDIRECT") ||
+      this.state?.error?.message.includes(
+        "An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details.",
+      )
+    ) {
       throw this.state.error;
     }
 
