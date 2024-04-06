@@ -54,7 +54,7 @@ export default function Client(props: IComponentProps) {
     return <></>;
   }
 
-  if (props?.children) {
+  if (props?.children && localId) {
     return props.children({ data: localId });
   }
 

@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as Tier } from "@sps/sps-subscription-models-tier-frontend-component";
-import { IModel as ITier } from "@sps/sps-subscription-models-tier-contracts-extended";
+import { Component as PageGetUrlModelId } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -12,13 +12,27 @@ export function Component(props: IComponentPropsExtended) {
     >
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithTier</p>
-      <Tier variant="get-from-url" isServer={props.isServer}>
-        {({ data }: { data: ITier }) => {
+      <PageGetUrlModelId
+        isServer={props.isServer}
+        variant="get-url-model-id"
+        model="tier"
+      >
+        {({ data: tierId }) => {
           return (
-            <Tier isServer={props.isServer} variant="checkout" data={data} />
+            <Tier isServer={props.isServer} variant="get-by-id" id={tierId}>
+              {({ data: tier }) => {
+                return (
+                  <Tier
+                    isServer={props.isServer}
+                    variant="checkout"
+                    data={tier}
+                  />
+                );
+              }}
+            </Tier>
           );
         }}
-      </Tier>
+      </PageGetUrlModelId>
     </div>
   );
 }

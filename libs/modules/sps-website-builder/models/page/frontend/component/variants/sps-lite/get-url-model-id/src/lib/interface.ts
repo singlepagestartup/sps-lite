@@ -12,7 +12,7 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   model: string;
-  children?: any;
+  children?: (props: { data: number }) => any;
   set?: Dispatch<SetStateAction<number | undefined>>;
 }
 

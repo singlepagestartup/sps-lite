@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component";
-import { IModel as IProduct } from "@sps/sps-ecommerce-models-product-contracts-extended";
+import { Component as PageGetUrlModelId } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -12,17 +12,31 @@ export function Component(props: IComponentPropsExtended) {
     >
       <p className="text-4xl font-bold pt-10 pb-2">Checkout Form Block</p>
       <p className="text-2xl pb-10">SingleStepWithProduct</p>
-      <Product isServer={props.isServer} variant="get-from-url">
-        {({ data }: { data: IProduct }) => {
+      <PageGetUrlModelId
+        isServer={props.isServer}
+        variant="get-url-model-id"
+        model="product"
+      >
+        {({ data: productId }) => {
           return (
             <Product
               isServer={props.isServer}
-              variant="checkout-form"
-              data={data}
-            />
+              variant="get-by-id"
+              id={productId}
+            >
+              {({ data: product }) => {
+                return (
+                  <Product
+                    isServer={props.isServer}
+                    variant="checkout-form"
+                    data={product}
+                  />
+                );
+              }}
+            </Product>
           );
         }}
-      </Product>
+      </PageGetUrlModelId>
     </div>
   );
 }

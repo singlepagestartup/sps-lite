@@ -370,8 +370,8 @@
       "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-get-from-url": [
-        "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/get-from-url/src/index.ts"
+      "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-get-by-id": [
+        "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/get-by-id/src/index.ts"
       ],
       "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-in-cart": [
         "libs/modules/sps-ecommerce/models/product/frontend/component/variants/sps-lite/in-cart/src/index.ts"
@@ -459,6 +459,9 @@
       ],
       "@sps/sps-rbac-models-user-frontend-component": [
         "libs/modules/sps-rbac/models/user/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-auth-wrapper": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/auth-wrapper/src/index.ts"
       ],
       "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/default/src/index.ts"
@@ -574,8 +577,8 @@
       "@sps/sps-subscription-models-tier-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-subscription/models/tier/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-subscription-models-tier-frontend-component-variants-sps-lite-get-from-url": [
-        "libs/modules/sps-subscription/models/tier/frontend/component/variants/sps-lite/get-from-url/src/index.ts"
+      "@sps/sps-subscription-models-tier-frontend-component-variants-sps-lite-get-by-id": [
+        "libs/modules/sps-subscription/models/tier/frontend/component/variants/sps-lite/get-by-id/src/index.ts"
       ],
       "@sps/sps-subscription-models-tier-frontend-component-variants-sps-lite-list": [
         "libs/modules/sps-subscription/models/tier/frontend/component/variants/sps-lite/list/src/index.ts"
