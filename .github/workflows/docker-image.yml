@@ -23,9 +23,9 @@ jobs:
         working-directory: ./
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Login to registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           registry: ${{ secrets.DOCKER_HUB_URL }}
           username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
@@ -33,7 +33,7 @@ jobs:
           logout: false
       - if: ${{ inputs.PRERELEASE == true }}
         name: Build image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: ./
           push: false
@@ -48,7 +48,7 @@ jobs:
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.STAGING_NEXT_PUBLIC_SENTRY_DSN }}
       - if: ${{ inputs.PRERELEASE == false }}
         name: Build image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: ./
           push: false
