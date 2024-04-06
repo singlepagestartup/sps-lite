@@ -31,7 +31,7 @@ COPY . .
 
 # write the env variables to a file
 RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" > /usr/src/app/apps/frontend/.env.production
-RUN echo "NEXT_PUBLIC_BACKEND_TOKEN=$NEXT_PUBLIC_BACKEND_TOKEN" >> /usr/src/app/apps/frontend/.env.production
+RUN if [ -n "$NEXT_PUBLIC_BACKEND_TOKEN" ]; then echo "NEXT_PUBLIC_BACKEND_TOKEN=$NEXT_PUBLIC_BACKEND_TOKEN" >> /usr/src/app/apps/frontend/.env.production; fi
 RUN echo "NEXT_PUBLIC_FRONTEND_URL=$NEXT_PUBLIC_FRONTEND_URL" >> /usr/src/app/apps/frontend/.env.production
 
 # if NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID exists, write it to the .env file

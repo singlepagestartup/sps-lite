@@ -48,6 +48,10 @@ export class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
   public render() {
     // console.log("🚀 ~ render ~ this.state:", this.state);
 
+    if (this.state && this.state?.error?.message === "NEXT_REDIRECT") {
+      throw this.state.error;
+    }
+
     if (this.state.hasError) {
       const Comp = this.props.fallback;
       // console.log("🚀 ~ render ~ Comp:", Comp);
