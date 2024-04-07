@@ -28,12 +28,15 @@ export default factories.createCoreService(
         await fs.unlink(oldSeedFile);
       }
 
-      if (!entites.length && !entites) {
-        return;
-      }
-
-      if (!entites.length) {
+      if (strapi.contentTypes[uid].kind === "singleType") {
+        if (!entites?.id) {
+          return;
+        }
         entites = [entites];
+      } else {
+        if (!entites.length || !entites) {
+          return;
+        }
       }
 
       for (const entity of entites) {
