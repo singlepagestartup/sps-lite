@@ -23,9 +23,6 @@ ENV NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=$NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID
 ARG NEXT_PUBLIC_SENTRY_DSN
 ENV NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN
 
-# Installing dependencies
-COPY package.json ./
-
 # Copying source files
 COPY . .
 
@@ -40,7 +37,8 @@ RUN if [ -n "$NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID" ]; then echo "NEXT_PUBLIC_GOOGL
 # if NEXT_PUBLIC_SENTRY_DSN exists, write it to the .env file
 RUN if [ -n "$NEXT_PUBLIC_SENTRY_DSN" ]; then echo "NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN" >> /usr/src/app/apps/frontend/.env.production; fi
 
-RUN npm install
+# node modules installation is in
+# .github/workflows/docker-image.yml workflow file for caching
 RUN npm run frontend:build
 RUN npm run backend:build
 
