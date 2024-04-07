@@ -20,7 +20,7 @@ export default async function Server(props: IComponentProps) {
     modelName: props.model,
   });
 
-  if (!data) {
+  if (!data && props.children) {
     return props.children({ data: undefined });
   }
 

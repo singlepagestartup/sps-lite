@@ -18,6 +18,10 @@ export function Component(props: IComponentPropsExtended) {
         model="tier"
       >
         {({ data: tierId }) => {
+          if (!tierId) {
+            return <></>;
+          }
+
           return (
             <Tier isServer={props.isServer} variant="get-by-id" id={tierId}>
               {({ data: tier }) => {

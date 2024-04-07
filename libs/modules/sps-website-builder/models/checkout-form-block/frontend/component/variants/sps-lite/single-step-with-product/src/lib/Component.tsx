@@ -18,6 +18,10 @@ export function Component(props: IComponentPropsExtended) {
         model="product"
       >
         {({ data: productId }) => {
+          if (!productId) {
+            return <></>;
+          }
+
           return (
             <Product
               isServer={props.isServer}
