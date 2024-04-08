@@ -29,7 +29,6 @@ export default factories.createCoreService(
         "plugin::upload.file",
         "plugin::upload.folder",
         "plugin::users-permissions.permission",
-        "plugin::users-permissions.role",
         "plugin::users-permissions.user",
         "plugin::content-releases.release",
         "plugin::content-releases.release-action",
