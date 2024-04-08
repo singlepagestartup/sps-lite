@@ -1208,6 +1208,9 @@
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-by-url": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-by-url/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-query-from-url": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-query-from-url/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-url-model-id/src/index.ts"
       ],
