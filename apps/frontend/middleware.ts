@@ -38,6 +38,9 @@ export async function middleware(request: any) {
         request.nextUrl.pathname,
       );
 
+      const query = new URLSearchParams(request.nextUrl.search);
+      requestHeaders.set("x-sps-website-builder-query", query.toString());
+
       if (defauleLocale) {
         requestHeaders.set("x-sps-website-builder-locale", defauleLocale.code);
       }
@@ -63,6 +66,9 @@ export async function middleware(request: any) {
       "x-sps-website-builder-pathname",
       request.nextUrl.pathname,
     );
+
+    const query = new URLSearchParams(request.nextUrl.search);
+    requestHeaders.set("x-sps-website-builder-query", query.toString());
 
     return NextResponse.next({
       request: {
