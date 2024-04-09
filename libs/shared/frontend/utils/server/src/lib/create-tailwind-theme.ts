@@ -96,6 +96,29 @@ export const getThemeFromBackend = async () => {
             });
         }
       }
+
+      const requiredFontFiles = requiredFontVariants.map(
+        (requiredFontVariant) => {
+          return requiredFontWeights.map((requiredFontWeight) => {
+            return requiredFontStyles.map((requiredFontStyle) => {
+              return `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`;
+            });
+          });
+        },
+      );
+
+      const existingFonts = await fs.readdir(
+        path.join(frontendDir, "./themes/fonts"),
+      );
+
+      for (const requiredFontFile of requiredFontFiles.flat(2)) {
+        if (!existingFonts.includes(requiredFontFile)) {
+          await fs.copyFile(
+            path.join(frontendDir, `./themes/fonts/Default-Regular.ttf`),
+            path.join(frontendDir, `./themes/fonts/${requiredFontFile}`),
+          );
+        }
+      }
     }
   } else {
     iteration++;
