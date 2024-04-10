@@ -183,7 +183,17 @@ export const getThemeFromBackend = async () => {
 };
 
 (async () => {
-  const result = await getThemeFromBackend();
+  let result = await getThemeFromBackend();
+
+  if (!result.success) {
+    for (let i = 0; i < 5; i++) {
+      result = await getThemeFromBackend();
+      if (result.success) {
+        break;
+      }
+    }
+  }
+
   console.log(`🚀 ~ Create Tailwind theme result:`, result);
 })();
 
