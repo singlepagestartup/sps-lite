@@ -127,6 +127,8 @@ export const getThemeFromBackend = async () => {
       setTimeout(() => {
         getThemeFromBackend();
       }, 5000);
+    } else {
+      return { success: false };
     }
   }
 
@@ -176,9 +178,14 @@ export const getThemeFromBackend = async () => {
       }
     }
   }
+
+  return { success: true };
 };
 
-getThemeFromBackend();
+(async () => {
+  const result = await getThemeFromBackend();
+  console.log(`🚀 ~ Create Tailwind theme result:`, result);
+})();
 
 function getFileUrl(
   obj: any,
