@@ -5,7 +5,7 @@ import {
 } from "@sps/shared-frontend-utils-client";
 import { populate, route, IModelExtended } from "../model";
 import { notFound } from "next/navigation";
-import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts";
+import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts-extended";
 import { getFileUrl } from "@sps/shared-utils";
 const R = require("ramda");
 
