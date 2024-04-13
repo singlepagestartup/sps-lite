@@ -12,7 +12,7 @@ export async function v3Generator(tree: Tree, options: V3GeneratorSchema) {
   deleteCommonjsFromProjects(tree);
 
   updateJson(tree, "single-page-startup.json", (json) => {
-    json.version = 3;
+    json.version = "3";
 
     return json;
   });
