@@ -73,7 +73,7 @@ export class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
       return <Comp {...this.state} />;
     }
 
-    return this.props.children;
+    return this.props.children as any;
   }
 }
 
