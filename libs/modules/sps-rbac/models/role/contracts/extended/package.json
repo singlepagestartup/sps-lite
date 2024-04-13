@@ -1,7 +1,6 @@
 {
   "name": "@sps/sps-rbac-models-role-contracts-extended",
   "version": "0.0.1",
-  "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "dependencies": {

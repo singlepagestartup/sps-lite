@@ -1,7 +1,6 @@
 {
   "name": "@sps/sps-website-builder-models-slide-contracts",
   "version": "0.0.1",
-  "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "dependencies": {
