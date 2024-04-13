@@ -150,6 +150,12 @@ async function createContracts({
 
   const defaultFileName = `${contractsLibraryName}.ts`.replace("@sps/", "");
 
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
   tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
 
