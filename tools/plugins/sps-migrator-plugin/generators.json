@@ -9,6 +9,11 @@
       "factory": "./src/migrators/v2/generator",
       "schema": "./src/migrators/v2/schema.json",
       "description": "v2 generator"
+    },
+    "v3": {
+      "factory": "./src/migrators/v3/generator",
+      "schema": "./src/migrators/v3/schema.json",
+      "description": "v3 generator"
     }
   }
 }
