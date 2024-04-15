@@ -47,6 +47,7 @@ jobs:
             NEXT_PUBLIC_FRONTEND_URL=${{ secrets.STAGING_NEXT_PUBLIC_FRONTEND_URL }}
             NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.STAGING_NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.STAGING_NEXT_PUBLIC_SENTRY_DSN }}
+            TELEGRAM_BOT_URL=${{ secrets.TELEGRAM_BOT_URL }}
       - if: ${{ inputs.PRERELEASE == false }}
         name: Build image
         uses: docker/build-push-action@v5
@@ -63,6 +64,7 @@ jobs:
             NEXT_PUBLIC_FRONTEND_URL=${{ secrets.NEXT_PUBLIC_FRONTEND_URL }}
             NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+            TELEGRAM_BOT_URL=${{ secrets.TELEGRAM_BOT_URL }}
       - name: Inspect release tag image
         run: docker image inspect ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
       - if: ${{ inputs.PRERELEASE == false }}
