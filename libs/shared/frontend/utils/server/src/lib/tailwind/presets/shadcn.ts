@@ -151,7 +151,7 @@ export const preset = {
   darkMode: ["class"],
   content: [],
   safelist: [
-    { pattern: /^p(\w?)-/ },
+    { pattern: /^p\w?-/, variants: ["sm", "md", "lg", "xl", "2xl"] },
     { pattern: /w-(1|2|3|4|5|6|7|8|9|10|11)\/12/ },
     { pattern: /grid-cols-(1|2|3|4|5|6|7|8|9|10|11|12)/ },
     { pattern: /col-span-(1|2|3|4|5|6|7|8|9|10|11|12)/ },
