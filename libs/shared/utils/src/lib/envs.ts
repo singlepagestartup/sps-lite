@@ -3,7 +3,5 @@ export const BACKEND_URL =
 export const FRONTEND_URL =
   process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
 export const sentryDsn = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
-export const TELEGRAM_BOT_URL =
-  process.env["NEXT_PUBLIC_TELEGRAM_BOT_URL"] || "";
-export const TELEGRAM_BOT_NAME =
-  process.env["NEXT_PUBLIC_TELEGRAM_BOT_NAME"] || "";
+export const TELEGRAM_BOT_USERNAME =
+  process.env["NEXT_PUBLIC_TELEGRAM_BOT_USERNAME"] || "";

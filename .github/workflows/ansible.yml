@@ -85,7 +85,7 @@ jobs:
             "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
             "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
             "TELEGRAM_BOT_TOKEN ${{ secrets.TELEGRAM_BOT_TOKEN }}"\
-            "TELEGRAM_BOT_URL ${{ secrets.TELEGRAM_BOT_URL }}"\
+            "TELEGRAM_BOT_USERNAME ${{ secrets.TELEGRAM_BOT_USERNAME }}"\
             "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
             "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
             "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\

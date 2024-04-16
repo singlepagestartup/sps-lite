@@ -23,8 +23,8 @@ ENV NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=$NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID
 ARG NEXT_PUBLIC_SENTRY_DSN
 ENV NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN
 
-ARG TELEGRAM_BOT_URL
-ENV TELEGRAM_BOT_URL=$TELEGRAM_BOT_URL
+ARG TELEGRAM_BOT_USERNAME
+ENV TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME
 
 # Copying source files
 COPY . .
@@ -40,8 +40,8 @@ RUN if [ -n "$NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID" ]; then echo "NEXT_PUBLIC_GOOGL
 # if NEXT_PUBLIC_SENTRY_DSN exists, write it to the .env file
 RUN if [ -n "$NEXT_PUBLIC_SENTRY_DSN" ]; then echo "NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN" >> /usr/src/app/apps/frontend/.env.production; fi
 
-# if TELEGRAM_BOT_URL exists, write it to the .env file
-RUN if [ -n "$TELEGRAM_BOT_URL" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_URL=$NEXT_PUBLIC_TELEGRAM_BOT_URL" >> /usr/src/app/apps/frontend/.env.production; fi
+# if TELEGRAM_BOT_USERNAME exists, write it to the .env file
+RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=$NEXT_PUBLIC_TELEGRAM_BOT_USERNAME" >> /usr/src/app/apps/frontend/.env.production; fi
 
 # node modules installation is in
 # .github/workflows/docker-image.yml workflow file for caching
