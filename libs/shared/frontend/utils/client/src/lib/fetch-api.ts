@@ -118,6 +118,7 @@ async function find<T>(params: {
   pagination?: any;
   tag?: string;
   revalidate?: number;
+  sort?: string;
 }): Promise<TransformedApiArray<T>> {
   const {
     populate,
@@ -127,6 +128,7 @@ async function find<T>(params: {
     pagination,
     tag,
     revalidate = 3600,
+    sort,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
@@ -134,6 +136,7 @@ async function find<T>(params: {
       populate,
       filters,
       pagination,
+      sort,
     },
     {
       encodeValuesOnly: true,
