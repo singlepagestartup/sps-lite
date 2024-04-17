@@ -1,6 +1,7 @@
 [data-module="sps-website-builder"] {
   &[data-model="elements.button"] {
     &[data-variant="locale"] {
+      &.button-container,
       .button-container {
         @apply flex items-center gap-2;
 
@@ -26,6 +27,7 @@
       }
 
       &:hover {
+        &.button-container,
         .button-container {
           .media-container {
             &[data-has-hover="true"] {
