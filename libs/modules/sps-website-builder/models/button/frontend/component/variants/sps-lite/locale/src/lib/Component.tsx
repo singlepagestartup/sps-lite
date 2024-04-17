@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       data-model="elements.button"
       data-variant={props.variant}
       data-ui-variant="ghost"
-      className={`w-full ${props.data.className || ""}`}
+      className={`${props.data.className || "w-full"}`}
       {...(props.data.url ? { url: props.data.url } : {})}
       {...(props.onClick ? { onClick: props.onClick } : {})}
     >

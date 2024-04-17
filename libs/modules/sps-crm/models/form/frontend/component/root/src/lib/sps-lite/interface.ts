@@ -1,4 +1,3 @@
-import { IComponentProps as IListComponentProps } from "@sps/sps-crm-models-form-frontend-component-variants-sps-lite-list";
 import { IComponentProps as ISimpleComponentProps } from "@sps/sps-crm-models-form-frontend-component-variants-sps-lite-simple";
 
-export type IComponentProps = ISimpleComponentProps | IListComponentProps;
+export type IComponentProps = ISimpleComponentProps;
