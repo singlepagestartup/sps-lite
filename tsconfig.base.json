@@ -632,6 +632,27 @@
       "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-destructive": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/destructive/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-ghost": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/ghost/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-link": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/link/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-locale": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/locale/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-outline": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/outline/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-primary": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/primary/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-secondary": [
+        "libs/modules/sps-website-builder/models/button/frontend/component/variants/sps-lite/secondary/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-button-frontend-redux": [
         "libs/modules/sps-website-builder/models/button/frontend/redux/src/index.ts"
       ],

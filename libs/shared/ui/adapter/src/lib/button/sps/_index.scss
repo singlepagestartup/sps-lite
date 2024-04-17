@@ -23,7 +23,7 @@
   }
 
   &[data-ui-variant="link"] {
-    @apply underline-offset-4 hover:underline text-muted-foreground hover:text-primary;
+    @apply px-0 py-0 h-fit underline-offset-4 hover:underline text-muted-foreground hover:text-primary;
   }
 
   &[data-ui-variant="reset"] {
