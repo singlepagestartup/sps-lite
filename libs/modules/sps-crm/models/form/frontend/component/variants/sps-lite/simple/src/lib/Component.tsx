@@ -6,6 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Component as Input } from "@sps/sps-crm-models-input-frontend-component";
 import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
+import { Button as UiButton } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   const [createFormRequest, { data }] = api.rtk.useSubmitMutation();
@@ -145,24 +146,15 @@ export function Component(props: IComponentPropsExtended) {
           <div className="submit-button-container">
             {props.data.button ? (
               <Button
-                isServer={props.isServer}
+                isServer={false}
                 variant={props.data.button.variant}
                 data={props.data.button}
                 onClick={handleSubmit(onSubmit)}
               />
             ) : (
-              <Button
-                isServer={props.isServer}
-                variant="primary"
-                data={{
-                  id: 0,
-                  variant: "primary",
-                  title: "Submit",
-                  className: null,
-                  url: null,
-                  additionalAttributes: null,
-                  description: null,
-                }}
+              <UiButton
+                ui="sps"
+                data-ui-variant="primary"
                 onClick={handleSubmit(onSubmit)}
               />
             )}

@@ -22,17 +22,17 @@ jobs:
       TAG: ${{ github.event.release.tag_name }}
       PRERELEASE: ${{ github.event.release.prerelease }}
 
-  fill-database-with-seed-data:
-    uses: ./.github/workflows/database.yml
-    secrets: inherit
-    needs:
-      - update-backend
+  # fill-database-with-seed-data:
+  #   uses: ./.github/workflows/database.yml
+  #   secrets: inherit
+  #   needs:
+  #     - update-backend
 
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
-    needs:
-      - fill-database-with-seed-data
+    # needs:
+    #   - fill-database-with-seed-data
     with:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
