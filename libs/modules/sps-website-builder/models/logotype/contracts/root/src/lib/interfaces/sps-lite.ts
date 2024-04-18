@@ -3,4 +3,5 @@ export interface IModel {
   __component: "elements.logotype";
   url: string | null;
   title: string | null;
+  className: string | null;
 }

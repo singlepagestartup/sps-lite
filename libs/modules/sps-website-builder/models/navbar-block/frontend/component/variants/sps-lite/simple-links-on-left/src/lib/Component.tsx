@@ -45,7 +45,7 @@ function DisclosureInner({
       <div className="mx-auto flex flex-row w-full">
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
-            <div className="flex">
+            <div className="flex items-center">
               {props.data.logotype ? (
                 <Logotype
                   isServer={false}

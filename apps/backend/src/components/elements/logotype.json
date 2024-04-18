@@ -12,6 +12,9 @@
     "url": {
       "type": "text"
     },
+    "class_name": {
+      "type": "text"
+    },
     "media": {
       "type": "media",
       "multiple": true,

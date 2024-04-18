@@ -1,23 +1,27 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {
+  const Comp = props.data.url ? Link : "div";
+
   return (
-    <div
+    <Comp
       data-module="sps-website-builder"
       data-model="elements.logotype"
       data-variant={props.variant}
-      className="flex items-center"
+      className={`relative ${props.data.className || "w-full"}`}
+      href={props.data.url || ""}
     >
       {props.data.media?.length ? (
         <File
-          isServer={false}
+          isServer={props.isServer}
           variant="image"
           data={props.data.media[0]}
-          containerClassName="relative w-[200px] h-[50px]"
+          containerClassName=""
           className="object-contain object-left"
         />
       ) : null}
-    </div>
+    </Comp>
   );
 }
