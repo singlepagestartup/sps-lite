@@ -31,8 +31,8 @@ jobs:
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
-    # needs:
-    #   - fill-database-with-seed-data
+    needs:
+      - update-backend
     with:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
