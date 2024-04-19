@@ -17,7 +17,6 @@
     "paths": {
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
-      "@sps/shadcn/server": ["libs/shared/ui/shadcn/src/server.ts"],
       "@sps/shared-frontend-utils-client": [
         "libs/shared/frontend/utils/client/src/index.ts"
       ],
@@ -1521,8 +1520,7 @@
         "libs/modules/startup/frontend/components/src/index.ts"
       ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
-      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
-      "@sps/ui-adapter/server": ["libs/shared/ui/adapter/src/server.ts"]
+      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },
