@@ -24,7 +24,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: npm ci
       - name: Login to registry
         uses: docker/login-action@v3
         with:

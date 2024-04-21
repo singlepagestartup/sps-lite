@@ -43,8 +43,7 @@ RUN if [ -n "$NEXT_PUBLIC_SENTRY_DSN" ]; then echo "NEXT_PUBLIC_SENTRY_DSN=$NEXT
 # if TELEGRAM_BOT_USERNAME exists, write it to the .env file
 RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME" >> /usr/src/app/apps/frontend/.env.production; fi
 
-# node modules installation is in
-# .github/workflows/docker-image.yml workflow file for caching
+RUN npm ci
 RUN npm run frontend:build
 RUN npm run backend:build
 
