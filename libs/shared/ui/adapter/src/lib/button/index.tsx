@@ -37,7 +37,14 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
 
   useEffect(() => {
     if (urlPrepared) {
-      setPassChildren(<Link href={urlPrepared}>{props.children}</Link>);
+      setPassChildren(
+        <Link
+          scroll={"scroll" in props ? props.scroll : true}
+          href={urlPrepared}
+        >
+          {props.children}
+        </Link>,
+      );
     } else {
       setPassChildren(props.children);
     }

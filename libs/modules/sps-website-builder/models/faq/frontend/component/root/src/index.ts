@@ -1,1 +1,1 @@
-export default {};
+export { Component } from "./lib";

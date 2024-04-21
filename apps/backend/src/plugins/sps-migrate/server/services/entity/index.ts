@@ -395,7 +395,7 @@ export default factories.createCoreService(
         }
       }
 
-      if (config.relation === "manyToMany") {
+      if (config.relation === "manyToMany" || config.relation === "oneToMany") {
         if (config.inversedBy) {
           return;
         }
