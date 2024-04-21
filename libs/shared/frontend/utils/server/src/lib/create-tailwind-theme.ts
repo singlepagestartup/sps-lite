@@ -96,30 +96,9 @@ export const getThemeFromBackend = async () => {
             });
         }
       }
-
-      const requiredFontFiles = requiredFontVariants.map(
-        (requiredFontVariant) => {
-          return requiredFontWeights.map((requiredFontWeight) => {
-            return requiredFontStyles.map((requiredFontStyle) => {
-              return `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`;
-            });
-          });
-        },
-      );
-
-      const existingFonts = await fs.readdir(
-        path.join(frontendDir, "./themes/fonts"),
-      );
-
-      for (const requiredFontFile of requiredFontFiles.flat(2)) {
-        if (!existingFonts.includes(requiredFontFile)) {
-          await fs.copyFile(
-            path.join(frontendDir, `./themes/fonts/Default-Regular.ttf`),
-            path.join(frontendDir, `./themes/fonts/${requiredFontFile}`),
-          );
-        }
-      }
     }
+
+    await checkRequiredFonts();
   } else {
     iteration++;
 
@@ -128,56 +107,58 @@ export const getThemeFromBackend = async () => {
         getThemeFromBackend();
       }, 5000);
     } else {
+      await checkRequiredFonts();
+
       return { success: false };
     }
   }
 
-  const existingFonts = await fs.readdir(
-    path.join(frontendDir, "./themes/fonts"),
-  );
+  // const existingFonts = await fs.readdir(
+  //   path.join(frontendDir, "./themes/fonts"),
+  // );
 
-  if (!existingFonts.includes("Default-Regular.ttf")) {
-    await fs.copyFile(
-      path.join(
-        frontendDir,
-        "./styles/fonts/Montserrat/Montserrat-Regular.ttf",
-      ),
-      path.join(frontendDir, "./themes/fonts/Default-Regular.ttf"),
-    );
-  }
+  // if (!existingFonts.includes("Default-Regular.ttf")) {
+  //   await fs.copyFile(
+  //     path.join(
+  //       frontendDir,
+  //       "./styles/fonts/Montserrat/Montserrat-Regular.ttf",
+  //     ),
+  //     path.join(frontendDir, "./themes/fonts/Default-Regular.ttf"),
+  //   );
+  // }
 
-  if (!existingFonts.includes("Primary-Regular.ttf")) {
-    await fs.copyFile(
-      path.join(
-        frontendDir,
-        "./styles/fonts/Montserrat/Montserrat-Regular.ttf",
-      ),
-      path.join(frontendDir, "./themes/fonts/Primary-Regular.ttf"),
-    );
-  }
+  // if (!existingFonts.includes("Primary-Regular.ttf")) {
+  //   await fs.copyFile(
+  //     path.join(
+  //       frontendDir,
+  //       "./styles/fonts/Montserrat/Montserrat-Regular.ttf",
+  //     ),
+  //     path.join(frontendDir, "./themes/fonts/Primary-Regular.ttf"),
+  //   );
+  // }
 
-  for (const requiredFontVariant of requiredFontVariants) {
-    for (const requiredFontWeight of requiredFontWeights) {
-      for (const requiredFontStyle of requiredFontStyles) {
-        if (
-          !existingFonts.includes(
-            `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
-          )
-        ) {
-          await fs.copyFile(
-            path.join(
-              frontendDir,
-              `./themes/fonts/${requiredFontVariant}-Regular.ttf`,
-            ),
-            path.join(
-              frontendDir,
-              `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
-            ),
-          );
-        }
-      }
-    }
-  }
+  // for (const requiredFontVariant of requiredFontVariants) {
+  //   for (const requiredFontWeight of requiredFontWeights) {
+  //     for (const requiredFontStyle of requiredFontStyles) {
+  //       if (
+  //         !existingFonts.includes(
+  //           `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
+  //         )
+  //       ) {
+  //         await fs.copyFile(
+  //           path.join(
+  //             frontendDir,
+  //             `./themes/fonts/${requiredFontVariant}-Regular.ttf`,
+  //           ),
+  //           path.join(
+  //             frontendDir,
+  //             `./themes/fonts/${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`,
+  //           ),
+  //         );
+  //       }
+  //     }
+  //   }
+  // }
 
   return { success: true };
 };
@@ -221,4 +202,30 @@ function getFileUrl(
   }
 
   return `${process.env["NEXT_PUBLIC_BACKEND_URL"] || ""}${url}`;
+}
+
+async function checkRequiredFonts() {
+  const requiredFontFiles = requiredFontVariants.map((requiredFontVariant) => {
+    return requiredFontWeights.map((requiredFontWeight) => {
+      return requiredFontStyles.map((requiredFontStyle) => {
+        return `${requiredFontVariant}-${requiredFontWeight}${requiredFontStyle}.ttf`;
+      });
+    });
+  });
+
+  const existingFonts = await fs.readdir(
+    path.join(frontendDir, "./themes/fonts"),
+  );
+
+  for (const requiredFontFile of requiredFontFiles.flat(2)) {
+    if (!existingFonts.includes(requiredFontFile)) {
+      await fs.copyFile(
+        path.join(
+          frontendDir,
+          `./styles/fonts/Montserrat/Montserrat-Regular.ttf`,
+        ),
+        path.join(frontendDir, `./themes/fonts/${requiredFontFile}`),
+      );
+    }
+  }
 }
