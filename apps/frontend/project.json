@@ -10,7 +10,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/shared-frontend-utils-server:build"
+            "command": "nx run @sps/shared-frontend-utils-server:tsc:build"
           },
           {
             "command": "node dist/libs/shared/frontend/utils/server/src/lib/create-tailwind-theme.js"
@@ -35,7 +35,7 @@
     "dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^tsc:build"],
       "options": {
         "buildTarget": "frontend:build",
         "dev": true,
@@ -46,7 +46,7 @@
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^tsc:build"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"

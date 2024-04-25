@@ -1,38 +1,36 @@
 /**
  * currency router
  */
+import schema from "../../content-types/currency/schema.json";
 
-// import { factories } from "@strapi/strapi";
-
-// export default factories.createCoreRouter(
-//   "plugin::sps-billing-plugin.currency",
-// );
+const route = schema.info.pluralName;
+const model = schema.info.singularName;
 
 const routes = [
   {
     method: "GET",
-    path: "/currency",
-    handler: "currency.find",
+    path: `/${route}`,
+    handler: `${model}.find`,
   },
   {
     method: "GET",
-    path: "/currency/:id",
-    handler: "currency.findOne",
+    path: `/${route}/:id`,
+    handler: `${model}.findOne`,
   },
   {
     method: "POST",
-    path: "/currency",
-    handler: "currency.create",
+    path: `/${route}`,
+    handler: `${model}.create`,
   },
   {
     method: "PUT",
-    path: "/currency/:id",
-    handler: "currency.update",
+    path: `/${route}/:id`,
+    handler: `${model}.update`,
   },
   {
     method: "DELETE",
-    path: "/currency/:id",
-    handler: "currency.delete",
+    path: `/${route}/:id`,
+    handler: `${model}.delete`,
   },
 ];
 

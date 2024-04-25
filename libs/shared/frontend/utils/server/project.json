@@ -3,26 +3,25 @@
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/frontend/utils/server/src",
   "projectType": "library",
-  "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
-      "options": {
-        "outputPath": "dist/libs/shared/frontend/utils/server",
-        "main": "libs/shared/frontend/utils/server/src/index.ts",
-        "tsConfig": "libs/shared/frontend/utils/server/tsconfig.lib.json",
-        "assets": [],
-        "transformers": [
-          {
-            "name": "typescript-transform-paths/nx-transformer"
-          }
-        ]
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
       }
-    },
+    }
+  },
+  "targets": {
+    "tsc:build": {},
+    "tsc:lib": {},
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",

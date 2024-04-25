@@ -13,16 +13,8 @@
   },
   "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/modules/sps-billing/backend",
-        "main": "libs/modules/sps-billing/backend/src/index.ts",
-        "tsConfig": "libs/modules/sps-billing/backend/tsconfig.server.json",
-        "assets": ["libs/modules/sps-billing/backend/*.md"]
-      }
-    },
+    "tsc:build": {},
+    "tsc:lib": {},
     "nx-release-publish": {
       "options": {
         "packageRoot": "dist/{projectRoot}"

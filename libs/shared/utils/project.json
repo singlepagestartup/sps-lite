@@ -3,20 +3,20 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/utils/src",
   "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "tsc:build": {},
+    "tsc:lib": {},
+    "nx-release-publish": {
       "options": {
-        "outputPath": "dist/libs/shared/utils",
-        "main": "libs/shared/utils/src/index.ts",
-        "tsConfig": "libs/shared/utils/tsconfig.lib.json",
-        "assets": ["libs/shared/utils/*.md"],
-        "transformers": [
-          {
-            "name": "typescript-transform-paths/nx-transformer"
-          }
-        ]
+        "packageRoot": "dist/{projectRoot}"
       }
     },
     "test": {

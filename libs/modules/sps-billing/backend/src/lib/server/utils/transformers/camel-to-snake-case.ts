@@ -9,7 +9,7 @@ function camelCaseKeysToSnake(obj) {
   if (typeof obj != "object") return obj;
 
   if (Array.isArray(obj)) {
-    const newObj = [];
+    const newObj: any = [];
 
     for (const objItem of obj) {
       const snaked = camelCaseKeysToSnake(objItem);
@@ -20,7 +20,7 @@ function camelCaseKeysToSnake(obj) {
   } else {
     // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
     const newObj = { ...obj };
-    for (var oldName in newObj) {
+    for (const oldName in newObj) {
       // console.log(`🚀 ~ camelCaseKeysToSnake ~ oldName`, oldName);
       // Camel to underscore
       const newName = camelToSnake(oldName);

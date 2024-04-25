@@ -1,5 +1,5 @@
 const removeEmptyIds = (data) => {
-  let modified;
+  let modified: any;
   if (Array.isArray(data)) {
     modified = [...data];
   } else {

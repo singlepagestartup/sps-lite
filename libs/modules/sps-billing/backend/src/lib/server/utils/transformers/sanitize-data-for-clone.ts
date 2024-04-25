@@ -7,6 +7,7 @@ const sanitizeDataForClone = ({ data, keysForIds = [] }) => {
       entry[0];
       if (typeof entry[1] === "object" && entry[1] !== null) {
         entry[0];
+        // @ts-ignore
         if (keysForIds.includes(entry[0])) {
           if (Array.isArray(entry[1])) {
             sanitized[entry[0]] = [];
@@ -16,6 +17,7 @@ const sanitizeDataForClone = ({ data, keysForIds = [] }) => {
             }
             continue;
           } else {
+            // @ts-ignore
             sanitized[entry[0]] = entry[1].id;
             continue;
           }

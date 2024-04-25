@@ -97,6 +97,7 @@ const parseBody = (ctx) => {
   return { data };
 };
 
+// @ts-ignore
 const transformResponse = (resource, meta = {}, { contentType } = {}) => {
   if (isNil(resource)) {
     return resource;
