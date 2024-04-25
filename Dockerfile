@@ -32,7 +32,7 @@ ENV TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME
 # Copying source files
 COPY . .
 
-RUN npm install --force
+RUN npm ci --omit=optional
 RUN chmod +x ./strapi-plugin.sh &
 
 # write the env variables to a file

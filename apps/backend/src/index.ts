@@ -8,6 +8,8 @@ import { server } from "sps-billing-plugin";
 export default {
   async bootstrap({ strapi }) {
     await setPermissions();
+    const cf = server.config;
+    console.log(`🚀 ~ bootstrap ~ cf:`, cf);
 
     strapi.errorCatcher = (error, ctx) => {
       if (process.env.SENTRY_DSN) {

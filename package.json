@@ -42,8 +42,6 @@
     "@react-spring/web": "^9.5.2",
     "@reduxjs/toolkit": "^2.1.0",
     "@sentry/browser": "^7.77.0",
-    "@sps/shared-frontend-utils-server": "^0.2.71-0",
-    "@sps/shared-utils": "^0.2.71-0",
     "@strapi/design-system": "^1.6.3",
     "@strapi/helper-plugin": "^4.6.0",
     "@strapi/icons": "^1.6.3",
@@ -111,7 +109,6 @@
     "semver": "^7.5.4",
     "sendpulse-api": "^1.1.5",
     "server-only": "^0.0.1",
-    "sps-billing-plugin": "^0.2.71-0",
     "strapi-plugin-country-select": "^1.0.0",
     "strapi-plugin-email-designer": "^2.1.1",
     "strapi-plugin-slugify": "^2.3.8",
@@ -223,5 +220,10 @@
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "optionalDependencies": {
+    "@sps/shared-frontend-utils-server": "^0.2.72-0",
+    "@sps/shared-utils": "^0.2.72-0",
+    "sps-billing-plugin": "^0.2.72-0"
+  }
 }
