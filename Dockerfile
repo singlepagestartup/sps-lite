@@ -29,6 +29,9 @@ ENV TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME
 # Copying source files
 COPY . .
 
+RUN chmod +x ./strapi-plugin.sh
+RUN ./strapi-plugin.sh
+
 # write the env variables to a file
 RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" > /usr/src/app/apps/frontend/.env.production
 RUN if [ -n "$NEXT_PUBLIC_BACKEND_TOKEN" ]; then echo "NEXT_PUBLIC_BACKEND_TOKEN=$NEXT_PUBLIC_BACKEND_TOKEN" >> /usr/src/app/apps/frontend/.env.production; fi
