@@ -9,6 +9,6 @@
     "sourceMap": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.json"],
+  "include": ["src/**/*.ts", "src/**/*.json", "strapi-server.js"],
   "exclude": ["admin/", "**/*.spec.ts"]
 }
