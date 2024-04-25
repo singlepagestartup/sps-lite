@@ -9,7 +9,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "tsc:build": {},
-    "tsc:lib": {},
+    "tsc:build": {},
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

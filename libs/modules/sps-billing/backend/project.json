@@ -13,7 +13,6 @@
   },
   "tags": [],
   "targets": {
-    "tsc:build": {},
     "tsc:lib": {},
     "nx-release-publish": {
       "options": {

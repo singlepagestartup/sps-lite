@@ -10,14 +10,10 @@
         "quiet": false
       }
     },
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"]
-    },
     "tsc:build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:build", "^build"],
+      "dependsOn": ["^tsc:build"],
       "options": {
         "outputPath": "dist/{projectRoot}",
         "main": "{projectRoot}/src/index.ts",
@@ -33,7 +29,7 @@
     "tsc:lib": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:lib", "^build"],
+      "dependsOn": ["^tsc:lib"],
       "options": {
         "outputPath": "dist/{projectRoot}",
         "main": "{projectRoot}/src/index.ts",

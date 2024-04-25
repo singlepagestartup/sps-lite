@@ -137,7 +137,7 @@ async function createContracts({
     tags: [],
     targets: {
       lint: {},
-      "tsc:build": {},
+      build: {},
     },
   });
 

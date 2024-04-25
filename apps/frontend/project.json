@@ -35,18 +35,17 @@
     "dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
-      "dependsOn": ["^build", "^tsc:build"],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "tsc:build",
         "dev": true,
         "port": 3000,
         "turbo": true
       }
     },
-    "build": {
+    "tsc:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build", "^tsc:build"],
+      "dependsOn": ["^tsc:build"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
