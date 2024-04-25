@@ -1,2 +1,3 @@
-export * from "./lib/sps-billing-backend";
-export * from "./lib/server";
+import server from "./lib/server";
+
+export { server };

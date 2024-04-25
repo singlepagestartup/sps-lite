@@ -17,7 +17,8 @@
     // Include the root directory
     "src",
     // Force the JSON files in the src folder to be included
-    "src/**/*.json"
+    "src/**/*.json",
+    "strapi-server.js"
   ],
 
   "exclude": [
