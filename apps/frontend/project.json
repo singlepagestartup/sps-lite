@@ -32,17 +32,17 @@
         ]
       }
     },
-    "dev": {
+    "next:dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "tsc:build",
+        "buildTarget": "next:build",
         "dev": true,
         "port": 3000,
         "turbo": true
       }
     },
-    "tsc:build": {
+    "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "dependsOn": [],
@@ -51,17 +51,17 @@
         "outputPath": "apps/frontend"
       }
     },
-    "start": {
+    "next:start": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "production",
       "dependsOn": [],
       "options": {
-        "buildTarget": "frontend:tsc:build",
+        "buildTarget": "frontend:next:build",
         "dev": false,
         "port": 3000
       }
     },
-    "export": {
+    "next:export": {
       "executor": "@nx/next:export",
       "options": {
         "buildTarget": "frontend:build:production"
