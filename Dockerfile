@@ -9,7 +9,7 @@ RUN apt-get update && \
 WORKDIR /usr/src/app/
 
 RUN npx -v
-RUN npx nx run @sps/source:local-registry &
+RUN npx nx run @sps/source:local-registry
 
 ARG NEXT_PUBLIC_BACKEND_URL
 ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
