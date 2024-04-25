@@ -32,7 +32,8 @@ ENV TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME
 # Copying source files
 COPY . .
 
-RUN chmod +x ./strapi-plugin.sh
+RUN npm install --force
+RUN chmod +x ./strapi-plugin.sh &
 
 # write the env variables to a file
 RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" > /usr/src/app/apps/frontend/.env.production

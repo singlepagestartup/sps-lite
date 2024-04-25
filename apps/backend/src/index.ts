@@ -3,6 +3,7 @@
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
+import { server } from "sps-billing-plugin";
 
 export default {
   async bootstrap({ strapi }) {
