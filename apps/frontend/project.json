@@ -45,7 +45,7 @@
     "tsc:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:build"],
+      "dependsOn": [],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
@@ -54,9 +54,9 @@
     "start": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "production",
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "frontend:tsc:build",
         "dev": false,
         "port": 3000
       }

@@ -7,7 +7,7 @@
     "backend:dev": "nx run backend:dev",
     "backend:start": "nx run backend:start",
     "format": "nx format:write --all",
-    "frontend:build": "npm run frontend:prepare && nx run frontend:build",
+    "frontend:build": "npm run frontend:prepare && nx run frontend:tsc:build",
     "frontend:dev": "NODE_ENV=development npm run frontend:prepare && nx run frontend:dev",
     "frontend:prepare": "rm -rf apps/frontend/.next && nx run frontend:theme",
     "frontend:production": "NODE_ENV=production npm run frontend:build && npm run frontend:start",
