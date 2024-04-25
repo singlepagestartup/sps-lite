@@ -3,17 +3,10 @@
 import setPermissions from "./utils/bootstrap/set-permissions";
 import clearMediaLibrary from "./utils/bootstrap/clear-media-library";
 import Telegram from "./services/Telegram";
-import { server } from "sps-billing-plugin";
 
 export default {
   async bootstrap({ strapi }) {
     await setPermissions();
-
-    // spsBillingBackend();
-    // spsBilling.register({});
-    const cf = server.config;
-
-    console.log(`🚀 ~ bootstrap ~ cf:`, cf);
 
     strapi.errorCatcher = (error, ctx) => {
       if (process.env.SENTRY_DSN) {
