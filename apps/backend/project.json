@@ -22,7 +22,7 @@
     "debug": {
       "executor": "nx:run-commands",
       "options": {
-        "parallel": false,
+        "parallel": true,
         "cwd": "apps/backend",
         "commands": [
           {

@@ -9,6 +9,16 @@
         "config": ".verdaccio/config.yml",
         "storage": "tmp/local-registry/storage"
       }
+    },
+    "force-stop-registry": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "pkill -f verdaccio"
+          }
+        ]
+      }
     }
   }
 }
