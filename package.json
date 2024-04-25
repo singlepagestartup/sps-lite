@@ -42,6 +42,7 @@
     "@react-spring/web": "^9.5.2",
     "@reduxjs/toolkit": "^2.1.0",
     "@sentry/browser": "^7.77.0",
+    "@sps/sps-billing": "^0.2.8-0",
     "@strapi/design-system": "^1.6.3",
     "@strapi/helper-plugin": "^4.6.0",
     "@strapi/icons": "^1.6.3",

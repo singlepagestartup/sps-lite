@@ -5,6 +5,7 @@ const frontendApiStaticModels: any[] = [];
 import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 let generateStaticParams;
 const pageBlockPopulate = {};
+import { server } from "@sps/sps-billing";
 
 function preparePathAndHeaders({ params }: any) {
   const paramsModel = params.url[0].replace(".json", "");

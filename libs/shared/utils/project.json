@@ -11,7 +11,12 @@
         "outputPath": "dist/libs/shared/utils",
         "main": "libs/shared/utils/src/index.ts",
         "tsConfig": "libs/shared/utils/tsconfig.lib.json",
-        "assets": ["libs/shared/utils/*.md"]
+        "assets": ["libs/shared/utils/*.md"],
+        "transformers": [
+          {
+            "name": "typescript-transform-paths/nx-transformer"
+          }
+        ]
       }
     },
     "test": {
