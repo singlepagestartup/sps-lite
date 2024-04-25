@@ -30,7 +30,6 @@ ENV TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME
 COPY . .
 
 RUN chmod +x ./strapi-plugin.sh
-RUN ./strapi-plugin.sh
 
 # write the env variables to a file
 RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" > /usr/src/app/apps/frontend/.env.production
@@ -47,6 +46,7 @@ RUN if [ -n "$NEXT_PUBLIC_SENTRY_DSN" ]; then echo "NEXT_PUBLIC_SENTRY_DSN=$NEXT
 RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=$TELEGRAM_BOT_USERNAME" >> /usr/src/app/apps/frontend/.env.production; fi
 
 RUN npm ci
+RUN ./strapi-plugin.sh
 RUN npm run frontend:build
 RUN npm run backend:build
 
