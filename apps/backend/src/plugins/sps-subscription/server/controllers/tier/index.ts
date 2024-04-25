@@ -34,13 +34,13 @@ export default factories.createCoreController(
         });
 
       const sanitizedInvoice = await strapi
-        .controller("plugin::sps-billing.invoice")
+        .controller("plugin::sps-billing-plugin.invoice")
         // @ts-ignore
         .sanitizeOutput(subscriptionInvoice, ctx);
 
       return (
         strapi
-          .controller("plugin::sps-billing.invoice")
+          .controller("plugin::sps-billing-plugin.invoice")
           // @ts-ignore
           .transformResponse(sanitizedInvoice)
       );

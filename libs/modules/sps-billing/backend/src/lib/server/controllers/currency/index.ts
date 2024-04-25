@@ -4,4 +4,6 @@
 
 import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController("plugin::sps-billing.currency");
+export default factories.createCoreController(
+  "plugin::sps-billing-plugin.currency",
+);

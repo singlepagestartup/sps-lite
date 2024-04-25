@@ -78,7 +78,7 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
   async onSuccessPayment({ invoice }: { invoice: any }) {
     const filledInvoice = await strapi
-      .service("plugin::sps-billing.invoice")
+      .service("plugin::sps-billing-plugin.invoice")
       .findOne(invoice.id, {
         populate: {
           orders: {
@@ -114,12 +114,14 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
         id,
       });
 
-    const invoice = await strapi.service("plugin::sps-billing.invoice").create({
-      data: {
-        orders: id,
-        amount: invoiceAmount,
-      },
-    });
+    const invoice = await strapi
+      .service("plugin::sps-billing-plugin.invoice")
+      .create({
+        data: {
+          orders: id,
+          amount: invoiceAmount,
+        },
+      });
 
     // // change order status "cart" -> "payment"
     // // detach cart

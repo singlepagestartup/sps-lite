@@ -42,7 +42,7 @@
     "invoices": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::sps-billing.invoice",
+      "target": "plugin::sps-billing-plugin.invoice",
       "mappedBy": "subscription"
     },
     "attributes": {

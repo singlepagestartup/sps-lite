@@ -81,7 +81,7 @@
     "currency": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::sps-billing.currency",
+      "target": "plugin::sps-billing-plugin.currency",
       "inversedBy": "tiers"
     }
   }

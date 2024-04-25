@@ -60,7 +60,7 @@
     "invoice": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::sps-billing.invoice",
+      "target": "plugin::sps-billing-plugin.invoice",
       "inversedBy": "orders"
     },
     "order_products": {

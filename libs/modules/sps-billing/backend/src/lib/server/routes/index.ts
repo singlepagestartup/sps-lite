@@ -1,9 +1,6 @@
-import currency from "./currency";
-import customInvoice from "./invoice/custom";
-import invoice from "./invoice";
+import contentApiRoutes from "./content-api";
 
 export default {
-  currency,
-  customInvoice,
-  invoice,
+  "content-api": contentApiRoutes,
+  // admin: contentApiRoutes,
 };

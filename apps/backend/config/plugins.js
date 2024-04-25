@@ -22,9 +22,9 @@ module.exports = ({ env }) => {
         },
       },
     },
-    "sps-billing": {
+    "sps-billing-plugin": {
       enabled: true,
-      resolve: "./src/plugins/sps-billing",
+      // resolve: "./src/plugins/sps-billing",
       config: {
         JWT_SECRET: env("JWT_SECRET"),
         STRIPE_API_KEY: env("STRIPE_API_KEY"),
@@ -116,6 +116,18 @@ module.exports = ({ env }) => {
       },
     };
   }
+
+  config.slugify = {
+    enabled: true,
+    config: {
+      contentTypes: {
+        article: {
+          field: "slug",
+          references: "title",
+        },
+      },
+    },
+  };
 
   return config;
 };

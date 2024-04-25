@@ -109,7 +109,7 @@
     "semver": "^7.5.4",
     "sendpulse-api": "^1.1.5",
     "server-only": "^0.0.1",
-    "sps-billing-plugin": "^0.2.18-0",
+    "sps-billing-plugin": "^0.2.35-0",
     "strapi-plugin-country-select": "^1.0.0",
     "strapi-plugin-email-designer": "^2.1.1",
     "strapi-plugin-slugify": "^2.3.8",

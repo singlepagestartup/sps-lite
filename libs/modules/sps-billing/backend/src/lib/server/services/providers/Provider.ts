@@ -28,7 +28,7 @@ export default class Provider {
       });
 
       const updatedInvoice = await strapi
-        .service("plugin::sps-billing.invoice")
+        .service("plugin::sps-billing-plugin.invoice")
         // @ts-ignore
         .update(this.invoice.id, {
           data: {
@@ -58,18 +58,20 @@ export default class Provider {
       });
 
       if (!session) {
-        // @ts-ignore
-        strapi.service("plugin::sps-billing.invoice").update(this.invoice.id, {
-          data: {
-            status: "failed",
-          },
-        });
+        strapi
+          .service("plugin::sps-billing-plugin.invoice")
+          // @ts-ignore
+          .update(this.invoice.id, {
+            data: {
+              status: "failed",
+            },
+          });
 
         throw new ApplicationError("Invalid checkout data");
       }
 
       const updatedInvoice = await strapi
-        .service("plugin::sps-billing.invoice")
+        .service("plugin::sps-billing-plugin.invoice")
         // @ts-ignore
         .update(this.invoice.id, {
           data: {
