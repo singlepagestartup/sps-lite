@@ -72,7 +72,10 @@
     }
   },
   "release": {
-    "projects": ["apps/*"]
+    "projects": ["apps/*", "sps-billing-backend"],
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    }
   },
   "plugins": []
 }
