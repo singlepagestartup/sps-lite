@@ -4,5 +4,5 @@
     "@sps/shared-frontend-utils-server",
     "sps-billing-plugin"
   ],
-  "secret": "ea8cc1dd736d00a55e22a219a3b3044b40770bf769d20d3398c8831591bb4a95"
+  "secret": "db271a69c76285ad351df5e605d32d582a190288baa242123f4fd3c0ec4a4fe1"
 }

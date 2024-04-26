@@ -52,7 +52,7 @@ RUN verdaccio --config ./.verdaccio/config.yml &
 RUN sleep 20
 # RUN npm set registry http://localhost:4873
 # RUN node ./delete-optional.js
-RUN npm ci --include=optional
+RUN npm ci
 # RUN yarn --ignore-optional
 RUN chmod +x ./strapi-plugin.sh
 RUN ./strapi-plugin.sh
