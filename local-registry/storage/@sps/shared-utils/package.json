@@ -1,0 +1,47 @@
+{
+  "name": "@sps/shared-utils",
+  "versions": {
+    "0.2.75-0": {
+      "name": "@sps/shared-utils",
+      "version": "0.2.75-0",
+      "dependencies": {
+        "tslib": "^2.3.0"
+      },
+      "main": "./src/index.js",
+      "typings": "./src/index.d.ts",
+      "type": "commonjs",
+      "readmeFilename": "README.md",
+      "gitHead": "af7993194e5646e7232fd37b33f48beb005cb61b",
+      "description": "This library was generated with [Nx](https://nx.dev).",
+      "_id": "@sps/shared-utils@0.2.75-0",
+      "_nodeVersion": "18.17.1",
+      "_npmVersion": "9.6.7",
+      "dist": {
+        "integrity": "sha512-uUDWMTSmAQ0WLbfi8OeFPDIuARUF1FSvey9b/EuuJJX0UjgNCM7mY3ecIM6hHziOh0rGD4vAqxsXaMK1Z6CEmw==",
+        "shasum": "a5b7a1f8697fe4a1888b11c8b8b2cccea9e07d22",
+        "tarball": "http://localhost:4873/@sps/shared-utils/-/@sps/shared-utils-0.2.75-0.tgz"
+      },
+      "contributors": []
+    }
+  },
+  "time": {
+    "modified": "2024-04-26T02:34:10.487Z",
+    "created": "2024-04-26T02:34:10.487Z",
+    "0.2.75-0": "2024-04-26T02:34:10.487Z"
+  },
+  "users": {},
+  "dist-tags": {
+    "latest": "0.2.75-0"
+  },
+  "_uplinks": {},
+  "_distfiles": {},
+  "_attachments": {
+    "shared-utils-0.2.75-0.tgz": {
+      "shasum": "a5b7a1f8697fe4a1888b11c8b8b2cccea9e07d22",
+      "version": "0.2.75-0"
+    }
+  },
+  "_rev": "4-a79e743e9fb3599a",
+  "_id": "@sps/shared-utils",
+  "readme": "# shared-utils\n\nThis library was generated with [Nx](https://nx.dev).\n\n## Building\n\nRun `nx build shared-utils` to build the library.\n\n## Running unit tests\n\nRun `nx test shared-utils` to execute the unit tests via [Jest](https://jestjs.io)."
+}

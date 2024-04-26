@@ -1,0 +1,45 @@
+{
+  "name": "@sps/shared-frontend-utils-server",
+  "versions": {
+    "0.2.75-0": {
+      "name": "@sps/shared-frontend-utils-server",
+      "version": "0.2.75-0",
+      "main": "./src/index.js",
+      "typings": "./src/index.d.ts",
+      "dependencies": {
+        "tslib": "^2.3.0"
+      },
+      "type": "commonjs",
+      "gitHead": "af7993194e5646e7232fd37b33f48beb005cb61b",
+      "_id": "@sps/shared-frontend-utils-server@0.2.75-0",
+      "_nodeVersion": "18.17.1",
+      "_npmVersion": "9.6.7",
+      "dist": {
+        "integrity": "sha512-H/WHjPb27d2/V8ML7fB3r83qf5xAN2ydg+zY6lu9UuQeaJr3KrkN57OgwGt63WcsKq9/O1KqIkvt2A7BJ4WRVA==",
+        "shasum": "c44e31a341e06a7bae38ee350880d7a616bb8d64",
+        "tarball": "http://localhost:4873/@sps/shared-frontend-utils-server/-/@sps/shared-frontend-utils-server-0.2.75-0.tgz"
+      },
+      "contributors": []
+    }
+  },
+  "time": {
+    "modified": "2024-04-26T02:34:11.504Z",
+    "created": "2024-04-26T02:34:11.504Z",
+    "0.2.75-0": "2024-04-26T02:34:11.504Z"
+  },
+  "users": {},
+  "dist-tags": {
+    "latest": "0.2.75-0"
+  },
+  "_uplinks": {},
+  "_distfiles": {},
+  "_attachments": {
+    "shared-frontend-utils-server-0.2.75-0.tgz": {
+      "shasum": "c44e31a341e06a7bae38ee350880d7a616bb8d64",
+      "version": "0.2.75-0"
+    }
+  },
+  "_rev": "3-00a43eaba398c498",
+  "_id": "@sps/shared-frontend-utils-server",
+  "readme": "ERROR: No README data found!"
+}

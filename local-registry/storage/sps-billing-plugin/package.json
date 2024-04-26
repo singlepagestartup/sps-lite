@@ -1,0 +1,56 @@
+{
+  "name": "sps-billing-plugin",
+  "versions": {
+    "0.2.75-0": {
+      "name": "sps-billing-plugin",
+      "version": "0.2.75-0",
+      "strapi": {
+        "name": "sps-billing-plugin",
+        "description": "Description of sps-billing plugin",
+        "kind": "plugin"
+      },
+      "dependencies": {
+        "tslib": "^2.3.0"
+      },
+      "scripts": {
+        "build": "tsc -p tsconfig.server.json",
+        "develop": "tsc -p tsconfig.server.json -w"
+      },
+      "type": "commonjs",
+      "main": "./src/index.js",
+      "typings": "./src/index.d.ts",
+      "gitHead": "af7993194e5646e7232fd37b33f48beb005cb61b",
+      "readmeFilename": "README.md",
+      "description": "This library was generated with [Nx](https://nx.dev).",
+      "_id": "sps-billing-plugin@0.2.75-0",
+      "_nodeVersion": "18.17.1",
+      "_npmVersion": "9.6.7",
+      "dist": {
+        "integrity": "sha512-ayg2zEkfpmnYTQExjp3jqU3Gty8gQsuvXh/ami1Q+PHua3rMp70KSGPZs1IYAVoFWxzK/OZc8YVngXM05npQdA==",
+        "shasum": "296a5c4956abc746e84b541e0b01a56757ab2daa",
+        "tarball": "http://localhost:4873/sps-billing-plugin/-/sps-billing-plugin-0.2.75-0.tgz"
+      },
+      "contributors": []
+    }
+  },
+  "time": {
+    "modified": "2024-04-26T02:34:12.440Z",
+    "created": "2024-04-26T02:34:12.440Z",
+    "0.2.75-0": "2024-04-26T02:34:12.440Z"
+  },
+  "users": {},
+  "dist-tags": {
+    "latest": "0.2.75-0"
+  },
+  "_uplinks": {},
+  "_distfiles": {},
+  "_attachments": {
+    "sps-billing-plugin-0.2.75-0.tgz": {
+      "shasum": "296a5c4956abc746e84b541e0b01a56757ab2daa",
+      "version": "0.2.75-0"
+    }
+  },
+  "_rev": "4-a7e281e9f9df24df",
+  "_id": "sps-billing-plugin",
+  "readme": "# sps-billing-backend\n\nThis library was generated with [Nx](https://nx.dev).\n\n## Building\n\nRun `nx build sps-billing-backend` to build the library.\n\n## Running unit tests\n\nRun `nx test sps-billing-backend` to execute the unit tests via [Jest](https://jestjs.io)."
+}
