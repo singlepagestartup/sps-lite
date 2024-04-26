@@ -57,6 +57,7 @@ RUN rm -rf package-lock.json
 RUN npm i
 # RUN yarn --ignore-optional
 RUN chmod +x ./strapi-plugin.sh
+RUN cat package.json
 RUN ./strapi-plugin.sh
 # RUN npm ci
 RUN npm run frontend:build
