@@ -1,6 +1,6 @@
 {
   "name": "sps-billing-plugin",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "strapi": {
     "name": "sps-billing-plugin",
     "description": "Description of sps-billing plugin",
