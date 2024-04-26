@@ -1,6 +1,8 @@
 #!/bin/bash
 # https://itnext.io/local-library-development-with-nx-release-and-verdaccio-019af5c5bec0
 
+# if not found
+# apt install netcat-traditional
 if nc -z localhost 4873; then
     echo "Verdaccio is running"
 else
