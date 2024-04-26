@@ -38,7 +38,6 @@ jobs:
           context: ./
           push: false
           load: true
-          builder: ${{ steps.buildx.outputs.name }}
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
           build-args: |
