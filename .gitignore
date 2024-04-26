@@ -93,3 +93,10 @@ node_modules
 .nx
 dist
 tmp
+
+############################
+# verdaccio
+############################
+
+local-registry/*
+!local-registry/**/*.json

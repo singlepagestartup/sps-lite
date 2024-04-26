@@ -19,6 +19,15 @@ function deleteOptional() {
     delete packageLockJson.packages[""].optionalDependencies;
   }
 
+  Object.keys(packageLockJson.packages).forEach((key) => {
+    if (
+      packageLockJson.packages[key].optional &&
+      packageLockJson.packages[key].resolved.inclide("localhost")
+    ) {
+      delete packageLockJson.packages[key].optionalDependencies;
+    }
+  });
+
   fs.writeFileSync(
     packageJsonPath,
     JSON.stringify(packageJson, null, 2) + "\n",
