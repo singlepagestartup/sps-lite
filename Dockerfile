@@ -48,9 +48,9 @@ RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USER
 # those packages are building after installing the main packages
 # there are no way to use strapi in monorepo by common way
 RUN npm install --location=global verdaccio
-RUN verdaccio --config ./.verdaccio/config.yml
+RUN verdaccio --config ./.verdaccio/config.yml &
 RUN sleep 20
-RUN curl http://localhost:4873
+# RUN curl http://localhost:4873
 # RUN npm set registry http://localhost:4873
 # RUN node ./delete-optional.js
 RUN npm ci
