@@ -11,14 +11,12 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
   async checkout({ id }: { id: number }) {
     const invoiceAmount = await strapi.service(uid).getTotalAmount({ id });
 
-    const invoice = await strapi
-      .service("plugin::sps-billing-plugin.invoice")
-      .create({
-        data: {
-          subscription: id,
-          amount: invoiceAmount,
-        },
-      });
+    const invoice = await strapi.service("plugin::sps-billing.invoice").create({
+      data: {
+        subscription: id,
+        amount: invoiceAmount,
+      },
+    });
 
     return invoice;
   },
@@ -64,7 +62,7 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
 
   async onSuccessPayment({ invoice }: { invoice: any }) {
     const filledInvoice = await strapi
-      .service("plugin::sps-billing-plugin.invoice")
+      .service("plugin::sps-billing.invoice")
       .findOne(invoice.id, {
         populate: {
           subscription: {

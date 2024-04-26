@@ -28,7 +28,7 @@ export default class Provider {
       });
 
       const updatedInvoice = await strapi
-        .service("plugin::sps-billing-plugin.invoice")
+        .service("plugin::sps-billing.invoice")
         // @ts-ignore
         .update(this.invoice.id, {
           data: {
@@ -59,7 +59,7 @@ export default class Provider {
 
       if (!session) {
         strapi
-          .service("plugin::sps-billing-plugin.invoice")
+          .service("plugin::sps-billing.invoice")
           // @ts-ignore
           .update(this.invoice.id, {
             data: {
@@ -71,7 +71,7 @@ export default class Provider {
       }
 
       const updatedInvoice = await strapi
-        .service("plugin::sps-billing-plugin.invoice")
+        .service("plugin::sps-billing.invoice")
         // @ts-ignore
         .update(this.invoice.id, {
           data: {

@@ -6,14 +6,14 @@ import crypto from "crypto";
 import { factories } from "@strapi/strapi";
 
 export default factories.createCoreController(
-  "plugin::sps-billing-plugin.invoice",
+  "plugin::sps-billing.invoice",
   ({ strapi }) => ({
     async confirm(ctx: any) {
       ctx;
       const { id } = ctx.params;
       const { sign, redirect_to } = ctx.query;
       const invoice = await strapi
-        .service("plugin::sps-billing-plugin.invoice")
+        .service("plugin::sps-billing.invoice")
         // @ts-ignore
         .findOne(id);
       if (sign === invoice.sign) {
@@ -35,7 +35,7 @@ export default factories.createCoreController(
       const hash = crypto.createHash("md5").update(string).digest("hex");
       if (hash === Signature) {
         await strapi
-          .service("plugin::sps-billing-plugin.invoice")
+          .service("plugin::sps-billing.invoice")
           // @ts-ignore
           .update(BillingID, {
             data: {

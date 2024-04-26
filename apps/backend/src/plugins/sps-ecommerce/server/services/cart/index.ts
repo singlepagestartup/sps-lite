@@ -44,14 +44,12 @@ export default factories.createCoreService(uid, ({ strapi }) => ({
         id: cart.id,
       });
 
-    const invoice = await strapi
-      .service("plugin::sps-billing-plugin.invoice")
-      .create({
-        data: {
-          orders: cart.orders,
-          amount: invoiceAmount,
-        },
-      });
+    const invoice = await strapi.service("plugin::sps-billing.invoice").create({
+      data: {
+        orders: cart.orders,
+        amount: invoiceAmount,
+      },
+    });
 
     for (const order of cart.orders) {
       // change order status "cart" -> "payment"

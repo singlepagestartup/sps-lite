@@ -9,7 +9,13 @@ else
     npx nx run @sps/source:local-registry &\
 fi
 
-npx nx run sps-billing-backend:tsc:lib && npx nx release prepatch --first-release -y && npx nx release prepatch -y && npx nx release publish && npm i sps-billing-plugin@latest @sps/shared-frontend-utils-server@latest @sps/shared-utils@latest
+# npx nx run sps-billing-backend:tsc:lib
+npx nx release prepatch --first-release -y
+npx nx run sps-billing-backend:nx-release-publish
+# npx nx release prepatch --first-release -y
+# npx nx run sps-billing-backend:nx-release-publish -y
+# npx nx release publish
+npm i sps-billing-plugin@latest @sps/shared-frontend-utils-server@latest @sps/shared-utils@latest
 
 # npx nx run @sps/source:force-stop-registry
 npm config set registry https://registry.npmjs.org

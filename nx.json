@@ -38,6 +38,13 @@
         "transformers": []
       }
     },
+    "nx-release-publish": {
+      "dependsOn": ["tsc:lib"],
+      "options": {
+        "registry": "http://localhost:4873",
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
     "@nx/jest:jest": {
       "cache": true,
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
@@ -88,7 +95,8 @@
     ],
     "projectsRelationship": "fixed",
     "changelog": {
-      "projectChangelogs": false
+      "projectChangelogs": false,
+      "workspaceChangelog": false
     },
     "version": {
       "preVersionCommand": "npx nx run-many -t tsc:lib -p sps-billing-backend @sps/shared-frontend-utils-server @sps/shared-utils"

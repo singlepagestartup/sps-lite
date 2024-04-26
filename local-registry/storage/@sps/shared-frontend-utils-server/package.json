@@ -1,45 +1,45 @@
 {
   "name": "@sps/shared-frontend-utils-server",
   "versions": {
-    "0.2.76-0": {
+    "11.0.0": {
       "name": "@sps/shared-frontend-utils-server",
-      "version": "0.2.76-0",
+      "version": "11.0.0",
       "main": "./src/index.js",
       "typings": "./src/index.d.ts",
       "dependencies": {
         "tslib": "^2.3.0"
       },
       "type": "commonjs",
-      "gitHead": "87d3e0c5d505c28c8255c961d27d1cfb8f17d6fb",
-      "_id": "@sps/shared-frontend-utils-server@0.2.76-0",
-      "_nodeVersion": "18.17.1",
-      "_npmVersion": "9.6.7",
+      "_id": "@sps/shared-frontend-utils-server@11.0.0",
+      "gitHead": "0b8cce02f388736f1989ecff182cdec73d2bcdf2",
+      "_nodeVersion": "21.7.3",
+      "_npmVersion": "10.5.0",
       "dist": {
-        "integrity": "sha512-N6kevAhSqLPbiKN2jiwDXlFKgCbliEow1D8puSMcN2xtSxIgI/XTOKoezjydBSpW7PkV/0+B1Ngnuh3SQVcSPQ==",
-        "shasum": "483497c07d267c92a0127f00ee84e92116b2d932",
-        "tarball": "http://localhost:4873/@sps/shared-frontend-utils-server/-/@sps/shared-frontend-utils-server-0.2.76-0.tgz"
+        "integrity": "sha512-/JtZlg9YkeM1lOjiFTWLpZPNWQaRnow0MtLKyqBNHCkcP+CPcPDcl9VnfQePBypg8PWAcXpBnAhQo2Ot/V+zGA==",
+        "shasum": "1c7e330e15b2d78d672981a97c33d36627ebef43",
+        "tarball": "http://localhost:4873/@sps/shared-frontend-utils-server/-/@sps/shared-frontend-utils-server-11.0.0.tgz"
       },
       "contributors": []
     }
   },
   "time": {
-    "modified": "2024-04-26T11:16:58.196Z",
-    "created": "2024-04-26T11:16:58.196Z",
-    "0.2.76-0": "2024-04-26T11:16:58.196Z"
+    "modified": "2024-04-26T17:39:13.697Z",
+    "created": "2024-04-26T17:39:13.697Z",
+    "11.0.0": "2024-04-26T17:39:13.697Z"
   },
   "users": {},
   "dist-tags": {
-    "latest": "0.2.76-0"
+    "latest": "11.0.0"
   },
   "_uplinks": {},
   "_distfiles": {},
   "_attachments": {
-    "shared-frontend-utils-server-0.2.76-0.tgz": {
-      "shasum": "483497c07d267c92a0127f00ee84e92116b2d932",
-      "version": "0.2.76-0"
+    "shared-frontend-utils-server-11.0.0.tgz": {
+      "shasum": "1c7e330e15b2d78d672981a97c33d36627ebef43",
+      "version": "11.0.0"
     }
   },
-  "_rev": "3-3a63b0f6e999481e",
+  "_rev": "3-311c540d301afa71",
   "_id": "@sps/shared-frontend-utils-server",
   "readme": "ERROR: No README data found!"
 }
