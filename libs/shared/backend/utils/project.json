@@ -4,25 +4,12 @@
   "sourceRoot": "libs/shared/backend/utils/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/shared/backend/utils",
-        "main": "libs/shared/backend/utils/src/index.ts",
-        "tsConfig": "libs/shared/backend/utils/tsconfig.lib.json",
-        "assets": ["libs/shared/backend/utils/*.md"],
-        "transformers": [
-          {
-            "name": "typescript-transform-paths/nx-transformer"
-          }
-        ]
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
+    "tsc:build": {},
+    "tsc:build": {},
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

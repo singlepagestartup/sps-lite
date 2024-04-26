@@ -4,21 +4,6 @@
   "sourceRoot": "apps/bdd",
   "projectType": "application",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
-      "options": {
-        "outputPath": "apps/bdd/dist",
-        "main": "apps/bdd/index.ts",
-        "tsConfig": "apps/bdd/tsconfig.json",
-        "transformers": [
-          {
-            "name": "typescript-transform-paths/nx-transformer"
-          }
-        ]
-      }
-    },
     "dev": {
       "executor": "nx:run-commands",
       "options": {

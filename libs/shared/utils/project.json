@@ -4,16 +4,8 @@
   "sourceRoot": "libs/shared/utils/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/shared/utils",
-        "main": "libs/shared/utils/src/index.ts",
-        "tsConfig": "libs/shared/utils/tsconfig.lib.json",
-        "assets": ["libs/shared/utils/*.md"]
-      }
-    },
+    "tsc:build": {},
+    "tsc:lib": {},
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

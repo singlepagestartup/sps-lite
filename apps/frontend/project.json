@@ -10,7 +10,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/shared-frontend-utils-server:build"
+            "command": "nx run @sps/shared-frontend-utils-server:tsc:build"
           },
           {
             "command": "node dist/libs/shared/frontend/utils/server/src/lib/create-tailwind-theme.js"
@@ -32,37 +32,36 @@
         ]
       }
     },
-    "dev": {
+    "next:dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
-      "dependsOn": ["^build"],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "next:build",
         "dev": true,
         "port": 3000,
         "turbo": true
       }
     },
-    "build": {
+    "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
       }
     },
-    "start": {
+    "next:start": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "production",
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "frontend:next:build",
         "dev": false,
         "port": 3000
       }
     },
-    "export": {
+    "next:export": {
       "executor": "@nx/next:export",
       "options": {
         "buildTarget": "frontend:build:production"

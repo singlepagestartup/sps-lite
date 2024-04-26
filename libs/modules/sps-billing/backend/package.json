@@ -1,0 +1,19 @@
+{
+  "name": "sps-billing-plugin",
+  "version": "0.0.1",
+  "strapi": {
+    "name": "sps-billing-plugin",
+    "description": "Description of sps-billing plugin",
+    "kind": "plugin"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.server.json",
+    "develop": "tsc -p tsconfig.server.json -w"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

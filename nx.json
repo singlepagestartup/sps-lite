@@ -10,23 +10,39 @@
         "quiet": false
       }
     },
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"]
-    },
     "tsc:build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:build", "^build"],
+      "dependsOn": ["^tsc:build"],
       "options": {
         "outputPath": "dist/{projectRoot}",
         "main": "{projectRoot}/src/index.ts",
-        "tsConfig": "{projectRoot}/tsconfig.json",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": ["{projectRoot}/*.md"],
         "transformers": [
           {
             "name": "typescript-transform-paths/nx-transformer"
           }
         ]
+      }
+    },
+    "tsc:lib": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^tsc:lib"],
+      "options": {
+        "outputPath": "dist/{projectRoot}",
+        "main": "{projectRoot}/src/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": ["{projectRoot}/*.md"],
+        "transformers": []
+      }
+    },
+    "nx-release-publish": {
+      "dependsOn": ["tsc:lib"],
+      "options": {
+        "registry": "http://localhost:4873",
+        "packageRoot": "dist/{projectRoot}"
       }
     },
     "@nx/jest:jest": {
@@ -72,7 +88,19 @@
     }
   },
   "release": {
-    "projects": ["apps/*"]
+    "projects": [
+      "sps-billing-backend",
+      "@sps/shared-frontend-utils-server",
+      "@sps/shared-utils"
+    ],
+    "projectsRelationship": "fixed",
+    "changelog": {
+      "projectChangelogs": false,
+      "workspaceChangelog": false
+    },
+    "version": {
+      "preVersionCommand": "npx nx run-many -t tsc:lib -p sps-billing-backend @sps/shared-frontend-utils-server @sps/shared-utils"
+    }
   },
   "plugins": []
 }

@@ -1,5 +1,25 @@
 {
   "name": "@sps/source",
   "$schema": "node_modules/nx/schemas/project-schema.json",
-  "targets": {}
+  "targets": {
+    "local-registry": {
+      "executor": "@nx/js:verdaccio",
+      "options": {
+        "port": 4873,
+        "location": "global",
+        "config": ".verdaccio/config.yml",
+        "storage": "local-registry/storage"
+      }
+    },
+    "force-stop-registry": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "pkill -f verdaccio"
+          }
+        ]
+      }
+    }
+  }
 }

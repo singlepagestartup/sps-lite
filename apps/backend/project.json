@@ -26,7 +26,7 @@
         "cwd": "apps/backend",
         "commands": [
           {
-            "command": "npx nx run backend:plugins:build"
+            "command": "npx nx run backend:build"
           },
           {
             "command": "node --inspect=0.0.0.0:9230 ../../node_modules/@strapi/strapi/bin/strapi.js develop"
@@ -96,7 +96,7 @@
     "plugins:build": {
       "executor": "nx:run-commands",
       "options": {
-        "parallel": false,
+        "parallel": true,
         "cwd": "apps/backend",
         "commands": [
           {
