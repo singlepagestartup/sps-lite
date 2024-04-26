@@ -1,4 +1,4 @@
-// script for removing optionalDependencies from package.json and package-lock.json
+// script for removing libs dependencies from package.json
 
 const fs = require("fs");
 const path = require("path");
@@ -13,9 +13,9 @@ function deleteLibs() {
 
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
-  Object.keys(packageJson.optionalDependencies).forEach((key) => {
+  Object.keys(packageJson.dependencies).forEach((key) => {
     if (toDeleteLibs.includes(key)) {
-      delete packageJson.optionalDependencies[key];
+      delete packageJson.dependencies[key];
     }
   });
 
