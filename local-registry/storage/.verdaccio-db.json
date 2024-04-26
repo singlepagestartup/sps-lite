@@ -1,8 +1,0 @@
-{
-  "list": [
-    "@sps/shared-utils",
-    "@sps/shared-frontend-utils-server",
-    "sps-billing-plugin"
-  ],
-  "secret": "db271a69c76285ad351df5e605d32d582a190288baa242123f4fd3c0ec4a4fe1"
-}
