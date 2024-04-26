@@ -11,5 +11,5 @@ fi
 
 npx nx run sps-billing-backend:tsc:lib && echo yes | npx nx release prepatch && npx nx release publish && npm i sps-billing-plugin@latest @sps/shared-frontend-utils-server@latest @sps/shared-utils@latest
 
-npx nx run @sps/source:force-stop-registry
+# npx nx run @sps/source:force-stop-registry
 npm config set registry https://registry.npmjs.org
