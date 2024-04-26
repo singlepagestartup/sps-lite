@@ -50,7 +50,7 @@ RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USER
 RUN npm install --location=global verdaccio
 RUN verdaccio --config ./.verdaccio/config.yml &
 RUN sleep 20
-RUN npm set registry http://localhost:4873
+# RUN npm set registry http://localhost:4873
 # RUN node ./delete-optional.js
 RUN npm ci
 # RUN yarn --ignore-optional
