@@ -25,6 +25,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Set up Docker Buildx
+        id: buildx
         uses: docker/setup-buildx-action@v3
         with:
           buildkitd-flags: "--allow-insecure-entitlement network.host"
@@ -43,6 +44,7 @@ jobs:
           context: ./
           push: false
           load: true
+          builder: buildx
           allow: network.host
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
@@ -60,6 +62,7 @@ jobs:
           context: ./
           push: false
           load: true
+          builder: buildx
           allow: network.host
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
