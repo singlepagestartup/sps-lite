@@ -53,6 +53,7 @@ RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USER
 # RUN curl http://localhost:4873
 # RUN npm set registry http://localhost:4873
 RUN node ./delete-libs.js
+RUN rm -rf package-lock.json
 RUN npm ci
 # RUN yarn --ignore-optional
 RUN chmod +x ./strapi-plugin.sh
