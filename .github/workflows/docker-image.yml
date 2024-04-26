@@ -46,6 +46,7 @@ jobs:
           load: true
           allow: network.host
           network: host
+          builder: ${{ steps.buildx.outputs.name }}
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
           build-args: |
@@ -64,6 +65,7 @@ jobs:
           load: true
           allow: network.host
           network: host
+          builder: ${{ steps.buildx.outputs.name }}
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
             ${{ env.IMAGE_URL }}:latest
