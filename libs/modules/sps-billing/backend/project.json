@@ -6,8 +6,7 @@
   "release": {
     "version": {
       "generatorOptions": {
-        "packageRoot": "dist/{projectRoot}",
-        "currentVersionResolver": "git-tag"
+        "packageRoot": "dist/{projectRoot}"
       }
     }
   },

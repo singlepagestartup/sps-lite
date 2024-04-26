@@ -86,6 +86,10 @@
       "@sps/shared-frontend-utils-server",
       "@sps/shared-utils"
     ],
+    "projectsRelationship": "fixed",
+    "changelog": {
+      "projectChangelogs": false
+    },
     "version": {
       "preVersionCommand": "npx nx run-many -t tsc:lib -p sps-billing-backend @sps/shared-frontend-utils-server @sps/shared-utils"
     }
