@@ -3,8 +3,6 @@ FROM node:18
 RUN apt-get update && \
     apt-get -qy full-upgrade && \
     apt-get install -qy curl && \
-    apt-get install -qy curl && \
-    apt-get install -qy netcat-traditional && \
     curl -sSL https://get.docker.com/ | sh
 
 WORKDIR /usr/src/app/
