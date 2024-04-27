@@ -46,7 +46,6 @@ function makeConfig() {
         },
       ],
     },
-    trailingSlash: true,
   };
 
   if (serverEnvironment === "icp") {

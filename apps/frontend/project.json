@@ -4,6 +4,34 @@
   "sourceRoot": "apps/frontend",
   "projectType": "application",
   "targets": {
+    "db:prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "drizzle-kit generate:pg --config src/db/config.ts"
+          },
+          {
+            "command": "bun run src/db/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:seed": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["db:prepare"],
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun run src/db/seed.ts"
+          }
+        ]
+      }
+    },
     "theme": {
       "executor": "nx:run-commands",
       "options": {

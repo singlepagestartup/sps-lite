@@ -8,76 +8,80 @@ import type { IModel as IBackendLocale } from "@sps/sps-website-builder-models-l
 import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 
 export async function middleware(request: any) {
-  // Check if there is any supported locale in the pathname
-  const pathname = request.nextUrl.pathname;
-  const searchParams = request.nextUrl.search;
+  return NextResponse.next({
+    request,
+  });
 
-  try {
-    let tries = 0;
-    const backendLocales: IBackendLocale[] = [];
+  // // Check if there is any supported locale in the pathname
+  // const pathname = request.nextUrl.pathname;
+  // const searchParams = request.nextUrl.search;
 
-    do {
-      const locales = await fetchLocales();
-      backendLocales.push(...locales);
-      tries++;
-    } while (backendLocales.length === 0 && tries < 5);
+  // try {
+  //   let tries = 0;
+  //   const backendLocales: IBackendLocale[] = [];
 
-    const pathnameIsMissingLocale = backendLocales.every(
-      (locale) =>
-        !pathname.startsWith(`/${locale.code}/`) &&
-        pathname !== `/${locale.code}`,
-    );
+  //   do {
+  //     const locales = await fetchLocales();
+  //     backendLocales.push(...locales);
+  //     tries++;
+  //   } while (backendLocales.length === 0 && tries < 5);
 
-    // Redirect if there is no locale
-    if (pathnameIsMissingLocale && backendLocales?.length) {
-      const defauleLocale = backendLocales.find((locale) => locale.isDefault);
+  //   const pathnameIsMissingLocale = backendLocales.every(
+  //     (locale) =>
+  //       !pathname.startsWith(`/${locale.code}/`) &&
+  //       pathname !== `/${locale.code}`,
+  //   );
 
-      const requestHeaders = new Headers(request.headers);
-      requestHeaders.set(
-        "x-sps-website-builder-pathname",
-        request.nextUrl.pathname,
-      );
+  //   // Redirect if there is no locale
+  //   if (pathnameIsMissingLocale && backendLocales?.length) {
+  //     const defauleLocale = backendLocales.find((locale) => locale.isDefault);
 
-      const query = new URLSearchParams(request.nextUrl.search);
-      requestHeaders.set("x-sps-website-builder-query", query.toString());
+  //     const requestHeaders = new Headers(request.headers);
+  //     requestHeaders.set(
+  //       "x-sps-website-builder-pathname",
+  //       request.nextUrl.pathname,
+  //     );
 
-      if (defauleLocale) {
-        requestHeaders.set("x-sps-website-builder-locale", defauleLocale.code);
-      }
+  //     const query = new URLSearchParams(request.nextUrl.search);
+  //     requestHeaders.set("x-sps-website-builder-query", query.toString());
 
-      // The rewrite URL is now /en/<route>
-      const response = NextResponse.rewrite(
-        new URL(
-          `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
-          request.url,
-        ),
-        {
-          request: {
-            headers: requestHeaders,
-          },
-        },
-      );
+  //     if (defauleLocale) {
+  //       requestHeaders.set("x-sps-website-builder-locale", defauleLocale.code);
+  //     }
 
-      return response;
-    }
+  //     // The rewrite URL is now /en/<route>
+  //     const response = NextResponse.rewrite(
+  //       new URL(
+  //         `/${defauleLocale?.code}${pathname}${searchParams || ""}`,
+  //         request.url,
+  //       ),
+  //       {
+  //         request: {
+  //           headers: requestHeaders,
+  //         },
+  //       },
+  //     );
 
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set(
-      "x-sps-website-builder-pathname",
-      request.nextUrl.pathname,
-    );
+  //     return response;
+  //   }
 
-    const query = new URLSearchParams(request.nextUrl.search);
-    requestHeaders.set("x-sps-website-builder-query", query.toString());
+  //   const requestHeaders = new Headers(request.headers);
+  //   requestHeaders.set(
+  //     "x-sps-website-builder-pathname",
+  //     request.nextUrl.pathname,
+  //   );
 
-    return NextResponse.next({
-      request: {
-        headers: requestHeaders,
-      },
-    });
-  } catch (error) {
-    console.log("🚀 ~ middleware ~ error:", error);
-  }
+  //   const query = new URLSearchParams(request.nextUrl.search);
+  //   requestHeaders.set("x-sps-website-builder-query", query.toString());
+
+  //   return NextResponse.next({
+  //     request: {
+  //       headers: requestHeaders,
+  //     },
+  //   });
+  // } catch (error) {
+  //   console.log("🚀 ~ middleware ~ error:", error);
+  // }
 }
 
 export const config = {
