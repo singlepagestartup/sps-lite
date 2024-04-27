@@ -16,6 +16,7 @@ import {
 } from "@nx/react";
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import pluralize from "pluralize";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -79,13 +80,21 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  await createBackendRoot({
+  await createBackendSchema({
     tree,
     baseDirectory,
     baseName,
     modelName,
     module,
   });
+
+  // await createBackendRoot({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
   await formatFiles(tree);
 }
@@ -392,6 +401,89 @@ async function createBackendRoot({
     {
       template: "",
       model: modelName,
+    },
+  );
+
+  updateProjectConfiguration(tree, backendAppLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      build: {},
+    },
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
+}
+
+async function createBackendSchema({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const backendAppLibraryName = `${baseName}-backend-schema`;
+  const directory = `${baseDirectory}/${modelName}/backend/schema/root`;
+  const modelNameSplitted = names(modelName).fileName.split("-");
+  const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
+    if (index === modelNameSplitted.length - 1) {
+      const plural = pluralize(curr);
+      if (index === 0) {
+        return plural;
+      }
+
+      return acc + "_" + plural;
+    }
+
+    if (index === 0) {
+      return curr;
+    }
+
+    return acc + "_" + curr;
+  }, "");
+
+  await jsLibraryGenerator(tree, {
+    name: backendAppLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/backend/schema/root`),
+    directory,
+    {
+      template: "",
+      model: modelName,
+      pluralized_model: snakeCaseModelName,
     },
   );
 

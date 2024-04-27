@@ -1214,6 +1214,9 @@
       "@sps/sps-website-builder-models-page-backend-app": [
         "libs/modules/sps-website-builder/models/page/backend/app/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-backend-schema": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-contracts": [
         "libs/modules/sps-website-builder/models/page/contracts/root/src/index.ts"
       ],
