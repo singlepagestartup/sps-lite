@@ -27,51 +27,59 @@ export async function createModelGenerator(
   const baseName = `@sps/${module}-models-${modelName}`;
   const baseDirectory = `libs/modules/${module}/models`;
 
-  await createContracts({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName,
-    type: "root",
-    module,
-  });
+  // await createContracts({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName,
+  //   type: "root",
+  //   module,
+  // });
 
-  await createContracts({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName,
-    type: "extended",
-    module,
-  });
+  // await createContracts({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName,
+  //   type: "extended",
+  //   module,
+  // });
 
-  await createFrontendApi({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-    origin: "server",
-  });
+  // await createFrontendApi({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  //   origin: "server",
+  // });
 
-  await createFrontendApi({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-    origin: "client",
-  });
+  // await createFrontendApi({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  //   origin: "client",
+  // });
 
-  await createFrontendRedux({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createFrontendRedux({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createFrontendRootComponent({
+  // await createFrontendRootComponent({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
+
+  createBackendRoot({
     tree,
     baseDirectory,
     baseName,
@@ -349,4 +357,69 @@ async function createFrontendRootComponent({
   });
 
   tree.delete(`${directory}/tsconfig.lib.json`);
+}
+
+async function createBackendRoot({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const backendAppLibraryName = `${baseName}-backend-app`;
+  const directory = `${baseDirectory}/${modelName}/backend/app/root`;
+
+  await jsLibraryGenerator(tree, {
+    name: backendAppLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/backend/app/root`),
+    directory,
+    {
+      template: "",
+      model: modelName,
+    },
+  );
+
+  updateProjectConfiguration(tree, backendAppLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      build: {},
+    },
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
