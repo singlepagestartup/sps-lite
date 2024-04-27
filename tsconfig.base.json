@@ -584,6 +584,9 @@
         "libs/modules/sps-subscription/models/tier/frontend/redux/src/index.ts"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-website-builder-backend": [
+        "libs/modules/sps-website-builder/backend/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
@@ -1521,10 +1524,7 @@
         "libs/modules/startup/frontend/components/src/index.ts"
       ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
-      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
-      "@sps/sps-website-builder-backend": [
-        "libs/modules/sps-website-builder/backend/root/src/index.ts"
-      ]
+      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
     "typeRoots": ["./node_modules/@types", "types"]
   },
