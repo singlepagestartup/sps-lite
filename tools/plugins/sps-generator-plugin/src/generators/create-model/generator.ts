@@ -79,7 +79,7 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  createBackendRoot({
+  await createBackendRoot({
     tree,
     baseDirectory,
     baseName,

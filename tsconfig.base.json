@@ -1211,6 +1211,9 @@
       "@sps/sps-website-builder-models-not-found-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/not-found-block/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-backend-app": [
+        "libs/modules/sps-website-builder/models/page/backend/app/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-contracts": [
         "libs/modules/sps-website-builder/models/page/contracts/root/src/index.ts"
       ],

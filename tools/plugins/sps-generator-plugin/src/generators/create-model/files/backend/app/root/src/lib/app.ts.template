@@ -6,7 +6,7 @@ export const app = new Hono();
 app.get("/", async (c) => {
   try {
     return c.json({
-      data: <%= model %>,
+      data: "<%= model %>",
     });
   } catch (error: any) {
     throw new HTTPException(400, {
