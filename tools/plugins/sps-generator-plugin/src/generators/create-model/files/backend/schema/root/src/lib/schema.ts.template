@@ -1,7 +1,7 @@
-import { serial, timestamp, pgTable } from "drizzle-orm/pg-core";
+import { schema as plainSchema } from "<%= plain_library_name %>";
+import { schema as extendedSchema } from "<%= extended_library_name %>";
 
-export const schema = pgTable("<%= pluralized_model %>", {
-  id: serial("id").primaryKey(),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
-});
+export const schema = {
+  plain: plainSchema,
+  extended: extendedSchema
+}
