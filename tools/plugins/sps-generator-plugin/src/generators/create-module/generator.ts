@@ -6,6 +6,7 @@ import {
   updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
+import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 import { CreateModuleGeneratorSchema } from "./schema";
 import { Linter } from "@nx/eslint";
 import {
@@ -14,6 +15,7 @@ import {
 } from "@nx/react";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
+import { Hono } from "hono";
 
 export async function createModuleGenerator(
   tree: Tree,
@@ -24,14 +26,30 @@ export async function createModuleGenerator(
   const baseName = `@sps/${module}`;
   const baseDirectory = `libs/modules/${module}`;
 
-  await createFrontendRoot({
+  // await createFrontendRoot({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName: module,
+  //   module,
+  // });
+  // await createFrontendComponents({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName: module,
+  //   module,
+  // });
+
+  await createBackendSchema({
     tree,
     baseName,
     baseDirectory,
     modelName: module,
     module,
   });
-  await createFrontendComponents({
+
+  await createBackendApp({
     tree,
     baseName,
     baseDirectory,
@@ -161,4 +179,134 @@ async function createFrontendComponents({
   });
 
   tree.delete(`${directory}/tsconfig.lib.json`);
+}
+
+async function createBackendApp({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const backendAppLibraryName = `${baseName}-backend-app`;
+  const directory = `${baseDirectory}/backend/app/root`;
+
+  await jsLibraryGenerator(tree, {
+    name: backendAppLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/backend/app/root`),
+    directory,
+    {
+      template: "",
+      module,
+    },
+  );
+
+  updateProjectConfiguration(tree, backendAppLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      build: {},
+    },
+  });
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
+}
+
+async function createBackendSchema({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const backendAppLibraryName = `${baseName}-backend-schema`;
+  const directory = `${baseDirectory}/backend/schema/root`;
+
+  await jsLibraryGenerator(tree, {
+    name: backendAppLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  updateProjectConfiguration(tree, backendAppLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      build: {},
+    },
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/backend/schema/root`),
+    directory,
+    {
+      template: "",
+      module,
+    },
+  );
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }

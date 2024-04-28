@@ -5,11 +5,11 @@ import { handle } from "hono/vercel";
 import { db } from "../../../src/db";
 import { posts } from "../../../src/db/schema";
 import { type NextRequest } from "next/server";
-import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend";
+// import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend";
 
 const app = new Hono().basePath("/api");
 
-app.route("/sps-website-builder", spsWebsiteBuilderApp);
+// app.route("/sps-website-builder", spsWebsiteBuilderApp);
 
 app.get("/posts/:id", async (c) => {
   const id = c.req.param("id");

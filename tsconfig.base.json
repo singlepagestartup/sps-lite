@@ -584,9 +584,6 @@
         "libs/modules/sps-subscription/models/tier/frontend/redux/src/index.ts"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
-      "@sps/sps-website-builder-backend": [
-        "libs/modules/sps-website-builder/backend/root/src/index.ts"
-      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
@@ -1213,6 +1210,15 @@
       ],
       "@sps/sps-website-builder-models-page-backend-app": [
         "libs/modules/sps-website-builder/models/page/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-backend-schema": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-backend-schema-extended": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-backend-schema-plain": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/plain/src/index.ts"
       ],
       "@sps/sps-website-builder-models-page-contracts": [
         "libs/modules/sps-website-builder/models/page/contracts/root/src/index.ts"
