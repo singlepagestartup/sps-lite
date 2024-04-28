@@ -218,6 +218,7 @@
       "@sps/sps-crm-models-review-frontend-redux": [
         "libs/modules/sps-crm/models/review/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-db-provider": ["libs/providers/sps-db-provider/src/index.ts"],
       "@sps/sps-ecommerce-frontend": [
         "libs/modules/sps-ecommerce/frontend/root/src/index.ts"
       ],
