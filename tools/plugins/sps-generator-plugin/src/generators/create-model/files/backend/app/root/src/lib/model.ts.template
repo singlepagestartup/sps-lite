@@ -1,8 +1,8 @@
 import { db, schema } from "@sps/sps-db-provider";
 
-const schemaModel = schema.SpsWebsiteBuilderPage;
+const schemaModel = schema.<%= schema_model_name %>;
 
-const query = db.query.SpsWebsiteBuilderPage;
+const query = db.query.<%= schema_model_name %>;
 
 const insert = (params) => {
   return db.insert(schemaModel).values(params);

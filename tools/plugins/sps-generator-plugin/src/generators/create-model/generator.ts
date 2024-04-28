@@ -80,29 +80,29 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  await createBackendSchemaPlain({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchemaPlain({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createBackendSchemaExtended({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchemaRelations({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createBackendSchema({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchema({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
   await createBackendRoot({
     tree,
@@ -399,6 +399,9 @@ async function createBackendRoot({
 }) {
   const backendAppLibraryName = `${baseName}-backend-app`;
   const directory = `${baseDirectory}/${modelName}/backend/app/root`;
+  const moduleNamePascalCase = names(module).className;
+  const pascalCaseName = names(modelName).className;
+  const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
   await jsLibraryGenerator(tree, {
     name: backendAppLibraryName,
@@ -417,6 +420,7 @@ async function createBackendRoot({
     {
       template: "",
       model: modelName,
+      schema_model_name: schemaModelName,
     },
   );
 
@@ -532,7 +536,7 @@ async function createBackendSchemaPlain({
   tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
 
-async function createBackendSchemaExtended({
+async function createBackendSchemaRelations({
   tree,
   baseDirectory,
   baseName,
@@ -546,9 +550,9 @@ async function createBackendSchemaExtended({
   module: string;
 }) {
   const baseLibraryName = `${baseName}-backend-schema`;
-  const backendAppLibraryName = `${baseLibraryName}-extended`;
+  const backendAppLibraryName = `${baseLibraryName}-relations`;
   const parentModelName = `${baseLibraryName}-plain`;
-  const directory = `${baseDirectory}/${modelName}/backend/schema/extended`;
+  const directory = `${baseDirectory}/${modelName}/backend/schema/relations`;
   const modelNameSplitted = names(modelName).fileName.split("-");
   const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
     if (index === modelNameSplitted.length - 1) {
@@ -579,7 +583,7 @@ async function createBackendSchemaExtended({
 
   generateFiles(
     tree,
-    path.join(__dirname, `files/backend/schema/extended`),
+    path.join(__dirname, `files/backend/schema/relations`),
     directory,
     {
       template: "",
@@ -634,7 +638,7 @@ async function createBackendSchema({
   const baseLibraryName = `${baseName}-backend-schema`;
   const backendAppLibraryName = `${baseName}-backend-schema`;
   const plainLibraryName = `${baseLibraryName}-plain`;
-  const extendedLibraryName = `${baseLibraryName}-extended`;
+  const relationsLibraryName = `${baseLibraryName}-relations`;
   const directory = `${baseDirectory}/${modelName}/backend/schema/root`;
   const modelNameSplitted = names(modelName).fileName.split("-");
 
@@ -655,7 +659,7 @@ async function createBackendSchema({
     {
       template: "",
       plain_library_name: plainLibraryName,
-      extended_library_name: extendedLibraryName,
+      relations_library_name: relationsLibraryName,
     },
   );
 

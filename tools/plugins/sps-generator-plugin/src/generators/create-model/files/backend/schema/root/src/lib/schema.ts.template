@@ -1,7 +1,7 @@
-import { schema as plainSchema } from "<%= plain_library_name %>";
-import { schema as extendedSchema } from "<%= extended_library_name %>";
+import { Table as PlainTable } from "<%= plain_library_name %>";
+import { Relations as Relations } from "<%= relations_library_name %>";
 
 export const schema = {
-  plain: plainSchema,
-  extended: extendedSchema
+  Plain: PlainTable,
+  Relations: Relations,
 }

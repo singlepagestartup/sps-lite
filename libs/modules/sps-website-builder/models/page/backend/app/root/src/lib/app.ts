@@ -9,15 +9,14 @@ app.get("/", async (c) => {
   try {
     const data = await model.query.findMany({
       with: {
-        PageToLayoutRelation: true,
+        PageToLayoutRelation: {
+          with: {
+            layout: true,
+            page: true,
+          },
+        },
       },
     });
-
-    // const data = await model.query.findMany({
-    //   with: {
-    //     pagesToLayouts: true,
-    //   },
-    // });
 
     return c.json({
       data,
@@ -38,60 +37,87 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  const data = await model.select({
+  const data = await model.query.findMany({
     where: eq(model.schema.id, uuid),
     with: {
-      pagesToLayouts: true,
+      PageToLayoutRelation: {
+        with: {
+          layout: true,
+          page: true,
+        },
+      },
     },
   });
-  // const data = await model.select({
-  //   where: eq(model.schema.id, parseInt(id)),
-  //   with: {
-  //     pagesToLayouts: true,
-  //   },
-  // });
-
-  console.log(`🚀 ~ app.get ~ data:`, data);
 
   return c.json({
     data,
   });
 });
 
-// // app.get("/posts", async (c) => {
-// //   try {
-// //     const posts = await db.query.posts.findMany();
+app.patch("/:uuid", async (c) => {
+  try {
+    const uuid = c.req.param("uuid");
+    const body = await c.req.parseBody();
 
-// //     return c.json({
-// //       data: posts,
-// //     });
-// //   } catch (error: any) {
-// //     throw new HTTPException(400, {
-// //       message: error.message,
-// //     });
-// //   }
-// // });
+    if (!uuid) {
+      return c.json(
+        {
+          message: "Invalid id",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
 
-// app.post("/", async (c) => {
-//   const body = await c.req.parseBody();
+    if (typeof body["data"] !== "string") {
+      return c.json(
+        {
+          message: "Invalid body",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
 
-//   if (typeof body["data"] === "string") {
-//     const data = JSON.parse(body["data"]);
+    const data = JSON.parse(body["data"]);
 
-//     try {
-//       const entity = await model.insert(data).returning();
+    const entity = await model
+      .update(data)
+      .where(eq(model.schema.id, uuid))
+      .returning();
 
-//       return c.json({
-//         data: entity,
-//       });
-//     } catch (error: any) {
-//       throw new HTTPException(400, {
-//         message: error.message,
-//       });
-//     }
-//   }
+    return c.json({
+      data: entity,
+    });
+  } catch (error: any) {
+    throw new HTTPException(400, {
+      message: error.message,
+    });
+  }
+});
 
-//   throw new HTTPException(400, {
-//     message: "Invalid body",
-//   });
-// });
+app.post("/", async (c) => {
+  const body = await c.req.parseBody();
+
+  if (typeof body["data"] === "string") {
+    const data = JSON.parse(body["data"]);
+
+    try {
+      const entity = await model.insert(data).returning();
+
+      return c.json({
+        data: entity,
+      });
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  throw new HTTPException(400, {
+    message: "Invalid body",
+  });
+});
