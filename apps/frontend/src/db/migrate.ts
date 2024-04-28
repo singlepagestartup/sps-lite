@@ -1,6 +1,7 @@
 import { drizzleMigrate as migrate } from "@sps/sps-db-provider";
 
 /**
+ * !!! crutch !!!
  * Without deleting meta folder I got an error
  * Thats because validateWithReport function in drizzle kit
  * add "./" before the path

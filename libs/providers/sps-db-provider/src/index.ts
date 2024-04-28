@@ -4,4 +4,5 @@ export {
   migrate as drizzleMigrate,
   seed as drizzleSeed,
   config as drizzleConfig,
+  schemaPath as drizzleSchemaPath,
 } from "./lib/drizzle";

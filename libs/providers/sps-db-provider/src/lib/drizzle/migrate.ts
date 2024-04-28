@@ -13,14 +13,6 @@ export const migrate = async (props?: MigrationConfig) => {
     const { migrationsFolder = path.resolve(cwd(), "./src/db/migrations") } =
       props || {};
 
-    // remove meta folder in migrationsFolder
-
-    const metaFolder = path.resolve(migrationsFolder, "meta");
-
-    if (fs.existsSync(metaFolder)) {
-      fs.rmdirSync(metaFolder, { recursive: true });
-    }
-
     await drizzleMigrator(db, { ...(props || {}), migrationsFolder });
 
     console.log("Migration successful");

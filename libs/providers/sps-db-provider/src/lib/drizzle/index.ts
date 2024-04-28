@@ -7,3 +7,4 @@ export { seed } from "./seed";
 export { config } from "./config";
 export const db = drizzle(postgres, { schema: drizzleSchema });
 export const schema = drizzleSchema;
+export const schemaPath = __dirname + "/schema.ts";
