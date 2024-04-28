@@ -2,7 +2,8 @@ import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { RemoveModelGeneratorSchema } from "./schema";
 import * as nxWorkspace from "@nx/workspace";
 import { Builder as ModelBackendAppBuilder } from "../../builders/backend/app/Builder";
-import { Builder as ModelBackendSchemaBuilder } from "../../builders/backend/schema/Builder";
+import { Builder as ModelBackendPlainSchemaBuilder } from "../../builders/backend/schema/plain/Builder";
+import { Builder as ModelBackendRelationsSchemaBuilder } from "../../builders/backend/schema/relations/Builder";
 
 export async function removeModelGenerator(
   tree: Tree,
@@ -19,21 +20,23 @@ export async function removeModelGenerator(
   //   tree,
   // });
 
-  // await backendAppBuilder.detachFromRoot({ tree });
   // await backendAppBuilder.delete({ tree });
 
-  const modelBackendSchemaBuilder = new ModelBackendSchemaBuilder({
-    modelName,
-    module,
-    tree,
-  });
-
-  await modelBackendSchemaBuilder.delete({ tree });
-
-  // await removeBackendSchema({
+  // const modelBackendPlainSchemaBuilder = new ModelBackendPlainSchemaBuilder({
+  //   modelName,
+  //   module,
   //   tree,
-  //   baseName,
   // });
+
+  // await modelBackendPlainSchemaBuilder.delete({ tree });
+  const modelBackendRelationsSchemaBuilder =
+    new ModelBackendRelationsSchemaBuilder({
+      modelName,
+      module,
+      tree,
+    });
+
+  await modelBackendRelationsSchemaBuilder.delete({ tree });
 
   // await removeBackendSchemaRelations({
   //   tree,
@@ -66,43 +69,6 @@ export async function removeModelGenerator(
 }
 
 export default removeModelGenerator;
-
-async function removeBackendSchema({
-  tree,
-  baseName,
-}: {
-  tree: Tree;
-  baseName: string;
-}) {
-  const projectName = `${baseName}-backend-schema`;
-
-  await nxWorkspace.removeGenerator(tree, {
-    projectName,
-    skipFormat: true,
-    forceRemove: true,
-  });
-
-  await formatFiles(tree);
-}
-
-async function removeBackendSchemaRelations({
-  tree,
-  baseName,
-}: {
-  tree: Tree;
-  baseName: string;
-}) {
-  const baseLibraryName = `${baseName}-backend-schema`;
-  const projectName = `${baseLibraryName}-relations`;
-
-  await nxWorkspace.removeGenerator(tree, {
-    projectName,
-    skipFormat: true,
-    forceRemove: true,
-  });
-
-  await formatFiles(tree);
-}
 
 async function removeBackendSchemaPlain({
   tree,

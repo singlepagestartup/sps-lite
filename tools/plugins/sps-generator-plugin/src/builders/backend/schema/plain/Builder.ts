@@ -11,7 +11,7 @@ import pluralize from "pluralize";
 import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { createSpsJsLibrary } from "../../../utils/js-lib-utils";
+import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 
 export class Builder {
   libName: string;
@@ -61,7 +61,7 @@ export class Builder {
       tree,
       root: this.root,
       name: this.libName,
-      generateFilesPath: path.join(__dirname, `files/plain`),
+      generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
         model: this.modelName,

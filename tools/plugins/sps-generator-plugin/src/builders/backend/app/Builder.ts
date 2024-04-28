@@ -13,6 +13,7 @@ import { addToFile, replaceInFile } from "../../../utils/file-utils";
 import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
+import { createSpsJsLibrary } from "../../../utils/js-lib-utils";
 
 export class Builder {
   route: string;
@@ -111,54 +112,24 @@ export class Builder {
   }
 
   async create({ tree }: { tree: Tree }) {
-    await jsLibraryGenerator(tree, {
-      name: this.libName,
-      bundler: "tsc",
-      projectNameAndRootFormat: "as-provided",
-      directory: this.root,
-      minimal: true,
-      unitTestRunner: "none",
-      strict: true,
-    });
-
-    generateFiles(tree, path.join(__dirname, `files`), this.root, {
-      template: "",
-      model: this.modelName,
-      schema_model_name: this.schemaModelName,
-    });
-
-    updateProjectConfiguration(tree, this.libName, {
+    await createSpsJsLibrary({
+      tree,
       root: this.root,
-      sourceRoot: `${this.root}/src`,
-      projectType: "library",
-      tags: [],
-      targets: {
-        lint: {},
-        build: {},
+      name: this.libName,
+      generateFilesPath: path.join(__dirname, `files/plain`),
+      templateParams: {
+        template: "",
+        model: this.modelName,
+        schema_model_name: this.schemaModelName,
       },
     });
 
-    updateJson(tree, `${this.root}/tsconfig.lib.json`, (json) => {
-      const compilerOptions = json.compilerOptions;
-      delete compilerOptions.outDir;
-
-      return json;
-    });
-
-    const defaultFileName = `${this.libName}.ts`.replace("@sps/", "");
-
-    updateJson(tree, `${this.root}/package.json`, (json) => {
-      delete json.type;
-
-      return json;
-    });
-
-    tree.delete(`${this.root}/src/lib/${defaultFileName}`);
-
-    await formatFiles(tree);
+    await this.attachToRoot({ tree });
   }
 
   async delete({ tree }: { tree: Tree }) {
+    await this.detachFromRoot({ tree });
+
     const project = getProjects(tree).get(this.libName);
 
     if (!project) {
