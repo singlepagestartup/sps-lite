@@ -1,8 +1,10 @@
 import {
   formatFiles,
   generateFiles,
+  getProjects,
   names,
   offsetFromRoot,
+  ProjectConfiguration,
   Tree,
   updateJson,
   updateProjectConfiguration,
@@ -17,6 +19,8 @@ import {
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import pluralize from "pluralize";
+import { addToFile, replaceInFile } from "../../utils/file-utils";
+import { ModelBackendAppBuilder } from "../../builders/ModelBackendAppBuilder";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -27,6 +31,10 @@ export async function createModelGenerator(
 
   const baseName = `@sps/${module}-models-${modelName}`;
   const baseDirectory = `libs/modules/${module}/models`;
+
+  const moduleProject = `@sps/${module}-backend-app`;
+
+  const backendAppProject = getProjects(tree).get(moduleProject);
 
   // await createContracts({
   //   tree,
@@ -80,29 +88,29 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  await createBackendSchemaPlain({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchemaPlain({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createBackendSchemaRelations({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchemaRelations({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createBackendSchema({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchema({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
   await createBackendRoot({
     tree,
@@ -110,6 +118,7 @@ export async function createModelGenerator(
     baseName,
     modelName,
     module,
+    backendAppProject,
   });
 
   await formatFiles(tree);
@@ -390,12 +399,14 @@ async function createBackendRoot({
   baseName,
   modelName,
   module,
+  backendAppProject,
 }: {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
   modelName: string;
   module: string;
+  backendAppProject: ProjectConfiguration;
 }) {
   const backendAppLibraryName = `${baseName}-backend-app`;
   const directory = `${baseDirectory}/${modelName}/backend/app/root`;
@@ -403,54 +414,58 @@ async function createBackendRoot({
   const pascalCaseName = names(modelName).className;
   const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
-  await jsLibraryGenerator(tree, {
-    name: backendAppLibraryName,
-    bundler: "tsc",
-    projectNameAndRootFormat: "as-provided",
-    directory,
-    minimal: true,
-    unitTestRunner: "none",
-    strict: true,
-  });
+  // await jsLibraryGenerator(tree, {
+  //   name: backendAppLibraryName,
+  //   bundler: "tsc",
+  //   projectNameAndRootFormat: "as-provided",
+  //   directory,
+  //   minimal: true,
+  //   unitTestRunner: "none",
+  //   strict: true,
+  // });
 
-  generateFiles(
-    tree,
-    path.join(__dirname, `files/backend/app/root`),
-    directory,
-    {
-      template: "",
-      model: modelName,
-      schema_model_name: schemaModelName,
-    },
-  );
+  // generateFiles(
+  //   tree,
+  //   path.join(__dirname, `files/backend/app/root`),
+  //   directory,
+  //   {
+  //     template: "",
+  //     model: modelName,
+  //     schema_model_name: schemaModelName,
+  //   },
+  // );
 
-  updateProjectConfiguration(tree, backendAppLibraryName, {
-    root: directory,
-    sourceRoot: `${directory}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      lint: {},
-      build: {},
-    },
-  });
+  // updateProjectConfiguration(tree, backendAppLibraryName, {
+  //   root: directory,
+  //   sourceRoot: `${directory}/src`,
+  //   projectType: "library",
+  //   tags: [],
+  //   targets: {
+  //     lint: {},
+  //     build: {},
+  //   },
+  // });
 
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    delete compilerOptions.outDir;
+  // updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+  //   const compilerOptions = json.compilerOptions;
+  //   delete compilerOptions.outDir;
 
-    return json;
-  });
+  //   return json;
+  // });
 
-  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+  // const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
 
-  updateJson(tree, `${directory}/package.json`, (json) => {
-    delete json.type;
+  // updateJson(tree, `${directory}/package.json`, (json) => {
+  //   delete json.type;
 
-    return json;
-  });
+  //   return json;
+  // });
 
-  tree.delete(`${directory}/src/lib/${defaultFileName}`);
+  const backendApp = new ModelBackendAppBuilder({ modelName, module, tree });
+
+  await backendApp.attachToRoot({ tree });
+
+  // tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
 
 async function createBackendSchemaPlain({

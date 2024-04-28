@@ -1,6 +1,7 @@
 import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { RemoveModelGeneratorSchema } from "./schema";
 import * as nxWorkspace from "@nx/workspace";
+import { ModelBackendAppBuilder } from "../../builders/ModelBackendAppBuilder";
 
 export async function removeModelGenerator(
   tree: Tree,
@@ -11,25 +12,29 @@ export async function removeModelGenerator(
 
   const baseName = `@sps/${module}-models-${modelName}`;
 
-  await removeBackendRoot({
-    tree,
-    baseName,
-  });
+  const backendApp = new ModelBackendAppBuilder({ modelName, module, tree });
 
-  await removeBackendSchema({
-    tree,
-    baseName,
-  });
+  await backendApp.detachFromRoot({ tree });
 
-  await removeBackendSchemaRelations({
-    tree,
-    baseName,
-  });
+  // await removeBackendRoot({
+  //   tree,
+  //   baseName,
+  // });
 
-  await removeBackendSchemaPlain({
-    tree,
-    baseName,
-  });
+  // await removeBackendSchema({
+  //   tree,
+  //   baseName,
+  // });
+
+  // await removeBackendSchemaRelations({
+  //   tree,
+  //   baseName,
+  // });
+
+  // await removeBackendSchemaPlain({
+  //   tree,
+  //   baseName,
+  // });
 
   // const projects = getProjects(tree);
 
