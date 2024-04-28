@@ -1,0 +1,7 @@
+import { Table as PlainTable } from "<%= plain_library_name %>";
+import { Relations as Relations } from "<%= relations_library_name %>";
+
+export const Tables = {
+  Plain: PlainTable,
+  Relations: Relations,
+}

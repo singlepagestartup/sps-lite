@@ -44,14 +44,14 @@ export class Builder {
 
     const moduleProject = `@sps/${module}-backend-app`;
 
-    const backendAppProject = getProjects(tree).get(moduleProject);
+    const moduleBackendAppProject = getProjects(tree).get(moduleProject);
     const root = `${baseDirectory}/${modelName}/backend/app/root`;
 
     this.libName = libName;
     this.route = `/${pluralNameModelName}`;
     this.importPath = importPath;
     this.asPropertyName = propertyName;
-    this.rootProject = backendAppProject;
+    this.rootProject = moduleBackendAppProject;
     this.root = root;
     this.modelName = modelName;
     this.schemaModelName = schemaModelName;
