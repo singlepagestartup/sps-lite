@@ -8,7 +8,7 @@ const db = drizzle(postgres);
 export const migrate = async () => {
   try {
     await drizzleMigrator(db, {
-      migrationsFolder: path.resolve(__dirname, "./migrations"),
+      migrationsFolder: "./migrations",
     });
 
     console.log("Migration successful");
