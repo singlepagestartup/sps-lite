@@ -112,7 +112,7 @@ export class Builder {
       tree,
       root: this.root,
       name: this.libName,
-      generateFilesPath: path.join(__dirname, `files/plain`),
+      generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
         model: this.modelName,

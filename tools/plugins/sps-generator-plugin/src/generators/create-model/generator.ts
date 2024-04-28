@@ -22,6 +22,7 @@ import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
 import { Builder as ModelBackendAppBuilder } from "../../builders/backend/app/Builder";
 import { Builder as ModelBackendSchemaBuilder } from "../../builders/backend/schema/Builder";
+import { Builder as ModelBackendBuilder } from "../../builders/backend/Builder";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -37,13 +38,12 @@ export async function createModelGenerator(
 
   const backendAppProject = getProjects(tree).get(moduleProject);
 
-  const schemaBuilder = new ModelBackendSchemaBuilder({
+  const backendBuilder = new ModelBackendBuilder({
     modelName,
     module,
     tree,
   });
-
-  await schemaBuilder.create({ tree });
+  await backendBuilder.create({ tree });
 
   // await createContracts({
   //   tree,
