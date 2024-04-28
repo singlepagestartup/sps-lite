@@ -18,7 +18,7 @@ export async function removeModelGenerator(
     tree,
   });
 
-  // await backendApp.detachFromRoot({ tree });
+  await backendAppBuilder.detachFromRoot({ tree });
   await backendAppBuilder.delete({ tree });
 
   // await removeBackendRoot({
@@ -62,24 +62,6 @@ export async function removeModelGenerator(
 }
 
 export default removeModelGenerator;
-
-async function removeBackendRoot({
-  tree,
-  baseName,
-}: {
-  tree: Tree;
-  baseName: string;
-}) {
-  const projectName = `${baseName}-backend-app`;
-
-  await nxWorkspace.removeGenerator(tree, {
-    projectName,
-    skipFormat: true,
-    forceRemove: true,
-  });
-
-  await formatFiles(tree);
-}
 
 async function removeBackendSchema({
   tree,

@@ -82,21 +82,32 @@ export class Builder {
 
     const routeExport = `"${this.route}": ${this.asPropertyName},`;
 
-    const replaceExportRoutes = await replaceInFile({
-      tree,
-      pathToFile: backendAppProjectRoutesPath,
-      toReplaceString: routeExport,
-      content: "",
-    });
+    try {
+      const replaceExportRoutes = await replaceInFile({
+        tree,
+        pathToFile: backendAppProjectRoutesPath,
+        toReplaceString: routeExport,
+        content: "",
+      });
+    } catch (error) {
+      if (error.message !== `No expected value found in file: ${routeExport}`) {
+        throw error;
+      }
+    }
 
     const importPath = `${this.importPath};`;
-
-    const replaceImportRoutes = await replaceInFile({
-      tree,
-      pathToFile: backendAppProjectRoutesPath,
-      toReplaceString: importPath,
-      content: "",
-    });
+    try {
+      const replaceImportRoutes = await replaceInFile({
+        tree,
+        pathToFile: backendAppProjectRoutesPath,
+        toReplaceString: importPath,
+        content: "",
+      });
+    } catch (error) {
+      if (error.message !== `No expected value found in file: ${importPath}`) {
+        throw error;
+      }
+    }
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -148,6 +159,12 @@ export class Builder {
   }
 
   async delete({ tree }: { tree: Tree }) {
+    const project = getProjects(tree).get(this.libName);
+
+    if (!project) {
+      return;
+    }
+
     await nxWorkspace.removeGenerator(tree, {
       projectName: this.libName,
       skipFormat: true,
