@@ -8,15 +8,15 @@ export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
-    // const data = await db.query.model.findMany({
-    //   with: {
-    //     pagesToLayouts: true,
-    //   },
-    // });
+    const data = await db.query.model.findMany({
+      with: {
+        pagesToLayouts: true,
+      },
+    });
 
     // const cf = modelExtended
 
-    const data = await db.select().from(model);
+    // const data = await db.select().from(model);
 
     // const data = await db.query.plain.findMany({
     //   with: {

@@ -31,7 +31,15 @@ app.get("/posts/:id", async (c) => {
 
 app.get("/posts", async (c) => {
   try {
-    const posts = await db.query.posts.findMany();
+    const posts = await db.query.spsWebsiteBuilderPage.findMany({
+      with: {
+        pagesToLayouts: {
+          with: {
+            layout: true,
+          },
+        },
+      },
+    });
 
     return c.json({
       data: posts,

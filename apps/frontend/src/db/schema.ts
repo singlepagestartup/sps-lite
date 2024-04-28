@@ -22,15 +22,20 @@ export const posts = pgTable("posts", {
 export const comments = pgTable("comments", {
   id: serial("id").primaryKey(),
   text: text("text").notNull(),
+  userId: integer("user_id").references(() => users.id),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
 export const postsRelations = relations(posts, ({ one, many }) => ({}));
 
-export const usersRelations = relations(users, ({ many }) => ({}));
+export const usersRelations = relations(users, ({ many }) => ({
+  comments: many(comments),
+}));
 
-export const commentsRelations = relations(comments, ({ one }) => ({}));
+export const commentsRelations = relations(comments, ({ one }) => ({
+  user: one(users, { fields: [comments.userId], references: [users.id] }),
+}));
 
 // page
 export const spsWebsiteBuilderPage = spsWebsiteBuilderSchema.page.plain;
@@ -45,3 +50,5 @@ export const spsWebsiteBuilderLayoutRelations =
 // sps-website-builder
 export const spsWebsiteBuilderPagesToLayouts =
   spsWebsiteBuilderSchemaExtended.pagesToLayouts;
+export const spsWebsiteBuilderPagesToLayoutsRelations =
+  spsWebsiteBuilderSchemaExtended.pagesToLayoutsRelations;
