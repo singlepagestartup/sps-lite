@@ -1,5 +1,4 @@
 import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
-import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
@@ -9,7 +8,8 @@ export class Builder {
   root: string;
   snakeCaseModelName: string;
   modelName: string;
-  parentModelName: string;
+  plainLibraryName: string;
+  relationsLibraryName: string;
 
   constructor({
     modelName,
@@ -20,35 +20,18 @@ export class Builder {
     module: string;
     tree: Tree;
   }) {
-    const libName = `@sps/${module}-models-${modelName}-backend-schema-relations`;
+    const libName = `@sps/${module}-models-${modelName}-backend-schema`;
     const baseDirectory = `libs/modules/${module}/models`;
 
-    const root = `${baseDirectory}/${modelName}/backend/schema/relations`;
-    const modelNameSplitted = names(modelName).fileName.split("-");
-    const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
-      if (index === modelNameSplitted.length - 1) {
-        const plural = pluralize(curr);
-        if (index === 0) {
-          return plural;
-        }
-
-        return acc + "_" + plural;
-      }
-
-      if (index === 0) {
-        return curr;
-      }
-
-      return acc + "_" + curr;
-    }, "");
-
-    const parentModelName = libName.replace("relations", "plain");
+    const root = `${baseDirectory}/${modelName}/backend/schema/root`;
+    const plainLibraryName = `${libName}-plain`;
+    const relationsLibraryName = `${libName}-relations`;
 
     this.libName = libName;
     this.root = root;
-    this.snakeCaseModelName = snakeCaseModelName;
     this.modelName = modelName;
-    this.parentModelName = parentModelName;
+    this.plainLibraryName = plainLibraryName;
+    this.relationsLibraryName = relationsLibraryName;
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -59,9 +42,8 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model: this.modelName,
-        pluralized_model: this.snakeCaseModelName,
-        parent_model_library: this.parentModelName,
+        plain_library_name: this.plainLibraryName,
+        relations_library_name: this.relationsLibraryName,
       },
     });
   }

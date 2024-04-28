@@ -1,14 +1,5 @@
-import {
-  Tree,
-  formatFiles,
-  generateFiles,
-  getProjects,
-  names,
-  updateJson,
-  updateProjectConfiguration,
-} from "@nx/devkit";
+import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
-import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";

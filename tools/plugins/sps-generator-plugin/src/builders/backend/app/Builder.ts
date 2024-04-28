@@ -2,15 +2,11 @@ import {
   ProjectConfiguration,
   Tree,
   formatFiles,
-  generateFiles,
   getProjects,
   names,
-  updateJson,
-  updateProjectConfiguration,
 } from "@nx/devkit";
 import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../../utils/file-utils";
-import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../utils/js-lib-utils";

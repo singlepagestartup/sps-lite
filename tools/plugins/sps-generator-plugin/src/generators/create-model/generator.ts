@@ -21,8 +21,7 @@ import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name
 import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
 import { Builder as ModelBackendAppBuilder } from "../../builders/backend/app/Builder";
-import { Builder as ModelBackendPlainSchemaBuilder } from "../../builders/backend/schema/plain/Builder";
-import { Builder as ModelBackendRelationsSchemaBuilder } from "../../builders/backend/schema/relations/Builder";
+import { Builder as ModelBackendSchemaBuilder } from "../../builders/backend/schema/Builder";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -37,6 +36,14 @@ export async function createModelGenerator(
   const moduleProject = `@sps/${module}-backend-app`;
 
   const backendAppProject = getProjects(tree).get(moduleProject);
+
+  const schemaBuilder = new ModelBackendSchemaBuilder({
+    modelName,
+    module,
+    tree,
+  });
+
+  await schemaBuilder.create({ tree });
 
   // await createContracts({
   //   tree,
@@ -98,13 +105,13 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  await createBackendSchemaRelations({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createBackendSchemaRelations({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
   // await createBackendSchema({
   //   tree,
@@ -392,259 +399,4 @@ async function createFrontendRootComponent({
   });
 
   tree.delete(`${directory}/tsconfig.lib.json`);
-}
-
-async function createBackendSchemaPlain({
-  tree,
-  baseDirectory,
-  baseName,
-  modelName,
-  module,
-}: {
-  tree: Tree;
-  baseName: string;
-  baseDirectory: string;
-  modelName: string;
-  module: string;
-}) {
-  const modelBackendSchemaBuilder = new ModelBackendPlainSchemaBuilder({
-    modelName,
-    module,
-    tree,
-  });
-
-  await modelBackendSchemaBuilder.create({ tree });
-
-  // const backendAppLibraryName = `${baseName}-backend-schema-plain`;
-  // const directory = `${baseDirectory}/${modelName}/backend/schema/plain`;
-  // const modelNameSplitted = names(modelName).fileName.split("-");
-  // const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
-  //   if (index === modelNameSplitted.length - 1) {
-  //     const plural = pluralize(curr);
-  //     if (index === 0) {
-  //       return plural;
-  //     }
-
-  //     return acc + "_" + plural;
-  //   }
-
-  //   if (index === 0) {
-  //     return curr;
-  //   }
-
-  //   return acc + "_" + curr;
-  // }, "");
-
-  // await jsLibraryGenerator(tree, {
-  //   name: backendAppLibraryName,
-  //   bundler: "tsc",
-  //   projectNameAndRootFormat: "as-provided",
-  //   directory,
-  //   minimal: true,
-  //   unitTestRunner: "none",
-  //   strict: true,
-  // });
-
-  // generateFiles(
-  //   tree,
-  //   path.join(__dirname, `files/backend/schema/plain`),
-  //   directory,
-  //   {
-  //     template: "",
-  //     model: modelName,
-  //     pluralized_model: snakeCaseModelName,
-  //   },
-  // );
-
-  // updateProjectConfiguration(tree, backendAppLibraryName, {
-  //   root: directory,
-  //   sourceRoot: `${directory}/src`,
-  //   projectType: "library",
-  //   tags: [],
-  //   targets: {
-  //     lint: {},
-  //     build: {},
-  //   },
-  // });
-
-  // updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-  //   const compilerOptions = json.compilerOptions;
-  //   delete compilerOptions.outDir;
-
-  //   return json;
-  // });
-
-  // const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
-
-  // updateJson(tree, `${directory}/package.json`, (json) => {
-  //   delete json.type;
-
-  //   return json;
-  // });
-
-  // tree.delete(`${directory}/src/lib/${defaultFileName}`);
-}
-
-async function createBackendSchemaRelations({
-  tree,
-  baseDirectory,
-  baseName,
-  modelName,
-  module,
-}: {
-  tree: Tree;
-  baseName: string;
-  baseDirectory: string;
-  modelName: string;
-  module: string;
-}) {
-  const modelBackendSchemaBuilder = new ModelBackendRelationsSchemaBuilder({
-    modelName,
-    module,
-    tree,
-  });
-
-  await modelBackendSchemaBuilder.create({ tree });
-
-  // const baseLibraryName = `${baseName}-backend-schema`;
-  // const backendAppLibraryName = `${baseLibraryName}-relations`;
-  // const parentModelName = `${baseLibraryName}-plain`;
-  // const directory = `${baseDirectory}/${modelName}/backend/schema/relations`;
-  // const modelNameSplitted = names(modelName).fileName.split("-");
-  // const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
-  //   if (index === modelNameSplitted.length - 1) {
-  //     const plural = pluralize(curr);
-  //     if (index === 0) {
-  //       return plural;
-  //     }
-
-  //     return acc + "_" + plural;
-  //   }
-
-  //   if (index === 0) {
-  //     return curr;
-  //   }
-
-  //   return acc + "_" + curr;
-  // }, "");
-
-  // await jsLibraryGenerator(tree, {
-  //   name: backendAppLibraryName,
-  //   bundler: "tsc",
-  //   projectNameAndRootFormat: "as-provided",
-  //   directory,
-  //   minimal: true,
-  //   unitTestRunner: "none",
-  //   strict: true,
-  // });
-
-  // generateFiles(
-  //   tree,
-  //   path.join(__dirname, `files/backend/schema/relations`),
-  //   directory,
-  //   {
-  //     template: "",
-  //     model: modelName,
-  //     pluralized_model: snakeCaseModelName,
-  //     parent_model_library: parentModelName,
-  //   },
-  // );
-
-  // updateProjectConfiguration(tree, backendAppLibraryName, {
-  //   root: directory,
-  //   sourceRoot: `${directory}/src`,
-  //   projectType: "library",
-  //   tags: [],
-  //   targets: {
-  //     lint: {},
-  //     build: {},
-  //   },
-  // });
-
-  // updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-  //   const compilerOptions = json.compilerOptions;
-  //   delete compilerOptions.outDir;
-
-  //   return json;
-  // });
-
-  // const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
-
-  // updateJson(tree, `${directory}/package.json`, (json) => {
-  //   delete json.type;
-
-  //   return json;
-  // });
-
-  // tree.delete(`${directory}/src/lib/${defaultFileName}`);
-}
-
-async function createBackendSchema({
-  tree,
-  baseDirectory,
-  baseName,
-  modelName,
-  module,
-}: {
-  tree: Tree;
-  baseName: string;
-  baseDirectory: string;
-  modelName: string;
-  module: string;
-}) {
-  const baseLibraryName = `${baseName}-backend-schema`;
-  const backendAppLibraryName = `${baseName}-backend-schema`;
-  const plainLibraryName = `${baseLibraryName}-plain`;
-  const relationsLibraryName = `${baseLibraryName}-relations`;
-  const directory = `${baseDirectory}/${modelName}/backend/schema/root`;
-  const modelNameSplitted = names(modelName).fileName.split("-");
-
-  await jsLibraryGenerator(tree, {
-    name: backendAppLibraryName,
-    bundler: "tsc",
-    projectNameAndRootFormat: "as-provided",
-    directory,
-    minimal: true,
-    unitTestRunner: "none",
-    strict: true,
-  });
-
-  generateFiles(
-    tree,
-    path.join(__dirname, `files/backend/schema/root`),
-    directory,
-    {
-      template: "",
-      plain_library_name: plainLibraryName,
-      relations_library_name: relationsLibraryName,
-    },
-  );
-
-  updateProjectConfiguration(tree, backendAppLibraryName, {
-    root: directory,
-    sourceRoot: `${directory}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      lint: {},
-      build: {},
-    },
-  });
-
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    delete compilerOptions.outDir;
-
-    return json;
-  });
-
-  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
-
-  updateJson(tree, `${directory}/package.json`, (json) => {
-    delete json.type;
-
-    return json;
-  });
-
-  tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
