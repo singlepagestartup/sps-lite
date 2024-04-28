@@ -18,6 +18,4 @@ export const pagesToLayouts = pgTable(
   }),
 );
 
-export const relations = {
-  pagesToLayouts,
-};
+export const schema = { pagesToLayouts };

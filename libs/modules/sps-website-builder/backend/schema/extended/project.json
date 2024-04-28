@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-website-builder-backend-schema-relations",
+  "name": "@sps/sps-website-builder-backend-schema-extended",
   "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-website-builder/backend/schema/relations/src",
+  "sourceRoot": "libs/modules/sps-website-builder/backend/schema/extended/src",
   "projectType": "library",
   "tags": [],
   "targets": {

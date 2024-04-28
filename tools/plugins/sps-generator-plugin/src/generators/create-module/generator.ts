@@ -41,7 +41,7 @@ export async function createModuleGenerator(
   //   module,
   // });
 
-  await createBackendSchemaRelations({
+  await createBackendSchemaExtended({
     tree,
     baseName,
     baseDirectory,
@@ -319,7 +319,7 @@ async function createBackendSchema({
   tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
 
-async function createBackendSchemaRelations({
+async function createBackendSchemaExtended({
   tree,
   baseDirectory,
   baseName,
@@ -332,8 +332,8 @@ async function createBackendSchemaRelations({
   modelName: string;
   module: string;
 }) {
-  const backendAppLibraryName = `${baseName}-backend-schema-relations`;
-  const directory = `${baseDirectory}/backend/schema/relations`;
+  const backendAppLibraryName = `${baseName}-backend-schema-extended`;
+  const directory = `${baseDirectory}/backend/schema/extended`;
 
   await jsLibraryGenerator(tree, {
     name: backendAppLibraryName,
@@ -358,7 +358,7 @@ async function createBackendSchemaRelations({
 
   generateFiles(
     tree,
-    path.join(__dirname, `files/backend/schema/relations`),
+    path.join(__dirname, `files/backend/schema/extended`),
     directory,
     {
       template: "",
