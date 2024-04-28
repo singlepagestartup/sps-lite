@@ -32,6 +32,18 @@
         ]
       }
     },
+    "db:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun drizzle-kit studio --port 3001 --config src/db/config.ts"
+          }
+        ]
+      }
+    },
     "theme": {
       "executor": "nx:run-commands",
       "options": {

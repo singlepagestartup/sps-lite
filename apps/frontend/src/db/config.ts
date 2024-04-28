@@ -1,4 +1,4 @@
-import { defineConfig } from "drizzle-kit";
+import { Config, defineConfig } from "drizzle-kit";
 import { DATABASE_OPTIONS } from "../utils/envs";
 
 export default defineConfig({
@@ -8,4 +8,4 @@ export default defineConfig({
   dbCredentials: DATABASE_OPTIONS,
   verbose: true,
   strict: true,
-});
+}) satisfies Config;
