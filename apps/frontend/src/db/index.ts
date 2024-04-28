@@ -1,3 +1,8 @@
-import { drizzleDb as db, drizzleSchema as schema } from "@sps/sps-db-provider";
+import {
+  drizzleDb as db,
+  drizzleSchema as schema,
+  drizzleMigrate as migrate,
+  drizzleSeed as seed,
+} from "@sps/sps-db-provider";
 
-export { db, schema };
+export { db, schema, migrate, seed };

@@ -1,13 +1,14 @@
 import { postgres } from "@sps/shared-backend-database-config";
 import { drizzle } from "drizzle-orm/postgres-js";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
+import { migrate as drizzleMigrator } from "drizzle-orm/postgres-js/migrator";
+import path from "path";
 
 const db = drizzle(postgres);
 
-const main = async () => {
+export const migrate = async () => {
   try {
-    await migrate(db, {
-      migrationsFolder: "./src/db/migrations",
+    await drizzleMigrator(db, {
+      migrationsFolder: path.resolve(__dirname, "./migrations"),
     });
 
     console.log("Migration successful");
@@ -17,5 +18,3 @@ const main = async () => {
     process.exit(1);
   }
 };
-
-main();

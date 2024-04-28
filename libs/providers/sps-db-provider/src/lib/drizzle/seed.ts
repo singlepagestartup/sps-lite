@@ -7,7 +7,7 @@ const db = drizzle(postgres, {
   schema,
 });
 
-const main = async () => {
+export const seed = async () => {
   try {
     console.log("Seeding database");
     // Delete all data
@@ -34,5 +34,3 @@ const main = async () => {
     process.exit(1);
   }
 };
-
-main();
