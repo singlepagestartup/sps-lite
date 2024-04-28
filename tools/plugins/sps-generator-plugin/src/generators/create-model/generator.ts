@@ -104,13 +104,13 @@ export async function createModelGenerator(
     module,
   });
 
-  // await createBackendRoot({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
+  await createBackendRoot({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
   await formatFiles(tree);
 }

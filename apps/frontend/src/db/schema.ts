@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 import { serial, text, timestamp, integer, pgTable } from "drizzle-orm/pg-core";
 import { schema as spsWebsiteBuilderSchema } from "@sps/sps-website-builder-backend-schema";
+import { relations as spsWebsiteBuilderRelations } from "@sps/sps-website-builder-backend-schema-relations";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -31,6 +32,16 @@ export const usersRelations = relations(users, ({ many }) => ({}));
 
 export const commentsRelations = relations(comments, ({ one }) => ({}));
 
+// page
 export const spsWebsiteBuilderPage = spsWebsiteBuilderSchema.page.plain;
 export const spsWebsiteBuilderPageRelations =
   spsWebsiteBuilderSchema.page.extended;
+
+// layout
+export const spsWebsiteBuilderLayout = spsWebsiteBuilderSchema.layout.plain;
+export const spsWebsiteBuilderLayoutRelations =
+  spsWebsiteBuilderSchema.layout.extended;
+
+// module relations
+export const spsWebsiteBuilderRelationsPagesToLayouts =
+  spsWebsiteBuilderRelations.pagesToLayouts;

@@ -41,7 +41,7 @@ export async function createModuleGenerator(
   //   module,
   // });
 
-  await createBackendSchema({
+  await createBackendSchemaRelations({
     tree,
     baseName,
     baseDirectory,
@@ -49,13 +49,21 @@ export async function createModuleGenerator(
     module,
   });
 
-  await createBackendApp({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName: module,
-    module,
-  });
+  // await createBackendSchema({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName: module,
+  //   module,
+  // });
+
+  // await createBackendApp({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName: module,
+  //   module,
+  // });
 
   await formatFiles(tree);
 }
@@ -286,6 +294,71 @@ async function createBackendSchema({
   generateFiles(
     tree,
     path.join(__dirname, `files/backend/schema/root`),
+    directory,
+    {
+      template: "",
+      module,
+    },
+  );
+
+  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
+    const compilerOptions = json.compilerOptions;
+    delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  const defaultFileName = `${backendAppLibraryName}.ts`.replace("@sps/", "");
+
+  updateJson(tree, `${directory}/package.json`, (json) => {
+    delete json.type;
+
+    return json;
+  });
+
+  tree.delete(`${directory}/src/lib/${defaultFileName}`);
+}
+
+async function createBackendSchemaRelations({
+  tree,
+  baseDirectory,
+  baseName,
+  modelName,
+  module,
+}: {
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  modelName: string;
+  module: string;
+}) {
+  const backendAppLibraryName = `${baseName}-backend-schema-relations`;
+  const directory = `${baseDirectory}/backend/schema/relations`;
+
+  await jsLibraryGenerator(tree, {
+    name: backendAppLibraryName,
+    bundler: "tsc",
+    projectNameAndRootFormat: "as-provided",
+    directory,
+    minimal: true,
+    unitTestRunner: "none",
+    strict: true,
+  });
+
+  updateProjectConfiguration(tree, backendAppLibraryName, {
+    root: directory,
+    sourceRoot: `${directory}/src`,
+    projectType: "library",
+    tags: [],
+    targets: {
+      lint: {},
+      build: {},
+    },
+  });
+
+  generateFiles(
+    tree,
+    path.join(__dirname, `files/backend/schema/relations`),
     directory,
     {
       template: "",
