@@ -1,7 +1,7 @@
-import { serial, timestamp, pgTable, text } from "drizzle-orm/pg-core";
+import { timestamp, pgTable, text, uuid } from "drizzle-orm/pg-core";
 
-export const schema = pgTable("pages", {
-  id: serial("id").primaryKey(),
+export const Table = pgTable("pages", {
+  id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").default("Page"),
   description: text("description").default("Description"),
   createdAt: timestamp("created_at").notNull().defaultNow(),

@@ -1,9 +1,9 @@
 import { relations } from "drizzle-orm";
 import { serial, text, timestamp, integer, pgTable } from "drizzle-orm/pg-core";
 import { schema as spsWebsiteBuilderSchema } from "@sps/sps-website-builder-backend-schema";
-import { schema as spsWebsiteBuilderSchemaExtended } from "@sps/sps-website-builder-backend-schema-extended";
+import { Tables as SpsWebsiteBuilderSchemaExtendedTables } from "@sps/sps-website-builder-backend-schema-extended";
 
-export const users = pgTable("users", {
+export const UserTable = pgTable("users", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
@@ -11,7 +11,7 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
-export const posts = pgTable("posts", {
+export const PostTable = pgTable("posts", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   content: text("content").notNull(),
@@ -19,36 +19,39 @@ export const posts = pgTable("posts", {
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
-export const comments = pgTable("comments", {
+export const CommentTable = pgTable("comments", {
   id: serial("id").primaryKey(),
   text: text("text").notNull(),
-  userId: integer("user_id").references(() => users.id),
+  userId: integer("user_id").references(() => UserTable.id),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
-export const postsRelations = relations(posts, ({ one, many }) => ({}));
+export const PostRelationTable = relations(PostTable, ({ one, many }) => ({}));
 
-export const usersRelations = relations(users, ({ many }) => ({
-  comments: many(comments),
+export const UserRelationTable = relations(UserTable, ({ many }) => ({
+  Comments: many(CommentTable),
 }));
 
-export const commentsRelations = relations(comments, ({ one }) => ({
-  user: one(users, { fields: [comments.userId], references: [users.id] }),
+export const CommentRelationTable = relations(CommentTable, ({ one }) => ({
+  user: one(UserTable, {
+    fields: [CommentTable.userId],
+    references: [UserTable.id],
+  }),
 }));
 
 // page
-export const spsWebsiteBuilderPage = spsWebsiteBuilderSchema.page.plain;
-export const spsWebsiteBuilderPageRelations =
-  spsWebsiteBuilderSchema.page.extended;
+export const SpsWebsiteBuilderPage = spsWebsiteBuilderSchema.Page.Plain;
+export const SpsWebsiteBuilderPageRelations =
+  spsWebsiteBuilderSchema.Page.Relations;
 
 // layout
-export const spsWebsiteBuilderLayout = spsWebsiteBuilderSchema.layout.plain;
-export const spsWebsiteBuilderLayoutRelations =
-  spsWebsiteBuilderSchema.layout.extended;
+export const SpsWebsiteBuilderLayout = spsWebsiteBuilderSchema.Layout.Plain;
+export const SpsWebsiteBuilderLayoutRelations =
+  spsWebsiteBuilderSchema.Layout.Relations;
 
 // sps-website-builder
-export const spsWebsiteBuilderPagesToLayouts =
-  spsWebsiteBuilderSchemaExtended.pagesToLayouts;
-export const spsWebsiteBuilderPagesToLayoutsRelations =
-  spsWebsiteBuilderSchemaExtended.pagesToLayoutsRelations;
+export const SpsWebsiteBuilderPageToLayoutTable =
+  SpsWebsiteBuilderSchemaExtendedTables.PageToLayoutTable;
+export const SpsWebsiteBuilderPageToLayoutRelationTable =
+  SpsWebsiteBuilderSchemaExtendedTables.PageToLayoutRelationTable;

@@ -1,3 +1,3 @@
-import { drizzleMigrate as migrate } from "@sps/sps-db-provider";
+import { migrate } from "@sps/sps-db-provider";
 
 migrate();

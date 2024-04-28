@@ -1,9 +1,11 @@
 import { relations } from "drizzle-orm";
-import { schema as parentSchema } from "@sps/sps-website-builder-models-page-backend-schema-plain";
-import { schema as spsWebsiteBuilder } from "@sps/sps-website-builder-backend-schema-extended";
+import { Table as ParentTable } from "@sps/sps-website-builder-models-page-backend-schema-plain";
+import { Tables as SpsWebsiteBuilderTables } from "@sps/sps-website-builder-backend-schema-extended";
 
-export const schema = relations(parentSchema, (helpers) => {
+export const Relations = relations(ParentTable, (helpers) => {
   return {
-    pagesToLayouts: helpers.many(spsWebsiteBuilder.pagesToLayouts),
+    PageToLayoutRelation: helpers.many(
+      SpsWebsiteBuilderTables.PageToLayoutTable,
+    ),
   };
 });

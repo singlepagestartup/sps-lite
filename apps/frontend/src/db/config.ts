@@ -1,11 +1,11 @@
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config, defineConfig } from "drizzle-kit";
-import { drizzleSchemaPath } from "@sps/sps-db-provider";
+import { schemaPath } from "@sps/sps-db-provider";
 
 const out = "./src/db/migrations";
 
 const config = defineConfig({
-  schema: drizzleSchemaPath,
+  schema: schemaPath,
   out,
   driver: "pg",
   dbCredentials: DATABASE_OPTIONS,

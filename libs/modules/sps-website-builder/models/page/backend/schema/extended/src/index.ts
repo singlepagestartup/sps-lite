@@ -1,1 +1,1 @@
-export { schema } from "./lib/schema";
+export { Relations } from "./lib/schema";

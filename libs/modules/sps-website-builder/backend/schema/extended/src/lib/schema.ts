@@ -1,33 +1,35 @@
-import { integer, pgTable, primaryKey } from "drizzle-orm/pg-core";
-
-import { schema as pages } from "@sps/sps-website-builder-models-page-backend-schema-plain";
-import { schema as layouts } from "@sps/sps-website-builder-models-layout-backend-schema-plain";
+import { pgTable, primaryKey, uuid } from "drizzle-orm/pg-core";
+import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-plain";
+import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-plain";
 import { relations } from "drizzle-orm";
 
-export const pagesToLayouts = pgTable(
+export const PageToLayoutTable = pgTable(
   "pages_to_layouts",
   {
-    pageId: integer("page_id")
+    pageId: uuid("page_id")
       .notNull()
-      .references(() => pages.id),
-    layoutId: integer("layout_id")
+      .references(() => PagesTable.id),
+    layoutId: uuid("layout_id")
       .notNull()
-      .references(() => layouts.id),
+      .references(() => LayoutsTable.id),
   },
   (t) => ({
     pk: primaryKey({ columns: [t.pageId, t.layoutId] }),
   }),
 );
 
-export const pagesToLayoutsRelations = relations(pagesToLayouts, ({ one }) => ({
-  page: one(pages, {
-    fields: [pagesToLayouts.pageId],
-    references: [pages.id],
+export const PageToLayoutRelationTable = relations(
+  PageToLayoutTable,
+  ({ one }) => ({
+    page: one(PagesTable, {
+      fields: [PageToLayoutTable.pageId],
+      references: [PagesTable.id],
+    }),
+    layout: one(LayoutsTable, {
+      fields: [PageToLayoutTable.layoutId],
+      references: [LayoutsTable.id],
+    }),
   }),
-  layout: one(layouts, {
-    fields: [pagesToLayouts.layoutId],
-    references: [layouts.id],
-  }),
-}));
+);
 
-export const schema = { pagesToLayouts, pagesToLayoutsRelations };
+export const Tables = { PageToLayoutTable, PageToLayoutRelationTable };

@@ -1,4 +1,4 @@
-import { comments, posts, users } from "./schema";
+import { CommentTable, PostTable, UserTable } from "./schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
 import { postgres } from "@sps/shared-backend-database-config";
@@ -11,11 +11,11 @@ export const seed = async () => {
   try {
     console.log("Seeding database");
     // Delete all data
-    await db.delete(comments);
-    await db.delete(posts);
-    await db.delete(users);
+    await db.delete(CommentTable);
+    await db.delete(PostTable);
+    await db.delete(UserTable);
 
-    await db.insert(users).values([
+    await db.insert(UserTable).values([
       {
         id: 1,
         name: "Alice Johnson",

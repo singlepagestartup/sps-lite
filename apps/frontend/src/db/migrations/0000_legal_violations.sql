@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "posts" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "layouts" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"title" text DEFAULT 'Layout',
 	"description" text DEFAULT 'Description',
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "layouts" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "pages" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"title" text DEFAULT 'Page',
 	"description" text DEFAULT 'Description',
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS "pages" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "pages_to_layouts" (
-	"page_id" integer NOT NULL,
-	"layout_id" integer NOT NULL,
+	"page_id" uuid NOT NULL,
+	"layout_id" uuid NOT NULL,
 	CONSTRAINT "pages_to_layouts_page_id_layout_id_pk" PRIMARY KEY("page_id","layout_id")
 );
 --> statement-breakpoint
