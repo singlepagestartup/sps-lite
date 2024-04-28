@@ -3,6 +3,7 @@ import { MigrationConfig } from "drizzle-orm/migrator";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate as drizzleMigrator } from "drizzle-orm/postgres-js/migrator";
 import path from "path";
+import fs from "fs";
 import { cwd } from "process";
 
 const db = drizzle(postgres);
@@ -11,6 +12,14 @@ export const migrate = async (props?: MigrationConfig) => {
   try {
     const { migrationsFolder = path.resolve(cwd(), "./src/db/migrations") } =
       props || {};
+
+    // remove meta folder in migrationsFolder
+
+    const metaFolder = path.resolve(migrationsFolder, "meta");
+
+    if (fs.existsSync(metaFolder)) {
+      fs.rmdirSync(metaFolder, { recursive: true });
+    }
 
     await drizzleMigrator(db, { ...(props || {}), migrationsFolder });
 
