@@ -80,29 +80,29 @@ export async function createModelGenerator(
   //   module,
   // });
 
-  // await createBackendSchemaPlain({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
+  await createBackendSchemaPlain({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
-  // await createBackendSchemaRelations({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
+  await createBackendSchemaRelations({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
-  // await createBackendSchema({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
+  await createBackendSchema({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
   await createBackendRoot({
     tree,
