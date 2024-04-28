@@ -1,9 +1,9 @@
 import { comments, posts, users } from "./schema";
 import { drizzle } from "drizzle-orm/postgres-js";
-import { pg } from "./index";
 import * as schema from "./schema";
+import { postgres } from "@sps/shared-backend-database-config";
 
-const db = drizzle(pg, {
+const db = drizzle(postgres, {
   schema,
 });
 

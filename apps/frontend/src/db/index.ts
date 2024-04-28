@@ -1,7 +1,5 @@
 import { drizzle } from "drizzle-orm/postgres-js";
-import { DATABASE_OPTIONS } from "../utils/envs";
-import postgres from "postgres";
 import * as schema from "./schema";
+import { postgres } from "@sps/shared-backend-database-config";
 
-export const pg = postgres(DATABASE_OPTIONS);
-export const db = drizzle(pg, { schema });
+export const db = drizzle(postgres, { schema });

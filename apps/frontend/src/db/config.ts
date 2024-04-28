@@ -1,5 +1,5 @@
+import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config, defineConfig } from "drizzle-kit";
-import { DATABASE_OPTIONS } from "../utils/envs";
 
 export default defineConfig({
   schema: "./src/db/schema.ts",
