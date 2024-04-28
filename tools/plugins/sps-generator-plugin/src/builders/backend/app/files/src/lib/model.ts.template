@@ -1,0 +1,30 @@
+import { db, schema } from "@sps/sps-db-provider";
+
+const schemaModel = schema.<%= schema_model_name %>;
+
+const query = db.query.<%= schema_model_name %>;
+
+const insert = (params) => {
+  return db.insert(schemaModel).values(params);
+};
+
+const select = (params?: any) => {
+  return db.select(params).from(schemaModel);
+};
+
+const update = (params) => {
+  return db.update(schemaModel).set(params);
+};
+
+const del = () => {
+  return db.delete(schemaModel);
+};
+
+export const model = {
+  query,
+  insert,
+  select,
+  delete: del,
+  update,
+  schema: schemaModel,
+};

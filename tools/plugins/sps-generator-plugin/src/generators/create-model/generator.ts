@@ -20,7 +20,7 @@ import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
-import { ModelBackendAppBuilder } from "../../builders/ModelBackendAppBuilder";
+import { Builder as ModelBackendAppBuilder } from "../../builders/backend/app/Builder";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -414,6 +414,10 @@ async function createBackendRoot({
   const pascalCaseName = names(modelName).className;
   const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
+  const backendApp = new ModelBackendAppBuilder({ modelName, module, tree });
+
+  await backendApp.create({ tree });
+
   // await jsLibraryGenerator(tree, {
   //   name: backendAppLibraryName,
   //   bundler: "tsc",
@@ -461,9 +465,7 @@ async function createBackendRoot({
   //   return json;
   // });
 
-  const backendApp = new ModelBackendAppBuilder({ modelName, module, tree });
-
-  await backendApp.attachToRoot({ tree });
+  // await backendApp.attachToRoot({ tree });
 
   // tree.delete(`${directory}/src/lib/${defaultFileName}`);
 }
