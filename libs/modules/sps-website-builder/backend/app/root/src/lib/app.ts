@@ -1,14 +1,14 @@
 // @ts-nocheck later will fix, don't delete
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
-import { routes } from "./routes"
+import { routes } from "./routes";
 
 export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
     return c.json({
-      data: "<%= module %>",
+      data: "sps-website-builder",
     });
   } catch (error: any) {
     throw new HTTPException(400, {

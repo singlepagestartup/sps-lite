@@ -584,6 +584,12 @@
         "libs/modules/sps-subscription/models/tier/frontend/redux/src/index.ts"
       ],
       "@sps/sps-utils-backend": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-website-builder-backend-app": [
+        "libs/modules/sps-website-builder/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-backend-schema": [
+        "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
