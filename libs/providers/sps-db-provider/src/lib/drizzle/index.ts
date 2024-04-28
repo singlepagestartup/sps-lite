@@ -4,6 +4,6 @@ import { postgres } from "@sps/shared-backend-database-config";
 
 export { migrate } from "./migrate";
 export { seed } from "./seed";
-export { default as config } from "./config";
+export { config } from "./config";
 export const db = drizzle(postgres, { schema: drizzleSchema });
 export const schema = drizzleSchema;

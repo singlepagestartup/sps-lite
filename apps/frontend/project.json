@@ -11,10 +11,10 @@
         "cwd": "apps/frontend",
         "commands": [
           {
-            "command": "drizzle-kit generate:pg --config src/db/config.ts"
+            "command": "drizzle-kit generate:pg --config ./src/db/config.ts"
           },
           {
-            "command": "bun run src/db/migrate.ts"
+            "command": "bun run ./src/db/migrate.ts"
           }
         ]
       }
