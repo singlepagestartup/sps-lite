@@ -31,5 +31,6 @@ export const usersRelations = relations(users, ({ many }) => ({}));
 
 export const commentsRelations = relations(comments, ({ one }) => ({}));
 
-export const spsWebsiteBuilderPage = spsWebsiteBuilderSchema.plain;
-export const spsWebsiteBuilderPageRelations = spsWebsiteBuilderSchema.extended;
+export const spsWebsiteBuilderPage = spsWebsiteBuilderSchema.page.plain;
+export const spsWebsiteBuilderPageRelations =
+  spsWebsiteBuilderSchema.page.extended;
