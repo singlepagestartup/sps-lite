@@ -1,5 +1,3 @@
 ############################
 # Drizzle
 ############################
-!*.sql
-src/lib/drizzle/migrations/meta/*
