@@ -2,8 +2,7 @@ import { eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { handle } from "hono/vercel";
-import { db } from "../../../src/db";
-import { posts } from "../../../src/db/schema";
+import { db, schema } from "../../../src/db";
 import { type NextRequest } from "next/server";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-app";
 
@@ -21,7 +20,7 @@ app.get("/posts/:id", async (c) => {
   }
 
   const post = await db.query.posts.findFirst({
-    where: eq(posts.id, parseInt(id)),
+    where: eq(schema.posts.id, parseInt(id)),
   });
 
   return c.json({
@@ -59,7 +58,7 @@ app.post("/posts", async (c) => {
 
     try {
       const newPost = await db
-        .insert(posts)
+        .insert(schema.posts)
         .values({
           title: data.title,
           content: data.content,

@@ -1,1 +1,1 @@
-export { db as drizzleDb } from "./lib/drizzle";
+export { db as drizzleDb, schema as drizzleSchema } from "./lib/drizzle";
