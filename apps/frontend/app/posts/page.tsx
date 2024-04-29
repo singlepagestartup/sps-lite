@@ -1,4 +1,4 @@
-import { BACKEND_URL } from "../../src/utils/envs";
+import { BACKEND_URL } from "@sps/shared-utils";
 import { Component as CreatePostForm } from "../../src/components/create-post-form";
 import { Component as Post } from "../../src/components/post";
 

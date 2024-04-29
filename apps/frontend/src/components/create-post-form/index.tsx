@@ -1,5 +1,5 @@
 "use client";
-import { BACKEND_URL } from "../../utils/envs";
+import { BACKEND_URL } from "@sps/shared-utils";
 import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
 

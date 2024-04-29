@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { BACKEND_URL } from "../../../src/utils/envs";
+
 import { Component as Post } from "../../../src/components/post";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 export default async function Page(props: any) {
   const { params } = props;

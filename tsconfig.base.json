@@ -17,6 +17,7 @@
     "paths": {
       "@sps/hooks": ["libs/shared/hooks/src/index.ts"],
       "@sps/shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
+      "@sps/shared-backend-api": ["libs/shared/backend/api/src/index.ts"],
       "@sps/shared-backend-database-config": [
         "libs/shared/backend/database/config/src/index.ts"
       ],

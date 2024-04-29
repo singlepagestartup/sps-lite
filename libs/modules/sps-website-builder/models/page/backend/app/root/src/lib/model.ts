@@ -1,30 +1,36 @@
-import { db, schema } from "@sps/sps-db-provider";
+// import { db, schema } from "@sps/sps-db-provider";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { postgres } from "@sps/shared-backend-database-config";
+import * as schema from "@sps/sps-website-builder-backend-schema";
 
-const schemaModel = schema.SpsWebsiteBuilderPage;
+export const db = drizzle(postgres, { schema, logger: true });
+export const Table = schema.PageTable;
 
-const query = db.query.SpsWebsiteBuilderPage;
+// const schemaModel = schema;
 
-const insert = (params) => {
-  return db.insert(schemaModel).values(params);
-};
+// const query = db.query.SpsWebsiteBuilderPage;
 
-const select = (params?: any) => {
-  return db.select(params).from(schemaModel);
-};
+// const insert = (params) => {
+//   return db.insert(schemaModel).values(params);
+// };
 
-const update = (params) => {
-  return db.update(schemaModel).set(params);
-};
+// const select = (params?: any) => {
+//   return db.select(params).from(schemaModel);
+// };
 
-const del = () => {
-  return db.delete(schemaModel);
-};
+// const update = (params) => {
+//   return db.update(schemaModel).set(params);
+// };
 
-export const model = {
-  query,
-  insert,
-  select,
-  delete: del,
-  update,
-  schema: schemaModel,
-};
+// const del = () => {
+//   return db.delete(schemaModel);
+// };
+
+// export const model = {
+//   query,
+//   insert,
+//   select,
+//   delete: del,
+//   update,
+//   schema: schemaModel,
+// };
