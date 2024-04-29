@@ -44,6 +44,7 @@ export class Builder {
         template: "",
         plain_library_name: this.plainLibraryName,
         relations_library_name: this.relationsLibraryName,
+        model_name: names(this.modelName).className,
       },
     });
   }
