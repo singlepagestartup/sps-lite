@@ -1,7 +1,9 @@
-import { pgTable, primaryKey, uuid } from "drizzle-orm/pg-core";
+import { pgTableCreator, primaryKey, uuid } from "drizzle-orm/pg-core";
 import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-plain";
 import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-plain";
 import { relations } from "drizzle-orm";
+
+const pgTable = pgTableCreator((name) => `sps_website_builder_${name}`);
 
 export const PageToLayoutTable = pgTable(
   "pages_to_layouts",
@@ -31,5 +33,3 @@ export const PageToLayoutRelationTable = relations(
     }),
   }),
 );
-
-export const Tables = { PageToLayoutTable, PageToLayoutRelationTable };

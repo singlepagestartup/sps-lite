@@ -1,4 +1,6 @@
-import { timestamp, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { timestamp, text, uuid, pgTableCreator } from "drizzle-orm/pg-core";
+
+const pgTable = pgTableCreator((name) => `sps_website_builder_${name}`);
 
 export const Table = pgTable("pages", {
   id: uuid("id").primaryKey().defaultRandom(),

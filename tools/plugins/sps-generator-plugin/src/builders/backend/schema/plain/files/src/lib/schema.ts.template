@@ -1,4 +1,6 @@
-import { serial, timestamp, pgTable } from "drizzle-orm/pg-core";
+import { serial, timestamp, pgTableCreator } from "drizzle-orm/pg-core";
+
+const pgTable = pgTableCreator((name) => `<%= module %>_${name}`);
 
 export const Table = pgTable("<%= pluralized_model %>", {
   id: serial("id").primaryKey(),

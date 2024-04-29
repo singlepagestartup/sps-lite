@@ -1,7 +1,5 @@
 import { relations } from "drizzle-orm";
 import { serial, text, timestamp, integer, pgTable } from "drizzle-orm/pg-core";
-import { schema as spsWebsiteBuilderSchema } from "@sps/sps-website-builder-backend-schema";
-import { Tables as SpsWebsiteBuilderSchemaExtendedTables } from "@sps/sps-website-builder-backend-schema-extended";
 
 export const UserTable = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -39,19 +37,3 @@ export const CommentRelationTable = relations(CommentTable, ({ one }) => ({
     references: [UserTable.id],
   }),
 }));
-
-// page
-export const SpsWebsiteBuilderPage = spsWebsiteBuilderSchema.Page.Plain;
-export const SpsWebsiteBuilderPageRelations =
-  spsWebsiteBuilderSchema.Page.Relations;
-
-// layout
-export const SpsWebsiteBuilderLayout = spsWebsiteBuilderSchema.Layout.Plain;
-export const SpsWebsiteBuilderLayoutRelations =
-  spsWebsiteBuilderSchema.Layout.Relations;
-
-// sps-website-builder
-export const SpsWebsiteBuilderPageToLayoutTable =
-  SpsWebsiteBuilderSchemaExtendedTables.PageToLayoutTable;
-export const SpsWebsiteBuilderPageToLayoutRelationTable =
-  SpsWebsiteBuilderSchemaExtendedTables.PageToLayoutRelationTable;

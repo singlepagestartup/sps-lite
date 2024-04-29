@@ -9,6 +9,7 @@ export class Builder {
   root: string;
   snakeCaseModelName: string;
   modelName: string;
+  moduleName: string;
 
   constructor({
     modelName,
@@ -45,6 +46,7 @@ export class Builder {
     this.root = root;
     this.snakeCaseModelName = snakeCaseModelName;
     this.modelName = modelName;
+    this.moduleName = module;
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -56,6 +58,7 @@ export class Builder {
       templateParams: {
         template: "",
         model: this.modelName,
+        module: this.moduleName,
         pluralized_model: this.snakeCaseModelName,
       },
     });
