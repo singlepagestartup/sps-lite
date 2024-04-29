@@ -1,10 +1,10 @@
 import { Tree } from "@nx/devkit";
-import { Builder as PlainBuilder } from "./plain/Builder";
+import { Builder as TableBuilder } from "./table/Builder";
 import { Builder as RelationsBuilder } from "./relations/Builder";
 import { Builder as RootBuilder } from "./root/Builder";
 
 export class Builder {
-  children: (PlainBuilder | RelationsBuilder | RootBuilder)[];
+  children: (TableBuilder | RelationsBuilder | RootBuilder)[];
 
   constructor({
     modelName,
@@ -15,7 +15,7 @@ export class Builder {
     module: string;
     tree: Tree;
   }) {
-    const plainBuilder = new PlainBuilder({
+    const tableBuilder = new TableBuilder({
       modelName,
       module,
       tree,
@@ -33,7 +33,7 @@ export class Builder {
       tree,
     });
 
-    const children = [plainBuilder, relationsBuilder, rootBuilder];
+    const children = [tableBuilder, relationsBuilder, rootBuilder];
 
     this.children = children;
   }

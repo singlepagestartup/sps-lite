@@ -594,8 +594,8 @@
       "@sps/sps-website-builder-backend-schema": [
         "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-backend-schema-extended": [
-        "libs/modules/sps-website-builder/backend/schema/extended/src/index.ts"
+      "@sps/sps-website-builder-backend-schema-relations": [
+        "libs/modules/sps-website-builder/backend/schema/relations/src/index.ts"
       ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
@@ -1014,11 +1014,11 @@
       "@sps/sps-website-builder-models-layout-backend-schema": [
         "libs/modules/sps-website-builder/models/layout/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-layout-backend-schema-extended": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/extended/src/index.ts"
+      "@sps/sps-website-builder-models-layout-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/layout/backend/schema/relations/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-layout-backend-schema-plain": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/plain/src/index.ts"
+      "@sps/sps-website-builder-models-layout-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/layout/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-website-builder-models-layout-contracts": [
         "libs/modules/sps-website-builder/models/layout/contracts/root/src/index.ts"
@@ -1239,11 +1239,11 @@
       "@sps/sps-website-builder-models-page-backend-schema": [
         "libs/modules/sps-website-builder/models/page/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-page-backend-schema-extended": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/extended/src/index.ts"
+      "@sps/sps-website-builder-models-page-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/relations/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-page-backend-schema-plain": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/plain/src/index.ts"
+      "@sps/sps-website-builder-models-page-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-website-builder-models-page-contracts": [
         "libs/modules/sps-website-builder/models/page/contracts/root/src/index.ts"

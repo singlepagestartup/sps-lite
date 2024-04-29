@@ -1,6 +1,6 @@
 import { pgTableCreator, primaryKey, uuid } from "drizzle-orm/pg-core";
-import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-plain";
-import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-plain";
+import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 
 const pgTable = pgTableCreator((name) => `sps_website_builder_${name}`);
 

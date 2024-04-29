@@ -1,6 +1,6 @@
 import { relations } from "drizzle-orm";
-import { Table as ParentTable } from "<%= parent_model_library %>";
+import { Table } from "<%= parent_model_library %>";
 
-export const Relations = relations(ParentTable, (helpers) => {
+export const Relations = relations(Table, (helpers) => {
   return {};
 });

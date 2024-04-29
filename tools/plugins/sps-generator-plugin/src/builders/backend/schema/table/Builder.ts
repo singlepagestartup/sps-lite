@@ -20,10 +20,10 @@ export class Builder {
     module: string;
     tree: Tree;
   }) {
-    const libName = `@sps/${module}-models-${modelName}-backend-schema-plain`;
+    const libName = `@sps/${module}-models-${modelName}-backend-schema-table`;
     const baseDirectory = `libs/modules/${module}/models`;
 
-    const root = `${baseDirectory}/${modelName}/backend/schema/plain`;
+    const root = `${baseDirectory}/${modelName}/backend/schema/table`;
     const modelNameSplitted = names(modelName).fileName.split("-");
     const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
       if (index === modelNameSplitted.length - 1) {

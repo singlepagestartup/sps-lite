@@ -1,5 +1,5 @@
-import { Table as PlainTable } from "@sps/sps-website-builder-models-page-backend-schema-plain";
-import { Relations as Relations } from "@sps/sps-website-builder-models-page-backend-schema-extended";
+import { Table } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import { Relations } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 
-export const PageTable = PlainTable;
+export const PageTable = Table;
 export const PageRelations = Relations;
