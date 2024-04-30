@@ -29,6 +29,16 @@
       "factory": "./src/generators/remove-module/generator",
       "schema": "./src/generators/remove-module/schema.json",
       "description": "remove-module generator"
+    },
+    "sps-create-type-script-library": {
+      "factory": "./src/generators/sps-create-type-script-library/generator",
+      "schema": "./src/generators/sps-create-type-script-library/schema.json",
+      "description": "sps-create-type-script-library generator"
+    },
+    "sps-delete-type-script-library": {
+      "factory": "./src/generators/sps-delete-type-script-library/generator",
+      "schema": "./src/generators/sps-delete-type-script-library/schema.json",
+      "description": "sps-delete-type-script-library generator"
     }
   }
 }

@@ -61,3 +61,11 @@ With pre-configured deployment tools and processes, our boilerplate enables you 
 ## Modular and Scalable
 
 Our boilerplate is designed to be easily customizable, allowing you to add, modify, or remove features as needed. This flexibility ensures that you can tailor your MVP to meet the specific requirements of your target customers and adapt it as you learn from their feedback.
+
+# Generators
+
+Create new generator
+
+```bash
+nx generate @nx/plugin:generator sps-create-ts-library --project=@sps/sps-generator-plugin --directory=tools/plugins/sps-generator-plugin/src/generators/sps-create-ts-library --dry-run
+```
