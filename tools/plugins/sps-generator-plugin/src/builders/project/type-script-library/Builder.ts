@@ -38,6 +38,8 @@ export class Builder {
 
     if (generateFilesPath) {
       generateFiles(tree, generateFilesPath, this.directory, templateParams);
+    } else {
+      generateFiles(tree, `${__dirname}/files`, this.directory, {});
     }
 
     updateProjectConfiguration(tree, this.name, {

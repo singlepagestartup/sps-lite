@@ -6,8 +6,13 @@ export async function spsCreateTypeScriptLibraryGenerator(
   tree: Tree,
   options: SpsCreateTypeScriptLibraryGeneratorSchema,
 ) {
+  let prepend = "";
+  if (!options.name.startsWith("@sps/")) {
+    prepend = "@sps/";
+  }
+
   const builder = new TypeScriptLibraryBuilder({
-    name: options.name,
+    name: `${prepend}${options.name}`,
     directory: options.directory,
   });
 
