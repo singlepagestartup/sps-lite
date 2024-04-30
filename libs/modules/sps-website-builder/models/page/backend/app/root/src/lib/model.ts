@@ -5,6 +5,7 @@ import * as schema from "@sps/sps-website-builder-backend-schema";
 
 export const db = drizzle(postgres, { schema, logger: true });
 export const Table = schema.PageTable;
+export const Relations = schema.PageRelations;
 
 // const schemaModel = schema;
 

@@ -1,19 +1,25 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
-import { eq } from "drizzle-orm";
-import { Table, db } from "./model";
+import { eq, getTableColumns } from "drizzle-orm";
+import { Table, db, Relations } from "./model";
 import {
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
 } from "@sps/shared-backend-api";
+import { getTableConfig } from "drizzle-orm/pg-core";
 
 export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
+    // const data = await db.select().from(Table);
     const data = await db.query.PageTable.findMany({
       with: {
-        PagesToLayouts: true,
+        PagesToLayouts: {
+          with: {
+            layout: true,
+          },
+        },
       },
     });
 
@@ -36,15 +42,61 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  const data = await db.query.PageTable.findMany({
-    where: eq(Table.id, uuid),
-    with: {
-      PagesToLayouts: true,
+  type WithInput = NonNullable<
+    Parameters<(typeof db)["query"]["PageTable"]["findFirst"]>[0]
+  >["with"];
+
+  async function getById<TWith extends WithInput>(
+    id: string,
+    withInput: TWith,
+  ) {
+    return db.query.PageTable.findFirst({
+      where: eq(Table.id, id),
+      with: withInput,
+    });
+  }
+
+  // const { foreignKeys } = getTableConfig(Relations);
+  // Relations.$brand
+  // console.log(`🚀 ~ app.get ~ Relations.$brand:`, Relations);
+  // console.log(`🚀 ~ app.get ~ foreignKeys:`, foreignKeys);
+  // const cols = getTableColumns(Relations.table);
+  // console.log(`🚀 ~ app.get ~ cols:`, cols);
+  // console.log(`🚀 ~ app.get ~ cf:`, cf);
+
+  // cf.foreignKeys.forEach((fk) => {
+  //   console.log(`🚀 ~ app.get ~ fk:`, fk);
+  // });
+
+  // const data = await db.query.PageTable.findFirst({
+  //   where: eq(Table.id, uuid),
+  //   with: {
+  //     ["PagesToLayouts"]: {
+  //       with: {
+  //         layout: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  const populate: WithInput = {
+    ["PagesToLayouts"]: {
+      with: {
+        ["layout"]: true,
+      },
     },
-  });
+  };
+
+  const data = await getById(uuid, populate);
+
+  const preparedData = {
+    ...data,
+    layouts: data?.["PagesToLayouts"].map((item: any) => item["layout"]),
+  };
+  delete preparedData.PagesToLayouts;
 
   return c.json({
-    data,
+    data: preparedData,
   });
 });
 
