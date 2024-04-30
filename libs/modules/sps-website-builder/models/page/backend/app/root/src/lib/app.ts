@@ -1,7 +1,7 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { eq, getTableColumns } from "drizzle-orm";
-import { Table, db, Relations } from "./model";
+import { Table, db, Relations, populate } from "./model";
 import {
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
@@ -46,10 +46,7 @@ app.get("/:uuid", async (c) => {
     Parameters<(typeof db)["query"]["PageTable"]["findFirst"]>[0]
   >["with"];
 
-  async function getById<TWith extends WithInput>(
-    id: string,
-    withInput: TWith,
-  ) {
+  async function getById(id: string, withInput: any) {
     return db.query.PageTable.findFirst({
       where: eq(Table.id, id),
       with: withInput,
@@ -79,13 +76,14 @@ app.get("/:uuid", async (c) => {
   //   },
   // });
 
-  const populate: WithInput = {
-    ["PagesToLayouts"]: {
-      with: {
-        ["layout"]: true,
-      },
-    },
-  };
+  // const populate: WithInput = {
+  //   ["PagesToLayouts"]: {
+  //     with: {
+  //       ["layout"]: true,
+  //       ["page"]: true,
+  //     },
+  //   },
+  // };
 
   const data = await getById(uuid, populate);
 
@@ -93,6 +91,7 @@ app.get("/:uuid", async (c) => {
     ...data,
     layouts: data?.["PagesToLayouts"].map((item: any) => item["layout"]),
   };
+
   delete preparedData.PagesToLayouts;
 
   return c.json({

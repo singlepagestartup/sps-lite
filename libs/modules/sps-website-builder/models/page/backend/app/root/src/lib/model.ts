@@ -2,10 +2,12 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";
 import * as schema from "@sps/sps-website-builder-backend-schema";
+import * as model from "@sps/sps-website-builder-models-page-backend-schema";
 
-export const db = drizzle(postgres, { schema, logger: true });
+export const db = drizzle(postgres, { schema });
 export const Table = schema.PageTable;
 export const Relations = schema.PageRelations;
+export const populate = model.populate;
 
 // const schemaModel = schema;
 
