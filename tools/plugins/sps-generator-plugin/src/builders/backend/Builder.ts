@@ -14,12 +14,13 @@ export class Builder {
     module: string;
     tree: Tree;
   }) {
-    const appBuilder = new AppBuilder({
+    const schemaBuilder = new SchemaBuilder({
       modelName,
       module,
       tree,
     });
-    const schemaBuilder = new SchemaBuilder({
+
+    const appBuilder = new AppBuilder({
       modelName,
       module,
       tree,

@@ -2,7 +2,7 @@ import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
+import { createSpsJsLibrary } from "../../../../../utils/js-lib-utils";
 
 export class Builder {
   libName: string;
@@ -23,7 +23,7 @@ export class Builder {
     const libName = `@sps/${module}-models-${modelName}-backend-schema-relations`;
     const baseDirectory = `libs/modules/${module}/models`;
 
-    const root = `${baseDirectory}/${modelName}/backend/schema/relations`;
+    const root = `${baseDirectory}/${modelName}/backend/schema/relations/root`;
     const modelNameSplitted = names(modelName).fileName.split("-");
     const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
       if (index === modelNameSplitted.length - 1) {
@@ -42,7 +42,7 @@ export class Builder {
       return acc + "_" + curr;
     }, "");
 
-    const parentModelName = libName.replace("relations", "plain");
+    const parentModelName = libName.replace("relations", "table");
 
     this.libName = libName;
     this.root = root;

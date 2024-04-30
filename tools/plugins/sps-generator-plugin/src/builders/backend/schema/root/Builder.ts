@@ -8,7 +8,7 @@ export class Builder {
   root: string;
   snakeCaseModelName: string;
   modelName: string;
-  plainLibraryName: string;
+  tableLibraryName: string;
   relationsLibraryName: string;
 
   constructor({
@@ -24,13 +24,13 @@ export class Builder {
     const baseDirectory = `libs/modules/${module}/models`;
 
     const root = `${baseDirectory}/${modelName}/backend/schema/root`;
-    const plainLibraryName = `${libName}-plain`;
+    const tableLibraryName = `${libName}-table`;
     const relationsLibraryName = `${libName}-relations`;
 
     this.libName = libName;
     this.root = root;
     this.modelName = modelName;
-    this.plainLibraryName = plainLibraryName;
+    this.tableLibraryName = tableLibraryName;
     this.relationsLibraryName = relationsLibraryName;
   }
 
@@ -42,7 +42,7 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        plain_library_name: this.plainLibraryName,
+        table_library_name: this.tableLibraryName,
         relations_library_name: this.relationsLibraryName,
         model_name: names(this.modelName).className,
       },

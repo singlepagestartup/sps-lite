@@ -1,5 +1,10 @@
-import { Table as PlainTable } from "<%= plain_library_name %>";
-import { Relations as Relations } from "<%= relations_library_name %>";
+import { Table } from "<%= table_library_name %>";
+import { Relations } from "<%= relations_library_name %>";
+export {
+  populate,
+  transformData,
+} from "<%= relations_library_name %>";
 
+export const name = "<%= model_name %>Table";
 export const <%= model_name %>Table = PlainTable;
 export const <%= model_name %>Relations = Relations;
