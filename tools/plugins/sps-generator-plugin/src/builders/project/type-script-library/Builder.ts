@@ -14,6 +14,7 @@ export class Builder {
 
   constructor({ name, directory }: { name: string; directory: string }) {
     this.name = name;
+    console.log(`🚀 ~ constructor ~ name:`, name);
     this.directory = directory;
   }
 
