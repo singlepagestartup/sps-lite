@@ -2,9 +2,9 @@ import { relations } from "drizzle-orm";
 import { Table } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import {
   PagesToLayoutsTable,
-  pagesToLayoutsName,
+  name as pagesToLayoutsName,
   populate as pagesToLayoutsPopulate,
-} from "@sps/sps-website-builder-backend-schema-relations";
+} from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 import { transformManyToManyRelations } from "@sps/shared-backend-database-config";
 
 const relationAliases = {
@@ -31,7 +31,6 @@ export function transformData({ data }) {
     data,
     relationAliases,
   });
-  console.log("transformedData", JSON.stringify(transformedData));
 
   return transformedData;
 }
