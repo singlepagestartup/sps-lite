@@ -2,7 +2,7 @@ import { expect, Page } from "@playwright/test";
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
 import { Browser } from "../Browser";
 import path from "path";
-import { BACKEND_URL } from "../../constants";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 export class User {
   page?: Page;

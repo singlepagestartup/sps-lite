@@ -1,5 +1,5 @@
 import { PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
-import { FRONTEND_URL } from "./utils/constants";
+import { FRONTEND_URL } from "@sps/shared-utils";
 
 /**
  * See https://playwright.dev/docs/test-configuration.

@@ -14,7 +14,6 @@ export class Builder {
 
   constructor({ name, directory }: { name: string; directory: string }) {
     this.name = name;
-    console.log(`🚀 ~ constructor ~ name:`, name);
     this.directory = directory;
   }
 
@@ -62,8 +61,6 @@ export class Builder {
     });
 
     const defaultFileName = `${this.name}.ts`.replace("@sps/", "");
-
-    console.log(`🚀 ~ defaultFileName:`, defaultFileName);
 
     updateJson(tree, `${this.directory}/package.json`, (json) => {
       delete json.type;

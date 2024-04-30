@@ -1,7 +1,7 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { eq } from "drizzle-orm";
-import { Table, db, transformData, populate, modelName } from "./model";
+import { Table, db, transformData, populate, getById } from "./model";
 import {
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
@@ -38,13 +38,6 @@ app.get("/:uuid", async (c) => {
   if (!uuid) {
     throw new HTTPException(400, {
       message: "Invalid id",
-    });
-  }
-
-  async function getById(id: string, withInput: any) {
-    return db.query[modelName].findFirst({
-      where: eq(Table.id, id),
-      with: withInput,
     });
   }
 

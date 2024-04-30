@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "lib": ["ES2021"],
     "target": "ES2021",
     "incremental": false

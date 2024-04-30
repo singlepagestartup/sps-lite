@@ -21,6 +21,7 @@
       "@sps/shared-backend-database-config": [
         "libs/shared/backend/database/config/src/index.ts"
       ],
+      "@sps/shared-bdd-utils": ["libs/shared/bdd/utils/src/index.ts"],
       "@sps/shared-frontend-utils-client": [
         "libs/shared/frontend/utils/client/src/index.ts"
       ],

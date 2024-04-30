@@ -1,22 +1,12 @@
 const R = require("ramda");
-import { Page } from "@playwright/test";
-import { World } from "./elements/World";
-import path from "path";
 import { el, faker } from "@faker-js/faker";
-
-export function pathReplacer({ parent, path }: { parent: any; path: string }) {
-  const replacedPath = path.replace(/\[/g, ".").replace(/\]/g, "");
-  const result = R.path(replacedPath.split("."), parent);
-
-  return result;
-}
 
 export function replaceValue({
   world,
   value,
   type,
 }: {
-  world: World;
+  world: any;
   value: string;
   type?: "strapi_richtext" | "strapi_file" | "strapi_combobox";
 }) {
@@ -62,9 +52,10 @@ export function replaceValue({
   }
 
   if (value.includes("__env.")) {
-    const replacer = (path: (string | number)[]) => {
+    const replacer: any = (path: (string | number)[]) => {
       return process.env[path[0]];
     };
+
     const envValue = rep({
       value,
       identifier: "env",
@@ -75,29 +66,6 @@ export function replaceValue({
   }
 
   return value;
-}
-
-export async function setFile({
-  page,
-  locator,
-  files,
-}: {
-  page: Page;
-  locator: string;
-  files: string | string[];
-}) {
-  const [firstPageDocument] = await Promise.all([
-    page.waitForEvent("filechooser"),
-    page.locator(locator).locator("..").click(),
-  ]);
-
-  if (Array.isArray(files)) {
-    for (const file of files) {
-      await firstPageDocument.setFiles(path.join(__dirname, `./${file}`));
-    }
-  } else {
-    await firstPageDocument.setFiles(path.join(__dirname, `./${files}`));
-  }
 }
 
 function rep({

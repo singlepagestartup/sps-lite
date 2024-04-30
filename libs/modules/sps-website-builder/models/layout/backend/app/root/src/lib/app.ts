@@ -1,7 +1,7 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { eq } from "drizzle-orm";
-import { Table, db, transformData, populate, modelName } from "./model";
+import { Table, db, model } from "./model";
 import {
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
@@ -11,15 +11,7 @@ export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
-    const data = await db.query.PageTable.findMany({
-      with: {
-        PagesToLayouts: {
-          with: {
-            layout: true,
-          },
-        },
-      },
-    });
+    const data = await model.get();
 
     return c.json({
       data,
@@ -40,19 +32,10 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  async function getById(id: string, withInput: any) {
-    return db.query[modelName].findFirst({
-      where: eq(Table.id, id),
-      with: withInput,
-    });
-  }
-
-  const data = await getById(uuid, populate);
-
-  const transformedData = transformData({ data });
+  const data = await model.getById({ id: uuid });
 
   return c.json({
-    data: transformedData,
+    data,
   });
 });
 

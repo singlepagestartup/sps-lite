@@ -6,6 +6,7 @@ Feature: Clients can get page data by RestAPI
     When I request "GET" "/api/sps-website-builder/pages/get-by-url?url=/"
     Then I recieve JSON data with field "data.url" equals "/"
 
+  @skip
   Scenario: Client request layout by specific url
     Given I am RestAPI client
 

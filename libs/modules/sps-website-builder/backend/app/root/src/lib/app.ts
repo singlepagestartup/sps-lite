@@ -1,4 +1,3 @@
-// @ts-nocheck later will fix, don't delete
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";

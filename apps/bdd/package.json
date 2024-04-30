@@ -1,6 +1,7 @@
 {
   "name": "bdd",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "format": "npm run prettier:fix && npm run lint:fix",
     "lint": "eslint .",
@@ -8,7 +9,7 @@
     "precommit": "lint-staged",
     "prettier:fix": "prettier --write .",
     "test": "jest && npm run test:bdd",
-    "test:bdd": "PWVIDEO=true ./node_modules/.bin/cucumber-js tests/**/*.feature",
+    "test:bdd": "PWVIDEO=true ../../node_modules/.bin/cucumber-js tests/**/*.feature",
     "test:bdd:only": "BDD_CUCUMBER_PRETTY=true PWVIDEO=true ./node_modules/.bin/cucumber-js $1",
     "test:bdd:trace": "playwright show-trace $1",
     "test:unit": "jest --watch"
