@@ -9,6 +9,7 @@ export const Table = schema.PageTable;
 export const Relations = schema.PageRelations;
 export const populate = model.populate;
 export const transformData = model.transformData;
+export const modelName = model.name;
 
 // const schemaModel = schema;
 

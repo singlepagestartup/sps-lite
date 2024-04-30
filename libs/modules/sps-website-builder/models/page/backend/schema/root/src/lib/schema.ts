@@ -5,5 +5,6 @@ export {
   transformData,
 } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 
+export const name = "PageTable";
 export const PageTable = Table;
 export const PageRelations = Relations;
