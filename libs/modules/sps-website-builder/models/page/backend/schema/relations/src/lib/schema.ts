@@ -5,6 +5,7 @@ import {
   pagesToLayoutsName,
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations";
+import { transformManyToManyRelations } from "@sps/shared-backend-database-config";
 
 const relationAliases = {
   [pagesToLayoutsName]: {
@@ -25,23 +26,12 @@ export const populate = {
   },
 };
 
-export const transformData = ({ data }: { data: any }) => {
-  const transformedData = {};
-
-  Object.entries(data).forEach(([key, value]) => {
-    if (relationAliases[key]) {
-      const relationConfig = relationAliases[key];
-      const toAddKey = relationConfig.toDataKey;
-      const toAddData = data[key].map(
-        (item: any) => item[relationConfig.schemaKey],
-      );
-      transformedData[toAddKey] = toAddData;
-
-      return;
-    }
-
-    transformedData[key] = value;
+export function transformData({ data }) {
+  const transformedData = transformManyToManyRelations({
+    data,
+    relationAliases,
   });
+  console.log("transformedData", JSON.stringify(transformedData));
 
   return transformedData;
-};
+}
