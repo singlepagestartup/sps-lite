@@ -8,6 +8,7 @@ export const db = drizzle(postgres, { schema });
 export const Table = schema.PageTable;
 export const Relations = schema.PageRelations;
 export const populate = model.populate;
+export const transformData = model.transformData;
 
 // const schemaModel = schema;
 

@@ -1,1 +1,1 @@
-export { Relations, populate } from "./lib/schema";
+export { Relations, populate, transformData } from "./lib/schema";

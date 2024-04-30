@@ -1,12 +1,11 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
-import { eq, getTableColumns } from "drizzle-orm";
-import { Table, db, Relations, populate } from "./model";
+import { eq } from "drizzle-orm";
+import { Table, db, transformData, populate } from "./model";
 import {
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
 } from "@sps/shared-backend-api";
-import { getTableConfig } from "drizzle-orm/pg-core";
 
 export const app = new Hono();
 
@@ -42,10 +41,6 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  type WithInput = NonNullable<
-    Parameters<(typeof db)["query"]["PageTable"]["findFirst"]>[0]
-  >["with"];
-
   async function getById(id: string, withInput: any) {
     return db.query.PageTable.findFirst({
       where: eq(Table.id, id),
@@ -53,49 +48,12 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  // const { foreignKeys } = getTableConfig(Relations);
-  // Relations.$brand
-  // console.log(`🚀 ~ app.get ~ Relations.$brand:`, Relations);
-  // console.log(`🚀 ~ app.get ~ foreignKeys:`, foreignKeys);
-  // const cols = getTableColumns(Relations.table);
-  // console.log(`🚀 ~ app.get ~ cols:`, cols);
-  // console.log(`🚀 ~ app.get ~ cf:`, cf);
-
-  // cf.foreignKeys.forEach((fk) => {
-  //   console.log(`🚀 ~ app.get ~ fk:`, fk);
-  // });
-
-  // const data = await db.query.PageTable.findFirst({
-  //   where: eq(Table.id, uuid),
-  //   with: {
-  //     ["PagesToLayouts"]: {
-  //       with: {
-  //         layout: true,
-  //       },
-  //     },
-  //   },
-  // });
-
-  // const populate: WithInput = {
-  //   ["PagesToLayouts"]: {
-  //     with: {
-  //       ["layout"]: true,
-  //       ["page"]: true,
-  //     },
-  //   },
-  // };
-
   const data = await getById(uuid, populate);
 
-  const preparedData = {
-    ...data,
-    layouts: data?.["PagesToLayouts"].map((item: any) => item["layout"]),
-  };
-
-  delete preparedData.PagesToLayouts;
+  const transformedData = transformData({ data });
 
   return c.json({
-    data: preparedData,
+    data: transformedData,
   });
 });
 
