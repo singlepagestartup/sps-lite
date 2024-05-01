@@ -6,5 +6,5 @@ export {
 } from "<%= relations_library_name %>";
 
 export const name = "<%= export_table_variable_name %>";
-export const <%= export_table_variable_name %> = PlainTable;
+export const <%= export_table_variable_name %> = Table;
 export const <%= export_relations_variable_name %> = Relations;

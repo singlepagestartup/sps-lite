@@ -36,16 +36,16 @@ export class Builder {
 
     const moduleRootSchema = `@sps/${module}-backend-schema`;
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
-    const moduleRootSchemaProjectPath = `${this.moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
+    const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
 
     const pascalCaseModelName = names(modelName).className;
     const exportTableVariableName = `${pascalCaseModelName}Table`;
     const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
 
     const exportSchemaContent = `export {
-      ${this.exportTableVariableName},
-      ${this.exportTableRelationsVariableName},
-    } from "${this.libName}";`;
+      ${exportTableVariableName},
+      ${exportTableRelationsVariableName},
+    } from "${libName}";`;
 
     this.libName = libName;
     this.root = root;
@@ -108,7 +108,7 @@ export class Builder {
 
   async delete({ tree }: { tree: Tree }) {
     const project = getProjects(tree).get(this.libName);
-
+    await this.detachFromModule({ tree });
     if (!project) {
       return;
     }
@@ -118,6 +118,8 @@ export class Builder {
       skipFormat: true,
       forceRemove: true,
     });
+
+    await this.detachFromModule({ tree });
 
     await formatFiles(tree);
   }

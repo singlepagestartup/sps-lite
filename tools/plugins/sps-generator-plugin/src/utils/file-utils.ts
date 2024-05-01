@@ -43,11 +43,13 @@ export const replaceInFile = async ({
     throw new Error("Either regex or toReplaceString should be provided");
   }
 
-  let fileContent = tree.read(pathToFile).toString();
+  let fileContent = tree.read(pathToFile).toString().replaceAll(/\n|\s/g, "");
+
+  let replaceTrimmed = toReplaceString.replaceAll(/\n|\s/g, "");
 
   const prevValue = regex
     ? fileContent.match(regex)
-    : fileContent.match(toReplaceString);
+    : fileContent.match(replaceTrimmed);
 
   if (!prevValue) {
     throw new Error(
