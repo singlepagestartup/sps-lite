@@ -1,24 +1,23 @@
-import {
-  timestamp,
-  text,
-  uuid,
-  pgTableCreator,
-  pgEnum,
-} from "drizzle-orm/pg-core";
+import pgCore from "drizzle-orm/pg-core";
 
-const pgTable = pgTableCreator((name) => `sps_website_builder_${name}`);
+const moduleNameSnakeCased = "sps_website_builder";
+const modelNameSnakeCasedPluralized = "pages";
 
-export const VariantEnumTable = pgEnum("sps_website_builder_pages_variant", [
-  "kudda",
-  "misd",
-]);
+const pgTable = pgCore.pgTableCreator(
+  (name) => `${moduleNameSnakeCased}_${name}`,
+);
 
-export const Table = pgTable("pages", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  title: text("title").notNull().default("Page"),
-  url: text("url").notNull().default("/"),
+export const VariantEnumTable = pgCore.pgEnum(
+  `${moduleNameSnakeCased}_${modelNameSnakeCasedPluralized}_variant`,
+  ["kudda", "misd"],
+);
+
+export const Table = pgTable(modelNameSnakeCasedPluralized, {
+  id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  title: pgCore.text("title").notNull().default("Page"),
+  url: pgCore.text("url").notNull().default("/"),
   variant: VariantEnumTable("variant").notNull().default("kudda"),
-  description: text("description").default("Description"),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  description: pgCore.text("description").default("Description"),
+  createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
+  updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
 });

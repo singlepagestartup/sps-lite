@@ -2,14 +2,13 @@ import { ExportTable, Field } from "./Builder";
 
 describe("Builder", () => {
   describe(`ExportTable regex pattern`, () => {
-    const first = "pages";
-    const exportSchema = new ExportTable(first);
+    const exportSchema = new ExportTable();
 
     it(`should match the regex 1`, () => {
       const regex = exportSchema.regex;
 
-      const string = `export const Table = pgTable("${first}", {
-        id: uuid("id").primaryKey().defaultRandom(),`;
+      const string = `export const Table = pgTable(modelNameSnakeCasedPluralized, {
+        id: pgCore.uuid("id").primaryKey().defaultRandom(),`;
 
       expect(string).toMatch(regex);
     });
@@ -18,9 +17,9 @@ describe("Builder", () => {
       const regex = exportSchema.regex;
 
       const string = `export const Table = pgTable(
-        "${first}",
+        modelNameSnakeCasedPluralized,
         {
-        id: uuid("id").primaryKey().defaultRandom(),`;
+        id: pgCore.uuid("id").primaryKey().defaultRandom(),`;
 
       expect(string).toMatch(regex);
     });
@@ -35,9 +34,9 @@ describe("Builder", () => {
       const regex = field.regex;
 
       const string = `export const Table = pgTable("pages", {
-        className: text("class_name"),
-        id: uuid("id").primaryKey().defaultRandom(),
-        title: text("title").notNull().default("Page"),`;
+        className: pgCore.text("class_name"),
+        id: pgCore.uuid("id").primaryKey().defaultRandom(),
+        title: pgCore.text("title").notNull().default("Page"),`;
 
       expect(string).toMatch(regex);
     });

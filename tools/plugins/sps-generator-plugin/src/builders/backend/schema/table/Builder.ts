@@ -48,7 +48,7 @@ export class Builder {
       "",
     );
 
-    this.exportTable = new ExportTable(modelNameSnakeCasePluralized);
+    this.exportTable = new ExportTable();
     this.libName = libName;
     this.root = root;
     this.modelNameSnakeCasePluralized = modelNameSnakeCasePluralized;
@@ -139,11 +139,11 @@ export class ExportTable {
   string: string;
   regex: RegExp;
 
-  constructor(modelNameSnakeCasePluralized: string) {
-    const exportTableContent = `export const Table = pgTable("${modelNameSnakeCasePluralized}", {`;
+  constructor() {
+    const exportTableContent = `export const Table = pgTable(modelNameSnakeCasedPluralized, {`;
 
     const exportTableContentRegex = new RegExp(
-      `export const Table = pgTable\\(([\\s]+)?"${modelNameSnakeCasePluralized}",([\\s]+)?{`,
+      `export const Table = pgTable\\(([\\s]+)?modelNameSnakeCasedPluralized,([\\s]+)?{`,
     );
 
     this.string = exportTableContent;
@@ -157,10 +157,10 @@ export class Field {
 
   constructor(name: string, type: string) {
     const fieldNameCamelCase = names(name).propertyName;
-    const field = `${fieldNameCamelCase}: ${type}("${name}"),`;
+    const field = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;
 
     const fieldContentRegex = new RegExp(
-      `${fieldNameCamelCase}: ${type}\\("${name}"\\),`,
+      `${fieldNameCamelCase}: pgCore.${type}\\("${name}"\\),`,
     );
 
     this.string = field;
