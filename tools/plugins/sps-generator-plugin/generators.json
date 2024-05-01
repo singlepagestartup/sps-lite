@@ -39,6 +39,11 @@
       "factory": "./src/generators/sps-delete-type-script-library/generator",
       "schema": "./src/generators/sps-delete-type-script-library/schema.json",
       "description": "sps-delete-type-script-library generator"
+    },
+    "sps-add-field-to-model": {
+      "factory": "./src/generators/sps-add-field-to-model/generator",
+      "schema": "./src/generators/sps-add-field-to-model/schema.json",
+      "description": "sps-add-field-to-model generator"
     }
   }
 }

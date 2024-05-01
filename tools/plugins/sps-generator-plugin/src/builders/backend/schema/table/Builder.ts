@@ -3,6 +3,7 @@ import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
+import { replaceInFile } from "../../../../utils/file-utils";
 
 export class Builder {
   libName: string;
@@ -11,6 +12,7 @@ export class Builder {
   modelName: string;
   modelNameSnakeCasePluralized: string;
   moduleNameSnakeCase: string;
+  exportTable: ExportTable;
 
   constructor({
     modelName,
@@ -46,6 +48,7 @@ export class Builder {
       "",
     );
 
+    this.exportTable = new ExportTable(modelNameSnakeCasePluralized);
     this.libName = libName;
     this.root = root;
     this.modelNameSnakeCasePluralized = modelNameSnakeCasePluralized;
@@ -67,6 +70,54 @@ export class Builder {
     });
   }
 
+  async createField({
+    tree,
+    name,
+    type,
+  }: {
+    tree: Tree;
+    name: string;
+    type: string;
+  }) {
+    const schemaFilePath = `${this.root}/src/lib/schema.ts`;
+    const fieldToAdd = new Field(name, type).string;
+
+    const content = `${this.exportTable.string}${fieldToAdd}`;
+
+    const regex = this.exportTable.regex;
+
+    const replaceExportRoutes = await replaceInFile({
+      tree,
+      pathToFile: schemaFilePath,
+      regex,
+      content: content,
+    });
+
+    await formatFiles(tree);
+  }
+
+  async deleteField({
+    tree,
+    name,
+    type,
+  }: {
+    tree: Tree;
+    name: string;
+    type: string;
+  }) {
+    const schemaFilePath = `${this.root}/src/lib/schema.ts`;
+    const fieldToDelete = new Field(name, type).regex;
+
+    const replaceExportRoutes = await replaceInFile({
+      tree,
+      pathToFile: schemaFilePath,
+      regex: fieldToDelete,
+      content: "",
+    });
+
+    await formatFiles(tree);
+  }
+
   async delete({ tree }: { tree: Tree }) {
     const project = getProjects(tree).get(this.libName);
 
@@ -81,5 +132,38 @@ export class Builder {
     });
 
     await formatFiles(tree);
+  }
+}
+
+export class ExportTable {
+  string: string;
+  regex: RegExp;
+
+  constructor(modelNameSnakeCasePluralized: string) {
+    const exportTableContent = `export const Table = pgTable("${modelNameSnakeCasePluralized}", {`;
+
+    const exportTableContentRegex = new RegExp(
+      `export const Table = pgTable\\(([\\s]+)?"${modelNameSnakeCasePluralized}",([\\s]+)?{`,
+    );
+
+    this.string = exportTableContent;
+    this.regex = exportTableContentRegex;
+  }
+}
+
+export class Field {
+  string: string;
+  regex: RegExp;
+
+  constructor(name: string, type: string) {
+    const fieldNameCamelCase = names(name).propertyName;
+    const field = `${fieldNameCamelCase}: ${type}("${name}"),`;
+
+    const fieldContentRegex = new RegExp(
+      `${fieldNameCamelCase}: ${type}\\("${name}"\\),`,
+    );
+
+    this.string = field;
+    this.regex = fieldContentRegex;
   }
 }
