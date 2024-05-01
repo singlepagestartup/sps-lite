@@ -17,6 +17,7 @@ export class Builder {
   exportTableRelationsVariableName: string;
   exportSchemaContent: string;
   moduleRootSchemaProjectPath: string;
+  exportSchemaContentRegex: RegExp;
 
   constructor({
     modelName,
@@ -43,9 +44,12 @@ export class Builder {
     const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
 
     const exportSchemaContent = `export {
-      ${exportTableVariableName},
-      ${exportTableRelationsVariableName},
+      ${exportTableVariableName},\n
+      ${exportTableRelationsVariableName},\n
     } from "${libName}";`;
+    const exportSchemaContentRegex = new RegExp(
+      `export {[\n|\\s]+?${exportTableVariableName},[\n|\\s]+?${exportTableRelationsVariableName},[\n|\\s]+?} from "${libName}";`,
+    );
 
     this.libName = libName;
     this.root = root;
@@ -57,6 +61,7 @@ export class Builder {
     this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
     this.exportSchemaContent = exportSchemaContent;
+    this.exportSchemaContentRegex = exportSchemaContentRegex;
     this.moduleRootSchemaProjectPath = moduleRootSchemaProjectPath;
   }
 
@@ -70,11 +75,17 @@ export class Builder {
   }
 
   async detachFromModule({ tree }: { tree: Tree }) {
+    console.log(
+      `🚀 ~ detachFromModule ~ this.exportSchemaContentRegex:`,
+      this.exportSchemaContentRegex,
+      this.moduleRootSchemaProjectPath,
+    );
+
     try {
       const replaceImportRoutes = await replaceInFile({
         tree,
         pathToFile: this.moduleRootSchemaProjectPath,
-        toReplaceString: this.exportSchemaContent,
+        regex: this.exportSchemaContentRegex,
         content: "",
       });
     } catch (error) {
