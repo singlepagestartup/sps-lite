@@ -20,6 +20,21 @@
         ]
       }
     },
+    "db:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "drizzle-kit drop --config ./src/db/config.ts"
+          },
+          {
+            "command": "bun run ./src/db/drop.ts"
+          }
+        ]
+      }
+    },
     "db:seed": {
       "executor": "nx:run-commands",
       "dependsOn": ["db:prepare"],

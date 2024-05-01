@@ -5,6 +5,7 @@ import path from "path";
 
 export { migrate } from "./migrate";
 export { seed } from "./seed";
+export { drop } from "./drop";
 export { config } from "./config";
 export const db = drizzle(postgres, { schema: drizzleSchema, logger: true });
 export const schema = drizzleSchema;

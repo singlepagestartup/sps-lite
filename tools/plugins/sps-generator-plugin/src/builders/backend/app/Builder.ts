@@ -102,7 +102,7 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model: this.modelName,
+        model_name: this.modelName,
         module_name: this.module,
         schema_model_name: this.schemaModelName,
       },
