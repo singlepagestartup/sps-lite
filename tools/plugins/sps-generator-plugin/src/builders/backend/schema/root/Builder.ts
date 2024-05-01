@@ -116,7 +116,7 @@ export class Builder {
 
   async delete({ tree }: { tree: Tree }) {
     const project = getProjects(tree).get(this.libName);
-    await this.detachFromModule({ tree });
+
     if (!project) {
       return;
     }

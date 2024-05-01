@@ -31,4 +31,16 @@ describe(`export { Relations, Table, } from "@sps/sps-website-builder-backend-sc
 
     expect(string).toMatch(regex);
   });
+
+  it(`should match the regex 3`, () => {
+    const regex = getExportSchemaContentRegex(first, second, third);
+
+    const string = `export { ${first}, ${second} } from "${third}";
+    export {
+        PageTable,
+        PageRelations,
+      } from "@sps/sps-website-builder-models-page-backend-schema";`;
+
+    expect(string).toMatch(regex);
+  });
 });

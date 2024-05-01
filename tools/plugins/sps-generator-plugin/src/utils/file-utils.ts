@@ -51,7 +51,7 @@ export const replaceInFile = async ({
 
   if (!prevValue) {
     throw new Error(
-      `No expected value found in file: ${regex ? regex : toReplaceString}`,
+      `No expected value "${regex ? regex : toReplaceString}" found in file "${fileContent}"`,
     );
   }
 

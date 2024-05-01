@@ -4,6 +4,6 @@ export const getExportSchemaContentRegex = (
   const [f, s, t] = props;
 
   return new RegExp(
-    `export {([\\s]+?)?${f},([\\s]+?)?${s},([\\s]+?)?} from "${t}";`,
+    `export {([\\s]+?)?${f},([\\s]+?)?${s}([,])?([\\s]+?)?} from "${t}";`,
   );
 };
