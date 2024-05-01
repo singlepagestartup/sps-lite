@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/schema",
-  "$id": "SpsAddFieldToModel",
+  "$id": "SpsCreateFieldInModel",
   "title": "",
   "type": "object",
   "properties": {

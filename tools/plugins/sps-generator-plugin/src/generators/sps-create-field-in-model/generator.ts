@@ -1,10 +1,10 @@
 import { Tree } from "@nx/devkit";
-import { SpsAddFieldToModelGeneratorSchema } from "./schema";
+import { SpsCreateFieldInModelGeneratorSchema } from "./schema";
 import { Builder as BackendModelSchemaTableBuild } from "../../builders/backend/schema/table/Builder";
 
-export async function spsAddFieldToModelGenerator(
+export async function spsCreateFieldInModelGenerator(
   tree: Tree,
-  options: SpsAddFieldToModelGeneratorSchema,
+  options: SpsCreateFieldInModelGeneratorSchema,
 ) {
   if (
     !options.model.includes("models") ||
@@ -38,4 +38,4 @@ export async function spsAddFieldToModelGenerator(
   // });
 }
 
-export default spsAddFieldToModelGenerator;
+export default spsCreateFieldInModelGenerator;

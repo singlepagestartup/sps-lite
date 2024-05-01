@@ -40,10 +40,15 @@
       "schema": "./src/generators/sps-delete-type-script-library/schema.json",
       "description": "sps-delete-type-script-library generator"
     },
-    "sps-add-field-to-model": {
-      "factory": "./src/generators/sps-add-field-to-model/generator",
-      "schema": "./src/generators/sps-add-field-to-model/schema.json",
-      "description": "sps-add-field-to-model generator"
+    "sps-create-field-in-model": {
+      "factory": "./src/generators/sps-create-field-in-model/generator",
+      "schema": "./src/generators/sps-create-field-in-model/schema.json",
+      "description": "sps-create-field-in-model generator"
+    },
+    "sps-delete-field-from-model": {
+      "factory": "./src/generators/sps-delete-field-from-model/generator",
+      "schema": "./src/generators/sps-delete-field-from-model/schema.json",
+      "description": "sps-delete-field-from-model generator"
     }
   }
 }
