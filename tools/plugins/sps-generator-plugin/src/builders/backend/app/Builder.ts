@@ -16,7 +16,8 @@ export class Builder {
   importPath: string;
   libName: string;
   asPropertyName: string;
-  rootProject: ProjectConfiguration;
+  rootAppProject: ProjectConfiguration;
+  rootSchemaProject: ProjectConfiguration;
   root: string;
   modelName: string;
   schemaModelName: string;
@@ -39,43 +40,27 @@ export class Builder {
     const moduleNamePascalCase = names(module).className;
     const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
-    const moduleProject = `@sps/${module}-backend-app`;
+    const moduleApp = `@sps/${module}-backend-app`;
+    const moduleBackendAppProject = getProjects(tree).get(moduleApp);
 
-    const moduleBackendAppProject = getProjects(tree).get(moduleProject);
     const root = `${baseDirectory}/${modelName}/backend/app/root`;
 
     this.libName = libName;
     this.route = `/${pluralNameModelName}`;
     this.importPath = importPath;
     this.asPropertyName = propertyName;
-    this.rootProject = moduleBackendAppProject;
+    this.rootAppProject = moduleBackendAppProject;
     this.root = root;
     this.modelName = modelName;
     this.schemaModelName = schemaModelName;
   }
 
   async attachToRoot({ tree }: { tree: Tree }) {
-    const backendAppProjectRoutesPath = `${this.rootProject.sourceRoot}/lib/routes.ts`;
-
-    const backendAppProjectFileContent = await addToFile({
-      toTop: true,
-      pathToFile: backendAppProjectRoutesPath,
-      content: this.importPath,
-      tree,
-    });
-
-    const routeExport = `"${this.route}": ${this.asPropertyName},`;
-
-    const replaceExportRoutes = await replaceInFile({
-      tree,
-      pathToFile: backendAppProjectRoutesPath,
-      regex: /export const routes = {/,
-      content: `export const routes = {${routeExport}`,
-    });
+    await this.attachToRoutes({ tree });
   }
 
   async detachFromRoot({ tree }: { tree: Tree }) {
-    const backendAppProjectRoutesPath = `${this.rootProject.sourceRoot}/lib/routes.ts`;
+    const backendAppProjectRoutesPath = `${this.rootAppProject.sourceRoot}/lib/routes.ts`;
 
     const routeExport = `"${this.route}": ${this.asPropertyName},`;
 
@@ -139,5 +124,25 @@ export class Builder {
     });
 
     await formatFiles(tree);
+  }
+
+  async attachToRoutes({ tree }: { tree: Tree }) {
+    const backendAppProjectRoutesPath = `${this.rootAppProject.sourceRoot}/lib/routes.ts`;
+
+    const backendAppProjectFileContent = await addToFile({
+      toTop: true,
+      pathToFile: backendAppProjectRoutesPath,
+      content: this.importPath,
+      tree,
+    });
+
+    const routeExport = `"${this.route}": ${this.asPropertyName},`;
+
+    const replaceExportRoutes = await replaceInFile({
+      tree,
+      pathToFile: backendAppProjectRoutesPath,
+      regex: /export const routes = {/,
+      content: `export const routes = {${routeExport}`,
+    });
   }
 }
