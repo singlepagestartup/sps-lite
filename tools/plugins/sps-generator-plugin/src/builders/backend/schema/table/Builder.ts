@@ -62,7 +62,7 @@ export class Builder {
       templateParams: {
         template: "",
         model_name_snake_case_pluralized: this.modelNameSnakeCasePluralized,
-        module_name_snake_case: this.moduleNameSnakeCase,
+        module_name_snake_cased: this.moduleNameSnakeCase,
       },
     });
   }
