@@ -1,4 +1,7 @@
-import { Table } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import {
+  Table,
+  VariantEnumTable,
+} from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Relations } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 export {
   populate,
@@ -7,4 +10,5 @@ export {
 
 export const name = "PageTable";
 export const PageTable = Table;
+export const PageVariantEnumTable = VariantEnumTable;
 export const PageRelations = Relations;

@@ -6,7 +6,7 @@ const db = drizzle(postgres);
 
 export const drop = async () => {
   try {
-    console.log("Dropping database");
+    console.log("Dropping database started...");
     const query = sql<string>`SELECT table_name
       FROM information_schema.tables
       WHERE table_schema = 'public'
@@ -27,7 +27,7 @@ export const drop = async () => {
       await db.execute(dropQuery);
     }
 
-    console.log("Migration successful");
+    console.log("Dropping database passed successful");
     process.exit(0);
   } catch (error) {
     console.error(error);
