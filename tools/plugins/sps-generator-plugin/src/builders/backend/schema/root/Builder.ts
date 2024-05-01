@@ -14,6 +14,7 @@ export class Builder {
   moduleRootSchemaProject: any;
   pascalCaseModelName: string;
   exportTableVariableName: string;
+  exportVariantEnumTableVariableName: string;
   exportTableRelationsVariableName: string;
   moduleRootSchemaProjectPath: string;
   exportSchema: ExportSchema;
@@ -43,9 +44,11 @@ export class Builder {
     const pascalCaseModelName = names(modelName).className;
     const exportTableVariableName = `${pascalCaseModelName}Table`;
     const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
+    const exportVariantEnumTableVariableName = `${pascalCaseModelName}VariantEnumTable`;
 
     const exportSchema = new ExportSchema(
       exportTableVariableName,
+      exportVariantEnumTableVariableName,
       exportTableRelationsVariableName,
       libName,
     );
@@ -60,6 +63,8 @@ export class Builder {
     this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
     this.exportSchema = exportSchema;
+    this.exportVariantEnumTableVariableName =
+      exportVariantEnumTableVariableName;
     this.moduleRootSchemaProjectPath = moduleRootSchemaProjectPath;
   }
 
@@ -101,6 +106,8 @@ export class Builder {
         table_library_name: this.tableLibraryName,
         export_table_variable_name: this.exportTableVariableName,
         export_relations_variable_name: this.exportTableRelationsVariableName,
+        export_variant_enum_table_variable_name:
+          this.exportVariantEnumTableVariableName,
         relations_library_name: this.relationsLibraryName,
       },
     });
@@ -128,24 +135,23 @@ export class Builder {
 }
 
 export class ExportSchema {
-  exportTableVariableName: string;
-  exportTableRelationsVariableName: string;
-  libName: string;
   string: string;
   regex: RegExp;
 
   constructor(
     exportTableVariableName: string,
+    exportVariantEnumTableVariableName: string,
     exportTableRelationsVariableName: string,
     libName: string,
   ) {
     const exportSchemaContent = `export {
       ${exportTableVariableName},\n
+      ${exportVariantEnumTableVariableName},\n
       ${exportTableRelationsVariableName},\n
     } from "${libName}";`;
 
     const exportSchemaContentRegex = new RegExp(
-      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportTableRelationsVariableName}([,])?([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportVariantEnumTableVariableName},([\\s]+?)?${exportTableRelationsVariableName}([,])?([\\s]+?)?} from "${libName}";`,
     );
 
     this.string = exportSchemaContent;

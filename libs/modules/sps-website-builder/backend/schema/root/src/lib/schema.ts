@@ -1,6 +1,6 @@
 export {
-  PagesToLayoutsRelations,
   PagesToLayoutsTable,
+  PagesToLayoutsRelations,
 } from "@sps/sps-website-builder-backend-schema-relations";
 export {
   PageTable,
