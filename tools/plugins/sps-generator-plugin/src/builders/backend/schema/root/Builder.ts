@@ -3,6 +3,7 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 import { addToFile, replaceInFile } from "../../../../utils/file-utils";
+import { getExportSchemaContentRegex } from "./regex";
 
 export class Builder {
   libName: string;
@@ -47,8 +48,10 @@ export class Builder {
       ${exportTableVariableName},\n
       ${exportTableRelationsVariableName},\n
     } from "${libName}";`;
-    const exportSchemaContentRegex = new RegExp(
-      `export {([\n|\\s]+?)?${exportTableVariableName},([\n|\\s]+?)?${exportTableRelationsVariableName},([\n|\\s]+?)?} from "${libName}";`,
+    const exportSchemaContentRegex = getExportSchemaContentRegex(
+      exportTableVariableName,
+      exportTableRelationsVariableName,
+      libName,
     );
 
     this.libName = libName;
@@ -75,12 +78,6 @@ export class Builder {
   }
 
   async detachFromModule({ tree }: { tree: Tree }) {
-    console.log(
-      `🚀 ~ detachFromModule ~ this.exportSchemaContentRegex:`,
-      this.exportSchemaContentRegex,
-      this.moduleRootSchemaProjectPath,
-    );
-
     try {
       const replaceImportRoutes = await replaceInFile({
         tree,
