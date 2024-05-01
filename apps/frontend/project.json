@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/frontend",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "db:prepare": {
       "executor": "nx:run-commands",
@@ -115,6 +116,5 @@
       }
     },
     "lint": {}
-  },
-  "tags": []
+  }
 }

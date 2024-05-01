@@ -6,6 +6,8 @@
   "tags": [],
   "targets": {
     "lint": {},
-    "build": {}
+    "build": {},
+    "test": {},
+    "test:watch": {}
   }
 }

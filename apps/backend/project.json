@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/backend",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "dev": {
       "executor": "nx:run-commands",
@@ -131,6 +132,5 @@
         "quiet": false
       }
     }
-  },
-  "tags": []
+  }
 }

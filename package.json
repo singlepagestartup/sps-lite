@@ -13,7 +13,6 @@
     "frontend:prepare": "rm -rf apps/frontend/.next && nx run frontend:theme",
     "frontend:production": "NODE_ENV=production npm run frontend:build && npm run frontend:start",
     "frontend:start": "nx run frontend:next:start",
-    "lib:sps-utils:build": "nx run @sps/sps-utils:build",
     "lint": "nx run-many --target=lint --parallel=2 --all",
     "prepare": "husky"
   },
@@ -170,6 +169,7 @@
     "@types/pako": "^2.0.0",
     "@types/pluralize": "^0.0.30",
     "@types/qs": "^6.9.7",
+    "@types/ramda": "^0.29.12",
     "@types/react": "^18.2.37",
     "@types/react-dom": "18.2.14",
     "@types/react-flatpickr": "^3.8.8",

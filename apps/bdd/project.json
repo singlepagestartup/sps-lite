@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/bdd",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {},
     "dev": {
@@ -33,6 +34,5 @@
       }
     },
     "lint": {}
-  },
-  "tags": []
+  }
 }

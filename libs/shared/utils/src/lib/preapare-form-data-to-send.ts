@@ -1,4 +1,4 @@
-const R = require("ramda");
+import * as R from "ramda";
 
 export function appendFilesToFormData(formData: any, files: any) {
   if (Object.keys(files).length) {

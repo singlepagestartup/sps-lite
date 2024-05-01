@@ -1,17 +1,13 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
-import { eq } from "drizzle-orm";
-import { Table, db, model } from "./model";
-import {
-  checkIsStringFormDataBodyHasData,
-  checkIsFormDataExists,
-} from "@sps/shared-backend-api";
+import { model } from "./model";
+import { middlewares } from "@sps/shared-backend-api";
 
 export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
-    const data = await model.get();
+    const data = await model.find();
 
     return c.json({
       data,
@@ -32,7 +28,7 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  const data = await model.getById({ id: uuid });
+  const data = await model.findById({ id: uuid });
 
   return c.json({
     data,
@@ -41,8 +37,8 @@ app.get("/:uuid", async (c) => {
 
 app.patch(
   "/:uuid",
-  checkIsFormDataExists,
-  checkIsStringFormDataBodyHasData,
+  middlewares.checkIsFormDataExists,
+  middlewares.checkIsStringFormDataBodyHasData,
   async (c) => {
     try {
       const uuid = c.req.param("uuid");
@@ -72,11 +68,7 @@ app.patch(
 
       const data = JSON.parse(body["data"]);
 
-      const entity = await db
-        .update(Table)
-        .set(data)
-        .where(eq(Table.id, uuid))
-        .returning();
+      const entity = await model.update({ id: uuid, data });
 
       return c.json({
         data: entity,
@@ -91,8 +83,8 @@ app.patch(
 
 app.post(
   "/",
-  checkIsFormDataExists,
-  checkIsStringFormDataBodyHasData,
+  middlewares.checkIsFormDataExists,
+  middlewares.checkIsStringFormDataBodyHasData,
   async (c, next) => {
     const body = await c.req.parseBody();
 
@@ -103,11 +95,14 @@ app.post(
     const data = JSON.parse(body["data"]);
 
     try {
-      const entity = await db.insert(Table).values(data).returning();
+      const entity = await model.create({ data });
 
-      return c.json({
-        data: entity,
-      });
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
     } catch (error: any) {
       throw new HTTPException(400, {
         message: error.message,

@@ -4,5 +4,6 @@
   "sourceRoot": "libs/modules/sps-ecommerce/models/product/frontend/api/client/src",
   "projectType": "library",
   "tags": [],
+  "// targets": "to see all targets run: nx show project @sps/sps-ecommerce-models-product-frontend-api-client --web",
   "targets": {}
 }

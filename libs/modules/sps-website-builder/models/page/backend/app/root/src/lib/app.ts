@@ -1,26 +1,13 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
-import { eq } from "drizzle-orm";
-import { Table, db, transformData, populate, getById } from "./model";
-import {
-  checkIsStringFormDataBodyHasData,
-  checkIsFormDataExists,
-} from "@sps/shared-backend-api";
+import { model } from "./model";
+import { middlewares } from "@sps/shared-backend-api";
 
 export const app = new Hono();
 
 app.get("/", async (c) => {
   try {
-    // const data = await db.select().from(Table);
-    const data = await db.query.PageTable.findMany({
-      with: {
-        PagesToLayouts: {
-          with: {
-            layout: true,
-          },
-        },
-      },
-    });
+    const data = await model.find();
 
     return c.json({
       data,
@@ -41,19 +28,17 @@ app.get("/:uuid", async (c) => {
     });
   }
 
-  const data = await getById(uuid, populate);
-
-  const transformedData = transformData({ data });
+  const data = await model.findById({ id: uuid });
 
   return c.json({
-    data: transformedData,
+    data,
   });
 });
 
 app.patch(
   "/:uuid",
-  checkIsFormDataExists,
-  checkIsStringFormDataBodyHasData,
+  middlewares.checkIsFormDataExists,
+  middlewares.checkIsStringFormDataBodyHasData,
   async (c) => {
     try {
       const uuid = c.req.param("uuid");
@@ -83,11 +68,7 @@ app.patch(
 
       const data = JSON.parse(body["data"]);
 
-      const entity = await db
-        .update(Table)
-        .set(data)
-        .where(eq(Table.id, uuid))
-        .returning();
+      const entity = await model.update({ id: uuid, data });
 
       return c.json({
         data: entity,
@@ -102,8 +83,8 @@ app.patch(
 
 app.post(
   "/",
-  checkIsFormDataExists,
-  checkIsStringFormDataBodyHasData,
+  middlewares.checkIsFormDataExists,
+  middlewares.checkIsStringFormDataBodyHasData,
   async (c, next) => {
     const body = await c.req.parseBody();
 
@@ -114,11 +95,14 @@ app.post(
     const data = JSON.parse(body["data"]);
 
     try {
-      const entity = await db.insert(Table).values(data).returning();
+      const entity = await model.create({ data });
 
-      return c.json({
-        data: entity,
-      });
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
     } catch (error: any) {
       throw new HTTPException(400, {
         message: error.message,

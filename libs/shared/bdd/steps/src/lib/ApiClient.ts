@@ -1,7 +1,6 @@
 export class ApiClient {
   actionObject: any;
   actionsChain: any[] = [];
-  results: any;
 
   constructor({ actionObject }: { actionObject: any }) {
     this.actionObject = actionObject;
@@ -15,11 +14,45 @@ export class ApiClient {
     this.actionsChain.push(action);
   }
 
+  async passData({
+    data,
+    path,
+    passAs,
+    method,
+  }: {
+    data: any;
+    path: string;
+    passAs: "json" | "form-data";
+    method: "GET" | "POST" | "PATCH" | "DELETE";
+  }) {
+    const action = (previousResult) => {
+      if (passAs === "json") {
+        return this.actionObject.request(path, data);
+      } else {
+        const formData = new FormData();
+        const stringifiedData = JSON.stringify(data);
+
+        formData.append("data", stringifiedData);
+
+        return this.actionObject.request(path, {
+          method,
+          body: formData,
+        });
+      }
+    };
+
+    this.actionsChain.push(action);
+  }
+
   async getResult() {
-    return this.actionsChain.reduce(async (previousResult, action) => {
+    const res = this.actionsChain.reduce(async (previousResult, action) => {
       const result = await action(previousResult);
 
       return result;
-    }, []);
+    }, undefined);
+
+    this.actionsChain = [];
+
+    return res;
   }
 }
