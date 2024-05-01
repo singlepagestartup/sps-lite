@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";

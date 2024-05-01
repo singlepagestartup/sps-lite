@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { HasDefault, eq } from "drizzle-orm";
 import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";

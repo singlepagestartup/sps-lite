@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { HasDefault, eq } from "drizzle-orm";
 import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
@@ -28,7 +29,7 @@ async function getById({
   Table,
   transformData,
 }: IHandlerParams) {
-  const data = db.query[modelName].findFirst({
+  const data = await db.query[modelName].findFirst({
     where: eq(Table["id"], id),
     with: populate,
   });

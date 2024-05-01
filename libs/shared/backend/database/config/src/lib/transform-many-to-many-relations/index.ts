@@ -12,7 +12,7 @@ export const transformManyToManyRelations = ({
   data: any;
   relationAliases: RelationAlias;
 }) => {
-  const transformedData = {};
+  const transformedData: any = {};
 
   Object.entries(data).forEach(([key, value]) => {
     if (relationAliases[key]) {

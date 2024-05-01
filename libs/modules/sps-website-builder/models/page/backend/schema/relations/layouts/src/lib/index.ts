@@ -24,7 +24,7 @@ export const populate = {
   },
 };
 
-export function transformData({ data }) {
+export function transformData({ data }: any) {
   const transformedData = transformManyToManyRelations({
     data,
     relationAliases,

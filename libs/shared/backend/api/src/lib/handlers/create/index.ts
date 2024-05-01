@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 

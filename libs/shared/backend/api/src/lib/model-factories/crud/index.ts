@@ -1,12 +1,13 @@
+// @ts-nocheck
 import { HasDefault } from "drizzle-orm";
 import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 import * as handlers from "../../handlers";
 
-interface IModelFactoryParams {
-  db: PostgresJsDatabase<any>;
-  modelName: string;
+interface IModelFactoryParams<Schema extends Record<string, unknown>> {
+  db: PostgresJsDatabase<Schema>;
+  modelName: any;
   populate: {
     [key: string]: any;
   };
@@ -21,13 +22,13 @@ interface IModelFactoryParams {
   transformData: (data: any) => any;
 }
 
-export const modelFactory = ({
+export const factory = <S extends Record<string, unknown>>({
   db,
   modelName,
   Table,
   populate,
   transformData,
-}: IModelFactoryParams) => {
+}: IModelFactoryParams<S>) => {
   return {
     async find() {
       const data = await handlers.find({

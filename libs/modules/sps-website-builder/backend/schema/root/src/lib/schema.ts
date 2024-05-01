@@ -1,4 +1,12 @@
-// @ts-nocheck
-export * from "@sps/sps-website-builder-backend-schema-relations";
-export * from "@sps/sps-website-builder-models-page-backend-schema";
-export * from "@sps/sps-website-builder-models-layout-backend-schema";
+export {
+  PagesToLayoutsRelations,
+  PagesToLayoutsTable,
+} from "@sps/sps-website-builder-backend-schema-relations";
+export {
+  PageTable,
+  PageRelations,
+} from "@sps/sps-website-builder-models-page-backend-schema";
+export {
+  LayoutTable,
+  LayoutRelations,
+} from "@sps/sps-website-builder-models-layout-backend-schema";

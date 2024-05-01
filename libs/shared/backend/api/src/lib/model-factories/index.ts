@@ -1,3 +1,3 @@
-import { modelFactory as crudModelFactory } from "./crud";
+import { factory as crudModelFactory } from "./crud";
 
 export { crudModelFactory };

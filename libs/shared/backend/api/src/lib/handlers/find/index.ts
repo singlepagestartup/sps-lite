@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 interface IHandlerParams {

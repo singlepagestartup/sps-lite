@@ -4,4 +4,4 @@ export { populate } from "./populate";
 
 export const PagesToLayoutsTable = Table;
 export const PagesToLayoutsRelations = Relations;
-export const name = "PagesToLayouts";
+export const name = "PagesToLayoutsTable";
