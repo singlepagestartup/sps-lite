@@ -46,7 +46,7 @@ export class Builder {
     this.root = root;
     this.snakeCaseModelName = snakeCaseModelName;
     this.modelName = modelName;
-    this.moduleName = module;
+    this.moduleName = module.replaceAll(/-/g, "_");
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -57,8 +57,8 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model: this.modelName,
-        module: this.moduleName,
+        model_name: this.modelName,
+        module_name: this.moduleName,
         pluralized_model: this.snakeCaseModelName,
       },
     });
