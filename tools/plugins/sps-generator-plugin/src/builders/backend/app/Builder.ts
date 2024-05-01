@@ -21,6 +21,7 @@ export class Builder {
   root: string;
   modelName: string;
   schemaModelName: string;
+  module: string;
 
   constructor({
     modelName,
@@ -50,6 +51,7 @@ export class Builder {
     this.importPath = importPath;
     this.asPropertyName = propertyName;
     this.rootAppProject = moduleBackendAppProject;
+    this.module = module;
     this.root = root;
     this.modelName = modelName;
     this.schemaModelName = schemaModelName;
@@ -101,6 +103,7 @@ export class Builder {
       templateParams: {
         template: "",
         model: this.modelName,
+        module_name: this.module,
         schema_model_name: this.schemaModelName,
       },
     });

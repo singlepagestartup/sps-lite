@@ -3,7 +3,6 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 import { addToFile, replaceInFile } from "../../../../utils/file-utils";
-import { getExportSchemaContentRegex } from "./regex";
 
 export class Builder {
   libName: string;
@@ -16,9 +15,8 @@ export class Builder {
   pascalSaseModelName: string;
   exportTableVariableName: string;
   exportTableRelationsVariableName: string;
-  exportSchemaContent: string;
   moduleRootSchemaProjectPath: string;
-  exportSchemaContentRegex: RegExp;
+  exportSchema: ExportSchema;
 
   constructor({
     modelName,
@@ -44,11 +42,7 @@ export class Builder {
     const exportTableVariableName = `${pascalCaseModelName}Table`;
     const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
 
-    const exportSchemaContent = `export {
-      ${exportTableVariableName},\n
-      ${exportTableRelationsVariableName},\n
-    } from "${libName}";`;
-    const exportSchemaContentRegex = getExportSchemaContentRegex(
+    const exportSchema = new ExportSchema(
       exportTableVariableName,
       exportTableRelationsVariableName,
       libName,
@@ -63,8 +57,7 @@ export class Builder {
     this.pascalSaseModelName = pascalCaseModelName;
     this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
-    this.exportSchemaContent = exportSchemaContent;
-    this.exportSchemaContentRegex = exportSchemaContentRegex;
+    this.exportSchema = exportSchema;
     this.moduleRootSchemaProjectPath = moduleRootSchemaProjectPath;
   }
 
@@ -72,7 +65,7 @@ export class Builder {
     const backendAppProjectFileContent = await addToFile({
       toTop: true,
       pathToFile: this.moduleRootSchemaProjectPath,
-      content: this.exportSchemaContent,
+      content: this.exportSchema.string,
       tree,
     });
   }
@@ -82,13 +75,13 @@ export class Builder {
       const replaceImportRoutes = await replaceInFile({
         tree,
         pathToFile: this.moduleRootSchemaProjectPath,
-        regex: this.exportSchemaContentRegex,
+        regex: this.exportSchema.regex,
         content: "",
       });
     } catch (error) {
       if (
         error.message !==
-        `No expected value found in file: ${this.exportSchemaContent}`
+        `No expected value found in file: ${this.exportSchema.regex}`
       ) {
         throw error;
       }
@@ -130,5 +123,31 @@ export class Builder {
     await this.detachFromModule({ tree });
 
     await formatFiles(tree);
+  }
+}
+
+export class ExportSchema {
+  exportTableVariableName: string;
+  exportTableRelationsVariableName: string;
+  libName: string;
+  string: string;
+  regex: RegExp;
+
+  constructor(
+    exportTableVariableName: string,
+    exportTableRelationsVariableName: string,
+    libName: string,
+  ) {
+    const exportSchemaContent = `export {
+      ${exportTableVariableName},\n
+      ${exportTableRelationsVariableName},\n
+    } from "${libName}";`;
+
+    const exportSchemaContentRegex = new RegExp(
+      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportTableRelationsVariableName}([,])?([\\s]+?)?} from "${libName}";`,
+    );
+
+    this.string = exportSchemaContent;
+    this.regex = exportSchemaContentRegex;
   }
 }
