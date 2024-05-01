@@ -2,7 +2,7 @@ import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
-import { addToFile } from "../../../../utils/file-utils";
+import { addToFile, replaceInFile } from "../../../../utils/file-utils";
 
 export class Builder {
   libName: string;
@@ -15,6 +15,8 @@ export class Builder {
   pascalSaseModelName: string;
   exportTableVariableName: string;
   exportTableRelationsVariableName: string;
+  exportSchemaContent: string;
+  moduleRootSchemaProjectPath: string;
 
   constructor({
     modelName,
@@ -34,10 +36,16 @@ export class Builder {
 
     const moduleRootSchema = `@sps/${module}-backend-schema`;
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
+    const moduleRootSchemaProjectPath = `${this.moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
 
     const pascalCaseModelName = names(modelName).className;
     const exportTableVariableName = `${pascalCaseModelName}Table`;
     const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
+
+    const exportSchemaContent = `export {
+      ${this.exportTableVariableName},
+      ${this.exportTableRelationsVariableName},
+    } from "${this.libName}";`;
 
     this.libName = libName;
     this.root = root;
@@ -48,31 +56,35 @@ export class Builder {
     this.pascalSaseModelName = pascalCaseModelName;
     this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
+    this.exportSchemaContent = exportSchemaContent;
+    this.moduleRootSchemaProjectPath = moduleRootSchemaProjectPath;
   }
 
   async attachToModule({ tree }: { tree: Tree }) {
-    const backendAppProjectRoutesPath = `${this.moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
-
-    const exportSchemaContent = `export {
-      ${this.exportTableVariableName},
-      ${this.exportTableRelationsVariableName},
-    } from ${this.libName};`;
-
     const backendAppProjectFileContent = await addToFile({
       toTop: true,
-      pathToFile: backendAppProjectRoutesPath,
-      content: exportSchemaContent,
+      pathToFile: this.moduleRootSchemaProjectPath,
+      content: this.exportSchemaContent,
       tree,
     });
+  }
 
-    // const routeExport = `"${this.route}": ${this.asPropertyName},`;
-
-    // const replaceExportRoutes = await replaceInFile({
-    //   tree,
-    //   pathToFile: backendAppProjectRoutesPath,
-    //   regex: /export const routes = {/,
-    //   content: `export const routes = {${routeExport}`,
-    // });
+  async detachFromModule({ tree }: { tree: Tree }) {
+    try {
+      const replaceImportRoutes = await replaceInFile({
+        tree,
+        pathToFile: this.moduleRootSchemaProjectPath,
+        toReplaceString: this.exportSchemaContent,
+        content: "",
+      });
+    } catch (error) {
+      if (
+        error.message !==
+        `No expected value found in file: ${this.exportSchemaContent}`
+      ) {
+        throw error;
+      }
+    }
   }
 
   async create({ tree }: { tree: Tree }) {
