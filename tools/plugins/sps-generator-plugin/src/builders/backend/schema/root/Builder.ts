@@ -48,7 +48,7 @@ export class Builder {
       ${exportTableRelationsVariableName},\n
     } from "${libName}";`;
     const exportSchemaContentRegex = new RegExp(
-      `export {[\n|\\s]+?${exportTableVariableName},[\n|\\s]+?${exportTableRelationsVariableName},[\n|\\s]+?} from "${libName}";`,
+      `export {([\n|\\s]+?)?${exportTableVariableName},([\n|\\s]+?)?${exportTableRelationsVariableName},([\n|\\s]+?)?} from "${libName}";`,
     );
 
     this.libName = libName;
