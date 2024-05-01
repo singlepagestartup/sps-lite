@@ -1,4 +1,4 @@
-import pgCore from "drizzle-orm/pg-core";
+import * as pgCore from "drizzle-orm/pg-core";
 import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 

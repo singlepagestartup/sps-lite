@@ -1,4 +1,4 @@
-import pgCore from "drizzle-orm/pg-core";
+import * as pgCore from "drizzle-orm/pg-core";
 
 const moduleNameSnakeCased = "sps_website_builder";
 const modelNameSnakeCasedPluralized = "layouts";

@@ -1,4 +1,4 @@
-import pgCore from "drizzle-orm/pg-core";
+import * as pgCore from "drizzle-orm/pg-core";
 
 const moduleNameSnakeCased = "<%= module_name_snake_cased %>";
 const modelNameSnakeCasedPluralized = "<%= model_name_snake_case_pluralized %>";
