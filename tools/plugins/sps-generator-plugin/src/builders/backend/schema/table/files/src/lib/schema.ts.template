@@ -1,9 +1,14 @@
 import { serial, timestamp, pgTableCreator } from "drizzle-orm/pg-core";
 
-const pgTable = pgTableCreator((name) => `<%= module_name %>_${name}`);
+const pgTable = pgTableCreator((name) => `<%= module_name_snake_case %>_${name}`);
 
-export const Table = pgTable("<%= pluralized_model %>", {
+export const VariantEnumTable = pgEnum("<%= module_name_snake_case %>_<%= model_name_snake_case_pluralized %>_variant", [
+  "default",
+]);
+
+export const Table = pgTable("<%= model_name_snake_case_pluralized %>", {
   id: serial("id").primaryKey(),
+  variant: VariantEnumTable("variant").notNull().default("default"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

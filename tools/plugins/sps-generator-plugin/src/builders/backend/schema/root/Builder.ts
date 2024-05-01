@@ -12,11 +12,13 @@ export class Builder {
   tableLibraryName: string;
   relationsLibraryName: string;
   moduleRootSchemaProject: any;
-  pascalSaseModelName: string;
+  pascalCaseModelName: string;
   exportTableVariableName: string;
   exportTableRelationsVariableName: string;
   moduleRootSchemaProjectPath: string;
   exportSchema: ExportSchema;
+  module: string;
+  moduleNameSnakeCase: string;
 
   constructor({
     modelName,
@@ -54,7 +56,7 @@ export class Builder {
     this.tableLibraryName = tableLibraryName;
     this.relationsLibraryName = relationsLibraryName;
     this.moduleRootSchemaProject = moduleRootSchemaProject;
-    this.pascalSaseModelName = pascalCaseModelName;
+    this.pascalCaseModelName = pascalCaseModelName;
     this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
     this.exportSchema = exportSchema;
@@ -100,7 +102,6 @@ export class Builder {
         export_table_variable_name: this.exportTableVariableName,
         export_relations_variable_name: this.exportTableRelationsVariableName,
         relations_library_name: this.relationsLibraryName,
-        model_name: this.pascalSaseModelName,
       },
     });
 

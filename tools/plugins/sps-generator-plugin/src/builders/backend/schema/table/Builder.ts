@@ -7,9 +7,10 @@ import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 export class Builder {
   libName: string;
   root: string;
-  snakeCaseModelName: string;
+  modelNameSnakeCase: string;
   modelName: string;
-  moduleName: string;
+  modelNameSnakeCasePluralized: string;
+  moduleNameSnakeCase: string;
 
   constructor({
     modelName,
@@ -25,28 +26,31 @@ export class Builder {
 
     const root = `${baseDirectory}/${modelName}/backend/schema/table`;
     const modelNameSplitted = names(modelName).fileName.split("-");
-    const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
-      if (index === modelNameSplitted.length - 1) {
-        const plural = pluralize(curr);
-        if (index === 0) {
-          return plural;
+    const modelNameSnakeCasePluralized = modelNameSplitted.reduce(
+      (acc, curr, index) => {
+        if (index === modelNameSplitted.length - 1) {
+          const plural = pluralize(curr);
+          if (index === 0) {
+            return plural;
+          }
+
+          return acc + "_" + plural;
         }
 
-        return acc + "_" + plural;
-      }
+        if (index === 0) {
+          return curr;
+        }
 
-      if (index === 0) {
-        return curr;
-      }
-
-      return acc + "_" + curr;
-    }, "");
+        return acc + "_" + curr;
+      },
+      "",
+    );
 
     this.libName = libName;
     this.root = root;
-    this.snakeCaseModelName = snakeCaseModelName;
+    this.modelNameSnakeCasePluralized = modelNameSnakeCasePluralized;
     this.modelName = modelName;
-    this.moduleName = module.replaceAll(/-/g, "_");
+    this.moduleNameSnakeCase = names(module).fileName.replaceAll(/-/g, "_");
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -57,9 +61,8 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_name: this.modelName,
-        module_name: this.moduleName,
-        pluralized_model: this.snakeCaseModelName,
+        model_name_snake_case_pluralized: this.modelNameSnakeCasePluralized,
+        module_name_snake_case: this.moduleNameSnakeCase,
       },
     });
   }
