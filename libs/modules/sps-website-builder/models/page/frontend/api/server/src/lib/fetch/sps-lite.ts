@@ -175,7 +175,7 @@ export const api = {
         },
       });
 
-      if (!defaultMetatags.length) {
+      if (!defaultMetatags?.length) {
         return {
           title: "Single Page Startup",
           description: "The fastest way to create startup",

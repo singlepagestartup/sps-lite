@@ -16,12 +16,14 @@ interface IHeaders {
 export async function getBackendData(props: IFetchProps) {
   const { url, params, data, method = "GET" } = props;
 
-  const query = stringify(params || {}, {
+  let query = stringify(params || {}, {
     encodeValuesOnly: true,
   });
 
-  const compressedQuery = gzip(query);
-  const base64CompressedQuery = Buffer.from(compressedQuery).toString("base64");
+  if (process.env["COMPRESSION"] === "true") {
+    const compressedQuery = gzip(query);
+    query = Buffer.from(compressedQuery).toString("base64");
+  }
 
   const headers: IHeaders = {
     "Query-Encoding": "application/gzip",
@@ -32,7 +34,7 @@ export async function getBackendData(props: IFetchProps) {
       `Bearer ${process.env["NEXT_PUBLIC_BACKEND_TOKEN"]}`;
   }
 
-  const backendData = await fetch(`${url}?${base64CompressedQuery}`, {
+  const backendData = await fetch(`${url}?${query}`, {
     method,
     body: data,
     // next: { revalidate: 10 },

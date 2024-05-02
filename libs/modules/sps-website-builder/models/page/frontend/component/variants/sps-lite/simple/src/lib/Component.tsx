@@ -10,12 +10,17 @@ export function Component(props: IComponentPropsExtended) {
       data-model="page"
       data-variant="simple"
     >
+      {props.isEditing ? (
+        <div className="w-full py-20 bg-gray-200 flex items-center justify-center">
+          <p className="text-4xl font-bold">{props.data.title}</p>
+        </div>
+      ) : null}
       <User isServer={false} variant="auth-wrapper">
-        {props.data?.layout ? (
+        {props.data?.layouts && props.data.layouts?.length ? (
           <Layout
             isServer={props.isServer}
-            data={props.data.layout}
-            variant={props.data.layout.variant}
+            data={props.data.layouts[0]}
+            variant={props.data.layouts[0].variant}
           >
             <PageBlocks {...props} variant="default" />
           </Layout>

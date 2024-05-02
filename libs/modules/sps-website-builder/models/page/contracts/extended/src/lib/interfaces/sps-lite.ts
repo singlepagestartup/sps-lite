@@ -26,6 +26,6 @@ type IPageBlock =
 
 export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;
-  layout?: ILayout | null;
+  layouts?: ILayout[] | null;
   metatag?: IMetatag | null;
 }

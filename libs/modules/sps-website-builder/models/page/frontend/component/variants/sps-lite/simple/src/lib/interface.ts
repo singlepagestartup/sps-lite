@@ -4,6 +4,7 @@ import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-p
 export interface IComponentBase {
   showSkeletons?: boolean;
   isServer: boolean;
+  isEditing?: boolean;
 }
 
 export interface IComponentProps extends IComponentBase {
