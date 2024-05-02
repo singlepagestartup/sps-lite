@@ -48,8 +48,8 @@ export class Builder {
 
     const exportSchema = new ExportSchema(
       exportTableVariableName,
-      exportVariantEnumTableVariableName,
       exportTableRelationsVariableName,
+      exportVariantEnumTableVariableName,
       libName,
     );
 
@@ -60,8 +60,8 @@ export class Builder {
     this.relationsLibraryName = relationsLibraryName;
     this.moduleRootSchemaProject = moduleRootSchemaProject;
     this.pascalCaseModelName = pascalCaseModelName;
-    this.exportTableVariableName = exportTableVariableName;
     this.exportTableRelationsVariableName = exportTableRelationsVariableName;
+    this.exportTableVariableName = exportTableVariableName;
     this.exportSchema = exportSchema;
     this.exportVariantEnumTableVariableName =
       exportVariantEnumTableVariableName;
@@ -136,18 +136,18 @@ export class ExportSchema {
 
   constructor(
     exportTableVariableName: string,
-    exportVariantEnumTableVariableName: string,
     exportTableRelationsVariableName: string,
+    exportVariantEnumTableVariableName: string,
     libName: string,
   ) {
     const exportSchemaContent = `export {
       ${exportTableVariableName},\n
-      ${exportVariantEnumTableVariableName},\n
       ${exportTableRelationsVariableName},\n
+      ${exportVariantEnumTableVariableName},\n
     } from "${libName}";`;
 
     const exportSchemaContentRegex = new RegExp(
-      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportVariantEnumTableVariableName},([\\s]+?)?${exportTableRelationsVariableName}([,])?([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportTableRelationsVariableName},([\\s]+?)?${exportVariantEnumTableVariableName}([,])?([\\s]+?)?} from "${libName}";`,
     );
 
     this.string = exportSchemaContent;

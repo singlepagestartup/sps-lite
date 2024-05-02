@@ -1,7 +1,7 @@
 export {
   Table as SlideTable,
-  VariantEnumTable as SlideVariantEnumTable,
   Relations as SlideRelations,
+  VariantEnumTable as SlideVariantEnumTable,
 } from "@sps/sps-website-builder-models-slide-backend-schema";
 export {
   Table as PagesToLayoutsTable,
