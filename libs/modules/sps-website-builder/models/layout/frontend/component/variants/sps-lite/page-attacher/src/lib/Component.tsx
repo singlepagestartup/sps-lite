@@ -29,17 +29,19 @@ export function Component(props: IComponentPropsExtended) {
 
     console.log(`🚀 ~ Component ~ props:`, props);
 
-    const pages = props.data.pages.map((p) => p.id);
-    data.pages = isSelected
-      ? pages.filter((p) => p !== props.page.id)
-      : [...pages, props.page.id];
+    const pages = props.data.pages?.map((p) => p.id);
+    if (pages) {
+      data.pages = isSelected
+        ? pages.filter((p) => p !== props.page.id)
+        : [...pages, props.page.id];
+    }
 
     console.log("🚀 ~ onSubmit ~ data:", data);
     // await updateLayout({ id: props.data.id, data });
   }
 
   useEffect(() => {
-    if (props.data.pages.find((p) => p.id === props.page.id)) {
+    if (props.data.pages?.find((p) => p.id === props.page.id)) {
       setIsSelected(true);
     }
   }, [props]);

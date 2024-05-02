@@ -1,13 +1,8 @@
 import { Hono } from "hono";
 import { db, model } from "./model";
 import { apiFactories } from "@sps/shared-backend-api";
-import { models as appModels } from "@sps/sps-website-builder-backend-models";
 
 export const app = new Hono();
-
-app.get("/", async (c) => {
-  return model.find(c);
-});
 
 /**
  * Only one level of nesting is supported
@@ -59,10 +54,10 @@ app.get("/get-urls", async (c) => {
 //   });
 // });
 
-// apiFactories.crudApiFactory({
-//   app,
-//   model,
-// });
+apiFactories.crudApiFactory({
+  app,
+  model,
+});
 
 // export async function getFilledPages() {
 //   const pages = await db.query.PageTable.findMany();

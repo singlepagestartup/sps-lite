@@ -59,6 +59,10 @@ export function Component(props: IComponentPropsExtended) {
           <div className="p-4 border border-gray-600 rounded-lg flex flex-col gap-6">
             <Layout isServer={false} variant="find">
               {({ data: layouts }) => {
+                if (!layouts) {
+                  return null;
+                }
+
                 return (
                   <div className="flex flex-col gap-2 p-4 border border-gray-700 rounded-lg">
                     <p className="text-xl">Attach layout to page</p>
