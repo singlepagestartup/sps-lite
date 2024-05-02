@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { HasDefault } from "drizzle-orm";
+import { HasDefault, Relations } from "drizzle-orm";
 import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
@@ -11,6 +11,7 @@ interface IModelFactoryParams<Schema extends Record<string, unknown>> {
   populate: {
     [key: string]: any;
   };
+  config: any;
   Table: PgTableWithColumns<{
     name: string;
     schema: any;
@@ -19,6 +20,12 @@ interface IModelFactoryParams<Schema extends Record<string, unknown>> {
       id: HasDefault<PgUUIDBuilderInitial<"id">>;
     } & any;
   }>;
+  Relations: Relations<
+    any,
+    {
+      [key: string]: any;
+    }
+  >;
   transformData: (data: any) => any;
 }
 
@@ -26,6 +33,8 @@ export const factory = <S extends Record<string, unknown>>({
   db,
   modelName,
   Table,
+  Relations,
+  config,
   populate,
   transformData,
 }: IModelFactoryParams<S>) => {
@@ -35,6 +44,9 @@ export const factory = <S extends Record<string, unknown>>({
         db,
         modelName,
         populate,
+        Table,
+        Relations,
+        config,
         transformData,
       });
 
@@ -48,6 +60,8 @@ export const factory = <S extends Record<string, unknown>>({
         modelName,
         transformData,
         Table,
+        Relations,
+        config,
         populate,
       });
 
@@ -57,6 +71,8 @@ export const factory = <S extends Record<string, unknown>>({
       const entitiy = await handlers.create({
         db,
         Table,
+        Relations,
+        config,
         data,
       });
 
@@ -67,6 +83,8 @@ export const factory = <S extends Record<string, unknown>>({
         id,
         db,
         Table,
+        Relations,
+        config,
         data,
       });
 

@@ -1,5 +1,6 @@
 // @ts-nocheck
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
+import { HasDefault, Relations } from "drizzle-orm";
+import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 interface IHandlerParams {
@@ -8,12 +9,20 @@ interface IHandlerParams {
     name: string;
     schema: any;
     dialect: "pg";
-    columns: any;
+    columns: {
+      id: HasDefault<PgUUIDBuilderInitial<"id">>;
+    } & any;
   }>;
+  Relations: Relations<
+    any,
+    {
+      [key: string]: any;
+    }
+  >;
   data: any;
 }
 
-export async function handler({ db, Table, data }: IHandlerParams) {
+export async function handler({ db, Table, Relations, data }: IHandlerParams) {
   const entities = await db.insert(Table).values(data).returning();
 
   return entities[0];

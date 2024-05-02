@@ -2,8 +2,6 @@ import { IComponentPropsExtended } from "./interface";
 import { Component as Product } from "@sps/sps-ecommerce-models-product-frontend-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
-  // console.log(`🚀 ~ Component ~ props:`, props);
-
   return (
     <div
       data-module="sps-ecommerce"

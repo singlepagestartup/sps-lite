@@ -1050,6 +1050,15 @@
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-boxed": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/boxed/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-editor": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/editor/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-page-attacher": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/page-attacher/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-wide": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/wide/src/index.ts"
       ],

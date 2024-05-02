@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { HasDefault, eq } from "drizzle-orm";
+import { HasDefault, Relations, eq } from "drizzle-orm";
 import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
@@ -15,6 +15,12 @@ interface IHandlerParams {
       id: HasDefault<PgUUIDBuilderInitial<"id">>;
     } & any;
   }>;
+  Relations: Relations<
+    any,
+    {
+      [key: string]: any;
+    }
+  >;
   populate: {
     [key: string]: any;
   };
@@ -27,6 +33,7 @@ async function getById({
   modelName,
   populate,
   Table,
+  Relations,
   transformData,
 }: IHandlerParams) {
   const data = await db.query[modelName].findFirst({

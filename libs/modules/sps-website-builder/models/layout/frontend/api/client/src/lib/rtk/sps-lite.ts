@@ -10,7 +10,7 @@ export const api = createApi({
   tagTypes: [tag],
   reducerPath: route,
   endpoints: (build) => ({
-    get: rtk.api.find<IModelExtended>({
+    find: rtk.api.find<IModelExtended>({
       serviceApi: this,
       build,
       populate,
@@ -19,6 +19,22 @@ export const api = createApi({
     }),
 
     findOne: rtk.api.findOne<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+
+    create: rtk.api.create<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+
+    update: rtk.api.update<IModelExtended>({
       serviceApi: this,
       build,
       populate,

@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { HasDefault, Relations } from "drizzle-orm";
+import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 interface IHandlerParams {
@@ -7,6 +9,20 @@ interface IHandlerParams {
   populate: {
     [key: string]: any;
   };
+  Table: PgTableWithColumns<{
+    name: string;
+    schema: any;
+    dialect: "pg";
+    columns: {
+      id: HasDefault<PgUUIDBuilderInitial<"id">>;
+    } & any;
+  }>;
+  Relations: Relations<
+    any,
+    {
+      [key: string]: any;
+    }
+  >;
   transformData: (data: any) => any;
 }
 
@@ -14,6 +30,8 @@ async function find({
   db,
   modelName,
   populate,
+  Table,
+  Relations,
   transformData,
 }: IHandlerParams) {
   const data = await db.query[modelName].findMany({ with: populate });

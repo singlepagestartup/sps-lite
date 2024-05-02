@@ -6,9 +6,10 @@ import { Relations } from "@sps/sps-website-builder-models-page-backend-schema-r
 export {
   populate,
   transformData,
+  config,
 } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 
-export const name = "PageTable";
+export const name = "Page";
 export const PageTable = Table;
 export const PageVariantEnumTable = VariantEnumTable;
 export const PageRelations = Relations;
