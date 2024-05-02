@@ -1,30 +1,35 @@
-// @ts-nocheck
-import { HasDefault, Relations, eq } from "drizzle-orm";
-import { PgTableWithColumns, PgUUIDBuilderInitial } from "drizzle-orm/pg-core";
+import { eq } from "drizzle-orm";
+import { PgInsertValue, PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { IBaseHandlerParams } from "../interfaces";
 
-interface IHandlerParams {
+interface IHandlerParams<
+  Schema extends Record<string, unknown>,
+  DBType extends PostgresJsDatabase<Schema>,
+  TableType extends PgTableWithColumns<any>,
+> extends IBaseHandlerParams<Schema, DBType, TableType> {
   id: string;
-  db: PostgresJsDatabase<any>;
-  config: any;
-  Table: PgTableWithColumns<{
-    name: string;
-    schema: any;
-    dialect: "pg";
-    columns: {
-      id: HasDefault<PgUUIDBuilderInitial<"id">>;
-    } & any;
-  }>;
-  Relations: Relations<
-    any,
-    {
-      [key: string]: any;
-    }
-  >;
-  data: any;
+  data: PgInsertValue<TableType>;
 }
 
-export async function handler({ id, db, Table, config, data }: IHandlerParams) {
+export async function handler<
+  Schema extends Record<string, unknown>,
+  DBType extends PostgresJsDatabase<Schema>,
+  TableType extends PgTableWithColumns<any>,
+>(params: IHandlerParams<Schema, DBType, TableType>) {
+  const { db, Table, data, id } = params;
+
+  const entities: TableType["$inferSelect"][] = await db
+    .update(Table)
+    .set(data)
+    .where(eq(Table["id"], id))
+    .returning();
+
+  // const entities: TableType["$inferSelect"][] = await db
+  //   .select()
+  //   .from(Table)
+  //   .where(eq(Table["id"], id));
+
   // const ptl = await db
   //   .select()
   //   .from(schema.PagesToLayoutsTable)
@@ -37,56 +42,57 @@ export async function handler({ id, db, Table, config, data }: IHandlerParams) {
   // console.log(`🚀 ~ handler ~ ptl:`, ptl);
 
   // config.table
-  const sanitizedData = { ...data };
+  // const sanitizedData = { ...data };
 
-  for (const relation of Object.keys(config)) {
-    if (data[relation]) {
-      if (Array.isArray(data[relation])) {
-        for (const relItem of data[relation]) {
-          const relData = relItem;
-          // console.log(`🚀 ~ handler ~ relData:`, relData.id);
-          const t = config[relation].table;
-          // console.log(`🚀 ~ handler ~ t:`, t);
-          const val = t["layoutId"];
-          const filter = eq(val, relData.id);
-          // console.log(`🚀 ~ handler ~ filter:`, filter);
-          // console.log(`🚀 ~ handler ~ val:`, val);
+  // for (const relation of Object.keys(config)) {
+  //   if (data[relation]) {
+  //     if (Array.isArray(data[relation])) {
+  //       for (const relItem of data[relation]) {
+  //         const relData = relItem;
+  //         // console.log(`🚀 ~ handler ~ relData:`, relData.id);
+  //         const t = config[relation].table;
+  //         // console.log(`🚀 ~ handler ~ t:`, t);
+  //         const val = t["layoutId"];
+  //         const filter = eq(val, relData.id);
+  //         // console.log(`🚀 ~ handler ~ filter:`, filter);
+  //         // console.log(`🚀 ~ handler ~ val:`, val);
 
-          // console.log(`🚀 ~ handler ~ relData:`, relData.id);
+  //         // console.log(`🚀 ~ handler ~ relData:`, relData.id);
 
-          const relationItems = await db.select().from(t).where(filter);
+  //         const relationItems = await db.select().from(t).where(filter);
 
-          if (!relationItems.length) {
-            const newRel = await db
-              .insert(t)
-              .values({
-                pageId: id,
-                layoutId: relData.id,
-              })
-              .returning();
+  //         if (!relationItems.length) {
+  //           const newRel = await db
+  //             .insert(t)
+  //             .values({
+  //               pageId: id,
+  //               layoutId: relData.id,
+  //             })
+  //             .returning();
 
-            console.log(`🚀 ~ newRel ~ newRel:`, newRel);
-          }
+  //           console.log(`🚀 ~ newRel ~ newRel:`, newRel);
+  //         }
 
-          console.log(`🚀 ~ handler ~ relationItems:`, relationItems);
-        }
-      }
+  //         console.log(`🚀 ~ handler ~ relationItems:`, relationItems);
+  //       }
+  //     }
 
-      delete sanitizedData[relation];
-    }
-  }
+  //     delete sanitizedData[relation];
+  //   }
+  // }
+
   // const relationsTableConfig = getTableConfig(Table);
   // console.log(`🚀 ~ relationsTableConfig:`, relationsTableConfig);
 
   // console.log(`🚀 ~ Relations:`, Relations);
   // console.log(`🚀 ~ config:`, config);
-  console.log(`🚀 ~ handler ~ data:`, sanitizedData);
+  // console.log(`🚀 ~ handler ~ data:`, sanitizedData);
 
-  const entities = await db
-    .update(Table)
-    .set(sanitizedData)
-    .where(eq(Table["id"], id))
-    .returning();
+  // const entities = await db
+  //   .update(Table)
+  //   .set(sanitizedData)
+  //   .where(eq(Table["id"], id))
+  //   .returning();
 
   return entities[0];
 }

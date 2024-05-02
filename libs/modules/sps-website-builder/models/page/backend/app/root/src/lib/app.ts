@@ -1,6 +1,11 @@
 import { Hono } from "hono";
 import { model } from "./model";
 import { apiFactories } from "@sps/shared-backend-api";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { postgres } from "@sps/shared-backend-database-config";
+import * as schema from "@sps/sps-website-builder-backend-schema";
+
+const db = drizzle(postgres, { schema });
 
 export const app = new Hono();
 
