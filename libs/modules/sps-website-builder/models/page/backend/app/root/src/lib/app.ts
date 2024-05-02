@@ -23,6 +23,13 @@ app.get("/get-urls", async (c) => {
 
 app.get("/get-by-url", async (c) => {
   const query = c.req.query("url");
+  console.log(`🚀 ~ app.get ~ query:`, query);
+
+  if (query === "favicon.ico") {
+    return c.json({
+      ok: true,
+    });
+  }
 
   const filledPages = await getFilledPages();
 
