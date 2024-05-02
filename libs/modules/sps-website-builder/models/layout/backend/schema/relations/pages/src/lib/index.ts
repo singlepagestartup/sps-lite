@@ -1,12 +1,13 @@
 import {
-  PagesToLayoutsTable,
-  name as pagesToLayoutsName,
+  Table,
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 import { transformManyToManyRelations } from "@sps/shared-backend-database-config";
 
+const constantName = "PagesToLayouts";
+
 const relationAliases = {
-  [pagesToLayoutsName]: {
+  [constantName]: {
     schemaKey: "page",
     toDataKey: "pages",
   },
@@ -14,12 +15,12 @@ const relationAliases = {
 
 export const relation = (helpers: any) => {
   return {
-    [pagesToLayoutsName]: helpers.many(PagesToLayoutsTable),
+    [constantName]: helpers.many(Table),
   };
 };
 
 export const populate = {
-  [pagesToLayoutsName]: {
+  [constantName]: {
     with: pagesToLayoutsPopulate,
   },
 };

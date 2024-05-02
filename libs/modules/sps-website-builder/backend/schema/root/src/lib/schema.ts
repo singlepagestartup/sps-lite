@@ -1,19 +1,19 @@
 export {
-  SlideTable,
-  SlideVariantEnumTable,
-  SlideRelations,
+  Table as SlideTable,
+  VariantEnumTable as SlideVariantEnumTable,
+  Relations as SlideRelations,
 } from "@sps/sps-website-builder-models-slide-backend-schema";
 export {
-  PagesToLayoutsTable,
-  PagesToLayoutsRelations,
+  Table as PagesToLayoutsTable,
+  Relations as PagesToLayoutsRelations,
 } from "@sps/sps-website-builder-backend-schema-relations";
 export {
-  PageTable,
-  PageRelations,
-  PageVariantEnumTable,
+  Table as PageTable,
+  Relations as PageRelations,
+  VariantEnumTable as PageVariantEnumTable,
 } from "@sps/sps-website-builder-models-page-backend-schema";
 export {
-  LayoutTable,
-  LayoutRelations,
-  LayoutVariantEnumTable,
+  Table as LayoutTable,
+  Relations as LayoutRelations,
+  VariantEnumTable as LayoutVariantEnumTable,
 } from "@sps/sps-website-builder-models-layout-backend-schema";
