@@ -42,9 +42,9 @@ export class Builder {
     const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
 
     const pascalCaseModelName = names(modelName).className;
-    const exportTableVariableName = `${pascalCaseModelName}Table`;
-    const exportTableRelationsVariableName = `${pascalCaseModelName}Relations`;
-    const exportVariantEnumTableVariableName = `${pascalCaseModelName}VariantEnumTable`;
+    const exportTableVariableName = `Table as ${pascalCaseModelName}Table`;
+    const exportTableRelationsVariableName = `Relations as ${pascalCaseModelName}Relations`;
+    const exportVariantEnumTableVariableName = `VariantEnumTable as ${pascalCaseModelName}VariantEnumTable`;
 
     const exportSchema = new ExportSchema(
       exportTableVariableName,
@@ -104,10 +104,6 @@ export class Builder {
       templateParams: {
         template: "",
         table_library_name: this.tableLibraryName,
-        export_table_variable_name: this.exportTableVariableName,
-        export_relations_variable_name: this.exportTableRelationsVariableName,
-        export_variant_enum_table_variable_name:
-          this.exportVariantEnumTableVariableName,
         relations_library_name: this.relationsLibraryName,
       },
     });

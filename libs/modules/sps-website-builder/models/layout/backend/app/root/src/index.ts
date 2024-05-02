@@ -1,2 +1,2 @@
 export { app } from "./lib/app";
-export * as model from "./lib/model";
+export { model } from "./lib/model";
