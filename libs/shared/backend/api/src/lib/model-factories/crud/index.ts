@@ -1,14 +1,14 @@
 import { PgInsertValue, PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
-import * as handlers from "../../handlers";
-import { IBaseHandlerParams } from "../../handlers/interfaces";
+import * as services from "../../services";
+import { IBaseServiceParams } from "../../services/interfaces";
 
 export interface IFactoryParams<
   Schema extends Record<string, unknown>,
   DBType extends PostgresJsDatabase<Schema>,
   TableType extends PgTableWithColumns<any>,
-> extends IBaseHandlerParams<Schema, DBType, TableType> {}
+> extends IBaseServiceParams<Schema, DBType, TableType> {}
 
 export const factory = <
   Schema extends Record<string, unknown>,
@@ -21,7 +21,7 @@ export const factory = <
 
   return {
     async create(props: { data: PgInsertValue<TableType> }) {
-      const result = await handlers.create({
+      const result = await services.create({
         db,
         Table,
         data: props.data,
@@ -33,7 +33,7 @@ export const factory = <
     async update(props: { id: string; data: PgInsertValue<TableType> }) {
       const { id, data } = props;
 
-      const result = await handlers.update({
+      const result = await services.update({
         id,
         db,
         Table,
@@ -44,7 +44,7 @@ export const factory = <
     },
 
     async find() {
-      const result = await handlers.find({
+      const result = await services.find({
         db,
         Table,
       });
@@ -53,7 +53,7 @@ export const factory = <
     },
 
     async findById({ id }: { id: string }) {
-      const result = await handlers.findById({
+      const result = await services.findById({
         id,
         db,
         Table,
@@ -63,7 +63,7 @@ export const factory = <
     },
 
     async delete({ id }: { id: string }) {
-      const result = await handlers.deleteEntity({
+      const result = await services.deleteEntity({
         id,
         db,
         Table,

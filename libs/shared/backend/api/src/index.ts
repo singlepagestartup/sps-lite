@@ -1,4 +1,4 @@
 export * as middlewares from "./lib/middlewares";
-export * as handlers from "./lib/handlers";
+export * as services from "./lib/services";
 export * as modelFactories from "./lib/model-factories";
 export * as apiFactories from "./lib/api-factories";

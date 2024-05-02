@@ -1,13 +1,21 @@
 import { eq } from "drizzle-orm";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { IBaseHandlerParams } from "../interfaces";
+import { IBaseServiceParams } from "../interfaces";
 
-export async function handler<
+interface IServiceParams<
   Schema extends Record<string, unknown>,
   DBType extends PostgresJsDatabase<Schema>,
   TableType extends PgTableWithColumns<any>,
->(params: IBaseHandlerParams<Schema, DBType, TableType> & { id: string }) {
+> extends IBaseServiceParams<Schema, DBType, TableType> {
+  id: string;
+}
+
+export async function service<
+  Schema extends Record<string, unknown>,
+  DBType extends PostgresJsDatabase<Schema>,
+  TableType extends PgTableWithColumns<any>,
+>(params: IServiceParams<Schema, DBType, TableType> & { id: string }) {
   const { id, db, Table } = params;
 
   const result = await db.select().from(Table).where(eq(Table["id"], id));
