@@ -26,6 +26,12 @@ export class ApiClient {
     method: "GET" | "POST" | "PATCH" | "DELETE";
   }) {
     const action = (previousResult) => {
+      if (method === "GET") {
+        return this.actionObject.request(path, {
+          method,
+        });
+      }
+
       if (passAs === "json") {
         return this.actionObject.request(path, data);
       } else {

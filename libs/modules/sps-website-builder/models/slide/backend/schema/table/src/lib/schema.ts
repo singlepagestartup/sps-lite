@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 
 const moduleNameSnakeCased = "sps_website_builder";
-const modelNameSnakeCasedPluralized = "pages";
+const modelNameSnakeCasedPluralized = "slides";
 
 const pgTable = pgCore.pgTableCreator(
   (name) => `${moduleNameSnakeCased}_${name}`,
@@ -9,15 +9,13 @@ const pgTable = pgCore.pgTableCreator(
 
 export const VariantEnumTable = pgCore.pgEnum(
   `${moduleNameSnakeCased}_${modelNameSnakeCasedPluralized}_variant`,
-  ["kudda", "misd"],
+  ["default"],
 );
 
 export const Table = pgTable(modelNameSnakeCasedPluralized, {
+  title: pgCore.text("title"),
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
-  title: pgCore.text("title").notNull().default("Page"),
-  url: pgCore.text("url").notNull().default("/").unique(),
-  variant: VariantEnumTable("variant").notNull().default("kudda"),
-  description: pgCore.text("description").default("Description"),
+  variant: VariantEnumTable("variant").notNull().default("default"),
   createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
 });

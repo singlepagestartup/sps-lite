@@ -4,6 +4,6 @@
     "declaration": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "../models/src/lib/models.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }

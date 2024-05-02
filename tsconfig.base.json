@@ -594,6 +594,9 @@
       "@sps/sps-website-builder-backend-app": [
         "libs/modules/sps-website-builder/backend/app/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-backend-models": [
+        "libs/modules/sps-website-builder/backend/app/models/src/index.ts"
+      ],
       "@sps/sps-website-builder-backend-schema": [
         "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
       ],
@@ -1391,6 +1394,18 @@
       ],
       "@sps/sps-website-builder-models-sidebar-frontend-redux": [
         "libs/modules/sps-website-builder/models/sidebar/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-app": [
+        "libs/modules/sps-website-builder/models/slide/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-schema": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-contracts": [
         "libs/modules/sps-website-builder/models/slide/contracts/root/src/index.ts"

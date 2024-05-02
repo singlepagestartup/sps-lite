@@ -1,4 +1,9 @@
 export {
+  SlideTable,
+  SlideVariantEnumTable,
+  SlideRelations,
+} from "@sps/sps-website-builder-models-slide-backend-schema";
+export {
   PagesToLayoutsTable,
   PagesToLayoutsRelations,
 } from "@sps/sps-website-builder-backend-schema-relations";
