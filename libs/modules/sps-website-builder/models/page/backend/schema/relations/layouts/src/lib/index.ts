@@ -4,17 +4,21 @@ import {
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 import { transformManyToManyRelations } from "@sps/shared-backend-database-config";
+import { TableRelationsHelpers } from "drizzle-orm";
 
-export const relationName = "layouts";
+const name = "layouts";
+const type = "many";
 
 export const relationAliases = {
   [pagesToLayoutsName]: {
     schemaKey: "layout",
-    toDataKey: relationName,
+    toDataKey: name,
   },
 };
 
-export const relation = (helpers: any) => {
+export const relation = <TTableName extends string>(
+  helpers: TableRelationsHelpers<TTableName>,
+) => {
   return {
     [pagesToLayoutsName]: helpers.many(PagesToLayoutsTable),
   };
@@ -36,9 +40,9 @@ export function transformData({ data }: any) {
 }
 
 export const config = {
-  name: relationName,
+  name,
+  type,
   table: PagesToLayoutsTable,
   populate: pagesToLayoutsPopulate,
   schemaKey: "layout",
-  toDataKey: relationName,
 };

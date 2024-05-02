@@ -2,7 +2,7 @@ import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
 
 describe("pages", () => {
-  it(`by GET request to /api/get-urls I want to get list of urls`, async () => {
+  it(`by GET request to / I want to get pages`, async () => {
     const actionObject = app;
 
     const me = new Actor({
@@ -11,11 +11,13 @@ describe("pages", () => {
     });
 
     await me.goTo({
-      path: "/get-urls",
+      path: "/",
     });
 
     const res = await me.getResult();
     const resultData = await res.json();
+
+    console.log(`🚀 ~ it ~ resultData:`, resultData);
 
     expect(res.status).toBe(200);
     expect(Array.isArray(resultData.data)).toEqual(true);

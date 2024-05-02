@@ -37,6 +37,8 @@ export async function handler({ id, db, Table, config, data }: IHandlerParams) {
   // console.log(`🚀 ~ handler ~ ptl:`, ptl);
 
   // config.table
+  const sanitizedData = { ...data };
+
   for (const relation of Object.keys(config)) {
     if (data[relation]) {
       if (Array.isArray(data[relation])) {
@@ -52,11 +54,25 @@ export async function handler({ id, db, Table, config, data }: IHandlerParams) {
 
           // console.log(`🚀 ~ handler ~ relData:`, relData.id);
 
-          const relationItems = await db.select().from(t);
+          const relationItems = await db.select().from(t).where(filter);
+
+          if (!relationItems.length) {
+            const newRel = await db
+              .insert(t)
+              .values({
+                pageId: id,
+                layoutId: relData.id,
+              })
+              .returning();
+
+            console.log(`🚀 ~ newRel ~ newRel:`, newRel);
+          }
 
           console.log(`🚀 ~ handler ~ relationItems:`, relationItems);
         }
       }
+
+      delete sanitizedData[relation];
     }
   }
   // const relationsTableConfig = getTableConfig(Table);
@@ -64,11 +80,11 @@ export async function handler({ id, db, Table, config, data }: IHandlerParams) {
 
   // console.log(`🚀 ~ Relations:`, Relations);
   // console.log(`🚀 ~ config:`, config);
-  console.log(`🚀 ~ handler ~ data:`, data);
+  console.log(`🚀 ~ handler ~ data:`, sanitizedData);
 
   const entities = await db
     .update(Table)
-    .set(data)
+    .set(sanitizedData)
     .where(eq(Table["id"], id))
     .returning();
 
