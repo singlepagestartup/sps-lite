@@ -595,7 +595,7 @@
         "libs/modules/sps-website-builder/backend/app/root/src/index.ts"
       ],
       "@sps/sps-website-builder-backend-models": [
-        "libs/modules/sps-website-builder/backend/models/src/index.ts"
+        "libs/modules/sps-website-builder/backend/models/root/src/index.ts"
       ],
       "@sps/sps-website-builder-backend-schema": [
         "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
