@@ -31,7 +31,7 @@ export class Builder {
 
     const moduleRootSchema = `@sps/${module}-backend-schema`;
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
-    const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
+    const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/index.ts`;
 
     const modelNamePascalCased = names(modelName).className;
 
