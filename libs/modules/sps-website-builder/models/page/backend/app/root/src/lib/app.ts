@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { model } from "./model";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 import { apiFactories } from "@sps/shared-backend-api";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";

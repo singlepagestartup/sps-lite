@@ -1020,6 +1020,9 @@
       "@sps/sps-website-builder-models-layout-backend-app": [
         "libs/modules/sps-website-builder/models/layout/backend/app/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-backend-model": [
+        "libs/modules/sps-website-builder/models/layout/backend/model/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-backend-schema": [
         "libs/modules/sps-website-builder/models/layout/backend/schema/root/src/index.ts"
       ],
@@ -1257,6 +1260,9 @@
       "@sps/sps-website-builder-models-page-backend-app": [
         "libs/modules/sps-website-builder/models/page/backend/app/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-backend-model": [
+        "libs/modules/sps-website-builder/models/page/backend/model/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-backend-schema": [
         "libs/modules/sps-website-builder/models/page/backend/schema/root/src/index.ts"
       ],
@@ -1409,6 +1415,9 @@
       ],
       "@sps/sps-website-builder-models-slide-backend-app": [
         "libs/modules/sps-website-builder/models/slide/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-model": [
+        "libs/modules/sps-website-builder/models/slide/backend/model/root/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-backend-schema": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/root/src/index.ts"

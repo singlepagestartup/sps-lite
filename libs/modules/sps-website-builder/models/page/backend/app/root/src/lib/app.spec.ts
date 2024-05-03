@@ -1,7 +1,7 @@
 import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
 import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
-import { model } from "./model";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 
 describe("pages", () => {
   it(`by GET request to / I want to get pages`, async () => {
