@@ -1,9 +1,10 @@
 import { Builder as AppBuilder } from "./app/Builder";
+import { Builder as ModelBuilder } from "./model/Builder";
 import { Builder as SchemaBuilder } from "./schema/Builder";
 import { Tree } from "@nx/devkit";
 
 export class Builder {
-  children: (AppBuilder | SchemaBuilder)[];
+  children: (AppBuilder | SchemaBuilder | ModelBuilder)[];
 
   constructor({
     modelName,
@@ -26,8 +27,14 @@ export class Builder {
       tree,
     });
 
-    // const children = [schemaBuilder, appBuilder];
-    const children = [appBuilder];
+    const modelBuilder = new ModelBuilder({
+      modelName,
+      module,
+      tree,
+    });
+
+    // const children = [schemaBuilder,modelBuilder, appBuilder];
+    const children = [modelBuilder, appBuilder];
 
     this.children = children;
   }

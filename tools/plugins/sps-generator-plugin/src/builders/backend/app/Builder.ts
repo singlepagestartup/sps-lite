@@ -145,31 +145,6 @@ export class Builder {
   }
 }
 
-export class ExportRoute extends RegexCreator {
-  constructor({
-    route,
-    asPropertyModelName,
-  }: {
-    route: string;
-    asPropertyModelName: string;
-  }) {
-    const place = `export const routes = {`;
-    const placeRegex = new RegExp(`export const routes = {`);
-
-    const content = `"${route}": ${asPropertyModelName},`;
-    const contentRegex = new RegExp(
-      `"${route}":([\\s]+?)${asPropertyModelName},`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
-    });
-  }
-}
-
 export class ImportAppAsAsPropertyModelName extends RegexCreator {
   constructor({
     asPropertyModelName,
@@ -192,6 +167,31 @@ export class ImportAppAsAsPropertyModelName extends RegexCreator {
       placeRegex,
       contentRegex,
       content,
+    });
+  }
+}
+
+export class ExportRoute extends RegexCreator {
+  constructor({
+    route,
+    asPropertyModelName,
+  }: {
+    route: string;
+    asPropertyModelName: string;
+  }) {
+    const place = `export const routes = {`;
+    const placeRegex = new RegExp(`export const routes = {`);
+
+    const content = `"${route}": ${asPropertyModelName},`;
+    const contentRegex = new RegExp(
+      `"${route}":([\\s]+?)${asPropertyModelName},`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
     });
   }
 }

@@ -4,7 +4,7 @@ import { apiFactories } from "@sps/shared-backend-api";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";
 import * as schema from "@sps/sps-website-builder-backend-schema";
-import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
+import { models as spsWebsiteBuilderModels } from "libs/modules/sps-website-builder/backend/models/src";
 
 const db = drizzle(postgres, { schema });
 
