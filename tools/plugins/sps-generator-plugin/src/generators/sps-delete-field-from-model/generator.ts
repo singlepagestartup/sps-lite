@@ -8,24 +8,27 @@ export async function spsDeleteFieldFromModelGenerator(
 ) {
   if (
     !options.model.includes("models") ||
-    !options.model.includes("-backend-app")
+    !options.model.includes("-backend-schema")
   ) {
-    throw new Error("The model must be a backend-app model");
+    throw new Error(
+      "The model must be a *-backend-schema-[table/relations] module",
+    );
   }
 
   const module = options.model.split("/")[1].split("-models")[0];
   const model = options.model
     .split("/")[1]
     .split("-models-")[1]
-    .replace("-backend-app", "");
+    .split("-backend-schema")[0];
 
-  const BackendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
+  const backendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
     modelName: model,
     module,
     tree,
   });
 
-  await BackendModelSchemaTableBuilder.deleteField({
+  await backendModelSchemaTableBuilder.deleteField({
+    level: options.level,
     tree,
     name: options.name,
     type: options.type,

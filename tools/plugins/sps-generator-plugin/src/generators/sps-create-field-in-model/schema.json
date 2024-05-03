@@ -6,7 +6,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
+      "description": "Name of the field in snake_case, that will be added to the database",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -15,7 +15,7 @@
     },
     "model": {
       "type": "string",
-      "description": "Schema for adding field. It should be *-models-([\\w]+)-backend-schema-([\\w]+)",
+      "description": "Schema for adding field. It should be *-backend-schema-[table/relations]",
       "x-prompt": "Select model",
       "$default": {
         "$source": "project"
@@ -38,7 +38,24 @@
           }
         ]
       }
+    },
+    "level": {
+      "type": "string",
+      "description": "Where to place the field",
+      "x-prompt": {
+        "message": "Select level",
+        "type": "list",
+        "default": "startup",
+        "items": [
+          {
+            "value": "startup"
+          },
+          {
+            "value": "sps-lite"
+          }
+        ]
+      }
     }
   },
-  "required": ["name", "model", "type"]
+  "required": ["name", "model", "type", "level"]
 }

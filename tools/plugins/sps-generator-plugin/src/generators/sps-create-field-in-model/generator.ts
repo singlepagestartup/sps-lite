@@ -10,7 +10,9 @@ export async function spsCreateFieldInModelGenerator(
     !options.model.includes("models") ||
     !options.model.includes("-backend-schema")
   ) {
-    throw new Error("The model must be a *-backend-schema-* module");
+    throw new Error(
+      "The model must be a *-backend-schema-[table/relations] module",
+    );
   }
 
   const module = options.model.split("/")[1].split("-models")[0];
@@ -19,25 +21,25 @@ export async function spsCreateFieldInModelGenerator(
     .split("-models-")[1]
     .split("-backend-schema")[0];
 
-  console.log(`🚀 ~ model:`, model);
-
-  const BackendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
+  const backendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
     modelName: model,
     module,
     tree,
   });
 
-  // await BackendModelSchemaTableBuilder.createField({
-  //   tree,
-  //   name: options.name,
-  //   type: options.type,
-  // });
-
-  await BackendModelSchemaTableBuilder.deleteField({
+  await backendModelSchemaTableBuilder.createField({
+    level: options.level,
     tree,
     name: options.name,
     type: options.type,
   });
+
+  // await backendModelSchemaTableBuilder.deleteField({
+  //   level: options.level,
+  //   tree,
+  //   name: options.name,
+  //   type: options.type,
+  // });
 }
 
 export default spsCreateFieldInModelGenerator;

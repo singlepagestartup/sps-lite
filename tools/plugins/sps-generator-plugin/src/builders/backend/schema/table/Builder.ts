@@ -70,15 +70,17 @@ export class Builder {
   }
 
   async createField({
+    level,
     tree,
     name,
     type,
   }: {
+    level: "sps-lite" | "startup";
     tree: Tree;
     name: string;
     type: string;
   }) {
-    const schemaFilePath = `${this.root}/src/lib/schema.ts`;
+    const schemaFilePath = `${this.root}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -96,15 +98,17 @@ export class Builder {
   }
 
   async deleteField({
+    level,
     tree,
     name,
     type,
   }: {
+    level: "sps-lite" | "startup";
     tree: Tree;
     name: string;
     type: string;
   }) {
-    const schemaFilePath = `${this.root}/src/lib/schema.ts`;
+    const schemaFilePath = `${this.root}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -140,10 +144,8 @@ export class Builder {
 
 export class Field extends RegexCreator {
   constructor({ name, type }: { name: string; type: string }) {
-    const place = `export const Table = pgTable(modelNameSnakeCasedPluralized, {`;
-    const placeRegex = new RegExp(
-      `export const Table = pgTable\\(modelNameSnakeCasedPluralized, {`,
-    );
+    const place = `export const fields = {`;
+    const placeRegex = new RegExp(`export const fields = {`);
 
     const fieldNameCamelCase = names(name).propertyName;
     const content = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;

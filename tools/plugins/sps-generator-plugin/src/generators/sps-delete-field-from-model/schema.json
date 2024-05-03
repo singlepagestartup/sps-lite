@@ -38,7 +38,24 @@
           }
         ]
       }
+    },
+    "level": {
+      "type": "string",
+      "description": "Where to place the field",
+      "x-prompt": {
+        "message": "Select level",
+        "type": "list",
+        "default": "startup",
+        "items": [
+          {
+            "value": "startup"
+          },
+          {
+            "value": "sps-lite"
+          }
+        ]
+      }
     }
   },
-  "required": ["name", "model", "type"]
+  "required": ["name", "model", "type", "level"]
 }
