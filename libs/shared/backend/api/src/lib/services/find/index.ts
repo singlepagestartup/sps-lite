@@ -1,4 +1,10 @@
-import { PgSelectBuilder, PgTableWithColumns } from "drizzle-orm/pg-core";
+import {
+  PgSelectBuilder,
+  PgTableWithColumns,
+  PgSelect,
+  CreatePgSelectFromBuilderMode,
+  PgSelectQueryBuilderBase,
+} from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { IBaseServiceParams } from "../interfaces";
 import { SQL, eq } from "drizzle-orm";
@@ -8,8 +14,9 @@ type IRelationConfig<PRC extends { [key: string]: any }> = {
     name: string;
     type: "many";
     table: PgTableWithColumns<any>;
+    rightTable: PgTableWithColumns<any>;
     leftKey: keyof PgTableWithColumns<any>;
-    rightKey: string;
+    rightKey: keyof PgTableWithColumns<any>;
   };
 };
 
@@ -30,7 +37,15 @@ type IResultData<
 > = {
   [K in keyof T]: T[K];
 } & {
-  [M in keyof IR]: PgSelectBuilder<IR[M]["table"]>;
+  // [M in keyof IR]: PgSelectBuilder<IR[M]["table"]>;
+  [M in keyof IR]: PgSelect<IR[M]["table"]["name"]>;
+  // [M in keyof IR]: PgSelectQueryBuilderBase<IR[M]["table"]["name"]>;
+  // [M in keyof IR]: CreatePgSelectFromBuilderMode<
+  //   "db",
+  //   IR[M]["table"]["name"],
+  //   any,
+  //   any
+  // >;
   // [M in keyof IR]: string;
 };
 
@@ -42,46 +57,63 @@ export async function service<
 >(params: IServiceParams<Schema, DBType, TableType, RC>) {
   const { db, Table, config, filter } = params;
 
-  // console.log(`🚀 ~ config:`, config);
-
   const data = await db.select().from(Table).where(filter);
 
   const filledData: IResultData<(typeof data)[0], RC, typeof config>[] = [];
-  // const filledData: [
-  //   (typeof data)[0] & {
-  //     relation: string;
-  //   },
-  // ] = [];
 
   for (const entity of data) {
-    // console.log(`🚀 ~ entity:`, entity);
     if (!entity["id"]) {
       continue;
     }
+    const toPassData: any = { ...entity };
 
     for (const relationKey of Object.keys(config)) {
+      toPassData[relationKey] = [];
+
       if (!config[relationKey]?.table) {
         continue;
       }
 
       const RelationTable = config[relationKey].table;
+      const RightTable = config[relationKey].rightTable;
       const leftKey = config[relationKey].leftKey as keyof typeof RelationTable;
 
       if (config[relationKey].leftKey) {
-        const relationData = await db
+        const relationDataset = await db
           .select()
-          .from(config[relationKey]?.table)
-          .where(eq(RelationTable[leftKey as any], entity["id"]));
+          .from(RelationTable)
+          .where(eq(RelationTable[leftKey as any], entity["id"]))
+          .leftJoin(
+            RightTable,
+            eq(
+              RelationTable[config[relationKey].rightKey as any],
+              RightTable["id"],
+            ),
+          );
 
-        console.log(`🚀 ~ relationData:`, relationData);
+        const toAddData: any = [];
+
+        for (const relationData of relationDataset) {
+          if (!relationData[relationKey]) {
+            continue;
+          }
+
+          toAddData.push(relationData[relationKey]);
+        }
+
+        // console.log(`🚀 ~ relationData:`, toAddData);
+
+        toPassData[relationKey] = toAddData;
 
         // filledData.push({
         //   ...entity,
-        //   relation: "relationData",
-        // });
+        //   [relationKey]: toAddData,
+        // } as any);
         continue;
       }
     }
+
+    filledData.push(toPassData as any);
   }
   // console.log(`🚀 ~ filledData:`, filledData[0]);
 

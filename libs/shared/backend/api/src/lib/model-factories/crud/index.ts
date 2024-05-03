@@ -45,11 +45,12 @@ export const factory = <
       return result;
     },
 
-    async find() {
+    async find(params?: { filter?: any }) {
       const result = await services.find({
         db,
         Table,
         config,
+        filter: params?.filter,
       });
 
       return result;

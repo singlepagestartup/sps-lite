@@ -2,6 +2,7 @@ import {
   Table,
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
+import { Table as LayoutTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 import { transformManyToManyRelations } from "@sps/shared-backend-database-config";
 import { TableRelationsHelpers } from "drizzle-orm";
 
@@ -45,6 +46,7 @@ export const config = {
   name,
   type,
   table: Table,
+  rightTable: LayoutTable,
   leftKey: "pageId",
   rightKey: "layoutId",
 };

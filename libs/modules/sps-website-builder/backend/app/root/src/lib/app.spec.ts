@@ -4,8 +4,9 @@ import { routes } from "./routes";
 import * as schema from "@sps/sps-website-builder-backend-schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";
-import { and, eq } from "drizzle-orm";
+import { SQL, and, eq } from "drizzle-orm";
 import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
+import { Table } from "@sps/sps-website-builder-models-page-backend-schema";
 
 export const db = drizzle(postgres, { schema });
 
@@ -44,7 +45,11 @@ describe("sps-website-builder app", () => {
       //
     }
 
-    // const pages = await spsWebsiteBuilderModels.page.find();
+    const filter: SQL<unknown> = eq(Table["title"], "Attached to layout page");
+
+    const pages = await spsWebsiteBuilderModels.page.find({ filter });
+
+    console.log(`🚀 ~ it.only ~ pages:`, JSON.stringify(pages));
 
     // const page = await db
     //   .select()
@@ -78,3 +83,26 @@ describe("sps-website-builder app", () => {
     // );
   });
 });
+
+const r = [
+  {
+    id: "91c66ff9-a7c9-493a-b953-a3bceb468016",
+    title: "Attached to layout page",
+    url: "/attached-to-layout-page",
+    description: "Description",
+    createdAt: "2024-05-03T14:17:17.811Z",
+    updatedAt: "2024-05-03T14:17:17.811Z",
+    variant: "default",
+    layouts: [
+      {
+        id: "b904f5cb-db67-41a6-a583-12ab086cb216",
+        title: "Attached to page layout",
+        className: null,
+        createdAt: "2024-05-03T14:17:17.805Z",
+        updatedAt: "2024-05-03T14:17:17.805Z",
+        variant: "default",
+      },
+    ],
+    herpu: [],
+  },
+];
