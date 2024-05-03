@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS "sps_website_builder_pages_to_layouts" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_website_builder_slides" (
+	"title" text,
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
