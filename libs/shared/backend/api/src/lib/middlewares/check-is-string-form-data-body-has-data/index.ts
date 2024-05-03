@@ -1,5 +1,5 @@
-import { Context, HonoRequest } from "hono";
-import { BlankInput, BlankSchema, Env, Next } from "hono/types";
+import { Context } from "hono";
+import { BlankInput, Env, Next } from "hono/types";
 
 export const middleware = async (
   c: Context<Env, "/", BlankInput>,
@@ -18,5 +18,5 @@ export const middleware = async (
     );
   }
 
-  await next();
+  return await next();
 };

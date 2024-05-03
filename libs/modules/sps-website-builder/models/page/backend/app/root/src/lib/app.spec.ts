@@ -1,5 +1,7 @@
 import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
+import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
+import { model } from "./model";
 
 describe("pages", () => {
   it(`by GET request to / I want to get pages`, async () => {
@@ -167,5 +169,81 @@ describe("pages", () => {
     // const specificUpdateResultData = await specificResult.json();
 
     expect(specificResult.status).toBe(404);
+  });
+
+  it(`by GET request to /get-urls I want to get list of urls`, async () => {
+    const slide = await spsWebsiteBuilderModels.slide.create({
+      data: {
+        title: "Slide 1",
+      },
+    });
+
+    try {
+      // check if page exists
+      const page = await model.create({
+        data: {
+          title: "Slides Page",
+          url: "/slides/[sps-website-builder.slide.id]",
+        },
+      });
+    } catch (error) {
+      //
+    }
+
+    const actionObject = app;
+
+    const me = new Actor({
+      actionObject,
+      iAm: "ApiClient",
+    });
+
+    await me.goTo({
+      path: "/get-urls",
+    });
+
+    const res = await me.getResult();
+    const resultData = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(resultData.data.urls)).toEqual(true);
+  });
+
+  it(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
+    const slide = await spsWebsiteBuilderModels.slide.create({
+      data: {
+        title: "Slide 1",
+      },
+    });
+
+    try {
+      // check if page exists
+      const page = await model.create({
+        data: {
+          title: "Slides Page",
+          url: "/slides/[sps-website-builder.slide.id]",
+        },
+      });
+    } catch (error) {
+      //
+    }
+
+    const actionObject = app;
+
+    const me = new Actor({
+      actionObject,
+      iAm: "ApiClient",
+    });
+
+    await me.goTo({
+      path: `/get-by-url?url=/slides/${slide.id}`,
+    });
+
+    const res = await me.getResult();
+    const resultData = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(resultData.data.url).toEqual(
+      "/slides/[sps-website-builder.slide.id]",
+    );
   });
 });

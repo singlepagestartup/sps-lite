@@ -4,6 +4,7 @@ import { apiFactories } from "@sps/shared-backend-api";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";
 import * as schema from "@sps/sps-website-builder-backend-schema";
+import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
 
 const db = drizzle(postgres, { schema });
 
@@ -17,144 +18,151 @@ export const app = new Hono();
  * /route/[sps-website-builder.category.id]/[sps-website-builder.slide.id]
  */
 app.get("/get-urls", async (c) => {
-  return c.json({
-    ok: true,
-  });
-  // const filledPages = await getFilledPages();
-  // const urls = filledPages.map((page) => page.urls).flat();
+  const filledPages = await getFilledPages();
+  const urls = filledPages.map((page) => page.urls).flat();
 
-  // return c.json({
-  //   data: { urls },
-  // });
+  return c.json({
+    data: { urls },
+  });
 });
 
-// app.get("/get-by-url", async (c) => {
-//   const query = c.req.query("url");
-//   console.log(`🚀 ~ app.get ~ query:`, query);
+app.get("/get-by-url", async (c) => {
+  const query = c.req.query("url");
 
-//   if (query === "favicon.ico") {
-//     return c.json({
-//       ok: true,
-//     });
-//   }
+  if (query === "favicon.ico") {
+    return c.json({
+      ok: true,
+    });
+  }
 
-//   const filledPages = await getFilledPages();
+  const filledPages = await getFilledPages();
 
-//   const targetPage = filledPages.find((page) => {
-//     const cuttedLastSlash = query !== "/" ? query?.replace(/\/$/, "") : query;
+  const targetPage = filledPages.find((page) => {
+    const cuttedLastSlash = query !== "/" ? query?.replace(/\/$/, "") : query;
 
-//     if (
-//       page.urls.find((urlParam) => {
-//         if (urlParam.url === cuttedLastSlash) {
-//           return true;
-//         }
-//       })
-//     ) {
-//       return true;
-//     }
-//   });
+    if (
+      page.urls.find((urlParam) => {
+        if (urlParam.url === cuttedLastSlash) {
+          return true;
+        }
 
-//   return c.json({
-//     data: targetPage,
-//   });
-// });
+        return false;
+      })
+    ) {
+      return true;
+    }
+
+    return false;
+  });
+
+  return c.json({
+    data: targetPage,
+  });
+});
 
 apiFactories.crudApiFactory({
   app,
   model,
 });
 
-// export async function getFilledPages() {
-//   const pages = await db.query.PageTable.findMany();
+export async function getFilledPages() {
+  const pages = await db.query.PageTable.findMany();
 
-//   const filledPages: {
-//     urls: {
-//       url: string;
-//     }[];
-//     id: string;
-//   }[] = [];
+  const filledPages: {
+    urls: {
+      url: string;
+    }[];
+    id: string;
+  }[] = [];
 
-//   for (const page of pages) {
-//     if (page.url.includes(".")) {
-//       const modelRoutes = page.url
-//         .split("/")
-//         .filter((url: string) => url.includes("."));
+  for (const page of pages) {
+    if (
+      page.url.includes(".") &&
+      page.url.includes("[") &&
+      page.url.includes("]")
+    ) {
+      const modelRoutes = page.url
+        .split("/")
+        .filter((url: string) => url.includes("."));
 
-//       const modelBasedUrls = await getModelPages({ modelRoutes, page });
+      const modelBasedUrls = await getModelPages({ modelRoutes, page });
 
-//       filledPages.push({
-//         ...page,
-//         urls: modelBasedUrls,
-//       });
+      filledPages.push({
+        ...page,
+        urls: modelBasedUrls,
+      });
 
-//       continue;
-//     }
+      continue;
+    }
 
-//     filledPages.push({
-//       ...page,
-//       urls: [{ url: page.url }],
-//     });
-//   }
+    filledPages.push({
+      ...page,
+      urls: [{ url: page.url }],
+    });
+  }
 
-//   return filledPages;
-// }
+  return filledPages;
+}
 
-// async function getModelPages({
-//   modelRoutes,
-//   page,
-// }: {
-//   modelRoutes: string[];
-//   page: {
-//     url: string;
-//   };
-// }) {
-//   const filledPages: any = [];
+async function getModelPages({
+  modelRoutes,
+  page,
+}: {
+  modelRoutes: string[];
+  page: {
+    url: string;
+  };
+}) {
+  const filledPages: any = [];
 
-//   const modelRoute = modelRoutes[0];
-//   const sanitizedRoute = modelRoute
-//     .replace("[", "")
-//     .replace("]", "")
-//     .split(".");
+  console.log(`🚀 ~ modelRoutes:`, modelRoutes);
 
-//   if (sanitizedRoute.length < 3) {
-//     throw new Error(
-//       "Invalid model param, should be 3 parts separated by dots. Eg: [sps-website-builder.slide.id]",
-//     );
-//   }
+  const modelRoute = modelRoutes[0];
+  const sanitizedRoute = modelRoute
+    .replace("[", "")
+    .replace("]", "")
+    .split(".");
 
-//   const module = sanitizedRoute[0];
-//   const model = sanitizedRoute[1];
-//   const param = sanitizedRoute[2];
+  console.log(`🚀 ~ sanitizedRoute:`, sanitizedRoute);
 
-//   const modelTable: any = appModels[model as keyof typeof appModels]?.modelName;
+  if (sanitizedRoute.length < 3) {
+    throw new Error(
+      "Invalid model param, should be 3 parts separated by dots. Eg: [sps-website-builder.slide.id]",
+    );
+  }
 
-//   if (!modelTable) {
-//     return filledPages;
-//   }
+  const module = sanitizedRoute[0];
+  const modelName = sanitizedRoute[1];
+  const param = sanitizedRoute[2];
 
-//   // @ts-ignore
-//   const entities = await db.query[modelTable as any]?.findMany({
-//     columns: { [param]: true },
-//   });
+  const model =
+    spsWebsiteBuilderModels[modelName as keyof typeof spsWebsiteBuilderModels];
 
-//   entities.forEach((entity: any) => {
-//     const uri = `${entity[param]}`;
-//     const pathUrl = page.url
-//       .split("/")
-//       .map((url: string) => {
-//         if (url === modelRoute) {
-//           return uri;
-//         }
+  if (!model.find) {
+    return filledPages;
+  }
 
-//         return url;
-//       })
-//       .filter((url: string) => url !== "");
+  // @ts-ignore
+  const entities = await model.find();
 
-//     filledPages.push({
-//       url: `/${pathUrl.join("/")}`,
-//       id: entity.id,
-//     });
-//   });
+  entities.forEach((entity: any) => {
+    const uri = `${entity[param]}`;
+    const pathUrl = page.url
+      .split("/")
+      .map((url: string) => {
+        if (url === modelRoute) {
+          return uri;
+        }
 
-//   return filledPages;
-// }
+        return url;
+      })
+      .filter((url: string) => url !== "");
+
+    filledPages.push({
+      url: `/${pathUrl.join("/")}`,
+      id: entity.id,
+    });
+  });
+
+  return filledPages;
+}
