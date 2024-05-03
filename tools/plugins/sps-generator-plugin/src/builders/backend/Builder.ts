@@ -26,7 +26,8 @@ export class Builder {
       tree,
     });
 
-    const children = [schemaBuilder, appBuilder];
+    // const children = [schemaBuilder, appBuilder];
+    const children = [appBuilder];
 
     this.children = children;
   }
