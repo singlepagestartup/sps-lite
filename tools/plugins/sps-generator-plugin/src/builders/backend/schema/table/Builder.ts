@@ -4,15 +4,15 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 import { replaceInFile } from "../../../../utils/file-utils";
+import { RegexCreator } from "../../../../utils/regex-utils/RegexCreator";
 
 export class Builder {
   libName: string;
   root: string;
-  modelNameSnakeCase: string;
   modelName: string;
-  modelNameSnakeCasePluralized: string;
-  moduleNameSnakeCase: string;
-  exportTable: ExportTable;
+  modelNameSnakeCased: string;
+  modelNameSnakeCasedPluralized: string;
+  moduleNameSnakeCased: string;
 
   constructor({
     modelName,
@@ -28,7 +28,7 @@ export class Builder {
 
     const root = `${baseDirectory}/${modelName}/backend/schema/table`;
     const modelNameSplitted = names(modelName).fileName.split("-");
-    const modelNameSnakeCasePluralized = modelNameSplitted.reduce(
+    const modelNameSnakeCasedPluralized = modelNameSplitted.reduce(
       (acc, curr, index) => {
         if (index === modelNameSplitted.length - 1) {
           const plural = pluralize(curr);
@@ -48,12 +48,11 @@ export class Builder {
       "",
     );
 
-    this.exportTable = new ExportTable();
     this.libName = libName;
     this.root = root;
-    this.modelNameSnakeCasePluralized = modelNameSnakeCasePluralized;
+    this.modelNameSnakeCasedPluralized = modelNameSnakeCasedPluralized;
     this.modelName = modelName;
-    this.moduleNameSnakeCase = names(module).fileName.replaceAll(/-/g, "_");
+    this.moduleNameSnakeCased = names(module).fileName.replaceAll(/-/g, "_");
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -64,8 +63,8 @@ export class Builder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_name_snake_case_pluralized: this.modelNameSnakeCasePluralized,
-        module_name_snake_cased: this.moduleNameSnakeCase,
+        model_name_snake_cased_pluralized: this.modelNameSnakeCasedPluralized,
+        module_name_snake_cased: this.moduleNameSnakeCased,
       },
     });
   }
@@ -80,17 +79,17 @@ export class Builder {
     type: string;
   }) {
     const schemaFilePath = `${this.root}/src/lib/schema.ts`;
-    const fieldToAdd = new Field(name, type).string;
 
-    const content = `${this.exportTable.string}${fieldToAdd}`;
+    const fieldToAdd = new Field({
+      name,
+      type,
+    });
 
-    const regex = this.exportTable.regex;
-
-    const replaceExportRoutes = await replaceInFile({
+    await replaceInFile({
       tree,
       pathToFile: schemaFilePath,
-      regex,
-      content: content,
+      regex: fieldToAdd.onCreate.regex,
+      content: fieldToAdd.onCreate.content,
     });
 
     await formatFiles(tree);
@@ -106,13 +105,17 @@ export class Builder {
     type: string;
   }) {
     const schemaFilePath = `${this.root}/src/lib/schema.ts`;
-    const fieldToDelete = new Field(name, type).regex;
 
-    const replaceExportRoutes = await replaceInFile({
+    const fieldToAdd = new Field({
+      name,
+      type,
+    });
+
+    await replaceInFile({
       tree,
       pathToFile: schemaFilePath,
-      regex: fieldToDelete,
-      content: "",
+      regex: fieldToAdd.onRemove.regex,
+      content: fieldToAdd.onRemove.content,
     });
 
     await formatFiles(tree);
@@ -135,35 +138,25 @@ export class Builder {
   }
 }
 
-export class ExportTable {
-  string: string;
-  regex: RegExp;
-
-  constructor() {
-    const exportTableContent = `export const Table = pgTable(modelNameSnakeCasedPluralized, {`;
-
-    const exportTableContentRegex = new RegExp(
-      `export const Table = pgTable\\(([\\s]+)?modelNameSnakeCasedPluralized,([\\s]+)?{`,
+export class Field extends RegexCreator {
+  constructor({ name, type }: { name: string; type: string }) {
+    const place = `export const Table = pgTable(modelNameSnakeCasedPluralized, {`;
+    const placeRegex = new RegExp(
+      `export const Table = pgTable\\(modelNameSnakeCasedPluralized, {`,
     );
 
-    this.string = exportTableContent;
-    this.regex = exportTableContentRegex;
-  }
-}
-
-export class Field {
-  string: string;
-  regex: RegExp;
-
-  constructor(name: string, type: string) {
     const fieldNameCamelCase = names(name).propertyName;
-    const field = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;
+    const content = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;
 
-    const fieldContentRegex = new RegExp(
+    const contentRegex = new RegExp(
       `${fieldNameCamelCase}: pgCore.${type}\\("${name}"\\),`,
     );
 
-    this.string = field;
-    this.regex = fieldContentRegex;
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
   }
 }

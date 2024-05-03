@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 
-const moduleNameSnakeCased = "<%= module_name_snake_cased %>";
-const modelNameSnakeCasedPluralized = "<%= model_name_snake_cased_pluralized %>";
+const moduleNameSnakeCased = "sps_website_builder";
+const modelNameSnakeCasedPluralized = "slides";
 
 const pgTable = pgCore.pgTableCreator(
   (name) => `${moduleNameSnakeCased}_${name}`,

@@ -15,7 +15,7 @@
     },
     "model": {
       "type": "string",
-      "description": "Model for adding field. It should be *-models-([\\w]+)-backend-app",
+      "description": "Schema for adding field. It should be *-models-([\\w]+)-backend-schema-([\\w]+)",
       "x-prompt": "Select model",
       "$default": {
         "$source": "project"
