@@ -5,7 +5,6 @@ import {
   getProjects,
   names,
 } from "@nx/devkit";
-import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../../utils/file-utils";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";

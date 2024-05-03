@@ -3,23 +3,15 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { createSpsJsLibrary } from "../../../../utils/js-lib-utils";
 import { addToFile, replaceInFile } from "../../../../utils/file-utils";
+import { RegexCreator } from "../../../../utils/regex-utils/RegexCreator";
 
 export class Builder {
   libName: string;
   root: string;
-  snakeCaseModelName: string;
-  modelName: string;
   tableLibraryName: string;
   relationsLibraryName: string;
-  moduleRootSchemaProject: any;
-  pascalCaseModelName: string;
-  exportTableVariableName: string;
-  exportVariantEnumTableVariableName: string;
-  exportTableRelationsVariableName: string;
   moduleRootSchemaProjectPath: string;
-  exportSchema: ExportSchema;
-  module: string;
-  moduleNameSnakeCase: string;
+  exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor({
     modelName,
@@ -41,30 +33,16 @@ export class Builder {
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
     const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/schema.ts`;
 
-    const pascalCaseModelName = names(modelName).className;
-    const exportTableVariableName = `Table as ${pascalCaseModelName}Table`;
-    const exportTableRelationsVariableName = `Relations as ${pascalCaseModelName}Relations`;
-    const exportVariantEnumTableVariableName = `VariantEnumTable as ${pascalCaseModelName}VariantEnumTable`;
-
-    const exportSchema = new ExportSchema(
-      exportTableVariableName,
-      exportTableRelationsVariableName,
-      exportVariantEnumTableVariableName,
-      libName,
-    );
+    const modelNamePascalCased = names(modelName).className;
 
     this.libName = libName;
     this.root = root;
-    this.modelName = modelName;
     this.tableLibraryName = tableLibraryName;
     this.relationsLibraryName = relationsLibraryName;
-    this.moduleRootSchemaProject = moduleRootSchemaProject;
-    this.pascalCaseModelName = pascalCaseModelName;
-    this.exportTableRelationsVariableName = exportTableRelationsVariableName;
-    this.exportTableVariableName = exportTableVariableName;
-    this.exportSchema = exportSchema;
-    this.exportVariantEnumTableVariableName =
-      exportVariantEnumTableVariableName;
+    this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
+      modelNamePascalCased,
+      libName,
+    });
     this.moduleRootSchemaProjectPath = moduleRootSchemaProjectPath;
   }
 
@@ -72,7 +50,7 @@ export class Builder {
     const backendAppProjectFileContent = await addToFile({
       toTop: true,
       pathToFile: this.moduleRootSchemaProjectPath,
-      content: this.exportSchema.string,
+      content: this.exportTableAndVaritantEnumTable.onCreate.content,
       tree,
     });
   }
@@ -82,14 +60,11 @@ export class Builder {
       const replaceImportRoutes = await replaceInFile({
         tree,
         pathToFile: this.moduleRootSchemaProjectPath,
-        regex: this.exportSchema.regex,
+        regex: this.exportTableAndVaritantEnumTable.onRemove.regex,
         content: "",
       });
     } catch (error) {
-      if (
-        error.message !==
-        `No expected value found in file: ${this.exportSchema.regex}`
-      ) {
+      if (!error.message.includes(`No expected value`)) {
         throw error;
       }
     }
@@ -130,27 +105,34 @@ export class Builder {
   }
 }
 
-export class ExportSchema {
+export class ExportTableAndVaritantEnumTable extends RegexCreator {
   string: string;
   regex: RegExp;
 
-  constructor(
-    exportTableVariableName: string,
-    exportTableRelationsVariableName: string,
-    exportVariantEnumTableVariableName: string,
-    libName: string,
-  ) {
-    const exportSchemaContent = `export {
-      ${exportTableVariableName},\n
-      ${exportTableRelationsVariableName},\n
-      ${exportVariantEnumTableVariableName},\n
+  constructor({
+    modelNamePascalCased,
+    libName,
+  }: {
+    modelNamePascalCased: string;
+    libName: string;
+  }) {
+    const place = ``;
+    const placeRegex = new RegExp(``);
+    const content = `export {
+      Table as ${modelNamePascalCased}Table,\n
+      Relations as ${modelNamePascalCased}Relations,\n
+      VariantEnumTable as ${modelNamePascalCased}VariantEnumTable,\n
     } from "${libName}";`;
 
-    const exportSchemaContentRegex = new RegExp(
-      `export {([\\s]+?)?${exportTableVariableName},([\\s]+?)?${exportTableRelationsVariableName},([\\s]+?)?${exportVariantEnumTableVariableName}([,])?([\\s]+?)?} from "${libName}";`,
+    const contentRegex = new RegExp(
+      `export {([\\s]+?)?Table as ${modelNamePascalCased}Table([,]?)([\\s]+?)?Relations as ${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
     );
 
-    this.string = exportSchemaContent;
-    this.regex = exportSchemaContentRegex;
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
   }
 }

@@ -1413,9 +1413,6 @@
       "@sps/sps-website-builder-models-sidebar-frontend-redux": [
         "libs/modules/sps-website-builder/models/sidebar/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slide-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/slide/backend/schema/table/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-slide-contracts": [
         "libs/modules/sps-website-builder/models/slide/contracts/root/src/index.ts"
       ],

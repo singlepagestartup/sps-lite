@@ -33,8 +33,7 @@ export class Builder {
       tree,
     });
 
-    // const children = [schemaBuilder, modelBuilder, appBuilder];
-    const children = [schemaBuilder];
+    const children = [schemaBuilder, modelBuilder, appBuilder];
 
     this.children = children;
   }
