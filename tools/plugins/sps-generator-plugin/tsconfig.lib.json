@@ -4,6 +4,10 @@
     "declaration": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/builders/backend/schema/table/files/src/lib/fields/startup.ts.template",
+    "src/builders/backend/schema/table/files/src/lib/fields/index.ts.template"
+  ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

@@ -1,7 +1,9 @@
 import * as pgCore from "drizzle-orm/pg-core";
+import { fields } from "./fields";
+import { variants } from "./variants";
 
-const moduleNameSnakeCased = "<%= module_name_snake_cased %>";
-const modelNameSnakeCasedPluralized = "<%= model_name_snake_cased_pluralized %>";
+const moduleNameSnakeCased = "sps_website_builder";
+const modelNameSnakeCasedPluralized = "pages";
 
 const pgTable = pgCore.pgTableCreator(
   (name) => `${moduleNameSnakeCased}_${name}`,
@@ -9,12 +11,10 @@ const pgTable = pgCore.pgTableCreator(
 
 export const VariantEnumTable = pgCore.pgEnum(
   `${moduleNameSnakeCased}_${modelNameSnakeCasedPluralized}_variant`,
-  ["default"],
+  ["default", ...variants],
 );
 
 export const Table = pgTable(modelNameSnakeCasedPluralized, {
-  id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  ...fields,
   variant: VariantEnumTable("variant").notNull().default("default"),
-  createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
-  updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
 });
