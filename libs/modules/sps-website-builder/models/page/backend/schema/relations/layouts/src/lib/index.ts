@@ -6,8 +6,10 @@ import { transformManyToManyRelations } from "@sps/shared-backend-database-confi
 import { TableRelationsHelpers } from "drizzle-orm";
 
 const name = "layouts";
-const type = "many";
+const type = "many" as const;
 const constantName = "PagesToLayouts";
+// const n = Table.layoutId.
+// console.log(`🚀 ~ n:`, n);
 
 export const relationAliases = {
   [constantName]: {
@@ -43,6 +45,6 @@ export const config = {
   name,
   type,
   table: Table,
-  populate: pagesToLayoutsPopulate,
-  schemaKey: "layout",
+  leftKey: "pageId",
+  rightKey: "layoutId",
 };

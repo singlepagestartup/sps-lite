@@ -65,7 +65,7 @@ apiFactories.crudApiFactory({
   model,
 });
 
-export async function getFilledPages() {
+async function getFilledPages() {
   const pages = await db.query.PageTable.findMany();
 
   const filledPages: {

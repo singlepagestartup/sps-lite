@@ -8,7 +8,9 @@ export interface IFactoryParams<
   Schema extends Record<string, unknown>,
   DBType extends PostgresJsDatabase<Schema>,
   TableType extends PgTableWithColumns<any>,
-> extends IBaseServiceParams<Schema, DBType, TableType> {}
+> extends IBaseServiceParams<Schema, DBType, TableType> {
+  config: any;
+}
 
 export const factory = <
   Schema extends Record<string, unknown>,
@@ -17,7 +19,7 @@ export const factory = <
 >(
   params: IFactoryParams<Schema, DBType, TableType>,
 ) => {
-  const { db, Table } = params;
+  const { db, Table, config } = params;
 
   return {
     async create(props: { data: PgInsertValue<TableType> }) {
@@ -47,6 +49,7 @@ export const factory = <
       const result = await services.find({
         db,
         Table,
+        config,
       });
 
       return result;

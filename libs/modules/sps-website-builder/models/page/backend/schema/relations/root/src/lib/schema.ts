@@ -12,5 +12,6 @@ export const Relations = relations(Table, (helpers) => {
 });
 
 export const config = {
-  [layoutsRelationConfig.name]: layoutsRelationConfig,
+  layouts: layoutsRelationConfig,
+  herpu: layoutsRelationConfig,
 };
