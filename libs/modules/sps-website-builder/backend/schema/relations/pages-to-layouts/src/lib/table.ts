@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 
-const moduleNameSnakeCased = "sps_website_builder";
+const moduleNameSnakeCased = "sps_w_b";
 const modelNameSnakeCasedPluralized = "pages_to_layouts";
 
 const pgTable = pgCore.pgTableCreator(

@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { fields } from "./fields";
 import { variants } from "./variants";
 
-const moduleNameSnakeCased = "sps_website_builder";
+const moduleNameSnakeCased = "sps_w_b";
 const modelNameSnakeCasedPluralized = "layouts";
 
 const pgTable = pgCore.pgTableCreator(

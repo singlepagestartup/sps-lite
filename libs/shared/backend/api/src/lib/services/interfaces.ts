@@ -37,11 +37,11 @@ export type IResultData<
 > = {
   [K in keyof T]: T[K];
 } & {
-  // [M in keyof IR]: PgSelect<IR[M]["table"]["name"]>;
+  [M in keyof IR]: any;
   // [M in keyof IR]: PgRelationalQuery<IR[M]["table"]["name"]>;
-  [M in keyof IR]: BuildQueryResult<
-    any,
-    ExtractTablesWithRelations<IR[M]["table"]>,
-    ExtractTablesWithRelations<IR[M]["rightTable"]>
-  >;
+  // [M in keyof IR]: BuildQueryResult<
+  //   any,
+  //   ExtractTablesWithRelations<IR[M]["table"]>,
+  //   ExtractTablesWithRelations<IR[M]["rightTable"]>
+  // >;
 };

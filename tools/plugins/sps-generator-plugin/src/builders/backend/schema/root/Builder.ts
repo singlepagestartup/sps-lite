@@ -33,6 +33,19 @@ export class Builder {
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
     const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/index.ts`;
 
+    // sps-website-builder -> SPSWB
+    const moduleNameCuttedAndPascalCased = module
+      .split("-")
+      .map((word) => {
+        // take only first letter
+        if (word === "sps") {
+          return "SPS";
+        }
+
+        return names(word[0]).className;
+      })
+      .join("");
+
     const modelNamePascalCased = names(modelName).className;
 
     this.libName = libName;
@@ -40,6 +53,7 @@ export class Builder {
     this.tableLibraryName = tableLibraryName;
     this.relationsLibraryName = relationsLibraryName;
     this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
+      moduleName: moduleNameCuttedAndPascalCased,
       modelNamePascalCased,
       libName,
     });
@@ -110,22 +124,24 @@ export class ExportTableAndVaritantEnumTable extends RegexCreator {
   regex: RegExp;
 
   constructor({
+    moduleName,
     modelNamePascalCased,
     libName,
   }: {
+    moduleName: string;
     modelNamePascalCased: string;
     libName: string;
   }) {
     const place = ``;
     const placeRegex = new RegExp(``);
     const content = `export {
-      Table as ${modelNamePascalCased}Table,\n
-      Relations as ${modelNamePascalCased}Relations,\n
-      VariantEnumTable as ${modelNamePascalCased}VariantEnumTable,\n
+      Table as ${moduleName}${modelNamePascalCased}Table,\n
+      Relations as ${moduleName}${modelNamePascalCased}Relations,\n
+      VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable,\n
     } from "${libName}";`;
 
     const contentRegex = new RegExp(
-      `export {([\\s]+?)?Table as ${modelNamePascalCased}Table([,]?)([\\s]+?)?Relations as ${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}Table([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
     );
 
     super({

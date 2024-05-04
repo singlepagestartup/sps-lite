@@ -18,12 +18,12 @@ import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query
 const db = drizzle(postgres, { schema });
 
 describe("get-with-relations", () => {
-  let createdPage: typeof schema.PageTable.$inferSelect;
-  let createdLayout: typeof schema.LayoutTable.$inferSelect;
+  let createdPage: typeof schema.SPSWBPageTable.$inferSelect;
+  let createdLayout: typeof schema.SPSWBLayoutTable.$inferSelect;
 
   beforeEach(async () => {
     [createdPage] = await db
-      .insert(schema.PageTable)
+      .insert(schema.SPSWBPageTable)
       .values({
         title: "Page created from test",
         url: "/" + faker.lorem.slug(),
@@ -31,14 +31,14 @@ describe("get-with-relations", () => {
       .returning();
 
     [createdLayout] = await db
-      .insert(schema.LayoutTable)
+      .insert(schema.SPSWBLayoutTable)
       .values({
         title: faker.lorem.words(),
       })
       .returning();
 
     await db
-      .insert(schema.PagesToLayoutsTable)
+      .insert(schema.SPSWBPagesToLayoutsTable)
       .values({
         pageId: createdPage.id,
         layoutId: createdLayout.id,
@@ -48,18 +48,18 @@ describe("get-with-relations", () => {
 
   afterEach(async () => {
     await db
-      .delete(schema.PageTable)
-      .where(eq(schema.PageTable.id, createdPage.id));
+      .delete(schema.SPSWBPageTable)
+      .where(eq(schema.SPSWBPageTable.id, createdPage.id));
     await db
-      .delete(schema.LayoutTable)
-      .where(eq(schema.LayoutTable.id, createdLayout.id));
+      .delete(schema.SPSWBLayoutTable)
+      .where(eq(schema.SPSWBLayoutTable.id, createdLayout.id));
   });
 
   it.only(`by passing entity with existing relations get populated relations`, async () => {
-    const page = await db.query.PageTable.findFirst({
-      where: eq(schema.PageTable.id, createdPage.id),
+    const page = await db.query.SPSWBPageTable.findFirst({
+      where: eq(schema.SPSWBPageTable.id, createdPage.id),
       with: {
-        PagesToLayouts: {
+        SPSWBPagesToLayouts: {
           with: {
             layout: true,
           },
@@ -67,12 +67,14 @@ describe("get-with-relations", () => {
       },
     });
 
-    const queryPageLayouts = page?.PagesToLayouts.filter((r) => r.layout).map(
+    const queryPageLayouts = page?.SPSWBPagesToLayouts.filter(
       (r) => r.layout,
-    );
+    ).map((r) => r.layout);
 
-    const plainPageEntity = await db.query.PageTable.findFirst({
-      where: eq(schema.PageTable.id, createdPage.id),
+    console.log(`🚀 ~ it.only ~ queryPageLayouts:`, queryPageLayouts);
+
+    const plainPageEntity = await db.query.SPSWBPageTable.findFirst({
+      where: eq(schema.SPSWBPageTable.id, createdPage.id),
     });
 
     expect(plainPageEntity).toBeDefined();
@@ -83,17 +85,17 @@ describe("get-with-relations", () => {
 
     expect(plainPageEntity["layouts"]).not.toBeDefined();
 
-    const relationsHelper = createTableRelationsHelpers(Table);
+    // const relationsHelper = createTableRelationsHelpers(Table);
     // console.log(`🚀 ~ it.only ~ relationsHelper:`, relationsHelper);
     // const tablesRelationalConfig = extractTablesRelationalConfig(schema);
-    const tableNamesMap = Object.keys(schema).reduce(
-      (acc, key) => {
-        acc[key] = key;
-        return acc;
-      },
-      {} as Record<string, string>,
-    );
-    // const configHelpers = createTableRelationsHelpers(schema.PageTable);
+    // const tableNamesMap = Object.keys(schema).reduce(
+    //   (acc, key) => {
+    //     acc[key] = key;
+    //     return acc;
+    //   },
+    //   {} as Record<string, string>,
+    // );
+    // const configHelpers = createTableRelationsHelpers(schema.SPSWBPageTable);
     // const tableConfig = extractTablesRelationalConfig(schema, configHelpers);
 
     // const relationalQuery = new RelationalQueryBuilder(
@@ -104,9 +106,9 @@ describe("get-with-relations", () => {
     // );
 
     // const pageWithStringifiedTableName = await db.query[
-    //   "SpsWebsiteBuilderPageTable"
+    //   "SPSWBPageTable"
     // ].findFirst({
-    //   where: eq(schema.PageTable.id, createdPage.id),
+    //   where: eq(schema.SPSWBPageTable.id, createdPage.id),
     //   with: {
     //     PagesToLayouts: {
     //       with: {
@@ -118,7 +120,7 @@ describe("get-with-relations", () => {
 
     // const populatedPage = await services.getWithRelations({
     //   db,
-    //   Table: schema.PageTable,
+    //   Table: schema.SPSWBPageTable,
     //   config: pageConfig,
     //   entity: plainPageEntity,
     // });

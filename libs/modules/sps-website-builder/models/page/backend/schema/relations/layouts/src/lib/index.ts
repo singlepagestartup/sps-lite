@@ -8,7 +8,7 @@ import { TableRelationsHelpers } from "drizzle-orm";
 
 const name = "layouts";
 const type = "many" as const;
-const constantName = "PagesToLayouts";
+const constantName = "SPSWBPagesToLayouts";
 // const n = Table.layoutId.
 // console.log(`🚀 ~ n:`, n);
 

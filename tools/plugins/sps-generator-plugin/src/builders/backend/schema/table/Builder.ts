@@ -28,6 +28,8 @@ export class Builder {
 
     const root = `${baseDirectory}/${modelName}/backend/schema/table`;
     const modelNameSplitted = names(modelName).fileName.split("-");
+
+    // wide-slide -> wide_slides
     const modelNameSnakeCasedPluralized = modelNameSplitted.reduce(
       (acc, curr, index) => {
         if (index === modelNameSplitted.length - 1) {
@@ -48,11 +50,24 @@ export class Builder {
       "",
     );
 
+    // sps-website-builder -> sps_w_b
+    // need to place table title to maximum allowed in postgres
+    const moduleNameSnakeCased = names(module)
+      .fileName.split("-")
+      .map((word) => {
+        if (word === "sps") {
+          return word;
+        }
+
+        return word.charAt(0);
+      })
+      .join("_");
+
     this.libName = libName;
     this.root = root;
     this.modelNameSnakeCasedPluralized = modelNameSnakeCasedPluralized;
     this.modelName = modelName;
-    this.moduleNameSnakeCased = names(module).fileName.replaceAll(/-/g, "_");
+    this.moduleNameSnakeCased = moduleNameSnakeCased;
   }
 
   async create({ tree }: { tree: Tree }) {
