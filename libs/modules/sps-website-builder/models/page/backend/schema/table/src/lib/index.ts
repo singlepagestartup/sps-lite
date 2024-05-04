@@ -18,3 +18,5 @@ export const Table = pgTable(modelNameSnakeCasedPluralized, {
   ...fields,
   variant: VariantEnumTable("variant").notNull().default("default"),
 });
+
+export const schemaName = "SPSWBPageTable";

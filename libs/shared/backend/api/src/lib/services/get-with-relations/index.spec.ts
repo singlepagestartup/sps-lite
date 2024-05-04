@@ -9,10 +9,13 @@ import {
 } from "drizzle-orm";
 import * as services from "../index";
 import {
-  config as pageConfig,
+  config,
   Relations,
 } from "@sps/sps-website-builder-models-page-backend-schema-relations";
-import { Table } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import {
+  Table,
+  schemaName,
+} from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query";
 
 const db = drizzle(postgres, { schema });
@@ -73,17 +76,45 @@ describe("get-with-relations", () => {
 
     console.log(`🚀 ~ it.only ~ queryPageLayouts:`, queryPageLayouts);
 
-    const plainPageEntity = await db.query.SPSWBPageTable.findFirst({
-      where: eq(schema.SPSWBPageTable.id, createdPage.id),
+    const tableName = (): keyof typeof schema => {
+      // if (Math.random() > 0.5) {
+      //   return "SPSWBPageTable2";
+      // }
+
+      return "SPSWBPageTable";
+    };
+
+    const T = tableName();
+    const V = "SPSWBPageTable";
+
+    const pagePopulated1 = await db.query[tableName()].findFirst();
+    const pagePopulated2 = await db.query[T].findFirst();
+    const pagePopulated3 = await db.query[V].findFirst();
+    const pagePopulated4 = await db.query[schemaName].findFirst({
+      with: {
+        SPSWBPagesToLayouts: {
+          with: {
+            layout: true,
+          },
+        },
+      },
     });
 
-    expect(plainPageEntity).toBeDefined();
+    pagePopulated4?.SPSWBPagesToLayouts[0].layout;
 
-    if (!plainPageEntity) {
-      throw new Error("plainPageEntity is undefined");
-    }
+    // pagePopulated
 
-    expect(plainPageEntity["layouts"]).not.toBeDefined();
+    // const plainPageEntity = await db.query.SPSWBPageTable.findFirst({
+    //   where: eq(schema.SPSWBPageTable.id, createdPage.id),
+    // });
+
+    // expect(plainPageEntity).toBeDefined();
+
+    // if (!plainPageEntity) {
+    //   throw new Error("plainPageEntity is undefined");
+    // }
+
+    // expect(plainPageEntity["layouts"]).not.toBeDefined();
 
     // const relationsHelper = createTableRelationsHelpers(Table);
     // console.log(`🚀 ~ it.only ~ relationsHelper:`, relationsHelper);
