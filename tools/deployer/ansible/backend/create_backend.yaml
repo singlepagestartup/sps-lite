@@ -21,6 +21,11 @@
       register: sentry_dsn
       ignore_errors: yes
 
+    - name: Create uploads folder
+      file:
+        path: "/home/code/{{ SERVICE_NAME }}_uploads"
+        state: directory
+
     - name: Create .env file
       ansible.builtin.template:
         src: backend.env.j2

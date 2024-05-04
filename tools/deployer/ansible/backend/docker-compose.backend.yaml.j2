@@ -7,6 +7,8 @@ services:
       - traefik_overlay
     env_file:
       - ./{{ SERVICE_NAME }}.env
+    volumes:
+      - ./{{ SERVICE_NAME }}_uploads:/usr/src/app/apps/backend/public/uploads
     command: "sh -c './start.sh backend'"
     deploy:
       update_config:
