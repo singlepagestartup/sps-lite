@@ -26,7 +26,7 @@ describe("sps-website-builder app", () => {
     expect(await res.json()).toEqual({ data: "sps-website-builder" });
   });
 
-  it.only(`by POST request to /api/pages with "layouts" payload I want to attach layout to page `, async () => {
+  it(`by POST request to /api/pages with "layouts" payload I want to attach layout to page `, async () => {
     const layout = await spsWebsiteBuilderModels.layout.create({
       data: {
         title: "Attached to page layout",
@@ -47,10 +47,14 @@ describe("sps-website-builder app", () => {
 
     const filter: SQL<unknown> = eq(Table["title"], "Attached to layout page");
 
-    const pages = await spsWebsiteBuilderModels.page.find({ filter });
+    // const pages = await spsWebsiteBuilderModels.page.find({ filter });
+    const page = await spsWebsiteBuilderModels.page.findById({
+      id: "91c66ff9-a7c9-493a-b953-a3bceb468016",
+    });
 
-    console.log(`🚀 ~ it.only ~ pages:`, JSON.stringify(pages));
+    console.log(`🚀 ~ it.only ~ page:`, page);
 
+    expect(page["layouts"]).toBeDefined();
     // const page = await db
     //   .select()
     //   .from(schema.PageTable)
@@ -83,26 +87,3 @@ describe("sps-website-builder app", () => {
     // );
   });
 });
-
-const r = [
-  {
-    id: "91c66ff9-a7c9-493a-b953-a3bceb468016",
-    title: "Attached to layout page",
-    url: "/attached-to-layout-page",
-    description: "Description",
-    createdAt: "2024-05-03T14:17:17.811Z",
-    updatedAt: "2024-05-03T14:17:17.811Z",
-    variant: "default",
-    layouts: [
-      {
-        id: "b904f5cb-db67-41a6-a583-12ab086cb216",
-        title: "Attached to page layout",
-        className: null,
-        createdAt: "2024-05-03T14:17:17.805Z",
-        updatedAt: "2024-05-03T14:17:17.805Z",
-        variant: "default",
-      },
-    ],
-    herpu: [],
-  },
-];

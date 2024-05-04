@@ -8,7 +8,8 @@ export interface IFactoryParams<
   Schema extends Record<string, unknown>,
   DBType extends PostgresJsDatabase<Schema>,
   TableType extends PgTableWithColumns<any>,
-> extends IBaseServiceParams<Schema, DBType, TableType> {
+  RelationsConfig extends { [key: string]: any },
+> extends IBaseServiceParams<Schema, DBType, TableType, RelationsConfig> {
   config: any;
 }
 
@@ -16,8 +17,9 @@ export const factory = <
   Schema extends Record<string, unknown>,
   DBType extends PostgresJsDatabase<Schema>,
   TableType extends PgTableWithColumns<any>,
+  RelationsConfig extends { [key: string]: any },
 >(
-  params: IFactoryParams<Schema, DBType, TableType>,
+  params: IFactoryParams<Schema, DBType, TableType, RelationsConfig>,
 ) => {
   const { db, Table, config } = params;
 
@@ -27,6 +29,7 @@ export const factory = <
         db,
         Table,
         data: props.data,
+        config,
       });
 
       return result;
@@ -40,6 +43,7 @@ export const factory = <
         db,
         Table,
         data,
+        config,
       });
 
       return result;
@@ -61,6 +65,7 @@ export const factory = <
         id,
         db,
         Table,
+        config,
       });
 
       return result;
@@ -71,6 +76,7 @@ export const factory = <
         id,
         db,
         Table,
+        config,
       });
 
       return result;
