@@ -10,7 +10,7 @@ import {
 import { TableRelationsHelpers } from "drizzle-orm";
 
 export const config = {
-  name: "layouts",
+  name: "<%= relation_name_camel_cased %>",
   type: "many" as const,
   model,
   leftTable: {

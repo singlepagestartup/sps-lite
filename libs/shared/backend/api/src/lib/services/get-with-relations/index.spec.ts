@@ -14,7 +14,7 @@ import {
 } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 import {
   Table,
-  schemaName,
+  model,
 } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query";
 
@@ -90,7 +90,7 @@ describe("get-with-relations", () => {
     const pagePopulated1 = await db.query[tableName()].findFirst();
     const pagePopulated2 = await db.query[T].findFirst();
     const pagePopulated3 = await db.query[V].findFirst();
-    const pagePopulated4 = await db.query[schemaName].findFirst({
+    const pagePopulated4 = await db.query[model].findFirst({
       with: {
         SPSWBPagesToLayouts: {
           with: {

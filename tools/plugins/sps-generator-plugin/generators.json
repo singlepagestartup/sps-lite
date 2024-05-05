@@ -49,6 +49,11 @@
       "factory": "./src/generators/sps-delete-field-from-model/generator",
       "schema": "./src/generators/sps-delete-field-from-model/schema.json",
       "description": "sps-delete-field-from-model generator"
+    },
+    "sps-create-model-relation": {
+      "factory": "./src/generators/sps-create-model-relation/generator",
+      "schema": "./src/generators/sps-create-model-relation/schema.json",
+      "description": "sps-create-model-relation generator"
     }
   }
 }
