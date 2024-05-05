@@ -14,7 +14,7 @@ async function findByIdAndName<T>(params: {
   tag?: string;
   revalidate?: number;
 }): Promise<T> {
-  const { id, populate, name, tag, revalidate = 3600 } = params;
+  const { id, populate, name, tag, revalidate = 0 } = params;
 
   const stringifiedQuery = QueryString.stringify(
     {
@@ -69,7 +69,7 @@ async function findOne<T>(params: {
     model,
     rootPath = "/api/sps-website-builder",
     tag,
-    revalidate = 3600,
+    revalidate = 0,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
@@ -129,7 +129,7 @@ async function find<T>(params: {
     pagination,
     tag,
     sort,
-    revalidate = 3600,
+    revalidate = 0,
   } = params;
 
   const cookiesList = cookies();
@@ -194,7 +194,7 @@ async function create<T>(params: {
     model,
     rootPath = "/api/sps-website-builder",
     tag,
-    revalidate = 3600,
+    revalidate = 0,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
