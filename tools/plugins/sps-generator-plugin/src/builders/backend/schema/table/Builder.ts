@@ -13,6 +13,7 @@ export class Builder {
   modelNameSnakeCased: string;
   modelNameSnakeCasedPluralized: string;
   moduleNameSnakeCased: string;
+  moduleAndModelNamePascalCased: string;
 
   constructor({
     modelName,
@@ -63,11 +64,30 @@ export class Builder {
       })
       .join("_");
 
+    // sps-website-builder -> SPSWB
+    const moduleNameCuttedAndPascalCased = module
+      .split("-")
+      .map((word) => {
+        // take only first letter
+        if (word === "sps") {
+          return "SPS";
+        }
+
+        return names(word[0]).className;
+      })
+      .join("");
+
+    const modelNamePascalCased = names(modelName).className;
+
+    // SPSWB + Slide = SPSWBSlide
+    const moduleAndModelNamePascalCased = `${moduleNameCuttedAndPascalCased}${modelNamePascalCased}`;
+
     this.libName = libName;
     this.root = root;
     this.modelNameSnakeCasedPluralized = modelNameSnakeCasedPluralized;
     this.modelName = modelName;
     this.moduleNameSnakeCased = moduleNameSnakeCased;
+    this.moduleAndModelNamePascalCased = moduleAndModelNamePascalCased;
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -80,6 +100,7 @@ export class Builder {
         template: "",
         model_name_snake_cased_pluralized: this.modelNameSnakeCasedPluralized,
         module_name_snake_cased: this.moduleNameSnakeCased,
+        module_and_model_name_pascal_cased: this.moduleAndModelNamePascalCased,
       },
     });
   }

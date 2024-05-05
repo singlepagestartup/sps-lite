@@ -2,15 +2,15 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 
-const moduleNameSnakeCased = "sps_w_b";
-const modelNameSnakeCasedPluralized = "pages_to_layouts";
+const module = "sps_w_b";
+const model = "pages_to_layouts";
 
-const pgTable = pgCore.pgTableCreator(
-  (name) => `${moduleNameSnakeCased}_${name}`,
-);
+export const schemaName = "SPSWBPagesToLayouts";
+
+const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
 
 export const Table = pgTable(
-  modelNameSnakeCasedPluralized,
+  model,
   {
     pageId: pgCore
       .uuid("page_id")

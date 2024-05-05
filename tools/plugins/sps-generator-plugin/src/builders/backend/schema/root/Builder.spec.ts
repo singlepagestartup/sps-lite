@@ -15,7 +15,7 @@ describe("Builder", () => {
       const regex = exportSchema.onRemove.regex;
 
       const string = `export {
-        Table as SPSWBSlideTable,
+        Table as SPSWBSlide,
         Relations as SPSWBSlideRelations,
         VariantEnumTable as SPSWBSlideVariantEnumTable,
       } from "@sps/sps-website-builder-models-slide-backend-schema";
@@ -32,7 +32,7 @@ describe("Builder", () => {
     it(`should match the regex 2`, () => {
       const regex = exportSchema.onRemove.regex;
 
-      const string = `export { Table as SPSWBSlideTable, Relations as SPSWBSlideRelations, VariantEnumTable as SPSWBSlideVariantEnumTable } from "@sps/sps-website-builder-models-slide-backend-schema";
+      const string = `export { Table as SPSWBSlide, Relations as SPSWBSlideRelations, VariantEnumTable as SPSWBSlideVariantEnumTable } from "@sps/sps-website-builder-models-slide-backend-schema";
       export { Relations, populate, transformData, config } from "@sps/sps-website-builder-models-page-backend-schema-relations";`;
 
       expect(string).toMatch(regex);

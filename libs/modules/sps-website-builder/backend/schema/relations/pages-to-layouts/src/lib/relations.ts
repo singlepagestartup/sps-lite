@@ -13,3 +13,8 @@ export const Relations = relations(Table, ({ one }) => ({
     references: [LayoutsTable.id],
   }),
 }));
+
+export const populate = {
+  page: true,
+  layout: true,
+};

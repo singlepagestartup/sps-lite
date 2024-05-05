@@ -2,17 +2,17 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { fields } from "./fields";
 import { variants } from "./variants";
 
-const moduleNameSnakeCased = "sps_w_b";
-const modelNameSnakeCasedPluralized = "layouts";
+export const model = "SPSWBLayout";
 
-const pgTable = pgCore.pgTableCreator(
-  (name) => `${moduleNameSnakeCased}_${name}`,
-);
+const module = "sps_w_b";
+const table = "layouts";
 
-export const VariantEnumTable = pgCore.pgEnum(
-  `${moduleNameSnakeCased}_${modelNameSnakeCasedPluralized}_variant`,
-  ["default", ...variants],
-);
+const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
+
+export const VariantEnumTable = pgCore.pgEnum(`${module}_${table}_variant`, [
+  "default",
+  ...variants,
+]);
 
 export const Table = pgTable("layouts", {
   ...fields,

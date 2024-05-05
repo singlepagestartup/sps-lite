@@ -135,13 +135,13 @@ export class ExportTableAndVaritantEnumTable extends RegexCreator {
     const place = ``;
     const placeRegex = new RegExp(``);
     const content = `export {
-      Table as ${moduleName}${modelNamePascalCased}Table,\n
+      Table as ${moduleName}${modelNamePascalCased},\n
       Relations as ${moduleName}${modelNamePascalCased}Relations,\n
       VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable,\n
     } from "${libName}";`;
 
     const contentRegex = new RegExp(
-      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}Table([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
     );
 
     super({

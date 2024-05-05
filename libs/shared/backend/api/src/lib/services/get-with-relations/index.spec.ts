@@ -21,12 +21,12 @@ import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query
 const db = drizzle(postgres, { schema });
 
 describe("get-with-relations", () => {
-  let createdPage: typeof schema.SPSWBPageTable.$inferSelect;
-  let createdLayout: typeof schema.SPSWBLayoutTable.$inferSelect;
+  let createdPage: typeof schema.SPSWBPage.$inferSelect;
+  let createdLayout: typeof schema.SPSWBLayout.$inferSelect;
 
   beforeEach(async () => {
     [createdPage] = await db
-      .insert(schema.SPSWBPageTable)
+      .insert(schema.SPSWBPage)
       .values({
         title: "Page created from test",
         url: "/" + faker.lorem.slug(),
@@ -34,14 +34,14 @@ describe("get-with-relations", () => {
       .returning();
 
     [createdLayout] = await db
-      .insert(schema.SPSWBLayoutTable)
+      .insert(schema.SPSWBLayout)
       .values({
         title: faker.lorem.words(),
       })
       .returning();
 
     await db
-      .insert(schema.SPSWBPagesToLayoutsTable)
+      .insert(schema.SPSWBPagesToLayouts)
       .values({
         pageId: createdPage.id,
         layoutId: createdLayout.id,
@@ -51,16 +51,16 @@ describe("get-with-relations", () => {
 
   afterEach(async () => {
     await db
-      .delete(schema.SPSWBPageTable)
-      .where(eq(schema.SPSWBPageTable.id, createdPage.id));
+      .delete(schema.SPSWBPage)
+      .where(eq(schema.SPSWBPage.id, createdPage.id));
     await db
-      .delete(schema.SPSWBLayoutTable)
-      .where(eq(schema.SPSWBLayoutTable.id, createdLayout.id));
+      .delete(schema.SPSWBLayout)
+      .where(eq(schema.SPSWBLayout.id, createdLayout.id));
   });
 
   it.only(`by passing entity with existing relations get populated relations`, async () => {
-    const page = await db.query.SPSWBPageTable.findFirst({
-      where: eq(schema.SPSWBPageTable.id, createdPage.id),
+    const page = await db.query.SPSWBPage.findFirst({
+      where: eq(schema.SPSWBPage.id, createdPage.id),
       with: {
         SPSWBPagesToLayouts: {
           with: {
@@ -81,11 +81,11 @@ describe("get-with-relations", () => {
       //   return "SPSWBPageTable2";
       // }
 
-      return "SPSWBPageTable";
+      return "SPSWBPage";
     };
 
     const T = tableName();
-    const V = "SPSWBPageTable";
+    const V = "SPSWBPage";
 
     const pagePopulated1 = await db.query[tableName()].findFirst();
     const pagePopulated2 = await db.query[T].findFirst();
