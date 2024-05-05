@@ -68,7 +68,7 @@ async function findOne<T>(params: {
     model,
     rootPath = "/api/sps-website-builder",
     tag,
-    revalidate = 3600,
+    revalidate = 0,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
@@ -127,7 +127,7 @@ async function find<T>(params: {
     filters,
     pagination,
     tag,
-    revalidate = 3600,
+    revalidate = 0,
     sort,
   } = params;
 
@@ -186,7 +186,7 @@ async function create<T>(params: {
     model,
     rootPath = "/api/sps-website-builder",
     tag,
-    revalidate = 3600,
+    revalidate = 0,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
