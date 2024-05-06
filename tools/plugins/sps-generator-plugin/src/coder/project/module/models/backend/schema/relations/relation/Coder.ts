@@ -33,6 +33,10 @@ export class Coder {
   rootRelationsSchemaProject: ProjectConfiguration;
   importConfig: ImportConfig;
   exportNamedConfig: ExportNamedConfig;
+  importPopulate: ImportPopulate;
+  exportPopulate: ExportPopulate;
+  importRelation: ImportRelation;
+  exportRelation: ExportRelation;
 
   constructor({
     tree,
@@ -83,6 +87,24 @@ export class Coder {
       leftProjectRelationNamePropertyCased:
         leftProjectRelationNameStyles.propertyCased.base,
     });
+    this.importPopulate = new ImportPopulate({
+      leftProjectRelationNamePropertyCased:
+        leftProjectRelationNameStyles.propertyCased.base,
+      libName: this.libName,
+    });
+    this.exportPopulate = new ExportPopulate({
+      leftProjectRelationNamePropertyCased:
+        leftProjectRelationNameStyles.propertyCased.base,
+    });
+    this.importRelation = new ImportRelation({
+      leftProjectRelationNamePropertyCased:
+        leftProjectRelationNameStyles.propertyCased.base,
+      libName: this.libName,
+    });
+    this.exportRelation = new ExportRelation({
+      leftProjectRelationNamePropertyCased:
+        leftProjectRelationNameStyles.propertyCased.base,
+    });
   }
 
   async create({ tree }: { tree: Tree }) {
@@ -106,30 +128,62 @@ export class Coder {
   }
 
   async attachToRoot({ tree }: { tree: Tree }) {
-    const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
+    const rootRelationsSchemaConfigFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
 
     await addToFile({
       toTop: true,
-      pathToFile: rootRelationsSchemaFilePath,
+      pathToFile: rootRelationsSchemaConfigFilePath,
       content: this.importConfig.onCreate.content,
       tree,
     });
 
     await replaceInFile({
       tree,
-      pathToFile: rootRelationsSchemaFilePath,
+      pathToFile: rootRelationsSchemaConfigFilePath,
       regex: this.exportNamedConfig.onCreate.regex,
       content: this.exportNamedConfig.onCreate.content,
+    });
+
+    const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
+
+    await addToFile({
+      toTop: true,
+      pathToFile: rootRelationsSchemaPopulateFilePath,
+      content: this.importPopulate.onCreate.content,
+      tree,
+    });
+
+    await replaceInFile({
+      tree,
+      pathToFile: rootRelationsSchemaPopulateFilePath,
+      regex: this.exportPopulate.onCreate.regex,
+      content: this.exportPopulate.onCreate.content,
+    });
+
+    const rootRelationsSchemaRelationsFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
+
+    await addToFile({
+      toTop: true,
+      pathToFile: rootRelationsSchemaRelationsFilePath,
+      content: this.importRelation.onCreate.content,
+      tree,
+    });
+
+    await replaceInFile({
+      tree,
+      pathToFile: rootRelationsSchemaRelationsFilePath,
+      regex: this.exportRelation.onCreate.regex,
+      content: this.exportRelation.onCreate.content,
     });
   }
 
   async detachFromRoot({ tree }: { tree: Tree }) {
-    const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
+    const rootRelationsSchemaConfigFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
 
     try {
       await replaceInFile({
         tree,
-        pathToFile: rootRelationsSchemaFilePath,
+        pathToFile: rootRelationsSchemaConfigFilePath,
         regex: this.importConfig.onRemove.regex,
         content: "",
       });
@@ -142,8 +196,64 @@ export class Coder {
     try {
       await replaceInFile({
         tree,
-        pathToFile: rootRelationsSchemaFilePath,
+        pathToFile: rootRelationsSchemaConfigFilePath,
         regex: this.exportNamedConfig.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
+
+    try {
+      await replaceInFile({
+        tree,
+        pathToFile: rootRelationsSchemaPopulateFilePath,
+        regex: this.importPopulate.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree,
+        pathToFile: rootRelationsSchemaPopulateFilePath,
+        regex: this.exportPopulate.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    const rootRelationsSchemaRelationsFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
+
+    try {
+      await replaceInFile({
+        tree,
+        pathToFile: rootRelationsSchemaRelationsFilePath,
+        regex: this.importRelation.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree,
+        pathToFile: rootRelationsSchemaRelationsFilePath,
+        regex: this.exportRelation.onRemove.regex,
         content: "",
       });
     } catch (error) {
@@ -207,6 +317,104 @@ export class ExportNamedConfig extends RegexCreator {
     const content = `[${leftProjectRelationNamePropertyCased}.name]: ${leftProjectRelationNamePropertyCased},`;
     const contentRegex = new RegExp(
       `\\[${leftProjectRelationNamePropertyCased}.name\\]:${space}${leftProjectRelationNamePropertyCased}${comma}${space}`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
+  }
+}
+
+export class ImportPopulate extends RegexCreator {
+  constructor({
+    libName,
+    leftProjectRelationNamePropertyCased,
+  }: {
+    libName: string;
+    leftProjectRelationNamePropertyCased: string;
+  }) {
+    const place = ``;
+    const placeRegex = new RegExp(``);
+
+    const content = `import { populate as ${leftProjectRelationNamePropertyCased} } from "${libName}";`;
+    const contentRegex = new RegExp(
+      `import${space}{${space}populate${space}as${space}${leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${libName}";`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
+  }
+}
+
+export class ExportPopulate extends RegexCreator {
+  constructor({
+    leftProjectRelationNamePropertyCased,
+  }: {
+    leftProjectRelationNamePropertyCased: string;
+  }) {
+    const place = `export const populate = {`;
+    const placeRegex = new RegExp(`export const populate = {`);
+
+    const content = `...${leftProjectRelationNamePropertyCased}`;
+    const contentRegex = new RegExp(
+      `\\.{3}${leftProjectRelationNamePropertyCased}${comma}${space}`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
+  }
+}
+
+export class ImportRelation extends RegexCreator {
+  constructor({
+    libName,
+    leftProjectRelationNamePropertyCased,
+  }: {
+    libName: string;
+    leftProjectRelationNamePropertyCased: string;
+  }) {
+    const place = ``;
+    const placeRegex = new RegExp(``);
+
+    const content = `import { relation as ${leftProjectRelationNamePropertyCased} } from "${libName}";`;
+    const contentRegex = new RegExp(
+      `import${space}{${space}relation${space}as${space}${leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${libName}";`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
+  }
+}
+
+export class ExportRelation extends RegexCreator {
+  constructor({
+    leftProjectRelationNamePropertyCased,
+  }: {
+    leftProjectRelationNamePropertyCased: string;
+  }) {
+    const place = `export const Relations = relations(Table, (helpers) => { return {`;
+    const placeRegex = new RegExp(
+      `export const Relations = relations\\(Table, \\(helpers\\) => {${space}return {`,
+    );
+
+    const content = `...${leftProjectRelationNamePropertyCased}(helpers)`;
+    const contentRegex = new RegExp(
+      `${space}\\.{3}${leftProjectRelationNamePropertyCased}\\(helpers\\)${comma}${space}`,
     );
 
     super({
