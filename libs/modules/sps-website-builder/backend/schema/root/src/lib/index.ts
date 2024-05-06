@@ -4,10 +4,6 @@ export {
   VariantEnumTable as SPSWBSlideVariantEnumTable,
 } from "@sps/sps-website-builder-models-slide-backend-schema";
 export {
-  Table as SPSWBPagesToLayouts,
-  Relations as SPSWBPagesToLayoutsRelations,
-} from "@sps/sps-website-builder-backend-schema-relations";
-export {
   Table as SPSWBPage,
   Relations as SPSWBPageRelations,
   VariantEnumTable as SPSWBPageVariantEnumTable,
@@ -17,3 +13,4 @@ export {
   Relations as SPSWBLayoutRelations,
   VariantEnumTable as SPSWBLayoutVariantEnumTable,
 } from "@sps/sps-website-builder-models-layout-backend-schema";
+export * from "@sps/sps-website-builder-backend-schema-relations";

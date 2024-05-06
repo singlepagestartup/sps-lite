@@ -19,14 +19,14 @@ import {
 export class Coder {
   libName: string;
   root: string;
+  rootRelationsSchemaProject: ProjectConfiguration;
   leftProjectImportPath: string;
   rightProjectImportPath: string;
-  rootSchemaProject: ProjectConfiguration;
   leftModelStyles: ReturnType<typeof getNameStyles>;
   rightModelStyles: ReturnType<typeof getNameStyles>;
   moduleStyles: ReturnType<typeof getModuleCuttedStyles>;
   relationNameStyles: ReturnType<typeof getNameStyles>;
-  exportAll: ExportAll;
+  exportAll: ExportNamedVariables;
 
   constructor({
     tree,
@@ -43,7 +43,7 @@ export class Coder {
   }) {
     const libName = `@sps/${module}-backend-schema-relations-${relationName}`;
     const root = `libs/modules/${module}/backend/schema/relations/${relationName}`;
-    const rootSchemaProject = getProjects(tree).get(
+    const rootRelationsSchemaProject = getProjects(tree).get(
       `@sps/${module}-backend-schema-relations`,
     );
 
@@ -58,15 +58,17 @@ export class Coder {
 
     this.libName = libName;
     this.root = root;
-    this.rootSchemaProject = rootSchemaProject;
+    this.rootRelationsSchemaProject = rootRelationsSchemaProject;
     this.leftProjectImportPath = leftProjectImportPath;
     this.rightProjectImportPath = rightProjectImportPath;
     this.leftModelStyles = leftModelStyles;
     this.rightModelStyles = rightModelStyles;
     this.moduleStyles = getModuleCuttedStyles({ name: module });
     this.relationNameStyles = getNameStyles({ name: relationName });
-    this.exportAll = new ExportAll({
+    this.exportAll = new ExportNamedVariables({
       libName,
+      moduleNamePascalCased: this.moduleStyles.pascalCased,
+      relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     });
   }
 
@@ -99,23 +101,23 @@ export class Coder {
   }
 
   async attachToRoot({ tree }: { tree: Tree }) {
-    const rootSchemaFilePath = `${this.rootSchemaProject.sourceRoot}/lib/schema.ts`;
+    const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
 
-    const replaceExportRoutes = await addToFile({
+    await addToFile({
       toTop: true,
-      pathToFile: rootSchemaFilePath,
+      pathToFile: rootRelationsSchemaFilePath,
       content: this.exportAll.onCreate.content,
       tree,
     });
   }
 
   async detachFromRoot({ tree }: { tree: Tree }) {
-    const rootSchemaFilePath = `${this.rootSchemaProject.sourceRoot}/lib/schema.ts`;
+    const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
 
     try {
       await replaceInFile({
         tree,
-        pathToFile: rootSchemaFilePath,
+        pathToFile: rootRelationsSchemaFilePath,
         regex: this.exportAll.onRemove.regex,
         content: "",
       });
@@ -144,13 +146,23 @@ export class Coder {
   }
 }
 
-export class ExportAll extends RegexCreator {
-  constructor({ libName }: { libName: string }) {
+export class ExportNamedVariables extends RegexCreator {
+  constructor({
+    libName,
+    moduleNamePascalCased,
+    relationNamePascalCased,
+  }: {
+    libName: string;
+    moduleNamePascalCased: string;
+    relationNamePascalCased: string;
+  }) {
     const place = ``;
-    const placeRegex = new RegExp(`${libName}`);
+    const placeRegex = new RegExp(``);
 
-    const content = `export * from "${libName}"`;
-    const contentRegex = new RegExp(`export [*] from "${libName}";`);
+    const content = `export { Table as ${moduleNamePascalCased}${relationNamePascalCased}, Relations as ${moduleNamePascalCased}${relationNamePascalCased}Relations } from "${libName}";`;
+    const contentRegex = new RegExp(
+      `export([\\s]+?)?{([\\s]+?)?Table([\\s]+?)?as([\\s]+?)?${moduleNamePascalCased}${relationNamePascalCased},([\\s]+?)?Relations as ${moduleNamePascalCased}${relationNamePascalCased}Relations([,]?)([\\s]+?)?}([\\s]+?)?from([\\s]+?)?"${libName}";`,
+    );
 
     super({
       place,
