@@ -362,7 +362,7 @@ export class ExportPopulate extends RegexCreator {
     const place = `export const populate = {`;
     const placeRegex = new RegExp(`export const populate = {`);
 
-    const content = `...${leftProjectRelationNamePropertyCased}`;
+    const content = `...${leftProjectRelationNamePropertyCased},`;
     const contentRegex = new RegExp(
       `\\.{3}${leftProjectRelationNamePropertyCased}${comma}${space}`,
     );
@@ -412,7 +412,7 @@ export class ExportRelation extends RegexCreator {
       `export const Relations = relations\\(Table, \\(helpers\\) => {${space}return {`,
     );
 
-    const content = `...${leftProjectRelationNamePropertyCased}(helpers)`;
+    const content = `...${leftProjectRelationNamePropertyCased}(helpers),`;
     const contentRegex = new RegExp(
       `${space}\\.{3}${leftProjectRelationNamePropertyCased}\\(helpers\\)${comma}${space}`,
     );

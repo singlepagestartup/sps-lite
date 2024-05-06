@@ -53,7 +53,7 @@ export class Coder {
     const moduleSchemaRelationsProject =
       await moduleSchemaRelationsCoder.create({ tree });
 
-    const moduleModelBackendSchemaRelationCoder =
+    const leftModuleModelBackendSchemaRelationCoder =
       new ModuleModelBackendSchemaRelationCoder({
         tree,
         leftSchemaProject: leftProjectSchemaProject,
@@ -61,7 +61,17 @@ export class Coder {
         leftProjectRelationName,
         moduleSchemaRelationsProject: moduleSchemaRelationsProject,
       });
-    await moduleModelBackendSchemaRelationCoder.create({ tree });
+    await leftModuleModelBackendSchemaRelationCoder.create({ tree });
+
+    const rightModuleModelBackendSchemaRelationCoder =
+      new ModuleModelBackendSchemaRelationCoder({
+        tree,
+        leftSchemaProject: rightProjectSchemaProject,
+        rightSchemaProject: leftProjectSchemaProject,
+        leftProjectRelationName: rightProjectRelationName,
+        moduleSchemaRelationsProject: moduleSchemaRelationsProject,
+      });
+    await rightModuleModelBackendSchemaRelationCoder.create({ tree });
   }
 
   async deleteModelsRelations({
@@ -98,7 +108,7 @@ export class Coder {
     const libName = `@sps/${module}-backend-schema-relations-${relationName}`;
     const moduleSchemaRelationsProject = getProjects(tree).get(libName);
 
-    const moduleModelBackendSchemaRelationCoder =
+    const leftModuleModelBackendSchemaRelationCoder =
       new ModuleModelBackendSchemaRelationCoder({
         tree,
         leftSchemaProject: leftProjectSchemaProject,
@@ -106,7 +116,17 @@ export class Coder {
         leftProjectRelationName,
         moduleSchemaRelationsProject,
       });
-    await moduleModelBackendSchemaRelationCoder.delete({ tree });
+    await leftModuleModelBackendSchemaRelationCoder.delete({ tree });
+
+    const rightModuleModelBackendSchemaRelationCoder =
+      new ModuleModelBackendSchemaRelationCoder({
+        tree,
+        leftSchemaProject: rightProjectSchemaProject,
+        rightSchemaProject: leftProjectSchemaProject,
+        leftProjectRelationName: rightProjectRelationName,
+        moduleSchemaRelationsProject,
+      });
+    await rightModuleModelBackendSchemaRelationCoder.delete({ tree });
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
       tree,
