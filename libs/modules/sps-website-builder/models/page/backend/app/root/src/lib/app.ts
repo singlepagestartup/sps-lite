@@ -66,7 +66,7 @@ apiFactories.crudApiFactory({
 });
 
 async function getFilledPages() {
-  const pages = await db.query.PageTable.findMany();
+  const pages = await db.query.SPSWBPage.findMany();
 
   const filledPages: {
     urls: {

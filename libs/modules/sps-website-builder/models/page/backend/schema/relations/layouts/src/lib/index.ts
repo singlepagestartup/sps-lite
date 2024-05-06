@@ -4,25 +4,47 @@ import {
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 import {
-  Table as SPSWBLayout,
-  model as spsWBLayoutModel,
+  Table as RightTable,
+  model as rightTableModel,
 } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 import { TableRelationsHelpers } from "drizzle-orm";
 
-export const config = {
+export type RelationConfig = {
+  name: string;
+  type: "many";
+  model: string;
+  leftTable: {
+    model: string;
+    table: typeof Table;
+    key: string;
+  };
+  rightTables: {
+    model: string;
+    table: typeof RightTable;
+    key: string;
+    extract: boolean;
+    returnType: typeof RightTable.$inferSelect;
+  }[];
+};
+
+export const config: RelationConfig = {
   name: "layouts",
   type: "many" as const,
   model,
   leftTable: {
     model,
     table: Table,
-    key: "pageId",
+    key: "page",
   },
-  rightTable: {
-    model: spsWBLayoutModel,
-    table: SPSWBLayout,
-    key: "layoutId",
-  },
+  rightTables: [
+    {
+      model: rightTableModel,
+      table: RightTable,
+      key: "layout",
+      extract: true,
+      returnType: RightTable.$inferSelect,
+    },
+  ],
 };
 
 export const relation = <TTableName extends string>(

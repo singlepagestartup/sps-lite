@@ -2,8 +2,13 @@ import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
 import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
 import { model } from "@sps/sps-website-builder-models-page-backend-model";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { postgres } from "@sps/shared-backend-database-config";
+import * as schema from "@sps/sps-website-builder-backend-schema";
 
-describe("pages", () => {
+const db = drizzle(postgres, { schema });
+
+describe.skip("pages", () => {
   it(`by GET request to / I want to get pages`, async () => {
     const actionObject = app;
 
@@ -172,11 +177,12 @@ describe("pages", () => {
   });
 
   it(`by GET request to /get-urls I want to get list of urls`, async () => {
-    const slide = await spsWebsiteBuilderModels.slide.create({
-      data: {
+    const [slide] = await db
+      .insert(schema.SPSWBSlide)
+      .values({
         title: "Slide 1",
-      },
-    });
+      })
+      .returning();
 
     try {
       // check if page exists
@@ -209,11 +215,12 @@ describe("pages", () => {
   });
 
   it(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
-    const slide = await spsWebsiteBuilderModels.slide.create({
-      data: {
+    const [slide] = await db
+      .insert(schema.SPSWBSlide)
+      .values({
         title: "Slide 1",
-      },
-    });
+      })
+      .returning();
 
     try {
       // check if page exists

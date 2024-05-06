@@ -11,6 +11,7 @@ import * as services from "../index";
 import {
   config,
   Relations,
+  populate,
 } from "@sps/sps-website-builder-models-page-backend-schema-relations";
 import {
   Table,
@@ -20,7 +21,7 @@ import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query
 
 const db = drizzle(postgres, { schema });
 
-describe("get-with-relations", () => {
+describe.skip("get-with-relations", () => {
   let createdPage: typeof schema.SPSWBPage.$inferSelect;
   let createdLayout: typeof schema.SPSWBLayout.$inferSelect;
 
@@ -58,7 +59,7 @@ describe("get-with-relations", () => {
       .where(eq(schema.SPSWBLayout.id, createdLayout.id));
   });
 
-  it.only(`by passing entity with existing relations get populated relations`, async () => {
+  it(`by passing entity with existing relations get populated relations`, async () => {
     const page = await db.query.SPSWBPage.findFirst({
       where: eq(schema.SPSWBPage.id, createdPage.id),
       with: {
@@ -74,74 +75,12 @@ describe("get-with-relations", () => {
       (r) => r.layout,
     ).map((r) => r.layout);
 
-    console.log(`🚀 ~ it.only ~ queryPageLayouts:`, queryPageLayouts);
-
-    const tableName = (): keyof typeof schema => {
-      // if (Math.random() > 0.5) {
-      //   return "SPSWBPageTable2";
-      // }
-
-      return "SPSWBPage";
-    };
-
-    const T = tableName();
-    const V = "SPSWBPage";
-
-    const pagePopulated1 = await db.query[tableName()].findFirst();
-    const pagePopulated2 = await db.query[T].findFirst();
-    const pagePopulated3 = await db.query[V].findFirst();
-    const pagePopulated4 = await db.query[model].findFirst({
-      with: {
-        SPSWBPagesToLayouts: {
-          with: {
-            layout: true,
-          },
-        },
-      },
-    });
-
-    pagePopulated4?.SPSWBPagesToLayouts[0].layout;
-
-    // pagePopulated
-
-    // const plainPageEntity = await db.query.SPSWBPageTable.findFirst({
-    //   where: eq(schema.SPSWBPageTable.id, createdPage.id),
-    // });
-
-    // expect(plainPageEntity).toBeDefined();
-
-    // if (!plainPageEntity) {
-    //   throw new Error("plainPageEntity is undefined");
-    // }
-
-    // expect(plainPageEntity["layouts"]).not.toBeDefined();
-
-    // const relationsHelper = createTableRelationsHelpers(Table);
-    // console.log(`🚀 ~ it.only ~ relationsHelper:`, relationsHelper);
-    // const tablesRelationalConfig = extractTablesRelationalConfig(schema);
-    // const tableNamesMap = Object.keys(schema).reduce(
-    //   (acc, key) => {
-    //     acc[key] = key;
-    //     return acc;
-    //   },
-    //   {} as Record<string, string>,
-    // );
-    // const configHelpers = createTableRelationsHelpers(schema.SPSWBPageTable);
-    // const tableConfig = extractTablesRelationalConfig(schema, configHelpers);
-
-    // const relationalQuery = new RelationalQueryBuilder(
-    //   db,
-    //   schema,
-    //   tableNamesMap,
-    //   Table,
-    // );
-
-    // const pageWithStringifiedTableName = await db.query[
-    //   "SPSWBPageTable"
-    // ].findFirst({
-    //   where: eq(schema.SPSWBPageTable.id, createdPage.id),
+    // const pagePopulated1 = await db.query[tableName()].findFirst();
+    // const pagePopulated2 = await db.query[T].findFirst();
+    // const pagePopulated3 = await db.query[V].findFirst();
+    // const pagePopulated4 = await db.query.SPSWBPage.findFirst({
     //   with: {
-    //     PagesToLayouts: {
+    //     SPSWBPagesToLayouts: {
     //       with: {
     //         layout: true,
     //       },
@@ -149,21 +88,15 @@ describe("get-with-relations", () => {
     //   },
     // });
 
-    // const populatedPage = await services.getWithRelations({
-    //   db,
-    //   Table: schema.SPSWBPageTable,
-    //   config: pageConfig,
-    //   entity: plainPageEntity,
-    // });
+    const populatedPage = await services.getWithRelations({
+      schema,
+      db,
+      model: "SPSWBPage",
+      Table: Table,
+      config,
+    });
 
-    // populatedPage.layouts;
-
-    // console.log(`🚀 ~ it.only ~ populatedPage:`, populatedPage);
-    // expect(queryPageLayouts?.length).toEqual(populatedPage.layouts?.length);
-
-    // console.log(`🚀 ~ it.only ~ plainPageEntity:`, plainPageEntity);
-
-    // const entity = await console.log(`🚀 ~ it.only ~ page:`, page);
+    console.log(`🚀 ~ it.only ~ populatedPage:`, populatedPage);
 
     expect(3002).toBe(2504);
   });

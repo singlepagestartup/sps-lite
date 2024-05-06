@@ -28,12 +28,7 @@ export async function service<
   const entities = await db.select().from(Table).where(eq(Table["id"], id));
   const entity = entities[0];
 
-  const populated = await getWithRelations({
-    db,
-    Table,
-    config,
-    entity,
-  });
+  const populated = entity;
 
   // const transformedData = transformData({ data });
 

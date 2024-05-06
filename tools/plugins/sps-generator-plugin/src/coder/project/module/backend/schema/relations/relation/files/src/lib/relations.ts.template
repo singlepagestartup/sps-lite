@@ -15,6 +15,6 @@ export const Relations = relations(Table, ({ one }) => ({
 }));
 
 export const populate = {
-  <%= left_schema_model_name %>: true,
-  <%= right_schema_model_name %>: true,
+  <%= left_schema_model_name %>: true as const,
+  <%= right_schema_model_name %>: true as const,
 };

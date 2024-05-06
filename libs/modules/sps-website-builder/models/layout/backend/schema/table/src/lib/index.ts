@@ -4,15 +4,15 @@ import { variants } from "./variants";
 
 export const model = "SPSWBLayout";
 
-const module = "sps_w_b";
+const moduleName = "sps_w_b";
 const table = "layouts";
 
-const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
+const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
-export const VariantEnumTable = pgCore.pgEnum(`${module}_${table}_variant`, [
-  "default",
-  ...variants,
-]);
+export const VariantEnumTable = pgCore.pgEnum(
+  `${moduleName}_${table}_variant`,
+  ["default", ...variants],
+);
 
 export const Table = pgTable("layouts", {
   ...fields,

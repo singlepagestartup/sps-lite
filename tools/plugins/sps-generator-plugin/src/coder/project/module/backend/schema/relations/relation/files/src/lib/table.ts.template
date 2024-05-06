@@ -4,10 +4,10 @@ import { Table as <%= right_schema_table_name %> } from "<%= right_schema_projec
 
 export const model = "<%= module_name_cutted_pascal_cased %><%= relation_name_pascal_cased %>";
 
-const module = "<%= module_name_cutted_snake_cased %>";
+const moduleName = "<%= module_name_cutted_snake_cased %>";
 const table = "<%= relation_name_snake_cased %>";
 
-const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
+const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(
   table,

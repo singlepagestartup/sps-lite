@@ -5,5 +5,4 @@ export {
 export {
   Relations,
   populate,
-  transformData,
 } from "@sps/sps-website-builder-models-slide-backend-schema-relations";

@@ -13,21 +13,22 @@ export interface IBaseServiceParams<
   TableType extends PgTableWithColumns<any>,
   RelationsConfig extends { [key: string]: any },
 > {
-  db: DBType;
+  db: PostgresJsDatabase<Schema>;
   Table: TableType;
-  config: IRelationConfig<RelationsConfig>;
+  // config: IRelationConfig<RelationsConfig>;
+  config: any;
 }
 
 export type IRelationConfig<PRC extends { [key: string]: any }> = {
-  [K in keyof PRC]: {
-    name: string;
-    type: "many";
-    // table: PgTableWithColumns<any>;
-    table: TableRelationalConfig;
-    rightTable: PgTableWithColumns<any>;
-    leftKey: keyof PgTableWithColumns<any>;
-    rightKey: keyof PgTableWithColumns<any>;
-  };
+  // [K in keyof PRC]: {
+  //   name: string;
+  //   type: "many";
+  //   // table: PgTableWithColumns<any>;
+  //   table: TableRelationalConfig;
+  //   rightTable: PgTableWithColumns<any>;
+  //   leftKey: keyof PgTableWithColumns<any>;
+  //   rightKey: keyof PgTableWithColumns<any>;
+  // };
 };
 
 export type IResultData<

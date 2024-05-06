@@ -75,6 +75,7 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "dotenv-cli": "^7.3.0",
     "drizzle-orm": "^0.30.9",
+    "drizzle-zod": "^0.5.1",
     "embla-carousel-react": "^8.0.0-rc22",
     "eslint-plugin-cucumber": "^2.0.0",
     "googleapis": "^111.0.0",
@@ -122,6 +123,7 @@
     "telegraf": "^4.12.2",
     "transition-component": "^1.2.1",
     "tslib": "^2.3.0",
+    "zod": "^3.23.6",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

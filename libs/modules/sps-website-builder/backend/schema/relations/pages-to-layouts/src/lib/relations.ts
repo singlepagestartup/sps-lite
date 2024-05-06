@@ -15,6 +15,6 @@ export const Relations = relations(Table, ({ one }) => ({
 }));
 
 export const populate = {
-  page: true,
-  layout: true,
+  page: true as const,
+  layout: true as const,
 };

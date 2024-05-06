@@ -4,10 +4,10 @@ import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-ba
 
 export const model = "SPSWBPagesToLayouts";
 
-const module = "sps_w_b";
+const moduleName = "sps_w_b";
 const table = "pages_to_layouts";
 
-const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
+const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(
   table,

@@ -9,4 +9,5 @@ const db = drizzle(postgres, { schema });
 export const model = modelFactories.crudModelFactory({
   db,
   Table,
+  config: {},
 });

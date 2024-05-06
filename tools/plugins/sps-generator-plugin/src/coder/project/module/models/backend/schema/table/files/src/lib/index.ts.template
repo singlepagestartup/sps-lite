@@ -4,15 +4,15 @@ import { variants } from "./variants";
 
 export const model = "<%= module_and_model_name_pascal_cased %>";
 
-const module = "<%= module_name_snake_cased %>";
+const moduleName = "<%= module_name_snake_cased %>";
 const table = "<%= model_name_snake_cased_pluralized %>";
 
 const pgTable = pgCore.pgTableCreator(
-  (name) => `${module}_${name}`,
+  (name) => `${moduleName}_${name}`,
 );
 
 export const VariantEnumTable = pgCore.pgEnum(
-  `${module}_${table}_variant`,
+  `${moduleName}_${table}_variant`,
   ["default", ...variants],
 );
 

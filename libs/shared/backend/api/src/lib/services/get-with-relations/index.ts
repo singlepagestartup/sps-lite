@@ -1,89 +1,37 @@
+// @ts-nocheck
+/**
+ * Problem with findMany/findOne is still exists
+ * This expression is not callable.
+  Each member of the union type '(<TConfig extends DBQueryConfig<"many", true, ExtractTablesWithRelations<TSchema>, ExtractTablesWithRelations<TSchema>[string]>>(config?: KnownKeysOnly<...> | undefined) => PgRelationalQuery<...>) | (<TConfig extends DBQueryConfig<...>>(config?: KnownKeysOnly<...> | undefined) => PgRelationalQuery<...>) | (<TConfig ...' has signatures, but none of those signatures are compatible with each other.ts(2349)
+ * https://discord.com/channels/1043890932593987624/1196401298354999306/1229109745432920064
+  * https://www.answeroverflow.com/m/1141691075766005832
+  *
+  * Because of that I will create services for each model.
+  * 
+ */
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { IBaseServiceParams, IResultData } from "../interfaces";
-import {
-  GetSelectTableSelection,
-  SelectResultField,
-} from "drizzle-orm/query-builders/select.types";
-import { eq } from "drizzle-orm";
 
-interface IServiceParams<
-  Schema extends Record<string, unknown>,
-  DBType extends PostgresJsDatabase<Schema>,
-  TableType extends PgTableWithColumns<any>,
-  RelationsConfig extends { [key: string]: any },
-> extends IBaseServiceParams<Schema, DBType, TableType, RelationsConfig> {
-  entity: {
-    [K in keyof {
-      [Key in keyof GetSelectTableSelection<TableType> &
-        string]: SelectResultField<
-        GetSelectTableSelection<TableType>[Key],
-        true
-      >;
-    }]: {
-      [Key in keyof GetSelectTableSelection<TableType> &
-        string]: SelectResultField<
-        GetSelectTableSelection<TableType>[Key],
-        true
-      >;
-    }[K];
-  };
+interface IServiceParams<TSchema extends Record<string, unknown>>
+  extends IBaseServiceParams<TSchema> {
+  model: keyof TSchema;
 }
 
-export async function service<
-  Schema extends Record<string, unknown>,
-  DBType extends PostgresJsDatabase<Schema>,
-  TableType extends PgTableWithColumns<any>,
-  RelationsConfig extends { [key: string]: any },
->(params: IServiceParams<Schema, DBType, TableType, RelationsConfig>) {
-  const { entity, config, db } = params;
+export interface IBaseServiceParams<TSchema extends Record<string, unknown>> {
+  schema: TSchema;
+  db: PostgresJsDatabase<TSchema>;
+  // config: IRelationConfig<RelationsConfig>;
+  config: any;
+  Table: PgTableWithColumns<any>;
+}
 
-  // @ts-ignore
-  const populatedEntity: IResultData<
-    typeof entity,
-    RelationsConfig,
-    typeof config
-  > = { ...entity };
+export async function service<TSchema extends Record<string, unknown>>(
+  params: IServiceParams<TSchema>,
+) {
+  const { db, config, model, Table, schema } = params;
 
-  for (const relationKey of Object.keys(config)) {
-    // @ts-ignore
-    populatedEntity[relationKey] = [];
-
-    if (!config[relationKey]?.table) {
-      continue;
-    }
-
-    const RelationTable = config[relationKey].table;
-    const RightTable = config[relationKey].rightTable;
-    const leftKey = config[relationKey].leftKey as keyof typeof RelationTable;
-
-    if (config[relationKey].leftKey) {
-      const relationDataset = await db
-        .select()
-        .from(RelationTable)
-        .where(eq(RelationTable[leftKey as any], entity["id"]))
-        .leftJoin(
-          RightTable,
-          eq(
-            RelationTable[config[relationKey].rightKey as any],
-            RightTable["id"],
-          ),
-        );
-
-      const extractedByKeyData: any = [];
-
-      for (const relationData of relationDataset) {
-        if (!relationData[relationKey]) {
-          continue;
-        }
-
-        extractedByKeyData.push(relationData[relationKey]);
-      }
-
-      // @ts-ignore
-      populatedEntity[relationKey] = toAddData;
-    }
-  }
+  const populatedEntity =
+    await db.query[model as keyof typeof schema].findMany();
 
   return populatedEntity;
 }
