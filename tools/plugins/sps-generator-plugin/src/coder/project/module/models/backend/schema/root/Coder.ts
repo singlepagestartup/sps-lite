@@ -7,6 +7,7 @@ import {
   replaceInFile,
 } from "../../../../../../../utils/file-utils";
 import { RegexCreator } from "../../../../../../../utils/regex-utils/RegexCreator";
+import { util as getModuleCuttedStyles } from "../../../../../../utils/get-module-cutted-styles";
 
 export class Coder {
   libName: string;
@@ -36,18 +37,9 @@ export class Coder {
     const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
     const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/index.ts`;
 
-    // sps-website-builder -> SPSWB
-    const moduleNameCuttedAndPascalCased = module
-      .split("-")
-      .map((word) => {
-        // take only first letter
-        if (word === "sps") {
-          return "SPS";
-        }
-
-        return names(word[0]).className;
-      })
-      .join("");
+    const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
+      name: module,
+    }).pascalCased;
 
     const modelNamePascalCased = names(modelName).className;
 

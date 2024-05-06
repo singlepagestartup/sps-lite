@@ -1,20 +1,20 @@
-import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
-import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
+import { Table as <%= left_schema_table_name %> } from "<%= left_schema_project_import_path %>";
+import { Table as <%= right_schema_table_name %> } from "<%= right_schema_project_import_path %>";
 import { relations } from "drizzle-orm";
 import { Table } from "./table";
 
 export const Relations = relations(Table, ({ one }) => ({
-  page: one(PagesTable, {
-    fields: [Table.pageId],
-    references: [PagesTable.id],
+  <%= left_schema_model_name %>: one(<%= left_schema_table_name %>, {
+    fields: [Table.<%= left_schema_model_name %>Id],
+    references: [<%= left_schema_table_name %>.id],
   }),
-  layout: one(LayoutsTable, {
-    fields: [Table.layoutId],
-    references: [LayoutsTable.id],
+  <%= right_schema_model_name %>: one(<%= right_schema_table_name %>, {
+    fields: [Table.<%= right_schema_model_name %>Id],
+    references: [<%= right_schema_table_name %>.id],
   }),
 }));
 
 export const populate = {
-  page: true,
-  layout: true,
+  <%= left_schema_model_name %>: true,
+  <%= right_schema_model_name %>: true,
 };

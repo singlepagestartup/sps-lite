@@ -2,7 +2,7 @@ import { getProjects, Tree } from "@nx/devkit";
 import { SpsDeleteModelRelationGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
-// npx nx generate @sps/sps-generator-plugin:sps-delete-model-relation --left_project_relation=@sps/sps-website-builder-models-slide-backend-schema-relations-pages --right_project_relation=@sps/sps-website-builder-models-page-backend-schema-relations --no-interactive
+// npx nx generate @sps/sps-generator-plugin:sps-delete-model-relation --left_project_relation_name=pages --right_project_relation_name=slides --left_project=@sps/sps-website-builder-models-slide-backend-schema-relations --right_project=@sps/sps-website-builder-models-page-backend-schema-relations --no-interactive --dry-run
 export async function spsDeleteModelRelationGenerator(
   tree: Tree,
   options: SpsDeleteModelRelationGeneratorSchema,

@@ -1,27 +1,27 @@
 import * as pgCore from "drizzle-orm/pg-core";
-import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
-import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
+import { Table as <%= left_schema_table_name %> } from "<%= left_schema_project_import_path %>";
+import { Table as <%= right_schema_table_name %> } from "<%= right_schema_project_import_path %>";
 
-export const model = "SPSWBPagesToLayouts";
+export const model = "<%= module_name_cutted_pascal_cased %><%= relation_name_pascal_cased %>";
 
-const module = "sps_w_b";
-const table = "pages_to_layouts";
+const module = "<%= module_name_cutted_snake_cased %>";
+const table = "<%= relation_name_snake_cased %>";
 
 const pgTable = pgCore.pgTableCreator((name) => `${module}_${name}`);
 
 export const Table = pgTable(
   table,
   {
-    pageId: pgCore
-      .uuid("page_id")
+    <%= left_schema_model_name %>Id: pgCore
+      .uuid("<%= left_schema_model_name_snake_cased %>_id")
       .notNull()
-      .references(() => PagesTable.id),
-    layoutId: pgCore
-      .uuid("layout_id")
+      .references(() => <%= left_schema_table_name %>.id),
+    <%= right_schema_model_name %>Id: pgCore
+      .uuid("<%= right_schema_model_name_snake_cased %>_id")
       .notNull()
-      .references(() => LayoutsTable.id),
+      .references(() => <%= right_schema_table_name %>.id),
   },
   (t) => ({
-    pk: pgCore.primaryKey({ columns: [t.pageId, t.layoutId] }),
+    pk: pgCore.primaryKey({ columns: [t.<%= left_schema_model_name %>Id, t.<%= right_schema_model_name %>Id] }),
   }),
 );

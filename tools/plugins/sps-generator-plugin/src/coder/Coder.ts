@@ -22,6 +22,8 @@ export class Coder {
     leftProject: ProjectConfiguration;
     rightProject: ProjectConfiguration;
   }) {
+    console.log(`🚀 ~ leftProject:`, leftProject);
+
     const leftProjectModuleName = getModuleByName({ name: leftProject.name });
     const rightProjectModuleName = getModuleByName({ name: rightProject.name });
 
@@ -29,10 +31,23 @@ export class Coder {
       throw new Error("The models must be in the same module");
     }
 
-    const relationName = `${leftProjectRelationName}-to-${rightProjectRelationName}`;
+    const relationName = `${rightProjectRelationName}-to-${leftProjectRelationName}`;
+
+    const leftProjectSchemaProject = this.projects.get(
+      `${leftProject.name.replace("-backend-schema-relations", "-backend-schema-table")}`,
+    );
+    const rightProjectSchemaProject = this.projects.get(
+      `${rightProject.name.replace("-backend-schema-relations", "-backend-schema-table")}`,
+    );
+
+    if (!leftProjectSchemaProject || !rightProjectSchemaProject) {
+      throw new Error("The models must be in the same module");
+    }
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
       module: leftProjectModuleName,
+      leftSchemaProject: leftProjectSchemaProject,
+      rightSchemaProject: rightProjectSchemaProject,
       relationName,
     });
     await moduleSchemaRelationsCoder.create({ tree });
@@ -58,10 +73,19 @@ export class Coder {
       throw new Error("The models must be in the same module");
     }
 
-    const relationName = `${leftProjectRelationName}-to-${rightProjectRelationName}`;
+    const relationName = `${rightProjectRelationName}-to-${leftProjectRelationName}`;
+
+    const leftProjectSchemaProject = this.projects.get(
+      `${leftProject.name.replace("-backend-schema-relations", "-backend-schema-table")}`,
+    );
+    const rightProjectSchemaProject = this.projects.get(
+      `${rightProject.name.replace("-backend-schema-relations", "-backend-schema-table")}`,
+    );
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
       module: leftProjectModuleName,
+      leftSchemaProject: leftProjectSchemaProject,
+      rightSchemaProject: rightProjectSchemaProject,
       relationName,
     });
     await moduleSchemaRelationsCoder.delete({ tree });

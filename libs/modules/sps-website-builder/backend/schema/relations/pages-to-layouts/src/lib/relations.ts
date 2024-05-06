@@ -1,16 +1,16 @@
-import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
-import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
+import { Table as Page } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import { Table as Layout } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 import { relations } from "drizzle-orm";
 import { Table } from "./table";
 
 export const Relations = relations(Table, ({ one }) => ({
-  page: one(PagesTable, {
+  page: one(Page, {
     fields: [Table.pageId],
-    references: [PagesTable.id],
+    references: [Page.id],
   }),
-  layout: one(LayoutsTable, {
+  layout: one(Layout, {
     fields: [Table.layoutId],
-    references: [LayoutsTable.id],
+    references: [Layout.id],
   }),
 }));
 
