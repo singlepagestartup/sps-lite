@@ -1,5 +1,5 @@
 import { Tree, getProjects } from "@nx/devkit";
-import { Builder as TypeScriptLibraryBuilder } from "../../builders/project/type-script-library/Builder";
+import { Coder as TypeScriptLibraryCoder } from "../../coder/project/other-actions/type-script-library/Coder";
 import { SpsDeleteTypeScriptLibraryGeneratorSchema } from "./schema";
 
 export async function spsDeleteTypeScriptLibraryGenerator(
@@ -16,7 +16,7 @@ export async function spsDeleteTypeScriptLibraryGenerator(
   });
 
   for (const toRemoveProject of toRemoveProjects) {
-    const builder = new TypeScriptLibraryBuilder({
+    const builder = new TypeScriptLibraryCoder({
       name: toRemoveProject.name,
       directory: toRemoveProject.root,
     });

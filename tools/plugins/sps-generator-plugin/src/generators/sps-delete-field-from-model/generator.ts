@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { SpsDeleteFieldFromModelGeneratorSchema } from "./schema";
-import { Builder as BackendModelSchemaTableBuild } from "../../builders/backend/schema/table/Builder";
+import { Coder as BackendModelSchemaTableCoder } from "../../coder/project/module/models/backend/schema/table/Coder";
 
 export async function spsDeleteFieldFromModelGenerator(
   tree: Tree,
@@ -21,13 +21,13 @@ export async function spsDeleteFieldFromModelGenerator(
     .split("-models-")[1]
     .split("-backend-schema")[0];
 
-  const backendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
+  const backendModelSchemaTableCoder = new BackendModelSchemaTableCoder({
     modelName: model,
     module,
     tree,
   });
 
-  await backendModelSchemaTableBuilder.deleteField({
+  await backendModelSchemaTableCoder.deleteField({
     level: options.level,
     tree,
     name: options.name,

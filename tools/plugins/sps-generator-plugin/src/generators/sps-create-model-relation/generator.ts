@@ -7,8 +7,10 @@ import {
 } from "@nx/devkit";
 import * as path from "path";
 import { SpsCreateModelRelationGeneratorSchema } from "./schema";
-import { Builder as ModelsBackendSchemaRelationBuilder } from "../../builders/backend/schema/relations/relation/Builder";
+import { Coder as ModelsBackendSchemaRelationCoder } from "../../coder/project/module/models/backend/schema/relations/relation/Coder";
+import { Coder } from "../../coder/Coder";
 
+// npx nx generate @sps/sps-generator-plugin:sps-create-model-relation --left_project_relation_name=pages --right_project_relation_name=slides --left_project=@sps/sps-website-builder-models-slide-backend-schema-relations --right_project=@sps/sps-website-builder-models-page-backend-schema-relations --no-interactive --dry-run
 export async function spsCreateModelRelationGenerator(
   tree: Tree,
   options: SpsCreateModelRelationGeneratorSchema,
@@ -25,13 +27,20 @@ export async function spsCreateModelRelationGenerator(
   const leftProject = projects.get(options.left_project);
   const rightProject = projects.get(options.right_project);
 
-  // console.log(`🚀 ~ leftProject:`, leftProject);
-
-  const leftProjectRelationBuilder = new ModelsBackendSchemaRelationBuilder({
-    name: options.left_project_relation_name,
-    schemaRootProject: leftProject,
+  const coder = new Coder({ tree });
+  await coder.createModelsRelations({
+    tree,
+    leftProjectRelationName: options.left_project_relation_name,
+    rightProjectRelationName: options.right_project_relation_name,
+    leftProject,
+    rightProject,
   });
-  await leftProjectRelationBuilder.create({ tree });
+
+  // const leftProjectRelationBuilder = new ModelsBackendSchemaRelationCoder({
+  //   relationName: options.left_project_relation_name,
+  //   schemaRootProject: leftProject,
+  // });
+  // await leftProjectRelationBuilder.create({ tree });
 
   // console.log(`🚀 ~ options:`, options);
 }

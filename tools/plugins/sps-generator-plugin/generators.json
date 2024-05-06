@@ -54,6 +54,11 @@
       "factory": "./src/generators/sps-create-model-relation/generator",
       "schema": "./src/generators/sps-create-model-relation/schema.json",
       "description": "sps-create-model-relation generator"
+    },
+    "sps-delete-model-relation": {
+      "factory": "./src/generators/sps-delete-model-relation/generator",
+      "schema": "./src/generators/sps-delete-model-relation/schema.json",
+      "description": "sps-delete-model-relation generator"
     }
   }
 }

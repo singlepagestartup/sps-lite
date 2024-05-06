@@ -20,9 +20,9 @@ import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
-import { Builder as ModelBackendAppBuilder } from "../../builders/backend/app/Builder";
-import { Builder as ModelBackendSchemaBuilder } from "../../builders/backend/schema/Builder";
-import { Builder as ModelBackendBuilder } from "../../builders/backend/Builder";
+import { Coder as ModelBackendAppCoder } from "../../coder/project/module/models/backend/app/Coder";
+import { Coder as ModelBackendSchemaCoder } from "../../coder/project/module/models/backend/schema/Coder";
+import { Coder as ModelBackendCoder } from "../../coder/project/module/models/backend/Coder";
 
 export async function createModelGenerator(
   tree: Tree,
@@ -38,7 +38,7 @@ export async function createModelGenerator(
 
   const backendAppProject = getProjects(tree).get(moduleProject);
 
-  const backendBuilder = new ModelBackendBuilder({
+  const backendBuilder = new ModelBackendCoder({
     modelName,
     module,
     tree,

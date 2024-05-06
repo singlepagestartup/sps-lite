@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "SpsDeleteModelRelation",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "left_project": {
+      "type": "string",
+      "description": "Select one project. It should be models-*-backend-schema-relations project",
+      "x-prompt": "Select left project?",
+      "$default": {
+        "$source": "project"
+      },
+      "x-dropdown": "projects"
+    },
+    "left_project_relation_name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the left model relation?"
+    },
+    "right_project": {
+      "type": "string",
+      "description": "Select one project. It should be models-*-backend-schema-relations project",
+      "x-prompt": "Select right project?",
+      "$default": {
+        "$source": "project"
+      },
+      "x-dropdown": "projects"
+    },
+    "right_project_relation_name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the right model relation?"
+    }
+  },
+  "required": [
+    "left_project",
+    "left_project_relation_name",
+    "right_project",
+    "right_project_relation_name"
+  ]
+}

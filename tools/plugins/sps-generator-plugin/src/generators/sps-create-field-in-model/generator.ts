@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { SpsCreateFieldInModelGeneratorSchema } from "./schema";
-import { Builder as BackendModelSchemaTableBuild } from "../../builders/backend/schema/table/Builder";
+import { Coder as BackendModelSchemaTableCoder } from "../../coder/project/module/models/backend/schema/table/Coder";
 
 export async function spsCreateFieldInModelGenerator(
   tree: Tree,
@@ -21,7 +21,7 @@ export async function spsCreateFieldInModelGenerator(
     .split("-models-")[1]
     .split("-backend-schema")[0];
 
-  const backendModelSchemaTableBuilder = new BackendModelSchemaTableBuild({
+  const backendModelSchemaTableBuilder = new BackendModelSchemaTableCoder({
     modelName: model,
     module,
     tree,
