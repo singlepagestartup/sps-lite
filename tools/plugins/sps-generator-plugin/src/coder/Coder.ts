@@ -1,5 +1,6 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ModuleSchemaRelationsCoder } from "./project/module/backend/schema/relations/relation/Coder";
+import { Coder as ModuleModelBackendSchemaRelationCoder } from "./project/module/models/backend/schema/relations/relation/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";
 
 export class Coder {
@@ -49,7 +50,18 @@ export class Coder {
       rightSchemaProject: rightProjectSchemaProject,
       relationName,
     });
-    await moduleSchemaRelationsCoder.create({ tree });
+    const moduleSchemaRelationsProject =
+      await moduleSchemaRelationsCoder.create({ tree });
+
+    const moduleModelBackendSchemaRelationCoder =
+      new ModuleModelBackendSchemaRelationCoder({
+        relationName,
+        leftSchemaProject: leftProjectSchemaProject,
+        rightSchemaProject: rightProjectSchemaProject,
+        leftProjectRelationName,
+        moduleSchemaRelationsProject: moduleSchemaRelationsProject,
+      });
+    await moduleModelBackendSchemaRelationCoder.create({ tree });
   }
 
   async deleteModelsRelations({
@@ -80,6 +92,21 @@ export class Coder {
     const rightProjectSchemaProject = this.projects.get(
       `${rightProject.name.replace("-backend-schema-relations", "-backend-schema-table")}`,
     );
+
+    const module = getModuleByName({ name: leftProject.name });
+
+    const libName = `@sps/${module}-backend-schema-relations-${relationName}`;
+    const moduleSchemaRelationsProject = getProjects(tree).get(libName);
+
+    const moduleModelBackendSchemaRelationCoder =
+      new ModuleModelBackendSchemaRelationCoder({
+        relationName,
+        leftSchemaProject: leftProjectSchemaProject,
+        rightSchemaProject: rightProjectSchemaProject,
+        leftProjectRelationName,
+        moduleSchemaRelationsProject,
+      });
+    await moduleModelBackendSchemaRelationCoder.delete({ tree });
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
       tree,

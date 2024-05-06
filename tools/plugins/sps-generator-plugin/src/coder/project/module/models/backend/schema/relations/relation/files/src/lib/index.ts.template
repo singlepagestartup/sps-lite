@@ -1,12 +1,12 @@
 import {
   Table,
   model,
-  populate as pagesToLayoutsPopulate,
-} from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
+  populate as parentPopulate,
+} from "<%= module_schema_relations_project_import_path %>";
 import {
-  Table as SPSWBLayout,
-  model as spsWBLayoutModel,
-} from "@sps/sps-website-builder-models-layout-backend-schema-table";
+  Table as RightTable,
+  model as rightTableModel,
+} from "<%= right_schema_project_import_path %>";
 import { TableRelationsHelpers } from "drizzle-orm";
 
 export const config = {
@@ -16,12 +16,12 @@ export const config = {
   leftTable: {
     model,
     table: Table,
-    key: "pageId",
+    key: "<%= left_schema_model_name %>Id",
   },
   rightTable: {
-    model: spsWBLayoutModel,
-    table: SPSWBLayout,
-    key: "layoutId",
+    model: rightTableModel,
+    table: RightTable,
+    key: "<%= right_schema_model_name %>Id",
   },
 };
 
@@ -35,6 +35,6 @@ export const relation = <TTableName extends string>(
 
 export const populate = {
   [model]: {
-    with: pagesToLayoutsPopulate,
+    with: parentPopulate,
   },
 };

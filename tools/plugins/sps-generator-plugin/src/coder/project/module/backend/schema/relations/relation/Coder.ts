@@ -98,6 +98,10 @@ export class Coder {
     });
 
     await this.attachToRoot({ tree });
+
+    const createdLib = getProjects(tree).get(this.libName);
+
+    return createdLib;
   }
 
   async attachToRoot({ tree }: { tree: Tree }) {

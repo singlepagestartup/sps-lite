@@ -22,7 +22,7 @@ export const createSpsJsLibrary = async ({
     [key: string]: string;
   };
 }) => {
-  await jsLibraryGenerator(tree, {
+  const createdLibrary = await jsLibraryGenerator(tree, {
     name,
     bundler: "tsc",
     projectNameAndRootFormat: "as-provided",
@@ -63,4 +63,6 @@ export const createSpsJsLibrary = async ({
   tree.delete(`${root}/src/lib/${defaultFileName}`);
 
   await formatFiles(tree);
+
+  return createdLibrary;
 };
