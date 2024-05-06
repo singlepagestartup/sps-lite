@@ -22,8 +22,6 @@ export class Coder {
     leftProject: ProjectConfiguration;
     rightProject: ProjectConfiguration;
   }) {
-    console.log(`🚀 ~ leftProject:`, leftProject);
-
     const leftProjectModuleName = getModuleByName({ name: leftProject.name });
     const rightProjectModuleName = getModuleByName({ name: rightProject.name });
 
@@ -45,6 +43,7 @@ export class Coder {
     }
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
+      tree,
       module: leftProjectModuleName,
       leftSchemaProject: leftProjectSchemaProject,
       rightSchemaProject: rightProjectSchemaProject,
@@ -83,6 +82,7 @@ export class Coder {
     );
 
     const moduleSchemaRelationsCoder = new ModuleSchemaRelationsCoder({
+      tree,
       module: leftProjectModuleName,
       leftSchemaProject: leftProjectSchemaProject,
       rightSchemaProject: rightProjectSchemaProject,
