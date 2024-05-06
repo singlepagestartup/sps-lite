@@ -55,7 +55,7 @@ export class Coder {
 
     const moduleModelBackendSchemaRelationCoder =
       new ModuleModelBackendSchemaRelationCoder({
-        relationName,
+        tree,
         leftSchemaProject: leftProjectSchemaProject,
         rightSchemaProject: rightProjectSchemaProject,
         leftProjectRelationName,
@@ -100,7 +100,7 @@ export class Coder {
 
     const moduleModelBackendSchemaRelationCoder =
       new ModuleModelBackendSchemaRelationCoder({
-        relationName,
+        tree,
         leftSchemaProject: leftProjectSchemaProject,
         rightSchemaProject: rightProjectSchemaProject,
         leftProjectRelationName,
