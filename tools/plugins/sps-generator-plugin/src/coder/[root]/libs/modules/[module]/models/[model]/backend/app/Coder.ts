@@ -25,6 +25,7 @@ export class Coder {
   modelLibName: string;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
+  modelSchemaLibName: string;
 
   constructor({
     modelName,
@@ -46,6 +47,7 @@ export class Coder {
     const root = `${baseDirectory}/${modelName}/backend/app/root`;
 
     const modelLibName = `@sps/${module}-models-${modelName}-backend-model`;
+    const modelSchemaLibName = `@sps/${module}-models-${modelName}-backend-schema`;
 
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
       libName,
@@ -55,6 +57,7 @@ export class Coder {
       route: `/${pluralNameModelName}`,
       asPropertyModelName,
     });
+    this.modelSchemaLibName = modelSchemaLibName;
     this.libName = libName;
     this.rootAppProject = moduleBackendAppProject;
     this.root = root;
@@ -105,6 +108,7 @@ export class Coder {
       templateParams: {
         template: "",
         model_lib_name: this.modelLibName,
+        model_schema_lib_name: this.modelSchemaLibName,
       },
     });
 

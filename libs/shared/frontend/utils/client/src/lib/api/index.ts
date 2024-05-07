@@ -19,6 +19,7 @@ export async function getBackendData(props: IFetchProps) {
   let query = stringify(params || {}, {
     encodeValuesOnly: true,
   });
+  console.log(`🚀 ~ getBackendData ~ query:`, query);
 
   if (process.env["COMPRESSION"] === "true") {
     const compressedQuery = gzip(query);
