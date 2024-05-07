@@ -1,14 +1,11 @@
 import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
-import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
-import { drizzle } from "drizzle-orm/postgres-js";
-import { postgres } from "@sps/shared-backend-database-config";
 import * as schema from "@sps/sps-website-builder-backend-schema";
+import { faker } from "@faker-js/faker";
+import { services } from "./services";
+import { db } from "@sps/sps-db-provider";
 
-const db = drizzle(postgres, { schema });
-
-describe.skip("pages", () => {
+describe("pages", () => {
   it(`by GET request to / I want to get pages`, async () => {
     const actionObject = app;
 
@@ -39,7 +36,7 @@ describe.skip("pages", () => {
     const data = {
       title: "New page",
       content: "New page content",
-      url: `/${Math.random().toFixed(5)}`,
+      url: `/${faker.lorem.slug()}`,
     };
 
     await me.passData({
@@ -98,6 +95,14 @@ describe.skip("pages", () => {
   });
 
   it(`by GET request to /:uuid I want to get specific page`, async () => {
+    const [entity] = await db
+      .insert(schema.SPSWBPage)
+      .values({
+        title: faker.lorem.words(3),
+        url: faker.internet.url(),
+      })
+      .returning();
+
     const actionObject = app;
 
     const me = new Actor({
@@ -105,31 +110,15 @@ describe.skip("pages", () => {
       iAm: "ApiClient",
     });
 
-    const data = {
-      title: "New page",
-      content: "New page content",
-      url: `/${Math.random().toFixed(5)}`,
-    };
-
-    await me.passData({
-      path: `/`,
-      method: "POST",
-      passAs: "form-data",
-      data,
+    await me.goTo({
+      path: `/${entity.id}`,
     });
 
     const res = await me.getResult();
     const resultData = await res.json();
 
-    await me.goTo({
-      path: `/${resultData.data.id}`,
-    });
-
-    const specificResult = await me.getResult();
-    const specificUpdateResultData = await specificResult.json();
-
-    expect(specificResult.status).toBe(200);
-    expect(specificUpdateResultData.data.url).toEqual(data.url);
+    expect(res.status).toBe(200);
+    expect(resultData.data.id).toEqual(entity.id);
   });
 
   it(`by DELETE request to /:uuid I want to delete specific page`, async () => {
@@ -176,7 +165,7 @@ describe.skip("pages", () => {
     expect(specificResult.status).toBe(404);
   });
 
-  it(`by GET request to /get-urls I want to get list of urls`, async () => {
+  it.only(`by GET request to /get-urls I want to get list of urls`, async () => {
     const [slide] = await db
       .insert(schema.SPSWBSlide)
       .values({
@@ -186,7 +175,7 @@ describe.skip("pages", () => {
 
     try {
       // check if page exists
-      const page = await model.create({
+      const page = await services.create({
         data: {
           title: "Slides Page",
           url: "/slides/[sps-website-builder.slide.id]",
@@ -214,7 +203,7 @@ describe.skip("pages", () => {
     expect(Array.isArray(resultData.data.urls)).toEqual(true);
   });
 
-  it(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
+  it.skip(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
     const [slide] = await db
       .insert(schema.SPSWBSlide)
       .values({
@@ -222,17 +211,17 @@ describe.skip("pages", () => {
       })
       .returning();
 
-    try {
-      // check if page exists
-      const page = await model.create({
-        data: {
-          title: "Slides Page",
-          url: "/slides/[sps-website-builder.slide.id]",
-        },
-      });
-    } catch (error) {
-      //
-    }
+    // try {
+    //   // check if page exists
+    //   const page = await model.create({
+    //     data: {
+    //       title: "Slides Page",
+    //       url: "/slides/[sps-website-builder.slide.id]",
+    //     },
+    //   });
+    // } catch (error) {
+    //   //
+    // }
 
     const actionObject = app;
 

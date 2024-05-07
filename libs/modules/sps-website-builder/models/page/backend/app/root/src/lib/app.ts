@@ -1,10 +1,9 @@
 import { Hono } from "hono";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
-import { apiFactories } from "@sps/shared-backend-api";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { postgres } from "@sps/shared-backend-database-config";
 import * as schema from "@sps/sps-website-builder-backend-schema";
 import { models as spsWebsiteBuilderModels } from "@sps/sps-website-builder-backend-models";
+import { handlers } from "./handlers/index";
 
 const db = drizzle(postgres, { schema });
 
@@ -60,11 +59,6 @@ app.get("/get-by-url", async (c) => {
   });
 });
 
-apiFactories.crudApiFactory({
-  app,
-  model,
-});
-
 async function getFilledPages() {
   const pages = await db.query.SPSWBPage.findMany();
 
@@ -115,15 +109,11 @@ async function getModelPages({
 }) {
   const filledPages: any = [];
 
-  console.log(`🚀 ~ modelRoutes:`, modelRoutes);
-
   const modelRoute = modelRoutes[0];
   const sanitizedRoute = modelRoute
     .replace("[", "")
     .replace("]", "")
     .split(".");
-
-  console.log(`🚀 ~ sanitizedRoute:`, sanitizedRoute);
 
   if (sanitizedRoute.length < 3) {
     throw new Error(
@@ -166,3 +156,23 @@ async function getModelPages({
 
   return filledPages;
 }
+
+app.get("/", async (c, next) => {
+  return handlers.find(c, next);
+});
+
+app.get("/:uuid", async (c, next) => {
+  return handlers.findById(c, next);
+});
+
+app.post("/", async (c, next) => {
+  return handlers.create(c, next);
+});
+
+app.patch("/:uuid", async (c, next) => {
+  return handlers.update(c, next);
+});
+
+app.delete("/:uuid", async (c, next) => {
+  return handlers.delete(c, next);
+});

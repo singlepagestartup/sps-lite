@@ -1,27 +1,13 @@
-import { db } from "@sps/sps-db-provider";
-import {
-  Table,
-  model,
-} from "@sps/sps-website-builder-models-page-backend-schema-table";
-import { populate } from "@sps/sps-website-builder-models-page-backend-schema";
-import { eq } from "drizzle-orm";
+import { service as createEntity } from "./create";
+import { service as deleteEntity } from "./delete";
+import { service as findEntity } from "./find";
+import { service as findByIdEntity } from "./find-by-id";
+import { service as updateEntity } from "./update";
 
-export async function findById({ id }: { id: string }) {
-  const result = await db.query[model].findFirst({
-    with: populate,
-    where: eq(Table.id, id),
-  });
-
-  return result;
-}
-
-export async function del({ id }: { id: string }) {
-  // const result = await services.deleteEntity({
-  //   id,
-  //   db,
-  //   Table,
-  //   config,
-  // });
-
-  return {};
-}
+export const services = {
+  create: createEntity,
+  delete: deleteEntity,
+  find: findEntity,
+  findById: findByIdEntity,
+  update: updateEntity,
+};
