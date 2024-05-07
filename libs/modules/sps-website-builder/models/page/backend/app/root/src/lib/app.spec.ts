@@ -165,7 +165,7 @@ describe("pages", () => {
     expect(specificResult.status).toBe(404);
   });
 
-  it.only(`by GET request to /get-urls I want to get list of urls`, async () => {
+  it(`by GET request to /get-urls I want to get list of urls`, async () => {
     const [slide] = await db
       .insert(schema.SPSWBSlide)
       .values({

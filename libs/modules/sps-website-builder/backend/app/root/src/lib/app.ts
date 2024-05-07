@@ -17,5 +17,5 @@ app.get("/", async (c) => {
 });
 
 for (const route in routes) {
-  app.route(route, routes[route]);
+  app.route(route, routes[route as keyof typeof routes]);
 }

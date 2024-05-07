@@ -47,7 +47,7 @@ export function transformData<
       continue;
     }
 
-    const sanitizedValues = resultValues.map((resultValue) => {
+    const sanitizedValues = resultValues.map((resultValue: any) => {
       let sanitized = {};
 
       for (const resultKey of Object.keys(resultValue)) {

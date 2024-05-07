@@ -4,7 +4,6 @@ import {
   Table,
   config,
 } from "@sps/sps-website-builder-models-page-backend-schema";
-import { eq } from "drizzle-orm";
 import { service as findById } from "../find-by-id";
 import { insertRelations } from "@sps/shared-backend-api";
 
