@@ -15,11 +15,11 @@ export const Table = pgTable(
     pageId: pgCore
       .uuid("page_id")
       .notNull()
-      .references(() => PagesTable.id),
+      .references(() => PagesTable.id, { onDelete: "cascade" }),
     layoutId: pgCore
       .uuid("layout_id")
       .notNull()
-      .references(() => LayoutsTable.id),
+      .references(() => LayoutsTable.id, { onDelete: "cascade" }),
   },
   (t) => ({
     pk: pgCore.primaryKey({ columns: [t.pageId, t.layoutId] }),

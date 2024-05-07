@@ -9,25 +9,7 @@ import {
 } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 import { TableRelationsHelpers } from "drizzle-orm";
 
-export type RelationConfig = {
-  name: string;
-  type: "many";
-  model: string;
-  leftTable: {
-    model: string;
-    table: typeof Table;
-    key: string;
-  };
-  rightTables: {
-    model: string;
-    table: typeof RightTable;
-    key: string;
-    extract: boolean;
-    returnType: typeof RightTable.$inferSelect;
-  }[];
-};
-
-export const config: RelationConfig = {
+export const config = {
   name: "layouts",
   type: "many" as const,
   model,

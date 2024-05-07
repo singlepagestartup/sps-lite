@@ -18,11 +18,13 @@ export const config = {
     table: Table,
     key: "<%= left_schema_model_name %>Id",
   },
-  rightTable: {
+  rightTables: [{
     model: rightTableModel,
     table: RightTable,
     key: "<%= right_schema_model_name %>Id",
-  },
+    extract: true,
+    returnType: RightTable.$inferSelect,
+  }],
 };
 
 export const relation = <TTableName extends string>(

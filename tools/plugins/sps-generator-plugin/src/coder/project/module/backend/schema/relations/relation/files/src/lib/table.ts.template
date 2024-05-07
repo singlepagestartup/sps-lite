@@ -15,11 +15,11 @@ export const Table = pgTable(
     <%= left_schema_model_name %>Id: pgCore
       .uuid("<%= left_schema_model_name_snake_cased %>_id")
       .notNull()
-      .references(() => <%= left_schema_table_name %>.id),
+      .references(() => <%= left_schema_table_name %>.id, { onDelete: "cascade" }),
     <%= right_schema_model_name %>Id: pgCore
       .uuid("<%= right_schema_model_name_snake_cased %>_id")
       .notNull()
-      .references(() => <%= right_schema_table_name %>.id),
+      .references(() => <%= right_schema_table_name %>.id, { onDelete: "cascade" }),
   },
   (t) => ({
     pk: pgCore.primaryKey({ columns: [t.<%= left_schema_model_name %>Id, t.<%= right_schema_model_name %>Id] }),

@@ -4,10 +4,11 @@ import { Table as PagesToLayouts } from "@sps/sps-website-builder-backend-schema
 import { db } from "@sps/sps-db-provider";
 import { faker } from "@faker-js/faker";
 import { service } from "./index";
+import { eq } from "drizzle-orm";
 
 describe.only("find-by-id", () => {
-  let createdEntity;
-  let relationEntity;
+  let createdEntity: typeof Table.$inferSelect;
+  let relationEntity: typeof Layout.$inferSelect;
 
   beforeAll(async () => {
     [createdEntity] = await db
@@ -34,11 +35,18 @@ describe.only("find-by-id", () => {
       .returning();
   });
 
+  afterAll(async () => {
+    await db.delete(Table).where(eq(Table.id, createdEntity.id));
+    await db.delete(Layout).where(eq(Layout.id, relationEntity.id));
+  });
+
   it(`should return entity with relations`, async () => {
     const entity = await service({
       id: createdEntity.id,
     });
 
     expect(entity?.title).toBeDefined();
+    expect(entity?.layouts).toBeDefined();
+    expect(entity?.layouts?.length).toBeGreaterThan(0);
   });
 });
