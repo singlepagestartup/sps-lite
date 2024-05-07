@@ -165,81 +165,81 @@ describe("pages", () => {
     expect(specificResult.status).toBe(404);
   });
 
-  it(`by GET request to /get-urls I want to get list of urls`, async () => {
-    const [slide] = await db
-      .insert(schema.SPSWBSlide)
-      .values({
-        title: "Slide 1",
-      })
-      .returning();
+  // it(`by GET request to /get-urls I want to get list of urls`, async () => {
+  //   const [slide] = await db
+  //     .insert(schema.SPSWBSlide)
+  //     .values({
+  //       title: "Slide 1",
+  //     })
+  //     .returning();
 
-    try {
-      // check if page exists
-      const page = await model.services.create({
-        data: {
-          title: "Slides Page",
-          url: "/slides/[sps-website-builder.slide.id]",
-        },
-      });
-    } catch (error) {
-      //
-    }
+  //   try {
+  //     // check if page exists
+  //     const page = await model.services.create({
+  //       data: {
+  //         title: "Slides Page",
+  //         url: "/slides/[sps-website-builder.slide.id]",
+  //       },
+  //     });
+  //   } catch (error) {
+  //     //
+  //   }
 
-    const actionObject = app;
+  //   const actionObject = app;
 
-    const me = new Actor({
-      actionObject,
-      iAm: "ApiClient",
-    });
+  //   const me = new Actor({
+  //     actionObject,
+  //     iAm: "ApiClient",
+  //   });
 
-    await me.goTo({
-      path: "/get-urls",
-    });
+  //   await me.goTo({
+  //     path: "/get-urls",
+  //   });
 
-    const res = await me.getResult();
-    const resultData = await res.json();
+  //   const res = await me.getResult();
+  //   const resultData = await res.json();
 
-    expect(res.status).toBe(200);
-    expect(Array.isArray(resultData.data.urls)).toEqual(true);
-  });
+  //   expect(res.status).toBe(200);
+  //   expect(Array.isArray(resultData.data.urls)).toEqual(true);
+  // });
 
-  it.skip(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
-    const [slide] = await db
-      .insert(schema.SPSWBSlide)
-      .values({
-        title: "Slide 1",
-      })
-      .returning();
+  // it.skip(`by GET request to /api/get-by-url?url=/slides/:uuid I want to get page info`, async () => {
+  //   const [slide] = await db
+  //     .insert(schema.SPSWBSlide)
+  //     .values({
+  //       title: "Slide 1",
+  //     })
+  //     .returning();
 
-    // try {
-    //   // check if page exists
-    //   const page = await model.create({
-    //     data: {
-    //       title: "Slides Page",
-    //       url: "/slides/[sps-website-builder.slide.id]",
-    //     },
-    //   });
-    // } catch (error) {
-    //   //
-    // }
+  //   // try {
+  //   //   // check if page exists
+  //   //   const page = await model.create({
+  //   //     data: {
+  //   //       title: "Slides Page",
+  //   //       url: "/slides/[sps-website-builder.slide.id]",
+  //   //     },
+  //   //   });
+  //   // } catch (error) {
+  //   //   //
+  //   // }
 
-    const actionObject = app;
+  //   const actionObject = app;
 
-    const me = new Actor({
-      actionObject,
-      iAm: "ApiClient",
-    });
+  //   const me = new Actor({
+  //     actionObject,
+  //     iAm: "ApiClient",
+  //   });
 
-    await me.goTo({
-      path: `/get-by-url?url=/slides/${slide.id}`,
-    });
+  //   await me.goTo({
+  //     path: `/get-by-url?url=/slides/${slide.id}`,
+  //   });
 
-    const res = await me.getResult();
-    const resultData = await res.json();
+  //   const res = await me.getResult();
+  //   const resultData = await res.json();
 
-    expect(res.status).toBe(200);
-    expect(resultData.data.url).toEqual(
-      "/slides/[sps-website-builder.slide.id]",
-    );
-  });
+  //   expect(res.status).toBe(200);
+  //   expect(resultData.data.url).toEqual(
+  //     "/slides/[sps-website-builder.slide.id]",
+  //   );
+  // });
 });

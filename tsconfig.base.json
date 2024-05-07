@@ -603,12 +603,6 @@
       "@sps/sps-website-builder-backend-schema-relations": [
         "libs/modules/sps-website-builder/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts": [
-        "libs/modules/sps-website-builder/backend/schema/relations/pages-to-layouts/src/index.ts"
-      ],
-      "@sps/sps-website-builder-backend-schema-relations-slides-to-pages": [
-        "libs/modules/sps-website-builder/backend/schema/relations/slides-to-pages/src/index.ts"
-      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
@@ -1020,24 +1014,6 @@
       "@sps/sps-website-builder-models-incentives-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/incentives-block/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-layout-backend-app": [
-        "libs/modules/sps-website-builder/models/layout/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-layout-backend-model": [
-        "libs/modules/sps-website-builder/models/layout/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-layout-backend-schema": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-layout-backend-schema-relations": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/relations/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-layout-backend-schema-relations-pages": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/relations/pages/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-layout-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/layout/backend/schema/table/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-layout-contracts": [
         "libs/modules/sps-website-builder/models/layout/contracts/root/src/index.ts"
       ],
@@ -1272,12 +1248,6 @@
       "@sps/sps-website-builder-models-page-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/page/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-page-backend-schema-relations-layouts": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/relations/layouts/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-page-backend-schema-relations-slides": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/relations/slides/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-page-backend-schema-table": [
         "libs/modules/sps-website-builder/models/page/backend/schema/table/src/index.ts"
       ],
@@ -1418,24 +1388,6 @@
       ],
       "@sps/sps-website-builder-models-sidebar-frontend-redux": [
         "libs/modules/sps-website-builder/models/sidebar/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-app": [
-        "libs/modules/sps-website-builder/models/slide/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-model": [
-        "libs/modules/sps-website-builder/models/slide/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-schema": [
-        "libs/modules/sps-website-builder/models/slide/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-schema-relations": [
-        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-schema-relations-pages": [
-        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/pages/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-slide-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/slide/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-contracts": [
         "libs/modules/sps-website-builder/models/slide/contracts/root/src/index.ts"
