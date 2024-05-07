@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { services } from "../../services";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 
@@ -35,7 +35,7 @@ export const handler = async (
 
     const data = JSON.parse(body["data"]);
 
-    const entity = await services.update({ id: uuid, data });
+    const entity = await model.services.update({ id: uuid, data });
 
     return c.json({
       data: entity,
