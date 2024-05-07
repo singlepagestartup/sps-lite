@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { Table as PagesTable } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Table as LayoutsTable } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 
-export const model = "SPSWBPagesToLayouts";
+export const modelName = "SPSWBPagesToLayouts";
 
 const moduleName = "sps_w_b";
 const table = "pages_to_layouts";

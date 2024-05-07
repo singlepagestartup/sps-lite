@@ -1,7 +1,7 @@
-import "../styles/fonts.css";
-import "../styles/tailwind.scss";
+// import "../styles/fonts.css";
+// import "../styles/tailwind.scss";
 import { TranslationsContextWrapper } from "@sps/hooks";
-import { fonts } from "./fonts";
+// import { fonts } from "./fonts";
 import {
   GoogleTagManager,
   RootLayout as SpsWebsiteBuilderRootLayout,
@@ -20,7 +20,7 @@ export default async function RootLayout({
   return (
     <html className="scroll-smooth">
       <body
-        className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
+      // className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
         <Suspense>
           <GoogleTagManager />

@@ -3,7 +3,7 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { fields } from "./fields";
 import { variants } from "./variants";
 
-export const model = "SPSWBPage";
+export const modelName = "SPSWBPage";
 
 const moduleName = "sps_w_b";
 const table = "pages";

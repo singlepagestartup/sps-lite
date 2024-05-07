@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { fields } from "./fields";
 import { variants } from "./variants";
 
-export const model = "SPSWBLayout";
+export const modelName = "SPSWBLayout";
 
 const moduleName = "sps_w_b";
 const table = "layouts";

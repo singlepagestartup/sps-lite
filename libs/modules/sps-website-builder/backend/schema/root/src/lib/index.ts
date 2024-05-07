@@ -1,4 +1,9 @@
 export {
+  Table as SPSWBSlide,
+  Relations as SPSWBSlideRelations,
+  VariantEnumTable as SPSWBSlideVariantEnumTable,
+} from "@sps/sps-website-builder-models-slide-backend-schema";
+export {
   Table as SPSWBPage,
   Relations as SPSWBPageRelations,
   VariantEnumTable as SPSWBPageVariantEnumTable,

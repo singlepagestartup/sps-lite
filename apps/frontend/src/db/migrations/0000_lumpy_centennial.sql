@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_pages" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_slides" (
-	"title" text,
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
@@ -50,12 +49,6 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_pages_to_layouts" (
 	CONSTRAINT "sps_w_b_pages_to_layouts_page_id_layout_id_pk" PRIMARY KEY("page_id","layout_id")
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_slides_to_pages" (
-	"slide_id" uuid NOT NULL,
-	"page_id" uuid NOT NULL,
-	CONSTRAINT "sps_w_b_slides_to_pages_slide_id_page_id_pk" PRIMARY KEY("slide_id","page_id")
-);
---> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "sps_w_b_pages_to_layouts" ADD CONSTRAINT "sps_w_b_pages_to_layouts_page_id_sps_w_b_pages_id_fk" FOREIGN KEY ("page_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
@@ -64,18 +57,6 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "sps_w_b_pages_to_layouts" ADD CONSTRAINT "sps_w_b_pages_to_layouts_layout_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("layout_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "sps_w_b_slides_to_pages" ADD CONSTRAINT "sps_w_b_slides_to_pages_slide_id_sps_w_b_slides_id_fk" FOREIGN KEY ("slide_id") REFERENCES "sps_w_b_slides"("id") ON DELETE cascade ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "sps_w_b_slides_to_pages" ADD CONSTRAINT "sps_w_b_slides_to_pages_page_id_sps_w_b_pages_id_fk" FOREIGN KEY ("page_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

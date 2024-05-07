@@ -21,6 +21,10 @@ export async function insertRelations<Config extends RelationConfig>({
     const typedRealtionName = relationName as keyof typeof config;
     const relation = config[typedRealtionName];
 
+    if (!relation.leftTable.table[relation.leftTable.schemaKey]) {
+      continue;
+    }
+
     const existingRelations = await db
       .select()
       .from(relation.leftTable.table)

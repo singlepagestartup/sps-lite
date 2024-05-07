@@ -1,13 +1,13 @@
 import { db } from "@sps/sps-db-provider";
-import { model } from "<%= schema_table_module_lib_name %>";
 import {
   populate,
   config,
+  modelName,
 } from "<%= schema_module_lib_name %>";
 import { transformData } from "@sps/shared-backend-api";
 
 export async function service(params?: { filter?: any }) {
-  const result = await db.query[model].findMany({
+  const result = await db.query[modelName].findMany({
     with: populate,
     where: params?.filter,
   });

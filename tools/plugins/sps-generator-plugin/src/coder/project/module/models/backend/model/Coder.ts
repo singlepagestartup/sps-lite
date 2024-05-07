@@ -22,7 +22,6 @@ export class Coder {
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   schemaModuleLibName: string;
-  schemaTableModuleLibName: string;
 
   constructor({
     modelName,
@@ -45,7 +44,6 @@ export class Coder {
     const moduleBackendAppProject = getProjects(tree).get(moduleApp);
 
     const schemaModuleLibName = `@sps/${module}-models-${modelName}-backend-schema`;
-    const schemaTableModuleLibName = `@sps/${module}-models-${modelName}-backend-schema-table`;
 
     const root = `${baseDirectory}/${modelName}/backend/model/root`;
 
@@ -56,7 +54,6 @@ export class Coder {
     this.modelName = modelName;
     this.schemaModelName = schemaModelName;
     this.schemaModuleLibName = schemaModuleLibName;
-    this.schemaTableModuleLibName = schemaTableModuleLibName;
     this.importModelAsAsPropertyModelName =
       new ImportModelAsAsPropertyModelName({
         asPropertyModelName,
@@ -124,7 +121,6 @@ export class Coder {
       templateParams: {
         template: "",
         schema_module_lib_name: this.schemaModuleLibName,
-        schema_table_module_lib_name: this.schemaTableModuleLibName,
         model_name: this.modelName,
         module_name: this.module,
         schema_model_name: this.schemaModelName,

@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
+import { model } from "<%= model_lib_name %>";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 

@@ -1,27 +1,27 @@
 import {
   Table,
-  model,
+  modelName,
   populate as pagesToLayoutsPopulate,
 } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 import {
   Table as RightTable,
-  model as rightTableModel,
+  modelName as rightTableModelName,
 } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 import { TableRelationsHelpers } from "drizzle-orm";
 
 export const config = {
   name: "layouts",
   type: "many" as const,
-  model,
+  model: modelName,
   leftTable: {
-    model,
+    model: modelName,
     table: Table,
     queryKey: "page",
     schemaKey: "pageId",
   },
   rightTables: [
     {
-      model: rightTableModel,
+      model: rightTableModelName,
       table: RightTable,
       queryKey: "layout",
       schemaKey: "layoutId",
@@ -35,12 +35,12 @@ export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
 ) => {
   return {
-    [model]: helpers.many(config.leftTable.table),
+    [modelName]: helpers.many(config.leftTable.table),
   };
 };
 
 export const populate = {
-  [model]: {
+  [modelName]: {
     with: pagesToLayoutsPopulate,
   },
 };

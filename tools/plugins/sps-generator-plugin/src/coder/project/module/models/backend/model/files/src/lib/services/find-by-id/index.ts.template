@@ -1,9 +1,9 @@
 import { db } from "@sps/sps-db-provider";
-import { model } from "<%= schema_table_module_lib_name %>";
 import {
   Table,
   populate,
   config,
+  modelName,
 } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
 import { transformData } from "@sps/shared-backend-api";
@@ -11,7 +11,7 @@ import { transformData } from "@sps/shared-backend-api";
 export async function service(props: { id: string }) {
   const { id } = props;
 
-  const result = await db.query[model].findFirst({
+  const result = await db.query[modelName].findFirst({
     where: eq(Table.id, id),
     with: populate,
   });

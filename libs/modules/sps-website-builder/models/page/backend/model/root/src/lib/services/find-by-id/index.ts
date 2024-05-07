@@ -1,5 +1,5 @@
 import { db } from "@sps/sps-db-provider";
-import { model } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import { modelName } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import {
   Table,
   populate,
@@ -11,7 +11,7 @@ import { transformData } from "@sps/shared-backend-api";
 export async function service(props: { id: string }) {
   const { id } = props;
 
-  const result = await db.query[model].findFirst({
+  const result = await db.query[modelName].findFirst({
     where: eq(Table.id, id),
     with: populate,
   });
