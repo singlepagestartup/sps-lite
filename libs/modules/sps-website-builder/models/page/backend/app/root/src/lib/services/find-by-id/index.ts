@@ -6,6 +6,7 @@ import {
   config,
 } from "@sps/sps-website-builder-models-page-backend-schema";
 import { eq } from "drizzle-orm";
+import { transformData } from "@sps/shared-backend-api";
 
 export async function service(props: { id: string }) {
   const { id } = props;
@@ -19,44 +20,10 @@ export async function service(props: { id: string }) {
     return null;
   }
 
-  const transformedResult = transformData<typeof result>({ entity: result });
-
-  console.log(`🚀 ~ service ~ result:`, transformedResult);
+  const transformedResult = transformData<typeof result, typeof config>({
+    entity: result,
+    config,
+  });
 
   return transformedResult;
-}
-
-function transformData<SelectWithRelations extends typeof Table.$inferSelect>({
-  entity,
-}: {
-  entity: SelectWithRelations;
-}) {
-  type ExtendType = {
-    [K in keyof typeof config]: (typeof config)[K]["rightTables"][0]["returnType"][];
-  };
-
-  for (const relationName of Object.keys(config)) {
-    const typedRealtionName = relationName as keyof typeof config;
-    const relation = config[typedRealtionName];
-    const resultKey = relation.leftTable.model as keyof typeof entity;
-
-    const resultValues = entity[resultKey];
-    if (!Array.isArray(resultValues)) {
-      continue;
-    }
-
-    const sanitizedValues = resultValues.map((resultValue) => {
-      const sanitized = {};
-
-      for (const resultKey of Object.keys(resultValue)) {
-        sanitized[resultKey] = resultValue[resultKey];
-      }
-
-      return sanitized;
-    });
-
-    entity[typedRealtionName] = sanitizedValues;
-  }
-
-  return entity as SelectWithRelations & ExtendType;
 }
