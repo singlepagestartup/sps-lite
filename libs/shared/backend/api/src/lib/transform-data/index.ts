@@ -1,22 +1,24 @@
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 
-type BaseConfig = {
-  [key: string]: RelationConfig;
+export type RelationConfig = {
+  [key: string]: BaseConfig;
 };
 
-type RelationConfig = {
+export type BaseConfig = {
   name: string;
   type: "many";
   model: string;
   leftTable: {
     model: string;
     table: PgTableWithColumns<any>;
-    key: string;
+    queryKey: string;
+    schemaKey: string;
   };
   rightTables: {
     model: string;
     table: PgTableWithColumns<any>;
-    key: string;
+    queryKey: string;
+    schemaKey: string;
     extract: boolean;
     returnType: PgTableWithColumns<any>["$inferSelect"];
   }[];
@@ -24,7 +26,7 @@ type RelationConfig = {
 
 export function transformData<
   SelectWithRelations extends PgTableWithColumns<any>["$inferSelect"],
-  Config extends BaseConfig,
+  Config extends RelationConfig,
 >({ entity, config }: { entity: SelectWithRelations; config: Config }) {
   type ExtendType = {
     [K in keyof typeof config]: (typeof config)[K]["rightTables"][0]["returnType"][];
@@ -50,7 +52,7 @@ export function transformData<
 
       for (const resultKey of Object.keys(resultValue)) {
         for (const rightTable of relation.rightTables) {
-          if (resultKey !== rightTable.key) {
+          if (resultKey !== rightTable.queryKey) {
             continue;
           }
 

@@ -15,11 +15,11 @@ export const Table = pgTable(
     slideId: pgCore
       .uuid("slide_id")
       .notNull()
-      .references(() => Slide.id),
+      .references(() => Slide.id, { onDelete: "cascade" }),
     pageId: pgCore
       .uuid("page_id")
       .notNull()
-      .references(() => Page.id),
+      .references(() => Page.id, { onDelete: "cascade" }),
   },
   (t) => ({
     pk: pgCore.primaryKey({ columns: [t.slideId, t.pageId] }),

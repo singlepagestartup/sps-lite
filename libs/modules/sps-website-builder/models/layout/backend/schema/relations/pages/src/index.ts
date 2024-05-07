@@ -1,1 +1,1 @@
-export { relation, populate, transformData } from "./lib";
+export { relation, populate } from "./lib";

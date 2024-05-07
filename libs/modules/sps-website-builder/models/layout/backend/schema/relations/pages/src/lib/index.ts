@@ -24,12 +24,3 @@ export const populate = {
     with: pagesToLayoutsPopulate,
   },
 };
-
-export function transformData({ data }: any) {
-  const transformedData = transformManyToManyRelations({
-    data,
-    relationAliases,
-  });
-
-  return transformedData;
-}

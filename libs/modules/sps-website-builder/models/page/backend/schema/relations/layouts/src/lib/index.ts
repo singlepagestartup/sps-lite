@@ -16,13 +16,15 @@ export const config = {
   leftTable: {
     model,
     table: Table,
-    key: "page",
+    queryKey: "page",
+    schemaKey: "pageId",
   },
   rightTables: [
     {
       model: rightTableModel,
       table: RightTable,
-      key: "layout",
+      queryKey: "layout",
+      schemaKey: "layoutId",
       extract: true,
       returnType: RightTable.$inferSelect,
     },

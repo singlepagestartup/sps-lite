@@ -6,7 +6,7 @@ import { faker } from "@faker-js/faker";
 import { service } from "./index";
 import { eq } from "drizzle-orm";
 
-describe.only("find-by-id", () => {
+describe("find-by-id", () => {
   let createdEntity: typeof Table.$inferSelect;
   let relationEntity: typeof Layout.$inferSelect;
 
