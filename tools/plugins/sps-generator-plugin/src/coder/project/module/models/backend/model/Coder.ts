@@ -8,7 +8,7 @@ import {
 import { addToFile, replaceInFile } from "../../../../../../utils/file-utils";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { createSpsJsLibrary } from "../../../../../../utils/js-lib-utils";
+import { util as createSpsTSLibrary } from "../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../utils/regex-utils/RegexCreator";
 
 export class Coder {
@@ -21,6 +21,8 @@ export class Coder {
   module: string;
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
+  schemaModuleLibName: string;
+  schemaTableModuleLibName: string;
 
   constructor({
     modelName,
@@ -42,6 +44,9 @@ export class Coder {
     const moduleApp = `@sps/${module}-backend-models`;
     const moduleBackendAppProject = getProjects(tree).get(moduleApp);
 
+    const schemaModuleLibName = `@sps/${module}-models-${modelName}-backend-schema`;
+    const schemaTableModuleLibName = `@sps/${module}-models-${modelName}-backend-schema-table`;
+
     const root = `${baseDirectory}/${modelName}/backend/model/root`;
 
     this.libName = libName;
@@ -50,6 +55,8 @@ export class Coder {
     this.root = root;
     this.modelName = modelName;
     this.schemaModelName = schemaModelName;
+    this.schemaModuleLibName = schemaModuleLibName;
+    this.schemaTableModuleLibName = schemaTableModuleLibName;
     this.importModelAsAsPropertyModelName =
       new ImportModelAsAsPropertyModelName({
         asPropertyModelName,
@@ -109,13 +116,15 @@ export class Coder {
   }
 
   async create({ tree }: { tree: Tree }) {
-    await createSpsJsLibrary({
+    await createSpsTSLibrary({
       tree,
       root: this.root,
       name: this.libName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        schema_module_lib_name: this.schemaModuleLibName,
+        schema_table_module_lib_name: this.schemaTableModuleLibName,
         model_name: this.modelName,
         module_name: this.module,
         schema_model_name: this.schemaModelName,

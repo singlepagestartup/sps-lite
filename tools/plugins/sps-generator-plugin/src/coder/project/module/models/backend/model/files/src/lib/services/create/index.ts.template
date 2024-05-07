@@ -1,9 +1,9 @@
 import { db } from "@sps/sps-db-provider";
-import { insertSchema } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import {
   Table,
   config,
-} from "@sps/sps-website-builder-models-page-backend-schema";
+  insertSchema,
+} from "<%= schema_module_lib_name %>";
 import { service as findById } from "../find-by-id";
 import { insertRelations } from "@sps/shared-backend-api";
 

@@ -1,10 +1,10 @@
 import { db } from "@sps/sps-db-provider";
-import { model } from "@sps/sps-website-builder-models-page-backend-schema-table";
+import { model } from "<%= schema_table_module_lib_name %>";
 import {
   Table,
   populate,
   config,
-} from "@sps/sps-website-builder-models-page-backend-schema";
+} from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
 import { transformData } from "@sps/shared-backend-api";
 

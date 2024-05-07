@@ -2,12 +2,13 @@ import {
   Tree,
   formatFiles,
   generateFiles,
+  offsetFromRoot,
   updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
 
-export const createSpsJsLibrary = async ({
+export const util = async ({
   root,
   name,
   tree,
@@ -28,11 +29,24 @@ export const createSpsJsLibrary = async ({
     projectNameAndRootFormat: "as-provided",
     directory: root,
     minimal: true,
-    unitTestRunner: "jest",
+    unitTestRunner: "none",
     strict: true,
   });
 
   generateFiles(tree, generateFilesPath, root, templateParams);
+
+  const offsetFromRootProject = offsetFromRoot(root);
+
+  const jestPreset = name.includes("frontend")
+    ? "jest.client-preset.js"
+    : "jest.server-preset.js";
+
+  generateFiles(tree, `${__dirname}/files`, root, {
+    template: "",
+    lib_name: name,
+    offset_from_root: offsetFromRootProject,
+    jest_preset: jestPreset,
+  });
 
   updateProjectConfiguration(tree, name, {
     root,
@@ -49,6 +63,17 @@ export const createSpsJsLibrary = async ({
   updateJson(tree, `${root}/tsconfig.lib.json`, (json) => {
     const compilerOptions = json.compilerOptions;
     delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  updateJson(tree, `${root}/tsconfig.json`, (json) => {
+    json.references = [
+      ...json.references,
+      {
+        path: "./tsconfig.spec.json",
+      },
+    ];
 
     return json;
   });

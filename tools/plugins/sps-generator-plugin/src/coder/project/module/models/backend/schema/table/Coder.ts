@@ -2,7 +2,7 @@ import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { createSpsJsLibrary } from "../../../../../../../utils/js-lib-utils";
+import { util as createSpsTSLibrary } from "../../../../../../../utils/create-sps-ts-library";
 import { replaceInFile } from "../../../../../../../utils/file-utils";
 import { RegexCreator } from "../../../../../../../utils/regex-utils/RegexCreator";
 
@@ -91,7 +91,7 @@ export class Coder {
   }
 
   async create({ tree }: { tree: Tree }) {
-    await createSpsJsLibrary({
+    await createSpsTSLibrary({
       tree,
       root: this.root,
       name: this.libName,

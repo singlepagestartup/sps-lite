@@ -33,7 +33,8 @@ export class Coder {
       tree,
     });
 
-    const children = [schemaCoder, modelCoder, appCoder];
+    // const children = [schemaCoder, modelCoder, appCoder];
+    const children = [modelCoder];
 
     this.children = children;
   }

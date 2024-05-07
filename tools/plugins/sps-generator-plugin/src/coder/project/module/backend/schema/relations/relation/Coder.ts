@@ -5,7 +5,7 @@ import {
   getProjects,
 } from "@nx/devkit";
 import path from "path";
-import { createSpsJsLibrary } from "tools/plugins/sps-generator-plugin/src/utils/js-lib-utils";
+import { util as createSpsTSLibrary } from "tools/plugins/sps-generator-plugin/src/utils/create-sps-ts-library";
 import * as nxWorkspace from "@nx/workspace";
 import { util as getModelByName } from "../../../../../../utils/get-model-by-name";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
@@ -73,7 +73,7 @@ export class Coder {
   }
 
   async create({ tree }: { tree: Tree }) {
-    await createSpsJsLibrary({
+    await createSpsTSLibrary({
       tree,
       root: this.root,
       name: this.libName,
