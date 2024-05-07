@@ -11,7 +11,7 @@ import { Component as Layout } from "@sps/sps-website-builder-models-layout-fron
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
 
-  const [updatePage, updatePageResult] = api.rtk.useUpdatePageMutation();
+  const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
 
   const methods = useForm<any>({
     mode: "all",

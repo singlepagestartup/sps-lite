@@ -112,10 +112,20 @@ async function getUrlModelId({
 }
 
 async function getPage({ url, locale }: Params) {
-  const targetPage = await getByUrl({ url, locale });
+  let targetPage = await getByUrl({ url, locale });
 
   if (!targetPage) {
-    return notFound();
+    targetPage = await getByUrl({ url: "/404", locale });
+  }
+
+  if (!targetPage) {
+    const pages = await api.find();
+
+    if (pages.length) {
+      return notFound();
+    }
+
+    return;
   }
 
   const request = await fetch(
@@ -124,10 +134,6 @@ async function getPage({ url, locale }: Params) {
 
   const filledTargetPage = await request.json();
   const transformedData = transformResponseItem(filledTargetPage);
-
-  if (!transformedData) {
-    return notFound();
-  }
 
   return transformedData;
 }
@@ -213,26 +219,30 @@ export const api = {
     return metadata;
   },
   getUrls: async () => {
-    const request = await fetch(
-      `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
-    );
+    try {
+      const request = await fetch(
+        `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
+      );
 
-    const pagesUrls = await request.json();
-    const transformedData = transformResponseItem(pagesUrls);
+      const pagesUrls = await request.json();
+      const transformedData = transformResponseItem(pagesUrls);
 
-    const paths =
-      transformedData?.urls?.map(
-        (pageParams: { url: string; locale: string }) => {
-          return {
-            ...pageParams,
-            url:
-              pageParams.url === "/"
-                ? []
-                : pageParams.url.split("/").filter((p) => p !== ""),
-          };
-        },
-      ) || [];
+      const paths =
+        transformedData?.urls?.map(
+          (pageParams: { url: string; locale: string }) => {
+            return {
+              ...pageParams,
+              url:
+                pageParams.url === "/"
+                  ? []
+                  : pageParams.url.split("/").filter((p) => p !== ""),
+            };
+          },
+        ) || [];
 
-    return paths;
+      return paths;
+    } catch (error) {
+      return [];
+    }
   },
 };

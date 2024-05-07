@@ -57,7 +57,7 @@ export const api = createApi({
       },
     }),
 
-    createPage: rtk.api.create<IModelExtended>({
+    create: rtk.api.create<IModelExtended>({
       serviceApi: this,
       build,
       populate,
@@ -65,7 +65,7 @@ export const api = createApi({
       rtkType: tag,
     }),
 
-    updatePage: rtk.api.update<IModelExtended>({
+    update: rtk.api.update<IModelExtended>({
       serviceApi: this,
       build,
       populate,
@@ -73,7 +73,7 @@ export const api = createApi({
       rtkType: tag,
     }),
 
-    deletePage: rtk.api.delete<IModelExtended>({
+    delete: rtk.api.delete<IModelExtended>({
       serviceApi: this,
       build,
       populate,
