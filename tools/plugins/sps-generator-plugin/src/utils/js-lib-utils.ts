@@ -28,7 +28,7 @@ export const createSpsJsLibrary = async ({
     projectNameAndRootFormat: "as-provided",
     directory: root,
     minimal: true,
-    unitTestRunner: "none",
+    unitTestRunner: "jest",
     strict: true,
   });
 
@@ -42,6 +42,7 @@ export const createSpsJsLibrary = async ({
     targets: {
       lint: {},
       build: {},
+      "test:watch": {},
     },
   });
 
