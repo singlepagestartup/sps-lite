@@ -2,7 +2,7 @@ import { app } from "./app";
 import { Actor } from "@sps/shared-bdd-steps";
 import * as schema from "@sps/sps-website-builder-backend-schema";
 import { faker } from "@faker-js/faker";
-import { services } from "./services";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 import { db } from "@sps/sps-db-provider";
 
 describe("pages", () => {
@@ -175,7 +175,7 @@ describe("pages", () => {
 
     try {
       // check if page exists
-      const page = await services.create({
+      const page = await model.services.create({
         data: {
           title: "Slides Page",
           url: "/slides/[sps-website-builder.slide.id]",

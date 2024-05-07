@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
+import { services } from "../../services";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 
@@ -8,7 +8,7 @@ export const handler = async (
   next: Next,
 ) => {
   try {
-    const data = await model.services.find();
+    const data = await services.find();
 
     return c.json({
       data,

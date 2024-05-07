@@ -30,7 +30,8 @@ export async function service({
   const model =
     spsWebsiteBuilderModels[modelName as keyof typeof spsWebsiteBuilderModels];
 
-  if (!model.find) {
+  // @ts-ignore
+  if (!model.serices.find) {
     return filledPages;
   }
 

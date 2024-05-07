@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
+import { services } from "../../services";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 
@@ -15,7 +15,16 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.delete({ id: uuid });
+  const data = await services.findById({ id: uuid });
+
+  if (!data || !Object.keys(data).length) {
+    return c.json(
+      {
+        message: "Not found",
+      },
+      404,
+    );
+  }
 
   return c.json({
     data,

@@ -1,8 +1,7 @@
 import { HTTPException } from "hono/http-exception";
-import { services } from "../../services";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 import { Context, Env } from "hono";
-import { BlankInput } from "hono/types";
-import { Next } from "koa";
+import { BlankInput, Next } from "hono/types";
 
 export const handler = async (
   c: Context<Env, `${string}/:uuid`, BlankInput>,
@@ -16,7 +15,7 @@ export const handler = async (
     });
   }
 
-  const data = await services.findById({ id: uuid });
+  const data = await model.services.findById({ id: uuid });
 
   if (!data || !Object.keys(data).length) {
     return c.json(
