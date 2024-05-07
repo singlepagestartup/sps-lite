@@ -8,10 +8,10 @@ import {
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { util as createSpsTSLibrary } from "../../../../../../../../utils/create-sps-ts-library";
-import { util as getNameStyles } from "../../../../../../../utils/get-name-styles";
-import { util as getModelByName } from "../../../../../../../utils/get-model-by-name";
-import { util as getModuleByName } from "../../../../../../../utils/get-module-by-name";
+import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
+import { util as getNameStyles } from "../../../../../../../../../../utils/get-name-styles";
+import { util as getModelByName } from "../../../../../../../../../../utils/get-model-by-name";
+import { util as getModuleByName } from "../../../../../../../../../../utils/get-module-by-name";
 import {
   addToFile,
   replaceInFile,

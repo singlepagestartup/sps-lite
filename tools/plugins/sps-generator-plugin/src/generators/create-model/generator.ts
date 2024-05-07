@@ -20,9 +20,9 @@ import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import pluralize from "pluralize";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
-import { Coder as ModelBackendAppCoder } from "../../coder/project/module/models/backend/app/Coder";
-import { Coder as ModelBackendSchemaCoder } from "../../coder/project/module/models/backend/schema/Coder";
-import { Coder as ModelBackendCoder } from "../../coder/project/module/models/backend/Coder";
+import { Coder as ModelBackendAppCoder } from "../../coder/[root]/libs/modules/[module]/models/[model]/backend/app/Coder";
+import { Coder as ModelBackendSchemaCoder } from "../../coder/[root]/libs/modules/[module]/models/[model]/backend/schema/Coder";
+import { Coder as ModelBackendCoder } from "../../coder/[root]/libs/modules/[module]/models/[model]/backend/Coder";
 
 export async function createModelGenerator(
   tree: Tree,

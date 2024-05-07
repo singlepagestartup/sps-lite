@@ -1,6 +1,6 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
-import { Coder as ModuleSchemaRelationsCoder } from "./project/module/backend/schema/relations/relation/Coder";
-import { Coder as ModuleModelBackendSchemaRelationCoder } from "./project/module/models/backend/schema/relations/relation/Coder";
+import { Coder as ModuleSchemaRelationsCoder } from "./[root]/libs/modules/[module]/backend/schema/relations/relation/Coder";
+import { Coder as ModuleModelBackendSchemaRelationCoder } from "./[root]/libs/modules/[module]/models/[model]/backend/schema/relations/relation/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";
 
 export class Coder {

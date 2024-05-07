@@ -2,7 +2,7 @@ import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { util as createSpsTSLibrary } from "../../../../../../../../utils/create-sps-ts-library";
+import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
 
 export class Coder {
   libName: string;

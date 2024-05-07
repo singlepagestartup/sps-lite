@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { SpsCreateFieldInModelGeneratorSchema } from "./schema";
-import { Coder as BackendModelSchemaTableCoder } from "../../coder/project/module/models/backend/schema/table/Coder";
+import { Coder as BackendModelSchemaTableCoder } from "../../coder/[root]/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 
 export async function spsCreateFieldInModelGenerator(
   tree: Tree,

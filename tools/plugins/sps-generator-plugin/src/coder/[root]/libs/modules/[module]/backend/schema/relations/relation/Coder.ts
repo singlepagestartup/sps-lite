@@ -7,9 +7,9 @@ import {
 import path from "path";
 import { util as createSpsTSLibrary } from "tools/plugins/sps-generator-plugin/src/utils/create-sps-ts-library";
 import * as nxWorkspace from "@nx/workspace";
-import { util as getModelByName } from "../../../../../../utils/get-model-by-name";
-import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
-import { util as getModuleCuttedStyles } from "../../../../../../utils/get-module-cutted-styles";
+import { util as getModelByName } from "../../../../../../../../utils/get-model-by-name";
+import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
+import { util as getModuleCuttedStyles } from "../../../../../../../../utils/get-module-cutted-styles";
 import { RegexCreator } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/RegexCreator";
 import {
   addToFile,

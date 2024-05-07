@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { SpsCreateTypeScriptLibraryGeneratorSchema } from "./schema";
-import { Builder as TypeScriptLibraryBuilder } from "../../coder/project/other-actions/type-script-library/Coder";
+import { Builder as TypeScriptLibraryBuilder } from "../../coder/utils/type-script-library/Coder";
 
 export async function spsCreateTypeScriptLibraryGenerator(
   tree: Tree,

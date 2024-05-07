@@ -1,13 +1,13 @@
 import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { util as createSpsTSLibrary } from "../../../../../../../utils/create-sps-ts-library";
+import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import {
   addToFile,
   replaceInFile,
-} from "../../../../../../../utils/file-utils";
-import { RegexCreator } from "../../../../../../../utils/regex-utils/RegexCreator";
-import { util as getModuleCuttedStyles } from "../../../../../../utils/get-module-cutted-styles";
+} from "../../../../../../../../../../utils/file-utils";
+import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
+import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 
 export class Coder {
   libName: string;

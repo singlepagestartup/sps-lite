@@ -1,5 +1,5 @@
 import { Tree, getProjects } from "@nx/devkit";
-import { Coder as TypeScriptLibraryCoder } from "../../coder/project/other-actions/type-script-library/Coder";
+import { Coder as TypeScriptLibraryCoder } from "../../coder/utils/type-script-library/Coder";
 import { SpsDeleteTypeScriptLibraryGeneratorSchema } from "./schema";
 
 export async function spsDeleteTypeScriptLibraryGenerator(

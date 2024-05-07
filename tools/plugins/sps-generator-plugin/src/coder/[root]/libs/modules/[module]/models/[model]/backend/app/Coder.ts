@@ -6,11 +6,14 @@ import {
   names,
 } from "@nx/devkit";
 import pluralize from "pluralize";
-import { addToFile, replaceInFile } from "../../../../../../utils/file-utils";
+import {
+  addToFile,
+  replaceInFile,
+} from "../../../../../../../../../utils/file-utils";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
-import { util as createSpsTSLibrary } from "../../../../../../utils/create-sps-ts-library";
-import { RegexCreator } from "../../../../../../utils/regex-utils/RegexCreator";
+import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
+import { RegexCreator } from "../../../../../../../../../utils/regex-utils/RegexCreator";
 
 export class Coder {
   libName: string;
