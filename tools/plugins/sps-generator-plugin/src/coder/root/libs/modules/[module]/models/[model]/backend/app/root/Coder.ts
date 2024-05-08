@@ -65,6 +65,10 @@ export class Coder {
     });
   }
 
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
   // async attachToRoot({ tree }: { tree: Tree }) {
   //   await this.attachToRoutes({ tree });
   // }

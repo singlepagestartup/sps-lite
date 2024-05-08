@@ -13,8 +13,15 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
+import { Coder as BackendCoder } from "../../Coder";
 
 export class Coder {
+  name: string;
+  parent: BackendCoder;
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+
   libName: string;
   rootAppProject: ProjectConfiguration;
   rootSchemaProject: ProjectConfiguration;
@@ -25,73 +32,77 @@ export class Coder {
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   schemaModuleLibName: string;
+  project: ProjectConfiguration;
 
-  constructor({
-    modelName,
-    module,
-    tree,
-  }: {
-    modelName: string;
-    module: string;
-    tree: Tree;
-  }) {
-    const libName = `@sps/${module}-models-${modelName}-backend-model`;
-    const baseDirectory = `libs/modules/${module}/models`;
-    const asPropertyModelName = names(modelName).propertyName;
+  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
+    this.name = "model";
+    this.parent = parent;
+    this.tree = tree;
 
-    const pascalCaseName = names(modelName).className;
-    const moduleNamePascalCase = names(module).className;
-    const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
+    this.baseName = `${parent.baseName}-model`;
+    this.baseDirectory = `${parent.baseDirectory}/model/root`;
 
-    const moduleApp = `@sps/${module}-backend-models`;
-    const moduleBackendAppProject = getProjects(tree).get(moduleApp);
+    // const libName = `@sps/${module}-models-${modelName}-backend-model`;
+    // const baseDirectory = `libs/modules/${module}/models`;
+    // const asPropertyModelName = names(modelName).propertyName;
 
-    const schemaModuleLibName = `@sps/${module}-models-${modelName}-backend-schema`;
+    // const pascalCaseName = names(modelName).className;
+    // const moduleNamePascalCase = names(module).className;
+    // const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
-    const root = `${baseDirectory}/${modelName}/backend/model/root`;
+    // const moduleApp = `@sps/${module}-backend-models`;
+    // const moduleBackendAppProject = getProjects(tree).get(moduleApp);
 
-    this.libName = libName;
-    this.rootAppProject = moduleBackendAppProject;
-    this.module = module;
-    this.root = root;
-    this.modelName = modelName;
-    this.schemaModelName = schemaModelName;
-    this.schemaModuleLibName = schemaModuleLibName;
-    this.importModelAsAsPropertyModelName =
-      new ImportModelAsAsPropertyModelName({
-        asPropertyModelName,
-        libName,
-      });
-    this.exportModel = new ExportModel({
-      asPropertyModelName,
-    });
+    // const schemaModuleLibName = `@sps/${module}-models-${modelName}-backend-schema`;
+
+    // const root = `${baseDirectory}/${modelName}/backend/model/root`;
+
+    // this.libName = libName;
+    // this.rootAppProject = moduleBackendAppProject;
+    // this.module = module;
+    // this.root = root;
+    // this.modelName = modelName;
+    // this.schemaModelName = schemaModelName;
+    // this.schemaModuleLibName = schemaModuleLibName;
+    // this.importModelAsAsPropertyModelName =
+    //   new ImportModelAsAsPropertyModelName({
+    //     asPropertyModelName,
+    //     libName,
+    //   });
+    // this.exportModel = new ExportModel({
+    //   asPropertyModelName,
+    // });
   }
 
-  async attachToRoot({ tree }: { tree: Tree }) {
-    const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async attach({ indexPath }: { indexPath: string }) {
+    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
 
     await addToFile({
       toTop: true,
-      pathToFile: rootProjectPath,
+      pathToFile: indexPath,
       content: this.importModelAsAsPropertyModelName.onCreate.content,
-      tree,
+      tree: this.tree,
     });
 
     await replaceInFile({
-      tree,
-      pathToFile: rootProjectPath,
+      tree: this.tree,
+      pathToFile: indexPath,
       regex: this.exportModel.onCreate.regex,
       content: this.exportModel.onCreate.content,
     });
   }
 
-  async detachFromRoot({ tree }: { tree: Tree }) {
-    const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
+  async detach({ indexPath }: { indexPath: string }) {
+    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
 
     try {
       await replaceInFile({
-        tree,
-        pathToFile: rootProjectPath,
+        tree: this.tree,
+        pathToFile: indexPath,
         regex: this.exportModel.onRemove.regex,
         content: "",
       });
@@ -103,8 +114,8 @@ export class Coder {
 
     try {
       await replaceInFile({
-        tree,
-        pathToFile: rootProjectPath,
+        tree: this.tree,
+        pathToFile: indexPath,
         regex: this.importModelAsAsPropertyModelName.onRemove.regex,
         content: "",
       });
@@ -115,11 +126,11 @@ export class Coder {
     }
   }
 
-  async create({ tree }: { tree: Tree }) {
+  async create() {
     await createSpsTSLibrary({
-      tree,
-      root: this.root,
-      name: this.libName,
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
@@ -129,26 +140,20 @@ export class Coder {
         schema_model_name: this.schemaModelName,
       },
     });
-
-    await this.attachToRoot({ tree });
   }
 
-  async delete({ tree }: { tree: Tree }) {
-    await this.detachFromRoot({ tree });
-
-    const project = getProjects(tree).get(this.libName);
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
       return;
     }
 
-    await nxWorkspace.removeGenerator(tree, {
-      projectName: this.libName,
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
     });
-
-    await formatFiles(tree);
   }
 }
 
