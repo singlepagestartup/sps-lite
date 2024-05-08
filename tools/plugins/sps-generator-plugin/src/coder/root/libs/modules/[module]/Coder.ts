@@ -52,6 +52,11 @@ export class Coder {
       modelName,
     });
 
+    await this.project.models.project.model.project.backend.project.model.attach(
+      {
+        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
+      },
+    );
     await this.project.models.project.model.project.backend.project.app.attach({
       routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
     });
@@ -63,6 +68,12 @@ export class Coder {
     await this.project.models.project.model.project.backend.project.app.detach({
       routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
     });
+
+    await this.project.models.project.model.project.backend.project.model.detach(
+      {
+        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
+      },
+    );
 
     await this.project.models.removeModel({
       modelName,
