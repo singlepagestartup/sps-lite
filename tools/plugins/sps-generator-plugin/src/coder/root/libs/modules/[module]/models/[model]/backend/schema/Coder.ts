@@ -12,6 +12,7 @@ export class Coder {
   name: string;
   project: {
     table: TableCoder;
+    relations: RootRelationsCoder;
   };
 
   // children: (TableCoder | RootRelationsCoder | RootCoder)[];
@@ -28,11 +29,10 @@ export class Coder {
       tree,
     });
 
-    // const relationsCoder = new RootRelationsCoder({
-    //   modelName,
-    //   module,
-    //   tree,
-    // });
+    const relations = new RootRelationsCoder({
+      parent: this,
+      tree,
+    });
 
     // const rootCoder = new RootCoder({
     //   modelName,
@@ -45,18 +45,22 @@ export class Coder {
     // this.children = children;
     this.project = {
       table,
+      relations,
     };
   }
 
   async init() {
     await this.project.table.init();
+    await this.project.relations.init();
   }
 
   async create() {
-    await this.project.table.create();
+    // await this.project.table.create();
+    await this.project.relations.create();
   }
 
   async remove() {
-    await this.project.table.remove();
+    await this.project.relations.remove();
+    // await this.project.table.remove();
   }
 }

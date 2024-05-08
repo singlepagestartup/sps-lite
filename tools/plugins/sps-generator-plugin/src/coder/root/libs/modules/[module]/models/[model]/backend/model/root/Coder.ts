@@ -1,10 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-  names,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
 import {
   addToFile,
   replaceInFile,
@@ -42,9 +36,6 @@ export class Coder {
     this.baseName = `${parent.baseName}-model`;
     this.baseDirectory = `${parent.baseDirectory}/model/root`;
 
-    // const libName = `@sps/${module}-models-${modelName}-backend-model`;
-    // const baseDirectory = `libs/modules/${module}/models`;
-
     const modelName = parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
 
@@ -53,20 +44,8 @@ export class Coder {
     const moduleNamePascalCase = names(moduleName).className;
     const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
-    // const moduleApp = `@sps/${module}-backend-models`;
-    // const moduleBackendAppProject = getProjects(tree).get(moduleApp);
-
-    // const schemaModuleLibName = `@sps/${module}-models-${modelName}-backend-schema`;
-
-    // const root = `${baseDirectory}/${modelName}/backend/model/root`;
-
-    // this.libName = libName;
-    // this.rootAppProject = moduleBackendAppProject;
-
     this.moduleName = moduleName;
-    // this.root = root;
     this.schemaModelName = schemaModelName;
-    // this.schemaModuleLibName = schemaModuleLibName;
     this.modelName = modelName;
     this.importModelAsAsPropertyModelName =
       new ImportModelAsAsPropertyModelName({

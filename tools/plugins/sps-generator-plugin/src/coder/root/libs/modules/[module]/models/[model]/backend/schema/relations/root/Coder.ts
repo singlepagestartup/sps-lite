@@ -1,84 +1,93 @@
-import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
+import {
+  ProjectConfiguration,
+  Tree,
+  formatFiles,
+  getProjects,
+  names,
+} from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
+import { Coder as SchemaCoder } from "../../Coder";
 
 export class Coder {
-  libName: string;
-  root: string;
-  snakeCaseModelName: string;
+  parent: SchemaCoder;
+  baseName: string;
+  baseDirectory: string;
+  tree: Tree;
+  name: string;
+  project: ProjectConfiguration;
   modelName: string;
-  parentModelName: string;
+  snakeCasePluralizedModelName: string;
 
-  constructor({
-    modelName,
-    module,
-    tree,
-  }: {
-    modelName: string;
-    module: string;
-    tree: Tree;
-  }) {
-    const libName = `@sps/${module}-models-${modelName}-backend-schema-relations`;
-    const baseDirectory = `libs/modules/${module}/models`;
+  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
+    this.parent = parent;
+    this.baseName = `${parent.baseName}-relations`;
+    this.baseDirectory = `${parent.baseDirectory}/relations/root`;
+    this.tree = tree;
+    this.name = "relations";
 
-    const root = `${baseDirectory}/${modelName}/backend/schema/relations/root`;
+    const modelName = parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");
-    const snakeCaseModelName = modelNameSplitted.reduce((acc, curr, index) => {
-      if (index === modelNameSplitted.length - 1) {
-        const plural = pluralize(curr);
-        if (index === 0) {
-          return plural;
+    const snakeCasePluralizedModelName = modelNameSplitted.reduce(
+      (acc, curr, index) => {
+        if (index === modelNameSplitted.length - 1) {
+          const plural = pluralize(curr);
+          if (index === 0) {
+            return plural;
+          }
+
+          return acc + "_" + plural;
         }
 
-        return acc + "_" + plural;
-      }
+        if (index === 0) {
+          return curr;
+        }
 
-      if (index === 0) {
-        return curr;
-      }
+        return acc + "_" + curr;
+      },
+      "",
+    );
 
-      return acc + "_" + curr;
-    }, "");
-
-    const parentModelName = libName.replace("relations", "table");
-
-    this.libName = libName;
-    this.root = root;
-    this.snakeCaseModelName = snakeCaseModelName;
+    this.snakeCasePluralizedModelName = snakeCasePluralizedModelName;
     this.modelName = modelName;
-    this.parentModelName = parentModelName;
   }
 
-  async create({ tree }: { tree: Tree }) {
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async create() {
+    const parentModelLibrary = this.parent.project.table.baseName;
+
     await createSpsTSLibrary({
-      tree,
-      root: this.root,
-      name: this.libName,
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
         model: this.modelName,
-        pluralized_model: this.snakeCaseModelName,
-        parent_model_library: this.parentModelName,
+        pluralized_model: this.snakeCasePluralizedModelName,
+        parent_model_library: parentModelLibrary,
       },
     });
+
+    await this.init();
   }
 
-  async delete({ tree }: { tree: Tree }) {
-    const project = getProjects(tree).get(this.libName);
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
       return;
     }
 
-    await nxWorkspace.removeGenerator(tree, {
-      projectName: this.libName,
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
     });
-
-    await formatFiles(tree);
   }
 }

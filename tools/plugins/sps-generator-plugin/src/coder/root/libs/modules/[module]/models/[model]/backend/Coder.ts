@@ -43,25 +43,23 @@ export class Coder {
       model,
       app,
     };
-
-    // const children = [schemaCoder, modelCoder, appCoder];
   }
 
   async init() {
     await this.project.schema.init();
-    await this.project.model.init();
+    // await this.project.model.init();
     // await this.project.app.init();
   }
 
   async create() {
-    // await this.project.schema.create();
-    await this.project.model.create();
+    await this.project.schema.create();
+    // await this.project.model.create();
     // await this.project.app.create();
   }
 
   async remove() {
     // await this.project.app.remove();
-    await this.project.model.remove();
-    // await this.project.schema.remove();
+    // await this.project.model.remove();
+    await this.project.schema.remove();
   }
 }
