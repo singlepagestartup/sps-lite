@@ -38,18 +38,12 @@ export class Coder {
       schema,
     };
 
-    // const appCoder = new AppCoder({
-    //   modelName,
-    //   module,
-    //   tree,
-    // });
     // const modelCoder = new ModelCoder({
     //   modelName,
     //   module,
     //   tree,
     // });
     // const children = [schemaCoder, modelCoder, appCoder];
-    // this.children = children;
   }
 
   async init() {
@@ -58,11 +52,11 @@ export class Coder {
 
   async create() {
     await this.project.schema.create();
-    // await this.project.app.create();
+    await this.project.app.create();
   }
 
   async remove() {
     await this.project.schema.remove();
-    // await this.project.app.remove();
+    await this.project.app.remove();
   }
 }
