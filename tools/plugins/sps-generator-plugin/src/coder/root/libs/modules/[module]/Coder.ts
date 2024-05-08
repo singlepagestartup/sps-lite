@@ -1,8 +1,12 @@
-import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
-import { readdir } from "fs/promises";
-import { Coder as ModelCoder } from "./models/[model]/Coder";
+import { Tree } from "@nx/devkit";
+import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 
+/**
+ * Module Coder
+ *
+ * Can work in specific module
+ */
 export class Coder {
   name: string;
   root: string;
@@ -10,6 +14,9 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   parent: ModuleCoder;
+  project: {
+    models?: ModelsCoder;
+  };
 
   constructor({
     tree,
@@ -25,62 +32,42 @@ export class Coder {
     this.name = name;
     this.tree = tree;
     this.parent = parent;
-  }
-
-  async check() {
-    const dirExists = await readdir(this.baseDirectory);
+    this.project = {
+      models: undefined,
+    };
   }
 
   async createModel({ modelName }: { modelName: string }) {
-    await this.check();
-
-    const modelCoder = new ModelCoder({
+    const models = new ModelsCoder({
       tree: this.tree,
-      name: modelName,
       parent: this,
     });
 
-    await modelCoder.create();
+    this.project.models = models;
 
-    await modelCoder.project.backend.project.app.attach({
+    await this.project.models.createModel({
+      modelName,
+    });
+
+    await this.project.models.project.model.project.backend.project.app.attach({
       routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
     });
-    // console.log(
-    //   `🚀 ~ createModel ~ this.baseDirectory:`,
-    //   this.baseDirectory + "/backend/app/root/routes.ts",
-    // );
-    // console.log(
-    //   `🚀 ~ createModel ~ modelCoder.project:`,
-    //   modelCoder.project.backend.project.app.project,
-    // );
-    // attach routes to @sps/sps-website-builder-backend-app
-    // libs/modules/sps-website-builder/backend/app/root/src/lib/routes.ts
   }
 
   async removeModel({ modelName }: { modelName: string }) {
-    await this.check();
-
-    const modelCoder = new ModelCoder({
+    const modelsCoder = new ModelsCoder({
       tree: this.tree,
-      name: modelName,
       parent: this,
     });
 
-    await modelCoder.project.backend.project.app.detach({
-      routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
+    await modelsCoder.init({ modelName });
+
+    // await this.project.models.project.model.project.backend.project.app.detach({
+    //   routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
+    // });
+
+    await modelsCoder.removeModel({
+      modelName,
     });
-
-    await modelCoder.remove();
-
-    // console.log(
-    //   `🚀 ~ createModel ~ this.baseDirectory:`,
-    //   this.baseDirectory + "/backend/app/root/routes.ts",
-    // );
-    // console.log(
-    //   `🚀 ~ createModel ~ modelCoder.project:`,
-    //   modelCoder.project.backend.project.app.project,
-    // );
-    // attach routes to @sps/sps-website-builder-backend-app
-    // libs/modules/sps-website-builder/backend/app/root/src/lib/routes.ts
   }
 }

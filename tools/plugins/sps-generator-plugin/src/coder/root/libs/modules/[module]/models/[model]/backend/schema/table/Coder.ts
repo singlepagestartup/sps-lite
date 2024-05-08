@@ -1,36 +1,39 @@
-import { Tree, formatFiles, getProjects, names } from "@nx/devkit";
+import {
+  ProjectConfiguration,
+  Tree,
+  formatFiles,
+  getProjects,
+  names,
+} from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { replaceInFile } from "../../../../../../../../../../utils/file-utils";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
+import { Coder as SchemaCoder } from "../Coder";
 
 export class Coder {
-  libName: string;
-  root: string;
+  parent: SchemaCoder;
+  baseName: string;
+  baseDirectory: string;
+  tree: Tree;
   modelName: string;
   modelNameSnakeCased: string;
   modelNameSnakeCasedPluralized: string;
   moduleNameSnakeCased: string;
   moduleAndModelNamePascalCased: string;
+  project: ProjectConfiguration;
 
-  constructor({
-    modelName,
-    module,
-    tree,
-  }: {
-    modelName: string;
-    module: string;
-    tree: Tree;
-  }) {
-    const libName = `@sps/${module}-models-${modelName}-backend-schema-table`;
-    const baseDirectory = `libs/modules/${module}/models`;
+  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
+    this.parent = parent;
+    this.baseName = `${parent.baseName}-table`;
+    this.baseDirectory = `${parent.baseDirectory}/table`;
+    this.tree = tree;
 
-    const root = `${baseDirectory}/${modelName}/backend/schema/table`;
+    // // wide-slide -> wide_slides
+    const modelName = parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");
-
-    // wide-slide -> wide_slides
     const modelNameSnakeCasedPluralized = modelNameSplitted.reduce(
       (acc, curr, index) => {
         if (index === modelNameSplitted.length - 1) {
@@ -51,9 +54,10 @@ export class Coder {
       "",
     );
 
+    const moduleName = parent.parent.parent.parent.parent.name;
     // sps-website-builder -> sps_w_b
     // need to place table title to maximum allowed in postgres
-    const moduleNameSnakeCased = names(module)
+    const moduleNameSnakeCased = names(moduleName)
       .fileName.split("-")
       .map((word) => {
         if (word === "sps") {
@@ -65,7 +69,7 @@ export class Coder {
       .join("_");
 
     // sps-website-builder -> SPSWB
-    const moduleNameCuttedAndPascalCased = module
+    const moduleNameCuttedAndPascalCased = moduleName
       .split("-")
       .map((word) => {
         // take only first letter
@@ -82,19 +86,20 @@ export class Coder {
     // SPSWB + Slide = SPSWBSlide
     const moduleAndModelNamePascalCased = `${moduleNameCuttedAndPascalCased}${modelNamePascalCased}`;
 
-    this.libName = libName;
-    this.root = root;
     this.modelNameSnakeCasedPluralized = modelNameSnakeCasedPluralized;
-    this.modelName = modelName;
     this.moduleNameSnakeCased = moduleNameSnakeCased;
     this.moduleAndModelNamePascalCased = moduleAndModelNamePascalCased;
   }
 
-  async create({ tree }: { tree: Tree }) {
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async create() {
     await createSpsTSLibrary({
-      tree,
-      root: this.root,
-      name: this.libName,
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
@@ -103,6 +108,8 @@ export class Coder {
         module_and_model_name_pascal_cased: this.moduleAndModelNamePascalCased,
       },
     });
+
+    await this.init();
   }
 
   async createField({
@@ -116,7 +123,7 @@ export class Coder {
     name: string;
     type: string;
   }) {
-    const schemaFilePath = `${this.root}/src/lib/fields/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -144,7 +151,7 @@ export class Coder {
     name: string;
     type: string;
   }) {
-    const schemaFilePath = `${this.root}/src/lib/fields/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -161,20 +168,18 @@ export class Coder {
     await formatFiles(tree);
   }
 
-  async delete({ tree }: { tree: Tree }) {
-    const project = getProjects(tree).get(this.libName);
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
       return;
     }
 
-    await nxWorkspace.removeGenerator(tree, {
-      projectName: this.libName,
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
     });
-
-    await formatFiles(tree);
   }
 }
 

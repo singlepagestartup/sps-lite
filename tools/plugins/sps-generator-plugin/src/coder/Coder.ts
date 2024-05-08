@@ -12,6 +12,9 @@ import { Coder as RootCoder } from "./root/Coder";
 import { Coder as ModuleCoder } from "./root/libs/modules/[module]/Coder";
 // import { Coder as ModelCoder } from "./root/libs/modules/[module]/models/[model]/Code";
 
+/**
+ * Main coder class
+ */
 export class Coder {
   projects: Map<string, ProjectConfiguration>;
   tree: Tree;

@@ -2,12 +2,18 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "./[module]/Coder";
 import { Coder as ModulesCoder } from "../Coder";
 
+/**
+ * Modules Coder
+ *
+ * Can create modules
+ */
 export class Coder {
   tree: Tree;
   parent: ModulesCoder;
   baseName: string;
   baseDirectory: string;
   type: "modules" | "providers" | "shared";
+  name: string;
 
   constructor({
     tree,
@@ -20,6 +26,7 @@ export class Coder {
   }) {
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/${type}`;
+    this.name = type;
     this.tree = tree;
     this.parent = parent;
   }

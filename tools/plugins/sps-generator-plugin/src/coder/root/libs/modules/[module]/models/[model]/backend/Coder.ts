@@ -9,29 +9,35 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  name: string;
   project: {
     app: AppCoder;
+    schema: SchemaCoder;
   };
   // children: (AppCoder | SchemaCoder | ModelCoder)[];
 
   constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
+    this.name = "backend";
     this.baseName = `${parent.baseName}-backend`;
     this.baseDirectory = `${parent.baseDirectory}/backend`;
     this.tree = tree;
     this.parent = parent;
-    const appCoder = new AppCoder({
+
+    const schema = new SchemaCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
+    const app = new AppCoder({
       tree: this.tree,
       parent: this,
     });
 
     this.project = {
-      app: appCoder,
+      app,
+      schema,
     };
-    // const schemaCoder = new SchemaCoder({
-    //   modelName,
-    //   module,
-    //   tree,
-    // });
+
     // const appCoder = new AppCoder({
     //   modelName,
     //   module,
@@ -46,21 +52,17 @@ export class Coder {
     // this.children = children;
   }
 
+  async init() {
+    await this.project.schema.init();
+  }
+
   async create() {
-    await this.project.app.create();
-    // for (const children of this.children) {
-    //   await children.create({ tree });
-    // }
+    await this.project.schema.create();
+    // await this.project.app.create();
   }
 
   async remove() {
-    await this.project.app.remove();
-    // for (const children of this.children) {
-    //   await children.delete({ tree });
-    // }
+    await this.project.schema.remove();
+    // await this.project.app.remove();
   }
 }
-
-// @sps/sps-website-builder-models-project-backend-app
-// @sps/sps-website-builder-models-project-backend-app
-// @sps/sps-website-builder-models-project-backend-app

@@ -1,11 +1,14 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
-import { Coder as ModuleCoder } from "../../Coder";
+import { Coder as ModelsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 
+/**
+ * Model coder
+ */
 export class Coder {
   name: string;
   tree: Tree;
-  parent: ModuleCoder;
+  parent: ModelsCoder;
   baseName: string;
   baseDirectory: string;
   project: {
@@ -22,7 +25,7 @@ export class Coder {
   }: {
     tree: Tree;
     name: string;
-    parent: ModuleCoder;
+    parent: ModelsCoder;
   }) {
     // const projects = getProjects(tree);
 
@@ -47,8 +50,8 @@ export class Coder {
     //   throw new Error("The models must be in the same module");
     // }
 
-    this.baseName = `${parent.baseName}-models-${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/models/${name}`;
+    this.baseName = `${parent.baseName}-${name}`;
+    this.baseDirectory = `${parent.baseDirectory}/${name}`;
     this.name = name;
     this.parent = parent;
     this.tree = tree;
@@ -64,6 +67,10 @@ export class Coder {
     //   frontend: frontendRootProject,
     //   backend: backendAppProject,
     // };
+  }
+
+  async init() {
+    await this.project.backend.init();
   }
 
   async create() {
