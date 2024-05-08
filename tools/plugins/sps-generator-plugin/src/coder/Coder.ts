@@ -1,4 +1,9 @@
-import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
+import {
+  ProjectConfiguration,
+  Tree,
+  formatFiles,
+  getProjects,
+} from "@nx/devkit";
 import { Coder as ModuleSchemaRelationsCoder } from "./root/libs/modules/[module]/relations/[relation]/backend/Coder";
 import { Coder as ModuleModelBackendSchemaRelationCoder } from "./root/libs/modules/[module]/models/[model]/backend/schema/relations/[relation]/Coder";
 import { Coder as ModelFrontendComponentVariantCoder } from "./root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
@@ -31,6 +36,8 @@ export class Coder {
       moduleName,
       modelName,
     });
+
+    await formatFiles(this.tree);
 
     // const moduleCoder = new ModuleCoder({
     //   tree: this.tree,
@@ -66,6 +73,8 @@ export class Coder {
       moduleName,
       modelName,
     });
+
+    await formatFiles(this.tree);
   }
 
   async createModelsRelations({

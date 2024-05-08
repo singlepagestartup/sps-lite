@@ -89,14 +89,14 @@ export class Coder {
   }
 
   async remove() {
-    const project = getProjects(this.tree).get(this.libName);
+    const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
       return;
     }
 
     await nxWorkspace.removeGenerator(this.tree, {
-      projectName: this.libName,
+      projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
     });
