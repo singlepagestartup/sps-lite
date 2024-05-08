@@ -3,6 +3,9 @@ import { Coder as ModuleSchemaRelationsCoder } from "./root/libs/modules/[module
 import { Coder as ModuleModelBackendSchemaRelationCoder } from "./root/libs/modules/[module]/models/[model]/backend/schema/relations/[relation]/Coder";
 import { Coder as ModelFrontendComponentVariantCoder } from "./root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";
+import { Coder as RootCoder } from "./root/Coder";
+import { Coder as ModuleCoder } from "./root/libs/modules/[module]/Coder";
+// import { Coder as ModelCoder } from "./root/libs/modules/[module]/models/[model]/Code";
 
 export class Coder {
   projects: Map<string, ProjectConfiguration>;
@@ -11,6 +14,41 @@ export class Coder {
   constructor({ tree }: { tree: Tree }) {
     this.projects = getProjects(tree);
     this.tree = tree;
+  }
+
+  async createModel({
+    moduleName,
+    modelName,
+  }: {
+    moduleName: string;
+    modelName: string;
+  }) {
+    const rootCoder = new RootCoder({
+      tree: this.tree,
+    });
+
+    await rootCoder.createModel({
+      moduleName,
+      modelName,
+    });
+
+    // const moduleCoder = new ModuleCoder({
+    //   tree: this.tree,
+    //   name: module,
+    // });
+
+    // await moduleCoder.createModel({
+    //   tree: this.tree,
+    //   name,
+    // });
+
+    // const modelCoder = new ModelCoder({
+    //   tree: this.tree,
+    //   name,
+    //   module: moduleCoder,
+    // });
+
+    // console.log(`🚀 ~ createModel ~ modelCoder:`, modelCoder);
   }
 
   async createModelsRelations({

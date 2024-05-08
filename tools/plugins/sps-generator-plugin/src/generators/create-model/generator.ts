@@ -19,6 +19,7 @@ import {
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import pluralize from "pluralize";
+import { Coder } from "../../coder/Coder";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
 import { Coder as ModelBackendAppCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/app/root/Coder";
 import { Coder as ModelBackendSchemaCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/schema/Coder";
@@ -28,11 +29,15 @@ export async function createModelGenerator(
   tree: Tree,
   options: CreateModelGeneratorSchema,
 ) {
-  const modelName = options.name;
+  const name = options.name;
   const module = options.module;
 
-  const baseName = `@sps/${module}-models-${modelName}`;
-  const baseDirectory = `libs/modules/${module}/models`;
+  // const baseName = `@sps/${module}-models-${modelName}`;
+  // const baseDirectory = `libs/modules/${module}/models`;
+
+  const coder = new Coder({ tree });
+  await coder.createModel({ modelName: name, moduleName: module });
+
   // const baseDirectory = `libs/modules/${module}/relations`;
 
   // const moduleProject = `@sps/${module}-backend-app`;
@@ -46,59 +51,59 @@ export async function createModelGenerator(
   // });
   // await backendBuilder.create({ tree });
 
-  await createContracts({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName,
-    type: "root",
-    module,
-  });
+  // await createContracts({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName,
+  //   type: "root",
+  //   module,
+  // });
 
-  await createContracts({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName,
-    type: "extended",
-    module,
-  });
+  // await createContracts({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName,
+  //   type: "extended",
+  //   module,
+  // });
 
-  await createFrontendApi({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-    origin: "server",
-  });
+  // await createFrontendApi({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  //   origin: "server",
+  // });
 
-  await createFrontendApi({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-    origin: "client",
-  });
+  // await createFrontendApi({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  //   origin: "client",
+  // });
 
-  await createFrontendRedux({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createFrontendRedux({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await createFrontendRootComponent({
-    tree,
-    baseDirectory,
-    baseName,
-    modelName,
-    module,
-  });
+  // await createFrontendRootComponent({
+  //   tree,
+  //   baseDirectory,
+  //   baseName,
+  //   modelName,
+  //   module,
+  // });
 
-  await formatFiles(tree);
+  // await formatFiles(tree);
 }
 
 export default createModelGenerator;
