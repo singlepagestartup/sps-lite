@@ -13,6 +13,13 @@ export interface Params {
   locale: string | string[];
 }
 
+const fetchOptions = {
+  next: {
+    revalidate: 0,
+    tag: route,
+  },
+};
+
 async function getByUrl({ url, locale }: Params) {
   const localUrl =
     typeof url === "string"
@@ -30,6 +37,7 @@ async function getByUrl({ url, locale }: Params) {
       new URLSearchParams({
         url: localUrl,
       }),
+    fetchOptions,
   );
 
   const targetPage = await request.json();
@@ -112,6 +120,7 @@ async function getUrlModelId({
 }
 
 async function getPage({ url, locale }: Params) {
+  console.log(`🚀 ~ getPage ~ url:`, url);
   let targetPage = await getByUrl({ url, locale });
 
   if (!targetPage) {
@@ -130,6 +139,7 @@ async function getPage({ url, locale }: Params) {
 
   const request = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
+    fetchOptions,
   );
 
   const filledTargetPage = await request.json();
@@ -160,6 +170,7 @@ export const api = {
     const pageProps = await api.getPage(props);
     const request = await fetch(
       `${BACKEND_URL}/api/sps-website-builder/metatags`,
+      fetchOptions,
     );
 
     if (!request.ok) {
@@ -172,6 +183,7 @@ export const api = {
     if (!metatags?.length) {
       const defaultMetatagsRequest = await fetch(
         `${BACKEND_URL}/api/sps-website-builder/metatags`,
+        fetchOptions,
       );
 
       const defaultMetatagsJson = await defaultMetatagsRequest.json();
@@ -222,6 +234,7 @@ export const api = {
     try {
       const request = await fetch(
         `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
+        fetchOptions,
       );
 
       const pagesUrls = await request.json();
