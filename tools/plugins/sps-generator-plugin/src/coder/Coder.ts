@@ -18,10 +18,21 @@ import { Coder as ModuleCoder } from "./root/libs/modules/[module]/Coder";
 export class Coder {
   projects: Map<string, ProjectConfiguration>;
   tree: Tree;
+  project: {
+    root: RootCoder;
+  };
 
   constructor({ tree }: { tree: Tree }) {
     this.projects = getProjects(tree);
     this.tree = tree;
+
+    const root = new RootCoder({
+      tree: this.tree,
+    });
+
+    this.project = {
+      root,
+    };
   }
 
   async createModel({
@@ -31,11 +42,7 @@ export class Coder {
     moduleName: string;
     modelName: string;
   }) {
-    const rootCoder = new RootCoder({
-      tree: this.tree,
-    });
-
-    await rootCoder.createModel({
+    await this.project.root.createModel({
       moduleName,
       modelName,
     });
@@ -68,11 +75,7 @@ export class Coder {
     moduleName: string;
     modelName: string;
   }) {
-    const rootCoder = new RootCoder({
-      tree: this.tree,
-    });
-
-    await rootCoder.removeModel({
+    await this.project.root.removeModel({
       moduleName,
       modelName,
     });

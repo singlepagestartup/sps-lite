@@ -14,6 +14,9 @@ export class Coder {
   baseDirectory: string;
   type: "modules" | "providers" | "shared";
   name: string;
+  project: {
+    module?: ModuleCoder;
+  };
 
   constructor({
     tree,
@@ -29,6 +32,21 @@ export class Coder {
     this.name = type;
     this.tree = tree;
     this.parent = parent;
+    this.project = {
+      module: undefined,
+    };
+  }
+
+  async init({ moduleName }: { moduleName: string }) {
+    const moduleCoder = new ModuleCoder({
+      tree: this.tree,
+      parent: this,
+      name: moduleName,
+    });
+
+    this.project.module = moduleCoder;
+
+    await this.project.module.init();
   }
 
   async createModel({
@@ -38,13 +56,11 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const moduleCoder = new ModuleCoder({
-      tree: this.tree,
-      parent: this,
-      name: moduleName,
+    await this.init({
+      moduleName,
     });
 
-    await moduleCoder.createModel({
+    await this.project.module.createModel({
       modelName,
     });
   }
@@ -56,13 +72,11 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const moduleCoder = new ModuleCoder({
-      tree: this.tree,
-      parent: this,
-      name: moduleName,
+    await this.init({
+      moduleName,
     });
 
-    await moduleCoder.removeModel({
+    await this.project.module.removeModel({
       modelName,
     });
   }

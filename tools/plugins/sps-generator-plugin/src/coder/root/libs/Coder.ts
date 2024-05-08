@@ -13,6 +13,9 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  project: {
+    modules: ModulesCoder;
+  };
 
   constructor({ tree, parent }: { tree: Tree; parent: RootCoder }) {
     this.baseDirectory = `libs`;
@@ -22,6 +25,18 @@ export class Coder {
     this.parent = parent;
   }
 
+  async init() {
+    const modulesCoder = new ModulesCoder({
+      tree: this.tree,
+      parent: this,
+      type: "modules",
+    });
+
+    this.project = {
+      modules: modulesCoder,
+    };
+  }
+
   async createModel({
     modelName,
     moduleName,
@@ -29,13 +44,9 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const modulesCoder = new ModulesCoder({
-      tree: this.tree,
-      parent: this,
-      type: "modules",
-    });
+    await this.init();
 
-    await modulesCoder.createModel({ modelName, moduleName });
+    await this.project.modules.createModel({ modelName, moduleName });
   }
 
   async removeModel({
@@ -45,12 +56,8 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const modulesCoder = new ModulesCoder({
-      tree: this.tree,
-      parent: this,
-      type: "modules",
-    });
+    await this.init();
 
-    await modulesCoder.removeModel({ modelName, moduleName });
+    await this.project.modules.removeModel({ modelName, moduleName });
   }
 }

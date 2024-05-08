@@ -48,25 +48,14 @@ export class Coder {
 
   async createModel({ modelName }: { modelName: string }) {
     await this.check();
-
-    const model = new ModelCoder({
-      tree: this.tree,
-      name: modelName,
-      parent: this,
-    });
-
-    this.project.model = model;
+    await this.init({ modelName });
 
     await this.project.model.create();
   }
 
   async removeModel({ modelName }: { modelName: string }) {
-    const modelCoder = new ModelCoder({
-      tree: this.tree,
-      name: modelName,
-      parent: this,
-    });
+    await this.init({ modelName });
 
-    await modelCoder.remove();
+    await this.project.model.remove();
   }
 }

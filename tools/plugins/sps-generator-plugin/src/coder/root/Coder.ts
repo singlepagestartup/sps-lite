@@ -11,12 +11,24 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  project: {
+    libs: LibsCoder;
+  };
 
   constructor({ tree }: { tree: Tree }) {
     this.name = "root";
     this.tree = tree;
     this.baseName = "@sps";
     this.baseDirectory = "";
+
+    const libs = new LibsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
+    this.project = {
+      libs,
+    };
   }
 
   async createModel({
@@ -26,12 +38,7 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const libsCoder = new LibsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-
-    await libsCoder.createModel({
+    await this.project.libs.createModel({
       modelName,
       moduleName,
     });
@@ -44,12 +51,7 @@ export class Coder {
     modelName: string;
     moduleName: string;
   }) {
-    const libsCoder = new LibsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-
-    await libsCoder.removeModel({
+    await this.project.libs.removeModel({
       modelName,
       moduleName,
     });

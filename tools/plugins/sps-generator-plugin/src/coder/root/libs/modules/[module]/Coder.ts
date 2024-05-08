@@ -32,19 +32,20 @@ export class Coder {
     this.name = name;
     this.tree = tree;
     this.parent = parent;
-    this.project = {
-      models: undefined,
-    };
-  }
 
-  async createModel({ modelName }: { modelName: string }) {
     const models = new ModelsCoder({
       tree: this.tree,
       parent: this,
     });
 
-    this.project.models = models;
+    this.project = {
+      models,
+    };
+  }
 
+  async init() {}
+
+  async createModel({ modelName }: { modelName: string }) {
     await this.project.models.createModel({
       modelName,
     });
@@ -55,18 +56,13 @@ export class Coder {
   }
 
   async removeModel({ modelName }: { modelName: string }) {
-    const modelsCoder = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
+    await this.project.models.init({ modelName });
+
+    await this.project.models.project.model.project.backend.project.app.detach({
+      routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
     });
 
-    await modelsCoder.init({ modelName });
-
-    // await this.project.models.project.model.project.backend.project.app.detach({
-    //   routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-    // });
-
-    await modelsCoder.removeModel({
+    await this.project.models.removeModel({
       modelName,
     });
   }
