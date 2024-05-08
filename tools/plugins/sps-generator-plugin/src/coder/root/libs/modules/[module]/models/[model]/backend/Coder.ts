@@ -48,7 +48,7 @@ export class Coder {
   }
 
   async init() {
-    // await this.project.schema.init();
+    await this.project.schema.init();
     await this.project.model.init();
     // await this.project.app.init();
   }

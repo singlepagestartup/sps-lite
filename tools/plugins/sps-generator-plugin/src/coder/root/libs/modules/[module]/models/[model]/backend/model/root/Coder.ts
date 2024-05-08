@@ -28,7 +28,7 @@ export class Coder {
   root: string;
   modelName: string;
   schemaModelName: string;
-  module: string;
+  moduleName: string;
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   schemaModuleLibName: string;
@@ -44,11 +44,14 @@ export class Coder {
 
     // const libName = `@sps/${module}-models-${modelName}-backend-model`;
     // const baseDirectory = `libs/modules/${module}/models`;
-    // const asPropertyModelName = names(modelName).propertyName;
 
-    // const pascalCaseName = names(modelName).className;
-    // const moduleNamePascalCase = names(module).className;
-    // const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
+    const modelName = parent.parent.name;
+    const asPropertyModelName = names(modelName).propertyName;
+
+    const moduleName = parent.parent.parent.parent.name;
+    const pascalCaseName = names(modelName).className;
+    const moduleNamePascalCase = names(moduleName).className;
+    const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
 
     // const moduleApp = `@sps/${module}-backend-models`;
     // const moduleBackendAppProject = getProjects(tree).get(moduleApp);
@@ -59,23 +62,42 @@ export class Coder {
 
     // this.libName = libName;
     // this.rootAppProject = moduleBackendAppProject;
-    // this.module = module;
+
+    this.moduleName = moduleName;
     // this.root = root;
-    // this.modelName = modelName;
-    // this.schemaModelName = schemaModelName;
+    this.schemaModelName = schemaModelName;
     // this.schemaModuleLibName = schemaModuleLibName;
-    // this.importModelAsAsPropertyModelName =
-    //   new ImportModelAsAsPropertyModelName({
-    //     asPropertyModelName,
-    //     libName,
-    //   });
-    // this.exportModel = new ExportModel({
-    //   asPropertyModelName,
-    // });
+    this.modelName = modelName;
+    this.importModelAsAsPropertyModelName =
+      new ImportModelAsAsPropertyModelName({
+        asPropertyModelName,
+        libName: this.baseName,
+      });
+    this.exportModel = new ExportModel({
+      asPropertyModelName,
+    });
   }
 
   async init() {
     this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async create() {
+    const schemaModuleLibName = this.parent.project.schema.baseName;
+
+    await createSpsTSLibrary({
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
+      generateFilesPath: path.join(__dirname, `files`),
+      templateParams: {
+        template: "",
+        schema_module_lib_name: schemaModuleLibName,
+        model_name: this.modelName,
+        module_name: this.moduleName,
+        schema_model_name: this.schemaModelName,
+      },
+    });
   }
 
   async attach({ indexPath }: { indexPath: string }) {
@@ -124,22 +146,6 @@ export class Coder {
         throw error;
       }
     }
-  }
-
-  async create() {
-    await createSpsTSLibrary({
-      tree: this.tree,
-      root: this.baseDirectory,
-      name: this.baseName,
-      generateFilesPath: path.join(__dirname, `files`),
-      templateParams: {
-        template: "",
-        schema_module_lib_name: this.schemaModuleLibName,
-        model_name: this.modelName,
-        module_name: this.module,
-        schema_model_name: this.schemaModelName,
-      },
-    });
   }
 
   async remove() {
