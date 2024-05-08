@@ -23,7 +23,7 @@ export const config = {
     model: rightTableModelName,
     table: RightTable,
     queryKey: "<%= right_schema_model_name %>",
-    schemaKey: "<%= left_schema_model_name %>Id",
+    schemaKey: "<%= right_schema_model_name %>Id",
     extract: true,
     returnType: RightTable.$inferSelect,
   }],

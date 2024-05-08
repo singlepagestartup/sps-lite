@@ -13,11 +13,13 @@ export async function service(props: { id: string; data: any }) {
 
   const plainData = insertSchema.parse(data);
 
-  const [entity] = await db
-    .update(Table)
-    .set(plainData)
-    .where(eq(Table.id, id))
-    .returning();
+  if (Object.keys(plainData).length) {
+    const [entity] = await db
+      .update(Table)
+      .set(plainData)
+      .where(eq(Table.id, id))
+      .returning();
+  }
 
   await insertRelations({
     db,

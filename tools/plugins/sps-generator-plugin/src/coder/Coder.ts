@@ -1,13 +1,16 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ModuleSchemaRelationsCoder } from "./[root]/libs/modules/[module]/backend/schema/relations/relation/Coder";
 import { Coder as ModuleModelBackendSchemaRelationCoder } from "./[root]/libs/modules/[module]/models/[model]/backend/schema/relations/relation/Coder";
+import { Coder as ModelFrontendComponentVariantCoder } from "./[root]/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";
 
 export class Coder {
   projects: Map<string, ProjectConfiguration>;
+  tree: Tree;
 
   constructor({ tree }: { tree: Tree }) {
     this.projects = getProjects(tree);
+    this.tree = tree;
   }
 
   async createModelsRelations({
@@ -136,5 +139,24 @@ export class Coder {
       relationName,
     });
     await moduleSchemaRelationsCoder.delete({ tree });
+  }
+
+  async createModelFrontendComponentVariant({
+    project,
+    type,
+    variant,
+  }: {
+    project: ProjectConfiguration;
+    type: string;
+    variant: string;
+  }) {
+    const modelFrontendComponentVariantCoder =
+      new ModelFrontendComponentVariantCoder({
+        project,
+        type,
+        variant,
+      });
+
+    await modelFrontendComponentVariantCoder.create({ tree: this.tree });
   }
 }

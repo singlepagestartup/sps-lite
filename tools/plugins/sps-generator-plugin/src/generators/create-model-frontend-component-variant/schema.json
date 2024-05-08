@@ -35,7 +35,7 @@
     },
     "project": {
       "type": "string",
-      "description": "The root component for creating component.",
+      "description": "The root component for creating component. Shoule be [module]-models-[model]-frontend-component",
       "x-prompt": "Select root component?",
       "$default": {
         "$source": "project"

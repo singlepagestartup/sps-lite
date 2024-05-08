@@ -33,11 +33,11 @@ export function Component(props: IComponentPropsExtended) {
     if (pages) {
       data.pages = isSelected
         ? pages.filter((p) => p !== props.page.id)
-        : [...pages, props.page.id];
+        : [...pages, { id: props.page.id }];
     }
 
     console.log("🚀 ~ onSubmit ~ data:", data);
-    // await updateLayout({ id: props.data.id, data });
+    await updateLayout({ id: props.data.id, data });
   }
 
   useEffect(() => {
