@@ -53,10 +53,8 @@ export class Coder {
     this.parent = parent;
     this.tree = tree;
 
-    const pluralNameModelName = pluralize(
-      names(parent.parent.baseName).fileName,
-    );
-    const asPropertyModelName = names(parent.parent.baseName).propertyName;
+    const pluralNameModelName = pluralize(names(parent.parent.name).fileName);
+    const asPropertyModelName = names(parent.parent.name).propertyName;
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
       libName: this.baseName,
       asPropertyModelName,
