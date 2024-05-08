@@ -14,9 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       {props.isEditing ? (
         <PageSpsLiteEditor {...props} variant="editor" />
       ) : null}
-      <div className="w-full py-20 text-center">
-        <h1 className="text-4xl font-bold">{props.data.title}</h1>
-      </div>
+
       <User isServer={false} variant="auth-wrapper">
         {props.data?.layouts && props.data.layouts?.length ? (
           <Layout
@@ -24,9 +22,18 @@ export function Component(props: IComponentPropsExtended) {
             data={props.data.layouts[0]}
             variant={props.data.layouts[0].variant}
           >
-            <PageBlocks {...props} variant="default" />
+            <div>
+              <div className="w-full py-20 text-center">
+                <h1 className="text-4xl font-bold">{props.data.title}</h1>
+              </div>
+              <PageBlocks {...props} variant="default" />
+            </div>
           </Layout>
-        ) : null}
+        ) : (
+          <div className="w-full py-20 text-center">
+            <h1 className="text-4xl font-bold">{props.data.title}</h1>
+          </div>
+        )}
       </User>
     </section>
   );

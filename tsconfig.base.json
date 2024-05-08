@@ -1050,8 +1050,23 @@
       "@sps/sps-website-builder-models-layout-frontend-component": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-panel": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-panel/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-boxed": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/boxed/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-editor": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/editor/src/index.ts"
@@ -1289,6 +1304,18 @@
       ],
       "@sps/sps-website-builder-models-page-frontend-component": [
         "libs/modules/sps-website-builder/models/page/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-panel": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-panel/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/editor/src/index.ts"
