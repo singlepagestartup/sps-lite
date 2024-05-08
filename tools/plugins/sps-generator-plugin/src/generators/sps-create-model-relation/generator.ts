@@ -7,7 +7,7 @@ import {
 } from "@nx/devkit";
 import * as path from "path";
 import { SpsCreateModelRelationGeneratorSchema } from "./schema";
-import { Coder as ModelsBackendSchemaRelationCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/schema/relations/relation/Coder";
+import { Coder as ModelsBackendSchemaRelationCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/schema/relations/[relation]/Coder";
 import { Coder } from "../../coder/Coder";
 
 // npx nx generate @sps/sps-generator-plugin:sps-create-model-relation --left_project_relation_name=pages --right_project_relation_name=slides --left_project=@sps/sps-website-builder-models-slide-backend-schema-relations --right_project=@sps/sps-website-builder-models-page-backend-schema-relations --no-interactive --dry-run

@@ -1,5 +1,5 @@
-import { Coder as AppCoder } from "./app/Coder";
-import { Coder as ModelCoder } from "./model/Coder";
+import { Coder as AppCoder } from "./app/root/Coder";
+import { Coder as ModelCoder } from "./model/root/Coder";
 import { Coder as SchemaCoder } from "./schema/Coder";
 import { Tree } from "@nx/devkit";
 
