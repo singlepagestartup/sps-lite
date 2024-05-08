@@ -69,4 +69,8 @@ export class Coder {
   async create() {
     await this.project.backend.create();
   }
+
+  async remove() {
+    await this.project.backend.remove();
+  }
 }

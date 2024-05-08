@@ -51,6 +51,23 @@ export class Coder {
     // console.log(`🚀 ~ createModel ~ modelCoder:`, modelCoder);
   }
 
+  async removeModel({
+    moduleName,
+    modelName,
+  }: {
+    moduleName: string;
+    modelName: string;
+  }) {
+    const rootCoder = new RootCoder({
+      tree: this.tree,
+    });
+
+    await rootCoder.removeModel({
+      moduleName,
+      modelName,
+    });
+  }
+
   async createModelsRelations({
     tree,
     leftProjectRelationName,

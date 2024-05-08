@@ -53,7 +53,8 @@ export class Coder {
     // }
   }
 
-  async delete({ tree }: { tree: Tree }) {
+  async remove() {
+    await this.project.app.remove();
     // for (const children of this.children) {
     //   await children.delete({ tree });
     // }

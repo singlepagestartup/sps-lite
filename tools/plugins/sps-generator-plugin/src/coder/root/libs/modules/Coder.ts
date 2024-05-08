@@ -41,4 +41,22 @@ export class Coder {
       modelName,
     });
   }
+
+  async removeModel({
+    modelName,
+    moduleName,
+  }: {
+    modelName: string;
+    moduleName: string;
+  }) {
+    const moduleCoder = new ModuleCoder({
+      tree: this.tree,
+      parent: this,
+      name: moduleName,
+    });
+
+    await moduleCoder.removeModel({
+      modelName,
+    });
+  }
 }

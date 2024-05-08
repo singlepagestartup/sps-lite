@@ -56,4 +56,31 @@ export class Coder {
     // attach routes to @sps/sps-website-builder-backend-app
     // libs/modules/sps-website-builder/backend/app/root/src/lib/routes.ts
   }
+
+  async removeModel({ modelName }: { modelName: string }) {
+    await this.check();
+
+    const modelCoder = new ModelCoder({
+      tree: this.tree,
+      name: modelName,
+      parent: this,
+    });
+
+    await modelCoder.project.backend.project.app.detach({
+      routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
+    });
+
+    await modelCoder.remove();
+
+    // console.log(
+    //   `🚀 ~ createModel ~ this.baseDirectory:`,
+    //   this.baseDirectory + "/backend/app/root/routes.ts",
+    // );
+    // console.log(
+    //   `🚀 ~ createModel ~ modelCoder.project:`,
+    //   modelCoder.project.backend.project.app.project,
+    // );
+    // attach routes to @sps/sps-website-builder-backend-app
+    // libs/modules/sps-website-builder/backend/app/root/src/lib/routes.ts
+  }
 }

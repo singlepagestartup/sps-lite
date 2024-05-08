@@ -30,4 +30,20 @@ export class Coder {
 
     await modulesCoder.createModel({ modelName, moduleName });
   }
+
+  async removeModel({
+    modelName,
+    moduleName,
+  }: {
+    modelName: string;
+    moduleName: string;
+  }) {
+    const modulesCoder = new ModulesCoder({
+      tree: this.tree,
+      parent: this,
+      type: "modules",
+    });
+
+    await modulesCoder.removeModel({ modelName, moduleName });
+  }
 }

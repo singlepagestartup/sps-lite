@@ -69,36 +69,6 @@ export class Coder {
   //   await this.attachToRoutes({ tree });
   // }
 
-  // async detachFromRoot({ tree }: { tree: Tree }) {
-  //   const backendAppProjectRoutesPath = `${this.rootAppProject.sourceRoot}/lib/routes.ts`;
-
-  //   try {
-  //     const replaceExportRoutes = await replaceInFile({
-  //       tree,
-  //       pathToFile: backendAppProjectRoutesPath,
-  //       regex: this.exportRoute.onRemove.regex,
-  //       content: "",
-  //     });
-  //   } catch (error) {
-  //     if (!error.message.includes(`No expected value`)) {
-  //       throw error;
-  //     }
-  //   }
-
-  //   try {
-  //     const replaceImportRoutes = await replaceInFile({
-  //       tree,
-  //       pathToFile: backendAppProjectRoutesPath,
-  //       regex: this.importAppAsAsPropertyModelName.onRemove.regex,
-  //       content: "",
-  //     });
-  //   } catch (error) {
-  //     if (!error.message.includes(`No expected value`)) {
-  //       throw error;
-  //     }
-  //   }
-  // }
-
   async create() {
     await createSpsTSLibrary({
       tree: this.tree,
@@ -118,23 +88,19 @@ export class Coder {
     this.project = projects.get(this.baseName);
   }
 
-  // async delete({ tree }: { tree: Tree }) {
-  //   await this.detachFromRoot({ tree });
+  async remove() {
+    const project = getProjects(this.tree).get(this.libName);
 
-  //   const project = getProjects(tree).get(this.libName);
+    if (!project) {
+      return;
+    }
 
-  //   if (!project) {
-  //     return;
-  //   }
-
-  //   await nxWorkspace.removeGenerator(tree, {
-  //     projectName: this.libName,
-  //     skipFormat: true,
-  //     forceRemove: true,
-  //   });
-
-  //   await formatFiles(tree);
-  // }
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.libName,
+      skipFormat: true,
+      forceRemove: true,
+    });
+  }
 
   async attach({ routesPath }: { routesPath: string }) {
     await addToFile({
@@ -150,6 +116,34 @@ export class Coder {
       regex: this.exportRoute.onCreate.regex,
       content: this.exportRoute.onCreate.content,
     });
+  }
+
+  async detach({ routesPath }: { routesPath: string }) {
+    try {
+      const replaceExportRoutes = await replaceInFile({
+        tree: this.tree,
+        pathToFile: routesPath,
+        regex: this.exportRoute.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      const replaceImportRoutes = await replaceInFile({
+        tree: this.tree,
+        pathToFile: routesPath,
+        regex: this.importAppAsAsPropertyModelName.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 }
 
