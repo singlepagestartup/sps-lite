@@ -43,7 +43,9 @@ export class Coder {
     };
   }
 
-  async init() {}
+  async init() {
+    //
+  }
 
   async createModel({ modelName }: { modelName: string }) {
     await this.project.models.createModel({
