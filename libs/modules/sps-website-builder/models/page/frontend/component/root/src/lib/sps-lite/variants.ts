@@ -1,3 +1,4 @@
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-select-input";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form";
 import { Component as AdminTableRow } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table-row";
 import { Component as AdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
@@ -9,6 +10,7 @@ import { Component as GetByUrl } from "@sps/sps-website-builder-models-page-fron
 import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
 
 export const variants = {
+  "admin-select-input": AdminSelectInput,
   "admin-form": AdminForm,
   "admin-table-row": AdminTableRow,
   "admin-table": AdminTable,

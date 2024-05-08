@@ -1056,6 +1056,9 @@
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-panel": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-panel/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table/src/index.ts"
       ],
@@ -1311,6 +1314,9 @@
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-panel": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-panel/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table/src/index.ts"
       ],
@@ -1334,6 +1340,27 @@
       ],
       "@sps/sps-website-builder-models-page-frontend-redux": [
         "libs/modules/sps-website-builder/models/page/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-contracts": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-frontend-component": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-pages-to-layouts-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-products-list-block-contracts": [
         "libs/modules/sps-website-builder/models/products-list-block/contracts/root/src/index.ts"

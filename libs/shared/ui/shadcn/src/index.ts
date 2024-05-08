@@ -5,3 +5,5 @@ export * from "./lib/table";
 export * from "./lib/tabs";
 export * from "./lib/dialog";
 export * from "./lib/skeleton";
+export * from "./lib/select";
+export * from "./lib/label";

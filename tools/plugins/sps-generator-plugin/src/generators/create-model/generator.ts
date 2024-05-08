@@ -33,101 +33,70 @@ export async function createModelGenerator(
 
   const baseName = `@sps/${module}-models-${modelName}`;
   const baseDirectory = `libs/modules/${module}/models`;
+  // const baseDirectory = `libs/modules/${module}/relations`;
 
-  const moduleProject = `@sps/${module}-backend-app`;
+  // const moduleProject = `@sps/${module}-backend-app`;
 
-  const backendAppProject = getProjects(tree).get(moduleProject);
+  // const backendAppProject = getProjects(tree).get(moduleProject);
 
-  const backendBuilder = new ModelBackendCoder({
+  // const backendBuilder = new ModelBackendCoder({
+  //   modelName,
+  //   module,
+  //   tree,
+  // });
+  // await backendBuilder.create({ tree });
+
+  await createContracts({
+    tree,
+    baseName,
+    baseDirectory,
+    modelName,
+    type: "root",
+    module,
+  });
+
+  await createContracts({
+    tree,
+    baseName,
+    baseDirectory,
+    modelName,
+    type: "extended",
+    module,
+  });
+
+  await createFrontendApi({
+    tree,
+    baseDirectory,
+    baseName,
     modelName,
     module,
-    tree,
+    origin: "server",
   });
-  await backendBuilder.create({ tree });
 
-  // await createContracts({
-  //   tree,
-  //   baseName,
-  //   baseDirectory,
-  //   modelName,
-  //   type: "root",
-  //   module,
-  // });
+  await createFrontendApi({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+    origin: "client",
+  });
 
-  // await createContracts({
-  //   tree,
-  //   baseName,
-  //   baseDirectory,
-  //   modelName,
-  //   type: "extended",
-  //   module,
-  // });
+  await createFrontendRedux({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
-  // await createFrontendApi({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  //   origin: "server",
-  // });
-
-  // await createFrontendApi({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  //   origin: "client",
-  // });
-
-  // await createFrontendRedux({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
-  // await createFrontendRootComponent({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
-  // await createBackendSchemaPlain({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
-  // await createBackendSchemaRelations({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
-  // await createBackendSchema({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
-  // const backendAppBuilder = new ModelBackendAppBuilder({
-  //   modelName,
-  //   module,
-  //   tree,
-  // });
-
-  // await backendAppBuilder.create({ tree });
+  await createFrontendRootComponent({
+    tree,
+    baseDirectory,
+    baseName,
+    modelName,
+    module,
+  });
 
   await formatFiles(tree);
 }

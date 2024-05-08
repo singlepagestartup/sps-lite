@@ -12,6 +12,7 @@ const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 export const Table = pgTable(
   table,
   {
+    id: pgCore.uuid("id").primaryKey().defaultRandom(),
     pageId: pgCore
       .uuid("page_id")
       .notNull()

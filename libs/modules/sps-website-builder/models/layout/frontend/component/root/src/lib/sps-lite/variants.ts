@@ -1,3 +1,4 @@
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
 import { Component as AdminTableRow } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table-row";
 import { Component as AdminTable } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table";
 import { Component as AdminPanel } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-panel";
@@ -10,6 +11,7 @@ import { Component as Wide } from "@sps/sps-website-builder-models-layout-fronte
 import { Component as Boxed } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-boxed";
 
 export const variants = {
+  "admin-select-input": AdminSelectInput,
   "admin-table-row": AdminTableRow,
   "admin-table": AdminTable,
   "admin-panel": AdminPanel,
