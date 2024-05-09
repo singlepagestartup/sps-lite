@@ -1,7 +1,6 @@
 import { db } from "@sps/sps-db-provider";
 import {
   Table,
-  config,
   insertSchema,
 } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
@@ -20,13 +19,6 @@ export async function service(props: { id: string; data: any }) {
         .where(eq(Table.id, id))
         .returning();
   }
-
-  await insertRelations({
-    db,
-    id,
-    data,
-    config,
-  });
 
   const transformedEntity = await findById({
     id,

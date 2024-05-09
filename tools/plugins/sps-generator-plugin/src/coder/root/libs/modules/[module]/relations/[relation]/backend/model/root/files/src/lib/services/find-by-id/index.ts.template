@@ -2,7 +2,6 @@ import { db } from "@sps/sps-db-provider";
 import {
   Table,
   populate,
-  config,
   modelName,
 } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
@@ -20,10 +19,5 @@ export async function service(props: { id: string }) {
     return null;
   }
 
-  const transformedResult = transformData<typeof result, typeof config>({
-    entity: result,
-    config,
-  });
-
-  return transformedResult;
+  return result;
 }
