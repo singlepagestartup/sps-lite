@@ -109,7 +109,7 @@ export class Coder {
   }
 
   async remove() {
-    const project = getProjects(this.tree).get(this.libName);
+    const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
       return;
