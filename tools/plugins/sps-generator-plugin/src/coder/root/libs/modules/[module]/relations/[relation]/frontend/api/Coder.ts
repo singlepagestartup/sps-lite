@@ -39,16 +39,16 @@ export class Coder {
 
   async init() {
     await this.project.client.init();
-    // await this.project.server.init();
+    await this.project.server.init();
   }
 
   async create() {
     await this.project.client.create();
-    // await this.project.server.create();
+    await this.project.server.create();
   }
 
   async remove() {
     await this.project.client.remove();
-    // await this.project.server.remove();
+    await this.project.server.remove();
   }
 }

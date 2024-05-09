@@ -67,7 +67,9 @@ export const util = async ({
     delete json.include;
 
     json.references = [
-      ...json.references,
+      ...json.references.filter(
+        (r: { path: string }) => r.path !== "./tsconfig.lib.json",
+      ),
       {
         path: "./tsconfig.spec.json",
       },
