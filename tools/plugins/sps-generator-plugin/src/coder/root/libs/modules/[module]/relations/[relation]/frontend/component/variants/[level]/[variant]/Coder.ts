@@ -28,7 +28,7 @@ export class Coder {
   name: string;
   project: ProjectConfiguration;
   moduleName: string;
-  modelName: string;
+  relationName: string;
   importVariant: ImportVariant;
   exportVariant: ExportVariant;
   importInterface: ImportInterface;
@@ -53,13 +53,14 @@ export class Coder {
     this.parent = parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
-    const modelName = this.parent.parent.parent.name;
+    const relationName = this.parent.parent.parent.name;
+    console.log(`🚀 ~ relationName:`, relationName);
     const nameStyles = getNameStyles({
       name,
     });
 
     this.moduleName = moduleName;
-    this.modelName = modelName;
+    this.relationName = relationName;
     this.importVariant = new ImportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
       libName: this.baseName,
@@ -97,7 +98,7 @@ export class Coder {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
-        model_name: this.modelName,
+        relation_name: this.relationName,
         offset_from_root: offsetFromRootProject,
       },
     });

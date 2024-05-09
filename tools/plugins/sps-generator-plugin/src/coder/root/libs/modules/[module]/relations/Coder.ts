@@ -32,23 +32,43 @@ export class Coder {
     };
   }
 
-  async init({
-    leftModelRelationName,
-    rightModelRelationName,
-  }: {
-    leftModelRelationName: string;
-    rightModelRelationName: string;
-  }) {
-    const relation = new RelationCoder({
-      tree: this.tree,
-      leftModelRelationName,
-      rightModelRelationName,
-      parent: this,
-    });
+  async init(
+    props:
+      | {
+          leftModelRelationName: string;
+          rightModelRelationName: string;
+        }
+      | { relationName: string },
+  ) {
+    if ("relationName" in props && props.relationName) {
+      const { relationName } = props;
 
-    this.project.relation = relation;
+      const relation = new RelationCoder({
+        tree: this.tree,
+        name: relationName,
+        parent: this,
+      });
 
-    await this.project.relation.init();
+      this.project.relation = relation;
+
+      await this.project.relation.init();
+    } else if ("leftModelRelationName" in props) {
+      const { leftModelRelationName, rightModelRelationName } = props;
+      const relation = new RelationCoder({
+        tree: this.tree,
+        leftModelRelationName,
+        rightModelRelationName,
+        parent: this,
+      });
+
+      this.project.relation = relation;
+
+      await this.project.relation.init();
+    } else {
+      throw new Error(
+        "Prop 'relationName' / 'leftModelRelationName and rightModelRelationName' are required",
+      );
+    }
   }
 
   async createRelations({
@@ -67,5 +87,29 @@ export class Coder {
     await this.init({ leftModelRelationName, rightModelRelationName });
 
     await this.project.relation.remove();
+  }
+
+  async createRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    relationName: string;
+  }) {
+    const { relationName } = props;
+
+    await this.init({ relationName });
+
+    await this.project.relation.createRelationFrontendComponentVariant(props);
+  }
+
+  async removeRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    relationName: string;
+  }) {
+    const { relationName } = props;
+
+    await this.init({ relationName });
+
+    await this.project.relation.removeRelationFrontendComponentVariant(props);
   }
 }

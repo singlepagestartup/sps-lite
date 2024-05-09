@@ -31,10 +31,6 @@ export class Coder {
     };
   }
 
-  async check() {
-    await readdir(this.baseDirectory);
-  }
-
   async init({ modelName }: { modelName: string }) {
     const model = new ModelCoder({
       tree: this.tree,
@@ -48,7 +44,6 @@ export class Coder {
   }
 
   async createModel({ modelName }: { modelName: string }) {
-    await this.check();
     await this.init({ modelName });
 
     await this.project.model.create();
@@ -63,7 +58,6 @@ export class Coder {
   async addField(props: IEditFieldProps & { modelName: string }) {
     const { modelName } = props;
 
-    await this.check();
     await this.init({ modelName });
 
     await this.project.model.addField(props);
@@ -92,7 +86,6 @@ export class Coder {
   }) {
     const { modelName } = props;
 
-    await this.check();
     await this.init({ modelName });
 
     await this.project.model.createModelFrontendComponentVariant(props);
@@ -105,7 +98,6 @@ export class Coder {
   }) {
     const { modelName } = props;
 
-    await this.check();
     await this.init({ modelName });
 
     await this.project.model.removeModelFrontendComponentVariant(props);

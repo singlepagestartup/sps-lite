@@ -21,22 +21,43 @@ export class Coder {
     frontend: FrontendCoder;
   };
 
-  constructor({
-    tree,
-    parent,
-    leftModelRelationName,
-    rightModelRelationName,
-  }: {
-    tree: Tree;
-    parent: RelationsCoder;
-    leftModelRelationName: string;
-    rightModelRelationName: string;
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+      parent: RelationsCoder;
+    } & (
+      | { leftModelRelationName: string; rightModelRelationName: string }
+      | {
+          name: string;
+        }
+    ),
+  ) {
+    const { tree, parent } = props;
+
+    if ("name" in props && props.name) {
+      this.tree = tree;
+      this.parent = parent;
+      this.name = props.name;
+
+      const [leftModelRelationName, rightModelRelationName] =
+        this.name.split("-to-");
+
+      if (!leftModelRelationName || !rightModelRelationName) {
+        throw new Error("Invalid relation name");
+      }
+
+      this.leftModelRelationName = leftModelRelationName;
+      this.rightModelRelationName = rightModelRelationName;
+    } else if ("leftModelRelationName" in props) {
+      const { leftModelRelationName, rightModelRelationName } = props;
+
+      this.name = `${leftModelRelationName}-to-${rightModelRelationName}`;
+      this.leftModelRelationName = leftModelRelationName;
+      this.rightModelRelationName = rightModelRelationName;
+    }
+
     this.tree = tree;
     this.parent = parent;
-    this.name = `${leftModelRelationName}-to-${rightModelRelationName}`;
-    this.leftModelRelationName = leftModelRelationName;
-    this.rightModelRelationName = rightModelRelationName;
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
 
@@ -69,14 +90,38 @@ export class Coder {
   }
 
   async create() {
-    // await this.project.contracts.create();
-    // await this.project.backend.create();
+    await this.project.contracts.create();
+    await this.project.backend.create();
     await this.project.frontend.create();
+
+    await this.project.frontend.createVariant({
+      variantName: "default",
+      variantLevel: "sps-lite",
+    });
   }
 
   async remove() {
+    await this.project.frontend.removeVariant({
+      variantName: "default",
+      variantLevel: "sps-lite",
+    });
+
     await this.project.frontend.remove();
-    // await this.project.backend.remove();
-    // await this.project.contracts.remove();
+    await this.project.backend.remove();
+    await this.project.contracts.remove();
+  }
+
+  async createRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.frontend.createVariant(props);
+  }
+
+  async removeRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.frontend.removeVariant(props);
   }
 }

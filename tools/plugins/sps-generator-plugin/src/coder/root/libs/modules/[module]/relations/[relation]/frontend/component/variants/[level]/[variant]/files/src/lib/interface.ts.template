@@ -1,5 +1,5 @@
-import { IModel } from "@sps/<%= module %>-models-<%= model %>-contracts";
-import { IModel as IModelExtended } from "@sps/<%= module %>-models-<%= model %>-contracts-extended";
+import { IModel } from "@sps/<%= module_name %>-models-<%= relation_name %>-contracts";
+import { IModel as IModelExtended } from "@sps/<%= module_name %>-models-<%= relation_name %>-contracts-extended";
 
 export const variant = "<%= variant %>" as const;
 

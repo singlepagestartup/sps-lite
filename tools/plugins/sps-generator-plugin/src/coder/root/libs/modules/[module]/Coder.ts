@@ -228,4 +228,24 @@ export class Coder {
   }) {
     await this.project.models[0].removeModelFrontendComponentVariant(props);
   }
+
+  async createRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    relationName: string;
+  }) {
+    await this.project.relations[0].createRelationFrontendComponentVariant(
+      props,
+    );
+  }
+
+  async removeRelationFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    relationName: string;
+  }) {
+    await this.project.relations[0].removeRelationFrontendComponentVariant(
+      props,
+    );
+  }
 }
