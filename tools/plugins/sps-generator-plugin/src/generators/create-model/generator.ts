@@ -28,45 +28,20 @@ export async function createModelGenerator(
   tree: Tree,
   options: CreateModelGeneratorSchema,
 ) {
-  const name = options.name;
-  const module = options.module;
+  const modelName = options.name;
+  const moduleName = options.module;
 
-  // const baseName = `@sps/${module}-models-${modelName}`;
-  // const baseDirectory = `libs/modules/${module}/models`;
+  const baseName = `@sps/${moduleName}-models-${modelName}`;
+  const baseDirectory = `libs/modules/${moduleName}/models`;
 
   const coder = new Coder({ tree });
-  await coder.createModel({ modelName: name, moduleName: module });
+  await coder.createModel({ modelName, moduleName });
 
   // const baseDirectory = `libs/modules/${module}/relations`;
 
   // const moduleProject = `@sps/${module}-backend-app`;
 
   // const backendAppProject = getProjects(tree).get(moduleProject);
-
-  // const backendBuilder = new ModelBackendCoder({
-  //   modelName,
-  //   module,
-  //   tree,
-  // });
-  // await backendBuilder.create({ tree });
-
-  // await createContracts({
-  //   tree,
-  //   baseName,
-  //   baseDirectory,
-  //   modelName,
-  //   type: "root",
-  //   module,
-  // });
-
-  // await createContracts({
-  //   tree,
-  //   baseName,
-  //   baseDirectory,
-  //   modelName,
-  //   type: "extended",
-  //   module,
-  // });
 
   // await createFrontendApi({
   //   tree,
@@ -106,81 +81,6 @@ export async function createModelGenerator(
 }
 
 export default createModelGenerator;
-
-async function createContracts({
-  tree,
-  baseName,
-  baseDirectory,
-  modelName,
-  type,
-  module,
-}: {
-  tree: Tree;
-  baseName: string;
-  baseDirectory: string;
-  modelName: string;
-  type: "root" | "extended";
-  module: string;
-}) {
-  if (!type) {
-    throw new Error("type is required");
-  }
-
-  const contractsLibraryName = `${baseName}-contracts${type === "extended" ? "-extended" : ""}`;
-  const directory = `${baseDirectory}/${modelName}/contracts/${type}`;
-
-  const offsetFromRootProject = offsetFromRoot(directory);
-
-  await jsLibraryGenerator(tree, {
-    name: contractsLibraryName,
-    bundler: "tsc",
-    projectNameAndRootFormat: "as-provided",
-    directory,
-    minimal: true,
-    unitTestRunner: "none",
-    strict: true,
-  });
-
-  generateFiles(
-    tree,
-    path.join(__dirname, `files/contracts/${type}`),
-    directory,
-    {
-      template: "",
-      module,
-      model: modelName,
-      offset_from_root: offsetFromRootProject,
-    },
-  );
-
-  updateProjectConfiguration(tree, contractsLibraryName, {
-    root: directory,
-    sourceRoot: `${directory}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      lint: {},
-      build: {},
-    },
-  });
-
-  updateJson(tree, `${directory}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    delete compilerOptions.outDir;
-
-    return json;
-  });
-
-  const defaultFileName = `${contractsLibraryName}.ts`.replace("@sps/", "");
-
-  updateJson(tree, `${directory}/package.json`, (json) => {
-    delete json.type;
-
-    return json;
-  });
-
-  tree.delete(`${directory}/src/lib/${defaultFileName}`);
-}
 
 async function createFrontendApi({
   tree,

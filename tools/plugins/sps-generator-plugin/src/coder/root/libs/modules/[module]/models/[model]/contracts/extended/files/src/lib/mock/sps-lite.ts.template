@@ -1,0 +1,5 @@
+import { spsLiteEntity as parentEntity } from "<%= root_contracts_import_path %>";
+
+export const entity = {
+  ...parentEntity,
+};

@@ -3,6 +3,7 @@ import { Coder as ModelsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 import { IEditFieldProps } from "./backend/schema/table/Coder";
 import { Coder as FrontendCoder } from "./frontend/Coder";
+import { Coder as ContractsCoder } from "./contracts/Coder";
 
 /**
  * Model coder
@@ -15,6 +16,7 @@ export class Coder {
   baseDirectory: string;
   project: {
     backend: BackendCoder;
+    contracts: ContractsCoder;
     frontend: FrontendCoder;
   };
 
@@ -37,6 +39,11 @@ export class Coder {
       parent: this,
     });
 
+    const contracts = new ContractsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     const frontend = new FrontendCoder({
       tree: this.tree,
       parent: this,
@@ -44,6 +51,7 @@ export class Coder {
 
     this.project = {
       backend,
+      contracts,
       frontend,
     };
   }
@@ -53,11 +61,13 @@ export class Coder {
   }
 
   async create() {
-    await this.project.backend.create();
+    await this.project.contracts.create();
+    // await this.project.backend.create();
   }
 
   async remove() {
-    await this.project.backend.remove();
+    // await this.project.backend.remove();
+    await this.project.contracts.remove();
   }
 
   async addField(props: IEditFieldProps) {
