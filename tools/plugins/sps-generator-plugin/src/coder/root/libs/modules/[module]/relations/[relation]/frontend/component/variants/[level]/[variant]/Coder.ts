@@ -34,6 +34,11 @@ export class Coder {
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
   importStyles: ImportStyles;
+  apiClientImportPath: string;
+  apiServerImportPath: string;
+  reduxImportPath: string;
+  rootContractsImportPath: string;
+  extendedContractsImportPath: string;
 
   constructor({
     parent,
@@ -52,13 +57,28 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
+    const apiClientImportPath =
+      this.parent.parent.project.api.project.client.baseName;
+    const apiServerImportPath =
+      this.parent.parent.project.api.project.server.baseName;
+    const reduxImportPath = this.parent.parent.project.redux.baseName;
+    const rootContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.root.baseName;
+    const extendedContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.extended.baseName;
+
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const relationName = this.parent.parent.parent.name;
-    console.log(`🚀 ~ relationName:`, relationName);
+
     const nameStyles = getNameStyles({
       name,
     });
 
+    this.apiClientImportPath = apiClientImportPath;
+    this.apiServerImportPath = apiServerImportPath;
+    this.reduxImportPath = reduxImportPath;
+    this.rootContractsImportPath = rootContractsImportPath;
+    this.extendedContractsImportPath = extendedContractsImportPath;
     this.moduleName = moduleName;
     this.relationName = relationName;
     this.importVariant = new ImportVariant({
@@ -98,6 +118,11 @@ export class Coder {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
+        api_client_import_path: this.apiClientImportPath,
+        api_server_import_path: this.apiServerImportPath,
+        redux_import_path: this.reduxImportPath,
+        root_contracts_import_path: this.rootContractsImportPath,
+        extended_contracts_import_path: this.extendedContractsImportPath,
         relation_name: this.relationName,
         offset_from_root: offsetFromRootProject,
       },

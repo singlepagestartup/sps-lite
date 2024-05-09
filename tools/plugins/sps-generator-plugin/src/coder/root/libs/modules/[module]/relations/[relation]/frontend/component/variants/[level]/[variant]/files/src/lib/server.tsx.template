@@ -4,7 +4,7 @@ import "server-only";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/<%= module_name %>-models-<%= relation_name %>-frontend-api-server";
+import { api } from "<%= api_server_import_path %>";
 import { Component } from "./Component";
 
 // default is required for dynamic import

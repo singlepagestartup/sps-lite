@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       className="w-full py-10 text-center flex flex-col gap-1"
     >
       <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: <%= relation_name %></p>
+      <p className="font-bold text-4xl">Relation: <%= relation_name %></p>
       <p className="font-bold text-4xl">Variant: <%= variant %></p>
     </div>
   );
