@@ -12,8 +12,8 @@ export async function spsCreateModelRelationGenerator(
   await coder.createRelations({
     leftModelName: options.left_model_name,
     rightModelName: options.right_model_name,
-    leftName: options.left_model_relation_name,
-    rightName: options.right_model_relation_name,
+    leftModelRelationName: options.left_model_relation_name,
+    rightModelRelationName: options.right_model_relation_name,
     moduleName: "sps-website-builder",
   });
 }

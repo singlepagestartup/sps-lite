@@ -11,8 +11,8 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  leftName: string;
-  rightName: string;
+  leftModelRelationName: string;
+  rightModelRelationName: string;
   project: {
     backend?: BackendCoder;
   };
@@ -20,19 +20,19 @@ export class Coder {
   constructor({
     tree,
     parent,
-    leftName,
-    rightName,
+    leftModelRelationName,
+    rightModelRelationName,
   }: {
     tree: Tree;
     parent: RelationsCoder;
-    leftName: string;
-    rightName: string;
+    leftModelRelationName: string;
+    rightModelRelationName: string;
   }) {
     this.tree = tree;
     this.parent = parent;
-    this.name = `${leftName}-to-${rightName}`;
-    this.leftName = leftName;
-    this.rightName = rightName;
+    this.name = `${leftModelRelationName}-to-${rightModelRelationName}`;
+    this.leftModelRelationName = leftModelRelationName;
+    this.rightModelRelationName = rightModelRelationName;
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
 

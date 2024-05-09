@@ -3,8 +3,8 @@ import { Coder as ModuleCoder } from "../Coder";
 import { Coder as RelationCoder } from "./[relation]/Coder";
 
 export interface IEditRelationsProps {
-  leftName: string;
-  rightName: string;
+  leftModelRelationName: string;
+  rightModelRelationName: string;
 }
 
 /**
@@ -32,11 +32,17 @@ export class Coder {
     };
   }
 
-  async init({ leftName, rightName }: { leftName: string; rightName: string }) {
+  async init({
+    leftModelRelationName,
+    rightModelRelationName,
+  }: {
+    leftModelRelationName: string;
+    rightModelRelationName: string;
+  }) {
     const relation = new RelationCoder({
       tree: this.tree,
-      leftName,
-      rightName,
+      leftModelRelationName,
+      rightModelRelationName,
       parent: this,
     });
 
@@ -45,14 +51,20 @@ export class Coder {
     await this.project.relation.init();
   }
 
-  async createRelations({ leftName, rightName }: IEditRelationsProps) {
-    await this.init({ leftName, rightName });
+  async createRelations({
+    leftModelRelationName,
+    rightModelRelationName,
+  }: IEditRelationsProps) {
+    await this.init({ leftModelRelationName, rightModelRelationName });
 
     await this.project.relation.create();
   }
 
-  async removeRelations({ leftName, rightName }: IEditRelationsProps) {
-    await this.init({ leftName, rightName });
+  async removeRelations({
+    leftModelRelationName,
+    rightModelRelationName,
+  }: IEditRelationsProps) {
+    await this.init({ leftModelRelationName, rightModelRelationName });
 
     await this.project.relation.remove();
   }

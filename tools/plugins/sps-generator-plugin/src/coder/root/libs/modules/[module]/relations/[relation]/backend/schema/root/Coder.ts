@@ -55,12 +55,27 @@ export class Coder {
     // const rightModelName = getModelByName({ name: rightSchemaProject.name });
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
+    const leftModelRelationName =
+      this.parent.parent.parent.leftModelRelationName;
+    const rightModelRelationName =
+      this.parent.parent.parent.rightModelRelationName;
+
+    const leftModelName =
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
+        .project.backend.project.model.modelName;
+    const rightModelName =
+      this.parent.parent.parent.parent.parent.project.models[2].project.model
+        .project.backend.project.model.modelName;
+
+    console.log(`🚀 ~ constructor ~ leftModelName:`, leftModelName);
+    console.log(`🚀 ~ constructor ~ rightModelName:`, rightModelName);
+    // console.log(`🚀 ~ constructor ~ rightModelName:`, rightModelName);
 
     const leftModelStyles = getNameStyles({
-      name: this.parent.parent.parent.leftName,
+      name: leftModelName,
     });
     const rightModelStyles = getNameStyles({
-      name: this.parent.parent.parent.rightName,
+      name: rightModelName,
     });
 
     const relationName = this.parent.parent.name;
