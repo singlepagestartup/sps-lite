@@ -15,6 +15,13 @@ import { libraryGenerator } from "@nx/react";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ComponentCoder } from "../../../Coder";
+import { RegexCreator } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/RegexCreator";
+import { space } from "../../../../../../../../../../../../utils/regex-utils/regex-elements";
+import { util as getNameStyles } from "../../../../../../../../../../../utils/get-name-styles";
+import {
+  addToFile,
+  replaceInFile,
+} from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 
 export class Coder {
   parent: ComponentCoder;
@@ -25,6 +32,7 @@ export class Coder {
   project: ProjectConfiguration;
   moduleName: string;
   modelName: string;
+  importVariant: ImportVariant;
 
   constructor({
     parent,
@@ -49,7 +57,9 @@ export class Coder {
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
 
-    console.log(`🚀 ~ moduleName:`, moduleName);
+    const nameStyles = getNameStyles({
+      name,
+    });
 
     // const moduleName = rootProjectPath?.[moduleIndex + 1];
     // const modelIndex = rootProjectPath?.findIndex((dir) => dir === "models");
@@ -64,6 +74,10 @@ export class Coder {
     this.modelName = modelName;
     // this.rootProjectPath = rootProjectPath;
     // this.type = type;
+    this.importVariant = new ImportVariant({
+      pascalCasedVariant: nameStyles.pascalCased.base,
+      libName: this.baseName,
+    });
   }
 
   async create() {
@@ -148,6 +162,29 @@ export class Coder {
       skipFormat: true,
       forceRemove: true,
     });
+  }
+  async attach({ variantsPath }: { variantsPath: string }) {
+    await addToFile({
+      toTop: true,
+      pathToFile: variantsPath,
+      content: this.importVariant.onCreate.content,
+      tree: this.tree,
+    });
+  }
+
+  async detach({ variantsPath }: { variantsPath: string }) {
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: variantsPath,
+        regex: this.importVariant.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 
   async addVariantToRoot({
@@ -236,5 +273,31 @@ export class Coder {
     let rootProjectStyles = tree.read(rootProjectStylesPath).toString();
     const importStyles = `${rootProjectStyles}\n@import "../../../../variants/${type}/${variant}/src/index";`;
     tree.write(rootProjectStylesPath, importStyles);
+  }
+}
+
+export class ImportVariant extends RegexCreator {
+  constructor({
+    pascalCasedVariant,
+    libName,
+  }: {
+    pascalCasedVariant: string;
+    libName: string;
+  }) {
+    const place = "";
+    const placeRegex = new RegExp("");
+
+    const content = `import { Component as ${pascalCasedVariant} } from "${libName}";`;
+
+    const contentRegex = new RegExp(
+      `import${space}{${space}Component${space}as${space}${pascalCasedVariant}${space}}${space}from${space}"${libName}";`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      contentRegex,
+      content,
+    });
   }
 }

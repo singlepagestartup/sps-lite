@@ -48,6 +48,15 @@ export class Coder {
     this.project.variant = variant;
 
     await this.project.variant.create();
+
+    const rootBaseDirectory = this.baseDirectory;
+    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
+
+    await this.project.variant.attach({
+      variantsPath: rootVariantsPath,
+    });
+
+    console.log(`🚀 ~ rootVariantsPath:`, rootVariantsPath);
   }
 
   async removeVariant({
@@ -67,5 +76,11 @@ export class Coder {
     this.project.variant = variant;
 
     await this.project.variant.remove();
+
+    const rootBaseDirectory = this.baseDirectory;
+    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
+    await this.project.variant.detach({
+      variantsPath: rootVariantsPath,
+    });
   }
 }
