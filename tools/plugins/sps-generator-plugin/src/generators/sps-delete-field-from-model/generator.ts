@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { SpsDeleteFieldFromModelGeneratorSchema } from "./schema";
-import { Coder as BackendModelSchemaTableCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
+import { Coder } from "../../coder/Coder";
 
 export async function spsDeleteFieldFromModelGenerator(
   tree: Tree,
@@ -15,22 +15,21 @@ export async function spsDeleteFieldFromModelGenerator(
     );
   }
 
-  const module = options.model.split("/")[1].split("-models")[0];
-  const model = options.model
+  const moduleName = options.model.split("/")[1].split("-models")[0];
+  const modelName = options.model
     .split("/")[1]
     .split("-models-")[1]
     .split("-backend-schema")[0];
 
-  const backendModelSchemaTableCoder = new BackendModelSchemaTableCoder({
-    modelName: model,
-    module,
+  const coder = new Coder({
     tree,
   });
 
-  await backendModelSchemaTableCoder.deleteField({
-    level: options.level,
-    tree,
+  await coder.removeField({
+    modelName: modelName,
+    moduleName: moduleName,
     name: options.name,
+    level: options.level,
     type: options.type,
   });
 }
