@@ -1,3 +1,0 @@
-{
-  "extends": ["plugin:@nx/react", "<%= offset_from_root %>.eslintrc.json"],
-}

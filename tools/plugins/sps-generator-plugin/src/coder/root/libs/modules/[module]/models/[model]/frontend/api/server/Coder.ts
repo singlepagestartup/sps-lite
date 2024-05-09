@@ -1,22 +1,14 @@
 import {
   ProjectConfiguration,
   Tree,
-  generateFiles,
   getProjects,
   offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
 } from "@nx/devkit";
 import * as nxWorkspace from "@nx/workspace";
-import {
-  libraryGenerator as reactLibraryGenerator,
-  SupportedStyles,
-} from "@nx/react";
 import { Coder as ApiCoder } from "../Coder";
-import { Linter } from "@nx/eslint";
-import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import path from "path";
+import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 
 export class Coder {
   parent: ApiCoder;
@@ -53,50 +45,19 @@ export class Coder {
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
-    const libraryOptions = {
-      name: this.baseName,
-      directory: this.baseDirectory,
-      linter: "none" as Linter.EsLint,
-      minimal: true,
-      style: "none" as SupportedStyles,
-      projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
-      strict: true,
-    };
-
-    await reactLibraryGenerator(this.tree, libraryOptions);
-
-    updateProjectConfiguration(this.tree, this.baseName, {
+    await createSpsReactLibrary({
       root: this.baseDirectory,
-      sourceRoot: `${this.baseDirectory}/src`,
-      projectType: "library",
-      tags: [],
-      targets: {
-        lint: {},
-      },
-    });
-
-    generateFiles(
-      this.tree,
-      path.join(__dirname, `files`),
-      this.baseDirectory,
-      {
+      name: this.baseName,
+      tree: this.tree,
+      generateFilesPath: path.join(__dirname, `files`),
+      templateParams: {
         template: "",
         module_name: this.moduleName,
         model_name: this.modelName,
         model_name_pluralized: this.modelNamePluralized,
         offset_from_root: offsetFromRootProject,
       },
-    );
-
-    updateJson(this.tree, `${this.baseDirectory}/tsconfig.json`, (json) => {
-      json.references = [];
-      delete json.files;
-      delete json.include;
-
-      return json;
     });
-
-    this.tree.delete(`${this.baseDirectory}/tsconfig.lib.json`);
 
     await this.init();
   }
