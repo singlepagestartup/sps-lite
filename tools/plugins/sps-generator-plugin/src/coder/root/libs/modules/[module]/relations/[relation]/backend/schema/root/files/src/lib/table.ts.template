@@ -1,4 +1,5 @@
 import * as pgCore from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as <%= left_schema_table_name %> } from "<%= left_schema_project_import_path %>";
 import { Table as <%= right_schema_table_name %> } from "<%= right_schema_project_import_path %>";
 
@@ -23,3 +24,6 @@ export const Table = pgTable(
       .references(() => <%= right_schema_table_name %>.id, { onDelete: "cascade" }),
   }
 );
+
+export const insertSchema = createInsertSchema(Table);
+export const selectSchema = createSelectSchema(Table);
