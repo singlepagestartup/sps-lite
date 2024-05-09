@@ -16,7 +16,6 @@ import {
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
-import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 
 export class Coder {
   parent: ComponentCoder;
