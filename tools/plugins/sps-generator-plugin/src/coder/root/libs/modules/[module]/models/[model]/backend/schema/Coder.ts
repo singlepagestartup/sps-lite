@@ -1,5 +1,5 @@
 import { Tree } from "@nx/devkit";
-import { Coder as TableCoder } from "./table/Coder";
+import { IEditFieldProps, Coder as TableCoder } from "./table/Coder";
 import { Coder as RootRelationsCoder } from "./relations/root/Coder";
 import { Coder as RootCoder } from "./root/Coder";
 import { Coder as BackendCoder } from "../Coder";
@@ -61,5 +61,13 @@ export class Coder {
     await this.project.root.remove();
     await this.project.relations.remove();
     await this.project.table.remove();
+  }
+
+  async addField(props: IEditFieldProps) {
+    await this.project.table.addField(props);
+  }
+
+  async removeField(props: IEditFieldProps) {
+    await this.project.table.removeField(props);
   }
 }

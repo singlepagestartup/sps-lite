@@ -1,6 +1,7 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ModelsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
+import { IEditFieldProps } from "./backend/schema/table/Coder";
 
 /**
  * Model coder
@@ -79,5 +80,13 @@ export class Coder {
 
   async remove() {
     await this.project.backend.remove();
+  }
+
+  async addField(props: IEditFieldProps) {
+    await this.project.backend.addField(props);
+  }
+
+  async removeField(props: IEditFieldProps) {
+    await this.project.backend.removeField(props);
   }
 }

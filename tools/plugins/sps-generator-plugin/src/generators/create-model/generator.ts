@@ -21,9 +21,6 @@ import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name
 import pluralize from "pluralize";
 import { Coder } from "../../coder/Coder";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
-import { Coder as ModelBackendAppCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/app/root/Coder";
-import { Coder as ModelBackendSchemaCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/schema/Coder";
-import { Coder as ModelBackendCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/Coder";
 
 export async function createModelGenerator(
   tree: Tree,

@@ -1,6 +1,7 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "./[module]/Coder";
 import { Coder as ModulesCoder } from "../Coder";
+import { IEditFieldProps } from "./[module]/models/[model]/backend/schema/table/Coder";
 
 /**
  * Modules Coder
@@ -79,5 +80,35 @@ export class Coder {
     await this.project.module.removeModel({
       modelName,
     });
+  }
+
+  async addField(
+    props: IEditFieldProps & {
+      modelName: string;
+      moduleName: string;
+    },
+  ) {
+    const { moduleName } = props;
+
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.addField(props);
+  }
+
+  async removeField(
+    props: IEditFieldProps & {
+      modelName: string;
+      moduleName: string;
+    },
+  ) {
+    const { moduleName } = props;
+
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.removeField(props);
   }
 }

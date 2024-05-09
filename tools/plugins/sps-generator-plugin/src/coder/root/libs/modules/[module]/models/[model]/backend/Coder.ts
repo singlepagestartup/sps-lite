@@ -3,6 +3,7 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModelCoder } from "../Coder";
 import { Coder as ModelRootCoder } from "./model/root/Coder";
 import { Coder as AppCoder } from "./app/root/Coder";
+import { IEditFieldProps } from "./schema/table/Coder";
 
 export class Coder {
   parent: ModelCoder;
@@ -61,5 +62,13 @@ export class Coder {
     await this.project.app.remove();
     await this.project.model.remove();
     await this.project.schema.remove();
+  }
+
+  async addField(props: IEditFieldProps) {
+    await this.project.schema.addField(props);
+  }
+
+  async removeField(props: IEditFieldProps) {
+    await this.project.schema.removeField(props);
   }
 }

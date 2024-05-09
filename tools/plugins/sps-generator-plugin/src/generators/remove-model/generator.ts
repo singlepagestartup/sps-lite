@@ -1,7 +1,6 @@
 import { formatFiles, getProjects, Tree } from "@nx/devkit";
 import { RemoveModelGeneratorSchema } from "./schema";
 import * as nxWorkspace from "@nx/workspace";
-import { Coder as ModelBackendCoder } from "../../coder/root/libs/modules/[module]/models/[model]/backend/Coder";
 import { Coder } from "../../coder/Coder";
 
 export async function removeModelGenerator(

@@ -7,6 +7,12 @@ import { replaceInFile } from "../../../../../../../../../../utils/file-utils";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as SchemaCoder } from "../Coder";
 
+export interface IEditFieldProps {
+  level: "sps-lite" | "startup";
+  name: string;
+  type: "text" | "number";
+}
+
 export class Coder {
   parent: SchemaCoder;
   baseName: string;
@@ -106,17 +112,9 @@ export class Coder {
     await this.init();
   }
 
-  async createField({
-    level,
-    tree,
-    name,
-    type,
-  }: {
-    level: "sps-lite" | "startup";
-    tree: Tree;
-    name: string;
-    type: string;
-  }) {
+  async addField(props: IEditFieldProps) {
+    const { level, name, type } = props;
+
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
@@ -125,24 +123,16 @@ export class Coder {
     });
 
     await replaceInFile({
-      tree,
+      tree: this.tree,
       pathToFile: schemaFilePath,
       regex: fieldToAdd.onCreate.regex,
       content: fieldToAdd.onCreate.content,
     });
   }
 
-  async deleteField({
-    level,
-    tree,
-    name,
-    type,
-  }: {
-    level: "sps-lite" | "startup";
-    tree: Tree;
-    name: string;
-    type: string;
-  }) {
+  async removeField(props: IEditFieldProps) {
+    const { level, name, type } = props;
+
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
@@ -151,7 +141,7 @@ export class Coder {
     });
 
     await replaceInFile({
-      tree,
+      tree: this.tree,
       pathToFile: schemaFilePath,
       regex: fieldToAdd.onRemove.regex,
       content: fieldToAdd.onRemove.content,

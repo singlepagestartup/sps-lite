@@ -9,8 +9,7 @@ import { Coder as ModuleModelBackendSchemaRelationCoder } from "./root/libs/modu
 import { Coder as ModelFrontendComponentVariantCoder } from "./root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";
 import { Coder as RootCoder } from "./root/Coder";
-import { Coder as ModuleCoder } from "./root/libs/modules/[module]/Coder";
-// import { Coder as ModelCoder } from "./root/libs/modules/[module]/models/[model]/Code";
+import { IEditFieldProps } from "./root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 
 /**
  * Main coder class
@@ -48,24 +47,6 @@ export class Coder {
     });
 
     await formatFiles(this.tree);
-
-    // const moduleCoder = new ModuleCoder({
-    //   tree: this.tree,
-    //   name: module,
-    // });
-
-    // await moduleCoder.createModel({
-    //   tree: this.tree,
-    //   name,
-    // });
-
-    // const modelCoder = new ModelCoder({
-    //   tree: this.tree,
-    //   name,
-    //   module: moduleCoder,
-    // });
-
-    // console.log(`🚀 ~ createModel ~ modelCoder:`, modelCoder);
   }
 
   async removeModel({
@@ -79,6 +60,28 @@ export class Coder {
       moduleName,
       modelName,
     });
+
+    await formatFiles(this.tree);
+  }
+
+  async addField(
+    props: IEditFieldProps & {
+      moduleName: string;
+      modelName: string;
+    },
+  ) {
+    await this.project.root.addField(props);
+
+    await formatFiles(this.tree);
+  }
+
+  async removeField(
+    props: IEditFieldProps & {
+      moduleName: string;
+      modelName: string;
+    },
+  ) {
+    await this.project.root.removeField(props);
 
     await formatFiles(this.tree);
   }
