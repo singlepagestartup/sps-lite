@@ -1,4 +1,4 @@
-import { ProjectConfiguration, Tree } from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ComponentCoder } from "../Coder";
 
 export class Coder {
@@ -15,5 +15,9 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/root`;
     this.tree = tree;
     this.parent = parent;
+  }
+
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 }

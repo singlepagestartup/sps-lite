@@ -1,4 +1,9 @@
-import { Tree, getProjects, offsetFromRoot } from "@nx/devkit";
+import {
+  ProjectConfiguration,
+  Tree,
+  getProjects,
+  offsetFromRoot,
+} from "@nx/devkit";
 import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
 import * as nxWorkspace from "@nx/workspace";
@@ -10,6 +15,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  project: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
     this.name = "extended";
@@ -17,6 +23,10 @@ export class Coder {
     this.tree = tree;
     this.baseName = `${parent.baseName}-extended`;
     this.baseDirectory = `${parent.baseDirectory}/extended`;
+  }
+
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -34,6 +44,8 @@ export class Coder {
         root_contracts_import_path: rootContractsImportPath,
       },
     });
+
+    await this.init();
   }
 
   async remove() {

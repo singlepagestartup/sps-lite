@@ -31,6 +31,10 @@ export class Coder {
     };
   }
 
+  async init() {
+    await this.project.root.init();
+  }
+
   async createVariant({
     variantName,
     variantLevel,

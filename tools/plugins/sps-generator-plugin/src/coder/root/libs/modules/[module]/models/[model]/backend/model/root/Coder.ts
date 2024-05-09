@@ -77,6 +77,8 @@ export class Coder {
         schema_model_name: this.schemaModelName,
       },
     });
+
+    await this.init();
   }
 
   async attach({ indexPath }: { indexPath: string }) {

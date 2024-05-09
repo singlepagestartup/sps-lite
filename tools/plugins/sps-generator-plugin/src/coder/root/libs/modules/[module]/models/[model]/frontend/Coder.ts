@@ -1,6 +1,7 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModelCoder } from "../Coder";
 import { Coder as ComponentCoder } from "./component/Coder";
+import { Coder as ApiCoder } from "./api/Coder";
 
 export class Coder {
   parent: ModelCoder;
@@ -10,6 +11,7 @@ export class Coder {
   name: string;
   project: {
     component: ComponentCoder;
+    api: ApiCoder;
   };
 
   constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
@@ -18,14 +20,36 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/frontend`;
     this.tree = tree;
     this.parent = parent;
+
     const component = new ComponentCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
+    const api = new ApiCoder({
       tree: this.tree,
       parent: this,
     });
 
     this.project = {
       component,
+      api,
     };
+  }
+
+  async init() {
+    await this.project.api.init();
+    await this.project.component.init();
+  }
+
+  async create() {
+    await this.project.api.create();
+    // await this.project.component.create();
+  }
+
+  async remove() {
+    // await this.project.component.remove();
+    await this.project.api.remove();
   }
 
   async createVariant(props: { variantName: string; variantLevel: string }) {
