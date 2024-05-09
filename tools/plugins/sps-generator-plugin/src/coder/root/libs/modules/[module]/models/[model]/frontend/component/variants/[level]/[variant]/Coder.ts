@@ -277,42 +277,6 @@ export class Coder {
     }
   }
 
-  async addInterfaceToRoot({
-    libraryOptions,
-    variant,
-    projectRoot,
-    tree,
-    type,
-  }: {
-    libraryOptions: { name: string };
-    variant: string;
-    projectRoot: string[];
-    tree: Tree;
-    type: string;
-  }) {
-    const rootProjectInterfacesPath =
-      projectRoot.join("/") + `/src/lib/${type}/interface.ts`;
-
-    let rootProjectInterfaces = tree.read(rootProjectInterfacesPath).toString();
-
-    // add import to rootProjectInterfaces to the top of the file
-    const capitalizedName = names(variant).className;
-    const createdVariantInterface = `I${capitalizedName}ComponentProps`;
-    const importInterfaceOutput = `import { IComponentProps as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectInterfaces}`;
-    tree.write(rootProjectInterfacesPath, importInterfaceOutput);
-
-    rootProjectInterfaces = tree.read(rootProjectInterfacesPath).toString();
-
-    const prevExport = rootProjectInterfaces.match(
-      /export type IComponentProps =[\n]?[\s]?[\s]?[|]?/,
-    );
-    const addInterfaceOutput = rootProjectInterfaces.replace(
-      prevExport[0],
-      `export type IComponentProps = ${createdVariantInterface} |`,
-    );
-    tree.write(rootProjectInterfacesPath, addInterfaceOutput);
-  }
-
   async addStylesToRoot({
     projectRoot,
     tree,
@@ -417,7 +381,7 @@ export class ExportInterface extends RegexCreator {
 
     const content = `I${pascalCasedVariant}ComponentProps |`;
     const contentRegex = new RegExp(
-      `I${pascalCasedVariant}ComponentProps${space}|`,
+      `I${pascalCasedVariant}ComponentProps${space}[|]`,
     );
 
     super({

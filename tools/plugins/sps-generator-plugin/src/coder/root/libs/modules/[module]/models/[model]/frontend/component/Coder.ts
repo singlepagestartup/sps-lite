@@ -78,8 +78,7 @@ export class Coder {
     await this.project.variant.remove();
 
     const rootBaseDirectory = this.baseDirectory;
-    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/$
-    {variantLevel}/variants.ts`;
+    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
     const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
 
     await this.project.variant.detach({
