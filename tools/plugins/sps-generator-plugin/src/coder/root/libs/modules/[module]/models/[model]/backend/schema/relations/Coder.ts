@@ -11,6 +11,7 @@ export class Coder {
   name: string;
   project: {
     root: RootCoder;
+    relation?: RelationCoder;
   };
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
@@ -32,6 +33,7 @@ export class Coder {
 
     this.project = {
       root,
+      relation: undefined,
     };
   }
 
@@ -45,5 +47,25 @@ export class Coder {
 
   async remove() {
     await this.project.root.remove();
+  }
+
+  async createRelation({ relationName }: { relationName: string }) {
+    this.project.relation = new RelationCoder({
+      parent: this,
+      tree: this.tree,
+      name: relationName,
+    });
+
+    await this.project.relation.create();
+  }
+
+  async removeRelation({ relationName }: { relationName: string }) {
+    this.project.relation = new RelationCoder({
+      parent: this,
+      tree: this.tree,
+      name: relationName,
+    });
+
+    await this.project.relation.remove();
   }
 }

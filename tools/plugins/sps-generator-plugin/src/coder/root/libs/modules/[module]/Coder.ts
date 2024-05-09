@@ -138,7 +138,12 @@ export class Coder {
 
     this.project.models.push(rightProject);
 
-    await this.project.relations[0].createRelations(props);
+    // await this.project.relations[0].createRelations(props);
+    await this.project.relations[0].init(props);
+
+    await this.project.models[1].createRelation({
+      relationName: props.rightName,
+    });
   }
 
   async removeRelations(
@@ -162,5 +167,9 @@ export class Coder {
     this.project.models.push(rightProject);
 
     await this.project.relations[0].removeRelations(props);
+
+    await this.project.models[1].removeRelation({
+      relationName: props.rightName,
+    });
   }
 }

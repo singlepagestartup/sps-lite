@@ -21,14 +21,24 @@ import {
   comma,
   space,
 } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
+import { Coder as RelationsCoder } from "../Coder";
 
 export class Coder {
+  parent: RelationsCoder;
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  name: string;
+  project: ProjectConfiguration;
+  relationsSchemaProjectImportPath: string;
+
   root: string;
   libName: string;
   moduleSchemaRelationsProject: ProjectConfiguration;
   rightProjectSchemaImportPath: string;
   rightModelStyles: ReturnType<typeof getNameStyles>;
-  leftModelStyles: ReturnType<typeof getNameStyles>;
+  nameStyles: ReturnType<typeof getNameStyles>;
+  currentModelNameStyles: ReturnType<typeof getNameStyles>;
   leftProjectRelationName: string;
   rootRelationsSchemaProject: ProjectConfiguration;
   importConfig: ImportConfig;
@@ -39,92 +49,128 @@ export class Coder {
   exportRelation: ExportRelation;
 
   constructor({
+    parent,
     tree,
-    leftProjectRelationName,
-    moduleSchemaRelationsProject,
-    leftSchemaProject,
-    rightSchemaProject,
+    name,
   }: {
+    parent: RelationsCoder;
     tree: Tree;
-    leftProjectRelationName: string;
-    moduleSchemaRelationsProject: ProjectConfiguration;
-    leftSchemaProject: ProjectConfiguration;
-    rightSchemaProject: ProjectConfiguration;
+    name: string;
   }) {
-    const module = getModuleByName({ name: leftSchemaProject.name });
-    const model = getModelByName({ name: leftSchemaProject.name });
-    const rightProjectSchemaImportPath = rightSchemaProject.name;
+    this.name = name;
+    this.parent = parent;
+    this.tree = tree;
+    this.baseName = `${parent.baseName}-${name}`;
+    this.baseDirectory = `${parent.baseDirectory}/${name}`;
 
-    this.libName = `@sps/${module}-models-${model}-backend-schema-relations-${leftProjectRelationName}`;
-    this.root = `libs/modules/${module}/models/${model}/backend/schema/relations/${leftProjectRelationName}`;
+    // const module = getModuleByName({ name: leftSchemaProject.name });
+    // const model = getModelByName({ name: leftSchemaProject.name });
+    const currentModelName = parent.parent.parent.parent.name;
 
-    const rootRelationsSchemaProject = getProjects(tree).get(
-      `@sps/${module}-models-${model}-backend-schema-relations`,
-    );
+    let rightModelName: string;
+    let rightProjectSchemaImportPath: string;
+    const models = parent.parent.parent.parent.parent.parent.project.models;
 
-    const leftModelName = getModelByName({ name: leftSchemaProject.name });
-    const rightModelName = getModelByName({ name: rightSchemaProject.name });
+    for (const model of models) {
+      const modelName = model.project.model?.name;
+      if (modelName && modelName !== currentModelName) {
+        rightModelName = modelName;
+        const schemaProject =
+          model.project.model.project.backend.project.schema.baseName;
 
-    const leftModelStyles = getNameStyles({ name: leftModelName });
-    const rightModelStyles = getNameStyles({ name: rightModelName });
+        if (schemaProject) {
+          rightProjectSchemaImportPath = schemaProject;
+        } else {
+          throw new Error(`No schemaProject found for model ${modelName}`);
+        }
+      }
+    }
 
-    const leftProjectRelationNameStyles = getNameStyles({
-      name: leftProjectRelationName,
+    // this.libName = `@sps/${module}-models-${model}-backend-schema-relations-${leftProjectRelationName}`;
+    // this.root = `libs/modules/${module}/models/${model}/backend/schema/relations/${leftProjectRelationName}`;
+
+    // const rootRelationsSchemaProject = getProjects(tree).get(
+    //   `@sps/${module}-models-${model}-backend-schema-relations`,
+    // );
+
+    // const leftModelName = getModelByName({ name: leftSchemaProject.name });
+    // const rightModelName = getModelByName({ name: rightSchemaProject.name });
+
+    // const leftModelStyles = getNameStyles({ name: leftModelName });
+    // const rightModelStyles = getNameStyles({ name: rightModelName });
+
+    const nameStyles = getNameStyles({
+      name,
     });
 
     this.rightProjectSchemaImportPath = rightProjectSchemaImportPath;
-    this.moduleSchemaRelationsProject = moduleSchemaRelationsProject;
-    this.leftModelStyles = leftModelStyles;
-    this.rightModelStyles = rightModelStyles;
-    this.leftProjectRelationName = leftProjectRelationName;
-    this.rootRelationsSchemaProject = rootRelationsSchemaProject;
-    this.importConfig = new ImportConfig({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-      libName: this.libName,
-    });
-    this.exportNamedConfig = new ExportNamedConfig({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-    });
-    this.importPopulate = new ImportPopulate({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-      libName: this.libName,
-    });
-    this.exportPopulate = new ExportPopulate({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-    });
-    this.importRelation = new ImportRelation({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-      libName: this.libName,
-    });
-    this.exportRelation = new ExportRelation({
-      leftProjectRelationNamePropertyCased:
-        leftProjectRelationNameStyles.propertyCased.base,
-    });
+    const relationsSchemaProjectImportPath =
+      parent.parent.parent.parent.parent.parent.project.relations[0].project
+        .relation.project.backend.baseName;
+
+    if (!relationsSchemaProjectImportPath) {
+      throw new Error(`No relationsSchemaProjectImportPath found`);
+    }
+
+    // this.moduleSchemaRelationsProject = moduleSchemaRelationsProject;
+    // this.leftModelStyles = leftModelStyles;
+    // this.rightModelStyles = rightModelStyles;
+    // this.leftProjectRelationName = name;
+    this.nameStyles = nameStyles;
+    this.currentModelNameStyles = getNameStyles({ name: currentModelName });
+    this.rightModelStyles = getNameStyles({ name: rightModelName });
+    this.relationsSchemaProjectImportPath = relationsSchemaProjectImportPath;
+    // this.rootRelationsSchemaProject = rootRelationsSchemaProject;
+    // this.importConfig = new ImportConfig({
+
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    //   libName: this.libName,
+    // });
+    // this.exportNamedConfig = new ExportNamedConfig({
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    // });
+    // this.importPopulate = new ImportPopulate({
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    //   libName: this.libName,
+    // });
+    // this.exportPopulate = new ExportPopulate({
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    // });
+    // this.importRelation = new ImportRelation({
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    //   libName: this.libName,
+    // });
+    // this.exportRelation = new ExportRelation({
+    //   leftProjectRelationNamePropertyCased:
+    //     leftProjectRelationNameStyles.propertyCased.base,
+    // });
   }
 
-  async create({ tree }: { tree: Tree }) {
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async create() {
     await createSpsTSLibrary({
-      tree,
-      root: this.root,
-      name: this.libName,
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        relation_name_kebab_cased: this.leftProjectRelationName,
+        relation_name_kebab_cased: this.nameStyles.kebabCased.base,
         right_schema_project_import_path: this.rightProjectSchemaImportPath,
         module_schema_relations_project_import_path:
-          this.moduleSchemaRelationsProject.name,
-        left_schema_model_name: this.leftModelStyles.propertyCased.base,
+          this.relationsSchemaProjectImportPath,
+        left_schema_model_name: this.currentModelNameStyles.propertyCased.base,
         right_schema_model_name: this.rightModelStyles.propertyCased.base,
       },
     });
-
-    await this.attachToRoot({ tree });
   }
 
   async attachToRoot({ tree }: { tree: Tree }) {
@@ -263,20 +309,18 @@ export class Coder {
     }
   }
 
-  async delete({ tree }: { tree: Tree }) {
-    const project = getProjects(tree).get(this.libName);
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
+
     if (!project) {
       return;
     }
 
-    await this.detachFromRoot({ tree });
-
-    await nxWorkspace.removeGenerator(tree, {
-      projectName: this.libName,
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
     });
-    await formatFiles(tree);
   }
 }
 

@@ -46,6 +46,10 @@ export class Coder {
     };
   }
 
+  async init() {
+    await this.project.backend.init();
+  }
+
   async create() {
     await this.project.backend.create();
   }

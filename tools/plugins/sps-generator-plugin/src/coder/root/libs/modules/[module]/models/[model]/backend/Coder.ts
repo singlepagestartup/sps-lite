@@ -72,7 +72,11 @@ export class Coder {
     await this.project.schema.removeField(props);
   }
 
-  async createRelation() {
-    //
+  async createRelation(props: { relationName: string }) {
+    await this.project.schema.createRelation(props);
+  }
+
+  async removeRelation(props: { relationName: string }) {
+    await this.project.schema.removeRelation(props);
   }
 }

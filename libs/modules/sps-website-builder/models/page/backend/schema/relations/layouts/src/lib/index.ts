@@ -24,7 +24,7 @@ export const config = {
       model: rightTableModelName,
       table: RightTable,
       queryKey: "layout",
-      schemaKey: "pageId",
+      schemaKey: "layoutId",
       extract: true,
       returnType: RightTable.$inferSelect,
     },

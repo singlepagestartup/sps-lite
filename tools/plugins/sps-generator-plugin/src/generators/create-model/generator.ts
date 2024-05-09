@@ -22,6 +22,8 @@ import pluralize from "pluralize";
 import { Coder } from "../../coder/Coder";
 import { addToFile, replaceInFile } from "../../utils/file-utils";
 
+// npx nx generate @sps/sps-generator-plugin:create-model --name=project --module=sps-website-builder --dry-run
+// npx nx generate @sps/sps-generator-plugin:create-model --name=portfolio --module=sps-website-builder --dry-run
 export async function createModelGenerator(
   tree: Tree,
   options: CreateModelGeneratorSchema,

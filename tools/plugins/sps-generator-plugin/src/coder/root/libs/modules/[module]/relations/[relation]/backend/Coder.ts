@@ -23,6 +23,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  project: ProjectConfiguration;
 
   libName: string;
   root: string;
@@ -80,6 +81,10 @@ export class Coder {
     //   moduleNamePascalCased: this.moduleStyles.pascalCased,
     //   relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     // });
+  }
+
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {

@@ -42,7 +42,7 @@ export class Coder {
 
     this.project.relation = relation;
 
-    // await this.project.relation.init();
+    await this.project.relation.init();
   }
 
   async createRelations({ leftName, rightName }: IEditRelationsProps) {
