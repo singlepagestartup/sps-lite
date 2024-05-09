@@ -1,10 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-  names,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
@@ -23,11 +17,6 @@ export class Coder {
   tree: Tree;
   name: string;
   project: ProjectConfiguration;
-
-  libName: string;
-  root: string;
-  tableLibraryName: string;
-  relationsLibraryName: string;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
@@ -37,15 +26,6 @@ export class Coder {
     this.tree = tree;
     this.name = "schema";
 
-    // const libName = `@sps/${module}-models-${modelName}-backend-schema`;
-    // const baseDirectory = `libs/modules/${module}/models`;
-    // const root = `${baseDirectory}/${modelName}/backend/schema/root`;
-    // const tableLibraryName = `${libName}-table`;
-    // const relationsLibraryName = `${libName}-relations`;
-    // const moduleRootSchema = `@sps/${module}-backend-schema`;
-    // const moduleRootSchemaProject = getProjects(tree).get(moduleRootSchema);
-    // const moduleRootSchemaProjectPath = `${moduleRootSchemaProject.sourceRoot}/lib/index.ts`;
-
     const moduleName = parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
       name: moduleName,
@@ -53,11 +33,6 @@ export class Coder {
 
     const modelName = parent.parent.parent.name;
     const modelNamePascalCased = names(modelName).className;
-
-    // this.libName = libName;
-    // this.root = root;
-    // this.tableLibraryName = tableLibraryName;
-    // this.relationsLibraryName = relationsLibraryName;
 
     this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
       moduleName: moduleNameCuttedAndPascalCased,
@@ -95,6 +70,9 @@ export class Coder {
   }
 
   async create() {
+    const tableLibraryName = this.parent.project.table.baseName;
+    const relationsLibraryName = this.parent.project.relations.baseName;
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -102,8 +80,8 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        table_library_name: this.tableLibraryName,
-        relations_library_name: this.relationsLibraryName,
+        table_library_name: tableLibraryName,
+        relations_library_name: relationsLibraryName,
       },
     });
   }

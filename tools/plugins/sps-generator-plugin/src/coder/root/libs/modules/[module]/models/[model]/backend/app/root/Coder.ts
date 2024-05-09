@@ -1,10 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-  names,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import {
   addToFile,
@@ -17,41 +11,21 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { Coder as BackendCoder } from "../../Coder";
 
 export class Coder {
-  libName: string;
-  rootAppProject: ProjectConfiguration;
-  rootSchemaProject: ProjectConfiguration;
-  root: string;
-  modelName: string;
-  module: string;
-  modelLibName: string;
-  importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
-  exportRoute: ExportRoute;
-  modelSchemaLibName: string;
   parent: BackendCoder;
   tree: Tree;
   baseName: string;
+  name: string;
   baseDirectory: string;
   project: ProjectConfiguration;
+  importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
+  exportRoute: ExportRoute;
 
   constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
-    // const libName = `@sps/${module}-models-${modelName}-backend-app`;
-    // const baseDirectory = `libs/modules/${module}/models`;
-    // const moduleApp = `@sps/${module}-backend-app`;
-    // const moduleBackendAppProject = getProjects(tree).get(moduleApp);
-    // const root = `${baseDirectory}/${modelName}/backend/app/root`;
-    // const modelLibName = `@sps/${module}-models-${modelName}-backend-model`;
-    // const modelSchemaLibName = `@sps/${module}-models-${modelName}-backend-schema`;
-
-    // this.modelSchemaLibName = modelSchemaLibName;
-    // this.libName = libName;
-    // this.rootAppProject = moduleBackendAppProject;
-    // this.root = root;
-    // this.modelName = modelName;
-    // this.modelLibName = modelLibName;
     this.baseName = `${parent.baseName}-app`;
     this.baseDirectory = `${parent.baseDirectory}/app`;
     this.parent = parent;
     this.tree = tree;
+    this.name = "app";
 
     const pluralNameModelName = pluralize(names(parent.parent.name).fileName);
     const asPropertyModelName = names(parent.parent.name).propertyName;
@@ -69,11 +43,10 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  // async attachToRoot({ tree }: { tree: Tree }) {
-  //   await this.attachToRoutes({ tree });
-  // }
-
   async create() {
+    const modelLibName = this.parent.project.model.baseName;
+    const modelSchemaLibName = this.parent.project.schema.baseName;
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -81,9 +54,8 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_lib_name: this.parent.parent.baseName,
-        // model_schema_lib_name: this.modelSchemaLibName,
-        model_schema_lib_name: "",
+        model_lib_name: modelLibName,
+        model_schema_lib_name: modelSchemaLibName,
       },
     });
 

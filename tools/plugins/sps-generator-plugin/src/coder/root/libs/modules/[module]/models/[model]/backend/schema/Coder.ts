@@ -16,8 +16,6 @@ export class Coder {
     root: RootCoder;
   };
 
-  // children: (TableCoder | RootRelationsCoder | RootCoder)[];
-
   constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
     this.name = "schema";
     this.parent = parent;
@@ -40,9 +38,6 @@ export class Coder {
       tree,
     });
 
-    // const children = [tableCoder, relationsCoder, rootCoder];
-
-    // this.children = children;
     this.project = {
       table,
       relations,
@@ -57,14 +52,14 @@ export class Coder {
   }
 
   async create() {
-    // await this.project.table.create();
-    // await this.project.relations.create();
+    await this.project.table.create();
+    await this.project.relations.create();
     await this.project.root.create();
   }
 
   async remove() {
     await this.project.root.remove();
-    // await this.project.relations.remove();
-    // await this.project.table.remove();
+    await this.project.relations.remove();
+    await this.project.table.remove();
   }
 }

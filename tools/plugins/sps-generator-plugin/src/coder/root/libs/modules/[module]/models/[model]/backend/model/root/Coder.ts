@@ -98,8 +98,6 @@ export class Coder {
   }
 
   async detach({ indexPath }: { indexPath: string }) {
-    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
-
     try {
       await replaceInFile({
         tree: this.tree,

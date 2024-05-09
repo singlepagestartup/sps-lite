@@ -1,10 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-  names,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
@@ -136,8 +130,6 @@ export class Coder {
       regex: fieldToAdd.onCreate.regex,
       content: fieldToAdd.onCreate.content,
     });
-
-    await formatFiles(tree);
   }
 
   async deleteField({
@@ -164,8 +156,6 @@ export class Coder {
       regex: fieldToAdd.onRemove.regex,
       content: fieldToAdd.onRemove.content,
     });
-
-    await formatFiles(tree);
   }
 
   async remove() {
