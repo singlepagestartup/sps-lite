@@ -185,12 +185,18 @@ export class Coder {
       content: this.exportInterface.onCreate.content,
     });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: interfacePath,
-      regex: new RegExp(`[|](\\s+)+?[|]`),
-      content: "|",
-    });
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: interfacePath,
+        regex: new RegExp(`[|](\\s+)+?[|]`),
+        content: "|",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
 
     await addToFile({
       toTop: true,
