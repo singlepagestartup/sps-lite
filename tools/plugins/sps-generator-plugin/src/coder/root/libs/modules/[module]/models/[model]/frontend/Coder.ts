@@ -52,15 +52,15 @@ export class Coder {
   }
 
   async create() {
-    // await this.project.api.create();
+    await this.project.api.create();
     await this.project.redux.create();
-    // await this.project.component.create();
+    await this.project.component.create();
   }
 
   async remove() {
-    // await this.project.component.remove();
+    await this.project.component.remove();
     await this.project.redux.remove();
-    // await this.project.api.remove();
+    await this.project.api.remove();
   }
 
   async createVariant(props: { variantName: string; variantLevel: string }) {

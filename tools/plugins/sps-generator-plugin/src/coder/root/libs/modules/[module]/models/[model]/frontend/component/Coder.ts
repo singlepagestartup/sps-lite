@@ -35,6 +35,14 @@ export class Coder {
     await this.project.root.init();
   }
 
+  async create() {
+    await this.project.root.create();
+  }
+
+  async remove() {
+    await this.project.root.remove();
+  }
+
   async createVariant({
     variantName,
     variantLevel,
