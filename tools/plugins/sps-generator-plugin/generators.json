@@ -1,24 +1,14 @@
 {
   "generators": {
-    "create-frontend-component-variant": {
-      "factory": "./src/generators/create-frontend-component-variant/generator",
-      "schema": "./src/generators/create-frontend-component-variant/schema.json",
-      "description": "create-frontend-component-variant generator"
+    "frontend-component-variant": {
+      "factory": "./src/generators/frontend-component-variant/generator",
+      "schema": "./src/generators/frontend-component-variant/schema.json",
+      "description": "frontend-component-variant generator"
     },
-    "remove-model-frontend-component-variant": {
-      "factory": "./src/generators/remove-model-frontend-component-variant/generator",
-      "schema": "./src/generators/remove-model-frontend-component-variant/schema.json",
-      "description": "remove-model-frontend-component-variant generator"
-    },
-    "create-model": {
-      "factory": "./src/generators/create-model/generator",
-      "schema": "./src/generators/create-model/schema.json",
-      "description": "create-model generator"
-    },
-    "remove-model": {
-      "factory": "./src/generators/remove-model/generator",
-      "schema": "./src/generators/remove-model/schema.json",
-      "description": "remove-model generator"
+    "model": {
+      "factory": "./src/generators/model/generator",
+      "schema": "./src/generators/model/schema.json",
+      "description": "model generator"
     },
     "create-module": {
       "factory": "./src/generators/create-module/generator",
@@ -30,35 +20,15 @@
       "schema": "./src/generators/remove-module/schema.json",
       "description": "remove-module generator"
     },
-    "sps-create-type-script-library": {
-      "factory": "./src/generators/sps-create-type-script-library/generator",
-      "schema": "./src/generators/sps-create-type-script-library/schema.json",
-      "description": "sps-create-type-script-library generator"
+    "schema-field": {
+      "factory": "./src/generators/schema-field/generator",
+      "schema": "./src/generators/schema-field/schema.json",
+      "description": "schema-field generator"
     },
-    "sps-delete-type-script-library": {
-      "factory": "./src/generators/sps-delete-type-script-library/generator",
-      "schema": "./src/generators/sps-delete-type-script-library/schema.json",
-      "description": "sps-delete-type-script-library generator"
-    },
-    "sps-create-field-in-model": {
-      "factory": "./src/generators/sps-create-field-in-model/generator",
-      "schema": "./src/generators/sps-create-field-in-model/schema.json",
-      "description": "sps-create-field-in-model generator"
-    },
-    "sps-delete-field-from-model": {
-      "factory": "./src/generators/sps-delete-field-from-model/generator",
-      "schema": "./src/generators/sps-delete-field-from-model/schema.json",
-      "description": "sps-delete-field-from-model generator"
-    },
-    "sps-create-model-relation": {
-      "factory": "./src/generators/sps-create-model-relation/generator",
-      "schema": "./src/generators/sps-create-model-relation/schema.json",
-      "description": "sps-create-model-relation generator"
-    },
-    "sps-delete-model-relation": {
-      "factory": "./src/generators/sps-delete-model-relation/generator",
-      "schema": "./src/generators/sps-delete-model-relation/schema.json",
-      "description": "sps-delete-model-relation generator"
+    "relation": {
+      "factory": "./src/generators/relation/generator",
+      "schema": "./src/generators/relation/schema.json",
+      "description": "relation generator"
     }
   }
 }

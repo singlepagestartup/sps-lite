@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "CreateModel",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "module": {
+      "type": "string",
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
+    },
+    "action": {
+      "type": "string",
+      "description": "Action to perform",
+      "x-prompt": {
+        "message": "Create will create a new model. Remove will remove the model.",
+        "type": "list",
+        "default": "create",
+        "items": [
+          {
+            "value": "create"
+          },
+          {
+            "value": "remove"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["action", "name", "module"]
+}
