@@ -22,6 +22,10 @@ export function Component(props: IComponentPropsExtended) {
       <Label>Layout</Label>
       <Select
         onValueChange={(...values) => {
+          if (!props.onChange) {
+            return;
+          }
+
           props.onChange(values);
         }}
       >
