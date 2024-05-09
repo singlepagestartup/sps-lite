@@ -4,7 +4,7 @@ import {
   formatFiles,
   getProjects,
 } from "@nx/devkit";
-import { Coder as ModuleSchemaRelationsCoder } from "./root/libs/modules/[module]/relations/[relation]/backend/Coder";
+import { Coder as ModuleSchemaRelationsCoder } from "./root/libs/modules/[module]/relations/[relation]/backend/schema/Coder";
 import { Coder as ModuleModelBackendSchemaRelationCoder } from "./root/libs/modules/[module]/models/[model]/backend/schema/relations/[relation]/Coder";
 import { Coder as ModelFrontendComponentVariantCoder } from "./root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
 import { util as getModuleByName } from "./utils/get-module-by-name";

@@ -1,4 +1,4 @@
-import { ExportNamedVariables } from "./Coder";
+import { ExportNamedVariables } from "../Coder";
 
 describe("Coder", () => {
   describe(`ExportNamedVariables`, () => {
