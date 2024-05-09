@@ -88,12 +88,12 @@ export class Coder {
   }
 
   async create() {
-    const leftProjectSchemaImportPath =
+    const leftProjectSchemaTableImportPath =
       this.parent.parent.parent.project.models[1].project.model.project.backend
-        .project.schema.baseName;
+        .project.schema.project.table.baseName;
     const rightProjectSchemaImportPath =
       this.parent.parent.parent.project.models[2].project.model.project.backend
-        .project.schema.baseName;
+        .project.schema.project.table.baseName;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -102,7 +102,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        left_schema_project_import_path: leftProjectSchemaImportPath,
+        left_schema_project_import_path: leftProjectSchemaTableImportPath,
         left_schema_table_name: this.leftModelStyles.pascalCased.base,
         left_schema_model_name: this.leftModelStyles.propertyCased.base,
         left_schema_model_name_snake_cased:

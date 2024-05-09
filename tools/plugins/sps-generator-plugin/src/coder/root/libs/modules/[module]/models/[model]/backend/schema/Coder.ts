@@ -72,9 +72,6 @@ export class Coder {
   }
 
   async createRelation({ relationName }: { relationName: string }) {
-    const root = this.project.root.baseName;
-    console.log(`🚀 ~ createRelation ~ root:`, root);
-
     await this.project.relations.createRelation({ relationName });
   }
 

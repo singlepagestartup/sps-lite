@@ -61,7 +61,8 @@ export class Coder {
       if (modelName && modelName !== currentModelName) {
         rightModelName = modelName;
         const schemaProject =
-          model.project.model.project.backend.project.schema.baseName;
+          model.project.model.project.backend.project.schema.project.table
+            .baseName;
 
         if (schemaProject) {
           rightProjectSchemaImportPath = schemaProject;

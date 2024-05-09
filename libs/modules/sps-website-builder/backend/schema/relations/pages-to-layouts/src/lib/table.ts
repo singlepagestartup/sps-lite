@@ -9,20 +9,14 @@ const table = "pages_to_layouts";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
-export const Table = pgTable(
-  table,
-  {
-    id: pgCore.uuid("id").primaryKey().defaultRandom(),
-    pageId: pgCore
-      .uuid("page_id")
-      .notNull()
-      .references(() => Page.id, { onDelete: "cascade" }),
-    layoutId: pgCore
-      .uuid("layout_id")
-      .notNull()
-      .references(() => Layout.id, { onDelete: "cascade" }),
-  },
-  (t) => ({
-    pk: pgCore.primaryKey({ columns: [t.pageId, t.layoutId] }),
-  }),
-);
+export const Table = pgTable(table, {
+  id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  pageId: pgCore
+    .uuid("page_id")
+    .notNull()
+    .references(() => Page.id, { onDelete: "cascade" }),
+  layoutId: pgCore
+    .uuid("layout_id")
+    .notNull()
+    .references(() => Layout.id, { onDelete: "cascade" }),
+});

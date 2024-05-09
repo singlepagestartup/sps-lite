@@ -3,6 +3,8 @@ import { RemoveModelGeneratorSchema } from "./schema";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder } from "../../coder/Coder";
 
+// npx nx generate @sps/sps-generator-plugin:remove-model --name=project --module=sps-website-builder --dry-run
+// npx nx generate @sps/sps-generator-plugin:remove-model --name=portfolio --module=sps-website-builder --dry-run
 export async function removeModelGenerator(
   tree: Tree,
   options: RemoveModelGeneratorSchema,
