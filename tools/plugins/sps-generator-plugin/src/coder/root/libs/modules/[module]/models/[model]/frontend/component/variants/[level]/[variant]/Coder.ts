@@ -1,8 +1,8 @@
 import {
   ProjectConfiguration,
   Tree,
-  formatFiles,
   generateFiles,
+  getProjects,
   names,
   offsetFromRoot,
   updateJson,
@@ -13,10 +13,17 @@ import type { SupportedStyles } from "@nx/react/typings/style";
 import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { libraryGenerator } from "@nx/react";
 import * as path from "path";
+import * as nxWorkspace from "@nx/workspace";
+import { Coder as ComponentCoder } from "../../../Coder";
 
 export class Coder {
-  libName: string;
-  root: string;
+  parent: ComponentCoder;
+  tree: Tree;
+  baseName: string;
+  baseDirectory: string;
+  name: string;
+  project: ProjectConfiguration;
+
   variant: string;
   moduleName: string;
   modelName: string;
@@ -24,53 +31,56 @@ export class Coder {
   type: string;
 
   constructor({
-    project,
-    type,
-    variant,
+    parent,
+    tree,
+    name,
+    level,
   }: {
-    project: ProjectConfiguration;
-    type: string;
-    variant: string;
+    name: string;
+    parent: ComponentCoder;
+    tree: Tree;
+    level: string;
   }) {
-    const libName = `${project.name}-variants-${type}-${variant}`;
+    this.name = name;
+    this.baseName = `${parent.baseName}-variants-${level}-${name}`;
+    this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
+    this.tree = tree;
+    this.parent = parent;
 
-    const rootProjectPath = project?.root.split("/");
-
-    const moduleIndex = rootProjectPath?.findIndex((dir) => dir === "modules");
-    const moduleName = rootProjectPath?.[moduleIndex + 1];
-
-    const modelIndex = rootProjectPath?.findIndex((dir) => dir === "models");
-    const modelName = rootProjectPath?.[modelIndex + 1];
-
-    const directory = `${rootProjectPath
-      ?.slice(0, -1)
-      .join("/")}/variants/${type}/${variant}`;
-
-    this.libName = libName;
-    this.root = directory;
-    this.variant = variant;
-    this.moduleName = moduleName;
-    this.modelName = modelName;
-    this.rootProjectPath = rootProjectPath;
-    this.type = type;
+    // const libName = `${project.name}-variants-${type}-${variant}`;
+    // const rootProjectPath = project?.root.split("/");
+    // const moduleIndex = rootProjectPath?.findIndex((dir) => dir === "modules");
+    // const moduleName = rootProjectPath?.[moduleIndex + 1];
+    // const modelIndex = rootProjectPath?.findIndex((dir) => dir === "models");
+    // const modelName = rootProjectPath?.[modelIndex + 1];
+    // const directory = `${rootProjectPath
+    //   ?.slice(0, -1)
+    //   .join("/")}/variants/${type}/${variant}`;
+    // this.libName = libName;
+    // this.root = directory;
+    // this.variant = variant;
+    // this.moduleName = moduleName;
+    // this.modelName = modelName;
+    // this.rootProjectPath = rootProjectPath;
+    // this.type = type;
   }
 
-  async create({ tree }: { tree: Tree }) {
+  async create() {
     const libraryOptions = {
-      name: this.libName,
-      directory: this.root,
+      name: this.baseName,
+      directory: this.baseDirectory,
       linter: "none" as Linter.EsLint,
       minimal: true,
       style: "none" as SupportedStyles,
       projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
     };
 
-    await libraryGenerator(tree, libraryOptions);
+    await libraryGenerator(this.tree, libraryOptions);
 
-    const offsetFromRootProject = offsetFromRoot(this.root);
-    updateProjectConfiguration(tree, this.libName, {
-      root: this.root,
-      sourceRoot: `${this.root}/src`,
+    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+    updateProjectConfiguration(this.tree, this.baseName, {
+      root: this.baseDirectory,
+      sourceRoot: `${this.baseDirectory}/src`,
       projectType: "library",
       tags: [],
       targets: {
@@ -78,9 +88,9 @@ export class Coder {
       },
     });
 
-    tree.delete(`${this.root}/tsconfig.lib.json`);
+    this.tree.delete(`${this.baseDirectory}/tsconfig.lib.json`);
 
-    updateJson(tree, `${this.root}/tsconfig.json`, (json) => {
+    updateJson(this.tree, `${this.baseDirectory}/tsconfig.json`, (json) => {
       json.references = [];
       delete json.files;
       delete json.include;
@@ -88,37 +98,55 @@ export class Coder {
       return json;
     });
 
-    generateFiles(tree, path.join(__dirname, "files"), this.root, {
-      template: "",
-      variant: this.variant,
-      module: this.moduleName,
-      model: this.modelName,
-      offset_from_root: offsetFromRootProject,
-    });
+    generateFiles(
+      this.tree,
+      path.join(__dirname, "files"),
+      this.baseDirectory,
+      {
+        template: "",
+        variant: this.variant,
+        module: this.moduleName,
+        model: this.modelName,
+        offset_from_root: offsetFromRootProject,
+      },
+    );
 
-    await this.addVariantToRoot({
-      libraryOptions,
-      variant: this.variant,
-      projectRoot: this.rootProjectPath,
-      tree,
-      type: this.type,
-    });
-    await this.addInterfaceToRoot({
-      libraryOptions,
-      variant: this.variant,
-      projectRoot: this.rootProjectPath,
-      tree,
-      type: this.type,
-    });
+    // await this.addVariantToRoot({
+    //   libraryOptions,
+    //   variant: this.variant,
+    //   projectRoot: this.rootProjectPath,
+    //   tree: this.tree,
+    //   type: this.type,
+    // });
 
-    await this.addStylesToRoot({
-      projectRoot: this.rootProjectPath,
-      tree,
-      type: this.type,
-      variant: this.variant,
-    });
+    // await this.addInterfaceToRoot({
+    //   libraryOptions,
+    //   variant: this.variant,
+    //   projectRoot: this.rootProjectPath,
+    //   tree: this.tree,
+    //   type: this.type,
+    // });
 
-    await formatFiles(tree);
+    // await this.addStylesToRoot({
+    //   projectRoot: this.rootProjectPath,
+    //   tree: this.tree,
+    //   type: this.type,
+    //   variant: this.variant,
+    // });
+  }
+
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
+
+    if (!project) {
+      return;
+    }
+
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
+      skipFormat: true,
+      forceRemove: true,
+    });
   }
 
   async addVariantToRoot({

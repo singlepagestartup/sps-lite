@@ -1,5 +1,6 @@
 export interface CreateModelFrontendComponentVariantGeneratorSchema {
   name: string;
-  project: string;
-  type: string;
+  level: "sps-lite" | "startup";
+  model_name: string;
+  module_name: string;
 }

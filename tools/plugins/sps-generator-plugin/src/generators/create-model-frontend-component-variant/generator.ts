@@ -1,34 +1,26 @@
-import { getProjects } from "@nx/devkit";
 import { CreateModelFrontendComponentVariantGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 import { Tree } from "@nx/devkit";
 
+// npx nx generate @sps/sps-generator-plugin:create-model-frontend-component-variant --name=test-variant --model_name=page --level=sps-lite --module_name=sps-website-builder --no-interactive --dry-run
 export async function createModelFrontendComponentVariantGenerator(
   tree: Tree,
   options: CreateModelFrontendComponentVariantGeneratorSchema,
 ) {
-  const variant = options.name;
-  const type = options.type;
-  const projects = getProjects(tree);
-  const project = projects.get(options.project);
-
-  if (project.name.includes("variants")) {
-    console.error("Variants could not be created inside a variant");
-    return;
-  }
-
-  if (!project.name.includes("component")) {
-    console.error("Only components can have variants");
-    return;
-  }
+  const name = options.name;
+  const level = options.level;
+  const modelName = options.model_name;
+  const moduleName = options.module_name;
 
   const coder = new Coder({
     tree,
   });
+
   await coder.createModelFrontendComponentVariant({
-    project,
-    type,
-    variant,
+    name,
+    level,
+    modelName,
+    moduleName,
   });
 }
 

@@ -2,6 +2,7 @@ import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ModelsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 import { IEditFieldProps } from "./backend/schema/table/Coder";
+import { Coder as FrontendCoder } from "./frontend/Coder";
 
 /**
  * Model coder
@@ -14,6 +15,7 @@ export class Coder {
   baseDirectory: string;
   project: {
     backend: BackendCoder;
+    frontend: FrontendCoder;
   };
   // rootProjects: {
   //   [key: string]: ProjectConfiguration;
@@ -61,8 +63,14 @@ export class Coder {
       parent: this,
     });
 
+    const frontend = new FrontendCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     this.project = {
-      backend: backend,
+      backend,
+      frontend,
     };
     // this.rootProjects = {
     //   frontend: frontendRootProject,
@@ -96,5 +104,19 @@ export class Coder {
 
   async removeRelation(props: { relationName: string }) {
     await this.project.backend.removeRelation(props);
+  }
+
+  async createModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.frontend.createVariant(props);
+  }
+
+  async removeModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.frontend.removeVariant(props);
   }
 }

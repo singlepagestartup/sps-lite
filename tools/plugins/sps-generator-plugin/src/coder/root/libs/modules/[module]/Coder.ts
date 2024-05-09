@@ -212,4 +212,20 @@ export class Coder {
       },
     );
   }
+
+  async createModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    modelName: string;
+  }) {
+    await this.project.models[0].createModelFrontendComponentVariant(props);
+  }
+
+  async removeModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    modelName: string;
+  }) {
+    await this.project.models[0].removeModelFrontendComponentVariant(props);
+  }
 }

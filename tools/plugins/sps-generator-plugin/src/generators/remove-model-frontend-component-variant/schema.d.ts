@@ -1,3 +1,6 @@
 export interface RemoveModelFrontendComponentVariantGeneratorSchema {
-  project: string;
+  name: string;
+  level: "sps-lite" | "startup";
+  model_name: string;
+  module_name: string;
 }

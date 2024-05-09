@@ -4,15 +4,79 @@
   "title": "",
   "type": "object",
   "properties": {
-    "project": {
+    "name": {
       "type": "string",
-      "description": "The component variant to remove",
-      "x-prompt": "Select variant",
+      "description": "",
       "$default": {
-        "$source": "project"
+        "$source": "argv",
+        "index": 0
       },
-      "x-dropdown": "projects"
+      "x-prompt": "What name of variant would you like to use?"
+    },
+    "level": {
+      "type": "string",
+      "description": "Type of component",
+      "x-prompt": {
+        "message": "Which type of component would you like to generate?",
+        "type": "list",
+        "default": "startup",
+        "items": [
+          {
+            "value": "startup"
+          },
+          {
+            "value": "sps-lite"
+          },
+          {
+            "value": "sps"
+          }
+        ]
+      }
+    },
+    "model_name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "module_name": {
+      "type": "string",
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
     }
   },
-  "required": ["project"]
+  "required": ["name", "level", "model_name", "module_name"]
 }

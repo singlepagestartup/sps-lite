@@ -84,4 +84,30 @@ export class Coder {
   async removeRelation(props: { relationName: string }) {
     await this.project.model.removeRelation(props);
   }
+
+  async createModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    modelName: string;
+  }) {
+    const { modelName } = props;
+
+    await this.check();
+    await this.init({ modelName });
+
+    await this.project.model.createModelFrontendComponentVariant(props);
+  }
+
+  async removeModelFrontendComponentVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    modelName: string;
+  }) {
+    const { modelName } = props;
+
+    await this.check();
+    await this.init({ modelName });
+
+    await this.project.model.removeModelFrontendComponentVariant(props);
+  }
 }

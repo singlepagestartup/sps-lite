@@ -13,7 +13,7 @@
       },
       "x-prompt": "What name of variant would you like to use?"
     },
-    "type": {
+    "level": {
       "type": "string",
       "description": "Type of component",
       "x-prompt": {
@@ -33,15 +33,50 @@
         ]
       }
     },
-    "project": {
+    "model_name": {
       "type": "string",
-      "description": "The root component for creating component. Shoule be [module]-models-[model]-frontend-component",
-      "x-prompt": "Select root component?",
+      "description": "",
       "$default": {
-        "$source": "project"
+        "$source": "argv",
+        "index": 0
       },
-      "x-dropdown": "projects"
+      "x-prompt": "What name would you like to use?"
+    },
+    "module_name": {
+      "type": "string",
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
     }
   },
-  "required": ["name", "project", "type"]
+  "required": ["name", "level", "model_name", "module_name"]
 }
