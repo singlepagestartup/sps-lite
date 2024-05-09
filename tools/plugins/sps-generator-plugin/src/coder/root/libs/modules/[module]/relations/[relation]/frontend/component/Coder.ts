@@ -31,4 +31,76 @@ export class Coder {
       variant: undefined,
     };
   }
+
+  async init() {
+    await this.project.root.init();
+  }
+
+  async create() {
+    await this.project.root.create();
+  }
+
+  async remove() {
+    await this.project.root.remove();
+  }
+
+  async createVariant({
+    variantName,
+    variantLevel,
+  }: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    const variant = new VariantCoder({
+      tree: this.tree,
+      parent: this,
+      name: variantName,
+      level: variantLevel,
+    });
+
+    this.project.variant = variant;
+
+    await this.project.variant.create();
+
+    const rootBaseDirectory = this.baseDirectory;
+    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
+    const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
+    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
+
+    await this.project.variant.attach({
+      variantsPath: rootVariantsPath,
+      interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
+    });
+  }
+
+  async removeVariant({
+    variantName,
+    variantLevel,
+  }: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    const variant = new VariantCoder({
+      tree: this.tree,
+      parent: this,
+      name: variantName,
+      level: variantLevel,
+    });
+
+    this.project.variant = variant;
+
+    await this.project.variant.remove();
+
+    const rootBaseDirectory = this.baseDirectory;
+    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
+    const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
+    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
+
+    await this.project.variant.detach({
+      variantsPath: rootVariantsPath,
+      interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
+    });
+  }
 }

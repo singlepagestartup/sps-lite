@@ -48,26 +48,26 @@ export class Coder {
   async init() {
     await this.project.api.init();
     await this.project.redux.init();
-    // await this.project.component.init();
+    await this.project.component.init();
   }
 
   async create() {
     await this.project.api.create();
     await this.project.redux.create();
-    // await this.project.component.create();
+    await this.project.component.create();
   }
 
   async remove() {
-    // await this.project.component.remove();
+    await this.project.component.remove();
     await this.project.redux.remove();
     await this.project.api.remove();
   }
 
   async createVariant(props: { variantName: string; variantLevel: string }) {
-    // await this.project.component.createVariant(props);
+    await this.project.component.createVariant(props);
   }
 
   async removeVariant(props: { variantName: string; variantLevel: string }) {
-    // await this.project.component.removeVariant(props);
+    await this.project.component.removeVariant(props);
   }
 }

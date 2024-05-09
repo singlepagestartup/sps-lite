@@ -1,16 +1,9 @@
 import {
   ProjectConfiguration,
   Tree,
-  generateFiles,
   getProjects,
   offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
 } from "@nx/devkit";
-import { type Linter } from "@nx/eslint";
-import type { SupportedStyles } from "@nx/react/typings/style";
-import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
-import { libraryGenerator } from "@nx/react";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ComponentCoder } from "../../../Coder";
@@ -25,6 +18,7 @@ import {
   addToFile,
   replaceInFile,
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
+import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
 
 export class Coder {
   parent: ComponentCoder;
@@ -87,51 +81,28 @@ export class Coder {
     });
   }
 
+  async init() {
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
   async create() {
-    const libraryOptions = {
-      name: this.baseName,
-      directory: this.baseDirectory,
-      linter: "none" as Linter.EsLint,
-      minimal: true,
-      style: "none" as SupportedStyles,
-      projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
-    };
-
-    await libraryGenerator(this.tree, libraryOptions);
-
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-    updateProjectConfiguration(this.tree, this.baseName, {
+
+    await createSpsReactLibrary({
       root: this.baseDirectory,
-      sourceRoot: `${this.baseDirectory}/src`,
-      projectType: "library",
-      tags: [],
-      targets: {
-        lint: {},
-      },
-    });
-
-    this.tree.delete(`${this.baseDirectory}/tsconfig.lib.json`);
-
-    updateJson(this.tree, `${this.baseDirectory}/tsconfig.json`, (json) => {
-      json.references = [];
-      delete json.files;
-      delete json.include;
-
-      return json;
-    });
-
-    generateFiles(
-      this.tree,
-      path.join(__dirname, "files"),
-      this.baseDirectory,
-      {
+      name: this.baseName,
+      tree: this.tree,
+      generateFilesPath: path.join(__dirname, `files`),
+      templateParams: {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,
         offset_from_root: offsetFromRootProject,
       },
-    );
+    });
+
+    await this.init();
   }
 
   async remove() {
