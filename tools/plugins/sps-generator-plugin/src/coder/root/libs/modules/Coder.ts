@@ -130,18 +130,6 @@ export class Coder {
     });
 
     await this.project.module.createRelations(props);
-
-    const baseModuleDirectory = this.project.module.baseDirectory;
-    const backendDirectory = `${baseModuleDirectory}/backend`;
-    const schemaDirectory = `${backendDirectory}/schema`;
-    const rootSchemaDirectory = `${schemaDirectory}/root`;
-    const indexPath = `${rootSchemaDirectory}/src/lib/index.ts`;
-
-    await this.project.module.project.relations[0].project.relation.project.backend.project.schema.attach(
-      {
-        indexPath,
-      },
-    );
   }
 
   async removeRelations(
@@ -157,17 +145,5 @@ export class Coder {
     });
 
     await this.project.module.removeRelations(props);
-
-    const baseModuleDirectory = this.project.module.baseDirectory;
-    const backendDirectory = `${baseModuleDirectory}/backend`;
-    const schemaDirectory = `${backendDirectory}/schema`;
-    const rootSchemaDirectory = `${schemaDirectory}/root`;
-    const indexPath = `${rootSchemaDirectory}/src/lib/index.ts`;
-
-    await this.project.module.project.relations[0].project.relation.project.backend.project.schema.detach(
-      {
-        indexPath,
-      },
-    );
   }
 }
