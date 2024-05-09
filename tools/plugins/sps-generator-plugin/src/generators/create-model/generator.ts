@@ -43,14 +43,6 @@ export async function createModelGenerator(
 
   // const backendAppProject = getProjects(tree).get(moduleProject);
 
-  // await createFrontendRedux({
-  //   tree,
-  //   baseDirectory,
-  //   baseName,
-  //   modelName,
-  //   module,
-  // });
-
   // await createFrontendRootComponent({
   //   tree,
   //   baseDirectory,
@@ -63,66 +55,6 @@ export async function createModelGenerator(
 }
 
 export default createModelGenerator;
-
-async function createFrontendRedux({
-  tree,
-  baseDirectory,
-  baseName,
-  modelName,
-  module,
-}: {
-  tree: Tree;
-  baseName: string;
-  baseDirectory: string;
-  modelName: string;
-  module: string;
-}) {
-  const apiLibraryName = `${baseName}-frontend-redux`;
-  const directory = `${baseDirectory}/${modelName}/frontend/redux`;
-  const modelNamePluralized = modelName;
-
-  const offsetFromRootProject = offsetFromRoot(directory);
-
-  const libraryOptions = {
-    name: apiLibraryName,
-    directory,
-    linter: "none" as Linter.EsLint,
-    minimal: true,
-    style: "none" as SupportedStyles,
-    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
-    strict: true,
-  };
-
-  await reactLibraryGenerator(tree, libraryOptions);
-
-  updateProjectConfiguration(tree, apiLibraryName, {
-    root: directory,
-    sourceRoot: `${directory}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      lint: {},
-    },
-  });
-
-  generateFiles(tree, path.join(__dirname, `files/frontend/redux`), directory, {
-    template: "",
-    module,
-    model: modelName,
-    model_pluralized: modelNamePluralized,
-    offset_from_root: offsetFromRootProject,
-  });
-
-  updateJson(tree, `${directory}/tsconfig.json`, (json) => {
-    json.references = [];
-    delete json.files;
-    delete json.include;
-
-    return json;
-  });
-
-  tree.delete(`${directory}/tsconfig.lib.json`);
-}
 
 async function createFrontendRootComponent({
   tree,
