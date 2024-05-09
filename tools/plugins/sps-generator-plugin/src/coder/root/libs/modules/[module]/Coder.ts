@@ -147,7 +147,7 @@ export class Coder {
       relationName: props.leftName,
     });
 
-    await this.project.relations[0].project.relation.project.backend.project.schema.attach(
+    await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
       },
@@ -206,7 +206,7 @@ export class Coder {
       },
     );
 
-    await this.project.relations[0].project.relation.project.backend.project.schema.detach(
+    await this.project.relations[0].project.relation.project.backend.project.schema.project.root.detach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
       },
