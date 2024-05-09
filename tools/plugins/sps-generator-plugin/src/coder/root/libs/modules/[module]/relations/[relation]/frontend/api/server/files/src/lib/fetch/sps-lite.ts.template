@@ -1,5 +1,5 @@
 import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
-import { populate, route, IModelExtended } from "../model";
+import { populate, route, IModelExtended } from "<%= api_model_import_path %>";
 
 export const api = {
   findOne: async ({ id }: { id: number }) => {

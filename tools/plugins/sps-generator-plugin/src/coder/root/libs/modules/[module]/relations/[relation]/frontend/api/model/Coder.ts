@@ -17,25 +17,25 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: ProjectConfiguration;
-  modelName: string;
-  modelNamePluralized: string;
+  relationName: string;
+  relationNamePluralized: string;
   moduleName: string;
 
   constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
-    this.name = "client";
-    this.baseName = `${parent.baseName}-client`;
-    this.baseDirectory = `${parent.baseDirectory}/client`;
+    this.name = "model";
+    this.baseName = `${parent.baseName}-model`;
+    this.baseDirectory = `${parent.baseDirectory}/model`;
     this.tree = tree;
     this.parent = parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
-    const modelName = this.parent.parent.parent.name;
-    const modelNamePluralized = getNameStyles({ name: modelName }).kebabCased
-      .pluralized;
+    const relationName = this.parent.parent.parent.name;
+    const relationNamePluralized = getNameStyles({ name: relationName })
+      .kebabCased.pluralized;
 
     this.moduleName = moduleName;
-    this.modelName = modelName;
-    this.modelNamePluralized = modelNamePluralized;
+    this.relationName = relationName;
+    this.relationNamePluralized = relationNamePluralized;
   }
 
   async init() {
@@ -43,8 +43,12 @@ export class Coder {
   }
 
   async create() {
+    const rootContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.root.baseName;
+    const extendedContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.extended.baseName;
+
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-    const apiModelImportPath = this.parent.project.model.baseName;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -53,8 +57,11 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        api_model_import_path: apiModelImportPath,
         module_name: this.moduleName,
+        relation_name: this.relationName,
+        root_contracts_import_path: rootContractsImportPath,
+        extended_contracts_import_path: extendedContractsImportPath,
+        relation_name_pluralized: this.relationNamePluralized,
         offset_from_root: offsetFromRootProject,
       },
     });

@@ -44,6 +44,7 @@ export class Coder {
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+    const apiModelImportPath = this.parent.project.model.baseName;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -53,8 +54,7 @@ export class Coder {
       templateParams: {
         template: "",
         module_name: this.moduleName,
-        model_name: this.modelName,
-        model_name_pluralized: this.modelNamePluralized,
+        api_model_import_path: apiModelImportPath,
         offset_from_root: offsetFromRootProject,
       },
     });
