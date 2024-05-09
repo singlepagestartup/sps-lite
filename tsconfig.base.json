@@ -600,9 +600,6 @@
       "@sps/sps-website-builder-backend-schema": [
         "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-backend-schema-relations": [
-        "libs/modules/sps-website-builder/backend/schema/relations/root/src/index.ts"
-      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
