@@ -3,7 +3,6 @@ import {
   Tree,
   generateFiles,
   getProjects,
-  names,
   offsetFromRoot,
   updateJson,
   updateProjectConfiguration,
@@ -59,29 +58,14 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    // const libName = `${project.name}-variants-${type}-${variant}`;
-    // const rootProjectPath = project?.root.split("/");
-    // const moduleIndex = rootProjectPath?.findIndex((dir) => dir === "modules");
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
-
     const nameStyles = getNameStyles({
       name,
     });
 
-    // const moduleName = rootProjectPath?.[moduleIndex + 1];
-    // const modelIndex = rootProjectPath?.findIndex((dir) => dir === "models");
-    // const modelName = rootProjectPath?.[modelIndex + 1];
-    // const directory = `${rootProjectPath
-    //   ?.slice(0, -1)
-    //   .join("/")}/variants/${type}/${variant}`;
-    // this.libName = libName;
-    // this.root = directory;
-    // this.variant = variant;
     this.moduleName = moduleName;
     this.modelName = modelName;
-    // this.rootProjectPath = rootProjectPath;
-    // this.type = type;
     this.importVariant = new ImportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
       libName: this.baseName,
@@ -148,13 +132,6 @@ export class Coder {
         offset_from_root: offsetFromRootProject,
       },
     );
-
-    // await this.addStylesToRoot({
-    //   projectRoot: this.rootProjectPath,
-    //   tree: this.tree,
-    //   type: this.type,
-    //   variant: this.variant,
-    // });
   }
 
   async remove() {
