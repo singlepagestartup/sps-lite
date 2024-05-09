@@ -217,7 +217,13 @@ export class Coder {
     });
   }
 
-  async detach({ variantsPath }: { variantsPath: string }) {
+  async detach({
+    variantsPath,
+    interfacePath,
+  }: {
+    variantsPath: string;
+    interfacePath: string;
+  }) {
     try {
       await replaceInFile({
         tree: this.tree,
@@ -236,6 +242,32 @@ export class Coder {
         tree: this.tree,
         pathToFile: variantsPath,
         regex: this.exportVariant.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: interfacePath,
+        regex: this.importInterface.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: interfacePath,
+        regex: this.exportInterface.onRemove.regex,
         content: "",
       });
     } catch (error) {

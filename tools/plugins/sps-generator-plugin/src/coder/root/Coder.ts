@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, formatFiles } from "@nx/devkit";
 import { Coder as LibsCoder } from "./libs/Coder";
 import { IEditFieldProps } from "./libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 import { IEditRelationsProps } from "./libs/modules/[module]/relations/Coder";
@@ -104,6 +104,8 @@ export class Coder {
     modelName: string;
   }) {
     await this.project.libs.createModelFrontendComponentVariant(props);
+
+    await formatFiles(this.tree);
   }
 
   async removeModelFrontendComponentVariant(props: {
@@ -113,5 +115,7 @@ export class Coder {
     modelName: string;
   }) {
     await this.project.libs.removeModelFrontendComponentVariant(props);
+
+    await formatFiles(this.tree);
   }
 }
