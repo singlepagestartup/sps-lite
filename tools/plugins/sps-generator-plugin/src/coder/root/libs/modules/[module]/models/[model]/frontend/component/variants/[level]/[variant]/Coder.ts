@@ -208,6 +208,13 @@ export class Coder {
       regex: this.exportInterface.onCreate.regex,
       content: this.exportInterface.onCreate.content,
     });
+
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: interfacePath,
+      regex: new RegExp(`[|](\\s+)+?[|]`),
+      content: "|",
+    });
   }
 
   async detach({ variantsPath }: { variantsPath: string }) {

@@ -59,7 +59,5 @@ export const replaceInFile = async ({
 
   tree.write(pathToFile, updatedContent);
 
-  await formatFiles(tree);
-
   return tree.read(pathToFile).toString();
 };
