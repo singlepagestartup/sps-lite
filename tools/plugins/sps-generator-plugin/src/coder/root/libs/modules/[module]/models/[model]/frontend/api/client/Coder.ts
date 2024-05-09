@@ -36,16 +36,10 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    const modelName = this.parent.parent.name;
-
+    const moduleName = this.parent.parent.parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
     const modelNamePluralized = getNameStyles({ name: modelName }).kebabCased
       .pluralized;
-
-    const moduleName = this.parent.parent.parent.name;
-
-    console.log(`🚀 ~ constructor ~ moduleName:`, moduleName);
-    console.log(`🚀 ~ constructor ~ modelName:`, modelName);
-    console.log(`🚀 ~ constructor ~ modelNamePluralized:`, modelNamePluralized);
 
     this.moduleName = moduleName;
     this.modelName = modelName;
@@ -71,7 +65,7 @@ export class Coder {
 
     await reactLibraryGenerator(this.tree, libraryOptions);
 
-    updateProjectConfiguration(this.tree, this.baseDirectory, {
+    updateProjectConfiguration(this.tree, this.baseName, {
       root: this.baseDirectory,
       sourceRoot: `${this.baseDirectory}/src`,
       projectType: "library",
