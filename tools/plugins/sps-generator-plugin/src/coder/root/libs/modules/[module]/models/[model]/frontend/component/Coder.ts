@@ -55,8 +55,6 @@ export class Coder {
     await this.project.variant.attach({
       variantsPath: rootVariantsPath,
     });
-
-    console.log(`🚀 ~ rootVariantsPath:`, rootVariantsPath);
   }
 
   async removeVariant({

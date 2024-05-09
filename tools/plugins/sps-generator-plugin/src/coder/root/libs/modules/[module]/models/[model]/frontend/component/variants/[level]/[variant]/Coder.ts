@@ -16,7 +16,11 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ComponentCoder } from "../../../Coder";
 import { RegexCreator } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/RegexCreator";
-import { space } from "../../../../../../../../../../../../utils/regex-utils/regex-elements";
+import {
+  space,
+  comma,
+  doubleQuote,
+} from "../../../../../../../../../../../../utils/regex-utils/regex-elements";
 import { util as getNameStyles } from "../../../../../../../../../../../utils/get-name-styles";
 import {
   addToFile,
@@ -33,6 +37,7 @@ export class Coder {
   moduleName: string;
   modelName: string;
   importVariant: ImportVariant;
+  exportVariant: ExportVariant;
 
   constructor({
     parent,
@@ -77,6 +82,10 @@ export class Coder {
     this.importVariant = new ImportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
       libName: this.baseName,
+    });
+    this.exportVariant = new ExportVariant({
+      pascalCasedVariant: nameStyles.pascalCased.base,
+      kebabCasedVariant: nameStyles.kebabCased.base,
     });
   }
 
@@ -163,12 +172,20 @@ export class Coder {
       forceRemove: true,
     });
   }
+
   async attach({ variantsPath }: { variantsPath: string }) {
     await addToFile({
       toTop: true,
       pathToFile: variantsPath,
       content: this.importVariant.onCreate.content,
       tree: this.tree,
+    });
+
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: variantsPath,
+      regex: this.exportVariant.onCreate.regex,
+      content: this.exportVariant.onCreate.content,
     });
   }
 
@@ -178,6 +195,19 @@ export class Coder {
         tree: this.tree,
         pathToFile: variantsPath,
         regex: this.importVariant.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: variantsPath,
+        regex: this.exportVariant.onRemove.regex,
         content: "",
       });
     } catch (error) {
@@ -298,6 +328,31 @@ export class ImportVariant extends RegexCreator {
       placeRegex,
       contentRegex,
       content,
+    });
+  }
+}
+
+export class ExportVariant extends RegexCreator {
+  constructor({
+    pascalCasedVariant,
+    kebabCasedVariant,
+  }: {
+    pascalCasedVariant: string;
+    kebabCasedVariant: string;
+  }) {
+    const place = `export const variants = {`;
+    const placeRegex = new RegExp(`export const variants = {`);
+
+    const content = `"${kebabCasedVariant}":${space}${pascalCasedVariant},`;
+    const contentRegex = new RegExp(
+      `${doubleQuote}${kebabCasedVariant}${doubleQuote}:${space}${pascalCasedVariant}${comma}`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
     });
   }
 }
