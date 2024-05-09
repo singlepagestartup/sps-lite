@@ -1,4 +1,9 @@
-import { ImportVariant, ExportVariant } from "./Coder";
+import {
+  ImportVariant,
+  ExportVariant,
+  ImportInterface,
+  ExportInterface,
+} from "./Coder";
 
 describe("Coder", () => {
   describe(`ImportVariant`, () => {
@@ -64,6 +69,69 @@ describe("Coder", () => {
         simple: Simple,
         admin: Admin
       };`;
+
+      expect(string).toMatch(regex);
+    });
+  });
+
+  describe(`ImportInterface`, () => {
+    const libName =
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
+    const pascalCasedVariant = "AdminTable";
+    const importPath = new ImportInterface({
+      libName,
+      pascalCasedVariant,
+    });
+
+    it(`should match the regex 1`, () => {
+      const regex = importPath.onRemove.regex;
+
+      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
+
+      export type IComponentProps =
+        | IAdminTableComponentProps
+        | IAdminSelectInputComponentProps
+        | IAdminFormComponentProps;`;
+
+      expect(string).toMatch(regex);
+    });
+
+    it(`should match the regex 2`, () => {
+      const regex = importPath.onRemove.regex;
+
+      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
+
+      export type IComponentProps = IAdminTableComponentProps | IAdminSelectInputComponentProps | IAdminFormComponentProps;`;
+
+      expect(string).toMatch(regex);
+    });
+  });
+
+  describe(`ExportInterface`, () => {
+    const pascalCasedVariant = "AdminTable";
+    const exportInterface = new ExportInterface({
+      pascalCasedVariant,
+    });
+
+    it(`should match the regex 1`, () => {
+      const regex = exportInterface.onRemove.regex;
+
+      const string = `
+      export type IComponentProps =
+        | IAdminTableComponentProps
+        | IAdminSelectInputComponentProps
+        | IAdminFormComponentProps;`;
+
+      expect(string).toMatch(regex);
+    });
+
+    it(`should match the regex 2`, () => {
+      const regex = exportInterface.onRemove.regex;
+
+      const string = `
+      export type IComponentProps = IAdminTableComponentProps | IAdminSelectInputComponentProps | IAdminFormComponentProps;`;
 
       expect(string).toMatch(regex);
     });

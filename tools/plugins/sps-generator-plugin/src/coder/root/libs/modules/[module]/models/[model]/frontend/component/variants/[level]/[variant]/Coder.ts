@@ -38,6 +38,8 @@ export class Coder {
   modelName: string;
   importVariant: ImportVariant;
   exportVariant: ExportVariant;
+  importInterface: ImportInterface;
+  exportInterface: ExportInterface;
 
   constructor({
     parent,
@@ -87,6 +89,13 @@ export class Coder {
       pascalCasedVariant: nameStyles.pascalCased.base,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
+    this.importInterface = new ImportInterface({
+      pascalCasedVariant: nameStyles.pascalCased.base,
+      libName: this.baseName,
+    });
+    this.exportInterface = new ExportInterface({
+      pascalCasedVariant: nameStyles.pascalCased.base,
+    });
   }
 
   async create() {
@@ -135,14 +144,6 @@ export class Coder {
       },
     );
 
-    // await this.addVariantToRoot({
-    //   libraryOptions,
-    //   variant: this.variant,
-    //   projectRoot: this.rootProjectPath,
-    //   tree: this.tree,
-    //   type: this.type,
-    // });
-
     // await this.addInterfaceToRoot({
     //   libraryOptions,
     //   variant: this.variant,
@@ -173,7 +174,13 @@ export class Coder {
     });
   }
 
-  async attach({ variantsPath }: { variantsPath: string }) {
+  async attach({
+    variantsPath,
+    interfacePath,
+  }: {
+    variantsPath: string;
+    interfacePath: string;
+  }) {
     await addToFile({
       toTop: true,
       pathToFile: variantsPath,
@@ -186,6 +193,20 @@ export class Coder {
       pathToFile: variantsPath,
       regex: this.exportVariant.onCreate.regex,
       content: this.exportVariant.onCreate.content,
+    });
+
+    await addToFile({
+      toTop: true,
+      pathToFile: interfacePath,
+      content: this.importInterface.onCreate.content,
+      tree: this.tree,
+    });
+
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: interfacePath,
+      regex: this.exportInterface.onCreate.regex,
+      content: this.exportInterface.onCreate.content,
     });
   }
 
@@ -215,39 +236,6 @@ export class Coder {
         throw error;
       }
     }
-  }
-
-  async addVariantToRoot({
-    libraryOptions,
-    variant,
-    projectRoot,
-    tree,
-    type,
-  }: {
-    libraryOptions: { name: string };
-    variant: string;
-    projectRoot: string[];
-    tree: Tree;
-    type: string;
-  }) {
-    const rootProjectVariantsPath =
-      projectRoot.join("/") + `/src/lib/${type}/variants.ts`;
-
-    let rootProjectVariants = tree.read(rootProjectVariantsPath).toString();
-
-    const capitalizedName = names(variant).className;
-    const createdVariantInterface = `${capitalizedName}`;
-    const importVariantOutput = `import { Component as ${createdVariantInterface} } from "${libraryOptions.name}";\n${rootProjectVariants}`;
-    tree.write(rootProjectVariantsPath, importVariantOutput);
-
-    rootProjectVariants = tree.read(rootProjectVariantsPath).toString();
-
-    const prevExport = rootProjectVariants.match(/export const variants = {/);
-    const exportVariantOutput = rootProjectVariants.replace(
-      prevExport[0],
-      `export const variants = { "${variant}": ${createdVariantInterface},`,
-    );
-    tree.write(rootProjectVariantsPath, exportVariantOutput);
   }
 
   async addInterfaceToRoot({
@@ -346,6 +334,51 @@ export class ExportVariant extends RegexCreator {
     const content = `"${kebabCasedVariant}":${pascalCasedVariant},`;
     const contentRegex = new RegExp(
       `${doubleQuote}${kebabCasedVariant}${doubleQuote}:${space}${pascalCasedVariant}${comma}`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
+    });
+  }
+}
+
+export class ImportInterface extends RegexCreator {
+  constructor({
+    pascalCasedVariant,
+    libName,
+  }: {
+    pascalCasedVariant: string;
+    libName: string;
+  }) {
+    const place = "";
+    const placeRegex = new RegExp("");
+
+    const content = `import { IComponentProps as I${pascalCasedVariant}ComponentProps } from "${libName}";`;
+
+    const contentRegex = new RegExp(
+      `import${space}{${space}IComponentProps${space}as${space}I${pascalCasedVariant}ComponentProps }${space}from${space}"${libName}";`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      contentRegex,
+      content,
+    });
+  }
+}
+
+export class ExportInterface extends RegexCreator {
+  constructor({ pascalCasedVariant }: { pascalCasedVariant: string }) {
+    const place = `export type IComponentProps =`;
+    const placeRegex = new RegExp(`export type IComponentProps =${space}[|]?`);
+
+    const content = `I${pascalCasedVariant}ComponentProps |`;
+    const contentRegex = new RegExp(
+      `I${pascalCasedVariant}ComponentProps${space}|`,
     );
 
     super({

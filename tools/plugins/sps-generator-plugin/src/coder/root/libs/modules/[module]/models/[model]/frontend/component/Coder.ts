@@ -51,9 +51,11 @@ export class Coder {
 
     const rootBaseDirectory = this.baseDirectory;
     const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
+    const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
 
     await this.project.variant.attach({
       variantsPath: rootVariantsPath,
+      interfacePath: rootInterfacePath,
     });
   }
 

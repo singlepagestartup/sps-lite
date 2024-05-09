@@ -19,4 +19,5 @@ export type IComponentProps =
   | IGetQueryFromUrlComponentProps
   | IGetUrlModelIdComponentProps
   | IGetByUrlComponentProps
-  | ISimpleComponentProps;
+  | ISimpleComponentProps
+  | never;
