@@ -33,9 +33,26 @@
         ]
       }
     },
-    "model_name": {
+    "type": {
       "type": "string",
-      "description": "",
+      "description": "Model or Relation?",
+      "x-prompt": {
+        "message": "Which type of component would you like to generate?",
+        "type": "list",
+        "default": "model",
+        "items": [
+          {
+            "value": "model"
+          },
+          {
+            "value": "relation"
+          }
+        ]
+      }
+    },
+    "entity_name": {
+      "type": "string",
+      "description": "Name of model (page) or relation (pages-to-layouts)",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -78,5 +95,5 @@
       }
     }
   },
-  "required": ["name", "level", "model_name", "module_name"]
+  "required": ["name", "level", "type", "entity_name", "module_name"]
 }

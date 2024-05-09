@@ -1,9 +1,9 @@
 {
   "generators": {
-    "create-model-frontend-component-variant": {
-      "factory": "./src/generators/create-model-frontend-component-variant/generator",
-      "schema": "./src/generators/create-model-frontend-component-variant/schema.json",
-      "description": "create-model-frontend-component-variant generator"
+    "create-frontend-component-variant": {
+      "factory": "./src/generators/create-frontend-component-variant/generator",
+      "schema": "./src/generators/create-frontend-component-variant/schema.json",
+      "description": "create-frontend-component-variant generator"
     },
     "remove-model-frontend-component-variant": {
       "factory": "./src/generators/remove-model-frontend-component-variant/generator",

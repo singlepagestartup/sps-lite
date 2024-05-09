@@ -144,4 +144,42 @@ export class Coder {
       modelName: modelName,
     });
   }
+
+  async createRelationFrontendComponentVariant({
+    name,
+    level,
+    relationName,
+    moduleName,
+  }: {
+    name: string;
+    level: string;
+    relationName: string;
+    moduleName: string;
+  }) {
+    await this.project.root.createRelationFrontendComponentVariant({
+      variantLevel: level,
+      variantName: name,
+      moduleName,
+      relationName,
+    });
+  }
+
+  async removeRelationFrontendComponentVariant({
+    name,
+    level,
+    relationName,
+    moduleName,
+  }: {
+    name: string;
+    level: string;
+    relationName: string;
+    moduleName: string;
+  }) {
+    await this.project.root.removeRelationFrontendComponentVariant({
+      variantLevel: level,
+      variantName: name,
+      moduleName,
+      relationName,
+    });
+  }
 }
