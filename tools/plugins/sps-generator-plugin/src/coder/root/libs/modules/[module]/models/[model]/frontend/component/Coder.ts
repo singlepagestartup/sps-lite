@@ -16,8 +16,8 @@ export class Coder {
 
   constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
     this.name = "component";
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}`;
+    this.baseName = `${parent.baseName}-component`;
+    this.baseDirectory = `${parent.baseDirectory}/component`;
     this.tree = tree;
     this.parent = parent;
     const root = new RootCoder({
