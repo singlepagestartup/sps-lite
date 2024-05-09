@@ -343,7 +343,7 @@ export class ExportVariant extends RegexCreator {
     const place = `export const variants = {`;
     const placeRegex = new RegExp(`export const variants = {`);
 
-    const content = `"${kebabCasedVariant}":${space}${pascalCasedVariant},`;
+    const content = `"${kebabCasedVariant}":${pascalCasedVariant},`;
     const contentRegex = new RegExp(
       `${doubleQuote}${kebabCasedVariant}${doubleQuote}:${space}${pascalCasedVariant}${comma}`,
     );
