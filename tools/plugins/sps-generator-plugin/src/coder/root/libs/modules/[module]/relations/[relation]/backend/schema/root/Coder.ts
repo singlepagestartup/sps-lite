@@ -37,23 +37,6 @@ export class Coder {
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/root`;
 
-    // console.log(
-    //   `🚀 ~ constructor ~ this.parent:`,
-    //   this.parent.parent.parent.project?.models,
-    // );
-
-    // const libName = `@sps/${module}-backend-schema-relations-${relationName}`;
-    // const root = `libs/modules/${module}/backend/schema/relations/${relationName}`;
-    // const rootRelationsSchemaProject = getProjects(tree).get(
-    //   `@sps/${module}-backend-schema-relations`,
-    // );
-
-    // const leftProjectImportPath = leftSchemaProject.name;
-    // const rightProjectImportPath = rightSchemaProject.name;
-
-    // const leftModelName = getModelByName({ name: leftSchemaProject.name });
-    // const rightModelName = getModelByName({ name: rightSchemaProject.name });
-
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
     const leftModelName =
@@ -63,6 +46,8 @@ export class Coder {
       this.parent.parent.parent.parent.parent.project.models[2].project.model
         .project.backend.project.model.modelName;
 
+    const relationName = this.parent.parent.parent.name;
+
     const leftModelStyles = getNameStyles({
       name: leftModelName,
     });
@@ -70,14 +55,6 @@ export class Coder {
       name: rightModelName,
     });
 
-    const relationName = this.parent.parent.parent.name;
-    console.log(`🚀 ~ constructor ~ relationName:`, relationName);
-    // console.log(`🚀 ~ constructor ~ relationName:`, relationName);
-    // this.libName = libName;
-    // this.root = root;
-    // this.rootRelationsSchemaProject = rootRelationsSchemaProject;
-    // this.leftProjectImportPath = leftProjectImportPath;
-    // this.rightProjectImportPath = rightProjectImportPath;
     this.leftModelStyles = leftModelStyles;
     this.rightModelStyles = rightModelStyles;
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
