@@ -21,8 +21,8 @@ export class Coder {
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
     this.parent = parent;
-    this.baseName = `${parent.baseName}-schema`;
-    this.baseDirectory = `${parent.baseDirectory}/schema/root`;
+    this.baseName = `${parent.baseName}`;
+    this.baseDirectory = `${parent.baseDirectory}/root`;
     this.tree = tree;
     this.name = "schema";
 
