@@ -52,6 +52,11 @@ export class Coder {
       modelName,
     });
 
+    await this.project.models.project.model.project.backend.project.schema.project.root.attach(
+      {
+        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
+      },
+    );
     await this.project.models.project.model.project.backend.project.model.attach(
       {
         indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
@@ -72,6 +77,12 @@ export class Coder {
     await this.project.models.project.model.project.backend.project.model.detach(
       {
         indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
+      },
+    );
+
+    await this.project.models.project.model.project.backend.project.schema.project.root.detach(
+      {
+        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
       },
     );
 
