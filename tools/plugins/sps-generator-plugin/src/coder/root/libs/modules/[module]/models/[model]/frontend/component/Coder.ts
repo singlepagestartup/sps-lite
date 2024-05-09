@@ -52,10 +52,12 @@ export class Coder {
     const rootBaseDirectory = this.baseDirectory;
     const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
     const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
+    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
 
     await this.project.variant.attach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
     });
   }
 
@@ -80,10 +82,12 @@ export class Coder {
     const rootBaseDirectory = this.baseDirectory;
     const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
     const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
+    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
 
     await this.project.variant.detach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
     });
   }
 }

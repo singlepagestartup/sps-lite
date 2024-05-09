@@ -40,6 +40,7 @@ export class Coder {
   exportVariant: ExportVariant;
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
+  importStyles: ImportStyles;
 
   constructor({
     parent,
@@ -96,6 +97,10 @@ export class Coder {
     this.exportInterface = new ExportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
     });
+    this.importStyles = new ImportStyles({
+      level,
+      kebabCasedVariant: nameStyles.kebabCased.base,
+    });
   }
 
   async create() {
@@ -144,14 +149,6 @@ export class Coder {
       },
     );
 
-    // await this.addInterfaceToRoot({
-    //   libraryOptions,
-    //   variant: this.variant,
-    //   projectRoot: this.rootProjectPath,
-    //   tree: this.tree,
-    //   type: this.type,
-    // });
-
     // await this.addStylesToRoot({
     //   projectRoot: this.rootProjectPath,
     //   tree: this.tree,
@@ -177,9 +174,11 @@ export class Coder {
   async attach({
     variantsPath,
     interfacePath,
+    indexScssPath,
   }: {
     variantsPath: string;
     interfacePath: string;
+    indexScssPath: string;
   }) {
     await addToFile({
       toTop: true,
@@ -215,14 +214,23 @@ export class Coder {
       regex: new RegExp(`[|](\\s+)+?[|]`),
       content: "|",
     });
+
+    await addToFile({
+      toTop: true,
+      pathToFile: indexScssPath,
+      content: this.importStyles.onCreate.content,
+      tree: this.tree,
+    });
   }
 
   async detach({
     variantsPath,
     interfacePath,
+    indexScssPath,
   }: {
     variantsPath: string;
     interfacePath: string;
+    indexScssPath: string;
   }) {
     try {
       await replaceInFile({
@@ -268,6 +276,19 @@ export class Coder {
         tree: this.tree,
         pathToFile: interfacePath,
         regex: this.exportInterface.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
+
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: indexScssPath,
+        regex: this.importStyles.onRemove.regex,
         content: "",
       });
     } catch (error) {
@@ -389,6 +410,32 @@ export class ExportInterface extends RegexCreator {
       placeRegex,
       content,
       contentRegex,
+    });
+  }
+}
+
+export class ImportStyles extends RegexCreator {
+  constructor({
+    level,
+    kebabCasedVariant,
+  }: {
+    level: string;
+    kebabCasedVariant: string;
+  }) {
+    const place = "";
+    const placeRegex = new RegExp("");
+
+    const content = `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`;
+
+    const contentRegex = new RegExp(
+      `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`,
+    );
+
+    super({
+      place,
+      placeRegex,
+      contentRegex,
+      content,
     });
   }
 }
