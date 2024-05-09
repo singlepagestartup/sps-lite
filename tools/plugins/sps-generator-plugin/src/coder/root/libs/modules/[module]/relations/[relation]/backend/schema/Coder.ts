@@ -34,8 +34,8 @@ export class Coder {
     this.name = "schema";
     this.parent = parent;
     this.tree = tree;
-    this.baseName = `${parent.baseName}-backend-schema`;
-    this.baseDirectory = `${parent.baseDirectory}/backend/schema`;
+    this.baseName = `${parent.baseName}-schema`;
+    this.baseDirectory = `${parent.baseDirectory}/schema`;
 
     // console.log(
     //   `🚀 ~ constructor ~ this.parent:`,
@@ -54,12 +54,16 @@ export class Coder {
     // const leftModelName = getModelByName({ name: leftSchemaProject.name });
     // const rightModelName = getModelByName({ name: rightSchemaProject.name });
 
-    const moduleName = this.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.name;
 
-    const leftModelStyles = getNameStyles({ name: this.parent.leftName });
-    const rightModelStyles = getNameStyles({ name: this.parent.rightName });
+    const leftModelStyles = getNameStyles({
+      name: this.parent.parent.leftName,
+    });
+    const rightModelStyles = getNameStyles({
+      name: this.parent.parent.rightName,
+    });
 
-    const relationName = this.parent.name;
+    const relationName = this.parent.parent.name;
     // console.log(`🚀 ~ constructor ~ relationName:`, relationName);
     // this.libName = libName;
     // this.root = root;

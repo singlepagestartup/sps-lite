@@ -18,3 +18,5 @@ export async function spsCreateModelRelationGenerator(
 }
 
 export default spsCreateModelRelationGenerator;
+
+// npx nx generate @sps/sps-generator-plugin:sps-create-model-relation --left_model_name=page --left_model_relation_name=pages --right_model_name=layout --right_model_relation_name=layouts --no-interactive --dry-run

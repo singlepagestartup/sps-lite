@@ -11,8 +11,6 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  leftName: string;
-  rightName: string;
   project: {
     schema?: SchemaCoder;
   };
