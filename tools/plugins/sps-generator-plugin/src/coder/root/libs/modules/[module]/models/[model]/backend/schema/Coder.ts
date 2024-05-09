@@ -1,6 +1,6 @@
 import { Tree } from "@nx/devkit";
 import { IEditFieldProps, Coder as TableCoder } from "./table/Coder";
-import { Coder as RootRelationsCoder } from "./relations/root/Coder";
+import { Coder as RelationsCoder } from "./relations/Coder";
 import { Coder as RootCoder } from "./root/Coder";
 import { Coder as BackendCoder } from "../Coder";
 
@@ -12,7 +12,7 @@ export class Coder {
   name: string;
   project: {
     table: TableCoder;
-    relations: RootRelationsCoder;
+    relations: RelationsCoder;
     root: RootCoder;
   };
 
@@ -28,7 +28,7 @@ export class Coder {
       tree,
     });
 
-    const relations = new RootRelationsCoder({
+    const relations = new RelationsCoder({
       parent: this,
       tree,
     });

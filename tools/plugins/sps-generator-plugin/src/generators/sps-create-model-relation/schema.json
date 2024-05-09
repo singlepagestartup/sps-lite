@@ -4,47 +4,43 @@
   "title": "",
   "type": "object",
   "properties": {
-    "left_project": {
+    "left_model_name": {
       "type": "string",
-      "description": "Select one project. It should be models-*-backend-schema-relations project",
-      "x-prompt": "Select left project?",
-      "$default": {
-        "$source": "project"
-      },
-      "x-dropdown": "projects"
-    },
-    "left_project_relation_name": {
-      "type": "string",
-      "description": "",
+      "description": "Model name, for example: page",
       "$default": {
         "$source": "argv",
         "index": 0
-      },
-      "x-prompt": "What is the name of the left model relation?"
+      }
     },
-    "right_project": {
+    "left_model_relation_name": {
       "type": "string",
-      "description": "Select one project. It should be models-*-backend-schema-relations project",
-      "x-prompt": "Select right project?",
-      "$default": {
-        "$source": "project"
-      },
-      "x-dropdown": "projects"
-    },
-    "right_project_relation_name": {
-      "type": "string",
-      "description": "",
+      "description": "Another project name alias, for example: pages",
       "$default": {
         "$source": "argv",
         "index": 0
-      },
-      "x-prompt": "What is the name of the right model relation?"
+      }
+    },
+    "right_model_name": {
+      "type": "string",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "right_model_relation_name": {
+      "type": "string",
+      "description": "Another project name alias, for example: layouts",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     }
   },
   "required": [
-    "left_project",
-    "left_project_relation_name",
-    "right_project",
-    "right_project_relation_name"
+    "left_model_name",
+    "left_model_relation_name",
+    "right_model_name",
+    "right_model_relation_name"
   ]
 }

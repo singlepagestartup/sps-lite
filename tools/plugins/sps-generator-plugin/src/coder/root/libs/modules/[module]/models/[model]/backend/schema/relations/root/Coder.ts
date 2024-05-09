@@ -1,18 +1,12 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-  names,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
 import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
-import { Coder as SchemaCoder } from "../../Coder";
+import { Coder as RelationsCoder } from "../Coder";
 
 export class Coder {
-  parent: SchemaCoder;
+  parent: RelationsCoder;
   baseName: string;
   baseDirectory: string;
   tree: Tree;
@@ -21,10 +15,10 @@ export class Coder {
   modelName: string;
   snakeCasePluralizedModelName: string;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
+  constructor({ parent, tree }: { parent: RelationsCoder; tree: Tree }) {
     this.parent = parent;
-    this.baseName = `${parent.baseName}-relations`;
-    this.baseDirectory = `${parent.baseDirectory}/relations/root`;
+    this.baseName = `${parent.baseName}`;
+    this.baseDirectory = `${parent.baseDirectory}/root`;
     this.tree = tree;
     this.name = "relations";
 
@@ -59,7 +53,7 @@ export class Coder {
   }
 
   async create() {
-    const parentModelLibrary = this.parent.project.table.baseName;
+    const parentModelLibrary = this.parent.parent.project.table.baseName;
 
     await createSpsTSLibrary({
       tree: this.tree,

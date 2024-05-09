@@ -76,4 +76,8 @@ export class Coder {
 
     await this.project.model.removeField(props);
   }
+
+  async createRelation() {
+    //
+  }
 }

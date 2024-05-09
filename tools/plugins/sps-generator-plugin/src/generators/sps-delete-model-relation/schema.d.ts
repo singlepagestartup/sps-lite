@@ -1,6 +1,6 @@
 export interface SpsDeleteModelRelationGeneratorSchema {
-  left_project: string;
-  left_project_relation_name: string;
-  right_project: string;
-  right_project_relation_name: string;
+  left_model_name: string;
+  left_model_relation_name: string;
+  right_model_name: string;
+  right_model_relation_name: string;
 }

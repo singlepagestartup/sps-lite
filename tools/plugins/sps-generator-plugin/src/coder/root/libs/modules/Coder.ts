@@ -2,6 +2,7 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "./[module]/Coder";
 import { Coder as ModulesCoder } from "../Coder";
 import { IEditFieldProps } from "./[module]/models/[model]/backend/schema/table/Coder";
+import { IEditRelationsProps } from "./[module]/relations/Coder";
 
 /**
  * Modules Coder
@@ -39,6 +40,10 @@ export class Coder {
   }
 
   async init({ moduleName }: { moduleName: string }) {
+    if (!moduleName) {
+      throw new Error("Module name is required");
+    }
+
     const moduleCoder = new ModuleCoder({
       tree: this.tree,
       parent: this,
@@ -110,5 +115,35 @@ export class Coder {
     });
 
     await this.project.module.removeField(props);
+  }
+
+  async createRelations(
+    props: IEditRelationsProps & {
+      moduleName: string;
+      leftModelName: string;
+      rightModelName: string;
+    },
+  ) {
+    const { moduleName } = props;
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.createRelations(props);
+  }
+
+  async removeRelations(
+    props: IEditRelationsProps & {
+      moduleName: string;
+      leftModelName: string;
+      rightModelName: string;
+    },
+  ) {
+    const { moduleName } = props;
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.removeRelations(props);
   }
 }

@@ -2,6 +2,10 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
+import {
+  IEditRelationsProps,
+  Coder as RelationsCoder,
+} from "./relations/Coder";
 
 /**
  * Module Coder
@@ -16,7 +20,8 @@ export class Coder {
   tree: Tree;
   parent: ModuleCoder;
   project: {
-    models?: ModelsCoder;
+    models?: ModelsCoder[];
+    relations?: RelationsCoder[];
   };
 
   constructor({
@@ -39,8 +44,14 @@ export class Coder {
       parent: this,
     });
 
+    const relations = new RelationsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     this.project = {
-      models,
+      models: [models],
+      relations: [relations],
     };
   }
 
@@ -49,56 +60,107 @@ export class Coder {
   }
 
   async createModel({ modelName }: { modelName: string }) {
-    await this.project.models.createModel({
+    await this.project.models[0].createModel({
       modelName,
     });
 
-    await this.project.models.project.model.project.backend.project.schema.project.root.attach(
+    await this.project.models[0].project.model.project.backend.project.schema.project.root.attach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
       },
     );
-    await this.project.models.project.model.project.backend.project.model.attach(
+    await this.project.models[0].project.model.project.backend.project.model.attach(
       {
         indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
       },
     );
-    await this.project.models.project.model.project.backend.project.app.attach({
-      routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-    });
+    await this.project.models[0].project.model.project.backend.project.app.attach(
+      {
+        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
+      },
+    );
   }
 
   async removeModel({ modelName }: { modelName: string }) {
-    await this.project.models.init({ modelName });
+    await this.project.models[0].init({ modelName });
 
-    await this.project.models.project.model.project.backend.project.app.detach({
-      routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-    });
+    await this.project.models[0].project.model.project.backend.project.app.detach(
+      {
+        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
+      },
+    );
 
-    await this.project.models.project.model.project.backend.project.model.detach(
+    await this.project.models[0].project.model.project.backend.project.model.detach(
       {
         indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
       },
     );
 
-    await this.project.models.project.model.project.backend.project.schema.project.root.detach(
+    await this.project.models[0].project.model.project.backend.project.schema.project.root.detach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
       },
     );
 
-    await this.project.models.removeModel({
+    await this.project.models[0].removeModel({
       modelName,
     });
   }
 
   async addField(props: IEditFieldProps & { modelName: string }) {
-    await this.project.models.addField(props);
+    await this.project.models[0].addField(props);
   }
 
   async removeField(props: IEditFieldProps & { modelName: string }) {
-    await this.project.models.init(props);
+    await this.project.models[0].init(props);
 
-    await this.project.models.removeField(props);
+    await this.project.models[0].removeField(props);
+  }
+
+  async createRelations(
+    props: IEditRelationsProps & {
+      leftModelName: string;
+      rightModelName: string;
+    },
+  ) {
+    const leftProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await leftProject.init({ modelName: props.leftModelName });
+    this.project.models.push(leftProject);
+
+    const rightProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await rightProject.init({ modelName: props.rightModelName });
+
+    this.project.models.push(rightProject);
+
+    await this.project.relations[0].createRelations(props);
+  }
+
+  async removeRelations(
+    props: IEditRelationsProps & {
+      leftModelName: string;
+      rightModelName: string;
+    },
+  ) {
+    const leftProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await leftProject.init({ modelName: props.leftModelName });
+    this.project.models.push(leftProject);
+
+    const rightProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await rightProject.init({ modelName: props.rightModelName });
+    this.project.models.push(rightProject);
+
+    await this.project.relations[0].removeRelations(props);
   }
 }
