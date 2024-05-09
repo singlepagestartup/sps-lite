@@ -65,15 +65,18 @@ export class Coder {
   async init() {
     await this.project.contracts.init();
     await this.project.backend.init();
+    await this.project.frontend.init();
   }
 
   async create() {
-    await this.project.contracts.create();
+    // await this.project.contracts.create();
     // await this.project.backend.create();
+    await this.project.frontend.create();
   }
 
   async remove() {
+    await this.project.frontend.remove();
     // await this.project.backend.remove();
-    await this.project.contracts.remove();
+    // await this.project.contracts.remove();
   }
 }
