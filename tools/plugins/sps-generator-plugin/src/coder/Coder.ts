@@ -95,6 +95,8 @@ export class Coder {
     },
   ) {
     await this.project.root.createRelations(props);
+
+    await formatFiles(this.tree);
   }
 
   async removeRelations(
@@ -105,6 +107,8 @@ export class Coder {
     },
   ) {
     await this.project.root.removeRelations(props);
+
+    await formatFiles(this.tree);
   }
 
   // async createModelsRelations({
