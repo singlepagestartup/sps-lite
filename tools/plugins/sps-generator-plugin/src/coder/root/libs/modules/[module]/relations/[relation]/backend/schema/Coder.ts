@@ -74,11 +74,12 @@ export class Coder {
     this.rightModelStyles = rightModelStyles;
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
     this.relationNameStyles = getNameStyles({ name: relationName });
-    // this.exportAll = new ExportNamedVariables({
-    //   libName,
-    //   moduleNamePascalCased: this.moduleStyles.pascalCased,
-    //   relationNamePascalCased: this.relationNameStyles.pascalCased.base,
-    // });
+
+    this.exportAll = new ExportNamedVariables({
+      libName: this.baseName,
+      moduleNamePascalCased: this.moduleNameStyles.pascalCased,
+      relationNamePascalCased: this.relationNameStyles.pascalCased.base,
+    });
   }
 
   async init() {
@@ -118,24 +119,24 @@ export class Coder {
     });
   }
 
-  async attach({ schemaPath }: { schemaPath: string }) {
+  async attach({ indexPath }: { indexPath: string }) {
     // const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
 
     await addToFile({
       toTop: true,
-      pathToFile: schemaPath,
+      pathToFile: indexPath,
       content: this.exportAll.onCreate.content,
       tree: this.tree,
     });
   }
 
-  async detach({ schemaPath }: { schemaPath: string }) {
+  async detach({ indexPath }: { indexPath: string }) {
     // const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
 
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: schemaPath,
+        pathToFile: indexPath,
         regex: this.exportAll.onRemove.regex,
         content: "",
       });
