@@ -49,6 +49,7 @@ export class Coder {
     this.tree = tree;
     this.baseName = `${parent.baseName}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/${name}`;
+    console.log(`🚀 ~ this.baseName:`, this.baseName);
 
     const currentModelName = parent.parent.parent.parent.name;
 

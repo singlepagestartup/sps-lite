@@ -144,7 +144,7 @@ export class Coder {
       relationName: props.rightName,
     });
     await this.project.models[2].createRelation({
-      relationName: props.rightName,
+      relationName: props.leftName,
     });
   }
 
@@ -171,7 +171,7 @@ export class Coder {
     await this.project.relations[0].removeRelations(props);
 
     await this.project.models[2].removeRelation({
-      relationName: props.rightName,
+      relationName: props.leftName,
     });
 
     await this.project.models[1].removeRelation({
