@@ -23,12 +23,8 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: ProjectConfiguration;
-
-  variant: string;
   moduleName: string;
   modelName: string;
-  rootProjectPath: string[];
-  type: string;
 
   constructor({
     parent,
@@ -50,6 +46,11 @@ export class Coder {
     // const libName = `${project.name}-variants-${type}-${variant}`;
     // const rootProjectPath = project?.root.split("/");
     // const moduleIndex = rootProjectPath?.findIndex((dir) => dir === "modules");
+    const moduleName = this.parent.parent.parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
+
+    console.log(`🚀 ~ moduleName:`, moduleName);
+
     // const moduleName = rootProjectPath?.[moduleIndex + 1];
     // const modelIndex = rootProjectPath?.findIndex((dir) => dir === "models");
     // const modelName = rootProjectPath?.[modelIndex + 1];
@@ -59,8 +60,8 @@ export class Coder {
     // this.libName = libName;
     // this.root = directory;
     // this.variant = variant;
-    // this.moduleName = moduleName;
-    // this.modelName = modelName;
+    this.moduleName = moduleName;
+    this.modelName = modelName;
     // this.rootProjectPath = rootProjectPath;
     // this.type = type;
   }
@@ -104,9 +105,9 @@ export class Coder {
       this.baseDirectory,
       {
         template: "",
-        variant: this.variant,
-        module: this.moduleName,
-        model: this.modelName,
+        variant: this.name,
+        module_name: this.moduleName,
+        model_name: this.modelName,
         offset_from_root: offsetFromRootProject,
       },
     );
