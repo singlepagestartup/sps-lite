@@ -20,6 +20,7 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/component`;
     this.tree = tree;
     this.parent = parent;
+
     const root = new RootCoder({
       tree: this.tree,
       parent: this,

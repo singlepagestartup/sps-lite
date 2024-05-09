@@ -1,6 +1,8 @@
 import { Tree } from "@nx/devkit";
 import { Coder as RelationsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
+import { Coder as ContractsCoder } from "./contracts/Coder";
+import { Coder as FrontendCoder } from "./frontend/Coder";
 
 /**
  * Relation Coder
@@ -14,7 +16,9 @@ export class Coder {
   leftModelRelationName: string;
   rightModelRelationName: string;
   project: {
-    backend?: BackendCoder;
+    backend: BackendCoder;
+    contracts: ContractsCoder;
+    frontend: FrontendCoder;
   };
 
   constructor({
@@ -41,20 +45,35 @@ export class Coder {
       parent: this,
     });
 
+    const contracts = new ContractsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
+    const frontend = new FrontendCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     this.project = {
       backend,
+      contracts,
+      frontend,
     };
   }
 
   async init() {
+    await this.project.contracts.init();
     await this.project.backend.init();
   }
 
   async create() {
-    await this.project.backend.create();
+    await this.project.contracts.create();
+    // await this.project.backend.create();
   }
 
   async remove() {
-    await this.project.backend.remove();
+    // await this.project.backend.remove();
+    // await this.project.contracts.remove();
   }
 }

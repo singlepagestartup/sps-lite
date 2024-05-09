@@ -1,11 +1,11 @@
-import { Coder as ModelCoder } from "../Coder";
 import { Tree } from "@nx/devkit";
+import { Coder as RelationCoder } from "../Coder";
 import { Coder as RootCoder } from "./root/Coder";
 import { Coder as ExtendedCoder } from "./extended/Coder";
 
 export class Coder {
   name: string;
-  parent: ModelCoder;
+  parent: RelationCoder;
   tree: Tree;
   baseName: string;
   baseDirectory: string;
@@ -14,7 +14,7 @@ export class Coder {
     extended: ExtendedCoder;
   };
 
-  constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
+  constructor({ parent, tree }: { parent: RelationCoder; tree: Tree }) {
     this.name = "contracts";
     this.parent = parent;
     this.tree = tree;

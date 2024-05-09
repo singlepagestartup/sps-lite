@@ -57,7 +57,9 @@ export class Coder {
   }
 
   async init() {
+    await this.project.contracts.init();
     await this.project.backend.init();
+    await this.project.frontend.init();
   }
 
   async create() {
