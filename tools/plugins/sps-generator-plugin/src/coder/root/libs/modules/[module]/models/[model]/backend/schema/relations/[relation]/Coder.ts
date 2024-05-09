@@ -79,7 +79,7 @@ export class Coder {
     this.rightProjectSchemaImportPath = rightProjectSchemaImportPath;
     const relationsSchemaProjectImportPath =
       parent.parent.parent.parent.parent.parent.project.relations[0].project
-        .relation.project.backend.baseName;
+        .relation.project.backend.project.schema.baseName;
 
     if (!relationsSchemaProjectImportPath) {
       throw new Error(`No relationsSchemaProjectImportPath found`);
