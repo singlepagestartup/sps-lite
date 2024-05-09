@@ -142,8 +142,6 @@ export class Coder {
         indexPath,
       },
     );
-
-    console.log(`🚀 ~ indexPath:`, indexPath);
   }
 
   async removeRelations(

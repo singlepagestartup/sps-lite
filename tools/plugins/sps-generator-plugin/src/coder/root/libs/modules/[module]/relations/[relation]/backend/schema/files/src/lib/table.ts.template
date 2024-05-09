@@ -12,6 +12,7 @@ const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 export const Table = pgTable(
   table,
   {
+    id: pgCore.uuid("id").primaryKey().defaultRandom(),
     <%= left_schema_model_name %>Id: pgCore
       .uuid("<%= left_schema_model_name_snake_cased %>_id")
       .notNull()
@@ -20,8 +21,5 @@ export const Table = pgTable(
       .uuid("<%= right_schema_model_name_snake_cased %>_id")
       .notNull()
       .references(() => <%= right_schema_table_name %>.id, { onDelete: "cascade" }),
-  },
-  (t) => ({
-    pk: pgCore.primaryKey({ columns: [t.<%= left_schema_model_name %>Id, t.<%= right_schema_model_name %>Id] }),
-  }),
+  }
 );
