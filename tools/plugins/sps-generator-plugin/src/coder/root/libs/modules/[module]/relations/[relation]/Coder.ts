@@ -74,6 +74,6 @@ export class Coder {
 
   async remove() {
     // await this.project.backend.remove();
-    // await this.project.contracts.remove();
+    await this.project.contracts.remove();
   }
 }
