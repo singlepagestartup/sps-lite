@@ -5,13 +5,18 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
-import { FormField } from "@sps/ui-adapter";
+import { zodResolver } from "@hookform/resolvers/zod";
+// import { FormField } from "@sps/ui-adapter";
 import {
   Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
   Label,
   Select,
   SelectContent,
@@ -19,44 +24,75 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@sps/shadcn";
+import { useActionTrigger } from "@sps/hooks";
+import { z } from "zod";
+
+const formSchema = z.object({
+  title: z.string().min(2).max(50),
+});
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
 
-  const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
-  const [createPage, createPageResult] = api.rtk.useCreateMutation();
+  const [updateLayout, updateLayoutResult] = api.rtk.useUpdateMutation();
+  const [createLayout, createLayoutResult] = api.rtk.useCreateMutation();
 
-  const methods = useForm<any>({
-    mode: "all",
+  // const methods = useForm<any>({
+  //   mode: "all",
+  // });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+    },
   });
 
-  const {
-    handleSubmit,
-    watch,
-    formState: { errors },
-    setValue,
-  } = methods;
+  useActionTrigger({
+    storeName: "sps-website-builder/pages",
+    actionFilter: (action) => {
+      return action.type === "pages/executeMutation/fulfilled";
+    },
+    callbackFunction: async (action) => {
+      await form.trigger().then((isValid) => {
+        if (isValid) {
+          form.handleSubmit(onSubmit)();
+        }
+      });
+    },
+  });
 
-  const watchData = watch();
+  // const {
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  //   setValue,
+  // } = methods;
 
-  async function onSubmit(data: any) {
-    // data.tier = { id };
+  const watchData = form.watch();
+
+  useEffect(() => {
+    console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
+  }, [watchData]);
+
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(`🚀 ~ onSubmit ~ data:`, data);
     if (props.data?.id) {
-      console.log("🚀 ~ onSubmit ~ data:", data);
-
-      await updatePage({ id: props.data?.id, data });
+      await updateLayout({ id: props.data?.id, data });
 
       return;
     }
 
-    await createPage({ data });
+    await createLayout({
+      data,
+    });
   }
 
   useEffect(() => {
-    if (updatePageResult.data || createPageResult.data) {
+    if (updateLayoutResult.data || createLayoutResult.data) {
       router.refresh();
     }
-  }, [updatePageResult, createPageResult]);
+  }, [updateLayoutResult, createLayoutResult]);
 
   return (
     <div
@@ -65,50 +101,63 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      <Card>
-        <CardHeader>
-          <CardTitle>{props.data?.id ? "Edit" : "Create"} Layout</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <FormProvider {...methods}>
-            <div className="flex flex-col gap-3">
-              <FormField
-                ui="sps"
-                type="text"
-                name="title"
-                initialValue={props.data?.title || ""}
-                placeholder="Layout title"
-                label="Title"
-              />
-              <div>
-                <Label>Variant</Label>
-                <Select
-                  onValueChange={(value) => {
-                    setValue("variant", value);
-                  }}
-                  defaultValue={props.data?.variant || ""}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select variant" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {["wide", "boxed", "default"].map((variant, index) => {
-                      return (
-                        <SelectItem key={index} value={variant}>
-                          {variant}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button onClick={handleSubmit(onSubmit)}>
-                {props.data?.id ? "Save" : "Create"}
-              </Button>
-            </div>
-          </FormProvider>
-        </CardContent>
-      </Card>
+      <Form {...form}>
+        <form className="space-y-8">
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Title for layout" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          {/* <Button type="submit">Submit</Button> */}
+        </form>
+      </Form>
+      {/* <FormProvider {...methods}>
+        <div className="flex flex-col gap-3">
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="title">Title</Label>
+            <Input
+              type="text"
+              id="title"
+              placeholder="Type title"
+              onChange={(event) => {
+                setValue("title", event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <Label>Variant</Label>
+            <Select
+              onValueChange={(value) => {
+                setValue("variant", value);
+              }}
+              defaultValue={props.data?.variant || ""}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select variant" />
+              </SelectTrigger>
+              <SelectContent>
+                {["wide", "boxed", "default"].map((variant, index) => {
+                  return (
+                    <SelectItem key={index} value={variant}>
+                      {variant}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </FormProvider> */}
     </div>
   );
 }

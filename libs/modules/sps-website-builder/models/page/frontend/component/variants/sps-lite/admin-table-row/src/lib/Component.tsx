@@ -12,9 +12,11 @@ import {
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { IComponentPropsExtended } from "./interface";
 import { Component as PageSpsLiteAdminForm } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
+  const [deleteMutation, deleteMutationResult] = api.rtk.useDeleteMutation();
 
   return (
     <TableRow
@@ -48,7 +50,7 @@ export function Component(props: IComponentPropsExtended) {
         <Button
           variant="outline"
           onClick={() => {
-            console.log("Edit page", props.data);
+            deleteMutation({ id: props.data.id });
           }}
           className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
         >

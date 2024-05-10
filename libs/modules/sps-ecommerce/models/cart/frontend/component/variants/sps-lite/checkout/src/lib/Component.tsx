@@ -24,7 +24,6 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: any) {
     // data.tier = { id };
-    console.log("🚀 ~ onSubmit ~ data:", data);
 
     await checkout({ id: props.data?.id, data });
   }

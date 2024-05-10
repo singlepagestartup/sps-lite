@@ -56,8 +56,6 @@ export function Component(props: IComponentPropsExtended) {
   // }, [createSubscriptionData, reset]);
 
   // async function onSubmit(data: any) {
-  //   data.tier = { id };
-  //   console.log("🚀 ~ onSubmit ~ data:", data);
 
   //   await createSubscription({ data });
   // }

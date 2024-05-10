@@ -1,7 +1,7 @@
 import type { IModel } from "../interfaces/sps-lite";
 
 export const entity: IModel = {
-  id: 3,
+  id: "3",
   locale: "en",
   title: "Main Page",
   url: "/",

@@ -41,10 +41,7 @@ export function Component(props: IComponentPropsExtended) {
   // const watchData = watch();
 
   async function onSubmit(data: any) {
-    // data.tier = { id };
     if (props.data?.id) {
-      console.log("🚀 ~ onSubmit ~ data:", data);
-
       await updatePage({ id: props.data?.id, data });
 
       return;
@@ -90,14 +87,12 @@ export function Component(props: IComponentPropsExtended) {
                 placeholder="Page url"
                 label="URL"
               />
-              {props.data?.id ? (
-                <PagesToLayoutsSpsLiteSelectLayout
-                  isServer={false}
-                  variant="select-layout"
-                  pageId={props.data.id}
-                  data={props.data.SPSWBPagesToLayouts}
-                />
-              ) : null}
+              <PagesToLayoutsSpsLiteSelectLayout
+                isServer={false}
+                variant="select-layout"
+                pageId={props.data?.id}
+                data={props.data?.SPSWBPagesToLayouts}
+              />
               <Button onClick={handleSubmit(onSubmit)}>Create</Button>
             </div>
           </FormProvider>

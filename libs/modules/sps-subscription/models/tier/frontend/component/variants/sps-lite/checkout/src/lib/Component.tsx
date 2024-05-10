@@ -22,8 +22,6 @@ export function Component(props: IComponentPropsExtended) {
   } = methods;
 
   async function onSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await createSubscription({ id: props.data.id, data });
   }
 

@@ -26,8 +26,6 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = watch();
 
   async function onSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await checkout({ id: props.data.id, data });
   }
 

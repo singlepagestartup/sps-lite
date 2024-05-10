@@ -148,7 +148,7 @@ async function getPage({ url, locale }: Params) {
 }
 
 export const api = {
-  findOne: async ({ id }: { id: number }) => {
+  findOne: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findOne<IModelExtended>({
       id,
       model: route,

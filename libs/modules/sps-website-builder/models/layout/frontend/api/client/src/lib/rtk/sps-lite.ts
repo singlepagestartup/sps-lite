@@ -42,6 +42,14 @@ export const api = createApi({
       rtkType: tag,
     }),
 
+    delete: rtk.api.delete<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+
     getByPageUrl: build.query<IModelExtended, any>({
       query: (params: any = {}) => {
         const {

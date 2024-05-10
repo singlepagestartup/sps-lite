@@ -27,8 +27,6 @@ export function Component(props: IComponentPropsExtended) {
   }, [data, reset]);
 
   async function onSubmit(data: any) {
-    console.log(`🚀 ~ onSubmit ~ data:`, data);
-
     const preparedData: { inputs: any[] } = { inputs: [] };
     const preparedFiles: any = {};
 

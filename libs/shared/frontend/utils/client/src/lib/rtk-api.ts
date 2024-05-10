@@ -266,9 +266,9 @@ function createApi<T>({
       return transformResponseItem(result);
     },
 
-    invalidatesTags: invalidatesTagsFunc
-      ? invalidatesTagsFunc
-      : [{ type: rtkType, id: "LIST" }],
+    // invalidatesTags: invalidatesTagsFunc
+    //   ? invalidatesTagsFunc
+    //   : [{ type: rtkType, id: "LIST" }],
   });
 }
 

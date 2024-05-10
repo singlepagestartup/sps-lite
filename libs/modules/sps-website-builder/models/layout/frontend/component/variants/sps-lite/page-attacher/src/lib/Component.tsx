@@ -26,9 +26,6 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: any) {
     // data.tier = { id };
-
-    console.log(`🚀 ~ Component ~ props:`, props);
-
     const pages = props.data.pages?.map((p) => p.id);
     if (pages) {
       data.pages = isSelected
@@ -36,7 +33,6 @@ export function Component(props: IComponentPropsExtended) {
         : [...pages, { id: props.page.id }];
     }
 
-    console.log("🚀 ~ onSubmit ~ data:", data);
     await updateLayout({ id: props.data.id, data });
   }
 

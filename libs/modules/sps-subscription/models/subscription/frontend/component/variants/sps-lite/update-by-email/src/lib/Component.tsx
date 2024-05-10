@@ -25,7 +25,6 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = watch();
 
   async function updateByEmailSubmit(data: any) {
-    console.log("🚀 ~ onSubmit ~ data:", data);
     data.status = "canceled";
 
     await updateByEmail({ data });

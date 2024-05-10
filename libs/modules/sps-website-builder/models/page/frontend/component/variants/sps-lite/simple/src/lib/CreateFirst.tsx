@@ -24,9 +24,6 @@ export function Component() {
   const watchData = watch();
 
   async function onSubmit(data: any) {
-    // data.tier = { id };
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await createPage({ data });
   }
 

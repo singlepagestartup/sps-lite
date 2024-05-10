@@ -10,7 +10,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  pageId: string | number;
+  pageId?: string;
   data?: IModel[];
 }
 

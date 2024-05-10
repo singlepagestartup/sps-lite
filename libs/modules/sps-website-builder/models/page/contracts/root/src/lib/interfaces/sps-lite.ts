@@ -1,5 +1,5 @@
 export interface IModel {
-  id: number;
+  id: string;
   title: string | null;
   url: string;
   locale: string;

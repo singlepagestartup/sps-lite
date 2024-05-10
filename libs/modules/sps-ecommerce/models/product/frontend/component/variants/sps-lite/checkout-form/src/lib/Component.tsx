@@ -25,9 +25,6 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = watch();
 
   async function onSubmit(data: any) {
-    // data.tier = { id };
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await singleStepCheckout({ id: props.data?.id, data });
   }
 

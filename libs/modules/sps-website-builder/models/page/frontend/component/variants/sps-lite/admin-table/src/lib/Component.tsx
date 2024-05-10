@@ -23,6 +23,8 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import { Component as PageSpsLiteAdminForm } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
       data-module="sps-website-builder"
@@ -35,7 +37,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex justify-between items-center">
             <CardTitle>Page</CardTitle>
 
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline" className="w-fit">
                   <div className="flex gap-3">
@@ -45,7 +47,11 @@ export function Component(props: IComponentPropsExtended) {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl p-0">
-                <PageSpsLiteAdminForm isServer={false} variant="admin-form" />
+                <PageSpsLiteAdminForm
+                  isServer={false}
+                  variant="admin-form"
+                  setOpen={setOpen}
+                />
               </DialogContent>
             </Dialog>
           </div>

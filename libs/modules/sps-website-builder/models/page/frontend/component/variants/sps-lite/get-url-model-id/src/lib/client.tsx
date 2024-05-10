@@ -71,7 +71,7 @@ function getFiltersFromUrl({
   params,
 }: {
   page: {
-    id: number;
+    id: string;
     url: string;
   };
   params: Params;

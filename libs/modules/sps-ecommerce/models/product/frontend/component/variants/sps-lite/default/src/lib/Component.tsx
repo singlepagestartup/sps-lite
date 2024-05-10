@@ -41,16 +41,10 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = watch();
 
   async function incrementSubmit(data: any) {
-    // data.tier = { id };
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await incrementInCart({ id: props.data?.id, data });
   }
 
   async function decrementSubmit(data: any) {
-    // data.tier = { id };
-    console.log("🚀 ~ onSubmit ~ data:", data);
-
     await decrementInCart({ id: props.data?.id, data });
   }
 
