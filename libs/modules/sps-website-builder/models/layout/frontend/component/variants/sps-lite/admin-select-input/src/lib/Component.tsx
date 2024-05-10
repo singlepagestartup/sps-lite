@@ -2,14 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  Label,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { Button } from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -17,31 +10,25 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="layout"
       data-variant={props.variant}
-      className=""
+      className="flex flex-col gap-3"
     >
-      <Label>Layout</Label>
-      <Select
-        onValueChange={(...values) => {
-          if (!props.onChange) {
-            return;
-          }
+      {props.data.map((layout, index) => {
+        return (
+          <Button
+            key={index}
+            variant={props.value === layout.id ? "primary" : "outline"}
+            onClick={() => {
+              if (!props.onChange) {
+                return;
+              }
 
-          props.onChange(values);
-        }}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Select page" />
-        </SelectTrigger>
-        <SelectContent>
-          {props.data.map((page, index) => {
-            return (
-              <SelectItem key={index} value={`${page.id}`}>
-                {page.title}
-              </SelectItem>
-            );
-          })}
-        </SelectContent>
-      </Select>
+              props.onChange(layout.id);
+            }}
+          >
+            {layout.title}
+          </Button>
+        );
+      })}
     </div>
   );
 }

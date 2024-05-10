@@ -29,5 +29,5 @@ export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;
   layouts?: ILayout[] | null;
   metatag?: IMetatag | null;
-  SPSWBPagesToLayouts?: IPagesToLayouts[] | null;
+  SPSWBPagesToLayouts?: IPagesToLayouts[];
 }

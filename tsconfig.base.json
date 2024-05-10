@@ -1644,6 +1644,9 @@
       "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-get-layout": [
         "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/component/variants/sps-lite/get-layout/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout": [
+        "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/component/variants/sps-lite/select-layout/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-pages-to-layouts-frontend-redux": [
         "libs/modules/sps-website-builder/relations/pages-to-layouts/frontend/redux/src/index.ts"
       ],

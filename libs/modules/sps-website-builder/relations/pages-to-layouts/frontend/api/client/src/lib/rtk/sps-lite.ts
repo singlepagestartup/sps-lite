@@ -35,6 +35,13 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
+    update: rtk.api.update<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
   }),
 });
 

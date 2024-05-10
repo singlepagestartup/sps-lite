@@ -8,6 +8,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 // import { Component as PagesToLayouts } from "@sps/sps-website-builder-models-pages-to-layouts-frontend-component-variants-sps-lite-default";
+import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
@@ -55,7 +56,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Card>
         <CardHeader>
-          <CardTitle>Create Page</CardTitle>
+          <CardTitle>{props.data?.id ? "Edit" : "Create"} Page</CardTitle>
         </CardHeader>
         <CardContent>
           <FormProvider {...methods}>
@@ -76,6 +77,14 @@ export function Component(props: IComponentPropsExtended) {
                 placeholder="Page url"
                 label="URL"
               />
+              {props.data?.id ? (
+                <PagesToLayoutsSpsLiteSelectLayout
+                  isServer={false}
+                  variant="select-layout"
+                  pageId={props.data.id}
+                  data={props.data.SPSWBPagesToLayouts}
+                />
+              ) : null}
               {/* <PagesToLayouts isServer={false} variant="default" /> */}
               <Button onClick={handleSubmit(onSubmit)}>Create</Button>
             </div>

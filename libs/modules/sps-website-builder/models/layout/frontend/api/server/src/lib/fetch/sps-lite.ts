@@ -7,7 +7,7 @@ import QueryString from "qs";
 import { transformResponseItem } from "@sps/shared-utils";
 
 export const api = {
-  findOne: async ({ id }: { id: number }) => {
+  findOne: async ({ id }: { id: number | string }) => {
     return await utilsFetch.api.findOne<IModelExtended>({
       id,
       model: route,

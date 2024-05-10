@@ -6,7 +6,19 @@ import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
@@ -22,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = methods;
 
   const watchData = watch();
@@ -54,7 +67,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Card>
         <CardHeader>
-          <CardTitle>Create Page</CardTitle>
+          <CardTitle>{props.data?.id ? "Edit" : "Create"} Layout</CardTitle>
         </CardHeader>
         <CardContent>
           <FormProvider {...methods}>
@@ -67,7 +80,31 @@ export function Component(props: IComponentPropsExtended) {
                 placeholder="Layout title"
                 label="Title"
               />
-              <Button onClick={handleSubmit(onSubmit)}>Create</Button>
+              <div>
+                <Label>Variant</Label>
+                <Select
+                  onValueChange={(value) => {
+                    setValue("variant", value);
+                  }}
+                  defaultValue={props.data?.variant || ""}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select variant" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {["wide", "boxed", "default"].map((variant, index) => {
+                      return (
+                        <SelectItem key={index} value={variant}>
+                          {variant}
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button onClick={handleSubmit(onSubmit)}>
+                {props.data?.id ? "Save" : "Create"}
+              </Button>
             </div>
           </FormProvider>
         </CardContent>

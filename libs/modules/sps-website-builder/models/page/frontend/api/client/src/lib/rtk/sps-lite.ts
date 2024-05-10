@@ -103,5 +103,23 @@ export const subscription = (reduxStore: any) => {
         await invalidateServerTag({ tag });
       }
     });
+
+    const pagesToLayouts = state.stores["sps-website-builder/pages-to-layouts"];
+    pagesToLayouts?.actions?.forEach(async (action: any) => {
+      if (
+        action.type === "pages-to-layouts/executeMutation/fulfilled" &&
+        !triggeredActions.includes(action.meta.requestId)
+      ) {
+        /**
+         * Order is important, because calling invalidateServerTag before
+         * triggeredActions.push will cause the action to be triggered again
+         * and infinite loop will be created
+         */
+        triggeredActions.push(action.meta.requestId);
+        reduxStore.dispatch(api.util.invalidateTags([tag]));
+
+        await invalidateServerTag({ tag });
+      }
+    });
   });
 };

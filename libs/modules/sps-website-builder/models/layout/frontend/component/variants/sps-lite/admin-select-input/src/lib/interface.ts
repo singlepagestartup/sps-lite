@@ -11,6 +11,7 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   onChange?: (value: any) => void;
+  value?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
