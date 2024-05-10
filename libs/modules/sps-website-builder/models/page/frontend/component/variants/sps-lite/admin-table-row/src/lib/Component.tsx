@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -13,10 +13,24 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { IComponentPropsExtended } from "./interface";
 import { Component as PageSpsLiteAdminForm } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
+import { invalidateServerTag } from "@sps/store";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [deleteMutation, deleteMutationResult] = api.rtk.useDeleteMutation();
+
+  useEffect(() => {
+    if (deleteMutationResult.isSuccess) {
+      dispatch(api.rtk.util.invalidateTags(["page"]));
+      invalidateServerTag({ tag: "page" }).then(() => {
+        router.refresh();
+      });
+    }
+  }, [deleteMutationResult]);
 
   return (
     <TableRow

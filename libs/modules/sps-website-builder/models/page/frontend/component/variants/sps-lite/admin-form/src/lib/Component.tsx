@@ -5,22 +5,48 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
-import { FormField } from "@sps/ui-adapter";
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+} from "@sps/shadcn";
 import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
 import { useActionTrigger } from "@sps/hooks";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useDispatch } from "react-redux";
+import { invalidateServerTag } from "@sps/store";
+
+const formSchema = z.object({
+  title: z.string().min(2).max(50),
+  url: z
+    .string()
+    .min(1)
+    .regex(/^[/]([a-z0-9-]?)+$/),
+});
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useActionTrigger({
     storeName: "sps-website-builder/pages-to-layouts",
     actionFilter: (action) =>
       action.type === "pages-to-layouts/executeMutation/fulfilled",
-    callbackFunction: (action) => {
+    callbackFunction: async (action) => {
       if (props.setOpen) {
         props.setOpen(false);
       }
+      dispatch(api.rtk.util.invalidateTags(["page"]));
+      await invalidateServerTag({ tag: "page" });
       router.refresh();
     },
   });
@@ -28,21 +54,24 @@ export function Component(props: IComponentPropsExtended) {
   const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
   const [createPage, createPageResult] = api.rtk.useCreateMutation();
 
-  const methods = useForm<any>({
-    mode: "all",
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: props.data?.title || "",
+      url: props.data?.url || "/",
+    },
   });
-
-  const {
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = methods;
 
   // const watchData = watch();
 
-  async function onSubmit(data: any) {
-    if (props.data?.id) {
-      await updatePage({ id: props.data?.id, data });
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    if (props.data?.id || createPageResult.data?.id) {
+      if (props.data?.id) {
+        await updatePage({
+          id: props.data?.id || createPageResult.data?.id,
+          data,
+        });
+      }
 
       return;
     }
@@ -69,23 +98,37 @@ export function Component(props: IComponentPropsExtended) {
           <CardTitle>{props.data?.id ? "Edit" : "Create"} Page</CardTitle>
         </CardHeader>
         <CardContent>
-          <FormProvider {...methods}>
+          <FormProvider {...form}>
             <div className="flex flex-col gap-3">
               <FormField
-                ui="sps"
-                type="text"
+                control={form.control}
                 name="title"
-                initialValue={props.data?.title || ""}
-                placeholder="Page title"
-                label="Title"
+                render={({ field }) => {
+                  return (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Title for page" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  );
+                }}
               />
               <FormField
-                ui="sps"
-                type="text"
+                control={form.control}
                 name="url"
-                initialValue={props.data?.url || ""}
-                placeholder="Page url"
-                label="URL"
+                render={({ field }) => {
+                  return (
+                    <FormItem>
+                      <FormLabel>URL</FormLabel>
+                      <FormControl>
+                        <Input placeholder="URL for page" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  );
+                }}
               />
               <PagesToLayoutsSpsLiteSelectLayout
                 isServer={false}
@@ -93,7 +136,9 @@ export function Component(props: IComponentPropsExtended) {
                 pageId={props.data?.id}
                 data={props.data?.SPSWBPagesToLayouts}
               />
-              <Button onClick={handleSubmit(onSubmit)}>Create</Button>
+              <Button onClick={form.handleSubmit(onSubmit)}>
+                {props.data?.id ? "Save" : "Create"}
+              </Button>
             </div>
           </FormProvider>
         </CardContent>

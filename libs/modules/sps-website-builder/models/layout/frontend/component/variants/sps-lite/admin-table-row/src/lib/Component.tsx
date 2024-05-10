@@ -1,7 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   Button,
   Dialog,
   DialogContent,
@@ -15,6 +23,7 @@ import { Component as LayoutSpsLiteAdminForm } from "@sps/sps-website-builder-mo
 import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
 
 export function Component(props: IComponentPropsExtended) {
+  const [open, setOpen] = useState(false);
   const [deleteMutation, deleteMutationResult] = api.rtk.useDeleteMutation();
 
   return (
@@ -24,9 +33,9 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
     >
       <TableCell className="font-medium">{props.data.title}</TableCell>
-      <TableCell></TableCell>
+      <TableCell>{props.data.variant}</TableCell>
       <TableCell className="flex gap-3 justify-end">
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline" className="w-fit">
               <div className="flex gap-3">
@@ -40,22 +49,39 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="admin-form"
               data={props.data}
+              setOpen={setOpen}
             />
           </DialogContent>
         </Dialog>
 
-        <Button
-          variant="outline"
-          onClick={() => {
-            deleteMutation({ id: props.data.id });
-          }}
-          className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
-        >
-          <div className="flex gap-3">
-            <TrashIcon className="h-5 w-5" />
-            Delete
-          </div>
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              variant="outline"
+              className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
+            >
+              <div className="flex gap-3">
+                <TrashIcon className="h-5 w-5" />
+                Delete
+              </div>
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete?</AlertDialogTitle>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={() => {
+                  deleteMutation({ id: props.data.id });
+                }}
+              >
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </TableCell>
     </TableRow>
   );

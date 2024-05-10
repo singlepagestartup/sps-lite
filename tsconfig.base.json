@@ -1047,6 +1047,9 @@
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-panel": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-panel/src/index.ts"
       ],

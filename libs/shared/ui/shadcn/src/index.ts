@@ -9,3 +9,4 @@ export * from "./lib/select";
 export * from "./lib/label";
 export * from "./lib/input";
 export * from "./lib/form";
+export * from "./lib/alert-dialog";

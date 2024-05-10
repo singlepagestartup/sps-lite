@@ -28,6 +28,8 @@ async function getByUrl({ url, locale }: Params) {
         : `/${url}`
       : `/${url?.join("/") || ""}`;
 
+  console.log(`🚀 ~ getByUrl ~ localUrl:`, localUrl);
+
   if (!localUrl) {
     return;
   }
@@ -121,6 +123,7 @@ async function getUrlModelId({
 
 async function getPage({ url, locale }: Params) {
   let targetPage = await getByUrl({ url, locale });
+  console.log(`🚀 ~ getPage ~ targetPage:`, targetPage);
 
   if (!targetPage) {
     targetPage = await getByUrl({ url: "/404", locale });
@@ -128,6 +131,7 @@ async function getPage({ url, locale }: Params) {
 
   if (!targetPage) {
     const pages = await api.find();
+    console.log(`🚀 ~ getPage ~ pages:`, pages);
 
     if (pages.length) {
       return notFound();
@@ -166,6 +170,8 @@ export const api = {
   getPage,
   getUrlModelId,
   generateMetadata: async (props: any) => {
+    return {};
+
     const pageProps = await api.getPage(props);
     const request = await fetch(
       `${BACKEND_URL}/api/sps-website-builder/metatags`,

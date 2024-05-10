@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Table,
@@ -23,6 +23,8 @@ import { Component as LayoutSpsLiteAdminForm } from "@sps/sps-website-builder-mo
 import { Component as LayoutSpsLiteAdminTableRow } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table-row";
 
 export function Component(props: IComponentPropsExtended) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
       data-module="sps-website-builder"
@@ -35,7 +37,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex justify-between items-center">
             <CardTitle>Layout</CardTitle>
 
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline" className="w-fit">
                   <div className="flex gap-3">
@@ -45,7 +47,11 @@ export function Component(props: IComponentPropsExtended) {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl p-0">
-                <LayoutSpsLiteAdminForm isServer={false} variant="admin-form" />
+                <LayoutSpsLiteAdminForm
+                  isServer={false}
+                  variant="admin-form"
+                  setOpen={setOpen}
+                />
               </DialogContent>
             </Dialog>
           </div>
@@ -57,7 +63,7 @@ export function Component(props: IComponentPropsExtended) {
             <TableHeader>
               <TableRow>
                 <TableHead>Title</TableHead>
-                <TableHead></TableHead>
+                <TableHead>Variant</TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
             </TableHeader>

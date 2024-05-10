@@ -6,7 +6,6 @@ import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-fronten
 import { FormProvider, useForm } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle, Label } from "@sps/shadcn";
 import { Component as LayoutSpsLiteAdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
-import { Component as LayoutSpsLiteAdminForm } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form";
 import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,8 +20,6 @@ export function Component(props: IComponentPropsExtended) {
     api.rtk.useUpdateMutation();
   const [createPagesToLayouts, createPagesToLayoutsResult] =
     api.rtk.useCreateMutation();
-  const [hasValidationErrors, setHasValidationErrors] =
-    useState<boolean>(false);
 
   const methods = useForm<z.infer<typeof formSchema>>({
     mode: "all",
@@ -47,25 +44,11 @@ export function Component(props: IComponentPropsExtended) {
   // }, [watchData]);
 
   useActionTrigger({
-    storeName: "sps-website-builder/layouts",
-    actionFilter: (action) => {
-      return action.type === "layouts/executeMutation/fulfilled";
-    },
-    callbackFunction: async (action) => {
-      if (action.payload.id) {
-        setValue("layoutId", action.payload.id);
-      }
-
-      handleSubmit(onSubmit)();
-    },
-  });
-
-  useActionTrigger({
     storeName: "sps-website-builder/pages",
     actionFilter: (action) => {
       return action.type === "pages/executeMutation/fulfilled";
     },
-    callbackFunction: (action) => {
+    callbackFunction: async (action) => {
       if (action.payload.id) {
         setValue("pageId", action.payload.id);
       }
@@ -104,48 +87,20 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card>
+      <Card className={Object.keys(errors).length ? "border-destructive" : ""}>
         <CardHeader>
           <CardTitle>Layout</CardTitle>
         </CardHeader>
         <CardContent>
           <FormProvider {...methods}>
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-3">
-                <Card
-                  className={`${hasValidationErrors ? "border-destructive" : ""}`}
-                >
-                  <CardHeader>
-                    <CardTitle>Create new layout</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <LayoutSpsLiteAdminForm
-                      isServer={false}
-                      variant="admin-form"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="flex flex-col gap-3">
-                <Card
-                  className={`${hasValidationErrors ? "border-destructive" : ""}`}
-                >
-                  <CardHeader>
-                    <CardTitle>Select from existing layouts</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <LayoutSpsLiteAdminSelectInput
-                      isServer={false}
-                      variant="admin-select-input"
-                      onChange={(value) => {
-                        setValue("layoutId", value);
-                      }}
-                      value={watchData.layoutId}
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+            <LayoutSpsLiteAdminSelectInput
+              isServer={false}
+              variant="admin-select-input"
+              onChange={(value) => {
+                setValue("layoutId", value);
+              }}
+              value={watchData.layoutId}
+            />
           </FormProvider>
         </CardContent>
       </Card>
