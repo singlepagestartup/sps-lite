@@ -21,7 +21,7 @@ export const DATABASE_PASSWORD = `${
   "password"
 }`;
 
-export const DATABASE_SSLMODE = process.env["DATABASE_SSLMODE"];
+export const DATABASE_NO_SSL = process.env["DATABASE_NO_SSL"];
 
 export const DATABASE_URL = `postgres://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`;
 
@@ -33,9 +33,9 @@ const DEFAULT_DATABASE_OPTIONS = {
   database: DATABASE_NAME,
 };
 
-export const DATABASE_OPTIONS = DATABASE_SSLMODE
-  ? {
+export const DATABASE_OPTIONS = DATABASE_NO_SSL
+  ? DEFAULT_DATABASE_OPTIONS
+  : {
       ...DEFAULT_DATABASE_OPTIONS,
       ssl: true,
-    }
-  : DEFAULT_DATABASE_OPTIONS;
+    };
