@@ -18,7 +18,9 @@ export function Component(props: IComponentPropsExtended) {
     actionFilter: (action) =>
       action.type === "pages-to-layouts/executeMutation/fulfilled",
     callbackFunction: (action) => {
-      props.setOpen(false);
+      if (props.setOpen) {
+        props.setOpen(false);
+      }
       router.refresh();
     },
   });
