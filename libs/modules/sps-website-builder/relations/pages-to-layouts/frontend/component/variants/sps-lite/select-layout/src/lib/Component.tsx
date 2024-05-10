@@ -2,39 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { Component as LayoutSpsLiteAdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
-import { globalActionsStore } from "@sps/store";
+import { useGlobalActionsStore } from "@sps/store";
 import { FormField } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const globalActions = globalActionsStore.getState();
   const [triggeredActions, setTriggeredActions] = useState<string[]>();
-
-  useEffect(() => {
-    const pagesAction = globalActions.stores["sps-website-builder/pages"];
-    pagesAction?.actions?.forEach(async (action: any) => {
-      if (
-        action.type === "pages/executeMutation/fulfilled" &&
-        !triggeredActions?.includes(action.meta.requestId)
-      ) {
-        console.log(`🚀 ~ useEffect ~ pagesAction ~ action:`, action);
-
-        if (triggeredActions) {
-          setTriggeredActions([...triggeredActions, action.meta.requestId]);
-        } else {
-          setTriggeredActions([action.meta.requestId]);
-        }
-
-        onSubmit(watchData);
-      }
-    });
-  }, [globalActions]);
-
-  const router = useRouter();
+  const pagesActions = useGlobalActionsStore((store) =>
+    store.getActionsFromStoreByName("sps-website-builder/pages"),
+  );
 
   const [updatePagesToLayouts, updatePagesToLayoutsResult] =
     api.rtk.useUpdateMutation();
@@ -58,6 +37,23 @@ export function Component(props: IComponentPropsExtended) {
 
   const watchData = watch();
 
+  useEffect(() => {
+    pagesActions.forEach(async (action: any) => {
+      if (
+        action.type === "pages/executeMutation/fulfilled" &&
+        !triggeredActions?.includes(action.meta.requestId)
+      ) {
+        if (triggeredActions) {
+          setTriggeredActions([...triggeredActions, action.meta.requestId]);
+        } else {
+          setTriggeredActions([action.meta.requestId]);
+        }
+
+        onSubmit(watchData);
+      }
+    });
+  }, [pagesActions, triggeredActions, watchData]);
+
   // useEffect(() => {
   //   console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
   // }, [watchData]);
@@ -80,12 +76,6 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  // useEffect(() => {
-  //   if (updatePagesToLayoutsResult.data || createPagesToLayoutsResult.data) {
-  //     router.refresh();
-  //   }
-  // }, [updatePagesToLayoutsResult, createPagesToLayoutsResult]);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -100,7 +90,7 @@ export function Component(props: IComponentPropsExtended) {
         <CardContent>
           <FormProvider {...methods}>
             <div className="flex flex-col gap-6">
-              {/* <FormField ui="sps" name="order" type="text" label="Order" /> */}
+              <FormField ui="sps" name="order" type="text" label="Order" />
               <LayoutSpsLiteAdminSelectInput
                 isServer={false}
                 variant="admin-select-input"

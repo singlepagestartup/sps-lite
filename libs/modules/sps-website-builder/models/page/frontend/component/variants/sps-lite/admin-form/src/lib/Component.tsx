@@ -1,20 +1,42 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
-// import { Component as PagesToLayouts } from "@sps/sps-website-builder-models-pages-to-layouts-frontend-component-variants-sps-lite-default";
 import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
+import { useGlobalActionsStore } from "@sps/store";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
+  const pagesToLayoutsActions = useGlobalActionsStore((store) =>
+    store.getActionsFromStoreByName("sps-website-builder/pages-to-layouts"),
+  );
+
+  const [triggeredActions, setTriggeredActions] = useState<string[]>();
 
   const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
   const [createPage, createPageResult] = api.rtk.useCreateMutation();
+
+  useEffect(() => {
+    pagesToLayoutsActions?.forEach(async (action: any) => {
+      if (
+        action.type === "pages-to-layouts/executeMutation/fulfilled" &&
+        !triggeredActions?.includes(action.meta.requestId)
+      ) {
+        if (triggeredActions) {
+          setTriggeredActions([...triggeredActions, action.meta.requestId]);
+        } else {
+          setTriggeredActions([action.meta.requestId]);
+        }
+
+        router.refresh();
+      }
+    });
+  }, [pagesToLayoutsActions, router, triggeredActions]);
 
   const methods = useForm<any>({
     mode: "all",
@@ -26,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
     formState: { errors },
   } = methods;
 
-  const watchData = watch();
+  // const watchData = watch();
 
   async function onSubmit(data: any) {
     // data.tier = { id };
@@ -41,12 +63,12 @@ export function Component(props: IComponentPropsExtended) {
     await createPage({ data });
   }
 
-  useEffect(() => {
-    if (updatePageResult.data || createPageResult.data) {
-      console.log(`🚀 ~ useEffect ~ updatePageResult:`, updatePageResult);
-      // router.refresh();
-    }
-  }, [updatePageResult, createPageResult]);
+  // useEffect(() => {
+  //   if (updatePageResult.data || createPageResult.data) {
+  //     // console.log(`🚀 ~ useEffect ~ updatePageResult:`, updatePageResult);
+  //     // router.refresh();
+  //   }
+  // }, [updatePageResult, createPageResult]);
 
   return (
     <div
@@ -86,7 +108,6 @@ export function Component(props: IComponentPropsExtended) {
                   data={props.data.SPSWBPagesToLayouts}
                 />
               ) : null}
-              {/* <PagesToLayouts isServer={false} variant="default" /> */}
               <Button onClick={handleSubmit(onSubmit)}>Create</Button>
             </div>
           </FormProvider>
