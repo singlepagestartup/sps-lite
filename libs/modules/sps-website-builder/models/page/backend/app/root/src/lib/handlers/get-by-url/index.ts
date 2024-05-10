@@ -8,7 +8,12 @@ export const handler = async (
   c: Context<Env, string, BlankInput>,
   next: Next,
 ) => {
-  const query = c.req.query("url");
+  let query = c.req.query("url");
+
+  // Vercel delete ?url=/
+  if (!query) {
+    query = "/";
+  }
 
   if (query === "favicon.ico") {
     return c.json({

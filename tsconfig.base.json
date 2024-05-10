@@ -1608,6 +1608,45 @@
       "@sps/sps-website-builder-models-topbar-frontend-redux": [
         "libs/modules/sps-website-builder/models/topbar/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-widget-backend-app": [
+        "libs/modules/sps-website-builder/models/widget/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-backend-model": [
+        "libs/modules/sps-website-builder/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-backend-schema": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-contracts": [
+        "libs/modules/sps-website-builder/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-contracts-extended": [
+        "libs/modules/sps-website-builder/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-api-client": [
+        "libs/modules/sps-website-builder/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-api-server": [
+        "libs/modules/sps-website-builder/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-component": [
+        "libs/modules/sps-website-builder/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-frontend-redux": [
+        "libs/modules/sps-website-builder/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-website-builder-page-blocks-component": [
         "libs/modules/sps-website-builder/models/page-blocks/component/src/index.ts"
       ],

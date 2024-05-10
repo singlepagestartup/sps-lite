@@ -1,4 +1,9 @@
 export {
+  Table as SPSWBWidget,
+  Relations as SPSWBWidgetRelations,
+  VariantEnumTable as SPSWBWidgetVariantEnumTable,
+} from "@sps/sps-website-builder-models-widget-backend-schema";
+export {
   Table as SPSWBPagesToLayouts,
   Relations as SPSWBPagesToLayoutsRelations,
 } from "@sps/sps-website-builder-relations-pages-to-layouts-backend-schema";
