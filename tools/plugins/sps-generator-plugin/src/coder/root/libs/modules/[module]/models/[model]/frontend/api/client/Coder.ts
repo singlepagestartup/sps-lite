@@ -6,7 +6,6 @@ import {
 } from "@nx/devkit";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ApiCoder } from "../Coder";
-import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import path from "path";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 
@@ -17,8 +16,6 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: ProjectConfiguration;
-  modelName: string;
-  modelNamePluralized: string;
   moduleName: string;
 
   constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
@@ -29,13 +26,8 @@ export class Coder {
     this.parent = parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
-    const modelName = this.parent.parent.parent.name;
-    const modelNamePluralized = getNameStyles({ name: modelName }).kebabCased
-      .pluralized;
 
     this.moduleName = moduleName;
-    this.modelName = modelName;
-    this.modelNamePluralized = modelNamePluralized;
   }
 
   async init() {
@@ -44,6 +36,7 @@ export class Coder {
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+    const apiModelImportPath = this.parent.project.model.baseName;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -52,9 +45,8 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        api_model_import_path: apiModelImportPath,
         module_name: this.moduleName,
-        model_name: this.modelName,
-        model_name_pluralized: this.modelNamePluralized,
         offset_from_root: offsetFromRootProject,
       },
     });

@@ -5,7 +5,6 @@ import {
   offsetFromRoot,
 } from "@nx/devkit";
 import { Coder as ApiCoder } from "../Coder";
-import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";
@@ -17,8 +16,6 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: ProjectConfiguration;
-  modelName: string;
-  modelNamePluralized: string;
   moduleName: string;
 
   constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
@@ -29,13 +26,8 @@ export class Coder {
     this.parent = parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
-    const modelName = this.parent.parent.parent.name;
-    const modelNamePluralized = getNameStyles({ name: modelName }).kebabCased
-      .pluralized;
 
     this.moduleName = moduleName;
-    this.modelName = modelName;
-    this.modelNamePluralized = modelNamePluralized;
   }
 
   async init() {

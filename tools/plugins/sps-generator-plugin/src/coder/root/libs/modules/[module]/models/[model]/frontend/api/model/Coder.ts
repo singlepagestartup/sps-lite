@@ -4,10 +4,11 @@ import {
   getProjects,
   offsetFromRoot,
 } from "@nx/devkit";
-import * as nxWorkspace from "@nx/workspace";
 import { Coder as ApiCoder } from "../Coder";
-import path from "path";
+import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
+import path from "path";
+import * as nxWorkspace from "@nx/workspace";
 
 export class Coder {
   parent: ApiCoder;
@@ -16,18 +17,25 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: ProjectConfiguration;
+  modelName: string;
+  modelNamePluralized: string;
   moduleName: string;
 
   constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
-    this.name = "server";
-    this.baseName = `${parent.baseName}-server`;
-    this.baseDirectory = `${parent.baseDirectory}/server`;
+    this.name = "model";
+    this.baseName = `${parent.baseName}-model`;
+    this.baseDirectory = `${parent.baseDirectory}/model`;
     this.tree = tree;
     this.parent = parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
+    const modelNamePluralized = getNameStyles({ name: modelName }).kebabCased
+      .pluralized;
 
     this.moduleName = moduleName;
+    this.modelName = modelName;
+    this.modelNamePluralized = modelNamePluralized;
   }
 
   async init() {
@@ -35,8 +43,12 @@ export class Coder {
   }
 
   async create() {
+    const rootContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.root.baseName;
+    const extendedContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.extended.baseName;
+
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-    const apiModelImportPath = this.parent.project.model.baseName;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -46,7 +58,10 @@ export class Coder {
       templateParams: {
         template: "",
         module_name: this.moduleName,
-        api_model_import_path: apiModelImportPath,
+        model_name: this.modelName,
+        root_contracts_import_path: rootContractsImportPath,
+        extended_contracts_import_path: extendedContractsImportPath,
+        model_name_pluralized: this.modelNamePluralized,
         offset_from_root: offsetFromRootProject,
       },
     });
