@@ -166,6 +166,8 @@ export const api = {
   getPage,
   getUrlModelId,
   generateMetadata: async (props: any) => {
+    return {};
+
     const pageProps = await api.getPage(props);
     const request = await fetch(
       `${BACKEND_URL}/api/sps-website-builder/metatags`,
