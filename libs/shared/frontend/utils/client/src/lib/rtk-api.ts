@@ -31,13 +31,7 @@ export type TRTKServiceApi = Api<
 >;
 
 export type TRTKBuild = EndpointBuilder<
-  BaseQueryFn<
-    string | FetchArgs,
-    unknown,
-    FetchBaseQueryError,
-    any,
-    FetchBaseQueryMeta
-  >,
+  ReturnType<typeof fetchBaseQueryBuilder>,
   string,
   string
 >;
@@ -47,39 +41,47 @@ export type TRTKOnQueryStarted = (
   api: QueryLifecycleApi<any, any, any, any>,
 ) => any;
 
-export const fetchBaseQueryBuilder = (baseUrl: string) =>
-  fetchBaseQuery({
-    baseUrl: `${baseUrl}`,
-    paramsSerializer: (object) => {
-      const stringifiedQuery = QueryString.stringify(object, {
-        encodeValuesOnly: true,
-      });
+export function fetchBaseQueryBuilder(baseUrl: string) {
+  return async (args: any, api: any, extraOptions: any) => {
+    // const requestId = Math.random().toString(36).substring(7);
+    // const timestamp = Date.now();
 
-      const compressedQuery = gzip(stringifiedQuery);
-      const base64CompressedQuery =
-        Buffer.from(compressedQuery).toString("base64");
+    const baseResult = await fetchBaseQuery({
+      baseUrl: `${baseUrl}`,
+      paramsSerializer: (object) => {
+        const stringifiedQuery = QueryString.stringify(object, {
+          encodeValuesOnly: true,
+        });
 
-      return base64CompressedQuery;
-    },
-    prepareHeaders: (headers) => {
-      const username = localStorage["username"];
-      if (username) {
-        headers.set("Anonymus-Username", username);
-      }
+        const compressedQuery = gzip(stringifiedQuery);
+        const base64CompressedQuery =
+          Buffer.from(compressedQuery).toString("base64");
 
-      const token = localStorage["jwt"];
-      headers.set("Query-Encoding", "application/gzip");
+        return base64CompressedQuery;
+      },
+      prepareHeaders: (headers) => {
+        const username = localStorage["username"];
+        if (username) {
+          headers.set("Anonymus-Username", username);
+        }
 
-      if (token) {
-        headers.set(
-          "Authorization",
-          token.startsWith("Bearer ") ? token : `Bearer ${token}`,
-        );
-      }
+        const token = localStorage["jwt"];
+        headers.set("Query-Encoding", "application/gzip");
 
-      return headers;
-    },
-  });
+        if (token) {
+          headers.set(
+            "Authorization",
+            token.startsWith("Bearer ") ? token : `Bearer ${token}`,
+          );
+        }
+
+        return headers;
+      },
+    })(args, api, extraOptions);
+
+    return baseResult;
+  };
+}
 
 function findApi<T>({
   serviceApi,
@@ -270,16 +272,7 @@ function createApi<T>({
   });
 }
 
-function updateApi<T>({
-  serviceApi,
-  build,
-  populate: passedPopulate = {},
-  model,
-  rtkType,
-  invalidatesTagsFunc,
-  routePostfix,
-  onQueryStarted: passedOnQueryStarted,
-}: {
+function updateApi<T>(props: {
   serviceApi: TRTKServiceApi;
   build: TRTKBuild;
   populate: any;
@@ -289,6 +282,17 @@ function updateApi<T>({
   routePostfix?: string;
   onQueryStarted?: TRTKOnQueryStarted;
 }) {
+  const {
+    serviceApi,
+    build,
+    populate: passedPopulate = {},
+    model,
+    rtkType,
+    invalidatesTagsFunc,
+    routePostfix,
+    onQueryStarted: passedOnQueryStarted,
+  } = props;
+
   return build.mutation<T, any>({
     query: (params: any = {}) => {
       const { id, populate = passedPopulate } = params;
@@ -315,14 +319,12 @@ function updateApi<T>({
       return transformResponseItem(result);
     },
 
-    invalidatesTags: invalidatesTagsFunc
-      ? invalidatesTagsFunc
-      : (result: any) => {
-          return [
-            { type: rtkType, id: result.id },
-            { type: rtkType, id: "LIST" },
-          ];
-        },
+    invalidatesTags: [],
+    // invalidatesTags: invalidatesTagsFunc
+    //   ? invalidatesTagsFunc
+    //   : (result: any) => {
+    //       return [{ type: rtkType, id: result.id }];
+    //     },
   });
 }
 

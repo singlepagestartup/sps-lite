@@ -43,7 +43,8 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (updatePageResult.data || createPageResult.data) {
-      router.refresh();
+      console.log(`🚀 ~ useEffect ~ updatePageResult:`, updatePageResult);
+      // router.refresh();
     }
   }, [updatePageResult, createPageResult]);
 

@@ -26,13 +26,7 @@ export function Component(props: IComponentPropsExtended) {
       <TableCell className="flex gap-3 justify-end">
         <Dialog>
           <DialogTrigger asChild>
-            <Button
-              variant="outline"
-              onClick={() => {
-                console.log("Edit page", props.data);
-              }}
-              className="w-fit"
-            >
+            <Button variant="outline" className="w-fit">
               <div className="flex gap-3">
                 <PencilIcon className="h-5 w-5" />
                 Edit

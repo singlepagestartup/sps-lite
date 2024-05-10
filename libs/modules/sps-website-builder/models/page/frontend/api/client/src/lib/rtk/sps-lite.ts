@@ -10,116 +10,115 @@ export const api = createApi({
   ),
   tagTypes: [tag],
   reducerPath: route,
-  endpoints: (build) => ({
-    findMany: rtk.api.find<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
+  endpoints: (build) => {
+    return {
+      findMany: rtk.api.find<IModelExtended>({
+        serviceApi: this,
+        build,
+        populate,
+        model: route,
+        rtkType: tag,
+      }),
 
-    findOne: rtk.api.findOne<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
+      findOne: rtk.api.findOne<IModelExtended>({
+        serviceApi: this,
+        build,
+        populate,
+        model: route,
+        rtkType: tag,
+      }),
 
-    getByUrl: build.query<IModelExtended, any>({
-      query: (params: any = {}) => {
-        const { populate, locale, filters, pagination, url } = params;
+      getByUrl: build.query<IModelExtended, any>({
+        query: (params: any = {}) => {
+          const { populate, locale, filters, pagination, url } = params;
 
-        return {
-          url: `${route}/get-by-url`,
-          params: {
-            url,
-            populate,
-            locale,
-            filters,
-            pagination,
-          },
-        };
-      },
+          return {
+            url: `${route}/get-by-url`,
+            params: {
+              url,
+              populate,
+              locale,
+              filters,
+              pagination,
+            },
+          };
+        },
 
-      transformResponse: (result) => {
-        return transformResponseItem(result);
-      },
+        transformResponse: (result) => {
+          return transformResponseItem(result);
+        },
 
-      providesTags: (result: any) => {
-        return result?.id
-          ? [
-              { type: tag, id: result.id },
-              { type: tag, id: "LIST" },
-            ]
-          : [];
-      },
-    }),
+        providesTags: (result: any) => {
+          return result?.id
+            ? [
+                { type: tag, id: result.id },
+                { type: tag, id: "LIST" },
+              ]
+            : [];
+        },
+      }),
 
-    create: rtk.api.create<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
+      create: rtk.api.create<IModelExtended>({
+        serviceApi: this,
+        build,
+        populate,
+        model: route,
+        rtkType: tag,
+      }),
 
-    update: rtk.api.update<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
+      update: rtk.api.update<IModelExtended>({
+        serviceApi: this,
+        build,
+        populate,
+        model: route,
+        rtkType: tag,
+      }),
 
-    delete: rtk.api.delete<IModelExtended>({
-      serviceApi: this,
-      build,
-      populate,
-      model: route,
-      rtkType: tag,
-    }),
-  }),
+      delete: rtk.api.delete<IModelExtended>({
+        serviceApi: this,
+        build,
+        populate,
+        model: route,
+        rtkType: tag,
+      }),
+    };
+  },
 });
 
 export const subscription = (reduxStore: any) => {
   const triggeredActions: string[] = [];
   return globalActionsStore.subscribe((state) => {
-    const startupTaskState = state.stores["sps-website-builder/pages"];
-    startupTaskState?.actions?.forEach(async (action: any) => {
-      if (
-        action.type === "pages/executeMutation/fulfilled" &&
-        !triggeredActions.includes(action.meta.requestId)
-      ) {
-        /**
-         * Order is important, because calling invalidateServerTag before
-         * triggeredActions.push will cause the action to be triggered again
-         * and infinite loop will be created
-         */
-        triggeredActions.push(action.meta.requestId);
-        reduxStore.dispatch(api.util.invalidateTags([tag]));
-
-        await invalidateServerTag({ tag });
-      }
-    });
-
-    const pagesToLayouts = state.stores["sps-website-builder/pages-to-layouts"];
-    pagesToLayouts?.actions?.forEach(async (action: any) => {
-      if (
-        action.type === "pages-to-layouts/executeMutation/fulfilled" &&
-        !triggeredActions.includes(action.meta.requestId)
-      ) {
-        /**
-         * Order is important, because calling invalidateServerTag before
-         * triggeredActions.push will cause the action to be triggered again
-         * and infinite loop will be created
-         */
-        triggeredActions.push(action.meta.requestId);
-        reduxStore.dispatch(api.util.invalidateTags([tag]));
-
-        await invalidateServerTag({ tag });
-      }
-    });
+    // const startupTaskState = state.stores["sps-website-builder/pages"];
+    // startupTaskState?.actions?.forEach(async (action: any) => {
+    //   if (
+    //     action.type === "pages/executeMutation/fulfilled" &&
+    //     !triggeredActions.includes(action.meta.requestId)
+    //   ) {
+    //     /**
+    //      * Order is important, because calling invalidateServerTag before
+    //      * triggeredActions.push will cause the action to be triggered again
+    //      * and infinite loop will be created
+    //      */
+    //     triggeredActions.push(action.meta.requestId);
+    //     reduxStore.dispatch(api.util.invalidateTags([tag]));
+    //     await invalidateServerTag({ tag });
+    //   }
+    // });
+    // const pagesToLayouts = state.stores["sps-website-builder/pages-to-layouts"];
+    // pagesToLayouts?.actions?.forEach(async (action: any) => {
+    //   if (
+    //     action.type === "pages-to-layouts/executeMutation/fulfilled" &&
+    //     !triggeredActions.includes(action.meta.requestId)
+    //   ) {
+    //     /**
+    //      * Order is important, because calling invalidateServerTag before
+    //      * triggeredActions.push will cause the action to be triggered again
+    //      * and infinite loop will be created
+    //      */
+    //     triggeredActions.push(action.meta.requestId);
+    //     reduxStore.dispatch(api.util.invalidateTags([tag]));
+    //     await invalidateServerTag({ tag });
+    //   }
+    // });
   });
 };
