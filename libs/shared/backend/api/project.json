@@ -1,0 +1,13 @@
+{
+  "name": "@sps/shared-backend-api",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/backend/api/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test": {},
+    "test:watch": {}
+  }
+}

@@ -1,14 +1,14 @@
 {
-  "name": "@sps/sps-utils-backend",
+  "name": "@sps/sps-backend-utils",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/backend/utils/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
-    "tsc:build": {},
     "tsc:build": {},
     "test": {
       "executor": "@nx/jest:jest",
@@ -17,6 +17,5 @@
         "jestConfig": "libs/shared/backend/utils/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

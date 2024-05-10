@@ -27,19 +27,16 @@
       "request": "launch",
       "trace": true,
       "sourceMaps": true,
-      "runtimeVersion": "18",
+      "runtimeVersion": "20",
       "outputCapture": "std",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "frontend:dev", "--preserve-symlinks"],
+      "runtimeArgs": ["run-script", "frontend:dev", "--inspect"],
+      // "envFile": "${workspaceFolder}/apps/frontend/.env.development",
+      // "program": "${workspaceFolder}/node_modules/.bin/next",
+      // "runtimeArgs": ["--inspect"],
       "cwd": "${workspaceFolder}",
-      "internalConsoleOptions": "openOnSessionStart",
-      "localRoot": "${workspaceFolder}/apps/frontend",
-      "console": "internalConsole",
-      "autoAttachChildProcesses": true,
-      "env": {
-        "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/frontend/tsconfig.json"
-      }
+      "localRoot": "${workspaceFolder}",
+      "console": "internalConsole"
     }
   ]
 }

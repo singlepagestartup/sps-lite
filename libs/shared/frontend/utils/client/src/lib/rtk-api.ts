@@ -296,7 +296,7 @@ function updateApi<T>({
 
       return {
         url: `${model}/${id}${routePostfix ? routePostfix : ""}`,
-        method: "PUT",
+        method: "PATCH",
         params: {
           populate,
         },

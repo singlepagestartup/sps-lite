@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { pathReplacer, replaceValue } from "../../utils";
 import { ApiClient } from "../ApiClient";
 import { User } from "../User";
 import { World } from "../World";
+import { pathReplacer, replaceValue } from "@sps/shared-bdd-utils";
 const R = require("ramda");
 
 export const steps = {

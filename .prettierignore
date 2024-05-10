@@ -60,3 +60,4 @@ apps/frontend/.dfx
 # Tailwind
 ############################
 apps/frontend/themes/theme.json
+/.nx/cache

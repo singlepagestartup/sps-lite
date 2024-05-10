@@ -1,18 +1,24 @@
-import {
-  BACKEND_URL,
-  fetch as utilsFetch,
-  getBackendData,
-} from "@sps/shared-frontend-utils-client";
+import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
 import { populate, route, IModelExtended } from "../model";
 import { notFound } from "next/navigation";
-import { populate as metatagPopulate } from "@sps/sps-website-builder-models-metatag-contracts-extended";
-import { getFileUrl } from "@sps/shared-utils";
+import {
+  BACKEND_URL,
+  getFileUrl,
+  transformResponseItem,
+} from "@sps/shared-utils";
 const R = require("ramda");
 
 export interface Params {
   url?: string | string[];
   locale: string | string[];
 }
+
+const fetchOptions = {
+  next: {
+    revalidate: 0,
+    tag: route,
+  },
+};
 
 async function getByUrl({ url, locale }: Params) {
   const localUrl =
@@ -26,20 +32,22 @@ async function getByUrl({ url, locale }: Params) {
     return;
   }
 
-  const targetPage = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url`,
-    params: {
-      url: localUrl,
-      locale,
-      pagination: { limit: -1 },
-    },
-  });
+  const request = await fetch(
+    `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url?` +
+      new URLSearchParams({
+        url: localUrl,
+      }),
+    fetchOptions,
+  );
 
-  if (!targetPage?.id) {
+  const targetPage = await request.json();
+  const transformedData = transformResponseItem(targetPage);
+
+  if (!transformedData?.id) {
     return;
   }
 
-  return targetPage;
+  return transformedData;
 }
 
 function getFiltersFromUrl({
@@ -112,22 +120,31 @@ async function getUrlModelId({
 }
 
 async function getPage({ url, locale }: Params) {
-  const targetPage = await getByUrl({ url, locale });
+  let targetPage = await getByUrl({ url, locale });
 
   if (!targetPage) {
-    return notFound();
+    targetPage = await getByUrl({ url: "/404", locale });
   }
 
-  const filledTargetPage = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
-    params: { locale, populate },
-  });
+  if (!targetPage) {
+    const pages = await api.find();
 
-  if (!filledTargetPage) {
-    return notFound();
+    if (pages.length) {
+      return notFound();
+    }
+
+    return;
   }
 
-  return filledTargetPage;
+  const request = await fetch(
+    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
+    fetchOptions,
+  );
+
+  const filledTargetPage = await request.json();
+  const transformedData = transformResponseItem(filledTargetPage);
+
+  return transformedData;
 }
 
 export const api = {
@@ -150,32 +167,28 @@ export const api = {
   getUrlModelId,
   generateMetadata: async (props: any) => {
     const pageProps = await api.getPage(props);
-    const metatags = await getBackendData({
-      url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
-      params: {
-        filters: {
-          pages: {
-            id: pageProps.id,
-          },
-        },
-        locale: pageProps.locale,
-        populate: metatagPopulate,
-      },
-    });
+    const request = await fetch(
+      `${BACKEND_URL}/api/sps-website-builder/metatags`,
+      fetchOptions,
+    );
+
+    if (!request.ok) {
+      return {};
+    }
+
+    const metatagsJson = await request.json();
+    const metatags = transformResponseItem(metatagsJson);
 
     if (!metatags?.length) {
-      const defaultMetatags = await getBackendData({
-        url: `${BACKEND_URL}/api/sps-website-builder/metatags`,
-        params: {
-          filters: {
-            is_default: true,
-          },
-          locale: pageProps.locale,
-          populate: metatagPopulate,
-        },
-      });
+      const defaultMetatagsRequest = await fetch(
+        `${BACKEND_URL}/api/sps-website-builder/metatags`,
+        fetchOptions,
+      );
 
-      if (!defaultMetatags.length) {
+      const defaultMetatagsJson = await defaultMetatagsRequest.json();
+      const defaultMetatags = transformResponseItem(defaultMetatagsJson);
+
+      if (!defaultMetatags?.length) {
         return {
           title: "Single Page Startup",
           description: "The fastest way to create startup",
@@ -217,22 +230,31 @@ export const api = {
     return metadata;
   },
   getUrls: async () => {
-    const pagesUrls = await getBackendData({
-      url: `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
-      params: { locale: "all", pagination: { limit: -1 } },
-    });
+    try {
+      const request = await fetch(
+        `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
+        fetchOptions,
+      );
 
-    const paths =
-      pagesUrls?.urls?.map((pageParams: { url: string; locale: string }) => {
-        return {
-          ...pageParams,
-          url:
-            pageParams.url === "/"
-              ? []
-              : pageParams.url.split("/").filter((p) => p !== ""),
-        };
-      }) || [];
+      const pagesUrls = await request.json();
+      const transformedData = transformResponseItem(pagesUrls);
 
-    return paths;
+      const paths =
+        transformedData?.urls?.map(
+          (pageParams: { url: string; locale: string }) => {
+            return {
+              ...pageParams,
+              url:
+                pageParams.url === "/"
+                  ? []
+                  : pageParams.url.split("/").filter((p) => p !== ""),
+            };
+          },
+        ) || [];
+
+      return paths;
+    } catch (error) {
+      return [];
+    }
   },
 };

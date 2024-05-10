@@ -8,6 +8,7 @@ export interface Props {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   children?: React.ReactNode;
   scroll?: boolean;
+  additionalAttributes?: Record<string, string>;
   "data-ui": "button";
   "data-ui-variant":
     | "primary"
@@ -31,12 +32,14 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
 
   const filteredProps = { ...props };
   delete filteredProps.scroll;
+  delete filteredProps.additionalAttributes;
 
   return (
     <Comp
       {...filteredProps}
       ref={ref}
       className={`button ${props?.className || ""}`}
+      {...props.additionalAttributes}
     >
       {props.children}
     </Comp>

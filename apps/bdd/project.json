@@ -3,7 +3,9 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/bdd",
   "projectType": "application",
+  "tags": [],
   "targets": {
+    "build": {},
     "dev": {
       "executor": "nx:run-commands",
       "options": {
@@ -19,14 +21,18 @@
         ]
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+    "dev:only": {
+      "executor": "nx:run-commands",
       "options": {
-        "ignorePath": ".eslintignore",
-        "quiet": false
+        "parallel": false,
+        "cwd": "apps/bdd",
+        "commands": [
+          {
+            "command": "BDD_CUCUMBER_PRETTY=true PWVIDEO=true ../../node_modules/.bin/cucumber-js"
+          }
+        ]
       }
-    }
-  },
-  "tags": []
+    },
+    "lint": {}
+  }
 }

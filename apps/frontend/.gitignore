@@ -29,3 +29,9 @@ coverage
 # Sentry
 ############################
 .sentryclirc
+
+############################
+# Drizzle
+############################
+!*.sql
+src/db/migrations/meta/*

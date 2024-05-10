@@ -1,3 +1,0 @@
-import { populate as parentPopulate } from "@sps/<%= module %>-models-<%= model %>-contracts";
-
-export const populate = { ...parentPopulate };

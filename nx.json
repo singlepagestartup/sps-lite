@@ -45,6 +45,20 @@
         "packageRoot": "dist/{projectRoot}"
       }
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "{projectRoot}/jest.config.ts"
+      }
+    },
+    "test:watch": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "{projectRoot}/jest.config.ts",
+        "watch": true,
+        "setupFile": "./jest.setup.ts"
+      }
+    },
     "@nx/jest:jest": {
       "cache": true,
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],

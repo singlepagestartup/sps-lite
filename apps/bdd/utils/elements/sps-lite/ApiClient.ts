@@ -1,5 +1,5 @@
+import { BACKEND_URL } from "@sps/shared-utils";
 import axios from "axios";
-import { BACKEND_URL } from "../../constants";
 
 export class ApiClient {
   baseUrl: string = BACKEND_URL;

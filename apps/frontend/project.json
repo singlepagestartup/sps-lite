@@ -3,7 +3,63 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/frontend",
   "projectType": "application",
+  "tags": [],
   "targets": {
+    "db:prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "drizzle-kit generate:pg --config ./src/db/config.ts"
+          },
+          {
+            "command": "bun run ./src/db/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "drizzle-kit drop --config ./src/db/config.ts"
+          },
+          {
+            "command": "bun run ./src/db/drop.ts"
+          }
+        ]
+      }
+    },
+    "db:seed": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["db:prepare"],
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun run src/db/seed.ts"
+          }
+        ]
+      }
+    },
+    "db:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun drizzle-kit studio --port 3001 --config src/db/config.ts"
+          }
+        ]
+      }
+    },
     "theme": {
       "executor": "nx:run-commands",
       "options": {
@@ -75,6 +131,5 @@
       }
     },
     "lint": {}
-  },
-  "tags": []
+  }
 }

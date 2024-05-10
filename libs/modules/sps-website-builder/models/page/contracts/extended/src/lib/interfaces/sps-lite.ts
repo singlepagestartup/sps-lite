@@ -11,6 +11,7 @@ import type { IModel as IIncentivesBlock } from "@sps/sps-website-builder-models
 import type { IModel as ILogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-cloud-block-contracts";
 import type { IModel as INotFoundBlock } from "@sps/sps-website-builder-models-not-found-block-contracts";
 import type { IModel as ISliderBlock } from "@sps/sps-website-builder-models-slider-block-contracts";
+import { IModel as IPagesToLayouts } from "@sps/sps-website-builder-relations-pages-to-layouts-contracts";
 
 type IPageBlock =
   | IAlertBlock
@@ -26,6 +27,7 @@ type IPageBlock =
 
 export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;
-  layout?: ILayout | null;
+  layouts?: ILayout[] | null;
   metatag?: IMetatag | null;
+  SPSWBPagesToLayouts?: IPagesToLayouts[];
 }

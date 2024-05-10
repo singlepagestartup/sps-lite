@@ -6,7 +6,6 @@
   "tags": [],
   "targets": {
     "tsc:build": {},
-    "tsc:build": {},
     "lint": {}
   }
 }

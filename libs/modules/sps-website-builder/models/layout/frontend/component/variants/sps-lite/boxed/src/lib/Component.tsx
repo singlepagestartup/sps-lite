@@ -10,55 +10,29 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="layout"
       data-variant="boxed"
-      className={props.data.className || ""}
+      className={props.data.className || "py-2"}
     >
-      {props.data?.navbar ? (
+      {/* {props.data?.navbar ? (
         <Navbar
           isServer={props.isServer}
           variant={props.data.navbar.variant}
           data={props.data.navbar}
         />
-      ) : null}
-      <div className="layout-container">
-        {props.data?.sidebar ? (
-          <div
-            className={`w-full flex flex-col ${
-              props.data.sidebar.side === "left"
-                ? "lg:flex-row"
-                : "lg:flex-row-reverse"
-            }`}
-          >
-            <div
-              className={`flex flex-col ${
-                props.data.sidebar.variant === "one-quarter" ? "lg:w-3/12" : ""
-              }`}
-            >
-              <Sidebar
-                isServer={props.isServer}
-                variant={props.data.sidebar.variant}
-                data={props.data.sidebar}
-              />
-            </div>
-            <div
-              className={`h-full ${
-                props.data.sidebar.variant === "one-quarter" ? "lg:w-9/12" : ""
-              }`}
-            >
-              {props.children}
-            </div>
-          </div>
-        ) : (
-          <>{props.children}</>
-        )}
+      ) : null} */}
+      <div className="layout-container border rounded-lg border-gray-200 p-4 relative">
+        <p className="absolute left-2 top-2 text-xs text-gray-400">
+          {props.data.variant}
+        </p>
+        {props.children}
       </div>
-      {props.data.footer ? (
+      {/* {props.data.footer ? (
         <Footer
           isServer={props.isServer}
           variant={props.data.footer.variant}
           data={props.data.footer}
         />
-      ) : null}
-      <Modal isServer={props.isServer} variant="list" />
+      ) : null} */}
+      {/* <Modal isServer={props.isServer} variant="list" /> */}
     </div>
   );
 }
