@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -14,6 +14,8 @@ import { IComponentPropsExtended } from "./interface";
 import { Component as PageSpsLiteAdminForm } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
+  const [open, setOpen] = useState(false);
+
   return (
     <TableRow
       data-module="sps-website-builder"
@@ -24,7 +26,7 @@ export function Component(props: IComponentPropsExtended) {
       <TableCell>{props.data.url}</TableCell>
       <TableCell></TableCell>
       <TableCell className="flex gap-3 justify-end">
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline" className="w-fit">
               <div className="flex gap-3">
@@ -38,6 +40,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="admin-form"
               data={props.data}
+              setOpen={setOpen}
             />
           </DialogContent>
         </Dialog>

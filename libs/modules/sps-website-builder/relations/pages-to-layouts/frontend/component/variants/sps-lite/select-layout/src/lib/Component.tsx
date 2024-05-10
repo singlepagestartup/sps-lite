@@ -4,17 +4,12 @@ import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-client";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { Component as LayoutSpsLiteAdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
-import { useGlobalActionsStore } from "@sps/store";
 import { FormField } from "@sps/ui-adapter";
+import { useActionTrigger } from "@sps/hooks";
 
 export function Component(props: IComponentPropsExtended) {
-  const [triggeredActions, setTriggeredActions] = useState<string[]>();
-  const pagesActions = useGlobalActionsStore((store) =>
-    store.getActionsFromStoreByName("sps-website-builder/pages"),
-  );
-
   const [updatePagesToLayouts, updatePagesToLayoutsResult] =
     api.rtk.useUpdateMutation();
   const [createPagesToLayouts, createPagesToLayoutsResult] =
@@ -37,22 +32,15 @@ export function Component(props: IComponentPropsExtended) {
 
   const watchData = watch();
 
-  useEffect(() => {
-    pagesActions.forEach(async (action: any) => {
-      if (
-        action.type === "pages/executeMutation/fulfilled" &&
-        !triggeredActions?.includes(action.meta.requestId)
-      ) {
-        if (triggeredActions) {
-          setTriggeredActions([...triggeredActions, action.meta.requestId]);
-        } else {
-          setTriggeredActions([action.meta.requestId]);
-        }
-
-        onSubmit(watchData);
-      }
-    });
-  }, [pagesActions, triggeredActions, watchData]);
+  useActionTrigger({
+    storeName: "sps-website-builder/pages",
+    actionFilter: (action) => {
+      return action.type === "pages/executeMutation/fulfilled";
+    },
+    callbackFunction: (action) => {
+      onSubmit(watchData);
+    },
+  });
 
   // useEffect(() => {
   //   console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
@@ -99,7 +87,6 @@ export function Component(props: IComponentPropsExtended) {
                 }}
                 value={watchData.layoutId}
               />
-              {/* <Button onClick={handleSubmit(onSubmit)}>Create</Button> */}
             </div>
           </FormProvider>
         </CardContent>

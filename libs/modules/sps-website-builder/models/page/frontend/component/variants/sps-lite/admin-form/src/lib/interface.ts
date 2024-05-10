@@ -12,6 +12,7 @@ export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   data?: IModel;
   className?: string;
+  setOpen?: (open: boolean) => void;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

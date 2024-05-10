@@ -8,35 +8,23 @@ import { FormProvider, useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
-import { useGlobalActionsStore } from "@sps/store";
+import { useActionTrigger } from "@sps/hooks";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const pagesToLayoutsActions = useGlobalActionsStore((store) =>
-    store.getActionsFromStoreByName("sps-website-builder/pages-to-layouts"),
-  );
 
-  const [triggeredActions, setTriggeredActions] = useState<string[]>();
+  useActionTrigger({
+    storeName: "sps-website-builder/pages-to-layouts",
+    actionFilter: (action) =>
+      action.type === "pages-to-layouts/executeMutation/fulfilled",
+    callbackFunction: (action) => {
+      props.setOpen(false);
+      router.refresh();
+    },
+  });
 
   const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
   const [createPage, createPageResult] = api.rtk.useCreateMutation();
-
-  useEffect(() => {
-    pagesToLayoutsActions?.forEach(async (action: any) => {
-      if (
-        action.type === "pages-to-layouts/executeMutation/fulfilled" &&
-        !triggeredActions?.includes(action.meta.requestId)
-      ) {
-        if (triggeredActions) {
-          setTriggeredActions([...triggeredActions, action.meta.requestId]);
-        } else {
-          setTriggeredActions([action.meta.requestId]);
-        }
-
-        router.refresh();
-      }
-    });
-  }, [pagesToLayoutsActions, router, triggeredActions]);
 
   const methods = useForm<any>({
     mode: "all",

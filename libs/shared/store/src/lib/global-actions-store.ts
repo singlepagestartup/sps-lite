@@ -13,6 +13,7 @@ export interface RtkAction {
   meta: {
     requestId: string;
     requestStatus: string;
+    fulfilledTimeStamp: number;
     arg: {
       endpointName: string;
       type: string;
