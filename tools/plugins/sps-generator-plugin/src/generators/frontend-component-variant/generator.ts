@@ -2,7 +2,7 @@ import { FrontendComponentVariantGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 import { Tree } from "@nx/devkit";
 
-// npx nx generate @sps/sps-generator-plugin:create-frontend-component-variant --name=test-variant --model_name=page --level=sps-lite --module_name=sps-website-builder --no-interactive --dry-run
+// npx nx generate @sps/sps-generator-plugin:frontend-component-variant --name=get-layout --entity_name=pages-to-layouts --action=create --level=sps-lite --module_name=sps-website-builder --type=relation --no-interactive --dry-run
 export async function frontendComponentVariantGenerator(
   tree: Tree,
   options: FrontendComponentVariantGeneratorSchema,

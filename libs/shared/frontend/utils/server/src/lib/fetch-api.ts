@@ -8,7 +8,7 @@ import QueryString from "qs";
 import { cookies } from "next/headers";
 
 async function findByIdAndName<T>(params: {
-  id: number;
+  id: number | string;
   name: string;
   populate: any;
   tag?: string;
@@ -56,7 +56,7 @@ async function findByIdAndName<T>(params: {
 }
 
 async function findOne<T>(params: {
-  id: number;
+  id: number | string;
   model: string;
   populate: any;
   rootPath?: string;

@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, getProjects, readCachedProjectGraph } from "@nx/devkit";
 import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
@@ -229,11 +229,66 @@ export class Coder {
     await this.project.models[0].removeModelFrontendComponentVariant(props);
   }
 
+  async setRelatedModels(relationName: string) {
+    const projects = getProjects(this.tree);
+    const projectWithPassedRelationNameAndSchema = [];
+
+    projects.forEach((project) => {
+      if (
+        project.name.includes(relationName) &&
+        project.name.includes("schema")
+      ) {
+        projectWithPassedRelationNameAndSchema.push(project);
+      }
+    });
+
+    const graph = readCachedProjectGraph();
+    const dependenciesProjectNames = Object.keys(graph.dependencies);
+    const relatedModels = [];
+
+    dependenciesProjectNames.forEach((dependencyProjectName) => {
+      graph.dependencies[dependencyProjectName].forEach((dependency) => {
+        if (
+          dependency.target === projectWithPassedRelationNameAndSchema[0].name
+        ) {
+          if (dependency.source.includes("models")) {
+            relatedModels.push(dependency.source);
+          }
+        }
+      });
+    });
+
+    /**
+     * ! May be in wrong order! Here is just for fixing init problem
+     * Need to be checked by relation schema
+     */
+    const modelNames = relatedModels.map((model) => {
+      return model.split("models-")[1].split("-backend")[0];
+    });
+
+    const leftProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await leftProject.init({ modelName: modelNames[0] });
+    this.project.models.push(leftProject);
+
+    const rightProject = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+    await rightProject.init({ modelName: modelNames[1] });
+
+    this.project.models.push(rightProject);
+  }
+
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
     relationName: string;
   }) {
+    await this.setRelatedModels(props.relationName);
+
     await this.project.relations[0].createRelationFrontendComponentVariant(
       props,
     );
@@ -244,6 +299,8 @@ export class Coder {
     variantLevel: string;
     relationName: string;
   }) {
+    await this.setRelatedModels(props.relationName);
+
     await this.project.relations[0].removeRelationFrontendComponentVariant(
       props,
     );

@@ -11,3 +11,5 @@ export interface IModel {
   publishedAt: string;
   variant: (typeof variants)[number];
 }
+
+// "admin-select-input", "admin-table-row", "admin-table", "admin-panel", "admin-form", "default", "find", "page-attacher", "editor", "wide", "boxed"

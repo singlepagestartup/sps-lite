@@ -33,10 +33,10 @@ export class Coder {
     ),
   ) {
     const { tree, parent } = props;
+    this.tree = tree;
+    this.parent = parent;
 
     if ("name" in props && props.name) {
-      this.tree = tree;
-      this.parent = parent;
       this.name = props.name;
 
       const [leftModelRelationName, rightModelRelationName] =
@@ -56,8 +56,6 @@ export class Coder {
       this.rightModelRelationName = rightModelRelationName;
     }
 
-    this.tree = tree;
-    this.parent = parent;
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
 
