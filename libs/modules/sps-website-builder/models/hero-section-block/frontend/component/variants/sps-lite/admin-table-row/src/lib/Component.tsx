@@ -39,8 +39,8 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
     >
       <TableCell className="font-medium text-left">{props.data.id}</TableCell>
-      <TableCell></TableCell>
-      <TableCell></TableCell>
+      <TableCell>{props.data.title}</TableCell>
+      <TableCell>{props.data.variant}</TableCell>
       <TableCell className="flex gap-3 justify-end">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>

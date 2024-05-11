@@ -1,3 +1,4 @@
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-select-input";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form";
 import { Component as AdminTableRow } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table-row";
@@ -5,6 +6,7 @@ import { Component as AdminTable } from "@sps/sps-website-builder-models-hero-se
 import { Component as SimpleCentered } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered";
 
 export const variants = {
+  "admin-select-input": AdminSelectInput,
   "admin-form-inputs": AdminFormInputs,
   "admin-form": AdminForm,
   "admin-table-row": AdminTableRow,

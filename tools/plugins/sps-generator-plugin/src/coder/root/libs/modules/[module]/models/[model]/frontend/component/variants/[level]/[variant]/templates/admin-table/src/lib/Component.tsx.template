@@ -28,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={`${props.className || ""}`}
     >
       <Card>
         <CardHeader>
@@ -55,7 +55,7 @@ export function Component(props: IComponentPropsExtended) {
 
         <CardContent>
           <Table>
-            <TableCaption>List of existing layouts</TableCaption>
+            <TableCaption>List of existing <%= model_name %> entites</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>

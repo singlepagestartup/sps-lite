@@ -23,6 +23,19 @@ import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-buil
 const formSchema = z.object({});
 
 export function Component(props: IComponentPropsExtended) {
+  useActionTrigger({
+    storeName: "sps-website-builder/widgets-to-hero-section-blocks",
+    actionFilter: (action) => {
+      return (
+        action.type ===
+        "widgets-to-hero-section-blocks/executeMutation/fulfilled"
+      );
+    },
+    callbackFunction: async (action) => {
+      onFinish();
+    },
+  });
+
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -45,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  useEffect(() => {
+  async function onFinish() {
     if (updateEntityResult.data || createEntityResult.data) {
       dispatch(api.rtk.util.invalidateTags(["widget"]));
       invalidateServerTag({ tag: "widget" });
@@ -56,7 +69,7 @@ export function Component(props: IComponentPropsExtended) {
 
       router.refresh();
     }
-  }, [updateEntityResult, createEntityResult]);
+  }
 
   return (
     <div
@@ -75,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="admin-form-inputs"
               form={form}
+              data={props.data}
             />
             <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}

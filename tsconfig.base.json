@@ -1005,6 +1005,9 @@
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
       ],
@@ -1805,6 +1808,9 @@
       ],
       "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/redux/src/index.ts"

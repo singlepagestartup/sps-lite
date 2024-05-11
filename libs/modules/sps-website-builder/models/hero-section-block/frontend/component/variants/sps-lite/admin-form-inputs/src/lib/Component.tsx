@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@sps/shadcn";
+import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -22,7 +23,47 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="hero-section-block"
       data-variant={props.variant}
-      className={`${props.className || ""}`}
-    ></form>
+      className={`${props.className || "flex flex-col gap-3"}`}
+    >
+      <FormField
+        control={props.form.control}
+        name="title"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Title</FormLabel>
+            <FormControl>
+              <Input placeholder="Type hero-section-block title" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={props.form.control}
+        name="variant"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Variant</FormLabel>
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select variant" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {variants.map((variant, index) => {
+                  return (
+                    <SelectItem key={index} value={variant}>
+                      {variant}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </form>
   );
 }

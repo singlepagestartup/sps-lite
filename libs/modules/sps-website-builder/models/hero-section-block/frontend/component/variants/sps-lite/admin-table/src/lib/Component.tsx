@@ -30,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="hero-section-block"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className=""
     >
       <Card>
         <CardHeader>
@@ -62,7 +62,8 @@ export function Component(props: IComponentPropsExtended) {
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
-                <TableHead></TableHead>
+                <TableHead>Title</TableHead>
+                <TableHead>Variant</TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
             </TableHeader>

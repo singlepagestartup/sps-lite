@@ -10,7 +10,6 @@ import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  console.log(`🚀 ~ Server ~ props:`, props);
   const data = await api.fetch.getPage(props.params);
 
   if (!data) {

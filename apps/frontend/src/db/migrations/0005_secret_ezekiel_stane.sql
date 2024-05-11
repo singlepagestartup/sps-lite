@@ -1,0 +1,1 @@
+ALTER TABLE "sps_w_b_hero_section_blocks" ADD COLUMN "title" text;

@@ -9,9 +9,28 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
+  if (props.data) {
+    const { data, isFetching, isLoading } = api.rtk.useFindOneQuery(
+      {
+        id: props.data?.id,
+      },
+      { skip: !props?.data?.id },
+    );
+
+    if (isFetching || isLoading) {
+      return <Skeleton {...props} />;
+    }
+
+    return (
+      <ErrorBoundary fallback={Error}>
+        <Component {...props} data={data} />
+      </ErrorBoundary>
+    );
+  }
+
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} />
+      <Component {...props} data={props.data} />
     </ErrorBoundary>
   );
 }

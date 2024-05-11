@@ -8,6 +8,7 @@ import {
   FormMessage,
   Input,
 } from "@sps/shadcn";
+import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -15,23 +16,29 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="widget"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={`${props.className || ""}`}
     >
-      {/* <FormField
-        control={props.form.control}
-        name="title"
-        render={({ field }) => {
-          return (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="Title for layout" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          );
-        }}
-      /> */}
+      {props.data?.SPSWBWidgetsToHeroSectionBlocks.length ? (
+        props.data?.SPSWBWidgetsToHeroSectionBlocks.map(
+          (widgetsToHeroSectionBlock, index) => {
+            return (
+              <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+                key={index}
+                isServer={props.isServer}
+                variant="select-right"
+                data={widgetsToHeroSectionBlock}
+              />
+            );
+          },
+        )
+      ) : (
+        <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+          isServer={props.isServer}
+          variant="select-right"
+          widgetId={props.data?.id}
+          data={undefined}
+        />
+      )}
     </div>
   );
 }

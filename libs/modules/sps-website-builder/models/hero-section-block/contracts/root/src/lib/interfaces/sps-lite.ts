@@ -1,7 +1,7 @@
-export const variants = ["simple-centered"] as const;
+export const variants = ["default"] as const;
 
 export interface IModel {
-  id: number;
+  id: string;
   __component: "page-blocks.hero-section-block";
   variant: (typeof variants)[number];
   className: string | null;

@@ -19,7 +19,10 @@ import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as HeroSectionBlockSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
 
-const formSchema = z.object({});
+const formSchema = z.object({
+  title: z.string(),
+  variant: z.string().min(1),
+});
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
@@ -30,7 +33,10 @@ export function Component(props: IComponentPropsExtended) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      title: props.data?.title || "",
+      variant: props.data?.variant || "",
+    },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
