@@ -10,8 +10,8 @@ export const handler = async (
 ) => {
   let query = c.req.query("url");
 
-  // Vercel delete ?url=/
-  if (!query) {
+  // Vercel changes url "/" to "index" so we need to change it back
+  if (!query || query === "index") {
     query = "/";
   }
 
