@@ -1,8 +1,8 @@
-import { IModel } from "<%= root_contracts_import_path %>";
-import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { IModel } from "@sps/sps-website-builder-models-hero-section-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-hero-section-block-contracts-extended";
 import { UseFormReturn } from "react-hook-form";
 
-export const variant = "<%= variant %>" as const;
+export const variant = "admin-form-inputs" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;

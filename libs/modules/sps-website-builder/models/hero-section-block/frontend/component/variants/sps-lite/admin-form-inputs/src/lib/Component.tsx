@@ -19,11 +19,10 @@ import {
 export function Component(props: IComponentPropsExtended) {
   return (
     <form
-      data-module="<%= module_name %>"
-      data-model="<%= model_name %>"
+      data-module="sps-website-builder"
+      data-model="hero-section-block"
       data-variant={props.variant}
       className={`${props.className || ""}`}
-    >
-    </form>
+    ></form>
   );
 }

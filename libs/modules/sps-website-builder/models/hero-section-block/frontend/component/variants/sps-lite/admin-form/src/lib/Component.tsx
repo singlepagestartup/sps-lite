@@ -17,6 +17,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
+import { Component as HeroSectionBlockSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
 
 const formSchema = z.object({});
 
@@ -71,7 +72,11 @@ export function Component(props: IComponentPropsExtended) {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
-            <p className="text-5xl text-center py-6">Inputs Here</p>
+            <HeroSectionBlockSpsLiteAdminFormInputs
+              isServer={false}
+              variant="admin-form-inputs"
+              form={form}
+            />
             <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>

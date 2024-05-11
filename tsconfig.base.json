@@ -1002,6 +1002,9 @@
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
       ],

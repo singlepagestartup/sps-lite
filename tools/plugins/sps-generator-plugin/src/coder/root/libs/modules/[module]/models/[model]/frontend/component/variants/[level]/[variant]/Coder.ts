@@ -96,6 +96,10 @@ export class Coder {
       this.parent.parent.project.api.project.client.baseName;
     const modelNamePluralized =
       this.parent.parent.project.api.project.model.modelName;
+    const rootContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.root.baseName;
+    const extendedContractsImportPath =
+      this.parent.parent.parent.project.contracts.project.extended.baseName;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
@@ -116,6 +120,8 @@ export class Coder {
         api_client_import_path: apiClientImportPath,
         offset_from_root: offsetFromRootProject,
         model_name_pluralized: modelNamePluralized,
+        root_contracts_import_path: rootContractsImportPath,
+        extended_contracts_import_path: extendedContractsImportPath,
       },
     });
 

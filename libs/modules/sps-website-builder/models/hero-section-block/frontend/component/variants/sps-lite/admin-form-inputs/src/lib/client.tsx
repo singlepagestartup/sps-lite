@@ -7,7 +7,7 @@ import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 
 export default function Client(props: IComponentProps) {
-   return (
+  return (
     <ErrorBoundary fallback={Error}>
       <Component {...props} />
     </ErrorBoundary>
