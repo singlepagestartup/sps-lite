@@ -63,14 +63,14 @@ export class Coder {
   }
 
   async create() {
-    // await this.project.contracts.create();
+    await this.project.contracts.create();
     await this.project.backend.create();
-    // await this.project.frontend.create();
+    await this.project.frontend.create();
 
-    // await this.project.frontend.createVariant({
-    //   variantName: "default",
-    //   variantLevel: "sps-lite",
-    // });
+    await this.project.frontend.createVariant({
+      variantName: "default",
+      variantLevel: "sps-lite",
+    });
   }
 
   async remove() {

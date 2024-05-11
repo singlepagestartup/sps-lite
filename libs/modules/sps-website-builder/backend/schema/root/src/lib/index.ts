@@ -1,4 +1,13 @@
 export {
+  Table as SPSWBWidgetsToHeroSectionBlocks,
+  Relations as SPSWBWidgetsToHeroSectionBlocksRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-backend-schema";
+export {
+  Table as SPSWBHeroSectionBlock,
+  Relations as SPSWBHeroSectionBlockRelations,
+  VariantEnumTable as SPSWBHeroSectionBlockVariantEnumTable,
+} from "@sps/sps-website-builder-models-hero-section-block-backend-schema";
+export {
   Table as SPSWBPagesToWidgets,
   Relations as SPSWBPagesToWidgetsRelations,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
