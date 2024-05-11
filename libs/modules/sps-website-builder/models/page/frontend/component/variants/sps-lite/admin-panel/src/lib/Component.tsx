@@ -14,6 +14,7 @@ import {
 } from "@sps/shadcn";
 import { Component as PageSpsLiteAdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 import { Component as LayoutSpsLiteAdminTable } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table";
+import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -33,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
               <TabsList>
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
+                <TabsTrigger value="widget">Widget</TabsTrigger>
               </TabsList>
 
               <TabsContent value="page">
@@ -40,6 +42,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="layout">
                 <LayoutSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="widget">
+                <WidgetSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />
