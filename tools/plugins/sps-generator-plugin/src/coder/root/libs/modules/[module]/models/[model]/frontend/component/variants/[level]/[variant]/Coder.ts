@@ -94,6 +94,9 @@ export class Coder {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
     const apiClientImportPath =
       this.parent.parent.project.api.project.client.baseName;
+    const apiServerImportPath =
+      this.parent.parent.project.api.project.server.baseName;
+    const reduxImportPath = this.parent.parent.project.redux.baseName;
     const modelNamePluralized =
       this.parent.parent.project.api.project.model.modelName;
     const rootContractsImportPath =
@@ -118,6 +121,8 @@ export class Coder {
         module_name: this.moduleName,
         model_name: this.modelName,
         api_client_import_path: apiClientImportPath,
+        api_server_import_path: apiServerImportPath,
+        redux_import_path: reduxImportPath,
         offset_from_root: offsetFromRootProject,
         model_name_pluralized: modelNamePluralized,
         root_contracts_import_path: rootContractsImportPath,
