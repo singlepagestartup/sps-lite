@@ -1,24 +1,22 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
+import { useRouter } from "next/navigation";
+import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
+  Form,
   Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Form,
 } from "@sps/shadcn";
-import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
-import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
 
 const formSchema = z.object({});
 
@@ -47,8 +45,8 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (updateEntityResult.data || createEntityResult.data) {
-      dispatch(api.rtk.util.invalidateTags(["widget"]));
-      invalidateServerTag({ tag: "widget" });
+      dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
+      invalidateServerTag({ tag: "hero-section-block" });
 
       if (props.setOpen) {
         props.setOpen(false);
@@ -61,21 +59,19 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
-      data-model="widget"
+      data-model="hero-section-block"
       data-variant={props.variant}
       className={props.className || ""}
     >
       <Form {...form}>
         <Card>
           <CardHeader>
-            <CardTitle>{props.data?.id ? "Edit" : "Create"} Widget</CardTitle>
+            <CardTitle>
+              {props.data?.id ? "Edit" : "Create"} hero-section-block
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
-            <WidgetSpsLiteAdminFormInputs
-              isServer={false}
-              variant="admin-form-inputs"
-              form={form}
-            />
+            <p className="text-5xl text-center py-6">Inputs Here</p>
             <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>

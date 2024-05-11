@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "<%= api_client_import_path %>";
+import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.rtk.useFindOneQuery(

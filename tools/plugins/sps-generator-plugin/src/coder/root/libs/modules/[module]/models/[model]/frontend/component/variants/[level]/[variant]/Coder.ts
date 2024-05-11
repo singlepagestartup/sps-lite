@@ -19,6 +19,7 @@ import {
   replaceInFile,
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
+import { stat } from "fs/promises";
 
 export class Coder {
   parent: ComponentCoder;
@@ -91,28 +92,30 @@ export class Coder {
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+    const apiClientImportPath =
+      this.parent.parent.project.api.project.client.baseName;
+    const modelNamePluralized =
+      this.parent.parent.project.api.project.model.modelName;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
       : path.join(__dirname, `files`);
 
-    const templateFolderItems = this.tree.children(templateDirectory);
-
-    if (!templateFolderItems) {
-      throw new Error(`No template found at ${templateDirectory}`);
-    }
+    await stat(templateDirectory);
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
       tree: this.tree,
-      generateFilesPath: path.join(__dirname, `files`),
+      generateFilesPath: templateDirectory,
       templateParams: {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,
+        api_client_import_path: apiClientImportPath,
         offset_from_root: offsetFromRootProject,
+        model_name_pluralized: modelNamePluralized,
       },
     });
 

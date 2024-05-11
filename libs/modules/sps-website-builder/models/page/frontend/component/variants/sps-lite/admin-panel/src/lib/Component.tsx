@@ -15,6 +15,7 @@ import {
 import { Component as PageSpsLiteAdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 import { Component as LayoutSpsLiteAdminTable } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table";
+import { Component as HeroSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -35,6 +36,9 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
                 <TabsTrigger value="widget">Widget</TabsTrigger>
+                <TabsTrigger value="hero-section-block">
+                  Hero Section Block
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="page">
@@ -48,6 +52,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="widget">
                 <WidgetSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="hero-section-block">
+                <HeroSectionBlockSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

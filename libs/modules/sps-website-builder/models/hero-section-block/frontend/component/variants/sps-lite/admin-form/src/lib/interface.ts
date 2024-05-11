@@ -1,7 +1,7 @@
-import { IModel } from "@sps/<%= module_name %>-models-<%= model_name %>-contracts";
-import { IModel as IModelExtended } from "@sps/<%= module_name %>-models-<%= model_name %>-contracts-extended";
+import { IModel } from "@sps/sps-website-builder-models-hero-section-block-contracts";
+import { IModel as IModelExtended } from "@sps/sps-website-builder-models-hero-section-block-contracts-extended";
 
-export const variant = "<%= variant %>" as const;
+export const variant = "admin-form" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;

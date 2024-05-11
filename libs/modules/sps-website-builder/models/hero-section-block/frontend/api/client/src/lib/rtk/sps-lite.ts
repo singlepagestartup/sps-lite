@@ -16,6 +16,34 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
+    find: rtk.api.find<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+    create: rtk.api.create<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+    update: rtk.api.update<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
+    delete: rtk.api.delete<IModelExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
   }),
 });
 

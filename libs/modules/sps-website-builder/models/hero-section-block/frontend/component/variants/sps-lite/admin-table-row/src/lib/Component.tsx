@@ -11,10 +11,11 @@ import {
 } from "@sps/shadcn";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "<%= api_client_import_path %>";
+import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import { Component as HeroSectionBlockSpsLiteAdminForm } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
@@ -24,8 +25,8 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (deleteMutationResult.isSuccess) {
-      dispatch(api.rtk.util.invalidateTags(["<%= model_name_pluralized %>"]));
-      invalidateServerTag({ tag: "<%= model_name_pluralized %>" }).then(() => {
+      dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
+      invalidateServerTag({ tag: "hero-section-block" }).then(() => {
         router.refresh();
       });
     }
@@ -33,8 +34,8 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <TableRow
-      data-module="<%= module_name %>"
-      data-model="<%= model_name %>"
+      data-module="sps-website-builder"
+      data-model="hero-section-block"
       data-variant={props.variant}
     >
       <TableCell className="font-medium text-left">{props.data.id}</TableCell>
@@ -51,9 +52,11 @@ export function Component(props: IComponentPropsExtended) {
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-3xl p-0">
-            <div className="p-10 flex items-center justify-center">
-              <p className="py-10 text-5xl">Edit entity form here</p>
-            </div>
+            <HeroSectionBlockSpsLiteAdminForm
+              isServer={false}
+              variant="admin-form"
+              data={props.data}
+            />
           </DialogContent>
         </Dialog>
 

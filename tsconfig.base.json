@@ -999,6 +999,15 @@
       "@sps/sps-website-builder-models-hero-section-block-frontend-component": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
       ],

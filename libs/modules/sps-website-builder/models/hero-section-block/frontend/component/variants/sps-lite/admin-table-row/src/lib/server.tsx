@@ -4,21 +4,17 @@ import "server-only";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/<%= module_name %>-models-<%= model_name %>-frontend-api-server";
+import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-server";
 import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  let data: IComponentProps["data"];
+  const data = await api.fetch.findOne({
+    id: props.data.id,
+  });
 
-  if (props.data) {
-    data = await api.fetch.findOne({
-      id: props.data.id,
-    });
-
-    if (!data) {
-      return <></>;
-    }
+  if (!data) {
+    return <></>;
   }
 
   return (
