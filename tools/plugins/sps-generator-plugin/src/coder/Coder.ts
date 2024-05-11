@@ -46,6 +46,48 @@ export class Coder {
     await formatFiles(this.tree);
   }
 
+  async removeBackendVariant({
+    entityName,
+    level,
+    moduleName,
+    variant,
+  }: {
+    entityName: string;
+    moduleName: string;
+    level: string;
+    variant: string;
+  }) {
+    await this.project.root.removeBackendVariant({
+      entityName,
+      moduleName,
+      variantLevel: level,
+      variantName: variant,
+    });
+
+    await formatFiles(this.tree);
+  }
+
+  async createBackendVariant({
+    entityName,
+    moduleName,
+    level,
+    variant,
+  }: {
+    entityName: string;
+    moduleName: string;
+    level: string;
+    variant: string;
+  }) {
+    await this.project.root.createBackendVariant({
+      entityName,
+      moduleName,
+      variantLevel: level,
+      variantName: variant,
+    });
+
+    await formatFiles(this.tree);
+  }
+
   async removeModel({
     moduleName,
     modelName,

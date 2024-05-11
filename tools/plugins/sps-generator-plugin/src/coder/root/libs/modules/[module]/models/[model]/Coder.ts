@@ -114,4 +114,18 @@ export class Coder {
   }) {
     await this.project.frontend.removeVariant(props);
   }
+
+  async createBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.backend.createVariant(props);
+  }
+
+  async removeBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+  }) {
+    await this.project.backend.removeVariant(props);
+  }
 }

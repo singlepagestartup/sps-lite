@@ -176,6 +176,34 @@ export class Coder {
     await this.project.module.removeModelFrontendComponentVariant(props);
   }
 
+  async createBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    moduleName: string;
+    entityName: string;
+  }) {
+    const { moduleName } = props;
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.createBackendVariant(props);
+  }
+
+  async removeBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    moduleName: string;
+    entityName: string;
+  }) {
+    const { moduleName } = props;
+    await this.init({
+      moduleName,
+    });
+
+    await this.project.module.removeBackendVariant(props);
+  }
+
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;

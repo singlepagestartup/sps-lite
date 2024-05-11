@@ -10,6 +10,11 @@
       "schema": "./src/generators/model/schema.json",
       "description": "model generator"
     },
+    "backend-variant": {
+      "factory": "./src/generators/backend-variant/generator",
+      "schema": "./src/generators/backend-variant/schema.json",
+      "description": "backend variant generator"
+    },
     "create-module": {
       "factory": "./src/generators/create-module/generator",
       "schema": "./src/generators/create-module/schema.json",

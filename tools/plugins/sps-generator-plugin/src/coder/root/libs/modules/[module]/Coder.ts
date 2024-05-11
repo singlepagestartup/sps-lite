@@ -230,6 +230,30 @@ export class Coder {
     await this.project.models[0].removeModelFrontendComponentVariant(props);
   }
 
+  async createBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    entityName: string;
+  }) {
+    await this.project.models[0].createBackendVariant({
+      variantLevel: props.variantLevel,
+      variantName: props.variantName,
+      modelName: props.entityName,
+    });
+  }
+
+  async removeBackendVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    entityName: string;
+  }) {
+    await this.project.models[0].removeBackendVariant({
+      variantLevel: props.variantLevel,
+      variantName: props.variantName,
+      modelName: props.entityName,
+    });
+  }
+
   async setRelatedModels(relationName: string) {
     const projects = getProjects(this.tree);
     const projectWithPassedRelationNameAndSchema = [];
