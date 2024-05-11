@@ -120,8 +120,6 @@ async function getUrlModelId({
 }
 
 async function getPage(params: Params) {
-  console.log(`🚀 ~ getPage ~ params:`, params);
-
   const { url, locale } = params;
   let targetPage = await getByUrl({ url, locale });
 

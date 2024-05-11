@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBPagesToWidgets,
+  Relations as SPSWBPagesToWidgetsRelations,
+} from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
+export {
   Table as SPSWBWidget,
   Relations as SPSWBWidgetRelations,
   VariantEnumTable as SPSWBWidgetVariantEnumTable,
