@@ -34,23 +34,27 @@ export class Coder {
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
   importStyles: ImportStyles;
+  template: string;
 
   constructor({
     parent,
     tree,
     name,
     level,
+    template,
   }: {
     name: string;
     parent: ComponentCoder;
     tree: Tree;
     level: string;
+    template?: string;
   }) {
     this.name = name;
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
     this.tree = tree;
     this.parent = parent;
+    this.template = template;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
@@ -87,6 +91,16 @@ export class Coder {
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+
+    const templateDirectory = this.template
+      ? path.join(__dirname, `templates/${this.template}`)
+      : path.join(__dirname, `files`);
+
+    const templateFolderItems = this.tree.children(templateDirectory);
+
+    if (!templateFolderItems) {
+      throw new Error(`No template found at ${templateDirectory}`);
+    }
 
     await createSpsReactLibrary({
       root: this.baseDirectory,

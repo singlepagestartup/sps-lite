@@ -83,6 +83,7 @@ export class Coder {
     variantName: string;
     variantLevel: string;
     modelName: string;
+    templateName?: string;
   }) {
     const { modelName } = props;
 

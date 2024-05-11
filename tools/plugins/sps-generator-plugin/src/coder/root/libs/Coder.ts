@@ -114,6 +114,7 @@ export class Coder {
     variantLevel: string;
     moduleName: string;
     modelName: string;
+    templateName?: string;
   }) {
     await this.init();
 

@@ -217,6 +217,7 @@ export class Coder {
     variantName: string;
     variantLevel: string;
     modelName: string;
+    templateName?: string;
   }) {
     await this.project.models[0].createModelFrontendComponentVariant(props);
   }

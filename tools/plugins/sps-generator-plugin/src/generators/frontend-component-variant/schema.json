@@ -30,6 +30,15 @@
       },
       "x-prompt": "What name of variant would you like to use?"
     },
+    "template": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name of variant would you like to use?"
+    },
     "level": {
       "type": "string",
       "description": "Type of component",

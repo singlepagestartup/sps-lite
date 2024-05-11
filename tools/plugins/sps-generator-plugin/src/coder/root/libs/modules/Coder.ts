@@ -152,6 +152,7 @@ export class Coder {
     variantLevel: string;
     moduleName: string;
     modelName: string;
+    templateName?: string;
   }) {
     const { moduleName } = props;
     await this.init({

@@ -5,4 +5,5 @@ export interface FrontendComponentVariantGeneratorSchema {
   type: "model" | "relation";
   entity_name: string;
   module_name: string;
+  template?: string;
 }

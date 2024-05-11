@@ -103,6 +103,7 @@ export class Coder {
   async createModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
+    templateName?: string;
   }) {
     await this.project.frontend.createVariant(props);
   }

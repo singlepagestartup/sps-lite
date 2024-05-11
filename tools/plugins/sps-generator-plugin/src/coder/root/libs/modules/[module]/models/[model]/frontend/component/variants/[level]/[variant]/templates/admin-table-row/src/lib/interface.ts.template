@@ -1,0 +1,18 @@
+import { IModel } from "@sps/<%= module_name %>-models-<%= model_name %>-contracts";
+import { IModel as IModelExtended } from "@sps/<%= module_name %>-models-<%= model_name %>-contracts-extended";
+
+export const variant = "<%= variant %>" as const;
+
+export interface IComponentBase {
+  showSkeletons?: boolean;
+  isServer: boolean;
+}
+
+export interface IComponentProps extends IComponentBase {
+  variant: typeof variant;
+  data: IModel;
+}
+
+export interface IComponentPropsExtended extends IComponentProps {
+  data: IModelExtended;
+}

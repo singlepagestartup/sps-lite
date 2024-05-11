@@ -112,17 +112,20 @@ export class Coder {
     level,
     modelName,
     moduleName,
+    templateName,
   }: {
     name: string;
     level: string;
     modelName: string;
     moduleName: string;
+    templateName?: string;
   }) {
     await this.project.root.createModelFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
       moduleName: moduleName,
       modelName: modelName,
+      templateName: templateName,
     });
   }
 

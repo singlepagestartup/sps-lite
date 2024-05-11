@@ -47,15 +47,18 @@ export class Coder {
   async createVariant({
     variantName,
     variantLevel,
+    templateName,
   }: {
     variantName: string;
     variantLevel: string;
+    templateName?: string;
   }) {
     const variant = new VariantCoder({
       tree: this.tree,
       parent: this,
       name: variantName,
       level: variantLevel,
+      template: templateName,
     });
 
     this.project.variant = variant;

@@ -30,6 +30,7 @@ export async function frontendComponentVariantGenerator(
         level,
         moduleName,
         modelName: entityName,
+        templateName: options.template,
       });
     }
   } else if (options.type === "relation") {
