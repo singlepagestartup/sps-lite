@@ -6,7 +6,7 @@ import { Table as <%= right_schema_table_name %> } from "<%= right_schema_projec
 export const modelName = "<%= module_name_cutted_pascal_cased %><%= relation_name_pascal_cased %>";
 
 const moduleName = "<%= module_name_cutted_snake_cased %>";
-const table = "<%= relation_name_snake_cased %>";
+const table = "<%= table_name %>";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
@@ -15,11 +15,11 @@ export const Table = pgTable(
   {
     id: pgCore.uuid("id").primaryKey().defaultRandom(),
     <%= left_schema_model_name %>Id: pgCore
-      .uuid("<%= left_schema_model_name_snake_cased %>_id")
+      .uuid("<%= left_model_table_uuid_name %>")
       .notNull()
       .references(() => <%= left_schema_table_name %>.id, { onDelete: "cascade" }),
     <%= right_schema_model_name %>Id: pgCore
-      .uuid("<%= right_schema_model_name_snake_cased %>_id")
+      .uuid("<%= right_model_table_uuid_name %>")
       .notNull()
       .references(() => <%= right_schema_table_name %>.id, { onDelete: "cascade" }),
   }

@@ -29,6 +29,9 @@ export class Coder {
   moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
   relationNameStyles: ReturnType<typeof getNameStyles>;
   exportAll: ExportNamedVariables;
+  tableName: string;
+  leftModelTableUuidName: string;
+  rightModelTableUuidName: string;
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
     this.name = "schema";
@@ -59,6 +62,29 @@ export class Coder {
     this.rightModelStyles = rightModelStyles;
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
     this.relationNameStyles = getNameStyles({ name: relationName });
+
+    const tableName = this.relationNameStyles.base;
+
+    if (tableName.length > 10) {
+      const cuttedTableName = getNameStyles({ name: tableName }).snakeCased
+        .baseCutted;
+
+      this.tableName = cuttedTableName;
+    } else {
+      this.tableName = tableName;
+    }
+
+    this.leftModelTableUuidName = `${
+      getNameStyles({
+        name: this.leftModelStyles.snakeCased.base,
+      }).snakeCased.baseCutted
+    }_id`;
+
+    this.rightModelTableUuidName = `${
+      getNameStyles({
+        name: this.rightModelStyles.snakeCased.base,
+      }).snakeCased.baseCutted
+    }_id`;
 
     this.exportAll = new ExportNamedVariables({
       libName: this.baseName,
@@ -91,6 +117,8 @@ export class Coder {
         left_schema_model_name: this.leftModelStyles.propertyCased.base,
         left_schema_model_name_snake_cased:
           this.leftModelStyles.snakeCased.base,
+        left_model_table_uuid_name: this.leftModelTableUuidName,
+        right_model_table_uuid_name: this.rightModelTableUuidName,
         right_schema_project_import_path: rightProjectSchemaImportPath,
         right_schema_table_name: this.rightModelStyles.pascalCased.base,
         right_schema_model_name: this.rightModelStyles.propertyCased.base,
@@ -99,6 +127,7 @@ export class Coder {
         module_name_cutted_snake_cased: this.moduleNameStyles.snakeCased,
         module_name_cutted_pascal_cased: this.moduleNameStyles.pascalCased,
         relation_name_snake_cased: this.relationNameStyles.snakeCased.base,
+        table_name: this.tableName,
         relation_name_pascal_cased: this.relationNameStyles.pascalCased.base,
       },
     });

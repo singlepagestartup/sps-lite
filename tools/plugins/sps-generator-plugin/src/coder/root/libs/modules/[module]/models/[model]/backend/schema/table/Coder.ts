@@ -3,7 +3,9 @@ import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
+import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { replaceInFile } from "../../../../../../../../../../utils/file-utils";
+import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as SchemaCoder } from "../Coder";
 import { comma } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
@@ -21,10 +23,11 @@ export class Coder {
   tree: Tree;
   modelName: string;
   modelNameSnakeCased: string;
-  modelNameSnakeCasedPluralized: string;
-  moduleNameSnakeCased: string;
   moduleAndModelNamePascalCased: string;
+  moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
   project: ProjectConfiguration;
+  tableName: string;
+  modelNameStyles: ReturnType<typeof getNameStyles>;
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
     this.parent = parent;
@@ -32,64 +35,21 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/table`;
     this.tree = tree;
 
-    // // wide-slide -> wide_slides
     const modelName = parent.parent.parent.name;
-    const modelNameSplitted = names(modelName).fileName.split("-");
-    const modelNameSnakeCasedPluralized = modelNameSplitted.reduce(
-      (acc, curr, index) => {
-        if (index === modelNameSplitted.length - 1) {
-          const plural = pluralize(curr);
-          if (index === 0) {
-            return plural;
-          }
 
-          return acc + "_" + plural;
-        }
-
-        if (index === 0) {
-          return curr;
-        }
-
-        return acc + "_" + curr;
-      },
-      "",
-    );
+    const modelNameStyles = getNameStyles({
+      name: modelName,
+    });
+    this.modelNameStyles = modelNameStyles;
 
     const moduleName = parent.parent.parent.parent.parent.name;
-    // sps-website-builder -> sps_w_b
-    // need to place table title to maximum allowed in postgres
-    const moduleNameSnakeCased = names(moduleName)
-      .fileName.split("-")
-      .map((word) => {
-        if (word === "sps") {
-          return word;
-        }
+    this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
 
-        return word.charAt(0);
-      })
-      .join("_");
-
-    // sps-website-builder -> SPSWB
-    const moduleNameCuttedAndPascalCased = moduleName
-      .split("-")
-      .map((word) => {
-        // take only first letter
-        if (word === "sps") {
-          return "SPS";
-        }
-
-        return names(word[0]).className;
-      })
-      .join("");
-
-    const modelNamePascalCased = names(modelName).className;
-
-    // SPSWB + Slide = SPSWBSlide
-    const moduleAndModelNamePascalCased = `${moduleNameCuttedAndPascalCased}${modelNamePascalCased}`;
-
-    this.modelNameSnakeCasedPluralized = modelNameSnakeCasedPluralized;
-    this.moduleNameSnakeCased = moduleNameSnakeCased;
-    this.moduleAndModelNamePascalCased = moduleAndModelNamePascalCased;
+    if (modelNameStyles.snakeCased.base.length > 10) {
+      this.tableName = modelNameStyles.snakeCased.baseCutted;
+    } else {
+      this.tableName = modelNameStyles.snakeCased.base;
+    }
   }
 
   async init() {
@@ -104,9 +64,10 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_name_snake_cased_pluralized: this.modelNameSnakeCasedPluralized,
-        module_name_snake_cased: this.moduleNameSnakeCased,
-        module_and_model_name_pascal_cased: this.moduleAndModelNamePascalCased,
+        table_name: this.tableName,
+        module_name_cutted_snake_cased: this.moduleNameStyles.snakeCased,
+        module_name_cutted_pascal_cased: this.moduleNameStyles.pascalCased,
+        model_name_pascal_cased: this.modelNameStyles.pascalCased.base,
       },
     });
 

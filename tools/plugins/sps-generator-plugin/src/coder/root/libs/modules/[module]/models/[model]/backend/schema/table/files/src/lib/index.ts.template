@@ -3,10 +3,10 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { fields } from "./fields";
 import { variants } from "./variants";
 
-export const modelName = "<%= module_and_model_name_pascal_cased %>";
+export const modelName = "<%= module_name_cutted_pascal_cased %><%= model_name_pascal_cased %>";
 
-const moduleName = "<%= module_name_snake_cased %>";
-const table = "<%= model_name_snake_cased_pluralized %>";
+const moduleName = "<%= module_name_cutted_snake_cased %>";
+const table = "<%= table_name %>";
 
 const pgTable = pgCore.pgTableCreator(
   (name) => `${moduleName}_${name}`,
