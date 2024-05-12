@@ -13,5 +13,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "footer-block";
-export const route = "components/page-blocks.footer-block";
+export const route = "footer-blocks";
 export const populate = modelPopulate;

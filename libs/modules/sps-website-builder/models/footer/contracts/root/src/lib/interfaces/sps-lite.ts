@@ -1,7 +1,7 @@
-export const variants = ["boxed"] as const;
+export const variants = ["default", "boxed"] as const;
 
 export interface IModel {
-  id: number;
+  id: string;
   locale: string;
   title: string;
   uid: string | null;

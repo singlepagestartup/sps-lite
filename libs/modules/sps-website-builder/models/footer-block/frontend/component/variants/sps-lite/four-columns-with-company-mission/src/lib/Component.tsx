@@ -13,13 +13,16 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col gap-4 w-full lg:w-3/12">
-          {props.data.logotype ? (
+          <div className="py-4 items-center justify-center">
+            <p className="text-xl font-bold">Single Page Startup</p>
+          </div>
+          {/* {props.data.logotype ? (
             <Logotype
               isServer={props.isServer}
               variant="default"
               data={props.data.logotype}
             />
-          ) : null}
+          ) : null} */}
           <div className="lg:max-w-xs">
             {props.data.description ? (
               <ReactMarkdown className="text-xs text-gray-300">
@@ -28,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
           </div>
           <div className="w-full flex gap-4">
-            {props.data.extraButtonsArrays?.map((buttonsArray, index) => {
+            {/* {props.data.extraButtonsArrays?.map((buttonsArray, index) => {
               return (
                 <ButtonArrays
                   isServer={props.isServer}
@@ -37,11 +40,11 @@ export function Component(props: IComponentPropsExtended) {
                   data={buttonsArray}
                 />
               );
-            })}
+            })} */}
           </div>
         </div>
         <div className="flex lg:justify-end w-full lg:w-9/12 gap-4">
-          {props.data.buttonsArrays?.map((buttonsArray, index) => {
+          {/* {props.data.buttonsArrays?.map((buttonsArray, index) => {
             return (
               <div key={index} className="w-6/12 lg:w-3/12">
                 <ButtonArrays
@@ -51,7 +54,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
       <div className="mt-8 border-t border-gray-200 pt-4 lg:pt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -60,7 +63,7 @@ export function Component(props: IComponentPropsExtended) {
             {props.data.copyrights}
           </ReactMarkdown>
         ) : null}
-        {props.data.additionalButtonsArrays?.map((buttonsArray, index) => {
+        {/* {props.data.additionalButtonsArrays?.map((buttonsArray, index) => {
           return (
             <ButtonArrays
               isServer={props.isServer}
@@ -69,7 +72,7 @@ export function Component(props: IComponentPropsExtended) {
               data={buttonsArray}
             />
           );
-        })}
+        })} */}
       </div>
     </footer>
   );

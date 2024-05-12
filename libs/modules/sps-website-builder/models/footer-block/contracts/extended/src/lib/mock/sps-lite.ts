@@ -4,7 +4,7 @@ import { spsLiteEntity as logotype } from "@sps/sps-website-builder-models-logot
 
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   logotype: logotype,
   buttonsArrays: [buttonsArray, buttonsArray],

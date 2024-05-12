@@ -1,4 +1,7 @@
-export const variants = ["four-columns-with-company-mission"] as const;
+export const variants = [
+  "default",
+  "four-columns-with-company-mission",
+] as const;
 
 export interface IModel {
   id: string;

@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@sps/shadcn";
+import { variants } from "@sps/sps-website-builder-models-footer-block-contracts";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -23,6 +24,35 @@ export function Component(props: IComponentPropsExtended) {
       data-model="footer-block"
       data-variant={props.variant}
       className={`${props.className || ""}`}
-    ></div>
+    >
+      <div className="flex flex-col gap-6">
+        <FormField
+          control={props.form.control}
+          name="variant"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Variant</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select variant" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {variants.map((variant, index) => {
+                    return (
+                      <SelectItem key={index} value={variant}>
+                        {variant}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+    </div>
   );
 }

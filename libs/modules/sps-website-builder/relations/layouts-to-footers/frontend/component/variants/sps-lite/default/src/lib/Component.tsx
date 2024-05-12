@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as Footer } from "@sps/sps-website-builder-models-footer-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +8,13 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="layouts-to-footers"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className=""
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Relation: layouts-to-footers</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Footer
+        isServer={props.isServer}
+        data={props.data.footer}
+        variant={props.data.footer.variant}
+      />
     </div>
   );
 }

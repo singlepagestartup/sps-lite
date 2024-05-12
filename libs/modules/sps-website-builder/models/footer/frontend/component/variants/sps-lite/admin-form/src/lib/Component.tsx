@@ -33,7 +33,9 @@ export function Component(props: IComponentPropsExtended) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      variant: props.data?.variant || "default",
+    },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {

@@ -3,6 +3,7 @@ import { Component as AdminTable } from "@sps/sps-website-builder-models-footer-
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-select-input";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-form-inputs";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-form";
+
 import { Component as Default } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-default";
 import { Component as FourColumnsWithCompanyMission } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-four-columns-with-company-mission";
 
@@ -12,6 +13,7 @@ export const variants = {
   "admin-select-input": AdminSelectInput,
   "admin-form-inputs": AdminFormInputs,
   "admin-form": AdminForm,
+
   default: Default,
   "four-columns-with-company-mission": FourColumnsWithCompanyMission,
 };

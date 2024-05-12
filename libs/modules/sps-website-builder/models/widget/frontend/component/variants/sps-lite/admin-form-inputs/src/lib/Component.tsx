@@ -16,6 +16,7 @@ import {
 } from "@sps/shadcn";
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 
 const relations = [
   {
@@ -23,6 +24,7 @@ const relations = [
     value: "Hero Section Block",
   },
   { key: "SPSWBWidgetsToNavbarBlocks", value: "Navbar Block" },
+  { key: "SPSWBWidgetsToFooterBlocks", value: "Footer Block" },
 ];
 
 export function Component(props: IComponentPropsExtended) {
@@ -104,6 +106,29 @@ export function Component(props: IComponentPropsExtended) {
               )
             ) : (
               <WidgetsToNavbarBlocksSpsLiteSelectRight
+                isServer={props.isServer}
+                variant="select-right"
+                widgetId={props.data?.id}
+                data={undefined}
+              />
+            )}
+          </TabsContent>
+          <TabsContent value="SPSWBWidgetsToFooterBlocks">
+            {props.data?.SPSWBWidgetsToFooterBlocks.length ? (
+              props.data?.SPSWBWidgetsToFooterBlocks.map(
+                (widgetToFooterBlock, index) => {
+                  return (
+                    <WidgetsToFooterBlocksSpsLiteSelectRight
+                      key={index}
+                      isServer={props.isServer}
+                      variant="select-right"
+                      data={widgetToFooterBlock}
+                    />
+                  );
+                },
+              )
+            ) : (
+              <WidgetsToFooterBlocksSpsLiteSelectRight
                 isServer={props.isServer}
                 variant="select-right"
                 widgetId={props.data?.id}

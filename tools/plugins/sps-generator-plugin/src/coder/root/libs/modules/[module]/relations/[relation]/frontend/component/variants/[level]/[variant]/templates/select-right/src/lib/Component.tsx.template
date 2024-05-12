@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "<%= api_client_import_path %>";
+// import { Component as AdminSelectInput } from "";
 
 const formSchema = z.object({
   // replace with actual schema key
@@ -82,8 +83,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardTitle>Select entity from <%= right_model_name_pluralized %></CardTitle>
         </CardHeader>
         <CardContent>
-            <p>Place AdminSelectInput for right model here</p>
-          {/* <RightModelAdminSelectInput
+          {/* <AdminSelectInput
             isServer={false}
             form={form}
             variant="admin-select-input"

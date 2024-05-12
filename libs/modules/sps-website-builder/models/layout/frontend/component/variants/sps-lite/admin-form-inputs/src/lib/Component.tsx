@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@sps/shadcn";
 import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-component-variants-sps-lite-select-right";
+import { Component as LayoutsToFooterSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -71,17 +72,31 @@ export function Component(props: IComponentPropsExtended) {
           );
         }}
       />
-      {props.data?.SPSWBLayoutsToNavbars.map((layoutsToNavbars, index) => {
+      {props.data?.SPSWBLayoutsToNavbars.map((layoutToNavbar, index) => {
         return (
           <LayoutsToNavbarsSpsLiteSelectRight
             key={index}
             isServer={false}
-            data={layoutsToNavbars}
+            data={layoutToNavbar}
             variant="select-right"
           />
         );
       })}
       <LayoutsToNavbarsSpsLiteSelectRight
+        isServer={false}
+        variant="select-right"
+      />
+      {props.data?.SPSWBLayoutsToFooters.map((layoutToFooter, index) => {
+        return (
+          <LayoutsToFooterSpsLiteSelectRight
+            key={index}
+            isServer={false}
+            data={layoutToFooter}
+            variant="select-right"
+          />
+        );
+      })}
+      <LayoutsToFooterSpsLiteSelectRight
         isServer={false}
         variant="select-right"
       />

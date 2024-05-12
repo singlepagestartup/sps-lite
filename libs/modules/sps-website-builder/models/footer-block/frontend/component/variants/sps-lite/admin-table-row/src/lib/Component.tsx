@@ -15,6 +15,7 @@ import { api } from "@sps/sps-website-builder-models-footer-block-frontend-api-c
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import { Component as AdminForm } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
     >
       <TableCell className="font-medium text-left">{props.data.id}</TableCell>
-      <TableCell></TableCell>
+      <TableCell>{props.data.variant}</TableCell>
       <TableCell></TableCell>
       <TableCell className="flex gap-3 justify-end">
         <Dialog open={open} onOpenChange={setOpen}>
@@ -51,9 +52,11 @@ export function Component(props: IComponentPropsExtended) {
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-3xl p-0">
-            <div className="p-10 flex items-center justify-center">
-              <p className="py-10 text-5xl">Edit entity form here</p>
-            </div>
+            <AdminForm
+              isServer={false}
+              variant="admin-form"
+              data={props.data}
+            />
           </DialogContent>
         </Dialog>
 

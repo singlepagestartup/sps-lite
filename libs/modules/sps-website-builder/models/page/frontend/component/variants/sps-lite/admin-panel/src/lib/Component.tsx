@@ -19,6 +19,7 @@ import { Component as HeroSectionBlockSpsLiteAdminTable } from "@sps/sps-website
 import { Component as NavbarSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table";
 import { Component as FooterSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table";
 import { Component as NavbarBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table";
+import { Component as FooterBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -45,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
                   Hero Section Block
                 </TabsTrigger>
                 <TabsTrigger value="navbar-block">Navbar Block</TabsTrigger>
+                <TabsTrigger value="footer-block">Footer Block</TabsTrigger>
               </TabsList>
 
               <TabsContent value="page">
@@ -82,6 +84,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="navbar-block">
                 <NavbarBlockSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="footer-block">
+                <FooterBlockSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

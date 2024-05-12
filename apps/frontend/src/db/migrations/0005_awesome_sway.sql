@@ -1,0 +1,1 @@
+ALTER TYPE "sps_w_b_footers_variant" ADD VALUE 'boxed';

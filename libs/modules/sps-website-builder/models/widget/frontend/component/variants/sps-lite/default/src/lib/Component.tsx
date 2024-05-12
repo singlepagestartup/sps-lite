@@ -2,6 +2,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component";
+import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -31,6 +32,18 @@ export function Component(props: IComponentPropsExtended) {
               isServer={props.isServer}
               variant="default"
               data={widgetToNavbarBlock}
+            />
+          );
+        },
+      )}
+      {props.data.SPSWBWidgetsToFooterBlocks.map(
+        (widgetToFooterBlock, index) => {
+          return (
+            <WidgetsToFooterBlocks
+              key={index}
+              isServer={props.isServer}
+              variant="default"
+              data={widgetToFooterBlock}
             />
           );
         },

@@ -1,4 +1,12 @@
 export {
+  Table as SPSWBWidgetsToFooterBlocks,
+  Relations as SPSWBWidgetsToFooterBlocksRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-backend-schema";
+export {
+  Table as SPSWBFootersToWidgets,
+  Relations as SPSWBFootersToWidgetsRelations,
+} from "@sps/sps-website-builder-relations-footers-to-widgets-backend-schema";
+export {
   Table as SPSWBWidgetsToNavbarBlocks,
   Relations as SPSWBWidgetsToNavbarBlocksRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-backend-schema";

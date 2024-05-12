@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-footer-contracts";
+import { Component as FootersToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -56,6 +57,20 @@ export function Component(props: IComponentPropsExtended) {
               </FormItem>
             );
           }}
+        />
+        {props.data?.SPSWBFootersToWidgets.map((footerToWidget, index) => {
+          return (
+            <FootersToWidgetsSpsLiteSelectRight
+              key={index}
+              isServer={false}
+              data={footerToWidget}
+              variant="select-right"
+            />
+          );
+        })}
+        <FootersToWidgetsSpsLiteSelectRight
+          isServer={false}
+          variant="select-right"
         />
       </div>
     </div>
