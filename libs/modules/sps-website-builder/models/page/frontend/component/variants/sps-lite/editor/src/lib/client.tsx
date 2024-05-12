@@ -10,7 +10,7 @@ import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindOneQuery({
+    api.rtk.useFindByIdQuery({
       id: props.data.id,
     });
 

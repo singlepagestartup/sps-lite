@@ -25,7 +25,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <FormField
         control={props.form.control}
-        name="heroSectionBlockId"
+        name={props.formFieldName}
         render={({ field }) => (
           <FormItem>
             <FormLabel>Hero Section Block</FormLabel>
@@ -36,10 +36,10 @@ export function Component(props: IComponentPropsExtended) {
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                {props.data.map((heroSectionBlock, index) => {
+                {props.data.map((entity, index) => {
                   return (
-                    <SelectItem key={index} value={heroSectionBlock.id}>
-                      {heroSectionBlock.title}
+                    <SelectItem key={index} value={entity.id}>
+                      {entity[props.renderField || "id"]}
                     </SelectItem>
                   );
                 })}

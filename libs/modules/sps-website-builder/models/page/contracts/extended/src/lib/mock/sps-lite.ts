@@ -4,5 +4,6 @@ import { spsLiteEntity as pageBlock } from "@sps/sps-website-builder-models-hero
 
 export const entity: IModel = {
   ...parentEntity,
-  pageBlocks: [{ ...pageBlock }],
+  SPSWBPagesToLayouts: [],
+  SPSWBPagesToWidgets: [],
 };

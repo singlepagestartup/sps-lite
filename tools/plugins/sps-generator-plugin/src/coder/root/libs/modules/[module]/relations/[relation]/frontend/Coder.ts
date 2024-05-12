@@ -63,7 +63,11 @@ export class Coder {
     await this.project.api.remove();
   }
 
-  async createVariant(props: { variantName: string; variantLevel: string }) {
+  async createVariant(props: {
+    variantName: string;
+    variantLevel: string;
+    templateName?: string;
+  }) {
     await this.project.component.createVariant(props);
   }
 

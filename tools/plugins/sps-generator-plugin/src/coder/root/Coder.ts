@@ -147,6 +147,7 @@ export class Coder {
     variantLevel: string;
     moduleName: string;
     relationName: string;
+    templateName?: string;
   }) {
     await this.project.libs.createRelationFrontendComponentVariant(props);
 

@@ -6,15 +6,15 @@ import {
 } from "@sps/sps-website-builder-models-widget-frontend-api-model";
 
 export const api = {
-  findOne: async ({ id }: { id: number | string }) => {
-    return await utilsFetch.api.findOne<IModelExtended>({
+  findById: async ({ id }: { id: number | string }) => {
+    return await utilsFetch.api.findById<IModelExtended>({
       id,
       model: route,
       populate,
       rootPath: "/api/sps-website-builder",
     });
   },
-  findMany: async () => {
+  find: async () => {
     return await utilsFetch.api.find<IModelExtended>({
       model: route,
       populate,

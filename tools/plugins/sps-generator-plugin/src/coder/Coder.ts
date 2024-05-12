@@ -195,17 +195,20 @@ export class Coder {
     level,
     relationName,
     moduleName,
+    templateName,
   }: {
     name: string;
     level: string;
     relationName: string;
     moduleName: string;
+    templateName?: string;
   }) {
     await this.project.root.createRelationFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
       moduleName,
       relationName,
+      templateName,
     });
   }
 

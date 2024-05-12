@@ -93,6 +93,7 @@ export class Coder {
     variantName: string;
     variantLevel: string;
     relationName: string;
+    templateName?: string;
   }) {
     const { relationName } = props;
 

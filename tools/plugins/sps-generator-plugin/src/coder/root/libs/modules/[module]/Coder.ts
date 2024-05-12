@@ -311,6 +311,7 @@ export class Coder {
     variantName: string;
     variantLevel: string;
     relationName: string;
+    templateName?: string;
   }) {
     await this.setRelatedModels(props.relationName);
 

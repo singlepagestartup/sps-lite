@@ -385,6 +385,7 @@ export const api = {
   fetchBaseQueryBuilder,
   find: findApi,
   findOne: findOneApi,
+  findById: findOneApi,
   create: createApi,
   update: updateApi,
   delete: deleteApi,

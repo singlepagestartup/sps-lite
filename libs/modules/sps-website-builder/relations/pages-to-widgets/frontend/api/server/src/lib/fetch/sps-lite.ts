@@ -6,7 +6,7 @@ import {
 } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-api-model";
 
 export const api = {
-  findOne: async ({ id }: { id: number | string }) => {
+  findById: async ({ id }: { id: number | string }) => {
     return await utilsFetch.api.findOne<IModelExtended>({
       id,
       model: route,
@@ -14,7 +14,7 @@ export const api = {
       rootPath: "/api/sps-website-builder",
     });
   },
-  findMany: async () => {
+  find: async () => {
     return await utilsFetch.api.find<IModelExtended>({
       model: route,
       populate,

@@ -4,19 +4,14 @@ import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
+  Form,
 } from "@sps/shadcn";
 import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
 import { useActionTrigger } from "@sps/hooks";
@@ -24,6 +19,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
+import { Component as PageSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form-inputs";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
@@ -36,20 +32,40 @@ const formSchema = z.object({
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const requiredActions = ["pages-to-layouts", "pages-to-widgets"];
+
+  const [finishedActions, setFinishedActions] = useState<string[]>([]);
 
   useActionTrigger({
     storeName: "sps-website-builder/pages-to-layouts",
     actionFilter: (action) =>
       action.type === "pages-to-layouts/executeMutation/fulfilled",
     callbackFunction: async (action) => {
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-      dispatch(api.rtk.util.invalidateTags(["page"]));
-      await invalidateServerTag({ tag: "page" });
-      router.refresh();
+      setFinishedActions((prev) => [...prev, "pages-to-layouts"]);
     },
   });
+
+  useActionTrigger({
+    storeName: "sps-website-builder/pages-to-widgets",
+    actionFilter: (action) =>
+      action.type === "pages-to-widgets/executeMutation/fulfilled",
+    callbackFunction: async (action) => {
+      setFinishedActions((prev) => [...prev, "pages-to-widgets"]);
+    },
+  });
+
+  useEffect(() => {
+    if (requiredActions.every((action) => finishedActions.includes(action))) {
+      dispatch(api.rtk.util.invalidateTags(["page"]));
+      invalidateServerTag({ tag: "page" }).then(() => {
+        router.refresh();
+
+        if (props.setOpen) {
+          props.setOpen(false);
+        }
+      });
+    }
+  }, [finishedActions]);
 
   const [updatePage, updatePageResult] = api.rtk.useUpdateMutation();
   const [createPage, createPageResult] = api.rtk.useCreateMutation();
@@ -79,13 +95,6 @@ export function Component(props: IComponentPropsExtended) {
     await createPage({ data });
   }
 
-  // useEffect(() => {
-  //   if (updatePageResult.data || createPageResult.data) {
-  //     // console.log(`🚀 ~ useEffect ~ updatePageResult:`, updatePageResult);
-  //     // router.refresh();
-  //   }
-  // }, [updatePageResult, createPageResult]);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -93,42 +102,18 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.className || ""}
     >
-      <Card>
-        <CardHeader>
-          <CardTitle>{props.data?.id ? "Edit" : "Create"} Page</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <FormProvider {...form}>
+      <Form {...form}>
+        <Card>
+          <CardHeader>
+            <CardTitle>{props.data?.id ? "Edit" : "Create"} Page</CardTitle>
+          </CardHeader>
+          <CardContent>
             <div className="flex flex-col gap-3">
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>Title</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Title for page" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-              <FormField
-                control={form.control}
-                name="url"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>URL</FormLabel>
-                      <FormControl>
-                        <Input placeholder="URL for page" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
+              <PageSpsLiteAdminFormInputs
+                isServer={false}
+                variant="admin-form-inputs"
+                data={props.data}
+                form={form}
               />
               <PagesToLayoutsSpsLiteSelectLayout
                 isServer={false}
@@ -140,9 +125,9 @@ export function Component(props: IComponentPropsExtended) {
                 {props.data?.id ? "Save" : "Create"}
               </Button>
             </div>
-          </FormProvider>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </Form>
     </div>
   );
 }

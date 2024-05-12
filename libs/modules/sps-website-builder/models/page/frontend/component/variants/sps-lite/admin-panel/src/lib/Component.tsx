@@ -31,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
             <CardTitle>Content types</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="widget">
+            <Tabs defaultValue="page">
               <TabsList>
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>

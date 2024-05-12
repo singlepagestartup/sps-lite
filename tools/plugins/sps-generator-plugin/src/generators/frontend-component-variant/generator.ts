@@ -47,6 +47,7 @@ export async function frontendComponentVariantGenerator(
         level,
         moduleName,
         relationName: entityName,
+        templateName: options.template,
       });
     }
   }

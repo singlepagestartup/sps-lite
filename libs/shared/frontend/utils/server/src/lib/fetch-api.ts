@@ -247,4 +247,5 @@ export const api = {
   findOne,
   find,
   create,
+  findById: findOne,
 };

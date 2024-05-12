@@ -24,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       heroSectionBlockId: props.data?.heroSectionBlockId,
-      widgetId: props.data?.widgetId,
+      widgetId: props.data?.widgetId || props.widgetId,
     },
   });
 
@@ -86,6 +86,7 @@ export function Component(props: IComponentPropsExtended) {
           <HeroSectionBlockSpsLiteAdminSelectInput
             isServer={false}
             variant="admin-select-input"
+            formFieldName="heroSectionBlockId"
             form={form}
           />
         </CardContent>

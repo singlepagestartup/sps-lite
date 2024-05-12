@@ -3,5 +3,5 @@ import type { IModel } from "../interfaces/sps";
 
 export const entity: IModel = {
   ...spsLiteEntity,
-  variant: "split",
+  variant: "default",
 };

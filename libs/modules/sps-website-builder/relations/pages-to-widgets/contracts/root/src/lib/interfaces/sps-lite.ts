@@ -1,3 +1,5 @@
 export interface IModel {
-  id: number;
+  id: string;
+  pageId: string;
+  widgetId: string;
 }

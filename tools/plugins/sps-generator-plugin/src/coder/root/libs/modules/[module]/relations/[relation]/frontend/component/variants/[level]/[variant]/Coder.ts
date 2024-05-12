@@ -19,6 +19,7 @@ import {
   replaceInFile,
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
+import { stat } from "fs/promises";
 
 export class Coder {
   parent: ComponentCoder;
@@ -39,23 +40,27 @@ export class Coder {
   reduxImportPath: string;
   rootContractsImportPath: string;
   extendedContractsImportPath: string;
+  template: string;
 
   constructor({
     parent,
     tree,
     name,
     level,
+    template,
   }: {
     name: string;
     parent: ComponentCoder;
     tree: Tree;
     level: string;
+    template?: string;
   }) {
     this.name = name;
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
     this.tree = tree;
     this.parent = parent;
+    this.template = template;
 
     const apiClientImportPath =
       this.parent.parent.project.api.project.client.baseName;
@@ -106,18 +111,36 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
+  /**
+   * @todo
+   * Add models to parent
+   * this.parent.parent.parent.parent.parent.project.models[<number>]
+   * for getting their aliased from schema.
+   * It will helps for create templates.
+   */
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+
+    const rightModelNamePluralized =
+      this.parent.parent.parent.parent.parent.project.relations[0].project
+        .relation.rightModelRelationName;
+
+    const templateDirectory = this.template
+      ? path.join(__dirname, `templates/${this.template}`)
+      : path.join(__dirname, `files`);
+
+    await stat(templateDirectory);
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
       tree: this.tree,
-      generateFilesPath: path.join(__dirname, `files`),
+      generateFilesPath: templateDirectory,
       templateParams: {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
+        right_model_name_pluralized: rightModelNamePluralized,
         api_client_import_path: this.apiClientImportPath,
         api_server_import_path: this.apiServerImportPath,
         redux_import_path: this.reduxImportPath,

@@ -209,6 +209,7 @@ export class Coder {
     variantLevel: string;
     moduleName: string;
     relationName: string;
+    templateName?: string;
   }) {
     const { moduleName } = props;
     await this.init({

@@ -149,8 +149,8 @@ async function getPage(params: Params) {
 }
 
 export const api = {
-  findOne: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findOne<IModelExtended>({
+  findById: async ({ id }: { id: string }) => {
+    return await utilsFetch.api.findById<IModelExtended>({
       id,
       model: route,
       populate,
