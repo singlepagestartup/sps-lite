@@ -5,8 +5,9 @@ import { Table as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-
 
 export const modelName = "SPSWBWidgetsToHeroSectionBlocks";
 
-const moduleName = "sps_w_b";
-const table = "widgets_to_hero_section_blocks";
+const moduleName = "spswb";
+// const table = "widgets_to_hero_section_blocks";
+const table = "wstohosnbs";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
@@ -17,7 +18,7 @@ export const Table = pgTable(table, {
     .notNull()
     .references(() => Widget.id, { onDelete: "cascade" }),
   heroSectionBlockId: pgCore
-    .uuid("hero_section_block_id")
+    .uuid("hosnbkid")
     .notNull()
     .references(() => HeroSectionBlock.id, { onDelete: "cascade" }),
 });

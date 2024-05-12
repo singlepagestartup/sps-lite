@@ -1,1 +1,0 @@
-ALTER TYPE "sps_w_b_hero_section_blocks_variant" ADD VALUE 'simple-centered';
