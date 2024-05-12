@@ -1,41 +1,41 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/shared-frontend-utils-client";
-import { IModelExtended, route, tag, populate } from "<%= api_model_import_path %>";
+import { IRelationExtended, route, tag, populate } from "<%= api_model_import_path %>";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/<%= module_name %>`),
   tagTypes: [tag],
   reducerPath: route,
   endpoints: (build) => ({
-    findById: rtk.api.findById<IModelExtended>({
+    findById: rtk.api.findById<IRelationExtended>({
       serviceApi: this,
       build,
       populate,
       model: route,
       rtkType: tag,
     }),
-    find: rtk.api.find<IModelExtended>({
+    find: rtk.api.find<IRelationExtended>({
       serviceApi: this,
       build,
       populate,
       model: route,
       rtkType: tag,
     }),
-    create: rtk.api.create<IModelExtended>({
+    create: rtk.api.create<IRelationExtended>({
       serviceApi: this,
       build,
       populate,
       model: route,
       rtkType: tag,
     }),
-    update: rtk.api.update<IModelExtended>({
+    update: rtk.api.update<IRelationExtended>({
       serviceApi: this,
       build,
       populate,
       model: route,
       rtkType: tag,
     }),
-    delete: rtk.api.delete<IModelExtended>({
+    delete: rtk.api.delete<IRelationExtended>({
       serviceApi: this,
       build,
       populate,

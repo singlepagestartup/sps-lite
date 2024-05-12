@@ -1,11 +1,11 @@
-import type { IModel as IParentModel } from "<%= root_contracts_import_path %>";
+import type { IRelation as IParentRelation } from "<%= root_contracts_import_path %>";
 import {
-  IModel as IParentModelExtended,
+  IRelation as IParentRelationExtended,
   populate as relationPopulate,
 } from "<%= extended_contracts_import_path %>";
 
-export interface IModel extends IParentModel {}
-export interface IModelExtended extends IParentModelExtended {}
+export interface IRelation extends IParentRelation {}
+export interface IRelationExtended extends IParentRelationExtended {}
 
 export const tag = "<%= relation_name %>";
 export const route = "<%= relation_name_pluralized %>";

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-relations-pages-to-navbars-contracts-extended",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}
