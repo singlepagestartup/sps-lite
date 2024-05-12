@@ -65,8 +65,6 @@ export class Coder {
 
     const tableName = this.relationNameStyles.base;
 
-    console.log(`🚀 ~ constructor ~ tableName:`, tableName);
-
     if (tableName.length > 10) {
       const cuttedTableName = getNameStyles({ name: tableName }).snakeCased
         .baseCutted;

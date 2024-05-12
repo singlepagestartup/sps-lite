@@ -1,3 +1,4 @@
+import { relation as navbarBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-navbar-blocks";
 import { relation as navbars } from "@sps/sps-website-builder-models-widget-backend-schema-relations-navbars";
 import { relation as heroSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-hero-section-blocks";
 import { relation as pages } from "@sps/sps-website-builder-models-widget-backend-schema-relations-pages";
@@ -6,6 +7,7 @@ import { Table } from "@sps/sps-website-builder-models-widget-backend-schema-tab
 
 export const Relations = relations(Table, (helpers) => {
   return {
+    ...navbarBlocks(helpers),
     ...navbars(helpers),
     ...heroSectionBlocks(helpers),
     ...pages(helpers),

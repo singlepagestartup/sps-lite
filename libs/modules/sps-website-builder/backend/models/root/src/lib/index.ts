@@ -1,3 +1,6 @@
+import { model as widgetsToNavbarBlocks } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-backend-model";
+import { model as footerBlock } from "@sps/sps-website-builder-models-footer-block-backend-model";
+import { model as navbarBlock } from "@sps/sps-website-builder-models-navbar-block-backend-model";
 import { model as navbarsToWidgets } from "@sps/sps-website-builder-relations-navbars-to-widgets-backend-model";
 import { model as layoutsToNavbars } from "@sps/sps-website-builder-relations-layouts-to-navbars-backend-model";
 import { model as layoutsToFooters } from "@sps/sps-website-builder-relations-layouts-to-footers-backend-model";
@@ -12,6 +15,9 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  widgetsToNavbarBlocks,
+  footerBlock,
+  navbarBlock,
   navbarsToWidgets,
   layoutsToNavbars,
   layoutsToFooters,

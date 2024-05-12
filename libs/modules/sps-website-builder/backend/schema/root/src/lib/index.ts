@@ -1,4 +1,18 @@
 export {
+  Table as SPSWBWidgetsToNavbarBlocks,
+  Relations as SPSWBWidgetsToNavbarBlocksRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-backend-schema";
+export {
+  Table as SPSWBFooterBlock,
+  Relations as SPSWBFooterBlockRelations,
+  VariantEnumTable as SPSWBFooterBlockVariantEnumTable,
+} from "@sps/sps-website-builder-models-footer-block-backend-schema";
+export {
+  Table as SPSWBNavbarBlock,
+  Relations as SPSWBNavbarBlockRelations,
+  VariantEnumTable as SPSWBNavbarBlockVariantEnumTable,
+} from "@sps/sps-website-builder-models-navbar-block-backend-schema";
+export {
   Table as SPSWBNavbarsToWidgets,
   Relations as SPSWBNavbarsToWidgetsRelations,
 } from "@sps/sps-website-builder-relations-navbars-to-widgets-backend-schema";

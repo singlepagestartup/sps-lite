@@ -1,0 +1,12 @@
+{
+  "name": "@sps/sps-website-builder-models-widget-backend-schema-relations-navbar-blocks",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/widget/backend/schema/relations/navbar-blocks/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}
