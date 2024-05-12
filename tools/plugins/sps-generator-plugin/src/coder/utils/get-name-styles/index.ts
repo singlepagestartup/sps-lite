@@ -9,18 +9,18 @@ export function util({ name }: { name: string }) {
     snakeCased: {
       // wide slide -> wide_slide
       base: sanitizedName.replace(/ /g, "_"),
-      // wide slide -> wese
+      // wide slide -> we_se
       baseCutted: sanitizedName
         .split(" ")
         .map((word) => `${word[0]}${word[word.length - 1]}`)
-        .join(""),
+        .join("_"),
       // wide slide -> wide_slides
       pluralized: pluralize(sanitizedName).replace(/ /g, "_"),
-      // wide slide -> wess
+      // wide slide -> we_ss
       pluralizedCutted: pluralize(sanitizedName)
         .split(" ")
         .map((word) => `${word[0]}${word[word.length - 1]}`)
-        .join(""),
+        .join("_"),
     },
     propertyCased: {
       // wide slide -> wideSlide

@@ -5,7 +5,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- CREATE TYPE "sps_w_b_hero_section_blocks_variant" AS ENUM('default', 'split', 'simple-centered');
+ CREATE TYPE "sps_w_b_ho_sn_bs_variant" AS ENUM('default', 'split', 'simple-centered');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -41,12 +41,12 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_footers" (
 	"variant" "sps_w_b_footers_variant" DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_hero_section_blocks" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ho_sn_bs" (
 	"title" text,
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" "sps_w_b_hero_section_blocks_variant" DEFAULT 'default' NOT NULL
+	"variant" "sps_w_b_ho_sn_bs_variant" DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_layouts" (
@@ -57,16 +57,16 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_layouts" (
 	"variant" "sps_w_b_layouts_variant" DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_layouts_to_footers" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ls_to_fs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"layout_id" uuid NOT NULL,
-	"footer_id" uuid NOT NULL
+	"lt_id" uuid NOT NULL,
+	"fr_id" uuid NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_layouts_to_navbars" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ls_to_ns" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"layout_id" uuid NOT NULL,
-	"navbar_id" uuid NOT NULL
+	"lt_id" uuid NOT NULL,
+	"nr_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_navbars" (
@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_navbars" (
 	"variant" "sps_w_b_navbars_variant" DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_navbars_to_widgets" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ns_to_ws" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"navbar_id" uuid NOT NULL,
-	"widget_id" uuid NOT NULL
+	"nr_id" uuid NOT NULL,
+	"wt_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_pages" (
@@ -93,16 +93,16 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_pages" (
 	CONSTRAINT "sps_w_b_pages_url_unique" UNIQUE("url")
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_pages_to_layouts" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ps_to_ls" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"page_id" uuid NOT NULL,
-	"layout_id" uuid NOT NULL
+	"pe_id" uuid NOT NULL,
+	"lt_id" uuid NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_pages_to_widgets" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ps_to_ws" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"page_id" uuid NOT NULL,
-	"widget_id" uuid NOT NULL
+	"pe_id" uuid NOT NULL,
+	"wt_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_widgets" (
@@ -112,80 +112,80 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_widgets" (
 	"variant" "sps_w_b_widgets_variant" DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "spswb_wstohosnbs" (
+CREATE TABLE IF NOT EXISTS "spswb_ws_to_ho_sn_bs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"widget_id" uuid NOT NULL,
-	"hosnbkid" uuid NOT NULL
+	"wt_id" uuid NOT NULL,
+	"ho_sn_bk_id" uuid NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_layouts_to_footers" ADD CONSTRAINT "sps_w_b_layouts_to_footers_layout_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("layout_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ls_to_fs" ADD CONSTRAINT "sps_w_b_ls_to_fs_lt_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("lt_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_layouts_to_footers" ADD CONSTRAINT "sps_w_b_layouts_to_footers_footer_id_sps_w_b_footers_id_fk" FOREIGN KEY ("footer_id") REFERENCES "sps_w_b_footers"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ls_to_fs" ADD CONSTRAINT "sps_w_b_ls_to_fs_fr_id_sps_w_b_footers_id_fk" FOREIGN KEY ("fr_id") REFERENCES "sps_w_b_footers"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_layouts_to_navbars" ADD CONSTRAINT "sps_w_b_layouts_to_navbars_layout_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("layout_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ls_to_ns" ADD CONSTRAINT "sps_w_b_ls_to_ns_lt_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("lt_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_layouts_to_navbars" ADD CONSTRAINT "sps_w_b_layouts_to_navbars_navbar_id_sps_w_b_navbars_id_fk" FOREIGN KEY ("navbar_id") REFERENCES "sps_w_b_navbars"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ls_to_ns" ADD CONSTRAINT "sps_w_b_ls_to_ns_nr_id_sps_w_b_navbars_id_fk" FOREIGN KEY ("nr_id") REFERENCES "sps_w_b_navbars"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_navbars_to_widgets" ADD CONSTRAINT "sps_w_b_navbars_to_widgets_navbar_id_sps_w_b_navbars_id_fk" FOREIGN KEY ("navbar_id") REFERENCES "sps_w_b_navbars"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ns_to_ws" ADD CONSTRAINT "sps_w_b_ns_to_ws_nr_id_sps_w_b_navbars_id_fk" FOREIGN KEY ("nr_id") REFERENCES "sps_w_b_navbars"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_navbars_to_widgets" ADD CONSTRAINT "sps_w_b_navbars_to_widgets_widget_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("widget_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ns_to_ws" ADD CONSTRAINT "sps_w_b_ns_to_ws_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_pages_to_layouts" ADD CONSTRAINT "sps_w_b_pages_to_layouts_page_id_sps_w_b_pages_id_fk" FOREIGN KEY ("page_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ps_to_ls" ADD CONSTRAINT "sps_w_b_ps_to_ls_pe_id_sps_w_b_pages_id_fk" FOREIGN KEY ("pe_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_pages_to_layouts" ADD CONSTRAINT "sps_w_b_pages_to_layouts_layout_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("layout_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ps_to_ls" ADD CONSTRAINT "sps_w_b_ps_to_ls_lt_id_sps_w_b_layouts_id_fk" FOREIGN KEY ("lt_id") REFERENCES "sps_w_b_layouts"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_pages_to_widgets" ADD CONSTRAINT "sps_w_b_pages_to_widgets_page_id_sps_w_b_pages_id_fk" FOREIGN KEY ("page_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ps_to_ws" ADD CONSTRAINT "sps_w_b_ps_to_ws_pe_id_sps_w_b_pages_id_fk" FOREIGN KEY ("pe_id") REFERENCES "sps_w_b_pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_pages_to_widgets" ADD CONSTRAINT "sps_w_b_pages_to_widgets_widget_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("widget_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ps_to_ws" ADD CONSTRAINT "sps_w_b_ps_to_ws_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "spswb_wstohosnbs" ADD CONSTRAINT "spswb_wstohosnbs_widget_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("widget_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "spswb_ws_to_ho_sn_bs" ADD CONSTRAINT "spswb_ws_to_ho_sn_bs_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "spswb_wstohosnbs" ADD CONSTRAINT "spswb_wstohosnbs_hosnbkid_sps_w_b_hero_section_blocks_id_fk" FOREIGN KEY ("hosnbkid") REFERENCES "sps_w_b_hero_section_blocks"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "spswb_ws_to_ho_sn_bs" ADD CONSTRAINT "spswb_ws_to_ho_sn_bs_ho_sn_bk_id_sps_w_b_ho_sn_bs_id_fk" FOREIGN KEY ("ho_sn_bk_id") REFERENCES "sps_w_b_ho_sn_bs"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

@@ -7,18 +7,18 @@ export const modelName = "SPSWBWidgetsToHeroSectionBlocks";
 
 const moduleName = "spswb";
 // const table = "widgets_to_hero_section_blocks";
-const table = "wstohosnbs";
+const table = "ws_to_ho_sn_bs";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
   widgetId: pgCore
-    .uuid("widget_id")
+    .uuid("wt_id")
     .notNull()
     .references(() => Widget.id, { onDelete: "cascade" }),
   heroSectionBlockId: pgCore
-    .uuid("hosnbkid")
+    .uuid("ho_sn_bk_id")
     .notNull()
     .references(() => HeroSectionBlock.id, { onDelete: "cascade" }),
 });

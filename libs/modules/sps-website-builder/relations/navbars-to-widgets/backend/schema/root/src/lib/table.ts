@@ -6,18 +6,18 @@ import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-
 export const modelName = "SPSWBNavbarsToWidgets";
 
 const moduleName = "sps_w_b";
-const table = "navbars_to_widgets";
+const table = "ns_to_ws";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
   navbarId: pgCore
-    .uuid("navbar_id")
+    .uuid("nr_id")
     .notNull()
     .references(() => Navbar.id, { onDelete: "cascade" }),
   widgetId: pgCore
-    .uuid("widget_id")
+    .uuid("wt_id")
     .notNull()
     .references(() => Widget.id, { onDelete: "cascade" }),
 });

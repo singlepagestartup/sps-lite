@@ -6,18 +6,18 @@ import { Table as Footer } from "@sps/sps-website-builder-models-footer-backend-
 export const modelName = "SPSWBLayoutsToFooters";
 
 const moduleName = "sps_w_b";
-const table = "layouts_to_footers";
+const table = "ls_to_fs";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
   layoutId: pgCore
-    .uuid("layout_id")
+    .uuid("lt_id")
     .notNull()
     .references(() => Layout.id, { onDelete: "cascade" }),
   footerId: pgCore
-    .uuid("footer_id")
+    .uuid("fr_id")
     .notNull()
     .references(() => Footer.id, { onDelete: "cascade" }),
 });

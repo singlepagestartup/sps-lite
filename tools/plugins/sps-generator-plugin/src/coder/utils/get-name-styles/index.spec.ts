@@ -20,14 +20,14 @@ describe("get-model-name-variants", () => {
       const name = "wide-slide";
 
       const result = util({ name });
-      expect(result.snakeCased.baseCutted).toBe("wese");
+      expect(result.snakeCased.baseCutted).toBe("we_se");
     });
 
     it("should create wess from wide-slide in .snakeCased.pluralizedCutted", () => {
       const name = "wide-slide";
 
       const result = util({ name });
-      expect(result.snakeCased.pluralizedCutted).toBe("wess");
+      expect(result.snakeCased.pluralizedCutted).toBe("we_ss");
     });
 
     it("should create wide_slides from wide-slide in .snakeCased.pluralized", () => {

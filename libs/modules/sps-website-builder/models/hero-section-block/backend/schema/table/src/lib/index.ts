@@ -6,7 +6,7 @@ import { variants } from "./variants";
 export const modelName = "SPSWBHeroSectionBlock";
 
 const moduleName = "sps_w_b";
-const table = "hero_section_blocks";
+const table = "ho_sn_bs";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
