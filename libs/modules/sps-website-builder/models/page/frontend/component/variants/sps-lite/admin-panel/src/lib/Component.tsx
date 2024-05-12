@@ -17,6 +17,7 @@ import { Component as LayoutSpsLiteAdminTable } from "@sps/sps-website-builder-m
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table";
 import { Component as HeroSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as NavbarSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table";
+import { Component as FooterSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table";
 import { Component as NavbarBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
@@ -33,10 +34,11 @@ export function Component(props: IComponentPropsExtended) {
             <CardTitle>Content types</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="navbar-block">
+            <Tabs defaultValue="footer">
               <TabsList>
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="navbar">Navbar</TabsTrigger>
+                <TabsTrigger value="footer">Footer</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
                 <TabsTrigger value="widget">Widget</TabsTrigger>
                 <TabsTrigger value="hero-section-block">
@@ -50,6 +52,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="navbar">
                 <NavbarSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="footer">
+                <FooterSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

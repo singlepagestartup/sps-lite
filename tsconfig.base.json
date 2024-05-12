@@ -951,6 +951,21 @@
       "@sps/sps-website-builder-models-footer-block-frontend-component": [
         "libs/modules/sps-website-builder/models/footer-block/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
@@ -974,6 +989,21 @@
       ],
       "@sps/sps-website-builder-models-footer-frontend-component": [
         "libs/modules/sps-website-builder/models/footer/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
       "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-boxed": [
         "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/boxed/src/index.ts"
@@ -1871,6 +1901,9 @@
       ],
       "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/layouts-to-footers/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/layouts-to-footers/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-layouts-to-footers-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-footers/frontend/redux/src/index.ts"

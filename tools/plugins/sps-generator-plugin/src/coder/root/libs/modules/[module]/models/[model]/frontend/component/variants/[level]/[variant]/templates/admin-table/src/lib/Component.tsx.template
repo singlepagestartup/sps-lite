@@ -19,6 +19,8 @@ import {
 } from "@sps/shadcn";
 import { IComponentPropsExtended } from "./interface";
 import { PlusIcon } from "@heroicons/react/24/outline";
+// import { Component as AdminForm } from "@sps/sps-website-builder-models-<%= model_name %>-frontend-component-variants-sps-lite-admin-form";
+// import { Component as AdminTableRow } from "@sps/sps-website-builder-models-<%= model_name %>-frontend-component-variants-sps-lite-admin-table-row";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
@@ -45,9 +47,10 @@ export function Component(props: IComponentPropsExtended) {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl p-0">
-                <div className="p-10 flex items-center justify-center">
-                  <p>Edit Block</p>
-                </div>
+                {/* <AdminForm
+                  isServer={false}
+                  variant="admin-form"
+                /> */}
               </DialogContent>
             </Dialog>
           </div>
@@ -64,13 +67,16 @@ export function Component(props: IComponentPropsExtended) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {props.data.map((entity, index) => {
+              {/* {props.data.map((entity, index) => {
                 return (
-                  <div key={index} className="py-2 flex items-center justify-center">
-                    <p>{entity.id}</p>
-                  </div>
+                  <AdminTableRow
+                    key={index}
+                    isServer={false}
+                    variant="admin-table-row"
+                    data={entity}
+                  />
                 );
-              })}
+              })} */}
             </TableBody>
           </Table>
         </CardContent>
