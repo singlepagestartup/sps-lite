@@ -1,4 +1,12 @@
 export {
+  Table as SPSWBLayoutsToNavbars,
+  Relations as SPSWBLayoutsToNavbarsRelations,
+} from "@sps/sps-website-builder-relations-layouts-to-navbars-backend-schema";
+export {
+  Table as SPSWBLayoutsToFooters,
+  Relations as SPSWBLayoutsToFootersRelations,
+} from "@sps/sps-website-builder-relations-layouts-to-footers-backend-schema";
+export {
   Table as SPSWBFooter,
   Relations as SPSWBFooterRelations,
   VariantEnumTable as SPSWBFooterVariantEnumTable,
