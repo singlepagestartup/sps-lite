@@ -2,7 +2,7 @@ import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-s
 import { spsLiteEntity as slider } from "@sps/sps-website-builder-models-slider-contracts";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   slider: slider,
 };

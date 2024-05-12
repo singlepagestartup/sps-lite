@@ -13,5 +13,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "slider-block";
-export const route = "components/page-blocks.slider-block";
+export const route = "slider-blocks";
 export const populate = modelPopulate;

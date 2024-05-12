@@ -1695,6 +1695,9 @@
       "@sps/sps-website-builder-models-slider-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-slider-block-backend-schema-relations-widgets": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/widgets/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-slider-block-backend-schema-table": [
         "libs/modules/sps-website-builder/models/slider-block/backend/schema/table/src/index.ts"
       ],
@@ -1868,6 +1871,9 @@
       ],
       "@sps/sps-website-builder-models-widget-backend-schema-relations-pages": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/pages/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-widget-backend-schema-relations-slider-blocks": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/relations/slider-blocks/src/index.ts"
       ],
       "@sps/sps-website-builder-models-widget-backend-schema-table": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/table/src/index.ts"
@@ -2243,6 +2249,42 @@
       ],
       "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-app": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-schema": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-contracts": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/redux/src/index.ts"
       ],
       "@sps/startup-frontend": [
         "libs/modules/startup/frontend/root/src/index.ts"

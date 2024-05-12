@@ -1,7 +1,7 @@
-export const variants = ["simple"] as const;
+export const variants = ["default", "simple"] as const;
 
 export interface IModel {
-  id: number;
+  id: string;
   __component: "page-blocks.slider-block";
   variant: (typeof variants)[number];
   anchor: string | null;

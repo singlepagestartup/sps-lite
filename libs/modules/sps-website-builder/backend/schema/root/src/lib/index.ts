@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBWidgetsToSliderBlocks,
+  Relations as SPSWBWidgetsToSliderBlocksRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-schema";
+export {
   Table as SPSWBSliderBlock,
   Relations as SPSWBSliderBlockRelations,
   VariantEnumTable as SPSWBSliderBlockVariantEnumTable,

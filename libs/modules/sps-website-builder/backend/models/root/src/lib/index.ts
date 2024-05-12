@@ -1,3 +1,4 @@
+import { model as widgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-model";
 import { model as sliderBlock } from "@sps/sps-website-builder-models-slider-block-backend-model";
 import { model as widgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-backend-model";
 import { model as footersToWidgets } from "@sps/sps-website-builder-relations-footers-to-widgets-backend-model";
@@ -18,6 +19,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  widgetsToSliderBlocks,
   sliderBlock,
   widgetsToFooterBlocks,
   footersToWidgets,
