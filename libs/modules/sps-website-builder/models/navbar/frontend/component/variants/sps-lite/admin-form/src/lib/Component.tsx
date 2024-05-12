@@ -18,8 +18,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as NavbarSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-form-inputs";
+import { variants } from "@sps/sps-website-builder-models-navbar-contracts";
 
-const formSchema = z.object({});
+const formSchema = z.object({
+  variant: z.enum(variants),
+});
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
@@ -30,7 +33,9 @@ export function Component(props: IComponentPropsExtended) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      variant: props.data?.variant || "default",
+    },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {

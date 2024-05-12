@@ -1284,6 +1284,9 @@
       "@sps/sps-website-builder-models-navbar-backend-schema-relations-layouts": [
         "libs/modules/sps-website-builder/models/navbar/backend/schema/relations/layouts/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-navbar-backend-schema-relations-widgets": [
+        "libs/modules/sps-website-builder/models/navbar/backend/schema/relations/widgets/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-navbar-backend-schema-table": [
         "libs/modules/sps-website-builder/models/navbar/backend/schema/table/src/index.ts"
       ],
@@ -1728,6 +1731,9 @@
       "@sps/sps-website-builder-models-widget-backend-schema-relations-hero-section-blocks": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/hero-section-blocks/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-widget-backend-schema-relations-navbars": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/relations/navbars/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-widget-backend-schema-relations-pages": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/pages/src/index.ts"
       ],
@@ -1847,6 +1853,42 @@
       ],
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-backend-app": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-backend-model": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-backend-schema": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-contracts": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/navbars-to-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-pages-to-layouts-backend-app": [
         "libs/modules/sps-website-builder/relations/pages-to-layouts/backend/app/src/index.ts"

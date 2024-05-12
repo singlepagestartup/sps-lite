@@ -3,5 +3,5 @@ import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-n
 
 export const entity: IModel = {
   ...parentEntity,
-  pageBlocks: null,
+  SPSWBNavbarsToWidgets: [],
 };

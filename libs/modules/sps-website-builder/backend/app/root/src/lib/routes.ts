@@ -1,3 +1,4 @@
+import { app as navbarsToWidgets } from "@sps/sps-website-builder-relations-navbars-to-widgets-backend-app";
 import { app as layoutsToNavbars } from "@sps/sps-website-builder-relations-layouts-to-navbars-backend-app";
 import { app as layoutsToFooters } from "@sps/sps-website-builder-relations-layouts-to-footers-backend-app";
 import { app as footer } from "@sps/sps-website-builder-models-footer-backend-app";
@@ -11,6 +12,7 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/navbars-to-widgets": navbarsToWidgets,
   "/layouts-to-navbars": layoutsToNavbars,
   "/layouts-to-footers": layoutsToFooters,
   "/footers": footer,

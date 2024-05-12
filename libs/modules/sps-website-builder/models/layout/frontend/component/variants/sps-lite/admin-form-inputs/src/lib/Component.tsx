@@ -72,10 +72,6 @@ export function Component(props: IComponentPropsExtended) {
         }}
       />
       {props.data?.SPSWBLayoutsToNavbars.map((layoutsToNavbars, index) => {
-        console.log(
-          `🚀 ~ {props.data?.SPSWBLayoutsToNavbars.map ~ layoutsToNavbars:`,
-          layoutsToNavbars,
-        );
         return (
           <LayoutsToNavbarsSpsLiteSelectRight
             key={index}

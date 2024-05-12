@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBNavbarsToWidgets,
+  Relations as SPSWBNavbarsToWidgetsRelations,
+} from "@sps/sps-website-builder-relations-navbars-to-widgets-backend-schema";
+export {
   Table as SPSWBLayoutsToNavbars,
   Relations as SPSWBLayoutsToNavbarsRelations,
 } from "@sps/sps-website-builder-relations-layouts-to-navbars-backend-schema";
