@@ -87,6 +87,7 @@ export function Component(props: IComponentPropsExtended) {
             isServer={false}
             variant="admin-select-input"
             formFieldName="heroSectionBlockId"
+            renderField="title"
             form={form}
           />
         </CardContent>

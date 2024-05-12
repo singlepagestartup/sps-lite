@@ -1,0 +1,5 @@
+import { enitites } from "<%= root_contracts_import_path %>";
+
+export const entity = {
+  ...enitites["sps-lite"],
+};

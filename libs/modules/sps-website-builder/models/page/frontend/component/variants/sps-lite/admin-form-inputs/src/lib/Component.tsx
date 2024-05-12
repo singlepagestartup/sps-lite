@@ -56,26 +56,23 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        {props.data?.SPSWBPagesToWidgets.length ? (
-          props.data?.SPSWBPagesToWidgets.map((entity, index) => {
-            return (
-              <PagesToWidgetsSpsLiteSelectRight
-                key={index}
-                isServer={false}
-                variant="select-right"
-                pageId={props.data?.id}
-                data={entity}
-              />
-            );
-          })
-        ) : (
-          <PagesToWidgetsSpsLiteSelectRight
-            isServer={false}
-            variant="select-right"
-            pageId={props.data?.id}
-            data={undefined}
-          />
-        )}
+        {props.data?.SPSWBPagesToWidgets.map((entity, index) => {
+          return (
+            <PagesToWidgetsSpsLiteSelectRight
+              key={index}
+              isServer={false}
+              variant="select-right"
+              pageId={props.data?.id}
+              data={entity}
+            />
+          );
+        })}
+        <PagesToWidgetsSpsLiteSelectRight
+          isServer={false}
+          variant="select-right"
+          pageId={props.data?.id}
+          data={undefined}
+        />
       </div>
     </div>
   );

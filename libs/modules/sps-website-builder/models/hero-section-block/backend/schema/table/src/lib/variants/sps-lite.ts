@@ -1,1 +1,1 @@
-export const variants = [];
+export const variants = ["split", "simple-centered"];

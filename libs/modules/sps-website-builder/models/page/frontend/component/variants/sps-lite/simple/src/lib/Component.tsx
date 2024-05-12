@@ -4,6 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 import { Component as User } from "@sps/sps-rbac-models-user-frontend-component";
 import { Component as PageSpsLiteEditor } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor";
 import { Component as PagesToLayoutsSpsLiteGetLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-get-layout";
+import { Component as PagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -23,9 +24,16 @@ export function Component(props: IComponentPropsExtended) {
             variant="get-layout"
             data={props.data.SPSWBPagesToLayouts[0]}
           >
-            <div className="w-full py-20 text-center">
-              <h1 className="text-4xl font-bold">{props.data.title}</h1>
-            </div>
+            {props.data.SPSWBPagesToWidgets?.map((widget, index) => {
+              return (
+                <PagesToWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  variant="default"
+                  data={widget}
+                />
+              );
+            })}
           </PagesToLayoutsSpsLiteGetLayout>
         ) : null}
 

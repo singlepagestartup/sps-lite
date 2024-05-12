@@ -1,5 +1,5 @@
-import { IModel } from "<%= root_contracts_import_path %>";
-import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { IRelation } from "<%= root_contracts_import_path %>";
+import { IRelation as IRelationExtended } from "<%= extended_contracts_import_path %>";
 
 export const variant = "<%= variant %>" as const;
 
@@ -12,9 +12,9 @@ export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   // replace to your model key
   leftRelationId?: string;
-  data?: IModel;
+  data?: IRelation;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data?: IModelExtended;
+  data?: IRelationExtended;
 }

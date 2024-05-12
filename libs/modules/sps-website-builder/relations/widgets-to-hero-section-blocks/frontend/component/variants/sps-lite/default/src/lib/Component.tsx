@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,13 +8,13 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="widgets-to-hero-section-blocks"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className=""
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">
-        Relation: widgets-to-hero-section-blocks
-      </p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <HeroSectionBlock
+        isServer={props.isServer}
+        variant={props.data.heroSectionBlock.variant}
+        data={props.data.heroSectionBlock}
+      />
     </div>
   );
 }
