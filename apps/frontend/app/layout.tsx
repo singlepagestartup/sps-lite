@@ -8,6 +8,7 @@ import {
 } from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
 import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
+import { Toaster } from "@sps/shadcn";
 // import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend/lib/redux";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +40,7 @@ export default async function RootLayout({
               </HocParamsProvider>
             </TranslationsContextWrapper> */}
           </Suspense>
+          <Toaster />
         </div>
       </body>
     </html>

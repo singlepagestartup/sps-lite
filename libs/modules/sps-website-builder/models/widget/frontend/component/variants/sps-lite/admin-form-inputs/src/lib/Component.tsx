@@ -17,6 +17,7 @@ import {
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
 
 const relations = [
   {
@@ -25,6 +26,7 @@ const relations = [
   },
   { key: "SPSWBWidgetsToNavbarBlocks", value: "Navbar Block" },
   { key: "SPSWBWidgetsToFooterBlocks", value: "Footer Block" },
+  { key: "SPSWBWidgetsToSliderBlocks", value: "Slider Block" },
 ];
 
 export function Component(props: IComponentPropsExtended) {
@@ -129,6 +131,29 @@ export function Component(props: IComponentPropsExtended) {
               )
             ) : (
               <WidgetsToFooterBlocksSpsLiteSelectRight
+                isServer={props.isServer}
+                variant="select-right"
+                widgetId={props.data?.id}
+                data={undefined}
+              />
+            )}
+          </TabsContent>
+          <TabsContent value="SPSWBWidgetsToSliderBlocks">
+            {props.data?.SPSWBWidgetsToSliderBlock?.length ? (
+              props.data?.SPSWBWidgetsToSliderBlock?.map(
+                (widgetToSliderBlock, index) => {
+                  return (
+                    <WidgetsToSliderBlocksSpsLiteSelectRight
+                      key={index}
+                      isServer={props.isServer}
+                      variant="select-right"
+                      data={widgetToSliderBlock}
+                    />
+                  );
+                },
+              )
+            ) : (
+              <WidgetsToSliderBlocksSpsLiteSelectRight
                 isServer={props.isServer}
                 variant="select-right"
                 widgetId={props.data?.id}

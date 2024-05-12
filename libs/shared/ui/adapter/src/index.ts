@@ -16,6 +16,7 @@ export { Input } from "./lib/input";
 export { FormField } from "./lib/form-field";
 export { Card, type ICardProps } from "./lib/card";
 export { createNotification, NotificationsWrapper } from "./lib/notification";
+export { rtkQueryErrorLogger } from "./lib/rtk-query-error-logger";
 export {
   Table,
   type ICellCompProps,

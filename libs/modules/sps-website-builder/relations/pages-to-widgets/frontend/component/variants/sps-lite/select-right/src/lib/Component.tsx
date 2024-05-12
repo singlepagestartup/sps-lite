@@ -16,6 +16,12 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
 } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,6 +34,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 const formSchema = z.object({
   pageId: z.string().min(1),
   widgetId: z.string().min(1),
+  orderIndex: z.number().int(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -40,6 +47,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       pageId: props.data?.pageId || props.pageId,
+      orderIndex: props.data?.orderIndex || 0,
       widgetId: props.data?.widgetId,
     },
   });
@@ -130,6 +138,31 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </CardHeader>
         <CardContent>
+          <FormField
+            control={form.control}
+            name="orderIndex"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Order Index</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Set widget index"
+                    type="number"
+                    {...field}
+                    onChange={(e) => {
+                      if (!e.target.value) {
+                        field.onChange(0);
+                        return;
+                      }
+
+                      field.onChange(parseInt(e.target.value));
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <WidgetSpsLiteAdminSelectInput
             isServer={false}
             variant="admin-select-input"

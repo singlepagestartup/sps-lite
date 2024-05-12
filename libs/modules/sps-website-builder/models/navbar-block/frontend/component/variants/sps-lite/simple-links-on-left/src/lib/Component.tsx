@@ -7,6 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/shadcn";
+import { toast } from "sonner";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -57,7 +58,15 @@ function DisclosureInner({
                 />
               ) : null} */}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                <Button variant="link">Main page</Button>
+                <Button
+                  variant="link"
+                  onClick={() => {
+                    console.log(toast);
+                    toast("Event has been created.");
+                  }}
+                >
+                  Main page
+                </Button>
                 <Button variant="link">About page</Button>
                 {/* {props.data.buttons?.map((button, index) => {
                   return (

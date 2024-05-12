@@ -46,7 +46,7 @@ export function Component(props: IComponentPropsExtended) {
                   </div>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-3xl p-0">
+              <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
                 <AdminForm isServer={false} variant="admin-form" />
               </DialogContent>
             </Dialog>

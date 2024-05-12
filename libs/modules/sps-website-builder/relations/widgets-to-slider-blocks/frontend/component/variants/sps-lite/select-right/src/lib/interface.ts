@@ -10,8 +10,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  // replace to your model key
-  leftRelationId?: string;
+  widgetId?: string;
   data?: IRelation;
 }
 

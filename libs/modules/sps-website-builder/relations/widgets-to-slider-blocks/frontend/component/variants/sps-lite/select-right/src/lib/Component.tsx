@@ -8,13 +8,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-api-client";
-// import { Component as AdminSelectInput } from "";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-select-input";
 
 const formSchema = z.object({
   // replace with actual schema key
-  leftModelId: z.string().min(1),
+  widgetId: z.string().min(1),
   // replace with actual schema key
-  rightModelId: z.string().min(1),
+  sliderBlockId: z.string().min(1),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -25,15 +25,15 @@ export function Component(props: IComponentPropsExtended) {
     mode: "all",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      leftModelId: props.data?.leftModelId || props.leftModelId,
-      rightModelId: props.data?.rightModelId,
+      widgetId: props.data?.widgetId || props.widgetId,
+      sliderBlockId: props.data?.sliderBlockId,
     },
   });
 
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.leftModelId || !data.rightModelId) {
+    if (!data.widgetId || !data.sliderBlockId) {
       return;
     }
 
@@ -53,14 +53,14 @@ export function Component(props: IComponentPropsExtended) {
 
   useActionTrigger({
     // replace with actual schema name
-    storeName: "sps-website-builder/<left-schema-tag>",
+    storeName: "sps-website-builder/widgets",
     actionFilter: (action) => {
-      return action.type === "<left-schema-tag>/executeMutation/fulfilled";
+      return action.type === "widgets/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
         // replace with actual schema key
-        form.setValue("leftModelId", action.payload.id);
+        form.setValue("widgetId", action.payload.id);
       }
 
       form.handleSubmit(onSubmit)();
@@ -83,12 +83,12 @@ export function Component(props: IComponentPropsExtended) {
           <CardTitle>Select entity from slider-blocks</CardTitle>
         </CardHeader>
         <CardContent>
-          {/* <AdminSelectInput
+          <AdminSelectInput
             isServer={false}
             form={form}
             variant="admin-select-input"
-            formFieldName="rightModelId"
-          /> */}
+            formFieldName="sliderBlockId"
+          />
         </CardContent>
       </Card>
     </div>

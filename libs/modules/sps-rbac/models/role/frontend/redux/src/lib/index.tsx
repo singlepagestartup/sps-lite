@@ -7,6 +7,7 @@ import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
 } from "@sps/store";
+import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-rbac/${api.rtk.reducerPath}`;
 const middlewares = [api.rtk.middleware];
@@ -23,7 +24,8 @@ const store: any = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .prepend(passToGlobalActionsStoreMiddleware.middleware)
-      .concat(middlewares),
+      .concat(middlewares)
+      .concat(rtkQueryErrorLogger),
 });
 
 if (typeof window !== "undefined") {

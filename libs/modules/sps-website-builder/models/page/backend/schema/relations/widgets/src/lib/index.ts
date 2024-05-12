@@ -7,7 +7,7 @@ import {
   Table as RightTable,
   modelName as rightTableModelName,
 } from "@sps/sps-website-builder-models-widget-backend-schema-table";
-import { TableRelationsHelpers } from "drizzle-orm";
+import { TableRelationsHelpers, asc, desc } from "drizzle-orm";
 
 export const config = {
   name: "widgets",
@@ -42,5 +42,6 @@ export const relation = <TTableName extends string>(
 export const populate = {
   [modelName]: {
     with: parentPopulate,
+    orderBy: [asc(config.leftTable.table.orderIndex)],
   },
 };
