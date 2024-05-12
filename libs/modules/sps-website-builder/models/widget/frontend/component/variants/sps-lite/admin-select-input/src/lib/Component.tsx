@@ -39,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
                 {props.data.map((entity, index) => {
                   return (
                     <SelectItem key={index} value={entity.id}>
-                      {entity[props.renderField || "id"]}
+                      {entity[props.renderField || "title"]}
                     </SelectItem>
                   );
                 })}

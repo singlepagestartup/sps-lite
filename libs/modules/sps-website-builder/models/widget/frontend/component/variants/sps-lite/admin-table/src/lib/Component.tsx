@@ -62,8 +62,8 @@ export function Component(props: IComponentPropsExtended) {
             <TableCaption>List of existing widgets</TableCaption>
             <TableHeader>
               <TableRow>
+                <TableHead>ID</TableHead>
                 <TableHead>Title</TableHead>
-                <TableHead></TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
             </TableHeader>

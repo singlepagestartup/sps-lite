@@ -18,12 +18,12 @@ import {
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <form
+    <div
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
-    </form>
+    </div>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 import { IComponentPropsExtended } from "./interface";
+import { Button } from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -46,15 +46,20 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex items-center">
-              {props.data.logotype ? (
+              <div className="py-4 items-center justify-center">
+                <p className="text-3xl font-bold">Single Page Startup</p>
+              </div>
+              {/* {props.data.logotype ? (
                 <Logotype
                   isServer={false}
                   data={props.data.logotype}
                   variant="default"
                 />
-              ) : null}
+              ) : null} */}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                {props.data.buttons?.map((button, index) => {
+                <Button variant="link">Main page</Button>
+                <Button variant="link">About page</Button>
+                {/* {props.data.buttons?.map((button, index) => {
                   return (
                     <Button
                       isServer={false}
@@ -63,11 +68,11 @@ function DisclosureInner({
                       data={button}
                     />
                   );
-                })}
+                })} */}
               </div>
             </div>
             <div className="hidden lg:flex lg:space-x-2 items-center">
-              {props.data.additionalButtons?.map((button, index) => {
+              {/* {props.data.additionalButtons?.map((button, index) => {
                 return (
                   <Button
                     isServer={false}
@@ -76,8 +81,8 @@ function DisclosureInner({
                     data={button}
                   />
                 );
-              })}
-              {props.data.extraButtons?.map((button, index) => {
+              })} */}
+              {/* {props.data.extraButtons?.map((button, index) => {
                 return (
                   <Button
                     isServer={false}
@@ -86,7 +91,7 @@ function DisclosureInner({
                     data={button}
                   />
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>
@@ -104,7 +109,9 @@ function DisclosureInner({
 
       <Disclosure.Panel className="lg:hidden py-2">
         <div className="flex flex-col gap-3 px-2 ">
-          {props.data.buttons?.map((button, index) => {
+          <Button variant="link">Main page</Button>
+          <Button variant="link">About page</Button>
+          {/* {props.data.buttons?.map((button, index) => {
             return (
               <Button
                 isServer={false}
@@ -123,7 +130,7 @@ function DisclosureInner({
                 data={button}
               />
             );
-          })}
+          })} */}
         </div>
       </Disclosure.Panel>
     </>

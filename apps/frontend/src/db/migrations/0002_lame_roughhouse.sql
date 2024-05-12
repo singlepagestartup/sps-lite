@@ -1,0 +1,1 @@
+ALTER TABLE "sps_w_b_widgets" ADD COLUMN "title" text;

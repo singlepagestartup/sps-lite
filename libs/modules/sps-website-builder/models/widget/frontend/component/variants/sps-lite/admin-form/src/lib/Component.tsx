@@ -20,7 +20,9 @@ import { invalidateServerTag } from "@sps/store";
 import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
 import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
 
-const formSchema = z.object({});
+const formSchema = z.object({
+  title: z.string(),
+});
 
 export function Component(props: IComponentPropsExtended) {
   useActionTrigger({
@@ -44,7 +46,9 @@ export function Component(props: IComponentPropsExtended) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      title: props.data?.title || "",
+    },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
