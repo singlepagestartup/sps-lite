@@ -100,6 +100,7 @@ export function Component(props: IComponentPropsExtended) {
               variant="admin-form-inputs"
               variants={variants}
               form={form}
+              data={props.data}
             />
             <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}

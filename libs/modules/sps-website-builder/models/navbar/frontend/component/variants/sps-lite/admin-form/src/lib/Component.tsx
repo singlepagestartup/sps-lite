@@ -1,0 +1,87 @@
+"use client";
+
+import React, { useEffect } from "react";
+import { IComponentPropsExtended } from "./interface";
+import { useRouter } from "next/navigation";
+import { api } from "@sps/sps-website-builder-models-navbar-frontend-api-client";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@sps/shadcn";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useDispatch } from "react-redux";
+import { invalidateServerTag } from "@sps/store";
+import { Component as NavbarSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-form-inputs";
+
+const formSchema = z.object({});
+
+export function Component(props: IComponentPropsExtended) {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
+  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {},
+  });
+
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    if (props.data?.id) {
+      await updateEntity({ id: props.data?.id, data });
+      return;
+    }
+
+    await createEntity({
+      data,
+    });
+  }
+
+  useEffect(() => {
+    if (updateEntityResult.data || createEntityResult.data) {
+      dispatch(api.rtk.util.invalidateTags(["navbar"]));
+      invalidateServerTag({ tag: "navbar" });
+
+      if (props.setOpen) {
+        props.setOpen(false);
+      }
+
+      router.refresh();
+    }
+  }, [updateEntityResult, createEntityResult]);
+
+  return (
+    <div
+      data-module="sps-website-builder"
+      data-model="navbar"
+      data-variant={props.variant}
+      className={props.className || ""}
+    >
+      <Form {...form}>
+        <Card>
+          <CardHeader>
+            <CardTitle>{props.data?.id ? "Edit" : "Create"} navbar</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-6">
+            <NavbarSpsLiteAdminFormInputs
+              isServer={false}
+              variant="admin-form-inputs"
+              form={form}
+              data={props.data}
+            />
+            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+              {props.data?.id ? "Update" : "Create"}
+            </Button>
+          </CardContent>
+        </Card>
+      </Form>
+    </div>
+  );
+}

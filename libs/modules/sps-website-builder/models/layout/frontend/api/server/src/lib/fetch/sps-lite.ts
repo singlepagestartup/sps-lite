@@ -1,14 +1,11 @@
-import {
-  BACKEND_URL,
-  fetch as utilsFetch,
-} from "@sps/shared-frontend-utils-client";
+import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
 import { populate, route, IModelExtended } from "../model";
 import QueryString from "qs";
-import { transformResponseItem } from "@sps/shared-utils";
+import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
 
 export const api = {
-  findOne: async ({ id }: { id: number | string }) => {
-    return await utilsFetch.api.findOne<IModelExtended>({
+  findById: async ({ id }: { id: number | string }) => {
+    return await utilsFetch.api.findById<IModelExtended>({
       id,
       model: route,
       populate,

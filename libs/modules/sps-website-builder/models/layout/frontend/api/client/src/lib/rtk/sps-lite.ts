@@ -18,7 +18,7 @@ export const api = createApi({
       rtkType: tag,
     }),
 
-    findOne: rtk.api.findOne<IModelExtended>({
+    findById: rtk.api.findById<IModelExtended>({
       serviceApi: this,
       build,
       populate,

@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@sps/shadcn";
+import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -69,6 +70,24 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           );
         }}
+      />
+      {props.data?.SPSWBLayoutsToNavbars.map((layoutsToNavbars, index) => {
+        console.log(
+          `🚀 ~ {props.data?.SPSWBLayoutsToNavbars.map ~ layoutsToNavbars:`,
+          layoutsToNavbars,
+        );
+        return (
+          <LayoutsToNavbarsSpsLiteSelectRight
+            key={index}
+            isServer={false}
+            data={layoutsToNavbars}
+            variant="select-right"
+          />
+        );
+      })}
+      <LayoutsToNavbarsSpsLiteSelectRight
+        isServer={false}
+        variant="select-right"
       />
     </form>
   );

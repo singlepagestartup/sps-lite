@@ -7,4 +7,6 @@ export const entity: IModel = {
   topbar: null,
   footer: null,
   navbar: null,
+  SPSWBLayoutsToFooters: [],
+  SPSWBLayoutsToNavbars: [],
 };

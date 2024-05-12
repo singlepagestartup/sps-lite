@@ -1,8 +1,6 @@
-import { Component as Navbar } from "@sps/sps-website-builder-models-navbar-frontend-component";
-import { Component as Sidebar } from "@sps/sps-website-builder-models-sidebar-frontend-component";
-import { Component as Footer } from "@sps/sps-website-builder-models-footer-frontend-component";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Modal } from "@sps/sps-website-builder-models-modal-frontend-component";
+import { Component as LayoutsToNavbars } from "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-component";
+import { Component as LayoutsToFooters } from "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -12,22 +10,27 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={props.data.className || ""}
     >
-      {/* {props.data.navbar ? (
-        <Navbar
-          isServer={props.isServer}
-          variant={props.data.navbar.variant}
-          data={props.data.navbar}
-        />
-      ) : null} */}
+      {props.data.SPSWBLayoutsToNavbars.map((layoutsToNavbars, index) => {
+        return (
+          <LayoutsToNavbars
+            isServer={props.isServer}
+            key={index}
+            variant="default"
+            data={layoutsToNavbars}
+          />
+        );
+      })}
       <div className="w-full mx-auto">{props.children}</div>
-      {/* {props.data.footer ? (
-        <Footer
-          isServer={props.isServer}
-          variant={props.data.footer.variant}
-          data={props.data.footer}
-        />
-      ) : null} */}
-      {/* <Modal isServer={props.isServer} variant="list" /> */}
+      {props.data.SPSWBLayoutsToFooters.map((layoutsToFooters, index) => {
+        return (
+          <LayoutsToFooters
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={layoutsToFooters}
+          />
+        );
+      })}
     </div>
   );
 }

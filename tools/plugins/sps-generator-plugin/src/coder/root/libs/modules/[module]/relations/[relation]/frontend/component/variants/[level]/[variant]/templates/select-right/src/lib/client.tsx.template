@@ -11,7 +11,7 @@ import { api } from "<%= api_client_import_path %>";
 export default function Client(props: IComponentProps) {
   if (props.data) {
     const { data, isFetching, isLoading, isUninitialized } =
-      api.rtk.useFindOneQuery({
+      api.rtk.findById({
         id: props.data.id,
       });
 

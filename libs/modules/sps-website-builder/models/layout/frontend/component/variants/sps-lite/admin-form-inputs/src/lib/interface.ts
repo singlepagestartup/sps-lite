@@ -15,7 +15,10 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   form: UseFormReturn<any>;
+  data?: IModel;
   variants: typeof variants;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {}
+export interface IComponentPropsExtended extends IComponentProps {
+  data?: IModelExtended;
+}

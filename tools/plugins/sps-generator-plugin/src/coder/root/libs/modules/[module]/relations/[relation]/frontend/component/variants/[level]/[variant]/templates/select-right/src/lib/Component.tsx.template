@@ -85,8 +85,9 @@ export function Component(props: IComponentPropsExtended) {
             <p>Place AdminSelectInput for right model here</p>
           {/* <RightModelAdminSelectInput
             isServer={false}
-            variant="admin-select-input"
             form={form}
+            variant="admin-select-input"
+            formFieldName="rightModelId"
           /> */}
         </CardContent>
       </Card>
