@@ -1683,6 +1683,21 @@
       "@sps/sps-website-builder-models-slide-over-frontend-redux": [
         "libs/modules/sps-website-builder/models/slide-over/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-slider-block-backend-app": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-backend-model": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-backend-schema": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/schema/table/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-slider-block-contracts": [
         "libs/modules/sps-website-builder/models/slider-block/contracts/root/src/index.ts"
       ],
@@ -1697,6 +1712,24 @@
       ],
       "@sps/sps-website-builder-models-slider-block-frontend-component": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-simple": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/simple/src/index.ts"
