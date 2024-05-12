@@ -8,7 +8,7 @@ import { Component as Editor } from "@sps/sps-website-builder-models-page-fronte
 import { Component as GetQueryFromUrl } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-query-from-url";
 import { Component as GetUrlModelId } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id";
 import { Component as GetByUrl } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-by-url";
-import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+import { Component as Default } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
 
 export const variants = {
   "admin-form-inputs": AdminFormInputs,
@@ -21,5 +21,5 @@ export const variants = {
   "get-query-from-url": GetQueryFromUrl,
   "get-url-model-id": GetUrlModelId,
   "get-by-url": GetByUrl,
-  simple: Simple,
+  default: Default,
 };

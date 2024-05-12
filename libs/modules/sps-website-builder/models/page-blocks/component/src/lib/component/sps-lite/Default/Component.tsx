@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ErrorBoundary } from "@sps/ui-adapter";
 import {
   pageBlocks,

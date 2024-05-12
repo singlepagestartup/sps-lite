@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="layout"
       data-variant="boxed"
-      className={props.data.className || "py-2"}
+      className={props.data.className || ""}
     >
       {/* {props.data?.navbar ? (
         <Navbar
@@ -19,12 +19,7 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data.navbar}
         />
       ) : null} */}
-      <div className="layout-container border rounded-lg border-gray-200 p-4 relative">
-        <p className="absolute left-2 top-2 text-xs text-gray-400">
-          {props.data.variant}
-        </p>
-        {props.children}
-      </div>
+      <div className="w-full mx-auto max-w-7xl">{props.children}</div>
       {/* {props.data.footer ? (
         <Footer
           isServer={props.isServer}

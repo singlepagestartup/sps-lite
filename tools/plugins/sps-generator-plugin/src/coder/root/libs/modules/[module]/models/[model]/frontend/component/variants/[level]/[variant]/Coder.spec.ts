@@ -19,7 +19,7 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = importPath.onRemove.regex;
 
-      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { Component as AdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 
       export const variants = {
@@ -42,7 +42,7 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = importPath.onRemove.regex;
 
-      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { Component as AdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 
       export const variants = {
@@ -63,7 +63,7 @@ describe("Coder", () => {
 
       const regex = importPath.onRemove.regex;
 
-      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { Component as Admin } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin";
 
       export const variants = {
@@ -87,7 +87,7 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = importPath.onRemove.regex;
 
-      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 
       export type IComponentProps =
@@ -101,7 +101,7 @@ describe("Coder", () => {
     it(`should match the regex 2`, () => {
       const regex = importPath.onRemove.regex;
 
-      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-simple";
+      const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 
       export type IComponentProps = IAdminTableComponentProps | IAdminSelectInputComponentProps | IAdminFormComponentProps;`;

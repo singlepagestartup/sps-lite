@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
     <section
       data-module="sps-website-builder"
       data-model="page"
-      data-variant="simple"
+      data-variant="default"
     >
       {props.isEditing ? (
         <PageSpsLiteEditor {...props} variant="editor" />
