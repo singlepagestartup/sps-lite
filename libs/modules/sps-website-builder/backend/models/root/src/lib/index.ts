@@ -1,3 +1,5 @@
+import { model as footer } from "@sps/sps-website-builder-models-footer-backend-model";
+import { model as navbar } from "@sps/sps-website-builder-models-navbar-backend-model";
 import { model as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-backend-model";
 import { model as heroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-backend-model";
 import { model as pagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-model";
@@ -7,6 +9,8 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  footer,
+  navbar,
   widgetsToHeroSectionBlocks,
   heroSectionBlock,
   pagesToWidgets,

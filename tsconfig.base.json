@@ -903,6 +903,21 @@
       "@sps/sps-website-builder-models-font-frontend-redux": [
         "libs/modules/sps-website-builder/models/font/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-footer-backend-app": [
+        "libs/modules/sps-website-builder/models/footer/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-backend-model": [
+        "libs/modules/sps-website-builder/models/footer/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-backend-schema": [
+        "libs/modules/sps-website-builder/models/footer/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/footer/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/footer/backend/schema/table/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-footer-block-contracts": [
         "libs/modules/sps-website-builder/models/footer-block/contracts/root/src/index.ts"
       ],
@@ -941,6 +956,9 @@
       ],
       "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-boxed": [
         "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/boxed/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-footer-frontend-redux": [
         "libs/modules/sps-website-builder/models/footer/frontend/redux/src/index.ts"
@@ -1242,6 +1260,21 @@
       "@sps/sps-website-builder-models-modal-frontend-redux": [
         "libs/modules/sps-website-builder/models/modal/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-navbar-backend-app": [
+        "libs/modules/sps-website-builder/models/navbar/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-backend-model": [
+        "libs/modules/sps-website-builder/models/navbar/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-backend-schema": [
+        "libs/modules/sps-website-builder/models/navbar/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/navbar/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/navbar/backend/schema/table/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-navbar-block-contracts": [
         "libs/modules/sps-website-builder/models/navbar-block/contracts/root/src/index.ts"
       ],
@@ -1283,6 +1316,9 @@
       ],
       "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-boxed": [
         "libs/modules/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/boxed/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-navbar-frontend-redux": [
         "libs/modules/sps-website-builder/models/navbar/frontend/redux/src/index.ts"
@@ -1362,6 +1398,9 @@
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table-row": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/editor/src/index.ts"
       ],
@@ -1373,9 +1412,6 @@
       ],
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id": [
         "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/get-url-model-id/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/models/page/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-page-frontend-redux": [
         "libs/modules/sps-website-builder/models/page/frontend/redux/src/index.ts"

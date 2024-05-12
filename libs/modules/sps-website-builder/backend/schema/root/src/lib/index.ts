@@ -1,4 +1,14 @@
 export {
+  Table as SPSWBFooter,
+  Relations as SPSWBFooterRelations,
+  VariantEnumTable as SPSWBFooterVariantEnumTable,
+} from "@sps/sps-website-builder-models-footer-backend-schema";
+export {
+  Table as SPSWBNavbar,
+  Relations as SPSWBNavbarRelations,
+  VariantEnumTable as SPSWBNavbarVariantEnumTable,
+} from "@sps/sps-website-builder-models-navbar-backend-schema";
+export {
   Table as SPSWBWidgetsToHeroSectionBlocks,
   Relations as SPSWBWidgetsToHeroSectionBlocksRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-backend-schema";
