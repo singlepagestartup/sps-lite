@@ -13,5 +13,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "navbar-block";
-export const route = "components/page-blocks.navbar-block";
+export const route = "navbar-blocks";
 export const populate = modelPopulate;
