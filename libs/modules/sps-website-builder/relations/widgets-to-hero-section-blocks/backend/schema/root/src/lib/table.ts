@@ -5,8 +5,7 @@ import { Table as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-
 
 export const modelName = "SPSWBWidgetsToHeroSectionBlocks";
 
-const moduleName = "spswb";
-// const table = "widgets_to_hero_section_blocks";
+const moduleName = "sps_w_b";
 const table = "ws_to_ho_sn_bs";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
