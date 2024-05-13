@@ -1,5 +1,0 @@
-{
-  "framework": "nextjs",
-  "installCommand": "npm install",
-  "buildCommand": "NODE_ENV=production node theme.js && next build"
-}

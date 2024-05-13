@@ -1,0 +1,45 @@
+{
+  "id": "0fe6787a-3c8a-4c51-a15a-d6c22a660658",
+  "title": "New Page",
+  "description": "Do we have any viable alternatives? With the rising popularity of microservices and API-first approaches comes a new and popular solution — Headless CMS.",
+  "createdAt": "2024-04-29T01:53:32.753Z",
+  "updatedAt": "2024-04-29T01:53:32.753Z",
+  "PagesToLayouts": [
+    {
+      "pageId": "0fe6787a-3c8a-4c51-a15a-d6c22a660658",
+      "layoutId": "fe413632-808e-41a0-80a8-158f385ff705",
+      "page": {
+        "id": "0fe6787a-3c8a-4c51-a15a-d6c22a660658",
+        "title": "New Page",
+        "description": "Do we have any viable alternatives? With the rising popularity of microservices and API-first approaches comes a new and popular solution — Headless CMS.",
+        "createdAt": "2024-04-29T01:53:32.753Z",
+        "updatedAt": "2024-04-29T01:53:32.753Z"
+      },
+      "layout": {
+        "id": "fe413632-808e-41a0-80a8-158f385ff705",
+        "title": "Layout",
+        "description": "Description",
+        "createdAt": "2024-04-29T22:21:33.563Z",
+        "updatedAt": "2024-04-29T22:21:33.563Z"
+      }
+    },
+    {
+      "pageId": "0fe6787a-3c8a-4c51-a15a-d6c22a660658",
+      "layoutId": "54df3a52-6059-4d9a-a5c1-470ad4b93364",
+      "page": {
+        "id": "0fe6787a-3c8a-4c51-a15a-d6c22a660658",
+        "title": "New Page",
+        "description": "Do we have any viable alternatives? With the rising popularity of microservices and API-first approaches comes a new and popular solution — Headless CMS.",
+        "createdAt": "2024-04-29T01:53:32.753Z",
+        "updatedAt": "2024-04-29T01:53:32.753Z"
+      },
+      "layout": {
+        "id": "54df3a52-6059-4d9a-a5c1-470ad4b93364",
+        "title": "Layout 2",
+        "description": "Description",
+        "createdAt": "2024-04-29T23:24:54.923Z",
+        "updatedAt": "2024-04-29T23:24:54.923Z"
+      }
+    }
+  ]
+}

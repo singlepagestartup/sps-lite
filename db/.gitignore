@@ -1,6 +1,0 @@
-db_data
-node_modules
-.DS_Store
-.node_history
-package-lock.json
-.env

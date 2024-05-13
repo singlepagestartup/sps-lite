@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "plugin:@nx/react",
+    "../../../../../../../../../../.eslintrc.json"
+  ]
+}

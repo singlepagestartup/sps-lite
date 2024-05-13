@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-ecommerce-models-attribute-key-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/attribute-key/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {},
+    "lint": {}
+  }
+}

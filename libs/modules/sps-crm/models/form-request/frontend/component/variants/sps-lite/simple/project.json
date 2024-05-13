@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-crm-models-form-request-frontend-component-variants-sps-lite-simple",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/form-request/frontend/component/variants/sps-lite/simple/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

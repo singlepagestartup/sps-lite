@@ -9,7 +9,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -31,5 +32,6 @@
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Default Dark+",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "liveshare.accessibility.soundsEnabled": false
 }

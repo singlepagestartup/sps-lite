@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-page-blocks-component",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/page-blocks/component/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

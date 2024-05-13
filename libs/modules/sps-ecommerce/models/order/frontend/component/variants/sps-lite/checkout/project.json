@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-ecommerce-models-order-frontend-component-variants-sps-lite-checkout",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/order/frontend/component/variants/sps-lite/checkout/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

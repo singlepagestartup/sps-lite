@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-crm-frontend-components",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/frontend/components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test": {}
+  }
+}

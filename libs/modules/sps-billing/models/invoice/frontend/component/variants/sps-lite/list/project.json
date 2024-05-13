@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-list",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/list/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

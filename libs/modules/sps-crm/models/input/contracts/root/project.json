@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-crm-models-input-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/input/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {},
+    "lint": {}
+  }
+}

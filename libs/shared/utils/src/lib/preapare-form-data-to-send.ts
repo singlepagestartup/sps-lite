@@ -1,4 +1,4 @@
-const R = require("ramda");
+import * as R from "ramda";
 
 export function appendFilesToFormData(formData: any, files: any) {
   if (Object.keys(files).length) {
@@ -17,20 +17,19 @@ export function appendFilesToFormData(formData: any, files: any) {
 export function prepareFormDataToSend(params: any) {
   const { data, files } = params;
 
-  let passData = { ...data };
-  delete passData.files;
+  const passData = { ...data };
+  console.log(`🚀 ~ prepareFormDataToSend ~ passData:`, passData);
+  // delete passData.files;
 
-  if (files) {
-    for (const key of Object.keys(files)) {
-      const delPath = key.replaceAll("[", ".")?.replaceAll("]", "")?.split(".");
+  // if (files) {
+  //   for (const key of Object.keys(files)) {
+  //     const delPath = key.replaceAll("[", ".")?.replaceAll("]", "")?.split(".");
 
-      const cleared = delByPath({ ...passData }, delPath);
+  //     const cleared = delByPath({ ...passData }, delPath);
 
-      // console.log("🚀 ~ prepareFormDataToSend ~ cleared", cleared);
-
-      passData = cleared;
-    }
-  }
+  //     passData = cleared;
+  //   }
+  // }
 
   const formData = new FormData();
   formData.append("data", JSON.stringify(passData));
@@ -38,8 +37,6 @@ export function prepareFormDataToSend(params: any) {
   if (files) {
     appendFilesToFormData(formData, files);
   }
-
-  // console.log("🚀 ~ prepareFormDataToSend ~ passData", passData, files);
 
   return formData;
 }

@@ -18,6 +18,7 @@ function makeConfig() {
 
   let config = {
     reactStrictMode: false,
+    compress: true,
     images: {
       unoptimized: true,
       domains: [
@@ -45,7 +46,6 @@ function makeConfig() {
         },
       ],
     },
-    trailingSlash: true,
   };
 
   if (serverEnvironment === "icp") {

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-default",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/default/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

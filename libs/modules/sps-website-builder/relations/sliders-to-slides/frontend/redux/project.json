@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-website-builder-relations-sliders-to-slides-frontend-redux",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/relations/sliders-to-slides/frontend/redux/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

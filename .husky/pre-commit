@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"
 
 # cd ./db && ./dump.sh && git add .
 
-# npx lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
+npx lint-staged --concurrent false --relative

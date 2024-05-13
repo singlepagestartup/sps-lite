@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-page-blocks-contracts",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/page-blocks/contracts/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // "outDir": "dist",
+    // "rootDir": ".",
+    "allowJs": true,
+    "composite": true,
+    "declaration": true,
+    "sourceMap": true,
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", "strapi-server.js"],
+  "exclude": ["admin/", "**/*.spec.ts"]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-topbar-frontend-component",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/topbar/frontend/component/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

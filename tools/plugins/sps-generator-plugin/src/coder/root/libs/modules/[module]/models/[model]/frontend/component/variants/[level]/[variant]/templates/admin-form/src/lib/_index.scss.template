@@ -1,0 +1,6 @@
+[data-module="<%= module_name %>"] {  
+  &[data-model="<%= model_name %>"] {
+    &[data-variant="<%= variant %>"] {
+    }
+  }
+}

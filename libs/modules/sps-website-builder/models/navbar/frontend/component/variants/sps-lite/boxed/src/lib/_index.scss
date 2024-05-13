@@ -1,0 +1,11 @@
+[data-module="sps-website-builder"] {
+  &[data-model="navbar"] {
+    &[data-variant="boxed"] {
+      @apply bg-white border-b border-input w-screen z-30 fixed;
+
+      .navbar-container {
+        @apply w-full mx-auto max-w-7xl;
+      }
+    }
+  }
+}

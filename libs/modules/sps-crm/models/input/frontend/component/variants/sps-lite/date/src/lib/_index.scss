@@ -1,0 +1,18 @@
+[data-module="sps-crm"] {
+  &[data-model="elements.input"] {
+    .input-label {
+      @apply block mb-1;
+    }
+
+    .input-error {
+      @apply absolute;
+
+      p {
+        @apply text-red-500 text-xs pt-1;
+      }
+    }
+
+    &[data-variant="date"] {
+    }
+  }
+}

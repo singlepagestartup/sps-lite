@@ -1,0 +1,124 @@
+{
+  "id": 9,
+  "title": "Page d'accueil",
+  "url": "/",
+  "createdAt": "2024-02-01T09:01:22.496Z",
+  "updatedAt": "2024-02-24T15:20:53.557Z",
+  "publishedAt": "2024-01-12T23:28:07.163Z",
+  "locale": "fr",
+  "localizations": [
+    {
+      "id": 1,
+      "title": "Main page",
+      "url": "/",
+      "createdAt": "2024-02-01T09:01:22.410Z",
+      "updatedAt": "2024-02-24T15:20:53.500Z",
+      "publishedAt": "2023-04-08T12:06:05.277Z",
+      "locale": "en"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.hero-section-block",
+      "id": 24,
+      "title": "Démarrez votre Lean Startup avec un Boilerplate convivial pour les développeurs",
+      "description": "Passez moins de temps à la configuration et plus de temps à créer votre produit innovant grâce à notre modèle prêt à l'emploi et riche en fonctionnalités, conçu pour les développeurs de startups Lean.",
+      "variant": "simple-centered",
+      "anchor": null,
+      "class_name": "pt-16",
+      "media": [
+        {
+          "id": 182,
+          "name": "preview.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 2050,
+          "height": 1286,
+          "formats": {
+            "large": {
+              "ext": ".png",
+              "url": "/uploads/large_preview_6f106004a9.png",
+              "hash": "large_preview_6f106004a9",
+              "mime": "image/png",
+              "name": "large_preview.png",
+              "path": null,
+              "size": 221.64,
+              "width": 1000,
+              "height": 627
+            },
+            "small": {
+              "ext": ".png",
+              "url": "/uploads/small_preview_6f106004a9.png",
+              "hash": "small_preview_6f106004a9",
+              "mime": "image/png",
+              "name": "small_preview.png",
+              "path": null,
+              "size": 67.83,
+              "width": 500,
+              "height": 314
+            },
+            "medium": {
+              "ext": ".png",
+              "url": "/uploads/medium_preview_6f106004a9.png",
+              "hash": "medium_preview_6f106004a9",
+              "mime": "image/png",
+              "name": "medium_preview.png",
+              "path": null,
+              "size": 131.31,
+              "width": 750,
+              "height": 470
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "/uploads/thumbnail_preview_6f106004a9.png",
+              "hash": "thumbnail_preview_6f106004a9",
+              "mime": "image/png",
+              "name": "thumbnail_preview.png",
+              "path": null,
+              "size": 22.03,
+              "width": 245,
+              "height": 154
+            }
+          },
+          "hash": "preview_6f106004a9",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 130.44,
+          "url": "/uploads/preview_6f106004a9.png",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "folderPath": "/",
+          "createdAt": "2024-02-09T15:15:01.360Z",
+          "updatedAt": "2024-02-09T15:15:01.360Z"
+        }
+      ],
+      "buttons": [
+        {
+          "id": 114,
+          "url": "https://github.com/singlepagestartup/sps-lite",
+          "description": "",
+          "variant": "primary",
+          "title": "Commencez gratuitement",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        }
+      ],
+      "additional_media": null
+    }
+  ],
+  "layout": {
+    "id": 3,
+    "title": "Mise en page publique",
+    "uid": "mise-en-page-publique",
+    "variant": "wide",
+    "class_name": "[&>.layout-container]:pt-16",
+    "createdAt": "2024-02-01T09:01:22.307Z",
+    "updatedAt": "2024-02-09T15:14:39.973Z",
+    "publishedAt": "2024-01-12T23:28:53.035Z",
+    "locale": "fr"
+  }
+}

@@ -1,15 +1,31 @@
-package-lock.json
-yarn.lock
-node_modules
+############################
+# Next.js
+############################
 .next
-.env
-.env.local
-.dfx
 out
+build
+.env
+.env*.local
+.env*.testing
+.vercel
+next-env.d.ts
+
+############################
+# Testing
+############################
+coverage
+
+############################
+# ICP
+############################
+.dfx
 *.key
 *.pem
+*.pem.base64
 *-wallet.txt
 .env.cloudflare
-coverage
-playwright-report
-**/artifacts
+
+############################
+# Sentry
+############################
+.sentryclirc

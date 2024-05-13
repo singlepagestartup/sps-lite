@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-file-storage-frontend-components",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-file-storage/frontend/components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test": {}
+  }
+}

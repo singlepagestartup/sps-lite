@@ -1,0 +1,22 @@
+import { IModel } from "<%= root_contracts_import_path %>";
+import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { UseFormReturn } from "react-hook-form";
+
+export const variant = "<%= variant %>" as const;
+
+export interface IComponentBase {
+  showSkeletons?: boolean;
+  isServer: boolean;
+}
+
+export interface IComponentProps extends IComponentBase {
+  variant: typeof variant;
+  formFieldName: string;
+  form: UseFormReturn<any>;
+  renderField?: keyof IModel;
+  className?: string;
+}
+
+export interface IComponentPropsExtended extends IComponentProps {
+  data: IModelExtended[];
+}

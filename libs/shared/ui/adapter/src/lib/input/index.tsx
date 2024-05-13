@@ -2,17 +2,19 @@
 
 import React, {
   ChangeEvent,
+  FC,
   HTMLInputTypeAttribute,
   forwardRef,
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 // import type { IModel as IBackendFile } from "~redux/services/backend/extensions/upload/api/file/interfaces";
 import { useController, useFormContext } from "react-hook-form";
 // import { useTranslations } from "@sps/hooks";
 import useGetFilteredInputProps from "./use-get-filtered-input-props";
-import { downloadBackendUploadFile } from "@sps/utils";
+import { downloadBackendUploadFile } from "@sps/shared-frontend-utils-client";
 import TextInput from "./text";
 import RadioInput from "./radio-group";
 import SelectInput from "./select";
@@ -55,7 +57,10 @@ export interface Props {
   multiple?: boolean;
   ui: "sps" | "shadcn";
   options?: any;
-  by?: string;
+  by?: any;
+  renderOptionValue?: (option: any) => string;
+  htmlNodeId?: string;
+  OptionComp?: FC<any>;
 }
 
 type RequiredInputProps = Props & {
@@ -67,6 +72,7 @@ type RequiredInputProps = Props & {
   "data-ui": "input";
   value: any;
   placeholder?: string;
+  setLocalRef?: any;
 };
 
 export type ExtendedInputProps<T> = RequiredInputProps &
@@ -86,7 +92,9 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const [localRef, setLocalRef] = useState<any | null>(null);
   const translate: any = null;
+  const [isClient, setIsClient] = useState(false);
 
   const translatedLabel: string = useMemo(() => {
     return typeof translate === "function" && label ? translate(label) : label;
@@ -110,6 +118,12 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
 
   const ctxProps = useFormContext();
   const { control, setValue } = ctxProps;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
+  }, []);
 
   const getDefaultValue = (props: Props) => {
     if (["select", "radio"].includes(props.type)) {
@@ -136,9 +150,16 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     defaultValue: getDefaultValue(props),
   });
 
-  const htmlNodeId: string = useMemo(() => {
-    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
-  }, [name]);
+  const htmlNodeId: string | undefined = useMemo(() => {
+    if (props.htmlNodeId) {
+      return props.htmlNodeId;
+    }
+
+    return (
+      name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_") +
+      `${Math.random().toString(36).substring(7)}`
+    );
+  }, [name, props]);
 
   async function setInitFiles(initialValue: any) {
     // second and other rerenders in repeatable
@@ -146,7 +167,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       return;
     }
 
-    if (!inputRef?.current?.files || Object.keys(initialValue).length === 0) {
+    if (!localRef?.current?.files || Object.keys(initialValue).length === 0) {
       return;
     }
 
@@ -167,18 +188,18 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
       initialFiles.push(file);
     }
 
-    inputRef.current.files = dataTransfer.files;
+    localRef.current.files = dataTransfer.files;
     const evt = new InputEvent("change");
-    inputRef.current.dispatchEvent(evt);
+    localRef.current.dispatchEvent(evt);
     onChange(evt);
   }
 
   useEffect(() => {
     if (["text", "range"].includes(type)) {
-      if (initialValue !== undefined && inputRef?.current) {
+      if (initialValue !== undefined && localRef?.current) {
         const evt = new Event("change");
-        inputRef.current.value = initialValue;
-        inputRef.current.dispatchEvent(evt);
+        localRef.current.value = initialValue;
+        localRef.current.dispatchEvent(evt);
         const target = evt.target as HTMLInputElement | HTMLTextAreaElement;
 
         if (valueAsNumber) {
@@ -196,10 +217,10 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         }
       }
     } else if (["select", "radio"].includes(type)) {
-      if (initialValue !== undefined && inputRef?.current) {
+      if (initialValue !== undefined && localRef?.current) {
         const evt = new Event("change");
-        inputRef.current.value = initialValue;
-        inputRef.current.dispatchEvent(evt);
+        localRef.current.value = initialValue;
+        localRef.current.dispatchEvent(evt);
         onChange(evt);
       }
     } else if (["checkbox"].includes(type)) {
@@ -216,11 +237,11 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     } else if (["date"].includes(type)) {
       setValue(name, initialValue);
     } else if (["file"].includes(type)) {
-      if (initialValue && inputRef.current) {
+      if (initialValue && localRef?.current) {
         setInitFiles(initialValue);
       }
     }
-  }, [JSON.stringify(initialValue), inputRef?.current]);
+  }, [name, JSON.stringify(initialValue), inputRef, localRef]);
 
   /**
    * If using in repeatable component
@@ -240,8 +261,6 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   const passProps = useGetFilteredInputProps(props);
 
   function onFileInputChange(e: ChangeEvent | Event, files: File[]) {
-    console.log("🚀 ~ onFileInputChange ~ files:", files);
-
     const uploadFiles = ctxProps.getValues("files");
 
     ctxProps.setValue("files", {
@@ -282,8 +301,18 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
     ...additionalAttributes,
   };
 
+  if (!isClient) {
+    return <></>;
+  }
+
   if (props.type === "text") {
-    return <TextInput {...toComponentProps} ref={inputRef} />;
+    return (
+      <TextInput
+        {...toComponentProps}
+        ref={inputRef}
+        setLocalRef={setLocalRef}
+      />
+    );
   }
 
   if (props.type === "select") {
@@ -293,6 +322,8 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         ref={inputRef}
         options={props.options ?? []}
         by={props.by ?? "title"}
+        renderOptionValue={props.renderOptionValue}
+        setLocalRef={setLocalRef}
       />
     );
   }
@@ -308,6 +339,9 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
         ref={inputRef}
         options={props.options ?? []}
         by={props.by ?? "title"}
+        OptionComp={props.OptionComp}
+        renderOptionValue={props.renderOptionValue}
+        setLocalRef={setLocalRef}
       />
     );
   }
@@ -321,7 +355,13 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, passedRef) => {
   }
 
   if (props.type === "file") {
-    return <FileInput {...toComponentProps} ref={inputRef} />;
+    return (
+      <FileInput
+        {...toComponentProps}
+        ref={inputRef}
+        setLocalRef={setLocalRef}
+      />
+    );
   }
 
   // return (

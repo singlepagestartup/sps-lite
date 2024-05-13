@@ -1,0 +1,7 @@
+{
+  "sps-import-component": {
+    "prefix": ["spsimpcmp", "sic"],
+    "body": ["import { Component as $2 } from \"$1\";", ""],
+    "description": "Import component in sps generator style",
+  },
+}

@@ -3,18 +3,59 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/frontend",
   "projectType": "application",
+  "tags": [],
   "targets": {
-    "build-theme": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "db:prepare": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "apps/frontend/.theme",
-        "main": "apps/frontend/theme.ts",
-        "tsConfig": "apps/frontend/tsconfig.theme.json",
-        "rootDir": ".",
-        "transformers": [
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
           {
-            "name": "typescript-transform-paths/nx-transformer"
+            "command": "drizzle-kit generate:pg --config ./src/db/config.ts"
+          },
+          {
+            "command": "bun run ./src/db/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "drizzle-kit drop --config ./src/db/config.ts"
+          },
+          {
+            "command": "bun run ./src/db/drop.ts"
+          }
+        ]
+      }
+    },
+    "db:seed": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["db:prepare"],
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun run src/db/seed.ts"
+          }
+        ]
+      }
+    },
+    "db:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "bun drizzle-kit studio --port 3001 --config src/db/config.ts"
           }
         ]
       }
@@ -25,10 +66,10 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-utils-backend:build"
+            "command": "nx run @sps/shared-frontend-utils-server:tsc:build"
           },
           {
-            "command": "NODE_ENV=development node dist/libs/shared/backend/utils/src/lib/create-tailwind-theme.js"
+            "command": "node dist/libs/shared/frontend/utils/server/src/lib/create-tailwind-theme.js"
           }
         ]
       }
@@ -47,36 +88,36 @@
         ]
       }
     },
-    "dev": {
+    "next:dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
-      "dependsOn": ["^build"],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "next:build",
         "dev": true,
-        "port": 3000
+        "port": 3000,
+        "turbo": true
       }
     },
-    "build": {
+    "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
       }
     },
-    "start": {
+    "next:start": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "production",
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "options": {
-        "buildTarget": "frontend:build",
+        "buildTarget": "frontend:next:build",
         "dev": false,
         "port": 3000
       }
     },
-    "export": {
+    "next:export": {
       "executor": "@nx/next:export",
       "options": {
         "buildTarget": "frontend:build:production"
@@ -89,14 +130,6 @@
         "jestConfig": "apps/frontend/jest.config.ts"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "ignorePath": "apps/frontend/.eslintignore",
-        "quiet": true
-      }
-    }
-  },
-  "tags": []
+    "lint": {}
+  }
 }

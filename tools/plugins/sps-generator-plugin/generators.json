@@ -1,0 +1,34 @@
+{
+  "generators": {
+    "frontend-component-variant": {
+      "factory": "./src/generators/frontend-component-variant/generator",
+      "schema": "./src/generators/frontend-component-variant/schema.json",
+      "description": "frontend-component-variant generator"
+    },
+    "model": {
+      "factory": "./src/generators/model/generator",
+      "schema": "./src/generators/model/schema.json",
+      "description": "model generator"
+    },
+    "backend-variant": {
+      "factory": "./src/generators/backend-variant/generator",
+      "schema": "./src/generators/backend-variant/schema.json",
+      "description": "backend variant generator"
+    },
+    "module": {
+      "factory": "./src/generators/module/generator",
+      "schema": "./src/generators/module/schema.json",
+      "description": "module generator"
+    },
+    "schema-field": {
+      "factory": "./src/generators/schema-field/generator",
+      "schema": "./src/generators/schema-field/schema.json",
+      "description": "schema-field generator"
+    },
+    "relation": {
+      "factory": "./src/generators/relation/generator",
+      "schema": "./src/generators/relation/schema.json",
+      "description": "relation generator"
+    }
+  }
+}

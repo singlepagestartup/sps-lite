@@ -1,0 +1,13 @@
+[data-module="sps-crm"] {
+  &[data-model="form"] {
+    &[data-variant="simple"] {
+      .form-container {
+        @apply grid grid-cols-4 gap-x-3 gap-y-6;
+
+        .submit-button-container {
+          @apply col-span-4;
+        }
+      }
+    }
+  }
+}

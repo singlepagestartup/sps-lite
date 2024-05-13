@@ -1,0 +1,49 @@
+[data-module="sps-website-builder"] {
+  &[data-model="elements.button"] {
+    &[data-variant="outline"] {
+      &.button-container,
+      .button-container {
+        @apply flex items-center gap-2;
+
+        .media-container {
+          .default-media-container,
+          .default-additional-media-container {
+            @apply block w-[20px] h-[20px] relative;
+
+            .image {
+              @apply object-contain;
+            }
+          }
+
+          .hover-media-container,
+          .hover-additional-media-container {
+            @apply block w-[0px] h-[0px] relative;
+
+            .image {
+              @apply object-contain;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        &.button-container,
+        .button-container {
+          .media-container {
+            &[data-has-hover="true"] {
+              .default-media-container,
+              .default-additional-media-container {
+                @apply hidden;
+              }
+
+              .hover-media-container,
+              .hover-additional-media-container {
+                @apply block w-[20px] h-[20px] relative;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

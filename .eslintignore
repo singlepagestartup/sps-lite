@@ -1,1 +1,62 @@
+############################
+# Node.js
+############################
+
 node_modules
+
+############################
+# NX
+############################
+
+.nx
+dist
+tmp
+
+############################
+# Backend
+# Strapi
+############################
+
+apps/backend/.cache
+apps/backend/build
+apps/backend/dist
+apps/backend/**/seeds
+apps/backend/public/uploads/*
+apps/backend/types/*
+
+############################
+# Bdd
+# Playwright
+############################
+apps/bdd/artifacts/reports
+apps/bdd/artifacts/schreenshots
+apps/bdd/artifacts/traces
+
+############################
+# Db
+# Postgres
+############################
+apps/db/db_data
+
+############################
+# Documentation
+# Docusaurus
+############################
+apps/documentation/static
+apps/documentation/.docusarus
+
+############################
+# Frontend
+# Next.js
+############################
+apps/frontend/.next
+apps/frontend/out
+apps/frontend/build
+apps/frontend/.dfx
+
+############################
+# Frontend
+# Next.js
+# Tailwind
+############################
+apps/frontend/themes/theme.json

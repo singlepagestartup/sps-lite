@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-subscription-models-tier-frontend-redux",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-subscription/models/tier/frontend/redux/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

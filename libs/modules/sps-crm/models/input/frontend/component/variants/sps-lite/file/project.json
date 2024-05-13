@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-crm-models-input-frontend-component-variants-sps-lite-file",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm/models/input/frontend/component/variants/sps-lite/file/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

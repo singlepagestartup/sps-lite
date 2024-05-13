@@ -1,9 +1,9 @@
 import { Listbox } from "@headlessui/react";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
+import { getFileUrl } from "@sps/shared-utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
 import { Props } from "..";
 
 interface OptionRenderPropArg {
@@ -15,24 +15,48 @@ interface OptionRenderPropArg {
 const RadioGroupInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { OptionComp = DefaultOption, renderOptionValue } = props;
 
+  const formInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (props.setLocalRef) {
+      props.setLocalRef(formInputRef);
+    }
+  }, [formInputRef]);
+
   return (
-    <Listbox data-ui-variant="radio-group" as="div" {...props} ref={ref}>
+    <Listbox
+      data-ui="input"
+      data-ui-variant="radio-group"
+      as="div"
+      className={props.className || ""}
+      by={props.by}
+      disabled={props.disabled}
+      ref={formInputRef}
+      name={props.name}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      value={props.value}
+      id={props.id}
+      multiple={props.multiple}
+    >
       <div className="radio-group">
         <Listbox.Options static={true} className="options">
-          {props.options?.map((option: any, index: number) => (
-            <Listbox.Option key={index} value={option}>
-              {(params) => {
-                return (
-                  <OptionComp
-                    option={option}
-                    params={params}
-                    renderOptionValue={renderOptionValue}
-                    extraMedia={props.extraMedia}
-                  />
-                );
-              }}
-            </Listbox.Option>
-          ))}
+          {props.options?.map((option: any, index: number) => {
+            return (
+              <Listbox.Option key={index} value={option}>
+                {(params) => {
+                  return (
+                    <OptionComp
+                      option={option}
+                      params={params}
+                      renderOptionValue={renderOptionValue}
+                      extraMedia={props.extraMedia}
+                    />
+                  );
+                }}
+              </Listbox.Option>
+            );
+          })}
         </Listbox.Options>
       </div>
     </Listbox>

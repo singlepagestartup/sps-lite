@@ -1,0 +1,3 @@
+import { populate as parentPopulate } from "<%= root_contracts_import_path %>";
+
+export const populate = { ...parentPopulate };

@@ -1,0 +1,11 @@
+{
+  "name": "@sps/shared-bdd-steps",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/bdd/steps/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {}
+  }
+}

@@ -13,6 +13,7 @@ export interface RtkAction {
   meta: {
     requestId: string;
     requestStatus: string;
+    fulfilledTimeStamp: number;
     arg: {
       endpointName: string;
       type: string;
@@ -30,16 +31,24 @@ export interface State {
   stores: {
     [key in string]: RtkStore;
   };
+  revalidatePromises: {
+    [key in string]: string[];
+  };
 }
 
 export interface Actions {
   addStore: (store: RtkStore) => void;
   addAction: (action: RtkAction) => void;
+  addRevalidatePromise: (promise: string) => void;
+  removeRevalidatePromise: (promise: string) => void;
+  revalidatePromisesSusscess: () => boolean;
+  getActionsFromStoreByName: (name: string) => RtkStore["actions"];
   reset: () => void;
 }
 
 const initialState: State = {
   stores: {},
+  revalidatePromises: {},
 };
 
 const name = "global-actions-store";
@@ -50,11 +59,28 @@ export const globalActionsStore = create<State & Actions>()(
       persist(
         (set: any, get: any) => ({
           ...initialState,
-          stores: {},
+          addRevalidatePromise: (promise: string) => {
+            set((state: State) => {
+              state.revalidatePromises[promise] = [];
+            });
+          },
+          removeRevalidatePromise: (promise: string) => {
+            set((state: State) => {
+              delete state.revalidatePromises[promise];
+            });
+          },
           addStore: (store: RtkStore) => {
             set((state: State) => {
               state["stores"][store.name] = store;
             });
+          },
+          getActionsFromStoreByName: (name: string) => {
+            return get().stores[name]?.actions;
+          },
+          revalidatePromisesSusscess: () => {
+            const revalidatePromises = get().revalidatePromises;
+
+            return Object.keys(revalidatePromises).length === 0;
           },
           addAction: (action: RtkAction) => {
             set((state: State) => {
@@ -84,6 +110,8 @@ export const globalActionsStore = create<State & Actions>()(
     },
   ),
 );
+
+export const useGlobalActionsStore = globalActionsStore;
 
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   if (typeof window === "undefined") return;

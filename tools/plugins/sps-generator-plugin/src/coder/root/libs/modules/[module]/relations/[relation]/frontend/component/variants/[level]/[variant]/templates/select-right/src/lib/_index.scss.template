@@ -1,0 +1,6 @@
+[data-module="<%= module_name %>"] {  
+  &[data-relation="<%= relation_name %>"] {
+    &[data-variant="<%= variant %>"] {
+    }
+  }
+}

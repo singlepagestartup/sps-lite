@@ -1,0 +1,24 @@
+{
+  "id": 2,
+  "title": "Dollar Américain",
+  "unicode": "$",
+  "is_default": true,
+  "createdAt": "2024-02-01T09:01:22.044Z",
+  "updatedAt": "2024-02-09T15:14:21.750Z",
+  "publishedAt": "2024-01-12T13:25:20.537Z",
+  "locale": "fr",
+  "localizations": [
+    {
+      "id": 1,
+      "title": "United States Dollar",
+      "unicode": "$",
+      "is_default": true,
+      "createdAt": "2024-02-01T09:01:22.036Z",
+      "updatedAt": "2024-02-09T15:14:21.724Z",
+      "publishedAt": "2023-03-29T16:09:52.898Z",
+      "locale": "en"
+    }
+  ],
+  "attributes": [],
+  "tiers": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-fade-with-previews",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/slider/frontend/component/variants/sps-lite/fade-with-previews/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

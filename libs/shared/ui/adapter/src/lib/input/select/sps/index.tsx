@@ -1,9 +1,10 @@
 import { Transition, Listbox } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { FC, Fragment, forwardRef, useMemo } from "react";
+import { FC, Fragment, forwardRef, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
-import { getFileUrl } from "@sps/utils";
-import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
+import { getFileUrl } from "@sps/shared-utils";
+import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
+import { Props } from "..";
 
 interface OptionRenderPropArg {
   active: boolean;
@@ -11,33 +12,37 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
-export interface Props {
-  options: any[];
-  placeholder?: string;
-  ButtonComp?: FC<any>;
-  OptionComp?: FC<any>;
-  renderOptionValue?: (option: any) => string;
-  media?: IFile[] | null;
-  additionalMedia?: IFile[] | null;
-  extraMedia?: IFile[] | null;
-}
-
 const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const {
-    options,
-    placeholder = "",
-    ButtonComp = DefaultButton,
-    OptionComp = DefaultOption,
-    renderOptionValue,
-  } = props;
+  const { options, placeholder = "", renderOptionValue } = props;
+
+  const formInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (props.setLocalRef) {
+      props.setLocalRef(formInputRef);
+    }
+  }, [formInputRef]);
 
   return (
-    <Listbox data-ui-variant="listbox" as="div" {...props} ref={ref}>
+    <Listbox
+      data-ui="input"
+      data-ui-variant="listbox"
+      as="div"
+      className={props.className || ""}
+      by={props.by}
+      disabled={props.disabled}
+      ref={formInputRef}
+      name={props.name}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      value={props.value}
+      id={props.id}
+    >
       <div className="listbox">
         <Listbox.Button className="button-container">
           {(listboxProps) => {
             return (
-              <ButtonComp
+              <DefaultButton
                 {...listboxProps}
                 placeholder={placeholder}
                 renderOptionValue={renderOptionValue}
@@ -58,7 +63,7 @@ const SelectInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
               <Listbox.Option key={index} value={option}>
                 {(params) => {
                   return (
-                    <OptionComp
+                    <DefaultOption
                       option={option}
                       params={params}
                       renderOptionValue={renderOptionValue}

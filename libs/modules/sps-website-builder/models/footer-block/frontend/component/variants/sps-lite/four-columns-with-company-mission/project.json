@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-four-columns-with-company-mission",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/four-columns-with-company-mission/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

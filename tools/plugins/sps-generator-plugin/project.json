@@ -1,0 +1,18 @@
+{
+  "name": "@sps/sps-generator-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "plugins/sps-generator-plugin/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {},
+    "lint": {},
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "plugins/sps-generator-plugin/jest.config.ts"
+      }
+    }
+  }
+}

@@ -8,7 +8,8 @@ import {
 } from "@sps/sps-website-builder-frontend";
 import { Suspense } from "react";
 import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
-import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend/lib/redux";
+import { Toaster } from "@sps/shadcn";
+// import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend/lib/redux";
 
 export const dynamic = "force-dynamic";
 
@@ -28,18 +29,18 @@ export default async function RootLayout({
         <div className="relative">
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>
-            <SpsRbacReduxProvider>
-              <TranslationsContextWrapper>
-                <HocParamsProvider>
-                  <AdditionalHeadersWrapper>
-                    <SpsWebsiteBuilderRootLayout>
-                      {children}
-                    </SpsWebsiteBuilderRootLayout>
-                  </AdditionalHeadersWrapper>
-                </HocParamsProvider>
-              </TranslationsContextWrapper>
-            </SpsRbacReduxProvider>
+            {children}
+            {/* <TranslationsContextWrapper>
+              <HocParamsProvider>
+                <AdditionalHeadersWrapper>
+                  <SpsWebsiteBuilderRootLayout>
+                    {children}
+                  </SpsWebsiteBuilderRootLayout>
+                </AdditionalHeadersWrapper>
+              </HocParamsProvider>
+            </TranslationsContextWrapper> */}
           </Suspense>
+          <Toaster />
         </div>
       </body>
     </html>

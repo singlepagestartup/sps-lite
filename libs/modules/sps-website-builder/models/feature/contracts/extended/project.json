@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-website-builder-models-feature-contracts-extended",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/feature/contracts/extended/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {},
+    "lint": {}
+  }
+}

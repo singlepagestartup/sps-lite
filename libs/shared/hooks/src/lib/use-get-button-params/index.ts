@@ -1,3 +1,5 @@
+"use client";
+
 import { usePathname, useSearchParams } from "next/navigation";
 import { ButtonHTMLAttributes, useMemo } from "react";
 
@@ -27,6 +29,10 @@ export function useGetButtonParams(props: {
     }, [props]);
 
   const url = useMemo(() => {
+    if (!props.url) {
+      return;
+    }
+
     const nextLinkUrl: {
       pathname: string | undefined;
       query?: string | { [key: string]: string };

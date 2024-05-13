@@ -1,0 +1,18 @@
+############################
+# Strapi
+############################
+
+.env
+license.txt
+exports
+*.cache
+dist
+build
+.strapi
+.strapi-updater.json
+sendpulse_token
+seeded.txt
+public/uploads/*
+!public/uploads/.gitkeep
+testApp
+coverage

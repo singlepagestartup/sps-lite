@@ -1,38 +1,49 @@
-import Image from "next/image";
-import { MouseEventHandler, forwardRef } from "react";
-import type { IModel as IFile } from "@sps/sps-file-storage-contracts/lib/models/file/interfaces";
-import { getFileUrl } from "@sps/utils";
+"use client";
+
+import { MouseEventHandler, forwardRef, useMemo } from "react";
+import { Slot } from "@radix-ui/react-slot";
 
 export interface Props {
-  variant: "locale" | "primary" | "secondary" | "outline" | "link";
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   children?: React.ReactNode;
-  media?: IFile[];
-  title?: string;
+  scroll?: boolean;
+  additionalAttributes?: Record<string, string>;
+  "data-ui": "button";
+  "data-ui-variant":
+    | "default"
+    | "primary"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | "reset"
+    | "transparent";
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
+  const Comp = useMemo(() => {
+    if (["string", "number", "boolean"].includes(typeof props.children)) {
+      return "button";
+    }
+
+    return Slot;
+  }, [props]);
+
+  const filteredProps = { ...props };
+  delete filteredProps.scroll;
+  delete filteredProps.additionalAttributes;
+
   return (
-    <div
-      data-ui="button"
-      data-ui-variant={props.variant}
+    <Comp
+      {...filteredProps}
+      ref={ref}
       className={`button ${props?.className || ""}`}
+      {...props.additionalAttributes}
     >
-      <button
-        // {...additionalAttributes}
-        className="button-text"
-        onClick={props.onClick}
-      >
-        {props.children ? props.children : null}
-        {props.media?.length ? (
-          <div className="icon-container">
-            <Image src={getFileUrl(props.media[0])} alt="" fill={true} />
-          </div>
-        ) : null}
-        {props.title}
-      </button>
-    </div>
+      {props.children}
+    </Comp>
   );
 });
 

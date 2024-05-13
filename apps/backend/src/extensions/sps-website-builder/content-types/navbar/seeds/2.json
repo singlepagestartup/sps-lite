@@ -1,0 +1,129 @@
+{
+  "id": 2,
+  "title": "Barre de navigation des pages publiques",
+  "uid": "barre-de-navigation-des-pages-publiques",
+  "variant": "boxed",
+  "class_name": null,
+  "position": "fixed",
+  "side": "top",
+  "createdAt": "2024-02-01T09:01:22.393Z",
+  "updatedAt": "2024-02-09T15:14:41.760Z",
+  "publishedAt": "2024-01-12T23:50:09.029Z",
+  "locale": "fr",
+  "localizations": [
+    {
+      "id": 1,
+      "title": "Public Page Navbar",
+      "uid": "public-page-navbar",
+      "variant": "boxed",
+      "class_name": null,
+      "position": "fixed",
+      "side": "top",
+      "createdAt": "2024-02-01T09:01:22.378Z",
+      "updatedAt": "2024-02-12T22:09:31.030Z",
+      "publishedAt": "2023-04-08T05:04:22.148Z",
+      "locale": "en"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.navbar-block",
+      "id": 8,
+      "variant": "simple-links-on-left",
+      "description": null,
+      "class_name": null,
+      "logotype": {
+        "id": 16,
+        "title": null,
+        "url": "/",
+        "media": [
+          {
+            "id": 167,
+            "name": "sps-full dark.svg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 4725,
+            "height": 729,
+            "formats": null,
+            "hash": "sps_full_dark_110825f246",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 16.9,
+            "url": "/uploads/sps_full_dark_110825f246.svg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-02-09T15:14:41.645Z",
+            "updatedAt": "2024-02-09T15:14:41.645Z"
+          }
+        ],
+        "additional_media": null
+      },
+      "buttons": [
+        {
+          "id": 104,
+          "url": "/",
+          "description": null,
+          "variant": "ghost",
+          "title": "Principale",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        }
+      ],
+      "additional_buttons": [
+        {
+          "id": 105,
+          "url": "https://github.com/singlepagestartup/sps-lite",
+          "description": null,
+          "variant": "secondary",
+          "title": "GitHub",
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": null
+        },
+        {
+          "id": 106,
+          "url": null,
+          "description": null,
+          "variant": "locale",
+          "title": null,
+          "additional_attributes": null,
+          "class_name": null,
+          "media": null,
+          "additional_media": null,
+          "flyout": {
+            "id": 3,
+            "variant": "simple",
+            "title": "Icône déroulante Paramètres régionaux",
+            "uid": "icone-deroulante-parametres-regionaux",
+            "class_name": null,
+            "createdAt": "2024-02-01T09:01:22.249Z",
+            "updatedAt": "2024-02-09T15:14:38.919Z",
+            "publishedAt": "2024-01-12T23:59:23.441Z",
+            "locale": "fr"
+          }
+        }
+      ],
+      "extra_buttons": []
+    }
+  ],
+  "layouts": [
+    {
+      "id": 3,
+      "title": "Mise en page publique",
+      "uid": "mise-en-page-publique",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-02-01T09:01:22.307Z",
+      "updatedAt": "2024-02-09T15:14:39.973Z",
+      "publishedAt": "2024-01-12T23:28:53.035Z",
+      "locale": "fr"
+    }
+  ]
+}

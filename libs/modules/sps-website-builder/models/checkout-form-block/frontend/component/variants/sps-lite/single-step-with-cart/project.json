@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-checkout-form-block-frontend-component-variants-sps-lite-single-step-with-cart",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/checkout-form-block/frontend/component/variants/sps-lite/single-step-with-cart/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}

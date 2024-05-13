@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-subscription-frontend-components",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-subscription/frontend/components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test": {}
+  }
+}

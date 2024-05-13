@@ -1,0 +1,78 @@
+{
+  "id": 2,
+  "title": "Pied de page public",
+  "uid": "pied-de-page-public",
+  "variant": "boxed",
+  "class_name": null,
+  "createdAt": "2024-02-01T09:01:22.273Z",
+  "updatedAt": "2024-02-09T15:14:39.866Z",
+  "publishedAt": "2024-01-12T23:31:13.162Z",
+  "locale": "fr",
+  "localizations": [
+    {
+      "id": 1,
+      "title": "Public Page Footer",
+      "uid": "footer",
+      "variant": "boxed",
+      "class_name": null,
+      "createdAt": "2024-02-01T09:01:22.261Z",
+      "updatedAt": "2024-02-09T18:39:36.997Z",
+      "publishedAt": "2024-01-10T11:45:35.047Z",
+      "locale": "en"
+    }
+  ],
+  "page_blocks": [
+    {
+      "__component": "page-blocks.footer-block",
+      "id": 8,
+      "copyrights": "2024 Démarrage d'une seule page",
+      "description": "Le moyen le plus rapide de développer votre startup",
+      "variant": "four-columns-with-company-mission",
+      "class_name": null,
+      "logotype": {
+        "id": 14,
+        "title": null,
+        "url": null,
+        "media": [
+          {
+            "id": 163,
+            "name": "sps-full dark.svg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 4725,
+            "height": 729,
+            "formats": null,
+            "hash": "sps_full_dark_a497ec2fa3",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 16.9,
+            "url": "/uploads/sps_full_dark_a497ec2fa3.svg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "folderPath": "/",
+            "createdAt": "2024-02-09T15:14:39.800Z",
+            "updatedAt": "2024-02-09T15:14:39.800Z"
+          }
+        ],
+        "additional_media": null
+      },
+      "buttons_arrays": [],
+      "additional_buttons_arrays": [],
+      "extra_buttons_arrays": []
+    }
+  ],
+  "layouts": [
+    {
+      "id": 3,
+      "title": "Mise en page publique",
+      "uid": "mise-en-page-publique",
+      "variant": "wide",
+      "class_name": "[&>.layout-container]:pt-16",
+      "createdAt": "2024-02-01T09:01:22.307Z",
+      "updatedAt": "2024-02-09T15:14:39.973Z",
+      "publishedAt": "2024-01-12T23:28:53.035Z",
+      "locale": "fr"
+    }
+  ]
+}

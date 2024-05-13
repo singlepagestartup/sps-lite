@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-ecommerce-models-cart-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-ecommerce/models/cart/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {},
+    "lint": {}
+  }
+}

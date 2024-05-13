@@ -1,0 +1,19 @@
+[data-module="sps-website-builder"] {
+  &[data-model="slide-over"] {
+    &[data-variant="right-side-half-width"] {
+      @apply relative z-50;
+
+      .backdrop {
+        @apply fixed inset-0 bg-black/30;
+      }
+
+      .slide-over-container {
+        @apply fixed top-0 bottom-0 right-0 h-screen w-1/2 bg-popover flex justify-between overflow-scroll;
+
+        .dialog-panel {
+          @apply w-full relative;
+        }
+      }
+    }
+  }
+}

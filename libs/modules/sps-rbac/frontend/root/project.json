@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-rbac-frontend",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/frontend/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test": {}
+  }
+}

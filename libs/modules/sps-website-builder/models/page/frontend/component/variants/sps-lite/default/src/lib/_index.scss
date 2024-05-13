@@ -1,0 +1,9 @@
+[data-module="sps-website-builder"] {
+  &[data-model="page"] {
+    &[data-variant="simple"] {
+      .loader-container {
+        @apply fixed w-screen h-screen bg-white flex items-center justify-center;
+      }
+    }
+  }
+}

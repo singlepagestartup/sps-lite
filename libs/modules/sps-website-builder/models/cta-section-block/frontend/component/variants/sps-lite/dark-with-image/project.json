@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-cta-section-block-frontend-component-variants-sps-lite-dark-with-image",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/cta-section-block/frontend/component/variants/sps-lite/dark-with-image/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {}
+  }
+}
