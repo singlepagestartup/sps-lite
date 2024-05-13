@@ -1,7 +1,7 @@
-export const variants = ["fade-with-previews"] as const;
+export const variants = ["default", "fade-with-previews"] as const;
 
 export interface IModel {
-  id: number;
+  id: string;
   className: string | null;
   aspectRatioClassName: string | null;
   variant: (typeof variants)[number];

@@ -21,6 +21,8 @@ import { Component as FooterSpsLiteAdminTable } from "@sps/sps-website-builder-m
 import { Component as NavbarBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as FooterBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as SliderBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table";
+import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table";
+import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -42,6 +44,8 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="navbar">Navbar</TabsTrigger>
                 <TabsTrigger value="footer">Footer</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
+                <TabsTrigger value="slider">Slider</TabsTrigger>
+                <TabsTrigger value="slide">Slide</TabsTrigger>
                 <TabsTrigger value="widget">Widget</TabsTrigger>
                 <TabsTrigger value="hero-section-block">
                   Hero Section Block
@@ -68,6 +72,18 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="layout">
                 <LayoutSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="slider">
+                <SliderSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="slide">
+                <SlideSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

@@ -1,3 +1,7 @@
+import { app as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-app";
+import { app as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-app";
+import { app as slide } from "@sps/sps-website-builder-models-slide-backend-app";
+import { app as slider } from "@sps/sps-website-builder-models-slider-backend-app";
 import { app as widgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-app";
 import { app as sliderBlock } from "@sps/sps-website-builder-models-slider-block-backend-app";
 import { app as widgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-backend-app";
@@ -19,6 +23,10 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/sliders-to-slides": slidersToSlides,
+  "/slider-blocks-to-sliders": sliderBlocksToSliders,
+  "/slides": slide,
+  "/sliders": slider,
   "/widgets-to-slider-blocks": widgetsToSliderBlocks,
   "/slider-blocks": sliderBlock,
   "/widgets-to-footer-blocks": widgetsToFooterBlocks,

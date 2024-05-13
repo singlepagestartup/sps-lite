@@ -139,8 +139,8 @@ export function Component(props: IComponentPropsExtended) {
             )}
           </TabsContent>
           <TabsContent value="SPSWBWidgetsToSliderBlocks">
-            {props.data?.SPSWBWidgetsToSliderBlock?.length ? (
-              props.data?.SPSWBWidgetsToSliderBlock?.map(
+            {props.data?.SPSWBWidgetsToSliderBlocks?.length ? (
+              props.data?.SPSWBWidgetsToSliderBlocks?.map(
                 (widgetToSliderBlock, index) => {
                   return (
                     <WidgetsToSliderBlocksSpsLiteSelectRight

@@ -1,6 +1,8 @@
+export const variants = ["default"] as const;
+
 export interface IModel {
-  id: number;
-  __component: "elements.slide";
+  id: string;
+  variant: (typeof variants)[number];
   buttons?: any[];
   showBackdrop: boolean | null;
   title: string | null;

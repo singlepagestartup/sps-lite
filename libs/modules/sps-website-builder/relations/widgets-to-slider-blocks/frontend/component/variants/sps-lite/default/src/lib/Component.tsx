@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as SliderBlock } from "@sps/sps-website-builder-models-slider-block-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +8,13 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="widgets-to-slider-blocks"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className=""
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Relation: widgets-to-slider-blocks</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <SliderBlock
+        isServer={props.isServer}
+        variant={props.data.sliderBlock.variant}
+        data={props.data.sliderBlock}
+      />
     </div>
   );
 }

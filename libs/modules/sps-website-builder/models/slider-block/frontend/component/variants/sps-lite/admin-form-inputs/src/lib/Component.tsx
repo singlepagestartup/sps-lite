@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-slider-block-contracts";
+import { Component as SliderBlocksToSlidersSpsLiteSelectRight } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -51,6 +52,22 @@ export function Component(props: IComponentPropsExtended) {
               <FormMessage />
             </FormItem>
           )}
+        />
+        {props.data?.SPSWBSliderBlocksToSliders.map(
+          (sliderBlocksToSliders, index) => {
+            return (
+              <SliderBlocksToSlidersSpsLiteSelectRight
+                isServer={false}
+                key={index}
+                data={sliderBlocksToSliders}
+                variant="select-right"
+              />
+            );
+          },
+        )}
+        <SliderBlocksToSlidersSpsLiteSelectRight
+          isServer={false}
+          variant="select-right"
         />
       </div>
     </div>

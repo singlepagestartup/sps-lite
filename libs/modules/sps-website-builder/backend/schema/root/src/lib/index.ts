@@ -1,4 +1,22 @@
 export {
+  Table as SPSWBSlidersToSlides,
+  Relations as SPSWBSlidersToSlidesRelations,
+} from "@sps/sps-website-builder-relations-sliders-to-slides-backend-schema";
+export {
+  Table as SPSWBSliderBlocksToSliders,
+  Relations as SPSWBSliderBlocksToSlidersRelations,
+} from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-schema";
+export {
+  Table as SPSWBSlide,
+  Relations as SPSWBSlideRelations,
+  VariantEnumTable as SPSWBSlideVariantEnumTable,
+} from "@sps/sps-website-builder-models-slide-backend-schema";
+export {
+  Table as SPSWBSlider,
+  Relations as SPSWBSliderRelations,
+  VariantEnumTable as SPSWBSliderVariantEnumTable,
+} from "@sps/sps-website-builder-models-slider-backend-schema";
+export {
   Table as SPSWBWidgetsToSliderBlocks,
   Relations as SPSWBWidgetsToSliderBlocksRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-schema";

@@ -1,3 +1,7 @@
+import { model as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-model";
+import { model as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-model";
+import { model as slide } from "@sps/sps-website-builder-models-slide-backend-model";
+import { model as slider } from "@sps/sps-website-builder-models-slider-backend-model";
 import { model as widgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-model";
 import { model as sliderBlock } from "@sps/sps-website-builder-models-slider-block-backend-model";
 import { model as widgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-backend-model";
@@ -19,6 +23,10 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  slidersToSlides,
+  sliderBlocksToSliders,
+  slide,
+  slider,
   widgetsToSliderBlocks,
   sliderBlock,
   widgetsToFooterBlocks,

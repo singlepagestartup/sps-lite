@@ -8,5 +8,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "slide";
-export const route = "components/elements.slide";
+export const route = "slides";
 export const populate = modelPopulate;

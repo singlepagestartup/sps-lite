@@ -18,6 +18,8 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
+  console.log(`🚀 ~ Component ~ props:`, props);
+
   const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
   const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
 
