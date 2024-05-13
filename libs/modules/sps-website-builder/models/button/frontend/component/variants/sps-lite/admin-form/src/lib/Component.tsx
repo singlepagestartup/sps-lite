@@ -22,6 +22,7 @@ import { variants } from "@sps/sps-website-builder-models-button-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -35,6 +36,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
     },
   });
 

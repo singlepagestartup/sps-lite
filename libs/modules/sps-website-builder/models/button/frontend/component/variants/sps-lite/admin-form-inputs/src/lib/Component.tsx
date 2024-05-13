@@ -28,6 +28,21 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           control={props.form.control}
+          name="title"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input placeholder="Title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+        <FormField
+          control={props.form.control}
           name="variant"
           render={({ field }) => (
             <FormItem>

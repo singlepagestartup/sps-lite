@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/shadcn";
-import { toast } from "sonner";
+import { Component as NavbarsToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -58,49 +58,41 @@ function DisclosureInner({
                 />
               ) : null} */}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                <Button
-                  variant="link"
-                  onClick={() => {
-                    console.log(toast);
-                    toast("Event has been created.");
-                  }}
-                >
-                  Main page
-                </Button>
-                <Button variant="link">About page</Button>
-                {/* {props.data.buttons?.map((button, index) => {
-                  return (
-                    <Button
-                      isServer={false}
-                      key={index}
-                      variant={button.variant}
-                      data={button}
-                    />
-                  );
-                })} */}
+                {props.data.SPSWBNavbarBlocksToButtons.map(
+                  (navbarBlockToButton, index) => {
+                    if (navbarBlockToButton.place !== "default") {
+                      return;
+                    }
+
+                    return (
+                      <NavbarsToButtons
+                        key={index}
+                        variant="default"
+                        data={navbarBlockToButton}
+                        isServer={false}
+                      />
+                    );
+                  },
+                )}
               </div>
             </div>
             <div className="hidden lg:flex lg:space-x-2 items-center">
-              {/* {props.data.additionalButtons?.map((button, index) => {
-                return (
-                  <Button
-                    isServer={false}
-                    key={index}
-                    variant={button.variant}
-                    data={button}
-                  />
-                );
-              })} */}
-              {/* {props.data.extraButtons?.map((button, index) => {
-                return (
-                  <Button
-                    isServer={false}
-                    key={index}
-                    variant={button.variant}
-                    data={button}
-                  />
-                );
-              })} */}
+              {props.data.SPSWBNavbarBlocksToButtons.map(
+                (navbarBlockToButton, index) => {
+                  if (navbarBlockToButton.place !== "additional") {
+                    return;
+                  }
+
+                  return (
+                    <NavbarsToButtons
+                      key={index}
+                      variant="default"
+                      data={navbarBlockToButton}
+                      isServer={false}
+                    />
+                  );
+                },
+              )}
             </div>
           </div>
         </div>

@@ -12,7 +12,9 @@ export const rtkQueryErrorLogger = (api: any) => {
             ? action.payload.data.message
             : "An error occurred. Watch to the console";
 
-        toast.error(message.toString());
+        if (message) {
+          toast.error(message.toString());
+        }
       }
 
       return next(action);

@@ -639,6 +639,9 @@
       "@sps/sps-website-builder-models-button-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/button/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks": [
+        "libs/modules/sps-website-builder/models/button/backend/schema/relations/navbar-blocks/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-button-backend-schema-table": [
         "libs/modules/sps-website-builder/models/button/backend/schema/table/src/index.ts"
       ],
@@ -1385,6 +1388,9 @@
       ],
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-buttons": [
+        "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/buttons/src/index.ts"
       ],
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-widgets": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/widgets/src/index.ts"
@@ -2135,6 +2141,42 @@
       ],
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-app": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-schema": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-contracts": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-navbars-to-widgets-backend-app": [
         "libs/modules/sps-website-builder/relations/navbars-to-widgets/backend/app/src/index.ts"

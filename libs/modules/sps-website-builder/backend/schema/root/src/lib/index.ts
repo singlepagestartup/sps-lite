@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBNavbarBlocksToButtons,
+  Relations as SPSWBNavbarBlocksToButtonsRelations,
+} from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-schema";
+export {
   Table as SPSWBButton,
   Relations as SPSWBButtonRelations,
   VariantEnumTable as SPSWBButtonVariantEnumTable,

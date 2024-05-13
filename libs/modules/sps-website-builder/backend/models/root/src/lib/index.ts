@@ -1,3 +1,4 @@
+import { model as navbarBlocksToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-model";
 import { model as button } from "@sps/sps-website-builder-models-button-backend-model";
 import { model as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-model";
 import { model as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-model";
@@ -24,6 +25,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  navbarBlocksToButtons,
   button,
   slidersToSlides,
   sliderBlocksToSliders,

@@ -59,7 +59,8 @@ export function Component(props: IComponentPropsExtended) {
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
-                <TableHead></TableHead>
+                <TableHead>Title</TableHead>
+                <TableHead>Variant</TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
             </TableHeader>

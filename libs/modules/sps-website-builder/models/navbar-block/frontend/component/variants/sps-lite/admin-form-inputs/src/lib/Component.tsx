@@ -16,41 +16,60 @@ import {
   SelectValue,
 } from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
+import { Component as NavbarBlocksToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <form
+    <div
       data-module="sps-website-builder"
       data-model="navbar-block"
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
-      <FormField
-        control={props.form.control}
-        name="variant"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Variant</FormLabel>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select variant" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {variants.map((variant, index) => {
-                  return (
-                    <SelectItem key={index} value={variant}>
-                      {variant}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <FormMessage />
-          </FormItem>
+      <div className="flex flex-col gap-6">
+        <FormField
+          control={props.form.control}
+          name="variant"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Variant</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select variant" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {variants.map((variant, index) => {
+                    return (
+                      <SelectItem key={index} value={variant}>
+                        {variant}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {props.data?.SPSWBNavbarBlocksToButtons.map(
+          (navbarBlocksToButton, index) => {
+            return (
+              <NavbarBlocksToButtonsSpsLiteSelectRight
+                key={index}
+                isServer={false}
+                variant="select-right"
+                data={navbarBlocksToButton}
+              />
+            );
+          },
         )}
-      />
-    </form>
+        <NavbarBlocksToButtonsSpsLiteSelectRight
+          isServer={false}
+          variant="select-right"
+        />
+      </div>
+    </div>
   );
 }
