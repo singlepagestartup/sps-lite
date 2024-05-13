@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
+import { Component as HeroSectionsToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -63,6 +64,22 @@ export function Component(props: IComponentPropsExtended) {
             <FormMessage />
           </FormItem>
         )}
+      />
+      {props.data?.SPSWBHeroSectionBlocksToButtons.map(
+        (heroSectionBlocksToButton, index) => {
+          return (
+            <HeroSectionsToButtonsSpsLiteSelectRight
+              key={index}
+              data={heroSectionBlocksToButton}
+              isServer={props.isServer}
+              variant="select-right"
+            />
+          );
+        },
+      )}
+      <HeroSectionsToButtonsSpsLiteSelectRight
+        isServer={props.isServer}
+        variant="select-right"
       />
     </form>
   );

@@ -12,7 +12,7 @@ export default async function Server(props: IComponentProps) {
   let data: IComponentProps["data"];
 
   if (props.data) {
-    data = await api.fetch.findOne({
+    data = await api.fetch.findById({
       id: props.data.id,
     });
 

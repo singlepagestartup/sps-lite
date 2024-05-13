@@ -9,7 +9,7 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.rtk.useFindOneQuery(
+  const { data, isFetching, isLoading } = api.rtk.useFindByIdQuery(
     {
       id: props.data?.id,
     },
