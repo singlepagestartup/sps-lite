@@ -9,6 +9,10 @@ const app = new Hono().basePath("/api");
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);
 
+const envs = process.env;
+
+console.log(`🚀 ~ envs:`, envs);
+
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);
 }

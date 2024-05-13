@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20
 
 RUN apt-get update && \
     apt-get -qy full-upgrade && \
@@ -59,14 +59,15 @@ RUN if [ -n "$TELEGRAM_BOT_USERNAME" ]; then echo "NEXT_PUBLIC_TELEGRAM_BOT_USER
 # RUN ./strapi-plugin.sh
 RUN npm ci
 RUN npm run frontend:build
-RUN npm run backend:build
+# RUN npm run backend:build
 
 EXPOSE 3000
-EXPOSE 1337
+# EXPOSE 1337
 
 # Running the app
 RUN ["chmod", "-R", "777", "/usr/src/app"]
 RUN ["chmod", "+x", "/usr/src/app/start.sh"]
-RUN ["chmod", "-R", "777", "/usr/src/app/apps/backend/public"]
+# RUN ["chmod", "-R", "777", "/usr/src/app/apps/backend/public"]
+RUN ["chmod", "-R", "777", "/usr/src/app/apps/frontend/public"]
 
 CMD ["tail", "-f", "/dev/null"]

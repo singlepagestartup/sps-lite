@@ -8,6 +8,16 @@
     - portainer_password: "{{ PORTAINER_PASSWORD }}"
     - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
+    - name: Create uploads folder
+      file:
+        path: "/home/code/{{ SERVICE_NAME }}_uploads"
+        state: directory
+
+    - name: Create .env.local file
+      ansible.builtin.template:
+        src: frontend.env.local.j2
+        dest: /home/code/frontend.env.local
+
     - name: Copy set-portainer-webhook.js
       copy:
         src: ../portainer/set-portainer-webhook.js

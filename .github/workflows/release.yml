@@ -13,14 +13,14 @@ jobs:
       TAG: ${{ github.event.release.tag_name }}
       PRERELEASE: ${{ github.event.release.prerelease }}
 
-  update-backend:
-    uses: ./.github/workflows/backend.yml
-    secrets: inherit
-    needs:
-      - docker-image
-    with:
-      TAG: ${{ github.event.release.tag_name }}
-      PRERELEASE: ${{ github.event.release.prerelease }}
+  # update-backend:
+  #   uses: ./.github/workflows/backend.yml
+  #   secrets: inherit
+  #   needs:
+  #     - docker-image
+  #   with:
+  #     TAG: ${{ github.event.release.tag_name }}
+  #     PRERELEASE: ${{ github.event.release.prerelease }}
 
   # fill-database-with-seed-data:
   #   uses: ./.github/workflows/database.yml
@@ -31,8 +31,6 @@ jobs:
   update-frontend:
     uses: ./.github/workflows/frontend.yml
     secrets: inherit
-    needs:
-      - update-backend
     with:
       SLEEP_TIME: 360
       TAG: ${{ github.event.release.tag_name }}
