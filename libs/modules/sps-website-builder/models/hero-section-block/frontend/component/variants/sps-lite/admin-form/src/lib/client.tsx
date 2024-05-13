@@ -9,20 +9,28 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.rtk.useFindByIdQuery(
-    {
-      id: props.data?.id,
-    },
-    { skip: !props?.data?.id },
-  );
+  if (props.data) {
+    const { data, isFetching, isLoading } = api.rtk.useFindByIdQuery(
+      {
+        id: props.data?.id,
+      },
+      { skip: !props.data.id },
+    );
 
-  if (isFetching || isLoading || (!data && props.data?.id)) {
-    return <Skeleton {...props} />;
+    if (isFetching || isLoading || !data) {
+      return <Skeleton {...props} />;
+    }
+
+    return (
+      <ErrorBoundary fallback={Error}>
+        <Component {...props} data={data} />
+      </ErrorBoundary>
+    );
   }
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} data={undefined} />
     </ErrorBoundary>
   );
 }
