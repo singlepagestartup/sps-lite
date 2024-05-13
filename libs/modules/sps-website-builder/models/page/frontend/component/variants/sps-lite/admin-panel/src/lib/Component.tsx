@@ -41,7 +41,7 @@ export function Component(props: IComponentPropsExtended) {
             <CardTitle>Content types</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="page">
+            <Tabs defaultValue="file">
               <TabsList>
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="navbar">Navbar</TabsTrigger>

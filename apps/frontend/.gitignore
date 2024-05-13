@@ -35,3 +35,8 @@ coverage
 ############################
 !*.sql
 src/db/migrations/meta/*
+
+############################
+# Uploads
+############################
+/public/sps-file-storage

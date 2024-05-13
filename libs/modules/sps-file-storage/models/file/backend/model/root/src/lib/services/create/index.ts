@@ -9,6 +9,7 @@ import { insertRelations } from "@sps/shared-backend-api";
 
 export async function service(props: { data: any }) {
   const { data } = props;
+  console.log(`🚀 ~ service ~ data:`, data);
 
   const plainData = insertSchema.parse(data);
 

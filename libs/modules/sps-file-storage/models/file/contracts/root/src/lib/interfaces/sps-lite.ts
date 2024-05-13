@@ -18,4 +18,5 @@ export interface IModel {
   providerMetadata?: any;
   createdAt?: string;
   updatedAt?: string;
+  file: any;
 }

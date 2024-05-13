@@ -52,6 +52,17 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
+        <FormField
+          control={props.form.control}
+          name="file"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>File</FormLabel>
+              <Input {...field} id="file" type="file" />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </div>
     </div>
   );
