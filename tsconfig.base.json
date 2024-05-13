@@ -387,6 +387,15 @@
       "@sps/sps-ecommerce-models-product-frontend-redux": [
         "libs/modules/sps-ecommerce/models/product/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-file-storage-backend-app": [
+        "libs/modules/sps-file-storage/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-backend-models": [
+        "libs/modules/sps-file-storage/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-backend-schema": [
+        "libs/modules/sps-file-storage/backend/schema/root/src/index.ts"
+      ],
       "@sps/sps-file-storage-frontend": [
         "libs/modules/sps-file-storage/frontend/root/src/index.ts"
       ],

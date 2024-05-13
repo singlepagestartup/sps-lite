@@ -29,6 +29,10 @@ export class Coder {
     };
   }
 
+  /**
+   * @todo
+   * Attach to main /apps/frontend project
+   */
   async create() {
     await this.project.root.create();
   }
