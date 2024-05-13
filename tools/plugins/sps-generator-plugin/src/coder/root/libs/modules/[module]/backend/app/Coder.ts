@@ -32,4 +32,8 @@ export class Coder {
   async create() {
     await this.project.root.create();
   }
+
+  async remove() {
+    await this.project.root.remove();
+  }
 }

@@ -72,7 +72,7 @@ export class Coder {
   }
 
   async remove() {
-    this.project;
+    await this.project.backend.remove();
   }
 
   async createModel({ modelName }: { modelName: string }) {

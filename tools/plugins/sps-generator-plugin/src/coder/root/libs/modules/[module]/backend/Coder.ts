@@ -1,7 +1,8 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "../Coder";
-import { readdir } from "fs/promises";
 import { Coder as AppCoder } from "./app/Coder";
+import { Coder as ModelsCoder } from "./models/Coder";
+import { Coder as SchemaCoder } from "./schema/Coder";
 
 export class Coder {
   parent: ModuleCoder;
@@ -11,6 +12,8 @@ export class Coder {
   baseDirectory: string;
   project: {
     app: AppCoder;
+    models: ModelsCoder;
+    schema: SchemaCoder;
   };
 
   constructor({ tree, parent }: { tree: Tree; parent: ModuleCoder }) {
@@ -20,17 +23,37 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
+    const schema = new SchemaCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
+    const models = new ModelsCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     const app = new AppCoder({
       tree: this.tree,
       parent: this,
     });
 
     this.project = {
+      schema,
+      models,
       app,
     };
   }
 
   async create() {
+    await this.project.schema.create();
+    await this.project.models.create();
     await this.project.app.create();
+  }
+
+  async remove() {
+    await this.project.app.remove();
+    await this.project.models.remove();
+    await this.project.schema.remove();
   }
 }

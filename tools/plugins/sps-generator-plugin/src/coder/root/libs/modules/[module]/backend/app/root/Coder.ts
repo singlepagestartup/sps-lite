@@ -2,6 +2,7 @@ import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as AppCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../utils/create-sps-ts-library";
 import { util as getNameStyles } from "../../../../../../../utils/get-name-styles";
+import * as nxWorkspace from "@nx/workspace";
 import path from "path";
 
 export class Coder {
@@ -40,5 +41,19 @@ export class Coder {
     const projects = getProjects(this.tree);
 
     this.project = projects.get(this.baseName);
+  }
+
+  async remove() {
+    const project = getProjects(this.tree).get(this.baseName);
+
+    if (!project) {
+      return;
+    }
+
+    await nxWorkspace.removeGenerator(this.tree, {
+      projectName: this.baseName,
+      skipFormat: true,
+      forceRemove: true,
+    });
   }
 }
