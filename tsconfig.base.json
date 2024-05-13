@@ -2658,6 +2658,15 @@
       "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/redux/src/index.ts"
       ],
+      "@sps/startup-backend-app": [
+        "libs/modules/startup/backend/app/root/src/index.ts"
+      ],
+      "@sps/startup-backend-models": [
+        "libs/modules/startup/backend/models/root/src/index.ts"
+      ],
+      "@sps/startup-backend-schema": [
+        "libs/modules/startup/backend/schema/root/src/index.ts"
+      ],
       "@sps/startup-frontend": [
         "libs/modules/startup/frontend/root/src/index.ts"
       ],

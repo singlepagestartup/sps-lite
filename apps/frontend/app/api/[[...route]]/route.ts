@@ -3,15 +3,17 @@ import { handle } from "hono/vercel";
 import { type NextRequest } from "next/server";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-app";
 import { app as spsFileStorageApp } from "@sps/sps-file-storage-backend-app";
+import { app as startupApp } from "@sps/startup-backend-app";
 
 const app = new Hono().basePath("/api");
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);
+app.route("/startup", startupApp);
 
-const envs = process.env;
+// const envs = process.env;
 
-console.log(`🚀 ~ envs:`, envs);
+// console.log(`🚀 ~ envs:`, envs);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

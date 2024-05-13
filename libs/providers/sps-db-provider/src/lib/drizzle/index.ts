@@ -14,6 +14,7 @@ const modulesSchemaPaths = [
   path.resolve(__dirname, "./schema.ts"),
   path.resolve(__dirname, "./sps-website-builder.ts"),
   path.resolve(__dirname, "./sps-file-storage.ts"),
+  path.resolve(__dirname, "./startup.ts"),
 ];
 
 export const schemaPath = modulesSchemaPaths;
