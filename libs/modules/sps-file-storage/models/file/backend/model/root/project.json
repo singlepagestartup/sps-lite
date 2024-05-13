@@ -1,0 +1,12 @@
+{
+  "name": "@sps/sps-file-storage-models-file-backend-model",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-file-storage/models/file/backend/model/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}

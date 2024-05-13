@@ -31,7 +31,9 @@ export class Coder {
 
   /**
    * @todo
-   * Attach to main schema /libs/providers/sps-db-provider/src/lib/drizzle/< module_name >
+   * Attach to
+   * libs/providers/sps-db-provider/src/lib/drizzle/index.ts
+   * libs/providers/sps-db-provider/src/lib/drizzle/schema.ts
    */
   async create() {
     await this.project.root.create();
