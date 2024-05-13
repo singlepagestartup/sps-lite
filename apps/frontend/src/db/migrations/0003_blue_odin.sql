@@ -1,1 +1,0 @@
-ALTER TYPE "sps_w_b_nr_bk_variant" ADD VALUE 'simple-links-on-left';

@@ -1,1 +1,0 @@
-ALTER TYPE "sps_w_b_fr_bk_variant" ADD VALUE 'four-columns-with-company-mission';

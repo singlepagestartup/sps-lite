@@ -1,1 +1,0 @@
-ALTER TABLE "sps_w_b_button" ADD COLUMN "title" text;
