@@ -55,6 +55,18 @@ export class Coder {
     await this.project.module.init();
   }
 
+  async create({ moduleName }: { moduleName: string }) {
+    await this.init({ moduleName });
+
+    await this.project.module.create();
+  }
+
+  async remove({ moduleName }: { moduleName: string }) {
+    await this.init({ moduleName });
+
+    await this.project.module.remove();
+  }
+
   async createModel({
     modelName,
     moduleName,

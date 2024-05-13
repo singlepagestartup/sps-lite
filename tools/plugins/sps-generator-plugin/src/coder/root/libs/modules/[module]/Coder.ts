@@ -6,6 +6,7 @@ import {
   IEditRelationsProps,
   Coder as RelationsCoder,
 } from "./relations/Coder";
+import { Coder as BackendCoder } from "./backend/Coder";
 
 /**
  * Module Coder
@@ -22,6 +23,7 @@ export class Coder {
   project: {
     models?: ModelsCoder[];
     relations?: RelationsCoder[];
+    backend?: BackendCoder;
   };
 
   constructor({
@@ -39,6 +41,11 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
+    const backend = new BackendCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     const models = new ModelsCoder({
       tree: this.tree,
       parent: this,
@@ -52,11 +59,20 @@ export class Coder {
     this.project = {
       models: [models],
       relations: [relations],
+      backend,
     };
   }
 
   async init() {
     //
+  }
+
+  async create() {
+    await this.project.backend.create();
+  }
+
+  async remove() {
+    this.project;
   }
 
   async createModel({ modelName }: { modelName: string }) {

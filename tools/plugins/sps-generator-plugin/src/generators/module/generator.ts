@@ -7,7 +7,7 @@ import {
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
-import { CreateModuleGeneratorSchema } from "./schema";
+import { ModuleGeneratorSchema } from "./schema";
 import { Linter } from "@nx/eslint";
 import {
   libraryGenerator as reactLibraryGenerator,
@@ -15,16 +15,20 @@ import {
 } from "@nx/react";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
-import { Hono } from "hono";
+import { Coder } from "../../coder/Coder";
 
-export async function createModuleGenerator(
+export async function moduleGenerator(
   tree: Tree,
-  options: CreateModuleGeneratorSchema,
+  options: ModuleGeneratorSchema,
 ) {
-  const module = options.module;
+  const moduleName = options.module;
 
-  const baseName = `@sps/${module}`;
-  const baseDirectory = `libs/modules/${module}`;
+  const coder = new Coder({ tree });
+  if (options.action === "remove") {
+    await coder.removeModule({ moduleName });
+  } else {
+    await coder.createModule({ moduleName });
+  }
 
   // await createFrontendRoot({
   //   tree,
@@ -41,13 +45,13 @@ export async function createModuleGenerator(
   //   module,
   // });
 
-  await createBackendSchemaExtended({
-    tree,
-    baseName,
-    baseDirectory,
-    modelName: module,
-    module,
-  });
+  // await createBackendSchemaExtended({
+  //   tree,
+  //   baseName,
+  //   baseDirectory,
+  //   modelName: module,
+  //   module,
+  // });
 
   // await createBackendSchema({
   //   tree,
@@ -65,10 +69,10 @@ export async function createModuleGenerator(
   //   module,
   // });
 
-  await formatFiles(tree);
+  // await formatFiles(tree);
 }
 
-export default createModuleGenerator;
+export default moduleGenerator;
 
 async function createFrontendRoot({
   tree,

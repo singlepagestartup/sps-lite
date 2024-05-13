@@ -31,6 +31,22 @@ export class Coder {
     };
   }
 
+  async createModule({ moduleName }: { moduleName: string }) {
+    await this.project.root.createModule({
+      moduleName,
+    });
+
+    await formatFiles(this.tree);
+  }
+
+  async removeModule({ moduleName }: { moduleName: string }) {
+    await this.project.root.removeModule({
+      moduleName,
+    });
+
+    await formatFiles(this.tree);
+  }
+
   async createModel({
     moduleName,
     modelName,
@@ -39,6 +55,21 @@ export class Coder {
     modelName: string;
   }) {
     await this.project.root.createModel({
+      moduleName,
+      modelName,
+    });
+
+    await formatFiles(this.tree);
+  }
+
+  async removeModel({
+    moduleName,
+    modelName,
+  }: {
+    moduleName: string;
+    modelName: string;
+  }) {
+    await this.project.root.removeModel({
       moduleName,
       modelName,
     });
@@ -83,21 +114,6 @@ export class Coder {
       moduleName,
       variantLevel: level,
       variantName: variant,
-    });
-
-    await formatFiles(this.tree);
-  }
-
-  async removeModel({
-    moduleName,
-    modelName,
-  }: {
-    moduleName: string;
-    modelName: string;
-  }) {
-    await this.project.root.removeModel({
-      moduleName,
-      modelName,
     });
 
     await formatFiles(this.tree);

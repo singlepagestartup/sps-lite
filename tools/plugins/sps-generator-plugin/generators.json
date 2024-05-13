@@ -15,15 +15,10 @@
       "schema": "./src/generators/backend-variant/schema.json",
       "description": "backend variant generator"
     },
-    "create-module": {
-      "factory": "./src/generators/create-module/generator",
-      "schema": "./src/generators/create-module/schema.json",
-      "description": "create-module generator"
-    },
-    "remove-module": {
-      "factory": "./src/generators/remove-module/generator",
-      "schema": "./src/generators/remove-module/schema.json",
-      "description": "remove-module generator"
+    "module": {
+      "factory": "./src/generators/module/generator",
+      "schema": "./src/generators/module/schema.json",
+      "description": "module generator"
     },
     "schema-field": {
       "factory": "./src/generators/schema-field/generator",

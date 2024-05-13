@@ -33,6 +33,17 @@ export class Coder {
     };
   }
 
+  async createModule({ moduleName }: { moduleName: string }) {
+    await this.project.libs.createModule({
+      moduleName,
+    });
+  }
+
+  async removeModule({ moduleName }: { moduleName: string }) {
+    await this.project.libs.removeModule({
+      moduleName,
+    });
+  }
   async createModel({
     modelName,
     moduleName,
