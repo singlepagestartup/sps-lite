@@ -15,7 +15,7 @@ import { api } from "@sps/sps-file-storage-models-file-frontend-api-client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-// import { Component as AdminForm } from "@sps/sps-website-builder-models-file-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminForm } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
@@ -52,11 +52,11 @@ export function Component(props: IComponentPropsExtended) {
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-            {/* <AdminForm
+            <AdminForm
               isServer={false}
               variant="admin-form"
               data={props.data}
-            /> */}
+            />
           </DialogContent>
         </Dialog>
 

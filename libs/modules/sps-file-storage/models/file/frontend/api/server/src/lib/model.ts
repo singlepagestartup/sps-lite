@@ -7,6 +7,6 @@ import {
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
-export const tag = "upload";
-export const route = "upload/files";
+export const tag = "file";
+export const route = "files";
 export const populate = modelPopulate;

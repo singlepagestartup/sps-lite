@@ -1,5 +1,7 @@
+export const variants = ["default"] as const;
+
 export interface IModel {
-  id: number;
+  id: string;
   url: string;
   alternativeText: string | null;
   name: string;

@@ -25,6 +25,7 @@ import { Component as FooterBlockSpsLiteAdminTable } from "@sps/sps-website-buil
 import { Component as SliderBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table";
 import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table";
+import { Component as FileSpsLiteAdminTable } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -48,6 +49,7 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="logotype">Logotype</TabsTrigger>
                 <TabsTrigger value="button">Button</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
+                <TabsTrigger value="file">Files</TabsTrigger>
                 <TabsTrigger value="slider">Slider</TabsTrigger>
                 <TabsTrigger value="slide">Slide</TabsTrigger>
                 <TabsTrigger value="widget">Widget</TabsTrigger>
@@ -91,6 +93,9 @@ export function Component(props: IComponentPropsExtended) {
                   isServer={false}
                   variant="admin-table"
                 />
+              </TabsContent>
+              <TabsContent value="file">
+                <FileSpsLiteAdminTable isServer={false} variant="admin-table" />
               </TabsContent>
               <TabsContent value="slider">
                 <SliderSpsLiteAdminTable
