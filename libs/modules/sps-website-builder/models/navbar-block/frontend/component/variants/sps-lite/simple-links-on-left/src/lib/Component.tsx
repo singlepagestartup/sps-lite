@@ -4,10 +4,10 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/shadcn";
 import { Component as NavbarsToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component";
+import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -47,16 +47,18 @@ function DisclosureInner({
         <div className="flex w-full h-16 justify-between">
           <div className="flex w-full px-2 lg:px-0 justify-between">
             <div className="flex items-center">
-              <div className="py-4 items-center justify-center">
-                <p className="text-3xl font-bold">Single Page Startup</p>
-              </div>
-              {/* {props.data.logotype ? (
-                <Logotype
-                  isServer={false}
-                  data={props.data.logotype}
-                  variant="default"
-                />
-              ) : null} */}
+              {props.data.SPSWBNavbarBlocksToLogotypes.map(
+                (navbarBlocksToLogotype, index) => {
+                  return (
+                    <NavbarsToLogotypes
+                      key={index}
+                      variant="default"
+                      isServer={false}
+                      data={navbarBlocksToLogotype}
+                    />
+                  );
+                },
+              )}
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.data.SPSWBNavbarBlocksToButtons.map(
                   (navbarBlockToButton, index) => {

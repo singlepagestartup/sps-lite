@@ -1,3 +1,5 @@
+import { model as navbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-model";
+import { model as logotype } from "@sps/sps-website-builder-models-logotype-backend-model";
 import { model as heroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-model";
 import { model as navbarBlocksToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-model";
 import { model as button } from "@sps/sps-website-builder-models-button-backend-model";
@@ -26,6 +28,8 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  navbarBlocksToLogotypes,
+  logotype,
   heroSectionBlocksToButtons,
   navbarBlocksToButtons,
   button,

@@ -17,6 +17,7 @@ import {
 } from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
 import { Component as NavbarBlocksToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
+import { Component as NavbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -69,6 +70,19 @@ export function Component(props: IComponentPropsExtended) {
           isServer={false}
           variant="select-right"
         />
+        {props.data?.SPSWBNavbarBlocksToLogotypes.map(
+          (navbarBlocksToLogotypes, index) => {
+            return (
+              <NavbarBlocksToLogotypes
+                key={index}
+                variant="select-right"
+                isServer={false}
+                data={navbarBlocksToLogotypes}
+              />
+            );
+          },
+        )}
+        <NavbarBlocksToLogotypes variant="select-right" isServer={false} />
       </div>
     </div>
   );

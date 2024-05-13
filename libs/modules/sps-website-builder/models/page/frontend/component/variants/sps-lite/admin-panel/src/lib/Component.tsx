@@ -18,6 +18,7 @@ import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder-m
 import { Component as HeroSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as NavbarSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table";
 import { Component as FooterSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table";
+import { Component as LogotypeSpsLiteAdminTable } from "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-table";
 import { Component as ButtonSpsLiteAdminTable } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-table";
 import { Component as NavbarBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as FooterBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table";
@@ -44,6 +45,7 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="navbar">Navbar</TabsTrigger>
                 <TabsTrigger value="footer">Footer</TabsTrigger>
+                <TabsTrigger value="logotype">Logotype</TabsTrigger>
                 <TabsTrigger value="button">Button</TabsTrigger>
                 <TabsTrigger value="layout">Layout</TabsTrigger>
                 <TabsTrigger value="slider">Slider</TabsTrigger>
@@ -68,6 +70,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="footer">
                 <FooterSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="logotype">
+                <LogotypeSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

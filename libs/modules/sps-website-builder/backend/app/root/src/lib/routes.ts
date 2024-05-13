@@ -1,3 +1,5 @@
+import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-app";
+import { app as logotype } from "@sps/sps-website-builder-models-logotype-backend-app";
 import { app as heroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-app";
 import { app as navbarBlocksToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-app";
 import { app as button } from "@sps/sps-website-builder-models-button-backend-app";
@@ -26,6 +28,8 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/navbar-blocks-to-logotypes": navbarBlocksToLogotypes,
+  "/logotypes": logotype,
   "/hero-section-blocks-to-buttons": heroSectionBlocksToButtons,
   "/navbar-blocks-to-buttons": navbarBlocksToButtons,
   "/buttons": button,

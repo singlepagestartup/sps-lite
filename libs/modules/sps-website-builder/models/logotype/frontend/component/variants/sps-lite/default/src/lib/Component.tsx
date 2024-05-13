@@ -13,7 +13,8 @@ export function Component(props: IComponentPropsExtended) {
       className={`relative ${props.data.className || "w-full"}`}
       href={props.data.url || ""}
     >
-      {props.data.media?.length ? (
+      <div className="p-5 bg-black"></div>
+      {/* {props.data.media?.length ? (
         <File
           isServer={props.isServer}
           variant="image"
@@ -21,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
           containerClassName=""
           className="object-contain object-left"
         />
-      ) : null}
+      ) : null} */}
     </Comp>
   );
 }

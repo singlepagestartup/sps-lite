@@ -1,4 +1,13 @@
 export {
+  Table as SPSWBNavbarBlocksToLogotypes,
+  Relations as SPSWBNavbarBlocksToLogotypesRelations,
+} from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-schema";
+export {
+  Table as SPSWBLogotype,
+  Relations as SPSWBLogotypeRelations,
+  VariantEnumTable as SPSWBLogotypeVariantEnumTable,
+} from "@sps/sps-website-builder-models-logotype-backend-schema";
+export {
   Table as SPSWBHeroSectionBlocksToButtons,
   Relations as SPSWBHeroSectionBlocksToButtonsRelations,
 } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-schema";
