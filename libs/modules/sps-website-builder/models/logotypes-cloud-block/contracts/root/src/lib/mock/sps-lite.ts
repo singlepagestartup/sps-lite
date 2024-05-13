@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   id: 5,
   __component: "page-blocks.logotypes-cloud-block",
   variant: "simple-with-heading",

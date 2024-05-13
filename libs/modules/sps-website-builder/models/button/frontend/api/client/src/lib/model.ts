@@ -8,5 +8,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "button";
-export const route = "components/elements.button";
+export const route = "buttons";
 export const populate = modelPopulate;

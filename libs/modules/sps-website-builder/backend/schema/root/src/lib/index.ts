@@ -1,4 +1,9 @@
 export {
+  Table as SPSWBButton,
+  Relations as SPSWBButtonRelations,
+  VariantEnumTable as SPSWBButtonVariantEnumTable,
+} from "@sps/sps-website-builder-models-button-backend-schema";
+export {
   Table as SPSWBSlidersToSlides,
   Relations as SPSWBSlidersToSlidesRelations,
 } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-schema";

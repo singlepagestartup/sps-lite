@@ -1,3 +1,4 @@
+import { app as button } from "@sps/sps-website-builder-models-button-backend-app";
 import { app as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-app";
 import { app as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-app";
 import { app as slide } from "@sps/sps-website-builder-models-slide-backend-app";
@@ -23,6 +24,7 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/buttons": button,
   "/sliders-to-slides": slidersToSlides,
   "/slider-blocks-to-sliders": sliderBlocksToSliders,
   "/slides": slide,

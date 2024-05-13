@@ -1,7 +1,7 @@
 import type { IModel } from "../interfaces/sps-lite";
 // import { entity as file } from "@sps/sps-file-storage-frontend/lib/redux/entities/file/mock/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   id: 1,
   title: "Single Page Startup",
   uid: "single-page-startup",

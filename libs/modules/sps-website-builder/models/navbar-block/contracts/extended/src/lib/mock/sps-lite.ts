@@ -3,7 +3,7 @@ import { spsLiteEntity as logotype } from "@sps/sps-website-builder-models-logot
 import { spsLiteEntity as button } from "@sps/sps-website-builder-models-button-contracts";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   logotype: logotype,
   buttons: [button, button],

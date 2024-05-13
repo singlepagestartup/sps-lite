@@ -3,7 +3,7 @@ import { spsLiteEntity as feature } from "@sps/sps-website-builder-models-featur
 import { spsLiteEntity as file } from "@sps/sps-file-storage-models-file-contracts";
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   features: Array(4).fill(feature),
   media: [file],

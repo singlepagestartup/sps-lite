@@ -2,7 +2,7 @@ import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-l
 import type { IModel } from "../interfaces/sps-lite";
 import { spsLiteEntity as file } from "@sps/sps-file-storage-models-file-contracts";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   media: [file],
   additionalMedia: [file],

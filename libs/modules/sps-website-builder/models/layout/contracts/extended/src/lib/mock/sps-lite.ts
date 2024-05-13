@@ -1,7 +1,7 @@
 import type { IModel } from "../interfaces/sps-lite";
 import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-layout-contracts";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   sidebar: null,
   topbar: null,

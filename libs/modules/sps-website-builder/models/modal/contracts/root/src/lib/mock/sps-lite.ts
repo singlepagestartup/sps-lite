@@ -1,6 +1,6 @@
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   id: 1,
   title: "Hello world",
   uid: "hello-world",

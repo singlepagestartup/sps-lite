@@ -2,7 +2,7 @@ import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-f
 import { spsLiteEntity as faq } from "@sps/sps-website-builder-models-faq-contracts";
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   faqs: Array(4).fill(faq),
 };

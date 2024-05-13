@@ -1,6 +1,6 @@
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   id: 1,
   title: "Main Menu",
   uid: "main-menu",

@@ -1,6 +1,6 @@
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   id: 56,
   __component: "elements.input",
   placeholder: "Type your name",

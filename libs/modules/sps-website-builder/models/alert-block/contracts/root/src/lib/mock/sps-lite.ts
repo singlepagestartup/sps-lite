@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   id: 1,
   __component: "page-blocks.alert-block",
   title: faker.lorem.sentence(),

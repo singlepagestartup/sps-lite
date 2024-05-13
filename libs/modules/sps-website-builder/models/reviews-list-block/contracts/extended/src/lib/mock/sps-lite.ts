@@ -1,6 +1,6 @@
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   id: 5,
   __component: "page-blocks.reviews-list-block",
   variant: "simple-with-avatars",

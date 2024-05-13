@@ -11,6 +11,7 @@ export interface Props {
   additionalAttributes?: Record<string, string>;
   "data-ui": "button";
   "data-ui-variant":
+    | "default"
     | "primary"
     | "destructive"
     | "outline"

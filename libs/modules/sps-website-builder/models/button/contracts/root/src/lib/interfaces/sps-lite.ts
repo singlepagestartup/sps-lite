@@ -1,4 +1,5 @@
 export const variants = [
+  "default",
   "primary",
   "secondary",
   "destructive",
@@ -8,8 +9,7 @@ export const variants = [
 ] as const;
 
 export interface IModel {
-  id: number;
-  __component?: "elements.button";
+  id: string;
   variant: (typeof variants)[number];
   title: string | null;
   url: string | null;

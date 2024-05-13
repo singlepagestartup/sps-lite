@@ -3,7 +3,7 @@ import { spsLiteEntity as button } from "@sps/sps-website-builder-models-button-
 import { spsLiteEntity as file } from "@sps/sps-file-storage-models-file-contracts";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   buttons: [{ ...button }],
   media: [file],

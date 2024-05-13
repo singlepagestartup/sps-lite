@@ -142,20 +142,13 @@ export function Component(props: IComponentPropsExtended) {
             );
           })}
           <div className="submit-button-container">
-            {props.data.button ? (
-              <Button
-                isServer={false}
-                variant={props.data.button.variant}
-                data={props.data.button}
-                onClick={handleSubmit(onSubmit)}
-              />
-            ) : (
-              <UiButton
-                ui="sps"
-                data-ui-variant="primary"
-                onClick={handleSubmit(onSubmit)}
-              />
-            )}
+            <UiButton
+              ui="sps"
+              data-ui-variant="primary"
+              onClick={handleSubmit(onSubmit)}
+            >
+              {props.data?.button?.title || "Submit"}
+            </UiButton>
           </div>
         </FormProvider>
       </div>

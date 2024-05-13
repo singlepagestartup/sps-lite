@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   id: 9,
   title: faker.lorem.sentence(),
   description: faker.lorem.paragraph(),

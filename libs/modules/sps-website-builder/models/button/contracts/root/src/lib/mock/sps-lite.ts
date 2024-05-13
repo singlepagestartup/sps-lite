@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import type { IModel } from "../interfaces";
 
-export const entity: IModel = {
+export const entity = {
   id: 4,
   title: faker.lorem.words(3),
   url: faker.internet.url(),

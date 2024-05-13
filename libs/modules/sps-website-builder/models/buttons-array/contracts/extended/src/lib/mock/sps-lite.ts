@@ -2,7 +2,7 @@ import { spsLiteEntity as parentEntity } from "@sps/sps-website-builder-models-b
 import { spsLiteEntity as button } from "@sps/sps-website-builder-models-button-contracts";
 import type { IModel } from "../interfaces/sps-lite";
 
-export const entity: IModel = {
+export const entity = {
   ...parentEntity,
   buttons: [button, button],
 };
