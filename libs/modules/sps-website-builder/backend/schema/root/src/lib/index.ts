@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBFSBTF,
+  Relations as SPSWBFSBTFRelations,
+} from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
+export {
   Table as SPSWBWTFSBBlocks,
   Relations as SPSWBWTFSBBlocksRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-schema";

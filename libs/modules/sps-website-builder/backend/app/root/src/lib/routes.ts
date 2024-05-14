@@ -1,3 +1,4 @@
+import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-app";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-app";
 import { app as feature } from "@sps/sps-website-builder-models-feature-backend-app";
 import { app as featuresSectionBlock } from "@sps/sps-website-builder-models-features-section-block-backend-app";
@@ -31,6 +32,7 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,
   "/features-section-blocks": featuresSectionBlock,
