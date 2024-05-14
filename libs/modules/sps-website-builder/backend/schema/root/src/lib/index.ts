@@ -1,4 +1,22 @@
 export {
+  Table as SPSWBFeaturesSectionBlocksToFeatures,
+  Relations as SPSWBFeaturesSectionBlocksToFeaturesRelations,
+} from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
+export {
+  Table as SPSWBWidgetsToFeaturesSectionBlocks,
+  Relations as SPSWBWidgetsToFeaturesSectionBlocksRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-schema";
+export {
+  Table as SPSWBFeature,
+  Relations as SPSWBFeatureRelations,
+  VariantEnumTable as SPSWBFeatureVariantEnumTable,
+} from "@sps/sps-website-builder-models-feature-backend-schema";
+export {
+  Table as SPSWBFeaturesSectionBlock,
+  Relations as SPSWBFeaturesSectionBlockRelations,
+  VariantEnumTable as SPSWBFeaturesSectionBlockVariantEnumTable,
+} from "@sps/sps-website-builder-models-features-section-block-backend-schema";
+export {
   Table as SPSWBNavbarBlocksToLogotypes,
   Relations as SPSWBNavbarBlocksToLogotypesRelations,
 } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-schema";

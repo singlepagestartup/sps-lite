@@ -1,3 +1,4 @@
+import { populate as featuresSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-features-section-blocks";
 import { populate as sliderBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-slider-blocks";
 import { populate as footerBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-footer-blocks";
 import { populate as footers } from "@sps/sps-website-builder-models-widget-backend-schema-relations-footers";
@@ -6,6 +7,7 @@ import { populate as navbars } from "@sps/sps-website-builder-models-widget-back
 import { populate as heroSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-hero-section-blocks";
 import { populate as pages } from "@sps/sps-website-builder-models-widget-backend-schema-relations-pages";
 export const populate = {
+  ...featuresSectionBlocks,
   ...sliderBlocks,
   ...footerBlocks,
   ...footers,
