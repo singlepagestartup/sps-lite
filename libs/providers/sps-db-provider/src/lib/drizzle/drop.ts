@@ -1,8 +1,5 @@
-import { postgres } from "@sps/shared-backend-database-config";
 import { sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/postgres-js";
-
-const db = drizzle(postgres);
+import { db } from "./index";
 
 export const drop = async () => {
   try {

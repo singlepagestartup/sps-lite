@@ -1,4 +1,4 @@
-import { IModel as IParentModel, variants as parentVariants } from "./sps-lite";
+import { IModel as IParentModel, variants as parentVariants } from "./startup";
 
 export const variants = [...parentVariants] as const;
 

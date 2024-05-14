@@ -1,11 +1,8 @@
-import { postgres } from "@sps/shared-backend-database-config";
 import { MigrationConfig } from "drizzle-orm/migrator";
-import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate as drizzleMigrator } from "drizzle-orm/postgres-js/migrator";
 import path from "path";
 import { cwd } from "process";
-
-const db = drizzle(postgres);
+import { db } from "./index";
 
 /**
  * Error while trying to migrate

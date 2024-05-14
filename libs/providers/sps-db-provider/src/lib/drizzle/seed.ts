@@ -1,16 +1,12 @@
-import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
-import { postgres } from "@sps/shared-backend-database-config";
-
-const db = drizzle(postgres, {
-  schema,
-});
+import { db } from "./index";
 
 export const seed = async () => {
   try {
-    console.log("Seeding database");
-    // Delete all data
+    console.log("Seeding database started...");
+    const pages = await db.query.SPSWBPage.findMany();
 
+    console.log("Seeding database finished successfully");
     process.exit(0);
   } catch (error) {
     console.error(error);
