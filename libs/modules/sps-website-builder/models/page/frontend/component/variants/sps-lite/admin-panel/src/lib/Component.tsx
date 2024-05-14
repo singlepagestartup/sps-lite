@@ -26,6 +26,7 @@ import { Component as SliderBlockSpsLiteAdminTable } from "@sps/sps-website-buil
 import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table";
 import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table";
 import { Component as FileSpsLiteAdminTable } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-table";
+import { Component as FeaturesSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -59,6 +60,9 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="navbar-block">Navbar Block</TabsTrigger>
                 <TabsTrigger value="footer-block">Footer Block</TabsTrigger>
                 <TabsTrigger value="slider-block">Slider Block</TabsTrigger>
+                <TabsTrigger value="features-section-block">
+                  Features Section Block
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="page">
@@ -135,6 +139,12 @@ export function Component(props: IComponentPropsExtended) {
               </TabsContent>
               <TabsContent value="slider-block">
                 <SliderBlockSpsLiteAdminTable
+                  isServer={false}
+                  variant="admin-table"
+                />
+              </TabsContent>
+              <TabsContent value="features-section-block">
+                <FeaturesSectionBlockSpsLiteAdminTable
                   isServer={false}
                   variant="admin-table"
                 />

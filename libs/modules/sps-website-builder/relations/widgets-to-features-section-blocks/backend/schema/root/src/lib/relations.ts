@@ -7,10 +7,12 @@ export const Relations = relations(Table, ({ one }) => ({
   widget: one(Widget, {
     fields: [Table.widgetId],
     references: [Widget.id],
+    relationName: "widget",
   }),
   featuresSectionBlock: one(FeaturesSectionBlock, {
     fields: [Table.featuresSectionBlockId],
     references: [FeaturesSectionBlock.id],
+    relationName: "featuresSectionBlock",
   }),
 }));
 

@@ -12,14 +12,14 @@ export async function service(params?: { filter?: any }) {
     where: params?.filter,
   });
 
-  const transformedResult = result.map((entity) => {
-    const transformedEntity = transformData<(typeof result)[0], typeof config>({
-      entity,
-      config,
-    });
+  // const transformedResult = result.map((entity) => {
+  //   const transformedEntity = transformData<(typeof result)[0], typeof config>({
+  //     entity,
+  //     config,
+  //   });
 
-    return transformedEntity;
-  });
+  //   return transformedEntity;
+  // });
 
-  return transformedResult;
+  return result;
 }

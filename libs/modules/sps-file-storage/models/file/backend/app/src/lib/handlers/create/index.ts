@@ -25,7 +25,8 @@ export const handler = async (
 
     const buffer = await (file as File).arrayBuffer();
 
-    const root = path.join(process.cwd());
+    // const root = path.join(process.cwd());
+    const root = "";
     const storagePath = "public/sps-file-storage";
     const filePath = path.join(root, storagePath, file.name);
 

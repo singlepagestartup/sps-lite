@@ -1,7 +1,7 @@
-export const variants = ["with-icon"] as const;
+export const variants = ["default", "with-icon"] as const;
 
 export interface IModel {
-  id: number;
+  id: string;
   __component: "page-blocks.features-section-block";
   variant: (typeof variants)[number];
   title: string | null;

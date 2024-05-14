@@ -13,5 +13,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "features-section-block";
-export const route = "components/page-blocks.features-section-block";
+export const route = "features-section-blocks";
 export const populate = modelPopulate;

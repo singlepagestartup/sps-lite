@@ -1,4 +1,7 @@
-import { IModel as IParentModel, variants as parentVariants } from "./startup";
+import {
+  IRelation as IParentRelation,
+  variants as parentVariants,
+} from "./startup";
 
 export const variants = [...parentVariants] as const;
 

@@ -1,10 +1,6 @@
 export {
-  Table as SPSWBFeaturesSectionBlocksToFeatures,
-  Relations as SPSWBFeaturesSectionBlocksToFeaturesRelations,
-} from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
-export {
-  Table as SPSWBWidgetsToFeaturesSectionBlocks,
-  Relations as SPSWBWidgetsToFeaturesSectionBlocksRelations,
+  Table as SPSWBWTFSBBlocks,
+  Relations as SPSWBWTFSBBlocksRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-schema";
 export {
   Table as SPSWBFeature,

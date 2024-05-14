@@ -19,8 +19,8 @@ import {
 } from "@sps/shadcn";
 import { IComponentPropsExtended } from "./interface";
 import { PlusIcon } from "@heroicons/react/24/outline";
-// import { Component as AdminForm } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-form";
-// import { Component as AdminTableRow } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table-row";
+import { Component as AdminForm } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminTableRow } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table-row";
 
 export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
@@ -47,10 +47,7 @@ export function Component(props: IComponentPropsExtended) {
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-                {/* <AdminForm
-                  isServer={false}
-                  variant="admin-form"
-                /> */}
+                <AdminForm isServer={false} variant="admin-form" />
               </DialogContent>
             </Dialog>
           </div>
@@ -69,7 +66,7 @@ export function Component(props: IComponentPropsExtended) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {/* {props.data.map((entity, index) => {
+              {props.data.map((entity, index) => {
                 return (
                   <AdminTableRow
                     key={index}
@@ -78,7 +75,7 @@ export function Component(props: IComponentPropsExtended) {
                     data={entity}
                   />
                 );
-              })} */}
+              })}
             </TableBody>
           </Table>
         </CardContent>
