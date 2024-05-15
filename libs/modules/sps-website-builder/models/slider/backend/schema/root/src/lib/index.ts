@@ -1,7 +1,6 @@
 export {
   modelName,
   Table,
-  VariantEnumTable,
   insertSchema,
   selectSchema,
 } from "@sps/sps-website-builder-models-slider-backend-schema-table";

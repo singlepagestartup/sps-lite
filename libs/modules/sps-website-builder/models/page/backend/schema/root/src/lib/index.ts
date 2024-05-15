@@ -1,6 +1,5 @@
 export {
   Table,
-  VariantEnumTable,
   insertSchema,
   selectSchema,
   modelName,

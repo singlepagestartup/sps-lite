@@ -41,8 +41,5 @@ export const relation = <TTableName extends string>(
 };
 
 export const populate = {
-  // [modelName]: {
-  //   with: parentPopulate,
-  // },
   widgetsToFeaturesSectionBlocks: true,
-};
+} as const;

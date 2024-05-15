@@ -41,4 +41,4 @@ export const relation = <TTableName extends string>(
 
 export const populate = {
   widgetsToFeaturesSectionBlocks: true,
-};
+} as const;

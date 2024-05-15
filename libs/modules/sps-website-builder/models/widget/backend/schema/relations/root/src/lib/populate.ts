@@ -15,4 +15,4 @@ export const populate = {
   ...navbars,
   ...heroSectionBlocks,
   ...pages,
-};
+} as const;
