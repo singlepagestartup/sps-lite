@@ -3,8 +3,8 @@ export {
   Relations as SPSWBFSBTFRelations,
 } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
 export {
-  Table as SPSWBWTFSBBlocks,
-  Relations as SPSWBWTFSBBlocksRelations,
+  Table as SPSWBWTFSB,
+  Relations as SPSWBWTFSBRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-schema";
 export {
   Table as SPSWBFeature,

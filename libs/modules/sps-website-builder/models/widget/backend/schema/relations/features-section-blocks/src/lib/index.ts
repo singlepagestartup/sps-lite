@@ -35,12 +35,14 @@ export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
 ) => {
   return {
-    [modelName]: helpers.many(Table),
+    // [modelName]: helpers.many(Table),
+    widgetsToFeaturesSectionBlocks: helpers.many(Table),
   };
 };
 
 export const populate = {
-  [modelName]: {
-    with: parentPopulate,
-  },
+  // [modelName]: {
+  //   with: parentPopulate,
+  // },
+  widgetsToFeaturesSectionBlocks: true,
 };

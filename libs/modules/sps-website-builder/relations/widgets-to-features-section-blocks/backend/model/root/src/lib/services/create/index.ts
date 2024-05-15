@@ -12,13 +12,13 @@ export async function service(props: { data: any }) {
 
   const [entity] = await db.insert(Table).values(plainData).returning();
 
-  const transformedEntity = await findById({
-    id: entity.id,
-  });
+  // const transformedEntity = await findById({
+  //   id: entity.id,
+  // });
 
-  if (!transformedEntity) {
-    throw new Error("Entity not found");
-  }
+  // if (!transformedEntity) {
+  //   throw new Error("Entity not found");
+  // }
 
-  return transformedEntity;
+  return entity;
 }

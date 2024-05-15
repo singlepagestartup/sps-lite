@@ -8,9 +8,10 @@ import { transformData } from "@sps/shared-backend-api";
 
 export async function service(params?: { filter?: any }) {
   const result = await db.query[modelName].findMany({
-    with: populate,
     where: params?.filter,
   });
+
+  // result[0];
 
   // const transformedResult = result.map((entity) => {
   //   const transformedEntity = transformData<(typeof result)[0], typeof config>({

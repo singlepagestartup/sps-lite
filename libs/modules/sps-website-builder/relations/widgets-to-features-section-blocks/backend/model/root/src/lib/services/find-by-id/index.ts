@@ -11,7 +11,6 @@ export async function service(props: { id: string }) {
 
   const result = await db.query[modelName].findFirst({
     where: eq(Table.id, id),
-    with: populate,
   });
 
   if (!result) {

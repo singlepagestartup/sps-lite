@@ -69,3 +69,7 @@ Create new generator
 ```bash
 nx generate @nx/plugin:generator sps-create-ts-library --project=@sps/sps-generator-plugin --directory=tools/plugins/sps-generator-plugin/src/generators/sps-create-ts-library --dry-run
 ```
+
+# To Do
+
+[ ] Remove enums from database, use plain string fields. Vercel not allows to delete enums from tables
