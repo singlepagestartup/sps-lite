@@ -1,5 +1,5 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Component as Feature } from "@sps/sps-website-builder-models-feature-frontend-component";
+// import { Component as Feature } from "@sps/sps-website-builder-models-feature-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
@@ -28,14 +28,14 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
       </div>
       <dl className="space-y-10 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-        {props.data.features?.map((feature, index) => (
+        {/* {props.data.features?.map((feature, index) => (
           <Feature
             isServer={props.isServer}
             key={index}
             variant="default"
             data={feature}
           />
-        ))}
+        ))} */}
       </dl>
     </div>
   );

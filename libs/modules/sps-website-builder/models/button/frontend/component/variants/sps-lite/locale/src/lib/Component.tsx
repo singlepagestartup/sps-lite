@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/ui-adapter";
-import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+// import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -16,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
       {...(props.onClick ? { onClick: props.onClick } : {})}
     >
       <div className="button-container">
-        {props.data.media ? (
+        {/* {props.data.media ? (
           <div
             className="media-container"
             data-has-hover={props.data.media?.length > 1}
@@ -40,9 +40,9 @@ export function Component(props: IComponentPropsExtended) {
               />
             ) : null}
           </div>
-        ) : null}
+        ) : null} */}
         {props.data.title}
-        {props.data.additionalMedia ? (
+        {/* {props.data.additionalMedia ? (
           <div
             className="media-container"
             data-has-hover={props.data.additionalMedia?.length > 1}
@@ -66,7 +66,7 @@ export function Component(props: IComponentPropsExtended) {
               />
             ) : null}
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </Button>
   );

@@ -10,6 +10,10 @@ import { api } from "<%= api_server_import_path %>";
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
   if (props.data) {
+    if (!props.data.id) {
+      return <></>;
+    }
+    
     const data = await api.fetch.findById({
       id: props.data.id,
     });

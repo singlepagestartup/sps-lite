@@ -13,5 +13,4 @@ export type IComponentProps =
   | IAdminFormInputsComponentProps
   | IAdminFormComponentProps
   | IDefaultComponentProps
-  | ICenteredLogotypeComponentProps
-  | ISimpleLinksOnLeftComponentProps;
+  | ICenteredLogotypeComponentProps;

@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant="boxed"
       className={props.data.className || ""}
     >
-      {props.data.SPSWBLayoutsToNavbars.map((layoutsToNavbars, index) => {
+      {props.data.layoutsToNavbars.map((layoutsToNavbars, index) => {
         return (
           <LayoutsToNavbars
             isServer={props.isServer}
@@ -21,7 +21,7 @@ export function Component(props: IComponentPropsExtended) {
         );
       })}
       <div className="w-full mx-auto max-w-7xl">{props.children}</div>
-      {props.data.SPSWBLayoutsToFooters.map((layoutsToFooters, index) => {
+      {props.data.layoutsToFooters.map((layoutsToFooters, index) => {
         return (
           <LayoutsToFooters
             key={index}

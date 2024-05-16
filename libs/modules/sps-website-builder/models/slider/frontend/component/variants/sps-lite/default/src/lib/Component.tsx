@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full py-10 text-center flex flex-col gap-1"
     >
-      {props.data.SPSWBSlidersToSlides.map((slidersToSlides, index) => {
+      {props.data.slidersToSlides.map((slidersToSlides, index) => {
         return (
           <SlidersToSlides
             key={index}

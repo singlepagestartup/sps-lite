@@ -53,7 +53,7 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        {props.data?.SPSWBSlidersToSlides.map((sliderToSlide, index) => {
+        {props.data?.slidersToSlides.map((sliderToSlide, index) => {
           return (
             <SlidersToSlidesSpsLiteSelectRight
               key={index}

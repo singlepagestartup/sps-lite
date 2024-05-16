@@ -11,5 +11,4 @@ export type IComponentProps =
   | IAdminFormInputsComponentProps
   | IAdminTableRowComponentProps
   | IAdminTableComponentProps
-  | IDefaultComponentProps
-  | IBoxedComponentProps;
+  | IDefaultComponentProps;

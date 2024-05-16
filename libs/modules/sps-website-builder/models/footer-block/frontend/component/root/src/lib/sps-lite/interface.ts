@@ -12,5 +12,4 @@ export type IComponentProps =
   | IAdminSelectInputComponentProps
   | IAdminFormInputsComponentProps
   | IAdminFormComponentProps
-  | IDefaultComponentProps
-  | IFourColumnsWithCompanyMissionComponentProps;
+  | IDefaultComponentProps;

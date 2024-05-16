@@ -1,11 +1,11 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
+import type { IRelation as IParentRelation } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
 import {
-  IModel as IParentModelExtended,
+  IRelation as IParentRelationExtended,
   populate as relationPopulate,
 } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts-extended";
 
-export interface IModel extends IParentModel {}
-export interface IModelExtended extends IParentModelExtended {}
+export interface IRelation extends IParentRelation {}
+export interface IRelationExtended extends IParentRelationExtended {}
 
 export const tag = "widgets-to-hero-section-blocks";
 export const route = "widgets-to-hero-section-blocks";

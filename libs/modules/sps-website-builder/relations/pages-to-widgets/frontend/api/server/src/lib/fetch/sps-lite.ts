@@ -2,12 +2,12 @@ import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
 import {
   populate,
   route,
-  IModelExtended,
+  IRelationExtended,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-api-model";
 
 export const api = {
   findById: async ({ id }: { id: number | string }) => {
-    return await utilsFetch.api.findOne<IModelExtended>({
+    return await utilsFetch.api.findOne<IRelationExtended>({
       id,
       model: route,
       populate,
@@ -15,7 +15,7 @@ export const api = {
     });
   },
   find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
+    return await utilsFetch.api.find<IRelationExtended>({
       model: route,
       populate,
       rootPath: "/api/sps-website-builder",

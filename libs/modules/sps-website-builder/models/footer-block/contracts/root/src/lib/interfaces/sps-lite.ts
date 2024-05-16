@@ -1,13 +1,8 @@
-export const variants = [
-  "default",
-  "four-columns-with-company-mission",
-] as const;
+export const variants = ["default"] as const;
 
 export interface IModel {
   id: string;
-  __component: "page-blocks.footer-block";
   variant: (typeof variants)[number];
   className: string | null;
-  copyrights: string | null;
   description: string | null;
 }

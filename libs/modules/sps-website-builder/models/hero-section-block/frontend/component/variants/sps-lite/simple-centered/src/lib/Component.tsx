@@ -35,7 +35,7 @@ export function Component(props: IComponentPropsExtended) {
               </ReactMarkdown>
             ) : null}
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
-              {props.data.SPSWBHeroSectionBlocksToButtons.map(
+              {props.data.heroSectionBlocksToButtons.map(
                 (heroSectionBlocksToButton, index) => {
                   return (
                     <HeroSectionBlocksToButtons

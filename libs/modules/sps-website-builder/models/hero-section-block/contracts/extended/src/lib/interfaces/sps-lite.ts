@@ -7,5 +7,5 @@ export interface IModel extends IParentModel {
   buttons?: IButton[] | null;
   media?: IFile[] | null;
   additionalMedia?: IFile[] | null;
-  SPSWBHeroSectionBlocksToButtons: IHeroSectionBlockToButton[];
+  heroSectionBlocksToButtons: IHeroSectionBlockToButton[];
 }

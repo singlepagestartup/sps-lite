@@ -1155,9 +1155,6 @@
       "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table-row": [
         "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-boxed": [
-        "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/boxed/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/footer/frontend/component/variants/sps-lite/default/src/index.ts"
       ],

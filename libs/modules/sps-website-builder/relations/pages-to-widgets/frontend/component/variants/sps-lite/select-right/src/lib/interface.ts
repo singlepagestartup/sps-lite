@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts-extended";
+import { IRelation } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
+import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts-extended";
 
 export const variant = "select-right" as const;
 
@@ -11,9 +11,9 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   pageId?: string;
-  data?: IModel;
+  data?: IRelation;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data?: IModelExtended;
+  data?: IRelationExtended;
 }
