@@ -1344,9 +1344,6 @@
       "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-page-attacher": [
         "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/page-attacher/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-wide": [
-        "libs/modules/sps-website-builder/models/layout/frontend/component/variants/sps-lite/wide/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-layout-frontend-redux": [
         "libs/modules/sps-website-builder/models/layout/frontend/redux/src/index.ts"
       ],

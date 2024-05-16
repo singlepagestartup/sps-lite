@@ -36,14 +36,14 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full"
     >
-      <div className="max-w-7xl py-10 w-full mx-auto">
+      <div className="max-w-7xl py-10 w-full mx-auto overflow-hidden">
         <Card>
           <CardHeader>
             <CardTitle>Content types</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="file">
-              <TabsList>
+            <Tabs defaultValue="file" className="flex flex-col">
+              <TabsList className="rounded-b-none">
                 <TabsTrigger value="page">Page</TabsTrigger>
                 <TabsTrigger value="navbar">Navbar</TabsTrigger>
                 <TabsTrigger value="footer">Footer</TabsTrigger>
@@ -54,6 +54,8 @@ export function Component(props: IComponentPropsExtended) {
                 <TabsTrigger value="slider">Slider</TabsTrigger>
                 <TabsTrigger value="slide">Slide</TabsTrigger>
                 <TabsTrigger value="widget">Widget</TabsTrigger>
+              </TabsList>
+              <TabsList className="rounded-t-none">
                 <TabsTrigger value="hero-section-block">
                   Hero Section Block
                 </TabsTrigger>

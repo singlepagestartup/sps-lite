@@ -1,4 +1,3 @@
-import { Component as PageBlocks } from "@sps/sps-website-builder-page-blocks-component";
 import { IComponentPropsExtended } from "./interface";
 import { Component as FootersToWidgets } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component";
 
@@ -11,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       className={props.data.className || ""}
     >
       <div className="footer-container">
-        {props.data.SPSWBFootersToWidgets.map((entity, index) => {
+        {props.data.footersToWidgets.map((entity, index) => {
           return (
             <FootersToWidgets
               key={index}
