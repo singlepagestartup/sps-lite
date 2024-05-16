@@ -1,14 +1,20 @@
 import type { IModel as IParentModel } from "@sps/sps-website-builder-models-widget-contracts";
-import { IModel as IWidgetsToHeroSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
-import { IRelation as IWidgetsToNavbarBlocks } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-contracts";
-import { IRelation as IWidgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-contracts";
-import { IRelation as IWidgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-contracts";
-import { IRelation as IWidgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-contracts";
+import { IModel as IWidgetToHeroSectionBlock } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
+import { IRelation as IWidgetToNavbarBlock } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-contracts";
+import { IRelation as IWidgetToFooterBlock } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-contracts";
+import { IRelation as IWidgetToSliderBlock } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-contracts";
+import { IRelation as IWidgetToFeaturesSectionBlock } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-contracts";
+import { IRelation as IFooterToWidget } from "@sps/sps-website-builder-relations-footers-to-widgets-contracts";
+import { IRelation as INavbarToWidget } from "@sps/sps-website-builder-relations-navbars-to-widgets-contracts";
+import { IModel as IPageToWidget } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
 
 export interface IModel extends IParentModel {
-  SPSWBWidgetsToHeroSectionBlocks: IWidgetsToHeroSectionBlocks[];
-  SPSWBWidgetsToNavbarBlocks: IWidgetsToNavbarBlocks[];
-  SPSWBWidgetsToFooterBlocks: IWidgetsToFooterBlocks[];
-  SPSWBWidgetsToSliderBlocks: IWidgetsToSliderBlocks[];
-  SPSWBWidgetsToFeaturesSectionBlocks: IWidgetsToFeaturesSectionBlocks[];
+  widgetsToHeroSectionBlocks: IWidgetToHeroSectionBlock[];
+  widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
+  footersToWidgets: IFooterToWidget[];
+  navbarsToWidgets: INavbarToWidget[];
+  pagesToWidgets: IPageToWidget[];
+  widgetsToFooterBlocks: IWidgetToFooterBlock[];
+  widgetsToSliderBlocks: IWidgetToSliderBlock[];
+  widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
 }

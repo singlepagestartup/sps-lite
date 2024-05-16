@@ -119,7 +119,7 @@ export function Component(props: IComponentPropsExtended) {
                 isServer={false}
                 variant="select-layout"
                 pageId={props.data?.id}
-                data={props.data?.SPSWBPagesToLayouts}
+                data={props.data?.pagesToLayouts}
               />
               <Button onClick={form.handleSubmit(onSubmit)}>
                 {props.data?.id ? "Save" : "Create"}

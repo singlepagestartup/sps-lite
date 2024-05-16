@@ -5,4 +5,6 @@ import {
 
 export const variants = [...parentVariants] as const;
 
-export interface IRelation extends IParentRelation {}
+export interface IRelation extends Omit<IParentRelation, "variant"> {
+  variant: (typeof variants)[number];
+}

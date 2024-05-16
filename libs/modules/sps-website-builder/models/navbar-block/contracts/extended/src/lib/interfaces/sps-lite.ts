@@ -9,6 +9,6 @@ export interface IModel extends IParentModel {
   buttons: IButton[] | null;
   additionalButtons: IButton[] | null;
   extraButtons: IButton[] | null;
-  SPSWBNavbarBlocksToButtons: INavbarBlockToButton[];
-  SPSWBNavbarBlocksToLogotypes: INavbarBlockToLogotype[];
+  navbarBlocksToButtons: INavbarBlockToButton[];
+  navbarBlocksToLogotypes: INavbarBlockToLogotype[];
 }

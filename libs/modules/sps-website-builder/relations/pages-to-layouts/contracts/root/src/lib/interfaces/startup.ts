@@ -1,3 +1,10 @@
-import type { IModel as IParentModel } from "./sps-lite";
+import {
+  IRelation as IParentRelation,
+  variants as parentVariants,
+} from "./sps-lite";
 
-export interface IModel extends IParentModel {}
+export const variants = [...parentVariants] as const;
+
+export interface IRelation extends Omit<IParentRelation, "variant"> {
+  variant: (typeof variants)[number];
+}

@@ -1,4 +1,6 @@
 import type { IRelation as IParentRelation } from "<%= root_contracts_import_path %>";
 
+
+
 export interface IRelation extends IParentRelation {
 }
