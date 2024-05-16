@@ -1,5 +1,5 @@
 {
-  "name": "@sps/sps-website-builder-models-widget-backend-schema-relations-slider-blocks",
+  "name": "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-features-section-blocks",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0"

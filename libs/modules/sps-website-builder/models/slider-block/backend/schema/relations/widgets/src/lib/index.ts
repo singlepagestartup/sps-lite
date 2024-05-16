@@ -43,4 +43,4 @@ export const populate = {
   [modelName]: {
     with: parentPopulate,
   },
-};
+} as const;
