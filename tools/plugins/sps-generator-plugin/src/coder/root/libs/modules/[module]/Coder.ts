@@ -201,8 +201,13 @@ export class Coder {
 
     await this.project.relations[0].init();
 
-    await this.project.models[2].removeRelation();
-    await this.project.models[1].removeRelation();
+    if (!props.rightModelIsExternal) {
+      await this.project.models[2].removeRelation();
+    }
+
+    if (!props.leftModelIsExternal) {
+      await this.project.models[1].removeRelation();
+    }
 
     await this.project.relations[0].removeRelations();
 

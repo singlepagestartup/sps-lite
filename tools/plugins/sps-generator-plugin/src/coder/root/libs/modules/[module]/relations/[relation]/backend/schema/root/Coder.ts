@@ -69,7 +69,10 @@ export class Coder {
       const cuttedTableName = getNameStyles({ name: tableName }).snakeCased
         .baseCutted;
 
-      this.tableName = cuttedTableName;
+      const randomThreeLetters = Math.random().toString(36).substring(2, 5);
+
+      // Cutted table names can be equal, thats why we add random three letters
+      this.tableName = cuttedTableName + "_" + randomThreeLetters;
     } else {
       this.tableName = tableName;
     }

@@ -46,7 +46,11 @@ export class Coder {
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
 
     if (modelNameStyles.snakeCased.base.length > 10) {
-      this.tableName = modelNameStyles.snakeCased.baseCutted;
+      const randomThreeLetters = Math.random().toString(36).substring(2, 5);
+
+      // Cutted table names can be equal, thats why we add random three letters
+      this.tableName =
+        modelNameStyles.snakeCased.baseCutted + "_" + randomThreeLetters;
     } else {
       this.tableName = modelNameStyles.snakeCased.base;
     }
