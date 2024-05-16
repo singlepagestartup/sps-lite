@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import { Component as Button } from "@sps/sps-website-builder-models-button-frontend-component";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+// import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -54,7 +54,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
         <div className="h-48 w-full sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2">
-          {props.data.media?.length ? (
+          {/* {props.data.media?.length ? (
             <File
               isServer={false}
               variant="image"
@@ -62,7 +62,7 @@ export function Component(props: IComponentPropsExtended) {
               className="object-cover object-center"
               containerClassName="relative h-full w-full object-cover object-center"
             />
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </div>
