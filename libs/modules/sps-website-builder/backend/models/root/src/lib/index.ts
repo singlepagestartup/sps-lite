@@ -1,3 +1,4 @@
+import { model as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-model";
 import { model as logotypesToFiles } from "@sps/sps-website-builder-relations-logotypes-to-files-backend-model";
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-model";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-model";
@@ -33,6 +34,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  heroSectionBlocksToFiles,
   logotypesToFiles,
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,

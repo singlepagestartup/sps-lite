@@ -2,6 +2,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import ReactMarkdown from "react-markdown";
 import { Component as HeroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component";
+import { Component as HeroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -12,6 +13,18 @@ export function Component(props: IComponentPropsExtended) {
       className={`${props.data.className || "px-2 py-20 lg:py-32"} w-full`}
     >
       <div className="w-full mx-auto max-w-7xl">
+        {props.data.heroSectionBlocksToFiles.map(
+          (heroSectionBlocksToFile, index) => {
+            return (
+              <HeroSectionBlocksToFiles
+                key={index}
+                isServer={props.isServer}
+                data={heroSectionBlocksToFile}
+                variant="default"
+              />
+            );
+          },
+        )}
         {props.data?.title ? (
           <h1 className="text-4xl font-bold tracking-tight xl:inline text-gray-900 sm:text-5xl md:text-6xl">
             <ReactMarkdown>{props.data?.title}</ReactMarkdown>

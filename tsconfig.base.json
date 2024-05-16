@@ -1197,6 +1197,9 @@
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-buttons": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-buttons/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-files": [
+        "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-files/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-widgets-to-hero-section-blocks": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/widgets-to-hero-section-blocks/src/index.ts"
       ],
@@ -2282,6 +2285,39 @@
       ],
       "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-redux": [
         "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-contracts": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-component": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-files-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-layouts-to-footers-backend-app": [
         "libs/modules/sps-website-builder/relations/layouts-to-footers/backend/app/src/index.ts"
