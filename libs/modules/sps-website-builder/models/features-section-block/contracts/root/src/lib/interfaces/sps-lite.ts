@@ -1,4 +1,4 @@
-export const variants = ["default", "with-icon"] as const;
+export const variants = ["default"] as const;
 
 export interface IModel {
   id: string;
