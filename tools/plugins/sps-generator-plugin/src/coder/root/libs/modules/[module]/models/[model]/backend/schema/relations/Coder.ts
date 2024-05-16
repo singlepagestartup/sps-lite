@@ -49,41 +49,37 @@ export class Coder {
     await this.project.root.remove();
   }
 
-  async createRelation({ relationName }: { relationName: string }) {
+  async createRelation() {
     this.project.relation = new RelationCoder({
       parent: this,
       tree: this.tree,
-      name: relationName,
     });
 
     await this.project.relation.create();
 
     const rootRelationFolder = `${this.project.root.baseDirectory}/src/lib`;
-    const configPath = `${rootRelationFolder}/config.ts`;
     const populatePath = `${rootRelationFolder}/populate.ts`;
     const schemaPath = `${rootRelationFolder}/schema.ts`;
 
     await this.project.relation.attach({
-      configPath,
       schemaPath,
       populatePath,
     });
+
+    console.log(`🚀 ~ createRelation ~ this.name:`, this.name);
   }
 
-  async removeRelation({ relationName }: { relationName: string }) {
+  async removeRelation() {
     this.project.relation = new RelationCoder({
       parent: this,
       tree: this.tree,
-      name: relationName,
     });
 
     const rootRelationFolder = `${this.project.root.baseDirectory}/src/lib`;
-    const configPath = `${rootRelationFolder}/config.ts`;
     const populatePath = `${rootRelationFolder}/populate.ts`;
     const schemaPath = `${rootRelationFolder}/schema.ts`;
 
     await this.project.relation.detach({
-      configPath,
       schemaPath,
       populatePath,
     });

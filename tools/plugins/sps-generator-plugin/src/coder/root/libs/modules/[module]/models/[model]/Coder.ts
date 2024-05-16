@@ -4,6 +4,7 @@ import { Coder as BackendCoder } from "./backend/Coder";
 import { IEditFieldProps } from "./backend/schema/table/Coder";
 import { Coder as FrontendCoder } from "./frontend/Coder";
 import { Coder as ContractsCoder } from "./contracts/Coder";
+import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 
 /**
  * Model coder
@@ -14,6 +15,7 @@ export class Coder {
   parent: ModelsCoder;
   baseName: string;
   baseDirectory: string;
+  nameStyles: ReturnType<typeof getNameStyles>;
   project: {
     backend: BackendCoder;
     contracts: ContractsCoder;
@@ -32,6 +34,7 @@ export class Coder {
     this.baseName = `${parent.baseName}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/${name}`;
     this.name = name;
+    this.nameStyles = getNameStyles({ name });
     this.parent = parent;
     this.tree = tree;
     const backend = new BackendCoder({
@@ -114,12 +117,12 @@ export class Coder {
     await this.project.backend.removeField(props);
   }
 
-  async createRelation(props: { relationName: string }) {
-    await this.project.backend.createRelation(props);
+  async createRelation() {
+    await this.project.backend.createRelation();
   }
 
-  async removeRelation(props: { relationName: string }) {
-    await this.project.backend.removeRelation(props);
+  async removeRelation() {
+    await this.project.backend.removeRelation();
   }
 
   async createModelFrontendComponentVariant(props: {

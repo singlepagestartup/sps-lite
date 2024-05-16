@@ -71,12 +71,12 @@ export class Coder {
     await this.project.table.removeField(props);
   }
 
-  async createRelation({ relationName }: { relationName: string }) {
-    await this.project.relations.createRelation({ relationName });
+  async createRelation() {
+    await this.project.relations.createRelation();
   }
 
-  async removeRelation({ relationName }: { relationName: string }) {
-    await this.project.relations.removeRelation({ relationName });
+  async removeRelation() {
+    await this.project.relations.removeRelation();
   }
 
   async createVariant(props: { variantName: string; variantLevel: string }) {

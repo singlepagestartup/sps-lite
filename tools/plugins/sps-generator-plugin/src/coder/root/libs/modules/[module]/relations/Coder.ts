@@ -2,11 +2,6 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "../Coder";
 import { Coder as RelationCoder } from "./[relation]/Coder";
 
-export interface IEditRelationsProps {
-  leftModelRelationName: string;
-  rightModelRelationName: string;
-}
-
 /**
  * Relations Coder
  */
@@ -32,59 +27,25 @@ export class Coder {
     };
   }
 
-  async init(
-    props:
-      | {
-          leftModelRelationName: string;
-          rightModelRelationName: string;
-        }
-      | { relationName: string },
-  ) {
-    if ("relationName" in props && props.relationName) {
-      const { relationName } = props;
+  async init() {
+    const relation = new RelationCoder({
+      tree: this.tree,
+      parent: this,
+    });
 
-      const relation = new RelationCoder({
-        tree: this.tree,
-        name: relationName,
-        parent: this,
-      });
+    this.project.relation = relation;
 
-      this.project.relation = relation;
-
-      await this.project.relation.init();
-    } else if ("leftModelRelationName" in props) {
-      const { leftModelRelationName, rightModelRelationName } = props;
-      const relation = new RelationCoder({
-        tree: this.tree,
-        leftModelRelationName,
-        rightModelRelationName,
-        parent: this,
-      });
-
-      this.project.relation = relation;
-
-      await this.project.relation.init();
-    } else {
-      throw new Error(
-        "Prop 'relationName' / 'leftModelRelationName and rightModelRelationName' are required",
-      );
-    }
+    await this.project.relation.init();
   }
 
-  async createRelations({
-    leftModelRelationName,
-    rightModelRelationName,
-  }: IEditRelationsProps) {
-    await this.init({ leftModelRelationName, rightModelRelationName });
+  async createRelations() {
+    await this.init();
 
     await this.project.relation.create();
   }
 
-  async removeRelations({
-    leftModelRelationName,
-    rightModelRelationName,
-  }: IEditRelationsProps) {
-    await this.init({ leftModelRelationName, rightModelRelationName });
+  async removeRelations() {
+    await this.init();
 
     await this.project.relation.remove();
   }
@@ -92,12 +53,9 @@ export class Coder {
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
     templateName?: string;
   }) {
-    const { relationName } = props;
-
-    await this.init({ relationName });
+    await this.init();
 
     await this.project.relation.createRelationFrontendComponentVariant(props);
   }
@@ -105,11 +63,8 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
   }) {
-    const { relationName } = props;
-
-    await this.init({ relationName });
+    await this.init();
 
     await this.project.relation.removeRelationFrontendComponentVariant(props);
   }

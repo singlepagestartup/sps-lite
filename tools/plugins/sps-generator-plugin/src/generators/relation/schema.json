@@ -29,14 +29,6 @@
         "index": 0
       }
     },
-    "left_model_relation_name": {
-      "type": "string",
-      "description": "Another project name alias, for example: pages",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
-    },
     "right_model_name": {
       "type": "string",
       "description": "Model name, for example: layout",
@@ -44,21 +36,7 @@
         "$source": "argv",
         "index": 0
       }
-    },
-    "right_model_relation_name": {
-      "type": "string",
-      "description": "Another project name alias, for example: layouts",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
     }
   },
-  "required": [
-    "action",
-    "left_model_name",
-    "left_model_relation_name",
-    "right_model_name",
-    "right_model_relation_name"
-  ]
+  "required": ["action", "left_model_name", "right_model_name"]
 }

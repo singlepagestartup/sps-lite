@@ -6,7 +6,6 @@ import {
 } from "@nx/devkit";
 import { Coder as RootCoder } from "./root/Coder";
 import { IEditFieldProps } from "./root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
-import { IEditRelationsProps } from "./root/libs/modules/[module]/relations/Coder";
 
 /**
  * Main coder class
@@ -141,25 +140,21 @@ export class Coder {
     await formatFiles(this.tree);
   }
 
-  async createRelations(
-    props: IEditRelationsProps & {
-      moduleName: string;
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async createRelations(props: {
+    moduleName: string;
+    leftModelName: string;
+    rightModelName: string;
+  }) {
     await this.project.root.createRelations(props);
 
     await formatFiles(this.tree);
   }
 
-  async removeRelations(
-    props: IEditRelationsProps & {
-      moduleName: string;
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async removeRelations(props: {
+    moduleName: string;
+    leftModelName: string;
+    rightModelName: string;
+  }) {
     await this.project.root.removeRelations(props);
 
     await formatFiles(this.tree);
