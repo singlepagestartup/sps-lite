@@ -54,7 +54,7 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        {props.data?.SPSWBNavbarBlocksToButtons.map(
+        {props.data?.navbarBlocksToButtons.map(
           (navbarBlocksToButton, index) => {
             return (
               <NavbarBlocksToButtonsSpsLiteSelectRight
@@ -70,7 +70,7 @@ export function Component(props: IComponentPropsExtended) {
           isServer={false}
           variant="select-right"
         />
-        {props.data?.SPSWBNavbarBlocksToLogotypes.map(
+        {props.data?.navbarBlocksToLogotypes.map(
           (navbarBlocksToLogotypes, index) => {
             return (
               <NavbarBlocksToLogotypes

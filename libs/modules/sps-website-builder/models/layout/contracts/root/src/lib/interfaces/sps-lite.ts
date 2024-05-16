@@ -1,4 +1,4 @@
-export const variants = ["default", "wide", "boxed"] as const;
+export const variants = ["default", "boxed"] as const;
 
 export interface IModel {
   id: string;
@@ -11,5 +11,3 @@ export interface IModel {
   publishedAt: string;
   variant: (typeof variants)[number];
 }
-
-// "admin-select-input", "admin-table-row", "admin-table", "admin-panel", "admin-form", "default", "find", "page-attacher", "editor", "wide", "boxed"

@@ -35,7 +35,7 @@ export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
 ) => {
   return {
-    [modelName]: helpers.many(config.leftTable.table),
+    [modelName]: helpers.many(Table),
   };
 };
 
@@ -43,4 +43,4 @@ export const populate = {
   [modelName]: {
     with: parentPopulate,
   },
-};
+} as const;

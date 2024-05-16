@@ -3,6 +3,7 @@ import { Coder as RelationsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 import { Coder as ContractsCoder } from "./contracts/Coder";
 import { Coder as FrontendCoder } from "./frontend/Coder";
+import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 
 /**
  * Relation Coder
@@ -13,48 +14,26 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  leftModelRelationName: string;
-  rightModelRelationName: string;
+  nameStyles: ReturnType<typeof getNameStyles>;
   project: {
     backend: BackendCoder;
     contracts: ContractsCoder;
     frontend: FrontendCoder;
   };
 
-  constructor(
-    props: {
-      tree: Tree;
-      parent: RelationsCoder;
-    } & (
-      | { leftModelRelationName: string; rightModelRelationName: string }
-      | {
-          name: string;
-        }
-    ),
-  ) {
+  constructor(props: { tree: Tree; parent: RelationsCoder }) {
     const { tree, parent } = props;
     this.tree = tree;
     this.parent = parent;
 
-    if ("name" in props && props.name) {
-      this.name = props.name;
+    const leftModel =
+      this.parent.parent.project.models[1].project.model.nameStyles;
+    const rightModel =
+      this.parent.parent.project.models[2].project.model.nameStyles;
 
-      const [leftModelRelationName, rightModelRelationName] =
-        this.name.split("-to-");
+    this.name = `${leftModel.kebabCased.pluralized}-to-${rightModel.kebabCased.pluralized}`;
 
-      if (!leftModelRelationName || !rightModelRelationName) {
-        throw new Error("Invalid relation name");
-      }
-
-      this.leftModelRelationName = leftModelRelationName;
-      this.rightModelRelationName = rightModelRelationName;
-    } else if ("leftModelRelationName" in props) {
-      const { leftModelRelationName, rightModelRelationName } = props;
-
-      this.name = `${leftModelRelationName}-to-${rightModelRelationName}`;
-      this.leftModelRelationName = leftModelRelationName;
-      this.rightModelRelationName = rightModelRelationName;
-    }
+    this.nameStyles = getNameStyles({ name: this.name });
 
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;

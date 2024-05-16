@@ -1,44 +1,17 @@
 import {
   Table,
   modelName,
-  populate as parentPopulate,
 } from "<%= module_schema_relations_project_import_path %>";
-import {
-  Table as RightTable,
-  modelName as rightTableModelName,
-} from "<%= right_schema_project_import_path %>";
 import { TableRelationsHelpers } from "drizzle-orm";
-
-export const config = {
-  name: "<%= relation_name_kebab_cased %>",
-  type: "many" as const,
-  model: modelName,
-  leftTable: {
-    model: modelName,
-    table: Table,
-    queryKey: "<%= left_schema_model_name %>",
-    schemaKey: "<%= left_schema_model_name %>Id",
-  },
-  rightTables: [{
-    model: rightTableModelName,
-    table: RightTable,
-    queryKey: "<%= right_schema_model_name %>",
-    schemaKey: "<%= right_schema_model_name %>Id",
-    extract: true,
-    returnType: RightTable.$inferSelect,
-  }],
-};
 
 export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
 ) => {
   return {
-    [modelName]: helpers.many(config.leftTable.table),
+    [modelName]: helpers.many(Table),
   };
 };
 
 export const populate = {
-  [modelName]: {
-    with: parentPopulate,
-  },
-};
+  [modelName]: true
+} as const;

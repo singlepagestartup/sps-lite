@@ -58,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        {props.data?.SPSWBFootersToWidgets.map((footerToWidget, index) => {
+        {props.data?.footersToWidgets.map((footerToWidget, index) => {
           return (
             <FootersToWidgetsSpsLiteSelectRight
               key={index}

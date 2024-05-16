@@ -2,10 +2,7 @@ import { Tree, getProjects, readCachedProjectGraph } from "@nx/devkit";
 import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
-import {
-  IEditRelationsProps,
-  Coder as RelationsCoder,
-} from "./relations/Coder";
+import { Coder as RelationsCoder } from "./relations/Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 
 /**
@@ -133,12 +130,12 @@ export class Coder {
     await this.project.models[0].removeField(props);
   }
 
-  async createRelations(
-    props: IEditRelationsProps & {
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async createRelations(props: {
+    leftModelName: string;
+    rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
+  }) {
     const leftProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
@@ -154,14 +151,16 @@ export class Coder {
 
     this.project.models.push(rightProject);
 
-    await this.project.relations[0].createRelations(props);
+    await this.project.relations[0].init();
+    await this.project.relations[0].createRelations();
 
-    await this.project.models[1].createRelation({
-      relationName: props.rightModelRelationName,
-    });
-    await this.project.models[2].createRelation({
-      relationName: props.leftModelRelationName,
-    });
+    if (!props.leftModelIsExternal) {
+      await this.project.models[1].createRelation();
+    }
+
+    if (!props.rightModelIsExternal) {
+      await this.project.models[2].createRelation();
+    }
 
     await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
       {
@@ -180,12 +179,12 @@ export class Coder {
     );
   }
 
-  async removeRelations(
-    props: IEditRelationsProps & {
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async removeRelations(props: {
+    leftModelName: string;
+    rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
+  }) {
     const leftProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
@@ -200,15 +199,17 @@ export class Coder {
     await rightProject.init({ modelName: props.rightModelName });
     this.project.models.push(rightProject);
 
-    await this.project.relations[0].removeRelations(props);
+    await this.project.relations[0].init();
 
-    await this.project.models[2].removeRelation({
-      relationName: props.leftModelRelationName,
-    });
+    if (!props.rightModelIsExternal) {
+      await this.project.models[2].removeRelation();
+    }
 
-    await this.project.models[1].removeRelation({
-      relationName: props.rightModelRelationName,
-    });
+    if (!props.leftModelIsExternal) {
+      await this.project.models[1].removeRelation();
+    }
+
+    await this.project.relations[0].removeRelations();
 
     await this.project.relations[0].project.relation.project.backend.project.app.detach(
       {

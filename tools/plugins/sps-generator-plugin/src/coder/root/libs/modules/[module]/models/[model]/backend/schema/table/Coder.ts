@@ -46,7 +46,11 @@ export class Coder {
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
 
     if (modelNameStyles.snakeCased.base.length > 10) {
-      this.tableName = modelNameStyles.snakeCased.baseCutted;
+      const randomThreeLetters = Math.random().toString(36).substring(2, 5);
+
+      // Cutted table names can be equal, thats why we add random three letters
+      this.tableName =
+        modelNameStyles.snakeCased.baseCutted + "_" + randomThreeLetters;
     } else {
       this.tableName = modelNameStyles.snakeCased.base;
     }
@@ -68,6 +72,7 @@ export class Coder {
         module_name_cutted_snake_cased: this.moduleNameStyles.snakeCased,
         module_name_cutted_pascal_cased: this.moduleNameStyles.pascalCased,
         model_name_pascal_cased: this.modelNameStyles.pascalCased.base,
+        model_name_property_cased: this.modelNameStyles.propertyCased.base,
       },
     });
 
@@ -113,35 +118,35 @@ export class Coder {
   async createVariant(props: { variant: string; level: string }) {
     const { level, variant } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
+    // const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
 
-    const fieldToAdd = new Variant({
-      variant,
-    });
+    // const fieldToAdd = new Variant({
+    //   variant,
+    // });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onCreate.regex,
-      content: fieldToAdd.onCreate.content,
-    });
+    // await replaceInFile({
+    //   tree: this.tree,
+    //   pathToFile: schemaFilePath,
+    //   regex: fieldToAdd.onCreate.regex,
+    //   content: fieldToAdd.onCreate.content,
+    // });
   }
 
   async removeVariant(props: { variant: string; level: string }) {
     const { level, variant } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
+    // const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
 
-    const fieldToAdd = new Variant({
-      variant,
-    });
+    // const fieldToAdd = new Variant({
+    //   variant,
+    // });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onRemove.regex,
-      content: fieldToAdd.onRemove.content,
-    });
+    // await replaceInFile({
+    //   tree: this.tree,
+    //   pathToFile: schemaFilePath,
+    //   regex: fieldToAdd.onRemove.regex,
+    //   content: fieldToAdd.onRemove.content,
+    // });
   }
 
   async remove() {

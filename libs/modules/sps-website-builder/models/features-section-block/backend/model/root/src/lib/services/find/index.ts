@@ -1,25 +1,14 @@
 import { db } from "@sps/sps-db-provider";
 import {
   populate,
-  config,
-  modelName,
+  schemaName,
 } from "@sps/sps-website-builder-models-features-section-block-backend-schema";
-import { transformData } from "@sps/shared-backend-api";
 
 export async function service(params?: { filter?: any }) {
-  const result = await db.query[modelName].findMany({
-    with: populate,
+  const result = await db.query[schemaName].findMany({
     where: params?.filter,
+    with: populate,
   });
-
-  // const transformedResult = result.map((entity) => {
-  //   const transformedEntity = transformData<(typeof result)[0], typeof config>({
-  //     entity,
-  //     config,
-  //   });
-
-  //   return transformedEntity;
-  // });
 
   return result;
 }

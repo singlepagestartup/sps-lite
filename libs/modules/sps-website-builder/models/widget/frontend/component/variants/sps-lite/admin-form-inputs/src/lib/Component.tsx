@@ -70,8 +70,8 @@ export function Component(props: IComponentPropsExtended) {
           </TabsList>
 
           <TabsContent value="SPSWBWidgetsToHeroSectionBlocks">
-            {props.data?.SPSWBWidgetsToHeroSectionBlocks.length ? (
-              props.data?.SPSWBWidgetsToHeroSectionBlocks.map(
+            {props.data?.widgetsToHeroSectionBlocks.length ? (
+              props.data?.widgetsToHeroSectionBlocks.map(
                 (widgetsToHeroSectionBlock, index) => {
                   return (
                     <WidgetsToHeroSectionBlocksSpsLiteSelectRight
@@ -93,8 +93,8 @@ export function Component(props: IComponentPropsExtended) {
             )}
           </TabsContent>
           <TabsContent value="SPSWBWidgetsToNavbarBlocks">
-            {props.data?.SPSWBWidgetsToNavbarBlocks.length ? (
-              props.data?.SPSWBWidgetsToNavbarBlocks.map(
+            {props.data?.widgetsToNavbarBlocks.length ? (
+              props.data?.widgetsToNavbarBlocks.map(
                 (widgetsToNavbarBlocks, index) => {
                   return (
                     <WidgetsToNavbarBlocksSpsLiteSelectRight
@@ -116,8 +116,8 @@ export function Component(props: IComponentPropsExtended) {
             )}
           </TabsContent>
           <TabsContent value="SPSWBWidgetsToFooterBlocks">
-            {props.data?.SPSWBWidgetsToFooterBlocks.length ? (
-              props.data?.SPSWBWidgetsToFooterBlocks.map(
+            {props.data?.widgetsToFooterBlocks.length ? (
+              props.data?.widgetsToFooterBlocks.map(
                 (widgetToFooterBlock, index) => {
                   return (
                     <WidgetsToFooterBlocksSpsLiteSelectRight
@@ -139,8 +139,8 @@ export function Component(props: IComponentPropsExtended) {
             )}
           </TabsContent>
           <TabsContent value="SPSWBWidgetsToSliderBlocks">
-            {props.data?.SPSWBWidgetsToSliderBlocks?.length ? (
-              props.data?.SPSWBWidgetsToSliderBlocks?.map(
+            {props.data?.widgetsToSliderBlocks?.length ? (
+              props.data?.widgetsToSliderBlocks?.map(
                 (widgetToSliderBlock, index) => {
                   return (
                     <WidgetsToSliderBlocksSpsLiteSelectRight

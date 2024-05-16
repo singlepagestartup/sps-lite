@@ -56,7 +56,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        {props.data?.SPSWBPagesToWidgets.map((entity, index) => {
+        {props.data?.pagesToWidgets.map((entity, index) => {
           return (
             <PagesToWidgetsSpsLiteSelectRight
               key={index}

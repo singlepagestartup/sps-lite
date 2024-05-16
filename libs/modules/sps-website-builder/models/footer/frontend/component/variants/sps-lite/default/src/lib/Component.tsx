@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as FootersToWidgets } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +8,20 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="footer"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={props.data.className || ""}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: footer</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <div className="footer-container">
+        {props.data.footersToWidgets.map((entity, index) => {
+          return (
+            <FootersToWidgets
+              key={index}
+              isServer={props.isServer}
+              variant="default"
+              data={entity}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

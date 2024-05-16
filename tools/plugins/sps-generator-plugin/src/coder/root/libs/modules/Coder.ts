@@ -2,7 +2,6 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "./[module]/Coder";
 import { Coder as ModulesCoder } from "../Coder";
 import { IEditFieldProps } from "./[module]/models/[model]/backend/schema/table/Coder";
-import { IEditRelationsProps } from "./[module]/relations/Coder";
 
 /**
  * Modules Coder
@@ -129,13 +128,13 @@ export class Coder {
     await this.project.module.removeField(props);
   }
 
-  async createRelations(
-    props: IEditRelationsProps & {
-      moduleName: string;
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async createRelations(props: {
+    moduleName: string;
+    leftModelName: string;
+    rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
+  }) {
     const { moduleName } = props;
     await this.init({
       moduleName,
@@ -144,13 +143,13 @@ export class Coder {
     await this.project.module.createRelations(props);
   }
 
-  async removeRelations(
-    props: IEditRelationsProps & {
-      moduleName: string;
-      leftModelName: string;
-      rightModelName: string;
-    },
-  ) {
+  async removeRelations(props: {
+    moduleName: string;
+    leftModelName: string;
+    rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
+  }) {
     const { moduleName } = props;
     await this.init({
       moduleName,

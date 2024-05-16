@@ -26,20 +26,20 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: any) {
     // data.tier = { id };
-    const pages = props.data.pages?.map((p) => p.id);
-    if (pages) {
-      data.pages = isSelected
-        ? pages.filter((p) => p !== props.page.id)
-        : [...pages, { id: props.page.id }];
-    }
+    // const pages = props.data.pages?.map((p) => p.id);
+    // if (pages) {
+    //   data.pages = isSelected
+    //     ? pages.filter((p) => p !== props.page.id)
+    //     : [...pages, { id: props.page.id }];
+    // }
 
     await updateLayout({ id: props.data.id, data });
   }
 
   useEffect(() => {
-    if (props.data.pages?.find((p) => p.id === props.page.id)) {
-      setIsSelected(true);
-    }
+    // if (props.data.pages?.find((p) => p.id === props.page.id)) {
+    //   setIsSelected(true);
+    // }
   }, [props]);
 
   useEffect(() => {

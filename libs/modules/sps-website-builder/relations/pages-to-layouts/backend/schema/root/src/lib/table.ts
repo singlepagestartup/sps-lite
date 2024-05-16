@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as Page } from "@sps/sps-website-builder-models-page-backend-schema-table";
 import { Table as Layout } from "@sps/sps-website-builder-models-layout-backend-schema-table";
 
-export const modelName = "SPSWBPagesToLayouts";
+export const schemaName = "SPSWBPagesToLayouts";
+export const modelName = "pagesToLayouts";
 
 const moduleName = "sps_w_b";
 const table = "ps_to_ls";

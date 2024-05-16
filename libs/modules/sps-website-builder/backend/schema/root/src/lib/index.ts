@@ -1,20 +1,26 @@
 export {
+  Table as SPSWBHeroSectionBlocksToFiles,
+  Relations as SPSWBHeroSectionBlocksToFilesRelations,
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema";
+export {
+  Table as SPSWBLogotypesToFiles,
+  Relations as SPSWBLogotypesToFilesRelations,
+} from "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema";
+export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,
 } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
 export {
-  Table as SPSWBWTFSBBlocks,
-  Relations as SPSWBWTFSBBlocksRelations,
+  Table as SPSWBWTFSB,
+  Relations as SPSWBWTFSBRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-schema";
 export {
   Table as SPSWBFeature,
   Relations as SPSWBFeatureRelations,
-  VariantEnumTable as SPSWBFeatureVariantEnumTable,
 } from "@sps/sps-website-builder-models-feature-backend-schema";
 export {
   Table as SPSWBFeaturesSectionBlock,
   Relations as SPSWBFeaturesSectionBlockRelations,
-  VariantEnumTable as SPSWBFeaturesSectionBlockVariantEnumTable,
 } from "@sps/sps-website-builder-models-features-section-block-backend-schema";
 export {
   Table as SPSWBNavbarBlocksToLogotypes,
@@ -23,7 +29,6 @@ export {
 export {
   Table as SPSWBLogotype,
   Relations as SPSWBLogotypeRelations,
-  VariantEnumTable as SPSWBLogotypeVariantEnumTable,
 } from "@sps/sps-website-builder-models-logotype-backend-schema";
 export {
   Table as SPSWBHeroSectionBlocksToButtons,
@@ -36,7 +41,6 @@ export {
 export {
   Table as SPSWBButton,
   Relations as SPSWBButtonRelations,
-  VariantEnumTable as SPSWBButtonVariantEnumTable,
 } from "@sps/sps-website-builder-models-button-backend-schema";
 export {
   Table as SPSWBSlidersToSlides,
@@ -49,12 +53,10 @@ export {
 export {
   Table as SPSWBSlide,
   Relations as SPSWBSlideRelations,
-  VariantEnumTable as SPSWBSlideVariantEnumTable,
 } from "@sps/sps-website-builder-models-slide-backend-schema";
 export {
   Table as SPSWBSlider,
   Relations as SPSWBSliderRelations,
-  VariantEnumTable as SPSWBSliderVariantEnumTable,
 } from "@sps/sps-website-builder-models-slider-backend-schema";
 export {
   Table as SPSWBWidgetsToSliderBlocks,
@@ -63,7 +65,6 @@ export {
 export {
   Table as SPSWBSliderBlock,
   Relations as SPSWBSliderBlockRelations,
-  VariantEnumTable as SPSWBSliderBlockVariantEnumTable,
 } from "@sps/sps-website-builder-models-slider-block-backend-schema";
 export {
   Table as SPSWBWidgetsToFooterBlocks,
@@ -80,12 +81,10 @@ export {
 export {
   Table as SPSWBFooterBlock,
   Relations as SPSWBFooterBlockRelations,
-  VariantEnumTable as SPSWBFooterBlockVariantEnumTable,
 } from "@sps/sps-website-builder-models-footer-block-backend-schema";
 export {
   Table as SPSWBNavbarBlock,
   Relations as SPSWBNavbarBlockRelations,
-  VariantEnumTable as SPSWBNavbarBlockVariantEnumTable,
 } from "@sps/sps-website-builder-models-navbar-block-backend-schema";
 export {
   Table as SPSWBNavbarsToWidgets,
@@ -102,12 +101,10 @@ export {
 export {
   Table as SPSWBFooter,
   Relations as SPSWBFooterRelations,
-  VariantEnumTable as SPSWBFooterVariantEnumTable,
 } from "@sps/sps-website-builder-models-footer-backend-schema";
 export {
   Table as SPSWBNavbar,
   Relations as SPSWBNavbarRelations,
-  VariantEnumTable as SPSWBNavbarVariantEnumTable,
 } from "@sps/sps-website-builder-models-navbar-backend-schema";
 export {
   Table as SPSWBWidgetsToHeroSectionBlocks,
@@ -116,7 +113,6 @@ export {
 export {
   Table as SPSWBHeroSectionBlock,
   Relations as SPSWBHeroSectionBlockRelations,
-  VariantEnumTable as SPSWBHeroSectionBlockVariantEnumTable,
 } from "@sps/sps-website-builder-models-hero-section-block-backend-schema";
 export {
   Table as SPSWBPagesToWidgets,
@@ -125,7 +121,6 @@ export {
 export {
   Table as SPSWBWidget,
   Relations as SPSWBWidgetRelations,
-  VariantEnumTable as SPSWBWidgetVariantEnumTable,
 } from "@sps/sps-website-builder-models-widget-backend-schema";
 export {
   Table as SPSWBPagesToLayouts,
@@ -134,10 +129,8 @@ export {
 export {
   Table as SPSWBLayout,
   Relations as SPSWBLayoutRelations,
-  VariantEnumTable as SPSWBLayoutVariantEnumTable,
 } from "@sps/sps-website-builder-models-layout-backend-schema";
 export {
   Table as SPSWBPage,
   Relations as SPSWBPageRelations,
-  VariantEnumTable as SPSWBPageVariantEnumTable,
 } from "@sps/sps-website-builder-models-page-backend-schema";

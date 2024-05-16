@@ -10,7 +10,7 @@ export interface Props {
   scroll?: boolean;
   additionalAttributes?: Record<string, string>;
   "data-ui": "button";
-  "data-ui-variant":
+  "data-ui-variant"?:
     | "default"
     | "primary"
     | "destructive"
@@ -19,7 +19,8 @@ export interface Props {
     | "ghost"
     | "link"
     | "reset"
-    | "transparent";
+    | "transparent"
+    | string;
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {

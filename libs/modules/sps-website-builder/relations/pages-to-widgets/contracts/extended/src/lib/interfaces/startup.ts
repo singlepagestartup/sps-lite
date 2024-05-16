@@ -1,3 +1,3 @@
-import type { IModel as IParentModel } from "./sps-lite";
+import type { IRelation as IParentModel } from "./sps-lite";
 
-export interface IModel extends IParentModel {}
+export interface IRelation extends IParentModel {}

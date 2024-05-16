@@ -54,11 +54,11 @@ export function Component(props: IComponentPropsExtended) {
         />
         <FormField
           control={props.form.control}
-          name="file"
+          name="url"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>File</FormLabel>
-              <Input {...field} id="file" type="file" />
+              <FormLabel>URL</FormLabel>
+              <Input {...field} id="url" type="text" />
               <FormMessage />
             </FormItem>
           )}

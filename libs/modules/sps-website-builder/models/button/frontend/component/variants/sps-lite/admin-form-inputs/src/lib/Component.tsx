@@ -43,6 +43,21 @@ export function Component(props: IComponentPropsExtended) {
         />
         <FormField
           control={props.form.control}
+          name="url"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>URL</FormLabel>
+                <FormControl>
+                  <Input placeholder="URL" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+        <FormField
+          control={props.form.control}
           name="variant"
           render={({ field }) => (
             <FormItem>

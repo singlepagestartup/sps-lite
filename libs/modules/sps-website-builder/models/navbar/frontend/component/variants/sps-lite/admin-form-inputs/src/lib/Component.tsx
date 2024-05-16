@@ -59,7 +59,7 @@ export function Component(props: IComponentPropsExtended) {
           }}
         />
 
-        {props.data?.SPSWBNavbarsToWidgets.map((entity, index) => {
+        {props.data?.navbarsToWidgets.map((entity, index) => {
           return (
             <NavbarsToWidgetsSpsLiteSelectRight
               key={index}

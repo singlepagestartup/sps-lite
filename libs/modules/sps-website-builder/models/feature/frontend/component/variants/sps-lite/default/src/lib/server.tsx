@@ -9,7 +9,11 @@ import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.fetch.findOne({
+  if (!props.data.id) {
+    return <></>;
+  }
+
+  const data = await api.fetch.findById({
     id: props.data.id,
   });
 

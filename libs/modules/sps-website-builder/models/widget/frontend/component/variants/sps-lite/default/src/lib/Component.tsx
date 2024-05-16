@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      {props.data.SPSWBWidgetsToHeroSectionBlocks?.map(
+      {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {
           return (
             <WidgetsToHeroSectionBlocks
@@ -26,43 +26,37 @@ export function Component(props: IComponentPropsExtended) {
           );
         },
       )}
-      {props.data.SPSWBWidgetsToNavbarBlocks.map(
-        (widgetToNavbarBlock, index) => {
-          return (
-            <WidgetsToNavbarBlocks
-              key={index}
-              isServer={props.isServer}
-              variant="default"
-              data={widgetToNavbarBlock}
-            />
-          );
-        },
-      )}
-      {props.data.SPSWBWidgetsToFooterBlocks.map(
-        (widgetToFooterBlock, index) => {
-          return (
-            <WidgetsToFooterBlocks
-              key={index}
-              isServer={props.isServer}
-              variant="default"
-              data={widgetToFooterBlock}
-            />
-          );
-        },
-      )}
-      {props.data.SPSWBWidgetsToSliderBlocks.map(
-        (widgetToSliderBlock, index) => {
-          return (
-            <WidgetsToSliderBlocks
-              key={index}
-              isServer={props.isServer}
-              variant="default"
-              data={widgetToSliderBlock}
-            />
-          );
-        },
-      )}
-      {props.data.SPSWBWidgetsToFeaturesSectionBlocks.map(
+      {props.data.widgetsToNavbarBlocks.map((widgetToNavbarBlock, index) => {
+        return (
+          <WidgetsToNavbarBlocks
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={widgetToNavbarBlock}
+          />
+        );
+      })}
+      {props.data.widgetsToFooterBlocks.map((widgetToFooterBlock, index) => {
+        return (
+          <WidgetsToFooterBlocks
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={widgetToFooterBlock}
+          />
+        );
+      })}
+      {props.data.widgetsToSliderBlocks.map((widgetToSliderBlock, index) => {
+        return (
+          <WidgetsToSliderBlocks
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={widgetToSliderBlock}
+          />
+        );
+      })}
+      {props.data.widgetsToFeaturesSectionBlocks.map(
         (widgetToFeaturesSectionBlock, index) => {
           return (
             <WidgetToFeaturesSectionBlock

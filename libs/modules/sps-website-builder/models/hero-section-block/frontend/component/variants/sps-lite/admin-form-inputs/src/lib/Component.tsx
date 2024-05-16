@@ -65,7 +65,7 @@ export function Component(props: IComponentPropsExtended) {
           </FormItem>
         )}
       />
-      {props.data?.SPSWBHeroSectionBlocksToButtons.map(
+      {props.data?.heroSectionBlocksToButtons.map(
         (heroSectionBlocksToButton, index) => {
           return (
             <HeroSectionsToButtonsSpsLiteSelectRight

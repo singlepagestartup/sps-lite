@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts-extended";
+import { IRelation } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
+import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts-extended";
 
 export const variant = "default" as const;
 
@@ -10,9 +10,9 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  data: IModel;
+  data: Partial<IRelation>;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended;
+  data: IRelationExtended;
 }

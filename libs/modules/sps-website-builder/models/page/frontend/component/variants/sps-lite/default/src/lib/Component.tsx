@@ -1,7 +1,5 @@
-import { Component as PageBlocks } from "@sps/sps-website-builder-page-blocks-component";
-import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
 import { IComponentPropsExtended } from "./interface";
-import { Component as User } from "@sps/sps-rbac-models-user-frontend-component";
+// import { Component as User } from "@sps/sps-rbac-models-user-frontend-component";
 import { Component as PageSpsLiteEditor } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor";
 import { Component as PagesToLayoutsSpsLiteGetLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-get-layout";
 import { Component as PagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component";
@@ -17,27 +15,27 @@ export function Component(props: IComponentPropsExtended) {
         <PageSpsLiteEditor {...props} variant="editor" />
       ) : null}
 
-      <User isServer={false} variant="auth-wrapper">
-        {props.data.SPSWBPagesToLayouts?.length ? (
-          <PagesToLayoutsSpsLiteGetLayout
-            isServer={props.isServer}
-            variant="get-layout"
-            data={props.data.SPSWBPagesToLayouts[0]}
-          >
-            {props.data.SPSWBPagesToWidgets?.map((widget, index) => {
-              return (
-                <PagesToWidgets
-                  key={index}
-                  isServer={props.isServer}
-                  variant="default"
-                  data={widget}
-                />
-              );
-            })}
-          </PagesToLayoutsSpsLiteGetLayout>
-        ) : null}
+      {/* <User isServer={false} variant="auth-wrapper"> */}
+      {props.data.pagesToLayouts?.length ? (
+        <PagesToLayoutsSpsLiteGetLayout
+          isServer={props.isServer}
+          variant="get-layout"
+          data={props.data.pagesToLayouts[0]}
+        >
+          {props.data.pagesToWidgets?.map((widget, index) => {
+            return (
+              <PagesToWidgets
+                key={index}
+                isServer={props.isServer}
+                variant="default"
+                data={widget}
+              />
+            );
+          })}
+        </PagesToLayoutsSpsLiteGetLayout>
+      ) : null}
 
-        {/* {props.data?.layouts && props.data.layouts?.length ? (
+      {/* {props.data?.layouts && props.data.layouts?.length ? (
           <Layout
             isServer={props.isServer}
             data={props.data.layouts[0]}
@@ -55,7 +53,7 @@ export function Component(props: IComponentPropsExtended) {
             <h1 className="text-4xl font-bold">{props.data.title}</h1>
           </div>
         )} */}
-      </User>
+      {/* </User> */}
     </section>
   );
 }

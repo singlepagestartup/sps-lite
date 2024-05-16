@@ -1,3 +1,3 @@
-import type { IModel as IParentModel } from "./startup";
+import type { IRelation as IParentRelation } from "./startup";
 
-export interface IModel extends IParentModel {}
+export interface IRelation extends IParentRelation {}

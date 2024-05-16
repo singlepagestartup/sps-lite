@@ -69,7 +69,10 @@ export class Coder {
       const cuttedTableName = getNameStyles({ name: tableName }).snakeCased
         .baseCutted;
 
-      this.tableName = cuttedTableName;
+      const randomThreeLetters = Math.random().toString(36).substring(2, 5);
+
+      // Cutted table names can be equal, thats why we add random three letters
+      this.tableName = cuttedTableName + "_" + randomThreeLetters;
     } else {
       this.tableName = tableName;
     }
@@ -129,6 +132,8 @@ export class Coder {
         relation_name_snake_cased: this.relationNameStyles.snakeCased.base,
         table_name: this.tableName,
         relation_name_pascal_cased: this.relationNameStyles.pascalCased.base,
+        relation_name_property_cased:
+          this.relationNameStyles.propertyCased.base,
       },
     });
   }

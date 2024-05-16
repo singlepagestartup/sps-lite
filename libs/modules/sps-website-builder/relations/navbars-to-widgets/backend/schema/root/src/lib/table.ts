@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as Navbar } from "@sps/sps-website-builder-models-navbar-backend-schema-table";
 import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-schema-table";
 
-export const modelName = "SPSWBNavbarsToWidgets";
+export const schemaName = "SPSWBNavbarsToWidgets";
+export const modelName = "navbarsToWidgets";
 
 const moduleName = "sps_w_b";
 const table = "ns_to_ws";

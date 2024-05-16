@@ -2,6 +2,9 @@ import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { RelationConfig } from "../transform-data";
 import { eq } from "drizzle-orm";
 
+/**
+ * @deprecated
+ */
 export async function insertRelations<Config extends RelationConfig>({
   db,
   id,

@@ -24,6 +24,9 @@ export type BaseConfig = {
   }[];
 };
 
+/**
+ * @deprecated as not consistent for using in the project
+ */
 export function transformData<
   SelectWithRelations extends PgTableWithColumns<any>["$inferSelect"],
   Config extends RelationConfig,

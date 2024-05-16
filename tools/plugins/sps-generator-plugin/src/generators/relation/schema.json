@@ -29,12 +29,39 @@
         "index": 0
       }
     },
-    "left_model_relation_name": {
+    "module": {
       "type": "string",
-      "description": "Another project name alias, for example: pages",
-      "$default": {
-        "$source": "argv",
-        "index": 0
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
       }
     },
     "right_model_name": {
@@ -45,20 +72,22 @@
         "index": 0
       }
     },
-    "right_model_relation_name": {
-      "type": "string",
-      "description": "Another project name alias, for example: layouts",
+    "left_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "right_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
       "$default": {
         "$source": "argv",
         "index": 0
       }
     }
   },
-  "required": [
-    "action",
-    "left_model_name",
-    "left_model_relation_name",
-    "right_model_name",
-    "right_model_relation_name"
-  ]
+  "required": ["action", "module", "left_model_name", "right_model_name"]
 }

@@ -10,7 +10,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  data: IModel;
+  data: Partial<IModel>;
   isOpen: boolean;
   close: () => void;
 }

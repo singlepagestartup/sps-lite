@@ -1,8 +1,4 @@
-export const variants = [
-  "default",
-  "simple-links-on-left",
-  "centered-logotype",
-] as const;
+export const variants = ["default", "centered-logotype"] as const;
 
 export interface IModel {
   id: string;

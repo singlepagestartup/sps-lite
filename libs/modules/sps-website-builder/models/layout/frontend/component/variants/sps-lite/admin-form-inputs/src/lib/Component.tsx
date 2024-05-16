@@ -72,7 +72,7 @@ export function Component(props: IComponentPropsExtended) {
           );
         }}
       />
-      {props.data?.SPSWBLayoutsToNavbars.map((layoutToNavbar, index) => {
+      {props.data?.layoutsToNavbars.map((layoutToNavbar, index) => {
         return (
           <LayoutsToNavbarsSpsLiteSelectRight
             key={index}
@@ -86,7 +86,7 @@ export function Component(props: IComponentPropsExtended) {
         isServer={false}
         variant="select-right"
       />
-      {props.data?.SPSWBLayoutsToFooters.map((layoutToFooter, index) => {
+      {props.data?.layoutsToFooters.map((layoutToFooter, index) => {
         return (
           <LayoutsToFooterSpsLiteSelectRight
             key={index}

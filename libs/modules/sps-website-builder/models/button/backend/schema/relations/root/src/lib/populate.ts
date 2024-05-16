@@ -1,3 +1,6 @@
-import { populate as heroSectionBlocks } from "@sps/sps-website-builder-models-button-backend-schema-relations-hero-section-blocks";
-import { populate as navbarBlocks } from "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks";
-export const populate = { ...heroSectionBlocks, ...navbarBlocks };
+import { populate as heroSectionBlocksToButtons } from "@sps/sps-website-builder-models-button-backend-schema-relations-hero-section-blocks-to-buttons";
+import { populate as navbarBlocksToButtons } from "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks-to-buttons";
+export const populate = {
+  ...heroSectionBlocksToButtons,
+  ...navbarBlocksToButtons,
+};

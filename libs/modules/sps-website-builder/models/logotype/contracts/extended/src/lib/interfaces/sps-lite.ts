@@ -1,7 +1,6 @@
 import type { IModel as IParentModel } from "@sps/sps-website-builder-models-logotype-contracts";
-import type { IModel as IFile } from "@sps/sps-file-storage-models-file-contracts";
+import { IRelation as ILogotypeToFile } from "@sps/sps-website-builder-relations-logotypes-to-files-contracts";
 
 export interface IModel extends IParentModel {
-  media?: IFile[] | null;
-  additionalMedia?: IFile[] | null;
+  logotypesToFiles: ILogotypeToFile[];
 }
