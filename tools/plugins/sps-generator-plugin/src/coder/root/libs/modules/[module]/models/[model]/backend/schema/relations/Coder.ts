@@ -65,8 +65,6 @@ export class Coder {
       schemaPath,
       populatePath,
     });
-
-    console.log(`🚀 ~ createRelation ~ this.name:`, this.name);
   }
 
   async removeRelation() {

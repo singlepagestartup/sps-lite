@@ -154,8 +154,6 @@ export class Coder {
     await this.project.models[1].createRelation();
     await this.project.models[2].createRelation();
 
-    console.log(`🚀 ~ this.project:`, this.name);
-
     await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
@@ -193,13 +191,9 @@ export class Coder {
 
     await this.project.relations[0].removeRelations();
 
-    // await this.project.models[2].removeRelation({
-    //   relationName: props.leftModelRelationName,
-    // });
+    await this.project.models[2].removeRelation();
 
-    // await this.project.models[1].removeRelation({
-    //   relationName: props.rightModelRelationName,
-    // });
+    await this.project.models[1].removeRelation();
 
     await this.project.relations[0].project.relation.project.backend.project.app.detach(
       {

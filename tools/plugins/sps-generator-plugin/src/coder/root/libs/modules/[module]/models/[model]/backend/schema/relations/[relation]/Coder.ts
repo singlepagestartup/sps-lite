@@ -24,8 +24,6 @@ export class Coder {
   relationsSchemaProjectImportPath: string;
 
   nameStyles: ReturnType<typeof getNameStyles>;
-  importConfig: ImportConfig;
-  exportNamedConfig: ExportNamedConfig;
   importPopulate: ImportPopulate;
   exportPopulate: ExportPopulate;
   importRelation: ImportRelation;
@@ -55,13 +53,6 @@ export class Coder {
     this.nameStyles = nameStyles;
 
     this.relationsSchemaProjectImportPath = relationsSchemaProjectImportPath;
-    this.importConfig = new ImportConfig({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
-      libName: this.baseName,
-    });
-    this.exportNamedConfig = new ExportNamedConfig({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
-    });
     this.importPopulate = new ImportPopulate({
       leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
       libName: this.baseName,
@@ -97,31 +88,12 @@ export class Coder {
   }
 
   async attach({
-    // configPath,
     populatePath,
     schemaPath,
   }: {
-    // configPath: string;
     populatePath: string;
     schemaPath: string;
   }) {
-    // console.log(`🚀 ~ configPath:`, configPath);
-    // const rootRelationsSchemaConfigFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
-
-    // await addToFile({
-    //   toTop: true,
-    //   pathToFile: configPath,
-    //   content: this.importConfig.onCreate.content,
-    //   tree: this.tree,
-    // });
-
-    // await replaceInFile({
-    //   tree: this.tree,
-    //   pathToFile: configPath,
-    //   regex: this.exportNamedConfig.onCreate.regex,
-    //   content: this.exportNamedConfig.onCreate.content,
-    // });
-
     // const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
 
     await addToFile({
@@ -156,42 +128,12 @@ export class Coder {
   }
 
   async detach({
-    // configPath,
     populatePath,
     schemaPath,
   }: {
-    // configPath: string;
     populatePath: string;
     schemaPath: string;
   }) {
-    // const rootRelationsSchemaConfigFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/config.ts`;
-
-    // try {
-    //   await replaceInFile({
-    //     tree: this.tree,
-    //     pathToFile: configPath,
-    //     regex: this.importConfig.onRemove.regex,
-    //     content: "",
-    //   });
-    // } catch (error) {
-    //   if (!error.message.includes(`No expected value`)) {
-    //     throw error;
-    //   }
-    // }
-
-    // try {
-    //   await replaceInFile({
-    //     tree: this.tree,
-    //     pathToFile: configPath,
-    //     regex: this.exportNamedConfig.onRemove.regex,
-    //     content: "",
-    //   });
-    // } catch (error) {
-    //   if (!error.message.includes(`No expected value`)) {
-    //     throw error;
-    //   }
-    // }
-
     // const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
 
     try {
@@ -260,54 +202,6 @@ export class Coder {
       projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
-    });
-  }
-}
-
-export class ImportConfig extends RegexCreator {
-  constructor({
-    libName,
-    leftProjectRelationNamePropertyCased,
-  }: {
-    libName: string;
-    leftProjectRelationNamePropertyCased: string;
-  }) {
-    const place = ``;
-    const placeRegex = new RegExp(``);
-
-    const content = `import { config as ${leftProjectRelationNamePropertyCased} } from "${libName}";`;
-    const contentRegex = new RegExp(
-      `import${space}{${space}config${space}as${space}${leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${libName}";`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
-    });
-  }
-}
-
-export class ExportNamedConfig extends RegexCreator {
-  constructor({
-    leftProjectRelationNamePropertyCased,
-  }: {
-    leftProjectRelationNamePropertyCased: string;
-  }) {
-    const place = `export const config = {`;
-    const placeRegex = new RegExp(`export const config = {`);
-
-    const content = `[${leftProjectRelationNamePropertyCased}.name]: ${leftProjectRelationNamePropertyCased},`;
-    const contentRegex = new RegExp(
-      `\\[${leftProjectRelationNamePropertyCased}.name\\]:${space}${leftProjectRelationNamePropertyCased}${comma}${space}`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
     });
   }
 }
