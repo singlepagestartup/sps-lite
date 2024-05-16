@@ -1,8 +1,8 @@
-import { relation as slides } from "@sps/sps-website-builder-models-slider-backend-schema-relations-slides";
-import { relation as sliderBlocks } from "@sps/sps-website-builder-models-slider-backend-schema-relations-slider-blocks";
+import { relation as slidersToSlides } from "@sps/sps-website-builder-models-slider-backend-schema-relations-sliders-to-slides";
+import { relation as sliderBlocksToSliders } from "@sps/sps-website-builder-models-slider-backend-schema-relations-slider-blocks-to-sliders";
 import { relations } from "drizzle-orm";
 import { Table } from "@sps/sps-website-builder-models-slider-backend-schema-table";
 
 export const Relations = relations(Table, (helpers) => {
-  return { ...slides(helpers), ...sliderBlocks(helpers) };
+  return { ...slidersToSlides(helpers), ...sliderBlocksToSliders(helpers) };
 });

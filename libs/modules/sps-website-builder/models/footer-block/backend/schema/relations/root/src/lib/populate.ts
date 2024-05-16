@@ -1,2 +1,2 @@
-import { populate as widgets } from "@sps/sps-website-builder-models-footer-block-backend-schema-relations-widgets";
-export const populate = { ...widgets };
+import { populate as widgetsToFooterBlocks } from "@sps/sps-website-builder-models-footer-block-backend-schema-relations-widgets-to-footer-blocks";
+export const populate = { ...widgetsToFooterBlocks };

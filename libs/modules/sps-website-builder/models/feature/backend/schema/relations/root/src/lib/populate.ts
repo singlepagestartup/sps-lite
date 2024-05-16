@@ -1,2 +1,2 @@
-import { populate as featuresSectionBlocks } from "@sps/sps-website-builder-models-feature-backend-schema-relations-features-section-blocks";
-export const populate = { ...featuresSectionBlocks };
+import { populate as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-models-feature-backend-schema-relations-features-section-blocks-to-features";
+export const populate = { ...featuresSectionBlocksToFeatures };
