@@ -133,6 +133,8 @@ export class Coder {
   async createRelations(props: {
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     const leftProject = new ModelsCoder({
       tree: this.tree,
@@ -152,8 +154,13 @@ export class Coder {
     await this.project.relations[0].init();
     await this.project.relations[0].createRelations();
 
-    await this.project.models[1].createRelation();
-    await this.project.models[2].createRelation();
+    if (!props.leftModelIsExternal) {
+      await this.project.models[1].createRelation();
+    }
+
+    if (!props.rightModelIsExternal) {
+      await this.project.models[2].createRelation();
+    }
 
     await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
       {
@@ -175,6 +182,8 @@ export class Coder {
   async removeRelations(props: {
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     const leftProject = new ModelsCoder({
       tree: this.tree,

@@ -29,6 +29,41 @@
         "index": 0
       }
     },
+    "module": {
+      "type": "string",
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
+    },
     "right_model_name": {
       "type": "string",
       "description": "Model name, for example: layout",
@@ -36,7 +71,23 @@
         "$source": "argv",
         "index": 0
       }
+    },
+    "left_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "right_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     }
   },
-  "required": ["action", "left_model_name", "right_model_name"]
+  "required": ["action", "module", "left_model_name", "right_model_name"]
 }

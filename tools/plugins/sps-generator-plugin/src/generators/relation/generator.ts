@@ -8,18 +8,24 @@ export async function relationGenerator(
   tree: Tree,
   options: RelationGeneratorSchema,
 ) {
+  const moduleName = options.module;
+
   const coder = new Coder({ tree });
   if (options.action === "remove") {
     await coder.removeRelations({
       leftModelName: options.left_model_name,
+      leftModelIsExternal: options.left_model_is_external,
       rightModelName: options.right_model_name,
-      moduleName: "sps-website-builder",
+      rightModelIsExternal: options.right_model_is_external,
+      moduleName,
     });
   } else {
     await coder.createRelations({
       leftModelName: options.left_model_name,
+      leftModelIsExternal: options.left_model_is_external,
       rightModelName: options.right_model_name,
-      moduleName: "sps-website-builder",
+      rightModelIsExternal: options.right_model_is_external,
+      moduleName,
     });
   }
 }

@@ -132,6 +132,8 @@ export class Coder {
     moduleName: string;
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     const { moduleName } = props;
     await this.init({
@@ -145,6 +147,8 @@ export class Coder {
     moduleName: string;
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     const { moduleName } = props;
     await this.init({

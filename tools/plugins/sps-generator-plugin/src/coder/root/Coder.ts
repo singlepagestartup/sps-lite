@@ -91,6 +91,8 @@ export class Coder {
     moduleName: string;
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     await this.project.libs.createRelations(props);
   }
@@ -99,6 +101,8 @@ export class Coder {
     moduleName: string;
     leftModelName: string;
     rightModelName: string;
+    leftModelIsExternal: boolean;
+    rightModelIsExternal: boolean;
   }) {
     await this.project.libs.removeRelations(props);
   }

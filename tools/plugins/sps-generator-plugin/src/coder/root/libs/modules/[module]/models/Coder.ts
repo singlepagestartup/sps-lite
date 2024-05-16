@@ -31,7 +31,13 @@ export class Coder {
     };
   }
 
-  async init({ modelName }: { modelName: string }) {
+  async init({
+    modelName,
+    isExternal = false,
+  }: {
+    modelName: string;
+    isExternal?: boolean;
+  }) {
     const model = new ModelCoder({
       tree: this.tree,
       name: modelName,
