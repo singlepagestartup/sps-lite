@@ -4,7 +4,6 @@ import { IComponentProps as IAdminFormInputsComponentProps } from "@sps/sps-webs
 import { IComponentProps as IAdminTableRowComponentProps } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table-row";
 import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table";
 import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-default";
-import { IComponentProps as IBoxedComponentProps } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-boxed";
 
 export type IComponentProps =
   | IAdminSelectInputComponentProps

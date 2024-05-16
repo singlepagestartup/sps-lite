@@ -13,7 +13,11 @@ export function Component(props: IComponentPropsExtended) {
       className={`relative ${props.data.className || "w-full"}`}
       href={props.data.url || ""}
     >
-      <div className="p-5 bg-black"></div>
+      {props.data.url ? (
+        <Link href={props.data.url}>Link</Link>
+      ) : (
+        <div>File</div>
+      )}
       {/* {props.data.media?.length ? (
         <File
           isServer={props.isServer}
