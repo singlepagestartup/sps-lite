@@ -1,7 +1,7 @@
 import { db } from "@sps/sps-db-provider";
 import {
   populate,
-  modelName,
+  schemaName,
 } from "@sps/sps-website-builder-relations-layouts-to-footers-backend-schema";
 
 export async function service(params?: { filter?: any }) {

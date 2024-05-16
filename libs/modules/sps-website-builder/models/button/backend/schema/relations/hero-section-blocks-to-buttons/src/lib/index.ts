@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "@sps/sps-website-builder-relations-pages-to-layouts-backend-schema";
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-schema";
 import { TableRelationsHelpers } from "drizzle-orm";
 
 export const relation = <TTableName extends string>(

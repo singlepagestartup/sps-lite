@@ -1,10 +1,8 @@
 import { db } from "@sps/sps-db-provider";
 import {
   populate,
-  modelName,
-  Table,
+  schemaName,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
-import { asc, desc } from "drizzle-orm";
 
 export async function service(params?: { filter?: any }) {
   const result = await db.query[schemaName].findMany({

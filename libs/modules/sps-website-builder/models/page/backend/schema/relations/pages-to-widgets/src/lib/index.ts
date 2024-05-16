@@ -14,4 +14,4 @@ export const relation = <TTableName extends string>(
 
 export const populate = {
   [modelName]: true,
-};
+} as const;

@@ -4,8 +4,6 @@ import {
   config,
   insertSchema,
 } from "<%= schema_module_lib_name %>";
-import { service as findById } from "../find-by-id";
-
 
 export async function service(props: { data: any }) {
   const { data } = props;

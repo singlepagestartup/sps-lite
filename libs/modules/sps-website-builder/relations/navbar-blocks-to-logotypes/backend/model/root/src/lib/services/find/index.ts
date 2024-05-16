@@ -1,7 +1,7 @@
 import { db } from "@sps/sps-db-provider";
 import {
   populate,
-  modelName,
+  schemaName,
 } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-schema";
 
 export async function service(params?: { filter?: any }) {

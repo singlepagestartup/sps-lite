@@ -1,5 +1,8 @@
 import { db } from "@sps/sps-db-provider";
-import { populate } from "@sps/sps-website-builder-models-button-backend-schema";
+import {
+  populate,
+  schemaName,
+} from "@sps/sps-website-builder-models-button-backend-schema";
 
 export async function service(params?: { filter?: any }) {
   const result = await db.query[schemaName].findMany({

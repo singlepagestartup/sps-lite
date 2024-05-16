@@ -2,7 +2,7 @@ import { db } from "@sps/sps-db-provider";
 import {
   Table,
   populate,
-  modelName,
+  schemaName,
 } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
 import { eq } from "drizzle-orm";
 

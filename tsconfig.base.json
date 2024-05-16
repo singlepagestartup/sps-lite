@@ -678,11 +678,11 @@
       "@sps/sps-website-builder-models-button-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/button/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-button-backend-schema-relations-hero-section-blocks": [
-        "libs/modules/sps-website-builder/models/button/backend/schema/relations/hero-section-blocks/src/index.ts"
+      "@sps/sps-website-builder-models-button-backend-schema-relations-hero-section-blocks-to-buttons": [
+        "libs/modules/sps-website-builder/models/button/backend/schema/relations/hero-section-blocks-to-buttons/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks": [
-        "libs/modules/sps-website-builder/models/button/backend/schema/relations/navbar-blocks/src/index.ts"
+      "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks-to-buttons": [
+        "libs/modules/sps-website-builder/models/button/backend/schema/relations/navbar-blocks-to-buttons/src/index.ts"
       ],
       "@sps/sps-website-builder-models-button-backend-schema-table": [
         "libs/modules/sps-website-builder/models/button/backend/schema/table/src/index.ts"

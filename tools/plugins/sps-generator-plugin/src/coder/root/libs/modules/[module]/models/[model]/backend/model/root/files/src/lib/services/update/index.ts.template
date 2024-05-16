@@ -5,8 +5,6 @@ import {
   insertSchema,
 } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
-import { service as findById } from "../find-by-id";
-
 
 export async function service(props: { id: string; data: any }) {
   const { id, data } = props;

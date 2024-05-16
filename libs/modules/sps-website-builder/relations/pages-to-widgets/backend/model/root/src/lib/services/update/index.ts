@@ -4,7 +4,6 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
 import { eq } from "drizzle-orm";
-import { service as findById } from "../find-by-id";
 
 export async function service(props: { id: string; data: any }) {
   const { id, data } = props;

@@ -1,11 +1,9 @@
 import { db } from "@sps/sps-db-provider";
 import {
   Table,
-  config,
   insertSchema,
 } from "@sps/sps-website-builder-models-feature-backend-schema";
 import { eq } from "drizzle-orm";
-import { service as findById } from "../find-by-id";
 
 export async function service(props: { id: string; data: any }) {
   const { id, data } = props;
