@@ -5,7 +5,6 @@ import {
 } from "@sps/sps-website-builder-relations-footers-to-widgets-backend-schema";
 import { eq } from "drizzle-orm";
 import { service as findById } from "../find-by-id";
-import { insertRelations } from "@sps/shared-backend-api";
 
 export async function service(props: { id: string; data: any }) {
   const { id, data } = props;
@@ -18,15 +17,9 @@ export async function service(props: { id: string; data: any }) {
       .set(plainData)
       .where(eq(Table.id, id))
       .returning();
+
+    return entity;
   }
 
-  const transformedEntity = await findById({
-    id,
-  });
-
-  if (!transformedEntity) {
-    throw new Error("Entity not found");
-  }
-
-  return transformedEntity;
+  return {};
 }

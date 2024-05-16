@@ -2,7 +2,8 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { fields } from "./fields";
 
-export const modelName = "SPSFSFile";
+export const schemaName = "SPSFSFile";
+export const modelName = "file";
 
 const moduleName = "sps_f_s";
 const table = "file";

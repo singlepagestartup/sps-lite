@@ -68,6 +68,7 @@ export class Coder {
         module_name_cutted_snake_cased: this.moduleNameStyles.snakeCased,
         module_name_cutted_pascal_cased: this.moduleNameStyles.pascalCased,
         model_name_pascal_cased: this.modelNameStyles.pascalCased.base,
+        model_name_property_cased: this.modelNameStyles.propertyCased.base,
       },
     });
 

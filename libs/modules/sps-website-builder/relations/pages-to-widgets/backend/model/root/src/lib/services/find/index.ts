@@ -7,7 +7,7 @@ import {
 import { asc, desc } from "drizzle-orm";
 
 export async function service(params?: { filter?: any }) {
-  const result = await db.query[modelName].findMany({
+  const result = await db.query[schemaName].findMany({
     with: populate,
     where: params?.filter,
   });

@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-backend-schema-table";
 import { Table as Logotype } from "@sps/sps-website-builder-models-logotype-backend-schema-table";
 
-export const modelName = "SPSWBNavbarBlocksToLogotypes";
+export const schemaName = "SPSWBNavbarBlocksToLogotypes";
+export const modelName = "navbarBlocksToLogotypes";
 
 const moduleName = "sps_w_b";
 const table = "nr_bs_to_ls";

@@ -1,8 +1,8 @@
-import { relation as widgets } from "@sps/sps-website-builder-models-page-backend-schema-relations-widgets";
-import { relation as layouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-layouts";
+import { relation as pagesToWidgets } from "@sps/sps-website-builder-models-page-backend-schema-relations-pages-to-widgets";
+import { relation as pagesToLayouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-pages-to-layouts";
 import { relations } from "drizzle-orm";
 import { Table } from "@sps/sps-website-builder-models-page-backend-schema-table";
 
 export const Relations = relations(Table, (helpers) => {
-  return { ...widgets(helpers), ...layouts(helpers) };
+  return { ...pagesToWidgets(helpers), ...pagesToLayouts(helpers) };
 });

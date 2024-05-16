@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as Slider } from "@sps/sps-website-builder-models-slider-backend-schema-table";
 import { Table as Slide } from "@sps/sps-website-builder-models-slide-backend-schema-table";
 
-export const modelName = "SPSWBSlidersToSlides";
+export const schemaName = "SPSWBSlidersToSlides";
+export const modelName = "slidersToSlides";
 
 const moduleName = "sps_w_b";
 const table = "ss_to_ss";

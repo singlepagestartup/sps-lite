@@ -129,6 +129,8 @@ export class Coder {
         relation_name_snake_cased: this.relationNameStyles.snakeCased.base,
         table_name: this.tableName,
         relation_name_pascal_cased: this.relationNameStyles.pascalCased.base,
+        relation_name_property_cased:
+          this.relationNameStyles.propertyCased.base,
       },
     });
   }

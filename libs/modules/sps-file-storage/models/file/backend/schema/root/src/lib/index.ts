@@ -1,5 +1,6 @@
 export {
   modelName,
+  schemaName,
   Table,
   insertSchema,
   selectSchema,
@@ -7,5 +8,4 @@ export {
 export {
   Relations,
   populate,
-  config,
 } from "@sps/sps-file-storage-models-file-backend-schema-relations";

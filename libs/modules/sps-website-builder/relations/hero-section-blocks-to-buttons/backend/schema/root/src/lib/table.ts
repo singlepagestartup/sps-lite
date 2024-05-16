@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-backend-schema-table";
 import { Table as Button } from "@sps/sps-website-builder-models-button-backend-schema-table";
 
-export const modelName = "SPSWBHeroSectionBlocksToButtons";
+export const schemaName = "SPSWBHeroSectionBlocksToButtons";
+export const modelName = "heroSectionBlocksToButtons";
 
 const moduleName = "sps_w_b";
 const table = "ho_sn_bs_to_bs";

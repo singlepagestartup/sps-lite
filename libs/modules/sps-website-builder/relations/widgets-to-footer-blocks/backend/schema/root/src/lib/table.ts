@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-schema-table";
 import { Table as FooterBlock } from "@sps/sps-website-builder-models-footer-block-backend-schema-table";
 
-export const modelName = "SPSWBWidgetsToFooterBlocks";
+export const schemaName = "SPSWBWidgetsToFooterBlocks";
+export const modelName = "widgetsToFooterBlocks";
 
 const moduleName = "sps_w_b";
 const table = "ws_to_fr_bs";

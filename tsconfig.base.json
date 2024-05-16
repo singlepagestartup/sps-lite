@@ -1665,11 +1665,11 @@
       "@sps/sps-website-builder-models-page-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/page/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-page-backend-schema-relations-layouts": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/relations/layouts/src/index.ts"
+      "@sps/sps-website-builder-models-page-backend-schema-relations-pages-to-layouts": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/relations/pages-to-layouts/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-page-backend-schema-relations-widgets": [
-        "libs/modules/sps-website-builder/models/page/backend/schema/relations/widgets/src/index.ts"
+      "@sps/sps-website-builder-models-page-backend-schema-relations-pages-to-widgets": [
+        "libs/modules/sps-website-builder/models/page/backend/schema/relations/pages-to-widgets/src/index.ts"
       ],
       "@sps/sps-website-builder-models-page-backend-schema-table": [
         "libs/modules/sps-website-builder/models/page/backend/schema/table/src/index.ts"

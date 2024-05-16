@@ -2,7 +2,8 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { fields } from "./fields";
 
-export const modelName = "SPSWBNavbarBlock";
+export const schemaName = "SPSWBNavbarBlock";
+export const modelName = "navbarBlock";
 
 const moduleName = "sps_w_b";
 const table = "nr_bk";

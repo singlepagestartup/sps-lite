@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-website-builder-models-page-backend-schema-relations-layouts",
+  "name": "@sps/sps-website-builder-models-page-backend-schema-relations-pages-to-widgets",
   "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-website-builder/models/page/backend/schema/relations/layouts/src",
+  "sourceRoot": "libs/modules/sps-website-builder/models/page/backend/schema/relations/pages-to-widgets/src",
   "projectType": "library",
   "tags": [],
   "targets": {

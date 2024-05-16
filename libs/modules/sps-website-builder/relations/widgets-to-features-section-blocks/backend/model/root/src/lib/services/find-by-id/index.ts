@@ -9,7 +9,7 @@ import { eq } from "drizzle-orm";
 export async function service(props: { id: string }) {
   const { id } = props;
 
-  const result = await db.query[modelName].findFirst({
+  const result = await db.query[schemaName].findFirst({
     where: eq(Table.id, id),
   });
 

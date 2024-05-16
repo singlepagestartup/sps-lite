@@ -35,7 +35,7 @@ export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
 ) => {
   return {
-    features: helpers.many(config.leftTable.table),
+    features: helpers.many(Table),
   };
 };
 
