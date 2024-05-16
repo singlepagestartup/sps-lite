@@ -13,7 +13,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: (typeof variants)[number];
-  data: IModel;
+  data: Partial<IModel>;
 }
 
 export interface IComponentPropsExtended extends IComponentBase {

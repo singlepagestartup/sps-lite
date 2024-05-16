@@ -10,7 +10,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  data: IRelation;
+  data: Partial<IRelation>;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

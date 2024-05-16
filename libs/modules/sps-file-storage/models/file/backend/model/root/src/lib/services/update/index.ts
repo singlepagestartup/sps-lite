@@ -7,7 +7,6 @@ import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {
   const { id, data } = props;
-  console.log(`🚀 ~ service ~ data:`, data);
 
   const plainData = insertSchema.parse(data);
 

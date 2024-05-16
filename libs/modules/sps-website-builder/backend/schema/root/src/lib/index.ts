@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBLogotypesToFiles,
+  Relations as SPSWBLogotypesToFilesRelations,
+} from "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema";
+export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,
 } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";

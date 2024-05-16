@@ -1,32 +1,31 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import Link from "next/link";
+import { Component as LogotypesToFiles } from "@sps/sps-website-builder-relations-logotypes-to-files-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  const Comp = props.data.url ? Link : "div";
-
   return (
-    <Comp
+    <div
       data-module="sps-website-builder"
       data-model="elements.logotype"
       data-variant={props.variant}
       className={`relative ${props.data.className || "w-full"}`}
-      href={props.data.url || ""}
     >
       {props.data.url ? (
-        <Link href={props.data.url}>Link</Link>
+        <Link href={props.data.url}>
+          {props.data.logotypesToFiles.map((logotypeToFile, index) => {
+            return (
+              <LogotypesToFiles
+                key={index}
+                isServer={props.isServer}
+                data={logotypeToFile}
+                variant="default"
+              />
+            );
+          })}
+        </Link>
       ) : (
         <div>File</div>
       )}
-      {/* {props.data.media?.length ? (
-        <File
-          isServer={props.isServer}
-          variant="image"
-          data={props.data.media[0]}
-          containerClassName=""
-          className="object-contain object-left"
-        />
-      ) : null} */}
-    </Comp>
+    </div>
   );
 }
