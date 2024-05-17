@@ -52,7 +52,7 @@
         "cwd": "apps/frontend",
         "commands": [
           {
-            "command": "nx run db:migrate"
+            "command": "nx run frontend:db:migrate"
           },
           {
             "command": "bun run src/db/seed.ts"
@@ -92,7 +92,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run db:migrate"
+            "command": "nx run frontend:db:migrate"
           },
           {
             "command": "rm -rf apps/frontend/.next"
