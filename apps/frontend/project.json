@@ -12,6 +12,9 @@
         "cwd": "apps/frontend",
         "commands": [
           {
+            "command": "nx run frontend:db:migrate"
+          },
+          {
             "command": "drizzle-kit generate --config=./src/db/config.ts"
           }
         ]
