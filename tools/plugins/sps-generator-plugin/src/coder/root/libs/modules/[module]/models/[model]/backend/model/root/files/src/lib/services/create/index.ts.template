@@ -1,8 +1,7 @@
 import { db } from "@sps/sps-db-provider";
 import {
-  Table,
-  config,
   insertSchema,
+  Table,
 } from "<%= schema_module_lib_name %>";
 
 export async function service(props: { data: any }) {

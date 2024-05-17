@@ -1,11 +1,11 @@
 export { 
-  modelName,
   Table,
   insertSchema,
   selectSchema,
+  modelName,
+  schemaName,
 } from "<%= table_library_name %>";
 export {
   Relations,
   populate,
-  config,
 } from "<%= relations_library_name %>";

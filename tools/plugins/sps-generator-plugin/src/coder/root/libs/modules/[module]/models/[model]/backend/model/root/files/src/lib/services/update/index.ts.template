@@ -1,7 +1,6 @@
 import { db } from "@sps/sps-db-provider";
 import {
   Table,
-  config,
   insertSchema,
 } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
@@ -12,15 +11,14 @@ export async function service(props: { id: string; data: any }) {
   const plainData = insertSchema.parse(data);
 
   if (Object.keys(plainData).length) {
-      const [entity] = await db
-        .update(Table)
-        .set(plainData)
-        .where(eq(Table.id, id))
-        .returning();
+    const [entity] = await db
+      .update(Table)
+      .set(plainData)
+      .where(eq(Table.id, id))
+      .returning();
 
-      return entity;
+    return entity;
   }
-
 
   return {};
 }
