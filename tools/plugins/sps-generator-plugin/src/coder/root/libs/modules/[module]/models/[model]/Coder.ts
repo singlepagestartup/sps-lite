@@ -70,7 +70,7 @@ export class Coder {
     await this.project.backend.create();
     await this.project.frontend.create();
 
-    const createAdmin = true;
+    const createAdmin = false;
 
     const requiredVariants = ["default"];
     for (const variant of requiredVariants) {
