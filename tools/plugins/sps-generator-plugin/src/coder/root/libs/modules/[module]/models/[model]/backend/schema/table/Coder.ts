@@ -118,35 +118,35 @@ export class Coder {
   async createVariant(props: { variant: string; level: string }) {
     const { level, variant } = props;
 
-    // const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
 
-    // const fieldToAdd = new Variant({
-    //   variant,
-    // });
+    const fieldToAdd = new Variant({
+      variant,
+    });
 
-    // await replaceInFile({
-    //   tree: this.tree,
-    //   pathToFile: schemaFilePath,
-    //   regex: fieldToAdd.onCreate.regex,
-    //   content: fieldToAdd.onCreate.content,
-    // });
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: schemaFilePath,
+      regex: fieldToAdd.onCreate.regex,
+      content: fieldToAdd.onCreate.content,
+    });
   }
 
   async removeVariant(props: { variant: string; level: string }) {
     const { level, variant } = props;
 
-    // const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
 
-    // const fieldToAdd = new Variant({
-    //   variant,
-    // });
+    const fieldToAdd = new Variant({
+      variant,
+    });
 
-    // await replaceInFile({
-    //   tree: this.tree,
-    //   pathToFile: schemaFilePath,
-    //   regex: fieldToAdd.onRemove.regex,
-    //   content: fieldToAdd.onRemove.content,
-    // });
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: schemaFilePath,
+      regex: fieldToAdd.onRemove.regex,
+      content: fieldToAdd.onRemove.content,
+    });
   }
 
   async remove() {

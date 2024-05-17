@@ -77,6 +77,8 @@ export class Coder {
       modelName,
     });
 
+    console.log(`🚀 ~ createModel ~ this.baseDirectory:`, this.baseDirectory);
+
     await this.project.models[0].project.model.project.backend.project.schema.project.root.attach(
       {
         indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,

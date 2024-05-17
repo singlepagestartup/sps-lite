@@ -17,7 +17,7 @@ export class Coder {
   tree: Tree;
   name: string;
   project: ProjectConfiguration;
-  // exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
+  exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
     this.parent = parent;
@@ -34,11 +34,11 @@ export class Coder {
     const modelName = parent.parent.parent.name;
     const modelNamePascalCased = names(modelName).className;
 
-    // this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
-    //   moduleName: moduleNameCuttedAndPascalCased,
-    //   modelNamePascalCased,
-    //   libName: this.baseName,
-    // });
+    this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
+      moduleName: moduleNameCuttedAndPascalCased,
+      modelNamePascalCased,
+      libName: this.baseName,
+    });
   }
 
   async init() {
@@ -46,27 +46,27 @@ export class Coder {
   }
 
   async attach({ indexPath }: { indexPath: string }) {
-    // const backendAppProjectFileContent = await addToFile({
-    //   toTop: true,
-    //   pathToFile: indexPath,
-    //   content: this.exportTableAndVaritantEnumTable.onCreate.content,
-    //   tree: this.tree,
-    // });
+    const backendAppProjectFileContent = await addToFile({
+      toTop: true,
+      pathToFile: indexPath,
+      content: this.exportTableAndVaritantEnumTable.onCreate.content,
+      tree: this.tree,
+    });
   }
 
   async detach({ indexPath }: { indexPath: string }) {
-    // try {
-    //   const replaceImportRoutes = await replaceInFile({
-    //     tree: this.tree,
-    //     pathToFile: indexPath,
-    //     regex: this.exportTableAndVaritantEnumTable.onRemove.regex,
-    //     content: "",
-    //   });
-    // } catch (error) {
-    //   if (!error.message.includes(`No expected value`)) {
-    //     throw error;
-    //   }
-    // }
+    try {
+      const replaceImportRoutes = await replaceInFile({
+        tree: this.tree,
+        pathToFile: indexPath,
+        regex: this.exportTableAndVaritantEnumTable.onRemove.regex,
+        content: "",
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 
   async create() {
@@ -119,11 +119,10 @@ export class ExportTableAndVaritantEnumTable extends RegexCreator {
     const content = `export {
       Table as ${moduleName}${modelNamePascalCased},\n
       Relations as ${moduleName}${modelNamePascalCased}Relations,\n
-      VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable,\n
     } from "${libName}";`;
 
     const contentRegex = new RegExp(
-      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?VariantEnumTable as ${moduleName}${modelNamePascalCased}VariantEnumTable([,]?)([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?} from "${libName}";`,
     );
 
     super({
