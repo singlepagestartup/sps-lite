@@ -1,0 +1,11 @@
+{
+  "name": "@sps/startup-models-widget-frontend-component-variants-sps-lite-default",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/default/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

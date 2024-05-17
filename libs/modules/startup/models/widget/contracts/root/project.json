@@ -1,0 +1,12 @@
+{
+  "name": "@sps/startup-models-widget-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/startup/models/widget/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}

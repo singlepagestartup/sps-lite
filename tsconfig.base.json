@@ -2724,6 +2724,45 @@
       "@sps/startup-frontend-components": [
         "libs/modules/startup/frontend/components/src/index.ts"
       ],
+      "@sps/startup-models-widget-backend-app": [
+        "libs/modules/startup/models/widget/backend/app/src/index.ts"
+      ],
+      "@sps/startup-models-widget-backend-model": [
+        "libs/modules/startup/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-backend-schema": [
+        "libs/modules/startup/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-backend-schema-relations": [
+        "libs/modules/startup/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-backend-schema-table": [
+        "libs/modules/startup/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/startup-models-widget-contracts": [
+        "libs/modules/startup/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-contracts-extended": [
+        "libs/modules/startup/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-api-client": [
+        "libs/modules/startup/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-api-model": [
+        "libs/modules/startup/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-api-server": [
+        "libs/modules/startup/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component": [
+        "libs/modules/startup/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-redux": [
+        "libs/modules/startup/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
