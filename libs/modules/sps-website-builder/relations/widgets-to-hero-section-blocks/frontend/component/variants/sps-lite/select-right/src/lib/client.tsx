@@ -11,7 +11,7 @@ import { api } from "@sps/sps-website-builder-relations-widgets-to-hero-section-
 export default function Client(props: IComponentProps) {
   if (props.data) {
     const { data, isFetching, isLoading, isUninitialized } =
-      api.rtk.useFindOneQuery({
+      api.rtk.useFindByIdQuery({
         id: props.data.id,
       });
 

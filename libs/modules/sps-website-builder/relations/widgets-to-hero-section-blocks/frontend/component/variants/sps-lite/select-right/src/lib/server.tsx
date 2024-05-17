@@ -14,7 +14,7 @@ export default async function Server(props: IComponentProps) {
       return <></>;
     }
 
-    const data = await api.fetch.findOne({
+    const data = await api.fetch.findById({
       id: props.data.id,
     });
 

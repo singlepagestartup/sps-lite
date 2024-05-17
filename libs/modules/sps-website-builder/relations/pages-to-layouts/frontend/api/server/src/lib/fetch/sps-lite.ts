@@ -6,8 +6,8 @@ import {
 } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-model";
 
 export const api = {
-  findOne: async ({ id }: { id: number | string }) => {
-    return await utilsFetch.api.findOne<IRelationExtended>({
+  findById: async ({ id }: { id: number | string }) => {
+    return await utilsFetch.api.findById<IRelationExtended>({
       id,
       model: route,
       populate,
