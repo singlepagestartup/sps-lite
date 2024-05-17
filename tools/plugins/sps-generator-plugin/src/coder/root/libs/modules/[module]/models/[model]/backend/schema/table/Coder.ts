@@ -8,10 +8,12 @@ import { replaceInFile } from "../../../../../../../../../../utils/file-utils";
 import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as SchemaCoder } from "../Coder";
-import { comma } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
+import {
+  comma,
+  space,
+} from "../../../../../../../../../../utils/regex-utils/regex-elements";
 
 export interface IEditFieldProps {
-  level: "sps-lite" | "startup";
   name: string;
   type: "text" | "number";
 }
@@ -80,9 +82,9 @@ export class Coder {
   }
 
   async addField(props: IEditFieldProps) {
-    const { level, name, type } = props;
+    const { name, type } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/index.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -98,9 +100,9 @@ export class Coder {
   }
 
   async removeField(props: IEditFieldProps) {
-    const { level, name, type } = props;
+    const { name, type } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/index.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -166,8 +168,10 @@ export class Coder {
 
 export class Field extends RegexCreator {
   constructor({ name, type }: { name: string; type: string }) {
-    const place = `export const fields = {`;
-    const placeRegex = new RegExp(`export const fields = {`);
+    const place = `export const Table = pgTable(table, {`;
+    const placeRegex = new RegExp(
+      `export${space}const${space}Table${space}=${space}pgTable\\(table\,${space}\{`,
+    );
 
     const fieldNameCamelCase = names(name).propertyName;
     const content = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;

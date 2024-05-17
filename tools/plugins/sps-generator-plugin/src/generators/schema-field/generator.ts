@@ -15,7 +15,6 @@ export async function schemaFieldGenerator(
       modelName: options.model_name,
       moduleName: "sps-website-builder",
       name: options.name,
-      level: options.level,
       type: options.type,
     });
   } else {
@@ -23,7 +22,6 @@ export async function schemaFieldGenerator(
       modelName: options.model_name,
       moduleName: "sps-website-builder",
       name: options.name,
-      level: options.level,
       type: options.type,
     });
   }

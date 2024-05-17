@@ -1,6 +1,5 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { fields } from "./fields";
 
 export const schemaName = "SPSWBHeroSectionBlock";
 export const modelName = "heroSectionBlock";
@@ -11,7 +10,14 @@ const table = "ho_sn_bs";
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
-  ...fields,
+  title: pgCore.text("title"),
+  subTitle: pgCore.text("subtitle"),
+  description: pgCore.text("description"),
+  anchor: pgCore.text("anchor"),
+  className: pgCore.text("class_name"),
+  id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
+  updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
 });
 
