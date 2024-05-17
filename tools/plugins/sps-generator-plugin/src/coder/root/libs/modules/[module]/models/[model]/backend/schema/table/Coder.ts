@@ -16,6 +16,7 @@ import {
 export interface IEditFieldProps {
   name: string;
   type: "text" | "number";
+  level: "sps-lite" | "startup";
 }
 
 export class Coder {
@@ -82,9 +83,9 @@ export class Coder {
   }
 
   async addField(props: IEditFieldProps) {
-    const { name, type } = props;
+    const { level, name, type } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/index.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -100,9 +101,9 @@ export class Coder {
   }
 
   async removeField(props: IEditFieldProps) {
-    const { name, type } = props;
+    const { level, name, type } = props;
 
-    const schemaFilePath = `${this.baseDirectory}/src/lib/index.ts`;
+    const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
@@ -168,10 +169,8 @@ export class Coder {
 
 export class Field extends RegexCreator {
   constructor({ name, type }: { name: string; type: string }) {
-    const place = `export const Table = pgTable(table, {`;
-    const placeRegex = new RegExp(
-      `export${space}const${space}Table${space}=${space}pgTable\\(table\,${space}\{`,
-    );
+    const place = `export const fields = {`;
+    const placeRegex = new RegExp(`export const fields = {`);
 
     const fieldNameCamelCase = names(name).propertyName;
     const content = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;

@@ -1,5 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { fields } from "./fields";
 
 export const schemaName = "<%= module_name_cutted_pascal_cased %><%= model_name_pascal_cased %>";
 export const modelName = "<%= model_name_property_cased %>";
@@ -12,10 +13,7 @@ const pgTable = pgCore.pgTableCreator(
 );
 
 export const Table = pgTable(table, {
-  id: pgCore.uuid("id").primaryKey().defaultRandom(),
-  createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
-  updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
-  variant: pgCore.text("variant").notNull().default("default"),
+  ...fields
 });
 
 export const insertSchema = createInsertSchema(Table);
