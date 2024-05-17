@@ -34,8 +34,6 @@ coverage
 # Drizzle
 ############################
 !*.sql
-src/db/migrations/meta/*
-!src/db/migrations/meta/_journal.json
 
 ############################
 # Uploads
