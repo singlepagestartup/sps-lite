@@ -238,7 +238,7 @@ Element for configuring side effects when creating a `Form` model.
 
 #### Logotypes Cloud Block
 
-![Logotypes Cloud Block](./img/strapi-c-pb-logotypes-cloud-block.png)
+![Logotypes Cloud Block](./img/strapi-c-pb-logotypes-list-block.png)
 
 #### Navbar Block
 

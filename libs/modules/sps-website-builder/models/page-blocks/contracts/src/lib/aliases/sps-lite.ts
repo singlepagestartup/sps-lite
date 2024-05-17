@@ -11,7 +11,7 @@ import { Component as FooterBlock } from "@sps/sps-website-builder-models-footer
 import { Component as HeaderSectionBlock } from "@sps/sps-website-builder-models-header-section-block-frontend-component";
 import { Component as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-frontend-component";
 import { Component as IncentivesBlock } from "@sps/sps-website-builder-models-incentives-block-frontend-component";
-import { Component as LogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-component";
+import { Component as LogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-list-block-frontend-component";
 import { Component as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-frontend-component";
 import { Component as NotFoundBlock } from "@sps/sps-website-builder-models-not-found-block-frontend-component";
 import { Component as ProductsListBlock } from "@sps/sps-website-builder-models-products-list-block-frontend-component";
@@ -36,7 +36,7 @@ export const pageBlocks = {
   "page-blocks.header-section-block": HeaderSectionBlock,
   "page-blocks.hero-section-block": HeroSectionBlock,
   "page-blocks.incentives-block": IncentivesBlock,
-  "page-blocks.logotypes-cloud-block": LogotypesCloudBlock,
+  "page-blocks.logotypes-list-block": LogotypesCloudBlock,
   "page-blocks.navbar-block": NavbarBlock,
   "page-blocks.not-found-block": NotFoundBlock,
   "page-blocks.products-list-block": ProductsListBlock,

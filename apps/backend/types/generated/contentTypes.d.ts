@@ -2866,7 +2866,7 @@ export interface PluginSpsWebsiteBuilderPage extends Schema.CollectionType {
         "page-blocks.cta-section-block",
         "page-blocks.faqs-block",
         "page-blocks.features-section-block",
-        "page-blocks.logotypes-cloud-block",
+        "page-blocks.logotypes-list-block",
         "page-blocks.not-found-block",
         "page-blocks.tiers-list-block",
         "page-blocks.reviews-table-block",

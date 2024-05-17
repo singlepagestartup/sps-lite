@@ -645,27 +645,6 @@
       "@sps/sps-website-builder-frontend-components": [
         "libs/modules/sps-website-builder/frontend/components/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-alert-block-contracts": [
-        "libs/modules/sps-website-builder/models/alert-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/alert-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/alert-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/alert-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/alert-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-frontend-component-variants-sps-lite-centered": [
-        "libs/modules/sps-website-builder/models/alert-block/frontend/component/variants/sps-lite/centered/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-alert-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/alert-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-button-backend-app": [
         "libs/modules/sps-website-builder/models/button/backend/app/src/index.ts"
       ],
@@ -816,27 +795,6 @@
       "@sps/sps-website-builder-models-contact-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/contact-section-block/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-cta-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/cta-section-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/cta-section-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/cta-section-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/cta-section-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/cta-section-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-frontend-component-variants-sps-lite-dark-with-image": [
-        "libs/modules/sps-website-builder/models/cta-section-block/frontend/component/variants/sps-lite/dark-with-image/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-cta-section-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/cta-section-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-edit-subscription-block-contracts": [
         "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/root/src/index.ts"
       ],
@@ -857,45 +815,6 @@
       ],
       "@sps/sps-website-builder-models-edit-subscription-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-contracts": [
-        "libs/modules/sps-website-builder/models/faq-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/faq-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/faq-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/faq-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/faq-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-frontend-component-variants-sps-lite-two-columns-with-centered-introduction": [
-        "libs/modules/sps-website-builder/models/faq-block/frontend/component/variants/sps-lite/two-columns-with-centered-introduction/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/faq-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-contracts": [
-        "libs/modules/sps-website-builder/models/faq/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-contracts-extended": [
-        "libs/modules/sps-website-builder/models/faq/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/faq/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/faq/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-frontend-component": [
-        "libs/modules/sps-website-builder/models/faq/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-faq-frontend-redux": [
-        "libs/modules/sps-website-builder/models/faq/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-feature-backend-app": [
         "libs/modules/sps-website-builder/models/feature/backend/app/src/index.ts"
@@ -1161,27 +1080,6 @@
       "@sps/sps-website-builder-models-footer-frontend-redux": [
         "libs/modules/sps-website-builder/models/footer/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-header-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/header-section-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/header-section-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/header-section-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/header-section-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/header-section-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-frontend-component-variants-sps-lite-simple-centered": [
-        "libs/modules/sps-website-builder/models/header-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-header-section-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/header-section-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-hero-section-block-backend-app": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/app/src/index.ts"
       ],
@@ -1247,27 +1145,6 @@
       ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-contracts": [
-        "libs/modules/sps-website-builder/models/incentives-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/incentives-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/incentives-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/incentives-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/incentives-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-frontend-component-variants-sps-lite-four-column-with-illustrations": [
-        "libs/modules/sps-website-builder/models/incentives-block/frontend/component/variants/sps-lite/four-column-with-illustrations/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-incentives-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/incentives-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-layout-backend-app": [
         "libs/modules/sps-website-builder/models/layout/backend/app/root/src/index.ts"
@@ -1440,26 +1317,26 @@
       "@sps/sps-website-builder-models-logotype-frontend-redux": [
         "libs/modules/sps-website-builder/models/logotype/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-contracts": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/root/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-contracts": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/contracts/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/contracts/extended/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-contracts-extended": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/frontend/api/client/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-client": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/client/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/frontend/api/server/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-server": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/server/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/frontend/component/root/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-component": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-component-variants-sps-lite-simple-with-heading": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/frontend/component/variants/sps-lite/simple-with-heading/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-cloud-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/logotypes-cloud-block/frontend/redux/src/index.ts"
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-redux": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-metatag-contracts": [
         "libs/modules/sps-website-builder/models/metatag/contracts/root/src/index.ts"
@@ -1757,27 +1634,6 @@
       ],
       "@sps/sps-website-builder-models-reviews-list-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/reviews-list-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-contracts": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-table-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/reviews-table-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-shopping-cart-block-contracts": [
         "libs/modules/sps-website-builder/models/shopping-cart-block/contracts/root/src/index.ts"

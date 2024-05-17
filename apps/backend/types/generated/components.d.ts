@@ -778,7 +778,7 @@ declare module "@strapi/types" {
       "page-blocks.header-section-block": PageBlocksHeaderSectionBlock;
       "page-blocks.hero-section-block": PageBlocksHeroSectionBlock;
       "page-blocks.incentives-block": PageBlocksIncentivesBlock;
-      "page-blocks.logotypes-cloud-block": PageBlocksLogotypesCloudBlock;
+      "page-blocks.logotypes-list-block": PageBlocksLogotypesCloudBlock;
       "page-blocks.navbar-block": PageBlocksNavbarBlock;
       "page-blocks.not-found-block": PageBlocksNotFoundBlock;
       "page-blocks.products-list-block": PageBlocksProductsListBlock;

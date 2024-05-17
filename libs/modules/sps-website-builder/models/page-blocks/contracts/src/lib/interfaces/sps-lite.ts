@@ -7,7 +7,7 @@ import type { IModel as IFooterBlock } from "@sps/sps-website-builder-models-foo
 import type { IModel as IHeaderSectionBlock } from "@sps/sps-website-builder-models-header-section-block-contracts";
 import type { IModel as IHeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 import type { IModel as IIncentivesBlock } from "@sps/sps-website-builder-models-incentives-block-contracts";
-import type { IModel as ILogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-cloud-block-contracts";
+import type { IModel as ILogotypesCloudBlock } from "@sps/sps-website-builder-models-logotypes-list-block-contracts";
 import type { IModel as INavbarBlock } from "@sps/sps-website-builder-models-navbar-block-contracts";
 import type { IModel as INotFoundBlock } from "@sps/sps-website-builder-models-not-found-block-contracts";
 import type { IModel as ISliderBlock } from "@sps/sps-website-builder-models-slider-block-contracts";
