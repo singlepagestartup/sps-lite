@@ -7,7 +7,7 @@ const out = "./src/db/migrations";
 const config = defineConfig({
   schema: schemaPath,
   out,
-  driver: "pg",
+  dialect: "postgresql",
   dbCredentials: DATABASE_OPTIONS,
   verbose: true,
   strict: true,

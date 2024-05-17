@@ -5,15 +5,24 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "db:prepare": {
+    "db:generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "cwd": "apps/frontend",
         "commands": [
           {
-            "command": "drizzle-kit generate:pg --config ./src/db/config.ts"
-          },
+            "command": "drizzle-kit generate --config=./src/db/config.ts"
+          }
+        ]
+      }
+    },
+    "db:migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
           {
             "command": "bun run ./src/db/migrate.ts"
           }
@@ -27,7 +36,7 @@
         "cwd": "apps/frontend",
         "commands": [
           {
-            "command": "drizzle-kit drop --config ./src/db/config.ts"
+            "command": "drizzle-kit drop --config=./src/db/config.ts"
           },
           {
             "command": "bun run ./src/db/drop.ts"
@@ -42,6 +51,9 @@
         "parallel": false,
         "cwd": "apps/frontend",
         "commands": [
+          {
+            "command": "nx run db:migrate"
+          },
           {
             "command": "bun run src/db/seed.ts"
           }
@@ -79,6 +91,9 @@
       "options": {
         "parallel": false,
         "commands": [
+          {
+            "command": "nx run db:migrate"
+          },
           {
             "command": "rm -rf apps/frontend/.next"
           },

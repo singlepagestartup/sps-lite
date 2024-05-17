@@ -1,5 +1,6 @@
 import { IModel } from "<%= root_contracts_import_path %>";
 import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { Dispatch, SetStateAction } from "react";
 
 export const variant = "<%= variant %>" as const;
 
