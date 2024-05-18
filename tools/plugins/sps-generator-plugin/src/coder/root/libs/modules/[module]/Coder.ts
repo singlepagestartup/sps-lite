@@ -158,10 +158,28 @@ export class Coder {
 
     if (!props.leftModelIsExternal) {
       await this.project.models[1].createRelation();
+      const leftModelContractsPath =
+        this.project.models[1].project.model.project.contracts.project.extended
+          .baseDirectory;
+
+      const levelContractsPath = `${leftModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
+
+      await this.project.relations[0].project.relation.project.contracts.project.root.attach(
+        { levelContractsPath },
+      );
     }
 
     if (!props.rightModelIsExternal) {
+      const rightModelContractsPath =
+        this.project.models[2].project.model.project.contracts.project.extended
+          .baseDirectory;
+
+      const levelContractsPath = `${rightModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
+
       await this.project.models[2].createRelation();
+      await this.project.relations[0].project.relation.project.contracts.project.root.attach(
+        { levelContractsPath },
+      );
     }
 
     await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
