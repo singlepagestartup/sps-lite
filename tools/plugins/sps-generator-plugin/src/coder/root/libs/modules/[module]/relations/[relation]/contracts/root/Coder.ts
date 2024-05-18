@@ -38,11 +38,10 @@ export class Coder {
     const rightModelName =
       this.parent.parent.parent.parent.project.models[2].project.model.name;
 
-    console.log(
-      `🚀 ~ create ~ leftModelName, rightModelName:`,
-      leftModelName,
-      rightModelName,
-    );
+    const leftModelIsExternal =
+      this.parent.parent.parent.parent.project.models[1].isExternal;
+    const rightModelIsExternal =
+      this.parent.parent.parent.parent.project.models[2].isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -52,8 +51,10 @@ export class Coder {
       templateParams: {
         template: "",
         offset_from_root: offsetFromRootProject,
+        left_model_is_external: leftModelIsExternal,
         left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
+        right_model_is_external: rightModelIsExternal,
         right_model_name_property_cased: getNameStyles({ name: rightModelName })
           .propertyCased.base,
       },

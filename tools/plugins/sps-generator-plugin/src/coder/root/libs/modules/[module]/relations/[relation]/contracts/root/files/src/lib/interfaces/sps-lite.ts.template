@@ -4,5 +4,8 @@ export interface IRelation {
   id: string;
   variant: (typeof variants)[number];
   <%= left_model_name_property_cased %>Id: string;
+<% if(right_model_is_external) { %>
+<% } else { %>
   <%= right_model_name_property_cased %>Id: string;
+<% } %>
 }
