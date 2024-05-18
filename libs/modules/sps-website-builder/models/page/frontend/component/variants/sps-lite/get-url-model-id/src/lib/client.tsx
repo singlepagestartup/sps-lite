@@ -9,15 +9,14 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-const R = require("ramda");
 
 export default function Client(props: IComponentProps) {
   const params = useParams();
-  const [localId, setLocalId] = useState<number | undefined>();
+  const [localId, setLocalId] = useState<string | undefined>();
 
   const { data, isFetching, isLoading, isUninitialized } =
     api.rtk.useGetByUrlQuery({
-      url: params.url,
+      url: Array.isArray(params.url) ? "/" + params.url.join("/") : params.url,
       locale: params.locale,
     });
 
@@ -28,15 +27,11 @@ export default function Client(props: IComponentProps) {
         params: { url: params.url, locale: params.locale },
       });
 
-      let id;
-
       const targetFilter = filters.find(
         (filter) => filter[props.model] !== undefined,
       );
 
-      if (R.path([props.model, "id", "$in", 0], targetFilter)) {
-        id = targetFilter[props.model].id["$in"][0];
-      }
+      const id = targetFilter?.[props.model];
 
       if (id) {
         setLocalId(id);
@@ -86,20 +81,16 @@ function getFiltersFromUrl({
 
   const filters: any[] = [];
 
-  const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
+  const urlSegments = page.url?.split("/").filter((u: string) => u !== "");
 
-  for (const [index, pageUrl] of pageUrls.entries()) {
-    if (pageUrl.includes(".") && splittedParams && splittedParams[index]) {
-      const sanitizedPageUrl = pageUrl.replace("[", "").replace("]", "");
-      const key =
-        sanitizedPageUrl.split(".")[sanitizedPageUrl.split(".").length - 2];
+  for (const [index, urlSegment] of urlSegments.entries()) {
+    if (urlSegment.includes(".") && splittedParams && splittedParams[index]) {
+      const sanitizedUrlSegment = urlSegment
+        .replaceAll("[", "")
+        .replaceAll("]", "");
 
       const filter = {
-        [key]: {
-          id: {
-            $in: [splittedParams[index]],
-          },
-        },
+        [sanitizedUrlSegment]: splittedParams[index],
       };
 
       filters.push(filter);

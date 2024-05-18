@@ -12,8 +12,8 @@ export interface IComponentBase {
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
   model: string;
-  children?: (props: { data: number | undefined }) => any;
-  set?: Dispatch<SetStateAction<number | undefined>>;
+  children?: (props: { data: string | undefined }) => any;
+  set?: Dispatch<SetStateAction<string | undefined>>;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

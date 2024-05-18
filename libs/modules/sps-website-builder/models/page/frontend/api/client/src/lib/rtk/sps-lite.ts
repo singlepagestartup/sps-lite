@@ -30,17 +30,10 @@ export const api = createApi({
 
       getByUrl: build.query<IModelExtended, any>({
         query: (params: any = {}) => {
-          const { populate, locale, filters, pagination, url } = params;
+          const { url } = params;
 
           return {
-            url: `${route}/get-by-url`,
-            params: {
-              url,
-              populate,
-              locale,
-              filters,
-              pagination,
-            },
+            url: `${route}/get-by-url?url=${url}`,
           };
         },
 

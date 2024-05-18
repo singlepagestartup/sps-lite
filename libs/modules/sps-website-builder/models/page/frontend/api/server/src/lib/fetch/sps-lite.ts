@@ -70,20 +70,16 @@ function getFiltersFromUrl({
 
   const filters: any[] = [];
 
-  const pageUrls = page.url?.split("/").filter((u: string) => u !== "");
+  const urlSegments = page.url?.split("/").filter((u: string) => u !== "");
 
-  for (const [index, pageUrl] of pageUrls.entries()) {
-    if (pageUrl.includes(".") && splittedParams && splittedParams[index]) {
-      const sanitizedPageUrl = pageUrl.replace("[", "").replace("]", "");
-      const key =
-        sanitizedPageUrl.split(".")[sanitizedPageUrl.split(".").length - 2];
+  for (const [index, urlSegment] of urlSegments.entries()) {
+    if (urlSegment.includes(".") && splittedParams && splittedParams[index]) {
+      const sanitizedUrlSegment = urlSegment
+        .replaceAll("[", "")
+        .replaceAll("]", "");
 
       const filter = {
-        [key]: {
-          id: {
-            $in: [splittedParams[index]],
-          },
-        },
+        [sanitizedUrlSegment]: splittedParams[index],
       };
 
       filters.push(filter);
@@ -101,20 +97,16 @@ async function getUrlModelId({
   url: Params["url"];
   modelName: string;
   locale: Params["locale"];
-}): Promise<number | undefined> {
+}): Promise<string | undefined> {
   const page = await getByUrl({ url, locale });
 
   const filters = getFiltersFromUrl({ page, params: { url, locale } });
-
-  let id;
 
   const targetFilter = filters.find(
     (filter) => filter[modelName] !== undefined,
   );
 
-  if (R.path([modelName, "id", "$in", 0], targetFilter)) {
-    id = targetFilter[modelName].id["$in"][0];
-  }
+  const id = targetFilter[modelName];
 
   return id;
 }
