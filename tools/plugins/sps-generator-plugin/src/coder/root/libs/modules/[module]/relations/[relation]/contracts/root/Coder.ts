@@ -6,6 +6,7 @@ import {
 } from "@nx/devkit";
 import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
+import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 
@@ -32,6 +33,17 @@ export class Coder {
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
+    const leftModelName =
+      this.parent.parent.parent.parent.project.models[1].project.model.name;
+    const rightModelName =
+      this.parent.parent.parent.parent.project.models[2].project.model.name;
+
+    console.log(
+      `🚀 ~ create ~ leftModelName, rightModelName:`,
+      leftModelName,
+      rightModelName,
+    );
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -40,6 +52,10 @@ export class Coder {
       templateParams: {
         template: "",
         offset_from_root: offsetFromRootProject,
+        left_model_name_property_cased: getNameStyles({ name: leftModelName })
+          .propertyCased.base,
+        right_model_name_property_cased: getNameStyles({ name: rightModelName })
+          .propertyCased.base,
       },
     });
 

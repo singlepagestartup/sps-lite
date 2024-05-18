@@ -2,9 +2,9 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { Table as <%= left_schema_table_name %> } from "<%= left_schema_project_import_path %>";
 <% if(right_model_is_external) { %>
-<% } else {
+<% } else { %>
 import { Table as <%= right_schema_table_name %> } from "<%= right_schema_project_import_path %>";
-} // end else block %>
+<% } %>
 
 export const schemaName = "<%= module_name_cutted_pascal_cased %><%= relation_name_pascal_cased %>";
 export const modelName = "<%= relation_name_property_cased %>";
@@ -23,12 +23,12 @@ export const Table = pgTable(
       .notNull()
       .references(() => <%= left_schema_table_name %>.id, { onDelete: "cascade" }),
 <% if(right_model_is_external) { %>
-<% } else {
+<% } else { %>
     <%= right_schema_model_name %>Id: pgCore
       .uuid("<%= right_model_table_uuid_name %>")
       .notNull()
       .references(() => <%= right_schema_table_name %>.id, { onDelete: "cascade" }),
-} // end else block %>
+<% } %>
   }
 );
 
