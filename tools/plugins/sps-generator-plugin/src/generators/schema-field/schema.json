@@ -21,20 +21,62 @@
         "index": 0
       }
     },
-    "type": {
+    "module": {
       "type": "string",
-      "description": "Type of component",
+      "description": "Module",
       "x-prompt": {
-        "message": "Select type of adding field",
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
+    },
+    "pg_core_type": {
+      "type": "string",
+      "description": "Type of schema field",
+      "x-prompt": {
+        "message": "Select type",
         "type": "list",
         "default": "text",
         "items": [
-          {
-            "value": "text"
-          },
-          {
-            "value": "number"
-          }
+          { "value": "real" },
+          { "value": "serial" },
+          { "value": "uuid" },
+          { "value": "bigint" },
+          { "value": "text" },
+          { "value": "boolean" },
+          { "value": "timestamp" },
+          { "value": "jsonb" },
+          { "value": "json" },
+          { "value": "integer" },
+          { "value": "date" },
+          { "value": "time" },
+          { "value": "number" }
         ]
       }
     },
@@ -56,5 +98,5 @@
       }
     }
   },
-  "required": ["name", "model_name", "type", "level"]
+  "required": ["module", "name", "model_name", "level", "pg_core_type"]
 }

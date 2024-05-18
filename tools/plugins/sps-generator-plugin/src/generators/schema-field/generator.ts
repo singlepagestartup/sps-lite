@@ -13,18 +13,18 @@ export async function schemaFieldGenerator(
   if (options.action === "remove") {
     await coder.removeField({
       modelName: options.model_name,
-      moduleName: "sps-website-builder",
+      moduleName: options.module,
       name: options.name,
       level: options.level,
-      type: options.type,
+      pgCoreType: options.pg_core_type,
     });
   } else {
     await coder.addField({
       modelName: options.model_name,
-      moduleName: "sps-website-builder",
+      moduleName: options.module,
       name: options.name,
+      pgCoreType: options.pg_core_type,
       level: options.level,
-      type: options.type,
     });
   }
 }

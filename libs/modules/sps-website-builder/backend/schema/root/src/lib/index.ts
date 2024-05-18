@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBWidgetsToModules,
+  Relations as SPSWBWidgetsToModulesRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-modules-backend-schema";
+export {
   Table as SPSWBHeroSectionBlocksToFiles,
   Relations as SPSWBHeroSectionBlocksToFilesRelations,
 } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema";

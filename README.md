@@ -70,6 +70,28 @@ Create new generator
 nx generate @nx/plugin:generator sps-create-ts-library --project=@sps/sps-generator-plugin --directory=tools/plugins/sps-generator-plugin/src/generators/sps-create-ts-library --dry-run
 ```
 
-# To Do
+# Run
 
-[ ] Remove enums from database, use plain string fields. Vercel not allows to delete enums from tables
+## Install dependencies
+
+```
+bun install
+```
+
+## Run Postgres service
+
+```
+cd db && chmod +x ./up.sh && ./up.sh
+```
+
+## Create Frontend envs
+
+```
+cd apps/frontend && chmod +x ./create_env.sh && ./create_env.sh
+```
+
+## Run Project
+
+```
+bun run frontend:dev
+```

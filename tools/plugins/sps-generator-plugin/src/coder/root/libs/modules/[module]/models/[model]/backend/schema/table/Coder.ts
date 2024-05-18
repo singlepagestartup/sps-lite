@@ -15,7 +15,20 @@ import {
 
 export interface IEditFieldProps {
   name: string;
-  type: "text" | "number";
+  pgCoreType:
+    | "real"
+    | "serial"
+    | "uuid"
+    | "bigint"
+    | "text"
+    | "boolean"
+    | "timestamp"
+    | "jsonb"
+    | "json"
+    | "integer"
+    | "date"
+    | "time"
+    | "number";
   level: "sps-lite" | "startup";
 }
 
@@ -83,13 +96,13 @@ export class Coder {
   }
 
   async addField(props: IEditFieldProps) {
-    const { level, name, type } = props;
+    const { level, name, pgCoreType } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
-      type,
+      pgCoreType,
     });
 
     await replaceInFile({
@@ -101,13 +114,13 @@ export class Coder {
   }
 
   async removeField(props: IEditFieldProps) {
-    const { level, name, type } = props;
+    const { level, name, pgCoreType } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
-      type,
+      pgCoreType,
     });
 
     await replaceInFile({
@@ -168,15 +181,15 @@ export class Coder {
 }
 
 export class Field extends RegexCreator {
-  constructor({ name, type }: { name: string; type: string }) {
+  constructor({ name, pgCoreType }: { name: string; pgCoreType: string }) {
     const place = `export const fields = {`;
     const placeRegex = new RegExp(`export const fields = {`);
 
     const fieldNameCamelCase = names(name).propertyName;
-    const content = `${fieldNameCamelCase}: pgCore.${type}("${name}"),`;
+    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}"),`;
 
     const contentRegex = new RegExp(
-      `${fieldNameCamelCase}: pgCore.${type}\\("${name}"\\),`,
+      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\),`,
     );
 
     super({
