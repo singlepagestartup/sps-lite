@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { App as Startup } from "@sps/startup-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +8,15 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="widgets-to-modules"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className=""
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Relation: widgets-to-modules</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      {props.data.moduleName === "startup" ? (
+        <Startup
+          variant="default"
+          isServer={props.isServer}
+          widgetId={props.data.moduleWidgetId}
+        />
+      ) : null}
     </div>
   );
 }
