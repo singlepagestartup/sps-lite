@@ -48,7 +48,7 @@ export class Coder {
     const rightModelIsExternal =
       this.parent.parent.parent.parent.project.models[2].isExternal;
     const rightModelName =
-      this.parent.parent.parent.parent.project.models[1].project.model.name;
+      this.parent.parent.parent.parent.project.models[2].project.model.name;
 
     await createSpsTSLibrary({
       tree: this.tree,
