@@ -36,7 +36,7 @@ export class Coder {
     const relationName = this.parent.parent.name;
 
     this.importContracts = new ImportContracts({
-      libName: this.parent.parent.baseName,
+      libName: this.baseName,
       relationNamePascalCased: getNameStyles({
         name: relationName,
       }).pascalCased.base,
