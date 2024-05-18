@@ -15,16 +15,26 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
+  isExternal: boolean;
   project: {
     model?: ModelCoder;
   };
 
-  constructor({ tree, parent }: { tree: Tree; parent: ModuleCoder }) {
+  constructor({
+    tree,
+    parent,
+    isExternal = false,
+  }: {
+    tree: Tree;
+    parent: ModuleCoder;
+    isExternal?: boolean;
+  }) {
     this.name = "models";
     this.baseName = `${parent.baseName}-models`;
     this.baseDirectory = `${parent.baseDirectory}/models`;
     this.tree = tree;
     this.parent = parent;
+    this.isExternal = isExternal;
 
     this.project = {
       model: undefined,

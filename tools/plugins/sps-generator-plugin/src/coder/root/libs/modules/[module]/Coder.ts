@@ -139,6 +139,7 @@ export class Coder {
     const leftProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
+      isExternal: props.leftModelIsExternal,
     });
     await leftProject.init({ modelName: props.leftModelName });
     this.project.models.push(leftProject);
@@ -146,6 +147,7 @@ export class Coder {
     const rightProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
+      isExternal: props.rightModelIsExternal,
     });
     await rightProject.init({ modelName: props.rightModelName });
 

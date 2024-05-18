@@ -20,7 +20,7 @@ export const util = async ({
   tree: Tree;
   generateFilesPath: string;
   templateParams: {
-    [key: string]: string;
+    [key: string]: string | boolean | number | undefined;
   };
 }) => {
   const createdLibrary = await jsLibraryGenerator(tree, {

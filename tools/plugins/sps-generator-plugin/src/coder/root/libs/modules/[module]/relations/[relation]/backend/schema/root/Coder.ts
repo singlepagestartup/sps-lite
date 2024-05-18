@@ -108,6 +108,11 @@ export class Coder {
       this.parent.parent.parent.parent.parent.project.models[2].project.model
         .project.backend.project.schema.project.table.baseName;
 
+    const leftModelIsExternal =
+      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
+    const rightModelIsExternal =
+      this.parent.parent.parent.parent.parent.project.models[2].isExternal;
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -120,6 +125,8 @@ export class Coder {
         left_schema_model_name: this.leftModelStyles.propertyCased.base,
         left_schema_model_name_snake_cased:
           this.leftModelStyles.snakeCased.base,
+        left_model_is_external: leftModelIsExternal,
+        right_model_is_external: rightModelIsExternal,
         left_model_table_uuid_name: this.leftModelTableUuidName,
         right_model_table_uuid_name: this.rightModelTableUuidName,
         right_schema_project_import_path: rightProjectSchemaImportPath,
