@@ -1,5 +1,8 @@
 import { Table as <%= left_schema_table_name %> } from "<%= left_schema_project_import_path %>";
+<% if(right_model_is_external) { %>
+<% } else {
 import { Table as <%= right_schema_table_name %> } from "<%= right_schema_project_import_path %>";
+} // end else block %>
 import { relations } from "drizzle-orm";
 import { Table } from "./table";
 
@@ -8,13 +11,19 @@ export const Relations = relations(Table, ({ one }) => ({
     fields: [Table.<%= left_schema_model_name %>Id],
     references: [<%= left_schema_table_name %>.id],
   }),
+<% if(right_model_is_external) { %>
+<% } else {
   <%= right_schema_model_name %>: one(<%= right_schema_table_name %>, {
     fields: [Table.<%= right_schema_model_name %>Id],
     references: [<%= right_schema_table_name %>.id],
   }),
+} // end else block %>
 }));
 
 export const populate = {
   <%= left_schema_model_name %>: true as const,
+<% if(right_model_is_external) { %>
+<% } else {
   <%= right_schema_model_name %>: true as const,
+} // end else block %>
 };
