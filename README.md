@@ -81,13 +81,13 @@ bun install
 ## Run Postgres service
 
 ```
-cd db && chmod +x ./up.sh && ./up.sh
+cd apps/db && chmod +x ./up.sh && ./up.sh && cd ../../
 ```
 
 ## Create Frontend envs
 
 ```
-cd apps/frontend && chmod +x ./create_env.sh && ./create_env.sh
+cd apps/frontend && chmod +x ./create_env.sh && ./create_env.sh && cd ../../
 ```
 
 ## Run Project
