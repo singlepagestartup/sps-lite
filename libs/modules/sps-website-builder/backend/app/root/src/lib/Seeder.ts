@@ -13,30 +13,34 @@ export class Seeder {
   async seed() {
     await this.clear();
 
-    for (const [modelName, model] of Object.entries(this.models)) {
-      if ("Seeder" in model) {
-        const seeder = new model.Seeder();
-
-        if (seeder.type === "model") {
-          const seedResult = await seeder.seed();
-          this.seedResults["sps-website-builder"][modelName] = seedResult;
-        }
+    for (const model of Object.values(this.models)) {
+      if ("type" in model) {
+        console.log(`🚀 ~ seed ~ model:`, model);
+        await model.services.seed();
       }
+      // if ("Seeder" in model) {
+      //   const seeder = new model.Seeder();
+
+      //   if (seeder.type === "model") {
+      //     const seedResult = await seeder.seed();
+      //     this.seedResults["sps-website-builder"][modelName] = seedResult;
+      //   }
+      // }
     }
 
-    for (const [modelName, model] of Object.entries(this.models)) {
-      if ("Seeder" in model) {
-        const seeder = new model.Seeder();
+    // for (const [modelName, model] of Object.entries(this.models)) {
+    //   if ("Seeder" in model) {
+    //     const seeder = new model.Seeder();
 
-        if (seeder.type === "relation") {
-          const seedResult = await seeder.seed({
-            seedResults: this.seedResults,
-          });
+    //     if (seeder.type === "relation") {
+    //       const seedResult = await seeder.seed({
+    //         seedResults: this.seedResults,
+    //       });
 
-          this.seedResults["sps-website-builder"][modelName] = seedResult;
-        }
-      }
-    }
+    //       this.seedResults["sps-website-builder"][modelName] = seedResult;
+    //     }
+    //   }
+    // }
   }
 
   // async seed() {

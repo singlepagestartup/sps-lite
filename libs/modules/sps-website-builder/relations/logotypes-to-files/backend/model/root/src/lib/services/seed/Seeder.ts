@@ -1,5 +1,5 @@
-import { services as modelServices } from "./services";
-import { Table } from "@sps/sps-website-builder-models-page-backend-schema";
+import { services as modelServices } from "..";
+import { Table } from "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema";
 import { Seeder as SpsSeeder } from "@sps/shared-backend-api";
 
 export class Seeder extends SpsSeeder<typeof modelServices, typeof Table> {

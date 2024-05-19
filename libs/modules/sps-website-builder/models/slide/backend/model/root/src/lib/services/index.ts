@@ -1,13 +1,15 @@
 import { service as createEntity } from "./create";
 import { service as deleteEntity } from "./delete";
-import { service as findEntity } from "./find";
+import { service as findEntities } from "./find";
 import { service as findByIdEntity } from "./find-by-id";
 import { service as updateEntity } from "./update";
+import { service as seedEntities } from "./seed";
 
 export const services = {
   create: createEntity,
   delete: deleteEntity,
-  find: findEntity,
+  find: findEntities,
   findById: findByIdEntity,
   update: updateEntity,
+  seed: seedEntities,
 };
