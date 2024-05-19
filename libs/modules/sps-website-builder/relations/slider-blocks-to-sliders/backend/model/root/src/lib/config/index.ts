@@ -1,4 +1,4 @@
 export const config = {
-  pageId: "sps-website-builder.page.id",
-  layoutId: "sps-website-builder.layout.id",
+  sliderBlockId: "sps-website-builder.slider-block.id",
+  sliderId: "sps-website-builder.slider.id",
 };
