@@ -4,7 +4,7 @@ export class Seeder {
   models: typeof models;
   seedResults = {
     "sps-website-builder": {},
-  };
+  } as any;
 
   constructor() {
     this.models = models;
