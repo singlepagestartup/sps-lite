@@ -2,7 +2,7 @@ import {
   Table,
   modelName,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
-import { TableRelationsHelpers } from "drizzle-orm";
+import { TableRelationsHelpers, asc } from "drizzle-orm";
 
 export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
@@ -13,5 +13,7 @@ export const relation = <TTableName extends string>(
 };
 
 export const populate = {
-  [modelName]: true,
-} as const;
+  [modelName]: {
+    orderBy: [asc(Table.orderIndex)],
+  },
+};
