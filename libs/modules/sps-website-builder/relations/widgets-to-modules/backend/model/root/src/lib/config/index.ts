@@ -1,3 +1,3 @@
 export const config = {
-  widgetId: "sps-website-builder.widget.id",
+  widgetId: "spsWebsiteBuilder.widget.id",
 };

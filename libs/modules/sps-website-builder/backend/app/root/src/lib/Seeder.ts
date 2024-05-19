@@ -3,7 +3,7 @@ import { models } from "@sps/sps-website-builder-backend-models";
 export class Seeder {
   models: typeof models;
   seedResults: any;
-  name = "sps-website-builder";
+  name = "spsWebsiteBuilder";
 
   constructor({ seedResults }: { seedResults: any }) {
     this.models = models;

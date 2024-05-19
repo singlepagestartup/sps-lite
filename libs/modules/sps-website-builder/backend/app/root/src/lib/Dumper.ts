@@ -2,7 +2,7 @@ import { models } from "@sps/sps-website-builder-backend-models";
 
 export class Dumper {
   models: typeof models;
-  name = "sps-website-builder";
+  name = "spsWebsiteBuilder";
 
   constructor() {
     this.models = models;

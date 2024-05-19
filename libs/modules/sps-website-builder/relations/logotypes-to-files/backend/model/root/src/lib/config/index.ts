@@ -1,3 +1,3 @@
 export const config = {
-  logotypeId: "sps-website-builder.logotype.id",
+  logotypeId: "spsWebsiteBuilder.logotype.id",
 };

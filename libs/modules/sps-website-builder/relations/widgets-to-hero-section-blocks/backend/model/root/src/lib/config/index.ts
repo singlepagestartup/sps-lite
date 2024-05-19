@@ -1,4 +1,4 @@
 export const config = {
-  widgetId: "sps-website-builder.widget.id",
-  heroSectionBlockId: "sps-website-builder.hero-section-block.id",
+  widgetId: "spsWebsiteBuilder.widget.id",
+  heroSectionBlockId: "spsWebsiteBuilder.heroSectionBlock.id",
 };

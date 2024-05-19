@@ -1,4 +1,4 @@
 export const config = {
-  navbarId: "sps-website-builder.navbar.id",
-  widgetId: "sps-website-builder.widget.id",
+  navbarId: "spsWebsiteBuilder.navbar.id",
+  widgetId: "spsWebsiteBuilder.widget.id",
 };

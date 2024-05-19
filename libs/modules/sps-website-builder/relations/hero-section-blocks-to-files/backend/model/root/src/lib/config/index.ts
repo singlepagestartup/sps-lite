@@ -1,3 +1,3 @@
 export const config = {
-  heroSectionBlockId: "sps-website-builder.hero-section-block.id",
+  heroSectionBlockId: "spsWebsiteBuilder.heroSectionBlock.id",
 };
