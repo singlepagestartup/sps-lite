@@ -1,7 +1,6 @@
-import { services as modelServices } from "./services";
-import { Table } from "@sps/sps-website-builder-relations-pages-to-layouts-backend-schema";
+import { services as modelServices } from "..";
+import { Table } from "@sps/sps-file-storage-models-file-backend-schema";
 import { Seeder as SpsSeeder } from "@sps/shared-backend-api";
-import { config } from "./config";
 
 export class Seeder extends SpsSeeder<typeof modelServices, typeof Table> {
   constructor() {
@@ -9,8 +8,6 @@ export class Seeder extends SpsSeeder<typeof modelServices, typeof Table> {
       services: modelServices,
       table: Table,
       seedsPath: __dirname + "/seeds",
-      type: "relation",
-      config,
     });
   }
 }
