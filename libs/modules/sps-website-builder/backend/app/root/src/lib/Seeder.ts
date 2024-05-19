@@ -1,9 +1,10 @@
-import { schema } from "@sps/sps-db-provider";
 import { models } from "@sps/sps-website-builder-backend-models";
-import { eq } from "drizzle-orm";
 
 export class Seeder {
   models: typeof models;
+  seedResults = {
+    "sps-website-builder": {},
+  };
 
   constructor() {
     this.models = models;
@@ -12,52 +13,81 @@ export class Seeder {
   async seed() {
     await this.clear();
 
-    const pages = await this.models.page.services.find({
-      filter: eq(schema.SPSWBPage.url, "/"),
-    });
+    for (const [modelName, model] of Object.entries(this.models)) {
+      if ("Seeder" in model) {
+        const seeder = new model.Seeder();
 
-    let mainPage: any = pages?.[0];
-
-    if (!mainPage) {
-      mainPage = await this.models.page.services.create({
-        data: {
-          title: "Main Page",
-          url: "/",
-        },
-      });
+        if (seeder.type === "model") {
+          const seedResult = await seeder.seed();
+          this.seedResults["sps-website-builder"][modelName] = seedResult;
+        }
+      }
     }
 
-    const layout = await this.createWebsiteLayout();
+    for (const [modelName, model] of Object.entries(this.models)) {
+      if ("Seeder" in model) {
+        const seeder = new model.Seeder();
 
-    await this.models.pagesToLayouts.services.create({
-      data: {
-        pageId: mainPage.id,
-        layoutId: layout.id,
-      },
-    });
+        if (seeder.type === "relation") {
+          const seedResult = await seeder.seed({
+            seedResults: this.seedResults,
+          });
 
-    const widget1 = await this.createWidget({
-      title: "Hero Section",
-    });
-
-    await this.models.pagesToWidgets.services.create({
-      data: {
-        pageId: mainPage.id,
-        widgetId: widget1.id,
-      },
-    });
-
-    const widget2 = await this.createWidget({
-      title: "Another hero Section",
-    });
-
-    await this.models.pagesToWidgets.services.create({
-      data: {
-        pageId: mainPage.id,
-        widgetId: widget2.id,
-      },
-    });
+          this.seedResults["sps-website-builder"][modelName] = seedResult;
+        }
+      }
+    }
   }
+
+  // async seed() {
+  //   await this.clear();
+
+  //   const pages = await this.models.page.services.find({
+  //     filter: eq(schema.SPSWBPage.url, "/"),
+  //   });
+
+  //   let mainPage: any = pages?.[0];
+
+  //   if (!mainPage) {
+  //     mainPage = await this.models.page.services.create({
+  //       data: {
+  //         title: "Main Page",
+  //         url: "/",
+  //       },
+  //     });
+  //   }
+
+  //   const layout = await this.createWebsiteLayout();
+
+  //   await this.models.pagesToLayouts.services.create({
+  //     data: {
+  //       pageId: mainPage.id,
+  //       layoutId: layout.id,
+  //     },
+  //   });
+
+  //   const widget1 = await this.createWidget({
+  //     title: "Hero Section",
+  //   });
+
+  //   await this.models.pagesToWidgets.services.create({
+  //     data: {
+  //       pageId: mainPage.id,
+  //       widgetId: widget1.id,
+  //     },
+  //   });
+
+  //   const widget2 = await this.createWidget({
+  //     title: "Another hero Section",
+  //   });
+
+  //   await this.models.pagesToWidgets.services.create({
+  //     data: {
+  //       pageId: mainPage.id,
+  //       widgetId: widget2.id,
+  //     },
+  //   });
+  // }
 
   async clear() {
     for (const [index, model] of Object.entries(this.models)) {
@@ -71,146 +101,146 @@ export class Seeder {
     }
   }
 
-  async createWebsiteLayout() {
-    const layout = await this.models.layout.services.create({
-      data: {
-        title: "Main Page Layout",
-      },
-    });
+  // async createWebsiteLayout() {
+  //   const layout = await this.models.layout.services.create({
+  //     data: {
+  //       title: "Main Page Layout",
+  //     },
+  //   });
 
-    const footer = await this.createWebsiteFooter();
-    const navbar = await this.createWebsiteNavbar();
+  //   const footer = await this.createWebsiteFooter();
+  //   const navbar = await this.createWebsiteNavbar();
 
-    await this.models.layoutsToNavbars.services.create({
-      data: {
-        layoutId: layout.id,
-        navbarId: navbar.id,
-      },
-    });
+  //   await this.models.layoutsToNavbars.services.create({
+  //     data: {
+  //       layoutId: layout.id,
+  //       navbarId: navbar.id,
+  //     },
+  //   });
 
-    await this.models.layoutsToFooters.services.create({
-      data: {
-        layoutId: layout.id,
-        footerId: footer.id,
-      },
-    });
+  //   await this.models.layoutsToFooters.services.create({
+  //     data: {
+  //       layoutId: layout.id,
+  //       footerId: footer.id,
+  //     },
+  //   });
 
-    return layout;
-  }
+  //   return layout;
+  // }
 
-  async createWebsiteNavbar() {
-    const navbar = await this.models.navbar.services.create({
-      data: {
-        title: "Navbar",
-      },
-    });
+  // async createWebsiteNavbar() {
+  //   const navbar = await this.models.navbar.services.create({
+  //     data: {
+  //       title: "Navbar",
+  //     },
+  //   });
 
-    const navbarWidget = await this.models.widget.services.create({
-      data: {
-        title: "Navbar Widget",
-      },
-    });
+  //   const navbarWidget = await this.models.widget.services.create({
+  //     data: {
+  //       title: "Navbar Widget",
+  //     },
+  //   });
 
-    await this.models.navbarsToWidgets.services.create({
-      data: {
-        navbarId: navbar.id,
-        widgetId: navbarWidget.id,
-      },
-    });
+  //   await this.models.navbarsToWidgets.services.create({
+  //     data: {
+  //       navbarId: navbar.id,
+  //       widgetId: navbarWidget.id,
+  //     },
+  //   });
 
-    const navbarBlock = await this.models.navbarBlock.services.create({
-      data: {
-        title: "Navbar Block",
-      },
-    });
+  //   const navbarBlock = await this.models.navbarBlock.services.create({
+  //     data: {
+  //       title: "Navbar Block",
+  //     },
+  //   });
 
-    const button = await this.createButton();
+  //   const button = await this.createButton();
 
-    await this.models.navbarBlocksToButtons.services.create({
-      data: {
-        navbarBlockId: navbarBlock.id,
-        buttonId: button.id,
-      },
-    });
+  //   await this.models.navbarBlocksToButtons.services.create({
+  //     data: {
+  //       navbarBlockId: navbarBlock.id,
+  //       buttonId: button.id,
+  //     },
+  //   });
 
-    await this.models.widgetsToNavbarBlocks.services.create({
-      data: {
-        widgetId: navbarWidget.id,
-        navbarBlockId: navbarBlock.id,
-      },
-    });
+  //   await this.models.widgetsToNavbarBlocks.services.create({
+  //     data: {
+  //       widgetId: navbarWidget.id,
+  //       navbarBlockId: navbarBlock.id,
+  //     },
+  //   });
 
-    return navbar;
-  }
+  //   return navbar;
+  // }
 
-  async createButton() {
-    const button = await this.models.button.services.create({
-      data: {
-        title: "Button",
-      },
-    });
+  // async createButton() {
+  //   const button = await this.models.button.services.create({
+  //     data: {
+  //       title: "Button",
+  //     },
+  //   });
 
-    return button;
-  }
+  //   return button;
+  // }
 
-  async createWebsiteFooter() {
-    const footer = await this.models.footer.services.create({
-      data: {
-        title: "Footer",
-      },
-    });
+  // async createWebsiteFooter() {
+  //   const footer = await this.models.footer.services.create({
+  //     data: {
+  //       title: "Footer",
+  //     },
+  //   });
 
-    const footerWidget = await this.models.widget.services.create({
-      data: {
-        title: "Footer Widget",
-      },
-    });
+  //   const footerWidget = await this.models.widget.services.create({
+  //     data: {
+  //       title: "Footer Widget",
+  //     },
+  //   });
 
-    await this.models.footersToWidgets.services.create({
-      data: {
-        footerId: footer.id,
-        widgetId: footerWidget.id,
-      },
-    });
+  //   await this.models.footersToWidgets.services.create({
+  //     data: {
+  //       footerId: footer.id,
+  //       widgetId: footerWidget.id,
+  //     },
+  //   });
 
-    const footerBlock = await this.models.footerBlock.services.create({
-      data: {
-        title: "Footer Block",
-      },
-    });
+  //   const footerBlock = await this.models.footerBlock.services.create({
+  //     data: {
+  //       title: "Footer Block",
+  //     },
+  //   });
 
-    await this.models.widgetsToFooterBlocks.services.create({
-      data: {
-        widgetId: footerWidget.id,
-        footerBlockId: footerBlock.id,
-      },
-    });
+  //   await this.models.widgetsToFooterBlocks.services.create({
+  //     data: {
+  //       widgetId: footerWidget.id,
+  //       footerBlockId: footerBlock.id,
+  //     },
+  //   });
 
-    return footer;
-  }
+  //   return footer;
+  // }
 
-  async createWidget({ title }: { title: string }) {
-    const widget = await this.models.widget.services.create({
-      data: {
-        title: "Widget | " + Math.random().toString(36).substring(7),
-      },
-    });
+  // async createWidget({ title }: { title: string }) {
+  //   const widget = await this.models.widget.services.create({
+  //     data: {
+  //       title: "Widget | " + Math.random().toString(36).substring(7),
+  //     },
+  //   });
 
-    const heroSectionBlock = await this.models.heroSectionBlock.services.create(
-      {
-        data: {
-          title,
-        },
-      },
-    );
+  //   const heroSectionBlock = await this.models.heroSectionBlock.services.create(
+  //     {
+  //       data: {
+  //         title,
+  //       },
+  //     },
+  //   );
 
-    await this.models.widgetsToHeroSectionBlocks.services.create({
-      data: {
-        widgetId: widget.id,
-        heroSectionBlockId: heroSectionBlock.id,
-      },
-    });
+  //   await this.models.widgetsToHeroSectionBlocks.services.create({
+  //     data: {
+  //       widgetId: widget.id,
+  //       heroSectionBlockId: heroSectionBlock.id,
+  //     },
+  //   });
 
-    return widget;
-  }
+  //   return widget;
+  // }
 }
