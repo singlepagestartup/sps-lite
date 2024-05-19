@@ -1,9 +1,18 @@
 import { Seeder as SpsWebsiteBuilderSeeder } from "@sps/sps-website-builder-backend-app";
+import { Seeder as StartupSeeder } from "@sps/startup-backend-app";
 import { exit } from "process";
 
 (async () => {
-  const spsWebsiteBuilderSeeder = new SpsWebsiteBuilderSeeder();
-  await spsWebsiteBuilderSeeder.seed();
+  const seedResults = {};
+
+  const spsWebsiteBuilderSeeder = new SpsWebsiteBuilderSeeder({ seedResults });
+  await spsWebsiteBuilderSeeder.seedModels();
+
+  const startupSeeder = new StartupSeeder({ seedResults });
+  await startupSeeder.seedModels();
+
+  await spsWebsiteBuilderSeeder.seedRelations();
+  await startupSeeder.seedRelations();
 })()
   .then(() => {
     exit(0);

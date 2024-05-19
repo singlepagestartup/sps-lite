@@ -2,33 +2,35 @@ import { models } from "@sps/sps-website-builder-backend-models";
 
 export class Seeder {
   models: typeof models;
-  seedResults = {
-    "sps-website-builder": {},
-  } as any;
+  seedResults: any;
+  name = "sps-website-builder";
 
-  constructor() {
+  constructor({ seedResults }: { seedResults: any }) {
     this.models = models;
+    this.seedResults = seedResults;
+
+    this.seedResults[this.name] = {};
   }
 
-  async seed() {
+  async seedModels() {
     await this.clear();
 
     for (const [modelName, model] of Object.entries(this.models)) {
       if ("type" in model) {
         if (model.type === "model") {
-          this.seedResults["sps-website-builder"][modelName] =
-            await model.services.seed();
+          this.seedResults[this.name][modelName] = await model.services.seed();
         }
       }
     }
+  }
 
+  async seedRelations() {
     for (const [modelName, model] of Object.entries(this.models)) {
       if ("type" in model) {
         if (model.type === "relation") {
-          this.seedResults["sps-website-builder"][modelName] =
-            await model.services.seed({
-              seedResults: this.seedResults,
-            });
+          this.seedResults[this.name][modelName] = await model.services.seed({
+            seedResults: this.seedResults,
+          });
         }
       }
     }
