@@ -5,7 +5,7 @@ import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder-rel
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component";
 import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component";
 import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component";
-import { Component as WidgetsToModules } from "@sps/sps-website-builder-relations-widgets-to-modules-frontend-component";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -69,9 +69,9 @@ export function Component(props: IComponentPropsExtended) {
           );
         },
       )}
-      {props.data.widgetsToModules.map((widgetToModule, index) => {
+      {props.data.widgetsToStartupModuleWidgets.map((widgetToModule, index) => {
         return (
-          <WidgetsToModules
+          <WidgetsToStartupModuleWidgets
             key={index}
             isServer={props.isServer}
             variant="default"

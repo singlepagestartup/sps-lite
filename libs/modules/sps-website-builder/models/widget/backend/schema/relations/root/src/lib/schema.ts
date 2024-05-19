@@ -1,3 +1,4 @@
+import { relation as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-startup-module-widgets";
 import { relation as widgetsToModules } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-modules";
 import { relation as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-features-section-blocks";
 import { relation as widgetsToSliderBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-slider-blocks";
@@ -12,6 +13,7 @@ import { Table } from "@sps/sps-website-builder-models-widget-backend-schema-tab
 
 export const Relations = relations(Table, (helpers) => {
   return {
+    ...widgetsToStartupModuleWidgets(helpers),
     ...widgetsToModules(helpers),
     ...widgetsToFeaturesSectionBlocks(helpers),
     ...widgetsToSliderBlocks(helpers),
