@@ -1,0 +1,17 @@
+{
+  "id": "30940cef-f8ea-4945-ab65-fadfbc21d797",
+  "title": "About",
+  "url": "/about",
+  "description": "Description",
+  "createdAt": "2024-05-18T02:57:20.869Z",
+  "updatedAt": "2024-05-18T02:57:20.869Z",
+  "variant": "default",
+  "pagesToWidgets": [],
+  "pagesToLayouts": [
+    {
+      "id": "3ee55b4b-7fe3-4d33-9856-e1cda1c6c956",
+      "pageId": "30940cef-f8ea-4945-ab65-fadfbc21d797",
+      "layoutId": "2c37122d-831c-4cff-b94f-131b9932ff17"
+    }
+  ]
+}

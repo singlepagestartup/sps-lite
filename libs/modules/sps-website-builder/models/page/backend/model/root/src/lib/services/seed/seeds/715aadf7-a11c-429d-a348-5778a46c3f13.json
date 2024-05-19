@@ -1,0 +1,17 @@
+{
+  "id": "715aadf7-a11c-429d-a348-5778a46c3f13",
+  "title": "Main page",
+  "url": "/",
+  "description": "Description",
+  "createdAt": "2024-05-18T02:57:20.869Z",
+  "updatedAt": "2024-05-18T02:57:20.869Z",
+  "variant": "default",
+  "pagesToWidgets": [],
+  "pagesToLayouts": [
+    {
+      "id": "6788c5b6-1f3d-4d85-a9a0-e6dcedf8342f",
+      "pageId": "715aadf7-a11c-429d-a348-5778a46c3f13",
+      "layoutId": "2c37122d-831c-4cff-b94f-131b9932ff17"
+    }
+  ]
+}

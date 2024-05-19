@@ -47,6 +47,22 @@
         ]
       }
     },
+    "db:dump": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["db:prepare"],
+      "options": {
+        "parallel": false,
+        "cwd": "apps/frontend",
+        "commands": [
+          {
+            "command": "nx run frontend:db:migrate"
+          },
+          {
+            "command": "bun run src/db/dump.ts"
+          }
+        ]
+      }
+    },
     "db:seed": {
       "executor": "nx:run-commands",
       "dependsOn": ["db:prepare"],
