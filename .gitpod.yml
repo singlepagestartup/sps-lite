@@ -2,9 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 ports:
-  - port: 1337
-    name: Backend
-    visibility: public
   - port: 3000
     name: Frontend
     visibility: public
@@ -13,14 +10,13 @@ ports:
     visibility: public
 
 tasks:
-  - name: "husky"
-    command: npx husky install
-  - name: "database"
-    command: docker-compose -f docker-compose.db.yaml up
-  - name: "backend"
-    init: cd backend && npm i
-    command: npm run develop
-  - name: "frontend"
+  - name: "install dependencies"
+    init: curl -fsSL https://bun.sh/install | bash
+    command: bun i
+  - name: "db"
+    init: cd apps/db && ./up.sh
+    command: npx nx run frontend:db:seed
+  - name: "app"
     init: cd frontend && npm i
 
 vscode:
@@ -29,7 +25,9 @@ vscode:
     - dsznajder.es7-react-js-snippets
     - dbaeumer.vscode-eslint
     - mhutchie.git-graph
-    - eamodio.gitlens
     - esbenp.prettier-vscode
     - chakrounanas.turbo-console-log
     - hbenl.vscode-test-explorer
+    - GitHub.copilot
+    - bradlc.vscode-tailwindcss
+    - nrwl.angular-console
