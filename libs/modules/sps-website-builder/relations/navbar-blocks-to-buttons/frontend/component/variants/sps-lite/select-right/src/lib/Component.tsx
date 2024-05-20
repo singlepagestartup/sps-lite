@@ -104,47 +104,48 @@ export function Component(props: IComponentPropsExtended) {
       className=""
     >
       <Card
-        className={
-          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
+        className={`entity-container ${
+          Object.keys(form.formState.errors)?.length
+            ? "border-destructive "
+            : ""
         }
+      `}
       >
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>Select entity from buttons</CardTitle>
-            {props.data?.id ? (
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
+        {props.data ? (
+          <div className="entity-header-block">
+            <legend className="entity-legend">{props.data.id}</legend>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <button className="destructive-pill-button">
+                  <TrashIcon className="h-3 w-3" />
+                  Delete
+                </button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Delete?</AlertDialogTitle>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => {
+                      if (props.data?.id) {
+                        deleteEntity({ id: props.data.id });
+                      }
+                    }}
                   >
-                    <div className="flex gap-3">
-                      <TrashIcon className="h-5 w-5" />
-                      Delete
-                    </div>
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Delete?</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => {
-                        if (props.data?.id) {
-                          deleteEntity({ id: props.data.id });
-                        }
-                      }}
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            ) : null}
+                    Delete
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
-        </CardHeader>
+        ) : null}
+        {!props.data?.id ? (
+          <CardHeader className="py-0">
+            <CardTitle>Select entity from buttons</CardTitle>
+          </CardHeader>
+        ) : null}
         <CardContent className="flex flex-col gap-6">
           <FormField
             control={form.control}

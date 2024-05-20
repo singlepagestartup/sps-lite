@@ -59,24 +59,27 @@ export function Component(props: IComponentPropsExtended) {
           }}
         />
 
-        {props.data?.navbarsToWidgets.map((entity, index) => {
-          return (
-            <NavbarsToWidgetsSpsLiteSelectRight
-              key={index}
-              isServer={false}
-              variant="select-right"
-              navbarId={props.data?.id}
-              data={entity}
-            />
-          );
-        })}
+        <fieldset className="grid gap-6 rounded-lg border p-4">
+          <legend className="-ml-1 px-1 text-sm font-medium">Widgets</legend>
+          {props.data?.navbarsToWidgets.map((entity, index) => {
+            return (
+              <NavbarsToWidgetsSpsLiteSelectRight
+                key={index}
+                isServer={false}
+                variant="select-right"
+                navbarId={props.data?.id}
+                data={entity}
+              />
+            );
+          })}
 
-        <NavbarsToWidgetsSpsLiteSelectRight
-          isServer={false}
-          variant="select-right"
-          navbarId={props.data?.id}
-          data={undefined}
-        />
+          <NavbarsToWidgetsSpsLiteSelectRight
+            isServer={false}
+            variant="select-right"
+            navbarId={props.data?.id}
+            data={undefined}
+          />
+        </fieldset>
       </div>
     </form>
   );

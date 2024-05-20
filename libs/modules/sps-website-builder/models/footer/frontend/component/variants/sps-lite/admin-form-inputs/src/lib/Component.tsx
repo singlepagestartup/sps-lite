@@ -58,20 +58,24 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        {props.data?.footersToWidgets.map((footerToWidget, index) => {
-          return (
-            <FootersToWidgetsSpsLiteSelectRight
-              key={index}
-              isServer={false}
-              data={footerToWidget}
-              variant="select-right"
-            />
-          );
-        })}
-        <FootersToWidgetsSpsLiteSelectRight
-          isServer={false}
-          variant="select-right"
-        />
+        <fieldset className="grid gap-6 rounded-lg border p-4">
+          <legend className="-ml-1 px-1 text-sm font-medium">Widgets</legend>
+          {props.data?.footersToWidgets.map((footerToWidget, index) => {
+            return (
+              <FootersToWidgetsSpsLiteSelectRight
+                key={index}
+                isServer={false}
+                data={footerToWidget}
+                variant="select-right"
+              />
+            );
+          })}
+
+          <FootersToWidgetsSpsLiteSelectRight
+            isServer={false}
+            variant="select-right"
+          />
+        </fieldset>
       </div>
     </div>
   );

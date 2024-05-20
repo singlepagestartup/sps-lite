@@ -92,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardTitle>Layout</CardTitle>
         </CardHeader>
         <CardContent>
-          <FormProvider {...methods}>
+          {/* <FormProvider {...methods}>
             <LayoutSpsLiteAdminSelectInput
               isServer={false}
               variant="admin-select-input"
@@ -101,7 +101,7 @@ export function Component(props: IComponentPropsExtended) {
               }}
               value={watchData.layoutId}
             />
-          </FormProvider>
+          </FormProvider> */}
         </CardContent>
       </Card>
     </div>

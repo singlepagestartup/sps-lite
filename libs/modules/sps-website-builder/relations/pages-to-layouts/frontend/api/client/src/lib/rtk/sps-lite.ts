@@ -42,6 +42,13 @@ export const api = createApi({
       model: route,
       rtkType: tag,
     }),
+    delete: rtk.api.delete<IRelationExtended>({
+      serviceApi: this,
+      build,
+      populate,
+      model: route,
+      rtkType: tag,
+    }),
   }),
 });
 

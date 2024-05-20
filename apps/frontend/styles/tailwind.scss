@@ -69,6 +69,45 @@ input[type="number"] {
     @apply bg-input animate-pulse rounded-md;
   }
 
+  .bg-dotted {
+    background: white;
+    background-image: radial-gradient(#999999 1px, transparent 0);
+    background-size: 4px 4px;
+    background-position: 0px 0px;
+  }
+
+  .model-container {
+    @apply relative gap-6 pt-8 rounded-lg border p-4 bg-dotted border-primary;
+  }
+
+  .model-legend {
+    @apply px-2 text-sm font-medium bg-primary text-primary-foreground border rounded-sm;
+  }
+
+  .model-header-block {
+    @apply flex absolute top-0 inset-x-0 px-3 transform -translate-y-1/2 justify-between items-center;
+  }
+
+  .pill-button {
+    @apply bg-foreground hover:text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground w-fit flex items-center px-2 w-fit border border-primary rounded-full transition duration-200 text-sm font-medium bg-white gap-2;
+  }
+
+  .entity-container {
+    @apply grid gap-6 pt-5 relative rounded-lg border border-primary;
+  }
+
+  .entity-legend {
+    @apply px-2 text-sm font-medium bg-primary text-primary-foreground border rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
+  }
+
+  .entity-header-block {
+    @apply flex items-center px-5 absolute transform -translate-y-1/2 inset-x-0 w-full justify-between;
+  }
+
+  .destructive-pill-button {
+    @apply pill-button hover:text-destructive hover:border-destructive hover:bg-red-100 bg-white;
+  }
+
   @import "../../../libs/shared/ui/adapter/src/index";
   @import "../../../libs/modules/sps-website-builder/frontend/root/src/index";
   @import "../../../libs/modules/sps-billing/frontend/root/src/index";

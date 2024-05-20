@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -20,6 +20,9 @@ import { Component as NavbarBlocksToButtonsSpsLiteSelectRight } from "@sps/sps-w
 import { Component as NavbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showButtons, setShowButtons] = useState(true);
+  const [showLogotypes, setShowLogotypes] = useState(true);
+
   return (
     <div
       data-module="sps-website-builder"
@@ -54,35 +57,67 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        {props.data?.navbarBlocksToButtons.map(
-          (navbarBlocksToButton, index) => {
-            return (
-              <NavbarBlocksToButtonsSpsLiteSelectRight
-                key={index}
-                isServer={false}
-                variant="select-right"
-                data={navbarBlocksToButton}
-              />
-            );
-          },
-        )}
-        <NavbarBlocksToButtonsSpsLiteSelectRight
-          isServer={false}
-          variant="select-right"
-        />
-        {props.data?.navbarBlocksToLogotypes.map(
-          (navbarBlocksToLogotypes, index) => {
-            return (
-              <NavbarBlocksToLogotypes
-                key={index}
-                variant="select-right"
-                isServer={false}
-                data={navbarBlocksToLogotypes}
-              />
-            );
-          },
-        )}
-        <NavbarBlocksToLogotypes variant="select-right" isServer={false} />
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Buttons</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowButtons(!showButtons);
+              }}
+            >
+              {showButtons ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div className={`flex flex-col gap-6 ${showButtons ? "" : "hidden"}`}>
+            {props.data?.navbarBlocksToButtons.map(
+              (navbarBlocksToButton, index) => {
+                return (
+                  <NavbarBlocksToButtonsSpsLiteSelectRight
+                    key={index}
+                    isServer={false}
+                    variant="select-right"
+                    data={navbarBlocksToButton}
+                  />
+                );
+              },
+            )}
+            <NavbarBlocksToButtonsSpsLiteSelectRight
+              isServer={false}
+              variant="select-right"
+            />
+          </div>
+        </fieldset>
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Logotypes</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowLogotypes(!showLogotypes);
+              }}
+            >
+              {showLogotypes ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showLogotypes ? "" : "hidden"}`}
+          >
+            {props.data?.navbarBlocksToLogotypes.map(
+              (navbarBlocksToLogotypes, index) => {
+                return (
+                  <NavbarBlocksToLogotypes
+                    key={index}
+                    variant="select-right"
+                    isServer={false}
+                    data={navbarBlocksToLogotypes}
+                  />
+                );
+              },
+            )}
+            <NavbarBlocksToLogotypes variant="select-right" isServer={false} />
+          </div>
+        </fieldset>
       </div>
     </div>
   );

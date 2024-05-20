@@ -2,6 +2,10 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useActionTrigger } from "@sps/hooks";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,19 +32,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@sps/shadcn";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useActionTrigger } from "@sps/hooks";
-import { api } from "<%= api_client_import_path %>";
+import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-client";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
 import { TrashIcon } from "@heroicons/react/24/outline";
-// import { Component as AdminSelectInput } from "";
+import Link from "next/link";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 const formSchema = z.object({
-  // replace with actual schema key
-  leftModelId: z.string().min(1),
-  // replace with actual schema key
-  rightModelId: z.string().min(1),
+  pageId: z.string().min(1),
+  layoutId: z.string().min(1),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -52,15 +52,15 @@ export function Component(props: IComponentPropsExtended) {
     mode: "all",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      leftModelId: props.data?.leftModelId || props.leftModelId,
-      rightModelId: props.data?.rightModelId,
+      pageId: props.data?.pageId || props.pageId,
+      layoutId: props.data?.layoutId,
     },
   });
 
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.leftModelId || !data.rightModelId) {
+    if (!data.pageId || !data.layoutId) {
       return;
     }
 
@@ -79,15 +79,13 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
-    storeName: "<%= module_name %>/<left-schema-tag>",
+    storeName: "sps-website-builder/pages",
     actionFilter: (action) => {
-      return action.type === "<left-schema-tag>/executeMutation/fulfilled";
+      return action.type === "pages/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
-        // replace with actual schema key
-        form.setValue("leftModelId", action.payload.id);
+        form.setValue("pageId", action.payload.id);
       }
 
       form.handleSubmit(onSubmit)();
@@ -96,22 +94,24 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <div
-      data-module="<%= module_name %>"
-      data-relation="<%= relation_name %>"
+      data-module="sps-website-builder"
+      data-relation="pages-to-layouts"
       data-variant={props.variant}
       className=""
     >
       <Card
         className={`entity-container ${
-          Object.keys(form.formState.errors)?.length
-            ? "border-destructive "
-            : ""
-        }
-      `}
+          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
+        }`}
       >
         {props.data ? (
           <div className="entity-header-block">
-            <legend className="entity-legend">{props.data.id}</legend>
+            <Link
+              href={`${BACKEND_URL}/api/sps-website-builder/pages-to-layouts/${props.data.id}`}
+              target="_blank"
+            >
+              <legend className="entity-legend">{props.data.id}</legend>
+            </Link>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <button className="destructive-pill-button">
@@ -141,16 +141,16 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
         {!props.data?.id ? (
           <CardHeader className="py-0">
-            <CardTitle>Select entity from <%= right_model_name_pluralized %></CardTitle>
+            <CardTitle>Select entity from layout</CardTitle>
           </CardHeader>
         ) : null}
         <CardContent>
-          {/* <AdminSelectInput
+          <AdminSelectInput
             isServer={false}
             form={form}
             variant="admin-select-input"
-            formFieldName="rightModelId"
-          /> */}
+            formFieldName="layoutId"
+          />
         </CardContent>
       </Card>
     </div>

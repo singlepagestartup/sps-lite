@@ -74,7 +74,6 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
     storeName: "sps-website-builder/pages",
     actionFilter: (action) => {
       return action.type === "pages/executeMutation/fulfilled";
