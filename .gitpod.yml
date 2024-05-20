@@ -11,8 +11,7 @@ ports:
 
 tasks:
   - name: "install dependencies"
-    init: curl -fsSL https://bun.sh/install | bash
-    command: bun i
+    init: bun i
   - name: "db"
     init: cd apps/db && ./up.sh
     command: npx nx run frontend:db:seed

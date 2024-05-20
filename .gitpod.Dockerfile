@@ -1,5 +1,3 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-node
 
-RUN apt-get update
-RUN apt-get -y install curl
 RUN curl -fsSL https://bun.sh/install | bash
