@@ -1,9 +1,10 @@
-import { Tree, getProjects, readCachedProjectGraph } from "@nx/devkit";
+import { Tree } from "@nx/devkit";
 import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
 import { Coder as RelationsCoder } from "./relations/Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
+import pluralize from "pluralize";
 
 /**
  * Module Coder
@@ -312,54 +313,60 @@ export class Coder {
   }
 
   async setRelatedModels(relationName: string) {
-    const projects = getProjects(this.tree);
-    const projectWithPassedRelationNameAndSchema = [];
+    const modelNamesPluralized = relationName.split("-to-");
 
-    projects.forEach((project) => {
-      if (
-        project.name.includes(relationName) &&
-        project.name.includes("schema")
-      ) {
-        projectWithPassedRelationNameAndSchema.push(project);
-      }
+    const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
+      return pluralize.singular(modelName);
     });
 
-    const graph = readCachedProjectGraph();
-    const dependenciesProjectNames = Object.keys(graph.dependencies);
-    const relatedModels = [];
+    // const projects = getProjects(this.tree);
+    // const projectWithPassedRelationNameAndSchema = [];
 
-    dependenciesProjectNames.forEach((dependencyProjectName) => {
-      graph.dependencies[dependencyProjectName].forEach((dependency) => {
-        if (
-          dependency.target === projectWithPassedRelationNameAndSchema[0].name
-        ) {
-          if (dependency.source.includes("models")) {
-            relatedModels.push(dependency.source);
-          }
-        }
-      });
-    });
+    // projects.forEach((project) => {
+    //   if (
+    //     project.name.includes(relationName) &&
+    //     project.name.includes("schema")
+    //   ) {
+    //     projectWithPassedRelationNameAndSchema.push(project);
+    //   }
+    // });
 
-    /**
-     * ! May be in wrong order! Here is just for fixing init problem
-     * Need to be checked by relation schema
-     */
-    const modelNames = relatedModels.map((model) => {
-      return model.split("models-")[1].split("-backend")[0];
-    });
+    // const graph = readCachedProjectGraph();
+    // const dependenciesProjectNames = Object.keys(graph.dependencies);
+    // const relatedModels = [];
+
+    // dependenciesProjectNames.forEach((dependencyProjectName) => {
+    //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
+    //     if (
+    //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
+    //     ) {
+    //       if (dependency.source.includes("models")) {
+    //         relatedModels.push(dependency.source);
+    //       }
+    //     }
+    //   });
+    // });
+
+    // /**
+    //  * ! May be in wrong order! Here is just for fixing init problem
+    //  * Need to be checked by relation schema
+    //  */
+    // const modelNames = relatedModels.map((model) => {
+    //   return model.split("models-")[1].split("-backend")[0];
+    // });
 
     const leftProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
     });
-    await leftProject.init({ modelName: modelNames[0] });
+    await leftProject.init({ modelName: unpluralizedModelNames[0] });
     this.project.models.push(leftProject);
 
     const rightProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
     });
-    await rightProject.init({ modelName: modelNames[1] });
+    await rightProject.init({ modelName: unpluralizedModelNames[1] });
 
     this.project.models.push(rightProject);
   }

@@ -122,8 +122,8 @@ export class Coder {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const rightModelNamePluralized =
-      this.parent.parent.parent.parent.parent.project.relations[0].project
-        .relation.rightModelRelationName;
+      this.parent.parent.parent.parent.parent.project.models[2].project.model
+        .name;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
 import {
   FormControl,
   FormField,
@@ -72,6 +73,12 @@ export function Component(props: IComponentPropsExtended) {
           variant="select-right"
           pageId={props.data?.id}
           data={undefined}
+        />
+        <PagesToLayoutsSpsLiteSelectLayout
+          isServer={false}
+          variant="select-layout"
+          pageId={props.data?.id}
+          data={props.data?.pagesToLayouts}
         />
       </div>
     </div>

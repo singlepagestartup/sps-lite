@@ -13,7 +13,7 @@ import {
   CardTitle,
   Form,
 } from "@sps/shadcn";
-import { Component as PagesToLayoutsSpsLiteSelectLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-layout";
+
 import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -114,12 +114,6 @@ export function Component(props: IComponentPropsExtended) {
                 variant="admin-form-inputs"
                 data={props.data}
                 form={form}
-              />
-              <PagesToLayoutsSpsLiteSelectLayout
-                isServer={false}
-                variant="select-layout"
-                pageId={props.data?.id}
-                data={props.data?.pagesToLayouts}
               />
               <Button onClick={form.handleSubmit(onSubmit)}>
                 {props.data?.id ? "Save" : "Create"}
