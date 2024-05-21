@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -8,7 +8,6 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
   Select,
   SelectContent,
   SelectItem,
@@ -19,6 +18,8 @@ import { Component as NavbarsToWidgetsSpsLiteSelectRight } from "@sps/sps-websit
 import { variants } from "@sps/sps-website-builder-models-navbar-contracts";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showWidgets, setShowWidgets] = useState(true);
+
   return (
     <form
       data-module="sps-website-builder"
@@ -59,26 +60,38 @@ export function Component(props: IComponentPropsExtended) {
           }}
         />
 
-        <fieldset className="grid gap-6 rounded-lg border p-4">
-          <legend className="-ml-1 px-1 text-sm font-medium">Widgets</legend>
-          {props.data?.navbarsToWidgets.map((entity, index) => {
-            return (
-              <NavbarsToWidgetsSpsLiteSelectRight
-                key={index}
-                isServer={false}
-                variant="select-right"
-                navbarId={props.data?.id}
-                data={entity}
-              />
-            );
-          })}
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Navbars To Widgets</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowWidgets(!showWidgets);
+              }}
+            >
+              {showWidgets ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div className={`flex flex-col gap-6 ${showWidgets ? "" : "hidden"}`}>
+            {props.data?.navbarsToWidgets.map((entity, index) => {
+              return (
+                <NavbarsToWidgetsSpsLiteSelectRight
+                  key={index}
+                  isServer={false}
+                  variant="select-right"
+                  navbarId={props.data?.id}
+                  data={entity}
+                />
+              );
+            })}
 
-          <NavbarsToWidgetsSpsLiteSelectRight
-            isServer={false}
-            variant="select-right"
-            navbarId={props.data?.id}
-            data={undefined}
-          />
+            <NavbarsToWidgetsSpsLiteSelectRight
+              isServer={false}
+              variant="select-right"
+              navbarId={props.data?.id}
+              data={undefined}
+            />
+          </div>
         </fieldset>
       </div>
     </form>

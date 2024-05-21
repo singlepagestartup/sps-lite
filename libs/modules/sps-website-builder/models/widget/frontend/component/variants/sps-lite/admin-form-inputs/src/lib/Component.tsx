@@ -9,30 +9,19 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@sps/shadcn";
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
 
-const relations = [
-  {
-    key: "SPSWBWidgetsToHeroSectionBlocks",
-    value: "Hero Section Block",
-  },
-  { key: "SPSWBWidgetsToNavbarBlocks", value: "Navbar Block" },
-  { key: "SPSWBWidgetsToFooterBlocks", value: "Footer Block" },
-  { key: "SPSWBWidgetsToSliderBlocks", value: "Slider Block" },
-];
-
 export function Component(props: IComponentPropsExtended) {
-  const [relationEntity, setRelationEntity] = useState<string>(
-    "SPSWBWidgetsToHeroSectionBlocks",
-  );
+  const [showWidgetsToHeroSectionBlocks, setShowWidgetsToHeroSectionBlocks] =
+    useState(true);
+  const [showWidgetsToNavbarBlocks, setShowWidgetsToNavbarBlocks] =
+    useState(true);
+  const [showWidgetsFooterBlocks, setShowWidgetsFooterBlocks] = useState(true);
+  const [showWidgetsSliderBlocks, setShowWidgetsSliderBlocks] = useState(true);
 
   return (
     <div
@@ -41,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-6">
         <FormField
           control={props.form.control}
           name="title"
@@ -55,113 +44,152 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        <Tabs
-          defaultValue={relationEntity}
-          onValueChange={(value) => setRelationEntity(value)}
-        >
-          <TabsList>
-            {relations.map((relation, index) => {
-              return (
-                <TabsTrigger key={index} value={relation.key}>
-                  {relation.value}
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">
+              Widgets To Hero Section Blocks
+            </legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowWidgetsToHeroSectionBlocks(
+                  !showWidgetsToHeroSectionBlocks,
+                );
+              }}
+            >
+              {showWidgetsToHeroSectionBlocks ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showWidgetsToHeroSectionBlocks ? "" : "hidden"}`}
+          >
+            {props.data?.widgetsToHeroSectionBlocks.map(
+              (widgetsToHeroSectionBlock, index) => {
+                return (
+                  <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetsToHeroSectionBlock}
+                  />
+                );
+              },
+            )}
+            <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </fieldset>
 
-          <TabsContent value="SPSWBWidgetsToHeroSectionBlocks">
-            {props.data?.widgetsToHeroSectionBlocks.length ? (
-              props.data?.widgetsToHeroSectionBlocks.map(
-                (widgetsToHeroSectionBlock, index) => {
-                  return (
-                    <WidgetsToHeroSectionBlocksSpsLiteSelectRight
-                      key={index}
-                      isServer={props.isServer}
-                      variant="select-right"
-                      data={widgetsToHeroSectionBlock}
-                    />
-                  );
-                },
-              )
-            ) : (
-              <WidgetsToHeroSectionBlocksSpsLiteSelectRight
-                isServer={props.isServer}
-                variant="select-right"
-                widgetId={props.data?.id}
-                data={undefined}
-              />
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Widgets To Navbar Blocks</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowWidgetsToNavbarBlocks(!showWidgetsToNavbarBlocks);
+              }}
+            >
+              {showWidgetsToNavbarBlocks ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showWidgetsToNavbarBlocks ? "" : "hidden"}`}
+          >
+            {props.data?.widgetsToNavbarBlocks.map(
+              (widgetsToNavbarBlocks, index) => {
+                return (
+                  <WidgetsToNavbarBlocksSpsLiteSelectRight
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetsToNavbarBlocks}
+                  />
+                );
+              },
             )}
-          </TabsContent>
-          <TabsContent value="SPSWBWidgetsToNavbarBlocks">
-            {props.data?.widgetsToNavbarBlocks.length ? (
-              props.data?.widgetsToNavbarBlocks.map(
-                (widgetsToNavbarBlocks, index) => {
-                  return (
-                    <WidgetsToNavbarBlocksSpsLiteSelectRight
-                      key={index}
-                      isServer={props.isServer}
-                      variant="select-right"
-                      data={widgetsToNavbarBlocks}
-                    />
-                  );
-                },
-              )
-            ) : (
-              <WidgetsToNavbarBlocksSpsLiteSelectRight
-                isServer={props.isServer}
-                variant="select-right"
-                widgetId={props.data?.id}
-                data={undefined}
-              />
+            <WidgetsToNavbarBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </fieldset>
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Widgets To Navbar Blocks</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowWidgetsFooterBlocks(!showWidgetsFooterBlocks);
+              }}
+            >
+              {showWidgetsFooterBlocks ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showWidgetsFooterBlocks ? "" : "hidden"}`}
+          >
+            {props.data?.widgetsToFooterBlocks.map(
+              (widgetToFooterBlock, index) => {
+                return (
+                  <WidgetsToFooterBlocksSpsLiteSelectRight
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetToFooterBlock}
+                  />
+                );
+              },
             )}
-          </TabsContent>
-          <TabsContent value="SPSWBWidgetsToFooterBlocks">
-            {props.data?.widgetsToFooterBlocks.length ? (
-              props.data?.widgetsToFooterBlocks.map(
-                (widgetToFooterBlock, index) => {
-                  return (
-                    <WidgetsToFooterBlocksSpsLiteSelectRight
-                      key={index}
-                      isServer={props.isServer}
-                      variant="select-right"
-                      data={widgetToFooterBlock}
-                    />
-                  );
-                },
-              )
-            ) : (
-              <WidgetsToFooterBlocksSpsLiteSelectRight
-                isServer={props.isServer}
-                variant="select-right"
-                widgetId={props.data?.id}
-                data={undefined}
-              />
+            <WidgetsToFooterBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Widgets To Slider Blocks</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowWidgetsSliderBlocks(!showWidgetsSliderBlocks);
+              }}
+            >
+              {showWidgetsSliderBlocks ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showWidgetsSliderBlocks ? "" : "hidden"}`}
+          >
+            {props.data?.widgetsToSliderBlocks?.map(
+              (widgetToSliderBlock, index) => {
+                return (
+                  <WidgetsToSliderBlocksSpsLiteSelectRight
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetToSliderBlock}
+                  />
+                );
+              },
             )}
-          </TabsContent>
-          <TabsContent value="SPSWBWidgetsToSliderBlocks">
-            {props.data?.widgetsToSliderBlocks?.length ? (
-              props.data?.widgetsToSliderBlocks?.map(
-                (widgetToSliderBlock, index) => {
-                  return (
-                    <WidgetsToSliderBlocksSpsLiteSelectRight
-                      key={index}
-                      isServer={props.isServer}
-                      variant="select-right"
-                      data={widgetToSliderBlock}
-                    />
-                  );
-                },
-              )
-            ) : (
-              <WidgetsToSliderBlocksSpsLiteSelectRight
-                isServer={props.isServer}
-                variant="select-right"
-                widgetId={props.data?.id}
-                data={undefined}
-              />
-            )}
-          </TabsContent>
-        </Tabs>
+            <WidgetsToSliderBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </fieldset>
       </div>
     </div>
   );

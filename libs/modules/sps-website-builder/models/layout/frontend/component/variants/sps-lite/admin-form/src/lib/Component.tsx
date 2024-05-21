@@ -10,6 +10,7 @@ import {
   Button,
   Card,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
   Form,
@@ -102,10 +103,12 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               data={props.data}
             />
+          </CardContent>
+          <CardFooter>
             <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>
-          </CardContent>
+          </CardFooter>
         </Card>
       </Form>
     </div>

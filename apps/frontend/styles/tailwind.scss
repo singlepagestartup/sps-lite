@@ -70,18 +70,23 @@ input[type="number"] {
   }
 
   .bg-dotted {
-    background: white;
-    background-image: radial-gradient(#999999 1px, transparent 0);
+    // --muted
+    background: hsl(210 40% 96.1%);
+    // --muted-foreground
+    background-image: radial-gradient(
+      hsl(215.4 16.3% 46.9%) 1px,
+      transparent 0
+    );
     background-size: 4px 4px;
     background-position: 0px 0px;
   }
 
   .model-container {
-    @apply relative gap-6 pt-8 rounded-lg border p-4 bg-dotted border-primary;
+    @apply relative gap-6 pt-8 rounded-lg border p-4 bg-dotted border-muted-foreground;
   }
 
   .model-legend {
-    @apply px-2 text-sm font-medium bg-primary text-primary-foreground border rounded-sm;
+    @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm;
   }
 
   .model-header-block {
@@ -89,15 +94,15 @@ input[type="number"] {
   }
 
   .pill-button {
-    @apply bg-foreground hover:text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground w-fit flex items-center px-2 w-fit border border-primary rounded-full transition duration-200 text-sm font-medium bg-white gap-2;
+    @apply bg-foreground hover:bg-muted w-fit flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2;
   }
 
   .entity-container {
-    @apply grid gap-6 pt-5 relative rounded-lg border border-primary;
+    @apply grid gap-6 pt-5 relative rounded-lg border border-muted-foreground;
   }
 
   .entity-legend {
-    @apply px-2 text-sm font-medium bg-primary text-primary-foreground border rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
+    @apply px-2 text-sm font-medium font-medium bg-muted-foreground text-muted rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
   }
 
   .entity-header-block {

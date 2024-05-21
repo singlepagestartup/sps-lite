@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -19,12 +19,15 @@ import { variants } from "@sps/sps-website-builder-models-hero-section-block-con
 import { Component as HeroSectionsToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showHeroSectionBlocksToButtons, setShowHeroSectionBlocksToButtons] =
+    useState(true);
+
   return (
     <form
       data-module="sps-website-builder"
       data-model="hero-section-block"
       data-variant={props.variant}
-      className={`${props.className || "flex flex-col gap-3"}`}
+      className={`${props.className || "flex flex-col gap-6"}`}
     >
       <FormField
         control={props.form.control}
@@ -65,22 +68,43 @@ export function Component(props: IComponentPropsExtended) {
           </FormItem>
         )}
       />
-      {props.data?.heroSectionBlocksToButtons.map(
-        (heroSectionBlocksToButton, index) => {
-          return (
-            <HeroSectionsToButtonsSpsLiteSelectRight
-              key={index}
-              data={heroSectionBlocksToButton}
-              isServer={props.isServer}
-              variant="select-right"
-            />
-          );
-        },
-      )}
-      <HeroSectionsToButtonsSpsLiteSelectRight
-        isServer={props.isServer}
-        variant="select-right"
-      />
+      <fieldset className="model-container">
+        <div className="model-header-block">
+          <legend className="model-legend">
+            Hero Section Block To Buttons
+          </legend>
+          <button
+            className="pill-button"
+            onClick={() => {
+              setShowHeroSectionBlocksToButtons(
+                !showHeroSectionBlocksToButtons,
+              );
+            }}
+          >
+            {showHeroSectionBlocksToButtons ? "Hide" : "Show"}
+          </button>
+        </div>
+        <div
+          className={`flex flex-col gap-6 ${showHeroSectionBlocksToButtons ? "" : "hidden"}`}
+        >
+          {props.data?.heroSectionBlocksToButtons.map(
+            (heroSectionBlocksToButton, index) => {
+              return (
+                <HeroSectionsToButtonsSpsLiteSelectRight
+                  key={index}
+                  data={heroSectionBlocksToButton}
+                  isServer={props.isServer}
+                  variant="select-right"
+                />
+              );
+            },
+          )}
+          <HeroSectionsToButtonsSpsLiteSelectRight
+            isServer={props.isServer}
+            variant="select-right"
+          />
+        </div>
+      </fieldset>
     </form>
   );
 }

@@ -9,6 +9,7 @@ import {
   Button,
   Card,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
   Form,
@@ -20,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as PageSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form-inputs";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
@@ -60,9 +62,7 @@ export function Component(props: IComponentPropsExtended) {
       invalidateServerTag({ tag: "page" }).then(() => {
         router.refresh();
 
-        if (props.setOpen) {
-          props.setOpen(false);
-        }
+        toast("Saved!");
       });
     }
   }, [finishedActions]);
@@ -115,11 +115,13 @@ export function Component(props: IComponentPropsExtended) {
                 data={props.data}
                 form={form}
               />
-              <Button onClick={form.handleSubmit(onSubmit)}>
-                {props.data?.id ? "Save" : "Create"}
-              </Button>
             </div>
           </CardContent>
+          <CardFooter>
+            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+              {props.data?.id ? "Save" : "Create"}
+            </Button>
+          </CardFooter>
         </Card>
       </Form>
     </div>

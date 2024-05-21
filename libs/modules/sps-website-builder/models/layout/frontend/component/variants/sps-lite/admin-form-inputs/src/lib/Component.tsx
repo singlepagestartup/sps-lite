@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -19,6 +19,9 @@ import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-websit
 import { Component as LayoutsToFooterSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showLayoutsToNavbars, setShowLayoutsToNavbars] = useState(true);
+  const [showLayoutsToFooters, setShowLayoutsToFooters] = useState(true);
+
   return (
     <form
       data-module="sps-website-builder"
@@ -72,34 +75,68 @@ export function Component(props: IComponentPropsExtended) {
           );
         }}
       />
-      {props.data?.layoutsToNavbars.map((layoutToNavbar, index) => {
-        return (
+      <fieldset className="model-container">
+        <div className="model-header-block">
+          <legend className="model-legend">Layouts To Navbars</legend>
+          <button
+            className="pill-button"
+            onClick={() => {
+              setShowLayoutsToNavbars(!showLayoutsToNavbars);
+            }}
+          >
+            {showLayoutsToNavbars ? "Hide" : "Show"}
+          </button>
+        </div>
+        <div
+          className={`flex flex-col gap-6 ${showLayoutsToNavbars ? "" : "hidden"}`}
+        >
+          {props.data?.layoutsToNavbars.map((layoutToNavbar, index) => {
+            return (
+              <LayoutsToNavbarsSpsLiteSelectRight
+                key={index}
+                isServer={false}
+                data={layoutToNavbar}
+                variant="select-right"
+              />
+            );
+          })}
           <LayoutsToNavbarsSpsLiteSelectRight
-            key={index}
             isServer={false}
-            data={layoutToNavbar}
             variant="select-right"
           />
-        );
-      })}
-      <LayoutsToNavbarsSpsLiteSelectRight
-        isServer={false}
-        variant="select-right"
-      />
-      {props.data?.layoutsToFooters.map((layoutToFooter, index) => {
-        return (
+        </div>
+      </fieldset>
+      <fieldset className="model-container">
+        <div className="model-header-block">
+          <legend className="model-legend">Layouts To Footers</legend>
+          <button
+            className="pill-button"
+            onClick={() => {
+              setShowLayoutsToFooters(!showLayoutsToFooters);
+            }}
+          >
+            {showLayoutsToFooters ? "Hide" : "Show"}
+          </button>
+        </div>
+        <div
+          className={`flex flex-col gap-6 ${showLayoutsToFooters ? "" : "hidden"}`}
+        >
+          {props.data?.layoutsToFooters.map((layoutToFooter, index) => {
+            return (
+              <LayoutsToFooterSpsLiteSelectRight
+                key={index}
+                isServer={false}
+                data={layoutToFooter}
+                variant="select-right"
+              />
+            );
+          })}
           <LayoutsToFooterSpsLiteSelectRight
-            key={index}
             isServer={false}
-            data={layoutToFooter}
             variant="select-right"
           />
-        );
-      })}
-      <LayoutsToFooterSpsLiteSelectRight
-        isServer={false}
-        variant="select-right"
-      />
+        </div>
+      </fieldset>
     </form>
   );
 }

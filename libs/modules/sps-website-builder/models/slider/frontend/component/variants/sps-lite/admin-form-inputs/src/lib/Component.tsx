@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -19,6 +19,8 @@ import { variants } from "@sps/sps-website-builder-models-slider-contracts";
 import { Component as SlidersToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showSlidersToSlides, setShowSlidersToSlides] = useState(true);
+
   return (
     <div
       data-module="sps-website-builder"
@@ -53,20 +55,37 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        {props.data?.slidersToSlides.map((sliderToSlide, index) => {
-          return (
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Sliders To Slides</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowSlidersToSlides(!showSlidersToSlides);
+              }}
+            >
+              {showSlidersToSlides ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showSlidersToSlides ? "" : "hidden"}`}
+          >
+            {props.data?.slidersToSlides.map((sliderToSlide, index) => {
+              return (
+                <SlidersToSlidesSpsLiteSelectRight
+                  key={index}
+                  isServer={false}
+                  variant="select-right"
+                  data={sliderToSlide}
+                />
+              );
+            })}
             <SlidersToSlidesSpsLiteSelectRight
-              key={index}
               isServer={false}
               variant="select-right"
-              data={sliderToSlide}
             />
-          );
-        })}
-        <SlidersToSlidesSpsLiteSelectRight
-          isServer={false}
-          variant="select-right"
-        />
+          </div>
+        </fieldset>
       </div>
     </div>
   );

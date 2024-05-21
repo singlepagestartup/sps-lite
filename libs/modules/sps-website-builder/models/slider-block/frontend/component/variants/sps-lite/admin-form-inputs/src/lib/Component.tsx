@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -19,6 +19,9 @@ import { variants } from "@sps/sps-website-builder-models-slider-block-contracts
 import { Component as SliderBlocksToSlidersSpsLiteSelectRight } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showSliderBlocksToSliders, setShowSliderBlocksToSliders] =
+    useState(true);
+
   return (
     <div
       data-module="sps-website-builder"
@@ -53,22 +56,39 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        {props.data?.sliderBlocksToSliders.map(
-          (sliderBlocksToSliders, index) => {
-            return (
-              <SliderBlocksToSlidersSpsLiteSelectRight
-                isServer={false}
-                key={index}
-                data={sliderBlocksToSliders}
-                variant="select-right"
-              />
-            );
-          },
-        )}
-        <SliderBlocksToSlidersSpsLiteSelectRight
-          isServer={false}
-          variant="select-right"
-        />
+        <fieldset className="model-container">
+          <div className="model-header-block">
+            <legend className="model-legend">Slider Block To Sliders</legend>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowSliderBlocksToSliders(!showSliderBlocksToSliders);
+              }}
+            >
+              {showSliderBlocksToSliders ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div
+            className={`flex flex-col gap-6 ${showSliderBlocksToSliders ? "" : "hidden"}`}
+          >
+            {props.data?.sliderBlocksToSliders.map(
+              (sliderBlocksToSliders, index) => {
+                return (
+                  <SliderBlocksToSlidersSpsLiteSelectRight
+                    isServer={false}
+                    key={index}
+                    data={sliderBlocksToSliders}
+                    variant="select-right"
+                  />
+                );
+              },
+            )}
+            <SliderBlocksToSlidersSpsLiteSelectRight
+              isServer={false}
+              variant="select-right"
+            />
+          </div>
+        </fieldset>
       </div>
     </div>
   );
