@@ -1,30 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
-import {
-  Card,
-  Table,
-  TableBody,
-  TableCaption,
-  TableHead,
-  TableHeader,
-  TableRow,
-  Button,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-} from "@sps/shadcn";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { PlusIcon } from "@heroicons/react/24/outline";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-form";
 import { Component as AdminTableRow } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table-row";
+import { ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const [open, setOpen] = useState(false);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -32,54 +12,21 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
-      <Card>
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle>features-section-block</CardTitle>
-
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" className="w-fit">
-                  <div className="flex gap-3">
-                    <PlusIcon className="h-5 w-5" />
-                    Add new features-section-block
-                  </div>
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-                <AdminForm isServer={false} variant="admin-form" />
-              </DialogContent>
-            </Dialog>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <Table>
-            <TableCaption>
-              List of existing features-section-block entites
-            </TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Variant</TableHead>
-                <TableHead className="text-right"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {props.data.map((entity, index) => {
-                return (
-                  <AdminTableRow
-                    key={index}
-                    isServer={false}
-                    variant="admin-table-row"
-                    data={entity}
-                  />
-                );
-              })}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <ModelEntitiesListCard
+        title="features-section-blocks"
+        adminForm={<AdminForm isServer={props.isServer} variant="admin-form" />}
+      >
+        {props.data.map((entity, index) => {
+          return (
+            <AdminTableRow
+              key={index}
+              isServer={props.isServer}
+              variant="admin-table-row"
+              data={entity}
+            />
+          );
+        })}
+      </ModelEntitiesListCard>
     </div>
   );
 }

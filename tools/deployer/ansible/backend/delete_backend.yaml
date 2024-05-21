@@ -6,11 +6,7 @@
     - service_name: "{{ SERVICE_NAME }}"
   tasks:
     - name: Remove Backend service
-      community.docker.docker_stack:
-        state: absent
-        name: backend
-        compose:
-          - /home/code/docker-compose.backend.yaml
+      shell: docker compose -f /home/code/docker-compose.backend.yaml down
 
     - name: Delete env file
       file:

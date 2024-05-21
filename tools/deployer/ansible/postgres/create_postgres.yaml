@@ -14,8 +14,4 @@
         dest: /home/code/docker-compose.postgres.yaml
 
     - name: Run Postgres service
-      community.docker.docker_stack:
-        state: present
-        name: postgres
-        compose:
-          - /home/code/docker-compose.postgres.yaml
+      shell: docker stack deploy --compose-file=/home/code/docker-compose.postgres.yaml postgres

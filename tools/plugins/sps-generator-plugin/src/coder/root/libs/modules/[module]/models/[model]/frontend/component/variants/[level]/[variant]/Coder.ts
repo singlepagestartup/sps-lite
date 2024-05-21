@@ -124,6 +124,9 @@ export class Coder {
         api_server_import_path: apiServerImportPath,
         redux_import_path: reduxImportPath,
         offset_from_root: offsetFromRootProject,
+        model_name_kebab_cased_pluralized: getNameStyles({
+          name: this.modelName,
+        }).kebabCased.pluralized,
         model_name_pluralized: modelNamePluralized,
         root_contracts_import_path: rootContractsImportPath,
         extended_contracts_import_path: extendedContractsImportPath,

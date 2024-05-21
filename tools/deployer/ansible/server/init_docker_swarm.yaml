@@ -11,4 +11,8 @@
 
     - name: Init Docker swarm
       shell: docker swarm init --advertise-addr "{{ ansible_default_ipv4.address }}"
-      when: docker_swarm_mode.stdout == ""
+      when: docker_swarm_mode.stdout == "inactive"
+
+    - name: Join Docker swarm as manager
+      shell: docker swarm join-token manager
+      when: docker_swarm_mode.stdout == "inactive"

@@ -4,11 +4,7 @@
   become: yes
   tasks:
     - name: Remove Traefik service
-      community.docker.docker_stack:
-        state: absent
-        name: traefik
-        compose:
-          - /home/code/docker-compose.traefik.yaml
+      shell: docker compose -f /home/code/docker-compose.traefik.yaml down
 
     - name: Delete traefik.yml file
       file:

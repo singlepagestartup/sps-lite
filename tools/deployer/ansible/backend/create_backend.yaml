@@ -65,11 +65,7 @@
         dest: /home/code/docker-compose.backend.yaml
 
     - name: Run Backend service
-      community.docker.docker_stack:
-        state: present
-        name: backend
-        compose:
-          - /home/code/docker-compose.backend.yaml
+      shell: docker stack deploy --compose-file=/home/code/docker-compose.backend.yaml backend
 
     - name: Get backend service id
       shell:

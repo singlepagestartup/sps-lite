@@ -4,11 +4,7 @@
   become: yes
   tasks:
     - name: Remove Portainer service
-      community.docker.docker_stack:
-        state: absent
-        name: portainer
-        compose:
-          - /home/code/docker-compose.portainer.yaml
+      shell: docker compose -f /home/code/docker-compose.portainer.yaml down
 
     - name: Delete portainer_data directory
       file:

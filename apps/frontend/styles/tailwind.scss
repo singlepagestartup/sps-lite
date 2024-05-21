@@ -94,7 +94,7 @@ input[type="number"] {
   }
 
   .pill-button {
-    @apply bg-foreground hover:bg-muted w-fit flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2;
+    @apply bg-foreground hover:bg-muted w-fit flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2 py-1 lg:py-0;
   }
 
   .entity-container {

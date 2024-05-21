@@ -28,3 +28,5 @@ export {
   type ITableItemProps,
   type ITableConfig,
 } from "./lib/table";
+export { Component as ModelEntityCard } from "./lib/model-entity-card";
+export { Component as ModelEntitiesListCard } from "./lib/model-entites-list-card";

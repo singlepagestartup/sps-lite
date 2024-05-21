@@ -76,11 +76,7 @@
       when: ansible_system_vendor != "DigitalOcean"
 
     - name: Run Traefik service
-      community.docker.docker_stack:
-        state: present
-        name: traefik
-        compose:
-          - /home/code/docker-compose.traefik.yaml
+      shell: docker stack deploy --compose-file=/home/code/docker-compose.traefik.yaml traefik
 
     - name: Delete artifacts
       file:

@@ -6,11 +6,7 @@
     - service_name: "{{ SERVICE_NAME }}"
   tasks:
     - name: Remove Frontend service
-      community.docker.docker_stack:
-        state: absent
-        name: frontend
-        compose:
-          - /home/code/docker-compose.frontend.yaml
+      shell: docker compose -f /home/code/docker-compose.frontend.yaml down
 
     - name: Delete docker-compose file
       file:

@@ -1,0 +1,18 @@
+---
+- name: Remove Docker Swarm
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check is Docker swarm already started
+      shell: docker info | grep -E -i "Swarm[\s]*:.*active" | awk '{print $2}'
+      register: docker_swarm_mode
+      failed_when: false
+      changed_when: false
+
+    - name: Get docker_swarm_mode info
+      debug:
+        var: docker_swarm_mode.stdout
+
+    - name: Stop Docker swarm
+      shell: docker swarm leave --force
+      when: docker_swarm_mode.stdout == "active"
