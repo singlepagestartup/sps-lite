@@ -60,9 +60,9 @@ export function Component(props: IComponentPropsExtended) {
           }}
         />
 
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Navbars To Widgets</legend>
+            <p className="model-legend">navbars-to-widgets</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -92,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
+        </div>
       </div>
     </form>
   );

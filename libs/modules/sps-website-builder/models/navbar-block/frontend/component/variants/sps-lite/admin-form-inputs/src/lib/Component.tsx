@@ -57,9 +57,9 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Buttons</legend>
+            <p className="model-legend">navbar-blocks-to-buttons</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -87,10 +87,10 @@ export function Component(props: IComponentPropsExtended) {
               variant="select-right"
             />
           </div>
-        </fieldset>
-        <fieldset className="model-container">
+        </div>
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Logotypes</legend>
+            <p className="model-legend">navbar-blocks-to-logotypes</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -117,7 +117,7 @@ export function Component(props: IComponentPropsExtended) {
             )}
             <NavbarBlocksToLogotypes variant="select-right" isServer={false} />
           </div>
-        </fieldset>
+        </div>
       </div>
     </div>
   );

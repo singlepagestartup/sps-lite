@@ -15,28 +15,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
 } from "@sps/shadcn";
 import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
 import { TrashIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import { BACKEND_URL } from "@sps/shared-utils";
 
 const formSchema = z.object({
   pageId: z.string().min(1),
@@ -106,12 +92,7 @@ export function Component(props: IComponentPropsExtended) {
       >
         {props.data ? (
           <div className="entity-header-block">
-            <Link
-              href={`${BACKEND_URL}/api/sps-website-builder/pages-to-layouts/${props.data.id}`}
-              target="_blank"
-            >
-              <legend className="entity-legend">{props.data.id}</legend>
-            </Link>
+            <p className="entity-legend">{props.data.id}</p>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <button className="destructive-pill-button">

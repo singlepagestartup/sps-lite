@@ -25,6 +25,7 @@ import { Component as FeaturesSectionBlockSpsLiteAdminTable } from "@sps/sps-web
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Component(props: IComponentPropsExtended) {
+  const [showModels, setShowModels] = useState(true);
   const [page, setPage] = useState<{
     model: (typeof models)[0];
   }>();
@@ -173,44 +174,58 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant={props.variant}
-      className="w-full flex bg-white border border-muted rounded-lg"
+      className="w-full flex flex-col lg:flex-row bg-white border border-muted rounded-lg"
     >
-      <div className="w-3/12 flex flex-col gap-5 p-4">
-        <div className="flex flex-col gap-3">
-          {models
-            .filter((model) => model.Comp)
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((model, modelIndex) => {
-              let hasComponent = false;
+      <div className="w-full lg:w-3/12 p-4 pt-6">
+        <div className="relative flex flex-col gap-6 pt-6 rounded-lg border p-4 border-muted-foreground">
+          <div className="flex absolute top-0 inset-x-0 px-4 transform -translate-y-1/2 justify-between items-center">
+            <p className="model-legend">models</p>
+            <button
+              className="pill-button"
+              onClick={() => {
+                setShowModels(!showModels);
+              }}
+            >
+              {showModels ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div className={`flex flex-col gap-1 ${showModels ? "" : "hidden"}`}>
+            {models
+              .filter((model) => model.Comp)
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((model, modelIndex) => {
+                let hasComponent = false;
 
-              if ("Comp" in model && model.Comp) {
-                hasComponent = true;
-              }
+                if ("Comp" in model && model.Comp) {
+                  hasComponent = true;
+                }
 
-              return (
-                <Button
-                  variant={
-                    page?.model.name === model.name ? "primary" : "ghost"
-                  }
-                  className="text-left justify-start"
-                  disabled={!hasComponent}
-                  onClick={() => {
-                    setPage({
-                      model,
-                    });
-                  }}
-                  key={modelIndex}
-                >
-                  {model.name}
-                </Button>
-              );
-            })}
-          <div className="flex flex-col gap-3">
-            <Collapsible>
+                return (
+                  <Button
+                    variant={
+                      page?.model.name === model.name ? "primary" : "ghost"
+                    }
+                    className="text-left max-w-full overflow-hidden justify-start truncate"
+                    disabled={!hasComponent}
+                    onClick={() => {
+                      setPage({
+                        model,
+                      });
+                    }}
+                    key={modelIndex}
+                  >
+                    <p className="max-w-full text-ellipsis overflow-hidden">
+                      {model.name}
+                    </p>
+                  </Button>
+                );
+              })}
+
+            <Collapsible className="flex flex-col gap-3 pt-6">
               <CollapsibleTrigger asChild={true}>
                 <Button
                   variant="link"
-                  className="text-left justify-start gap-3"
+                  className="text-left justify-start gap-3 py-0 text-secondary-foreground"
                 >
                   Not finished models
                   <ChevronUpDownIcon className="w-4 h-4" />
@@ -238,7 +253,9 @@ export function Component(props: IComponentPropsExtended) {
                         }}
                         key={modelIndex}
                       >
-                        {model.name}
+                        <p className="max-w-full text-ellipsis overflow-hidden">
+                          {model.name}
+                        </p>
                       </Button>
                     );
                   })}
@@ -247,7 +264,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </div>
-      <div className="w-9/12 flex flex-col gap-6 p-4">
+      <div className="w-9/12 flex flex-col gap-6 p-4 pt-6">
         {typeof RenderWidget === "function" ? (
           <RenderWidget {...({} as any)} />
         ) : null}

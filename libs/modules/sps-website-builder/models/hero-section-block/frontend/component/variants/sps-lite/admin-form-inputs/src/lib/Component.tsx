@@ -68,11 +68,9 @@ export function Component(props: IComponentPropsExtended) {
           </FormItem>
         )}
       />
-      <fieldset className="model-container">
+      <div className="model-container bg-dotted">
         <div className="model-header-block">
-          <legend className="model-legend">
-            Hero Section Block To Buttons
-          </legend>
+          <p className="model-legend">hero-section-block-to-buttons</p>
           <button
             className="pill-button"
             onClick={() => {
@@ -104,7 +102,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="select-right"
           />
         </div>
-      </fieldset>
+      </div>
     </form>
   );
 }

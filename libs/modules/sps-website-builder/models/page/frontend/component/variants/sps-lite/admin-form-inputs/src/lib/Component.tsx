@@ -55,9 +55,9 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Pages To Widgets</legend>
+            <p className="model-legend">pages-to-widgets</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -86,10 +86,10 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
-        <fieldset className="model-container">
+        </div>
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Pages To Layouts</legend>
+            <p className="model-legend">pages-to-layouts</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -117,7 +117,7 @@ export function Component(props: IComponentPropsExtended) {
               pageId={props.data?.id}
             />
           </div>
-        </fieldset>
+        </div>
       </div>
     </div>
   );

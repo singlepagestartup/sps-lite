@@ -75,9 +75,9 @@ export function Component(props: IComponentPropsExtended) {
           );
         }}
       />
-      <fieldset className="model-container">
+      <div className="model-container bg-dotted">
         <div className="model-header-block">
-          <legend className="model-legend">Layouts To Navbars</legend>
+          <p className="model-legend">layouts-to-navbars</p>
           <button
             className="pill-button"
             onClick={() => {
@@ -105,10 +105,10 @@ export function Component(props: IComponentPropsExtended) {
             variant="select-right"
           />
         </div>
-      </fieldset>
-      <fieldset className="model-container">
+      </div>
+      <div className="model-container bg-dotted">
         <div className="model-header-block">
-          <legend className="model-legend">Layouts To Footers</legend>
+          <p className="model-legend">layouts-to-footers</p>
           <button
             className="pill-button"
             onClick={() => {
@@ -136,7 +136,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="select-right"
           />
         </div>
-      </fieldset>
+      </div>
     </form>
   );
 }

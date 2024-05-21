@@ -82,15 +82,15 @@ input[type="number"] {
   }
 
   .model-container {
-    @apply relative gap-6 pt-8 rounded-lg border p-4 bg-dotted border-muted-foreground;
+    @apply relative gap-6 pt-8 rounded-lg border p-4 border-muted-foreground;
+  }
+
+  .model-header-block {
+    @apply flex absolute top-0 inset-x-0 px-4 transform -translate-y-1/2 justify-between items-center;
   }
 
   .model-legend {
     @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm;
-  }
-
-  .model-header-block {
-    @apply flex absolute top-0 inset-x-0 px-3 transform -translate-y-1/2 justify-between items-center;
   }
 
   .pill-button {

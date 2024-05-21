@@ -44,11 +44,9 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">
-              Widgets To Hero Section Blocks
-            </legend>
+            <p className="model-legend">widgets-to-hero-section-blocks</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -82,11 +80,11 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Widgets To Navbar Blocks</legend>
+            <p className="model-legend">widgets-to-navbar-blocks</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -118,10 +116,10 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
-        <fieldset className="model-container">
+        </div>
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Widgets To Navbar Blocks</legend>
+            <p className="model-legend">widgets-to-navbar-blocks</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -153,11 +151,11 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset className="model-container">
+        <div className="model-container bg-dotted">
           <div className="model-header-block">
-            <legend className="model-legend">Widgets To Slider Blocks</legend>
+            <p className="model-legend">widgets-to-slider-blocks</p>
             <button
               className="pill-button"
               onClick={() => {
@@ -189,7 +187,7 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </fieldset>
+        </div>
       </div>
     </div>
   );
