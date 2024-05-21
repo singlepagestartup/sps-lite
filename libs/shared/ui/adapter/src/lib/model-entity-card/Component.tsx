@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import {
   Dialog,
@@ -15,7 +16,6 @@ import {
   AlertDialogTrigger,
   CardContent,
 } from "@sps/shadcn";
-import { useState } from "react";
 import { IComponentProps } from "./interface";
 
 export function Component(props: IComponentProps) {

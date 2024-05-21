@@ -1,5 +1,5 @@
+import React from "react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { CardContent } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
 
 export function Skeleton(props: IComponentProps) {
@@ -21,11 +21,11 @@ export function Skeleton(props: IComponentProps) {
           </button>
         </div>
       </div>
-      <CardContent className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-6">
         <div className="skeleton h-8"></div>
         <div className="skeleton h-8"></div>
         <div className="skeleton h-8"></div>
-      </CardContent>
+      </div>
     </div>
   );
 }
