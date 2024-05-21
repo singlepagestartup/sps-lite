@@ -264,7 +264,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </div>
-      <div className="w-9/12 flex flex-col gap-6 p-4 pt-6">
+      <div className="w-full lg:w-9/12 flex flex-col gap-6 p-4 pt-6">
         {typeof RenderWidget === "function" ? (
           <RenderWidget {...({} as any)} />
         ) : null}

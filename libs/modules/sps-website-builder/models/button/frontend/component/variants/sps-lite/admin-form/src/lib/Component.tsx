@@ -24,6 +24,7 @@ const formSchema = z.object({
   variant: z.enum(variants),
   title: z.string(),
   url: z.string(),
+  className: z.string(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -39,6 +40,7 @@ export function Component(props: IComponentPropsExtended) {
       variant: props.data?.variant || "default",
       title: props.data?.title || "",
       url: props.data?.url || "",
+      className: props.data?.className || "",
     },
   });
 
@@ -56,13 +58,10 @@ export function Component(props: IComponentPropsExtended) {
   useEffect(() => {
     if (updateEntityResult.data || createEntityResult.data) {
       dispatch(api.rtk.util.invalidateTags(["button"]));
-      invalidateServerTag({ tag: "button" });
 
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      router.refresh();
+      invalidateServerTag({ tag: "button" }).then(() => {
+        router.refresh();
+      });
     }
   }, [updateEntityResult, createEntityResult]);
 

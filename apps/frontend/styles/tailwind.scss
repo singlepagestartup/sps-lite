@@ -98,7 +98,7 @@ input[type="number"] {
   }
 
   .entity-container {
-    @apply grid gap-6 pt-5 relative rounded-lg border border-muted-foreground;
+    @apply grid gap-6 pt-5 relative rounded-lg border border-muted-foreground bg-white;
   }
 
   .entity-legend {

@@ -58,6 +58,21 @@ export function Component(props: IComponentPropsExtended) {
         />
         <FormField
           control={props.form.control}
+          name="className"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Class Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Type class name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+        <FormField
+          control={props.form.control}
           name="variant"
           render={({ field }) => (
             <FormItem>

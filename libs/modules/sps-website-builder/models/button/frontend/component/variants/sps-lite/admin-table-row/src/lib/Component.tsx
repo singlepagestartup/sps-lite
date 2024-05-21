@@ -2,12 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogTrigger,
-  TableCell,
-  TableRow,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  CardContent,
 } from "@sps/shadcn";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { IComponentPropsExtended } from "./interface";
@@ -21,59 +27,88 @@ export function Component(props: IComponentPropsExtended) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const [deleteMutation, deleteMutationResult] = api.rtk.useDeleteMutation();
+  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
 
   useEffect(() => {
-    if (deleteMutationResult.isSuccess) {
+    if (deleteEntityResult.isSuccess) {
       dispatch(api.rtk.util.invalidateTags(["button"]));
       invalidateServerTag({ tag: "button" }).then(() => {
         router.refresh();
       });
     }
-  }, [deleteMutationResult]);
+  }, [deleteEntityResult]);
 
   return (
-    <TableRow
+    <div
       data-module="sps-website-builder"
       data-model="button"
       data-variant={props.variant}
+      className="entity-container"
     >
-      <TableCell className="font-medium text-left">{props.data.id}</TableCell>
-      <TableCell>{props.data.title}</TableCell>
-      <TableCell>{props.data.variant}</TableCell>
-      <TableCell></TableCell>
-      <TableCell className="flex gap-3 justify-end">
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="w-fit">
-              <div className="flex gap-3">
-                <PencilIcon className="h-5 w-5" />
+      <div className="entity-header-block">
+        <p className="entity-legend">{props.data.id}</p>
+        <div className="flex items-center gap-3">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <button className="pill-button">
+                <PencilIcon className="h-3 w-3" />
                 Edit
-              </div>
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-            <AdminForm
-              isServer={false}
-              variant="admin-form"
-              data={props.data}
-            />
-          </DialogContent>
-        </Dialog>
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
+              <AdminForm
+                isServer={false}
+                variant="admin-form"
+                data={props.data}
+              />
+            </DialogContent>
+          </Dialog>
 
-        <Button
-          variant="outline"
-          onClick={() => {
-            deleteMutation({ id: props.data.id });
-          }}
-          className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
-        >
-          <div className="flex gap-3">
-            <TrashIcon className="h-5 w-5" />
-            Delete
-          </div>
-        </Button>
-      </TableCell>
-    </TableRow>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button className="destructive-pill-button">
+                <TrashIcon className="h-3 w-3" />
+                Delete
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete?</AlertDialogTitle>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => {
+                    if (props.data?.id) {
+                      deleteEntity({ id: props.data.id });
+                    }
+                  }}
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      </div>
+      <CardContent className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Title</p>
+          <p>{props.data.title}</p>
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Variant</p>
+          <p>{props.data.variant}</p>
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Url</p>
+          <p>{props.data.url}</p>
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Class Name</p>
+          <p>{props.data.className || ""}</p>
+        </div>
+      </CardContent>
+    </div>
   );
 }
