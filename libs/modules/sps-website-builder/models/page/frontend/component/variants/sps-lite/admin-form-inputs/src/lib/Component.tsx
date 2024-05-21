@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -12,11 +10,9 @@ import {
 } from "@sps/shadcn";
 import { Component as PagesToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as PagesToLayoutsSelectRight } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-right";
+import { ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showWidgets, setShowWidgets] = useState(true);
-  const [showLayouts, setShowLayouts] = useState(true);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -55,24 +51,13 @@ export function Component(props: IComponentPropsExtended) {
             );
           }}
         />
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">pages-to-widgets</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgets(!showWidgets);
-              }}
-            >
-              {showWidgets ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div className={`flex flex-col gap-6 ${showWidgets ? "" : "hidden"}`}>
+        <ModelEntitiesListCard title="pages-to-widgets">
+          <div className="flex flex-col gap-6">
             {props.data?.pagesToWidgets.map((entity, index) => {
               return (
                 <PagesToWidgetsSpsLiteSelectRight
                   key={index}
-                  isServer={false}
+                  isServer={props.isServer}
                   variant="select-right"
                   pageId={props.data?.id}
                   data={entity}
@@ -80,31 +65,20 @@ export function Component(props: IComponentPropsExtended) {
               );
             })}
             <PagesToWidgetsSpsLiteSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
               pageId={props.data?.id}
               data={undefined}
             />
           </div>
-        </div>
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">pages-to-layouts</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowLayouts(!showLayouts);
-              }}
-            >
-              {showLayouts ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div className={`flex flex-col gap-6 ${showLayouts ? "" : "hidden"}`}>
+        </ModelEntitiesListCard>
+        <ModelEntitiesListCard title="pages-to-layouts">
+          <div className="flex flex-col gap-6">
             {props.data?.pagesToLayouts.map((pageToLayout, index) => {
               return (
                 <PagesToLayoutsSelectRight
                   key={index}
-                  isServer={false}
+                  isServer={props.isServer}
                   variant="select-right"
                   pageId={props.data?.id}
                   data={pageToLayout}
@@ -112,12 +86,12 @@ export function Component(props: IComponentPropsExtended) {
               );
             })}
             <PagesToLayoutsSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
               pageId={props.data?.id}
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

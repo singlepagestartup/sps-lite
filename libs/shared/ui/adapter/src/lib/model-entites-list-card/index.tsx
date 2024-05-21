@@ -5,7 +5,7 @@ import { Dialog, DialogTrigger, DialogContent } from "@sps/shadcn";
 import { ChevronUpDownIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface IComponentProps {
-  adminForm: ReactNode;
+  adminForm?: ReactNode;
   children: ReactNode;
   title: string;
 }
@@ -19,18 +19,19 @@ export function Component(props: IComponentProps) {
       <div className="model-header-block">
         <p className="model-legend">{props.title}</p>
         <div className="flex items-center gap-3">
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-              <button className="pill-button">
-                <PlusIcon className="h-3 w-3" />
-                <p className="hidden lg:inline">Add new</p>
-              </button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-              {props.adminForm}
-            </DialogContent>
-          </Dialog>
-
+          {props.adminForm ? (
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <button className="pill-button">
+                  <PlusIcon className="h-3 w-3" />
+                  <p className="hidden lg:inline">Add new</p>
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
+                {props.adminForm}
+              </DialogContent>
+            </Dialog>
+          ) : null}
           <button
             className="pill-button"
             onClick={() => {

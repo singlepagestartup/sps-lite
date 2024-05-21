@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   FormControl,
@@ -14,15 +12,9 @@ import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
+import { ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showWidgetsToHeroSectionBlocks, setShowWidgetsToHeroSectionBlocks] =
-    useState(true);
-  const [showWidgetsToNavbarBlocks, setShowWidgetsToNavbarBlocks] =
-    useState(true);
-  const [showWidgetsFooterBlocks, setShowWidgetsFooterBlocks] = useState(true);
-  const [showWidgetsSliderBlocks, setShowWidgetsSliderBlocks] = useState(true);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -44,23 +36,9 @@ export function Component(props: IComponentPropsExtended) {
             </FormItem>
           )}
         />
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">widgets-to-hero-section-blocks</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgetsToHeroSectionBlocks(
-                  !showWidgetsToHeroSectionBlocks,
-                );
-              }}
-            >
-              {showWidgetsToHeroSectionBlocks ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showWidgetsToHeroSectionBlocks ? "" : "hidden"}`}
-          >
+
+        <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
+          <div className="flex flex-col gap-6">
             {props.data?.widgetsToHeroSectionBlocks.map(
               (widgetsToHeroSectionBlock, index) => {
                 return (
@@ -80,23 +58,10 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
 
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">widgets-to-navbar-blocks</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgetsToNavbarBlocks(!showWidgetsToNavbarBlocks);
-              }}
-            >
-              {showWidgetsToNavbarBlocks ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showWidgetsToNavbarBlocks ? "" : "hidden"}`}
-          >
+        <ModelEntitiesListCard title="widgets-to-navbar-blocks">
+          <div className="flex flex-col gap-6">
             {props.data?.widgetsToNavbarBlocks.map(
               (widgetsToNavbarBlocks, index) => {
                 return (
@@ -116,22 +81,10 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </div>
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">widgets-to-navbar-blocks</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgetsFooterBlocks(!showWidgetsFooterBlocks);
-              }}
-            >
-              {showWidgetsFooterBlocks ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showWidgetsFooterBlocks ? "" : "hidden"}`}
-          >
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-footer-blocks">
+          <div className="flex flex-col gap-6">
             {props.data?.widgetsToFooterBlocks.map(
               (widgetToFooterBlock, index) => {
                 return (
@@ -151,23 +104,10 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
 
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">widgets-to-slider-blocks</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgetsSliderBlocks(!showWidgetsSliderBlocks);
-              }}
-            >
-              {showWidgetsSliderBlocks ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showWidgetsSliderBlocks ? "" : "hidden"}`}
-          >
+        <ModelEntitiesListCard title="widgets-to-slider-blocks">
+          <div className="flex flex-col gap-6">
             {props.data?.widgetsToSliderBlocks?.map(
               (widgetToSliderBlock, index) => {
                 return (
@@ -187,7 +127,7 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

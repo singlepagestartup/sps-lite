@@ -1,15 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  TableCell,
-  TableRow,
-} from "@sps/shadcn";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder-models-logotype-frontend-api-client";
 import { invalidateServerTag } from "@sps/store";

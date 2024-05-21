@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-select-input";
+import { ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   // replace with actual schema key
@@ -20,6 +21,7 @@ const formSchema = z.object({
 export function Component(props: IComponentPropsExtended) {
   const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
   const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "all",
@@ -74,23 +76,39 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card
-        className={
-          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
-        }
-      >
-        <CardHeader>
-          <CardTitle>Select entity from footer-blocks</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <AdminSelectInput
-            isServer={false}
-            form={form}
-            variant="admin-select-input"
-            formFieldName="footerBlockId"
-          />
-        </CardContent>
-      </Card>
+      {props.data ? (
+        <ModelEntityCard
+          onDeleteEntity={() => {
+            if (props.data?.id) {
+              deleteEntity({ id: props.data.id });
+            }
+          }}
+          data={props.data}
+        >
+          <div className="flex flex-col col-span-3 gap-0.5">
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="footerBlockId"
+            />
+          </div>
+        </ModelEntityCard>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Select entity from footer-blocks</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="footerBlockId"
+            />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

@@ -1,78 +1,58 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  TableCell,
-  TableRow,
-} from "@sps/shadcn";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder-models-slider-block-frontend-api-client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-form";
+import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const [deleteMutation, deleteMutationResult] = api.rtk.useDeleteMutation();
+  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
 
   useEffect(() => {
-    if (deleteMutationResult.isSuccess) {
+    if (deleteEntityResult.isSuccess) {
       dispatch(api.rtk.util.invalidateTags(["slider-block"]));
       invalidateServerTag({ tag: "slider-block" }).then(() => {
         router.refresh();
       });
     }
-  }, [deleteMutationResult]);
+  }, [deleteEntityResult]);
 
   return (
-    <TableRow
+    <div
       data-module="sps-website-builder"
       data-model="slider-block"
       data-variant={props.variant}
     >
-      <TableCell className="font-medium text-left">{props.data.id}</TableCell>
-      <TableCell>{props.data.variant}</TableCell>
-      <TableCell></TableCell>
-      <TableCell className="flex gap-3 justify-end">
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="w-fit">
-              <div className="flex gap-3">
-                <PencilIcon className="h-5 w-5" />
-                Edit
-              </div>
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-            <AdminForm
-              isServer={false}
-              variant="admin-form"
-              data={props.data}
-            />
-          </DialogContent>
-        </Dialog>
-
-        <Button
-          variant="outline"
-          onClick={() => {
-            deleteMutation({ id: props.data.id });
-          }}
-          className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
-        >
-          <div className="flex gap-3">
-            <TrashIcon className="h-5 w-5" />
-            Delete
-          </div>
-        </Button>
-      </TableCell>
-    </TableRow>
+      <ModelEntityCard
+        onDeleteEntity={() => {
+          if (props.data?.id) {
+            deleteEntity({ id: props.data.id });
+          }
+        }}
+        data={props.data}
+        adminForm={
+          <AdminForm isServer={false} variant="admin-form" data={props.data} />
+        }
+      >
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Title</p>
+          <p>{props.data.title}</p>
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Variant</p>
+          <p>{props.data.variant}</p>
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs text-muted-foreground">Class Name</p>
+          <p>{props.data.className || ""}</p>
+        </div>
+      </ModelEntityCard>
+    </div>
   );
 }

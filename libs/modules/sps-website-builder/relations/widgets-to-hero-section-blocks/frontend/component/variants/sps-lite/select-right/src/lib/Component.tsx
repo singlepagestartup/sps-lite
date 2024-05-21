@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
-import { Component as HeroSectionBlockSpsLiteAdminSelectInput } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-select-input";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-select-input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-api-client";
+import { ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
@@ -18,6 +19,7 @@ const formSchema = z.object({
 export function Component(props: IComponentPropsExtended) {
   const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
   const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "all",
@@ -74,24 +76,41 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card
-        className={
-          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
-        }
-      >
-        <CardHeader>
-          <CardTitle>Hero Section Block</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <HeroSectionBlockSpsLiteAdminSelectInput
-            isServer={false}
-            variant="admin-select-input"
-            formFieldName="heroSectionBlockId"
-            renderField="title"
-            form={form}
-          />
-        </CardContent>
-      </Card>
+      {props.data ? (
+        <ModelEntityCard
+          onDeleteEntity={() => {
+            if (props.data?.id) {
+              deleteEntity({ id: props.data.id });
+            }
+          }}
+          data={props.data}
+        >
+          <div className="flex flex-col col-span-3 gap-0.5">
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="heroSectionBlockId"
+              renderField="title"
+            />
+          </div>
+        </ModelEntityCard>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Hero Section Block</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AdminSelectInput
+              isServer={false}
+              variant="admin-select-input"
+              formFieldName="heroSectionBlockId"
+              renderField="title"
+              form={form}
+            />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

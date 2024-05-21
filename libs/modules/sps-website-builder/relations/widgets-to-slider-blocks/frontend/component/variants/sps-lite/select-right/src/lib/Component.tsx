@@ -1,29 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@sps/shadcn";
+import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-select-input";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   // replace with actual schema key
@@ -90,57 +76,40 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card
-        className={
-          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
-        }
-      >
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>Select entity from slider-blocks</CardTitle>
-            {props.data?.id ? (
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="hover:text-red-600 hover:border-red-600 hover:bg-red-100 w-fit"
-                  >
-                    <div className="flex gap-3">
-                      <TrashIcon className="h-5 w-5" />
-                      Delete
-                    </div>
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Delete?</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => {
-                        if (props.data?.id) {
-                          deleteEntity({ id: props.data.id });
-                        }
-                      }}
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            ) : null}
+      {props.data ? (
+        <ModelEntityCard
+          onDeleteEntity={() => {
+            if (props.data?.id) {
+              deleteEntity({ id: props.data.id });
+            }
+          }}
+          data={props.data}
+        >
+          <div className="flex flex-col col-span-3 gap-0.5">
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="sliderBlockId"
+              renderField="id"
+            />
           </div>
-        </CardHeader>
-        <CardContent>
-          <AdminSelectInput
-            isServer={false}
-            form={form}
-            variant="admin-select-input"
-            formFieldName="sliderBlockId"
-          />
-        </CardContent>
-      </Card>
+        </ModelEntityCard>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Select entity from slider-blocks</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="sliderBlockId"
+            />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
