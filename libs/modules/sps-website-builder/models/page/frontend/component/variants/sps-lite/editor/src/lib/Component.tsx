@@ -7,7 +7,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant={props.variant}
-      className="bg-gray-200"
+      className="bg-dotted"
     >
       <div className="max-w-7xl py-10 w-full mx-auto">
         <SpsLiteAdminPanelPage

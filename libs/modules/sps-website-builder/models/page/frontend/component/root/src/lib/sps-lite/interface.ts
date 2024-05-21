@@ -8,7 +8,7 @@ import { IComponentProps as IEditorComponentProps } from "@sps/sps-website-build
 import { IComponentProps as IGetQueryFromUrlComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-query-from-url";
 import { IComponentProps as IGetUrlModelIdComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id";
 import { IComponentProps as IGetByUrlComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-by-url";
-import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
+import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
 
 export type IComponentProps =
   | IAdminFormInputsComponentProps
@@ -21,5 +21,5 @@ export type IComponentProps =
   | IGetQueryFromUrlComponentProps
   | IGetUrlModelIdComponentProps
   | IGetByUrlComponentProps
-  | ISimpleComponentProps
+  | IDefaultComponentProps
   | never;

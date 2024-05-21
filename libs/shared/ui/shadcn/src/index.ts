@@ -11,3 +11,4 @@ export * from "./lib/input";
 export * from "./lib/form";
 export * from "./lib/alert-dialog";
 export * from "./lib/sonner";
+export * from "./lib/collapsible";

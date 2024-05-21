@@ -9,6 +9,7 @@ import {
 import { Suspense } from "react";
 import { HocParamsProvider, AdditionalHeadersWrapper } from "@sps/store";
 import { Toaster } from "@sps/shadcn";
+import { Component as Admin } from "../src/components/admin";
 // import { ReduxProvider as SpsRbacReduxProvider } from "@sps/sps-rbac-frontend/lib/redux";
 
 export const dynamic = "force-dynamic";
@@ -27,6 +28,7 @@ export default async function RootLayout({
           <GoogleTagManager />
         </Suspense>
         <div className="relative">
+          <Admin isServer={true} />
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>
             {children}

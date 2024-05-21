@@ -12,6 +12,4 @@ export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended[];
-}
+export interface IComponentPropsExtended extends IComponentProps {}

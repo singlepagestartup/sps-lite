@@ -3,7 +3,12 @@
   hosts: all
   become: yes
   tasks:
+    - name: Check is Docker swarm already started
+      shell: docker info | grep -E -i "Swarm[\s]*:.*active" | awk '{print $2}'
+      register: docker_swarm_mode
+      failed_when: false
+      changed_when: false
+
     - name: Init Docker swarm
-      community.docker.docker_swarm:
-        state: present
-        advertise_addr: "{{ inventory_hostname }}"
+      shell: docker swarm init --advertise-addr "{{ ansible_default_ipv4.address }}"
+      when: docker_swarm_mode.stdout == ""

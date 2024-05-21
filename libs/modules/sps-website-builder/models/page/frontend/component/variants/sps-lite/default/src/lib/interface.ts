@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-page-contracts-extended";
 
+const variant = "default" as const;
+
 export interface IComponentBase {
   showSkeletons?: boolean;
   isServer: boolean;
@@ -8,6 +10,7 @@ export interface IComponentBase {
 }
 
 export interface IComponentProps extends IComponentBase {
+  variant: typeof variant;
   params: {
     locale: string | string[];
     url?: string | string[];

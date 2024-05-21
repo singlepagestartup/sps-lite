@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 // import { Component as User } from "@sps/sps-rbac-models-user-frontend-component";
-import { Component as PageSpsLiteEditor } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor";
-import { Component as PagesToLayoutsSpsLiteGetLayout } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-get-layout";
+// import { Component as PageSpsLiteEditor } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor";
+import { Component as PagesToLayouts } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component";
 import { Component as PagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,13 +11,13 @@ export function Component(props: IComponentPropsExtended) {
       data-model="page"
       data-variant="default"
     >
-      {props.isEditing ? (
+      {/* {props.isEditing ? (
         <PageSpsLiteEditor {...props} variant="editor" />
-      ) : null}
+      ) : null} */}
 
       {/* <User isServer={false} variant="auth-wrapper"> */}
       {props.data.pagesToLayouts?.length ? (
-        <PagesToLayoutsSpsLiteGetLayout
+        <PagesToLayouts
           isServer={props.isServer}
           variant="get-layout"
           data={props.data.pagesToLayouts[0]}
@@ -32,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
               />
             );
           })}
-        </PagesToLayoutsSpsLiteGetLayout>
+        </PagesToLayouts>
       ) : null}
 
       {/* {props.data?.layouts && props.data.layouts?.length ? (
