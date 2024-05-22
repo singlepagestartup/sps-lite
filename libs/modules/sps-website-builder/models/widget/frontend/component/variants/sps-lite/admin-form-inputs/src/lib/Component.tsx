@@ -1,10 +1,11 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
-import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-default";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -108,6 +109,29 @@ export function Component(props: IComponentPropsExtended) {
               },
             )}
             <WidgetsToSliderBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-slider-blocks">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToStartupModuleWidgets?.map(
+              (widgetToStartupModuleWidget, index) => {
+                return (
+                  <WidgetsToStartupModuleWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetToStartupModuleWidget}
+                  />
+                );
+              },
+            )}
+            <WidgetsToStartupModuleWidgets
               isServer={props.isServer}
               variant="select-right"
               widgetId={props.data?.id}
