@@ -138,12 +138,12 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntityCard>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>Select entity from buttons</CardTitle>
-          </CardHeader>
+        <Card className="overflow-hidden">
+          <h3 className="admin-heading-h3 -mt-1 -ml-1 pb-2">
+            Select entity from buttons
+          </h3>
 
-          <CardContent className="flex flex-col gap-6">
+          <CardContent className="flex flex-col gap-6 pb-10">
             <FormField
               ui="shadcn"
               type="text"

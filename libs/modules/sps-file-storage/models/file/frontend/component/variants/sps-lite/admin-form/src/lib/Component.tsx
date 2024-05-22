@@ -89,7 +89,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardHeader>
             <CardTitle>{props.data?.id ? "Edit" : "Create"} file</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col gap-6">
+          <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}
               variant="admin-form-inputs"

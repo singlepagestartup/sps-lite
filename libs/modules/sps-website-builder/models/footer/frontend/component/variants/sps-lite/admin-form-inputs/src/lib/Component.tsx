@@ -1,14 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-footer-contracts";
 import { Component as FootersToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showWidgets, setShowWidgets] = useState(true);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -26,24 +22,13 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.slice()}
         />
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">footers-to-widgets</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgets(!showWidgets);
-              }}
-            >
-              {showWidgets ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div className={`flex flex-col gap-6 ${showWidgets ? "" : "hidden"}`}>
+        <ModelEntitiesListCard title="footers-to-widgets">
+          <div className="flex flex-col gap-6">
             {props.data?.footersToWidgets.map((footerToWidget, index) => {
               return (
                 <FootersToWidgetsSpsLiteSelectRight
                   key={index}
-                  isServer={false}
+                  isServer={props.isServer}
                   data={footerToWidget}
                   variant="select-right"
                 />
@@ -51,11 +36,11 @@ export function Component(props: IComponentPropsExtended) {
             })}
 
             <FootersToWidgetsSpsLiteSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

@@ -5,18 +5,11 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-footer-frontend-api-client";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@sps/shadcn";
+import { Form, Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
+import { Button } from "@sps/ui-adapter";
 import { invalidateServerTag } from "@sps/store";
 import { variants } from "@sps/sps-website-builder-models-footer-contracts";
 import { Component as FooterSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-form-inputs";
@@ -71,11 +64,11 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <Form {...form}>
-        <Card>
-          <CardHeader>
-            <CardTitle>{props.data?.id ? "Edit" : "Create"} footer</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-6">
+        <Card className="admin-edit-card">
+          <h1 className="admin-edit-card-heading">
+            {props.data?.id ? "Edit" : "Create"} footer
+          </h1>
+          <CardContent className="flex flex-col gap-6 pb-10">
             <FooterSpsLiteAdminFormInputs
               isServer={false}
               variant="admin-form-inputs"
@@ -83,11 +76,11 @@ export function Component(props: IComponentPropsExtended) {
               data={props.data}
             />
           </CardContent>
-          <CardFooter>
-            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+          <div className="admin-edit-card-button-container">
+            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>
-          </CardFooter>
+          </div>
         </Card>
       </Form>
     </div>

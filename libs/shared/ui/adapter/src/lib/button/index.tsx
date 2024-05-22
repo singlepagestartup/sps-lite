@@ -2,11 +2,18 @@
 
 import { forwardRef, useEffect, useMemo, useState } from "react";
 import Sps, { Props as SpsProps } from "./sps";
+import SpsAdminButton, {
+  IComponentProps as ISpsAdminButtonComponentProps,
+} from "./sps-admin";
 import Shadcn, { Props as ShadcnProps } from "./shadcn";
 import { useGetButtonParams } from "@sps/hooks";
 import Link from "next/link";
 
 export type Props =
+  | ({
+      ui: "sps-admin";
+      url?: string;
+    } & ISpsAdminButtonComponentProps)
   | ({
       ui: "shadcn";
       url?: string;
@@ -64,6 +71,23 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
       >
         {passChildren}
       </Shadcn>
+    );
+  }
+
+  if (props.ui === "sps-admin") {
+    return (
+      <SpsAdminButton
+        {...props}
+        ref={ref}
+        {...(passChildren && typeof passChildren !== "string"
+          ? { asChild: true }
+          : {})}
+        {...additionalAttributes}
+        {...(isActive ? { "data-active": true } : {})}
+        data-ui="button"
+      >
+        {passChildren}
+      </SpsAdminButton>
     );
   }
 

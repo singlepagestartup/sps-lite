@@ -94,10 +94,10 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntityCard>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>Select entity from navbar-blocks</CardTitle>
-          </CardHeader>
+        <Card className="overflow-hidden">
+          <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
+            Select entity from navbar-blocks
+          </h3>
           <CardContent>
             <AdminSelectInput
               isServer={false}
