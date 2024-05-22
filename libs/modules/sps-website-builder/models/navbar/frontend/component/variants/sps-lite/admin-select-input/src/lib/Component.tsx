@@ -2,18 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -24,30 +13,22 @@ export function Component(props: IComponentPropsExtended) {
       className={`${props.className || ""}`}
     >
       <FormField
-        control={props.form.control}
+        ui="shadcn"
+        type="select"
         name={props.formFieldName}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>navbar</FormLabel>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select navbar" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {props.data.map((entity, index) => {
-                  return (
-                    <SelectItem key={index} value={entity.id}>
-                      {entity[props.renderField || "id"]}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <FormMessage />
-          </FormItem>
-        )}
+        label="navbar"
+        form={props.form}
+        placeholder="Select navbar"
+        options={props.data.map((entity): string => {
+          if (props.renderField && entity[props.renderField]) {
+            const renderValue = entity[props.renderField];
+            if (typeof renderValue === "string") {
+              return renderValue;
+            }
+          }
+
+          return entity.id;
+        })}
       />
     </div>
   );

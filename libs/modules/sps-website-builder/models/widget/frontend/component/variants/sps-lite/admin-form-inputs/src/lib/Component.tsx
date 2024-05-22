@@ -5,7 +5,7 @@ import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-default";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (

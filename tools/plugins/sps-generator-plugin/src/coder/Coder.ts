@@ -177,7 +177,6 @@ export class Coder {
     moduleName: string;
     templateName?: string;
   }) {
-    console.log(`🚀 ~ modelName:`, modelName);
     await this.project.root.createModelFrontendComponentVariant({
       variantLevel: level,
       variantName: name,

@@ -1,5 +1,6 @@
 import { IModel } from "@sps/sps-website-builder-models-page-contracts";
 import { IModel as IModelExtended } from "@sps/sps-website-builder-models-page-contracts-extended";
+import { UseFormReturn } from "react-hook-form";
 
 export const variant = "admin-select-input" as const;
 
@@ -10,7 +11,10 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  onChange?: (value: any) => void;
+  formFieldName: string;
+  form: UseFormReturn<any>;
+  renderField?: keyof IModel;
+  className?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

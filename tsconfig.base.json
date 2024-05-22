@@ -2739,6 +2739,9 @@
       "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/redux/src/index.ts"
       ],
@@ -2789,6 +2792,9 @@
       ],
       "@sps/startup-models-widget-frontend-component": [
         "libs/modules/startup/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
       ],
       "@sps/startup-models-widget-frontend-component-variants-sps-lite-default": [
         "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"

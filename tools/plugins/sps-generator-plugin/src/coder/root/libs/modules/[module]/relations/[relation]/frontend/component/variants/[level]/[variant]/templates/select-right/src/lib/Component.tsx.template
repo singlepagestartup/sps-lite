@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "<%= api_client_import_path %>";
-import { TrashIcon } from "@heroicons/react/24/outline";
 // import { Component as AdminSelectInput } from "";
 
 const formSchema = z.object({
