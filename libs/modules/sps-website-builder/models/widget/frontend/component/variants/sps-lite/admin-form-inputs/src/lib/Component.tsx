@@ -1,18 +1,10 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from "@sps/shadcn";
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
-import { ModelEntitiesListCard } from "@sps/ui-adapter";
+import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -24,17 +16,12 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-6">
         <FormField
-          control={props.form.control}
+          ui="shadcn"
+          type="text"
           name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="Type title" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          label="Title"
+          form={props.form}
+          placeholder="Type title"
         />
 
         <ModelEntitiesListCard title="widgets-to-hero-section-blocks">

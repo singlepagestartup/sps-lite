@@ -1,28 +1,11 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
 import { Component as NavbarBlocksToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
 import { Component as NavbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showButtons, setShowButtons] = useState(true);
-  const [showLogotypes, setShowLogotypes] = useState(true);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -32,50 +15,23 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-6">
         <FormField
-          control={props.form.control}
+          ui="shadcn"
+          type="select"
+          label="Variant"
           name="variant"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Variant</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select variant" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {variants.map((variant, index) => {
-                    return (
-                      <SelectItem key={index} value={variant}>
-                        {variant}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
+          form={props.form}
+          placeholder="Type title"
+          options={variants.slice()}
         />
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">navbar-blocks-to-buttons</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowButtons(!showButtons);
-              }}
-            >
-              {showButtons ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div className={`flex flex-col gap-6 ${showButtons ? "" : "hidden"}`}>
+
+        <ModelEntitiesListCard title="navbar-blocks-to-buttons">
+          <div className="flex flex-col gap-6">
             {props.data?.navbarBlocksToButtons.map(
               (navbarBlocksToButton, index) => {
                 return (
                   <NavbarBlocksToButtonsSpsLiteSelectRight
                     key={index}
-                    isServer={false}
+                    isServer={props.isServer}
                     variant="select-right"
                     data={navbarBlocksToButton}
                   />
@@ -83,41 +39,32 @@ export function Component(props: IComponentPropsExtended) {
               },
             )}
             <NavbarBlocksToButtonsSpsLiteSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
             />
           </div>
-        </div>
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">navbar-blocks-to-logotypes</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowLogotypes(!showLogotypes);
-              }}
-            >
-              {showLogotypes ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showLogotypes ? "" : "hidden"}`}
-          >
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="navbar-blocks-to-logotypes">
+          <div className="flex flex-col gap-6">
             {props.data?.navbarBlocksToLogotypes.map(
               (navbarBlocksToLogotypes, index) => {
                 return (
                   <NavbarBlocksToLogotypes
                     key={index}
                     variant="select-right"
-                    isServer={false}
+                    isServer={props.isServer}
                     data={navbarBlocksToLogotypes}
                   />
                 );
               },
             )}
-            <NavbarBlocksToLogotypes variant="select-right" isServer={false} />
+            <NavbarBlocksToLogotypes
+              variant="select-right"
+              isServer={props.isServer}
+            />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

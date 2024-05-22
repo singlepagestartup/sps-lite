@@ -1,27 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
 import { variants } from "@sps/sps-website-builder-models-slider-block-contracts";
 import { Component as SliderBlocksToSlidersSpsLiteSelectRight } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-frontend-component-variants-sps-lite-select-right";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showSliderBlocksToSliders, setShowSliderBlocksToSliders] =
-    useState(true);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -31,51 +14,21 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-6">
         <FormField
-          control={props.form.control}
+          ui="shadcn"
+          type="select"
+          label="Variant"
           name="variant"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Variant</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select variant" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {variants.map((variant, index) => {
-                    return (
-                      <SelectItem key={index} value={variant}>
-                        {variant}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
+          form={props.form}
+          placeholder="Type title"
+          options={variants.slice()}
         />
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">slider-block-to-sliders</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowSliderBlocksToSliders(!showSliderBlocksToSliders);
-              }}
-            >
-              {showSliderBlocksToSliders ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div
-            className={`flex flex-col gap-6 ${showSliderBlocksToSliders ? "" : "hidden"}`}
-          >
+        <ModelEntitiesListCard title="slider-block-to-sliders">
+          <div className="flex flex-col gap-6">
             {props.data?.sliderBlocksToSliders.map(
               (sliderBlocksToSliders, index) => {
                 return (
                   <SliderBlocksToSlidersSpsLiteSelectRight
-                    isServer={false}
+                    isServer={props.isServer}
                     key={index}
                     data={sliderBlocksToSliders}
                     variant="select-right"
@@ -84,11 +37,11 @@ export function Component(props: IComponentPropsExtended) {
               },
             )}
             <SliderBlocksToSlidersSpsLiteSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

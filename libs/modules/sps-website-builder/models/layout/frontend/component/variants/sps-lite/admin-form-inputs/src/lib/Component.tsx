@@ -1,27 +1,11 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-component-variants-sps-lite-select-right";
 import { Component as LayoutsToFooterSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-select-right";
+import { variants } from "@sps/sps-website-builder-models-layout-contracts";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showLayoutsToNavbars, setShowLayoutsToNavbars] = useState(true);
-  const [showLayoutsToFooters, setShowLayoutsToFooters] = useState(true);
-
   return (
     <form
       data-module="sps-website-builder"
@@ -30,113 +14,58 @@ export function Component(props: IComponentPropsExtended) {
       className="space-y-8"
     >
       <FormField
-        control={props.form.control}
+        ui="shadcn"
+        type="text"
         name="title"
-        render={({ field }) => {
-          return (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="Title for layout" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          );
-        }}
+        label="Title"
+        form={props.form}
+        placeholder="Type title"
       />
       <FormField
-        control={props.form.control}
+        ui="shadcn"
+        type="select"
+        label="Variant"
         name="variant"
-        render={({ field }) => {
-          return (
-            <FormItem>
-              <FormLabel>Variant</FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select variant" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {props.variants.map((variant, index) => {
-                      return (
-                        <SelectItem key={index} value={variant}>
-                          {variant}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          );
-        }}
+        form={props.form}
+        placeholder="Type title"
+        options={variants.slice()}
       />
-      <div className="model-container bg-dotted">
-        <div className="model-header-block">
-          <p className="model-legend">layouts-to-navbars</p>
-          <button
-            className="pill-button"
-            onClick={() => {
-              setShowLayoutsToNavbars(!showLayoutsToNavbars);
-            }}
-          >
-            {showLayoutsToNavbars ? "Hide" : "Show"}
-          </button>
-        </div>
-        <div
-          className={`flex flex-col gap-6 ${showLayoutsToNavbars ? "" : "hidden"}`}
-        >
+      <ModelEntitiesListCard title="layouts-to-navbars">
+        <div className="flex flex-col gap-6">
           {props.data?.layoutsToNavbars.map((layoutToNavbar, index) => {
             return (
               <LayoutsToNavbarsSpsLiteSelectRight
                 key={index}
-                isServer={false}
+                isServer={props.isServer}
                 data={layoutToNavbar}
                 variant="select-right"
               />
             );
           })}
           <LayoutsToNavbarsSpsLiteSelectRight
-            isServer={false}
+            isServer={props.isServer}
             variant="select-right"
           />
         </div>
-      </div>
-      <div className="model-container bg-dotted">
-        <div className="model-header-block">
-          <p className="model-legend">layouts-to-footers</p>
-          <button
-            className="pill-button"
-            onClick={() => {
-              setShowLayoutsToFooters(!showLayoutsToFooters);
-            }}
-          >
-            {showLayoutsToFooters ? "Hide" : "Show"}
-          </button>
-        </div>
-        <div
-          className={`flex flex-col gap-6 ${showLayoutsToFooters ? "" : "hidden"}`}
-        >
+      </ModelEntitiesListCard>
+      <ModelEntitiesListCard title="layouts-to-footers">
+        <div className="flex flex-col gap-6">
           {props.data?.layoutsToFooters.map((layoutToFooter, index) => {
             return (
               <LayoutsToFooterSpsLiteSelectRight
                 key={index}
-                isServer={false}
+                isServer={props.isServer}
                 data={layoutToFooter}
                 variant="select-right"
               />
             );
           })}
           <LayoutsToFooterSpsLiteSelectRight
-            isServer={false}
+            isServer={props.isServer}
             variant="select-right"
           />
         </div>
-      </div>
+      </ModelEntitiesListCard>
     </form>
   );
 }

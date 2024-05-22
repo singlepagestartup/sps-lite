@@ -18,7 +18,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-import { Component as HeroSectionBlockSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
+import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
 
 const formSchema = z.object({
   title: z.string(),
@@ -79,9 +79,10 @@ export function Component(props: IComponentPropsExtended) {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
-            <HeroSectionBlockSpsLiteAdminFormInputs
+            <AdminFormInputs
               isServer={false}
               variant="admin-form-inputs"
+              data={props.data}
               form={form}
             />
           </CardContent>

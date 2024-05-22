@@ -1,25 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { Component as NavbarsToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component-variants-sps-lite-select-right";
 import { variants } from "@sps/sps-website-builder-models-navbar-contracts";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showWidgets, setShowWidgets] = useState(true);
-
   return (
     <form
       data-module="sps-website-builder"
@@ -29,55 +14,22 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-6">
         <FormField
-          control={props.form.control}
+          ui="shadcn"
+          type="select"
+          label="Variant"
           name="variant"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Variant</FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select variant" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {variants.map((variant, index) => {
-                        return (
-                          <SelectItem key={index} value={variant}>
-                            {variant}
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
+          form={props.form}
+          placeholder="Type title"
+          options={variants.slice()}
         />
 
-        <div className="model-container bg-dotted">
-          <div className="model-header-block">
-            <p className="model-legend">navbars-to-widgets</p>
-            <button
-              className="pill-button"
-              onClick={() => {
-                setShowWidgets(!showWidgets);
-              }}
-            >
-              {showWidgets ? "Hide" : "Show"}
-            </button>
-          </div>
-          <div className={`flex flex-col gap-6 ${showWidgets ? "" : "hidden"}`}>
+        <ModelEntitiesListCard title="navbars-to-widgets">
+          <div className="flex flex-col gap-6">
             {props.data?.navbarsToWidgets.map((entity, index) => {
               return (
                 <NavbarsToWidgetsSpsLiteSelectRight
                   key={index}
-                  isServer={false}
+                  isServer={props.isServer}
                   variant="select-right"
                   navbarId={props.data?.id}
                   data={entity}
@@ -86,13 +38,13 @@ export function Component(props: IComponentPropsExtended) {
             })}
 
             <NavbarsToWidgetsSpsLiteSelectRight
-              isServer={false}
+              isServer={props.isServer}
               variant="select-right"
               navbarId={props.data?.id}
               data={undefined}
             />
           </div>
-        </div>
+        </ModelEntitiesListCard>
       </div>
     </form>
   );

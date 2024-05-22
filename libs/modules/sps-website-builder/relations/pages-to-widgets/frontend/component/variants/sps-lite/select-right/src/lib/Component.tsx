@@ -2,23 +2,14 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  Card,
-  CardContent,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from "@sps/shadcn";
+import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   pageId: z.string().min(1),
@@ -92,11 +83,15 @@ export function Component(props: IComponentPropsExtended) {
           }}
           data={props.data}
         >
-          <div className="flex flex-col gap-0.5">
-            <p className="text-xs text-muted-foreground">Variant</p>
-            <p>{props.data.variant}</p>
-          </div>
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Order Index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -106,38 +101,18 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntityCard>
       ) : (
-        <Card
-          className={
-            Object.keys(form.formState.errors)?.length
-              ? "border-destructive"
-              : ""
-          }
-        >
+        <Card>
+          <CardHeader>
+            <CardTitle>Add new widget</CardTitle>
+          </CardHeader>
           <CardContent>
             <FormField
-              control={form.control}
+              ui="shadcn"
+              type="text"
+              label="Order Index"
               name="orderIndex"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Order Index</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Set widget index"
-                      type="number"
-                      {...field}
-                      onChange={(e) => {
-                        if (!e.target.value) {
-                          field.onChange(0);
-                          return;
-                        }
-
-                        field.onChange(parseInt(e.target.value));
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              form={form}
+              placeholder="Type order index"
             />
             <AdminSelectInput
               isServer={false}

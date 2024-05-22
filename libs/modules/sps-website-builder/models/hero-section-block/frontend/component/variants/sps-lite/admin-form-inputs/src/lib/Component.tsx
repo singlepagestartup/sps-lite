@@ -1,27 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 import { Component as HeroSectionsToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
-  const [showHeroSectionBlocksToButtons, setShowHeroSectionBlocksToButtons] =
-    useState(true);
-
   return (
     <form
       data-module="sps-website-builder"
@@ -30,61 +13,24 @@ export function Component(props: IComponentPropsExtended) {
       className={`${props.className || "flex flex-col gap-6"}`}
     >
       <FormField
-        control={props.form.control}
+        ui="shadcn"
+        type="text"
         name="title"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Title</FormLabel>
-            <FormControl>
-              <Input placeholder="Type hero-section-block title" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
+        label="Title"
+        form={props.form}
+        placeholder="Type title"
       />
       <FormField
-        control={props.form.control}
+        ui="shadcn"
+        type="select"
+        label="Variant"
         name="variant"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Variant</FormLabel>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select variant" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {variants.map((variant, index) => {
-                  return (
-                    <SelectItem key={index} value={variant}>
-                      {variant}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <FormMessage />
-          </FormItem>
-        )}
+        form={props.form}
+        placeholder="Type title"
+        options={variants.slice()}
       />
-      <div className="model-container bg-dotted">
-        <div className="model-header-block">
-          <p className="model-legend">hero-section-block-to-buttons</p>
-          <button
-            className="pill-button"
-            onClick={() => {
-              setShowHeroSectionBlocksToButtons(
-                !showHeroSectionBlocksToButtons,
-              );
-            }}
-          >
-            {showHeroSectionBlocksToButtons ? "Hide" : "Show"}
-          </button>
-        </div>
-        <div
-          className={`flex flex-col gap-6 ${showHeroSectionBlocksToButtons ? "" : "hidden"}`}
-        >
+      <ModelEntitiesListCard title="hero-section-block-to-buttons">
+        <div className="flex flex-col gap-6">
           {props.data?.heroSectionBlocksToButtons.map(
             (heroSectionBlocksToButton, index) => {
               return (
@@ -102,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="select-right"
           />
         </div>
-      </div>
+      </ModelEntitiesListCard>
     </form>
   );
 }
