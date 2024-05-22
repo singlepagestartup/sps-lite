@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
 import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
+import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -38,6 +39,13 @@ export function Component(props: IComponentPropsExtended) {
           <div className="bg-white rounded-b-lg">
             {widget === "sps-website-builder" ? (
               <SpsWebsiteAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-file-storage" ? (
+              <SpsFileStorageAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"

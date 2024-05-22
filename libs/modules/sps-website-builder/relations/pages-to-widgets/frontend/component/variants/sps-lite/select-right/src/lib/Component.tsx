@@ -95,9 +95,10 @@ export function Component(props: IComponentPropsExtended) {
             />
             <AdminSelectInput
               isServer={false}
-              form={form}
               variant="admin-select-input"
               formFieldName="widgetId"
+              renderField="title"
+              form={form}
             />
           </div>
         </ModelEntityCard>

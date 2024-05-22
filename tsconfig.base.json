@@ -456,6 +456,60 @@
       "@sps/sps-file-storage-models-file-frontend-redux": [
         "libs/modules/sps-file-storage/models/file/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-file-storage-models-widget-backend-app": [
+        "libs/modules/sps-file-storage/models/widget/backend/app/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-backend-model": [
+        "libs/modules/sps-file-storage/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-backend-schema": [
+        "libs/modules/sps-file-storage/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-backend-schema-relations": [
+        "libs/modules/sps-file-storage/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-backend-schema-table": [
+        "libs/modules/sps-file-storage/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-contracts": [
+        "libs/modules/sps-file-storage/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-contracts-extended": [
+        "libs/modules/sps-file-storage/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-api-client": [
+        "libs/modules/sps-file-storage/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-api-model": [
+        "libs/modules/sps-file-storage/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-api-server": [
+        "libs/modules/sps-file-storage/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-file-storage/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-widget-frontend-redux": [
+        "libs/modules/sps-file-storage/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],

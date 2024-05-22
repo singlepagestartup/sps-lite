@@ -1,1 +1,1 @@
-export default {};
+export { Component as AdminComponent } from "./lib/admin";

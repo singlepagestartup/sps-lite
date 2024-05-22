@@ -12,7 +12,7 @@ const Component = forwardRef<HTMLButtonElement, IComponentProps>(
         ref={ref}
         className="py-0 bg-muted-foreground overflow-hidden rounded-none"
       >
-        <div className="leading-none text-[76px] sm:text-[100px] leading-[50px] sm:leading-[65px] font-extrabold uppercase -tracking-[.14em]">
+        <div className="text-[76px] sm:text-[100px] leading-[50px] sm:leading-[65px] font-extrabold uppercase -tracking-[.14em]">
           {props.children}
         </div>
       </ShadcnButton>
