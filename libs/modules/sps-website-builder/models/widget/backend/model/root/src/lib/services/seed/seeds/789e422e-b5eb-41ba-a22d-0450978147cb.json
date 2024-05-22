@@ -1,0 +1,29 @@
+{
+  "title": "Startup module widget",
+  "id": "789e422e-b5eb-41ba-a22d-0450978147cb",
+  "createdAt": "2024-05-22T22:00:12.011Z",
+  "updatedAt": "2024-05-22T22:00:12.011Z",
+  "variant": "default",
+  "widgetsToStartupModuleWidgets": [
+    {
+      "id": "b6cdf820-eb2b-4357-9c3f-55ab79011ba1",
+      "widgetId": "789e422e-b5eb-41ba-a22d-0450978147cb",
+      "startupModuleWidgetId": "9b046778-437b-415a-bbd5-b5b0e253dae0"
+    }
+  ],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": [
+    {
+      "id": "4857d915-bbb2-47fa-8989-1d80a1fb8b09",
+      "orderIndex": 0,
+      "pageId": "7060d8be-39e7-435a-942e-d129fba43587",
+      "widgetId": "789e422e-b5eb-41ba-a22d-0450978147cb"
+    }
+  ]
+}
