@@ -33,6 +33,7 @@ export function Component(props: IComponentPropsExtended) {
   });
 
   const watchData = form.watch();
+  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!data.pageId || !data.widgetId) {
@@ -118,6 +119,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="admin-select-input"
               formFieldName="widgetId"
+              renderField="title"
               form={form}
             />
           </CardContent>

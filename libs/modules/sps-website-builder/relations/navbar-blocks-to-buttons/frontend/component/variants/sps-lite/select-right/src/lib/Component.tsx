@@ -1,30 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-select-input";
-import { TrashIcon } from "@heroicons/react/24/outline";
 import { ModelEntityCard, FormField } from "@sps/ui-adapter";
 
 const places = ["default", "additional", "extra"] as const;
@@ -127,7 +111,7 @@ export function Component(props: IComponentPropsExtended) {
               name="place"
               form={form}
               placeholder="Select place"
-              options={places.slice()}
+              options={places.map((place) => [place, place])}
             />
             <AdminSelectInput
               isServer={false}
@@ -159,7 +143,7 @@ export function Component(props: IComponentPropsExtended) {
               name="place"
               form={form}
               placeholder="Select place"
-              options={places.slice()}
+              options={places.map((place) => [place, place])}
             />
             <AdminSelectInput
               isServer={false}

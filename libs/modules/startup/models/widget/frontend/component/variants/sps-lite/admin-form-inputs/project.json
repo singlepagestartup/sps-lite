@@ -1,0 +1,11 @@
+{
+  "name": "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-form-inputs",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

@@ -11,7 +11,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-// import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-<%= model_name %>-frontend-component-variants-sps-lite-admin-form-inputs";
+import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-<%= model_name %>-frontend-component-variants-sps-lite-admin-form-inputs";
 import { variants } from "<%= root_contracts_import_path %>";
 
 const formSchema = z.object({
@@ -69,12 +69,12 @@ export function Component(props: IComponentPropsExtended) {
             {props.data?.id ? "Edit" : "Create"} <%= model_name %>
           </h1>
           <CardContent className="flex flex-col gap-6 pb-10">
-            {/* <AdminFormInputs
+            <AdminFormInputs
               isServer={false}
               variant="admin-form-inputs"
               data={props.data}
               form={form}
-            /> */}
+            />
           </CardContent>
           <div className="admin-edit-card-button-container">
             <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>

@@ -19,15 +19,15 @@ export function Component(props: IComponentPropsExtended) {
         label="slider-block"
         form={props.form}
         placeholder="Select slider-block"
-        options={props.data.map((entity): string => {
+        options={props.data.map((entity) => {
           if (props.renderField && entity[props.renderField]) {
             const renderValue = entity[props.renderField];
             if (typeof renderValue === "string") {
-              return renderValue;
+              return [entity.id, renderValue];
             }
           }
 
-          return entity.id;
+          return [entity.id, entity.id];
         })}
       />
     </div>

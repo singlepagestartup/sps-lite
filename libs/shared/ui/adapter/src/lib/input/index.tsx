@@ -32,10 +32,12 @@ export function Component(props: IComponentProps) {
           </SelectTrigger>
         </FormControl>
         <SelectContent>
-          {props.options.map((variant, index) => {
+          {props.options.map((option, index) => {
             return (
-              <SelectItem key={index} value={variant}>
-                {variant}
+              <SelectItem key={index} value={option[0]}>
+                {typeof option[1] === "function"
+                  ? option[1](option)
+                  : option[1]}
               </SelectItem>
             );
           })}

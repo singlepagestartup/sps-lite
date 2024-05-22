@@ -2793,8 +2793,20 @@
       "@sps/startup-models-widget-frontend-component": [
         "libs/modules/startup/models/widget/frontend/component/root/src/index.ts"
       ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
       "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
         "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
       "@sps/startup-models-widget-frontend-component-variants-sps-lite-default": [
         "libs/modules/startup/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
