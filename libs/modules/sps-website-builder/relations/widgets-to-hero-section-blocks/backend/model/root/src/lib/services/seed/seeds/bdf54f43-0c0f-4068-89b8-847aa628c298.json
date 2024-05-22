@@ -1,0 +1,23 @@
+{
+  "id": "bdf54f43-0c0f-4068-89b8-847aa628c298",
+  "widgetId": "e3ad899c-af94-485f-83c4-ec55512f6f93",
+  "heroSectionBlockId": "a0044c22-b2cf-4320-b568-0ac0d4db5c5b",
+  "widget": {
+    "title": "Hero section block widget",
+    "id": "e3ad899c-af94-485f-83c4-ec55512f6f93",
+    "createdAt": "2024-05-20T21:17:43.064Z",
+    "updatedAt": "2024-05-20T21:17:43.064Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "Hero section widget",
+    "subTitle": null,
+    "description": null,
+    "anchor": null,
+    "className": null,
+    "id": "a0044c22-b2cf-4320-b568-0ac0d4db5c5b",
+    "createdAt": "2024-05-21T11:06:45.773Z",
+    "updatedAt": "2024-05-21T11:06:45.773Z",
+    "variant": "simple-centered"
+  }
+}

@@ -3,21 +3,11 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   FormControl,
-  FormField,
   FormItem,
   FormLabel,
   FormMessage,
@@ -35,6 +25,7 @@ import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-select-input";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { ModelEntityCard, FormField } from "@sps/ui-adapter";
 
 const places = ["default", "additional", "extra"] as const;
 
@@ -103,112 +94,82 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card
-        className={`entity-container ${
-          Object.keys(form.formState.errors)?.length
-            ? "border-destructive "
-            : ""
-        }
-      `}
-      >
-        {props.data ? (
-          <div className="entity-header-block">
-            <legend className="entity-legend">{props.data.id}</legend>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <button className="destructive-pill-button">
-                  <TrashIcon className="h-3 w-3" />
-                  Delete
-                </button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Delete?</AlertDialogTitle>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={() => {
-                      if (props.data?.id) {
-                        deleteEntity({ id: props.data.id });
-                      }
-                    }}
-                  >
-                    Delete
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+      {props.data ? (
+        <ModelEntityCard
+          onDeleteEntity={() => {
+            if (props.data?.id) {
+              deleteEntity({ id: props.data.id });
+            }
+          }}
+          data={props.data}
+        >
+          <div className="flex flex-col gap-0.5">
+            <p className="text-xs text-muted-foreground">Place</p>
+            <p>{props.data.place}</p>
           </div>
-        ) : null}
-        {!props.data?.id ? (
-          <CardHeader className="py-0">
+          <div className="flex flex-col gap-0.5">
+            <p className="text-xs text-muted-foreground">Order Index</p>
+            <p>{props.data.orderIndex}</p>
+          </div>
+          <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Order Index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Place"
+              name="place"
+              form={form}
+              placeholder="Select place"
+              options={places.slice()}
+            />
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="buttonId"
+            />
+          </div>
+        </ModelEntityCard>
+      ) : (
+        <Card>
+          <CardHeader>
             <CardTitle>Select entity from buttons</CardTitle>
           </CardHeader>
-        ) : null}
-        <CardContent className="flex flex-col gap-6">
-          <FormField
-            control={form.control}
-            name="orderIndex"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Order Index</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Set widget index"
-                    type="number"
-                    {...field}
-                    onChange={(e) => {
-                      if (!e.target.value) {
-                        field.onChange(0);
-                        return;
-                      }
 
-                      field.onChange(parseInt(e.target.value));
-                    }}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="place"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Place</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select place" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {places.map((place, index) => {
-                      return (
-                        <SelectItem key={index} value={place}>
-                          {place}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <AdminSelectInput
-            isServer={false}
-            form={form}
-            variant="admin-select-input"
-            formFieldName="buttonId"
-          />
-        </CardContent>
-      </Card>
+          <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Order Index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Place"
+              name="place"
+              form={form}
+              placeholder="Select place"
+              options={places.slice()}
+            />
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="buttonId"
+            />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

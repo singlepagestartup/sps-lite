@@ -1,0 +1,18 @@
+{
+  "id": "834075df-7efa-4554-8a38-252b79660896",
+  "layoutId": "23e823d1-e576-4898-a281-f56d1491774a",
+  "footerId": "ea2c9efb-69b5-4393-a650-bdb3441de5c4",
+  "layout": {
+    "title": "Main Layout",
+    "id": "23e823d1-e576-4898-a281-f56d1491774a",
+    "createdAt": "2024-05-19T13:36:22.836Z",
+    "updatedAt": "2024-05-19T13:36:22.836Z",
+    "variant": "default"
+  },
+  "footer": {
+    "id": "ea2c9efb-69b5-4393-a650-bdb3441de5c4",
+    "createdAt": "2024-05-21T13:41:57.232Z",
+    "updatedAt": "2024-05-21T13:41:57.232Z",
+    "variant": "default"
+  }
+}

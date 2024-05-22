@@ -1,0 +1,29 @@
+{
+  "title": "Navbar widget",
+  "id": "ea2f3c52-55f2-4dc8-a32d-fe045c2efc90",
+  "createdAt": "2024-05-21T12:59:04.454Z",
+  "updatedAt": "2024-05-21T12:59:04.454Z",
+  "variant": "default",
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToModules": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [
+    {
+      "id": "b0ac31e1-ec05-4c4b-86f6-908e5cd74f23",
+      "widgetId": "ea2f3c52-55f2-4dc8-a32d-fe045c2efc90",
+      "navbarBlockId": "476e43fe-05c9-4b18-800f-e7f74fd10311"
+    }
+  ],
+  "navbarsToWidgets": [
+    {
+      "id": "ceed04ef-4a76-49eb-baf3-93f418bf2a18",
+      "navbarId": "8743f7a2-577a-49ce-b2e0-7f3e8aadc3e6",
+      "widgetId": "ea2f3c52-55f2-4dc8-a32d-fe045c2efc90"
+    }
+  ],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": []
+}

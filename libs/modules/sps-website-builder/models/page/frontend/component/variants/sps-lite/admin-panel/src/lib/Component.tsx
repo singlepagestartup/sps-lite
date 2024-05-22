@@ -202,10 +202,9 @@ export function Component(props: IComponentPropsExtended) {
 
                 return (
                   <Button
-                    variant={
-                      page?.model.name === model.name ? "primary" : "ghost"
-                    }
-                    className="text-left max-w-full overflow-hidden justify-start truncate"
+                    variant={"ghost"}
+                    data-active={page?.model.name === model.name}
+                    className={`text-left max-w-full overflow-hidden justify-start truncate data-[active=true]:bg-muted-foreground data-[active=true]:text-muted`}
                     disabled={!hasComponent}
                     onClick={() => {
                       setPage({

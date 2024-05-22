@@ -1,0 +1,18 @@
+{
+  "id": "b0ac31e1-ec05-4c4b-86f6-908e5cd74f23",
+  "widgetId": "ea2f3c52-55f2-4dc8-a32d-fe045c2efc90",
+  "navbarBlockId": "476e43fe-05c9-4b18-800f-e7f74fd10311",
+  "widget": {
+    "title": "Navbar widget",
+    "id": "ea2f3c52-55f2-4dc8-a32d-fe045c2efc90",
+    "createdAt": "2024-05-21T12:59:04.454Z",
+    "updatedAt": "2024-05-21T12:59:04.454Z",
+    "variant": "default"
+  },
+  "navbarBlock": {
+    "id": "476e43fe-05c9-4b18-800f-e7f74fd10311",
+    "createdAt": "2024-05-20T21:48:40.649Z",
+    "updatedAt": "2024-05-20T21:48:40.649Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "21bab76e-250c-406a-98e6-95a3b341da23",
+  "createdAt": "2024-05-21T17:55:13.322Z",
+  "updatedAt": "2024-05-21T17:55:13.322Z",
+  "variant": "default",
+  "widgetsToFooterBlocks": [
+    {
+      "id": "a79eb997-c4c8-4fb7-a9d9-21239247c540",
+      "widgetId": "16cf58ea-a658-4639-9c2a-7a2525c7b39f",
+      "footerBlockId": "21bab76e-250c-406a-98e6-95a3b341da23"
+    }
+  ]
+}

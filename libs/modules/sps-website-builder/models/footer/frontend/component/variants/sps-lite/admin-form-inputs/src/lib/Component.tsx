@@ -2,19 +2,7 @@
 
 import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-footer-contracts";
 import { Component as FootersToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component-variants-sps-lite-select-right";
 
@@ -30,35 +18,13 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="flex flex-col gap-6">
         <FormField
-          control={props.form.control}
+          ui="shadcn"
+          type="select"
+          label="Variant"
           name="variant"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Variant</FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select variant" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {variants.map((variant, index) => {
-                        return (
-                          <SelectItem key={index} value={variant}>
-                            {variant}
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
+          form={props.form}
+          placeholder="Type title"
+          options={variants.slice()}
         />
         <div className="model-container bg-dotted">
           <div className="model-header-block">

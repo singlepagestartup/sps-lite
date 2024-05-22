@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { z } from "zod";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-select-input";
+import { ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   sliderId: z.string().min(1),
@@ -18,6 +19,7 @@ const formSchema = z.object({
 export function Component(props: IComponentPropsExtended) {
   const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
   const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "all",
@@ -71,23 +73,39 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Card
-        className={
-          Object.keys(form.formState.errors)?.length ? "border-destructive" : ""
-        }
-      >
-        <CardHeader>
-          <CardTitle>Select entity from slides</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <AdminSelectInput
-            isServer={false}
-            form={form}
-            variant="admin-select-input"
-            formFieldName="slideId"
-          />
-        </CardContent>
-      </Card>
+      {props.data ? (
+        <ModelEntityCard
+          onDeleteEntity={() => {
+            if (props.data?.id) {
+              deleteEntity({ id: props.data.id });
+            }
+          }}
+          data={props.data}
+        >
+          <div className="flex flex-col col-span-3 gap-0.5">
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="slideId"
+            />
+          </div>
+        </ModelEntityCard>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle>Select entity from slides</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <AdminSelectInput
+              isServer={false}
+              form={form}
+              variant="admin-select-input"
+              formFieldName="slideId"
+            />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
