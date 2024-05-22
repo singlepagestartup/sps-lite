@@ -1,9 +1,9 @@
 {
-  "id": "77d8678e-8d02-4ee9-9c6f-4bbc45ef63f9",
-  "pageId": "ea19d52c-cade-47a7-b18a-83e228ba7f66",
-  "layoutId": "a0e2a5ca-1f7c-4646-9599-d1e019494276",
+  "id": "f2ec27ca-6926-4de3-9f4f-310d1ad17e9b",
+  "pageId": "7060d8be-39e7-435a-942e-d129fba43587",
+  "layoutId": "23e823d1-e576-4898-a281-f56d1491774a",
   "page": {
-    "id": "ea19d52c-cade-47a7-b18a-83e228ba7f66",
+    "id": "7060d8be-39e7-435a-942e-d129fba43587",
     "title": "Main page",
     "url": "/",
     "description": "Description",
@@ -13,7 +13,7 @@
   },
   "layout": {
     "title": "Main Layout",
-    "id": "a0e2a5ca-1f7c-4646-9599-d1e019494276",
+    "id": "23e823d1-e576-4898-a281-f56d1491774a",
     "createdAt": "2024-05-19T13:36:22.836Z",
     "updatedAt": "2024-05-19T13:36:22.836Z",
     "variant": "default"

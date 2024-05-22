@@ -1,0 +1,22 @@
+{
+  "id": "0b79fc0b-bb8c-4710-80b4-67f378b2cc0d",
+  "place": "default",
+  "orderIndex": 0,
+  "navbarBlockId": "476e43fe-05c9-4b18-800f-e7f74fd10311",
+  "buttonId": "dd65b2ba-630a-450f-9b43-26d09d565f99",
+  "navbarBlock": {
+    "id": "476e43fe-05c9-4b18-800f-e7f74fd10311",
+    "createdAt": "2024-05-20T21:48:40.649Z",
+    "updatedAt": "2024-05-20T21:48:40.649Z",
+    "variant": "default"
+  },
+  "button": {
+    "title": "About",
+    "url": "/about",
+    "className": "",
+    "id": "dd65b2ba-630a-450f-9b43-26d09d565f99",
+    "createdAt": "2024-05-20T21:47:52.230Z",
+    "updatedAt": "2024-05-20T21:47:52.230Z",
+    "variant": "secondary"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Main Layout",
+  "id": "23e823d1-e576-4898-a281-f56d1491774a",
+  "createdAt": "2024-05-19T13:36:22.836Z",
+  "updatedAt": "2024-05-19T13:36:22.836Z",
+  "variant": "default",
+  "layoutsToNavbars": [
+    {
+      "id": "3a4b87e2-a713-434c-bfdd-cf7aff4ab0b2",
+      "layoutId": "23e823d1-e576-4898-a281-f56d1491774a",
+      "navbarId": "8743f7a2-577a-49ce-b2e0-7f3e8aadc3e6"
+    }
+  ],
+  "layoutsToFooters": [
+    {
+      "id": "834075df-7efa-4554-8a38-252b79660896",
+      "layoutId": "23e823d1-e576-4898-a281-f56d1491774a",
+      "footerId": "ea2c9efb-69b5-4393-a650-bdb3441de5c4"
+    }
+  ],
+  "pagesToLayouts": [
+    {
+      "id": "5de9dbae-d3d2-447c-b347-c6180fce2c69",
+      "pageId": "13420f24-466a-4eee-9db5-d4343a8348df",
+      "layoutId": "23e823d1-e576-4898-a281-f56d1491774a"
+    },
+    {
+      "id": "f2ec27ca-6926-4de3-9f4f-310d1ad17e9b",
+      "pageId": "7060d8be-39e7-435a-942e-d129fba43587",
+      "layoutId": "23e823d1-e576-4898-a281-f56d1491774a"
+    }
+  ]
+}
