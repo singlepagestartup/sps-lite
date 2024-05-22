@@ -1,5 +1,5 @@
 import { populate as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-startup-module-widgets";
-import { populate as widgetsToModules } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-modules";
+
 import { populate as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-features-section-blocks";
 import { populate as widgetsToSliderBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-slider-blocks";
 import { populate as widgetsToFooterBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-footer-blocks";
@@ -11,7 +11,6 @@ import { populate as pagesToWidgets } from "@sps/sps-website-builder-models-widg
 
 export const populate = {
   ...widgetsToStartupModuleWidgets,
-  ...widgetsToModules,
   ...widgetsToFeaturesSectionBlocks,
   ...widgetsToSliderBlocks,
   ...widgetsToFooterBlocks,

@@ -4,7 +4,7 @@ import { Component as AdminForm } from "@sps/sps-website-builder-models-page-fro
 import { Component as AdminTableRow } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table-row";
 import { Component as AdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
 import { Component as AdminPanel } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-panel";
-import { Component as Editor } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-editor";
+
 import { Component as GetQueryFromUrl } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-query-from-url";
 import { Component as GetUrlModelId } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-url-model-id";
 import { Component as GetByUrl } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-get-by-url";
@@ -17,7 +17,7 @@ export const variants = {
   "admin-table-row": AdminTableRow,
   "admin-table": AdminTable,
   "admin-panel": AdminPanel,
-  editor: Editor,
+
   "get-query-from-url": GetQueryFromUrl,
   "get-url-model-id": GetUrlModelId,
   "get-by-url": GetByUrl,

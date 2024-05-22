@@ -23,6 +23,7 @@ export function GoogleTagManager() {
     <>
       <noscript>
         <iframe
+          title="GTM"
           src={`https://www.googletagmanager.com/ns.html?id=${GOOGLE_TAG_MANAGER_ID}`}
           height="0"
           width="0"

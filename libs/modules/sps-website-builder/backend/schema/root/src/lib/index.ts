@@ -2,10 +2,7 @@ export {
   Table as SPSWBWidgetsToStartupModuleWidgets,
   Relations as SPSWBWidgetsToStartupModuleWidgetsRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-schema";
-export {
-  Table as SPSWBWidgetsToModules,
-  Relations as SPSWBWidgetsToModulesRelations,
-} from "@sps/sps-website-builder-relations-widgets-to-modules-backend-schema";
+
 export {
   Table as SPSWBHeroSectionBlocksToFiles,
   Relations as SPSWBHeroSectionBlocksToFilesRelations,
