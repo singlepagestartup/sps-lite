@@ -7,7 +7,7 @@ import {
   renderHook,
   screen,
 } from "@testing-library/react";
-import Input from ".";
+import Input from "..";
 import "@testing-library/jest-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import userEvent from "@testing-library/user-event";

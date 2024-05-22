@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { Checkbox } from "./shadcn";
-import { Label } from "../../../label";
+import { Label } from "../../../../label";
 import { Props } from "..";
 
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {

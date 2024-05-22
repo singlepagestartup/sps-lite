@@ -43,13 +43,13 @@ export function Component() {
           <CardContent>
             <FormProvider {...methods}>
               <div className="flex flex-col gap-4">
-                <FormField
+                {/* <FormField
                   ui="sps"
                   type="text"
                   name="title"
                   placeholder="Page title"
                   label="Title"
-                />
+                /> */}
                 <Button
                   ui="sps"
                   data-ui-variant="primary"
