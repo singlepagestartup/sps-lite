@@ -11,10 +11,7 @@ export {
   Table as SPSWBHeroSectionBlocksToFiles,
   Relations as SPSWBHeroSectionBlocksToFilesRelations,
 } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema";
-export {
-  Table as SPSWBLogotypesToFiles,
-  Relations as SPSWBLogotypesToFilesRelations,
-} from "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema";
+
 export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,

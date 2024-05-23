@@ -1368,9 +1368,6 @@
       "@sps/sps-website-builder-models-logotype-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotype-backend-schema-relations-logotypes-to-files": [
-        "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/logotypes-to-files/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-logotype-backend-schema-relations-navbar-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/navbar-blocks-to-logotypes/src/index.ts"
       ],
@@ -2342,39 +2339,6 @@
       ],
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-backend-app": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/backend/app/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-backend-model": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-contracts": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-contracts-extended": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-api-client": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-api-model": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/api/model/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-api-server": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-component": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-website-builder-relations-logotypes-to-files-frontend-redux": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-files/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-app": [
         "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/app/src/index.ts"

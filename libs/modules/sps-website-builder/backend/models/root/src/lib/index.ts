@@ -2,7 +2,7 @@ import { model as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-
 import { model as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-model";
 
 import { model as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-model";
-import { model as logotypesToFiles } from "@sps/sps-website-builder-relations-logotypes-to-files-backend-model";
+
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-model";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-model";
 import { model as feature } from "@sps/sps-website-builder-models-feature-backend-model";
@@ -41,7 +41,7 @@ export const models = {
   widgetsToStartupModuleWidgets,
 
   heroSectionBlocksToFiles,
-  logotypesToFiles,
+
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,
   feature,

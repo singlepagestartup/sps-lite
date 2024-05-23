@@ -1,6 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
 import Link from "next/link";
-import { Component as LogotypesToFiles } from "@sps/sps-website-builder-relations-logotypes-to-files-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -10,9 +9,10 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`relative ${props.data.className || "w-full"}`}
     >
+      Logotype: {props.data.id}
       {props.data.url ? (
         <Link href={props.data.url}>
-          {props.data.logotypesToFiles.map((logotypeToFile, index) => {
+          {/* {props.data.logotypesToFiles.map((logotypeToFile, index) => {
             return (
               <LogotypesToFiles
                 key={index}
@@ -21,7 +21,7 @@ export function Component(props: IComponentPropsExtended) {
                 variant="default"
               />
             );
-          })}
+          })} */}
         </Link>
       ) : (
         <div>File</div>
