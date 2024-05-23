@@ -4,8 +4,9 @@
   "createdAt": "2024-05-21T20:20:39.025Z",
   "updatedAt": "2024-05-21T20:20:39.025Z",
   "variant": "default",
+  "widgetsToLogotypes": [],
+  "widgetsToSpsFileStorageModuleWidgets": [],
   "widgetsToStartupModuleWidgets": [],
-  "widgetsToModules": [],
   "widgetsToFeaturesSectionBlocks": [],
   "widgetsToSliderBlocks": [],
   "widgetsToFooterBlocks": [

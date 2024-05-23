@@ -1,4 +1,7 @@
 export const config = {
-  pageId: "sps-website-builder.page.id",
-  layoutId: "sps-website-builder.layout.id",
+  <%= left_model_name_property_cased %>Id: "<%= module_lib_name_property_cased %>.<%= left_model_name_kebab_cased %>.id",
+<% if(right_model_is_external) { %>
+<% } else { %>  
+  <%= right_model_name_property_cased %>Id: "<%= module_lib_name_property_cased %>.<%= right_model_name_kebab_cased %>.id",
+<% } %>
 };

@@ -3,6 +3,7 @@ export const variants = ["default"] as const;
 export interface IRelation {
   id: string;
   variant: (typeof variants)[number];
+  direction: "default" | "reverse";
   <%= left_model_name_property_cased %>Id: string;
 <% if(right_model_is_external) { %>
 <% } else { %>

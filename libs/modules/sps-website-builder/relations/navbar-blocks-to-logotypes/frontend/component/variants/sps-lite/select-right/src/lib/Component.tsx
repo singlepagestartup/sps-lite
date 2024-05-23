@@ -91,10 +91,10 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntityCard>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>Select entity from logotypes</CardTitle>
-          </CardHeader>
+        <Card className="overflow-hidden">
+          <h3 className="admin-heading-h3 -mt-1 -ml-1 pb-2">
+            Select entity from logotypes
+          </h3>
           <CardContent>
             <AdminSelectInput
               isServer={false}

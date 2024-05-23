@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+
+type TRenderComponent = ReactNode | ((props: any) => ReactNode);
 
 type IUniversalProps = {
   field: ControllerRenderProps<any, string>;
@@ -12,7 +15,7 @@ export type TTypedProps =
     }
   | {
       type: "radio" | "select";
-      options: string[];
+      options: [value: string, title: string | TRenderComponent][];
     };
 
 export type IComponentProps = IUniversalProps & TTypedProps;

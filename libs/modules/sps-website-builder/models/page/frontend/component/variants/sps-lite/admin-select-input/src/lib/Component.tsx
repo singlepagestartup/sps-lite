@@ -1,13 +1,8 @@
+"use client";
+
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import {
-  Label,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@sps/shadcn";
+import { FormField } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -17,29 +12,24 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      <Label>Page</Label>
-      <Select
-        onValueChange={(...values) => {
-          if (!props.onChange) {
-            return;
+      <FormField
+        ui="shadcn"
+        type="select"
+        name={props.formFieldName}
+        label="page"
+        form={props.form}
+        placeholder="Select page"
+        options={props.data.map((entity) => {
+          if (props.renderField && entity[props.renderField]) {
+            const renderValue = entity[props.renderField];
+            if (typeof renderValue === "string") {
+              return [entity.id, renderValue];
+            }
           }
 
-          props.onChange(values);
-        }}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Select page" />
-        </SelectTrigger>
-        <SelectContent>
-          {props.data.map((page, index) => {
-            return (
-              <SelectItem key={index} value={`${page.id}`}>
-                {page.title}
-              </SelectItem>
-            );
-          })}
-        </SelectContent>
-      </Select>
+          return [entity.id, entity.id];
+        })}
+      />
     </div>
   );
 }

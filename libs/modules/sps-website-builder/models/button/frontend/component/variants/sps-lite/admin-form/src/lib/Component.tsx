@@ -5,20 +5,14 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder-models-button-frontend-api-client";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@sps/shadcn";
+import { Form, Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-form-inputs";
 import { variants } from "@sps/sps-website-builder-models-button-contracts";
+import { Button } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -73,21 +67,23 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <Form {...form}>
-        <Card>
-          <CardHeader>
-            <CardTitle>{props.data?.id ? "Edit" : "Create"} button</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-6">
+        <Card className="admin-edit-card">
+          <h1 className="admin-edit-card-heading">
+            {props.data?.id ? "Edit" : "Create"} button
+          </h1>
+          <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}
               variant="admin-form-inputs"
               data={props.data}
               form={form}
             />
-            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+          </CardContent>
+          <div className="admin-edit-card-button-container">
+            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>
-          </CardContent>
+          </div>
         </Card>
       </Form>
     </div>

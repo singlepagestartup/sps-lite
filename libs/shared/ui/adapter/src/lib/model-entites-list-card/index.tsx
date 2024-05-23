@@ -27,9 +27,7 @@ export function Component(props: IComponentProps) {
                   <p className="hidden lg:inline">Add new</p>
                 </button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-                {props.adminForm}
-              </DialogContent>
+              <DialogContent>{props.adminForm}</DialogContent>
             </Dialog>
           ) : null}
           <button

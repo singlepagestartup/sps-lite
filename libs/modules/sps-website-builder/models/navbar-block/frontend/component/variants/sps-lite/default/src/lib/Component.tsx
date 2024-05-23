@@ -43,22 +43,24 @@ function DisclosureInner({
 
   return (
     <>
-      <div className="mx-auto flex flex-row w-full">
-        <div className="flex w-full h-16 justify-between">
-          <div className="flex w-full px-2 lg:px-0 justify-between">
-            <div className="flex items-center">
-              {props.data.navbarBlocksToLogotypes.map(
-                (navbarBlocksToLogotype, index) => {
-                  return (
-                    <NavbarsToLogotypes
-                      key={index}
-                      variant="default"
-                      isServer={false}
-                      data={navbarBlocksToLogotype}
-                    />
-                  );
-                },
-              )}
+      <div className="mx-auto flex flex-row w-full overflow-hidden">
+        <div className="flex w-full justify-between">
+          <div className="flex w-full px-2 lg:px-0 items-center justify-between">
+            <div className="flex w-full items-center h-16">
+              <div className="w-fit">
+                {props.data.navbarBlocksToLogotypes.map(
+                  (navbarBlocksToLogotype, index) => {
+                    return (
+                      <NavbarsToLogotypes
+                        key={index}
+                        variant="default"
+                        isServer={false}
+                        data={navbarBlocksToLogotype}
+                      />
+                    );
+                  },
+                )}
+              </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.data.navbarBlocksToButtons.map(
                   (navbarBlockToButton, index) => {

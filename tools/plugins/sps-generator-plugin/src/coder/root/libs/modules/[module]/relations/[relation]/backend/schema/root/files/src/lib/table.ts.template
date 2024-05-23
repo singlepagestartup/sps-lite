@@ -18,6 +18,7 @@ export const Table = pgTable(
   table,
   {
     id: pgCore.uuid("id").primaryKey().defaultRandom(),
+    direction: pgCore.text("direction").notNull().default("default"),
     <%= left_schema_model_name %>Id: pgCore
       .uuid("<%= left_model_table_uuid_name %>")
       .notNull()

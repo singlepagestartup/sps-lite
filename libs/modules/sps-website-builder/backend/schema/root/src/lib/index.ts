@@ -1,19 +1,21 @@
 export {
+  Table as SPSWBWidgetsToLogotypes,
+  Relations as SPSWBWidgetsToLogotypesRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
+export {
+  Table as SPSWBWidgetsToSpsFileStorageModuleWidgets,
+  Relations as SPSWBWidgetsToSpsFileStorageModuleWidgetsRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-schema";
+export {
   Table as SPSWBWidgetsToStartupModuleWidgets,
   Relations as SPSWBWidgetsToStartupModuleWidgetsRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-schema";
-export {
-  Table as SPSWBWidgetsToModules,
-  Relations as SPSWBWidgetsToModulesRelations,
-} from "@sps/sps-website-builder-relations-widgets-to-modules-backend-schema";
+
 export {
   Table as SPSWBHeroSectionBlocksToFiles,
   Relations as SPSWBHeroSectionBlocksToFilesRelations,
 } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema";
-export {
-  Table as SPSWBLogotypesToFiles,
-  Relations as SPSWBLogotypesToFilesRelations,
-} from "@sps/sps-website-builder-relations-logotypes-to-files-backend-schema";
+
 export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,

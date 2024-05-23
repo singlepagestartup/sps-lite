@@ -28,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
         name="variant"
         form={props.form}
         placeholder="Type title"
-        options={variants.slice()}
+        options={variants.map((variant) => [variant, variant])}
       />
       <ModelEntitiesListCard title="layouts-to-navbars">
         <div className="flex flex-col gap-6">

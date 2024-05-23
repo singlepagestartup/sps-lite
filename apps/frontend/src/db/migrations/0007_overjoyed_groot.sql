@@ -1,0 +1,1 @@
+ALTER TABLE "sps_w_b_ws_to_ss_fe_se_me_ws_zb8" ADD COLUMN "sps_fe_se_me_wt_id" uuid NOT NULL;

@@ -81,6 +81,26 @@ input[type="number"] {
     background-position: 0px 0px;
   }
 
+  .admin-heading-h1 {
+    @apply font-extrabold leading-none text-4xl lg:text-6xl -tracking-[.075em] text-muted-foreground opacity-40;
+  }
+
+  .admin-heading-h3 {
+    @apply font-extrabold leading-none text-2xl lg:text-4xl -tracking-[.065em] text-muted-foreground opacity-40;
+  }
+
+  .admin-edit-card {
+    @apply overflow-hidden rounded-lg pb-0 relative pb-10 lg:pb-14 border-none;
+  }
+
+  .admin-edit-card-heading {
+    @apply admin-heading-h1 -mt-1.5 lg:-mt-2.5 -ml-1.5 lg:-ml-2.5 pb-4;
+  }
+
+  .admin-edit-card-button-container {
+    @apply absolute -bottom-[0.45em] inset-x-0;
+  }
+
   .model-container {
     @apply relative gap-6 pt-8 rounded-lg border p-4 border-muted-foreground;
   }

@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="navbar-blocks-to-logotypes"
       data-variant={props.variant}
-      className=""
+      className="w-full"
     >
       <Logotype
         isServer={props.isServer}

@@ -5,21 +5,14 @@ import { useRouter } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Button,
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Form,
-} from "@sps/shadcn";
+import { Card, CardContent, Form } from "@sps/shadcn";
 import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
 import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
+import { Button } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   title: z.string(),
@@ -84,11 +77,11 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <Form {...form}>
-        <Card>
-          <CardHeader>
-            <CardTitle>{props.data?.id ? "Edit" : "Create"} Widget</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-6">
+        <Card className="admin-edit-card">
+          <h1 className="admin-edit-card-heading">
+            {props.data?.id ? "Edit" : "Create"} widget
+          </h1>
+          <CardContent className="flex flex-col gap-6 pb-10">
             <WidgetSpsLiteAdminFormInputs
               isServer={false}
               variant="admin-form-inputs"
@@ -96,11 +89,11 @@ export function Component(props: IComponentPropsExtended) {
               data={props.data}
             />
           </CardContent>
-          <CardFooter>
-            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+          <div className="admin-edit-card-button-container">
+            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>
-          </CardFooter>
+          </div>
         </Card>
       </Form>
     </div>

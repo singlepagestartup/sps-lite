@@ -33,6 +33,7 @@ export function Component(props: IComponentPropsExtended) {
   });
 
   const watchData = form.watch();
+  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!data.pageId || !data.widgetId) {
@@ -94,17 +95,18 @@ export function Component(props: IComponentPropsExtended) {
             />
             <AdminSelectInput
               isServer={false}
-              form={form}
               variant="admin-select-input"
               formFieldName="widgetId"
+              renderField="title"
+              form={form}
             />
           </div>
         </ModelEntityCard>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>Add new widget</CardTitle>
-          </CardHeader>
+        <Card className="overflow-hidden">
+          <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
+            Select entity from widgets
+          </h3>
           <CardContent>
             <FormField
               ui="shadcn"
@@ -118,6 +120,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="admin-select-input"
               formFieldName="widgetId"
+              renderField="title"
               form={form}
             />
           </CardContent>

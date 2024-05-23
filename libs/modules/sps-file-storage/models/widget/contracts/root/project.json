@@ -1,0 +1,12 @@
+{
+  "name": "@sps/sps-file-storage-models-widget-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-file-storage/models/widget/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}

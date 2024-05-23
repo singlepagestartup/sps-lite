@@ -161,7 +161,7 @@ export function Component(props: IComponentPropsExtended) {
     if (page) {
       const model = models.find((m) => m.name === page.model.name);
 
-      if (model && "Comp" in model && model.Comp) {
+      if (model && "Comp" in model && model["Comp"]) {
         return model.Comp;
       }
     }
@@ -174,7 +174,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant={props.variant}
-      className="w-full flex flex-col lg:flex-row bg-white border border-muted rounded-lg"
+      className="w-full flex flex-col lg:flex-row"
     >
       <div className="w-full lg:w-3/12 p-4 pt-6">
         <div className="relative flex flex-col gap-6 pt-6 rounded-lg border p-4 border-muted-foreground">

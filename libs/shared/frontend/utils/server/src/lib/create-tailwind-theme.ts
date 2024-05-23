@@ -6,7 +6,6 @@ import path from "path";
 import { snakeCaseToCamelCase } from "@sps/shared-utils";
 
 let iteration = 0;
-
 const frontendDir = path.join(process.cwd(), "apps/frontend");
 
 const requiredFontVariants = ["Default", "Primary"];
@@ -219,11 +218,11 @@ async function checkRequiredFonts() {
 
   for (const requiredFontFile of requiredFontFiles.flat(2)) {
     if (!existingFonts.includes(requiredFontFile)) {
+      const type = requiredFontFile.split("-")[0].split(".")[0];
+      const style = requiredFontFile.split("-")[1].split(".")[0];
+
       await fs.copyFile(
-        path.join(
-          frontendDir,
-          `./styles/fonts/Montserrat/Montserrat-Regular.ttf`,
-        ),
+        path.join(frontendDir, `./styles/fonts/${type}/${style}.ttf`),
         path.join(frontendDir, `./themes/fonts/${requiredFontFile}`),
       );
     }

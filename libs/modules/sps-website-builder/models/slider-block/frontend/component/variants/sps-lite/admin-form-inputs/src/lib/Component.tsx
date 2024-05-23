@@ -20,7 +20,7 @@ export function Component(props: IComponentPropsExtended) {
           name="variant"
           form={props.form}
           placeholder="Type title"
-          options={variants.slice()}
+          options={variants.map((variant) => [variant, variant])}
         />
         <ModelEntitiesListCard title="slider-block-to-sliders">
           <div className="flex flex-col gap-6">

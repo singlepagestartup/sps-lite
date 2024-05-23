@@ -1,10 +1,13 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
 import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
-import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -23,6 +26,27 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Type title"
         />
+
+        <ModelEntitiesListCard title="widgets-to-logotypes">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToLogotypes.map((entity, index) => {
+              return (
+                <WidgetsToLogotypesSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToLogotypesSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
 
         <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
           <div className="flex flex-col gap-6">
@@ -108,6 +132,52 @@ export function Component(props: IComponentPropsExtended) {
               },
             )}
             <WidgetsToSliderBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-slider-blocks">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToStartupModuleWidgets?.map(
+              (widgetToStartupModuleWidget, index) => {
+                return (
+                  <WidgetsToStartupModuleWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetToStartupModuleWidget}
+                  />
+                );
+              },
+            )}
+            <WidgetsToStartupModuleWidgets
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-sps-file-storage-modules-widgets">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToSpsFileStorageModuleWidgets.map(
+              (widgetToSpsFileStorageModuleWidget, index) => {
+                return (
+                  <WidgetsToSpsFileStorageModuleWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={widgetToSpsFileStorageModuleWidget}
+                  />
+                );
+              },
+            )}
+            <WidgetsToSpsFileStorageModuleWidgets
               isServer={props.isServer}
               variant="select-right"
               widgetId={props.data?.id}

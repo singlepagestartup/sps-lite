@@ -1,7 +1,9 @@
+import { app as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-app";
+import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app";
 import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app";
-import { app as widgetsToModules } from "@sps/sps-website-builder-relations-widgets-to-modules-backend-app";
+
 import { app as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app";
-import { app as logotypesToFiles } from "@sps/sps-website-builder-relations-logotypes-to-files-backend-app";
+
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-app";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-app";
 import { app as feature } from "@sps/sps-website-builder-models-feature-backend-app";
@@ -36,10 +38,13 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/widgets-to-logotypes": widgetsToLogotypes,
+  "/widgets-to-sps-file-storage-module-widgets":
+    widgetsToSpsFileStorageModuleWidgets,
   "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,
-  "/widgets-to-modules": widgetsToModules,
+
   "/hero-section-blocks-to-files": heroSectionBlocksToFiles,
-  "/logotypes-to-files": logotypesToFiles,
+
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,
