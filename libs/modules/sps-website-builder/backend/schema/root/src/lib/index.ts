@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBWidgetsToSlides,
+  Relations as SPSWBWidgetsToSlidesRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-slides-backend-schema";
+export {
   Table as SPSWBWidgetsToLogotypes,
   Relations as SPSWBWidgetsToLogotypesRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";

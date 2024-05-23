@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="logotype"
       data-variant={props.variant}
-      className={`${props.className || ""} overflow-hidden`}
+      className={`${props.className || ""}`}
     >
       <div className="flex flex-col gap-6">
         <FormField

@@ -28,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
       data-variant={props.variant}
+      className="w-full"
     >
       <ModelEntityCard
         onDeleteEntity={() => {

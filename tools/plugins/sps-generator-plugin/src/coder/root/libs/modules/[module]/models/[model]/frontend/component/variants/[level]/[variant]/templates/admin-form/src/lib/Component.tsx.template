@@ -61,7 +61,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
       data-variant={props.variant}
-      className={props.className || ""}
+      className={`w-full ${props.className || ""}`}
     >
       <Form {...form}>
         <Card className="admin-edit-card">

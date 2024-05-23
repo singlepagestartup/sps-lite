@@ -76,7 +76,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="<%= module_name %>"
       data-relation="<%= relation_name %>"
       data-variant={props.variant}
-      className=""
+      className="w-full"
     >
     {props.data ? (
         <ModelEntityCard
