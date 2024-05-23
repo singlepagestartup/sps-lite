@@ -91,9 +91,11 @@ export class Coder {
           .kebabCased.base,
         right_model_name_kebab_cased: getNameStyles({ name: rightModelName })
           .kebabCased.base,
-        left_model_name_snake_cased: getNameStyles({ name: leftModelName })
+        left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
-        right_model_name_snake_cased: getNameStyles({ name: rightModelName })
+        right_model_name_property_cased: getNameStyles({ name: rightModelName })
+          .propertyCased.base,
+        module_lib_name_property_cased: getNameStyles({ name: moduleLibName })
           .propertyCased.base,
         module_lib_name: moduleLibName,
         schema_module_lib_name: schemaModuleLibName,

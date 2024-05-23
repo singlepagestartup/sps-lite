@@ -1,7 +1,7 @@
 export const config = {
-  <%= left_model_name_snake_cased %>Id: "<%= module_lib_name %>.<%= left_model_name_kebab_cased %>.id",
+  <%= left_model_name_property_cased %>Id: "<%= module_lib_name_property_cased %>.<%= left_model_name_kebab_cased %>.id",
 <% if(right_model_is_external) { %>
 <% } else { %>  
-  <%= right_model_name_snake_cased %>Id: "<%= module_lib_name %>.<%= right_model_name_kebab_cased %>.id",
+  <%= right_model_name_property_cased %>Id: "<%= module_lib_name_property_cased %>.<%= right_model_name_kebab_cased %>.id",
 <% } %>
 };

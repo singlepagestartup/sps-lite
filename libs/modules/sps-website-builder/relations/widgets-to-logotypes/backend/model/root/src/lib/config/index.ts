@@ -1,5 +1,4 @@
 export const config = {
-  widgetId: "sps-website-builder.widget.id",
-
-  logotypeId: "sps-website-builder.logotype.id",
+  widgetId: "spsWebsiteBuilder.widget.id",
+  logotypeId: "spsWebsiteBuilder.logotype.id",
 };
