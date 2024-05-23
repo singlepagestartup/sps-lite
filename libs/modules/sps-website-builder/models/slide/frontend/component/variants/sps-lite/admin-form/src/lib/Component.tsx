@@ -16,6 +16,10 @@ import { variants } from "@sps/sps-website-builder-models-slide-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string().optional().nullable(),
+  subtitle: z.string().optional().nullable(),
+  description: z.string().optional().nullable(),
+  className: z.string().optional().nullable(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +33,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      description: props.data?.description || "",
+      className: props.data?.className || "",
     },
   });
 

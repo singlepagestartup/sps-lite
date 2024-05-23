@@ -1920,9 +1920,6 @@
       "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-slider-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/redux/src/index.ts"
       ],

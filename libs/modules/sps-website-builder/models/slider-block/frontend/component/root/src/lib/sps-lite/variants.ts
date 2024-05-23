@@ -4,7 +4,6 @@ import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-s
 import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-form-inputs";
 import { Component as AdminForm } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-form";
 import { Component as Default } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-default";
-import { Component as Simple } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-simple";
 
 export const variants = {
   "admin-table-row": AdminTableRow,
@@ -13,5 +12,4 @@ export const variants = {
   "admin-form-inputs": AdminFormInputs,
   "admin-form": AdminForm,
   default: Default,
-  simple: Simple,
 };

@@ -16,6 +16,11 @@ import { variants } from "@sps/sps-website-builder-models-slider-block-contracts
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string(),
+  subtitle: z.string(),
+  description: z.string(),
+  anchor: z.string(),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +34,11 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      description: props.data?.description || "",
+      anchor: props.data?.anchor || "",
+      className: props.data?.className || "",
     },
   });
 

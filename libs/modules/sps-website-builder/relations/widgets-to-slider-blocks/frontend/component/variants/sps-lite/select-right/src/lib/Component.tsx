@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -12,9 +12,7 @@ import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-s
 import { ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
-  // replace with actual schema key
   widgetId: z.string().min(1),
-  // replace with actual schema key
   sliderBlockId: z.string().min(1),
 });
 
@@ -54,14 +52,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
     storeName: "sps-website-builder/widgets",
     actionFilter: (action) => {
       return action.type === "widgets/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
-        // replace with actual schema key
         form.setValue("widgetId", action.payload.id);
       }
 
@@ -91,7 +87,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="sliderBlockId"
-              renderField="id"
+              renderField="title"
             />
           </div>
         </ModelEntityCard>
@@ -106,6 +102,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="sliderBlockId"
+              renderField="title"
             />
           </CardContent>
         </Card>
