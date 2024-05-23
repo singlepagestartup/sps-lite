@@ -414,6 +414,9 @@
       "@sps/sps-file-storage-models-file-backend-schema-relations": [
         "libs/modules/sps-file-storage/models/file/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-file-storage-models-file-backend-schema-relations-widgets-to-files": [
+        "libs/modules/sps-file-storage/models/file/backend/schema/relations/widgets-to-files/src/index.ts"
+      ],
       "@sps/sps-file-storage-models-file-backend-schema-table": [
         "libs/modules/sps-file-storage/models/file/backend/schema/table/src/index.ts"
       ],
@@ -468,6 +471,9 @@
       "@sps/sps-file-storage-models-widget-backend-schema-relations": [
         "libs/modules/sps-file-storage/models/widget/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-file-storage-models-widget-backend-schema-relations-widgets-to-files": [
+        "libs/modules/sps-file-storage/models/widget/backend/schema/relations/widgets-to-files/src/index.ts"
+      ],
       "@sps/sps-file-storage-models-widget-backend-schema-table": [
         "libs/modules/sps-file-storage/models/widget/backend/schema/table/src/index.ts"
       ],
@@ -509,6 +515,39 @@
       ],
       "@sps/sps-file-storage-models-widget-frontend-redux": [
         "libs/modules/sps-file-storage/models/widget/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-backend-app": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/backend/app/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-backend-model": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-backend-schema": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-contracts": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-contracts-extended": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-api-client": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-api-model": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-api-server": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-component": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-redux": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/redux/src/index.ts"
       ],
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
