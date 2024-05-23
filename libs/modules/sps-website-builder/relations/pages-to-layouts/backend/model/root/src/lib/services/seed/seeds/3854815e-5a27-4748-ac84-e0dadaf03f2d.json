@@ -1,0 +1,21 @@
+{
+  "id": "3854815e-5a27-4748-ac84-e0dadaf03f2d",
+  "pageId": "536bf7f0-133a-4498-9da2-1e9ebe5dc649",
+  "layoutId": "25c77616-a4a7-4a82-aeb0-163117409314",
+  "page": {
+    "id": "536bf7f0-133a-4498-9da2-1e9ebe5dc649",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-18T02:57:20.869Z",
+    "updatedAt": "2024-05-18T02:57:20.869Z",
+    "variant": "default"
+  },
+  "layout": {
+    "title": "Main Layout",
+    "id": "25c77616-a4a7-4a82-aeb0-163117409314",
+    "createdAt": "2024-05-19T13:36:22.836Z",
+    "updatedAt": "2024-05-19T13:36:22.836Z",
+    "variant": "default"
+  }
+}

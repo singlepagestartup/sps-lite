@@ -1,0 +1,20 @@
+{
+  "id": "0850dc62-5d64-4d60-9c24-b07e7e3d5144",
+  "createdAt": "2024-05-21T13:41:57.232Z",
+  "updatedAt": "2024-05-21T13:41:57.232Z",
+  "variant": "default",
+  "footersToWidgets": [
+    {
+      "id": "6436a54f-fd12-44d3-85e3-108f2c8d700a",
+      "footerId": "0850dc62-5d64-4d60-9c24-b07e7e3d5144",
+      "widgetId": "d022c246-3511-49e6-a9df-60dfc68d10ec"
+    }
+  ],
+  "layoutsToFooters": [
+    {
+      "id": "fb08b060-3dd4-4822-be3d-b3a33b4ca26c",
+      "layoutId": "25c77616-a4a7-4a82-aeb0-163117409314",
+      "footerId": "0850dc62-5d64-4d60-9c24-b07e7e3d5144"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "13ceea19-04a3-4c12-a1a7-876d9c2fdd6f",
+  "widgetId": "ca3d1a6b-188d-4f18-ab80-246bb376f04f",
+  "spsFileStorageModuleWidgetId": "7291b01b-c2a7-429c-a8bd-5f9aa173b5e1",
+  "widget": {
+    "title": "File storage widget",
+    "id": "ca3d1a6b-188d-4f18-ab80-246bb376f04f",
+    "createdAt": "2024-05-23T01:42:06.317Z",
+    "updatedAt": "2024-05-23T01:42:06.317Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fc649093-9f83-4cb2-8b93-d6d4f1001573",
+  "sliderId": "72eadab5-4929-4fb7-9925-4bf63edbf594",
+  "slideId": "e8eb11f8-dea0-4438-a259-55b51b2ccbdb",
+  "slider": {
+    "id": "72eadab5-4929-4fb7-9925-4bf63edbf594",
+    "createdAt": "2024-05-23T18:33:30.116Z",
+    "updatedAt": "2024-05-23T18:33:30.116Z",
+    "variant": "default",
+    "title": "Main page slider",
+    "className": ""
+  },
+  "slide": {
+    "id": "e8eb11f8-dea0-4438-a259-55b51b2ccbdb",
+    "createdAt": "2024-05-23T19:05:37.105Z",
+    "updatedAt": "2024-05-23T19:05:37.105Z",
+    "variant": "default",
+    "title": "Second slide",
+    "subtitle": "Second slide subtitle",
+    "description": "",
+    "className": ""
+  }
+}

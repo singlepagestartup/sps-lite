@@ -1,0 +1,25 @@
+{
+  "title": "Main",
+  "url": "/",
+  "className": "w-fit",
+  "id": "24566df2-4b89-486d-928a-d9214c91714c",
+  "createdAt": "2024-05-20T21:47:46.560Z",
+  "updatedAt": "2024-05-20T21:47:46.560Z",
+  "variant": "primary",
+  "heroSectionBlocksToButtons": [
+    {
+      "id": "b5d08d4e-ce50-4395-a195-5637dba6304b",
+      "heroSectionBlockId": "6a019940-94c0-475a-b6b4-14e13244a842",
+      "buttonId": "24566df2-4b89-486d-928a-d9214c91714c"
+    }
+  ],
+  "navbarBlocksToButtons": [
+    {
+      "id": "b5472b4f-aed2-44c6-87da-7e8b9e340902",
+      "place": "default",
+      "orderIndex": 0,
+      "navbarBlockId": "edfff7f2-fbad-4795-b949-4ba5e4fe0ecd",
+      "buttonId": "24566df2-4b89-486d-928a-d9214c91714c"
+    }
+  ]
+}

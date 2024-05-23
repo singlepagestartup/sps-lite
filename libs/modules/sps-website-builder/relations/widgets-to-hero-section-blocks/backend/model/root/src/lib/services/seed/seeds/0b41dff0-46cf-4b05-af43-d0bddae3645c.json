@@ -1,0 +1,23 @@
+{
+  "id": "0b41dff0-46cf-4b05-af43-d0bddae3645c",
+  "widgetId": "0e2061b5-6e73-4fd7-9c8a-3a0dc309c468",
+  "heroSectionBlockId": "6a019940-94c0-475a-b6b4-14e13244a842",
+  "widget": {
+    "title": "Hero section block widget",
+    "id": "0e2061b5-6e73-4fd7-9c8a-3a0dc309c468",
+    "createdAt": "2024-05-20T21:17:43.064Z",
+    "updatedAt": "2024-05-20T21:17:43.064Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "Preview mode widget",
+    "subTitle": null,
+    "description": null,
+    "anchor": null,
+    "className": null,
+    "id": "6a019940-94c0-475a-b6b4-14e13244a842",
+    "createdAt": "2024-05-21T11:06:45.773Z",
+    "updatedAt": "2024-05-21T11:06:45.773Z",
+    "variant": "simple-centered"
+  }
+}

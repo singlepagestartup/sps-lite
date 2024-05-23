@@ -1,0 +1,21 @@
+{
+  "id": "a50cc338-d36a-495e-8fc5-c4f35396e96e",
+  "widgetId": "bb7feadd-ea09-4ccd-9b2e-d2237b5a6ba3",
+  "fileId": "957451f5-59be-4f1a-9dfc-2ad67ef3ba78",
+  "widget": {
+    "variant": "default",
+    "id": "bb7feadd-ea09-4ccd-9b2e-d2237b5a6ba3",
+    "createdAt": "2024-05-23T19:44:39.484Z",
+    "updatedAt": "2024-05-23T19:44:39.484Z",
+    "title": "Background image"
+  },
+  "file": {
+    "id": "957451f5-59be-4f1a-9dfc-2ad67ef3ba78",
+    "url": "/images/bg.jpg",
+    "containerClassName": "aspect-w-3 aspect-h-2 overflow-hidden",
+    "className": "object-cover",
+    "createdAt": "2024-05-23T19:40:11.980Z",
+    "updatedAt": "2024-05-23T19:40:11.980Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "title": "About",
+  "url": "/about",
+  "className": "",
+  "id": "dfe5b915-1d2e-45be-b44f-32a17ab4507c",
+  "createdAt": "2024-05-20T21:47:52.230Z",
+  "updatedAt": "2024-05-20T21:47:52.230Z",
+  "variant": "secondary",
+  "heroSectionBlocksToButtons": [],
+  "navbarBlocksToButtons": [
+    {
+      "id": "0734ddd2-1782-4dc4-a2c6-1bb6154e61d0",
+      "place": "default",
+      "orderIndex": 0,
+      "navbarBlockId": "edfff7f2-fbad-4795-b949-4ba5e4fe0ecd",
+      "buttonId": "dfe5b915-1d2e-45be-b44f-32a17ab4507c"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "15b89a80-8bb2-4ae2-9993-b082fb2389aa",
+  "navbarBlockId": "edfff7f2-fbad-4795-b949-4ba5e4fe0ecd",
+  "logotypeId": "4335c8bf-3712-4d62-96a4-93400787badb",
+  "navbarBlock": {
+    "id": "edfff7f2-fbad-4795-b949-4ba5e4fe0ecd",
+    "createdAt": "2024-05-20T21:48:40.649Z",
+    "updatedAt": "2024-05-20T21:48:40.649Z",
+    "variant": "default"
+  },
+  "logotype": {
+    "className": "w-40",
+    "url": "/",
+    "id": "4335c8bf-3712-4d62-96a4-93400787badb",
+    "createdAt": "2024-05-20T22:03:41.404Z",
+    "updatedAt": "2024-05-20T22:03:41.404Z",
+    "variant": "default"
+  }
+}

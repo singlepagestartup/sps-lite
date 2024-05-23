@@ -1,0 +1,22 @@
+{
+  "id": "0c2b1768-b175-4913-b9ba-5ff3511ec7bf",
+  "orderIndex": 0,
+  "pageId": "536bf7f0-133a-4498-9da2-1e9ebe5dc649",
+  "widgetId": "4054a829-1c4b-40f6-958e-146e5b5ed766",
+  "page": {
+    "id": "536bf7f0-133a-4498-9da2-1e9ebe5dc649",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-18T02:57:20.869Z",
+    "updatedAt": "2024-05-18T02:57:20.869Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Slider block widget",
+    "id": "4054a829-1c4b-40f6-958e-146e5b5ed766",
+    "createdAt": "2024-05-21T20:53:54.474Z",
+    "updatedAt": "2024-05-21T20:53:54.474Z",
+    "variant": "default"
+  }
+}
