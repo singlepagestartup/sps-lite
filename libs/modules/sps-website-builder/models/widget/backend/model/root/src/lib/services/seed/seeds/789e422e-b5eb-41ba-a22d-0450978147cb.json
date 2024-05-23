@@ -4,6 +4,7 @@
   "createdAt": "2024-05-22T22:00:12.011Z",
   "updatedAt": "2024-05-22T22:00:12.011Z",
   "variant": "default",
+  "widgetsToSpsFileStorageModuleWidgets": [],
   "widgetsToStartupModuleWidgets": [
     {
       "id": "b6cdf820-eb2b-4357-9c3f-55ab79011ba1",

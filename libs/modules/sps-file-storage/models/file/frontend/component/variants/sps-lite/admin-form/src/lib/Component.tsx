@@ -1,18 +1,12 @@
 "use client";
 
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-file-storage-models-file-frontend-api-client";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@sps/shadcn";
+import { Form, Card, CardContent } from "@sps/shadcn";
+import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
@@ -85,10 +79,10 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className || ""}
     >
       <Form {...form}>
-        <Card>
-          <CardHeader>
-            <CardTitle>{props.data?.id ? "Edit" : "Create"} file</CardTitle>
-          </CardHeader>
+        <Card className="admin-edit-card">
+          <h1 className="admin-edit-card-heading">
+            {props.data?.id ? "Edit" : "Create"} file
+          </h1>
           <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}
@@ -96,10 +90,12 @@ export function Component(props: IComponentPropsExtended) {
               data={props.data}
               form={form}
             />
-            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+          </CardContent>
+          <div className="admin-edit-card-button-container">
+            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
               {props.data?.id ? "Update" : "Create"}
             </Button>
-          </CardContent>
+          </div>
         </Card>
       </Form>
     </div>
