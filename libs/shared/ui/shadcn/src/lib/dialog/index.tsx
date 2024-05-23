@@ -55,12 +55,12 @@ const DialogContent = React.forwardRef<
          */
         className={cn(
           "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
-          "-right-2 -top-3 ring-transparent focus:ring-offset-0 focus:ring-0 focus:ring-none",
+          "-right-1 lg:-right-2 -top-1.5 lg:-top-3 ring-transparent focus:ring-offset-0 focus:ring-0 focus:ring-none",
         )}
       >
         {/* replaced icon */}
         {/* <X className="h-4 w-4" /> */}
-        <p className="font-extrabold text-8xl leading-[0.5em] -tracking-[.06em] rotate-45 text-muted-foreground opacity-40">
+        <p className="font-extrabold text-6xl lg:text-8xl leading-[0.5em] -tracking-[.06em] rotate-45 text-muted-foreground opacity-40">
           +
         </p>
         <span className="sr-only">Close</span>

@@ -1,0 +1,19 @@
+{
+  "id": "34f59e10-c4ac-424a-9e61-32d3bad7d1bd",
+  "widgetId": "74642152-0708-4039-878b-bf9bc90c38d0",
+  "fileId": "1fbb088a-e6d8-4fe2-9856-f0b373833fb1",
+  "widget": {
+    "variant": "default",
+    "id": "74642152-0708-4039-878b-bf9bc90c38d0",
+    "createdAt": "2024-05-22T23:31:06.773Z",
+    "updatedAt": "2024-05-22T23:31:06.773Z"
+  },
+  "file": {
+    "id": "1fbb088a-e6d8-4fe2-9856-f0b373833fb1",
+    "url": "/images/cover.png",
+    "className": null,
+    "createdAt": "2024-05-23T01:05:11.352Z",
+    "updatedAt": "2024-05-23T01:05:11.352Z",
+    "variant": "default"
+  }
+}

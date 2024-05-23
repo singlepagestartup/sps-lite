@@ -546,6 +546,9 @@
       "@sps/sps-file-storage-relations-widgets-to-files-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-file-storage-relations-widgets-to-files-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
       "@sps/sps-file-storage-relations-widgets-to-files-frontend-redux": [
         "libs/modules/sps-file-storage/relations/widgets-to-files/frontend/redux/src/index.ts"
       ],

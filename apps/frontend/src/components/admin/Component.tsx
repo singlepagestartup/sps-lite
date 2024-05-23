@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
     <section data-module="frontend" className="w-full py-2 lg:py-10 bg-dotted">
       <div className="w-full mx-auto max-w-7xl px-2">
         <div className="p-5">
-          <div className="flex gap-3 w-fit">
+          <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
             <Button
               title="sps-website-builder"
               onClick={() => {
@@ -76,9 +76,9 @@ function Button(props: {
         props.onClick();
       }}
       data-active={props.active}
-      className="bg-white rounded-t-xl overflow-hidden font-bold text-4xl leading-none -tracking-[.08em] group text-muted-foreground"
+      className="w-full lg:w-fit bg-white lg:rounded-t-xl overflow-hidden font-bold text-4xl leading-none -tracking-[.08em] group text-muted-foreground"
     >
-      <p className="group-data-[active=true]:opacity-100 group-hover:opacity-100 opacity-40 transition duration-300">
+      <p className="group-data-[active=true]:opacity-100 group-hover:opacity-100 opacity-30 transition duration-300">
         {props.title}
       </p>
     </button>

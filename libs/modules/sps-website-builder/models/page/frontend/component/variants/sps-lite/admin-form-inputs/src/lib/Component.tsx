@@ -52,14 +52,14 @@ export function Component(props: IComponentPropsExtended) {
         </ModelEntitiesListCard>
         <ModelEntitiesListCard title="pages-to-layouts">
           <div className="flex flex-col gap-6">
-            {props.data?.pagesToLayouts.map((pageToLayout, index) => {
+            {props.data?.pagesToLayouts.map((entity, index) => {
               return (
                 <PagesToLayoutsSelectRight
                   key={index}
                   isServer={props.isServer}
                   variant="select-right"
                   pageId={props.data?.id}
-                  data={pageToLayout}
+                  data={entity}
                 />
               );
             })}

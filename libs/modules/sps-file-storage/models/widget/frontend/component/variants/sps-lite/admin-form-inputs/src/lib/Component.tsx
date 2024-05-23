@@ -2,8 +2,9 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-file-storage-models-widget-contracts";
+import { Component as WidgetsToFilesSpsLiteSelectRight } from "@sps/sps-file-storage-relations-widgets-to-files-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -23,6 +24,27 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+        <ModelEntitiesListCard title="widgets-to-files">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToFiles.map((entity, index) => {
+              return (
+                <WidgetsToFilesSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  widgetId={props.data?.id}
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToFilesSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );
