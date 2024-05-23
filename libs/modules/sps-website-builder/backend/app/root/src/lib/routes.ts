@@ -1,3 +1,4 @@
+import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app";
 import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app";
 
 import { app as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app";
@@ -36,6 +37,8 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/widgets-to-sps-file-storage-module-widgets":
+    widgetsToSpsFileStorageModuleWidgets,
   "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,
 
   "/hero-section-blocks-to-files": heroSectionBlocksToFiles,
