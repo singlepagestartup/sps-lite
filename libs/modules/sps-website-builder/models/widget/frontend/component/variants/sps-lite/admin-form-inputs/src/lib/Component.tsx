@@ -140,7 +140,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntitiesListCard>
 
-        <ModelEntitiesListCard title="widgets-to-slider-blocks">
+        <ModelEntitiesListCard title="widgets-to-startup-module-widgets">
           <div className="flex flex-col gap-6">
             {props.data?.widgetsToStartupModuleWidgets?.map(
               (widgetToStartupModuleWidget, index) => {
