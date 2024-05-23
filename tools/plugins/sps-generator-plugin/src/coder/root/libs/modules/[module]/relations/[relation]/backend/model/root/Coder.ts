@@ -7,6 +7,7 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
+import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { Coder as BackendCoder } from "../../Coder";
 
 export class Coder {
@@ -64,6 +65,19 @@ export class Coder {
   async create() {
     const schemaModuleLibName = this.parent.project.schema.baseName;
 
+    const leftModel = this.parent.parent.parent.parent.project.models[1];
+    const rightModel = this.parent.parent.parent.parent.project.models[2];
+
+    const leftModelIsExternal = leftModel.isExternal;
+    const rightModelIsExternal = rightModel.isExternal;
+
+    const leftModelName = leftModel.project.model.name;
+    const rightModelName = rightModel.project.model.name;
+
+    const moduleLibName =
+      this.parent.parent.parent.parent.parent.parent.project.modules.project
+        .module.name;
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -71,6 +85,17 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        left_model_is_external: leftModelIsExternal,
+        right_model_is_external: rightModelIsExternal,
+        left_model_name_kebab_cased: getNameStyles({ name: leftModelName })
+          .kebabCased.base,
+        right_model_name_kebab_cased: getNameStyles({ name: rightModelName })
+          .kebabCased.base,
+        left_model_name_snake_cased: getNameStyles({ name: leftModelName })
+          .propertyCased.base,
+        right_model_name_snake_cased: getNameStyles({ name: rightModelName })
+          .propertyCased.base,
+        module_lib_name: moduleLibName,
         schema_module_lib_name: schemaModuleLibName,
         model_name: this.modelName,
         module_name: this.moduleName,
