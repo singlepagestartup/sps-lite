@@ -51,7 +51,7 @@ export function Component(props: IComponentPropsExtended) {
         <CarouselContent>
           {props.data.slidersToSlides.map((entity, index) => {
             return (
-              <CarouselItem key={index} className="basis-auto flex">
+              <CarouselItem key={index} className="basis-auto flex w-full">
                 <SlidersToSlides
                   key={index}
                   isServer={false}

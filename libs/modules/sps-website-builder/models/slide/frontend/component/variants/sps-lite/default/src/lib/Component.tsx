@@ -7,23 +7,25 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="elements"
       data-variant="default"
-      className="slide"
+      className="w-full"
     >
-      <div className="slide-container relative min-h-80">
-        {props.data.widgetsToSlides.map((entity, index) => {
-          return (
-            <div key={index} className="absolute inset-0 object-cover">
-              <WidgetsToSlidesSpsLiteReverse
-                isServer={props.isServer}
-                variant="reverse"
-                data={entity}
-              />
-            </div>
-          );
-        })}
+      <div className="relative min-h-80">
+        {props.data.widgetsToSlides
+          .filter((entity) => entity.direction === "reverse")
+          .map((entity, index) => {
+            return (
+              <div key={index} className="absolute inset-0">
+                <WidgetsToSlidesSpsLiteReverse
+                  isServer={props.isServer}
+                  variant="reverse"
+                  data={entity}
+                />
+              </div>
+            );
+          })}
 
         <div className="relative p-10">
-          <p className="font-bold text-xl relative">Slide {props.data.id}</p>
+          <p className="font-bold text-xl relative">{props.data.title}</p>
         </div>
 
         {/* {props.data.media?.length ? (
