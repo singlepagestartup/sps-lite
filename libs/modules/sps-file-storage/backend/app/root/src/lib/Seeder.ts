@@ -3,7 +3,7 @@ import { models } from "@sps/sps-file-storage-backend-models";
 export class Seeder {
   models: typeof models;
   seedResults: any;
-  name = "sps-file-storage";
+  name = "spsFileStorage";
 
   constructor({ seedResults }: { seedResults: any }) {
     this.models = models;
