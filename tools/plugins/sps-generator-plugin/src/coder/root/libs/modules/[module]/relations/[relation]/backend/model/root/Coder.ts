@@ -87,10 +87,6 @@ export class Coder {
         template: "",
         left_model_is_external: leftModelIsExternal,
         right_model_is_external: rightModelIsExternal,
-        left_model_name_kebab_cased: getNameStyles({ name: leftModelName })
-          .kebabCased.base,
-        right_model_name_kebab_cased: getNameStyles({ name: rightModelName })
-          .kebabCased.base,
         left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
         right_model_name_property_cased: getNameStyles({ name: rightModelName })
