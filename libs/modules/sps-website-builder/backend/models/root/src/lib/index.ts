@@ -1,3 +1,4 @@
+import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-model";
 import { model as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-model";
 import { model as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-model";
 import { model as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-model";
@@ -39,6 +40,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  footerBlocksToLogotypes,
   widgetsToSlides,
   widgetsToLogotypes,
   widgetsToSpsFileStorageModuleWidgets,

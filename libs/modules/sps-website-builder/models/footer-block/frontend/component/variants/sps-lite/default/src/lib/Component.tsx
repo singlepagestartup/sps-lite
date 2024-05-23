@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,8 +12,17 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="mx-auto w-full max-w-7xl flex flex-col gap-4">
         <div className="w-full flex flex-col lg:grid lg:grid-cols-4 justify-end gap-12">
-          <div className="items-center justify-center">
-            <p className="text-xl font-bold">Single Page Startup</p>
+          <div className="w-fit">
+            {props.data.footerBlocksToLogotypes.map((entity, index) => {
+              return (
+                <FooterBlocksToLogotypes
+                  key={index}
+                  variant="default"
+                  isServer={false}
+                  data={entity}
+                />
+              );
+            })}
           </div>
           <div className="flex flex-col col-span-2 col-start-3 lg:grid lg:grid-cols-3 gap-6">
             {["Buttons Array 1", "Buttons Array 2", "Buttons Array 3"].map(

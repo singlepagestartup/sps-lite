@@ -48,18 +48,16 @@ function DisclosureInner({
           <div className="flex w-full px-2 lg:px-0 items-center justify-between">
             <div className="flex w-full items-center h-16">
               <div className="w-fit">
-                {props.data.navbarBlocksToLogotypes.map(
-                  (navbarBlocksToLogotype, index) => {
-                    return (
-                      <NavbarsToLogotypes
-                        key={index}
-                        variant="default"
-                        isServer={false}
-                        data={navbarBlocksToLogotype}
-                      />
-                    );
-                  },
-                )}
+                {props.data.navbarBlocksToLogotypes.map((entity, index) => {
+                  return (
+                    <NavbarsToLogotypes
+                      key={index}
+                      variant="default"
+                      isServer={false}
+                      data={entity}
+                    />
+                  );
+                })}
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
                 {props.data.navbarBlocksToButtons.map(

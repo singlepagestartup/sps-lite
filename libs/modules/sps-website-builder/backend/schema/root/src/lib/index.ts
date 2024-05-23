@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBFooterBlocksToLogotypes,
+  Relations as SPSWBFooterBlocksToLogotypesRelations,
+} from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema";
+export {
   Table as SPSWBWidgetsToSlides,
   Relations as SPSWBWidgetsToSlidesRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-schema";
