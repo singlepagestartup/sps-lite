@@ -2127,6 +2127,9 @@
       "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-proxy-to-sps-file-storage-module": [
+        "libs/modules/sps-website-builder/models/widget/frontend/component/variants/sps-lite/proxy-to-sps-file-storage-module/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-widget-frontend-redux": [
         "libs/modules/sps-website-builder/models/widget/frontend/redux/src/index.ts"
       ],
@@ -2765,6 +2768,9 @@
       ],
       "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-reverse": [
+        "libs/modules/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/reverse/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right": [
         "libs/modules/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/select-right/src/index.ts"

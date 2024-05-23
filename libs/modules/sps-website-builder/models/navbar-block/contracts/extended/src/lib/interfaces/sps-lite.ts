@@ -3,6 +3,7 @@ import type { IModel as IButton } from "@sps/sps-website-builder-models-button-c
 import type { IModel as ILogotype } from "@sps/sps-website-builder-models-logotype-contracts";
 import { IRelation as INavbarBlockToButton } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-contracts";
 import { IRelation as INavbarBlockToLogotype } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-contracts";
+import { IRelation as IWidgetsToNavbarBlocks } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-contracts";
 
 export interface IModel extends IParentModel {
   logotype: ILogotype | null;
@@ -11,4 +12,5 @@ export interface IModel extends IParentModel {
   extraButtons: IButton[] | null;
   navbarBlocksToButtons: INavbarBlockToButton[];
   navbarBlocksToLogotypes: INavbarBlockToLogotype[];
+  widgetsToNavbarBlocks: IWidgetsToNavbarBlocks[];
 }

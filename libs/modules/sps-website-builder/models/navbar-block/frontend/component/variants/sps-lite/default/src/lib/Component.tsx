@@ -8,6 +8,7 @@ import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/shadcn";
 import { Component as NavbarsToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component";
 import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
+import { Component as WidgetsToNavbarBlocksSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-reverse";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -45,7 +46,21 @@ function DisclosureInner({
     <>
       <div className="mx-auto flex flex-row w-full">
         <div className="flex w-full h-16 justify-between">
-          <div className="flex w-full px-2 lg:px-0 justify-between">
+          <div className="flex w-full px-2 lg:px-0 items-center justify-between">
+            <div className="w-full max-w-40">
+              {props.data.widgetsToNavbarBlocks
+                .filter((entity) => entity.direction === "reverse")
+                .map((entity, index) => {
+                  return (
+                    <WidgetsToNavbarBlocksSpsLiteReverse
+                      key={index}
+                      isServer={false}
+                      variant="reverse"
+                      data={entity}
+                    />
+                  );
+                })}
+            </div>
             <div className="flex items-center">
               {props.data.navbarBlocksToLogotypes.map(
                 (navbarBlocksToLogotype, index) => {

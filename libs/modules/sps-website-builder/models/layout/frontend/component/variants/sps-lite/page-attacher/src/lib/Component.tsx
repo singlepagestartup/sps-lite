@@ -7,7 +7,6 @@ import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client"
 import { FormProvider, useForm } from "react-hook-form";
 
 export function Component(props: IComponentPropsExtended) {
-  // console.log(`🚀 ~ Component ~ props:`, props);
   const [isSelected, setIsSelected] = useState(false);
 
   const router = useRouter();

@@ -9,13 +9,12 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
-  // replace with actual schema key
   widgetId: z.string().min(1),
-  // replace with actual schema key
   navbarBlockId: z.string().min(1),
+  direction: z.enum(["default", "reverse"]).default("default"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       widgetId: props.data?.widgetId || props.widgetId,
       navbarBlockId: props.data?.navbarBlockId,
+      direction: props.data?.direction || "default",
     },
   });
 
@@ -84,6 +84,18 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Direction"
+              name="direction"
+              form={form}
+              placeholder="Select direction of relation"
+              options={[
+                ["default", "Default"],
+                ["reverse", "Reverse"],
+              ]}
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -99,6 +111,18 @@ export function Component(props: IComponentPropsExtended) {
             Select entity from navbar-blocks
           </h3>
           <CardContent>
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Direction"
+              name="direction"
+              form={form}
+              placeholder="Select direction of relation"
+              options={[
+                ["default", "Default"],
+                ["reverse", "Reverse"],
+              ]}
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
