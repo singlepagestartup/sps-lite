@@ -24,6 +24,15 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
+        />
+
         <ModelEntitiesListCard title="navbar-blocks-to-buttons">
           <div className="flex flex-col gap-6">
             {props.data?.navbarBlocksToButtons.map(

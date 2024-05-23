@@ -16,6 +16,7 @@ import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
     },
   });
 

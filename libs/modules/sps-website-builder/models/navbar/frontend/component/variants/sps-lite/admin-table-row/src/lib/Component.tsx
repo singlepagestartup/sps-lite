@@ -41,16 +41,8 @@ export function Component(props: IComponentPropsExtended) {
         }
       >
         <div className="flex flex-col gap-0.5">
-          <p className="text-xs text-muted-foreground">Title</p>
-          <p>{props.data.title}</p>
-        </div>
-        <div className="flex flex-col gap-0.5">
           <p className="text-xs text-muted-foreground">Variant</p>
           <p>{props.data.variant}</p>
-        </div>
-        <div className="flex flex-col gap-0.5">
-          <p className="text-xs text-muted-foreground">Class Name</p>
-          <p>{props.data.className || ""}</p>
         </div>
       </ModelEntityCard>
     </div>

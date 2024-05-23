@@ -15,11 +15,27 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          label="Title"
+          name="title"
+          form={props.form}
+          placeholder="Type title"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
+        />
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
           form={props.form}
-          placeholder="Type title"
+          placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
         <ModelEntitiesListCard title="sliders-to-slides">

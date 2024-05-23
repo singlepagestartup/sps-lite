@@ -1959,9 +1959,6 @@
       "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/slider/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-fade-with-previews": [
-        "libs/modules/sps-website-builder/models/slider/frontend/component/variants/sps-lite/fade-with-previews/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-slider-frontend-redux": [
         "libs/modules/sps-website-builder/models/slider/frontend/redux/src/index.ts"
       ],
