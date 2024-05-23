@@ -60,7 +60,7 @@ const DialogContent = React.forwardRef<
       >
         {/* replaced icon */}
         {/* <X className="h-4 w-4" /> */}
-        <p className="font-extrabold text-6xl lg:text-8xl leading-[0.5em] -tracking-[.06em] rotate-45 text-muted-foreground opacity-40">
+        <p className="font-extrabold text-6xl lg:text-8xl leading-[0.5em] lg:leading-[0.5em] -tracking-[.06em] rotate-45 text-muted-foreground opacity-40">
           +
         </p>
         <span className="sr-only">Close</span>

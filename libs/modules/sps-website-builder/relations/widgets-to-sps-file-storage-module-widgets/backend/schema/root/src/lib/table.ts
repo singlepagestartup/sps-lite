@@ -16,6 +16,7 @@ export const Table = pgTable(table, {
     .uuid("wt_id")
     .notNull()
     .references(() => Widget.id, { onDelete: "cascade" }),
+  spsFileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_me_wt_id").notNull(),
 });
 
 export const insertSchema = createInsertSchema(Table);
