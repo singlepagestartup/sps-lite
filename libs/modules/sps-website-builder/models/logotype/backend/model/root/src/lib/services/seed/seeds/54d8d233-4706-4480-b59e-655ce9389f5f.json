@@ -1,11 +1,18 @@
 {
-  "className": null,
-  "url": null,
+  "className": "w-40",
+  "url": "/",
   "id": "54d8d233-4706-4480-b59e-655ce9389f5f",
   "createdAt": "2024-05-20T22:03:41.404Z",
   "updatedAt": "2024-05-20T22:03:41.404Z",
   "variant": "default",
-  "logotypesToFiles": [],
+  "widgetsToLogotypes": [
+    {
+      "id": "4fc39c42-23a1-4c5c-95d8-352e96e45de6",
+      "direction": "reverse",
+      "widgetId": "b47b02aa-032a-4c27-a4a3-d0ab4804416b",
+      "logotypeId": "54d8d233-4706-4480-b59e-655ce9389f5f"
+    }
+  ],
   "navbarBlocksToLogotypes": [
     {
       "id": "a1e0c7ea-912a-4cd7-a06c-0f56c1bdb6b1",

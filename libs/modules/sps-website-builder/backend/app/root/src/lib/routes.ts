@@ -1,3 +1,4 @@
+import { app as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-app";
 import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app";
 import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app";
 
@@ -37,6 +38,7 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/widgets-to-logotypes": widgetsToLogotypes,
   "/widgets-to-sps-file-storage-module-widgets":
     widgetsToSpsFileStorageModuleWidgets,
   "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,

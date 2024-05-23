@@ -9,8 +9,8 @@
     "variant": "default"
   },
   "logotype": {
-    "className": null,
-    "url": null,
+    "className": "w-40",
+    "url": "/",
     "id": "54d8d233-4706-4480-b59e-655ce9389f5f",
     "createdAt": "2024-05-20T22:03:41.404Z",
     "updatedAt": "2024-05-20T22:03:41.404Z",

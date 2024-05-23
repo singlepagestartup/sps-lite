@@ -1,0 +1,12 @@
+{
+  "id": "ed09a21c-9b6c-474a-879a-b57a545cb1d9",
+  "widgetId": "b47b02aa-032a-4c27-a4a3-d0ab4804416b",
+  "spsFileStorageModuleWidgetId": "74642152-0708-4039-878b-bf9bc90c38d0",
+  "widget": {
+    "title": "Logotype file component",
+    "id": "b47b02aa-032a-4c27-a4a3-d0ab4804416b",
+    "createdAt": "2024-05-23T03:25:34.092Z",
+    "updatedAt": "2024-05-23T03:25:34.092Z",
+    "variant": "default"
+  }
+}

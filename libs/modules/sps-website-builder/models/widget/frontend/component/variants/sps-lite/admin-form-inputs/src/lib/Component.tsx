@@ -7,6 +7,7 @@ import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-w
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -25,6 +26,27 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Type title"
         />
+
+        <ModelEntitiesListCard title="widgets-to-logotypes">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToLogotypes.map((entity, index) => {
+              return (
+                <WidgetsToLogotypesSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToLogotypesSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
 
         <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
           <div className="flex flex-col gap-6">

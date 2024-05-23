@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="logotype"
       data-variant={props.variant}
-      className={`${props.className || ""}`}
+      className={`${props.className || ""} overflow-hidden`}
     >
       <div className="flex flex-col gap-6">
         <FormField
@@ -20,6 +20,22 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Url"
+          name="url"
+          form={props.form}
+          placeholder="Type url"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
         />
       </div>
     </div>

@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBWidgetsToLogotypes,
+  Relations as SPSWBWidgetsToLogotypesRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
+export {
   Table as SPSWBWidgetsToSpsFileStorageModuleWidgets,
   Relations as SPSWBWidgetsToSpsFileStorageModuleWidgetsRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-schema";

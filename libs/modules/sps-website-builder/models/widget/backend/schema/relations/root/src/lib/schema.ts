@@ -1,3 +1,4 @@
+import { relation as widgetsToLogotypes } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-logotypes";
 import { relation as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-sps-file-storage-module-widgets";
 import { relation as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-startup-module-widgets";
 
@@ -14,6 +15,7 @@ import { Table } from "@sps/sps-website-builder-models-widget-backend-schema-tab
 
 export const Relations = relations(Table, (helpers) => {
   return {
+    ...widgetsToLogotypes(helpers),
     ...widgetsToSpsFileStorageModuleWidgets(helpers),
     ...widgetsToStartupModuleWidgets(helpers),
     ...widgetsToFeaturesSectionBlocks(helpers),

@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import Link from "next/link";
+import { Component as WidgetsToLogotypesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-reverse";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -9,22 +10,34 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`relative ${props.data.className || "w-full"}`}
     >
-      Logotype: {props.data.id}
       {props.data.url ? (
         <Link href={props.data.url}>
-          {/* {props.data.logotypesToFiles.map((logotypeToFile, index) => {
-            return (
-              <LogotypesToFiles
-                key={index}
-                isServer={props.isServer}
-                data={logotypeToFile}
-                variant="default"
-              />
-            );
-          })} */}
+          {props.data.widgetsToLogotypes
+            .filter((entity) => entity.direction === "reverse")
+            .map((entity, index) => {
+              return (
+                <WidgetsToLogotypesSpsLiteReverse
+                  key={index}
+                  isServer={props.isServer}
+                  variant="reverse"
+                  data={entity}
+                />
+              );
+            })}
         </Link>
       ) : (
-        <div>File</div>
+        props.data.widgetsToLogotypes
+          .filter((entity) => entity.direction === "reverse")
+          .map((entity, index) => {
+            return (
+              <WidgetsToLogotypesSpsLiteReverse
+                key={index}
+                isServer={props.isServer}
+                variant="reverse"
+                data={entity}
+              />
+            );
+          })
       )}
     </div>
   );
