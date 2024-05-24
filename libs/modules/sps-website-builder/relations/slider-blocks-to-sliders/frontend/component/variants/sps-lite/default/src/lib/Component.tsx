@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="slider-blocks-to-sliders"
       data-variant={props.variant}
-      className=""
+      className="w-full"
     >
       <Slider
         isServer={props.isServer}

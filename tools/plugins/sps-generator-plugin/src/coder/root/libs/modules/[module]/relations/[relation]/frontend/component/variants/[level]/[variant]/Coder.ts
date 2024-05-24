@@ -20,6 +20,7 @@ import {
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
 import { stat } from "fs/promises";
+import pluralize from "pluralize";
 
 export class Coder {
   parent: ComponentCoder;
@@ -111,19 +112,19 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  /**
-   * @todo
-   * Add models to parent
-   * this.parent.parent.parent.parent.parent.project.models[<number>]
-   * for getting their aliased from schema.
-   * It will helps for create templates.
-   */
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
-    const rightModelNamePluralized =
-      this.parent.parent.parent.parent.parent.project.models[2].project.model
+    const leftModelName =
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
         .name;
+    const rightModel =
+      this.parent.parent.parent.parent.parent.project.models[2];
+    const rightModelName = rightModel.project.model.name;
+
+    const rightModelRootFrontendComponentImportPath =
+      rightModel.project.model.project.frontend.project.component.project.root
+        .baseName;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
@@ -140,7 +141,19 @@ export class Coder {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
-        right_model_name_pluralized: rightModelNamePluralized,
+        left_model_name_kebab_cased_pluralized: getNameStyles({
+          name: leftModelName,
+        }).kebabCased.pluralized,
+        left_model_name_property_cased: getNameStyles({ name: leftModelName })
+          .propertyCased.base,
+        right_model_name_kebab_cased_pluralized: getNameStyles({
+          name: rightModelName,
+        }).kebabCased.pluralized,
+        right_model_name_property_cased: getNameStyles({
+          name: rightModelName,
+        }).propertyCased.base,
+        right_model_root_frontend_component_import_path:
+          rightModelRootFrontendComponentImportPath,
         api_client_import_path: this.apiClientImportPath,
         api_server_import_path: this.apiServerImportPath,
         redux_import_path: this.reduxImportPath,

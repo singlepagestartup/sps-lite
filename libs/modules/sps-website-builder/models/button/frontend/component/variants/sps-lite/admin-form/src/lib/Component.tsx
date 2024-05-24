@@ -18,7 +18,7 @@ const formSchema = z.object({
   variant: z.enum(variants),
   title: z.string(),
   url: z.string(),
-  className: z.string(),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {

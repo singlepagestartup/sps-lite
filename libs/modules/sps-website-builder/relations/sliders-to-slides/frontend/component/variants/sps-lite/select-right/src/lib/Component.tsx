@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -52,7 +52,6 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
     storeName: "sps-website-builder/sliders",
     actionFilter: (action) => {
       return action.type === "sliders/executeMutation/fulfilled";
@@ -88,6 +87,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="slideId"
+              renderField="title"
             />
           </div>
         </ModelEntityCard>
@@ -102,6 +102,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="slideId"
+              renderField="title"
             />
           </CardContent>
         </Card>

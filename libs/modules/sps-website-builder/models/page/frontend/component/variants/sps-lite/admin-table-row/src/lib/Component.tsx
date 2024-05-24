@@ -45,10 +45,6 @@ export function Component(props: IComponentPropsExtended) {
           <p>{props.data.title}</p>
         </div>
         <div className="flex flex-col gap-0.5">
-          <p className="text-xs text-muted-foreground">Variant</p>
-          <p>{props.data.url}</p>
-        </div>
-        <div className="flex flex-col gap-0.5">
           <p className="text-xs text-muted-foreground">Url</p>
           <p>{props.data.url}</p>
         </div>

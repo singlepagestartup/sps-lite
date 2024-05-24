@@ -1,0 +1,22 @@
+{
+  "id": "a7325754-c9e9-4921-86b8-7d6ba1724211",
+  "orderIndex": 0,
+  "pageId": "e9c111aa-3692-4aa0-a075-e2c9d684439b",
+  "widgetId": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+  "page": {
+    "id": "e9c111aa-3692-4aa0-a075-e2c9d684439b",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-24T16:25:49.720Z",
+    "updatedAt": "2024-05-24T16:25:49.720Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Main hero section block",
+    "id": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+    "createdAt": "2024-05-24T16:32:56.000Z",
+    "updatedAt": "2024-05-24T16:32:56.000Z",
+    "variant": "default"
+  }
+}

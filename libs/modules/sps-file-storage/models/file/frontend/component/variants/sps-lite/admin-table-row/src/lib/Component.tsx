@@ -55,6 +55,7 @@ export function Component(props: IComponentPropsExtended) {
                 <Image
                   src={`${BACKEND_URL}${props.data.url}`}
                   alt=""
+                  className="object-contain"
                   fill={true}
                 />
               </div>

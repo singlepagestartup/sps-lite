@@ -7,11 +7,14 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-file-storage"
       data-model="file"
       data-variant={props.variant}
-      className={`${props.data.className || "w-full"}`}
+      className={`relative ${props.data.containerClassName || "w-full"}`}
     >
-      <div className="w-full relative aspect-w-2 aspect-h-2">
-        <Image src={props.data.url} alt="" fill={true} />
-      </div>
+      <Image
+        src={props.data.url}
+        alt=""
+        fill={true}
+        className={props.data.className || ""}
+      />
     </div>
   );
 }

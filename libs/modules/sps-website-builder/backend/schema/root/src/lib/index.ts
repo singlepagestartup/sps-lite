@@ -1,4 +1,32 @@
 export {
+  Table as SPSWBFooterBlocksToButtonsArrays,
+  Relations as SPSWBFooterBlocksToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-schema";
+export {
+  Table as SPSWBButtonsArraysToButtons,
+  Relations as SPSWBButtonsArraysToButtonsRelations,
+} from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-schema";
+export {
+  Table as SPSWBHeroSectionBlocksToButtonsArrays,
+  Relations as SPSWBHeroSectionBlocksToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-schema";
+export {
+  Table as SPSWBNavbarBlocksToButtonsArrays,
+  Relations as SPSWBNavbarBlocksToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-schema";
+export {
+  Table as SPSWBButtonsArray,
+  Relations as SPSWBButtonsArrayRelations,
+} from "@sps/sps-website-builder-models-buttons-array-backend-schema";
+export {
+  Table as SPSWBFooterBlocksToLogotypes,
+  Relations as SPSWBFooterBlocksToLogotypesRelations,
+} from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema";
+export {
+  Table as SPSWBWidgetsToSlides,
+  Relations as SPSWBWidgetsToSlidesRelations,
+} from "@sps/sps-website-builder-relations-widgets-to-slides-backend-schema";
+export {
   Table as SPSWBWidgetsToLogotypes,
   Relations as SPSWBWidgetsToLogotypesRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
@@ -40,14 +68,7 @@ export {
   Table as SPSWBLogotype,
   Relations as SPSWBLogotypeRelations,
 } from "@sps/sps-website-builder-models-logotype-backend-schema";
-export {
-  Table as SPSWBHeroSectionBlocksToButtons,
-  Relations as SPSWBHeroSectionBlocksToButtonsRelations,
-} from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-schema";
-export {
-  Table as SPSWBNavbarBlocksToButtons,
-  Relations as SPSWBNavbarBlocksToButtonsRelations,
-} from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-schema";
+
 export {
   Table as SPSWBButton,
   Relations as SPSWBButtonRelations,

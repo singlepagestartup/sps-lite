@@ -27,8 +27,8 @@ export default async function RootLayout({
         <Suspense>
           <GoogleTagManager />
         </Suspense>
+        <Admin isServer={true} />
         <div className="relative">
-          <Admin isServer={true} />
           {/* Suspense here is for static build, without that build will return nothing */}
           <Suspense>
             {children}

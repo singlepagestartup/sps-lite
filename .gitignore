@@ -105,3 +105,8 @@ tmp
 ############################
 
 .env.testing
+
+############################
+# Pass modules migrations
+############################
+!libs/modules/**/migrations/*.sql

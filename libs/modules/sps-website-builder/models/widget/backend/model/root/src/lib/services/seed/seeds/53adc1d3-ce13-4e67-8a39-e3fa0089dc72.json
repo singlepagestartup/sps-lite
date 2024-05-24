@@ -1,0 +1,32 @@
+{
+  "title": "Main hero section block",
+  "id": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+  "createdAt": "2024-05-24T16:32:56.000Z",
+  "updatedAt": "2024-05-24T16:32:56.000Z",
+  "variant": "default",
+  "widgetsToSlides": [],
+  "widgetsToLogotypes": [],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [
+    {
+      "id": "469eafff-c46d-42ae-94e6-21ab5cbcbab8",
+      "widgetId": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+      "heroSectionBlockId": "d2aa29ed-578d-4222-84e5-152265d67a85"
+    }
+  ],
+  "pagesToWidgets": [
+    {
+      "id": "a7325754-c9e9-4921-86b8-7d6ba1724211",
+      "orderIndex": 0,
+      "pageId": "e9c111aa-3692-4aa0-a075-e2c9d684439b",
+      "widgetId": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72"
+    }
+  ]
+}

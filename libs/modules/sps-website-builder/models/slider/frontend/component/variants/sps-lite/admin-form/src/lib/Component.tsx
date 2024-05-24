@@ -16,6 +16,8 @@ import { variants } from "@sps/sps-website-builder-models-slider-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string().min(1),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +31,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      className: props.data?.className || "",
     },
   });
 

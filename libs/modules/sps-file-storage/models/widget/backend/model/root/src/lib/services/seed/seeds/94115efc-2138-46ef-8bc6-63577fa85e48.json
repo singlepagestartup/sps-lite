@@ -1,0 +1,14 @@
+{
+  "variant": "default",
+  "id": "94115efc-2138-46ef-8bc6-63577fa85e48",
+  "createdAt": "2024-05-24T16:25:26.707Z",
+  "updatedAt": "2024-05-24T16:25:26.707Z",
+  "title": "Banner widget",
+  "widgetsToFiles": [
+    {
+      "id": "6620a9cb-a6d5-4eec-b76f-266dac35c69d",
+      "widgetId": "94115efc-2138-46ef-8bc6-63577fa85e48",
+      "fileId": "eaba16e9-8ddf-4082-b153-0a2ead1a24ad"
+    }
+  ]
+}

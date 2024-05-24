@@ -8,6 +8,7 @@ import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-w
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -26,6 +27,27 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Type title"
         />
+
+        <ModelEntitiesListCard title="widgets-to-slides">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToSlides.map((entity, index) => {
+              return (
+                <WidgetsToSlidesSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToSlidesSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
 
         <ModelEntitiesListCard title="widgets-to-logotypes">
           <div className="flex flex-col gap-6">
@@ -140,7 +162,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </ModelEntitiesListCard>
 
-        <ModelEntitiesListCard title="widgets-to-slider-blocks">
+        <ModelEntitiesListCard title="widgets-to-startup-module-widgets">
           <div className="flex flex-col gap-6">
             {props.data?.widgetsToStartupModuleWidgets?.map(
               (widgetToStartupModuleWidget, index) => {

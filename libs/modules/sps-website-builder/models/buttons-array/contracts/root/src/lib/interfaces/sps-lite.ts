@@ -1,12 +1,9 @@
-export const variants = ["column-with-title", "row"] as const;
+export const variants = ["default"] as const;
 
 export interface IModel {
-  id: number;
-  __component: "elements.buttons-array";
+  id: string;
   variant: (typeof variants)[number];
   title: string | null;
-  additionalAttributes: any;
   description: string | null;
   className: string | null;
-  url: string | null;
 }

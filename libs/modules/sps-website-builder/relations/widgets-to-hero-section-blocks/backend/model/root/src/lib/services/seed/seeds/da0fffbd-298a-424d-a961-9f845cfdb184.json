@@ -1,0 +1,23 @@
+{
+  "id": "da0fffbd-298a-424d-a961-9f845cfdb184",
+  "widgetId": "c070e88f-794e-46fa-8689-e4fa239a917d",
+  "heroSectionBlockId": "a7909304-0228-4d77-8756-6392fc326baa",
+  "widget": {
+    "title": "About hero section block",
+    "id": "c070e88f-794e-46fa-8689-e4fa239a917d",
+    "createdAt": "2024-05-24T16:37:18.309Z",
+    "updatedAt": "2024-05-24T16:37:18.309Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "About project",
+    "subTitle": null,
+    "description": null,
+    "anchor": null,
+    "className": null,
+    "id": "a7909304-0228-4d77-8756-6392fc326baa",
+    "createdAt": "2024-05-24T16:36:33.291Z",
+    "updatedAt": "2024-05-24T16:36:33.291Z",
+    "variant": "default"
+  }
+}

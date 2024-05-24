@@ -1,1 +1,0 @@
-DROP TABLE "sps_w_b_ls_to_fs_e2j";

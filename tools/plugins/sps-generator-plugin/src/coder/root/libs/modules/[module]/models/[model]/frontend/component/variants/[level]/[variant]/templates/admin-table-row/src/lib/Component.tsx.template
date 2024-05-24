@@ -7,7 +7,7 @@ import { api } from "<%= api_client_import_path %>";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { Component as AdminForm } from "@sps/<%= module_name %>-models-<%= model_name %>-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminForm } from "@sps/<%= module_name %>-models-<%= model_name %>-frontend-component-variants-<%= level %>-admin-form";
 
 export function Component(props: IComponentPropsExtended) {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
       data-variant={props.variant}
+      className="w-full"
     >
       <ModelEntityCard
         onDeleteEntity={() => {

@@ -1,1 +1,0 @@
-ALTER TABLE "sps_w_b_ws_to_nr_bs" ADD COLUMN "direction" text DEFAULT 'default' NOT NULL;

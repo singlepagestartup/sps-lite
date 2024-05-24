@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+import { Component as WidgetsToSlidesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-reverse";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,10 +7,27 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="elements"
       data-variant="default"
-      className="slide"
+      className="w-full"
     >
-      <div className="slide-container">
-        <p className="font-bold text-xl">Slide {props.data.id}</p>
+      <div className="relative min-h-80">
+        {props.data.widgetsToSlides
+          .filter((entity) => entity.direction === "reverse")
+          .map((entity, index) => {
+            return (
+              <div key={index} className="absolute inset-0">
+                <WidgetsToSlidesSpsLiteReverse
+                  isServer={props.isServer}
+                  variant="reverse"
+                  data={entity}
+                />
+              </div>
+            );
+          })}
+
+        <div className="relative p-10">
+          <p className="font-bold text-xl relative">{props.data.title}</p>
+        </div>
+
         {/* {props.data.media?.length ? (
           <File
             isServer={false}

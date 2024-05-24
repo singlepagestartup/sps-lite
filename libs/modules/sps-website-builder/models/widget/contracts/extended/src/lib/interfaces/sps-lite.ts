@@ -1,3 +1,4 @@
+import { IRelation as IWidgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-contracts";
 import { IRelation as IWidgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-contracts";
 import { IRelation as IWidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-contracts";
 import { IRelation as IWidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-contracts";
@@ -12,6 +13,7 @@ import { IRelation as INavbarToWidget } from "@sps/sps-website-builder-relations
 import { IRelation as IPageToWidget } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
 
 export interface IModel extends IParentModel {
+  widgetsToSlides: IWidgetsToSlides[];
   widgetsToLogotypes: IWidgetsToLogotypes[];
   widgetsToSpsFileStorageModuleWidgets: IWidgetsToSpsFileStorageModuleWidgets[];
   widgetsToStartupModuleWidgets: IWidgetsToStartupModuleWidgets[];

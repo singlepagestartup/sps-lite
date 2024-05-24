@@ -9,13 +9,90 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "apps/frontend",
         "commands": [
           {
             "command": "nx run frontend:db:migrate"
           },
           {
-            "command": "drizzle-kit generate --config=./src/db/config.ts"
+            "command": "nx run frontend:db:sps-website-builder-generate"
+          },
+          {
+            "command": "nx run frontend:db:sps-file-storage-generate"
+          },
+          {
+            "command": "nx run frontend:db:startup-generate"
+          }
+        ]
+      }
+    },
+    "db:sps-website-builder-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "commands": [
+          {
+            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-website-builder-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/db/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-file-storage-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-file-storage/backend/app/root",
+        "commands": [
+          {
+            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-file-storage-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-file-storage/backend/app/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/db/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:startup-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/startup/backend/app/root",
+        "commands": [
+          {
+            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+          }
+        ]
+      }
+    },
+    "db:startup-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/startup/backend/app/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/db/migrate.ts"
           }
         ]
       }
@@ -27,7 +104,13 @@
         "cwd": "apps/frontend",
         "commands": [
           {
-            "command": "bun run ./src/db/migrate.ts"
+            "command": "nx run frontend:db:sps-website-builder-migrate"
+          },
+          {
+            "command": "nx run frontend:db:sps-file-storage-migrate"
+          },
+          {
+            "command": "nx run frontend:db:startup-migrate"
           }
         ]
       }

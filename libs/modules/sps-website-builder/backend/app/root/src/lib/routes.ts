@@ -1,3 +1,10 @@
+import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-app";
+import { app as buttonsArraysToButtons } from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-app";
+import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-app";
+import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-app";
+import { app as buttonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-app";
+import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-app";
+import { app as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-app";
 import { app as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-app";
 import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app";
 import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app";
@@ -10,8 +17,7 @@ import { app as feature } from "@sps/sps-website-builder-models-feature-backend-
 import { app as featuresSectionBlock } from "@sps/sps-website-builder-models-features-section-block-backend-app";
 import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-app";
 import { app as logotype } from "@sps/sps-website-builder-models-logotype-backend-app";
-import { app as heroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-app";
-import { app as navbarBlocksToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-app";
+
 import { app as button } from "@sps/sps-website-builder-models-button-backend-app";
 import { app as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-app";
 import { app as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-app";
@@ -38,6 +44,13 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/footer-blocks-to-buttons-arrays": footerBlocksToButtonsArrays,
+  "/buttons-arrays-to-buttons": buttonsArraysToButtons,
+  "/hero-section-blocks-to-buttons-arrays": heroSectionBlocksToButtonsArrays,
+  "/navbar-blocks-to-buttons-arrays": navbarBlocksToButtonsArrays,
+  "/buttons-arrays": buttonsArray,
+  "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
+  "/widgets-to-slides": widgetsToSlides,
   "/widgets-to-logotypes": widgetsToLogotypes,
   "/widgets-to-sps-file-storage-module-widgets":
     widgetsToSpsFileStorageModuleWidgets,
@@ -51,8 +64,7 @@ export const routes = {
   "/features-section-blocks": featuresSectionBlock,
   "/navbar-blocks-to-logotypes": navbarBlocksToLogotypes,
   "/logotypes": logotype,
-  "/hero-section-blocks-to-buttons": heroSectionBlocksToButtons,
-  "/navbar-blocks-to-buttons": navbarBlocksToButtons,
+
   "/buttons": button,
   "/sliders-to-slides": slidersToSlides,
   "/slider-blocks-to-sliders": sliderBlocksToSliders,

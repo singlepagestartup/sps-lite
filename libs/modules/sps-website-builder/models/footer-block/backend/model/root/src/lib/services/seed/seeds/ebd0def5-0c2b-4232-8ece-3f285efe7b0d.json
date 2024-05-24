@@ -1,0 +1,30 @@
+{
+  "id": "ebd0def5-0c2b-4232-8ece-3f285efe7b0d",
+  "createdAt": "2024-05-24T16:31:29.806Z",
+  "updatedAt": "2024-05-24T16:31:29.806Z",
+  "variant": "default",
+  "className": null,
+  "footerBlocksToButtonsArrays": [
+    {
+      "id": "24a446ea-d232-4727-898f-1d4666fc32be",
+      "direction": "default",
+      "footerBlockId": "ebd0def5-0c2b-4232-8ece-3f285efe7b0d",
+      "buttonsArrayId": "c11f179d-272f-4af7-a7f8-6e4cb72daebd"
+    }
+  ],
+  "footerBlocksToLogotypes": [
+    {
+      "id": "5edef51c-2572-47b5-89f0-ea67d7a0975d",
+      "direction": "default",
+      "footerBlockId": "ebd0def5-0c2b-4232-8ece-3f285efe7b0d",
+      "logotypeId": "004a4756-58b4-4473-bbde-f39664fbd1ef"
+    }
+  ],
+  "widgetsToFooterBlocks": [
+    {
+      "id": "dbd0322c-6ede-4e24-b69a-9e8359ecfca3",
+      "widgetId": "c571beb2-619a-4b88-8bc9-0b48e99cbecd",
+      "footerBlockId": "ebd0def5-0c2b-4232-8ece-3f285efe7b0d"
+    }
+  ]
+}

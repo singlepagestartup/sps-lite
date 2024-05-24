@@ -753,11 +753,8 @@
       "@sps/sps-website-builder-models-button-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/button/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-button-backend-schema-relations-hero-section-blocks-to-buttons": [
-        "libs/modules/sps-website-builder/models/button/backend/schema/relations/hero-section-blocks-to-buttons/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-button-backend-schema-relations-navbar-blocks-to-buttons": [
-        "libs/modules/sps-website-builder/models/button/backend/schema/relations/navbar-blocks-to-buttons/src/index.ts"
+      "@sps/sps-website-builder-models-button-backend-schema-relations-buttons-arrays-to-buttons": [
+        "libs/modules/sps-website-builder/models/button/backend/schema/relations/buttons-arrays-to-buttons/src/index.ts"
       ],
       "@sps/sps-website-builder-models-button-backend-schema-table": [
         "libs/modules/sps-website-builder/models/button/backend/schema/table/src/index.ts"
@@ -819,6 +816,33 @@
       "@sps/sps-website-builder-models-button-frontend-redux": [
         "libs/modules/sps-website-builder/models/button/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-buttons-array-backend-app": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-model": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-buttons-arrays-to-buttons": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/buttons-arrays-to-buttons/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-footer-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/footer-blocks-to-buttons-arrays/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-hero-section-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/hero-section-blocks-to-buttons-arrays/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-navbar-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/navbar-blocks-to-buttons-arrays/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/table/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-buttons-array-contracts": [
         "libs/modules/sps-website-builder/models/buttons-array/contracts/root/src/index.ts"
       ],
@@ -834,83 +858,26 @@
       "@sps/sps-website-builder-models-buttons-array-frontend-component": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-column-with-title": [
-        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/column-with-title/src/index.ts"
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-form/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-row": [
-        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/row/src/index.ts"
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-buttons-array-frontend-redux": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-contracts": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-component-variants-sps-lite-single-step-with-cart": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/component/variants/sps-lite/single-step-with-cart/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-component-variants-sps-lite-single-step-with-product": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/component/variants/sps-lite/single-step-with-product/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-component-variants-sps-lite-single-step-with-tier": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/component/variants/sps-lite/single-step-with-tier/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-checkout-form-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/checkout-form-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-contracts": [
-        "libs/modules/sps-website-builder/models/contact-section-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/contact-section-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/contact-section-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/contact-section-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/contact-section-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-frontend-component-variants-sps-lite-centered": [
-        "libs/modules/sps-website-builder/models/contact-section-block/frontend/component/variants/sps-lite/centered/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-contact-section-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/contact-section-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-contracts": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-edit-subscription-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/edit-subscription-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-feature-backend-app": [
         "libs/modules/sps-website-builder/models/feature/backend/app/src/index.ts"
@@ -1098,6 +1065,12 @@
       "@sps/sps-website-builder-models-footer-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/footer-block/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-footer-block-backend-schema-relations-footer-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/footer-block/backend/schema/relations/footer-blocks-to-buttons-arrays/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-block-backend-schema-relations-footer-blocks-to-logotypes": [
+        "libs/modules/sps-website-builder/models/footer-block/backend/schema/relations/footer-blocks-to-logotypes/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-footer-block-backend-schema-relations-widgets-to-footer-blocks": [
         "libs/modules/sps-website-builder/models/footer-block/backend/schema/relations/widgets-to-footer-blocks/src/index.ts"
       ],
@@ -1188,8 +1161,8 @@
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-buttons": [
-        "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-buttons/src/index.ts"
+      "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-buttons-arrays/src/index.ts"
       ],
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-files": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-files/src/index.ts"
@@ -1232,12 +1205,6 @@
       ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-simple-centered": [
-        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/simple-centered/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-split": [
-        "libs/modules/sps-website-builder/models/hero-section-block/frontend/component/variants/sps/split/src/index.ts"
       ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/redux/src/index.ts"
@@ -1367,6 +1334,9 @@
       ],
       "@sps/sps-website-builder-models-logotype-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-logotype-backend-schema-relations-footer-blocks-to-logotypes": [
+        "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/footer-blocks-to-logotypes/src/index.ts"
       ],
       "@sps/sps-website-builder-models-logotype-backend-schema-relations-navbar-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/navbar-blocks-to-logotypes/src/index.ts"
@@ -1509,8 +1479,8 @@
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-navbar-blocks-to-buttons": [
-        "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/navbar-blocks-to-buttons/src/index.ts"
+      "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-navbar-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/navbar-blocks-to-buttons-arrays/src/index.ts"
       ],
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-navbar-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/navbar-blocks-to-logotypes/src/index.ts"
@@ -1686,69 +1656,6 @@
       "@sps/sps-website-builder-models-page-frontend-redux": [
         "libs/modules/sps-website-builder/models/page/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-products-list-block-contracts": [
-        "libs/modules/sps-website-builder/models/products-list-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/products-list-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/products-list-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/products-list-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/products-list-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/products-list-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-products-list-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/products-list-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-contracts": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-frontend-component-variants-sps-lite-simple-with-avatars": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/frontend/component/variants/sps-lite/simple-with-avatars/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-reviews-list-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/reviews-list-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-contracts": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-shopping-cart-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/shopping-cart-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-sidebar-contracts": [
         "libs/modules/sps-website-builder/models/sidebar/contracts/root/src/index.ts"
       ],
@@ -1784,6 +1691,9 @@
       ],
       "@sps/sps-website-builder-models-slide-backend-schema-relations-sliders-to-slides": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/relations/sliders-to-slides/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-schema-relations-widgets-to-slides": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/widgets-to-slides/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-backend-schema-table": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/table/src/index.ts"
@@ -1920,9 +1830,6 @@
       "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-slider-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/redux/src/index.ts"
       ],
@@ -1959,32 +1866,8 @@
       "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/slider/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-fade-with-previews": [
-        "libs/modules/sps-website-builder/models/slider/frontend/component/variants/sps-lite/fade-with-previews/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-slider-frontend-redux": [
         "libs/modules/sps-website-builder/models/slider/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-contracts": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-component-variants-sps-lite-single-step": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/component/variants/sps-lite/single-step/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-subscription-checkout-form-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/subscription-checkout-form-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-theme-contracts": [
         "libs/modules/sps-website-builder/models/theme/contracts/root/src/index.ts"
@@ -2003,27 +1886,6 @@
       ],
       "@sps/sps-website-builder-models-theme-frontend-redux": [
         "libs/modules/sps-website-builder/models/theme/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-contracts": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-frontend-component-variants-sps-lite-two-columns-card": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/frontend/component/variants/sps-lite/two-columns-card/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-tiers-list-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/tiers-list-block/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-topbar-contracts": [
         "libs/modules/sps-website-builder/models/topbar/contracts/root/src/index.ts"
@@ -2085,6 +1947,9 @@
       "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-slider-blocks": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-slider-blocks/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-slides": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-slides/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-sps-file-storage-module-widgets": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-file-storage-module-widgets/src/index.ts"
       ],
@@ -2136,6 +2001,42 @@
       "@sps/sps-website-builder-models-widget-frontend-redux": [
         "libs/modules/sps-website-builder/models/widget/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-app": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-model": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-schema": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-contracts": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-app": [
         "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/backend/app/src/index.ts"
       ],
@@ -2168,6 +2069,78 @@
       ],
       "@sps/sps-website-builder-relations-features-section-blocks-to-features-frontend-redux": [
         "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-app": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-model": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-contracts": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-footers-to-widgets-backend-app": [
         "libs/modules/sps-website-builder/relations/footers-to-widgets/backend/app/src/index.ts"
@@ -2205,41 +2178,41 @@
       "@sps/sps-website-builder-relations-footers-to-widgets-frontend-redux": [
         "libs/modules/sps-website-builder/relations/footers-to-widgets/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-app": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/backend/app/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/app/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-model": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/backend/model/root/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/model/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-schema": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/backend/schema/root/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-contracts": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/contracts/root/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-contracts-extended": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/contracts/extended/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-api-client": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/api/client/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/client/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-api-model": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/api/model/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/model/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-api-server": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/api/server/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/server/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/component/root/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/component/variants/sps-lite/default/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-select-right": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-redux": [
-        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons/frontend/redux/src/index.ts"
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app": [
         "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/backend/app/src/index.ts"
@@ -2346,41 +2319,41 @@
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-app": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/app/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-model": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/model/root/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/model/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-schema": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/backend/schema/root/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-contracts": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/contracts/root/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/contracts/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-contracts-extended": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/contracts/extended/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-client": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/client/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/client/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-model": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/model/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/model/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-api-server": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/api/server/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/server/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/root/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/variants/sps-lite/default/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component-variants-sps-lite-select-right": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-redux": [
-        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons/frontend/redux/src/index.ts"
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-app": [
         "libs/modules/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/src/index.ts"
@@ -2822,6 +2795,45 @@
       ],
       "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-slider-blocks/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-backend-app": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-backend-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-backend-schema": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-contracts": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-reverse": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/component/variants/sps-lite/reverse/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-slides-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/widgets-to-slides/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app": [
         "libs/modules/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/app/src/index.ts"

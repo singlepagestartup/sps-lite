@@ -1,0 +1,16 @@
+{
+  "id": "ff7749ae-e56a-4ef3-be0b-bd5f9a2d2e24",
+  "url": "/images/logotype.svg",
+  "containerClassName": "aspect-w-2 aspect-h-2 overflow-hidden w-32",
+  "className": "object-contain",
+  "createdAt": "2024-05-24T16:24:35.664Z",
+  "updatedAt": "2024-05-24T16:24:35.664Z",
+  "variant": "default",
+  "widgetsToFiles": [
+    {
+      "id": "87a41d17-4e4a-41a5-ad7b-019e715d7126",
+      "widgetId": "c271cb9e-fa25-44e2-bf34-2b7a077e8be7",
+      "fileId": "ff7749ae-e56a-4ef3-be0b-bd5f9a2d2e24"
+    }
+  ]
+}

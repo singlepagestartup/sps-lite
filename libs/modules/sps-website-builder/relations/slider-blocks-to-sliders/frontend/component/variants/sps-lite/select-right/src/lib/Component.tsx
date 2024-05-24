@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -87,6 +87,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="sliderId"
+              renderField="title"
             />
           </div>
         </ModelEntityCard>
@@ -101,6 +102,7 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="sliderId"
+              renderField="title"
             />
           </CardContent>
         </Card>

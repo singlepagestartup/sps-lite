@@ -17,6 +17,8 @@ import { variants } from "@sps/sps-file-storage-models-file-contracts";
 const formSchema = z.object({
   variant: z.enum(variants),
   url: z.string().min(1),
+  className: z.string().optional(),
+  containerClassName: z.string().optional(),
   // file: z.custom<File>((v) => v instanceof File),
   // files: { file: z.string() },
 });
@@ -33,6 +35,8 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       url: props.data?.url || "",
+      className: props.data?.className || "",
+      containerClassName: props.data?.containerClassName || "",
       // files: {
       //   file: props.data?.file || "",
       // },

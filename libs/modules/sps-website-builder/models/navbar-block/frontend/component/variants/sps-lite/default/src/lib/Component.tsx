@@ -5,8 +5,7 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
-import { Button } from "@sps/shadcn";
-import { Component as NavbarsToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component";
+import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component";
 import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -48,55 +47,29 @@ function DisclosureInner({
           <div className="flex w-full px-2 lg:px-0 items-center justify-between">
             <div className="flex w-full items-center h-16">
               <div className="w-fit">
-                {props.data.navbarBlocksToLogotypes.map(
-                  (navbarBlocksToLogotype, index) => {
-                    return (
-                      <NavbarsToLogotypes
-                        key={index}
-                        variant="default"
-                        isServer={false}
-                        data={navbarBlocksToLogotype}
-                      />
-                    );
-                  },
-                )}
-              </div>
-              <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                {props.data.navbarBlocksToButtons.map(
-                  (navbarBlockToButton, index) => {
-                    if (navbarBlockToButton.place !== "default") {
-                      return;
-                    }
-
-                    return (
-                      <NavbarsToButtons
-                        key={index}
-                        variant="default"
-                        data={navbarBlockToButton}
-                        isServer={false}
-                      />
-                    );
-                  },
-                )}
-              </div>
-            </div>
-            <div className="hidden lg:flex lg:space-x-2 items-center">
-              {props.data.navbarBlocksToButtons.map(
-                (navbarBlockToButton, index) => {
-                  if (navbarBlockToButton.place !== "additional") {
-                    return;
-                  }
-
+                {props.data.navbarBlocksToLogotypes.map((entity, index) => {
                   return (
-                    <NavbarsToButtons
+                    <NavbarsToLogotypes
                       key={index}
                       variant="default"
-                      data={navbarBlockToButton}
+                      isServer={false}
+                      data={entity}
+                    />
+                  );
+                })}
+              </div>
+              <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
+                {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
+                  return (
+                    <NavbarsToButtonsArrays
+                      key={index}
+                      variant="default"
+                      data={entity}
                       isServer={false}
                     />
                   );
-                },
-              )}
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -114,28 +87,16 @@ function DisclosureInner({
 
       <Disclosure.Panel className="lg:hidden py-2">
         <div className="flex flex-col gap-3 px-2 ">
-          <Button variant="link">Main page</Button>
-          <Button variant="link">About page</Button>
-          {/* {props.data.buttons?.map((button, index) => {
+          {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
             return (
-              <Button
-                isServer={false}
+              <NavbarsToButtonsArrays
                 key={index}
-                variant={button.variant}
-                data={button}
+                variant="default"
+                data={entity}
+                isServer={false}
               />
             );
           })}
-          {props.data.additionalButtons?.map((button, index) => {
-            return (
-              <Button
-                isServer={false}
-                key={index}
-                variant={button.variant}
-                data={button}
-              />
-            );
-          })} */}
         </div>
       </Disclosure.Panel>
     </>

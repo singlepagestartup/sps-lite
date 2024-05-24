@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

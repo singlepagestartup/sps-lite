@@ -20,7 +20,7 @@ export function Component(props: IComponentPropsExtended) {
           label="Variant"
           name="variant"
           form={props.form}
-          placeholder="Type title"
+          placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
         <FormField
@@ -30,6 +30,22 @@ export function Component(props: IComponentPropsExtended) {
           name="url"
           form={props.form}
           placeholder="Type url"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Container class name"
+          name="containerClassName"
+          form={props.form}
+          placeholder="Type container class name"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
         />
       </div>
     </div>

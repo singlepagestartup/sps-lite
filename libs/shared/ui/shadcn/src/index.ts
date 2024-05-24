@@ -12,3 +12,5 @@ export * from "./lib/form";
 export * from "./lib/alert-dialog";
 export * from "./lib/sonner";
 export * from "./lib/collapsible";
+export * from "./lib/slider";
+export * from "./lib/carousel";
