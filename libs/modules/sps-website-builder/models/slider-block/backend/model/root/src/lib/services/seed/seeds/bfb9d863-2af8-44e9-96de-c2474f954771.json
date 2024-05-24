@@ -1,0 +1,43 @@
+{
+  "id": "bfb9d863-2af8-44e9-96de-c2474f954771",
+  "title": "Hello from single page startup slider block",
+  "subtitle": "Default slider block",
+  "description": "You can create any project with single page startup",
+  "anchor": "slider-block",
+  "className": "",
+  "createdAt": "2024-05-21T19:55:15.799Z",
+  "updatedAt": "2024-05-21T19:55:15.799Z",
+  "variant": "default",
+  "sliderBlocksToSliders": [
+    {
+      "id": "9869d018-2b97-49e1-9f90-cffa2eb198b6",
+      "sliderBlockId": "bfb9d863-2af8-44e9-96de-c2474f954771",
+      "sliderId": "205b9826-faa8-42f7-a5b4-1e920533960e"
+    }
+  ],
+  "widgetsToSliderBlocks": [
+    {
+      "id": "c4f85044-99e7-4482-82d7-1389cf564892",
+      "widgetId": "1930bf27-8bed-4d5b-94f3-b9d53b3938f3",
+      "sliderBlockId": "bfb9d863-2af8-44e9-96de-c2474f954771",
+      "widget": {
+        "title": "Slider block widget",
+        "id": "1930bf27-8bed-4d5b-94f3-b9d53b3938f3",
+        "createdAt": "2024-05-21T20:53:54.474Z",
+        "updatedAt": "2024-05-21T20:53:54.474Z",
+        "variant": "default"
+      },
+      "sliderBlock": {
+        "id": "bfb9d863-2af8-44e9-96de-c2474f954771",
+        "title": "Hello from single page startup slider block",
+        "subtitle": "Default slider block",
+        "description": "You can create any project with single page startup",
+        "anchor": "slider-block",
+        "className": "",
+        "createdAt": "2024-05-21T19:55:15.799Z",
+        "updatedAt": "2024-05-21T19:55:15.799Z",
+        "variant": "default"
+      }
+    }
+  ]
+}

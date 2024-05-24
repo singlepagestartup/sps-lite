@@ -1,0 +1,49 @@
+{
+  "id": "71be25f3-3f45-438a-9864-7c2a8be59bfd",
+  "createdAt": "2024-05-24T01:52:14.279Z",
+  "updatedAt": "2024-05-24T01:52:14.279Z",
+  "variant": "default",
+  "title": "Navbar buttons",
+  "className": "",
+  "description": "",
+  "footerBlocksToButtonsArrays": [
+    {
+      "id": "b000cca0-3afe-4a8b-b8be-81a428b23c8a",
+      "direction": "default",
+      "footerBlockId": "ce35ee2f-021a-492d-94a5-d14ac03261c6",
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd"
+    }
+  ],
+  "buttonsArraysToButtons": [
+    {
+      "id": "96546889-9073-4175-93c2-251ae27fda89",
+      "direction": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd",
+      "buttonId": "b4ae5837-d563-4f33-ae8d-927005d597b8"
+    },
+    {
+      "id": "75cb5fac-24d9-468e-8943-07e8704bb809",
+      "direction": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd",
+      "buttonId": "6c34b966-d00b-428a-85d9-a95534c40a04"
+    }
+  ],
+  "heroSectionBlocksToButtonsArrays": [
+    {
+      "id": "6e201536-42ab-4366-9af7-6270923f733d",
+      "direction": "default",
+      "heroSectionBlockId": "fba6348f-0676-4727-8d5c-4f3b63adc9a9",
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd"
+    }
+  ],
+  "navbarBlocksToButtonsArrays": [
+    {
+      "id": "f6e30f81-f94d-4097-a872-278be90a2270",
+      "direction": "default",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd"
+    }
+  ]
+}

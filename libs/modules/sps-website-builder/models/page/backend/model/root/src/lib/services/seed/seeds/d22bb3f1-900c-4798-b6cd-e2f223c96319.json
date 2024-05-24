@@ -1,0 +1,36 @@
+{
+  "id": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+  "title": "Main page",
+  "url": "/",
+  "description": "Description",
+  "createdAt": "2024-05-18T02:57:20.869Z",
+  "updatedAt": "2024-05-18T02:57:20.869Z",
+  "variant": "default",
+  "pagesToWidgets": [
+    {
+      "id": "d4f5ffb0-237c-41b0-9abc-1396ad5b0459",
+      "orderIndex": 0,
+      "pageId": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+      "widgetId": "8d3d5123-3c3f-4fe8-a5b6-df22c1545a8e"
+    },
+    {
+      "id": "1488958e-23d4-4723-b2a9-14e4883d33ce",
+      "orderIndex": 0,
+      "pageId": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+      "widgetId": "1930bf27-8bed-4d5b-94f3-b9d53b3938f3"
+    },
+    {
+      "id": "d36f5597-9c5d-4b86-a489-1239b730dfc0",
+      "orderIndex": 0,
+      "pageId": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+      "widgetId": "31e37930-e9bd-43c7-9b2a-b9de93241d0a"
+    }
+  ],
+  "pagesToLayouts": [
+    {
+      "id": "d18cba18-b836-4414-99b4-527d2f3f381e",
+      "pageId": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+      "layoutId": "07dcc016-b67e-444a-a4cb-453c642f7339"
+    }
+  ]
+}

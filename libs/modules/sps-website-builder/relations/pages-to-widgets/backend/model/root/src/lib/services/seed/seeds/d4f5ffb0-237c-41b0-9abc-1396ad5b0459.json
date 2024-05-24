@@ -1,0 +1,22 @@
+{
+  "id": "d4f5ffb0-237c-41b0-9abc-1396ad5b0459",
+  "orderIndex": 0,
+  "pageId": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+  "widgetId": "8d3d5123-3c3f-4fe8-a5b6-df22c1545a8e",
+  "page": {
+    "id": "d22bb3f1-900c-4798-b6cd-e2f223c96319",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-18T02:57:20.869Z",
+    "updatedAt": "2024-05-18T02:57:20.869Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Startup module widget",
+    "id": "8d3d5123-3c3f-4fe8-a5b6-df22c1545a8e",
+    "createdAt": "2024-05-22T22:00:12.011Z",
+    "updatedAt": "2024-05-22T22:00:12.011Z",
+    "variant": "default"
+  }
+}

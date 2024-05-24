@@ -1,0 +1,12 @@
+{
+  "id": "d88dc58e-6514-436b-8c76-75efe921ea7b",
+  "widgetId": "8d3d5123-3c3f-4fe8-a5b6-df22c1545a8e",
+  "startupModuleWidgetId": "b0c0299c-bfba-4693-a682-8a151b825b9c",
+  "widget": {
+    "title": "Startup module widget",
+    "id": "8d3d5123-3c3f-4fe8-a5b6-df22c1545a8e",
+    "createdAt": "2024-05-22T22:00:12.011Z",
+    "updatedAt": "2024-05-22T22:00:12.011Z",
+    "variant": "default"
+  }
+}

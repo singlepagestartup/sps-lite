@@ -1,0 +1,24 @@
+{
+  "id": "4881f943-2e2d-4b7e-865f-85557440a893",
+  "title": "About",
+  "url": "/about",
+  "description": "Description",
+  "createdAt": "2024-05-18T02:57:20.869Z",
+  "updatedAt": "2024-05-18T02:57:20.869Z",
+  "variant": "default",
+  "pagesToWidgets": [
+    {
+      "id": "4dd3945f-5561-433c-bf1c-bf5adbbdd4bb",
+      "orderIndex": 0,
+      "pageId": "4881f943-2e2d-4b7e-865f-85557440a893",
+      "widgetId": "31e37930-e9bd-43c7-9b2a-b9de93241d0a"
+    }
+  ],
+  "pagesToLayouts": [
+    {
+      "id": "7d779cd2-2e9f-436c-8d58-d5deba282440",
+      "pageId": "4881f943-2e2d-4b7e-865f-85557440a893",
+      "layoutId": "07dcc016-b67e-444a-a4cb-453c642f7339"
+    }
+  ]
+}

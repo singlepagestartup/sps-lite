@@ -1,0 +1,22 @@
+{
+  "id": "e1b1822a-be95-4da2-bdbf-7d004f27f159",
+  "direction": "default",
+  "footerBlockId": "ce35ee2f-021a-492d-94a5-d14ac03261c6",
+  "buttonsArrayId": "7bfcd695-6d95-4f0b-ae52-89263621c4bb",
+  "footerBlock": {
+    "id": "ce35ee2f-021a-492d-94a5-d14ac03261c6",
+    "createdAt": "2024-05-21T17:55:13.322Z",
+    "updatedAt": "2024-05-21T17:55:13.322Z",
+    "variant": "default",
+    "className": null
+  },
+  "buttonsArray": {
+    "id": "7bfcd695-6d95-4f0b-ae52-89263621c4bb",
+    "createdAt": "2024-05-24T03:05:27.496Z",
+    "updatedAt": "2024-05-24T03:05:27.496Z",
+    "variant": "default",
+    "title": "Terms buttons array",
+    "className": "",
+    "description": ""
+  }
+}

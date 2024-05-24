@@ -1,0 +1,25 @@
+{
+  "id": "50621e42-198d-44f7-b82a-33b91fb0e085",
+  "createdAt": "2024-05-21T19:51:47.723Z",
+  "updatedAt": "2024-05-21T19:51:47.723Z",
+  "variant": "default",
+  "title": "First slide",
+  "subtitle": "Hello from first slide",
+  "description": "",
+  "className": "",
+  "widgetsToSlides": [
+    {
+      "id": "34dfb67c-4b61-4482-9774-6bc09a45fe82",
+      "direction": "reverse",
+      "widgetId": "ee3de4a3-934d-4ed3-9ae7-310b21775c00",
+      "slideId": "50621e42-198d-44f7-b82a-33b91fb0e085"
+    }
+  ],
+  "slidersToSlides": [
+    {
+      "id": "be722046-f242-4afa-aaa1-efeda98685a8",
+      "sliderId": "205b9826-faa8-42f7-a5b4-1e920533960e",
+      "slideId": "50621e42-198d-44f7-b82a-33b91fb0e085"
+    }
+  ]
+}

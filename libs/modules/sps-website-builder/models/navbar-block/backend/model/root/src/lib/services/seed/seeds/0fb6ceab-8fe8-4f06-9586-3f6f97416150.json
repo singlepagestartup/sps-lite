@@ -1,0 +1,35 @@
+{
+  "id": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+  "createdAt": "2024-05-20T21:48:40.649Z",
+  "updatedAt": "2024-05-20T21:48:40.649Z",
+  "variant": "default",
+  "navbarBlocksToButtonsArrays": [
+    {
+      "id": "f6e30f81-f94d-4097-a872-278be90a2270",
+      "direction": "default",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+      "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd"
+    }
+  ],
+  "navbarBlocksToLogotypes": [
+    {
+      "id": "c0be452c-9a59-483d-bffc-e8742228a2a3",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+      "logotypeId": "a2f313f5-9636-42c0-87dd-c8a30e91225d"
+    }
+  ],
+  "widgetsToNavbarBlocks": [
+    {
+      "id": "1cf8a16b-59d3-455b-81b4-3c452e36edec",
+      "direction": "reverse",
+      "widgetId": "ec54c3d5-753b-4451-9907-c56630791cf4",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150"
+    },
+    {
+      "id": "92f35467-87db-4eb6-bb93-f8d710ad336c",
+      "direction": "default",
+      "widgetId": "5a261571-d7f5-4be0-913e-c2af04b0929f",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150"
+    }
+  ]
+}

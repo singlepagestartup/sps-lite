@@ -1,0 +1,25 @@
+{
+  "id": "e42a760d-3870-428e-8655-27b8ac9822f9",
+  "direction": "default",
+  "orderIndex": 0,
+  "buttonsArrayId": "7bfcd695-6d95-4f0b-ae52-89263621c4bb",
+  "buttonId": "d7b7bd15-93f1-4d58-8428-34b7d215134f",
+  "buttonsArray": {
+    "id": "7bfcd695-6d95-4f0b-ae52-89263621c4bb",
+    "createdAt": "2024-05-24T03:05:27.496Z",
+    "updatedAt": "2024-05-24T03:05:27.496Z",
+    "variant": "default",
+    "title": "Terms buttons array",
+    "className": "",
+    "description": ""
+  },
+  "button": {
+    "title": "Privacy Policy",
+    "url": "/privacy-policy",
+    "className": "",
+    "id": "d7b7bd15-93f1-4d58-8428-34b7d215134f",
+    "createdAt": "2024-05-24T03:05:07.734Z",
+    "updatedAt": "2024-05-24T03:05:07.734Z",
+    "variant": "link"
+  }
+}

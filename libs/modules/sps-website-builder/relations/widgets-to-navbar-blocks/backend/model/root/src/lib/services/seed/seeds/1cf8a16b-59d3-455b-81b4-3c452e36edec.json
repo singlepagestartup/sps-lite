@@ -1,0 +1,19 @@
+{
+  "id": "1cf8a16b-59d3-455b-81b4-3c452e36edec",
+  "direction": "reverse",
+  "widgetId": "ec54c3d5-753b-4451-9907-c56630791cf4",
+  "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+  "widget": {
+    "title": "File storage widget",
+    "id": "ec54c3d5-753b-4451-9907-c56630791cf4",
+    "createdAt": "2024-05-23T01:42:06.317Z",
+    "updatedAt": "2024-05-23T01:42:06.317Z",
+    "variant": "default"
+  },
+  "navbarBlock": {
+    "id": "0fb6ceab-8fe8-4f06-9586-3f6f97416150",
+    "createdAt": "2024-05-20T21:48:40.649Z",
+    "updatedAt": "2024-05-20T21:48:40.649Z",
+    "variant": "default"
+  }
+}

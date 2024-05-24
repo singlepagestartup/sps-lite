@@ -1,0 +1,25 @@
+{
+  "id": "96546889-9073-4175-93c2-251ae27fda89",
+  "direction": "default",
+  "orderIndex": 0,
+  "buttonsArrayId": "71be25f3-3f45-438a-9864-7c2a8be59bfd",
+  "buttonId": "b4ae5837-d563-4f33-ae8d-927005d597b8",
+  "buttonsArray": {
+    "id": "71be25f3-3f45-438a-9864-7c2a8be59bfd",
+    "createdAt": "2024-05-24T01:52:14.279Z",
+    "updatedAt": "2024-05-24T01:52:14.279Z",
+    "variant": "default",
+    "title": "Navbar buttons",
+    "className": "",
+    "description": ""
+  },
+  "button": {
+    "title": "About",
+    "url": "/about",
+    "className": "",
+    "id": "b4ae5837-d563-4f33-ae8d-927005d597b8",
+    "createdAt": "2024-05-20T21:47:52.230Z",
+    "updatedAt": "2024-05-20T21:47:52.230Z",
+    "variant": "secondary"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "variant": "default",
+  "id": "dab8acf5-b70b-4f1d-aee3-07228da020c8",
+  "createdAt": "2024-05-22T23:31:06.773Z",
+  "updatedAt": "2024-05-22T23:31:06.773Z",
+  "title": "Logo widget",
+  "widgetsToFiles": [
+    {
+      "id": "02fa62c6-4764-4910-b6e7-736f77dcf428",
+      "widgetId": "dab8acf5-b70b-4f1d-aee3-07228da020c8",
+      "fileId": "36f2b0d8-4bfe-445a-bb34-09dc0d722a3e"
+    }
+  ]
+}

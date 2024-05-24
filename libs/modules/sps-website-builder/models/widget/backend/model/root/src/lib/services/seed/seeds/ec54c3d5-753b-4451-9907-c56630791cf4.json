@@ -1,0 +1,32 @@
+{
+  "title": "File storage widget",
+  "id": "ec54c3d5-753b-4451-9907-c56630791cf4",
+  "createdAt": "2024-05-23T01:42:06.317Z",
+  "updatedAt": "2024-05-23T01:42:06.317Z",
+  "variant": "default",
+  "widgetsToSlides": [],
+  "widgetsToLogotypes": [],
+  "widgetsToSpsFileStorageModuleWidgets": [
+    {
+      "id": "2fb858b1-ff69-4b67-b10b-c767e245d8ea",
+      "widgetId": "ec54c3d5-753b-4451-9907-c56630791cf4",
+      "spsFileStorageModuleWidgetId": "dab8acf5-b70b-4f1d-aee3-07228da020c8"
+    }
+  ],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [
+    {
+      "id": "1cf8a16b-59d3-455b-81b4-3c452e36edec",
+      "direction": "reverse",
+      "widgetId": "ec54c3d5-753b-4451-9907-c56630791cf4",
+      "navbarBlockId": "0fb6ceab-8fe8-4f06-9586-3f6f97416150"
+    }
+  ],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": []
+}

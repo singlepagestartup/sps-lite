@@ -1,0 +1,21 @@
+{
+  "id": "e34af9f0-f753-4180-9223-4fa753a512a7",
+  "direction": "reverse",
+  "widgetId": "2df36833-1f38-42b9-bf28-0c1a7e6fc484",
+  "logotypeId": "a2f313f5-9636-42c0-87dd-c8a30e91225d",
+  "widget": {
+    "title": "Logotype file component",
+    "id": "2df36833-1f38-42b9-bf28-0c1a7e6fc484",
+    "createdAt": "2024-05-23T03:25:34.092Z",
+    "updatedAt": "2024-05-23T03:25:34.092Z",
+    "variant": "default"
+  },
+  "logotype": {
+    "className": "w-40",
+    "url": "/",
+    "id": "a2f313f5-9636-42c0-87dd-c8a30e91225d",
+    "createdAt": "2024-05-20T22:03:41.404Z",
+    "updatedAt": "2024-05-20T22:03:41.404Z",
+    "variant": "default"
+  }
+}
