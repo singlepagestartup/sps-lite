@@ -36,6 +36,7 @@ export class Coder {
   exportInterface: ExportInterface;
   importStyles: ImportStyles;
   template: string;
+  level: string;
 
   constructor({
     parent,
@@ -56,6 +57,7 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
     this.template = template;
+    this.level = level;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
@@ -120,6 +122,7 @@ export class Coder {
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,
+        level: this.level,
         api_client_import_path: apiClientImportPath,
         api_server_import_path: apiServerImportPath,
         redux_import_path: reduxImportPath,
