@@ -34,6 +34,48 @@ coverage
 # Drizzle
 ############################
 !*.sql
+############################
+# Next.js
+############################
+.next
+out
+build
+.env
+.env*.local
+.env*.testing
+.vercel
+next-env.d.ts
+
+############################
+# Testing
+############################
+coverage
+
+############################
+# ICP
+############################
+.dfx
+*.key
+*.pem
+*.pem.base64
+*-wallet.txt
+.env.cloudflare
+
+############################
+# Sentry
+############################
+.sentryclirc
+
+############################
+# Drizzle
+############################
+!*.sql
+src/db/migrations/meta/*_snapshot.json
+
+############################
+# Uploads
+############################
+/public/sps-file-storage
 
 ############################
 # Uploads
