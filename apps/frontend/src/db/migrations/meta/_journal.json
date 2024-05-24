@@ -134,6 +134,13 @@
       "when": 1716507220814,
       "tag": "0018_sour_ted_forrester",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1716508932893,
+      "tag": "0019_modern_rictor",
+      "breakpoints": true
     }
   ]
 }

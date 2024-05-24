@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBButtonsArray,
+  Relations as SPSWBButtonsArrayRelations,
+} from "@sps/sps-website-builder-models-buttons-array-backend-schema";
+export {
   Table as SPSWBFooterBlocksToLogotypes,
   Relations as SPSWBFooterBlocksToLogotypesRelations,
 } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema";

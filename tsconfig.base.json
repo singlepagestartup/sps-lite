@@ -819,6 +819,21 @@
       "@sps/sps-website-builder-models-button-frontend-redux": [
         "libs/modules/sps-website-builder/models/button/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-buttons-array-backend-app": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-model": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/table/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-buttons-array-contracts": [
         "libs/modules/sps-website-builder/models/buttons-array/contracts/root/src/index.ts"
       ],
@@ -834,11 +849,8 @@
       "@sps/sps-website-builder-models-buttons-array-frontend-component": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-column-with-title": [
-        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/column-with-title/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-row": [
-        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/row/src/index.ts"
+      "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
       "@sps/sps-website-builder-models-buttons-array-frontend-redux": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/redux/src/index.ts"

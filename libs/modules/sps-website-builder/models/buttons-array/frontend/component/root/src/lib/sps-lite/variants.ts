@@ -1,7 +1,5 @@
-import { Component as ColumnWithTitle } from "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-column-with-title";
-import { Component as Row } from "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-row";
+import { Component as Default } from "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-default";
 
 export const variants = {
-  "column-with-title": ColumnWithTitle,
-  row: Row,
+  default: Default,
 };

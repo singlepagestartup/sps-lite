@@ -1,3 +1,4 @@
+import { app as buttonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-app";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-app";
 import { app as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-app";
 import { app as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-app";
@@ -40,6 +41,7 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/buttons-arrays": buttonsArray,
   "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
   "/widgets-to-slides": widgetsToSlides,
   "/widgets-to-logotypes": widgetsToLogotypes,

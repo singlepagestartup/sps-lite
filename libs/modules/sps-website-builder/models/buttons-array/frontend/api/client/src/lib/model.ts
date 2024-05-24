@@ -13,5 +13,5 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "buttons-array";
-export const route = "components/elements.buttons-array";
+export const route = "buttons-arrays";
 export const populate = modelPopulate;
