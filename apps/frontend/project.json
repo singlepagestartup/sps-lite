@@ -113,6 +113,9 @@
             "command": "nx run frontend:db:sps-website-builder-migrate"
           },
           {
+            "command": "nx run frontend:db:sps-file-storage-migrate"
+          },
+          {
             "command": "nx run frontend:db:startup-migrate"
           }
         ]
