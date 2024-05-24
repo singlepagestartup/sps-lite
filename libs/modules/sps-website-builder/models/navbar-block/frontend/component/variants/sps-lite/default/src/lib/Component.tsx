@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/shadcn";
-import { Component as NavbarsToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-frontend-component";
+import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component";
 import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -60,41 +60,29 @@ function DisclosureInner({
                 })}
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                {props.data.navbarBlocksToButtons.map(
-                  (navbarBlockToButton, index) => {
-                    if (navbarBlockToButton.place !== "default") {
-                      return;
-                    }
-
-                    return (
-                      <NavbarsToButtons
-                        key={index}
-                        variant="default"
-                        data={navbarBlockToButton}
-                        isServer={false}
-                      />
-                    );
-                  },
-                )}
-              </div>
-            </div>
-            <div className="hidden lg:flex lg:space-x-2 items-center">
-              {props.data.navbarBlocksToButtons.map(
-                (navbarBlockToButton, index) => {
-                  if (navbarBlockToButton.place !== "additional") {
-                    return;
-                  }
-
+                {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
                   return (
-                    <NavbarsToButtons
+                    <NavbarsToButtonsArrays
                       key={index}
                       variant="default"
-                      data={navbarBlockToButton}
+                      data={entity}
                       isServer={false}
                     />
                   );
-                },
-              )}
+                })}
+              </div>
+            </div>
+            <div className="hidden lg:flex lg:space-x-2 items-center">
+              {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
+                return (
+                  <NavbarsToButtonsArrays
+                    key={index}
+                    variant="default"
+                    data={entity}
+                    isServer={false}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

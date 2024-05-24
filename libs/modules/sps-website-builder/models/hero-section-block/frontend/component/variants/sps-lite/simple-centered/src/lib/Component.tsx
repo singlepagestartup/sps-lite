@@ -1,7 +1,7 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IComponentPropsExtended } from "./interface";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
-import { Component as HeroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component";
+import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -34,13 +34,13 @@ export function Component(props: IComponentPropsExtended) {
               </ReactMarkdown>
             ) : null}
             <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
-              {props.data.heroSectionBlocksToButtons.map(
-                (heroSectionBlocksToButton, index) => {
+              {props.data.heroSectionBlocksToButtonsArrays.map(
+                (entity, index) => {
                   return (
-                    <HeroSectionBlocksToButtons
+                    <HeroSectionBlocksToButtonsArrays
                       key={index}
                       isServer={props.isServer}
-                      data={heroSectionBlocksToButton}
+                      data={entity}
                       variant="default"
                     />
                   );

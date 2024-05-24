@@ -148,6 +148,13 @@
       "when": 1716511171840,
       "tag": "0020_lame_sumo",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "6",
+      "when": 1716512966305,
+      "tag": "0021_easy_patriot",
+      "breakpoints": true
     }
   ]
 }

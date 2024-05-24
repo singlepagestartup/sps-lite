@@ -2304,6 +2304,9 @@
       "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-redux": [
         "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
       ],
@@ -2441,6 +2444,9 @@
       ],
       "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-redux": [
         "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/redux/src/index.ts"

@@ -2,7 +2,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
-import { Component as HeroSectionsToButtonsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-frontend-component-variants-sps-lite-select-right";
+import { Component as HeroSectionsToButtonsArraysSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="hero-section-block"
       data-variant={props.variant}
-      className={`${props.className || "flex flex-col gap-6"}`}
+      className={`w-full ${props.className || "flex flex-col gap-6"}`}
     >
       <FormField
         ui="shadcn"
@@ -31,19 +31,17 @@ export function Component(props: IComponentPropsExtended) {
       />
       <ModelEntitiesListCard title="hero-section-block-to-buttons">
         <div className="flex flex-col gap-6">
-          {props.data?.heroSectionBlocksToButtons.map(
-            (heroSectionBlocksToButton, index) => {
-              return (
-                <HeroSectionsToButtonsSpsLiteSelectRight
-                  key={index}
-                  data={heroSectionBlocksToButton}
-                  isServer={props.isServer}
-                  variant="select-right"
-                />
-              );
-            },
-          )}
-          <HeroSectionsToButtonsSpsLiteSelectRight
+          {props.data?.heroSectionBlocksToButtonsArrays.map((entity, index) => {
+            return (
+              <HeroSectionsToButtonsArraysSpsLiteSelectRight
+                key={index}
+                data={entity}
+                isServer={props.isServer}
+                variant="select-right"
+              />
+            );
+          })}
+          <HeroSectionsToButtonsArraysSpsLiteSelectRight
             isServer={props.isServer}
             variant="select-right"
           />
