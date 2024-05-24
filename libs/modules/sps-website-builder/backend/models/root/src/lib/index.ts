@@ -1,3 +1,5 @@
+import { model as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-model";
+import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-model";
 import { model as buttonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-model";
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-model";
 import { model as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-model";
@@ -40,6 +42,8 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  heroSectionBlocksToButtonsArrays,
+  navbarBlocksToButtonsArrays,
   buttonsArray,
   footerBlocksToLogotypes,
   widgetsToSlides,

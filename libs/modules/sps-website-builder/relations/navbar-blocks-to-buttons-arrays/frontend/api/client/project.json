@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-client",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

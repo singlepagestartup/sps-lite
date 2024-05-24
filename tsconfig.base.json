@@ -825,6 +825,12 @@
       "@sps/sps-website-builder-models-buttons-array-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-hero-section-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/hero-section-blocks-to-buttons-arrays/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-navbar-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/navbar-blocks-to-buttons-arrays/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-buttons-array-backend-schema-table": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/table/src/index.ts"
       ],
@@ -1212,6 +1218,9 @@
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-buttons-arrays/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-hero-section-block-backend-schema-relations-hero-section-blocks-to-files": [
         "libs/modules/sps-website-builder/models/hero-section-block/backend/schema/relations/hero-section-blocks-to-files/src/index.ts"
       ],
@@ -1532,6 +1541,9 @@
       ],
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-navbar-blocks-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/navbar-blocks-to-buttons-arrays/src/index.ts"
       ],
       "@sps/sps-website-builder-models-navbar-block-backend-schema-relations-navbar-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/navbar-block/backend/schema/relations/navbar-blocks-to-logotypes/src/index.ts"
@@ -2262,6 +2274,39 @@
       "@sps/sps-website-builder-relations-footers-to-widgets-frontend-redux": [
         "libs/modules/sps-website-builder/relations/footers-to-widgets/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app": [
         "libs/modules/sps-website-builder/relations/hero-section-blocks-to-files/backend/app/src/index.ts"
       ],
@@ -2366,6 +2411,39 @@
       ],
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-app": [
         "libs/modules/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/src/index.ts"

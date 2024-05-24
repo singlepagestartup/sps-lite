@@ -1,4 +1,12 @@
 export {
+  Table as SPSWBHeroSectionBlocksToButtonsArrays,
+  Relations as SPSWBHeroSectionBlocksToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-schema";
+export {
+  Table as SPSWBNavbarBlocksToButtonsArrays,
+  Relations as SPSWBNavbarBlocksToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-schema";
+export {
   Table as SPSWBButtonsArray,
   Relations as SPSWBButtonsArrayRelations,
 } from "@sps/sps-website-builder-models-buttons-array-backend-schema";

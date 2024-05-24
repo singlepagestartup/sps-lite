@@ -9,13 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "<%= api_client_import_path %>";
-// import { Component as AdminSelectInput } from "";
+import { Component as AdminSelectInput } from "<%= right_model_root_frontend_component_import_path %>";
 
 const formSchema = z.object({
-  // replace with actual schema key
-  leftModelId: z.string().min(1),
-  // replace with actual schema key
-  rightModelId: z.string().min(1),
+  <%= left_model_name_property_cased %>Id: z.string().min(1),
+  <%= right_model_name_property_cased %>Id: z.string().min(1),
   direction: z.enum(["default", "reverse"]).default("default"),
 });
 
@@ -28,8 +26,8 @@ export function Component(props: IComponentPropsExtended) {
     mode: "all",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      leftModelId: props.data?.leftModelId || props.leftModelId,
-      rightModelId: props.data?.rightModelId,
+      <%= left_model_name_property_cased %>Id: props.data?.<%= left_model_name_property_cased %>Id || props.<%= left_model_name_property_cased %>Id,
+      <%= right_model_name_property_cased %>Id: props.data?.<%= right_model_name_property_cased %>Id,
       direction: props.data?.direction || "default",
     },
   });
@@ -37,7 +35,7 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.leftModelId || !data.rightModelId) {
+    if (!data.<%= left_model_name_property_cased %>Id || !data.<%= right_model_name_property_cased %>Id) {
       return;
     }
 
@@ -56,15 +54,13 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
-    storeName: "<%= module_name %>/<left-schema-tag>",
+    storeName: "<%= module_name %>/<%= left_model_name_kebab_cased_pluralized %>",
     actionFilter: (action) => {
-      return action.type === "<left-schema-tag>/executeMutation/fulfilled";
+      return action.type === "<%= left_model_name_kebab_cased_pluralized %>/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
-        // replace with actual schema key
-        form.setValue("leftModelId", action.payload.id);
+        form.setValue("<%= left_model_name_property_cased %>Id", action.payload.id);
       }
 
       form.handleSubmit(onSubmit)();
@@ -100,18 +96,18 @@ export function Component(props: IComponentPropsExtended) {
                 ["reverse", "Reverse"],
               ]}
             />
-            {/* <AdminSelectInput
+            <AdminSelectInput
               isServer={false}
               form={form}
               variant="admin-select-input"
-              formFieldName="rightModelId"
-            /> */}
+              formFieldName="<%= right_model_name_property_cased %>Id"
+            />
           </div>
         </ModelEntityCard>
       ) : (
       <Card className="overflow-hidden">
         <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
-          Select entity from <%= right_model_name_pluralized %>
+          Select entity from <%= right_model_name_kebab_cased_pluralized %>
         </h3>
         <CardContent className="flex flex-col gap-6">
           <FormField
@@ -126,12 +122,12 @@ export function Component(props: IComponentPropsExtended) {
                 ["reverse", "Reverse"],
               ]}
             />
-          {/* <AdminSelectInput
+          <AdminSelectInput
             isServer={false}
             form={form}
             variant="admin-select-input"
-            formFieldName="rightModelId"
-          /> */}
+            formFieldName="<%= right_model_name_property_cased %>Id"
+          />
         </CardContent>
       </Card>)}
     </div>
