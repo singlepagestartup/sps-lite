@@ -4,10 +4,14 @@ import { db } from "@sps/sps-db-provider";
 import { cwd } from "process";
 
 const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");
+const migrationsTable = "startup_migrations";
 
 export const migrate = async () => {
   try {
-    await drizzleMigrator(db, { migrationsFolder });
+    await drizzleMigrator(db, {
+      migrationsFolder,
+      migrationsTable,
+    });
 
     console.log("Migration successful");
     process.exit(0);

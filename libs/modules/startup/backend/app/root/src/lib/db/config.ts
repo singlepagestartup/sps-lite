@@ -14,4 +14,5 @@ const config = defineConfig({
   verbose: true,
   strict: true,
 }) satisfies Config;
+
 export default config;
