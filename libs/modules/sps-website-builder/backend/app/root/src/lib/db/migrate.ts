@@ -3,10 +3,7 @@ import path from "path";
 import { db } from "@sps/sps-db-provider";
 import { cwd } from "process";
 
-// const migrationsFolder = path.resolve(__dirname, "./migrations");
-
 const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");
-console.log(`🚀 ~ migrationsFolder:`, migrationsFolder);
 
 export const migrate = async () => {
   try {

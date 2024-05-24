@@ -1,9 +1,10 @@
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config, defineConfig } from "drizzle-kit";
 import path from "path";
+import { cwd } from "process";
 
-const out = path.resolve(__dirname, "./migrations");
-const modulesSchemaPaths = [path.resolve(__dirname, "./schema.ts")];
+const modulesSchemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
+const out = "./src/lib/db/migrations";
 
 const config = defineConfig({
   schema: modulesSchemaPaths,

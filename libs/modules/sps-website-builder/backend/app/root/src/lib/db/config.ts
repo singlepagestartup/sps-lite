@@ -3,16 +3,12 @@ import { Config, defineConfig } from "drizzle-kit";
 import path from "path";
 import { cwd } from "process";
 
-const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");
-console.log(`🚀 ~ migrationsFolder:`, migrationsFolder);
-const out = path.resolve(cwd(), __dirname, "./migrations");
-console.log(`🚀 ~ out:`, out);
 const modulesSchemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
-console.log(`🚀 ~ modulesSchemaPaths:`, modulesSchemaPaths);
+const out = "./src/lib/db/migrations";
 
 const config = defineConfig({
   schema: modulesSchemaPaths,
-  out: "./migrations",
+  out,
   dialect: "postgresql",
   dbCredentials: DATABASE_OPTIONS,
   verbose: true,
