@@ -52,14 +52,7 @@ export {
   Table as SPSWBLogotype,
   Relations as SPSWBLogotypeRelations,
 } from "@sps/sps-website-builder-models-logotype-backend-schema";
-export {
-  Table as SPSWBHeroSectionBlocksToButtons,
-  Relations as SPSWBHeroSectionBlocksToButtonsRelations,
-} from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-schema";
-export {
-  Table as SPSWBNavbarBlocksToButtons,
-  Relations as SPSWBNavbarBlocksToButtonsRelations,
-} from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-schema";
+
 export {
   Table as SPSWBButton,
   Relations as SPSWBButtonRelations,

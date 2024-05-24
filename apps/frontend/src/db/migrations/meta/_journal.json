@@ -141,6 +141,13 @@
       "when": 1716508932893,
       "tag": "0019_modern_rictor",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1716511171840,
+      "tag": "0020_lame_sumo",
+      "breakpoints": true
     }
   ]
 }

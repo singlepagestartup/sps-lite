@@ -13,8 +13,7 @@ import { model as feature } from "@sps/sps-website-builder-models-feature-backen
 import { model as featuresSectionBlock } from "@sps/sps-website-builder-models-features-section-block-backend-model";
 import { model as navbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-backend-model";
 import { model as logotype } from "@sps/sps-website-builder-models-logotype-backend-model";
-import { model as heroSectionBlocksToButtons } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-backend-model";
-import { model as navbarBlocksToButtons } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-backend-model";
+
 import { model as button } from "@sps/sps-website-builder-models-button-backend-model";
 import { model as slidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-model";
 import { model as sliderBlocksToSliders } from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-model";
@@ -56,8 +55,7 @@ export const models = {
   featuresSectionBlock,
   navbarBlocksToLogotypes,
   logotype,
-  heroSectionBlocksToButtons,
-  navbarBlocksToButtons,
+
   button,
   slidersToSlides,
   sliderBlocksToSliders,
