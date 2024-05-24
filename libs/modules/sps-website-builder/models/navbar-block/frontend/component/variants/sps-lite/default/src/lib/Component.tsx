@@ -5,7 +5,6 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
-import { Button } from "@sps/shadcn";
 import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component";
 import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
@@ -72,18 +71,6 @@ function DisclosureInner({
                 })}
               </div>
             </div>
-            <div className="hidden lg:flex lg:space-x-2 items-center">
-              {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
-                return (
-                  <NavbarsToButtonsArrays
-                    key={index}
-                    variant="default"
-                    data={entity}
-                    isServer={false}
-                  />
-                );
-              })}
-            </div>
           </div>
         </div>
         <div className="flex flex-shrink-0 items-center lg:hidden pr-2">
@@ -100,28 +87,16 @@ function DisclosureInner({
 
       <Disclosure.Panel className="lg:hidden py-2">
         <div className="flex flex-col gap-3 px-2 ">
-          <Button variant="link">Main page</Button>
-          <Button variant="link">About page</Button>
-          {/* {props.data.buttons?.map((button, index) => {
+          {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
             return (
-              <Button
-                isServer={false}
+              <NavbarsToButtonsArrays
                 key={index}
-                variant={button.variant}
-                data={button}
+                variant="default"
+                data={entity}
+                isServer={false}
               />
             );
           })}
-          {props.data.additionalButtons?.map((button, index) => {
-            return (
-              <Button
-                isServer={false}
-                key={index}
-                variant={button.variant}
-                data={button}
-              />
-            );
-          })} */}
         </div>
       </Disclosure.Panel>
     </>

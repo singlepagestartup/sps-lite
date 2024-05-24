@@ -29,7 +29,7 @@ export function Component(props: IComponentPropsExtended) {
         placeholder="Type title"
         options={variants.map((variant) => [variant, variant])}
       />
-      <ModelEntitiesListCard title="hero-section-block-to-buttons">
+      <ModelEntitiesListCard title="hero-section-block-to-buttons-arrays">
         <div className="flex flex-col gap-6">
           {props.data?.heroSectionBlocksToButtonsArrays.map((entity, index) => {
             return (

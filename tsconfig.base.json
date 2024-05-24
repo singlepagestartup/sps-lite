@@ -753,6 +753,9 @@
       "@sps/sps-website-builder-models-button-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/button/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-button-backend-schema-relations-buttons-arrays-to-buttons": [
+        "libs/modules/sps-website-builder/models/button/backend/schema/relations/buttons-arrays-to-buttons/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-button-backend-schema-table": [
         "libs/modules/sps-website-builder/models/button/backend/schema/table/src/index.ts"
       ],
@@ -824,6 +827,9 @@
       ],
       "@sps/sps-website-builder-models-buttons-array-backend-schema-relations": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-buttons-arrays-to-buttons": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/buttons-arrays-to-buttons/src/index.ts"
       ],
       "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-hero-section-blocks-to-buttons-arrays": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/hero-section-blocks-to-buttons-arrays/src/index.ts"
@@ -2168,6 +2174,42 @@
       ],
       "@sps/sps-website-builder-models-widget-frontend-redux": [
         "libs/modules/sps-website-builder/models/widget/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-app": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-model": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-schema": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-contracts": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-app": [
         "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/backend/app/src/index.ts"

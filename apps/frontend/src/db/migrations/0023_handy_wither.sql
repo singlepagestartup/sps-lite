@@ -1,0 +1,1 @@
+ALTER TABLE "sps_w_b_bs_as_to_bs_i0l" ADD COLUMN "order_index" integer DEFAULT 0 NOT NULL;

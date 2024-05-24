@@ -24,6 +24,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+
         <ModelEntitiesListCard title="footer-blocks-to-logotypes">
           <div className="flex flex-col gap-6">
             {props.data?.footerBlocksToLogotypes.map((entity, index) => {

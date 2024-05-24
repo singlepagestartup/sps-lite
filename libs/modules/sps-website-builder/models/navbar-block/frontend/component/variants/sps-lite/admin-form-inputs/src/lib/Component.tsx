@@ -33,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type class name"
         />
 
-        <ModelEntitiesListCard title="navbar-blocks-to-buttons">
+        <ModelEntitiesListCard title="navbar-blocks-to-buttons-arrays">
           <div className="flex flex-col gap-6">
             {props.data?.navbarBlocksToButtonsArrays.map((entity, index) => {
               return (
