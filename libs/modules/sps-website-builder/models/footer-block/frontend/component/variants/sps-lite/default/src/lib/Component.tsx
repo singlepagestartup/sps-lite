@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component";
+import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -25,27 +26,16 @@ export function Component(props: IComponentPropsExtended) {
             })}
           </div>
           <div className="flex flex-col col-span-2 col-start-3 lg:grid lg:grid-cols-3 gap-6">
-            {["Buttons Array 1", "Buttons Array 2", "Buttons Array 3"].map(
-              (buttonsArray, bAIndex) => {
-                return (
-                  <div
-                    key={bAIndex}
-                    className="flex flex-col items-start gap-6"
-                  >
-                    <p>{buttonsArray}</p>
-                    <div className="flex flex-col gap-3">
-                      {["Link 1", "Link 2", "Link 3"].map((button, index) => {
-                        return (
-                          <button key={index} className="w-fit">
-                            {button}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              },
-            )}
+            {props.data.footerBlocksToButtonsArrays.map((entity, index) => {
+              return (
+                <FooterBlocksToButtonsArrays
+                  key={index}
+                  isServer={props.isServer}
+                  variant="default"
+                  data={entity}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="w-full h-px bg-gray-400"></div>
