@@ -70,7 +70,6 @@ coverage
 # Drizzle
 ############################
 !*.sql
-src/db/migrations/meta/*_snapshot.json
 
 ############################
 # Uploads
