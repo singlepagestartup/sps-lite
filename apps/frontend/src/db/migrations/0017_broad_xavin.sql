@@ -1,1 +1,0 @@
-ALTER TABLE "sps_w_b_fr_bk" ADD COLUMN "class_name" text;

@@ -8,6 +8,24 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_button" (
 	"variant" text DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_bs_ay_8m3" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"variant" text DEFAULT 'default' NOT NULL,
+	"title" text,
+	"class_name" text,
+	"description" text
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_bs_as_to_bs_i0l" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
+	"order_index" integer DEFAULT 0 NOT NULL,
+	"by_id" uuid NOT NULL,
+	"bn_id" uuid NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_fs_sn_bs_to_fs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"fk_id" uuid NOT NULL,
@@ -39,7 +57,22 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_fr_bk" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"variant" text DEFAULT 'default' NOT NULL,
+	"class_name" text
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_fr_bs_to_bs_as_d3j" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
+	"fk_id" uuid NOT NULL,
+	"by_id" uuid NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_fr_bs_to_ls_pbe" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
+	"fk_id" uuid NOT NULL,
+	"le_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_fs_to_ws" (
@@ -60,10 +93,11 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_ho_sn_bs" (
 	"variant" text DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_ho_sn_bs_to_bs" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ho_sn_bs_to_bs_as_pmd" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
 	"hk_id" uuid NOT NULL,
-	"bn_id" uuid NOT NULL
+	"by_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_ho_sn_bs_to_fs_y4o" (
@@ -101,17 +135,12 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_logotype" (
 	"variant" text DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_ls_to_fs_e2j" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"le_id" uuid NOT NULL,
-	"fe_id" uuid NOT NULL
-);
---> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_navbars" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"variant" text DEFAULT 'default' NOT NULL,
+	"class_name" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_nr_bk" (
@@ -121,12 +150,11 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_nr_bk" (
 	"variant" text DEFAULT 'default' NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_w_b_nr_bs_to_bs" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_nr_bs_to_bs_as_njg" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"place" text DEFAULT 'default',
-	"order_index" integer DEFAULT 0 NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
 	"nk_id" uuid NOT NULL,
-	"bn_id" uuid NOT NULL
+	"by_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_nr_bs_to_ls" (
@@ -169,14 +197,20 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_slide" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"variant" text DEFAULT 'default' NOT NULL,
+	"title" text,
+	"subtitle" text,
+	"description" text,
+	"class_name" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_slider" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"variant" text DEFAULT 'default' NOT NULL,
+	"title" text,
+	"class_name" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_sr_bk" (
@@ -229,8 +263,16 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_ho_sn_bs" (
 	"ho_sn_bk_id" uuid NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_ls_xth" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
+	"wt_id" uuid NOT NULL,
+	"le_id" uuid NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_nr_bs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"direction" text DEFAULT 'default' NOT NULL,
 	"wt_id" uuid NOT NULL,
 	"nk_id" uuid NOT NULL
 );
@@ -241,21 +283,36 @@ CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_sr_bs" (
 	"sk_id" uuid NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sps_f_s_file" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_ss_3bx" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"url" text NOT NULL,
-	"class_name" text,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"direction" text DEFAULT 'default' NOT NULL,
+	"wt_id" uuid NOT NULL,
+	"se_id" uuid NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "s_widget" (
+CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_ss_fe_se_me_ws_zb8" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL,
-	"variant" text DEFAULT 'default' NOT NULL
+	"wt_id" uuid NOT NULL,
+	"sps_fe_se_me_wt_id" uuid NOT NULL
 );
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "sps_w_b_ws_to_sp_me_ws_xy7" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"wt_id" uuid NOT NULL,
+	"st_me_wt_id" uuid NOT NULL
+);
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_bs_as_to_bs_i0l" ADD CONSTRAINT "sps_w_b_bs_as_to_bs_i0l_by_id_sps_w_b_bs_ay_8m3_id_fk" FOREIGN KEY ("by_id") REFERENCES "public"."sps_w_b_bs_ay_8m3"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_bs_as_to_bs_i0l" ADD CONSTRAINT "sps_w_b_bs_as_to_bs_i0l_bn_id_sps_w_b_button_id_fk" FOREIGN KEY ("bn_id") REFERENCES "public"."sps_w_b_button"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "sps_w_b_fs_sn_bs_to_fs" ADD CONSTRAINT "sps_w_b_fs_sn_bs_to_fs_fk_id_sps_w_b_fs_sn_bk_id_fk" FOREIGN KEY ("fk_id") REFERENCES "public"."sps_w_b_fs_sn_bk"("id") ON DELETE cascade ON UPDATE no action;
@@ -265,6 +322,30 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "sps_w_b_fs_sn_bs_to_fs" ADD CONSTRAINT "sps_w_b_fs_sn_bs_to_fs_fe_id_sps_w_b_feature_id_fk" FOREIGN KEY ("fe_id") REFERENCES "public"."sps_w_b_feature"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_fr_bs_to_bs_as_d3j" ADD CONSTRAINT "sps_w_b_fr_bs_to_bs_as_d3j_fk_id_sps_w_b_fr_bk_id_fk" FOREIGN KEY ("fk_id") REFERENCES "public"."sps_w_b_fr_bk"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_fr_bs_to_bs_as_d3j" ADD CONSTRAINT "sps_w_b_fr_bs_to_bs_as_d3j_by_id_sps_w_b_bs_ay_8m3_id_fk" FOREIGN KEY ("by_id") REFERENCES "public"."sps_w_b_bs_ay_8m3"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_fr_bs_to_ls_pbe" ADD CONSTRAINT "sps_w_b_fr_bs_to_ls_pbe_fk_id_sps_w_b_fr_bk_id_fk" FOREIGN KEY ("fk_id") REFERENCES "public"."sps_w_b_fr_bk"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_fr_bs_to_ls_pbe" ADD CONSTRAINT "sps_w_b_fr_bs_to_ls_pbe_le_id_sps_w_b_logotype_id_fk" FOREIGN KEY ("le_id") REFERENCES "public"."sps_w_b_logotype"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -282,13 +363,13 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_ho_sn_bs_to_bs" ADD CONSTRAINT "sps_w_b_ho_sn_bs_to_bs_hk_id_sps_w_b_ho_sn_bs_id_fk" FOREIGN KEY ("hk_id") REFERENCES "public"."sps_w_b_ho_sn_bs"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ho_sn_bs_to_bs_as_pmd" ADD CONSTRAINT "sps_w_b_ho_sn_bs_to_bs_as_pmd_hk_id_sps_w_b_ho_sn_bs_id_fk" FOREIGN KEY ("hk_id") REFERENCES "public"."sps_w_b_ho_sn_bs"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_ho_sn_bs_to_bs" ADD CONSTRAINT "sps_w_b_ho_sn_bs_to_bs_bn_id_sps_w_b_button_id_fk" FOREIGN KEY ("bn_id") REFERENCES "public"."sps_w_b_button"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_ho_sn_bs_to_bs_as_pmd" ADD CONSTRAINT "sps_w_b_ho_sn_bs_to_bs_as_pmd_by_id_sps_w_b_bs_ay_8m3_id_fk" FOREIGN KEY ("by_id") REFERENCES "public"."sps_w_b_bs_ay_8m3"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -324,19 +405,13 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_ls_to_fs_e2j" ADD CONSTRAINT "sps_w_b_ls_to_fs_e2j_le_id_sps_w_b_logotype_id_fk" FOREIGN KEY ("le_id") REFERENCES "public"."sps_w_b_logotype"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_nr_bs_to_bs_as_njg" ADD CONSTRAINT "sps_w_b_nr_bs_to_bs_as_njg_nk_id_sps_w_b_nr_bk_id_fk" FOREIGN KEY ("nk_id") REFERENCES "public"."sps_w_b_nr_bk"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "sps_w_b_nr_bs_to_bs" ADD CONSTRAINT "sps_w_b_nr_bs_to_bs_nk_id_sps_w_b_nr_bk_id_fk" FOREIGN KEY ("nk_id") REFERENCES "public"."sps_w_b_nr_bk"("id") ON DELETE cascade ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "sps_w_b_nr_bs_to_bs" ADD CONSTRAINT "sps_w_b_nr_bs_to_bs_bn_id_sps_w_b_button_id_fk" FOREIGN KEY ("bn_id") REFERENCES "public"."sps_w_b_button"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "sps_w_b_nr_bs_to_bs_as_njg" ADD CONSTRAINT "sps_w_b_nr_bs_to_bs_as_njg_by_id_sps_w_b_bs_ay_8m3_id_fk" FOREIGN KEY ("by_id") REFERENCES "public"."sps_w_b_bs_ay_8m3"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -450,6 +525,18 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_ls_xth" ADD CONSTRAINT "sps_w_b_ws_to_ls_xth_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "public"."sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_ls_xth" ADD CONSTRAINT "sps_w_b_ws_to_ls_xth_le_id_sps_w_b_logotype_id_fk" FOREIGN KEY ("le_id") REFERENCES "public"."sps_w_b_logotype"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
  ALTER TABLE "sps_w_b_ws_to_nr_bs" ADD CONSTRAINT "sps_w_b_ws_to_nr_bs_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "public"."sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -469,6 +556,30 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "sps_w_b_ws_to_sr_bs" ADD CONSTRAINT "sps_w_b_ws_to_sr_bs_sk_id_sps_w_b_sr_bk_id_fk" FOREIGN KEY ("sk_id") REFERENCES "public"."sps_w_b_sr_bk"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_ss_3bx" ADD CONSTRAINT "sps_w_b_ws_to_ss_3bx_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "public"."sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_ss_3bx" ADD CONSTRAINT "sps_w_b_ws_to_ss_3bx_se_id_sps_w_b_slide_id_fk" FOREIGN KEY ("se_id") REFERENCES "public"."sps_w_b_slide"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_ss_fe_se_me_ws_zb8" ADD CONSTRAINT "sps_w_b_ws_to_ss_fe_se_me_ws_zb8_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "public"."sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "sps_w_b_ws_to_sp_me_ws_xy7" ADD CONSTRAINT "sps_w_b_ws_to_sp_me_ws_xy7_wt_id_sps_w_b_widgets_id_fk" FOREIGN KEY ("wt_id") REFERENCES "public"."sps_w_b_widgets"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

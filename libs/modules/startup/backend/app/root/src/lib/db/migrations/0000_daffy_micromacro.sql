@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "sps_w_b_bs_ay_8m3" (
+CREATE TABLE IF NOT EXISTS "s_widget" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,

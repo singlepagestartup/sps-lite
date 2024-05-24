@@ -1,1 +1,0 @@
-ALTER TABLE "sps_f_s_file" ADD COLUMN "container_class_name" text;

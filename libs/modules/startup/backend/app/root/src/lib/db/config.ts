@@ -1,11 +1,12 @@
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config, defineConfig } from "drizzle-kit";
-import { schemaPath } from "@sps/sps-db-provider";
+import path from "path";
 
-const out = "./src/db/migrations";
+const out = path.resolve(__dirname, "./migrations");
+const modulesSchemaPaths = [path.resolve(__dirname, "./schema.ts")];
 
 const config = defineConfig({
-  schema: schemaPath,
+  schema: modulesSchemaPaths,
   out,
   dialect: "postgresql",
   dbCredentials: DATABASE_OPTIONS,
