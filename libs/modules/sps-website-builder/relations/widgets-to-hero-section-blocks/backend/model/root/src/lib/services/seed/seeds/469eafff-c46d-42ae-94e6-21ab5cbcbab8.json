@@ -1,0 +1,23 @@
+{
+  "id": "469eafff-c46d-42ae-94e6-21ab5cbcbab8",
+  "widgetId": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+  "heroSectionBlockId": "d2aa29ed-578d-4222-84e5-152265d67a85",
+  "widget": {
+    "title": "Main hero section block",
+    "id": "53adc1d3-ce13-4e67-8a39-e3fa0089dc72",
+    "createdAt": "2024-05-24T16:32:56.000Z",
+    "updatedAt": "2024-05-24T16:32:56.000Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "Welcome to Single Page Startup",
+    "subTitle": null,
+    "description": null,
+    "anchor": null,
+    "className": null,
+    "id": "d2aa29ed-578d-4222-84e5-152265d67a85",
+    "createdAt": "2024-05-24T14:34:45.170Z",
+    "updatedAt": "2024-05-24T14:34:45.170Z",
+    "variant": "default"
+  }
+}

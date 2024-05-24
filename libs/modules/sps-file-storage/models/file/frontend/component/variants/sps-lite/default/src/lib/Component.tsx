@@ -7,7 +7,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-file-storage"
       data-model="file"
       data-variant={props.variant}
-      className={`w-full relative ${props.data.containerClassName || ""}`}
+      className={`relative ${props.data.containerClassName || "w-full"}`}
     >
       <Image
         src={props.data.url}

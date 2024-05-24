@@ -1,0 +1,21 @@
+{
+  "id": "27d53814-2a09-49c4-ab26-7699f78b67ae",
+  "widgetId": "1905be45-c052-4a7b-95d3-d942e523032e",
+  "fileId": "3cc63e79-3fc0-4a68-8e06-8f56099166d5",
+  "widget": {
+    "variant": "default",
+    "id": "1905be45-c052-4a7b-95d3-d942e523032e",
+    "createdAt": "2024-05-24T16:25:36.068Z",
+    "updatedAt": "2024-05-24T16:25:36.068Z",
+    "title": "Favicon widget"
+  },
+  "file": {
+    "id": "3cc63e79-3fc0-4a68-8e06-8f56099166d5",
+    "url": "/images/favicon.svg",
+    "containerClassName": "aspect-w-2 aspect-h-2 overflow-hidden",
+    "className": "object-contain",
+    "createdAt": "2024-05-24T16:25:07.137Z",
+    "updatedAt": "2024-05-24T16:25:07.137Z",
+    "variant": "default"
+  }
+}

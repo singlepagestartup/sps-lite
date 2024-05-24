@@ -1,0 +1,18 @@
+{
+  "title": "Contact with us",
+  "url": "mailto:contact@singlepagestartup.com",
+  "className": "",
+  "id": "0841cdcd-2a43-4b83-afbf-29d62c8a01fd",
+  "createdAt": "2024-05-24T16:35:06.143Z",
+  "updatedAt": "2024-05-24T16:35:06.143Z",
+  "variant": "ghost",
+  "buttonsArraysToButtons": [
+    {
+      "id": "fa5cceae-b6e4-44a3-8efc-e126cae4bc62",
+      "direction": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "c11f179d-272f-4af7-a7f8-6e4cb72daebd",
+      "buttonId": "0841cdcd-2a43-4b83-afbf-29d62c8a01fd"
+    }
+  ]
+}

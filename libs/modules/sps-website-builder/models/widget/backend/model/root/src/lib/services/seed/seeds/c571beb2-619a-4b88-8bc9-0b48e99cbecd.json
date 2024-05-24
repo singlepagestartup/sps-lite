@@ -1,0 +1,31 @@
+{
+  "title": "Footer block widget",
+  "id": "c571beb2-619a-4b88-8bc9-0b48e99cbecd",
+  "createdAt": "2024-05-24T16:31:46.883Z",
+  "updatedAt": "2024-05-24T16:31:46.883Z",
+  "variant": "default",
+  "widgetsToSlides": [],
+  "widgetsToLogotypes": [],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [
+    {
+      "id": "dbd0322c-6ede-4e24-b69a-9e8359ecfca3",
+      "widgetId": "c571beb2-619a-4b88-8bc9-0b48e99cbecd",
+      "footerBlockId": "ebd0def5-0c2b-4232-8ece-3f285efe7b0d"
+    }
+  ],
+  "footersToWidgets": [
+    {
+      "id": "9128b14d-a8dd-48f1-9cc8-c5aac5582305",
+      "footerId": "f93f6654-a3fa-4b50-a937-c13a85ddb628",
+      "widgetId": "c571beb2-619a-4b88-8bc9-0b48e99cbecd"
+    }
+  ],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": []
+}

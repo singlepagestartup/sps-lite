@@ -26,7 +26,7 @@ export function Component(props: IComponentPropsExtended) {
         label="Variant"
         name="variant"
         form={props.form}
-        placeholder="Type title"
+        placeholder="Select variant"
         options={variants.map((variant) => [variant, variant])}
       />
       <ModelEntitiesListCard title="hero-section-block-to-buttons-arrays">

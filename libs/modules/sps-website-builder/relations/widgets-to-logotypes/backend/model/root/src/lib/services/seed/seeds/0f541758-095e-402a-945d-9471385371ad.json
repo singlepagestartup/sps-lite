@@ -1,0 +1,21 @@
+{
+  "id": "0f541758-095e-402a-945d-9471385371ad",
+  "direction": "reverse",
+  "widgetId": "104ca875-bd2b-4911-8240-6a6baeb1955c",
+  "logotypeId": "004a4756-58b4-4473-bbde-f39664fbd1ef",
+  "widget": {
+    "title": "Logotype file storage widget",
+    "id": "104ca875-bd2b-4911-8240-6a6baeb1955c",
+    "createdAt": "2024-05-24T16:26:55.117Z",
+    "updatedAt": "2024-05-24T16:26:55.117Z",
+    "variant": "default"
+  },
+  "logotype": {
+    "className": "",
+    "url": "/",
+    "id": "004a4756-58b4-4473-bbde-f39664fbd1ef",
+    "createdAt": "2024-05-24T16:26:37.705Z",
+    "updatedAt": "2024-05-24T16:26:37.705Z",
+    "variant": "default"
+  }
+}
