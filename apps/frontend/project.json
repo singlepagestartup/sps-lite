@@ -11,13 +11,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run frontend:db:sps-website-builder-migrate"
-          },
-          {
-            "command": "nx run frontend:db:sps-file-storage-migrate"
-          },
-          {
-            "command": "nx run frontend:db:startup-migrate"
+            "command": "nx run frontend:db:migrate"
           },
           {
             "command": "nx run frontend:db:sps-website-builder-generate"
