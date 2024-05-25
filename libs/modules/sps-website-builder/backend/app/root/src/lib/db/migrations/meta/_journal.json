@@ -15,6 +15,13 @@
       "when": 1716664384712,
       "tag": "0001_loud_captain_cross",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1716666700844,
+      "tag": "0002_lush_imperial_guard",
+      "breakpoints": true
     }
   ]
 }

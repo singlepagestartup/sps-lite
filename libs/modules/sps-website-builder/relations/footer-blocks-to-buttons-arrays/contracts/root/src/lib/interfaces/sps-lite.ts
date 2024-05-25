@@ -4,6 +4,8 @@ export interface IRelation {
   id: string;
   variant: (typeof variants)[number];
   direction: "default" | "reverse";
+  position: "default" | "additional" | "extra";
+  className?: string;
   footerBlockId: string;
 
   buttonsArrayId: string;
