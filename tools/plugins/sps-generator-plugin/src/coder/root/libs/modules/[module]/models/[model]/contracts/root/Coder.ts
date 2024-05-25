@@ -6,6 +6,10 @@ import {
 } from "@nx/devkit";
 import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
+import { RegexCreator } from "../../../../../../../../../utils/regex-utils/RegexCreator";
+import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
+import { replaceInFile } from "../../../../../../../../../utils/file-utils";
+import { space } from "../../../../../../../../../utils/regex-utils/regex-elements";
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 
@@ -46,6 +50,38 @@ export class Coder {
     await this.init();
   }
 
+  async addField({ name, level }: { name: string; level: string }) {
+    const pathToFile = `${this.baseDirectory}/src/lib/interfaces/${level}.ts`;
+
+    const exportInterfaceField = new ExportInterfaceField({
+      name,
+      type: "string",
+    });
+
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: pathToFile,
+      regex: exportInterfaceField.onCreate.regex,
+      content: exportInterfaceField.onCreate.content,
+    });
+  }
+
+  async removeField({ name, level }: { name: string; level: string }) {
+    const pathToFile = `${this.baseDirectory}/src/lib/interfaces/${level}.ts`;
+
+    const exportInterfaceField = new ExportInterfaceField({
+      name,
+      type: "string",
+    });
+
+    await replaceInFile({
+      tree: this.tree,
+      pathToFile: pathToFile,
+      regex: exportInterfaceField.onRemove.regex,
+      content: exportInterfaceField.onRemove.content,
+    });
+  }
+
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
 
@@ -57,6 +93,27 @@ export class Coder {
       projectName: this.baseName,
       skipFormat: true,
       forceRemove: true,
+    });
+  }
+}
+
+export class ExportInterfaceField extends RegexCreator {
+  constructor({ name, type }: { name: string; type: string }) {
+    const place = `export interface IModel extends Omit<IParentModel, "variant"> {`;
+    const placeRegex = new RegExp(
+      `export interface IModel${space}(extends Omit<IParentModel, \\"variant\\">)?${space}{`,
+    );
+
+    const propertyCaseName = getNameStyles({ name }).propertyCased.base;
+    const content = `${propertyCaseName}: ${type};`;
+
+    const contentRegex = new RegExp(`${propertyCaseName}: ${type};`);
+
+    super({
+      place,
+      placeRegex,
+      content,
+      contentRegex,
     });
   }
 }

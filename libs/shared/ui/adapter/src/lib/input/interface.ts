@@ -14,6 +14,9 @@ export type TTypedProps =
       type: "text";
     }
   | {
+      type: "datetime";
+    }
+  | {
       type: "radio" | "select";
       options: [value: string, title: string | TRenderComponent][];
     };

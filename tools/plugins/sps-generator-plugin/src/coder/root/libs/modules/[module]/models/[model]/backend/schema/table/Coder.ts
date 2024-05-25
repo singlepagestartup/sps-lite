@@ -111,12 +111,22 @@ export class Coder {
       regex: fieldToAdd.onCreate.regex,
       content: fieldToAdd.onCreate.content,
     });
+
+    await this.parent.parent.parent.project.contracts.project.root.addField({
+      name,
+      level,
+    });
   }
 
   async removeField(props: IEditFieldProps) {
     const { level, name, pgCoreType } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
+
+    await this.parent.parent.parent.project.contracts.project.root.removeField({
+      name,
+      level,
+    });
 
     const fieldToAdd = new Field({
       name,

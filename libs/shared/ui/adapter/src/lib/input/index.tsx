@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  DateTimePicker,
   FormControl,
   Input,
   Select,
@@ -16,6 +17,23 @@ export function Component(props: IComponentProps) {
     return (
       <FormControl>
         <Input placeholder={props.placeholder} {...props.field} />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "datetime") {
+    return (
+      <FormControl>
+        <DateTimePicker
+          {...props.field}
+          mode="single"
+          placeholder={props.placeholder}
+          value={props.field.value}
+          onChange={props.field.onChange}
+          disabled={(date) =>
+            date > new Date() || date < new Date("1900-01-01")
+          }
+        />
       </FormControl>
     );
   }
