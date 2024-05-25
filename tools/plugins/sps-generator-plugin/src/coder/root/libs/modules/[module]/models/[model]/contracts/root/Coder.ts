@@ -74,12 +74,18 @@ export class Coder {
       type: "string",
     });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: pathToFile,
-      regex: exportInterfaceField.onRemove.regex,
-      content: exportInterfaceField.onRemove.content,
-    });
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: pathToFile,
+        regex: exportInterfaceField.onRemove.regex,
+        content: exportInterfaceField.onRemove.content,
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 
   async remove() {

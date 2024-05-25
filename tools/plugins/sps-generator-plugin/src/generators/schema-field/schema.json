@@ -38,6 +38,12 @@
         ]
       }
     },
+    "is_required": {
+      "type": "boolean",
+      "description": "Is the field required?",
+      "x-prompt": "Is the field required?",
+      "default": false
+    },
     "module": {
       "type": "string",
       "description": "Module",

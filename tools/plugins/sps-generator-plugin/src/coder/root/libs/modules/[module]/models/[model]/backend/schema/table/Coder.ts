@@ -133,12 +133,18 @@ export class Coder {
       pgCoreType,
     });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onRemove.regex,
-      content: fieldToAdd.onRemove.content,
-    });
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: schemaFilePath,
+        regex: fieldToAdd.onRemove.regex,
+        content: fieldToAdd.onRemove.content,
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 
   async createVariant(props: { variant: string; level: string }) {
