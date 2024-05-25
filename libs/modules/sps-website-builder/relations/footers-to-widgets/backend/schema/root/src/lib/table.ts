@@ -13,6 +13,8 @@ const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  direction: pgCore.text("direction").notNull().default("default"),
+  orderIndex: pgCore.integer("order_index").notNull().default(0),
   footerId: pgCore
     .uuid("fr_id")
     .notNull()

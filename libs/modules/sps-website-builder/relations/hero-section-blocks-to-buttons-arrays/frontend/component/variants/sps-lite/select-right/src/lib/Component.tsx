@@ -15,6 +15,7 @@ const formSchema = z.object({
   heroSectionBlockId: z.string().min(1),
   buttonsArrayId: z.string().min(1),
   direction: z.enum(["default", "reverse"]).default("default"),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -30,6 +31,7 @@ export function Component(props: IComponentPropsExtended) {
         props.data?.heroSectionBlockId || props.heroSectionBlockId,
       buttonsArrayId: props.data?.buttonsArrayId,
       direction: props.data?.direction || "default",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -97,6 +99,14 @@ export function Component(props: IComponentPropsExtended) {
                 ["reverse", "Reverse"],
               ]}
             />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -122,6 +132,14 @@ export function Component(props: IComponentPropsExtended) {
                 ["default", "Default"],
                 ["reverse", "Reverse"],
               ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
             />
             <AdminSelectInput
               isServer={false}

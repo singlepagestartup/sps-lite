@@ -14,7 +14,7 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 const formSchema = z.object({
   pageId: z.string().min(1),
   widgetId: z.string().min(1),
-  orderIndex: z.number().int(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -87,7 +87,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order Index"
               name="orderIndex"
               form={form}
@@ -110,7 +110,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent>
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order Index"
               name="orderIndex"
               form={form}

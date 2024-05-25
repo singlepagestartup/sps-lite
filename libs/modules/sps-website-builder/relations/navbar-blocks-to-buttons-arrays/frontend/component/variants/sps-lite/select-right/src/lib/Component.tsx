@@ -17,6 +17,7 @@ const formSchema = z.object({
   direction: z.enum(["default", "reverse"]).default("default"),
   position: z.enum(["default", "additional", "extra"]).default("default"),
   className: z.string().optional(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -33,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
       direction: props.data?.direction || "default",
       position: props.data?.position || "default",
       className: props.data?.className || "",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -102,6 +104,14 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
+            <FormField
+              ui="shadcn"
               type="select"
               label="Position"
               name="position"
@@ -146,6 +156,14 @@ export function Component(props: IComponentPropsExtended) {
                 ["default", "Default"],
                 ["reverse", "Reverse"],
               ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
             />
             <FormField
               ui="shadcn"

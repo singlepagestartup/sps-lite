@@ -12,6 +12,7 @@
       "id": "2e9cdfa1-dfe5-449f-a16b-efc1a25082aa",
       "direction": "default",
       "position": "additional",
+      "orderIndex": 0,
       "className": "",
       "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
       "buttonsArrayId": "278f8b05-eb39-4b8b-86f1-81854ed884f9"
@@ -20,6 +21,7 @@
       "id": "fb641429-040a-4e30-8dd0-023327a31384",
       "direction": "default",
       "position": "default",
+      "orderIndex": 0,
       "className": "",
       "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
       "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c"

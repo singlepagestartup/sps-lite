@@ -9,13 +9,13 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
-  // replace with actual schema key
   footerId: z.string().min(1),
-  // replace with actual schema key
   widgetId: z.string().min(1),
+  direction: z.enum(["default", "reverse"]).default("default"),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +29,8 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       footerId: props.data?.footerId || props.footerId,
       widgetId: props.data?.widgetId,
+      direction: props.data?.direction || "default",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -84,6 +86,26 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Direction"
+              name="direction"
+              form={form}
+              placeholder="Select direction of relation"
+              options={[
+                ["default", "Default"],
+                ["reverse", "Reverse"],
+              ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -97,7 +119,27 @@ export function Component(props: IComponentPropsExtended) {
           <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
             Select entity from widgets
           </h3>
-          <CardContent>
+          <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Direction"
+              name="direction"
+              form={form}
+              placeholder="Select direction of relation"
+              options={[
+                ["default", "Default"],
+                ["reverse", "Reverse"],
+              ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}

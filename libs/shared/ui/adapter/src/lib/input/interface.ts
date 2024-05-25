@@ -14,6 +14,12 @@ export type TTypedProps =
       type: "text";
     }
   | {
+      type: "textarea";
+    }
+  | {
+      type: "number";
+    }
+  | {
       type: "datetime";
     }
   | {

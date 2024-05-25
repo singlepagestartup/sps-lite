@@ -6,6 +6,7 @@ export interface IRelation {
   direction: "default" | "reverse";
   position: "default" | "additional" | "extra";
   className?: string;
+  orderIndex: number;
   navbarBlockId: string;
   buttonsArrayId: string;
 }

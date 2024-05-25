@@ -5,8 +5,8 @@ export interface IRelation {
   variant: (typeof variants)[number];
   direction: "default" | "reverse";
   position: "default" | "additional" | "extra";
+  orderIndex: number;
   className?: string;
   footerBlockId: string;
-
   buttonsArrayId: string;
 }

@@ -9,11 +9,12 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   sliderId: z.string().min(1),
   slideId: z.string().min(1),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       sliderId: props.data?.sliderId || props.sliderId,
       slideId: props.data?.slideId,
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -82,6 +84,14 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -96,7 +106,15 @@ export function Component(props: IComponentPropsExtended) {
           <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
             Select entity from slides
           </h3>
-          <CardContent>
+          <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Enter order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}

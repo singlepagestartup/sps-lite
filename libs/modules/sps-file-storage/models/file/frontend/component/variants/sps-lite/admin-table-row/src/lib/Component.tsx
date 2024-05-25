@@ -42,13 +42,13 @@ export function Component(props: IComponentPropsExtended) {
           <AdminForm isServer={false} variant="admin-form" data={props.data} />
         }
       >
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Variant</p>
-          <p>{props.data.variant}</p>
+          <p className="truncate">{props.data.variant}</p>
         </div>
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Url</p>
-          <p>{props.data.url}</p>
+          <p className="truncate">{props.data.url}</p>
           {props.data.url ? (
             <ErrorBoundary>
               <div className="w-full relative aspect-w-1 aspect-h-1">

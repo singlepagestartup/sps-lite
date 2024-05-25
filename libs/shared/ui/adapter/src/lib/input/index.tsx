@@ -13,7 +13,7 @@ import {
 import { IComponentProps } from "./interface";
 
 export function Component(props: IComponentProps) {
-  if (props.type === "text") {
+  if (["text", "number", "textarea"].includes(props.type)) {
     return (
       <FormControl>
         <Input placeholder={props.placeholder} {...props.field} />

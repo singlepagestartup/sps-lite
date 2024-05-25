@@ -16,6 +16,7 @@ export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
   direction: pgCore.text("direction").notNull().default("default"),
   position: pgCore.text("position").notNull().default("default"),
+  orderIndex: pgCore.integer("order_index").notNull().default(0),
   className: pgCore.text("class_name"),
   navbarBlockId: pgCore
     .uuid("nk_id")
