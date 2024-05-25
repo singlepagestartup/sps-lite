@@ -50,12 +50,21 @@ export class Coder {
     await this.init();
   }
 
-  async addField({ name, level }: { name: string; level: string }) {
+  async addField({
+    name,
+    level,
+    isRequired,
+  }: {
+    name: string;
+    level: string;
+    isRequired: boolean;
+  }) {
     const pathToFile = `${this.baseDirectory}/src/lib/interfaces/${level}.ts`;
 
     const exportInterfaceField = new ExportInterfaceField({
       name,
       type: "string",
+      isRequired,
     });
 
     await replaceInFile({
@@ -66,12 +75,21 @@ export class Coder {
     });
   }
 
-  async removeField({ name, level }: { name: string; level: string }) {
+  async removeField({
+    name,
+    level,
+    isRequired,
+  }: {
+    name: string;
+    level: string;
+    isRequired: boolean;
+  }) {
     const pathToFile = `${this.baseDirectory}/src/lib/interfaces/${level}.ts`;
 
     const exportInterfaceField = new ExportInterfaceField({
       name,
       type: "string",
+      isRequired,
     });
 
     try {
@@ -104,16 +122,26 @@ export class Coder {
 }
 
 export class ExportInterfaceField extends RegexCreator {
-  constructor({ name, type }: { name: string; type: string }) {
+  constructor({
+    name,
+    type,
+    isRequired,
+  }: {
+    name: string;
+    type: string;
+    isRequired: boolean;
+  }) {
     const place = `export interface IModel extends Omit<IParentModel, "variant"> {`;
     const placeRegex = new RegExp(
       `export interface IModel${space}(extends Omit<IParentModel, \\"variant\\">)?${space}{`,
     );
 
     const propertyCaseName = getNameStyles({ name }).propertyCased.base;
-    const content = `${propertyCaseName}: ${type};`;
+    const content = `${propertyCaseName}${isRequired ? "" : "?"}: ${type};`;
 
-    const contentRegex = new RegExp(`${propertyCaseName}: ${type};`);
+    const contentRegex = new RegExp(
+      `${propertyCaseName}${isRequired ? "" : "\\?"}: ${type};`,
+    );
 
     super({
       place,

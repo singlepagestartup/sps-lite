@@ -4,14 +4,15 @@ describe("Coder", () => {
   describe(`ExportInterfaceField regex pattern`, () => {
     const name = "class_name";
     const type = "string";
-    const field = new ExportInterfaceField({ name, type });
+    const isRequired = false;
+    const field = new ExportInterfaceField({ name, type, isRequired });
 
     it(`onRemove | should match the regex 1`, () => {
       const regex = field.onRemove.regex;
 
       const string = `export interface IModel extends Omit<IParentModel, "variant"> {
         variant: (typeof variants)[number];
-        className: string;
+        className?: string;
       };`;
 
       expect(string).toMatch(regex);

@@ -3,14 +3,15 @@ import { Field, Variant } from "./Coder";
 describe("Coder", () => {
   describe(`Field regex pattern`, () => {
     const name = "class_name";
-    const type = "text";
-    const field = new Field({ name, type });
+    const pgCoreType = "text";
+    const isRequired = true;
+    const field = new Field({ name, pgCoreType, isRequired });
 
     it(`should match the regex 1`, () => {
       const regex = field.onRemove.regex;
 
       const string = `export const fields = {
-        className: pgCore.text("class_name"),
+        className: pgCore.text("class_name").notNull(),
         id: pgCore.uuid("id").primaryKey().defaultRandom(),
         title: pgCore.text("title").notNull().default("Page"),`;
 

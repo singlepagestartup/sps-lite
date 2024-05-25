@@ -30,6 +30,7 @@ export interface IEditFieldProps {
     | "time"
     | "number";
   level: "sps-lite" | "startup";
+  isRequired: boolean;
 }
 
 export class Coder {
@@ -96,13 +97,15 @@ export class Coder {
   }
 
   async addField(props: IEditFieldProps) {
-    const { level, name, pgCoreType } = props;
+    const { level, name, pgCoreType, isRequired } = props;
+    console.log(`🚀 ~ addField ~ isRequired:`, isRequired);
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
       pgCoreType,
+      isRequired,
     });
 
     await replaceInFile({
@@ -115,22 +118,25 @@ export class Coder {
     await this.parent.parent.parent.project.contracts.project.root.addField({
       name,
       level,
+      isRequired,
     });
   }
 
   async removeField(props: IEditFieldProps) {
-    const { level, name, pgCoreType } = props;
+    const { level, name, pgCoreType, isRequired } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     await this.parent.parent.parent.project.contracts.project.root.removeField({
       name,
       level,
+      isRequired,
     });
 
     const fieldToAdd = new Field({
       name,
       pgCoreType,
+      isRequired,
     });
 
     try {
@@ -197,15 +203,23 @@ export class Coder {
 }
 
 export class Field extends RegexCreator {
-  constructor({ name, pgCoreType }: { name: string; pgCoreType: string }) {
+  constructor({
+    name,
+    pgCoreType,
+    isRequired,
+  }: {
+    name: string;
+    pgCoreType: string;
+    isRequired: boolean;
+  }) {
     const place = `export const fields = {`;
     const placeRegex = new RegExp(`export const fields = {`);
 
     const fieldNameCamelCase = names(name).propertyName;
-    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}"),`;
+    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}")${isRequired ? ".notNull()" : ""},`;
 
     const contentRegex = new RegExp(
-      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\),`,
+      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\)${isRequired ? ".notNull\\(\\)" : ""},`,
     );
 
     super({

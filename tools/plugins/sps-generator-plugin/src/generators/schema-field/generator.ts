@@ -17,6 +17,7 @@ export async function schemaFieldGenerator(
       name: options.name,
       level: options.level,
       pgCoreType: options.pg_core_type,
+      isRequired: options.is_required,
     });
   } else {
     await coder.addField({
@@ -25,6 +26,7 @@ export async function schemaFieldGenerator(
       name: options.name,
       pgCoreType: options.pg_core_type,
       level: options.level,
+      isRequired: options.is_required,
     });
   }
 }

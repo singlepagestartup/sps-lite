@@ -18,4 +18,5 @@ export interface SchemaFieldGeneratorSchema {
     | "number";
   action: "create" | "remove";
   level: "sps-lite" | "startup";
+  is_required: boolean;
 }
