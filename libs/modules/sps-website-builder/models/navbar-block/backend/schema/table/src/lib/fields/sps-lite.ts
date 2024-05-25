@@ -5,4 +5,6 @@ export const fields = {
   createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
+  className: pgCore.text("class_name"),
+  description: pgCore.text("description"),
 };

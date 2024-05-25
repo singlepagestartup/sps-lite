@@ -98,7 +98,6 @@ export class Coder {
 
   async addField(props: IEditFieldProps) {
     const { level, name, pgCoreType, isRequired } = props;
-    console.log(`🚀 ~ addField ~ isRequired:`, isRequired);
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
