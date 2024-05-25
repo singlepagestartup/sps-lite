@@ -15,6 +15,8 @@ const formSchema = z.object({
   navbarBlockId: z.string().min(1),
   buttonsArrayId: z.string().min(1),
   direction: z.enum(["default", "reverse"]).default("default"),
+  position: z.enum(["default", "additional", "extra"]).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +31,8 @@ export function Component(props: IComponentPropsExtended) {
       navbarBlockId: props.data?.navbarBlockId || props.navbarBlockId,
       buttonsArrayId: props.data?.buttonsArrayId,
       direction: props.data?.direction || "default",
+      position: props.data?.position || "default",
+      className: props.data?.className || "",
     },
   });
 
@@ -96,6 +100,27 @@ export function Component(props: IComponentPropsExtended) {
                 ["reverse", "Reverse"],
               ]}
             />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Position"
+              name="position"
+              form={form}
+              placeholder="Select position of relation"
+              options={[
+                ["default", "Default"],
+                ["additional", "Additional"],
+                ["extra", "Extra"],
+              ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Enter class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -121,6 +146,27 @@ export function Component(props: IComponentPropsExtended) {
                 ["default", "Default"],
                 ["reverse", "Reverse"],
               ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Position"
+              name="position"
+              form={form}
+              placeholder="Select position of relation"
+              options={[
+                ["default", "Default"],
+                ["additional", "Additional"],
+                ["extra", "Extra"],
+              ]}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Enter class name"
             />
             <AdminSelectInput
               isServer={false}

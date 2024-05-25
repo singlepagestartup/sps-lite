@@ -1,0 +1,18 @@
+{
+  "id": "83995457-88e4-4789-a7fb-bb18b7c41b59",
+  "footerId": "2d38043c-d229-4d4b-b894-d81e9eef3756",
+  "widgetId": "aba7b1cb-bc8b-4ea0-91e6-430cc2084d21",
+  "footer": {
+    "id": "2d38043c-d229-4d4b-b894-d81e9eef3756",
+    "createdAt": "2024-05-25T20:00:24.176Z",
+    "updatedAt": "2024-05-25T20:00:24.176Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Footer block widget",
+    "id": "aba7b1cb-bc8b-4ea0-91e6-430cc2084d21",
+    "createdAt": "2024-05-25T20:02:43.240Z",
+    "updatedAt": "2024-05-25T20:02:43.240Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "d3614e18-1594-4122-ab8d-665521b5b536",
+  "orderIndex": 0,
+  "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
+  "widgetId": "14332113-c762-48b8-b165-40ce181a47e2",
+  "page": {
+    "id": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-25T19:59:47.207Z",
+    "updatedAt": "2024-05-25T19:59:47.207Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Welcome hero-section block",
+    "id": "14332113-c762-48b8-b165-40ce181a47e2",
+    "createdAt": "2024-05-25T20:42:09.966Z",
+    "updatedAt": "2024-05-25T20:42:09.966Z",
+    "variant": "default"
+  }
+}

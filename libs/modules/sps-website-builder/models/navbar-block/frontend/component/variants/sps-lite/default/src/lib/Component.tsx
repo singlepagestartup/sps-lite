@@ -59,7 +59,24 @@ function DisclosureInner({
                 })}
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
+                {props.data.navbarBlocksToButtonsArrays
+                  .filter((entity) => entity.position === "default")
+                  .map((entity, index) => {
+                    return (
+                      <NavbarsToButtonsArrays
+                        key={index}
+                        variant="default"
+                        data={entity}
+                        isServer={false}
+                      />
+                    );
+                  })}
+              </div>
+            </div>
+            <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
+              {props.data.navbarBlocksToButtonsArrays
+                .filter((entity) => entity.position === "additional")
+                .map((entity, index) => {
                   return (
                     <NavbarsToButtonsArrays
                       key={index}
@@ -69,7 +86,6 @@ function DisclosureInner({
                     />
                   );
                 })}
-              </div>
             </div>
           </div>
         </div>

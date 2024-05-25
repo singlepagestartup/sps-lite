@@ -1,0 +1,18 @@
+{
+  "title": "contact@singlepagestartup.com",
+  "url": "mailto:contact@singlepagestartup.com",
+  "className": "",
+  "id": "93195765-fb03-460d-b873-c218a9828772",
+  "createdAt": "2024-05-25T20:03:21.581Z",
+  "updatedAt": "2024-05-25T20:03:21.581Z",
+  "variant": "link",
+  "buttonsArraysToButtons": [
+    {
+      "id": "dfc5b221-dba7-4a39-9c18-cc649df66bb7",
+      "direction": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "16629e7f-474f-46dd-ba76-056d1fdf54e3",
+      "buttonId": "93195765-fb03-460d-b873-c218a9828772"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Welcome to Single Page Startup!",
+  "subTitle": null,
+  "description": null,
+  "anchor": null,
+  "className": null,
+  "id": "e8b1293b-756d-408f-b26c-fd65b37b2818",
+  "createdAt": "2024-05-25T20:43:49.272Z",
+  "updatedAt": "2024-05-25T20:43:49.272Z",
+  "variant": "default",
+  "heroSectionBlocksToButtonsArrays": [],
+  "heroSectionBlocksToFiles": [],
+  "widgetsToHeroSectionBlocks": [
+    {
+      "id": "6cf1b39e-a793-4957-81b0-1a85be1656bd",
+      "widgetId": "14332113-c762-48b8-b165-40ce181a47e2",
+      "heroSectionBlockId": "e8b1293b-756d-408f-b26c-fd65b37b2818"
+    }
+  ]
+}

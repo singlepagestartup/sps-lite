@@ -1,0 +1,30 @@
+{
+  "id": "198acb46-ae02-4788-8013-0ea8014b5181",
+  "createdAt": "2024-05-25T20:07:20.168Z",
+  "updatedAt": "2024-05-25T20:07:20.168Z",
+  "variant": "default",
+  "title": "Privacy",
+  "className": "",
+  "description": "",
+  "footerBlocksToButtonsArrays": [
+    {
+      "id": "0f0dbef1-eb47-47fe-aa7a-fc035fe53c35",
+      "direction": "default",
+      "position": "extra",
+      "className": "",
+      "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
+      "buttonsArrayId": "198acb46-ae02-4788-8013-0ea8014b5181"
+    }
+  ],
+  "buttonsArraysToButtons": [
+    {
+      "id": "a7ad8efc-4442-4c84-a028-f22b0a1d7667",
+      "direction": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "198acb46-ae02-4788-8013-0ea8014b5181",
+      "buttonId": "e00ca5af-be40-4c95-9c81-3fc92ed8b7f1"
+    }
+  ],
+  "heroSectionBlocksToButtonsArrays": [],
+  "navbarBlocksToButtonsArrays": []
+}

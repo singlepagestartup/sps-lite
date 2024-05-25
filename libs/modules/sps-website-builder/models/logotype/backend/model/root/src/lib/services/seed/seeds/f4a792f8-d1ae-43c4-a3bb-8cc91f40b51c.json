@@ -1,0 +1,31 @@
+{
+  "className": "",
+  "url": "/",
+  "id": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c",
+  "createdAt": "2024-05-25T20:00:35.140Z",
+  "updatedAt": "2024-05-25T20:00:35.140Z",
+  "variant": "default",
+  "footerBlocksToLogotypes": [
+    {
+      "id": "e79fbf5b-f593-4346-bb73-5adf1aff1069",
+      "direction": "default",
+      "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
+      "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
+    }
+  ],
+  "widgetsToLogotypes": [
+    {
+      "id": "c29e5e72-dc93-41b7-81b8-bbe877f741ce",
+      "direction": "reverse",
+      "widgetId": "0d6350b6-66ce-4039-9b09-aba5393a21c3",
+      "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
+    }
+  ],
+  "navbarBlocksToLogotypes": [
+    {
+      "id": "ed34f915-aa70-43cc-9911-7185f4f1a985",
+      "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
+      "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
+    }
+  ]
+}

@@ -32,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
       buttonsArrayId: props.data?.buttonsArrayId,
       direction: props.data?.direction || "default",
       position: props.data?.position || "default",
-      className: props.data?.className,
+      className: props.data?.className || "",
     },
   });
 

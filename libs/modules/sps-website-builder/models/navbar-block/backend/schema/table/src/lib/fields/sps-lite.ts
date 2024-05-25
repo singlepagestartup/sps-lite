@@ -7,4 +7,6 @@ export const fields = {
   variant: pgCore.text("variant").notNull().default("default"),
   className: pgCore.text("class_name"),
   description: pgCore.text("description"),
+  subtitle: pgCore.text("subtitle"),
+  title: pgCore.text("title"),
 };
