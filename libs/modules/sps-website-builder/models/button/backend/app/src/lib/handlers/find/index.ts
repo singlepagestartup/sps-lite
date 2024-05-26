@@ -2,9 +2,7 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-models-button-backend-model";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { Table } from "@sps/sps-website-builder-models-button-backend-schema";
 import QueryString from "qs";
-import { parseQueryFilters } from "@sps/shared-backend-api";
 
 export const handler = async (
   c: Context<Env, string, BlankInput>,
@@ -12,18 +10,19 @@ export const handler = async (
 ) => {
   try {
     const query = c.req.query();
-    const parsedQuery = QueryString.parse(query);
+    const serviceParams: { populate: any; filters: any } = {
+      populate: undefined,
+      filters: undefined,
+    };
 
-    let filter: any = undefined;
-    if (parsedQuery["filters"]) {
-      const queryFilters = parsedQuery["filters"];
-      filter = parseQueryFilters({
-        queryFilters,
-        Table,
-      });
+    if (query) {
+      const { populate, filters } = QueryString.parse(query);
+
+      serviceParams.populate = populate;
+      serviceParams.filters = filters;
     }
 
-    const data = await model.services.find({ filter });
+    const data = await model.services.find({ params: serviceParams });
 
     return c.json({
       data,

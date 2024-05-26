@@ -4,8 +4,8 @@ import {
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
-  RelationPopulateQueryBuilderProps,
-  relationPopulateQueryBuilder,
+  PopulateQueryBuilderProps,
+  queryBuilder,
 } from "@sps/shared-backend-api";
 
 export const relation = <TTableName extends string>(
@@ -17,5 +17,5 @@ export const relation = <TTableName extends string>(
 };
 
 export const populate = (
-  params: RelationPopulateQueryBuilderProps<typeof Table>["params"],
-) => relationPopulateQueryBuilder<typeof Table>(params, modelName);
+  params: PopulateQueryBuilderProps<typeof Table>["params"],
+) => queryBuilder.populate<typeof Table>(params, modelName);

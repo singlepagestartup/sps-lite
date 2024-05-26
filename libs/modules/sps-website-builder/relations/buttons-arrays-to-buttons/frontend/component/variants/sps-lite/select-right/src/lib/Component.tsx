@@ -100,7 +100,7 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order index"
               name="orderIndex"
               form={form}
@@ -134,7 +134,7 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order index"
               name="orderIndex"
               form={form}

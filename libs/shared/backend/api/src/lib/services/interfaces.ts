@@ -46,3 +46,10 @@ export type IResultData<
   //   ExtractTablesWithRelations<IR[M]["rightTable"]>
   // >;
 };
+
+export interface FindServiceProps {
+  params?: {
+    populate: any;
+    filters: any;
+  };
+}

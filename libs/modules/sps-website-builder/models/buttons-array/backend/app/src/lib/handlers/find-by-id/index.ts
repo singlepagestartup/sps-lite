@@ -2,12 +2,21 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-models-buttons-array-backend-model";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
+import QueryString from "qs";
 
 export const handler = async (
   c: Context<Env, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");
+  const query = c.req.query();
+  const serviceParams: Partial<{ populate: any }> = {};
+
+  if (query) {
+    const { populate } = QueryString.parse(query);
+
+    serviceParams.populate = populate;
+  }
 
   if (!uuid) {
     throw new HTTPException(400, {
@@ -15,7 +24,10 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.findById({ id: uuid });
+  const data = await model.services.findById({
+    id: uuid,
+    params: serviceParams,
+  });
 
   if (!data || !Object.keys(data).length) {
     return c.json(

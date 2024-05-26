@@ -6,7 +6,7 @@ import {
 
 export async function service(params?: { filter?: any }) {
   const result = await db.query[schemaName].findMany({
-    with: populate,
+    with: populate(params),
     where: params?.filter,
   });
 
