@@ -7,11 +7,9 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
-const R = require("ramda");
 
 export interface Params {
   url?: string | string[];
-  locale: string | string[];
 }
 
 const fetchOptions = {
@@ -21,7 +19,7 @@ const fetchOptions = {
   },
 };
 
-async function getByUrl({ url, locale }: Params) {
+async function getByUrl({ url }: Params) {
   const localUrl =
     typeof url === "string"
       ? url.startsWith("/")
@@ -93,15 +91,13 @@ function getFiltersFromUrl({
 async function getUrlModelId({
   url,
   modelName,
-  locale,
 }: {
   url: Params["url"];
   modelName: string;
-  locale: Params["locale"];
 }): Promise<string | undefined> {
-  const page = await getByUrl({ url, locale });
+  const page = await getByUrl({ url });
 
-  const filters = getFiltersFromUrl({ page, params: { url, locale } });
+  const filters = getFiltersFromUrl({ page, params: { url } });
 
   const targetFilter = filters.find(
     (filter) => filter[modelName] !== undefined,
@@ -113,11 +109,11 @@ async function getUrlModelId({
 }
 
 async function getPage(params: Params) {
-  const { url, locale } = params;
-  let targetPage = await getByUrl({ url, locale });
+  const { url } = params;
+  let targetPage = await getByUrl({ url });
 
   if (!targetPage) {
-    targetPage = await getByUrl({ url: "/404", locale });
+    targetPage = await getByUrl({ url: "/404" });
   }
 
   if (!targetPage) {
