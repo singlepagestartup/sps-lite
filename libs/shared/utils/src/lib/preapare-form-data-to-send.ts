@@ -18,7 +18,7 @@ export function prepareFormDataToSend(params: any) {
   const { data, files } = params;
 
   const passData = { ...data };
-  console.log(`🚀 ~ prepareFormDataToSend ~ passData:`, passData);
+  // console.log(`🚀 ~ prepareFormDataToSend ~ passData:`, passData);
   // delete passData.files;
 
   // if (files) {

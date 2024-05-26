@@ -53,11 +53,13 @@ export function fetchBaseQueryBuilder(baseUrl: string) {
           encodeValuesOnly: true,
         });
 
-        const compressedQuery = gzip(stringifiedQuery);
-        const base64CompressedQuery =
-          Buffer.from(compressedQuery).toString("base64");
+        // const compressedQuery = gzip(stringifiedQuery);
+        // const base64CompressedQuery =
+        //   Buffer.from(compressedQuery).toString("base64");
 
-        return base64CompressedQuery;
+        // return base64CompressedQuery;
+
+        return stringifiedQuery;
       },
       prepareHeaders: (headers) => {
         const username = localStorage["username"];

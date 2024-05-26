@@ -13,10 +13,28 @@ import {
 import { IComponentProps } from "./interface";
 
 export function Component(props: IComponentProps) {
-  if (["text", "number", "textarea"].includes(props.type)) {
+  if (["text", "textarea"].includes(props.type)) {
     return (
       <FormControl>
         <Input placeholder={props.placeholder} {...props.field} />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "number") {
+    return (
+      <FormControl>
+        <Input
+          placeholder={props.placeholder}
+          {...props.field}
+          onChange={(event) => {
+            const value = +event.target.value;
+
+            if (!isNaN(value)) {
+              props.field.onChange(value);
+            }
+          }}
+        />
       </FormControl>
     );
   }

@@ -8,6 +8,7 @@ export const handler = async (
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");
+  const query = c.req.query();
 
   if (!uuid) {
     throw new HTTPException(400, {
@@ -15,7 +16,7 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.findById({ id: uuid });
+  const data = await model.services.findById({ id: uuid, query });
 
   if (!data || !Object.keys(data).length) {
     return c.json(

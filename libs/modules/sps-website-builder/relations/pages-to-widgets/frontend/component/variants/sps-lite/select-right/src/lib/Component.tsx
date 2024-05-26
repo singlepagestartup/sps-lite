@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -31,9 +31,6 @@ export function Component(props: IComponentPropsExtended) {
       widgetId: props.data?.widgetId,
     },
   });
-
-  const watchData = form.watch();
-  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!data.pageId || !data.widgetId) {

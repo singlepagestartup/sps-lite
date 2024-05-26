@@ -6,6 +6,7 @@ import {
   getFileUrl,
   transformResponseItem,
 } from "@sps/shared-utils";
+import QueryString from "qs";
 const R = require("ramda");
 
 export interface Params {
@@ -129,8 +130,17 @@ async function getPage(params: Params) {
     return;
   }
 
+  const stringifiedQuery = QueryString.stringify(
+    {
+      populate,
+    },
+    {
+      encodeValuesOnly: true,
+    },
+  );
+
   const request = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
+    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}?${stringifiedQuery}`,
     fetchOptions,
   );
 
