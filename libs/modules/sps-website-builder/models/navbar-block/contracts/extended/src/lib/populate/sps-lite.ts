@@ -2,4 +2,7 @@ import { populate as parentPopulate } from "@sps/sps-website-builder-models-navb
 
 export const populate = {
   ...parentPopulate,
+  navbarBlocksToButtonsArrays: {
+    orderBy: { column: "orderIndex", method: "asc" },
+  },
 };

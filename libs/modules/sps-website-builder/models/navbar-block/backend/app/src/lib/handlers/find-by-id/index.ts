@@ -1,6 +1,6 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-models-navbar-block-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
@@ -16,7 +16,10 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.findById({ id: uuid });
+  const data = await model.services.findById({
+    id: uuid,
+    params: c.var.parsedQuery,
+  });
 
   if (!data || !Object.keys(data).length) {
     return c.json(

@@ -16,7 +16,10 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.findById({ id: uuid });
+  const data = await model.services.findById({
+    id: uuid,
+    params: c.var.parsedQuery,
+  });
 
   if (!data || !Object.keys(data).length) {
     return c.json(
