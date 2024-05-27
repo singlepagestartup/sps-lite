@@ -1,4 +1,5 @@
-export * as middlewares from "./lib/middlewares";
+export { middlewares } from "./lib/middlewares";
+export * from "./lib/middlewares/interfaces";
 export * as services from "./lib/services";
 export type { FindServiceProps } from "./lib/services/interfaces";
 export * as modelFactories from "./lib/model-factories";
