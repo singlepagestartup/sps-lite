@@ -51,6 +51,9 @@ export interface FindServiceProps {
   params?: {
     populate: any;
     filters: any;
+    orderBy: any;
+    offset: any;
+    limit: any;
   };
 }
 

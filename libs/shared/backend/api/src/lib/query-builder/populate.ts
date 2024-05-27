@@ -34,17 +34,17 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
   params: QueryBuilderProps<T>["params"],
   modelName: QueryBuilderProps<T>["modelName"],
 ) => {
-  const modelParams = params?.[modelName];
+  const queryParams = params?.[modelName];
 
-  if (!modelParams || !Object.keys(modelParams).length) {
+  if (!queryParams || !Object.keys(queryParams).length) {
     return true;
   }
 
   const passParams: QueryBuilderParams = {};
 
-  if (modelParams.orderBy) {
-    if (modelParams.orderBy.column && modelParams.orderBy.method) {
-      const orderBy = modelParams.orderBy;
+  if (queryParams.orderBy) {
+    if (queryParams.orderBy.column && queryParams.orderBy.method) {
+      const orderBy = queryParams.orderBy;
 
       passParams["orderBy"] = (
         table: T,
