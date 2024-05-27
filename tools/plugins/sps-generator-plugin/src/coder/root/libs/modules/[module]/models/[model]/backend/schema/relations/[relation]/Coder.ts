@@ -53,11 +53,11 @@ export class Coder {
 
     this.relationsSchemaProjectImportPath = relationsSchemaProjectImportPath;
     this.importPopulate = new ImportPopulate({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
+      namePropertyCased: nameStyles.propertyCased.base,
       libName: this.baseName,
     });
     this.exportPopulate = new ExportPopulate({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
+      namePropertyCased: nameStyles.propertyCased.base,
     });
     this.importRelation = new ImportRelation({
       leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
@@ -212,17 +212,17 @@ export class Coder {
 export class ImportPopulate extends RegexCreator {
   constructor({
     libName,
-    leftProjectRelationNamePropertyCased,
+    namePropertyCased,
   }: {
     libName: string;
-    leftProjectRelationNamePropertyCased: string;
+    namePropertyCased: string;
   }) {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `import { populate as ${leftProjectRelationNamePropertyCased} } from "${libName}";`;
+    const content = `import { populate as ${namePropertyCased} } from "${libName}";`;
     const contentRegex = new RegExp(
-      `import${space}{${space}populate${space}as${space}${leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}populate${space}as${space}${namePropertyCased}${space}}${space}from${space}"${libName}";`,
     );
 
     super({
@@ -235,17 +235,13 @@ export class ImportPopulate extends RegexCreator {
 }
 
 export class ExportPopulate extends RegexCreator {
-  constructor({
-    leftProjectRelationNamePropertyCased,
-  }: {
-    leftProjectRelationNamePropertyCased: string;
-  }) {
-    const place = `export const populate = {`;
-    const placeRegex = new RegExp(`export const populate = {`);
+  constructor({ namePropertyCased }: { namePropertyCased: string }) {
+    const place = `return {`;
+    const placeRegex = new RegExp(`return {`);
 
-    const content = `...${leftProjectRelationNamePropertyCased},`;
+    const content = `${namePropertyCased}: ${namePropertyCased}(params),`;
     const contentRegex = new RegExp(
-      `\\.{3}${leftProjectRelationNamePropertyCased}${comma}${space}`,
+      `${namePropertyCased}: ${namePropertyCased}\\(params\\)${comma}${space}`,
     );
 
     super({
