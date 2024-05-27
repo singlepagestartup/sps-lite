@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
     "jsx": "react-jsx",
     "allowJs": false,
     "esModuleInterop": false,
