@@ -43,10 +43,10 @@ export class Coder {
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
     const leftModelName =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .project.backend.project.model.modelName;
     const rightModelName =
-      this.parent.parent.parent.parent.parent.project.models[2].project.model
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
         .project.backend.project.model.modelName;
 
     const relationName = this.parent.parent.parent.name;
@@ -106,16 +106,16 @@ export class Coder {
 
   async create() {
     const leftProjectSchemaTableImportPath =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .project.backend.project.schema.project.table.baseName;
     const rightProjectSchemaImportPath =
-      this.parent.parent.parent.parent.parent.project.models[2].project.model
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
         .project.backend.project.schema.project.table.baseName;
 
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[0].isExternal;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[2].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,

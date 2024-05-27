@@ -69,8 +69,8 @@ export class Coder {
   async create() {
     const schemaModuleLibName = this.parent.project.schema.baseName;
 
-    const leftModel = this.parent.parent.parent.parent.project.models[1];
-    const rightModel = this.parent.parent.parent.parent.project.models[2];
+    const leftModel = this.parent.parent.parent.parent.project.models[0];
+    const rightModel = this.parent.parent.parent.parent.project.models[1];
 
     const leftModelIsExternal = leftModel.isExternal;
     const rightModelIsExternal = rightModel.isExternal;

@@ -10,23 +10,25 @@ export async function relationGenerator(
 ) {
   const moduleName = options.module;
 
-  const coder = new Coder({ tree });
+  const coder = new Coder({
+    tree,
+    moduleName,
+    models: [
+      {
+        name: options.left_model_name,
+        isExternal: options.left_model_is_external,
+      },
+      {
+        name: options.right_model_name,
+        isExternal: options.right_model_is_external,
+      },
+    ],
+  });
+
   if (options.action === "remove") {
-    await coder.removeRelations({
-      leftModelName: options.left_model_name,
-      leftModelIsExternal: options.left_model_is_external,
-      rightModelName: options.right_model_name,
-      rightModelIsExternal: options.right_model_is_external,
-      moduleName,
-    });
+    await coder.removeRelations();
   } else {
-    await coder.createRelations({
-      leftModelName: options.left_model_name,
-      leftModelIsExternal: options.left_model_is_external,
-      rightModelName: options.right_model_name,
-      rightModelIsExternal: options.right_model_is_external,
-      moduleName,
-    });
+    await coder.createRelations();
   }
 }
 

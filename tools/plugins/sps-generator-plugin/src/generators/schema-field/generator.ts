@@ -8,12 +8,16 @@ export async function schemaFieldGenerator(
 ) {
   const coder = new Coder({
     tree,
+    moduleName: options.module,
+    models: [
+      {
+        name: options.model_name,
+      },
+    ],
   });
 
   if (options.action === "remove") {
     await coder.removeField({
-      modelName: options.model_name,
-      moduleName: options.module,
       name: options.name,
       level: options.level,
       pgCoreType: options.pg_core_type,
@@ -21,8 +25,6 @@ export async function schemaFieldGenerator(
     });
   } else {
     await coder.addField({
-      modelName: options.model_name,
-      moduleName: options.module,
       name: options.name,
       pgCoreType: options.pg_core_type,
       level: options.level,

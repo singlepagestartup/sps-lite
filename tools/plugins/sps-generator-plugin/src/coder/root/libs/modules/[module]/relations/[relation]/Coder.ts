@@ -27,9 +27,9 @@ export class Coder {
     this.parent = parent;
 
     const leftModel =
-      this.parent.parent.project.models[1].project.model.nameStyles;
+      this.parent.parent.project.models[0].project.model.nameStyles;
     const rightModel =
-      this.parent.parent.project.models[2].project.model.nameStyles;
+      this.parent.parent.project.models[1].project.model.nameStyles;
 
     this.name = `${leftModel.kebabCased.pluralized}-to-${rightModel.kebabCased.pluralized}`;
 

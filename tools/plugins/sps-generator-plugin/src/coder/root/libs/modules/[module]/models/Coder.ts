@@ -24,10 +24,12 @@ export class Coder {
     tree,
     parent,
     isExternal = false,
+    modelName,
   }: {
     tree: Tree;
     parent: ModuleCoder;
     isExternal?: boolean;
+    modelName: string;
   }) {
     this.name = "models";
     this.baseName = `${parent.baseName}-models`;
@@ -36,8 +38,14 @@ export class Coder {
     this.parent = parent;
     this.isExternal = isExternal;
 
+    const model = new ModelCoder({
+      tree: this.tree,
+      name: modelName,
+      parent: this,
+    });
+
     this.project = {
-      model: undefined,
+      model,
     };
   }
 
@@ -45,49 +53,19 @@ export class Coder {
     await this.project.model?.update();
   }
 
-  async init({
-    modelName,
-    isExternal = false,
-  }: {
-    modelName: string;
-    isExternal?: boolean;
-  }) {
-    const model = new ModelCoder({
-      tree: this.tree,
-      name: modelName,
-      parent: this,
-    });
-
-    this.project.model = model;
-
-    await this.project.model.init();
-  }
-
-  async createModel({ modelName }: { modelName: string }) {
-    await this.init({ modelName });
-
+  async createModel() {
     await this.project.model.create();
   }
 
-  async removeModel({ modelName }: { modelName: string }) {
-    await this.init({ modelName });
-
+  async removeModel() {
     await this.project.model.remove();
   }
 
-  async addField(props: IEditFieldProps & { modelName: string }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
+  async addField(props: IEditFieldProps) {
     await this.project.model.addField(props);
   }
 
-  async removeField(props: IEditFieldProps & { modelName: string }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
+  async removeField(props: IEditFieldProps) {
     await this.project.model.removeField(props);
   }
 
@@ -102,49 +80,29 @@ export class Coder {
   async createModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
     templateName?: string;
   }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
     await this.project.model.createModelFrontendComponentVariant(props);
   }
 
   async removeModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
   }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
     await this.project.model.removeModelFrontendComponentVariant(props);
   }
 
   async createBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
   }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
     await this.project.model.createBackendVariant(props);
   }
 
   async removeBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
   }) {
-    const { modelName } = props;
-
-    await this.init({ modelName });
-
     await this.project.model.removeBackendVariant(props);
   }
 }

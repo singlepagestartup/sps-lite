@@ -14,6 +14,12 @@ export async function frontendComponentVariantGenerator(
 
   const coder = new Coder({
     tree,
+    moduleName,
+    models: [
+      {
+        name: entityName,
+      },
+    ],
   });
 
   if (options.type === "model") {
@@ -21,15 +27,11 @@ export async function frontendComponentVariantGenerator(
       await coder.removeModelFrontendComponentVariant({
         name,
         level,
-        moduleName,
-        modelName: entityName,
       });
     } else {
       await coder.createModelFrontendComponentVariant({
         name,
         level,
-        moduleName,
-        modelName: entityName,
         templateName: options.template,
       });
     }
@@ -38,14 +40,12 @@ export async function frontendComponentVariantGenerator(
       await coder.removeRelationFrontendComponentVariant({
         name,
         level,
-        moduleName,
         relationName: entityName,
       });
     } else {
       await coder.createRelationFrontendComponentVariant({
         name,
         level,
-        moduleName,
         relationName: entityName,
         templateName: options.template,
       });

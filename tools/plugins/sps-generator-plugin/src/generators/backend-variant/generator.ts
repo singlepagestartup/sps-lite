@@ -8,23 +8,27 @@ export async function backendVariantGenerator(
   tree: Tree,
   options: BackendVariantGeneratorSchema,
 ) {
-  const entityName = options.entity_name;
+  const modelName = options.entity_name;
   const moduleName = options.module;
   const variant = options.variant;
   const level = options.level;
 
-  const coder = new Coder({ tree });
+  const coder = new Coder({
+    tree,
+    moduleName,
+    models: [
+      {
+        name: modelName,
+      },
+    ],
+  });
   if (options.action === "remove") {
     await coder.removeBackendVariant({
-      entityName,
-      moduleName,
       variant,
       level,
     });
   } else {
     await coder.createBackendVariant({
-      entityName,
-      moduleName,
       variant,
       level,
     });

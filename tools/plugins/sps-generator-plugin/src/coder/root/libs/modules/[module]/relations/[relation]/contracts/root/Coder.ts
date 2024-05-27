@@ -63,14 +63,14 @@ export class Coder {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelName =
-      this.parent.parent.parent.parent.project.models[1].project.model.name;
+      this.parent.parent.parent.parent.project.models[0].project.model.name;
     const rightModelName =
-      this.parent.parent.parent.parent.project.models[2].project.model.name;
+      this.parent.parent.parent.parent.project.models[1].project.model.name;
 
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.project.models[0].isExternal;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.project.models[2].isExternal;
+      this.parent.parent.parent.parent.project.models[1].isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,

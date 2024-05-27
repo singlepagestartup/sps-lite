@@ -8,6 +8,7 @@ export async function updateGenerator(
 ) {
   const coder = new Coder({
     tree,
+    moduleName: options.module,
   });
   await coder.update();
 

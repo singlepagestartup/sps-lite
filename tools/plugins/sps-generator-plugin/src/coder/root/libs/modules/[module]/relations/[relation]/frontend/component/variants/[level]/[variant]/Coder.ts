@@ -120,10 +120,10 @@ export class Coder {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelName =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .name;
     const rightModel =
-      this.parent.parent.parent.parent.parent.project.models[2];
+      this.parent.parent.parent.parent.parent.project.models[1];
     const rightModelName = rightModel.project.model.name;
 
     const rightModelRootFrontendComponentImportPath =

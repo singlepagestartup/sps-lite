@@ -19,22 +19,31 @@ export class Coder {
     module?: ModuleCoder;
   };
 
-  constructor({
-    tree,
-    parent,
-    type,
-  }: {
+  constructor(props: {
     tree: Tree;
     parent: ModulesCoder;
     type: "modules" | "providers" | "shared";
+    moduleName: string;
+    models?: {
+      name: string;
+      isExternal?: boolean;
+    }[];
   }) {
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/${type}`;
-    this.name = type;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/${props.type}`;
+    this.name = props.type;
+    this.tree = props.tree;
+    this.parent = props.parent;
+
+    const module = new ModuleCoder({
+      tree: this.tree,
+      parent: this,
+      name: props.moduleName,
+      models: props.models,
+    });
+
     this.project = {
-      module: undefined,
+      module,
     };
   }
 
@@ -42,209 +51,81 @@ export class Coder {
     await this.project.module?.update();
   }
 
-  async init({ moduleName }: { moduleName: string }) {
-    if (!moduleName) {
-      throw new Error("Module name is required");
-    }
-
-    const moduleCoder = new ModuleCoder({
-      tree: this.tree,
-      parent: this,
-      name: moduleName,
-    });
-
-    this.project.module = moduleCoder;
-
-    await this.project.module.init();
-  }
-
-  async create({ moduleName }: { moduleName: string }) {
-    await this.init({ moduleName });
-
+  async create() {
     await this.project.module.create();
   }
 
-  async remove({ moduleName }: { moduleName: string }) {
-    await this.init({ moduleName });
-
+  async remove() {
     await this.project.module.remove();
   }
 
-  async createModel({
-    modelName,
-    moduleName,
-  }: {
-    modelName: string;
-    moduleName: string;
-  }) {
-    await this.init({
-      moduleName,
-    });
-
-    await this.project.module.createModel({
-      modelName,
-    });
+  async createModel() {
+    await this.project.module.createModel();
   }
 
-  async removeModel({
-    modelName,
-    moduleName,
-  }: {
-    modelName: string;
-    moduleName: string;
-  }) {
-    await this.init({
-      moduleName,
-    });
-
-    await this.project.module.removeModel({
-      modelName,
-    });
+  async removeModel() {
+    await this.project.module.removeModel();
   }
 
-  async addField(
-    props: IEditFieldProps & {
-      modelName: string;
-      moduleName: string;
-    },
-  ) {
-    const { moduleName } = props;
-
-    await this.init({
-      moduleName,
-    });
-
+  async addField(props: IEditFieldProps) {
     await this.project.module.addField(props);
   }
 
-  async removeField(
-    props: IEditFieldProps & {
-      modelName: string;
-      moduleName: string;
-    },
-  ) {
-    const { moduleName } = props;
-
-    await this.init({
-      moduleName,
-    });
-
+  async removeField(props: IEditFieldProps) {
     await this.project.module.removeField(props);
   }
 
-  async createRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
-    await this.project.module.createRelations(props);
+  async createRelations() {
+    await this.project.module.createRelations();
   }
 
-  async removeRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
-    await this.project.module.removeRelations(props);
+  async removeRelations() {
+    await this.project.module.removeRelations();
   }
 
   async createModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    modelName: string;
     templateName?: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.createModelFrontendComponentVariant(props);
   }
 
   async removeModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    modelName: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.removeModelFrontendComponentVariant(props);
   }
 
   async createBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    entityName: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.createBackendVariant(props);
   }
 
   async removeBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    entityName: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.removeBackendVariant(props);
   }
 
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
     relationName: string;
     templateName?: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.createRelationFrontendComponentVariant(props);
   }
 
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
     relationName: string;
   }) {
-    const { moduleName } = props;
-    await this.init({
-      moduleName,
-    });
-
     await this.project.module.removeRelationFrontendComponentVariant(props);
   }
 }

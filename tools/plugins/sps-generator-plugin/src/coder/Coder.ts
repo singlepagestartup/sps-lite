@@ -17,12 +17,18 @@ export class Coder {
     root: RootCoder;
   };
 
-  constructor({ tree }: { tree: Tree }) {
-    this.projects = getProjects(tree);
-    this.tree = tree;
+  constructor(props: {
+    tree: Tree;
+    moduleName: string;
+    models?: { name: string; isExternal?: boolean }[];
+  }) {
+    this.projects = getProjects(props.tree);
+    this.tree = props.tree;
 
     const root = new RootCoder({
       tree: this.tree,
+      moduleName: props.moduleName,
+      models: props.models,
     });
 
     this.project = {
@@ -34,66 +40,38 @@ export class Coder {
     await this.project.root.update();
   }
 
-  async createModule({ moduleName }: { moduleName: string }) {
-    await this.project.root.createModule({
-      moduleName,
-    });
+  async createModule() {
+    await this.project.root.createModule();
 
     await formatFiles(this.tree);
   }
 
-  async removeModule({ moduleName }: { moduleName: string }) {
-    await this.project.root.removeModule({
-      moduleName,
-    });
+  async removeModule() {
+    await this.project.root.removeModule();
 
     await formatFiles(this.tree);
   }
 
-  async createModel({
-    moduleName,
-    modelName,
-  }: {
-    moduleName: string;
-    modelName: string;
-  }) {
-    await this.project.root.createModel({
-      moduleName,
-      modelName,
-    });
+  async createModel() {
+    await this.project.root.createModel();
 
     await formatFiles(this.tree);
   }
 
-  async removeModel({
-    moduleName,
-    modelName,
-  }: {
-    moduleName: string;
-    modelName: string;
-  }) {
-    await this.project.root.removeModel({
-      moduleName,
-      modelName,
-    });
+  async removeModel() {
+    await this.project.root.removeModel();
 
     await formatFiles(this.tree);
   }
 
   async removeBackendVariant({
-    entityName,
     level,
-    moduleName,
     variant,
   }: {
-    entityName: string;
-    moduleName: string;
     level: string;
     variant: string;
   }) {
     await this.project.root.removeBackendVariant({
-      entityName,
-      moduleName,
       variantLevel: level,
       variantName: variant,
     });
@@ -102,19 +80,13 @@ export class Coder {
   }
 
   async createBackendVariant({
-    entityName,
-    moduleName,
     level,
     variant,
   }: {
-    entityName: string;
-    moduleName: string;
     level: string;
     variant: string;
   }) {
     await this.project.root.createBackendVariant({
-      entityName,
-      moduleName,
       variantLevel: level,
       variantName: variant,
     });
@@ -122,48 +94,26 @@ export class Coder {
     await formatFiles(this.tree);
   }
 
-  async addField(
-    props: IEditFieldProps & {
-      moduleName: string;
-      modelName: string;
-    },
-  ) {
+  async addField(props: IEditFieldProps) {
     await this.project.root.addField(props);
 
     await formatFiles(this.tree);
   }
 
-  async removeField(
-    props: IEditFieldProps & {
-      moduleName: string;
-      modelName: string;
-    },
-  ) {
+  async removeField(props: IEditFieldProps) {
     await this.project.root.removeField(props);
 
     await formatFiles(this.tree);
   }
 
-  async createRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    await this.project.root.createRelations(props);
+  async createRelations() {
+    await this.project.root.createRelations();
 
     await formatFiles(this.tree);
   }
 
-  async removeRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    await this.project.root.removeRelations(props);
+  async removeRelations() {
+    await this.project.root.removeRelations();
 
     await formatFiles(this.tree);
   }
@@ -171,21 +121,15 @@ export class Coder {
   async createModelFrontendComponentVariant({
     name,
     level,
-    modelName,
-    moduleName,
     templateName,
   }: {
     name: string;
     level: string;
-    modelName: string;
-    moduleName: string;
     templateName?: string;
   }) {
     await this.project.root.createModelFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
-      moduleName: moduleName,
-      modelName: modelName,
       templateName: templateName,
     });
   }
@@ -193,19 +137,13 @@ export class Coder {
   async removeModelFrontendComponentVariant({
     name,
     level,
-    modelName,
-    moduleName,
   }: {
     name: string;
     level: string;
-    modelName: string;
-    moduleName: string;
   }) {
     await this.project.root.removeModelFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
-      moduleName: moduleName,
-      modelName: modelName,
     });
   }
 
@@ -213,19 +151,17 @@ export class Coder {
     name,
     level,
     relationName,
-    moduleName,
+
     templateName,
   }: {
     name: string;
     level: string;
     relationName: string;
-    moduleName: string;
     templateName?: string;
   }) {
     await this.project.root.createRelationFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
-      moduleName,
       relationName,
       templateName,
     });
@@ -235,17 +171,14 @@ export class Coder {
     name,
     level,
     relationName,
-    moduleName,
   }: {
     name: string;
     level: string;
     relationName: string;
-    moduleName: string;
   }) {
     await this.project.root.removeRelationFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
-      moduleName,
       relationName,
     });
   }
