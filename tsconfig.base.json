@@ -1788,8 +1788,8 @@
       "@sps/sps-website-builder-models-slider-block-backend-schema-relations-slider-blocks-to-sliders": [
         "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/slider-blocks-to-sliders/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-slider-block-backend-schema-relations-widgets": [
-        "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/widgets/src/index.ts"
+      "@sps/sps-website-builder-models-slider-block-backend-schema-relations-widgets-to-slider-blocks": [
+        "libs/modules/sps-website-builder/models/slider-block/backend/schema/relations/widgets-to-slider-blocks/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slider-block-backend-schema-table": [
         "libs/modules/sps-website-builder/models/slider-block/backend/schema/table/src/index.ts"

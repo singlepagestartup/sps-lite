@@ -12,6 +12,12 @@
       "orderIndex": 0,
       "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
       "widgetId": "14332113-c762-48b8-b165-40ce181a47e2"
+    },
+    {
+      "id": "ac82fe0a-19db-4c5a-90ab-937326c75553",
+      "orderIndex": 2,
+      "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
+      "widgetId": "aa8dc819-d2ae-4b02-a064-4c11ecb76a42"
     }
   ],
   "pagesToLayouts": [

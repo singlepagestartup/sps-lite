@@ -12,10 +12,19 @@
       "id": "cc3ffd35-19ea-44e2-9a47-747bc05ca08c",
       "direction": "default",
       "position": "default",
-      "orderIndex": 0,
+      "orderIndex": 5,
       "className": "",
       "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
       "buttonsArrayId": "5c23e46a-a368-49a0-b6af-69332d75f2a6"
+    },
+    {
+      "id": "0f0dbef1-eb47-47fe-aa7a-fc035fe53c35",
+      "direction": "default",
+      "position": "extra",
+      "orderIndex": 0,
+      "className": "",
+      "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
+      "buttonsArrayId": "198acb46-ae02-4788-8013-0ea8014b5181"
     },
     {
       "id": "8624289c-580b-4472-a4f7-adb83505f7cd",
@@ -27,13 +36,13 @@
       "buttonsArrayId": "16629e7f-474f-46dd-ba76-056d1fdf54e3"
     },
     {
-      "id": "0f0dbef1-eb47-47fe-aa7a-fc035fe53c35",
+      "id": "200b9698-4193-45cd-aeab-4984cbd68221",
       "direction": "default",
-      "position": "extra",
+      "position": "default",
       "orderIndex": 0,
       "className": "",
       "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
-      "buttonsArrayId": "198acb46-ae02-4788-8013-0ea8014b5181"
+      "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c"
     }
   ],
   "footerBlocksToLogotypes": [

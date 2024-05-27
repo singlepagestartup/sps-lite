@@ -1,11 +1,11 @@
 {
-  "id": "cc3ffd35-19ea-44e2-9a47-747bc05ca08c",
+  "id": "200b9698-4193-45cd-aeab-4984cbd68221",
   "direction": "default",
   "position": "default",
-  "orderIndex": 5,
+  "orderIndex": 0,
   "className": "",
   "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
-  "buttonsArrayId": "5c23e46a-a368-49a0-b6af-69332d75f2a6",
+  "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c",
   "footerBlock": {
     "description": "Next.js + Hono + Vercel",
     "subtitle": "The fastest way to create service oriented project",
@@ -17,11 +17,11 @@
     "className": null
   },
   "buttonsArray": {
-    "id": "5c23e46a-a368-49a0-b6af-69332d75f2a6",
-    "createdAt": "2024-05-25T20:08:12.006Z",
-    "updatedAt": "2024-05-25T20:08:12.006Z",
+    "id": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c",
+    "createdAt": "2024-05-25T20:38:00.800Z",
+    "updatedAt": "2024-05-25T20:38:00.800Z",
     "variant": "default",
-    "title": "Links",
+    "title": "Navbar buttons",
     "className": "",
     "description": ""
   }

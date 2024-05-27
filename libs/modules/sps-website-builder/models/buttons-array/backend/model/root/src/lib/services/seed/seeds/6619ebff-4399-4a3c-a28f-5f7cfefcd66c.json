@@ -6,7 +6,6 @@
   "title": "Navbar buttons",
   "className": "",
   "description": "",
-  "footerBlocksToButtonsArrays": [],
   "buttonsArraysToButtons": [
     {
       "id": "06e69ed7-a90d-4b03-9871-736219b6c612",
@@ -21,18 +20,6 @@
       "orderIndex": 0,
       "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c",
       "buttonId": "64e1e974-b9f1-4b32-9b54-2a0b7a95f177"
-    }
-  ],
-  "heroSectionBlocksToButtonsArrays": [],
-  "navbarBlocksToButtonsArrays": [
-    {
-      "id": "fb641429-040a-4e30-8dd0-023327a31384",
-      "direction": "default",
-      "position": "default",
-      "orderIndex": 0,
-      "className": "",
-      "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
-      "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c"
     }
   ]
 }
