@@ -22,7 +22,7 @@ export class Coder {
     models?: ModelsCoder[];
     relations?: RelationsCoder[];
     backend?: BackendCoder;
-  };
+  } = {};
 
   constructor(props: {
     tree: Tree;
@@ -40,39 +40,26 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    const backend = new BackendCoder({
+    this.project.backend = new BackendCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const models: ModelsCoder[] = [];
-
-    props.models?.forEach((model) => {
-      models.push(
-        new ModelsCoder({
-          tree: this.tree,
-          parent: this,
-          name: model.name,
-          isExternal: model.isExternal,
-        }),
-      );
+    this.project.models = props.models?.map((model) => {
+      return new ModelsCoder({
+        tree: this.tree,
+        parent: this,
+        name: model.name,
+        isExternal: model.isExternal,
+      });
     });
 
-    const relations: RelationsCoder[] = [];
-    props.relations?.forEach((relation) => {
-      relations.push(
-        new RelationsCoder({
-          tree: this.tree,
-          parent: this,
-        }),
-      );
+    this.project.relations = props.relations?.map((relation) => {
+      return new RelationsCoder({
+        tree: this.tree,
+        parent: this,
+      });
     });
-
-    this.project = {
-      models,
-      relations,
-      backend,
-    };
   }
 
   async update() {
@@ -146,6 +133,10 @@ export class Coder {
   }
 
   async createRelations() {
+    if (!this.project.relations.length) {
+      throw new Error("Relations are not defined");
+    }
+
     await this.project.relations[0].createRelations();
 
     if (!this.project.models[0].isExternal) {

@@ -14,28 +14,28 @@ export class Coder {
   name: string;
   project: {
     libs: LibsCoder;
+  } = {} as {
+    libs: LibsCoder;
   };
 
   constructor(props: {
     tree: Tree;
     moduleName: string;
     models?: { name: string; isExternal?: boolean }[];
+    relations?: {}[];
   }) {
     this.name = "root";
     this.tree = props.tree;
     this.baseName = "@sps";
     this.baseDirectory = "";
 
-    const libs = new LibsCoder({
+    this.project.libs = new LibsCoder({
       tree: this.tree,
       parent: this,
       moduleName: props.moduleName,
       models: props.models,
+      relations: props.relations,
     });
-
-    this.project = {
-      libs,
-    };
   }
 
   async update() {

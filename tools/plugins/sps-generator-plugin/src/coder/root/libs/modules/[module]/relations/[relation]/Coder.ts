@@ -19,6 +19,10 @@ export class Coder {
     backend: BackendCoder;
     contracts: ContractsCoder;
     frontend: FrontendCoder;
+  } = {} as {
+    backend: BackendCoder;
+    contracts: ContractsCoder;
+    frontend: FrontendCoder;
   };
 
   constructor(props: { tree: Tree; parent: RelationsCoder }) {
@@ -38,26 +42,20 @@ export class Coder {
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
 
-    const backend = new BackendCoder({
+    this.project.backend = new BackendCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const contracts = new ContractsCoder({
+    this.project.contracts = new ContractsCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const frontend = new FrontendCoder({
+    this.project.frontend = new FrontendCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      backend,
-      contracts,
-      frontend,
-    };
   }
 
   async update() {

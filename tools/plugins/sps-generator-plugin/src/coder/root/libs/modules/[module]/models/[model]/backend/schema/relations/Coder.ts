@@ -12,6 +12,9 @@ export class Coder {
   project: {
     root: RootCoder;
     relation?: RelationCoder;
+  } = {} as {
+    root: RootCoder;
+    relation?: RelationCoder;
   };
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
@@ -26,15 +29,10 @@ export class Coder {
     //   tree,
     // });
 
-    const root = new RootCoder({
+    this.project.root = new RootCoder({
       parent: this,
       tree,
     });
-
-    this.project = {
-      root,
-      relation: undefined,
-    };
   }
 
   async update() {

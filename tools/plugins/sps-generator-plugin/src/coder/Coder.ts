@@ -15,25 +15,25 @@ export class Coder {
   tree: Tree;
   project: {
     root: RootCoder;
+  } = {} as {
+    root: RootCoder;
   };
 
   constructor(props: {
     tree: Tree;
     moduleName: string;
     models?: { name: string; isExternal?: boolean }[];
+    relations?: {}[];
   }) {
     this.projects = getProjects(props.tree);
     this.tree = props.tree;
 
-    const root = new RootCoder({
+    this.project.root = new RootCoder({
       tree: this.tree,
       moduleName: props.moduleName,
       models: props.models,
+      relations: props.relations,
     });
-
-    this.project = {
-      root,
-    };
   }
 
   async update() {

@@ -16,6 +16,8 @@ export class Coder {
   name: string;
   project: {
     modules: ModulesCoder;
+  } = {} as {
+    modules: ModulesCoder;
   };
 
   constructor(props: {
@@ -26,6 +28,7 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
+    relations?: {}[];
   }) {
     this.baseDirectory = `libs`;
     this.name = "libs";
@@ -33,17 +36,14 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    const modulesCoder = new ModulesCoder({
+    this.project.modules = new ModulesCoder({
       tree: this.tree,
       parent: this,
       type: "modules",
       moduleName: props.moduleName,
       models: props.models,
+      relations: props.relations,
     });
-
-    this.project = {
-      modules: modulesCoder,
-    };
   }
 
   async update() {

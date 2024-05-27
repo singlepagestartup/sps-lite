@@ -23,6 +23,7 @@ export async function relationGenerator(
         isExternal: options.right_model_is_external,
       },
     ],
+    relations: [{}],
   });
 
   if (options.action === "remove") {

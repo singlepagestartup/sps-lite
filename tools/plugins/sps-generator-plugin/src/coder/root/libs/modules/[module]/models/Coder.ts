@@ -17,7 +17,9 @@ export class Coder {
   baseDirectory: string;
   isExternal: boolean;
   project: {
-    model?: ModelCoder;
+    model: ModelCoder;
+  } = {} as {
+    model: ModelCoder;
   };
 
   constructor(props: {
@@ -33,15 +35,11 @@ export class Coder {
     this.parent = props.parent;
     this.isExternal = props.isExternal;
 
-    const model = new ModelCoder({
+    this.project.model = new ModelCoder({
       tree: this.tree,
       name: props.name,
       parent: this,
     });
-
-    this.project = {
-      model,
-    };
   }
 
   async update() {

@@ -13,6 +13,8 @@ export class Coder {
   name: string;
   project: {
     relation: RelationCoder;
+  } = {} as {
+    relation: RelationCoder;
   };
 
   constructor(props: { tree: Tree; parent: ModuleCoder }) {
@@ -22,14 +24,10 @@ export class Coder {
     this.baseName = `${props.parent.baseName}-relations`;
     this.baseDirectory = `${props.parent.baseDirectory}/relations`;
 
-    const relation = new RelationCoder({
+    this.project.relation = new RelationCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      relation,
-    };
   }
 
   async update() {

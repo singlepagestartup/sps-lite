@@ -15,6 +15,10 @@ export class Coder {
     app: AppCoder;
     schema: SchemaCoder;
     model: ModelRootCoder;
+  } = {} as {
+    app: AppCoder;
+    schema: SchemaCoder;
+    model: ModelRootCoder;
   };
 
   constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
@@ -24,26 +28,20 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    const schema = new SchemaCoder({
+    this.project.schema = new SchemaCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const model = new ModelRootCoder({
+    this.project.model = new ModelRootCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const app = new AppCoder({
+    this.project.app = new AppCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      schema,
-      model,
-      app,
-    };
   }
 
   async update() {

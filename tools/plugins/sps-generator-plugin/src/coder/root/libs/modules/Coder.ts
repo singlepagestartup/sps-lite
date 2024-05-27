@@ -17,7 +17,7 @@ export class Coder {
   name: string;
   project: {
     module?: ModuleCoder;
-  };
+  } = {};
 
   constructor(props: {
     tree: Tree;
@@ -28,6 +28,7 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
+    relations?: {}[];
   }) {
     this.baseName = `${props.parent.baseName}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.type}`;
@@ -35,16 +36,13 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    const module = new ModuleCoder({
+    this.project.module = new ModuleCoder({
       tree: this.tree,
       parent: this,
       name: props.moduleName,
       models: props.models,
+      relations: props.relations,
     });
-
-    this.project = {
-      module,
-    };
   }
 
   async update() {
