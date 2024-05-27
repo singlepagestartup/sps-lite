@@ -3,6 +3,6 @@ import { populate as pagesToLayouts } from "@sps/sps-website-builder-models-page
 export const populate = (params: any) => {
   return {
     pagesToWidgets: pagesToWidgets(params),
-    ...pagesToLayouts,
+    pagesToLayouts: pagesToLayouts(params),
   } as const;
 };

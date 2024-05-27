@@ -8,7 +8,7 @@ import {
 
 export async function service(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({
-    with: populate,
+    with: populate(props?.params?.populate),
     where(table, queryFunctions) {
       return queryBuilder.filters<typeof Table>({
         table,

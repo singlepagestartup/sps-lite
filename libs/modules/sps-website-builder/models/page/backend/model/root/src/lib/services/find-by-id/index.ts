@@ -1,4 +1,3 @@
-import { FindByIdServiceProps } from "@sps/shared-backend-api";
 import { db } from "@sps/sps-db-provider";
 import {
   Table,
@@ -6,6 +5,7 @@ import {
   schemaName,
 } from "@sps/sps-website-builder-models-page-backend-schema";
 import { eq } from "drizzle-orm";
+import { FindByIdServiceProps } from "@sps/shared-backend-api";
 
 export async function service(props: FindByIdServiceProps) {
   const { id } = props;

@@ -14,7 +14,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  layout: true as const,
-  navbar: true as const,
+export const populate = (params: any) => {
+  return {
+    layout: true,
+    navbar: true,
+  } as const;
 };

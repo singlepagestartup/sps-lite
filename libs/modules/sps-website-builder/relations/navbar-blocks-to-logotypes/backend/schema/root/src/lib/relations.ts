@@ -14,7 +14,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  navbarBlock: true as const,
-  logotype: true as const,
+export const populate = (params: any) => {
+  return {
+    navbarBlock: true,
+    logotype: true,
+  } as const;
 };

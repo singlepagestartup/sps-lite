@@ -1,35 +1,12 @@
 import {
   Table,
   modelName,
-  populate as parentPopulate,
 } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-schema";
-import {
-  Table as RightTable,
-  modelName as rightTableModelName,
-} from "@sps/sps-website-builder-models-widget-backend-schema-table";
 import { TableRelationsHelpers } from "drizzle-orm";
-
-export const config = {
-  name: "widgets",
-  type: "many" as const,
-  model: modelName,
-  leftTable: {
-    model: modelName,
-    table: Table,
-    queryKey: "sliderBlock",
-    schemaKey: "sliderBlockId",
-  },
-  rightTables: [
-    {
-      model: rightTableModelName,
-      table: RightTable,
-      queryKey: "widget",
-      schemaKey: "widgetId",
-      extract: true,
-      returnType: RightTable.$inferSelect,
-    },
-  ],
-};
+import {
+  PopulateQueryBuilderProps,
+  queryBuilder,
+} from "@sps/shared-backend-api";
 
 export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
@@ -39,8 +16,6 @@ export const relation = <TTableName extends string>(
   };
 };
 
-export const populate = {
-  [modelName]: {
-    with: parentPopulate,
-  },
-} as const;
+export const populate = (
+  params: PopulateQueryBuilderProps<typeof Table>["params"],
+) => queryBuilder.populate<typeof Table>(params, modelName);

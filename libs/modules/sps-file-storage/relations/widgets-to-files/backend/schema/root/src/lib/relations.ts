@@ -17,8 +17,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  widget: true as const,
-
-  file: true as const,
+export const populate = (params: any) => {
+  return {
+    widget: true as const,
+    file: true as const,
+  };
 };

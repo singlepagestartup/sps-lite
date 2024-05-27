@@ -3,6 +3,10 @@ import {
   modelName,
 } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
 import { TableRelationsHelpers } from "drizzle-orm";
+import {
+  PopulateQueryBuilderProps,
+  queryBuilder,
+} from "@sps/shared-backend-api";
 
 export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
@@ -12,6 +16,6 @@ export const relation = <TTableName extends string>(
   };
 };
 
-export const populate = {
-  [modelName]: true,
-} as const;
+export const populate = (
+  params: PopulateQueryBuilderProps<typeof Table>["params"],
+) => queryBuilder.populate<typeof Table>(params, modelName);

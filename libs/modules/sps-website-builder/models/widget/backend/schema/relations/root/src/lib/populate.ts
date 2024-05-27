@@ -12,17 +12,20 @@ import { populate as navbarsToWidgets } from "@sps/sps-website-builder-models-wi
 import { populate as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-hero-section-blocks";
 import { populate as pagesToWidgets } from "@sps/sps-website-builder-models-widget-backend-schema-relations-pages-to-widgets";
 
-export const populate = {
-  ...widgetsToSlides,
-  ...widgetsToLogotypes,
-  ...widgetsToSpsFileStorageModuleWidgets,
-  ...widgetsToStartupModuleWidgets,
-  ...widgetsToFeaturesSectionBlocks,
-  ...widgetsToSliderBlocks,
-  ...widgetsToFooterBlocks,
-  ...footersToWidgets,
-  ...widgetsToNavbarBlocks,
-  ...navbarsToWidgets,
-  ...widgetsToHeroSectionBlocks,
-  ...pagesToWidgets,
-} as const;
+export const populate = (params: any) => {
+  return {
+    widgetsToSlides: widgetsToSlides(params),
+    widgetsToLogotypes: widgetsToLogotypes(params),
+    widgetsToSpsFileStorageModuleWidgets:
+      widgetsToSpsFileStorageModuleWidgets(params),
+    widgetsToStartupModuleWidgets: widgetsToStartupModuleWidgets(params),
+    widgetsToFeaturesSectionBlocks: widgetsToFeaturesSectionBlocks(params),
+    widgetsToSliderBlocks: widgetsToSliderBlocks(params),
+    widgetsToFooterBlocks: widgetsToFooterBlocks(params),
+    footersToWidgets: footersToWidgets(params),
+    widgetsToNavbarBlocks: widgetsToNavbarBlocks(params),
+    navbarsToWidgets: navbarsToWidgets(params),
+    widgetsToHeroSectionBlocks: widgetsToHeroSectionBlocks(params),
+    pagesToWidgets: pagesToWidgets(params),
+  } as const;
+};
