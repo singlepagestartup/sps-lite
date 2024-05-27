@@ -22,7 +22,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   importContracts: ImportContracts;
   exportNamedInterface: ExportNamedInterface;
 
@@ -49,14 +49,12 @@ export class Coder {
         name: relationName,
       }).pascalCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -89,7 +87,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

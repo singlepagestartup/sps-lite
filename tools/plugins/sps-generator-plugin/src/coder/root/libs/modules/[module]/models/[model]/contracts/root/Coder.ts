@@ -19,7 +19,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
     this.name = "root";
@@ -27,9 +27,7 @@ export class Coder {
     this.tree = tree;
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/root`;
-  }
 
-  async init() {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
@@ -51,7 +49,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async addField({

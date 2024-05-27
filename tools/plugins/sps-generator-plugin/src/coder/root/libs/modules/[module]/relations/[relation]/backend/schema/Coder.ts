@@ -36,10 +36,6 @@ export class Coder {
     await this.project.root.update();
   }
 
-  async init() {
-    await this.project.root.init();
-  }
-
   async create() {
     await this.project.root.create();
   }

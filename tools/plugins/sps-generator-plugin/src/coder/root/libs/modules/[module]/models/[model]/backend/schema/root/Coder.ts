@@ -16,7 +16,7 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
@@ -39,14 +39,12 @@ export class Coder {
       modelNamePascalCased,
       libName: this.baseName,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {
@@ -88,6 +86,8 @@ export class Coder {
         relations_library_name: relationsLibraryName,
       },
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

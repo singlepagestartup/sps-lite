@@ -20,9 +20,8 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   relationsSchemaProjectImportPath: string;
-
   nameStyles: ReturnType<typeof getNameStyles>;
   importPopulate: ImportPopulate;
   exportPopulate: ExportPopulate;
@@ -67,14 +66,12 @@ export class Coder {
     this.exportRelation = new ExportRelation({
       leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -89,6 +86,8 @@ export class Coder {
           this.relationsSchemaProjectImportPath,
       },
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({

@@ -32,6 +32,7 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
+    relations?: {}[];
   }) {
     this.baseName = `${props.parent.baseName}/${props.name}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.name}`;
@@ -51,20 +52,25 @@ export class Coder {
         new ModelsCoder({
           tree: this.tree,
           parent: this,
-          modelName: model.name,
+          name: model.name,
           isExternal: model.isExternal,
         }),
       );
     });
 
-    const relations = new RelationsCoder({
-      tree: this.tree,
-      parent: this,
+    const relations: RelationsCoder[] = [];
+    props.relations?.forEach((relation) => {
+      relations.push(
+        new RelationsCoder({
+          tree: this.tree,
+          parent: this,
+        }),
+      );
     });
 
     this.project = {
       models,
-      relations: [relations],
+      relations,
       backend,
     };
   }
@@ -140,7 +146,6 @@ export class Coder {
   }
 
   async createRelations() {
-    await this.project.relations[0].init();
     await this.project.relations[0].createRelations();
 
     if (!this.project.models[0].isExternal) {
@@ -187,8 +192,6 @@ export class Coder {
   }
 
   async removeRelations() {
-    await this.project.relations[0].init();
-
     if (!this.project.models[1].isExternal) {
       await this.project.models[1].removeRelation();
 
@@ -319,14 +322,14 @@ export class Coder {
     const leftProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
-      modelName: unpluralizedModelNames[0],
+      name: unpluralizedModelNames[0],
     });
     this.project.models.push(leftProject);
 
     const rightProject = new ModelsCoder({
       tree: this.tree,
       parent: this,
-      modelName: unpluralizedModelNames[1],
+      name: unpluralizedModelNames[1],
     });
 
     this.project.models.push(rightProject);

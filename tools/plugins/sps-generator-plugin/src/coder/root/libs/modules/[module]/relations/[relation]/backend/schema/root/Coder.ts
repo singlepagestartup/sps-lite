@@ -17,8 +17,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
-
+  project?: ProjectConfiguration;
   libName: string;
   root: string;
   rootRelationsSchemaProject: ProjectConfiguration;
@@ -94,14 +93,12 @@ export class Coder {
       moduleNamePascalCased: this.moduleNameStyles.pascalCased,
       relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -147,6 +144,8 @@ export class Coder {
           this.relationNameStyles.propertyCased.base,
       },
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {

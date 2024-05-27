@@ -14,9 +14,9 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: {
-    schema?: SchemaCoder;
-    model?: ModelCoder;
-    app?: AppCoder;
+    schema: SchemaCoder;
+    model: ModelCoder;
+    app: AppCoder;
   };
 
   constructor({ tree, parent }: { tree: Tree; parent: RelationCoder }) {
@@ -51,12 +51,6 @@ export class Coder {
     await this.project.schema.update();
     await this.project.model.update();
     await this.project.app.update();
-  }
-
-  async init() {
-    await this.project.schema.init();
-    await this.project.model.init();
-    await this.project.app.init();
   }
 
   async create() {

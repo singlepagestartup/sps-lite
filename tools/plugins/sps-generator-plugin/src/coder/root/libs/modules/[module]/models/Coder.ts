@@ -20,27 +20,22 @@ export class Coder {
     model?: ModelCoder;
   };
 
-  constructor({
-    tree,
-    parent,
-    isExternal = false,
-    modelName,
-  }: {
+  constructor(props: {
     tree: Tree;
     parent: ModuleCoder;
     isExternal?: boolean;
-    modelName: string;
+    name: string;
   }) {
     this.name = "models";
-    this.baseName = `${parent.baseName}-models`;
-    this.baseDirectory = `${parent.baseDirectory}/models`;
-    this.tree = tree;
-    this.parent = parent;
-    this.isExternal = isExternal;
+    this.baseName = `${props.parent.baseName}-models`;
+    this.baseDirectory = `${props.parent.baseDirectory}/models`;
+    this.tree = props.tree;
+    this.parent = props.parent;
+    this.isExternal = props.isExternal;
 
     const model = new ModelCoder({
       tree: this.tree,
-      name: modelName,
+      name: props.name,
       parent: this,
     });
 

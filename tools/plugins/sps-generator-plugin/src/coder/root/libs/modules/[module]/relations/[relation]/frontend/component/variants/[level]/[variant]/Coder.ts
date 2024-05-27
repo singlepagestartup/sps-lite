@@ -28,7 +28,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   moduleName: string;
   relationName: string;
   importVariant: ImportVariant;
@@ -106,14 +106,12 @@ export class Coder {
       level,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -168,7 +166,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

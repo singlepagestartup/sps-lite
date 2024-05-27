@@ -38,5 +38,13 @@ describe("Coder", () => {
       coder.project.root.project.libs.project.modules.project.module.project
         .models[1].project.model.name,
     ).toBe(rightModelName);
+    expect(
+      coder.project.root.project.libs.project.modules.project.module.project
+        .models[0].project.model.project.contracts,
+    ).toBeDefined();
+    expect(
+      coder.project.root.project.libs.project.modules.project.module.project
+        .models[0].project.model.project.backend,
+    ).toBeDefined();
   });
 });

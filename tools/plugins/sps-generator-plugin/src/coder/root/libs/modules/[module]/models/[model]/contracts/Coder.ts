@@ -42,11 +42,6 @@ export class Coder {
     await this.project.extended.update();
   }
 
-  async init() {
-    await this.project.root.init();
-    await this.project.extended.init();
-  }
-
   async create() {
     await this.project.root.create();
     await this.project.extended.create();

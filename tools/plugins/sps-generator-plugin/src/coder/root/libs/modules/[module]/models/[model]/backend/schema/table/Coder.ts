@@ -42,7 +42,7 @@ export class Coder {
   modelNameSnakeCased: string;
   moduleAndModelNamePascalCased: string;
   moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   tableName: string;
   modelNameStyles: ReturnType<typeof getNameStyles>;
 
@@ -71,14 +71,12 @@ export class Coder {
     } else {
       this.tableName = modelNameStyles.snakeCased.base;
     }
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -97,7 +95,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async addField(props: IEditFieldProps) {

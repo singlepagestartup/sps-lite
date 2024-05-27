@@ -51,12 +51,6 @@ export class Coder {
     await this.project.root.update();
   }
 
-  async init() {
-    await this.project.table.init();
-    await this.project.relations.init();
-    await this.project.root.init();
-  }
-
   async create() {
     await this.project.table.create();
     await this.project.relations.create();

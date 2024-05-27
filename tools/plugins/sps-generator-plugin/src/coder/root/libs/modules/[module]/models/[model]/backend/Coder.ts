@@ -52,12 +52,6 @@ export class Coder {
     await this.project.app.update();
   }
 
-  async init() {
-    await this.project.schema.init();
-    await this.project.model.init();
-    await this.project.app.init();
-  }
-
   async create() {
     await this.project.schema.create();
     await this.project.model.create();

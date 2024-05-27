@@ -16,7 +16,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
     this.name = "extended";
@@ -24,14 +24,12 @@ export class Coder {
     this.tree = tree;
     this.baseName = `${parent.baseName}-extended`;
     this.baseDirectory = `${parent.baseDirectory}/extended`;
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -78,7 +76,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

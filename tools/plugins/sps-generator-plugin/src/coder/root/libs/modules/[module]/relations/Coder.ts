@@ -12,18 +12,23 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: {
-    relation?: RelationCoder;
+    relation: RelationCoder;
   };
 
-  constructor({ tree, parent }: { tree: Tree; parent: ModuleCoder }) {
-    this.tree = tree;
+  constructor(props: { tree: Tree; parent: ModuleCoder }) {
+    this.tree = props.tree;
     this.name = "relations";
-    this.parent = parent;
-    this.baseName = `${parent.baseName}-relations`;
-    this.baseDirectory = `${parent.baseDirectory}/relations`;
+    this.parent = props.parent;
+    this.baseName = `${props.parent.baseName}-relations`;
+    this.baseDirectory = `${props.parent.baseDirectory}/relations`;
+
+    const relation = new RelationCoder({
+      tree: this.tree,
+      parent: this,
+    });
 
     this.project = {
-      relation: undefined,
+      relation,
     };
   }
 
@@ -31,26 +36,11 @@ export class Coder {
     await this.project.relation?.update();
   }
 
-  async init() {
-    const relation = new RelationCoder({
-      tree: this.tree,
-      parent: this,
-    });
-
-    this.project.relation = relation;
-
-    await this.project.relation.init();
-  }
-
   async createRelations() {
-    await this.init();
-
     await this.project.relation.create();
   }
 
   async removeRelations() {
-    await this.init();
-
     await this.project.relation.remove();
   }
 
@@ -59,8 +49,6 @@ export class Coder {
     variantLevel: string;
     templateName?: string;
   }) {
-    await this.init();
-
     await this.project.relation.createRelationFrontendComponentVariant(props);
   }
 
@@ -68,8 +56,6 @@ export class Coder {
     variantName: string;
     variantLevel: string;
   }) {
-    await this.init();
-
     await this.project.relation.removeRelationFrontendComponentVariant(props);
   }
 }

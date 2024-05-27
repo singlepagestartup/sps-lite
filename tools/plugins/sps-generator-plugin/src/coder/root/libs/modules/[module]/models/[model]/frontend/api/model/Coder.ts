@@ -16,7 +16,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   modelName: string;
   modelNamePluralized: string;
   moduleName: string;
@@ -36,14 +36,12 @@ export class Coder {
     this.moduleName = moduleName;
     this.modelName = modelName;
     this.modelNamePluralized = modelNamePluralized;
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
     console.log("Update:", this.baseName);
-  }
-
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async create() {
@@ -70,7 +68,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {
