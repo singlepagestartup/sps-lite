@@ -1,7 +1,9 @@
 import { Hono } from "hono";
 import { handlers } from "./handlers/index";
 
-export const app = new Hono();
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+
+export const app = new Hono<MiddlewaresGeneric>();
 
 app.get("/", async (c, next) => {
   return handlers.find(c, next);

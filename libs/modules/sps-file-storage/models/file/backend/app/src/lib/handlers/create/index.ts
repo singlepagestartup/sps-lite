@@ -4,9 +4,10 @@ import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, string, BlankInput>,
+  c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
   const body = await c.req.parseBody();

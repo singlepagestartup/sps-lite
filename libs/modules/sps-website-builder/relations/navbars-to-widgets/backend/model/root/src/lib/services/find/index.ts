@@ -1,13 +1,21 @@
+import { FindServiceProps, queryBuilder } from "@sps/shared-backend-api";
 import { db } from "@sps/sps-db-provider";
 import {
   populate,
   schemaName,
+  Table,
 } from "@sps/sps-website-builder-relations-navbars-to-widgets-backend-schema";
 
-export async function service(params?: { filter?: any }) {
+export async function service(props?: Partial<FindServiceProps>) {
   const result = await db.query[schemaName].findMany({
     with: populate,
-    where: params?.filter,
+    where(table, queryFunctions) {
+      return queryBuilder.filters<typeof Table>({
+        table,
+        queryFunctions,
+        filters: props?.params?.filters,
+      });
+    },
   });
 
   return result;

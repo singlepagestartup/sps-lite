@@ -4,9 +4,10 @@ import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, `${string}/:uuid`, BlankInput>,
+  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   try {

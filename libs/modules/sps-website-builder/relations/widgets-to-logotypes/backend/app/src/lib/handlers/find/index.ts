@@ -1,29 +1,15 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { Table } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
-import QueryString from "qs";
-import { parseQueryFilters } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, string, BlankInput>,
+  c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
   try {
-    const query = c.req.query();
-    const parsedQuery = QueryString.parse(query);
-
-    let filter: any = undefined;
-    if (parsedQuery["filters"]) {
-      const queryFilters = parsedQuery["filters"];
-      filter = parseQueryFilters({
-        queryFilters,
-        Table,
-      });
-    }
-
-    const data = await model.services.find({ filter });
+    const data = await model.services.find({ params: c.var.parsedQuery });
 
     return c.json({
       data,

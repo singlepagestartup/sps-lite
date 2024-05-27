@@ -55,16 +55,13 @@ export const routes = {
   "/widgets-to-sps-file-storage-module-widgets":
     widgetsToSpsFileStorageModuleWidgets,
   "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,
-
   "/hero-section-blocks-to-files": heroSectionBlocksToFiles,
-
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,
   "/features-section-blocks": featuresSectionBlock,
   "/navbar-blocks-to-logotypes": navbarBlocksToLogotypes,
   "/logotypes": logotype,
-
   "/buttons": button,
   "/sliders-to-slides": slidersToSlides,
   "/slider-blocks-to-sliders": sliderBlocksToSliders,
