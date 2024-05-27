@@ -26,6 +26,10 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/extended`;
   }
 
+  async update() {
+    console.log("Update:", this.baseName);
+  }
+
   async init() {
     this.project = getProjects(this.tree).get(this.baseName);
   }

@@ -38,6 +38,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.module?.update();
+  }
+
   async init({ moduleName }: { moduleName: string }) {
     if (!moduleName) {
       throw new Error("Module name is required");

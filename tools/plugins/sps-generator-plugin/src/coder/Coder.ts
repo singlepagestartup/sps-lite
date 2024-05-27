@@ -30,6 +30,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.root.update();
+  }
+
   async createModule({ moduleName }: { moduleName: string }) {
     await this.project.root.createModule({
       moduleName,

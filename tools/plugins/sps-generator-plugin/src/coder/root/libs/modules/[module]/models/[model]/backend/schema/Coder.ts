@@ -45,6 +45,12 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.table.update();
+    await this.project.relations.update();
+    await this.project.root.update();
+  }
+
   async init() {
     await this.project.table.init();
     await this.project.relations.init();

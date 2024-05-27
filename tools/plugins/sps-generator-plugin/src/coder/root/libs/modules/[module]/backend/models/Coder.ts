@@ -29,6 +29,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.root.update();
+  }
+
   async create() {
     await this.project.root.create();
   }

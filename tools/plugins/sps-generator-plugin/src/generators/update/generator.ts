@@ -9,6 +9,7 @@ export async function updateGenerator(
   const coder = new Coder({
     tree,
   });
+  await coder.update();
 
   console.log(`🚀 ~ options:`, options);
 }

@@ -38,6 +38,10 @@ export class Coder {
     this.relationNamePluralized = relationNamePluralized;
   }
 
+  async update() {
+    console.log("Update:", this.baseName);
+  }
+
   async init() {
     this.project = getProjects(this.tree).get(this.baseName);
   }

@@ -33,6 +33,10 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
+  async update() {
+    console.log("Update:", this.baseName);
+  }
+
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 

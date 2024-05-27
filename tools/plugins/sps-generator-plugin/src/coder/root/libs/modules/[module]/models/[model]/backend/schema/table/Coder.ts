@@ -73,6 +73,10 @@ export class Coder {
     }
   }
 
+  async update() {
+    console.log("Update:", this.baseName);
+  }
+
   async init() {
     this.project = getProjects(this.tree).get(this.baseName);
   }

@@ -45,6 +45,12 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.model.update();
+    await this.project.client.update();
+    await this.project.server.update();
+  }
+
   async init() {
     await this.project.model.init();
     await this.project.client.init();

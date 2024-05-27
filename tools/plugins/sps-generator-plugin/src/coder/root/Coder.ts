@@ -32,6 +32,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.libs.update();
+  }
+
   async createModule({ moduleName }: { moduleName: string }) {
     await this.project.libs.createModule({
       moduleName,

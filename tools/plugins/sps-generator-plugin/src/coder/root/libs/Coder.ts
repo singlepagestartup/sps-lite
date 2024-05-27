@@ -38,6 +38,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.modules.update();
+  }
+
   async createModule({ moduleName }: { moduleName: string }) {
     await this.init();
 

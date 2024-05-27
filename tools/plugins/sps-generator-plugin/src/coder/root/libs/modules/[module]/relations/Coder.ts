@@ -27,6 +27,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.relation?.update();
+  }
+
   async init() {
     const relation = new RelationCoder({
       tree: this.tree,

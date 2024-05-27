@@ -60,6 +60,12 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.contracts.update();
+    await this.project.backend.update();
+    await this.project.frontend.update();
+  }
+
   async init() {
     await this.project.contracts.init();
     await this.project.backend.init();

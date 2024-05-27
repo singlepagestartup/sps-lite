@@ -41,6 +41,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.model?.update();
+  }
+
   async init({
     modelName,
     isExternal = false,
