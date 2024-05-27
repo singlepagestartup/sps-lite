@@ -1,13 +1,13 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-models-logotype-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { Table } from "@sps/sps-website-builder-models-logotype-backend-schema";
 import QueryString from "qs";
-import { parseQueryFilters } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric, parseQueryFilters } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, string, BlankInput>,
+  c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
   try {
