@@ -1,7 +1,10 @@
 export { middlewares } from "./lib/middlewares";
 export * from "./lib/middlewares/interfaces";
 export * as services from "./lib/services";
-export type { FindServiceProps } from "./lib/services/interfaces";
+export type {
+  FindServiceProps,
+  FindByIdServiceProps,
+} from "./lib/services/interfaces";
 export * as modelFactories from "./lib/model-factories";
 export * as apiFactories from "./lib/api-factories";
 export { parseQueryFilters } from "./lib/parse-query-filters";

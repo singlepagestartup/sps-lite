@@ -6,7 +6,7 @@ import {
   Table,
 } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
 
-export async function service(props?: Partial<FindServiceProps>) {
+export async function service(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({
     with: populate,
     where(table, queryFunctions) {

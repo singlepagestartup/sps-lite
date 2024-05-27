@@ -53,3 +53,10 @@ export interface FindServiceProps {
     filters: any;
   };
 }
+
+export interface FindByIdServiceProps {
+  id: string;
+  params?: {
+    populate: any;
+  };
+}
