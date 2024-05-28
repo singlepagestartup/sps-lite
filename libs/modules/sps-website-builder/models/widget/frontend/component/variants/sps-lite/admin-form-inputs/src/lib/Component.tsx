@@ -7,8 +7,6 @@ import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-w
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component-variants-sps-lite-select-right";
 import { variants } from "@sps/sps-website-builder-models-widget-contracts";
 
@@ -39,48 +37,6 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
-
-        <ModelEntitiesListCard title="widgets-to-slides">
-          <div className="flex flex-col gap-6">
-            {props.data?.widgetsToSlides.map((entity, index) => {
-              return (
-                <WidgetsToSlidesSpsLiteSelectRight
-                  key={index}
-                  isServer={props.isServer}
-                  variant="select-right"
-                  data={entity}
-                />
-              );
-            })}
-            <WidgetsToSlidesSpsLiteSelectRight
-              isServer={props.isServer}
-              variant="select-right"
-              widgetId={props.data?.id}
-              data={undefined}
-            />
-          </div>
-        </ModelEntitiesListCard>
-
-        <ModelEntitiesListCard title="widgets-to-logotypes">
-          <div className="flex flex-col gap-6">
-            {props.data?.widgetsToLogotypes.map((entity, index) => {
-              return (
-                <WidgetsToLogotypesSpsLiteSelectRight
-                  key={index}
-                  isServer={props.isServer}
-                  variant="select-right"
-                  data={entity}
-                />
-              );
-            })}
-            <WidgetsToLogotypesSpsLiteSelectRight
-              isServer={props.isServer}
-              variant="select-right"
-              widgetId={props.data?.id}
-              data={undefined}
-            />
-          </div>
-        </ModelEntitiesListCard>
 
         <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
           <div className="flex flex-col gap-6">

@@ -1,6 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
 import Link from "next/link";
-import { Component as WidgetsToLogotypesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-reverse";
 
 export function Component(props: IComponentPropsExtended) {
   return (

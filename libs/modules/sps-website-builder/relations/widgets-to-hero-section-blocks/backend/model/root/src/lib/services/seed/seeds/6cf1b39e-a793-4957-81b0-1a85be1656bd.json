@@ -15,9 +15,9 @@
   "heroSectionBlock": {
     "title": "Welcome to Single Page Startup!",
     "subTitle": null,
-    "description": null,
-    "anchor": null,
-    "className": null,
+    "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"Tip top \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
+    "anchor": "",
+    "className": "",
     "id": "e8b1293b-756d-408f-b26c-fd65b37b2818",
     "createdAt": "2024-05-25T20:43:49.272Z",
     "updatedAt": "2024-05-25T20:43:49.272Z",

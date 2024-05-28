@@ -15,16 +15,6 @@
       "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
     }
   ],
-  "widgetsToLogotypes": [
-    {
-      "id": "c29e5e72-dc93-41b7-81b8-bbe877f741ce",
-      "variant": "default",
-      "orderIndex": 0,
-      "className": null,
-      "widgetId": "0d6350b6-66ce-4039-9b09-aba5393a21c3",
-      "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
-    }
-  ],
   "navbarBlocksToLogotypes": [
     {
       "id": "ed34f915-aa70-43cc-9911-7185f4f1a985",

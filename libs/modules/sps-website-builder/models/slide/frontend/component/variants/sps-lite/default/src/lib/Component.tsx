@@ -1,5 +1,4 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as WidgetsToSlidesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-reverse";
 
 export function Component(props: IComponentPropsExtended) {
   return (

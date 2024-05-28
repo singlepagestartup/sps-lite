@@ -4,12 +4,9 @@ import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builde
 import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-app";
 import { app as buttonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-app";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-app";
-import { app as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-app";
-import { app as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-app";
+
 import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-app";
 import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app";
-
-import { app as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-app";
 
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-app";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-app";
@@ -50,12 +47,11 @@ export const routes = {
   "/navbar-blocks-to-buttons-arrays": navbarBlocksToButtonsArrays,
   "/buttons-arrays": buttonsArray,
   "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
-  "/widgets-to-slides": widgetsToSlides,
-  "/widgets-to-logotypes": widgetsToLogotypes,
+
   "/widgets-to-sps-file-storage-module-widgets":
     widgetsToSpsFileStorageModuleWidgets,
   "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,
-  "/hero-section-blocks-to-files": heroSectionBlocksToFiles,
+
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,
