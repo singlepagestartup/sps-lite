@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`relative ${props.data.className || "w-full"}`}
     >
-      {props.data.url ? (
+      {/* {props.data.url ? (
         <Link href={props.data.url}>
           {props.data.widgetsToLogotypes
             .filter((entity) => entity.direction === "reverse")
@@ -38,7 +38,7 @@ export function Component(props: IComponentPropsExtended) {
               />
             );
           })
-      )}
+      )} */}
     </div>
   );
 }

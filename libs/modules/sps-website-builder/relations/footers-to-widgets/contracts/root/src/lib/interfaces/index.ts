@@ -1,3 +1,10 @@
-import type { IRelation as IParentRelation } from "./startup";
+import {
+  IRelation as IParentRelation,
+  variants as parentVariants,
+} from "./startup";
 
-export interface IRelation extends IParentRelation {}
+export const variants = [...parentVariants] as const;
+
+export interface IRelation extends Omit<IParentRelation, "variant"> {
+  variant: (typeof variants)[number];
+}

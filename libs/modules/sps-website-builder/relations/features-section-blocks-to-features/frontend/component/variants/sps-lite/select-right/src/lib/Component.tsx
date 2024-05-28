@@ -10,11 +10,12 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-feature-frontend-component";
+import { variants } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-contracts";
 
 const formSchema = z.object({
   featuresSectionBlockId: z.string().min(1),
   featureId: z.string().min(1),
-  direction: z.enum(["default", "reverse"]).default("default"),
+  variant: z.enum(variants).default("default"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
       featuresSectionBlockId:
         props.data?.featuresSectionBlockId || props.featuresSectionBlockId,
       featureId: props.data?.featureId,
-      direction: props.data?.direction || "default",
+      variant: props.data?.variant || "default",
     },
   });
 
@@ -90,14 +91,11 @@ export function Component(props: IComponentPropsExtended) {
             <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <AdminSelectInput
               isServer={false}
@@ -116,14 +114,11 @@ export function Component(props: IComponentPropsExtended) {
             <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <AdminSelectInput
               isServer={false}

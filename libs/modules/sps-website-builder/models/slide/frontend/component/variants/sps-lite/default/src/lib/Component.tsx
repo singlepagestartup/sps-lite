@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       className="w-full"
     >
       <div className="relative min-h-80">
-        {props.data.widgetsToSlides
+        {/* {props.data.widgetsToSlides
           .filter((entity) => entity.direction === "reverse")
           .map((entity, index) => {
             return (
@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               </div>
             );
-          })}
+          })} */}
 
         <div className="relative p-10">
           <p className="font-bold text-xl relative">{props.data.title}</p>

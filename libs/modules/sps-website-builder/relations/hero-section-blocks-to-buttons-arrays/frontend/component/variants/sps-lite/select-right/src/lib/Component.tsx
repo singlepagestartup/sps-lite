@@ -10,11 +10,12 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-buttons-array-frontend-component";
+import { variants } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts";
 
 const formSchema = z.object({
   heroSectionBlockId: z.string().min(1),
   buttonsArrayId: z.string().min(1),
-  direction: z.enum(["default", "reverse"]).default("default"),
+  variant: z.enum(variants).default("default"),
   orderIndex: z.number().default(0),
 });
 
@@ -30,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
       heroSectionBlockId:
         props.data?.heroSectionBlockId || props.heroSectionBlockId,
       buttonsArrayId: props.data?.buttonsArrayId,
-      direction: props.data?.direction || "default",
+      variant: props.data?.variant || "default",
       orderIndex: props.data?.orderIndex || 0,
     },
   });
@@ -90,14 +91,11 @@ export function Component(props: IComponentPropsExtended) {
             <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <FormField
               ui="shadcn"
@@ -124,14 +122,11 @@ export function Component(props: IComponentPropsExtended) {
             <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <FormField
               ui="shadcn"

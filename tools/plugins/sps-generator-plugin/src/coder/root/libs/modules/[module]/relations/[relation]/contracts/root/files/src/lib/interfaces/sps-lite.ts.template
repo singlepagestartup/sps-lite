@@ -4,7 +4,7 @@ export interface IRelation {
   id: string;
   className?: string;
   variant: (typeof variants)[number];
-  direction: "default" | "reverse";
+  
   orderIndex: number;
   <%= left_model_name_property_cased %>Id: string;
 <% if(right_model_is_external) { %>
