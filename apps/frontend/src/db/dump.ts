@@ -7,11 +7,11 @@ import { exit } from "process";
   const spsWebsiteBuilderSeeder = new SpsWebsiteBuilderDumper();
   await spsWebsiteBuilderSeeder.dumpModels();
 
-  // const spsFileStorageSeeder = new SpsFileStorageDumper();
-  // await spsFileStorageSeeder.dumpModels();
+  const spsFileStorageSeeder = new SpsFileStorageDumper();
+  await spsFileStorageSeeder.dumpModels();
 
-  // const startupSeeder = new StartupDumper();
-  // await startupSeeder.dumpModels();
+  const startupSeeder = new StartupDumper();
+  await startupSeeder.dumpModels();
 })()
   .then(() => {
     exit(0);
