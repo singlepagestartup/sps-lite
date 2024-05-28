@@ -1,11 +1,9 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";
-import { middlewaresChain } from "./middlewares";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const app = new Hono<MiddlewaresGeneric>();
-middlewaresChain(app);
 
 app.get("/", async (c) => {
   try {

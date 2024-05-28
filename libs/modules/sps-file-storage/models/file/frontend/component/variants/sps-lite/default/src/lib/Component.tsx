@@ -9,12 +9,14 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={`relative ${props.data.containerClassName || "w-full"}`}
     >
-      <Image
-        src={props.data.url}
-        alt=""
-        fill={true}
-        className={props.data.className || ""}
-      />
+      {props.data.file ? (
+        <Image
+          src={props.data.file}
+          alt=""
+          fill={true}
+          className={props.data.className || ""}
+        />
+      ) : null}
     </div>
   );
 }

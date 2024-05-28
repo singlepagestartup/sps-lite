@@ -40,7 +40,7 @@ function MiniImage(props: IComponentPropsExtended["data"][0]) {
   return (
     <div className="w-full flex items-center gap-3">
       <div className="flex h-10 w-10 relative flex-shrink-0">
-        <Image src={`${BACKEND_URL}${props.url}`} alt="" fill={true} />
+        <Image src={`${BACKEND_URL}${props.file}`} alt="" fill={true} />
       </div>
       <p className="text-xs">{props.id}</p>
     </div>

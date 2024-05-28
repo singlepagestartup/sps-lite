@@ -1,38 +1,11 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-file-storage-models-file-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-
-// export const handler = async (
-//   c: Context<MiddlewaresGeneric, string, BlankInput>,
-//   next: Next,
-// ) => {
-//   const body = await c.req.parseBody();
-
-//   if (typeof body["data"] !== "string") {
-//     return next();
-//   }
-
-//   const data = JSON.parse(body["data"]);
-
-//   try {
-//     const entity = await model.services.create({ data });
-
-//     return c.json(
-//       {
-//         data: entity,
-//       },
-//       201,
-//     );
-//   } catch (error: any) {
-//     throw new HTTPException(400, {
-//       message: error.message,
-//     });
-//   }
-// };
+import process from "process";
 
 export const handler = async (
   c: Context<MiddlewaresGeneric, string, BlankInput>,
@@ -75,7 +48,7 @@ export const handler = async (
     }
 
     const data = body["data"] ? JSON.parse(body["data"]) : {};
-    data["url"] = createdFileUrl;
+    data["file"] = createdFileUrl;
 
     try {
       const entity = await model.services.create({ data });

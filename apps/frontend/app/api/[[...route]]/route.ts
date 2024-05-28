@@ -4,8 +4,12 @@ import { type NextRequest } from "next/server";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-app";
 import { app as spsFileStorageApp } from "@sps/sps-file-storage-backend-app";
 import { app as startupApp } from "@sps/startup-backend-app";
+import { middlewaresChain } from "./middlewares";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
-const app = new Hono().basePath("/api");
+const app = new Hono<MiddlewaresGeneric>().basePath("/api");
+
+middlewaresChain(app);
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);

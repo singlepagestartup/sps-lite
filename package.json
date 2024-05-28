@@ -82,6 +82,7 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.309.0",
+    "mime-types": "^2.1.35",
     "next": "^14.2.1",
     "next-themes": "^0.3.0",
     "pako": "^2.1.0",

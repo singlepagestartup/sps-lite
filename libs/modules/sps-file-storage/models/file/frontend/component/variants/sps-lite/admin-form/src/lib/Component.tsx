@@ -5,17 +5,7 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-file-storage-models-file-frontend-api-client";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  Card,
-  CardContent,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  Input,
-  FormMessage,
-} from "@sps/shadcn";
+import { Form, Card, CardContent } from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,9 +19,7 @@ const formSchema = z.object({
   // url: z.string().min(1),
   className: z.string().optional(),
   containerClassName: z.string().optional(),
-  // files: z.string().optional(),
   file: z.custom<File>((v) => v instanceof File).or(z.string()),
-  // files: { file: z.string() },
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -45,21 +33,17 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      // url: props.data?.url || "",
       className: props.data?.className || "",
       containerClassName: props.data?.containerClassName || "",
-      file: "",
-      // files: {
-      //   file: props.data?.file || "",
-      // },
+      file: props.data?.file || "",
     },
   });
 
-  // const watchData = form.watch();
+  const watchData = form.watch();
 
-  // useEffect(() => {
-  //   console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
-  // }, [watchData]);
+  useEffect(() => {
+    console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
+  }, [watchData]);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     // console.log(`🚀 ~ onSubmit ~ data:`, data);
@@ -101,21 +85,6 @@ export function Component(props: IComponentPropsExtended) {
           <h1 className="admin-edit-card-heading">
             {props.data?.id ? "Edit" : "Create"} file
           </h1>
-          {/* <FormField
-            control={form.control}
-            name="file"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel>File</FormLabel>
-                  <FormControl>
-                    <Input type="file" placeholder="shadcn" {...fileRef} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          /> */}
           <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}

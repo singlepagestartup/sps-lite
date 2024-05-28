@@ -47,13 +47,13 @@ export function Component(props: IComponentPropsExtended) {
           <p className="truncate">{props.data.variant}</p>
         </div>
         <div className="flex flex-col gap-0.5 overflow-hidden">
-          <p className="text-xs text-muted-foreground">Url</p>
-          <p className="truncate">{props.data.url}</p>
-          {props.data.url ? (
+          <p className="text-xs text-muted-foreground">File</p>
+          <p className="truncate">{props.data.file}</p>
+          {props.data.file ? (
             <ErrorBoundary>
               <div className="w-full relative aspect-w-1 aspect-h-1">
                 <Image
-                  src={`${BACKEND_URL}${props.data.url}`}
+                  src={`${BACKEND_URL}${props.data.file}`}
                   alt=""
                   className="object-contain"
                   fill={true}
