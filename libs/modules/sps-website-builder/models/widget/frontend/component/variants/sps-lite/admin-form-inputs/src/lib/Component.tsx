@@ -10,6 +10,7 @@ import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-webs
 import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component-variants-sps-lite-select-right";
+import { variants } from "@sps/sps-website-builder-models-widget-contracts";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -27,6 +28,16 @@ export function Component(props: IComponentPropsExtended) {
           label="Title"
           form={props.form}
           placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Variant"
+          name="variant"
+          form={props.form}
+          placeholder="Type title"
+          options={variants.map((variant) => [variant, variant])}
         />
 
         <ModelEntitiesListCard title="widgets-to-slides">

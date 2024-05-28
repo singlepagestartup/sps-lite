@@ -13,9 +13,11 @@ import { invalidateServerTag } from "@sps/store";
 import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
 import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
 import { Button } from "@sps/ui-adapter";
+import { variants } from "@sps/sps-website-builder-models-widget-contracts";
 
 const formSchema = z.object({
   title: z.string(),
+  variant: z.enum(variants).default("default"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -42,6 +44,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: props.data?.title || "",
+      variant: props.data?.variant || "default",
     },
   });
 

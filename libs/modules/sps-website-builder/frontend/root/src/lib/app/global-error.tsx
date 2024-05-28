@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
-import { populate as pagePopulate } from "@sps/sps-website-builder-models-page-contracts";
 import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
 
 export function GlobalError({ error, reset, fonts }: any) {
@@ -15,7 +14,6 @@ export function GlobalError({ error, reset, fonts }: any) {
     getBackendData({
       url: `${BACKEND_URL}/api/sps-website-builder/pages`,
       params: {
-        populate: pagePopulate,
         filters: {
           url: "/500",
         },

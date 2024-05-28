@@ -15,7 +15,7 @@ import { Component as NavbarBlockSpsLiteAdminFormInputs } from "@sps/sps-website
 import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
 
 const formSchema = z.object({
-  variant: z.enum(variants),
+  variant: z.enum(variants).default("default"),
   className: z.string().optional(),
   title: z.string().optional(),
   subtitle: z.string().optional(),

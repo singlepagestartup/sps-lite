@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as PageSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form-inputs";
+import { variants } from "@sps/sps-website-builder-models-page-contracts";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -21,6 +22,7 @@ const formSchema = z.object({
     .string()
     .min(1)
     .regex(/^[/]([a-z0-9-]?)+$/),
+  variant: z.enum(variants).default("default"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -67,6 +69,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       title: props.data?.title || "",
       url: props.data?.url || "/",
+      variant: props.data?.variant || "default",
     },
   });
 
