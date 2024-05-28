@@ -11,6 +11,9 @@
   "widgetsToFeaturesSectionBlocks": [
     {
       "id": "d7725d33-53e5-4ec9-81f6-842981d0b141",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "cac42010-eb6f-42a7-837c-a03269bd9191",
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f"
     }
@@ -24,7 +27,9 @@
   "pagesToWidgets": [
     {
       "id": "3ead6af1-4fcc-46fe-8b73-0cfe7e5d56ae",
-      "orderIndex": 0,
+      "variant": "default",
+      "orderIndex": 3,
+      "className": null,
       "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
       "widgetId": "cac42010-eb6f-42a7-837c-a03269bd9191"
     }

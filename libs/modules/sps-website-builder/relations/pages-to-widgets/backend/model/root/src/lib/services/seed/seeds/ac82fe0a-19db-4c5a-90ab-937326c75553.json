@@ -1,6 +1,8 @@
 {
   "id": "ac82fe0a-19db-4c5a-90ab-937326c75553",
+  "variant": "default",
   "orderIndex": 2,
+  "className": null,
   "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
   "widgetId": "aa8dc819-d2ae-4b02-a064-4c11ecb76a42",
   "page": {

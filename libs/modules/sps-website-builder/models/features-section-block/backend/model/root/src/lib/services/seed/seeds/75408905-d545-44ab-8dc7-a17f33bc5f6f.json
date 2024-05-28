@@ -12,7 +12,7 @@
     {
       "id": "3982b555-506d-4bd0-ae0a-89bf1b8f47ba",
       "orderIndex": 0,
-      "direction": "default",
+      "variant": "default",
       "className": null,
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f",
       "featureId": "bb2c1be3-66ba-4f8e-ad91-2436c8b12dc8"
@@ -20,7 +20,7 @@
     {
       "id": "cf7de3dd-5708-4900-8941-f98be3775aa2",
       "orderIndex": 0,
-      "direction": "default",
+      "variant": "default",
       "className": null,
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f",
       "featureId": "1f7ae4e0-faca-49ed-94fc-5127d4e68856"
@@ -28,7 +28,7 @@
     {
       "id": "20d98581-56cc-41ff-b8f0-3175baf31b93",
       "orderIndex": 0,
-      "direction": "default",
+      "variant": "default",
       "className": null,
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f",
       "featureId": "35b97a3c-1320-441f-a41f-d8c67bb3a4c8"
@@ -36,7 +36,7 @@
     {
       "id": "4490067b-7502-4a50-8367-9859ddb89aca",
       "orderIndex": 0,
-      "direction": "default",
+      "variant": "default",
       "className": null,
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f",
       "featureId": "d1e10331-1fc6-479b-bca5-14db7fb79521"
@@ -45,6 +45,9 @@
   "widgetsToFeaturesSectionBlocks": [
     {
       "id": "d7725d33-53e5-4ec9-81f6-842981d0b141",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "cac42010-eb6f-42a7-837c-a03269bd9191",
       "featuresSectionBlockId": "75408905-d545-44ab-8dc7-a17f33bc5f6f"
     }

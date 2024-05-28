@@ -31,7 +31,6 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       <%= left_model_name_property_cased %>Id: props.data?.<%= left_model_name_property_cased %>Id || props.<%= left_model_name_property_cased %>Id,
       <%= right_model_name_property_cased %>Id: props.data?.<%= right_model_name_property_cased %>Id,
-      variant: props.data?.variant || "default",
       className: props.data?.className || "",
       orderIndex: props.data?.orderIndex || 0,
       variant: props.data?.variant || "default",
@@ -93,14 +92,27 @@ export function Component(props: IComponentPropsExtended) {
             <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
             />
             <AdminSelectInput
               isServer={false}
@@ -119,14 +131,27 @@ export function Component(props: IComponentPropsExtended) {
           <FormField
               ui="shadcn"
               type="select"
-              label="Direction"
-              name="direction"
+              label="Variant"
+              name="variant"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
             />
           <AdminSelectInput
             isServer={false}

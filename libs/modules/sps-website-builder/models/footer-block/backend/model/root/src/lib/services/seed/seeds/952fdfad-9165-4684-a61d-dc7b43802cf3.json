@@ -10,7 +10,7 @@
   "footerBlocksToButtonsArrays": [
     {
       "id": "cc3ffd35-19ea-44e2-9a47-747bc05ca08c",
-      "direction": "default",
+      "variant": "default",
       "position": "default",
       "orderIndex": 5,
       "className": "",
@@ -19,7 +19,7 @@
     },
     {
       "id": "0f0dbef1-eb47-47fe-aa7a-fc035fe53c35",
-      "direction": "default",
+      "variant": "default",
       "position": "extra",
       "orderIndex": 0,
       "className": "",
@@ -28,7 +28,7 @@
     },
     {
       "id": "8624289c-580b-4472-a4f7-adb83505f7cd",
-      "direction": "default",
+      "variant": "default",
       "position": "additional",
       "orderIndex": 0,
       "className": "",
@@ -37,7 +37,7 @@
     },
     {
       "id": "200b9698-4193-45cd-aeab-4984cbd68221",
-      "direction": "default",
+      "variant": "default",
       "position": "default",
       "orderIndex": 0,
       "className": "",
@@ -48,8 +48,9 @@
   "footerBlocksToLogotypes": [
     {
       "id": "e79fbf5b-f593-4346-bb73-5adf1aff1069",
-      "direction": "default",
+      "variant": "default",
       "orderIndex": 0,
+      "className": null,
       "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
       "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
     }
@@ -57,6 +58,9 @@
   "widgetsToFooterBlocks": [
     {
       "id": "c2efd5cd-3da8-4159-acb1-af7f9f099a7f",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "aba7b1cb-bc8b-4ea0-91e6-430cc2084d21",
       "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3"
     }

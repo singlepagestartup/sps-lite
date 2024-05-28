@@ -8,7 +8,9 @@
   "widgetsToLogotypes": [
     {
       "id": "c29e5e72-dc93-41b7-81b8-bbe877f741ce",
-      "direction": "reverse",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "0d6350b6-66ce-4039-9b09-aba5393a21c3",
       "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
     }
@@ -16,6 +18,9 @@
   "widgetsToSpsFileStorageModuleWidgets": [
     {
       "id": "e0b410fa-4eb4-4995-8652-44b8d84bb029",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "0d6350b6-66ce-4039-9b09-aba5393a21c3",
       "spsFileStorageModuleWidgetId": "b808e297-bcab-40f3-bd4b-4eca1f8ffd68"
     }

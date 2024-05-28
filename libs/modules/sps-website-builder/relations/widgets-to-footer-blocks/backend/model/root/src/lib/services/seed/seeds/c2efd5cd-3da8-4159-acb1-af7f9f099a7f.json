@@ -1,5 +1,8 @@
 {
   "id": "c2efd5cd-3da8-4159-acb1-af7f9f099a7f",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
   "widgetId": "aba7b1cb-bc8b-4ea0-91e6-430cc2084d21",
   "footerBlockId": "952fdfad-9165-4684-a61d-dc7b43802cf3",
   "widget": {

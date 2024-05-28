@@ -1,5 +1,8 @@
 {
   "id": "ed34f915-aa70-43cc-9911-7185f4f1a985",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
   "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
   "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c",
   "navbarBlock": {

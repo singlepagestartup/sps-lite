@@ -9,7 +9,7 @@
   "buttonsArraysToButtons": [
     {
       "id": "41b39756-4313-4619-b8e4-b4a33b375721",
-      "direction": "default",
+      "variant": "default",
       "orderIndex": 0,
       "buttonsArrayId": "278f8b05-eb39-4b8b-86f1-81854ed884f9",
       "buttonId": "8e9c4408-756d-4861-bd1d-9a0d8d8a5bf6"

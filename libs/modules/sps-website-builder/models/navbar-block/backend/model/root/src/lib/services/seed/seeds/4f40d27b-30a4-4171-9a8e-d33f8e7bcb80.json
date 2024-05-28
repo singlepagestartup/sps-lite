@@ -10,7 +10,7 @@
   "navbarBlocksToButtonsArrays": [
     {
       "id": "2e9cdfa1-dfe5-449f-a16b-efc1a25082aa",
-      "direction": "default",
+      "variant": "default",
       "position": "additional",
       "orderIndex": 0,
       "className": "",
@@ -19,7 +19,7 @@
     },
     {
       "id": "75244dcb-943a-4149-b0ad-2e0b0bbc5666",
-      "direction": "default",
+      "variant": "default",
       "position": "default",
       "orderIndex": 2,
       "className": "",
@@ -28,7 +28,7 @@
     },
     {
       "id": "fb641429-040a-4e30-8dd0-023327a31384",
-      "direction": "default",
+      "variant": "default",
       "position": "default",
       "orderIndex": 10,
       "className": "",
@@ -39,6 +39,9 @@
   "navbarBlocksToLogotypes": [
     {
       "id": "ed34f915-aa70-43cc-9911-7185f4f1a985",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
       "logotypeId": "f4a792f8-d1ae-43c4-a3bb-8cc91f40b51c"
     }
@@ -46,7 +49,9 @@
   "widgetsToNavbarBlocks": [
     {
       "id": "34b37ea6-cf75-4046-a209-f68360d62442",
-      "direction": "default",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "4274e427-88a7-4228-a784-a343192dc06d",
       "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80"
     }

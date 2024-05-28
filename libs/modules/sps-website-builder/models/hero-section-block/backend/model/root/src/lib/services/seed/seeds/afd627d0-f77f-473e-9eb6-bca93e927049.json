@@ -13,6 +13,9 @@
   "widgetsToHeroSectionBlocks": [
     {
       "id": "df5e4bae-7ede-4db5-8406-74fb77231b91",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
       "widgetId": "aa8dc819-d2ae-4b02-a064-4c11ecb76a42",
       "heroSectionBlockId": "afd627d0-f77f-473e-9eb6-bca93e927049"
     }
