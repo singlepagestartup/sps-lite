@@ -15,6 +15,8 @@ const formSchema = z.object({
   <%= left_model_name_property_cased %>Id: z.string().min(1),
   <%= right_model_name_property_cased %>Id: z.string().min(1),
   direction: z.enum(["default", "reverse"]).default("default"),
+  className: z.string().optional(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +31,8 @@ export function Component(props: IComponentPropsExtended) {
       <%= left_model_name_property_cased %>Id: props.data?.<%= left_model_name_property_cased %>Id || props.<%= left_model_name_property_cased %>Id,
       <%= right_model_name_property_cased %>Id: props.data?.<%= right_model_name_property_cased %>Id,
       direction: props.data?.direction || "default",
+      className: props.data?.className || "",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 

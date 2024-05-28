@@ -7,4 +7,5 @@ export interface IRelation {
   featuresSectionBlockId: string;
   featureId: string;
   direction: "default" | "reverse";
+  className?: string;
 }

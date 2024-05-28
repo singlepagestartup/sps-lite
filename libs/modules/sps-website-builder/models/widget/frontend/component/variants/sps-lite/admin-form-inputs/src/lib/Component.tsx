@@ -9,6 +9,7 @@ import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-bui
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToLogotypesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -72,19 +73,38 @@ export function Component(props: IComponentPropsExtended) {
 
         <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
           <div className="flex flex-col gap-6">
-            {props.data?.widgetsToHeroSectionBlocks.map(
-              (widgetsToHeroSectionBlock, index) => {
-                return (
-                  <WidgetsToHeroSectionBlocksSpsLiteSelectRight
-                    key={index}
-                    isServer={props.isServer}
-                    variant="select-right"
-                    data={widgetsToHeroSectionBlock}
-                  />
-                );
-              },
-            )}
+            {props.data?.widgetsToHeroSectionBlocks.map((entity, index) => {
+              return (
+                <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
             <WidgetsToHeroSectionBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-features-section-blocks">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToFeaturesSectionBlocks.map((entity, index) => {
+              return (
+                <WidgetsToFeaturesSectionBlocksSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToFeaturesSectionBlocksSpsLiteSelectRight
               isServer={props.isServer}
               variant="select-right"
               widgetId={props.data?.id}
@@ -95,18 +115,16 @@ export function Component(props: IComponentPropsExtended) {
 
         <ModelEntitiesListCard title="widgets-to-navbar-blocks">
           <div className="flex flex-col gap-6">
-            {props.data?.widgetsToNavbarBlocks.map(
-              (widgetsToNavbarBlocks, index) => {
-                return (
-                  <WidgetsToNavbarBlocksSpsLiteSelectRight
-                    key={index}
-                    isServer={props.isServer}
-                    variant="select-right"
-                    data={widgetsToNavbarBlocks}
-                  />
-                );
-              },
-            )}
+            {props.data?.widgetsToNavbarBlocks.map((entity, index) => {
+              return (
+                <WidgetsToNavbarBlocksSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
             <WidgetsToNavbarBlocksSpsLiteSelectRight
               isServer={props.isServer}
               variant="select-right"
@@ -118,18 +136,16 @@ export function Component(props: IComponentPropsExtended) {
 
         <ModelEntitiesListCard title="widgets-to-footer-blocks">
           <div className="flex flex-col gap-6">
-            {props.data?.widgetsToFooterBlocks.map(
-              (widgetToFooterBlock, index) => {
-                return (
-                  <WidgetsToFooterBlocksSpsLiteSelectRight
-                    key={index}
-                    isServer={props.isServer}
-                    variant="select-right"
-                    data={widgetToFooterBlock}
-                  />
-                );
-              },
-            )}
+            {props.data?.widgetsToFooterBlocks.map((entity, index) => {
+              return (
+                <WidgetsToFooterBlocksSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
             <WidgetsToFooterBlocksSpsLiteSelectRight
               isServer={props.isServer}
               variant="select-right"
@@ -141,18 +157,16 @@ export function Component(props: IComponentPropsExtended) {
 
         <ModelEntitiesListCard title="widgets-to-slider-blocks">
           <div className="flex flex-col gap-6">
-            {props.data?.widgetsToSliderBlocks?.map(
-              (widgetToSliderBlock, index) => {
-                return (
-                  <WidgetsToSliderBlocksSpsLiteSelectRight
-                    key={index}
-                    isServer={props.isServer}
-                    variant="select-right"
-                    data={widgetToSliderBlock}
-                  />
-                );
-              },
-            )}
+            {props.data?.widgetsToSliderBlocks?.map((entity, index) => {
+              return (
+                <WidgetsToSliderBlocksSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
             <WidgetsToSliderBlocksSpsLiteSelectRight
               isServer={props.isServer}
               variant="select-right"
@@ -164,18 +178,16 @@ export function Component(props: IComponentPropsExtended) {
 
         <ModelEntitiesListCard title="widgets-to-startup-module-widgets">
           <div className="flex flex-col gap-6">
-            {props.data?.widgetsToStartupModuleWidgets?.map(
-              (widgetToStartupModuleWidget, index) => {
-                return (
-                  <WidgetsToStartupModuleWidgets
-                    key={index}
-                    isServer={props.isServer}
-                    variant="select-right"
-                    data={widgetToStartupModuleWidget}
-                  />
-                );
-              },
-            )}
+            {props.data?.widgetsToStartupModuleWidgets?.map((entity, index) => {
+              return (
+                <WidgetsToStartupModuleWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
             <WidgetsToStartupModuleWidgets
               isServer={props.isServer}
               variant="select-right"
@@ -188,13 +200,13 @@ export function Component(props: IComponentPropsExtended) {
         <ModelEntitiesListCard title="widgets-to-sps-file-storage-modules-widgets">
           <div className="flex flex-col gap-6">
             {props.data?.widgetsToSpsFileStorageModuleWidgets.map(
-              (widgetToSpsFileStorageModuleWidget, index) => {
+              (entity, index) => {
                 return (
                   <WidgetsToSpsFileStorageModuleWidgets
                     key={index}
                     isServer={props.isServer}
                     variant="select-right"
-                    data={widgetToSpsFileStorageModuleWidget}
+                    data={entity}
                   />
                 );
               },

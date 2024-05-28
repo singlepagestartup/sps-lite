@@ -1,6 +1,6 @@
-import ReactMarkdown from "react-markdown";
+import { cn } from "@sps/shared-frontend-utils-client";
 import { IComponentPropsExtended } from "./interface";
-import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+// import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,9 +8,12 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="elements.feature"
       data-variant={props.variant}
-      className="flex flex-col gap-3"
+      className={cn(
+        "flex flex-col gap-3 text-center p-4",
+        props.data.className || "",
+      )}
     >
-      <div>
+      {/* <div>
         {props.data?.media?.length ? (
           <File
             isServer={false}
@@ -20,16 +23,14 @@ export function Component(props: IComponentPropsExtended) {
             data={props.data.media[0]}
           />
         ) : null}
-      </div>
+      </div> */}
       {props.data.title ? (
-        <ReactMarkdown className="text-lg font-medium leading-6 text-gray-900">
+        <p className="text-3xl font-medium leading-6 text-gray-900">
           {props.data.title}
-        </ReactMarkdown>
+        </p>
       ) : null}
       {props.data?.description ? (
-        <ReactMarkdown className="text-base text-gray-500">
-          {props.data?.description}
-        </ReactMarkdown>
+        <p className="text-base text-gray-500">{props.data?.description}</p>
       ) : null}
     </div>
   );

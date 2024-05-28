@@ -15,6 +15,7 @@ export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
   orderIndex: pgCore.integer("order_index").notNull().default(0),
   direction: pgCore.text("direction").notNull().default("default"),
+  className: pgCore.text("class_name"),
   featuresSectionBlockId: pgCore
     .uuid("fk_id")
     .notNull()

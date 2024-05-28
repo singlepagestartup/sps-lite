@@ -43,6 +43,13 @@
       "when": 1716857324110,
       "tag": "0005_medical_kronos",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1716859123710,
+      "tag": "0006_spotty_sister_grimm",
+      "breakpoints": true
     }
   ]
 }

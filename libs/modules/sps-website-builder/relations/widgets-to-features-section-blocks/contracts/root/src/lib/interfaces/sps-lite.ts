@@ -5,4 +5,7 @@ export interface IRelation {
   variant: (typeof variants)[number];
   widgetId: string;
   featuresSectionBlockId: string;
+  orderIndex: number;
+  direction: "default" | "reverse";
+  className?: string;
 }

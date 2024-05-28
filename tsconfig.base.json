@@ -987,9 +987,6 @@
       "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-with-icon": [
-        "libs/modules/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/with-icon/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-features-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/features-section-block/frontend/redux/src/index.ts"
       ],
