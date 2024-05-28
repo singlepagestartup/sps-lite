@@ -28,7 +28,9 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
-    relations?: {}[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
     this.baseDirectory = `libs`;
     this.name = "libs";
@@ -113,8 +115,6 @@ export class Coder {
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-
-    relationName: string;
     templateName?: string;
   }) {
     await this.project.modules.createRelationFrontendComponentVariant(props);
@@ -123,8 +123,6 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-
-    relationName: string;
   }) {
     await this.project.modules.removeRelationFrontendComponentVariant(props);
   }

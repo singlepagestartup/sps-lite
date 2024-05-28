@@ -2064,6 +2064,9 @@
       "@sps/sps-website-builder-relations-features-section-blocks-to-features-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-features-section-blocks-to-features-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-features-section-blocks-to-features-frontend-redux": [
         "libs/modules/sps-website-builder/relations/features-section-blocks-to-features/frontend/redux/src/index.ts"
       ],

@@ -28,7 +28,9 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
-    relations?: {}[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
     this.baseName = `${props.parent.baseName}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.type}`;
@@ -113,7 +115,6 @@ export class Coder {
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
     templateName?: string;
   }) {
     await this.project.module.createRelationFrontendComponentVariant(props);
@@ -122,7 +123,6 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
   }) {
     await this.project.module.removeRelationFrontendComponentVariant(props);
   }

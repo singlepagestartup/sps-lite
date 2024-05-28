@@ -19,10 +19,14 @@ export class Coder {
   tree: Tree;
   parent: ModuleCoder;
   project: {
-    models?: ModelsCoder[];
-    relations?: RelationsCoder[];
-    backend?: BackendCoder;
-  } = {};
+    models: ModelsCoder[];
+    relations: RelationsCoder[];
+    backend: BackendCoder;
+  } = {
+    models: [],
+    relations: [],
+    backend: {} as BackendCoder,
+  };
 
   constructor(props: {
     tree: Tree;
@@ -32,7 +36,9 @@ export class Coder {
       name: string;
       isExternal?: boolean;
     }[];
-    relations?: {}[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
     this.baseName = `${props.parent.baseName}/${props.name}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.name}`;
@@ -45,20 +51,25 @@ export class Coder {
       parent: this,
     });
 
-    this.project.models = props.models?.map((model) => {
-      return new ModelsCoder({
-        tree: this.tree,
-        parent: this,
-        name: model.name,
-        isExternal: model.isExternal,
-      });
+    props.models?.forEach((model) => {
+      this.project.models.push(
+        new ModelsCoder({
+          tree: this.tree,
+          parent: this,
+          name: model.name,
+          isExternal: model.isExternal,
+        }),
+      );
     });
 
-    this.project.relations = props.relations?.map((relation) => {
-      return new RelationsCoder({
-        tree: this.tree,
-        parent: this,
-      });
+    props.relations?.forEach((relation) => {
+      this.project.relations.push(
+        new RelationsCoder({
+          tree: this.tree,
+          parent: this,
+          name: relation.name,
+        }),
+      );
     });
   }
 
@@ -267,73 +278,75 @@ export class Coder {
     });
   }
 
-  async setRelatedModels(relationName: string) {
-    const modelNamesPluralized = relationName.split("-to-");
+  // async setRelatedModels(relationName: string) {
+  //   const modelNamesPluralized = relationName.split("-to-");
 
-    const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
-      return pluralize.singular(modelName);
-    });
+  //   const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
+  //     return pluralize.singular(modelName);
+  //   });
 
-    // const projects = getProjects(this.tree);
-    // const projectWithPassedRelationNameAndSchema = [];
+  //   console.log(
+  //     `🚀 ~ unpluralizedModelNames ~ unpluralizedModelNames:`,
+  //     unpluralizedModelNames,
+  //   );
 
-    // projects.forEach((project) => {
-    //   if (
-    //     project.name.includes(relationName) &&
-    //     project.name.includes("schema")
-    //   ) {
-    //     projectWithPassedRelationNameAndSchema.push(project);
-    //   }
-    // });
+  //   // const projects = getProjects(this.tree);
+  //   // const projectWithPassedRelationNameAndSchema = [];
 
-    // const graph = readCachedProjectGraph();
-    // const dependenciesProjectNames = Object.keys(graph.dependencies);
-    // const relatedModels = [];
+  //   // projects.forEach((project) => {
+  //   //   if (
+  //   //     project.name.includes(relationName) &&
+  //   //     project.name.includes("schema")
+  //   //   ) {
+  //   //     projectWithPassedRelationNameAndSchema.push(project);
+  //   //   }
+  //   // });
 
-    // dependenciesProjectNames.forEach((dependencyProjectName) => {
-    //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
-    //     if (
-    //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
-    //     ) {
-    //       if (dependency.source.includes("models")) {
-    //         relatedModels.push(dependency.source);
-    //       }
-    //     }
-    //   });
-    // });
+  //   // const graph = readCachedProjectGraph();
+  //   // const dependenciesProjectNames = Object.keys(graph.dependencies);
+  //   // const relatedModels = [];
 
-    // /**
-    //  * ! May be in wrong order! Here is just for fixing init problem
-    //  * Need to be checked by relation schema
-    //  */
-    // const modelNames = relatedModels.map((model) => {
-    //   return model.split("models-")[1].split("-backend")[0];
-    // });
+  //   // dependenciesProjectNames.forEach((dependencyProjectName) => {
+  //   //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
+  //   //     if (
+  //   //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
+  //   //     ) {
+  //   //       if (dependency.source.includes("models")) {
+  //   //         relatedModels.push(dependency.source);
+  //   //       }
+  //   //     }
+  //   //   });
+  //   // });
 
-    const leftProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-      name: unpluralizedModelNames[0],
-    });
-    this.project.models.push(leftProject);
+  //   // /**
+  //   //  * ! May be in wrong order! Here is just for fixing init problem
+  //   //  * Need to be checked by relation schema
+  //   //  */
+  //   // const modelNames = relatedModels.map((model) => {
+  //   //   return model.split("models-")[1].split("-backend")[0];
+  //   // });
 
-    const rightProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-      name: unpluralizedModelNames[1],
-    });
+  //   const leftProject = new ModelsCoder({
+  //     tree: this.tree,
+  //     parent: this,
+  //     name: unpluralizedModelNames[0],
+  //   });
+  //   this.project.models.push(leftProject);
 
-    this.project.models.push(rightProject);
-  }
+  //   const rightProject = new ModelsCoder({
+  //     tree: this.tree,
+  //     parent: this,
+  //     name: unpluralizedModelNames[1],
+  //   });
+
+  //   this.project.models.push(rightProject);
+  // }
 
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
     templateName?: string;
   }) {
-    await this.setRelatedModels(props.relationName);
-
     await this.project.relations[0].createRelationFrontendComponentVariant(
       props,
     );
@@ -342,10 +355,7 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
   }) {
-    await this.setRelatedModels(props.relationName);
-
     await this.project.relations[0].removeRelationFrontendComponentVariant(
       props,
     );

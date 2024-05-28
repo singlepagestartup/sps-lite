@@ -22,7 +22,9 @@ export class Coder {
     tree: Tree;
     moduleName: string;
     models?: { name: string; isExternal?: boolean }[];
-    relations?: {}[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
     this.name = "root";
     this.tree = props.tree;
@@ -113,7 +115,6 @@ export class Coder {
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
     templateName?: string;
   }) {
     await this.project.libs.createRelationFrontendComponentVariant(props);
@@ -124,7 +125,6 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
   }) {
     await this.project.libs.removeRelationFrontendComponentVariant(props);
 

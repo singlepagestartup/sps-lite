@@ -23,7 +23,9 @@ export class Coder {
     tree: Tree;
     moduleName: string;
     models?: { name: string; isExternal?: boolean }[];
-    relations?: {}[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
     this.projects = getProjects(props.tree);
     this.tree = props.tree;
@@ -147,39 +149,28 @@ export class Coder {
     });
   }
 
-  async createRelationFrontendComponentVariant({
-    name,
-    level,
-    relationName,
-
-    templateName,
-  }: {
+  async createRelationFrontendComponentVariant(props: {
     name: string;
     level: string;
-    relationName: string;
     templateName?: string;
   }) {
     await this.project.root.createRelationFrontendComponentVariant({
-      variantLevel: level,
-      variantName: name,
-      relationName,
-      templateName,
+      variantLevel: props.level,
+      variantName: props.name,
+      templateName: props.templateName,
     });
   }
 
   async removeRelationFrontendComponentVariant({
     name,
     level,
-    relationName,
   }: {
     name: string;
     level: string;
-    relationName: string;
   }) {
     await this.project.root.removeRelationFrontendComponentVariant({
       variantLevel: level,
       variantName: name,
-      relationName,
     });
   }
 }

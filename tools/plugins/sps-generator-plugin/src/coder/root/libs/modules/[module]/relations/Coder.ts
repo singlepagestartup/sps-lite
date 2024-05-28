@@ -17,7 +17,7 @@ export class Coder {
     relation: RelationCoder;
   };
 
-  constructor(props: { tree: Tree; parent: ModuleCoder }) {
+  constructor(props: { tree: Tree; parent: ModuleCoder; name?: string }) {
     this.tree = props.tree;
     this.name = "relations";
     this.parent = props.parent;
@@ -27,6 +27,7 @@ export class Coder {
     this.project.relation = new RelationCoder({
       tree: this.tree,
       parent: this,
+      name: props.name,
     });
   }
 

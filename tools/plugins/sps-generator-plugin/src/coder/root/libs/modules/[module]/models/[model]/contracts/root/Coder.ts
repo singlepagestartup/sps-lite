@@ -66,6 +66,7 @@ export class Coder {
     const exportInterfaceField = new ExportInterfaceField({
       name,
       type: "string",
+      level,
       isRequired,
     });
 
@@ -91,6 +92,7 @@ export class Coder {
     const exportInterfaceField = new ExportInterfaceField({
       name,
       type: "string",
+      level,
       isRequired,
     });
 
@@ -127,16 +129,27 @@ export class ExportInterfaceField extends RegexCreator {
   constructor({
     name,
     type,
+    level,
     isRequired,
   }: {
     name: string;
     type: string;
+    level: string;
     isRequired: boolean;
   }) {
-    const place = `export interface IModel extends Omit<IParentModel, "variant"> {`;
-    const placeRegex = new RegExp(
+    let place = `export interface IModel extends Omit<IParentModel, "variant"> {`;
+
+    if (level === "sps-lite") {
+      place = `export interface IModel {`;
+    }
+
+    let placeRegex = new RegExp(
       `export interface IModel${space}(extends Omit<IParentModel, \\"variant\\">)?${space}{`,
     );
+
+    if (level === "sps-lite") {
+      placeRegex = new RegExp(`export interface IModel${space}{`);
+    }
 
     const propertyCaseName = getNameStyles({ name }).propertyCased.base;
     const content = `${propertyCaseName}${isRequired ? "" : "?"}: ${type};`;

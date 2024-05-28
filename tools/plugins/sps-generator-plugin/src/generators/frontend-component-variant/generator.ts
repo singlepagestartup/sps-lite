@@ -12,17 +12,17 @@ export async function frontendComponentVariantGenerator(
   const entityName = options.entity_name;
   const moduleName = options.module_name;
 
-  const coder = new Coder({
-    tree,
-    moduleName,
-    models: [
-      {
-        name: entityName,
-      },
-    ],
-  });
-
   if (options.type === "model") {
+    const coder = new Coder({
+      tree,
+      moduleName,
+      models: [
+        {
+          name: entityName,
+        },
+      ],
+    });
+
     if (options.action === "remove") {
       await coder.removeModelFrontendComponentVariant({
         name,
@@ -36,17 +36,25 @@ export async function frontendComponentVariantGenerator(
       });
     }
   } else if (options.type === "relation") {
+    const coder = new Coder({
+      tree,
+      moduleName,
+      relations: [
+        {
+          name: entityName,
+        },
+      ],
+    });
+
     if (options.action === "remove") {
       await coder.removeRelationFrontendComponentVariant({
         name,
         level,
-        relationName: entityName,
       });
     } else {
       await coder.createRelationFrontendComponentVariant({
         name,
         level,
-        relationName: entityName,
         templateName: options.template,
       });
     }

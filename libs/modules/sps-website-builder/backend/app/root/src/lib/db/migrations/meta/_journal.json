@@ -36,6 +36,13 @@
       "when": 1716671603922,
       "tag": "0004_gifted_silk_fever",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1716857324110,
+      "tag": "0005_medical_kronos",
+      "breakpoints": true
     }
   ]
 }

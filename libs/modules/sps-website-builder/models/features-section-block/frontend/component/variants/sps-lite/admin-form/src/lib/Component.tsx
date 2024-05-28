@@ -16,6 +16,11 @@ import { Button } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string().optional(),
+  subtitle: z.string().optional(),
+  description: z.string().optional(),
+  className: z.string().optional(),
+  anchor: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +34,11 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      description: props.data?.description || "",
+      className: props.data?.className || "",
+      anchor: props.data?.anchor || "",
     },
   });
 
