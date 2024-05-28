@@ -9,14 +9,36 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  FileInput,
 } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
+import React from "react";
 
-export function Component(props: IComponentProps) {
-  if (["text", "textarea"].includes(props.type)) {
+export const Component = (props: IComponentProps) => {
+  if (props.type === "text") {
     return (
       <FormControl>
         <Input placeholder={props.placeholder} {...props.field} />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "textarea") {
+    return (
+      <FormControl>
+        <Input placeholder={props.placeholder} {...props.field} />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "file") {
+    return (
+      <FormControl>
+        <FileInput
+          placeholder={props.placeholder}
+          {...props.field}
+          form={props.form}
+        />
       </FormControl>
     );
   }
@@ -26,6 +48,7 @@ export function Component(props: IComponentProps) {
       <FormControl>
         <Input
           placeholder={props.placeholder}
+          type="number"
           {...props.field}
           onChange={(event) => {
             const value = +event.target.value;
@@ -81,4 +104,4 @@ export function Component(props: IComponentProps) {
       </Select>
     );
   }
-}
+};

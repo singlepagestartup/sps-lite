@@ -28,11 +28,10 @@ export default async function RootLayout({
           <GoogleTagManager />
         </Suspense>
         <Admin isServer={true} />
-        <div className="relative">
-          {/* Suspense here is for static build, without that build will return nothing */}
+        {/* <div className="relative">
           <Suspense>
             {children}
-            {/* <TranslationsContextWrapper>
+            <TranslationsContextWrapper>
               <HocParamsProvider>
                 <AdditionalHeadersWrapper>
                   <SpsWebsiteBuilderRootLayout>
@@ -40,10 +39,10 @@ export default async function RootLayout({
                   </SpsWebsiteBuilderRootLayout>
                 </AdditionalHeadersWrapper>
               </HocParamsProvider>
-            </TranslationsContextWrapper> */}
+            </TranslationsContextWrapper>
           </Suspense>
           <Toaster />
-        </div>
+        </div> */}
       </body>
     </html>
   );

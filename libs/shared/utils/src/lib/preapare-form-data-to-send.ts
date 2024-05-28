@@ -15,7 +15,9 @@ export function appendFilesToFormData(formData: any, files: any) {
 }
 
 export function prepareFormDataToSend(params: any) {
-  const { data, files } = params;
+  const { data } = params;
+
+  // console.log(`🚀 ~ prepareFormDataToSend ~ params:`, params);
 
   const passData = { ...data };
   // console.log(`🚀 ~ prepareFormDataToSend ~ passData:`, passData);
@@ -34,9 +36,20 @@ export function prepareFormDataToSend(params: any) {
   const formData = new FormData();
   formData.append("data", JSON.stringify(passData));
 
-  if (files) {
-    appendFilesToFormData(formData, files);
-  }
+  Object.entries(data).forEach(([key, value]) => {
+    // console.log(`🚀 ~ Object.entries ~ value:`, key, value, typeof value);
+    // if file - appent to formData
+    if (value instanceof File) {
+      // get value from FileList
+      // const file = value[0];
+      // console.log(`🚀 ~ Object.entries ~ value:`, value);
+      formData.append(key, value);
+    }
+  });
+
+  // if (files) {
+  //   appendFilesToFormData(formData, files);
+  // }
 
   return formData;
 }

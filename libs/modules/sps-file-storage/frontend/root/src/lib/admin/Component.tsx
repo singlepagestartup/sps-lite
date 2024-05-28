@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
 import {
   Button,
@@ -29,6 +29,10 @@ export function Component(props: IComponentProps) {
         Comp: FileSpsLiteAdminTable,
       },
     ];
+  }, []);
+
+  useEffect(() => {
+    setPage({ model: models[1] });
   }, []);
 
   const RenderWidget = useMemo(() => {

@@ -18,3 +18,4 @@ export * from "./lib/slider";
 export * from "./lib/carousel";
 export * from "./lib/calendar";
 export * from "./lib/datetime";
+export * from "./lib/file-input";

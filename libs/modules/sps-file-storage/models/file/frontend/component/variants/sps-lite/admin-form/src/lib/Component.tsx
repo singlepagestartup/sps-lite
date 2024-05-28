@@ -5,7 +5,17 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-file-storage-models-file-frontend-api-client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent } from "@sps/shadcn";
+import {
+  Form,
+  Card,
+  CardContent,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  Input,
+  FormMessage,
+} from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,10 +26,11 @@ import { variants } from "@sps/sps-file-storage-models-file-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
-  url: z.string().min(1),
+  // url: z.string().min(1),
   className: z.string().optional(),
   containerClassName: z.string().optional(),
-  // file: z.custom<File>((v) => v instanceof File),
+  // files: z.string().optional(),
+  file: z.custom<File>((v) => v instanceof File).or(z.string()),
   // files: { file: z.string() },
 });
 
@@ -34,23 +45,24 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      url: props.data?.url || "",
+      // url: props.data?.url || "",
       className: props.data?.className || "",
       containerClassName: props.data?.containerClassName || "",
+      file: "",
       // files: {
       //   file: props.data?.file || "",
       // },
     },
   });
 
-  const watchData = form.watch();
+  // const watchData = form.watch();
 
-  useEffect(() => {
-    console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
-  }, [watchData]);
+  // useEffect(() => {
+  //   console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
+  // }, [watchData]);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(`🚀 ~ onSubmit ~ data:`, data);
+    // console.log(`🚀 ~ onSubmit ~ data:`, data);
 
     if (props.data?.id) {
       await updateEntity({ id: props.data?.id, data });
@@ -75,6 +87,8 @@ export function Component(props: IComponentPropsExtended) {
     }
   }, [updateEntityResult, createEntityResult]);
 
+  // const fileRef = form.register("file");
+
   return (
     <div
       data-module="sps-file-storage"
@@ -87,6 +101,21 @@ export function Component(props: IComponentPropsExtended) {
           <h1 className="admin-edit-card-heading">
             {props.data?.id ? "Edit" : "Create"} file
           </h1>
+          {/* <FormField
+            control={form.control}
+            name="file"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>File</FormLabel>
+                  <FormControl>
+                    <Input type="file" placeholder="shadcn" {...fileRef} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          /> */}
           <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}

@@ -40,7 +40,15 @@ export const handler = async (
 ) => {
   const body = await c.req.parseBody();
 
-  const filesArray = [body["files"]];
+  const uploadableFields: string[] = [];
+
+  Object.keys(body).forEach((key) => {
+    if (body[key] instanceof File) {
+      uploadableFields.push(key);
+    }
+  });
+
+  const filesArray = uploadableFields.map((key) => body[key]);
 
   for (const file of filesArray) {
     if (Array.isArray(file)) {
