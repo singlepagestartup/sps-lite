@@ -18,10 +18,7 @@ import { toast } from "sonner";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
-  url: z
-    .string()
-    .min(1)
-    .regex(/^[/]([a-z0-9-]?)+$/),
+  url: z.string().min(1),
   variant: z.enum(variants).default("default"),
 });
 
