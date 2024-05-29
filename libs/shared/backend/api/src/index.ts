@@ -9,6 +9,8 @@ export * as modelFactories from "./lib/model-factories";
 export * as apiFactories from "./lib/api-factories";
 export { parseQueryFilters } from "./lib/parse-query-filters";
 export { Seeder } from "./lib/seeder/Seeder";
+export type { IModuleSeedConfig } from "./lib/seeder/Seeder";
+export { ModuleSeeder } from "./lib/seeder/ModuleSeeder";
 export { Dumper } from "./lib/dumper/Dumper";
 export type { QueryBuilderProps as PopulateQueryBuilderProps } from "./lib/query-builder/populate";
 export type { QueryBuilderProps as FiltersQueryBuilderProps } from "./lib/query-builder/filters";

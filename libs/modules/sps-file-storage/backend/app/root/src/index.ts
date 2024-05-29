@@ -1,3 +1,3 @@
 export { app } from "./lib/app";
-export { Seeder } from "./lib/Seeder";
+export { ModuleSeeder } from "./lib/seed/ModuleSeeder";
 export { Dumper } from "./lib/Dumper";

@@ -1,6 +1,10 @@
 import fs from "fs/promises";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { checkIsModuleShouldSeed } from "@sps/sps-backend-utils";
+
+export interface IModuleSeedConfig<Models> {
+  seed: boolean;
+  models: { name: keyof Models }[];
+}
 
 export class Seeder<S, T extends PgTableWithColumns<any>> {
   seeds = [] as any[];
@@ -13,6 +17,7 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
   config?: {
     [key: string]: string;
   };
+  seedAll = false;
 
   constructor({
     services,
@@ -37,6 +42,7 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
     if (seedsPath) {
       this.seedsPath = seedsPath;
     }
+    this.seedAll = process.env["SEED_ALL"] === "true";
   }
 
   async init() {
@@ -55,13 +61,19 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
     }
   }
 
-  async seed(props?: { seedResults?: any }) {
+  async seed(props: {
+    seedResults?: any;
+    seedConfig: {
+      [key: string]: IModuleSeedConfig<any>;
+    };
+  }) {
     await this.init();
 
     for (const seedEntity of this.seeds) {
       const preparedSeed = await this.prepare({
         entity: seedEntity,
         seedResults: props?.seedResults,
+        seedConfig: props.seedConfig,
       });
 
       if (!preparedSeed) {
@@ -80,19 +92,47 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
     return this.seedResult;
   }
 
-  async prepare({ entity, seedResults }: { entity: any; seedResults?: any }) {
+  async prepare({
+    entity,
+    seedResults,
+    seedConfig,
+  }: {
+    entity: any;
+    seedResults?: any;
+    seedConfig: {
+      [moduleName: string]: IModuleSeedConfig<any>;
+    };
+  }) {
     const preparedEntity = {} as any;
 
     if (this.config) {
-      const relationsModuleSeed = Object.entries(this.config)
-        .map(([key, value]) => {
-          return value.split(".")[0];
-        })
-        .map((moduleName) => {
-          return checkIsModuleShouldSeed({ name: moduleName });
-        });
+      const relationsModelsAreSeeded = Object.entries(this.config).map(
+        ([key, value]) => {
+          const moduleName = value.split(".")[0];
 
-      if (!relationsModuleSeed.every((module) => module === true)) {
+          if (!this.seedAll) {
+            if (
+              !seedConfig[moduleName] ||
+              seedConfig[moduleName]?.seed === false
+            ) {
+              return false;
+            }
+          }
+
+          const modelName = value.split(".")[1];
+          const relationConfig = seedConfig?.[moduleName]?.models?.find(
+            (m) => m.name === modelName,
+          );
+
+          if (this.seedAll) {
+            return true;
+          }
+
+          return relationConfig ? true : false;
+        },
+      );
+
+      if (!relationsModelsAreSeeded.every((module) => module === true)) {
         return null;
       }
     }
