@@ -61,7 +61,20 @@ export const handler = async (
       const data = c.var.parsedBody.data ?? {};
       data[name] = createdFileUrl;
 
+      const previous = await model.services.findById({ id: uuid });
+
       const entity = await model.services.update({ id: uuid, data });
+
+      if (previous?.file) {
+        const root = process.cwd();
+        const filePath = path.join(root, "public", previous.file);
+
+        try {
+          await fs.unlink(filePath);
+        } catch (error: any) {
+          c.var.log("error", error.toString());
+        }
+      }
 
       return c.json(
         {

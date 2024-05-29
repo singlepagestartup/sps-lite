@@ -2,21 +2,37 @@
 
 import { cn } from "@sps/shared-frontend-utils-client";
 import Image from "next/image";
-import React, { ChangeEvent, useEffect, useRef } from "react";
+import React, {
+  ChangeEvent,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import { UseFormReturn } from "react-hook-form";
 import mime from "mime-types";
 
 export interface FileInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "form"> {
   form: UseFormReturn<any>;
+  children?: ReactNode;
 }
 
-interface FileItemProps {
+interface FileValueProps {
   file: File;
   onDelete: (file: File) => void;
 }
 
-const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
+const FileInputContext = createContext<{
+  fileSetted: boolean;
+  setFileSetted: (fileSetted: boolean) => void;
+}>({
+  fileSetted: false,
+  setFileSetted: () => {},
+});
+
+const FileValue = React.forwardRef<HTMLDivElement, FileValueProps>(
   (props, ref) => {
     const { file, onDelete } = props;
 
@@ -25,14 +41,14 @@ const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
 
     return (
       <button
-        className=""
+        className="overflow-hidden"
         onClick={(e) => {
           e.stopPropagation();
           onDelete(file);
         }}
       >
         {isImage ? (
-          <Image src={url} alt="" fill={true} />
+          <Image src={url} alt="" fill={true} className="object-cover" />
         ) : (
           <div className="file__description">
             <p>{file?.name}</p>
@@ -43,8 +59,26 @@ const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
   },
 );
 
+const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputProps>(
+  (props, ref) => {
+    const [fileSetted, setFileSetted] = React.useState<boolean>(false);
+    return (
+      <FileInputContext.Provider
+        value={{
+          fileSetted,
+          setFileSetted,
+        }}
+      >
+        <FileInput {...props} />
+      </FileInputContext.Provider>
+    );
+  },
+);
+
 const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, children, ...props }, ref) => {
+    const context = useContext(FileInputContext);
+
     const fileRef = props.form?.register(props?.name || "");
     const localRef = useRef<HTMLInputElement>(null);
 
@@ -58,6 +92,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           setLocalFile(files[0] as unknown as File);
 
           props.onChange(files[0] as unknown as ChangeEvent<HTMLInputElement>);
+          context.setFileSetted(true);
         }
       }
     }
@@ -91,6 +126,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
               localRef.current.files = dataTransfer.files;
               localRef.current.dispatchEvent(evt);
               onChange(evt as unknown as ChangeEvent<HTMLInputElement>);
+              context.setFileSetted(true);
             }
           })
           .catch((error) => {
@@ -102,13 +138,17 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     return (
       <div
         className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 relative",
+          "flex w-full rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 relative aspect-w-2 aspect-h-2 cursor-pointer",
           className,
         )}
       >
         <label
           htmlFor={props.id || "file"}
-          className={cn("", localFile ? "" : "absolute inset-0", className)}
+          className={cn(
+            "",
+            localFile ? "" : "absolute inset-0 z-10",
+            className,
+          )}
         ></label>
         <input
           type="file"
@@ -121,33 +161,83 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           value=""
           onChange={onChange}
         />
-        {localFile ? (
-          <FileItem
-            {...props}
-            file={localFile}
-            onDelete={(e) => {
-              setLocalFile(null);
-              if (props.onChange) {
-                const emptyEvent = new InputEvent("change");
+        <InputContent
+          {...props}
+          file={localFile}
+          onDelete={(e) => {
+            setLocalFile(null);
+            if (props.onChange) {
+              const emptyEvent = new InputEvent("change");
 
-                if (localRef?.current) {
-                  localRef.current.files = new DataTransfer().files;
-                  localRef.current.dispatchEvent(emptyEvent);
-                  props.onChange(
-                    emptyEvent as unknown as ChangeEvent<HTMLInputElement>,
-                  );
-                }
+              if (localRef?.current) {
+                localRef.current.files = new DataTransfer().files;
+                localRef.current.dispatchEvent(emptyEvent);
+                props.onChange(
+                  emptyEvent as unknown as ChangeEvent<HTMLInputElement>,
+                );
               }
-            }}
-          />
-        ) : (
-          "Select file"
-        )}
+            }
+            context.setFileSetted(false);
+          }}
+        />
+        <InputPlaceholder />
       </div>
+    );
+  },
+);
+
+type InputPlaceholderProps = {
+  className?: string;
+  children?: ReactNode;
+};
+
+const InputPlaceholder = React.forwardRef<
+  HTMLInputElement,
+  InputPlaceholderProps
+>(({ className, children, ...props }, ref) => {
+  const context = useContext(FileInputContext);
+  if (context.fileSetted) {
+    return;
+  }
+
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 flex items-center justify-center",
+        className,
+      )}
+      {...props}
+    >
+      {children || "Select file"}
+    </div>
+  );
+});
+
+export type FileInputContentProps = {
+  className?: string;
+  children?: ReactNode;
+  file?: File | null | undefined;
+  onDelete: (file: File) => void;
+};
+
+const InputContent = React.forwardRef<HTMLDivElement, FileInputContentProps>(
+  ({ className, children, file, onDelete, ...props }, ref) => {
+    if (!file) {
+      return;
+    }
+
+    return (
+      <FileValue
+        {...props}
+        file={file}
+        onDelete={(e) => {
+          onDelete(file);
+        }}
+      />
     );
   },
 );
 
 FileInput.displayName = "FileInput";
 
-export { FileInput };
+export { FileInputRoot, FileInput, FileValue };

@@ -22,7 +22,6 @@ export function middleware() {
     Object.keys(body).forEach((key) => {
       if (body[key] instanceof File) {
         const file = body[key] as File;
-        console.log(`🚀 ~ Object.keys ~ file:`, file);
 
         if (!parsedBody.files) {
           parsedBody.files = {};
@@ -35,7 +34,7 @@ export function middleware() {
       }
     });
 
-    if (body["data"]) {
+    if (body?.["data"]) {
       if (typeof body["data"] === "string") {
         parsedBody.data = JSON.parse(body["data"]);
       }

@@ -9,10 +9,18 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  FileInput,
+  FileInputRoot,
 } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
 import React from "react";
+
+const Placeholder = () => {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center">
+      Select file
+    </div>
+  );
+};
 
 export const Component = (props: IComponentProps) => {
   if (props.type === "text") {
@@ -34,11 +42,14 @@ export const Component = (props: IComponentProps) => {
   if (props.type === "file") {
     return (
       <FormControl>
-        <FileInput
+        <FileInputRoot
           placeholder={props.placeholder}
           {...props.field}
           form={props.form}
-        />
+        >
+          <Placeholder />
+          <div className="bg-green-300 p-3 opacity-10"></div>
+        </FileInputRoot>
       </FormControl>
     );
   }
