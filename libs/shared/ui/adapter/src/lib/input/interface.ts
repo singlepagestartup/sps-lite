@@ -9,11 +9,15 @@ type IUniversalProps = {
   label?: string;
   ref?: LegacyRef<HTMLInputElement>;
   form: UseFormReturn<any>;
+  className?: string;
 };
 
 export type TTypedProps =
   | {
       type: "text";
+    }
+  | {
+      type: "tiptap";
     }
   | {
       type: "textarea";

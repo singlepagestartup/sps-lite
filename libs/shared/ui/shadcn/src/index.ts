@@ -19,3 +19,6 @@ export * from "./lib/carousel";
 export * from "./lib/calendar";
 export * from "./lib/datetime";
 export * from "./lib/file-input";
+export * from "./lib/tiptap";
+export * from "./lib/toggle";
+export * from "./lib/toggle-group";

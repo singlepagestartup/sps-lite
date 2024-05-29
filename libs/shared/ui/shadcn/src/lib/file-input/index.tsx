@@ -17,6 +17,7 @@ export interface FileInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "form"> {
   form: UseFormReturn<any>;
   children?: ReactNode;
+  className?: string;
 }
 
 interface FileValueProps {

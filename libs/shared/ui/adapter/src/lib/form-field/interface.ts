@@ -7,6 +7,8 @@ type TUniversalProps = {
   name: string;
   placeholder?: string;
   form: UseFormReturn<any>;
+  className?: string;
+  inputClassName?: string;
 };
 
 export type IComponentProps = TUniversalProps & TTypedProps;

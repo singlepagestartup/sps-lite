@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
   FileInputRoot,
+  TipTap,
 } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
 import React from "react";
@@ -26,7 +27,30 @@ export const Component = (props: IComponentProps) => {
   if (props.type === "text") {
     return (
       <FormControl>
-        <Input placeholder={props.placeholder} {...props.field} />
+        <Input
+          placeholder={props.placeholder}
+          {...props.field}
+          className={props.className}
+        />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "tiptap") {
+    return (
+      <FormControl>
+        <TipTap
+          placeholder={props.placeholder}
+          {...props.field}
+          form={props.form}
+          className={props.className}
+          editable={true}
+          value={
+            typeof props.field.value === "string"
+              ? JSON.parse(props.field.value)
+              : props.field.value
+          }
+        />
       </FormControl>
     );
   }
@@ -34,7 +58,11 @@ export const Component = (props: IComponentProps) => {
   if (props.type === "textarea") {
     return (
       <FormControl>
-        <Input placeholder={props.placeholder} {...props.field} />
+        <Input
+          placeholder={props.placeholder}
+          {...props.field}
+          className={props.className}
+        />
       </FormControl>
     );
   }
@@ -46,6 +74,7 @@ export const Component = (props: IComponentProps) => {
           placeholder={props.placeholder}
           {...props.field}
           form={props.form}
+          className={props.className}
         >
           <Placeholder />
           <div className="bg-green-300 p-3 opacity-10"></div>
@@ -61,6 +90,7 @@ export const Component = (props: IComponentProps) => {
           placeholder={props.placeholder}
           type="number"
           {...props.field}
+          className={props.className}
           onChange={(event) => {
             const value = +event.target.value;
 
@@ -82,6 +112,7 @@ export const Component = (props: IComponentProps) => {
           placeholder={props.placeholder}
           value={props.field.value}
           onChange={props.field.onChange}
+          className={props.className}
           disabled={(date) =>
             date > new Date() || date < new Date("1900-01-01")
           }
@@ -97,7 +128,7 @@ export const Component = (props: IComponentProps) => {
         defaultValue={props.field.value}
       >
         <FormControl>
-          <SelectTrigger>
+          <SelectTrigger className={props.className}>
             <SelectValue placeholder={props.placeholder} />
           </SelectTrigger>
         </FormControl>

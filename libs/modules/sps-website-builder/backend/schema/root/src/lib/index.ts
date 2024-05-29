@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBHeroSectionBlocksToSpsFileStorageWidgets,
+  Relations as SPSWBHeroSectionBlocksToSpsFileStorageWidgetsRelations,
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-backend-schema";
+export {
   Table as SPSWBLogotypesToSpsFileStorageWidgets,
   Relations as SPSWBLogotypesToSpsFileStorageWidgetsRelations,
 } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-schema";

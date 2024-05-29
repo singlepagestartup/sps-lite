@@ -1,19 +1,11 @@
-"use client";
-
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import ReactMarkdown from "react-markdown";
 import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component";
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-frontend-component";
+import { TipTap } from "@sps/shadcn";
 
 export function Component(props: IComponentPropsExtended) {
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: props.data?.description ? JSON.parse(props.data?.description) : "",
-    editable: false,
-  });
-
   return (
     <div
       data-module="sps-website-builder"
@@ -27,7 +19,9 @@ export function Component(props: IComponentPropsExtended) {
             <ReactMarkdown>{props.data?.title}</ReactMarkdown>
           </h1>
         ) : null}
-        {editor ? <EditorContent editor={editor} className="prose" /> : null}
+        {props.data.description ? (
+          <TipTap value={JSON.parse(props.data?.description)} />
+        ) : null}
         <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
           {props.data.heroSectionBlocksToButtonsArrays.map((entity, index) => {
             return (
@@ -40,6 +34,22 @@ export function Component(props: IComponentPropsExtended) {
             );
           })}
         </div>
+        {props.data.heroSectionBlocksToSpsFileStorageWidgets.length ? (
+          <div className="w-full">
+            {props.data.heroSectionBlocksToSpsFileStorageWidgets.map(
+              (entity, index) => {
+                return (
+                  <HeroSectionBlocksToSpsFileStorageWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    variant="default"
+                    data={entity}
+                  />
+                );
+              },
+            )}
+          </div>
+        ) : null}
       </div>
     </div>
   );
