@@ -1,0 +1,26 @@
+{
+  "title": "Hero section image",
+  "id": "179f367a-6f3a-427d-b5fa-8bae8e056191",
+  "createdAt": "2024-05-29T16:21:36.614Z",
+  "updatedAt": "2024-05-29T16:21:36.614Z",
+  "variant": "default",
+  "widgetsToSpsFileStorageModuleWidgets": [
+    {
+      "id": "01d8c64b-4b39-4536-a128-3ea05632e045",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "179f367a-6f3a-427d-b5fa-8bae8e056191",
+      "spsFileStorageModuleWidgetId": "fed79627-d7f5-4b93-bacd-d800c37bfa20"
+    }
+  ],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": []
+}

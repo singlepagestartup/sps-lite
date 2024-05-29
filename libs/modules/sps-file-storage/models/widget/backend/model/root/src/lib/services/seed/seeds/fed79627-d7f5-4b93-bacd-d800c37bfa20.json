@@ -1,0 +1,17 @@
+{
+  "variant": "default",
+  "id": "fed79627-d7f5-4b93-bacd-d800c37bfa20",
+  "createdAt": "2024-05-29T16:21:24.645Z",
+  "updatedAt": "2024-05-29T16:21:24.645Z",
+  "title": "Hero section image",
+  "widgetsToFiles": [
+    {
+      "id": "82f0eefd-1e8e-4ee4-ad11-8a1bfe074dfb",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "fed79627-d7f5-4b93-bacd-d800c37bfa20",
+      "fileId": "82e123e4-2b09-4876-bf25-31317e4f910f"
+    }
+  ]
+}

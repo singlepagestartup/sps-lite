@@ -5,8 +5,6 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
-import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component";
-import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -43,52 +41,7 @@ function DisclosureInner({
   return (
     <>
       <div className="mx-auto flex flex-row w-full overflow-hidden">
-        <div className="flex w-full justify-between">
-          <div className="flex w-full px-2 lg:px-0 items-center justify-between">
-            <div className="flex w-full items-center h-16">
-              <div className="w-fit">
-                {props.data.navbarBlocksToLogotypes.map((entity, index) => {
-                  return (
-                    <NavbarsToLogotypes
-                      key={index}
-                      variant="default"
-                      isServer={false}
-                      data={entity}
-                    />
-                  );
-                })}
-              </div>
-              <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-                {props.data.navbarBlocksToButtonsArrays
-                  .filter((entity) => entity.position === "default")
-                  .map((entity, index) => {
-                    return (
-                      <NavbarsToButtonsArrays
-                        key={index}
-                        variant="default"
-                        data={entity}
-                        isServer={false}
-                      />
-                    );
-                  })}
-              </div>
-            </div>
-            <div className="hidden lg:ml-6 lg:flex lg:space-x-2 items-center">
-              {props.data.navbarBlocksToButtonsArrays
-                .filter((entity) => entity.position === "additional")
-                .map((entity, index) => {
-                  return (
-                    <NavbarsToButtonsArrays
-                      key={index}
-                      variant="default"
-                      data={entity}
-                      isServer={false}
-                    />
-                  );
-                })}
-            </div>
-          </div>
-        </div>
+        {props.children}
         <div className="flex flex-shrink-0 items-center lg:hidden pr-2">
           <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
             <span className="sr-only">Open main menu</span>
@@ -102,18 +55,7 @@ function DisclosureInner({
       </div>
 
       <Disclosure.Panel className="lg:hidden py-2">
-        <div className="flex flex-col gap-3 px-2 ">
-          {props.data.navbarBlocksToButtonsArrays.map((entity, index) => {
-            return (
-              <NavbarsToButtonsArrays
-                key={index}
-                variant="default"
-                data={entity}
-                isServer={false}
-              />
-            );
-          })}
-        </div>
+        {props.children}
       </Disclosure.Panel>
     </>
   );

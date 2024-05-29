@@ -1,0 +1,24 @@
+{
+  "id": "6c50e5f7-be76-4b67-9d62-7ebf461464a5",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "67b61998-3d6e-4ac8-b3d5-462d271f3426",
+  "fileId": "d3a85abe-25ea-4fd0-86a1-82f30aff9cd2",
+  "widget": {
+    "variant": "default",
+    "id": "67b61998-3d6e-4ac8-b3d5-462d271f3426",
+    "createdAt": "2024-05-29T19:32:00.651Z",
+    "updatedAt": "2024-05-29T19:32:00.651Z",
+    "title": "Man with laptop"
+  },
+  "file": {
+    "id": "d3a85abe-25ea-4fd0-86a1-82f30aff9cd2",
+    "file": "/images/c2e7f9c7.jpg",
+    "containerClassName": "aspect-w-3 aspect-h-2 overflow-hidden",
+    "className": "object-cover",
+    "createdAt": "2024-05-29T19:31:47.703Z",
+    "updatedAt": "2024-05-29T19:31:47.703Z",
+    "variant": "default"
+  }
+}

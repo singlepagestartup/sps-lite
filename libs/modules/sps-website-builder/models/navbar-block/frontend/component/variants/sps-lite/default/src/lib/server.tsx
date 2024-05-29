@@ -6,6 +6,7 @@ import { IComponentProps } from "./interface";
 import { Error } from "./Error";
 import { api } from "@sps/sps-website-builder-models-navbar-block-frontend-api-server";
 import { Component } from "./Component";
+import { Component as AssetsComponent } from "./assets/component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
@@ -23,7 +24,9 @@ export default async function Server(props: IComponentProps) {
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} data={data}>
+        <AssetsComponent {...props} data={data} />
+      </Component>
     </ErrorBoundary>
   );
 }

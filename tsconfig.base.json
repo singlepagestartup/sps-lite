@@ -1686,6 +1686,9 @@
       "@sps/sps-website-builder-models-slide-backend-schema-relations-sliders-to-slides": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/relations/sliders-to-slides/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-slide-backend-schema-relations-slides-to-sps-file-storage-widgets": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/slides-to-sps-file-storage-widgets/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-slide-backend-schema-table": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/table/src/index.ts"
       ],
@@ -2597,6 +2600,42 @@
       ],
       "@sps/sps-website-builder-relations-sliders-to-slides-frontend-redux": [
         "libs/modules/sps-website-builder/relations/sliders-to-slides/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-app": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-model": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-schema": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-contracts": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-app": [
         "libs/modules/sps-website-builder/relations/widgets-to-features-section-blocks/backend/app/src/index.ts"

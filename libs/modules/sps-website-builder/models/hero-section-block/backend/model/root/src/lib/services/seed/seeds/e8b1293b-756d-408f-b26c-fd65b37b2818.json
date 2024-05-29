@@ -1,13 +1,23 @@
 {
   "title": "Welcome to Single Page Startup!",
   "subTitle": null,
-  "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Tip top\"},{\"type\":\"text\",\"text\":\" \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
+  "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Tip top\"},{\"type\":\"text\",\"text\":\" \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"heading\",\"attrs\":{\"level\":1},\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"},{\"type\":\"strike\"}],\"text\":\"hero-section-block\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Hello italic!\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
   "anchor": "",
   "className": "",
   "id": "e8b1293b-756d-408f-b26c-fd65b37b2818",
   "createdAt": "2024-05-25T20:43:49.272Z",
   "updatedAt": "2024-05-25T20:43:49.272Z",
   "variant": "default",
+  "heroSectionBlocksToSpsFileStorageWidgets": [
+    {
+      "id": "cfe9b50c-7e1d-441e-b43e-ece4216442b2",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "heroSectionBlockId": "e8b1293b-756d-408f-b26c-fd65b37b2818",
+      "spsFileStorageWidgetId": "fed79627-d7f5-4b93-bacd-d800c37bfa20"
+    }
+  ],
   "heroSectionBlocksToButtonsArrays": [],
   "widgetsToHeroSectionBlocks": [
     {

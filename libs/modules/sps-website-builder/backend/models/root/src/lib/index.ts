@@ -1,3 +1,4 @@
+import { model as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-model";
 import { model as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-backend-model";
 import { model as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-model";
 import { model as footerBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-model";
@@ -43,6 +44,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  slidesToSpsFileStorageWidgets,
   heroSectionBlocksToSpsFileStorageWidgets,
   logotypesToSpsFileStorageWidgets,
   footerBlocksToButtonsArrays,
