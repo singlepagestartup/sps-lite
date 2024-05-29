@@ -1,6 +1,6 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-file-storage-models-file-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
@@ -12,7 +12,6 @@ export const handler = async (
 ) => {
   try {
     const uuid = c.req.param("uuid");
-    const body = await c.req.parseBody();
 
     if (!uuid) {
       return c.json(
@@ -25,24 +24,52 @@ export const handler = async (
       );
     }
 
-    if (typeof body["data"] !== "string") {
+    if (!c.var.parsedBody.files) {
+      const entity = await model.services.update({
+        id: uuid,
+        data: c.var.parsedBody.data,
+      });
+
       return c.json(
         {
-          message: "Invalid body",
+          data: entity,
         },
-        {
-          status: 400,
-        },
+        201,
       );
     }
 
-    const data = JSON.parse(body["data"]);
+    for (const [name, file] of Object.entries(c.var.parsedBody.files)) {
+      if (Array.isArray(file)) {
+        return;
+      }
 
-    const entity = await model.services.update({ id: uuid, data });
+      if (typeof file === "string") {
+        return;
+      }
 
-    return c.json({
-      data: entity,
-    });
+      const buffer = await (file as File).arrayBuffer();
+
+      const root = process.cwd();
+      const cuttedStoragePath = "sps-file-storage";
+      const storagePath = `public/${cuttedStoragePath}`;
+      const filePath = path.join(root, storagePath, file.name);
+
+      await fs.writeFile(filePath, Buffer.from(buffer));
+
+      const createdFileUrl = path.join("/", cuttedStoragePath, file.name);
+
+      const data = c.var.parsedBody.data ?? {};
+      data[name] = createdFileUrl;
+
+      const entity = await model.services.update({ id: uuid, data });
+
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
+    }
   } catch (error: any) {
     throw new HTTPException(400, {
       message: error.message,

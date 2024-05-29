@@ -11,46 +11,43 @@ export const handler = async (
   c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
-  const body = await c.req.parseBody();
+  try {
+    if (!c.var.parsedBody.files) {
+      const entity = await model.services.create({
+        data: c.var.parsedBody.data,
+      });
 
-  const uploadableFields: string[] = [];
-
-  Object.keys(body).forEach((key) => {
-    if (body[key] instanceof File) {
-      uploadableFields.push(key);
-    }
-  });
-
-  const filesArray = uploadableFields.map((key) => body[key]);
-
-  for (const file of filesArray) {
-    if (Array.isArray(file)) {
-      return;
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
     }
 
-    if (typeof file === "string") {
-      return;
-    }
+    for (const [name, file] of Object.entries(c.var.parsedBody.files)) {
+      if (Array.isArray(file)) {
+        return;
+      }
 
-    const buffer = await (file as File).arrayBuffer();
+      if (typeof file === "string") {
+        return;
+      }
 
-    const root = process.cwd();
-    const cuttedStoragePath = "sps-file-storage";
-    const storagePath = `public/${cuttedStoragePath}`;
-    const filePath = path.join(root, storagePath, file.name);
+      const buffer = await (file as File).arrayBuffer();
 
-    await fs.writeFile(filePath, Buffer.from(buffer));
+      const root = process.cwd();
+      const cuttedStoragePath = "sps-file-storage";
+      const storagePath = `public/${cuttedStoragePath}`;
+      const filePath = path.join(root, storagePath, file.name);
 
-    const createdFileUrl = path.join("/", cuttedStoragePath, file.name);
+      await fs.writeFile(filePath, Buffer.from(buffer));
 
-    if (body["data"] && typeof body["data"] !== "string") {
-      return next();
-    }
+      const createdFileUrl = path.join("/", cuttedStoragePath, file.name);
 
-    const data = body["data"] ? JSON.parse(body["data"]) : {};
-    data["file"] = createdFileUrl;
+      const data = c.var.parsedBody.data ?? {};
+      data[name] = createdFileUrl;
 
-    try {
       const entity = await model.services.create({ data });
 
       return c.json(
@@ -59,10 +56,10 @@ export const handler = async (
         },
         201,
       );
-    } catch (error: any) {
-      throw new HTTPException(400, {
-        message: error.message,
-      });
     }
+  } catch (error: any) {
+    throw new HTTPException(400, {
+      message: error.message,
+    });
   }
 };

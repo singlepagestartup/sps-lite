@@ -7,6 +7,7 @@ export function middlewaresChain(
 ) {
   app.use(middlewares.parseQuery());
   app.use(middlewares.logger());
+  app.use(middlewares.parseBody());
 
   return app;
 }
