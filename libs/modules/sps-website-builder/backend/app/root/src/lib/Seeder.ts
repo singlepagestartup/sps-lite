@@ -28,6 +28,15 @@ export class Seeder {
     for (const [modelName, model] of Object.entries(this.models)) {
       if ("type" in model) {
         if (model.type === "relation") {
+          console.log(`🚀 ~ seedRelations ~ modelName:`, modelName);
+          const entities = await model.services.find();
+
+          for (const entity of entities) {
+            await model.services.delete({
+              id: entity.id,
+            });
+          }
+
           this.seedResults[this.name][modelName] = await model.services.seed({
             seedResults: this.seedResults,
           });

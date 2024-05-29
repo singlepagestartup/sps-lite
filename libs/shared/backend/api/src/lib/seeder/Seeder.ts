@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
+import { checkIsModuleShouldNotSeed } from "@sps/sps-backend-utils";
 
 export class Seeder<S, T extends PgTableWithColumns<any>> {
   seeds = [] as any[];
@@ -63,6 +64,10 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
         seedResults: props?.seedResults,
       });
 
+      if (!preparedSeed) {
+        continue;
+      }
+
       const createdEntity = await this.services.create({ data: preparedSeed });
 
       this.entites.push(createdEntity);
@@ -78,6 +83,20 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
   async prepare({ entity, seedResults }: { entity: any; seedResults?: any }) {
     const preparedEntity = {} as any;
 
+    if (this.config) {
+      const relateToModulesSkipSeeding = Object.entries(this.config)
+        .map(([key, value]) => {
+          return value.split(".")[0];
+        })
+        .map((moduleName) => {
+          return checkIsModuleShouldNotSeed({ name: moduleName });
+        });
+
+      if (!relateToModulesSkipSeeding.every((module) => module === false)) {
+        return null;
+      }
+    }
+
     for (const [key, value] of Object.entries(this.table)) {
       if (key === "id") {
         continue;
@@ -85,7 +104,10 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
 
       if (this.config && this.config[key]) {
         const path = this.config[key].split(".");
-        const seededEntities = seedResults[path[0]][path[1]];
+        const moduleName = path[0];
+
+        const modelName = path[1];
+        const seededEntities = seedResults[moduleName][modelName];
 
         const existingEntity = seededEntities.find((seededEntity: any) => {
           return seededEntity.seed[path[2]] === entity[key];
