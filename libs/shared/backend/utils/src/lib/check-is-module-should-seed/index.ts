@@ -20,7 +20,7 @@ export function util({ name }: { name: string }): boolean {
   }
 
   const envValue = process.env[module?.envKey];
-  if (envValue === "false") {
+  if (envValue === "true") {
     return true;
   }
 

@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { checkIsModuleShouldNotSeed } from "@sps/sps-backend-utils";
+import { checkIsModuleShouldSeed } from "@sps/sps-backend-utils";
 
 export class Seeder<S, T extends PgTableWithColumns<any>> {
   seeds = [] as any[];
@@ -84,15 +84,15 @@ export class Seeder<S, T extends PgTableWithColumns<any>> {
     const preparedEntity = {} as any;
 
     if (this.config) {
-      const relateToModulesSkipSeeding = Object.entries(this.config)
+      const relationsModuleSeed = Object.entries(this.config)
         .map(([key, value]) => {
           return value.split(".")[0];
         })
         .map((moduleName) => {
-          return checkIsModuleShouldNotSeed({ name: moduleName });
+          return checkIsModuleShouldSeed({ name: moduleName });
         });
 
-      if (!relateToModulesSkipSeeding.every((module) => module === false)) {
+      if (!relationsModuleSeed.every((module) => module === true)) {
         return null;
       }
     }

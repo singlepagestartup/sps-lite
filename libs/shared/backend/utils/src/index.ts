@@ -1,2 +1,2 @@
 export { getUniqueFileName } from "./lib/index";
-export { util as checkIsModuleShouldNotSeed } from "./lib/check-is-module-should-not-seed";
+export { util as checkIsModuleShouldSeed } from "./lib/check-is-module-should-seed";

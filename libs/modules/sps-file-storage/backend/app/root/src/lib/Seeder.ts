@@ -13,11 +13,10 @@ export class Seeder {
   }
 
   async seedModels() {
-    await this.clear();
-
     for (const [modelName, model] of Object.entries(this.models)) {
       if ("type" in model) {
         if (model.type === "model") {
+          await this.clear({ model });
           this.seedResults[this.name][modelName] = await model.services.seed();
         }
       }
@@ -36,15 +35,13 @@ export class Seeder {
     }
   }
 
-  async clear() {
-    for (const [index, model] of Object.entries(this.models)) {
-      const entities = await model.services.find();
+  async clear({ model }: { model: (typeof models)[keyof typeof models] }) {
+    const entities = await model.services.find();
 
-      for (const entity of entities) {
-        await model.services.delete({
-          id: entity.id,
-        });
-      }
+    for (const entity of entities) {
+      await model.services.delete({
+        id: entity.id,
+      });
     }
   }
 }

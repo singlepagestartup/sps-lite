@@ -18,6 +18,10 @@ echo "Created /.env.local file"
 NODE_ENV=local
 add_env "NODE_ENV" $NODE_ENV
 
+add_env "SPS_WEBSITE_BUILDER_SEED" true
+add_env "SPS_FILE_STORAGE_SEED" $SPS_FILE_STORAGE_SEED
+add_env "STARTUP_SEED" $STARTUP_SEED
+
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
 add_env "NEXT_PUBLIC_BACKEND_URL" $NEXT_PUBLIC_BACKEND_URL
 

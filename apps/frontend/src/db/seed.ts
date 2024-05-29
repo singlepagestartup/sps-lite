@@ -2,7 +2,7 @@ import { Seeder as SpsWebsiteBuilderSeeder } from "@sps/sps-website-builder-back
 import { Seeder as StartupSeeder } from "@sps/startup-backend-app";
 import { Seeder as SpsFileStorageSeeder } from "@sps/sps-file-storage-backend-app";
 import { exit } from "process";
-import { checkIsModuleShouldNotSeed } from "@sps/sps-backend-utils";
+import { checkIsModuleShouldSeed } from "@sps/sps-backend-utils";
 
 (async () => {
   const seedResults = {};
@@ -10,37 +10,37 @@ import { checkIsModuleShouldNotSeed } from "@sps/sps-backend-utils";
   const spsWebsiteBuilderSeeder = new SpsWebsiteBuilderSeeder({
     seedResults,
   });
-  const skipSpsWebsiteBuilderSeed = checkIsModuleShouldNotSeed({
+  const spsWebsiteBuilderShouldSeed = checkIsModuleShouldSeed({
     name: "spsWebsiteBuilder",
   });
 
   const spsFileStorageSeeder = new SpsFileStorageSeeder({ seedResults });
-  const skipSpsFileStorageSeed = checkIsModuleShouldNotSeed({
+  const spsFileStorageShouldSeed = checkIsModuleShouldSeed({
     name: "spsFileStorage",
   });
 
   const startupSeeder = new StartupSeeder({ seedResults });
-  const skipStartupSeed = checkIsModuleShouldNotSeed({
+  const startupShouldSeed = checkIsModuleShouldSeed({
     name: "startup",
   });
 
-  if (!skipSpsWebsiteBuilderSeed) {
+  if (spsWebsiteBuilderShouldSeed) {
     await spsWebsiteBuilderSeeder.seedModels();
   }
-  if (!skipSpsFileStorageSeed) {
+  if (spsFileStorageShouldSeed) {
     await spsFileStorageSeeder.seedModels();
   }
-  if (!skipStartupSeed) {
+  if (startupShouldSeed) {
     await startupSeeder.seedModels();
   }
 
-  if (!skipSpsWebsiteBuilderSeed) {
+  if (spsWebsiteBuilderShouldSeed) {
     await spsWebsiteBuilderSeeder.seedRelations();
   }
-  if (!skipSpsFileStorageSeed) {
+  if (spsFileStorageShouldSeed) {
     await spsFileStorageSeeder.seedRelations();
   }
-  if (!skipStartupSeed) {
+  if (startupShouldSeed) {
     await startupSeeder.seedRelations();
   }
 })()
