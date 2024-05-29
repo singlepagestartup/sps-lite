@@ -8,12 +8,12 @@
   "variant": "default",
   "pagesToWidgets": [
     {
-      "id": "3ead6af1-4fcc-46fe-8b73-0cfe7e5d56ae",
+      "id": "d3614e18-1594-4122-ab8d-665521b5b536",
       "variant": "default",
-      "orderIndex": 3,
+      "orderIndex": 1,
       "className": null,
       "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
-      "widgetId": "cac42010-eb6f-42a7-837c-a03269bd9191"
+      "widgetId": "14332113-c762-48b8-b165-40ce181a47e2"
     },
     {
       "id": "ac82fe0a-19db-4c5a-90ab-937326c75553",
@@ -24,12 +24,20 @@
       "widgetId": "aa8dc819-d2ae-4b02-a064-4c11ecb76a42"
     },
     {
-      "id": "d3614e18-1594-4122-ab8d-665521b5b536",
+      "id": "609bc591-a73a-44f9-b963-1f0f0e48fa72",
       "variant": "default",
-      "orderIndex": 1,
+      "orderIndex": 7,
       "className": null,
       "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
-      "widgetId": "14332113-c762-48b8-b165-40ce181a47e2"
+      "widgetId": "0d6350b6-66ce-4039-9b09-aba5393a21c3"
+    },
+    {
+      "id": "3ead6af1-4fcc-46fe-8b73-0cfe7e5d56ae",
+      "variant": "default",
+      "orderIndex": 3,
+      "className": null,
+      "pageId": "4f1b95b1-61c4-4889-9401-34fbada7bd2a",
+      "widgetId": "cac42010-eb6f-42a7-837c-a03269bd9191"
     }
   ],
   "pagesToLayouts": [

@@ -64,6 +64,20 @@
       "when": 1716894414652,
       "tag": "0008_rainy_lilandra",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1716951697231,
+      "tag": "0009_regular_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1716952103964,
+      "tag": "0010_good_whiplash",
+      "breakpoints": true
     }
   ]
 }

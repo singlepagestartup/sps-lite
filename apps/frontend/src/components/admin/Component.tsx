@@ -7,7 +7,7 @@ import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
 import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
 
 export function Component(props: IComponentPropsExtended) {
-  const [widget, setWidget] = useState<string>("sps-file-storage");
+  const [widget, setWidget] = useState<string>("sps-website-builder");
 
   return (
     <section data-module="frontend" className="w-full py-2 lg:py-10 bg-dotted">

@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs/promises";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 import process from "process";
+import { getUniqueFileName } from "@sps/sps-backend-utils";
 
 export const handler = async (
   c: Context<MiddlewaresGeneric, string, BlankInput>,
@@ -37,18 +38,35 @@ export const handler = async (
       const buffer = await (file as File).arrayBuffer();
 
       const root = process.cwd();
-      const cuttedStoragePath = "sps-file-storage";
+      const cuttedStoragePath = "images";
       const storagePath = `public/${cuttedStoragePath}`;
-      const filePath = path.join(root, storagePath, file.name);
+
+      const data = c.var.parsedBody.data ?? {};
+      data[name] = "";
+      const createdEntity = await model.services.create({ data });
+
+      const extension = file.name.split(".").pop();
+
+      if (!extension) {
+        throw new Error("Invalid file extension");
+      }
+
+      const fileName = await getUniqueFileName({ extension });
+      const filePath = path.join(root, storagePath, fileName + "." + extension);
 
       await fs.writeFile(filePath, Buffer.from(buffer));
 
-      const createdFileUrl = path.join("/", cuttedStoragePath, file.name);
+      const createdFileUrl = path.join(
+        "/",
+        cuttedStoragePath,
+        fileName + "." + extension,
+      );
 
-      const data = c.var.parsedBody.data ?? {};
       data[name] = createdFileUrl;
-
-      const entity = await model.services.create({ data });
+      const entity = await model.services.update({
+        id: createdEntity.id,
+        data,
+      });
 
       return c.json(
         {

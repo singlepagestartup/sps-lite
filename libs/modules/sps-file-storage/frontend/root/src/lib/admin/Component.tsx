@@ -31,10 +31,6 @@ export function Component(props: IComponentProps) {
     ];
   }, []);
 
-  useEffect(() => {
-    setPage({ model: models[1] });
-  }, []);
-
   const RenderWidget = useMemo(() => {
     if (page) {
       const model = models.find((m) => m.name === page.model.name);

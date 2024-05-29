@@ -1,6 +1,6 @@
 "use client";
 
-import React, { LegacyRef } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-file-storage-models-file-contracts";
@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       className={`${props.className || ""}`}
     >
       <div className="flex flex-col gap-6">
-        {/* <FormField
+        <FormField
           ui="shadcn"
           type="select"
           label="Variant"
@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
-        /> */}
+        />
         <FormField
           ui="shadcn"
           type="file"
@@ -31,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Select file"
         />
-        {/* <FormField
+        <FormField
           ui="shadcn"
           type="text"
           label="Container class name"
@@ -46,7 +46,7 @@ export function Component(props: IComponentPropsExtended) {
           name="className"
           form={props.form}
           placeholder="Type class name"
-        /> */}
+        />
       </div>
     </div>
   );

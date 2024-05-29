@@ -25,11 +25,11 @@ export function Component(props: IComponentPropsExtended) {
           if (props.renderField && entity[props.renderField]) {
             const renderValue = entity[props.renderField];
             if (typeof renderValue === "string") {
-              return [entity.id, <MiniImage {...entity} />];
+              return [entity.id, renderValue];
             }
           }
 
-          return [entity.id, entity.id];
+          return [entity.id, <MiniImage {...entity} />];
         })}
       />
     </div>

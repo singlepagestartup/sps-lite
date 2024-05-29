@@ -48,9 +48,9 @@ const FileValue = React.forwardRef<HTMLDivElement, FileValueProps>(
         }}
       >
         {isImage ? (
-          <Image src={url} alt="" fill={true} className="object-cover" />
+          <Image src={url} alt="" fill={true} className="object-contain" />
         ) : (
-          <div className="file__description">
+          <div className="">
             <p>{file?.name}</p>
           </div>
         )}

@@ -16,7 +16,6 @@ import { variants } from "@sps/sps-file-storage-models-file-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
-  // url: z.string().min(1),
   className: z.string().optional(),
   containerClassName: z.string().optional(),
   file: z.custom<File>((v) => v instanceof File).or(z.string()),
@@ -39,15 +38,7 @@ export function Component(props: IComponentPropsExtended) {
     },
   });
 
-  const watchData = form.watch();
-
-  useEffect(() => {
-    console.log(`🚀 ~ useEffect ~ watchData:`, watchData);
-  }, [watchData]);
-
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    // console.log(`🚀 ~ onSubmit ~ data:`, data);
-
     if (props.data?.id) {
       await updateEntity({ id: props.data?.id, data });
       return;
@@ -70,8 +61,6 @@ export function Component(props: IComponentPropsExtended) {
       router.refresh();
     }
   }, [updateEntityResult, createEntityResult]);
-
-  // const fileRef = form.register("file");
 
   return (
     <div
