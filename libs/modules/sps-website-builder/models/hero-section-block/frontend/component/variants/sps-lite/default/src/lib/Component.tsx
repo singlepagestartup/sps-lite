@@ -20,7 +20,7 @@ export function Component(props: IComponentPropsExtended) {
           </h1>
         ) : null}
         {props.data.description ? (
-          <TipTap value={JSON.parse(props.data?.description)} />
+          <TipTap value={props.data.description} />
         ) : null}
         <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
           {props.data.heroSectionBlocksToButtonsArrays.map((entity, index) => {

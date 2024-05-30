@@ -45,11 +45,6 @@ export const Component = (props: IComponentProps) => {
           form={props.form}
           className={props.className}
           editable={true}
-          value={
-            typeof props.field.value === "string"
-              ? JSON.parse(props.field.value)
-              : props.field.value
-          }
         />
       </FormControl>
     );

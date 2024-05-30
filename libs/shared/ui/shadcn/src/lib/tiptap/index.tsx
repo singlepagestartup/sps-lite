@@ -1,23 +1,39 @@
 "use client";
 
 import { cn } from "@sps/shared-frontend-utils-client";
-import { useEditor, EditorContent, BubbleMenu } from "@tiptap/react";
+import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { forwardRef } from "react";
-import { UseFormReturn } from "react-hook-form";
+import { ChangeEventHandler, forwardRef, useCallback } from "react";
+import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
 import { Toggle } from "../toggle";
-import { Bold, Italic, Strikethrough } from "lucide-react";
+import Link from "@tiptap/extension-link";
+import {
+  Bold,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  Italic,
+  Link2Icon,
+  Link2Off,
+  Strikethrough,
+} from "lucide-react";
+import { Input } from "../input";
 
 export type ITipTapEditableProps = {
-  value: JSON;
+  value: string;
   form: UseFormReturn<any>;
   placeholder?: string;
   className?: string;
   editable: boolean;
+  field: ControllerRenderProps<any, string>;
+  onChange?: ChangeEventHandler<any>;
 };
 
 export type ITipTapContentProps = {
-  value: JSON;
+  value: string;
   className?: string;
 };
 
@@ -28,7 +44,13 @@ export const TipTapEditable = forwardRef<
   ITipTapEditableProps
 >((props: ITipTapEditableProps, ref) => {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+      }),
+    ],
     content: props.value,
     editorProps: {
       attributes: {
@@ -44,18 +66,128 @@ export const TipTapEditable = forwardRef<
     },
   });
 
+  const setLink = useCallback(() => {
+    if (!editor) {
+      return;
+    }
+
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt("URL", previousUrl);
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+      return;
+    }
+
+    // update link
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+  }, [editor]);
+
   if (!editor) {
     return null;
   }
 
   return (
-    <div className="relative">
-      {editor && (
-        <BubbleMenu
-          editor={editor}
-          tippyOptions={{ duration: 100 }}
-          className="p-2 bg-white rounded-lg flex gap-3"
-        >
+    <div className="relative flex flex-col gap-1">
+      {editor ? (
+        <div className="rounded-lg bg-white flex gap-1 max-w-full">
+          <Toggle
+            aria-label="Toggle Heading 1"
+            data-state={editor.isActive("heading", { level: 1 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 1 }).run();
+              }}
+            >
+              <Heading1 className="h-4 w-4" />
+            </button>
+          </Toggle>
+          <Toggle
+            aria-label="Toggle heading 2"
+            data-state={editor.isActive("heading", { level: 2 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 2 }).run();
+              }}
+            >
+              <Heading2 className="h-4 w-4" />
+            </button>
+          </Toggle>
+          <Toggle
+            aria-label="Toggle heading 3"
+            data-state={editor.isActive("heading", { level: 3 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 3 }).run();
+              }}
+            >
+              <Heading3 className="h-4 w-4" />
+            </button>
+          </Toggle>
+          <Toggle
+            aria-label="Toggle heading 4"
+            data-state={editor.isActive("heading", { level: 4 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 4 }).run();
+              }}
+            >
+              <Heading4 className="h-4 w-4" />
+            </button>
+          </Toggle>
+          <Toggle
+            aria-label="Toggle heading 5"
+            data-state={editor.isActive("heading", { level: 5 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 5 }).run();
+              }}
+            >
+              <Heading5 className="h-4 w-4" />
+            </button>
+          </Toggle>
+          <Toggle
+            aria-label="Toggle heading 6"
+            data-state={editor.isActive("heading", { level: 6 }) ? "on" : "off"}
+            asChild={true}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                editor.chain().focus().toggleHeading({ level: 6 }).run();
+              }}
+            >
+              <Heading6 className="h-4 w-4" />
+            </button>
+          </Toggle>
           <Toggle
             aria-label="Toggle bold"
             data-state={editor.isActive("bold") ? "on" : "off"}
@@ -101,8 +233,42 @@ export const TipTapEditable = forwardRef<
               <Strikethrough className="h-4 w-4" />
             </button>
           </Toggle>
-        </BubbleMenu>
-      )}
+
+          {editor.isActive("link") ? (
+            <Toggle
+              aria-label="Toggle strike"
+              data-state={editor.isActive("strike") ? "on" : "off"}
+              asChild={true}
+            >
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  editor.chain().focus().unsetLink().run();
+                }}
+              >
+                <Link2Off className="h-4 w-4" />
+              </button>
+            </Toggle>
+          ) : (
+            <Toggle
+              aria-label="Toggle strike"
+              data-state={editor.isActive("strike") ? "on" : "off"}
+              asChild={true}
+            >
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  setLink();
+                }}
+              >
+                <Link2Icon className="h-4 w-4" />
+              </button>
+            </Toggle>
+          )}
+        </div>
+      ) : null}
       <EditorContent editor={editor} />
     </div>
   );
@@ -111,7 +277,7 @@ export const TipTapEditable = forwardRef<
 export const TipTapContent = forwardRef<HTMLDivElement, ITipTapContentProps>(
   (props: ITipTapContentProps, ref) => {
     const editor = useEditor({
-      extensions: [StarterKit],
+      extensions: [StarterKit, Link],
       content: props.value,
       editorProps: {
         attributes: {
@@ -132,9 +298,63 @@ export const TipTapContent = forwardRef<HTMLDivElement, ITipTapContentProps>(
 export const TipTap = forwardRef<HTMLInputElement, ITipTapProps>(
   (props: ITipTapProps, ref) => {
     if ("editable" in props) {
-      return <TipTapEditable {...props} ref={ref} />;
+      try {
+        typeof props.value === "string" && props.value !== ""
+          ? JSON.parse(props.value)
+          : props.value;
+      } catch (error) {
+        console.log(
+          `TipTap editor was replaced by text input, because of error:`,
+          error,
+        );
+        return (
+          <Input
+            value={props.value}
+            onChange={props.onChange}
+            className={props.className}
+          />
+        );
+      }
+
+      return (
+        <TipTapEditable
+          {...props}
+          value={
+            typeof props.value === "string" && props.value !== ""
+              ? JSON.parse(props.value)
+              : props.value
+          }
+          ref={ref}
+        />
+      );
     }
 
-    return <TipTapContent {...props} ref={ref} />;
+    try {
+      typeof props.value === "string" && props.value !== ""
+        ? JSON.parse(props.value)
+        : props.value;
+    } catch (error) {
+      console.log(
+        `TipTap editor was replaced by text input, because of error:`,
+        error,
+      );
+      if (typeof props.value === "string") {
+        return <p>{props.value}</p>;
+      }
+
+      return null;
+    }
+
+    return (
+      <TipTapContent
+        {...props}
+        value={
+          typeof props.value === "string" && props.value !== ""
+            ? JSON.parse(props.value)
+            : props.value
+        }
+        ref={ref}
+      />
+    );
   },
 );
