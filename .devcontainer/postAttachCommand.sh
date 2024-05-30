@@ -22,15 +22,6 @@ then
     gh codespace ports visibility 3000:public -c $CODESPACE_NAME
 
     cd frontend
-    chmod +x ./up.sh
-    ./up.sh
-fi
-
-if [ "$terminal" == "backend" ];
-then
-    gh codespace ports visibility 1337:public -c $CODESPACE_NAME
-    
-    cd backend
-    chmod +x ./up.sh
-    ./up.sh
+    chmod +x ./create_env.sh
+    ./create_env.sh
 fi
