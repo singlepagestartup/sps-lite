@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { IComponentPropsExtended } from "./interface";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-file-storage"
       data-model="file"
       data-variant={props.variant}
-      className={`relative ${props.data.containerClassName || "w-full"}`}
+      className={cn("relative w-full", props.data.containerClassName)}
     >
       {props.data.file ? (
         <Image
