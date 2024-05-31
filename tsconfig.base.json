@@ -558,11 +558,35 @@
       "@sps/sps-migrator-plugin": [
         "tools/plugins/sps-migrator-plugin/src/index.ts"
       ],
+      "@sps/sps-rbac-backend-app": [
+        "libs/modules/sps-rbac/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-backend-models": [
+        "libs/modules/sps-rbac/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-backend-schema": [
+        "libs/modules/sps-rbac/backend/schema/root/src/index.ts"
+      ],
       "@sps/sps-rbac-frontend": [
         "libs/modules/sps-rbac/frontend/root/src/index.ts"
       ],
       "@sps/sps-rbac-frontend-components": [
         "libs/modules/sps-rbac/frontend/components/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-app": [
+        "libs/modules/sps-rbac/models/role/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-model": [
+        "libs/modules/sps-rbac/models/role/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-schema": [
+        "libs/modules/sps-rbac/models/role/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/role/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-schema-table": [
+        "libs/modules/sps-rbac/models/role/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-contracts": [
         "libs/modules/sps-rbac/models/role/contracts/root/src/index.ts"
