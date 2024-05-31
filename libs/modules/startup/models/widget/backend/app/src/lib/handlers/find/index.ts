@@ -11,6 +11,8 @@ export const handler = async (
   try {
     const data = await model.services.find({ params: c.var.parsedQuery });
 
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+
     return c.json({
       data,
     });

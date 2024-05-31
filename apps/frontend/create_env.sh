@@ -44,3 +44,9 @@ DATABASE_PORT=$(get_env POSTGRES_PORT ../db/.env)
 add_env "DATABASE_PORT" $DATABASE_PORT
 
 add_env "DATABASE_NO_SSL" true
+
+REDIS_PORT=$(get_env REDIS_PORT ../redis/.env)
+add_env "REDIS_PORT" $REDIS_PORT
+
+REDIS_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
+add_env "REDIS_PASSWORD" $REDIS_PASSWORD
