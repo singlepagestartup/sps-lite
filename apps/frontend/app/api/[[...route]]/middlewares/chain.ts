@@ -3,9 +3,7 @@ import { BlankSchema } from "hono/types";
 import { MiddlewaresGeneric, middlewares } from "@sps/shared-backend-api";
 import { logger } from "hono/logger";
 
-export function middlewaresChain(
-  app: Hono<MiddlewaresGeneric, BlankSchema, "/">,
-) {
+export function chain(app: Hono<MiddlewaresGeneric, BlankSchema, "/">) {
   app.use(middlewares.parseQuery());
   app.use(middlewares.logger());
   app.use(middlewares.parseBody());

@@ -5,12 +5,15 @@ import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-ap
 import { app as spsFileStorageApp } from "@sps/sps-file-storage-backend-app";
 import { app as spsRbacApp } from "@sps/sps-rbac-backend-app";
 import { app as startupApp } from "@sps/startup-backend-app";
-import { middlewaresChain } from "./middlewares";
+import { chain as middlewaresChain } from "./middlewares/chain";
+import { middlewares } from "./middlewares";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 const app = new Hono<MiddlewaresGeneric>().basePath("/api");
 
 middlewaresChain(app);
+
+app.on(["POST"], "*", middlewares.isAuthenticated());
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);

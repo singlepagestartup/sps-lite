@@ -597,11 +597,29 @@
       "@sps/sps-rbac-models-role-frontend-api-client": [
         "libs/modules/sps-rbac/models/role/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-rbac-models-role-frontend-api-model": [
+        "libs/modules/sps-rbac/models/role/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-rbac-models-role-frontend-api-server": [
         "libs/modules/sps-rbac/models/role/frontend/api/server/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-frontend-component": [
         "libs/modules/sps-rbac/models/role/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-rbac/models/role/frontend/component/variants/sps-lite/default/src/index.ts"

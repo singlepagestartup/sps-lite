@@ -62,7 +62,15 @@ export const util = async ({
 
   updateJson(tree, `${root}/tsconfig.lib.json`, (json) => {
     const compilerOptions = json.compilerOptions;
+    compilerOptions.composite = true;
     delete compilerOptions.outDir;
+
+    return json;
+  });
+
+  updateJson(tree, `${root}/tsconfig.spec.json`, (json) => {
+    const compilerOptions = json.compilerOptions || {};
+    compilerOptions.composite = true;
 
     return json;
   });
