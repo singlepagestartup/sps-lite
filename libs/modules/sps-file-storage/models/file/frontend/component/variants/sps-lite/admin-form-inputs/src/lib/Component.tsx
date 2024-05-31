@@ -25,11 +25,11 @@ export function Component(props: IComponentPropsExtended) {
         />
         <FormField
           ui="shadcn"
-          type="text"
-          label="Url"
-          name="url"
+          type="file"
+          label="File"
+          name="file"
           form={props.form}
-          placeholder="Type url"
+          placeholder="Select file"
         />
         <FormField
           ui="shadcn"

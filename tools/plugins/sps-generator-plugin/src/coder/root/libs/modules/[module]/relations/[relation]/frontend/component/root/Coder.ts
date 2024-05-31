@@ -15,7 +15,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: ComponentCoder; tree: Tree }) {
     this.name = "root";
@@ -23,10 +23,12 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/root`;
     this.tree = tree;
     this.parent = parent;
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
@@ -43,7 +45,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

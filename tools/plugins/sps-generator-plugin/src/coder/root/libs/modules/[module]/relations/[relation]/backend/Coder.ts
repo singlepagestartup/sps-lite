@@ -14,9 +14,13 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: {
-    schema?: SchemaCoder;
-    model?: ModelCoder;
-    app?: AppCoder;
+    schema: SchemaCoder;
+    model: ModelCoder;
+    app: AppCoder;
+  } = {} as {
+    schema: SchemaCoder;
+    model: ModelCoder;
+    app: AppCoder;
   };
 
   constructor({ tree, parent }: { tree: Tree; parent: RelationCoder }) {
@@ -26,32 +30,25 @@ export class Coder {
     this.baseName = `${parent.baseName}-backend`;
     this.baseDirectory = `${parent.baseDirectory}/backend`;
 
-    const schema = new SchemaCoder({
+    this.project.schema = new SchemaCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const model = new ModelCoder({
+    this.project.model = new ModelCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const app = new AppCoder({
+    this.project.app = new AppCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      schema,
-      model,
-      app,
-    };
   }
-
-  async init() {
-    await this.project.schema.init();
-    await this.project.model.init();
-    await this.project.app.init();
+  async update() {
+    await this.project.schema.update();
+    await this.project.model.update();
+    await this.project.app.update();
   }
 
   async create() {

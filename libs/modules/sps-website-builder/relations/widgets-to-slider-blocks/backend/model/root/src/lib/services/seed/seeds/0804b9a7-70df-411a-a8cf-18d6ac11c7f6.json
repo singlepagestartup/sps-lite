@@ -1,0 +1,26 @@
+{
+  "id": "0804b9a7-70df-411a-a8cf-18d6ac11c7f6",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "8b437405-67cf-4b48-9f96-e33994e6d5c4",
+  "sliderBlockId": "b18e98df-771b-4540-8e42-cb8f99f87645",
+  "widget": {
+    "title": "Slider Widget",
+    "id": "8b437405-67cf-4b48-9f96-e33994e6d5c4",
+    "createdAt": "2024-05-29T19:30:40.226Z",
+    "updatedAt": "2024-05-29T19:30:40.226Z",
+    "variant": "default"
+  },
+  "sliderBlock": {
+    "id": "b18e98df-771b-4540-8e42-cb8f99f87645",
+    "title": "Main Page Slider Block",
+    "subtitle": "",
+    "description": "",
+    "anchor": "",
+    "className": "",
+    "createdAt": "2024-05-29T19:30:27.797Z",
+    "updatedAt": "2024-05-29T19:30:27.797Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "7a49e876-94e9-4992-a739-cf16cc89af81",
+  "createdAt": "2024-05-29T19:32:15.640Z",
+  "updatedAt": "2024-05-29T19:32:15.640Z",
+  "variant": "default",
+  "title": "Slide #2",
+  "subtitle": "",
+  "description": "",
+  "className": "",
+  "slidesToSpsFileStorageWidgets": [
+    {
+      "id": "a92e1fa9-d2d7-476a-ade6-304d9be5f424",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "slideId": "7a49e876-94e9-4992-a739-cf16cc89af81",
+      "spsFileStorageWidgetId": "67b61998-3d6e-4ac8-b3d5-462d271f3426"
+    }
+  ],
+  "slidersToSlides": [
+    {
+      "id": "d30aca37-17b6-4de9-a09d-8bb4695ac0bf",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "sliderId": "c671d0fd-0ae7-4db6-afa8-d59424d6ddcc",
+      "slideId": "7a49e876-94e9-4992-a739-cf16cc89af81"
+    }
+  ]
+}

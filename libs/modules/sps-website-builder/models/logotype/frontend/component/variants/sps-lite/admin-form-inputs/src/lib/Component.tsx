@@ -1,7 +1,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-logotype-contracts";
+import { Component as LogotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -37,6 +38,28 @@ export function Component(props: IComponentPropsExtended) {
           form={props.form}
           placeholder="Type class name"
         />
+        <ModelEntitiesListCard title="logotypes-to-sps-file-storage-modules-widgets">
+          <div className="flex flex-col gap-6">
+            {props.data?.logotypesToSpsFileStorageWidgets.map(
+              (entity, index) => {
+                return (
+                  <LogotypesToSpsFileStorageWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    variant="select-right"
+                    data={entity}
+                  />
+                );
+              },
+            )}
+            <LogotypesToSpsFileStorageWidgets
+              isServer={props.isServer}
+              variant="select-right"
+              logotypeId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

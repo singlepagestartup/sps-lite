@@ -4,6 +4,8 @@ import { Coder as BackendCoder } from "./backend/Coder";
 import { Coder as ContractsCoder } from "./contracts/Coder";
 import { Coder as FrontendCoder } from "./frontend/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
+import { Coder as ModelCoder } from "../../models/Coder";
+import pluralize from "pluralize";
 
 /**
  * Relation Coder
@@ -19,51 +21,74 @@ export class Coder {
     backend: BackendCoder;
     contracts: ContractsCoder;
     frontend: FrontendCoder;
+  } = {} as {
+    backend: BackendCoder;
+    contracts: ContractsCoder;
+    frontend: FrontendCoder;
   };
 
-  constructor(props: { tree: Tree; parent: RelationsCoder }) {
+  constructor(props: { tree: Tree; parent: RelationsCoder; name?: string }) {
     const { tree, parent } = props;
     this.tree = tree;
     this.parent = parent;
 
-    const leftModel =
-      this.parent.parent.project.models[1].project.model.nameStyles;
-    const rightModel =
-      this.parent.parent.project.models[2].project.model.nameStyles;
+    if (!props.name) {
+      const leftModel =
+        this.parent.parent.project.models[0].project.model.nameStyles;
+      const rightModel =
+        this.parent.parent.project.models[1].project.model.nameStyles;
 
-    this.name = `${leftModel.kebabCased.pluralized}-to-${rightModel.kebabCased.pluralized}`;
+      this.name = `${leftModel.kebabCased.pluralized}-to-${rightModel.kebabCased.pluralized}`;
+    } else {
+      this.name = props.name;
+      const modelNamesPluralized = this.name.split("-to-");
+
+      const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
+        return pluralize.singular(modelName);
+      });
+
+      const leftProject = new ModelCoder({
+        tree: this.tree,
+        parent: this.parent.parent,
+        name: unpluralizedModelNames[0],
+      });
+
+      this.parent.parent.project.models.push(leftProject);
+
+      const rightProject = new ModelCoder({
+        tree: this.tree,
+        parent: this.parent.parent,
+        name: unpluralizedModelNames[1],
+      });
+
+      this.parent.parent.project.models.push(rightProject);
+    }
 
     this.nameStyles = getNameStyles({ name: this.name });
 
     this.baseName = `${parent.baseName}-${this.name}`;
     this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
 
-    const backend = new BackendCoder({
+    this.project.backend = new BackendCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const contracts = new ContractsCoder({
+    this.project.contracts = new ContractsCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const frontend = new FrontendCoder({
+    this.project.frontend = new FrontendCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      backend,
-      contracts,
-      frontend,
-    };
   }
 
-  async init() {
-    await this.project.contracts.init();
-    await this.project.backend.init();
-    await this.project.frontend.init();
+  async update() {
+    await this.project.contracts.update();
+    await this.project.backend.update();
+    await this.project.frontend.update();
   }
 
   async create() {

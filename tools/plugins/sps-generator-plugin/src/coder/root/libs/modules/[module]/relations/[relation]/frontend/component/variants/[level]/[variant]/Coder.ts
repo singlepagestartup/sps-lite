@@ -28,7 +28,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   moduleName: string;
   relationName: string;
   importVariant: ImportVariant;
@@ -106,20 +106,22 @@ export class Coder {
       level,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelName =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .name;
     const rightModel =
-      this.parent.parent.parent.parent.parent.project.models[2];
+      this.parent.parent.parent.parent.parent.project.models[1];
     const rightModelName = rightModel.project.model.name;
 
     const rightModelRootFrontendComponentImportPath =
@@ -164,7 +166,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

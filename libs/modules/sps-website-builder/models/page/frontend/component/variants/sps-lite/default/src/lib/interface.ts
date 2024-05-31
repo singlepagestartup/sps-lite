@@ -11,12 +11,9 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  params: {
-    locale: string | string[];
-    url?: string | string[];
-    [key: string]: any;
-  };
+  url?: string[];
   searchParams?: { [key: string]: any };
+  query?: { [key: string]: any };
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

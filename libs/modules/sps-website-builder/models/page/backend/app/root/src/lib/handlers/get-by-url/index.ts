@@ -1,11 +1,12 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-models-page-backend-model";
-import { Context, Env } from "hono";
+import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { services } from "../../services";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, string, BlankInput>,
+  c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
   let query = c.req.query("url");

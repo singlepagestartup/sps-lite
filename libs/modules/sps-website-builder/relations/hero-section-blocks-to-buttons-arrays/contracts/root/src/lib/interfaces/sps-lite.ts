@@ -3,8 +3,8 @@ export const variants = ["default"] as const;
 export interface IRelation {
   id: string;
   variant: (typeof variants)[number];
-  direction: "default" | "reverse";
+  className?: string;
+  orderIndex: number;
   heroSectionBlockId: string;
-
   buttonsArrayId: string;
 }

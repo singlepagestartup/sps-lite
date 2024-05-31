@@ -27,7 +27,7 @@ export function Component(props: IComponentPropsExtended) {
             }
           }
 
-          return [entity.id, entity.id];
+          return [entity.id, entity.title || entity.id];
         })}
       />
     </div>

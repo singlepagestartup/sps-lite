@@ -10,7 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="feature"
       data-variant={props.variant}
-      className={`${props.className || ""}`}
+      className={`w-full ${props.className || ""}`}
     >
       <FormField
         ui="shadcn"
@@ -27,7 +27,7 @@ export function Component(props: IComponentPropsExtended) {
             }
           }
 
-          return [entity.id, entity.id];
+          return [entity.id, entity.title || entity.id];
         })}
       />
     </div>

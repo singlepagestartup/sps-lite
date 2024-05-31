@@ -12,18 +12,16 @@
     "ghcr.io/devcontainers-contrib/features/prettier:1": {},
     // That type of docker not allows to connect to localhost from devcontainer
     // "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/prulloac/devcontainer-features/bun:1.1.2": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers-contrib/features/ansible:2": {}
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [1337, 3000, 8080],
+  "forwardPorts": [3000, 8080],
 
   "portsAttributes": {
-    "1337": {
-      "label": "backend"
-    },
     "3000": {
       "label": "frontend"
     },
@@ -36,8 +34,7 @@
   "postCreateCommand": "",
   "postAttachCommand": {
     "db": "/bin/bash ./.devcontainer/postAttachCommand.sh db",
-    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend && cd frontend",
-    "backend": "/bin/bash ./.devcontainer/postAttachCommand.sh backend && cd backend"
+    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend && cd frontend"
   },
 
   // Configure tool-specific properties.
@@ -58,8 +55,8 @@
         "ms-playwright.playwright",
         "bradlc.vscode-tailwindcss",
         "redhat.vscode-yaml",
-        "bierner.jsdoc-markdown-highlighting",
-        "alexkrechik.cucumberautocomplete"
+        "nrwl.angular-console",
+        "firsttris.vscode-jest-runner"
       ]
     }
   }

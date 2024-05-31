@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { IModel } from "@sps/sps-website-builder-models-navbar-block-contracts";
 import { IModel as IModelExtended } from "@sps/sps-website-builder-models-navbar-block-contracts-extended";
 
@@ -15,4 +16,5 @@ export interface IComponentProps extends IComponentBase {
 
 export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
+  children?: ReactNode;
 }

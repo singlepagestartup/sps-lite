@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import Link from "next/link";
-import { Component as WidgetsToLogotypesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-logotypes-frontend-component-variants-sps-lite-reverse";
+import { Component as LogotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -12,32 +12,28 @@ export function Component(props: IComponentPropsExtended) {
     >
       {props.data.url ? (
         <Link href={props.data.url}>
-          {props.data.widgetsToLogotypes
-            .filter((entity) => entity.direction === "reverse")
-            .map((entity, index) => {
-              return (
-                <WidgetsToLogotypesSpsLiteReverse
-                  key={index}
-                  isServer={props.isServer}
-                  variant="reverse"
-                  data={entity}
-                />
-              );
-            })}
-        </Link>
-      ) : (
-        props.data.widgetsToLogotypes
-          .filter((entity) => entity.direction === "reverse")
-          .map((entity, index) => {
+          {props.data.logotypesToSpsFileStorageWidgets.map((entity, index) => {
             return (
-              <WidgetsToLogotypesSpsLiteReverse
+              <LogotypesToSpsFileStorageWidgets
                 key={index}
                 isServer={props.isServer}
-                variant="reverse"
+                variant="default"
                 data={entity}
               />
             );
-          })
+          })}
+        </Link>
+      ) : (
+        props.data.logotypesToSpsFileStorageWidgets.map((entity, index) => {
+          return (
+            <LogotypesToSpsFileStorageWidgets
+              key={index}
+              isServer={props.isServer}
+              variant="default"
+              data={entity}
+            />
+          );
+        })
       )}
     </div>
   );

@@ -81,9 +81,9 @@ export function Component(props: IComponentPropsExtended) {
           }}
           data={props.data}
         >
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-0.5 overflow-hidden">
             <p className="text-xs text-muted-foreground">Variant</p>
-            <p>{props.data.variant}</p>
+            <p className="truncate">{props.data.variant}</p>
           </div>
           <div className="flex flex-col col-span-3 gap-0.5">
             <AdminSelectInput

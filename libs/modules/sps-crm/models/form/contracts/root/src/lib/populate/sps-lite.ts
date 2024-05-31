@@ -1,3 +1,1 @@
-export const populate = {
-  id: true,
-};
+export const populate = {};

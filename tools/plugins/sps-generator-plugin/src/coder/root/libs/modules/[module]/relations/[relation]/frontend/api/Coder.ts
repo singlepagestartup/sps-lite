@@ -14,6 +14,10 @@ export class Coder {
     client: ClientCoder;
     server: ServerCoder;
     model: ModelCoder;
+  } = {} as {
+    client: ClientCoder;
+    server: ServerCoder;
+    model: ModelCoder;
   };
 
   constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
@@ -23,32 +27,26 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    const model = new ModelCoder({
+    this.project.model = new ModelCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const client = new ClientCoder({
+    this.project.client = new ClientCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const server = new ServerCoder({
+    this.project.server = new ServerCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      model,
-      client,
-      server,
-    };
   }
 
-  async init() {
-    await this.project.model.init();
-    await this.project.client.init();
-    await this.project.server.init();
+  async update() {
+    await this.project.model.update();
+    await this.project.client.update();
+    await this.project.server.update();
   }
 
   async create() {

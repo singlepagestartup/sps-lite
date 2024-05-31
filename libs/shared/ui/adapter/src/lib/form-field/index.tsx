@@ -11,9 +11,9 @@ export function Component(props: IComponentProps) {
       name={props.name}
       render={({ field }) => {
         return (
-          <FormItem>
+          <FormItem className={props.className}>
             {props.label ? <FormLabel>{props.label}</FormLabel> : null}
-            <Input field={field} {...props} />
+            <Input field={field} {...props} className={props.inputClassName} />
             <FormMessage />
           </FormItem>
         );

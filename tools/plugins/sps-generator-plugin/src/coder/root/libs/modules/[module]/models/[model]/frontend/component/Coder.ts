@@ -32,8 +32,9 @@ export class Coder {
     };
   }
 
-  async init() {
-    await this.project.root.init();
+  async update() {
+    await this.project.root.update();
+    await this.project.variant?.update();
   }
 
   async create() {

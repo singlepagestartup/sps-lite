@@ -1,6 +1,15 @@
 import { and, eq } from "drizzle-orm";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 
+/**
+ * {
+ *  "filters": [{
+ *     "column": "title",
+ *     "eq": "asc"
+ *     "value": "Hello" | 1 | undefined | true | ["Hello","world","!"] | 2,30
+ *   }
+ * }]
+ */
 export function parseQueryFilters({
   queryFilters,
   Table,
@@ -32,6 +41,7 @@ export function parseQueryFilters({
       .map((filterValue: { [key: string]: string }) => {
         const filterKey = Object.keys(filterValue)[0];
         const filterValueValue = filterValue[filterKey];
+        console.log(`🚀 ~ .map ~ filterKey:`, filterKey);
         console.log(`🚀 ~ .map ~ filterValueValue:`, filterValueValue);
 
         return eq(Table[filterKey], filterValueValue);

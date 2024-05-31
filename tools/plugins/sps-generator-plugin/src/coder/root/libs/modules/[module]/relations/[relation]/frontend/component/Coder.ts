@@ -12,6 +12,9 @@ export class Coder {
   project: {
     root: RootCoder;
     variant?: VariantCoder;
+  } = {} as {
+    root: RootCoder;
+    variant?: VariantCoder;
   };
 
   constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
@@ -21,19 +24,15 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    const root = new RootCoder({
+    this.project.root = new RootCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      root,
-      variant: undefined,
-    };
   }
 
-  async init() {
-    await this.project.root.init();
+  async update() {
+    await this.project.root.update();
+    await this.project.variant.update();
   }
 
   async create() {

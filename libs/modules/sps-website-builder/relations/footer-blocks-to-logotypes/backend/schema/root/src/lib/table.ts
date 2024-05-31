@@ -14,7 +14,9 @@ const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
 export const Table = pgTable(table, {
   id: pgCore.uuid("id").primaryKey().defaultRandom(),
-  direction: pgCore.text("direction").notNull().default("default"),
+  variant: pgCore.text("variant").notNull().default("default"),
+  orderIndex: pgCore.integer("order_index").notNull().default(0),
+  className: pgCore.text("class_name"),
   footerBlockId: pgCore
     .uuid("fk_id")
     .notNull()

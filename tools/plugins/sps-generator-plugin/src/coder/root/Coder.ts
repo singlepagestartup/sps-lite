@@ -14,102 +14,68 @@ export class Coder {
   name: string;
   project: {
     libs: LibsCoder;
+  } = {} as {
+    libs: LibsCoder;
   };
 
-  constructor({ tree }: { tree: Tree }) {
+  constructor(props: {
+    tree: Tree;
+    moduleName: string;
+    models?: { name: string; isExternal?: boolean }[];
+    relations?: {
+      name?: string;
+    }[];
+  }) {
     this.name = "root";
-    this.tree = tree;
+    this.tree = props.tree;
     this.baseName = "@sps";
     this.baseDirectory = "";
 
-    const libs = new LibsCoder({
+    this.project.libs = new LibsCoder({
       tree: this.tree,
       parent: this,
-    });
-
-    this.project = {
-      libs,
-    };
-  }
-
-  async createModule({ moduleName }: { moduleName: string }) {
-    await this.project.libs.createModule({
-      moduleName,
+      moduleName: props.moduleName,
+      models: props.models,
+      relations: props.relations,
     });
   }
 
-  async removeModule({ moduleName }: { moduleName: string }) {
-    await this.project.libs.removeModule({
-      moduleName,
-    });
-  }
-  async createModel({
-    modelName,
-    moduleName,
-  }: {
-    modelName: string;
-    moduleName: string;
-  }) {
-    await this.project.libs.createModel({
-      modelName,
-      moduleName,
-    });
+  async update() {
+    await this.project.libs.update();
   }
 
-  async removeModel({
-    modelName,
-    moduleName,
-  }: {
-    modelName: string;
-    moduleName: string;
-  }) {
-    await this.project.libs.removeModel({
-      modelName,
-      moduleName,
-    });
+  async createModule() {
+    await this.project.libs.createModule();
   }
 
-  async addField(
-    props: IEditFieldProps & {
-      modelName: string;
-      moduleName: string;
-    },
-  ) {
+  async removeModule() {
+    await this.project.libs.removeModule();
+  }
+  async createModel() {
+    await this.project.libs.createModel();
+  }
+
+  async removeModel() {
+    await this.project.libs.removeModel();
+  }
+
+  async addField(props: IEditFieldProps) {
     await this.project.libs.addField(props);
   }
 
-  async removeField(
-    props: IEditFieldProps & {
-      modelName: string;
-      moduleName: string;
-    },
-  ) {
+  async removeField(props: IEditFieldProps) {
     await this.project.libs.removeField(props);
   }
 
-  async createRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    await this.project.libs.createRelations(props);
+  async createRelations() {
+    await this.project.libs.createRelations();
   }
 
-  async removeRelations(props: {
-    moduleName: string;
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    await this.project.libs.removeRelations(props);
+  async removeRelations() {
+    await this.project.libs.removeRelations();
   }
 
   async removeBackendVariant(props: {
-    entityName: string;
-    moduleName: string;
     variantLevel: string;
     variantName: string;
   }) {
@@ -119,8 +85,6 @@ export class Coder {
   }
 
   async createBackendVariant(props: {
-    entityName: string;
-    moduleName: string;
     variantLevel: string;
     variantName: string;
   }) {
@@ -132,8 +96,6 @@ export class Coder {
   async createModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    modelName: string;
     templateName?: string;
   }) {
     await this.project.libs.createModelFrontendComponentVariant(props);
@@ -144,8 +106,6 @@ export class Coder {
   async removeModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    modelName: string;
   }) {
     await this.project.libs.removeModelFrontendComponentVariant(props);
 
@@ -155,8 +115,6 @@ export class Coder {
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    relationName: string;
     templateName?: string;
   }) {
     await this.project.libs.createRelationFrontendComponentVariant(props);
@@ -167,8 +125,6 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    moduleName: string;
-    relationName: string;
   }) {
     await this.project.libs.removeRelationFrontendComponentVariant(props);
 

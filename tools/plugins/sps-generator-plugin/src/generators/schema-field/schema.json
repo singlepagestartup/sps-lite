@@ -21,6 +21,29 @@
         "index": 0
       }
     },
+    "action": {
+      "type": "string",
+      "description": "Action to perform",
+      "x-prompt": {
+        "message": "Create will create a new schema field and add it to contracts. Remove will remove a schema field and remove it from contracts.",
+        "type": "list",
+        "default": "create",
+        "items": [
+          {
+            "value": "create"
+          },
+          {
+            "value": "remove"
+          }
+        ]
+      }
+    },
+    "is_required": {
+      "type": "boolean",
+      "description": "Is the field required?",
+      "x-prompt": "Is the field required?",
+      "default": false
+    },
     "module": {
       "type": "string",
       "description": "Module",
@@ -98,5 +121,12 @@
       }
     }
   },
-  "required": ["module", "name", "model_name", "level", "pg_core_type"]
+  "required": [
+    "module",
+    "name",
+    "action",
+    "model_name",
+    "level",
+    "pg_core_type"
+  ]
 }

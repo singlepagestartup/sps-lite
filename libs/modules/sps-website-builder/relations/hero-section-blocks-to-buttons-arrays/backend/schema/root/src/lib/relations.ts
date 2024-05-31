@@ -17,8 +17,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  heroSectionBlock: true as const,
-
-  buttonsArray: true as const,
+export const populate = (params: any) => {
+  return {
+    heroSectionBlock: true,
+    buttonsArray: true,
+  } as const;
 };

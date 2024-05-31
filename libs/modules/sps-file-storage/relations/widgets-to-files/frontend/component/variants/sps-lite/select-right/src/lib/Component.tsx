@@ -88,7 +88,6 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="fileId"
-              renderField="url"
             />
           </div>
         </ModelEntityCard>
@@ -103,7 +102,6 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               variant="admin-select-input"
               formFieldName="fileId"
-              renderField="url"
             />
           </CardContent>
         </Card>

@@ -10,11 +10,13 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-select-input";
+import { variants } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-contracts";
 
 const formSchema = z.object({
   footerBlockId: z.string().min(1),
   logotypeId: z.string().min(1),
-  direction: z.enum(["default", "reverse"]).default("default"),
+  variant: z.enum(variants).default("default"),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -28,7 +30,8 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       footerBlockId: props.data?.footerBlockId || props.footerBlockId,
       logotypeId: props.data?.logotypeId,
-      direction: props.data?.direction || "default",
+      variant: props.data?.variant || "default",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -86,15 +89,21 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <FormField
               ui="shadcn"
-              type="select"
-              label="Direction"
-              name="direction"
+              type="number"
+              label="Order index"
+              name="orderIndex"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Enter order index"
+            />
+
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <AdminSelectInput
               isServer={false}
@@ -112,15 +121,20 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent className="flex flex-col gap-6">
             <FormField
               ui="shadcn"
-              type="select"
-              label="Direction"
-              name="direction"
+              type="number"
+              label="Order index"
+              name="orderIndex"
               form={form}
-              placeholder="Select direction of relation"
-              options={[
-                ["default", "Default"],
-                ["reverse", "Reverse"],
-              ]}
+              placeholder="Enter order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
             />
             <AdminSelectInput
               isServer={false}

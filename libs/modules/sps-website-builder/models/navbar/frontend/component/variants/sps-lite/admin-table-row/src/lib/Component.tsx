@@ -40,9 +40,9 @@ export function Component(props: IComponentPropsExtended) {
           <AdminForm isServer={false} variant="admin-form" data={props.data} />
         }
       >
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Variant</p>
-          <p>{props.data.variant}</p>
+          <p className="truncate">{props.data.variant}</p>
         </div>
       </ModelEntityCard>
     </div>

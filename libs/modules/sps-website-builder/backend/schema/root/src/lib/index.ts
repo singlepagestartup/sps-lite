@@ -1,4 +1,16 @@
 export {
+  Table as SPSWBSlidesToSpsFileStorageWidgets,
+  Relations as SPSWBSlidesToSpsFileStorageWidgetsRelations,
+} from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-schema";
+export {
+  Table as SPSWBHeroSectionBlocksToSpsFileStorageWidgets,
+  Relations as SPSWBHeroSectionBlocksToSpsFileStorageWidgetsRelations,
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-backend-schema";
+export {
+  Table as SPSWBLogotypesToSpsFileStorageWidgets,
+  Relations as SPSWBLogotypesToSpsFileStorageWidgetsRelations,
+} from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-schema";
+export {
   Table as SPSWBFooterBlocksToButtonsArrays,
   Relations as SPSWBFooterBlocksToButtonsArraysRelations,
 } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-schema";
@@ -22,14 +34,7 @@ export {
   Table as SPSWBFooterBlocksToLogotypes,
   Relations as SPSWBFooterBlocksToLogotypesRelations,
 } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema";
-export {
-  Table as SPSWBWidgetsToSlides,
-  Relations as SPSWBWidgetsToSlidesRelations,
-} from "@sps/sps-website-builder-relations-widgets-to-slides-backend-schema";
-export {
-  Table as SPSWBWidgetsToLogotypes,
-  Relations as SPSWBWidgetsToLogotypesRelations,
-} from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-schema";
+
 export {
   Table as SPSWBWidgetsToSpsFileStorageModuleWidgets,
   Relations as SPSWBWidgetsToSpsFileStorageModuleWidgetsRelations,
@@ -38,11 +43,6 @@ export {
   Table as SPSWBWidgetsToStartupModuleWidgets,
   Relations as SPSWBWidgetsToStartupModuleWidgetsRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-schema";
-
-export {
-  Table as SPSWBHeroSectionBlocksToFiles,
-  Relations as SPSWBHeroSectionBlocksToFilesRelations,
-} from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-schema";
 
 export {
   Table as SPSWBFSBTF,

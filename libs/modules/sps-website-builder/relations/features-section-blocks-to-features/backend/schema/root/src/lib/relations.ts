@@ -14,7 +14,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  featuresSectionBlock: true as const,
-  feature: true as const,
+export const populate = (params: any) => {
+  return {
+    featuresSectionBlock: true,
+    feature: true,
+  } as const;
 };

@@ -2,7 +2,11 @@ import {
   Table,
   modelName,
 } from "@sps/sps-website-builder-relations-pages-to-widgets-backend-schema";
-import { TableRelationsHelpers, asc } from "drizzle-orm";
+import { TableRelationsHelpers } from "drizzle-orm";
+import {
+  PopulateQueryBuilderProps,
+  queryBuilder,
+} from "@sps/shared-backend-api";
 
 export const relation = <TTableName extends string>(
   helpers: TableRelationsHelpers<TTableName>,
@@ -12,8 +16,6 @@ export const relation = <TTableName extends string>(
   };
 };
 
-export const populate = {
-  [modelName]: {
-    orderBy: [asc(Table.orderIndex)],
-  },
-};
+export const populate = (
+  params: PopulateQueryBuilderProps<typeof Table>["params"],
+) => queryBuilder.populate<typeof Table>(params, modelName);

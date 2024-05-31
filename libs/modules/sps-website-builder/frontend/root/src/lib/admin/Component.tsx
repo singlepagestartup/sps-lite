@@ -23,6 +23,7 @@ import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder-m
 import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table";
 import { Component as FeaturesSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as ButtonsArraySpsLiteAdminTable } from "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table";
+import { Component as FeaturesSpsLiteAdminTable } from "@sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-admin-table";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Component(props: IComponentProps) {
@@ -56,6 +57,7 @@ export function Component(props: IComponentProps) {
       },
       {
         name: "feature",
+        Comp: FeaturesSpsLiteAdminTable,
       },
       {
         name: "features-section-block",

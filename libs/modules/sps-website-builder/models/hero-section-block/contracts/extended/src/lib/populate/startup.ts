@@ -1,3 +1,3 @@
-import { populate as spsPopulate } from "./sps";
+import { populate as parentPopulate } from "./sps-lite";
 
-export const populate = spsPopulate;
+export const populate = { ...parentPopulate };

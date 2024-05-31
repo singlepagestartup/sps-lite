@@ -2,9 +2,10 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-model";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, `${string}/:uuid`, BlankInput>,
+  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");
@@ -15,7 +16,10 @@ export const handler = async (
     });
   }
 
-  const data = await model.services.findById({ id: uuid });
+  const data = await model.services.findById({
+    id: uuid,
+    params: c.var.parsedQuery,
+  });
 
   if (!data || !Object.keys(data).length) {
     return c.json(

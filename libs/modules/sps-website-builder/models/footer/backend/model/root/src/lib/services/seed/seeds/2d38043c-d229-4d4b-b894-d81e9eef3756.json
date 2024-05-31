@@ -1,0 +1,26 @@
+{
+  "id": "2d38043c-d229-4d4b-b894-d81e9eef3756",
+  "createdAt": "2024-05-25T20:00:24.176Z",
+  "updatedAt": "2024-05-25T20:00:24.176Z",
+  "variant": "default",
+  "footersToWidgets": [
+    {
+      "id": "83995457-88e4-4789-a7fb-bb18b7c41b59",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "footerId": "2d38043c-d229-4d4b-b894-d81e9eef3756",
+      "widgetId": "aba7b1cb-bc8b-4ea0-91e6-430cc2084d21"
+    }
+  ],
+  "layoutsToFooters": [
+    {
+      "id": "b9dc72cd-3ccf-4a25-a2cf-61090cec4a86",
+      "orderIndex": 0,
+      "variant": "default",
+      "className": null,
+      "layoutId": "eebf1572-b91e-4e3a-aab4-bc65cdcbbba5",
+      "footerId": "2d38043c-d229-4d4b-b894-d81e9eef3756"
+    }
+  ]
+}

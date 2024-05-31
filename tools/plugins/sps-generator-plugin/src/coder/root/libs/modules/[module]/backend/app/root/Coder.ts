@@ -26,6 +26,10 @@ export class Coder {
     this.moduleNameStyles = moduleNameStyles;
   }
 
+  async update() {
+    console.log("Update:", this.baseName);
+  }
+
   async create() {
     await createSpsTSLibrary({
       tree: this.tree,

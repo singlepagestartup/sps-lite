@@ -12,10 +12,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-form-inputs";
+import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 
 const formSchema = z.object({
   title: z.string(),
-  variant: z.string().min(1),
+  variant: z.enum(variants),
+  description: z.string().optional(),
+  className: z.string().optional(),
+  anchor: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,9 +33,16 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: props.data?.title || "",
-      variant: props.data?.variant || "",
+      variant: props.data?.variant || "default",
+      description: props.data?.description || "",
+      className: props.data?.className || "",
+      anchor: props.data?.anchor || "",
     },
   });
+
+  const watchData = form.watch();
+
+  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {

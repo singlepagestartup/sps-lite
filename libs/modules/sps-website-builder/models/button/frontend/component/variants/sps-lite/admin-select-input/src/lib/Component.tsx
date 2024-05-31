@@ -27,7 +27,10 @@ export function Component(props: IComponentPropsExtended) {
             }
           }
 
-          return [entity.id, entity.title || entity.id];
+          return [
+            entity.id,
+            `${entity.title || entity.id} | ${entity.variant}`,
+          ];
         })}
       />
     </div>

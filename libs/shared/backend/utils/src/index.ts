@@ -1,1 +1,1 @@
-export { getBackendData } from "./lib/index";
+export { getUniqueFileName } from "./lib/index";

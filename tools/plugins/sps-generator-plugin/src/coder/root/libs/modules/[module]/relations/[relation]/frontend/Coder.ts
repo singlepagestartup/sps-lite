@@ -14,6 +14,10 @@ export class Coder {
     component: ComponentCoder;
     api: ApiCoder;
     redux: ReduxCoder;
+  } = {} as {
+    component: ComponentCoder;
+    api: ApiCoder;
+    redux: ReduxCoder;
   };
 
   constructor({ parent, tree }: { parent: RelationCoder; tree: Tree }) {
@@ -23,32 +27,26 @@ export class Coder {
     this.tree = tree;
     this.parent = parent;
 
-    const component = new ComponentCoder({
+    this.project.component = new ComponentCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const api = new ApiCoder({
+    this.project.api = new ApiCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const redux = new ReduxCoder({
+    this.project.redux = new ReduxCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      component,
-      api,
-      redux,
-    };
   }
 
-  async init() {
-    await this.project.api.init();
-    await this.project.redux.init();
-    await this.project.component.init();
+  async update() {
+    await this.project.api.update();
+    await this.project.redux.update();
+    await this.project.component.update();
   }
 
   async create() {

@@ -9,11 +9,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-api-client";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
+import { variants } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
   heroSectionBlockId: z.string().min(1),
+  variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +31,9 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       heroSectionBlockId: props.data?.heroSectionBlockId,
       widgetId: props.data?.widgetId || props.widgetId,
+      className: props.data?.className || "",
+      orderIndex: props.data?.orderIndex || 0,
+      variant: props.data?.variant || "default",
     },
   });
 
@@ -65,10 +72,6 @@ export function Component(props: IComponentPropsExtended) {
     },
   });
 
-  // useEffect(() => {
-  //   console.log(`🚀 ~ w-t-hsb ~ watchData:`, watchData);
-  // }, [watchData]);
-
   return (
     <div
       data-module="sps-website-builder"
@@ -86,6 +89,31 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -100,7 +128,32 @@ export function Component(props: IComponentPropsExtended) {
           <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
             Select entity from hero-section-blocks
           </h3>
-          <CardContent>
+          <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type order index"
+            />
             <AdminSelectInput
               isServer={false}
               variant="admin-select-input"

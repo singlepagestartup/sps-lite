@@ -15,8 +15,11 @@ import { Component as NavbarBlockSpsLiteAdminFormInputs } from "@sps/sps-website
 import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
 
 const formSchema = z.object({
-  variant: z.enum(variants),
+  variant: z.enum(variants).default("default"),
   className: z.string().optional(),
+  title: z.string().optional(),
+  subtitle: z.string().optional(),
+  description: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -31,6 +34,9 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       className: props.data?.className || "",
+      title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      description: props.data?.description || "",
     },
   });
 

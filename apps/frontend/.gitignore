@@ -74,9 +74,5 @@ coverage
 ############################
 # Uploads
 ############################
-/public/sps-file-storage
-
-############################
-# Uploads
-############################
-/public/sps-file-storage
+/public/sps-file-storage/*
+!/public/sps-file-storage/.gitkeep

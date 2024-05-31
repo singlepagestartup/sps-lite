@@ -1,15 +1,15 @@
+import { model as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-model";
+import { model as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-backend-model";
+import { model as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-model";
 import { model as footerBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-model";
 import { model as buttonsArraysToButtons } from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-model";
 import { model as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-model";
 import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-model";
 import { model as buttonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-model";
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-model";
-import { model as widgetsToSlides } from "@sps/sps-website-builder-relations-widgets-to-slides-backend-model";
-import { model as widgetsToLogotypes } from "@sps/sps-website-builder-relations-widgets-to-logotypes-backend-model";
+
 import { model as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-model";
 import { model as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-model";
-
-import { model as heroSectionBlocksToFiles } from "@sps/sps-website-builder-relations-hero-section-blocks-to-files-backend-model";
 
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-model";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-backend-model";
@@ -44,18 +44,18 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  slidesToSpsFileStorageWidgets,
+  heroSectionBlocksToSpsFileStorageWidgets,
+  logotypesToSpsFileStorageWidgets,
   footerBlocksToButtonsArrays,
   buttonsArraysToButtons,
   heroSectionBlocksToButtonsArrays,
   navbarBlocksToButtonsArrays,
   buttonsArray,
   footerBlocksToLogotypes,
-  widgetsToSlides,
-  widgetsToLogotypes,
+
   widgetsToSpsFileStorageModuleWidgets,
   widgetsToStartupModuleWidgets,
-
-  heroSectionBlocksToFiles,
 
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,

@@ -12,6 +12,9 @@ export class Coder {
   project: {
     root: RootCoder;
     extended: ExtendedCoder;
+  } = {} as {
+    root: RootCoder;
+    extended: ExtendedCoder;
   };
 
   constructor({ parent, tree }: { parent: RelationCoder; tree: Tree }) {
@@ -21,25 +24,20 @@ export class Coder {
     this.baseDirectory = `${parent.baseDirectory}/contracts`;
     this.baseName = `${parent.baseName}-contracts`;
 
-    const root = new RootCoder({
+    this.project.root = new RootCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const extended = new ExtendedCoder({
+    this.project.extended = new ExtendedCoder({
       tree: this.tree,
       parent: this,
     });
-
-    this.project = {
-      root,
-      extended,
-    };
   }
 
-  async init() {
-    await this.project.root.init();
-    await this.project.extended.init();
+  async update() {
+    await this.project.root.update();
+    await this.project.extended.update();
   }
 
   async create() {

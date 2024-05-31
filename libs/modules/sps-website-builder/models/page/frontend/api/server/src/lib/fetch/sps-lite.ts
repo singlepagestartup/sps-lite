@@ -6,11 +6,10 @@ import {
   getFileUrl,
   transformResponseItem,
 } from "@sps/shared-utils";
-const R = require("ramda");
+import QueryString from "qs";
 
 export interface Params {
   url?: string | string[];
-  locale: string | string[];
 }
 
 const fetchOptions = {
@@ -20,7 +19,7 @@ const fetchOptions = {
   },
 };
 
-async function getByUrl({ url, locale }: Params) {
+async function getByUrl({ url }: Params) {
   const localUrl =
     typeof url === "string"
       ? url.startsWith("/")
@@ -92,15 +91,13 @@ function getFiltersFromUrl({
 async function getUrlModelId({
   url,
   modelName,
-  locale,
 }: {
   url: Params["url"];
   modelName: string;
-  locale: Params["locale"];
 }): Promise<string | undefined> {
-  const page = await getByUrl({ url, locale });
+  const page = await getByUrl({ url });
 
-  const filters = getFiltersFromUrl({ page, params: { url, locale } });
+  const filters = getFiltersFromUrl({ page, params: { url } });
 
   const targetFilter = filters.find(
     (filter) => filter[modelName] !== undefined,
@@ -112,11 +109,11 @@ async function getUrlModelId({
 }
 
 async function getPage(params: Params) {
-  const { url, locale } = params;
-  let targetPage = await getByUrl({ url, locale });
+  const { url } = params;
+  let targetPage = await getByUrl({ url });
 
   if (!targetPage) {
-    targetPage = await getByUrl({ url: "/404", locale });
+    targetPage = await getByUrl({ url: "/404" });
   }
 
   if (!targetPage) {
@@ -129,8 +126,17 @@ async function getPage(params: Params) {
     return;
   }
 
+  const stringifiedQuery = QueryString.stringify(
+    {
+      populate,
+    },
+    {
+      encodeValuesOnly: true,
+    },
+  );
+
   const request = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}`,
+    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}?${stringifiedQuery}`,
     fetchOptions,
   );
 

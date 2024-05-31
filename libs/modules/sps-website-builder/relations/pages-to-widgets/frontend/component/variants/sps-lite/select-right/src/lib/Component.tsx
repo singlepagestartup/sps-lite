@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 const formSchema = z.object({
   pageId: z.string().min(1),
   widgetId: z.string().min(1),
-  orderIndex: z.number().int(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -31,9 +31,6 @@ export function Component(props: IComponentPropsExtended) {
       widgetId: props.data?.widgetId,
     },
   });
-
-  const watchData = form.watch();
-  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!data.pageId || !data.widgetId) {
@@ -87,7 +84,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order Index"
               name="orderIndex"
               form={form}
@@ -110,7 +107,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent>
             <FormField
               ui="shadcn"
-              type="text"
+              type="number"
               label="Order Index"
               name="orderIndex"
               form={form}

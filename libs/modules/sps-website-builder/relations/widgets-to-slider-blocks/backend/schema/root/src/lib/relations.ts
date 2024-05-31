@@ -14,7 +14,9 @@ export const Relations = relations(Table, ({ one }) => ({
   }),
 }));
 
-export const populate = {
-  widget: true as const,
-  sliderBlock: true as const,
+export const populate = (params: any) => {
+  return {
+    widget: true,
+    sliderBlock: true,
+  } as const;
 };

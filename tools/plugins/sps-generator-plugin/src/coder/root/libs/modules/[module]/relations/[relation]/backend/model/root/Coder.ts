@@ -16,7 +16,6 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-
   libName: string;
   rootAppProject: ProjectConfiguration;
   rootSchemaProject: ProjectConfiguration;
@@ -27,7 +26,7 @@ export class Coder {
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   schemaModuleLibName: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
     this.name = "model";
@@ -56,17 +55,19 @@ export class Coder {
     this.exportModel = new ExportModel({
       asPropertyModelName,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
     const schemaModuleLibName = this.parent.project.schema.baseName;
 
-    const leftModel = this.parent.parent.parent.parent.project.models[1];
-    const rightModel = this.parent.parent.parent.parent.project.models[2];
+    const leftModel = this.parent.parent.parent.parent.project.models[0];
+    const rightModel = this.parent.parent.parent.parent.project.models[1];
 
     const leftModelIsExternal = leftModel.isExternal;
     const rightModelIsExternal = rightModel.isExternal;
@@ -100,6 +101,8 @@ export class Coder {
         schema_model_name: this.schemaModelName,
       },
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {

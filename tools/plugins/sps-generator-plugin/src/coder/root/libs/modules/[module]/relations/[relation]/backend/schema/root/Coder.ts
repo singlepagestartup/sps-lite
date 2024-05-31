@@ -17,8 +17,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
-
+  project?: ProjectConfiguration;
   libName: string;
   root: string;
   rootRelationsSchemaProject: ProjectConfiguration;
@@ -43,10 +42,10 @@ export class Coder {
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
     const leftModelName =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .project.backend.project.model.modelName;
     const rightModelName =
-      this.parent.parent.parent.parent.parent.project.models[2].project.model
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
         .project.backend.project.model.modelName;
 
     const relationName = this.parent.parent.parent.name;
@@ -94,24 +93,26 @@ export class Coder {
       moduleNamePascalCased: this.moduleNameStyles.pascalCased,
       relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
     const leftProjectSchemaTableImportPath =
-      this.parent.parent.parent.parent.parent.project.models[1].project.model
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
         .project.backend.project.schema.project.table.baseName;
     const rightProjectSchemaImportPath =
-      this.parent.parent.parent.parent.parent.project.models[2].project.model
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
         .project.backend.project.schema.project.table.baseName;
 
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[0].isExternal;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[2].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -143,6 +144,8 @@ export class Coder {
           this.relationNameStyles.propertyCased.base,
       },
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {

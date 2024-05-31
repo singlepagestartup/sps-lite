@@ -22,7 +22,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   importContracts: ImportContracts;
   exportNamedInterface: ExportNamedInterface;
 
@@ -49,24 +49,26 @@ export class Coder {
         name: relationName,
       }).pascalCased.base,
     });
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelName =
-      this.parent.parent.parent.parent.project.models[1].project.model.name;
+      this.parent.parent.parent.parent.project.models[0].project.model.name;
     const rightModelName =
-      this.parent.parent.parent.parent.project.models[2].project.model.name;
+      this.parent.parent.parent.parent.project.models[1].project.model.name;
 
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.project.models[0].isExternal;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.project.models[2].isExternal;
+      this.parent.parent.parent.parent.project.models[1].isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -85,7 +87,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

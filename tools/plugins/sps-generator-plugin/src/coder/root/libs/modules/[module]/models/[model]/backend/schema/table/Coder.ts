@@ -30,6 +30,7 @@ export interface IEditFieldProps {
     | "time"
     | "number";
   level: "sps-lite" | "startup";
+  isRequired: boolean;
 }
 
 export class Coder {
@@ -41,7 +42,7 @@ export class Coder {
   modelNameSnakeCased: string;
   moduleAndModelNamePascalCased: string;
   moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   tableName: string;
   modelNameStyles: ReturnType<typeof getNameStyles>;
 
@@ -70,10 +71,12 @@ export class Coder {
     } else {
       this.tableName = modelNameStyles.snakeCased.base;
     }
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
@@ -92,17 +95,18 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async addField(props: IEditFieldProps) {
-    const { level, name, pgCoreType } = props;
+    const { level, name, pgCoreType, isRequired } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
 
     const fieldToAdd = new Field({
       name,
       pgCoreType,
+      isRequired,
     });
 
     await replaceInFile({
@@ -111,24 +115,43 @@ export class Coder {
       regex: fieldToAdd.onCreate.regex,
       content: fieldToAdd.onCreate.content,
     });
+
+    await this.parent.parent.parent.project.contracts.project.root.addField({
+      name,
+      level,
+      isRequired,
+    });
   }
 
   async removeField(props: IEditFieldProps) {
-    const { level, name, pgCoreType } = props;
+    const { level, name, pgCoreType, isRequired } = props;
 
     const schemaFilePath = `${this.baseDirectory}/src/lib/fields/${level}.ts`;
+
+    await this.parent.parent.parent.project.contracts.project.root.removeField({
+      name,
+      level,
+      isRequired,
+    });
 
     const fieldToAdd = new Field({
       name,
       pgCoreType,
+      isRequired,
     });
 
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onRemove.regex,
-      content: fieldToAdd.onRemove.content,
-    });
+    try {
+      await replaceInFile({
+        tree: this.tree,
+        pathToFile: schemaFilePath,
+        regex: fieldToAdd.onRemove.regex,
+        content: fieldToAdd.onRemove.content,
+      });
+    } catch (error) {
+      if (!error.message.includes(`No expected value`)) {
+        throw error;
+      }
+    }
   }
 
   async createVariant(props: { variant: string; level: string }) {
@@ -181,15 +204,23 @@ export class Coder {
 }
 
 export class Field extends RegexCreator {
-  constructor({ name, pgCoreType }: { name: string; pgCoreType: string }) {
+  constructor({
+    name,
+    pgCoreType,
+    isRequired,
+  }: {
+    name: string;
+    pgCoreType: string;
+    isRequired: boolean;
+  }) {
     const place = `export const fields = {`;
     const placeRegex = new RegExp(`export const fields = {`);
 
     const fieldNameCamelCase = names(name).propertyName;
-    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}"),`;
+    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}")${isRequired ? ".notNull()" : ""},`;
 
     const contentRegex = new RegExp(
-      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\),`,
+      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\)${isRequired ? ".notNull\\(\\)" : ""},`,
     );
 
     super({

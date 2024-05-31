@@ -14,6 +14,10 @@ export class Coder {
     table: TableCoder;
     relations: RelationsCoder;
     root: RootCoder;
+  } = {} as {
+    table: TableCoder;
+    relations: RelationsCoder;
+    root: RootCoder;
   };
 
   constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
@@ -23,32 +27,26 @@ export class Coder {
     this.baseName = `${parent.baseName}-schema`;
     this.baseDirectory = `${parent.baseDirectory}/schema`;
 
-    const table = new TableCoder({
+    this.project.table = new TableCoder({
       parent: this,
       tree,
     });
 
-    const relations = new RelationsCoder({
+    this.project.relations = new RelationsCoder({
       parent: this,
       tree,
     });
 
-    const root = new RootCoder({
+    this.project.root = new RootCoder({
       parent: this,
       tree,
     });
-
-    this.project = {
-      table,
-      relations,
-      root,
-    };
   }
 
-  async init() {
-    await this.project.table.init();
-    await this.project.relations.init();
-    await this.project.root.init();
+  async update() {
+    await this.project.table.update();
+    await this.project.relations.update();
+    await this.project.root.update();
   }
 
   async create() {

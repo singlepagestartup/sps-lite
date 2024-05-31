@@ -19,50 +19,70 @@ export class Coder {
   tree: Tree;
   parent: ModuleCoder;
   project: {
-    models?: ModelsCoder[];
-    relations?: RelationsCoder[];
-    backend?: BackendCoder;
+    models: ModelsCoder[];
+    relations: RelationsCoder[];
+    backend: BackendCoder;
+  } = {
+    models: [],
+    relations: [],
+    backend: {} as BackendCoder,
   };
 
-  constructor({
-    tree,
-    name,
-    parent,
-  }: {
+  constructor(props: {
     tree: Tree;
     name: string;
     parent: ModuleCoder;
+    models?: {
+      name: string;
+      isExternal?: boolean;
+    }[];
+    relations?: {
+      name?: string;
+    }[];
   }) {
-    this.baseName = `${parent.baseName}/${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${name}`;
-    this.name = name;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}/${props.name}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/${props.name}`;
+    this.name = props.name;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
-    const backend = new BackendCoder({
+    this.project.backend = new BackendCoder({
       tree: this.tree,
       parent: this,
     });
 
-    const models = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
+    props.models?.forEach((model) => {
+      this.project.models.push(
+        new ModelsCoder({
+          tree: this.tree,
+          parent: this,
+          name: model.name,
+          isExternal: model.isExternal,
+        }),
+      );
     });
 
-    const relations = new RelationsCoder({
-      tree: this.tree,
-      parent: this,
+    props.relations?.forEach((relation) => {
+      this.project.relations.push(
+        new RelationsCoder({
+          tree: this.tree,
+          parent: this,
+          name: relation.name,
+        }),
+      );
     });
-
-    this.project = {
-      models: [models],
-      relations: [relations],
-      backend,
-    };
   }
 
-  async init() {
-    //
+  async update() {
+    for (const model of this.project.models) {
+      await model.update();
+    }
+
+    for (const relation of this.project.relations) {
+      await relation.update();
+    }
+
+    await this.project.backend.update();
   }
 
   async create() {
@@ -73,10 +93,8 @@ export class Coder {
     await this.project.backend.remove();
   }
 
-  async createModel({ modelName }: { modelName: string }) {
-    await this.project.models[0].createModel({
-      modelName,
-    });
+  async createModel() {
+    await this.project.models[0].createModel();
 
     await this.project.models[0].project.model.project.backend.project.schema.project.root.attach(
       {
@@ -95,9 +113,7 @@ export class Coder {
     );
   }
 
-  async removeModel({ modelName }: { modelName: string }) {
-    await this.project.models[0].init({ modelName });
-
+  async removeModel() {
     await this.project.models[0].project.model.project.backend.project.app.detach(
       {
         routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
@@ -116,51 +132,28 @@ export class Coder {
       },
     );
 
-    await this.project.models[0].removeModel({
-      modelName,
-    });
+    await this.project.models[0].removeModel();
   }
 
-  async addField(props: IEditFieldProps & { modelName: string }) {
+  async addField(props: IEditFieldProps) {
     await this.project.models[0].addField(props);
   }
 
-  async removeField(props: IEditFieldProps & { modelName: string }) {
-    await this.project.models[0].init(props);
-
+  async removeField(props: IEditFieldProps) {
     await this.project.models[0].removeField(props);
   }
 
-  async createRelations(props: {
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    const leftProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-      isExternal: props.leftModelIsExternal,
-    });
-    await leftProject.init({ modelName: props.leftModelName });
-    this.project.models.push(leftProject);
+  async createRelations() {
+    if (!this.project.relations.length) {
+      throw new Error("Relations are not defined");
+    }
 
-    const rightProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-      isExternal: props.rightModelIsExternal,
-    });
-    await rightProject.init({ modelName: props.rightModelName });
-
-    this.project.models.push(rightProject);
-
-    await this.project.relations[0].init();
     await this.project.relations[0].createRelations();
 
-    if (!props.leftModelIsExternal) {
-      await this.project.models[1].createRelation();
+    if (!this.project.models[0].isExternal) {
+      await this.project.models[0].createRelation();
       const leftModelContractsPath =
-        this.project.models[1].project.model.project.contracts.project.extended
+        this.project.models[0].project.model.project.contracts.project.extended
           .baseDirectory;
 
       const levelContractsPath = `${leftModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
@@ -170,14 +163,14 @@ export class Coder {
       );
     }
 
-    if (!props.rightModelIsExternal) {
+    if (!this.project.models[1].isExternal) {
       const rightModelContractsPath =
-        this.project.models[2].project.model.project.contracts.project.extended
+        this.project.models[1].project.model.project.contracts.project.extended
           .baseDirectory;
 
       const levelContractsPath = `${rightModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
 
-      await this.project.models[2].createRelation();
+      await this.project.models[1].createRelation();
       await this.project.relations[0].project.relation.project.contracts.project.root.attach(
         { levelContractsPath },
       );
@@ -200,33 +193,12 @@ export class Coder {
     );
   }
 
-  async removeRelations(props: {
-    leftModelName: string;
-    rightModelName: string;
-    leftModelIsExternal: boolean;
-    rightModelIsExternal: boolean;
-  }) {
-    const leftProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-    await leftProject.init({ modelName: props.leftModelName });
-    this.project.models.push(leftProject);
-
-    const rightProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-    await rightProject.init({ modelName: props.rightModelName });
-    this.project.models.push(rightProject);
-
-    await this.project.relations[0].init();
-
-    if (!props.rightModelIsExternal) {
-      await this.project.models[2].removeRelation();
+  async removeRelations() {
+    if (!this.project.models[1].isExternal) {
+      await this.project.models[1].removeRelation();
 
       const rightModelContractsPath =
-        this.project.models[2].project.model.project.contracts.project.extended
+        this.project.models[1].project.model.project.contracts.project.extended
           .baseDirectory;
 
       const levelContractsPath = `${rightModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
@@ -236,11 +208,11 @@ export class Coder {
       );
     }
 
-    if (!props.leftModelIsExternal) {
-      await this.project.models[1].removeRelation();
+    if (!this.project.models[0].isExternal) {
+      await this.project.models[0].removeRelation();
 
       const leftModelContractsPath =
-        this.project.models[1].project.model.project.contracts.project.extended
+        this.project.models[0].project.model.project.contracts.project.extended
           .baseDirectory;
 
       const levelContractsPath = `${leftModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
@@ -274,7 +246,6 @@ export class Coder {
   async createModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
     templateName?: string;
   }) {
     await this.project.models[0].createModelFrontendComponentVariant(props);
@@ -283,7 +254,6 @@ export class Coder {
   async removeModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    modelName: string;
   }) {
     await this.project.models[0].removeModelFrontendComponentVariant(props);
   }
@@ -291,94 +261,92 @@ export class Coder {
   async createBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    entityName: string;
   }) {
     await this.project.models[0].createBackendVariant({
       variantLevel: props.variantLevel,
       variantName: props.variantName,
-      modelName: props.entityName,
     });
   }
 
   async removeBackendVariant(props: {
     variantName: string;
     variantLevel: string;
-    entityName: string;
   }) {
     await this.project.models[0].removeBackendVariant({
       variantLevel: props.variantLevel,
       variantName: props.variantName,
-      modelName: props.entityName,
     });
   }
 
-  async setRelatedModels(relationName: string) {
-    const modelNamesPluralized = relationName.split("-to-");
+  // async setRelatedModels(relationName: string) {
+  //   const modelNamesPluralized = relationName.split("-to-");
 
-    const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
-      return pluralize.singular(modelName);
-    });
+  //   const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
+  //     return pluralize.singular(modelName);
+  //   });
 
-    // const projects = getProjects(this.tree);
-    // const projectWithPassedRelationNameAndSchema = [];
+  //   console.log(
+  //     `🚀 ~ unpluralizedModelNames ~ unpluralizedModelNames:`,
+  //     unpluralizedModelNames,
+  //   );
 
-    // projects.forEach((project) => {
-    //   if (
-    //     project.name.includes(relationName) &&
-    //     project.name.includes("schema")
-    //   ) {
-    //     projectWithPassedRelationNameAndSchema.push(project);
-    //   }
-    // });
+  //   // const projects = getProjects(this.tree);
+  //   // const projectWithPassedRelationNameAndSchema = [];
 
-    // const graph = readCachedProjectGraph();
-    // const dependenciesProjectNames = Object.keys(graph.dependencies);
-    // const relatedModels = [];
+  //   // projects.forEach((project) => {
+  //   //   if (
+  //   //     project.name.includes(relationName) &&
+  //   //     project.name.includes("schema")
+  //   //   ) {
+  //   //     projectWithPassedRelationNameAndSchema.push(project);
+  //   //   }
+  //   // });
 
-    // dependenciesProjectNames.forEach((dependencyProjectName) => {
-    //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
-    //     if (
-    //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
-    //     ) {
-    //       if (dependency.source.includes("models")) {
-    //         relatedModels.push(dependency.source);
-    //       }
-    //     }
-    //   });
-    // });
+  //   // const graph = readCachedProjectGraph();
+  //   // const dependenciesProjectNames = Object.keys(graph.dependencies);
+  //   // const relatedModels = [];
 
-    // /**
-    //  * ! May be in wrong order! Here is just for fixing init problem
-    //  * Need to be checked by relation schema
-    //  */
-    // const modelNames = relatedModels.map((model) => {
-    //   return model.split("models-")[1].split("-backend")[0];
-    // });
+  //   // dependenciesProjectNames.forEach((dependencyProjectName) => {
+  //   //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
+  //   //     if (
+  //   //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
+  //   //     ) {
+  //   //       if (dependency.source.includes("models")) {
+  //   //         relatedModels.push(dependency.source);
+  //   //       }
+  //   //     }
+  //   //   });
+  //   // });
 
-    const leftProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-    await leftProject.init({ modelName: unpluralizedModelNames[0] });
-    this.project.models.push(leftProject);
+  //   // /**
+  //   //  * ! May be in wrong order! Here is just for fixing init problem
+  //   //  * Need to be checked by relation schema
+  //   //  */
+  //   // const modelNames = relatedModels.map((model) => {
+  //   //   return model.split("models-")[1].split("-backend")[0];
+  //   // });
 
-    const rightProject = new ModelsCoder({
-      tree: this.tree,
-      parent: this,
-    });
-    await rightProject.init({ modelName: unpluralizedModelNames[1] });
+  //   const leftProject = new ModelsCoder({
+  //     tree: this.tree,
+  //     parent: this,
+  //     name: unpluralizedModelNames[0],
+  //   });
+  //   this.project.models.push(leftProject);
 
-    this.project.models.push(rightProject);
-  }
+  //   const rightProject = new ModelsCoder({
+  //     tree: this.tree,
+  //     parent: this,
+  //     name: unpluralizedModelNames[1],
+  //   });
+
+  //   this.project.models.push(rightProject);
+  // }
 
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
     templateName?: string;
   }) {
-    await this.setRelatedModels(props.relationName);
-
     await this.project.relations[0].createRelationFrontendComponentVariant(
       props,
     );
@@ -387,10 +355,7 @@ export class Coder {
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
-    relationName: string;
   }) {
-    await this.setRelatedModels(props.relationName);
-
     await this.project.relations[0].removeRelationFrontendComponentVariant(
       props,
     );

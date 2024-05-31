@@ -1,71 +1,19 @@
-import * as R from "ramda";
-
-export function appendFilesToFormData(formData: any, files: any) {
-  if (Object.keys(files).length) {
-    for (const key of Object.keys(files)) {
-      if (Array.isArray(files[key])) {
-        for (const [_, file] of files[key].entries()) {
-          formData.append(`files.${key}`, file);
-        }
-      } else {
-        formData.append(`files.${key}`, files[key]);
-      }
-    }
-  }
-}
-
 export function prepareFormDataToSend(params: any) {
-  const { data, files } = params;
-
-  const passData = { ...data };
-  console.log(`🚀 ~ prepareFormDataToSend ~ passData:`, passData);
-  // delete passData.files;
-
-  // if (files) {
-  //   for (const key of Object.keys(files)) {
-  //     const delPath = key.replaceAll("[", ".")?.replaceAll("]", "")?.split(".");
-
-  //     const cleared = delByPath({ ...passData }, delPath);
-
-  //     passData = cleared;
-  //   }
-  // }
+  const { data } = params;
 
   const formData = new FormData();
-  formData.append("data", JSON.stringify(passData));
 
-  if (files) {
-    appendFilesToFormData(formData, files);
+  if (data) {
+    formData.append("data", JSON.stringify(data));
+
+    if (data) {
+      Object.entries(data).forEach(([key, value]) => {
+        if (value instanceof File) {
+          formData.append(key, value);
+        }
+      });
+    }
   }
 
   return formData;
-}
-
-function delByPath(obj: any, path: any[]): any {
-  if (path.length > 1) {
-    if (Array.isArray(obj)) {
-      const passArray: any[] = [];
-
-      for (const [index, el] of obj.entries()) {
-        if (`${index}` === path[0]) {
-          passArray.push(delByPath(obj[path[0]], R.drop(1, path)));
-
-          continue;
-        }
-
-        passArray.push(el);
-      }
-
-      return passArray;
-    } else {
-      return {
-        ...obj,
-        [path[0]]: delByPath(obj[path[0]], R.drop(1, path)),
-      };
-    }
-  }
-
-  obj[path[0]] = null;
-
-  return obj;
 }

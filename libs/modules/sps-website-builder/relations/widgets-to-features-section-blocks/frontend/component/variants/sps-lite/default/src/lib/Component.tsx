@@ -1,5 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder-models-features-section-block-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,13 +9,13 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="widgets-to-features-section-blocks"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full", props.data.className || "")}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">
-        Relation: widgets-to-features-section-blocks
-      </p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <FeaturesSectionBlock
+        isServer={props.isServer}
+        variant={props.data.featuresSectionBlock.variant}
+        data={props.data.featuresSectionBlock}
+      />
     </div>
   );
 }

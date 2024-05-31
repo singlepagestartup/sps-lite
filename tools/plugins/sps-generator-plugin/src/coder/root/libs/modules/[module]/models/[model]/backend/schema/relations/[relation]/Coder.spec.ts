@@ -7,20 +7,20 @@ import {
 
 describe("Coder", () => {
   describe(`ImportPopulate`, () => {
-    const leftProjectRelationNamePropertyCased = "pages";
+    const namePropertyCased = "pagesToLayouts";
     const libName =
-      "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";
+      "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 
     const exportRoute = new ImportPopulate({
-      leftProjectRelationNamePropertyCased,
+      namePropertyCased,
       libName,
     });
 
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { populate as layouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-layouts";
-      import { populate as pages }
+      const string = `import { populate as pagesToLayouts } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
+      import { populate as pagesToSlides }
       from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
@@ -29,7 +29,9 @@ describe("Coder", () => {
     it(`should match the regex 2`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { populate as layouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-layouts";
+      const string = `import {
+          populate as pagesToLayouts
+        } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
       import { populate as pages } from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
@@ -37,18 +39,20 @@ describe("Coder", () => {
   });
 
   describe(`ExportPopulate`, () => {
-    const leftProjectRelationNamePropertyCased = "pages";
+    const namePropertyCased = "pagesToLayouts";
 
     const exportRoute = new ExportPopulate({
-      leftProjectRelationNamePropertyCased,
+      namePropertyCased,
     });
 
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `export const populate = {
-        ...layouts,
-        ...pages,
+      const string = `export const populate = (params: any) => {
+        return {
+          pagesToWidgets: pagesToWidgets(params),
+          pagesToLayouts: pagesToLayouts(params),
+        } as const;
       };`;
 
       expect(string).toMatch(regex);
@@ -57,7 +61,9 @@ describe("Coder", () => {
     it(`should match the regex 2`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `export const populate = { ...layouts, ...pages };`;
+      const string = `export const populate = (params: any) => {
+        return { pagesToLayouts: pagesToLayouts(params)} as const;
+      };`;
 
       expect(string).toMatch(regex);
     });

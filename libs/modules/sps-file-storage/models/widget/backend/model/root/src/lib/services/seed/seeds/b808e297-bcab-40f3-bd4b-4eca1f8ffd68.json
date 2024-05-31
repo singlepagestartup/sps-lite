@@ -1,0 +1,17 @@
+{
+  "variant": "default",
+  "id": "b808e297-bcab-40f3-bd4b-4eca1f8ffd68",
+  "createdAt": "2024-05-25T20:05:46.633Z",
+  "updatedAt": "2024-05-25T20:05:46.633Z",
+  "title": "Logotype",
+  "widgetsToFiles": [
+    {
+      "id": "8f1493ec-e959-4ce1-97b7-08c22c5ca946",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "b808e297-bcab-40f3-bd4b-4eca1f8ffd68",
+      "fileId": "e539740f-950a-434b-83dd-8771969b2584"
+    }
+  ]
+}

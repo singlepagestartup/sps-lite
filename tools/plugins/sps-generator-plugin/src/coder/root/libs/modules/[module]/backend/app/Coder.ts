@@ -29,6 +29,10 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.root.update();
+  }
+
   /**
    * @todo
    * Attach to main /apps/frontend project

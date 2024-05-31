@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as WidgetsToSlidesSpsLiteReverse } from "@sps/sps-website-builder-relations-widgets-to-slides-frontend-component-variants-sps-lite-reverse";
+import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -10,19 +10,16 @@ export function Component(props: IComponentPropsExtended) {
       className="w-full"
     >
       <div className="relative min-h-80">
-        {props.data.widgetsToSlides
-          .filter((entity) => entity.direction === "reverse")
-          .map((entity, index) => {
-            return (
-              <div key={index} className="absolute inset-0">
-                <WidgetsToSlidesSpsLiteReverse
-                  isServer={props.isServer}
-                  variant="reverse"
-                  data={entity}
-                />
-              </div>
-            );
-          })}
+        {props.data.slidesToSpsFileStorageWidgets.map((entity, index) => {
+          return (
+            <SlidesToSpsFileStorageWidgets
+              key={index}
+              isServer={props.isServer}
+              variant="default"
+              data={entity}
+            />
+          );
+        })}
 
         <div className="relative p-10">
           <p className="font-bold text-xl relative">{props.data.title}</p>

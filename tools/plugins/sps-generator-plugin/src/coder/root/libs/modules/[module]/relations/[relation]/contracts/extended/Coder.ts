@@ -16,7 +16,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
 
   constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
     this.name = "extended";
@@ -24,10 +24,12 @@ export class Coder {
     this.tree = tree;
     this.baseName = `${parent.baseName}-extended`;
     this.baseDirectory = `${parent.baseDirectory}/extended`;
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async init() {
-    this.project = getProjects(this.tree).get(this.baseName);
+  async update() {
+    console.log("Update:", this.baseName);
   }
 
   async create() {
@@ -35,20 +37,20 @@ export class Coder {
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelContractsImportPath =
-      this.parent.parent.parent.parent.project.models[1].project.model.project
+      this.parent.parent.parent.parent.project.models[0].project.model.project
         .contracts.project.root.baseName;
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.project.models[0].isExternal;
     const leftModelName =
-      this.parent.parent.parent.parent.project.models[1].project.model.name;
+      this.parent.parent.parent.parent.project.models[0].project.model.name;
 
     const rightModelContractsImportPath =
-      this.parent.parent.parent.parent.project.models[2].project.model.project
+      this.parent.parent.parent.parent.project.models[1].project.model.project
         .contracts.project.root.baseName;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.project.models[2].isExternal;
+      this.parent.parent.parent.parent.project.models[1].isExternal;
     const rightModelName =
-      this.parent.parent.parent.parent.project.models[2].project.model.name;
+      this.parent.parent.parent.parent.project.models[1].project.model.name;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -74,7 +76,7 @@ export class Coder {
       },
     });
 
-    await this.init();
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

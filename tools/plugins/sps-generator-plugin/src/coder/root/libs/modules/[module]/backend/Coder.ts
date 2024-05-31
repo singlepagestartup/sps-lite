@@ -45,6 +45,12 @@ export class Coder {
     };
   }
 
+  async update() {
+    await this.project.schema.update();
+    await this.project.models.update();
+    await this.project.app.update();
+  }
+
   async create() {
     await this.project.schema.create();
     await this.project.models.create();

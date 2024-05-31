@@ -45,10 +45,10 @@ export class Coder {
     };
   }
 
-  async init() {
-    await this.project.api.init();
-    await this.project.redux.init();
-    await this.project.component.init();
+  async update() {
+    await this.project.api.update();
+    await this.project.redux.update();
+    await this.project.component.update();
   }
 
   async create() {

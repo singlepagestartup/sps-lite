@@ -1,0 +1,28 @@
+{
+  "id": "75244dcb-943a-4149-b0ad-2e0b0bbc5666",
+  "variant": "default",
+  "position": "default",
+  "orderIndex": 10,
+  "className": "",
+  "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
+  "buttonsArrayId": "5c23e46a-a368-49a0-b6af-69332d75f2a6",
+  "navbarBlock": {
+    "id": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
+    "createdAt": "2024-05-25T20:00:01.985Z",
+    "updatedAt": "2024-05-25T20:00:01.985Z",
+    "variant": "default",
+    "className": "",
+    "description": "",
+    "subtitle": "",
+    "title": ""
+  },
+  "buttonsArray": {
+    "id": "5c23e46a-a368-49a0-b6af-69332d75f2a6",
+    "createdAt": "2024-05-25T20:08:12.006Z",
+    "updatedAt": "2024-05-25T20:08:12.006Z",
+    "variant": "default",
+    "title": "Links",
+    "className": "",
+    "description": ""
+  }
+}

@@ -1,19 +1,23 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
+import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-features-section-block-frontend-component";
+import { variants } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-contracts";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
   featuresSectionBlockId: z.string().min(1),
+  variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
+  orderIndex: z.number().default(0),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +31,9 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       widgetId: props.data?.widgetId || props.widgetId,
       featuresSectionBlockId: props.data?.featuresSectionBlockId,
+      variant: props.data?.variant || "default",
+      className: props.data?.className || "",
+      orderIndex: props.data?.orderIndex || 0,
     },
   });
 
@@ -52,14 +59,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
-    storeName: "sps-website-builder/<left-schema-tag>",
+    storeName: "sps-website-builder/widgets",
     actionFilter: (action) => {
-      return action.type === "<left-schema-tag>/executeMutation/fulfilled";
+      return action.type === "widgets/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
-        // replace with actual schema key
         form.setValue("widgetId", action.payload.id);
       }
 
@@ -72,7 +77,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="widgets-to-features-section-blocks"
       data-variant={props.variant}
-      className=""
+      className="w-full"
     >
       {props.data ? (
         <ModelEntityCard
@@ -84,6 +89,31 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -97,7 +127,32 @@ export function Component(props: IComponentPropsExtended) {
           <h3 className="admin-heading-h3 -mt-1 lg:-mt-2 -ml-0.5 lg:-ml-1 pb-4">
             Select entity from features-section-blocks
           </h3>
-          <CardContent>
+          <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
+              type="number"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Type index"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}

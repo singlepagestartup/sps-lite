@@ -2,9 +2,10 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-backend-model";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
+import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const handler = async (
-  c: Context<Env, `${string}/:uuid`, BlankInput>,
+  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");

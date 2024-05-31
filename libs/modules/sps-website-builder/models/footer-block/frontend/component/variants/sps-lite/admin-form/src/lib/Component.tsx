@@ -16,6 +16,9 @@ import { variants } from "@sps/sps-website-builder-models-footer-block-contracts
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  description: z.string().optional(),
+  subtitle: z.string().optional(),
+  title: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +32,9 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      description: props.data?.description || "",
+      subtitle: props.data?.subtitle || "",
+      title: props.data?.title || "",
     },
   });
 

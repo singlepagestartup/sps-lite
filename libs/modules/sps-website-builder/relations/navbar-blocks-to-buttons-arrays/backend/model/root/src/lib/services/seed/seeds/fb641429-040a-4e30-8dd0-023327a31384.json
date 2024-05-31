@@ -1,0 +1,28 @@
+{
+  "id": "fb641429-040a-4e30-8dd0-023327a31384",
+  "variant": "default",
+  "position": "default",
+  "orderIndex": 1,
+  "className": "",
+  "navbarBlockId": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
+  "buttonsArrayId": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c",
+  "navbarBlock": {
+    "id": "4f40d27b-30a4-4171-9a8e-d33f8e7bcb80",
+    "createdAt": "2024-05-25T20:00:01.985Z",
+    "updatedAt": "2024-05-25T20:00:01.985Z",
+    "variant": "default",
+    "className": "",
+    "description": "",
+    "subtitle": "",
+    "title": ""
+  },
+  "buttonsArray": {
+    "id": "6619ebff-4399-4a3c-a28f-5f7cfefcd66c",
+    "createdAt": "2024-05-25T20:38:00.800Z",
+    "updatedAt": "2024-05-25T20:38:00.800Z",
+    "variant": "default",
+    "title": "Navbar buttons",
+    "className": "",
+    "description": ""
+  }
+}

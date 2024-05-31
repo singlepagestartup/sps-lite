@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "Update",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "model_name": {
+      "type": "string",
+      "description": "Name of the model (page)",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "module": {
+      "type": "string",
+      "description": "Module",
+      "x-prompt": {
+        "message": "Select module for creating model",
+        "type": "list",
+        "default": "sps-website-module",
+        "items": [
+          {
+            "value": "sps-billing"
+          },
+          {
+            "value": "sps-crm"
+          },
+          {
+            "value": "sps-ecommerce"
+          },
+          {
+            "value": "sps-file-storage"
+          },
+          {
+            "value": "sps-rbac"
+          },
+          {
+            "value": "sps-subscription"
+          },
+          {
+            "value": "sps-website-builder"
+          },
+          {
+            "value": "startup"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["module", "model_name"]
+}

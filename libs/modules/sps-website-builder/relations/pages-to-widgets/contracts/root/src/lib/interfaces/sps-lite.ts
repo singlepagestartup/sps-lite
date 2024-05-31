@@ -5,5 +5,6 @@ export interface IRelation {
   pageId: string;
   widgetId: string;
   orderIndex: number;
+  className?: string;
   variant: (typeof variants)[number];
 }
