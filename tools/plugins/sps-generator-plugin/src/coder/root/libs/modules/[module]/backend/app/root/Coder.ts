@@ -38,7 +38,11 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        module_name_snake_cased_uppercase:
+          this.moduleNameStyles.snakeCased.base.toUpperCase(),
         module_name_kebab_case: this.moduleNameStyles.kebabCased.base,
+        module_name_snake_cased: this.moduleNameStyles.snakeCased.base,
+        module_name_property_cased: this.moduleNameStyles.propertyCased.base,
       },
     });
 
