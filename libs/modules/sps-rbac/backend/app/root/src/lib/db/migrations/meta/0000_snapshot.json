@@ -1,9 +1,11 @@
 {
+  "id": "434685e2-5b0a-4438-bbf0-bf651499dd59",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.s_widget": {
-      "name": "s_widget",
+    "public.sps_r_role": {
+      "name": "sps_r_role",
       "schema": "",
       "columns": {
         "id": {
@@ -44,10 +46,8 @@
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "5e8c18b6-15be-4933-8d5d-e419a1a2e910",
-  "prevId": "00000000-0000-0000-0000-000000000000"
+    "tables": {}
+  }
 }

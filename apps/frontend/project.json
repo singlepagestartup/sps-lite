@@ -32,6 +32,9 @@
         "cwd": "libs/modules/sps-website-builder/backend/app/root",
         "commands": [
           {
+            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+          },
+          {
             "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
           }
         ]
@@ -56,6 +59,9 @@
         "cwd": "libs/modules/sps-file-storage/backend/app/root",
         "commands": [
           {
+            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+          },
+          {
             "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
           }
         ]
@@ -73,12 +79,42 @@
         ]
       }
     },
+    "db:sps-rbac-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-rbac/backend/app/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-rbac-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-rbac/backend/app/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/db/migrate.ts"
+          }
+        ]
+      }
+    },
     "db:startup-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "cwd": "libs/modules/startup/backend/app/root",
         "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+          },
           {
             "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
           }
