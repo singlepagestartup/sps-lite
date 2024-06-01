@@ -1,0 +1,25 @@
+{
+  "id": "46c4153a-5650-4ee6-ad37-ef1cd60df12e",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "5008b279-24e0-42b9-98c8-8e214821e7c1",
+  "navbarBlockId": "080baed1-7591-459c-88e3-c114d40a26f9",
+  "widget": {
+    "title": "Navbar block widget",
+    "id": "5008b279-24e0-42b9-98c8-8e214821e7c1",
+    "createdAt": "2024-05-25T20:01:49.343Z",
+    "updatedAt": "2024-05-25T20:01:49.343Z",
+    "variant": "default"
+  },
+  "navbarBlock": {
+    "id": "080baed1-7591-459c-88e3-c114d40a26f9",
+    "createdAt": "2024-05-25T20:00:01.985Z",
+    "updatedAt": "2024-05-25T20:00:01.985Z",
+    "variant": "default",
+    "className": "",
+    "description": "",
+    "subtitle": "",
+    "title": ""
+  }
+}

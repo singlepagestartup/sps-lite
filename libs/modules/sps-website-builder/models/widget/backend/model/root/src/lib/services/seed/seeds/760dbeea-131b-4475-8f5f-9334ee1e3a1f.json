@@ -1,0 +1,36 @@
+{
+  "title": "Logout widget",
+  "id": "760dbeea-131b-4475-8f5f-9334ee1e3a1f",
+  "createdAt": "2024-06-01T09:31:37.045Z",
+  "updatedAt": "2024-06-01T09:31:37.045Z",
+  "variant": "default",
+  "widgetsToSpsRbacModuleWidgets": [
+    {
+      "id": "7a7208a3-9a2b-4768-a8be-7131eec87a6b",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "widgetId": "760dbeea-131b-4475-8f5f-9334ee1e3a1f",
+      "spsRbacModuleWidgetId": "bcd1242e-96ca-499c-a2f3-181a04d8e857"
+    }
+  ],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": [
+    {
+      "id": "6045f656-4029-44aa-a480-e649b16893d4",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "4e2eefbb-61f2-4855-87e6-b8ebf4d82f06",
+      "widgetId": "760dbeea-131b-4475-8f5f-9334ee1e3a1f"
+    }
+  ]
+}

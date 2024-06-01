@@ -1,0 +1,26 @@
+{
+  "id": "ddaf5543-7a34-4ae7-a385-7a9310199aa8",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "footerBlockId": "c2d77d42-e1f5-457b-890a-6514e642366d",
+  "logotypeId": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+  "footerBlock": {
+    "description": "Next.js + Hono + Vercel",
+    "subtitle": "The fastest way to create service oriented project",
+    "title": "SinglePageStartup",
+    "id": "c2d77d42-e1f5-457b-890a-6514e642366d",
+    "createdAt": "2024-05-25T20:00:28.603Z",
+    "updatedAt": "2024-05-25T20:00:28.603Z",
+    "variant": "default",
+    "className": null
+  },
+  "logotype": {
+    "className": "",
+    "url": "/",
+    "id": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+    "createdAt": "2024-05-25T20:00:35.140Z",
+    "updatedAt": "2024-05-25T20:00:35.140Z",
+    "variant": "default"
+  }
+}

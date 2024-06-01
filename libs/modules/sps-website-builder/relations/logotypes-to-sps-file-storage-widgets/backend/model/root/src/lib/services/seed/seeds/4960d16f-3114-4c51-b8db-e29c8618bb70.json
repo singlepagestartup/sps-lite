@@ -1,0 +1,16 @@
+{
+  "id": "4960d16f-3114-4c51-b8db-e29c8618bb70",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "logotypeId": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+  "spsFileStorageWidgetId": "76c3ff17-fcfc-49b9-9638-a3b6641cd91c",
+  "logotype": {
+    "className": "",
+    "url": "/",
+    "id": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+    "createdAt": "2024-05-25T20:00:35.140Z",
+    "updatedAt": "2024-05-25T20:00:35.140Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "f2e4ef84-39d7-4eac-8ba0-e3365a613bce",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "userId": "6ed7ea30-5863-48ab-9813-f6ee8314d20d",
+  "identityId": "d06c3fb9-4b21-42c5-804a-281f5987e7ce",
+  "user": {
+    "id": "6ed7ea30-5863-48ab-9813-f6ee8314d20d",
+    "createdAt": "2024-06-01T02:36:59.000Z",
+    "updatedAt": "2024-06-01T02:36:59.000Z",
+    "status": "not_verified",
+    "variant": "default"
+  },
+  "identity": {
+    "password": "",
+    "account": "0xF2a0965afdf3Fad980F67Ded744c12605Ac34eCd",
+    "email": "",
+    "provider": "login_and_password",
+    "id": "d06c3fb9-4b21-42c5-804a-281f5987e7ce",
+    "createdAt": "2024-06-01T02:41:14.104Z",
+    "updatedAt": "2024-06-01T02:41:14.104Z",
+    "variant": "default"
+  }
+}

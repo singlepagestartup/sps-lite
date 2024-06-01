@@ -1,0 +1,25 @@
+{
+  "id": "fdafd50e-2dae-4790-ace2-0758533cf98b",
+  "variant": "default",
+  "orderIndex": 0,
+  "buttonsArrayId": "236c1d00-1001-4454-8013-13ba98afd81f",
+  "buttonId": "5b920b48-f826-419b-885c-5dfe03bd0cdc",
+  "buttonsArray": {
+    "id": "236c1d00-1001-4454-8013-13ba98afd81f",
+    "createdAt": "2024-05-25T20:03:04.292Z",
+    "updatedAt": "2024-05-25T20:03:04.292Z",
+    "variant": "default",
+    "title": "Socials",
+    "className": "",
+    "description": ""
+  },
+  "button": {
+    "title": "contact@singlepagestartup.com",
+    "url": "mailto:contact@singlepagestartup.com",
+    "className": "",
+    "id": "5b920b48-f826-419b-885c-5dfe03bd0cdc",
+    "createdAt": "2024-05-25T20:03:21.581Z",
+    "updatedAt": "2024-05-25T20:03:21.581Z",
+    "variant": "link"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "a41cfe85-5d98-44fa-9bb3-a937d96aeb43",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "pageId": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
+  "widgetId": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
+  "page": {
+    "id": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
+    "title": "About",
+    "url": "/about",
+    "description": "Description",
+    "createdAt": "2024-05-25T20:45:26.276Z",
+    "updatedAt": "2024-05-25T20:45:26.276Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "About hero section block",
+    "id": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
+    "createdAt": "2024-05-25T20:45:11.809Z",
+    "updatedAt": "2024-05-25T20:45:11.809Z",
+    "variant": "default"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "9648d3ae-cfa1-48fe-b06e-a1bafdda8f4c",
+  "file": "/images/c2e7f9c7.jpg",
+  "containerClassName": "aspect-w-3 aspect-h-2 overflow-hidden",
+  "className": "object-cover",
+  "createdAt": "2024-05-29T19:31:47.703Z",
+  "updatedAt": "2024-05-29T19:31:47.703Z",
+  "variant": "default",
+  "widgetsToFiles": [
+    {
+      "id": "3ae46c6d-7724-406d-9bcf-5680bd673dcd",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "45d5039d-494d-43f5-99be-efc177bdb22b",
+      "fileId": "9648d3ae-cfa1-48fe-b06e-a1bafdda8f4c"
+    }
+  ]
+}

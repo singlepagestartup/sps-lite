@@ -1,0 +1,36 @@
+{
+  "title": "Slider Widget",
+  "id": "280d3fe8-044e-4004-9fe4-efc5e4544e86",
+  "createdAt": "2024-05-29T19:30:40.226Z",
+  "updatedAt": "2024-05-29T19:30:40.226Z",
+  "variant": "default",
+  "widgetsToSpsRbacModuleWidgets": [],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [
+    {
+      "id": "d5bab6f0-e4bc-48a6-8fb5-c945c9a50233",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "280d3fe8-044e-4004-9fe4-efc5e4544e86",
+      "sliderBlockId": "e93493f2-2e25-4be4-a3af-6a58f6f55df3"
+    }
+  ],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": [
+    {
+      "id": "7d1fe1c7-2875-43bf-9688-ea36ac7c6606",
+      "variant": "default",
+      "orderIndex": 8,
+      "className": null,
+      "pageId": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
+      "widgetId": "280d3fe8-044e-4004-9fe4-efc5e4544e86"
+    }
+  ]
+}

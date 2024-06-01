@@ -1,0 +1,18 @@
+{
+  "title": "About",
+  "url": "/about",
+  "className": "",
+  "id": "f27a56c7-aecb-49ee-b857-fe7069e2f45b",
+  "createdAt": "2024-05-25T20:08:28.325Z",
+  "updatedAt": "2024-05-25T20:08:28.325Z",
+  "variant": "link",
+  "buttonsArraysToButtons": [
+    {
+      "id": "39f331f8-1755-4531-b042-19c0519070fe",
+      "variant": "default",
+      "orderIndex": 0,
+      "buttonsArrayId": "c0ca1c5d-00b4-4b3c-9c7c-1555816fe3c2",
+      "buttonId": "f27a56c7-aecb-49ee-b857-fe7069e2f45b"
+    }
+  ]
+}

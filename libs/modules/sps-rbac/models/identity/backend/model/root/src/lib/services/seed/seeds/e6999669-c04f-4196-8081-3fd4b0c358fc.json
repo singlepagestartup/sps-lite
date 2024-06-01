@@ -1,0 +1,20 @@
+{
+  "password": "Password123!",
+  "account": "",
+  "email": "rogwild.design@gmail.com",
+  "provider": "login_and_password",
+  "id": "e6999669-c04f-4196-8081-3fd4b0c358fc",
+  "createdAt": "2024-06-01T02:36:11.809Z",
+  "updatedAt": "2024-06-01T02:36:11.809Z",
+  "variant": "default",
+  "usersToIdentities": [
+    {
+      "id": "035b6e54-3360-45a9-a950-31d9ee6c44f8",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "userId": "6ed7ea30-5863-48ab-9813-f6ee8314d20d",
+      "identityId": "e6999669-c04f-4196-8081-3fd4b0c358fc"
+    }
+  ]
+}
