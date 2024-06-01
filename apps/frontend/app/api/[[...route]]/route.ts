@@ -6,23 +6,19 @@ import { app as spsFileStorageApp } from "@sps/sps-file-storage-backend-app";
 import { app as spsRbacApp } from "@sps/sps-rbac-backend-app";
 import { app as startupApp } from "@sps/startup-backend-app";
 import { chain as middlewaresChain } from "./middlewares/chain";
-import { middlewares } from "./middlewares";
+import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 const app = new Hono<MiddlewaresGeneric>().basePath("/api");
 
 middlewaresChain(app);
 
-app.on(["POST", "PUT"], "*", middlewares.isAuthenticated());
+app.on(["POST", "PUT"], "*", spsRbacSdk.middlewares.isAuthenticated());
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);
 app.route("/sps-rbac", spsRbacApp);
 app.route("/startup", startupApp);
-
-// const envs = process.env;
-
-// console.log(`🚀 ~ envs:`, envs);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

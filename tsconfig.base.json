@@ -567,6 +567,9 @@
       "@sps/sps-rbac-backend-schema": [
         "libs/modules/sps-rbac/backend/schema/root/src/index.ts"
       ],
+      "@sps/sps-rbac-backend-sdk": [
+        "libs/modules/sps-rbac/backend/sdk/root/src/index.ts"
+      ],
       "@sps/sps-rbac-frontend": [
         "libs/modules/sps-rbac/frontend/root/src/index.ts"
       ],

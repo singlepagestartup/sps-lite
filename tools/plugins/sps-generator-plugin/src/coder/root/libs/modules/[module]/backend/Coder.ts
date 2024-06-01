@@ -61,9 +61,9 @@ export class Coder {
   }
 
   async create() {
-    // await this.project.schema.create();
-    // await this.project.models.create();
-    // await this.project.app.create();
+    await this.project.schema.create();
+    await this.project.models.create();
+    await this.project.app.create();
     await this.project.sdk.create();
   }
 
