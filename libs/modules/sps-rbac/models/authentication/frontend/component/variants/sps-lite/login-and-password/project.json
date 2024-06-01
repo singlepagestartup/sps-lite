@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-login-and-password",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/login-and-password/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

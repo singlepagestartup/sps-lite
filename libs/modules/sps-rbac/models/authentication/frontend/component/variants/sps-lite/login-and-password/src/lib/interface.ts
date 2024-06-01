@@ -1,7 +1,7 @@
 import { IModel } from "@sps/sps-rbac-models-authentication-contracts";
 import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-contracts-extended";
 
-export const variant = "default" as const;
+export const variant = "login-and-password" as const;
 
 export interface IComponentBase {
   showSkeletons?: boolean;
@@ -10,9 +10,6 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  data: Partial<IModel>;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended;
-}
+export interface IComponentPropsExtended extends IComponentProps {}

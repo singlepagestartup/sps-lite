@@ -9,18 +9,9 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-rbac-models-authentication-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByIdQuery({
-      id: props.data.id,
-    });
-
-  if (isFetching || isLoading || isUninitialized || !data) {
-    return <Skeleton {...props} />;
-  }
-
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} />
     </ErrorBoundary>
   );
 }
