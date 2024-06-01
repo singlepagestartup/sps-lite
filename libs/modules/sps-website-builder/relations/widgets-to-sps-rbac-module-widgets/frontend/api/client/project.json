@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-client",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/api/client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

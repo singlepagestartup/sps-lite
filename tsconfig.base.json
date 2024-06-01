@@ -603,6 +603,9 @@
       "@sps/sps-rbac-models-authentication-block-backend-schema-relations": [
         "libs/modules/sps-rbac/models/authentication-block/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-rbac-models-authentication-block-backend-schema-relations-widgets-to-authentication-blocks": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/schema/relations/widgets-to-authentication-blocks/src/index.ts"
+      ],
       "@sps/sps-rbac-models-authentication-block-backend-schema-table": [
         "libs/modules/sps-rbac/models/authentication-block/backend/schema/table/src/index.ts"
       ],
@@ -855,6 +858,9 @@
       "@sps/sps-rbac-models-widget-backend-schema-relations": [
         "libs/modules/sps-rbac/models/widget/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-rbac-models-widget-backend-schema-relations-widgets-to-authentication-blocks": [
+        "libs/modules/sps-rbac/models/widget/backend/schema/relations/widgets-to-authentication-blocks/src/index.ts"
+      ],
       "@sps/sps-rbac-models-widget-backend-schema-table": [
         "libs/modules/sps-rbac/models/widget/backend/schema/table/src/index.ts"
       ],
@@ -968,6 +974,42 @@
       ],
       "@sps/sps-rbac-relations-users-to-roles-frontend-redux": [
         "libs/modules/sps-rbac/relations/users-to-roles/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-model": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-schema": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-contracts": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-contracts-extended": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-api-client": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-api-model": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-api-server": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-component": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-redux": [
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/redux/src/index.ts"
       ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/root/src/index.ts"
@@ -2301,6 +2343,9 @@
       "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-sps-file-storage-module-widgets": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-file-storage-module-widgets/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-sps-rbac-module-widgets": [
+        "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-rbac-module-widgets/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-startup-module-widgets": [
         "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-startup-module-widgets/src/index.ts"
       ],
@@ -3212,6 +3257,42 @@
       ],
       "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-redux": [
         "libs/modules/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-app": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-schema": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-contracts": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-backend-app": [
         "libs/modules/sps-website-builder/relations/widgets-to-startup-module-widgets/backend/app/src/index.ts"

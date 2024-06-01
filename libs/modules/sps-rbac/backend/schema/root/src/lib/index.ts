@@ -1,4 +1,8 @@
 export {
+  Table as SPSRWidgetsToAuthenticationBlocks,
+  Relations as SPSRWidgetsToAuthenticationBlocksRelations,
+} from "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-schema";
+export {
   Table as SPSRWidget,
   Relations as SPSRWidgetRelations,
 } from "@sps/sps-rbac-models-widget-backend-schema";

@@ -2,8 +2,9 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-rbac-models-widget-contracts";
+import { Component as WidgetsToAuthenticationBlocksSpsLiteSelectRight } from "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -31,6 +32,25 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+        <ModelEntitiesListCard title="widgets-to-authentication-blocks">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToAuthenticationBlocks.map((entity, index) => {
+              return (
+                <WidgetsToAuthenticationBlocksSpsLiteSelectRight
+                  key={index}
+                  data={entity}
+                  isServer={props.isServer}
+                  variant="select-right"
+                />
+              );
+            })}
+            <WidgetsToAuthenticationBlocksSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { app as widgetsToAuthenticationBlocks } from "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app";
 import { app as widget } from "@sps/sps-rbac-models-widget-backend-app";
 import { app as authenticationBlock } from "@sps/sps-rbac-models-authentication-block-backend-app";
 import { app as usersToRoles } from "@sps/sps-rbac-relations-users-to-roles-backend-app";
@@ -7,6 +8,7 @@ import { app as user } from "@sps/sps-rbac-models-user-backend-app";
 import { app as authentication } from "@sps/sps-rbac-models-authentication-backend-app";
 import { app as role } from "@sps/sps-rbac-models-role-backend-app";
 export const routes = {
+  "/widgets-to-authentication-blocks": widgetsToAuthenticationBlocks,
   "/widgets": widget,
   "/authentication-blocks": authenticationBlock,
   "/users-to-roles": usersToRoles,

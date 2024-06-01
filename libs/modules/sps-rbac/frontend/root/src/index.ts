@@ -1,1 +1,2 @@
-export { Component as AdminComponent } from "./lib/admin/Component";
+export { App } from "./lib/app";
+export { Component as AdminComponent } from "./lib/admin";

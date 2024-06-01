@@ -8,6 +8,8 @@ import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-w
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
 import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component-variants-sps-lite-select-right";
+
 import { variants } from "@sps/sps-website-builder-models-widget-contracts";
 
 export function Component(props: IComponentPropsExtended) {
@@ -156,6 +158,27 @@ export function Component(props: IComponentPropsExtended) {
               );
             })}
             <WidgetsToStartupModuleWidgets
+              isServer={props.isServer}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+
+        <ModelEntitiesListCard title="widgets-to-sps-rbac-module-widgets">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToSpsRbacModuleWidgets?.map((entity, index) => {
+              return (
+                <WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight
               isServer={props.isServer}
               variant="select-right"
               widgetId={props.data?.id}
