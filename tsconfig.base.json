@@ -573,6 +573,45 @@
       "@sps/sps-rbac-frontend-components": [
         "libs/modules/sps-rbac/frontend/components/src/index.ts"
       ],
+      "@sps/sps-rbac-models-authentication-backend-app": [
+        "libs/modules/sps-rbac/models/authentication/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-backend-model": [
+        "libs/modules/sps-rbac/models/authentication/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-backend-schema": [
+        "libs/modules/sps-rbac/models/authentication/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/authentication/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-backend-schema-table": [
+        "libs/modules/sps-rbac/models/authentication/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-contracts": [
+        "libs/modules/sps-rbac/models/authentication/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-contracts-extended": [
+        "libs/modules/sps-rbac/models/authentication/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-api-client": [
+        "libs/modules/sps-rbac/models/authentication/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-api-model": [
+        "libs/modules/sps-rbac/models/authentication/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-api-server": [
+        "libs/modules/sps-rbac/models/authentication/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-component": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-redux": [
+        "libs/modules/sps-rbac/models/authentication/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-rbac-models-role-backend-app": [
         "libs/modules/sps-rbac/models/role/backend/app/src/index.ts"
       ],

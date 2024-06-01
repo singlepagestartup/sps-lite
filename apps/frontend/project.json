@@ -20,6 +20,9 @@
             "command": "nx run frontend:db:sps-file-storage-generate"
           },
           {
+            "command": "nx run frontend:db:sps-rbac-generate"
+          },
+          {
             "command": "nx run frontend:db:startup-generate"
           }
         ]
@@ -144,6 +147,9 @@
           },
           {
             "command": "nx run frontend:db:sps-file-storage-migrate"
+          },
+          {
+            "command": "nx run frontend:db:sps-rbac-migrate"
           },
           {
             "command": "nx run frontend:db:startup-migrate"

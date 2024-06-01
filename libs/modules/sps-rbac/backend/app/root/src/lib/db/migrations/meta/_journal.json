@@ -8,6 +8,13 @@
       "when": 1717164267067,
       "tag": "0000_early_professor_monster",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1717199968044,
+      "tag": "0001_thankful_sue_storm",
+      "breakpoints": true
     }
   ]
 }

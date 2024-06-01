@@ -13,7 +13,7 @@ const app = new Hono<MiddlewaresGeneric>().basePath("/api");
 
 middlewaresChain(app);
 
-app.on(["POST"], "*", middlewares.isAuthenticated());
+app.on(["POST", "PUT"], "*", middlewares.isAuthenticated());
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);
