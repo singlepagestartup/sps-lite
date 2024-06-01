@@ -669,6 +669,60 @@
       "@sps/sps-rbac-models-role-frontend-redux": [
         "libs/modules/sps-rbac/models/role/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-rbac-models-user-backend-app": [
+        "libs/modules/sps-rbac/models/user/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-backend-model": [
+        "libs/modules/sps-rbac/models/user/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-backend-schema": [
+        "libs/modules/sps-rbac/models/user/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/user/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-backend-schema-table": [
+        "libs/modules/sps-rbac/models/user/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-contracts": [
+        "libs/modules/sps-rbac/models/user/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-contracts-extended": [
+        "libs/modules/sps-rbac/models/user/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-api-client": [
+        "libs/modules/sps-rbac/models/user/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-api-model": [
+        "libs/modules/sps-rbac/models/user/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-api-server": [
+        "libs/modules/sps-rbac/models/user/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component": [
+        "libs/modules/sps-rbac/models/user/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-user-frontend-redux": [
+        "libs/modules/sps-rbac/models/user/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/root/src/index.ts"
       ],

@@ -15,6 +15,13 @@
       "when": 1717199968044,
       "tag": "0001_thankful_sue_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1717204210570,
+      "tag": "0002_lean_storm",
+      "breakpoints": true
     }
   ]
 }
