@@ -1,6 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk, BACKEND_URL } from "@sps/shared-frontend-utils-client";
 import {
+  prepareFormDataToSend,
+  transformResponseItem,
+} from "@sps/shared-utils";
+import {
   IModelExtended,
   route,
   tag,
@@ -46,6 +50,30 @@ export const api = createApi({
       populate,
       model: route,
       rtkType: tag,
+    }),
+    loginAndPassword: build.mutation({
+      query: (params: any = {}) => {
+        const formData = prepareFormDataToSend(params);
+
+        return {
+          url: `${route}/providers/login-and-password`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: formData,
+        };
+      },
+
+      async onQueryStarted(...args) {},
+
+      transformResponse: (result) => {
+        return transformResponseItem(result);
+      },
+
+      // invalidatesTags: invalidatesTagsFunc
+      //   ? invalidatesTagsFunc
+      //   : [{ type: rtkType, id: "LIST" }],
     }),
   }),
 });

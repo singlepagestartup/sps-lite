@@ -47,3 +47,7 @@ app.patch("/:uuid", async (c, next) => {
 app.delete("/:uuid", async (c, next) => {
   return handlers.delete(c, next);
 });
+
+app.post("/providers/login-and-password", async (c, next) => {
+  return handlers.loginAndPassword(c, next);
+});

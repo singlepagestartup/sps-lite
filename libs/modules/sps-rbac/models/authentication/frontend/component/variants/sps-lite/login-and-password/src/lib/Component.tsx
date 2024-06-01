@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,8 @@ const formSchema = z.object({
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
+  const [loginAndPassword, loginAndPasswordResult] =
+    api.rtk.useLoginAndPasswordMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,6 +38,9 @@ export function Component(props: IComponentPropsExtended) {
   async function onSubmit(data: z.infer<typeof formSchema>) {
     console.log(`🚀 ~ onSubmit ~ data:`, data);
 
+    loginAndPassword({
+      data,
+    });
     // if (props.data?.id) {
     //   await updateEntity({ id: props.data?.id, data });
     //   return;
@@ -45,6 +50,15 @@ export function Component(props: IComponentPropsExtended) {
     //   data,
     // });
   }
+
+  useEffect(() => {
+    if (loginAndPasswordResult) {
+      console.log(
+        `🚀 ~ useEffect ~ loginAndPasswordResult:`,
+        loginAndPasswordResult,
+      );
+    }
+  }, [loginAndPasswordResult]);
 
   return (
     <div
