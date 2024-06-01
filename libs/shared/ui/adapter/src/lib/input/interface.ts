@@ -17,6 +17,9 @@ export type TTypedProps =
       type: "text";
     }
   | {
+      type: "password";
+    }
+  | {
       type: "tiptap";
     }
   | {

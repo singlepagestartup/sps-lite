@@ -10,9 +10,17 @@ const table = "identity";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
-export const Table = pgTable(table, {
-  ...fields,
-});
+export const Table = pgTable(
+  table,
+  {
+    ...fields,
+  },
+  (table) => {
+    return {
+      unique: pgCore.unique().on(table.provider, table.account, table.email),
+    };
+  },
+);
 
 export const insertSchema = createInsertSchema(Table);
 export const selectSchema = createSelectSchema(Table);

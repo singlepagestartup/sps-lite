@@ -24,12 +24,13 @@ const Placeholder = () => {
 };
 
 export const Component = (props: IComponentProps) => {
-  if (props.type === "text") {
+  if (props.type === "text" || props.type === "password") {
     return (
       <FormControl>
         <Input
           placeholder={props.placeholder}
           {...props.field}
+          type={props.type}
           className={props.className}
         />
       </FormControl>

@@ -2,8 +2,9 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants, statuses } from "@sps/sps-rbac-models-user-contracts";
+import { Component as UsersToIdentitiesSpsLiteSelectRight } from "@sps/sps-rbac-relations-users-to-identities-frontend-component-variants-sps-lite-select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -32,6 +33,25 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select status"
           options={statuses.map((status) => [status, status])}
         />
+        <ModelEntitiesListCard title="users-to-identities">
+          <div className="flex flex-col gap-6">
+            {props.data?.usersToIdentities.map((entity, index) => {
+              return (
+                <UsersToIdentitiesSpsLiteSelectRight
+                  key={index}
+                  data={entity}
+                  isServer={props.isServer}
+                  variant="select-right"
+                />
+              );
+            })}
+            <UsersToIdentitiesSpsLiteSelectRight
+              isServer={props.isServer}
+              variant="select-right"
+              userId={props.data?.id}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

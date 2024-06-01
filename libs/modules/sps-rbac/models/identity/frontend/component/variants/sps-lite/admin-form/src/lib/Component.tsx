@@ -12,10 +12,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 import { Component as AdminFormInputs } from "@sps/sps-rbac-models-identity-frontend-component-variants-sps-lite-admin-form-inputs";
-import { variants } from "@sps/sps-rbac-models-identity-contracts";
+import { variants, providers } from "@sps/sps-rbac-models-identity-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  password: z.string(),
+  account: z.string(),
+  email: z.string(),
+  provider: z.enum(providers).default("login_and_password"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +33,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      password: props.data?.password || "",
+      account: props.data?.account || "",
+      email: props.data?.email || "",
+      provider: props.data?.provider || "login_and_password",
     },
   });
 

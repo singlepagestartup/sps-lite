@@ -27,7 +27,11 @@ export function Component(props: IComponentPropsExtended) {
             }
           }
 
-          return [entity.id, entity.id];
+          return [
+            entity.id,
+            `Provider: ${entity.provider} | ${entity.account || entity.email || ""}` ||
+              entity.id,
+          ];
         })}
       />
     </div>

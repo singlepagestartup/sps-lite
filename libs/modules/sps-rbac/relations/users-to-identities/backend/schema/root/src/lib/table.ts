@@ -29,11 +29,9 @@ export const Table = pgTable(
       .notNull()
       .references(() => Identity.id, { onDelete: "cascade" }),
   },
-  () => {
+  (table) => {
     return {
-      pk: pgCore.primaryKey({
-        columns: [Identity.provider, Identity.account, Identity.email, User.id],
-      }),
+      unique: pgCore.unique().on(table.userId, table.identityId),
     };
   },
 );
