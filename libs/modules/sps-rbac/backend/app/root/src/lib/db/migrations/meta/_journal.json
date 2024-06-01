@@ -22,6 +22,13 @@
       "when": 1717204210570,
       "tag": "0002_lean_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1717205911367,
+      "tag": "0003_jittery_swarm",
+      "breakpoints": true
     }
   ]
 }

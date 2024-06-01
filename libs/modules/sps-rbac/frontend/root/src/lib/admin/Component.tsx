@@ -11,6 +11,7 @@ import {
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-table";
 import { Component as UserSpsLiteAdminTable } from "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-table";
+import { Component as IdentitySpsLiteAdminTable } from "@sps/sps-rbac-models-identity-frontend-component-variants-sps-lite-admin-table";
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -27,6 +28,10 @@ export function Component(props: IComponentProps) {
       {
         name: "user",
         Comp: UserSpsLiteAdminTable,
+      },
+      {
+        name: "identity",
+        Comp: IdentitySpsLiteAdminTable,
       },
     ];
   }, []);

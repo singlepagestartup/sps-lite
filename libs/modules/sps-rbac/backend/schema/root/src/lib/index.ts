@@ -1,4 +1,8 @@
 export {
+  Table as SPSRIdentity,
+  Relations as SPSRIdentityRelations,
+} from "@sps/sps-rbac-models-identity-backend-schema";
+export {
   Table as SPSRUser,
   Relations as SPSRUserRelations,
 } from "@sps/sps-rbac-models-user-backend-schema";
