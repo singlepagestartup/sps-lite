@@ -1,5 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as WidgetsToAuthenticationBlocks } from "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +9,18 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-rbac"
       data-model="widget"
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: widget</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      {props.data.widgetsToAuthenticationBlocks.map((entity, index) => {
+        return (
+          <WidgetsToAuthenticationBlocks
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={entity}
+          />
+        );
+      })}
     </div>
   );
 }

@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-sps-rbac-module-widget-frontend-component";
+import { Component as AdminSelectInput } from "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-select-input";
 import { variants } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-contracts";
 
 const formSchema = z.object({
