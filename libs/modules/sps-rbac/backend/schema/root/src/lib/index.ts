@@ -1,4 +1,12 @@
 export {
+  Table as SPSRWidget,
+  Relations as SPSRWidgetRelations,
+} from "@sps/sps-rbac-models-widget-backend-schema";
+export {
+  Table as SPSRAuthenticationBlock,
+  Relations as SPSRAuthenticationBlockRelations,
+} from "@sps/sps-rbac-models-authentication-block-backend-schema";
+export {
   Table as SPSRUsersToRoles,
   Relations as SPSRUsersToRolesRelations,
 } from "@sps/sps-rbac-relations-users-to-roles-backend-schema";

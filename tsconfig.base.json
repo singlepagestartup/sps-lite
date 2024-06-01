@@ -591,6 +591,60 @@
       "@sps/sps-rbac-models-authentication-backend-schema-table": [
         "libs/modules/sps-rbac/models/authentication/backend/schema/table/src/index.ts"
       ],
+      "@sps/sps-rbac-models-authentication-block-backend-app": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-backend-model": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-backend-schema": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-backend-schema-table": [
+        "libs/modules/sps-rbac/models/authentication-block/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-contracts": [
+        "libs/modules/sps-rbac/models/authentication-block/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-contracts-extended": [
+        "libs/modules/sps-rbac/models/authentication-block/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-api-client": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-api-model": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-api-server": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-redux": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-rbac-models-authentication-contracts": [
         "libs/modules/sps-rbac/models/authentication/contracts/root/src/index.ts"
       ],
@@ -788,6 +842,60 @@
       ],
       "@sps/sps-rbac-models-user-frontend-redux": [
         "libs/modules/sps-rbac/models/user/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-backend-app": [
+        "libs/modules/sps-rbac/models/widget/backend/app/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-backend-model": [
+        "libs/modules/sps-rbac/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-backend-schema": [
+        "libs/modules/sps-rbac/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-backend-schema-table": [
+        "libs/modules/sps-rbac/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-contracts": [
+        "libs/modules/sps-rbac/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-contracts-extended": [
+        "libs/modules/sps-rbac/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-api-client": [
+        "libs/modules/sps-rbac/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-api-model": [
+        "libs/modules/sps-rbac/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-api-server": [
+        "libs/modules/sps-rbac/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-widget-frontend-redux": [
+        "libs/modules/sps-rbac/models/widget/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-relations-users-to-identities-backend-app": [
         "libs/modules/sps-rbac/relations/users-to-identities/backend/app/src/index.ts"
