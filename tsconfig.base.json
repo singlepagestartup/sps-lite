@@ -669,30 +669,6 @@
       "@sps/sps-rbac-models-role-frontend-redux": [
         "libs/modules/sps-rbac/models/role/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-rbac-models-user-contracts": [
-        "libs/modules/sps-rbac/models/user/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-contracts-extended": [
-        "libs/modules/sps-rbac/models/user/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-api-client": [
-        "libs/modules/sps-rbac/models/user/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-api-server": [
-        "libs/modules/sps-rbac/models/user/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-component": [
-        "libs/modules/sps-rbac/models/user/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-auth-wrapper": [
-        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/auth-wrapper/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-rbac/models/user/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-rbac-models-user-frontend-redux": [
-        "libs/modules/sps-rbac/models/user/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-subscription-frontend": [
         "libs/modules/sps-subscription/frontend/root/src/index.ts"
       ],
