@@ -1,3 +1,4 @@
+import { populate as usersToRoles } from "@sps/sps-rbac-models-role-backend-schema-relations-users-to-roles";
 export const populate = (params: any) => {
-  return {} as const;
+  return { usersToRoles: usersToRoles(params) } as const;
 };

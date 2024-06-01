@@ -1,4 +1,12 @@
 export {
+  Table as SPSRUsersToRoles,
+  Relations as SPSRUsersToRolesRelations,
+} from "@sps/sps-rbac-relations-users-to-roles-backend-schema";
+export {
+  Table as SPSRUsersToIdentities,
+  Relations as SPSRUsersToIdentitiesRelations,
+} from "@sps/sps-rbac-relations-users-to-identities-backend-schema";
+export {
   Table as SPSRIdentity,
   Relations as SPSRIdentityRelations,
 } from "@sps/sps-rbac-models-identity-backend-schema";
