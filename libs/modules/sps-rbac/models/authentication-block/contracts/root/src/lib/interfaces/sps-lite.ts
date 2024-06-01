@@ -1,4 +1,11 @@
-export const variants = ["default"] as const;
+export const variants = [
+  "change-password",
+  "forgot-password",
+  "login",
+  "logout",
+  "registration",
+  "reset-password",
+] as const;
 
 export interface IModel {
   className?: string;

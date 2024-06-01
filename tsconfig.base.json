@@ -642,8 +642,23 @@
       "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-table-row": [
         "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
       ],
-      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/default/src/index.ts"
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-change-password": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/change-password/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-forgot-password": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/forgot-password/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-login": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/login/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-logout": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/logout/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-registration": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/registration/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-reset-password": [
+        "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/reset-password/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-block-frontend-redux": [
         "libs/modules/sps-rbac/models/authentication-block/frontend/redux/src/index.ts"
