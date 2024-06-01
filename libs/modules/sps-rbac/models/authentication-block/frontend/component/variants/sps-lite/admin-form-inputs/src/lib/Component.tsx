@@ -24,6 +24,38 @@ export function Component(props: IComponentPropsExtended) {
         />
         <FormField
           ui="shadcn"
+          type="text"
+          label="Class Name"
+          name="className"
+          form={props.form}
+          placeholder="Enter class name"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Anchor"
+          name="anchor"
+          form={props.form}
+          placeholder="Enter anchor"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Description"
+          name="description"
+          form={props.form}
+          placeholder="Enter description"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Subtitle"
+          name="subtitle"
+          form={props.form}
+          placeholder="Enter subtitle"
+        />
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"

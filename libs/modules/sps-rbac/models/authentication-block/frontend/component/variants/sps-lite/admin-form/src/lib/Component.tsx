@@ -17,6 +17,10 @@ import { variants } from "@sps/sps-rbac-models-authentication-block-contracts";
 const formSchema = z.object({
   variant: z.enum(variants),
   title: z.string(),
+  className: z.string(),
+  anchor: z.string(),
+  description: z.string(),
+  subtitle: z.string(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -31,6 +35,10 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       title: props.data?.title || "",
+      className: props.data?.className || "",
+      anchor: props.data?.anchor || "",
+      description: props.data?.description || "",
+      subtitle: props.data?.subtitle || "",
     },
   });
 
