@@ -4,9 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 // import { useTranslations } from "@sps/hooks";
-import { Input } from "../../input";
+// import { Input } from "../../input";
 import { getInputErrors } from "../get-input-errors";
 import { useGetStringProps } from "../use-get-string-props";
+
+const Input = () => {
+  return <div>Input</div>;
+};
 
 export interface IInsideComponentProps {
   translate?: (message: string) => string;

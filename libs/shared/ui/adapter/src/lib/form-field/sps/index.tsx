@@ -15,7 +15,7 @@ import { getInputErrors } from "../../input/sps/get-input-errors";
 // import { useTranslations } from "@sps/hooks";
 import { Button } from "../../button";
 import Image from "next/image";
-import type { IModel as IBackendFile } from "@sps/sps-file-storage-models-file-contracts";
+// import type { IModel as IBackendFile } from "@sps/sps-file-storage-models-file-contracts";
 import { getFileUrl } from "@sps/shared-utils";
 
 export interface Props {
@@ -24,8 +24,8 @@ export interface Props {
   className?: string | null;
   ResetIcon?: FC<any>;
   ui: "sps" | "shadcn";
-  media?: IBackendFile[] | null;
-  additionalMedia?: IBackendFile[] | null;
+  // media?: IBackendFile[] | null;
+  // additionalMedia?: IBackendFile[] | null;
   type: HTMLInputTypeAttribute;
   multiple?: boolean | null;
   min?: number | null;
@@ -98,14 +98,14 @@ export const FormField = (props: Props) => {
           {typeof translate === "function" ? translate("Reset") : "Reset"}
         </Button>
       </div>
-      <div
+      {/* <div
         data-media={props.media && props.media?.length > 0}
         className="media-container !hidden"
       >
         {props.media?.map((media, index: number) => (
           <Image key={index} src={getFileUrl(media)} fill={true} alt="" />
         ))}
-      </div>
+      </div> */}
       <Input
         {...props}
         htmlNodeId={htmlNodeId}
@@ -117,7 +117,7 @@ export const FormField = (props: Props) => {
         max={props.max ?? undefined}
         multiple={props.multiple ?? undefined}
       />
-      <div
+      {/* <div
         data-media={props.additionalMedia && props.additionalMedia?.length > 0}
         className="additional-media-container !hidden"
       >
@@ -129,7 +129,7 @@ export const FormField = (props: Props) => {
             alt=""
           />
         ))}
-      </div>
+      </div> */}
       {error ? (
         <div className="input-error">
           <p>

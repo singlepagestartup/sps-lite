@@ -3,12 +3,14 @@
     "jsx": "react-jsx",
     "allowJs": false,
     "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true
+    "allowSyntheticDefaultImports": true
   },
   "references": [
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.lib.json"
     }
   ],
   "extends": "../../../../../../../tsconfig.base.json"

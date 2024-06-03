@@ -86,6 +86,9 @@ export const Component = (props: IComponentProps) => {
           placeholder={props.placeholder}
           type="number"
           {...props.field}
+          min={props.min}
+          max={props.max}
+          step={props.step}
           className={props.className}
           onChange={(event) => {
             const value = +event.target.value;

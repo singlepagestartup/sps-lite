@@ -9,6 +9,10 @@
   },
   "files": [],
   "include": [],
-  "references": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
   "extends": "../../../../../tsconfig.base.json"
 }
