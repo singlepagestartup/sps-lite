@@ -30,7 +30,7 @@ export function middleware() {
 
     await next();
 
-    if (store) {
+    if (method === "GET" && store) {
       const resJson = await c.res.clone().json();
 
       store.create(path, 60, JSON.stringify(resJson));
