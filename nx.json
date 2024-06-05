@@ -116,5 +116,12 @@
       "preVersionCommand": "npx nx run-many -t tsc:lib -p sps-billing-backend @sps/shared-frontend-utils-server @sps/shared-utils"
     }
   },
-  "plugins": []
+  "plugins": [
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      }
+    }
+  ]
 }

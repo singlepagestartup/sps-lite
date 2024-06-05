@@ -21,8 +21,6 @@
       "@sps/shared-backend-database-config": [
         "libs/shared/backend/database/config/src/index.ts"
       ],
-      "@sps/shared-bdd-steps": ["libs/shared/bdd/steps/src/index.ts"],
-      "@sps/shared-bdd-utils": ["libs/shared/bdd/utils/src/index.ts"],
       "@sps/shared-frontend-utils-client": [
         "libs/shared/frontend/utils/client/src/index.ts"
       ],
@@ -555,6 +553,7 @@
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
+      "@sps/sps-kv-provider": ["libs/providers/sps-kv-provider/src/index.ts"],
       "@sps/sps-migrator-plugin": [
         "tools/plugins/sps-migrator-plugin/src/index.ts"
       ],

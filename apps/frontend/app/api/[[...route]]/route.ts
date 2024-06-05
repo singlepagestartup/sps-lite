@@ -1,4 +1,4 @@
-import { Context, Hono } from "hono";
+import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { type NextRequest } from "next/server";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-app";
@@ -8,65 +8,13 @@ import { app as startupApp } from "@sps/startup-backend-app";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { RedisStoreAdapter } from "../../../src/redis";
-import Redis from "ioredis";
-import { sessionMiddleware } from "hono-sessions";
-
-const redis = new Redis({
-  port: Number(process.env["REDIS_PORT"]) || 6379,
-  username: "default",
-  password: process.env["REDIS_PASSWORD"],
-});
-
-const store = new RedisStoreAdapter({
-  prefix: "sps:",
-  ttl: 3600,
-  client: redis,
-});
+import { setRoutes } from "@sps/sps-kv-provider";
 
 const app = new Hono<MiddlewaresGeneric>().basePath("/api");
 
 middlewaresChain(app);
 
-app.use(
-  sessionMiddleware({
-    store,
-    expireAfterSeconds: 900,
-    cookieOptions: {
-      sameSite: "Lax",
-      path: "/",
-      httpOnly: true,
-    },
-  }) as any,
-);
-
-app.on(["GET"], "*", async (c, next) => {
-  const path = c.req.url;
-  const cachedValue = await store.find(path);
-
-  if (cachedValue) {
-    const response = new Response(cachedValue, {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    return response;
-  }
-
-  await next();
-
-  const resJson = await c.res.clone().json();
-
-  store.create(path, 60, JSON.stringify(resJson));
-});
-
-app.get("/cache/clear", async (c) => {
-  await redis.flushall();
-
-  return c.json({ message: "Cache cleared" });
-});
+setRoutes(app);
 
 // app.on(["POST", "PUT"], "*", spsRbacSdk.middlewares.isAuthenticated());
 
