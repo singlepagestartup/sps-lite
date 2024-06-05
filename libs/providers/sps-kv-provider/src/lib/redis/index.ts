@@ -18,6 +18,14 @@ export class RedisStoreAdapter implements Store {
     this.RedisClient = options.client;
   }
 
+  async clearByPrefix(prefix: string): Promise<void> {
+    const keys = await this.RedisClient.keys(prefix + "*");
+
+    if (keys.length > 0) {
+      await this.RedisClient.del(keys);
+    }
+  }
+
   async find(key: string): Promise<string | null | undefined> {
     return this.RedisClient.get(key);
   }

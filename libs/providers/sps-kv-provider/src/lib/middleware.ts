@@ -30,10 +30,15 @@ export function middleware() {
 
     await next();
 
-    if (method === "GET" && store) {
-      const resJson = await c.res.clone().json();
+    if (store && c.res.status >= 200 && c.res.status < 300) {
+      if (method === "GET") {
+        const resJson = await c.res.clone().json();
 
-      store.create(path, 60, JSON.stringify(resJson));
+        store.create(path, 60, JSON.stringify(resJson));
+      }
+      if (["POST", "PUT", "PATCH"].includes(method)) {
+        store.clearByPrefix(path);
+      }
     }
   });
 }
