@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "installCommand": "npm ci",
-  "buildCommand": "nx run frontend:theme && nx run frontend:db:migrate && nx run frontend:db:seed && npm run frontend:build",
+  "installCommand": "bun i",
+  "buildCommand": "bun run frontend:theme && bun run frontend:db:migrate && bun run frontend:db:seed && bun run frontend:build",
   "outputDirectory": "apps/frontend/.next"
 }
