@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-file-storage"
       data-relation="widgets-to-files"
       data-variant={props.variant}
-      className="w-full"
+      className="w-full flex"
     >
       <File
         isServer={props.isServer}
