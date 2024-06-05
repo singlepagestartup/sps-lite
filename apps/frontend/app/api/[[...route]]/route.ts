@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { Context, Hono } from "hono";
 import { handle } from "hono/vercel";
 import { type NextRequest } from "next/server";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-app";
@@ -11,7 +11,6 @@ import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 import { RedisStoreAdapter } from "../../../src/redis";
 import Redis from "ioredis";
 import { sessionMiddleware } from "hono-sessions";
-import { kvCaches } from "./cache";
 
 const redis = new Redis({
   port: Number(process.env["REDIS_PORT"]) || 6379,
@@ -27,13 +26,6 @@ const store = new RedisStoreAdapter({
 
 const app = new Hono<MiddlewaresGeneric>().basePath("/api");
 
-const cacheOptions = {
-  key: "redis-get",
-  store,
-};
-
-const cacheMiddleware = kvCaches(cacheOptions as any);
-
 middlewaresChain(app);
 
 app.use(
@@ -48,7 +40,34 @@ app.use(
   }),
 );
 
-app.use(cacheMiddleware);
+app.on(["GET"], "*", async (c, next) => {
+  const path = c.req.url;
+  const cachedValue = await store.find(path);
+
+  if (cachedValue) {
+    const response = new Response(cachedValue, {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  }
+
+  await next();
+
+  const resJson = await c.res.clone().json();
+
+  store.create(path, 60, JSON.stringify(resJson));
+});
+
+app.get("/cache/clear", async (c) => {
+  await redis.flushall();
+
+  return c.json({ message: "Cache cleared" });
+});
+
 // app.on(["POST", "PUT"], "*", spsRbacSdk.middlewares.isAuthenticated());
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp);

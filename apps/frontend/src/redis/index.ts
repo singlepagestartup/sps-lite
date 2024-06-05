@@ -19,12 +19,10 @@ export class RedisStoreAdapter implements Store {
   }
 
   async find(key: string): Promise<string | null | undefined> {
-    console.log(`🚀 ~ find ~ key:`, key);
-
     return this.RedisClient.get(key);
   }
 
-  async create(key: string, ttl: number, value: string): Promise<string> {
+  async create(key: string, ttl = 10, value: string): Promise<string> {
     return this.RedisClient.setex(key, ttl, value);
   }
 
@@ -39,7 +37,6 @@ export class RedisStoreAdapter implements Store {
       return null;
     }
     const key = (this.prefix + sessionId).toString();
-    console.log(`🚀 ~ key:`, key);
     const result = await this.RedisClient.get(key);
     if (result) {
       return JSON.parse(result);
