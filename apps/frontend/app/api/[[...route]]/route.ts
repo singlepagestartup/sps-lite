@@ -37,7 +37,7 @@ app.use(
       path: "/",
       httpOnly: true,
     },
-  }),
+  }) as any,
 );
 
 app.on(["GET"], "*", async (c, next) => {
