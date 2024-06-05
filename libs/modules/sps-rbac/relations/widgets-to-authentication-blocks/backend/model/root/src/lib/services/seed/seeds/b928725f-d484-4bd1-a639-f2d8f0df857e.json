@@ -1,0 +1,27 @@
+{
+  "id": "b928725f-d484-4bd1-a639-f2d8f0df857e",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "widgetId": "f5c41b3f-2ae0-4129-9fa7-5abaddc4ce7a",
+  "authenticationBlockId": "6a9ddd42-1689-48f4-ad67-437f33798793",
+  "widget": {
+    "className": null,
+    "title": "Login widget",
+    "id": "f5c41b3f-2ae0-4129-9fa7-5abaddc4ce7a",
+    "createdAt": "2024-06-01T03:35:07.482Z",
+    "updatedAt": "2024-06-01T03:35:07.482Z",
+    "variant": "default"
+  },
+  "authenticationBlock": {
+    "className": "",
+    "anchor": "",
+    "description": "",
+    "subtitle": "",
+    "title": "Login block",
+    "id": "6a9ddd42-1689-48f4-ad67-437f33798793",
+    "createdAt": "2024-06-01T03:12:30.612Z",
+    "updatedAt": "2024-06-01T03:12:30.612Z",
+    "variant": "login"
+  }
+}

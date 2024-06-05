@@ -4,7 +4,7 @@ import { Component as Widget } from "@sps/startup-models-widget-frontend-compone
 
 export function App(props: IComponentProps) {
   return (
-    <div className="">
+    <div data-module="startup" className={props.className || ""}>
       <Widget
         isServer={props.isServer}
         variant="default"

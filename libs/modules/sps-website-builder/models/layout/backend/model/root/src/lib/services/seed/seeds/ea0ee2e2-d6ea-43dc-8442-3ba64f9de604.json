@@ -1,0 +1,69 @@
+{
+  "title": "Public page layout",
+  "id": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+  "createdAt": "2024-05-25T20:00:16.272Z",
+  "updatedAt": "2024-05-25T20:00:16.272Z",
+  "variant": "default",
+  "layoutsToNavbars": [
+    {
+      "id": "b998a17e-5541-4340-bde9-d9ba049087a4",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+      "navbarId": "ab7306be-adfa-4a9d-9d79-c89b99c965ad"
+    }
+  ],
+  "layoutsToFooters": [
+    {
+      "id": "c6ac96ce-b444-4de1-9825-5a33329329fc",
+      "orderIndex": 0,
+      "variant": "default",
+      "className": null,
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+      "footerId": "342228f6-af5b-40aa-9bdf-35f1b6109a11"
+    }
+  ],
+  "pagesToLayouts": [
+    {
+      "id": "e39d1db3-baf6-4d77-90cd-df95f01dc2fa",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    },
+    {
+      "id": "454bfbc5-503b-4079-b654-7bb5d4191fd4",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    },
+    {
+      "id": "c7cb8ddd-98f7-4014-be8e-278a829a664f",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "e461f61f-ea28-4258-a7b4-b5d606c478fd",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    },
+    {
+      "id": "21b6da5c-1108-47b8-957e-19a574855a12",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "90defdb1-3749-4be8-883d-736530341668",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    },
+    {
+      "id": "117cf675-c872-4121-873a-591d00a8a052",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "4e2eefbb-61f2-4855-87e6-b8ebf4d82f06",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    }
+  ]
+}

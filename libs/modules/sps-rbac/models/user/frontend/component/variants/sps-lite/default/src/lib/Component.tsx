@@ -1,12 +1,17 @@
+import React from "react";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-rbac"
-      data-model="role"
+      data-model="user"
       data-variant={props.variant}
-      className="bg-white mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
-    ></div>
+      className="w-full py-10 text-center flex flex-col gap-1"
+    >
+      <p className="font-bold">Generated variant</p>
+      <p className="font-bold text-4xl">Model: user</p>
+      <p className="font-bold text-4xl">Variant: default</p>
+    </div>
   );
 }

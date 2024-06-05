@@ -1,0 +1,26 @@
+{
+  "id": "4b734dd9-c3a8-480c-bcf0-0e43dfc3b181",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "b66de123-5954-456c-8156-ab76fcadd8e7",
+  "heroSectionBlockId": "28b45528-ac41-4c9c-ab83-128df195d63b",
+  "widget": {
+    "title": "Welcome hero-section block",
+    "id": "b66de123-5954-456c-8156-ab76fcadd8e7",
+    "createdAt": "2024-05-25T20:42:09.966Z",
+    "updatedAt": "2024-05-25T20:42:09.966Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "Welcome to Single Page Startup!",
+    "subtitle": null,
+    "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Tip top\"},{\"type\":\"text\",\"text\":\" \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"heading\",\"attrs\":{\"level\":1},\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"},{\"type\":\"strike\"}],\"text\":\"hero-section-block\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Hello italic!\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
+    "anchor": "",
+    "className": "",
+    "id": "28b45528-ac41-4c9c-ab83-128df195d63b",
+    "createdAt": "2024-05-25T20:43:49.272Z",
+    "updatedAt": "2024-05-25T20:43:49.272Z",
+    "variant": "default"
+  }
+}

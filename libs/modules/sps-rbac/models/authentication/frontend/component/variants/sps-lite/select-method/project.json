@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-select-method",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/select-method/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

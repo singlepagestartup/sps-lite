@@ -1,0 +1,12 @@
+{
+  "name": "@sps/sps-rbac-models-identity-backend-schema-relations-users-to-identities",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/identity/backend/schema/relations/users-to-identities/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}

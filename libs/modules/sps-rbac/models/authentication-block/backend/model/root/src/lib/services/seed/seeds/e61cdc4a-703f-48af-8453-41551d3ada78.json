@@ -1,0 +1,21 @@
+{
+  "className": "",
+  "anchor": "",
+  "description": "",
+  "subtitle": "",
+  "title": "Logout block",
+  "id": "e61cdc4a-703f-48af-8453-41551d3ada78",
+  "createdAt": "2024-06-01T09:25:33.639Z",
+  "updatedAt": "2024-06-01T09:25:33.639Z",
+  "variant": "logout",
+  "widgetsToAuthenticationBlocks": [
+    {
+      "id": "4803fa2b-f464-4861-a11f-35857072d742",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "widgetId": "bcd1242e-96ca-499c-a2f3-181a04d8e857",
+      "authenticationBlockId": "e61cdc4a-703f-48af-8453-41551d3ada78"
+    }
+  ]
+}

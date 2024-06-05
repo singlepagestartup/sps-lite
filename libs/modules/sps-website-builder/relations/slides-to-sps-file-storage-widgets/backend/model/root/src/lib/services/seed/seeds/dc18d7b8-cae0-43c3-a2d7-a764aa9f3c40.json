@@ -1,0 +1,18 @@
+{
+  "id": "dc18d7b8-cae0-43c3-a2d7-a764aa9f3c40",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "slideId": "217772ac-1923-4a3f-937b-78c68950401e",
+  "spsFileStorageWidgetId": "d247f77f-00d0-462a-b86e-78c397dc3cee",
+  "slide": {
+    "id": "217772ac-1923-4a3f-937b-78c68950401e",
+    "createdAt": "2024-05-29T19:21:22.188Z",
+    "updatedAt": "2024-05-29T19:21:22.188Z",
+    "variant": "default",
+    "title": "Slide #1",
+    "subtitle": "",
+    "description": "",
+    "className": ""
+  }
+}

@@ -3,6 +3,7 @@ import { Coder as ModuleCoder } from "../Coder";
 import { Coder as AppCoder } from "./app/Coder";
 import { Coder as ModelsCoder } from "./models/Coder";
 import { Coder as SchemaCoder } from "./schema/Coder";
+import { Coder as SdkCoder } from "./sdk/Coder";
 
 export class Coder {
   parent: ModuleCoder;
@@ -14,6 +15,7 @@ export class Coder {
     app: AppCoder;
     models: ModelsCoder;
     schema: SchemaCoder;
+    sdk: SdkCoder;
   };
 
   constructor({ tree, parent }: { tree: Tree; parent: ModuleCoder }) {
@@ -38,10 +40,16 @@ export class Coder {
       parent: this,
     });
 
+    const sdk = new SdkCoder({
+      tree: this.tree,
+      parent: this,
+    });
+
     this.project = {
       schema,
       models,
       app,
+      sdk,
     };
   }
 
@@ -49,15 +57,18 @@ export class Coder {
     await this.project.schema.update();
     await this.project.models.update();
     await this.project.app.update();
+    await this.project.sdk.update();
   }
 
   async create() {
     await this.project.schema.create();
     await this.project.models.create();
     await this.project.app.create();
+    await this.project.sdk.create();
   }
 
   async remove() {
+    await this.project.sdk.remove();
     await this.project.app.remove();
     await this.project.models.remove();
     await this.project.schema.remove();

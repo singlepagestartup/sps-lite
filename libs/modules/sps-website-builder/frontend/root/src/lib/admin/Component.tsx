@@ -268,7 +268,7 @@ export function Component(props: IComponentProps) {
       </div>
       <div className="w-full lg:w-9/12 flex flex-col gap-6 p-4 pt-6">
         {typeof RenderWidget === "function" ? (
-          <RenderWidget {...({} as any)} />
+          <RenderWidget {...({} as any)} isServer={false} />
         ) : null}
       </div>
     </div>

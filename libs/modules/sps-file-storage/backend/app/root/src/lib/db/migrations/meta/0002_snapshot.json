@@ -1,7 +1,5 @@
 {
-  "id": "5aff3185-4ba0-4f84-8657-cb499b43fd54",
-  "prevId": "1a13c31f-7f73-4237-8645-c7eaa0b562ae",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.sps_f_s_file": {
@@ -153,20 +151,20 @@
         "sps_f_s_ws_to_fs_ocw_wt_id_sps_f_s_widget_id_fk": {
           "name": "sps_f_s_ws_to_fs_ocw_wt_id_sps_f_s_widget_id_fk",
           "tableFrom": "sps_f_s_ws_to_fs_ocw",
-          "tableTo": "sps_f_s_widget",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_f_s_widget",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_f_s_ws_to_fs_ocw_fe_id_sps_f_s_file_id_fk": {
           "name": "sps_f_s_ws_to_fs_ocw_fe_id_sps_f_s_file_id_fk",
           "tableFrom": "sps_f_s_ws_to_fs_ocw",
-          "tableTo": "sps_f_s_file",
           "columnsFrom": ["fe_id"],
+          "tableTo": "sps_f_s_file",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -176,8 +174,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "5aff3185-4ba0-4f84-8657-cb499b43fd54",
+  "prevId": "1a13c31f-7f73-4237-8645-c7eaa0b562ae"
 }

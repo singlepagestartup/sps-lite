@@ -1,0 +1,26 @@
+{
+  "id": "277cc01c-d543-4d07-a67f-7a509f7a64e6",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
+  "heroSectionBlockId": "8e62f337-1efa-4048-966e-f12e4bd3df20",
+  "widget": {
+    "title": "About hero section block",
+    "id": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
+    "createdAt": "2024-05-25T20:45:11.809Z",
+    "updatedAt": "2024-05-25T20:45:11.809Z",
+    "variant": "default"
+  },
+  "heroSectionBlock": {
+    "title": "The fastest way to create service oriented TypeScript Full-Stack project",
+    "subtitle": null,
+    "description": null,
+    "anchor": null,
+    "className": null,
+    "id": "8e62f337-1efa-4048-966e-f12e4bd3df20",
+    "createdAt": "2024-05-25T20:44:59.694Z",
+    "updatedAt": "2024-05-25T20:44:59.694Z",
+    "variant": "default"
+  }
+}

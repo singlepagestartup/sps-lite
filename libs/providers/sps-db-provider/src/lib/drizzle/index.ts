@@ -6,7 +6,6 @@ import path from "path";
 export { migrate } from "./migrate";
 export { seed } from "./seed";
 export { drop } from "./drop";
-export { config } from "./config";
 export const db = drizzle(postgres, { schema: drizzleSchema });
 export const schema = drizzleSchema;
 
@@ -14,6 +13,7 @@ const modulesSchemaPaths = [
   path.resolve(__dirname, "./schema.ts"),
   path.resolve(__dirname, "./sps-website-builder.ts"),
   path.resolve(__dirname, "./sps-file-storage.ts"),
+  path.resolve(__dirname, "./sps-rbac.ts"),
   path.resolve(__dirname, "./startup.ts"),
 ];
 

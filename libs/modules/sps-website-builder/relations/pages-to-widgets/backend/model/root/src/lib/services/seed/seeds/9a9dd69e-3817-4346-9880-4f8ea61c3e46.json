@@ -1,0 +1,24 @@
+{
+  "id": "9a9dd69e-3817-4346-9880-4f8ea61c3e46",
+  "variant": "default",
+  "orderIndex": 7,
+  "className": null,
+  "pageId": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
+  "widgetId": "25a6437c-3907-4605-a374-c21107983164",
+  "page": {
+    "id": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
+    "title": "Main page",
+    "url": "/",
+    "description": "Description",
+    "createdAt": "2024-05-25T19:59:47.207Z",
+    "updatedAt": "2024-05-25T19:59:47.207Z",
+    "variant": "default"
+  },
+  "widget": {
+    "title": "Logotype widget",
+    "id": "25a6437c-3907-4605-a374-c21107983164",
+    "createdAt": "2024-05-25T20:06:05.585Z",
+    "updatedAt": "2024-05-25T20:06:05.585Z",
+    "variant": "default"
+  }
+}

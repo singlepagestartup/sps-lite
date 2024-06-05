@@ -1,6 +1,8 @@
+import { IRelation as IUsersToRoles } from "@sps/sps-rbac-relations-users-to-roles-contracts";
+import { IRelation as IUsersToIdentities } from "@sps/sps-rbac-relations-users-to-identities-contracts";
 import type { IModel as IParentModel } from "@sps/sps-rbac-models-user-contracts";
-import { IModel as ICart } from "@sps/sps-ecommerce-models-cart-contracts";
 
 export interface IModel extends IParentModel {
-  cart?: ICart | null;
+  usersToRoles: IUsersToRoles[];
+  usersToIdentities: IUsersToIdentities[];
 }

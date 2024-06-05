@@ -1,0 +1,12 @@
+{
+  "name": "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {}
+  }
+}

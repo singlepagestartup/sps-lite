@@ -5,6 +5,7 @@ import { IComponentPropsExtended } from "./interface";
 import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
 import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
 import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
+import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -27,6 +28,13 @@ export function Component(props: IComponentPropsExtended) {
                 setWidget("sps-file-storage");
               }}
               active={widget === "sps-file-storage"}
+            />
+            <Button
+              title="sps-rbac"
+              onClick={() => {
+                setWidget("sps-rbac");
+              }}
+              active={widget === "sps-rbac"}
             />
             <Button
               title="startup"
@@ -53,6 +61,13 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
             {widget === "startup" ? (
               <StartupAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-rbac" ? (
+              <SpsRbacAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"

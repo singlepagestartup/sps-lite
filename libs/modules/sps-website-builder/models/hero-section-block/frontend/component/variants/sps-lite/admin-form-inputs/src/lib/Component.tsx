@@ -107,6 +107,7 @@ export function Component(props: IComponentPropsExtended) {
           <HeroSectionsToButtonsArraysSpsLiteSelectRight
             isServer={props.isServer}
             variant="select-right"
+            heroSectionBlockId={props.data?.id}
           />
         </div>
       </ModelEntitiesListCard>

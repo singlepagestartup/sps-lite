@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-logout",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/logout/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "test:watch": {}
+  }
+}

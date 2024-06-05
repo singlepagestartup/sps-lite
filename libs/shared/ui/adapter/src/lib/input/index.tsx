@@ -24,12 +24,13 @@ const Placeholder = () => {
 };
 
 export const Component = (props: IComponentProps) => {
-  if (props.type === "text") {
+  if (props.type === "text" || props.type === "password") {
     return (
       <FormControl>
         <Input
           placeholder={props.placeholder}
           {...props.field}
+          type={props.type}
           className={props.className}
         />
       </FormControl>
@@ -85,6 +86,9 @@ export const Component = (props: IComponentProps) => {
           placeholder={props.placeholder}
           type="number"
           {...props.field}
+          min={props.min}
+          max={props.max}
+          step={props.step}
           className={props.className}
           onChange={(event) => {
             const value = +event.target.value;

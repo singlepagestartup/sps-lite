@@ -1,7 +1,5 @@
 {
-  "id": "26774515-19b2-44bd-b06f-3cdb5b9136f9",
-  "prevId": "1962c327-110c-4e33-ae37-69830995008a",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.sps_w_b_button": {
@@ -159,20 +157,20 @@
         "sps_w_b_bs_as_to_bs_i0l_by_id_sps_w_b_bs_ay_8m3_id_fk": {
           "name": "sps_w_b_bs_as_to_bs_i0l_by_id_sps_w_b_bs_ay_8m3_id_fk",
           "tableFrom": "sps_w_b_bs_as_to_bs_i0l",
-          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsFrom": ["by_id"],
+          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_bs_as_to_bs_i0l_bn_id_sps_w_b_button_id_fk": {
           "name": "sps_w_b_bs_as_to_bs_i0l_bn_id_sps_w_b_button_id_fk",
           "tableFrom": "sps_w_b_bs_as_to_bs_i0l",
-          "tableTo": "sps_w_b_button",
           "columnsFrom": ["bn_id"],
+          "tableTo": "sps_w_b_button",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -207,20 +205,20 @@
         "sps_w_b_fs_sn_bs_to_fs_fk_id_sps_w_b_fs_sn_bk_id_fk": {
           "name": "sps_w_b_fs_sn_bs_to_fs_fk_id_sps_w_b_fs_sn_bk_id_fk",
           "tableFrom": "sps_w_b_fs_sn_bs_to_fs",
-          "tableTo": "sps_w_b_fs_sn_bk",
           "columnsFrom": ["fk_id"],
+          "tableTo": "sps_w_b_fs_sn_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_fs_sn_bs_to_fs_fe_id_sps_w_b_feature_id_fk": {
           "name": "sps_w_b_fs_sn_bs_to_fs_fe_id_sps_w_b_feature_id_fk",
           "tableFrom": "sps_w_b_fs_sn_bs_to_fs",
-          "tableTo": "sps_w_b_feature",
           "columnsFrom": ["fe_id"],
+          "tableTo": "sps_w_b_feature",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -438,20 +436,20 @@
         "sps_w_b_fr_bs_to_bs_as_d3j_fk_id_sps_w_b_fr_bk_id_fk": {
           "name": "sps_w_b_fr_bs_to_bs_as_d3j_fk_id_sps_w_b_fr_bk_id_fk",
           "tableFrom": "sps_w_b_fr_bs_to_bs_as_d3j",
-          "tableTo": "sps_w_b_fr_bk",
           "columnsFrom": ["fk_id"],
+          "tableTo": "sps_w_b_fr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_fr_bs_to_bs_as_d3j_by_id_sps_w_b_bs_ay_8m3_id_fk": {
           "name": "sps_w_b_fr_bs_to_bs_as_d3j_by_id_sps_w_b_bs_ay_8m3_id_fk",
           "tableFrom": "sps_w_b_fr_bs_to_bs_as_d3j",
-          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsFrom": ["by_id"],
+          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -493,20 +491,20 @@
         "sps_w_b_fr_bs_to_ls_pbe_fk_id_sps_w_b_fr_bk_id_fk": {
           "name": "sps_w_b_fr_bs_to_ls_pbe_fk_id_sps_w_b_fr_bk_id_fk",
           "tableFrom": "sps_w_b_fr_bs_to_ls_pbe",
-          "tableTo": "sps_w_b_fr_bk",
           "columnsFrom": ["fk_id"],
+          "tableTo": "sps_w_b_fr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_fr_bs_to_ls_pbe_le_id_sps_w_b_logotype_id_fk": {
           "name": "sps_w_b_fr_bs_to_ls_pbe_le_id_sps_w_b_logotype_id_fk",
           "tableFrom": "sps_w_b_fr_bs_to_ls_pbe",
-          "tableTo": "sps_w_b_logotype",
           "columnsFrom": ["le_id"],
+          "tableTo": "sps_w_b_logotype",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -541,20 +539,20 @@
         "sps_w_b_fs_to_ws_fr_id_sps_w_b_footers_id_fk": {
           "name": "sps_w_b_fs_to_ws_fr_id_sps_w_b_footers_id_fk",
           "tableFrom": "sps_w_b_fs_to_ws",
-          "tableTo": "sps_w_b_footers",
           "columnsFrom": ["fr_id"],
+          "tableTo": "sps_w_b_footers",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_fs_to_ws_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_fs_to_ws_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_fs_to_ws",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -664,20 +662,20 @@
         "sps_w_b_ho_sn_bs_to_bs_as_pmd_hk_id_sps_w_b_ho_sn_bs_id_fk": {
           "name": "sps_w_b_ho_sn_bs_to_bs_as_pmd_hk_id_sps_w_b_ho_sn_bs_id_fk",
           "tableFrom": "sps_w_b_ho_sn_bs_to_bs_as_pmd",
-          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsFrom": ["hk_id"],
+          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ho_sn_bs_to_bs_as_pmd_by_id_sps_w_b_bs_ay_8m3_id_fk": {
           "name": "sps_w_b_ho_sn_bs_to_bs_as_pmd_by_id_sps_w_b_bs_ay_8m3_id_fk",
           "tableFrom": "sps_w_b_ho_sn_bs_to_bs_as_pmd",
-          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsFrom": ["by_id"],
+          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -712,11 +710,11 @@
         "sps_w_b_ho_sn_bs_to_fs_y4o_hk_id_sps_w_b_ho_sn_bs_id_fk": {
           "name": "sps_w_b_ho_sn_bs_to_fs_y4o_hk_id_sps_w_b_ho_sn_bs_id_fk",
           "tableFrom": "sps_w_b_ho_sn_bs_to_fs_y4o",
-          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsFrom": ["hk_id"],
+          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -795,20 +793,20 @@
         "sps_w_b_ls_to_fs_lt_id_sps_w_b_layouts_id_fk": {
           "name": "sps_w_b_ls_to_fs_lt_id_sps_w_b_layouts_id_fk",
           "tableFrom": "sps_w_b_ls_to_fs",
-          "tableTo": "sps_w_b_layouts",
           "columnsFrom": ["lt_id"],
+          "tableTo": "sps_w_b_layouts",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ls_to_fs_fr_id_sps_w_b_footers_id_fk": {
           "name": "sps_w_b_ls_to_fs_fr_id_sps_w_b_footers_id_fk",
           "tableFrom": "sps_w_b_ls_to_fs",
-          "tableTo": "sps_w_b_footers",
           "columnsFrom": ["fr_id"],
+          "tableTo": "sps_w_b_footers",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -843,20 +841,20 @@
         "sps_w_b_ls_to_ns_lt_id_sps_w_b_layouts_id_fk": {
           "name": "sps_w_b_ls_to_ns_lt_id_sps_w_b_layouts_id_fk",
           "tableFrom": "sps_w_b_ls_to_ns",
-          "tableTo": "sps_w_b_layouts",
           "columnsFrom": ["lt_id"],
+          "tableTo": "sps_w_b_layouts",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ls_to_ns_nr_id_sps_w_b_navbars_id_fk": {
           "name": "sps_w_b_ls_to_ns_nr_id_sps_w_b_navbars_id_fk",
           "tableFrom": "sps_w_b_ls_to_ns",
-          "tableTo": "sps_w_b_navbars",
           "columnsFrom": ["nr_id"],
+          "tableTo": "sps_w_b_navbars",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1042,20 +1040,20 @@
         "sps_w_b_nr_bs_to_bs_as_njg_nk_id_sps_w_b_nr_bk_id_fk": {
           "name": "sps_w_b_nr_bs_to_bs_as_njg_nk_id_sps_w_b_nr_bk_id_fk",
           "tableFrom": "sps_w_b_nr_bs_to_bs_as_njg",
-          "tableTo": "sps_w_b_nr_bk",
           "columnsFrom": ["nk_id"],
+          "tableTo": "sps_w_b_nr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_nr_bs_to_bs_as_njg_by_id_sps_w_b_bs_ay_8m3_id_fk": {
           "name": "sps_w_b_nr_bs_to_bs_as_njg_by_id_sps_w_b_bs_ay_8m3_id_fk",
           "tableFrom": "sps_w_b_nr_bs_to_bs_as_njg",
-          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsFrom": ["by_id"],
+          "tableTo": "sps_w_b_bs_ay_8m3",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1090,20 +1088,20 @@
         "sps_w_b_nr_bs_to_ls_nk_id_sps_w_b_nr_bk_id_fk": {
           "name": "sps_w_b_nr_bs_to_ls_nk_id_sps_w_b_nr_bk_id_fk",
           "tableFrom": "sps_w_b_nr_bs_to_ls",
-          "tableTo": "sps_w_b_nr_bk",
           "columnsFrom": ["nk_id"],
+          "tableTo": "sps_w_b_nr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_nr_bs_to_ls_le_id_sps_w_b_logotype_id_fk": {
           "name": "sps_w_b_nr_bs_to_ls_le_id_sps_w_b_logotype_id_fk",
           "tableFrom": "sps_w_b_nr_bs_to_ls",
-          "tableTo": "sps_w_b_logotype",
           "columnsFrom": ["le_id"],
+          "tableTo": "sps_w_b_logotype",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1138,20 +1136,20 @@
         "sps_w_b_ns_to_ws_nr_id_sps_w_b_navbars_id_fk": {
           "name": "sps_w_b_ns_to_ws_nr_id_sps_w_b_navbars_id_fk",
           "tableFrom": "sps_w_b_ns_to_ws",
-          "tableTo": "sps_w_b_navbars",
           "columnsFrom": ["nr_id"],
+          "tableTo": "sps_w_b_navbars",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ns_to_ws_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ns_to_ws_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ns_to_ws",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1217,8 +1215,8 @@
       "uniqueConstraints": {
         "sps_w_b_pages_url_unique": {
           "name": "sps_w_b_pages_url_unique",
-          "nullsNotDistinct": false,
-          "columns": ["url"]
+          "columns": ["url"],
+          "nullsNotDistinct": false
         }
       }
     },
@@ -1251,20 +1249,20 @@
         "sps_w_b_ps_to_ls_pe_id_sps_w_b_pages_id_fk": {
           "name": "sps_w_b_ps_to_ls_pe_id_sps_w_b_pages_id_fk",
           "tableFrom": "sps_w_b_ps_to_ls",
-          "tableTo": "sps_w_b_pages",
           "columnsFrom": ["pe_id"],
+          "tableTo": "sps_w_b_pages",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ps_to_ls_lt_id_sps_w_b_layouts_id_fk": {
           "name": "sps_w_b_ps_to_ls_lt_id_sps_w_b_layouts_id_fk",
           "tableFrom": "sps_w_b_ps_to_ls",
-          "tableTo": "sps_w_b_layouts",
           "columnsFrom": ["lt_id"],
+          "tableTo": "sps_w_b_layouts",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1306,20 +1304,20 @@
         "sps_w_b_ps_to_ws_pe_id_sps_w_b_pages_id_fk": {
           "name": "sps_w_b_ps_to_ws_pe_id_sps_w_b_pages_id_fk",
           "tableFrom": "sps_w_b_ps_to_ws",
-          "tableTo": "sps_w_b_pages",
           "columnsFrom": ["pe_id"],
+          "tableTo": "sps_w_b_pages",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ps_to_ws_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ps_to_ws_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ps_to_ws",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1534,20 +1532,20 @@
         "sps_w_b_sr_bs_to_ss_sk_id_sps_w_b_sr_bk_id_fk": {
           "name": "sps_w_b_sr_bs_to_ss_sk_id_sps_w_b_sr_bk_id_fk",
           "tableFrom": "sps_w_b_sr_bs_to_ss",
-          "tableTo": "sps_w_b_sr_bk",
           "columnsFrom": ["sk_id"],
+          "tableTo": "sps_w_b_sr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_sr_bs_to_ss_sr_id_sps_w_b_slider_id_fk": {
           "name": "sps_w_b_sr_bs_to_ss_sr_id_sps_w_b_slider_id_fk",
           "tableFrom": "sps_w_b_sr_bs_to_ss",
-          "tableTo": "sps_w_b_slider",
           "columnsFrom": ["sr_id"],
+          "tableTo": "sps_w_b_slider",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1582,20 +1580,20 @@
         "sps_w_b_ss_to_ss_sr_id_sps_w_b_slider_id_fk": {
           "name": "sps_w_b_ss_to_ss_sr_id_sps_w_b_slider_id_fk",
           "tableFrom": "sps_w_b_ss_to_ss",
-          "tableTo": "sps_w_b_slider",
           "columnsFrom": ["sr_id"],
+          "tableTo": "sps_w_b_slider",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ss_to_ss_se_id_sps_w_b_slide_id_fk": {
           "name": "sps_w_b_ss_to_ss_se_id_sps_w_b_slide_id_fk",
           "tableFrom": "sps_w_b_ss_to_ss",
-          "tableTo": "sps_w_b_slide",
           "columnsFrom": ["se_id"],
+          "tableTo": "sps_w_b_slide",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1630,20 +1628,20 @@
         "sps_w_b_ws_to_fs_sn_bs_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_fs_sn_bs_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_fs_sn_bs",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_fs_sn_bs_fk_id_sps_w_b_fs_sn_bk_id_fk": {
           "name": "sps_w_b_ws_to_fs_sn_bs_fk_id_sps_w_b_fs_sn_bk_id_fk",
           "tableFrom": "sps_w_b_ws_to_fs_sn_bs",
-          "tableTo": "sps_w_b_fs_sn_bk",
           "columnsFrom": ["fk_id"],
+          "tableTo": "sps_w_b_fs_sn_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1722,20 +1720,20 @@
         "sps_w_b_ws_to_fr_bs_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_fr_bs_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_fr_bs",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_fr_bs_fk_id_sps_w_b_fr_bk_id_fk": {
           "name": "sps_w_b_ws_to_fr_bs_fk_id_sps_w_b_fr_bk_id_fk",
           "tableFrom": "sps_w_b_ws_to_fr_bs",
-          "tableTo": "sps_w_b_fr_bk",
           "columnsFrom": ["fk_id"],
+          "tableTo": "sps_w_b_fr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1770,20 +1768,20 @@
         "sps_w_b_ws_to_ho_sn_bs_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_ho_sn_bs_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_ho_sn_bs",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_ho_sn_bs_ho_sn_bk_id_sps_w_b_ho_sn_bs_id_fk": {
           "name": "sps_w_b_ws_to_ho_sn_bs_ho_sn_bk_id_sps_w_b_ho_sn_bs_id_fk",
           "tableFrom": "sps_w_b_ws_to_ho_sn_bs",
-          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsFrom": ["ho_sn_bk_id"],
+          "tableTo": "sps_w_b_ho_sn_bs",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1825,20 +1823,20 @@
         "sps_w_b_ws_to_ls_xth_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_ls_xth_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_ls_xth",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_ls_xth_le_id_sps_w_b_logotype_id_fk": {
           "name": "sps_w_b_ws_to_ls_xth_le_id_sps_w_b_logotype_id_fk",
           "tableFrom": "sps_w_b_ws_to_ls_xth",
-          "tableTo": "sps_w_b_logotype",
           "columnsFrom": ["le_id"],
+          "tableTo": "sps_w_b_logotype",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1880,20 +1878,20 @@
         "sps_w_b_ws_to_nr_bs_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_nr_bs_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_nr_bs",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_nr_bs_nk_id_sps_w_b_nr_bk_id_fk": {
           "name": "sps_w_b_ws_to_nr_bs_nk_id_sps_w_b_nr_bk_id_fk",
           "tableFrom": "sps_w_b_ws_to_nr_bs",
-          "tableTo": "sps_w_b_nr_bk",
           "columnsFrom": ["nk_id"],
+          "tableTo": "sps_w_b_nr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1928,20 +1926,20 @@
         "sps_w_b_ws_to_sr_bs_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_sr_bs_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_sr_bs",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_sr_bs_sk_id_sps_w_b_sr_bk_id_fk": {
           "name": "sps_w_b_ws_to_sr_bs_sk_id_sps_w_b_sr_bk_id_fk",
           "tableFrom": "sps_w_b_ws_to_sr_bs",
-          "tableTo": "sps_w_b_sr_bk",
           "columnsFrom": ["sk_id"],
+          "tableTo": "sps_w_b_sr_bk",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1983,20 +1981,20 @@
         "sps_w_b_ws_to_ss_3bx_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_ss_3bx_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_ss_3bx",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "sps_w_b_ws_to_ss_3bx_se_id_sps_w_b_slide_id_fk": {
           "name": "sps_w_b_ws_to_ss_3bx_se_id_sps_w_b_slide_id_fk",
           "tableFrom": "sps_w_b_ws_to_ss_3bx",
-          "tableTo": "sps_w_b_slide",
           "columnsFrom": ["se_id"],
+          "tableTo": "sps_w_b_slide",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -2031,11 +2029,11 @@
         "sps_w_b_ws_to_ss_fe_se_me_ws_zb8_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_ss_fe_se_me_ws_zb8_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_ss_fe_se_me_ws_zb8",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -2070,11 +2068,11 @@
         "sps_w_b_ws_to_sp_me_ws_xy7_wt_id_sps_w_b_widgets_id_fk": {
           "name": "sps_w_b_ws_to_sp_me_ws_xy7_wt_id_sps_w_b_widgets_id_fk",
           "tableFrom": "sps_w_b_ws_to_sp_me_ws_xy7",
-          "tableTo": "sps_w_b_widgets",
           "columnsFrom": ["wt_id"],
+          "tableTo": "sps_w_b_widgets",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -2084,8 +2082,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "26774515-19b2-44bd-b06f-3cdb5b9136f9",
+  "prevId": "1962c327-110c-4e33-ae37-69830995008a"
 }
