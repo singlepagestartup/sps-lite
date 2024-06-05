@@ -250,6 +250,7 @@
     "next:dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
+      "cache": true,
       "options": {
         "buildTarget": "next:build",
         "dev": true,
@@ -261,6 +262,7 @@
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "dependsOn": [],
+      "cache": true,
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
