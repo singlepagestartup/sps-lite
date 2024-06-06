@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component";
 import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-frontend-component";
 import { TipTap } from "@sps/shadcn";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,7 +12,10 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="hero-section-block"
       data-variant={props.variant}
-      className={`${props.data.className || "px-2 py-20 lg:py-32"} w-full`}
+      className={cn(
+        "w-full flex flex-col",
+        props.data.className || "px-2 py-20 lg:py-32",
+      )}
     >
       <div className="w-full mx-auto max-w-7xl">
         {props.data?.title ? (

@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="features-section-block"
       data-variant={props.variant}
-      className={cn("w-full", props.data.className || "")}
+      className={cn("w-full flex", props.data.className || "")}
     >
       <div className="w-full mx-auto max-w-7xl">
         {props.data.title ? (

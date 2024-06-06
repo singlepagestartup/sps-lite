@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="slides-to-sps-file-storage-widgets"
       data-variant={props.variant}
-      className={cn("w-full", props.data.className)}
+      className={cn("w-full flex", props.data.className)}
     >
       <SpsFileStorageApp
         isServer={props.isServer}

@@ -16,6 +16,7 @@ const formSchema = z.object({
   featuresSectionBlockId: z.string().min(1),
   featureId: z.string().min(1),
   variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -31,6 +32,7 @@ export function Component(props: IComponentPropsExtended) {
         props.data?.featuresSectionBlockId || props.featuresSectionBlockId,
       featureId: props.data?.featureId,
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
     },
   });
 
@@ -90,6 +92,14 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <FormField
               ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
               type="select"
               label="Variant"
               name="variant"
@@ -111,6 +121,14 @@ export function Component(props: IComponentPropsExtended) {
             Select entity from features
           </h3>
           <CardContent className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <FormField
               ui="shadcn"
               type="select"

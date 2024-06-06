@@ -1259,6 +1259,9 @@
       "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-navbar-blocks-to-buttons-arrays": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/navbar-blocks-to-buttons-arrays/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-slides-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/slides-to-buttons-arrays/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-buttons-array-backend-schema-table": [
         "libs/modules/sps-website-builder/models/buttons-array/backend/schema/table/src/index.ts"
       ],
@@ -2104,6 +2107,9 @@
       ],
       "@sps/sps-website-builder-models-slide-backend-schema-relations-sliders-to-slides": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/relations/sliders-to-slides/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-backend-schema-relations-slides-to-buttons-arrays": [
+        "libs/modules/sps-website-builder/models/slide/backend/schema/relations/slides-to-buttons-arrays/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-backend-schema-relations-slides-to-sps-file-storage-widgets": [
         "libs/modules/sps-website-builder/models/slide/backend/schema/relations/slides-to-sps-file-storage-widgets/src/index.ts"
@@ -3022,6 +3028,42 @@
       ],
       "@sps/sps-website-builder-relations-sliders-to-slides-frontend-redux": [
         "libs/modules/sps-website-builder/relations/sliders-to-slides/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-app": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-model": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-schema": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-contracts": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/slides-to-buttons-arrays/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-app": [
         "libs/modules/sps-website-builder/relations/slides-to-sps-file-storage-widgets/backend/app/src/index.ts"

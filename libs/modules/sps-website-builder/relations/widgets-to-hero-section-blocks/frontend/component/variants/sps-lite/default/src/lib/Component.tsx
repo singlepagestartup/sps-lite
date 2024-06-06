@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as HeroSectionBlock } from "@sps/sps-website-builder-models-hero-section-block-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="widgets-to-hero-section-blocks"
       data-variant={props.variant}
-      className=""
+      className={cn("w-full flex", props.data.className)}
     >
       <HeroSectionBlock
         isServer={props.isServer}

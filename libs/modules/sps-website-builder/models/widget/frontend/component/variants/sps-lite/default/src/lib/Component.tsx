@@ -8,6 +8,7 @@ import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-buil
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component";
 import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component";
 import { Component as WidgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -15,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="widget"
       data-variant={props.variant}
-      className=""
+      className={cn("w-full flex", props.data.className)}
     >
       {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {

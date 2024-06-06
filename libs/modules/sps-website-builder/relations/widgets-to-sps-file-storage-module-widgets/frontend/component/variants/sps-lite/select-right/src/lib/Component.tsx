@@ -4,7 +4,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Card, CardContent } from "@sps/shadcn";
 import { z } from "zod";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
@@ -14,6 +14,7 @@ import { Component as AdminSelectInput } from "@sps/sps-file-storage-models-widg
 const formSchema = z.object({
   widgetId: z.string().min(1),
   spsFileStorageModuleWidgetId: z.string().min(1),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       widgetId: props.data?.widgetId || props.widgetId,
       spsFileStorageModuleWidgetId: props.data?.spsFileStorageModuleWidgetId,
+      className: props.data?.className || "",
     },
   });
 
@@ -52,7 +54,6 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    // replace with actual schema name
     storeName: "sps-website-builder/widgets",
     actionFilter: (action) => {
       return action.type === "widgets/executeMutation/fulfilled";
@@ -83,6 +84,14 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -97,6 +106,14 @@ export function Component(props: IComponentPropsExtended) {
             Select entity from sps-file-storage-module-widget
           </h3>
           <CardContent>
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}

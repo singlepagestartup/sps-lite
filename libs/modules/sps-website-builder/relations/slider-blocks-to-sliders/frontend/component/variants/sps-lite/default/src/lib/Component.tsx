@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Slider } from "@sps/sps-website-builder-models-slider-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="slider-blocks-to-sliders"
       data-variant={props.variant}
-      className="w-full"
+      className={cn("w-full flex", props.data.className)}
     >
       <Slider
         isServer={props.isServer}

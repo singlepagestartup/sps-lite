@@ -3,6 +3,7 @@ import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder-models-slide-contracts";
 import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component";
+import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -67,6 +68,26 @@ export function Component(props: IComponentPropsExtended) {
               );
             })}
             <SlidesToSpsFileStorageWidgets
+              isServer={props.isServer}
+              variant="select-right"
+              slideId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
+        <ModelEntitiesListCard title="slides-to-buttons-arrays">
+          <div className="flex flex-col gap-6">
+            {props.data?.slidesToButtonsArrays.map((entity, index) => {
+              return (
+                <SlidesToButtonsArrays
+                  key={index}
+                  isServer={props.isServer}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <SlidesToButtonsArrays
               isServer={props.isServer}
               variant="select-right"
               slideId={props.data?.id}

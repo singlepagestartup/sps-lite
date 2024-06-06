@@ -2,6 +2,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component";
 import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -9,7 +10,10 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="footer-block"
       data-variant={props.variant}
-      className={`w-full ${props.data.className || "bg-white pb-4 pt-12 px-4 lg:pb-6 lg:pt-16 lg:px-2"}`}
+      className={cn(
+        "w-full bg-white flex flex-col",
+        props.data.className || "pb-4 pt-12 px-4 lg:pb-6 lg:pt-16 lg:px-2",
+      )}
     >
       <div className="mx-auto w-full max-w-7xl flex flex-col gap-4">
         <div className="w-full flex flex-col lg:grid lg:grid-cols-4 justify-end gap-12">

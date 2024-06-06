@@ -10,6 +10,7 @@ import {
 import { IComponentPropsExtended } from "./interface";
 import { Component as SlidersToSlides } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-component";
 import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   const [api, setApi] = useState<CarouselApi>();
@@ -34,21 +35,21 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="slider"
       data-variant={props.variant}
-      className="w-full"
+      className={cn("w-full flex", props.data.className)}
     >
       <Carousel
         setApi={setApi}
         opts={{
           loop: true,
         }}
-        plugins={[
-          Autoplay({
-            delay: 8000,
-          }) as any,
-        ]}
-        className="relative"
+        // plugins={[
+        //   Autoplay({
+        //     delay: 8000,
+        //   }) as any,
+        // ]}
+        className="relative w-full flex overflow-hidden"
       >
-        <CarouselContent>
+        <CarouselContent className="w-full flex">
           {props.data.slidersToSlides.map((entity, index) => {
             return (
               <CarouselItem key={index} className="basis-auto flex w-full">

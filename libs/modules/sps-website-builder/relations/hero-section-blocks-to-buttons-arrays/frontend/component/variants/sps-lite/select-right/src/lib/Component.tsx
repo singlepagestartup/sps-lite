@@ -17,6 +17,7 @@ const formSchema = z.object({
   buttonsArrayId: z.string().min(1),
   variant: z.enum(variants).default("default"),
   orderIndex: z.number().default(0),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -33,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
       buttonsArrayId: props.data?.buttonsArrayId,
       variant: props.data?.variant || "default",
       orderIndex: props.data?.orderIndex || 0,
+      className: props.data?.className || "",
     },
   });
 
@@ -99,6 +101,14 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+            <FormField
+              ui="shadcn"
               type="number"
               label="Order index"
               name="orderIndex"
@@ -127,6 +137,14 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <FormField
               ui="shadcn"

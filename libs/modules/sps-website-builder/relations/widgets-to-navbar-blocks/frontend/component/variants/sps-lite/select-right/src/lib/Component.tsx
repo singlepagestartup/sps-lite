@@ -16,6 +16,7 @@ const formSchema = z.object({
   widgetId: z.string().min(1),
   navbarBlockId: z.string().min(1),
   variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -30,6 +31,7 @@ export function Component(props: IComponentPropsExtended) {
       widgetId: props.data?.widgetId || props.widgetId,
       navbarBlockId: props.data?.navbarBlockId,
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
     },
   });
 
@@ -94,6 +96,14 @@ export function Component(props: IComponentPropsExtended) {
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
             />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -117,6 +127,14 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <AdminSelectInput
               isServer={false}

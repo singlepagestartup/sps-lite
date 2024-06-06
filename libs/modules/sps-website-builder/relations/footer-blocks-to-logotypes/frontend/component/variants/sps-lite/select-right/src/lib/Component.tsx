@@ -17,6 +17,7 @@ const formSchema = z.object({
   logotypeId: z.string().min(1),
   variant: z.enum(variants).default("default"),
   orderIndex: z.number().default(0),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -32,6 +33,7 @@ export function Component(props: IComponentPropsExtended) {
       logotypeId: props.data?.logotypeId,
       variant: props.data?.variant || "default",
       orderIndex: props.data?.orderIndex || 0,
+      className: props.data?.className || "",
     },
   });
 
@@ -95,7 +97,14 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Enter order index"
             />
-
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <FormField
               ui="shadcn"
               type="select"
@@ -126,6 +135,14 @@ export function Component(props: IComponentPropsExtended) {
               name="orderIndex"
               form={form}
               placeholder="Enter order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <FormField
               ui="shadcn"

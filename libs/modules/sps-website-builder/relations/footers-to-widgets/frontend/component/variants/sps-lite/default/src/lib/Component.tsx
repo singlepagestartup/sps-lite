@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Widget } from "@sps/sps-website-builder-models-widget-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-relation="footers-to-widgets"
       data-variant={props.variant}
-      className=""
+      className={cn("w-full flex", props.data.className)}
     >
       <Widget
         isServer={props.isServer}

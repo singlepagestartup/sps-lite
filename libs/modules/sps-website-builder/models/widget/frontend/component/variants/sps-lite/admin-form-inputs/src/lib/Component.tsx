@@ -32,6 +32,15 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={form}
+          placeholder="Type class name"
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"

@@ -1,5 +1,7 @@
+import { cn } from "@sps/shared-frontend-utils-client";
 import { IComponentPropsExtended } from "./interface";
 import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-frontend-component";
+import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,45 +9,43 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="elements"
       data-variant="default"
-      className="w-full"
+      className={cn("w-full flex", props.data.className)}
     >
-      <div className="relative min-h-80">
-        {props.data.slidesToSpsFileStorageWidgets.map((entity, index) => {
-          return (
-            <SlidesToSpsFileStorageWidgets
-              key={index}
-              isServer={props.isServer}
-              variant="default"
-              data={entity}
-            />
-          );
-        })}
-
-        <div className="relative p-10">
-          <p className="font-bold text-xl relative">{props.data.title}</p>
+      <div className="relative min-h-80 w-full flex flex-col items-center justify-center gap-10">
+        <div className="absolute inset-0 flex">
+          {props.data.slidesToSpsFileStorageWidgets.map((entity, index) => {
+            return (
+              <SlidesToSpsFileStorageWidgets
+                key={index}
+                isServer={props.isServer}
+                variant="default"
+                data={entity}
+              />
+            );
+          })}
         </div>
+        <div className="flex flex-col gap-12 items-center">
+          <div className="relative p-10">
+            <h3 className="font-bold text-xl lg:text-4xl relative">
+              {props.data.title}
+            </h3>
+          </div>
 
-        {/* {props.data.media?.length ? (
-          <File
-            isServer={false}
-            variant="image"
-            data={props.data.media[0]}
-            containerClassName="w-full h-full"
-            className="object-cover w-full h-full"
-          />
-        ) : null} */}
-        {/* {props.data.showBackdrop ? <div className="backdrop"></div> : null} */}
-        {/* <div className="content–container">
-          <div className="content">
-            <h3>{props.data.title}</h3>
-            <p>{props.data.description}</p>
-            <div className="buttons-container">
-              {props.data.buttons?.map((button, index: number) => {
-                return <Button isServer={false} key={index} {...button} />;
+          {props.data.slidesToButtonsArrays.length ? (
+            <div className="relative flex gap-6">
+              {props.data.slidesToButtonsArrays.map((entity, index) => {
+                return (
+                  <SlidesToButtonsArrays
+                    key={index}
+                    isServer={props.isServer}
+                    variant="default"
+                    data={entity}
+                  />
+                );
               })}
             </div>
-          </div>
-        </div> */}
+          ) : null}
+        </div>
       </div>
     </div>
   );

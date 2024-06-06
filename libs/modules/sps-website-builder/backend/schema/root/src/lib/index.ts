@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBSlidesToButtonsArrays,
+  Relations as SPSWBSlidesToButtonsArraysRelations,
+} from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-schema";
+export {
   Table as SPSWBWidgetsToSpsRbacModuleWidgets,
   Relations as SPSWBWidgetsToSpsRbacModuleWidgetsRelations,
 } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-schema";

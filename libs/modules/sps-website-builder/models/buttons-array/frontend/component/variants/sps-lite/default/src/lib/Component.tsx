@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as ButtonsArrayToButtons } from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="buttons-array"
       data-variant={props.variant}
-      className={`w-full ${props.data.className || "flex gap-5"}`}
+      className={cn("w-full flex", props.data.className)}
     >
       {props.data.buttonsArraysToButtons.map((entity, index) => {
         return (

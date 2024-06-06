@@ -8,6 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant="default"
+      className="flex flex-col"
     >
       {props.data.pagesToLayouts?.length ? (
         <PagesToLayouts

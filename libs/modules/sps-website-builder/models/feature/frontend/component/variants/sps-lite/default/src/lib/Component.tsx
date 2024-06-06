@@ -8,10 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="elements.feature"
       data-variant={props.variant}
-      className={cn(
-        "flex flex-col gap-3 text-center p-4",
-        props.data.className || "",
-      )}
+      className={cn("flex flex-col", props.data.className)}
     >
       {/* <div>
         {props.data?.media?.length ? (
