@@ -12,6 +12,7 @@ export function Component(props: IComponentPropsExtended) {
     <form
       data-module="sps-website-builder"
       data-model="hero-section-block"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`w-full ${props.className || "flex flex-col gap-6"}`}
     >

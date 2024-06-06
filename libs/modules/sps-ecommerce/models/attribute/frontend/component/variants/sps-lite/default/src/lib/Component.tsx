@@ -13,6 +13,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-ecommerce"
       data-model="attribute"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="py-2 flex items-end gap-2"
     >

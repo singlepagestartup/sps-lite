@@ -7,6 +7,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-subscription"
       data-model="tier"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10"
     >

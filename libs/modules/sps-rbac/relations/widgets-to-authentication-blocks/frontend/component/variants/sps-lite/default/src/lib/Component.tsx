@@ -8,6 +8,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-rbac"
       data-relation="widgets-to-authentication-blocks"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn("w-full", props.data.className)}
     >

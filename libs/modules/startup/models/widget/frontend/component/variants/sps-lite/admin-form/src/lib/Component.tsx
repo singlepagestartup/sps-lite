@@ -60,6 +60,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="startup"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.className || ""}
     >

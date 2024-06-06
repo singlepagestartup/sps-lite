@@ -6,6 +6,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-ecommerce"
       data-model="cart"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="w-full flex flex-col gap-2 border border-gray-500 rounded-md p-2"
     >

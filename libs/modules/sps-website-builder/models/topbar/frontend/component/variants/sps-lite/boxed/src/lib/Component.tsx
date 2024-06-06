@@ -7,6 +7,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="topbar"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.data.className || ""}
     >

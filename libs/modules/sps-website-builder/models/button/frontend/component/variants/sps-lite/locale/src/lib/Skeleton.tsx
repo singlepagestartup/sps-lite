@@ -7,6 +7,7 @@ export function Skeleton(props: IComponentProps) {
       ui="sps"
       data-module="sps-website-builder"
       data-model="elements.button"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       data-ui-variant={props.data.variant}
       className={`${props.data.className || "w-full"}`}

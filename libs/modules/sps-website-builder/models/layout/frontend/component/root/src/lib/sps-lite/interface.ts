@@ -7,8 +7,6 @@ import { IComponentProps as IAdminFormComponentProps } from "@sps/sps-website-bu
 import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-default";
 import { IComponentProps as IFindComponentProps } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-find";
 import { IComponentProps as IPageAttacherComponentProps } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-page-attacher";
-import { IComponentProps as IEditorComponentProps } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-editor";
-import { IComponentProps as IBoxedComponentProps } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-boxed";
 
 export type IComponentProps =
   | IAdminFormInputsComponentProps
@@ -19,6 +17,4 @@ export type IComponentProps =
   | IAdminFormComponentProps
   | IDefaultComponentProps
   | IFindComponentProps
-  | IPageAttacherComponentProps
-  | IEditorComponentProps
-  | IBoxedComponentProps;
+  | IPageAttacherComponentProps;

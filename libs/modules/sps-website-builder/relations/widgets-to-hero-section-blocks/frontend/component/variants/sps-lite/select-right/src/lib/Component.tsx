@@ -76,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="widgets-to-hero-section-blocks"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >

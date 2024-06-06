@@ -71,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="navbars-to-widgets"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >

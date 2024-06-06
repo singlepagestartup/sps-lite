@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="<%= module_name %>"
       data-model="<%= model_name %>"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`w-full ${props.className || ""}`}
     >

@@ -5,6 +5,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-subscription"
       data-model="attribute-key"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >

@@ -9,6 +9,7 @@ export function Component(props: IComponentPropsExtended) {
     <form
       data-module="sps-website-builder"
       data-model="navbar"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >

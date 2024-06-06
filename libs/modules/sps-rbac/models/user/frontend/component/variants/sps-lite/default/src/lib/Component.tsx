@@ -6,6 +6,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-rbac"
       data-model="user"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="w-full py-10 text-center flex flex-col gap-1"
     >

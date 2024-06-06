@@ -7,6 +7,7 @@ export function Component(props: IComponentPropsExtended) {
       {...props.data}
       data-module="sps-crm"
       data-model="elements.input"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       ui="sps"
       label={props.data.label || undefined}

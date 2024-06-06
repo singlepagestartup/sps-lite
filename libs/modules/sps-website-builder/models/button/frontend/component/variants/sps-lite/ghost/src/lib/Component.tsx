@@ -9,6 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       ui="sps"
       data-module="sps-website-builder"
       data-model="elements.button"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       data-ui-variant={props.variant}
       className={`${props.data.className || "w-full"}`}

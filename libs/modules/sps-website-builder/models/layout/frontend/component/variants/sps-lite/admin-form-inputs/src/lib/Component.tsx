@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
     <form
       data-module="sps-website-builder"
       data-model="layout"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="space-y-8"
     >

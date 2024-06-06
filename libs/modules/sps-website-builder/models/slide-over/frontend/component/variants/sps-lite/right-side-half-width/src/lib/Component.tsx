@@ -14,12 +14,14 @@ export function Component(props: IComponentPropsExtended) {
     <Transition
       data-module="sps-website-builder"
       data-model="slide-over"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       show={props.isOpen}
       as="div"
     >
       <Dialog
         data-collection-type="slide-over"
+        data-id={props.data?.id || ""}
         data-variant={props.variant}
         className={props.className || ""}
         onClose={() => {

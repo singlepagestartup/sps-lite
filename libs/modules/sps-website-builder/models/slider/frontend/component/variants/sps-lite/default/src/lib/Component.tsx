@@ -34,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="slider"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
@@ -47,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
         //     delay: 8000,
         //   }) as any,
         // ]}
-        className="relative w-full flex overflow-hidden"
+        className="relative w-full flex"
       >
         <CarouselContent className="w-full flex">
           {props.data.slidersToSlides.map((entity, index) => {

@@ -7,6 +7,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="logotypes-list-block"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
     >

@@ -8,6 +8,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-crm"
       data-model="review"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="flex space-x-4 text-sm text-gray-500"
     >

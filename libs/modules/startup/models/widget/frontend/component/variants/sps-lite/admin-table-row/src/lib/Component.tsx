@@ -24,7 +24,12 @@ export function Component(props: IComponentPropsExtended) {
   }, [deleteEntityResult]);
 
   return (
-    <div data-module="startup" data-model="widget" data-variant={props.variant}>
+    <div
+      data-module="startup"
+      data-model="widget"
+      data-id={props.data?.id || ""}
+      data-variant={props.variant}
+    >
       <ModelEntityCard
         onDeleteEntity={() => {
           if (props.data?.id) {

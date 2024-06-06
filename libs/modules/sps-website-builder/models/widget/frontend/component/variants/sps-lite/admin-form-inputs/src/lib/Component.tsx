@@ -17,6 +17,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
@@ -35,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
           type="text"
           label="Class name"
           name="className"
-          form={form}
+          form={props.form}
           placeholder="Type class name"
         />
 

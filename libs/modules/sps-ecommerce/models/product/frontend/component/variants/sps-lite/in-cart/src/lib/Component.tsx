@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-ecommerce"
       data-model="product"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="flex gap-2 items-center text-gray-500"
     >

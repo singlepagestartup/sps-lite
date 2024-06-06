@@ -9,6 +9,7 @@ export function Component(props: IComponentPropsExtended) {
     <Popover
       data-module="sps-website-builder"
       data-model="flyout"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
     >
       <PopoverTrigger>Flyout</PopoverTrigger>

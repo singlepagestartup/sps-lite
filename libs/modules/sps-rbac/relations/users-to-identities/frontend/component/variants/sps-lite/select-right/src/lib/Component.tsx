@@ -76,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-rbac"
       data-relation="users-to-identities"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="w-full"
     >
