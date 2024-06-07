@@ -1,9 +1,9 @@
-import { page } from "@sps/sps-website-builder-frontend";
+// import { page } from "@sps/sps-website-builder-frontend";
 
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return page.generateStaticParams();
+  // return page.generateStaticParams();
 }
 
 export async function generateMetadata(props: any) {
@@ -18,5 +18,5 @@ export async function generateMetadata(props: any) {
 }
 
 export default async function Page(props: any) {
-  return page.Page(props);
+  // return page.Page(props);
 }
