@@ -8,6 +8,13 @@
       "when": 1716571811830,
       "tag": "0000_gifted_deathbird",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1717720908055,
+      "tag": "0001_chief_ken_ellis",
+      "breakpoints": true
     }
   ]
 }
