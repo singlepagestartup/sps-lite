@@ -3453,7 +3453,9 @@
         "libs/modules/startup/models/widget/frontend/redux/src/index.ts"
       ],
       "@sps/store": ["libs/shared/store/src/index.ts"],
-      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
+      "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
+      "@sps/next-js-publishable": ["libs/next-js-pppbb/src/index.ts"],
+      "@sps/next-js-publishable/server": ["libs/next-js-pppbb/src/server.ts"]
     },
     "typeRoots": [
       "./node_modules/@types",

@@ -7,11 +7,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 function makeConfig() {
   const serverEnvironment = process.env.SERVER_ENVIRONMENT;
 
-  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL.replace(
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(
     "https://",
     "",
   ).replace("http://", "");
-  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL.replace(
+  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL?.replace(
     "https://",
     "",
   ).replace("http://", "");

@@ -31,7 +31,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "../../apps/frontend/.next/types/**/*.ts"
+    "../../apps/frontend/.next/types/**/*.ts",
+    "../../dist/apps/frontend/.next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

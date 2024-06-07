@@ -1,0 +1,30 @@
+{
+  "name": "@sps/next-js-publishable",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/next-js-pppbb/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "cache": true,
+      "options": {
+        "outputPath": "dist/libs/next-js-pppbb",
+        "tsConfig": "libs/next-js-pppbb/tsconfig.lib.json",
+        "project": "libs/next-js-pppbb/package.json",
+        "entryFile": "libs/next-js-pppbb/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "swc",
+        "assets": [
+          {
+            "glob": "libs/next-js-pppbb/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}
