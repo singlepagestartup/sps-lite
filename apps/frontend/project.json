@@ -253,7 +253,7 @@
       "cache": true,
       "options": {
         "buildTarget": "next:build",
-        "buildLibsFromSource": true,
+        "buildLibsFromSource": false,
         "dev": true,
         "port": 3000
       }
@@ -265,7 +265,8 @@
       "cache": true,
       "defaultConfiguration": "production",
       "options": {
-        "buildLibsFromSource": true,
+        "buildLibsFromSource": false,
+        "buildTarget": "tsc:build",
         "outputPath": "dist/{projectRoot}"
       }
     },
