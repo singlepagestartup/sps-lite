@@ -29,6 +29,7 @@ export const util = async ({
     projectNameAndRootFormat: "as-provided",
     directory: root,
     minimal: true,
+    linter: "none",
     unitTestRunner: "none",
     strict: true,
   });
