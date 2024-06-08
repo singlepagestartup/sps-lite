@@ -1663,6 +1663,9 @@
       "@sps/sps-website-builder-models-layout-frontend-api-client": [
         "libs/modules/sps-website-builder/models/layout/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-layout-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/layout/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-layout-frontend-api-server": [
         "libs/modules/sps-website-builder/models/layout/frontend/api/server/src/index.ts"
       ],

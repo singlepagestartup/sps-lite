@@ -40,7 +40,7 @@ export class Coder {
 
     this.project = {
       root,
-      variants: undefined,
+      variants: [] as VariantCoder[],
     };
 
     if (props.variants) {

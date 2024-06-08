@@ -84,13 +84,13 @@ export class Coder {
   }
 
   async update() {
-    // for (const model of this.project.models) {
-    //   await model.update();
-    // }
+    for (const model of this.project.models) {
+      await model.update();
+    }
 
-    // for (const relation of this.project.relations) {
-    //   await relation.update();
-    // }
+    for (const relation of this.project.relations) {
+      await relation.update();
+    }
 
     await this.project.backend.update();
   }

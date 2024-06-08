@@ -62,8 +62,29 @@ export async function updateGenerator(
       },
     },
   });
-
   await coder.update();
+  // const additions = new Coder({
+  //   tree,
+  //   root: {
+  //     libs: {
+  //       modules: [
+  //         {
+  //           module: {
+  //             name: options.module,
+  //             models: [
+  //               {
+  //                 model: {
+  //                   name: "layout",
+  //                 },
+  //               },
+  //             ],
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // });
+  // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
 }
 
 export default updateGenerator;
