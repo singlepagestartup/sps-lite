@@ -7,6 +7,10 @@ import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 import { Coder as ModelCoder } from "../../models/Coder";
 import pluralize from "pluralize";
 
+export type IGeneratorProps = {
+  name?: string;
+};
+
 /**
  * Relation Coder
  */
@@ -27,7 +31,7 @@ export class Coder {
     frontend: FrontendCoder;
   };
 
-  constructor(props: { tree: Tree; parent: RelationsCoder; name?: string }) {
+  constructor(props: { tree: Tree; parent: RelationsCoder } & IGeneratorProps) {
     const { tree, parent } = props;
     this.tree = tree;
     this.parent = parent;

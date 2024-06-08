@@ -1,10 +1,22 @@
 import { Tree } from "@nx/devkit";
-import { Coder as ModelsCoder } from "./models/Coder";
+import {
+  Coder as ModelsCoder,
+  IGeneratorProps as IModelsCoderGeneratorProps,
+} from "./models/Coder";
 import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
-import { Coder as RelationsCoder } from "./relations/Coder";
+import {
+  Coder as RelationsCoder,
+  IGeneratorProps as IRelationsCoderGeneratorProps,
+} from "./relations/Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 import pluralize from "pluralize";
+
+export type IGeneratorProps = {
+  name: Coder["name"];
+  models?: IModelsCoderGeneratorProps[];
+  relations?: IRelationsCoderGeneratorProps[];
+};
 
 /**
  * Module Coder
@@ -28,18 +40,12 @@ export class Coder {
     backend: {} as BackendCoder,
   };
 
-  constructor(props: {
-    tree: Tree;
-    name: string;
-    parent: ModuleCoder;
-    models?: {
-      name: string;
-      isExternal?: boolean;
-    }[];
-    relations?: {
-      name?: string;
-    }[];
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+      parent: ModuleCoder;
+    } & IGeneratorProps,
+  ) {
     this.baseName = `${props.parent.baseName}/${props.name}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.name}`;
     this.name = props.name;

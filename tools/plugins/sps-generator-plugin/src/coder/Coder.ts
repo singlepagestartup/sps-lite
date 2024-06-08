@@ -4,8 +4,17 @@ import {
   formatFiles,
   getProjects,
 } from "@nx/devkit";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
 import { IEditFieldProps } from "./root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
+
+export type IGeneratorProps = {
+  moduleName: IRootCoderGeneratorProps["moduleName"];
+  models?: IRootCoderGeneratorProps["models"];
+  relations?: IRootCoderGeneratorProps["relations"];
+};
 
 /**
  * Main coder class
@@ -19,14 +28,11 @@ export class Coder {
     root: RootCoder;
   };
 
-  constructor(props: {
-    tree: Tree;
-    moduleName: string;
-    models?: { name: string; isExternal?: boolean }[];
-    relations?: {
-      name?: string;
-    }[];
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+    } & IGeneratorProps,
+  ) {
     this.projects = getProjects(props.tree);
     this.tree = props.tree;
 

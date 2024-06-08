@@ -6,6 +6,10 @@ import { Coder as FrontendCoder } from "./frontend/Coder";
 import { Coder as ContractsCoder } from "./contracts/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 
+export type IGeneratorProps = {
+  name: Coder["name"];
+};
+
 /**
  * Model coder
  */
@@ -32,9 +36,8 @@ export class Coder {
     parent,
   }: {
     tree: Tree;
-    name: string;
     parent: ModelsCoder;
-  }) {
+  } & IGeneratorProps) {
     this.baseName = `${parent.baseName}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/${name}`;
     this.name = name;
