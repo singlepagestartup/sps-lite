@@ -88,11 +88,11 @@ export class Coder {
     //   await model.update();
     // }
 
-    for (const relation of this.project.relations) {
-      await relation.update();
-    }
+    // for (const relation of this.project.relations) {
+    //   await relation.update();
+    // }
 
-    // await this.project.backend.update();
+    await this.project.backend.update();
   }
 
   async create() {
