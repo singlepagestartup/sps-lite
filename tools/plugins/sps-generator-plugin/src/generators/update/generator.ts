@@ -191,25 +191,10 @@ export async function updateGenerator(
   // await coder.update();
 
   const models = [
-    "font",
-    "footer",
-    "footer-block",
-    "hero-section-block",
-    "loader",
-    "logotype",
     "logotypes-list-block",
     "metatag",
     "modal",
-    "navbar",
-    "navbar-block",
     "not-found-block",
-    "sidebar",
-    "slide",
-    "slide-over",
-    "slider",
-    "slider-block",
-    "theme",
-    "topbar",
   ];
   for (const model of models) {
     await crateForgottenModules({
@@ -253,5 +238,5 @@ async function crateForgottenModules({
     },
   });
 
-  await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
+  await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.create();
 }
