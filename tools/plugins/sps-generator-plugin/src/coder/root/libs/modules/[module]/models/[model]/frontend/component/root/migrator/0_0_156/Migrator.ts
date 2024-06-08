@@ -25,6 +25,8 @@ export class Migrator {
       },
     );
 
+    this.parent.coder.tree.delete(`${baseDirectory}/tsconfig.spec.json`);
+
     const createdPackage = this.parent.coder.tree.read(
       `${baseDirectory}/package.json`,
     );
