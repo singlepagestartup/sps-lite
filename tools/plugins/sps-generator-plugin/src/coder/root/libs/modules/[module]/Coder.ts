@@ -159,7 +159,6 @@ export class Coder {
     }
 
     await this.project.relations[0].createRelations();
-
     if (!this.project.models[0].project.model.isExternal) {
       await this.project.models[0].createRelation();
       const leftModelContractsPath =

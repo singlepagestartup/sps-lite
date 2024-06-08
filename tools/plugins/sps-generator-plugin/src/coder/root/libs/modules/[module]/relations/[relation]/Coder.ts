@@ -44,9 +44,8 @@ export class Coder {
   };
 
   constructor(props: { tree: Tree; parent: RelationsCoder } & IGeneratorProps) {
-    const { tree, parent } = props;
-    this.tree = tree;
-    this.parent = parent;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     if (!props.name) {
       const leftModel =
@@ -86,20 +85,23 @@ export class Coder {
 
     this.nameStyles = getNameStyles({ name: this.name });
 
-    this.baseName = `${parent.baseName}-${this.name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
+    this.baseName = `${this.parent.baseName}-${this.name}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/${this.name}`;
 
     this.project.backend = new BackendCoder({
+      ...props.backend,
       tree: this.tree,
       parent: this,
     });
 
     this.project.contracts = new ContractsCoder({
+      ...props.contracts,
       tree: this.tree,
       parent: this,
     });
 
     this.project.frontend = new FrontendCoder({
+      ...props.frontend,
       tree: this.tree,
       parent: this,
     });

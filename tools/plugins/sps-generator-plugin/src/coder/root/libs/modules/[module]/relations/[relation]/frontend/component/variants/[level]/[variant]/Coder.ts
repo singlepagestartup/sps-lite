@@ -65,8 +65,12 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-variants-${props.level}-${this.name}`;
     this.baseDirectory = `${this.parent.baseDirectory}/variants/${props.level}/${this.name}`;
 
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async setReplacers() {
     const apiClientImportPath =
-      this.parent.parent.project.api.project.client.baseName;
+      this.parent.parent?.project.api.project.client.baseName;
     const apiServerImportPath =
       this.parent.parent.project.api.project.server.baseName;
     const reduxImportPath = this.parent.parent.project.redux.baseName;
@@ -77,7 +81,6 @@ export class Coder {
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const relationName = this.parent.parent.parent.name;
-
     const nameStyles = getNameStyles({
       name: this.name,
     });
@@ -108,8 +111,6 @@ export class Coder {
       level: this.level,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
-
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
@@ -199,6 +200,8 @@ export class Coder {
     interfacePath: string;
     indexScssPath: string;
   }) {
+    this.setReplacers();
+
     await addToFile({
       toTop: true,
       pathToFile: variantsPath,
@@ -257,6 +260,8 @@ export class Coder {
     interfacePath: string;
     indexScssPath: string;
   }) {
+    this.setReplacers();
+
     try {
       await replaceInFile({
         tree: this.tree,

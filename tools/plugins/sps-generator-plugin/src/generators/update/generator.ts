@@ -45,7 +45,12 @@ export async function updateGenerator(
                     name: "pages-to-layouts",
                     frontend: {
                       component: {
-                        // variant
+                        variants: [
+                          {
+                            name: "default",
+                            level: "sps-lite",
+                          },
+                        ],
                       },
                     },
                   },
