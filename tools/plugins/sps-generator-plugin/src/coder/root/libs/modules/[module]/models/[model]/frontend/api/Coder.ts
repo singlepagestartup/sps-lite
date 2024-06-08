@@ -71,8 +71,8 @@ export class Coder {
 
   async create() {
     await this.project.model.create();
-    // await this.project.client.create();
-    // await this.project.server.create();
+    await this.project.client.create();
+    await this.project.server.create();
   }
 
   async remove() {
