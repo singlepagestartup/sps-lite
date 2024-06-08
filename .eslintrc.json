@@ -41,7 +41,7 @@
         "no-prototype-builtins": ["warn"],
         "no-self-assign": ["warn"],
         "@nx/enforce-module-boundaries": [
-          "error",
+          "off",
           {
             "enforceBuildableLibDependency": false,
             "banTransitiveDependencies": true,

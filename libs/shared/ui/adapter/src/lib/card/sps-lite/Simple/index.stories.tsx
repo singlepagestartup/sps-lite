@@ -1,4 +1,3 @@
-import ReactMarkdown from "react-markdown";
 import { StarIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import { Meta, StoryObj } from "@storybook/react";
@@ -103,7 +102,7 @@ function SimpleWithAvatarCard(props: ICardProps) {
 
         {item.description ? (
           <div className="prose prose-sm mt-4 max-w-none text-gray-500">
-            <ReactMarkdown>{item.description}</ReactMarkdown>
+            <p>{item.description}</p>
           </div>
         ) : null}
       </div>

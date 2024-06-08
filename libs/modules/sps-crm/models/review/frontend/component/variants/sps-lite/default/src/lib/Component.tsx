@@ -1,4 +1,3 @@
-import ReactMarkdown from "react-markdown";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { IComponentPropsExtended } from "./interface";
 import { StarIcon } from "@heroicons/react/24/outline";
@@ -46,7 +45,7 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.data.description ? (
           <div className="prose prose-sm mt-4 max-w-none text-gray-500">
-            <ReactMarkdown>{props.data.description}</ReactMarkdown>
+            <p>{props.data.description}</p>
           </div>
         ) : null}
       </div>

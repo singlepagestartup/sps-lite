@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 
 export const fields = {
-  id: pgCore.uuid("id").primaryKey().defaultRandom(),
+  id: pgCore.uuid("id").primaryKey().defaultRandom().notNull(),
   className: pgCore.text("class_name"),
   title: pgCore.text("title"),
   createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),

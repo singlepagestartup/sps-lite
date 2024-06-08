@@ -18,7 +18,7 @@ function makeConfig() {
   ).replace("http://", "");
 
   let config = {
-    transpilePackages: ["@sps/startup-frontend"],
+    transpilePackages: ["@sps/startup-frontend", "@sps/startup-backend-app"],
     reactStrictMode: true,
     images: {
       unoptimized: true,
