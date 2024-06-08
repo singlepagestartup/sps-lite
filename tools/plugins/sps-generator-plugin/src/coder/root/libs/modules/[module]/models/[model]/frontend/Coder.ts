@@ -38,8 +38,6 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    console.log(`🚀 ~ constructor ~ props:`, props);
-
     const component = new ComponentCoder({
       ...props.component,
       tree: this.tree,

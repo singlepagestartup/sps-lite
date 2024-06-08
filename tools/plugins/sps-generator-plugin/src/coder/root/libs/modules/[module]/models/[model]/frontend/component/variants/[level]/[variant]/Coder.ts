@@ -56,7 +56,6 @@ export class Coder {
     tree: Tree;
   } & IGeneratorProps) {
     this.name = name;
-    console.log(`🚀 ~ variant name:`, name);
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
     this.tree = tree;
