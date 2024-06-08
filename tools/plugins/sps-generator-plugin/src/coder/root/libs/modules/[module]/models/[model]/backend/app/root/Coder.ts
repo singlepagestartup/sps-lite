@@ -26,7 +26,7 @@ export class Coder {
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-app`;
-    this.baseDirectory = `${this.parent.baseDirectory}/app`;
+    this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
     this.tree = props.tree;
     this.name = "app";
 

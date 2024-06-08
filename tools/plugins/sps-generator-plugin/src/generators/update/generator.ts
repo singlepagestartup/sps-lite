@@ -15,46 +15,44 @@ export async function updateGenerator(
             module: {
               name: options.module,
               models: [
+                {
+                  model: {
+                    name: options.model_name,
+                    frontend: {
+                      component: {
+                        variants: [
+                          { name: "admin-form", level: "sps-lite" },
+                          { name: "admin-form-inputs", level: "sps-lite" },
+                          { name: "admin-panel", level: "sps-lite" },
+                          { name: "admin-select-input", level: "sps-lite" },
+                          { name: "admin-table", level: "sps-lite" },
+                          { name: "admin-table-row", level: "sps-lite" },
+                          { name: "default", level: "sps-lite" },
+                          { name: "get-by-url", level: "sps-lite" },
+                          { name: "get-query-from-url", level: "sps-lite" },
+                          { name: "get-url-model-id", level: "sps-lite" },
+                        ],
+                      },
+                    },
+                  },
+                },
+              ],
+              relations: [
                 // {
-                //   model: {
-                //     name: options.model_name,
+                //   relation: {
+                //     name: "pages-to-layouts",
                 //     frontend: {
                 //       component: {
                 //         variants: [
                 //           {
+                //             name: "default",
                 //             level: "sps-lite",
-                //             name: "admin-form",
-                //           },
-                //           {
-                //             level: "sps-lite",
-                //             name: "admin-table",
-                //           },
-                //           {
-                //             level: "sps-lite",
-                //             name: "admin-panel",
                 //           },
                 //         ],
                 //       },
                 //     },
                 //   },
                 // },
-              ],
-              relations: [
-                {
-                  relation: {
-                    name: "pages-to-layouts",
-                    frontend: {
-                      component: {
-                        variants: [
-                          {
-                            name: "default",
-                            level: "sps-lite",
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
               ],
             },
           },
