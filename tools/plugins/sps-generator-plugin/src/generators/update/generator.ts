@@ -104,12 +104,12 @@ export async function updateGenerator(
     }
   });
 
-  // const coder = new Coder({
-  //   tree,
-  //   root,
-  // });
+  const coder = new Coder({
+    tree,
+    root,
+  });
 
-  // await coder.update();
+  await coder.update();
 
   // const coder = new Coder({
   //   tree,
@@ -190,19 +190,19 @@ export async function updateGenerator(
   // });
   // await coder.update();
 
-  const models = [
-    "logotypes-list-block",
-    "metatag",
-    "modal",
-    "not-found-block",
-  ];
-  for (const model of models) {
-    await crateForgottenModules({
-      moduleName: "sps-website-builder",
-      tree,
-      modelName: model,
-    });
-  }
+  // const models = [
+  //   "logotypes-list-block",
+  //   "metatag",
+  //   "modal",
+  //   "not-found-block",
+  // ];
+  // for (const model of models) {
+  //   await crateForgottenModules({
+  //     moduleName: "sps-website-builder",
+  //     tree,
+  //     modelName: model,
+  //   });
+  // }
 }
 
 export default updateGenerator;
