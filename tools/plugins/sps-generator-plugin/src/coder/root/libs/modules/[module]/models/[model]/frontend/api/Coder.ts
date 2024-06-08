@@ -65,14 +65,15 @@ export class Coder {
 
   async update() {
     // await this.project.model.update();
-    await this.project.client.update();
+    await this.project.model.create();
+    // await this.project.client.update();
     // await this.project.server.update();
   }
 
   async create() {
     await this.project.model.create();
-    await this.project.client.create();
-    await this.project.server.create();
+    // await this.project.client.create();
+    // await this.project.server.create();
   }
 
   async remove() {
