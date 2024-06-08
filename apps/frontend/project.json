@@ -264,7 +264,8 @@
       "cache": true,
       "defaultConfiguration": "production",
       "options": {
-        "outputs": ["{projectRoot}/.next"]
+        "outputs": ["{projectRoot}/.next"],
+        "outputPath": "{projectRoot}/.next"
       }
     },
     "next:start": {
