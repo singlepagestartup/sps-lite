@@ -1,25 +1,25 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["dom", "dom.iterable", "esnext", "es2021"],
+    "jsx": "preserve",
     "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "declaration": true,
+    "types": [
+      "node"
+    ],
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    // "module": "esnext",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
     "incremental": true,
-    "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
     "plugins": [
       {
         "name": "next"
@@ -27,12 +27,14 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "../../apps/frontend/.next/types/**/*.ts",
-    "../../dist/apps/frontend/.next/types/**/*.ts"
+    "**/*.js",
+    "**/*.jsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

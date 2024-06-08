@@ -3,7 +3,7 @@ import Server from "./server";
 // import { ReduxProvider } from "@sps/sps-website-builder-models-page-frontend-redux";
 import { headers } from "next/headers";
 import QueryString from "qs";
-import { App } from "@sps/startup-frontend";
+// import { App } from "@sps/startup-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const headersList = headers();

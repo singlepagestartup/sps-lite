@@ -253,21 +253,20 @@
       "cache": true,
       "options": {
         "buildTarget": "next:build",
-        "buildLibsFromSource": false,
         "dev": true,
+        "buildLibsFromSource": false,
         "port": 3000
       }
     },
     "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": [],
+      "dependsOn": ["^build"],
       "cache": true,
       "defaultConfiguration": "production",
       "options": {
-        "buildLibsFromSource": false,
-        "buildTarget": "tsc:build",
-        "outputPath": "dist/{projectRoot}"
+        "outputPath": "apps/frontend",
+        "buildLibsFromSource": false
       }
     },
     "next:start": {

@@ -1,4 +1,5 @@
-const { withNx } = require("@nx/next/plugins/with-nx");
+// const { withNx } = require("@nx/next/plugins/with-nx");
+// const withTM = require("next-transpile-modules")(["next-js-publishable"]);
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -17,6 +18,7 @@ function makeConfig() {
   ).replace("http://", "");
 
   let config = {
+    transpilePackages: ["next-js-publishable"],
     reactStrictMode: false,
     compress: true,
     images: {
@@ -57,4 +59,4 @@ function makeConfig() {
 
 const config = makeConfig();
 
-module.exports = withNx(config);
+module.exports = config;

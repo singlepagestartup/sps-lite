@@ -7,10 +7,10 @@ import { type NextRequest } from "next/server";
 // import { app as startupApp } from "@sps/startup-backend-app";
 // import { chain as middlewaresChain } from "./middlewares/chain";
 // import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+// import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 // import { setRoutes } from "@sps/sps-kv-provider";
 
-const app = new Hono<MiddlewaresGeneric>().basePath("/api");
+const app = new Hono().basePath("/api");
 
 // middlewaresChain(app);
 
