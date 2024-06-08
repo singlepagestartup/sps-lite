@@ -23,14 +23,16 @@ export class Coder {
   exportRoute: ExportRoute;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
-    this.baseName = `${props.parent.baseName}-app`;
-    this.baseDirectory = `${props.parent.baseDirectory}/app`;
     this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-app`;
+    this.baseDirectory = `${this.parent.baseDirectory}/app`;
     this.tree = props.tree;
     this.name = "app";
 
-    const pluralNameModelName = pluralize(names(parent.parent.name).fileName);
-    const asPropertyModelName = names(parent.parent.name).propertyName;
+    const pluralNameModelName = pluralize(
+      names(this.parent.parent.name).fileName,
+    );
+    const asPropertyModelName = names(this.parent.parent.name).propertyName;
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
       libName: this.baseName,
       asPropertyModelName,

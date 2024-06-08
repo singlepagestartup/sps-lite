@@ -19,12 +19,12 @@ export class Coder {
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
-    this.baseName = `${props.parent.baseName}`;
-    this.baseDirectory = `${props.parent.baseDirectory}/root`;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.name = "relations";
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");
     const snakeCasePluralizedModelName = modelNameSplitted.reduce(
       (acc, curr, index) => {

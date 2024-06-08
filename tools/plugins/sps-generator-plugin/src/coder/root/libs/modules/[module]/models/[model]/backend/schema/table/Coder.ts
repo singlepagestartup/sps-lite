@@ -54,14 +54,14 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/table`;
     this.tree = props.tree;
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
 
     const modelNameStyles = getNameStyles({
       name: modelName,
     });
     this.modelNameStyles = modelNameStyles;
 
-    const moduleName = parent.parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.parent.name;
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
 
     if (modelNameStyles.snakeCased.base.length > 10) {

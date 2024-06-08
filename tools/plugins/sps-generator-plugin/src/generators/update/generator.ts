@@ -23,7 +23,7 @@ export async function updateGenerator(
                         variants: [
                           {
                             level: "sps-lite",
-                            name: "admin-select-input",
+                            name: "admin-table-row",
                           },
                         ],
                       },

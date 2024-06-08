@@ -38,7 +38,9 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    const componentCoder = new ComponentCoder({
+    console.log(`🚀 ~ constructor ~ props:`, props);
+
+    const component = new ComponentCoder({
       ...props.component,
       tree: this.tree,
       parent: this,
@@ -57,7 +59,7 @@ export class Coder {
     });
 
     this.project = {
-      component: componentCoder,
+      component,
       api,
       redux,
     };

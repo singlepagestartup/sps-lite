@@ -23,17 +23,17 @@ export class Coder {
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
-    this.baseName = `${props.parent.baseName}`;
-    this.baseDirectory = `${props.parent.baseDirectory}/root`;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.name = "schema";
 
-    const moduleName = parent.parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
       name: moduleName,
     }).pascalCased;
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
     const modelNamePascalCased = names(modelName).className;
 
     this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({

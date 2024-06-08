@@ -34,13 +34,13 @@ export class Coder {
     this.parent = props.parent;
     this.tree = props.tree;
 
-    this.baseName = `${props.parent.baseName}-model`;
-    this.baseDirectory = `${props.parent.baseDirectory}/model/root`;
+    this.baseName = `${this.parent.baseName}-model`;
+    this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
 
-    const modelName = parent.parent.name;
+    const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
 
-    const moduleName = parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.name;
     const pascalCaseName = names(modelName).className;
     const moduleNamePascalCase = names(moduleName).className;
     const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;

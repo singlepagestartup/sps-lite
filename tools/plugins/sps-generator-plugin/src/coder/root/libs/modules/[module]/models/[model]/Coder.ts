@@ -50,12 +50,12 @@ export class Coder {
       parent: ModelsCoder;
     } & IGeneratorProps,
   ) {
-    this.baseName = `${props.parent.baseName}-${name}`;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-${props.name}`;
     this.isExternal = props.isExternal;
-    this.baseDirectory = `${props.parent.baseDirectory}/${name}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/${props.name}`;
     this.name = props.name;
     this.nameStyles = getNameStyles({ name: props.name });
-    this.parent = props.parent;
     this.tree = props.tree;
 
     this.project.backend = new BackendCoder({
