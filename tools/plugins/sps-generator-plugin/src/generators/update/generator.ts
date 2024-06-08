@@ -43,6 +43,11 @@ export async function updateGenerator(
                 {
                   relation: {
                     name: "pages-to-layouts",
+                    frontend: {
+                      component: {
+                        // variant
+                      },
+                    },
                   },
                 },
               ],
