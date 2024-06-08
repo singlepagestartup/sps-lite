@@ -31,7 +31,7 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    // console.log("Update:", this.baseName);
   }
 
   async create() {

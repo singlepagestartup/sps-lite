@@ -65,8 +65,8 @@ export class Coder {
 
   async update() {
     await this.project.api.update();
-    await this.project.redux.update();
-    await this.project.component.update();
+    // await this.project.redux.update();
+    // await this.project.component.update();
   }
 
   async create() {
