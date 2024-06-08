@@ -1,4 +1,8 @@
-import { generateFiles, updateProjectConfiguration } from "@nx/devkit";
+import {
+  generateFiles,
+  offsetFromRoot,
+  updateProjectConfiguration,
+} from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
 
@@ -12,6 +16,8 @@ export class Migrator {
   async execute() {
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
+    const offsetFromRootProject = offsetFromRoot(baseDirectory);
+    console.log(`🚀 ~ execute ~ offsetFromRootProject:`, offsetFromRootProject);
 
     generateFiles(
       this.parent.coder.tree,
@@ -20,6 +26,7 @@ export class Migrator {
       {
         template: "",
         lib_name: baseName,
+        offset_from_root: offsetFromRootProject,
       },
     );
 
