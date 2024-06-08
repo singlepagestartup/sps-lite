@@ -8,6 +8,7 @@
     "lint": {},
     "build": {},
     "test": {},
-    "test:watch": {}
+    "test:watch": {},
+    "tsc:build": {}
   }
 }

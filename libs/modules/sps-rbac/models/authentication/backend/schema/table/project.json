@@ -7,6 +7,6 @@
   "targets": {
     "lint": {},
     "build": {},
-    "test:watch": {}
+    "tsc:build": {}
   }
 }
