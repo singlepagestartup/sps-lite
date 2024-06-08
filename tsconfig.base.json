@@ -1163,7 +1163,7 @@
         "libs/modules/sps-website-builder/frontend/components/src/index.ts"
       ],
       "@sps/sps-website-builder-models-button-backend-app": [
-        "libs/modules/sps-website-builder/models/button/backend/app/src/index.ts"
+        "libs/modules/sps-website-builder/models/button/backend/app/root/src/index.ts"
       ],
       "@sps/sps-website-builder-models-button-backend-model": [
         "libs/modules/sps-website-builder/models/button/backend/model/root/src/index.ts"
@@ -1188,6 +1188,9 @@
       ],
       "@sps/sps-website-builder-models-button-frontend-api-client": [
         "libs/modules/sps-website-builder/models/button/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-button-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/button/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-button-frontend-api-server": [
         "libs/modules/sps-website-builder/models/button/frontend/api/server/src/index.ts"

@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-website-builder-models-button-backend-schema",
+  "name": "@sps/sps-website-builder-models-button-frontend-api-model",
   "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/modules/sps-website-builder/models/button/backend/schema/root/src",
+  "sourceRoot": "libs/modules/sps-website-builder/models/button/frontend/api/model/src",
   "projectType": "library",
   "tags": [],
   "targets": {
