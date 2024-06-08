@@ -260,7 +260,7 @@
     "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "dependsOn": ["^tsc:build"],
       "cache": true,
       "defaultConfiguration": "production",
       "options": {

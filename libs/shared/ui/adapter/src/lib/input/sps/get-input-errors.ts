@@ -19,5 +19,7 @@ export function getInputErrors(errors: FieldErrors<FieldValues>) {
     if (inputError) {
       return inputError;
     }
+
+    return;
   };
 }

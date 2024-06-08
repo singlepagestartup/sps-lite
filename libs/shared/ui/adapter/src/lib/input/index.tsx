@@ -145,4 +145,6 @@ export const Component = (props: IComponentProps) => {
       </Select>
     );
   }
+
+  return <div>Unknown input type</div>;
 };

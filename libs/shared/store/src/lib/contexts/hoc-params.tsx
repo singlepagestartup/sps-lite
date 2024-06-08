@@ -27,6 +27,8 @@ function hocParamsReducer(
 
     return newState;
   }
+
+  return;
 }
 
 /**
