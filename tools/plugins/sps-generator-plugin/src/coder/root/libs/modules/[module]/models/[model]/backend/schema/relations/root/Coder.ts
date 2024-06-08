@@ -4,6 +4,7 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
 import { Coder as RelationsCoder } from "../Coder";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
 
@@ -53,7 +54,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

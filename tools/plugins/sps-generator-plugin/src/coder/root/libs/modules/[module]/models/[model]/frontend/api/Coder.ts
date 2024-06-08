@@ -64,13 +64,9 @@ export class Coder {
   }
 
   async update() {
-    /**
-     * That directory is just contains another packages
-     * use methods from packages to update them separately
-     */
-    throw new Error(
-      "Method not implemented, that directory just contains other packages.",
-    );
+    await this.project.model.update();
+    await this.project.client.update();
+    await this.project.server.update();
   }
 
   async create() {

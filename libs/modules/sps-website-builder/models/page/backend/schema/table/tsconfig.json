@@ -1,5 +1,4 @@
 {
-  "extends": "../../../../../../../../tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
     "allowJs": true,
@@ -16,5 +15,6 @@
     {
       "path": "./tsconfig.lib.json"
     }
-  ]
+  ],
+  "extends": "../../../../../../../../tsconfig.base.json"
 }
