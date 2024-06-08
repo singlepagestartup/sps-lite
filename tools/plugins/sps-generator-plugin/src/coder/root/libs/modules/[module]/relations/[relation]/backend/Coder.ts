@@ -46,20 +46,24 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/backend`;
 
     this.project.schema = new SchemaCoder({
+      ...props.schema,
       tree: this.tree,
       parent: this,
     });
 
     this.project.model = new ModelCoder({
+      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
     this.project.app = new AppCoder({
+      ...props.app,
       tree: this.tree,
       parent: this,
     });
   }
+
   async update() {
     await this.project.schema.update();
     await this.project.model.update();

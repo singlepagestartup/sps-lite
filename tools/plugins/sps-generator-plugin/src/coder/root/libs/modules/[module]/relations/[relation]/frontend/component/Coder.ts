@@ -44,7 +44,7 @@ export class Coder {
 
   async update() {
     await this.project.root.update();
-    await this.project.variant.update();
+    await this.project.variant?.update();
   }
 
   async create() {

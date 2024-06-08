@@ -8,6 +8,7 @@ import { Coder as ApiCoder } from "../Coder";
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
 
@@ -35,7 +36,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

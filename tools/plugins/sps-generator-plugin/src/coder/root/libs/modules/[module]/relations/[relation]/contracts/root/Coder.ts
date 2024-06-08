@@ -15,6 +15,7 @@ import {
   addToFile,
   replaceInFile,
 } from "../../../../../../../../../utils/file-utils";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
 
@@ -56,7 +57,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

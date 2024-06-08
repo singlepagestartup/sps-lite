@@ -9,6 +9,7 @@ import { util as createSpsTSLibrary } from "../../../../../../../../../utils/cre
 import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
 
@@ -31,7 +32,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

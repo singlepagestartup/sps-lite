@@ -21,6 +21,7 @@ import {
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
 import { stat } from "fs/promises";
 import pluralize from "pluralize";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {
   name: string;
@@ -112,7 +113,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

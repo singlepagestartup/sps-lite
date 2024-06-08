@@ -16,5 +16,5 @@
       "path": "./tsconfig.lib.json"
     }
   ],
-  "extends": "../../../../../../../tsconfig.base.json"
+  "extends": "<%= offset_from_root %>tsconfig.base.json"
 }

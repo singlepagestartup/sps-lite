@@ -78,9 +78,9 @@ export class Coder {
   }
 
   async update() {
-    // await this.project.contracts.update();
+    await this.project.contracts.update();
     await this.project.backend.update();
-    // await this.project.frontend.update();
+    await this.project.frontend.update();
   }
 
   async create() {

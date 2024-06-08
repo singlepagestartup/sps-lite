@@ -9,6 +9,7 @@ import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as BackendCoder } from "../../Coder";
+import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
 
@@ -29,8 +30,10 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-app`;
     this.baseDirectory = `${this.parent.baseDirectory}/app`;
 
-    const pluralNameModelName = pluralize(names(parent.parent.name).fileName);
-    const asPropertyModelName = names(parent.parent.name).propertyName;
+    const pluralNameModelName = pluralize(
+      names(this.parent.parent.name).fileName,
+    );
+    const asPropertyModelName = names(this.parent.parent.name).propertyName;
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
       libName: this.baseName,
       asPropertyModelName,
@@ -44,7 +47,12 @@ export class Coder {
   }
 
   async update() {
-    // console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

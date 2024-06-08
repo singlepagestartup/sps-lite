@@ -15,27 +15,34 @@ export async function updateGenerator(
             module: {
               name: options.module,
               models: [
+                // {
+                //   model: {
+                //     name: options.model_name,
+                //     frontend: {
+                //       component: {
+                //         variants: [
+                //           {
+                //             level: "sps-lite",
+                //             name: "admin-form",
+                //           },
+                //           {
+                //             level: "sps-lite",
+                //             name: "admin-table",
+                //           },
+                //           {
+                //             level: "sps-lite",
+                //             name: "admin-panel",
+                //           },
+                //         ],
+                //       },
+                //     },
+                //   },
+                // },
+              ],
+              relations: [
                 {
-                  model: {
-                    name: options.model_name,
-                    frontend: {
-                      component: {
-                        variants: [
-                          {
-                            level: "sps-lite",
-                            name: "admin-form",
-                          },
-                          {
-                            level: "sps-lite",
-                            name: "admin-table",
-                          },
-                          {
-                            level: "sps-lite",
-                            name: "admin-panel",
-                          },
-                        ],
-                      },
-                    },
+                  relation: {
+                    name: "pages-to-layouts",
                   },
                 },
               ],
