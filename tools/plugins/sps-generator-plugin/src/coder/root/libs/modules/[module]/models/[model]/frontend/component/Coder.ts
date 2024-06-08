@@ -55,11 +55,13 @@ export class Coder {
   }
 
   async update() {
-    await this.project.root.update();
-
-    for (const variant of this.project.variants) {
-      await variant.update();
-    }
+    /**
+     * That directory is just contains another packages
+     * use methods from packages to update them separately
+     */
+    throw new Error(
+      "Method not implemented, that directory just contains other packages.",
+    );
   }
 
   async create() {

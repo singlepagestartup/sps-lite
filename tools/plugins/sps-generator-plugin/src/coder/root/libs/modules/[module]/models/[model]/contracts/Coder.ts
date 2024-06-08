@@ -52,7 +52,7 @@ export class Coder {
 
   async update() {
     await this.project.root.update();
-    await this.project.extended.update();
+    // await this.project.extended.update();
   }
 
   async create() {
