@@ -1,5 +1,5 @@
-// import "../styles/fonts.css";
-// import "../styles/tailwind.scss";
+import "../styles/fonts.css";
+import "../styles/tailwind.scss";
 
 // import { fonts } from "./fonts";
 import { Suspense } from "react";

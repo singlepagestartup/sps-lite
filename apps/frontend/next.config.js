@@ -18,7 +18,7 @@ function makeConfig() {
   ).replace("http://", "");
 
   let config = {
-    transpilePackages: ["next-js-publishable"],
+    transpilePackages: ["next-js-publishable", "@sps/startup-frontend"],
     reactStrictMode: false,
     compress: true,
     images: {

@@ -254,7 +254,6 @@
       "options": {
         "buildTarget": "next:build",
         "dev": true,
-        "buildLibsFromSource": false,
         "port": 3000
       }
     },
@@ -265,8 +264,7 @@
       "cache": true,
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "apps/frontend",
-        "buildLibsFromSource": false
+        "outputs": ["{projectRoot}/.next"]
       }
     },
     "next:start": {

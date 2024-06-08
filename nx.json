@@ -14,6 +14,7 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "dependsOn": ["^tsc:build"],
+      "cache": true,
       "options": {
         "outputPath": "dist/{projectRoot}",
         "main": "{projectRoot}/src/index.ts",

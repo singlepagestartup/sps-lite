@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "next start"
+    "start": "next start",
+    "dev": "next dev"
   },
   "dependencies": {
+    "@sps/startup-frontend": "*",
     "@next/bundle-analyzer": "14.2.3",
     "@radix-ui/react-alert-dialog": "1.0.5",
     "@radix-ui/react-collapsible": "1.0.3",

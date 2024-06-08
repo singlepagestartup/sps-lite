@@ -1,18 +1,18 @@
 "use client";
 
-// import { useState } from "react";
+import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 // import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
-// import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
+import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
 // import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
 // import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac-frontend";
 
 export function Component(props: IComponentPropsExtended) {
-  // const [widget, setWidget] = useState<string>("sps-website-builder");
+  const [widget, setWidget] = useState<string>("sps-website-builder");
 
   return (
     <section data-module="frontend" className="w-full py-2 lg:py-10 bg-dotted">
-      {/* <div className="w-full mx-auto max-w-7xl px-2">
+      <div className="w-full mx-auto max-w-7xl px-2">
         <div className="p-5">
           <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
             <Button
@@ -45,7 +45,7 @@ export function Component(props: IComponentPropsExtended) {
             />
           </div>
           <div className="bg-white rounded-b-lg">
-            {widget === "sps-website-builder" ? (
+            {/* {widget === "sps-website-builder" ? (
               <SpsWebsiteAdminComponent
                 {...props}
                 isServer={false}
@@ -58,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
                 isServer={false}
                 variant="default"
               />
-            ) : null}
+            ) : null} */}
             {widget === "startup" ? (
               <StartupAdminComponent
                 {...props}
@@ -66,16 +66,16 @@ export function Component(props: IComponentPropsExtended) {
                 variant="default"
               />
             ) : null}
-            {widget === "sps-rbac" ? (
+            {/* {widget === "sps-rbac" ? (
               <SpsRbacAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"
               />
-            ) : null}
+            ) : null} */}
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }
