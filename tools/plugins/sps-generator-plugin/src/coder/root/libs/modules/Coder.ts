@@ -7,9 +7,7 @@ import { Coder as ModulesCoder } from "../Coder";
 import { IEditFieldProps } from "./[module]/models/[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  moduleName: IModuleCoderGeneratorProps["name"];
-  models?: IModuleCoderGeneratorProps["models"];
-  relations?: IModuleCoderGeneratorProps["relations"];
+  module: IModuleCoderGeneratorProps;
 };
 
 /**
@@ -42,11 +40,9 @@ export class Coder {
     this.parent = props.parent;
 
     this.project.module = new ModuleCoder({
+      ...props.module,
       tree: this.tree,
       parent: this,
-      name: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 

@@ -63,8 +63,6 @@ export class Coder {
           ...model,
           tree: this.tree,
           parent: this,
-          name: model.name,
-          isExternal: model.isExternal,
         }),
       );
     });
@@ -157,7 +155,7 @@ export class Coder {
 
     await this.project.relations[0].createRelations();
 
-    if (!this.project.models[0].isExternal) {
+    if (!this.project.models[0].project.model.isExternal) {
       await this.project.models[0].createRelation();
       const leftModelContractsPath =
         this.project.models[0].project.model.project.contracts.project.extended
@@ -170,7 +168,7 @@ export class Coder {
       );
     }
 
-    if (!this.project.models[1].isExternal) {
+    if (!this.project.models[1].project.model.isExternal) {
       const rightModelContractsPath =
         this.project.models[1].project.model.project.contracts.project.extended
           .baseDirectory;
@@ -201,7 +199,7 @@ export class Coder {
   }
 
   async removeRelations() {
-    if (!this.project.models[1].isExternal) {
+    if (!this.project.models[1].project.model.isExternal) {
       await this.project.models[1].removeRelation();
 
       const rightModelContractsPath =
@@ -215,7 +213,7 @@ export class Coder {
       );
     }
 
-    if (!this.project.models[0].isExternal) {
+    if (!this.project.models[0].project.model.isExternal) {
       await this.project.models[0].removeRelation();
 
       const leftModelContractsPath =

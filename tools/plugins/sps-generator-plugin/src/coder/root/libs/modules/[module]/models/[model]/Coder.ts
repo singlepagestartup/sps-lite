@@ -1,17 +1,26 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModelsCoder } from "../Coder";
-import { Coder as BackendCoder } from "./backend/Coder";
+import {
+  Coder as BackendCoder,
+  IGeneratorProps as IBackendCoderGeneratorProps,
+} from "./backend/Coder";
 import { IEditFieldProps } from "./backend/schema/table/Coder";
 import {
   Coder as FrontendCoder,
   IGeneratorProps as IFrontendCoderGeneratorProps,
 } from "./frontend/Coder";
-import { Coder as ContractsCoder } from "./contracts/Coder";
+import {
+  Coder as ContractsCoder,
+  IGeneratorProps as IContractsCoderGeneratorProps,
+} from "./contracts/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 
 export type IGeneratorProps = {
   name: Coder["name"];
+  isExternal?: boolean;
   frontend?: IFrontendCoderGeneratorProps;
+  backend?: IBackendCoderGeneratorProps;
+  contracts?: IContractsCoderGeneratorProps;
 };
 
 /**
@@ -22,6 +31,7 @@ export class Coder {
   tree: Tree;
   parent: ModelsCoder;
   baseName: string;
+  isExternal: boolean = false;
   baseDirectory: string;
   nameStyles: ReturnType<typeof getNameStyles>;
   project: {
@@ -34,34 +44,34 @@ export class Coder {
     frontend: FrontendCoder;
   };
 
-  constructor({
-    tree,
-    name,
-    parent,
-    frontend,
-  }: {
-    tree: Tree;
-    parent: ModelsCoder;
-  } & IGeneratorProps) {
-    this.baseName = `${parent.baseName}-${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${name}`;
-    this.name = name;
-    this.nameStyles = getNameStyles({ name });
-    this.parent = parent;
-    this.tree = tree;
+  constructor(
+    props: {
+      tree: Tree;
+      parent: ModelsCoder;
+    } & IGeneratorProps,
+  ) {
+    this.baseName = `${props.parent.baseName}-${name}`;
+    this.isExternal = props.isExternal;
+    this.baseDirectory = `${props.parent.baseDirectory}/${name}`;
+    this.name = props.name;
+    this.nameStyles = getNameStyles({ name: props.name });
+    this.parent = props.parent;
+    this.tree = props.tree;
 
     this.project.backend = new BackendCoder({
+      ...props.backend,
       tree: this.tree,
       parent: this,
     });
 
     this.project.contracts = new ContractsCoder({
+      ...props.contracts,
       tree: this.tree,
       parent: this,
     });
 
     this.project.frontend = new FrontendCoder({
-      ...frontend,
+      ...props.frontend,
       tree: this.tree,
       parent: this,
     });

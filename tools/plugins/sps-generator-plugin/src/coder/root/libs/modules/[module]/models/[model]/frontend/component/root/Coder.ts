@@ -18,6 +18,8 @@ import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name
 import path from "path";
 import { Migrator } from "./migrator/Migrator";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: ComponentCoder;
   tree: Tree;
@@ -26,7 +28,10 @@ export class Coder {
   name: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ComponentCoder; tree: Tree }) {
+  constructor({
+    parent,
+    tree,
+  }: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/root`;

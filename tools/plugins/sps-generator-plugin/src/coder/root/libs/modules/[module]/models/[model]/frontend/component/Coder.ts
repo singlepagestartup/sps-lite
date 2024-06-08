@@ -1,6 +1,9 @@
 import { Tree } from "@nx/devkit";
 import { Coder as FrontendCoder } from "../Coder";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
 import {
   Coder as VariantCoder,
   IGeneratorProps as IVariantCoderGeneratorProps,
@@ -8,6 +11,7 @@ import {
 
 export type IGeneratorProps = {
   variants?: IVariantCoderGeneratorProps[];
+  root?: IRootCoderGeneratorProps;
 };
 
 export class Coder {
@@ -21,18 +25,15 @@ export class Coder {
     variants?: VariantCoder[];
   };
 
-  constructor({
-    parent,
-    tree,
-    variants,
-  }: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "component";
-    this.baseName = `${parent.baseName}-component`;
-    this.baseDirectory = `${parent.baseDirectory}/component`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-component`;
+    this.baseDirectory = `${props.parent.baseDirectory}/component`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     const root = new RootCoder({
+      ...props.root,
       tree: this.tree,
       parent: this,
     });
@@ -42,8 +43,8 @@ export class Coder {
       variants: undefined,
     };
 
-    if (variants) {
-      this.project.variants = variants.map((variant) => {
+    if (props.variants) {
+      this.project.variants = props.variants.map((variant) => {
         return new VariantCoder({
           ...variant,
           tree: this.tree,

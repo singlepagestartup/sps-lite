@@ -9,6 +9,8 @@ import { Coder as ApiCoder } from "../Coder";
 import path from "path";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: ApiCoder;
   tree: Tree;
@@ -18,12 +20,12 @@ export class Coder {
   project?: ProjectConfiguration;
   moduleName: string;
 
-  constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
+  constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.name = "server";
-    this.baseName = `${parent.baseName}-server`;
-    this.baseDirectory = `${parent.baseDirectory}/server`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-server`;
+    this.baseDirectory = `${props.parent.baseDirectory}/server`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 

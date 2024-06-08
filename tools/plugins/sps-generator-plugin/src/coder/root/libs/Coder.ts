@@ -7,9 +7,7 @@ import { Coder as RootCoder } from "../Coder";
 import { IEditFieldProps } from "./modules/[module]/models/[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  models?: IModulesCoderGeneratorProps["models"];
-  moduleName: IModulesCoderGeneratorProps["moduleName"];
-  relations?: IModulesCoderGeneratorProps["relations"];
+  modules?: IModulesCoderGeneratorProps[];
 };
 
 /**
@@ -24,9 +22,9 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: {
-    modules: ModulesCoder;
+    modules: ModulesCoder[];
   } = {} as {
-    modules: ModulesCoder;
+    modules: ModulesCoder[];
   };
 
   constructor(
@@ -41,49 +39,68 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
 
-    this.project.modules = new ModulesCoder({
-      tree: this.tree,
-      parent: this,
-      type: "modules",
-      moduleName: props.moduleName,
-      models: props.models,
-      relations: props.relations,
+    this.project.modules = props.modules.map((module) => {
+      return new ModulesCoder({
+        ...module,
+        tree: this.tree,
+        parent: this,
+        type: "modules",
+      });
     });
   }
 
   async update() {
-    await this.project.modules.update();
+    for (const module of this.project.modules) {
+      await module.update();
+    }
   }
 
   async createModule() {
-    await this.project.modules.create();
+    for (const module of this.project.modules) {
+      await module.create();
+    }
   }
 
   async removeModule() {
-    await this.project.modules.remove();
+    for (const module of this.project.modules) {
+      await module.remove();
+    }
   }
+
   async createModel() {
-    await this.project.modules.createModel();
+    for (const module of this.project.modules) {
+      await module.createModel();
+    }
   }
 
   async removeModel() {
-    await this.project.modules.removeModel();
+    for (const module of this.project.modules) {
+      await module.removeModel();
+    }
   }
 
   async addField(props: IEditFieldProps) {
-    await this.project.modules.addField(props);
+    for (const module of this.project.modules) {
+      await module.addField(props);
+    }
   }
 
   async removeField(props: IEditFieldProps) {
-    await this.project.modules.removeField(props);
+    for (const module of this.project.modules) {
+      await module.removeField(props);
+    }
   }
 
   async createRelations() {
-    await this.project.modules.createRelations();
+    for (const module of this.project.modules) {
+      await module.createRelations();
+    }
   }
 
   async removeRelations() {
-    await this.project.modules.removeRelations();
+    for (const module of this.project.modules) {
+      await module.removeRelations();
+    }
   }
 
   async createModelFrontendComponentVariant(props: {
@@ -91,28 +108,36 @@ export class Coder {
     variantLevel: string;
     templateName?: string;
   }) {
-    await this.project.modules.createModelFrontendComponentVariant(props);
+    for (const module of this.project.modules) {
+      await module.createModelFrontendComponentVariant(props);
+    }
   }
 
   async removeModelFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
   }) {
-    await this.project.modules.removeModelFrontendComponentVariant(props);
+    for (const module of this.project.modules) {
+      await module.removeModelFrontendComponentVariant(props);
+    }
   }
 
   async createBackendVariant(props: {
     variantName: string;
     variantLevel: string;
   }) {
-    await this.project.modules.createBackendVariant(props);
+    for (const module of this.project.modules) {
+      await module.createBackendVariant(props);
+    }
   }
 
   async removeBackendVariant(props: {
     variantName: string;
     variantLevel: string;
   }) {
-    await this.project.modules.removeBackendVariant(props);
+    for (const module of this.project.modules) {
+      await module.removeBackendVariant(props);
+    }
   }
 
   async createRelationFrontendComponentVariant(props: {
@@ -120,13 +145,17 @@ export class Coder {
     variantLevel: string;
     templateName?: string;
   }) {
-    await this.project.modules.createRelationFrontendComponentVariant(props);
+    for (const module of this.project.modules) {
+      await module.createRelationFrontendComponentVariant(props);
+    }
   }
 
   async removeRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;
   }) {
-    await this.project.modules.removeRelationFrontendComponentVariant(props);
+    for (const module of this.project.modules) {
+      await module.removeRelationFrontendComponentVariant(props);
+    }
   }
 }

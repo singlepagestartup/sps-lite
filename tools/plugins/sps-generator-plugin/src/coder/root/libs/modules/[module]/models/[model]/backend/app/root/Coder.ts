@@ -10,6 +10,8 @@ import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as BackendCoder } from "../../Coder";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: BackendCoder;
   tree: Tree;
@@ -20,11 +22,11 @@ export class Coder {
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
-    this.baseName = `${parent.baseName}-app`;
-    this.baseDirectory = `${parent.baseDirectory}/app`;
-    this.parent = parent;
-    this.tree = tree;
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
+    this.baseName = `${props.parent.baseName}-app`;
+    this.baseDirectory = `${props.parent.baseDirectory}/app`;
+    this.parent = props.parent;
+    this.tree = props.tree;
     this.name = "app";
 
     const pluralNameModelName = pluralize(names(parent.parent.name).fileName);

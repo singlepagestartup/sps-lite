@@ -9,6 +9,8 @@ import { util as createSpsTSLibrary } from "../../../../../../../../../utils/cre
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: ContractsCoder;
@@ -17,12 +19,12 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
+  constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-extended`;
-    this.baseDirectory = `${parent.baseDirectory}/extended`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}-extended`;
+    this.baseDirectory = `${props.parent.baseDirectory}/extended`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

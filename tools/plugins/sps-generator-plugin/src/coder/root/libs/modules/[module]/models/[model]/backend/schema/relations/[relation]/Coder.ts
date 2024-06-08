@@ -14,6 +14,8 @@ import {
 } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
 import { Coder as RelationsCoder } from "../Coder";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: RelationsCoder;
   tree: Tree;
@@ -28,17 +30,17 @@ export class Coder {
   importRelation: ImportRelation;
   exportRelation: ExportRelation;
 
-  constructor({ parent, tree }: { parent: RelationsCoder; tree: Tree }) {
+  constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     const relation =
-      parent.parent.parent.parent.parent.parent.project.relations[0];
+      props.parent.parent.parent.parent.parent.parent.project.relations[0];
 
     const name = relation.project.relation.name;
 
     this.name = name;
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${name}`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}-${name}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/${name}`;
 
     const nameStyles = relation.project.relation.nameStyles;
 

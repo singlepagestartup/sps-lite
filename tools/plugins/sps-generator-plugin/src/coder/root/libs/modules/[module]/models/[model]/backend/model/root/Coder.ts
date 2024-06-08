@@ -9,6 +9,8 @@ import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as BackendCoder } from "../../Coder";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: BackendCoder;
@@ -27,13 +29,13 @@ export class Coder {
   schemaModuleLibName: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
-    this.parent = parent;
-    this.tree = tree;
+    this.parent = props.parent;
+    this.tree = props.tree;
 
-    this.baseName = `${parent.baseName}-model`;
-    this.baseDirectory = `${parent.baseDirectory}/model/root`;
+    this.baseName = `${props.parent.baseName}-model`;
+    this.baseDirectory = `${props.parent.baseDirectory}/model/root`;
 
     const modelName = parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;

@@ -10,6 +10,8 @@ import path from "path";
 import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
 import { util as createSpsReactLibrary } from "../../../../../../../../../utils/create-sps-react-library";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: FrontendCoder;
   tree: Tree;
@@ -21,12 +23,12 @@ export class Coder {
   modelName: string;
   modelNamePluralized: string;
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "redux";
-    this.baseName = `${parent.baseName}-redux`;
-    this.baseDirectory = `${parent.baseDirectory}/redux`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-redux`;
+    this.baseDirectory = `${props.parent.baseDirectory}/redux`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     const moduleName = this.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.name;

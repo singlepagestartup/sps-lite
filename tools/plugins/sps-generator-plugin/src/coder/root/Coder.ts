@@ -6,9 +6,7 @@ import {
 import { IEditFieldProps } from "./libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  models?: ILibsCoderGeneratorProps["models"];
-  moduleName: ILibsCoderGeneratorProps["moduleName"];
-  relations?: ILibsCoderGeneratorProps["relations"];
+  libs?: ILibsCoderGeneratorProps;
 };
 
 /**
@@ -38,11 +36,9 @@ export class Coder {
     this.baseDirectory = "";
 
     this.project.libs = new LibsCoder({
+      ...props.libs,
       tree: this.tree,
       parent: this,
-      moduleName: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 

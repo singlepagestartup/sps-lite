@@ -8,25 +8,34 @@ export async function updateGenerator(
 ) {
   const coder = new Coder({
     tree,
-    moduleName: options.module,
-    models: [
-      {
-        name: options.model_name,
-        model: {
-          name: options.model_name,
-          frontend: {
-            component: {
-              variants: [
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: options.module,
+              models: [
                 {
-                  level: "sps-lite",
-                  name: "admin-select-input",
+                  model: {
+                    name: options.model_name,
+                    frontend: {
+                      component: {
+                        variants: [
+                          {
+                            level: "sps-lite",
+                            name: "admin-select-input",
+                          },
+                        ],
+                      },
+                    },
+                  },
                 },
               ],
             },
           },
-        },
+        ],
       },
-    ],
+    },
   });
 
   await coder.update();

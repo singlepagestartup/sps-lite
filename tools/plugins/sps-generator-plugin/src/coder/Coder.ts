@@ -11,9 +11,7 @@ import {
 import { IEditFieldProps } from "./root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  moduleName: IRootCoderGeneratorProps["moduleName"];
-  models?: IRootCoderGeneratorProps["models"];
-  relations?: IRootCoderGeneratorProps["relations"];
+  root: IRootCoderGeneratorProps;
 };
 
 /**
@@ -37,10 +35,8 @@ export class Coder {
     this.tree = props.tree;
 
     this.project.root = new RootCoder({
+      ...props.root,
       tree: this.tree,
-      moduleName: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 

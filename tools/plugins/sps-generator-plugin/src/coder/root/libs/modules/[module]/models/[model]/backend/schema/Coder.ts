@@ -1,8 +1,24 @@
 import { Tree } from "@nx/devkit";
-import { IEditFieldProps, Coder as TableCoder } from "./table/Coder";
-import { Coder as RelationsCoder } from "./relations/Coder";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  IEditFieldProps,
+  Coder as TableCoder,
+  IGeneratorProps as ITableCoderGeneratorProps,
+} from "./table/Coder";
+import {
+  Coder as RelationsCoder,
+  IGeneratorProps as IRelationsCoderGeneratorProps,
+} from "./relations/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
 import { Coder as BackendCoder } from "../Coder";
+
+export type IGeneratorProps = {
+  relations?: IRelationsCoderGeneratorProps;
+  table?: ITableCoderGeneratorProps;
+  root?: IRootCoderGeneratorProps;
+};
 
 export class Coder {
   parent: BackendCoder;
@@ -20,26 +36,29 @@ export class Coder {
     root: RootCoder;
   };
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "schema";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-schema`;
-    this.baseDirectory = `${parent.baseDirectory}/schema`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}-schema`;
+    this.baseDirectory = `${props.parent.baseDirectory}/schema`;
 
     this.project.table = new TableCoder({
+      ...props.table,
       parent: this,
-      tree,
+      tree: this.tree,
     });
 
     this.project.relations = new RelationsCoder({
+      ...props.relations,
       parent: this,
-      tree,
+      tree: this.tree,
     });
 
     this.project.root = new RootCoder({
+      ...props.root,
       parent: this,
-      tree,
+      tree: this.tree,
     });
   }
 

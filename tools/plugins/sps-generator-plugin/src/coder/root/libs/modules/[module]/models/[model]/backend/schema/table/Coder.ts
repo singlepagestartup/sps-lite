@@ -13,6 +13,8 @@ import {
   space,
 } from "../../../../../../../../../../utils/regex-utils/regex-elements";
 
+export type IGeneratorProps = {};
+
 export interface IEditFieldProps {
   name: string;
   pgCoreType:
@@ -46,11 +48,11 @@ export class Coder {
   tableName: string;
   modelNameStyles: ReturnType<typeof getNameStyles>;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
-    this.parent = parent;
-    this.baseName = `${parent.baseName}-table`;
-    this.baseDirectory = `${parent.baseDirectory}/table`;
-    this.tree = tree;
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${props.parent.baseName}-table`;
+    this.baseDirectory = `${props.parent.baseDirectory}/table`;
+    this.tree = props.tree;
 
     const modelName = parent.parent.parent.name;
 

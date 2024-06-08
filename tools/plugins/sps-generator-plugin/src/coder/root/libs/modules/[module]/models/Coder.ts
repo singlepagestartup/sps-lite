@@ -8,8 +8,6 @@ import {
 import { IEditFieldProps } from "./[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  name: IModelCoderGeneratorProps["name"];
-  isExternal?: Coder["isExternal"];
   model?: IModelCoderGeneratorProps;
 };
 
@@ -24,7 +22,6 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
-  isExternal: boolean;
   project: {
     model: ModelCoder;
   } = {} as {
@@ -42,12 +39,10 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/models`;
     this.tree = props.tree;
     this.parent = props.parent;
-    this.isExternal = props.isExternal;
 
     this.project.model = new ModelCoder({
       ...props.model,
       tree: this.tree,
-      name: props.name,
       parent: this,
     });
   }

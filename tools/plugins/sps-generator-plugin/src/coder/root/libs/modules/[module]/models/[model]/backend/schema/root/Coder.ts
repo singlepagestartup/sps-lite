@@ -10,6 +10,8 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 import { Coder as SchemaCoder } from "../Coder";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: SchemaCoder;
   baseName: string;
@@ -19,11 +21,11 @@ export class Coder {
   project?: ProjectConfiguration;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
-    this.parent = parent;
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${props.parent.baseName}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/root`;
+    this.tree = props.tree;
     this.name = "schema";
 
     const moduleName = parent.parent.parent.parent.parent.name;

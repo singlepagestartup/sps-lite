@@ -13,6 +13,8 @@ import { space } from "../../../../../../../../../utils/regex-utils/regex-elemen
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: ContractsCoder;
@@ -21,12 +23,12 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
+  constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/root`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
