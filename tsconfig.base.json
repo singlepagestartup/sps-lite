@@ -2026,6 +2026,9 @@
       "@sps/sps-website-builder-models-page-frontend-api-client": [
         "libs/modules/sps-website-builder/models/page/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-page-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/page/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-page-frontend-api-server": [
         "libs/modules/sps-website-builder/models/page/frontend/api/server/src/index.ts"
       ],
