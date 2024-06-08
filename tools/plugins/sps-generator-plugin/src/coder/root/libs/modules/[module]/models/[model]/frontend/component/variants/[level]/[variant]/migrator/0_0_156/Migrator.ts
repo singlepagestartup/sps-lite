@@ -17,6 +17,11 @@ export class Migrator {
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
+    const exists = this.parent.coder.tree.exists(baseDirectory);
+
+    if (!exists) {
+      throw new Error(`The directory ${baseDirectory} does not exist`);
+    }
 
     generateFiles(
       this.parent.coder.tree,

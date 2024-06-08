@@ -101,7 +101,7 @@ export class Coder {
     });
 
     const version = "0.0.156";
-    console.log(`🚀 ~ variant - update ~ version:`, version);
+
     await migrator.execute({ version });
   }
 
