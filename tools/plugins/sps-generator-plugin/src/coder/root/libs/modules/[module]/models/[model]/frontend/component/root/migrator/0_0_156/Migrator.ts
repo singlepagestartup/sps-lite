@@ -1,4 +1,4 @@
-import { generateFiles } from "@nx/devkit";
+import { generateFiles, updateProjectConfiguration } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
 
@@ -11,9 +11,7 @@ export class Migrator {
 
   async execute() {
     const baseDirectory = this.parent.coder.baseDirectory;
-    const libName = this.parent.coder.baseName;
-
-    console.log(`🚀 ~ execute ~ libName:`, libName);
+    const baseName = this.parent.coder.baseName;
 
     generateFiles(
       this.parent.coder.tree,
@@ -21,16 +19,17 @@ export class Migrator {
       baseDirectory,
       {
         template: "",
-        lib_name: libName,
+        lib_name: baseName,
       },
     );
 
     this.parent.coder.tree.delete(`${baseDirectory}/tsconfig.spec.json`);
 
-    const createdPackage = this.parent.coder.tree.read(
-      `${baseDirectory}/package.json`,
-    );
-
-    console.log(`🚀 ~ execute ~ createdPackage:`, createdPackage?.toString());
+    updateProjectConfiguration(this.parent.coder.tree, baseName, {
+      ...this.parent.coder.project,
+      targets: {
+        "tsc:build": {},
+      },
+    });
   }
 }
