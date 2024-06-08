@@ -37,7 +37,10 @@ export class Coder {
 
   async update() {
     await this.project.root.update();
-    await this.project.relation.update();
+
+    if (this.project.relation) {
+      await this.project.relation.update();
+    }
   }
 
   async create() {

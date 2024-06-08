@@ -9,10 +9,14 @@ export async function updateGenerator(
   const coder = new Coder({
     tree,
     moduleName: options.module,
+    models: [
+      {
+        name: options.model_name,
+      },
+    ],
   });
-  await coder.update();
 
-  console.log(`🚀 ~ options:`, options);
+  await coder.update();
 }
 
 export default updateGenerator;

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-// import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
+import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
 import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
-// import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
-// import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac-frontend";
+import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
+import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac-frontend";
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -45,7 +45,7 @@ export function Component(props: IComponentPropsExtended) {
             />
           </div>
           <div className="bg-white rounded-b-lg">
-            {/* {widget === "sps-website-builder" ? (
+            {widget === "sps-website-builder" ? (
               <SpsWebsiteAdminComponent
                 {...props}
                 isServer={false}
@@ -58,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
                 isServer={false}
                 variant="default"
               />
-            ) : null} */}
+            ) : null}
             {widget === "startup" ? (
               <StartupAdminComponent
                 {...props}
@@ -66,13 +66,13 @@ export function Component(props: IComponentPropsExtended) {
                 variant="default"
               />
             ) : null}
-            {/* {widget === "sps-rbac" ? (
+            {widget === "sps-rbac" ? (
               <SpsRbacAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"
               />
-            ) : null} */}
+            ) : null}
           </div>
         </div>
       </div>

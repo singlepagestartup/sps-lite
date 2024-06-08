@@ -16,6 +16,7 @@ import {
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
+import { Migrator } from "./migrator/Migrator";
 
 export class Coder {
   parent: ComponentCoder;
@@ -36,7 +37,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
