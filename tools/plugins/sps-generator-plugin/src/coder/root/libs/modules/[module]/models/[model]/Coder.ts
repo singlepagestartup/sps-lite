@@ -2,12 +2,16 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModelsCoder } from "../Coder";
 import { Coder as BackendCoder } from "./backend/Coder";
 import { IEditFieldProps } from "./backend/schema/table/Coder";
-import { Coder as FrontendCoder } from "./frontend/Coder";
+import {
+  Coder as FrontendCoder,
+  IGeneratorProps as IFrontendCoderGeneratorProps,
+} from "./frontend/Coder";
 import { Coder as ContractsCoder } from "./contracts/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 
 export type IGeneratorProps = {
   name: Coder["name"];
+  frontend?: IFrontendCoderGeneratorProps;
 };
 
 /**
@@ -34,6 +38,7 @@ export class Coder {
     tree,
     name,
     parent,
+    frontend,
   }: {
     tree: Tree;
     parent: ModelsCoder;
@@ -56,6 +61,7 @@ export class Coder {
     });
 
     this.project.frontend = new FrontendCoder({
+      ...frontend,
       tree: this.tree,
       parent: this,
     });

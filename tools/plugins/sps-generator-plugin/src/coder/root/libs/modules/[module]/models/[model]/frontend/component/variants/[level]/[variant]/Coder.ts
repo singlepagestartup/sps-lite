@@ -22,6 +22,12 @@ import { util as createSpsReactLibrary } from "../../../../../../../../../../../
 import { stat } from "fs/promises";
 import { Migrator } from "./migrator/Migrator";
 
+export type IGeneratorProps = {
+  name: string;
+  level: string;
+  template?: string;
+};
+
 export class Coder {
   parent: ComponentCoder;
   tree: Tree;
@@ -46,13 +52,11 @@ export class Coder {
     level,
     template,
   }: {
-    name: string;
     parent: ComponentCoder;
     tree: Tree;
-    level: string;
-    template?: string;
-  }) {
+  } & IGeneratorProps) {
     this.name = name;
+    console.log(`🚀 ~ variant name:`, name);
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
     this.tree = tree;
@@ -97,6 +101,7 @@ export class Coder {
     });
 
     const version = "0.0.156";
+    console.log(`🚀 ~ variant - update ~ version:`, version);
     await migrator.execute({ version });
   }
 

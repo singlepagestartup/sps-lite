@@ -10,6 +10,7 @@ import { IEditFieldProps } from "./[model]/backend/schema/table/Coder";
 export type IGeneratorProps = {
   name: IModelCoderGeneratorProps["name"];
   isExternal?: Coder["isExternal"];
+  model?: IModelCoderGeneratorProps;
 };
 
 /**
@@ -44,6 +45,7 @@ export class Coder {
     this.isExternal = props.isExternal;
 
     this.project.model = new ModelCoder({
+      ...props.model,
       tree: this.tree,
       name: props.name,
       parent: this,

@@ -1,7 +1,14 @@
 import { Tree } from "@nx/devkit";
 import { Coder as FrontendCoder } from "../Coder";
 import { Coder as RootCoder } from "./root/Coder";
-import { Coder as VariantCoder } from "./variants/[level]/[variant]/Coder";
+import {
+  Coder as VariantCoder,
+  IGeneratorProps as IVariantCoderGeneratorProps,
+} from "./variants/[level]/[variant]/Coder";
+
+export type IGeneratorProps = {
+  variants?: IVariantCoderGeneratorProps[];
+};
 
 export class Coder {
   parent: FrontendCoder;
@@ -11,10 +18,14 @@ export class Coder {
   name: string;
   project: {
     root: RootCoder;
-    variant?: VariantCoder;
+    variants?: VariantCoder[];
   };
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor({
+    parent,
+    tree,
+    variants,
+  }: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "component";
     this.baseName = `${parent.baseName}-component`;
     this.baseDirectory = `${parent.baseDirectory}/component`;
@@ -28,13 +39,26 @@ export class Coder {
 
     this.project = {
       root,
-      variant: undefined,
+      variants: undefined,
     };
+
+    if (variants) {
+      this.project.variants = variants.map((variant) => {
+        return new VariantCoder({
+          ...variant,
+          tree: this.tree,
+          parent: this,
+        });
+      });
+    }
   }
 
   async update() {
     await this.project.root.update();
-    await this.project.variant?.update();
+
+    for (const variant of this.project.variants) {
+      await variant.update();
+    }
   }
 
   async create() {
@@ -50,9 +74,9 @@ export class Coder {
     variantLevel,
     templateName,
   }: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
+    variantName: IVariantCoderGeneratorProps["name"];
+    variantLevel: IVariantCoderGeneratorProps["level"];
+    templateName?: IVariantCoderGeneratorProps["template"];
   }) {
     const variant = new VariantCoder({
       tree: this.tree,
@@ -62,16 +86,16 @@ export class Coder {
       template: templateName,
     });
 
-    this.project.variant = variant;
+    this.project.variants[0] = variant;
 
-    await this.project.variant.create();
+    await this.project.variants[0].create();
 
     const rootBaseDirectory = this.baseDirectory;
     const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
     const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
     const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
 
-    await this.project.variant.attach({
+    await this.project.variants[0].attach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
       indexScssPath: rootScssPath,
@@ -82,8 +106,8 @@ export class Coder {
     variantName,
     variantLevel,
   }: {
-    variantName: string;
-    variantLevel: string;
+    variantName: IVariantCoderGeneratorProps["name"];
+    variantLevel: IVariantCoderGeneratorProps["level"];
   }) {
     const variant = new VariantCoder({
       tree: this.tree,
@@ -92,16 +116,16 @@ export class Coder {
       level: variantLevel,
     });
 
-    this.project.variant = variant;
+    this.project.variants[0] = variant;
 
-    await this.project.variant.remove();
+    await this.project.variants[0].remove();
 
     const rootBaseDirectory = this.baseDirectory;
     const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
     const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
     const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
 
-    await this.project.variant.detach({
+    await this.project.variants[0].detach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
       indexScssPath: rootScssPath,

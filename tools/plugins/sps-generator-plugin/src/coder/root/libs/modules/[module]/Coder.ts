@@ -60,6 +60,7 @@ export class Coder {
     props.models?.forEach((model) => {
       this.project.models.push(
         new ModelsCoder({
+          ...model,
           tree: this.tree,
           parent: this,
           name: model.name,
@@ -283,70 +284,6 @@ export class Coder {
       variantName: props.variantName,
     });
   }
-
-  // async setRelatedModels(relationName: string) {
-  //   const modelNamesPluralized = relationName.split("-to-");
-
-  //   const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
-  //     return pluralize.singular(modelName);
-  //   });
-
-  //   console.log(
-  //     `🚀 ~ unpluralizedModelNames ~ unpluralizedModelNames:`,
-  //     unpluralizedModelNames,
-  //   );
-
-  //   // const projects = getProjects(this.tree);
-  //   // const projectWithPassedRelationNameAndSchema = [];
-
-  //   // projects.forEach((project) => {
-  //   //   if (
-  //   //     project.name.includes(relationName) &&
-  //   //     project.name.includes("schema")
-  //   //   ) {
-  //   //     projectWithPassedRelationNameAndSchema.push(project);
-  //   //   }
-  //   // });
-
-  //   // const graph = readCachedProjectGraph();
-  //   // const dependenciesProjectNames = Object.keys(graph.dependencies);
-  //   // const relatedModels = [];
-
-  //   // dependenciesProjectNames.forEach((dependencyProjectName) => {
-  //   //   graph.dependencies[dependencyProjectName].forEach((dependency) => {
-  //   //     if (
-  //   //       dependency.target === projectWithPassedRelationNameAndSchema[0].name
-  //   //     ) {
-  //   //       if (dependency.source.includes("models")) {
-  //   //         relatedModels.push(dependency.source);
-  //   //       }
-  //   //     }
-  //   //   });
-  //   // });
-
-  //   // /**
-  //   //  * ! May be in wrong order! Here is just for fixing init problem
-  //   //  * Need to be checked by relation schema
-  //   //  */
-  //   // const modelNames = relatedModels.map((model) => {
-  //   //   return model.split("models-")[1].split("-backend")[0];
-  //   // });
-
-  //   const leftProject = new ModelsCoder({
-  //     tree: this.tree,
-  //     parent: this,
-  //     name: unpluralizedModelNames[0],
-  //   });
-  //   this.project.models.push(leftProject);
-
-  //   const rightProject = new ModelsCoder({
-  //     tree: this.tree,
-  //     parent: this,
-  //     name: unpluralizedModelNames[1],
-  //   });
-
-  //   this.project.models.push(rightProject);
-  // }
 
   async createRelationFrontendComponentVariant(props: {
     variantName: string;

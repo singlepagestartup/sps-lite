@@ -12,6 +12,19 @@ export async function updateGenerator(
     models: [
       {
         name: options.model_name,
+        model: {
+          name: options.model_name,
+          frontend: {
+            component: {
+              variants: [
+                {
+                  level: "sps-lite",
+                  name: "tesssst",
+                },
+              ],
+            },
+          },
+        },
       },
     ],
   });

@@ -1,8 +1,15 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModelCoder } from "../Coder";
-import { Coder as ComponentCoder } from "./component/Coder";
+import {
+  Coder as ComponentCoder,
+  IGeneratorProps as IComponentCoderGeneratorProps,
+} from "./component/Coder";
 import { Coder as ApiCoder } from "./api/Coder";
 import { Coder as ReduxCoder } from "./redux/Coder";
+
+export type IGeneratorProps = {
+  component?: IComponentCoderGeneratorProps;
+};
 
 export class Coder {
   parent: ModelCoder;
@@ -16,14 +23,19 @@ export class Coder {
     redux: ReduxCoder;
   };
 
-  constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
+  constructor({
+    parent,
+    tree,
+    component,
+  }: { parent: ModelCoder; tree: Tree } & IGeneratorProps) {
     this.name = "frontend";
     this.baseName = `${parent.baseName}-frontend`;
     this.baseDirectory = `${parent.baseDirectory}/frontend`;
     this.tree = tree;
     this.parent = parent;
 
-    const component = new ComponentCoder({
+    const componentCoder = new ComponentCoder({
+      ...component,
       tree: this.tree,
       parent: this,
     });
@@ -39,7 +51,7 @@ export class Coder {
     });
 
     this.project = {
-      component,
+      component: componentCoder,
       api,
       redux,
     };
