@@ -8,7 +8,21 @@ export async function moduleGenerator(
 ) {
   const moduleName = options.module;
 
-  const coder = new Coder({ tree, moduleName });
+  const coder = new Coder({
+    tree,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: moduleName,
+            },
+          },
+        ],
+      },
+    },
+  });
+
   if (options.action === "remove") {
     await coder.removeModule();
   } else {

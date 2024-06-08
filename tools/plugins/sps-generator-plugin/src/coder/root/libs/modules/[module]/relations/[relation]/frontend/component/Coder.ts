@@ -1,7 +1,18 @@
 import { Tree } from "@nx/devkit";
 import { Coder as FrontendCoder } from "../Coder";
-import { Coder as RootCoder } from "./root/Coder";
-import { Coder as VariantCoder } from "./variants/[level]/[variant]/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
+import {
+  Coder as VariantCoder,
+  IGeneratorProps as IVariantCoderGeneratorProps,
+} from "./variants/[level]/[variant]/Coder";
+
+export type IGeneratorProps = {
+  root?: IRootCoderGeneratorProps;
+  variant?: IVariantCoderGeneratorProps;
+};
 
 export class Coder {
   parent: FrontendCoder;
@@ -17,14 +28,15 @@ export class Coder {
     variant?: VariantCoder;
   };
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
+    this.tree = props.tree;
+    this.parent = props.parent;
     this.name = "component";
-    this.baseName = `${parent.baseName}-component`;
-    this.baseDirectory = `${parent.baseDirectory}/component`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${this.parent.baseName}-component`;
+    this.baseDirectory = `${this.parent.baseDirectory}/component`;
 
     this.project.root = new RootCoder({
+      ...props.root,
       tree: this.tree,
       parent: this,
     });

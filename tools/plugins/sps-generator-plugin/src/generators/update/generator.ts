@@ -23,7 +23,15 @@ export async function updateGenerator(
                         variants: [
                           {
                             level: "sps-lite",
-                            name: "admin-table-row",
+                            name: "admin-form",
+                          },
+                          {
+                            level: "sps-lite",
+                            name: "admin-table",
+                          },
+                          {
+                            level: "sps-lite",
+                            name: "admin-panel",
                           },
                         ],
                       },

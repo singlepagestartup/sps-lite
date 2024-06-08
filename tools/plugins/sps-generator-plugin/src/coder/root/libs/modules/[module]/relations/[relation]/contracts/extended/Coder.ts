@@ -10,6 +10,8 @@ import { util as getNameStyles } from "../../../../../../../../utils/get-name-st
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: ContractsCoder;
@@ -18,12 +20,12 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
+  constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-extended`;
-    this.baseDirectory = `${parent.baseDirectory}/extended`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${this.parent.baseName}-extended`;
+    this.baseDirectory = `${this.parent.baseDirectory}/extended`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -40,7 +42,8 @@ export class Coder {
       this.parent.parent.parent.parent.project.models[0].project.model.project
         .contracts.project.root.baseName;
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[0].isExternal;
+      this.parent.parent.parent.parent.project.models[0].project.model
+        .isExternal;
     const leftModelName =
       this.parent.parent.parent.parent.project.models[0].project.model.name;
 
@@ -48,7 +51,8 @@ export class Coder {
       this.parent.parent.parent.parent.project.models[1].project.model.project
         .contracts.project.root.baseName;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.project.models[1].project.model
+        .isExternal;
     const rightModelName =
       this.parent.parent.parent.parent.project.models[1].project.model.name;
 

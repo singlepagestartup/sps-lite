@@ -5,6 +5,8 @@ import { util as getNameStyles } from "../../../../../../../utils/get-name-style
 import * as nxWorkspace from "@nx/workspace";
 import path from "path";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: SchemaCoder;
@@ -14,12 +16,12 @@ export class Coder {
   project: ProjectConfiguration;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 
-  constructor({ tree, parent }: { tree: Tree; parent: SchemaCoder }) {
+  constructor(props: { tree: Tree; parent: SchemaCoder } & IGeneratorProps) {
     this.name = "root";
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
-    this.parent = parent;
+    this.tree = props.tree;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
 
     const moduleName = this.parent.parent.parent.name;
     const moduleNameStyles = getNameStyles({ name: moduleName });

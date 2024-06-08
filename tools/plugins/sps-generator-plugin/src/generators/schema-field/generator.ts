@@ -8,12 +8,24 @@ export async function schemaFieldGenerator(
 ) {
   const coder = new Coder({
     tree,
-    moduleName: options.module,
-    models: [
-      {
-        name: options.model_name,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: options.module,
+              models: [
+                {
+                  model: {
+                    name: options.model_name,
+                  },
+                },
+              ],
+            },
+          },
+        ],
       },
-    ],
+    },
   });
 
   if (options.action === "remove") {

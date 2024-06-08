@@ -9,6 +9,8 @@ import { util as createSpsReactLibrary } from "../../../../../../../../../../uti
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: ComponentCoder;
   tree: Tree;
@@ -17,12 +19,12 @@ export class Coder {
   name: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ComponentCoder; tree: Tree }) {
+  constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
+    this.tree = props.tree;
+    this.parent = props.parent;
     this.name = "root";
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

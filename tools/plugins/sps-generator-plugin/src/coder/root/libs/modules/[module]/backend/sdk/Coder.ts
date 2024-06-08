@@ -1,6 +1,13 @@
 import { Tree } from "@nx/devkit";
 import { Coder as BackendCoder } from "../Coder";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
+
+export type IGeneratorProps = {
+  root?: IRootCoderGeneratorProps;
+};
 
 export class Coder {
   name: string;
@@ -12,14 +19,15 @@ export class Coder {
     root: RootCoder;
   };
 
-  constructor({ tree, parent }: { tree: Tree; parent: BackendCoder }) {
+  constructor(props: { tree: Tree; parent: BackendCoder } & IGeneratorProps) {
     this.name = "sdk";
-    this.baseName = `${parent.baseName}-sdk`;
-    this.baseDirectory = `${parent.baseDirectory}/sdk`;
-    this.tree = tree;
-    this.parent = parent;
+    this.tree = props.tree;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-sdk`;
+    this.baseDirectory = `${this.parent.baseDirectory}/sdk`;
 
     const root = new RootCoder({
+      ...props.root,
       tree: this.tree,
       parent: this,
     });

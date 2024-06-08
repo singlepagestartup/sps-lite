@@ -6,7 +6,7 @@ import {
 } from "./[relation]/Coder";
 
 export type IGeneratorProps = {
-  name?: IRelationCoderGeneratorProps["name"];
+  relation?: IRelationCoderGeneratorProps;
 };
 
 /**
@@ -32,9 +32,9 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/relations`;
 
     this.project.relation = new RelationCoder({
+      ...props.relation,
       tree: this.tree,
       parent: this,
-      name: props.name,
     });
   }
 

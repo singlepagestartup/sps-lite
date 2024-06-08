@@ -10,6 +10,8 @@ import { util as createSpsReactLibrary } from "../../../../../../../../../../uti
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   parent: ApiCoder;
   tree: Tree;
@@ -21,12 +23,12 @@ export class Coder {
   relationNamePluralized: string;
   moduleName: string;
 
-  constructor({ parent, tree }: { parent: ApiCoder; tree: Tree }) {
+  constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
-    this.baseName = `${parent.baseName}-model`;
-    this.baseDirectory = `${parent.baseDirectory}/model`;
-    this.tree = tree;
-    this.parent = parent;
+    this.tree = props.tree;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-model`;
+    this.baseDirectory = `${this.parent.baseDirectory}/model`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const relationName = this.parent.parent.parent.name;

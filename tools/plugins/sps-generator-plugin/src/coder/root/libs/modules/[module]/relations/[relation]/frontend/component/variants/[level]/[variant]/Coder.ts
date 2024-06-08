@@ -22,6 +22,12 @@ import { util as createSpsReactLibrary } from "../../../../../../../../../../../
 import { stat } from "fs/promises";
 import pluralize from "pluralize";
 
+export type IGeneratorProps = {
+  name: string;
+  level: string;
+  template?: string;
+};
+
 export class Coder {
   parent: ComponentCoder;
   tree: Tree;
@@ -42,26 +48,21 @@ export class Coder {
   rootContractsImportPath: string;
   extendedContractsImportPath: string;
   template: string;
+  level: string;
 
-  constructor({
-    parent,
-    tree,
-    name,
-    level,
-    template,
-  }: {
-    name: string;
-    parent: ComponentCoder;
-    tree: Tree;
-    level: string;
-    template?: string;
-  }) {
-    this.name = name;
-    this.baseName = `${parent.baseName}-variants-${level}-${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
-    this.tree = tree;
-    this.parent = parent;
-    this.template = template;
+  constructor(
+    props: {
+      parent: ComponentCoder;
+      tree: Tree;
+    } & IGeneratorProps,
+  ) {
+    this.tree = props.tree;
+    this.parent = props.parent;
+    this.template = props.template;
+    this.name = props.name;
+    this.level = props.level;
+    this.baseName = `${this.parent.baseName}-variants-${props.level}-${this.name}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/variants/${props.level}/${this.name}`;
 
     const apiClientImportPath =
       this.parent.parent.project.api.project.client.baseName;
@@ -77,7 +78,7 @@ export class Coder {
     const relationName = this.parent.parent.parent.name;
 
     const nameStyles = getNameStyles({
-      name,
+      name: this.name,
     });
 
     this.apiClientImportPath = apiClientImportPath;
@@ -103,7 +104,7 @@ export class Coder {
       pascalCasedVariant: nameStyles.pascalCased.base,
     });
     this.importStyles = new ImportStyles({
-      level,
+      level: this.level,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
 

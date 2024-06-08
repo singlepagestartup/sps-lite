@@ -9,13 +9,17 @@ import {
   Coder as RelationsCoder,
   IGeneratorProps as IRelationsCoderGeneratorProps,
 } from "./relations/Coder";
-import { Coder as BackendCoder } from "./backend/Coder";
+import {
+  Coder as BackendCoder,
+  IGeneratorProps as IBackendCoderGeneratorProps,
+} from "./backend/Coder";
 import pluralize from "pluralize";
 
 export type IGeneratorProps = {
   name: Coder["name"];
   models?: IModelsCoderGeneratorProps[];
   relations?: IRelationsCoderGeneratorProps[];
+  backend?: IBackendCoderGeneratorProps;
 };
 
 /**
@@ -53,6 +57,7 @@ export class Coder {
     this.parent = props.parent;
 
     this.project.backend = new BackendCoder({
+      ...props.backend,
       tree: this.tree,
       parent: this,
     });
@@ -70,9 +75,9 @@ export class Coder {
     props.relations?.forEach((relation) => {
       this.project.relations.push(
         new RelationsCoder({
+          ...relation,
           tree: this.tree,
           parent: this,
-          name: relation.name,
         }),
       );
     });

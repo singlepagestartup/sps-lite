@@ -1,14 +1,26 @@
 import { Tree } from "@nx/devkit";
 import { Coder as RelationsCoder } from "../Coder";
-import { Coder as BackendCoder } from "./backend/Coder";
-import { Coder as ContractsCoder } from "./contracts/Coder";
-import { Coder as FrontendCoder } from "./frontend/Coder";
+import {
+  Coder as BackendCoder,
+  IGeneratorProps as IBackendCoderGeneratorProps,
+} from "./backend/Coder";
+import {
+  Coder as ContractsCoder,
+  IGeneratorProps as IContractsCoderGeneratorProps,
+} from "./contracts/Coder";
+import {
+  Coder as FrontendCoder,
+  IGeneratorProps as IFrontendCoderGeneratorProps,
+} from "./frontend/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 import { Coder as ModelCoder } from "../../models/Coder";
 import pluralize from "pluralize";
 
 export type IGeneratorProps = {
   name?: string;
+  frontend?: IFrontendCoderGeneratorProps;
+  backend?: IBackendCoderGeneratorProps;
+  contracts?: IContractsCoderGeneratorProps;
 };
 
 /**
@@ -54,7 +66,9 @@ export class Coder {
       const leftProject = new ModelCoder({
         tree: this.tree,
         parent: this.parent.parent,
-        name: unpluralizedModelNames[0],
+        model: {
+          name: unpluralizedModelNames[0],
+        },
       });
 
       this.parent.parent.project.models.push(leftProject);
@@ -62,7 +76,9 @@ export class Coder {
       const rightProject = new ModelCoder({
         tree: this.tree,
         parent: this.parent.parent,
-        name: unpluralizedModelNames[1],
+        model: {
+          name: unpluralizedModelNames[1],
+        },
       });
 
       this.parent.parent.project.models.push(rightProject);

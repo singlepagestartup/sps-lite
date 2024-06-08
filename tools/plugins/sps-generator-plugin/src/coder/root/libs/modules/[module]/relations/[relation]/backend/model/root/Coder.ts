@@ -10,6 +10,8 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { Coder as BackendCoder } from "../../Coder";
 
+export type IGeneratorProps = {};
+
 export class Coder {
   name: string;
   parent: BackendCoder;
@@ -28,18 +30,18 @@ export class Coder {
   schemaModuleLibName: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
-    this.parent = parent;
-    this.tree = tree;
+    this.parent = props.parent;
+    this.tree = props.tree;
 
-    this.baseName = `${parent.baseName}-model`;
-    this.baseDirectory = `${parent.baseDirectory}/model/root`;
+    this.baseName = `${this.parent.baseName}-model`;
+    this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
 
-    const modelName = parent.parent.name;
+    const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
 
-    const moduleName = parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.name;
     const pascalCaseName = names(modelName).className;
     const moduleNamePascalCase = names(moduleName).className;
     const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
@@ -69,14 +71,14 @@ export class Coder {
     const leftModel = this.parent.parent.parent.parent.project.models[0];
     const rightModel = this.parent.parent.parent.parent.project.models[1];
 
-    const leftModelIsExternal = leftModel.isExternal;
-    const rightModelIsExternal = rightModel.isExternal;
+    const leftModelIsExternal = leftModel.project.model.isExternal;
+    const rightModelIsExternal = rightModel.project.model.isExternal;
 
     const leftModelName = leftModel.project.model.name;
     const rightModelName = rightModel.project.model.name;
 
     const moduleLibName =
-      this.parent.parent.parent.parent.parent.parent.project.modules.project
+      this.parent.parent.parent.parent.parent.parent.project.modules[0].project
         .module.name;
 
     await createSpsTSLibrary({
