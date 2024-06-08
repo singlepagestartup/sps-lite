@@ -1,0 +1,13 @@
+{
+  "name": "@sps/sps-website-builder-models-slider-block-backend-app",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/slider-block/backend/app/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "build": {},
+    "test:watch": {},
+    "tsc:build": {}
+  }
+}

@@ -104,12 +104,12 @@ export async function updateGenerator(
     }
   });
 
-  // const coder = new Coder({
-  //   tree,
-  //   root,
-  // });
+  const coder = new Coder({
+    tree,
+    root,
+  });
 
-  // await coder.update();
+  await coder.update();
 
   // const coder = new Coder({
   //   tree,
@@ -167,28 +167,28 @@ export async function updateGenerator(
   // });
   // await coder.update();
 
-  const coder = new Coder({
-    tree,
-    root: {
-      libs: {
-        modules: [
-          {
-            module: {
-              name: "sps-website-builder",
-              models: [
-                {
-                  model: {
-                    name: "button",
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  });
-  await coder.update();
+  // const coder = new Coder({
+  //   tree,
+  //   root: {
+  //     libs: {
+  //       modules: [
+  //         {
+  //           module: {
+  //             name: "sps-website-builder",
+  //             models: [
+  //               {
+  //                 model: {
+  //                   name: "button",
+  //                 },
+  //               },
+  //             ],
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // });
+  // await coder.update();
   // const additions = new Coder({
   //   tree,
   //   root: {
