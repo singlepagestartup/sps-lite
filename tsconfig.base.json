@@ -1279,6 +1279,9 @@
       "@sps/sps-website-builder-models-buttons-array-frontend-api-client": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-buttons-array-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/buttons-array/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-buttons-array-frontend-api-server": [
         "libs/modules/sps-website-builder/models/buttons-array/frontend/api/server/src/index.ts"
       ],
@@ -1332,6 +1335,9 @@
       ],
       "@sps/sps-website-builder-models-feature-frontend-api-client": [
         "libs/modules/sps-website-builder/models/feature/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-feature-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/feature/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-feature-frontend-api-server": [
         "libs/modules/sps-website-builder/models/feature/frontend/api/server/src/index.ts"
@@ -1390,6 +1396,9 @@
       "@sps/sps-website-builder-models-features-section-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/features-section-block/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-features-section-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/features-section-block/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-features-section-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/features-section-block/frontend/api/server/src/index.ts"
       ],
@@ -1417,27 +1426,6 @@
       "@sps/sps-website-builder-models-features-section-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/features-section-block/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-flyout-contracts": [
-        "libs/modules/sps-website-builder/models/flyout/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-contracts-extended": [
-        "libs/modules/sps-website-builder/models/flyout/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/flyout/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/flyout/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-frontend-component": [
-        "libs/modules/sps-website-builder/models/flyout/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/flyout/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-flyout-frontend-redux": [
-        "libs/modules/sps-website-builder/models/flyout/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-font-contracts": [
         "libs/modules/sps-website-builder/models/font/contracts/root/src/index.ts"
       ],
@@ -1446,6 +1434,9 @@
       ],
       "@sps/sps-website-builder-models-font-frontend-api-client": [
         "libs/modules/sps-website-builder/models/font/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-font-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/font/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-font-frontend-api-server": [
         "libs/modules/sps-website-builder/models/font/frontend/api/server/src/index.ts"
@@ -1510,6 +1501,9 @@
       "@sps/sps-website-builder-models-footer-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/footer-block/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-footer-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/footer-block/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-footer-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/footer-block/frontend/api/server/src/index.ts"
       ],
@@ -1545,6 +1539,9 @@
       ],
       "@sps/sps-website-builder-models-footer-frontend-api-client": [
         "libs/modules/sps-website-builder/models/footer/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-footer-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/footer/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-footer-frontend-api-server": [
         "libs/modules/sps-website-builder/models/footer/frontend/api/server/src/index.ts"
@@ -1605,6 +1602,9 @@
       ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-hero-section-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/hero-section-block/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-hero-section-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/hero-section-block/frontend/api/server/src/index.ts"
@@ -1714,6 +1714,9 @@
       "@sps/sps-website-builder-models-loader-frontend-api-client": [
         "libs/modules/sps-website-builder/models/loader/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-loader-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/loader/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-loader-frontend-api-server": [
         "libs/modules/sps-website-builder/models/loader/frontend/api/server/src/index.ts"
       ],
@@ -1725,24 +1728,6 @@
       ],
       "@sps/sps-website-builder-models-loader-frontend-redux": [
         "libs/modules/sps-website-builder/models/loader/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-contracts": [
-        "libs/modules/sps-website-builder/models/locale/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-contracts-extended": [
-        "libs/modules/sps-website-builder/models/locale/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/locale/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/locale/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-frontend-component": [
-        "libs/modules/sps-website-builder/models/locale/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-locale-frontend-redux": [
-        "libs/modules/sps-website-builder/models/locale/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-logotype-backend-app": [
         "libs/modules/sps-website-builder/models/logotype/backend/app/root/src/index.ts"
@@ -1776,6 +1761,9 @@
       ],
       "@sps/sps-website-builder-models-logotype-frontend-api-client": [
         "libs/modules/sps-website-builder/models/logotype/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-logotype-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/logotype/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-logotype-frontend-api-server": [
         "libs/modules/sps-website-builder/models/logotype/frontend/api/server/src/index.ts"
@@ -1813,6 +1801,9 @@
       "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/server/src/index.ts"
       ],
@@ -1834,6 +1825,9 @@
       "@sps/sps-website-builder-models-metatag-frontend-api-client": [
         "libs/modules/sps-website-builder/models/metatag/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-metatag-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/metatag/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-metatag-frontend-api-server": [
         "libs/modules/sps-website-builder/models/metatag/frontend/api/server/src/index.ts"
       ],
@@ -1851,6 +1845,9 @@
       ],
       "@sps/sps-website-builder-models-modal-frontend-api-client": [
         "libs/modules/sps-website-builder/models/modal/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-modal-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/modal/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-modal-frontend-api-server": [
         "libs/modules/sps-website-builder/models/modal/frontend/api/server/src/index.ts"
@@ -1921,6 +1918,9 @@
       "@sps/sps-website-builder-models-navbar-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/navbar-block/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-navbar-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/navbar-block/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-navbar-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/navbar-block/frontend/api/server/src/index.ts"
       ],
@@ -1957,6 +1957,9 @@
       "@sps/sps-website-builder-models-navbar-frontend-api-client": [
         "libs/modules/sps-website-builder/models/navbar/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-navbar-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/navbar/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-navbar-frontend-api-server": [
         "libs/modules/sps-website-builder/models/navbar/frontend/api/server/src/index.ts"
       ],
@@ -1992,6 +1995,9 @@
       ],
       "@sps/sps-website-builder-models-not-found-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/not-found-block/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-not-found-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/not-found-block/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-not-found-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/not-found-block/frontend/api/server/src/index.ts"
@@ -2086,6 +2092,9 @@
       "@sps/sps-website-builder-models-sidebar-frontend-api-client": [
         "libs/modules/sps-website-builder/models/sidebar/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-sidebar-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/sidebar/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-sidebar-frontend-api-server": [
         "libs/modules/sps-website-builder/models/sidebar/frontend/api/server/src/index.ts"
       ],
@@ -2131,6 +2140,9 @@
       "@sps/sps-website-builder-models-slide-frontend-api-client": [
         "libs/modules/sps-website-builder/models/slide/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-slide-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/slide/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-slide-frontend-api-server": [
         "libs/modules/sps-website-builder/models/slide/frontend/api/server/src/index.ts"
       ],
@@ -2166,6 +2178,9 @@
       ],
       "@sps/sps-website-builder-models-slide-over-frontend-api-client": [
         "libs/modules/sps-website-builder/models/slide-over/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slide-over-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/slide-over/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slide-over-frontend-api-server": [
         "libs/modules/sps-website-builder/models/slide-over/frontend/api/server/src/index.ts"
@@ -2230,6 +2245,9 @@
       "@sps/sps-website-builder-models-slider-block-frontend-api-client": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-slider-block-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/slider-block/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-slider-block-frontend-api-server": [
         "libs/modules/sps-website-builder/models/slider-block/frontend/api/server/src/index.ts"
       ],
@@ -2265,6 +2283,9 @@
       ],
       "@sps/sps-website-builder-models-slider-frontend-api-client": [
         "libs/modules/sps-website-builder/models/slider/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-slider-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/slider/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-slider-frontend-api-server": [
         "libs/modules/sps-website-builder/models/slider/frontend/api/server/src/index.ts"
@@ -2302,6 +2323,9 @@
       "@sps/sps-website-builder-models-theme-frontend-api-client": [
         "libs/modules/sps-website-builder/models/theme/frontend/api/client/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-theme-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/theme/frontend/api/model/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-theme-frontend-api-server": [
         "libs/modules/sps-website-builder/models/theme/frontend/api/server/src/index.ts"
       ],
@@ -2319,6 +2343,9 @@
       ],
       "@sps/sps-website-builder-models-topbar-frontend-api-client": [
         "libs/modules/sps-website-builder/models/topbar/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-topbar-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/topbar/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-website-builder-models-topbar-frontend-api-server": [
         "libs/modules/sps-website-builder/models/topbar/frontend/api/server/src/index.ts"

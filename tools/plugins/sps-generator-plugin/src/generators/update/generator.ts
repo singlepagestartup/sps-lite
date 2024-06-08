@@ -104,12 +104,12 @@ export async function updateGenerator(
     }
   });
 
-  const coder = new Coder({
-    tree,
-    root,
-  });
+  // const coder = new Coder({
+  //   tree,
+  //   root,
+  // });
 
-  await coder.update();
+  // await coder.update();
 
   // const coder = new Coder({
   //   tree,
@@ -189,28 +189,69 @@ export async function updateGenerator(
   //   },
   // });
   // await coder.update();
-  // const additions = new Coder({
-  //   tree,
-  //   root: {
-  //     libs: {
-  //       modules: [
-  //         {
-  //           module: {
-  //             name: options.module,
-  //             models: [
-  //               {
-  //                 model: {
-  //                   name: "button",
-  //                 },
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
-  // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
+
+  const models = [
+    "font",
+    "footer",
+    "footer-block",
+    "hero-section-block",
+    "loader",
+    "logotype",
+    "logotypes-list-block",
+    "metatag",
+    "modal",
+    "navbar",
+    "navbar-block",
+    "not-found-block",
+    "sidebar",
+    "slide",
+    "slide-over",
+    "slider",
+    "slider-block",
+    "theme",
+    "topbar",
+  ];
+  for (const model of models) {
+    await crateForgottenModules({
+      moduleName: "sps-website-builder",
+      tree,
+      modelName: model,
+    });
+  }
 }
 
 export default updateGenerator;
+
+async function crateForgottenModules({
+  tree,
+  modelName,
+  moduleName,
+}: {
+  tree: Tree;
+  moduleName: string;
+  modelName: string;
+}) {
+  const additions = new Coder({
+    tree,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: moduleName,
+              models: [
+                {
+                  model: {
+                    name: modelName,
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
+
+  await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
+}
