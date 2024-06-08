@@ -1153,6 +1153,9 @@
       "@sps/sps-website-builder-backend-schema": [
         "libs/modules/sps-website-builder/backend/schema/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-backend-sdk": [
+        "libs/modules/sps-website-builder/backend/sdk/root/src/index.ts"
+      ],
       "@sps/sps-website-builder-frontend": [
         "libs/modules/sps-website-builder/frontend/root/src/index.ts"
       ],
