@@ -1,5 +1,4 @@
 {
-  "extends": "../../../../../../../../tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
     "allowJs": true,
@@ -15,9 +14,7 @@
   "references": [
     {
       "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "extends": "../../../../../../../../tsconfig.base.json"
 }

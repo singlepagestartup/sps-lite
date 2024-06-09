@@ -8,12 +8,14 @@ export async function updateGenerator(
 ) {
   const fullProjectSchema = getProjects(tree);
 
+  const moduleName = "sps-file-storage";
+
   const root = {
     libs: {
       modules: [
         {
           module: {
-            name: "sps-website-builder",
+            name: moduleName,
             models: [],
             relations: [],
           },
@@ -32,7 +34,7 @@ export async function updateGenerator(
       return;
     }
 
-    if (splitted?.[2] !== "sps-website-builder") {
+    if (splitted?.[2] !== moduleName) {
       return;
     }
 
@@ -267,7 +269,7 @@ export async function updateGenerator(
   //       modules: [
   //         {
   //           module: {
-  //             name: "sps-website-builder",
+  //             name: moduleName,
   //             models: [
   //               {
   //                 model: {
@@ -283,15 +285,10 @@ export async function updateGenerator(
   // });
   // await coder.update();
 
-  // const models = [
-  //   "logotypes-list-block",
-  //   "metatag",
-  //   "modal",
-  //   "not-found-block",
-  // ];
+  // const models = ["file"];
   // for (const model of models) {
   //   await crateForgottenModules({
-  //     moduleName: "sps-website-builder",
+  //     moduleName: moduleName,
   //     tree,
   //     modelName: model,
   //   });
@@ -331,5 +328,7 @@ async function crateForgottenModules({
     },
   });
 
-  await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.create();
+  await additions.project.root.project.libs.project.modules[0].project.module.project.backend.project.sdk.project.root.create();
+  // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
+  // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.create();
 }

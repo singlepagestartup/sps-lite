@@ -393,6 +393,9 @@
       "@sps/sps-file-storage-backend-schema": [
         "libs/modules/sps-file-storage/backend/schema/root/src/index.ts"
       ],
+      "@sps/sps-file-storage-backend-sdk": [
+        "libs/modules/sps-file-storage/backend/sdk/root/src/index.ts"
+      ],
       "@sps/sps-file-storage-frontend": [
         "libs/modules/sps-file-storage/frontend/root/src/index.ts"
       ],
@@ -400,7 +403,7 @@
         "libs/modules/sps-file-storage/frontend/components/src/index.ts"
       ],
       "@sps/sps-file-storage-models-file-backend-app": [
-        "libs/modules/sps-file-storage/models/file/backend/app/src/index.ts"
+        "libs/modules/sps-file-storage/models/file/backend/app/root/src/index.ts"
       ],
       "@sps/sps-file-storage-models-file-backend-model": [
         "libs/modules/sps-file-storage/models/file/backend/model/root/src/index.ts"
@@ -425,6 +428,9 @@
       ],
       "@sps/sps-file-storage-models-file-frontend-api-client": [
         "libs/modules/sps-file-storage/models/file/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-file-storage-models-file-frontend-api-model": [
+        "libs/modules/sps-file-storage/models/file/frontend/api/model/src/index.ts"
       ],
       "@sps/sps-file-storage-models-file-frontend-api-server": [
         "libs/modules/sps-file-storage/models/file/frontend/api/server/src/index.ts"
@@ -457,7 +463,7 @@
         "libs/modules/sps-file-storage/models/file/frontend/redux/src/index.ts"
       ],
       "@sps/sps-file-storage-models-widget-backend-app": [
-        "libs/modules/sps-file-storage/models/widget/backend/app/src/index.ts"
+        "libs/modules/sps-file-storage/models/widget/backend/app/root/src/index.ts"
       ],
       "@sps/sps-file-storage-models-widget-backend-model": [
         "libs/modules/sps-file-storage/models/widget/backend/model/root/src/index.ts"
