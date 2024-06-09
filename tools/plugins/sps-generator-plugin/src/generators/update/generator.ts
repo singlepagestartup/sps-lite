@@ -7,7 +7,6 @@ import { Coder } from "../../coder/Coder";
  *
  * sps-website-builder
  * npx nx generate @sps/sps-generator-plugin:update --module_name=sps-website-builder --right_external_models="sps-file-storage-widgets sps-file-storage-module-widgets sps-rbac-module-widgets startup-module-widgets" --no-interactive --dry-run
- * sps-file-storage
  *
  */
 export async function updateGenerator(
