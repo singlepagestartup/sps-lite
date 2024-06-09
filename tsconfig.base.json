@@ -3358,6 +3358,9 @@
       "@sps/startup-backend-schema": [
         "libs/modules/startup/backend/schema/root/src/index.ts"
       ],
+      "@sps/startup-backend-sdk": [
+        "libs/modules/startup/backend/sdk/root/src/index.ts"
+      ],
       "@sps/startup-frontend": [
         "libs/modules/startup/frontend/root/src/index.ts"
       ],
