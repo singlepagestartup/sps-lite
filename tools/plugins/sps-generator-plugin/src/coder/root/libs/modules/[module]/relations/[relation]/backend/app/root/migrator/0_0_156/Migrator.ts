@@ -1,6 +1,7 @@
 import {
   Tree,
   generateFiles,
+  getProjects,
   offsetFromRoot,
   updateJson,
   updateProjectConfiguration,
@@ -72,6 +73,10 @@ export class Migrator {
         updateImportPath: false,
         projectNameAndRootFormat: "as-provided",
       });
+
+      this.parent.coder.project = getProjects(this.parent.coder.tree).get(
+        this.parent.coder.baseName,
+      );
     }
   }
 }
