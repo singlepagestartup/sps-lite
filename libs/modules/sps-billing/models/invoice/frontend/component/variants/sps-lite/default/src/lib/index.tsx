@@ -4,7 +4,7 @@ import Client from "./client";
 import Server from "./server";
 
 export function Component(props: IComponentProps) {
-  const Comp = props.isServer ? Server : Client;
+  const Comp: any = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>

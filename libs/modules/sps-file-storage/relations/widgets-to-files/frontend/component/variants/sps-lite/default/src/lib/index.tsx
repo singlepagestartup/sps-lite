@@ -4,7 +4,7 @@ import Server from "./server";
 import { ReduxProvider } from "@sps/sps-file-storage-relations-widgets-to-files-frontend-redux";
 
 export function Component(props: IComponentProps) {
-  const Comp = props.isServer ? Server : Client;
+  const Comp: any = props.isServer ? Server : Client;
 
   return (
     <ReduxProvider>
