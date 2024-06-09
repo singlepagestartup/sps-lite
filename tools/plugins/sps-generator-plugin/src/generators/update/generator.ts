@@ -187,12 +187,12 @@ export async function updateGenerator(
     }
   });
 
-  const coder = new Coder({
-    tree,
-    root,
-  });
+  // const coder = new Coder({
+  //   tree,
+  //   root,
+  // });
 
-  await coder.update();
+  // await coder.update();
 
   // const coder = new Coder({
   //   tree,
@@ -251,46 +251,46 @@ export async function updateGenerator(
   // });
   // await coder.update();
 
-  // const coder = new Coder({
-  //   tree,
-  //   root: {
-  //     libs: {
-  //       modules: [
-  //         {
-  //           module: {
-  //             name: moduleName,
-  //             models: [
-  //               {
-  //                 model: {
-  //                   name: "button",
-  //                   backend: {
-  //                     schema: {
-  //                       relations: [
-  //                         {
-  //                           relation: {
-  //                             name: "buttons-arrays-to-buttons",
-  //                           },
-  //                         },
-  //                       ],
-  //                     },
-  //                   },
-  //                 },
-  //               },
-  //             ],
-  //             relations: [
-  //               {
-  //                 relation: {
-  //                   name: "buttons-arrays-to-buttons",
-  //                 },
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
-  // await coder.update();
+  const coder = new Coder({
+    tree,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: moduleName,
+              models: [
+                {
+                  model: {
+                    name: "button",
+                    backend: {
+                      schema: {
+                        relations: [
+                          {
+                            relation: {
+                              name: "buttons-arrays-to-buttons",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                },
+              ],
+              relations: [
+                {
+                  relation: {
+                    name: "buttons-arrays-to-buttons",
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
+  await coder.update();
 
   // const models = ["widget"];
   // for (const model of models) {
