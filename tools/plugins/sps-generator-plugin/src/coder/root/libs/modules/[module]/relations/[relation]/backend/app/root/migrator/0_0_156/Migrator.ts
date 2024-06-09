@@ -1,5 +1,6 @@
 import {
   generateFiles,
+  moveFilesToNewDirectory,
   offsetFromRoot,
   updateProjectConfiguration,
 } from "@nx/devkit";
@@ -17,6 +18,19 @@ export class Migrator {
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
+    const project = this.parent.coder.project;
+
+    if (!project.root.endsWith("root")) {
+      console.log(`🚀 ~ execute ~ project:`, project);
+
+      moveFilesToNewDirectory(
+        this.parent.coder.tree,
+        project.root,
+        baseDirectory,
+      );
+
+      return;
+    }
 
     const exists = this.parent.coder.tree.exists(baseDirectory);
 

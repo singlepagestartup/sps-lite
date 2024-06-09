@@ -65,8 +65,8 @@ export class Coder {
   }
 
   async update() {
-    await this.project.schema.update();
-    await this.project.model.update();
+    // await this.project.schema.update();
+    // await this.project.model.update();
     await this.project.app.update();
   }
 

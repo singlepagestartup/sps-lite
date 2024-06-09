@@ -8,7 +8,7 @@ export async function updateGenerator(
 ) {
   const fullProjectSchema = getProjects(tree);
 
-  const moduleName = "sps-rbac";
+  const moduleName = "sps-website-builder";
 
   const root = {
     libs: {
@@ -198,69 +198,69 @@ export async function updateGenerator(
   //   JSON.stringify(root.libs.modules[0].module.relations, null, 2),
   // );
 
-  const coder = new Coder({
-    tree,
-    root,
-  });
-
-  await coder.update();
-
   // const coder = new Coder({
   //   tree,
-  //   root: {
-  //     libs: {
-  //       modules: [
-  //         {
-  //           module: {
-  //             name: options.module,
-  //             models: [
-  //               // {
-  //               //   model: {
-  //               //     name: options.model_name,
-  //               //     frontend: {
-  //               //       component: {
-  //               //         variants: [
-  //               //           { name: "admin-form", level: "sps-lite" },
-  //               //           { name: "admin-form-inputs", level: "sps-lite" },
-  //               //           { name: "admin-panel", level: "sps-lite" },
-  //               //           { name: "admin-select-input", level: "sps-lite" },
-  //               //           { name: "admin-table", level: "sps-lite" },
-  //               //           { name: "admin-table-row", level: "sps-lite" },
-  //               //           { name: "default", level: "sps-lite" },
-  //               //           { name: "get-by-url", level: "sps-lite" },
-  //               //           { name: "get-query-from-url", level: "sps-lite" },
-  //               //           { name: "get-url-model-id", level: "sps-lite" },
-  //               //         ],
-  //               //       },
-  //               //     },
-  //               //   },
-  //               // },
-  //             ],
-  //             relations: [
-  //               {
-  //                 relation: {
-  //                   name: "hero-section-blocks-to-sps-file-storage-widgets",
-  //                   rightModelIsExternal: true,
-  //                   // frontend: {
-  //                   //   component: {
-  //                   //     variants: [
-  //                   //       {
-  //                   //         name: "default",
-  //                   //         level: "sps-lite",
-  //                   //       },
-  //                   //     ],
-  //                   //   },
-  //                   // },
-  //                 },
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
+  //   root,
   // });
+
   // await coder.update();
+
+  const coder = new Coder({
+    tree,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: options.module,
+              models: [
+                // {
+                //   model: {
+                //     name: options.model_name,
+                //     frontend: {
+                //       component: {
+                //         variants: [
+                //           { name: "admin-form", level: "sps-lite" },
+                //           { name: "admin-form-inputs", level: "sps-lite" },
+                //           { name: "admin-panel", level: "sps-lite" },
+                //           { name: "admin-select-input", level: "sps-lite" },
+                //           { name: "admin-table", level: "sps-lite" },
+                //           { name: "admin-table-row", level: "sps-lite" },
+                //           { name: "default", level: "sps-lite" },
+                //           { name: "get-by-url", level: "sps-lite" },
+                //           { name: "get-query-from-url", level: "sps-lite" },
+                //           { name: "get-url-model-id", level: "sps-lite" },
+                //         ],
+                //       },
+                //     },
+                //   },
+                // },
+              ],
+              relations: [
+                {
+                  relation: {
+                    name: "buttons-arrays-to-buttons",
+                    rightModelIsExternal: true,
+                    // frontend: {
+                    //   component: {
+                    //     variants: [
+                    //       {
+                    //         name: "default",
+                    //         level: "sps-lite",
+                    //       },
+                    //     ],
+                    //   },
+                    // },
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
+  await coder.update();
 
   // const coder = new Coder({
   //   tree,
