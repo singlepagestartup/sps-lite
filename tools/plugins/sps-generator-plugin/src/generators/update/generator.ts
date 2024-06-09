@@ -94,15 +94,107 @@ export async function updateGenerator(
           });
         }
       }
+    }
 
-      // console.log(`🚀 ~ fullProjectSchema.forEach ~ modelName:`, modelName);
+    if (splitted?.[3] === "relations") {
+      const relationName = splitted?.[4];
+
+      const relationExistsInRoot = root.libs.modules[0].module.relations.find(
+        (relation) => {
+          return relation.relation.name === relationName;
+        },
+      );
+
+      if (!relationExistsInRoot) {
+        const leftExternalModels = [];
+        const rightExternalModels = [
+          "sps-file-storage-widgets",
+          "sps-file-storage-module-widgets",
+          "sps-rbac-module-widgets",
+          "startup-module-widgets",
+        ];
+
+        let leftModelIsExternal = false;
+        for (const externalModel of leftExternalModels) {
+          if (relationName.includes(externalModel)) {
+            leftModelIsExternal = true;
+          }
+        }
+        let rightModelIsExternal = false;
+        for (const externalModel of rightExternalModels) {
+          if (relationName.includes(externalModel)) {
+            rightModelIsExternal = true;
+          }
+        }
+
+        root.libs.modules[0].module.relations.push({
+          relation: {
+            name: relationName,
+            leftModelIsExternal,
+            rightModelIsExternal,
+          },
+        });
+      }
+
+      if (splitted?.[7] === "variants") {
+        const level = splitted?.[8];
+        const variant = splitted?.[9];
+
+        if (!variant || !level) {
+          throw new Error("variant or level is missing:" + splitted);
+        }
+
+        const relation = root.libs.modules[0].module.relations.find(
+          (relation) => {
+            return relation.relation.name === relationName;
+          },
+        );
+
+        if (!relation) {
+          throw new Error("relation not found:" + relationName);
+        }
+
+        if (!relation.relation.frontend) {
+          relation.relation.frontend = {};
+        }
+
+        if (!relation.relation.frontend.component) {
+          relation.relation.frontend.component = {};
+        }
+
+        if (!relation.relation.frontend.component.variants) {
+          relation.relation.frontend.component.variants = [];
+        }
+
+        const variantExists =
+          relation.relation.frontend.component.variants.find(
+            (v: { name: string; level: string }) => {
+              return v.name === variant;
+            },
+          );
+
+        if (!variantExists) {
+          relation.relation.frontend.component.variants.push({
+            name: variant,
+            level,
+          });
+        }
+      }
 
       // console.log(
-      //   `🚀 ~ fullProjectSchema.forEach ~ project:`,
-      //   JSON.stringify(root.libs.modules[0].module.models, null, 2),
+      //   `🚀 ~ fullProjectSchema.forEach ~ relationName:`,
+      //   relationName,
       // );
+      // console.log(`🚀 ~ fullProjectSchema.forEach ~ project:`, project.root);
     }
+
+    // console.log(`🚀 ~ fullProjectSchema.forEach ~ modelName:`, modelName);
   });
+
+  // console.log(
+  //   `🚀 ~ fullProjectSchema.forEach ~ project:`,
+  //   JSON.stringify(root.libs.modules[0].module.relations, null, 2),
+  // );
 
   const coder = new Coder({
     tree,
@@ -120,44 +212,45 @@ export async function updateGenerator(
   //           module: {
   //             name: options.module,
   //             models: [
-  //               {
-  //                 model: {
-  //                   name: options.model_name,
-  //                   frontend: {
-  //                     component: {
-  //                       variants: [
-  //                         { name: "admin-form", level: "sps-lite" },
-  //                         { name: "admin-form-inputs", level: "sps-lite" },
-  //                         { name: "admin-panel", level: "sps-lite" },
-  //                         { name: "admin-select-input", level: "sps-lite" },
-  //                         { name: "admin-table", level: "sps-lite" },
-  //                         { name: "admin-table-row", level: "sps-lite" },
-  //                         { name: "default", level: "sps-lite" },
-  //                         { name: "get-by-url", level: "sps-lite" },
-  //                         { name: "get-query-from-url", level: "sps-lite" },
-  //                         { name: "get-url-model-id", level: "sps-lite" },
-  //                       ],
-  //                     },
-  //                   },
-  //                 },
-  //               },
-  //             ],
-  //             relations: [
   //               // {
-  //               //   relation: {
-  //               //     name: "pages-to-layouts",
+  //               //   model: {
+  //               //     name: options.model_name,
   //               //     frontend: {
   //               //       component: {
   //               //         variants: [
-  //               //           {
-  //               //             name: "default",
-  //               //             level: "sps-lite",
-  //               //           },
+  //               //           { name: "admin-form", level: "sps-lite" },
+  //               //           { name: "admin-form-inputs", level: "sps-lite" },
+  //               //           { name: "admin-panel", level: "sps-lite" },
+  //               //           { name: "admin-select-input", level: "sps-lite" },
+  //               //           { name: "admin-table", level: "sps-lite" },
+  //               //           { name: "admin-table-row", level: "sps-lite" },
+  //               //           { name: "default", level: "sps-lite" },
+  //               //           { name: "get-by-url", level: "sps-lite" },
+  //               //           { name: "get-query-from-url", level: "sps-lite" },
+  //               //           { name: "get-url-model-id", level: "sps-lite" },
   //               //         ],
   //               //       },
   //               //     },
   //               //   },
   //               // },
+  //             ],
+  //             relations: [
+  //               {
+  //                 relation: {
+  //                   name: "hero-section-blocks-to-sps-file-storage-widgets",
+  //                   rightModelIsExternal: true,
+  //                   // frontend: {
+  //                   //   component: {
+  //                   //     variants: [
+  //                   //       {
+  //                   //         name: "default",
+  //                   //         level: "sps-lite",
+  //                   //       },
+  //                   //     ],
+  //                   //   },
+  //                   // },
+  //                 },
+  //               },
   //             ],
   //           },
   //         },

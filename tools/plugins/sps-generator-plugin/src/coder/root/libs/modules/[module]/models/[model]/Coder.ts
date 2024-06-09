@@ -78,6 +78,11 @@ export class Coder {
   }
 
   async update() {
+    if (this.isExternal) {
+      console.log(`External model "${this.name}", skipping update`);
+      return;
+    }
+
     await this.project.contracts.update();
     await this.project.backend.update();
     await this.project.frontend.update();

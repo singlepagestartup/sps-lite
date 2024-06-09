@@ -18,6 +18,8 @@ import pluralize from "pluralize";
 
 export type IGeneratorProps = {
   name?: string;
+  leftModelIsExternal?: boolean;
+  rightModelIsExternal?: boolean;
   frontend?: IFrontendCoderGeneratorProps;
   backend?: IBackendCoderGeneratorProps;
   contracts?: IContractsCoderGeneratorProps;
@@ -67,6 +69,7 @@ export class Coder {
         parent: this.parent.parent,
         model: {
           name: unpluralizedModelNames[0],
+          isExternal: props.leftModelIsExternal,
         },
       });
 
@@ -77,6 +80,7 @@ export class Coder {
         parent: this.parent.parent,
         model: {
           name: unpluralizedModelNames[1],
+          isExternal: props.rightModelIsExternal,
         },
       });
 
