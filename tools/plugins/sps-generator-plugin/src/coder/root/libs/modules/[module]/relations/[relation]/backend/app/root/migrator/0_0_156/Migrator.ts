@@ -1,12 +1,13 @@
 import {
+  Tree,
   generateFiles,
-  moveFilesToNewDirectory,
   offsetFromRoot,
   updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
+import { moveGenerator } from "@nx/workspace";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -16,43 +17,12 @@ export class Migrator {
   }
 
   async execute() {
+    await this.moveToRootFolder();
+    return;
+
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
-    const project = this.parent.coder.project;
-
-    if (!project.root.endsWith("root")) {
-      console.log(`🚀 ~ execute ~ project:`, project);
-
-      moveFilesToNewDirectory(
-        this.parent.coder.tree,
-        project.root,
-        baseDirectory,
-      );
-
-      updateJson(
-        this.parent.coder.tree,
-        `${baseDirectory}/.eslintrc.json`,
-        (json) => {
-          return {
-            ...json,
-            extends: offsetFromRootProject + "/.eslintrc.json",
-          };
-        },
-      );
-
-      this.parent.coder.tree.write(
-        baseDirectory + "/jest.config.ts",
-        `/* eslint-disable */
-        export default {
-          displayName:
-            "${baseName}",
-          preset: "${offsetFromRootProject}jest.server-preset.js",
-        };`,
-      );
-
-      return;
-    }
 
     const exists = this.parent.coder.tree.exists(baseDirectory);
 
@@ -79,5 +49,53 @@ export class Migrator {
         "tsc:build": {},
       },
     });
+  }
+
+  async moveToRootFolder() {
+    const baseDirectory = this.parent.coder.baseDirectory;
+    const baseName = this.parent.coder.baseName;
+    const offsetFromRootProject = offsetFromRoot(baseDirectory);
+    const project = this.parent.coder.project;
+
+    if (!project.root.endsWith("root")) {
+      const tmpPath = project.root.split("/").slice(0, -1).join("/") + "/temp";
+
+      await moveGenerator(this.parent.coder.tree, {
+        projectName: project.name,
+        newProjectName: project.name,
+        destination: tmpPath,
+        updateImportPath: false,
+        projectNameAndRootFormat: "as-provided",
+      });
+
+      await moveGenerator(this.parent.coder.tree, {
+        projectName: project.name,
+        newProjectName: project.name,
+        destination: baseDirectory,
+        updateImportPath: false,
+        projectNameAndRootFormat: "as-provided",
+      });
+
+      // updateJson(
+      //   this.parent.coder.tree,
+      //   `${baseDirectory}/project.json`,
+      //   (json) => {
+      //     return {
+      //       ...json,
+      //       extends: offsetFromRootProject + "/.eslintrc.json",
+      //     };
+      //   },
+      // );
+
+      // this.parent.coder.tree.write(
+      //   baseDirectory + "/jest.config.ts",
+      //   `/* eslint-disable */
+      //   export default {
+      //     displayName:
+      //       "${baseName}",
+      //     preset: "${offsetFromRootProject}jest.server-preset.js",
+      //   };`,
+      // );
+    }
   }
 }
