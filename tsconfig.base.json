@@ -520,7 +520,7 @@
         "libs/modules/sps-file-storage/models/widget/frontend/redux/src/index.ts"
       ],
       "@sps/sps-file-storage-relations-widgets-to-files-backend-app": [
-        "libs/modules/sps-file-storage/relations/widgets-to-files/backend/app/src/index.ts"
+        "libs/modules/sps-file-storage/relations/widgets-to-files/backend/app/root/src/index.ts"
       ],
       "@sps/sps-file-storage-relations-widgets-to-files-backend-model": [
         "libs/modules/sps-file-storage/relations/widgets-to-files/backend/model/root/src/index.ts"
@@ -926,7 +926,7 @@
         "libs/modules/sps-rbac/models/widget/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-relations-users-to-identities-backend-app": [
-        "libs/modules/sps-rbac/relations/users-to-identities/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/relations/users-to-identities/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-relations-users-to-identities-backend-model": [
         "libs/modules/sps-rbac/relations/users-to-identities/backend/model/root/src/index.ts"
@@ -962,7 +962,7 @@
         "libs/modules/sps-rbac/relations/users-to-identities/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-relations-users-to-roles-backend-app": [
-        "libs/modules/sps-rbac/relations/users-to-roles/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/relations/users-to-roles/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-relations-users-to-roles-backend-model": [
         "libs/modules/sps-rbac/relations/users-to-roles/backend/model/root/src/index.ts"
@@ -998,7 +998,7 @@
         "libs/modules/sps-rbac/relations/users-to-roles/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app": [
-        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-model": [
         "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/model/root/src/index.ts"
