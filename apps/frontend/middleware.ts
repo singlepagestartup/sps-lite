@@ -4,8 +4,6 @@
  */
 
 import { NextResponse } from "next/server";
-import type { IModel as IBackendLocale } from "@sps/sps-website-builder-models-locale-contracts";
-import { BACKEND_URL } from "@sps/shared-frontend-utils-client";
 
 export async function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -86,25 +84,3 @@ export const config = {
     "/((?!_next|images|sitemap|robots|api|favicon).*)/",
   ],
 };
-
-async function fetchLocales() {
-  try {
-    const req = await fetch(`${BACKEND_URL}/api/i18n/locales`);
-    const res = await req.json();
-
-    if (!Array.isArray(res)) {
-      if (res?.error?.message) {
-        throw new Error(res.error.message);
-      }
-
-      throw new Error("No locales found");
-    }
-
-    const backendLocales: IBackendLocale[] = res;
-
-    return backendLocales;
-  } catch (error) {
-    console.log("🚀 ~ fetchLocales ~ error:", error);
-    return [];
-  }
-}

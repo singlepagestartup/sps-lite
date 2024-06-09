@@ -17,7 +17,7 @@ const fetchOptions = {
     revalidate: 0,
     tag: route,
   },
-};
+} as any;
 
 async function getByUrl({ url }: Params) {
   const localUrl =

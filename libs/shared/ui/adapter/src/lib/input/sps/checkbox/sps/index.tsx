@@ -1,6 +1,5 @@
 import { Switch as SwitchComp } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import ReactMarkdown from "react-markdown";
 import { Props } from "..";
 import { forwardRef } from "react";
 

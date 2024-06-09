@@ -9,6 +9,9 @@ import {
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 import { Coder as SchemaCoder } from "../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: SchemaCoder;
@@ -19,19 +22,19 @@ export class Coder {
   project?: ProjectConfiguration;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
-    this.parent = parent;
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.tree = props.tree;
     this.name = "schema";
 
-    const moduleName = parent.parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
       name: moduleName,
     }).pascalCased;
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
     const modelNamePascalCased = names(modelName).className;
 
     this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
@@ -44,7 +47,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async attach({ indexPath }: { indexPath: string }) {

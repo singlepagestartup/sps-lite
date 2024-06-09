@@ -1,7 +1,6 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import ReactMarkdown from "react-markdown";
 import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
 import { Button, FormField } from "@sps/ui-adapter";
 import { Component as Attribute } from "@sps/sps-ecommerce-models-attribute-frontend-component";
@@ -94,7 +93,7 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.data.description ? (
           <div className="prose prose-sm max-w-none text-gray-500">
-            <ReactMarkdown>{props.data.description}</ReactMarkdown>
+            <p>{props.data.description}</p>
           </div>
         ) : null}
         {props.data.attributes?.map((attribute, index) => {

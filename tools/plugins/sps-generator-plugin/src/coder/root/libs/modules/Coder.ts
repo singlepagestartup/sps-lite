@@ -1,7 +1,14 @@
 import { Tree } from "@nx/devkit";
-import { Coder as ModuleCoder } from "./[module]/Coder";
+import {
+  Coder as ModuleCoder,
+  IGeneratorProps as IModuleCoderGeneratorProps,
+} from "./[module]/Coder";
 import { Coder as ModulesCoder } from "../Coder";
 import { IEditFieldProps } from "./[module]/models/[model]/backend/schema/table/Coder";
+
+export type IGeneratorProps = {
+  module: IModuleCoderGeneratorProps;
+};
 
 /**
  * Modules Coder
@@ -19,19 +26,13 @@ export class Coder {
     module?: ModuleCoder;
   } = {};
 
-  constructor(props: {
-    tree: Tree;
-    parent: ModulesCoder;
-    type: "modules" | "providers" | "shared";
-    moduleName: string;
-    models?: {
-      name: string;
-      isExternal?: boolean;
-    }[];
-    relations?: {
-      name?: string;
-    }[];
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+      parent: ModulesCoder;
+      type: "modules" | "providers" | "shared";
+    } & IGeneratorProps,
+  ) {
     this.baseName = `${props.parent.baseName}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${props.type}`;
     this.name = props.type;
@@ -39,11 +40,9 @@ export class Coder {
     this.parent = props.parent;
 
     this.project.module = new ModuleCoder({
+      ...props.module,
       tree: this.tree,
       parent: this,
-      name: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 

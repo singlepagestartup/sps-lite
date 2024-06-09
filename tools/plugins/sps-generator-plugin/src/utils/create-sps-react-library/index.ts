@@ -30,17 +30,16 @@ export const util = async ({
   const offsetFromRootProject = offsetFromRoot(root);
   const jestPreset = "jest.client-preset.js";
 
-  const libraryOptions = {
+  await reactLibraryGenerator(tree, {
     name,
     directory: root,
+    component: false,
     linter: "none" as Linter.EsLint,
     minimal: true,
     style: "none" as SupportedStyles,
     projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
     strict: true,
-  };
-
-  await reactLibraryGenerator(tree, libraryOptions);
+  });
 
   updateProjectConfiguration(tree, name, {
     root,
@@ -49,7 +48,7 @@ export const util = async ({
     tags: [],
     targets: {
       lint: {},
-      "test:watch": {},
+      "tsc:build": {},
     },
   });
 
@@ -67,11 +66,8 @@ export const util = async ({
     delete json.include;
 
     json.references = [
-      ...json.references.filter(
-        (r: { path: string }) => r.path !== "./tsconfig.lib.json",
-      ),
       {
-        path: "./tsconfig.spec.json",
+        path: "./tsconfig.lib.json",
       },
     ];
 

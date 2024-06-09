@@ -1,6 +1,5 @@
 import React from "react";
 import { animated } from "@react-spring/web";
-import ReactMarkdown from "react-markdown";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // use forwardRef here to access alert *content* div height
@@ -40,13 +39,13 @@ const Notification = React.forwardRef((props: any, ref: any) => {
               className="notification-heading"
               data-heading={title ? true : false}
             >
-              <ReactMarkdown>{title}</ReactMarkdown>
+              <p>{title}</p>
             </div>
             <div
               className="notification-message"
               data-message={message ? true : false}
             >
-              <ReactMarkdown>{message}</ReactMarkdown>
+              <p>{message}</p>
             </div>
           </div>
         ) : null}

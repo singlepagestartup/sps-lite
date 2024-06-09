@@ -1,7 +1,18 @@
 import { Tree } from "@nx/devkit";
 import { Coder as RelationCoder } from "../Coder";
-import { Coder as RootCoder } from "./root/Coder";
-import { Coder as ExtendedCoder } from "./extended/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
+import {
+  Coder as ExtendedCoder,
+  IGeneratorProps as IExtendedCoderGeneratorProps,
+} from "./extended/Coder";
+
+export type IGeneratorProps = {
+  root?: IRootCoderGeneratorProps;
+  extended?: IExtendedCoderGeneratorProps;
+};
 
 export class Coder {
   name: string;
@@ -17,19 +28,21 @@ export class Coder {
     extended: ExtendedCoder;
   };
 
-  constructor({ parent, tree }: { parent: RelationCoder; tree: Tree }) {
+  constructor(props: { parent: RelationCoder; tree: Tree } & IGeneratorProps) {
     this.name = "contracts";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseDirectory = `${parent.baseDirectory}/contracts`;
-    this.baseName = `${parent.baseName}-contracts`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseDirectory = `${this.parent.baseDirectory}/contracts`;
+    this.baseName = `${this.parent.baseName}-contracts`;
 
     this.project.root = new RootCoder({
+      ...props.root,
       tree: this.tree,
       parent: this,
     });
 
     this.project.extended = new ExtendedCoder({
+      ...props.extended,
       tree: this.tree,
       parent: this,
     });

@@ -4,6 +4,7 @@ import { util as createSpsTSLibrary } from "../../../../../../../../utils/create
 import { util as getNameStyles } from "../../../../../../../utils/get-name-styles";
 import * as nxWorkspace from "@nx/workspace";
 import path from "path";
+import { Migrator } from "./migrator/Migrator";
 
 export class Coder {
   name: string;
@@ -24,10 +25,17 @@ export class Coder {
     const moduleName = this.parent.parent.parent.name;
     const moduleNameStyles = getNameStyles({ name: moduleName });
     this.moduleNameStyles = moduleNameStyles;
+
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
@@ -46,9 +54,7 @@ export class Coder {
       },
     });
 
-    const projects = getProjects(this.tree);
-
-    this.project = projects.get(this.baseName);
+    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {

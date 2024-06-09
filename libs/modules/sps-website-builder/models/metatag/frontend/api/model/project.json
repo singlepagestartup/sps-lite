@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-metatag-frontend-api-model",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/metatag/frontend/api/model/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

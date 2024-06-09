@@ -1,6 +1,13 @@
 import { Tree, formatFiles } from "@nx/devkit";
-import { Coder as LibsCoder } from "./libs/Coder";
+import {
+  Coder as LibsCoder,
+  IGeneratorProps as ILibsCoderGeneratorProps,
+} from "./libs/Coder";
 import { IEditFieldProps } from "./libs/modules/[module]/models/[model]/backend/schema/table/Coder";
+
+export type IGeneratorProps = {
+  libs?: ILibsCoderGeneratorProps;
+};
 
 /**
  * Root Coder
@@ -18,25 +25,20 @@ export class Coder {
     libs: LibsCoder;
   };
 
-  constructor(props: {
-    tree: Tree;
-    moduleName: string;
-    models?: { name: string; isExternal?: boolean }[];
-    relations?: {
-      name?: string;
-    }[];
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+    } & IGeneratorProps,
+  ) {
     this.name = "root";
     this.tree = props.tree;
     this.baseName = "@sps";
     this.baseDirectory = "";
 
     this.project.libs = new LibsCoder({
+      ...props.libs,
       tree: this.tree,
       parent: this,
-      moduleName: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 

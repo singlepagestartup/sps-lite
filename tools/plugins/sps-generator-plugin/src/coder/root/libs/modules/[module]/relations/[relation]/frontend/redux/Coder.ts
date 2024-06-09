@@ -9,6 +9,9 @@ import { util as getNameStyles } from "../../../../../../../../utils/get-name-st
 import path from "path";
 import { util as createSpsReactLibrary } from "../../../../../../../../../utils/create-sps-react-library";
 import * as nxWorkspace from "@nx/workspace";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: FrontendCoder;
@@ -21,12 +24,12 @@ export class Coder {
   modelName: string;
   modelNamePluralized: string;
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "redux";
-    this.baseName = `${parent.baseName}-redux`;
-    this.baseDirectory = `${parent.baseDirectory}/redux`;
-    this.tree = tree;
-    this.parent = parent;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-redux`;
+    this.baseDirectory = `${this.parent.baseDirectory}/redux`;
+    this.tree = props.tree;
 
     const moduleName = this.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.name;
@@ -41,7 +44,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

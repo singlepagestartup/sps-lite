@@ -11,7 +11,21 @@ export async function modelGenerator(
   const modelName = options.name;
   const moduleName = options.module;
 
-  const coder = new Coder({ tree, moduleName, models: [{ name: modelName }] });
+  const coder = new Coder({
+    tree,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: moduleName,
+              models: [{ model: { name: modelName } }],
+            },
+          },
+        ],
+      },
+    },
+  });
   if (options.action === "remove") {
     await coder.removeModel();
   } else {

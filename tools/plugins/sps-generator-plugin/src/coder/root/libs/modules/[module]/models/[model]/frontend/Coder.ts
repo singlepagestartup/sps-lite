@@ -1,8 +1,23 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModelCoder } from "../Coder";
-import { Coder as ComponentCoder } from "./component/Coder";
-import { Coder as ApiCoder } from "./api/Coder";
-import { Coder as ReduxCoder } from "./redux/Coder";
+import {
+  Coder as ComponentCoder,
+  IGeneratorProps as IComponentCoderGeneratorProps,
+} from "./component/Coder";
+import {
+  Coder as ApiCoder,
+  IGeneratorProps as IApiCoderGeneratorProps,
+} from "./api/Coder";
+import {
+  Coder as ReduxCoder,
+  IGeneratorProps as IReduxCoderGeneratorProps,
+} from "./redux/Coder";
+
+export type IGeneratorProps = {
+  component?: IComponentCoderGeneratorProps;
+  api?: IApiCoderGeneratorProps;
+  redux?: IReduxCoderGeneratorProps;
+};
 
 export class Coder {
   parent: ModelCoder;
@@ -16,24 +31,27 @@ export class Coder {
     redux: ReduxCoder;
   };
 
-  constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
+  constructor(props: { parent: ModelCoder; tree: Tree } & IGeneratorProps) {
     this.name = "frontend";
-    this.baseName = `${parent.baseName}-frontend`;
-    this.baseDirectory = `${parent.baseDirectory}/frontend`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-frontend`;
+    this.baseDirectory = `${props.parent.baseDirectory}/frontend`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     const component = new ComponentCoder({
+      ...props.component,
       tree: this.tree,
       parent: this,
     });
 
     const api = new ApiCoder({
+      ...props.api,
       tree: this.tree,
       parent: this,
     });
 
     const redux = new ReduxCoder({
+      ...props.redux,
       tree: this.tree,
       parent: this,
     });

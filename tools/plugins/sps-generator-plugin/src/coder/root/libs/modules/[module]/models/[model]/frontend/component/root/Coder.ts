@@ -16,6 +16,9 @@ import {
 import { Linter } from "@nx/eslint";
 import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: ComponentCoder;
@@ -25,18 +28,23 @@ export class Coder {
   name: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ComponentCoder; tree: Tree }) {
+  constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
-    this.parent = parent;
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.tree = props.tree;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

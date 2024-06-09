@@ -1,7 +1,18 @@
 import { Tree } from "@nx/devkit";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
 import { Coder as SchemaCoder } from "../Coder";
-import { Coder as RelationCoder } from "./[relation]/Coder";
+import {
+  Coder as RelationCoder,
+  IGeneratorProps as IRelationCoderGeneratorProps,
+} from "./[relation]/Coder";
+
+export type IGeneratorProps = {
+  relation?: IRelationCoderGeneratorProps;
+  root?: IRootCoderGeneratorProps;
+};
 
 export class Coder {
   parent: SchemaCoder;
@@ -17,12 +28,12 @@ export class Coder {
     relation?: RelationCoder;
   };
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.name = "relations";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-relations`;
-    this.baseDirectory = `${parent.baseDirectory}/relations`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}-relations`;
+    this.baseDirectory = `${props.parent.baseDirectory}/relations`;
 
     // const relations = new RelationCoder({
     //   parent: this,
@@ -30,14 +41,18 @@ export class Coder {
     // });
 
     this.project.root = new RootCoder({
+      ...props.root,
       parent: this,
-      tree,
+      tree: this.tree,
     });
   }
 
   async update() {
     await this.project.root.update();
-    await this.project.relation.update();
+
+    if (this.project.relation) {
+      await this.project.relation.update();
+    }
   }
 
   async create() {

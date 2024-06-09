@@ -15,12 +15,24 @@ export async function frontendComponentVariantGenerator(
   if (options.type === "model") {
     const coder = new Coder({
       tree,
-      moduleName,
-      models: [
-        {
-          name: entityName,
+      root: {
+        libs: {
+          modules: [
+            {
+              module: {
+                name: moduleName,
+                models: [
+                  {
+                    model: {
+                      name: entityName,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
         },
-      ],
+      },
     });
 
     if (options.action === "remove") {
@@ -38,12 +50,24 @@ export async function frontendComponentVariantGenerator(
   } else if (options.type === "relation") {
     const coder = new Coder({
       tree,
-      moduleName,
-      relations: [
-        {
-          name: entityName,
+      root: {
+        libs: {
+          modules: [
+            {
+              module: {
+                name: moduleName,
+                relations: [
+                  {
+                    relation: {
+                      name: entityName,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
         },
-      ],
+      },
     });
 
     if (options.action === "remove") {

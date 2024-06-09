@@ -1,4 +1,5 @@
-const { withNx } = require("@nx/next/plugins/with-nx");
+// const { withNx } = require("@nx/next/plugins/with-nx");
+// const withTM = require("next-transpile-modules")(["next-js-publishable"]);
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -7,18 +8,18 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 function makeConfig() {
   const serverEnvironment = process.env.SERVER_ENVIRONMENT;
 
-  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL.replace(
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(
     "https://",
     "",
   ).replace("http://", "");
-  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL.replace(
+  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL?.replace(
     "https://",
     "",
   ).replace("http://", "");
 
   let config = {
-    reactStrictMode: false,
-    compress: true,
+    transpilePackages: ["@sps/startup-frontend", "@sps/startup-backend-app"],
+    reactStrictMode: true,
     images: {
       unoptimized: true,
       domains: [
@@ -57,4 +58,4 @@ function makeConfig() {
 
 const config = makeConfig();
 
-module.exports = withNx(config);
+module.exports = config;

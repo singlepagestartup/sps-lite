@@ -12,6 +12,9 @@ import {
   comma,
   space,
 } from "../../../../../../../../../../utils/regex-utils/regex-elements";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export interface IEditFieldProps {
   name: string;
@@ -46,20 +49,20 @@ export class Coder {
   tableName: string;
   modelNameStyles: ReturnType<typeof getNameStyles>;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
-    this.parent = parent;
-    this.baseName = `${parent.baseName}-table`;
-    this.baseDirectory = `${parent.baseDirectory}/table`;
-    this.tree = tree;
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${props.parent.baseName}-table`;
+    this.baseDirectory = `${props.parent.baseDirectory}/table`;
+    this.tree = props.tree;
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
 
     const modelNameStyles = getNameStyles({
       name: modelName,
     });
     this.modelNameStyles = modelNameStyles;
 
-    const moduleName = parent.parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.parent.name;
     this.moduleNameStyles = getModuleCuttedStyles({ name: moduleName });
 
     if (modelNameStyles.snakeCased.base.length > 10) {
@@ -76,7 +79,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
