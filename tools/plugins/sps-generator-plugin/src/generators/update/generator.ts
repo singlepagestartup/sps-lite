@@ -65,6 +65,51 @@ export async function updateGenerator(
         });
       }
 
+      if (splitted?.[6] === "schema" && splitted?.[7] === "relations") {
+        const relationName = splitted?.[8];
+
+        const relationExistsInRoot = root.libs.modules[0].module.relations.find(
+          (relation) => {
+            return relation.relation.name === relationName;
+          },
+        );
+
+        if (!relationExistsInRoot) {
+          const modelIndex = root.libs.modules[0].module.models.findIndex(
+            (model) => {
+              return model.model.name === modelName;
+            },
+          );
+          const model = root.libs.modules[0].module.models[modelIndex];
+
+          if (!model) {
+            throw new Error("model not found:" + modelName);
+          }
+
+          if (!model.model.backend) {
+            model.model.backend = {};
+          }
+
+          if (!model.model.backend.schema) {
+            model.model.backend.schema = {};
+          }
+
+          if (!model.model.backend.schema.relations) {
+            model.model.backend.schema.relations = [];
+          }
+
+          root.libs.modules[0].module.models[
+            modelIndex
+          ].model.backend.schema.relations.push({
+            relation: {
+              name: relationName,
+            },
+          });
+
+          const r = root.libs.modules[0].module.models;
+        }
+      }
+
       if (splitted?.[7] === "variants") {
         const level = splitted?.[8];
         const variant = splitted?.[9];
@@ -251,46 +296,46 @@ export async function updateGenerator(
   // });
   // await coder.update();
 
-  const coder = new Coder({
-    tree,
-    root: {
-      libs: {
-        modules: [
-          {
-            module: {
-              name: moduleName,
-              models: [
-                {
-                  model: {
-                    name: "button",
-                    backend: {
-                      schema: {
-                        relations: [
-                          {
-                            relation: {
-                              name: "buttons-arrays-to-buttons",
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              ],
-              relations: [
-                {
-                  relation: {
-                    name: "buttons-arrays-to-buttons",
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  });
-  await coder.update();
+  // const coder = new Coder({
+  //   tree,
+  //   root: {
+  //     libs: {
+  //       modules: [
+  //         {
+  //           module: {
+  //             name: moduleName,
+  //             models: [
+  //               {
+  //                 model: {
+  //                   name: "button",
+  //                   backend: {
+  //                     schema: {
+  //                       relations: [
+  //                         {
+  //                           relation: {
+  //                             name: "buttons-arrays-to-buttons",
+  //                           },
+  //                         },
+  //                       ],
+  //                     },
+  //                   },
+  //                 },
+  //               },
+  //             ],
+  //             relations: [
+  //               {
+  //                 relation: {
+  //                   name: "buttons-arrays-to-buttons",
+  //                 },
+  //               },
+  //             ],
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // });
+  // await coder.update();
 
   // const models = ["widget"];
   // for (const model of models) {
