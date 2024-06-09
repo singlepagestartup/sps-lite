@@ -18,7 +18,6 @@ function makeConfig() {
   ).replace("http://", "");
 
   let config = {
-    transpilePackages: ["@sps/sps-website-builder-frontend"],
     reactStrictMode: true,
     images: {
       unoptimized: true,
