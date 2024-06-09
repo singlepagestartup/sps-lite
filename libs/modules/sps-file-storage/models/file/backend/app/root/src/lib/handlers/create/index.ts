@@ -75,6 +75,8 @@ export const handler = async (
         201,
       );
     }
+
+    return;
   } catch (error: any) {
     throw new HTTPException(400, {
       message: error.message,

@@ -40,5 +40,7 @@ export function middleware() {
         store.clearByPrefix(path);
       }
     }
+
+    return;
   });
 }

@@ -28,7 +28,7 @@ export class Coder {
     this.tree = props.tree;
     this.name = "app";
     this.baseName = `${this.parent.baseName}-app`;
-    this.baseDirectory = `${this.parent.baseDirectory}/app`;
+    this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
 
     const pluralNameModelName = pluralize(
       names(this.parent.parent.name).fileName,
