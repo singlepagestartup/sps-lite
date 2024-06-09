@@ -6,15 +6,9 @@
     "libs/**"
   ],
   "scripts": {
-    "backend:build": "nx run backend:build",
-    "backend:debug": "nx run backend:debug",
-    "backend:dev": "nx run backend:dev",
-    "backend:start": "nx run backend:start",
-    "bdd:only": "npx nx run bdd:dev:only $1",
     "format": "nx format:write --all",
-    "frontend:build": "nx run frontend:db:migrate && nx run frontend:next:build",
-    "frontend:dev": "nx run frontend:db:migrate && nx run frontend:prepare && nx run frontend:next:dev",
-    "frontend:prepare": "rm -rf apps/frontend/.next && nx run frontend:theme",
+    "frontend:build": "nx run frontend:prepare && nx run frontend:next:build",
+    "frontend:dev": "nx run frontend:prepare && nx run frontend:next:dev",
     "frontend:production": "NODE_ENV=production npm run frontend:build && npm run frontend:start",
     "frontend:start": "nx run frontend:next:start",
     "lint": "nx run-many --target=lint --parallel=2 --all",

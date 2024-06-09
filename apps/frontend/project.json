@@ -239,9 +239,6 @@
             "command": "nx run frontend:db:migrate"
           },
           {
-            "command": "rm -rf apps/frontend/.next"
-          },
-          {
             "command": "nx run frontend:theme"
           }
         ]
@@ -261,7 +258,7 @@
     "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:build"],
+      "dependsOn": [],
       "cache": true,
       "defaultConfiguration": "production",
       "options": {

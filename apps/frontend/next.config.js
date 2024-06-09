@@ -1,4 +1,4 @@
-// const { withNx } = require("@nx/next/plugins/with-nx");
+const { withNx } = require("@nx/next/plugins/with-nx");
 // const withTM = require("next-transpile-modules")(["next-js-publishable"]);
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -18,7 +18,7 @@ function makeConfig() {
   ).replace("http://", "");
 
   let config = {
-    transpilePackages: ["@sps/startup-frontend", "@sps/startup-backend-app"],
+    transpilePackages: ["@sps/sps-website-builder-frontend"],
     reactStrictMode: true,
     images: {
       unoptimized: true,
@@ -58,4 +58,4 @@ function makeConfig() {
 
 const config = makeConfig();
 
-module.exports = config;
+module.exports = withNx(config);
