@@ -2375,7 +2375,7 @@
         "libs/modules/sps-website-builder/models/widget/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-app": [
-        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/src/index.ts"
+        "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/root/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-model": [
         "libs/modules/sps-website-builder/relations/buttons-arrays-to-buttons/backend/model/root/src/index.ts"
