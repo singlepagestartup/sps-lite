@@ -2,13 +2,21 @@ import { Tree, getProjects } from "@nx/devkit";
 import { UpdateGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
+/**
+ * Update module to the new version
+ *
+ * npx nx generate @sps/sps-generator-plugin:update --module_name=sps-website-builder --right_external_models="sps-file-storage-widgets sps-file-storage-module-widgets sps-rbac-module-widgets startup-module-widgets" --no-interactive --dry-run
+ */
 export async function updateGenerator(
   tree: Tree,
   options: UpdateGeneratorSchema,
 ) {
+  const leftExternalModels = options.left_external_models?.split(" ") || [];
+  const rightExternalModels = options.right_external_models?.split(" ") || [];
+
   const fullProjectSchema = getProjects(tree);
 
-  const moduleName = "sps-website-builder";
+  const moduleName = options.module_name;
 
   const root = {
     libs: {
@@ -108,14 +116,6 @@ export async function updateGenerator(
       );
 
       if (!relationExistsInRoot) {
-        const leftExternalModels = [];
-        const rightExternalModels = [
-          "sps-file-storage-widgets",
-          "sps-file-storage-module-widgets",
-          "sps-rbac-module-widgets",
-          "startup-module-widgets",
-        ];
-
         let leftModelIsExternal = false;
         for (const externalModel of leftExternalModels) {
           if (relationName.includes(externalModel)) {
@@ -182,85 +182,72 @@ export async function updateGenerator(
           });
         }
       }
-
-      // console.log(
-      //   `🚀 ~ fullProjectSchema.forEach ~ relationName:`,
-      //   relationName,
-      // );
-      // console.log(`🚀 ~ fullProjectSchema.forEach ~ project:`, project.root);
     }
-
-    // console.log(`🚀 ~ fullProjectSchema.forEach ~ modelName:`, modelName);
   });
-
-  // console.log(
-  //   `🚀 ~ fullProjectSchema.forEach ~ project:`,
-  //   JSON.stringify(root.libs.modules[0].module.relations, null, 2),
-  // );
-
-  // const coder = new Coder({
-  //   tree,
-  //   root,
-  // });
-
-  // await coder.update();
 
   const coder = new Coder({
     tree,
-    root: {
-      libs: {
-        modules: [
-          {
-            module: {
-              name: options.module,
-              models: [
-                // {
-                //   model: {
-                //     name: options.model_name,
-                //     frontend: {
-                //       component: {
-                //         variants: [
-                //           { name: "admin-form", level: "sps-lite" },
-                //           { name: "admin-form-inputs", level: "sps-lite" },
-                //           { name: "admin-panel", level: "sps-lite" },
-                //           { name: "admin-select-input", level: "sps-lite" },
-                //           { name: "admin-table", level: "sps-lite" },
-                //           { name: "admin-table-row", level: "sps-lite" },
-                //           { name: "default", level: "sps-lite" },
-                //           { name: "get-by-url", level: "sps-lite" },
-                //           { name: "get-query-from-url", level: "sps-lite" },
-                //           { name: "get-url-model-id", level: "sps-lite" },
-                //         ],
-                //       },
-                //     },
-                //   },
-                // },
-              ],
-              relations: [
-                {
-                  relation: {
-                    name: "buttons-arrays-to-buttons",
-                    rightModelIsExternal: true,
-                    // frontend: {
-                    //   component: {
-                    //     variants: [
-                    //       {
-                    //         name: "default",
-                    //         level: "sps-lite",
-                    //       },
-                    //     ],
-                    //   },
-                    // },
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
+    root,
   });
+
   await coder.update();
+
+  // const coder = new Coder({
+  //   tree,
+  //   root: {
+  //     libs: {
+  //       modules: [
+  //         {
+  //           module: {
+  //             name: options.module,
+  //             models: [
+  //               // {
+  //               //   model: {
+  //               //     name: options.model_name,
+  //               //     frontend: {
+  //               //       component: {
+  //               //         variants: [
+  //               //           { name: "admin-form", level: "sps-lite" },
+  //               //           { name: "admin-form-inputs", level: "sps-lite" },
+  //               //           { name: "admin-panel", level: "sps-lite" },
+  //               //           { name: "admin-select-input", level: "sps-lite" },
+  //               //           { name: "admin-table", level: "sps-lite" },
+  //               //           { name: "admin-table-row", level: "sps-lite" },
+  //               //           { name: "default", level: "sps-lite" },
+  //               //           { name: "get-by-url", level: "sps-lite" },
+  //               //           { name: "get-query-from-url", level: "sps-lite" },
+  //               //           { name: "get-url-model-id", level: "sps-lite" },
+  //               //         ],
+  //               //       },
+  //               //     },
+  //               //   },
+  //               // },
+  //             ],
+  //             relations: [
+  //               {
+  //                 relation: {
+  //                   name: "buttons-arrays-to-buttons",
+  //                   rightModelIsExternal: true,
+  //                   // frontend: {
+  //                   //   component: {
+  //                   //     variants: [
+  //                   //       {
+  //                   //         name: "default",
+  //                   //         level: "sps-lite",
+  //                   //       },
+  //                   //     ],
+  //                   //   },
+  //                   // },
+  //                 },
+  //               },
+  //             ],
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // });
+  // await coder.update();
 
   // const coder = new Coder({
   //   tree,

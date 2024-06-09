@@ -1,4 +1,5 @@
 export interface UpdateGeneratorSchema {
-  model_name: string;
-  module: string;
+  module_name: string;
+  right_external_models?: string;
+  left_external_models?: string;
 }
