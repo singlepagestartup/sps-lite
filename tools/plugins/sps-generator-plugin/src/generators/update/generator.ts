@@ -65,7 +65,11 @@ export async function updateGenerator(
         });
       }
 
-      if (splitted?.[6] === "schema" && splitted?.[7] === "relations") {
+      if (
+        splitted?.[6] === "schema" &&
+        splitted?.[7] === "relations" &&
+        splitted?.[8] !== "root"
+      ) {
         const relationName = splitted?.[8];
 
         const relationExistsInRoot = root.libs.modules[0].module.relations.find(
@@ -232,12 +236,12 @@ export async function updateGenerator(
     }
   });
 
-  // const coder = new Coder({
-  //   tree,
-  //   root,
-  // });
+  const coder = new Coder({
+    tree,
+    root,
+  });
 
-  // await coder.update();
+  await coder.update();
 
   // const coder = new Coder({
   //   tree,
