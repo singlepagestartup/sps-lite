@@ -8,7 +8,7 @@ export async function updateGenerator(
 ) {
   const fullProjectSchema = getProjects(tree);
 
-  const moduleName = "sps-file-storage";
+  const moduleName = "sps-rbac";
 
   const root = {
     libs: {

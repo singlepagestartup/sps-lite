@@ -581,7 +581,7 @@
         "libs/modules/sps-rbac/frontend/components/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-backend-app": [
-        "libs/modules/sps-rbac/models/authentication/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/authentication/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-backend-model": [
         "libs/modules/sps-rbac/models/authentication/backend/model/root/src/index.ts"
@@ -596,7 +596,7 @@
         "libs/modules/sps-rbac/models/authentication/backend/schema/table/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-block-backend-app": [
-        "libs/modules/sps-rbac/models/authentication-block/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/authentication-block/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-block-backend-model": [
         "libs/modules/sps-rbac/models/authentication-block/backend/model/root/src/index.ts"
@@ -695,7 +695,7 @@
         "libs/modules/sps-rbac/models/authentication/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-models-identity-backend-app": [
-        "libs/modules/sps-rbac/models/identity/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/identity/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-identity-backend-model": [
         "libs/modules/sps-rbac/models/identity/backend/model/root/src/index.ts"
@@ -752,7 +752,7 @@
         "libs/modules/sps-rbac/models/identity/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-backend-app": [
-        "libs/modules/sps-rbac/models/role/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/role/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-backend-model": [
         "libs/modules/sps-rbac/models/role/backend/model/root/src/index.ts"
@@ -809,7 +809,7 @@
         "libs/modules/sps-rbac/models/role/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-models-user-backend-app": [
-        "libs/modules/sps-rbac/models/user/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/user/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-user-backend-model": [
         "libs/modules/sps-rbac/models/user/backend/model/root/src/index.ts"
@@ -869,7 +869,7 @@
         "libs/modules/sps-rbac/models/user/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-models-widget-backend-app": [
-        "libs/modules/sps-rbac/models/widget/backend/app/src/index.ts"
+        "libs/modules/sps-rbac/models/widget/backend/app/root/src/index.ts"
       ],
       "@sps/sps-rbac-models-widget-backend-model": [
         "libs/modules/sps-rbac/models/widget/backend/model/root/src/index.ts"
