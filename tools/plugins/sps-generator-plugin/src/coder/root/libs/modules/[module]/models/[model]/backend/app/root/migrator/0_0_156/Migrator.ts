@@ -1,10 +1,12 @@
 import {
   generateFiles,
+  getProjects,
   offsetFromRoot,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
+import { moveGenerator } from "@nx/workspace";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -14,6 +16,8 @@ export class Migrator {
   }
 
   async execute() {
+    await this.moveToRootFolder();
+
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
@@ -43,5 +47,34 @@ export class Migrator {
         "tsc:build": {},
       },
     });
+  }
+
+  async moveToRootFolder() {
+    const baseDirectory = this.parent.coder.baseDirectory;
+    const project = this.parent.coder.project;
+
+    if (!project.root.endsWith("root")) {
+      const tmpPath = project.root.split("/").slice(0, -1).join("/") + "/temp";
+
+      await moveGenerator(this.parent.coder.tree, {
+        projectName: project.name,
+        newProjectName: project.name,
+        destination: tmpPath,
+        updateImportPath: false,
+        projectNameAndRootFormat: "as-provided",
+      });
+
+      await moveGenerator(this.parent.coder.tree, {
+        projectName: project.name,
+        newProjectName: project.name,
+        destination: baseDirectory,
+        updateImportPath: false,
+        projectNameAndRootFormat: "as-provided",
+      });
+
+      this.parent.coder.project = getProjects(this.parent.coder.tree).get(
+        this.parent.coder.baseName,
+      );
+    }
   }
 }
