@@ -2,6 +2,7 @@ import {
   generateFiles,
   moveFilesToNewDirectory,
   offsetFromRoot,
+  updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
@@ -27,6 +28,27 @@ export class Migrator {
         this.parent.coder.tree,
         project.root,
         baseDirectory,
+      );
+
+      updateJson(
+        this.parent.coder.tree,
+        `${baseDirectory}/.eslintrc.json`,
+        (json) => {
+          return {
+            ...json,
+            extends: offsetFromRootProject + "/.eslintrc.json",
+          };
+        },
+      );
+
+      this.parent.coder.tree.write(
+        baseDirectory + "/jest.config.ts",
+        `/* eslint-disable */
+        export default {
+          displayName:
+            "${baseName}",
+          preset: "${offsetFromRootProject}jest.server-preset.js",
+        };`,
       );
 
       return;
