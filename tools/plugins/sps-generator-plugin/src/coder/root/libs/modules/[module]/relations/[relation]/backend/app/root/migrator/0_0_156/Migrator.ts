@@ -18,7 +18,6 @@ export class Migrator {
 
   async execute() {
     await this.moveToRootFolder();
-    return;
 
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
@@ -53,8 +52,6 @@ export class Migrator {
 
   async moveToRootFolder() {
     const baseDirectory = this.parent.coder.baseDirectory;
-    const baseName = this.parent.coder.baseName;
-    const offsetFromRootProject = offsetFromRoot(baseDirectory);
     const project = this.parent.coder.project;
 
     if (!project.root.endsWith("root")) {
@@ -75,27 +72,6 @@ export class Migrator {
         updateImportPath: false,
         projectNameAndRootFormat: "as-provided",
       });
-
-      // updateJson(
-      //   this.parent.coder.tree,
-      //   `${baseDirectory}/project.json`,
-      //   (json) => {
-      //     return {
-      //       ...json,
-      //       extends: offsetFromRootProject + "/.eslintrc.json",
-      //     };
-      //   },
-      // );
-
-      // this.parent.coder.tree.write(
-      //   baseDirectory + "/jest.config.ts",
-      //   `/* eslint-disable */
-      //   export default {
-      //     displayName:
-      //       "${baseName}",
-      //     preset: "${offsetFromRootProject}jest.server-preset.js",
-      //   };`,
-      // );
     }
   }
 }
