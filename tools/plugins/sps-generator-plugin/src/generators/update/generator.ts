@@ -263,6 +263,24 @@ export async function updateGenerator(
   //               {
   //                 model: {
   //                   name: "button",
+  //                   backend: {
+  //                     schema: {
+  //                       relations: [
+  //                         {
+  //                           relation: {
+  //                             name: "buttons-arrays-to-buttons",
+  //                           },
+  //                         },
+  //                       ],
+  //                     },
+  //                   },
+  //                 },
+  //               },
+  //             ],
+  //             relations: [
+  //               {
+  //                 relation: {
+  //                   name: "buttons-arrays-to-buttons",
   //                 },
   //               },
   //             ],

@@ -35,16 +35,19 @@ export class Coder {
     this.baseName = `${props.parent.baseName}-relations`;
     this.baseDirectory = `${props.parent.baseDirectory}/relations`;
 
-    // const relations = new RelationCoder({
-    //   parent: this,
-    //   tree,
-    // });
-
     this.project.root = new RootCoder({
       ...props.root,
       parent: this,
       tree: this.tree,
     });
+
+    if (props.relation) {
+      this.project.relation = new RelationCoder({
+        ...props.relation,
+        parent: this,
+        tree: this.tree,
+      });
+    }
   }
 
   async update() {

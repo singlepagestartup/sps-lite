@@ -15,7 +15,7 @@ import {
 import { Coder as BackendCoder } from "../Coder";
 
 export type IGeneratorProps = {
-  relations?: IRelationsCoderGeneratorProps;
+  relations?: IRelationsCoderGeneratorProps[];
   table?: ITableCoderGeneratorProps;
   root?: IRootCoderGeneratorProps;
 };
@@ -28,11 +28,11 @@ export class Coder {
   name: string;
   project: {
     table: TableCoder;
-    relations: RelationsCoder;
+    relations: RelationsCoder[];
     root: RootCoder;
   } = {} as {
     table: TableCoder;
-    relations: RelationsCoder;
+    relations: RelationsCoder[];
     root: RootCoder;
   };
 
@@ -49,11 +49,15 @@ export class Coder {
       tree: this.tree,
     });
 
-    this.project.relations = new RelationsCoder({
-      ...props.relations,
-      parent: this,
-      tree: this.tree,
-    });
+    if (props.relations) {
+      this.project.relations = props.relations.map((relation) => {
+        return new RelationsCoder({
+          ...relation,
+          parent: this,
+          tree: this.tree,
+        });
+      });
+    }
 
     this.project.root = new RootCoder({
       ...props.root,
@@ -64,19 +68,35 @@ export class Coder {
 
   async update() {
     await this.project.table.update();
-    await this.project.relations.update();
+
+    if (this.project.relations) {
+      for (const relation of this.project.relations) {
+        await relation.update();
+      }
+    }
+
     await this.project.root.update();
   }
 
   async create() {
     await this.project.table.create();
-    await this.project.relations.create();
+
+    if (this.project.relations) {
+      for (const relation of this.project.relations) {
+        await relation.create();
+      }
+    }
+
     await this.project.root.create();
   }
 
   async remove() {
     await this.project.root.remove();
-    await this.project.relations.remove();
+    if (this.project.relations) {
+      for (const relation of this.project.relations) {
+        await relation.remove();
+      }
+    }
     await this.project.table.remove();
   }
 
@@ -89,11 +109,15 @@ export class Coder {
   }
 
   async createRelation() {
-    await this.project.relations.createRelation();
+    for (const relation of this.project.relations) {
+      await relation.createRelation();
+    }
   }
 
   async removeRelation() {
-    await this.project.relations.removeRelation();
+    for (const relation of this.project.relations) {
+      await relation.removeRelation();
+    }
   }
 
   async createVariant(props: { variantName: string; variantLevel: string }) {
