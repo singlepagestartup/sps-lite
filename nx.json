@@ -115,7 +115,9 @@
   },
   "generators": {
     "@nx/react": {
-      "library": {}
+      "library": {
+        "unitTestRunner": "none"
+      }
     }
   },
   "release": {

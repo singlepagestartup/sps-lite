@@ -1,0 +1,8 @@
+{
+  "name": "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-find-by-id",
+  "version": "0.0.1",
+  "singlepagestartup": {
+    "template": "find-by-id",
+    "version": "0.0.156"
+  }
+}

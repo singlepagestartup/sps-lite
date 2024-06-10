@@ -28,6 +28,84 @@
       ],
       "@sps/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@sps/sps-backend-utils": ["libs/shared/backend/utils/src/index.ts"],
+      "@sps/sps-billing-backend-app": [
+        "libs/modules/sps-billing/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-billing-backend-db": [
+        "libs/modules/sps-billing/backend/db/root/src/index.ts"
+      ],
+      "@sps/sps-billing-backend-models": [
+        "libs/modules/sps-billing/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-billing-backend-schema": [
+        "libs/modules/sps-billing/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-billing-backend-sdk": [
+        "libs/modules/sps-billing/backend/sdk/root/src/index.ts"
+      ],
+      "@sps/sps-billing-frontend": [
+        "libs/modules/sps-billing/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-backend-app": [
+        "libs/modules/sps-billing/models/widget/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-backend-model": [
+        "libs/modules/sps-billing/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-backend-schema": [
+        "libs/modules/sps-billing/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-backend-schema-relations": [
+        "libs/modules/sps-billing/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-backend-schema-table": [
+        "libs/modules/sps-billing/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-contracts": [
+        "libs/modules/sps-billing/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-contracts-extended": [
+        "libs/modules/sps-billing/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-api-client": [
+        "libs/modules/sps-billing/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-api-model": [
+        "libs/modules/sps-billing/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-api-server": [
+        "libs/modules/sps-billing/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component": [
+        "libs/modules/sps-billing/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-billing/models/widget/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-billing-models-widget-frontend-redux": [
+        "libs/modules/sps-billing/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-crm-frontend": [
         "libs/modules/sps-crm/frontend/root/src/index.ts"
       ],

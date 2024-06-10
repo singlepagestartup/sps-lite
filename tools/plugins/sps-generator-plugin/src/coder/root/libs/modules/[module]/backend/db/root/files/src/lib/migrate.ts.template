@@ -1,6 +1,6 @@
 import { migrate as drizzleMigrator } from "drizzle-orm/postgres-js/migrator";
 import path from "path";
-import { db } from "@sps/sps-db-provider";
+import { db } from "./index";
 import { cwd } from "process";
 
 const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");

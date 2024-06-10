@@ -5,6 +5,7 @@ import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder-backend-ap
 import { app as spsFileStorageApp } from "@sps/sps-file-storage-backend-app";
 import { app as spsRbacApp } from "@sps/sps-rbac-backend-app";
 import { app as startupApp } from "@sps/startup-backend-app";
+import { app as spsBilling } from "@sps/sps-billing-backend-app";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
@@ -21,6 +22,7 @@ setRoutes(app);
 app.route("/sps-website-builder", spsWebsiteBuilderApp);
 app.route("/sps-file-storage", spsFileStorageApp);
 app.route("/sps-rbac", spsRbacApp);
+app.route("/sps-billing", spsBilling);
 app.route("/startup", startupApp);
 
 export async function POST(request: NextRequest, params: any) {
