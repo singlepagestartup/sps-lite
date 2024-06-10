@@ -35,13 +35,13 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "cwd": "libs/modules/sps-website-builder/backend/db/root",
         "commands": [
           {
-            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
           },
           {
-            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
           }
         ]
       }
@@ -50,10 +50,10 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "cwd": "libs/modules/sps-website-builder/backend/root",
         "commands": [
           {
-            "command": "bun run ./src/lib/db/migrate.ts"
+            "command": "bun run ./src/lib/migrate.ts"
           }
         ]
       }
