@@ -13,11 +13,16 @@ import {
   IGeneratorProps as ISchemaCoderGeneratorProps,
 } from "./schema/Coder";
 import {
+  Coder as DbCoder,
+  IGeneratorProps as IDbCoderGeneratorProps,
+} from "./db/Coder";
+import {
   Coder as SdkCoder,
   IGeneratorProps as ISdkCoderGeneratorProps,
 } from "./sdk/Coder";
 
 export type IGeneratorProps = {
+  db?: IDbCoderGeneratorProps;
   app?: IAppCoderGeneratorProps;
   models?: IModelsCoderGeneratorProps;
   schema?: ISchemaCoderGeneratorProps;
@@ -31,6 +36,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   project: {
+    db: DbCoder;
     app: AppCoder;
     models: ModelsCoder;
     schema: SchemaCoder;
@@ -43,6 +49,12 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-backend`;
     this.baseDirectory = `${this.parent.baseDirectory}/backend`;
+
+    const db = new DbCoder({
+      ...props.schema,
+      tree: this.tree,
+      parent: this,
+    });
 
     const schema = new SchemaCoder({
       ...props.schema,
@@ -69,6 +81,7 @@ export class Coder {
     });
 
     this.project = {
+      db,
       schema,
       models,
       app,
@@ -77,6 +90,7 @@ export class Coder {
   }
 
   async update() {
+    await this.project.db.update();
     await this.project.schema.update();
     await this.project.models.update();
     await this.project.app.update();
@@ -84,6 +98,7 @@ export class Coder {
   }
 
   async create() {
+    await this.project.db.create();
     await this.project.schema.create();
     await this.project.models.create();
     await this.project.app.create();
@@ -95,5 +110,6 @@ export class Coder {
     await this.project.app.remove();
     await this.project.models.remove();
     await this.project.schema.remove();
+    await this.project.db.remove();
   }
 }
