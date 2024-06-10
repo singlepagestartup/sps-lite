@@ -81,7 +81,7 @@ export class Coder {
 
   async create() {
     const tableLibraryName = this.parent.project.table.baseName;
-    const relationsLibraryName = this.parent.project.root.baseName;
+    const relationsLibraryName = this.parent.project.relations.baseName;
     const moduleBackendSchemaRootDirectory =
       this.parent.parent.parent.parent.parent.project.backend.project.schema
         .project.root.baseDirectory;
