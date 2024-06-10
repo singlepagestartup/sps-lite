@@ -44,18 +44,6 @@ export class Coder {
     await this.project.root.update();
   }
 
-  async createModule() {
-    await this.project.root.createModule();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeModule() {
-    await this.project.root.removeModule();
-
-    await formatFiles(this.tree);
-  }
-
   async createModel() {
     await this.project.root.createModel();
 

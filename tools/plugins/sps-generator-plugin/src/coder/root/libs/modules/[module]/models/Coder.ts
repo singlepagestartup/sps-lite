@@ -51,11 +51,11 @@ export class Coder {
     await this.project.model?.update();
   }
 
-  async createModel() {
+  async create() {
     await this.project.model.create();
   }
 
-  async removeModel() {
+  async remove() {
     await this.project.model.remove();
   }
 

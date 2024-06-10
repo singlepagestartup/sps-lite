@@ -46,13 +46,6 @@ export class Coder {
     await this.project.libs.update();
   }
 
-  async createModule() {
-    await this.project.libs.createModule();
-  }
-
-  async removeModule() {
-    await this.project.libs.removeModule();
-  }
   async createModel() {
     await this.project.libs.createModel();
   }

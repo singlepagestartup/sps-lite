@@ -114,7 +114,7 @@ export class Coder {
     await this.project.frontend.create();
 
     for (const model of this.project.models) {
-      await model.createModel();
+      await model.create();
     }
 
     for (const relation of this.project.relations) {
@@ -128,7 +128,7 @@ export class Coder {
   }
 
   async createModel() {
-    await this.project.models[0].createModel();
+    await this.project.models[0].create();
 
     await this.project.models[0].project.model.project.backend.project.schema.project.root.attach(
       {
@@ -166,7 +166,7 @@ export class Coder {
       },
     );
 
-    await this.project.models[0].removeModel();
+    await this.project.models[0].remove();
   }
 
   async addField(props: IEditFieldProps) {

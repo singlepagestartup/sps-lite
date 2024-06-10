@@ -92,42 +92,9 @@ export class Coder {
     await this.project.contracts.create();
     await this.project.backend.create();
     await this.project.frontend.create();
-
-    const createAdmin = false;
-    // const createAdmin = true;
-
-    const requiredVariants = ["default"];
-    for (const variant of requiredVariants) {
-      await this.project.frontend.createVariant({
-        variantName: variant,
-        variantLevel: "sps-lite",
-      });
-    }
-
-    const adminVariantsVariants = [
-      "admin-form",
-      "admin-form-inputs",
-      "admin-select-input",
-      "admin-table",
-      "admin-table-row",
-    ];
-    if (createAdmin) {
-      for (const variant of adminVariantsVariants) {
-        await this.project.frontend.createVariant({
-          variantName: variant,
-          variantLevel: "sps-lite",
-          templateName: variant,
-        });
-      }
-    }
   }
 
   async remove() {
-    await this.project.frontend.removeVariant({
-      variantName: "default",
-      variantLevel: "sps-lite",
-    });
-
     await this.project.frontend.remove();
     await this.project.backend.remove();
     await this.project.contracts.remove();
