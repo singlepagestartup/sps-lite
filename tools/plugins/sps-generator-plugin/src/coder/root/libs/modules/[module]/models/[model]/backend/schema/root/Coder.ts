@@ -81,7 +81,7 @@ export class Coder {
 
   async create() {
     const tableLibraryName = this.parent.project.table.baseName;
-    const relationsLibraryName = this.parent.project.relations.baseName;
+    const relationsLibraryName = this.parent.project.root.baseName;
 
     await createSpsTSLibrary({
       tree: this.tree,

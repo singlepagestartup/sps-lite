@@ -131,6 +131,8 @@ export class Coder {
       generateFilesPath: templateDirectory,
       templateParams: {
         template: "",
+        template_name: this.template,
+        lib_name: this.baseName,
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,

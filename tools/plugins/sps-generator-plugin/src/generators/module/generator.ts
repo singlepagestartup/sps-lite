@@ -16,6 +16,13 @@ export async function moduleGenerator(
           {
             module: {
               name: moduleName,
+              models: [
+                {
+                  model: {
+                    name: "widget",
+                  },
+                },
+              ],
             },
           },
         ],

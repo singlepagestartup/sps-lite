@@ -112,6 +112,14 @@ export class Coder {
   async create() {
     await this.project.backend.create();
     await this.project.frontend.create();
+
+    for (const model of this.project.models) {
+      await model.createModel();
+    }
+
+    for (const relation of this.project.relations) {
+      await relation.createRelations();
+    }
   }
 
   async remove() {
