@@ -28,64 +28,6 @@
       ],
       "@sps/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@sps/sps-backend-utils": ["libs/shared/backend/utils/src/index.ts"],
-      "@sps/sps-billing": ["libs/modules/sps-billing/backend/src/index.ts"],
-      "@sps/sps-billing-frontend": [
-        "libs/modules/sps-billing/frontend/root/src/index.ts"
-      ],
-      "@sps/sps-billing-frontend-components": [
-        "libs/modules/sps-billing/frontend/components/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-contracts": [
-        "libs/modules/sps-billing/models/currency/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-contracts-extended": [
-        "libs/modules/sps-billing/models/currency/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-api-client": [
-        "libs/modules/sps-billing/models/currency/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-api-server": [
-        "libs/modules/sps-billing/models/currency/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-component": [
-        "libs/modules/sps-billing/models/currency/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-component-variants-sps-lite-list": [
-        "libs/modules/sps-billing/models/currency/frontend/component/variants/sps-lite/list/src/index.ts"
-      ],
-      "@sps/sps-billing-models-currency-frontend-redux": [
-        "libs/modules/sps-billing/models/currency/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-contracts": [
-        "libs/modules/sps-billing/models/invoice/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-contracts-extended": [
-        "libs/modules/sps-billing/models/invoice/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-api-client": [
-        "libs/modules/sps-billing/models/invoice/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-api-server": [
-        "libs/modules/sps-billing/models/invoice/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-component": [
-        "libs/modules/sps-billing/models/invoice/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-list": [
-        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/list/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-component-variants-sps-lite-redirect": [
-        "libs/modules/sps-billing/models/invoice/frontend/component/variants/sps-lite/redirect/src/index.ts"
-      ],
-      "@sps/sps-billing-models-invoice-frontend-redux": [
-        "libs/modules/sps-billing/models/invoice/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-crm-frontend": [
         "libs/modules/sps-crm/frontend/root/src/index.ts"
       ],
