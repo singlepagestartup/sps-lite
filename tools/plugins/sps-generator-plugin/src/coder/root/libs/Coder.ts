@@ -79,25 +79,6 @@ export class Coder {
     }
   }
 
-  async createModelFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.createModelFrontendComponentVariant(props);
-    }
-  }
-
-  async removeModelFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.removeModelFrontendComponentVariant(props);
-    }
-  }
-
   async createRelationFrontendComponentVariant(props: {
     variantName: string;
     variantLevel: string;

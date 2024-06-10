@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, formatFiles } from "@nx/devkit";
 import { SchemaFieldGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -43,6 +43,8 @@ export async function schemaFieldGenerator(
       isRequired: options.is_required,
     });
   }
+
+  await formatFiles(tree);
 }
 
 export default schemaFieldGenerator;

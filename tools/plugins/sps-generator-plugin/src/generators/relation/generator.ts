@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, formatFiles } from "@nx/devkit";
 import { RelationGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -49,6 +49,8 @@ export async function relationGenerator(
   } else {
     await coder.createRelations();
   }
+
+  await formatFiles(tree);
 }
 
 export default relationGenerator;

@@ -282,7 +282,7 @@
         "buildTarget": "next:build",
         "dev": true,
         "port": 3000,
-        "turbo": true
+        "turbo": false
       }
     },
     "next:build": {

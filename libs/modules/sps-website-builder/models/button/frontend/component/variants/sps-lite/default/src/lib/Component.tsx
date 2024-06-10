@@ -6,12 +6,12 @@ import { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <Button
-      ui="sps"
+      ui="shadcn"
       data-module="sps-website-builder"
       data-model="elements.button"
       data-id={props.data?.id || ""}
       data-variant={props.data.variant}
-      data-ui-variant={props.data.variant}
+      variant={props.data.variant}
       {...(props.data.url ? { url: props.data.url } : {})}
     >
       {props.data.title}

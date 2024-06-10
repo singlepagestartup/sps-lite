@@ -1,4 +1,4 @@
-import { Tree, getProjects } from "@nx/devkit";
+import { Tree, formatFiles, getProjects } from "@nx/devkit";
 import { UpdateGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -241,6 +241,8 @@ export async function updateGenerator(
 
     await coder.update();
   }
+
+  await formatFiles(tree);
 
   // const coder = new Coder({
   //   tree,

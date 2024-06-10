@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, formatFiles } from "@nx/devkit";
 import { ModelGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -32,6 +32,8 @@ export async function modelGenerator(
   } else {
     await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].create();
   }
+
+  await formatFiles(tree);
 }
 
 export default modelGenerator;

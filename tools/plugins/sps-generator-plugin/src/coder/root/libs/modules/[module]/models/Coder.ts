@@ -74,19 +74,4 @@ export class Coder {
   async removeRelation() {
     await this.project.model.removeRelation();
   }
-
-  async createModelFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.model.createModelFrontendComponentVariant(props);
-  }
-
-  async removeModelFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.model.removeModelFrontendComponentVariant(props);
-  }
 }

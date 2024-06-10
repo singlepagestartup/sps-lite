@@ -1,7 +1,6 @@
 "use client";
 
 import { forwardRef, useEffect, useMemo, useState } from "react";
-import Sps, { Props as SpsProps } from "./sps";
 import SpsAdminButton, {
   IComponentProps as ISpsAdminButtonComponentProps,
 } from "./sps-admin";
@@ -13,15 +12,13 @@ export type Props =
   | ({
       ui: "sps-admin";
       url?: string;
+      scroll?: boolean;
     } & ISpsAdminButtonComponentProps)
   | ({
       ui: "shadcn";
       url?: string;
-    } & ShadcnProps)
-  | ({
-      ui: "sps";
-      url?: string;
-    } & Omit<SpsProps, "data-ui">);
+      scroll?: boolean;
+    } & ShadcnProps);
 
 export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const [passChildren, setPassChildren] = useState<
@@ -57,23 +54,6 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
     }
   }, [Comp, urlPrepared, props.children]);
 
-  if (props.ui === "shadcn") {
-    return (
-      <Shadcn
-        {...props}
-        ref={ref}
-        {...(passChildren && typeof passChildren !== "string"
-          ? { asChild: true }
-          : {})}
-        {...additionalAttributes}
-        {...(isActive ? { "data-active": true } : {})}
-        data-ui="button"
-      >
-        {passChildren}
-      </Shadcn>
-    );
-  }
-
   if (props.ui === "sps-admin") {
     return (
       <SpsAdminButton
@@ -92,15 +72,18 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   }
 
   return (
-    <Sps
+    <Shadcn
       {...props}
       ref={ref}
+      {...(passChildren && typeof passChildren !== "string"
+        ? { asChild: true }
+        : {})}
       {...additionalAttributes}
       {...(isActive ? { "data-active": true } : {})}
       data-ui="button"
     >
       {passChildren}
-    </Sps>
+    </Shadcn>
   );
 });
 

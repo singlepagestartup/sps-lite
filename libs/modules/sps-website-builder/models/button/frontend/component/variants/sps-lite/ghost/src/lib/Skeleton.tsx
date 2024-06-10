@@ -4,7 +4,7 @@ import { IComponentProps } from "./interface";
 export function Skeleton(props: IComponentProps) {
   return (
     <Button
-      ui="sps"
+      ui="shadcn"
       data-module="sps-website-builder"
       data-model="elements.button"
       data-id={props.data?.id || ""}

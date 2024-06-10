@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as NavbarsToWidgets } from "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -9,9 +10,12 @@ export function Component(props: IComponentPropsExtended) {
       data-model="navbar"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={props.data.className || ""}
+      className={cn(
+        "bg-white border-b border-input w-screen z-30 fixed",
+        props.data.className,
+      )}
     >
-      <div className="navbar-container">
+      <div className="w-full mx-auto max-w-7xl">
         {props.data.navbarsToWidgets.map((entity, index) => {
           return (
             <NavbarsToWidgets
