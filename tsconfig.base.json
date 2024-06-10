@@ -407,6 +407,9 @@
       "@sps/sps-file-storage-backend-app": [
         "libs/modules/sps-file-storage/backend/app/root/src/index.ts"
       ],
+      "@sps/sps-file-storage-backend-db": [
+        "libs/modules/sps-file-storage/backend/db/root/src/index.ts"
+      ],
       "@sps/sps-file-storage-backend-models": [
         "libs/modules/sps-file-storage/backend/models/root/src/index.ts"
       ],
@@ -584,6 +587,9 @@
       ],
       "@sps/sps-rbac-backend-app": [
         "libs/modules/sps-rbac/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-backend-db": [
+        "libs/modules/sps-rbac/backend/db/root/src/index.ts"
       ],
       "@sps/sps-rbac-backend-models": [
         "libs/modules/sps-rbac/backend/models/root/src/index.ts"
@@ -1172,6 +1178,9 @@
       ],
       "@sps/sps-website-builder-backend-app": [
         "libs/modules/sps-website-builder/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-backend-db": [
+        "libs/modules/sps-website-builder/backend/db/root/src/index.ts"
       ],
       "@sps/sps-website-builder-backend-models": [
         "libs/modules/sps-website-builder/backend/models/root/src/index.ts"
@@ -3368,6 +3377,9 @@
       ],
       "@sps/startup-backend-app": [
         "libs/modules/startup/backend/app/root/src/index.ts"
+      ],
+      "@sps/startup-backend-db": [
+        "libs/modules/startup/backend/db/root/src/index.ts"
       ],
       "@sps/startup-backend-models": [
         "libs/modules/startup/backend/models/root/src/index.ts"

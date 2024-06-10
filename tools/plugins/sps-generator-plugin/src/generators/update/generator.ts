@@ -234,12 +234,17 @@ export async function updateGenerator(
       }
     });
 
-    const coder = new Coder({
-      tree,
-      root,
-    });
+    // const coder = new Coder({
+    //   tree,
+    //   root,
+    // });
 
-    await coder.update();
+    // await coder.update();
+    await crateForgottenModules({
+      moduleName,
+      tree,
+      modelName: "widget",
+    });
   }
 
   await formatFiles(tree);
@@ -385,7 +390,7 @@ async function crateForgottenModules({
     },
   });
 
-  await additions.project.root.project.libs.project.modules[0].project.module.project.backend.project.sdk.project.root.create();
+  await additions.project.root.project.libs.project.modules[0].project.module.project.backend.project.db.project.root.create();
   // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.api.project.model.create();
   // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.create();
 }

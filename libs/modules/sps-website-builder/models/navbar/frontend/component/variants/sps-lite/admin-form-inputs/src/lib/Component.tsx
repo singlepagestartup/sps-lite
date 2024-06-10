@@ -16,6 +16,14 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
+        />
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
