@@ -4,7 +4,7 @@ import path from "path";
 import { cwd } from "process";
 
 const modulesSchemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
-const out = "./src/lib/db/migrations";
+const out = "./src/lib/migrations";
 
 const config = defineConfig({
   schema: modulesSchemaPaths,
