@@ -46,14 +46,6 @@ export class Coder {
     await this.project.libs.update();
   }
 
-  async createModel() {
-    await this.project.libs.createModel();
-  }
-
-  async removeModel() {
-    await this.project.libs.removeModel();
-  }
-
   async addField(props: IEditFieldProps) {
     await this.project.libs.addField(props);
   }
@@ -68,24 +60,6 @@ export class Coder {
 
   async removeRelations() {
     await this.project.libs.removeRelations();
-  }
-
-  async removeBackendVariant(props: {
-    variantLevel: string;
-    variantName: string;
-  }) {
-    await this.project.libs.removeBackendVariant(props);
-
-    await formatFiles(this.tree);
-  }
-
-  async createBackendVariant(props: {
-    variantLevel: string;
-    variantName: string;
-  }) {
-    await this.project.libs.createBackendVariant(props);
-
-    await formatFiles(this.tree);
   }
 
   async createModelFrontendComponentVariant(props: {

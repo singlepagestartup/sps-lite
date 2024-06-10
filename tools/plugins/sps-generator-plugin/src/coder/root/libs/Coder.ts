@@ -55,30 +55,6 @@ export class Coder {
     }
   }
 
-  async createModule() {
-    for (const module of this.project.modules) {
-      await module.create();
-    }
-  }
-
-  async removeModule() {
-    for (const module of this.project.modules) {
-      await module.remove();
-    }
-  }
-
-  async createModel() {
-    for (const module of this.project.modules) {
-      await module.createModel();
-    }
-  }
-
-  async removeModel() {
-    for (const module of this.project.modules) {
-      await module.removeModel();
-    }
-  }
-
   async addField(props: IEditFieldProps) {
     for (const module of this.project.modules) {
       await module.addField(props);
@@ -119,24 +95,6 @@ export class Coder {
   }) {
     for (const module of this.project.modules) {
       await module.removeModelFrontendComponentVariant(props);
-    }
-  }
-
-  async createBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.createBackendVariant(props);
-    }
-  }
-
-  async removeBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.removeBackendVariant(props);
     }
   }
 

@@ -1,5 +1,4 @@
 import { ProjectConfiguration, Tree, getProjects, names } from "@nx/devkit";
-import pluralize from "pluralize";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
@@ -8,10 +7,6 @@ import { replaceInFile } from "../../../../../../../../../../utils/file-utils";
 import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/get-module-cutted-styles";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as SchemaCoder } from "../Coder";
-import {
-  comma,
-  space,
-} from "../../../../../../../../../../utils/regex-utils/regex-elements";
 import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {};
@@ -162,40 +157,6 @@ export class Coder {
     }
   }
 
-  async createVariant(props: { variant: string; level: string }) {
-    const { level, variant } = props;
-
-    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
-
-    const fieldToAdd = new Variant({
-      variant,
-    });
-
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onCreate.regex,
-      content: fieldToAdd.onCreate.content,
-    });
-  }
-
-  async removeVariant(props: { variant: string; level: string }) {
-    const { level, variant } = props;
-
-    const schemaFilePath = `${this.baseDirectory}/src/lib/variants/${level}.ts`;
-
-    const fieldToAdd = new Variant({
-      variant,
-    });
-
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: schemaFilePath,
-      regex: fieldToAdd.onRemove.regex,
-      content: fieldToAdd.onRemove.content,
-    });
-  }
-
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
 
@@ -230,24 +191,6 @@ export class Field extends RegexCreator {
     const contentRegex = new RegExp(
       `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\)${isRequired ? ".notNull\\(\\)" : ""},`,
     );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
-    });
-  }
-}
-
-export class Variant extends RegexCreator {
-  constructor({ variant }: { variant: string }) {
-    const place = `export const variants = [`;
-    const placeRegex = new RegExp(`export const variants = \\[`);
-
-    const content = `"${variant}",`;
-
-    const contentRegex = new RegExp(`"${variant}"${comma}`);
 
     super({
       place,

@@ -89,18 +89,4 @@ export class Coder {
   }) {
     await this.project.model.removeModelFrontendComponentVariant(props);
   }
-
-  async createBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.model.createBackendVariant(props);
-  }
-
-  async removeBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.model.removeBackendVariant(props);
-  }
 }

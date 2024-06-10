@@ -44,48 +44,6 @@ export class Coder {
     await this.project.root.update();
   }
 
-  async createModel() {
-    await this.project.root.createModel();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeModel() {
-    await this.project.root.removeModel();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeBackendVariant({
-    level,
-    variant,
-  }: {
-    level: string;
-    variant: string;
-  }) {
-    await this.project.root.removeBackendVariant({
-      variantLevel: level,
-      variantName: variant,
-    });
-
-    await formatFiles(this.tree);
-  }
-
-  async createBackendVariant({
-    level,
-    variant,
-  }: {
-    level: string;
-    variant: string;
-  }) {
-    await this.project.root.createBackendVariant({
-      variantLevel: level,
-      variantName: variant,
-    });
-
-    await formatFiles(this.tree);
-  }
-
   async addField(props: IEditFieldProps) {
     await this.project.root.addField(props);
 

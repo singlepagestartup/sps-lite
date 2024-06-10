@@ -26,10 +26,11 @@ export async function modelGenerator(
       },
     },
   });
+
   if (options.action === "remove") {
-    await coder.removeModel();
+    await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].remove();
   } else {
-    await coder.createModel();
+    await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].create();
   }
 }
 

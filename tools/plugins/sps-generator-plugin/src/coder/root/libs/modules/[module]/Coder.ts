@@ -127,48 +127,6 @@ export class Coder {
     await this.project.backend.remove();
   }
 
-  async createModel() {
-    await this.project.models[0].create();
-
-    await this.project.models[0].project.model.project.backend.project.schema.project.root.attach(
-      {
-        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
-      },
-    );
-    await this.project.models[0].project.model.project.backend.project.model.attach(
-      {
-        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
-      },
-    );
-    await this.project.models[0].project.model.project.backend.project.app.attach(
-      {
-        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-      },
-    );
-  }
-
-  async removeModel() {
-    await this.project.models[0].project.model.project.backend.project.app.detach(
-      {
-        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-      },
-    );
-
-    await this.project.models[0].project.model.project.backend.project.model.detach(
-      {
-        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
-      },
-    );
-
-    await this.project.models[0].project.model.project.backend.project.schema.project.root.detach(
-      {
-        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
-      },
-    );
-
-    await this.project.models[0].remove();
-  }
-
   async addField(props: IEditFieldProps) {
     await this.project.models[0].addField(props);
   }
@@ -290,26 +248,6 @@ export class Coder {
     variantLevel: string;
   }) {
     await this.project.models[0].removeModelFrontendComponentVariant(props);
-  }
-
-  async createBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.models[0].createBackendVariant({
-      variantLevel: props.variantLevel,
-      variantName: props.variantName,
-    });
-  }
-
-  async removeBackendVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.models[0].removeBackendVariant({
-      variantLevel: props.variantLevel,
-      variantName: props.variantName,
-    });
   }
 
   async createRelationFrontendComponentVariant(props: {
