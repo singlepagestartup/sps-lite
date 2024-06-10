@@ -71,6 +71,8 @@ export class Coder {
   }
 
   async create() {
+    const moduleDbImportPath =
+      this.parent.parent.parent.parent.project.backend.project.db.baseName;
     const schemaModuleLibName = this.parent.project.schema.baseName;
 
     await createSpsTSLibrary({
@@ -80,6 +82,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        module_db_import_path: moduleDbImportPath,
         schema_module_lib_name: schemaModuleLibName,
         model_name: this.modelName,
         module_name: this.moduleName,
