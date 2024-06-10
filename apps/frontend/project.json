@@ -237,9 +237,6 @@
         "commands": [
           {
             "command": "nx run frontend:db:migrate"
-          },
-          {
-            "command": "nx run frontend:theme"
           }
         ]
       }

@@ -4,8 +4,8 @@
   "title": "",
   "type": "object",
   "properties": {
-    "module_name": {
-      "type": "string",
+    "modules": {
+      "type": "array",
       "description": "Module",
       "x-prompt": {
         "message": "Select module for creating model",
@@ -36,7 +36,8 @@
           {
             "value": "startup"
           }
-        ]
+        ],
+        "multiselect": true
       }
     },
     "right_external_models": {
@@ -56,5 +57,5 @@
       }
     }
   },
-  "required": ["module_name"]
+  "required": ["modules"]
 }

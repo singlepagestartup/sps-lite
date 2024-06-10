@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "format": "nx format:write --all",
-    "frontend:build": "nx run frontend:prepare && nx run frontend:next:build",
+    "frontend:build": "nx run frontend:next:build",
     "frontend:dev": "nx run frontend:prepare && nx run frontend:next:dev",
     "frontend:production": "NODE_ENV=production npm run frontend:build && npm run frontend:start",
     "frontend:start": "nx run frontend:next:start",
