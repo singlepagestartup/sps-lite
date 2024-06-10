@@ -28,7 +28,6 @@ export const util = async ({
   };
 }) => {
   const offsetFromRootProject = offsetFromRoot(root);
-  const jestPreset = "jest.client-preset.js";
 
   await reactLibraryGenerator(tree, {
     name,
@@ -39,6 +38,7 @@ export const util = async ({
     style: "none" as SupportedStyles,
     projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
     strict: true,
+    unitTestRunner: "none",
   });
 
   updateProjectConfiguration(tree, name, {
@@ -47,7 +47,6 @@ export const util = async ({
     projectType: "library",
     tags: [],
     targets: {
-      lint: {},
       "tsc:build": {},
     },
   });
@@ -58,12 +57,11 @@ export const util = async ({
     template: "",
     lib_name: name,
     offset_from_root: offsetFromRootProject,
-    jest_preset: jestPreset,
   });
 
   updateJson(tree, `${root}/tsconfig.json`, (json) => {
-    delete json.files;
-    delete json.include;
+    json.files = [];
+    json.include = [];
 
     json.references = [
       {
@@ -74,5 +72,8 @@ export const util = async ({
     return json;
   });
 
-  tree.delete(`${root}/tsconfig.lib.json`);
+  tree.delete(`${root}/.babelrc`);
+  tree.delete(`${root}/.eslintrc.json`);
+  tree.delete(`${root}/jest.config.ts`);
+  tree.delete(`${root}/tsconfig.spec.json`);
 };

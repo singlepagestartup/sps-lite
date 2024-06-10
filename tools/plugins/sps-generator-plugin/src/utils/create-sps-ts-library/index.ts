@@ -38,15 +38,10 @@ export const util = async ({
 
   const offsetFromRootProject = offsetFromRoot(root);
 
-  const jestPreset = name.includes("frontend")
-    ? "jest.client-preset.js"
-    : "jest.server-preset.js";
-
   generateFiles(tree, `${__dirname}/files`, root, {
     template: "",
     lib_name: name,
     offset_from_root: offsetFromRootProject,
-    jest_preset: jestPreset,
   });
 
   updateProjectConfiguration(tree, name, {
@@ -55,32 +50,14 @@ export const util = async ({
     projectType: "library",
     tags: [],
     targets: {
-      lint: {},
-      build: {},
-      "test:watch": {},
+      "tsc:build": {},
     },
-  });
-
-  updateJson(tree, `${root}/tsconfig.lib.json`, (json) => {
-    const compilerOptions = json.compilerOptions;
-    compilerOptions.composite = true;
-    delete compilerOptions.outDir;
-
-    return json;
-  });
-
-  updateJson(tree, `${root}/tsconfig.spec.json`, (json) => {
-    const compilerOptions = json.compilerOptions || {};
-    compilerOptions.composite = true;
-
-    return json;
   });
 
   updateJson(tree, `${root}/tsconfig.json`, (json) => {
     json.references = [
-      ...json.references,
       {
-        path: "./tsconfig.spec.json",
+        path: "./tsconfig.lib.json",
       },
     ];
 
@@ -96,6 +73,10 @@ export const util = async ({
   });
 
   tree.delete(`${root}/src/lib/${defaultFileName}`);
+  tree.delete(`${root}/jest.config.ts`);
+  tree.delete(`${root}/tsconfig.spec.json`);
+  tree.delete(`${root}/.babelrc`);
+  tree.delete(`${root}/.eslintrc.json`);
 
   await formatFiles(tree);
 

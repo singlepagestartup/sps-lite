@@ -1,5 +1,0 @@
-/* eslint-disable */
-export default {
-  displayName: "<%= lib_name %>",
-  preset: "<%= offset_from_root %><%= jest_preset %>",
-};
