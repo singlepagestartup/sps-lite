@@ -1,1 +1,1 @@
-ALTER TABLE "sps_w_b_ls_to_ss_fe_se_ws_uas" ADD COLUMN "sps_fe_se_wt_id" uuid NOT NULL;
+ALTER TABLE "sps_w_b_ls_to_ss_fe_se_ws_uas" ADD COLUMN IF NOT EXISTS "sps_fe_se_wt_id" uuid NOT NULL;

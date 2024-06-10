@@ -50,7 +50,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/root",
+        "cwd": "libs/modules/sps-website-builder/backend/db/root",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -104,7 +104,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-file-storage/backend/app/root",
+        "cwd": "libs/modules/sps-file-storage/backend/db/root",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -143,13 +143,13 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/startup/backend/app/root",
+        "cwd": "libs/modules/startup/backend/db/root",
         "commands": [
           {
-            "command": "drizzle-kit up --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
           },
           {
-            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
           }
         ]
       }
