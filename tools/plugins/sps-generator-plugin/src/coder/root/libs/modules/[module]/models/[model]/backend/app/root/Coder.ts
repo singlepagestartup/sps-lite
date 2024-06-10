@@ -58,6 +58,9 @@ export class Coder {
   async create() {
     const modelLibName = this.parent.project.model.baseName;
     const modelSchemaLibName = this.parent.project.schema.baseName;
+    const moduleAppPath =
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -71,11 +74,22 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      routesPath: path.join(moduleAppPath, "/src/lib/routes.ts"),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const moduleAppPath =
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory;
+
+    await this.detach({
+      routesPath: path.join(moduleAppPath, "/src/lib/routes.ts"),
+    });
 
     if (!project) {
       return;

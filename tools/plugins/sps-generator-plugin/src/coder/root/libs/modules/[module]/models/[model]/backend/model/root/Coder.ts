@@ -74,6 +74,9 @@ export class Coder {
     const moduleDbImportPath =
       this.parent.parent.parent.parent.project.backend.project.db.baseName;
     const schemaModuleLibName = this.parent.project.schema.baseName;
+    const moduleBackendModelsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -90,12 +93,14 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      indexPath: path.join(moduleBackendModelsRootPath, "/src/lib/index.ts"),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {
-    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
-
     await addToFile({
       toTop: true,
       pathToFile: indexPath,
@@ -141,6 +146,13 @@ export class Coder {
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const moduleBackendModelsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
+
+    await this.detach({
+      indexPath: path.join(moduleBackendModelsRootPath, "/src/lib/index.ts"),
+    });
 
     if (!project) {
       return;

@@ -82,6 +82,9 @@ export class Coder {
   async create() {
     const tableLibraryName = this.parent.project.table.baseName;
     const relationsLibraryName = this.parent.project.root.baseName;
+    const moduleBackendSchemaRootDirectory =
+      this.parent.parent.parent.parent.parent.project.backend.project.schema
+        .project.root.baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -95,11 +98,28 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      indexPath: path.join(
+        moduleBackendSchemaRootDirectory,
+        `/src/lib/index.ts`,
+      ),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const moduleBackendSchemaRootDirectory =
+      this.parent.parent.parent.parent.parent.project.backend.project.schema
+        .project.root.baseDirectory;
+
+    await this.detach({
+      indexPath: path.join(
+        moduleBackendSchemaRootDirectory,
+        `/src/lib/index.ts`,
+      ),
+    });
 
     if (!project) {
       return;
