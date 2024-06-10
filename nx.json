@@ -10,13 +10,29 @@
         "quiet": false
       }
     },
+    "rspack:build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": [],
+      "cache": false,
+      "options": {
+        "target": "web",
+        "main": "{projectRoot}/src/index.ts",
+        "outputPath": "dist/rspack/{projectRoot}",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "rspackConfig": "rspack.config.with-nx.js",
+        "optimization": false,
+        "sourceMap": true,
+        "mode": "development"
+      }
+    },
     "tsc:build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^tsc:build"],
-      "cache": true,
+      "dependsOn": [],
+      "cache": false,
       "options": {
-        "outputPath": "dist/{projectRoot}",
+        "outputPath": "dist/tsc/{projectRoot}",
         "main": "{projectRoot}/src/index.ts",
         "tsConfig": "{projectRoot}/tsconfig.lib.json",
         "assets": ["{projectRoot}/*.md"],

@@ -49,6 +49,9 @@ export class Migrator {
         "tsc:build": {},
       },
     });
+
+    this.parent.coder.tree.delete(`${baseDirectory}/.babelrc`);
+    this.parent.coder.tree.delete(`${baseDirectory}/.eslintrc.json`);
   }
 
   async moveToRootFolder() {
