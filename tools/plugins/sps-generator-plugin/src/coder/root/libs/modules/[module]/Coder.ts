@@ -13,6 +13,10 @@ import {
   Coder as BackendCoder,
   IGeneratorProps as IBackendCoderGeneratorProps,
 } from "./backend/Coder";
+import {
+  Coder as FrontendCoder,
+  IGeneratorProps as IFrontendCoderGeneratorProps,
+} from "./frontend/Coder";
 import pluralize from "pluralize";
 
 export type IGeneratorProps = {
@@ -20,6 +24,7 @@ export type IGeneratorProps = {
   models?: IModelsCoderGeneratorProps[];
   relations?: IRelationsCoderGeneratorProps[];
   backend?: IBackendCoderGeneratorProps;
+  frontend?: IFrontendCoderGeneratorProps;
 };
 
 /**
@@ -38,10 +43,12 @@ export class Coder {
     models: ModelsCoder[];
     relations: RelationsCoder[];
     backend: BackendCoder;
+    frontend: FrontendCoder;
   } = {
     models: [],
     relations: [],
     backend: {} as BackendCoder,
+    frontend: {} as FrontendCoder,
   };
 
   constructor(
@@ -58,6 +65,12 @@ export class Coder {
 
     this.project.backend = new BackendCoder({
       ...props.backend,
+      tree: this.tree,
+      parent: this,
+    });
+
+    this.project.frontend = new FrontendCoder({
+      ...props.frontend,
       tree: this.tree,
       parent: this,
     });
@@ -93,13 +106,16 @@ export class Coder {
     }
 
     await this.project.backend.update();
+    await this.project.frontend.update();
   }
 
   async create() {
     await this.project.backend.create();
+    await this.project.frontend.create();
   }
 
   async remove() {
+    await this.project.frontend.remove();
     await this.project.backend.remove();
   }
 
