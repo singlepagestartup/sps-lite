@@ -48,6 +48,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        lib_name: this.baseName,
       },
     });
 

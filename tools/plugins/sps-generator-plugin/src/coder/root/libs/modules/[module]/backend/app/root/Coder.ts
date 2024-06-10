@@ -45,6 +45,7 @@ export class Coder {
       name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
+        lib_name: this.baseName,
         template: "",
         module_name_snake_cased_uppercase:
           this.moduleNameStyles.snakeCased.base.toUpperCase(),

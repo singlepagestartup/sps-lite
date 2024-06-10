@@ -43,6 +43,7 @@ export class Coder {
       root: this.baseDirectory,
       templateParams: {
         module_name: moduleName,
+        lib_name: this.baseName,
       },
       tree: this.tree,
     });

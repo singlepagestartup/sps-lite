@@ -48,6 +48,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        lib_name: this.baseName,
         module_name_kebab_case: this.moduleNameStyles.kebabCased.base,
       },
     });
