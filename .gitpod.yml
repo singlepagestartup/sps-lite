@@ -12,23 +12,18 @@ ports:
 tasks:
   - name: "bash"
     init: npm i
-  - name: "db"
-    init: cd apps/db && ./up.sh
-  - name: "redis"
-    init: cd apps/redis && ./up.sh
+  - name: "infrastructure"
+    init: ./apps/db/up.sh && ./apps/redis/up.sh
 
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
     - dbaeumer.vscode-eslint
     - mhutchie.git-graph
-    - chakrounanas.turbo-console-log
-    - GitHub.copilot
     - esbenp.prettier-vscode
     - github.vscode-github-actions
     - ms-playwright.playwright
     - bradlc.vscode-tailwindcss
-    - redhat.vscode-yaml
     - nrwl.angular-console
     - firsttris.vscode-jest-runner
     - eamodio.gitlens
