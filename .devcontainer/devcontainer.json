@@ -31,10 +31,9 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "nvm install 20 && nvm use 20 && npm install",
+  "postCreateCommand": "nvm install 20 && nvm alias default 20 && nvm use && npm install",
   "postAttachCommand": {
-    "db": "",
-    "frontend": ""
+    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend"
   },
 
   // Configure tool-specific properties.

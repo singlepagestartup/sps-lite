@@ -21,7 +21,7 @@ if [ "$terminal" == "frontend" ];
 then
     gh codespace ports visibility 3000:public -c $CODESPACE_NAME
 
-    cd apps/frontend
-    chmod +x ./create_env.sh
-    ./create_env.sh
+    # cd apps/frontend
+    # chmod +x ./create_env.sh
+    # ./create_env.sh
 fi
