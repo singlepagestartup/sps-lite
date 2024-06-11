@@ -1,4 +1,6 @@
 FROM gitpod/workspace-node
 
+USER gitpod
+
 RUN curl -fsSL https://bun.sh/install | bash
-RUN apt-get update && sudo apt-get install -y netcat-traditional
+RUN sudo apt-get update && apt-get install -y netcat-traditional
