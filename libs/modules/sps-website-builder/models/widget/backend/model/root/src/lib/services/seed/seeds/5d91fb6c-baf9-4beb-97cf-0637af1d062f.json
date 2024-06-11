@@ -4,6 +4,7 @@
   "createdAt": "2024-06-01T09:27:33.531Z",
   "updatedAt": "2024-06-01T09:27:33.531Z",
   "variant": "default",
+  "className": null,
   "widgetsToSpsRbacModuleWidgets": [
     {
       "id": "d32ae7c0-67de-4c70-b4cc-b9cb5c067343",

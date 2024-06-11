@@ -10,6 +10,7 @@
     "id": "e2ca9e90-a445-4c97-bbdb-4e6fcb6e6d64",
     "createdAt": "2024-05-29T16:21:36.614Z",
     "updatedAt": "2024-05-29T16:21:36.614Z",
-    "variant": "default"
+    "variant": "default",
+    "className": null
   }
 }

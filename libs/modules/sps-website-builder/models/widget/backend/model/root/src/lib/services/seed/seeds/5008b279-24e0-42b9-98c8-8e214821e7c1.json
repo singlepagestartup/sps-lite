@@ -4,6 +4,7 @@
   "createdAt": "2024-05-25T20:01:49.343Z",
   "updatedAt": "2024-05-25T20:01:49.343Z",
   "variant": "default",
+  "className": null,
   "widgetsToSpsRbacModuleWidgets": [],
   "widgetsToSpsFileStorageModuleWidgets": [],
   "widgetsToStartupModuleWidgets": [],

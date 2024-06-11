@@ -7,7 +7,7 @@
   "spsFileStorageWidgetId": "d247f77f-00d0-462a-b86e-78c397dc3cee",
   "heroSectionBlock": {
     "title": "Welcome to Single Page Startup!",
-    "subtitle": null,
+    "subtitle": "",
     "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Tip top\"},{\"type\":\"text\",\"text\":\" \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"heading\",\"attrs\":{\"level\":1},\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"},{\"type\":\"strike\"}],\"text\":\"hero-section-block\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Hello italic!\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
     "anchor": "",
     "className": "",

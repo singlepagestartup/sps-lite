@@ -10,7 +10,8 @@
     "id": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
     "createdAt": "2024-05-25T20:45:11.809Z",
     "updatedAt": "2024-05-25T20:45:11.809Z",
-    "variant": "default"
+    "variant": "default",
+    "className": null
   },
   "heroSectionBlock": {
     "title": "The fastest way to create service oriented TypeScript Full-Stack project",

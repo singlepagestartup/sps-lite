@@ -10,7 +10,8 @@
     "id": "280d3fe8-044e-4004-9fe4-efc5e4544e86",
     "createdAt": "2024-05-29T19:30:40.226Z",
     "updatedAt": "2024-05-29T19:30:40.226Z",
-    "variant": "default"
+    "variant": "default",
+    "className": null
   },
   "sliderBlock": {
     "id": "e93493f2-2e25-4be4-a3af-6a58f6f55df3",

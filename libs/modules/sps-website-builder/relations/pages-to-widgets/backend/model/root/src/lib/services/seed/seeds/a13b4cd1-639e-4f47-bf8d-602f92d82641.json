@@ -19,6 +19,7 @@
     "id": "17859dcf-d1ca-49a3-ac63-d7b841458ec3",
     "createdAt": "2024-06-01T03:35:25.596Z",
     "updatedAt": "2024-06-01T03:35:25.596Z",
-    "variant": "default"
+    "variant": "default",
+    "className": null
   }
 }
