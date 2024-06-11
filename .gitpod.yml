@@ -25,5 +25,4 @@ vscode:
     - ms-playwright.playwright
     - bradlc.vscode-tailwindcss
     - nrwl.angular-console
-    - firsttris.vscode-jest-runner
     - eamodio.gitlens

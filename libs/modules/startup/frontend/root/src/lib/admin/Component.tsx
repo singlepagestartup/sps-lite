@@ -1,15 +1,20 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
   Button,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@sps/shadcn";
-import { Component as WidgetSpsLiteAdminTable } from "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-table";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+const WidgetSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
