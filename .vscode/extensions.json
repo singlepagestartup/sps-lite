@@ -13,6 +13,7 @@
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml",
     "nrwl.angular-console",
-    "firsttris.vscode-jest-runner"
+    "firsttris.vscode-jest-runner",
+    "eamodio.gitlens"
   ]
 }

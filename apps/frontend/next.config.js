@@ -1,36 +1,29 @@
 const { withNx } = require("@nx/next/plugins/with-nx");
-// const withTM = require("next-transpile-modules")(["next-js-publishable"]);
+
+const BACKEND_URL =
+  process.env["NEXT_PUBLIC_BACKEND_URL"] || "http://localhost:3000";
+const FRONTEND_URL =
+  process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
 function makeConfig() {
-  const serverEnvironment = process.env.SERVER_ENVIRONMENT;
-
-  const backendHost = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(
-    "https://",
+  const backendHost = BACKEND_URL?.replace("https://", "").replace(
+    "http://",
     "",
-  ).replace("http://", "");
-  const frontendHost = process.env.NEXT_PUBLIC_FRONTEND_URL?.replace(
-    "https://",
+  );
+  const frontendHost = FRONTEND_URL?.replace("https://", "").replace(
+    "http://",
     "",
-  ).replace("http://", "");
+  );
 
   let config = {
     reactStrictMode: true,
     images: {
       unoptimized: true,
-      domains: [
-        "vercel.app",
-        "tailwindui.com",
-        "images.unsplash.com",
-        "unsplash.com",
-        "localhost",
-        "127.0.0.1",
-        backendHost,
-        frontendHost,
-      ],
+      domains: ["localhost", "127.0.0.1", backendHost, frontendHost],
       remotePatterns: [
         {
           protocol: "https",
@@ -38,7 +31,7 @@ function makeConfig() {
         },
         {
           protocol: "https",
-          hostname: "**.selcdn.ru",
+          hostname: "**.vercel.app",
         },
         {
           protocol: "https",
@@ -47,10 +40,6 @@ function makeConfig() {
       ],
     },
   };
-
-  if (serverEnvironment === "icp") {
-    config.output = "export";
-  }
 
   return withBundleAnalyzer(config);
 }

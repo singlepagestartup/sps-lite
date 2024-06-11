@@ -6,9 +6,6 @@ const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{html,js,jsx,tsx}",
-    "./src/**/**/*.{html,js,jsx,tsx}",
-    "./pages/*.{html,js,jsx,tsx}",
-    "./pages/**/*.{html,js,jsx,tsx}",
     "../../libs/**/*.{html,js,ts,jsx,tsx}",
   ],
 } satisfies Config;
