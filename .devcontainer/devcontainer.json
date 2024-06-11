@@ -31,10 +31,10 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "",
+  "postCreateCommand": "npm install",
   "postAttachCommand": {
-    "db": "/bin/bash ./.devcontainer/postAttachCommand.sh db",
-    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend && cd frontend"
+    "db": "",
+    "frontend": ""
   },
 
   // Configure tool-specific properties.
@@ -44,19 +44,18 @@
       "settings": {},
       "extensions": [
         "ms-azuretools.vscode-docker",
-        "dsznajder.es7-react-js-snippets",
         "dbaeumer.vscode-eslint",
         "mhutchie.git-graph",
         "chakrounanas.turbo-console-log",
         "GitHub.copilot",
         "esbenp.prettier-vscode",
-        "MS-vsliveshare.vsliveshare",
         "github.vscode-github-actions",
         "ms-playwright.playwright",
         "bradlc.vscode-tailwindcss",
         "redhat.vscode-yaml",
         "nrwl.angular-console",
-        "firsttris.vscode-jest-runner"
+        "firsttris.vscode-jest-runner",
+        "eamodio.gitlens"
       ]
     }
   }

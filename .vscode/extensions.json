@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "ms-azuretools.vscode-docker",
-    "dsznajder.es7-react-js-snippets",
     "dbaeumer.vscode-eslint",
     "mhutchie.git-graph",
     "chakrounanas.turbo-console-log",
