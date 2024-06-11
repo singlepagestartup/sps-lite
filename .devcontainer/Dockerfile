@@ -2,8 +2,6 @@ FROM mcr.microsoft.com/devcontainers/javascript-node
 
 RUN apt-get update && apt-get install --no-install-recommends -y netcat-traditional
 
-RUN nvm install 20 && nvm use 20
-
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
