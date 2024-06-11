@@ -10,10 +10,10 @@ ports:
     visibility: public
 
 tasks:
-  - name: "bash"
-    init: npm i
   - name: "infrastructure"
     init: cd ./apps/db && ./up.sh && cd ../redis && ./up.sh && cd ../frontend && ./create_env.sh
+  - name: "bash"
+    init: npm i
 
 vscode:
   extensions:
