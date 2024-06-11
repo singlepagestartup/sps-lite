@@ -7,7 +7,6 @@ import { IComponentProps as ILinkComponentProps } from "@sps/sps-website-builder
 import { IComponentProps as IGhostComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-ghost";
 import { IComponentProps as IOutlineComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-outline";
 import { IComponentProps as IDestructiveComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-destructive";
-
 import { IComponentProps as ISecondaryComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-secondary";
 import { IComponentProps as IPrimaryComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-primary";
 import { IComponentProps as IDefaultComponentProps } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-default";

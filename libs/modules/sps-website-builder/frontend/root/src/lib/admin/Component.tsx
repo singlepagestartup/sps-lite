@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
 import {
@@ -8,23 +9,87 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@sps/shadcn";
-import { Component as PageSpsLiteAdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
-import { Component as LayoutSpsLiteAdminTable } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table";
-import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table";
-import { Component as HeroSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table";
-import { Component as NavbarSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table";
-import { Component as FooterSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table";
-import { Component as LogotypeSpsLiteAdminTable } from "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-table";
-import { Component as ButtonSpsLiteAdminTable } from "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-table";
-import { Component as NavbarBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table";
-import { Component as FooterBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table";
-import { Component as SliderBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table";
-import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table";
-import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table";
-import { Component as FeaturesSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table";
-import { Component as ButtonsArraySpsLiteAdminTable } from "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table";
-import { Component as FeaturesSpsLiteAdminTable } from "@sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-admin-table";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+const FeaturesSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const ButtonsArraySpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const SlideSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const SliderSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const SliderBlockSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const FooterBlockSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const NavbarBlockSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const ButtonSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const LogotypeSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const FooterSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const NavbarSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const HeroSectionBlockSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const WidgetSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const LayoutSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
+const PageSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -47,27 +112,12 @@ export function Component(props: IComponentProps) {
         Comp: ButtonsArraySpsLiteAdminTable,
       },
       {
-        name: "checkout-form-block",
-      },
-      {
-        name: "contact-section-block",
-      },
-      {
-        name: "edit-subscription-block",
-      },
-      {
         name: "feature",
         Comp: FeaturesSpsLiteAdminTable,
       },
       {
         name: "features-section-block",
         Comp: FeaturesSectionBlockSpsLiteAdminTable,
-      },
-      {
-        name: "flyout",
-      },
-      {
-        name: "font",
       },
       {
         name: "footer",
@@ -87,9 +137,6 @@ export function Component(props: IComponentProps) {
       },
       {
         name: "loader",
-      },
-      {
-        name: "locale",
       },
       {
         name: "logotype",
@@ -120,23 +167,8 @@ export function Component(props: IComponentProps) {
         Comp: PageSpsLiteAdminTable,
       },
       {
-        name: "products-list-block",
-      },
-      {
-        name: "reviews-list-block",
-      },
-      {
-        name: "shopping-cart-block",
-      },
-      {
-        name: "sidebar",
-      },
-      {
         name: "slide",
         Comp: SlideSpsLiteAdminTable,
-      },
-      {
-        name: "slide-over",
       },
       {
         name: "slider",
@@ -145,15 +177,6 @@ export function Component(props: IComponentProps) {
       {
         name: "slider-block",
         Comp: SliderBlockSpsLiteAdminTable,
-      },
-      {
-        name: "subscription-checkout-form-block",
-      },
-      {
-        name: "theme",
-      },
-      {
-        name: "tiers-list-block",
       },
       {
         name: "topbar",
