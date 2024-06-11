@@ -13,7 +13,7 @@ tasks:
   - name: "bash"
     init: npm i
   - name: "infrastructure"
-    init: ./apps/db/up.sh && ./apps/redis/up.sh && ./apps/frontend/create_env.sh
+    init: cd ./apps/db && ./up.sh && cd ../redis/up.sh && cd ../frontend && ./create_env.sh
 
 vscode:
   extensions:
