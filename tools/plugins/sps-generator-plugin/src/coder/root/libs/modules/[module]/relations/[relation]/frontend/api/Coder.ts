@@ -1,8 +1,23 @@
 import { Tree } from "@nx/devkit";
 import { Coder as FrontendCoder } from "../Coder";
-import { Coder as ClientCoder } from "./client/Coder";
-import { Coder as ServerCoder } from "./server/Coder";
-import { Coder as ModelCoder } from "./model/Coder";
+import {
+  Coder as ClientCoder,
+  IGeneratorProps as IClientCoderGeneratorProps,
+} from "./client/Coder";
+import {
+  Coder as ServerCoder,
+  IGeneratorProps as IServerCoderGeneratorProps,
+} from "./server/Coder";
+import {
+  Coder as ModelCoder,
+  IGeneratorProps as IModelCoderGeneratorProps,
+} from "./model/Coder";
+
+export type IGeneratorProps = {
+  client?: IClientCoderGeneratorProps;
+  server?: IServerCoderGeneratorProps;
+  model?: IModelCoderGeneratorProps;
+};
 
 export class Coder {
   parent: FrontendCoder;
@@ -20,24 +35,27 @@ export class Coder {
     model: ModelCoder;
   };
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
+    this.tree = props.tree;
+    this.parent = props.parent;
     this.name = "api";
-    this.baseName = `${parent.baseName}-api`;
-    this.baseDirectory = `${parent.baseDirectory}/api`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${this.parent.baseName}-api`;
+    this.baseDirectory = `${this.parent.baseDirectory}/api`;
 
     this.project.model = new ModelCoder({
+      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
     this.project.client = new ClientCoder({
+      ...props.client,
       tree: this.tree,
       parent: this,
     });
 
     this.project.server = new ServerCoder({
+      ...props.server,
       tree: this.tree,
       parent: this,
     });

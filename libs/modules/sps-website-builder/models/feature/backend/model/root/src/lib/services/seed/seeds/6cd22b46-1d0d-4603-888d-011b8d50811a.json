@@ -1,0 +1,20 @@
+{
+  "className": "",
+  "description": "",
+  "subtitle": "",
+  "title": "Tailwind",
+  "id": "6cd22b46-1d0d-4603-888d-011b8d50811a",
+  "createdAt": "2024-05-28T00:50:58.278Z",
+  "updatedAt": "2024-05-28T00:50:58.278Z",
+  "variant": "default",
+  "featuresSectionBlocksToFeatures": [
+    {
+      "id": "62e14e83-76b0-4aa2-ad5a-5b4e15aea6dc",
+      "orderIndex": 0,
+      "variant": "default",
+      "className": null,
+      "featuresSectionBlockId": "dba9d293-3328-4b4a-b1eb-2b20c0a5008e",
+      "featureId": "6cd22b46-1d0d-4603-888d-011b8d50811a"
+    }
+  ]
+}

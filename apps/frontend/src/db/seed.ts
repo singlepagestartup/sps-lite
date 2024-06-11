@@ -1,6 +1,7 @@
 import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder-backend-app";
 import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup-backend-app";
 import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage-backend-app";
+import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac-backend-app";
 import { exit } from "process";
 
 (async () => {
@@ -19,6 +20,11 @@ import { exit } from "process";
     seedConfig,
   });
 
+  const spsRbacModuleSeeder = new SpsRbacModuleSeeder({
+    seedResults,
+    seedConfig,
+  });
+
   const startupModuleSeeder = new StartupModuleSeeder({
     seedResults,
     seedConfig,
@@ -30,6 +36,9 @@ import { exit } from "process";
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedModels();
   }
+  if (spsRbacModuleSeeder.config.seed || seedAll) {
+    await spsRbacModuleSeeder.seedModels();
+  }
   if (startupModuleSeeder.config.seed || seedAll) {
     await startupModuleSeeder.seedModels();
   }
@@ -39,6 +48,9 @@ import { exit } from "process";
   }
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedRelations();
+  }
+  if (spsRbacModuleSeeder.config.seed || seedAll) {
+    await spsRbacModuleSeeder.seedRelations();
   }
   if (startupModuleSeeder.config.seed || seedAll) {
     await startupModuleSeeder.seedRelations();

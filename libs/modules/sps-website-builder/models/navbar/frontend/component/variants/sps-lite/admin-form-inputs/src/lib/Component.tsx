@@ -9,10 +9,19 @@ export function Component(props: IComponentPropsExtended) {
     <form
       data-module="sps-website-builder"
       data-model="navbar"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
       <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
+        />
         <FormField
           ui="shadcn"
           type="select"

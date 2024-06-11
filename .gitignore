@@ -110,3 +110,7 @@ tmp
 # Pass modules migrations
 ############################
 !libs/modules/**/migrations/*.sql
+
+# Next.js
+.next
+out

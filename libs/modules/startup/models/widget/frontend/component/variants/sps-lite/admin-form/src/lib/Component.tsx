@@ -16,6 +16,8 @@ import { variants } from "@sps/startup-models-widget-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string().optional(),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +31,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      className: props.data?.className || "",
     },
   });
 
@@ -60,6 +64,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="startup"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.className || ""}
     >

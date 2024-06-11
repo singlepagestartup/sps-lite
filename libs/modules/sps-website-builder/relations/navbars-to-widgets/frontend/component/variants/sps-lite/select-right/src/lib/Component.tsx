@@ -9,11 +9,12 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   navbarId: z.string().min(1),
   widgetId: z.string().min(1),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       navbarId: props.data?.navbarId || props.navbarId,
       widgetId: props.data?.widgetId,
+      className: props.data?.className || "",
     },
   });
 
@@ -69,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="navbars-to-widgets"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >
@@ -82,6 +85,14 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         >
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -97,6 +108,14 @@ export function Component(props: IComponentPropsExtended) {
             Select entity from widgets
           </h3>
           <CardContent>
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               variant="admin-select-input"

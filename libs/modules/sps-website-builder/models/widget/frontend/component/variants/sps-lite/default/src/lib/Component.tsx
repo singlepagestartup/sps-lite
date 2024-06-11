@@ -7,14 +7,17 @@ import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder-rel
 import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component";
 import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component";
 import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component";
+import { Component as WidgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className=""
+      className={cn("w-full flex", props.data.className)}
     >
       {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {
@@ -83,6 +86,16 @@ export function Component(props: IComponentPropsExtended) {
       {props.data.widgetsToSpsFileStorageModuleWidgets.map((entity, index) => {
         return (
           <WidgetsToSpsFileStorageWidgets
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            data={entity}
+          />
+        );
+      })}
+      {props.data.widgetsToSpsRbacModuleWidgets.map((entity, index) => {
+        return (
+          <WidgetsToSpsRbacModuleWidgets
             key={index}
             isServer={props.isServer}
             variant="default"

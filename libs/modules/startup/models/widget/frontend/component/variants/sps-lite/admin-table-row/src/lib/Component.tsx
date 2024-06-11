@@ -24,7 +24,12 @@ export function Component(props: IComponentPropsExtended) {
   }, [deleteEntityResult]);
 
   return (
-    <div data-module="startup" data-model="widget" data-variant={props.variant}>
+    <div
+      data-module="startup"
+      data-model="widget"
+      data-id={props.data?.id || ""}
+      data-variant={props.variant}
+    >
       <ModelEntityCard
         onDeleteEntity={() => {
           if (props.data?.id) {
@@ -36,6 +41,14 @@ export function Component(props: IComponentPropsExtended) {
           <AdminForm isServer={false} variant="admin-form" data={props.data} />
         }
       >
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Title</p>
+          <p className="truncate">{props.data.title}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Class Name</p>
+          <p className="truncate">{props.data.className}</p>
+        </div>
         <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Variant</p>
           <p className="truncate">{props.data.variant}</p>

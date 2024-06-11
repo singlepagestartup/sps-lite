@@ -15,8 +15,9 @@ import { Component as AdminFormInputs } from "@sps/sps-website-builder-models-he
 import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
 
 const formSchema = z.object({
-  title: z.string(),
   variant: z.enum(variants),
+  title: z.string(),
+  subtitle: z.string().optional(),
   description: z.string().optional(),
   className: z.string().optional(),
   anchor: z.string().optional(),
@@ -33,16 +34,13 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
       variant: props.data?.variant || "default",
       description: props.data?.description || "",
       className: props.data?.className || "",
       anchor: props.data?.anchor || "",
     },
   });
-
-  const watchData = form.watch();
-
-  console.log(`🚀 ~ Component ~ watchData:`, watchData);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
@@ -72,6 +70,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="hero-section-block"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.className || ""}
     >

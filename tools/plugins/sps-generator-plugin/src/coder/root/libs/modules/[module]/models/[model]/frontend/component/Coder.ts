@@ -1,7 +1,18 @@
 import { Tree } from "@nx/devkit";
 import { Coder as FrontendCoder } from "../Coder";
-import { Coder as RootCoder } from "./root/Coder";
-import { Coder as VariantCoder } from "./variants/[level]/[variant]/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
+import {
+  Coder as VariantCoder,
+  IGeneratorProps as IVariantCoderGeneratorProps,
+} from "./variants/[level]/[variant]/Coder";
+
+export type IGeneratorProps = {
+  variants?: IVariantCoderGeneratorProps[];
+  root?: IRootCoderGeneratorProps;
+};
 
 export class Coder {
   parent: FrontendCoder;
@@ -11,100 +22,59 @@ export class Coder {
   name: string;
   project: {
     root: RootCoder;
-    variant?: VariantCoder;
+    variants?: VariantCoder[];
   };
 
-  constructor({ parent, tree }: { parent: FrontendCoder; tree: Tree }) {
+  constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "component";
-    this.baseName = `${parent.baseName}-component`;
-    this.baseDirectory = `${parent.baseDirectory}/component`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-component`;
+    this.baseDirectory = `${props.parent.baseDirectory}/component`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     const root = new RootCoder({
+      ...props.root,
       tree: this.tree,
       parent: this,
     });
 
     this.project = {
       root,
-      variant: undefined,
+      variants: [] as VariantCoder[],
     };
+
+    if (props.variants) {
+      this.project.variants = props.variants.map((variant) => {
+        return new VariantCoder({
+          ...variant,
+          tree: this.tree,
+          parent: this,
+        });
+      });
+    }
   }
 
   async update() {
     await this.project.root.update();
-    await this.project.variant?.update();
+
+    for (const variant of this.project.variants) {
+      await variant.update();
+    }
   }
 
   async create() {
     await this.project.root.create();
+
+    for (const variant of this.project.variants) {
+      await variant.create();
+    }
   }
 
   async remove() {
+    for (const variant of this.project.variants) {
+      await variant.remove();
+    }
+
     await this.project.root.remove();
-  }
-
-  async createVariant({
-    variantName,
-    variantLevel,
-    templateName,
-  }: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    const variant = new VariantCoder({
-      tree: this.tree,
-      parent: this,
-      name: variantName,
-      level: variantLevel,
-      template: templateName,
-    });
-
-    this.project.variant = variant;
-
-    await this.project.variant.create();
-
-    const rootBaseDirectory = this.baseDirectory;
-    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
-    const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
-    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
-
-    await this.project.variant.attach({
-      variantsPath: rootVariantsPath,
-      interfacePath: rootInterfacePath,
-      indexScssPath: rootScssPath,
-    });
-  }
-
-  async removeVariant({
-    variantName,
-    variantLevel,
-  }: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    const variant = new VariantCoder({
-      tree: this.tree,
-      parent: this,
-      name: variantName,
-      level: variantLevel,
-    });
-
-    this.project.variant = variant;
-
-    await this.project.variant.remove();
-
-    const rootBaseDirectory = this.baseDirectory;
-    const rootVariantsPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/variants.ts`;
-    const rootInterfacePath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/interface.ts`;
-    const rootScssPath = `${rootBaseDirectory}/root/src/lib/${variantLevel}/_index.scss`;
-
-    await this.project.variant.detach({
-      variantsPath: rootVariantsPath,
-      interfacePath: rootInterfacePath,
-      indexScssPath: rootScssPath,
-    });
   }
 }

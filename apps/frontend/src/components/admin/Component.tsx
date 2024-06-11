@@ -1,10 +1,20 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { AdminComponent as SpsWebsiteAdminComponent } from "@sps/sps-website-builder-frontend";
-import { AdminComponent as StartupAdminComponent } from "@sps/startup-frontend";
-import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage-frontend";
+const SpsWebsiteAdminComponent = dynamic(() =>
+  import("@sps/sps-website-builder-frontend").then((mod) => mod.AdminComponent),
+);
+const StartupAdminComponent = dynamic(() =>
+  import("@sps/startup-frontend").then((mod) => mod.AdminComponent),
+);
+const SpsFileStorageAdminComponent = dynamic(() =>
+  import("@sps/sps-file-storage-frontend").then((mod) => mod.AdminComponent),
+);
+const SpsRbacAdminComponent = dynamic(() =>
+  import("@sps/sps-rbac-frontend").then((mod) => mod.AdminComponent),
+);
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -27,6 +37,13 @@ export function Component(props: IComponentPropsExtended) {
                 setWidget("sps-file-storage");
               }}
               active={widget === "sps-file-storage"}
+            />
+            <Button
+              title="sps-rbac"
+              onClick={() => {
+                setWidget("sps-rbac");
+              }}
+              active={widget === "sps-rbac"}
             />
             <Button
               title="startup"
@@ -53,6 +70,13 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
             {widget === "startup" ? (
               <StartupAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-rbac" ? (
+              <SpsRbacAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"

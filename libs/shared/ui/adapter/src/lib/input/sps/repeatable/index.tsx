@@ -1,547 +1,551 @@
-"use client";
+// "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useFieldArray, useFormContext } from "react-hook-form";
-import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
-// import { useTranslations } from "@sps/hooks";
-import { Input } from "../../input";
-import { getInputErrors } from "../get-input-errors";
-import { useGetStringProps } from "../use-get-string-props";
+// import { useEffect, useMemo, useState } from "react";
+// import { useFieldArray, useFormContext } from "react-hook-form";
+// import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
+// // import { useTranslations } from "@sps/hooks";
+// // import { Input } from "../../input";
+// import { getInputErrors } from "../get-input-errors";
+// import { useGetStringProps } from "../use-get-string-props";
 
-export interface IInsideComponentProps {
-  translate?: (message: string) => string;
-  parentKey?: string;
-  baseKey: string;
-  control: any;
-  field: any;
-  fieldIndex: number;
-  snakeToCamel: (str: string) => string;
-  globalErrors: any;
-  initialValue: any;
-  remove: (index: number) => void;
-  append: (value: any) => void;
-}
+// const Input = () => {
+//   return <div>Input</div>;
+// };
 
-function camelToSnake(name: string) {
-  return name.replace(/([A-Z])/g, function ($1) {
-    return "_" + $1.toLowerCase();
-  });
-}
+// export interface IInsideComponentProps {
+//   translate?: (message: string) => string;
+//   parentKey?: string;
+//   baseKey: string;
+//   control: any;
+//   field: any;
+//   fieldIndex: number;
+//   snakeToCamel: (str: string) => string;
+//   globalErrors: any;
+//   initialValue: any;
+//   remove: (index: number) => void;
+//   append: (value: any) => void;
+// }
 
-function snakeToCamel(str: string) {
-  return str
-    .toLowerCase()
-    .replace(/([-_][a-z])/g, (group) =>
-      group.toUpperCase().replace("-", "").replace("_", ""),
-    );
-}
+// function camelToSnake(name: string) {
+//   return name.replace(/([A-Z])/g, function ($1) {
+//     return "_" + $1.toLowerCase();
+//   });
+// }
 
-function camelCaseKeysToSnake(obj: any) {
-  // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
-  if (typeof obj != "object") return obj;
+// function snakeToCamel(str: string) {
+//   return str
+//     .toLowerCase()
+//     .replace(/([-_][a-z])/g, (group) =>
+//       group.toUpperCase().replace("-", "").replace("_", ""),
+//     );
+// }
 
-  if (Array.isArray(obj)) {
-    const newObj = [] as any;
+// function camelCaseKeysToSnake(obj: any) {
+//   // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
+//   if (typeof obj != "object") return obj;
 
-    for (const objItem of obj) {
-      const snaked = camelCaseKeysToSnake(objItem);
-      newObj.push(snaked);
-    }
+//   if (Array.isArray(obj)) {
+//     const newObj = [] as any;
 
-    return newObj;
-  } else {
-    // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
-    const newObj = { ...obj };
-    for (const oldName in newObj) {
-      // console.log(`🚀 ~ camelCaseKeysToSnake ~ oldName`, oldName);
-      // Camel to underscore
-      const newName = camelToSnake(oldName);
+//     for (const objItem of obj) {
+//       const snaked = camelCaseKeysToSnake(objItem);
+//       newObj.push(snaked);
+//     }
 
-      // Only process if names are different
-      if (newName != oldName) {
-        // Check for the old property name to avoid a ReferenceError in strict mode.
-        if (newObj.hasOwnProperty(oldName)) {
-          newObj[newName] = newObj[oldName];
-          delete newObj[oldName];
-        }
-      }
+//     return newObj;
+//   } else {
+//     // console.log(`🚀 ~ camelCaseKeysToSnake ~ obj`, obj);
+//     const newObj = { ...obj };
+//     for (const oldName in newObj) {
+//       // console.log(`🚀 ~ camelCaseKeysToSnake ~ oldName`, oldName);
+//       // Camel to underscore
+//       const newName = camelToSnake(oldName);
 
-      // Recursion
-      if (typeof newObj[newName] == "object") {
-        newObj[newName] = camelCaseKeysToSnake(newObj[newName]);
-      }
-    }
-    // console.log(`🚀 ~ camelCaseKeysToSnake ~ newObj`, newObj);
+//       // Only process if names are different
+//       if (newName != oldName) {
+//         // Check for the old property name to avoid a ReferenceError in strict mode.
+//         if (newObj.hasOwnProperty(oldName)) {
+//           newObj[newName] = newObj[oldName];
+//           delete newObj[oldName];
+//         }
+//       }
 
-    return newObj;
-  }
-}
+//       // Recursion
+//       if (typeof newObj[newName] == "object") {
+//         newObj[newName] = camelCaseKeysToSnake(newObj[newName]);
+//       }
+//     }
+//     // console.log(`🚀 ~ camelCaseKeysToSnake ~ newObj`, newObj);
 
-function oldRemoveUnnecessaryKeys(obj: any, inputs: any) {
-  console.log("🚀 ~ removeUnnecessaryKeys ~ inputs", inputs, obj);
+//     return newObj;
+//   }
+// }
 
-  return JSON.parse(
-    JSON.stringify(obj, (k, v) => {
-      console.log("🚀 ~ JSON.stringify ~ k, v", k, v);
+// function oldRemoveUnnecessaryKeys(obj: any, inputs: any) {
+//   console.log("🚀 ~ removeUnnecessaryKeys ~ inputs", inputs, obj);
 
-      return k === "id" ? undefined : v;
-    }),
-  );
-}
+//   return JSON.parse(
+//     JSON.stringify(obj, (k, v) => {
+//       console.log("🚀 ~ JSON.stringify ~ k, v", k, v);
 
-/**
- * Removes id in objects, if they are in components, or not passed to
- * input with by="id"
- */
-function removeUnnecessaryKeys(obj: any, keys = ["id"], inputs: any): any {
-  let newObj: any;
-  if (Array.isArray(obj)) {
-    newObj = [...obj];
-  } else {
-    newObj = { ...obj };
-  }
+//       return k === "id" ? undefined : v;
+//     }),
+//   );
+// }
 
-  if (Array.isArray(newObj)) {
-    return newObj.map(function (item) {
-      return removeUnnecessaryKeys(item, keys, inputs);
-    });
-  } else if (typeof newObj === "object" && newObj != null) {
-    Object.getOwnPropertyNames(newObj).forEach(function (key) {
-      const currentInput = inputs.find((input: any) => {
-        if (input?.name === key) {
-          return true;
-        }
-      });
-      let removeKeys = [...keys];
+// /**
+//  * Removes id in objects, if they are in components, or not passed to
+//  * input with by="id"
+//  */
+// function removeUnnecessaryKeys(obj: any, keys = ["id"], inputs: any): any {
+//   let newObj: any;
+//   if (Array.isArray(obj)) {
+//     newObj = [...obj];
+//   } else {
+//     newObj = { ...obj };
+//   }
 
-      if (currentInput && currentInput.by) {
-        removeKeys = removeKeys.filter((key) => key !== currentInput.by);
-      }
+//   if (Array.isArray(newObj)) {
+//     return newObj.map(function (item) {
+//       return removeUnnecessaryKeys(item, keys, inputs);
+//     });
+//   } else if (typeof newObj === "object" && newObj != null) {
+//     Object.getOwnPropertyNames(newObj).forEach(function (key) {
+//       const currentInput = inputs.find((input: any) => {
+//         if (input?.name === key) {
+//           return true;
+//         }
+//       });
+//       let removeKeys = [...keys];
 
-      if (removeKeys.includes(key)) {
-        delete newObj[key];
-      } else if (typeof newObj[key] === "object") {
-        const passInput = currentInput?.inputs
-          ? currentInput?.inputs
-          : [currentInput];
+//       if (currentInput && currentInput.by) {
+//         removeKeys = removeKeys.filter((key) => key !== currentInput.by);
+//       }
 
-        newObj[key] = removeUnnecessaryKeys(newObj[key], removeKeys, passInput);
-      }
-    });
+//       if (removeKeys.includes(key)) {
+//         delete newObj[key];
+//       } else if (typeof newObj[key] === "object") {
+//         const passInput = currentInput?.inputs
+//           ? currentInput?.inputs
+//           : [currentInput];
 
-    return newObj;
-  }
-}
+//         newObj[key] = removeUnnecessaryKeys(newObj[key], removeKeys, passInput);
+//       }
+//     });
 
-export default function RepeatableInput(props: any) {
-  // console.log(`🚀 ~ RepeatableInput ~ props`, props);
-  const {
-    label,
-    name,
-    rules,
-    shouldUnregister,
-    initialValue,
-    placeholder,
-    className,
-    inputConfig,
-    inputs,
-    parentKey,
-    baseKey = props.name,
-    removeButtonTitle,
-    addButtonTitle,
-    InsideComponent,
-    onAppend,
-    onRemove,
-  } = props;
+//     return newObj;
+//   }
+// }
 
-  const translate: any = null;
-  const [initWasSet, setInitWasSet] = useState<boolean>(false);
+// export default function RepeatableInput(props: any) {
+//   // console.log(`🚀 ~ RepeatableInput ~ props`, props);
+//   const {
+//     label,
+//     name,
+//     rules,
+//     shouldUnregister,
+//     initialValue,
+//     placeholder,
+//     className,
+//     inputConfig,
+//     inputs,
+//     parentKey,
+//     baseKey = props.name,
+//     removeButtonTitle,
+//     addButtonTitle,
+//     InsideComponent,
+//     onAppend,
+//     onRemove,
+//   } = props;
 
-  const htmlNodeId = useMemo(() => {
-    return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
-  }, [name]);
+//   const translate: any = null;
+//   const [initWasSet, setInitWasSet] = useState<boolean>(false);
 
-  const {
-    control,
-    watch,
-    trigger,
-    formState,
-    formState: { errors },
-    setError,
-    clearErrors,
-  } = useFormContext();
+//   const htmlNodeId = useMemo(() => {
+//     return name.replace(/\[/g, "_").replace(/\]/g, "_").replace(/\./g, "_");
+//   }, [name]);
 
-  const stringProps = useGetStringProps(props);
+//   const {
+//     control,
+//     watch,
+//     trigger,
+//     formState,
+//     formState: { errors },
+//     setError,
+//     clearErrors,
+//   } = useFormContext();
 
-  const {
-    fields,
-    append,
-    prepend,
-    remove,
-    update,
-    replace,
-    swap,
-    move,
-    insert,
-  } = useFieldArray({
-    control,
-    name,
-    rules,
-  });
+//   const stringProps = useGetStringProps(props);
 
-  const watchData = watch();
+//   const {
+//     fields,
+//     append,
+//     prepend,
+//     remove,
+//     update,
+//     replace,
+//     swap,
+//     move,
+//     insert,
+//   } = useFieldArray({
+//     control,
+//     name,
+//     rules,
+//   });
 
-  useEffect(() => {
-    /**
-     * When component renders validation isn't working
-     * before you add first item to array
-     */
-    if (rules?.minLength && watchData && watchData[name]) {
-      const inputErrors = errors[name];
+//   const watchData = watch();
 
-      if (
-        watchData[name].length < (rules?.minLength?.value || rules?.minLength)
-      ) {
-        if (!inputErrors) {
-          setError(name, {
-            type: "minLength",
-            message: rules.minLength?.message || "Lenth is wrong",
-          });
-        }
-      } else if (
-        watchData[name].length >= (rules?.minLength?.value || rules?.minLength)
-      ) {
-        if (inputErrors?.type === "minLength") {
-          clearErrors(name);
-          // console.log(`🚀 ~ useEffect ~ watchData[name]`, watchData[name]);
-        }
-      }
-    }
-  }, [rules, watchData]);
+//   useEffect(() => {
+//     /**
+//      * When component renders validation isn't working
+//      * before you add first item to array
+//      */
+//     if (rules?.minLength && watchData && watchData[name]) {
+//       const inputErrors = errors[name];
 
-  useEffect(() => {
-    if (initialValue) {
-      // console.log("🚀 ~ useEffect ~ inputs:", inputs);
+//       if (
+//         watchData[name].length < (rules?.minLength?.value || rules?.minLength)
+//       ) {
+//         if (!inputErrors) {
+//           setError(name, {
+//             type: "minLength",
+//             message: rules.minLength?.message || "Lenth is wrong",
+//           });
+//         }
+//       } else if (
+//         watchData[name].length >= (rules?.minLength?.value || rules?.minLength)
+//       ) {
+//         if (inputErrors?.type === "minLength") {
+//           clearErrors(name);
+//           // console.log(`🚀 ~ useEffect ~ watchData[name]`, watchData[name]);
+//         }
+//       }
+//     }
+//   }, [rules, watchData]);
 
-      const resInputs = [] as any;
+//   useEffect(() => {
+//     if (initialValue) {
+//       // console.log("🚀 ~ useEffect ~ inputs:", inputs);
 
-      for (const [inputIndex, initValue] of initialValue.entries()) {
-        const passToComponentInitialValue = {} as any;
+//       const resInputs = [] as any;
 
-        for (const input of inputs) {
-          /**
-           * initValue[input.name] is for 1 word keys for example "name"
-           * initValue[snakeToCamel(input.name)] is for many words keys
-           * for example postalCode on backend, but input key should be
-           * postal_code
-           */
-          if (
-            initValue[input.name] !== undefined ||
-            initValue[snakeToCamel(input.name)] !== undefined
-          ) {
-            if (input.component === "file") {
-              // adding near Inputs component
-            } else {
-              if (
-                initValue[input.name] !== undefined &&
-                initValue[input.name] !== null
-              ) {
-                passToComponentInitialValue[input.name] = initValue[input.name];
-              } else if (
-                initValue[snakeToCamel(input.name)] !== undefined &&
-                initValue[snakeToCamel(input.name)] !== null
-              ) {
-                passToComponentInitialValue[input.name] =
-                  initValue[snakeToCamel(input.name)];
-              }
-            }
-          }
-        }
+//       for (const [inputIndex, initValue] of initialValue.entries()) {
+//         const passToComponentInitialValue = {} as any;
 
-        const removeKeys = ["id"].filter((key) => {
-          return !inputs.find((input: any) => {
-            if (input?.name === key) {
-              return true;
-            }
-          });
-        });
+//         for (const input of inputs) {
+//           /**
+//            * initValue[input.name] is for 1 word keys for example "name"
+//            * initValue[snakeToCamel(input.name)] is for many words keys
+//            * for example postalCode on backend, but input key should be
+//            * postal_code
+//            */
+//           if (
+//             initValue[input.name] !== undefined ||
+//             initValue[snakeToCamel(input.name)] !== undefined
+//           ) {
+//             if (input.component === "file") {
+//               // adding near Inputs component
+//             } else {
+//               if (
+//                 initValue[input.name] !== undefined &&
+//                 initValue[input.name] !== null
+//               ) {
+//                 passToComponentInitialValue[input.name] = initValue[input.name];
+//               } else if (
+//                 initValue[snakeToCamel(input.name)] !== undefined &&
+//                 initValue[snakeToCamel(input.name)] !== null
+//               ) {
+//                 passToComponentInitialValue[input.name] =
+//                   initValue[snakeToCamel(input.name)];
+//               }
+//             }
+//           }
+//         }
 
-        const clearedPass = camelCaseKeysToSnake(
-          removeUnnecessaryKeys(
-            passToComponentInitialValue,
-            removeKeys,
-            inputs,
-          ),
-        );
+//         const removeKeys = ["id"].filter((key) => {
+//           return !inputs.find((input: any) => {
+//             if (input?.name === key) {
+//               return true;
+//             }
+//           });
+//         });
 
-        resInputs.push(clearedPass);
-      }
+//         const clearedPass = camelCaseKeysToSnake(
+//           removeUnnecessaryKeys(
+//             passToComponentInitialValue,
+//             removeKeys,
+//             inputs,
+//           ),
+//         );
 
-      // Update or append not working correctly
-      replace(resInputs);
-    }
-  }, [JSON.stringify(initialValue), JSON.stringify(inputs)]);
+//         resInputs.push(clearedPass);
+//       }
 
-  const inputError = getInputErrors(errors)(name);
+//       // Update or append not working correctly
+//       replace(resInputs);
+//     }
+//   }, [JSON.stringify(initialValue), JSON.stringify(inputs)]);
 
-  const emptyValues = useMemo(() => {
-    const initValues = {} as any;
+//   const inputError = getInputErrors(errors)(name);
 
-    if (!baseKey) {
-      return initValues;
-    }
+//   const emptyValues = useMemo(() => {
+//     const initValues = {} as any;
 
-    inputs.map((input: any, index: number) => {
-      initValues[input.name] = input.initialValue;
-    });
+//     if (!baseKey) {
+//       return initValues;
+//     }
 
-    return initValues;
-  }, [baseKey, inputs]);
+//     inputs.map((input: any, index: number) => {
+//       initValues[input.name] = input.initialValue;
+//     });
 
-  if (!baseKey) {
-    return <></>;
-  }
+//     return initValues;
+//   }, [baseKey, inputs]);
 
-  return (
-    <div
-      {...stringProps}
-      data-ui="input"
-      data-ui-variant="repeatable"
-      className={className || ""}
-    >
-      {label ? (
-        <div className="input-label">
-          <label htmlFor={htmlNodeId}>
-            {typeof translate === "function" && label
-              ? translate(label)
-              : label}
-          </label>
-        </div>
-      ) : null}
-      <div id={htmlNodeId} className="input-container">
-        {fields.map((field: any, fieldIndex: number) => {
-          return (
-            <div className="repeatable-inputs" key={field.id}>
-              {inputs.map((input: any, index: number) => {
-                return (
-                  <InsideInput
-                    key={index}
-                    watchData={watchData}
-                    control={control}
-                    errors={errors}
-                    input={input}
-                    parentKey={parentKey}
-                    baseKey={baseKey}
-                    fieldIndex={fieldIndex}
-                    initialValue={initialValue}
-                  />
-                );
-              })}
-              {/* {inputs.map((input: any, index: number) => {
-                const additionalPropsForInput = {} as any;
+//   if (!baseKey) {
+//     return <></>;
+//   }
 
-                const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
-                  baseKey,
-                )}[${fieldIndex}].${input.name}`;
+//   return (
+//     <div
+//       {...stringProps}
+//       data-ui="input"
+//       data-ui-variant="repeatable"
+//       className={className || ""}
+//     >
+//       {label ? (
+//         <div className="input-label">
+//           <label htmlFor={htmlNodeId}>
+//             {typeof translate === "function" && label
+//               ? translate(label)
+//               : label}
+//           </label>
+//         </div>
+//       ) : null}
+//       <div id={htmlNodeId} className="input-container">
+//         {fields.map((field: any, fieldIndex: number) => {
+//           return (
+//             <div className="repeatable-inputs" key={field.id}>
+//               {inputs.map((input: any, index: number) => {
+//                 return (
+//                   <InsideInput
+//                     key={index}
+//                     watchData={watchData}
+//                     control={control}
+//                     errors={errors}
+//                     input={input}
+//                     parentKey={parentKey}
+//                     baseKey={baseKey}
+//                     fieldIndex={fieldIndex}
+//                     initialValue={initialValue}
+//                   />
+//                 );
+//               })}
+//               {/* {inputs.map((input: any, index: number) => {
+//                 const additionalPropsForInput = {} as any;
 
-                const parentKeyName = `${
-                  parentKey ? `${parentKey}.` : ""
-                }${String(baseKey)}[${fieldIndex}]`;
+//                 const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
+//                   baseKey,
+//                 )}[${fieldIndex}].${input.name}`;
 
-                if (initialValue?.length) {
-                  for (const [
-                    initialIndex,
-                    initValue,
-                  ] of initialValue.entries()) {
-                    // The second and others renders will get data from watchData
-                    if (watchData?.[baseKey]?.[fieldIndex]) {
-                      const watchInputData =
-                        watchData[baseKey][fieldIndex][input.name];
+//                 const parentKeyName = `${
+//                   parentKey ? `${parentKey}.` : ""
+//                 }${String(baseKey)}[${fieldIndex}]`;
 
-                      additionalPropsForInput.initialValue = watchInputData;
-                    } else if (
-                      // Just for the first render
-                      initialIndex === fieldIndex &&
-                      (initValue[input.name] !== undefined ||
-                        initValue[snakeToCamel(input.name)] !== undefined)
-                    ) {
-                      const initInputData =
-                        initValue[input.name] ||
-                        initValue[snakeToCamel(input.name)];
+//                 if (initialValue?.length) {
+//                   for (const [
+//                     initialIndex,
+//                     initValue,
+//                   ] of initialValue.entries()) {
+//                     // The second and others renders will get data from watchData
+//                     if (watchData?.[baseKey]?.[fieldIndex]) {
+//                       const watchInputData =
+//                         watchData[baseKey][fieldIndex][input.name];
 
-                      additionalPropsForInput.initialValue = initInputData;
-                    }
-                  }
-                }
+//                       additionalPropsForInput.initialValue = watchInputData;
+//                     } else if (
+//                       // Just for the first render
+//                       initialIndex === fieldIndex &&
+//                       (initValue[input.name] !== undefined ||
+//                         initValue[snakeToCamel(input.name)] !== undefined)
+//                     ) {
+//                       const initInputData =
+//                         initValue[input.name] ||
+//                         initValue[snakeToCamel(input.name)];
 
-                return (
-                  <Input
-                    key={index}
-                    {...input}
-                    {...additionalPropsForInput}
-                    translate={translate}
-                    name={inputName}
-                    parentKey={parentKeyName}
-                    baseKey={input.name}
-                    control={control}
-                    globalErrors={errors}
-                  />
-                );
-              })} */}
+//                       additionalPropsForInput.initialValue = initInputData;
+//                     }
+//                   }
+//                 }
 
-              {InsideComponent ? (
-                <InsideComponent
-                  translate={translate}
-                  parentKey={parentKey}
-                  baseKey={baseKey}
-                  control={control}
-                  field={field}
-                  fieldIndex={fieldIndex}
-                  snakeToCamel={snakeToCamel}
-                  globalErrors={errors}
-                  initialValue={initialValue}
-                  remove={remove}
-                  append={append}
-                />
-              ) : null}
+//                 return (
+//                   <Input
+//                     key={index}
+//                     {...input}
+//                     {...additionalPropsForInput}
+//                     translate={translate}
+//                     name={inputName}
+//                     parentKey={parentKeyName}
+//                     baseKey={input.name}
+//                     control={control}
+//                     globalErrors={errors}
+//                   />
+//                 );
+//               })} */}
 
-              <div
-                role="button"
-                onClick={() => {
-                  remove(fieldIndex);
+//               {InsideComponent ? (
+//                 <InsideComponent
+//                   translate={translate}
+//                   parentKey={parentKey}
+//                   baseKey={baseKey}
+//                   control={control}
+//                   field={field}
+//                   fieldIndex={fieldIndex}
+//                   snakeToCamel={snakeToCamel}
+//                   globalErrors={errors}
+//                   initialValue={initialValue}
+//                   remove={remove}
+//                   append={append}
+//                 />
+//               ) : null}
 
-                  if (typeof onRemove === "function") {
-                    onRemove({ fieldIndex });
-                  }
-                }}
-                className="button-remove-input"
-              >
-                <TrashIcon />
-                <p>
-                  {removeButtonTitle !== undefined
-                    ? typeof translate === "function"
-                      ? translate(removeButtonTitle)
-                      : removeButtonTitle
-                    : `${
-                        typeof translate === "function"
-                          ? translate("Delete")
-                          : "Delete"
-                      } ${label !== undefined ? label : ""}`}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+//               <div
+//                 role="button"
+//                 onClick={() => {
+//                   remove(fieldIndex);
 
-        <div
-          role="button"
-          onClick={() => {
-            append(emptyValues);
+//                   if (typeof onRemove === "function") {
+//                     onRemove({ fieldIndex });
+//                   }
+//                 }}
+//                 className="button-remove-input"
+//               >
+//                 <TrashIcon />
+//                 <p>
+//                   {removeButtonTitle !== undefined
+//                     ? typeof translate === "function"
+//                       ? translate(removeButtonTitle)
+//                       : removeButtonTitle
+//                     : `${
+//                         typeof translate === "function"
+//                           ? translate("Delete")
+//                           : "Delete"
+//                       } ${label !== undefined ? label : ""}`}
+//                 </p>
+//               </div>
+//             </div>
+//           );
+//         })}
 
-            if (typeof onAppend === "function") {
-              onAppend({ fieldIndex: fields.length || 0 });
-            }
-          }}
-          className="button-add-input"
-        >
-          <PlusIcon />
-          <p>
-            {addButtonTitle !== undefined
-              ? typeof translate === "function"
-                ? translate(addButtonTitle)
-                : addButtonTitle
-              : `${
-                  typeof translate === "function" ? translate("Add") : "Add"
-                } ${label !== undefined ? label : ""}`}
-          </p>
-        </div>
-      </div>
-      {inputError?.message ? (
-        <div className="input-error">
-          <p>
-            {typeof translate === "function"
-              ? translate(inputError.message)
-              : inputError.message}
-          </p>
-        </div>
-      ) : null}
-    </div>
-  );
-}
+//         <div
+//           role="button"
+//           onClick={() => {
+//             append(emptyValues);
 
-function InsideInput({
-  parentKey,
-  baseKey,
-  fieldIndex,
-  input,
-  initialValue,
-  watchData,
-  control,
-  errors,
-}: {
-  parentKey: string | undefined;
-  baseKey: string;
-  fieldIndex: number;
-  input: any;
-  initialValue: any;
-  watchData: any;
-  control: any;
-  errors: any;
-}) {
-  const translate: any = null;
-  const [additionalPropsForInput, setAdditionalPropsForInput] = useState<any>(
-    {},
-  );
+//             if (typeof onAppend === "function") {
+//               onAppend({ fieldIndex: fields.length || 0 });
+//             }
+//           }}
+//           className="button-add-input"
+//         >
+//           <PlusIcon />
+//           <p>
+//             {addButtonTitle !== undefined
+//               ? typeof translate === "function"
+//                 ? translate(addButtonTitle)
+//                 : addButtonTitle
+//               : `${
+//                   typeof translate === "function" ? translate("Add") : "Add"
+//                 } ${label !== undefined ? label : ""}`}
+//           </p>
+//         </div>
+//       </div>
+//       {inputError?.message ? (
+//         <div className="input-error">
+//           <p>
+//             {typeof translate === "function"
+//               ? translate(inputError.message)
+//               : inputError.message}
+//           </p>
+//         </div>
+//       ) : null}
+//     </div>
+//   );
+// }
 
-  const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
-    baseKey,
-  )}[${fieldIndex}].${input.name}`;
+// function InsideInput({
+//   parentKey,
+//   baseKey,
+//   fieldIndex,
+//   input,
+//   initialValue,
+//   watchData,
+//   control,
+//   errors,
+// }: {
+//   parentKey: string | undefined;
+//   baseKey: string;
+//   fieldIndex: number;
+//   input: any;
+//   initialValue: any;
+//   watchData: any;
+//   control: any;
+//   errors: any;
+// }) {
+//   const translate: any = null;
+//   const [additionalPropsForInput, setAdditionalPropsForInput] = useState<any>(
+//     {},
+//   );
 
-  const parentKeyName = `${parentKey ? `${parentKey}.` : ""}${String(
-    baseKey,
-  )}[${fieldIndex}]`;
+//   const inputName = `${parentKey ? `${parentKey}.` : ""}${String(
+//     baseKey,
+//   )}[${fieldIndex}].${input.name}`;
 
-  useMemo(() => {
-    if (initialValue?.length) {
-      for (const [initialIndex, initValue] of initialValue.entries()) {
-        // The second and others renders will get data from watchData
-        if (watchData?.[baseKey]?.[fieldIndex]) {
-          const watchInputData = watchData[baseKey][fieldIndex][input.name];
+//   const parentKeyName = `${parentKey ? `${parentKey}.` : ""}${String(
+//     baseKey,
+//   )}[${fieldIndex}]`;
 
-          // additionalPropsForInput.initialValue = watchInputData;
-          setAdditionalPropsForInput({
-            ...additionalPropsForInput,
-            initialValue: watchInputData,
-          });
-        } else if (
-          // Just for the first render
-          initialIndex === fieldIndex &&
-          (initValue[input.name] !== undefined ||
-            initValue[snakeToCamel(input.name)] !== undefined)
-        ) {
-          const initInputData =
-            initValue[input.name] || initValue[snakeToCamel(input.name)];
+//   useMemo(() => {
+//     if (initialValue?.length) {
+//       for (const [initialIndex, initValue] of initialValue.entries()) {
+//         // The second and others renders will get data from watchData
+//         if (watchData?.[baseKey]?.[fieldIndex]) {
+//           const watchInputData = watchData[baseKey][fieldIndex][input.name];
 
-          // additionalPropsForInput.initialValue = initInputData;
-          setAdditionalPropsForInput({
-            ...additionalPropsForInput,
-            initialValue: initInputData,
-          });
-        }
-      }
-    }
-  }, [JSON.stringify(initialValue)]);
+//           // additionalPropsForInput.initialValue = watchInputData;
+//           setAdditionalPropsForInput({
+//             ...additionalPropsForInput,
+//             initialValue: watchInputData,
+//           });
+//         } else if (
+//           // Just for the first render
+//           initialIndex === fieldIndex &&
+//           (initValue[input.name] !== undefined ||
+//             initValue[snakeToCamel(input.name)] !== undefined)
+//         ) {
+//           const initInputData =
+//             initValue[input.name] || initValue[snakeToCamel(input.name)];
 
-  return (
-    <Input
-      {...input}
-      {...additionalPropsForInput}
-      translate={translate}
-      name={inputName}
-      parentKey={parentKeyName}
-      baseKey={input.name}
-      control={control}
-      globalErrors={errors}
-    />
-  );
-}
+//           // additionalPropsForInput.initialValue = initInputData;
+//           setAdditionalPropsForInput({
+//             ...additionalPropsForInput,
+//             initialValue: initInputData,
+//           });
+//         }
+//       }
+//     }
+//   }, [JSON.stringify(initialValue)]);
+
+//   return (
+//     <Input
+//       {...input}
+//       {...additionalPropsForInput}
+//       translate={translate}
+//       name={inputName}
+//       parentKey={parentKeyName}
+//       baseKey={input.name}
+//       control={control}
+//       globalErrors={errors}
+//     />
+//   );
+// }

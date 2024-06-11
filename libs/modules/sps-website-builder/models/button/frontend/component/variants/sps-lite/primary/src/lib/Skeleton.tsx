@@ -4,11 +4,12 @@ import { IComponentProps } from "./interface";
 export function Skeleton(props: IComponentProps) {
   return (
     <Button
-      ui="sps"
+      ui="shadcn"
       data-module="sps-website-builder"
       data-model="elements.button"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      data-ui-variant={props.data.variant}
+      variant={props.data.variant}
       className={`${props.data.className || "w-full"}`}
       {...(props.data.url ? { url: props.data.url } : {})}
       {...(props.onClick ? { onClick: props.onClick } : {})}

@@ -1,0 +1,29 @@
+{
+  "id": "e461f61f-ea28-4258-a7b4-b5d606c478fd",
+  "title": "Login page",
+  "url": "/login",
+  "description": "Description",
+  "createdAt": "2024-06-01T03:37:38.601Z",
+  "updatedAt": "2024-06-01T03:37:38.601Z",
+  "variant": "default",
+  "pagesToWidgets": [
+    {
+      "id": "a13b4cd1-639e-4f47-bf8d-602f92d82641",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "e461f61f-ea28-4258-a7b4-b5d606c478fd",
+      "widgetId": "17859dcf-d1ca-49a3-ac63-d7b841458ec3"
+    }
+  ],
+  "pagesToLayouts": [
+    {
+      "id": "c7cb8ddd-98f7-4014-be8e-278a829a664f",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "e461f61f-ea28-4258-a7b4-b5d606c478fd",
+      "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604"
+    }
+  ]
+}

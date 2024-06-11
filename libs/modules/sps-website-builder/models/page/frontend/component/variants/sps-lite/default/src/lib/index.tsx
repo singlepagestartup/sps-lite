@@ -3,7 +3,7 @@ import Server from "./server";
 import { ReduxProvider } from "@sps/sps-website-builder-models-page-frontend-redux";
 
 export function Component(props: IComponentPropsExtended) {
-  const Comp = Server;
+  const Comp: any = Server;
 
   return (
     <ReduxProvider>

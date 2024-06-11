@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { Tree, formatFiles } from "@nx/devkit";
 import { RelationGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -12,18 +12,36 @@ export async function relationGenerator(
 
   const coder = new Coder({
     tree,
-    moduleName,
-    models: [
-      {
-        name: options.left_model_name,
-        isExternal: options.left_model_is_external,
+    root: {
+      libs: {
+        modules: [
+          {
+            module: {
+              name: moduleName,
+              models: [
+                {
+                  model: {
+                    name: options.left_model_name,
+                    isExternal: options.left_model_is_external,
+                  },
+                },
+                {
+                  model: {
+                    name: options.right_model_name,
+                    isExternal: options.right_model_is_external,
+                  },
+                },
+              ],
+              relations: [
+                {
+                  relation: {},
+                },
+              ],
+            },
+          },
+        ],
       },
-      {
-        name: options.right_model_name,
-        isExternal: options.right_model_is_external,
-      },
-    ],
-    relations: [{}],
+    },
   });
 
   if (options.action === "remove") {
@@ -31,6 +49,8 @@ export async function relationGenerator(
   } else {
     await coder.createRelations();
   }
+
+  await formatFiles(tree);
 }
 
 export default relationGenerator;

@@ -4,6 +4,9 @@ import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../../utils/create-sps-ts-library";
 import { Coder as RelationsCoder } from "../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: RelationsCoder;
@@ -15,14 +18,14 @@ export class Coder {
   modelName: string;
   snakeCasePluralizedModelName: string;
 
-  constructor({ parent, tree }: { parent: RelationsCoder; tree: Tree }) {
-    this.parent = parent;
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
+  constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.tree = props.tree;
     this.name = "relations";
 
-    const modelName = parent.parent.parent.name;
+    const modelName = this.parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");
     const snakeCasePluralizedModelName = modelNameSplitted.reduce(
       (acc, curr, index) => {
@@ -51,7 +54,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

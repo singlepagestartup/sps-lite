@@ -4,8 +4,15 @@ import {
   formatFiles,
   getProjects,
 } from "@nx/devkit";
-import { Coder as RootCoder } from "./root/Coder";
+import {
+  Coder as RootCoder,
+  IGeneratorProps as IRootCoderGeneratorProps,
+} from "./root/Coder";
 import { IEditFieldProps } from "./root/libs/modules/[module]/models/[model]/backend/schema/table/Coder";
+
+export type IGeneratorProps = {
+  root: IRootCoderGeneratorProps;
+};
 
 /**
  * Main coder class
@@ -19,81 +26,22 @@ export class Coder {
     root: RootCoder;
   };
 
-  constructor(props: {
-    tree: Tree;
-    moduleName: string;
-    models?: { name: string; isExternal?: boolean }[];
-    relations?: {
-      name?: string;
-    }[];
-  }) {
+  constructor(
+    props: {
+      tree: Tree;
+    } & IGeneratorProps,
+  ) {
     this.projects = getProjects(props.tree);
     this.tree = props.tree;
 
     this.project.root = new RootCoder({
+      ...props.root,
       tree: this.tree,
-      moduleName: props.moduleName,
-      models: props.models,
-      relations: props.relations,
     });
   }
 
   async update() {
     await this.project.root.update();
-  }
-
-  async createModule() {
-    await this.project.root.createModule();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeModule() {
-    await this.project.root.removeModule();
-
-    await formatFiles(this.tree);
-  }
-
-  async createModel() {
-    await this.project.root.createModel();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeModel() {
-    await this.project.root.removeModel();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeBackendVariant({
-    level,
-    variant,
-  }: {
-    level: string;
-    variant: string;
-  }) {
-    await this.project.root.removeBackendVariant({
-      variantLevel: level,
-      variantName: variant,
-    });
-
-    await formatFiles(this.tree);
-  }
-
-  async createBackendVariant({
-    level,
-    variant,
-  }: {
-    level: string;
-    variant: string;
-  }) {
-    await this.project.root.createBackendVariant({
-      variantLevel: level,
-      variantName: variant,
-    });
-
-    await formatFiles(this.tree);
   }
 
   async addField(props: IEditFieldProps) {

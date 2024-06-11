@@ -18,6 +18,7 @@ import { variants } from "@sps/sps-website-builder-models-widget-contracts";
 const formSchema = z.object({
   title: z.string(),
   variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -45,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       title: props.data?.title || "",
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
     },
   });
 
@@ -76,6 +78,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.className || ""}
     >

@@ -8,3 +8,6 @@ services:
     volumes:
       - ../..:/workspaces:cached
     command: sleep infinity
+
+volumes:
+  postgres-data:

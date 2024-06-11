@@ -6,9 +6,10 @@ import { Button } from "@sps/ui-adapter";
 export function Component(props: IComponentPropsExtended) {
   return (
     <Button
-      ui="sps"
+      ui="shadcn"
       data-module="sps-website-builder"
       data-model="elements.button"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       data-ui-variant={props.variant}
       className={`${props.data.className || "w-full"}`}

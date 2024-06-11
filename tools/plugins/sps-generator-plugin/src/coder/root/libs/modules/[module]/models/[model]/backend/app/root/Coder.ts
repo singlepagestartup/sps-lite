@@ -9,6 +9,9 @@ import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as BackendCoder } from "../../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: BackendCoder;
@@ -20,15 +23,17 @@ export class Coder {
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
-    this.baseName = `${parent.baseName}-app`;
-    this.baseDirectory = `${parent.baseDirectory}/app`;
-    this.parent = parent;
-    this.tree = tree;
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.baseName = `${this.parent.baseName}-app`;
+    this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
+    this.tree = props.tree;
     this.name = "app";
 
-    const pluralNameModelName = pluralize(names(parent.parent.name).fileName);
-    const asPropertyModelName = names(parent.parent.name).propertyName;
+    const pluralNameModelName = pluralize(
+      names(this.parent.parent.name).fileName,
+    );
+    const asPropertyModelName = names(this.parent.parent.name).propertyName;
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
       libName: this.baseName,
       asPropertyModelName,
@@ -42,12 +47,20 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
     const modelLibName = this.parent.project.model.baseName;
     const modelSchemaLibName = this.parent.project.schema.baseName;
+    const moduleAppPath =
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -61,11 +74,22 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      routesPath: path.join(moduleAppPath, "/src/lib/routes.ts"),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const moduleAppPath =
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory;
+
+    await this.detach({
+      routesPath: path.join(moduleAppPath, "/src/lib/routes.ts"),
+    });
 
     if (!project) {
       return;

@@ -8,6 +8,9 @@ import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
 import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   name: string;
@@ -17,18 +20,23 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ContractsCoder; tree: Tree }) {
+  constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-extended`;
-    this.baseDirectory = `${parent.baseDirectory}/extended`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${props.parent.baseName}-extended`;
+    this.baseDirectory = `${props.parent.baseDirectory}/extended`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

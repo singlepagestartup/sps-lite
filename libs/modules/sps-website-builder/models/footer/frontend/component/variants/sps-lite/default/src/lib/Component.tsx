@@ -1,14 +1,16 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as FootersToWidgets } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
       data-model="footer"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={props.data.className || ""}
+      className={cn("w-full flex flex-col", props.data.className)}
     >
       <div className="footer-container">
         {props.data.footersToWidgets.map((entity, index) => {

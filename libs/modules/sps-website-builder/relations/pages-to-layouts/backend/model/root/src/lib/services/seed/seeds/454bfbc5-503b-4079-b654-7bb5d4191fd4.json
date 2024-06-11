@@ -1,0 +1,24 @@
+{
+  "id": "454bfbc5-503b-4079-b654-7bb5d4191fd4",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "pageId": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
+  "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+  "page": {
+    "id": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
+    "title": "About",
+    "url": "/about",
+    "description": "Description",
+    "createdAt": "2024-05-25T20:45:26.276Z",
+    "updatedAt": "2024-05-25T20:45:26.276Z",
+    "variant": "default"
+  },
+  "layout": {
+    "title": "Public page layout",
+    "id": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+    "createdAt": "2024-05-25T20:00:16.272Z",
+    "updatedAt": "2024-05-25T20:00:16.272Z",
+    "variant": "default"
+  }
+}

@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
   const query = headersList.get("x-sps-website-builder-query") || "";
   const parsedQuery = QueryString.parse(query);
 
-  const Comp = Server;
+  const Comp: any = Server;
 
   if (parsedQuery?.admin !== "true") {
     return <></>;

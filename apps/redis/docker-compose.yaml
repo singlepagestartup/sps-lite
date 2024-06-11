@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  redis:
+    extends:
+      file: ./docker-compose.redis.yaml
+      service: redis
+    networks:
+      - sps-redis-network
+
+networks:
+  sps-redis-network:
+    external: false
+    name: ${COMPOSE_PROJECT_NAME}-redis-network

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-rbac-models-widget-backend-schema-relations-widgets-to-authentication-blocks",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/widget/backend/schema/relations/widgets-to-authentication-blocks/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

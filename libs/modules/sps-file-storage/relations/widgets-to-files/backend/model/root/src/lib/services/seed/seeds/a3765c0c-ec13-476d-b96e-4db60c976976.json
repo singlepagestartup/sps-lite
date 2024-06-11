@@ -1,0 +1,24 @@
+{
+  "id": "a3765c0c-ec13-476d-b96e-4db60c976976",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "76c3ff17-fcfc-49b9-9638-a3b6641cd91c",
+  "fileId": "a5cd8a3e-575b-4216-9e62-08dc96c0a9b9",
+  "widget": {
+    "variant": "default",
+    "id": "76c3ff17-fcfc-49b9-9638-a3b6641cd91c",
+    "createdAt": "2024-05-25T20:05:46.633Z",
+    "updatedAt": "2024-05-25T20:05:46.633Z",
+    "title": "Logotype"
+  },
+  "file": {
+    "id": "a5cd8a3e-575b-4216-9e62-08dc96c0a9b9",
+    "file": "/images/3530cc76.svg",
+    "containerClassName": "w-32 h-10",
+    "className": "object-contain",
+    "createdAt": "2024-05-29T03:41:48.597Z",
+    "updatedAt": "2024-05-29T03:41:48.597Z",
+    "variant": "default"
+  }
+}

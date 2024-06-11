@@ -10,6 +10,9 @@ import {
   replaceInFile,
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { Coder as SchemaCoder } from "../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   name: string;
@@ -32,12 +35,12 @@ export class Coder {
   leftModelTableUuidName: string;
   rightModelTableUuidName: string;
 
-  constructor({ parent, tree }: { parent: SchemaCoder; tree: Tree }) {
+  constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.name = "schema";
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
+    this.parent = props.parent;
+    this.tree = props.tree;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
@@ -98,7 +101,12 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
@@ -110,9 +118,11 @@ export class Coder {
         .project.backend.project.schema.project.table.baseName;
 
     const leftModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[0].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[0].project.model
+        .isExternal;
     const rightModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[1].isExternal;
+      this.parent.parent.parent.parent.parent.project.models[1].project.model
+        .isExternal;
 
     await createSpsTSLibrary({
       tree: this.tree,

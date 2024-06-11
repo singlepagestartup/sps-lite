@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: Dockerfile.develop
+    restart: always
+    volumes:
+      - ./redis_data:/root/redis
+    env_file:
+      - .env
+    expose:
+      - 6379
+    ports:
+      - ${REDIS_PORT}:6379

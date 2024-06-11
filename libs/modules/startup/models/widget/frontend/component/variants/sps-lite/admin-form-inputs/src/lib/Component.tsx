@@ -10,10 +10,27 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="startup"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={`${props.className || ""}`}
     >
       <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Title"
+          name="title"
+          form={props.form}
+          placeholder="Type title"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class Name"
+          name="className"
+          form={props.form}
+          placeholder="Type class name"
+        />
         <FormField
           ui="shadcn"
           type="select"

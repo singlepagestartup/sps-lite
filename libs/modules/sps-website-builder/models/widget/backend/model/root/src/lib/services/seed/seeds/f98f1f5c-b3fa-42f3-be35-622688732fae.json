@@ -1,0 +1,37 @@
+{
+  "title": "Features section block",
+  "id": "f98f1f5c-b3fa-42f3-be35-622688732fae",
+  "createdAt": "2024-05-28T01:07:44.949Z",
+  "updatedAt": "2024-05-28T01:07:44.949Z",
+  "variant": "default",
+  "className": null,
+  "widgetsToSpsRbacModuleWidgets": [],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [
+    {
+      "id": "3b002dca-aca7-4ce2-9279-3ee2edcdae5d",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "widgetId": "f98f1f5c-b3fa-42f3-be35-622688732fae",
+      "featuresSectionBlockId": "dba9d293-3328-4b4a-b1eb-2b20c0a5008e"
+    }
+  ],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": [
+    {
+      "id": "1ca6223e-3a10-4c4b-adae-86026ea14029",
+      "variant": "default",
+      "orderIndex": 3,
+      "className": null,
+      "pageId": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
+      "widgetId": "f98f1f5c-b3fa-42f3-be35-622688732fae"
+    }
+  ]
+}

@@ -7,8 +7,9 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-file-storage"
       data-model="widget"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full"
+      className="w-full flex"
     >
       {props.data.widgetsToFiles.map((entity, index) => {
         return (

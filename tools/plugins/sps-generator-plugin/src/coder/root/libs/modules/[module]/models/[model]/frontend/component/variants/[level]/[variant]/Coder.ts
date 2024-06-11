@@ -20,6 +20,13 @@ import {
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
 import { stat } from "fs/promises";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {
+  name: string;
+  level: string;
+  template?: string;
+};
 
 export class Coder {
   parent: ComponentCoder;
@@ -45,12 +52,9 @@ export class Coder {
     level,
     template,
   }: {
-    name: string;
     parent: ComponentCoder;
     tree: Tree;
-    level: string;
-    template?: string;
-  }) {
+  } & IGeneratorProps) {
     this.name = name;
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
@@ -91,7 +95,13 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+
+    await migrator.execute({ version });
   }
 
   async create() {
@@ -107,6 +117,8 @@ export class Coder {
       this.parent.parent.parent.project.contracts.project.root.baseName;
     const extendedContractsImportPath =
       this.parent.parent.parent.project.contracts.project.extended.baseName;
+    const componentRootPath =
+      this.parent.parent.project.component.project.root.baseDirectory;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
@@ -121,6 +133,8 @@ export class Coder {
       generateFilesPath: templateDirectory,
       templateParams: {
         template: "",
+        template_name: this.template ?? "default",
+        lib_name: this.baseName,
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,
@@ -138,11 +152,43 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      variantsPath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/variants.ts`,
+      ),
+      interfacePath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/interface.ts`,
+      ),
+      indexScssPath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/_index.scss`,
+      ),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const componentRootPath =
+      this.parent.parent.project.component.project.root.baseDirectory;
+
+    await this.detach({
+      variantsPath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/variants.ts`,
+      ),
+      interfacePath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/interface.ts`,
+      ),
+      indexScssPath: path.join(
+        componentRootPath,
+        `/src/lib/${this.level}/_index.scss`,
+      ),
+    });
 
     if (!project) {
       return;
@@ -155,39 +201,35 @@ export class Coder {
     });
   }
 
-  async attach({
-    variantsPath,
-    interfacePath,
-    indexScssPath,
-  }: {
+  async attach(props: {
     variantsPath: string;
     interfacePath: string;
     indexScssPath: string;
   }) {
     await addToFile({
       toTop: true,
-      pathToFile: variantsPath,
+      pathToFile: props.variantsPath,
       content: this.importVariant.onCreate.content,
       tree: this.tree,
     });
 
     await replaceInFile({
       tree: this.tree,
-      pathToFile: variantsPath,
+      pathToFile: props.variantsPath,
       regex: this.exportVariant.onCreate.regex,
       content: this.exportVariant.onCreate.content,
     });
 
     await addToFile({
       toTop: true,
-      pathToFile: interfacePath,
+      pathToFile: props.interfacePath,
       content: this.importInterface.onCreate.content,
       tree: this.tree,
     });
 
     await replaceInFile({
       tree: this.tree,
-      pathToFile: interfacePath,
+      pathToFile: props.interfacePath,
       regex: this.exportInterface.onCreate.regex,
       content: this.exportInterface.onCreate.content,
     });
@@ -195,7 +237,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: interfacePath,
+        pathToFile: props.interfacePath,
         regex: new RegExp(`[|](\\s+)+?[|]`),
         content: "|",
       });
@@ -207,17 +249,13 @@ export class Coder {
 
     await addToFile({
       toTop: true,
-      pathToFile: indexScssPath,
+      pathToFile: props.indexScssPath,
       content: this.importStyles.onCreate.content,
       tree: this.tree,
     });
   }
 
-  async detach({
-    variantsPath,
-    interfacePath,
-    indexScssPath,
-  }: {
+  async detach(props: {
     variantsPath: string;
     interfacePath: string;
     indexScssPath: string;
@@ -225,7 +263,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: variantsPath,
+        pathToFile: props.variantsPath,
         regex: this.importVariant.onRemove.regex,
         content: "",
       });
@@ -238,7 +276,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: variantsPath,
+        pathToFile: props.variantsPath,
         regex: this.exportVariant.onRemove.regex,
         content: "",
       });
@@ -251,7 +289,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: interfacePath,
+        pathToFile: props.interfacePath,
         regex: this.importInterface.onRemove.regex,
         content: "",
       });
@@ -264,7 +302,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: interfacePath,
+        pathToFile: props.interfacePath,
         regex: this.exportInterface.onRemove.regex,
         content: "",
       });
@@ -277,7 +315,7 @@ export class Coder {
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: indexScssPath,
+        pathToFile: props.indexScssPath,
         regex: this.importStyles.onRemove.regex,
         content: "",
       });

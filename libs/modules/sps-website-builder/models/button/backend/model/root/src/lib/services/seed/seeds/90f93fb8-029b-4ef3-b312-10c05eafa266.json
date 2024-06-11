@@ -1,0 +1,19 @@
+{
+  "title": "Privacy policy",
+  "url": "/privacy-policy",
+  "className": "",
+  "id": "90f93fb8-029b-4ef3-b312-10c05eafa266",
+  "createdAt": "2024-05-25T20:07:09.068Z",
+  "updatedAt": "2024-05-25T20:07:09.068Z",
+  "variant": "link",
+  "buttonsArraysToButtons": [
+    {
+      "id": "e53fc4f4-a3f4-4999-a7a5-ff9e83b61390",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "buttonsArrayId": "01997a02-d7eb-4ae6-b7eb-9ac6ce79b5be",
+      "buttonId": "90f93fb8-029b-4ef3-b312-10c05eafa266"
+    }
+  ]
+}

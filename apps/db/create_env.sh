@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if ! [ -x "$(command -v md5sum)" ]; then
+    echo 'Error: md5sum is not installed.' >&2
+    # install bun
+    brew install md5sha1sum | bash
+fi
+
 # Check is .env file exists
 if [ -f .env ]; then
     echo "File .env already exists"

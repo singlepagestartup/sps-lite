@@ -1,6 +1,13 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "../Coder";
-import { Coder as RelationCoder } from "./[relation]/Coder";
+import {
+  Coder as RelationCoder,
+  IGeneratorProps as IRelationCoderGeneratorProps,
+} from "./[relation]/Coder";
+
+export type IGeneratorProps = {
+  relation?: IRelationCoderGeneratorProps;
+};
 
 /**
  * Relations Coder
@@ -17,7 +24,7 @@ export class Coder {
     relation: RelationCoder;
   };
 
-  constructor(props: { tree: Tree; parent: ModuleCoder; name?: string }) {
+  constructor(props: { tree: Tree; parent: ModuleCoder } & IGeneratorProps) {
     this.tree = props.tree;
     this.name = "relations";
     this.parent = props.parent;
@@ -25,9 +32,9 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/relations`;
 
     this.project.relation = new RelationCoder({
+      ...props.relation,
       tree: this.tree,
       parent: this,
-      name: props.name,
     });
   }
 

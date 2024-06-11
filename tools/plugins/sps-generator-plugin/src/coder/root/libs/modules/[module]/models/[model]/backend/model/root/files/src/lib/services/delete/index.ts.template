@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "<%= module_db_import_path %>";
 import { Table } from "<%= schema_module_lib_name %>";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";

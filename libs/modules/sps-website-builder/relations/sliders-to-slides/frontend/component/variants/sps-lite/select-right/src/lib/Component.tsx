@@ -15,6 +15,7 @@ const formSchema = z.object({
   sliderId: z.string().min(1),
   slideId: z.string().min(1),
   orderIndex: z.number().default(0),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
       sliderId: props.data?.sliderId || props.sliderId,
       slideId: props.data?.slideId,
       orderIndex: props.data?.orderIndex || 0,
+      className: props.data?.className || "",
     },
   });
 
@@ -71,6 +73,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="sliders-to-slides"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >
@@ -91,6 +94,14 @@ export function Component(props: IComponentPropsExtended) {
               name="orderIndex"
               form={form}
               placeholder="Enter order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <AdminSelectInput
               isServer={false}
@@ -114,6 +125,14 @@ export function Component(props: IComponentPropsExtended) {
               name="orderIndex"
               form={form}
               placeholder="Enter order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <AdminSelectInput
               isServer={false}

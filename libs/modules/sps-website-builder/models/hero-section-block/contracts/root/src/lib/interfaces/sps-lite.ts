@@ -5,6 +5,7 @@ export interface IModel {
   variant: (typeof variants)[number];
   className: string | null;
   title: string | null;
+  subtitle: string | null;
   description: string | null;
   anchor: string | null;
 }

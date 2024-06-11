@@ -4,5 +4,4 @@ import {
 } from "./sps-lite";
 
 export const api = parentApi;
-
 export const subscription = parentSubscription;

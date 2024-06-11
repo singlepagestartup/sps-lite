@@ -7,6 +7,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="page-blocks.not-found-block"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="mx-auto max-w-max min-h-[90vh] bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8"
     >

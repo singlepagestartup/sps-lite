@@ -52,6 +52,7 @@ export function Component(props: IComponentPropsExtended) {
       <div
         data-module="sps-website-builder"
         data-model="layout"
+        data-id={props.data?.id || ""}
         data-variant={props.variant}
         className={`cursor-pointer hover:bg-gray-400 hover:text-white px-3 py-2 border border-gray-400 rounded-lg ${isSelected ? "bg-gray-400 text-white" : ""}`}
         onClick={handleSubmit(onSubmit)}

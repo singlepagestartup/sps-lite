@@ -1,1 +1,0 @@
-ALTER TABLE "sps_f_s_file" RENAME COLUMN "url" TO "file";

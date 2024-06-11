@@ -2,7 +2,7 @@ export const BACKEND_URL =
   process.env["NEXT_PUBLIC_BACKEND_URL"] || "http://localhost:3000";
 export const FRONTEND_URL =
   process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
-export const sentryDsn = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
+export const SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
 export const TELEGRAM_BOT_USERNAME =
   process.env["NEXT_PUBLIC_TELEGRAM_BOT_USERNAME"] || "";
 
@@ -11,7 +11,7 @@ export const DATABASE_HOST = `${process.env["DATABASE_HOST"] || process.env["POS
 export const DATABASE_PORT = parseInt(
   `${process.env["DATABASE_PORT"] || "5432"}`,
 );
-export const DATABASE_NAME = `${process.env["DATABASE_NAME"] || process.env["POSTGRES_DATABASE"] || "sps-rbac"}`;
+export const DATABASE_NAME = `${process.env["DATABASE_NAME"] || process.env["POSTGRES_DATABASE"] || "sps"}`;
 
 export const DATABASE_USERNAME = `${process.env["DATABASE_USERNAME"] || process.env["POSTGRES_USER"] || "sps"}`;
 

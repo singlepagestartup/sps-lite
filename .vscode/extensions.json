@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "ms-azuretools.vscode-docker",
-    "dsznajder.es7-react-js-snippets",
     "dbaeumer.vscode-eslint",
     "mhutchie.git-graph",
     "chakrounanas.turbo-console-log",
@@ -13,6 +12,7 @@
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml",
     "nrwl.angular-console",
-    "firsttris.vscode-jest-runner"
+    "firsttris.vscode-jest-runner",
+    "eamodio.gitlens"
   ]
 }

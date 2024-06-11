@@ -8,6 +8,9 @@ import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsTSLibrary } from "../../../../../../../../../../utils/create-sps-ts-library";
 import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/RegexCreator";
 import { Coder as BackendCoder } from "../../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   name: string;
@@ -27,18 +30,18 @@ export class Coder {
   schemaModuleLibName: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: BackendCoder; tree: Tree }) {
+  constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
-    this.parent = parent;
-    this.tree = tree;
+    this.parent = props.parent;
+    this.tree = props.tree;
 
-    this.baseName = `${parent.baseName}-model`;
-    this.baseDirectory = `${parent.baseDirectory}/model/root`;
+    this.baseName = `${this.parent.baseName}-model`;
+    this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
 
-    const modelName = parent.parent.name;
+    const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
 
-    const moduleName = parent.parent.parent.parent.name;
+    const moduleName = this.parent.parent.parent.parent.name;
     const pascalCaseName = names(modelName).className;
     const moduleNamePascalCase = names(moduleName).className;
     const schemaModelName = `${moduleNamePascalCase}${pascalCaseName}`;
@@ -59,11 +62,21 @@ export class Coder {
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {
+    const moduleDbImportPath =
+      this.parent.parent.parent.parent.project.backend.project.db.baseName;
     const schemaModuleLibName = this.parent.project.schema.baseName;
+    const moduleBackendModelsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -72,6 +85,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
+        module_db_import_path: moduleDbImportPath,
         schema_module_lib_name: schemaModuleLibName,
         model_name: this.modelName,
         module_name: this.moduleName,
@@ -79,12 +93,14 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      indexPath: path.join(moduleBackendModelsRootPath, "/src/lib/index.ts"),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {
-    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
-
     await addToFile({
       toTop: true,
       pathToFile: indexPath,
@@ -130,6 +146,13 @@ export class Coder {
 
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
+    const moduleBackendModelsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
+
+    await this.detach({
+      indexPath: path.join(moduleBackendModelsRootPath, "/src/lib/index.ts"),
+    });
 
     if (!project) {
       return;

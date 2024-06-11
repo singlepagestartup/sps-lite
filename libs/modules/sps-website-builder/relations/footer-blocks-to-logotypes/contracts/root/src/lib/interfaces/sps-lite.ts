@@ -6,4 +6,5 @@ export interface IRelation {
   orderIndex: number;
   footerBlockId: string;
   logotypeId: string;
+  className?: string;
 }

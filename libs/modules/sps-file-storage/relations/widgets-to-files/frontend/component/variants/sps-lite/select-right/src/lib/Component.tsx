@@ -70,6 +70,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-file-storage"
       data-relation="widgets-to-files"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >

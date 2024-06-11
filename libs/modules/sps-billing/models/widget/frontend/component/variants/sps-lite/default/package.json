@@ -1,0 +1,8 @@
+{
+  "name": "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-default",
+  "version": "0.0.1",
+  "singlepagestartup": {
+    "template": "default",
+    "version": "0.0.156"
+  }
+}

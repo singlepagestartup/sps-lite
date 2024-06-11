@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-widget-backend-schema-relations-widgets-to-sps-rbac-module-widgets",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-rbac-module-widgets/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

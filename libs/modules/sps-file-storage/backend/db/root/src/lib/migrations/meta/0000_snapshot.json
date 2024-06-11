@@ -1,0 +1,163 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.sps_f_s_file": {
+      "name": "sps_f_s_file",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "container_class_name": {
+          "name": "container_class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.sps_f_s_widget": {
+      "name": "sps_f_s_widget",
+      "schema": "",
+      "columns": {
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'default'"
+        },
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.sps_f_s_ws_to_fs_ocw": {
+      "name": "sps_f_s_ws_to_fs_ocw",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "wt_id": {
+          "name": "wt_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fe_id": {
+          "name": "fe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sps_f_s_ws_to_fs_ocw_wt_id_sps_f_s_widget_id_fk": {
+          "name": "sps_f_s_ws_to_fs_ocw_wt_id_sps_f_s_widget_id_fk",
+          "tableFrom": "sps_f_s_ws_to_fs_ocw",
+          "columnsFrom": ["wt_id"],
+          "tableTo": "sps_f_s_widget",
+          "columnsTo": ["id"],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        },
+        "sps_f_s_ws_to_fs_ocw_fe_id_sps_f_s_file_id_fk": {
+          "name": "sps_f_s_ws_to_fs_ocw_fe_id_sps_f_s_file_id_fk",
+          "tableFrom": "sps_f_s_ws_to_fs_ocw",
+          "columnsFrom": ["fe_id"],
+          "tableTo": "sps_f_s_file",
+          "columnsTo": ["id"],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "id": "1d79586d-9b6b-473e-af1c-d0e81db2e451",
+  "prevId": "00000000-0000-0000-0000-000000000000"
+}

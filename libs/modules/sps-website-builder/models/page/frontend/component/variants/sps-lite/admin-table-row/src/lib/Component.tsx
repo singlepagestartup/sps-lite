@@ -27,6 +27,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="page"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
     >
       <ModelEntityCard

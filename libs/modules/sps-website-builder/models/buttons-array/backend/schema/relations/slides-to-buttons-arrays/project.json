@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-buttons-array-backend-schema-relations-slides-to-buttons-arrays",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/buttons-array/backend/schema/relations/slides-to-buttons-arrays/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

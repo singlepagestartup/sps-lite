@@ -1,9 +1,24 @@
-import { Coder as SchemaCoder } from "./schema/Coder";
+import {
+  Coder as SchemaCoder,
+  IGeneratorProps as ISchemaCoderGeneratorProps,
+} from "./schema/Coder";
 import { Tree } from "@nx/devkit";
 import { Coder as ModelCoder } from "../Coder";
-import { Coder as ModelRootCoder } from "./model/root/Coder";
-import { Coder as AppCoder } from "./app/root/Coder";
+import {
+  Coder as ModelRootCoder,
+  IGeneratorProps as IModelRootCoderGeneratorProps,
+} from "./model/root/Coder";
+import {
+  Coder as AppRootCoder,
+  IGeneratorProps as IAppRootCoderGeneratorProps,
+} from "./app/root/Coder";
 import { IEditFieldProps } from "./schema/table/Coder";
+
+export type IGeneratorProps = {
+  app?: IAppRootCoderGeneratorProps;
+  model?: IModelRootCoderGeneratorProps;
+  schema?: ISchemaCoderGeneratorProps;
+};
 
 export class Coder {
   parent: ModelCoder;
@@ -12,33 +27,36 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project: {
-    app: AppCoder;
+    app: AppRootCoder;
     schema: SchemaCoder;
     model: ModelRootCoder;
   } = {} as {
-    app: AppCoder;
+    app: AppRootCoder;
     schema: SchemaCoder;
     model: ModelRootCoder;
   };
 
-  constructor({ parent, tree }: { parent: ModelCoder; tree: Tree }) {
+  constructor(props: { parent: ModelCoder; tree: Tree } & IGeneratorProps) {
     this.name = "backend";
-    this.baseName = `${parent.baseName}-backend`;
-    this.baseDirectory = `${parent.baseDirectory}/backend`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${props.parent.baseName}-backend`;
+    this.baseDirectory = `${props.parent.baseDirectory}/backend`;
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     this.project.schema = new SchemaCoder({
+      ...props.schema,
       tree: this.tree,
       parent: this,
     });
 
     this.project.model = new ModelRootCoder({
+      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
-    this.project.app = new AppCoder({
+    this.project.app = new AppRootCoder({
+      ...props.app,
       tree: this.tree,
       parent: this,
     });
@@ -76,13 +94,5 @@ export class Coder {
 
   async removeRelation() {
     await this.project.schema.removeRelation();
-  }
-
-  async createVariant(props: { variantName: string; variantLevel: string }) {
-    await this.project.schema.createVariant(props);
-  }
-
-  async removeVariant(props: { variantName: string; variantLevel: string }) {
-    await this.project.schema.removeVariant(props);
   }
 }

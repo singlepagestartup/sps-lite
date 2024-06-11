@@ -9,11 +9,12 @@ import { useActionTrigger } from "@sps/hooks";
 import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
 import { api } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-select-input";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({
   pageId: z.string().min(1),
   layoutId: z.string().min(1),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,6 +28,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       pageId: props.data?.pageId || props.pageId,
       layoutId: props.data?.layoutId,
+      className: props.data?.className,
     },
   });
 
@@ -69,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="pages-to-layouts"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >
@@ -86,6 +89,14 @@ export function Component(props: IComponentPropsExtended) {
             <p className="truncate">{props.data.variant}</p>
           </div>
           <div className="flex flex-col col-span-3 gap-0.5">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}
@@ -100,6 +111,14 @@ export function Component(props: IComponentPropsExtended) {
             Select entity from layouts
           </h3>
           <CardContent>
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
             <AdminSelectInput
               isServer={false}
               form={form}

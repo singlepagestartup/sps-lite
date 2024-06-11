@@ -1,0 +1,16 @@
+{
+  "id": "045735e4-b025-4b6d-9d39-5d2bf5e38bc2",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "widgetId": "25a6437c-3907-4605-a374-c21107983164",
+  "spsFileStorageModuleWidgetId": "76c3ff17-fcfc-49b9-9638-a3b6641cd91c",
+  "widget": {
+    "title": "Logotype widget",
+    "id": "25a6437c-3907-4605-a374-c21107983164",
+    "createdAt": "2024-05-25T20:06:05.585Z",
+    "updatedAt": "2024-05-25T20:06:05.585Z",
+    "variant": "default",
+    "className": null
+  }
+}

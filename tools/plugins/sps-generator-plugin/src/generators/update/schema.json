@@ -4,16 +4,8 @@
   "title": "",
   "type": "object",
   "properties": {
-    "model_name": {
-      "type": "string",
-      "description": "Name of the model (page)",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
-    },
-    "module": {
-      "type": "string",
+    "modules": {
+      "type": "array",
       "description": "Module",
       "x-prompt": {
         "message": "Select module for creating model",
@@ -44,9 +36,26 @@
           {
             "value": "startup"
           }
-        ]
+        ],
+        "multiselect": true
+      }
+    },
+    "right_external_models": {
+      "type": "string",
+      "description": "External models for relations, by space separated: sps-file-storage-widgets sps-file-storage-module-widgets. For example for 'hero-section-blocks-to-sps-file-storage-widgets' in 'sps-website-builder', the exernal model is 'sps-file-storage-widgets'.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "left_external_models": {
+      "type": "string",
+      "description": "External models for relations, by space separated: sps-file-storage-widgets sps-file-storage-module-widgets",
+      "$default": {
+        "$source": "argv",
+        "index": 0
       }
     }
   },
-  "required": ["module", "model_name"]
+  "required": ["modules"]
 }

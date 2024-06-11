@@ -1,0 +1,21 @@
+{
+  "id": "c6ac96ce-b444-4de1-9825-5a33329329fc",
+  "orderIndex": 0,
+  "variant": "default",
+  "className": null,
+  "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+  "footerId": "342228f6-af5b-40aa-9bdf-35f1b6109a11",
+  "layout": {
+    "title": "Public page layout",
+    "id": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+    "createdAt": "2024-05-25T20:00:16.272Z",
+    "updatedAt": "2024-05-25T20:00:16.272Z",
+    "variant": "default"
+  },
+  "footer": {
+    "id": "342228f6-af5b-40aa-9bdf-35f1b6109a11",
+    "createdAt": "2024-05-25T20:00:24.176Z",
+    "updatedAt": "2024-05-25T20:00:24.176Z",
+    "variant": "default"
+  }
+}

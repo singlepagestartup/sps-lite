@@ -45,6 +45,7 @@ export default function Simple(props: ITable) {
   return (
     <div
       data-ui="components.table"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={tableConfig?.className || ""}
     >

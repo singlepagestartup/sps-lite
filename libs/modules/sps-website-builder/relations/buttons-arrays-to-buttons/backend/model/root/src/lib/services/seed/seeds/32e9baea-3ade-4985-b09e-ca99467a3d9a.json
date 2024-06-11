@@ -1,0 +1,26 @@
+{
+  "id": "32e9baea-3ade-4985-b09e-ca99467a3d9a",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "buttonsArrayId": "c0ca1c5d-00b4-4b3c-9c7c-1555816fe3c2",
+  "buttonId": "47551997-6fef-4630-8aa2-594a1fd7a971",
+  "buttonsArray": {
+    "id": "c0ca1c5d-00b4-4b3c-9c7c-1555816fe3c2",
+    "createdAt": "2024-05-25T20:08:12.006Z",
+    "updatedAt": "2024-05-25T20:08:12.006Z",
+    "variant": "default",
+    "title": "Links",
+    "className": "",
+    "description": ""
+  },
+  "button": {
+    "title": "Main",
+    "url": "/",
+    "className": "",
+    "id": "47551997-6fef-4630-8aa2-594a1fd7a971",
+    "createdAt": "2024-05-25T20:08:19.841Z",
+    "updatedAt": "2024-05-25T20:08:19.841Z",
+    "variant": "link"
+  }
+}

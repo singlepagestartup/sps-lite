@@ -17,6 +17,7 @@ const formSchema = z.object({
   orderIndex: z.number().default(0),
   buttonId: z.string().min(1),
   variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -32,6 +33,7 @@ export function Component(props: IComponentPropsExtended) {
       buttonId: props.data?.buttonId,
       orderIndex: props.data?.orderIndex || 0,
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
     },
   });
 
@@ -74,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="buttons-arrays-to-buttons"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="w-full"
     >
@@ -95,6 +98,14 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <FormField
               ui="shadcn"
@@ -126,6 +137,14 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
             />
             <FormField
               ui="shadcn"

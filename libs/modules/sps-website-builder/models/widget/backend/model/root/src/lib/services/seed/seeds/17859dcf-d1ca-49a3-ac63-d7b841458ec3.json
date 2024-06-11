@@ -1,0 +1,37 @@
+{
+  "title": "Authentication Block",
+  "id": "17859dcf-d1ca-49a3-ac63-d7b841458ec3",
+  "createdAt": "2024-06-01T03:35:25.596Z",
+  "updatedAt": "2024-06-01T03:35:25.596Z",
+  "variant": "default",
+  "className": null,
+  "widgetsToSpsRbacModuleWidgets": [
+    {
+      "id": "8b89112c-0c8e-4659-8c29-2771ae3164c2",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "widgetId": "17859dcf-d1ca-49a3-ac63-d7b841458ec3",
+      "spsRbacModuleWidgetId": "f5c41b3f-2ae0-4129-9fa7-5abaddc4ce7a"
+    }
+  ],
+  "widgetsToSpsFileStorageModuleWidgets": [],
+  "widgetsToStartupModuleWidgets": [],
+  "widgetsToFeaturesSectionBlocks": [],
+  "widgetsToSliderBlocks": [],
+  "widgetsToFooterBlocks": [],
+  "footersToWidgets": [],
+  "widgetsToNavbarBlocks": [],
+  "navbarsToWidgets": [],
+  "widgetsToHeroSectionBlocks": [],
+  "pagesToWidgets": [
+    {
+      "id": "a13b4cd1-639e-4f47-bf8d-602f92d82641",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "pageId": "e461f61f-ea28-4258-a7b4-b5d606c478fd",
+      "widgetId": "17859dcf-d1ca-49a3-ac63-d7b841458ec3"
+    }
+  ]
+}

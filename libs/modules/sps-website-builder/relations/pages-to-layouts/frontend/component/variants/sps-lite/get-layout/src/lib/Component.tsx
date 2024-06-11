@@ -1,14 +1,16 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
       data-model="pages-to-layouts"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className=""
+      className={cn("w-full flex", props.data.className)}
     >
       <Layout
         isServer={props.isServer}

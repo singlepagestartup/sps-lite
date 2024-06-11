@@ -1,0 +1,37 @@
+{
+  "id": "7a4c0da9-d58b-4383-b49a-d1d12f9e0c48",
+  "createdAt": "2024-05-25T20:38:00.800Z",
+  "updatedAt": "2024-05-25T20:38:00.800Z",
+  "variant": "default",
+  "title": "Navbar buttons",
+  "className": "",
+  "description": "",
+  "slidesToButtonsArrays": [
+    {
+      "id": "1ea7c325-e1a8-4060-b6a5-0bee5946d602",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "slideId": "217772ac-1923-4a3f-937b-78c68950401e",
+      "buttonsArrayId": "7a4c0da9-d58b-4383-b49a-d1d12f9e0c48"
+    }
+  ],
+  "buttonsArraysToButtons": [
+    {
+      "id": "c0e0437f-8539-46ac-a816-5f63f0aba0ef",
+      "variant": "default",
+      "orderIndex": 1,
+      "className": null,
+      "buttonsArrayId": "7a4c0da9-d58b-4383-b49a-d1d12f9e0c48",
+      "buttonId": "45dc844e-92ff-4fc2-a8c3-d0d565de0cba"
+    },
+    {
+      "id": "c137e65c-1481-4337-9234-b2637d274d49",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "buttonsArrayId": "7a4c0da9-d58b-4383-b49a-d1d12f9e0c48",
+      "buttonId": "aeaad2c3-f3b8-4806-a038-7921d65951a3"
+    }
+  ]
+}

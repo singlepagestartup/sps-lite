@@ -4,6 +4,7 @@
   "sourceRoot": "libs/modules/startup/frontend/root/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project @sps/startup-frontend --web",
-  "targets": {}
+  "targets": {
+    "tsc:build": {}
+  }
 }

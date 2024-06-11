@@ -1,0 +1,26 @@
+{
+  "id": "c8c79ebe-7f4c-404a-bba2-f5284c6ad88d",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "navbarBlockId": "080baed1-7591-459c-88e3-c114d40a26f9",
+  "logotypeId": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+  "navbarBlock": {
+    "id": "080baed1-7591-459c-88e3-c114d40a26f9",
+    "createdAt": "2024-05-25T20:00:01.985Z",
+    "updatedAt": "2024-05-25T20:00:01.985Z",
+    "variant": "default",
+    "className": "",
+    "description": "",
+    "subtitle": "",
+    "title": ""
+  },
+  "logotype": {
+    "className": "",
+    "url": "/",
+    "id": "3ddf8fb6-8fc2-4106-85f0-74bdeb61cedc",
+    "createdAt": "2024-05-25T20:00:35.140Z",
+    "updatedAt": "2024-05-25T20:00:35.140Z",
+    "variant": "default"
+  }
+}

@@ -1,14 +1,16 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Buttons } from "@sps/sps-website-builder-models-button-frontend-component";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
       data-relation="buttons-arrays-to-buttons"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full"
+      className={cn("w-full flex", props.data.className)}
     >
       <Buttons
         isServer={props.isServer}

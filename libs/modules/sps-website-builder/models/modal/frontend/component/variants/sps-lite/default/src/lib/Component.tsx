@@ -15,6 +15,7 @@ export function Component(props: IComponentPropsExtended) {
         }}
         data-module="sps-website-builder"
         data-model="modal"
+        data-id={props.data?.id || ""}
         data-variant={props.variant}
         as="div"
         className=""

@@ -1,2 +1,2 @@
 export type { IModel } from "./lib/interfaces";
-export { populate } from "./lib/populate";
+export { statuses, variants } from "./lib/interfaces";

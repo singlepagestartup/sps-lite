@@ -1,0 +1,10 @@
+{
+  "name": "@sps/startup-backend-db",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/startup/backend/db/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

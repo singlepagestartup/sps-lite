@@ -1,0 +1,24 @@
+{
+  "id": "117cf675-c872-4121-873a-591d00a8a052",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "pageId": "4e2eefbb-61f2-4855-87e6-b8ebf4d82f06",
+  "layoutId": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+  "page": {
+    "id": "4e2eefbb-61f2-4855-87e6-b8ebf4d82f06",
+    "title": "Logout",
+    "url": "/logout",
+    "description": "Description",
+    "createdAt": "2024-06-01T09:31:16.128Z",
+    "updatedAt": "2024-06-01T09:31:16.128Z",
+    "variant": "default"
+  },
+  "layout": {
+    "title": "Public page layout",
+    "id": "ea0ee2e2-d6ea-43dc-8442-3ba64f9de604",
+    "createdAt": "2024-05-25T20:00:16.272Z",
+    "updatedAt": "2024-05-25T20:00:16.272Z",
+    "variant": "default"
+  }
+}

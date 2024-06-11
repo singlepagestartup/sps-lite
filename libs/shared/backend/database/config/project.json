@@ -7,6 +7,7 @@
   "targets": {
     "lint": {},
     "build": {},
+    "tsc:build": {},
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

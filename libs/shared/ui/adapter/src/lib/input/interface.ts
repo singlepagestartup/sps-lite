@@ -17,6 +17,9 @@ export type TTypedProps =
       type: "text";
     }
   | {
+      type: "password";
+    }
+  | {
       type: "tiptap";
     }
   | {
@@ -27,6 +30,15 @@ export type TTypedProps =
     }
   | {
       type: "number";
+      min?: number;
+      max?: number;
+      step?: number;
+    }
+  | {
+      type: "range";
+      min: number;
+      max: number;
+      step?: number;
     }
   | {
       type: "datetime";

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField } from "@sps/ui-adapter";
 
@@ -27,7 +26,7 @@ export function Component(props: IComponentPropsExtended) {
             }
           }
 
-          return [entity.id, entity.id];
+          return [entity.id, entity.title || entity.id];
         })}
       />
     </div>

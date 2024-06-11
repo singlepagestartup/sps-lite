@@ -1,11 +1,29 @@
 import { Tree } from "@nx/devkit";
 import { Coder as RelationsCoder } from "../Coder";
-import { Coder as BackendCoder } from "./backend/Coder";
-import { Coder as ContractsCoder } from "./contracts/Coder";
-import { Coder as FrontendCoder } from "./frontend/Coder";
+import {
+  Coder as BackendCoder,
+  IGeneratorProps as IBackendCoderGeneratorProps,
+} from "./backend/Coder";
+import {
+  Coder as ContractsCoder,
+  IGeneratorProps as IContractsCoderGeneratorProps,
+} from "./contracts/Coder";
+import {
+  Coder as FrontendCoder,
+  IGeneratorProps as IFrontendCoderGeneratorProps,
+} from "./frontend/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
 import { Coder as ModelCoder } from "../../models/Coder";
 import pluralize from "pluralize";
+
+export type IGeneratorProps = {
+  name?: string;
+  leftModelIsExternal?: boolean;
+  rightModelIsExternal?: boolean;
+  frontend?: IFrontendCoderGeneratorProps;
+  backend?: IBackendCoderGeneratorProps;
+  contracts?: IContractsCoderGeneratorProps;
+};
 
 /**
  * Relation Coder
@@ -27,10 +45,9 @@ export class Coder {
     frontend: FrontendCoder;
   };
 
-  constructor(props: { tree: Tree; parent: RelationsCoder; name?: string }) {
-    const { tree, parent } = props;
-    this.tree = tree;
-    this.parent = parent;
+  constructor(props: { tree: Tree; parent: RelationsCoder } & IGeneratorProps) {
+    this.tree = props.tree;
+    this.parent = props.parent;
 
     if (!props.name) {
       const leftModel =
@@ -50,7 +67,10 @@ export class Coder {
       const leftProject = new ModelCoder({
         tree: this.tree,
         parent: this.parent.parent,
-        name: unpluralizedModelNames[0],
+        model: {
+          name: unpluralizedModelNames[0],
+          isExternal: props.leftModelIsExternal,
+        },
       });
 
       this.parent.parent.project.models.push(leftProject);
@@ -58,7 +78,10 @@ export class Coder {
       const rightProject = new ModelCoder({
         tree: this.tree,
         parent: this.parent.parent,
-        name: unpluralizedModelNames[1],
+        model: {
+          name: unpluralizedModelNames[1],
+          isExternal: props.rightModelIsExternal,
+        },
       });
 
       this.parent.parent.project.models.push(rightProject);
@@ -66,20 +89,23 @@ export class Coder {
 
     this.nameStyles = getNameStyles({ name: this.name });
 
-    this.baseName = `${parent.baseName}-${this.name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${this.name}`;
+    this.baseName = `${this.parent.baseName}-${this.name}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/${this.name}`;
 
     this.project.backend = new BackendCoder({
+      ...props.backend,
       tree: this.tree,
       parent: this,
     });
 
     this.project.contracts = new ContractsCoder({
+      ...props.contracts,
       tree: this.tree,
       parent: this,
     });
 
     this.project.frontend = new FrontendCoder({
+      ...props.frontend,
       tree: this.tree,
       parent: this,
     });

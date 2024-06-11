@@ -8,6 +8,9 @@ import { Coder as ComponentCoder } from "../Coder";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {};
 
 export class Coder {
   parent: ComponentCoder;
@@ -17,18 +20,23 @@ export class Coder {
   name: string;
   project?: ProjectConfiguration;
 
-  constructor({ parent, tree }: { parent: ComponentCoder; tree: Tree }) {
+  constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
+    this.tree = props.tree;
+    this.parent = props.parent;
     this.name = "root";
-    this.baseName = `${parent.baseName}`;
-    this.baseDirectory = `${parent.baseDirectory}/root`;
-    this.tree = tree;
-    this.parent = parent;
+    this.baseName = `${this.parent.baseName}`;
+    this.baseDirectory = `${this.parent.baseDirectory}/root`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
-    console.log("Update:", this.baseName);
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
   }
 
   async create() {

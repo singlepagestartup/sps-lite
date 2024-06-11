@@ -20,6 +20,12 @@
             "command": "nx run frontend:db:sps-file-storage-generate"
           },
           {
+            "command": "nx run frontend:db:sps-rbac-generate"
+          },
+          {
+            "command": "nx run frontend:db:sps-billing-generate"
+          },
+          {
             "command": "nx run frontend:db:startup-generate"
           }
         ]
@@ -29,10 +35,13 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "cwd": "libs/modules/sps-website-builder/backend/db/root",
         "commands": [
           {
-            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
           }
         ]
       }
@@ -41,10 +50,37 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/app/root",
+        "cwd": "libs/modules/sps-website-builder/backend/db/root",
         "commands": [
           {
-            "command": "bun run ./src/lib/db/migrate.ts"
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-billing-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/backend/db/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-billing-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/backend/db/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
           }
         ]
       }
@@ -53,10 +89,13 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-file-storage/backend/app/root",
+        "cwd": "libs/modules/sps-file-storage/backend/db/root",
         "commands": [
           {
-            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
           }
         ]
       }
@@ -65,10 +104,37 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-file-storage/backend/app/root",
+        "cwd": "libs/modules/sps-file-storage/backend/db/root",
         "commands": [
           {
-            "command": "bun run ./src/lib/db/migrate.ts"
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-rbac-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-rbac/backend/db/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-rbac-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-rbac/backend/db/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
           }
         ]
       }
@@ -77,10 +143,13 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/startup/backend/app/root",
+        "cwd": "libs/modules/startup/backend/db/root",
         "commands": [
           {
-            "command": "drizzle-kit generate --config=./src/lib/db/config.ts"
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
           }
         ]
       }
@@ -89,10 +158,10 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/startup/backend/app/root",
+        "cwd": "libs/modules/startup/backend/db/root",
         "commands": [
           {
-            "command": "bun run ./src/lib/db/migrate.ts"
+            "command": "bun run ./src/lib/migrate.ts"
           }
         ]
       }
@@ -108,6 +177,12 @@
           },
           {
             "command": "nx run frontend:db:sps-file-storage-migrate"
+          },
+          {
+            "command": "nx run frontend:db:sps-rbac-migrate"
+          },
+          {
+            "command": "nx run frontend:db:sps-billing-migrate"
           },
           {
             "command": "nx run frontend:db:startup-migrate"
@@ -195,12 +270,6 @@
         "commands": [
           {
             "command": "nx run frontend:db:migrate"
-          },
-          {
-            "command": "rm -rf apps/frontend/.next"
-          },
-          {
-            "command": "nx run frontend:theme"
           }
         ]
       }
@@ -208,17 +277,19 @@
     "next:dev": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
+      "cache": true,
       "options": {
         "buildTarget": "next:build",
         "dev": true,
         "port": 3000,
-        "turbo": true
+        "turbo": false
       }
     },
     "next:build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "dependsOn": [],
+      "cache": true,
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/frontend"
@@ -238,13 +309,6 @@
       "executor": "@nx/next:export",
       "options": {
         "buildTarget": "frontend:build:production"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/frontend/jest.config.ts"
       }
     },
     "lint": {}

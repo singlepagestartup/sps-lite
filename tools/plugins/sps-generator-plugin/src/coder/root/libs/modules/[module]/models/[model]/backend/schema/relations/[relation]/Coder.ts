@@ -13,6 +13,11 @@ import {
   space,
 } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
 import { Coder as RelationsCoder } from "../Coder";
+import { Migrator } from "./migrator/Migrator";
+
+export type IGeneratorProps = {
+  name?: string;
+};
 
 export class Coder {
   parent: RelationsCoder;
@@ -21,26 +26,67 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project?: ProjectConfiguration;
-  relationsSchemaProjectImportPath: string;
   nameStyles: ReturnType<typeof getNameStyles>;
   importPopulate: ImportPopulate;
   exportPopulate: ExportPopulate;
   importRelation: ImportRelation;
   exportRelation: ExportRelation;
 
-  constructor({ parent, tree }: { parent: RelationsCoder; tree: Tree }) {
+  constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
+    this.parent = props.parent;
+    this.tree = props.tree;
+
+    if (!props.name) {
+      const relation =
+        props.parent.parent.parent.parent.parent.parent.project.relations[0];
+
+      const name = relation.project.relation.name;
+
+      this.name = name;
+    } else {
+      this.name = props.name;
+    }
+
+    this.baseName = `${props.parent.baseName}-${this.name}`;
+    this.baseDirectory = `${props.parent.baseDirectory}/${this.name}`;
+
+    const nameStyles = getNameStyles({ name: this.name });
+
+    this.nameStyles = nameStyles;
+
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async setReplacers() {
+    this.importPopulate = new ImportPopulate({
+      namePropertyCased: this.nameStyles.propertyCased.base,
+      libName: this.baseName,
+    });
+    this.exportPopulate = new ExportPopulate({
+      namePropertyCased: this.nameStyles.propertyCased.base,
+    });
+    this.importRelation = new ImportRelation({
+      leftProjectRelationNamePropertyCased: this.nameStyles.propertyCased.base,
+      libName: this.baseName,
+    });
+    this.exportRelation = new ExportRelation({
+      leftProjectRelationNamePropertyCased: this.nameStyles.propertyCased.base,
+    });
+  }
+
+  async update() {
+    const migrator = new Migrator({
+      coder: this,
+    });
+
+    const version = "0.0.156";
+    await migrator.execute({ version });
+  }
+
+  async create() {
+    await this.setReplacers();
     const relation =
-      parent.parent.parent.parent.parent.parent.project.relations[0];
-
-    const name = relation.project.relation.name;
-
-    this.name = name;
-    this.parent = parent;
-    this.tree = tree;
-    this.baseName = `${parent.baseName}-${name}`;
-    this.baseDirectory = `${parent.baseDirectory}/${name}`;
-
-    const nameStyles = relation.project.relation.nameStyles;
+      this.parent.parent.parent.parent.parent.parent.project.relations[0];
 
     const relationsSchemaProjectImportPath =
       relation.project.relation.project.backend.project.schema.baseName;
@@ -49,32 +95,6 @@ export class Coder {
       throw new Error(`No relationsSchemaProjectImportPath found`);
     }
 
-    this.nameStyles = nameStyles;
-
-    this.relationsSchemaProjectImportPath = relationsSchemaProjectImportPath;
-    this.importPopulate = new ImportPopulate({
-      namePropertyCased: nameStyles.propertyCased.base,
-      libName: this.baseName,
-    });
-    this.exportPopulate = new ExportPopulate({
-      namePropertyCased: nameStyles.propertyCased.base,
-    });
-    this.importRelation = new ImportRelation({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
-      libName: this.baseName,
-    });
-    this.exportRelation = new ExportRelation({
-      leftProjectRelationNamePropertyCased: nameStyles.propertyCased.base,
-    });
-
-    this.project = getProjects(this.tree).get(this.baseName);
-  }
-
-  async update() {
-    console.log("Update:", this.baseName);
-  }
-
-  async create() {
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,
@@ -83,7 +103,7 @@ export class Coder {
       templateParams: {
         template: "",
         module_schema_relations_project_import_path:
-          this.relationsSchemaProjectImportPath,
+          relationsSchemaProjectImportPath,
       },
     });
 
@@ -97,6 +117,7 @@ export class Coder {
     populatePath: string;
     schemaPath: string;
   }) {
+    await this.setReplacers();
     // const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
 
     await addToFile({
@@ -137,6 +158,7 @@ export class Coder {
     populatePath: string;
     schemaPath: string;
   }) {
+    await this.setReplacers();
     // const rootRelationsSchemaPopulateFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/populate.ts`;
 
     try {
@@ -195,6 +217,8 @@ export class Coder {
   }
 
   async remove() {
+    await this.setReplacers();
+
     const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {

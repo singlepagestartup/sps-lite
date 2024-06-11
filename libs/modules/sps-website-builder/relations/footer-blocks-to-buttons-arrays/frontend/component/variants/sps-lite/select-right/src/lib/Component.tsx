@@ -78,6 +78,7 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-relation="footer-blocks-to-buttons-arrays"
+      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className="w-full"
     >
