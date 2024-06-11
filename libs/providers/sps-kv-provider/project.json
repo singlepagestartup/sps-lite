@@ -4,8 +4,7 @@
   "sourceRoot": "libs/providers/sps-kv-provider/src",
   "projectType": "library",
   "targets": {
-    "tsc:build": {},
-    "lint": {}
+    "tsc:build": {}
   },
   "tags": []
 }

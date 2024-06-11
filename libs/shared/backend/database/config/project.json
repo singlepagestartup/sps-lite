@@ -5,15 +5,6 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "lint": {},
-    "build": {},
-    "tsc:build": {},
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "libs/shared/backend/database/config/jest.config.ts"
-      }
-    }
+    "tsc:build": {}
   }
 }

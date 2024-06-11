@@ -5,21 +5,6 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "lint": {},
-    "tsc:build": {},
-    "rspack": {
-      "executor": "@nx/rspack:rspack",
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^rspack"],
-      "options": {
-        "target": "node",
-        "outputPath": "dist/rspack/{projectRoot}",
-        "tsConfig": "{projectRoot}/tsconfig.lib.json",
-        "main": "{projectRoot}/src/index.ts",
-        "rspackConfig": "{projectRoot}/rspack.config.js",
-        "optimization": false,
-        "sourceMap": true
-      }
-    }
+    "tsc:build": {}
   }
 }

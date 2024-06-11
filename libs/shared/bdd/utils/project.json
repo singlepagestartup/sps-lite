@@ -4,8 +4,5 @@
   "sourceRoot": "libs/shared/bdd/utils/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-    "lint": {},
-    "build": {}
-  }
+  "targets": {}
 }

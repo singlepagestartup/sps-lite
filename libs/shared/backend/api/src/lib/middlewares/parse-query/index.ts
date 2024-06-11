@@ -14,7 +14,7 @@ export type MiddlewareGeneric = {
 };
 
 export function middleware() {
-  return createMiddleware<MiddlewareGeneric>(async (c, next) => {
+  return createMiddleware(async (c, next) => {
     const query = c.req.query();
 
     const parsedQuery: {

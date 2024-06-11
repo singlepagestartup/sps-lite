@@ -1,5 +1,5 @@
 export { middlewares } from "./lib/middlewares";
-export * from "./lib/middlewares/interfaces";
+export type { MiddlewaresGeneric } from "./lib/middlewares/interfaces";
 export * as services from "./lib/services";
 export type {
   FindServiceProps,

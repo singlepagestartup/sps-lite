@@ -10,20 +10,31 @@ import { chain as middlewaresChain } from "./middlewares/chain";
 import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 import { setRoutes } from "@sps/sps-kv-provider";
+import { BlankSchema } from "hono/types";
 
-const app = new Hono<MiddlewaresGeneric>().basePath("/api");
+declare module "hono" {
+  interface ContextVariableMap extends MiddlewaresGeneric {}
+}
+
+const app = new Hono<MiddlewaresGeneric, BlankSchema, string>().basePath(
+  "/api",
+);
 
 middlewaresChain(app);
 
-setRoutes(app);
+setRoutes(app as any);
 
 // app.on(["POST", "PUT"], "*", spsRbacSdk.middlewares.isAuthenticated());
 
-app.route("/sps-website-builder", spsWebsiteBuilderApp);
-app.route("/sps-file-storage", spsFileStorageApp);
-app.route("/sps-rbac", spsRbacApp);
-app.route("/sps-billing", spsBilling);
-app.route("/startup", startupApp);
+// app.get("/test", async (c) => {
+//   c.var.Variables.log
+// });
+
+app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
+app.route("/sps-file-storage", spsFileStorageApp as any);
+app.route("/sps-rbac", spsRbacApp as any);
+app.route("/sps-billing", spsBilling as any);
+app.route("/startup", startupApp as any);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

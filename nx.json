@@ -1,9 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "lint": {
+    "eslint:lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
+      "cache": true,
       "options": {
         "ignorePath": ".eslintignore",
         "eslintConfig": "{projectRoot}/.eslintrc.json",
@@ -54,49 +55,6 @@
         "assets": ["{projectRoot}/*.md"],
         "transformers": []
       }
-    },
-    "nx-release-publish": {
-      "dependsOn": ["tsc:lib"],
-      "options": {
-        "registry": "http://localhost:4873",
-        "packageRoot": "dist/{projectRoot}"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "{projectRoot}/jest.config.ts"
-      }
-    },
-    "test:watch": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "{projectRoot}/jest.config.ts",
-        "watch": true,
-        "setupFile": "./jest.setup.ts"
-      }
-    },
-    "@nx/jest:jest": {
-      "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    },
-    "e2e": {
-      "cache": true,
-      "inputs": ["default", "^production"]
-    },
-    "@nx/js:tsc": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -113,34 +71,6 @@
     ],
     "sharedGlobals": []
   },
-  "generators": {
-    "@nx/react": {
-      "library": {
-        "unitTestRunner": "none"
-      }
-    }
-  },
-  "release": {
-    "projects": [
-      "sps-billing-backend",
-      "@sps/shared-frontend-utils-server",
-      "@sps/shared-utils"
-    ],
-    "projectsRelationship": "fixed",
-    "changelog": {
-      "projectChangelogs": false,
-      "workspaceChangelog": false
-    },
-    "version": {
-      "preVersionCommand": "npx nx run-many -t tsc:lib -p sps-billing-backend @sps/shared-frontend-utils-server @sps/shared-utils"
-    }
-  },
-  "plugins": [
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
-      }
-    }
-  ]
+  "generators": {},
+  "plugins": []
 }

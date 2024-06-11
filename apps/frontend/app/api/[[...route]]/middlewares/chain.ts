@@ -1,10 +1,8 @@
-import { Hono } from "hono";
-import { BlankSchema } from "hono/types";
-import { MiddlewaresGeneric, middlewares } from "@sps/shared-backend-api";
+import { middlewares } from "@sps/shared-backend-api";
 import { logger } from "hono/logger";
 import { middlewares as kvMiddlewares } from "@sps/sps-kv-provider";
 
-export function chain(app: Hono<MiddlewaresGeneric, BlankSchema, "/">) {
+export function chain(app: any) {
   app.use(middlewares.parseQuery());
   app.use(middlewares.logger());
   app.use(middlewares.parseBody());

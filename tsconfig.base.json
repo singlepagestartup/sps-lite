@@ -285,9 +285,6 @@
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
       "@sps/sps-kv-provider": ["libs/providers/sps-kv-provider/src/index.ts"],
-      "@sps/sps-migrator-plugin": [
-        "tools/plugins/sps-migrator-plugin/src/index.ts"
-      ],
       "@sps/sps-rbac-backend-app": [
         "libs/modules/sps-rbac/backend/app/root/src/index.ts"
       ],

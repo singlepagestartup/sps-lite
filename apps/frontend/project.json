@@ -311,6 +311,6 @@
         "buildTarget": "frontend:build:production"
       }
     },
-    "lint": {}
+    "eslint:lint": {}
   }
 }
