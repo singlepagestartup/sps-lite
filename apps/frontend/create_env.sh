@@ -28,7 +28,8 @@ if [ ! -z $CODESPACE_NAME ]; then
 
     NEXT_PUBLIC_FRONTEND_URL=https://$CODESPACE_NAME-3000.app.github.dev
     add_env "NEXT_PUBLIC_FRONTEND_URL" $NEXT_PUBLIC_FRONTEND_URL
-else if [ ! -z $GITPOD_WORKSPACE_URL ]; then
+elif [ ! -z $GITPOD_WORKSPACE_URL ]; then
+    echo $GITPOD_WORKSPACE_URL
     # replace https:// with https://3000-
     REPLACED_WITH_PORT_URL=$(echo $GITPOD_WORKSPACE_URL | sed 's/https:\/\//https:\/\/3000-/g')
 
