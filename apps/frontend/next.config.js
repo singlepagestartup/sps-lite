@@ -1,8 +1,10 @@
 const { withNx } = require("@nx/next/plugins/with-nx");
 
-const BACKEND_URL =
+const BACKEND_URL = process.env["BACKEND_URL"] || "http://localhost:3000";
+const FRONTEND_URL = process.env["FRONTEND_URL"] || "http://localhost:3000";
+const NEXT_PUBLIC_BACKEND_URL =
   process.env["NEXT_PUBLIC_BACKEND_URL"] || "http://localhost:3000";
-const FRONTEND_URL =
+const NEXT_PUBLIC_FRONTEND_URL =
   process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -10,6 +12,14 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 function makeConfig() {
+  const nextPublicBackendHost = NEXT_PUBLIC_BACKEND_URL?.replace(
+    "https://",
+    "",
+  ).replace("http://", "");
+  const nextPublicFrontendHost = NEXT_PUBLIC_FRONTEND_URL?.replace(
+    "https://",
+    "",
+  ).replace("http://", "");
   const backendHost = BACKEND_URL?.replace("https://", "").replace(
     "http://",
     "",
@@ -23,7 +33,14 @@ function makeConfig() {
     reactStrictMode: true,
     images: {
       unoptimized: true,
-      domains: ["localhost", "127.0.0.1", backendHost, frontendHost],
+      domains: [
+        "localhost",
+        "127.0.0.1",
+        backendHost,
+        frontendHost,
+        nextPublicBackendHost,
+        nextPublicFrontendHost,
+      ],
       remotePatterns: [
         {
           protocol: "https",
