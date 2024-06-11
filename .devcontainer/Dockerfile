@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node
+FROM mcr.microsoft.com/devcontainers/javascript-node:0-20-bullseye
 
 RUN apt-get update && apt-get install --no-install-recommends -y netcat-traditional
 
