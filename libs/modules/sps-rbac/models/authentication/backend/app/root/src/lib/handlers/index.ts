@@ -3,7 +3,7 @@ import { handler as findByIdHander } from "./find-by-id";
 import { handler as createHander } from "./create";
 import { handler as updateHander } from "./update";
 import { handler as deleteHander } from "./delete";
-import { handler as loginAndPasswordHandler } from "./login-and-password";
+import { handler as providersHandler } from "./providers";
 
 export const handlers = {
   find: findHander,
@@ -11,5 +11,5 @@ export const handlers = {
   create: createHander,
   update: updateHander,
   delete: deleteHander,
-  loginAndPassword: loginAndPasswordHandler,
+  providers: providersHandler,
 };

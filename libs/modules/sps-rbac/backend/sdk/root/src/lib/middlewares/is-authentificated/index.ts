@@ -6,6 +6,13 @@ import { StatusCode } from "hono/utils/http-status";
 
 export function middleware() {
   return createMiddleware(async (c, next) => {
+    const method = c.req.method;
+    const url = c.req.url;
+
+    if (["GET"].includes(method) || url.includes("/authentications")) {
+      return next();
+    }
+
     const roles = await spsRbacApp.request(
       new Request(BACKEND_URL + "/authentications/check"),
       {

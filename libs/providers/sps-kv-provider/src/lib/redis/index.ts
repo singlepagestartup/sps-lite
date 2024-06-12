@@ -1,5 +1,5 @@
-import { Store, SessionData } from "hono-sessions";
 import { Redis } from "ioredis";
+import { SessionData } from "../middlewares/session/Session";
 
 interface RedisStoreOptions {
   client: Redis;
@@ -7,7 +7,7 @@ interface RedisStoreOptions {
   ttl?: number;
 }
 
-export class RedisStoreAdapter implements Store {
+export class RedisStoreAdapter {
   prefix: string;
   ttl: number;
   RedisClient: Redis;

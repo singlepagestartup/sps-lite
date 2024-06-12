@@ -5,6 +5,10 @@ add_env() {
     echo "$1=$2" >> .env.local
 }
 
+generate_random_string() {
+    echo $RANDOM | md5sum | head -c 32;
+}
+
 # Check is .env.local file exists
 if [ -f .env.local ]; then
     echo "File .env.local already exists"
@@ -66,3 +70,5 @@ add_env "REDIS_PORT" $REDIS_PORT
 
 REDIS_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
 add_env "REDIS_PASSWORD" $REDIS_PASSWORD
+
+COOKIE_SESSION_SECRET=$(generate_random_string)

@@ -6,6 +6,12 @@ export const SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
 export const TELEGRAM_BOT_USERNAME =
   process.env["NEXT_PUBLIC_TELEGRAM_BOT_USERNAME"] || "";
 
+export const COOKIE_SESSION_SECRET = process.env["COOKIE_SESSION_SECRET"];
+export const COOKIE_SESSION_EXPIRATION_SECONDS =
+  process.env["COOKIE_SESSION_EXPIRATION_SECONDS"] || "20";
+export const COOKIE_SESSION_NAME =
+  process.env["COOKIE_SESSION_NAME"] || "sps_ck_sn";
+
 export const DATABASE_HOST = `${process.env["DATABASE_HOST"] || process.env["POSTGRES_HOST"] || "localhost"}`;
 
 export const DATABASE_PORT = parseInt(

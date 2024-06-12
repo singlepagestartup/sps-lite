@@ -7,7 +7,6 @@ import { app as spsRbacApp } from "@sps/sps-rbac-backend-app";
 import { app as startupApp } from "@sps/startup-backend-app";
 import { app as spsBilling } from "@sps/sps-billing-backend-app";
 import { chain as middlewaresChain } from "./middlewares/chain";
-import { middlewares as spsRbacSdk } from "@sps/sps-rbac-backend-sdk";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 import { setRoutes } from "@sps/sps-kv-provider";
 import { BlankSchema } from "hono/types";
@@ -23,12 +22,6 @@ const app = new Hono<MiddlewaresGeneric, BlankSchema, string>().basePath(
 middlewaresChain(app);
 
 setRoutes(app as any);
-
-// app.on(["POST", "PUT"], "*", spsRbacSdk.middlewares.isAuthenticated());
-
-// app.get("/test", async (c) => {
-//   c.var.Variables.log
-// });
 
 app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
 app.route("/sps-file-storage", spsFileStorageApp as any);

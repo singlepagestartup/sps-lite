@@ -48,6 +48,6 @@ app.delete("/:uuid", async (c, next) => {
   return handlers.delete(c, next);
 });
 
-app.post("/providers/login-and-password", async (c, next) => {
-  return handlers.loginAndPassword(c, next);
+app.post("/providers/:provider", async (c, next) => {
+  return handlers.providers(c, next);
 });

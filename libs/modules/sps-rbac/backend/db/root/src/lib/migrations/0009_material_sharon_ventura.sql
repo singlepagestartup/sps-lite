@@ -1,0 +1,1 @@
+ALTER TABLE "sps_r_identity" ADD COLUMN "salt" text;

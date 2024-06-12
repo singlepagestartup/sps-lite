@@ -2,6 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 
 export const fields = {
   password: pgCore.text("password"),
+  salt: pgCore.text("salt"),
   account: pgCore.text("account"),
   email: pgCore.text("email"),
   provider: pgCore.text("provider").notNull().default("login_and_password"),

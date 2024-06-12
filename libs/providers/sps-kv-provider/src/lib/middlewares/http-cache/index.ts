@@ -1,5 +1,5 @@
 import { createMiddleware } from "hono/factory";
-import { store } from "./store";
+import { store } from "../../store";
 
 export type MiddlewareGeneric = {
   Variables: {
