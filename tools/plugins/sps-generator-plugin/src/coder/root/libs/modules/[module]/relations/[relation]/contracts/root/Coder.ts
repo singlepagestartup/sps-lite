@@ -49,18 +49,20 @@ export class Coder {
   }
 
   async setReplacers() {
+    const relationNameStyles = this.parent.parent.name;
+
     this.importContracts = new ImportContracts({
       libName: this.baseName,
       relationNamePascalCased: getNameStyles({
-        name: this.name,
+        name: relationNameStyles,
       }).pascalCased.base,
     });
     this.exportNamedInterface = new ExportNamedInterface({
       relationNamePropertyCased: getNameStyles({
-        name: this.name,
+        name: relationNameStyles,
       }).propertyCased.base,
       relationNamePascalCased: getNameStyles({
-        name: this.name,
+        name: relationNameStyles,
       }).pascalCased.base,
     });
   }
