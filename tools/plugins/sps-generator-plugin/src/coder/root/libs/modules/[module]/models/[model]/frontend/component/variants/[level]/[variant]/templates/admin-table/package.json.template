@@ -1,8 +1,0 @@
-{
-  "name": "<%= lib_name %>",
-  "version": "0.0.1",
-  "singlepagestartup":{
-    "template": "<%= template_name %>",
-    "version": "0.0.156"
-  }
-}
