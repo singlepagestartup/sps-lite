@@ -8,9 +8,6 @@ export const handler = async (
   c: Context<MiddlewaresGeneric, `${string}/providers/:provider`, BlankInput>,
   next: Next,
 ) => {
-  const { provider } = c.req.param();
-  console.log(`🚀 ~ provider:`, provider);
-
   const body = await c.req.parseBody();
 
   if (typeof body["data"] !== "string") {

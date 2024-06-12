@@ -759,39 +759,6 @@
       "@sps/sps-rbac-relations-users-to-roles-frontend-redux": [
         "libs/modules/sps-rbac/relations/users-to-roles/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-rbac-relations-users-to-sessions-backend-app": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-backend-model": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-backend-schema": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-contracts": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-contracts-extended": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-api-client": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-api-model": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/api/model/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-api-server": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-component": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-rbac-relations-users-to-sessions-frontend-redux": [
-        "libs/modules/sps-rbac/relations/users-to-sessions/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app": [
         "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root/src/index.ts"
       ],

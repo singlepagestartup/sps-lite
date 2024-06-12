@@ -8,9 +8,8 @@ export async function service(props: { data: any }) {
   const { data } = props;
 
   const plainData = insertSchema.parse(data);
-  console.log(`🚀 ~ service ~ plainData:`, plainData);
 
-  // const [entity] = await db.insert(Table).values(plainData).returning();
+  const [entity] = await db.insert(Table).values(plainData).returning();
 
-  return { ok: true };
+  return entity;
 }
