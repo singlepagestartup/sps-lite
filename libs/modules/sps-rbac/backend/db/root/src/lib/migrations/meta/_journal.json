@@ -85,6 +85,13 @@
       "when": 1718187359159,
       "tag": "0011_careless_roulette",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1718207207552,
+      "tag": "0012_chemical_thundra",
+      "breakpoints": true
     }
   ]
 }

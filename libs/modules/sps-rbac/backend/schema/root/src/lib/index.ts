@@ -1,4 +1,12 @@
 export {
+  Table as SPSRSessionsToAuthentications,
+  Relations as SPSRSessionsToAuthenticationsRelations,
+} from "@sps/sps-rbac-relations-sessions-to-authentications-backend-schema";
+export {
+  Table as SPSRUsersToSessions,
+  Relations as SPSRUsersToSessionsRelations,
+} from "@sps/sps-rbac-relations-users-to-sessions-backend-schema";
+export {
   Table as SPSRSession,
   Relations as SPSRSessionRelations,
 } from "@sps/sps-rbac-models-session-backend-schema";

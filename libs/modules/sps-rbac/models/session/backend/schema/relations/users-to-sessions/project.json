@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-rbac-models-session-backend-schema-relations-users-to-sessions",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/models/session/backend/schema/relations/users-to-sessions/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

@@ -76,11 +76,6 @@ export class Coder {
     await this.project.contracts.create();
     await this.project.backend.create();
     await this.project.frontend.create();
-
-    await this.project.frontend.createVariant({
-      variantName: "default",
-      variantLevel: "sps-lite",
-    });
   }
 
   async update() {
@@ -90,11 +85,6 @@ export class Coder {
   }
 
   async remove() {
-    await this.project.frontend.removeVariant({
-      variantName: "default",
-      variantLevel: "sps-lite",
-    });
-
     await this.project.frontend.remove();
     await this.project.backend.remove();
     await this.project.contracts.remove();
