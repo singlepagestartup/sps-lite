@@ -15,7 +15,7 @@ import {
 import { Coder as BackendCoder } from "../Coder";
 
 export type IGeneratorProps = {
-  relations?: IRelationsCoderGeneratorProps[];
+  relations?: IRelationsCoderGeneratorProps;
   table?: ITableCoderGeneratorProps;
   root?: IRootCoderGeneratorProps;
 };
@@ -62,16 +62,16 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.table.update();
-    await this.project.relations.update();
-    await this.project.root.update();
-  }
-
   async create() {
     await this.project.table.create();
     await this.project.relations.create();
     await this.project.root.create();
+  }
+
+  async update() {
+    await this.project.table.update();
+    await this.project.relations.update();
+    await this.project.root.update();
   }
 
   async remove() {
@@ -86,13 +86,5 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.table.removeField(props);
-  }
-
-  async createRelation() {
-    await this.project.relations.createRelation();
-  }
-
-  async removeRelation() {
-    await this.project.relations.removeRelation();
   }
 }

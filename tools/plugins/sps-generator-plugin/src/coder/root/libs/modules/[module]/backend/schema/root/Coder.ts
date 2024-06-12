@@ -41,6 +41,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     await createSpsTSLibrary({
       tree: this.tree,
       root: this.baseDirectory,

@@ -80,6 +80,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const tableLibraryName = this.parent.project.table.baseName;
     const relationsLibraryName = this.parent.project.relations.baseName;
     const moduleBackendSchemaRootDirectory =

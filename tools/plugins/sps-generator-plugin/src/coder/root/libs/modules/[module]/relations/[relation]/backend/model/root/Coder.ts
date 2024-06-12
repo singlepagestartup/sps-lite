@@ -72,6 +72,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const schemaModuleLibName = this.parent.project.schema.baseName;
 
     const leftModel = this.parent.parent.parent.parent.project.models[0];
@@ -86,6 +90,10 @@ export class Coder {
     const moduleLibName =
       this.parent.parent.parent.parent.parent.parent.project.modules[0].project
         .module.name;
+
+    const moduleBackendRelationsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -110,12 +118,14 @@ export class Coder {
       },
     });
 
+    await this.attach({
+      indexPath: path.join(moduleBackendRelationsRootPath, "/src/lib/index.ts"),
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async attach({ indexPath }: { indexPath: string }) {
-    // const rootProjectPath = `${this.rootAppProject.sourceRoot}/lib/index.ts`;
-
     await addToFile({
       toTop: true,
       pathToFile: indexPath,
@@ -162,9 +172,17 @@ export class Coder {
   async remove() {
     const project = getProjects(this.tree).get(this.baseName);
 
+    const moduleBackendRelationsRootPath =
+      this.parent.parent.parent.parent.project.backend.project.models.project
+        .root.baseDirectory;
+
     if (!project) {
       return;
     }
+
+    await this.detach({
+      indexPath: path.join(moduleBackendRelationsRootPath, "/src/lib/index.ts"),
+    });
 
     await nxWorkspace.removeGenerator(this.tree, {
       projectName: this.baseName,

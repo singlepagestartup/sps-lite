@@ -56,6 +56,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const modelLibName = this.parent.project.model.baseName;
     const modelSchemaLibName = this.parent.project.schema.baseName;
     const moduleAppPath =

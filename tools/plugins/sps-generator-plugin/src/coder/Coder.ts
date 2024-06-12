@@ -40,8 +40,16 @@ export class Coder {
     });
   }
 
+  async create() {
+    await this.project.root.create();
+  }
+
   async update() {
     await this.project.root.update();
+  }
+
+  async remove() {
+    await this.project.root.remove();
   }
 
   async addField(props: IEditFieldProps) {
@@ -54,47 +62,6 @@ export class Coder {
     await this.project.root.removeField(props);
 
     await formatFiles(this.tree);
-  }
-
-  async createRelations() {
-    await this.project.root.createRelations();
-
-    await formatFiles(this.tree);
-  }
-
-  async removeRelations() {
-    await this.project.root.removeRelations();
-
-    await formatFiles(this.tree);
-  }
-
-  async createModelFrontendComponentVariant({
-    name,
-    level,
-    templateName,
-  }: {
-    name: string;
-    level: string;
-    templateName?: string;
-  }) {
-    await this.project.root.createModelFrontendComponentVariant({
-      variantLevel: level,
-      variantName: name,
-      templateName: templateName,
-    });
-  }
-
-  async removeModelFrontendComponentVariant({
-    name,
-    level,
-  }: {
-    name: string;
-    level: string;
-  }) {
-    await this.project.root.removeModelFrontendComponentVariant({
-      variantLevel: level,
-      variantName: name,
-    });
   }
 
   async createRelationFrontendComponentVariant(props: {

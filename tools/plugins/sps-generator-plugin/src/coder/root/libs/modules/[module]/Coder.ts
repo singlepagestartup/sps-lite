@@ -17,7 +17,6 @@ import {
   Coder as FrontendCoder,
   IGeneratorProps as IFrontendCoderGeneratorProps,
 } from "./frontend/Coder";
-import pluralize from "pluralize";
 
 export type IGeneratorProps = {
   name: Coder["name"];
@@ -96,6 +95,19 @@ export class Coder {
     });
   }
 
+  async create() {
+    await this.project.backend.create();
+    await this.project.frontend.create();
+
+    for (const model of this.project.models) {
+      await model.create();
+    }
+
+    for (const relation of this.project.relations) {
+      await relation.create();
+    }
+  }
+
   async update() {
     for (const model of this.project.models) {
       await model.update();
@@ -109,20 +121,15 @@ export class Coder {
     await this.project.frontend.update();
   }
 
-  async create() {
-    await this.project.backend.create();
-    await this.project.frontend.create();
+  async remove() {
+    for (const relation of this.project.relations) {
+      await relation.remove();
+    }
 
     for (const model of this.project.models) {
-      await model.create();
+      await model.remove();
     }
 
-    for (const relation of this.project.relations) {
-      await relation.createRelations();
-    }
-  }
-
-  async remove() {
     await this.project.frontend.remove();
     await this.project.backend.remove();
   }
@@ -133,106 +140,6 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.models[0].removeField(props);
-  }
-
-  async createRelations() {
-    if (!this.project.relations.length) {
-      throw new Error("Relations are not defined");
-    }
-
-    await this.project.relations[0].createRelations();
-
-    if (!this.project.models[0].project.model.isExternal) {
-      await this.project.models[0].createRelation();
-      const leftModelContractsPath =
-        this.project.models[0].project.model.project.contracts.project.extended
-          .baseDirectory;
-
-      const levelContractsPath = `${leftModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
-
-      await this.project.relations[0].project.relation.project.contracts.project.root.attach(
-        { levelContractsPath },
-      );
-    }
-
-    if (!this.project.models[1].project.model.isExternal) {
-      const rightModelContractsPath =
-        this.project.models[1].project.model.project.contracts.project.extended
-          .baseDirectory;
-
-      const levelContractsPath = `${rightModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
-
-      await this.project.models[1].createRelation();
-      await this.project.relations[0].project.relation.project.contracts.project.root.attach(
-        { levelContractsPath },
-      );
-    }
-
-    await this.project.relations[0].project.relation.project.backend.project.schema.project.root.attach(
-      {
-        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
-      },
-    );
-    await this.project.relations[0].project.relation.project.backend.project.model.attach(
-      {
-        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
-      },
-    );
-    await this.project.relations[0].project.relation.project.backend.project.app.attach(
-      {
-        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-      },
-    );
-  }
-
-  async removeRelations() {
-    if (!this.project.models[1].project.model.isExternal) {
-      await this.project.models[1].removeRelation();
-
-      const rightModelContractsPath =
-        this.project.models[1].project.model.project.contracts.project.extended
-          .baseDirectory;
-
-      const levelContractsPath = `${rightModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
-
-      await this.project.relations[0].project.relation.project.contracts.project.root.detach(
-        { levelContractsPath },
-      );
-    }
-
-    if (!this.project.models[0].project.model.isExternal) {
-      await this.project.models[0].removeRelation();
-
-      const leftModelContractsPath =
-        this.project.models[0].project.model.project.contracts.project.extended
-          .baseDirectory;
-
-      const levelContractsPath = `${leftModelContractsPath}/src/lib/interfaces/sps-lite.ts`;
-
-      await this.project.relations[0].project.relation.project.contracts.project.root.detach(
-        { levelContractsPath },
-      );
-    }
-
-    await this.project.relations[0].removeRelations();
-
-    await this.project.relations[0].project.relation.project.backend.project.app.detach(
-      {
-        routesPath: `${this.baseDirectory}/backend/app/root/src/lib/routes.ts`,
-      },
-    );
-
-    await this.project.relations[0].project.relation.project.backend.project.model.detach(
-      {
-        indexPath: `${this.baseDirectory}/backend/models/root/src/lib/index.ts`,
-      },
-    );
-
-    await this.project.relations[0].project.relation.project.backend.project.schema.project.root.detach(
-      {
-        indexPath: `${this.baseDirectory}/backend/schema/root/src/lib/index.ts`,
-      },
-    );
   }
 
   async createRelationFrontendComponentVariant(props: {

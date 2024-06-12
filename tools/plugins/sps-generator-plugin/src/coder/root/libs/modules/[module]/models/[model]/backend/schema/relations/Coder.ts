@@ -52,22 +52,22 @@ export class Coder {
     }
   }
 
-  async update() {
-    await this.project.root.update();
-
-    if (this.project.relations) {
-      for (const relation of this.project.relations) {
-        await relation.update();
-      }
-    }
-  }
-
   async create() {
     await this.project.root.create();
 
     if (this.project.relations) {
       for (const relation of this.project.relations) {
         await relation.create();
+      }
+    }
+  }
+
+  async update() {
+    await this.project.root.update();
+
+    if (this.project.relations) {
+      for (const relation of this.project.relations) {
+        await relation.update();
       }
     }
   }
@@ -80,35 +80,5 @@ export class Coder {
     }
 
     await this.project.root.remove();
-  }
-
-  async createRelation() {
-    // this.project.relation = new RelationCoder({
-    //   parent: this,
-    //   tree: this.tree,
-    // });
-    // await this.project.relation.create();
-    // const rootRelationFolder = `${this.project.root.baseDirectory}/src/lib`;
-    // const populatePath = `${rootRelationFolder}/populate.ts`;
-    // const schemaPath = `${rootRelationFolder}/schema.ts`;
-    // await this.project.relation.attach({
-    //   schemaPath,
-    //   populatePath,
-    // });
-  }
-
-  async removeRelation() {
-    // this.project.relation = new RelationCoder({
-    //   parent: this,
-    //   tree: this.tree,
-    // });
-    // const rootRelationFolder = `${this.project.root.baseDirectory}/src/lib`;
-    // const populatePath = `${rootRelationFolder}/populate.ts`;
-    // const schemaPath = `${rootRelationFolder}/schema.ts`;
-    // await this.project.relation.detach({
-    //   schemaPath,
-    //   populatePath,
-    // });
-    // await this.project.relation.remove();
   }
 }

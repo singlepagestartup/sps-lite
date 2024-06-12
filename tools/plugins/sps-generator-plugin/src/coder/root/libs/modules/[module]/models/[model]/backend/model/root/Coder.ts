@@ -71,6 +71,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const moduleDbImportPath =
       this.parent.parent.parent.parent.project.backend.project.db.baseName;
     const schemaModuleLibName = this.parent.project.schema.baseName;

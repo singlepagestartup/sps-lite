@@ -48,6 +48,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const libraryOptions = {

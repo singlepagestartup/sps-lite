@@ -110,6 +110,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const leftProjectSchemaTableImportPath =
       this.parent.parent.parent.parent.parent.project.models[0].project.model
         .project.backend.project.schema.project.table.baseName;
@@ -155,27 +159,37 @@ export class Coder {
       },
     });
 
+    await this.attach();
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async attach({ indexPath }: { indexPath: string }) {
-    // const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
+  async attach() {
+    const moduleSchemaRootPath = path.join(
+      this.parent.parent.parent.parent.parent.project.backend.project.schema
+        .project.root.baseDirectory,
+      "/src/lib/index.ts",
+    );
 
     await addToFile({
       toTop: true,
-      pathToFile: indexPath,
+      pathToFile: moduleSchemaRootPath,
       content: this.exportAll.onCreate.content,
       tree: this.tree,
     });
   }
 
-  async detach({ indexPath }: { indexPath: string }) {
-    // const rootRelationsSchemaFilePath = `${this.rootRelationsSchemaProject.sourceRoot}/lib/schema.ts`;
+  async detach() {
+    const moduleSchemaRootPath = path.join(
+      this.parent.parent.parent.parent.parent.project.backend.project.schema
+        .project.root.baseDirectory,
+      "/src/lib/index.ts",
+    );
 
     try {
       await replaceInFile({
         tree: this.tree,
-        pathToFile: indexPath,
+        pathToFile: moduleSchemaRootPath,
         regex: this.exportAll.onRemove.regex,
         content: "",
       });

@@ -38,12 +38,16 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.relation?.update();
+  async create() {
+    await this.project.relation.create();
   }
 
-  async createRelations() {
-    await this.project.relation.create();
+  async update() {
+    await this.project.relation.update();
+  }
+
+  async remove() {
+    await this.project.relation.remove();
   }
 
   async removeRelations() {

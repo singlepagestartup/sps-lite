@@ -42,8 +42,16 @@ export class Coder {
     });
   }
 
+  async create() {
+    await this.project.libs.create();
+  }
+
   async update() {
     await this.project.libs.update();
+  }
+
+  async remove() {
+    await this.project.libs.remove();
   }
 
   async addField(props: IEditFieldProps) {
@@ -52,14 +60,6 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.libs.removeField(props);
-  }
-
-  async createRelations() {
-    await this.project.libs.createRelations();
-  }
-
-  async removeRelations() {
-    await this.project.libs.removeRelations();
   }
 
   async createRelationFrontendComponentVariant(props: {

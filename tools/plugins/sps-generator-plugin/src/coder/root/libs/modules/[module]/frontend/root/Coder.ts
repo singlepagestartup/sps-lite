@@ -35,6 +35,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const moduleName = this.parent.parent.baseName;
 
     await createSpsReactLibrary({

@@ -31,16 +31,12 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.root.update();
-  }
-
-  /**
-   * @todo
-   * Attach to main /apps/frontend project
-   */
   async create() {
     await this.project.root.create();
+  }
+
+  async update() {
+    await this.project.root.update();
   }
 
   async remove() {

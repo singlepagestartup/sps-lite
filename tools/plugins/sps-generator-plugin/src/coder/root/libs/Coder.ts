@@ -49,9 +49,21 @@ export class Coder {
     });
   }
 
+  async create() {
+    for (const module of this.project.modules) {
+      await module.create();
+    }
+  }
+
   async update() {
     for (const module of this.project.modules) {
       await module.update();
+    }
+  }
+
+  async remove() {
+    for (const module of this.project.modules) {
+      await module.remove();
     }
   }
 
@@ -64,18 +76,6 @@ export class Coder {
   async removeField(props: IEditFieldProps) {
     for (const module of this.project.modules) {
       await module.removeField(props);
-    }
-  }
-
-  async createRelations() {
-    for (const module of this.project.modules) {
-      await module.createRelations();
-    }
-  }
-
-  async removeRelations() {
-    for (const module of this.project.modules) {
-      await module.removeRelations();
     }
   }
 

@@ -41,6 +41,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const rootContractsImportPath = this.parent.project.root.baseName;
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 

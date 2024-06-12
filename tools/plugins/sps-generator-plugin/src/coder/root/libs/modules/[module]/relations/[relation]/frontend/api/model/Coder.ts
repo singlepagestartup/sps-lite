@@ -53,6 +53,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const rootContractsImportPath =
       this.parent.parent.parent.project.contracts.project.root.baseName;
     const extendedContractsImportPath =

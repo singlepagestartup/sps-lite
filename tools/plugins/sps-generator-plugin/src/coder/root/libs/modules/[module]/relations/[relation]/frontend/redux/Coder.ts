@@ -53,6 +53,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const clientApiImportPath = this.parent.project.api.project.client.baseName;
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 

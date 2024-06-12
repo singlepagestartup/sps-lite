@@ -87,12 +87,4 @@ export class Coder {
   async removeField(props: IEditFieldProps) {
     await this.project.schema.removeField(props);
   }
-
-  async createRelation() {
-    await this.project.schema.createRelation();
-  }
-
-  async removeRelation() {
-    await this.project.schema.removeRelation();
-  }
 }

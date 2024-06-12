@@ -63,6 +63,10 @@ export class Coder {
   }
 
   async create() {
+    if (this.project) {
+      return;
+    }
+
     const parentModelLibrary = this.parent.parent.project.table.baseName;
 
     await createSpsTSLibrary({

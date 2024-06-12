@@ -13,11 +13,9 @@ import {
   IGeneratorProps as IFrontendCoderGeneratorProps,
 } from "./frontend/Coder";
 import { util as getNameStyles } from "../../../../../../utils/get-name-styles";
-import { Coder as ModelCoder } from "../../models/Coder";
-import pluralize from "pluralize";
 
 export type IGeneratorProps = {
-  name?: string;
+  name: string;
   leftModelIsExternal?: boolean;
   rightModelIsExternal?: boolean;
   frontend?: IFrontendCoderGeneratorProps;
@@ -48,44 +46,7 @@ export class Coder {
   constructor(props: { tree: Tree; parent: RelationsCoder } & IGeneratorProps) {
     this.tree = props.tree;
     this.parent = props.parent;
-
-    if (!props.name) {
-      const leftModel =
-        this.parent.parent.project.models[0].project.model.nameStyles;
-      const rightModel =
-        this.parent.parent.project.models[1].project.model.nameStyles;
-
-      this.name = `${leftModel.kebabCased.pluralized}-to-${rightModel.kebabCased.pluralized}`;
-    } else {
-      this.name = props.name;
-      const modelNamesPluralized = this.name.split("-to-");
-
-      const unpluralizedModelNames = modelNamesPluralized.map((modelName) => {
-        return pluralize.singular(modelName);
-      });
-
-      const leftProject = new ModelCoder({
-        tree: this.tree,
-        parent: this.parent.parent,
-        model: {
-          name: unpluralizedModelNames[0],
-          isExternal: props.leftModelIsExternal,
-        },
-      });
-
-      this.parent.parent.project.models.push(leftProject);
-
-      const rightProject = new ModelCoder({
-        tree: this.tree,
-        parent: this.parent.parent,
-        model: {
-          name: unpluralizedModelNames[1],
-          isExternal: props.rightModelIsExternal,
-        },
-      });
-
-      this.parent.parent.project.models.push(rightProject);
-    }
+    this.name = props.name;
 
     this.nameStyles = getNameStyles({ name: this.name });
 
@@ -111,12 +72,6 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.contracts.update();
-    await this.project.backend.update();
-    await this.project.frontend.update();
-  }
-
   async create() {
     await this.project.contracts.create();
     await this.project.backend.create();
@@ -126,6 +81,12 @@ export class Coder {
       variantName: "default",
       variantLevel: "sps-lite",
     });
+  }
+
+  async update() {
+    await this.project.contracts.update();
+    await this.project.backend.update();
+    await this.project.frontend.update();
   }
 
   async remove() {
