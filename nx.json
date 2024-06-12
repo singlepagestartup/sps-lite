@@ -55,6 +55,11 @@
         "assets": ["{projectRoot}/*.md"],
         "transformers": []
       }
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -71,6 +76,12 @@
     ],
     "sharedGlobals": []
   },
-  "generators": {},
+  "generators": {
+    "@nx/react": {
+      "library": {
+        "unitTestRunner": "none"
+      }
+    }
+  },
   "plugins": []
 }

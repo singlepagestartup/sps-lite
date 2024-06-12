@@ -34,7 +34,11 @@ export const util = async ({
     strict: true,
   });
 
-  generateFiles(tree, generateFilesPath, root, templateParams);
+  generateFiles(tree, generateFilesPath, root, {
+    ...templateParams,
+    offset_from_root: offsetFromRoot(root),
+    lib_name: name,
+  });
 
   const offsetFromRootProject = offsetFromRoot(root);
 

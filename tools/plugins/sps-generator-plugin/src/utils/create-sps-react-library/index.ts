@@ -51,7 +51,11 @@ export const util = async ({
     },
   });
 
-  generateFiles(tree, generateFilesPath, root, templateParams);
+  generateFiles(tree, generateFilesPath, root, {
+    ...templateParams,
+    offset_from_root: offsetFromRoot(root),
+    lib_name: name,
+  });
 
   generateFiles(tree, `${__dirname}/files`, root, {
     template: "",
