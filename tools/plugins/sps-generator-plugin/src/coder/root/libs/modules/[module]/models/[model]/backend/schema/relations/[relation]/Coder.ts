@@ -6,12 +6,12 @@ import { util as getNameStyles } from "../../../../../../../../../../utils/get-n
 import {
   addToFile,
   replaceInFile,
-} from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
-import { RegexCreator } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/RegexCreator";
+} from "../../../../../../../../../../../utils/file-utils";
+import { RegexCreator } from "../../../../../../../../../../../utils/regex-utils/RegexCreator";
 import {
   comma,
   space,
-} from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
+} from "../../../../../../../../../../../utils/regex-utils/regex-elements";
 import { Coder as RelationsCoder } from "../Coder";
 import { Migrator } from "./migrator/Migrator";
 
@@ -31,8 +31,6 @@ export class Coder {
   exportPopulate: ExportPopulate;
   importRelation: ImportRelation;
   exportRelation: ExportRelation;
-  importContracts: ImportContracts;
-  exportNamedInterface: ExportNamedInterface;
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -63,20 +61,6 @@ export class Coder {
     });
     this.exportRelation = new ExportRelation({
       leftProjectRelationNamePropertyCased: this.nameStyles.propertyCased.base,
-    });
-    this.importContracts = new ImportContracts({
-      libName: this.baseName,
-      relationNamePascalCased: getNameStyles({
-        name: this.name,
-      }).pascalCased.base,
-    });
-    this.exportNamedInterface = new ExportNamedInterface({
-      relationNamePropertyCased: getNameStyles({
-        name: this.name,
-      }).propertyCased.base,
-      relationNamePascalCased: getNameStyles({
-        name: this.name,
-      }).pascalCased.base,
     });
   }
 
@@ -111,11 +95,6 @@ export class Coder {
         .baseDirectory,
       "/src/lib/schema.ts",
     );
-    const levelContractsPath = path.join(
-      this.parent.parent.parent.parent.project.contracts.project.extended
-        .baseDirectory,
-      "/src/lib/interfaces/sps-lite.ts",
-    );
 
     if (!relationsSchemaProjectImportPath) {
       throw new Error(`No relationsSchemaProjectImportPath found`);
@@ -136,7 +115,6 @@ export class Coder {
     await this.attach({
       populatePath: relationsPopulatePath,
       schemaPath: relationsSchemaPath,
-      contractsPath: levelContractsPath,
     });
 
     this.project = getProjects(this.tree).get(this.baseName);
@@ -145,27 +123,11 @@ export class Coder {
   async attach({
     populatePath,
     schemaPath,
-    contractsPath,
   }: {
     populatePath: string;
     schemaPath: string;
-    contractsPath: string;
   }) {
     await this.setReplacers();
-
-    await addToFile({
-      toTop: true,
-      pathToFile: contractsPath,
-      content: this.importContracts.onCreate.content,
-      tree: this.tree,
-    });
-
-    await replaceInFile({
-      tree: this.tree,
-      pathToFile: contractsPath,
-      regex: this.exportNamedInterface.onCreate.regex,
-      content: this.exportNamedInterface.onCreate.content,
-    });
 
     await addToFile({
       toTop: true,
@@ -199,39 +161,11 @@ export class Coder {
   async detach({
     populatePath,
     schemaPath,
-    contractsPath,
   }: {
     populatePath: string;
     schemaPath: string;
-    contractsPath: string;
   }) {
     await this.setReplacers();
-
-    try {
-      await replaceInFile({
-        tree: this.tree,
-        pathToFile: contractsPath,
-        regex: this.exportNamedInterface.onRemove.regex,
-        content: "",
-      });
-    } catch (error) {
-      if (!error.message.includes(`No expected value`)) {
-        throw error;
-      }
-    }
-
-    try {
-      await replaceInFile({
-        tree: this.tree,
-        pathToFile: contractsPath,
-        regex: this.importContracts.onRemove.regex,
-        content: "",
-      });
-    } catch (error) {
-      if (!error.message.includes(`No expected value`)) {
-        throw error;
-      }
-    }
 
     try {
       await replaceInFile({
@@ -305,16 +239,10 @@ export class Coder {
         .baseDirectory,
       "/src/lib/schema.ts",
     );
-    const levelContractsPath = path.join(
-      this.parent.parent.parent.parent.project.contracts.project.extended
-        .baseDirectory,
-      "/src/lib/interfaces/sps-lite.ts",
-    );
 
     await this.detach({
       populatePath: relationsPopulatePath,
       schemaPath: relationsSchemaPath,
-      contractsPath: levelContractsPath,
     });
 
     await nxWorkspace.removeGenerator(this.tree, {
@@ -408,58 +336,6 @@ export class ExportRelation extends RegexCreator {
     const content = `...${leftProjectRelationNamePropertyCased}(helpers),`;
     const contentRegex = new RegExp(
       `${space}\\.{3}${leftProjectRelationNamePropertyCased}\\(helpers\\)${comma}${space}`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
-    });
-  }
-}
-
-export class ImportContracts extends RegexCreator {
-  constructor({
-    libName,
-    relationNamePascalCased,
-  }: {
-    libName: string;
-    relationNamePascalCased: string;
-  }) {
-    const place = ``;
-    const placeRegex = new RegExp(``);
-
-    const content = `import { IRelation as I${relationNamePascalCased} } from "${libName}";`;
-    const contentRegex = new RegExp(
-      `import${space}{${space}IRelation${space}as${space}I${relationNamePascalCased}${space}}${space}from${space}"${libName}";`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      content,
-      contentRegex,
-    });
-  }
-}
-
-export class ExportNamedInterface extends RegexCreator {
-  constructor({
-    relationNamePropertyCased,
-    relationNamePascalCased,
-  }: {
-    relationNamePropertyCased: string;
-    relationNamePascalCased: string;
-  }) {
-    const place = `export interface IModel extends IParentModel {`;
-    const placeRegex = new RegExp(
-      `export${space}interface${space}IModel${space}extends${space}IParentModel${space}{`,
-    );
-
-    const content = `${relationNamePropertyCased}: I${relationNamePascalCased}[];`;
-    const contentRegex = new RegExp(
-      `${relationNamePropertyCased}:${space}I${relationNamePascalCased}\\[\\];`,
     );
 
     super({
