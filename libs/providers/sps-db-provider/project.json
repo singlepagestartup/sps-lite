@@ -5,6 +5,18 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "tsc:build": {}
+    "tsc:build": {},
+    "db:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/providers/sps-db-provider",
+        "commands": [
+          {
+            "command": "bun drizzle-kit studio --port 3002 --config src/lib/drizzle/config.ts --verbose"
+          }
+        ]
+      }
+    }
   }
 }

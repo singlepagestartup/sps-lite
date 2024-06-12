@@ -4,7 +4,7 @@ import { logger } from "hono/logger";
 import { middlewares as kvMiddlewares } from "@sps/sps-kv-provider";
 
 export function chain(app: any) {
-  app.use(kvMiddlewares.session());
+  app.use(spsRbacSdk.middlewares.session() as any);
   app.use(middlewares.parseQuery());
   app.use(middlewares.logger());
   app.use(spsRbacSdk.middlewares.isAuthenticated() as any);

@@ -71,4 +71,4 @@ add_env "REDIS_PORT" $REDIS_PORT
 REDIS_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
 add_env "REDIS_PASSWORD" $REDIS_PASSWORD
 
-COOKIE_SESSION_SECRET=$(generate_random_string)
+SPS_RBAC_COOKIE_SESSION_SECRET=$(generate_random_string)

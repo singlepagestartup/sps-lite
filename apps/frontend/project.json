@@ -237,32 +237,6 @@
         ]
       }
     },
-    "db:studio": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "apps/frontend",
-        "commands": [
-          {
-            "command": "bun drizzle-kit studio --port 3001 --config src/db/config.ts"
-          }
-        ]
-      }
-    },
-    "theme": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/shared-frontend-utils-server:tsc:build"
-          },
-          {
-            "command": "node dist/libs/shared/frontend/utils/server/src/lib/create-tailwind-theme.js"
-          }
-        ]
-      }
-    },
     "prepare": {
       "executor": "nx:run-commands",
       "options": {
