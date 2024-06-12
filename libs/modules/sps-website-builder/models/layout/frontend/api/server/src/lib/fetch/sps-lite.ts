@@ -4,7 +4,7 @@ import QueryString from "qs";
 import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
 
 export const api = {
-  findById: async ({ id }: { id: number | string }) => {
+  findById: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findById<IModelExtended>({
       id,
       model: route,

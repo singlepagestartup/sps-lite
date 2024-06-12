@@ -1,4 +1,3 @@
-import { getFileUrl } from "@sps/shared-utils";
 import { IComponentPropsExtended } from "./interface";
 import Image from "next/image";
 
@@ -10,13 +9,6 @@ export function Component(props: IComponentPropsExtended) {
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={props.containerClassName ?? ""}
-    >
-      <Image
-        src={getFileUrl(props.data)}
-        alt=""
-        fill={true}
-        className={props.className ?? ""}
-      />
-    </div>
+    ></div>
   );
 }

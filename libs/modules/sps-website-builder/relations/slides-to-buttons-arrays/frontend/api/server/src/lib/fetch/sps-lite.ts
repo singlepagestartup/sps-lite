@@ -6,7 +6,7 @@ import {
 } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-api-model";
 
 export const api = {
-  findById: async ({ id }: { id: number | string }) => {
+  findById: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findOne<IRelationExtended>({
       id,
       model: route,

@@ -6,7 +6,7 @@ import {
 } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-api-model";
 
 export const api = {
-  findById: async ({ id }: { id: number | string }) => {
+  findById: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findById<IRelationExtended>({
       id,
       model: route,

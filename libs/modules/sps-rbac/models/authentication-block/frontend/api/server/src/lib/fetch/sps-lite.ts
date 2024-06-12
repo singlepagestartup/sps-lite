@@ -1,4 +1,7 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import {
+  fetch as utilsFetch,
+  actions,
+} from "@sps/shared-frontend-utils-server";
 import {
   populate,
   route,
@@ -6,8 +9,8 @@ import {
 } from "@sps/sps-rbac-models-authentication-block-frontend-api-model";
 
 export const api = {
-  findById: async ({ id }: { id: number | string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
+  findById: async ({ id }: { id: string }) => {
+    return await actions.findById<IModelExtended>({
       id,
       model: route,
       populate,

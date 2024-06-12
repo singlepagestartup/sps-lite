@@ -7,7 +7,7 @@
  * @param replaceBy replace symbol
  * @returns string
  */
-export function replacer(toReplace: string, symbols = [3, 3], replaceBy = "*") {
+export function util(toReplace: string, symbols = [3, 3], replaceBy = "*") {
   if (!toReplace?.length) {
     return "";
   }

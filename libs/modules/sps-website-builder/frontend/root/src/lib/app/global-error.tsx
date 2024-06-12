@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
 import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 
 export function GlobalError({ error, reset, fonts }: any) {
   const [page, setPage] = useState<any>();
@@ -11,18 +11,23 @@ export function GlobalError({ error, reset, fonts }: any) {
   }, [error]);
 
   useEffect(() => {
-    getBackendData({
-      url: `${BACKEND_URL}/api/sps-website-builder/pages`,
-      params: {
+    api.fetch
+      .find({
         filters: {
-          url: "/500",
+          and: [
+            {
+              column: "url",
+              method: "eq",
+              value: "/500",
+            },
+          ],
         },
-      },
-    }).then((res) => {
-      if (res?.length) {
-        setPage(res[0]);
-      }
-    });
+      })
+      .then((pages) => {
+        if (pages.length > 0) {
+          setPage(pages[0]);
+        }
+      });
   }, []);
 
   if (page) {

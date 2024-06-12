@@ -1,19 +1,8 @@
-"use server";
-
-import type { IModel as IBackendPage } from "@sps/sps-website-builder-models-page-contracts";
-import {
-  BACKEND_URL,
-  FRONTEND_URL,
-  getBackendData,
-} from "@sps/shared-frontend-utils-client";
+import { FRONTEND_URL } from "@sps/shared-utils";
+import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 
 async function generateSiteMap() {
-  const pages: IBackendPage[] = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/pages`,
-    params: { locale: "all", pagination: { limit: -1 } },
-  }).catch((error) => {
-    console.log("🚀 ~ generateSiteMap ~ error:", error);
-  });
+  const pages = await api.fetch.find();
 
   if (!pages) {
     return `<?xml version="1.0" encoding="UTF-8"?>

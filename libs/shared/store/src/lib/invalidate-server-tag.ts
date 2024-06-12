@@ -1,4 +1,4 @@
-import { FRONTEND_URL } from "@sps/shared-frontend-utils-client";
+import { FRONTEND_URL } from "@sps/shared-utils";
 import { globalActionsStore } from "./global-actions-store";
 
 export async function invalidateServerTag({ tag }: { tag: string }) {

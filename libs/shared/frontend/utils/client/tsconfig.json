@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
     "allowJs": true,
+    "target": "ES2022",
+    "module": "ESNext",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,9 +15,6 @@
   "references": [
     {
       "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
     }
   ],
   "extends": "../../../../../tsconfig.base.json"

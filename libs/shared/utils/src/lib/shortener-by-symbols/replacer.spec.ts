@@ -1,4 +1,4 @@
-import { replacer } from "./replacer";
+import { replacer } from ".";
 
 describe("utils/formatters/replacer", () => {
   it("should replace characters in the string with the specified symbol", () => {

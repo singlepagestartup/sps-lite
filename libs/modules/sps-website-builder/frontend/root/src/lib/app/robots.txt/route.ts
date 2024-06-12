@@ -1,20 +1,7 @@
-"use server";
-
-import { BACKEND_URL, getBackendData } from "@sps/shared-frontend-utils-client";
+import { FRONTEND_URL } from "@sps/shared-utils";
 
 async function generateRobots() {
-  const robots = await getBackendData({
-    url: `${BACKEND_URL}/api/sps-website-builder/robot`,
-    params: {
-      populate: "*",
-    },
-  });
-
-  if (!robots?.robots) {
-    return "";
-  }
-
-  return `${robots.robots}`;
+  return `User-agent: *\nSitemap: ${FRONTEND_URL}/sitemap.xml`;
 }
 
 export async function GET() {

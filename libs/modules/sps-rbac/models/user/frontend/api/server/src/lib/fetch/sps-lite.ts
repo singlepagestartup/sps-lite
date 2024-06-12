@@ -6,7 +6,7 @@ import {
 } from "@sps/sps-rbac-models-user-frontend-api-model";
 
 export const api = {
-  findById: async ({ id }: { id: number | string }) => {
+  findById: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findById<IModelExtended>({
       id,
       model: route,

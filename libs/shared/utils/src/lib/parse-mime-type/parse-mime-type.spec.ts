@@ -1,4 +1,4 @@
-import parseMimeType from "./parse-mime-type";
+import { util as parseMimeType } from "./";
 
 describe("parseMimeType", () => {
   it("should return 'image' render type", () => {
